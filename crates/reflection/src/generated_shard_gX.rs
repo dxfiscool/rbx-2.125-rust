@@ -28,6 +28,20 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // Out-of-batch callees (`TIFFCheckTile`, `TIFFComputeTile`,
 // `TIFFVStripSize`, `TIFFReverseBits`, client seek/read procs) are
 // `Option<...Hook>` fields: `None` panics like a null C call would.
+// ---- Batch-5: tif_strip/tif_tile size cluster + tif_swab + bit-rev
+// (IDA 0x1b48d8..0x1b5f8c, 27 fns) ----
+// Ports `TIFFComputeStrip`, the `multiply_1`/`summarize` overflow helpers
+// (both take a hidden 4th `what` module string — `MOV R8, R3` into the
+// `"Integer overflow in %s"` error, IDA `0x1b4960`/`0x1b4988`; `summarize`
+// itself is 5 insns ignoring `tif`/`what`, IDA `0x1b4a68`..`0x1b4a78`),
+// `TIFFOld/New/ScanlineSize`, `_TIFFDefaultStripSize`, `TIFFVStripSize`,
+// `TIFFStripSize`, the `TIFFSwab*` family, `TIFFGetBitRevTable`/
+// `TIFFReverseBits`, `TIFFComputeTile`, `_TIFFDefaultTileSize`,
+// `TIFFCheckTile`, `multiply_2`, `TIFFTileRowSize`, `TIFFNumberOfTiles`,
+// `TIFFVTileSize`, `TIFFTileSize`, `TIFFWarningExt`.
+// Deferred: the Thunder pair `TIFFInitThunderScan` (0x1b55d8) +
+// `ThunderDecodeRow` (0x1b55f4, ~300-line nibble decoder) and the
+// tif_write cluster from `TIFFAppendToStrip` (0x1b6008) onward.
 
 /// zlib version string the binary passes to `deflateInit_`/`inflateInit_`
 /// (IDA `0x1adba8`, `0x1b0c00`).
@@ -75,6 +89,45 @@ pub const TIFF_FLAG_MAPPED_800: u32 = 0x0800;
 /// `tif_flags` bit for no-raw-read mode (assert text at IDA `0x1b3da4`).
 #[doc(alias = "TIFF::TIFF_NOREADRAW")]
 pub const TIFF_FLAG_NOREADRAW: u32 = 0x20000;
+/// `tif_flags` bit inhibiting the YCbCr-subsampling size path (IDA
+/// `0x1b4ab0`, `0x1b4bec`, `0x1b4dfc`, `0x1b5e28`); name by value [INFERENCE].
+pub const TIFF_FLAG_NOBITREV_4000: u32 = 0x4000;
+/// Photometric value selecting the YCbCr-subsampling size path (IDA
+/// `*(tif+86) == 6`, `0x1b4aa4`/`0x1b4be0`/...); 6 is `PHOTOMETRIC_YCBCR`
+/// per libtiff `tiff.h` [INFERENCE].
+pub const PHOTOMETRIC_YCBCR: u16 = 6;
+/// YCbCr subsampling tag read by `TIFFGetField(tif, 530, ...)` in the size
+/// helpers (IDA `0x1b4ac0`, `0x1b4bfc`, `0x1b4e0c`).
+#[doc(alias = "TIFF::TIFFTAG_YCBCRSUBSAMPLING")]
+pub const TIFFTAG_YCBCRSUBSAMPLING: u32 = 530;
+
+/// Bit-reversal of one byte: the `TIFFBitRevTable` lookup (libtiff
+/// `tif_compress.c`).
+const fn bit_rev_byte(b: u8) -> u8 {
+    let mut v = b;
+    v = (v & 0xF0) >> 4 | (v & 0x0F) << 4;
+    v = (v & 0xCC) >> 2 | (v & 0x33) << 2;
+    v = (v & 0xAA) >> 1 | (v & 0x55) << 1;
+    v
+}
+
+/// Builds one 256-entry bit-reversal table at compile time.
+const fn build_bit_rev_table(reverse: bool) -> [u8; 256] {
+    let mut t = [0u8; 256];
+    let mut i = 0usize;
+    while i < 256 {
+        t[i] = if reverse { bit_rev_byte(i as u8) } else { i as u8 };
+        i += 1;
+    }
+    t
+}
+
+/// `TIFFBitRevTable` (IDA `0x1b5504`; libtiff `tif_compress.c`).
+#[doc(alias = "TIFFBitRevTable")]
+pub static TIFF_BIT_REV_TABLE: [u8; 256] = build_bit_rev_table(true);
+/// `TIFFNoBitRevTable` (IDA `0x1b5510`): identity.
+#[doc(alias = "TIFFNoBitRevTable")]
+pub static TIFF_NO_BIT_REV_TABLE: [u8; 256] = build_bit_rev_table(false);
 
 /// zlib status codes observed at IDA `0x1ab538`..`0x1ab5a4`: the post-encode
 /// pump loops `deflate(Z_FINISH)` until `Z_STREAM_END` and errors on any
@@ -298,6 +351,9 @@ pub struct TiffCodec {
     pub samples_per_pixel: u16,
     /// Dir `+130`: planar config (IDA `0x1adb18`).
     pub planar_config: u16,
+    /// Dir `+86`: photometric; 6 (`PHOTOMETRIC_YCBCR`) selects the
+    /// subsampling size path (IDA `0x1b4aa4`, `0x1b4be0`) [INFERENCE].
+    pub photometric_86: u16,
     /// `+80` / `+82`: written by `PixarLogClose` (IDA `0x1aa5fc`..).
     pub close_word_80: u16,
     pub close_word_82: u16,
@@ -396,10 +452,22 @@ pub struct TiffCodec {
     /// offset loads).
     pub strip_bytecounts_180: Vec<u32>,
     pub data_offsets_176: Vec<u32>,
-    /// Tile geometry operands (words `+64`/`+68`/`+56`, IDA `0x1b41c8`..).
+    /// Tile geometry operands (words `+64`/`+68`/`+56`, IDA `0x1b41c8`..)
+    /// plus image depth (`+60`) and tile depth (`+72`); `u32::MAX` is the
+    /// C `-1` default (IDA `0x1b59b0`..`0x1b59c0`, `0x1b5cf8`..`0x1b5d08`).
     pub tile_dim_64: u32,
     pub tile_dim_68: u32,
     pub img_dim_56: u32,
+    /// Image depth (`+60`, IDA `0x1b5990`) [INFERENCE].
+    pub image_depth_60: u32,
+    /// Tile depth (`+72`, IDA `0x1b59c0`) [INFERENCE].
+    pub tile_depth_72: u32,
+    /// YCbCr subsampling pair (`+196`/`+198`, read directly by
+    /// `TIFFVTileSize`, IDA `0x1b5e44`..`0x1b5eac`, and via
+    /// `TIFFGetField(tif, 530, ...)` by the strip size helpers)
+    /// [INFERENCE].
+    pub ycbcr_subsampling_196: u16,
+    pub ycbcr_subsampling_198: u16,
     /// Strip geometry (words `+168`/`+96`, IDA `0x1b3b34`..`0x1b3b68`).
     pub rows_per_strip_168: u32,
     pub strip_row_factor_96: u32,
@@ -2588,185 +2656,648 @@ pub fn stub_0x1b48d0(tif: &TiffCodec) -> i32 {
 
 // 0x1b48d8 — _TIFFComputeStrip
 #[doc(alias = "_TIFFComputeStrip")]
-pub fn stub_0x1b48d8() -> ! {
-    todo!("0x1b48d8 _TIFFComputeStrip")
+// IDA 0x1b48d8 (decompile): `row / rowsperstrip(+96)`; separate planes add
+// `rowsperstrip(+168) * sample`, erroring (return 0) when `sample` is out of
+// range (libtiff `tif_strip.c`).
+pub fn stub_0x1b48d8(tif: &mut TiffCodec, row: u32, sample: u16) -> u32 {
+    // IDA 0x1b48f4.
+    let mut strip = row / tif.strip_row_factor_96;
+    // IDA 0x1b4900..0x1b4934.
+    if tif.planar_config == 2 {
+        if tif.samples_per_pixel <= sample {
+            tif.last_error = Some("TIFFComputeStrip".to_owned());
+            return 0;
+        }
+        strip += tif.rows_per_strip_168 * u32::from(sample);
+    }
+    strip
 }
 
 // 0x1b4944 — _multiply_1
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_multiply_1")]
-pub fn stub_0x1b4944() -> ! {
-    todo!("0x1b4944 _multiply_1")
+// IDA 0x1b4944 (decompile + disasm, 23 insns): checked `a * b`. The hidden
+// 4th arg (`MOV R8, R3`, IDA `0x1b4960`) is the module string formatted into
+// `"Integer overflow in %s"` (IDA `0x1b4978`..`0x1b4988`); overflow returns 0
+// (libtiff `tif_strip.c` `multiply`).
+pub fn stub_0x1b4944(tif: &mut TiffCodec, a: u32, b: u32, what: &str) -> u32 {
+    // IDA 0x1b4954..0x1b4974 (`MUL` + `___udivsi3` check).
+    let bytes = a.wrapping_mul(b);
+    if b != 0 && bytes / b != a {
+        tif.last_error = Some(format!("Integer overflow in {what}"));
+        return 0;
+    }
+    bytes
 }
 
 // 0x1b49a4 — _TIFFOldScanlineSize
 #[doc(alias = "_TIFFOldScanlineSize")]
-pub fn stub_0x1b49a4() -> ! {
-    todo!("0x1b49a4 _TIFFOldScanlineSize")
+// IDA 0x1b49a4 (decompile): `bitspersample(+80) * imagewidth(+52)`, times
+// samples for contiguous planes, rounded up to whole bytes (libtiff
+// `tif_strip.c`).
+pub fn stub_0x1b49a4(tif: &mut TiffCodec) -> u32 {
+    // IDA 0x1b49c0.
+    let mut bits = stub_0x1b4944(
+        tif,
+        u32::from(tif.bits_per_sample),
+        tif.dim_52,
+        "TIFFOldScanlineSize",
+    );
+    // IDA 0x1b49d0..0x1b49e8.
+    if tif.planar_config == 1 {
+        bits = stub_0x1b4944(
+            tif,
+            bits,
+            u32::from(tif.samples_per_pixel),
+            "TIFFOldScanlineSize",
+        );
+    }
+    // IDA 0x1b49f0..0x1b49f8: `(bits + 7) / 8`.
+    if bits & 7 != 0 {
+        (bits >> 3) + 1
+    } else {
+        bits >> 3
+    }
 }
 
 // 0x1b4a08 — _TIFFNumberOfStrips
 #[doc(alias = "_TIFFNumberOfStrips")]
-pub fn stub_0x1b4a08() -> ! {
-    todo!("0x1b4a08 _TIFFNumberOfStrips")
+// IDA 0x1b4a08 (decompile): ceil(imageheight / rowsperstrip); `-1`
+// (`u32::MAX`) rowsperstrip counts one strip; separate planes multiply by
+// samples (libtiff `tif_strip.c`).
+pub fn stub_0x1b4a08(tif: &mut TiffCodec) -> u32 {
+    // IDA 0x1b4a10..0x1b4a34.
+    let rows_per_strip = tif.strip_row_factor_96;
+    let mut n = if rows_per_strip == u32::MAX {
+        1
+    } else {
+        (rows_per_strip + tif.img_dim_56 - 1) / rows_per_strip
+    };
+    // IDA 0x1b4a40..0x1b4a58.
+    if tif.planar_config == 2 {
+        n = stub_0x1b4944(
+            tif,
+            n,
+            u32::from(tif.samples_per_pixel),
+            "TIFFNumberOfStrips",
+        );
+    }
+    n
 }
 
 // 0x1b4a68 — _summarize
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_summarize")]
-pub fn stub_0x1b4a68() -> ! {
-    todo!("0x1b4a68 _summarize")
+// IDA 0x1b4a68 (disasm, 5 insns: `ADD R2, R2, R1; MOV R0, R2`): pure `a + b`.
+// Callers still pass `(tif, a, b, what)` in R0..R3 (e.g. `"TIFFVStripSize"`,
+// IDA `0x1b4cac`); `tif`/`what` are ignored (libtiff `tif_strip.c`
+// `summarize`, whose overflow check this build omits).
+pub fn stub_0x1b4a68(_tif: &TiffCodec, a: u32, b: u32, _what: &str) -> u32 {
+    a.wrapping_add(b)
 }
 
 // 0x1b4a7c — _TIFFNewScanlineSize
 #[doc(alias = "_TIFFNewScanlineSize")]
-pub fn stub_0x1b4a7c() -> ! {
-    todo!("0x1b4a7c _TIFFNewScanlineSize")
+// IDA 0x1b4a7c (decompile): contiguous non-YCbCr scanlines are
+// `roundup8(width * samples * bps)`; the YCbCr path (`planar == 1 &&
+// photometric(+86) == 6 && !(flags & 0x4000)`) scales by the
+// `TIFFGetField(tif, 530, ...)` subsampling pair, read here from the
+// `ycbcr_subsampling_*` fields (libtiff `tif_strip.c`).
+pub fn stub_0x1b4a7c(tif: &mut TiffCodec) -> u32 {
+    let mut width = tif.dim_52;
+    // IDA 0x1b4a94..0x1b4b3c.
+    if tif.planar_config == 1
+        && (tif.photometric_86 != PHOTOMETRIC_YCBCR
+            || tif.flags & TIFF_FLAG_NOBITREV_4000 != 0)
+    {
+        width = stub_0x1b4944(
+            tif,
+            tif.dim_52,
+            u32::from(tif.samples_per_pixel),
+            "TIFFNewScanlineSize",
+        );
+    } else if tif.planar_config == 1 {
+        // IDA 0x1b4ac0..0x1b4ba4 (`TIFFGetField` 530 → subsampling fields).
+        let h = u32::from(tif.ycbcr_subsampling_196);
+        let v = u32::from(tif.ycbcr_subsampling_198);
+        if h * v == 0 {
+            tif.last_error = Some("Invalid YCbCr subsampling".to_owned());
+            return 0;
+        }
+        // IDA 0x1b4b1c.
+        return (((h * v + 2)
+            * u32::from(tif.bits_per_sample)
+            * ((tif.dim_52 - 1 + h) / h)
+            + 7)
+            >> 3)
+            / v;
+    }
+    // IDA 0x1b4b60..0x1b4b9c: `roundup8(width * bps)` (recomputed, not CSE'd).
+    let bits = stub_0x1b4944(
+        tif,
+        width,
+        u32::from(tif.bits_per_sample),
+        "TIFFNewScanlineSize",
+    );
+    if bits & 7 != 0 {
+        (bits >> 3) + 1
+    } else {
+        bits >> 3
+    }
 }
 
 // 0x1b4bb8 — _TIFFScanlineSize
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_TIFFScanlineSize")]
-pub fn stub_0x1b4bb8() -> ! {
-    todo!("0x1b4bb8 _TIFFScanlineSize")
+// IDA 0x1b4bb8 (decompile + disasm): like `TIFFNewScanlineSize`, but the
+// YCbCr path pads with `summarize(scan, 2 * (scan / h), "TIFFVStripSize")`
+// (string literal at IDA `0x1b4cac`) and errors `"Invalid YCbCr subsamplin…"`
+// (IDA `0x1b4c0c`) on a zero horizontal factor (libtiff `tif_strip.c`).
+pub fn stub_0x1b4bb8(tif: &mut TiffCodec) -> u32 {
+    let mut width = tif.dim_52;
+    // IDA 0x1b4bd0..0x1b4cf8.
+    if tif.planar_config == 1
+        && (tif.photometric_86 != PHOTOMETRIC_YCBCR
+            || tif.flags & TIFF_FLAG_NOBITREV_4000 != 0)
+    {
+        width = stub_0x1b4944(
+            tif,
+            tif.dim_52,
+            u32::from(tif.samples_per_pixel),
+            "TIFFScanlineSize",
+        );
+    } else if tif.planar_config == 1 {
+        // IDA 0x1b4bfc..0x1b4c20 (`TIFFGetField` 530).
+        let h = u32::from(tif.ycbcr_subsampling_196);
+        if h == 0 {
+            tif.last_error = Some("Invalid YCbCr subsampling".to_owned());
+            return 0;
+        }
+        // IDA 0x1b4c40.
+        let cells = h * ((tif.dim_52 - 1 + h) / h);
+        // IDA 0x1b4c60..0x1b4c9c: `roundup8(mult(cells, bps))`.
+        let bits = stub_0x1b4944(
+            tif,
+            cells,
+            u32::from(tif.bits_per_sample),
+            "TIFFScanlineSize",
+        );
+        let scan = if bits & 7 != 0 {
+            (bits >> 3) + 1
+        } else {
+            bits >> 3
+        };
+        // IDA 0x1b4cc4..0x1b4cd8.
+        let pad = stub_0x1b4944(tif, 2, scan / h, "TIFFScanlineSize");
+        return stub_0x1b4a68(tif, scan, pad, "TIFFVStripSize");
+    }
+    // IDA 0x1b4d1c..0x1b4d58.
+    let bits = stub_0x1b4944(
+        tif,
+        width,
+        u32::from(tif.bits_per_sample),
+        "TIFFScanlineSize",
+    );
+    if bits & 7 != 0 {
+        (bits >> 3) + 1
+    } else {
+        bits >> 3
+    }
 }
 
 // 0x1b4d80 — __TIFFDefaultStripSize
 #[doc(alias = "__TIFFDefaultStripSize")]
-pub fn stub_0x1b4d80() -> ! {
-    todo!("0x1b4d80 __TIFFDefaultStripSize")
+// IDA 0x1b4d80 (decompile): passes a positive estimate through; otherwise
+// `0x2000 / scanline` rows per strip (1 when the scanline exceeds 8K,
+// `0x2000` when the scanline size is 0) (libtiff `tif_strip.c`).
+pub fn stub_0x1b4d80(tif: &mut TiffCodec, rows: i32) -> u32 {
+    // IDA 0x1b4d8c..0x1b4db8.
+    if rows <= 0 {
+        let scan = stub_0x1b4bb8(tif);
+        if scan == 0 {
+            return 0x2000;
+        }
+        let per = 0x2000 / scan;
+        return if per != 0 { per } else { 1 };
+    }
+    rows as u32
 }
 
 // 0x1b4dbc — _TIFFVStripSize
 // type: int __fastcall(int, int)
 #[doc(alias = "_TIFFVStripSize")]
-pub fn stub_0x1b4dbc() -> ! {
-    todo!("0x1b4dbc _TIFFVStripSize")
+// IDA 0x1b4dbc (decompile): `rows == -1` (`u32::MAX`) sizes the whole image;
+// the YCbCr path scales whole subsampling blocks and pads via `summarize`
+// (libtiff `tif_strip.c`).
+pub fn stub_0x1b4dbc(tif: &mut TiffCodec, rows: u32) -> u32 {
+    // IDA 0x1b4dd4..0x1b4dd8.
+    let mut n = rows;
+    if rows == u32::MAX {
+        n = tif.img_dim_56;
+    }
+    // IDA 0x1b4dfc..0x1b4e0c.
+    if tif.planar_config == 1
+        && tif.photometric_86 == PHOTOMETRIC_YCBCR
+        && tif.flags & TIFF_FLAG_NOBITREV_4000 == 0
+    {
+        let h = u32::from(tif.ycbcr_subsampling_196);
+        let v = u32::from(tif.ycbcr_subsampling_198);
+        // IDA 0x1b4e18..0x1b4e34.
+        if h * v == 0 {
+            tif.last_error = Some("Invalid YCbCr subsampling".to_owned());
+            return 0;
+        }
+        // IDA 0x1b4e60..0x1b4eb0.
+        let cells = h * ((tif.dim_52 - 1 + h) / h);
+        let bits = stub_0x1b4944(
+            tif,
+            cells,
+            u32::from(tif.bits_per_sample),
+            "TIFFVStripSize",
+        );
+        let row_bytes = if bits & 7 != 0 {
+            (bits >> 3) + 1
+        } else {
+            bits >> 3
+        };
+        // IDA 0x1b4ee8..0x1b4f14.
+        let blocks = stub_0x1b4944(
+            tif,
+            v * ((v - 1 + n) / v),
+            row_bytes,
+            "TIFFVStripSize",
+        );
+        let pad = stub_0x1b4944(tif, 2, blocks / (h * v), "TIFFVStripSize");
+        return stub_0x1b4a68(tif, blocks, pad, "TIFFVStripSize");
+    }
+    // IDA 0x1b4f20..0x1b4f38.
+    let scan = stub_0x1b4bb8(tif);
+    stub_0x1b4944(tif, n, scan, "TIFFVStripSize")
 }
 
 // 0x1b4f5c — _TIFFStripSize
 #[doc(alias = "_TIFFStripSize")]
-pub fn stub_0x1b4f5c() -> ! {
-    todo!("0x1b4f5c _TIFFStripSize")
+// IDA 0x1b4f5c (decompile): `VStripSize(min(imageheight, rowsperstrip))`
+// (libtiff `tif_strip.c`).
+pub fn stub_0x1b4f5c(tif: &mut TiffCodec) -> u32 {
+    // IDA 0x1b4f60..0x1b4f6c.
+    let rows = tif.img_dim_56.min(tif.strip_row_factor_96);
+    stub_0x1b4dbc(tif, rows)
 }
 
 // 0x1b4f70 — _TIFFSwabShort
 #[doc(alias = "_TIFFSwabShort")]
-pub fn stub_0x1b4f70() -> ! {
-    todo!("0x1b4f70 _TIFFSwabShort")
+// IDA 0x1b4f70 (decompile, 5 insns): in-place 2-byte swap (libtiff
+// `tif_swab.c`).
+pub fn stub_0x1b4f70(word: &mut u16) {
+    *word = word.swap_bytes();
 }
 
 // 0x1b4f84 — _TIFFSwabLong
 #[doc(alias = "_TIFFSwabLong")]
-pub fn stub_0x1b4f84() -> ! {
-    todo!("0x1b4f84 _TIFFSwabLong")
+// IDA 0x1b4f84 (decompile, 9 insns): in-place 4-byte reversal (libtiff
+// `tif_swab.c`).
+pub fn stub_0x1b4f84(word: &mut u32) {
+    *word = word.swap_bytes();
 }
 
 // 0x1b4fa8 — _TIFFSwabArrayOfShort
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_TIFFSwabArrayOfShort")]
-pub fn stub_0x1b4fa8() -> ! {
-    todo!("0x1b4fa8 _TIFFSwabArrayOfShort")
+// IDA 0x1b4fa8 (decompile): Duff's-device 8-wide loop byte-swapping `n`
+// 16-bit lanes; `buf.len()` carries `n` (libtiff `tif_swab.c`).
+pub fn stub_0x1b4fa8(buf: &mut [u8]) {
+    for lane in buf.chunks_exact_mut(2) {
+        lane.swap(0, 1);
+    }
 }
 
 // 0x1b5118 — _TIFFSwabArrayOfTriples
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_TIFFSwabArrayOfTriples")]
-pub fn stub_0x1b5118() -> ! {
-    todo!("0x1b5118 _TIFFSwabArrayOfTriples")
+// IDA 0x1b5118 (decompile): Duff's-device 8-wide loop swapping the outer
+// bytes of each 3-byte triple, middle byte untouched; `buf.len() / 3`
+// carries the count (libtiff `tif_swab.c`).
+pub fn stub_0x1b5118(buf: &mut [u8]) {
+    for triple in buf.chunks_exact_mut(3) {
+        triple.swap(0, 2);
+    }
 }
 
 // 0x1b5288 — _TIFFSwabArrayOfLong
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_TIFFSwabArrayOfLong")]
-pub fn stub_0x1b5288() -> ! {
-    todo!("0x1b5288 _TIFFSwabArrayOfLong")
+// IDA 0x1b5288 (decompile): Duff's-device 4-wide loop reversing each 4-byte
+// lane; `buf.len() / 4` carries the count (libtiff `tif_swab.c`).
+pub fn stub_0x1b5288(buf: &mut [u8]) {
+    for lane in buf.chunks_exact_mut(4) {
+        lane.reverse();
+    }
 }
 
 // 0x1b5398 — _TIFFSwabArrayOfDouble
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_TIFFSwabArrayOfDouble")]
-pub fn stub_0x1b5398() -> ! {
-    todo!("0x1b5398 _TIFFSwabArrayOfDouble")
+// IDA 0x1b5398 (decompile): `SwabArrayOfLong(buf, 2 * n)` (IDA `0x1b53ac`)
+// then swaps the two 32-bit halves of each double — the net effect is a
+// full 8-byte reversal per lane, ported directly (libtiff `tif_swab.c`).
+pub fn stub_0x1b5398(buf: &mut [u8]) {
+    for lane in buf.chunks_exact_mut(8) {
+        lane.reverse();
+    }
 }
 
 // 0x1b54f8 — _TIFFGetBitRevTable
 #[doc(alias = "_TIFFGetBitRevTable")]
-pub fn stub_0x1b54f8() -> ! {
-    todo!("0x1b54f8 _TIFFGetBitRevTable")
+// IDA 0x1b54f8 (decompile): nonzero selects `TIFFBitRevTable`, zero selects
+// `TIFFNoBitRevTable` (libtiff `tif_compress.c`).
+pub fn stub_0x1b54f8(invert: u32) -> &'static [u8; 256] {
+    if invert != 0 {
+        &TIFF_BIT_REV_TABLE
+    } else {
+        &TIFF_NO_BIT_REV_TABLE
+    }
 }
 
 // 0x1b5520 — _TIFFReverseBits
 #[doc(alias = "_TIFFReverseBits")]
-pub fn stub_0x1b5520() -> ! {
-    todo!("0x1b5520 _TIFFReverseBits")
+// IDA 0x1b5520 (decompile): 8-wide unrolled + remainder loop mapping every
+// byte through `TIFFBitRevTable`; `buf.len()` carries the count (libtiff
+// `tif_compress.c`).
+pub fn stub_0x1b5520(buf: &mut [u8]) {
+    for b in buf.iter_mut() {
+        *b = b.reverse_bits();
+    }
 }
 
 // 0x1b55d8 — _TIFFInitThunderScan
 #[doc(alias = "_TIFFInitThunderScan")]
+// DEFERRED (batch-5): installs the `ThunderDecodeRow` giant (0x1b55f4) into
+// words `+512`/`+520` (`*(_DWORD *)(a1 + 512) = ThunderDecodeRow`, IDA
+// `0x1b55e0`..`0x1b55e4`); ported together once the decoder lands.
 pub fn stub_0x1b55d8() -> ! {
     todo!("0x1b55d8 _TIFFInitThunderScan")
 }
 
 // 0x1b55f4 — _ThunderDecodeRow
 #[doc(alias = "_ThunderDecodeRow")]
+// DEFERRED (batch-5): ~300-line 4-bit Thunder (ThunderScan) nibble decoder
+// over the raw cursor (`+576`/`+580`) with `twobitdeltas`/`threebitdeltas`
+// tables (IDA `0x1b55f4`..`0x1b58a4`); dedicated giant batch.
 pub fn stub_0x1b55f4() -> ! {
     todo!("0x1b55f4 _ThunderDecodeRow")
 }
 
 // 0x1b596c — _TIFFComputeTile
 #[doc(alias = "_TIFFComputeTile")]
-pub fn stub_0x1b596c() -> ! {
-    todo!("0x1b596c _TIFFComputeTile")
+// IDA 0x1b596c (decompile): tile index from `(x, y, z, sample)`; `-1`
+// (`u32::MAX`) tile width/length/depth default to the image dims, depth 1
+// forces `z = 0`, and empty geometry returns 1 (libtiff `tif_tile.c`).
+pub fn stub_0x1b596c(tif: &TiffCodec, x: u32, y: u32, z: u32, sample: u16) -> u32 {
+    // IDA 0x1b5990..0x1b59b8.
+    let depth = tif.image_depth_60;
+    let mut tw = tif.tile_dim_64;
+    let mut th = tif.tile_dim_68;
+    let mut zz = z;
+    if depth == 1 {
+        zz = 0;
+    }
+    if tw == u32::MAX {
+        tw = tif.dim_52;
+    }
+    if th == u32::MAX {
+        th = tif.img_dim_56;
+    }
+    // IDA 0x1b59c0..0x1b59d8.
+    let td = if tif.tile_depth_72 == u32::MAX {
+        depth
+    } else {
+        tif.tile_depth_72
+    };
+    if tw == 0 || th == 0 || td == 0 {
+        return 1;
+    }
+    // IDA 0x1b59fc..0x1b5a08.
+    let nx = (tif.dim_52 - 1 + tw) / tw;
+    let ny = (tif.img_dim_56 - 1 + th) / th;
+    if tif.planar_config == 2 {
+        // IDA 0x1b5a14..0x1b5ab4.
+        let base = nx * (y / th) + x / tw + nx * ny * (zz / td);
+        base + ((depth + td - 1) / td) * (u32::from(sample) * nx * ny)
+    } else {
+        // IDA 0x1b5a8c..0x1b5ab4.
+        nx * (y / th) + x / tw + (zz / td) * (nx * ny)
+    }
 }
 
 // 0x1b5ab8 — __TIFFDefaultTileSize
 #[doc(alias = "__TIFFDefaultTileSize")]
-pub fn stub_0x1b5ab8() -> ! {
-    todo!("0x1b5ab8 __TIFFDefaultTileSize")
+// IDA 0x1b5ab8 (decompile): non-positive dims default to 256, then both round
+// up to a multiple of 16; returns the width (libtiff `tif_tile.c`).
+pub fn stub_0x1b5ab8(_tif: &TiffCodec, width: &mut u32, height: &mut u32) -> u32 {
+    // IDA 0x1b5ac0..0x1b5ad4.
+    if (*width as i32) <= 0 {
+        *width = 256;
+    }
+    if (*height as i32) <= 0 {
+        *height = 256;
+    }
+    // IDA 0x1b5ae0..0x1b5afc.
+    if *width & 0xF != 0 {
+        *width = (*width + 15) & 0xFFFF_FFF0;
+    }
+    if *height & 0xF != 0 {
+        *height = (*height + 15) & 0xFFFF_FFF0;
+    }
+    *width
 }
 
 // 0x1b5b04 — _TIFFCheckTile
 #[doc(alias = "_TIFFCheckTile")]
-pub fn stub_0x1b5b04() -> ! {
-    todo!("0x1b5b04 _TIFFCheckTile")
+// IDA 0x1b5b04 (decompile): bounds-checks `(x, y, z, sample)` against the
+// image dims (and samples for separate planes); 1 ok, 0 + diagnostic
+// otherwise — the four C error branches share one outcome, merged here
+// (libtiff `tif_tile.c`).
+pub fn stub_0x1b5b04(tif: &mut TiffCodec, x: u32, y: u32, z: u32, sample: u16) -> i32 {
+    // IDA 0x1b5b28..0x1b5b9c.
+    if tif.dim_52 <= x || tif.img_dim_56 <= y || tif.image_depth_60 <= z {
+        tif.last_error = Some("TIFFCheckTile".to_owned());
+        return 0;
+    }
+    // IDA 0x1b5bb4..0x1b5bbc.
+    if tif.planar_config == 2 && u32::from(tif.samples_per_pixel) <= u32::from(sample) {
+        tif.last_error = Some("TIFFCheckTile".to_owned());
+        return 0;
+    }
+    // IDA 0x1b5be8.
+    1
 }
 
 // 0x1b5bfc — _multiply_2
 #[doc(alias = "_multiply_2")]
-pub fn stub_0x1b5bfc() -> ! {
-    todo!("0x1b5bfc _multiply_2")
+// IDA 0x1b5bfc (decompile; same shape as `_multiply_1`): identical
+// checked-multiply twin for the tile helpers (`MUL` + divide check, hidden
+// `what` string into `"Integer overflow in %s"`); overflow returns 0
+// (libtiff `tif_tile.c` `multiply`).
+pub fn stub_0x1b5bfc(tif: &mut TiffCodec, a: u32, b: u32, what: &str) -> u32 {
+    // IDA 0x1b5c0c..0x1b5c2c.
+    let bytes = a.wrapping_mul(b);
+    if b != 0 && bytes / b != a {
+        tif.last_error = Some(format!("Integer overflow in {what}"));
+        return 0;
+    }
+    bytes
 }
 
 // 0x1b5c5c — _TIFFTileRowSize
 #[doc(alias = "_TIFFTileRowSize")]
-pub fn stub_0x1b5c5c() -> ! {
-    todo!("0x1b5c5c _TIFFTileRowSize")
+// IDA 0x1b5c5c (decompile): `roundup8(tilewidth(+64) * bps)`, times samples
+// for contiguous planes; 0 for empty tile dims (libtiff `tif_tile.c`).
+pub fn stub_0x1b5c5c(tif: &mut TiffCodec) -> u32 {
+    // IDA 0x1b5c64..0x1b5ccc.
+    if tif.tile_dim_68 == 0 || tif.tile_dim_64 == 0 {
+        return 0;
+    }
+    // IDA 0x1b5c90..0x1b5cb4.
+    let mut bits = stub_0x1b5bfc(
+        tif,
+        u32::from(tif.bits_per_sample),
+        tif.tile_dim_64,
+        "TIFFTileRowSize",
+    );
+    if tif.planar_config == 1 {
+        bits = stub_0x1b5bfc(
+            tif,
+            bits,
+            u32::from(tif.samples_per_pixel),
+            "TIFFTileRowSize",
+        );
+    }
+    // IDA 0x1b5cbc..0x1b5cc4.
+    if bits & 7 != 0 {
+        (bits >> 3) + 1
+    } else {
+        bits >> 3
+    }
 }
 
 // 0x1b5cdc — _TIFFNumberOfTiles
 #[doc(alias = "_TIFFNumberOfTiles")]
-pub fn stub_0x1b5cdc() -> ! {
-    todo!("0x1b5cdc _TIFFNumberOfTiles")
+// IDA 0x1b5cdc (decompile): ceil-products of tiles across width/length/depth
+// (`-1` dims default to image dims; empty geometry counts 0), times samples
+// for separate planes (libtiff `tif_tile.c`).
+pub fn stub_0x1b5cdc(tif: &mut TiffCodec) -> u32 {
+    // IDA 0x1b5cec..0x1b5d08.
+    let mut tw = tif.tile_dim_64;
+    let mut th = tif.tile_dim_68;
+    let mut td = tif.tile_depth_72;
+    if tw == u32::MAX {
+        tw = tif.dim_52;
+    }
+    if th == u32::MAX {
+        th = tif.img_dim_56;
+    }
+    if td == u32::MAX {
+        td = tif.image_depth_60;
+    }
+    // IDA 0x1b5d0c..0x1b5d90.
+    let mut n = 0;
+    if tw != 0 && th != 0 && td != 0 {
+        let across = stub_0x1b5bfc(
+            tif,
+            (tif.dim_52 - 1 + tw) / tw,
+            (tif.img_dim_56 - 1 + th) / th,
+            "TIFFNumberOfTiles",
+        );
+        n = stub_0x1b5bfc(
+            tif,
+            across,
+            (tif.image_depth_60 - 1 + td) / td,
+            "TIFFNumberOfTiles",
+        );
+    }
+    // IDA 0x1b5da4..0x1b5dc4.
+    if tif.planar_config == 2 {
+        n = stub_0x1b5bfc(
+            tif,
+            n,
+            u32::from(tif.samples_per_pixel),
+            "TIFFNumberOfTiles",
+        );
+    }
+    n
 }
 
 // 0x1b5dd8 — _TIFFVTileSize
 #[doc(alias = "_TIFFVTileSize")]
-pub fn stub_0x1b5dd8() -> ! {
-    todo!("0x1b5dd8 _TIFFVTileSize")
+// IDA 0x1b5dd8 (decompile): `rows` tile rows cost `rows * TileRowSize *
+// tiledepth` on the plain path; the YCbCr path scales whole subsampling
+// blocks like `TIFFVStripSize` (plain `+` at IDA `0x1b5f18`, not `summarize`)
+// (libtiff `tif_tile.c`).
+pub fn stub_0x1b5dd8(tif: &mut TiffCodec, rows: u32) -> u32 {
+    // IDA 0x1b5de4..0x1b5e08.
+    if tif.tile_dim_68 == 0 || tif.tile_dim_64 == 0 || tif.tile_depth_72 == 0 {
+        return 0;
+    }
+    // IDA 0x1b5e0c..0x1b5e28.
+    if tif.planar_config == 1
+        && tif.photometric_86 == PHOTOMETRIC_YCBCR
+        && tif.flags & TIFF_FLAG_NOBITREV_4000 == 0
+    {
+        // IDA 0x1b5e44..0x1b5eac (`TIFFGetField` 530 → subsampling fields;
+        // like the C, the block math below divides by `h`, so a zero `h`
+        // traps the same class of fault as the original SIGFPE).
+        let h = u32::from(tif.ycbcr_subsampling_196);
+        let v = u32::from(tif.ycbcr_subsampling_198);
+        let cells = h * ((tif.tile_dim_64 - 1 + h) / h);
+        let bits = stub_0x1b5bfc(
+            tif,
+            cells,
+            u32::from(tif.bits_per_sample),
+            "TIFFVTileSize",
+        );
+        let row_bytes = if bits & 7 != 0 {
+            (bits >> 3) + 1
+        } else {
+            bits >> 3
+        };
+        let hv = h * v;
+        if hv == 0 {
+            tif.last_error = Some("Invalid YCbCr subsampling".to_owned());
+            return 0;
+        }
+        // IDA 0x1b5efc..0x1b5f5c.
+        let blocks = stub_0x1b5bfc(
+            tif,
+            v * ((v - 1 + rows) / v),
+            row_bytes,
+            "TIFFVTileSize",
+        );
+        let total = stub_0x1b5bfc(tif, 2, blocks / hv, "TIFFVTileSize") + blocks;
+        return stub_0x1b5bfc(tif, total, tif.tile_depth_72, "TIFFVTileSize");
+    }
+    // IDA 0x1b5f24..0x1b5f3c.
+    let row = stub_0x1b5c5c(tif);
+    let sized = stub_0x1b5bfc(tif, rows, row, "TIFFVTileSize");
+    stub_0x1b5bfc(tif, sized, tif.tile_depth_72, "TIFFVTileSize")
 }
 
 // 0x1b5f84 — _TIFFTileSize
 #[doc(alias = "_TIFFTileSize")]
-pub fn stub_0x1b5f84() -> ! {
-    todo!("0x1b5f84 _TIFFTileSize")
+// IDA 0x1b5f84 (decompile): `VTileSize(tilelength)` (libtiff `tif_tile.c`).
+pub fn stub_0x1b5f84(tif: &mut TiffCodec) -> u32 {
+    stub_0x1b5dd8(tif, tif.tile_dim_68)
 }
 
 // 0x1b5f8c — _TIFFWarningExt
 // type: _DWORD (__fastcall **(int, char *, const char *, ...))(const char *, const char *, void *)
 #[doc(alias = "_TIFFWarningExt")]
-pub fn stub_0x1b5f8c() -> ! {
-    todo!("0x1b5f8c _TIFFWarningExt")
+// IDA 0x1b5f8c (decompile): formats into the global `_TIFFwarningHandler` /
+// `_TIFFwarningHandlerExt` chain (IDA `0x1b5fac`..`0x1b5ffc`); the globals
+// live outside this crate, so the port sinks the `module: message` text into
+// `last_warning` like the sibling diagnostic ports.
+pub fn stub_0x1b5f8c(tif: &mut TiffCodec, module: &str, message: &str) {
+    tif.last_warning = Some(format!("{module}: {message}"));
 }
 
 // 0x1b6008 — _TIFFAppendToStrip
@@ -3449,5 +3980,133 @@ mod batch4_tests {
         let mut tif = TiffCodec::default();
         tif.default_strip_size_548 = Some(|_tif| 8192);
         assert_eq!(stub_0x1b48d0(&tif), 8192);
+    }
+}
+
+#[cfg(test)]
+mod batch5_tests {
+    use super::*;
+
+    fn plain_tif() -> TiffCodec {
+        let mut tif = TiffCodec::default();
+        tif.dim_52 = 16;
+        tif.img_dim_56 = 16;
+        tif.bits_per_sample = 8;
+        tif.samples_per_pixel = 1;
+        tif.strip_row_factor_96 = 4;
+        tif.rows_per_strip_168 = 4;
+        tif.tile_dim_64 = 16;
+        tif.tile_dim_68 = 16;
+        tif.image_depth_60 = 1;
+        tif.tile_depth_72 = 1;
+        tif
+    }
+
+    #[test]
+    fn multiply_detects_overflow() {
+        let mut tif = TiffCodec::default();
+        assert_eq!(stub_0x1b4944(&mut tif, 6, 7, "m"), 42);
+        assert!(tif.last_error.is_none());
+        assert_eq!(stub_0x1b4944(&mut tif, u32::MAX, 2, "TIFFScanlineSize"), 0);
+        assert_eq!(
+            tif.last_error.as_deref(),
+            Some("Integer overflow in TIFFScanlineSize")
+        );
+        let mut tif = TiffCodec::default();
+        assert_eq!(stub_0x1b5bfc(&mut tif, 0, u32::MAX, "m"), 0);
+        assert!(tif.last_error.is_none());
+    }
+
+    #[test]
+    fn summarize_adds_and_ignores_what() {
+        let tif = TiffCodec::default();
+        assert_eq!(stub_0x1b4a68(&tif, 40, 2, "TIFFVStripSize"), 42);
+        assert_eq!(stub_0x1b4a68(&tif, u32::MAX, 1, "x"), 0);
+    }
+
+    #[test]
+    fn scanline_and_strip_sizes() {
+        let mut tif = plain_tif();
+        assert_eq!(stub_0x1b49a4(&mut tif), 16);
+        assert_eq!(stub_0x1b4a7c(&mut tif), 16);
+        assert_eq!(stub_0x1b4bb8(&mut tif), 16);
+        assert_eq!(stub_0x1b4a08(&mut tif), 4);
+        assert_eq!(stub_0x1b4dbc(&mut tif, 4), 64);
+        assert_eq!(stub_0x1b4f5c(&mut tif), 64);
+        assert_eq!(stub_0x1b4d80(&mut tif, 0), 0x2000 / 16);
+        assert_eq!(stub_0x1b4d80(&mut tif, 7), 7);
+        // Separate planes double the strip count.
+        tif.planar_config = 2;
+        tif.samples_per_pixel = 3;
+        assert_eq!(stub_0x1b4a08(&mut tif), 12);
+    }
+
+    #[test]
+    fn compute_strip_and_check_tile() {
+        let mut tif = plain_tif();
+        assert_eq!(stub_0x1b48d8(&mut tif, 5, 0), 1);
+        tif.planar_config = 2;
+        tif.samples_per_pixel = 2;
+        assert_eq!(stub_0x1b48d8(&mut tif, 5, 1), 1 + 4);
+        assert_eq!(stub_0x1b48d8(&mut tif, 5, 2), 0);
+        assert!(tif.last_error.is_some());
+        let mut tif = plain_tif();
+        assert_eq!(stub_0x1b5b04(&mut tif, 15, 15, 0, 0), 1);
+        assert_eq!(stub_0x1b5b04(&mut tif, 16, 0, 0, 0), 0);
+        assert_eq!(stub_0x1b596c(&tif, 0, 0, 0, 0), 0);
+    }
+
+    #[test]
+    fn tile_sizes_and_counts() {
+        let mut tif = plain_tif();
+        assert_eq!(stub_0x1b5c5c(&mut tif), 16);
+        assert_eq!(stub_0x1b5dd8(&mut tif, 16), 256);
+        assert_eq!(stub_0x1b5f84(&mut tif), 256);
+        assert_eq!(stub_0x1b5cdc(&mut tif), 1);
+        let mut w = 0u32;
+        let mut h = 20u32;
+        assert_eq!(stub_0x1b5ab8(&tif, &mut w, &mut h), 256);
+        assert_eq!((w, h), (256, 32));
+    }
+
+    #[test]
+    fn swab_round_trips() {
+        let mut w = 0x1234u16;
+        stub_0x1b4f70(&mut w);
+        assert_eq!(w, 0x3412);
+        let mut d = 0x12345678u32;
+        stub_0x1b4f84(&mut d);
+        assert_eq!(d, 0x78563412);
+        let mut buf = vec![1u8, 2, 3, 4];
+        stub_0x1b4fa8(&mut buf);
+        assert_eq!(buf, vec![2u8, 1, 4, 3]);
+        stub_0x1b4fa8(&mut buf);
+        assert_eq!(buf, vec![1u8, 2, 3, 4]);
+        let mut t = vec![1u8, 9, 2];
+        stub_0x1b5118(&mut t);
+        assert_eq!(t, vec![2u8, 9, 1]);
+        let mut l = vec![1u8, 2, 3, 4];
+        stub_0x1b5288(&mut l);
+        assert_eq!(l, vec![4u8, 3, 2, 1]);
+        let mut x = vec![1u8, 2, 3, 4, 5, 6, 7, 8];
+        stub_0x1b5398(&mut x);
+        assert_eq!(x, vec![8u8, 7, 6, 5, 4, 3, 2, 1]);
+    }
+
+    #[test]
+    fn bitrev_table_select_and_reverse() {
+        assert_eq!(stub_0x1b54f8(1)[0x01], 0x80);
+        assert_eq!(stub_0x1b54f8(0)[0x01], 0x01);
+        let mut buf = vec![0x12u8, 0xABu8];
+        stub_0x1b5520(&mut buf);
+        assert_eq!(buf, vec![0x48u8, 0xD5u8]);
+        stub_0x1b5520(&mut buf);
+        assert_eq!(buf, vec![0x12u8, 0xABu8]);
+        let mut tif = TiffCodec::default();
+        stub_0x1b5f8c(&mut tif, "TIFFReadDirectory", "bogus tag");
+        assert_eq!(
+            tif.last_warning.as_deref(),
+            Some("TIFFReadDirectory: bogus tag")
+        );
     }
 }
