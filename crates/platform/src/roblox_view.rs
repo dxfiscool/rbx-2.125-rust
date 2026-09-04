@@ -3471,3 +3471,416 @@ impl PlaceLauncher {
         *self.current_part_count.lock() = parts;
     }
 }
+
+// Teleporter + teleportImpl bind rows (IDA 0x33548..0x35438) + page-teleport
+// thread rows (IDA 0x2ce2c..0x2e284). `SharedPtr` is `rbx_core::SharedPtr`
+// (`Arc`), never `boost::shared_ptr`; `boost::bind` targets become
+// [`TeleportArgs`]/[`PageTeleportArgs`] rows, the page-teleport
+// `boost::thread` a detached `std::thread`.
+
+/// `bind(teleportImpl, launcher, place, auth, script)` argument quad: the
+/// `boost::bind_t<void,void (*)(PlaceLauncher *,std::string × 3)>` behind
+/// `Teleporter::doTeleport` (IDA 0x33924). Owned strings: the original's
+/// `std::string` copies are moves here.
+#[derive(Debug, Clone, Default)]
+pub struct TeleportArgs {
+    pub launcher: Option<ObjCId>,
+    pub place: String,
+    pub auth: String,
+    pub script: String,
+}
+
+/// `boost::function<void()>` holding the teleport quad (IDA 0x342f4/0x345b0);
+/// the call operator takes no argument (everything is bound).
+#[derive(Debug, Clone, Default)]
+pub struct TeleportCallback {
+    pub args: TeleportArgs,
+}
+
+/// `bind(pageTeleport, s0, s1, s2, controller, game)` 5-tuple: the
+/// `boost::bind_t<void,void (*)(std::string × 3,NSObject *,SharedPtr<Game>)>`
+/// behind the page-teleport `boost::thread` (IDA 0x2ce2c).
+#[derive(Debug, Clone, Default)]
+pub struct PageTeleportArgs {
+    pub first: String,
+    pub second: String,
+    pub third: String,
+    pub controller: Option<ObjCId>,
+    pub game: Option<u32>,
+}
+
+/// Minimal `Teleporter` counterpart (IDA 0x33548..0x33920): the bound
+/// `PlaceLauncher` (this+1) and the `FunctionMarshaller` submit target
+/// (this+2) read by `doTeleport`, plus submit/drop counters. The live
+/// marshaller queue lives out of slice; `submits`/`last_submitted` record
+/// the `Submit` + `clear` flow.
+#[derive(Debug, Default)]
+pub struct Teleporter {
+    launcher: parking_lot::Mutex<ObjCId>,
+    marshaller: parking_lot::Mutex<ObjCId>,
+    submits: AtomicU32,
+    dropped: AtomicBool,
+    last_submitted: parking_lot::Mutex<Option<TeleportArgs>>,
+}
+
+impl Teleporter {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    // 0x33548 — __ZN10TeleporterD1Ev
+    // type: void __fastcall(Teleporter *__hidden this)
+    // IDA 0x33548
+    #[doc(alias = "Teleporter::~Teleporter()")]
+    #[doc = "Teleporter::~Teleporter()"]
+    pub fn drop_teleporter(&self) {
+        // Non-deleting dtor: body is empty, members are trivially released
+        // (IDA 0x33548); `std::string`/slot drops are Rust drops.
+        self.dropped.store(true, Ordering::SeqCst);
+    }
+
+    // 0x3354c — __ZN10TeleporterD0Ev
+    // type: void __fastcall(Teleporter *__hidden this)
+    // IDA 0x3354c
+    #[doc(alias = "Teleporter::~Teleporter()")]
+    #[doc = "Teleporter::~Teleporter()"]
+    pub fn delete_teleporter(&self) {
+        // Deleting dtor: same member release plus `operator delete`
+        // (IDA 0x3354c); the free is the `Arc` drop here.
+        self.drop_teleporter();
+    }
+
+    // 0x33550 — __ZN10Teleporter10doTeleportERKSsS1_S1_
+    // type: _DWORD __fastcall(Teleporter *__hidden this, const std::string *, const std::string *, const std::string *)
+    // IDA 0x33550
+    #[doc(alias = "Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")]
+    #[doc = "Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)"]
+    pub fn do_teleport(&self, place: &str, auth: &str, script: &str) -> bool {
+        // Copies the three strings (IDA 0x3357a..0x335be; moves here).
+        let launcher = *self.launcher.lock();
+        let args = bind_teleport_impl(launcher, place, auth, script);
+        // Binds `teleportImpl(launcher, s0, s1, s2)` into `function0<void>`
+        // (IDA 0x335e0..0x335ec).
+        let callback = wrap_teleport_callback(args.clone());
+        // `FunctionMarshaller::Submit(marshaller, fn)` then `clear`
+        // (IDA 0x335f8..0x33602); the queue runs out of slice, so the submit
+        // is recorded and the callback dropped (the six `_M_destroy` tails,
+        // IDA 0x33614..0x33758, are Rust drops).
+        *self.last_submitted.lock() = Some(callback.args);
+        self.submits.fetch_add(1, Ordering::SeqCst);
+        true
+    }
+
+    // 0x33920 — __ZNK10Teleporter17isTeleportEnabledEv
+    // type: _DWORD __fastcall(Teleporter *__hidden this)
+    // IDA 0x33920
+    #[doc(alias = "Teleporter::isTeleportEnabled(void)const")]
+    #[doc = "Teleporter::isTeleportEnabled(void)const"]
+    pub fn is_teleport_enabled(&self) -> bool {
+        // `return 1` (IDA 0x33922).
+        true
+    }
+
+    pub fn set_launcher(&self, launcher: ObjCId) {
+        *self.launcher.lock() = launcher;
+    }
+    pub fn set_marshaller(&self, marshaller: ObjCId) {
+        *self.marshaller.lock() = marshaller;
+    }
+    pub fn submits(&self) -> u32 {
+        self.submits.load(Ordering::SeqCst)
+    }
+    pub fn last_submitted(&self) -> Option<TeleportArgs> {
+        self.last_submitted.lock().clone()
+    }
+}
+
+// 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
+// type: int __fastcall(int, int, int, std::string *, std::string *, std::string *)
+// IDA 0x33924
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")]
+pub fn bind_teleport_impl(
+    launcher: ObjCId,
+    place: &str,
+    auth: &str,
+    script: &str,
+) -> TeleportArgs {
+    // Copies the three strings into the `list4` store and captures
+    // `(teleportImpl, launcher, s0, s1, s2)` into the `bind_t`
+    // (IDA 0x33924..0x33b3c); the closure captures the same quad.
+    build_teleport_storage(launcher, place, auth, script)
+}
+
+// 0x33d00 — __ZN10Teleporter12teleportImplEP13PlaceLauncherSsSsSs
+// IDA 0x33d00
+#[doc(alias = "Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)")]
+#[doc = "Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)"]
+pub fn teleport_impl(launcher: &PlaceLauncher, place: &str, auth: &str, script: &str) {
+    // Each `std::string` becomes an `NSString` via
+    // `stringWithCString:defaultCStringEncoding` (IDA 0x33d24..0x33d8a);
+    // owned `String`s are the conversion here.
+    let place_ns = place.to_owned();
+    let auth_ns = auth.to_owned();
+    let script_ns = script.to_owned();
+    // BUG: original forwards a3 as `place` and a2 as `auth`
+    // (`teleport:v9 withAuthentication:v14 withScript:v12` with v9 from a3,
+    // v14 from a2, IDA 0x33dac); preserved. No controller flows through this
+    // path, so `nil` (`NIL_ID`) is passed.
+    launcher.teleport(&auth_ns, &place_ns, &script_ns, NIL_ID);
+}
+
+// 0x33db0 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
+// type: int __fastcall(int, int, std::string *, int, std::string *)
+// IDA 0x33db0
+#[doc(alias = "boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn build_teleport_list(
+    launcher: ObjCId,
+    place: &str,
+    auth: &str,
+    script: &str,
+) -> TeleportArgs {
+    // `list4` value-quad ctor (IDA 0x33db0).
+    TeleportArgs {
+        launcher: Some(launcher),
+        place: place.to_owned(),
+        auth: auth.to_owned(),
+        script: script.to_owned(),
+    }
+}
+
+// 0x33fe0 — __ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
+// type: int __fastcall(int, int, std::string *, int, std::string *)
+// IDA 0x33fe0
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn build_teleport_storage(
+    launcher: ObjCId,
+    place: &str,
+    auth: &str,
+    script: &str,
+) -> TeleportArgs {
+    // `storage4` wraps the same quad (IDA 0x33fe0).
+    build_teleport_list(launcher, place, auth, script)
+}
+
+// 0x341ac — __ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_
+// type: int __fastcall(int, int, std::string *)
+// IDA 0x341ac
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn build_teleport_prefix(launcher: ObjCId, first: &str, second: &str) -> TeleportArgs {
+    // Three-element intermediate (`launcher` + two strings, IDA 0x341ac);
+    // the trailing `script` slot binds later, so it stays empty.
+    TeleportArgs {
+        launcher: Some(launcher),
+        place: first.to_owned(),
+        auth: second.to_owned(),
+        script: String::new(),
+    }
+}
+
+// 0x342f4 — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE
+// type: int(void)
+// IDA 0x342f4
+#[doc(alias = "__ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")]
+pub fn wrap_teleport_callback(args: TeleportArgs) -> TeleportCallback {
+    // `function<void()>` ctor from the quad bind (IDA 0x342f4; copies the
+    // three strings, IDA 0x34328..0x34372, then chains into `function0`,
+    // IDA 0x34384); the invocable holds the quad.
+    TeleportCallback { args }
+}
+
+// 0x345b0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE
+// type: int(void)
+// IDA 0x345b0
+#[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")]
+pub fn wrap_teleport_callback0(args: TeleportArgs) -> TeleportCallback {
+    // `function0` ctor, same capture (IDA 0x345b0).
+    TeleportCallback { args }
+}
+
+// 0x34870 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEEvT_
+// type: int(void)
+// IDA 0x34870
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>)")]
+pub fn assign_teleport_callback(slot: &mut Option<TeleportCallback>, args: TeleportArgs) {
+    // Stores the quad functor into the `function0` buffer (IDA 0x34870).
+    *slot = Some(TeleportCallback { args });
+}
+
+// 0x34b40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
+// IDA 0x34b40
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn manage_teleport_fn(op: FunctorOp, slot: &mut Option<TeleportArgs>) -> bool {
+    // Clone/destroy over the teleport quad (IDA 0x34b40).
+    manage_boxed_slot(op, slot)
+}
+
+// 0x34b5c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEvE6invokeERNS1_15function_bufferE
+// IDA 0x34b5c
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+pub fn invoke_teleport_fn(launcher: &PlaceLauncher, args: &TeleportArgs) {
+    // Tail-calls `list4::operator()` (IDA 0x34b6e).
+    apply_teleport_list(launcher, args);
+}
+
+// 0x34b70 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE
+// type: int(void)
+// IDA 0x34b70
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+pub fn vtable_assign_teleport_fn(slot: &mut Option<TeleportCallback>, args: TeleportArgs) -> bool {
+    // `basic_vtable0::assign_to` without tag: stores and reports success
+    // (IDA 0x34b70).
+    *slot = Some(TeleportCallback { args });
+    true
+}
+
+// 0x34e30 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int)
+// IDA 0x34e30
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn vtable_assign_tagged_teleport_fn(
+    slot: &mut Option<TeleportCallback>,
+    args: TeleportArgs,
+) -> bool {
+    // Tagged `assign_to` overload: same store-and-true (IDA 0x34e30).
+    *slot = Some(TeleportCallback { args });
+    true
+}
+
+// 0x350ec — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+// IDA 0x350ec
+#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn vtable_assign_functor_teleport_fn(slot: &mut Option<TeleportCallback>, args: TeleportArgs) {
+    // Small-object (`mpl::false_`) functor assign: same store (IDA 0x350ec).
+    *slot = Some(TeleportCallback { args });
+}
+
+// 0x35200 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int(void)
+// IDA 0x35200
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")]
+pub fn apply_teleport_list(launcher: &PlaceLauncher, args: &TeleportArgs) {
+    // Copies the three bound strings (IDA 0x35230..0x35276), calls
+    // `teleportImpl(launcher, s0, s1, s2)` (IDA 0x35288), then destroys the
+    // copies (IDA 0x35298..0x35342; Rust drops).
+    teleport_impl(launcher, &args.place.clone(), &args.auth.clone(), &args.script.clone());
+}
+
+// 0x35438 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+// IDA 0x35438
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn manager_small_teleport_fn(op: FunctorOp, slot: &mut Option<TeleportArgs>) -> bool {
+    // Small-object (`mpl::false_`) manager: same clone/destroy (IDA 0x35438).
+    manage_boxed_slot(op, slot)
+}
+
+/// `boost::detail::thread_data` backing the page-teleport `boost::thread`
+/// (IDA 0x2dfac..0x2e284): the copied 5-tuple plus spawn/run counters. The
+/// thread itself is a detached `std::thread`, never `boost::thread`.
+#[derive(Debug, Default)]
+pub struct PageTeleportState {
+    spawns: AtomicU32,
+    runs: AtomicU32,
+    last: parking_lot::Mutex<Option<PageTeleportArgs>>,
+}
+
+pub fn shared_page_teleport_state() -> &'static PageTeleportState {
+    static STATE: std::sync::LazyLock<PageTeleportState> =
+        std::sync::LazyLock::new(PageTeleportState::new);
+    &STATE
+}
+
+impl PageTeleportState {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    // 0x2dc24 — __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_
+    // IDA 0x2dc24
+    #[doc(alias = "boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>> &&)")]
+    #[doc = "boost::thread::thread<boost::bind page-teleport 5-tuple>"]
+    pub fn spawn_thread(&'static self, args: PageTeleportArgs) -> bool {
+        // Copies the bind into the heap `thread_data` (IDA 0x2dc48..0x2dcd2;
+        // `operator new(0x160)` + `thread_data` ctor), links the shared count
+        // (IDA 0x2dcea..0x2dd04), then `start_thread` (IDA 0x2dd44).
+        let data = build_page_teleport_data(&args);
+        self.spawns.fetch_add(1, Ordering::SeqCst);
+        std::thread::spawn(move || {
+            run_page_teleport(self, &data);
+        });
+        true
+    }
+
+    pub fn spawns(&self) -> u32 {
+        self.spawns.load(Ordering::SeqCst)
+    }
+    pub fn runs(&self) -> u32 {
+        self.runs.load(Ordering::SeqCst)
+    }
+    pub fn last(&self) -> Option<PageTeleportArgs> {
+        self.last.lock().clone()
+    }
+}
+
+// 0x2ce2c — __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
+// type: int __fastcall(int, int, std::string *, int, std::string *, int, int)
+// IDA 0x2ce2c
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>)")]
+pub fn bind_page_teleport(
+    first: &str,
+    second: &str,
+    third: &str,
+    controller: ObjCId,
+    game: u32,
+) -> PageTeleportArgs {
+    // Captures `(pageTeleport, s0, s1, s2, controller, game)` into the
+    // 5-tuple bind (IDA 0x2ce2c).
+    PageTeleportArgs {
+        first: first.to_owned(),
+        second: second.to_owned(),
+        third: third.to_owned(),
+        controller: Some(controller),
+        game: Some(game),
+    }
+}
+
+// 0x2dfac — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEC2EOSK_
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+// IDA 0x2dfac
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>&&)")]
+pub fn build_page_teleport_data(args: &PageTeleportArgs) -> PageTeleportArgs {
+    // `thread_data` move-ctor: copies the fn pointer, the three strings, the
+    // controller, and the game shared count out of the bind (IDA 0x2dfac).
+    args.clone()
+}
+
+// 0x2e0f4 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED1Ev
+// IDA 0x2e0f4
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()")]
+pub fn drop_page_teleport_data(args: &PageTeleportArgs) {
+    // Non-deleting dtor: releases the strings + game shared count
+    // (IDA 0x2e0f4); Rust drops run at scope end.
+    let _ = args;
+}
+
+// 0x2e1bc — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED0Ev
+// IDA 0x2e1bc
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()")]
+pub fn delete_page_teleport_data(args: &PageTeleportArgs) {
+    // Deleting dtor: same release plus `operator delete` (IDA 0x2e1bc); the
+    // free is the owner drop here.
+    drop_page_teleport_data(args);
+}
+
+// 0x2e284 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEE3runEv
+// IDA 0x2e284
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::run(void)")]
+pub fn run_page_teleport(state: &PageTeleportState, args: &PageTeleportArgs) -> bool {
+    // `run` invokes `list5::operator()` at `this + 328` (IDA 0x2e29c): the
+    // bound page-teleport fn with `(s0, s1, s2, controller, game)`. The
+    // callee lives out of slice; the dispatch is recorded.
+    *state.last.lock() = Some(args.clone());
+    state.runs.fetch_add(1, Ordering::SeqCst);
+    true
+}
