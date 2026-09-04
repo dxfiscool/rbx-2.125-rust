@@ -1849,6 +1849,18 @@ pub struct LoginViewController {
     segue_preparations: std::sync::atomic::AtomicU32,
     webview_cache_fetches: std::sync::atomic::AtomicU32,
     last_segue_url: parking_lot::Mutex<String>,
+    // Batch 3 (IDA 0x20060..0x202ac): remaining outlet ids.
+    remember_pw_label: parking_lot::Mutex<ObjCId>,
+    login_label: parking_lot::Mutex<ObjCId>,
+    signup_label: parking_lot::Mutex<ObjCId>,
+    swi_remember_outlet: parking_lot::Mutex<ObjCId>,
+    scroll_view: parking_lot::Mutex<ObjCId>,
+    img_username_password_background: parking_lot::Mutex<ObjCId>,
+    login_field_views: parking_lot::Mutex<ObjCId>,
+    login_activity_indicator: parking_lot::Mutex<ObjCId>,
+    about_button: parking_lot::Mutex<ObjCId>,
+    play_now_label: parking_lot::Mutex<ObjCId>,
+    version_label: parking_lot::Mutex<ObjCId>,
 }
 
 impl LoginViewController {
@@ -2698,6 +2710,323 @@ impl LoginViewController {
     pub fn set_environment_picker(&self, picker: ObjCId) {
         // Retained `_EnvironmentPicker` ivar store (IDA 0x2003c).
         *self.environment_picker.lock() = picker;
+    }
+    // 0x20060 — -[LoginViewController rememberPwLabel]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20060
+    #[doc(alias = "-[LoginViewController rememberPwLabel]")]
+    #[doc = "-[LoginViewController rememberPwLabel]"]
+    pub fn remember_pw_label(&self) -> ObjCId {
+        // Five-instruction ivar load (IDA 0x20060..0x2006e, verified via disasm).
+        *self.remember_pw_label.lock()
+    }
+    // 0x20070 — -[LoginViewController setRememberPwLabel:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20070
+    #[doc(alias = "-[LoginViewController setRememberPwLabel:]")]
+    #[doc = "-[LoginViewController setRememberPwLabel:]"]
+    pub fn set_remember_pw_label(&self, label: ObjCId) {
+        // Retained `_rememberPwLabel` ivar store.
+        *self.remember_pw_label.lock() = label;
+    }
+    // 0x20094 — -[LoginViewController loginLabel]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20094
+    #[doc(alias = "-[LoginViewController loginLabel]")]
+    #[doc = "-[LoginViewController loginLabel]"]
+    pub fn login_label(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.login_label.lock()
+    }
+    // 0x200a4 — -[LoginViewController setLoginLabel:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x200a4
+    #[doc(alias = "-[LoginViewController setLoginLabel:]")]
+    #[doc = "-[LoginViewController setLoginLabel:]"]
+    pub fn set_login_label(&self, label: ObjCId) {
+        // Retained `_loginLabel` ivar store.
+        *self.login_label.lock() = label;
+    }
+    // 0x200c8 — -[LoginViewController signupLabel]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x200c8
+    #[doc(alias = "-[LoginViewController signupLabel]")]
+    #[doc = "-[LoginViewController signupLabel]"]
+    pub fn signup_label(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.signup_label.lock()
+    }
+    // 0x200d8 — -[LoginViewController setSignupLabel:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x200d8
+    #[doc(alias = "-[LoginViewController setSignupLabel:]")]
+    #[doc = "-[LoginViewController setSignupLabel:]"]
+    pub fn set_signup_label(&self, label: ObjCId) {
+        // Retained `_signupLabel` ivar store.
+        *self.signup_label.lock() = label;
+    }
+    // 0x200fc — -[LoginViewController swiRememberMyPassword]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x200fc
+    #[doc(alias = "-[LoginViewController swiRememberMyPassword]")]
+    #[doc = "-[LoginViewController swiRememberMyPassword]"]
+    pub fn swi_remember_my_password(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.swi_remember_outlet.lock()
+    }
+    // 0x2010c — -[LoginViewController setSwiRememberMyPassword:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x2010c
+    #[doc(alias = "-[LoginViewController setSwiRememberMyPassword:]")]
+    #[doc = "-[LoginViewController setSwiRememberMyPassword:]"]
+    pub fn set_swi_remember_my_password(&self, swi: ObjCId) {
+        // Retained `_swiRememberMyPassword` ivar store.
+        *self.swi_remember_outlet.lock() = swi;
+    }
+    // 0x20130 — -[LoginViewController scrollView]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20130
+    #[doc(alias = "-[LoginViewController scrollView]")]
+    #[doc = "-[LoginViewController scrollView]"]
+    pub fn scroll_view(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.scroll_view.lock()
+    }
+    // 0x20140 — -[LoginViewController setScrollView:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20140
+    #[doc(alias = "-[LoginViewController setScrollView:]")]
+    #[doc = "-[LoginViewController setScrollView:]"]
+    pub fn set_scroll_view(&self, view: ObjCId) {
+        // Retained `_scrollView` ivar store.
+        *self.scroll_view.lock() = view;
+    }
+    // 0x20164 — -[LoginViewController imgUsernamePasswordBackground]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20164
+    #[doc(alias = "-[LoginViewController imgUsernamePasswordBackground]")]
+    #[doc = "-[LoginViewController imgUsernamePasswordBackground]"]
+    pub fn img_username_password_background(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.img_username_password_background.lock()
+    }
+    // 0x20174 — -[LoginViewController setImgUsernamePasswordBackground:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20174
+    #[doc(alias = "-[LoginViewController setImgUsernamePasswordBackground:]")]
+    #[doc = "-[LoginViewController setImgUsernamePasswordBackground:]"]
+    pub fn set_img_username_password_background(&self, view: ObjCId) {
+        // Retained `_imgUsernamePasswordBackground` ivar store.
+        *self.img_username_password_background.lock() = view;
+    }
+    // 0x201cc — -[LoginViewController loginFieldViews]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x201cc
+    #[doc(alias = "-[LoginViewController loginFieldViews]")]
+    #[doc = "-[LoginViewController loginFieldViews]"]
+    pub fn login_field_views(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.login_field_views.lock()
+    }
+    // 0x201dc — -[LoginViewController setLoginFieldViews:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x201dc
+    #[doc(alias = "-[LoginViewController setLoginFieldViews:]")]
+    #[doc = "-[LoginViewController setLoginFieldViews:]"]
+    pub fn set_login_field_views(&self, views: ObjCId) {
+        // Retained `_loginFieldViews` ivar store.
+        *self.login_field_views.lock() = views;
+    }
+    // 0x20200 — -[LoginViewController loginActivityIndicator]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20200
+    #[doc(alias = "-[LoginViewController loginActivityIndicator]")]
+    #[doc = "-[LoginViewController loginActivityIndicator]"]
+    pub fn login_activity_indicator(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.login_activity_indicator.lock()
+    }
+    // 0x20210 — -[LoginViewController setLoginActivityIndicator:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20210
+    #[doc(alias = "-[LoginViewController setLoginActivityIndicator:]")]
+    #[doc = "-[LoginViewController setLoginActivityIndicator:]"]
+    pub fn set_login_activity_indicator(&self, indicator: ObjCId) {
+        // Retained `_loginActivityIndicator` ivar store.
+        *self.login_activity_indicator.lock() = indicator;
+    }
+    // 0x20234 — -[LoginViewController aboutButton]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20234
+    #[doc(alias = "-[LoginViewController aboutButton]")]
+    #[doc = "-[LoginViewController aboutButton]"]
+    pub fn about_button(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.about_button.lock()
+    }
+    // 0x20244 — -[LoginViewController setAboutButton:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20244
+    #[doc(alias = "-[LoginViewController setAboutButton:]")]
+    #[doc = "-[LoginViewController setAboutButton:]"]
+    pub fn set_about_button(&self, button: ObjCId) {
+        // Retained `_aboutButton` ivar store.
+        *self.about_button.lock() = button;
+    }
+    // 0x20268 — -[LoginViewController playNowLabel]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x20268
+    #[doc(alias = "-[LoginViewController playNowLabel]")]
+    #[doc = "-[LoginViewController playNowLabel]"]
+    pub fn play_now_label(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.play_now_label.lock()
+    }
+    // 0x20278 — -[LoginViewController setPlayNowLabel:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x20278
+    #[doc(alias = "-[LoginViewController setPlayNowLabel:]")]
+    #[doc = "-[LoginViewController setPlayNowLabel:]"]
+    pub fn set_play_now_label(&self, label: ObjCId) {
+        // Retained `_playNowLabel` ivar store.
+        *self.play_now_label.lock() = label;
+    }
+    // 0x2029c — -[LoginViewController versionLabel]
+    // type: id __cdecl(LoginViewController *self, SEL)
+    // IDA 0x2029c
+    #[doc(alias = "-[LoginViewController versionLabel]")]
+    #[doc = "-[LoginViewController versionLabel]"]
+    pub fn version_label(&self) -> ObjCId {
+        // Five-instruction ivar load (same pattern as IDA 0x20060).
+        *self.version_label.lock()
+    }
+    // 0x202ac — -[LoginViewController setVersionLabel:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x202ac
+    #[doc(alias = "-[LoginViewController setVersionLabel:]")]
+    #[doc = "-[LoginViewController setVersionLabel:]"]
+    pub fn set_version_label(&self, label: ObjCId) {
+        // Retained `_versionLabel` ivar store.
+        *self.version_label.lock() = label;
+    }
+}
+/// Minimal `AboutController` counterpart (IDA 0x20468..0x20cb4): the
+/// `RobloxPageViewController` page behind the About screen. UIKit outlets
+/// live out of slice; the `window` rect, agreement-load flow, and label
+/// contents are recorded.
+#[derive(Debug, Default)]
+pub struct AboutController {
+    window_rect: parking_lot::Mutex<(f64, f64, f64, f64)>,
+    did_init: std::sync::atomic::AtomicBool,
+    outlet_releases: std::sync::atomic::AtomicU32,
+    agreement_hidden: std::sync::atomic::AtomicBool,
+    agreement_scroll_disabled: std::sync::atomic::AtomicBool,
+    agreement_loads: std::sync::atomic::AtomicU32,
+    version_text: parking_lot::Mutex<String>,
+    domain_text: parking_lot::Mutex<String>,
+    legal_text_key: parking_lot::Mutex<&'static str>,
+    appear_count: std::sync::atomic::AtomicU32,
+    applied_bounds: parking_lot::Mutex<(f64, f64, f64, f64)>,
+}
+impl AboutController {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn shared_instance() -> &'static Self {
+        static CONTROLLER: std::sync::LazyLock<AboutController> =
+            std::sync::LazyLock::new(AboutController::default);
+        &CONTROLLER
+    }
+    // 0x20468 — -[AboutController initWithCoder:]
+    // type: AboutController *__cdecl(AboutController *self, SEL, id)
+    // IDA 0x20468
+    #[doc(alias = "-[AboutController initWithCoder:]")]
+    #[doc = "-[AboutController initWithCoder:]"]
+    pub fn init_with_coder(&self, coder: ObjCId, idiom_is_pad: Option<bool>, screen_bounds: (f64, f64, f64, f64)) {
+        // Super `initWithCoder:` (out of slice, IDA 0x20486..0x20494);
+        // `coder` only forwards to super. iPad (`userInterfaceIdiom != 0`,
+        // IDA 0x204b6..0x20512) fixes `window` to (0,0,540,508); otherwise
+        // the main-screen bounds land in `window` (IDA 0x20526..0x2056c),
+        // zero when the screen is nil (IDA 0x20564).
+        let _ = coder;
+        let rect = match idiom_is_pad {
+            Some(true) => (0.0, 0.0, 540.0, 508.0),
+            _ => screen_bounds,
+        };
+        *self.window_rect.lock() = rect;
+        self.did_init.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn window_rect(&self) -> (f64, f64, f64, f64) {
+        *self.window_rect.lock()
+    }
+    pub fn did_init(&self) -> bool {
+        self.did_init.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x2057c — -[AboutController dealloc]
+    // type: void __cdecl(AboutController *self, SEL)
+    // IDA 0x2057c
+    #[doc(alias = "-[AboutController dealloc]")]
+    #[doc = "-[AboutController dealloc]"]
+    pub fn dealloc_outlets(&self) {
+        // Seven retained-outlet `release` sends (IDA 0x205a0..0x20618),
+        // then super `dealloc` (out of slice, IDA 0x20630..0x2063a).
+        self.outlet_releases.fetch_add(7, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn outlet_release_count(&self) -> u32 {
+        self.outlet_releases.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x20644 — -[AboutController viewDidLoad]
+    // type: void __cdecl(AboutController *self, SEL)
+    // IDA 0x20644
+    #[doc(alias = "-[AboutController viewDidLoad]")]
+    #[doc = "-[AboutController viewDidLoad]"]
+    pub fn view_did_load(&self, agreements_html: Option<&str>, version: &str, tablet: bool, base_url: &str) {
+        // Super `viewDidLoad` (out of slice, IDA 0x20664..0x2066e); the
+        // agreement web view hides and disables scrolling (IDA 0x2068e..0x206ce),
+        // then loads the localized Agreements.html when present
+        // (IDA 0x206f2..0x208a2, Terms/Licensing/Privacy/`and` substitutions
+        // out of slice). The version label takes `CFBundleVersion`
+        // (IDA 0x208b8..0x208ee), the domain label takes `RbxBaseUrl` on
+        // tablet else `RbxBaseMobileUrl` (IDA 0x2090e..0x20954); titles come
+        // from the About/Close/ClearCookies/LegalText keys
+        // (IDA 0x2096c..0x20a6e).
+        self.agreement_hidden.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.agreement_scroll_disabled.store(true, std::sync::atomic::Ordering::SeqCst);
+        if agreements_html.is_some() {
+            self.agreement_loads.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        *self.version_text.lock() = version.to_owned();
+        let _ = tablet;
+        *self.domain_text.lock() = base_url.to_owned();
+        *self.legal_text_key.lock() = "LegalText";
+    }
+    pub fn agreement_load_count(&self) -> u32 {
+        self.agreement_loads.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn version_text(&self) -> String {
+        self.version_text.lock().clone()
+    }
+    pub fn domain_text(&self) -> String {
+        self.domain_text.lock().clone()
+    }
+    // 0x20a7c — -[AboutController viewWillAppear:]
+    // type: void __cdecl(AboutController *self, SEL, char)
+    // IDA 0x20a7c
+    #[doc(alias = "-[AboutController viewWillAppear:]")]
+    #[doc = "-[AboutController viewWillAppear:]"]
+    pub fn view_will_appear(&self, animated: bool) {
+        // Super `viewWillAppear:` (out of slice, IDA 0x20a9c..0x20aa6), then
+        // the superview bounds take the `window` rect captured at init
+        // (IDA 0x20ab8..0x20af4).
+        let _ = animated;
+        *self.applied_bounds.lock() = self.window_rect();
+        self.appear_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn appear_count(&self) -> u32 {
+        self.appear_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn applied_bounds(&self) -> (f64, f64, f64, f64) {
+        *self.applied_bounds.lock()
     }
 }
 

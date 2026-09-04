@@ -5062,162 +5062,185 @@ pub fn stub_2003c(picker: crate::view_controllers::ObjCId) {
 // 0x20060 — -[LoginViewController rememberPwLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController rememberPwLabel]")]
-pub fn stub_20060() -> ! {
-    todo!("0x20060 -[LoginViewController rememberPwLabel]")
+pub fn stub_20060() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20060)
+    crate::view_controllers::LoginViewController::shared_instance().remember_pw_label()
 }
 
 // 0x20070 — -[LoginViewController setRememberPwLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRememberPwLabel:]")]
-pub fn stub_20070() -> ! {
-    todo!("0x20070 -[LoginViewController setRememberPwLabel:]")
+pub fn stub_20070(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20070)
+    crate::view_controllers::LoginViewController::shared_instance().set_remember_pw_label(label);
 }
 
 // 0x20094 — -[LoginViewController loginLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginLabel]")]
-pub fn stub_20094() -> ! {
-    todo!("0x20094 -[LoginViewController loginLabel]")
+pub fn stub_20094() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20094)
+    crate::view_controllers::LoginViewController::shared_instance().login_label()
 }
 
 // 0x200a4 — -[LoginViewController setLoginLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginLabel:]")]
-pub fn stub_200a4() -> ! {
-    todo!("0x200a4 -[LoginViewController setLoginLabel:]")
+pub fn stub_200a4(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x200a4)
+    crate::view_controllers::LoginViewController::shared_instance().set_login_label(label);
 }
 
 // 0x200c8 — -[LoginViewController signupLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController signupLabel]")]
-pub fn stub_200c8() -> ! {
-    todo!("0x200c8 -[LoginViewController signupLabel]")
+pub fn stub_200c8() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x200c8)
+    crate::view_controllers::LoginViewController::shared_instance().signup_label()
 }
 
 // 0x200d8 — -[LoginViewController setSignupLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSignupLabel:]")]
-pub fn stub_200d8() -> ! {
-    todo!("0x200d8 -[LoginViewController setSignupLabel:]")
+pub fn stub_200d8(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x200d8)
+    crate::view_controllers::LoginViewController::shared_instance().set_signup_label(label);
 }
 
 // 0x200fc — -[LoginViewController swiRememberMyPassword]
 // type: UISwitch *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController swiRememberMyPassword]")]
-pub fn stub_200fc() -> ! {
-    todo!("0x200fc -[LoginViewController swiRememberMyPassword]")
+pub fn stub_200fc() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x200fc)
+    crate::view_controllers::LoginViewController::shared_instance().swi_remember_my_password()
 }
 
 // 0x2010c — -[LoginViewController setSwiRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSwiRememberMyPassword:]")]
-pub fn stub_2010c() -> ! {
-    todo!("0x2010c -[LoginViewController setSwiRememberMyPassword:]")
+pub fn stub_2010c(swi: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x2010c)
+    crate::view_controllers::LoginViewController::shared_instance().set_swi_remember_my_password(swi);
 }
 
 // 0x20130 — -[LoginViewController scrollView]
 // type: UIScrollView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController scrollView]")]
-pub fn stub_20130() -> ! {
-    todo!("0x20130 -[LoginViewController scrollView]")
+pub fn stub_20130() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20130)
+    crate::view_controllers::LoginViewController::shared_instance().scroll_view()
 }
 
 // 0x20140 — -[LoginViewController setScrollView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setScrollView:]")]
-pub fn stub_20140() -> ! {
-    todo!("0x20140 -[LoginViewController setScrollView:]")
+pub fn stub_20140(view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20140)
+    crate::view_controllers::LoginViewController::shared_instance().set_scroll_view(view);
 }
 
 // 0x20164 — -[LoginViewController imgUsernamePasswordBackground]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController imgUsernamePasswordBackground]")]
-pub fn stub_20164() -> ! {
-    todo!("0x20164 -[LoginViewController imgUsernamePasswordBackground]")
+pub fn stub_20164() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20164)
+    crate::view_controllers::LoginViewController::shared_instance().img_username_password_background()
 }
 
 // 0x20174 — -[LoginViewController setImgUsernamePasswordBackground:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setImgUsernamePasswordBackground:]")]
-pub fn stub_20174() -> ! {
-    todo!("0x20174 -[LoginViewController setImgUsernamePasswordBackground:]")
+pub fn stub_20174(view: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20174)
+    crate::view_controllers::LoginViewController::shared_instance().set_img_username_password_background(view);
 }
 
 // 0x20198 — -[LoginViewController robloxLogo]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController robloxLogo]")]
-pub fn stub_20198() -> ! {
-    todo!("0x20198 -[LoginViewController robloxLogo]")
+pub fn stub_20198() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20198)
+    crate::view_controllers::LoginViewController::shared_instance().roblox_logo()
 }
 
 // 0x201cc — -[LoginViewController loginFieldViews]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginFieldViews]")]
-pub fn stub_201cc() -> ! {
-    todo!("0x201cc -[LoginViewController loginFieldViews]")
+pub fn stub_201cc() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x201cc)
+    crate::view_controllers::LoginViewController::shared_instance().login_field_views()
 }
 
 // 0x201dc — -[LoginViewController setLoginFieldViews:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginFieldViews:]")]
-pub fn stub_201dc() -> ! {
-    todo!("0x201dc -[LoginViewController setLoginFieldViews:]")
+pub fn stub_201dc(views: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x201dc)
+    crate::view_controllers::LoginViewController::shared_instance().set_login_field_views(views);
 }
 
 // 0x20200 — -[LoginViewController loginActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginActivityIndicator]")]
-pub fn stub_20200() -> ! {
-    todo!("0x20200 -[LoginViewController loginActivityIndicator]")
+pub fn stub_20200() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20200)
+    crate::view_controllers::LoginViewController::shared_instance().login_activity_indicator()
 }
 
 // 0x20210 — -[LoginViewController setLoginActivityIndicator:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginActivityIndicator:]")]
-pub fn stub_20210() -> ! {
-    todo!("0x20210 -[LoginViewController setLoginActivityIndicator:]")
+pub fn stub_20210(indicator: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20210)
+    crate::view_controllers::LoginViewController::shared_instance().set_login_activity_indicator(indicator);
 }
 
 // 0x20234 — -[LoginViewController aboutButton]
 // type: UIButton *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController aboutButton]")]
-pub fn stub_20234() -> ! {
-    todo!("0x20234 -[LoginViewController aboutButton]")
+pub fn stub_20234() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20234)
+    crate::view_controllers::LoginViewController::shared_instance().about_button()
 }
 
 // 0x20244 — -[LoginViewController setAboutButton:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setAboutButton:]")]
-pub fn stub_20244() -> ! {
-    todo!("0x20244 -[LoginViewController setAboutButton:]")
+pub fn stub_20244(button: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20244)
+    crate::view_controllers::LoginViewController::shared_instance().set_about_button(button);
 }
 
 // 0x20268 — -[LoginViewController playNowLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController playNowLabel]")]
-pub fn stub_20268() -> ! {
-    todo!("0x20268 -[LoginViewController playNowLabel]")
+pub fn stub_20268() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x20268)
+    crate::view_controllers::LoginViewController::shared_instance().play_now_label()
 }
 
 // 0x20278 — -[LoginViewController setPlayNowLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setPlayNowLabel:]")]
-pub fn stub_20278() -> ! {
-    todo!("0x20278 -[LoginViewController setPlayNowLabel:]")
+pub fn stub_20278(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x20278)
+    crate::view_controllers::LoginViewController::shared_instance().set_play_now_label(label);
 }
 
 // 0x2029c — -[LoginViewController versionLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController versionLabel]")]
-pub fn stub_2029c() -> ! {
-    todo!("0x2029c -[LoginViewController versionLabel]")
+pub fn stub_2029c() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers (IDA 0x2029c)
+    crate::view_controllers::LoginViewController::shared_instance().version_label()
 }
 
 // 0x202ac — -[LoginViewController setVersionLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setVersionLabel:]")]
-pub fn stub_202ac() -> ! {
-    todo!("0x202ac -[LoginViewController setVersionLabel:]")
+pub fn stub_202ac(label: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x202ac)
+    crate::view_controllers::LoginViewController::shared_instance().set_version_label(label);
 }
 
 // 0x2ce2c — __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
@@ -9783,29 +9806,33 @@ pub fn stub_1da08(input: &str) -> String {
 // 0x20468 — -[AboutController initWithCoder:]
 // type: AboutController *__cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController initWithCoder:]")]
-pub fn stub_20468() -> ! {
-    todo!("0x20468 -[AboutController initWithCoder:]")
+pub fn stub_20468(coder: crate::view_controllers::ObjCId, idiom_is_pad: Option<bool>, screen_bounds: (f64, f64, f64, f64)) {
+    // delegate of crate::view_controllers (IDA 0x20468)
+    crate::view_controllers::AboutController::shared_instance().init_with_coder(coder, idiom_is_pad, screen_bounds);
 }
 
 // 0x2057c — -[AboutController dealloc]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController dealloc]")]
-pub fn stub_2057c() -> ! {
-    todo!("0x2057c -[AboutController dealloc]")
+pub fn stub_2057c() {
+    // delegate of crate::view_controllers (IDA 0x2057c)
+    crate::view_controllers::AboutController::shared_instance().dealloc_outlets();
 }
 
 // 0x20644 — -[AboutController viewDidLoad]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidLoad]")]
-pub fn stub_20644() -> ! {
-    todo!("0x20644 -[AboutController viewDidLoad]")
+pub fn stub_20644(agreements_html: Option<&str>, version: &str, tablet: bool, base_url: &str) {
+    // delegate of crate::view_controllers (IDA 0x20644)
+    crate::view_controllers::AboutController::shared_instance().view_did_load(agreements_html, version, tablet, base_url);
 }
 
 // 0x20a7c — -[AboutController viewWillAppear:]
 // type: void __cdecl(AboutController *self, SEL, char)
 #[doc(alias = "-[AboutController viewWillAppear:]")]
-pub fn stub_20a7c() -> ! {
-    todo!("0x20a7c -[AboutController viewWillAppear:]")
+pub fn stub_20a7c(animated: bool) {
+    // delegate of crate::view_controllers (IDA 0x20a7c)
+    crate::view_controllers::AboutController::shared_instance().view_will_appear(animated);
 }
 
 // 0x20b00 — -[AboutController webViewDidFinishLoad:]
