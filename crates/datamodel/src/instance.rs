@@ -2633,11 +2633,17 @@ pub struct ChatRemoteSignal {
     _opaque: (),
 }
 
-/// Rust model of `RBX::BillboardGui` (IDA `0x3c0434`): field layout unmodeled;
-/// adornee/player presence lands with the gui subsystem.
+/// Rust model of `RBX::BillboardGui` (IDA `0x3bfaf4`): the adornee links behind
+/// `setAdornee` — the `+0xE0` model / `+0xE8` part typed pairs plus the generic
+/// `+0xF0` adornee weak — and the `+0xD8` player weak behind
+/// `setPlayerToHideFrom` (IDA `0x3bffc0`); render fields land with the gui
+/// subsystem.
 #[derive(Default)]
 pub struct BillboardGui {
-    _opaque: (),
+    pub model_adornee: *const ModelInstance,
+    pub part_adornee: *const PartInstance,
+    pub adornee: *const Instance,
+    pub player_to_hide_from: *const Instance,
 }
 
 /// Rust model of `RBX::Reflection::EnumPropDescriptor<FormFactorPart,
@@ -2677,6 +2683,29 @@ fn legacy_part_type_from_name(name: &str) -> Option<LegacyPartType> {
         "Ball" => Some(LegacyPartType::Ball),
         "Block" => Some(LegacyPartType::Block),
         "Cylinder" => Some(LegacyPartType::Cylinder),
+        _ => None,
+    }
+}
+
+/// Name/value helpers behind the `FormFactor` desc suite (IDA `0x3be900`):
+/// `Symmetric = 0`, `Brick = 1`, `Plate = 2`, `Custom = 3` (the dense
+/// `PartInstance::FormFactor` values; `Custom` is the `v9 != 3` resize skip in
+/// `setFormFactorUi`, 0x3bb91e).
+fn form_factor_to_name(value: FormFactor) -> &'static str {
+    match value {
+        FormFactor::Symmetric => "Symmetric",
+        FormFactor::Brick => "Brick",
+        FormFactor::Plate => "Plate",
+        FormFactor::Custom => "Custom",
+    }
+}
+
+fn form_factor_from_name(name: &str) -> Option<FormFactor> {
+    match name {
+        "Symmetric" => Some(FormFactor::Symmetric),
+        "Brick" => Some(FormFactor::Brick),
+        "Plate" => Some(FormFactor::Plate),
+        "Custom" => Some(FormFactor::Custom),
         _ => None,
     }
 }
@@ -11255,183 +11284,411 @@ pub fn stub_0x3bdfb8(obj: *mut BasicPartInstance, value: LegacyPartType) {
 // 0x3bdfdc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIntValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x3bdfdc() -> ! {
-    todo!("0x3bdfdc RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x3bdfdc(desc: *const FFEnumPropDescriptor, obj: *mut BasicPartInstance, value: i32) -> bool {
+    // IDA 0x3bdfdc: negative values return `0` (0x3bdfe4-0x3bdfe6); the `+0x30`
+    // index-table lookup must cover the value (0x3bdfe8-0x3bdff6) and the
+    // slot must not be `-1` (0x3bdffe-0x3be004); then the `+0x2C` slot-`+12`
+    // setter runs and `1` returns (0x3be006-0x3be012). Same gate shape as
+    // `setIndexValue` (0x3be9a0); twin of the `LegacyPartType` suite (0x3bdc58).
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3be9a0(desc, obj, value)
 }
 
 // 0x3be540 — __ZN3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::EnumPropDescriptor<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>(char const*,char const*,RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::EnumPropDescriptor<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>(char const*,char const*,RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x3be540() -> ! {
-    todo!("0x3be540 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::EnumPropDescriptor<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>(char const*,char const*,RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x3be540(desc: *mut FFEnumPropDescriptor, read_only: bool, write_only: bool) {
+    // IDA 0x3be540: `classDescriptor` (0x3be564) + `EnumDesc` singleton
+    // `call_once` (0x3be584) + `doGetSingleton` (0x3be588) + `PropertyDescriptor`
+    // base C2 (enum-desc heads at `+40/+48`) + the `0x14` GetSetImpl payload at
+    // `+44` carrying the getter/setter member pair (vtable `off_123DBF8`-family)
+    // + attribute-flag masking through the `isReadOnly`/`isWriteOnly` virtuals.
+    // Singletons, base and member encodings collapse; the modeled half is the
+    // payload claim plus the flags. The member pair is the `FormFactorPart`
+    // getter / `setFormFactorXml` (0x3bb964). Twin of 0x3bd46c.
+    // SAFETY: `desc` must point to a valid (possibly uninit) `FFEnumPropDescriptor`.
+    unsafe {
+        (*desc).owned = Some(Box::new(PVRefExtra { words: [0; 8] }));
+        let _ = (read_only, write_only);
+    }
 }
 
 // 0x3be6f4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()
-pub fn stub_0x3be6f4() -> ! {
-    todo!("0x3be6f4 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()")
+pub fn stub_0x3be6f4(desc: *mut FFEnumPropDescriptor) {
+    // IDA 0x3be6f4: D0 — vtable reset (`+8`, 0x3be706-0x3be708,
+    // compiler-managed) plus the conditional `operator delete` of the `+0x2C`
+    // payload (0x3be70a-0x3be710) plus `operator delete` of the descriptor
+    // itself (0x3be714-0x3be71a tail). Twin of the `LegacyPartType` D0
+    // (0x3bd620); the box reclaim is all three.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        (*desc).owned = None;
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x3be720 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isReadOnly(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isReadOnly(void)const
-pub fn stub_0x3be720() -> ! {
-    todo!("0x3be720 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isReadOnly(void)const")
+pub fn stub_0x3be720(_desc: *const FFEnumPropDescriptor) -> bool {
+    // IDA 0x3be720: delegates to the `+0x2C` impl slot `+0`
+    // (`GetSetImpl::isReadOnly`, 0x3beaec), which returns `0` — twin of
+    // 0x3bd64c.
+    false
 }
 
 // 0x3be730 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isWriteOnly(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isWriteOnly(void)const
-pub fn stub_0x3be730() -> ! {
-    todo!("0x3be730 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::isWriteOnly(void)const")
+pub fn stub_0x3be730(_desc: *const FFEnumPropDescriptor) -> bool {
+    // IDA 0x3be730: delegates to the `+0x2C` impl slot `+4`
+    // (`GetSetImpl::isWriteOnly`, 0x3beaf0), which returns `0` — twin of
+    // 0x3bd65c (this suite has no setter-only twin).
+    false
 }
 
 // 0x3be740 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3be740() -> ! {
-    todo!("0x3be740 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3be740(
+    desc: *const FFEnumPropDescriptor,
+    first: *const BasicPartInstance,
+    second: *const BasicPartInstance,
+) -> bool {
+    // IDA 0x3be740: `getValue` on both sides through the `+0x2C` impl slot `+8`
+    // (0x3be740-0x3be75a) with the compare at 0x3be75c-0x3be764 — same shape as
+    // 0x3bd66c. The impl fetch collapses to `stub_0x3beaf4`.
+    // SAFETY: `desc` must point to a valid descriptor; `first`/`second` must
+    // point to valid `BasicPartInstance`s.
+    let _ = desc;
+    stub_0x3beaf4(first) == stub_0x3beaf4(second)
 }
 
 // 0x3be768 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
-pub fn stub_0x3be768() -> ! {
-    todo!("0x3be768 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x3be768(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3be768: `getIndexValue` through the vtable `+0x44` slot
+    // (0x3be76e-0x3be774), then `Type::getSingleton<int>` +
+    // `placement_any<int>` store (0x3be778-0x3be784). The Variant box
+    // collapses; the modeled half is the index value. Twin of 0x3bd694.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    stub_0x3be984(desc, obj)
 }
 
 // 0x3be78c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
-pub fn stub_0x3be78c() -> ! {
-    todo!("0x3be78c RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x3be78c(desc: *const FFEnumPropDescriptor, obj: *mut BasicPartInstance, value: i32) {
+    // IDA 0x3be78c: an int-typed Variant unboxes directly (0x3be7f4-0x3be802,
+    // `typeinfo for'int` BEQ to 0x3be84c); any other type goes through
+    // `Variant::convert<int>` with the manager retain/release dance — then the
+    // `+72` (`+0x48`) vtable slot, `setIndexValue`. The unbox/convert collapses
+    // into the typed `value`. Twin of 0x3bd6b8.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3be9a0(desc, obj, value);
 }
 
 // 0x3be8d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x3be8d8() -> ! {
-    todo!("0x3be8d8 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x3be8d8(
+    desc: *const FFEnumPropDescriptor,
+    src: *const BasicPartInstance,
+    dst: *mut BasicPartInstance,
+) {
+    // IDA 0x3be8d8: `getValue` spill through the `+0x2C` slot `+8`
+    // (0x3be8e2-0x3be8ea) then `setValue` through slot `+12` (0x3be8ec-0x3be8f6)
+    // — same shape as 0x3bd804. The spill retain is the value move.
+    // SAFETY: `desc` must point to a valid descriptor; `src`/`dst` must point
+    // to valid `BasicPartInstance`s.
+    let current = stub_0x3beaf4(src);
+    stub_0x3beb14(desc, dst, current);
 }
 
 // 0x3be8fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::hasStringValue(void)const
-pub fn stub_0x3be8fc() -> ! {
-    todo!("0x3be8fc RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::hasStringValue(void)const")
+pub fn stub_0x3be8fc() -> bool {
+    // IDA 0x3be8fc: `return 1` (0x3be8fc) — every enum value has a string form.
+    // Twin of 0x3bd828.
+    true
 }
 
 // 0x3be900 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getStringValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3be900() -> ! {
-    todo!("0x3be900 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3be900(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> &'static str {
+    // IDA 0x3be900: `getValue` through the `+0x2C` slot `+8` (0x3be908-0x3be912)
+    // then `EnumDesc::convertToString` with the `+0x30` desc head
+    // (0x3be916-0x3be91c). The desc-head lookup collapses to the `FormFactor`
+    // name table. Twin of 0x3bd82c.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    form_factor_to_name(stub_0x3beaf4(obj))
 }
 
 // 0x3be924 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
-pub fn stub_0x3be924() -> ! {
-    todo!("0x3be924 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x3be924(
+    desc: *const FFEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    name: &str,
+) -> bool {
+    // IDA 0x3be924: `Name::lookup` (0x3be936) + `EnumDesc::convertToValue`
+    // (0x3be940); on success the `+0x2C` slot-`+12` setter runs
+    // (0x3be94c-0x3be95a) and `1` returns, else `0` (0x3be944-0x3be95e).
+    // Unknown names miss the table — no store. Twin of 0x3bd850.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    match form_factor_from_name(name) {
+        Some(value) => {
+            stub_0x3beb14(desc, obj, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x3be964 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
-pub fn stub_0x3be964() -> ! {
-    todo!("0x3be964 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x3be964(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3be964: `getValue` through the `+0x2C` slot `+8` (0x3be966-0x3be970),
+    // then the XML pair is cleared and tagged int (`clearValue`, `a3[4] = 5`)
+    // with the value stored (0x3be978-0x3be980). The XML store is out of
+    // domain; the modeled half is the raw value. Twin of 0x3bd890.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    stub_0x3beaf4(obj) as i32
 }
 
 // 0x3be984 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getIndexValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3be984() -> ! {
-    todo!("0x3be984 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3be984(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> i32 {
+    // IDA 0x3be984: `getValue` through the `+0x2C` slot `+8` (0x3be986-0x3be992)
+    // then `EnumDesc::convertToIndex` tail-call (0x3be998-0x3be99c, shim),
+    // grounded at 0x3bea7c. The dense table maps
+    // `Symmetric/Brick/Plate/Custom` to `0/1/2/3`, so the index is the value.
+    // Twin of 0x3bdaf0.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    stub_0x3bea7c(stub_0x3beaf4(obj))
 }
 
 // 0x3be9a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
-pub fn stub_0x3be9a0() -> ! {
-    todo!("0x3be9a0 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x3be9a0(desc: *const FFEnumPropDescriptor, obj: *mut BasicPartInstance, index: i32) -> bool {
+    // IDA 0x3be9a0: out-of-range indices (`+0x28` count check, 0x3be9ac-0x3be9b0)
+    // return `0`; else the `+0x90` index-table value feeds the `+0x2C`
+    // slot-`+12` setter (0x3be9b4-0x3be9c6) and `1` returns. The dense table
+    // maps `0/1/2/3` to `Symmetric/Brick/Plate/Custom`, so in-range indices
+    // convert directly. Twin of 0x3bdb0c.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let _ = desc;
+    let value = match index {
+        0 => FormFactor::Symmetric,
+        1 => FormFactor::Brick,
+        2 => FormFactor::Plate,
+        3 => FormFactor::Custom,
+        _ => return false,
+    };
+    stub_0x3beb14(desc, obj, value);
+    true
 }
 
 // 0x3be9d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3be9d4() -> ! {
-    todo!("0x3be9d4 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3be9d4(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> FormFactor {
+    // IDA 0x3be9d4: tail-jump (`BX R2`) to the `+0x2C` slot-`+8` `getValue`
+    // (0x3be9d4-0x3be9da) — the raw enum value, no index translation. Twin of
+    // 0x3bdb40.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    let _ = desc;
+    stub_0x3beaf4(obj)
 }
 
 // 0x3be9dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
-pub fn stub_0x3be9dc() -> ! {
-    todo!("0x3be9dc RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x3be9dc(
+    desc: *const FFEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    value: i32,
+) -> bool {
+    // IDA 0x3be9dc: `__find_if` with `EnumDescriptor::equalValue` over the
+    // `+0x1C/+0x20` item range (0x3be9ec-0x3bea00); a miss returns `0`
+    // (0x3bea0a-0x3bea0c), a hit feeds the `+0x2C` slot-`+12` setter and returns
+    // `1` (0x3bea0e-0x3bea1c). The item search collapses to the dense
+    // `0/1/2/3` domain check. Twin of 0x3bdb48.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let typed = match value {
+        0 => FormFactor::Symmetric,
+        1 => FormFactor::Brick,
+        2 => FormFactor::Plate,
+        3 => FormFactor::Custom,
+        _ => return false,
+    };
+    stub_0x3beb14(desc, obj, typed);
+    true
 }
 
 // 0x3bea28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumItem(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3bea28() -> ! {
-    todo!("0x3bea28 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3bea28(desc: *const FFEnumPropDescriptor, obj: *const BasicPartInstance) -> &'static str {
+    // IDA 0x3bea28: `getValue` through the `+0x2C` slot `+8` (0x3bea32-0x3bea38)
+    // then `EnumDesc::convertToItem` (0x3bea3c-0x3bea40). The item lookup
+    // collapses to the name table, like `getStringValue` (0x3be900). Twin of
+    // 0x3bdb94.
+    // SAFETY: `desc`/`obj` must point to valid values.
+    stub_0x3be900(desc, obj)
 }
 
 // 0x3bea48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
-pub fn stub_0x3bea48() -> ! {
-    todo!("0x3bea48 RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x3bea48(
+    desc: *const FFEnumPropDescriptor,
+    obj: *mut BasicPartInstance,
+    name: &str,
+) -> bool {
+    // IDA 0x3bea48: `EnumDesc::convertToValue` on the pre-looked-up `Name`
+    // (0x3bea52-0x3bea5a); on success the `+0x2C` slot-`+12` setter runs
+    // (0x3bea66-0x3bea74), else `0` (0x3bea5e-0x3bea64). The `Name` wrapper
+    // collapses — same contract as the string twin (0x3be924). Twin of
+    // 0x3bdbb4.
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    stub_0x3be924(desc, obj, name)
 }
 
 // 0x3bea7c — __ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const
-pub fn stub_0x3bea7c() -> ! {
-    todo!("0x3bea7c RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const")
+pub fn stub_0x3bea7c(value: FormFactor) -> i32 {
+    // IDA 0x3bea7c: negative values hit
+    // `ReleaseAssert("value>=0", enumconverter.h:350)` (0x3bea7c-0x3bead2;
+    // image strings `aValue0`/`aIncludeReflect_7`) behind the `FLog::Asserts` +
+    // `_debugHook` gates; the `+0x9C` index-table lookup returns the slot or
+    // `-1` when out-of-range (0x3bead6-0x3beaea). The dense table maps
+    // `Symmetric/Brick/Plate/Custom` to `0/1/2/3`, so the index is the value;
+    // out-of-range values are unrepresentable in the typed model. Twin of
+    // 0x3bdbe8.
+    value as i32
 }
 
 // 0x3beaec — __ZNK3RBX10Reflection14PropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isReadOnly(void)const
-pub fn stub_0x3beaec() -> ! {
-    todo!("0x3beaec RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isReadOnly(void)const")
+pub fn stub_0x3beaec() -> bool {
+    // IDA 0x3beaec: `GetSetImpl::isReadOnly` returns `0` (0x3beaec) — twin of
+    // 0x3bdc98.
+    false
 }
 
 // 0x3beaf0 — __ZNK3RBX10Reflection14PropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isWriteOnly(void)const
-pub fn stub_0x3beaf0() -> ! {
-    todo!("0x3beaf0 RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::isWriteOnly(void)const")
+pub fn stub_0x3beaf0() -> bool {
+    // IDA 0x3beaf0: `GetSetImpl::isWriteOnly` returns `0` (0x3beaf0) — twin of
+    // 0x3bdc9c.
+    false
 }
 
 // 0x3beaf4 — __ZNK3RBX10Reflection14PropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x3beaf4() -> ! {
-    todo!("0x3beaf4 RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x3beaf4(obj: *const BasicPartInstance) -> FormFactor {
+    // IDA 0x3beaf4: null stays `0`, else `-36` (`-0x24`) DescribedBase strip
+    // (0x3beaf4-0x3beafa), member-getter fetch at `+4`/`+8` with the virtual
+    // encoding (0x3beafe-0x3beb10) — same shape as 0x3bdca0. Encoding + strip
+    // collapse; the member reads the `+82` form-factor word.
+    // SAFETY: `obj` must point to a valid `BasicPartInstance`.
+    unsafe { (*obj).form_factor }
 }
 
 // 0x3beb14 — __ZNK3RBX10Reflection14PropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance::FormFactor const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance::FormFactor const&)const
-pub fn stub_0x3beb14() -> ! {
-    todo!("0x3beb14 RBX::Reflection::PropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::GetSetImpl<RBX::PartInstance::FormFactor (RBX::FormFactorPart::*)(void)const,void (RBX::FormFactorPart::*)(RBX::PartInstance::FormFactor)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance::FormFactor const&)const")
+pub fn stub_0x3beb14(desc: *const FFEnumPropDescriptor, obj: *mut BasicPartInstance, value: FormFactor) {
+    // IDA 0x3beb14: null stays `0`, else `-36` (`-0x24`) strip
+    // (0x3beb14-0x3beb1c), member-setter fetch at `+0xC`/`+0x10` with the
+    // virtual encoding (0x3beb20-0x3beb30), value word at 0x3beb32, tail-call
+    // (0x3beb34) — same shape as 0x3bdcc0. Encoding + strip collapse; the
+    // member is `setFormFactorXml` (0x3bb964).
+    // SAFETY: `desc` must point to a valid descriptor; `obj` must point to a
+    // valid `BasicPartInstance`.
+    let _ = desc;
+    stub_0x3bb964(obj, value);
 }
 
 // 0x3bfaf4 — __ZN3RBX12BillboardGui10setAdorneeEPNS_8InstanceE
 #[doc(alias = "RBX::BillboardGui::setAdornee(RBX::Instance *)")]
 // was: RBX::BillboardGui::setAdornee(RBX::Instance *)
-pub fn stub_0x3bfaf4() -> ! {
-    todo!("0x3bfaf4 RBX::BillboardGui::setAdornee(RBX::Instance *)")
+pub fn stub_0x3bfaf4(this: *mut BillboardGui, adornee: *const Instance) {
+    // IDA 0x3bfaf4: the `+0xF0` weak lock is released, then an unchanged adornee
+    // returns early (0x3bfb5a-0x3bfb5c); a `ModelInstance` newcomer
+    // (`classDescriptor` + `isA`, 0x3bfb76-0x3bfb8e) lands in the `+0xE0/+0xE4`
+    // strong/weak pair with the `+0xE8` part slot cleared (0x3bfb92-0x3bfbe8),
+    // a `PartInstance` newcomer (`classDescriptor` + `isA`, 0x3bfbee-0x3bfc06)
+    // in `+0xE8/+0xEC` with `+0xE0` cleared (0x3bfc0a-0x3bfc5e); anything else
+    // (including null) keeps just the generic `+0xF0` weak (0x3bfc6c-0x3bfc8e);
+    // then `raisePropertyChanged` + `IAdornable::shouldRenderSetDirty`
+    // (0x3bfcb0-0x3bfcc2). Locks, retains and change notification collapse
+    // into the stores.
+    // SAFETY: `this` must point to a valid `BillboardGui`; `adornee` must be
+    // null or point to a valid `Instance`.
+    unsafe {
+        if adornee == (*this).adornee {
+            return;
+        }
+        (*this).model_adornee = core::ptr::null();
+        (*this).part_adornee = core::ptr::null();
+        if !adornee.is_null() {
+            if instance_is_a(adornee, "ModelInstance") {
+                (*this).model_adornee = adornee as *const ModelInstance;
+            } else if instance_is_a(adornee, "PartInstance") {
+                (*this).part_adornee = adornee as *const PartInstance;
+            }
+        }
+        (*this).adornee = adornee;
+    }
 }
 
 // 0x3bffc0 — __ZN3RBX12BillboardGui19setPlayerToHideFromEPNS_8InstanceE
 #[doc(alias = "RBX::BillboardGui::setPlayerToHideFrom(RBX::Instance *)")]
 // was: RBX::BillboardGui::setPlayerToHideFrom(RBX::Instance *)
-pub fn stub_0x3bffc0() -> ! {
-    todo!("0x3bffc0 RBX::BillboardGui::setPlayerToHideFrom(RBX::Instance *)")
+pub fn stub_0x3bffc0(this: *mut BillboardGui, player: *const Instance) {
+    // IDA 0x3bffc0: a non-null newcomer must beA `Network::Player`
+    // (`classDescriptor` + `isA`, 0x3c0014-0x3c002e) — anything else throws
+    // `runtime_error("HideFromPlayer can only be of type Play...")` (image
+    // string `aHidefromplayer`, 0x3c00ce-0x3c0122); the `+0xD8` weak lock is
+    // released and an unchanged player returns early with no notification
+    // (0x3c0034-0x3c0054); else the `shared_from` store re-arms `+0xD8/+0xDC`
+    // and `raisePropertyChanged` + `IAdornable::shouldRenderSetDirty` fire
+    // (0x3c0056-0x3c00ae). Locks, retains and notification collapse into the
+    // store.
+    // SAFETY: `this` must point to a valid `BillboardGui`; `player` must be
+    // null or point to a valid `Instance`.
+    unsafe {
+        if !player.is_null() && !instance_is_a(player, "Player") {
+            panic!("0x3bffc0 setPlayerToHideFrom: HideFromPlayer can only be of type Player");
+        }
+        if player == (*this).player_to_hide_from {
+            return;
+        }
+        (*this).player_to_hide_from = player;
+    }
 }
 
 // 0x3c0434 — __ZNK3RBX12BillboardGui12askSetParentEPKNS_8InstanceE
