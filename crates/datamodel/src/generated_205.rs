@@ -12,22 +12,46 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_b8d0() -> &'static str {
+    // IDA 0xb8d0..0xb8dc (disasm): `static_getCreator()` (0xb8d4) then
+    // tail-call `Creator::getClassName()` (0xb8dc). That target (IDA 0xedfc..
+    // 0xee84, disasm) `ReleaseAssert`s `wasConstructed()` (0xee0c..0xee5c),
+    // `call_once`s the `sRenderSettings` name declaration (0xee60..0xee78),
+    // and tail-calls `Name::doDeclare<sRenderSettings>()` (0xee7c..0xee84) —
+    // the interned "RenderSettings" class name, modelled as `&'static str`
+    // (cf. `RenderEnumDesc::new("QualityLevel")` in `generated_189`).
+    "RenderSettings"
 }
 
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_b900() -> &'static str {
+    // IDA 0xb900..0xb90c (decompiled): `this -= 32` thunk tail-calling the
+    // 0xb8d0 body (`static_getCreator()` at 0xb904, `Creator::getClassName`
+    // shim at 0xb90c). `this` is unused past the adjustment, so this is
+    // observably identical to `stub_b8d0`.
+    stub_b8d0()
 }
 
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_b930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_b930() {
+    // IDA 0xb930 (disasm, thunk): single `B.W` tail-call to `Creator::D2`.
+    // Stateless creator dtor — drop glue, no-op.
+}
+
+#[cfg(test)]
+mod batch3_tests {
+    use super::*;
+
+    #[test]
+    fn class_name_is_rendersettings_and_thunk_matches() {
+        assert_eq!(stub_b8d0(), "RenderSettings");
+        assert_eq!(stub_b900(), "RenderSettings");
+        stub_b930();
+    }
 }
 
 // 0x31c30 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv

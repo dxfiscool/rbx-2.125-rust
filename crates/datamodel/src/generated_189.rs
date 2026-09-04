@@ -175,6 +175,42 @@ static QUALITY_LEVEL_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolde
 pub fn quality_level_holder() -> &'static TypedHolder {
     LazyLock::force(&QUALITY_LEVEL_HOLDER)
 }
+/// Holder identity for `typed_holder<ShadowMode>::singleton()` (IDA 0xd47c).
+pub const HOLDER_SHADOW_MODE: u32 = 3;
+/// Holder identity for `typed_holder<AntialiasingMode>::singleton()` (IDA 0xd9bc).
+pub const HOLDER_ANTIALIASING_MODE: u32 = 4;
+/// Holder identity for `typed_holder<FrameRateManagerMode>::singleton()` (IDA 0xdefc).
+pub const HOLDER_FRAMERATE_MANAGER_MODE: u32 = 5;
+/// IDA 0xd47c `singleton()::s`, homed here so `generated_190` shares one model.
+static SHADOW_MODE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings10ShadowModeE",
+    token: HOLDER_SHADOW_MODE,
+});
+/// IDA 0xd9bc `singleton()::s`, homed here so `generated_190` shares one model.
+static ANTIALIASING_MODE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings16AntialiasingModeE",
+    token: HOLDER_ANTIALIASING_MODE,
+});
+/// IDA 0xdefc `singleton()::s`, homed here so `generated_190` shares one model.
+static FRAMERATE_MANAGER_MODE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings20FrameRateManagerModeE",
+    token: HOLDER_FRAMERATE_MANAGER_MODE,
+});
+/// IDA 0xd47c: `typed_holder<ShadowMode>::singleton()` (see `stub_0xc95c`
+/// for the init shape).
+pub fn shadow_mode_holder() -> &'static TypedHolder {
+    LazyLock::force(&SHADOW_MODE_HOLDER)
+}
+/// IDA 0xd9bc: `typed_holder<AntialiasingMode>::singleton()` (see
+/// `stub_0xc95c` for the init shape).
+pub fn antialiasing_mode_holder() -> &'static TypedHolder {
+    LazyLock::force(&ANTIALIASING_MODE_HOLDER)
+}
+/// IDA 0xdefc: `typed_holder<FrameRateManagerMode>::singleton()` (see
+/// `stub_0xc95c` for the init shape).
+pub fn framerate_manager_mode_holder() -> &'static TypedHolder {
+    LazyLock::force(&FRAMERATE_MANAGER_MODE_HOLDER)
+}
 
 /// IDA 0xb33c..0xb4f8: `RBX::CRenderSettings` slots read by this file's getters.
 /// IDA 0x97d0 constructs the settings subobject at item offset +96
