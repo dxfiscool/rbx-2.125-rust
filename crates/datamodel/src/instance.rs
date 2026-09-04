@@ -10,6 +10,7 @@ use crate::generated_05::{EventDescPayload, FunctorOp, GenericSlotWrapper, Insta
 use rbx_core::signal::Signal;
 use parking_lot::Mutex;
 use std::any::Any;
+use std::collections::BTreeSet;
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
 /// lifecycle runs through `Creatable` + `SharedPtr`. Raw pointers into this
@@ -156,6 +157,101 @@ pub struct TypedStatsItemBool {
 #[derive(Default)]
 pub struct AdvLuaDragger {
     _opaque: (),
+}
+
+/// Rust model of `RBX::CoreScript` (IDA `0x2a675c`): the `ContentId`
+/// construction argument is stored, twin of `StarterScript`.
+pub struct CoreScript {
+    _opaque: (),
+    pub content_id: Option<ContentId>,
+}
+
+impl Default for CoreScript {
+    fn default() -> Self {
+        Self { _opaque: (), content_id: None }
+    }
+}
+
+/// Rust model of `RBX::Selection` (IDA `0x2f78d8`): the selected-instance
+/// store behind the `+96` copy-on-write vector; `Add/Remove/ToggleIterator`
+/// outputs mutate it.
+#[derive(Default)]
+pub struct SelectionService {
+    pub selected: Vec<SharedPtr<Instance>>,
+}
+
+/// Output mode behind the `set_difference`/`__copy` iterator triple (IDA
+/// `0x2f7a7c` Add, `0x2f7bd4` Remove, `0x2f7d2c` Toggle): how each difference
+/// element lands in the `SelectionService`.
+#[derive(Clone, Copy)]
+pub enum SelectionDiffMode {
+    Add,
+    Remove,
+    Toggle,
+}
+
+/// Shared traversal behind the three `set_difference` instantiations (IDA
+/// `0x2f7a7c`/`0x2f7bd4`/`0x2f7d2c`): ordered `first`-minus-`second`
+/// difference, applied per mode. Not an EA stub (no `todo!` of its own).
+fn apply_selection_difference(
+    first: &BTreeSet<*const Instance>,
+    second: &BTreeSet<*const Instance>,
+    selection: &mut SelectionService,
+    mode: SelectionDiffMode,
+) {
+    for candidate in first.difference(second) {
+        match mode {
+            SelectionDiffMode::Add => {
+                if !selection.selected.iter().any(|held| SharedPtr::as_ptr(held) == *candidate) {
+                    unsafe {
+                        let owned = SharedPtr::from_raw(*candidate);
+                        let held = owned.clone();
+                        core::mem::forget(owned);
+                        selection.selected.push(held);
+                    }
+                }
+            }
+            SelectionDiffMode::Remove => {
+                if let Some(index) = selection
+                    .selected
+                    .iter()
+                    .position(|held| SharedPtr::as_ptr(held) == *candidate)
+                {
+                    selection.selected.remove(index);
+                }
+            }
+            SelectionDiffMode::Toggle => {
+                if let Some(index) = selection
+                    .selected
+                    .iter()
+                    .position(|held| SharedPtr::as_ptr(held) == *candidate)
+                {
+                    selection.selected.remove(index);
+                } else {
+                    unsafe {
+                        let owned = SharedPtr::from_raw(*candidate);
+                        let held = owned.clone();
+                        core::mem::forget(owned);
+                        selection.selected.push(held);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Rust model of `RBX::FilteredSelection<RBX::Instance>` (IDA `0x2f88fc`):
+/// filtered view with its own selected store until the predicate model lands.
+#[derive(Default)]
+pub struct FilteredSelection {
+    pub selected: Vec<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance>>`
+/// (IDA `0x2f88fc`): the `+4` cached-service word.
+#[derive(Default)]
+pub struct FilteredSelectionClient {
+    pub cached: Option<SharedPtr<FilteredSelection>>,
 }
 
 /// Rust model of `RBX::Primitive` (IDA `0x2e28bc`): the drag-plane leaf;
@@ -1826,8 +1922,11 @@ pub fn stub_0x2a6728() -> ! {
 // 0x2a675c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10CoreScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CoreScript> RBX::Creatable<RBX::Instance>::create<RBX::CoreScript,RBX::ContentId>(RBX::ContentId)")]
 // was: boost::shared_ptr<RBX::CoreScript> RBX::Creatable<RBX::Instance>::create<RBX::CoreScript,RBX::ContentId>(RBX::ContentId)
-pub fn stub_0x2a675c() -> ! {
-    todo!("0x2a675c boost::shared_ptr<RBX::CoreScript> RBX::Creatable<RBX::Instance>::create<RBX::CoreScript,RBX::ContentId>(RBX::ContentId)")
+pub fn stub_0x2a675c(content: ContentId) -> SharedPtr<CoreScript> {
+    // IDA 0x2a675c: `operator new(0x84)` (disasm 0x2a677a-0x2a677c; 132 bytes)
+    // + `CoreScript(contentId)` ctor (`R1` spill at disasm 0x2a677c) +
+    // adoption. Twin of the `StarterScript` create (0x2a6674).
+    SharedPtr::new(CoreScript { _opaque: (), content_id: Some(content) })
 }
 
 // 0x2a6c90 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS4_S6_EE
@@ -2214,50 +2313,73 @@ pub fn stub_0x2aef18() -> ! {
 // 0x2af428 — __ZN5boost10shared_ptrIN3RBX10CoreScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CoreScript>::shared_ptr<RBX::CoreScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::CoreScript>::shared_ptr<RBX::CoreScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2af428() -> ! {
-    todo!("0x2af428 boost::shared_ptr<RBX::CoreScript>::shared_ptr<RBX::CoreScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2af428(ptr: *mut CoreScript, _deleter: CreatableInstanceDeleter) -> SharedPtr<CoreScript> {
+    // IDA 0x2af428: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(CoreScript::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2af5dc — __ZN5boost6detail12shared_countC2IPN3RBX10CoreScriptENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2af5dc() -> ! {
-    todo!("0x2af5dc boost::detail::shared_count::shared_count<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2af5dc(ptr: *mut CoreScript, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<CoreScript, CreatableInstanceDeleter> {
+    // IDA 0x2af5dc: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2af6e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10CoreScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2af6e4() -> ! {
-    todo!("0x2af6e4 boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2af6e4(_block: *mut ControlBlockPd<CoreScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af6e4: `BX LR` — empty (canonical D1 slot); same as 0xf198.
 }
 
 // 0x2af6e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10CoreScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2af6e8() -> ! {
-    todo!("0x2af6e8 boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2af6e8(block: *mut ControlBlockPd<CoreScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af6e8: `B.W __ZdlPv$shim` — D0 storage release only (canonical
+    // D0 slot); same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2af6ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10CoreScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2af6ec() -> ! {
-    todo!("0x2af6ec boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2af6ec(block: *mut ControlBlockPd<CoreScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af6ec: `predelete` + null early-out + deleter virtual-delete
+    // (canonical dispose slot); same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2af70c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10CoreScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2af70c() -> ! {
-    todo!("0x2af70c boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2af70c(block: *const ControlBlockPd<CoreScript, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2af70c: deleter-name `strcmp`, `this + 0x10` on hit (canonical
+    // get_deleter slot); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2af724 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10CoreScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2af724() -> ! {
-    todo!("0x2af724 boost::detail::sp_counted_impl_pd<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2af724(block: *const ControlBlockPd<CoreScript, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2af724: unconditional `this + 0x10` (canonical untyped slot);
+    // same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2af728 — __ZN5boost10shared_ptrIN3RBX13StarterScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -4454,29 +4576,55 @@ pub fn stub_0x2f75e8() -> ! {
 // 0x2f78d8 — __ZNK3RBX9Selection10isSelectedEPKNS_8InstanceE
 #[doc(alias = "RBX::Selection::isSelected(RBX::Instance const*)const")]
 // was: RBX::Selection::isSelected(RBX::Instance const*)const
-pub fn stub_0x2f78d8() -> ! {
-    todo!("0x2f78d8 RBX::Selection::isSelected(RBX::Instance const*)const")
+pub fn stub_0x2f78d8(service: &SelectionService, instance: *const Instance) -> bool {
+    // IDA 0x2f78d8: snapshot the `+96` copy-on-write vector (disasm
+    // 0x2f78f4-0x2f790c), retain the query instance (`shared_from`, disasm
+    // 0x2f7912), `std::find` by identity (disasm 0x2f7920), release, and
+    // return `found != end` (disasm 0x2f795a-0x2f798c). Pointer comparison
+    // on the snapshot is the same test.
+    service.selected.iter().any(|candidate| SharedPtr::as_ptr(candidate) == instance)
 }
 
 // 0x2f7a7c — __ZSt14set_differenceISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEES6_NS3_9Selection11AddIteratorEET1_T_SA_T0_SB_S9_
 #[doc(alias = "RBX::Selection::AddIterator std::set_difference<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::AddIterator)")]
 // was: RBX::Selection::AddIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator)
-pub fn stub_0x2f7a7c() -> ! {
-    todo!("0x2f7a7c RBX::Selection::AddIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator)")
+pub fn stub_0x2f7a7c(
+    first: &BTreeSet<*const Instance>,
+    second: &BTreeSet<*const Instance>,
+    selection: &mut SelectionService,
+) {
+    // IDA 0x2f7a7c: `set_difference` with the `AddIterator` output — every
+    // element of `first` absent from `second` is inserted into the selection
+    // service (the `ServiceClient<Selection>::createService` + iterator
+    // dance in callers like 0x2f732c collapses into the direct target).
+    apply_selection_difference(first, second, selection, SelectionDiffMode::Add);
 }
 
 // 0x2f7bd4 — __ZSt14set_differenceISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEES6_NS3_9Selection14RemoveIteratorEET1_T_SA_T0_SB_S9_
 #[doc(alias = "RBX::Selection::RemoveIterator std::set_difference<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::RemoveIterator)")]
 // was: RBX::Selection::RemoveIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator)
-pub fn stub_0x2f7bd4() -> ! {
-    todo!("0x2f7bd4 RBX::Selection::RemoveIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator)")
+pub fn stub_0x2f7bd4(
+    first: &BTreeSet<*const Instance>,
+    second: &BTreeSet<*const Instance>,
+    selection: &mut SelectionService,
+) {
+    // IDA 0x2f7bd4: `set_difference` with the `RemoveIterator` output —
+    // same traversal as 0x2f7a7c, difference elements are REMOVED from the
+    // selection service.
+    apply_selection_difference(first, second, selection, SelectionDiffMode::Remove);
 }
 
 // 0x2f7d2c — __ZSt14set_differenceISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEES6_NS3_9Selection14ToggleIteratorEET1_T_SA_T0_SB_S9_
 #[doc(alias = "RBX::Selection::ToggleIterator std::set_difference<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::ToggleIterator)")]
 // was: RBX::Selection::ToggleIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator)
-pub fn stub_0x2f7d2c() -> ! {
-    todo!("0x2f7d2c RBX::Selection::ToggleIterator std::set_difference<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator)")
+pub fn stub_0x2f7d2c(
+    first: &BTreeSet<*const Instance>,
+    second: &BTreeSet<*const Instance>,
+    selection: &mut SelectionService,
+) {
+    // IDA 0x2f7d2c: `set_difference` with the `ToggleIterator` output —
+    // same traversal, difference elements are toggled in the selection.
+    apply_selection_difference(first, second, selection, SelectionDiffMode::Toggle);
 }
 
 // 0x2f7e84 — __ZN3RBX8Instance15queryTypedChildINS_10SelectableEEEPT_i
@@ -4496,99 +4644,181 @@ pub fn stub_0x2f7fcc() -> ! {
 // 0x2f8034 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x2f8034() -> ! {
-    todo!("0x2f8034 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x2f8034(set: &mut BTreeSet<*const Instance>, value: *const Instance) -> bool {
+    // IDA 0x2f8034: `_M_insert` over `set<shared_ptr<Instance>>` — hint
+    // check (disasm 0x2f8044-0x2f805a), node creation (disasm 0x2f8064),
+    // rebalance + size bump; the node mechanics and comparator collapse into
+    // the ordered-set insert, which reports the same inserted/not-present.
+    set.insert(value)
 }
 
 // 0x2f8080 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_create_node(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x2f8080() -> ! {
-    todo!("0x2f8080 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x2f8080(value: *const Instance) -> Box<*const Instance> {
+    // IDA 0x2f8080: `_M_create_node` — allocator node construction holding a
+    // copy of the value; a boxed pointer is the same owned cell.
+    Box::new(value)
 }
 
 // 0x2f8164 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_erase(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>> *)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)
-pub fn stub_0x2f8164() -> ! {
-    todo!("0x2f8164 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)")
+pub fn stub_0x2f8164(set: &mut BTreeSet<*const Instance>, value: *const Instance) -> bool {
+    // IDA 0x2f8164: `_M_erase` — lookup, unlink, rebalance, destroy; the
+    // removal report matches `BTreeSet::remove`.
+    set.remove(&value)
 }
 
 // 0x2f818c — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_destroy_node(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>> *)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_destroy_node(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)
-pub fn stub_0x2f818c() -> ! {
-    todo!("0x2f818c std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_destroy_node(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> *)")
+pub fn stub_0x2f818c(node: Box<*const Instance>) {
+    // IDA 0x2f818c: `_M_destroy_node` — allocator destroy + dealloc; dropping
+    // the box is both.
 }
 
 // 0x2f81a8 — __ZNSt6__copyILb0ESt26bidirectional_iterator_tagE4copyISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEENS6_9Selection14ToggleIteratorEEET0_T_SD_SC_
 #[doc(alias = "RBX::Selection::ToggleIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::ToggleIterator)")]
 // was: RBX::Selection::ToggleIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator)
-pub fn stub_0x2f81a8() -> ! {
-    todo!("0x2f81a8 RBX::Selection::ToggleIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::ToggleIterator)")
+pub fn stub_0x2f81a8(items: &[SharedPtr<Instance>], selection: &mut SelectionService) {
+    // IDA 0x2f81a8: `__copy` with the `ToggleIterator` output — every range
+    // element is toggled in the selection service (sibling of the
+    // `set_difference` triple at 0x2f7a7c-0x2f7d2c).
+    for item in items {
+        let ptr = SharedPtr::as_ptr(item);
+        if let Some(index) = selection
+            .selected
+            .iter()
+            .position(|held| SharedPtr::as_ptr(held) == ptr)
+        {
+            selection.selected.remove(index);
+        } else {
+            selection.selected.push(item.clone());
+        }
+    }
 }
 
 // 0x2f829c — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EEaSERKSA_
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::operator=(std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::operator=(std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&)
-pub fn stub_0x2f829c() -> ! {
-    todo!("0x2f829c std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::operator=(std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&)")
+pub fn stub_0x2f829c(dst: &mut BTreeSet<*const Instance>, src: &BTreeSet<*const Instance>) {
+    // IDA 0x2f829c: tree copy-assign (`_M_copy` range + header swap) —
+    // cloning the set is the same copy.
+    *dst = src.clone();
 }
 
 // 0x2f82e8 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX8InstanceEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE7_M_copyEPKSt13_Rb_tree_nodeIS4_EPSC_
 #[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,std::_Identity<rbx_core::SharedPtr<RBX::Instance>>,std::less<rbx_core::SharedPtr<RBX::Instance>>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_copy(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>> const*,std::_Rb_tree_node<rbx_core::SharedPtr<RBX::Instance>>*)")]
 // was: std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_copy(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> const*,std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>>*)
-pub fn stub_0x2f82e8() -> ! {
-    todo!("0x2f82e8 std::_Rb_tree<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,std::_Identity<boost::shared_ptr<RBX::Instance>>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_copy(std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>> const*,std::_Rb_tree_node<boost::shared_ptr<RBX::Instance>>*)")
+pub fn stub_0x2f82e8(src: &BTreeSet<*const Instance>) -> BTreeSet<*const Instance> {
+    // IDA 0x2f82e8: `_M_copy` — deep copy of the tree range into a fresh
+    // tree; cloning the set copies every element with the same order.
+    src.clone()
 }
 
 // 0x2f843c — __ZNSt6__copyILb0ESt26bidirectional_iterator_tagE4copyISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEENS6_9Selection14RemoveIteratorEEET0_T_SD_SC_
 #[doc(alias = "RBX::Selection::RemoveIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::RemoveIterator)")]
 // was: RBX::Selection::RemoveIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator)
-pub fn stub_0x2f843c() -> ! {
-    todo!("0x2f843c RBX::Selection::RemoveIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::RemoveIterator)")
+pub fn stub_0x2f843c(items: &[SharedPtr<Instance>], selection: &mut SelectionService) {
+    // IDA 0x2f843c: `__copy` with the `RemoveIterator` output (decomp header)
+    // — every range element is removed from the selection service.
+    for item in items {
+        let ptr = SharedPtr::as_ptr(item);
+        if let Some(index) = selection
+            .selected
+            .iter()
+            .position(|held| SharedPtr::as_ptr(held) == ptr)
+        {
+            selection.selected.remove(index);
+        }
+    }
 }
 
 // 0x2f8530 — __ZNSt6__copyILb0ESt26bidirectional_iterator_tagE4copyISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX8InstanceEEEENS6_9Selection11AddIteratorEEET0_T_SD_SC_
 #[doc(alias = "RBX::Selection::AddIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::Instance>>,RBX::Selection::AddIterator)")]
 // was: RBX::Selection::AddIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator)
-pub fn stub_0x2f8530() -> ! {
-    todo!("0x2f8530 RBX::Selection::AddIterator std::__copy<false,std::bidirectional_iterator_tag>::copy<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::Instance>>,RBX::Selection::AddIterator)")
+pub fn stub_0x2f8530(items: &[SharedPtr<Instance>], selection: &mut SelectionService) {
+    // IDA 0x2f8530: `__copy` with the `AddIterator` output — by elimination
+    // over the Toggle (0x2f81a8) and Remove (0x2f843c) siblings; every range
+    // element is inserted into the selection service.
+    for item in items {
+        let ptr = SharedPtr::as_ptr(item);
+        if !selection.selected.iter().any(|held| SharedPtr::as_ptr(held) == ptr) {
+            selection.selected.push(item.clone());
+        }
+    }
 }
 
 // 0x2f88fc — __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_8InstanceEEEE13createServiceEv
 #[doc(alias = "RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance>>::createService(void)const")]
 // was: RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance>>::createService(void)const
-pub fn stub_0x2f88fc() -> ! {
-    todo!("0x2f88fc RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance>>::createService(void)const")
+pub fn stub_0x2f88fc(
+    client: &mut FilteredSelectionClient,
+    instance: *const Instance,
+) -> Option<SharedPtr<FilteredSelection>> {
+    // IDA 0x2f88fc: lazy-init at `*(a1 + 4)` (disasm 0x2f892a): populated the
+    // cache is returned; else `ServiceProvider::create<FilteredSelection>`
+    // (IDA 0x2f8b84) fills it. The `ServiceClient` lookup dance collapses
+    // into the cached-`Option`.
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if client.cached.is_none() {
+        client.cached = stub_0x2f8b84(instance);
+    }
+    client.cached.clone()
 }
 
 // 0x2f89dc — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_8InstanceEEEEaSERKS5_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>>::operator=(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> const&)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)
-pub fn stub_0x2f89dc() -> ! {
-    todo!("0x2f89dc boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)")
+pub fn stub_0x2f89dc(dst: *mut Option<SharedPtr<FilteredSelection>>, src: &Option<SharedPtr<FilteredSelection>>) {
+    // IDA 0x2f89dc: same-type `shared_ptr` copy-assign — retain, store,
+    // release-old; clone-then-assign is self-assignment safe. Twin of 0x3bbf8.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 
 // 0x2f8a14 — __ZN3RBX11shared_fromINS_17FilteredSelectionINS_8InstanceEEEEEN5boost10shared_ptrIT_EEPS6_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> RBX::shared_from<RBX::FilteredSelection<RBX::Instance>>(RBX::FilteredSelection<RBX::Instance>*)")]
 // was: boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::shared_from<RBX::FilteredSelection<RBX::Instance>>(RBX::FilteredSelection<RBX::Instance>*)
-pub fn stub_0x2f8a14() -> ! {
-    todo!("0x2f8a14 boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::shared_from<RBX::FilteredSelection<RBX::Instance>>(RBX::FilteredSelection<RBX::Instance>*)")
+pub fn stub_0x2f8a14(ptr: *const FilteredSelection) -> SharedPtr<FilteredSelection> {
+    // IDA 0x2f8a14: `shared_from<FilteredSelection>` — the
+    // `enable_shared_from_this` weak-owner lock (cf. `weak_from`, IDA
+    // 0x7039e4); minting from a live allocation is the same lock.
+    // SAFETY: `ptr` must point into a live `SharedPtr<FilteredSelection>`.
+    unsafe {
+        let owned = SharedPtr::from_raw(ptr);
+        let out = owned.clone();
+        core::mem::forget(owned);
+        out
+    }
 }
 
 // 0x2f8b84 — __ZN3RBX15ServiceProvider6createINS_17FilteredSelectionINS_8InstanceEEEEEPT_PKS3_
 #[doc(alias = "RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(RBX::Instance const*)")]
 // was: RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(RBX::Instance const*)
-pub fn stub_0x2f8b84() -> ! {
-    todo!("0x2f8b84 RBX::FilteredSelection<RBX::Instance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::Instance>>(RBX::Instance const*)")
+pub fn stub_0x2f8b84(instance: *const Instance) -> Option<SharedPtr<FilteredSelection>> {
+    // IDA 0x2f8b84: `ServiceProvider::create<FilteredSelection>` — provider
+    // lookup, null yields empty, else default-construct + adopt. Same shape
+    // as the `0x28e0c8`/`0x28e0e0` service creates.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(FilteredSelection::default()))
 }
 
 // 0x2f8b9c — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS3_IKS5_EEET_SF_SF_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance const>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance const> const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance const>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance const> const&,std::random_access_iterator_tag)
-pub fn stub_0x2f8b9c() -> ! {
-    todo!("0x2f8b9c __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance const>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance const> const&,std::random_access_iterator_tag)")
+pub fn stub_0x2f8b9c(haystack: &[SharedPtr<Instance>], needle: *const Instance) -> usize {
+    // IDA 0x2f8b9c: `std::find` over the `shared_ptr` vector by identity;
+    // position on hit, `len` (past-the-end) on miss. Twin of 0x2e8128.
+    haystack
+        .iter()
+        .position(|candidate| SharedPtr::as_ptr(candidate) == needle)
+        .unwrap_or(haystack.len())
 }
 
 // 0x2faa84 — __ZN3RBX14AsyncHttpQueueC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEi
