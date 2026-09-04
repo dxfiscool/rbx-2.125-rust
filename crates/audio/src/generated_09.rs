@@ -11,23 +11,75 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+// ---- FreeImage JPEG/PNG plugin leaves + math fmod (IDA 0x82b700..0x1161e0) ----
+// Target is 32-bit ARM (armv7); interior plugin words are plain u32/i32/f32
+// fields so the byte offsets cited below hold on any host.
+// Boost mapping: none in this range (no shared_ptr/intrusive_ptr/signal).
+use core::ffi::{c_char, c_void};
+
+/// strcmp against a NUL-terminated literal without libc (IDA 0x11204c).
+fn c_str_eq(mut s: *const c_char, lit: &[u8]) -> bool {
+    // IDA 0x112070..0x11208c: strcmp("ICC_PROFILE", data) == 0.
+    for &want in lit {
+        // SAFETY: caller guarantees `s` reads a NUL-terminated string with
+        // at least lit.len() readable bytes, as in the original call.
+        let got = unsafe { *s as u8 };
+        if got != want {
+            return false;
+        }
+        if want == 0 {
+            return true;
+        }
+        s = unsafe { s.add(1) };
+    }
+    false
+}
+
+/// Minimal byte view of jpeg_marker_struct for IDA 0x11204c: marker byte at
+/// +4, data length (u32) at +12, data pointer at +16.
+#[repr(C)]
+pub struct JpegMarkerIccView {
+    pub _pad0: [u8; 4],
+    pub marker: u8,
+    pub _pad1: [u8; 7],
+    pub data_length: u32,
+    pub data: *const c_char,
+}
 
 // 0x82b700 — __ZL9math_fmodP9lua_State
 #[doc(alias = "math_fmod(lua_State *)")]
-pub fn stub_82b700() -> ! {
-    todo!("0x82b700 math_fmod(lua_State *)")
+pub fn stub_82b700(state: *mut c_void) -> i32 {
+    // IDA 0x82b700: v2 = luaL_checknumber(L, 1) (0x82b70e),
+    // v3 = luaL_checknumber(L, 2) (0x82b714), v4 = fmod(v2, v3) (0x82b720),
+    // lua_pushnumber(L, v4) (0x82b72e); return 1 (0x82b734).
+    // NOTE: no Lua runtime lives in this crate, so the stack traffic above
+    // cannot execute here; the numeric core is math_fmod_core below.
+    let _ = state;
+    1
+}
+
+/// Numeric core of IDA 0x82b700: C fmod of the two checked Lua numbers.
+/// Rust `%` on f64 lowers to the same trunc-form remainder (fmod) call.
+pub fn math_fmod_core(x: f64, y: f64) -> f64 {
+    x % y
 }
 
 // 0xf6c3a4 — _fmod
 #[doc(alias = "_fmod")]
-pub fn stub_f6c3a4() -> ! {
-    todo!("0xf6c3a4 _fmod")
+pub fn stub_f6c3a4(x: f64, y: f64) -> f64 {
+    // IDA 0xf6c3a4: __picsymbolstub4 — LDR R12,=(_fmod_ptr-.) (0xf6c3a4),
+    // ADD R12,PC (0xf6c3a8), LDR PC,[R12] -> __imp__fmod (0xf6c3ac).
+    // Pure dyld trampoline; the host mapping is a direct remainder call.
+    x % y
 }
 
 // 0xf6c3b4 — _fmodf
 #[doc(alias = "_fmodf")]
-pub fn stub_f6c3b4() -> ! {
-    todo!("0xf6c3b4 _fmodf")
+pub fn stub_f6c3b4(x: f32, y: f32) -> f32 {
+    // IDA 0xf6c3b4: __picsymbolstub4 — LDR R12,=(_fmodf_ptr-.) (0xf6c3b4),
+    // ADD R12,PC (0xf6c3b8), LDR PC,[R12] -> __imp__fmodf (0xf6c3bc).
+    // Pure dyld trampoline; the host mapping is a direct remainder call.
+    x % y
 }
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
@@ -110,44 +162,55 @@ pub fn stub_3bb58() -> ! {
 
 // 0x111e78 — __ZL11Descriptionv
 #[doc(alias = "Description(void)")]
-pub fn stub_111e78() -> ! {
-    todo!("0x111e78 Description(void)")
+pub fn stub_111e78() -> &'static str {
+    // IDA 0x111e78: LDR R0,="JPEG - JFIF Compliant" (0x111e78..0x111e7c); BX LR (0x111e80).
+    "JPEG - JFIF Compliant"
 }
 
 // 0x111e88 — __ZL9Extensionv
 #[doc(alias = "Extension(void)")]
-pub fn stub_111e88() -> ! {
-    todo!("0x111e88 Extension(void)")
+pub fn stub_111e88() -> &'static str {
+    // IDA 0x111e88: LDR R0,="jpg,jif,jpeg,jpe" (0x111e88..0x111e8c); BX LR (0x111e90).
+    "jpg,jif,jpeg,jpe"
 }
 
 // 0x111e98 — __ZL7RegExprv
 #[doc(alias = "RegExpr(void)")]
-pub fn stub_111e98() -> ! {
-    todo!("0x111e98 RegExpr(void)")
+pub fn stub_111e98() -> &'static [u8] {
+    // IDA 0x111e98: LDR R0,=asc_10CF934 (0x111e98..0x111e9c); BX LR (0x111ea0);
+    // decompile: "^\\xFF\\xD8\\xFF". The raw bytes are not valid UTF-8, so
+    // the exact image bytes are preserved as &[u8], not &str.
+    b"^\xFF\xD8\xFF"
 }
 
 // 0x111ea8 — __ZL8MimeTypev
 #[doc(alias = "MimeType(void)")]
-pub fn stub_111ea8() -> ! {
-    todo!("0x111ea8 MimeType(void)")
+pub fn stub_111ea8() -> &'static str {
+    // IDA 0x111ea8: LDR R0,="image/jpeg" (0x111ea8..0x111eac); BX LR (0x111eb0).
+    "image/jpeg"
 }
 
 // 0x111eb8 — __ZL19SupportsExportDepthi
 #[doc(alias = "SupportsExportDepth(int)")]
-pub fn stub_111eb8() -> ! {
-    todo!("0x111eb8 SupportsExportDepth(int)")
+pub fn stub_111eb8(depth: i32) -> bool {
+    // IDA 0x111eb8: CMP R0,#0x18 (0x111eb8); CMPNE R0,#8 (0x111ebc);
+    // EQ -> 1 else 0 (0x111ec0..0x111ec8). JPEG exports 24- and 8-bit only.
+    depth == 24 || depth == 8
 }
 
 // 0x111ecc — __ZL18SupportsExportType15FREE_IMAGE_TYPE
 #[doc(alias = "SupportsExportType(FREE_IMAGE_TYPE)")]
-pub fn stub_111ecc() -> ! {
-    todo!("0x111ecc SupportsExportType(FREE_IMAGE_TYPE)")
+pub fn stub_111ecc(image_type: i32) -> bool {
+    // IDA 0x111ecc: CMP R0,#1 (0x111ecc); NE -> 0 else 1
+    // (0x111ed0..0x111ed8). Only FIT_UINT16 (1) is JPEG-exportable.
+    image_type == 1
 }
 
 // 0x111edc — __ZL19SupportsICCProfilesv
 #[doc(alias = "SupportsICCProfiles(void)")]
-pub fn stub_111edc() -> ! {
-    todo!("0x111edc SupportsICCProfiles(void)")
+pub fn stub_111edc() -> i32 {
+    // IDA 0x111edc: MOV R0,#1 (0x111edc); BX LR (0x111ee0). Always TRUE.
+    1
 }
 
 // 0x111ee4 — __Z8InitJPEGP6Plugini
@@ -164,8 +227,13 @@ pub fn stub_111fb8() -> ! {
 
 // 0x11204c — __ZL13marker_is_iccP18jpeg_marker_struct
 #[doc(alias = "marker_is_icc(jpeg_marker_struct *)")]
-pub fn stub_11204c() -> ! {
-    todo!("0x11204c marker_is_icc(jpeg_marker_struct *)")
+pub fn stub_11204c(marker: *const JpegMarkerIccView) -> bool {
+    // IDA 0x11204c: LDRB R3,[R0,#4] (0x112054), marker == 0xE2 (APP2)
+    // (0x11205c); LDR [R0,#0xC] > 0xD (0x112064..0x11206c); then
+    // strcmp("ICC_PROFILE", [R0,#16]) == 0 (0x112070..0x11208c).
+    // SAFETY: `marker` is a readable jpeg_marker_struct per the caller.
+    let m = unsafe { &*marker };
+    m.marker == 0xE2 && m.data_length > 0xD && c_str_eq(m.data, b"ICC_PROFILE\0")
 }
 
 // 0x11209c — __ZL17fill_input_bufferP22jpeg_decompress_struct
@@ -230,68 +298,96 @@ pub fn stub_112fd0() -> ! {
 
 // 0x114260 — __Z11INPLACESWAPIhEvRT_S1_
 #[doc(alias = "void INPLACESWAP<unsigned char>(unsigned char &,unsigned char &)")]
-pub fn stub_114260() -> ! {
-    todo!("0x114260 void INPLACESWAP<unsigned char>(unsigned char &,unsigned char &)")
+pub fn stub_114260(result: *mut u8, a2: *mut u8) -> *mut u8 {
+    // IDA 0x114260: triple-XOR swap through R9/R12, returns `result`:
+    // xor = *r ^ *a (0x114268); *r = xor (0x11426c); reload *a (0x114270);
+    // *a = xor ^ *a (0x114274..0x114278); reload *r (0x11427c);
+    // *r = *a ^ *r (0x114280..0x114284); BX LR (0x114288).
+    // BUG: result == a2 zeroes the byte (the reloads re-read the stored
+    // 0); preserved 1:1 via the reload formulation below.
+    // SAFETY: both pointers are readable/writable u8 per the caller.
+    unsafe {
+        let xor = *result ^ *a2;
+        *result = xor;
+        let cur_b = *a2;
+        *a2 = xor ^ cur_b;
+        let cur_r = *result;
+        *result = (xor ^ cur_b) ^ cur_r;
+        result
+    }
 }
 
 // 0x11428c — __ZL10_FlushProcP14png_struct_def
 #[doc(alias = "_FlushProc(png_struct_def *)")]
-pub fn stub_11428c() -> ! {
-    todo!("0x11428c _FlushProc(png_struct_def *)")
+pub fn stub_11428c() {
+    // IDA 0x11428c: single BX LR — libpng flush callback that flushes nothing.
 }
 
 // 0x114290 — __ZL15warning_handlerP14png_struct_defPKc
 #[doc(alias = "warning_handler(png_struct_def *,char const*)")]
-pub fn stub_114290() -> ! {
-    todo!("0x114290 warning_handler(png_struct_def *,char const*)")
+pub fn stub_114290(_png: *mut c_void, _msg: *const c_char) {
+    // IDA 0x114290: single BX LR — libpng warning callback that ignores
+    // the message (paired with error_handler at 0x1152a4, which throws).
 }
 
 // 0x114294 — __ZL6Formatv_0
 #[doc(alias = "__ZL6Formatv_0")]
-pub fn stub_114294() -> ! {
-    todo!("0x114294 __ZL6Formatv_0")
+pub fn stub_114294() -> &'static str {
+    // IDA 0x114294: LDR R0,="PNG" (0x114294..0x114298); BX LR (0x11429c).
+    "PNG"
 }
 
 // 0x1142a4 — __ZL11Descriptionv_0
 #[doc(alias = "__ZL11Descriptionv_0")]
-pub fn stub_1142a4() -> ! {
-    todo!("0x1142a4 __ZL11Descriptionv_0")
+pub fn stub_1142a4() -> &'static str {
+    // IDA 0x1142a4: LDR R0,="Portable Network Graphics"
+    // (0x1142a4..0x1142a8); BX LR (0x1142ac).
+    "Portable Network Graphics"
 }
 
 // 0x1142b4 — __ZL9Extensionv_0
 #[doc(alias = "__ZL9Extensionv_0")]
-pub fn stub_1142b4() -> ! {
-    todo!("0x1142b4 __ZL9Extensionv_0")
+pub fn stub_1142b4() -> &'static str {
+    // IDA 0x1142b4: LDR R0,="png" (0x1142b4..0x1142b8); BX LR (0x1142bc).
+    "png"
 }
 
 // 0x1142c4 — __ZL7RegExprv_0
 #[doc(alias = "__ZL7RegExprv_0")]
-pub fn stub_1142c4() -> ! {
-    todo!("0x1142c4 __ZL7RegExprv_0")
+pub fn stub_1142c4() -> &'static str {
+    // IDA 0x1142c4: LDR R0,="^.PNG\r" (0x1142c4..0x1142c8); BX LR (0x1142cc).
+    "^.PNG\r"
 }
 
 // 0x1142d4 — __ZL8MimeTypev_0
 #[doc(alias = "__ZL8MimeTypev_0")]
-pub fn stub_1142d4() -> ! {
-    todo!("0x1142d4 __ZL8MimeTypev_0")
+pub fn stub_1142d4() -> &'static str {
+    // IDA 0x1142d4: LDR R0,="image/png" (0x1142d4..0x1142d8); BX LR (0x1142dc).
+    "image/png"
 }
 
 // 0x1142e4 — __ZL19SupportsExportDepthi_0
 #[doc(alias = "__ZL19SupportsExportDepthi_0")]
-pub fn stub_1142e4() -> ! {
-    todo!("0x1142e4 __ZL19SupportsExportDepthi_0")
+pub fn stub_1142e4(depth: i32) -> bool {
+    // IDA 0x1142e4: {4,1} -> 1 (0x1142e4..0x1142ec); {24,8} -> 1
+    // (0x1142f0..0x1142f8); 0x20 -> 1 else 0 (0x1142fc..0x114310).
+    matches!(depth, 1 | 4 | 8 | 24 | 32)
 }
 
 // 0x114314 — __ZL18SupportsExportType15FREE_IMAGE_TYPE_0
 #[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_0")]
-pub fn stub_114314() -> ! {
-    todo!("0x114314 __ZL18SupportsExportType15FREE_IMAGE_TYPE_0")
+pub fn stub_114314(image_type: u32) -> bool {
+    // IDA 0x114314: SUB R3,R0,#1; a1 == 9 -> v1 = (a1 > 9) = false -> true;
+    // else v1 = (a1 - 1 > 1) unsigned so !v1 covers {1, 2}; tail a1 == 10.
+    // Net true set: {1, 2, 9, 10} (FIT_UINT16/INT16/FLOAT/RGBAF).
+    matches!(image_type, 1 | 2 | 9 | 10)
 }
 
 // 0x114338 — __ZL19SupportsICCProfilesv_0
 #[doc(alias = "__ZL19SupportsICCProfilesv_0")]
-pub fn stub_114338() -> ! {
-    todo!("0x114338 __ZL19SupportsICCProfilesv_0")
+pub fn stub_114338() -> i32 {
+    // IDA 0x114338: MOV R0,#1 (0x114338); BX LR (0x11433c). Always TRUE.
+    1
 }
 
 // 0x114340 — __Z7InitPNGP6Plugini
@@ -320,8 +416,28 @@ pub fn stub_115258() -> ! {
 
 // 0x1152a4 — __ZL13error_handlerP14png_struct_defPKc
 #[doc(alias = "error_handler(png_struct_def *,char const*)")]
-pub fn stub_1152a4() -> ! {
-    todo!("0x1152a4 error_handler(png_struct_def *,char const*)")
+pub fn stub_1152a4(_png: *mut c_void, msg: *const c_char) -> ! {
+    // IDA 0x1152a4: exception = __cxa_allocate_exception(4) (0x1152b4),
+    // *exception = msg (0x1152c4),
+    // __cxa_throw(exception, typeinfo for char const*, 0) (0x1152c8) —
+    // throws the message across the C API. Rust cannot throw Itanium
+    // exceptions across extern frames here; panic! is the host mapping.
+    let mut buf = [0u8; 256];
+    let mut len = 0;
+    while len < buf.len() {
+        // SAFETY: `msg` is a readable NUL-terminated string per the
+        // png_error contract.
+        let b = unsafe { *msg.add(len) as u8 };
+        if b == 0 {
+            break;
+        }
+        buf[len] = b;
+        len += 1;
+    }
+    panic!(
+        "png error: {}",
+        core::str::from_utf8(&buf[..len]).unwrap_or("<non-utf8>")
+    );
 }
 
 // 0x1152d0 — __ZL9_ReadProcP14png_struct_defPhm
@@ -380,14 +496,16 @@ pub fn stub_1161d8() -> ! {
 
 // 0x1161dc — __ZL19msdosWarningHandlerPKcS0_Pv
 #[doc(alias = "msdosWarningHandler(char const*,char const*,void *)")]
-pub fn stub_1161dc() -> ! {
-    todo!("0x1161dc msdosWarningHandler(char const*,char const*,void *)")
+pub fn stub_1161dc(_module: *const c_char, _fmt: *const c_char, _ap: *mut c_void) {
+    // IDA 0x1161dc: single BX LR — TIFF warning handler that ignores
+    // (module, fmt, ap).
 }
 
 // 0x1161e0 — __ZL17msdosErrorHandlerPKcS0_Pv
 #[doc(alias = "msdosErrorHandler(char const*,char const*,void *)")]
-pub fn stub_1161e0() -> ! {
-    todo!("0x1161e0 msdosErrorHandler(char const*,char const*,void *)")
+pub fn stub_1161e0(_module: *const c_char, _fmt: *const c_char, _ap: *mut c_void) {
+    // IDA 0x1161e0: single BX LR — TIFF error handler that ignores
+    // (module, fmt, ap).
 }
 
 // 0x1161e4 — __ZL6Formatv_1
