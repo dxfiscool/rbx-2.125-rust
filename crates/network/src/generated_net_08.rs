@@ -47,6 +47,24 @@ pub struct FreeImageInfo {
     pub transparent_index: i32,
     pub icc_size: usize,
 }
+
+/// One 555 (5-5-5) pixel expanded to BGR (IDA 0x10af0c per-pixel math).
+pub fn conv555_to_bgr(v: u16) -> [u8; 3] {
+    // IDA 0x10af0c: B = 255 * (v & 0x1F) / 31; G/R use the original 8-bit truncation before /31.
+    let b = (255 * (v & 0x1F) / 31) as u8;
+    let g = (((8 * (v & 0xE0) as i32 - ((v & 0x3E0) >> 5) as i32) as i8) / 31) as u8;
+    let r = ((((v & 0x7C00) >> 2) as i32 - ((v & 0x7C00) >> 10) as i32) as i8 / 31) as u8;
+    [b, g, r]
+}
+
+/// One 565 (5-6-5) pixel expanded to BGR (IDA 0x10b0b4 per-pixel math).
+pub fn conv565_to_bgr(v: u16) -> [u8; 3] {
+    // IDA 0x10b0b4: B = 255 * (v & 0x1F) / 31; G /63; R = -(v >> 11), all via 8-bit truncation.
+    let b = (255 * (v & 0x1F) / 31) as u8;
+    let g = (((8 * (v & 0xE0) as i32 - ((v & 0x7E0) >> 5) as i32) as i8) / 63) as u8;
+    let r = ((-((v >> 11) as i8)) / 31) as u8;
+    [b, g, r]
+}
 /// `std::map<std::string, FITAG*>` tag table (IDA 0x109c38 et al.).
 pub type TagMap = std::collections::BTreeMap<String, Vec<u8>>;
 /// `std::map<int, std::map<std::string, FITAG*>*>` domain table (IDA 0x109bf8 et al.).
@@ -1563,125 +1581,255 @@ pub fn stub_10a37c(map: &TagMap, key: &str) -> (Option<String>, Option<String>) 
 // 0x10a3c4 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE4findERS1_
 // type: int __fastcall(int, std::string *this)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE4findERS1_")]
-pub fn stub_10a3c4() -> ! {
-    todo!("0x10a3c4 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE4findERS1_")
+pub fn stub_10a3c4<'a>(map: &'a TagMap, key: &str) -> Option<&'a Vec<u8>> {
+    // IDA 0x10a3c4: BST find with the equality check; end on miss.
+    map.get(key)
 }
 
 // 0x10a43c — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
 // type: int __fastcall(int, int, int, std::string *this)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_")]
-pub fn stub_10a43c() -> ! {
-    todo!("0x10a43c __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_")
+pub fn stub_10a43c(map: &mut TagMap, key: String, tag: Vec<u8>) {
+    // IDA 0x10a43c: hinted insert + rebalance.
+    map.insert(key, tag);
 }
 
 // 0x10a4c0 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueERKS4_
 // type: int __fastcall(int, int, std::string *this)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueERKS4_")]
-pub fn stub_10a4c0() -> ! {
-    todo!("0x10a4c0 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueERKS4_")
+pub fn stub_10a4c0(map: &mut TagMap, key: String, tag: Vec<u8>) -> bool {
+    // IDA 0x10a4c0: unique insert; false when the key already exists.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(e) => {
+            e.insert(tag);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x10a584 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
 // type: int __fastcall(int, int, std::string *this)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_")]
-pub fn stub_10a584() -> ! {
-    todo!("0x10a584 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_")
+pub fn stub_10a584(map: &mut TagMap, key: String, tag: Vec<u8>) -> bool {
+    // IDA 0x10a584: hinted unique insert (rightmost fast path); false when the key exists.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(e) => {
+            e.insert(tag);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x10a6e4 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_ESC_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_ESC_")]
-pub fn stub_10a6e4() -> ! {
-    todo!("0x10a6e4 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_ESC_")
+pub fn stub_10a6e4(map: &mut TagMap, first: Option<&str>, last: Option<&str>) -> i32 {
+    // IDA 0x10a6e4: range erase ([first, last), whole-tree fast path); returns 0.
+    match (first, last) {
+        (None, None) => map.clear(),
+        _ => {
+            let drop: Vec<String> = map
+                .keys()
+                .filter(|k| {
+                    first.map(|f| k.as_str() >= f).unwrap_or(true)
+                        && last.map(|l| k.as_str() < l).unwrap_or(true)
+                })
+                .cloned()
+                .collect();
+            for k in drop {
+                map.remove(&k);
+            }
+        }
+    }
+    0
 }
 
 // 0x10a760 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseERS1_")]
-pub fn stub_10a760() -> ! {
-    todo!("0x10a760 __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseERS1_")
+pub fn stub_10a760(map: &mut TagMap, key: &str) -> usize {
+    // IDA 0x10a760: equal_range + range erase; returns the removed count.
+    usize::from(map.remove(key).is_some())
 }
 
 // 0x10a7a8 — __ZNSt3mapISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEEixERS5_
 #[doc(alias = "__ZNSt3mapISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEEixERS5_")]
-pub fn stub_10a7a8() -> ! {
-    todo!("0x10a7a8 __ZNSt3mapISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEEixERS5_")
+pub fn stub_10a7a8<'a>(map: &'a mut TagMap, key: &str) -> &'a mut Vec<u8> {
+    // IDA 0x10a7a8: lower_bound; miss → insert default; return the mapped reference.
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0x10a8e4 — __ZNSt3mapIiPS_ISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_
 #[doc(alias = "__ZNSt3mapIiPS_ISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_")]
-pub fn stub_10a8e4() -> ! {
-    todo!("0x10a8e4 __ZNSt3mapIiPS_ISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_")
+pub fn stub_10a8e4<'a>(map: &'a mut DomainMap, key: i32) -> &'a mut TagMap {
+    // IDA 0x10a8e4: lower_bound; miss → insert empty domain map; return the mapped reference.
+    map.entry(key).or_default()
 }
 
 // 0x10a950 — _FreeImage_ConvertLine1To24
 #[doc(alias = "_FreeImage_ConvertLine1To24")]
-pub fn stub_10a950() -> ! {
-    todo!("0x10a950 _FreeImage_ConvertLine1To24")
+pub fn stub_10a950(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10a950: 1-bit pixels via palette (0x80-first bit), RGB triplets out.
+    for i in 0..width {
+        let bit = (src.get(i / 8).copied().unwrap_or(0) >> (7 - (i % 8))) & 1;
+        let entry = palette.get(bit as usize).copied().unwrap_or([0; 4]);
+        let o = i * 3;
+        if dst.len() >= o + 3 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+        }
+    }
 }
 
 // 0x10ab1c — _FreeImage_ConvertLine4To24
 #[doc(alias = "_FreeImage_ConvertLine4To24")]
-pub fn stub_10ab1c() -> ! {
-    todo!("0x10ab1c _FreeImage_ConvertLine4To24")
+pub fn stub_10ab1c(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10ab1c: 4-bit nibbles via palette (high nibble first), RGB triplets out.
+    for i in 0..width {
+        let byte = src.get(i / 2).copied().unwrap_or(0);
+        let nibble = if i % 2 == 0 { byte >> 4 } else { byte & 0xF };
+        let entry = palette.get(nibble as usize).copied().unwrap_or([0; 4]);
+        let o = i * 3;
+        if dst.len() >= o + 3 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+        }
+    }
 }
 
 // 0x10ad30 — _FreeImage_ConvertLine8To24
 #[doc(alias = "_FreeImage_ConvertLine8To24")]
-pub fn stub_10ad30() -> ! {
-    todo!("0x10ad30 _FreeImage_ConvertLine8To24")
+pub fn stub_10ad30(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10ad30: 8-bit indices via palette, RGB triplets out.
+    for i in 0..width {
+        let entry = palette.get(src.get(i).copied().unwrap_or(0) as usize).copied().unwrap_or([0; 4]);
+        let o = i * 3;
+        if dst.len() >= o + 3 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+        }
+    }
 }
 
 // 0x10af0c — _FreeImage_ConvertLine16To24_555
 #[doc(alias = "_FreeImage_ConvertLine16To24_555")]
-pub fn stub_10af0c() -> ! {
-    todo!("0x10af0c _FreeImage_ConvertLine16To24_555")
+pub fn stub_10af0c(dst: &mut [u8], src: &[u8], width: usize) {
+    // IDA 0x10af0c: 16-bit 555 pixels to BGR triplets (odd-width head, then pairs).
+    for i in 0..width {
+        let o = i * 2;
+        let v = u16::from_le_bytes([src.get(o).copied().unwrap_or(0), src.get(o + 1).copied().unwrap_or(0)]);
+        let d = i * 3;
+        if dst.len() >= d + 3 {
+            dst[d..d + 3].copy_from_slice(&conv555_to_bgr(v));
+        }
+    }
 }
 
 // 0x10b0b4 — _FreeImage_ConvertLine16To24_565
 #[doc(alias = "_FreeImage_ConvertLine16To24_565")]
-pub fn stub_10b0b4() -> ! {
-    todo!("0x10b0b4 _FreeImage_ConvertLine16To24_565")
+pub fn stub_10b0b4(dst: &mut [u8], src: &[u8], width: usize) {
+    // IDA 0x10b0b4: 16-bit 565 pixels to BGR triplets (odd-width head, then pairs).
+    for i in 0..width {
+        let o = i * 2;
+        let v = u16::from_le_bytes([src.get(o).copied().unwrap_or(0), src.get(o + 1).copied().unwrap_or(0)]);
+        let d = i * 3;
+        if dst.len() >= d + 3 {
+            dst[d..d + 3].copy_from_slice(&conv565_to_bgr(v));
+        }
+    }
 }
 
 // 0x10b270 — _FreeImage_ConvertLine32To24
 #[doc(alias = "_FreeImage_ConvertLine32To24")]
-pub fn stub_10b270() -> ! {
-    todo!("0x10b270 _FreeImage_ConvertLine32To24")
+pub fn stub_10b270(dst: &mut [u8], src: &[u8], width: usize) {
+    // IDA 0x10b270: 32-bit pixels to BGR triplets, alpha dropped (8-wide unrolled runs + head).
+    for i in 0..width {
+        let o = i * 4;
+        let d = i * 3;
+        if dst.len() >= d + 3 && src.len() >= o + 3 {
+            dst[d..d + 3].copy_from_slice(&src[o..o + 3]);
+        }
+    }
 }
 
 // 0x10b4a0 — _FreeImage_ConvertTo24Bits
 #[doc(alias = "_FreeImage_ConvertTo24Bits")]
-pub fn stub_10b4a0() -> ! {
-    todo!("0x10b4a0 _FreeImage_ConvertTo24Bits")
+pub fn stub_10b4a0(dib: Option<&FreeImageInfo>, convert: &mut dyn FnMut(&FreeImageInfo) -> Option<FreeImageInfo>) -> Option<FreeImageInfo> {
+    // IDA 0x10b4a0: null → null; dispatch on bpp/type to the ConvertLine*To24 row converters into a
+    // fresh 24-bit dib.
+    dib.and_then(|d| convert(d))
 }
 
 // 0x10c390 — _FreeImage_ConvertLine1To32
 #[doc(alias = "_FreeImage_ConvertLine1To32")]
-pub fn stub_10c390() -> ! {
-    todo!("0x10c390 _FreeImage_ConvertLine1To32")
+pub fn stub_10c390(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10c390: 1-bit pixels via palette (0x80-first bit), BGRA quads out (alpha 255).
+    for i in 0..width {
+        let bit = (src.get(i / 8).copied().unwrap_or(0) >> (7 - (i % 8))) & 1;
+        let entry = palette.get(bit as usize).copied().unwrap_or([0; 4]);
+        let o = i * 4;
+        if dst.len() >= o + 4 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+            dst[o + 3] = 255;
+        }
+    }
 }
 
 // 0x10c590 — _FreeImage_ConvertLine4To32
 #[doc(alias = "_FreeImage_ConvertLine4To32")]
-pub fn stub_10c590() -> ! {
-    todo!("0x10c590 _FreeImage_ConvertLine4To32")
+pub fn stub_10c590(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10c590: 4-bit nibbles via palette (high nibble first), BGRA quads out (alpha 255).
+    for i in 0..width {
+        let byte = src.get(i / 2).copied().unwrap_or(0);
+        let nibble = if i % 2 == 0 { byte >> 4 } else { byte & 0xF };
+        let entry = palette.get(nibble as usize).copied().unwrap_or([0; 4]);
+        let o = i * 4;
+        if dst.len() >= o + 4 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+            dst[o + 3] = 255;
+        }
+    }
 }
 
 // 0x10c7c0 — _FreeImage_ConvertLine8To32
 #[doc(alias = "_FreeImage_ConvertLine8To32")]
-pub fn stub_10c7c0() -> ! {
-    todo!("0x10c7c0 _FreeImage_ConvertLine8To32")
+pub fn stub_10c7c0(dst: &mut [u8], src: &[u8], width: usize, palette: &[[u8; 4]]) {
+    // IDA 0x10c7c0: 8-bit indices via palette, BGRA quads out (alpha 255).
+    for i in 0..width {
+        let entry = palette.get(src.get(i).copied().unwrap_or(0) as usize).copied().unwrap_or([0; 4]);
+        let o = i * 4;
+        if dst.len() >= o + 4 {
+            dst[o..o + 3].copy_from_slice(&entry[..3]);
+            dst[o + 3] = 255;
+        }
+    }
 }
 
 // 0x10c9c4 — _FreeImage_ConvertLine16To32_555
 #[doc(alias = "_FreeImage_ConvertLine16To32_555")]
-pub fn stub_10c9c4() -> ! {
-    todo!("0x10c9c4 _FreeImage_ConvertLine16To32_555")
+pub fn stub_10c9c4(dst: &mut [u8], src: &[u8], width: usize) {
+    // IDA 0x10c9c4: 16-bit 555 pixels to BGRA quads (alpha 255).
+    for i in 0..width {
+        let o = i * 2;
+        let v = u16::from_le_bytes([src.get(o).copied().unwrap_or(0), src.get(o + 1).copied().unwrap_or(0)]);
+        let d = i * 4;
+        if dst.len() >= d + 4 {
+            dst[d..d + 4].copy_from_slice(&[conv555_to_bgr(v)[0], conv555_to_bgr(v)[1], conv555_to_bgr(v)[2], 255]);
+        }
+    }
 }
 
 // 0x10cb84 — _FreeImage_ConvertLine16To32_565
 #[doc(alias = "_FreeImage_ConvertLine16To32_565")]
-pub fn stub_10cb84() -> ! {
-    todo!("0x10cb84 _FreeImage_ConvertLine16To32_565")
+pub fn stub_10cb84(dst: &mut [u8], src: &[u8], width: usize) {
+    // IDA 0x10cb84: 16-bit 565 pixels to BGRA quads (alpha 255).
+    for i in 0..width {
+        let o = i * 2;
+        let v = u16::from_le_bytes([src.get(o).copied().unwrap_or(0), src.get(o + 1).copied().unwrap_or(0)]);
+        let d = i * 4;
+        if dst.len() >= d + 4 {
+            dst[d..d + 4].copy_from_slice(&[conv565_to_bgr(v)[0], conv565_to_bgr(v)[1], conv565_to_bgr(v)[2], 255]);
+        }
+    }
 }
