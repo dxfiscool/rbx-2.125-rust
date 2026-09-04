@@ -41,6 +41,18 @@ pub struct FreeImageInfo {
     pub bpp: u32,
     pub dots_per_meter_x: i32,
     pub dots_per_meter_y: i32,
+    pub colors_used: u32,
+    pub palette: Vec<[u8; 4]>,
+    pub background_color: [u8; 4],
+    pub transparent_index: i32,
+    pub icc_size: usize,
+}
+
+/// FreeImage metadata store: domain → (key → tag bytes) plus a walk cursor (IDA 0x108cdc).
+#[derive(Clone, Debug, Default)]
+pub struct FreeImageMetadata {
+    pub domains: std::collections::HashMap<i32, std::collections::BTreeMap<String, Vec<u8>>>,
+    pub cursor: (i32, usize),
 }
 
 /// FMOD tremolo DSP instance state (IDA 0x105cdc).
@@ -996,159 +1008,315 @@ pub fn stub_107b68(dib: Option<&FreeImageInfo>) -> i32 {
 
 // 0x107b88 — _FreeImage_GetDotsPerMeterX
 #[doc(alias = "_FreeImage_GetDotsPerMeterX")]
-pub fn stub_107b88() -> ! {
-    todo!("0x107b88 _FreeImage_GetDotsPerMeterX")
+pub fn stub_107b88(dib: Option<&FreeImageInfo>) -> i32 {
+    // IDA 0x107b88: null → 0, else info header word 6.
+    dib.map(|d| d.dots_per_meter_x).unwrap_or(0)
 }
 
 // 0x107ba8 — _FreeImage_GetColorsUsed
 #[doc(alias = "_FreeImage_GetColorsUsed")]
-pub fn stub_107ba8() -> ! {
-    todo!("0x107ba8 _FreeImage_GetColorsUsed")
+pub fn stub_107ba8(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107ba8: null → 0, else info header word 8 (colors used).
+    dib.map(|d| d.colors_used).unwrap_or(0)
 }
 
 // 0x107bc8 — _FreeImage_GetBPP
 // type: int(void)
 #[doc(alias = "_FreeImage_GetBPP")]
-pub fn stub_107bc8() -> ! {
-    todo!("0x107bc8 _FreeImage_GetBPP")
+pub fn stub_107bc8(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107bc8: null → 0, else the bpp halfword (header half 7).
+    dib.map(|d| d.bpp).unwrap_or(0)
 }
 
 // 0x107be8 — _FreeImage_GetPalette
 #[doc(alias = "_FreeImage_GetPalette")]
-pub fn stub_107be8() -> ! {
-    todo!("0x107be8 _FreeImage_GetPalette")
+pub fn stub_107be8(dib: Option<&FreeImageInfo>) -> Option<&[[u8; 4]]> {
+    // IDA 0x107be8: dib && bpp <= 15 → palette handle (header + 10); else null.
+    dib.filter(|d| d.bpp <= 15).map(|d| d.palette.as_slice())
 }
 
 // 0x107c1c — _FreeImage_SetTransparent
 #[doc(alias = "_FreeImage_SetTransparent")]
-pub fn stub_107c1c() -> ! {
-    todo!("0x107c1c _FreeImage_SetTransparent")
+pub fn stub_107c1c(dib: &mut FreeImageInfo, index: i32) -> i32 {
+    // IDA 0x107c1c: bpp <= 8 or == 32 → word+20 = index, return dib (nonzero); else word+20 = 0,
+    // return bpp.
+    if dib.bpp <= 8 || dib.bpp == 32 {
+        dib.transparent_index = index;
+        1
+    } else {
+        dib.transparent_index = 0;
+        dib.bpp as i32
+    }
 }
 
 // 0x107c60 — _FreeImage_GetHeight
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_GetHeight")]
-pub fn stub_107c60() -> ! {
-    todo!("0x107c60 _FreeImage_GetHeight")
+pub fn stub_107c60(dib: Option<&FreeImageInfo>) -> i32 {
+    // IDA 0x107c60: null → 0, else info header word 2 (height).
+    dib.map(|d| d.height as i32).unwrap_or(0)
 }
 
 // 0x107c80 — _FreeImage_GetWidth
 #[doc(alias = "_FreeImage_GetWidth")]
-pub fn stub_107c80() -> ! {
-    todo!("0x107c80 _FreeImage_GetWidth")
+pub fn stub_107c80(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107c80: null → 0, else info header word 1 (width).
+    dib.map(|d| d.width).unwrap_or(0)
 }
 
 // 0x107ca0 — _FreeImage_GetLine
 #[doc(alias = "_FreeImage_GetLine")]
-pub fn stub_107ca0() -> ! {
-    todo!("0x107ca0 _FreeImage_GetLine")
+pub fn stub_107ca0(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107ca0: null → 0; else (width * bpp + 7) >> 3.
+    dib.map(|d| (d.width * d.bpp + 7) >> 3).unwrap_or(0)
 }
 
 // 0x107cd4 — _FreeImage_GetPitch
 #[doc(alias = "_FreeImage_GetPitch")]
-pub fn stub_107cd4() -> ! {
-    todo!("0x107cd4 _FreeImage_GetPitch")
+pub fn stub_107cd4(dib: Option<&FreeImageInfo>) -> u32 {
+    // IDA 0x107cd4: null → 0; else (GetLine + 3) & ~3.
+    (stub_107ca0(dib) + 3) & !3
 }
 
 // 0x107cf8 — _FreeImage_GetBackgroundColor
 #[doc(alias = "_FreeImage_GetBackgroundColor")]
-pub fn stub_107cf8() -> ! {
-    todo!("0x107cf8 _FreeImage_GetBackgroundColor")
+pub fn stub_107cf8(dib: Option<&FreeImageInfo>, out: &mut [u8; 4], find_index: &mut dyn FnMut(&FreeImageInfo, [u8; 4]) -> u8) -> i32 {
+    // IDA 0x107cf8: null/no-bg → 0; copy the +16 bytes; bpp != 8 → alpha 0, 1; bpp 8 → palette
+    // index search, 1.
+    let dib = match dib {
+        Some(d) if d.has_background => d,
+        _ => return 0,
+    };
+    *out = dib.background_color;
+    if dib.bpp != 8 {
+        out[3] = 0;
+        return 1;
+    }
+    out[3] = find_index(dib, dib.background_color);
+    1
 }
 
 // 0x10813c — _FreeImage_FindCloseMetadata
 #[doc(alias = "_FreeImage_FindCloseMetadata")]
-pub fn stub_10813c() -> ! {
-    todo!("0x10813c _FreeImage_FindCloseMetadata")
+pub fn stub_10813c(handle: Option<usize>, free_inner: &mut dyn FnMut(usize), free_outer: &mut dyn FnMut(usize)) {
+    // IDA 0x10813c: null → no-op; free the search handle then the parent block.
+    if let Some(h) = handle {
+        free_inner(h);
+        free_outer(h);
+    }
 }
 
 // 0x108168 — _FreeImage_DestroyICCProfile
 #[doc(alias = "_FreeImage_DestroyICCProfile")]
-pub fn stub_108168() -> ! {
-    todo!("0x108168 _FreeImage_DestroyICCProfile")
+pub fn stub_108168(dib: &mut FreeImageInfo, is_reserved: bool, free: &mut dyn FnMut(usize)) {
+    // IDA 0x108168: null → no-op; *dib == -284 (reserved magic) → skip; else free the ICC data and
+    // clear size/data.
+    if is_reserved {
+        return;
+    }
+    if dib.icc_profile != 0 {
+        free(dib.icc_profile);
+    }
+    dib.icc_profile = 0;
+    dib.icc_size = 0;
 }
 
 // 0x1081a0 — __Z22FreeImage_Aligned_FreePv
 // type: _DWORD __fastcall(void *)
 #[doc(alias = "__Z22FreeImage_Aligned_FreePv")]
-pub fn stub_1081a0() -> ! {
-    todo!("0x1081a0 __Z22FreeImage_Aligned_FreePv")
+pub fn stub_1081a0(aligned: usize, raw_of: &mut dyn FnMut(usize) -> usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x1081a0: free the raw block kept at slot - 4.
+    free(raw_of(aligned));
 }
 
 // 0x1081b4 — _FreeImage_CreateICCProfile
 #[doc(alias = "_FreeImage_CreateICCProfile")]
-pub fn stub_1081b4() -> ! {
-    todo!("0x1081b4 _FreeImage_CreateICCProfile")
+pub fn stub_1081b4(
+    has_dib: bool,
+    dib: &mut FreeImageInfo,
+    is_reserved: bool,
+    data: &[u8],
+    destroy: &mut dyn FnMut(&mut FreeImageInfo),
+    alloc_copy: &mut dyn FnMut(&[u8]) -> Option<usize>,
+) -> usize {
+    // IDA 0x1081b4: DestroyICCProfile; null dib → 0; empty data or reserved magic → the +284 slot;
+    // else malloc + copy, store size/data; return the +284 slot.
+    destroy(dib);
+    if !has_dib {
+        return 0;
+    }
+    if data.is_empty() || is_reserved {
+        return 284;
+    }
+    if let Some(h) = alloc_copy(data) {
+        dib.icc_profile = h;
+        dib.icc_size = data.len();
+    }
+    284
 }
 
 // 0x108220 — _FreeImage_SetTransparencyTable
 // type: void *__fastcall(void *result, const void *, size_t)
 #[doc(alias = "_FreeImage_SetTransparencyTable")]
-pub fn stub_108220() -> ! {
-    todo!("0x108220 _FreeImage_SetTransparencyTable")
+pub fn stub_108220(dib: &mut FreeImageInfo, data: Option<&[u8]>, fill: &mut dyn FnMut(&mut FreeImageInfo, Option<&[u8]>)) -> bool {
+    // IDA 0x108220: bpp > 8 → no-op (false); else transparent flag + count set; copy the table or
+    // fill 255.
+    if dib.bpp > 8 {
+        return false;
+    }
+    dib.transparent_index = 1;
+    dib.transparency_count = data.map(|d| d.len() as u32).unwrap_or(0);
+    fill(dib, data);
+    true
 }
 
 // 0x108290 — _FreeImage_SetBackgroundColor
 #[doc(alias = "_FreeImage_SetBackgroundColor")]
-pub fn stub_108290() -> ! {
-    todo!("0x108290 _FreeImage_SetBackgroundColor")
+pub fn stub_108290(dib: Option<&mut FreeImageInfo>, color: Option<[u8; 4]>) -> i32 {
+    // IDA 0x108290: null → 0; color → copy to +16, set flag; none → clear +16..19; 1.
+    let dib = match dib {
+        Some(d) => d,
+        None => return 0,
+    };
+    match color {
+        Some(c) => {
+            dib.background_color = c;
+            dib.has_background = true;
+        }
+        None => {
+            dib.background_color = [0; 4];
+            dib.has_background = false;
+        }
+    }
+    1
 }
 
 // 0x1082dc — _FreeImage_GetColorType
 #[doc(alias = "_FreeImage_GetColorType")]
-pub fn stub_1082dc() -> ! {
-    todo!("0x1082dc _FreeImage_GetColorType")
+pub fn stub_1082dc(dib: Option<&FreeImageInfo>, analyze_bitmap: &mut dyn FnMut(&FreeImageInfo) -> i32) -> i32 {
+    // IDA 0x1082dc: FIT_RGBA16/RGBAF (9/11) → 2 (palette); FIT_RGBF/type-12 (10/12) → 4 (rgb-alpha);
+    // bitmap and other types → pixel analysis.
+    let dib = match dib {
+        Some(d) => d,
+        None => return 0,
+    };
+    match dib.image_type {
+        9 | 11 => 2,
+        10 | 12 => 4,
+        _ => analyze_bitmap(dib),
+    }
 }
 
 // 0x108858 — _FreeImage_IsTransparent
 #[doc(alias = "_FreeImage_IsTransparent")]
-pub fn stub_108858() -> ! {
-    todo!("0x108858 _FreeImage_IsTransparent")
+pub fn stub_108858(dib: Option<&FreeImageInfo>, color_type_of: &mut dyn FnMut(&FreeImageInfo) -> i32) -> bool {
+    // IDA 0x108858: null → false; bpp 32 → GetColorType == 4 (rgb-alpha); else word+20 != 0.
+    let dib = match dib {
+        Some(d) => d,
+        None => return false,
+    };
+    if dib.bpp == 32 {
+        return color_type_of(dib) == 4;
+    }
+    dib.transparent_index != 0
 }
 
 // 0x1088a4 — __Z24FreeImage_Aligned_Mallocmm
 // type: _DWORD __fastcall(unsigned int, unsigned int)
 #[doc(alias = "__Z24FreeImage_Aligned_Mallocmm")]
-pub fn stub_1088a4() -> ! {
-    todo!("0x1088a4 __Z24FreeImage_Aligned_Mallocmm")
+pub fn stub_1088a4(size: usize, alignment: u32, malloc: &mut dyn FnMut(usize) -> Option<usize>) -> Option<usize> {
+    // IDA 0x1088a4: assert alignment == 16; malloc(size + 32); slot = (raw & ~15) + 32 with raw kept
+    // at slot - 4; null on failure.
+    assert_eq!(alignment, 16);
+    malloc(size + 32)
 }
 
 // 0x1088fc — _FreeImage_AllocateT
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FreeImage_AllocateT")]
-pub fn stub_1088fc() -> ! {
-    todo!("0x1088fc _FreeImage_AllocateT")
+pub fn stub_1088fc(
+    image_type: i32,
+    width: u32,
+    height: u32,
+    bpp: u32,
+    build: &mut dyn FnMut(i32, u32, u32, u32) -> Option<FreeImageInfo>,
+) -> Option<FreeImageInfo> {
+    // IDA 0x1088fc: handle = malloc(4) (null → null); bpp by type (1: validate 1/2/4/8/16/32 else 8;
+    // 2/3: 16; 4/5/6: 32; others fall through); image-size + aligned data alloc; header fill.
+    let bits = match image_type {
+        1 => {
+            let shift = bpp.wrapping_sub(1);
+            if shift > 0x1F || ((1u32 << shift) & 0x80808089) == 0 {
+                8
+            } else {
+                bpp
+            }
+        }
+        2 | 3 => 16,
+        4 | 5 | 6 => 32,
+        _ => bpp,
+    };
+    build(image_type, width, height, bits)
 }
 
 // 0x108afc — _FreeImage_Allocate
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FreeImage_Allocate")]
-pub fn stub_108afc() -> ! {
-    todo!("0x108afc _FreeImage_Allocate")
+pub fn stub_108afc(
+    width: u32,
+    height: u32,
+    bpp: u32,
+    masks: [u32; 3],
+    build: &mut dyn FnMut(i32, u32, u32, u32) -> Option<FreeImageInfo>,
+) -> Option<FreeImageInfo> {
+    // IDA 0x108afc: Allocate(width, height, bpp, masks) → AllocateT(FIT_BITMAP = 1, ...).
+    let _ = masks;
+    stub_1088fc(1, width, height, bpp, build)
 }
 
 // 0x108b40 — _FreeImage_Unload
 #[doc(alias = "_FreeImage_Unload")]
-pub fn stub_108b40() -> ! {
-    todo!("0x108b40 _FreeImage_Unload")
+pub fn stub_108b40(dib: &mut Option<FreeImageInfo>, free_tags: &mut dyn FnMut()) {
+    // IDA 0x108b40: null → no-op; free the ICC profile block; walk the metadata map deleting tags;
+    // free the dib.
+    if dib.is_none() {
+        return;
+    }
+    free_tags();
+    *dib = None;
 }
 
 // 0x108cdc — _FreeImage_FindNextMetadata
 #[doc(alias = "_FreeImage_FindNextMetadata")]
-pub fn stub_108cdc() -> ! {
-    todo!("0x108cdc _FreeImage_FindNextMetadata")
+pub fn stub_108cdc(model: &mut FreeImageMetadata, domain: i32) -> Option<(String, Vec<u8>)> {
+    // IDA 0x108cdc: null → 0; walk the domain map from the cursor in tree order; each hit bumps the
+    // index and returns the tag (1); exhausted → 0.
+    let tags = model.domains.get(&domain)?;
+    let next = tags.iter().nth(model.cursor.1)?;
+    model.cursor = (domain, model.cursor.1 + 1);
+    Some((next.0.clone(), next.1.clone()))
 }
 
 // 0x108e98 — _FreeImage_GetMetadataCount
 #[doc(alias = "_FreeImage_GetMetadataCount")]
-pub fn stub_108e98() -> ! {
-    todo!("0x108e98 _FreeImage_GetMetadataCount")
+pub fn stub_108e98(model: Option<&FreeImageMetadata>, domain: i32) -> i32 {
+    // IDA 0x108e98: null dib → 0; domain missing → 0; else the domain tag count.
+    model
+        .and_then(|m| m.domains.get(&domain))
+        .map(|tags| tags.len() as i32)
+        .unwrap_or(0)
 }
 
 // 0x108f00 — _FreeImage_GetMetadata
 #[doc(alias = "_FreeImage_GetMetadata")]
-pub fn stub_108f00() -> ! {
-    todo!("0x108f00 _FreeImage_GetMetadata")
+pub fn stub_108f00(model: Option<&FreeImageMetadata>, domain: i32, key: Option<&str>) -> Option<Vec<u8>> {
+    // IDA 0x108f00: null key/model/out → 0; *out = 0; domain + key lookup in the tag trees;
+    // miss → 0; hit → tag stored, nonzero.
+    let (model, key) = match (model, key) {
+        (Some(m), Some(k)) => (m, k),
+        _ => return None,
+    };
+    model.domains.get(&domain)?.get(key).cloned()
 }
 
 // 0x1090ac — _FreeImage_SetMetadata
