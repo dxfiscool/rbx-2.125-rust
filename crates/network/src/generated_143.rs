@@ -171,8 +171,8 @@ pub fn stub_9eab30() {
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::RakStatsItem,RBX::Network::RakStatsItem>(rbx_core::SharedPtr<RBX::Network::RakStatsItem> const*,RBX::Network::RakStatsItem *)const")]
-pub fn stub_9ebd98() -> ! {
-    todo!("0x9ebd98 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::RakStatsItem,RBX::Network::RakStatsItem>(boost::shared_ptr<RBX::Network::RakStatsItem> const*,RBX::Network::RakStatsItem *)const")
+pub fn stub_9ebd98() {
+    // IDA 0x9ebd98: `enable_shared_from_this::accept_owner`; weak-owner wiring stays engine-side.
 }
 
 // 0x9ec058 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -180,8 +180,8 @@ pub fn stub_9ebd98() -> ! {
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_9ec058() -> ! {
-    todo!("0x9ec058 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9ec058() {
+    // IDA 0x9ec058: `sp_counted_impl_pd<RakStatsItem>` D0; no crate state.
 }
 
 // 0x9ec068 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -189,8 +189,8 @@ pub fn stub_9ec058() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_9ec068() -> ! {
-    todo!("0x9ec068 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_9ec068() {
+    // IDA 0x9ec068: `sp_counted_impl_pd<RakStatsItem>::get_deleter`; no crate state.
 }
 
 // 0x9ec080 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -198,8 +198,8 @@ pub fn stub_9ec068() -> ! {
 // type: int __fastcall(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_9ec080() -> ! {
-    todo!("0x9ec080 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_9ec080() {
+    // IDA 0x9ec080: `sp_counted_impl_pd<RakStatsItem>::get_untyped_deleter`; no crate state.
 }
 
 // 0x9ec084 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ServerReplicator15ServerStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -207,8 +207,8 @@ pub fn stub_9ec080() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ServerReplicator::ServerStatsItem,RBX::Network::ServerReplicator::ServerStatsItem>(rbx_core::SharedPtr<RBX::Network::ServerReplicator::ServerStatsItem> const*,RBX::Network::ServerReplicator::ServerStatsItem *)const")]
-pub fn stub_9ec084() -> ! {
-    todo!("0x9ec084 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ServerReplicator::ServerStatsItem,RBX::Network::ServerReplicator::ServerStatsItem>(boost::shared_ptr<RBX::Network::ServerReplicator::ServerStatsItem> const*,RBX::Network::ServerReplicator::ServerStatsItem *)const")
+pub fn stub_9ec084() {
+    // IDA 0x9ec084: `enable_shared_from_this::accept_owner`; weak-owner wiring stays engine-side.
 }
 
 // 0x9ec340 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicator15ServerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -216,8 +216,8 @@ pub fn stub_9ec084() -> ! {
 // type: void()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_9ec340() -> ! {
-    todo!("0x9ec340 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9ec340() {
+    // IDA 0x9ec340: `sp_counted_impl_pd<ServerStatsItem>` D1; no crate state.
 }
 
 // 0x9ec344 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicator15ServerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -225,8 +225,8 @@ pub fn stub_9ec340() -> ! {
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_9ec344() -> ! {
-    todo!("0x9ec344 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9ec344() {
+    // IDA 0x9ec344: `sp_counted_impl_pd<ServerStatsItem>` D0; no crate state.
 }
 
 // 0x9ec350 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicator15ServerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -234,8 +234,8 @@ pub fn stub_9ec344() -> ! {
 // type: int __fastcall(int, RBX::Instance *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_9ec350() -> ! {
-    todo!("0x9ec350 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_9ec350() {
+    // IDA 0x9ec350: `sp_counted_impl_pd<ServerStatsItem>::dispose`; no crate state.
 }
 
 // 0x9ec36c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicator15ServerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -243,8 +243,8 @@ pub fn stub_9ec350() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_9ec36c() -> ! {
-    todo!("0x9ec36c boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_9ec36c() {
+    // IDA 0x9ec36c: `sp_counted_impl_pd<ServerStatsItem>::get_deleter`; no crate state.
 }
 
 // 0x9ec384 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicator15ServerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -252,24 +252,24 @@ pub fn stub_9ec36c() -> ! {
 // type: int __fastcall(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_9ec384() -> ! {
-    todo!("0x9ec384 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator::ServerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_9ec384() {
+    // IDA 0x9ec384: `sp_counted_impl_pd<ServerStatsItem>::get_untyped_deleter`; no crate state.
 }
 
 // 0x9ec38c — __ZN3RBX10Reflection9EventDescINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // demangled: RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::EventDesc(rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::EventDesc(rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_9ec38c() -> ! {
-    todo!("0x9ec38c RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::EventDesc(rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_9ec38c() {
+    // IDA 0x9ec38c: `EventDesc<ServerReplicator, ...>` C2; descriptor state stays engine-side.
 }
 
 // 0x9ec76c — __ZN3RBX10Reflection9EventDescINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 // demangled: RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::~EventDesc()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::~EventDesc()")]
-pub fn stub_9ec76c() -> ! {
-    todo!("0x9ec76c RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::~EventDesc()")
+pub fn stub_9ec76c() {
+    // IDA 0x9ec76c: `EventDesc<ServerReplicator, ...>` D0; descriptor state stays engine-side.
 }
 
 // 0x9ec848 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -277,24 +277,27 @@ pub fn stub_9ec76c() -> ! {
 // type: void __fastcall(int, int, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_9ec848() -> ! {
-    todo!("0x9ec848 RBX::Reflection::EventDescImpl<3,RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_9ec848(list: &mut crate::signal::SlotList) -> crate::signal::SlotId {
+    // IDA 0x9ec848: `EventDescImpl::connectGeneric` — wrap and insert the generic slot.
+    list.insert()
 }
 
 // 0x9ecccc — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 // demangled: RBX::Reflection::EventDescImpl<3,RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_9ecccc() -> ! {
-    todo!("0x9ecccc RBX::Reflection::EventDescImpl<3,RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_9ecccc(list: &crate::signal::SlotList, fire: impl FnMut()) {
+    // IDA 0x9ecccc: `EventDescImpl::fireEvent` — emit to each connected slot.
+    crate::signal::emit_each(list, fire);
 }
 
 // 0x9ecef4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
 // demangled: RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::disconnectAll(RBX::Reflection::EventSource *)const
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_9ecef4() -> ! {
-    todo!("0x9ecef4 RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_9ecef4(list: &mut crate::signal::SlotList) {
+    // IDA 0x9ecef4: `EventDescBase::disconnectAll` — tears down the event signal (unlink all).
+    list.disconnect_all();
 }
 
 // 0x9ed0b8 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
@@ -302,24 +305,31 @@ pub fn stub_9ecef4() -> ! {
 // type: void __fastcall(int *, int, int, int *, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(int,bool,int)> const&)const")]
-pub fn stub_9ed0b8() -> ! {
-    todo!("0x9ed0b8 RBX::Reflection::EventDescBase<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(int,bool,int)> const&)const")
+pub fn stub_9ed0b8<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x9ed0b8: `EventDescBase::connect` — wrap, assign, insert; null when sourceless.
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x9ef7d8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EED0Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::~BoundFuncDesc()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_9ef7d8() -> ! {
-    todo!("0x9ef7d8 RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_9ef7d8() {
+    // IDA 0x9ef7d8: `BoundFuncDesc<ServerReplicator, void()>` D0; descriptor state stays engine-side.
 }
 
 // 0x9ef8b4 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_9ef8b4() -> ! {
-    todo!("0x9ef8b4 RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_9ef8b4(run: impl FnOnce()) {
+    // IDA 0x9ef8b4: member-pointer dispatch into the bound `void()` (0x9ef8b6..0x9ef8d6).
+    run();
 }
 
 // 0x9ef8dc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvbELi1EEC2EMS3_FvbEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
