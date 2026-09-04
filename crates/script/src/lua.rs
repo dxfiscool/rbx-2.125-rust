@@ -1675,12 +1675,16 @@ pub struct LuaAxes {
     pub bits: u8,
 }
 
-/// Host `RBX::CellID` payload.
+/// Host `RBX::CellID` payload. The trailing word hosts the refcounted link
+/// copied (with a `shared_count` bump) by `pushNewObject<CellID>` (IDA
+/// 0x26e42e) and released by the `CellID` temp dtor in `operator()<CellID>`
+/// (IDA 0x26e17c).
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
 pub struct LuaCellId {
     pub x: i32,
     pub y: i32,
     pub z: i32,
+    pub shared: u64,
 }
 
 /// Host `RBX::InputObject` payload (only the input-kind tag is modeled; the
@@ -1774,6 +1778,29 @@ pub mod lua_bridge_class {
 /// Lua function slot read by `lua_tofunction`.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
 pub struct LuaWeakFunctionRef {
+    pub id: u64,
+}
+/// Host `RBX::Reflection::Tuple` behind `ArgumentPusher::operator()`
+/// (IDA 0x26df2c): ordered variants, one `withVariantValue` push each
+/// (IDA 0x26df4c, stride 17) with the counts summed (0x26df52).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct LuaTuple {
+    pub items: Vec<ScriptVariant>,
+}
+
+/// Host `boost::function<shared_ptr<Tuple>(shared_ptr<Tuple>)>` pushed by
+/// `ArgumentPusher::operator()` (IDA 0x26df60 via `lua_pushfunction`,
+/// 0x26dfc4). Only identity is modeled; invocation is engine-side.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub struct LuaTupleFn {
+    pub id: u64,
+}
+
+/// Host `boost::function<void(shared_ptr<Tuple>, function<void(IAsyncResult*)>)>`
+/// pushed by `ArgumentPusher::operator()` (IDA 0x26e030 via
+/// `lua_pushfunction`, 0x26e094). Only identity is modeled.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub struct LuaYieldingFn {
     pub id: u64,
 }
 
@@ -1889,6 +1916,9 @@ pub enum ScriptVariant {
     TableVec(Vec<ScriptVariant>),
     TableMap(HashMap<String, ScriptVariant>),
     Function(LuaWeakFunctionRef),
+    Tuple(LuaTuple),
+    TupleFn(LuaTupleFn),
+    YieldingFn(LuaYieldingFn),
 }
 
 /// Thrown (`__cxa_throw`, IDA 0x26beca) when a table key is not a string
@@ -2243,15 +2273,16 @@ pub fn stub_0x26b788(thread: &LuaThreadState, index: usize, out: &mut ScriptVari
 // type: int()
 #[doc(alias = "RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")]
 pub fn stub_0x26c138(variant: &ScriptVariant, thread: &mut LuaThreadState) -> i32 {
-    // IDA 0x26c138: thunk to withVariantValue<int, ArgumentPusher> — pushes
-    // one stack slot per variant arm (the inverse of the `get` dispatch
-    // above) and returns the pushed count.
-    thread.push(variant_to_stack(variant));
-    1
+    // IDA 0x26c138: thunk to withVariantValue<int, ArgumentPusher> — the full
+    // push dispatch now lives in `stub_0x26d0ec`, whose return is the pushed
+    // count (1 per scalar/bridge arm, N for tuples).
+    stub_0x26d0ec(variant, thread)
 }
 
-/// `ArgumentPusher` arm mirror used by [`stub_0x26c138`]: one pushed slot
-/// per variant, userdata carrying its bridge class tag.
+/// Single-slot inverse mirror of the `get` dispatch: one stack value per
+/// variant, userdata carrying its bridge class tag. `push` routes through
+/// [`stub_0x26d0ec`] instead (tuples fan out there); this stays for
+/// documentation reads.
 fn variant_to_stack(variant: &ScriptVariant) -> LuaStackValue {
     let userdata = |class: &str, payload: LuaUserdataPayload| {
         LuaStackValue::Userdata(LuaUserdata { class: class.to_owned(), payload })
@@ -2291,6 +2322,18 @@ fn variant_to_stack(variant: &ScriptVariant) -> LuaStackValue {
             named: map.iter().map(|(k, v)| (LuaTableKey::Str(k.clone()), variant_to_stack(v))).collect(),
         }),
         ScriptVariant::Function(func) => LuaStackValue::Function(func.id),
+        // Tuples fan out through withVariantValue (0x26df2c, N loose pushes),
+        // so `push` (0x26c138/0x26d0ec) never reaches this arm; the table
+        // mirrors the element layout for documentation reads. Both function
+        // handles land as plain function slots: `get` cannot tell a pushed
+        // closure apart from a script function (IDA 0x26ba70 always yields a
+        // WeakFunctionRef).
+        ScriptVariant::Tuple(tuple) => LuaStackValue::Table(LuaTable {
+            array: tuple.items.iter().map(variant_to_stack).collect(),
+            named: Vec::new(),
+        }),
+        ScriptVariant::TupleFn(func) => LuaStackValue::Function(func.id),
+        ScriptVariant::YieldingFn(func) => LuaStackValue::Function(func.id),
     }
 }
 
@@ -2558,6 +2601,555 @@ pub fn stub_0x26cd0c(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVa
         },
     )
 }
+// ---- Remaining Bridge::getValue<Variant> overloads + ArgumentPusher/pushNewObject/LuaArguments cluster (IDA 0x26cd88..0x26e870) ----
+// Ground truth per stub: `decompile(ea)` via IDA MCP; 0x26e030's
+// `lua_pushfunction` tail additionally confirmed via `disasm(ea)`.
+// Boost mapping (AGENTS.md section 4): `boost::shared_ptr<vector/map>` ->
+// [`SharedPtr`] of `Vec`/`HashMap`; `lua_createtable`/`lua_newuserdata` +
+// `lua_setmetatable`/`lua_rawseti`/`lua_settable` -> [`LuaThreadState::push`]
+// plus [`LuaTable`] assembly; `ReleaseAssert` -> [`assert!`]/[`debug_assert!`].
+// Unmodeled throughout: the `ContentId`/`PropertyDescriptor` arms of
+// `withVariantValue` (no host variant, IDA 0x26db1a/0x26dba2), registry
+// metatable identity (class tags stand in), and C++ exception plumbing
+// around the asserts.
+
+// 0x26cd88 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26cd88(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cd88: guard chain, then getSingleton<BrickColor> (0x26cdf0) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::BRICKCOLOR,
+        ScriptVariant::BrickColor,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::BrickColor(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26ce04 — __ZN3RBX3Lua6BridgeINS_4UDimELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26ce04(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26ce04: guard chain, then getSingleton<UDim> (0x26ce6c) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::UDIM,
+        ScriptVariant::UDim,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::UDim(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26ce80 — __ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26ce80(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26ce80: guard chain, then getSingleton<UDim2> (0x26cee8) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::UDIM2,
+        ScriptVariant::UDim2,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::UDim2(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26cefc — __ZN3RBX3Lua6BridgeINS_5FacesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26cefc(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cefc: guard chain, then getSingleton<Faces> (0x26cf64) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::FACES,
+        ScriptVariant::Faces,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Faces(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26cf78 — __ZN3RBX3Lua6BridgeINS_4AxesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26cf78(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cf78: guard chain, then getSingleton<Axes> (0x26cfe0) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::AXES,
+        ScriptVariant::Axes,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::Axes(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26cff4 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26cff4(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26cff4: guard chain, then getSingleton<CellID> (0x26d05c) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::CELLID,
+        ScriptVariant::CellId,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::CellId(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+// 0x26d070 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+pub fn stub_0x26d070(_thread: &LuaThreadState, _index: usize, out: &mut ScriptVariant, slot: &LuaStackValue) -> bool {
+    // IDA 0x26d070: guard chain, then getSingleton<InputObject> (0x26d0d8) + copy.
+    bridge_variant(
+        slot,
+        lua_bridge_class::INPUTOBJECT,
+        ScriptVariant::InputObject,
+        out,
+        |payload| match payload {
+            LuaUserdataPayload::InputObject(v) => Some(*v),
+            _ => None,
+        },
+    )
+}
+
+/// Shared `pushNewObject` core behind the four stubs below: `lua_newuserdata`
+/// + payload copy, then `lua_getfield(REGISTRY, className)` +
+/// `lua_setmetatable(-2)` (IDA 0x26e1e2..0x26e220 and siblings).
+fn push_new_object(thread: &mut LuaThreadState, class: &str, payload: LuaUserdataPayload) {
+    thread.push(LuaStackValue::Userdata(LuaUserdata { class: class.to_owned(), payload }));
+}
+
+/// Shared `pushArray` core (IDA 0x26f1d4/0x26ef04): `createtable(n, 0)`, then
+/// per element `withVariantValue` (asserted `count == 1`,
+/// `include/script/LuaArguments.h:213`) + `lua_rawseti(-2, 1-based)`.
+/// `pushed` carries each element's pusher so callers keep the array/push
+/// split of the originals. Returns 1.
+fn push_array_with(
+    len: usize,
+    thread: &mut LuaThreadState,
+    mut pushed: impl FnMut(&mut LuaThreadState, usize),
+) -> i32 {
+    let mut array = Vec::with_capacity(len);
+    for index in 0..len {
+        let mark = thread.stack.len();
+        pushed(thread, index);
+        let mut slots = thread.stack.drain(mark..);
+        // IDA 0x26f226: ReleaseAssert(count == 1, LuaArguments.h:213).
+        debug_assert_eq!(slots.len(), 1, "count == 1 file: include/script/LuaArguments.h line: 213");
+        // `lua_rawseti` pops exactly one value; extras are dropped rather
+        // than left to corrupt later lanes.
+        array.push(slots.next().unwrap_or(LuaStackValue::Nil));
+    }
+    thread.push(LuaStackValue::Table(LuaTable { array, named: Vec::new() }));
+    1
+}
+
+/// Shared map-push core (IDA 0x26dddc/0x26dea0): `createtable(0, size)` then
+/// `pushlstring` + `withVariantValue` + `lua_settable(-3)` per entry.
+/// Entries arrive pre-sorted; the `std::map` arm additionally asserts
+/// non-empty keys (IDA 0x26de24..0x26de5a, `LuaArguments.cpp:436`).
+fn push_map_entries(
+    entries: Vec<(&String, &ScriptVariant)>,
+    assert_nonempty_keys: bool,
+    thread: &mut LuaThreadState,
+) -> i32 {
+    let mut named = Vec::with_capacity(entries.len());
+    for (key, value) in entries {
+        if assert_nonempty_keys {
+            assert!(!key.is_empty(), "!_First->first.empty() file: Client/App/script/LuaArguments.cpp line: 436");
+        }
+        let mark = thread.stack.len();
+        stub_0x26d0ec(value, thread);
+        let mut slots = thread.stack.drain(mark..);
+        // `lua_settable` consumes the key plus the top value.
+        let slot = slots.next_back().unwrap_or(LuaStackValue::Nil);
+        named.push((LuaTableKey::Str(key.clone()), slot));
+    }
+    thread.push(LuaStackValue::Table(LuaTable { array: Vec::new(), named }));
+    1
+}
+
+// 0x26d0ec — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_
+// type: int __fastcall(char ****, int)
+#[doc(alias = "int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher)")]
+pub fn stub_0x26d0ec(variant: &ScriptVariant, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26d0ec: type-switch over the Variant — `lua_pushboolean` (0x26d186),
+    // `lua_pushnumber` (0x26d1dc), `lua_pushlstring` (0x26d284),
+    // `ArgumentPusher::operator()` for shared payloads (0x26d2f4 etc.),
+    // `SingletonBridge::push` for enum items (0x26d326), `lua_pushfunction`
+    // (0x26d3f4), and each value type via its `Bridge::pushNewObject`
+    // (0x26d650..0x26db68). `Void` has no observed arm; pushing nil is the
+    // `get` inverse [INFERENCE].
+    match variant {
+        ScriptVariant::Void => {
+            thread.push(LuaStackValue::Nil);
+            1
+        }
+        ScriptVariant::Bool(b) => {
+            thread.push(LuaStackValue::Bool(*b));
+            1
+        }
+        ScriptVariant::Double(n) => {
+            thread.push(LuaStackValue::Number(*n));
+            1
+        }
+        ScriptVariant::String(s) => {
+            thread.push(LuaStackValue::String(s.clone()));
+            1
+        }
+        ScriptVariant::Instance(handle) => stub_0x26dce4(handle, thread),
+        ScriptVariant::EnumValue { descriptor, value } => {
+            push_new_object(
+                thread,
+                lua_bridge_class::ENUMITEM,
+                LuaUserdataPayload::EnumItem(LuaEnumItem { owner: descriptor.clone(), value: *value }),
+            );
+            1
+        }
+        ScriptVariant::Function(func) => {
+            thread.push(LuaStackValue::Function(func.id));
+            1
+        }
+        ScriptVariant::Tuple(tuple) => stub_0x26df2c(tuple, thread),
+        ScriptVariant::TupleFn(func) => stub_0x26df60(func, thread),
+        ScriptVariant::YieldingFn(func) => stub_0x26e030(func, thread),
+        ScriptVariant::TableVec(items) => stub_0x26ddb4(&Some(SharedPtr::new(items.clone())), thread),
+        ScriptVariant::TableMap(map) => stub_0x26dea0(&Some(SharedPtr::new(map.clone())), thread),
+        ScriptVariant::Vector3(v) => {
+            push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(*v));
+            1
+        }
+        ScriptVariant::Vector3i16(v) => {
+            push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(*v));
+            1
+        }
+        ScriptVariant::Vector2(v) => {
+            push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(*v));
+            1
+        }
+        ScriptVariant::Vector2i16(v) => {
+            push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(*v));
+            1
+        }
+        ScriptVariant::Region3(v) => {
+            push_new_object(thread, lua_bridge_class::REGION3, LuaUserdataPayload::Region3(*v));
+            1
+        }
+        ScriptVariant::Region3i16(v) => {
+            push_new_object(thread, lua_bridge_class::REGION3INT16, LuaUserdataPayload::Region3i16(*v));
+            1
+        }
+        ScriptVariant::CoordinateFrame(v) => {
+            push_new_object(thread, lua_bridge_class::CFRAME, LuaUserdataPayload::CoordinateFrame(*v));
+            1
+        }
+        ScriptVariant::Color3(v) => {
+            push_new_object(thread, lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(*v));
+            1
+        }
+        ScriptVariant::BrickColor(v) => {
+            push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(*v));
+            1
+        }
+        ScriptVariant::UDim(v) => {
+            push_new_object(thread, lua_bridge_class::UDIM, LuaUserdataPayload::UDim(*v));
+            1
+        }
+        ScriptVariant::UDim2(v) => {
+            push_new_object(thread, lua_bridge_class::UDIM2, LuaUserdataPayload::UDim2(*v));
+            1
+        }
+        ScriptVariant::RbxRay(v) => {
+            push_new_object(thread, lua_bridge_class::RAY, LuaUserdataPayload::RbxRay(*v));
+            1
+        }
+        ScriptVariant::Faces(v) => {
+            push_new_object(thread, lua_bridge_class::FACES, LuaUserdataPayload::Faces(*v));
+            1
+        }
+        ScriptVariant::Axes(v) => {
+            push_new_object(thread, lua_bridge_class::AXES, LuaUserdataPayload::Axes(*v));
+            1
+        }
+        ScriptVariant::CellId(v) => stub_0x26e100(v, thread),
+        ScriptVariant::InputObject(v) => {
+            stub_0x26e1d8(thread, v);
+            1
+        }
+    }
+}
+
+// 0x26dc28 — __ZNK3RBX3Lua12LuaArguments4sizeEv
+// type: int __fastcall(RBX::Lua::LuaArguments *this)
+#[doc(alias = "RBX::Lua::LuaArguments::size(void)const")]
+pub fn stub_0x26dc28(args: &LuaArguments) -> i32 {
+    // IDA 0x26dc28: `return lua_gettop(L) - 1` (0x26dc34) — the top slot is
+    // the callee, not an argument.
+    args.thread.stack_top() as i32 - 1
+}
+
+// 0x26dc38 — __ZNK3RBX3Lua12LuaArguments10getVariantEiRNS_10Reflection7VariantE
+// type: int __fastcall(int, int, int)
+#[doc(alias = "RBX::Lua::LuaArguments::getVariant(int,RBX::Reflection::Variant &)const")]
+pub fn stub_0x26dc38(args: &LuaArguments, arg: usize, out: &mut ScriptVariant) -> i32 {
+    // IDA 0x26dc38: idx = base + a2 (0x26dc52) with ReleaseAssert(luaIndex>0,
+    // `include/script/LuaArguments.h:178`), then strict `get(L, idx, out, 1)`
+    // (0x26dc92) — nil is rejected, unlike the default getters.
+    let index = args.base.checked_add(arg).unwrap_or(0);
+    assert!(index > 0, "luaIndex>0 file: include/script/LuaArguments.h line: 178");
+    stub_0x26b788(&args.thread, index, out, true)
+}
+
+// 0x26dca8 — __ZNK3RBX3Lua12LuaArguments7getLongEiRl
+// type: int __fastcall(RBX::Lua::LuaArguments *this, int, int *)
+#[doc(alias = "RBX::Lua::LuaArguments::getLong(int,long &)const")]
+pub fn stub_0x26dca8(args: &LuaArguments, arg: usize, out: &mut i32) -> i32 {
+    // IDA 0x26dca8: virtual `getDouble` (vtable `this+16`, 0x26dcc0); on 1,
+    // `*out = lrint(v)` (0x26dcd4).
+    // BUG(host): virtual dispatch collapses to the concrete getDouble, and
+    // `lrint` (round-half-even, UB on overflow) becomes `round_ties_even`
+    // with a saturating cast.
+    let mut value = 0.0;
+    if stub_0x26b660(args, arg, &mut value) == 1 {
+        *out = value.round_ties_even() as i32;
+        1
+    } else {
+        0
+    }
+}
+
+// 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
+// type: int __fastcall(int *, int)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&)")]
+pub fn stub_0x26dce4(handle: &Option<SharedPtr<LuaInstanceHandle>>, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26dce4: shared-count copy (0x26dd0e), then
+    // `SharedPtrBridge<Instance>::push(L, shared)` (0x26dd48); release and
+    // return 1 (0x26dd76). Null pushes nil [INFERENCE: the push callee EA is
+    // outside this batch; nil is the `get` nil arm inverse].
+    match handle {
+        Some(instance) => push_new_object(
+            thread,
+            lua_bridge_class::INSTANCE,
+            LuaUserdataPayload::Instance(Some(instance.clone())),
+        ),
+        None => { thread.push(LuaStackValue::Nil); },
+    }
+    1
+}
+
+// 0x26ddb4 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE
+// type: int __fastcall(_DWORD *, _DWORD *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
+pub fn stub_0x26ddb4(items: &Option<SharedPtr<Vec<ScriptVariant>>>, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26ddb4: null -> `lua_createtable(L, 0, 0)` (0x26ddd2); else
+    // `pushArray` over the range (0x26ddc6). Returns 1.
+    match items {
+        None => {
+            thread.push(LuaStackValue::Table(LuaTable::default()));
+            1
+        }
+        Some(items) => {
+            let items = items.clone();
+            push_array_with(items.len(), thread, |thread, index| {
+                stub_0x26d0ec(&items[index], thread);
+            })
+        }
+    }
+}
+
+// 0x26dddc — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
+// type: int __fastcall(int *, int *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
+pub fn stub_0x26dddc(
+    map: &Option<SharedPtr<std::collections::BTreeMap<String, ScriptVariant>>>,
+    thread: &mut LuaThreadState,
+) -> i32 {
+    // IDA 0x26dddc: null -> `lua_createtable(L, 0, 0)` (0x26de92); else
+    // `createtable(0, size)` (0x26def4) and per entry an
+    // `!first.empty()` assert, `pushlstring`, `withVariantValue`, `settable`
+    // down the `_Rb_tree_increment` walk (0x26de24..0x26de88). The tree walk
+    // is ascending, matching `BTreeMap` iteration. Returns 1.
+    match map {
+        None => {
+            thread.push(LuaStackValue::Table(LuaTable::default()));
+            1
+        }
+        Some(map) => {
+            let entries: Vec<(&String, &ScriptVariant)> = map.iter().collect();
+            push_map_entries(entries, true, thread)
+        }
+    }
+}
+
+// 0x26dea0 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
+// type: int __fastcall(int *, _DWORD *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
+pub fn stub_0x26dea0(map: &Option<SharedPtr<HashMap<String, ScriptVariant>>>, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26dea0: null -> `createtable(0, 0)` (0x26df00); else
+    // `createtable(0, size)` (0x26dec8) and per bucket `pushlstring` +
+    // `withVariantValue` + `settable` (0x26ded6..0x26def6). Bucket order is
+    // hash order; the host sorts for determinism [INFERENCE]. Returns 1.
+    match map {
+        None => {
+            thread.push(LuaStackValue::Table(LuaTable::default()));
+            1
+        }
+        Some(map) => {
+            let mut entries: Vec<(&String, &ScriptVariant)> = map.iter().collect();
+            entries.sort_by(|a, b| a.0.cmp(b.0));
+            push_map_entries(entries, false, thread)
+        }
+    }
+}
+
+// 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
+// type: int __fastcall(_DWORD *, _DWORD *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
+pub fn stub_0x26df08(
+    items: &Option<SharedPtr<Vec<Option<SharedPtr<LuaInstanceHandle>>>>>,
+    thread: &mut LuaThreadState,
+) -> i32 {
+    // IDA 0x26df08: null -> `createtable(0, 0)` (0x26df24); else the
+    // `Instance` `pushArray` (0x26df18, same `count == 1` assert shape as
+    // 0x26ef04). Returns 1.
+    match items {
+        None => {
+            thread.push(LuaStackValue::Table(LuaTable::default()));
+            1
+        }
+        Some(items) => {
+            let items = items.clone();
+            let mut array = Vec::with_capacity(items.len());
+            for handle in items.iter() {
+                let mark = thread.stack.len();
+                stub_0x26dce4(handle, thread);
+                let mut slots = thread.stack.drain(mark..);
+                debug_assert_eq!(slots.len(), 1, "count == 1 file: include/script/LuaArguments.h line: 213");
+                array.push(slots.next().unwrap_or(LuaStackValue::Nil));
+            }
+            thread.push(LuaStackValue::Table(LuaTable { array, named: Vec::new() }));
+            1
+        }
+    }
+}
+
+// 0x26df2c — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
+// type: int __fastcall(int *, char ******)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
+pub fn stub_0x26df2c(tuple: &LuaTuple, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26df2c: null tuple pushes nothing (0x26df36 skips the loop);
+    // else one `withVariantValue` per element (0x26df4c, stride 17) with the
+    // counts summed (0x26df52). Returns the total pushed.
+    let mut total = 0;
+    for item in &tuple.items {
+        total += stub_0x26d0ec(item, thread);
+    }
+    total
+}
+
+// 0x26df60 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE
+// type: int __fastcall(int *, const shared_count *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)")]
+pub fn stub_0x26df60(func: &LuaTupleFn, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26df60: shared-count copy (0x26df8a), `lua_pushfunction(L, fn)`
+    // (0x26dfc4), release, return 1.
+    thread.push(LuaStackValue::Function(func.id));
+    1
+}
+
+// 0x26e030 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE
+// type: int __fastcall(int *, const shared_count *)
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")]
+pub fn stub_0x26e030(func: &LuaYieldingFn, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26e030 (disasm): shared-count copy, `lua_pushfunction(L, fn)`
+    // (0x26e094), release, return 1 — same shape as 0x26df60.
+    thread.push(LuaStackValue::Function(func.id));
+    1
+}
+
+// 0x26e100 — __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE
+// type: int __fastcall(int *, int)
+// was: int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)
+#[doc(alias = "int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")]
+pub fn stub_0x26e100(cell: &LuaCellId, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x26e100: 24-byte copy with a `shared_count` bump (0x26e12a..0x26e136),
+    // `Bridge<CellID>::pushNewObject` (0x26e170), temp `~CellID` (0x26e17c),
+    // return 1. The `Copy` clone is the host bump; dropping nothing extra
+    // mirrors the balanced temp teardown.
+    stub_0x26e408(thread, cell);
+    1
+}
+
+// 0x26e1d8 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
+// type: _DWORD *__fastcall(int, _DWORD *)
+#[doc(alias = "RBX::InputObject* RBX::Lua::Bridge<RBX::InputObject,true>::pushNewObject<RBX::InputObject>(lua_State *,RBX::InputObject)")]
+pub fn stub_0x26e1d8(thread: &mut LuaThreadState, value: &LuaInputObject) -> LuaInputObject {
+    // IDA 0x26e1d8: `lua_newuserdata(L, 20)` (0x26e1e2) + 5-dword copy
+    // (0x26e1ea..0x26e1fc), `getfield(REGISTRY, className)` + `setmetatable`
+    // (0x26e216..0x26e220). Returns the new userdata payload.
+    push_new_object(thread, lua_bridge_class::INPUTOBJECT, LuaUserdataPayload::InputObject(*value));
+    *value
+}
+
+// 0x26e408 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::CellID* RBX::Lua::Bridge<RBX::CellID,true>::pushNewObject<RBX::CellID>(lua_State *,RBX::CellID)")]
+pub fn stub_0x26e408(thread: &mut LuaThreadState, value: &LuaCellId) -> LuaCellId {
+    // IDA 0x26e408: `lua_newuserdata(L, 24)` (0x26e412) + qword/qword/dword
+    // copy plus `shared_count` copy (0x26e41a..0x26e434), then
+    // `getfield`/`setmetatable` (0x26e44e..). Returns the new payload.
+    push_new_object(thread, lua_bridge_class::CELLID, LuaUserdataPayload::CellId(*value));
+    *value
+}
+
+// 0x26e738 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
+// type: int __fastcall(int, __int64 *)
+#[doc(alias = "RBX::Region3int16* RBX::Lua::Bridge<RBX::Region3int16,true>::pushNewObject<RBX::Region3int16>(lua_State *,RBX::Region3int16)")]
+pub fn stub_0x26e738(thread: &mut LuaThreadState, value: &LuaRegion3i16) -> LuaRegion3i16 {
+    // IDA 0x26e738: `lua_newuserdata(L, 12)` (0x26e746) + qword/dword copy
+    // (0x26e74a..0x26e752), then `getfield`/`setmetatable` (0x26e76e..0x26e778).
+    push_new_object(thread, lua_bridge_class::REGION3INT16, LuaUserdataPayload::Region3i16(*value));
+    *value
+}
+
+// 0x26e870 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
+// type: G3D::Matrix3 *__fastcall(int, int)
+#[doc(alias = "RBX::Region3* RBX::Lua::Bridge<RBX::Region3,true>::pushNewObject<RBX::Region3>(lua_State *,RBX::Region3)")]
+pub fn stub_0x26e870(thread: &mut LuaThreadState, value: &LuaRegion3) -> LuaRegion3 {
+    // IDA 0x26e870: `lua_newuserdata(L, 60)` (0x26e87a) + Matrix3 copy plus
+    // the trailing min/max words (0x26e886..0x26e89e), then
+    // `getfield`/`setmetatable`. Returns the new payload.
+    push_new_object(thread, lua_bridge_class::REGION3, LuaUserdataPayload::Region3(*value));
+    *value
+}
 
 #[cfg(test)]
 mod lua_argument_bridge_tests {
@@ -2736,183 +3328,6 @@ mod lua_argument_bridge_tests {
         assert!(stub_0x26c830(&thread, 1, &mut nil_out, &LuaStackValue::Nil));
         assert_eq!(nil_out, ScriptVariant::Instance(None));
     }
-}
-
-// 0x26cd88 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cd88() -> ! {
-    todo!("0x26cd88 bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26ce04 — __ZN3RBX3Lua6BridgeINS_4UDimELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ce04() -> ! {
-    todo!("0x26ce04 bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26ce80 — __ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26ce80() -> ! {
-    todo!("0x26ce80 bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26cefc — __ZN3RBX3Lua6BridgeINS_5FacesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, int)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cefc() -> ! {
-    todo!("0x26cefc bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26cf78 — __ZN3RBX3Lua6BridgeINS_4AxesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cf78() -> ! {
-    todo!("0x26cf78 bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26cff4 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26cff4() -> ! {
-    todo!("0x26cff4 bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26d070 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
-pub fn stub_0x26d070() -> ! {
-    todo!("0x26d070 bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
-}
-
-// 0x26d0ec — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_
-// type: int __fastcall(char ****, int)
-#[doc(alias = "int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher)")]
-pub fn stub_0x26d0ec() -> ! {
-    todo!("0x26d0ec int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher)")
-}
-
-// 0x26dc28 — __ZNK3RBX3Lua12LuaArguments4sizeEv
-// type: int __fastcall(RBX::Lua::LuaArguments *this)
-#[doc(alias = "RBX::Lua::LuaArguments::size(void)const")]
-pub fn stub_0x26dc28() -> ! {
-    todo!("0x26dc28 RBX::Lua::LuaArguments::size(void)const")
-}
-
-// 0x26dc38 — __ZNK3RBX3Lua12LuaArguments10getVariantEiRNS_10Reflection7VariantE
-// type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Lua::LuaArguments::getVariant(int,RBX::Reflection::Variant &)const")]
-pub fn stub_0x26dc38() -> ! {
-    todo!("0x26dc38 RBX::Lua::LuaArguments::getVariant(int,RBX::Reflection::Variant &)const")
-}
-
-// 0x26dca8 — __ZNK3RBX3Lua12LuaArguments7getLongEiRl
-// type: int __fastcall(RBX::Lua::LuaArguments *this, int, int *)
-#[doc(alias = "RBX::Lua::LuaArguments::getLong(int,long &)const")]
-pub fn stub_0x26dca8() -> ! {
-    todo!("0x26dca8 RBX::Lua::LuaArguments::getLong(int,long &)const")
-}
-
-// 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(int *, int)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x26dce4() -> ! {
-    todo!("0x26dce4 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)")
-}
-
-// 0x26ddb4 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE
-// type: int __fastcall(_DWORD *, _DWORD *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
-pub fn stub_0x26ddb4() -> ! {
-    todo!("0x26ddb4 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")
-}
-
-// 0x26dddc — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
-// type: int __fastcall(int *, int *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0x26dddc() -> ! {
-    todo!("0x26dddc RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
-}
-
-// 0x26dea0 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
-// type: int __fastcall(int *, _DWORD *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0x26dea0() -> ! {
-    todo!("0x26dea0 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
-}
-
-// 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
-// type: int __fastcall(_DWORD *, _DWORD *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
-pub fn stub_0x26df08() -> ! {
-    todo!("0x26df08 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)")
-}
-
-// 0x26df2c — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
-// type: int __fastcall(int *, char ******)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
-pub fn stub_0x26df2c() -> ! {
-    todo!("0x26df2c RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)")
-}
-
-// 0x26df60 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE
-// type: int __fastcall(int *, const shared_count *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>)")]
-pub fn stub_0x26df60() -> ! {
-    todo!("0x26df60 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)")
-}
-
-// 0x26e030 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE
-// type: int __fastcall(int *, const shared_count *)
-// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)
-#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")]
-pub fn stub_0x26e030() -> ! {
-    todo!("0x26e030 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")
-}
-
-// 0x26e100 — __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE
-// type: int __fastcall(int *, int)
-// was: int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)
-#[doc(alias = "int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")]
-pub fn stub_0x26e100() -> ! {
-    todo!("0x26e100 int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")
-}
-
-// 0x26e1d8 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
-// type: _DWORD *__fastcall(int, _DWORD *)
-#[doc(alias = "RBX::InputObject* RBX::Lua::Bridge<RBX::InputObject,true>::pushNewObject<RBX::InputObject>(lua_State *,RBX::InputObject)")]
-pub fn stub_0x26e1d8() -> ! {
-    todo!("0x26e1d8 RBX::InputObject* RBX::Lua::Bridge<RBX::InputObject,true>::pushNewObject<RBX::InputObject>(lua_State *,RBX::InputObject)")
-}
-
-// 0x26e408 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
-// type: int __fastcall(int, int)
-#[doc(alias = "RBX::CellID* RBX::Lua::Bridge<RBX::CellID,true>::pushNewObject<RBX::CellID>(lua_State *,RBX::CellID)")]
-pub fn stub_0x26e408() -> ! {
-    todo!("0x26e408 RBX::CellID* RBX::Lua::Bridge<RBX::CellID,true>::pushNewObject<RBX::CellID>(lua_State *,RBX::CellID)")
-}
-
-// 0x26e738 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
-// type: int __fastcall(int, __int64 *)
-#[doc(alias = "RBX::Region3int16* RBX::Lua::Bridge<RBX::Region3int16,true>::pushNewObject<RBX::Region3int16>(lua_State *,RBX::Region3int16)")]
-pub fn stub_0x26e738() -> ! {
-    todo!("0x26e738 RBX::Region3int16* RBX::Lua::Bridge<RBX::Region3int16,true>::pushNewObject<RBX::Region3int16>(lua_State *,RBX::Region3int16)")
-}
-
-// 0x26e870 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
-// type: G3D::Matrix3 *__fastcall(int, int)
-#[doc(alias = "RBX::Region3* RBX::Lua::Bridge<RBX::Region3,true>::pushNewObject<RBX::Region3>(lua_State *,RBX::Region3)")]
-pub fn stub_0x26e870() -> ! {
-    todo!("0x26e870 RBX::Region3* RBX::Lua::Bridge<RBX::Region3,true>::pushNewObject<RBX::Region3>(lua_State *,RBX::Region3)")
 }
 
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
