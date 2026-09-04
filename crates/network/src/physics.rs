@@ -648,6 +648,26 @@ impl TouchJob {
         // IDA 0x9c59e4: `computeStandardError(this, stats, err, rate)`.
         StandardError::compute(error, rate_hz)
     }
+
+    /// `RBX::Network::PhysicsSender::TouchJob::stepDataModelJob` (IDA
+    /// 0x9c5bfc): without the +123 stats pointer there is nothing to step
+    /// (0x9c5c50/0x9c5d50). Otherwise the +122 job steps the +125 context
+    /// (0x9c5cbe, engine-side) and the verdict reports whether that job
+    /// was present. Refcount traffic stays engine-side.
+    pub fn step_data_model_job(
+        stats_present: bool,
+        job_present: bool,
+        step: &mut dyn FnMut(),
+    ) -> bool {
+        if !stats_present {
+            return false;
+        }
+        if job_present {
+            step();
+            return true;
+        }
+        false
+    }
 }
 
 /// `RBX::Network::PhysicsSender::Job` (IDA 0x9c6214..0x9c6568).
@@ -1959,5 +1979,15 @@ mod sender_tests {
         prim.visit_primitives(&mut |p| visited.push(p));
         // Roots are not recursed into (IDA 0x9c3824).
         assert_eq!(visited, vec![100, 300]);
+    }
+
+    #[test]
+    fn step_data_model_job_gates() {
+        // IDA 0x9c5bfc: no stats -> false without stepping; no job -> false; both -> step + true.
+        let mut stepped = 0;
+        assert!(!TouchJob::step_data_model_job(false, true, &mut || stepped += 1));
+        assert!(!TouchJob::step_data_model_job(true, false, &mut || stepped += 1));
+        assert!(TouchJob::step_data_model_job(true, true, &mut || stepped += 1));
+        assert_eq!(stepped, 1);
     }
 }

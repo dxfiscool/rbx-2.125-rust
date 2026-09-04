@@ -557,24 +557,37 @@ pub fn stub_9c5830(_job: crate::physics::TouchJob) {
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJobD0Ev")]
-pub fn stub_9c583c() -> ! {
-    todo!("0x9c583c __ZN3RBX7Network13PhysicsSender8TouchJobD0Ev")
+pub fn stub_9c583c(job: crate::physics::TouchJob) {
+    // IDA 0x9c583c..0x9c5892 (D0): D2 then `operator delete`; by-value drop covers both.
+    crate::generated_netA_watchdog_52::stub_9c5e38(job);
 }
 
 // 0x9c58dc — __ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *, double)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c58dc() -> ! {
-    todo!("0x9c58dc __ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c58dc(
+    elapsed: f64,
+    rate_hz: f32,
+    ctx: &crate::physics::SleepContext,
+) -> f64 {
+    // IDA 0x9c58ea..0x9c58f2: stats rate at +496 into `computeStandardSleepTime`.
+    crate::physics::TouchJob::sleep_time(elapsed, rate_hz, ctx)
 }
 
 // 0x9c58fc — __ZN3RBX7Network13PhysicsSender8TouchJob5errorERKNS_13TaskScheduler3Job5StatsE
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *, double *)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJob5errorERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c58fc() -> ! {
-    todo!("0x9c58fc __ZN3RBX7Network13PhysicsSender8TouchJob5errorERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c58fc(
+    gate: &crate::physics::SendGate,
+    replicator_present: bool,
+    job_pending: bool,
+    error: f64,
+    rate_hz: f32,
+) -> crate::physics::StandardError {
+    // IDA 0x9c5958..0x9c59ca: gates select the zero shape or `computeStandardError`.
+    crate::physics::TouchJob::error(gate, replicator_present, job_pending, error, rate_hz)
 }
 
 // 0x9c5e38 — __ZN3RBX7Network13PhysicsSender8TouchJobD2Ev
@@ -606,8 +619,13 @@ pub fn stub_9c6174(job: crate::physics::SendJob) {
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c6214() -> ! {
-    todo!("0x9c6214 __ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c6214(
+    elapsed: f64,
+    rate_hz: f32,
+    ctx: &crate::physics::SleepContext,
+) -> f64 {
+    // IDA 0x9c6222..0x9c622a: stats rate at +496 into `computeStandardSleepTime`.
+    crate::physics::SendJob::sleep_time(elapsed, rate_hz, ctx)
 }
 
 // 0x9c6234 — __ZN3RBX7Network13PhysicsSender3Job5errorERKNS_13TaskScheduler3Job5StatsE
