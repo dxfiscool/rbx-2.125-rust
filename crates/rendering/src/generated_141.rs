@@ -33,33 +33,352 @@ pub struct CompositionInput {
     pub mrt_index: u32,
 }
 
-/// was: `Ogre::CompositionPass` (input list only; IDA `0xc708cc` touches
-/// `mInputs` at `this+0x40`).
+/// was: `Ogre::CompositionPass` — parent at `+0`, pass type at `+4`, id at
+/// `+8`, material at `+16`, render queues at `+28`/`+29`, material scheme at
+/// `+32`, clear buffers at `+36`, clear colour at `+40`, clear depth at `+56`,
+/// clear stencil at `+60`, inputs at `+64`, stencil block at `+192`..`+220`,
+/// quad corners at `+224`, custom type at `+244` (IDA `0xc70234`..`0xc70394`).
 #[doc(alias = "Ogre::CompositionPass")]
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug)]
 pub struct CompositionPass {
+    /// Owning `CompositionTargetPass *` at `+0` (IDA `0xc70256`).
+    pub parent: usize,
+    /// Pass type at `+4` (init `3`, IDA `0xc7025c`).
+    pub pass_type: u32,
+    /// Identifier at `+8` (init `0`, IDA `0xc70260`).
+    pub identifier: u32,
+    /// Resolved material handle at `+16` (IDA `0xc70772`); the name itself
+    /// is not retained (IDA `0xc706e4` stores only the handle).
+    pub material: Option<usize>,
+    /// Custom type string at `+244` (IDA `0xc70394`, `0xc70a6e`).
+    pub custom_type: String,
+    /// Material scheme string at `+32` (IDA `0xc70a04`).
+    pub material_scheme: String,
+    /// First render queue byte at `+28` (init `0`, IDA `0xc70284`).
+    pub first_render_queue: u8,
+    /// Last render queue byte at `+29` (init `95`, IDA `0xc70292`).
+    pub last_render_queue: u8,
+    /// Clear-buffer bits at `+36` (init `3`, IDA `0xc702dc`).
+    pub clear_buffers: u32,
+    /// Clear colour words at `+40` (init black, IDA `0xc702e4`).
+    pub clear_colour: crate::movable::ColourValue,
+    /// Clear depth float at `+56` (init `1.0`, IDA `0xc702ec`).
+    pub clear_depth: f32,
+    /// Clear stencil word at `+60` (IDA `0xc70a14`).
+    pub clear_stencil: u32,
+    /// Stencil check byte at `+192` (IDA `0xc7032a`, `0xc70a18`).
+    pub stencil_check: bool,
+    /// Stencil compare function at `+196` (init `1`, IDA `0xc70330`).
+    pub stencil_func: u32,
+    /// Stencil reference value at `+200` (IDA `0xc7033a`).
+    pub stencil_ref_value: u32,
+    /// Stencil mask at `+204` (init all-bits, IDA `0xc70340`).
+    pub stencil_mask: u32,
+    /// Stencil fail op at `+208` (IDA `0xc70348`).
+    pub stencil_fail_op: u32,
+    /// Stencil depth-fail op at `+212` (IDA `0xc7034c`).
+    pub stencil_depth_fail_op: u32,
+    /// Stencil pass op at `+216` (IDA `0xc70350`).
+    pub stencil_pass_op: u32,
+    /// Two-sided stencil byte at `+220` (IDA `0xc70a50`).
+    pub stencil_two_sided: bool,
+    /// Quad corner floats at `+224` (init `-1,1,1,-1`, IDA
+    /// `0xc7035e`..`0xc70374`).
+    pub quad_corners: [f32; 4],
+    /// Quad far-corner flags at `+240`/`+241` (IDA `0xc7037a`..`0xc7038a`,
+    /// `0xc70a58`).
+    pub quad_far_corners: (bool, bool),
+    /// `mInputs` entries at `+64`, 8-byte stride, 16 slots
+    /// (IDA `0xc702fa`..`0xc7032a`, `0xc7092a`).
     pub inputs: Vec<CompositionInput>,
+}
+
+impl Default for CompositionPass {
+    fn default() -> Self {
+        Self::new(0)
+    }
+}
+
+impl CompositionPass {
+    /// `CompositionPass::CompositionPass(parent)` (IDA `0xc70234`, via C1 at
+    /// `0xc70228`): parent at `+0`, type `3`, id `0`, queues `0`/`95`,
+    /// scheme/custom blank, clear buffers `3`, colour black, depth `1.0`,
+    /// 16 blank inputs, stencil func `1` / mask all-bits, quad corners
+    /// `-1,1,1,-1` (IDA `0xc70330`..`0xc70374`).
+    pub fn new(parent: usize) -> Self {
+        Self {
+            parent,
+            pass_type: 3,
+            identifier: 0,
+            material: None,
+            custom_type: String::new(),
+            material_scheme: String::new(),
+            first_render_queue: 0,
+            last_render_queue: 95,
+            clear_buffers: 3,
+            clear_colour: crate::movable::ColourValue::default(),
+            clear_depth: 1.0,
+            clear_stencil: 0,
+            stencil_check: false,
+            stencil_func: 1,
+            stencil_ref_value: 0,
+            stencil_mask: u32::MAX,
+            stencil_fail_op: 0,
+            stencil_depth_fail_op: 0,
+            stencil_pass_op: 0,
+            stencil_two_sided: false,
+            quad_corners: [-1.0, 1.0, 1.0, -1.0],
+            quad_far_corners: (false, false),
+            inputs: vec![CompositionInput::default(); 16],
+        }
+    }
+
+    /// `CompositionPass::setType` (IDA `0xc706dc`): store word at `+4`.
+    pub fn set_type(&mut self, pass_type: u32) {
+        self.pass_type = pass_type;
+    }
+
+    /// `CompositionPass::setIdentifier` (IDA `0xc706e0`): store word at `+8`.
+    pub fn set_identifier(&mut self, identifier: u32) {
+        self.identifier = identifier;
+    }
+
+    /// `CompositionPass::setMaterialName` (IDA `0xc706e4`): resolve through
+    /// the material manager and store the handle at `+16` (releasing the
+    /// previous one); the name itself is not retained.
+    pub fn set_material_name(
+        &mut self,
+        name: &str,
+        resolver: &dyn crate::movable::MaterialResolver,
+    ) {
+        self.material = resolver.load_material(name);
+    }
+
+    /// `CompositionPass::setClearBuffers` (IDA `0xc708b8`): store at `+36`.
+    pub fn set_clear_buffers(&mut self, buffers: u32) {
+        self.clear_buffers = buffers;
+    }
+
+    /// `CompositionPass::setClearColour` (IDA `0xc708bc`): store the four
+    /// channel words at `+40`.
+    pub fn set_clear_colour(&mut self, colour: crate::movable::ColourValue) {
+        self.clear_colour = colour;
+    }
+
+    /// `CompositionPass::setInput` (IDA `0xc708cc`): assign name + MRT index
+    /// at slot `id`.
+    /// // BUG: original at `0xc708cc` performs no bounds check.
+    pub fn set_input(&mut self, id: usize, name: &str, mrt_index: u32) {
+        let slot = &mut self.inputs[id];
+        slot.name = name.to_owned();
+        slot.mrt_index = mrt_index;
+    }
+
+    /// `CompositionPass::setFirstRenderQueue` (IDA `0xc709fc`): byte at `+28`.
+    pub fn set_first_render_queue(&mut self, queue: u8) {
+        self.first_render_queue = queue;
+    }
+
+    /// `CompositionPass::setLastRenderQueue` (IDA `0xc70a00`): byte at `+29`.
+    pub fn set_last_render_queue(&mut self, queue: u8) {
+        self.last_render_queue = queue;
+    }
+
+    /// `CompositionPass::setMaterialScheme` (IDA `0xc70a04`): assign the
+    /// string at `+32`.
+    pub fn set_material_scheme(&mut self, scheme: &str) {
+        self.material_scheme = scheme.to_string();
+    }
+
+    /// `CompositionPass::setClearDepth` (IDA `0xc70a10`): float at `+56`.
+    pub fn set_clear_depth(&mut self, depth: f32) {
+        self.clear_depth = depth;
+    }
+
+    /// `CompositionPass::setClearStencil` (IDA `0xc70a14`): word at `+60`.
+    pub fn set_clear_stencil(&mut self, stencil: u32) {
+        self.clear_stencil = stencil;
+    }
+
+    /// `CompositionPass::setStencilCheck` (IDA `0xc70a18`): byte at `+192`.
+    pub fn set_stencil_check(&mut self, check: bool) {
+        self.stencil_check = check;
+    }
+
+    /// `CompositionPass::setStencilFunc` (IDA `0xc70a20`): word at `+196`.
+    pub fn set_stencil_func(&mut self, func: u32) {
+        self.stencil_func = func;
+    }
+
+    /// `CompositionPass::setStencilRefValue` (IDA `0xc70a28`): word at `+200`.
+    pub fn set_stencil_ref_value(&mut self, value: u32) {
+        self.stencil_ref_value = value;
+    }
+
+    /// `CompositionPass::setStencilMask` (IDA `0xc70a30`): word at `+204`.
+    pub fn set_stencil_mask(&mut self, mask: u32) {
+        self.stencil_mask = mask;
+    }
+
+    /// `CompositionPass::setStencilFailOp` (IDA `0xc70a38`): word at `+208`.
+    pub fn set_stencil_fail_op(&mut self, op: u32) {
+        self.stencil_fail_op = op;
+    }
+
+    /// `CompositionPass::setStencilDepthFailOp` (IDA `0xc70a40`): word at
+    /// `+212`.
+    pub fn set_stencil_depth_fail_op(&mut self, op: u32) {
+        self.stencil_depth_fail_op = op;
+    }
+
+    /// `CompositionPass::setStencilPassOp` (IDA `0xc70a48`): word at `+216`.
+    pub fn set_stencil_pass_op(&mut self, op: u32) {
+        self.stencil_pass_op = op;
+    }
+
+    /// `CompositionPass::setStencilTwoSidedOperation` (IDA `0xc70a50`):
+    /// byte at `+220`.
+    pub fn set_stencil_two_sided(&mut self, two_sided: bool) {
+        self.stencil_two_sided = two_sided;
+    }
+
+    /// `CompositionPass::setQuadFarCorners` (IDA `0xc70a58`): bytes at
+    /// `+240`/`+241`.
+    pub fn set_quad_far_corners(&mut self, a: bool, b: bool) {
+        self.quad_far_corners = (a, b);
+    }
+
+    /// `CompositionPass::setCustomType` (IDA `0xc70a64`): assign the string
+    /// at `+244`.
+    pub fn set_custom_type(&mut self, custom_type: &str) {
+        self.custom_type = custom_type.to_string();
+    }
+
+    /// `CompositionPass::_isSupported` (IDA `0xc70a70`): non-`3` types need
+    /// no material and pass; type `3` compiles the material and requires at
+    /// least one supported technique (null material fails).
+    pub fn is_supported(&self, support: &dyn crate::movable::PassMaterialSupport) -> bool {
+        if self.pass_type != 3 {
+            return true;
+        }
+        match self.material {
+            Some(handle) => {
+                support.compile_material(handle);
+                support.supported_techniques(handle) != 0
+            }
+            None => false,
+        }
+    }
+}
+
+/// was: `Ogre::CompositionTargetPass` — technique at `+0`, input mode at
+/// `+4`, output name at `+8`, passes at `+12`, only-initial at `+28`,
+/// visibility mask at `+32`, lod bias at `+36`, material scheme at `+40`,
+/// shadows flag at `+44` (IDA `0xc70ae4`..`0xc70bfc`).
+#[doc(alias = "Ogre::CompositionTargetPass")]
+#[derive(Clone, Debug)]
+pub struct CompositionTargetPass {
+    /// Owning `CompositionTechnique *` at `+0` (IDA `0xc70b0e`).
+    pub parent: usize,
+    /// Input mode at `+4` (init `0`, IDA `0xc70b18`).
+    pub input_mode: u32,
+    /// Output name at `+8` (init blank, IDA `0xc70b28`).
+    pub output_name: String,
+    /// Pass list at `+12` (IDA `0xc70e9a`..`0xc70ebe`).
+    pub passes: Vec<CompositionPass>,
+    /// Only-initial byte at `+28` (IDA `0xc70e18`).
+    pub only_initial: bool,
+    /// Visibility mask at `+32` (init all-bits, IDA `0xc70b4a`).
+    pub visibility_mask: u32,
+    /// Lod bias float at `+36` (init `1.0`, IDA `0xc70b5c`).
+    pub lod_bias: f32,
+    /// Material scheme at `+40` (init `DEFAULT_SCHEME_NAME`, overridden by
+    /// the render-system name when present, IDA `0xc70b66`..`0xc70bda`).
+    pub material_scheme: String,
+    /// Shadows flag at `+44` (init true, IDA `0xc70ba0`).
+    pub shadows_enabled: bool,
+}
+
+impl CompositionTargetPass {
+    /// `CompositionTargetPass::CompositionTargetPass(technique)` (IDA
+    /// `0xc70ae4`, via C1 at `0xc70ad8`).
+    pub fn new(parent: usize, render_system_scheme: Option<&str>) -> Self {
+        Self {
+            parent,
+            input_mode: 0,
+            output_name: String::new(),
+            passes: Vec::new(),
+            only_initial: false,
+            visibility_mask: u32::MAX,
+            lod_bias: 1.0,
+            material_scheme: render_system_scheme
+                .unwrap_or("Default")
+                .to_string(),
+            shadows_enabled: true,
+        }
+    }
+
+    /// `CompositionTargetPass::setInputMode` (IDA `0xc70e08`): word at `+4`.
+    pub fn set_input_mode(&mut self, mode: u32) {
+        self.input_mode = mode;
+    }
+
+    /// `CompositionTargetPass::setOutputName` (IDA `0xc70e0c`): string at `+8`.
+    pub fn set_output_name(&mut self, name: &str) {
+        self.output_name = name.to_string();
+    }
+
+    /// `CompositionTargetPass::setOnlyInitial` (IDA `0xc70e18`): byte at `+28`.
+    pub fn set_only_initial(&mut self, only: bool) {
+        self.only_initial = only;
+    }
+
+    /// `CompositionTargetPass::setVisibilityMask` (IDA `0xc70e1c`): word at
+    /// `+32`.
+    pub fn set_visibility_mask(&mut self, mask: u32) {
+        self.visibility_mask = mask;
+    }
+
+    /// `CompositionTargetPass::setLodBias` (IDA `0xc70e20`): float at `+36`.
+    pub fn set_lod_bias(&mut self, bias: f32) {
+        self.lod_bias = bias;
+    }
+
+    /// `CompositionTargetPass::setMaterialScheme` (IDA `0xc70e24`): string
+    /// at `+40`.
+    pub fn set_material_scheme(&mut self, scheme: &str) {
+        self.material_scheme = scheme.to_string();
+    }
+
+    /// `CompositionTargetPass::setShadowsEnabled` (IDA `0xc70e30`): byte at
+    /// `+44`.
+    pub fn set_shadows_enabled(&mut self, enabled: bool) {
+        self.shadows_enabled = enabled;
+    }
+
+    /// `CompositionTargetPass::createPass` (IDA `0xc70e38`): construct a
+    /// `CompositionPass` owned by `self`, append it, return its index.
+    pub fn create_pass(&mut self) -> usize {
+        let parent = self as *const Self as usize;
+        self.passes.push(CompositionPass::new(parent));
+        self.passes.len() - 1
+    }
+
+    /// `CompositionTargetPass::_isSupported` (IDA `0xc70f2c`): logical AND
+    /// over the passes; empty passes yield true.
+    pub fn is_supported(&self, support: &dyn crate::movable::PassMaterialSupport) -> bool {
+        self.passes.iter().all(|p| p.is_supported(support))
+    }
 }
 
 // 0xc708cc — __ZN4Ogre15CompositionPass8setInputEmRKSsm
 #[doc(alias = "Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")]
 // was: Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)
-// IDA 0xc708cc: copies the input string into a local (`std::string` copy ctor
-// at `0xc708f6`, SjLj-registered at `0xc70926`), indexes `&mInputs[id]` as
-// `this + id*8 + 0x40` (`0xc7092a`/`0xc70930`, no bounds check or resize),
-// assigns the name (`std::string::assign` at `0xc70934`), stores the MRT index
-// word, then destroys the local (refcount release at `0xc70970`..`0xc70984`),
-// unregisters SjLj (`0xc70956`) and returns.
+// IDA 0xc708cc: copies the input string into a local (`0xc708f6`), indexes
+// `&mInputs[id]` as `this + id*8 + 0x40` (`0xc7092a`/`0xc70930`, no bounds
+// check or resize), assigns the name (`0xc70934`), stores the MRT index word.
 pub fn stub_c708cc(pass: &mut CompositionPass, id: usize, input: &str, mrt_index: u32) {
-    // IDA 0xc7092a..0xc70930: direct `&mInputs[id]` — no resize.
-    // FIDELITY: the original has no bounds check (release build); a debug
-    // assert would fire at most. Rust indexing panics instead of an OOB write.
-    // // BUG (original at 0xc708cc): out-of-range `id` corrupts the heap.
-    let slot = &mut pass.inputs[id];
-    // IDA 0xc70934: `mInputs[id].name.assign(input)`.
-    slot.name = input.to_owned();
-    // IDA 0xc70938..0xc7094e: `mInputs[id].mrtIndex = mrtIndex`.
-    slot.mrt_index = mrt_index;
+    pass.set_input(id, input, mrt_index);
 }
 
 /// was: `Ogre::MaterialManager::DEFAULT_SCHEME_NAME` — loaded by pointer at

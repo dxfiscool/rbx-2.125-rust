@@ -5328,44 +5328,60 @@ pub fn stub_cb64e0() {
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
 // was: RobloxView::requestStopRenderingForBackgroundMode(void)
-// IDA 0x37068: 296 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_37068() {
+// IDA 0x37068: FFlag::RenderCleanupInBackground branch — signal + removeBlocking + reset both slots, else signal + stop-flag + reset render slot and remove the view-update job.
+pub fn stub_37068(
+    view: &mut crate::roblox_view::RobloxView,
+    cleanup_in_background: bool,
+    sink: &mut Vec<crate::roblox_view::SchedulerOp>,
+) {
+    view.request_stop_rendering_for_background_mode(cleanup_in_background, sink);
 }
 
 // 0x37378 — __ZN10RobloxView22requestResumeRenderingEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestResumeRendering(void)")]
 // was: RobloxView::requestResumeRendering(void)
-// IDA 0x37378: 220 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_37378() {
+// IDA 0x37378: rebuild ViewUpdateJob (new 0x1E8) + RenderJob (new 0x27C) from var0/var1/var2, store both slots, TaskScheduler::add each.
+pub fn stub_37378(
+    view: &mut crate::roblox_view::RobloxView,
+    datamodel: &SharedPtr<rbx_datamodel::data_model::DataModel>,
+    sink: &mut Vec<crate::roblox_view::SchedulerOp>,
+) {
+    view.request_resume_rendering(datamodel, sink);
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
-// IDA 0x39d7c: 51 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_39d7c() {
+// IDA 0x39d7c: *a1 = 0, a1[1] = 0, release the count — Option::None drops the Arc.
+pub fn stub_39d7c(slot: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>) {
+    crate::roblox_view::shared_ptr_render_job_reset(slot);
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
-// IDA 0x3a030: 55 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3a030() {
+// IDA 0x3a030: steal the source pair into dst, release the previous count — Option::take.
+pub fn stub_3a030(
+    dst: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>,
+    src: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>,
+) {
+    crate::roblox_view::shared_ptr_render_job_move_assign(dst, src);
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
-// IDA 0x3a0d4: 84 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3a0d4() {
+// IDA 0x3a0d4: store ptr, build shared_count, _internal_accept_owner — Arc::new.
+pub fn stub_3a0d4(job: crate::roblox_view::RenderJob) -> SharedPtr<crate::roblox_view::RenderJob> {
+    crate::roblox_view::shared_ptr_render_job_from_raw(job)
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
 // was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const
-// IDA 0x3dc60: 77 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0x3dc60: enable_shared_from_this::_internal_accept_owner — intrusive weak-owner handshake; Arc accepts the owner at construction, no manual state.
 pub fn stub_3dc60() {
 }
 
@@ -5373,213 +5389,310 @@ pub fn stub_3dc60() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 // was: boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)
-// IDA 0x3dd34: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3dd34() {
+// IDA 0x3dd34: shared_count ctor from a raw pointer — allocates the control block; the Arc strong count is the observable.
+pub fn stub_3dd34(job: &SharedPtr<crate::roblox_view::RenderJob>) -> usize {
+    SharedPtr::strong_count(job)
 }
 
 // 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
-// IDA 0x3de28: 1 insn (BX) — branch/return thunk, no state change.
+// IDA 0x3de28: sp_counted_impl_p D1 is BX LR — destroys the control block without freeing; Rust drops it at scope end, no manual state.
 pub fn stub_3de28() {
 }
 
 // 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
-// IDA 0x3de2c: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x3de2c: sp_counted_impl_p D0 tail-calls operator delete — frees the control block; Rust deallocates on drop, no manual state.
 pub fn stub_3de2c() {
 }
 
 // 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)
-// IDA 0x3de30: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3de30() {
+// IDA 0x3de30: dispose invokes the stored deleter when present else returns null — Arc carries no deleter.
+pub fn stub_3de30() -> Option<usize> {
+    crate::roblox_view::sp_counted_render_job_dispose()
 }
 
 // 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)
-// IDA 0x3de40: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3de40() {
+// IDA 0x3de40: get_deleter returns 0 — no deleter stored.
+pub fn stub_3de40() -> Option<usize> {
+    crate::roblox_view::sp_counted_render_job_deleter()
 }
 
 // 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)
-// IDA 0x3de44: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3de44() {
+// IDA 0x3de44: get_untyped_deleter returns 0 — no deleter stored.
+pub fn stub_3de44() -> Option<usize> {
+    crate::roblox_view::sp_counted_render_job_deleter()
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
-// IDA 0x3ecf0: 143 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3ecf0() {
+// IDA 0x3ecf0: DataModelJob base "Render", Job vtable at +480, weak datamodel at +496, view at +504, CEvent at +508, +628 = 1, +632 = 0.
+pub fn stub_3ecf0(
+    view: usize,
+    marshaller: usize,
+    datamodel: &SharedPtr<rbx_datamodel::data_model::DataModel>,
+) -> crate::roblox_view::RenderJob {
+    crate::roblox_view::RenderJob::new(view, marshaller, datamodel)
 }
 
 // 0x3ee80 — __ZN10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
 // was: RobloxView::RenderJob::~RenderJob()
-// IDA 0x3ee80: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_3ee80() {
+// IDA 0x3ee80: D1 resets the Job vtables, runs CEvent::~CEvent (+508) and weak_release, then Job::~Job — the event-handle close is the observable state.
+pub fn stub_3ee80(job: &mut crate::roblox_view::RenderJob) {
+    job.event_signaled = false;
 }
 
 // 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
 // was: RobloxView::RenderJob::~RenderJob()
-// IDA 0x3ef40: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_3ef40() {
+// IDA 0x3ef40: D0 runs D1 then operator delete — ownership ends here.
+pub fn stub_3ef40(job: crate::roblox_view::RenderJob) {
+    drop(job);
 }
 
 // 0x3f008 — __ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
-// IDA 0x3f008: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f008() {
+// IDA 0x3f008: Stats +0x274 set → computeStandardSleepTime(stats, 60.0), else store +inf (0x7FEFFFFFFFFFFFFF).
+pub fn stub_3f008(
+    job: &mut crate::roblox_view::RenderJob,
+    stats: &crate::roblox_view::JobStats,
+    step_time: f64,
+) {
+    job.sleep_time(stats, step_time);
 }
 
 // 0x3f058 — __ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)
-// IDA 0x3f058: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f058() {
+// IDA 0x3f058: Stats +0x274 set → computeStandardError(stats, 30.0), else zero the 9 output bytes.
+pub fn stub_3f058(
+    job: &mut crate::roblox_view::RenderJob,
+    stats: &crate::roblox_view::JobStats,
+    step_time: f64,
+) {
+    job.error(stats, step_time);
 }
 
 // 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)
-// IDA 0x3f094: 477 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f094() {
+// IDA 0x3f094: lock the +496 weak, stop-flag/view probes, camera step under scoped write, Prepare-or-Full Execute, stamp +488, conditional Perform Submit; returns whether the frame stepped.
+pub fn stub_3f094(
+    job: &mut crate::roblox_view::RenderJob,
+    input: &crate::roblox_view::StepInput,
+    sink: &mut Vec<crate::roblox_view::RenderDispatch>,
+) -> bool {
+    job.step_data_model_job(input, sink)
 }
 
 // 0x3f598 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
 // was: RobloxView::RenderJob::getMetricValue(std::string const&)const
-// IDA 0x3f598: 115 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f598() {
+// IDA 0x3f598: Render FPS/Duty/Job Time → scheduler averages, Nominal FPS → 1000/render_avg, render group → view delegate, Video Memory MB → bytes/1e6, else 0.
+pub fn stub_3f598(
+    job: &crate::roblox_view::RenderJob,
+    name: &str,
+    host: &dyn crate::roblox_view::RenderMetricHost,
+) -> f64 {
+    job.get_metric_value(name, host)
 }
 
 // 0x3f700 — __ZNK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
 // was: RobloxView::RenderJob::getMetric(std::string const&)const
-// IDA 0x3f700: 180 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f700() {
+// IDA 0x3f700: no view → "No View"; Graphics Mode → ""; FRM/Anti-Aliasing → On/Off; else the RobloxView.cpp:237 assert path → "".
+pub fn stub_3f700(
+    job: &crate::roblox_view::RenderJob,
+    name: &str,
+    host: &dyn crate::roblox_view::RenderMetricHost,
+) -> String {
+    job.get_metric(name, host)
 }
 
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 // was: non-virtual thunk to RobloxView::RenderJob::~RenderJob()
-// IDA 0x3f904: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_3f904() {
+// IDA 0x3f904: __ZThn480 D1 — the D1 teardown past the this-=480 adjust; the adjust is a no-op on the Rust object.
+pub fn stub_3f904(job: &mut crate::roblox_view::RenderJob) {
+    stub_3ee80(job);
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 // was: non-virtual thunk to RobloxView::RenderJob::~RenderJob()
-// IDA 0x3f9c8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_3f9c8() {
+// IDA 0x3f9c8: __ZThn480 D0 — the D0 delete past the this-=480 adjust; the adjust is a no-op on the Rust object.
+pub fn stub_3f9c8(job: crate::roblox_view::RenderJob) {
+    stub_3ef40(job);
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
 // was: non-virtual thunk to RobloxView::RenderJob::getMetric(std::string const&)const
-// IDA 0x3fa94: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3fa94() {
+// IDA 0x3fa94: __ZThn480 getMetric — SUB R1,R1,#0x1E0 then tail-call; the adjust is a no-op on the Rust object.
+pub fn stub_3fa94(
+    job: &crate::roblox_view::RenderJob,
+    name: &str,
+    host: &dyn crate::roblox_view::RenderMetricHost,
+) -> String {
+    job.get_metric(name, host)
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
 // was: non-virtual thunk to RobloxView::RenderJob::getMetricValue(std::string const&)const
-// IDA 0x3faa4: 2 insns (SUB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3faa4() {
+// IDA 0x3faa4: __ZThn480 getMetricValue — SUB R0,R0,#0x1E0 then B.W getMetricValue; the adjust is a no-op on the Rust object.
+pub fn stub_3faa4(
+    job: &crate::roblox_view::RenderJob,
+    name: &str,
+    host: &dyn crate::roblox_view::RenderMetricHost,
+) -> f64 {
+    job.get_metric_value(name, host)
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
 // was: RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
-// IDA 0x3faac: 10 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3faac() {
+// IDA 0x3faac: stop flag (+632) set → return self; else target->prepare(this + 480) via vtbl+32.
+pub fn stub_3faac(
+    job: &mut crate::roblox_view::RenderJob,
+    target: Option<&mut crate::roblox_view::RenderJob>,
+    view: usize,
+) -> crate::roblox_view::PrepareOutcome {
+    job.schedule_render_prepare(target, view)
 }
 
 // 0x3fac4 — __ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
 // was: RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)
-// IDA 0x3fac4: 77 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3fac4() {
+// IDA 0x3fac4: lock the +496 weak datamodel; live model and no stop flag → target vtbl+36 callback, then wake().
+pub fn stub_3fac4(
+    job: &mut crate::roblox_view::RenderJob,
+    target: Option<&mut crate::roblox_view::RenderJob>,
+    view: usize,
+    t: f64,
+) {
+    job.schedule_render_perform(target, view, t);
 }
 
 // 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
 // was: RobloxView::RenderJob::wake(void)
-// IDA 0x3fb9c: 123 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3fb9c() {
+// IDA 0x3fb9c: arm +628, add-ref the weak owner (bad_weak_ptr when released), TaskScheduler::reschedule.
+pub fn stub_3fb9c(job: &mut crate::roblox_view::RenderJob) {
+    job.wake();
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-// IDA 0x40160: 48 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_40160() {
+// IDA 0x40160: functor_manager::manage for bind(job, view, double) — clone allocates (new 0x14), destroy drops; Box<dyn Fn> clone/drop.
+pub fn stub_40160(
+    src: Option<crate::roblox_view::PerformBind>,
+    dst: &mut Option<crate::roblox_view::PerformBind>,
+    op: crate::roblox_view::FunctorOp,
+) -> bool {
+    crate::roblox_view::manage_perform_bind(op, src.as_ref(), dst)
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
-// IDA 0x401dc: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_401dc() {
+// IDA 0x401dc: void_function_obj_invoker0::invoke — load (fn, job, view, double), tail-call scheduleRenderPerform.
+pub fn stub_401dc(bind: &crate::roblox_view::PerformBind, job: &mut crate::roblox_view::RenderJob) {
+    bind.invoke(job);
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-// IDA 0x401f0: 48 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_401f0() {
+// IDA 0x401f0: functor_manager::manage for the ViewBase::renderMetric(view, job, double) bind — same clone/drop discipline.
+pub fn stub_401f0(
+    src: Option<crate::roblox_view::PerformBind>,
+    dst: &mut Option<crate::roblox_view::PerformBind>,
+    op: crate::roblox_view::FunctorOp,
+) -> bool {
+    crate::roblox_view::manage_perform_bind(op, src.as_ref(), dst)
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
-// IDA 0x40270: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_40270() {
+// IDA 0x40270: void_function_obj_invoker0::invoke for the mf2 bind — LDR..B.W tail-call into ViewBase::renderMetric.
+pub fn stub_40270(
+    view: usize,
+    job: Option<&mut crate::roblox_view::RenderJob>,
+    at: f64,
+) -> usize {
+    crate::roblox_view::apply_render_metric_bind(view, job, at)
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)
-// IDA 0x4027c: 15 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_4027c() {
+// IDA 0x4027c: list3::operator() — job += 0x1E0 when non-null, virtual mf2 dispatch when the flag bit is set.
+pub fn stub_4027c(
+    view: usize,
+    job: Option<&mut crate::roblox_view::RenderJob>,
+    at: f64,
+) -> usize {
+    crate::roblox_view::apply_render_metric_bind(view, job, at)
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-// IDA 0x402a8: 40 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_402a8() {
+// IDA 0x402a8: functor_manager::manage for bind(job, view) — same clone/drop discipline.
+pub fn stub_402a8(
+    src: Option<crate::roblox_view::PrepareBind>,
+    dst: &mut Option<crate::roblox_view::PrepareBind>,
+    op: crate::roblox_view::FunctorOp,
+) -> bool {
+    match op {
+        crate::roblox_view::FunctorOp::Clone => {
+            *dst = src;
+            true
+        }
+        crate::roblox_view::FunctorOp::Destroy => {
+            *dst = None;
+            true
+        }
+        _ => dst.is_some(),
+    }
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)
-// IDA 0x40308: 5 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_40308() {
+// IDA 0x40308: void_function_obj_invoker0::invoke — load (job, view), tail-call scheduleRenderPrepare.
+pub fn stub_40308(bind: &crate::roblox_view::PrepareBind, job: &mut crate::roblox_view::RenderJob) {
+    bind.invoke(job);
 }
 
 // 0xd2e00 — __ZN4FMOD15OutputCoreAudio12updateRenderEmP15AudioBufferList
