@@ -804,9 +804,7 @@ pub fn stub_f5bc94() -> ! {
 // 0xf5bd04 — j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v
 // type: int(void)
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v")]
-pub fn stub_f5bd04() -> ! {
-    todo!("0xf5bd04 j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v")
-}
+pub use crate::generated_296::stub_0xf5bd04 as stub_f5bd04;
 
 // 0xf5c0b4 — j___ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX16OverlayDataModelEPKSsPKS2_EENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
