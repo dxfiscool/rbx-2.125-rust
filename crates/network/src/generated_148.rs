@@ -585,48 +585,54 @@ pub fn stub_a57260() -> ! {
 // demangled: RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)")]
-pub fn stub_a57874() -> ! {
-    todo!("0xa57874 RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)")
+pub fn stub_a57874() -> crate::huffman::HuffmanTree {
+ // IDA 0xa57874: default construct.
+ crate::huffman::HuffmanTree::new()
 }
 
 // 0xa5787c — __ZN6RakNet19HuffmanEncodingTreeD1Ev
 // demangled: RakNet::HuffmanEncodingTree::~HuffmanEncodingTree()
 // type: void __fastcall(RakNet::HuffmanEncodingTree *__hidden this)
 #[doc(alias = "RakNet::HuffmanEncodingTree::~HuffmanEncodingTree()")]
-pub fn stub_a5787c() -> ! {
-    todo!("0xa5787c RakNet::HuffmanEncodingTree::~HuffmanEncodingTree()")
+pub fn stub_a5787c(tree: crate::huffman::HuffmanTree) {
+ // IDA 0xa5787c: frees the tree; Rust drops it.
+ drop(tree);
 }
 
 // 0xa5788c — __ZN6RakNet19HuffmanEncodingTree10FreeMemoryEv
 // demangled: RakNet::HuffmanEncodingTree::FreeMemory(void)
 // type: void __fastcall(RakNet::HuffmanEncodingTree *this)
 #[doc(alias = "RakNet::HuffmanEncodingTree::FreeMemory(void)")]
-pub fn stub_a5788c() -> ! {
-    todo!("0xa5788c RakNet::HuffmanEncodingTree::FreeMemory(void)")
+pub fn stub_a5788c(tree: &mut crate::huffman::HuffmanTree) {
+ // IDA 0xa5788c: release the tree.
+ tree.clear()
 }
 
 // 0xa57a3c — __ZN6RakNet19HuffmanEncodingTree26GenerateFromFrequencyTableEPj
 // demangled: RakNet::HuffmanEncodingTree::GenerateFromFrequencyTable(unsigned int *)
 // type: int __fastcall(RakNet::HuffmanEncodingTree *this, unsigned int *)
 #[doc(alias = "RakNet::HuffmanEncodingTree::GenerateFromFrequencyTable(unsigned int *)")]
-pub fn stub_a57a3c() -> ! {
-    todo!("0xa57a3c RakNet::HuffmanEncodingTree::GenerateFromFrequencyTable(unsigned int *)")
+pub fn stub_a57a3c(tree: &mut crate::huffman::HuffmanTree, freq: &[u32; 256]) {
+ // IDA 0xa57a3c: build from the frequency table.
+ tree.generate(freq)
 }
 
 // 0xa58090 — __ZN6RakNet19HuffmanEncodingTree11EncodeArrayEPhmPNS_9BitStreamE
 // demangled: RakNet::HuffmanEncodingTree::EncodeArray(unsigned char *,unsigned long,RakNet::BitStream *)
 // type: const unsigned __int8 **__fastcall(const unsigned __int8 **this, unsigned __int8 *, unsigned int, RakNet::BitStream *)
 #[doc(alias = "RakNet::HuffmanEncodingTree::EncodeArray(unsigned char *,unsigned long,RakNet::BitStream *)")]
-pub fn stub_a58090() -> ! {
-    todo!("0xa58090 RakNet::HuffmanEncodingTree::EncodeArray(unsigned char *,unsigned long,RakNet::BitStream *)")
+pub fn stub_a58090(tree: &crate::huffman::HuffmanTree, stream: &mut crate::bitstream::BitStream, data: &[u8]) {
+ // IDA 0xa58090: code bits plus pad.
+ tree.encode(stream, data)
 }
 
 // 0xa580f0 — __ZN6RakNet19HuffmanEncodingTree11DecodeArrayEPNS_9BitStreamEjmPh
 // demangled: RakNet::HuffmanEncodingTree::DecodeArray(RakNet::BitStream *,unsigned int,unsigned long,unsigned char *)
 // type: unsigned int __fastcall(RakNet::HuffmanEncodingTree *this, RakNet::BitStream *, unsigned int, unsigned int, unsigned __int8 *)
 #[doc(alias = "RakNet::HuffmanEncodingTree::DecodeArray(RakNet::BitStream *,unsigned int,unsigned long,unsigned char *)")]
-pub fn stub_a580f0() -> ! {
-    todo!("0xa580f0 RakNet::HuffmanEncodingTree::DecodeArray(RakNet::BitStream *,unsigned int,unsigned long,unsigned char *)")
+pub fn stub_a580f0(tree: &crate::huffman::HuffmanTree, stream: &mut crate::bitstream::BitStream, max_bits: usize, out: &mut [u8]) -> usize {
+ // IDA 0xa580f0: walk to leaves, count symbols.
+ tree.decode(stream, max_bits, out)
 }
 
 // 0xa58150 — __ZN14DataStructures5QueueIP23HuffmanEncodingTreeNodeE4PushERKS2_PKcj
@@ -648,24 +654,27 @@ pub fn stub_a58224() -> ! {
 // demangled: RakNet::GetTime(void)
 // type: unsigned __int64 __fastcall(RakNet *this)
 #[doc(alias = "RakNet::GetTime(void)")]
-pub fn stub_a58844() -> ! {
-    todo!("0xa58844 RakNet::GetTime(void)")
+pub fn stub_a58844() -> u64 {
+ // IDA 0xa58844: milliseconds since first call.
+ crate::time::raknet_time_ms()
 }
 
 // 0xa588c4 — __ZN6RakNet9GetTimeUSEv
 // demangled: RakNet::GetTimeUS(void)
 // type: __int64 __fastcall(RakNet *this)
 #[doc(alias = "RakNet::GetTimeUS(void)")]
-pub fn stub_a588c4() -> ! {
-    todo!("0xa588c4 RakNet::GetTimeUS(void)")
+pub fn stub_a588c4() -> u64 {
+ // IDA 0xa588c4: microseconds since first call.
+ crate::time::raknet_time_us()
 }
 
 // 0xa58938 — __ZN6RakNet9GetTimeMSEv
 // demangled: RakNet::GetTimeMS(void)
 // type: unsigned __int64 __fastcall(RakNet *this)
 #[doc(alias = "RakNet::GetTimeMS(void)")]
-pub fn stub_a58938() -> ! {
-    todo!("0xa58938 RakNet::GetTimeMS(void)")
+pub fn stub_a58938() -> u64 {
+ // IDA 0xa58938: milliseconds since first call.
+ crate::time::raknet_time_millis()
 }
 
 // 0xa589b8 — __GLOBAL__I_a_515

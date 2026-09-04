@@ -477,6 +477,8 @@ pub mod physics;
 pub mod server;
 pub mod client;
 pub mod peer;
+pub mod huffman;
+pub mod time;
 pub mod string_dictionary;
 pub mod id_serializer;
 pub mod functor;
