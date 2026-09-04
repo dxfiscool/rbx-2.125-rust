@@ -5,180 +5,401 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::cell::Cell;
+use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::{LazyLock, Weak};
+
+/// Virtual `RBX::HandlesBase` view: `shouldRender2d` is vtable slot 36 (IDA 0x3a8664 `(*(this + 144))(this)`).
+pub trait ShouldRender2d {
+    fn should_render_2d(&self) -> bool;
+}
+
+/// Owner embedding the callable subobject 96 bytes past its head.
+/// Models IDA `__ZThn96_*` thunks (`(char *)this - 96`, then tail-call).
+pub trait Thunk96 {
+    type Base: ?Sized;
+    fn adjusted_base(&self) -> &Self::Base;
+}
+
+/// `boost::function<void(RBX::BillboardGui *, RBX::Adorn *)>` (IDA 0x3c042c).
+/// Was boost; now a boxed closure over opaque object addresses.
+pub type BillboardRenderFn = Box<dyn FnMut(usize, usize) + Send>;
+
+/// The `+196` render-function slot written by `BillboardGui::setRenderFunction`.
+#[derive(Default)]
+pub struct BillboardRenderCell {
+    pub render_fn: Option<BillboardRenderFn>,
+}
+
+/// Host view for `BillboardGui::shouldRender3dSortedAdorn` (IDA 0x3c04a8):
+/// the `+212` enable flag plus the `getPart` → `DataModel::get(part, 1)` lookup chain.
+pub trait SortedAdornHost {
+    fn sorted_adorn_enabled(&self) -> bool;
+    fn part_datamodel_hit(&self) -> bool;
+}
+
+/// `RBX::RenderStatsCommand` (IDA 0x3f6a90): a `RBX::Verb` named `"RenderStats"`
+/// bound to its `DataModel` (vtable `off_11D7E58`, datamodel stored at field `+3`).
+pub struct RenderStatsCommand {
+    pub name: &'static str,
+    pub data_model: usize,
+}
+
+/// `GuiItem` reached by `findConstFirstChildByName` + `ClassDescriptor::isA` (IDA 0x3f6be8).
+/// `query_visible` is the virtual at vtable `+148`; `toggle_visible` is the
+/// `v[132] = query() ^ 1` write at 0x3f6cf8/0x3f6d90.
+pub struct GuiItemState {
+    pub visible: Cell<bool>,
+}
+
+impl GuiItemState {
+    pub fn new(visible: bool) -> Self {
+        Self { visible: Cell::new(visible) }
+    }
+    pub fn query_visible(&self) -> bool {
+        self.visible.get()
+    }
+    pub fn toggle_visible(&self) {
+        self.visible.set(!self.visible.get());
+    }
+}
+
+/// World lookup behind `RenderStatsCommand::doIt/isEnabled/isChecked`:
+/// `findConstFirstChildByName(*(this + 3) + 2968, name)` + `GuiItem` isA-cast,
+/// plus the `FFlag::DebugDisplayFPS` gate (IDA 0x3f6d04).
+pub trait RenderStatsWorld {
+    fn find_gui_item(&self, name: &str) -> Option<SharedPtr<GuiItemState>>;
+    fn debug_display_fps(&self) -> bool;
+}
+
+/// Cursor decision inputs decoded from the 0x4252ec branch tree.
+#[derive(Clone, Copy)]
+pub struct CursorDecision {
+    /// Byte at `[a2 + 0xBA8]` (mouse-lock request flag).
+    pub mouse_lock_flag: bool,
+    /// `[GameBasicSettings + 0x68]` mode word.
+    pub settings_mode: u32,
+    /// Byte at `[GameBasicSettings + 0x70]`.
+    pub settings_feature_flag: bool,
+    pub local_player_present: bool,
+    pub adv_arrow_tool_enabled: bool,
+    pub server_present: bool,
+    /// Word at `[a2 + 0xB78]` feeding `Workspace::getCursor`.
+    pub workspace_cursor: u32,
+}
+
+/// What `DataModel::getRenderMouseCursor` fills into the out `ContentId`.
+pub enum MouseCursorContent {
+    Assets(&'static str),
+    Workspace(u32),
+}
+/// `RBX::RenderHooksService` (IDA 0x44e308: `operator new(0xAC)` then ctor).
+pub struct RenderHooksService {
+    /// Raw instance words (`0xAC` bytes = 43 words); layout recovered on demand.
+    pub words: [u32; 43],
+}
+
+impl RenderHooksService {
+    pub fn new() -> Self {
+        Self { words: [0; 43] }
+    }
+}
+
+impl Default for RenderHooksService {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Service-provider slot operations behind `create<RenderHooksService>` (IDA 0x435a28).
+pub trait RenderHooksServiceHost {
+    fn find_render_hooks_service(&self) -> Option<SharedPtr<RenderHooksService>>;
+    fn create_render_hooks_service(&mut self) -> SharedPtr<RenderHooksService>;
+    /// `Instance::setAndLockParent(svc, provider)` (IDA 0x435a96).
+    fn lock_service_parent(&mut self, svc: &SharedPtr<RenderHooksService>);
+    /// `call_once` class-index init (IDA 0x435ab6..0x435abe).
+    fn init_service_class_index(&mut self);
+    /// `shared_ptr<Instance>::operator=` into the provider slot table (IDA 0x435ad0).
+    fn publish_render_hooks_service(&mut self, svc: &SharedPtr<RenderHooksService>);
+    /// `FLog::Asserts` service-map membership check (IDA 0x435af0..0x435b38).
+    fn debug_assert_service_registered(&self, name: &str);
+}
+
+static CLASS_INDEX_NEXT: AtomicUsize = AtomicUsize::new(1);
+/// Class-index cell behind `doGetClassIndex<RenderHooksService>` (IDA 0x44e51c:
+/// guard-variable once init via `ServiceProvider::newIndex(1)`).
+static RENDER_HOOKS_CLASS_INDEX: LazyLock<usize> =
+    LazyLock::new(|| CLASS_INDEX_NEXT.fetch_add(1, Ordering::Relaxed));
+
+/// Name cell behind `Name::doDeclare<sRenderHooksService>` (IDA 0x44e434:
+/// `Name::declare(sRenderHooksService, 1)` under `__cxa_guard`).
+static RENDER_HOOKS_SERVICE_NAME: LazyLock<&'static str> = LazyLock::new(|| "RenderHooksService");
 
 // 0x3a8664 — __ZNK3RBX11HandlesBase14shouldRender2dEv
 #[doc(alias = "RBX::HandlesBase::shouldRender2d(void)const")]
 // was: RBX::HandlesBase::shouldRender2d(void)const
-// IDA 0x3a8664: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3a8664() {
+// IDA 0x3a8664: virtual dispatch `(*(this + 144))(this)` — vtable slot 36.
+pub fn stub_3a8664(target: &dyn ShouldRender2d) -> bool {
+    target.should_render_2d()
 }
 
 // 0x3a87dc — __ZThn96_NK3RBX11HandlesBase14shouldRender2dEv
 #[doc(alias = "non-virtual thunk to RBX::HandlesBase::shouldRender2d(void)const")]
 // was: non-virtual thunk to RBX::HandlesBase::shouldRender2d(void)const
-// IDA 0x3a87dc: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3a87dc() {
+// IDA 0x3a87dc: `this - 96` adjustment, then tail-calls shouldRender2d.
+pub fn stub_3a87dc<T: Thunk96<Base = dyn ShouldRender2d> + ?Sized>(obj: &T) -> bool {
+    stub_3a8664(obj.adjusted_base())
 }
 
 // 0x3c042c — __ZN3RBX12BillboardGui17setRenderFunctionEN5boost8functionIFvPS0_PNS_5AdornEEEE
 #[doc(alias = "RBX::BillboardGui::setRenderFunction(boost::function<void ()(RBX::BillboardGui*,RBX::Adorn *)>)")]
 // was: RBX::BillboardGui::setRenderFunction(boost::function<void ()(RBX::BillboardGui*,RBX::Adorn *)>)
-// IDA 0x3c042c: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3c042c() {
+// IDA 0x3c042c: `boost::function::operator=` into the `+196` slot; was boost, now `BillboardRenderFn`.
+pub fn stub_3c042c(cell: &mut BillboardRenderCell, render_fn: BillboardRenderFn) {
+    cell.render_fn = Some(render_fn);
 }
 
 // 0x3c04a8 — __ZNK3RBX12BillboardGui25shouldRender3dSortedAdornEv
 #[doc(alias = "RBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 // was: RBX::BillboardGui::shouldRender3dSortedAdorn(void)const
-// IDA 0x3c04a8: 76 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3c04a8() {
+// IDA 0x3c04a8: `getPart` shared_ptr + `+212` flag; true iff the flag is set and
+// IDA 0x3c04a8: `DataModel::get(part, 1) != 0` (0x3c04d8..0x3c0512); temp released on exit.
+pub fn stub_3c04a8(host: &dyn SortedAdornHost) -> bool {
+    if !host.sorted_adorn_enabled() {
+        return false;
+    }
+    host.part_datamodel_hit()
 }
 
 // 0x3c066c — __ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv
 #[doc(alias = "non-virtual thunk to RBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 // was: non-virtual thunk to RBX::BillboardGui::shouldRender3dSortedAdorn(void)const
-// IDA 0x3c066c: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3c066c() {
+// IDA 0x3c066c: `this - 96` adjustment, then tail-calls shouldRender3dSortedAdorn.
+pub fn stub_3c066c<T: Thunk96<Base = dyn SortedAdornHost> + ?Sized>(obj: &T) -> bool {
+    stub_3c04a8(obj.adjusted_base())
 }
 
 // 0x3f1c00 — __ZNK3RBX13ClickDetector19shouldRender3dAdornEv
 #[doc(alias = "RBX::ClickDetector::shouldRender3dAdorn(void)const")]
 // was: RBX::ClickDetector::shouldRender3dAdorn(void)const
-// IDA 0x3f1c00: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f1c00() {
+// IDA 0x3f1c00: `MOVS R0, #1; BX LR` — always renders its 3d adorn.
+pub fn stub_3f1c00() -> bool {
+    true
 }
 
 // 0x3f1c34 — __ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv
 #[doc(alias = "non-virtual thunk to RBX::ClickDetector::shouldRender3dAdorn(void)const")]
 // was: non-virtual thunk to RBX::ClickDetector::shouldRender3dAdorn(void)const
-// IDA 0x3f1c34: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f1c34() {
+// IDA 0x3f1c34: `MOVS R0, #1; BX LR` — thunk body is the same constant.
+pub fn stub_3f1c34() -> bool {
+    stub_3f1c00()
 }
 
 // 0x3f6a8c — __ZN3RBX18RenderStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
 // was: RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)
-// IDA 0x3f6a8c: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_3f6a8c() {
+// IDA 0x3f6a8c: C1 complete-object ctor thunk — tail-calls C2 at 0x3f6a90.
+pub fn stub_3f6a8c(data_model: usize) -> RenderStatsCommand {
+    stub_3f6a90(data_model)
 }
 
 // 0x3f6a90 — __ZN3RBX18RenderStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
 // was: RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)
-// IDA 0x3f6a90: 117 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f6a90() {
+// IDA 0x3f6a90: `Verb::Verb(this, datamodel ? datamodel + 144 : 0, "RenderStats")`
+// IDA 0x3f6a90: (0x3f6af8..0x3f6b02), vtable `off_11D7E58`, datamodel at field `+3`.
+pub fn stub_3f6a90(data_model: usize) -> RenderStatsCommand {
+    RenderStatsCommand { name: "RenderStats", data_model }
 }
 
 // 0x3f6be8 — __ZN3RBX18RenderStatsCommand4doItEPNS_10IDataStateE
 #[doc(alias = "RBX::RenderStatsCommand::doIt(RBX::IDataState *)")]
 // was: RBX::RenderStatsCommand::doIt(RBX::IDataState *)
-// IDA 0x3f6be8: 249 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f6be8() {
+// IDA 0x3f6be8: FastLog "Gui:RenderStats" (0x3f6c54), find child "RenderStats", GuiItem
+// IDA 0x3f6be8: isA-cast, toggle `v[132] = isVisible() ^ 1` (0x3f6cf8); when
+// IDA 0x3f6be8: FFlag::DebugDisplayFPS also toggles the "FPS" child (0x3f6d04..0x3f6d90).
+pub fn stub_3f6be8(cmd: &RenderStatsCommand, world: &dyn RenderStatsWorld) {
+    let _ = cmd;
+    if let Some(item) = world.find_gui_item("RenderStats") {
+        item.toggle_visible();
+        if world.debug_display_fps() {
+            if let Some(fps) = world.find_gui_item("FPS") {
+                fps.toggle_visible();
+            }
+        }
+    }
 }
 
 // 0x3f6eb0 — __ZNK3RBX18RenderStatsCommand9isEnabledEv
 #[doc(alias = "RBX::RenderStatsCommand::isEnabled(void)const")]
 // was: RBX::RenderStatsCommand::isEnabled(void)const
-// IDA 0x3f6eb0: 131 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f6eb0() {
+// IDA 0x3f6eb0: true iff child "StatsHud1" exists and isA-casts to GuiItem (0x3f6f1c..0x3f6f5a).
+pub fn stub_3f6eb0(cmd: &RenderStatsCommand, world: &dyn RenderStatsWorld) -> bool {
+    let _ = cmd;
+    world.find_gui_item("StatsHud1").is_some()
 }
 
 // 0x3f702c — __ZNK3RBX18RenderStatsCommand9isCheckedEv
 #[doc(alias = "RBX::RenderStatsCommand::isChecked(void)const")]
 // was: RBX::RenderStatsCommand::isChecked(void)const
-// IDA 0x3f702c: 137 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_3f702c() {
+// IDA 0x3f702c: child "RenderStats" GuiItem-cast; virtual `+148` when found, else 0
+// IDA 0x3f702c: (0x3f70f0..0x3f7122).
+pub fn stub_3f702c(cmd: &RenderStatsCommand, world: &dyn RenderStatsWorld) -> bool {
+    let _ = cmd;
+    world
+        .find_gui_item("RenderStats")
+        .map(|item| item.query_visible())
+        .unwrap_or(false)
 }
 
 // 0x3fe43c — __ZN3RBX18RenderStatsCommandD1Ev
 #[doc(alias = "RBX::RenderStatsCommand::~RenderStatsCommand()")]
 // was: RBX::RenderStatsCommand::~RenderStatsCommand()
-// IDA 0x3fe43c: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_3fe43c() {
+// IDA 0x3fe43c: D1 thunk — `RBX::Verb::~Verb(this)`; storage retained, so by-value drop.
+pub fn stub_3fe43c(cmd: RenderStatsCommand) {
+    drop(cmd);
 }
 
 // 0x3fe440 — __ZN3RBX18RenderStatsCommandD0Ev
 #[doc(alias = "RBX::RenderStatsCommand::~RenderStatsCommand()")]
 // was: RBX::RenderStatsCommand::~RenderStatsCommand()
-// IDA 0x3fe440: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_3fe440() {
+// IDA 0x3fe440: D0 deleting dtor — `Verb::~Verb` + `operator delete` (0x3fe490..0x3fe496);
+// IDA 0x3fe440: boxed drop runs the dtor and frees the storage.
+pub fn stub_3fe440(cmd: Box<RenderStatsCommand>) {
+    drop(cmd);
 }
 
 // 0x4252ec — __ZN3RBX9DataModel20getRenderMouseCursorEv
 #[doc(alias = "RBX::DataModel::getRenderMouseCursor(void)")]
 // was: RBX::DataModel::getRenderMouseCursor(void)
-// IDA 0x4252ec: 55 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_4252ec() {
+// IDA 0x4252ec: fills the out ContentId — MouseLocked when mode == 1, feature flag set
+// IDA 0x4252ec: and a local player exists; advCursor when adv-arrow tooling applies without a
+// IDA 0x4252ec: local player or server; plain arrow otherwise; Workspace::getCursor off the
+// IDA 0x4252ec: mouse-lock path (0x4252fe..0x425386).
+pub fn stub_4252ec(ctx: &CursorDecision) -> MouseCursorContent {
+    if ctx.mouse_lock_flag {
+        if ctx.settings_mode == 1 && ctx.settings_feature_flag && ctx.local_player_present {
+            return MouseCursorContent::Assets("Textures/MouseLockedCursor.png");
+        }
+        if ctx.adv_arrow_tool_enabled && !ctx.local_player_present && !ctx.server_present {
+            return MouseCursorContent::Assets("Textures/advCursor-default.png");
+        }
+        return MouseCursorContent::Assets("Textures/ArrowCursor.png");
+    }
+    if ctx.settings_mode == 1 && ctx.settings_feature_flag && ctx.local_player_present {
+        return MouseCursorContent::Assets("Textures/MouseLockedCursor.png");
+    }
+    MouseCursorContent::Workspace(ctx.workspace_cursor)
 }
 
 // 0x435a28 — __ZNK3RBX15ServiceProvider6createINS_18RenderHooksServiceEEEPT_v
 #[doc(alias = "RBX::RenderHooksService * RBX::ServiceProvider::create<RBX::RenderHooksService>(void)const")]
 // was: RBX::RenderHooksService * RBX::ServiceProvider::create<RBX::RenderHooksService>(void)const
-// IDA 0x435a28: 161 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_435a28() {
+// IDA 0x435a28: `find` fast path (0x435a4e); else `Creatable::create` + `setAndLockParent`
+// IDA 0x435a28: (0x435a86..0x435a96), `call_once` class-index init, `operator=` into the
+// IDA 0x435a28: provider slot table, and the `FLog::Asserts` service-map check
+// IDA 0x435a28: (0x435ab6..0x435b38); temp released before returning the lookup.
+pub fn stub_435a28(host: &mut dyn RenderHooksServiceHost) -> Option<SharedPtr<RenderHooksService>> {
+    if let Some(existing) = host.find_render_hooks_service() {
+        return Some(existing);
+    }
+    let svc = host.create_render_hooks_service();
+    host.lock_service_parent(&svc);
+    host.init_service_class_index();
+    host.publish_render_hooks_service(&svc);
+    host.debug_assert_service_registered("RenderHooksService");
+    host.find_render_hooks_service()
 }
 
 // 0x44e308 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18RenderHooksServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)")]
 // was: boost::shared_ptr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)
-// IDA 0x44e308: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e308() {
+// IDA 0x44e308: `operator new(0xAC)` + `RenderHooksService` ctor, wrapped in a
+// IDA 0x44e308: `shared_ptr` with `Creatable<Instance>::Deleter` (0x44e33c..0x44e36e).
+// IDA 0x44e308: Was boost::shared_ptr; now rbx_core::SharedPtr (Arc — deleter is Drop).
+pub fn stub_44e308() -> SharedPtr<RenderHooksService> {
+    SharedPtr::new(RenderHooksService::new())
 }
 
 // 0x44e3b8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_18RenderHooksServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RenderHooksService>(rbx_core::SharedPtr<RBX::RenderHooksService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)
-// IDA 0x44e3b8: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e3b8() {
+// IDA 0x44e3b8: templated `operator=<RenderHooksService>` — copy-and-swap of the
+// IDA 0x44e3b8: shared_count (addref new, swap pointers, release old). The cross-type
+// IDA 0x44e3b8: upcast is a runtime no-op in Rust; the Arc clone is the whole effect.
+pub fn stub_44e3b8(dst: &mut SharedPtr<RenderHooksService>, src: &SharedPtr<RenderHooksService>) {
+    *dst = SharedPtr::clone(src);
 }
 
 // 0x44e3ec — __ZN3RBX4Name7declareILZNS_19sRenderHooksServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_19sRenderHooksServiceEEEERKS0_v")]
 // was: __ZN3RBX4Name7declareILZNS_19sRenderHooksServiceEEEERKS0_v
-// IDA 0x44e3ec: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e3ec() {
+// IDA 0x44e3ec: null class string → `getNullName()` (0x44e426); else `call_once`
+// IDA 0x44e3ec: `callDoDeclare` and return the declared name (0x44e402..0x44e422).
+pub fn stub_44e3ec(class_name: Option<&'static str>) -> &'static str {
+    match class_name {
+        Some(_) => stub_44e430(),
+        None => "",
+    }
 }
 
 // 0x44e430 — __ZN3RBX4Name13callDoDeclareILZNS_19sRenderHooksServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_19sRenderHooksServiceEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_19sRenderHooksServiceEEEEvv
-// IDA 0x44e430: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_44e430() {
+// IDA 0x44e430: thunk — tail-calls the `doDeclare` shim.
+pub fn stub_44e430() -> &'static str {
+    stub_44e434()
 }
 
 // 0x44e434 — __ZN3RBX4Name9doDeclareILZNS_19sRenderHooksServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sRenderHooksServiceEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_19sRenderHooksServiceEEEERKS0_v
-// IDA 0x44e434: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e434() {
+// IDA 0x44e434: `Name::declare(sRenderHooksService, 1)` under a `__cxa_guard` once-init
+// IDA 0x44e434: (0x44e490..0x44e4bc); the `LazyLock` cell below is the Rust once-guard.
+pub fn stub_44e434() -> &'static str {
+    *RENDER_HOOKS_SERVICE_NAME
 }
 
 // 0x44e518 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_18RenderHooksServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::RenderHooksService>(void)")]
 // was: void RBX::ServiceProvider::callDoGetClassIndex<RBX::RenderHooksService>(void)
-// IDA 0x44e518: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_44e518() {
+// IDA 0x44e518: thunk — tail-calls `doGetClassIndex<RenderHooksService>`.
+pub fn stub_44e518() -> usize {
+    stub_44e51c()
 }
 
 // 0x44e51c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_18RenderHooksServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RenderHooksService>(void)")]
 // was: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RenderHooksService>(void)
-// IDA 0x44e51c: 70 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e51c() {
+// IDA 0x44e51c: guard-variable once init via `ServiceProvider::newIndex(1)`
+// IDA 0x44e51c: (0x44e578..0x44e598); the `LazyLock` cell below is the Rust once-guard.
+pub fn stub_44e51c() -> usize {
+    *RENDER_HOOKS_CLASS_INDEX
 }
 
 // 0x44e5f4 — __ZN5boost10shared_ptrIN3RBX18RenderHooksServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)
-// IDA 0x44e5f4: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e5f4() {
+// IDA 0x44e5f4: `shared_ptr(ptr, deleter)` — stores the pointer, builds the
+// IDA 0x44e5f4: `shared_count`, then `_internal_accept_owner` when non-null
+// IDA 0x44e5f4: (0x44e614..0x44e65a). Was boost; the Arc control block subsumes the
+// IDA 0x44e5f4: count, and Drop is the deleter.
+pub fn stub_44e5f4(service: Box<RenderHooksService>) -> SharedPtr<RenderHooksService> {
+    SharedPtr::new(*service)
 }
 
 // 0x44e6bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18RenderHooksServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RenderHooksService,RBX::RenderHooksService>(rbx_core::SharedPtr<RBX::RenderHooksService> const*,RBX::RenderHooksService *)const")]
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RenderHooksService,RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const*,RBX::RenderHooksService *)const
-// IDA 0x44e6bc: 84 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_44e6bc() {
+// IDA 0x44e6bc: links the weak back-pointer only when the weak use_count is zero
+// IDA 0x44e6bc: (0x44e6e4..0x44e74c); the `+36` owner fixup folds into the Arc downgrade.
+pub fn stub_44e6bc(
+    owner: &mut Option<Weak<RenderHooksService>>,
+    shared: &SharedPtr<RenderHooksService>,
+) {
+    if owner.as_ref().and_then(|weak| weak.upgrade()).is_none() {
+        *owner = Some(SharedPtr::downgrade(shared));
+    }
 }
 
 // 0x44e7a8 — __ZN5boost6detail12shared_countC2IPN3RBX18RenderHooksServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
