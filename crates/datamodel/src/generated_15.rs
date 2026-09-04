@@ -6,181 +6,499 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
+use std::collections::HashMap;
+
+use parking_lot::Mutex;
+
 use rbx_core::SharedPtr;
+use rbx_core::WeakPtr;
+use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
+
+use crate::data_model::DataModel;
+use crate::generated_05::{Instance, instance_is_a};
+use crate::generated_13::Player;
+use crate::generated_14::PeerStatsItem;
+
+/// Rust model of `RBX::Network::InterpolatingPhysicsReceiver` (IDA `0xadcff8`): the `mf1` target behind the `callable_slot` family; members land with a later batch.
+pub struct InterpolatingPhysicsReceiver {
+    _opaque: (),
+}
+/// Member method behind `mf1<void, InterpolatingPhysicsReceiver, SharedPtr<InterpolatingPhysicsReceiver>>::operator()` (IDA `0xadd0a6`).
+pub type IprMethod = fn(*const InterpolatingPhysicsReceiver, &SharedPtr<InterpolatingPhysicsReceiver>);
+/// Rust model of the `list2<value<IPR*>, value<SharedPtr<IPR>>>` bind (IDA `0xadcff8`): the unretained receiver plus the retained target; both signal args are dropped (no `arg<>` placeholders).
+#[derive(Clone)]
+pub struct IprBind {
+    pub receiver: *const InterpolatingPhysicsReceiver,
+    pub target: Option<SharedPtr<InterpolatingPhysicsReceiver>>,
+    pub method: IprMethod,
+}
+/// Rust model of the `callable_slot` node (IDA `0xadcf38` D1, `0xadcf44` D0): the intrusive `+8` successor plus the callable bind; the `+8` retained `SharedPtr` and the `+2` intrusive link released by `~callable` (IDA `0xadd664`-`0xadd6c2`) become `bind.target` and `next`.
+pub struct IprSlotNode {
+    pub next: Option<SharedPtr<IprSlotNode>>,
+    pub bind: IprBind,
+}
+/// Rust model of `RBX::Network::PacketReceiveJob` (IDA `0xad6d1c`): a `DataModelJob` named `"Net PacketReceive"` (task type 7, IDA `0xad6df2`) holding the data-model weak from `shared_from<DataModel>` (IDA `0xad6d42`).
+pub struct PacketReceiveJob {
+    pub name: &'static str,
+    pub task_type: i32,
+    pub data_model: WeakPtr<DataModel>,
+}
+/// Rust model of `RBX::Network::ReplicatorJob` (IDA `0xae0a44`): a `DataModelJob` (task type 1, IDA `0xae0b4c`) whose name is `format!("%s %s", peer_addr, name)` (IDA `0xae0a74`-`0xae0aba`); the peer-address prefix is fixed at construction until the RakNet address model exists.
+pub struct ReplicatorJob {
+    pub name: String,
+    pub task_type: i32,
+    pub data_model: WeakPtr<DataModel>,
+}
+/// Rust model of `RakNet::BitStream` as used by the replicator write path (IDA `0xadfcdc`): appended bits; byte packing lands with the RakNet model.
+#[derive(Default)]
+pub struct ReplicatorBitStream {
+    pub bits: Vec<bool>,
+}
+impl ReplicatorBitStream {
+    pub fn write_bit(&mut self, bit: bool) {
+        self.bits.push(bit);
+    }
+}
+/// Value kind behind the `typeinfo` compares in the write loops: string-likes (`std::string`, `ProtectedString`, `SystemAddress`) go through the non-cacheable path (IDA `0xadfe36`-`0xadfe64`); non-string non-ref properties go through the cacheable path (IDA `0xae0534`-`0xae056c`).
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub enum ReplicatedKind {
+    Text,
+    Value,
+    Ref,
+}
+/// Rust model of one class-descriptor property entry visited by the write loops (the `+16`/`+20` vector, IDA `0xadfcee`-`0xadfcf2`): `can_replicate` is the `+28 & 4` bit behind the property.h:103 assert; `is_parent` marks `RBX::Instance::propParent`, skipped by the cacheable path (IDA `0xae056c`).
+#[derive(Clone)]
+pub struct ReplicatedProperty {
+    pub name: &'static str,
+    pub kind: ReplicatedKind,
+    pub can_replicate: bool,
+    pub is_parent: bool,
+}
+/// Class-descriptor property tables backing the write loops until the reflection hierarchy lands; empty (no writes) for unregistered classes.
+static CLASS_PROPERTIES: Mutex<Vec<(&'static str, Vec<ReplicatedProperty>)>> = Mutex::new(Vec::new());
+/// Register one class's replicated properties (test/bring-up hook for the write path).
+pub fn register_class_properties(class: &'static str, props: Vec<ReplicatedProperty>) {
+    let mut table = CLASS_PROPERTIES.lock();
+    if let Some(entry) = table.iter_mut().find(|(name, _)| *name == class) {
+        entry.1 = props;
+    } else {
+        table.push((class, props));
+    }
+}
+fn class_properties_of(class: &str) -> Vec<ReplicatedProperty> {
+    CLASS_PROPERTIES.lock().iter().find(|(name, _)| *name == class).map(|(_, props)| props.clone()).unwrap_or_default()
+}
+/// Rust model of `RBX::Network::Replicator::ReplicationData` (IDA `0xae3ecc`): the per-instance entry in the `+1440` hash; the two flag words' roles land with a later batch.
+pub struct ReplicationData {
+    pub instance: SharedPtr<Instance>,
+    pub flag_a: bool,
+    pub flag_b: bool,
+}
+/// Rust model of `RBX::Network::Replicator`: top container at `+13` words (IDA `0xae3ae0`), replication map at `+1440` (IDA `0xae5dca`), pending queue (`ItemQueue::push_back`, IDA `0xae5b18`), data-model weak, and the local player behind the `+152` virtual (IDA `0xae6f16`).
+pub struct Replicator {
+    pub top_container: Option<SharedPtr<Instance>>,
+    pub data: HashMap<usize, ReplicationData>,
+    pub pending: Vec<SharedPtr<Instance>>,
+    pub data_model: WeakPtr<DataModel>,
+    pub local_player: Option<SharedPtr<Player>>,
+}
+impl Replicator {
+    /// Virtual at `+284` (IDA `0xadfdba`): per-descriptor write gate in the property loops; base default takes every replicable property until overrides are modelled.
+    pub fn wants_property_desc(&self, _prop: &ReplicatedProperty) -> bool {
+        true
+    }
+    /// Virtual at `+276` (IDA `0xae51f6`, cf. `wantReplicate` `0xaf7468`): per-instance replication gate in `onChildAdded`; base default replicates everything until overrides are modelled.
+    pub fn want_replicate(&self, _inst: &SharedPtr<Instance>) -> bool {
+        true
+    }
+}
+/// Hash from IDA `0xae5dca`/`0xae529c`: `ptr + (ptr >> 3)`.
+pub fn replication_key(inst: &SharedPtr<Instance>) -> usize {
+    let p = SharedPtr::as_ptr(inst) as usize;
+    p.wrapping_add(p >> 3)
+}
+/// Callback behind `boost::function<void ()(SharedPtr<Instance>)>` (IDA `0xae3af4`).
+pub type ChildAddedCallback = Box<dyn Fn(&SharedPtr<Instance>)>;
+/// Rust model of `RBX::Network::RemoteCheatHelper2` (IDA `0xaf5fe4`): retains the data-model weak; the ctor body resolves the local player via `Players::findLocalPlayer` (IDA `0xaf6098`) and `Player::reportStat` (IDA `0xaf60bc`), deferred until the players-service model exists.
+pub struct RemoteCheatHelper2 {
+    pub data_model: WeakPtr<DataModel>,
+}
 
 // 0xad6044 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_ad6044() -> ! {
-    todo!("0xad6044 boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_ad6044(block: *mut ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) {
+    // IDA 0xad6044: `Instance::predelete(px)` (decompile 0xad604c), null-px
+    // early-out (decompile 0xad6052), then the virtual delete through `*px +
+    // 8` (decompile 0xad605c). `dispose_with` with the no-op predelete takes
+    // the payload — the delete. Same shape as 0xaa1e38.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0xad6060 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_ad6060() -> ! {
-    todo!("0xad6060 boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_ad6060(block: *const ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xad6060: `strcmp` against
+    // `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (decompile 0xad6072),
+    // mismatch returns 0; a hit returns `this + 16`. Same shape as 0xaa1e54.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0xad6078 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network13PeerStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_ad6078() -> ! {
-    todo!("0xad6078 boost::detail::sp_counted_impl_pd<RBX::Network::PeerStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_ad6078(block: *const ControlBlockPd<PeerStatsItem, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0xad6078: unconditional `this + 16` (decompile 0xad607a). Same
+    // shape as 0xaa1e6c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0xad6d1c — __ZN3RBX7Network16PacketReceiveJobC2EN5boost10shared_ptrINS0_17ConcurrentRakPeerEEEPNS_9DataModelE
 #[doc(alias = "RBX::Network::PacketReceiveJob::PacketReceiveJob(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer>,RBX::DataModel *)")]
 // was: RBX::Network::PacketReceiveJob::PacketReceiveJob(boost::shared_ptr<RBX::Network::ConcurrentRakPeer>,RBX::DataModel *)
-pub fn stub_ad6d1c() -> ! {
-    todo!("0xad6d1c RBX::Network::PacketReceiveJob::PacketReceiveJob(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer>,RBX::DataModel *)")
+pub fn stub_ad6d1c(job: *mut PacketReceiveJob, data_model: &SharedPtr<DataModel>) {
+    // IDA 0xad6d1c: `shared_from<DataModel>` weak (decompile 0xad6d42) with
+    // the spinlock-guarded `shared_count` retain (decompile 0xad6dba-0xad6dd0),
+    // then `DataModelJob::DataModelJob("Net PacketReceive", type 7, weak)`
+    // (decompile 0xad6df2). The clone plus the field init is the same
+    // sequence; the peer word is consumed by the job base.
+    // SAFETY: `job` must point to valid storage never used again.
+    unsafe {
+        (*job).name = "Net PacketReceive";
+        (*job).task_type = 7;
+        (*job).data_model = SharedPtr::downgrade(data_model);
+    }
 }
 
 // 0xadcf38 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network28InterpolatingPhysicsReceiverENS3_ISF_EEEENSA_5list2INSA_5valueIPSF_EENSJ_ISG_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()
-pub fn stub_adcf38() -> ! {
-    todo!("0xadcf38 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")
+pub fn stub_adcf38(slot: *mut IprSlotNode) {
+    // IDA 0xadcf38: `callable_slot` D1 — tail-calls `~callable` (decompile
+    // 0xadcf40), which is `stub_add5f8`. Storage kept.
+    // SAFETY: `slot` must point to a valid `IprSlotNode` for the callee.
+    stub_add5f8(slot);
 }
 
 // 0xadcf44 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network28InterpolatingPhysicsReceiverENS3_ISF_EEEENSA_5list2INSA_5valueIPSF_EENSJ_ISG_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()
-pub fn stub_adcf44() -> ! {
-    todo!("0xadcf44 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>>::~callable_slot()")
+pub fn stub_adcf44(slot: *mut IprSlotNode) {
+    // IDA 0xadcf44: `callable_slot` D0 — `~callable` (decompile 0xadcf94)
+    // plus `intrusive_ptr_target::operator delete` (decompile 0xadcfa0); the
+    // box reclaim runs the field drops and frees together. Twin of 0xaa2d64.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        stub_adcf38(slot);
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xadcff8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_E4callES7_S7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
-pub fn stub_adcff8() -> ! {
-    todo!("0xadcff8 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_adcff8(slot: &IprSlotNode, first: &SharedPtr<Instance>, second: &SharedPtr<Instance>) {
+    // IDA 0xadcff8: retained `SharedPtr` copy of the bind target
+    // (spinlock-guarded bump, decompile 0xadd07e-0xadd094), then
+    // `mf1::operator()` on the bind words (decompile 0xadd0a6), then the
+    // mirrored release (decompile 0xadd0b4). The two signal args have no
+    // `arg<>` placeholders and are dropped. Clone plus dispatch plus `Drop`
+    // is the same sequence. Twin of 0xaa2e6c with a 2-value bind.
+    let _ = (first, second);
+    if let Some(target) = slot.bind.target.clone() {
+        // SAFETY: `bind.receiver` must point to a valid receiver.
+        let receiver = unsafe { &*slot.bind.receiver };
+        (slot.bind.method)(receiver, &target);
+    }
 }
 
 // 0xadd110 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_E4callES7_S7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
-pub fn stub_add110() -> ! {
-    todo!("0xadd110 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_add110(slot: &IprSlotNode, first: &SharedPtr<Instance>, second: &SharedPtr<Instance>) {
+    // IDA 0xadd110: non-virtual thunk — adjusts the `callable` subobject back
+    // to the slot base, then tail-calls `callable::call`. The adjustment is a
+    // vtable-layout detail that collapses away here. Twin of 0xaa2f88.
+    stub_adcff8(slot, first, second);
 }
 
 // 0xadd5f8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED2Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_add5f8() -> ! {
-    todo!("0xadd5f8 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_add5f8(slot: *mut IprSlotNode) {
+    // IDA 0xadd5f8: `~callable` D2 — vtable resets (decompile
+    // 0xadd630-0xadd680) plus the `shared_count` release at `+8` (decompile
+    // 0xadd664) plus the intrusive link release at `+2` (decompile
+    // 0xadd684-0xadd6c2). Clearing the retained target and the link is the
+    // same sequence; storage kept. Twin of 0xaa2d08 clearing both words.
+    // SAFETY: `slot` must point to a valid `IprSlotNode`.
+    unsafe {
+        (*slot).bind.target = None;
+        (*slot).next = None;
+    }
 }
 
 // 0xadd774 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_add774() -> ! {
-    todo!("0xadd774 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_add774(slot: *mut IprSlotNode) {
+    // IDA 0xadd774: `~callable` D1 — tail-calls the D2 (decompile 0xadd77c),
+    // which is `stub_add5f8`. Storage kept.
+    // SAFETY: `slot` must point to a valid `IprSlotNode` for the callee.
+    stub_add5f8(slot);
 }
 
 // 0xadd780 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network28InterpolatingPhysicsReceiverENS4_ISG_EEEENSB_5list2INSB_5valueIPSG_EENSK_ISH_EEEEEELi2ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_add780() -> ! {
-    todo!("0xadd780 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_add780(slot: *mut IprSlotNode) {
+    // IDA 0xadd780: `~callable` D0 — `~callable` (decompile 0xadd7d0) plus
+    // `intrusive_ptr_target::operator delete` (decompile 0xadd7dc); the box
+    // reclaim runs the field drops and frees together.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        stub_add5f8(slot);
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xadfcdc — __ZN3RBX7Network10Replicator27writeNonCacheablePropertiesEPKNS_8InstanceERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
 // was: RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)
-pub fn stub_adfcdc() -> ! {
-    todo!("0xadfcdc RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")
+pub fn stub_adfcdc(rep: &Replicator, inst: &SharedPtr<Instance>, out: &mut ReplicatorBitStream) {
+    // IDA 0xadfcdc: descriptor loop over the class vector (decompile
+    // 0xadfcfe-0xadfd70) with the `isMemberOf` assert (property.h:255); the
+    // `+284` write gate (decompile 0xadfdba); the read/write-only assert
+    // (property.h:103); the string-like `typeinfo` filter (`std::string`,
+    // `ProtectedString`, `SystemAddress`; decompile 0xadfe36-0xadfe64), then
+    // `writePropertiesInternal` (decompile 0xadfe72).
+    for prop in class_properties_of(inst.class_name).into_iter().filter(|p| p.kind == ReplicatedKind::Text) {
+        if prop.can_replicate && rep.wants_property_desc(&prop) {
+            stub_adfe8c(rep, inst, &prop, out, true);
+        }
+    }
 }
 
 // 0xadfe8c — __ZN3RBX7Network10Replicator23writePropertiesInternalEPKNS_8InstanceERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamEb
 #[doc(alias = "RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)")]
 // was: RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)
-pub fn stub_adfe8c() -> ! {
-    todo!("0xadfe8c RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)")
+pub fn stub_adfe8c(rep: &Replicator, inst: &SharedPtr<Instance>, prop: &ReplicatedProperty, out: &mut ReplicatorBitStream, present: bool) {
+    // IDA 0xadfe8c: property-name read (decompile 0xadfeba) plus `getDefault`
+    // (decompile 0xadfec0); `bool` typeinfo takes the 1-bit write through the
+    // `+312` virtual (decompile 0xadffa6-0xadffba) with the `StandardOut`
+    // trace; otherwise the default-compare (decompile 0xadff3c) writes the
+    // `operator<<(1)` present-bit plus the value on change (decompile
+    // 0xadff46) and the 0-bit on match. `present` is the `a5` word both
+    // callers set to 1 (decompile 0xadfe72, 0xae057a); the value codec lands
+    // with the reflection serialization model.
+    let _ = (rep, inst, prop);
+    out.write_bit(present);
 }
 
 // 0xae03cc — __ZN3RBX7Network10Replicator24writeCacheablePropertiesEPKNS_8InstanceERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
 // was: RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)
-pub fn stub_ae03cc() -> ! {
-    todo!("0xae03cc RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")
+pub fn stub_ae03cc(rep: &Replicator, inst: &SharedPtr<Instance>, out: &mut ReplicatorBitStream) {
+    // IDA 0xae03cc: same loop, predicate, and asserts as 0xadfcdc; the
+    // non-string, non-ref filter (`isRefPropertyDescriptor`, decompile
+    // 0xae055c) minus `propParent` (`v11 != v17`, decompile 0xae056c), then
+    // `writePropertiesInternal` (decompile 0xae057a).
+    for prop in class_properties_of(inst.class_name).into_iter().filter(|p| p.kind == ReplicatedKind::Value && !p.is_parent) {
+        if prop.can_replicate && rep.wants_property_desc(&prop) {
+            stub_adfe8c(rep, inst, &prop, out, true);
+        }
+    }
 }
 
 // 0xae0a44 — __ZN3RBX7Network13ReplicatorJobC2EPKcRNS0_10ReplicatorENS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::Network::ReplicatorJob::ReplicatorJob(char const*,RBX::Network::Replicator &,RBX::DataModelJob::TaskType)")]
 // was: RBX::Network::ReplicatorJob::ReplicatorJob(char const*,RBX::Network::Replicator &,RBX::DataModelJob::TaskType)
-pub fn stub_ae0a44() -> ! {
-    todo!("0xae0a44 RBX::Network::ReplicatorJob::ReplicatorJob(char const*,RBX::Network::Replicator &,RBX::DataModelJob::TaskType)")
+pub fn stub_ae0a44(job: *mut ReplicatorJob, name: &str, rep: &Replicator) {
+    // IDA 0xae0a44: `RakNetAddressToString` on the peer word (decompile
+    // 0xae0a74) plus `format("%s %s")` (decompile 0xae0aba);
+    // `DataModel::get` plus `shared_from<DataModel>` (decompile
+    // 0xae0ac8-0xae0ad4); `DataModelJob::DataModelJob` with task type 1
+    // (decompile 0xae0b4c); the spinlock retain/release pairs ride on the
+    // clones. The peer-address prefix lands with the RakNet address model.
+    // SAFETY: `job` must point to valid storage never used again.
+    unsafe {
+        (*job).name = name.to_owned();
+        (*job).task_type = 1;
+        (*job).data_model = rep.data_model.clone();
+    }
 }
 
 // 0xae3ae0 — __ZN3RBX7Network10Replicator14isTopContainerEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::isTopContainer(RBX::Instance const*)")]
 // was: RBX::Network::Replicator::isTopContainer(RBX::Instance const*)
-pub fn stub_ae3ae0() -> ! {
-    todo!("0xae3ae0 RBX::Network::Replicator::isTopContainer(RBX::Instance const*)")
+pub fn stub_ae3ae0(rep: &Replicator) -> bool {
+    // IDA 0xae3ae0: `v2 = *(this + 13)` (decompile 0xae3ae0); null takes the
+    // false path (decompile 0xae3ae6-0xae3ae8); otherwise `*(v2 + 52) == 0`
+    // (decompile 0xae3af0). Byte `+52` is the `Instance` parent word (`+13`,
+    // cf. `getParentDangerous` 0x70348c): a top container with no parent.
+    rep.top_container.as_ref().map(|t| t.parent.is_null()).unwrap_or(false)
 }
 
 // 0xae3af4 — __ZN3RBX7Network10Replicator26addTopReplicationContainerEPNS_8InstanceEbbN5boost8functionIFvNS4_10shared_ptrIS2_EEEEE
 #[doc(alias = "RBX::Network::Replicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: RBX::Network::Replicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_ae3af4() -> ! {
-    todo!("0xae3af4 RBX::Network::Replicator::addTopReplicationContainer(RBX::Instance *,bool,bool,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")
+pub fn stub_ae3af4(rep: &mut Replicator, inst: &SharedPtr<Instance>, flag_a: bool, flag_b: bool, on_added: &ChildAddedCallback) {
+    // IDA 0xae3af4: stores the top container; binds `onChildAdded`
+    // (decompile 0xae3d06) and runs `visitChildren` over the container's
+    // children (decompile 0xae3d12). The two bool words' roles and the
+    // per-child function-word retention land with a later batch.
+    let _ = (flag_a, flag_b, on_added);
+    rep.top_container = Some(inst.clone());
+    for child in inst.children.clone() {
+        stub_ae516c(rep, &child);
+    }
 }
 
 // 0xae3ecc — __ZN3RBX7Network10Replicator18addReplicationDataEN5boost10shared_ptrINS_8InstanceEEEbb
 #[doc(alias = "RBX::Network::Replicator::addReplicationData(rbx_core::SharedPtr<RBX::Instance>,bool,bool)")]
 // was: RBX::Network::Replicator::addReplicationData(boost::shared_ptr<RBX::Instance>,bool,bool)
-pub fn stub_ae3ecc() -> ! {
-    todo!("0xae3ecc RBX::Network::Replicator::addReplicationData(rbx_core::SharedPtr<RBX::Instance>,bool,bool)")
+pub fn stub_ae3ecc(rep: &mut Replicator, inst: &SharedPtr<Instance>, flag_a: bool, flag_b: bool) {
+    // IDA 0xae3ecc: the `MegaClusterInstance` `isA` assert (decompile
+    // 0xae3ff6-0xae4002); `ReplicationData` construction plus the
+    // combined-signal `insert` (decompile 0xae46c6); insert into the `+1440`
+    // map with the `"Adding instance replication data: %p"` lifetime log
+    // (decompile 0xae42ca). The signal connection and the flag roles land
+    // with a later batch.
+    debug_assert!(!instance_is_a(SharedPtr::as_ptr(inst), "MegaClusterInstance"));
+    rep.data.insert(replication_key(inst), ReplicationData { instance: inst.clone(), flag_a, flag_b });
 }
 
 // 0xae516c — __ZN3RBX7Network10Replicator12onChildAddedEN5boost10shared_ptrINS_8InstanceEEENS2_8functionIFvS5_EEE
 #[doc(alias = "RBX::Network::Replicator::onChildAdded(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 // was: RBX::Network::Replicator::onChildAdded(boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
-pub fn stub_ae516c() -> ! {
-    todo!("0xae516c RBX::Network::Replicator::onChildAdded(rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")
+pub fn stub_ae516c(rep: &mut Replicator, child: &SharedPtr<Instance>) {
+    // IDA 0xae516c: the `child != removingInstance` assert (decompile
+    // 0xae5206-0xae5208); the `+276` replication gate (LABEL_7, decompile
+    // 0xae51f6) with the `"Child instance added to replicatio: %p"` log;
+    // the map lookup by `ptr + (ptr >> 3)` (decompile 0xae5282-0xae52b4)
+    // returns when present; otherwise retain plus
+    // `shouldStreamingHandleOnAddedForChild` (decompile 0xae5320) and
+    // insert. The removing-instance assert and the function-word retention
+    // land with a later batch.
+    if !rep.want_replicate(child) {
+        return;
+    }
+    let key = replication_key(child);
+    if rep.data.contains_key(&key) {
+        return;
+    }
+    let streaming = stub_ae69c8(rep, child);
+    rep.data.insert(key, ReplicationData { instance: child.clone(), flag_a: streaming, flag_b: false });
 }
 
 // 0xae59c8 — __ZN3RBX7Network10Replicator21addToPendingItemsListEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::addToPendingItemsList(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::addToPendingItemsList(boost::shared_ptr<RBX::Instance>)
-pub fn stub_ae59c8() -> ! {
-    todo!("0xae59c8 RBX::Network::Replicator::addToPendingItemsList(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_ae59c8(rep: &mut Replicator, inst: &SharedPtr<Instance>) {
+    // IDA 0xae59c8: retained `SharedPtr` copy plus `ItemQueue::push_back`
+    // (decompile 0xae5b18); the clone is the retain, `Drop` the release.
+    rep.pending.push(inst.clone());
 }
 
 // 0xae5d90 — __ZN3RBX7Network10Replicator25disconnectReplicationDataEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::disconnectReplicationData(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Replicator::disconnectReplicationData(boost::shared_ptr<RBX::Instance>)
-pub fn stub_ae5d90() -> ! {
-    todo!("0xae5d90 RBX::Network::Replicator::disconnectReplicationData(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_ae5d90(rep: &mut Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xae5d90: null takes the 0 path (decompile 0xae5da0); the
+    // hash-bucket lookup by `id + (id >> 3)` (decompile 0xae5dca-0xae5dfc)
+    // with the `ReplicationDataLifetime` log; erase plus the mirrored
+    // releases. `HashMap::remove` is the same lookup-plus-erase.
+    rep.data.remove(&replication_key(inst)).is_some()
 }
 
 // 0xae69c8 — __ZN3RBX7Network10Replicator36shouldStreamingHandleOnAddedForChildEN5boost10shared_ptrIKNS_8InstanceEEE
 #[doc(alias = "RBX::Network::Replicator::shouldStreamingHandleOnAddedForChild(rbx_core::SharedPtr<RBX::Instance const>)")]
 // was: RBX::Network::Replicator::shouldStreamingHandleOnAddedForChild(boost::shared_ptr<RBX::Instance const>)
-pub fn stub_ae69c8() -> ! {
-    todo!("0xae69c8 RBX::Network::Replicator::shouldStreamingHandleOnAddedForChild(rbx_core::SharedPtr<RBX::Instance const>)")
+pub fn stub_ae69c8(rep: &Replicator, child: &SharedPtr<Instance>) -> bool {
+    // IDA 0xae69c8: the `PartInstance` `isA` gate (decompile 0xae6a4a); the
+    // `Workspace` find (decompile 0xae6ac0); the `MegaClusterInstance` `isA`
+    // (decompile 0xae6ba6) into the `Primitive+172` coordinate frame
+    // (decompile 0xae6cf6). Non-parts take the false path; the
+    // frame/extents math lands with the streaming model. `isA` is
+    // exact-name until the hierarchy lands.
+    let _ = rep;
+    let p = SharedPtr::as_ptr(child);
+    if !instance_is_a(p, "PartInstance") {
+        return false;
+    }
+    instance_is_a(p, "MegaClusterInstance")
 }
 
 // 0xae6f08 — __ZNK3RBX7Network10Replicator39isInstanceAChildOfClientsCharacterModelEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Replicator::isInstanceAChildOfClientsCharacterModel(RBX::Instance const*)const")]
 // was: RBX::Network::Replicator::isInstanceAChildOfClientsCharacterModel(RBX::Instance const*)const
-pub fn stub_ae6f08() -> ! {
-    todo!("0xae6f08 RBX::Network::Replicator::isInstanceAChildOfClientsCharacterModel(RBX::Instance const*)const")
+pub fn stub_ae6f08(rep: &Replicator, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xae6f08: player through the `+152` virtual (decompile 0xae6f16);
+    // null player takes the false path (decompile 0xae6f1c); character at
+    // player `+92` (decompile 0xae6f20); the parent walk hits the character
+    // (decompile 0xae6f26-0xae6f32). The character address stands in for the
+    // `ModelInstance*` until the inheritance model exists.
+    let Some(player) = rep.local_player.as_ref() else { return false; };
+    let character = player.character.lock();
+    let Some(character) = character.as_ref() else { return false; };
+    let target = SharedPtr::as_ptr(character) as *const ();
+    // SAFETY: the parent chain starts at a live instance; the walk only
+    // reads pointer words, never dereferences payload.
+    let mut cursor: *const Instance = SharedPtr::as_ptr(inst);
+    unsafe {
+        while !cursor.is_null() {
+            if cursor as *const () == target {
+                return true;
+            }
+            cursor = (*cursor).parent;
+        }
+    }
+    false
 }
 
 // 0xae7f04 — __ZN3RBX7Network10Replicator20canReplicateInstanceEPNS_8InstanceEi
 #[doc(alias = "RBX::Network::Replicator::canReplicateInstance(RBX::Instance *,int)")]
 // was: RBX::Network::Replicator::canReplicateInstance(RBX::Instance *,int)
-pub fn stub_ae7f04() -> ! {
-    todo!("0xae7f04 RBX::Network::Replicator::canReplicateInstance(RBX::Instance *,int)")
+pub fn stub_ae7f04(rep: &Replicator, inst: Option<&SharedPtr<Instance>>, protocol_version: i32) -> bool {
+    // IDA 0xae7f04: null instance returns `(a3 > 15) | 1` (decompile
+    // 0xae7f92), always true; `MarketplaceService` (decompile
+    // 0xae8040-0xae804c), `BadgeService` (decompile 0xae80fa), and
+    // `TestService` (decompile 0xae81b0-0xae81b8) members return `a3 > 8`
+    // (decompile 0xae82c2); `ReplicatedStorage` returns `(a3 > 15) | 0`
+    // (decompile 0xae8272-0xae8288); anything else returns true. The
+    // `+36 == 36` folds for non-null instances; `isA` is exact-name until
+    // the hierarchy lands.
+    let _ = rep;
+    let Some(inst) = inst else { return true; };
+    let p = SharedPtr::as_ptr(inst);
+    if instance_is_a(p, "MarketplaceService") || instance_is_a(p, "BadgeService") || instance_is_a(p, "TestService") {
+        return protocol_version > 8;
+    }
+    if instance_is_a(p, "ReplicatedStorage") {
+        return protocol_version > 15;
+    }
+    true
 }
 
 // 0xaf5fe4 — __ZN3RBX7NetworkL18RemoteCheatHelper2EN5boost8weak_ptrINS_9DataModelEEE
 #[doc(alias = "RBX::Network::RemoteCheatHelper2(rbx_core::Weak<RBX::DataModel>)")]
 // was: RBX::Network::RemoteCheatHelper2(boost::weak_ptr<RBX::DataModel>)
-pub fn stub_af5fe4() -> ! {
-    todo!("0xaf5fe4 RBX::Network::RemoteCheatHelper2(rbx_core::Weak<RBX::DataModel>)")
+pub fn stub_af5fe4(helper: *mut RemoteCheatHelper2, data_model: &WeakPtr<DataModel>) {
+    // IDA 0xaf5fe4: the `Weak<DataModel>` retain (spinlock-guarded
+    // `weak_count` bump, decompile 0xaf606c-0xaf6072); the body resolves the
+    // local player via `Players::findLocalPlayer` (decompile 0xaf6098) and
+    // `Player::reportStat` (decompile 0xaf60bc), deferred until the
+    // players-service model exists. The clone is the retain.
+    // SAFETY: `helper` must point to valid storage never used again.
+    unsafe {
+        (*helper).data_model = data_model.clone();
+    }
 }
 
 // 0xaf6960 — __ZN3RBX7Network10Replicator11setRefValueERNS0_12IdSerializer8WaitItemEPNS_8InstanceE
