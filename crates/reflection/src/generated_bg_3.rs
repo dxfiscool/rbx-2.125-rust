@@ -432,6 +432,9 @@ pub fn stub_0x1a970(is_pad: bool, screen_bounds: (f32, f32, f32, f32)) -> DebugS
     // `displayPickerArray` holds None/FPS/Summary/Physics/PhysicsAndOwner/Render
     // (0x1aaa2-0x1ab12). Screen/idiom queries collapse into parameters.
     let window = if is_pad { (0.0, 0.0, 540.0, 508.0) } else { screen_bounds };
+    // The rect also lands in the `window` ivar (0x1aa1c-0x1aa76), mirrored here so
+    // stub_0x1b224 (`viewWillAppear:`) can apply it to the superview bounds.
+    *DEBUG_WINDOW_RECT.lock() = window;
     DebugSettings {
         window,
         keyboard_offset: 114,
@@ -467,205 +470,323 @@ pub fn stub_0x1ab70() {
     stub_0x1ab6c();
 }
 
+/// Gap-filler DebugSettings/Home observable state (IDA 0x1a970-0x1bbd0). The
+/// canonical view controllers live in `rbx_platform`; view objects, animation
+/// blocks and notification delivery have no runtime here, so UI effects record
+/// as visibility flags/counters and pure mappings (switches, parses, counts)
+/// implement fully.
+static DEBUG_WINDOW_RECT: parking_lot::Mutex<(f32, f32, f32, f32)> =
+    parking_lot::Mutex::new((0.0, 0.0, 0.0, 0.0));
+static DEBUG_SUPERVIEW_BOUNDS: parking_lot::Mutex<(f32, f32, f32, f32)> =
+    parking_lot::Mutex::new((0.0, 0.0, 0.0, 0.0));
+static DEBUG_PICKER_ITEMS: std::sync::LazyLock<Vec<String>> = std::sync::LazyLock::new(|| {
+    ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"]
+        .iter()
+        .map(|s| s.to_string())
+        .collect()
+});
+static DISPLAY_PICKER_VISIBLE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+static TAP_RECOGNIZER_ENABLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+static DEBUG_FIELDS_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+static VERSION_LABEL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static APP_BUNDLE_VERSION: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static SEARCH_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static GAMES_BUTTON_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+static DISMISS_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static WEBVIEW_PRELOAD_CALLS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+static SIGNUP_OBSERVER_ADDED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_0x1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+pub fn stub_0x1abb0(debug_display: u32) -> String {
+    // IDA 0x1abb0: `-setDisplayUI` reads `viewWithTag:100` (0x1abd2), switches on
+    // `GuiBuilder::getDebugDisplay` (0x1abe6): 1->FPS, 2->Summary, 3->Physics,
+    // 4->PhysicsAndOwner, 5->Render, default->None (0x1ac02-0x1ac7c), then
+    // `setText:` (0x1ac0c). View lookup + label assignment collapse (no UI); the
+    // code->label mapping is the observable. Matches `displayPickerArray`.
+    match debug_display {
+        1 => "FPS",
+        2 => "Summary",
+        3 => "Physics",
+        4 => "PhysicsAndOwner",
+        5 => "Render",
+        _ => "None",
+    }
+    .to_owned()
 }
 
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_0x1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+pub fn stub_0x1ac80() {
+    // IDA 0x1ac80: `displayPickerDoneClicked:` requires `viewWithTag:5012` and
+    // `:5011` non-nil (0x1acca-0x1ad0a) then runs the hide block under
+    // `animateWithDuration:` (0x1ad34, stub_0x1ad78). View existence collapses;
+    // the animation runs its block, so this sequences it directly.
+    stub_0x1ad78();
 }
 
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_0x1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_0x1ad78() {
+    // IDA 0x1ad78: the Done-click block reframes both tagged views to their
+    // hidden geometry (0x1adba-0x1ae74: picker slides out, toolbar back). Frame
+    // math has no target here; the picker-hidden outcome records.
+    DISPLAY_PICKER_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1ae78 — ___copy_helper_block__0
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block__0")]
-pub fn stub_0x1ae78() -> ! {
-    todo!("0x1ae78 ___copy_helper_block__0")
+pub fn stub_0x1ae78(_dst: usize, _src: usize) {
+    // IDA 0x1ae78: `__copy_helper_block__0` — `_Block_object_assign` retain
+    // (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x1aea8 — ___destroy_helper_block__0
 #[doc(alias = "___destroy_helper_block__0")]
-pub fn stub_0x1aea8() -> ! {
-    todo!("0x1aea8 ___destroy_helper_block__0")
+pub fn stub_0x1aea8(_block: usize) {
+    // IDA 0x1aea8: `__destroy_helper_block__0` — `_Block_object_dispose`
+    // release (same shape as stub_0x180a0). No explicit body.
 }
 
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_0x1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+pub fn stub_0x1aed0() {
+    // IDA 0x1aed0: `displayTouchUp:` — same non-nil guard shape as stub_0x1ac80
+    // over tags 5012/5011 (0x1af1a-0x1af5c), then the show block under
+    // `animateWithDuration:` (0x1af86, stub_0x1afa0). Sequences directly.
+    stub_0x1afa0();
 }
 
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
-pub fn stub_0x1afa0() -> ! {
-    todo!("0x1afa0 ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")
+pub fn stub_0x1afa0() {
+    // IDA 0x1afa0: the display-touch block reframes both tagged views to their
+    // shown geometry (same frame-math shape as stub_0x1ad78, mirrored). The
+    // picker-shown outcome records.
+    DISPLAY_PICKER_VISIBLE.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1b11c — ___copy_helper_block_66
 #[doc(alias = "___copy_helper_block_66")]
-pub fn stub_0x1b11c() -> ! {
-    todo!("0x1b11c ___copy_helper_block_66")
+pub fn stub_0x1b11c(_dst: usize, _src: usize) {
+    // IDA 0x1b11c: `__copy_helper_block_66` — `_Block_object_assign` retain
+    // (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x1b14c — ___destroy_helper_block_67
 #[doc(alias = "___destroy_helper_block_67")]
-pub fn stub_0x1b14c() -> ! {
-    todo!("0x1b14c ___destroy_helper_block_67")
+pub fn stub_0x1b14c(_block: usize) {
+    // IDA 0x1b14c: `__destroy_helper_block_67` — `_Block_object_dispose`
+    // release (same shape as stub_0x180a0). No explicit body.
 }
 
 // 0x1b170 — -[DebugSettingsViewController didReceiveMemoryWarning]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
-pub fn stub_0x1b170() -> ! {
-    todo!("0x1b170 -[DebugSettingsViewController didReceiveMemoryWarning]")
+pub fn stub_0x1b170() {
+    // IDA 0x1b170: `didReceiveMemoryWarning` is only the super call
+    // (0x1b18a-0x1b194). No explicit body.
 }
 
 // 0x1b19c — -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(DebugSettingsViewController *self, SEL, int)
 #[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_0x1b19c() -> ! {
-    todo!("0x1b19c -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_0x1b19c(is_pad: bool, orientation: i32) -> bool {
+    // IDA 0x1b19c: `shouldAutorotateToInterfaceOrientation:` — without the idiom
+    // selector the answer is portrait-only (0x1b218-0x1b21c); on iPhone
+    // (`idiom == 0`) likewise portrait-only (0x1b1fe-0x1b204); on iPad every
+    // non-portrait orientation passes (0x1b206-0x1b212: `!(a3==1) && a3!=2`).
+    // Orientation codes: 1 portrait, 2 portrait-upside-down, 3+ landscape.
+    if is_pad {
+        orientation != 1 && orientation != 2
+    } else {
+        orientation == 1
+    }
 }
 
 // 0x1b224 — -[DebugSettingsViewController viewWillAppear:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, char)
 #[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
-pub fn stub_0x1b224() -> ! {
-    todo!("0x1b224 -[DebugSettingsViewController viewWillAppear:]")
+pub fn stub_0x1b224(_animated: bool) {
+    // IDA 0x1b224: `viewWillAppear:` — super call (0x1b244-0x1b24e), then the
+    // superview bounds take the stored window rect (0x1b260-0x1b29c). The rect
+    // mirror is written by stub_0x1a970; the animated flag only feeds super.
+    *DEBUG_SUPERVIEW_BOUNDS.lock() = *DEBUG_WINDOW_RECT.lock();
 }
 
 // 0x1b2a8 — -[DebugSettingsViewController doneTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
-pub fn stub_0x1b2a8() -> ! {
-    todo!("0x1b2a8 -[DebugSettingsViewController doneTouchUp:]")
+pub fn stub_0x1b2a8() {
+    // IDA 0x1b2a8: `doneTouchUp:` — `dismissViewControllerAnimated:completion:`
+    // with YES/nil (0x1b2b8). No view hierarchy here; the dismissal records.
+    DISMISS_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1b2bc — -[DebugSettingsViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
-pub fn stub_0x1b2bc() -> ! {
-    todo!("0x1b2bc -[DebugSettingsViewController numberOfComponentsInPickerView:]")
+pub fn stub_0x1b2bc() -> i32 {
+    // IDA 0x1b2bc: `numberOfComponentsInPickerView:` returns 1 (0x1b2be).
+    1
 }
 
 // 0x1b2c0 — -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_0x1b2c0() -> ! {
-    todo!("0x1b2c0 -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_0x1b2c0() -> usize {
+    // IDA 0x1b2c0: `pickerView:numberOfRowsInComponent:` returns the
+    // `displayPickerArray` count. Reads the shared item table.
+    DEBUG_PICKER_ITEMS.len()
 }
 
 // 0x1b2e0 — -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(DebugSettingsViewController *self, SEL, id, int, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_0x1b2e0() -> ! {
-    todo!("0x1b2e0 -[DebugSettingsViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_0x1b2e0(row: usize) -> String {
+    // IDA 0x1b2e0: `pickerView:titleForRow:forComponent:` returns
+    // `[displayPickerArray objectAtIndex:row]`. `NSArray` raises on an out-of-range
+    // row; indexing panics the same way.
+    DEBUG_PICKER_ITEMS[row].clone()
 }
 
 // 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
 // type: char __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_0x1b300() -> ! {
-    todo!("0x1b300 -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")
+pub fn stub_0x1b300() -> bool {
+    // IDA 0x1b300: `disablesAutomaticKeyboardDismissal` returns 0 (0x1b302).
+    false
 }
 
 // 0x1b304 — -[DebugSettingsViewController .cxx_construct]
 // type: id __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
-pub fn stub_0x1b304() -> ! {
-    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
+pub fn stub_0x1b304() {
+    // IDA 0x1b304: `-[DebugSettingsViewController .cxx_construct]` returns self
+    // with no member work (0x1b304). No explicit body.
 }
 
 // 0x1b308 — __GLOBAL__I_a_3
 #[doc(alias = "__GLOBAL__I_a_3")]
-pub fn stub_0x1b308() -> ! {
-    todo!("0x1b308 global constructor keyed to_a_3")
+pub fn stub_0x1b308() {
+    // IDA 0x1b308: `__GLOBAL__I_a_3` — stores `boost::system::generic_category()` /
+    // `system_category()` singletons into `__MergedGlobals_37` (disasm 0x1b30c-0x1b322;
+    // decompile unavailable, init thunk). Same cutover as stub_0x16e4c; no body.
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
 // type: HomeViewController *__cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController initWithCoder:]")]
-pub fn stub_0x1b3d0() -> ! {
-    todo!("0x1b3d0 -[HomeViewController initWithCoder:]")
+pub fn stub_0x1b3d0(webviews_ready: bool) {
+    // IDA 0x1b3d0: `-[HomeViewController initWithCoder:]` — super init
+    // (0x1b3f8-0x1b3fc); `preloadDesignatedWebViews`, falling back to
+    // `designatedWebviewsToHomePages` when it reports false (0x1b41a-0x1b442);
+    // registers `handleSignupNotification:` for the signup-finished notification
+    // (0x1b462-0x1b4a4). The preload outcome crosses as a parameter; web views
+    // and observers have no target here.
+    WEBVIEW_PRELOAD_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if !webviews_ready {
+        WEBVIEW_PRELOAD_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    SIGNUP_OBSERVER_ADDED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1b4b0 — -[HomeViewController dealloc]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController dealloc]")]
-pub fn stub_0x1b4b0() -> ! {
-    todo!("0x1b4b0 -[HomeViewController dealloc]")
+pub fn stub_0x1b4b0() {
+    // IDA 0x1b4b0: `-[HomeViewController dealloc]` releases ~25 retained outlets
+    // (0x1b4d4-0x1b690+) then super dealloc. Drop glue covers it; no body.
 }
 
 // 0x1b75c — -[HomeViewController viewDidLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewDidLoad]")]
-pub fn stub_0x1b75c() -> ! {
-    todo!("0x1b75c -[HomeViewController viewDidLoad]")
+pub fn stub_0x1b75c() {
+    // IDA 0x1b75c: `-viewDidLoad` — super (0x1b786), hides the debug
+    // place/port/ip/launcher/settings fields (0x1b7a8-0x1b800), keyboard
+    // show/hide observers (0x1ba04-0x1ba6a, delivered by the platform), version
+    // label from `CFBundleVersion` (0x1ba92-0x1bad2), and the search-URL block on
+    // a global queue (0x1b9e4, stub_0x1bae4). Observer delivery and hidden flags
+    // record; the queue hop collapses to the direct call.
+    DEBUG_FIELDS_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    *VERSION_LABEL.lock() = APP_BUNDLE_VERSION.lock().clone();
+    stub_0x1bae4();
 }
 
 // 0x1bae4 — ___33-[HomeViewController viewDidLoad]_block_invoke
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke")]
-pub fn stub_0x1bae4() -> ! {
-    todo!("0x1bae4 ___33-[HomeViewController viewDidLoad]_block_invoke")
+pub fn stub_0x1bae4() {
+    // IDA 0x1bae4: the viewDidLoad search block — when `[RobloxInfo searchUrl]`
+    // is non-empty (0x1bb04-0x1bb14), unhide runs on the main queue
+    // (0x1bb42-0x1bb5c, stub_0x1bb64). Queue hop collapses to the direct call.
+    if !SEARCH_URL.lock().is_empty() {
+        stub_0x1bb64();
+    }
 }
 
 // 0x1bb64 — ___33-[HomeViewController viewDidLoad]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke_2")]
-pub fn stub_0x1bb64() -> ! {
-    todo!("0x1bb64 ___33-[HomeViewController viewDidLoad]_block_invoke_2")
+pub fn stub_0x1bb64() {
+    // IDA 0x1bb64: the search block body — `setHidden:0` on the ivar at +284
+    // (the games button). Records the unhide.
+    GAMES_BUTTON_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1bb88 — ___copy_helper_block__1
 #[doc(alias = "___copy_helper_block__1")]
-pub fn stub_0x1bb88() -> ! {
-    todo!("0x1bb88 ___copy_helper_block__1")
+pub fn stub_0x1bb88(_dst: usize, _src: usize) {
+    // IDA 0x1bb88: `__copy_helper_block__1` — `_Block_object_assign` retain
+    // (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x1bb94 — ___destroy_helper_block__1
 #[doc(alias = "___destroy_helper_block__1")]
-pub fn stub_0x1bb94() -> ! {
-    todo!("0x1bb94 ___destroy_helper_block__1")
+pub fn stub_0x1bb94(_block: usize) {
+    // IDA 0x1bb94: `__destroy_helper_block__1` — `_Block_object_dispose`
+    // release (same shape as stub_0x180a0). No explicit body.
 }
 
 // 0x1bb9c — ___copy_helper_block_80
 #[doc(alias = "___copy_helper_block_80")]
-pub fn stub_0x1bb9c() -> ! {
-    todo!("0x1bb9c ___copy_helper_block_80")
+pub fn stub_0x1bb9c(_dst: usize, _src: usize) {
+    // IDA 0x1bb9c: `__copy_helper_block_80` — `_Block_object_assign` retain
+    // (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x1bba8 — ___destroy_helper_block_81
 #[doc(alias = "___destroy_helper_block_81")]
-pub fn stub_0x1bba8() -> ! {
-    todo!("0x1bba8 ___destroy_helper_block_81")
+pub fn stub_0x1bba8(_block: usize) {
+    // IDA 0x1bba8: `__destroy_helper_block_81` — `_Block_object_dispose`
+    // release (same shape as stub_0x180a0). No explicit body.
 }
 
 // 0x1bbb0 — -[HomeViewController keyboardDidShow:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidShow:]")]
-pub fn stub_0x1bbb0() -> ! {
-    todo!("0x1bbb0 -[HomeViewController keyboardDidShow:]")
+pub fn stub_0x1bbb0() {
+    // IDA 0x1bbb0: `keyboardDidShow:` enables the tap recognizer (0x1bbcc).
+    TAP_RECOGNIZER_ENABLED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1bbd0 — -[HomeViewController keyboardDidHide:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidHide:]")]
-pub fn stub_0x1bbd0() -> ! {
-    todo!("0x1bbd0 -[HomeViewController keyboardDidHide:]")
+pub fn stub_0x1bbd0() {
+    // IDA 0x1bbd0: `keyboardDidHide:` disables the tap recognizer (0x1bbec).
+    TAP_RECOGNIZER_ENABLED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1bbf0 — -[HomeViewController dismissKeyboard]
