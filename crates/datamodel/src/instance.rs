@@ -300,6 +300,49 @@ pub struct CharacterMesh {
     _opaque: (),
 }
 
+/// Rust model of `RBX::ClickDetector` (IDA `0x3f12e0`): the last-hover part
+/// at `this + 124` plus the `MouseClick` member signal behind `fireEvent`
+/// (IDA `0x3f1d14`).
+#[derive(Default)]
+pub struct ClickDetector {
+    pub last_hover: Option<SharedPtr<Instance>>,
+    pub clicked: Signal<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Reflection::RemoteEventDesc<ClickDetector, ...>` (IDA
+/// `0x3f17f8`): same scriptable/broadcast flag pair as `ChatRemoteEventDesc`.
+#[derive(Default)]
+pub struct ClickRemoteEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
+/// Rust model of `RBX::CollectionService` (IDA `0x3f3394`): the name-keyed
+/// collection vectors at `this + 104` with the added (`+96`, IDA `0x3f348c`)
+/// and removed (`+100`, IDA `0x3f32b6`) member signals.
+#[derive(Default)]
+pub struct CollectionService {
+    pub collections: BTreeMap<String, SharedPtr<Vec<SharedPtr<Instance>>>>,
+    pub added: Signal<SharedPtr<Instance>>,
+    pub removed: Signal<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<CollectionService, ...>`
+/// (IDA `0x3f351c`): field layout unmodeled; the bound descriptor lands with
+/// the reflection subsystem.
+#[derive(Default)]
+pub struct CollectionBoundFuncDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::EventDesc<CollectionService, ...>` (IDA
+/// `0x3f355c`): same flag-pair shape as the other event descriptors.
+#[derive(Default)]
+pub struct CollectionEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
 /// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
 /// color tag on a chat message; enumerators unmodeled.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
@@ -10855,8 +10898,14 @@ pub fn stub_0x3f0290(_name: &str, _sig: &[Variant]) {
 // 0x3f02f8 — __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()
-pub fn stub_0x3f02f8() -> ! {
-    todo!("0x3f02f8 RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")
+pub fn stub_0x3f02f8(_desc: *mut ChatBoundFuncDesc) {
+    // IDA 0x3f02f8: `BoundFuncDesc<ChatService, ...>` D0 — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ee4d0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f042c — __ZNK3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -10876,8 +10925,11 @@ pub fn stub_0x3f05d0() -> ! {
 // 0x3f0948 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS3_11ChatService9ChatColorEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::~remote_signal()")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::~remote_signal()
-pub fn stub_0x3f0948() -> ! {
-    todo!("0x3f0948 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::~remote_signal()")
+pub fn stub_0x3f0948(_sig: *mut ChatRemoteSignal) {
+    // IDA 0x3f0948: `remote_signal<chat>::D2` — full member teardown (frame +
+    // exception table, disasm 0x3f0948-0x3f0978) of the connection list and
+    // signal members; the model holds no members, so the teardown collapses.
+    // SAFETY: `_sig` must point to a valid `ChatRemoteSignal`.
 }
 
 // 0x3f1234 — __ZN3RBX13ClickDetector11isClickableEN5boost10shared_ptrINS_12PartInstanceEEEfbPNS_7Network6PlayerE
@@ -10890,8 +10942,16 @@ pub fn stub_0x3f1234() -> ! {
 // 0x3f12e0 — __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::updateLastHoverPart(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::Player *)")]
 // was: RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)
-pub fn stub_0x3f12e0() -> ! {
-    todo!("0x3f12e0 RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)")
+pub fn stub_0x3f12e0(detector: &mut ClickDetector, part: &SharedPtr<Instance>) -> bool {
+    // IDA 0x3f12e0: same part as last-hover (`this + 124`, decomp 0x3f12f2)
+    // returns 0; else a non-null new part fires `fireMouseHover` (decomp
+    // 0x3f12fa, player/network downstream), stores, and returns 1. The store
+    // plus changed flag are the datamodel-observable half.
+    let changed = detector.last_hover.as_ref().map(SharedPtr::as_ptr) != Some(SharedPtr::as_ptr(part));
+    if changed {
+        detector.last_hover = Some(part.clone());
+    }
+    changed
 }
 
 // 0x3f154c — __ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE
@@ -10911,8 +10971,14 @@ pub fn stub_0x3f15b8() -> ! {
 // 0x3f17f8 — __ZN3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x3f17f8() -> ! {
-    todo!("0x3f17f8 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x3f17f8(_desc: *mut ClickRemoteEventDesc) {
+    // IDA 0x3f17f8: `RemoteEventDesc<ClickDetector, ...>` D1 — memberwise
+    // teardown of the click remote descriptor; dropping the box is the same
+    // release. Twin of 0x3ec400.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f181c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12PartInstanceEEERS3_RKNS0_IT_EE
@@ -10932,29 +10998,52 @@ pub fn stub_0x3f1850() -> ! {
 // 0x3f1b98 — __ZNK3RBX13ClickDetector11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::ClickDetector::askAddChild(RBX::Instance const*)const")]
 // was: RBX::ClickDetector::askAddChild(RBX::Instance const*)const
-pub fn stub_0x3f1b98() -> ! {
-    todo!("0x3f1b98 RBX::ClickDetector::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x3f1b98(_detector: *const ClickDetector, _child: *const Instance) -> bool {
+    // IDA 0x3f1b98: `MOVS R0, #1; BX LR` — unconditionally allows the child.
+    true
 }
 
 // 0x3f1b9c — __ZNK3RBX13ClickDetector12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::ClickDetector::askSetParent(RBX::Instance const*)const")]
 // was: RBX::ClickDetector::askSetParent(RBX::Instance const*)const
-pub fn stub_0x3f1b9c() -> ! {
-    todo!("0x3f1b9c RBX::ClickDetector::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x3f1b9c(parent: *const Instance) -> bool {
+    // IDA 0x3f1b9c: null parent returns false (disasm 0x3f1ba0-0x3f1bac);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor — a ClickDetector may only parent
+    // under a Part. Same shape as 0x3e113c.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x3f1cac — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_13ClickDetectorEEEPKT_v
 #[doc(alias = "RBX::ClickDetector const* RBX::Instance::findConstFirstChildOfType<RBX::ClickDetector>(void)const")]
 // was: RBX::ClickDetector const* RBX::Instance::findConstFirstChildOfType<RBX::ClickDetector>(void)const
-pub fn stub_0x3f1cac() -> ! {
-    todo!("0x3f1cac RBX::ClickDetector const* RBX::Instance::findConstFirstChildOfType<RBX::ClickDetector>(void)const")
+pub fn stub_0x3f1cac(parent: *const Instance) -> Option<SharedPtr<Instance>> {
+    // IDA 0x3f1cac: null-child-list returns null (decomp 0x3f1cb6-0x3f1cbc);
+    // otherwise scans the child vector (decomp 0x3f1cc4-0x3f1cd4) checking
+    // `isA ClickDetector` — first hit wins, miss returns null. Same shape as
+    // 0x3e11f4.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return None;
+    }
+    unsafe {
+        (*parent).children.iter().find(|child| instance_is_a(SharedPtr::as_ptr(child), "ClickDetector")).cloned()
+    }
 }
 
 // 0x3f1d14 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPS2_S6_
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::fireEvent(RBX::ClickDetector*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::fireEvent(RBX::ClickDetector*,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_0x3f1d14() -> ! {
-    todo!("0x3f1d14 RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::fireEvent(RBX::ClickDetector*,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_0x3f1d14(detector: &ClickDetector, target: &SharedPtr<Instance>) {
+    // IDA 0x3f1d14 (`EventDescImpl<1, ClickDetector, ...>::fireEvent`,
+    // demangled `(ClickDetector*, Instance)`): invokes the member
+    // `signal<void ()(Instance)>` — the direct `clicked` fire with the
+    // retained target. Same shape as 0x3ed188, one arg fewer.
+    detector.clicked.fire(target.clone());
 }
 
 // 0x3f1de8 — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE14replicateEventEPNS0_11EventSourceES6_
@@ -10967,29 +11056,45 @@ pub fn stub_0x3f1de8() -> ! {
 // 0x3f2330 — __ZN3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x3f2330() -> ! {
-    todo!("0x3f2330 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x3f2330(_desc: *mut ClickRemoteEventDesc) {
+    // IDA 0x3f2330: `RemoteEventDesc<ClickDetector, ...>` D0 — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ee4d0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f23e4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x3f23e4() -> ! {
-    todo!("0x3f23e4 RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x3f23e4(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x3f23e4: `EventDescImpl<1, ClickDetector, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; same shape as
+    // 0x707dcc/0x3ee584.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x3f2548 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
-pub fn stub_0x3f2548() -> ! {
-    todo!("0x3f2548 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const")
+pub fn stub_0x3f2548(desc: &ClickRemoteEventDesc) -> bool {
+    // IDA 0x3f2548: `RemoteEventDesc<ClickDetector, ...>::isScriptable` —
+    // same flag-word read as 0x3ee6e8.
+    desc.scriptable
 }
 
 // 0x3f2550 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const
-pub fn stub_0x3f2550() -> ! {
-    todo!("0x3f2550 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const")
+pub fn stub_0x3f2550(desc: &ClickRemoteEventDesc) -> bool {
+    // IDA 0x3f2550: `RemoteEventDesc<ClickDetector, ...>::isBroadcast` —
+    // same flag-word read as 0x3ee6f0.
+    desc.broadcast
 }
 
 // 0x3f2558 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
@@ -11016,113 +11121,200 @@ pub fn stub_0x3f26c8() -> ! {
 // 0x3f26dc — __ZN3RBX10Reflection9EventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x3f26dc() -> ! {
-    todo!("0x3f26dc RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x3f26dc() -> ClickRemoteEventDesc {
+    // IDA 0x3f26dc: `EventDesc<ClickDetector, ...>` C2 — wires the member
+    // event into the class descriptor; the flag words land with the
+    // reflection registry, so the model starts at defaults. Same shape as
+    // 0x3efce8.
+    ClickRemoteEventDesc::default()
 }
 
 // 0x3f2860 — __ZN3RBX10Reflection9EventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()
-pub fn stub_0x3f2860() -> ! {
-    todo!("0x3f2860 RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()")
+pub fn stub_0x3f2860(_desc: *mut ClickRemoteEventDesc) {
+    // IDA 0x3f2860: `EventDesc<ClickDetector, ...>` D1 — memberwise teardown;
+    // dropping the box is the same release. Twin of 0x3eff44.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f2884 — __ZN3RBX10Reflection9EventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()
-pub fn stub_0x3f2884() -> ! {
-    todo!("0x3f2884 RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()")
+pub fn stub_0x3f2884(_desc: *mut ClickRemoteEventDesc) {
+    // IDA 0x3f2884: `EventDesc<ClickDetector, ...>` D0 — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3eff68.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f3178 — __ZN3RBX17CollectionService14removeInstanceEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::CollectionService::removeInstance(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::CollectionService::removeInstance(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3f3178() -> ! {
-    todo!("0x3f3178 RBX::CollectionService::removeInstance(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3f3178(service: &mut CollectionService, instance: &SharedPtr<Instance>) {
+    // IDA 0x3f3178: debug hooks + asserts, then the removal: erases the
+    // instance from its name-keyed vector and fires the removed member
+    // signal at `this + 100` (decomp 0x3f32b6). Symmetric with 0x3f3394.
+    // SAFETY: the instance must point to a valid `Instance` for its name key.
+    let key = unsafe { (*SharedPtr::as_ptr(instance)).name.text.clone() };
+    if let Some(vec) = service.collections.get_mut(&key) {
+        let fresh: Vec<SharedPtr<Instance>> = vec
+            .iter()
+            .filter(|member| SharedPtr::as_ptr(member) != SharedPtr::as_ptr(instance))
+            .cloned()
+            .collect();
+        *vec = SharedPtr::new(fresh);
+    }
+    service.removed.fire(instance.clone());
 }
 
 // 0x3f3394 — __ZN3RBX17CollectionService11addInstanceEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::CollectionService::addInstance(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::CollectionService::addInstance(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x3f3394() -> ! {
-    todo!("0x3f3394 RBX::CollectionService::addInstance(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x3f3394(service: &mut CollectionService, instance: &SharedPtr<Instance>) {
+    // IDA 0x3f3394: keys the instance name (decomp 0x3f33c2), finds-or-creates
+    // the name-keyed vector (decomp 0x3f3400-0x3f3426, null slot gets a fresh
+    // COW vector), COW-writes + pushes (decomp 0x3f3440), then fires the
+    // added member signal at `this + 96` (decomp 0x3f348c). Clone-and-replace
+    // is the same COW-write.
+    // SAFETY: the instance must point to a valid `Instance` for its name key.
+    let key = unsafe { (*SharedPtr::as_ptr(instance)).name.text.clone() };
+    let slot = service.collections.entry(key).or_insert_with(|| SharedPtr::new(Vec::new()));
+    let mut fresh: Vec<SharedPtr<Instance>> = slot.iter().cloned().collect();
+    fresh.push(instance.clone());
+    *slot = SharedPtr::new(fresh);
+    service.added.fire(instance.clone());
 }
 
 // 0x3f351c — __ZN3RBX10Reflection13BoundFuncDescINS_17CollectionServiceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEESsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::CollectionService,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(std::string),1>::~BoundFuncDesc()
-pub fn stub_0x3f351c() -> ! {
-    todo!("0x3f351c RBX::Reflection::BoundFuncDesc<RBX::CollectionService,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_0x3f351c(_desc: *mut CollectionBoundFuncDesc) {
+    // IDA 0x3f351c: `BoundFuncDesc<CollectionService, ...>` D1 — memberwise
+    // teardown of the bound collection descriptor; dropping the box is the
+    // same release. Twin of 0x3ec2e0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f355c — __ZN3RBX10Reflection9EventDescINS_17CollectionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::CollectionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::CollectionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::CollectionService::*>::~EventDesc()
-pub fn stub_0x3f355c() -> ! {
-    todo!("0x3f355c RBX::Reflection::EventDesc<RBX::CollectionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::CollectionService::*>::~EventDesc()")
+pub fn stub_0x3f355c(_desc: *mut CollectionEventDesc) {
+    // IDA 0x3f355c: `EventDesc<CollectionService, ...>` D1 — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x3f2860.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3f3580 — __ZNSt3mapISsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS1_INS2_8InstanceEEESaIS6_EEEEEESt4lessISsESaISt4pairIKSsSA_EEEixERSE_
 #[doc(alias = "std::map<std::string,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::operator[](std::string const&)")]
 // was: std::map<std::string,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::operator[](std::string const&)
-pub fn stub_0x3f3580() -> ! {
-    todo!("0x3f3580 std::map<std::string,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::operator[](std::string const&)")
+pub fn stub_0x3f3580<'a>(
+    map: &'a mut BTreeMap<String, SharedPtr<Vec<SharedPtr<Instance>>>>,
+    key: &str,
+) -> &'a mut SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x3f3580 (`map<string, cow-vector>::operator[]`): tree search with
+    // a null slot default-inserted on miss (decomp 0x3f3400-0x3f3426 shows the
+    // find-then-`operator[]`-plus-`reset(new)` sequence); `entry().or_insert`
+    // with a fresh empty vector is the same lookup-or-create.
+    map.entry(key.to_owned()).or_insert_with(|| SharedPtr::new(Vec::new()))
 }
 
 // 0x3f379c — __ZN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS0_INS1_8InstanceEEESaIS5_EEEEE5resetIS8_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::reset<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
 // was: void boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::reset<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)
-pub fn stub_0x3f379c() -> ! {
-    todo!("0x3f379c void boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::reset<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)")
+pub fn stub_0x3f379c(dst: &mut SharedPtr<Vec<SharedPtr<Instance>>>, ptr: *mut Vec<SharedPtr<Instance>>) {
+    // IDA 0x3f379c (`shared_ptr<cow-vector>::reset(raw)`): releases the old
+    // payload and adopts the raw pointer with a fresh count; reassigning from
+    // the adopted box is the same take. Same shape as the `shared_ptr_from_raw`
+    // ctors, mutating in place.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    *dst = shared_ptr_from_raw(unsafe { Box::from_raw(ptr) });
 }
 
 // 0x3f3c08 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE8_M_eraseEPSt13_Rb_tree_nodeISD_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>> *)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>> *)
-pub fn stub_0x3f3c08() -> ! {
-    todo!("0x3f3c08 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>> *)")
+pub fn stub_0x3f3c08(map: &mut BTreeMap<String, SharedPtr<Vec<SharedPtr<Instance>>>>, key: &str) {
+    // IDA 0x3f3c08 (`_Rb_tree::_M_erase` by node): unlinks and frees the node
+    // holding the key; `remove` is the same keyed erase. Twin of 0x3df534.
+    map.remove(key);
 }
 
 // 0x3f3c38 — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS4_INS5_8InstanceEEESaIS9_EEEEEEEE7destroyEPSE_
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>::destroy(std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>*)")]
 // was: __gnu_cxx::new_allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>::destroy(std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>*)
-pub fn stub_0x3f3c38() -> ! {
-    todo!("0x3f3c38 __gnu_cxx::new_allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>::destroy(std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>*)")
+pub fn stub_0x3f3c38(pair: *mut (String, SharedPtr<Vec<SharedPtr<Instance>>>)) {
+    // IDA 0x3f3c38 (`new_allocator<pair>::destroy`): runs the pair's dtor in
+    // place without freeing storage; `drop_in_place` is the same dtor call.
+    // SAFETY: `pair` must point to a valid pair whose storage outlives the call.
+    unsafe {
+        core::ptr::drop_in_place(pair);
+    }
 }
 
 // 0x3f3cdc — __ZN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS0_INS1_8InstanceEEESaIS5_EEEEEC2IS8_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
 // was: boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)
-pub fn stub_0x3f3cdc() -> ! {
-    todo!("0x3f3cdc boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)")
+pub fn stub_0x3f3cdc(ptr: *mut Vec<SharedPtr<Instance>>) -> SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x3f3cdc (`shared_ptr<cow-vector>::shared_ptr(raw)`): adopts the
+    // raw vector with a fresh count; same single-owner take as the other
+    // raw-pointer ctors.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Vec::new());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x3f3db0 — __ZN5boost6detail12shared_countC2IN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS3_8InstanceEEESaIS8_EEEEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
 // was: boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)
-pub fn stub_0x3f3db0() -> ! {
-    todo!("0x3f3db0 boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)")
+pub fn stub_0x3f3db0(ptr: *mut Vec<SharedPtr<Instance>>) -> ControlBlockP<Vec<SharedPtr<Instance>>> {
+    // IDA 0x3f3db0: plain `shared_count` ctor over the COW vector — `new`
+    // block with both counts at 1; same shape as 0x3a6aac.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockP::new(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x3f3ec0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_p()
-pub fn stub_0x3f3ec0() -> ! {
-    todo!("0x3f3ec0 boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_p()")
+pub fn stub_0x3f3ec0(_block: *mut ControlBlockP<Vec<SharedPtr<Instance>>>) {
+    // IDA 0x3f3ec0: `BX LR` — empty; vtable reset is compiler-managed and
+    // storage is released by the D0/owner path. Same as 0x3a6ba4.
 }
 
 // 0x3f3ec4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_p()
-pub fn stub_0x3f3ec4() -> ! {
-    todo!("0x3f3ec4 boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_p()")
+pub fn stub_0x3f3ec4(block: *mut ControlBlockP<Vec<SharedPtr<Instance>>>) {
+    // IDA 0x3f3ec4: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x3a6ba8.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x3f3ec8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::dispose(void)
-pub fn stub_0x3f3ec8() -> ! {
-    todo!("0x3f3ec8 boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::dispose(void)")
+pub fn stub_0x3f3ec8(_block: *mut ControlBlockP<Vec<SharedPtr<Instance>>>) {
+    // IDA 0x3f3ec8: `dispose` runs the owned `delete` before the release
+    // path; under `SharedPtr` the `Arc` drop owns disposal, so the body
+    // collapses. Same shape as the deleter-holder dispose twins.
 }
 
 // 0x3f3f70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEE11get_deleterERKSt9type_info
