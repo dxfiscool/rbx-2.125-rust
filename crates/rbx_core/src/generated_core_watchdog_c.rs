@@ -389,6 +389,607 @@ pub mod billboard_prop {
         }
     }
 }
+/// Batch 2: 21 IDA-grounded ports 0x3c2560-0x3c39b4 — the BillboardGui
+/// `RefPropDescriptor<BillboardGui, Instance>` cluster (ctor/dtor, box-delegated
+/// predicates, variant/copy/xml/binder/idref paths, Instance* `GetSetImpl`) plus
+/// `Camera::getCameraSubjectInstanceDangerous/setCameraSubject`. Ports live in
+/// `billboard_ref` and `camera_subject`, wired via `stub_3c25*`-`stub_3c39b4`.
+/// Conventions: `boost::shared_ptr` -> `crate::SharedPtr` (kept via `_SHARED_PTR`
+/// carrier); `boost::detail::shared_count` copies/releases -> no-ops (host has no
+/// intrusive control block); `__dynamic_cast` -> hooks/predicates; throws
+/// (`std::bad_cast`) -> `BadCast` error return. `[INFERENCE]` marks what the
+/// binary does not pin down; everything else follows the IDA pseudocode
+/// branch-for-branch.
+pub mod billboard_ref {
+    use super::billboard_prop::{GetSetImpl, MemberPtr, resolve_target, resolve_this};
+    use std::ffi::CStr;
+    use std::os::raw::c_char;
+
+    /// was: `RefPropDescriptor` vtable (`*a1 = &off_123FF48`, IDA 0x3c2560/0x3c2604).
+    pub const REF_DESC_VTAB: &str = "off_123FF48"; // IDA 0x3c2560
+    /// was: `RefPropDescriptor` sub-table (`a1[10] = &off_123FF9C`, IDA 0x3c2560/0x3c2604).
+    pub const REF_SUB_VTAB: &str = "off_123FF9C"; // IDA 0x3c2560
+    /// was: `GetSetImpl` vtable inside the `a1[11]` box (`*v16 = &off_123FFC8`).
+    pub const REF_GETSET_VTAB: &str = "off_123FFC8"; // IDA 0x3c2560
+    /// was: `RBX::Reflection::RefType<RBX::Instance *>::singleton` result `type`
+    /// passed to `PropertyDescriptor::PropertyDescriptor` (IDA 0x3c2560).
+    pub const REF_TYPE_SINGLETON: &str = "RBX::Reflection::RefType<RBX::Instance *>::singleton";
+    /// was: `RBX::Reflection::Type::getSingleton<boost::shared_ptr<DescribedBase>>`
+    /// stored into the out-Variant (IDA 0x3c267c).
+    pub const SHARED_PTR_DESCRIBED_TYPE: &str =
+        "Type::getSingleton<boost::shared_ptr<RBX::Reflection::DescribedBase>>";
+
+    /// Pointer direction: the `DescribedBase` subobject sits 36 bytes past the
+    /// most-derived `Instance` (`derived = base - 36`, `base = derived + 36`).
+    /// Every conversion below matches an IDA `+36`/`-36` step.
+    pub const BASE_TO_DERIVED: usize = 36;
+
+    /// was: `RBX::Reflection::RefPropDescriptor<T, U>` storage. Words mirror the
+    /// ctor: `a1[10]` sub-table, `a1[11]` owned `GetSetImpl` box (freed by the dtor).
+    /// Trailing words: `[INFERENCE]` same `attributes`/`permissions` passthrough
+    /// as `billboard_prop::PropDescriptor` (ctor args a8..a11).
+    #[derive(Debug, Default)]
+    pub struct RefPropDescriptor {
+        pub vtable: &'static str,
+        pub sub_vtable: &'static str,
+        pub name: String,
+        pub category: String,
+        pub getset: Option<Box<GetSetImpl>>,
+        pub attributes: (u32, u32, u32),
+        pub permissions: u32,
+    }
+
+    impl RefPropDescriptor {
+        /// IDA 0x3c2560 ctor shape: ensure classDescriptor, `RefType<Instance*>`
+        /// singleton, `PropertyDescriptor` base init, install `off_123FF48` +
+        /// `off_123FF9C`, `new GetSetImpl(off_123FFC8, ...)` into `a1[11]`.
+        /// Returns `slot` (IDA `return a1`).
+        pub unsafe fn construct(
+            slot: *mut RefPropDescriptor,
+            name: *const c_char,
+            category: *const c_char,
+            getter: MemberPtr,
+            setter: MemberPtr,
+            attr0: u32,
+            attr1: u32,
+            attr2: u32,
+            permissions: u32,
+        ) -> *mut RefPropDescriptor {
+            let getset = Box::new(GetSetImpl { getter, setter });
+            let this = &mut *slot;
+            this.vtable = REF_DESC_VTAB;
+            this.sub_vtable = REF_SUB_VTAB;
+            this.name = if name.is_null() {
+                String::new()
+            } else {
+                CStr::from_ptr(name).to_string_lossy().into_owned()
+            };
+            this.category = if category.is_null() {
+                String::new()
+            } else {
+                CStr::from_ptr(category).to_string_lossy().into_owned()
+            };
+            this.getset = Some(getset);
+            this.attributes = (attr0, attr1, attr2);
+            this.permissions = permissions;
+            slot
+        }
+
+        /// IDA 0x3c2604 deleting-dtor shape: restore `off_123FF48` + `off_123FF9C`,
+        /// delete the `a1[11]` box. Slot stays caller-owned (IDA `delete a1` artifact).
+        pub unsafe fn destroy(slot: *mut RefPropDescriptor) {
+            let this = &mut *slot;
+            this.vtable = REF_DESC_VTAB;
+            this.sub_vtable = REF_SUB_VTAB;
+            this.getset = None;
+        }
+
+        unsafe fn imp(&self) -> &GetSetImpl {
+            self.getset.as_ref().expect("RefPropDescriptor box deleted")
+        }
+    }
+
+    /// IDA box `+8` slot (`getValue`): DescribedBase-36, `(adj >> 1)` adjust,
+    /// virtual branch, tail-call getter. Returns the derived `Instance*`
+    /// (whatever the member getter yields).
+    pub unsafe fn get_raw(imp: &GetSetImpl, obj: *const u8) -> *mut u8 {
+        let this = resolve_this(obj, imp.getter.adj);
+        let target: extern "C" fn(*const u8) -> *mut u8 =
+            std::mem::transmute(resolve_target(imp.getter, this));
+        target(this)
+    }
+
+    /// IDA box `+12` slot (`setValue`): `setter(this, value)`; void result.
+    pub unsafe fn set_raw(imp: &GetSetImpl, obj: *mut u8, value: *mut u8) {
+        let this = resolve_this(obj as *const u8, imp.setter.adj);
+        let target: extern "C" fn(*mut u8, *mut u8) =
+            std::mem::transmute(resolve_target(imp.setter, this));
+        target(this as *mut u8, value)
+    }
+
+    /// IDA 0x3c2634: delegates to the box `+0` (`isReadOnly`), which for the
+    /// Instance* `GetSetImpl` is 0x3c2b10 (`return 0`).
+    pub unsafe fn is_read_only(desc: &RefPropDescriptor) -> bool {
+        let _ = desc.imp();
+        false
+    }
+
+    /// IDA 0x3c2644: delegates to the box `+4` (`isWriteOnly`), which for the
+    /// Instance* `GetSetImpl` is 0x3c2b14 (`return 0`).
+    pub unsafe fn is_write_only(desc: &RefPropDescriptor) -> bool {
+        let _ = desc.imp();
+        false
+    }
+
+    /// IDA 0x3c2654: `getValue(box, a2) == getValue(box, a3)`. (The first call's
+    /// `a2` is elided in the IDA display; the second call shows the shape.)
+    pub unsafe fn equal_values(
+        desc: &RefPropDescriptor,
+        a: *const u8,
+        b: *const u8,
+    ) -> bool {
+        get_raw(desc.imp(), a) == get_raw(desc.imp(), b)
+    }
+
+    /// was: `RBX::Reflection::Variant` holding `shared_ptr<DescribedBase>`.
+    /// `ptr` is the base (`derived + 36`), null when empty; `type_tag` is the
+    /// `Type::getSingleton` identity. `[INFERENCE]` the host keeps the raw base
+    /// instead of an intrusive shared count (refcount traffic is a no-op here).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    pub struct RefVariant {
+        pub type_tag: &'static str,
+        pub ptr: *const u8,
+    }
+
+    /// IDA 0x3c267c: `v18 = getValue(box, a2)` (derived); `shared_from` (refcount
+    /// traffic, no-op here); `v19 = v21 ? v21 + 36 : 0` (derived -> base);
+    /// out-Variant = (DescribedBase-shared-ptr singleton, shared value).
+    pub unsafe fn get_variant(desc: &RefPropDescriptor, obj: *const u8) -> RefVariant {
+        let derived = get_raw(desc.imp(), obj);
+        let base = if derived.is_null() {
+            derived as *const u8
+        } else {
+            derived.add(BASE_TO_DERIVED) as *const u8
+        };
+        RefVariant { type_tag: SHARED_PTR_DESCRIBED_TYPE, ptr: base }
+    }
+
+    /// IDA 0x3c2794: `Variant::get<shared_ptr<DescribedBase>>(&v13, a3)` then the
+    /// descriptor `+64` setter `(a1, a2, v13)`; release traffic no-op here. The
+    /// stored base converts back to derived (`- 36`) for the box setter.
+    pub unsafe fn set_variant(desc: &RefPropDescriptor, obj: *mut u8, variant: &RefVariant) {
+        let base = variant.ptr;
+        let derived = if base.is_null() {
+            base as *mut u8
+        } else {
+            base.sub(BASE_TO_DERIVED) as *mut u8
+        };
+        set_raw(desc.imp(), obj, derived)
+    }
+
+    /// IDA 0x3c285c: `v6 = getValue(box, a2)` (elided arg as in 0x3c2654);
+    /// `setValue(box, a3, &v6)`. The IDA `int` return is the call artifact.
+    pub unsafe fn copy_value(desc: &RefPropDescriptor, src: *const u8, dst: *mut u8) {
+        let v = get_raw(desc.imp(), src);
+        set_raw(desc.imp(), dst, v)
+    }
+
+    /// was: `XmlElement` — only the `+12` name/value slot is observed
+    /// (`XmlNameValuePair::setValue(a3 + 12, ...)`).
+    #[repr(C)]
+    #[derive(Debug, Default)]
+    pub struct XmlElement {
+        pub _pad: [u8; 12],
+        pub value: *const u8,
+    }
+
+    /// IDA 0x3c2880: `v12 = getValue(box, a2)` (derived); `v13 = v12 ? v12 + 36`
+    /// (derived -> base); `InstanceHandle(base)`; `setValue(a3 + 12, handle)`.
+    pub unsafe fn write_value(
+        desc: &RefPropDescriptor,
+        obj: *const u8,
+        xml: *mut XmlElement,
+    ) {
+        let derived = get_raw(desc.imp(), obj);
+        let base = if derived.is_null() {
+            derived as *const u8
+        } else {
+            derived.add(BASE_TO_DERIVED) as *const u8
+        };
+        (*xml).value = base;
+    }
+
+    /// was: `RBX::IReferenceBinder` — the single observed slot `(*a4 + 4)` is
+    /// `(binder, value_slot_or_null, obj, desc + 40)`.
+    pub trait ReferenceBinder {
+        unsafe fn bind(
+            &self,
+            value_slot: *const u8,
+            obj: *mut u8,
+            desc_cookie: *const u8,
+        ) -> i32;
+    }
+
+    /// IDA 0x3c2954: `if (a3) a3 += 12; return binder[4](a4, a3, a2, a1 + 40)`.
+    pub unsafe fn read_value(
+        desc: &RefPropDescriptor,
+        obj: *mut u8,
+        xml: *const XmlElement,
+        binder: &dyn ReferenceBinder,
+    ) -> i32 {
+        let slot = if xml.is_null() {
+            std::ptr::null()
+        } else {
+            &(*xml).value as *const *const u8 as *const u8
+        };
+        let cookie = (desc as *const RefPropDescriptor as *const u8).add(40);
+        binder.bind(slot, obj, cookie)
+    }
+
+    /// IDA 0x3c2978: `result = getValue(box)` (elided obj as above);
+    /// `if (result) result += 36` (derived -> base).
+    pub unsafe fn get_ref_value(desc: &RefPropDescriptor, obj: *const u8) -> *const u8 {
+        let derived = get_raw(desc.imp(), obj);
+        if derived.is_null() {
+            derived as *const u8
+        } else {
+            derived.add(BASE_TO_DERIVED) as *const u8
+        }
+    }
+
+    /// was: `std::bad_cast` thrown when a non-null `DescribedBase*` fails
+    /// `__dynamic_cast` to `RBX::Instance*` (IDA 0x3c298c).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct BadCast;
+
+    /// IDA 0x3c298c: null passes through; non-null `__dynamic_cast`s to
+    /// `Instance*` (`[INFERENCE]` the host cannot RTTI the raw pointer, so a
+    /// caller-provided `is_instance` predicate stands in for the cast);
+    /// `setValue(box, a2, &derived)`. The IDA `int` return is the call artifact.
+    pub unsafe fn set_ref_value(
+        desc: &RefPropDescriptor,
+        obj: *mut u8,
+        src: *const u8,
+        is_instance: fn(*const u8) -> bool,
+    ) -> Result<(), BadCast> {
+        let derived = if src.is_null() {
+            src as *mut u8
+        } else if is_instance(src) {
+            src.sub(BASE_TO_DERIVED) as *mut u8
+        } else {
+            return Err(BadCast);
+        };
+        set_raw(desc.imp(), obj, derived);
+        Ok(())
+    }
+
+    /// IDA 0x3c2a08: `v3 = a3 ? a3 - 36 : 0` (base -> derived, no cast);
+    /// `setValue(box, a2, &v5)`.
+    pub unsafe fn set_ref_value_unsafe(
+        desc: &RefPropDescriptor,
+        obj: *mut u8,
+        src: *const u8,
+    ) {
+        let derived = if src.is_null() {
+            src as *mut u8
+        } else {
+            src.sub(BASE_TO_DERIVED) as *mut u8
+        };
+        set_raw(desc.imp(), obj, derived)
+    }
+
+    /// was: `RBX::InstanceHandle` — only the first word (`a3->pi_`) and the
+    /// `a3 + 1` count copy are observed (IDA 0x3c2a28). `[INFERENCE]` host layout
+    /// keeps just those two words.
+    #[repr(C)]
+    #[derive(Debug, Clone, Copy)]
+    pub struct InstanceHandle {
+        pub pi: *const u8,
+        pub _count: usize,
+    }
+
+    /// IDA 0x3c2a28: copy the `a3 + 1` count (no-op here), `v22 = pi ? pi - 36`;
+    /// `setValue(box, a2, &v24)`; release traffic no-op here.
+    pub unsafe fn assign_idref(
+        desc: &RefPropDescriptor,
+        obj: *mut u8,
+        handle: *const InstanceHandle,
+    ) {
+        let pi = (*handle).pi;
+        let v = if pi.is_null() {
+            pi as *mut u8
+        } else {
+            pi.sub(BASE_TO_DERIVED) as *mut u8
+        };
+        set_raw(desc.imp(), obj, v)
+    }
+
+    /// IDA 0x3c2b08 non-virtual thunk: `return assignIDREF(a1 - 40, ...)`.
+    pub unsafe fn assign_idref_thunk(
+        this_adj: *const u8,
+        obj: *mut u8,
+        handle: *const InstanceHandle,
+    ) {
+        let desc = this_adj.sub(40) as *const RefPropDescriptor;
+        assign_idref(&*desc, obj, handle)
+    }
+
+    /// IDA 0x3c2b18 Instance* `getValue`: DescribedBase-36, `(adj >> 1)` adjust,
+    /// virtual branch, tail-call getter (returns derived `Instance*`).
+    pub unsafe fn get_instance(imp: &GetSetImpl, obj: *const u8) -> *mut u8 {
+        get_raw(imp, obj)
+    }
+
+    /// IDA 0x3c2b38 Instance* `setValue`: `setter(this, *a3)`; void result.
+    pub unsafe fn set_instance(imp: &GetSetImpl, obj: *mut u8, value: *mut u8) {
+        set_raw(imp, obj, value)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use crate::generated_core_watchdog_c::billboard_prop::{
+            DESCRIBED_BASE_BIAS, MemberPtr,
+        };
+
+        extern "C" fn fake_rget(this: *const u8) -> *mut u8 {
+            // Member slot 36 past `this` (ARM 4-aligned); the x86_64 host needs
+            // unaligned access to emulate that layout exactly.
+            unsafe { std::ptr::read_unaligned(this.add(36) as *const *mut u8) }
+        }
+        extern "C" fn fake_rset(this: *mut u8, v: *mut u8) {
+            unsafe { std::ptr::write_unaligned(this.add(36) as *mut *mut u8, v) }
+        }
+
+        /// Most-derived fake: member slot 36 past `this`; the `DescribedBase`
+        /// view is `this + 36`, so `described = derived + 36`.
+        #[repr(C)]
+        struct FakeDerived {
+            pad: [u8; 36],
+            slot: *mut u8,
+        }
+
+        fn described_of(derived: *const u8) -> *const u8 {
+            derived.wrapping_add(DESCRIBED_BASE_BIAS)
+        }
+
+        fn described_mut_of<T>(p: *mut T) -> *mut u8 {
+            (p as *mut u8).wrapping_add(DESCRIBED_BASE_BIAS)
+        }
+
+        fn direct(f: usize) -> MemberPtr {
+            MemberPtr { func: f, adj: 0 }
+        }
+
+        fn desc() -> RefPropDescriptor {
+            RefPropDescriptor {
+                vtable: REF_DESC_VTAB,
+                sub_vtable: REF_SUB_VTAB,
+                name: String::from("Adornee"),
+                category: String::from("Gui"),
+                getset: Some(Box::new(GetSetImpl {
+                    getter: direct(fake_rget as usize),
+                    setter: direct(fake_rset as usize),
+                })),
+                attributes: (0, 0, 0),
+                permissions: 0,
+            }
+        }
+
+        #[test]
+        fn ref_get_set_roundtrip_with_bias() {
+            let target = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let tderived = std::ptr::addr_of!(target) as *const u8;
+            let mut holder = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let hderived = std::ptr::addr_of_mut!(holder) as *mut u8;
+            let d = desc();
+            unsafe {
+                set_ref_value_unsafe(&d, described_mut_of(hderived), described_of(tderived));
+                let raw = get_raw(d.imp(), described_of(hderived));
+                assert_eq!(raw, tderived as *mut u8);
+                let base = get_ref_value(&d, described_of(hderived));
+                assert_eq!(base, tderived.wrapping_add(36));
+            }
+        }
+
+        #[test]
+        fn equal_and_copy_follow_box() {
+            let t = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let tderived = std::ptr::addr_of!(t) as *const u8;
+            let mut a = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let mut b = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let d = desc();
+            unsafe {
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(a)), described_of(tderived));
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(b)), described_of(tderived));
+                assert!(equal_values(
+                    &d,
+                    described_of(std::ptr::addr_of!(a) as *const u8),
+                    described_of(std::ptr::addr_of!(b) as *const u8)
+                ));
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(b)), std::ptr::null());
+                assert!(!equal_values(
+                    &d,
+                    described_of(std::ptr::addr_of!(a) as *const u8),
+                    described_of(std::ptr::addr_of!(b) as *const u8)
+                ));
+                copy_value(
+                    &d,
+                    described_of(std::ptr::addr_of!(a) as *const u8),
+                    described_mut_of(std::ptr::addr_of_mut!(b)),
+                );
+                assert!(equal_values(
+                    &d,
+                    described_of(std::ptr::addr_of!(a) as *const u8),
+                    described_of(std::ptr::addr_of!(b) as *const u8)
+                ));
+            }
+        }
+
+        #[test]
+        fn variant_xml_idref_paths() {
+            let t = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let tderived = std::ptr::addr_of!(t) as *const u8;
+            let mut h = FakeDerived { pad: [0; 36], slot: std::ptr::null_mut() };
+            let d = desc();
+            unsafe {
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(h)), described_of(tderived));
+                let v = get_variant(&d, described_of(std::ptr::addr_of!(h) as *const u8));
+                assert_eq!(v.type_tag, SHARED_PTR_DESCRIBED_TYPE);
+                assert_eq!(v.ptr, described_of(tderived));
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(h)), std::ptr::null());
+                assert!(get_raw(d.imp(), described_of(std::ptr::addr_of!(h) as *const u8)).is_null());
+                set_variant(&d, described_mut_of(std::ptr::addr_of_mut!(h)), &v);
+                assert_eq!(
+                    get_raw(d.imp(), described_of(std::ptr::addr_of!(h) as *const u8)),
+                    tderived as *mut u8
+                );
+                let mut xml = XmlElement::default();
+                write_value(&d, described_of(std::ptr::addr_of!(h) as *const u8), &mut xml);
+                assert_eq!(xml.value, described_of(tderived));
+                let handle = InstanceHandle { pi: described_of(tderived), _count: 0 };
+                set_ref_value_unsafe(&d, described_mut_of(std::ptr::addr_of_mut!(h)), std::ptr::null());
+                assign_idref(&d, described_mut_of(std::ptr::addr_of_mut!(h)), &handle);
+                assert_eq!(
+                    get_raw(d.imp(), described_of(std::ptr::addr_of!(h) as *const u8)),
+                    tderived as *mut u8
+                );
+                assert!(set_ref_value(&d, described_mut_of(std::ptr::addr_of_mut!(h)), std::ptr::null(), |_| true).is_ok());
+                assert!(set_ref_value(&d, described_mut_of(std::ptr::addr_of_mut!(h)), described_of(tderived), |_| false).is_err());
+            }
+        }
+    }
+}
+
+/// Batch 2 (cont.): `Camera` subject slot (IDA 0x3c39ac/0x3c39b4).
+pub mod camera_subject {
+    /// was: `RBX::Camera` `shared_ptr<Instance>` at word `+103` (count at `+104`);
+    /// IDA 0x3c39ac `return *(this + 103)`, 0x3c39b4 `v29 = this + 103`.
+    pub const SUBJECT_WORD: usize = 103;
+    /// was: `unk_1320C2C` property descriptor passed to `raisePropertyChanged`.
+    pub const SUBJECT_PROPERTY: &str = "unk_1320C2C";
+    /// was: `"Humanoid"` child name probed by `setCameraSubject`.
+    pub const HUMANOID_CHILD: &str = "Humanoid";
+
+    /// Host-side hooks standing in for `__dynamic_cast`, the `ICharacterSubject`
+    /// vtable slot, the `Instance` child lookup, `ClassDescriptor::isA`, and
+    /// `raisePropertyChanged`. `[INFERENCE]` the trait boundary itself; the
+    /// selection logic below is IDA 0x3c39b4 branch-for-branch.
+    pub trait SubjectHooks {
+        fn is_camera_subject(&self, ptr: *const u8) -> bool;
+        fn is_character_subject(&self, ptr: *const u8) -> bool;
+        fn notify_subject_changed(&self, old: *const u8, new: *const u8);
+        fn find_child_by_name(&self, ptr: *const u8, name: &str) -> *const u8;
+        fn is_humanoid(&self, ptr: *const u8) -> bool;
+        fn raise_property_changed(&self);
+    }
+
+    /// was: `RBX::Camera` subject words. The real object is far larger; only the
+    /// `+103` px is modeled (`[INFERENCE]` the count word traffic is a no-op).
+    #[derive(Debug, Default, Clone, Copy)]
+    pub struct Camera {
+        pub subject: *const u8,
+    }
+
+    impl Camera {
+        /// IDA 0x3c39ac: `return *((DWORD *)this + 103)` — raw px, no addref.
+        pub unsafe fn subject_dangerous(&self) -> *const u8 {
+            self.subject
+        }
+
+        /// IDA 0x3c39b4: proceed only if `old != new`, `new != 0`, and `new`
+        /// casts to `CameraSubject` (note the `v12` quirk: clearing with null is
+        /// a no-op — kept as-is, not "fixed"); notify the old `ICharacterSubject`;
+        /// take `new`, preferring its `Humanoid` child when `isA(Humanoid)`;
+        /// `raisePropertyChanged(unk_1320C2C)`.
+        pub unsafe fn set_subject(&mut self, new: *const u8, hooks: &dyn SubjectHooks) {
+            let old = self.subject;
+            if old == new || new.is_null() {
+                return;
+            }
+            if !hooks.is_camera_subject(new) {
+                return;
+            }
+            if !old.is_null() && hooks.is_character_subject(old) {
+                hooks.notify_subject_changed(old, new);
+            }
+            let mut selected = new;
+            let child = hooks.find_child_by_name(new, HUMANOID_CHILD);
+            if !child.is_null() && hooks.is_humanoid(child) {
+                selected = child;
+            }
+            self.subject = selected;
+            hooks.raise_property_changed();
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use std::sync::atomic::{AtomicUsize, Ordering};
+
+        struct FakeHooks {
+            notified: AtomicUsize,
+            raised: AtomicUsize,
+            humanoid: *const u8,
+        }
+        impl SubjectHooks for FakeHooks {
+            fn is_camera_subject(&self, _: *const u8) -> bool {
+                true
+            }
+            fn is_character_subject(&self, ptr: *const u8) -> bool {
+                !ptr.is_null()
+            }
+            fn notify_subject_changed(&self, _: *const u8, _: *const u8) {
+                self.notified.fetch_add(1, Ordering::SeqCst);
+            }
+            fn find_child_by_name(&self, _: *const u8, name: &str) -> *const u8 {
+                assert_eq!(name, HUMANOID_CHILD);
+                self.humanoid
+            }
+            fn is_humanoid(&self, ptr: *const u8) -> bool {
+                ptr == self.humanoid && !ptr.is_null()
+            }
+            fn raise_property_changed(&self) {
+                self.raised.fetch_add(1, Ordering::SeqCst);
+            }
+        }
+
+        #[test]
+        fn null_and_same_are_noops() {
+            let mut cam = Camera { subject: 0x1000 as *const u8 };
+            let h = FakeHooks {
+                notified: AtomicUsize::new(0),
+                raised: AtomicUsize::new(0),
+                humanoid: std::ptr::null(),
+            };
+            unsafe {
+                cam.set_subject(std::ptr::null(), &h);
+                assert_eq!(cam.subject, 0x1000 as *const u8);
+                cam.set_subject(0x1000 as *const u8, &h);
+                assert_eq!(cam.subject, 0x1000 as *const u8);
+            }
+            assert_eq!(h.raised.load(Ordering::SeqCst), 0);
+        }
+
+        #[test]
+        fn prefers_humanoid_child_and_notifies() {
+            let mut cam = Camera { subject: 0x1000 as *const u8 };
+            let h = FakeHooks {
+                notified: AtomicUsize::new(0),
+                raised: AtomicUsize::new(0),
+                humanoid: 0x3000 as *const u8,
+            };
+            unsafe {
+                cam.set_subject(0x2000 as *const u8, &h);
+                assert_eq!(cam.subject, 0x3000 as *const u8);
+                assert_eq!(cam.subject_dangerous(), 0x3000 as *const u8);
+            }
+            assert_eq!(h.notified.load(Ordering::SeqCst), 1);
+            assert_eq!(h.raised.load(Ordering::SeqCst), 1);
+        }
+    }
+}
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isReadOnly(void)const")]
 // 0x3c202c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -661,148 +1262,245 @@ pub unsafe fn stub_3c253c(
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x3c2560 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, int, int)
-pub fn stub_3c2560() -> ! {
-    todo!("0x3c2560 __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub unsafe fn stub_3c2560(
+    slot: *mut billboard_ref::RefPropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut billboard_ref::RefPropDescriptor {
+    // IDA 0x3c2560: RefType<Instance*> singleton + PropertyDescriptor base init,
+    // *a1 = &off_123FF48, a1[10] = &off_123FF9C, new GetSetImpl(&off_123FFC8) at a1[11].
+    billboard_ref::RefPropDescriptor::construct(
+        slot,
+        name,
+        category,
+        billboard_prop::MemberPtr { func: getter_func, adj: getter_adj },
+        billboard_prop::MemberPtr { func: setter_func, adj: setter_adj },
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
 // 0x3c2604 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_3c2604() -> ! {
-    todo!("0x3c2604 __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev")
+pub unsafe fn stub_3c2604(slot: *mut billboard_ref::RefPropDescriptor) {
+    // IDA 0x3c2604: *a1 = &off_123FF48, a1[10] = &off_123FF9C, delete a1[11], delete a1.
+    billboard_ref::RefPropDescriptor::destroy(slot)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isReadOnly(void)const")]
 // 0x3c2634 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv
 // type: int __fastcall(int)
-pub fn stub_3c2634() -> ! {
-    todo!("0x3c2634 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv")
+pub unsafe fn stub_3c2634(desc: *const billboard_ref::RefPropDescriptor) -> bool {
+    // IDA 0x3c2634: delegates to the box +0 slot (Instance* GetSetImpl 0x3c2b10 = 0).
+    billboard_ref::is_read_only(&*desc)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isWriteOnly(void)const")]
 // 0x3c2644 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11isWriteOnlyEv
 // type: int __fastcall(int)
-pub fn stub_3c2644() -> ! {
-    todo!("0x3c2644 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11isWriteOnlyEv")
+pub unsafe fn stub_3c2644(desc: *const billboard_ref::RefPropDescriptor) -> bool {
+    // IDA 0x3c2644: delegates to the box +4 slot (Instance* GetSetImpl 0x3c2b14 = 0).
+    billboard_ref::is_write_only(&*desc)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // 0x3c2654 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 // type: bool __fastcall(int, int, int)
-pub fn stub_3c2654() -> ! {
-    todo!("0x3c2654 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub unsafe fn stub_3c2654(
+    desc: *const billboard_ref::RefPropDescriptor,
+    a: *const u8,
+    b: *const u8,
+) -> bool {
+    // IDA 0x3c2654: getValue(box, a2) == getValue(box, a3).
+    billboard_ref::equal_values(&*desc, a, b)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // 0x3c267c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-pub fn stub_3c267c() -> ! {
-    todo!("0x3c267c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub unsafe fn stub_3c267c(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+) -> billboard_ref::RefVariant {
+    // IDA 0x3c267c: getValue + shared_from, base (+36) into a DescribedBase-shared-ptr Variant.
+    billboard_ref::get_variant(&*desc, obj)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // 0x3c2794 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: void __fastcall(int, int, int)
-pub fn stub_3c2794() -> ! {
-    todo!("0x3c2794 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub unsafe fn stub_3c2794(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    variant: *const billboard_ref::RefVariant,
+) {
+    // IDA 0x3c2794: Variant::get<shared_ptr<DescribedBase>> then descriptor +64 setter.
+    billboard_ref::set_variant(&*desc, obj, &*variant)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // 0x3c285c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // type: int __fastcall(int, int, int)
-pub fn stub_3c285c() -> ! {
-    todo!("0x3c285c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub unsafe fn stub_3c285c(
+    desc: *const billboard_ref::RefPropDescriptor,
+    src: *const u8,
+    dst: *mut u8,
+) {
+    // IDA 0x3c285c: v6 = getValue(box, src); setValue(box, dst, &v6).
+    billboard_ref::copy_value(&*desc, src, dst)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // 0x3c2880 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: void __fastcall(int, int, int)
-pub fn stub_3c2880() -> ! {
-    todo!("0x3c2880 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub unsafe fn stub_3c2880(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+    xml: *mut billboard_ref::XmlElement,
+) {
+    // IDA 0x3c2880: InstanceHandle(base) into XmlNameValuePair slot a3 + 12.
+    billboard_ref::write_value(&*desc, obj, xml)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // 0x3c2954 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: int __fastcall(int, int, int, int)
-pub fn stub_3c2954() -> ! {
-    todo!("0x3c2954 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub unsafe fn stub_3c2954(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    xml: *const billboard_ref::XmlElement,
+    binder: &dyn billboard_ref::ReferenceBinder,
+) -> i32 {
+    // IDA 0x3c2954: binder[4](binder, xml ? xml + 12 : 0, obj, desc + 40).
+    billboard_ref::read_value(&*desc, obj, xml, binder)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x3c2978 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
-pub fn stub_3c2978() -> ! {
-    todo!("0x3c2978 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_3c2978(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *const u8,
+) -> *const u8 {
+    // IDA 0x3c2978: result = getValue(box, obj); if (result) result += 36 (derived -> base).
+    billboard_ref::get_ref_value(&*desc, obj)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // 0x3c298c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 // type: int __fastcall(int, int, void *lpsrc)
-pub fn stub_3c298c() -> ! {
-    todo!("0x3c298c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_")
+pub unsafe fn stub_3c298c(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    src: *const u8,
+    is_instance: fn(*const u8) -> bool,
+) -> Result<(), billboard_ref::BadCast> {
+    // IDA 0x3c298c: null passes; non-null __dynamic_casts DescribedBase* -> Instance*
+    // (bad_cast throw otherwise); setValue(box, obj, &derived).
+    billboard_ref::set_ref_value(&*desc, obj, src, is_instance)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // 0x3c2a08 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 // type: int __fastcall(int, int, int)
-pub fn stub_3c2a08() -> ! {
-    todo!("0x3c2a08 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_")
+pub unsafe fn stub_3c2a08(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    src: *const u8,
+) {
+    // IDA 0x3c2a08: v3 = src ? src - 36 : 0 (base -> derived, no cast); setValue(box, obj, &v3).
+    billboard_ref::set_ref_value_unsafe(&*desc, obj, src)
 }
 
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // 0x3c2a28 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-pub fn stub_3c2a28() -> ! {
-    todo!("0x3c2a28 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub unsafe fn stub_3c2a28(
+    desc: *const billboard_ref::RefPropDescriptor,
+    obj: *mut u8,
+    handle: *const billboard_ref::InstanceHandle,
+) {
+    // IDA 0x3c2a28: count copy (no-op) + pi ? pi - 36 into setValue(box, obj, ...).
+    billboard_ref::assign_idref(&*desc, obj, handle)
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // 0x3c2b08 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: int __fastcall(int)
-pub fn stub_3c2b08() -> ! {
-    todo!("0x3c2b08 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub unsafe fn stub_3c2b08(
+    this_adj: *const u8,
+    obj: *mut u8,
+    handle: *const billboard_ref::InstanceHandle,
+) {
+    // IDA 0x3c2b08 non-virtual thunk: return assignIDREF(a1 - 40, obj, handle).
+    billboard_ref::assign_idref_thunk(this_adj, obj, handle)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isReadOnly(void)const")]
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
-pub fn stub_3c2b10() -> ! {
-    todo!("0x3c2b10 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_3c2b10() -> bool {
+    // IDA 0x3c2b10: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isWriteOnly(void)const")]
 // 0x3c2b14 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
-pub fn stub_3c2b14() -> ! {
-    todo!("0x3c2b14 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_3c2b14() -> bool {
+    // IDA 0x3c2b14: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x3c2b18 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_3c2b18() -> ! {
-    todo!("0x3c2b18 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_3c2b18(imp: *const billboard_prop::GetSetImpl, obj: *const u8) -> *mut u8 {
+    // IDA 0x3c2b18: DescribedBase-36, (adj >> 1) adjust, virtual branch, tail-call getter.
+    billboard_ref::get_instance(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
 // 0x3c2b38 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_3c2b38() -> ! {
-    todo!("0x3c2b38 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub unsafe fn stub_3c2b38(
+    imp: *const billboard_prop::GetSetImpl,
+    obj: *mut u8,
+    value: *const *mut u8,
+) {
+    // IDA 0x3c2b38: setter(this, *a3); void result.
+    billboard_ref::set_instance(&*imp, obj, *value)
 }
 
 #[doc(alias = "RBX::Camera::getCameraSubjectInstanceDangerous(void)const")]
 // 0x3c39ac — __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv
 // type: int __fastcall(RBX::Camera *this)
-pub fn stub_3c39ac() -> ! {
-    todo!("0x3c39ac __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv")
+pub unsafe fn stub_3c39ac(this: *const camera_subject::Camera) -> *const u8 {
+    // IDA 0x3c39ac: return *((DWORD *)this + 103) — raw subject px, no addref.
+    (&*this).subject_dangerous()
 }
 
 #[doc(alias = "RBX::Camera::setCameraSubject(RBX::Instance *)")]
 // 0x3c39b4 — __ZN3RBX6Camera16setCameraSubjectEPNS_8InstanceE
 // type: void __fastcall(shared_count *this, RBX::Instance *)
-pub fn stub_3c39b4() -> ! {
-    todo!("0x3c39b4 __ZN3RBX6Camera16setCameraSubjectEPNS_8InstanceE")
+pub unsafe fn stub_3c39b4(
+    this: *mut camera_subject::Camera,
+    new: *const u8,
+    hooks: &dyn camera_subject::SubjectHooks,
+) {
+    // IDA 0x3c39b4: CameraSubject-gated select (Humanoid-child preference) + property notify.
+    (&mut *this).set_subject(new, hooks)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::EnumDesc(void)")]
