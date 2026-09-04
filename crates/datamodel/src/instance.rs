@@ -1220,11 +1220,35 @@ pub struct CookiesService {
     _opaque: (),
 }
 
-/// Rust model of `RBX::DebrisService` (IDA `0x44c864`): the debris service;
-/// members land with the service batch.
+/// Rust model of `RBX::DebrisService` (IDA `0x44c864`, `0x477264`): the
+/// debris service with its weak-instance queue; timed expiry lands with the
+/// timer subsystem.
 #[derive(Default)]
 pub struct DebrisService {
+    pub items: std::collections::VecDeque<WeakPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<DebrisService, ...>` (IDA
+/// `0x477a38`): the bound debris descriptor; the binding lands with
+/// reflection.
+pub struct DebrisServiceFuncDesc {
     _opaque: (),
+}
+
+/// Rust model of `boost::bind(void(*)(weak<Instance>), weak<Instance>)` (IDA
+/// `0x477b90`): the free function plus the retained weak; the late arg is
+/// the same weak.
+#[derive(Clone)]
+pub struct WeakBind {
+    pub func: fn(WeakPtr<Instance>),
+    pub target: WeakPtr<Instance>,
+}
+
+/// Rust model of `boost::function0<void>` holding the weak cleanup bind (IDA
+/// `0x478a4c`): nullability of the retained bind collapses the vtable word.
+#[derive(Clone, Default)]
+pub struct WeakFunction {
+    pub target: Option<WeakBind>,
 }
 
 /// Rust model of `RBX::GamePassService` (IDA `0x44d064`): the game-pass
@@ -26390,148 +26414,245 @@ pub fn stub_0x476950(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
 // 0x4769a8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DataModelMesh7LODTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)
-pub fn stub_0x4769a8() -> ! {
-    todo!("0x4769a8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelMesh::LODType> const&)")
+pub fn stub_0x4769a8(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x4769a8 (`_Rb_tree::_M_insert_unique` by value): same shape as
+    // 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x476a10 — __ZNSt6vectorIN3RBX13DataModelMesh7LODTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,RBX::DataModelMesh::LODType const&)")]
 // was: std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,RBX::DataModelMesh::LODType const&)
-pub fn stub_0x476a10() -> ! {
-    todo!("0x476a10 std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,RBX::DataModelMesh::LODType const&)")
+pub fn stub_0x476a10(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x476a10 (`vector<LODType>::_M_insert_aux`): same splice as
+    // 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x476af4 — __ZNSt12_Vector_baseIN3RBX13DataModelMesh7LODTypeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_allocate(unsigned long)
-pub fn stub_0x476af4() -> ! {
-    todo!("0x476af4 std::_Vector_base<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_allocate(unsigned long)")
+pub fn stub_0x476af4(capacity: usize) -> Vec<i32> {
+    // IDA 0x476af4 (`_Vector_base<LODType>::_M_allocate`): same safe
+    // allocation as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x476b0c — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13DataModelMesh7LODTypeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModelMesh::LODType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *>(RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *)")]
 // was: RBX::DataModelMesh::LODType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *>(RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *)
-pub fn stub_0x476b0c() -> ! {
-    todo!("0x476b0c RBX::DataModelMesh::LODType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *>(RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *,RBX::DataModelMesh::LODType *)")
+pub fn stub_0x476b0c(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x476b0c (`__copy_backward` over the `LODType` range): same
+    // overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x476b48 — __ZNSt6vectorIN3RBX13DataModelMesh7LODTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,unsigned long,RBX::DataModelMesh::LODType const&)")]
 // was: std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,unsigned long,RBX::DataModelMesh::LODType const&)
-pub fn stub_0x476b48() -> ! {
-    todo!("0x476b48 std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelMesh::LODType*,std::vector<RBX::DataModelMesh::LODType,std::allocator<RBX::DataModelMesh::LODType>>>,unsigned long,RBX::DataModelMesh::LODType const&)")
+pub fn stub_0x476b48(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x476b48 (`vector<LODType>::_M_fill_insert`): same splice as
+    // 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x477264 — __ZN3RBX13DebrisService7addItemEN5boost10shared_ptrINS_8InstanceEEEd
 #[doc(alias = "RBX::DebrisService::addItem(rbx_core::SharedPtr<RBX::Instance>,double)")]
 // was: RBX::DebrisService::addItem(boost::shared_ptr<RBX::Instance>,double)
-pub fn stub_0x477264() -> ! {
-    todo!("0x477264 RBX::DebrisService::addItem(boost::shared_ptr<RBX::Instance>,double)")
+pub fn stub_0x477264(service: &mut DebrisService, instance: &SharedPtr<Instance>, _lifetime: f64) {
+    // IDA 0x477264: `securityCheck` on the instance (decomp 0x4772c0),
+    // weak-bind assembly for `cleanup` (decomp 0x4772da-0x4772f0),
+    // `TimerService::delay(lifetime, bound-cleanup)` (decomp 0x477314), then
+    // the weak is queued (decomp 0x47734a-0x477358) and the service cleanup
+    // runs (decomp 0x477372). The check, the timer arming, and the sweep land
+    // with the security/timer/service subsystems; the queued weak is the
+    // datamodel-observable half.
+    service.items.push_back(SharedPtr::downgrade(instance));
 }
 
 // 0x477738 — __ZL7cleanupN5boost8weak_ptrIN3RBX8InstanceEEE
 #[doc(alias = "cleanup(rbx_core::WeakPtr<RBX::Instance>)")]
 // was: cleanup(boost::weak_ptr<RBX::Instance>)
-pub fn stub_0x477738() -> ! {
-    todo!("0x477738 cleanup(boost::weak_ptr<RBX::Instance>)")
+pub fn stub_0x477738(weak: &WeakPtr<Instance>) {
+    // IDA 0x477738: upgrades the weak (decomp 0x477758); a live instance is
+    // removed from its parent (decomp 0x477790, `Instance::remove`), an
+    // expired weak is a no-op. The detach inlines the unmodeled remove.
+    // SAFETY: reachable instances must outlive the call.
+    if let Some(shared) = weak.upgrade() {
+        unsafe {
+            let raw = SharedPtr::as_ptr(&shared) as *mut Instance;
+            let parent = (*raw).parent as *mut Instance;
+            (*raw).parent = core::ptr::null();
+            if !parent.is_null() {
+                (*parent).children.retain(|child| SharedPtr::as_ptr(child) != raw as *const Instance);
+            }
+        }
+    }
 }
 
 // 0x477a38 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
-pub fn stub_0x477a38() -> ! {
-    todo!("0x477a38 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+pub fn stub_0x477a38(_desc: *mut DebrisServiceFuncDesc) {
+    // IDA 0x477a38: `BoundFuncDesc<DebrisService, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of the D1 family.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x477b90 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX8InstanceEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list_av_1<rbx_core::WeakPtr<RBX::Instance>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>>(void (*)(rbx_core::WeakPtr<RBX::Instance>),rbx_core::WeakPtr<RBX::Instance>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list_av_1<boost::weak_ptr<RBX::Instance>>::type> boost::bind<void,boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>>(void (*)(boost::weak_ptr<RBX::Instance>),boost::weak_ptr<RBX::Instance>)
-pub fn stub_0x477b90() -> ! {
-    todo!("0x477b90 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list_av_1<boost::weak_ptr<RBX::Instance>>::type> boost::bind<void,boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>>(void (*)(boost::weak_ptr<RBX::Instance>),boost::weak_ptr<RBX::Instance>)")
+pub fn stub_0x477b90(
+    func: fn(WeakPtr<Instance>),
+    weak: &WeakPtr<Instance>,
+) -> WeakBind {
+    // IDA 0x477b90: `boost::bind(f, weak)` over `void(*)(weak<Instance>)` —
+    // keeps the free function and retains the weak into the bind object.
+    WeakBind { func, target: weak.clone() }
 }
 
 // 0x4785a0 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::push_back(rbx_core::WeakPtr<RBX::Instance> const&)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::push_back(boost::weak_ptr<RBX::Instance> const&)
-pub fn stub_0x4785a0() -> ! {
-    todo!("0x4785a0 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::push_back(boost::weak_ptr<RBX::Instance> const&)")
+pub fn stub_0x4785a0(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, weak: &WeakPtr<Instance>) {
+    // IDA 0x4785a0 (`deque<weak<Instance>>::push_back`): grows and clones the
+    // weak into the tail; `push_back` is the same append.
+    queue.push_back(weak.clone());
 }
 
 // 0x478630 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_push_back_auxERKS4_
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_push_back_aux(rbx_core::WeakPtr<RBX::Instance> const&)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_push_back_aux(boost::weak_ptr<RBX::Instance> const&)
-pub fn stub_0x478630() -> ! {
-    todo!("0x478630 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_push_back_aux(boost::weak_ptr<RBX::Instance> const&)")
+pub fn stub_0x478630(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, weak: &WeakPtr<Instance>) {
+    // IDA 0x478630 (`deque<weak<Instance>>::_M_push_back_aux`): the slow-path
+    // push with identical observable effect to `push_back`. Same shape as
+    // 0x4785a0.
+    queue.push_back(weak.clone());
 }
 
 // 0x478814 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE22_M_reserve_map_at_backEm
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)
-pub fn stub_0x478814() -> ! {
-    todo!("0x478814 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)")
+pub fn stub_0x478814(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, additional: usize) {
+    // IDA 0x478814 (`deque<weak<Instance>>::_M_reserve_map_at_back(n)`):
+    // grows the map for `n` appended nodes; `reserve` is the same growth.
+    queue.reserve(additional);
 }
 
 // 0x478830 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_reallocate_mapEmb
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)
-pub fn stub_0x478830() -> ! {
-    todo!("0x478830 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_0x478830(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, additional: usize) {
+    // IDA 0x478830 (`deque<weak<Instance>>::_M_reallocate_map`): reallocates
+    // the map around the live range; `reserve` is the same growth without
+    // moving the logical contents.
+    queue.reserve(additional);
 }
 
 // 0x478908 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_allocate_mapEm
 #[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_allocate_map(unsigned long)")]
 // was: std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_allocate_map(unsigned long)
-pub fn stub_0x478908() -> ! {
-    todo!("0x478908 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_allocate_map(unsigned long)")
+pub fn stub_0x478908(capacity: usize) -> std::collections::VecDeque<WeakPtr<Instance>> {
+    // IDA 0x478908 (`_Deque_base<weak<Instance>>::_M_allocate_map`): allocates
+    // raw map storage without constructing any; an empty deque with the same
+    // capacity is the same allocation, safely.
+    std::collections::VecDeque::with_capacity(capacity)
 }
 
 // 0x478a4c — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEEEvT_
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>)")]
 // was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>)
-pub fn stub_0x478a4c() -> ! {
-    todo!("0x478a4c void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>)")
+pub fn stub_0x478a4c(dst: &mut WeakFunction, src: &WeakBind) {
+    // IDA 0x478a4c: `function0::assign_to<bind_t>` spills the bind functor
+    // and routes through the vtable into `assign_functor`; the retained
+    // (func, weak) clone is that same copy. Same shape as 0x46df08, no args.
+    dst.target = Some(src.clone());
 }
 
 // 0x478b84 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x478b84() -> ! {
-    todo!("0x478b84 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x478b84(src: &WeakBind, dst: &mut WeakBind, op: FunctorOp) -> bool {
+    // IDA 0x478b84: the op-4 (get) fast path and the manager arms mirror the
+    // `0x46dff8` discriminants: clone/move copy the bind, destroy drops,
+    // check/get report.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 
 // 0x478ba0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)
-pub fn stub_0x478ba0() -> ! {
-    todo!("0x478ba0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x478ba0(bind: &WeakBind) {
+    // IDA 0x478ba0: tail-calls the `bind_t::operator()` dispatch; the
+    // `list_av_1` value means the call applies the stored free function to
+    // the retained weak.
+    (bind.func)(bind.target.clone());
 }
 
 // 0x478bb4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x478bb4() -> ! {
-    todo!("0x478bb4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x478bb4(dst: &mut WeakFunction, src: &WeakBind) -> bool {
+    // IDA 0x478bb4: `basic_vtable0::assign_to` (no tag) heap-installs the
+    // bind via `assign_functor`; always fits, hence always true. Same shape
+    // as 0x46e030, no args.
+    stub_0x478a4c(dst, src);
+    true
 }
 
 // 0x478cd4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x478cd4() -> ! {
-    todo!("0x478cd4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x478cd4(dst: &mut WeakFunction, src: &WeakBind) -> bool {
+    // IDA 0x478cd4: `basic_vtable0::assign_to` with the tag overload — same
+    // heap-install path as 0x478bb4 (the tag only selects this overload).
+    stub_0x478a4c(dst, src);
+    true
 }
 
 // 0x478e50 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEclIPFvS6_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Instance>) &,boost::_bi::list0 &,int)")]
 // was: void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::operator()<void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Instance>) &,boost::_bi::list0 &,int)
-pub fn stub_0x478e50() -> ! {
-    todo!("0x478e50 void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::operator()<void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Instance>) &,boost::_bi::list0 &,int)")
+pub fn stub_0x478e50(func: fn(WeakPtr<Instance>), weak: &WeakPtr<Instance>) {
+    // IDA 0x478e50: `list1<value<weak>>::operator()` over a free
+    // `void(weak)` — retains the incoming weak, applies the callee by value,
+    // releases on scope exit; the retain/release collapses into a clone.
+    // Same shape as 0x46e208.
+    func(weak.clone());
 }
 
 // 0x478f60 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE12manage_smallERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x478f60() -> ! {
-    todo!("0x478f60 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x478f60(src: &WeakBind, dst: &mut WeakBind, op: FunctorOp) -> bool {
+    // IDA 0x478f60: `functor_manager_common` over the weak bind — same
+    // clone/move/destroy/check/get arms as 0x478b84 (the common manager
+    // shares the per-op dispatch).
+    stub_0x478b84(src, dst, op)
 }
 
 // 0x479038 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEC2ES7_
@@ -26544,57 +26665,83 @@ pub fn stub_0x479038() -> ! {
 // 0x479180 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9pop_frontEv
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::pop_front(void)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::pop_front(void)
-pub fn stub_0x479180() -> ! {
-    todo!("0x479180 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::pop_front(void)")
+pub fn stub_0x479180(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) -> Option<WeakPtr<Instance>> {
+    // IDA 0x479180 (`deque<weak<Instance>>::pop_front`): drops the front
+    // element; `pop_front` is the same removal, returning the element.
+    queue.pop_front()
 }
 
 // 0x4791ac — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_pop_front_auxEv
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_pop_front_aux(void)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_pop_front_aux(void)
-pub fn stub_0x4791ac() -> ! {
-    todo!("0x4791ac std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_pop_front_aux(void)")
+pub fn stub_0x4791ac(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) -> Option<WeakPtr<Instance>> {
+    // IDA 0x4791ac (`deque<weak<Instance>>::_M_pop_front_aux`): the slow-path
+    // pop with identical observable effect to `pop_front`. Same shape as
+    // 0x479180.
+    queue.pop_front()
 }
 
 // 0x4791d8 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::deque(std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>> const&)")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::deque(std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>> const&)
-pub fn stub_0x4791d8() -> ! {
-    todo!("0x4791d8 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::deque(std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>> const&)")
+pub fn stub_0x4791d8(
+    dst: &mut std::collections::VecDeque<WeakPtr<Instance>>,
+    src: &std::collections::VecDeque<WeakPtr<Instance>>,
+) {
+    // IDA 0x4791d8 (`deque<weak<Instance>>::deque(copy)`): copies every
+    // retained weak; same deep (weak-retaining) copy as 0x46ed6c.
+    *dst = src.clone();
 }
 
 // 0x4792fc — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 #[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::~_Deque_base()")]
 // was: std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~_Deque_base()
-pub fn stub_0x4792fc() -> ! {
-    todo!("0x4792fc std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~_Deque_base()")
+pub fn stub_0x4792fc(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) {
+    // IDA 0x4792fc (`_Deque_base<weak<Instance>>::D2`): releases the map;
+    // clearing drops the same retained weaks. Twin of 0x46e9b4.
+    queue.clear();
 }
 
 // 0x479328 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost8weak_ptrIN3RBX8InstanceEEERKS5_PS6_ES0_IS5_RS5_PS5_EET0_T_SE_SD_St12__false_type
 #[doc(alias = "std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>>(std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>,std::__false_type)")]
 // was: std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>>(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::__false_type)
-pub fn stub_0x479328() -> ! {
-    todo!("0x479328 std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>>(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::__false_type)")
+pub fn stub_0x479328(
+    dst: &mut std::collections::VecDeque<WeakPtr<Instance>>,
+    src: &[WeakPtr<Instance>],
+) {
+    // IDA 0x479328 (`__uninitialized_copy` over the deque range): copies each
+    // retained weak into fresh storage; same slice collapse as 0x46ee90.
+    dst.extend(src.iter().cloned());
 }
 
 // 0x479510 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_initialize_mapEm
 #[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_initialize_map(unsigned long)")]
 // was: std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_initialize_map(unsigned long)
-pub fn stub_0x479510() -> ! {
-    todo!("0x479510 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_initialize_map(unsigned long)")
+pub fn stub_0x479510(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, additional: usize) {
+    // IDA 0x479510 (`_Deque_base<weak<Instance>>::_M_initialize_map(n)`):
+    // lays out map storage; `reserve` is the same allocation. Same shape as
+    // 0x46eb20.
+    queue.reserve(additional);
 }
 
 // 0x479668 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 #[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_create_nodes(rbx_core::WeakPtr<RBX::Instance>**,rbx_core::WeakPtr<RBX::Instance>**)")]
 // was: std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_create_nodes(boost::weak_ptr<RBX::Instance>**,boost::weak_ptr<RBX::Instance>**)
-pub fn stub_0x479668() -> ! {
-    todo!("0x479668 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_create_nodes(boost::weak_ptr<RBX::Instance>**,boost::weak_ptr<RBX::Instance>**)")
+pub fn stub_0x479668(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>, additional: usize) {
+    // IDA 0x479668 (`_Deque_base<weak<Instance>>::_M_create_nodes`): allocates
+    // empty node storage; `reserve` is the same content-free growth. Same
+    // shape as 0x46ec78.
+    queue.reserve(additional);
 }
 
 // 0x47975c — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::~deque()")]
 // was: std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~deque()
-pub fn stub_0x47975c() -> ! {
-    todo!("0x47975c std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~deque()")
+pub fn stub_0x47975c(queue: &mut std::collections::VecDeque<WeakPtr<Instance>>) {
+    // IDA 0x47975c (`deque<weak<Instance>>::D2`): destroys the elements in
+    // place; `clear` drops each retained weak the same way. Same shape as
+    // 0x46e8cc.
+    queue.clear();
 }
 // 0x479844 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE19_M_destroy_data_auxESt15_Deque_iteratorIS4_RS4_PS4_ESA_
 #[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>)")]
