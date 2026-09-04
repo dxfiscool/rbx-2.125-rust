@@ -1928,9 +1928,41 @@ pub struct Motor {
 }
 
 /// Rust model of `RBX::Reflection::RefPropDescriptor<JointInstance,
-/// PartInstance>` (IDA `0x5a31ac`): same storage-only family treatment as
-/// `DataModelEnumPropDesc`.
+/// PartInstance>` (IDA `0x5a31ac`): the conditionally-deleted heap payload
+/// plus attribute flags behind `isReadOnly` (IDA `0x5aa914`) / `isWriteOnly`
+/// (IDA `0x5aa924`). Twin of `RocketRefPropDescriptor`.
+#[derive(Default)]
 pub struct JointRefPropDesc {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// Rust model of `RBX::Snap` (IDA `0x5acb54`): the snap joint leaf; members
+/// land with the joint batch.
+#[derive(Default)]
+pub struct Snap {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Weld` (IDA `0x5acc3c`): the weld joint leaf; members
+/// land with the joint batch.
+#[derive(Default)]
+pub struct Weld {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Glue` (IDA `0x5acd24`): the glue joint leaf; members
+/// land with the joint batch.
+#[derive(Default)]
+pub struct Glue {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Rotate` (IDA `0x5ace0c`): the rotate joint leaf;
+/// members land with the joint batch.
+#[derive(Default)]
+pub struct Rotate {
     _opaque: (),
 }
 
@@ -38082,71 +38114,101 @@ pub fn stub_0x5a7e94(ptr: *mut Motor, _deleter: CreatableInstanceDeleter) -> Con
 // 0x5a7f9c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5a7f9c() -> ! {
-    todo!("0x5a7f9c boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5a7f9c(_block: *mut ControlBlockPd<Motor, CreatableInstanceDeleter>) {
+    // IDA 0x5a7f9c: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x5a7fa0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5a7fa0() -> ! {
-    todo!("0x5a7fa0 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5a7fa0(block: *mut ControlBlockPd<Motor, CreatableInstanceDeleter>) {
+    // IDA 0x5a7fa0: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5a7fa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5a7fa4() -> ! {
-    todo!("0x5a7fa4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5a7fa4(_block: *mut ControlBlockPd<Motor, CreatableInstanceDeleter>) {
+    // IDA 0x5a7fa4: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x5a7fc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5a7fc4() -> ! {
-    todo!("0x5a7fc4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5a7fc4(block: *const ControlBlockPd<Motor, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5a7fc4: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5a7fdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5a7fdc() -> ! {
-    todo!("0x5a7fdc boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5a7fdc(block: *const ControlBlockPd<Motor, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5a7fdc: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5a8e4c — __ZN3RBX13JointInstanceC2Ev
 #[doc(alias = "RBX::JointInstance::JointInstance(void)")]
 // was: RBX::JointInstance::JointInstance(void)
-pub fn stub_0x5a8e4c() -> ! {
-    todo!("0x5a8e4c RBX::JointInstance::JointInstance(void)")
+pub fn stub_0x5a8e4c() -> JointInstance {
+    // IDA 0x5a8e4c: `JointInstance::C2Ev` — `Instance` base init (decompiled
+    // `0x5a8e6e`) plus vtable installs; the retained part pair starts empty,
+    // so the model default is the constructed state.
+    JointInstance::default()
 }
 
 // 0x5aa50c — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5aa50c() -> ! {
-    todo!("0x5aa50c RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5aa50c() -> JointCFramePropDesc {
+    // IDA 0x5aa50c: `PropDescriptor<JointInstance, CoordinateFrame>::C2` —
+    // binds the member get/set pair plus the name and attribute words; the
+    // binding lands with reflection, so the model starts at defaults. Same
+    // shape as 0x4a88f0.
+    JointCFramePropDesc { _opaque: () }
 }
 
 // 0x5aa620 — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x5aa620() -> ! {
-    todo!("0x5aa620 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x5aa620(_desc: *mut JointCFramePropDesc) {
+    // IDA 0x5aa620: `PropDescriptor<JointInstance, CoordinateFrame>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5aa64c — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const
-pub fn stub_0x5aa64c() -> ! {
-    todo!("0x5aa64c RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x5aa64c(_desc: &JointCFramePropDesc) -> bool {
+    // IDA 0x5aa64c: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0` (disasm 0x5aa64c); a get/set pair is never read-only.
+    false
 }
 
 // 0x5aa650 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const
-pub fn stub_0x5aa650() -> ! {
-    todo!("0x5aa650 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x5aa650(_desc: &JointCFramePropDesc) -> bool {
+    // IDA 0x5aa650: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5aa650); ...nor write-only.
+    false
 }
 
 // 0x5aa654 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -38166,29 +38228,43 @@ pub fn stub_0x5aa690() -> ! {
 // 0x5aa6b4 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x5aa6b4() -> ! {
-    todo!("0x5aa6b4 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5aa6b4() -> ManualPropDesc {
+    // IDA 0x5aa6b4: `PropDescriptor<ManualSurfaceJointInstance, int>::C2` —
+    // binds the member get/set pair plus the name and attribute words; the
+    // binding lands with reflection. Same shape as 0x5aa50c.
+    ManualPropDesc { _opaque: () }
 }
 
 // 0x5aa7c8 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()
-pub fn stub_0x5aa7c8() -> ! {
-    todo!("0x5aa7c8 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")
+pub fn stub_0x5aa7c8(_desc: *mut ManualPropDesc) {
+    // IDA 0x5aa7c8: `PropDescriptor<ManualSurfaceJointInstance, int>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5aa7f4 — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const
-pub fn stub_0x5aa7f4() -> ! {
-    todo!("0x5aa7f4 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const")
+pub fn stub_0x5aa7f4(_desc: &ManualPropDesc) -> bool {
+    // IDA 0x5aa7f4: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x5aa7f4-0x5aa7f6); a get/set pair is never
+    // read-only.
+    false
 }
 
 // 0x5aa7f8 — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const
-pub fn stub_0x5aa7f8() -> ! {
-    todo!("0x5aa7f8 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0x5aa7f8(_desc: &ManualPropDesc) -> bool {
+    // IDA 0x5aa7f8: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x5aa7f8); ...nor write-only.
+    false
 }
 
 // 0x5aa7fc — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -38215,22 +38291,34 @@ pub fn stub_0x5aa840() -> ! {
 // 0x5aa8e4 — __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()
-pub fn stub_0x5aa8e4() -> ! {
-    todo!("0x5aa8e4 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x5aa8e4(_desc: *mut JointRefPropDesc) {
+    // IDA 0x5aa8e4: `RefPropDescriptor<JointInstance, PartInstance>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5aa914 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const
-pub fn stub_0x5aa914() -> ! {
-    todo!("0x5aa914 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const")
+pub fn stub_0x5aa914(this: *const JointRefPropDesc) -> bool {
+    // IDA 0x5aa914: reads the read-only flag out of the attribute word.
+    // Same shape as 0x561fd0.
+    // SAFETY: `this` must point to a valid `JointRefPropDesc`.
+    unsafe { (*this).read_only }
 }
 
 // 0x5aa924 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const
-pub fn stub_0x5aa924() -> ! {
-    todo!("0x5aa924 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const")
+pub fn stub_0x5aa924(this: *const JointRefPropDesc) -> bool {
+    // IDA 0x5aa924: reads the write-only flag out of the attribute word.
+    // Same shape as 0x561fe0.
+    // SAFETY: `this` must point to a valid `JointRefPropDesc`.
+    unsafe { (*this).write_only }
 }
 
 // 0x5aa934 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -38383,8 +38471,13 @@ pub fn stub_0x5acb20() -> ! {
 // 0x5acb54 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SnapEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)")]
 // was: boost::shared_ptr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)
-pub fn stub_0x5acb54() -> ! {
-    todo!("0x5acb54 boost::shared_ptr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)")
+pub fn stub_0x5acb54(_joint: *const ()) -> SharedPtr<Snap> {
+    // IDA 0x5acb54 (`Creatable<JointInstance>::create<Snap>(Joint*)`,
+    // demangled `...createINS_4SnapEPNS_5JointEE...`): `operator new` + joint
+    // ctor + adoption. The physics joint lands with the joint batch; same
+    // collapse as 0xef04.
+    // SAFETY: `_joint` must be null or point to a valid physics `Joint`.
+    SharedPtr::new(Snap::default())
 }
 
 // 0x5acc08 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE
@@ -38397,8 +38490,11 @@ pub fn stub_0x5acc08() -> ! {
 // 0x5acc3c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4WeldEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)")]
 // was: boost::shared_ptr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)
-pub fn stub_0x5acc3c() -> ! {
-    todo!("0x5acc3c boost::shared_ptr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)")
+pub fn stub_0x5acc3c(_joint: *const ()) -> SharedPtr<Weld> {
+    // IDA 0x5acc3c: `Creatable<JointInstance>::create<Weld>(Joint*)` — same
+    // joint-factory collapse as 0x5acb54.
+    // SAFETY: `_joint` must be null or point to a valid physics `Joint`.
+    SharedPtr::new(Weld::default())
 }
 
 // 0x5accf0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE
@@ -38411,8 +38507,11 @@ pub fn stub_0x5accf0() -> ! {
 // 0x5acd24 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4GlueEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)")]
 // was: boost::shared_ptr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)
-pub fn stub_0x5acd24() -> ! {
-    todo!("0x5acd24 boost::shared_ptr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)")
+pub fn stub_0x5acd24(_joint: *const ()) -> SharedPtr<Glue> {
+    // IDA 0x5acd24: `Creatable<JointInstance>::create<Glue>(Joint*)` — same
+    // joint-factory collapse as 0x5acb54.
+    // SAFETY: `_joint` must be null or point to a valid physics `Joint`.
+    SharedPtr::new(Glue::default())
 }
 
 // 0x5acdd8 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE
@@ -38425,8 +38524,11 @@ pub fn stub_0x5acdd8() -> ! {
 // 0x5ace0c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6RotateEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)")]
 // was: boost::shared_ptr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)
-pub fn stub_0x5ace0c() -> ! {
-    todo!("0x5ace0c boost::shared_ptr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)")
+pub fn stub_0x5ace0c(_joint: *const ()) -> SharedPtr<Rotate> {
+    // IDA 0x5ace0c: `Creatable<JointInstance>::create<Rotate>(Joint*)` —
+    // same joint-factory collapse as 0x5acb54.
+    // SAFETY: `_joint` must be null or point to a valid physics `Joint`.
+    SharedPtr::new(Rotate::default())
 }
 
 // 0x5acec0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE
