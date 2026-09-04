@@ -1025,6 +1025,16 @@ pub fn normal_id_enum_desc() -> &'static crate::enum_desc::EnumDesc {
     &NORMAL_ID_DESC
 }
 
+/// `RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex` (IDA 0x4aa47c, tail-called
+/// from `EnumPropDescriptor<FaceInstance, NormalId>::getIndexValue` at 0x4aa464).
+/// Same shape as the Explosion twin at 0x4a5fb8 and the truss twin at 0x4a906c.
+pub fn face_normal_convert_to_index(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x4a5fb8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0)
+    // (enumconverter.h:350), return value_ordinals[value] or -1.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
+}
+
 // 0x4a88f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 pub fn stub_0x4a88f0(
@@ -1337,20 +1347,33 @@ pub fn stub_0x4a9fe0(desc: &FaceNormalPropDesc, a: &FaceInstanceState, b: &FaceI
 
 // 0x4aa008 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x4aa008() -> ! {
-    todo!("0x4aa008 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x4aa008(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> Variant {
+    // IDA 0x4aa008: `v = member(+44)->get(obj)` (LDR [R2,#0x44], BLX, 0x4aa010-0x4aa014),
+    // then `Type::getSingleton<int>` + `placement_any<int>` into the out Variant
+    // (0x4aa018-0x4aa024). Same shape as the Explosion twin at 0x4a5a5c.
+    Variant::Int((desc.access.get)(obj))
 }
 
 // 0x4aa02c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x4aa02c() -> ! {
-    todo!("0x4aa02c __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
-}
+pub fn stub_0x4aa02c(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, value: &Variant) {
+    // IDA 0x4aa02c: int-typed payloads use `any_cast<int>` directly; anything else goes
+    // through `Variant::convert<int>`, then `setEnumValue(obj, v)` (vf+72). Same shape as
+    // the Explosion twin at 0x4a5a80 and the truss twin at 0x4a8b3c.
+    let v = match value {
+        Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 
+}
 // 0x4aa178 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x4aa178() -> ! {
-    todo!("0x4aa178 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub fn stub_0x4aa178(desc: &FaceNormalPropDesc, src: &FaceInstanceState, dst: &mut FaceInstanceState) {
+    // IDA 0x4aa178: `v = member(+44)->get(src)` (vf+8), then `member->set(dst, v)` (vf+12).
+    // Same shape as the Explosion twin at 0x4a5bcc and the truss twin at 0x4a8c88.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x4aa19c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14hasStringValueEv
@@ -1362,68 +1385,141 @@ pub fn stub_0x4aa19c() -> bool {
 
 // 0x4aa1a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4aa1a0() -> ! {
-    todo!("0x4aa1a0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4aa1a0(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> String {
+    // IDA 0x4aa1a0: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<NormalId>::convertToString(enumdesc@+48, v)`. Same shape as the Explosion
+    // twin at 0x4a5bf8 and the truss twin at 0x4a8cb0.
+    desc.enum_desc.lookup_name((desc.access.get)(obj)).unwrap_or_default().to_owned()
 }
 
 // 0x4aa1c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x4aa1c4() -> ! {
-    todo!("0x4aa1c4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x4aa1c4(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, name: &str) -> bool {
+    // IDA 0x4aa1c4: `Name::lookup(&name, str)`, `convertToValue(enumdesc@+48, name, &out)`;
+    // on 1, `member(+44)->set(obj, out)` and return 1, else 0. Same shape as the Explosion
+    // twin at 0x4a5c1c and the truss twin at 0x4a8cd4.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4aa204 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x4aa204() -> ! {
-    todo!("0x4aa204 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x4aa204(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> i32 {
+    // IDA 0x4aa204: `v = member(+40)->get(obj)` (vf+8, 0x4aa20c-0x4aa210),
+    // `clearValue(pair)` (0x4aa218), store int tag 5 + value (0x4aa21c-0x4aa220), return 5.
+    // Same shape as the Explosion twin at 0x4a5c5c and the truss twin at 0x4a8d14.
+    (desc.access.get)(obj)
 }
 
 // 0x4aa224 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x4aa224() -> ! {
-    todo!("0x4aa224 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x4aa224(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, text: &str) -> bool {
+    // IDA 0x4aa224: extract the element text into a string, `Name::lookup`, `convertToValue`;
+    // on success `member(+44)->set(obj, v)`. Empty/missing text leaves the object untouched.
+    // Same shape as the Explosion twin at 0x4a5c7c and the truss twin at 0x4a8d34.
+    match desc.enum_desc.lookup_value(text) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4aa464 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4aa464() -> ! {
-    todo!("0x4aa464 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4aa464(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> i32 {
+    // IDA 0x4aa464: `v = member(+44)->get(obj)` (vf+8, 0x4aa46c-0x4aa472), tail-jump to
+    // `EnumDesc<NormalId>::convertToIndex(enumdesc@+44, v)` (0x4aa47c). Same shape as the
+    // Explosion twin at 0x4a5ebc and the truss twin at 0x4a8f74.
+    face_normal_convert_to_index(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x4aa480 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x4aa480() -> ! {
-    todo!("0x4aa480 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x4aa480(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, index: usize) -> bool {
+    // IDA 0x4aa480: bounds-check against the enum count, load `values[index]`, set, return 1;
+    // else 0. Same shape as the Explosion twin at 0x4a5ed8 and the truss twin at 0x4a8f90.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4aa4b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4aa4b4() -> ! {
-    todo!("0x4aa4b4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4aa4b4(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> i32 {
+    // IDA 0x4aa4b4: tail-jump to `member(+44)->get(obj)` (vf+8). Same shape as the Explosion
+    // twin at 0x4a5f0c and the truss twin at 0x4a8fc4.
+    (desc.access.get)(obj)
 }
 
 // 0x4aa4bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4aa4bc() -> ! {
-    todo!("0x4aa4bc __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4aa4bc(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, value: i32) -> bool {
+    // IDA 0x4aa4bc: `find_if(items, bind(equalValue, _1, value))`; hit runs
+    // `member(+44)->set(obj, value)` and returns 1, miss returns 0. Same shape as the
+    // Explosion twin at 0x4a5f14 and the truss twin at 0x4a8fcc.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4aa508 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4aa508() -> ! {
-    todo!("0x4aa508 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x4aa508(desc: &FaceNormalPropDesc, obj: &FaceInstanceState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x4aa508: `v = member(+44)->get(obj)`, return `convertToItem(enumdesc@+48, &v)`.
+    // Same shape as the Explosion twin at 0x4a5f60 and the truss twin at 0x4a9018.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x4aa528 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x4aa528() -> ! {
-    todo!("0x4aa528 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x4aa528(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, name: &str) -> bool {
+    // IDA 0x4aa528 (`Name` overload): `convertToValue(enumdesc@+48, name, &out)`; success runs
+    // `member(+44)->set(obj, out)` and returns 1, else 0. Same shape as the Explosion twin
+    // at 0x4a5f80 and the truss twin at 0x4a9038.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4aa55c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4aa55c() -> ! {
-    todo!("0x4aa55c __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4aa55c(desc: &FaceNormalPropDesc, obj: &mut FaceInstanceState, value: i32) -> bool {
+    // IDA 0x4aa55c: `if (value >= 0)` (0x4aa564) and `value < value_to_value.size` (0x4aa576),
+    // load `mapped = value_to_value[value]` (0x4aa57a); `mapped == -1` returns 0 (0x4aa584),
+    // else `member(+44)->set(obj, mapped)` and return 1. Same shape as the Explosion twin
+    // at 0x4a6028 and the truss twin at 0x4a90dc.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x4aa59c — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -1442,218 +1538,393 @@ pub fn stub_0x4aa5a0() -> bool {
 
 // 0x4aa5a4 — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4aa5a4() -> ! {
-    todo!("0x4aa5a4 __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4aa5a4(access: &FaceNormalAccess, obj: &FaceInstanceState) -> i32 {
+    // IDA 0x4aa5a4: null→`obj-36` member adjust (0x4aa5a6-0x4aa5aa), split the member pointer
+    // (offset at +8, encoding at +4), virtual-adjust if the low bit is set (0x4aa5b2-0x4aa5b6),
+    // call the getter (0x4aa5bc-0x4aa5c0). The adjust/encoding is member-pointer mechanics
+    // with no Rust equivalent; the observable effect is the get. Same as 0x4a6074.
+    (access.get)(obj)
 }
 
 // 0x4aa5c4 — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
-pub fn stub_0x4aa5c4() -> ! {
-    todo!("0x4aa5c4 __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_0x4aa5c4(access: &FaceNormalAccess, obj: &mut FaceInstanceState, value: i32) {
+    // IDA 0x4aa5c4: same member-pointer dispatch as stub_0x4aa5a4 through the setter;
+    // the observable effect is the set. Same shape as the Explosion twin at 0x4a6094.
+    (access.set)(obj, value);
 }
 
 // 0x4aab84 — __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler14PriorityMethodEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TaskScheduler::PriorityMethod>(void)")]
-pub fn stub_0x4aab84() -> ! {
-    todo!("0x4aab84 __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler14PriorityMethodEEERKS1_v")
+pub fn stub_0x4aab84() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aab84: `Type::getSingleton<TaskScheduler::PriorityMethod>` -- guard-once thunk
+    // into `Singleton<EnumDesc<PriorityMethod>>::singleton()` (pthread flag + initSingleton
+    // refs, same shape as disasm 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    // Pairs are populated by the C2 ctor; the item set lands with that EA.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("PriorityMethod"));
+    &S
 }
 
 // 0x4aabb8 — __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler3Job17SleepAdjustMethodEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TaskScheduler::Job::SleepAdjustMethod>(void)")]
-pub fn stub_0x4aabb8() -> ! {
-    todo!("0x4aabb8 __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler3Job17SleepAdjustMethodEEERKS1_v")
+pub fn stub_0x4aabb8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aabb8: `Type::getSingleton<TaskScheduler::Job::SleepAdjustMethod>` -- guard-once
+    // thunk into `Singleton<EnumDesc<SleepAdjustMethod>>::singleton()` (same shape as
+    // disasm 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SleepAdjustMethod"));
+    &S
 }
 
 // 0x4aabec — __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler16ThreadPoolConfigEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TaskScheduler::ThreadPoolConfig>(void)")]
-pub fn stub_0x4aabec() -> ! {
-    todo!("0x4aabec __ZN3RBX10Reflection4Type12getSingletonINS_13TaskScheduler16ThreadPoolConfigEEERKS1_v")
+pub fn stub_0x4aabec() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aabec: `Type::getSingleton<TaskScheduler::ThreadPoolConfig>` -- guard-once thunk
+    // into `Singleton<EnumDesc<ThreadPoolConfig>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("ThreadPoolConfig"));
+    &S
 }
 
 // 0x4aac20 — __ZN3RBX10Reflection4Type12getSingletonINS_10Controller6ButtonEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Controller::Button>(void)")]
-pub fn stub_0x4aac20() -> ! {
-    todo!("0x4aac20 __ZN3RBX10Reflection4Type12getSingletonINS_10Controller6ButtonEEERKS1_v")
+pub fn stub_0x4aac20() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aac20: `Type::getSingleton<Controller::Button>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Button>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Button"));
+    &S
 }
 
 // 0x4aac54 — __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject16TweenEasingStyleEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiObject::TweenEasingStyle>(void)")]
-pub fn stub_0x4aac54() -> ! {
-    todo!("0x4aac54 __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject16TweenEasingStyleEEERKS1_v")
+pub fn stub_0x4aac54() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aac54: `Type::getSingleton<GuiObject::TweenEasingStyle>` -- guard-once thunk into
+    // `Singleton<EnumDesc<TweenEasingStyle>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("TweenEasingStyle"));
+    &S
 }
 
 // 0x4aac88 — __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject11TweenStatusEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiObject::TweenStatus>(void)")]
-pub fn stub_0x4aac88() -> ! {
-    todo!("0x4aac88 __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject11TweenStatusEEERKS1_v")
+pub fn stub_0x4aac88() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aac88: `Type::getSingleton<GuiObject::TweenStatus>` -- guard-once thunk into
+    // `Singleton<EnumDesc<TweenStatus>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("TweenStatus"));
+    &S
 }
 
 // 0x4aacbc — __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject20TweenEasingDirectionEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiObject::TweenEasingDirection>(void)")]
-pub fn stub_0x4aacbc() -> ! {
-    todo!("0x4aacbc __ZN3RBX10Reflection4Type12getSingletonINS_9GuiObject20TweenEasingDirectionEEERKS1_v")
+pub fn stub_0x4aacbc() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aacbc: `Type::getSingleton<GuiObject::TweenEasingDirection>` -- guard-once thunk
+    // into `Singleton<EnumDesc<TweenEasingDirection>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("TweenEasingDirection"));
+    &S
 }
 
 // 0x4aacf0 — __ZN3RBX10Reflection4Type12getSingletonINS_11TextService10XAlignmentEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TextService::XAlignment>(void)")]
-pub fn stub_0x4aacf0() -> ! {
-    todo!("0x4aacf0 __ZN3RBX10Reflection4Type12getSingletonINS_11TextService10XAlignmentEEERKS1_v")
+pub fn stub_0x4aacf0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aacf0: `Type::getSingleton<TextService::XAlignment>` -- guard-once thunk into
+    // `Singleton<EnumDesc<XAlignment>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("XAlignment"));
+    &S
 }
 
 // 0x4aad24 — __ZN3RBX10Reflection4Type12getSingletonINS_11TextService10YAlignmentEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TextService::YAlignment>(void)")]
-pub fn stub_0x4aad24() -> ! {
-    todo!("0x4aad24 __ZN3RBX10Reflection4Type12getSingletonINS_11TextService10YAlignmentEEERKS1_v")
+pub fn stub_0x4aad24() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aad24: `Type::getSingleton<TextService::YAlignment>` -- guard-once thunk into
+    // `Singleton<EnumDesc<YAlignment>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("YAlignment"));
+    &S
 }
 
 // 0x4aad58 — __ZN3RBX10Reflection4Type12getSingletonINS_11TextService8FontSizeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TextService::FontSize>(void)")]
-pub fn stub_0x4aad58() -> ! {
-    todo!("0x4aad58 __ZN3RBX10Reflection4Type12getSingletonINS_11TextService8FontSizeEEERKS1_v")
+pub fn stub_0x4aad58() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aad58: `Type::getSingleton<TextService::FontSize>` -- guard-once thunk into
+    // `Singleton<EnumDesc<FontSize>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("FontSize"));
+    &S
 }
 
 // 0x4aad8c — __ZN3RBX10Reflection4Type12getSingletonINS_11TextService4FontEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::TextService::Font>(void)")]
-pub fn stub_0x4aad8c() -> ! {
-    todo!("0x4aad8c __ZN3RBX10Reflection4Type12getSingletonINS_11TextService4FontEEERKS1_v")
+pub fn stub_0x4aad8c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aad8c: `Type::getSingleton<TextService::Font>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Font>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Font"));
+    &S
 }
 
 // 0x4aadc0 — __ZN3RBX10Reflection4Type12getSingletonINS_6Camera10CameraTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Camera::CameraType>(void)")]
-pub fn stub_0x4aadc0() -> ! {
-    todo!("0x4aadc0 __ZN3RBX10Reflection4Type12getSingletonINS_6Camera10CameraTypeEEERKS1_v")
+pub fn stub_0x4aadc0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aadc0: `Type::getSingleton<Camera::CameraType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CameraType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CameraType"));
+    &S
 }
 
 // 0x4aadf4 — __ZN3RBX10Reflection4Type12getSingletonINS_6Camera10CameraModeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Camera::CameraMode>(void)")]
-pub fn stub_0x4aadf4() -> ! {
-    todo!("0x4aadf4 __ZN3RBX10Reflection4Type12getSingletonINS_6Camera10CameraModeEEERKS1_v")
+pub fn stub_0x4aadf4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aadf4: `Type::getSingleton<Camera::CameraMode>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CameraMode>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CameraMode"));
+    &S
 }
 
 // 0x4aae28 — __ZN3RBX10Reflection4Type12getSingletonINS_6Camera13CameraPanModeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Camera::CameraPanMode>(void)")]
-pub fn stub_0x4aae28() -> ! {
-    todo!("0x4aae28 __ZN3RBX10Reflection4Type12getSingletonINS_6Camera13CameraPanModeEEERKS1_v")
+pub fn stub_0x4aae28() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aae28: `Type::getSingleton<Camera::CameraPanMode>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CameraPanMode>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CameraPanMode"));
+    &S
 }
 
 // 0x4aae5c — __ZN3RBX10Reflection4Type12getSingletonINS_16LegacyController9InputTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::LegacyController::InputType>(void)")]
-pub fn stub_0x4aae5c() -> ! {
-    todo!("0x4aae5c __ZN3RBX10Reflection4Type12getSingletonINS_16LegacyController9InputTypeEEERKS1_v")
+pub fn stub_0x4aae5c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aae5c: `Type::getSingleton<LegacyController::InputType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<InputType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("InputType"));
+    &S
 }
 
 // 0x4aae90 — __ZN3RBX10Reflection4Type12getSingletonINS_16DataModelArbiter16ConcurrencyModelEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DataModelArbiter::ConcurrencyModel>(void)")]
-pub fn stub_0x4aae90() -> ! {
-    todo!("0x4aae90 __ZN3RBX10Reflection4Type12getSingletonINS_16DataModelArbiter16ConcurrencyModelEEERKS1_v")
+pub fn stub_0x4aae90() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aae90: `Type::getSingleton<DataModelArbiter::ConcurrencyModel>` -- guard-once
+    // thunk into `Singleton<EnumDesc<ConcurrencyModel>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("ConcurrencyModel"));
+    &S
 }
 
 // 0x4aaec4 — __ZN3RBX10Reflection4Type12getSingletonINS_13DebugSettings14ErrorReportingEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DebugSettings::ErrorReporting>(void)")]
-pub fn stub_0x4aaec4() -> ! {
-    todo!("0x4aaec4 __ZN3RBX10Reflection4Type12getSingletonINS_13DebugSettings14ErrorReportingEEERKS1_v")
+pub fn stub_0x4aaec4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaec4: `Type::getSingleton<DebugSettings::ErrorReporting>` -- guard-once thunk
+    // into `Singleton<EnumDesc<ErrorReporting>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("ErrorReporting"));
+    &S
 }
 
 // 0x4aaef8 — __ZN3RBX10Reflection4Type12getSingletonINS_9EThrottle13EThrottleTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::EThrottle::EThrottleType>(void)")]
-pub fn stub_0x4aaef8() -> ! {
-    todo!("0x4aaef8 __ZN3RBX10Reflection4Type12getSingletonINS_9EThrottle13EThrottleTypeEEERKS1_v")
+pub fn stub_0x4aaef8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaef8: `Type::getSingleton<EThrottle::EThrottleType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<EThrottleType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("EThrottleType"));
+    &S
 }
 
 // 0x4aaf2c — __ZN3RBX10Reflection4Type12getSingletonINS_8NormalIdEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::NormalId>(void)")]
-pub fn stub_0x4aaf2c() -> ! {
-    todo!("0x4aaf2c __ZN3RBX10Reflection4Type12getSingletonINS_8NormalIdEEERKS1_v")
+pub fn stub_0x4aaf2c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaf2c: `Type::getSingleton<NormalId>` -- guard-once thunk into
+    // `Singleton<EnumDesc<NormalId>>::singleton()` (pthread flag + initSingleton refs,
+    // disasm 0x4aaf2c-0x4aaf42). Forwards to the grounded NormalId singleton.
+    normal_id_enum_desc()
 }
 
 // 0x4aaf60 — __ZN3RBX10Reflection4Type12getSingletonIN3G3D7Vector34AxisEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<G3D::Vector3::Axis>(void)")]
-pub fn stub_0x4aaf60() -> ! {
-    todo!("0x4aaf60 __ZN3RBX10Reflection4Type12getSingletonIN3G3D7Vector34AxisEEERKS1_v")
+pub fn stub_0x4aaf60() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaf60: `Type::getSingleton<G3D::Vector3::Axis>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Axis>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Axis"));
+    &S
 }
 
 // 0x4aaf94 — __ZN3RBX10Reflection4Type12getSingletonINS_8Humanoid6StatusEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Humanoid::Status>(void)")]
-pub fn stub_0x4aaf94() -> ! {
-    todo!("0x4aaf94 __ZN3RBX10Reflection4Type12getSingletonINS_8Humanoid6StatusEEERKS1_v")
+pub fn stub_0x4aaf94() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaf94: `Type::getSingleton<Humanoid::Status>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Status>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Status"));
+    &S
 }
 
 // 0x4aafc8 — __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel11CreatorTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DataModel::CreatorType>(void)")]
-pub fn stub_0x4aafc8() -> ! {
-    todo!("0x4aafc8 __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel11CreatorTypeEEERKS1_v")
+pub fn stub_0x4aafc8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aafc8: `Type::getSingleton<DataModel::CreatorType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<CreatorType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("CreatorType"));
+    &S
 }
 
 // 0x4aaffc — __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel5GenreEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DataModel::Genre>(void)")]
-pub fn stub_0x4aaffc() -> ! {
-    todo!("0x4aaffc __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel5GenreEEERKS1_v")
+pub fn stub_0x4aaffc() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4aaffc: `Type::getSingleton<DataModel::Genre>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Genre>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Genre"));
+    &S
 }
 
 // 0x4ab030 — __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel16GearGenreSettingEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DataModel::GearGenreSetting>(void)")]
-pub fn stub_0x4ab030() -> ! {
-    todo!("0x4ab030 __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel16GearGenreSettingEEERKS1_v")
+pub fn stub_0x4ab030() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab030: `Type::getSingleton<DataModel::GearGenreSetting>` -- guard-once thunk into
+    // `Singleton<EnumDesc<GearGenreSetting>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("GearGenreSetting"));
+    &S
 }
 
 // 0x4ab064 — __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel8GearTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DataModel::GearType>(void)")]
-pub fn stub_0x4ab064() -> ! {
-    todo!("0x4ab064 __ZN3RBX10Reflection4Type12getSingletonINS_9DataModel8GearTypeEEERKS1_v")
+pub fn stub_0x4ab064() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab064: `Type::getSingleton<DataModel::GearType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<GearType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("GearType"));
+    &S
 }
 
 // 0x4ab098 — __ZN3RBX10Reflection4Type12getSingletonINS_8Instance10SaveFilterEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Instance::SaveFilter>(void)")]
-pub fn stub_0x4ab098() -> ! {
-    todo!("0x4ab098 __ZN3RBX10Reflection4Type12getSingletonINS_8Instance10SaveFilterEEERKS1_v")
+pub fn stub_0x4ab098() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab098: `Type::getSingleton<Instance::SaveFilter>` -- guard-once thunk into
+    // `Singleton<EnumDesc<SaveFilter>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SaveFilter"));
+    &S
 }
 
 // 0x4ab0cc — __ZN3RBX10Reflection4Type12getSingletonINS_13FriendService12FriendStatusEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::FriendService::FriendStatus>(void)")]
-pub fn stub_0x4ab0cc() -> ! {
-    todo!("0x4ab0cc __ZN3RBX10Reflection4Type12getSingletonINS_13FriendService12FriendStatusEEERKS1_v")
+pub fn stub_0x4ab0cc() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab0cc: `Type::getSingleton<FriendService::FriendStatus>` -- guard-once thunk into
+    // `Singleton<EnumDesc<FriendStatus>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("FriendStatus"));
+    &S
 }
 
 // 0x4ab100 — __ZN3RBX10Reflection4Type12getSingletonINS_13FriendService15FriendEventTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::FriendService::FriendEventType>(void)")]
-pub fn stub_0x4ab100() -> ! {
-    todo!("0x4ab100 __ZN3RBX10Reflection4Type12getSingletonINS_13FriendService15FriendEventTypeEEERKS1_v")
+pub fn stub_0x4ab100() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab100: `Type::getSingleton<FriendService::FriendEventType>` -- guard-once thunk
+    // into `Singleton<EnumDesc<FriendEventType>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("FriendEventType"));
+    &S
 }
 
 // 0x4ab134 — __ZN3RBX10Reflection4Type12getSingletonINS_18SkateboardPlatform9MoveStateEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::SkateboardPlatform::MoveState>(void)")]
-pub fn stub_0x4ab134() -> ! {
-    todo!("0x4ab134 __ZN3RBX10Reflection4Type12getSingletonINS_18SkateboardPlatform9MoveStateEEERKS1_v")
+pub fn stub_0x4ab134() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab134: `Type::getSingleton<SkateboardPlatform::MoveState>` -- guard-once thunk
+    // into `Singleton<EnumDesc<MoveState>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("MoveState"));
+    &S
 }
 
 // 0x4ab168 — __ZN3RBX10Reflection4Type12getSingletonINS_9SoundTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::SoundType>(void)")]
-pub fn stub_0x4ab168() -> ! {
-    todo!("0x4ab168 __ZN3RBX10Reflection4Type12getSingletonINS_9SoundTypeEEERKS1_v")
+pub fn stub_0x4ab168() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab168: `Type::getSingleton<SoundType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<SoundType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SoundType"));
+    &S
 }
 
 // 0x4ab19c — __ZN3RBX10Reflection4Type12getSingletonINS_11SurfaceTypeEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::SurfaceType>(void)")]
-pub fn stub_0x4ab19c() -> ! {
-    todo!("0x4ab19c __ZN3RBX10Reflection4Type12getSingletonINS_11SurfaceTypeEEERKS1_v")
+pub fn stub_0x4ab19c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab19c: `Type::getSingleton<SurfaceType>` -- guard-once thunk into
+    // `Singleton<EnumDesc<SurfaceType>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SurfaceType"));
+    &S
 }
 
 // 0x4ab1d0 — __ZN3RBX10Reflection4Type12getSingletonINS_12PartInstance10FormFactorEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::PartInstance::FormFactor>(void)")]
-pub fn stub_0x4ab1d0() -> ! {
-    todo!("0x4ab1d0 __ZN3RBX10Reflection4Type12getSingletonINS_12PartInstance10FormFactorEEERKS1_v")
+pub fn stub_0x4ab1d0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab1d0: `Type::getSingleton<PartInstance::FormFactor>` -- guard-once thunk into
+    // `Singleton<EnumDesc<FormFactor>>::singleton()` (same shape as disasm 0x4aaf2c/0x4ab238).
+    // Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("FormFactor"));
+    &S
 }
 
 // 0x4ab204 — __ZN3RBX10Reflection4Type12getSingletonINS_16UserInputService14SwipeDirectionEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::UserInputService::SwipeDirection>(void)")]
-pub fn stub_0x4ab204() -> ! {
-    todo!("0x4ab204 __ZN3RBX10Reflection4Type12getSingletonINS_16UserInputService14SwipeDirectionEEERKS1_v")
+pub fn stub_0x4ab204() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab204: `Type::getSingleton<UserInputService::SwipeDirection>` -- guard-once thunk
+    // into `Singleton<EnumDesc<SwipeDirection>>::singleton()` (same shape as disasm
+    // 0x4aaf2c/0x4ab238). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("SwipeDirection"));
+    &S
 }
 
 // 0x4ab238 — __ZN3RBX10Reflection4Type12getSingletonINS_8MaterialEEERKS1_v
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Material>(void)")]
-pub fn stub_0x4ab238() -> ! {
-    todo!("0x4ab238 __ZN3RBX10Reflection4Type12getSingletonINS_8MaterialEEERKS1_v")
+pub fn stub_0x4ab238() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x4ab238: `Type::getSingleton<Material>` -- guard-once thunk into
+    // `Singleton<EnumDesc<Material>>::singleton()` (pthread flag + initSingleton refs,
+    // disasm 0x4ab238-0x4ab24e). Rust: LazyLock; destructor at exit.
+    static S: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+        std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("Material"));
+    &S
 }
 
 #[cfg(test)]

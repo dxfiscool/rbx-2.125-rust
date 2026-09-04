@@ -3164,10 +3164,52 @@ pub fn stub_0x25df50() {
     // IDA 0x25df50: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
+/// Minimal `RBX::SpotLight` state visible to its enum descriptor (IDA 0x25dff4).
+/// Same role as `descriptor::FaceInstanceState` for `FaceInstance`.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct SpotLightState {
+    pub normal_id: i32,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<SpotLight, NormalId>` (IDA 0x25dff4).
+pub struct SpotLightNormalAccess {
+    pub get: Box<dyn Fn(&SpotLightState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut SpotLightState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<SpotLight, NormalId>` (IDA 0x25dff4).
+pub struct SpotLightNormalPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: SpotLightNormalAccess,
+    /// Singleton link stored at +40/+48 (same layout as the `FaceInstance` twin at 0x4a9de0).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x25dff4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25dff4() -> ! {
-    todo!("0x25dff4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25dff4(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&SpotLightState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut SpotLightState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> SpotLightNormalPropDesc {
+    // IDA 0x25dff4: same EnumPropDescriptor ctor shape as the `FaceInstance` twin at 0x4a9de0
+    // (disasm 0x25dff8-0x25e018 prologue) -- singleton link at +40/+48, `new(0x14)` member
+    // desc at +44 holding (getter, setter); the read-only/write-only attribute masks query a
+    // GetSetImpl that hardcodes 0, so they never fire and the model keeps `attributes`.
+    SpotLightNormalPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: SpotLightNormalAccess { get, set },
+        enum_desc: crate::descriptor::normal_id_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x25e1a8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED0Ev
@@ -3190,26 +3232,41 @@ pub fn stub_0x25e1e4() {
 
 // 0x25e1f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e1f4() -> ! {
-    todo!("0x25e1f4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e1f4(desc: &SpotLightNormalPropDesc, a: &SpotLightState, b: &SpotLightState) -> bool {
+    // IDA 0x25e1f4: `v = member(+44)->get(a)`, `return v == member->get(b)`. Same shape as
+    // the `FaceInstance` twin at 0x4a9fe0.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x25e21c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x25e21c() -> ! {
-    todo!("0x25e21c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x25e21c(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> crate::descriptor::Variant {
+    // IDA 0x25e21c: `v = member(+44)->get(obj)` (LDR [R2,#0x44], BLX, 0x25e224-0x25e228),
+    // then `Type::getSingleton<int>` + `placement_any<int>` (0x25e22c-0x25e238). Same shape
+    // as the `FaceInstance` twin at 0x4aa008.
+    crate::descriptor::Variant::Int((desc.access.get)(obj))
 }
 
 // 0x25e240 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x25e240() -> ! {
-    todo!("0x25e240 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x25e240(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, value: &crate::descriptor::Variant) {
+    // IDA 0x25e240: int-typed payloads use `any_cast<int>` directly; anything else goes
+    // through `Variant::convert<int>`, then `setEnumValue(obj, v)` (vf+72). Same shape as
+    // the `FaceInstance` twin at 0x4aa02c.
+    let v = match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x25e38c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x25e38c() -> ! {
-    todo!("0x25e38c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x25e38c(desc: &SpotLightNormalPropDesc, src: &SpotLightState, dst: &mut SpotLightState) {
+    // IDA 0x25e38c: `v = member(+44)->get(src)` (vf+8), then `member->set(dst, v)` (vf+12).
+    // Same shape as the `FaceInstance` twin at 0x4aa178.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x25e3b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14hasStringValueEv
@@ -3221,62 +3278,117 @@ pub fn stub_0x25e3b0() -> bool {
 
 // 0x25e3b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e3b4() -> ! {
-    todo!("0x25e3b4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e3b4(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> String {
+    // IDA 0x25e3b4: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<NormalId>::convertToString(enumdesc@+48, v)`. Same shape as the
+    // `FaceInstance` twin at 0x4aa1a0.
+    desc.enum_desc.lookup_name((desc.access.get)(obj)).unwrap_or_default().to_owned()
 }
 
 // 0x25e3d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x25e3d8() -> ! {
-    todo!("0x25e3d8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x25e3d8(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, name: &str) -> bool {
+    // IDA 0x25e3d8: `Name::lookup`, `convertToValue(enumdesc@+48, ...)`; on 1 set + return 1,
+    // else 0. Same shape as the `FaceInstance` twin at 0x4aa1c4.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x25e418 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x25e418() -> ! {
-    todo!("0x25e418 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x25e418(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> i32 {
+    // IDA 0x25e418: `v = member(+40)->get(obj)` (vf+8), `clearValue(pair)`, store int tag 5 +
+    // value, return 5. Same shape as the `FaceInstance` twin at 0x4aa204.
+    (desc.access.get)(obj)
 }
 
 // 0x25e438 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x25e438() -> ! {
-    todo!("0x25e438 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x25e438(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, text: &str) -> bool {
+    // IDA 0x25e438: element-text extract, `Name::lookup`, `convertToValue`; on success set.
+    // Same shape as the `FaceInstance` twin at 0x4aa224.
+    match desc.enum_desc.lookup_value(text) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x25e678 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e678() -> ! {
-    todo!("0x25e678 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e678(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> i32 {
+    // IDA 0x25e678: `v = member(+44)->get(obj)` (vf+8), tail-jump to
+    // `EnumDesc<NormalId>::convertToIndex` (0x25e770). Same shape as the `FaceInstance`
+    // twin at 0x4aa464.
+    stub_0x25e770(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x25e694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x25e694() -> ! {
-    todo!("0x25e694 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x25e694(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, index: usize) -> bool {
+    // IDA 0x25e694: bounds-check against the enum count, load `values[index]`, set, return 1;
+    // else 0. Same shape as the `FaceInstance` twin at 0x4aa480.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x25e6c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e6c8() -> ! {
-    todo!("0x25e6c8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e6c8(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> i32 {
+    // IDA 0x25e6c8: tail-jump to `member(+44)->get(obj)` (vf+8). Same shape as the
+    // `FaceInstance` twin at 0x4aa4b4.
+    (desc.access.get)(obj)
 }
 
 // 0x25e6d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x25e6d0() -> ! {
-    todo!("0x25e6d0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x25e6d0(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, value: i32) -> bool {
+    // IDA 0x25e6d0: `find_if(items, bind(equalValue, _1, value))`; hit sets + returns 1, miss
+    // 0. Same shape as the `FaceInstance` twin at 0x4aa4bc.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x25e71c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e71c() -> ! {
-    todo!("0x25e71c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e71c(desc: &SpotLightNormalPropDesc, obj: &SpotLightState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x25e71c: `v = member(+44)->get(obj)`, return `convertToItem(enumdesc@+48, &v)`.
+    // Same shape as the `FaceInstance` twin at 0x4aa508.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x25e73c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x25e73c() -> ! {
-    todo!("0x25e73c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x25e73c(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, name: &str) -> bool {
+    // IDA 0x25e73c (`Name` overload): `convertToValue` then conditional set. Same shape as
+    // the `FaceInstance` twin at 0x4aa528.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x25e770 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_
@@ -3289,8 +3401,19 @@ pub fn stub_0x25e770(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x25e7e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x25e7e0() -> ! {
-    todo!("0x25e7e0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x25e7e0(desc: &SpotLightNormalPropDesc, obj: &mut SpotLightState, value: i32) -> bool {
+    // IDA 0x25e7e0: `value >= 0` + bounds check, `mapped = value_to_value[value]`; `-1`
+    // returns 0, else set + return 1. Same shape as the `FaceInstance` twin at 0x4aa55c.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x25e820 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -3309,14 +3432,16 @@ pub fn stub_0x25e824() -> bool {
 
 // 0x25e828 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x25e828() -> ! {
-    todo!("0x25e828 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x25e828(access: &SpotLightNormalAccess, obj: &SpotLightState) -> i32 {
+    // IDA 0x25e828: null→`obj-36` member adjust, member-pointer dispatch through the getter.
+    // Same shape as the `FaceInstance` twin at 0x4aa5a4.
+    (access.get)(obj)
 }
 
-// 0x25e848 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
-pub fn stub_0x25e848() -> ! {
-    todo!("0x25e848 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+pub fn stub_0x25e848(access: &SpotLightNormalAccess, obj: &mut SpotLightState, value: i32) {
+    // IDA 0x25e848: same member-pointer dispatch as stub_0x25e828 through the setter.
+    // Same shape as the `FaceInstance` twin at 0x4aa5c4.
+    (access.set)(obj, value);
 }
 
 // 0x25e86c — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
