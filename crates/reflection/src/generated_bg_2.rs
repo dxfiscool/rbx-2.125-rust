@@ -11,64 +11,109 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_0x14e58() -> ! {
-    todo!("0x14e58 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode> const&)")
+pub fn stub_0x14e58(map: &mut std::collections::BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x14e58: `_M_insert_unique` tree walk from the root (0x14e64-0x14e84),
+    // predecessor check (0x14e8a-0x14ea0), node insert + rebalance returning
+    // `pair<iterator, bool>` (0x14ea4-0x14eb4). The comparator is
+    // `less<Name const*>` (pointer order); Rust has no address-ordered Name key,
+    // so the cutover keys by name text in a `BTreeMap` (same unique-insert +
+    // ordered-iteration observables) and returns the `bool` half. Backs the
+    // `EnumDesc<ShadowMode>` name tables (`name_to_value`).
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14ec0 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,RBX::CRenderSettings::ShadowMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x14ec0() -> ! {
-    todo!("0x14ec0 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_0x14ec0(vec: &mut Vec<i32>, pos: usize, value: i32) {
+    // IDA 0x14ec0: `_M_insert_aux` — realloc path when full (growth `v9`,
+    // `__throw_length_error` at 0x3fffffff, `_M_allocate` at 0x14f16, element
+    // move at 0x14f18-0x14f1e) else `__copy_backward` shift + store. `Vec::insert`
+    // covers both paths including growth. Payload is `ShadowMode` (folds to i32,
+    // matching the `EnumDesc` tables).
+    vec.insert(pos, value);
 }
 
 // 0x14fa4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings10ShadowModeESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings10ShadowModeESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x14fa4() -> ! {
-    todo!("0x14fa4 std::_Vector_base<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_allocate(unsigned long)")
+pub fn stub_0x14fa4(n: usize) -> Vec<std::mem::MaybeUninit<i32>> {
+    // IDA 0x14fa4: `_M_allocate(n)` — `__throw_bad_alloc` for `n >= 0x40000000`
+    // (0x14fac-0x14fae), else `operator new(4 * n)` (uninitialized `ShadowMode`
+    // storage). `Vec::with_capacity` reserves the same uninitialized backing and
+    // panics on overflow. Payload folds to i32.
+    Vec::with_capacity(n)
 }
 
 // 0x14fbc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings10ShadowModeES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::ShadowMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *>(RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings10ShadowModeES6_EET0_T_S8_S7_")]
-pub fn stub_0x14fbc() -> ! {
-    todo!("0x14fbc RBX::CRenderSettings::ShadowMode * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *>(RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *,RBX::CRenderSettings::ShadowMode *)")
+pub fn stub_0x14fbc(buf: &mut [i32], first: usize, last: usize, result_end: usize) -> usize {
+    // IDA 0x14fbc: `__copy_b` word-at-a-time backward move of `[first, last)` to
+    // end at `result` (0x14fbc-0x14ff0), returning the destination start
+    // (`a3 + 4*v8`, 0x14ff0-0x14ff6). `copy_within` is the overlapping-safe
+    // equivalent; the return is the destination range start.
+    let dest = result_end - (last - first);
+    buf.copy_within(first..last, dest);
+    dest
 }
 
 // 0x14ff8 — __ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,unsigned long,RBX::CRenderSettings::ShadowMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings10ShadowModeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_0x14ff8() -> ! {
-    todo!("0x14ff8 std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ShadowMode*,std::vector<RBX::CRenderSettings::ShadowMode,std::allocator<RBX::CRenderSettings::ShadowMode>>>,unsigned long,RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_0x14ff8(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+    // IDA 0x14ff8: `_M_fill_insert` — realloc path (`_M_allocate`, bulk copy) or
+    // in-place `__copy_backward` shift + `std::fill` of `n` copies at the position
+    // (decompiled 0x14ff8). `splice` with a repeat covers both, shifting the tail
+    // and filling in one step.
+    vec.splice(pos..pos, std::iter::repeat_n(value, n));
 }
 
 // 0x15188 — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::resize(unsigned long,RBX::CRenderSettings::AntialiasingMode)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE6resizeEmS2_")]
-pub fn stub_0x15188() -> ! {
-    todo!("0x15188 std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::resize(unsigned long,RBX::CRenderSettings::AntialiasingMode)")
+pub fn stub_0x15188(vec: &mut Vec<i32>, n: usize, value: i32) {
+    // IDA 0x15188: `resize(n, v)` — grow via `_M_fill_insert` when
+    // `size <= n` (0x151a0-0x151b0), else retract the finish pointer
+    // (`result+4 = start + 4*n`, 0x151a6). `Vec::resize` is the same branch.
+    // Payload is `AntialiasingMode` (folds to i32).
+    vec.resize(n, value);
 }
 
 // 0x151bc — __ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::push_back(RBX::CRenderSettings::AntialiasingMode const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings16AntialiasingModeESaIS2_EE9push_backERKS2_")]
-pub fn stub_0x151bc() -> ! {
-    todo!("0x151bc std::vector<RBX::CRenderSettings::AntialiasingMode,std::allocator<RBX::CRenderSettings::AntialiasingMode>>::push_back(RBX::CRenderSettings::AntialiasingMode const&)")
+pub fn stub_0x151bc(vec: &mut Vec<i32>, value: i32) {
+    // IDA 0x151bc: `push_back` — `_M_insert_aux(end, v)` Append path
+    // (decompiled 0x151bc). `Vec::push` grows and appends identically. Payload is
+    // `AntialiasingMode` (folds to i32).
+    vec.push(value);
 }
 
 // 0x151e4 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16AntialiasingModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::AntialiasingMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16AntialiasingModeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0x151e4() -> ! {
-    todo!("0x151e4 std::map<RBX::Name const*,RBX::CRenderSettings::AntialiasingMode,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x151e4<'a>(map: &'a mut std::collections::BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x151e4: `map::operator[]` — lower-bound walk (0x151fc-0x151fa),
+    // default-insert `AntialiasingMode()` (zero) on miss (0x15212-0x15222),
+    // return the mapped reference. `or_insert(0)` is the same lookup-or-default
+    // returning `&mut`. Ordered by name text rather than `Name*` address (see
+    // stub_0x14e58). Backs the `EnumDesc<AntialiasingMode>` name tables.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x1523c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
