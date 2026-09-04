@@ -661,6 +661,22 @@ pub fn add_chat_message(
     raise(&message);
 }
 
+/// `AbuseReporter::add` (IDA 0xa0ba5c): folds every chat message through
+/// `AbuseReport::addMessage` (0xa0bb1e..0xa0bb2e), pushes the report to
+/// the deque under lock, and wakes the worker (0xa0bd58..0xa0bde0).
+/// Queue, lock, and worker stay engine-side behind `wake`.
+pub fn reporter_add(
+    report: &mut AbuseReport,
+    capacity: usize,
+    messages: &[(bool, ChatMessage)],
+    wake: &mut dyn FnMut(),
+) {
+    for (relevant, message) in messages {
+        add_abuse_message(report, capacity, *relevant, message.clone());
+    }
+    wake();
+}
+
 /// `Players::raiseChatMessageSignal` (IDA 0xa0d488): fires the chat
 /// signal with the message. The signal stays engine-side.
 pub fn raise_chat_message_signal(message: &ChatMessage, raise: &mut dyn FnMut(&ChatMessage)) {
@@ -1335,5 +1351,20 @@ mod tests {
         use crate::bitstream::BitStream;
         let mut s = BitStream::new();
         let _ = report_abuse(false, false, &mut s, 1, "x", &mut |_| {}, &mut || {});
+    }
+
+    #[test]
+    fn reporter_folds_and_wakes() {
+        // IDA 0xa0ba5c: relevant messages fold in, then the worker wakes.
+        let mut report = AbuseReport::default();
+        let mut woke = false;
+        let messages = vec![
+            (true, ChatMessage::new("a".to_owned(), 0, 1)),
+            (false, ChatMessage::new("b".to_owned(), 0, 1)),
+        ];
+        reporter_add(&mut report, 8, &messages, &mut || woke = true);
+        assert!(woke);
+        assert_eq!(report.messages.len(), 1);
+        assert_eq!(report.messages[0].text, "a");
     }
 }

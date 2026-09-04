@@ -14217,8 +14217,14 @@ pub fn stub_a0ac84(reporter: &mut crate::player::AbuseReporter, post: &mut dyn F
 // 0xa0ba5c — __ZN3RBX7Network13AbuseReporter3addERNS0_11AbuseReportEN5boost10shared_ptrINS0_6PlayerEEERKSt4listINS0_11ChatMessageESaIS9_EE
 // type: void __fastcall(int, _QWORD *, __int32 *, pthread_mutex_t **, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, boost::mutex *, char, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,rbx_core::SharedPtr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)")]
-pub fn stub_a0ba5c() -> ! {
-    todo!("0xa0ba5c RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,boost::shared_ptr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)")
+pub fn stub_a0ba5c(
+    report: &mut crate::player::AbuseReport,
+    capacity: usize,
+    messages: &[(bool, crate::player::ChatMessage)],
+    wake: &mut dyn FnMut(),
+) {
+    // IDA 0xa0ba5c: fold messages through addMessage, push, wake the worker.
+    crate::player::reporter_add(report, capacity, messages, wake);
 }
 
 // 0xa0c044 — __ZL12writeMessageRKN3RBX7Network11AbuseReport7MessageEP10XmlElement
