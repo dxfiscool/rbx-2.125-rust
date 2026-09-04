@@ -6,6 +6,122 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+// --- rbx::placement_any<RBX::Region3> / typed_holder<T> model (IDA 0xc90c..0xe044) ---
+// A `placement_any<Region3>` cell is `{ holder, storage }`: `holder` points at the
+// per-T `typed_holder<T>` singleton `{ typeinfo, destruct_func, construct_func }`
+// (pseudo 0xc95c: `s[0] = &typeinfo; s[1] = destruct_func; ... = construct_func`).
+// Every instantiation in this batch stores a `CRenderSettings` int-enum, so the
+// inline storage is one `i32` word -- exactly what `construct_func` copies
+// (`*a2 = *result`, pseudo 0xc9c8) and what `operator=` assigns (`a1[1] = *a2`,
+// pseudo 0xc90c).
+use std::sync::LazyLock;
+
+/// IDA 0xc95c: `rbx::implementation::typed_holder<T>` singleton body.
+#[derive(Debug)]
+pub struct TypedHolder {
+    /// `typeinfo for T` name (`"N3RBX15CRenderSettings..."`, cf. pseudo 0xcaa4).
+    pub type_name: &'static str,
+    /// `typed_holder<T>::construct_func` (IDA 0xc9c8).
+    pub construct: fn(src: &i32, dst: &mut i32),
+    /// `typed_holder<T>::destruct_func` (IDA 0xc9d4; empty for these enums).
+    pub destruct: fn(storage: &mut i32),
+}
+
+/// IDA 0xc90c: `rbx::placement_any<RBX::Region3>` cell for the `CRenderSettings`
+/// int-enum instantiations covered here.
+#[derive(Debug, Default)]
+pub struct PlacementAnyCell {
+    holder: Option<&'static TypedHolder>,
+    storage: i32,
+}
+
+/// `rbx::bad_placement_any_cast` (thrown at pseudo 0xcaa4 through
+/// `boost::throw_exception`; this crate maps `boost::exception` to panics, cf.
+/// the `any_cast` cutover points in descriptor.rs).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, thiserror::Error)]
+#[error("rbx::bad_placement_any_cast")]
+pub struct BadPlacementAnyCast;
+
+fn typed_holder_init(type_name: &'static str) -> TypedHolder {
+    TypedHolder {
+        type_name,
+        construct: typed_holder_construct_impl,
+        destruct: typed_holder_destruct_impl,
+    }
+}
+
+/// IDA 0xc9c8: `if (a2) { result = *result; *a2 = result; }` -- copy one word.
+/// The null-destination guard has no Rust equivalent; callers pass `&mut`.
+fn typed_holder_construct_impl(src: &i32, dst: &mut i32) {
+    *dst = *src;
+}
+/// IDA 0xc9d4: `BX LR` -- empty; these enums are trivially destructible.
+fn typed_holder_destruct_impl(_storage: &mut i32) {}
+static HOLDER_RESOLUTION_PRESET: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings16ResolutionPresetE"));
+static HOLDER_QUALITY_LEVEL: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings12QualityLevelE"));
+static HOLDER_SHADOW_MODE: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings10ShadowModeE"));
+static HOLDER_ANTIALIASING_MODE: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings16AntialiasingModeE"));
+static HOLDER_FRAME_RATE_MANAGER_MODE: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings20FrameRateManagerModeE"));
+
+/// IDA 0xc95c: function-local `static s` with `__cxa_guard_acquire`/`release`
+/// one-time fill; `LazyLock` is the Rust equivalent.
+fn holder_resolution_preset() -> &'static TypedHolder {
+    &HOLDER_RESOLUTION_PRESET
+}
+
+fn holder_quality_level() -> &'static TypedHolder {
+    &HOLDER_QUALITY_LEVEL
+}
+
+fn holder_shadow_mode() -> &'static TypedHolder {
+    &HOLDER_SHADOW_MODE
+}
+
+fn holder_antialiasing_mode() -> &'static TypedHolder {
+    &HOLDER_ANTIALIASING_MODE
+}
+
+fn holder_frame_rate_manager_mode() -> &'static TypedHolder {
+    &HOLDER_FRAME_RATE_MANAGER_MODE
+}
+
+/// IDA 0xc90c: `operator=<T>`: same-holder short path (`a1[1] = *a2`); else
+/// destroy through the old holder (`v4[1](a1 + 1)`), clear (`*a1 = 0`), then
+/// assign and rebind (`a1[1] = *a2; *a1 = &s`).
+fn placement_any_assign(cell: &mut PlacementAnyCell, holder: &'static TypedHolder, value: i32) {
+    if matches!(cell.holder, Some(h) if std::ptr::eq(h, holder)) {
+        cell.storage = value;
+        return;
+    }
+    if let Some(h) = cell.holder.take() {
+        (h.destruct)(&mut cell.storage);
+    }
+    cell.storage = value;
+    cell.holder = Some(holder);
+}
+
+/// IDA 0xcaa4: pointer-compare the holder typeinfo, fall back to the
+/// `"N3RBX..."` name compare; mismatch throws `bad_placement_any_cast`.
+/// Returns the payload address (`return a1 + 1`).
+fn placement_any_cast<'a>(cell: &'a PlacementAnyCell, holder: &'static TypedHolder) -> &'a i32 {
+    match cell.holder {
+        Some(h) if std::ptr::eq(h, holder) || h.type_name == holder.type_name => &cell.storage,
+        _ => panic!("{} for {}", BadPlacementAnyCast, holder.type_name),
+    }
+}
+
+/// Opaque `RBX::Reflection::PropertyDescriptor` handle (IDA 0xb76c signal arg).
+/// Reflection only forwards it through the signal; mirrors the `InstanceHandle`
+/// precedent in descriptor.rs.
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Default)]
+pub struct PropertyDescriptorHandle {
+    pub id: u32,
+}
 
 // 0x850c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEEC2Ev
 // type: int __fastcall(int)
@@ -200,8 +316,17 @@ pub fn stub_0xb4d0() {
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xb76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::Prope")
+pub fn stub_0xb76c(
+    signal: &rbx_core::signal::Signal<SharedPtr<PropertyDescriptorHandle>>,
+    desc: &SharedPtr<PropertyDescriptorHandle>,
+) {
+    // IDA 0xb76c: `if (*a1)` null-signal guard (Rust references are non-null; an
+    // empty slot list simply fires nothing); `FLog::SignalPrints` trace;
+    // `signal::next` slot loop invoking each slot with the descriptor arg, then
+    // `intrusive_ptr_release` on the iterator. `Signal::fire` performs the same
+    // live-slot walk; `Arc` Drop covers the release.
+    // was: boost::signals -> rbx_core::signal::Signal.
+    signal.fire(SharedPtr::clone(desc));
 }
 
 // 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
@@ -574,29 +699,34 @@ pub fn stub_0xc76c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xc90c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_0xc90c() -> ! {
-    todo!("0xc90c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RB")
+pub fn stub_0xc90c(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xc90c: `operator=<ResolutionPreset>`; returns `a1`.
+    placement_any_assign(cell, holder_resolution_preset(), value);
+    cell
 }
 
 // 0xc95c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")]
-pub fn stub_0xc95c() -> ! {
-    todo!("0xc95c rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")
+pub fn stub_0xc95c() -> &'static TypedHolder {
+    // IDA 0xc95c: `singleton()` returns `&s`.
+    holder_resolution_preset()
 }
 
 // 0xc9c8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")]
-pub fn stub_0xc9c8() -> ! {
-    todo!("0xc9c8 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")
+pub fn stub_0xc9c8(src: &i32, dst: &mut i32) {
+    // IDA 0xc9c8: `construct_func`; copies one word when the destination is set.
+    (holder_resolution_preset().construct)(src, dst);
 }
 
 // 0xc9d4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")]
-pub fn stub_0xc9d4() -> ! {
-    todo!("0xc9d4 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")
+pub fn stub_0xc9d4(storage: &mut i32) {
+    // IDA 0xc9d4: `destruct_func`; empty body (`BX LR`).
+    (holder_resolution_preset().destruct)(storage);
 }
 
 // 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_
@@ -612,8 +742,9 @@ pub fn stub_0xc9d8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xcaa4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xcaa4() -> ! {
-    todo!("0xcaa4 RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(")
+pub fn stub_0xcaa4(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xcaa4: `any_cast<ResolutionPreset const&, Region3>`; returns `a1 + 1`.
+    placement_any_cast(cell, holder_resolution_preset())
 }
 
 // 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
@@ -647,29 +778,34 @@ pub fn stub_0xcd4c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xceec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_0xceec() -> ! {
-    todo!("0xceec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::C")
+pub fn stub_0xceec(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xceec: `operator=<QualityLevel>`; returns `a1`.
+    placement_any_assign(cell, holder_quality_level(), value);
+    cell
 }
 
 // 0xcf3c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")]
-pub fn stub_0xcf3c() -> ! {
-    todo!("0xcf3c rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")
+pub fn stub_0xcf3c() -> &'static TypedHolder {
+    // IDA 0xcf3c: `singleton()` returns `&s`.
+    holder_quality_level()
 }
 
 // 0xcfa8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")]
-pub fn stub_0xcfa8() -> ! {
-    todo!("0xcfa8 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")
+pub fn stub_0xcfa8(src: &i32, dst: &mut i32) {
+    // IDA 0xcfa8: `construct_func`; copies one word when the destination is set.
+    (holder_quality_level().construct)(src, dst);
 }
 
 // 0xcfb4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")]
-pub fn stub_0xcfb4() -> ! {
-    todo!("0xcfb4 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")
+pub fn stub_0xcfb4(storage: &mut i32) {
+    // IDA 0xcfb4: `destruct_func`; empty body (`BX LR`).
+    (holder_quality_level().destruct)(storage);
 }
 
 // 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_
@@ -685,8 +821,9 @@ pub fn stub_0xcfb8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xd084 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xd084() -> ! {
-    todo!("0xd084 RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::pla")
+pub fn stub_0xd084(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xd084: `any_cast<QualityLevel const&, Region3>`; returns `a1 + 1`.
+    placement_any_cast(cell, holder_quality_level())
 }
 
 // 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
@@ -720,29 +857,34 @@ pub fn stub_0xd28c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xd42c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings10ShadowModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_0xd42c() -> ! {
-    todo!("0xd42c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRe")
+pub fn stub_0xd42c(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xd42c: `operator=<ShadowMode>`; returns `a1`.
+    placement_any_assign(cell, holder_shadow_mode(), value);
+    cell
 }
 
 // 0xd47c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")]
-pub fn stub_0xd47c() -> ! {
-    todo!("0xd47c rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")
+pub fn stub_0xd47c() -> &'static TypedHolder {
+    // IDA 0xd47c: `singleton()` returns `&s`.
+    holder_shadow_mode()
 }
 
 // 0xd4e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")]
-pub fn stub_0xd4e8() -> ! {
-    todo!("0xd4e8 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")
+pub fn stub_0xd4e8(src: &i32, dst: &mut i32) {
+    // IDA 0xd4e8: `construct_func`; copies one word when the destination is set.
+    (holder_shadow_mode().construct)(src, dst);
 }
 
 // 0xd4f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")]
-pub fn stub_0xd4f4() -> ! {
-    todo!("0xd4f4 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")
+pub fn stub_0xd4f4(storage: &mut i32) {
+    // IDA 0xd4f4: `destruct_func`; empty body (`BX LR`).
+    (holder_shadow_mode().destruct)(storage);
 }
 
 // 0xd4f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_
@@ -758,8 +900,9 @@ pub fn stub_0xd4f8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xd5c4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xd5c4() -> ! {
-    todo!("0xd5c4 RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placeme")
+pub fn stub_0xd5c4(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xd5c4: `any_cast<ShadowMode const&, Region3>`; returns `a1 + 1`.
+    placement_any_cast(cell, holder_shadow_mode())
 }
 
 // 0xd6b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_
@@ -793,29 +936,34 @@ pub fn stub_0xd7cc(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xd96c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_0xd96c() -> ! {
-    todo!("0xd96c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RB")
+pub fn stub_0xd96c(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xd96c: `operator=<AntialiasingMode>`; returns `a1`.
+    placement_any_assign(cell, holder_antialiasing_mode(), value);
+    cell
 }
 
 // 0xd9bc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")]
-pub fn stub_0xd9bc() -> ! {
-    todo!("0xd9bc rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")
+pub fn stub_0xd9bc() -> &'static TypedHolder {
+    // IDA 0xd9bc: `singleton()` returns `&s`.
+    holder_antialiasing_mode()
 }
 
 // 0xda28 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")]
-pub fn stub_0xda28() -> ! {
-    todo!("0xda28 rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")
+pub fn stub_0xda28(src: &i32, dst: &mut i32) {
+    // IDA 0xda28: `construct_func`; copies one word when the destination is set.
+    (holder_antialiasing_mode().construct)(src, dst);
 }
 
 // 0xda34 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")]
-pub fn stub_0xda34() -> ! {
-    todo!("0xda34 rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")
+pub fn stub_0xda34(storage: &mut i32) {
+    // IDA 0xda34: `destruct_func`; empty body (`BX LR`).
+    (holder_antialiasing_mode().destruct)(storage);
 }
 
 // 0xda38 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE13convertToItemERKS3_
@@ -831,8 +979,9 @@ pub fn stub_0xda38(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xdb04 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xdb04() -> ! {
-    todo!("0xdb04 RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(")
+pub fn stub_0xdb04(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xdb04: `any_cast<AntialiasingMode const&, Region3>`; returns `a1 + 1`.
+    placement_any_cast(cell, holder_antialiasing_mode())
 }
 
 // 0xdbf4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueERKNS_4NameERS3_
@@ -866,29 +1015,34 @@ pub fn stub_0xdd0c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xdeac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode>(RBX::CRenderSettings::FrameRateManagerMode const&)")]
-pub fn stub_0xdeac() -> ! {
-    todo!("0xdeac rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode")
+pub fn stub_0xdeac(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xdeac: `operator=<FrameRateManagerMode>`; returns `a1`.
+    placement_any_assign(cell, holder_frame_rate_manager_mode(), value);
+    cell
 }
 
 // 0xdefc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")]
-pub fn stub_0xdefc() -> ! {
-    todo!("0xdefc rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")
+pub fn stub_0xdefc() -> &'static TypedHolder {
+    // IDA 0xdefc: `singleton()` returns `&s`.
+    holder_frame_rate_manager_mode()
 }
 
 // 0xdf68 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")]
-pub fn stub_0xdf68() -> ! {
-    todo!("0xdf68 rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")
+pub fn stub_0xdf68(src: &i32, dst: &mut i32) {
+    // IDA 0xdf68: `construct_func`; copies one word when the destination is set.
+    (holder_frame_rate_manager_mode().construct)(src, dst);
 }
 
 // 0xdf74 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")]
-pub fn stub_0xdf74() -> ! {
-    todo!("0xdf74 rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")
+pub fn stub_0xdf74(storage: &mut i32) {
+    // IDA 0xdf74: `destruct_func`; empty body (`BX LR`).
+    (holder_frame_rate_manager_mode().destruct)(storage);
 }
 
 // 0xdf78 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE13convertToItemERKS3_
@@ -904,8 +1058,9 @@ pub fn stub_0xdf78(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xe044 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings20FrameRateManagerModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::FrameRateManagerMode const& rbx::any_cast<RBX::CRenderSettings::FrameRateManagerMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xe044() -> ! {
-    todo!("0xe044 RBX::CRenderSettings::FrameRateManagerMode const& rbx::any_cast<RBX::CRenderSettings::FrameRateManagerMode const&,RBX::R")
+pub fn stub_0xe044(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xe044: `any_cast<FrameRateManagerMode const&, Region3>`; returns `a1 + 1`.
+    placement_any_cast(cell, holder_frame_rate_manager_mode())
 }
 
 // 0xe134 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueERKNS_4NameERS3_
@@ -1070,4 +1225,83 @@ pub fn stub_0xebb4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
 pub fn stub_0xec30() {
     // IDA 0xec30: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
+}
+
+#[cfg(test)]
+mod holder_any_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    #[test]
+    fn singleton_is_stable_and_typed() {
+        assert!(std::ptr::eq(holder_resolution_preset(), stub_0xc95c()));
+        assert_eq!(holder_quality_level().type_name, "N3RBX15CRenderSettings12QualityLevelE");
+        assert!(std::ptr::eq(holder_shadow_mode(), stub_0xd47c()));
+    }
+
+    #[test]
+    fn assign_cast_round_trip_per_type() {
+        let mut cell = PlacementAnyCell::default();
+        stub_0xc90c(&mut cell, 7);
+        assert_eq!(*stub_0xcaa4(&cell), 7);
+        stub_0xc90c(&mut cell, 9);
+        assert_eq!(*stub_0xcaa4(&cell), 9);
+        let mut other = PlacementAnyCell::default();
+        stub_0xd42c(&mut other, 3);
+        assert_eq!(*stub_0xd5c4(&other), 3);
+    }
+
+    #[test]
+    fn rebind_across_types_replaces_holder() {
+        let mut cell = PlacementAnyCell::default();
+        stub_0xc90c(&mut cell, 1);
+        stub_0xdeac(&mut cell, 2);
+        assert_eq!(*stub_0xe044(&cell), 2);
+    }
+
+    #[test]
+    #[should_panic]
+    fn cast_wrong_type_panics() {
+        let mut cell = PlacementAnyCell::default();
+        stub_0xc90c(&mut cell, 1);
+        let _ = stub_0xd084(&cell);
+    }
+
+    #[test]
+    #[should_panic]
+    fn cast_empty_cell_panics() {
+        let cell = PlacementAnyCell::default();
+        let _ = stub_0xcaa4(&cell);
+    }
+
+    #[test]
+    fn construct_copies_and_destruct_is_noop() {
+        let mut dst = 0;
+        stub_0xc9c8(&5, &mut dst);
+        assert_eq!(dst, 5);
+        stub_0xc9d4(&mut dst);
+        assert_eq!(dst, 5);
+        let mut d2 = 0;
+        stub_0xdf68(&11, &mut d2);
+        assert_eq!(d2, 11);
+        stub_0xdf74(&mut d2);
+        assert_eq!(d2, 11);
+    }
+
+    #[test]
+    fn signal_emit_reaches_slot() {
+        let signal = rbx_core::signal::Signal::new();
+        let seen = std::sync::Arc::new(AtomicI32::new(-1));
+        let seen_in = std::sync::Arc::clone(&seen);
+        let slot = SharedPtr::new(move |desc: SharedPtr<PropertyDescriptorHandle>| {
+            seen_in.store(desc.id as i32, Ordering::SeqCst);
+        });
+        signal.connect(SharedPtr::clone(&slot));
+        // `Signal` keeps weak refs (intrusive_ptr semantics); the strong `slot`
+        // owner must outlive the fire, as in `signal.rs`'s own tests.
+        let _keepalive = slot;
+        let desc = SharedPtr::new(PropertyDescriptorHandle { id: 42 });
+        stub_0xb76c(&signal, &desc);
+        assert_eq!(seen.load(Ordering::SeqCst), 42);
+    }
 }
