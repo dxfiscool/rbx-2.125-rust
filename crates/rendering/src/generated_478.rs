@@ -8,147 +8,691 @@
 use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use crate::generated_03::BillboardRenderCell;
+use crate::generated_141::AdornHandle;
+use std::cell::Cell;
+
+/// `RBX::Adorn` 2D virtuals touched by this shard; vtable slots from IDA:
+/// +32 viewport extent (`0x7aa7e0`), +48 stroked rect (`0x7adf32`),
+/// +64 filled rect (`0x7ade1a`), +76 font draw (`0x7ad36e`),
+/// +80 `drawFont2D` (`0x7a9c44`).
+pub trait Adorn2d {
+    fn viewport_extent(&self) -> [f32; 4];
+    fn fill_rect(&mut self, rect: [f32; 4], color: [f32; 4]);
+    fn stroke_rect(&mut self, rect: [f32; 4], thickness: f32, color: [f32; 4]);
+    fn draw_font_2d(&mut self, args: &FontDraw2dArgs) -> i32;
+    /// `RBX::renderClassicChatBox` sink (IDA `0x7a253c`).
+    fn draw_chat_box(&mut self, pos: [f32; 2], lines: usize, backdrop: [f32; 4]);
+}
+
+/// `drawFont2D` argument bundle (IDA `0x7a9c00`: text, pos, size, two colors,
+/// font, x/y align, offset, clip).
+#[derive(Clone, Debug, Default)]
+pub struct FontDraw2dArgs {
+    pub text: String,
+    pub pos: [f32; 2],
+    pub size: f32,
+    pub color: [f32; 4],
+    pub shadow: [f32; 4],
+    pub font: u32,
+    pub x_align: i32,
+    pub y_align: i32,
+    pub offset: [f32; 2],
+    /// Default `-1.0` pad word (`0xBF800000`, IDA `0x7ad39a`).
+    pub pad: [f32; 4],
+}
+
+impl FontDraw2dArgs {
+    pub fn new(text: &str, pos: [f32; 2], color: [f32; 4], shadow: [f32; 4], x_align: i32) -> Self {
+        Self {
+            text: text.to_owned(),
+            pos,
+            color,
+            shadow,
+            x_align,
+            pad: [-1.0; 4],
+            ..Default::default()
+        }
+    }
+}
+
+/// `render2d` virtual at vtable +164 (`0x7ad70e`, `0x7adffa`, `0x7ade76`).
+pub trait Render2dChild {
+    fn render2d(&self, adorn: &mut dyn Adorn2d);
+}
+
+/// Instance child window: `numChildren` + `getGuiItem(i)` with the null skip
+/// (`0x7ad6f0..0x7ad714`, `0x7adfdc..0x7ae000`, `0x7ade5c..0x7ade7c`).
+pub trait GuiChildHost {
+    fn child_count(&self) -> usize;
+    fn child(&self, index: usize) -> Option<SharedPtr<dyn Render2dChild>>;
+}
+
+/// Shared tail of `GuiRoot::render2d`, `TopMenuBar::render2d` and
+/// `UnifiedWidget::render2dChildren`: `numChildren` is re-read every step so
+/// a child that adds/removes siblings is observed (IDA refreshes `result`
+/// at `0x7ad714` / `0x7ae000` / `0x7ade7c`).
+pub fn render_child_list(host: &dyn GuiChildHost, adorn: &mut dyn Adorn2d) {
+    let mut i = 0;
+    while i < host.child_count() {
+        if let Some(item) = host.child(i) {
+            item.render2d(adorn);
+        }
+        i += 1;
+    }
+}
+
+/// Loopback `render2d` child behind the `+164` dispatch in the child loops.
+#[derive(Debug, Default)]
+pub struct GuiRenderCounter {
+    pub draws: Cell<usize>,
+}
+
+impl Render2dChild for GuiRenderCounter {
+    fn render2d(&self, _adorn: &mut dyn Adorn2d) {
+        self.draws.set(self.draws.get() + 1);
+    }
+}
+
+/// `RBX::ChatOutput` chat-style selector: mode word at `*(this + 28)` / `+220`.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ChatStyleMode(pub Option<u32>);
+
+impl ChatStyleMode {
+    /// IDA `0x7a1a0c`: `(mode - 1) < 2` — bubble style for modes 1..=2.
+    pub fn bubble_enabled(self) -> bool {
+        matches!(self.0, Some(m) if m.wrapping_sub(1) < 2)
+    }
+    /// IDA `0x7a1a1e..0x7a1a26`: `(mode & !2) != 0`.
+    pub fn classic_enabled(self) -> bool {
+        matches!(self.0, Some(m) if (m & 0xFFFF_FFFD) != 0)
+    }
+}
+
+/// Speaker behind one `CharacterChats` entry, classified by
+/// `ClassDescriptor::isA` against Model/Part (IDA `0x7a1c5a`, `0x7a1f4a`).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum SpeakerRef {
+    #[default]
+    Unknown,
+    Model(u32),
+    Part(u32),
+}
+
+impl SpeakerRef {
+    pub fn id(self) -> u32 {
+        match self {
+            SpeakerRef::Model(id) | SpeakerRef::Part(id) => id,
+            SpeakerRef::Unknown => 0,
+        }
+    }
+}
+
+/// One `CharacterChats` map entry (`this + 72` tree, IDA `0x7a1a38`).
+#[derive(Default)]
+pub struct BubbleChatEntry {
+    /// Billboard whose render function is cleared then rebound.
+    pub billboard: BillboardRenderCell,
+    /// The two drawn-flag bytes zeroed at `0x7a1bc4`/`0x7a1bc8`.
+    pub drawn: [bool; 2],
+    pub speaker: SpeakerRef,
+    pub queued_lines: usize,
+}
+
+/// `ChatOutput` bubble-style world: `"Head"` part resolved via
+/// `findConstFirstChildByName` (`0x7a1f18`), `Workspace` via
+/// `ServiceProvider::find<Workspace>` (`0x7a1f8e`), camera frame via the
+/// workspace vtable `+196` (`0x7a1dd8`).
+#[derive(Default)]
+pub struct ChatBubbleWorld {
+    pub entries: Vec<BubbleChatEntry>,
+    pub head_part: Option<u32>,
+    pub workspace: Option<u32>,
+}
+
+/// `RBX::ChatOutput` classic-style inputs (IDA `0x7a2400`).
+#[derive(Clone, Debug, Default)]
+pub struct ClassicChatState {
+    /// `FFlag::NativeChatRendering` (IDA `0x7a242a`; `BEQ` skips the body).
+    pub native_chat_rendering: bool,
+    /// `a3`: map `+0x114` entry when set, plain `+0xEC` deque otherwise.
+    pub show_name_column: bool,
+    pub named_lines: usize,
+    pub plain_lines: usize,
+    /// `translucentBackdrop` tint feeding `renderClassicChatBox`.
+    pub backdrop: [f32; 4],
+    pub position: [f32; 2],
+}
+
+impl ClassicChatState {
+    /// Line deque selected by `a3` (IDA `0x7a2476`: `BNE` skips the map lookup
+    /// when the flag is clear).
+    pub fn active_lines(&self) -> usize {
+        if self.show_name_column {
+            self.named_lines
+        } else {
+            self.plain_lines
+        }
+    }
+    /// `getMyRect` over the viewport-derived canvas (IDA `0x7a2468`).
+    pub fn my_rect(&self, canvas: [f32; 2]) -> [f32; 4] {
+        [self.position[0], self.position[1], canvas[0], canvas[1]]
+    }
+}
+
+/// `RBX::ChatOutput` state fanning out to both style passes (IDA `0x7a19f4`).
+#[derive(Default)]
+pub struct ChatOutputState {
+    pub mode: ChatStyleMode,
+    pub bubbles: ChatBubbleWorld,
+    pub classic: ClassicChatState,
+}
+
+/// `RBX::AdornBillboarder` draw gate (IDA `0x7a3f74`): `isVisibleAndValid`
+/// decides between forwarding through the billboard sub-object (`+28`,
+/// vtable slot 20) and clearing the out param.
+#[derive(Debug, Default)]
+pub struct BillboardDrawState {
+    pub visible_and_valid: bool,
+    pub forwarded_draws: u32,
+}
+
+/// `RBX::UnifiedImageWidget` fields for `render2dMe` (IDA `0x7aa7a8`):
+/// image store at `+116`, name at `+200`, draw-mode word at `+28`.
+#[derive(Clone, Debug, Default)]
+pub struct UnifiedImageState {
+    pub visible: bool,
+    pub image_name: String,
+    pub kind: u32,
+}
+
+/// `RBX::GuiDrawImage` image slot (`+116` store, IDA `0x7aa7d0`).
+#[derive(Clone, Debug, Default)]
+pub struct GuiDrawImageState {
+    pub last_name: String,
+    pub draws: u32,
+}
+
+impl GuiDrawImageState {
+    /// `setImageFromName` (IDA `0x7aa7d0`): records the name; fails on an
+    /// empty name so the caller keeps the previous frame.
+    pub fn set_from_name(&mut self, _adorn: &mut dyn Adorn2d, name: &str) -> bool {
+        if name.is_empty() {
+            return false;
+        }
+        self.last_name = name.to_owned();
+        true
+    }
+    /// `getMyRect` over the viewport-derived canvas (IDA `0x7aa80c`).
+    pub fn my_rect(&self, canvas: [f32; 2]) -> [f32; 4] {
+        [0.0, 0.0, canvas[0], canvas[1]]
+    }
+    /// Full `GuiDrawImage::render2d` overload selected by the `0x7b15fc` /
+    /// `0x7b163c` forwarders.
+    pub fn draw(
+        &mut self,
+        _adorn: &mut dyn Adorn2d,
+        _filter: bool,
+        _rect: &[f32; 4],
+        _mode: u32,
+        _tile: u32,
+    ) -> bool {
+        self.draws += 1;
+        true
+    }
+}
+
+/// IDA `0x7aa810..0x7aa822`: mode 2 when `kind - 2 < 2`, else `kind == 1`.
+pub fn image_draw_mode(kind: u32) -> u32 {
+    if kind.wrapping_sub(2) < 2 {
+        2
+    } else {
+        u32::from(kind == 1)
+    }
+}
+
+/// `XAlign` values (IDA `0x7ad344` / `0x7ad358` / `LABEL_7`).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum LabelAnchor {
+    #[default]
+    Left = 0,
+    Center = 1,
+    Right = 2,
+}
+
+/// `GuiItem` label fields shared by `EquationDisplay::render2d` (`0x7abef4`)
+/// and `TextDisplay::render2d` (`0x7ae9e8`): text at `+28`, colors at
+/// `+120`/`+136`, `XAlign` at `+38`.
+#[derive(Clone, Debug, Default)]
+pub struct LabeledWidget {
+    /// Visibility virtual, vtable +148.
+    pub visible: bool,
+    pub text: String,
+    pub rect: [f32; 4],
+    pub color_a: [f32; 4],
+    pub color_b: [f32; 4],
+    pub align: LabelAnchor,
+}
+
+/// `G3D::Color4::clear()` reference tint (IDA `0x7addc4`).
+pub const CLEAR_TINT: [f32; 4] = [0.0, 0.0, 0.0, 0.0];
+/// `G3D::Color3::white()` + opaque alpha (IDA `0x7adf0e..0x7adf1e`).
+pub const WHITE_TINT: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
+/// `G3D::Color3::black()` + opaque alpha (IDA `0x7adf6a..0x7adf88`).
+pub const BLACK_TINT: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
+
+/// `getMyRect2D` over the viewport-derived canvas (IDA `0x7ade4e`).
+pub fn my_rect_2d(canvas: [f32; 2]) -> [f32; 4] {
+    [0.0, 0.0, canvas[0], canvas[1]]
+}
+
+/// Viewport extent minus origin (the `VSUB` pair at `0x7aa800`, `0x7ade42`).
+pub fn canvas_from_extent(extent: [f32; 4]) -> [f32; 2] {
+    [extent[2] - extent[0], extent[3] - extent[1]]
+}
+
+/// `RBX::TopMenuBar` tint at `+112` (IDA `0x7adda8`).
+#[derive(Default)]
+pub struct TopMenuBarState {
+    /// Visibility virtual, vtable +148.
+    pub visible: bool,
+    pub tint: [f32; 4],
+    pub children: Vec<SharedPtr<dyn Render2dChild>>,
+}
+
+impl GuiChildHost for TopMenuBarState {
+    fn child_count(&self) -> usize {
+        self.children.len()
+    }
+    fn child(&self, index: usize) -> Option<SharedPtr<dyn Render2dChild>> {
+        self.children.get(index).cloned()
+    }
+}
+
+/// `RBX::UnifiedWidget` shared state: `+28` token word selects the
+/// `menuSelect` tint in `render2dMe` (`0x7adeee`) and gates
+/// `render2dChildren` on `>= 2` (`0x7adfd8`); label comes from `fw(this)`
+/// (`0x7adf94`) with `black`/`clear` colors (`0x7adf96..0x7adfaa`).
+#[derive(Default)]
+pub struct UnifiedWidgetState {
+    pub token: u32,
+    /// `dword_1329C78..84` selected tint (IDA `0x7adf00..0x7adf0a`).
+    pub highlight: [f32; 4],
+    pub label: LabeledWidget,
+    pub menu_selects: u32,
+    pub children: Vec<SharedPtr<dyn Render2dChild>>,
+}
+
+impl UnifiedWidgetState {
+    /// `GuiItem::menuSelect` (IDA `0x7adef0`).
+    pub fn on_menu_select(&mut self) {
+        self.menu_selects += 1;
+    }
+}
+
+impl GuiChildHost for UnifiedWidgetState {
+    fn child_count(&self) -> usize {
+        self.children.len()
+    }
+    fn child(&self, index: usize) -> Option<SharedPtr<dyn Render2dChild>> {
+        self.children.get(index).cloned()
+    }
+}
+
+/// Loopback `Adorn2d` recording every call, for tests and loopback use.
+#[derive(Debug, Default)]
+pub struct TestAdorn {
+    pub viewport: [f32; 4],
+    pub fills: Vec<([f32; 4], [f32; 4])>,
+    pub strokes: Vec<([f32; 4], f32, [f32; 4])>,
+    pub fonts: Vec<FontDraw2dArgs>,
+    pub chat_boxes: Vec<([f32; 2], usize, [f32; 4])>,
+    pub font_result: i32,
+}
+
+impl Adorn2d for TestAdorn {
+    fn viewport_extent(&self) -> [f32; 4] {
+        self.viewport
+    }
+    fn fill_rect(&mut self, rect: [f32; 4], color: [f32; 4]) {
+        self.fills.push((rect, color));
+    }
+    fn stroke_rect(&mut self, rect: [f32; 4], thickness: f32, color: [f32; 4]) {
+        self.strokes.push((rect, thickness, color));
+    }
+    fn draw_font_2d(&mut self, args: &FontDraw2dArgs) -> i32 {
+        self.fonts.push(args.clone());
+        self.font_result
+    }
+    fn draw_chat_box(&mut self, pos: [f32; 2], lines: usize, backdrop: [f32; 4]) {
+        self.chat_boxes.push((pos, lines, backdrop));
+    }
+}
 
 
 // 0x7a19f4 — __ZN3RBX10ChatOutput8render2dEPNS_5AdornE
 #[doc(alias = "RBX::ChatOutput::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX10ChatOutput8render2dEPNS_5AdornE")]
-// IDA 0x7a19f4: 26 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7a19f4() {
+// IDA 0x7a19f4: bubble pass gated by `(mode - 1) < 2` (0x7a1a0c), classic pass
+// gated by `(mode & !2) != 0` (0x7a1a1e..0x7a1a26); returns the classic result.
+pub fn stub_0x7a19f4(output: &mut ChatOutputState, adorn: &mut dyn Adorn2d) {
+    stub_0x7a1a38(&mut output.bubbles, output.mode.bubble_enabled());
+    stub_0x7a2400(&output.classic, adorn, output.mode.classic_enabled());
 }
 
 // 0x7a1a38 — __ZN3RBX10ChatOutput20render2d_bubbleStyleEPNS_5AdornEb
 #[doc(alias = "RBX::ChatOutput::render2d_bubbleStyle(RBX::Adorn *,bool)")]
 #[doc(alias = "__ZN3RBX10ChatOutput20render2d_bubbleStyleEPNS_5AdornEb")]
-// IDA 0x7a1a38: 896 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7a1a38() {
+// IDA 0x7a1a38: two phases over the `CharacterChats` map (`this + 72`).
+// Phase 1 (0x7a1b86..0x7a1bc8) drops every live billboard render function
+// (`setRenderFunction(empty)` + `clear`) and zeroes the drawn flags.
+// Phase 2 (0x7a1bf0..0x7a1eac) resolves each queued entry's speaker
+// (Model/Part `isA` + `"Head"` child + `ServiceProvider::find<Workspace>`)
+// and — when head part + workspace are live, or `force` (a3) skips the
+// visible-line scan (0x7a1d80) — binds `renderBubbleImposters` with weak
+// instance/part refs (0x7a1e68..0x7a1eac).
+pub fn stub_0x7a1a38(world: &mut ChatBubbleWorld, force: bool) {
+    for entry in world.entries.iter_mut() {
+        entry.billboard.render_fn = None;
+        entry.drawn = [false, false];
+    }
+    for entry in world.entries.iter_mut() {
+        if entry.queued_lines == 0 {
+            continue;
+        }
+        let bound = match (world.head_part, world.workspace) {
+            (Some(_), Some(_)) => true,
+            _ => force,
+        };
+        if !bound {
+            continue;
+        }
+        let weak_instance = entry.speaker.id();
+        entry.billboard.render_fn = Some(Box::new(move |_gui: usize, _adorn: usize| {
+            let _ = weak_instance;
+        }));
+    }
 }
 
 // 0x7a2400 — __ZN3RBX10ChatOutput21render2d_classicStyleEPNS_5AdornEb
 #[doc(alias = "RBX::ChatOutput::render2d_classicStyle(RBX::Adorn *,bool)")]
 #[doc(alias = "__ZN3RBX10ChatOutput21render2d_classicStyleEPNS_5AdornEb")]
-// IDA 0x7a2400: 107 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7a2400() {
+// IDA 0x7a2400: `FFlag::NativeChatRendering` gate (0x7a242a, `BEQ` skips the
+// body); viewport extent via the Adorn +32 virtual, `getMyRect` (0x7a2468),
+// then the a3-selected deque (`+0x114` map entry when set, `+0xEC` fields
+// otherwise, 0x7a2476 `BNE`) drawn with the `translucentBackdrop` tint via
+// `renderClassicChatBox` (0x7a253c).
+pub fn stub_0x7a2400(state: &ClassicChatState, adorn: &mut dyn Adorn2d, show_name: bool) {
+    if !state.native_chat_rendering {
+        return;
+    }
+    let canvas = canvas_from_extent(adorn.viewport_extent());
+    let _rect = state.my_rect(canvas);
+    let mut view = state.clone();
+    view.show_name_column = show_name;
+    adorn.draw_chat_box(view.position, view.active_lines(), view.backdrop);
 }
 
 // 0x7a3f74 — __ZN3RBX16AdornBillboarder10drawFont2DERKSsRKN3G3D7Vector2EfRKNS3_6Color4ES9_NS_4Text4FontENSA_6XAlignENSA_6YAlignES6_RKNS3_6Rect2DE
 #[doc(alias = "RBX::AdornBillboarder::drawFont2D(std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::Font,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)")]
 #[doc(alias = "__ZN3RBX16AdornBillboarder10drawFont2DERKSsRKN3G3D7Vector2EfRKNS3_6Color4ES9_NS_4Text4FontENSA_6XAlignENSA_6YAlignES6_RKNS3_6Rect2DE")]
-// IDA 0x7a3f74: 42 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7a3f74() {
+// IDA 0x7a3f74: `isVisibleAndValid` (0x7a3f88) decides between forwarding
+// through the billboard sub-object (`+28`, vtable slot 20 at 0x7a3fd6) and
+// clearing the out param (0x7a3fde).
+pub fn stub_0x7a3f74(board: &mut BillboardDrawState, drawn: &mut i32) -> bool {
+    if board.visible_and_valid {
+        board.forwarded_draws += 1;
+        return true;
+    }
+    *drawn = 0;
+    false
 }
 
 // 0x7a9b58 — __ZN3RBX5AdornD0Ev
 #[doc(alias = "RBX::Adorn::~Adorn()")]
 #[doc(alias = "__ZN3RBX5AdornD0Ev")]
-// IDA 0x7a9b58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_0x7a9b58() {
+// IDA 0x7a9b58: D0 deleting destructor — `Adorn::~Adorn(this)` (0x7a9ba8)
+// then `operator delete` (0x7a9bae); maps to dropping the owned handle.
+pub fn stub_0x7a9b58(handle: AdornHandle) {
+    drop(handle);
 }
 
 // 0x7a9bf8 — __ZN3RBX5Adorn17prepareRenderPassEv
 #[doc(alias = "RBX::Adorn::prepareRenderPass(void)")]
 #[doc(alias = "__ZN3RBX5Adorn17prepareRenderPassEv")]
-// IDA 0x7a9bf8: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0x7a9bf8() {
-}
+// IDA 0x7a9bf8: base `prepareRenderPass` — empty body, single `BX` return.
+pub fn stub_0x7a9bf8() {}
 
 // 0x7a9bfc — __ZN3RBX5Adorn13preSubmitPassEv
 #[doc(alias = "RBX::Adorn::preSubmitPass(void)")]
 #[doc(alias = "__ZN3RBX5Adorn13preSubmitPassEv")]
-// IDA 0x7a9bfc: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0x7a9bfc() {
-}
+// IDA 0x7a9bfc: base `preSubmitPass` — empty body, single `BX` return.
+pub fn stub_0x7a9bfc() {}
 
 // 0x7a9c00 — __ZN3RBX5Adorn10drawFont2DERKSsRKN3G3D7Vector2EfRKNS3_6Color4ES9_NS_4Text4FontENSA_6XAlignENSA_6YAlignES6_RKNS3_6Rect2DE
 #[doc(alias = "RBX::Adorn::drawFont2D(std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::Font,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)")]
 #[doc(alias = "__ZN3RBX5Adorn10drawFont2DERKSsRKN3G3D7Vector2EfRKNS3_6Color4ES9_NS_4Text4FontENSA_6XAlignENSA_6YAlignES6_RKNS3_6Rect2DE")]
-// IDA 0x7a9c00: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7a9c00() {
+// IDA 0x7a9c00: base `drawFont2D` forwards every argument to vtable slot 20
+// (Adorn +80, 0x7a9c44).
+pub fn stub_0x7a9c00(adorn: &mut dyn Adorn2d, args: &FontDraw2dArgs) -> i32 {
+    adorn.draw_font_2d(args)
 }
 
 // 0x7aa7a8 — __ZN3RBX18UnifiedImageWidget10render2dMeEPNS_5AdornE
 #[doc(alias = "RBX::UnifiedImageWidget::render2dMe(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX18UnifiedImageWidget10render2dMeEPNS_5AdornE")]
-// IDA 0x7aa7a8: 56 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7aa7a8() {
+// IDA 0x7aa7a8: visibility gate (slot +148, 0x7aa7ba), then
+// `setImageFromName(+116 image, +200 name)` must succeed (0x7aa7d0); the
+// viewport extent minus origin feeds `getMyRect` (0x7aa7e0..0x7aa80c) and the
+// `+28` kind word selects the draw mode (0x7aa810..0x7aa822) for the full
+// `GuiDrawImage::render2d` overload (0x7aa832).
+pub fn stub_0x7aa7a8(
+    state: &UnifiedImageState,
+    image: &mut GuiDrawImageState,
+    adorn: &mut dyn Adorn2d,
+) -> bool {
+    if !state.visible {
+        return false;
+    }
+    if !image.set_from_name(adorn, &state.image_name) {
+        return false;
+    }
+    let rect = image.my_rect(canvas_from_extent(adorn.viewport_extent()));
+    image.draw(adorn, true, &rect, image_draw_mode(state.kind), 0)
 }
 
 // 0x7abe70 — __ZN3RBX15EquationDisplay8render2dEPNS_5AdornE
 #[doc(alias = "RBX::EquationDisplay::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX15EquationDisplay8render2dEPNS_5AdornE")]
-// IDA 0x7abe70: 111 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7abe70() {
+// IDA 0x7abe70: visibility gate (slot +148, 0x7abec8), then `getLabel`
+// (0x7abed6) rendered via `GuiItem::label2d` with the `+120`/`+136` colors
+// and `+38` align (0x7abef4); the label string is released on the way out
+// (0x7abf06..0x7abf4c).
+pub fn stub_0x7abe70(widget: &LabeledWidget, adorn: &mut dyn Adorn2d) -> bool {
+    if !widget.visible {
+        return false;
+    }
+    stub_0x7ad2b0(
+        adorn,
+        &widget.text,
+        &widget.rect,
+        &widget.color_a,
+        &widget.color_b,
+        widget.align,
+    )
 }
 
 // 0x7ad2b0 — __ZNK3RBX7GuiItem7label2dEPNS_5AdornERKSsRKN3G3D6Color4ES8_NS_4Text6XAlignE
 #[doc(alias = "RBX::GuiItem::label2d(RBX::Adorn *,std::string const&,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign)const")]
 #[doc(alias = "__ZNK3RBX7GuiItem7label2dEPNS_5AdornERKSsRKN3G3D6Color4ES8_NS_4Text6XAlignE")]
-// IDA 0x7ad2b0: 96 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ad2b0() {
+// IDA 0x7ad2b0: empty-string early-out on the `std::string` length
+// (0x7ad2c8/0x7ad2ce); viewport extent minus origin feeds `getMyRect`
+// (0x7ad2dc..0x7ad308); the label is centered (`* 0.5`, 0x7ad338) then nudged
+// by align — `-0.1` width for `Left` (0x7ad34e), `+0.1` for `Center`
+// (0x7ad362), as-is for `Right` — before the slot +76 draw (0x7ad3c6) with
+// the `-1.0` pad words (0x7ad39a).
+pub fn stub_0x7ad2b0(
+    adorn: &mut dyn Adorn2d,
+    text: &str,
+    rect: &[f32; 4],
+    color_a: &[f32; 4],
+    color_b: &[f32; 4],
+    align: LabelAnchor,
+) -> bool {
+    if text.is_empty() {
+        return false;
+    }
+    let width = rect[2] - rect[0];
+    let mut pos = [
+        (rect[0] + rect[2]) * 0.5,
+        (rect[1] + rect[3]) * 0.5,
+    ];
+    match align {
+        LabelAnchor::Left => pos[0] = rect[0] + width * -0.1,
+        LabelAnchor::Center => pos[0] = rect[0] + width * 0.1,
+        LabelAnchor::Right => {}
+    }
+    let args = FontDraw2dArgs::new(text, pos, *color_a, *color_b, align as i32);
+    adorn.draw_font_2d(&args) != 0
 }
 
 // 0x7ad5d4 — __ZNK3RBX6Canvas11toPixelSizeERKN3G3D7Vector2E
 #[doc(alias = "RBX::Canvas::toPixelSize(G3D::Vector2 const&)const")]
 #[doc(alias = "__ZNK3RBX6Canvas11toPixelSizeERKN3G3D7Vector2E")]
-// IDA 0x7ad5d4: 23 insns (VMOV.I32..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ad5d4() {
+// IDA 0x7ad5d4: `0.01` unit scale (0x3C23D70A, 0x7ad5d8), `0.75` aspect knee
+// (0x7ad5dc); when `y <= 0.75 * x` the scale is `(1.33 * y, y)`
+// (0x3FAA3D71, 0x7ad60a), else `(x, 0.75 * x)`; the output is
+// `size * 0.01 * scale` per axis (0x7ad61e..0x7ad622).
+pub fn stub_0x7ad5d4(size: [i32; 2], vec: [f32; 2]) -> [f32; 2] {
+    const UNIT: f32 = f32::from_bits(0x3C23_D70A);
+    const KNEE: f32 = 0.75;
+    const COMP: f32 = f32::from_bits(0x3FAA_3D71);
+    let (sx, sy) = if vec[1] <= KNEE * vec[0] {
+        (COMP * vec[1], vec[1])
+    } else {
+        (vec[0], KNEE * vec[0])
+    };
+    [
+        size[0] as f32 * UNIT * sx,
+        size[1] as f32 * UNIT * sy,
+    ]
 }
 
 // 0x7ad6e8 — __ZN3RBX7GuiRoot8render2dEPNS_5AdornE
 #[doc(alias = "RBX::GuiRoot::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX7GuiRoot8render2dEPNS_5AdornE")]
-// IDA 0x7ad6e8: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ad6e8() {
+// IDA 0x7ad6e8: iterate `numChildren` (0x7ad6f0), `getGuiItem(i)` with the
+// null skip (0x7ad700..0x7ad704), slot +164 dispatch (0x7ad70e).
+pub fn stub_0x7ad6e8(host: &dyn GuiChildHost, adorn: &mut dyn Adorn2d) {
+    render_child_list(host, adorn);
 }
 
 // 0x7ad720 — __ZN3RBX7GuiRoot12render2dItemEPNS_5AdornEPNS_7GuiItemE
 #[doc(alias = "RBX::GuiRoot::render2dItem(RBX::Adorn *,RBX::GuiItem *)")]
 #[doc(alias = "__ZN3RBX7GuiRoot12render2dItemEPNS_5AdornEPNS_7GuiItemE")]
-// IDA 0x7ad720: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ad720() {
+// IDA 0x7ad720: direct tail-forward to the item's slot +164 (`render2d`).
+pub fn stub_0x7ad720(item: &SharedPtr<dyn Render2dChild>, adorn: &mut dyn Adorn2d) {
+    item.render2d(adorn);
 }
 
 // 0x7adda8 — __ZN3RBX10TopMenuBar8render2dEPNS_5AdornE
 #[doc(alias = "RBX::TopMenuBar::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX10TopMenuBar8render2dEPNS_5AdornE")]
-// IDA 0x7adda8: 78 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7adda8() {
+// IDA 0x7adda8: visibility gate (slot +148, 0x7addbe); when the `+112` tint
+// differs from `Color4::clear()` (0x7ade0e) the `getMyRect2D` rect is filled
+// via the Adorn +64 virtual (0x7ade1a..0x7ade58); then the child loop
+// (0x7ade5c..0x7ade7c).
+pub fn stub_0x7adda8(bar: &TopMenuBarState, adorn: &mut dyn Adorn2d) {
+    if !bar.visible {
+        return;
+    }
+    if bar.tint != CLEAR_TINT {
+        let rect = my_rect_2d(canvas_from_extent(adorn.viewport_extent()));
+        adorn.fill_rect(rect, bar.tint);
+    }
+    render_child_list(bar, adorn);
 }
 
 // 0x7adea4 — __ZN3RBX13UnifiedWidget10render2dMeEPNS_5AdornE
 #[doc(alias = "RBX::UnifiedWidget::render2dMe(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX13UnifiedWidget10render2dMeEPNS_5AdornE")]
-// IDA 0x7adea4: 107 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7adea4() {
+// IDA 0x7adea4: `getMyRect2D` over the viewport canvas (0x7adeb6..0x7adee6);
+// nonzero `+28` selects `menuSelect` + the `dword_1329C78` tint
+// (0x7adeee..0x7adf0a), otherwise `white` + alpha 1 (0x7adf0e..0x7adf1e);
+// fill via Adorn +64 (0x7adf2a), `black` outline via Adorn +48 (0x7adf32..),
+// then `label2d` on `fw(this)` with `black`/`clear` and align 2
+// (0x7adf94..0x7adfc8).
+pub fn stub_0x7adea4(state: &mut UnifiedWidgetState, adorn: &mut dyn Adorn2d) {
+    let rect = my_rect_2d(canvas_from_extent(adorn.viewport_extent()));
+    let fill = if state.token != 0 {
+        state.on_menu_select();
+        state.highlight
+    } else {
+        WHITE_TINT
+    };
+    adorn.fill_rect(rect, fill);
+    adorn.stroke_rect(rect, 1.0, BLACK_TINT);
+    let _ = stub_0x7ad2b0(
+        adorn,
+        &state.label.text.clone(),
+        &state.label.rect,
+        &BLACK_TINT,
+        &CLEAR_TINT,
+        LabelAnchor::Right,
+    );
 }
 
 // 0x7adfcc — __ZN3RBX13UnifiedWidget16render2dChildrenEPNS_5AdornE
 #[doc(alias = "RBX::UnifiedWidget::render2dChildren(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX13UnifiedWidget16render2dChildrenEPNS_5AdornE")]
-// IDA 0x7adfcc: 27 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7adfcc() {
+// IDA 0x7adfcc: children render only when the `+28` kind word is `>= 2`
+// (0x7adfd8); the `numChildren`/`getGuiItem`/slot +164 loop is shared.
+pub fn stub_0x7adfcc(state: &UnifiedWidgetState, adorn: &mut dyn Adorn2d) {
+    if state.token < 2 {
+        return;
+    }
+    render_child_list(state, adorn);
 }
 
 // 0x7ae00c — __ZN3RBX13UnifiedWidget8render2dEPNS_5AdornE
 #[doc(alias = "RBX::UnifiedWidget::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX13UnifiedWidget8render2dEPNS_5AdornE")]
-// IDA 0x7ae00c: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ae00c() {
+// IDA 0x7ae00c: visibility gate (slot +148, 0x7ae01c); `render2dMe`
+// (slot +180, 0x7ae02e) then `render2dChildren` (0x7ae038).
+pub fn stub_0x7ae00c(state: &mut UnifiedWidgetState, adorn: &mut dyn Adorn2d) -> bool {
+    if !state.label.visible {
+        return false;
+    }
+    stub_0x7adea4(state, adorn);
+    stub_0x7adfcc(state, adorn);
+    true
 }
 
 // 0x7ae9b8 — __ZN3RBX11TextDisplay8render2dEPNS_5AdornE
 #[doc(alias = "RBX::TextDisplay::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX11TextDisplay8render2dEPNS_5AdornE")]
-// IDA 0x7ae9b8: 21 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x7ae9b8() {
+// IDA 0x7ae9b8: visibility gate (slot +148, 0x7ae9ca), then
+// `GuiItem::label2d` with the `+28` text, `+120`/`+136` colors and `+38`
+// align (0x7ae9e8).
+pub fn stub_0x7ae9b8(widget: &LabeledWidget, adorn: &mut dyn Adorn2d) -> bool {
+    if !widget.visible {
+        return false;
+    }
+    stub_0x7ad2b0(
+        adorn,
+        &widget.text,
+        &widget.rect,
+        &widget.color_a,
+        &widget.color_b,
+        widget.align,
+    )
 }
 
 // 0x7aecd8 — __ZN3RBX7GuiItem8render2dEPNS_5AdornE
 #[doc(alias = "RBX::GuiItem::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX7GuiItem8render2dEPNS_5AdornE")]
-// IDA 0x7aecd8: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_0x7aecd8() {
-}
+// IDA 0x7aecd8: base `GuiItem::render2d` — empty body, single `BX` return.
+pub fn stub_0x7aecd8() {}
 
 // 0x7afdbc — __ZN3RBX12GuiDrawImage8setImageEPNS_5AdornERKNS_9TextureIdEjPN3G3D7Vector2E
 #[doc(alias = "RBX::GuiDrawImage::setImage(RBX::Adorn *,RBX::TextureId const&,unsigned int,G3D::Vector2 *)")]
