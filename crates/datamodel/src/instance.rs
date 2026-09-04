@@ -34658,44 +34658,66 @@ pub fn stub_0x546504() -> SharedPtr<NotificationObject> {
 // 0x548f4c — __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x548f4c() -> ! {
-    todo!("0x548f4c boost::shared_ptr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x548f4c(ptr: *mut NotificationObject, _deleter: CreatableInstanceDeleter) -> SharedPtr<NotificationObject> {
+    // IDA 0x548f4c: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(NotificationObject::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 // 0x5490fc — __ZN5boost6detail12shared_countC2IPN3RBX18NotificationObjectENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5490fc() -> ! {
-    todo!("0x5490fc boost::detail::shared_count::shared_count<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5490fc(ptr: *mut NotificationObject, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<NotificationObject, CreatableInstanceDeleter> {
+    // IDA 0x5490fc: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 // 0x549204 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x549204() -> ! {
-    todo!("0x549204 boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x549204(_block: *mut ControlBlockPd<NotificationObject, CreatableInstanceDeleter>) {
+    // IDA 0x549204: `BX LR` — empty; same as 0xf198.
 }
 // 0x549208 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x549208() -> ! {
-    todo!("0x549208 boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x549208(block: *mut ControlBlockPd<NotificationObject, CreatableInstanceDeleter>) {
+    // IDA 0x549208: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 // 0x54920c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x54920c() -> ! {
-    todo!("0x54920c boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x54920c(_block: *mut ControlBlockPd<NotificationObject, CreatableInstanceDeleter>) {
+    // IDA 0x54920c: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 // 0x54922c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x54922c() -> ! {
-    todo!("0x54922c boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x54922c(block: *const ControlBlockPd<NotificationObject, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x54922c: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 // 0x549244 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x549244() -> ! {
-    todo!("0x549244 boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x549244(block: *const ControlBlockPd<NotificationObject, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x549244: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 // 0x549ea4 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvvEEENS6_5list0EEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(void)>,boost::_bi::list0>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(void)>,boost::_bi::list0>)")]
@@ -34736,8 +34758,10 @@ pub fn stub_0x54b7a0() -> ! {
 // 0x54ba48 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14CoreGuiServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::CoreGuiService> RBX::Creatable<RBX::Instance>::create<RBX::CoreGuiService>(void)")]
 // was: boost::shared_ptr<RBX::CoreGuiService> RBX::Creatable<RBX::Instance>::create<RBX::CoreGuiService>(void)
-pub fn stub_0x54ba48() -> ! {
-    todo!("0x54ba48 boost::shared_ptr<RBX::CoreGuiService> RBX::Creatable<RBX::Instance>::create<RBX::CoreGuiService>(void)")
+pub fn stub_0x54ba48() -> SharedPtr<CoreGuiService> {
+    // IDA 0x54ba48: `Creatable::create<CoreGuiService>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(CoreGuiService::default())
 }
 
 // 0x54baf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14CoreGuiServiceEEERS3_RKNS0_IT_EE
@@ -34750,57 +34774,80 @@ pub fn stub_0x54baf8() -> ! {
 // 0x54bb2c — __ZN5boost6detail12shared_countC2IPN3RBX14CoreGuiServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x54bb2c() -> ! {
-    todo!("0x54bb2c boost::detail::shared_count::shared_count<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x54bb2c(ptr: *mut CoreGuiService, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<CoreGuiService, CreatableInstanceDeleter> {
+    // IDA 0x54bb2c: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x54bc34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x54bc34() -> ! {
-    todo!("0x54bc34 boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x54bc34(_block: *mut ControlBlockPd<CoreGuiService, CreatableInstanceDeleter>) {
+    // IDA 0x54bc34: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x54bc38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x54bc38() -> ! {
-    todo!("0x54bc38 boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x54bc38(_block: *mut ControlBlockPd<CoreGuiService, CreatableInstanceDeleter>) {
+    // IDA 0x54bc38: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74. (No D0 sorts into this file run for this cluster.)
 }
 
 // 0x54bc58 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x54bc58() -> ! {
-    todo!("0x54bc58 boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x54bc58(block: *const ControlBlockPd<CoreGuiService, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x54bc58: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x54bc70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x54bc70() -> ! {
-    todo!("0x54bc70 boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x54bc70(block: *const ControlBlockPd<CoreGuiService, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x54bc70: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x54d564 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::GuiService::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x54d564() -> ! {
-    todo!("0x54d564 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x54d564() -> GuiFuncDesc {
+    // IDA 0x54d564: `BoundFuncDesc<GuiService, void(Instance)>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x498fa0.
+    GuiFuncDesc::default()
 }
 
 // 0x54d6e0 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x54d6e0() -> ! {
-    todo!("0x54d6e0 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x54d6e0(_name: &str, _sig: &[Variant]) {
+    // IDA 0x54d6e0: `BoundFuncDesc<GuiService, void(Instance)>::
+    // declareSignature` — registers the signature words into the reflection
+    // table; the table lands with the reflection subsystem. Same shape as
+    // 0x499170.
 }
 
 // 0x54d710 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x54d710() -> ! {
-    todo!("0x54d710 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x54d710(_desc: *mut GuiFuncDesc) {
+    // IDA 0x54d710: `BoundFuncDesc<GuiService, void(Instance)>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x54d818 — __ZNK3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -34813,29 +34860,48 @@ pub fn stub_0x54d818() -> ! {
 // 0x54d8fc — __ZN3RBX10Reflection11Call1HelperINS_10GuiServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::GuiService,void (RBX::GuiService::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::GuiService*,void (RBX::GuiService::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::GuiService,void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::GuiService*,void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x54d8fc() -> ! {
-    todo!("0x54d8fc RBX::Reflection::Call1Helper<RBX::GuiService,void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::GuiService*,void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x54d8fc(
+    svc: &GuiService,
+    method: fn(&GuiService, SharedPtr<Instance>),
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x54d8fc (`Call1Helper<GuiService, void (GuiService::*)(Instance),
+    // ...>::call`, decompiled head): invokes the member function with a
+    // retained `Instance` copy. Same shape as 0x499408, one arg fewer.
+    method(svc, arg.clone());
 }
 
 // 0x54d9e4 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EEC2EMS2_FvS6_S7_S9_S9_EPKcSF_SF_SF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::BoundFuncDesc(void (RBX::GuiService::*)(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::BoundFuncDesc(void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x54d9e4() -> ! {
-    todo!("0x54d9e4 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::BoundFuncDesc(void (RBX::GuiService::*)(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x54d9e4() -> GuiCenterDialogDesc {
+    // IDA 0x54d9e4: `BoundFuncDesc<GuiService, (Instance, CenterDialogType,
+    // WeakFunctionRef, WeakFunctionRef)>::C2` — binds the member function
+    // into the class descriptor; the binding lands with reflection. Same
+    // shape as 0x54d564.
+    GuiCenterDialogDesc::default()
 }
 
 // 0x54dc5c — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EE16declareSignatureEPKcNS0_7VariantESD_SE_SD_SE_SD_SE_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x54dc5c() -> ! {
-    todo!("0x54dc5c RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x54dc5c(_name: &str, _sig: &[Variant]) {
+    // IDA 0x54dc5c: `BoundFuncDesc<GuiService, (Instance, ...)>::
+    // declareSignature` — registers the 4-arg signature words into the
+    // reflection table. Same shape as 0x54d6e0.
 }
 
 // 0x54dcdc — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()
-pub fn stub_0x54dcdc() -> ! {
-    todo!("0x54dcdc RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")
+pub fn stub_0x54dcdc(_desc: *mut GuiCenterDialogDesc) {
+    // IDA 0x54dcdc: `BoundFuncDesc<GuiService, (Instance, ...)>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x54dd7c — __ZNK3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
