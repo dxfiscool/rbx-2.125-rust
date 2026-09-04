@@ -12,8 +12,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "sub_F6EFD0")]
 // was: sub_F6EFD0
 // type: 
-pub fn stub_f6efd0() -> ! {
-    todo!("0xf6efd0 sub_F6EFD0")
+// IDA 0xf6efd0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6efd0() {
 }
 
 
@@ -21,8 +21,8 @@ pub fn stub_f6efd0() -> ! {
 #[doc(alias = "sub_F6EFDC")]
 // was: sub_F6EFDC
 // type: 
-pub fn stub_f6efdc() -> ! {
-    todo!("0xf6efdc sub_F6EFDC")
+// IDA 0xf6efdc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6efdc() {
 }
 
 
@@ -30,8 +30,8 @@ pub fn stub_f6efdc() -> ! {
 #[doc(alias = "sub_F6EFE8")]
 // was: sub_F6EFE8
 // type: 
-pub fn stub_f6efe8() -> ! {
-    todo!("0xf6efe8 sub_F6EFE8")
+// IDA 0xf6efe8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6efe8() {
 }
 
 
@@ -39,8 +39,8 @@ pub fn stub_f6efe8() -> ! {
 #[doc(alias = "sub_F6EFF4")]
 // was: sub_F6EFF4
 // type: 
-pub fn stub_f6eff4() -> ! {
-    todo!("0xf6eff4 sub_F6EFF4")
+// IDA 0xf6eff4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6eff4() {
 }
 
 
@@ -48,8 +48,8 @@ pub fn stub_f6eff4() -> ! {
 #[doc(alias = "sub_F6F000")]
 // was: sub_F6F000
 // type: 
-pub fn stub_f6f000() -> ! {
-    todo!("0xf6f000 sub_F6F000")
+// IDA 0xf6f000: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f000() {
 }
 
 
@@ -57,8 +57,8 @@ pub fn stub_f6f000() -> ! {
 #[doc(alias = "sub_F6F00C")]
 // was: sub_F6F00C
 // type: 
-pub fn stub_f6f00c() -> ! {
-    todo!("0xf6f00c sub_F6F00C")
+// IDA 0xf6f00c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f00c() {
 }
 
 
@@ -66,8 +66,8 @@ pub fn stub_f6f00c() -> ! {
 #[doc(alias = "sub_F6F018")]
 // was: sub_F6F018
 // type: 
-pub fn stub_f6f018() -> ! {
-    todo!("0xf6f018 sub_F6F018")
+// IDA 0xf6f018: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f018() {
 }
 
 
@@ -75,8 +75,8 @@ pub fn stub_f6f018() -> ! {
 #[doc(alias = "sub_F6F024")]
 // was: sub_F6F024
 // type: 
-pub fn stub_f6f024() -> ! {
-    todo!("0xf6f024 sub_F6F024")
+// IDA 0xf6f024: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f024() {
 }
 
 
@@ -84,8 +84,8 @@ pub fn stub_f6f024() -> ! {
 #[doc(alias = "sub_F6F030")]
 // was: sub_F6F030
 // type: 
-pub fn stub_f6f030() -> ! {
-    todo!("0xf6f030 sub_F6F030")
+// IDA 0xf6f030: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f030() {
 }
 
 
@@ -93,8 +93,8 @@ pub fn stub_f6f030() -> ! {
 #[doc(alias = "sub_F6F03C")]
 // was: sub_F6F03C
 // type: 
-pub fn stub_f6f03c() -> ! {
-    todo!("0xf6f03c sub_F6F03C")
+// IDA 0xf6f03c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f03c() {
 }
 
 
@@ -102,8 +102,8 @@ pub fn stub_f6f03c() -> ! {
 #[doc(alias = "sub_F6F048")]
 // was: sub_F6F048
 // type: 
-pub fn stub_f6f048() -> ! {
-    todo!("0xf6f048 sub_F6F048")
+// IDA 0xf6f048: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f048() {
 }
 
 
@@ -111,8 +111,8 @@ pub fn stub_f6f048() -> ! {
 #[doc(alias = "sub_F6F054")]
 // was: sub_F6F054
 // type: 
-pub fn stub_f6f054() -> ! {
-    todo!("0xf6f054 sub_F6F054")
+// IDA 0xf6f054: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f054() {
 }
 
 
@@ -120,8 +120,8 @@ pub fn stub_f6f054() -> ! {
 #[doc(alias = "sub_F6F060")]
 // was: sub_F6F060
 // type: 
-pub fn stub_f6f060() -> ! {
-    todo!("0xf6f060 sub_F6F060")
+// IDA 0xf6f060: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f060() {
 }
 
 
@@ -129,8 +129,8 @@ pub fn stub_f6f060() -> ! {
 #[doc(alias = "sub_F6F06C")]
 // was: sub_F6F06C
 // type: 
-pub fn stub_f6f06c() -> ! {
-    todo!("0xf6f06c sub_F6F06C")
+// IDA 0xf6f06c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f06c() {
 }
 
 
@@ -138,8 +138,8 @@ pub fn stub_f6f06c() -> ! {
 #[doc(alias = "sub_F6F078")]
 // was: sub_F6F078
 // type: 
-pub fn stub_f6f078() -> ! {
-    todo!("0xf6f078 sub_F6F078")
+// IDA 0xf6f078: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f078() {
 }
 
 
@@ -147,8 +147,8 @@ pub fn stub_f6f078() -> ! {
 #[doc(alias = "sub_F6F084")]
 // was: sub_F6F084
 // type: 
-pub fn stub_f6f084() -> ! {
-    todo!("0xf6f084 sub_F6F084")
+// IDA 0xf6f084: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f084() {
 }
 
 
@@ -156,8 +156,8 @@ pub fn stub_f6f084() -> ! {
 #[doc(alias = "sub_F6F090")]
 // was: sub_F6F090
 // type: 
-pub fn stub_f6f090() -> ! {
-    todo!("0xf6f090 sub_F6F090")
+// IDA 0xf6f090: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f090() {
 }
 
 
@@ -165,8 +165,8 @@ pub fn stub_f6f090() -> ! {
 #[doc(alias = "sub_F6F09C")]
 // was: sub_F6F09C
 // type: 
-pub fn stub_f6f09c() -> ! {
-    todo!("0xf6f09c sub_F6F09C")
+// IDA 0xf6f09c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f09c() {
 }
 
 
@@ -174,8 +174,8 @@ pub fn stub_f6f09c() -> ! {
 #[doc(alias = "sub_F6F0A8")]
 // was: sub_F6F0A8
 // type: 
-pub fn stub_f6f0a8() -> ! {
-    todo!("0xf6f0a8 sub_F6F0A8")
+// IDA 0xf6f0a8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0a8() {
 }
 
 
@@ -183,8 +183,8 @@ pub fn stub_f6f0a8() -> ! {
 #[doc(alias = "sub_F6F0B4")]
 // was: sub_F6F0B4
 // type: 
-pub fn stub_f6f0b4() -> ! {
-    todo!("0xf6f0b4 sub_F6F0B4")
+// IDA 0xf6f0b4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0b4() {
 }
 
 
@@ -192,8 +192,8 @@ pub fn stub_f6f0b4() -> ! {
 #[doc(alias = "sub_F6F0C0")]
 // was: sub_F6F0C0
 // type: 
-pub fn stub_f6f0c0() -> ! {
-    todo!("0xf6f0c0 sub_F6F0C0")
+// IDA 0xf6f0c0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0c0() {
 }
 
 
@@ -201,8 +201,8 @@ pub fn stub_f6f0c0() -> ! {
 #[doc(alias = "sub_F6F0CC")]
 // was: sub_F6F0CC
 // type: 
-pub fn stub_f6f0cc() -> ! {
-    todo!("0xf6f0cc sub_F6F0CC")
+// IDA 0xf6f0cc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0cc() {
 }
 
 
@@ -210,8 +210,8 @@ pub fn stub_f6f0cc() -> ! {
 #[doc(alias = "sub_F6F0D8")]
 // was: sub_F6F0D8
 // type: 
-pub fn stub_f6f0d8() -> ! {
-    todo!("0xf6f0d8 sub_F6F0D8")
+// IDA 0xf6f0d8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0d8() {
 }
 
 
@@ -219,8 +219,8 @@ pub fn stub_f6f0d8() -> ! {
 #[doc(alias = "sub_F6F0E4")]
 // was: sub_F6F0E4
 // type: 
-pub fn stub_f6f0e4() -> ! {
-    todo!("0xf6f0e4 sub_F6F0E4")
+// IDA 0xf6f0e4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0e4() {
 }
 
 
@@ -228,8 +228,8 @@ pub fn stub_f6f0e4() -> ! {
 #[doc(alias = "sub_F6F0F0")]
 // was: sub_F6F0F0
 // type: 
-pub fn stub_f6f0f0() -> ! {
-    todo!("0xf6f0f0 sub_F6F0F0")
+// IDA 0xf6f0f0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0f0() {
 }
 
 
@@ -237,8 +237,8 @@ pub fn stub_f6f0f0() -> ! {
 #[doc(alias = "sub_F6F0FC")]
 // was: sub_F6F0FC
 // type: 
-pub fn stub_f6f0fc() -> ! {
-    todo!("0xf6f0fc sub_F6F0FC")
+// IDA 0xf6f0fc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f0fc() {
 }
 
 
@@ -246,8 +246,8 @@ pub fn stub_f6f0fc() -> ! {
 #[doc(alias = "sub_F6F108")]
 // was: sub_F6F108
 // type: 
-pub fn stub_f6f108() -> ! {
-    todo!("0xf6f108 sub_F6F108")
+// IDA 0xf6f108: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f108() {
 }
 
 
@@ -255,8 +255,8 @@ pub fn stub_f6f108() -> ! {
 #[doc(alias = "sub_F6F114")]
 // was: sub_F6F114
 // type: 
-pub fn stub_f6f114() -> ! {
-    todo!("0xf6f114 sub_F6F114")
+// IDA 0xf6f114: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f114() {
 }
 
 
@@ -264,8 +264,8 @@ pub fn stub_f6f114() -> ! {
 #[doc(alias = "sub_F6F120")]
 // was: sub_F6F120
 // type: 
-pub fn stub_f6f120() -> ! {
-    todo!("0xf6f120 sub_F6F120")
+// IDA 0xf6f120: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f120() {
 }
 
 
@@ -273,8 +273,8 @@ pub fn stub_f6f120() -> ! {
 #[doc(alias = "sub_F6F12C")]
 // was: sub_F6F12C
 // type: 
-pub fn stub_f6f12c() -> ! {
-    todo!("0xf6f12c sub_F6F12C")
+// IDA 0xf6f12c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f12c() {
 }
 
 
@@ -282,8 +282,8 @@ pub fn stub_f6f12c() -> ! {
 #[doc(alias = "sub_F6F138")]
 // was: sub_F6F138
 // type: 
-pub fn stub_f6f138() -> ! {
-    todo!("0xf6f138 sub_F6F138")
+// IDA 0xf6f138: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f138() {
 }
 
 
@@ -291,8 +291,8 @@ pub fn stub_f6f138() -> ! {
 #[doc(alias = "sub_F6F144")]
 // was: sub_F6F144
 // type: 
-pub fn stub_f6f144() -> ! {
-    todo!("0xf6f144 sub_F6F144")
+// IDA 0xf6f144: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f144() {
 }
 
 
@@ -300,8 +300,8 @@ pub fn stub_f6f144() -> ! {
 #[doc(alias = "sub_F6F150")]
 // was: sub_F6F150
 // type: 
-pub fn stub_f6f150() -> ! {
-    todo!("0xf6f150 sub_F6F150")
+// IDA 0xf6f150: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f150() {
 }
 
 
@@ -309,8 +309,8 @@ pub fn stub_f6f150() -> ! {
 #[doc(alias = "sub_F6F15C")]
 // was: sub_F6F15C
 // type: 
-pub fn stub_f6f15c() -> ! {
-    todo!("0xf6f15c sub_F6F15C")
+// IDA 0xf6f15c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f15c() {
 }
 
 
@@ -318,8 +318,8 @@ pub fn stub_f6f15c() -> ! {
 #[doc(alias = "sub_F6F168")]
 // was: sub_F6F168
 // type: 
-pub fn stub_f6f168() -> ! {
-    todo!("0xf6f168 sub_F6F168")
+// IDA 0xf6f168: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f168() {
 }
 
 
@@ -327,8 +327,8 @@ pub fn stub_f6f168() -> ! {
 #[doc(alias = "sub_F6F174")]
 // was: sub_F6F174
 // type: 
-pub fn stub_f6f174() -> ! {
-    todo!("0xf6f174 sub_F6F174")
+// IDA 0xf6f174: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f174() {
 }
 
 
@@ -336,8 +336,8 @@ pub fn stub_f6f174() -> ! {
 #[doc(alias = "sub_F6F180")]
 // was: sub_F6F180
 // type: 
-pub fn stub_f6f180() -> ! {
-    todo!("0xf6f180 sub_F6F180")
+// IDA 0xf6f180: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f180() {
 }
 
 
@@ -345,8 +345,8 @@ pub fn stub_f6f180() -> ! {
 #[doc(alias = "sub_F6F18C")]
 // was: sub_F6F18C
 // type: 
-pub fn stub_f6f18c() -> ! {
-    todo!("0xf6f18c sub_F6F18C")
+// IDA 0xf6f18c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f18c() {
 }
 
 
@@ -354,8 +354,8 @@ pub fn stub_f6f18c() -> ! {
 #[doc(alias = "sub_F6F198")]
 // was: sub_F6F198
 // type: 
-pub fn stub_f6f198() -> ! {
-    todo!("0xf6f198 sub_F6F198")
+// IDA 0xf6f198: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f198() {
 }
 
 
@@ -363,8 +363,8 @@ pub fn stub_f6f198() -> ! {
 #[doc(alias = "sub_F6F1A4")]
 // was: sub_F6F1A4
 // type: 
-pub fn stub_f6f1a4() -> ! {
-    todo!("0xf6f1a4 sub_F6F1A4")
+// IDA 0xf6f1a4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1a4() {
 }
 
 
@@ -372,8 +372,8 @@ pub fn stub_f6f1a4() -> ! {
 #[doc(alias = "sub_F6F1B0")]
 // was: sub_F6F1B0
 // type: 
-pub fn stub_f6f1b0() -> ! {
-    todo!("0xf6f1b0 sub_F6F1B0")
+// IDA 0xf6f1b0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1b0() {
 }
 
 
@@ -381,8 +381,8 @@ pub fn stub_f6f1b0() -> ! {
 #[doc(alias = "sub_F6F1BC")]
 // was: sub_F6F1BC
 // type: 
-pub fn stub_f6f1bc() -> ! {
-    todo!("0xf6f1bc sub_F6F1BC")
+// IDA 0xf6f1bc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1bc() {
 }
 
 
@@ -390,8 +390,8 @@ pub fn stub_f6f1bc() -> ! {
 #[doc(alias = "sub_F6F1C8")]
 // was: sub_F6F1C8
 // type: 
-pub fn stub_f6f1c8() -> ! {
-    todo!("0xf6f1c8 sub_F6F1C8")
+// IDA 0xf6f1c8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1c8() {
 }
 
 
@@ -399,8 +399,8 @@ pub fn stub_f6f1c8() -> ! {
 #[doc(alias = "sub_F6F1D4")]
 // was: sub_F6F1D4
 // type: 
-pub fn stub_f6f1d4() -> ! {
-    todo!("0xf6f1d4 sub_F6F1D4")
+// IDA 0xf6f1d4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1d4() {
 }
 
 
@@ -408,8 +408,8 @@ pub fn stub_f6f1d4() -> ! {
 #[doc(alias = "sub_F6F1E0")]
 // was: sub_F6F1E0
 // type: 
-pub fn stub_f6f1e0() -> ! {
-    todo!("0xf6f1e0 sub_F6F1E0")
+// IDA 0xf6f1e0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1e0() {
 }
 
 
@@ -417,8 +417,8 @@ pub fn stub_f6f1e0() -> ! {
 #[doc(alias = "sub_F6F1EC")]
 // was: sub_F6F1EC
 // type: 
-pub fn stub_f6f1ec() -> ! {
-    todo!("0xf6f1ec sub_F6F1EC")
+// IDA 0xf6f1ec: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1ec() {
 }
 
 
@@ -426,8 +426,8 @@ pub fn stub_f6f1ec() -> ! {
 #[doc(alias = "sub_F6F1F8")]
 // was: sub_F6F1F8
 // type: 
-pub fn stub_f6f1f8() -> ! {
-    todo!("0xf6f1f8 sub_F6F1F8")
+// IDA 0xf6f1f8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f1f8() {
 }
 
 
@@ -435,8 +435,8 @@ pub fn stub_f6f1f8() -> ! {
 #[doc(alias = "sub_F6F204")]
 // was: sub_F6F204
 // type: 
-pub fn stub_f6f204() -> ! {
-    todo!("0xf6f204 sub_F6F204")
+// IDA 0xf6f204: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f204() {
 }
 
 
@@ -444,8 +444,8 @@ pub fn stub_f6f204() -> ! {
 #[doc(alias = "sub_F6F210")]
 // was: sub_F6F210
 // type: 
-pub fn stub_f6f210() -> ! {
-    todo!("0xf6f210 sub_F6F210")
+// IDA 0xf6f210: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f210() {
 }
 
 
@@ -453,8 +453,8 @@ pub fn stub_f6f210() -> ! {
 #[doc(alias = "sub_F6F21C")]
 // was: sub_F6F21C
 // type: 
-pub fn stub_f6f21c() -> ! {
-    todo!("0xf6f21c sub_F6F21C")
+// IDA 0xf6f21c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f21c() {
 }
 
 
@@ -462,8 +462,8 @@ pub fn stub_f6f21c() -> ! {
 #[doc(alias = "sub_F6F228")]
 // was: sub_F6F228
 // type: 
-pub fn stub_f6f228() -> ! {
-    todo!("0xf6f228 sub_F6F228")
+// IDA 0xf6f228: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f228() {
 }
 
 
@@ -471,8 +471,8 @@ pub fn stub_f6f228() -> ! {
 #[doc(alias = "sub_F6F234")]
 // was: sub_F6F234
 // type: 
-pub fn stub_f6f234() -> ! {
-    todo!("0xf6f234 sub_F6F234")
+// IDA 0xf6f234: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f234() {
 }
 
 
@@ -480,8 +480,8 @@ pub fn stub_f6f234() -> ! {
 #[doc(alias = "sub_F6F240")]
 // was: sub_F6F240
 // type: 
-pub fn stub_f6f240() -> ! {
-    todo!("0xf6f240 sub_F6F240")
+// IDA 0xf6f240: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f240() {
 }
 
 
@@ -489,8 +489,8 @@ pub fn stub_f6f240() -> ! {
 #[doc(alias = "sub_F6F24C")]
 // was: sub_F6F24C
 // type: 
-pub fn stub_f6f24c() -> ! {
-    todo!("0xf6f24c sub_F6F24C")
+// IDA 0xf6f24c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f24c() {
 }
 
 
@@ -498,8 +498,8 @@ pub fn stub_f6f24c() -> ! {
 #[doc(alias = "sub_F6F258")]
 // was: sub_F6F258
 // type: 
-pub fn stub_f6f258() -> ! {
-    todo!("0xf6f258 sub_F6F258")
+// IDA 0xf6f258: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f258() {
 }
 
 
@@ -507,8 +507,8 @@ pub fn stub_f6f258() -> ! {
 #[doc(alias = "sub_F6F264")]
 // was: sub_F6F264
 // type: 
-pub fn stub_f6f264() -> ! {
-    todo!("0xf6f264 sub_F6F264")
+// IDA 0xf6f264: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f264() {
 }
 
 
@@ -516,8 +516,8 @@ pub fn stub_f6f264() -> ! {
 #[doc(alias = "sub_F6F270")]
 // was: sub_F6F270
 // type: 
-pub fn stub_f6f270() -> ! {
-    todo!("0xf6f270 sub_F6F270")
+// IDA 0xf6f270: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f270() {
 }
 
 
@@ -525,8 +525,8 @@ pub fn stub_f6f270() -> ! {
 #[doc(alias = "sub_F6F27C")]
 // was: sub_F6F27C
 // type: 
-pub fn stub_f6f27c() -> ! {
-    todo!("0xf6f27c sub_F6F27C")
+// IDA 0xf6f27c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f27c() {
 }
 
 
@@ -534,8 +534,8 @@ pub fn stub_f6f27c() -> ! {
 #[doc(alias = "sub_F6F288")]
 // was: sub_F6F288
 // type: 
-pub fn stub_f6f288() -> ! {
-    todo!("0xf6f288 sub_F6F288")
+// IDA 0xf6f288: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f288() {
 }
 
 
@@ -543,8 +543,8 @@ pub fn stub_f6f288() -> ! {
 #[doc(alias = "sub_F6F294")]
 // was: sub_F6F294
 // type: 
-pub fn stub_f6f294() -> ! {
-    todo!("0xf6f294 sub_F6F294")
+// IDA 0xf6f294: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f294() {
 }
 
 
@@ -552,8 +552,8 @@ pub fn stub_f6f294() -> ! {
 #[doc(alias = "sub_F6F2A0")]
 // was: sub_F6F2A0
 // type: 
-pub fn stub_f6f2a0() -> ! {
-    todo!("0xf6f2a0 sub_F6F2A0")
+// IDA 0xf6f2a0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2a0() {
 }
 
 
@@ -561,8 +561,8 @@ pub fn stub_f6f2a0() -> ! {
 #[doc(alias = "sub_F6F2AC")]
 // was: sub_F6F2AC
 // type: 
-pub fn stub_f6f2ac() -> ! {
-    todo!("0xf6f2ac sub_F6F2AC")
+// IDA 0xf6f2ac: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2ac() {
 }
 
 
@@ -570,8 +570,8 @@ pub fn stub_f6f2ac() -> ! {
 #[doc(alias = "sub_F6F2B8")]
 // was: sub_F6F2B8
 // type: 
-pub fn stub_f6f2b8() -> ! {
-    todo!("0xf6f2b8 sub_F6F2B8")
+// IDA 0xf6f2b8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2b8() {
 }
 
 
@@ -579,8 +579,8 @@ pub fn stub_f6f2b8() -> ! {
 #[doc(alias = "sub_F6F2C4")]
 // was: sub_F6F2C4
 // type: 
-pub fn stub_f6f2c4() -> ! {
-    todo!("0xf6f2c4 sub_F6F2C4")
+// IDA 0xf6f2c4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2c4() {
 }
 
 
@@ -588,8 +588,8 @@ pub fn stub_f6f2c4() -> ! {
 #[doc(alias = "sub_F6F2D0")]
 // was: sub_F6F2D0
 // type: 
-pub fn stub_f6f2d0() -> ! {
-    todo!("0xf6f2d0 sub_F6F2D0")
+// IDA 0xf6f2d0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2d0() {
 }
 
 
@@ -597,8 +597,8 @@ pub fn stub_f6f2d0() -> ! {
 #[doc(alias = "sub_F6F2DC")]
 // was: sub_F6F2DC
 // type: 
-pub fn stub_f6f2dc() -> ! {
-    todo!("0xf6f2dc sub_F6F2DC")
+// IDA 0xf6f2dc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2dc() {
 }
 
 
@@ -606,8 +606,8 @@ pub fn stub_f6f2dc() -> ! {
 #[doc(alias = "sub_F6F2E8")]
 // was: sub_F6F2E8
 // type: 
-pub fn stub_f6f2e8() -> ! {
-    todo!("0xf6f2e8 sub_F6F2E8")
+// IDA 0xf6f2e8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2e8() {
 }
 
 
@@ -615,8 +615,8 @@ pub fn stub_f6f2e8() -> ! {
 #[doc(alias = "sub_F6F2F4")]
 // was: sub_F6F2F4
 // type: 
-pub fn stub_f6f2f4() -> ! {
-    todo!("0xf6f2f4 sub_F6F2F4")
+// IDA 0xf6f2f4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f2f4() {
 }
 
 
@@ -624,8 +624,8 @@ pub fn stub_f6f2f4() -> ! {
 #[doc(alias = "sub_F6F300")]
 // was: sub_F6F300
 // type: 
-pub fn stub_f6f300() -> ! {
-    todo!("0xf6f300 sub_F6F300")
+// IDA 0xf6f300: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f300() {
 }
 
 
@@ -633,8 +633,8 @@ pub fn stub_f6f300() -> ! {
 #[doc(alias = "sub_F6F30C")]
 // was: sub_F6F30C
 // type: 
-pub fn stub_f6f30c() -> ! {
-    todo!("0xf6f30c sub_F6F30C")
+// IDA 0xf6f30c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f30c() {
 }
 
 
@@ -642,8 +642,8 @@ pub fn stub_f6f30c() -> ! {
 #[doc(alias = "sub_F6F318")]
 // was: sub_F6F318
 // type: 
-pub fn stub_f6f318() -> ! {
-    todo!("0xf6f318 sub_F6F318")
+// IDA 0xf6f318: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f318() {
 }
 
 
@@ -651,8 +651,8 @@ pub fn stub_f6f318() -> ! {
 #[doc(alias = "sub_F6F324")]
 // was: sub_F6F324
 // type: 
-pub fn stub_f6f324() -> ! {
-    todo!("0xf6f324 sub_F6F324")
+// IDA 0xf6f324: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f324() {
 }
 
 
@@ -660,8 +660,8 @@ pub fn stub_f6f324() -> ! {
 #[doc(alias = "sub_F6F330")]
 // was: sub_F6F330
 // type: 
-pub fn stub_f6f330() -> ! {
-    todo!("0xf6f330 sub_F6F330")
+// IDA 0xf6f330: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f330() {
 }
 
 
@@ -669,8 +669,8 @@ pub fn stub_f6f330() -> ! {
 #[doc(alias = "sub_F6F33C")]
 // was: sub_F6F33C
 // type: 
-pub fn stub_f6f33c() -> ! {
-    todo!("0xf6f33c sub_F6F33C")
+// IDA 0xf6f33c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f33c() {
 }
 
 
@@ -678,8 +678,8 @@ pub fn stub_f6f33c() -> ! {
 #[doc(alias = "sub_F6F348")]
 // was: sub_F6F348
 // type: 
-pub fn stub_f6f348() -> ! {
-    todo!("0xf6f348 sub_F6F348")
+// IDA 0xf6f348: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f348() {
 }
 
 
@@ -687,8 +687,8 @@ pub fn stub_f6f348() -> ! {
 #[doc(alias = "sub_F6F354")]
 // was: sub_F6F354
 // type: 
-pub fn stub_f6f354() -> ! {
-    todo!("0xf6f354 sub_F6F354")
+// IDA 0xf6f354: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f354() {
 }
 
 
@@ -696,8 +696,8 @@ pub fn stub_f6f354() -> ! {
 #[doc(alias = "sub_F6F360")]
 // was: sub_F6F360
 // type: 
-pub fn stub_f6f360() -> ! {
-    todo!("0xf6f360 sub_F6F360")
+// IDA 0xf6f360: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f360() {
 }
 
 
@@ -705,8 +705,8 @@ pub fn stub_f6f360() -> ! {
 #[doc(alias = "sub_F6F36C")]
 // was: sub_F6F36C
 // type: 
-pub fn stub_f6f36c() -> ! {
-    todo!("0xf6f36c sub_F6F36C")
+// IDA 0xf6f36c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f36c() {
 }
 
 
@@ -714,8 +714,8 @@ pub fn stub_f6f36c() -> ! {
 #[doc(alias = "sub_F6F378")]
 // was: sub_F6F378
 // type: 
-pub fn stub_f6f378() -> ! {
-    todo!("0xf6f378 sub_F6F378")
+// IDA 0xf6f378: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f378() {
 }
 
 
@@ -723,8 +723,8 @@ pub fn stub_f6f378() -> ! {
 #[doc(alias = "sub_F6F384")]
 // was: sub_F6F384
 // type: 
-pub fn stub_f6f384() -> ! {
-    todo!("0xf6f384 sub_F6F384")
+// IDA 0xf6f384: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f384() {
 }
 
 
@@ -732,8 +732,8 @@ pub fn stub_f6f384() -> ! {
 #[doc(alias = "sub_F6F390")]
 // was: sub_F6F390
 // type: 
-pub fn stub_f6f390() -> ! {
-    todo!("0xf6f390 sub_F6F390")
+// IDA 0xf6f390: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f390() {
 }
 
 
@@ -741,8 +741,8 @@ pub fn stub_f6f390() -> ! {
 #[doc(alias = "sub_F6F39C")]
 // was: sub_F6F39C
 // type: 
-pub fn stub_f6f39c() -> ! {
-    todo!("0xf6f39c sub_F6F39C")
+// IDA 0xf6f39c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f39c() {
 }
 
 
@@ -750,8 +750,8 @@ pub fn stub_f6f39c() -> ! {
 #[doc(alias = "sub_F6F3A8")]
 // was: sub_F6F3A8
 // type: 
-pub fn stub_f6f3a8() -> ! {
-    todo!("0xf6f3a8 sub_F6F3A8")
+// IDA 0xf6f3a8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3a8() {
 }
 
 
@@ -759,8 +759,8 @@ pub fn stub_f6f3a8() -> ! {
 #[doc(alias = "sub_F6F3B4")]
 // was: sub_F6F3B4
 // type: 
-pub fn stub_f6f3b4() -> ! {
-    todo!("0xf6f3b4 sub_F6F3B4")
+// IDA 0xf6f3b4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3b4() {
 }
 
 
@@ -768,8 +768,8 @@ pub fn stub_f6f3b4() -> ! {
 #[doc(alias = "sub_F6F3C0")]
 // was: sub_F6F3C0
 // type: 
-pub fn stub_f6f3c0() -> ! {
-    todo!("0xf6f3c0 sub_F6F3C0")
+// IDA 0xf6f3c0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3c0() {
 }
 
 
@@ -777,8 +777,8 @@ pub fn stub_f6f3c0() -> ! {
 #[doc(alias = "sub_F6F3CC")]
 // was: sub_F6F3CC
 // type: 
-pub fn stub_f6f3cc() -> ! {
-    todo!("0xf6f3cc sub_F6F3CC")
+// IDA 0xf6f3cc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3cc() {
 }
 
 
@@ -786,8 +786,8 @@ pub fn stub_f6f3cc() -> ! {
 #[doc(alias = "sub_F6F3D8")]
 // was: sub_F6F3D8
 // type: 
-pub fn stub_f6f3d8() -> ! {
-    todo!("0xf6f3d8 sub_F6F3D8")
+// IDA 0xf6f3d8: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3d8() {
 }
 
 
@@ -795,8 +795,8 @@ pub fn stub_f6f3d8() -> ! {
 #[doc(alias = "sub_F6F3E4")]
 // was: sub_F6F3E4
 // type: 
-pub fn stub_f6f3e4() -> ! {
-    todo!("0xf6f3e4 sub_F6F3E4")
+// IDA 0xf6f3e4: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3e4() {
 }
 
 
@@ -804,8 +804,8 @@ pub fn stub_f6f3e4() -> ! {
 #[doc(alias = "sub_F6F3F0")]
 // was: sub_F6F3F0
 // type: 
-pub fn stub_f6f3f0() -> ! {
-    todo!("0xf6f3f0 sub_F6F3F0")
+// IDA 0xf6f3f0: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3f0() {
 }
 
 
@@ -813,8 +813,8 @@ pub fn stub_f6f3f0() -> ! {
 #[doc(alias = "sub_F6F3FC")]
 // was: sub_F6F3FC
 // type: 
-pub fn stub_f6f3fc() -> ! {
-    todo!("0xf6f3fc sub_F6F3FC")
+// IDA 0xf6f3fc: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f3fc() {
 }
 
 
@@ -822,8 +822,8 @@ pub fn stub_f6f3fc() -> ! {
 #[doc(alias = "sub_F6F408")]
 // was: sub_F6F408
 // type: 
-pub fn stub_f6f408() -> ! {
-    todo!("0xf6f408 sub_F6F408")
+// IDA 0xf6f408: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f408() {
 }
 
 
@@ -831,8 +831,8 @@ pub fn stub_f6f408() -> ! {
 #[doc(alias = "sub_F6F414")]
 // was: sub_F6F414
 // type: 
-pub fn stub_f6f414() -> ! {
-    todo!("0xf6f414 sub_F6F414")
+// IDA 0xf6f414: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f414() {
 }
 
 
@@ -840,8 +840,8 @@ pub fn stub_f6f414() -> ! {
 #[doc(alias = "sub_F6F420")]
 // was: sub_F6F420
 // type: 
-pub fn stub_f6f420() -> ! {
-    todo!("0xf6f420 sub_F6F420")
+// IDA 0xf6f420: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f420() {
 }
 
 
@@ -849,8 +849,8 @@ pub fn stub_f6f420() -> ! {
 #[doc(alias = "sub_F6F42C")]
 // was: sub_F6F42C
 // type: 
-pub fn stub_f6f42c() -> ! {
-    todo!("0xf6f42c sub_F6F42C")
+// IDA 0xf6f42c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f42c() {
 }
 
 
@@ -858,8 +858,8 @@ pub fn stub_f6f42c() -> ! {
 #[doc(alias = "sub_F6F438")]
 // was: sub_F6F438
 // type: 
-pub fn stub_f6f438() -> ! {
-    todo!("0xf6f438 sub_F6F438")
+// IDA 0xf6f438: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f438() {
 }
 
 
@@ -867,8 +867,8 @@ pub fn stub_f6f438() -> ! {
 #[doc(alias = "sub_F6F444")]
 // was: sub_F6F444
 // type: 
-pub fn stub_f6f444() -> ! {
-    todo!("0xf6f444 sub_F6F444")
+// IDA 0xf6f444: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f444() {
 }
 
 
@@ -876,8 +876,8 @@ pub fn stub_f6f444() -> ! {
 #[doc(alias = "sub_F6F450")]
 // was: sub_F6F450
 // type: 
-pub fn stub_f6f450() -> ! {
-    todo!("0xf6f450 sub_F6F450")
+// IDA 0xf6f450: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f450() {
 }
 
 
@@ -885,8 +885,8 @@ pub fn stub_f6f450() -> ! {
 #[doc(alias = "sub_F6F45C")]
 // was: sub_F6F45C
 // type: 
-pub fn stub_f6f45c() -> ! {
-    todo!("0xf6f45c sub_F6F45C")
+// IDA 0xf6f45c: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f45c() {
 }
 
 
@@ -894,8 +894,8 @@ pub fn stub_f6f45c() -> ! {
 #[doc(alias = "sub_F6F468")]
 // was: sub_F6F468
 // type: 
-pub fn stub_f6f468() -> ! {
-    todo!("0xf6f468 sub_F6F468")
+// IDA 0xf6f468: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f468() {
 }
 
 
@@ -903,7 +903,7 @@ pub fn stub_f6f468() -> ! {
 #[doc(alias = "sub_F6F474")]
 // was: sub_F6F474
 // type: 
-pub fn stub_f6f474() -> ! {
-    todo!("0xf6f474 sub_F6F474")
+// IDA 0xf6f474: dyld __stub_helper trampoline (LDR R12 + B) — linker glue, no-op.
+pub fn stub_f6f474() {
 }
 

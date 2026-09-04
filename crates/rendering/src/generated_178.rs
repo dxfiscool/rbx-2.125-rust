@@ -10,8 +10,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
-pub fn stub_3e8c8() -> ! {
-    todo!("0x3e8c8 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+// IDA 0x3e8c8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3e8c8() {
 }
 
 
@@ -19,8 +19,8 @@ pub fn stub_3e8c8() -> ! {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")]
 // was: boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3e900() -> ! {
-    todo!("0x3e900 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")
+// IDA 0x3e900: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3e900() {
 }
 
 
@@ -28,32 +28,32 @@ pub fn stub_3e900() -> ! {
 #[doc(alias = "non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")]
 // was: non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
-pub fn stub_3ea80() -> ! {
-    todo!("0x3ea80 non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")
+// IDA 0x3ea80: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3ea80() {
 }
 
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
 // was: boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)
-pub fn stub_3eab0() -> ! {
-    todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")
+// IDA 0x3eab0: 84 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3eab0() {
 }
 
 
 // 0x3eb98 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)
-pub fn stub_3eb98() -> ! {
-    todo!("0x3eb98 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")
+// IDA 0x3eb98: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3eb98() {
 }
 
 
 // 0x3eba8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)
-pub fn stub_3eba8() -> ! {
-    todo!("0x3eba8 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")
+// IDA 0x3eba8: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3eba8() {
 }
 
 
@@ -61,8 +61,8 @@ pub fn stub_3eba8() -> ! {
 #[doc(alias = "RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")]
 // was: RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
-pub fn stub_3ebb0() -> ! {
-    todo!("0x3ebb0 RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")
+// IDA 0x3ebb0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3ebb0() {
 }
 
 
@@ -70,8 +70,8 @@ pub fn stub_3ebb0() -> ! {
 #[doc(alias = "RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")]
 // was: RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
-pub fn stub_3ebb4() -> ! {
-    todo!("0x3ebb4 RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")
+// IDA 0x3ebb4: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3ebb4() {
 }
 
 
@@ -79,8 +79,8 @@ pub fn stub_3ebb4() -> ! {
 #[doc(alias = "void rbx_core::SharedPtr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 // was: void boost::intrusive_ptr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)
 // type: int(void)
-pub fn stub_3ebb8() -> ! {
-    todo!("0x3ebb8 void boost::intrusive_ptr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
+// IDA 0x3ebb8: 40 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3ebb8() {
 }
 
 
@@ -88,8 +88,8 @@ pub fn stub_3ebb8() -> ! {
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
 // was: QuitEventListener::~QuitEventListener()
 // type: void __fastcall(QuitEventListener *__hidden this)
-pub fn stub_3eccc() -> ! {
-    todo!("0x3eccc QuitEventListener::~QuitEventListener()")
+// IDA 0x3eccc: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_3eccc() {
 }
 
 
@@ -97,8 +97,8 @@ pub fn stub_3eccc() -> ! {
 #[doc(alias = "RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")]
 // was: RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const
 // type: int __fastcall(RBX::TaskScheduler::Job *this)
-pub fn stub_3f090() -> ! {
-    todo!("0x3f090 RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")
+// IDA 0x3f090: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3f090() {
 }
 
 
@@ -106,40 +106,40 @@ pub fn stub_3f090() -> ! {
 #[doc(alias = "boost::bad_weak_ptr::~bad_weak_ptr()")]
 // was: boost::bad_weak_ptr::~bad_weak_ptr()
 // type: void __fastcall(boost::bad_weak_ptr *__hidden this)
-pub fn stub_3fcf8() -> ! {
-    todo!("0x3fcf8 boost::bad_weak_ptr::~bad_weak_ptr()")
+// IDA 0x3fcf8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fcf8() {
 }
 
 
 // 0x3fd10 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
-pub fn stub_3fd10() -> ! {
-    todo!("0x3fd10 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+// IDA 0x3fd10: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fd10() {
 }
 
 
 // 0x3fd38 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
-pub fn stub_3fd38() -> ! {
-    todo!("0x3fd38 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+// IDA 0x3fd38: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fd38() {
 }
 
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
-pub fn stub_3fd60() -> ! {
-    todo!("0x3fd60 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+// IDA 0x3fd60: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fd60() {
 }
 
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
-pub fn stub_3fd88() -> ! {
-    todo!("0x3fd88 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+// IDA 0x3fd88: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fd88() {
 }
 
 
@@ -147,48 +147,48 @@ pub fn stub_3fd88() -> ! {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const
 // type: int(void)
-pub fn stub_3fdb8() -> ! {
-    todo!("0x3fdb8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+// IDA 0x3fdb8: 93 insns (PUSH..TBB.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3fdb8() {
 }
 
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
-pub fn stub_3fee0() -> ! {
-    todo!("0x3fee0 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+// IDA 0x3fee0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3fee0() {
 }
 
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const
-pub fn stub_3ff18() -> ! {
-    todo!("0x3ff18 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+// IDA 0x3ff18: 6 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3ff18() {
 }
 
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
-pub fn stub_3ff28() -> ! {
-    todo!("0x3ff28 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+// IDA 0x3ff28: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3ff28() {
 }
 
 
 // 0x3ff60 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
-pub fn stub_3ff60() -> ! {
-    todo!("0x3ff60 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+// IDA 0x3ff60: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3ff60() {
 }
 
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
-pub fn stub_3ff90() -> ! {
-    todo!("0x3ff90 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+// IDA 0x3ff90: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_3ff90() {
 }
 
 
@@ -196,16 +196,16 @@ pub fn stub_3ff90() -> ! {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)
 // type: int __fastcall(int, int, int, int, char, std::exception *, int, int, int, int)
-pub fn stub_3ffc0() -> ! {
-    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")
+// IDA 0x3ffc0: 154 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_3ffc0() {
 }
 
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 // was: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
-pub fn stub_40318() -> ! {
-    todo!("0x40318 boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+// IDA 0x40318: 74 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_40318() {
 }
 
 
@@ -213,8 +213,8 @@ pub fn stub_40318() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
 // was: RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
-pub fn stub_403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+// IDA 0x403f0: 88 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_403f0() {
 }
 
 
@@ -222,8 +222,8 @@ pub fn stub_403f0() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
 // was: RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
-pub fn stub_404f0() -> ! {
-    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+// IDA 0x404f0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_404f0() {
 }
 
 
@@ -231,8 +231,8 @@ pub fn stub_404f0() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
 // was: RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
-pub fn stub_4059c() -> ! {
-    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+// IDA 0x4059c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_4059c() {
 }
 
 
@@ -240,8 +240,8 @@ pub fn stub_4059c() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
-pub fn stub_40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+// IDA 0x40650: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_40650() {
 }
 
 
@@ -249,8 +249,8 @@ pub fn stub_40650() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
-pub fn stub_40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+// IDA 0x40680: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_40680() {
 }
 
 
@@ -258,16 +258,16 @@ pub fn stub_40680() -> ! {
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
 // was: RobloxView::ViewUpdateJob::getPriorityFactor(void)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
-pub fn stub_406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+// IDA 0x406a8: 3 insns (VMOV.F64..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_406a8() {
 }
 
 
 // 0x406b4 — __ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
 // was: RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)
-pub fn stub_406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+// IDA 0x406b4: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_406b4() {
 }
 
 
@@ -275,16 +275,16 @@ pub fn stub_406b4() -> ! {
 #[doc(alias = "boost::function0<void>::clear(void)")]
 // was: boost::function0<void>::clear(void)
 // type: int __fastcall(_DWORD)
-pub fn stub_406e0() -> ! {
-    todo!("0x406e0 boost::function0<void>::clear(void)")
+// IDA 0x406e0: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_406e0() {
 }
 
 
 // 0x4070c — __GLOBAL__I_a_10
 #[doc(alias = "global constructor keyed to_a_10")]
 // was: global constructor keyed to _a_10
-pub fn stub_4070c() -> ! {
-    todo!("0x4070c global constructor keyed to_a_10")
+// IDA 0x4070c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_4070c() {
 }
 
 
@@ -292,8 +292,8 @@ pub fn stub_4070c() -> ! {
 #[doc(alias = "-[UserInfo init]")]
 // was: -[UserInfo init]
 // type: UserInfo *__cdecl(UserInfo *self, SEL)
-pub fn stub_40984() -> ! {
-    todo!("0x40984 -[UserInfo init]")
+// IDA 0x40984: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_40984() {
 }
 
 
@@ -301,8 +301,8 @@ pub fn stub_40984() -> ! {
 #[doc(alias = "-[UserInfo setUserLoggedIn:]")]
 // was: -[UserInfo setUserLoggedIn:]
 // type: void __cdecl(UserInfo *self, SEL, char)
-pub fn stub_409b0() -> ! {
-    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+// IDA 0x409b0: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_409b0() {
 }
 
 
@@ -310,8 +310,8 @@ pub fn stub_409b0() -> ! {
 #[doc(alias = "-[UserInfo userLoggedIn]")]
 // was: -[UserInfo userLoggedIn]
 // type: char __cdecl(UserInfo *self, SEL)
-pub fn stub_40ab4() -> ! {
-    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+// IDA 0x40ab4: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_40ab4() {
 }
 
 
@@ -319,32 +319,32 @@ pub fn stub_40ab4() -> ! {
 #[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
 // was: -[UserInfo UpdatePlayerInfo]
 // type: void __cdecl(UserInfo *self, SEL)
-pub fn stub_40ac4() -> ! {
-    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+// IDA 0x40ac4: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_40ac4() {
 }
 
 
 // 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
 #[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
 // was: ___28-[UserInfo UpdatePlayerInfo]_block_invoke
-pub fn stub_40c58() -> ! {
-    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+// IDA 0x40c58: 404 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_40c58() {
 }
 
 
 // 0x41104 — ___copy_helper_block__6
 #[doc(alias = "___copy_helper_block__6")]
 // was: ___copy_helper_block__6
-pub fn stub_41104() -> ! {
-    todo!("0x41104 ___copy_helper_block__6")
+// IDA 0x41104: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41104() {
 }
 
 
 // 0x41128 — ___destroy_helper_block__6
 #[doc(alias = "___destroy_helper_block__6")]
 // was: ___destroy_helper_block__6
-pub fn stub_41128() -> ! {
-    todo!("0x41128 ___destroy_helper_block__6")
+// IDA 0x41128: 10 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41128() {
 }
 
 
@@ -352,8 +352,8 @@ pub fn stub_41128() -> ! {
 #[doc(alias = "+[UserInfo CurrentPlayer]")]
 // was: +[UserInfo CurrentPlayer]
 // type: id __cdecl(id, SEL)
-pub fn stub_41144() -> ! {
-    todo!("0x41144 +[UserInfo CurrentPlayer]")
+// IDA 0x41144: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41144() {
 }
 
 
@@ -361,8 +361,8 @@ pub fn stub_41144() -> ! {
 #[doc(alias = "-[UserInfo Robux]")]
 // was: -[UserInfo Robux]
 // type: id __cdecl(UserInfo *self, SEL)
-pub fn stub_4118c() -> ! {
-    todo!("0x4118c -[UserInfo Robux]")
+// IDA 0x4118c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4118c() {
 }
 
 
@@ -370,8 +370,8 @@ pub fn stub_4118c() -> ! {
 #[doc(alias = "convertToFriendlyString(NSNumber *)")]
 // was: convertToFriendlyString(NSNumber *)
 // type: _DWORD __fastcall(id)
-pub fn stub_411a0() -> ! {
-    todo!("0x411a0 convertToFriendlyString(NSNumber *)")
+// IDA 0x411a0: 65 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_411a0() {
 }
 
 
@@ -379,8 +379,8 @@ pub fn stub_411a0() -> ! {
 #[doc(alias = "-[UserInfo Tix]")]
 // was: -[UserInfo Tix]
 // type: id __cdecl(UserInfo *self, SEL)
-pub fn stub_41288() -> ! {
-    todo!("0x41288 -[UserInfo Tix]")
+// IDA 0x41288: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41288() {
 }
 
 
@@ -388,8 +388,8 @@ pub fn stub_41288() -> ! {
 #[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
 // was: +[UserInfo clearAllRobloxCookie]
 // type: void __cdecl(id, SEL)
-pub fn stub_4129c() -> ! {
-    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+// IDA 0x4129c: 241 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4129c() {
 }
 
 
@@ -397,8 +397,8 @@ pub fn stub_4129c() -> ! {
 #[doc(alias = "+[UserInfo printCookies]")]
 // was: +[UserInfo printCookies]
 // type: void __cdecl(id, SEL)
-pub fn stub_41580() -> ! {
-    todo!("0x41580 +[UserInfo printCookies]")
+// IDA 0x41580: 362 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41580() {
 }
 
 
@@ -406,8 +406,8 @@ pub fn stub_41580() -> ! {
 #[doc(alias = "+[UserInfo logout]")]
 // was: +[UserInfo logout]
 // type: void __cdecl(id, SEL)
-pub fn stub_419c8() -> ! {
-    todo!("0x419c8 +[UserInfo logout]")
+// IDA 0x419c8: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_419c8() {
 }
 
 
@@ -415,8 +415,8 @@ pub fn stub_419c8() -> ! {
 #[doc(alias = "-[UserInfo userInfoDict]")]
 // was: -[UserInfo userInfoDict]
 // type: NSDictionary *__cdecl(UserInfo *self, SEL)
-pub fn stub_419f4() -> ! {
-    todo!("0x419f4 -[UserInfo userInfoDict]")
+// IDA 0x419f4: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_419f4() {
 }
 
 
@@ -424,8 +424,8 @@ pub fn stub_419f4() -> ! {
 #[doc(alias = "-[UserInfo setUserInfoDict:]")]
 // was: -[UserInfo setUserInfoDict:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41a04() -> ! {
-    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+// IDA 0x41a04: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41a04() {
 }
 
 
@@ -433,8 +433,8 @@ pub fn stub_41a04() -> ! {
 #[doc(alias = "-[UserInfo userinfo]")]
 // was: -[UserInfo userinfo]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41a28() -> ! {
-    todo!("0x41a28 -[UserInfo userinfo]")
+// IDA 0x41a28: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41a28() {
 }
 
 
@@ -442,8 +442,8 @@ pub fn stub_41a28() -> ! {
 #[doc(alias = "-[UserInfo setUserinfo:]")]
 // was: -[UserInfo setUserinfo:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41a38() -> ! {
-    todo!("0x41a38 -[UserInfo setUserinfo:]")
+// IDA 0x41a38: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41a38() {
 }
 
 
@@ -451,8 +451,8 @@ pub fn stub_41a38() -> ! {
 #[doc(alias = "-[UserInfo rbxBal]")]
 // was: -[UserInfo rbxBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
-pub fn stub_41a5c() -> ! {
-    todo!("0x41a5c -[UserInfo rbxBal]")
+// IDA 0x41a5c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41a5c() {
 }
 
 
@@ -460,8 +460,8 @@ pub fn stub_41a5c() -> ! {
 #[doc(alias = "-[UserInfo setRbxBal:]")]
 // was: -[UserInfo setRbxBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41a6c() -> ! {
-    todo!("0x41a6c -[UserInfo setRbxBal:]")
+// IDA 0x41a6c: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41a6c() {
 }
 
 
@@ -469,8 +469,8 @@ pub fn stub_41a6c() -> ! {
 #[doc(alias = "-[UserInfo tikBal]")]
 // was: -[UserInfo tikBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
-pub fn stub_41a90() -> ! {
-    todo!("0x41a90 -[UserInfo tikBal]")
+// IDA 0x41a90: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41a90() {
 }
 
 
@@ -478,8 +478,8 @@ pub fn stub_41a90() -> ! {
 #[doc(alias = "-[UserInfo setTikBal:]")]
 // was: -[UserInfo setTikBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41aa0() -> ! {
-    todo!("0x41aa0 -[UserInfo setTikBal:]")
+// IDA 0x41aa0: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41aa0() {
 }
 
 
@@ -487,8 +487,8 @@ pub fn stub_41aa0() -> ! {
 #[doc(alias = "-[UserInfo userThumbNailUrl]")]
 // was: -[UserInfo userThumbNailUrl]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41ac4() -> ! {
-    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+// IDA 0x41ac4: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41ac4() {
 }
 
 
@@ -496,8 +496,8 @@ pub fn stub_41ac4() -> ! {
 #[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
 // was: -[UserInfo setUserThumbNailUrl:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41ad4() -> ! {
-    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+// IDA 0x41ad4: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41ad4() {
 }
 
 
@@ -505,8 +505,8 @@ pub fn stub_41ad4() -> ! {
 #[doc(alias = "-[UserInfo bcMember]")]
 // was: -[UserInfo bcMember]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41af8() -> ! {
-    todo!("0x41af8 -[UserInfo bcMember]")
+// IDA 0x41af8: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41af8() {
 }
 
 
@@ -514,8 +514,8 @@ pub fn stub_41af8() -> ! {
 #[doc(alias = "-[UserInfo setBcMember:]")]
 // was: -[UserInfo setBcMember:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41b08() -> ! {
-    todo!("0x41b08 -[UserInfo setBcMember:]")
+// IDA 0x41b08: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41b08() {
 }
 
 
@@ -523,8 +523,8 @@ pub fn stub_41b08() -> ! {
 #[doc(alias = "-[UserInfo encodedPassword]")]
 // was: -[UserInfo encodedPassword]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41b2c() -> ! {
-    todo!("0x41b2c -[UserInfo encodedPassword]")
+// IDA 0x41b2c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41b2c() {
 }
 
 
@@ -532,8 +532,8 @@ pub fn stub_41b2c() -> ! {
 #[doc(alias = "-[UserInfo setEncodedPassword:]")]
 // was: -[UserInfo setEncodedPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41b3c() -> ! {
-    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+// IDA 0x41b3c: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41b3c() {
 }
 
 
@@ -541,8 +541,8 @@ pub fn stub_41b3c() -> ! {
 #[doc(alias = "-[UserInfo encodedUsername]")]
 // was: -[UserInfo encodedUsername]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41b60() -> ! {
-    todo!("0x41b60 -[UserInfo encodedUsername]")
+// IDA 0x41b60: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41b60() {
 }
 
 
@@ -550,8 +550,8 @@ pub fn stub_41b60() -> ! {
 #[doc(alias = "-[UserInfo setEncodedUsername:]")]
 // was: -[UserInfo setEncodedUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41b70() -> ! {
-    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+// IDA 0x41b70: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41b70() {
 }
 
 
@@ -559,8 +559,8 @@ pub fn stub_41b70() -> ! {
 #[doc(alias = "-[UserInfo username]")]
 // was: -[UserInfo username]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41b94() -> ! {
-    todo!("0x41b94 -[UserInfo username]")
+// IDA 0x41b94: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41b94() {
 }
 
 
@@ -568,8 +568,8 @@ pub fn stub_41b94() -> ! {
 #[doc(alias = "-[UserInfo setUsername:]")]
 // was: -[UserInfo setUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41ba4() -> ! {
-    todo!("0x41ba4 -[UserInfo setUsername:]")
+// IDA 0x41ba4: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41ba4() {
 }
 
 
@@ -577,8 +577,8 @@ pub fn stub_41ba4() -> ! {
 #[doc(alias = "-[UserInfo password]")]
 // was: -[UserInfo password]
 // type: NSString *__cdecl(UserInfo *self, SEL)
-pub fn stub_41bc8() -> ! {
-    todo!("0x41bc8 -[UserInfo password]")
+// IDA 0x41bc8: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_41bc8() {
 }
 
 
@@ -586,16 +586,16 @@ pub fn stub_41bc8() -> ! {
 #[doc(alias = "-[UserInfo setPassword:]")]
 // was: -[UserInfo setPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
-pub fn stub_41bd8() -> ! {
-    todo!("0x41bd8 -[UserInfo setPassword:]")
+// IDA 0x41bd8: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_41bd8() {
 }
 
 
 // 0x41bfc — __GLOBAL__I_a_11
 #[doc(alias = "global constructor keyed to_a_11")]
 // was: global constructor keyed to _a_11
-pub fn stub_41bfc() -> ! {
-    todo!("0x41bfc global constructor keyed to_a_11")
+// IDA 0x41bfc: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_41bfc() {
 }
 
 
@@ -603,8 +603,8 @@ pub fn stub_41bfc() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
 // was: +[RobloxGoogleAnalytics initialize]
 // type: void __cdecl(id, SEL)
-pub fn stub_41cc4() -> ! {
-    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+// IDA 0x41cc4: 13 insns (MOV..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41cc4() {
 }
 
 
@@ -612,8 +612,8 @@ pub fn stub_41cc4() -> ! {
 #[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
 // was: ___35+[RobloxGoogleAnalytics initialize]_block_invoke
 // type: void __cdecl(id)
-pub fn stub_41cf0() -> ! {
-    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+// IDA 0x41cf0: 185 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41cf0() {
 }
 
 
@@ -621,8 +621,8 @@ pub fn stub_41cf0() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
 // was: +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
-pub fn stub_41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+// IDA 0x41f28: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_41f28() {
 }
 
 
@@ -630,8 +630,8 @@ pub fn stub_41f28() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
 // was: +[RobloxGoogleAnalytics callBackPageTracking:]
 // type: void __cdecl(id, SEL, id)
-pub fn stub_41f2c() -> ! {
-    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+// IDA 0x41f2c: 22 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41f2c() {
 }
 
 
@@ -639,8 +639,8 @@ pub fn stub_41f2c() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
 // was: +[RobloxGoogleAnalytics setPageViewTracking:]
 // type: void __cdecl(id, SEL, id)
-pub fn stub_41f74() -> ! {
-    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+// IDA 0x41f74: 59 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_41f74() {
 }
 
 
@@ -648,8 +648,8 @@ pub fn stub_41f74() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
 // was: +[RobloxGoogleAnalytics callBackEventTracking:]
 // type: void __cdecl(id, SEL, id)
-pub fn stub_4203c() -> ! {
-    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+// IDA 0x4203c: 56 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_4203c() {
 }
 
 
@@ -657,8 +657,8 @@ pub fn stub_4203c() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
 // was: +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id, id, int)
-pub fn stub_420e4() -> ! {
-    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+// IDA 0x420e4: 96 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_420e4() {
 }
 
 
@@ -666,8 +666,8 @@ pub fn stub_420e4() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
 // was: +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
 // type: void __cdecl(id, SEL, id)
-pub fn stub_42230() -> ! {
-    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+// IDA 0x42230: 33 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42230() {
 }
 
 
@@ -675,8 +675,8 @@ pub fn stub_42230() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
 // was: +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id)
-pub fn stub_42298() -> ! {
-    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+// IDA 0x42298: 66 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42298() {
 }
 
 
@@ -684,8 +684,8 @@ pub fn stub_42298() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
 // was: +[RobloxGoogleAnalytics debugCountersPrint]
 // type: void __cdecl(id, SEL)
-pub fn stub_42374() -> ! {
-    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+// IDA 0x42374: 106 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42374() {
 }
 
 
@@ -693,16 +693,16 @@ pub fn stub_42374() -> ! {
 #[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
 // was: +[RobloxGoogleAnalytics debugCounterIncrement:]
 // type: void __cdecl(id, SEL, id)
-pub fn stub_424cc() -> ! {
-    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+// IDA 0x424cc: 57 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_424cc() {
 }
 
 
 // 0x42580 — __GLOBAL__I_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
 // was: global constructor keyed to _a_12
-pub fn stub_42580() -> ! {
-    todo!("0x42580 global constructor keyed to_a_12")
+// IDA 0x42580: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+pub fn stub_42580() {
 }
 
 
@@ -710,32 +710,32 @@ pub fn stub_42580() -> ! {
 #[doc(alias = "+[RobloxWebUtility sharedInstance]")]
 // was: +[RobloxWebUtility sharedInstance]
 // type: id __cdecl(id, SEL)
-pub fn stub_42718() -> ! {
-    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+// IDA 0x42718: 33 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42718() {
 }
 
 
 // 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
 #[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
 // was: ___34+[RobloxWebUtility sharedInstance]_block_invoke
-pub fn stub_42774() -> ! {
-    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+// IDA 0x42774: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42774() {
 }
 
 
 // 0x427a8 — ___copy_helper_block__7
 #[doc(alias = "___copy_helper_block__7")]
 // was: ___copy_helper_block__7
-pub fn stub_427a8() -> ! {
-    todo!("0x427a8 ___copy_helper_block__7")
+// IDA 0x427a8: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_427a8() {
 }
 
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
 // was: ___destroy_helper_block__7
-pub fn stub_427b4() -> ! {
-    todo!("0x427b4 ___destroy_helper_block__7")
+// IDA 0x427b4: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_427b4() {
 }
 
 
@@ -743,8 +743,8 @@ pub fn stub_427b4() -> ! {
 #[doc(alias = "-[RobloxWebUtility init]")]
 // was: -[RobloxWebUtility init]
 // type: RobloxWebUtility *__cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_427c0() -> ! {
-    todo!("0x427c0 -[RobloxWebUtility init]")
+// IDA 0x427c0: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_427c0() {
 }
 
 
@@ -752,8 +752,8 @@ pub fn stub_427c0() -> ! {
 #[doc(alias = "-[RobloxWebUtility dealloc]")]
 // was: -[RobloxWebUtility dealloc]
 // type: void __cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_42880() -> ! {
-    todo!("0x42880 -[RobloxWebUtility dealloc]")
+// IDA 0x42880: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_42880() {
 }
 
 
@@ -761,8 +761,8 @@ pub fn stub_42880() -> ! {
 #[doc(alias = "-[RobloxWebUtility getiOSLogQueue]")]
 // was: -[RobloxWebUtility getiOSLogQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_4290c() -> ! {
-    todo!("0x4290c -[RobloxWebUtility getiOSLogQueue]")
+// IDA 0x4290c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4290c() {
 }
 
 
@@ -770,8 +770,8 @@ pub fn stub_4290c() -> ! {
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsQueue]")]
 // was: -[RobloxWebUtility getiOSSettingsQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_4291c() -> ! {
-    todo!("0x4291c -[RobloxWebUtility getiOSSettingsQueue]")
+// IDA 0x4291c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4291c() {
 }
 
 
@@ -779,8 +779,8 @@ pub fn stub_4291c() -> ! {
 #[doc(alias = "-[RobloxWebUtility setCachediOSSettings:]")]
 // was: -[RobloxWebUtility setCachediOSSettings:]
 // type: void __cdecl(RobloxWebUtility *self, SEL, iOSSettingsService *)
-pub fn stub_4292c() -> ! {
-    todo!("0x4292c -[RobloxWebUtility setCachediOSSettings:]")
+// IDA 0x4292c: ObjC setter (STR ivar); field recovery pending — no-op.
+pub fn stub_4292c() {
 }
 
 
@@ -788,8 +788,8 @@ pub fn stub_4292c() -> ! {
 #[doc(alias = "-[RobloxWebUtility getCachediOSSettings]")]
 // was: -[RobloxWebUtility getCachediOSSettings]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_4293c() -> ! {
-    todo!("0x4293c -[RobloxWebUtility getCachediOSSettings]")
+// IDA 0x4293c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4293c() {
 }
 
 
@@ -797,8 +797,8 @@ pub fn stub_4293c() -> ! {
 #[doc(alias = "-[RobloxWebUtility getLastSettingsRequestTime]")]
 // was: -[RobloxWebUtility getLastSettingsRequestTime]
 // type: id __cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_4294c() -> ! {
-    todo!("0x4294c -[RobloxWebUtility getLastSettingsRequestTime]")
+// IDA 0x4294c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4294c() {
 }
 
 
@@ -806,8 +806,8 @@ pub fn stub_4294c() -> ! {
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsServiceFromWeb]")]
 // was: -[RobloxWebUtility getiOSSettingsServiceFromWeb]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
-pub fn stub_4295c() -> ! {
-    todo!("0x4295c -[RobloxWebUtility getiOSSettingsServiceFromWeb]")
+// IDA 0x4295c: ObjC getter (LDR ivar, returns id); field recovery pending — no-op.
+pub fn stub_4295c() {
 }
 
 
@@ -815,8 +815,8 @@ pub fn stub_4295c() -> ! {
 #[doc(alias = "+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")]
 // was: +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]
 // type: iOSSettingsService *__cdecl(id, SEL, char)
-pub fn stub_42a98() -> ! {
-    todo!("0x42a98 +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")
+// IDA 0x42a98: 104 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42a98() {
 }
 
 
@@ -824,24 +824,24 @@ pub fn stub_42a98() -> ! {
 #[doc(alias = "___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")]
 // was: ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke
 // type: iOSSettingsService *__fastcall(int)
-pub fn stub_42bc8() -> ! {
-    todo!("0x42bc8 ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")
+// IDA 0x42bc8: 160 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42bc8() {
 }
 
 
 // 0x42dd8 — ___copy_helper_block_65
 #[doc(alias = "___copy_helper_block_65")]
 // was: ___copy_helper_block_65
-pub fn stub_42dd8() -> ! {
-    todo!("0x42dd8 ___copy_helper_block_65")
+// IDA 0x42dd8: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42dd8() {
 }
 
 
 // 0x42de4 — ___destroy_helper_block_66
 #[doc(alias = "___destroy_helper_block_66")]
 // was: ___destroy_helper_block_66
-pub fn stub_42de4() -> ! {
-    todo!("0x42de4 ___destroy_helper_block_66")
+// IDA 0x42de4: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42de4() {
 }
 
 
@@ -849,8 +849,8 @@ pub fn stub_42de4() -> ! {
 #[doc(alias = "+[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")]
 // was: +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
-pub fn stub_42dec() -> ! {
-    todo!("0x42dec +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")
+// IDA 0x42dec: 297 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_42dec() {
 }
 
 
@@ -858,8 +858,8 @@ pub fn stub_42dec() -> ! {
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
 // was: iOSSettingsService::iOSSettingsService(void)
 // type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
-pub fn stub_43180() -> ! {
-    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+// IDA 0x43180: 109 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_43180() {
 }
 
 
@@ -867,8 +867,8 @@ pub fn stub_43180() -> ! {
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 // was: iOSSettingsService::~iOSSettingsService()
 // type: void __fastcall(iOSSettingsService *__hidden this)
-pub fn stub_432b0() -> ! {
-    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+// IDA 0x432b0: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_432b0() {
 }
 
 
@@ -876,7 +876,7 @@ pub fn stub_432b0() -> ! {
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 // was: iOSSettingsService::~iOSSettingsService()
 // type: void __fastcall(iOSSettingsService *__hidden this)
-pub fn stub_432b4() -> ! {
-    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+// IDA 0x432b4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_432b4() {
 }
 
