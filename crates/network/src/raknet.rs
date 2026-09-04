@@ -4562,14 +4562,16 @@ pub fn stub_b21580(list: &mut crate::signal::SlotList) -> crate::signal::SlotId 
 
 // 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
-pub fn stub_b21844() -> ! {
-    todo!("0xb21844 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
+pub fn stub_b21844(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xb21844: `intrusive_ptr<slot>::operator=` (pointer form) — stores the pointer.
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xb218f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
-pub fn stub_b218f8() -> ! {
-    todo!("0xb218f8 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
+pub fn stub_b218f8(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xb218f8: `intrusive_ptr<slot>::operator=` (const-ref form) — stores the pointer.
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xb219ac — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13callable_slotINS6_3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network10ReplicatorES5_SB_SD_SD_EENSH_5list5INSH_5valueINS7_ISN_EEEENS6_3argILi1EEENST_ILi2EEENST_ILi3EEENST_ILi4EEEEEEEED1Ev
@@ -5984,14 +5986,16 @@ pub fn stub_f63644() -> ! {
 
 // 0xf63754 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
-pub fn stub_f63754() -> ! {
-    todo!("0xf63754 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
+pub fn stub_f63754(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // Thunk (IDA 0xf63754): tail-jumps to `intrusive_ptr<slot>::operator=`.
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xf63764 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
-pub fn stub_f63764() -> ! {
-    todo!("0xf63764 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
+pub fn stub_f63764(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // Thunk (IDA 0xf63764): tail-jumps to `intrusive_ptr<slot>::operator=`.
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xf638d4 — j___ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
@@ -6456,8 +6460,9 @@ pub fn stub_7a8b34(list: &mut crate::signal::SlotList) -> crate::signal::SlotId 
 
 // 0x7a8d40 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEEaSEPSB_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot*)")]
-pub fn stub_7a8d40() -> ! {
-    todo!("0x7a8d40 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot*)")
+pub fn stub_7a8d40(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0x7a8d40: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0x7a8d64 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE24safe_static_do_get_mutexEv
@@ -11246,8 +11251,9 @@ pub fn stub_9d0e64() -> ! {
 #[doc(
     alias = "rbx::signals::signal_with_args<4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot *,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)"
 )]
-pub fn stub_9d0f4c() -> ! {
-    todo!("0x9d0f4c rbx::signals::signal_with_args<4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot *,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)")
+pub fn stub_9d0f4c<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: C, d: D) {
+    // IDA 0x9d0f4c: `signal_with_args<4>::fireItem` — invokes one slot with four args.
+    crate::functor::invoke4(slot, a, b, c, d);
 }
 
 // 0x9d1464 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_E7connectEPNS0_11EventSourceERKNS4_8functionIS9_EE
@@ -11346,8 +11352,9 @@ pub fn stub_9d2db0() -> ! {
 #[doc(
     alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot*)"
 )]
-pub fn stub_9d3064() -> ! {
-    todo!("0x9d3064 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot*)")
+pub fn stub_9d3064(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0x9d3064: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0x9d3118 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE13callable_slotINS2_8functionIS9_EEED1Ev
@@ -12124,8 +12131,9 @@ pub fn stub_9e34e0() -> ! {
 // 0x9e39e0 — __ZN3rbx7signals16signal_with_argsILi4EFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEEclES6_S8_S6_Ss
 // type: void __fastcall(_DWORD *, int *, int, int *, std::string *)
 #[doc(alias = "rbx::signals::signal_with_args<4,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)")]
-pub fn stub_9e39e0() -> ! {
-    todo!("0x9e39e0 rbx::signals::signal_with_args<4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)")
+pub fn stub_9e39e0(list: &crate::signal::SlotList, fire: impl FnMut()) {
+    // IDA 0x9e39e0: `signal_with_args<4>::operator()` — `if (*head)` log + walk slots via `next`, invoking each.
+    crate::signal::emit_each(list, fire);
 }
 
 // 0x9e4034 — __ZNK5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEEclES6_
@@ -12327,15 +12335,17 @@ pub fn stub_9e7664() -> ! {
 // 0x9e7668 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 // type: int __fastcall(int, int32_t **)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> &)")]
-pub fn stub_9e7668() -> ! {
-    todo!("0x9e7668 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot> &)")
+pub fn stub_9e7668(list: &crate::signal::SlotList, cursor: &mut Option<crate::signal::SlotId>) -> bool {
+    // IDA 0x9e7668: `signal::next` — advances the emission cursor.
+    crate::signal::next_slot(list, cursor)
 }
 
 // 0x9e7870 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotEEaSERKSD_
 // type: int32_t **__fastcall(int32_t **, int32_t **)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> const&)")]
-pub fn stub_9e7870() -> ! {
-    todo!("0x9e7870 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot> const&)")
+pub fn stub_9e7870(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0x9e7870: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0x9e7f18 — __ZN3RBX7Network10Replicator19isLegalReceiveEventEPNS_8InstanceERKNS_10Reflection15EventDescriptorE
@@ -14213,15 +14223,17 @@ pub fn stub_a1c8e8() -> ! {
 // 0xa1ced4 — __ZN3rbx7signals16signal_with_argsILi4EFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EEclES5_S9_SsS9_
 // type: void __fastcall(_DWORD *, int, int *, std::string *, int *)
 #[doc(alias = "rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a1ced4() -> ! {
-    todo!("0xa1ced4 rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a1ced4(list: &crate::signal::SlotList, fire: impl FnMut()) {
+    // IDA 0xa1ced4: `signal_with_args<4>::operator()` — `if (*head)` log + walk slots via `next`, invoking each.
+    crate::signal::emit_each(list, fire);
 }
 
 // 0xa1d83c — __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX7Network11ChatMessageEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Network::ChatMessage const&)>::operator()(RBX::Network::ChatMessage const&)")]
-pub fn stub_a1d83c() -> ! {
-    todo!("0xa1d83c rbx::signals::signal_with_args<1,void ()(RBX::Network::ChatMessage const&)>::operator()(RBX::Network::ChatMessage const&)")
+pub fn stub_a1d83c<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0xa1d83c: `signal_with_args<1>::operator()` — emission drives each slot (see `emit_each`).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xa1daf8 — __ZN3RBX11shared_fromINS_7Network6PlayerEEEN5boost10shared_ptrIT_EEPS5_
@@ -14248,8 +14260,9 @@ pub fn stub_a1e654() -> ! {
 // 0xa1eab0 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX7Network11AbuseReportEEEclES4_
 // type: void __fastcall(_DWORD *, int *, int, const void *)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Network::AbuseReport)>::operator()(RBX::Network::AbuseReport)")]
-pub fn stub_a1eab0() -> ! {
-    todo!("0xa1eab0 rbx::signals::signal_with_args<1,void ()(RBX::Network::AbuseReport)>::operator()(RBX::Network::AbuseReport)")
+pub fn stub_a1eab0<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0xa1eab0: `signal_with_args<1>::operator()` — emission drives each slot (see `emit_each`).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xa1f558 — __ZN3RBX10Reflection13DescribedBase15fastDynamicCastINS_7Network6PlayerEEEPT_PS1_
@@ -14927,8 +14940,9 @@ pub fn stub_a329a8() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot> &)"
 )]
-pub fn stub_a34c4c() -> ! {
-    todo!("0xa34c4c rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot> &)")
+pub fn stub_a34c4c(list: &crate::signal::SlotList, cursor: &mut Option<crate::signal::SlotId>) -> bool {
+    // IDA 0xa34c4c: `signal::next` — advances the emission cursor.
+    crate::signal::next_slot(list, cursor)
 }
 
 // 0xa34e60 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX7Network11AbuseReportEEE8fireItemEPNS0_6signalIS5_E4slotES4_
@@ -14936,8 +14950,9 @@ pub fn stub_a34c4c() -> ! {
 #[doc(
     alias = "rbx::signals::signal_with_args<1,void ()(RBX::Network::AbuseReport)>::fireItem(rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot *,RBX::Network::AbuseReport)"
 )]
-pub fn stub_a34e60() -> ! {
-    todo!("0xa34e60 rbx::signals::signal_with_args<1,void ()(RBX::Network::AbuseReport)>::fireItem(rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot *,RBX::Network::AbuseReport)")
+pub fn stub_a34e60<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0xa34e60: `signal_with_args<1>::fireItem` — invokes one slot with one arg.
+    crate::functor::invoke1(slot, a);
 }
 
 // 0xa351d4 — __ZN3rbx7signals6signalIFvN3RBX7Network11AbuseReportEEE5mutexEv
@@ -14952,8 +14967,9 @@ pub fn stub_a351d4() -> ! {
 #[doc(
     alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot> const&)"
 )]
-pub fn stub_a352e8() -> ! {
-    todo!("0xa352e8 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::slot> const&)")
+pub fn stub_a352e8(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xa352e8: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xa3539c — __ZN3rbx7signals6signalIFvN3RBX7Network11AbuseReportEEE22safe_static_init_mutexEv
@@ -15081,8 +15097,9 @@ pub fn stub_a394f0() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot> &)"
 )]
-pub fn stub_a39718() -> ! {
-    todo!("0xa39718 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot> &)")
+pub fn stub_a39718(list: &crate::signal::SlotList, cursor: &mut Option<crate::signal::SlotId>) -> bool {
+    // IDA 0xa39718: `signal::next` — advances the emission cursor (same shape as 0x9e7668).
+    crate::signal::next_slot(list, cursor)
 }
 
 // 0xa3992c — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE5mutexEv
@@ -15097,8 +15114,9 @@ pub fn stub_a3992c() -> ! {
 #[doc(
     alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot> const&)"
 )]
-pub fn stub_a39a40() -> ! {
-    todo!("0xa39a40 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot> const&)")
+pub fn stub_a39a40(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xa39a40: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xa39af4 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE22safe_static_init_mutexEv
@@ -15122,8 +15140,9 @@ pub fn stub_a39be0() -> ! {
 #[doc(
     alias = "rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)"
 )]
-pub fn stub_a39df4() -> ! {
-    todo!("0xa39df4 rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a39df4<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: C, d: D) {
+    // IDA 0xa39df4: `signal_with_args<4>::fireItem` — invokes one slot with four args.
+    crate::functor::invoke4(slot, a, b, c, d);
 }
 
 // 0xa3a300 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE5mutexEv
@@ -15140,8 +15159,9 @@ pub fn stub_a3a300() -> ! {
 #[doc(
     alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> const&)"
 )]
-pub fn stub_a3a414() -> ! {
-    todo!("0xa3a414 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> const&)")
+pub fn stub_a3a414(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xa3a414: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xa3a4c8 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE22safe_static_init_mutexEv
@@ -15938,8 +15958,9 @@ pub fn stub_a4c674() -> ! {
 #[doc(
     alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)"
 )]
-pub fn stub_a4c934() -> ! {
-    todo!("0xa4c934 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)")
+pub fn stub_a4c934(target: &mut Option<crate::signal::SlotId>, other: Option<crate::signal::SlotId>) {
+    // IDA 0xa4c934: `intrusive_ptr<slot>::operator=` — stores the pointer (refcounts engine-side).
+    crate::signal::slot_assign(target, other);
 }
 
 // 0xa4c9e8 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE13callable_slotINS6_8functionISA_EEED1Ev

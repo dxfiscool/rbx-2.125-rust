@@ -83,6 +83,39 @@ pub fn connect<T>(
     Some(list.insert())
 }
 
+/// `signal_with_args<N>::operator()(args)` (IDA 0x9e39e0): when linked,
+/// log under `SignalPrints`, then walk the slots via `next`, invoking each
+/// functor with `args` (refcount traffic engine-side). The per-slot
+/// functors stay engine-side; this drives the caller's composed emission
+/// once per linked slot.
+pub fn emit_each(list: &SlotList, mut fire_one: impl FnMut()) {
+    for _ in 0..list.len() {
+        fire_one();
+    }
+}
+
+/// `signal::next(cursor)` (IDA 0x9e39e0): advances the emission cursor to
+/// the following linked slot, `false` at the end (empty cursor starts over
+/// at the head).
+pub fn next_slot(list: &SlotList, cursor: &mut Option<SlotId>) -> bool {
+    let next = match *cursor {
+        None => list.slots.first().copied(),
+        Some(id) => list
+            .slots
+            .iter()
+            .position(|s| *s == id)
+            .and_then(|pos| list.slots.get(pos + 1).copied()),
+    };
+    *cursor = next;
+    next.is_some()
+}
+
+/// `boost::intrusive_ptr<slot>::operator=` — stores the pointer; the
+/// refcount release/acquire pair stays engine-side.
+pub fn slot_assign(target: &mut Option<SlotId>, other: Option<SlotId>) {
+    *target = other;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -123,5 +156,44 @@ mod tests {
         let a = list.insert();
         list.remove(a);
         assert!(list.is_empty());
+    }
+
+    #[test]
+    fn emit_walks_each_slot() {
+        // IDA 0x9e39e0: empty signal emits nothing; otherwise once per slot.
+        let mut list = SlotList::new();
+        let mut calls = 0;
+        emit_each(&list, || calls += 1);
+        assert_eq!(calls, 0);
+        list.insert();
+        list.insert();
+        list.insert();
+        emit_each(&list, || calls += 1);
+        assert_eq!(calls, 3);
+    }
+
+    #[test]
+    fn next_cursor_walks_and_ends() {
+        let mut list = SlotList::new();
+        let a = list.insert();
+        let b = list.insert();
+        let mut cursor = None;
+        assert!(next_slot(&list, &mut cursor));
+        assert_eq!(cursor, Some(a));
+        assert!(next_slot(&list, &mut cursor));
+        assert_eq!(cursor, Some(b));
+        assert!(!next_slot(&list, &mut cursor));
+        assert_eq!(cursor, None);
+    }
+
+    #[test]
+    fn slot_assign_stores() {
+        let mut target = None;
+        let mut list = SlotList::new();
+        let id = list.insert();
+        slot_assign(&mut target, Some(id));
+        assert_eq!(target, Some(id));
+        slot_assign(&mut target, None);
+        assert_eq!(target, None);
     }
 }
