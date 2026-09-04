@@ -1055,6 +1055,40 @@ pub struct AudioHomeViewController {
     last_signup_credentials: parking_lot::Mutex<Option<(String, String)>>,
     signup_logins: std::sync::atomic::AtomicU32,
     logged_in_state_shows: std::sync::atomic::AtomicU32,
+    logout_alerts_shown: std::sync::atomic::AtomicU32,
+    last_logout_alert: parking_lot::Mutex<Vec<&'static str>>,
+    logouts: std::sync::atomic::AtomicU32,
+    logout_page_views: std::sync::atomic::AtomicU32,
+    button_view_alpha_steps: std::sync::atomic::AtomicU32,
+    foreground_captures: std::sync::atomic::AtomicU32,
+    presented_dismisses: std::sync::atomic::AtomicU32,
+    last_foreground_x: parking_lot::Mutex<f32>,
+    last_background_x: parking_lot::Mutex<f32>,
+    view_will_appears: std::sync::atomic::AtomicU32,
+    logged_in_view_hidden: std::sync::atomic::AtomicBool,
+    not_logged_in_view_hidden: std::sync::atomic::AtomicBool,
+    logged_in_refresh_dispatches: std::sync::atomic::AtomicU32,
+    view_did_appears: std::sync::atomic::AtomicU32,
+    segue_after_load_pending: std::sync::atomic::AtomicBool,
+    segue_after_load_fired: std::sync::atomic::AtomicU32,
+    game_start_failures: std::sync::atomic::AtomicU32,
+    last_failure_alert: parking_lot::Mutex<Option<&'static str>>,
+    game_start_successes: std::sync::atomic::AtomicU32,
+    place_clicks: std::sync::atomic::AtomicU32,
+    debug_field_resigns: std::sync::atomic::AtomicU32,
+    local_game_launches: std::sync::atomic::AtomicU32,
+    last_local_launch: parking_lot::Mutex<Option<(i32, String)>>,
+    place_game_launches: std::sync::atomic::AtomicU32,
+    last_place_launch: parking_lot::Mutex<Option<i32>>,
+    search_editing_ends: std::sync::atomic::AtomicU32,
+    search_exit_segues: std::sync::atomic::AtomicU32,
+    signup_taps: std::sync::atomic::AtomicU32,
+    login_dismisses: std::sync::atomic::AtomicU32,
+    web_button_segues: std::sync::atomic::AtomicU32,
+    login_required_alerts: std::sync::atomic::AtomicU32,
+    last_login_alert: parking_lot::Mutex<Option<&'static str>>,
+    unsupported_device_alerts: std::sync::atomic::AtomicU32,
+    last_unsupported_alert: parking_lot::Mutex<Option<&'static str>>,
 }
 
 impl AudioHomeViewController {
@@ -1187,7 +1221,213 @@ impl AudioHomeViewController {
         self.logged_in_state_shows
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     }
+
+    /// Alert titles `logoutTouchUp:` builds (IDA 0x1c3c2..0x1c458).
+    pub const LOGOUT_ALERT_KEYS: [&'static str; 4] = [
+        "RobloxWord",
+        "LogoutConfirmation",
+        "CancelWord",
+        "LogoutWord",
+    ];
+
+    /// `-[HomeViewController logoutTouchUp:]` (IDA 0x1c37c): `UIAlertView`
+    /// with title `RobloxWord`, message `LogoutConfirmation`, cancel
+    /// `CancelWord`, other `LogoutWord`, delegate self; `show` then
+    /// `release`. Mirrors the platform twin.
+    pub fn logout_touch_up(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.last_logout_alert.lock() = Self::LOGOUT_ALERT_KEYS.to_vec();
+        self.logout_alerts_shown.fetch_add(1, SeqCst);
+    }
+
+    /// `-[HomeViewController alertView:didDismissWithButtonIndex:]`
+    /// (IDA 0x1c4b0): only button 1 (Logout) acts — `doLogout` +
+    /// `+[UserInfo logout]`, the 0.3s alpha animation pair, and the
+    /// `Logout/Success` page track. Cancel (0) is a no-op. Mirrors the
+    /// platform twin.
+    pub fn alert_view_did_dismiss(&self, button_index: i32) -> bool {
+        use std::sync::atomic::Ordering::SeqCst;
+        if button_index != 1 {
+            return false;
+        }
+        self.logouts.fetch_add(1, SeqCst);
+        self.button_view_alpha_steps.fetch_add(1, SeqCst);
+        self.logout_page_views.fetch_add(1, SeqCst);
+        true
+    }
+
+    /// `__58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke`
+    /// (IDA 0x1c5c8): `buttonView.alpha = 0`. Mirrors the platform twin.
+    pub fn alert_animation_step(&self) {
+        self.button_view_alpha_steps.fetch_add(
+            1,
+            std::sync::atomic::Ordering::SeqCst,
+        );
+    }
+
+    /// `__58-..._block_invoke227` (IDA 0x1c608): with a presenting
+    /// controller and a live page animator, snapshots the
+    /// foreground/background presentation-layer X, then
+    /// `dismissViewControllerAnimated:NO`. Mirrors the platform twin.
+    pub fn alert_completion(
+        &self,
+        presented: bool,
+        animating: bool,
+        foreground_x: f32,
+        background_x: f32,
+    ) {
+        use std::sync::atomic::Ordering::SeqCst;
+        if presented && !animating {
+            *self.last_foreground_x.lock() = foreground_x;
+            *self.last_background_x.lock() = background_x;
+            self.foreground_captures.fetch_add(1, SeqCst);
+        }
+        self.presented_dismisses.fetch_add(1, SeqCst);
+    }
+
+    /// `-[HomeViewController viewWillAppear:]` (IDA 0x1c748): super
+    /// `viewWillAppear:` then `showCorrectLoggedInState`. Mirrors the
+    /// platform twin.
+    pub fn view_will_appear(&self, animated: bool) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let _ = animated;
+        self.view_will_appears.fetch_add(1, SeqCst);
+        self.logged_in_state_shows.fetch_add(1, SeqCst);
+    }
+
+    /// `-[HomeViewController showCorrectLoggedInState]` (IDA 0x1c788):
+    /// `userLoggedIn == 1` shows the logged-in view and hides the
+    /// logged-out one, else the reverse; either way
+    /// `updateUserInfoDisplay:YES` is dispatched off-main. Mirrors the
+    /// platform twin.
+    pub fn show_correct_logged_in_state(&self, logged_in: bool) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.not_logged_in_view_hidden.store(logged_in, SeqCst);
+        self.logged_in_view_hidden.store(!logged_in, SeqCst);
+        self.logged_in_state_shows.fetch_add(1, SeqCst);
+        self.logged_in_refresh_dispatches.fetch_add(1, SeqCst);
+    }
+
+    /// `__46-[HomeViewController showCorrectLoggedInState]_block_invoke`
+    /// (IDA 0x1c860): `updateUserInfoDisplay:YES`. Mirrors the platform
+    /// twin.
+    pub fn logged_in_state_refresh_block(&self) {
+        self.update_user_info_display(true);
+    }
+
+    /// `-[HomeViewController viewDidAppear:]` (IDA 0x1c888): super
+    /// `viewDidAppear:`; when the `viewMustSegueAfterLoad` flag is set,
+    /// clears it and performs `sequeToWeb:`. Mirrors the platform twin.
+    pub fn view_did_appear(&self, animated: bool) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let _ = animated;
+        self.view_did_appears.fetch_add(1, SeqCst);
+        if self.segue_after_load_pending.swap(false, SeqCst) {
+            self.segue_after_load_fired.fetch_add(1, SeqCst);
+        }
+    }
+
+    /// Stages the `viewMustSegueAfterLoad` flag `viewDidAppear:` consumes.
+    pub fn set_segue_after_load_pending(&self, pending: bool) {
+        self.segue_after_load_pending
+            .store(pending, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController handleStartGameFailure]` (IDA 0x1c8e8):
+    /// `RobloxAlertWithMessage:` with `GeneralGameStartError`. Mirrors the
+    /// platform twin.
+    pub fn handle_start_game_failure(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.last_failure_alert.lock() = Some("GeneralGameStartError");
+        self.game_start_failures.fetch_add(1, SeqCst);
+    }
+
+    /// `-[HomeViewController handleStartGameSuccess]` (IDA 0x1c958):
+    /// empty body, no-op recorded for call tracking. Mirrors the platform
+    /// twin.
+    pub fn handle_start_game_success(&self) {
+        self.game_start_successes
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController placeIdClicked:]` (IDA 0x1c95c): `intValue`
+    /// of the place/port fields, raw ip text, then `resignFirstResponder`
+    /// on all three debug fields. A nonzero port plus a non-empty ip runs
+    /// `startGameLocal:ipAddress:...`, otherwise `startGame:...` with
+    /// request 0. Mirrors the platform twin.
+    pub fn place_id_clicked(&self, place_text: &str, port_text: &str, ip_text: &str) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let place_id = audio_ns_int_value(place_text);
+        let port = audio_ns_int_value(port_text);
+        self.debug_field_resigns.fetch_add(3, SeqCst);
+        self.place_clicks.fetch_add(1, SeqCst);
+        if port != 0 && !ip_text.is_empty() {
+            *self.last_local_launch.lock() = Some((port, ip_text.to_owned()));
+            self.local_game_launches.fetch_add(1, SeqCst);
+        } else {
+            *self.last_place_launch.lock() = Some(place_id);
+            self.place_game_launches.fetch_add(1, SeqCst);
+        }
+    }
+
+    /// `-[HomeViewController searchEditingDidEnd:]` (IDA 0x1ca9c): empty
+    /// body, no-op recorded for call tracking. Mirrors the platform twin.
+    pub fn search_editing_did_end(&self) {
+        self.search_editing_ends
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController searchDidEndOnExit:]` (IDA 0x1caa0):
+    /// `performSegueWithIdentifier:@"sequeToWeb"` sender
+    /// `_searchTextField`. Mirrors the platform twin.
+    pub fn search_did_end_on_exit(&self) {
+        self.search_exit_segues
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController signUpButtonDidTouchUpInside:]` (IDA 0x1cac8):
+    /// empty body, no-op recorded for call tracking. Mirrors the platform
+    /// twin.
+    pub fn signup_button_did_touch_up_inside(&self) {
+        self.signup_taps
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController logInButtonDidTouchUpInside:]` (IDA 0x1cacc):
+    /// `dismissViewControllerAnimated:YES completion:nil`. Mirrors the
+    /// platform twin.
+    pub fn login_button_did_touch_up_inside(&self) {
+        self.login_dismisses
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
+
+/// `-[NSString intValue]` behind `placeIdClicked:` (IDA 0x1c99c/0x1c9bc):
+/// leading whitespace, optional sign, saturating digit prefix; empty or
+/// non-numeric → 0. Mirrors the platform helper.
+fn audio_ns_int_value(s: &str) -> i32 {
+    let t = s.trim_start();
+    let (neg, rest) = match t.strip_prefix('-') {
+        Some(r) => (true, r),
+        None => (false, t.strip_prefix('+').unwrap_or(t)),
+    };
+    let mut acc: i64 = 0;
+    let mut any = false;
+    for c in rest.chars() {
+        match c.to_digit(10) {
+            Some(d) => {
+                any = true;
+                acc = acc.saturating_mul(10).saturating_add(d as i64);
+            }
+            None => break,
+        }
+    }
+    if !any {
+        return 0;
+    }
+    let v = if neg { -acc } else { acc };
+    v.clamp(i32::MIN as i64, i32::MAX as i64) as i32
+ }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
 #[doc(alias = "-[HomeViewController initWithCoder:]")]
@@ -1326,126 +1566,184 @@ pub fn stub_1c2bc(controller: &AudioHomeViewController, username: &str, password
 
 // 0x1c37c — -[HomeViewController logoutTouchUp:]
 #[doc(alias = "-[HomeViewController logoutTouchUp:]")]
-pub fn stub_1c37c() -> ! {
-    todo!("0x1c37c -[HomeViewController logoutTouchUp:]")
+pub fn stub_1c37c(controller: &AudioHomeViewController) {
+    // IDA 0x1c37c (`-[HomeViewController logoutTouchUp:]`): logout
+    // confirmation alert, delegate self. Same as the platform 0x1c37c
+    // anchor.
+    controller.logout_touch_up();
 }
 
 // 0x1c4b0 — -[HomeViewController alertView:didDismissWithButtonIndex:]
 #[doc(alias = "-[HomeViewController alertView:didDismissWithButtonIndex:]")]
-pub fn stub_1c4b0() -> ! {
-    todo!("0x1c4b0 -[HomeViewController alertView:didDismissWithButtonIndex:]")
+pub fn stub_1c4b0(controller: &AudioHomeViewController, button_index: i32) -> bool {
+    // IDA 0x1c4b0 (`-[HomeViewController alertView:didDismissWithButtonIndex:]`):
+    // only button 1 logs out. Same as the platform 0x1c4b0 anchor.
+    controller.alert_view_did_dismiss(button_index)
 }
 
 // 0x1c5c8 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")]
-pub fn stub_1c5c8() -> ! {
-    todo!("0x1c5c8 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")
+pub fn stub_1c5c8(controller: &AudioHomeViewController) {
+    // IDA 0x1c5c8 (animation block): `buttonView.alpha = 0`. Same as the
+    // platform 0x1c5c8 anchor.
+    controller.alert_animation_step();
 }
 
 // 0x1c5f4 — ___copy_helper_block_224
 #[doc(alias = "___copy_helper_block_224")]
-pub fn stub_1c5f4() -> ! {
-    todo!("0x1c5f4 ___copy_helper_block_224")
+pub fn stub_1c5f4(slot: &mut u64, src: u64) {
+    // IDA 0x1c5f4 (disasm one `__Block_object_assign` at +0x14): retain
+    // the capture. Same shape as 0x1bb9c.
+    *slot = src;
 }
 
 // 0x1c600 — ___destroy_helper_block_225
 #[doc(alias = "___destroy_helper_block_225")]
-pub fn stub_1c600() -> ! {
-    todo!("0x1c600 ___destroy_helper_block_225")
+pub fn stub_1c600(slot: &mut u64) {
+    // IDA 0x1c600 (disasm one `__Block_object_dispose` at +0x14):
+    // release the capture. Same shape as 0x1bba8.
+    *slot = 0;
 }
 
 // 0x1c608 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")]
-pub fn stub_1c608() -> ! {
-    todo!("0x1c608 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")
+pub fn stub_1c608(
+    controller: &AudioHomeViewController,
+    presented: bool,
+    animating: bool,
+    foreground_x: f32,
+    background_x: f32,
+) {
+    // IDA 0x1c608 (completion block): snapshot presentation-layer X then
+    // dismiss. Same as the platform 0x1c608 anchor.
+    controller.alert_completion(presented, animating, foreground_x, background_x);
 }
 
 // 0x1c734 — ___copy_helper_block_246
 #[doc(alias = "___copy_helper_block_246")]
-pub fn stub_1c734() -> ! {
-    todo!("0x1c734 ___copy_helper_block_246")
+pub fn stub_1c734(slot: &mut u64, src: u64) {
+    // IDA 0x1c734 (disasm one `__Block_object_assign` at +0x14): retain
+    // the capture. Same shape as 0x1bb9c.
+    *slot = src;
 }
 
 // 0x1c740 — ___destroy_helper_block_247
 #[doc(alias = "___destroy_helper_block_247")]
-pub fn stub_1c740() -> ! {
-    todo!("0x1c740 ___destroy_helper_block_247")
+pub fn stub_1c740(slot: &mut u64) {
+    // IDA 0x1c740 (disasm one `__Block_object_dispose` at +0x14):
+    // release the capture. Same shape as 0x1bba8.
+    *slot = 0;
 }
 
 // 0x1c748 — -[HomeViewController viewWillAppear:]
 #[doc(alias = "-[HomeViewController viewWillAppear:]")]
-pub fn stub_1c748() -> ! {
-    todo!("0x1c748 -[HomeViewController viewWillAppear:]")
+pub fn stub_1c748(controller: &AudioHomeViewController, animated: bool) {
+    // IDA 0x1c748 (`-[HomeViewController viewWillAppear:]`): super then
+    // `showCorrectLoggedInState`. Same as the platform 0x1c748 anchor.
+    controller.view_will_appear(animated);
 }
 
 // 0x1c788 — -[HomeViewController showCorrectLoggedInState]
 #[doc(alias = "-[HomeViewController showCorrectLoggedInState]")]
-pub fn stub_1c788() -> ! {
-    todo!("0x1c788 -[HomeViewController showCorrectLoggedInState]")
+pub fn stub_1c788(controller: &AudioHomeViewController, logged_in: bool) {
+    // IDA 0x1c788 (`-[HomeViewController showCorrectLoggedInState]`):
+    // toggle the logged-in/out views, dispatch the user-info refresh.
+    // Same as the platform 0x1c788 anchor.
+    controller.show_correct_logged_in_state(logged_in);
 }
 
 // 0x1c860 — ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
 #[doc(alias = "___46-[HomeViewController showCorrectLoggedInState]_block_invoke")]
-pub fn stub_1c860() -> ! {
-    todo!("0x1c860 ___46-[HomeViewController showCorrectLoggedInState]_block_invoke")
+pub fn stub_1c860(controller: &AudioHomeViewController) {
+    // IDA 0x1c860 (refresh block): `updateUserInfoDisplay:YES`. Same as
+    // the platform 0x1c860 anchor.
+    controller.logged_in_state_refresh_block();
 }
 
 // 0x1c874 — ___copy_helper_block_261
 #[doc(alias = "___copy_helper_block_261")]
-pub fn stub_1c874() -> ! {
-    todo!("0x1c874 ___copy_helper_block_261")
+pub fn stub_1c874(slot: &mut u64, src: u64) {
+    // IDA 0x1c874 (disasm one `__Block_object_assign` at +0x14): retain
+    // the capture. Same shape as 0x1bb9c.
+    *slot = src;
 }
 
 // 0x1c880 — ___destroy_helper_block_262
 #[doc(alias = "___destroy_helper_block_262")]
-pub fn stub_1c880() -> ! {
-    todo!("0x1c880 ___destroy_helper_block_262")
+pub fn stub_1c880(slot: &mut u64) {
+    // IDA 0x1c880 (disasm one `__Block_object_dispose` at +0x14):
+    // release the capture. Same shape as 0x1bba8.
+    *slot = 0;
 }
 
 // 0x1c888 — -[HomeViewController viewDidAppear:]
 #[doc(alias = "-[HomeViewController viewDidAppear:]")]
-pub fn stub_1c888() -> ! {
-    todo!("0x1c888 -[HomeViewController viewDidAppear:]")
+pub fn stub_1c888(controller: &AudioHomeViewController, animated: bool) {
+    // IDA 0x1c888 (`-[HomeViewController viewDidAppear:]`): super then
+    // the pending `sequeToWeb:` segue. Same as the platform 0x1c888
+    // anchor.
+    controller.view_did_appear(animated);
 }
 
 // 0x1c8e8 — -[HomeViewController handleStartGameFailure]
 #[doc(alias = "-[HomeViewController handleStartGameFailure]")]
-pub fn stub_1c8e8() -> ! {
-    todo!("0x1c8e8 -[HomeViewController handleStartGameFailure]")
+pub fn stub_1c8e8(controller: &AudioHomeViewController) {
+    // IDA 0x1c8e8 (`-[HomeViewController handleStartGameFailure]`):
+    // `GeneralGameStartError` alert. Same as the platform 0x1c8e8
+    // anchor.
+    controller.handle_start_game_failure();
 }
 
 // 0x1c958 — -[HomeViewController handleStartGameSuccess]
 #[doc(alias = "-[HomeViewController handleStartGameSuccess]")]
-pub fn stub_1c958() -> ! {
-    todo!("0x1c958 -[HomeViewController handleStartGameSuccess]")
+pub fn stub_1c958(controller: &AudioHomeViewController) {
+    // IDA 0x1c958 (`-[HomeViewController handleStartGameSuccess]`):
+    // empty body. Same as the platform 0x1c958 anchor.
+    controller.handle_start_game_success();
 }
 
 // 0x1c95c — -[HomeViewController placeIdClicked:]
 #[doc(alias = "-[HomeViewController placeIdClicked:]")]
-pub fn stub_1c95c() -> ! {
-    todo!("0x1c95c -[HomeViewController placeIdClicked:]")
+pub fn stub_1c95c(
+    controller: &AudioHomeViewController,
+    place_text: &str,
+    port_text: &str,
+    ip_text: &str,
+) {
+    // IDA 0x1c95c (`-[HomeViewController placeIdClicked:]`): parse the
+    // debug fields, resign them, launch local or place game. Same as the
+    // platform 0x1c95c anchor.
+    controller.place_id_clicked(place_text, port_text, ip_text);
 }
 
 // 0x1ca9c — -[HomeViewController searchEditingDidEnd:]
 #[doc(alias = "-[HomeViewController searchEditingDidEnd:]")]
-pub fn stub_1ca9c() -> ! {
-    todo!("0x1ca9c -[HomeViewController searchEditingDidEnd:]")
+pub fn stub_1ca9c(controller: &AudioHomeViewController) {
+    // IDA 0x1ca9c (`-[HomeViewController searchEditingDidEnd:]`): empty
+    // body. Same as the platform 0x1ca9c anchor.
+    controller.search_editing_did_end();
 }
 
 // 0x1caa0 — -[HomeViewController searchDidEndOnExit:]
 #[doc(alias = "-[HomeViewController searchDidEndOnExit:]")]
-pub fn stub_1caa0() -> ! {
-    todo!("0x1caa0 -[HomeViewController searchDidEndOnExit:]")
+pub fn stub_1caa0(controller: &AudioHomeViewController) {
+    // IDA 0x1caa0 (`-[HomeViewController searchDidEndOnExit:]`):
+    // `sequeToWeb` segue. Same as the platform 0x1caa0 anchor.
+    controller.search_did_end_on_exit();
 }
 
 // 0x1cac8 — -[HomeViewController signUpButtonDidTouchUpInside:]
 #[doc(alias = "-[HomeViewController signUpButtonDidTouchUpInside:]")]
-pub fn stub_1cac8() -> ! {
-    todo!("0x1cac8 -[HomeViewController signUpButtonDidTouchUpInside:]")
+pub fn stub_1cac8(controller: &AudioHomeViewController) {
+    // IDA 0x1cac8 (`-[HomeViewController signUpButtonDidTouchUpInside:]`):
+    // empty body. Same as the platform 0x1cac8 anchor.
+    controller.signup_button_did_touch_up_inside();
 }
 
 // 0x1cacc — -[HomeViewController logInButtonDidTouchUpInside:]
 #[doc(alias = "-[HomeViewController logInButtonDidTouchUpInside:]")]
-pub fn stub_1cacc() -> ! {
-    todo!("0x1cacc -[HomeViewController logInButtonDidTouchUpInside:]")
+pub fn stub_1cacc(controller: &AudioHomeViewController) {
+    // IDA 0x1cacc (`-[HomeViewController logInButtonDidTouchUpInside:]`):
+    // dismiss animated. Same as the platform 0x1cacc anchor.
+    controller.login_button_did_touch_up_inside();
 }
