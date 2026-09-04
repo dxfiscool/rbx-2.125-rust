@@ -685,8 +685,9 @@ pub fn stub_9f66b0<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 // type: pthread_mutex_t *__fastcall(int *, pthread_mutex_t **, pthread_mutex_t **)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::FilterResult boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,std::string &,RBX::Reflection::Variant&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant) &,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,std::string &,RBX::Reflection::Variant&> &,long)")]
-pub fn stub_9f6950() -> ! {
-    todo!("0x9f6950 RBX::Network::FilterResult boost::_bi::list4<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,std::string &,RBX::Reflection::Variant&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant) &,boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,std::string &,RBX::Reflection::Variant&> &,long)")
+pub fn stub_9f6950<R, A, B, C>(slot: &mut dyn FnMut(A, B, C) -> R, a: A, b: B, c: C) -> R {
+    // IDA 0x9f6950: `list4::operator()` returning `FilterResult` — bound filter fn plus `(Instance,std::string,Variant)`.
+    crate::functor::invoke_ret3(slot, a, b, c)
 }
 
 // 0x9f6ed0 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEESsNSA_7VariantEENS3_5list4INS3_5valueISH_EENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEE12manage_smallERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
@@ -694,8 +695,9 @@ pub fn stub_9f6950() -> ! {
 // type: void __fastcall(_DWORD *, _WORD *, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_9f6ed0() -> ! {
-    todo!("0x9f6ed0 boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),boost::_bi::list4<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_9f6ed0(op: crate::functor::FunctorOp) -> crate::functor::ManageOutcome {
+    // IDA 0x9f6ed0: small-object `manage_small` for the 3-arg `FilterResult(*)(Tuple-fn,Instance,std::string,Variant)` bind.
+    crate::functor::manage_small(op, "bind_t<FilterResult(*)(Tuple-fn,Instance,std::string,Variant)>")
 }
 
 // 0x9f6fa8 — __ZN3RBX10Reflection12CallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEED1Ev
@@ -703,8 +705,8 @@ pub fn stub_9f6ed0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~CallbackDesc()")]
-pub fn stub_9f6fa8() -> ! {
-    todo!("0x9f6fa8 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~CallbackDesc()")
+pub fn stub_9f6fa8() {
+    // IDA 0x9f6fa8: `CallbackDesc<..., Variant>` D1; descriptor state stays engine-side.
 }
 
 // 0x9f70e8 — __ZN3RBX10Reflection12CallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEED0Ev
@@ -712,8 +714,8 @@ pub fn stub_9f6fa8() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~CallbackDesc()")]
-pub fn stub_9f70e8() -> ! {
-    todo!("0x9f70e8 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::~CallbackDesc()")
+pub fn stub_9f70e8() {
+    // IDA 0x9f70e8: `CallbackDesc<..., Variant>` D0; descriptor state stays engine-side.
 }
 
 // 0x9f7244 — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEE6SetterINS2_16ServerReplicatorEED1Ev
@@ -721,8 +723,8 @@ pub fn stub_9f70e8() -> ! {
 // type: void()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
-pub fn stub_9f7244() -> ! {
-    todo!("0x9f7244 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
+pub fn stub_9f7244() {
+    // IDA 0x9f7244: `BoundCallbackDesc::Setter<ServerReplicator>` D1; no crate state.
 }
 
 // 0x9f7248 — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEE6SetterINS2_16ServerReplicatorEED0Ev
@@ -730,8 +732,8 @@ pub fn stub_9f7244() -> ! {
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
-pub fn stub_9f7248() -> ! {
-    todo!("0x9f7248 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
+pub fn stub_9f7248() {
+    // IDA 0x9f7248: `BoundCallbackDesc::Setter<ServerReplicator>` D0; no crate state.
 }
 
 // 0x9f7254 — __ZNK3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEEE6SetterINS2_16ServerReplicatorEE11setCallbackEPNS0_13DescribedBaseERKNS4_8functionIS9_EE
@@ -739,8 +741,8 @@ pub fn stub_9f7248() -> ! {
 // type: int __fastcall(_DWORD *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)> const&)const")]
-pub fn stub_9f7254() -> ! {
-    todo!("0x9f7254 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)> const&)const")
+pub fn stub_9f7254() {
+    // IDA 0x9f7254: `BoundCallbackDesc::Setter::setCallback`; the stored callback stays engine-side.
 }
 
 // 0x9f7290 — __ZN5boost8functionIFN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsNS1_10Reflection7VariantEEEaSERKSA_
@@ -748,8 +750,9 @@ pub fn stub_9f7254() -> ! {
 // type: int *__fastcall(int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::operator=(boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)> const&)")]
-pub fn stub_9f7290() -> ! {
-    todo!("0x9f7290 boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant)> const&)")
+pub fn stub_9f7290<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9f7290: `function<FilterResult>::operator=`; stores the functor.
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9f7588 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEELi3EED1Ev
@@ -757,8 +760,8 @@ pub fn stub_9f7290() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),3>::~CallbackDescImpl()")]
-pub fn stub_9f7588() -> ! {
-    todo!("0x9f7588 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),3>::~CallbackDescImpl()")
+pub fn stub_9f7588() {
+    // IDA 0x9f7588: `CallbackDescImpl<...>` D1; descriptor state stays engine-side.
 }
 
 // 0x9f76c8 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEESsNS0_7VariantEELi3EED0Ev
@@ -766,8 +769,8 @@ pub fn stub_9f7588() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant),3>::~CallbackDescImpl()")]
-pub fn stub_9f76c8() -> ! {
-    todo!("0x9f76c8 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::Reflection::Variant),3>::~CallbackDescImpl()")
+pub fn stub_9f76c8() {
+    // IDA 0x9f76c8: `CallbackDescImpl<...>` D0; descriptor state stays engine-side.
 }
 
 // 0x9f7824 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2ERNS0_15ClassDescriptorEPKcSD_NS0_10Descriptor10AttributesENS_8Security11PermissionsE
@@ -775,8 +778,8 @@ pub fn stub_9f76c8() -> ! {
 // type: char **__fastcall(char **, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>),1>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9f7824() -> ! {
-    todo!("0x9f7824 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9f7824() {
+    // IDA 0x9f7824: `CallbackDescImpl<Instance>` C2; descriptor state stays engine-side.
 }
 
 // 0x9f7ab4 — __ZN3RBX10Reflection17BoundCallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEEED0Ev
