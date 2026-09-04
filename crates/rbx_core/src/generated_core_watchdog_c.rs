@@ -478,9 +478,19 @@ pub mod billboard_ref {
         /// IDA 0x3c2604 deleting-dtor shape: restore `off_123FF48` + `off_123FF9C`,
         /// delete the `a1[11]` box. Slot stays caller-owned (IDA `delete a1` artifact).
         pub unsafe fn destroy(slot: *mut RefPropDescriptor) {
+            Self::destroy_with(slot, REF_DESC_VTAB, REF_SUB_VTAB)
+        }
+
+        /// Same shape with caller vtables (e.g. IDA 0x3c8c84 Camera `RefPropDescriptor`:
+        /// `*a1 = &off_1240708`, `a1[10] = &off_124075C`, delete `a1[11]`).
+        pub unsafe fn destroy_with(
+            slot: *mut RefPropDescriptor,
+            vtable: &'static str,
+            sub_vtable: &'static str,
+        ) {
             let this = &mut *slot;
-            this.vtable = REF_DESC_VTAB;
-            this.sub_vtable = REF_SUB_VTAB;
+            this.vtable = vtable;
+            this.sub_vtable = sub_vtable;
             this.getset = None;
         }
 
@@ -987,6 +997,287 @@ pub mod camera_subject {
             }
             assert_eq!(h.notified.load(Ordering::SeqCst), 1);
             assert_eq!(h.raised.load(Ordering::SeqCst), 1);
+        }
+    }
+}
+/// Batch 3: 20 IDA-grounded ports 0x3c437c-0x3c9580 — the `Camera`
+/// `EnumDesc<CameraType|CameraMode|CameraPanMode>` tables (ctor pair lists +
+/// shared `addPair` core), the `EnumProp/Prop/RefProp/BoundFunc/EventDesc`
+/// deleting dtors, and the `CameraType/Mode/PanMode::addPair` instantiations.
+/// Ports live in `camera_enum`, wired via `stub_3c43*`-`stub_3c95*`.
+/// Conventions: the `addPair` body reuses the canonical
+/// `generated_core_watchdog_k::render_settings::EnumDescData` port (same
+/// template — same locals, same `off_1270CA8` item vtable, same
+/// enumconverter.h:210-211 asserts, verified per instantiation);
+/// `boost::shared_ptr` -> `crate::SharedPtr` (kept via `_SHARED_PTR` carrier).
+/// `[INFERENCE]` marks what the binary does not pin down; everything else
+/// follows the IDA pseudocode branch-for-branch.
+pub mod camera_enum {
+    use crate::generated_core_watchdog_k::render_settings::EnumDescData;
+    use std::ffi::CStr;
+    use std::os::raw::c_char;
+
+    /// was: `RBX::Camera::CameraType` — IDA 0x3c437c pairs in declaration order.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    #[repr(i32)]
+    pub enum CameraType {
+        Fixed = 0,
+        Attach = 1,
+        Watch = 2,
+        Track = 3,
+        Follow = 4,
+        Custom = 5,
+        #[default]
+        Scriptable = 6,
+    }
+
+    /// was: `RBX::Camera::CameraMode` — IDA 0x3c45b4 pairs in declaration order.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    #[repr(i32)]
+    pub enum CameraMode {
+        #[default]
+        Classic = 0,
+        LockFirstPerson = 1,
+    }
+
+    /// was: `RBX::Camera::CameraPanMode` — IDA 0x3c4778 pairs in declaration order.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    #[repr(i32)]
+    pub enum CameraPanMode {
+        #[default]
+        Classic = 0,
+        EdgeBump = 1,
+    }
+
+    /// was: `EnumDescriptor` vtables installed by each ctor (`*a1 = &off_...`).
+    pub const CAMERA_TYPE_VTAB: &str = "off_1240018"; // IDA 0x3c437c
+    pub const CAMERA_MODE_VTAB: &str = "off_1240048"; // IDA 0x3c45b4
+    pub const CAMERA_PAN_MODE_VTAB: &str = "off_1240078"; // IDA 0x3c4778
+    /// was: `EnumDescriptor::Item` box vtable (`*v40 = &off_1270CA8` in all three
+    /// `addPair` instantiations: IDA 0x3c8ec0/0x3c9220/0x3c9580).
+    pub const ENUM_ITEM_VTAB: &str = "off_1270CA8";
+    /// was: `FunctionDescriptor` base vtable restored by every `BoundFuncDesc`
+    /// dtor (`*a1 = &off_1222248`, IDA 0x3c8cb0/0x3c8cf0/0x3c8d24/0x3c8d64/
+    /// 0x3c8da4/0x3c8de4/0x3c8e24).
+    pub const FUNCTION_DESC_VTAB: &str = "off_1222248";
+    /// was: `EventDescriptor` base vtable restored by every `EventDesc` dtor
+    /// (`*a1 = &off_122F5A8`, IDA 0x3c8e78/0x3c8e9c).
+    pub const EVENT_DESC_VTAB: &str = "off_122F5A8";
+    /// was: `EnumPropDescriptor<Camera, CameraType>` vtable restored by its dtor
+    /// (`*a1 = &off_1240978`, IDA 0x3c8bec; `a1[11]` box deleted).
+    pub const ENUM_PROP_DESC_VTAB: &str = "off_1240978"; // IDA 0x3c8bec
+    /// was: `TypedPropertyDescriptor<CoordinateFrame>` vtable (IDA 0x3c8c14).
+    pub const TYPED_CF_DESC_VTAB: &str = "off_1270DA8"; // IDA 0x3c8c14
+    /// was: `TypedPropertyDescriptor<float>` vtable (IDA 0x3c8c60).
+    pub const TYPED_FLOAT_DESC_VTAB: &str = "off_1270A68"; // IDA 0x3c8c60
+    /// was: Camera `RefPropDescriptor` + sub-table vtables (IDA 0x3c8c84).
+    pub const CAMERA_REF_DESC_VTAB: &str = "off_1240708"; // IDA 0x3c8c84
+    pub const CAMERA_REF_SUB_VTAB: &str = "off_124075C"; // IDA 0x3c8c84
+    /// was: `BoundFuncDesc` vtables restored before the base restore + list clear
+    /// (IDA 0x3c8cb0/0x3c8d24/0x3c8d64/0x3c8da4/0x3c8de4/0x3c8e24).
+    pub const BOUND_VOID_FLOAT_VTAB: &str = "off_12406E8"; // IDA 0x3c8cb0
+    pub const BOUND_VOID_PANMODE_VTAB: &str = "off_1240688"; // IDA 0x3c8d24
+    pub const BOUND_BOOL_FLOAT_VTAB: &str = "off_1240668"; // IDA 0x3c8d64
+    pub const BOUND_VOID_INT_VTAB: &str = "off_1240648"; // IDA 0x3c8da4
+    pub const BOUND_BOOL_INT_VTAB: &str = "off_1240628"; // IDA 0x3c8de4
+    pub const BOUND_VOID_CF3_VTAB: &str = "off_12405E8"; // IDA 0x3c8e24
+
+    /// IDA 0x3c437c `EnumDesc<CameraType>::EnumDesc` — base
+    /// `EnumDescriptor("CameraType")`, empty-table init, then the seven
+    /// `addPair` calls in declaration order.
+    pub fn camera_type_desc() -> EnumDescData {
+        let mut d = EnumDescData {
+            desc_name: "CameraType",
+            vtable: CAMERA_TYPE_VTAB,
+            ..Default::default()
+        };
+        d.add_pair(0, "Fixed");
+        d.add_pair(2, "Watch");
+        d.add_pair(1, "Attach");
+        d.add_pair(3, "Track");
+        d.add_pair(4, "Follow");
+        d.add_pair(5, "Custom");
+        d.add_pair(6, "Scriptable");
+        d
+    }
+
+    /// IDA 0x3c45b4 `EnumDesc<CameraMode>::EnumDesc` — base
+    /// `EnumDescriptor("CameraMode")`, empty-table init, then the two `addPair` calls.
+    pub fn camera_mode_desc() -> EnumDescData {
+        let mut d = EnumDescData {
+            desc_name: "CameraMode",
+            vtable: CAMERA_MODE_VTAB,
+            ..Default::default()
+        };
+        d.add_pair(0, "Classic");
+        d.add_pair(1, "LockFirstPerson");
+        d
+    }
+
+    /// IDA 0x3c45b0 `EnumDesc<CameraMode>::EnumDesc` (C1) — thunk tail-calling C2.
+    pub fn camera_mode_desc_c1() -> EnumDescData {
+        camera_mode_desc()
+    }
+
+    /// IDA 0x3c4778 `EnumDesc<CameraPanMode>::EnumDesc` — base
+    /// `EnumDescriptor("CameraPanMode")`, empty-table init, then the two `addPair` calls.
+    pub fn camera_pan_mode_desc() -> EnumDescData {
+        let mut d = EnumDescData {
+            desc_name: "CameraPanMode",
+            vtable: CAMERA_PAN_MODE_VTAB,
+            ..Default::default()
+        };
+        d.add_pair(0, "Classic");
+        d.add_pair(1, "EdgeBump");
+        d
+    }
+
+    /// Shared `EnumDesc<T>::addPair(value, name)` core (IDA 0x3c8ec0/0x3c9220/
+    /// 0x3c9580 — same template, verified by diff: same locals, same item vtable
+    /// `off_1270CA8`, same enumconverter.h:210-211 asserts). Forwards to the
+    /// canonical `EnumDescData::add_pair` port.
+    pub unsafe fn add_pair(desc: *mut EnumDescData, value: i32, name: *const c_char) {
+        let text = if name.is_null() {
+            String::new()
+        } else {
+            CStr::from_ptr(name).to_string_lossy().into_owned()
+        };
+        (&mut *desc).add_pair(value, &text)
+    }
+
+    /// was: `EnumPropDescriptor<Camera, CameraType>` storage — the owned box is
+    /// the IDA `a1[11]` word freed by the dtor.
+    #[derive(Debug, Default)]
+    pub struct EnumPropDescriptor {
+        pub vtable: &'static str,
+        pub name: String,
+        pub value: i32,
+    }
+
+    impl EnumPropDescriptor {
+        /// IDA 0x3c8bec deleting-dtor shape: restore `off_1240978`, delete the
+        /// `a1[11]` box. Slot stays caller-owned.
+        pub fn destroy(slot: &mut EnumPropDescriptor) {
+            slot.vtable = ENUM_PROP_DESC_VTAB;
+        }
+    }
+
+    /// was: `BoundFuncDesc<Camera, ...>` storage. `arg_boxes` are the opaque
+    /// per-argument descriptor boxes (`a1[12]` for arity 1, `a1[12..14]` for
+    /// arity 3 — `[INFERENCE]` contents); `signatures` is the
+    /// `SignatureDescriptor::Item` list at `+8` cleared by every dtor.
+    #[derive(Debug, Default)]
+    pub struct BoundFuncDescriptor {
+        pub vtable: &'static str,
+        pub arg_boxes: Vec<Option<Box<[u8]>>>,
+        pub signatures: Vec<String>,
+    }
+
+    impl BoundFuncDescriptor {
+        /// BoundFunc deleting-dtor shape: restore the most-derived vtable,
+        /// delete the `a1[12..]` arg boxes, restore `off_1222248`, clear the
+        /// `+8` signature list. IDA 0x3c8cb0/0x3c8d24/0x3c8d64/0x3c8da4/0x3c8de4
+        /// (arity 1, `vtab` + one box), 0x3c8cf0 (arity 0, `None` + no boxes),
+        /// 0x3c8e24 (arity 3, `vtab` + three boxes).
+        /// `[INFERENCE]` the host drops arg boxes by count, not by word index.
+        pub fn destroy(slot: &mut BoundFuncDescriptor, vtable: Option<&'static str>, arity: usize) {
+            if let Some(v) = vtable {
+                slot.vtable = v;
+            }
+            slot.arg_boxes.truncate(0);
+            debug_assert!(arity <= 3);
+            let _ = arity;
+            slot.vtable = FUNCTION_DESC_VTAB;
+            slot.signatures.clear();
+        }
+    }
+
+    /// was: `EventDesc<Camera, ...>` storage — only the vtable + `+8` signature
+    /// list are observed by the dtors.
+    #[derive(Debug, Default)]
+    pub struct EventDescriptor {
+        pub vtable: &'static str,
+        pub signatures: Vec<String>,
+    }
+
+    impl EventDescriptor {
+        /// IDA 0x3c8e78/0x3c8e9c deleting-dtor shape: restore `off_122F5A8`,
+        /// clear the `+8` signature list.
+        pub fn destroy(slot: &mut EventDescriptor) {
+            slot.vtable = EVENT_DESC_VTAB;
+            slot.signatures.clear();
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn camera_type_table_matches_ida_order() {
+            let d = camera_type_desc();
+            assert_eq!(d.vtable, CAMERA_TYPE_VTAB);
+            let pairs: Vec<(i32, &str)> =
+                d.pairs.iter().map(|(v, n)| (*v, n.as_str())).collect();
+            assert_eq!(
+                pairs,
+                vec![
+                    (0, "Fixed"),
+                    (2, "Watch"),
+                    (1, "Attach"),
+                    (3, "Track"),
+                    (4, "Follow"),
+                    (5, "Custom"),
+                    (6, "Scriptable"),
+                ]
+            );
+            assert_eq!(d.lookup_value("Track"), Some(3));
+            assert_eq!(d.lookup_name(6), Some("Scriptable"));
+        }
+
+        #[test]
+        fn mode_tables_and_c1_thunk() {
+            let m = camera_mode_desc();
+            assert_eq!(m.vtable, CAMERA_MODE_VTAB);
+            assert_eq!(m.lookup_value("LockFirstPerson"), Some(1));
+            let c1 = camera_mode_desc_c1();
+            assert_eq!(c1.pairs, m.pairs);
+            let p = camera_pan_mode_desc();
+            assert_eq!(p.vtable, CAMERA_PAN_MODE_VTAB);
+            assert_eq!(p.lookup_value("EdgeBump"), Some(1));
+            assert_eq!(p.lookup_name(0), Some("Classic"));
+        }
+
+        #[test]
+        #[should_panic(expected = "value>=0")]
+        fn add_pair_rejects_negative() {
+            camera_type_desc().add_pair(-1, "Bogus");
+        }
+
+        #[test]
+        fn dtors_restore_vtables_and_drop() {
+            let mut e = EnumPropDescriptor {
+                vtable: "off_dead",
+                name: String::from("CameraType"),
+                value: 3,
+            };
+            EnumPropDescriptor::destroy(&mut e);
+            assert_eq!(e.vtable, ENUM_PROP_DESC_VTAB);
+            let mut b = BoundFuncDescriptor {
+                vtable: BOUND_VOID_FLOAT_VTAB,
+                arg_boxes: vec![Some(vec![1u8].into_boxed_slice())],
+                signatures: vec![String::from("float")],
+            };
+            BoundFuncDescriptor::destroy(&mut b, Some(BOUND_VOID_FLOAT_VTAB), 1);
+            assert_eq!(b.vtable, FUNCTION_DESC_VTAB);
+            assert!(b.arg_boxes.is_empty() && b.signatures.is_empty());
+            let mut v = EventDescriptor {
+                vtable: "off_dead",
+                signatures: vec![String::from("sig")],
+            };
+            EventDescriptor::destroy(&mut v);
+            assert_eq!(v.vtable, EVENT_DESC_VTAB);
+            assert!(v.signatures.is_empty());
         }
     }
 }
@@ -1506,29 +1797,33 @@ pub unsafe fn stub_3c39b4(
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::EnumDesc(void)")]
 // 0x3c437c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEEC2Ev
 // type: int __fastcall(int)
-pub fn stub_3c437c() -> ! {
-    todo!("0x3c437c __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEEC2Ev")
+pub fn stub_3c437c() -> crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3c437c: EnumDescriptor("CameraType") + empty-table init + 7 addPair calls.
+    camera_enum::camera_type_desc()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::EnumDesc(void)")]
 // 0x3c45b0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC1Ev
 // type: int()
-pub fn stub_3c45b0() -> ! {
-    todo!("0x3c45b0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC1Ev")
+pub fn stub_3c45b0() -> crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3c45b0: C1 thunk tail-calling C2 (0x3c45b4).
+    camera_enum::camera_mode_desc_c1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::EnumDesc(void)")]
 // 0x3c45b4 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC2Ev
 // type: int __fastcall(int)
-pub fn stub_3c45b4() -> ! {
-    todo!("0x3c45b4 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC2Ev")
+pub fn stub_3c45b4() -> crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3c45b4: EnumDescriptor("CameraMode") + empty-table init + 2 addPair calls.
+    camera_enum::camera_mode_desc()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::EnumDesc(void)")]
 // 0x3c4778 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEEC2Ev
 // type: int __fastcall(int)
-pub fn stub_3c4778() -> ! {
-    todo!("0x3c4778 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEEC2Ev")
+pub fn stub_3c4778() -> crate::generated_core_watchdog_k::render_settings::EnumDescData {
+    // IDA 0x3c4778: EnumDescriptor("CameraPanMode") + empty-table init + 2 addPair calls.
+    camera_enum::camera_pan_mode_desc()
 }
 
 #[doc(alias = "RBX::Camera::askSetParent(RBX::Instance const*)const")]
@@ -1558,117 +1853,137 @@ pub fn stub_3c50fc() -> ! {
 pub fn stub_3c7590() -> ! {
     todo!("0x3c7590 __ZN3RBX6Camera11zoomExtentsEPKNS_13ModelInstanceENS0_8ZoomTypeE")
 }
-
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()")]
 // 0x3c8bec — __ZN3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8bec() -> ! {
-    todo!("0x3c8bec __ZN3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEED1Ev")
+pub fn stub_3c8bec(slot: &mut camera_enum::EnumPropDescriptor) {
+    // IDA 0x3c8bec: *a1 = &off_1240978; delete a1[11].
+    camera_enum::EnumPropDescriptor::destroy(slot)
 }
-
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()")]
 // 0x3c8c14 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8c14() -> ! {
-    todo!("0x3c8c14 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED1Ev")
+pub unsafe fn stub_3c8c14(slot: *mut billboard_prop::PropDescriptor) {
+    // IDA 0x3c8c14: *a1 = &off_1270DA8 (TypedPropertyDescriptor<CoordinateFrame>); delete a1[10].
+    billboard_prop::PropDescriptor::destroy(slot, camera_enum::TYPED_CF_DESC_VTAB)
 }
-
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()")]
 // 0x3c8c60 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8c60() -> ! {
-    todo!("0x3c8c60 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED1Ev")
+pub unsafe fn stub_3c8c60(slot: *mut billboard_prop::PropDescriptor) {
+    // IDA 0x3c8c60: *a1 = &off_1270A68 (TypedPropertyDescriptor<float>); delete a1[10].
+    billboard_prop::PropDescriptor::destroy(slot, camera_enum::TYPED_FLOAT_DESC_VTAB)
 }
-
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")]
 // 0x3c8c84 — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8c84() -> ! {
-    todo!("0x3c8c84 __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED1Ev")
+pub unsafe fn stub_3c8c84(slot: *mut billboard_ref::RefPropDescriptor) {
+    // IDA 0x3c8c84: *a1 = &off_1240708, a1[10] = &off_124075C, delete a1[11].
+    billboard_ref::RefPropDescriptor::destroy_with(
+        slot,
+        camera_enum::CAMERA_REF_DESC_VTAB,
+        camera_enum::CAMERA_REF_SUB_VTAB,
+    )
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()")]
 // 0x3c8cb0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8cb0() -> ! {
-    todo!("0x3c8cb0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED1Ev")
+pub fn stub_3c8cb0(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8cb0: *a1 = &off_12406E8; delete a1[12]; *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_FLOAT_VTAB), 1)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()")]
 // 0x3c8cf0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8cf0() -> ! {
-    todo!("0x3c8cf0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED1Ev")
+pub fn stub_3c8cf0(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8cf0: *a1 = &off_1222248; clear +8 list (arity 0, no boxes).
+    camera_enum::BoundFuncDescriptor::destroy(slot, None, 0)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()")]
 // 0x3c8d24 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8d24() -> ! {
-    todo!("0x3c8d24 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED1Ev")
+pub fn stub_3c8d24(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8d24: *a1 = &off_1240688; delete a1[12]; *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_PANMODE_VTAB), 1)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()")]
 // 0x3c8d64 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8d64() -> ! {
-    todo!("0x3c8d64 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED1Ev")
+pub fn stub_3c8d64(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8d64: *a1 = &off_1240668; delete a1[12]; *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_BOOL_FLOAT_VTAB), 1)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()")]
 // 0x3c8da4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8da4() -> ! {
-    todo!("0x3c8da4 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED1Ev")
+pub fn stub_3c8da4(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8da4: *a1 = &off_1240648; delete a1[12]; *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_INT_VTAB), 1)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()")]
 // 0x3c8de4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8de4() -> ! {
-    todo!("0x3c8de4 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED1Ev")
+pub fn stub_3c8de4(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8de4: *a1 = &off_1240628; delete a1[12]; *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_BOOL_INT_VTAB), 1)
 }
-
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")]
 // 0x3c8e24 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8e24() -> ! {
-    todo!("0x3c8e24 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED1Ev")
+pub fn stub_3c8e24(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3c8e24: *a1 = &off_12405E8; delete a1[14], a1[13], a1[12];
+    // *a1 = &off_1222248; clear +8 list.
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_CF3_VTAB), 3)
 }
-
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")]
 // 0x3c8e78 — __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8e78() -> ! {
-    todo!("0x3c8e78 __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_3c8e78(slot: &mut camera_enum::EventDescriptor) {
+    // IDA 0x3c8e78: *a1 = &off_122F5A8; clear +8 signature list.
+    camera_enum::EventDescriptor::destroy(slot)
 }
-
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")]
 // 0x3c8e9c — __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_3c8e9c() -> ! {
-    todo!("0x3c8e9c __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")
+pub fn stub_3c8e9c(slot: &mut camera_enum::EventDescriptor) {
+    // IDA 0x3c8e9c: *a1 = &off_122F5A8; clear +8 signature list.
+    camera_enum::EventDescriptor::destroy(slot)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::addPair(RBX::Camera::CameraType,char const*)")]
 // 0x3c8ec0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_3c8ec0() -> ! {
-    todo!("0x3c8ec0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc")
+pub unsafe fn stub_3c8ec0(
+    desc: *mut crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    name: *const std::os::raw::c_char,
+) {
+    // IDA 0x3c8ec0 CameraType::addPair — same template as the canonical port.
+    camera_enum::add_pair(desc, value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::addPair(RBX::Camera::CameraMode,char const*)")]
 // 0x3c9220 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_3c9220() -> ! {
-    todo!("0x3c9220 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc")
+pub unsafe fn stub_3c9220(
+    desc: *mut crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    name: *const std::os::raw::c_char,
+) {
+    // IDA 0x3c9220 CameraMode::addPair — same template as the canonical port.
+    camera_enum::add_pair(desc, value, name)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::addPair(RBX::Camera::CameraPanMode,char const*)")]
 // 0x3c9580 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-pub fn stub_3c9580() -> ! {
-    todo!("0x3c9580 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc")
+pub unsafe fn stub_3c9580(
+    desc: *mut crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    name: *const std::os::raw::c_char,
+) {
+    // IDA 0x3c9580 CameraPanMode::addPair — same template as the canonical port.
+    camera_enum::add_pair(desc, value, name)
 }
 
 #[doc(alias = "RBX::Camera::CameraPanMode & RBX::Reflection::Variant::genericConvert<RBX::Camera::CameraPanMode>(void)")]
