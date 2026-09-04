@@ -33,6 +33,14 @@ unsafe fn ft_rd16be(p: *const u8) -> u16 {
     ((*p as u16) << 8) | (*p.add(1) as u16)
 }
 #[inline]
+unsafe fn ft_rd32be(p: *const u8) -> u32 {
+    ((*p as u32) << 24) | ((*p.add(1) as u32) << 16) | ((*p.add(2) as u32) << 8) | (*p.add(3) as u32)
+}
+#[inline]
+unsafe fn ft_rd24be(p: *const u8) -> u32 {
+    ((*p as u32) << 16) | ((*p.add(1) as u32) << 8) | (*p.add(2) as u32)
+}
+#[inline]
 unsafe fn ft_rd32le(p: *const u8) -> u32 {
     (*p as u32) | ((*p.add(1) as u32) << 8) | ((*p.add(2) as u32) << 16) | ((*p.add(3) as u32) << 24)
 }
@@ -1477,155 +1485,835 @@ pub unsafe fn tt_cmap6_get_info(cmap: *mut u8, info: *mut u32) -> i32 {
 
 // 0x210a0c — _tt_cmap8_char_index
 #[doc(alias = "_tt_cmap8_char_index")]
-pub fn stub_210a0c() -> ! {
-    todo!("0x210a0c _tt_cmap8_char_index")
+pub unsafe fn stub_210a0c(cmap: *mut u8, char_code: u32) -> u32 {
+    // IDA 0x210a0c
+    tt_cmap8_char_index(cmap, char_code)
+}
+
+/// Format-8 lookup (IDA 0x210a0c..0x210bdc): `num_groups` is the BE `u32`
+/// at `table+8204`, groups of 12 bytes (`start`, `end`, `glyph_id` BE)
+/// from `table+8220` (IDA 0x210a50). The `is32` flag is bit 0 of
+/// `table+8207` (IDA 0x210a54): when set, the first group is checked
+/// inline (IDA 0x210b20..0x210b58) and its `end` primes the scan bound.
+/// Both paths then step group pairs (`p += 24`, two `groups -= 1` per
+/// pair, IDA 0x210bc8/0x210bb0/0x210bd8); note the first group of the
+/// non-`is32` entry costs no decrement (IDA 0x210a54 `BEQ` straight to
+/// the count check). Hit returns `glyph + code - start` with wrapping
+/// add/sub (IDA 0x210ad0 `ADD`/`RSB`).
+pub unsafe fn tt_cmap8_char_index(cmap: *mut u8, char_code: u32) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let mut groups = ft_rd32be(table.add(8204));
+    let mut p = table.add(8220);
+    let (mut start, mut glyph);
+    if ft_rd8(table.add(8207)) & 1 != 0 {
+        start = ft_rd32be(table.add(8208));
+        if char_code < start {
+            return 0;
+        }
+        let mut end = ft_rd32be(table.add(8212));
+        glyph = ft_rd32be(table.add(8216));
+        p = p.add(12);
+        if end >= char_code {
+            return glyph.wrapping_add(char_code).wrapping_sub(start);
+        }
+        loop {
+            groups -= 1;
+            if groups == 0 {
+                return 0;
+            }
+            start = ft_rd32be(p.sub(12));
+            glyph = ft_rd32be(p.sub(4));
+            if start > char_code {
+                return 0;
+            }
+            if ft_rd32be(p.sub(8)) >= char_code {
+                break;
+            }
+            start = ft_rd32be(p);
+            groups -= 1;
+            glyph = ft_rd32be(p.add(8));
+            if start > char_code {
+                return 0;
+            }
+            end = ft_rd32be(p.add(4));
+            p = p.add(24);
+            if end >= char_code {
+                break;
+            }
+        }
+        return glyph.wrapping_add(char_code).wrapping_sub(start);
+    }
+    loop {
+        if groups == 0 {
+            return 0;
+        }
+        start = ft_rd32be(p.sub(12));
+        glyph = ft_rd32be(p.sub(4));
+        if start > char_code {
+            return 0;
+        }
+        if ft_rd32be(p.sub(8)) >= char_code {
+            break;
+        }
+        start = ft_rd32be(p);
+        groups -= 1;
+        glyph = ft_rd32be(p.add(8));
+        if start > char_code {
+            return 0;
+        }
+        let end = ft_rd32be(p.add(4));
+        p = p.add(24);
+        if end >= char_code {
+            break;
+        }
+        groups -= 1;
+    }
+    glyph.wrapping_add(char_code).wrapping_sub(start)
 }
 
 // 0x210be0 — _tt_cmap8_char_next
 // type: unsigned int __fastcall(int, unsigned int *)
 #[doc(alias = "_tt_cmap8_char_next")]
-pub fn stub_210be0() -> ! {
-    todo!("0x210be0 _tt_cmap8_char_next")
+pub unsafe fn stub_210be0(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    // IDA 0x210be0
+    tt_cmap8_char_next(cmap, pchar)
+}
+
+/// Format-8 successor (IDA 0x210be0..0x210de4): clamps the cursor up to
+/// each group's `start`, returns the first nonzero
+/// `glyph - start + cursor` (IDA 0x210cac/0x210dd4 `RSB`/`ADDS`, zero
+/// result means keep scanning). The `is32` first group is handled
+/// inline (IDA 0x210cd4..0x210d58, one `groups -= 1`, `p += 12`); the
+/// pair loop then consumes two groups per pass (`groups -= 2`,
+/// `p += 24`, IDA 0x210ddc/0x210de0). Exhaustion stores 0 and returns 0
+/// (IDA 0x210cc0/0x210cc4).
+pub unsafe fn tt_cmap8_char_next(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let mut c = (*pchar).wrapping_add(1);
+    let mut p = table.add(8220);
+    let mut groups = ft_rd32be(table.add(8204));
+    if ft_rd8(table.add(8207)) & 1 != 0 {
+        let start = ft_rd32be(table.add(8208));
+        if c < start {
+            c = start;
+        }
+        if ft_rd32be(table.add(8212)) >= c {
+            let g = ft_rd32be(table.add(8216)).wrapping_sub(start).wrapping_add(c);
+            if g != 0 {
+                *pchar = c;
+                return g;
+            }
+        }
+        groups -= 1;
+        p = p.add(12);
+    }
+    loop {
+        if groups == 0 {
+            *pchar = 0;
+            return 0;
+        }
+        let mut start = ft_rd32be(p.sub(12));
+        if c < start {
+            c = start;
+        }
+        if ft_rd32be(p.sub(8)) >= c {
+            let g = ft_rd32be(p.sub(4)).wrapping_sub(start).wrapping_add(c);
+            if g != 0 {
+                *pchar = c;
+                return g;
+            }
+        }
+        start = ft_rd32be(p);
+        if c < start {
+            c = start;
+        }
+        if ft_rd32be(p.add(4)) >= c {
+            let g = ft_rd32be(p.add(8)).wrapping_sub(start).wrapping_add(c);
+            if g != 0 {
+                *pchar = c;
+                return g;
+            }
+        }
+        groups -= 2;
+        p = p.add(24);
+    }
 }
 
 // 0x210de8 — _tt_cmap8_get_info
 #[doc(alias = "_tt_cmap8_get_info")]
-pub fn stub_210de8() -> ! {
-    todo!("0x210de8 _tt_cmap8_get_info")
+pub unsafe fn stub_210de8(cmap: *mut u8, info: *mut u32) -> i32 {
+    // IDA 0x210de8
+    tt_cmap8_get_info(cmap, info)
+}
+
+/// Format-8 info (IDA 0x210de8..0x210e18): format 8, language = BE `u32`
+/// at `table+8`.
+pub unsafe fn tt_cmap8_get_info(cmap: *mut u8, info: *mut u32) -> i32 {
+    let table = ft_ptr(cmap, 16);
+    *info.add(1) = 8;
+    *info = ft_rd32be(table.add(8));
+    0
 }
 
 // 0x210e1c — _tt_cmap10_char_index
 #[doc(alias = "_tt_cmap10_char_index")]
-pub fn stub_210e1c() -> ! {
-    todo!("0x210e1c _tt_cmap10_char_index")
+pub unsafe fn stub_210e1c(cmap: *mut u8, char_code: u32) -> u32 {
+    // IDA 0x210e1c
+    tt_cmap10_char_index(cmap, char_code)
+}
+
+/// Format-10 lookup (IDA 0x210e1c..0x210e84): `first` = BE `u32` at
+/// `table+12`, `count` at `table+16`; the entry is the BE `u16` at
+/// `table+20+2*(code - first)` (IDA 0x210e6c..0x210e80). The subtract
+/// wraps (`RSB`, IDA 0x210e48) so codes below `first` miss via the
+/// unsigned `count <= d` check.
+pub unsafe fn tt_cmap10_char_index(cmap: *mut u8, char_code: u32) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let d = char_code.wrapping_sub(ft_rd32be(table.add(12)));
+    if d >= ft_rd32be(table.add(16)) {
+        0
+    } else {
+        ft_rd16be(table.add(20 + 2 * d as usize)) as u32
+    }
 }
 
 // 0x210e88 — _tt_cmap10_char_next
 #[doc(alias = "_tt_cmap10_char_next")]
-pub fn stub_210e88() -> ! {
-    todo!("0x210e88 _tt_cmap10_char_next")
+pub unsafe fn stub_210e88(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    // IDA 0x210e88
+    tt_cmap10_char_next(cmap, pchar)
+}
+
+/// Format-10 successor (IDA 0x210e88..0x211014): clamps up to `first`
+/// (IDA 0x210edc..0x210ee4), returns the first nonzero BE `u16` entry.
+/// Like format 6 (`tt_cmap6_char_next`) the `(count - k) & 3` prologue
+/// plus 4-wide body (IDA 0x210ef8..0x211010) collapse to one pass here;
+/// unlike format 6 there is no 0xFFFF wrap reset — the range is 32-bit —
+/// and exhaustion stores the advanced cursor, not 0 (IDA 0x210f34/0x210f38
+/// `MOV R0,R4; STR R9,[R6]`).
+pub unsafe fn tt_cmap10_char_next(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let first = ft_rd32be(table.add(12));
+    let count = ft_rd32be(table.add(16));
+    let mut c = (*pchar).wrapping_add(1);
+    if c < first {
+        c = first;
+    }
+    let mut k = c.wrapping_sub(first);
+    while k < count {
+        let g = ft_rd16be(table.add(20 + 2 * k as usize));
+        if g != 0 {
+            *pchar = c;
+            return g as u32;
+        }
+        k += 1;
+        c = c.wrapping_add(1);
+    }
+    *pchar = c;
+    0
 }
 
 // 0x211018 — _tt_cmap10_get_info
 #[doc(alias = "_tt_cmap10_get_info")]
-pub fn stub_211018() -> ! {
-    todo!("0x211018 _tt_cmap10_get_info")
+pub unsafe fn stub_211018(cmap: *mut u8, info: *mut u32) -> i32 {
+    // IDA 0x211018
+    tt_cmap10_get_info(cmap, info)
+}
+
+/// Format-10 info (IDA 0x211018..0x211048): format 10, language = BE
+/// `u32` at `table+8`.
+pub unsafe fn tt_cmap10_get_info(cmap: *mut u8, info: *mut u32) -> i32 {
+    let table = ft_ptr(cmap, 16);
+    *info.add(1) = 10;
+    *info = ft_rd32be(table.add(8));
+    0
 }
 
 // 0x21104c — _tt_cmap12_init
 #[doc(alias = "_tt_cmap12_init")]
-pub fn stub_21104c() -> ! {
-    todo!("0x21104c _tt_cmap12_init")
+pub unsafe fn stub_21104c(cmap: *mut u8, table: *mut u8) -> i32 {
+    // IDA 0x21104c
+    tt_cmap12_init(cmap, table)
+}
+
+/// Format-12 init (IDA 0x21104c..0x21107c): caches the table pointer at
+/// `cmap+16`, clears the valid flag (`cmap+24`, IDA 0x21106c), and caches
+/// `num_groups` = BE `u32` at `table+12` at `cmap+40` (IDA 0x211074).
+pub unsafe fn tt_cmap12_init(cmap: *mut u8, table: *mut u8) -> i32 {
+    ft_set_ptr(cmap, 16, table);
+    *cmap.add(24) = 0;
+    ft_set_word(cmap, 10, ft_rd32be(table.add(12)));
+    0
 }
 
 // 0x211080 — _tt_cmap12_next
 #[doc(alias = "_tt_cmap12_next")]
-pub fn stub_211080() -> ! {
-    todo!("0x211080 _tt_cmap12_next")
+pub unsafe fn stub_211080(cmap: *mut u8) -> *mut u8 {
+    // IDA 0x211080
+    tt_cmap12_next(cmap)
+}
+
+/// Format-12 successor step (IDA 0x211080..0x211174): resumes from
+/// `cur_char + 1` (`cmap+28`, IDA 0x21109c) at `cur_group` (`cmap+36`)
+/// over the 12-byte groups at `table+16` (`start`, `end`, `start_id` BE,
+/// IDA 0x2110b4..0x21111c). Within a group the id is
+/// `start_id + c - start` (wrapping, IDA 0x211120/0x211124); a zero id
+/// steps once to `(c + 1, 1)` (IDA 0x211138..0x211140). The `(end - c + 1)
+/// & 7` cascade (IDA 0x21112c..0x21120c) only matters for `r == 1`, where
+/// the stepped `c` is rechecked against `end` (IDA 0x211194 `BEQ`); all
+/// other nonzero `r` provably satisfy `c + 1 <= end` and store directly.
+/// A hit stores `(cur_char, cur_glyph, cur_group)` at `cmap+28/+32/+36`
+/// (IDA 0x211144..0x21114c) and returns the cmap pointer (IDA 0x211150);
+/// exhaustion clears the valid flag (IDA 0x21116c) and likewise returns
+/// the pointer. A `cur_char` of -1 also ends the scan (IDA 0x211090).
+pub unsafe fn tt_cmap12_next(cmap: *mut u8) -> *mut u8 {
+    if ft_word(cmap, 7) == u32::MAX {
+        *cmap.add(24) = 0;
+        return cmap;
+    }
+    let table = ft_ptr(cmap, 16);
+    let total = ft_word(cmap, 10);
+    let mut idx = ft_word(cmap, 9);
+    let mut c = ft_word(cmap, 7).wrapping_add(1);
+    let mut off = 12 * idx as usize;
+    while idx < total {
+        let g = table.add(16 + off);
+        let start = ft_rd32be(g);
+        if c < start {
+            c = start;
+        }
+        let end = ft_rd32be(g.add(4));
+        let mut v = c.wrapping_sub(start).wrapping_add(ft_rd32be(g.add(8)));
+        let r = end.wrapping_sub(c).wrapping_add(1) & 7;
+        if r != 0 {
+            if c > end {
+                idx += 1;
+                off += 12;
+                continue;
+            }
+            if v == 0 {
+                v = 1;
+                c += 1;
+                if r != 1 {
+                    ft_set_word(cmap, 7, c);
+                    ft_set_word(cmap, 8, v);
+                    ft_set_word(cmap, 9, idx);
+                    return cmap;
+                }
+            } else {
+                ft_set_word(cmap, 7, c);
+                ft_set_word(cmap, 8, v);
+                ft_set_word(cmap, 9, idx);
+                return cmap;
+            }
+        }
+        if c <= end {
+            if v == 0 {
+                c += 1;
+                v = 1;
+            }
+            ft_set_word(cmap, 7, c);
+            ft_set_word(cmap, 8, v);
+            ft_set_word(cmap, 9, idx);
+            return cmap;
+        }
+        idx += 1;
+        off += 12;
+    }
+    *cmap.add(24) = 0;
+    cmap
 }
 
 // 0x211210 — _tt_cmap12_char_map_binary
 #[doc(alias = "_tt_cmap12_char_map_binary")]
-pub fn stub_211210() -> ! {
-    todo!("0x211210 _tt_cmap12_char_map_binary")
+pub unsafe fn stub_211210(cmap: *mut u8, pchar: *mut u32, next: u8) -> u32 {
+    // IDA 0x211210
+    tt_cmap12_char_map_binary(cmap, pchar, next)
+}
+
+/// Format-12 binary search (IDA 0x211210..0x211398): `num_groups` = BE
+/// `u32` at `table+12` (IDA 0x211254); in next mode the cursor is
+/// pre-incremented (IDA 0x211264). Groups live at `table+16+12*mid`
+/// (IDA 0x211284); a hit yields `code - start + start_id` (IDA 0x211308).
+/// In index mode the cursor is untouched and the glyph returns directly
+/// (IDA 0x211320). In next mode a past-`end` cursor in the last group
+/// ends the scan (IDA 0x211338); otherwise the state primes
+/// (`cur_char`/`valid`/`cur_group` at `cmap+28/+24/+36`, IDA
+/// 0x211344..0x21134c) and a nonzero hit stores `cur_glyph` and the
+/// cursor (IDA 0x211350..0x211384), else `tt_cmap12_next` advances
+/// (IDA 0x21135c, same-batch call) and its glyph wins when nonzero.
+pub unsafe fn tt_cmap12_char_map_binary(cmap: *mut u8, pchar: *mut u32, next: u8) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let mut c = *pchar;
+    let total = ft_rd32be(table.add(12));
+    if total == 0 {
+        return 0;
+    }
+    if next != 0 {
+        c = c.wrapping_add(1);
+    }
+    let mut lo = 0u32;
+    let mut hi = total;
+    let (mut idx, mut end, mut glyph) = (0u32, 0u32, 0u32);
+    while lo < hi {
+        let mid = (lo + hi) >> 1;
+        let g = table.add(16 + 12 * mid as usize);
+        let start = ft_rd32be(g);
+        let e = ft_rd32be(g.add(4));
+        if c < start {
+            hi = mid;
+        } else if c > e {
+            lo = mid + 1;
+        } else {
+            glyph = c.wrapping_sub(start).wrapping_add(ft_rd32be(g.add(8)));
+            idx = mid;
+            end = e;
+            break;
+        }
+    }
+    if next == 0 {
+        return glyph;
+    }
+    if c > end {
+        idx += 1;
+        if idx == total {
+            return 0;
+        }
+    }
+    ft_set_word(cmap, 7, c);
+    *cmap.add(24) = 1;
+    ft_set_word(cmap, 9, idx);
+    if glyph != 0 {
+        ft_set_word(cmap, 8, glyph);
+        *pchar = c;
+        return glyph;
+    }
+    tt_cmap12_next(cmap);
+    if *cmap.add(24) != 0 {
+        glyph = ft_word(cmap, 8);
+        if glyph != 0 {
+            *pchar = ft_word(cmap, 7);
+            return glyph;
+        }
+    }
+    glyph
 }
 
 // 0x21139c — _tt_cmap12_char_index
 #[doc(alias = "_tt_cmap12_char_index")]
-pub fn stub_21139c() -> ! {
-    todo!("0x21139c _tt_cmap12_char_index")
+pub unsafe fn stub_21139c(cmap: *mut u8, char_code: u32) -> u32 {
+    // IDA 0x21139c
+    tt_cmap12_char_index(cmap, char_code)
+}
+
+/// Format-12 lookup (IDA 0x21139c..0x2113b8): binary search on a stack
+/// copy, so the cursor is untouched (`STR R1,[SP]` copy, `next = 0`,
+/// IDA 0x2113a8..0x2113b4).
+pub unsafe fn tt_cmap12_char_index(cmap: *mut u8, char_code: u32) -> u32 {
+    let mut c = char_code;
+    tt_cmap12_char_map_binary(cmap, &mut c, 0)
 }
 
 // 0x2113c0 — _tt_cmap12_char_next
 #[doc(alias = "_tt_cmap12_char_next")]
-pub fn stub_2113c0() -> ! {
-    todo!("0x2113c0 _tt_cmap12_char_next")
+pub unsafe fn stub_2113c0(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    // IDA 0x2113c0
+    tt_cmap12_char_next(cmap, pchar)
+}
+
+/// Format-12 successor (IDA 0x2113c0..0x21142c): a `cur_char` of -1 ends
+/// the scan (IDA 0x2113d8); a live cursor equal to `*pchar` steps via
+/// `tt_cmap12_next` (same-batch call, IDA 0x2113f8) and reports its
+/// glyph/cursor when nonzero (IDA 0x2113fc..0x211414), else the binary
+/// search primes from `*pchar` in next mode (tail call, IDA 0x21142c).
+pub unsafe fn tt_cmap12_char_next(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    if ft_word(cmap, 7) == u32::MAX {
+        return 0;
+    }
+    if *cmap.add(24) == 0 || ft_word(cmap, 7) != *pchar {
+        return tt_cmap12_char_map_binary(cmap, pchar, 1);
+    }
+    tt_cmap12_next(cmap);
+    if *cmap.add(24) == 0 {
+        return 0;
+    }
+    let g = ft_word(cmap, 8);
+    if g != 0 {
+        *pchar = ft_word(cmap, 7);
+    }
+    g
 }
 
 // 0x211430 — _tt_cmap12_get_info
 #[doc(alias = "_tt_cmap12_get_info")]
-pub fn stub_211430() -> ! {
-    todo!("0x211430 _tt_cmap12_get_info")
+pub unsafe fn stub_211430(cmap: *mut u8, info: *mut u32) -> i32 {
+    // IDA 0x211430
+    tt_cmap12_get_info(cmap, info)
+}
+
+/// Format-12 info (IDA 0x211430..0x211460): format 12, language = BE
+/// `u32` at `table+8`.
+pub unsafe fn tt_cmap12_get_info(cmap: *mut u8, info: *mut u32) -> i32 {
+    let table = ft_ptr(cmap, 16);
+    *info.add(1) = 12;
+    *info = ft_rd32be(table.add(8));
+    0
 }
 
 // 0x211464 — _tt_cmap13_init
 #[doc(alias = "_tt_cmap13_init")]
-pub fn stub_211464() -> ! {
-    todo!("0x211464 _tt_cmap13_init")
+pub unsafe fn stub_211464(cmap: *mut u8, table: *mut u8) -> i32 {
+    // IDA 0x211464
+    tt_cmap13_init(cmap, table)
+}
+
+/// Format-13 init (IDA 0x211464..0x211494): same layout as format 12 —
+/// table at `cmap+16`, valid flag cleared (`cmap+24`, IDA 0x211484),
+/// `num_groups` = BE `u32` at `table+12` cached at `cmap+40`
+/// (IDA 0x21148c).
+pub unsafe fn tt_cmap13_init(cmap: *mut u8, table: *mut u8) -> i32 {
+    ft_set_ptr(cmap, 16, table);
+    *cmap.add(24) = 0;
+    ft_set_word(cmap, 10, ft_rd32be(table.add(12)));
+    0
 }
 
 // 0x211498 — _tt_cmap13_next
 #[doc(alias = "_tt_cmap13_next")]
-pub fn stub_211498() -> ! {
-    todo!("0x211498 _tt_cmap13_next")
+pub unsafe fn stub_211498(cmap: *mut u8) -> *mut u8 {
+    // IDA 0x211498
+    tt_cmap13_next(cmap)
+}
+
+/// Format-13 successor step (IDA 0x211498..0x211690): resumes from
+/// `cur_char + 1` at `cur_group` over the 12-byte groups at `table+16`
+/// (IDA 0x2114e0). Unlike format 12 there is no id stepping — each group
+/// maps its whole range to one glyph — but zero-glyph groups are skipped
+/// (IDA 0x211550/0x211684). The odd/even prologue plus 2-wide body
+/// (IDA 0x2114d4..0x211690) collapse to one pass here. A hit stores
+/// `(cur_char, cur_glyph, cur_group)` (IDA 0x211554..0x21155c);
+/// exhaustion clears the valid flag (IDA 0x211570); a `cur_char` of -1
+/// also ends the scan (IDA 0x2114b0). Returns the input pointer on the
+/// store/exhausted paths (IDA 0x211560/0x211578; callers ignore it —
+/// // BUG: on hit paths R0 actually holds a scratch table byte, but no
+/// caller observes the value, so the pointer is returned).
+pub unsafe fn tt_cmap13_next(cmap: *mut u8) -> *mut u8 {
+    if ft_word(cmap, 7) == u32::MAX {
+        *cmap.add(24) = 0;
+        return cmap;
+    }
+    let table = ft_ptr(cmap, 16);
+    let total = ft_word(cmap, 10);
+    let mut idx = ft_word(cmap, 9);
+    let mut c = ft_word(cmap, 7).wrapping_add(1);
+    let mut off = 12 * idx as usize;
+    while idx < total {
+        let g = table.add(16 + off);
+        let start = ft_rd32be(g);
+        if c < start {
+            c = start;
+        }
+        if ft_rd32be(g.add(4)) >= c {
+            let v = ft_rd32be(g.add(8));
+            if v != 0 {
+                ft_set_word(cmap, 7, c);
+                ft_set_word(cmap, 8, v);
+                ft_set_word(cmap, 9, idx);
+                return cmap;
+            }
+        }
+        idx += 1;
+        off += 12;
+    }
+    *cmap.add(24) = 0;
+    cmap
 }
 
 // 0x211694 — _tt_cmap13_char_map_binary
 #[doc(alias = "_tt_cmap13_char_map_binary")]
-pub fn stub_211694() -> ! {
-    todo!("0x211694 _tt_cmap13_char_map_binary")
+pub unsafe fn stub_211694(cmap: *mut u8, pchar: *mut u32, next: u8) -> u32 {
+    // IDA 0x211694
+    tt_cmap13_char_map_binary(cmap, pchar, next)
+}
+
+/// Format-13 binary search (IDA 0x211694..0x211814): same skeleton as
+/// format 12 (`num_groups` at `table+12`, groups at `table+16+12*mid`,
+/// cursor pre-increment in next mode) but a hit yields the group's
+/// constant glyph directly (IDA 0x211784), with the same priming and
+/// `tt_cmap13_next` fallback (same-batch call, IDA 0x2117d8).
+pub unsafe fn tt_cmap13_char_map_binary(cmap: *mut u8, pchar: *mut u32, next: u8) -> u32 {
+    let table = ft_ptr(cmap, 16);
+    let mut c = *pchar;
+    let total = ft_rd32be(table.add(12));
+    if total == 0 {
+        return 0;
+    }
+    if next != 0 {
+        c = c.wrapping_add(1);
+    }
+    let mut lo = 0u32;
+    let mut hi = total;
+    let (mut idx, mut end, mut glyph) = (0u32, 0u32, 0u32);
+    while lo < hi {
+        let mid = (lo + hi) >> 1;
+        let g = table.add(16 + 12 * mid as usize);
+        let start = ft_rd32be(g);
+        let e = ft_rd32be(g.add(4));
+        if c < start {
+            hi = mid;
+        } else if c > e {
+            lo = mid + 1;
+        } else {
+            glyph = ft_rd32be(g.add(8));
+            idx = mid;
+            end = e;
+            break;
+        }
+    }
+    if next == 0 {
+        return glyph;
+    }
+    if c > end {
+        idx += 1;
+        if idx == total {
+            return 0;
+        }
+    }
+    ft_set_word(cmap, 7, c);
+    *cmap.add(24) = 1;
+    ft_set_word(cmap, 9, idx);
+    if glyph != 0 {
+        ft_set_word(cmap, 8, glyph);
+        *pchar = c;
+        return glyph;
+    }
+    tt_cmap13_next(cmap);
+    if *cmap.add(24) != 0 {
+        glyph = ft_word(cmap, 8);
+        if glyph != 0 {
+            *pchar = ft_word(cmap, 7);
+            return glyph;
+        }
+    }
+    glyph
 }
 
 // 0x211818 — _tt_cmap13_char_index
 #[doc(alias = "_tt_cmap13_char_index")]
-pub fn stub_211818() -> ! {
-    todo!("0x211818 _tt_cmap13_char_index")
+pub unsafe fn stub_211818(cmap: *mut u8, char_code: u32) -> u32 {
+    // IDA 0x211818
+    tt_cmap13_char_index(cmap, char_code)
+}
+
+/// Format-13 lookup (IDA 0x211818..0x211838): binary search on a stack
+/// copy, cursor untouched (`next = 0`, IDA 0x211824).
+pub unsafe fn tt_cmap13_char_index(cmap: *mut u8, char_code: u32) -> u32 {
+    let mut c = char_code;
+    tt_cmap13_char_map_binary(cmap, &mut c, 0)
 }
 
 // 0x21183c — _tt_cmap13_char_next
 #[doc(alias = "_tt_cmap13_char_next")]
-pub fn stub_21183c() -> ! {
-    todo!("0x21183c _tt_cmap13_char_next")
+pub unsafe fn stub_21183c(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    // IDA 0x21183c
+    tt_cmap13_char_next(cmap, pchar)
+}
+
+/// Format-13 successor (IDA 0x21183c..0x2118a8): same shape as format 12
+/// (`cur_char == -1` ends, IDA 0x211854; live cursor steps via
+/// `tt_cmap13_next`, same-batch call, IDA 0x211874; else the binary
+/// search primes in next mode, tail call IDA 0x2118a8).
+pub unsafe fn tt_cmap13_char_next(cmap: *mut u8, pchar: *mut u32) -> u32 {
+    if ft_word(cmap, 7) == u32::MAX {
+        return 0;
+    }
+    if *cmap.add(24) == 0 || ft_word(cmap, 7) != *pchar {
+        return tt_cmap13_char_map_binary(cmap, pchar, 1);
+    }
+    tt_cmap13_next(cmap);
+    if *cmap.add(24) == 0 {
+        return 0;
+    }
+    let g = ft_word(cmap, 8);
+    if g != 0 {
+        *pchar = ft_word(cmap, 7);
+    }
+    g
 }
 
 // 0x2118ac — _tt_cmap13_get_info
 #[doc(alias = "_tt_cmap13_get_info")]
-pub fn stub_2118ac() -> ! {
-    todo!("0x2118ac _tt_cmap13_get_info")
+pub unsafe fn stub_2118ac(cmap: *mut u8, info: *mut u32) -> i32 {
+    // IDA 0x2118ac
+    tt_cmap13_get_info(cmap, info)
+}
+
+/// Format-13 info (IDA 0x2118ac..0x2118dc): format 13, language = BE
+/// `u32` at `table+8`.
+pub unsafe fn tt_cmap13_get_info(cmap: *mut u8, info: *mut u32) -> i32 {
+    let table = ft_ptr(cmap, 16);
+    *info.add(1) = 13;
+    *info = ft_rd32be(table.add(8));
+    0
 }
 
 // 0x2118e0 — _tt_cmap14_init
 #[doc(alias = "_tt_cmap14_init")]
-pub fn stub_2118e0() -> ! {
-    todo!("0x2118e0 _tt_cmap14_init")
+pub unsafe fn stub_2118e0(cmap: *mut u8, table: *mut u8) -> i32 {
+    // IDA 0x2118e0
+    tt_cmap14_init(cmap, table)
+}
+
+/// Format-14 init (IDA 0x2118e0..0x211914): caches the table at `cmap+16`
+/// and `num_selectors` = BE `u32` at `table+6` at `cmap+24`
+/// (IDA 0x21190c) — note the different slot versus formats 12/13, which
+/// use `cmap+40` — zeroing `cmap+28/+32` (IDA 0x211900/0x211908).
+pub unsafe fn tt_cmap14_init(cmap: *mut u8, table: *mut u8) -> i32 {
+    ft_set_ptr(cmap, 16, table);
+    ft_set_word(cmap, 7, 0);
+    ft_set_word(cmap, 8, 0);
+    ft_set_word(cmap, 6, ft_rd32be(table.add(6)));
+    0
 }
 
 // 0x211918 — _tt_cmap14_char_index
 #[doc(alias = "_tt_cmap14_char_index")]
-pub fn stub_211918() -> ! {
-    todo!("0x211918 _tt_cmap14_char_index")
+pub unsafe fn stub_211918() -> u32 {
+    // IDA 0x211918
+    tt_cmap14_char_index()
+}
+
+/// Format-14 lookup (IDA 0x211918..0x21191c): always 0
+/// (`MOV R0,#0; BX LR`) — UVS lookups go through the `*_binary` helpers
+/// below, never this slot.
+pub unsafe fn tt_cmap14_char_index() -> u32 {
+    0
 }
 
 // 0x211920 — _tt_cmap14_char_next
 #[doc(alias = "_tt_cmap14_char_next")]
-pub fn stub_211920() -> ! {
-    todo!("0x211920 _tt_cmap14_char_next")
+pub unsafe fn stub_211920(_cmap: *mut u8, pchar: *mut u32) -> u32 {
+    // IDA 0x211920
+    tt_cmap14_char_next(pchar)
+}
+
+/// Format-14 successor (IDA 0x211920..0x211928): stores 0 and returns 0
+/// (`MOV R0,#0; STR R0,[R1]; BX LR`).
+pub unsafe fn tt_cmap14_char_next(pchar: *mut u32) -> u32 {
+    *pchar = 0;
+    0
 }
 
 // 0x21192c — _tt_cmap14_get_info
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "_tt_cmap14_get_info")]
-pub fn stub_21192c() -> ! {
-    todo!("0x21192c _tt_cmap14_get_info")
+pub unsafe fn stub_21192c(_cmap: *mut u8, info: *mut u32) -> i32 {
+    // IDA 0x21192c
+    tt_cmap14_get_info(info)
+}
+
+/// Format-14 info (IDA 0x21192c..0x211940): format 14, language -1
+/// (`SUB R3,R0,#0xF` with `R0 = 0xE`, IDA 0x211930/0x21193c) — variation
+/// selectors carry no language id.
+pub unsafe fn tt_cmap14_get_info(info: *mut u32) -> i32 {
+    *info.add(1) = 14;
+    *info = u32::MAX;
+    0
 }
 
 // 0x211944 — _tt_cmap14_char_map_def_binary
 #[doc(alias = "_tt_cmap14_char_map_def_binary")]
-pub fn stub_211944() -> ! {
-    todo!("0x211944 _tt_cmap14_char_map_def_binary")
+pub unsafe fn stub_211944(base: *const u8, char_code: u32) -> i32 {
+    // IDA 0x211944
+    tt_cmap14_char_map_def_binary(base, char_code)
+}
+
+/// Default-UVS range search (IDA 0x211944..0x2119d4): `num` = BE `u32` at
+/// `base`, then 4-byte records (24-bit BE `start` + 8-bit `extra_count`,
+/// IDA 0x211994..0x21199c). Hit (`start <= code <= start + extra`,
+/// IDA 0x2119a8..0x2119b8) returns 1, else 0. `start` is 24-bit so the
+/// `start + extra` add cannot overflow.
+pub unsafe fn tt_cmap14_char_map_def_binary(base: *const u8, char_code: u32) -> i32 {
+    let total = ft_rd32be(base);
+    let p = base.add(4);
+    let mut lo = 0u32;
+    let mut hi = total;
+    while lo < hi {
+        let mid = (lo + hi) >> 1;
+        let rec = p.add(4 * mid as usize);
+        let start = ft_rd24be(rec);
+        if char_code < start {
+            hi = mid;
+        } else if char_code > start + ft_rd8(rec.add(3)) as u32 {
+            lo = mid + 1;
+        } else {
+            return 1;
+        }
+    }
+    0
 }
 
 // 0x2119d8 — _tt_cmap14_char_map_nondef_binary
 #[doc(alias = "_tt_cmap14_char_map_nondef_binary")]
-pub fn stub_2119d8() -> ! {
-    todo!("0x2119d8 _tt_cmap14_char_map_nondef_binary")
+pub unsafe fn stub_2119d8(base: *const u8, char_code: u32) -> u32 {
+    // IDA 0x2119d8
+    tt_cmap14_char_map_nondef_binary(base, char_code)
+}
+
+/// Non-default-UVS search (IDA 0x2119d8..0x211a6c): `num` = BE `u32` at
+/// `base`, then 5-byte records (24-bit BE code + BE `u16` glyph,
+/// IDA 0x211a38/0x211a5c). Returns the glyph on an exact key hit
+/// (IDA 0x211a48/0x211a5c), else 0.
+pub unsafe fn tt_cmap14_char_map_nondef_binary(base: *const u8, char_code: u32) -> u32 {
+    let total = ft_rd32be(base);
+    let p = base.add(4);
+    let mut lo = 0u32;
+    let mut hi = total;
+    while lo < hi {
+        let mid = (lo + hi) >> 1;
+        let rec = p.add(5 * mid as usize);
+        let key = ft_rd24be(rec);
+        if key > char_code {
+            hi = mid;
+        } else if key < char_code {
+            lo = mid + 1;
+        } else {
+            return ft_rd16be(rec.add(3)) as u32;
+        }
+    }
+    0
 }
 
 // 0x211a70 — _tt_cmap14_find_variant
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_tt_cmap14_find_variant")]
-pub fn stub_211a70() -> ! {
-    todo!("0x211a70 _tt_cmap14_find_variant")
+pub unsafe fn stub_211a70(base: *const u8, selector: u32) -> *mut u8 {
+    // IDA 0x211a70
+    tt_cmap14_find_variant(base, selector)
+}
+
+/// Variation-selector search (IDA 0x211a70..0x211afc): `num` = BE `u32`
+/// at `base`, then 11-byte records keyed by the 24-bit BE selector at
+/// `+0` (IDA 0x211ad8). Returns the record at `+3` on a hit
+/// (IDA 0x211ac0/0x211ae8), else null.
+pub unsafe fn tt_cmap14_find_variant(base: *const u8, selector: u32) -> *mut u8 {
+    let total = ft_rd32be(base);
+    let p = base.add(4);
+    let mut lo = 0u32;
+    let mut hi = total;
+    while lo < hi {
+        let mid = (lo + hi) >> 1;
+        let rec = p.add(11 * mid as usize);
+        let key = ft_rd24be(rec);
+        if key > selector {
+            hi = mid;
+        } else if key < selector {
+            lo = mid + 1;
+        } else {
+            return rec.add(3) as *mut u8;
+        }
+    }
+    core::ptr::null_mut()
 }
 
 // 0x211b00 — _tt_cmap14_char_var_index
