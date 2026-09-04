@@ -255,8 +255,9 @@ pub fn stub_c6e7c8(obj: &crate::movable::Camera) -> bool {
 // 0xc6e7d0 — __ZNK4Ogre14AnimableObject25getAnimableDictionaryNameEv
 #[doc(alias = "Ogre::AnimableObject::getAnimableDictionaryName(void)const")]
 // was: Ogre::AnimableObject::getAnimableDictionaryName(void)const
-// IDA 0xc6e7d0: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7d0() {
+// IDA 0xc6e7d0: return &StringUtil::BLANK — the base dictionary name is always empty.
+pub fn stub_c6e7d0(obj: &crate::movable::AnimableObject) -> &'static str {
+    obj.animable_dictionary_name()
 }
 
 // 0xc6e7e0 — __ZNK4Ogre14AnimableObject28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -264,15 +265,19 @@ pub fn stub_c6e7d0() {
     alias = "Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const"
 )]
 // was: Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
-// IDA 0xc6e7e0: 1 insn (BX) — branch/return thunk, no state change.
-pub fn stub_c6e7e0() {
+// IDA 0xc6e7e0: 1 insn (BX) — base initialiser fills nothing; the dictionary stays empty, no state change.
+pub fn stub_c6e7e0(_dict: &mut Vec<String>) {
 }
 
 // 0xc6e7e4 — __ZN4Ogre14AnimableObject19createAnimableValueERKSs
 #[doc(alias = "Ogre::AnimableObject::createAnimableValue(std::string const&)")]
 // was: Ogre::AnimableObject::createAnimableValue(std::string const&)
-// IDA 0xc6e7e4: 236 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7e4() {
+// IDA 0xc6e7e4: always throws ItemIdentityException(5, "No animable value named '<name>' present.", OgreAnimable.h:323); Rust reports it as Err.
+pub fn stub_c6e7e4(
+    obj: &crate::movable::AnimableObject,
+    name: &str,
+) -> Result<crate::movable::AnimableValue, crate::movable::OgreException> {
+    obj.create_animable_value(name)
 }
 
 // 0xc6ea98 — __ZN4Ogre10Renderable9preRenderEPNS_12SceneManagerEPNS_12RenderSystemE
@@ -303,8 +308,9 @@ pub fn stub_c6eaa8() {
 // 0xc6eb08 — __ZNK4Ogre10Renderable10getUserAnyEv
 #[doc(alias = "Ogre::Renderable::getUserAny(void)const")]
 // was: Ogre::Renderable::getUserAny(void)const
-// IDA 0xc6eb08: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6eb08() {
+// IDA 0xc6eb08: UserObjectBindings::getUserAny at this + 36.
+pub fn stub_c6eb08(obj: &crate::movable::Renderable) -> &crate::movable::UserAny {
+    obj.user_any()
 }
 
 // 0xc6eb18 — __ZNK4Ogre10Renderable19setRenderSystemDataEPNS0_16RenderSystemDataE
@@ -390,15 +396,16 @@ pub fn stub_c6f000() {
 // 0xc6f010 — __ZN4Ogre9ExceptionD2Ev
 #[doc(alias = "Ogre::Exception::~Exception()")]
 // was: Ogre::Exception::~Exception()
-// IDA 0xc6f010: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0xc6f010: Exception D2 destroys the description/source strings; Rust frees them at drop, no manual state.
 pub fn stub_c6f010() {
 }
 
 // 0xc6f148 — __ZN4Ogre9ExceptionD0Ev
 #[doc(alias = "Ogre::Exception::~Exception()")]
 // was: Ogre::Exception::~Exception()
-// IDA 0xc6f148: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c6f148() {
+// IDA 0xc6f148: Exception D0 runs D2 then operator delete — ownership ends here.
+pub fn stub_c6f148(e: crate::movable::OgreException) {
+    drop(e);
 }
 
 // 0xc6f160 — __ZNK4Ogre9Exception9getSourceEv
@@ -420,36 +427,46 @@ pub fn stub_c6f168(obj: &crate::movable::OgreException) -> i32 {
 // 0xc6f170 — __ZN4Ogre21ItemIdentityExceptionD0Ev
 #[doc(alias = "Ogre::ItemIdentityException::~ItemIdentityException()")]
 // was: Ogre::ItemIdentityException::~ItemIdentityException()
-// IDA 0xc6f170: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c6f170() {
+// IDA 0xc6f170: ItemIdentityException D0 runs Exception D2 then operator delete — ownership ends here.
+pub fn stub_c6f170(e: crate::movable::OgreException) {
+    drop(e);
 }
 
 // 0xc6f1f0 — __ZN4Ogre5CodecD2Ev
 #[doc(alias = "Ogre::Codec::~Codec()")]
 // was: Ogre::Codec::~Codec()
-// IDA 0xc6f1f0: 1 insn (BX) — branch/return thunk, no state change.
+// IDA 0xc6f1f0: Codec D2 body is empty (;) — nothing to tear down, no state change.
 pub fn stub_c6f1f0() {
 }
 
 // 0xc6f1f4 — __ZN4Ogre5Codec13getExtensionsEv
 #[doc(alias = "Ogre::Codec::getExtensions(void)")]
 // was: Ogre::Codec::getExtensions(void)
-// IDA 0xc6f1f4: 156 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6f1f4() {
+// IDA 0xc6f1f4: walk msMapCodecs collecting every registered extension string.
+pub fn stub_c6f1f4(reg: &crate::movable::CodecRegistry) -> Vec<String> {
+    reg.extensions()
 }
 
 // 0xc6f3a0 — __ZN4Ogre5Codec8getCodecERKSs
 #[doc(alias = "Ogre::Codec::getCodec(std::string const&)")]
 // was: Ogre::Codec::getCodec(std::string const&)
-// IDA 0xc6f3a0: 722 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6f3a0() {
+// IDA 0xc6f3a0: lower-case the type, find in msMapCodecs; miss throws with "Supported formats are: <exts>."; returns the codec index.
+pub fn stub_c6f3a0(
+    reg: &crate::movable::CodecRegistry,
+    type_name: &str,
+) -> Result<usize, crate::movable::OgreException> {
+    reg.get_codec(type_name)
 }
 
 // 0xc6fbcc — __ZN4Ogre5Codec8getCodecEPcm
 #[doc(alias = "Ogre::Codec::getCodec(char *,unsigned long)")]
 // was: Ogre::Codec::getCodec(char *,unsigned long)
-// IDA 0xc6fbcc: 184 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6fbcc() {
+// IDA 0xc6fbcc: probe each codec's magicNumberToFileExt in registration order; first match wins, else throw like the string form.
+pub fn stub_c6fbcc(
+    reg: &crate::movable::CodecRegistry,
+    magic: &[u8],
+) -> Result<usize, crate::movable::OgreException> {
+    reg.get_codec_for_magic(magic)
 }
 
 // 0xc6fdc8 — __ZNSt3mapISsPN4Ogre5CodecESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
@@ -482,141 +499,172 @@ pub fn stub_c6fe60() {
 // 0xc6fee4 — __ZNK4Ogre11ColourValue9getAsRGBAEv
 #[doc(alias = "Ogre::ColourValue::getAsRGBA(void)const")]
 // was: Ogre::ColourValue::getAsRGBA(void)const
-// IDA 0xc6fee4: 22 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6fee4() {
+// IDA 0xc6fee4: channels scaled by 255.0, truncated, packed (r << 24) | (g << 16) | (b << 8) | a.
+pub fn stub_c6fee4(obj: &crate::movable::ColourValue) -> u32 {
+    obj.get_as_rgba()
 }
 
 // 0xc6ff3c — __ZNK4Ogre11ColourValue9getAsARGBEv
 #[doc(alias = "Ogre::ColourValue::getAsARGB(void)const")]
 // was: Ogre::ColourValue::getAsARGB(void)const
-// IDA 0xc6ff3c: 22 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6ff3c() {
+// IDA 0xc6ff3c: packed (a << 24) | (r << 16) | (g << 8) | b.
+pub fn stub_c6ff3c(obj: &crate::movable::ColourValue) -> u32 {
+    obj.get_as_argb()
 }
 
 // 0xc6ff94 — __ZNK4Ogre11ColourValue9getAsABGREv
 #[doc(alias = "Ogre::ColourValue::getAsABGR(void)const")]
 // was: Ogre::ColourValue::getAsABGR(void)const
-// IDA 0xc6ff94: 22 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6ff94() {
+// IDA 0xc6ff94: packed (a << 24) | (b << 16) | (g << 8) | r.
+pub fn stub_c6ff94(obj: &crate::movable::ColourValue) -> u32 {
+    obj.get_as_abgr()
 }
 
 // 0xc6ffec — __ZNK4Ogre11ColourValueeqERKS0_
 #[doc(alias = "Ogre::ColourValue::operator==(Ogre::ColourValue const&)const")]
 // was: Ogre::ColourValue::operator==(Ogre::ColourValue const&)const
-// IDA 0xc6ffec: 26 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6ffec() {
+// IDA 0xc6ffec: chained component ==, true only when r, g, b and a all match.
+pub fn stub_c6ffec(a: &crate::movable::ColourValue, b: &crate::movable::ColourValue) -> bool {
+    a == b
 }
 
 // 0xc70040 — __ZNK4Ogre11ColourValueneERKS0_
 #[doc(alias = "Ogre::ColourValue::operator!=(Ogre::ColourValue const&)const")]
 // was: Ogre::ColourValue::operator!=(Ogre::ColourValue const&)const
-// IDA 0xc70040: 27 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70040() {
+// IDA 0xc70040: same component chain seeded with true — the negation of ==.
+pub fn stub_c70040(a: &crate::movable::ColourValue, b: &crate::movable::ColourValue) -> bool {
+    a != b
 }
 
 // 0xc70150 — __ZN4Ogre8FastHashEPKcij
 #[doc(alias = "Ogre::FastHash(char const*,int,unsigned int)")]
 // was: Ogre::FastHash(char const*,int,unsigned int)
-// IDA 0xc70150: 57 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70150() {
+// IDA 0xc70150: hash 4-byte chunks (seed 0 selects length), fold the 3/2/1-byte tail, avalanche; all arithmetic wraps.
+pub fn stub_c70150(data: &[u8], seed: u32) -> u32 {
+    crate::movable::fast_hash(data, seed)
 }
 
 // 0xc70228 — __ZN4Ogre15CompositionPassC1EPNS_21CompositionTargetPassE
 #[doc(alias = "Ogre::CompositionPass::CompositionPass(Ogre::CompositionTargetPass *)")]
 // was: Ogre::CompositionPass::CompositionPass(Ogre::CompositionTargetPass *)
-// IDA 0xc70228: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70228() {
+// IDA 0xc70228: C1 tail-calls C2 — the full field init below.
+pub fn stub_c70228(parent: usize) -> crate::generated_141::CompositionPass {
+    crate::generated_141::CompositionPass::new(parent)
 }
 
 // 0xc70234 — __ZN4Ogre15CompositionPassC2EPNS_21CompositionTargetPassE
 #[doc(alias = "Ogre::CompositionPass::CompositionPass(Ogre::CompositionTargetPass *)")]
 // was: Ogre::CompositionPass::CompositionPass(Ogre::CompositionTargetPass *)
-// IDA 0xc70234: 267 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70234() {
+// IDA 0xc70234: parent at +0, type 3, id 0, queues 0/95, scheme/custom blank, clear buffers 3, colour black, depth 1.0, 16 blank inputs.
+pub fn stub_c70234(parent: usize) -> crate::generated_141::CompositionPass {
+    crate::generated_141::CompositionPass::new(parent)
 }
 
 // 0xc70504 — __ZN4Ogre15CompositionPassD1Ev
 #[doc(alias = "Ogre::CompositionPass::~CompositionPass()")]
 // was: Ogre::CompositionPass::~CompositionPass()
-// IDA 0xc70504: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0xc70504: D1 tail-calls D2 — member teardown without freeing; Rust frees at drop, no manual state.
 pub fn stub_c70504() {
 }
 
 // 0xc70510 — __ZN4Ogre15CompositionPassD2Ev
 #[doc(alias = "Ogre::CompositionPass::~CompositionPass()")]
 // was: Ogre::CompositionPass::~CompositionPass()
-// IDA 0xc70510: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c70510() {
+// IDA 0xc70510: D2 destroys the material handle, strings and input list — ownership ends here.
+pub fn stub_c70510(pass: crate::generated_141::CompositionPass) {
+    drop(pass);
 }
 
 // 0xc706dc — __ZN4Ogre15CompositionPass7setTypeENS0_8PassTypeE
 #[doc(alias = "Ogre::CompositionPass::setType(Ogre::CompositionPass::PassType)")]
 // was: Ogre::CompositionPass::setType(Ogre::CompositionPass::PassType)
-// IDA 0xc706dc: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c706dc() {
+// IDA 0xc706dc: STR word at this + 4.
+pub fn stub_c706dc(pass: &mut crate::generated_141::CompositionPass, pass_type: u32) {
+    pass.set_type(pass_type);
 }
 
 // 0xc706e0 — __ZN4Ogre15CompositionPass13setIdentifierEj
 #[doc(alias = "Ogre::CompositionPass::setIdentifier(unsigned int)")]
 // was: Ogre::CompositionPass::setIdentifier(unsigned int)
-// IDA 0xc706e0: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c706e0() {
+// IDA 0xc706e0: STR word at this + 8.
+pub fn stub_c706e0(pass: &mut crate::generated_141::CompositionPass, identifier: u32) {
+    pass.set_identifier(identifier);
 }
 
 // 0xc706e4 — __ZN4Ogre15CompositionPass15setMaterialNameERKSs
 #[doc(alias = "Ogre::CompositionPass::setMaterialName(std::string const&)")]
 // was: Ogre::CompositionPass::setMaterialName(std::string const&)
-// IDA 0xc706e4: 183 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c706e4() {
+// IDA 0xc706e4: MaterialManager load in AUTODETECT_RESOURCE_GROUP, store the handle at +16 (releasing the previous); the name itself is not retained.
+pub fn stub_c706e4(
+    pass: &mut crate::generated_141::CompositionPass,
+    name: &str,
+    resolver: &dyn crate::movable::MaterialResolver,
+) {
+    pass.set_material_name(name, resolver);
 }
 
 // 0xc708b8 — __ZN4Ogre15CompositionPass15setClearBuffersEj
 #[doc(alias = "Ogre::CompositionPass::setClearBuffers(unsigned int)")]
 // was: Ogre::CompositionPass::setClearBuffers(unsigned int)
-// IDA 0xc708b8: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c708b8() {
+// IDA 0xc708b8: STR word at this + 36.
+pub fn stub_c708b8(pass: &mut crate::generated_141::CompositionPass, buffers: u32) {
+    pass.set_clear_buffers(buffers);
 }
 
 // 0xc708bc — __ZN4Ogre15CompositionPass14setClearColourENS_11ColourValueE
 #[doc(alias = "Ogre::CompositionPass::setClearColour(Ogre::ColourValue)")]
 // was: Ogre::CompositionPass::setClearColour(Ogre::ColourValue)
-// IDA 0xc708bc: 4 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c708bc() {
+// IDA 0xc708bc: store the four channel words at this + 40.
+pub fn stub_c708bc(
+    pass: &mut crate::generated_141::CompositionPass,
+    colour: crate::movable::ColourValue,
+) {
+    pass.set_clear_colour(colour);
 }
 
 // 0xc708cc — __ZN4Ogre15CompositionPass8setInputEmRKSsm
 #[doc(alias = "Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")]
 // was: Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)
-// IDA 0xc708cc: 103 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c708cc() {
+// IDA 0xc708cc: assign name + MRT index at mInputs[id] (this + id*8 + 0x40); no bounds check.
+pub fn stub_c708cc(
+    pass: &mut crate::generated_141::CompositionPass,
+    id: usize,
+    input: &str,
+    mrt_index: u32,
+) {
+    pass.set_input(id, input, mrt_index);
 }
 
 // 0xc709fc — __ZN4Ogre15CompositionPass19setFirstRenderQueueEh
 #[doc(alias = "Ogre::CompositionPass::setFirstRenderQueue(unsigned char)")]
 // was: Ogre::CompositionPass::setFirstRenderQueue(unsigned char)
-// IDA 0xc709fc: 2 insns (STRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c709fc() {
+// IDA 0xc709fc: STRB byte at this + 28.
+pub fn stub_c709fc(pass: &mut crate::generated_141::CompositionPass, queue: u8) {
+    pass.set_first_render_queue(queue);
 }
 
 // 0xc70a00 — __ZN4Ogre15CompositionPass18setLastRenderQueueEh
 #[doc(alias = "Ogre::CompositionPass::setLastRenderQueue(unsigned char)")]
 // was: Ogre::CompositionPass::setLastRenderQueue(unsigned char)
-// IDA 0xc70a00: 2 insns (STRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a00() {
+// IDA 0xc70a00: STRB byte at this + 29.
+pub fn stub_c70a00(pass: &mut crate::generated_141::CompositionPass, queue: u8) {
+    pass.set_last_render_queue(queue);
 }
 
 // 0xc70a04 — __ZN4Ogre15CompositionPass17setMaterialSchemeERKSs
 #[doc(alias = "Ogre::CompositionPass::setMaterialScheme(std::string const&)")]
 // was: Ogre::CompositionPass::setMaterialScheme(std::string const&)
-// IDA 0xc70a04: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a04() {
+// IDA 0xc70a04: std::string::assign at this + 32.
+pub fn stub_c70a04(pass: &mut crate::generated_141::CompositionPass, scheme: &str) {
+    pass.set_material_scheme(scheme);
 }
 
 // 0xc70a10 — __ZN4Ogre15CompositionPass13setClearDepthEf
 #[doc(alias = "Ogre::CompositionPass::setClearDepth(float)")]
 // was: Ogre::CompositionPass::setClearDepth(float)
-// IDA 0xc70a10: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a10() {
+// IDA 0xc70a10: STR float at this + 56.
+pub fn stub_c70a10(pass: &mut crate::generated_141::CompositionPass, depth: f32) {
+    pass.set_clear_depth(depth);
 }
 
 // 0xc70a14 — __ZN4Ogre15CompositionPass15setClearStencilEj

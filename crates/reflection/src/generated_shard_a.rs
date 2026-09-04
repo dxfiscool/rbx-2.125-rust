@@ -591,8 +591,18 @@ pub fn stub_0x5f2558() {
 
 // 0x5f2b1c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,int>(char const*,char const*,float (RBX::PartInstance::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f2b1c() -> ! {
-    todo!("0x5f2b1c RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::PropDescriptor<float (RBX::PartInstance::*)(void)const,int>(char const*,char const*,float (RBX::PartInstance::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f2b1c(
+    name: &str,
+    category: &str,
+    initial: f32,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<f32> {
+    // IDA 0x5f2b1c: `PropDescriptor<PartInstance, float>` read-only ctor
+    // (getter + `int` placeholder): `new` the GetImpl (0x5f2b48-0x5f2b72),
+    // forward into `TypedPropertyDescriptor<float>`. Writes go through
+    // `GetImpl::setValue` (0x5f2c50) and throw.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f2c28 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
@@ -609,20 +619,34 @@ pub fn stub_0x5f2c2c() {
 
 // 0x5f2c30 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f2c30() -> ! {
-    todo!("0x5f2c30 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f2c30(prop: &Prop<f32>) -> f32 {
+    // IDA 0x5f2c30: `GetImpl<float>::getValue`: header strip, getter
+    // member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f2c50 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x5f2c50() -> ! {
-    todo!("0x5f2c50 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetImpl<float (RBX::PartInstance::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x5f2c50() {
+    // IDA 0x5f2c50: `GetImpl::setValue` (read-only prop): `throw
+    // runtime_error("can't set value")` (0x5f2c7c-0x5f2d60). Rust cutover
+    // panics with the same message.
+    panic!("can't set value (IDA 0x5f2c50)");
 }
 
 // 0x5f2d70 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IMS2_KFKS4_vEMS2_FvRS7_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f2d70() -> ! {
-    todo!("0x5f2d70 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f2d70(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x5f2d70: `PropDescriptor<PartInstance, Vector3>` get/set ctor with
+    // a `Vector3 const` getter: `new` the GetSetImpl (0x5f2d9e-0x5f2dd8),
+    // forward into the `TypedPropertyDescriptor` ctor.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f2e84 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE10isReadOnlyEv
@@ -641,20 +665,33 @@ pub fn stub_0x5f2e88() -> bool {
 
 // 0x5f2e8c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f2e8c() -> ! {
-    todo!("0x5f2e8c RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f2e8c(prop: &Prop<Vector3>) -> Vector3 {
+    // IDA 0x5f2e8c: `GetSetImpl<Vector3 const>::getValue`: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f2eb4 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE8setValueEPNS0_13DescribedBaseESA_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x5f2eb4() -> ! {
-    todo!("0x5f2eb4 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+pub fn stub_0x5f2eb4(prop: &mut Prop<Vector3>, value: Vector3) {
+    // IDA 0x5f2eb4: `GetSetImpl<Vector3 const>::setValue`: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5f2ed8 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f2ed8() -> ! {
-    todo!("0x5f2ed8 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f2ed8(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x5f2ed8: `PropDescriptor<PartInstance, Vector3>` get/set ctor with
+    // a `Vector3 const&` getter: same shape as 0x5f0cec (GetSetImpl `new` +
+    // typed-descriptor forward).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f2fec — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
@@ -673,26 +710,48 @@ pub fn stub_0x5f2ff0() -> bool {
 
 // 0x5f2ff4 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f2ff4() -> ! {
-    todo!("0x5f2ff4 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f2ff4(prop: &Prop<Vector3>) -> Vector3 {
+    // IDA 0x5f2ff4: `GetSetImpl<Vector3 const&>::getValue`: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f3028 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x5f3028() -> ! {
-    todo!("0x5f3028 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+pub fn stub_0x5f3028(prop: &mut Prop<Vector3>, value: Vector3) {
+    // IDA 0x5f3028: `GetSetImpl<Vector3 const&>::setValue`: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5f304c — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f304c() -> ! {
-    todo!("0x5f304c RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f304c(
+    name: &str,
+    category: &str,
+    initial: CoordinateFrame,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<CoordinateFrame> {
+    // IDA 0x5f304c: `PropDescriptor<PartInstance, CoordinateFrame>` get/set
+    // ctor: class-descriptor fetch, `new` the GetSetImpl (0x5f307a-0x5f30b4),
+    // forward into the `TypedPropertyDescriptor` ctor.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f3160 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f3160() -> ! {
-    todo!("0x5f3160 RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f3160(
+    name: &str,
+    category: &str,
+    initial: CoordinateFrame,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<CoordinateFrame> {
+    // IDA 0x5f3160: `TypedPropertyDescriptor<CoordinateFrame>` ctor: same
+    // shape as 0x5f0e00 (type tag, base init, vtable, `auto_ptr` takeover,
+    // read/write attribute masking at 0x5f3216/0x5f3232).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f3290 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEED0Ev
@@ -715,26 +774,38 @@ pub fn stub_0x5f32cc() {
 
 // 0x5f32dc — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f32dc() -> ! {
-    todo!("0x5f32dc RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f32dc(a: &Prop<CoordinateFrame>, b: &Prop<CoordinateFrame>) -> bool {
+    // IDA 0x5f32dc: `equalValues`: `getValue` both sides via slot 8, compare
+    // the translation lanes, then `G3D::Matrix3::operator==` on the rotation
+    // (0x5f3356-0x5f338c).
+    a.value == b.value
 }
 
 // 0x5f33d4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x5f33d4() -> ! {
-    todo!("0x5f33d4 RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x5f33d4(prop: &Prop<CoordinateFrame>) -> Value {
+    // IDA 0x5f33d4: `getVariant`: 48-byte frame temp via slot 8 (0x5f33e8),
+    // tag `Type::getSingleton<CoordinateFrame>`, pack with
+    // `placement_any::operator=<CoordinateFrame>` (0x5f33fc-0x5f3408).
+    Value::CoordinateFrame(prop.value)
 }
 
 // 0x5f340c — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x5f340c() -> ! {
-    todo!("0x5f340c RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5f340c(prop: &mut Prop<CoordinateFrame>, value: &Value) {
+    // IDA 0x5f340c: `setVariant`: `any_cast<CoordinateFrame>` on a frame
+    // payload (typeinfo + `"N3G3D15CoordinateFrameE"` check, 0x5f3496;
+    // `Matrix3` copy at 0x5f3508), else `Variant::convert<CoordinateFrame>`
+    // on a copied variant, then `setValue`.
+    prop.value = value.as_coordinate_frame();
 }
 
 // 0x5f3598 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x5f3598() -> ! {
-    todo!("0x5f3598 RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x5f3598(dst: &mut Prop<CoordinateFrame>, src: &Prop<CoordinateFrame>) {
+    // IDA 0x5f3598: `copyValue`: 48-byte frame temp via slot 8
+    // (0x5f35ae), `setValue` into the destination via slot 12 (0x5f35be).
+    dst.value = src.value;
 }
 
 // 0x5f3760 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEED1Ev
@@ -765,14 +836,18 @@ pub fn stub_0x5f37b4() -> bool {
 
 // 0x5f37b8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f37b8() -> ! {
-    todo!("0x5f37b8 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f37b8(prop: &Prop<CoordinateFrame>) -> CoordinateFrame {
+    // IDA 0x5f37b8: `GetSetImpl<CoordinateFrame>::getValue`: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f37f4 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
-pub fn stub_0x5f37f4() -> ! {
-    todo!("0x5f37f4 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+pub fn stub_0x5f37f4(prop: &mut Prop<CoordinateFrame>, value: CoordinateFrame) {
+    // IDA 0x5f37f4: `GetSetImpl<CoordinateFrame>::setValue`: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x5f9108 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED1Ev
