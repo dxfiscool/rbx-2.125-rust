@@ -325,16 +325,33 @@ pub fn stub_f6dc() -> Option<Arc<dyn Fn(String) + Send + Sync>> {
     slot_exception_handler().lock().clone()
 }
 
+/// RBX::Reflection::Tuple ownership slot (IDA 0x17aac/0x17b80): the Tuple
+/// layout is not yet recovered, so the adopted pointer travels as an identity
+/// word (target words are u32; usize holds it on any host). Never deref'd.
+pub struct TupleSlot {
+    pub addr: usize,
+}
+
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
-pub fn stub_17aac() -> ! {
-    todo!("0x17aac boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
+pub fn stub_17aac(raw: *mut c_void) -> SharedPtr<TupleSlot> {
+    // IDA 0x17aac (`shared_ptr<Tuple>::shared_ptr(Tuple*)`, decompiled
+    // 0x17aac..0x17b18): store the pointer (0x17ada), null the count word
+    // (0x17ae2), shared_count ctor (0x17b08, host: Arc control block),
+    // publish the block (0x17b10..0x17b14). Host: adopt the pointer identity
+    // (Tuple layout not yet recovered, so no deref occurs) into an Arc.
+    SharedPtr::new(TupleSlot { addr: raw as usize })
 }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
-pub fn stub_17b80() -> ! {
-    todo!("0x17b80 boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
+pub fn stub_17b80(other: &SharedPtr<TupleSlot>) -> SharedPtr<TupleSlot> {
+    // IDA 0x17b80 (`shared_ptr<const Tuple>` converting copy ctor, decompiled
+    // 0x17b80..0x17c34): word copy of ptr + count (0x17ba8..0x17bb4);
+    // non-null count -> spinlock_pool lock (0x17bfe..0x17c02, host: the Arc
+    // strong-count fence), bump (0x17c0c), unlock (0x17c14); return self
+    // (0x17c34, host: Arc clone shares ownership).
+    SharedPtr::clone(other)
 }
 
 // 0x31a10 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_

@@ -5,6 +5,8 @@
 
 use std::sync::LazyLock;
 use crate::generated::flog_asserts;
+use rbx_core::SharedPtr;
+use std::sync::atomic::{AtomicBool, Ordering};
 
 // ---- CRenderSettings EnumDesc host model (IDA 0x8c4c/0xc16c..0xd6b4) ----
 // Mirrors the ReverbType template in generated.rs (IDA 0x3775f8..0x377c10):
@@ -29,6 +31,7 @@ pub enum RenderSettingsAny {
     AntialiasingMode(i32),
     FrameRateManagerMode(i32),
     GraphicsMode(i32),
+    AASamples(i32),
 }
 
 /// Cast failures on the CRenderSettings convert paths (bad_cast).
@@ -76,6 +79,12 @@ pub const GRAPHICS_MODE_ITEMS: &[(&str, i32)] = &[];
 pub const GRAPHICS_MODE_BY_NAME: &[(&str, i32)] = &[];
 /// Legacy-name view for the second walk in convertToValue.
 pub const GRAPHICS_MODE_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA AASamples EnumDesc C2: base + empty tables, no addItems recovered.
+pub const AA_SAMPLES_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xebb4).
+pub const AA_SAMPLES_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue.
+pub const AA_SAMPLES_LEGACY_BY_NAME: &[(&str, i32)] = &[];
 
 /// Holder tag for the ShadowMode placement_any (typeinfo name, IDA 0xd64c).
 pub struct ShadowModeHolder {
@@ -157,6 +166,51 @@ static GRAPHICS_MODE_HOLDER: LazyLock<GraphicsModeHolder> = LazyLock::new(|| Gra
     construct: stub_e4a8,
     destruct: stub_e4b4,
 });
+
+/// Holder tag for the AASamples placement_any (typeinfo name, IDA 0xeac4 literal).
+pub struct AASamplesHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static AA_SAMPLES_HOLDER: LazyLock<AASamplesHolder> = LazyLock::new(|| AASamplesHolder {
+    type_name: "N3RBX15CRenderSettings9AASamplesE",
+    construct: stub_e9e8,
+    destruct: stub_e9f4,
+});
+
+// ---- CRenderSettingsItem host model (IDA 0xedfc..0xf500) ----
+// operator new(0xC4) at 0xef38 sizes the object; interior field offsets are
+// not yet recovered, so the host carries the 0xC4-byte image footprint.
+// Boost mapping: shared_ptr + Creatable deleter -> SharedPtr (Arc) whose
+// drop runs the deleter path; _internal_accept_owner (+40, 0xefd0) is
+// subsumed by Arc adoption (cf. generated_09 stub_31a10).
+
+/// RBX::CRenderSettingsItem — 0xC4-byte GlobalAdvancedSettings item (IDA 0xef38).
+pub struct CRenderSettingsItem {
+    _image: [u8; 0xC4],
+}
+
+impl Default for CRenderSettingsItem {
+    fn default() -> Self {
+        Self { _image: [0; 0xC4] }
+    }
+}
+
+/// FactoryProduct<CRenderSettingsItem,...>::Creator singleton (IDA 0xf500).
+pub struct RenderSettingsItemCreator {
+    pub class_name: &'static str,
+}
+
+static CREATOR_PRIVATE: LazyLock<RenderSettingsItemCreator> =
+    LazyLock::new(|| RenderSettingsItemCreator { class_name: "RenderSettings" });
+
+/// Creator::isConstructedE sentinel (IDA 0xf500: 666 once C2 ran).
+static CREATOR_CONSTRUCTED: AtomicBool = AtomicBool::new(false);
+
+/// sRenderSettings interned name (IDA 0xf1d8..0xf1dc, guard-once declare).
+static S_RENDER_SETTINGS: LazyLock<&'static str> = LazyLock::new(|| "RenderSettings");
 
 // 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
 // type: int()
@@ -1239,57 +1293,141 @@ pub fn stub_e6f0() {
 // 0xe78c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(RBX::CRenderSettings::AASamples const&)const")]
-pub fn stub_e78c() -> ! {
-    todo!("0xe78c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(RBX::CRenderSettings::AASamples const&)const")
+pub fn stub_e78c(value: i32, out: &mut String) {
+    // IDA 0xe78c: same convertToString(item) shape as 0xd7cc — asserts at
+    // enumconverter.h:262/263 (0xe7c8..0xe87c hook/skip paths), then "" or
+    // names[value].
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < AA_SAMPLES_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= AA_SAMPLES_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(AA_SAMPLES_ITEMS[value as usize].0);
+    }
 }
 
 // 0xe92c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings9AASamplesEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AASamples>(RBX::CRenderSettings::AASamples const&)")]
-pub fn stub_e92c() -> ! {
-    todo!("0xe92c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AASamples>(RBX::CRenderSettings::AASamples const&)")
+pub fn stub_e92c<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xe92c: singleton() (0xe938); holder load (0xe944); same holder?
+    // (0xe94c) -> payload word copy (0xe964); else destroy the old payload via
+    // its holder (0xe950..0xe958) and null the tag (0xe95c), then store +
+    // retag (0xe96e/0xe970); return self (0xe978). Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::AASamples(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::AASamples(value);
+        }
+    }
+    slot
 }
 
 // 0xe97c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::singleton(void)")]
-pub fn stub_e97c() -> ! {
-    todo!("0xe97c rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::singleton(void)")
+pub fn stub_e97c() -> &'static AASamplesHolder {
+    // IDA 0xe97c: cxa_guard_acquire/release around s (0xe996..); s =
+    // {typeinfo, destruct_func} (0xe9ce..) + construct_func word (0xe9d2/0xe9d6);
+    // return s (0xe9e6). Host: LazyLock never drops (atexit equivalent).
+    &*AA_SAMPLES_HOLDER
 }
 
 // 0xe9e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::construct_func(char const*,char *)")]
-pub fn stub_e9e8() -> ! {
-    todo!("0xe9e8 rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::construct_func(char const*,char *)")
+pub fn stub_e9e8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xe9e8: same construct_func shape as 0xda28 — null dst -> return src
+    // word untouched; else *dst = loaded word (trivial 4-byte enum copy).
+    // SAFETY: holder protocol guarantees src readable and dst writable-or-null.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xe9f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::destruct_func(char *)")]
-pub fn stub_e9f4() -> ! {
-    todo!("0xe9f4 rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::destruct_func(char *)")
+pub fn stub_e9f4() {
+    // IDA 0xe9f4: empty body — trivial enum, nothing to destroy.
 }
 
 // 0xe9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToItem(RBX::CRenderSettings::AASamples const&)const")]
-pub fn stub_e9f8() -> ! {
-    todo!("0xe9f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToItem(RBX::CRenderSettings::AASamples const&)const")
+pub fn stub_e9f8(value: i32) -> u32 {
+    // IDA 0xe9f8: asserts "value>=0" (enumconverter.h:273, 0xea0c/0xea10 skip;
+    // 0xea42/0xea46 hook, 0xea52 onward) and
+    // "(size_t)value<enumToItem.size()" (:274, 0xea56..; 0xea76/0xea90 hook,
+    // 0xea92 skip, 0xea94 reload, ReleaseAssert at 0xeaa4..); then 0, range
+    // recheck, else enumToItem[value]. Failure -> 0, as original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < AA_SAMPLES_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < AA_SAMPLES_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xeac4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings9AASamplesENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AASamples const& rbx::any_cast<RBX::CRenderSettings::AASamples const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_eac4() -> ! {
-    todo!("0xeac4 RBX::CRenderSettings::AASamples const& rbx::any_cast<RBX::CRenderSettings::AASamples const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_eac4(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xeac4: holder load (0xeaee..); null holder -> void typeinfo
+    // (0xeb1c/0xeb20); holder mismatch (0xeb30) or name mismatch
+    // ("N3RBX15CRenderSettings9AASamplesE", 0xeb34..0xeb3a) ->
+    // throw bad_placement_any_cast (0xeb4c..0xeb7a, host: Err); else payload
+    // at +1 (0xeb98).
+    match slot {
+        RenderSettingsAny::AASamples(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xebb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(RBX::Name const&,RBX::CRenderSettings::AASamples&)const")]
-pub fn stub_ebb4() -> ! {
-    todo!("0xebb4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(RBX::Name const&,RBX::CRenderSettings::AASamples&)const")
+pub fn stub_ebb4(name: &str, out: &mut i32) -> bool {
+    // IDA 0xebb4: same two-map lower_bound shape as 0xd6b4 (walks
+    // 0xebb6..0xebfe; hit stores node+5 and returns 1, else 0).
+    // Host: binary search, primary table then legacy table.
+    match AA_SAMPLES_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = AA_SAMPLES_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match AA_SAMPLES_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = AA_SAMPLES_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xec30 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev
@@ -1309,36 +1447,60 @@ pub fn stub_eccc() {
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_edfc() -> ! {
-    todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_edfc() -> &'static str {
+    // IDA 0xedfc (disasm): same getClassName shape as 0xb8d0 —
+    // FLog::Asserts-gated wasConstructed check, Name::declare call_once,
+    // then tail-call to doDeclare returning the sRenderSettings name.
+    "RenderSettings"
 }
 
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 // type: int __fastcall(int *)
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
-pub fn stub_ee84() -> ! {
-    todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")
+pub fn stub_ee84() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xee84: wasConstructed() assert (Object.h:231, 0xee98..0xeeda) then
+    // Creatable::create (0xeeec = stub_ef04); null check with +32
+    // Instance-base adjust (0xeef2..0xeef8, host: no base-subobject offset —
+    // the Arc carries the whole object); shared_count copy into the out slot
+    // (0xeefa..0xef02, host: Arc clone into the return).
+    if flog_asserts() {
+        assert!(
+            CREATOR_CONSTRUCTED.load(Ordering::Relaxed),
+            "wasConstructed() file: ../App/include/Util/Object.h line: 231"
+        );
+    }
+    stub_ef04()
 }
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
-pub fn stub_ef04() -> ! {
-    todo!("0xef04 boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")
+pub fn stub_ef04() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xef04: operator new(0xC4) (0xef38, host: Default zeroing);
+    // CRenderSettingsItem C2 in place (0xef5c); wrap with the Creatable
+    // deleter shared_ptr ctor (0xef6a = stub_efb4, host: Arc drop).
+    stub_efb4(CRenderSettingsItem::default())
 }
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_efb4() -> ! {
-    todo!("0xefb4 boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_efb4(item: CRenderSettingsItem) -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xefb4: store the pointer (0xefba); shared_count ctor with the
+    // Creatable deleter (0xefc0, host: Arc control block); non-null pointer
+    // -> _internal_accept_owner at +40 (0xefc6..0xefd0, host: subsumed by Arc
+    // adoption — cf. generated_09 stub_31a10); return self (0xefd6).
+    SharedPtr::new(item)
 }
 
 // 0xefd8 — __ZNK5boost6detail15sp_counted_base9use_countEv
 // type: int __fastcall(boost::detail::sp_counted_base *this)
 #[doc(alias = "boost::detail::sp_counted_base::use_count(void)const")]
-pub fn stub_efd8() -> ! {
-    todo!("0xefd8 boost::detail::sp_counted_base::use_count(void)const")
+pub fn stub_efd8(owner: &SharedPtr<CRenderSettingsItem>) -> i32 {
+    // IDA 0xefd8: spinlock_pool lock for the block (0xf01a..0xf020, host: the
+    // Arc strong-count fence), read the use_count word (0xf032), unlock
+    // (0xf058), return it (0xf078).
+    SharedPtr::strong_count(owner) as i32
 }
 
 // 0xf098 — __ZN5boost6detail12shared_countC2IP19CRenderSettingsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
@@ -1378,48 +1540,107 @@ pub fn stub_f1d4() {
 
 // 0xf1d8 — __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")]
-pub fn stub_f1d8() -> ! {
-    todo!("0xf1d8 __ZN3RBX4Name13callDoDeclareILZ15sRenderSettingsEEEvv")
+pub fn stub_f1d8() -> &'static str {
+    // IDA 0xf1d8: thunk (B) into Name::doDeclare<sRenderSettings> (0xf1dc).
+    stub_f1dc()
 }
 
 // 0xf1dc — __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")]
-pub fn stub_f1dc() -> ! {
-    todo!("0xf1dc __ZN3RBX4Name9doDeclareILZ15sRenderSettingsEEERKS0_v")
+pub fn stub_f1dc() -> &'static str {
+    // IDA 0xf1dc: guard-once static n (0xf238..0xf262, host: LazyLock);
+    // n = Name::declare(&sRenderSettings, 1) (0xf25e); return n (0xf290).
+    *S_RENDER_SETTINGS
 }
 
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_f2bc() -> ! {
-    todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_f2bc() -> &'static RenderSettingsItemCreator {
+    // IDA 0xf2bc (Creator C2): vtable install (0xf2f2); call_once
+    // Name::declare (0xf2f4); doDeclare (0xf30a, host: stub_f1dc);
+    // Asserts gate (0xf30c); creators-map lower_bound walk for &name
+    // (0xf32c..0xf342); missing entry refreshes getCreators (0xf396), present
+    // entry hits the duplicate-name ReleaseAssert (Object.h:244, 0xf34a..);
+    // !wasConstructed (==666) ReleaseAssert (Object.h:245, 0xf39a..0xf3e0);
+    // insert &name -> this into creators (0xf3f2..0xf41c, host: subsumed by
+    // the constructed flag — no cross-module registry in this crate) and mark
+    // constructed. LazyLock statics never drop (atexit equivalent).
+    stub_f1dc();
+    if flog_asserts() {
+        assert!(
+            !CREATOR_CONSTRUCTED.load(Ordering::Relaxed),
+            "!wasConstructed() file: ../App/include/Util/Object.h line: 245"
+        );
+    }
+    CREATOR_CONSTRUCTED.store(true, Ordering::Relaxed);
+    &*CREATOR_PRIVATE
 }
 
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_f500() -> ! {
-    todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_f500() -> &'static RenderSettingsItemCreator {
+    // IDA 0xf500: FLog::Asserts-gated isConstructed == 666 ReleaseAssert
+    // (Object.h:282, 0xf510..0xf556, host: panic); return &creatorPrivate
+    // (0xf562/0xf572, host: the LazyLock singleton).
+    if flog_asserts() {
+        assert!(
+            CREATOR_CONSTRUCTED.load(Ordering::Relaxed),
+            "Creator::wasConstructed() file: ../App/include/Util/Object.h line: 282"
+        );
+    }
+    &*CREATOR_PRIVATE
 }
 
 // 0xf704 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 // type: int __fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")]
-pub fn stub_f704() -> ! {
-    todo!("0xf704 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector2int16*,std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>>,G3D::Vector2int16 const&)")
+pub fn stub_f704(
+    vec: &mut Vec<(u16, u16)>,
+    index: usize,
+    value: (u16, u16),
+) -> &mut Vec<(u16, u16)> {
+    // IDA 0xf704 (vector::_M_insert_aux): finish == end_of_storage (0xf718)
+    // -> grow: doubled size w/ max_size cap (0xf73e..0xf752, length_error past
+    // the cap at 0xf7d2..0xf7e4), allocate (0xf75a = 0xf7e8), copy the prefix
+    // (0xf764..0xf782), place the value (0xf786..0xf78c), copy the suffix
+    // (0xf78e..0xf7ac), delete the old buffer (0xf7b0..0xf7b6), republish
+    // begin/finish/end (0xf7ba..0xf7c4); else shift the tail via __copy_b
+    // (0xf71a..0xf738 = 0xf800) and store (host: both paths are Vec::insert,
+    // grow + memmove; the 4-byte lane pair is G3D::Vector2int16).
+    vec.insert(index, value);
+    vec
 }
 
 // 0xf7e8 — __ZNSt12_Vector_baseIN3G3D12Vector2int16ESaIS1_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")]
-pub fn stub_f7e8() -> ! {
-    todo!("0xf7e8 std::_Vector_base<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::_M_allocate(unsigned long)")
+pub fn stub_f7e8(n: usize) -> Vec<(u16, u16)> {
+    // IDA 0xf7e8 (_Vector_base::_M_allocate): n >= 0x40000000 ->
+    // __throw_bad_alloc (0xf7f0..0xf7f2, host: panic); else operator new(4*n)
+    // raw lanes. Host: a capacity-only Vec (len 0, like fresh storage).
+    assert!(n < 0x40000000, "std::bad_alloc (IDA 0xf7f2)");
+    Vec::with_capacity(n)
 }
 
 // 0xf800 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D12Vector2int16ES5_EET0_T_S7_S6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")]
-pub fn stub_f800() -> ! {
-    todo!("0xf800 G3D::Vector2int16 * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector2int16 *,G3D::Vector2int16 *>(G3D::Vector2int16 *,G3D::Vector2int16 *,G3D::Vector2int16 *)")
+pub fn stub_f800(
+    buf: &mut [(u16, u16)],
+    first: usize,
+    last: usize,
+    result_end: usize,
+) -> usize {
+    // IDA 0xf800 (__copy_b, copy_backward): n = last - first words (0xf800);
+    // n >= 1 (0xf804) -> overlapping word loop from the back
+    // (0xf808..0xf832, host: copy_within = memmove); return the adjusted
+    // result end (0xf834/0xf83a, i.e. result - n).
+    let n = last - first;
+    if n >= 1 {
+        buf.copy_within(first..last, result_end - n);
+    }
+    result_end - n
 }
