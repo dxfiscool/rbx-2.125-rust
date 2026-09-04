@@ -89,6 +89,56 @@ impl FlurryDataSender {
         n
     }
 }
+/// Mutable analytics session behind the `FlurryImpl` `__block_invoke`
+/// family (IDA `0xf11c1c`..`0xf0fb7c`): every block captures the session
+/// (`a1 + 20/24`) and forwards one selector, optionally storing the result
+/// through a `__block_byref` slot. Object pointers stay opaque `usize`
+/// (`0` is `nil`) with no host Flurry/UIKit runtime here.
+#[derive(Debug, Default)]
+pub struct FlurrySession {
+    pub age: i32,
+    pub gender: i32,
+    pub page_view_count: i32,
+    pub pause_time: i64,
+    pub accuracy: f64,
+    pub longitude: f64,
+    pub latitude: f64,
+    pub push_token: usize,
+    pub age_years: i32,
+    pub gender_id: usize,
+    pub crash_reporting: bool,
+    pub reports_on_pause: bool,
+    pub session_open: bool,
+    pub resuming: bool,
+    pub page_views: u32,
+    pub pending_session_sends: u32,
+    pub events: Vec<FlurryEvent>,
+    pub errors: Vec<FlurryErrorReport>,
+    pub purchases: Vec<usize>,
+}
+
+/// One `recordEvent:withParameters:[timed:]` entry (IDA `0xf102a0`/`0xf10160`/
+/// `0xf103d4`): opaque event/parameter ids plus the timed flag and the
+/// end marker set by `endTimedEvent:withParameters:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FlurryEvent {
+    pub name: usize,
+    pub params: usize,
+    pub timed: bool,
+    pub ended: bool,
+}
+
+/// One `recordError:...` entry (IDA `0xf1082c`/`0xf10698`/`0xf10518`): the
+/// captured selector args as opaque ids; `live` selects the live report path.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FlurryErrorReport {
+    pub first: usize,
+    pub second: usize,
+    pub third: usize,
+    pub fourth: usize,
+    pub fifth: usize,
+    pub live: bool,
+}
 
 // 0xf55c84 — j___ZN5boost6detail12shared_countC2IN16RobloxExtraSpace6SharedEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -395,153 +445,270 @@ pub fn stub_f11e54(session_pause: i64, out_slot: &mut i64) -> i64 {
 
 // 0xf11c1c — ___27-[FlurryImpl pageViewCount]_block_invoke_0
 #[doc(alias = "___27-[FlurryImpl pageViewCount]_block_invoke_0")]
-pub fn stub_f11c1c() -> ! {
-    todo!("0xf11c1c ___27-[FlurryImpl pageViewCount]_block_invoke_0")
+pub fn stub_f11c1c(session: &FlurrySession, out_slot: &mut i32) -> i32 {
+    // IDA 0xf11c1c: `__block_invoke_0` for `-[FlurryImpl pageViewCount]`;
+    // reads `[[capture+24] session] pageViewCount` (0xf11c30/0xf11c40) and
+    // stores it through the `__block_byref` slot (`+16` at 0xf11c48),
+    // returning the value (0xf11c4a).
+    *out_slot = session.page_view_count;
+    session.page_view_count
 }
 
 // 0xf11a00 — ___17-[FlurryImpl age]_block_invoke_0
 #[doc(alias = "___17-[FlurryImpl age]_block_invoke_0")]
-pub fn stub_f11a00() -> ! {
-    todo!("0xf11a00 ___17-[FlurryImpl age]_block_invoke_0")
+pub fn stub_f11a00(session: &FlurrySession, out_slot: &mut i32) -> i32 {
+    // IDA 0xf11a00: `__block_invoke_0` for `-[FlurryImpl age]`; reads
+    // `[[capture+24] session] age` (0xf11a14/0xf11a24) and stores it through
+    // the `__block_byref` slot (`+24` at 0xf11a2c), returning it (0xf11a2e).
+    *out_slot = session.age;
+    session.age
 }
 
 // 0xf117a8 — ___20-[FlurryImpl gender]_block_invoke_0
 #[doc(alias = "___20-[FlurryImpl gender]_block_invoke_0")]
-pub fn stub_f117a8() -> ! {
-    todo!("0xf117a8 ___20-[FlurryImpl gender]_block_invoke_0")
+pub fn stub_f117a8(session: &FlurrySession, out_slot: &mut i32) -> i32 {
+    // IDA 0xf117a8: `__block_invoke_0` for `-[FlurryImpl gender]`; reads
+    // `[[capture+24] session] gender` (0xf117bc/0xf117cc) and stores it
+    // through the `__block_byref` slot (`+16` at 0xf117d4), returning it
+    // (0xf117d6).
+    *out_slot = session.gender;
+    session.gender
 }
 
 // 0xf11580 — ___22-[FlurryImpl accuracy]_block_invoke_0
 #[doc(alias = "___22-[FlurryImpl accuracy]_block_invoke_0")]
-pub fn stub_f11580() -> ! {
-    todo!("0xf11580 ___22-[FlurryImpl accuracy]_block_invoke_0")
+pub fn stub_f11580(session: &FlurrySession, out_slot: &mut f64) -> *mut f64 {
+    // IDA 0xf11580: `__block_invoke_0` for `-[FlurryImpl accuracy]`; reads
+    // `[[capture+24] session] accuracy` as a double (0xf11594/0xf115ae) and
+    // stores it through the `__block_byref` slot (`+16` at 0xf115b4). Unlike
+    // its siblings it returns the slot itself (0xf115b8), hence the pointer.
+    *out_slot = session.accuracy;
+    out_slot
 }
 
 // 0xf11348 — ___23-[FlurryImpl longitude]_block_invoke_0
 #[doc(alias = "___23-[FlurryImpl longitude]_block_invoke_0")]
-pub fn stub_f11348() -> ! {
-    todo!("0xf11348 ___23-[FlurryImpl longitude]_block_invoke_0")
+pub fn stub_f11348(session: &FlurrySession, out_slot: &mut f64) -> f64 {
+    // IDA 0xf11348: `__block_invoke_0` for `-[FlurryImpl longitude]`; reads
+    // `[[capture+24] session] longitude` (0xf1135c/0xf1136c, 64-bit value)
+    // and stores it through the `__block_byref` slot (`+16/+20` at
+    // 0xf11374/0xf11378), returning the value (0xf1137a).
+    *out_slot = session.longitude;
+    session.longitude
 }
 
 // 0xf11118 — ___22-[FlurryImpl latitude]_block_invoke_0
 #[doc(alias = "___22-[FlurryImpl latitude]_block_invoke_0")]
-pub fn stub_f11118() -> ! {
-    todo!("0xf11118 ___22-[FlurryImpl latitude]_block_invoke_0")
+pub fn stub_f11118(session: &FlurrySession, out_slot: &mut f64) -> f64 {
+    // IDA 0xf11118: `__block_invoke_0` for `-[FlurryImpl latitude]`; same
+    // shape as longitude above (`session` at 0xf1112c, `latitude` at
+    // 0xf1113c, byref store at 0xf11144/0xf11148, return at 0xf1114a).
+    *out_slot = session.latitude;
+    session.latitude
 }
 
 // 0xf10f10 — ___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0
 #[doc(alias = "___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0")]
-pub fn stub_f10f10() -> ! {
-    todo!("0xf10f10 ___50-[FlurryImpl sendSessionsToServerForCreateSession]_block_invoke_0")
+pub fn stub_f10f10(session: &mut FlurrySession) -> u32 {
+    // IDA 0xf10f10: `__block_invoke_0` for `-[FlurryImpl
+    // sendSessionsToServerForCreateSession]`; forwards `session` (0xf10f22)
+    // to `sendSessionsToServerForCreateSession` (0xf10f36). Flushes the
+    // queued session sends and reports how many went out.
+    let sent = session.pending_session_sends;
+    session.pending_session_sends = 0;
+    sent
 }
 
 // 0xf10e28 — ___24-[FlurryImpl endSession]_block_invoke_0
 #[doc(alias = "___24-[FlurryImpl endSession]_block_invoke_0")]
-pub fn stub_f10e28() -> ! {
-    todo!("0xf10e28 ___24-[FlurryImpl endSession]_block_invoke_0")
+pub fn stub_f10e28(session: &mut FlurrySession) {
+    // IDA 0xf10e28: `__block_invoke_0` for `-[FlurryImpl endSession]`;
+    // forwards `session` (0xf10e3a) to `endSession` (0xf10e4e). Closes the
+    // session; the server flush rides the session batch.
+    session.session_open = false;
+    session.resuming = false;
 }
 
 // 0xf10d40 — ___27-[FlurryImpl resumeSession]_block_invoke_0
 #[doc(alias = "___27-[FlurryImpl resumeSession]_block_invoke_0")]
-pub fn stub_f10d40() -> ! {
-    todo!("0xf10d40 ___27-[FlurryImpl resumeSession]_block_invoke_0")
+pub fn stub_f10d40(session: &mut FlurrySession) -> bool {
+    // IDA 0xf10d40: `__block_invoke_0` for `-[FlurryImpl resumeSession]`;
+    // forwards `session` (0xf10d52) to `resumeSession` (0xf10d66). Reopens
+    // the session and reports the open state.
+    session.session_open = true;
+    session.resuming = false;
+    session.session_open
 }
 
 // 0xf10c58 — ___35-[FlurryImpl markSessionAsResuming]_block_invoke_0
 #[doc(alias = "___35-[FlurryImpl markSessionAsResuming]_block_invoke_0")]
-pub fn stub_f10c58() -> ! {
-    todo!("0xf10c58 ___35-[FlurryImpl markSessionAsResuming]_block_invoke_0")
+pub fn stub_f10c58(session: &mut FlurrySession) {
+    // IDA 0xf10c58: `__block_invoke_0` for `-[FlurryImpl
+    // markSessionAsResuming]`; forwards `session` (0xf10c6a) to
+    // `markSessionAsResuming` (0xf10c7e). Flags the resume without reopening.
+    session.resuming = true;
 }
 
 // 0xf10b28 — ___26-[FlurryImpl pauseSession]_block_invoke_0136
 #[doc(alias = "___26-[FlurryImpl pauseSession]_block_invoke_0136")]
-pub fn stub_f10b28() -> ! {
-    todo!("0xf10b28 ___26-[FlurryImpl pauseSession]_block_invoke_0136")
+pub fn stub_f10b28(session: &mut FlurrySession, bg_task: u32) -> u32 {
+    // IDA 0xf10b28: `__block_invoke_0` for `-[FlurryImpl pauseSession]`;
+    // forwards `session` (0xf10b3c) to `pauseSession` (0xf10b4c), then ends
+    // the captured background task unless it is `UIBackgroundTaskInvalid`
+    // (0xf10b5e/0xf10b62) via `endBackgroundTask:` (0xf10b7e/0xf10b90).
+    // `UIBackgroundTaskInvalid` is 0 [INFERENCE: iOS SDK constant value].
+    // Returns the invalid sentinel after ending, else the surviving task.
+    session.session_open = false;
+    if bg_task != 0 {
+        0
+    } else {
+        bg_task
+    }
 }
 
 // 0xf10af0 — ___26-[FlurryImpl pauseSession]_block_invoke_0
 // type: void __cdecl(id)
 #[doc(alias = "___26-[FlurryImpl pauseSession]_block_invoke_0")]
-pub fn stub_f10af0() -> ! {
-    todo!("0xf10af0 ___26-[FlurryImpl pauseSession]_block_invoke_0")
+pub fn stub_f10af0(log_level: u32) -> bool {
+    // IDA 0xf10af0: `__block_invoke_0` for the `pauseSession` logger; emits
+    // the session-state note via `NSLog` (0xf10b20) only when
+    // `[FlurryUtil logLevel] >= 2` (0xf10b12). Returns whether it fired.
+    log_level >= 2
 }
 
 // 0xf10990 — ___33-[FlurryImpl recordPurchaseItem:]_block_invoke_0
 #[doc(alias = "___33-[FlurryImpl recordPurchaseItem:]_block_invoke_0")]
-pub fn stub_f10990() -> ! {
-    todo!("0xf10990 ___33-[FlurryImpl recordPurchaseItem:]_block_invoke_0")
+pub fn stub_f10990(session: &mut FlurrySession, item: usize) {
+    // IDA 0xf10990: `__block_invoke_0` for `-[FlurryImpl recordPurchaseItem:]`;
+    // forwards `session` (0xf109a4) to `recordPurchaseItem:` with the
+    // captured item (`a1 + 24` at 0xf109ba). Queues the purchase record.
+    session.purchases.push(item);
 }
 
 // 0xf1082c — ___71-[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]_block_invoke_0
 #[doc(alias = "___71-[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]_block_invoke_0")]
-pub fn stub_f1082c() -> ! {
-    todo!("0xf1082c ___71-[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]_block_invoke_0")
+pub fn stub_f1082c(session: &mut FlurrySession, error: usize, message: usize, exc_str: usize, err_type: usize, live: bool) {
+    // IDA 0xf1082c: `__block_invoke_0` for `-[FlurryImpl
+    // recordError:message:exceptionString:errorType:liveReport:]`; forwards
+    // `session` (0xf10842) with the five captured args (`a1 + 24..40` at
+    // 0xf10870). Queues the five-word error report.
+    session.errors.push(FlurryErrorReport { first: error, second: message, third: exc_str, fourth: err_type, fifth: 0, live });
 }
 
 // 0xf10698 — ___51-[FlurryImpl recordError:message:error:liveReport:]_block_invoke_0
 #[doc(alias = "___51-[FlurryImpl recordError:message:error:liveReport:]_block_invoke_0")]
-pub fn stub_f10698() -> ! {
-    todo!("0xf10698 ___51-[FlurryImpl recordError:message:error:liveReport:]_block_invoke_0")
+pub fn stub_f10698(session: &mut FlurrySession, error: usize, message: usize, error_obj: usize, live: bool) {
+    // IDA 0xf10698: `__block_invoke_0` for `-[FlurryImpl
+    // recordError:message:error:liveReport:]`; forwards `session` (0xf106b2)
+    // with the four captured args (`a1 + 24..36` at 0xf106d8). Queues the
+    // report; the `NSError` object stays an opaque id.
+    session.errors.push(FlurryErrorReport { first: error, second: message, third: error_obj, fourth: 0, fifth: 0, live });
 }
 
 // 0xf10518 — ___55-[FlurryImpl recordError:message:exception:liveReport:]_block_invoke_0
 #[doc(alias = "___55-[FlurryImpl recordError:message:exception:liveReport:]_block_invoke_0")]
-pub fn stub_f10518() -> ! {
-    todo!("0xf10518 ___55-[FlurryImpl recordError:message:exception:liveReport:]_block_invoke_0")
+pub fn stub_f10518(session: &mut FlurrySession, error: usize, message: usize, exception: usize, live: bool) {
+    // IDA 0xf10518: `__block_invoke_0` for `-[FlurryImpl
+    // recordError:message:exception:liveReport:]`; forwards `session`
+    // (0xf10532) with the four captured args (`a1 + 24..36` at 0xf10558).
+    // Same queue shape as 0xf10698 with an `NSException` in the third slot.
+    session.errors.push(FlurryErrorReport { first: error, second: message, third: exception, fourth: 0, fifth: 0, live });
 }
 
 // 0xf103d4 — ___43-[FlurryImpl endTimedEvent:withParameters:]_block_invoke_0
 #[doc(alias = "___43-[FlurryImpl endTimedEvent:withParameters:]_block_invoke_0")]
-pub fn stub_f103d4() -> ! {
-    todo!("0xf103d4 ___43-[FlurryImpl endTimedEvent:withParameters:]_block_invoke_0")
+pub fn stub_f103d4(session: &mut FlurrySession, event: usize, params: usize) -> bool {
+    // IDA 0xf103d4: `__block_invoke_0` for `-[FlurryImpl
+    // endTimedEvent:withParameters:]`; forwards `session` (0xf103e8) to
+    // `endTimedEvent:withParameters:` with the captured event/params
+    // (`a1 + 24/28` at 0xf10400). Marks the newest matching open timed
+    // event ended; the param merge rides the event batch.
+    for entry in session.events.iter_mut().rev() {
+        if entry.name == event && entry.timed && !entry.ended {
+            entry.params = params;
+            entry.ended = true;
+            return true;
+        }
+    }
+    false
 }
 
 // 0xf102a0 — ___47-[FlurryImpl recordEvent:withParameters:timed:]_block_invoke_0
 #[doc(alias = "___47-[FlurryImpl recordEvent:withParameters:timed:]_block_invoke_0")]
-pub fn stub_f102a0() -> ! {
-    todo!("0xf102a0 ___47-[FlurryImpl recordEvent:withParameters:timed:]_block_invoke_0")
+pub fn stub_f102a0(session: &mut FlurrySession, event: usize, params: usize, timed: bool) {
+    // IDA 0xf102a0: `__block_invoke_0` for `-[FlurryImpl
+    // recordEvent:withParameters:timed:]`; forwards `session` (0xf102b6) to
+    // `recordEvent:withParameters:timed:` with the captured event/params and
+    // the `char` timed flag (`a1 + 24/28/32` at 0xf102d6). Queues the event.
+    session.events.push(FlurryEvent { name: event, params, timed, ended: false });
 }
 
 // 0xf10160 — ___41-[FlurryImpl recordEvent:withParameters:]_block_invoke_0
 #[doc(alias = "___41-[FlurryImpl recordEvent:withParameters:]_block_invoke_0")]
-pub fn stub_f10160() -> ! {
-    todo!("0xf10160 ___41-[FlurryImpl recordEvent:withParameters:]_block_invoke_0")
+pub fn stub_f10160(session: &mut FlurrySession, event: usize, params: usize) {
+    // IDA 0xf10160: `__block_invoke_0` for `-[FlurryImpl
+    // recordEvent:withParameters:]`; forwards `session` (0xf10174) with the
+    // captured event/params (`a1 + 24/28` at 0xf1018c). Untimed variant of
+    // 0xf102a0.
+    session.events.push(FlurryEvent { name: event, params, timed: false, ended: false });
 }
 
 // 0xf1004c — ___27-[FlurryImpl setPushToken:]_block_invoke_0
 #[doc(alias = "___27-[FlurryImpl setPushToken:]_block_invoke_0")]
-pub fn stub_f1004c() -> ! {
-    todo!("0xf1004c ___27-[FlurryImpl setPushToken:]_block_invoke_0")
+pub fn stub_f1004c(session: &mut FlurrySession, token: usize) {
+    // IDA 0xf1004c: `__block_invoke_0` for `-[FlurryImpl setPushToken:]`;
+    // forwards `session` (0xf10060) to `setPushToken:` with the captured
+    // token (`a1 + 24` at 0xf10076). The `NSData` token stays an opaque id.
+    session.push_token = token;
 }
 
 // 0xf0ff5c — ___28-[FlurryImpl setAgeInYears:]_block_invoke_0
 #[doc(alias = "___28-[FlurryImpl setAgeInYears:]_block_invoke_0")]
-pub fn stub_f0ff5c() -> ! {
-    todo!("0xf0ff5c ___28-[FlurryImpl setAgeInYears:]_block_invoke_0")
+pub fn stub_f0ff5c(session: &mut FlurrySession, years: i32) {
+    // IDA 0xf0ff5c: `__block_invoke_0` for `-[FlurryImpl setAgeInYears:]`;
+    // forwards `session` (0xf0ff70) to `setAgeInYears:` with the captured
+    // value (`a1 + 24` at 0xf0ff86).
+    session.age_years = years;
 }
 
 // 0xf0fe50 — ___32-[FlurryImpl setGenderAsString:]_block_invoke_0
 #[doc(alias = "___32-[FlurryImpl setGenderAsString:]_block_invoke_0")]
-pub fn stub_f0fe50() -> ! {
-    todo!("0xf0fe50 ___32-[FlurryImpl setGenderAsString:]_block_invoke_0")
+pub fn stub_f0fe50(session: &mut FlurrySession, gender_id: usize) {
+    // IDA 0xf0fe50: `__block_invoke_0` for `-[FlurryImpl setGenderAsString:]`;
+    // forwards `session` (0xf0fe64) to `setGenderAsString:` with the captured
+    // string (`a1 + 24` at 0xf0fe7a). The `NSString` stays an opaque id.
+    session.gender_id = gender_id;
 }
 
 // 0xf0fd64 — ___36-[FlurryImpl maybeIncrementPageView]_block_invoke_0
 #[doc(alias = "___36-[FlurryImpl maybeIncrementPageView]_block_invoke_0")]
-pub fn stub_f0fd64() -> ! {
-    todo!("0xf0fd64 ___36-[FlurryImpl maybeIncrementPageView]_block_invoke_0")
+pub fn stub_f0fd64(session: &mut FlurrySession) -> u32 {
+    // IDA 0xf0fd64: `__block_invoke_0` for `-[FlurryImpl
+    // maybeIncrementPageView]`; forwards `session` (0xf0fd76) to
+    // `maybeIncrementPageView` (0xf0fd8a). The "maybe" gating was decided by
+    // queueing this block, so the body increments and reports the count.
+    session.page_views = session.page_views.wrapping_add(1);
+    session.page_views
 }
 
 // 0xf0fc74 — ___39-[FlurryImpl setCrashReportingEnabled:]_block_invoke_0
 #[doc(alias = "___39-[FlurryImpl setCrashReportingEnabled:]_block_invoke_0")]
-pub fn stub_f0fc74() -> ! {
-    todo!("0xf0fc74 ___39-[FlurryImpl setCrashReportingEnabled:]_block_invoke_0")
+pub fn stub_f0fc74(session: &mut FlurrySession, enabled: bool) {
+    // IDA 0xf0fc74: `__block_invoke_0` for `-[FlurryImpl
+    // setCrashReportingEnabled:]`; forwards `session` (0xf0fc88) to
+    // `setCrashReportingEnabled:` with the captured `char` (`a1 + 24` at
+    // 0xf0fca0).
+    session.crash_reporting = enabled;
 }
 
 // 0xf0fb7c — ___46-[FlurryImpl setSessionReportsOnPauseEnabled:]_block_invoke_0
 #[doc(alias = "___46-[FlurryImpl setSessionReportsOnPauseEnabled:]_block_invoke_0")]
-pub fn stub_f0fb7c() -> ! {
-    todo!("0xf0fb7c ___46-[FlurryImpl setSessionReportsOnPauseEnabled:]_block_invoke_0")
+pub fn stub_f0fb7c(session: &mut FlurrySession, enabled: bool) {
+    // IDA 0xf0fb7c: `__block_invoke_0` for `-[FlurryImpl
+    // setSessionReportsOnPauseEnabled:]`; forwards `session` (0xf0fb90) to
+    // `setSessionReportsOnPauseEnabled:` with the captured `char`
+    // (`a1 + 24` at 0xf0fba8). Same `BOOL`-forward shape as 0xf0fc74.
+    session.reports_on_pause = enabled;
 }
 
 // 0xf0fa84 — ___46-[FlurryImpl setSessionReportsOnCloseEnabled:]_block_invoke_0
