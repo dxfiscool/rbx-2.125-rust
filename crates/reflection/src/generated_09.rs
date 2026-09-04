@@ -163,6 +163,86 @@ pub struct CoreGuiBoundFuncDesc {
     pub attributes: u32,
 }
 
+/// `RBX::Reflection::PropDescriptor<RBX::StarterGuiService, bool>` GetSet access pair: the
+/// member desc holds the const getter plus the bool setter (IDA 0x603510 `new(0x14)` at
+/// 0x60353e-0x603578).
+pub struct StarterGuiBoolAccess {
+    pub get: Box<dyn Fn() -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(bool) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::StarterGuiService, bool>` (IDA 0x603510).
+pub struct StarterGuiBoolPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: StarterGuiBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::Pose, float>` GetSet access pair (IDA 0x606f40
+/// `new(0x14)` at 0x606f6e-0x606fa8).
+pub struct PoseFloatAccess {
+    pub get: Box<dyn Fn() -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(f32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::Pose, float>` (IDA 0x606f40).
+pub struct PoseFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PoseFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `G3D::CoordinateFrame`: 3x3 rotation + translation (IDA 0x607214 copies the Matrix3
+/// at 0x60723e, then the +36/+44 translation words at 0x607242-0x60724a).
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub struct CoordinateFrame {
+    pub rotation: [f32; 9],
+    pub translation: [f32; 3],
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::Pose, G3D::CoordinateFrame>` GetSet access pair
+/// (IDA 0x6070cc `new(0x14)` at 0x6070fa-0x607134).
+pub struct PoseFrameAccess {
+    pub get: Box<dyn Fn() -> CoordinateFrame + Send + Sync>,
+    pub set: Box<dyn Fn(CoordinateFrame) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::Pose, G3D::CoordinateFrame>` (IDA 0x6070cc).
+pub struct PoseFramePropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PoseFrameAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<RBX::Pose, ...>` shares the layout of the
+/// StarterGuiService instantiation (IDA 0x607274/0x607724: same FunctionDescriptor init,
+/// +40 member pair, +48 zero, vtable install, signature fixed by declareSignature).
+pub type PoseBoundFuncDesc = CoreGuiBoundFuncDesc;
+
+/// `RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance, NumSidesEnum>` get/set access
+/// pair: the `new(0x14)` member desc at +44 holding (getter, setter) (IDA 0x608170 at
+/// 0x60824e-0x608274). Mirrors `crate::descriptor::ExplosionTypeAccess`.
+pub struct PrismNumSidesAccess {
+    pub get: Box<dyn Fn() -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance, NumSidesEnum>` (IDA 0x608170).
+pub struct PrismNumSidesPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PrismNumSidesAccess,
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x5fccec — __ZN3RBX10Reflection9EventDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbEN3rbx6signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)> RBX::StarterGuiService::*>::~EventDesc()")]
 pub fn stub_0x5fccec() {
@@ -680,8 +760,27 @@ pub fn stub_0x6031c8(
 
 // 0x603390 — __ZN3RBX10Reflection13BoundFuncDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbELi2EE16declareSignatureEPKcNS0_7VariantES7_S8_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x603390() -> ! {
-    todo!("0x603390 RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x603390(
+    desc: &mut CoreGuiBoundFuncDesc,
+    arg0_name: &str,
+    _default0: &crate::descriptor::Variant,
+    arg1_name: &str,
+    _default1: &crate::descriptor::Variant,
+) {
+    // IDA 0x603390: return type fixed to `Type::getSingleton<void>` at +28 (0x6033a2),
+    // then two arguments: `Name::declare` + `Type::getSingleton<CoreGuiType>` +
+    // `addArgument` (0x6033ac-0x6033ba), `Name::declare` + `Type::getSingleton<bool>` +
+    // `addArgument` (0x6033c4-0x6033d8). Default Variants are carried by the C++ signature
+    // items; unmodeled here.
+    desc.return_type = "void";
+    desc.args.push(CoreGuiBoundFuncSigItem {
+        name: arg0_name.to_owned(),
+        type_name: "CoreGuiType",
+    });
+    desc.args.push(CoreGuiBoundFuncSigItem {
+        name: arg1_name.to_owned(),
+        type_name: "bool",
+    });
 }
 
 // 0x6033dc — __ZN3RBX10Reflection13BoundFuncDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbELi2EED0Ev
@@ -692,14 +791,36 @@ pub fn stub_0x6033dc() {
 
 // 0x6034bc — __ZNK3RBX10Reflection13BoundFuncDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x6034bc() -> ! {
-    todo!("0x6034bc RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x6034bc(target: &dyn Fn(CoreGuiType, bool), arg0: CoreGuiType, arg1: bool) {
+    // IDA 0x6034bc: member-offset adjust (0x6034ce-0x6034d0), member pair load
+    // (0x6034da-0x6034dc), `ArgHelper::getArg<CoreGuiType, 1>` (0x6034e8),
+    // `ArgHelper::getArg<bool, 2>` (0x6034f0), member-pointer dispatch (`adj >> 1`,
+    // virtual via `adj & 1`, 0x6034f2-0x6034fe), call `(target.*member)(arg0, arg1)`.
+    // The adjust is member-pointer mechanics; the caller passes extracted args.
+    target(arg0, arg1);
 }
 
 // 0x603510 — __ZN3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::PropDescriptor<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>(char const*,char const*,bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x603510() -> ! {
-    todo!("0x603510 RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::PropDescriptor<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>(char const*,char const*,bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x603510(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn() -> bool + Send + Sync>,
+    set: Box<dyn Fn(bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> StarterGuiBoolPropDesc {
+    // IDA 0x603510: base `Described<StarterGuiService>::classDescriptor` (0x603538),
+    // `new(0x14)` GetSetImpl member desc holding (getter, setter) (0x60353e-0x603578),
+    // `TypedPropertyDescriptor<bool>` init (0x6035b6), temp release (0x6035be-0x6035c0),
+    // vtable off_12720E8 (0x6035d4).
+    StarterGuiBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: StarterGuiBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x603628 — __ZN3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbED0Ev
@@ -730,14 +851,22 @@ pub fn stub_0x603684() -> bool {
 
 // 0x603688 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x603688() -> ! {
-    todo!("0x603688 RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x603688(getter: &dyn Fn() -> bool) -> bool {
+    // IDA 0x603688: member-pointer dispatch out of the GetSetImpl pair: adjust the instance
+    // (`a2 ? a2 - 36 : 0`, 0x60368e-0x603690), load member fn + encoded adjust
+    // (0x603694-0x60369e), virtual-adjust when the low bit is set (0x6036a2-0x6036a6),
+    // call through (0x6036aa). Same shape as stub_0x5ffdbc.
+    getter()
 }
 
 // 0x6036ac — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x6036ac() -> ! {
-    todo!("0x6036ac RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x6036ac(setter: &dyn Fn(bool), value: bool) {
+    // IDA 0x6036ac: member-pointer dispatch through the setter half (+12/+16):
+    // adjust the instance (0x6036b2-0x6036b4), load member fn + encoded adjust
+    // (0x6036b8-0x6036c0), virtual-adjust when the low bit is set (0x6036c4-0x6036c8),
+    // call `(target.*member)(value)` (0x6036c8).
+    setter(value);
 }
 
 // 0x605fa4 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev
@@ -772,8 +901,25 @@ pub fn stub_0x606774() {
 
 // 0x606f40 — __ZN3RBX10Reflection14PropDescriptorINS_4PoseEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::PropDescriptor<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>(char const*,char const*,float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x606f40() -> ! {
-    todo!("0x606f40 RBX::Reflection::PropDescriptor<RBX::Pose,float>::PropDescriptor<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>(char const*,char const*,float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x606f40(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn() -> f32 + Send + Sync>,
+    set: Box<dyn Fn(f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> PoseFloatPropDesc {
+    // IDA 0x606f40: base `Described<Pose>::classDescriptor` (0x606f68),
+    // `new(0x14)` GetSetImpl member desc holding (getter, setter) (0x606f6e-0x606fa8),
+    // `TypedPropertyDescriptor<float>` init (0x606fe6), temp release (0x606fee-0x606ff0),
+    // vtable off_1272AF8 (0x607004).
+    PoseFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PoseFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x607054 — __ZN3RBX10Reflection14PropDescriptorINS_4PoseEfED0Ev
@@ -798,20 +944,45 @@ pub fn stub_0x607084() -> bool {
 
 // 0x607088 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x607088() -> ! {
-    todo!("0x607088 RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x607088(getter: &dyn Fn() -> f32) -> f32 {
+    // IDA 0x607088: member-pointer dispatch out of the GetSetImpl pair: adjust the instance
+    // (`a2 ? a2 - 36 : 0`, 0x60708c-0x60708e), load member fn + encoded adjust
+    // (0x607092-0x60709a), virtual-adjust when the low bit is set (0x60709e-0x6070a2),
+    // call through (0x6070a2). Same shape as stub_0x5ffdbc.
+    getter()
 }
 
 // 0x6070a8 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x6070a8() -> ! {
-    todo!("0x6070a8 RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x6070a8(setter: &dyn Fn(f32), value: f32) {
+    // IDA 0x6070a8: member-pointer dispatch through the setter half (+12/+16):
+    // adjust the instance (0x6070ae-0x6070b0), load member fn + encoded adjust
+    // (0x6070b4-0x6070bc), virtual-adjust when the low bit is set (0x6070c0-0x6070c4),
+    // call `(target.*member)(value)` (0x6070c4). Same shape as stub_0x6036ac.
+    setter(value);
 }
 
 // 0x6070cc — __ZN3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6070cc() -> ! {
-    todo!("0x6070cc RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6070cc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn() -> CoordinateFrame + Send + Sync>,
+    set: Box<dyn Fn(CoordinateFrame) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> PoseFramePropDesc {
+    // IDA 0x6070cc: base `Described<Pose>::classDescriptor` (0x6070f4),
+    // `new(0x14)` GetSetImpl member desc holding (getter, setter) (0x6070fa-0x607134),
+    // `TypedPropertyDescriptor<CoordinateFrame>` init (0x607172), temp release
+    // (0x60717a-0x60717c), vtable off_1272B88 (0x607190).
+    PoseFramePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PoseFrameAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x6071e0 — __ZN3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEED0Ev
@@ -836,26 +1007,65 @@ pub fn stub_0x607210() -> bool {
 
 // 0x607214 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x607214() -> ! {
-    todo!("0x607214 RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x607214(getter: &dyn Fn() -> CoordinateFrame) -> CoordinateFrame {
+    // IDA 0x607214: member-pointer dispatch (adjust 0x60721c-0x60721e, encoded member
+    // 0x607222-0x60722c, virtual-adjust 0x607230-0x607234, call 0x607238), then a
+    // by-value copy: `Matrix3::Matrix3` (0x60723e) plus the +36/+44 translation words
+    // (0x607242-0x60724a). `CoordinateFrame` is `Copy`; the return is the copy.
+    getter()
 }
 
 // 0x607250 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
-pub fn stub_0x607250() -> ! {
-    todo!("0x607250 RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+pub fn stub_0x607250(setter: &dyn Fn(CoordinateFrame), value: CoordinateFrame) {
+    // IDA 0x607250: member-pointer dispatch through the setter half (+12/+16):
+    // adjust the instance (0x607256-0x607258), load member fn + encoded adjust
+    // (0x60725c-0x607264), virtual-adjust when the low bit is set (0x607268-0x60726c),
+    // call `(target.*member)(value)` (0x60726c). Same shape as stub_0x6036ac.
+    setter(value);
 }
 
 // 0x607274 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x607274() -> ! {
-    todo!("0x607274 RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x607274(
+    name: &str,
+    category: &str,
+    member0: usize,
+    member1: usize,
+    permissions: u32,
+    attributes: u32,
+) -> PoseBoundFuncDesc {
+    // IDA 0x607274: base `FunctionDescriptor` init (0x6072cc), vtable off_1272C18
+    // (0x6072e2), member-function pair stored at +40 (0x6072f0), reserved word at +48
+    // zeroed (0x6072fa), `Type::getSingleton<void>` (0x60731c), then `declareSignature()`
+    // (0x607330) fixing a void return with one `SharedPtr<Instance>` argument
+    // (see stub_0x60740c). Same shape as stub_0x602cf0.
+    PoseBoundFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member: (member0, member1),
+        return_type: "void",
+        args: vec![CoreGuiBoundFuncSigItem {
+            name: category.to_owned(),
+            type_name: "SharedPtr<Instance>",
+        }],
+        permissions,
+        attributes,
+    }
 }
 
 // 0x60740c — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x60740c() -> ! {
-    todo!("0x60740c RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x60740c(desc: &mut PoseBoundFuncDesc, arg_name: &str, _default: &crate::descriptor::Variant) {
+    // IDA 0x60740c: return type fixed to `Type::getSingleton<void>` at +28
+    // (0x60741c), `Name::declare(arg name)` (0x607426), argument type
+    // `Type::getSingleton<SharedPtr<Instance>>` (0x607428),
+    // `SignatureDescriptor::addArgument` (0x60743a). Same shape as stub_0x602e68.
+    desc.return_type = "void";
+    desc.args.push(CoreGuiBoundFuncSigItem {
+        name: arg_name.to_owned(),
+        type_name: "SharedPtr<Instance>",
+    });
 }
 
 // 0x60743c — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
@@ -866,20 +1076,53 @@ pub fn stub_0x60743c() {
 
 // 0x607558 — __ZNK3RBX10Reflection13BoundFuncDescINS_4PoseEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x607558() -> ! {
-    todo!("0x607558 RBX::Reflection::BoundFuncDesc<RBX::Pose,void ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x607558(
+    target: &dyn Fn(SharedPtr<crate::descriptor::InstanceHandle>),
+    arg: &SharedPtr<crate::descriptor::InstanceHandle>,
+) {
+    // IDA 0x607558: member-offset adjust (0x6075a8-0x6075aa), member pair load
+    // (0x6075b8), `ArgHelper::getArg<SharedPtr<Instance>, 1>` (0x6075c2),
+    // `Call1Helper::call` (0x6075d2), shared-count release (0x6075d8-0x6075e0, drop glue).
+    // The adjust is member-pointer mechanics; the caller passes the extracted arg.
+    stub_0x60763c(target, SharedPtr::clone(arg));
 }
 
 // 0x60763c — __ZN3RBX10Reflection11Call1HelperINS_4PoseEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Pose,void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Pose*,void (RBX::Pose::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x60763c() -> ! {
-    todo!("0x60763c RBX::Reflection::Call1Helper<RBX::Pose,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Pose*,void (RBX::Pose::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x60763c(
+    target: &dyn Fn(SharedPtr<crate::descriptor::InstanceHandle>),
+    arg: SharedPtr<crate::descriptor::InstanceHandle>,
+) {
+    // IDA 0x60763c: member-pointer dispatch (`adj >> 1`, virtual via `adj & 1`,
+    // 0x60768c-0x60769a), shared-count bump for the by-value argument (0x6076a2-0x6076b4,
+    // the `SharedPtr` move), invoke `(target.*member)(arg)` (0x6076be), release
+    // (0x6076c2-0x6076ca, drop glue). Void return.
+    target(arg);
 }
 
 // 0x607724 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Pose::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x607724() -> ! {
-    todo!("0x607724 RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Pose::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x607724(
+    name: &str,
+    category: &str,
+    member0: usize,
+    member1: usize,
+    permissions: u32,
+    attributes: u32,
+) -> PoseBoundFuncDesc {
+    // IDA 0x607724: base `FunctionDescriptor` init (0x60776a), vtable off_1272C58
+    // (0x607786), member-function pair at +40 (0x607792), return type fixed directly to
+    // `Type::getSingleton<SharedPtr<vector<SharedPtr<Instance>> const>>` at +28
+    // (0x6077ba). Zero-argument form: no `declareSignature` call, no parameters.
+    PoseBoundFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member: (member0, member1),
+        return_type: "SharedPtr<vector<SharedPtr<Instance>> const>",
+        args: vec![],
+        permissions,
+        attributes,
+    }
 }
 
 // 0x607828 — __ZN3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
@@ -890,14 +1133,26 @@ pub fn stub_0x607828() {
 
 // 0x6078dc — __ZNK3RBX10Reflection13BoundFuncDescINS_4PoseEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Pose,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x6078dc() -> ! {
-    todo!("0x6078dc RBX::Reflection::BoundFuncDesc<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x6078dc(
+    target: &dyn Fn() -> SharedPtr<Vec<SharedPtr<crate::descriptor::InstanceHandle>>>,
+) -> SharedPtr<Vec<SharedPtr<crate::descriptor::InstanceHandle>>> {
+    // IDA 0x6078dc: member-offset adjust (0x6078e4-0x6078e6), then
+    // `Call0Helper::call(member, args-out)` (0x6078e6). The adjust is member-pointer
+    // mechanics; the bound nullary closure is the whole effect.
+    stub_0x607900(target)
 }
 
 // 0x607900 — __ZN3RBX10Reflection11Call0HelperINS_4PoseEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Pose,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Pose::*)(void),rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::Pose*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Pose::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x607900() -> ! {
-    todo!("0x607900 RBX::Reflection::Call0Helper<RBX::Pose,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Pose::*)(void),boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::Pose*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Pose::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x607900(
+    target: &dyn Fn() -> SharedPtr<Vec<SharedPtr<crate::descriptor::InstanceHandle>>>,
+) -> SharedPtr<Vec<SharedPtr<crate::descriptor::InstanceHandle>>> {
+    // IDA 0x607900: member-pointer dispatch (`adj >> 1`, virtual via `adj & 1`,
+    // 0x60794e-0x60795a), invoke `(target.*member)()` (0x607964), wrap the result
+    // (`Type::getSingleton<...>` + `placement_any<...>` at 0x607970-0x60797c, drop-glued
+    // temporaries at 0x607982-0x60798a). The Variant out-param is unmodeled; the
+    // observable result is the shared vector.
+    target()
 }
 
 // 0x60814c — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEED1Ev
@@ -908,8 +1163,36 @@ pub fn stub_0x60814c() {
 
 // 0x608170 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>(char const*,char const*,RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x608170() -> ! {
-    todo!("0x608170 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>(char const*,char const*,RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x608170(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn() -> i32 + Send + Sync>,
+    set: Box<dyn Fn(i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> PrismNumSidesPropDesc {
+    // IDA 0x608170: `Singleton<EnumDesc<NumSidesEnum>>` via `call_once` + `doGetSingleton`
+    // (0x6081b4-0x6081b8), base `PropertyDescriptor` init (0x608202), enum-desc links at
+    // +40/+48 (0x608226/0x608290), `new(0x14)` member desc at +44 holding
+    // (getter, setter) (0x60824e-0x608274). Then `if (isReadOnly() == 1) attrs &= ~0x14`
+    // (0x6082a0-0x6082aa) and `if (isWriteOnly() == 1) attrs &= ~0x0C`
+    // (0x6082bc-0x6082c6); both query the GetSetImpl member desc, which hardcodes 0
+    // (see stub_0x60899c/stub_0x6089a0), so the masks never fire. Same shape as stub_0x4a5834.
+    let enum_desc = crate::generated::stub_0x4c5e58();
+    if stub_0x60899c() {
+        attributes &= !0x14;
+    }
+    if stub_0x6089a0() {
+        attributes &= !0x0C;
+    }
+    PrismNumSidesPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PrismNumSidesAccess { get, set },
+        enum_desc,
+        attributes,
+        permissions,
+    }
 }
 
 // 0x608324 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEED0Ev
@@ -932,26 +1215,38 @@ pub fn stub_0x608360() {
 
 // 0x608370 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x608370() -> ! {
-    todo!("0x608370 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x608370(a: i32, b: i32) -> bool {
+    // IDA 0x608370: reads the enum int through the +44 member desc for each instance
+    // (0x608380/0x608396) and compares. Callers pass the already-read values.
+    a == b
 }
 
 // 0x608398 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x608398() -> ! {
-    todo!("0x608398 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x608398(value: i32) -> crate::descriptor::Variant {
+    // IDA 0x608398: `getEnumValue` through the +68 slot (0x6083a6), wrapped as a
+    // `(Type<int>, int)` Variant (0x6083ac-0x6083ba).
+    crate::descriptor::Variant::Int(value)
 }
 
 // 0x6083bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x6083bc() -> ! {
-    todo!("0x6083bc RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x6083bc(setter: &dyn Fn(i32), value: &crate::descriptor::Variant) {
+    // IDA 0x6083bc: fast path `any_cast<int>` when the Variant holds an int (typeinfo
+    // check 0x60843a, cast 0x608488); else a copied temp converted via
+    // `Variant::convert<int>` (0x60843c-0x608468, temp destroyed 0x60846a-0x608478).
+    // Either way the int lands in the +72 setter slot (0x608408/0x608498).
+    // `convert_to_int` covers both: int payloads pass through, anything else converts
+    // or panics exactly where the original threw.
+    setter(value.convert_to_int());
 }
 
 // 0x608508 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x608508() -> ! {
-    todo!("0x608508 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x608508(getter: &dyn Fn() -> i32, setter: &dyn Fn(i32)) {
+    // IDA 0x608508: reads the enum int through the +44 member desc (0x60851a), writes it
+    // to the other instance through the +12 setter slot (0x60852a).
+    setter(getter());
 }
 
 // 0x60852c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14hasStringValueEv
@@ -963,14 +1258,26 @@ pub fn stub_0x60852c() -> bool {
 
 // 0x608530 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x608530() -> ! {
-    todo!("0x608530 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x608530(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x608530: enum int via the +44 member desc (0x608542), then
+    // `EnumDesc<NumSidesEnum>::convertToString(enumdesc@+48, v)` (0x608552).
+    // Same shape as stub_0x4a5bf8.
+    desc.lookup_name(value).unwrap_or_default().to_owned()
 }
 
 // 0x608554 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x608554() -> ! {
-    todo!("0x608554 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x608554(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), text: &str) -> bool {
+    // IDA 0x608554: `Name::lookup` (0x608566), `convertToValue(enumdesc@+48, name, &out)`
+    // (0x608574); on hit stores through the +44 member desc (0x60858a) and returns 1
+    // (0x60858c), else returns 0 (0x608590). Same shape as stub_0x4a5c1c.
+    match desc.lookup_value(text) {
+        Some(v) => {
+            setter(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x608594 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
