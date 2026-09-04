@@ -982,99 +982,136 @@ pub fn stub_0x20cb4() {
 // 0x20d0c — -[AboutController navigationTitle]
 // type: UINavigationItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController navigationTitle]")]
-pub fn stub_0x20d0c() -> ! {
-    todo!("0x20d0c -[AboutController navigationTitle]")
+pub fn stub_0x20d0c() -> usize {
+    // IDA 0x20d0c: `navigationTitle` returns the `_navigationTitle`
+    // ivar (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when
+    // unset.
+    about_outlet("navigationTitle")
 }
 
 // 0x20d1c — -[AboutController setNavigationTitle:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setNavigationTitle:]")]
-pub fn stub_0x20d1c() -> ! {
-    todo!("0x20d1c -[AboutController setNavigationTitle:]")
+pub fn stub_0x20d1c(handle: usize) {
+    // IDA 0x20d1c: `setNavigationTitle:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("navigationTitle", handle);
 }
 
 // 0x20d40 — -[AboutController closeButton]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController closeButton]")]
-pub fn stub_0x20d40() -> ! {
-    todo!("0x20d40 -[AboutController closeButton]")
+pub fn stub_0x20d40() -> usize {
+    // IDA 0x20d40: `closeButton` returns the `_closeButton` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    about_outlet("closeButton")
 }
 
 // 0x20d50 — -[AboutController setCloseButton:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setCloseButton:]")]
-pub fn stub_0x20d50() -> ! {
-    todo!("0x20d50 -[AboutController setCloseButton:]")
+pub fn stub_0x20d50(handle: usize) {
+    // IDA 0x20d50: `setCloseButton:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("closeButton", handle);
 }
 
 // 0x20d74 — -[AboutController clearCookies]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController clearCookies]")]
-pub fn stub_0x20d74() -> ! {
-    todo!("0x20d74 -[AboutController clearCookies]")
+pub fn stub_0x20d74() -> usize {
+    // IDA 0x20d74: `clearCookies` returns the `_clearCookies` ivar
+    // (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    about_outlet("clearCookies")
 }
 
 // 0x20d84 — -[AboutController setClearCookies:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setClearCookies:]")]
-pub fn stub_0x20d84() -> ! {
-    todo!("0x20d84 -[AboutController setClearCookies:]")
+pub fn stub_0x20d84(handle: usize) {
+    // IDA 0x20d84: `setClearCookies:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("clearCookies", handle);
 }
 
 // 0x20da8 — -[AboutController legalTextView]
 // type: UITextView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController legalTextView]")]
-pub fn stub_0x20da8() -> ! {
-    todo!("0x20da8 -[AboutController legalTextView]")
+pub fn stub_0x20da8() -> usize {
+    // IDA 0x20da8: `legalTextView` returns the `_legalTextView` ivar
+    // (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    about_outlet("legalTextView")
 }
 
 // 0x20db8 — -[AboutController setLegalTextView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setLegalTextView:]")]
-pub fn stub_0x20db8() -> ! {
-    todo!("0x20db8 -[AboutController setLegalTextView:]")
+pub fn stub_0x20db8(handle: usize) {
+    // IDA 0x20db8: `setLegalTextView:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("legalTextView", handle);
 }
 
 // 0x20ddc — -[AboutController versionLabel]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController versionLabel]")]
-pub fn stub_0x20ddc() -> ! {
-    todo!("0x20ddc -[AboutController versionLabel]")
+pub fn stub_0x20ddc() -> usize {
+    // IDA 0x20ddc: `versionLabel` returns the `_versionLabel` ivar
+    // (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    about_outlet("versionLabel")
 }
 
 // 0x20dec — -[AboutController setVersionLabel:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setVersionLabel:]")]
-pub fn stub_0x20dec() -> ! {
-    todo!("0x20dec -[AboutController setVersionLabel:]")
+pub fn stub_0x20dec(handle: usize) {
+    // IDA 0x20dec: `setVersionLabel:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("versionLabel", handle);
 }
 
 // 0x20e10 — -[AboutController agreementWebView]
 // type: UIWebView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController agreementWebView]")]
-pub fn stub_0x20e10() -> ! {
-    todo!("0x20e10 -[AboutController agreementWebView]")
+pub fn stub_0x20e10() -> usize {
+    // IDA 0x20e10: `agreementWebView` returns the `_agreementWebView`
+    // ivar (same shape as stub_0x1ff5c). Opaque `id` handle; 0 when
+    // unset.
+    about_outlet("agreementWebView")
 }
 
 // 0x20e20 — -[AboutController setAgreementWebView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setAgreementWebView:]")]
-pub fn stub_0x20e20() -> ! {
-    todo!("0x20e20 -[AboutController setAgreementWebView:]")
+pub fn stub_0x20e20(handle: usize) {
+    // IDA 0x20e20: `setAgreementWebView:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("agreementWebView", handle);
 }
 
 // 0x20e44 — -[AboutController domainName]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController domainName]")]
-pub fn stub_0x20e44() -> ! {
-    todo!("0x20e44 -[AboutController domainName]")
+pub fn stub_0x20e44() -> usize {
+    // IDA 0x20e44: `domainName` returns the `_domainName` ivar (same
+    // shape as stub_0x1ff5c). Opaque `id` handle; 0 when unset.
+    about_outlet("domainName")
 }
 
 // 0x20e54 — -[AboutController setDomainName:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setDomainName:]")]
-pub fn stub_0x20e54() -> ! {
-    todo!("0x20e54 -[AboutController setDomainName:]")
+pub fn stub_0x20e54(handle: usize) {
+    // IDA 0x20e54: `setDomainName:` retains via `objc_setProperty`
+    // (same shape as stub_0x1ff6c). Retain is drop glue; the handle
+    // records.
+    set_about_outlet("domainName", handle);
 }
 
 // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
