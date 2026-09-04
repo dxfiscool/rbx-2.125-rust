@@ -195,6 +195,26 @@ impl Server {
             false
         }
     }
+    /// `RBX::Network::Server::~Server` (IDA 0x9c8110, D2): logs
+    /// "NetworkServer:Destroy" (0x9c81ae), disconnects the signal slots
+    /// (0x9c81c0/0x9c8214/0x9c8268), releases the name tables and player
+    /// list (0x9c82c0..0x9c8312), and runs the `Peer` base dtor (0x9c8348).
+    /// Crate-side this drops the players, the bound port, and liveness.
+    pub fn tear_down(&mut self) {
+        self.players = None;
+        self.port = None;
+        self.active = false;
+    }
+}
+
+impl Drop for Server {
+    /// D0 (IDA 0x9c7e78) is D2 plus `operator delete`; D1 (IDA 0x9c7f18)
+    /// tail-calls D2. Rust runs this then frees the box, covering all
+    /// three; the `ZThn*` D0 thunks (IDA 0x9c7f24/0x9c7fc8/0x9c806c) only
+    /// adjust `this` before the same delete.
+    fn drop(&mut self) {
+        self.tear_down();
+    }
 }
 
 #[cfg(test)]
@@ -301,5 +321,19 @@ mod tests {
         assert_eq!(avg.mean, 6.0);
         avg.sample(f64::INFINITY);
         assert_eq!(avg.mean, 6.0);
+    }
+
+    #[test]
+    fn teardown_drops_players_port_and_liveness() {
+        // IDA 0x9c8110: D2 drops the player list, tables, and Peer base.
+        let mut server = Server {
+            players: Some(vec![]),
+            port: Some(53640),
+            active: true,
+        };
+        server.tear_down();
+        assert!(server.players.is_none());
+        assert!(server.port.is_none());
+        assert!(!server.active);
     }
 }

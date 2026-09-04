@@ -708,48 +708,54 @@ pub fn stub_9c7450() -> crate::server::Server {
 // type: void __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "RBX::Network::Server::~Server()")]
 #[doc(alias = "__ZN3RBX7Network6ServerD0Ev")]
-pub fn stub_9c7e78() -> ! {
-    todo!("0x9c7e78 __ZN3RBX7Network6ServerD0Ev")
+pub fn stub_9c7e78(server: crate::server::Server) {
+    // IDA 0x9c7e78 (D0): D2 then `operator delete`; Drop runs tear_down, Rust frees.
+    drop(server);
 }
 
 // 0x9c7f18 — __ZN3RBX7Network6ServerD1Ev
 // type: void __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "RBX::Network::Server::~Server()")]
 #[doc(alias = "__ZN3RBX7Network6ServerD1Ev")]
-pub fn stub_9c7f18() -> ! {
-    todo!("0x9c7f18 __ZN3RBX7Network6ServerD1Ev")
+pub fn stub_9c7f18(server: &mut crate::server::Server) {
+    // IDA 0x9c7f18 (D1): tail-calls D2.
+    server.tear_down();
 }
 
 // 0x9c7f24 — __ZThn32_N3RBX7Network6ServerD0Ev
 // type: void __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn32_N3RBX7Network6ServerD0Ev")]
-pub fn stub_9c7f24() -> ! {
-    todo!("0x9c7f24 __ZThn32_N3RBX7Network6ServerD0Ev")
+pub fn stub_9c7f24(server: crate::server::Server) {
+    // IDA 0x9c7f24 (ZThn32 D0): adjusts `this`, then D0.
+    drop(server);
 }
 
 // 0x9c7fc8 — __ZThn36_N3RBX7Network6ServerD0Ev
 // type: void __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn36_N3RBX7Network6ServerD0Ev")]
-pub fn stub_9c7fc8() -> ! {
-    todo!("0x9c7fc8 __ZThn36_N3RBX7Network6ServerD0Ev")
+pub fn stub_9c7fc8(server: crate::server::Server) {
+    // IDA 0x9c7fc8 (ZThn36 D0): adjusts `this`, then D0.
+    drop(server);
 }
 
 // 0x9c806c — __ZThn92_N3RBX7Network6ServerD0Ev
 // type: void __fastcall(RBX::Network::Server *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 #[doc(alias = "__ZThn92_N3RBX7Network6ServerD0Ev")]
-pub fn stub_9c806c() -> ! {
-    todo!("0x9c806c __ZThn92_N3RBX7Network6ServerD0Ev")
+pub fn stub_9c806c(server: crate::server::Server) {
+    // IDA 0x9c806c (ZThn92 D0): adjusts `this`, then D0.
+    drop(server);
 }
 
 // 0x9c8110 — __ZN3RBX7Network6ServerD2Ev
 // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 #[doc(alias = "RBX::Network::Server::~Server()")]
 #[doc(alias = "__ZN3RBX7Network6ServerD2Ev")]
-pub fn stub_9c8110() -> ! {
-    todo!("0x9c8110 __ZN3RBX7Network6ServerD2Ev")
+pub fn stub_9c8110(server: &mut crate::server::Server) {
+    // IDA 0x9c8110 (D2): destroy log, signal disconnects, table/player teardown, Peer dtor.
+    server.tear_down();
 }
 
 // 0x9c87d4 — __ZThn32_N3RBX7Network6ServerD1Ev
