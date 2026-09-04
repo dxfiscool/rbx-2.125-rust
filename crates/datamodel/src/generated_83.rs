@@ -180,23 +180,17 @@ pub fn stub_688200() -> ! {
 // 0x688b04 — __ZN3RBX16ToolMouseCommandC1EPNS_9WorkspaceEPNS_4ToolE
 #[doc(alias = "RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")]
 // was: RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)
-pub fn stub_688b04() -> ! {
-    todo!("0x688b04 RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")
-}
+pub use crate::workspace::stub_0x688b04 as stub_688b04;
 
 // 0x688b08 — __ZN3RBX16ToolMouseCommandC2EPNS_9WorkspaceEPNS_4ToolE
 #[doc(alias = "RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")]
 // was: RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)
-pub fn stub_688b08() -> ! {
-    todo!("0x688b08 RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")
-}
+pub use crate::workspace::stub_0x688b08 as stub_688b08;
 
 // 0x689a5c — __ZN3RBX9ModelToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::ModelTool::ModelTool(RBX::Workspace *)")]
 // was: RBX::ModelTool::ModelTool(RBX::Workspace *)
-pub fn stub_689a5c() -> ! {
-    todo!("0x689a5c RBX::ModelTool::ModelTool(RBX::Workspace *)")
-}
+pub use crate::workspace::stub_0x689a5c as stub_689a5c;
 
 // 0x689e74 — __ZN3RBX17anchorAllChildrenEN5boost10shared_ptrINS_8InstanceEEERKb
 #[doc(alias = "RBX::anchorAllChildren(rbx_core::SharedPtr<RBX::Instance>,bool const&)")]
@@ -229,16 +223,12 @@ pub fn stub_68a8bc() -> ! {
 // 0x68ac9c — __ZN3RBX8PartToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::PartTool::PartTool(RBX::Workspace *)")]
 // was: RBX::PartTool::PartTool(RBX::Workspace *)
-pub fn stub_68ac9c() -> ! {
-    todo!("0x68ac9c RBX::PartTool::PartTool(RBX::Workspace *)")
-}
+pub use crate::workspace::stub_0x68ac9c as stub_68ac9c;
 
 // 0x68bb74 — __ZN3RBX11SurfaceToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")]
 // was: RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)
-pub fn stub_68bb74() -> ! {
-    todo!("0x68bb74 RBX::SurfaceTool::SurfaceTool(RBX::Workspace *)")
-}
+pub use crate::workspace::stub_0x68bb74 as stub_68bb74;
 
 // 0x690de0 — __ZNK3RBX19ButtonBindingWidget11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::ButtonBindingWidget::askAddChild(RBX::Instance const*)const")]
@@ -474,16 +464,12 @@ pub fn stub_69836c() -> ! {
 // 0x699120 — __ZNK3RBX15ServiceProvider4findINS_9WorkspaceEEEPT_v
 #[doc(alias = "RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const")]
 // was: RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const
-pub fn stub_699120() -> ! {
-    todo!("0x699120 RBX::Workspace * RBX::ServiceProvider::find<RBX::Workspace>(void)const")
-}
+pub use crate::workspace::stub_0x699120 as stub_699120;
 
 // 0x6992a0 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_9WorkspaceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)")]
 // was: void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)
-pub fn stub_6992a0() -> ! {
-    todo!("0x6992a0 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Workspace>(void)")
-}
+pub use crate::workspace::stub_0x6992a0 as stub_6992a0;
 
 // 0x699320 — __ZNK3RBX7GuiItem11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::GuiItem::askAddChild(RBX::Instance const*)const")]
