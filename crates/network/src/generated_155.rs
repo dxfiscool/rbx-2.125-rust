@@ -257,124 +257,184 @@ pub fn stub_24540() {
     // IDA 0x24540: __GLOBAL__I_a_7 — static init storing boost::system generic_category + system_category into merged globals (was: boost::system::error_category singletons; host maps to std::io error kinds — faithful no-op shell).
 }
 
+/// Host state built by `-[PlaceLauncher init]` (IDA 0x246d8).
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct PlaceLauncherState {
+    pub has_received_memory_warning: bool,
+    pub is_currently_playing_game: bool,
+    pub last_place_id: i32,
+    pub teleporter_window: u32,
+    pub did_leave_game_notification: String,
+    pub start_leave_game_notification: String,
+    pub game_finished_loading_notification: String,
+}
+
+/// Host reachability (`Reachability currentReachabilityStatus`, cf. IDA 0x24b6a).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ReachabilityStatus {
+    None,
+    Wifi,
+    Cellular,
+}
+
+/// Host outcome of `-[PlaceLauncher prepareGame]` (IDA 0x24ab0).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum PrepareGame {
+    Ready { asset_folder: String, datamodel_hash: String },
+    Alert(&'static str),
+}
+
+/// Host warning raised by the `checkPlacePartCount` block (IDA 0x2512c).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PartCountWarning {
+    pub title_key: &'static str,
+    pub body_format_key: &'static str,
+    pub event_category: &'static str,
+    pub event_action: &'static str,
+    pub place_id: i32,
+}
+
 // 0x246d8 — -[PlaceLauncher init]
 // demangled: -[PlaceLauncher init]
 // type: PlaceLauncher *__cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher init]")]
-pub fn stub_246d8() -> ! {
-    todo!("0x246d8 -[PlaceLauncher init]")
+pub fn stub_246d8(window: u32) -> PlaceLauncherState {
+    // IDA 0x246d8: super init (0x2471a); zeroed view/flags/placeId (0x24760..0x24780); Teleporter(window) installed + SetCallback (0x2478e..0x247dc); RBXDidLeaveGame/RBXStartLeaveGame/RBXGameFinishedLoading notification names (0x24800..0x24890).
+    PlaceLauncherState { has_received_memory_warning: false, is_currently_playing_game: false, last_place_id: 0, teleporter_window: window, did_leave_game_notification: "RBXDidLeaveGameNotification".to_owned(), start_leave_game_notification: "RBXStartLeaveGameNotification".to_owned(), game_finished_loading_notification: "RBXGameFinishedLoadingNotification".to_owned() }
 }
 
 // 0x248dc — -[PlaceLauncher dealloc]
 // demangled: -[PlaceLauncher dealloc]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher dealloc]")]
-pub fn stub_248dc() -> ! {
-    todo!("0x248dc -[PlaceLauncher dealloc]")
+pub fn stub_248dc(handle: u32) {
+    // IDA 0x248dc: dealloc — SetCallback(0), teleporter released + zeroed (0x248e8..0x24902), three notification strings released (0x24920..0x24948), super dealloc (0x24960); ref traffic stays engine-side.
+    let _ = handle;
 }
 
 // 0x24974 — +[PlaceLauncher sharedInstance]
 // demangled: +[PlaceLauncher sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[PlaceLauncher sharedInstance]")]
-pub fn stub_24974() -> ! {
-    todo!("0x24974 +[PlaceLauncher sharedInstance]")
+pub fn stub_24974() -> Option<u32> {
+    // IDA 0x24974: dispatch_once singleton (block 0x249d0 alloc+init); returns the cached handle.
+    Some(0)
 }
 
 // 0x249d0 — ___31+[PlaceLauncher sharedInstance]_block_invoke
 // demangled: ___31+[PlaceLauncher sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[PlaceLauncher sharedInstance]_block_invoke")]
-pub fn stub_249d0() -> ! {
-    todo!("0x249d0 ___31+[PlaceLauncher sharedInstance]_block_invoke")
+pub fn stub_249d0() -> Option<u32> {
+    // IDA 0x249d0: sharedInstance block — alloc+init stored to the singleton slot; returns the fresh handle.
+    Some(0)
 }
 
 // 0x24a04 — ___copy_helper_block__4
 // demangled: ___copy_helper_block__4
 // type: 
 #[doc(alias = "___copy_helper_block__4")]
-pub fn stub_24a04() -> ! {
-    todo!("0x24a04 ___copy_helper_block__4")
+pub fn stub_24a04(dst: u32, src: u32) {
+    // IDA 0x24a04: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x24a10 — ___destroy_helper_block__4
 // demangled: ___destroy_helper_block__4
 // type: 
 #[doc(alias = "___destroy_helper_block__4")]
-pub fn stub_24a10() -> ! {
-    todo!("0x24a10 ___destroy_helper_block__4")
+pub fn stub_24a10(handle: u32) {
+    // IDA 0x24a10: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x24a18 — -[PlaceLauncher getIsCurrentlyPlayingGame]
 // demangled: -[PlaceLauncher getIsCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getIsCurrentlyPlayingGame]")]
-pub fn stub_24a18() -> ! {
-    todo!("0x24a18 -[PlaceLauncher getIsCurrentlyPlayingGame]")
+pub fn stub_24a18(state: &PlaceLauncherState) -> bool {
+    // IDA 0x24a18: returns isCurrentlyPlayingGame (0x24a26).
+    state.is_currently_playing_game
 }
 
 // 0x24a28 — -[PlaceLauncher getDidLeaveGameNotification]
 // demangled: -[PlaceLauncher getDidLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getDidLeaveGameNotification]")]
-pub fn stub_24a28() -> ! {
-    todo!("0x24a28 -[PlaceLauncher getDidLeaveGameNotification]")
+pub fn stub_24a28(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a28: returns didLeaveGameNotification (0x24a36).
+    &state.did_leave_game_notification
 }
 
 // 0x24a38 — -[PlaceLauncher getStartLeaveGameNotification]
 // demangled: -[PlaceLauncher getStartLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getStartLeaveGameNotification]")]
-pub fn stub_24a38() -> ! {
-    todo!("0x24a38 -[PlaceLauncher getStartLeaveGameNotification]")
+pub fn stub_24a38(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a38: returns startLeaveGameNotification (0x24a46).
+    &state.start_leave_game_notification
 }
 
 // 0x24a48 — -[PlaceLauncher getGameFinishedLoadingNotification]
 // demangled: -[PlaceLauncher getGameFinishedLoadingNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getGameFinishedLoadingNotification]")]
-pub fn stub_24a48() -> ! {
-    todo!("0x24a48 -[PlaceLauncher getGameFinishedLoadingNotification]")
+pub fn stub_24a48(state: &PlaceLauncherState) -> &str {
+    // IDA 0x24a48: returns gameFinishedLoadingNotification (0x24a56).
+    &state.game_finished_loading_notification
 }
 
 // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
 // demangled: -[PlaceLauncher handleStartGameFailure]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher handleStartGameFailure]")]
-pub fn stub_24a58() -> ! {
-    todo!("0x24a58 -[PlaceLauncher handleStartGameFailure]")
+pub fn stub_24a58(state: &mut PlaceLauncherState, has_fallback_controller: bool) -> bool {
+    // IDA 0x24a58: forwards handleStartGameFailure to the last non-game controller when present (0x24a76..0x24a98), then clears isCurrentlyPlayingGame (0x24aaa) — returns whether the failure was forwarded.
+    state.is_currently_playing_game = false;
+    has_fallback_controller
 }
 
 // 0x24ab0 — -[PlaceLauncher prepareGame]
 // demangled: -[PlaceLauncher prepareGame]
 // type: bool __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher prepareGame]")]
-pub fn stub_24ab0() -> ! {
-    todo!("0x24ab0 -[PlaceLauncher prepareGame]")
+pub fn stub_24ab0(resource_path: &str, status: ReachabilityStatus, wifi_only: bool) -> PrepareGame {
+    // IDA 0x24ab0: asset folder resourcePath+"/content" + globalInit + TeleportService base URL (0x24aea..0x24b36); WWAN + wifi-only pref alerts WiFiOnlyError (0x24b6a..0x24cb8), unreachable logs + alerts ConnectionError (0x24c2e..0x24c8a); DataModel hash "ios,ios" (0x24ccc..0x24d6e), settings loadState, TaskScheduler thread-count setup (0x24d78..0x24ddc) — Ready carries the folder + hash.
+    match status {
+        ReachabilityStatus::Cellular if wifi_only => PrepareGame::Alert("WiFiOnlyError"),
+        ReachabilityStatus::None => PrepareGame::Alert("ConnectionError"),
+        _ => PrepareGame::Ready { asset_folder: format!("{resource_path}/content"), datamodel_hash: "ios,ios".to_owned() },
+    }
 }
 
 // 0x25080 — -[PlaceLauncher setLastPlaceId:]
 // demangled: -[PlaceLauncher setLastPlaceId:]
 // type: void __cdecl(PlaceLauncher *self, SEL, int)
 #[doc(alias = "-[PlaceLauncher setLastPlaceId:]")]
-pub fn stub_25080() -> ! {
-    todo!("0x25080 -[PlaceLauncher setLastPlaceId:]")
+pub fn stub_25080(state: &mut PlaceLauncherState, place_id: i32) {
+    // IDA 0x25080: lastPlaceId = a3 (0x2508c).
+    state.last_place_id = place_id;
 }
 
 // 0x25090 — -[PlaceLauncher checkPlacePartCount]
 // demangled: -[PlaceLauncher checkPlacePartCount]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher checkPlacePartCount]")]
-pub fn stub_25090() -> ! {
-    todo!("0x25090 -[PlaceLauncher checkPlacePartCount]")
+pub fn stub_25090(warnings_enabled: bool) -> bool {
+    // IDA 0x25090: warnings_preference boolValue gates dispatch_async of the part-count block on the global queue (0x250da..0x25124) — returns whether the check was dispatched.
+    warnings_enabled
 }
 
 // 0x2512c — ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
 // demangled: ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
 // type: 
 #[doc(alias = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke")]
-pub fn stub_2512c() -> ! {
-    todo!("0x2512c ___36-[PlaceLauncher checkPlacePartCount]_block_invoke")
+pub fn stub_2512c(threshold: i32, part_count: Option<i32>, place_id: i32) -> Option<PartCountWarning> {
+    // IDA 0x2512c: settings threshold (0x25178); skipped below 1 or when the datamodel chain is nil (0x25198..0x25222); threshold < part count alerts WarnPlaceIsNotIdeal + WarnTooManyParts format and tracks PlayErrors/TooManyParts labeled with the place id (0x2522e..0x25384).
+    match part_count {
+        Some(count) if threshold >= 1 && threshold < count => Some(PartCountWarning { title_key: "WarnPlaceIsNotIdeal", body_format_key: "WarnTooManyParts", event_category: "PlayErrors", event_action: "TooManyParts", place_id }),
+        _ => None,
+    }
 }
 
 // 0x253cc — ___copy_helper_block_98
