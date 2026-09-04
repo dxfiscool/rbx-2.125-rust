@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_134::{IntCallResult, XmlIntSlot, XmlReadValue};
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = {
@@ -66,6 +67,136 @@ impl BoolProp {
     /// setter is never write-only.
     pub fn is_write_only(&self) -> bool {
         self.setter.is_none()
+    }
+}
+
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,int>` (IDA 0x1089c:
+/// classDescriptor 0x108c4, GetSetImpl alloc + member-fn stores
+/// 0x108ca..0x10908, `TypedPropertyDescriptor<int>` ctor 0x10942, vtable
+/// install 0x10960). Unlike the bool pair, the getter binds a
+/// `CRenderSettings` member function (cf. ResolutionSettings in
+/// generated_134.rs), so it reads the settings object itself.
+pub struct IntProp {
+    pub name: String,
+    pub category: String,
+    pub getter: Option<fn(&IntSettings) -> i32>,
+    pub setter: Option<fn(&mut IntItem, i32)>,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+impl IntProp {
+    /// IDA 0x109b0 (decompiled `return 0`, 0x109b2): a bound getter is never
+    /// read-only.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// IDA 0x109b4 (disasm 0x109b4..0x109b6 `MOVS R0,#0; BX LR`): a bound
+    /// setter is never write-only.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
+/// CRenderSettings int slot read by the 0x1089c getter.
+#[derive(Default)]
+pub struct IntSettings {
+    pub value: i32,
+}
+
+/// CRenderSettingsItem int slot written by the 0x1089c setter.
+#[derive(Default)]
+pub struct IntItem {
+    pub value: i32,
+}
+
+/// Host carrier for `EnumPropDescriptor<CRenderSettingsItem,AntialiasingMode>`
+/// (IDA 0x10a08): enum singleton at +40/+48 (0x10a4c..0x10b28), GetSetImpl
+/// {getter, setter} at +44 (0x10ae6..0x10b0c), attribute flag fixups at +28
+/// from the isReadOnly/isWriteOnly virtuals (0x10b38..0x10b5e, stored as
+/// passed — cf. generated_134 stub_fe84).
+pub struct AntialiasingProp {
+    pub name: String,
+    pub category: String,
+    pub getter: Option<fn(&AntialiasingSettings) -> i32>,
+    pub setter: Option<fn(&mut AntialiasingItem, i32)>,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub enum_type: &'static str,
+}
+
+impl AntialiasingProp {
+    /// IDA 0x10be8 (decompiled: load impl at `[a1+44]`, tail-call its slot-0
+    /// virtual at 0x10bf4): delegates to the GetSetImpl's isReadOnly.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// IDA 0x10bf8 (slot-1 virtual at 0x10c04): delegates to isWriteOnly.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
+/// CRenderSettings AntialiasingMode slot read by the 0x10a08 getter.
+#[derive(Default)]
+pub struct AntialiasingSettings {
+    pub mode: i32,
+}
+
+/// CRenderSettingsItem AntialiasingMode slot written by the 0x10a08 setter.
+#[derive(Default)]
+pub struct AntialiasingItem {
+    pub mode: i32,
+}
+
+/// Host model of `EnumDesc<AntialiasingMode>` for IDA 0x10c30..0x111f8.
+/// `items` is the ordered (value, name) table; `index_to_value` is the legacy
+/// index->value map with `-1` holes for unmapped indices (mirrors
+/// `ResolutionEnumDesc` in generated_134.rs).
+#[derive(Default)]
+pub struct AntialiasingEnumDesc {
+    pub items: Vec<(i32, String)>,
+    pub index_to_value: Vec<i32>,
+}
+
+impl AntialiasingEnumDesc {
+    /// Host helper mirroring the EnumDesc add path: appends the (value, name)
+    /// item and records it in the legacy index->value map at `index` (gaps
+    /// stay `-1`, as in the image table).
+    pub fn add_pair(&mut self, value: i32, name: &str, index: usize) {
+        self.items.push((value, name.to_owned()));
+        if self.index_to_value.len() <= index {
+            self.index_to_value.resize(index + 1, -1);
+        }
+        self.index_to_value[index] = value;
+    }
+
+    /// Host search behind 0x10df0/0x10e50 (`Name::lookup` + `convertToValue`):
+    /// interning has no host effect; the host compares names directly.
+    pub fn lookup_value(&self, name: &str) -> Option<i32> {
+        self.items.iter().find(|(_, n)| n == name).map(|(v, _)| *v)
+    }
+
+    /// Host `EnumDesc::convertToString` behind 0x10dcc: assigns the item name
+    /// for `value`, returns false with `out` untouched when unmapped.
+    pub fn value_to_string(&self, value: i32, out: &mut String) -> bool {
+        if let Some((_, name)) = self.items.iter().find(|(v, _)| *v == value) {
+            *out = name.clone();
+            true
+        } else {
+            false
+        }
+    }
+
+    /// Host `EnumDesc::convertToIndex` behind 0x11090: the legacy
+    /// index->value table indexed by value, `-1` when out of range.
+    pub fn convert_to_index(&self, value: i32) -> i32 {
+        if value >= 0 && (value as usize) < self.index_to_value.len() {
+            return self.index_to_value[value as usize];
+        }
+        -1
     }
 }
 
@@ -155,44 +286,110 @@ pub fn stub_10854(prop: &BoolProp, item: &BoolItem) -> bool {
 
 // 0x10878 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_10878() -> ! {
-    todo!("0x10878 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_10878(prop: &BoolProp, item: &mut BoolItem, value: bool) {
+    // IDA 0x10878 (decompiled 0x10878..0x10898; disasm null-object split
+    // 0x1087e..0x10880 `a2-36`, setter fetch 0x10884..0x1088c, `>>1`/`&1`
+    // dispatch 0x1088c..0x10894, indirect call 0x10894..0x10898): resolves
+    // the stored `void (CRenderSettingsItem::*)(bool)` and calls it. A null
+    // setter faults in the image; the host panics.
+    let set = prop.setter.expect("bound setter at IDA 0x1070c");
+    set(item, value);
 }
 
 // 0x1089c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFivEMS2_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_1089c() -> ! {
-    todo!("0x1089c RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_1089c(
+    name: &str,
+    category: &str,
+    getter: fn(&IntSettings) -> i32,
+    setter: fn(&mut IntItem, i32),
+    attributes: u32,
+    permissions: u32,
+) -> IntProp {
+    // IDA 0x1089c (decompiled 0x1089c..0x1097e; disasm classDescriptor
+    // 0x108c4, GetSetImpl alloc + member-fn stores 0x108ca..0x10908,
+    // `TypedPropertyDescriptor<int>` ctor 0x10942, vtable install 0x10960):
+    // registers the int get/set pair against the RenderSettings class
+    // descriptor (host: generated_134 stub_fa00, as in 0x1070c).
+    let _ = crate::generated_134::stub_fa00();
+    IntProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        getter: Some(getter),
+        setter: Some(setter),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x109b0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::isReadOnly(void)const")]
-pub fn stub_109b0() -> ! {
-    todo!("0x109b0 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::isReadOnly(void)const")
+pub fn stub_109b0(prop: &IntProp) -> bool {
+    // IDA 0x109b0 (decompiled `return 0`, 0x109b2): the int member pointer
+    // is bound at 0x1089c, so never read-only.
+    prop.is_read_only()
 }
 
 // 0x109b4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::isWriteOnly(void)const")]
-pub fn stub_109b4() -> ! {
-    todo!("0x109b4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::isWriteOnly(void)const")
+pub fn stub_109b4(prop: &IntProp) -> bool {
+    // IDA 0x109b4 (disasm 0x109b4..0x109b6 `MOVS R0,#0; BX LR`): the int
+    // member pointer is bound at 0x1089c, so never write-only.
+    prop.is_write_only()
 }
 
 // 0x109b8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_109b8() -> ! {
-    todo!("0x109b8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_109b8(prop: &IntProp, settings: &IntSettings) -> i32 {
+    // IDA 0x109b8 (decompiled 0x109b8..0x109e2; disasm null-object split
+    // 0x109ba..0x109d2, `a2-36` + 96 adjust 0x109c0..0x109c8,
+    // virtual/indirect dispatch 0x109d4..0x109e0, indirect call): resolves
+    // the stored `int (CRenderSettings::*)() const` and calls it. A null
+    // getter faults in the image; the host panics.
+    let get = prop.getter.expect("bound getter at IDA 0x1089c");
+    get(settings)
 }
 
 // 0x109e4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_109e4() -> ! {
-    todo!("0x109e4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_109e4(prop: &IntProp, item: &mut IntItem, value: i32) {
+    // IDA 0x109e4 (decompiled 0x109e4..0x10a06; disasm `a2-36` adjust
+    // 0x109ea..0x109ec, setter fetch 0x109f0..0x109f8, `>>1`/`&1` dispatch
+    // 0x109f8..0x10a00, indirect call 0x10a00..0x10a06): resolves the stored
+    // `void (CRenderSettingsItem::*)(int)` and calls it. A null setter
+    // faults in the image; the host panics.
+    let set = prop.setter.expect("bound setter at IDA 0x1089c");
+    set(item, value);
 }
 
 // 0x10a08 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::EnumPropDescriptor<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>(char const*,char const*,RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_10a08() -> ! {
-    todo!("0x10a08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::EnumPropDescriptor<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>(char const*,char const*,RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_10a08(
+    name: &str,
+    category: &str,
+    getter: fn(&AntialiasingSettings) -> i32,
+    setter: fn(&mut AntialiasingItem, i32),
+    attributes: u32,
+    permissions: u32,
+) -> AntialiasingProp {
+    // IDA 0x10a08 (decompiled 0x10a08..0x10b7e; disasm classDescriptor
+    // 0x10a2c, enum Singleton call_once + doGetSingleton 0x10a4c/0x10a50,
+    // PropertyDescriptor base 0x10a9a, enum desc at +40 0x10abe, GetSetImpl
+    // alloc + member-fn stores at +44 0x10ae6..0x10b0c, second singleton
+    // touch 0x10b16..0x10b28, attribute fixups at +28 0x10b38..0x10b5e,
+    // return self 0x10b7e): registers the enum get/set pair plus the
+    // AntialiasingMode EnumDesc singleton (host: the desc travels
+    // separately; the singleton init has no host effect).
+    let _ = crate::generated_134::stub_fa00();
+    AntialiasingProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        getter: Some(getter),
+        setter: Some(setter),
+        attributes,
+        permissions,
+        enum_type: "AntialiasingMode",
+    }
 }
 
 // 0x10bbc — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED0Ev
@@ -203,80 +400,198 @@ pub fn stub_10bbc() {
 
 // 0x10be8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::isReadOnly(void)const")]
-pub fn stub_10be8() -> ! {
-    todo!("0x10be8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::isReadOnly(void)const")
+pub fn stub_10be8(prop: &AntialiasingProp) -> bool {
+    // IDA 0x10be8 (decompiled; disasm: load impl at `[a1+44]`, tail-call its
+    // slot-0 virtual at 0x10bf4): delegates to the +44 GetSetImpl's
+    // isReadOnly.
+    prop.is_read_only()
 }
 
 // 0x10bf8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::isWriteOnly(void)const")]
-pub fn stub_10bf8() -> ! {
-    todo!("0x10bf8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::isWriteOnly(void)const")
+pub fn stub_10bf8(prop: &AntialiasingProp) -> bool {
+    // IDA 0x10bf8 (disasm: load impl at `[a1+44]`, tail-call its slot-1
+    // virtual at 0x10c04): delegates to the +44 GetSetImpl's isWriteOnly.
+    prop.is_write_only()
 }
 
 // 0x10c08 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_10c08() -> ! {
-    todo!("0x10c08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10c08(prop: &AntialiasingProp, a: &AntialiasingSettings, b: &AntialiasingSettings) -> bool {
+    // IDA 0x10c08 (decompiled 0x10c08..0x10c2e; disasm getValue slot-8 calls
+    // 0x10c18 and 0x10c2e): compares the +44 GetSetImpl `getValue` of both
+    // described objects.
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    get(a) == get(b)
 }
 
 // 0x10c30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_10c30() -> ! {
-    todo!("0x10c30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_10c30(prop: &AntialiasingProp, settings: &AntialiasingSettings) -> IntCallResult {
+    // IDA 0x10c30 (decompiled 0x10c30..0x10c52; disasm getEnumValue slot-68
+    // call 0x10c3e, `Type::getSingleton<int>()` 0x10c44, `placement_any<int>`
+    // 0x10c52): tags the out slot with the int singleton, then stores the
+    // enum value as int (host: generated_134 IntCallResult).
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    IntCallResult {
+        type_name: "int",
+        value: get(settings),
+    }
 }
 
 // 0x10c54 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_10c54() -> ! {
-    todo!("0x10c54 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_10c54(prop: &AntialiasingProp, item: &mut AntialiasingItem, value: i32) {
+    // IDA 0x10c54 (decompiled 0x10c54..0x10d88; disasm typeinfo-for-int fast
+    // path 0x10cd2/0x10d50 `any_cast<int>`, `Variant::convert<int>` slow path
+    // 0x10cd4..0x10d12, `setIntValue` slot-72 call 0x10d5e): coerces the
+    // variant to int, then stores it. The variant-boxing dance has no host
+    // effect; the caller passes the coerced int.
+    let set = prop.setter.expect("bound setter at IDA 0x10a08");
+    set(item, value);
 }
 
 // 0x10da4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_10da4() -> ! {
-    todo!("0x10da4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_10da4(prop: &AntialiasingProp, src: &AntialiasingSettings, dst: &mut AntialiasingItem) {
+    // IDA 0x10da4 (decompiled 0x10da4..0x10dc6; disasm getValue slot-8
+    // 0x10db6, setValue slot-12 0x10dc6): reads the source through the +44
+    // GetSetImpl getter, writes it through the setter.
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    let set = prop.setter.expect("bound setter at IDA 0x10a08");
+    set(dst, get(src));
 }
 
 // 0x10dc8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::hasStringValue(void)const")]
-pub fn stub_10dc8() -> ! {
-    todo!("0x10dc8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::hasStringValue(void)const")
+pub fn stub_10dc8() -> bool {
+    // IDA 0x10dc8 (disasm 0x10dca `MOVS R0,#1; BX LR`): enum properties
+    // always have a string value.
+    true
 }
 
 // 0x10dcc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_10dcc() -> ! {
-    todo!("0x10dcc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10dcc(
+    prop: &AntialiasingProp,
+    desc: &AntialiasingEnumDesc,
+    settings: &AntialiasingSettings,
+    out: &mut String,
+) -> bool {
+    // IDA 0x10dcc (decompiled 0x10dcc..0x10dee; disasm enum singleton fetch
+    // at +48 0x10dd6, getValue slot-8 0x10dde, `EnumDesc::convertToString`
+    // 0x10dee): renders the current enum value through the +48 enum
+    // singleton (host: the desc param).
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    desc.value_to_string(get(settings), out)
 }
 
 // 0x10df0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_10df0() -> ! {
-    todo!("0x10df0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_10df0(
+    prop: &AntialiasingProp,
+    desc: &AntialiasingEnumDesc,
+    item: &mut AntialiasingItem,
+    name: &str,
+) -> bool {
+    // IDA 0x10df0 (decompiled 0x10df0..0x10e2c; disasm enum singleton at +48
+    // 0x10dfa, `Name::lookup` 0x10e02, `EnumDesc::convertToValue`
+    // 0x10e10..0x10e16, setValue slot-12 0x10e26, return 1/0 at
+    // 0x10e28/0x10e2c). `Name::lookup` interning has no host effect.
+    match desc.lookup_value(name) {
+        Some(value) => {
+            let set = prop.setter.expect("bound setter at IDA 0x10a08");
+            set(item, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x10e30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_10e30() -> ! {
-    todo!("0x10e30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_10e30(prop: &AntialiasingProp, settings: &AntialiasingSettings, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x10e30 (decompiled 0x10e30..0x10e4e; disasm getValue slot-8
+    // 0x10e3e, `clearValue` 0x10e44, tag `5` at +16 0x10e4a, value at +20
+    // 0x10e4c, return 5 at 0x10e4e).
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    out.value_type = 0; // `clearValue` resets the pair first (0x10e44).
+    out.value_type = 5; // int tag at +16 (0x10e4a).
+    out.int_value = get(settings); // value at +20 (0x10e4c).
+    5
 }
 
 // 0x10e50 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_10e50() -> ! {
-    todo!("0x10e50 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_10e50(
+    prop: &AntialiasingProp,
+    desc: &AntialiasingEnumDesc,
+    item: &mut AntialiasingItem,
+    xml: &XmlReadValue,
+) {
+    // IDA 0x10e50 (decompiled 0x10e50..0x11230 shape, cf. generated_134
+    // 0x102cc): xsi:nil early-out (0x10e74); int pair -> `setIntValue`
+    // (0x10ebc..0x10ecc = stub_111f8); string pair -> `Name::lookup` +
+    // `convertToValue` + setValue (0x10eda..0x10f36) with the empty-string
+    // `validate` fallback; anything else falls into `ReleaseAssert(false)`
+    // (Reflection.h:359), which faults in the image — the host panics with
+    // the same message.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if stub_111f8(prop, desc, item, *value) {
+                return;
+            }
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+        XmlReadValue::Text(text) => {
+            if let Some(value) = desc.lookup_value(text) {
+                let set = prop.setter.expect("bound setter at IDA 0x10a08");
+                set(item, value);
+                return;
+            }
+            if text.is_empty() {
+                // Empty string -> `validate` virtual (slot-64); the host has
+                // no validators, so this is a no-op.
+                return;
+            }
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+        XmlReadValue::Other => {
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+    }
 }
 
 // 0x11090 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_11090() -> ! {
-    todo!("0x11090 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_11090(prop: &AntialiasingProp, desc: &AntialiasingEnumDesc, settings: &AntialiasingSettings) -> i32 {
+    // IDA 0x11090 (decompiled 0x11090..0x110aa; disasm impl qword at +44
+    // 0x11092, getValue slot-8 0x110a0, `convertToIndex` tail-call): the
+    // +48 enum singleton word rides along in the impl qword's high half.
+    let get = prop.getter.expect("bound getter at IDA 0x10a08");
+    desc.convert_to_index(get(settings))
 }
 
 // 0x110ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_110ac() -> ! {
-    todo!("0x110ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_110ac(
+    prop: &AntialiasingProp,
+    desc: &AntialiasingEnumDesc,
+    item: &mut AntialiasingItem,
+    index: u32,
+) -> bool {
+    // IDA 0x110ac (decompiled 0x110ac..0x110dc; disasm enum singleton at +48
+    // 0x110b2, count check 0x110be, table load `[[desc+144] + 4*index]`
+    // 0x110c8, setValue slot-12 0x110d2, return 1/0 at 0x110d4/0x110dc).
+    // Unlike 0x111f8, a `-1` hole is stored as-is.
+    if (index as usize) < desc.index_to_value.len() {
+        let value = desc.index_to_value[index as usize];
+        let set = prop.setter.expect("bound setter at IDA 0x10a08");
+        set(item, value);
+        return true;
+    }
+    false
 }
 
 // 0x110e0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -311,8 +626,25 @@ pub fn stub_11188() -> ! {
 
 // 0x111f8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_111f8() -> ! {
-    todo!("0x111f8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_111f8(
+    prop: &AntialiasingProp,
+    desc: &AntialiasingEnumDesc,
+    item: &mut AntialiasingItem,
+    value: i32,
+) -> bool {
+    // IDA 0x111f8 (decompiled 0x111f8..0x11230 shape, cf. generated_134
+    // 0x10674): `value>=0` (0x11202), legacy table bounds (0x11206..0x11214),
+    // table load (0x11216), `-1` hole check (0x11220), setValue slot-12,
+    // return 1/0. The `-1` check is what 0x110ac lacks.
+    if value >= 0 && (value as usize) < desc.index_to_value.len() {
+        let mapped = desc.index_to_value[value as usize];
+        if mapped != -1 {
+            let set = prop.setter.expect("bound setter at IDA 0x10a08");
+            set(item, mapped);
+            return true;
+        }
+    }
+    false
 }
 
 // 0x11238 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
