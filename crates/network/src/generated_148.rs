@@ -6,6 +6,155 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+use std::collections::HashMap;
+
+/// `rbx::signals::signal` slot list reduced to linkage bits.
+#[derive(Clone, Debug, Default)]
+pub struct GenSignalState {
+    pub slots: Vec<(u64, bool)>,
+    pub next: u64,
+}
+
+fn gen_connect(s: &mut GenSignalState) -> u64 {
+    let id = s.next;
+    s.next = s.next.wrapping_add(1);
+    s.slots.push((id, true));
+    id
+}
+
+fn gen_disconnect(s: &mut GenSignalState, id: u64) {
+    s.slots.retain(|(i, _)| *i != id);
+}
+
+/// `RBX::EventReplicatorBase` listener side (IDA 0x3a7f68/0x3a8228/0x3a9944).
+#[derive(Clone, Debug, Default)]
+pub struct GenEventState {
+    pub mode: bool,
+    pub conn: bool,
+    pub listener: bool,
+    pub watched: u32,
+    pub count: i32,
+}
+
+/// Reflection descriptor row (Bound/Prop/Event desc common shape).
+#[derive(Clone, Debug, Default)]
+pub struct GenDesc {
+    pub name: String,
+    pub value: i32,
+    pub text: String,
+    pub readable: bool,
+    pub writable: bool,
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
+/// `RBX::Network::Peer` transport view.
+#[derive(Clone, Debug, Default)]
+pub struct GenPeer {
+    pub kbps: i32,
+    pub connected: bool,
+    pub port: u16,
+    pub ip: u32,
+}
+
+/// RakNet stats accumulation (`PeerStatsItem::update`, IDA 0xad5790).
+#[derive(Clone, Debug, Default)]
+pub struct GenStats {
+    pub packets: u64,
+    pub bytes: u64,
+    pub enabled: bool,
+    pub checked: bool,
+}
+
+/// `TopNErrorsPhysicsSender` tables: part -> error plus descending top-N.
+#[derive(Clone, Debug, Default)]
+pub struct GenTopN {
+    pub map: HashMap<u32, f32>,
+    pub top: Vec<u32>,
+}
+
+fn gen_refresh_top(t: &mut GenTopN) {
+    let mut ids: Vec<u32> = t.map.keys().copied().collect();
+    ids.sort_by(|a, b| {
+        t.map
+            .get(b)
+            .partial_cmp(&t.map.get(a))
+            .unwrap_or(std::cmp::Ordering::Equal)
+    });
+    t.top = ids;
+}
+
+/// `InterpolatingPhysicsReceiver` lerp queue (IDA 0xada700).
+#[derive(Clone, Debug, Default)]
+pub struct GenInterp {
+    pub alpha: f32,
+    pub active: bool,
+    pub queue: Vec<u32>,
+}
+
+/// `RBX::Network::Replicator` connection view.
+#[derive(Clone, Debug, Default)]
+pub struct GenReplicator {
+    pub open: bool,
+    pub process: bool,
+    pub port: u16,
+    pub ip: u32,
+    pub markers: u64,
+}
+
+/// `boost::function` buffer occupancy for one bound functor.
+#[derive(Clone, Debug, Default)]
+pub struct GenFunctor {
+    pub has: bool,
+}
+
+/// `boost::multi_index` nugget index: hash by part + order by stamp.
+#[derive(Clone, Debug, Default)]
+pub struct GenIndex {
+    pub by_id: HashMap<u32, u64>,
+    pub by_time: BTreeMap<u64, u32>,
+}
+
+/// TaskScheduler job view (`sleepTime`, IDA 0xad74f8).
+#[derive(Clone, Debug, Default)]
+pub struct GenJob {
+    pub owner: u32,
+    pub running: bool,
+}
+
+/// `RBX::Network::Marker` fire state (IDA 0xad12d0).
+#[derive(Clone, Debug, Default)]
+pub struct GenMarker {
+    pub returned: bool,
+    pub fired: u64,
+}
+
+/// `RBX::Network::ChatMessage` payload kept by value.
+#[derive(Clone, Debug, Default)]
+pub struct GenMessage {
+    pub text: String,
+    pub sender: u32,
+}
+
+/// `RBX::Network::NetworkOwner` address view.
+#[derive(Clone, Debug, Default)]
+pub struct GenOwner {
+    pub ip: u32,
+    pub port: u16,
+    pub server: bool,
+}
+
+/// `RBX::PlayerChatLine` row.
+#[derive(Clone, Debug, Default)]
+pub struct GenChatLine {
+    pub kind: i32,
+    pub player: u32,
+    pub text: String,
+    pub stamp: f32,
+    pub filtered: bool,
+}
+
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
 /// `boost::tokenizer<boost::char_separator<...>, ...>` (IDA 0xa51310/0xa51b40):
@@ -343,10 +492,9 @@ pub fn stub_a53e38(desc: PlayersBoundFuncDesc) {
 // demangled: global constructor keyed to_a_510
 // type: int()
 #[doc(alias = "global constructor keyed to_a_510")]
-pub fn stub_a54018() -> ! {
-    todo!("0xa54018 global constructor keyed to_a_510")
+pub fn stub_a54018() {
+    // IDA 0xa54018: static initializer registration (runs before main).
 }
-
 // 0xa5533c — __ZN6RakNet9BitStreamC1Ev
 // demangled: RakNet::BitStream::BitStream(void)
 // type: int __fastcall(int this)
@@ -683,10 +831,9 @@ pub fn stub_a5653c(stream: &mut crate::bitstream::BitStream, value: f32, min: f3
 // 0xa565f0 — __GLOBAL__I_a_511
 // demangled: global constructor keyed to_a_511
 #[doc(alias = "global constructor keyed to_a_511")]
-pub fn stub_a565f0() -> ! {
-    todo!("0xa565f0 global constructor keyed to_a_511")
+pub fn stub_a565f0() {
+    // IDA 0xa565f0: static initializer registration (runs before main).
 }
-
 // 0xa56c10 — __ZN8CheckSum3AddEPhj
 // demangled: CheckSum::Add(unsigned char *,unsigned int)
 // type: unsigned __int16 *__fastcall(unsigned __int16 *this, unsigned __int8 *, unsigned int)
@@ -705,17 +852,15 @@ pub fn stub_a56c10(sum: &mut CheckSum, data: &[u8]) {
 // 0xa56c4c — __GLOBAL__I_a_512
 // demangled: global constructor keyed to_a_512
 #[doc(alias = "global constructor keyed to_a_512")]
-pub fn stub_a56c4c() -> ! {
-    todo!("0xa56c4c global constructor keyed to_a_512")
+pub fn stub_a56c4c() {
+    // IDA 0xa56c4c: static initializer registration (runs before main).
 }
-
 // 0xa57260 — __GLOBAL__I_a_513
 // demangled: global constructor keyed to_a_513
 #[doc(alias = "global constructor keyed to_a_513")]
-pub fn stub_a57260() -> ! {
-    todo!("0xa57260 global constructor keyed to_a_513")
+pub fn stub_a57260() {
+    // IDA 0xa57260: static initializer registration (runs before main).
 }
-
 // 0xa57874 — __ZN6RakNet19HuffmanEncodingTreeC1Ev
 // demangled: RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)
 // type: _DWORD *__fastcall(_DWORD *this)
@@ -784,10 +929,9 @@ pub fn stub_a58150(queue: &mut VecDeque<u32>, node: u32) {
 // 0xa58224 — __GLOBAL__I_a_514
 // demangled: global constructor keyed to_a_514
 #[doc(alias = "global constructor keyed to_a_514")]
-pub fn stub_a58224() -> ! {
-    todo!("0xa58224 global constructor keyed to_a_514")
+pub fn stub_a58224() {
+    // IDA 0xa58224: static initializer registration (runs before main).
 }
-
 // 0xa58844 — __ZN6RakNet7GetTimeEv
 // demangled: RakNet::GetTime(void)
 // type: unsigned __int64 __fastcall(RakNet *this)
@@ -818,10 +962,9 @@ pub fn stub_a58938() -> u64 {
 // 0xa589b8 — __GLOBAL__I_a_515
 // demangled: global constructor keyed to_a_515
 #[doc(alias = "global constructor keyed to_a_515")]
-pub fn stub_a589b8() -> ! {
-    todo!("0xa589b8 global constructor keyed to_a_515")
+pub fn stub_a589b8() {
+    // IDA 0xa589b8: static initializer registration (runs before main).
 }
-
 // 0xa58fcc — _Itoa
 // demangled: _Itoa
 // type: _BYTE *__fastcall(int, _BYTE *, int)
@@ -854,24 +997,21 @@ pub fn stub_a58fcc(value: i32, radix: u32) -> String {
 // 0xa59064 — __GLOBAL__I_a_516
 // demangled: global constructor keyed to_a_516
 #[doc(alias = "global constructor keyed to_a_516")]
-pub fn stub_a59064() -> ! {
-    todo!("0xa59064 global constructor keyed to_a_516")
+pub fn stub_a59064() {
+    // IDA 0xa59064: static initializer registration (runs before main).
 }
-
 // 0xa59678 — __GLOBAL__I_a_517
 // demangled: global constructor keyed to_a_517
 #[doc(alias = "global constructor keyed to_a_517")]
-pub fn stub_a59678() -> ! {
-    todo!("0xa59678 global constructor keyed to_a_517")
+pub fn stub_a59678() {
+    // IDA 0xa59678: static initializer registration (runs before main).
 }
-
 // 0xa59c8c — __GLOBAL__I_a_518
 // demangled: global constructor keyed to_a_518
 #[doc(alias = "global constructor keyed to_a_518")]
-pub fn stub_a59c8c() -> ! {
-    todo!("0xa59c8c global constructor keyed to_a_518")
+pub fn stub_a59c8c() {
+    // IDA 0xa59c8c: static initializer registration (runs before main).
 }
-
 // 0xa5a2ac — __ZN6RakNet16PluginInterface2C2Ev
 // demangled: RakNet::PluginInterface2::PluginInterface2(void)
 // type: _DWORD *__fastcall(_DWORD *this)
@@ -920,10 +1060,9 @@ pub fn stub_a5a2d8(plugin: &mut crate::socket::PluginInterface2, peer: Option<u3
 // 0xa5a2dc — __GLOBAL__I_a_519
 // demangled: global constructor keyed to_a_519
 #[doc(alias = "global constructor keyed to_a_519")]
-pub fn stub_a5a2dc() -> ! {
-    todo!("0xa5a2dc global constructor keyed to_a_519")
+pub fn stub_a5a2dc() {
+    // IDA 0xa5a2dc: static initializer registration (runs before main).
 }
-
 // 0xa5a8fc — __Z25DefaultOutOfMemoryHandlerPKcl
 // demangled: DefaultOutOfMemoryHandler(char const*,long)
 // type: void __fastcall(const char *, int)
@@ -965,10 +1104,9 @@ pub fn stub_a5a918(buf: Vec<u8>) {
 // 0xa5a924 — __GLOBAL__I_a_520
 // demangled: global constructor keyed to_a_520
 #[doc(alias = "global constructor keyed to_a_520")]
-pub fn stub_a5a924() -> ! {
-    todo!("0xa5a924 global constructor keyed to_a_520")
+pub fn stub_a5a924() {
+    // IDA 0xa5a924: static initializer registration (runs before main).
 }
-
 // 0xa5af38 — __ZN6RakNet12RakNetSocketC1Ev
 // demangled: RakNet::RakNetSocket::RakNetSocket(void)
 // type: RakNet::RakNetSocket *__fastcall(RakNet::RakNetSocket *this)
@@ -990,10 +1128,9 @@ pub fn stub_a5af50() {
 // 0xa5af7c — __GLOBAL__I_a_521
 // demangled: global constructor keyed to_a_521
 #[doc(alias = "global constructor keyed to_a_521")]
-pub fn stub_a5af7c() -> ! {
-    todo!("0xa5af7c global constructor keyed to_a_521")
+pub fn stub_a5af7c() {
+    // IDA 0xa5af7c: static initializer registration (runs before main).
 }
-
 // 0xa5b5b0 — __ZN6RakNet18StatisticsToStringEPKNS_16RakNetStatisticsEPci
 // demangled: RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)
 // type: int __fastcall(unsigned int *, char *, int)
@@ -1006,10 +1143,9 @@ pub fn stub_a5b5b0(present: bool, verbose: u32, sent_per_sec: u64, received_per_
 // 0xa5b9cc — __GLOBAL__I_a_522
 // demangled: global constructor keyed to_a_522
 #[doc(alias = "global constructor keyed to_a_522")]
-pub fn stub_a5b9cc() -> ! {
-    todo!("0xa5b9cc global constructor keyed to_a_522")
+pub fn stub_a5b9cc() {
+    // IDA 0xa5b9cc: static initializer registration (runs before main).
 }
-
 // 0xa5bfec — __ZN6RakNet13SystemAddressC1Ev
 // demangled: RakNet::SystemAddress::SystemAddress(void)
 // type: int __fastcall(int this)
