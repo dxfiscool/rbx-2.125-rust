@@ -14092,6 +14092,13 @@ pub fn stub_a0803c(
     crate::player::on_child_changed(is_local_player, is_supersafechat_prop, value, fire);
 }
 
+// 0xa0807c — __ZN3RBX7Network7PlayersD0Ev
+// type: void __fastcall(RBX::Network::Players *__hidden this)
+#[doc(alias = "RBX::Network::Players::~Players()")]
+pub fn stub_a0807c() -> ! {
+    todo!("0xa0807c RBX::Network::Players::~Players()")
+}
+
 // 0xa0811c — __ZN3RBX7Network7PlayersD1Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
