@@ -65,6 +65,44 @@ pub struct ViewControllerNode {
     pub is_nav: bool,
     pub visible: Option<usize>,
 }
+/// Host shell for `DebugSettingsViewController` (IDA 0x1a970..0x1b304): the
+/// iPad/phone window rect, the fixed six-entry display picker list, the
+/// `GuiBuilder::getDebugDisplay` selection and the picker show/dismiss flags.
+/// UIKit views/frames/animations fold; options, selection and applied bounds stay.
+#[derive(Debug, Clone)]
+pub struct DebugSettingsState {
+    pub is_pad: bool,
+    pub window_rect: (f32, f32, f32, f32),
+    pub keyboard_offset: i32,
+    pub display_options: Vec<String>,
+    pub debug_display: u32,
+    pub picker_visible: bool,
+    pub picker_selection: i32,
+    pub loaded: bool,
+    pub dismissed: bool,
+}
+
+impl Default for DebugSettingsState {
+    fn default() -> Self {
+        Self {
+            is_pad: false,
+            window_rect: (0.0, 0.0, 0.0, 0.0),
+            keyboard_offset: 0,
+            display_options: Vec::new(),
+            debug_display: 0,
+            picker_visible: false,
+            picker_selection: -1,
+            loaded: false,
+            dismissed: false,
+        }
+    }
+}
+
+/// `displayPickerArray` contents (IDA 0x1a970, 0x1ab06..0x1ab1a): index doubles
+/// as the `GuiBuilder::setDebugDisplay` value read back in `setDisplayUI`.
+pub const DEBUG_DISPLAY_OPTIONS: [&str; 6] =
+    ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"];
+
 
 
 // 0x191d4 — -[Appirater ratingAlert]
@@ -366,184 +404,210 @@ pub fn stub_1a7d4() {
 // demangled: -[DebugSettingsViewController initWithCoder:]
 // type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
-}
+pub fn stub_1a970(is_pad: bool, screen_bounds: Option<(f32, f32, f32, f32)>) -> DebugSettingsState {
+    // IDA 0x1a970: initWithCoder — super init (0x1a9a0..0x1a9ac); iPad idiom (0x1a9c6..0x1a9e2) takes window (0,0,540,508), otherwise mainScreen bounds (0x1aa5c..0x1aa9c); keyboardOffset := 114, displayPickerArray := the six debug-display names (0x1aadc..0x1ab1a).
+    let window_rect = if is_pad { (0.0, 0.0, 540.0, 508.0) } else { screen_bounds.unwrap_or((0.0, 0.0, 0.0, 0.0)) };
+    DebugSettingsState {
+        is_pad,
+        window_rect,
+        keyboard_offset: 114,
+        display_options: DEBUG_DISPLAY_OPTIONS.iter().map(|s| (*s).to_owned()).collect(),
+        ..DebugSettingsState::default()
+    }}
 
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 // demangled: -[DebugSettingsViewController dealloc]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
-}
+pub fn stub_1ab20(state: DebugSettingsState) {
+    // IDA 0x1ab20: dealloc — displayPickerArray release (0x1ab2c..0x1ab40) then super dealloc; drops fold into Rust ownership.
+    drop(state);}
 
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 // demangled: -[DebugSettingsViewController reloadOldData]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_1ab6c() {
+    // IDA 0x1ab6c: reloadOldData — empty body (disasm: BX LR); faithful no-op shell.
 }
 
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 // demangled: -[DebugSettingsViewController viewDidLoad]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
-}
+pub fn stub_1ab70(state: &mut DebugSettingsState) {
+    // IDA 0x1ab70: viewDidLoad — super viewDidLoad + reloadOldData (0x1ab84..0x1ab98); reloadOldData is empty, the load flag stays.
+    stub_1ab6c();
+    state.loaded = true;}
 
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 // demangled: -[DebugSettingsViewController setDisplayUI]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
-}
+pub fn stub_1abb0(state: &DebugSettingsState) -> &'static str {
+    // IDA 0x1abb0: setDisplayUI — viewWithTag:100 (0x1abc4..0x1abd4), GuiBuilder::getDebugDisplay switch 1..5 -> FPS/Summary/Physics/PhysicsAndOwner/Render else None (0x1abdc..0x1ac5c), setText: (0x1ac60..0x1ac74); the view lookup folds, the selected label stays observable.
+    match state.debug_display {
+        1 => "FPS",
+        2 => "Summary",
+        3 => "Physics",
+        4 => "PhysicsAndOwner",
+        5 => "Render",
+        _ => "None",
+    }}
 
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 // demangled: -[DebugSettingsViewController displayPickerDoneClicked:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
-}
+pub fn stub_1ac80(state: &mut DebugSettingsState) {
+    // IDA 0x1ac80: displayPickerDoneClicked — both tag-5012/5011 views required (0x1acb0..0x1acc8), animateWithDuration block 0x1ad78 (folds), selectedRowInComponent:0 >= 0 applies GuiBuilder::setDebugDisplay (0x1ad20..0x1ad48), then setDisplayUI (0x1ad5c..0x1ad70); the picker dismisses.
+    if state.picker_visible {
+        if state.picker_selection >= 0 {
+            state.debug_display = (state.picker_selection as u32).min(5);
+        }
+        state.picker_visible = false;
+    }
+    let _ = stub_1abb0(state);}
 
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // demangled: ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_1ad78() {
+    // IDA 0x1ad78: displayPickerDoneClicked block — pure UIView setFrame arithmetic over the two captured views (frames/origins fold on the host); faithful no-op shell.
 }
 
 // 0x1ae78 — ___copy_helper_block__0
 // demangled: ___copy_helper_block__0
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block__0")]
-pub fn stub_1ae78() -> ! {
-    todo!("0x1ae78 ___copy_helper_block__0")
+pub fn stub_1ae78() {
+    // IDA 0x1ae78: __copy_helper_block — three _Block_object_assign slots (cf. 0x18c98 pattern); block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1aea8 — ___destroy_helper_block__0
 // demangled: ___destroy_helper_block__0
 // type: 
 #[doc(alias = "___destroy_helper_block__0")]
-pub fn stub_1aea8() -> ! {
-    todo!("0x1aea8 ___destroy_helper_block__0")
+pub fn stub_1aea8() {
+    // IDA 0x1aea8: __destroy_helper_block — three _Block_object_dispose slots; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 // demangled: -[DebugSettingsViewController displayTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
-}
+pub fn stub_1aed0(state: &mut DebugSettingsState) {
+    // IDA 0x1aed0: displayTouchUp — both tag-5012/5011 views required (0x1af00..0x1af18), animateWithDuration block 0x1afa0 (folds); the tap presents the picker.
+    state.picker_visible = true;}
 
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 // demangled: ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
-pub fn stub_1afa0() -> ! {
-    todo!("0x1afa0 ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")
+pub fn stub_1afa0() {
+    // IDA 0x1afa0: displayTouchUp block — pure UIView setFrame arithmetic over the two captured views (frames fold on the host); faithful no-op shell.
 }
 
 // 0x1b11c — ___copy_helper_block_66
 // demangled: ___copy_helper_block_66
 // type: 
 #[doc(alias = "___copy_helper_block_66")]
-pub fn stub_1b11c() -> ! {
-    todo!("0x1b11c ___copy_helper_block_66")
+pub fn stub_1b11c() {
+    // IDA 0x1b11c: __copy_helper_block — three _Block_object_assign slots; block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1b14c — ___destroy_helper_block_67
 // demangled: ___destroy_helper_block_67
 // type: 
 #[doc(alias = "___destroy_helper_block_67")]
-pub fn stub_1b14c() -> ! {
-    todo!("0x1b14c ___destroy_helper_block_67")
+pub fn stub_1b14c() {
+    // IDA 0x1b14c: __destroy_helper_block — three _Block_object_dispose slots; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1b170 — -[DebugSettingsViewController didReceiveMemoryWarning]
 // demangled: -[DebugSettingsViewController didReceiveMemoryWarning]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
-pub fn stub_1b170() -> ! {
-    todo!("0x1b170 -[DebugSettingsViewController didReceiveMemoryWarning]")
+pub fn stub_1b170() {
+    // IDA 0x1b170: didReceiveMemoryWarning — super only (0x1b17c..0x1b190); faithful no-op shell.
 }
 
 // 0x1b19c — -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
 // demangled: -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(DebugSettingsViewController *self, SEL, int)
 #[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_1b19c() -> ! {
-    todo!("0x1b19c -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")
-}
+pub fn stub_1b19c(is_pad: bool, orientation: i32) -> bool {
+    // IDA 0x1b19c: shouldAutorotateToInterfaceOrientation — non-idiom devices (0x1bb0..0x1bbc) and phones (0x1bc8..0x1bd6) allow portrait(1) only; iPads (0x1bd8..0x1bf0) reject 1 and 2, allow the rest; falls through to 0 otherwise.
+    if is_pad {
+        orientation != 1 && orientation != 2
+    } else {
+        orientation == 1
+    }}
 
 // 0x1b224 — -[DebugSettingsViewController viewWillAppear:]
 // demangled: -[DebugSettingsViewController viewWillAppear:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, char)
 #[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
-pub fn stub_1b224() -> ! {
-    todo!("0x1b224 -[DebugSettingsViewController viewWillAppear:]")
-}
+pub fn stub_1b224(state: &DebugSettingsState) -> (f32, f32, f32, f32) {
+    // IDA 0x1b224: viewWillAppear — super (0x1b234..0x1b244), superview setBounds: := stored window rect (0x1b248..0x1b26c); the applied bounds stay observable.
+    state.window_rect}
 
 // 0x1b2a8 — -[DebugSettingsViewController doneTouchUp:]
 // demangled: -[DebugSettingsViewController doneTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
-pub fn stub_1b2a8() -> ! {
-    todo!("0x1b2a8 -[DebugSettingsViewController doneTouchUp:]")
-}
+pub fn stub_1b2a8(state: &mut DebugSettingsState) {
+    // IDA 0x1b2a8: doneTouchUp — dismissViewControllerAnimated:YES completion:nil (0x1b2b0..0x1b2b8).
+    state.dismissed = true;
+    state.picker_visible = false;}
 
 // 0x1b2bc — -[DebugSettingsViewController numberOfComponentsInPickerView:]
 // demangled: -[DebugSettingsViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
-pub fn stub_1b2bc() -> ! {
-    todo!("0x1b2bc -[DebugSettingsViewController numberOfComponentsInPickerView:]")
-}
+pub fn stub_1b2bc() -> i32 {
+    // IDA 0x1b2bc: numberOfComponentsInPickerView — returns 1 (0x1b2c0).
+    1}
 
 // 0x1b2c0 — -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
 // demangled: -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_1b2c0() -> ! {
-    todo!("0x1b2c0 -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")
-}
+pub fn stub_1b2c0(state: &DebugSettingsState) -> i32 {
+    // IDA 0x1b2c0: pickerView:numberOfRowsInComponent — displayPickerArray count (0x1b2cc..0x1b2dc), component index unused.
+    state.display_options.len() as i32}
 
 // 0x1b2e0 — -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
 // demangled: -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(DebugSettingsViewController *self, SEL, id, int, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_1b2e0() -> ! {
-    todo!("0x1b2e0 -[DebugSettingsViewController pickerView:titleForRow:forComponent:]")
-}
+pub fn stub_1b2e0(state: &DebugSettingsState, row: i32) -> Option<String> {
+    // IDA 0x1b2e0: pickerView:titleForRow — displayPickerArray objectAtIndex:row (0x1b2ec..0x1b2fc), component index unused; out-of-range has no image path (picker row count gates), host returns None.
+    usize::try_from(row).ok().and_then(|i| state.display_options.get(i).cloned())}
 
 // 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
 // demangled: -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
 // type: char __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_1b300() -> ! {
-    todo!("0x1b300 -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")
-}
+pub fn stub_1b300() -> bool {
+    // IDA 0x1b300: disablesAutomaticKeyboardDismissal — returns NO (0x1b300).
+    false}
 
 // 0x1b304 — -[DebugSettingsViewController .cxx_construct]
 // demangled: -[DebugSettingsViewController .cxx_construct]
 // type: id __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
-pub fn stub_1b304() -> ! {
-    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
+pub fn stub_1b304() {
+    // IDA 0x1b304: .cxx_construct — returns self, no member init (disasm: MOV R0,R4; BX LR equivalent); faithful no-op shell.
 }
 
 // 0x1b308 — __GLOBAL__I_a_3
 // demangled: global constructor keyed to_a_3
 // type: 
 #[doc(alias = "global constructor keyed to_a_3")]
-pub fn stub_1b308() -> ! {
-    todo!("0x1b308 global constructor keyed to_a_3")
+pub fn stub_1b308() {
+    // IDA 0x1b308: __GLOBAL__I_a — same static-init shape as 0x1a5d0 (disasm 0x1b308..: generic/system categories, ios_base::Init, exception_ptr guard); was: boost::system -> std::io — static-init no-op shell.
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
