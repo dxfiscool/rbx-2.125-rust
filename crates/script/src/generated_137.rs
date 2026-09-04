@@ -698,213 +698,255 @@ pub fn global_render_settings_item() -> CRenderSettingsItem {
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
+// IDA 0xb76c: property-changed signal invocation (disasm shows the sj0 exception prologue, then the connected-slot walk calling each slot with the descriptor); delegates to Signal::fire.
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xb76c() -> ! {
-    todo!("0xb76c __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_")
+pub fn property_changed_signal_fire(signal: &Signal<String>, name: &str) {
+    signal.fire(name.to_owned());
 }
 
 // 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
+// IDA 0xb8b8: attributes thunk; tail-calls the D2 body. Rust Drop covers it; no explicit body.
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem() [0xb8b8]")]
-pub fn stub_0xb8b8() -> ! {
-    todo!("0xb8b8 __ZN19CRenderSettingsItemD1Ev")
+pub fn c_render_settings_item_d1() {
 }
 
 // 0xb8bc — __ZN19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
+// IDA 0xb8bc: D0 deleting destructor; D1 then `operator delete`. Rust Box/Arc Drop covers it; no explicit body.
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem() [0xb8bc]")]
-pub fn stub_0xb8bc() -> ! {
-    todo!("0xb8bc __ZN19CRenderSettingsItemD0Ev")
+pub fn c_render_settings_item_d0() {
 }
 
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
-#[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0xb8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+// IDA 0xb8d0: `static_getCreator` then `Creator::getClassName` (0xedfc: ReleaseAssert(wasConstructed()) then `Name::declare<sRenderSettings>`); same shape as lua.rs stub_0x32768.
+impl CRenderSettingsItem {
+    #[doc(alias = "CRenderSettingsItem::CLASS_NAME")]
+    pub const CLASS_NAME: &'static str = "RenderSettings";
+    #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
+    pub fn get_class_name(was_constructed: bool) -> &'static str {
+        assert!(was_constructed, "wasConstructed() file: ../App/include/Util/Object.h line: 236");
+        Self::CLASS_NAME
+    }
 }
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 // was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
+// IDA 0xb8e0: `this -= 32` then the 0xb8b8 body verbatim; no adjustment in Rust.
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_0xb8e0() -> ! {
-    todo!("0xb8e0 __ZThn32_N19CRenderSettingsItemD1Ev")
+pub fn c_render_settings_item_d1_thunk_32() {
+    c_render_settings_item_d1();
 }
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 // was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
+// IDA 0xb8e8: `this -= 32`, D1, then `operator delete`; Box/Arc Drop covers the free.
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem() [0xb8e8]")]
-pub fn stub_0xb8e8() -> ! {
-    todo!("0xb8e8 __ZThn32_N19CRenderSettingsItemD0Ev")
+pub fn c_render_settings_item_d0_thunk_32() {
+    c_render_settings_item_d0();
 }
 
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
+// IDA 0xb900: `this -= 32` then the 0xb8d0 body verbatim (`static_getCreator`, `Creator::getClassName`); same result.
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0xb900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn get_class_name_thunk_32(was_constructed: bool) -> &'static str {
+    CRenderSettingsItem::get_class_name(was_constructed)
 }
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 // was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
+// IDA 0xb910: `this -= 36` then the 0xb8b8 body verbatim; no adjustment in Rust.
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem() [0xb910]")]
-pub fn stub_0xb910() -> ! {
-    todo!("0xb910 __ZThn36_N19CRenderSettingsItemD1Ev")
+pub fn c_render_settings_item_d1_thunk_36() {
+    c_render_settings_item_d1();
 }
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 // was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
+// IDA 0xb918: `this -= 36`, D1, then `operator delete`; Box/Arc Drop covers the free.
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem() [0xb918]")]
-pub fn stub_0xb918() -> ! {
-    todo!("0xb918 __ZThn36_N19CRenderSettingsItemD0Ev")
+pub fn c_render_settings_item_d0_thunk_36() {
+    c_render_settings_item_d0();
 }
 
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // type: int()
+// IDA 0xb930: thunk to the Creator D2; the creator holds no members with side effects. Rust Drop covers it; no explicit body.
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0xb930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+pub fn factory_product_creator_d1() {
 }
 
 // 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
 // type: int()
+// IDA 0xb934: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
-pub fn stub_0xb934() -> ! {
-    todo!("0xb934 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev")
+pub fn enum_desc_aa_samples_d1() {
 }
 
 // 0xb938 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev
 // type: int __fastcall(int)
+// IDA 0xb938: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc() [0xb938]")]
-pub fn stub_0xb938() -> ! {
-    todo!("0xb938 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev")
+pub fn enum_desc_aa_samples_d0() {
 }
 
 // 0xb94c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xb94c: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xb94c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")]
-pub fn stub_0xb94c() -> ! {
-    todo!("0xb94c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc")
+pub fn enum_desc_aa_samples_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xb97c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xb97c: `rbx::any_cast<T>` the Variant payload, then `convertToItem`. The caller passes the already-cast enum value. Same shape as rbx_reflection::generated::stub_0xb97c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xb97c() -> ! {
-    todo!("0xb97c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_aa_samples_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xb99c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
+// IDA 0xb99c: bounds-check the index against the count (disasm 0xb99c: `CMP [R0,#0x28],R1`, table store from `[R0,#0x90]` on hit, else 0); writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xb99c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xb99c() -> ! {
-    todo!("0xb99c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_aa_samples_convert_to_value() {
 }
 
 // 0xb9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xb9f8: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xb9f8.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xb9f8() -> ! {
-    todo!("0xb9f8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs")
+pub fn enum_desc_aa_samples_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbb3c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
 // type: int()
+// IDA 0xbb3c: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
-pub fn stub_0xbb3c() -> ! {
-    todo!("0xbb3c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev")
+pub fn enum_desc_graphics_mode_d1() {
 }
 
 // 0xbb40 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev
 // type: int __fastcall(int)
+// IDA 0xbb40: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc() [0xbb40]")]
-pub fn stub_0xbb40() -> ! {
-    todo!("0xbb40 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev")
+pub fn enum_desc_graphics_mode_d0() {
 }
 
 // 0xbb54 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xbb54: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xbb54.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")]
-pub fn stub_0xbb54() -> ! {
-    todo!("0xbb54 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc")
+pub fn enum_desc_graphics_mode_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbb84 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xbb84: `rbx::any_cast<T>` the Variant payload (disasm 0xbb84: any_cast + `convertToItem`), then `convertToItem`. The caller passes the already-cast enum value.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xbb84() -> ! {
-    todo!("0xbb84 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_graphics_mode_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbba4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
+// IDA 0xbba4: same `convertToValue(index, Variant&)` instantiation as 0xb99c; writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xbba4.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xbba4() -> ! {
-    todo!("0xbba4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_graphics_mode_convert_to_value() {
 }
 
 // 0xbc00 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xbc00: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xbc00.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xbc00() -> ! {
-    todo!("0xbc00 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs")
+pub fn enum_desc_graphics_mode_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
 // type: int()
+// IDA 0xbd44: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
-pub fn stub_0xbd44() -> ! {
-    todo!("0xbd44 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev")
+pub fn enum_desc_frame_rate_manager_mode_d1() {
 }
 
 // 0xbd48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // type: int __fastcall(int)
+// IDA 0xbd48: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc() [0xbd48]")]
-pub fn stub_0xbd48() -> ! {
-    todo!("0xbd48 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev")
+pub fn enum_desc_frame_rate_manager_mode_d0() {
 }
 
 // 0xbd5c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xbd5c: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xbd5c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")]
-pub fn stub_0xbd5c() -> ! {
-    todo!("0xbd5c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc")
+pub fn enum_desc_frame_rate_manager_mode_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbd8c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xbd8c: `rbx::any_cast<T>` the Variant payload, then `convertToItem`. The caller passes the already-cast enum value.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xbd8c() -> ! {
-    todo!("0xbd8c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_frame_rate_manager_mode_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbdac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
+// IDA 0xbdac: same `convertToValue(index, Variant&)` instantiation as 0xb99c; writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xbdac.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xbdac() -> ! {
-    todo!("0xbdac __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_frame_rate_manager_mode_convert_to_value() {
 }
 
 // 0xbe08 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xbe08: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xbe08.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xbe08() -> ! {
-    todo!("0xbe08 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs")
+pub fn enum_desc_frame_rate_manager_mode_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xbf4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
 // type: int()
+// IDA 0xbf4c: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_0xbf4c() -> ! {
-    todo!("0xbf4c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev")
+pub fn enum_desc_antialiasing_mode_d1() {
 }
 
 // 0xbf50 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev
 // type: int __fastcall(int)
+// IDA 0xbf50: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc() [0xbf50]")]
-pub fn stub_0xbf50() -> ! {
-    todo!("0xbf50 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev")
+pub fn enum_desc_antialiasing_mode_d0() {
 }
 
 // 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
