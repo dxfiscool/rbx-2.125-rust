@@ -10,6 +10,52 @@ use rbx_core::SharedPtr;
 use crate::generated_165::BlockCapture;
 use crate::generated_165::stub_0x1cc1c as home_url_for_button_tag;
 use crate::generated_bg_1::LoginViewState;
+use std::collections::HashMap;
+
+/// Host-side `AboutController` state (AboutController.m, IDA 0x20468..0x20cb4).
+/// UIKit views live on the platform side; only the observable latches are
+/// modeled here.
+#[derive(Debug, Clone, Default)]
+pub struct AboutState {
+    /// Settings window frame x/y/w/h (IDA 0x20512/0x2056c; cf. 0x1a970).
+    pub window_frame: [f32; 4],
+    /// `agreementWebView.hidden = YES` at load (IDA 0x2068e).
+    pub agreement_hidden: bool,
+    /// Agreement scroll view disabled (IDA 0x206bc..0x206ce).
+    pub agreement_scroll_disabled: bool,
+    /// Localized `Agreements.html` loaded into the web view (IDA
+    /// 0x2071e..0x208a2).
+    pub agreement_html_loaded: bool,
+    /// Terms/Licensing/Privacy/And replacements (IDA 0x2077a..0x2083c).
+    pub replacements: HashMap<String, String>,
+    /// `CFBundleVersion` stamp (IDA 0x208bc..0x208ee).
+    pub version_text: Option<String>,
+    /// `RbxBaseUrl`/`RbxBaseMobileUrl` domain text (IDA 0x20924..0x20954).
+    pub domain_text: Option<String>,
+    /// `AboutWord` nav title (IDA 0x2096c..0x209b2).
+    pub nav_title: Option<String>,
+    /// `CloseWord` button title (IDA 0x209c8..0x209f8).
+    pub close_title: Option<String>,
+    /// `ClearCookiesWord` button title (IDA 0x20a0e..0x20a34).
+    pub clear_cookies_title: Option<String>,
+    /// `LegalText` view text (IDA 0x20a48..0x20a6e).
+    pub legal_text: Option<String>,
+    /// Last `setBounds:` pushed to the superview (IDA 0x20ab8..0x20af4).
+    pub last_bounds_set: Option<[f32; 4]>,
+    /// Agreement web view unhidden on finish (IDA 0x20b10..0x20b24).
+    pub agreement_visible: bool,
+    /// `AboutToAgreementSegue` segue + URL (IDA 0x20b9c/0x20bfa..0x20c10).
+    pub segue: Option<(String, String)>,
+    /// `dismissViewControllerAnimated:` ran (IDA 0x20c24).
+    pub dismissed: bool,
+    /// `clearAllRobloxCookie` ran (IDA 0x20c46).
+    pub cookies_cleared: bool,
+    /// Last `RobloxAlertWithMessage:` key (IDA 0x20cb0).
+    pub last_alert: Option<String>,
+    /// Remaining outlet handles by ivar name.
+    pub outlets: HashMap<String, Option<u32>>,
+    pub view_loaded: bool,
+}
 
 // 0x1f4a0 — ___destroy_helper_block_306
 #[doc(alias = "___destroy_helper_block_306")]
@@ -662,175 +708,284 @@ pub fn stub_0x20268(state: &LoginViewState) -> Option<u32> {
 // 0x20278 — -[LoginViewController setPlayNowLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setPlayNowLabel:]")]
-pub fn stub_0x20278() -> ! {
-    todo!("0x20278 -[LoginViewController setPlayNowLabel:]")
+pub fn stub_0x20278(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20278 `-[LoginViewController setPlayNowLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("playNowLabel".to_string(), view);
 }
 
 // 0x2029c — -[LoginViewController versionLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController versionLabel]")]
-pub fn stub_0x2029c() -> ! {
-    todo!("0x2029c -[LoginViewController versionLabel]")
+pub fn stub_0x2029c(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x2029c `-[LoginViewController versionLabel]`: GET (disasm
+    // `_versionLabel` IVAR load); the handle — the text is `version_text`
+    // (cf. 0x1e2ec).
+    state.outlets.get("versionLabel").copied().flatten()
 }
 
 // 0x202ac — -[LoginViewController setVersionLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setVersionLabel:]")]
-pub fn stub_0x202ac() -> ! {
-    todo!("0x202ac -[LoginViewController setVersionLabel:]")
+pub fn stub_0x202ac(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x202ac `-[LoginViewController setVersionLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("versionLabel".to_string(), view);
 }
 
 // 0x202d0 — __GLOBAL__I_a_5
 #[doc(alias = "global constructor keyed to_a_5")]
-pub fn stub_0x202d0() -> ! {
-    todo!("0x202d0 global constructor keyed to_a_5")
+pub fn stub_0x202d0() {
+    // IDA 0x202d0 `__GLOBAL__I_a_5`: same `generic_category` x2 +
+    // `system_category` merged-globals init as 0x1d870 (disasm GLOBAL;
+    // cf. 0x16e4c). Host error categories need no init beyond `std::io`.
 }
 
 // 0x20468 — -[AboutController initWithCoder:]
 // type: AboutController *__cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController initWithCoder:]")]
-pub fn stub_0x20468() -> ! {
-    todo!("0x20468 -[AboutController initWithCoder:]")
+pub fn stub_0x20468(is_pad: bool, screen_bounds: [f32; 4]) -> AboutState {
+    // IDA 0x20468 `-[AboutController initWithCoder:]`: super
+    // `RobloxPageViewController` init (0x20486..0x20494); on iPad the
+    // frame is 540x508 at origin (0x204fc..0x20518), otherwise the
+    // main-screen bounds (0x20544..0x2056c; cf. 0x1a970).
+    AboutState {
+        window_frame: if is_pad { [0.0, 0.0, 540.0, 508.0] } else { screen_bounds },
+        ..AboutState::default()
+    }
 }
 
 // 0x2057c — -[AboutController dealloc]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController dealloc]")]
-pub fn stub_0x2057c() -> ! {
-    todo!("0x2057c -[AboutController dealloc]")
+pub fn stub_0x2057c(state: &mut AboutState) {
+    // IDA 0x2057c `-[AboutController dealloc]`: releases the seven
+    // outlets (`versionLabel`, `agreementWebView`, `navigationTitle`,
+    // `closeButton`, `legalTextView`, `domainName`, `clearCookies` —
+    // 0x205a0..0x20618) then super dealloc (0x20630..0x2063a, host Drop
+    // glue). The owned state folds back to default.
+    *state = AboutState::default();
 }
 
 // 0x20644 — -[AboutController viewDidLoad]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidLoad]")]
-pub fn stub_0x20644() -> ! {
-    todo!("0x20644 -[AboutController viewDidLoad]")
+pub fn stub_0x20644(state: &mut AboutState, has_agreements: bool, is_tablet: bool, bundle_version: &str, domain: &str) {
+    // IDA 0x20644 `-[AboutController viewDidLoad]`: super (0x20664..0x2066e),
+    // hide agreement view + disable its scroll (0x2068e..0x206ce), load
+    // and localize `Agreements.html` (0x206f2..0x208a2),
+    // `CFBundleVersion` stamp (0x208bc..0x208ee), `RbxBaseUrl` on tablets
+    // else `RbxBaseMobileUrl` (0x2090e..0x20954), About/Close/ClearCookies
+    // titles + legal text (0x2096c..0x20a6e).
+    state.agreement_hidden = true;
+    state.agreement_scroll_disabled = true;
+    if has_agreements {
+        state.agreement_html_loaded = true;
+        for (from, to) in [
+            ("Terms of Service", "TermsOfService"),
+            ("Licensing Agreement", "LicensingAgreement"),
+            ("Privacy Policy", "PrivacyPolicy"),
+            ("and", "AndWord"),
+        ] {
+            state.replacements.insert(from.to_string(), to.to_string());
+        }
+    }
+    state.version_text = Some(bundle_version.to_string());
+    state.domain_text = Some(domain.to_string());
+    let _ = is_tablet;
+    state.nav_title = Some("AboutWord".to_string());
+    state.close_title = Some("CloseWord".to_string());
+    state.clear_cookies_title = Some("ClearCookiesWord".to_string());
+    state.legal_text = Some("LegalText".to_string());
+    state.view_loaded = true;
 }
 
 // 0x20a7c — -[AboutController viewWillAppear:]
 // type: void __cdecl(AboutController *self, SEL, char)
 #[doc(alias = "-[AboutController viewWillAppear:]")]
-pub fn stub_0x20a7c() -> ! {
-    todo!("0x20a7c -[AboutController viewWillAppear:]")
+pub fn stub_0x20a7c(state: &mut AboutState, animated: bool) {
+    // IDA 0x20a7c `-[AboutController viewWillAppear:]`: super
+    // `RobloxPageViewController` call (0x20a9c..0x20aa6, host UIKit), then
+    // `superview.setBounds(window.frame)` (0x20ab8..0x20af4; cf. 0x1b224).
+    let _ = animated;
+    state.last_bounds_set = Some(state.window_frame);
 }
 
 // 0x20b00 — -[AboutController webViewDidFinishLoad:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController webViewDidFinishLoad:]")]
-pub fn stub_0x20b00() -> ! {
-    todo!("0x20b00 -[AboutController webViewDidFinishLoad:]")
+pub fn stub_0x20b00(state: &mut AboutState, is_agreement: bool) {
+    // IDA 0x20b00 `-[AboutController webViewDidFinishLoad:]`: when the
+    // finished view is the agreement view, unhides it (0x20b10..0x20b24).
+    if is_agreement {
+        state.agreement_hidden = false;
+        state.agreement_visible = true;
+    }
 }
 
 // 0x20b28 — -[AboutController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(AboutController *self, SEL, id, id, int)
 #[doc(alias = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_0x20b28() -> ! {
-    todo!("0x20b28 -[AboutController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_0x20b28(state: &mut AboutState, url: Option<&str>) -> bool {
+    // IDA 0x20b28 `-[AboutController
+    // webView:shouldStartLoadWithRequest:navigationType:]`: missing URL
+    // allows the load (0x20b56..0x20baa); a `file` URL allows it
+    // (0x20b72..0x20bae); anything else segues to the agreement viewer
+    // and cancels the load (0x20b80..0x20ba0).
+    match url {
+        None => true,
+        Some(u) if u.contains("file") => true,
+        Some(u) => {
+            state.segue = Some(("AboutToAgreementSegue".to_string(), u.to_string()));
+            false
+        }
+    }
 }
 
 // 0x20bb0 — -[AboutController prepareForSegue:sender:]
 // type: void __cdecl(AboutController *self, SEL, id, id)
 #[doc(alias = "-[AboutController prepareForSegue:sender:]")]
-pub fn stub_0x20bb0() -> ! {
-    todo!("0x20bb0 -[AboutController prepareForSegue:sender:]")
+pub fn stub_0x20bb0(state: &mut AboutState, identifier: &str, sender_url: &str) {
+    // IDA 0x20bb0 `-[AboutController prepareForSegue:sender:]`: the
+    // `AboutToAgreementSegue` destination takes the sender as its URL
+    // (0x20bc6..0x20c10); other identifiers are no-ops.
+    if identifier == "AboutToAgreementSegue" {
+        state.segue = Some((identifier.to_string(), sender_url.to_string()));
+    }
 }
 
 // 0x20c14 — -[AboutController closeButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController closeButtonPressed:]")]
-pub fn stub_0x20c14() -> ! {
-    todo!("0x20c14 -[AboutController closeButtonPressed:]")
+pub fn stub_0x20c14(state: &mut AboutState) {
+    // IDA 0x20c14 `-[AboutController closeButtonPressed:]`:
+    // `dismissViewControllerAnimated:1 completion:0` (0x20c24, host UIKit).
+    state.dismissed = true;
 }
 
 // 0x20c28 — -[AboutController clearCookiesButtonPressed:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController clearCookiesButtonPressed:]")]
-pub fn stub_0x20c28() -> ! {
-    todo!("0x20c28 -[AboutController clearCookiesButtonPressed:]")
+pub fn stub_0x20c28(state: &mut AboutState) {
+    // IDA 0x20c28 `-[AboutController clearCookiesButtonPressed:]`:
+    // `clearAllRobloxCookie` (0x20c46), then `RobloxAlertWithMessage:`
+    // with the localized `CookiesClearedMessage` string (0x20c6e..0x20cb0).
+    state.cookies_cleared = true;
+    state.last_alert = Some("CookiesClearedMessage".to_string());
 }
 
 // 0x20cb4 — -[AboutController viewDidUnload]
 // type: void __cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController viewDidUnload]")]
-pub fn stub_0x20cb4() -> ! {
-    todo!("0x20cb4 -[AboutController viewDidUnload]")
+pub fn stub_0x20cb4(state: &mut AboutState) {
+    // IDA 0x20cb4 `-[AboutController viewDidUnload]`: nils `domainName`
+    // and `clearCookies` via setters (0x20ccc..0x20ce0), then super
+    // `viewDidUnload` (0x20cf8..0x20d02, host UIKit).
+    state.outlets.remove("domainName");
+    state.outlets.remove("clearCookies");
 }
 
 // 0x20d0c — -[AboutController navigationTitle]
 // type: UINavigationItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController navigationTitle]")]
-pub fn stub_0x20d0c() -> ! {
-    todo!("0x20d0c -[AboutController navigationTitle]")
+pub fn stub_0x20d0c(state: &AboutState) -> Option<u32> {
+    // IDA 0x20d0c `-[AboutController navigationTitle]`: GET (disasm
+    // `_navigationTitle` IVAR load); the title is `nav_title` (cf.
+    // 0x2096c).
+    state.outlets.get("navigationTitle").copied().flatten()
 }
 
 // 0x20d1c — -[AboutController setNavigationTitle:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setNavigationTitle:]")]
-pub fn stub_0x20d1c() -> ! {
-    todo!("0x20d1c -[AboutController setNavigationTitle:]")
+pub fn stub_0x20d1c(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20d1c `-[AboutController setNavigationTitle:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("navigationTitle".to_string(), view);
 }
 
 // 0x20d40 — -[AboutController closeButton]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController closeButton]")]
-pub fn stub_0x20d40() -> ! {
-    todo!("0x20d40 -[AboutController closeButton]")
+pub fn stub_0x20d40(state: &AboutState) -> Option<u32> {
+    // IDA 0x20d40 `-[AboutController closeButton]`: GET (disasm
+    // `_closeButton` IVAR load); the title is `close_title` (cf. 0x209c8).
+    state.outlets.get("closeButton").copied().flatten()
 }
 
 // 0x20d50 — -[AboutController setCloseButton:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setCloseButton:]")]
-pub fn stub_0x20d50() -> ! {
-    todo!("0x20d50 -[AboutController setCloseButton:]")
+pub fn stub_0x20d50(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20d50 `-[AboutController setCloseButton:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("closeButton".to_string(), view);
 }
 
 // 0x20d74 — -[AboutController clearCookies]
 // type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController clearCookies]")]
-pub fn stub_0x20d74() -> ! {
-    todo!("0x20d74 -[AboutController clearCookies]")
+pub fn stub_0x20d74(state: &AboutState) -> Option<u32> {
+    // IDA 0x20d74 `-[AboutController clearCookies]`: GET (disasm
+    // `_clearCookies` IVAR load); the title is `clear_cookies_title`
+    // (cf. 0x20a0e).
+    state.outlets.get("clearCookies").copied().flatten()
 }
 
 // 0x20d84 — -[AboutController setClearCookies:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setClearCookies:]")]
-pub fn stub_0x20d84() -> ! {
-    todo!("0x20d84 -[AboutController setClearCookies:]")
+pub fn stub_0x20d84(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20d84 `-[AboutController setClearCookies:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("clearCookies".to_string(), view);
 }
 
 // 0x20da8 — -[AboutController legalTextView]
 // type: UITextView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController legalTextView]")]
-pub fn stub_0x20da8() -> ! {
-    todo!("0x20da8 -[AboutController legalTextView]")
+pub fn stub_0x20da8(state: &AboutState) -> Option<u32> {
+    // IDA 0x20da8 `-[AboutController legalTextView]`: GET (disasm
+    // `_legalTextView` IVAR load); the text is `legal_text` (cf. 0x20a48).
+    state.outlets.get("legalTextView").copied().flatten()
 }
 
 // 0x20db8 — -[AboutController setLegalTextView:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setLegalTextView:]")]
-pub fn stub_0x20db8() -> ! {
-    todo!("0x20db8 -[AboutController setLegalTextView:]")
+pub fn stub_0x20db8(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20db8 `-[AboutController setLegalTextView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("legalTextView".to_string(), view);
 }
 
 // 0x20ddc — -[AboutController versionLabel]
 // type: UILabel *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController versionLabel]")]
-pub fn stub_0x20ddc() -> ! {
-    todo!("0x20ddc -[AboutController versionLabel]")
+pub fn stub_0x20ddc(state: &AboutState) -> Option<u32> {
+    // IDA 0x20ddc `-[AboutController versionLabel]`: GET (disasm
+    // `_versionLabel` IVAR load); the text is `version_text` (cf.
+    // 0x208bc).
+    state.outlets.get("versionLabel").copied().flatten()
 }
 
 // 0x20dec — -[AboutController setVersionLabel:]
 // type: void __cdecl(AboutController *self, SEL, id)
 #[doc(alias = "-[AboutController setVersionLabel:]")]
-pub fn stub_0x20dec() -> ! {
-    todo!("0x20dec -[AboutController setVersionLabel:]")
+pub fn stub_0x20dec(state: &mut AboutState, view: Option<u32>) {
+    // IDA 0x20dec `-[AboutController setVersionLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("versionLabel".to_string(), view);
 }
 
 // 0x20e10 — -[AboutController agreementWebView]
 // type: UIWebView *__cdecl(AboutController *self, SEL)
 #[doc(alias = "-[AboutController agreementWebView]")]
-pub fn stub_0x20e10() -> ! {
-    todo!("0x20e10 -[AboutController agreementWebView]")
+pub fn stub_0x20e10(state: &AboutState) -> Option<u32> {
+    // IDA 0x20e10 `-[AboutController agreementWebView]`: GET (disasm
+    // `_agreementWebView` IVAR load); visibility tracked by
+    // `agreement_hidden`/`agreement_visible` (cf. 0x20644/0x20b00).
+    state.outlets.get("agreementWebView").copied().flatten()
 }
 
 // 0x20e20 — -[AboutController setAgreementWebView:]
