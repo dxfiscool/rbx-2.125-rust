@@ -12,6 +12,22 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // and implement the algorithms 1:1; per-EA notes cite IDA addresses.
 // Deferred to a later batch (giant decompiles): `TIFFInitPixarLog`
 // (0x1aa660), `PixarLogEncode` (0x1ab5c0), `PixarLogDecode` (0x1adc1c).
+// ---- Batch-4: predictor install/row codec + tif_read strip/tile cluster
+// (IDA 0x1b22b4..0x1b48d0, 28 fns) ----
+// Ports `PredictorVSetField`/`EncodeRow`/`DecodeTile`/`DecodeRow`,
+// `TIFFPredictorInit`/`PredictorSetup`* + `fpDiff`/`fpAcc`/`EncodeTile`/
+// `swabHorAcc*`/`PredictorPrintDir`, then the `tif_read.c` raw-I/O chain
+// `TIFFStartStrip`/`Swab*BitData`/`CheckRead`/`ReadBufferSetup`/
+// `ReadRawTile1`/`FillTile`/`ReadEncodedTile`/`ReadRawStrip1`/`FillStrip`/
+// `ReadTile`/`ReadEncodedStrip`/`DefaultStripSize`.
+// Hook model: predictor func slots hold typed `fn` hooks (parents live in
+// the tif-level `*_512`.. words — saved 1:1 by the `Setup*` installs); the
+// width-typed `hor*` neighbours ported in batch-3 keep their lane-slice
+// signatures and install via explicit `*_as_pfunc` adapters that model
+// the C function-pointer pun (`decodepfunc = horAcc16`, IDA `0x1b2a38`).
+// Out-of-batch callees (`TIFFCheckTile`, `TIFFComputeTile`,
+// `TIFFVStripSize`, `TIFFReverseBits`, client seek/read procs) are
+// `Option<...Hook>` fields: `None` panics like a null C call would.
 
 /// zlib version string the binary passes to `deflateInit_`/`inflateInit_`
 /// (IDA `0x1adba8`, `0x1b0c00`).
@@ -38,6 +54,27 @@ pub const TIFFTAG_PIXARLOGQUALITY: u32 = 31739;
 /// `SampleFormat` tag stored by `PixarLogVSetField` (IDA `0x1ab39c`).
 #[doc(alias = "TIFF::TIFFTAG_SAMPLEFORMAT")]
 pub const TIFFTAG_SAMPLEFORMAT: u32 = 339;
+/// `tif_flags` bit selecting the `swabHorAcc*` pre-swap over plain
+/// `horAcc*` (IDA `0x1b2a90`/`0x1b2b40`); name per libtiff `TIFF_SWAB`
+/// [INFERENCE].
+#[doc(alias = "TIFF::TIFF_SWAB")]
+pub const TIFF_FLAG_SWAB: u32 = 0x0080;
+/// `tif_flags` bit selecting bit-reversal of freshly read data
+/// (IDA `0x1b4080`, `0x1b418c`); name by value [INFERENCE].
+pub const TIFF_FLAG_BITREV_100: u32 = 0x0100;
+/// `tif_flags` bit for malloc-owned raw buffer, freed before reuse
+/// (IDA `0x1b3dd8`, `0x1b4088`); name per libtiff `TIFF_MYBUFFER`
+/// [INFERENCE].
+pub const TIFF_FLAG_MYBUFFER: u32 = 0x0200;
+/// `tif_flags` bit set once strip/tile setup ran (IDA `0x1b3b2c`,
+/// `0x1b41c0`); name by value [INFERENCE: libtiff internal setup bit].
+pub const TIFF_FLAG_SETUP_20: u32 = 0x0020;
+/// `tif_flags` bit selecting the memory-mapped raw path (IDA `0x1b3ed4`,
+/// `0x1b4080`); name by value [INFERENCE].
+pub const TIFF_FLAG_MAPPED_800: u32 = 0x0800;
+/// `tif_flags` bit for no-raw-read mode (assert text at IDA `0x1b3da4`).
+#[doc(alias = "TIFF::TIFF_NOREADRAW")]
+pub const TIFF_FLAG_NOREADRAW: u32 = 0x20000;
 
 /// zlib status codes observed at IDA `0x1ab538`..`0x1ab5a4`: the post-encode
 /// pump loops `deflate(Z_FINISH)` until `Z_STREAM_END` and errors on any
@@ -54,8 +91,43 @@ pub const ZLIB_FINISH: i32 = 4;
 pub type PixarLogParentGet = fn(&TiffCodec, u32, &mut i32) -> i32;
 pub type PixarLogParentSet = fn(&mut TiffCodec, u32, i32) -> i32;
 pub type PredictorParentGet = fn(&TiffCodec, u32, &mut u16) -> i32;
-/// Null post-decode hook (IDA `0x1b3b90`).
-pub type NoPostDecodeHook = fn();
+/// Post-decode hook (`tif_postdecode`, word `+624`): `(tif, buf, cc)`
+/// shape per the `ReadEncodedStrip`/`ReadEncodedTile` call sites (IDA
+/// `0x1b48b0`, `0x1b434c`); the null install ignores all three (IDA
+/// `0x1b3b90`).
+pub type NoPostDecodeHook = fn(&TiffCodec, &mut [u8]);
+/// Byte-window row funcs for the `encodepfunc`/`decodepfunc` slots
+/// (`sp+24`/`sp+40`, IDA `0x1b2418`, `0x1b2654`).
+pub type PredictorPFunc = fn(&TiffCodec, &mut [u8]);
+/// Saved parent row decoder (`sp+28`, IDA `0x1b2638`).
+pub type PredictorParentRow = fn(&TiffCodec, &mut [u8]) -> i32;
+/// Saved parent row/strip/tile coders (`sp+12`/`+16`/`+20`/`+32`/`+36`,
+/// IDA `0x1b241c`, `0x1b24d4`, `0x1b34fc`); `buf.len()` carries `cc`, so
+/// the trailing sample tag is the only extra arg.
+pub type PredictorParentCode4 = fn(&TiffCodec, &mut [u8], u16) -> i32;
+/// Predictor parent setter (`sp+48` chain, IDA `0x1b2334`); mutable because
+/// the installed `PredictorVSetField` port takes `&mut TiffCodec`.
+pub type PredictorVSetParent = fn(&mut TiffCodec, u32, u16) -> i32;
+/// Predictor parent print hook (`sp+52` chain, IDA `0x1b3adc`).
+pub type PredictorPrintParent = fn(&TiffCodec, &mut String, u32) -> i32;
+/// Saved parent setup hooks (`sp+56`/`sp+60`, IDA `0x1b28c0`/`0x1b29f4`).
+pub type PredictorSetupParent = fn(&mut TiffCodec) -> i32;
+/// Tif-level setup/seek hooks (words `+488`/`+492`, IDA `0x1b3b1c`/`0x1b3b88`).
+pub type TiffSetupHook = fn(&mut TiffCodec) -> i32;
+pub type TiffSeekHook = fn(&mut TiffCodec, u16) -> i32;
+/// Tif-level row/strip/tile codec hooks (words `+512`..`+532`).
+pub type TiffRowDecode = fn(&TiffCodec, &mut [u8]) -> i32;
+pub type TiffRowCode4 = fn(&TiffCodec, &mut [u8], u16) -> i32;
+/// Client seek/read procs (words `+612`/`+604`, IDA `0x1b3f48`..`0x1b3f70`).
+pub type TiffSeekProc = fn(u32, u32) -> u32;
+pub type TiffReadProc = fn(u32, &mut [u8]) -> usize;
+/// Out-of-batch helpers called by the read cluster (real EAs elsewhere;
+/// installed by tests/callers, `None` panics like a null C call would).
+pub type CheckTileHook = fn(&TiffCodec, u32, u32, u32, u16) -> i32;
+pub type ComputeTileHook = fn(&TiffCodec, u32, u32, u32, u16) -> u32;
+pub type VStripSizeHook = fn(&TiffCodec, u32) -> u32;
+pub type ReverseBitsHook = fn(&mut [u8]);
+pub type DefaultStripSizeHook = fn(&TiffCodec) -> i32;
 
 /// Minimal zlib stream: the `z_stream` words at codec-state `+64` that the
 /// decompiles wire up — `next_in`/`avail_in` at `+64`/`+68` (IDA `0x1b0af8`),
@@ -179,6 +251,22 @@ pub struct PredictorState {
     pub saved_56: u32,
     /// `+60`: saved vector → `tif[124]` (IDA `0x1b21f4`).
     pub saved_60: u32,
+    /// `+8`: row size in samples (`rowsize`, IDA `0x1b24e0`).
+    pub rowsize_8: u32,
+    /// `+12`/`+16`/`+20`: saved parent encode hooks, copied from
+    /// `tif+516`/`+524`/`+532` (IDA `0x1b292c`..`0x1b2990`).
+    pub encoderow_12: Option<PredictorParentCode4>,
+    pub encodestrip_16: Option<PredictorParentCode4>,
+    pub encodetile_20: Option<PredictorParentCode4>,
+    /// `+24`: horizontal differencer (IDA `0x1b23c0`, `0x1b2914`).
+    pub encodepfunc_24: Option<PredictorPFunc>,
+    /// `+28`/`+32`/`+36`: saved parent decode hooks, copied from
+    /// `tif+512`/`+520`/`+528` (IDA `0x1b2a60`..`0x1b2a80`).
+    pub decoderow_28: Option<PredictorParentRow>,
+    pub decodestrip_32: Option<PredictorParentCode4>,
+    pub decodetile_36: Option<PredictorParentCode4>,
+    /// `+40`: horizontal accumulator (IDA `0x1b260c`, `0x1b2a48`).
+    pub decodepfunc_40: Option<PredictorPFunc>,
 }
 
 /// PackBits raw cursor: buffer pointer `+576` + remainder `+580`
@@ -256,6 +344,79 @@ pub struct TiffCodec {
     pub flushed_total: u64,
     /// Set by the `_TIFFSetDefaultCompressionState` tail (IDA `0x1ab4f4`).
     pub compression_defaulted: bool,
+    /// Predictor parent setter/print hooks (`sp+48`/`sp+52` chains,
+    /// IDA `0x1b2334`/`0x1b3adc`).
+    pub predictor_set_parent: Option<PredictorVSetParent>,
+    pub predictor_print_parent: Option<PredictorPrintParent>,
+    /// Tif-level field/print hooks overwritten by `TIFFPredictorInit`
+    /// (words `tif[161]`/`[160]`/`[162]`, IDA `0x1b2710`..`0x1b273c`).
+    pub tif_vgetfield_161: Option<PredictorParentGet>,
+    pub tif_vsetfield_160: Option<PredictorVSetParent>,
+    pub tif_printdir_162: Option<PredictorPrintParent>,
+    /// Saved parent setup hooks (`sp+56`/`sp+60`, IDA `0x1b28c0`/`0x1b29f4`).
+    pub predictor_setup_decode_parent: Option<PredictorSetupParent>,
+    pub predictor_setup_encode_parent: Option<PredictorSetupParent>,
+    /// Tif-level setup/seek hooks (words `+488`/`+492`, IDA `0x1b3b1c`).
+    pub setup_hook_488: Option<TiffSetupHook>,
+    pub seek_hook_492: Option<TiffSeekHook>,
+    /// Tif-level codec hooks (words `+512`..`+532`).
+    pub tif_decoderow_512: Option<TiffRowDecode>,
+    pub tif_encoderow_516: Option<TiffRowCode4>,
+    pub tif_decodestrip_520: Option<TiffRowCode4>,
+    pub tif_encodestrip_524: Option<TiffRowCode4>,
+    pub tif_decodetile_528: Option<TiffRowCode4>,
+    pub tif_encodetile_532: Option<TiffRowCode4>,
+    /// Tif setup hooks saved over by `TIFFPredictorInit` (words `+122`
+    /// /`+124`, IDA `0x1b2730`..`0x1b2760`).
+    pub tif_setup_decode_122: Option<PredictorSetupParent>,
+    pub tif_setup_encode_124: Option<PredictorSetupParent>,
+    /// Default-strip-size proc (word `+548`, IDA `0x1b48d0`).
+    pub default_strip_size_548: Option<DefaultStripSizeHook>,
+    /// Client procs (words `+612`/`+604`) + out-of-batch read helpers.
+    pub seek_proc_612: Option<TiffSeekProc>,
+    pub read_proc_604: Option<TiffReadProc>,
+    pub check_tile_hook: Option<CheckTileHook>,
+    pub compute_tile_hook: Option<ComputeTileHook>,
+    pub vstrip_size_hook: Option<VStripSizeHook>,
+    pub reverse_bits_hook: Option<ReverseBitsHook>,
+    /// Raw window bytes behind words `+568`/`+572`. `raw_base_142` stays
+    /// the C address cookie (unrepresentable in Rust; only nulled on free
+    /// per IDA `0x1b3de0`); `raw_bytes` is authoritative for the read path
+    /// and `raw_count_143` mirrors its length.
+    pub raw_bytes: Vec<u8>,
+    /// Raw cursor/count words (`+576`/`+580`) as offsets into `raw_bytes`
+    /// (IDA `0x1b3b58`..`0x1b3b74`); aliases the PackBits cursor words
+    /// under a different codec owner.
+    pub raw_cursor_576: u32,
+    pub raw_count_580: u32,
+    /// Memory-mapped file image (word `+584`; length = word `+588`).
+    pub mapped_584: Vec<u8>,
+    /// Strip byte counts (word `+180`, read by the `Fill*` bytecount load)
+    /// and tile/strip file offsets (word `+176`, read by the `ReadRaw*`
+    /// offset loads).
+    pub strip_bytecounts_180: Vec<u32>,
+    pub data_offsets_176: Vec<u32>,
+    /// Tile geometry operands (words `+64`/`+68`/`+56`, IDA `0x1b41c8`..).
+    pub tile_dim_64: u32,
+    pub tile_dim_68: u32,
+    pub img_dim_56: u32,
+    /// Strip geometry (words `+168`/`+96`, IDA `0x1b3b34`..`0x1b3b68`).
+    pub rows_per_strip_168: u32,
+    pub strip_row_factor_96: u32,
+    /// Fill-order word (`+90`, IDA `0x1b4080`); `+44` bit 2 selects the
+    /// predictor print (IDA `0x1b3a2c`).
+    pub fill_order_90: u16,
+    pub printdir_word_44: u32,
+    /// Current tile/strip + row/col words (`+476`/`+452`/`+444`/`+472`,
+    /// IDA `0x1b41d0`..; `u32::MAX` is the C `-1`).
+    pub cur_tile_476: u32,
+    pub cur_strip_452: u32,
+    pub cur_row_444: u32,
+    pub cur_col_472: u32,
+    /// Tile/strip count (word `+172`, IDA `0x1b42c4`/`0x1b47cc`) + read
+    /// size limit (word `+480`, IDA `0x1b42ac`).
+    pub strip_count_172: u32,
+    pub read_limit_480: u32,
 }
 
 
@@ -1036,6 +1197,15 @@ pub fn stub_0x1b219c(tif: &mut TiffCodec) -> i32 {
 /// word restores; when no predictor state is installed there is nothing to
 /// restore (the binary would read word 139's current occupant instead).
 fn predictor_cleanup_restore(tif: &mut TiffCodec) -> i32 {
+    if tif.predictor.is_some() {
+        // Batch-4: restore the callable hooks alongside the word restores
+        // (IDA `0x1b21d4`..`0x1b21f4` moves the same five vectors back).
+        tif.tif_vgetfield_161 = tif.predictor_get_parent;
+        tif.tif_vsetfield_160 = tif.predictor_set_parent;
+        tif.tif_printdir_162 = tif.predictor_print_parent;
+        tif.tif_setup_decode_122 = tif.predictor_setup_decode_parent;
+        tif.tif_setup_encode_124 = tif.predictor_setup_encode_parent;
+    }
     if let Some(sp) = tif.predictor.as_ref() {
         // IDA 0x1b21d4..0x1b21f4.
         tif.saved_161 = sp.saved_44;
@@ -1071,102 +1241,808 @@ pub fn stub_0x1b220c(tif: &TiffCodec, tag: u32, out: &mut u16) -> i32 {
     parent(tif, tag, out)
 }
 
+/// Batch-4 width adapters: the C `encodepfunc`/`decodepfunc` slots are
+/// byte-windowed (`TIFFVoidMethod`), while the batch-3 `horDiff16`/
+/// `horDiff32`/`horAcc16`/`horAcc32` ports take native lane slices. The C
+/// assignments (`decodepfunc = horAcc16`, IDA `0x1b2a38`) pun the pointer;
+/// each adapter makes the pun explicit by copying through an aligned lane
+/// buffer (the C original aliases the malloc'd window, which is suitably
+/// aligned; a Rust `&mut [u8]` window need not be).
+fn hor_diff_16_as_pfunc(tif: &TiffCodec, buf: &mut [u8]) {
+    assert!(buf.len() % 2 == 0, "horDiff16: misaligned window");
+    let mut lanes: Vec<u16> = buf
+        .chunks_exact(2)
+        .map(|c| u16::from_ne_bytes([c[0], c[1]]))
+        .collect();
+    stub_0x1b1cfc(tif, &mut lanes);
+    for (d, v) in buf.chunks_exact_mut(2).zip(lanes.iter()) {
+        d.copy_from_slice(&v.to_ne_bytes());
+    }
+}
+/// Adapter for `stub_0x1b1f48` (`horDiff32`, IDA `0x1b2910` install).
+fn hor_diff_32_as_pfunc(tif: &TiffCodec, buf: &mut [u8]) {
+    assert!(buf.len() % 4 == 0, "horDiff32: misaligned window");
+    let mut lanes: Vec<u32> = buf
+        .chunks_exact(4)
+        .map(|c| u32::from_ne_bytes([c[0], c[1], c[2], c[3]]))
+        .collect();
+    stub_0x1b1f48(tif, &mut lanes);
+    for (d, v) in buf.chunks_exact_mut(4).zip(lanes.iter()) {
+        d.copy_from_slice(&v.to_ne_bytes());
+    }
+}
+/// Adapter for `stub_0x1b1240` (`horAcc16`, IDA `0x1b2a38` install and the
+/// `decodepfunc == horAcc16` swab selection at IDA `0x1b2aa4`, which
+/// compares by this adapter's address).
+fn hor_acc_16_as_pfunc(tif: &TiffCodec, buf: &mut [u8]) {
+    assert!(buf.len() % 2 == 0, "horAcc16: misaligned window");
+    let mut lanes: Vec<u16> = buf
+        .chunks_exact(2)
+        .map(|c| u16::from_ne_bytes([c[0], c[1]]))
+        .collect();
+    stub_0x1b1240(tif, &mut lanes);
+    for (d, v) in buf.chunks_exact_mut(2).zip(lanes.iter()) {
+        d.copy_from_slice(&v.to_ne_bytes());
+    }
+}
+/// Adapter for `stub_0x1b1480` (`horAcc32`, IDA `0x1b2a44` install and the
+/// `decodepfunc == horAcc32` swab selection at IDA `0x1b2acc`).
+fn hor_acc_32_as_pfunc(tif: &TiffCodec, buf: &mut [u8]) {
+    assert!(buf.len() % 4 == 0, "horAcc32: misaligned window");
+    let mut lanes: Vec<u32> = buf
+        .chunks_exact(4)
+        .map(|c| u32::from_ne_bytes([c[0], c[1], c[2], c[3]]))
+        .collect();
+    stub_0x1b1480(tif, &mut lanes);
+    for (d, v) in buf.chunks_exact_mut(4).zip(lanes.iter()) {
+        d.copy_from_slice(&v.to_ne_bytes());
+    }
+}
+/// Adapter for `stub_0x1b2ba4` (`fpDiff`, IDA `0x1b295c` install): the C
+/// slot is void while `fpDiff` returns `cc`/0; callers ignore it.
+fn fp_diff_as_pfunc(tif: &TiffCodec, buf: &mut [u8]) {
+    let _ = stub_0x1b2ba4(tif, buf);
+}
+/// Shared body of `TIFFReadRawTile1` (IDA `0x1b3e84`) and
+/// `TIFFReadRawStrip1` (IDA `0x1b436c`): both assert no-`NOREADRAW`, take
+/// the mapped path under `0x800`, else the seek+read-proc path. `offset`
+/// is the strip/tile file offset (`+176`/`+180` table entry).
+fn read_raw_bytes(
+    tif: &mut TiffCodec,
+    offset: u32,
+    buf: &mut [u8],
+    module: &str,
+    self_name: &str,
+) -> isize {
+    let flags = tif.flags;
+    // `(tif->tif_flags&TIFF_NOREADRAW)==0` (tif_read.c:415/176).
+    if flags & TIFF_FLAG_NOREADRAW != 0 {
+        panic!("{self_name}: (tif->tif_flags&TIFF_NOREADRAW)==0");
+    }
+    let cc = buf.len();
+    // Mapped path.
+    if flags & TIFF_FLAG_MAPPED_800 != 0 {
+        let end = offset as usize + cc;
+        if end <= tif.mapped_584.len() {
+            buf.copy_from_slice(&tif.mapped_584[offset as usize..end]);
+            return cc as isize;
+        }
+        tif.last_error = Some(module.to_owned());
+        return -1;
+    }
+    // Seek + read-proc path.
+    let client = tif.client_data;
+    let seek = tif
+        .seek_proc_612
+        .expect("TIFFReadRaw: seek proc is NULL");
+    let read = tif.read_proc_604.expect("TIFFReadRaw: read proc is NULL");
+    if seek(client, offset) != offset || read(client, buf) != cc {
+        tif.last_error = Some(module.to_owned());
+        return -1;
+    }
+    cc as isize
+}
+
 // 0x1b22b4 — _PredictorVSetField
 #[doc(alias = "_PredictorVSetField")]
-pub fn stub_0x1b22b4() -> ! {
-    todo!("0x1b22b4 _PredictorVSetField")
+// IDA 0x1b22b4 (decompile): `sp = tif[139]` (`0x1b22bc`); null → 
+// `__assert_rtn(..., "sp != NULL")` (`0x1b22d0`..`0x1b22f0`); null
+// `sp->vsetparent` (`sp+48`, `0x1b22f4`) → `__assert_rtn(...,
+// "sp->vsetparent != NULL")` (`0x1b22fc`..`0x1b231c`); tag 317 stores the
+// value into `sp[0]`, sets `tif[3] |= 8` and `tif[11] |= 4`
+// (`0x1b233c`..`0x1b2358`); anything else chains to the parent setter
+// (`0x1b2334`).
+pub fn stub_0x1b22b4(tif: &mut TiffCodec, tag: u32, value: u16) -> i32 {
+    // IDA 0x1b22bc..0x1b22f0.
+    if tif.predictor.is_none() {
+        panic!("PredictorVSetField: sp != NULL");
+    }
+    // IDA 0x1b22f4..0x1b231c.
+    let parent = tif
+        .predictor_set_parent
+        .expect("PredictorVSetField: sp->vsetparent != NULL");
+    // IDA 0x1b2328..0x1b2334.
+    if tag != TIFFTAG_PREDICTOR {
+        return parent(tif, tag, value);
+    }
+    // IDA 0x1b233c..0x1b235c.
+    tif.predictor.as_mut().expect("sp").tag_0 = value as u32;
+    tif.flags |= 8;
+    tif.printdir_word_44 |= 4;
+    1
 }
 
 // 0x1b2378 — _PredictorEncodeRow
 #[doc(alias = "_PredictorEncodeRow")]
-pub fn stub_0x1b2378() -> ! {
-    todo!("0x1b2378 _PredictorEncodeRow")
+// IDA 0x1b2378 (decompile): `sp = *(tif+556)` (`0x1b2384`); null →
+// `__assert_rtn(..., "sp != NULL")` (`0x1b239c`..`0x1b23bc`); null
+// `sp->encodepfunc` (`sp+24`, `0x1b23c0`) → `__assert_rtn(...,
+// "sp->encodepfunc != NULL")` (`0x1b23c8`..`0x1b23e4`); null `sp->encoderow`
+// (`sp+12`, `0x1b23ec`) → `__assert_rtn(..., "sp->encoderow != NULL")`
+// (`0x1b240c`..`0x1b2410`); runs the differencer (`0x1b2418`), then the
+// saved parent row encoder with the sample tag (`0x1b241c`).
+pub fn stub_0x1b2378(tif: &TiffCodec, buf: &mut [u8], sample: u16) -> i32 {
+    // IDA 0x1b2384..0x1b23bc.
+    let sp = tif
+        .predictor
+        .as_ref()
+        .expect("PredictorEncodeRow: sp != NULL");
+    // IDA 0x1b23c0..0x1b23e4.
+    let pfunc = sp
+        .encodepfunc_24
+        .expect("PredictorEncodeRow: sp->encodepfunc != NULL");
+    // IDA 0x1b23ec..0x1b2410.
+    let encoderow = sp
+        .encoderow_12
+        .expect("PredictorEncodeRow: sp->encoderow != NULL");
+    // IDA 0x1b2418..0x1b241c.
+    pfunc(tif, buf);
+    encoderow(tif, buf, sample)
 }
 
 // 0x1b2460 — _PredictorDecodeTile
 #[doc(alias = "_PredictorDecodeTile")]
-pub fn stub_0x1b2460() -> ! {
-    todo!("0x1b2460 _PredictorDecodeTile")
+// IDA 0x1b2460 (decompile + disasm): `sp = *(tif+556)` (`0x1b246c`); null
+// → `__assert_rtn(..., "sp != NULL")` (`0x1b2484`..`0x1b24a4`); null
+// `sp->decodetile` (`sp+36`, `0x1b24a8`) → `__assert_rtn(...,
+// "sp->decodetile != NULL")` (`0x1b24b0`..`0x1b24d0`); runs the saved
+// parent tile decoder (`BLX R12`, `0x1b24d4`; entry `UXTH R3, R3` at
+// `0x1b2480` proves the 4th `sample` arg the decompile elides) and returns
+// 0 on failure (`0x1b24dc`..`0x1b2564`); `rowsize <= 0` →
+// `__assert_rtn(..., "rowsize > 0")` (`0x1b24e0`..`0x1b2508`); null
+// `sp->decodepfunc` (`sp+40`, `0x1b250c`) → `__assert_rtn(...,
+// "sp->decodepfunc != NULL")` (`0x1b252c`..`0x1b2530`); accumulates
+// rowsize windows until `cc` drains (`0x1b2548`..`0x1b255c`) and returns 1.
+pub fn stub_0x1b2460(tif: &TiffCodec, buf: &mut [u8], sample: u16) -> i32 {
+    // IDA 0x1b246c..0x1b24a4.
+    let sp = tif
+        .predictor
+        .as_ref()
+        .expect("PredictorDecodeTile: sp != NULL");
+    // IDA 0x1b24a8..0x1b24d0.
+    let decodetile = sp
+        .decodetile_36
+        .expect("PredictorDecodeTile: sp->decodetile != NULL");
+    // IDA 0x1b24d4..0x1b24dc.
+    if decodetile(tif, buf, sample) == 0 {
+        return 0;
+    }
+    // IDA 0x1b24e0..0x1b2508.
+    let rowsize = sp.rowsize_8 as usize;
+    if rowsize == 0 {
+        panic!("PredictorDecodeTile: rowsize > 0");
+    }
+    // IDA 0x1b250c..0x1b2530.
+    let decodepfunc = sp
+        .decodepfunc_40
+        .expect("PredictorDecodeTile: sp->decodepfunc != NULL");
+    // IDA 0x1b2548..0x1b255c.
+    let mut rest = buf.len();
+    let mut off = 0;
+    while rest > 0 {
+        let end = (off + rowsize).min(buf.len());
+        decodepfunc(tif, &mut buf[off..end]);
+        rest -= end - off;
+        off = end;
+    }
+    1
 }
 
 // 0x1b2598 — _PredictorDecodeRow
 #[doc(alias = "_PredictorDecodeRow")]
-pub fn stub_0x1b2598() -> ! {
-    todo!("0x1b2598 _PredictorDecodeRow")
+// IDA 0x1b2598 (decompile): `sp = *(tif+556)` (`0x1b25a4`); null →
+// `__assert_rtn(..., "sp != NULL")` (`0x1b25bc`..`0x1b25dc`); null
+// `sp->decoderow` (`sp+28`, `0x1b25e0`) → `__assert_rtn(...,
+// "sp->decoderow != NULL")` (`0x1b25e8`..`0x1b2604`); null `sp->decodepfunc`
+// (`sp+40`, `0x1b260c`) → `__assert_rtn(..., "sp->decodepfunc != NULL")`
+// (`0x1b262c`..`0x1b2630`); runs the saved parent row decoder
+// (`0x1b2638`), returning 0 on failure (`0x1b2640`..`0x1b2660`), else the
+// accumulator (`0x1b2654`) and 1 (`0x1b2658`).
+pub fn stub_0x1b2598(tif: &TiffCodec, buf: &mut [u8]) -> i32 {
+    // IDA 0x1b25a4..0x1b25dc.
+    let sp = tif
+        .predictor
+        .as_ref()
+        .expect("PredictorDecodeRow: sp != NULL");
+    // IDA 0x1b25e0..0x1b2604.
+    let decoderow = sp
+        .decoderow_28
+        .expect("PredictorDecodeRow: sp->decoderow != NULL");
+    // IDA 0x1b260c..0x1b2630.
+    let decodepfunc = sp
+        .decodepfunc_40
+        .expect("PredictorDecodeRow: sp->decodepfunc != NULL");
+    // IDA 0x1b2638..0x1b2660.
+    if decoderow(tif, buf) == 0 {
+        return 0;
+    }
+    decodepfunc(tif, buf);
+    1
 }
 
 // 0x1b2688 — _TIFFPredictorInit
 #[doc(alias = "_TIFFPredictorInit")]
-pub fn stub_0x1b2688() -> ! {
-    todo!("0x1b2688 _TIFFPredictorInit")
+// IDA 0x1b2688 (decompile): null `tif[139]` → `__assert_rtn(..., "sp != 0")`
+// (`0x1b269c`..`0x1b26bc`); `_TIFFMergeFieldInfo(tif, &predictFieldInfo, 1)`
+// failure reports `TIFFErrorExt(..., "TIFFPredictorInit")` and returns 0
+// (`0x1b26cc`..`0x1b26f0`); else saves the five codec vectors into
+// `sp+44`..`sp+60` while installing `PredictorVGetField`/`VSetField`/
+// `PrintDir`/`SetupDecode`/`SetupEncode` into `tif[161]`/`[160]`/`[162]`/
+// `[122]`/`[124]` (`0x1b2704`..`0x1b2760`), sets `sp[0] = 1` (predictor tag
+// none), zeroes `sp+24`/`sp+40` (func slots) and returns 1 (`0x1b2764`..).
+// FIDELITY: the static field-table merge only fails on malloc failure, so
+// under the file's abort-on-OOM convention it always succeeds and the `0`
+// path is unreachable.
+pub fn stub_0x1b2688(tif: &mut TiffCodec) -> i32 {
+    // IDA 0x1b2690..0x1b26bc.
+    if tif.predictor.is_none() {
+        panic!("TIFFPredictorInit: sp != 0");
+    }
+    // IDA 0x1b26cc (merge): always succeeds, see doc above.
+    // IDA 0x1b2704..0x1b2718: save `tif[161]` into `sp+44` and install
+    // `PredictorVGetField`; save `tif[160]` into `sp+48` and install
+    // `PredictorVSetField`.
+    tif.predictor_get_parent = tif.tif_vgetfield_161;
+    tif.tif_vgetfield_161 = Some(stub_0x1b220c);
+    tif.predictor_set_parent = tif.tif_vsetfield_160;
+    tif.tif_vsetfield_160 = Some(stub_0x1b22b4);
+    // IDA 0x1b271c..0x1b2740: save `tif[162]` into `sp+52` and install
+    // `PredictorPrintDir`; save `tif[122]` into `sp+56` and install
+    // `PredictorSetupDecode`.
+    tif.predictor_print_parent = tif.tif_printdir_162;
+    tif.tif_printdir_162 = Some(stub_0x1b3a08);
+    tif.predictor_setup_decode_parent = tif.tif_setup_decode_122;
+    tif.tif_setup_decode_122 = Some(stub_0x1b29d0);
+    // IDA 0x1b2744..0x1b2760: save `tif[124]` into `sp+60` and install
+    // `PredictorSetupEncode`.
+    tif.predictor_setup_encode_parent = tif.tif_setup_encode_124;
+    tif.tif_setup_encode_124 = Some(stub_0x1b289c);
+    // IDA 0x1b2764..0x1b2768: tag 1 (none); `sp+24`/`sp+40` zeroed.
+    // (The decompile zeroes only the pfunc slots; the row/tile parent
+    // slots are naturally `None` on fresh state.)
+    // // BUG (original at 0x1b2688): re-init chains onto itself — the
+    // installed `PredictorVSetField` is saved as its own parent, so a
+    // non-317 tag recurses; the port reproduces the self-chain.
+    let sp = tif.predictor.as_mut().expect("sp");
+    sp.tag_0 = 1;
+    sp.encodepfunc_24 = None;
+    sp.decodepfunc_40 = None;
+    // IDA 0x1b2754.
+    1
 }
 
 // 0x1b27a0 — _PredictorSetup
 #[doc(alias = "_PredictorSetup")]
-pub fn stub_0x1b27a0() -> ! {
-    todo!("0x1b27a0 _PredictorSetup")
+// IDA 0x1b27a0 (decompile): predictor 2 with bits-per-sample outside
+// {8, 16, 32} (`0x1b27b4`..`0x1b27f0`), any other predictor outside {1, 3}
+// (`0x1b27bc`..`0x1b282c`), or predictor 3 with sample format != 3 (IEEE
+// float, `0x1b2808`..`0x1b2814`) reports `TIFFErrorExt(...,
+// "PredictorSetup")` and returns 0 (`0x1b2838`..`0x1b2840`); predictor 1
+// returns 1 immediately (`0x1b27c4`..`0x1b27cc`); else `stride =
+// planar == 1 ? samples_per_pixel : 1` (`0x1b284c`..`0x1b2854`),
+// `rowsize = tiled ? TIFFTileRowSize : TIFFScanlineSize`
+// (`0x1b2860`..`0x1b2878`) and 1.
+// FIDELITY: `(tif+80)`/`(tif+82)` address the same directory words as the
+// existing `bits_per_sample`/`sample_format` fields [INFERENCE].
+pub fn stub_0x1b27a0(tif: &mut TiffCodec) -> i32 {
+    // IDA 0x1b27a8..0x1b27b4.
+    let tag = tif.predictor.as_ref().expect("PredictorSetup: sp").tag_0;
+    // IDA 0x1b27b4..0x1b27f0.
+    if tag == 2 {
+        match tif.bits_per_sample {
+            8 | 16 | 32 => {}
+            // IDA 0x1b27f0..0x1b2840.
+            _ => {
+                tif.last_error = Some("PredictorSetup".to_owned());
+                return 0;
+            }
+        }
+    } else if tag == 3 {
+        // IDA 0x1b2808..0x1b2814.
+        if tif.sample_format != 3 {
+            tif.last_error = Some("PredictorSetup".to_owned());
+            return 0;
+        }
+    } else {
+        // IDA 0x1b27bc..0x1b27cc.
+        if tag == 1 {
+            return 1;
+        }
+        tif.last_error = Some("PredictorSetup".to_owned());
+        return 0;
+    }
+    // IDA 0x1b284c..0x1b2854.
+    let stride = if tif.planar_config == 1 {
+        tif.samples_per_pixel as u32
+    } else {
+        1
+    };
+    let rowsize = if tif.flags & TIFF_FLAG_TILED != 0 {
+        // IDA 0x1b2868.
+        tif.tile_row_size
+    } else {
+        // IDA 0x1b2878.
+        tif.scanline_size
+    };
+    let sp = tif.predictor.as_mut().expect("sp");
+    sp.stride_4 = stride;
+    sp.rowsize_8 = rowsize;
+    // IDA 0x1b27cc.
+    1
 }
 
 // 0x1b289c — _PredictorSetupEncode
 #[doc(alias = "_PredictorSetupEncode")]
-pub fn stub_0x1b289c() -> ! {
-    todo!("0x1b289c _PredictorSetupEncode")
+// IDA 0x1b289c (decompile): the saved parent setup (`sp+60`, `0x1b28a4`)
+// or `PredictorSetup` (`0x1b28c0`) failing returns 0 (`0x1b29a4`); predictor
+// 2 selects `horDiff8`/`16`/`32` by bits-per-sample (`0x1b28d8`..`0x1b2914`,
+// unmatched widths install nothing, `LABEL_11`); predictor 3 installs
+// `fpDiff` (`0x1b294c`..`0x1b295c`); unless the row hook is already
+// `PredictorEncodeRow`, the current `tif+516`/`+524`/`+532` are saved into
+// `sp+12`/`+16`/`+20` while `PredictorEncodeRow`/`PredictorEncodeTile` are
+// installed (`0x1b2918`..`0x1b2998`); anything else returns 1 (`0x1b299c`).
+pub fn stub_0x1b289c(tif: &mut TiffCodec) -> i32 {
+    // IDA 0x1b28a4..0x1b28c0.
+    let setup_parent = tif
+        .predictor_setup_encode_parent
+        .expect("PredictorSetupEncode: sp->setupencode != NULL");
+    if setup_parent(tif) == 0 || stub_0x1b27a0(tif) == 0 {
+        // IDA 0x1b29a4.
+        return 0;
+    }
+    let tag = tif.predictor.as_ref().expect("sp").tag_0;
+    // IDA 0x1b28d4..0x1b2914.
+    if tag == 2 {
+        let slot = match tif.bits_per_sample {
+            8 => Some(stub_0x1b16c8 as PredictorPFunc),
+            16 => Some(hor_diff_16_as_pfunc as PredictorPFunc),
+            32 => Some(hor_diff_32_as_pfunc as PredictorPFunc),
+            // IDA LABEL_11 (0x1b28f0): install nothing.
+            _ => None,
+        };
+        if let Some(pfunc) = slot {
+            tif.predictor.as_mut().expect("sp").encodepfunc_24 = Some(pfunc);
+        }
+    } else if tag == 3 {
+        // IDA 0x1b295c.
+        tif.predictor.as_mut().expect("sp").encodepfunc_24 = Some(fp_diff_as_pfunc);
+    }
+    // IDA 0x1b2918..0x1b2998 (`PredictorEncodeRow` identity is by fn
+    // address, matching the C pointer comparison).
+    if tif.tif_encoderow_516 != Some(stub_0x1b2378) {
+        let old_row = tif.tif_encoderow_516;
+        let old_strip = tif.tif_encodestrip_524;
+        let old_tile = tif.tif_encodetile_532;
+        let sp = tif.predictor.as_mut().expect("sp");
+        sp.encoderow_12 = old_row;
+        sp.encodestrip_16 = old_strip;
+        sp.encodetile_20 = old_tile;
+        tif.tif_encoderow_516 = Some(stub_0x1b2378);
+        tif.tif_encodestrip_524 = Some(stub_0x1b336c);
+        tif.tif_encodetile_532 = Some(stub_0x1b336c);
+    }
+    // IDA 0x1b296c/0x1b299c.
+    1
 }
 
 // 0x1b29d0 — _PredictorSetupDecode
 #[doc(alias = "_PredictorSetupDecode")]
-pub fn stub_0x1b29d0() -> ! {
-    todo!("0x1b29d0 _PredictorSetupDecode")
+// IDA 0x1b29d0 (decompile): the saved parent setup (`sp+56`, `0x1b29d8`)
+// or `PredictorSetup` (`0x1b29f4`) failing returns 0 (`0x1b2b5c`); predictor
+// 2 selects `horAcc8`/`16`/`32` (`0x1b2a0c`..`0x1b2a48`, unmatched widths
+// install nothing); unless the row hook is already `PredictorDecodeRow`,
+// `tif+512`/`+520`/`+528` are saved into `sp+28`/`+32`/`+36` while
+// `PredictorDecodeRow`/`PredictorDecodeTile` are installed
+// (`0x1b2a4c`..`0x1b2a84`); with `TIFF_SWAB` (`tif+12 & 0x80`) a
+// `horAcc16`/`32` slot is wrapped with `swabHorAcc16`/`32`
+// (`0x1b2a90`..`0x1b2ae4`, compared by adapter address like the C pointer
+// comparison); predictor 3 installs `fpAcc` plus the same row/tile hooks
+// (`0x1b2aec`..`0x1b2b34`); either `SWAB` path (and only it) also installs
+// the null post-decode hook (`LABEL_22`, `0x1b2b4c`); returns 1.
+pub fn stub_0x1b29d0(tif: &mut TiffCodec) -> i32 {
+    // IDA 0x1b29d8..0x1b29f4.
+    let setup_parent = tif
+        .predictor_setup_decode_parent
+        .expect("PredictorSetupDecode: sp->setupdecode != NULL");
+    if setup_parent(tif) == 0 || stub_0x1b27a0(tif) == 0 {
+        // IDA 0x1b2b5c.
+        return 0;
+    }
+    let tag = tif.predictor.as_ref().expect("sp").tag_0;
+    if tag == 2 {
+        // IDA 0x1b2a0c..0x1b2a48.
+        let slot = match tif.bits_per_sample {
+            8 => Some(stub_0x1b0c78 as PredictorPFunc),
+            16 => Some(hor_acc_16_as_pfunc as PredictorPFunc),
+            32 => Some(hor_acc_32_as_pfunc as PredictorPFunc),
+            // IDA LABEL_11 (0x1b2a24): install nothing.
+            _ => None,
+        };
+        if let Some(pfunc) = slot {
+            tif.predictor.as_mut().expect("sp").decodepfunc_40 = Some(pfunc);
+        }
+        // IDA 0x1b2a4c..0x1b2a84.
+        if tif.tif_decoderow_512 != Some(stub_0x1b2598) {
+            let old_row = tif.tif_decoderow_512;
+            let old_strip = tif.tif_decodestrip_520;
+            let old_tile = tif.tif_decodetile_528;
+            let sp = tif.predictor.as_mut().expect("sp");
+            sp.decoderow_28 = old_row;
+            sp.decodestrip_32 = old_strip;
+            sp.decodetile_36 = old_tile;
+            tif.tif_decoderow_512 = Some(stub_0x1b2598);
+            tif.tif_decodestrip_520 = Some(stub_0x1b2460);
+            tif.tif_decodetile_528 = Some(stub_0x1b2460);
+        }
+        // IDA 0x1b2a90..0x1b2ae4.
+        if tif.flags & TIFF_FLAG_SWAB != 0 {
+            let current = tif.predictor.as_ref().expect("sp").decodepfunc_40;
+            if current == Some(hor_acc_16_as_pfunc) {
+                // IDA 0x1b2ab4 (`swabHorAcc16` is byte-windowed, so no
+                // adapter is needed).
+                tif.predictor.as_mut().expect("sp").decodepfunc_40 = Some(stub_0x1b37b8);
+            } else if current == Some(hor_acc_32_as_pfunc) {
+                // IDA 0x1b2ae0.
+                tif.predictor.as_mut().expect("sp").decodepfunc_40 = Some(stub_0x1b355c);
+            }
+            // IDA LABEL_22 (0x1b2b4c)..0x1b2b54.
+            tif.post_decode_hook = Some(stub_0x1b3b90);
+        }
+        return 1;
+    }
+    if tag == 3 {
+        // IDA 0x1b2afc.
+        tif.predictor.as_mut().expect("sp").decodepfunc_40 = Some(stub_0x1b2f90);
+        // IDA 0x1b2b00..0x1b2b34.
+        if tif.tif_decoderow_512 != Some(stub_0x1b2598) {
+            let old_row = tif.tif_decoderow_512;
+            let old_strip = tif.tif_decodestrip_520;
+            let old_tile = tif.tif_decodetile_528;
+            let sp = tif.predictor.as_mut().expect("sp");
+            sp.decoderow_28 = old_row;
+            sp.decodestrip_32 = old_strip;
+            sp.decodetile_36 = old_tile;
+            tif.tif_decoderow_512 = Some(stub_0x1b2598);
+            tif.tif_decodestrip_520 = Some(stub_0x1b2460);
+            tif.tif_decodetile_528 = Some(stub_0x1b2460);
+        }
+        // IDA 0x1b2b40..0x1b2b4c.
+        if tif.flags & TIFF_FLAG_SWAB != 0 {
+            tif.post_decode_hook = Some(stub_0x1b3b90);
+        }
+    }
+    // IDA 0x1b2b54.
+    1
 }
 
 // 0x1b2ba4 — _fpDiff
 #[doc(alias = "_fpDiff")]
-pub fn stub_0x1b2ba4() -> ! {
-    todo!("0x1b2ba4 _fpDiff")
+// IDA 0x1b2ba4 (decompile): floating-point horizontal differencer (encode
+// side). `bps = bits_per_sample / 8`, `stride = sp+4`, `count = cc / bps`
+// (`0x1b2bc8`..`0x1b2bd8`); copies the window aside (`_TIFFmalloc` +
+// `_TIFFmemcpy`, `0x1b2be0`..`0x1b2bf8`), byte-shuffle transposes it so
+// byte-reversed samples land in planes — `out[i + j*count] =
+// tmp[i*bps + bps-1-j]` (Duff's-device scatter, `0x1b2c00`..`0x1b2c4c`,
+// 8-wide at `0x1b2f14`..`0x1b2f88` with `(bps & 7)` head handling at
+// `0x1b2e74`..`0x1b2f08`), frees the copy, then backward-differences
+// `out[k] -= out[k-stride]` from the end (Duff's device, `0x1b2c58`..,
+// 8-wide at `0x1b2c9c`..`0x1b2e68` with `(stride-4 & 7)` head handling at
+// `0x1b2d18`..`0x1b2dd8`) and returns `cc` (`0x1b2d10`); the malloc-NULL
+// path returns 0.
+// Semantically: byte-reversing transpose, then differences against the
+// sample one stride back (wrapping).
+// // BUG (original at 0x1b2c68): no fractional-row guard — with
+// `cc % stride != 0` the Duff tail differences below index `stride`,
+// over-reading; the port only covers `k >= stride` (same class as the
+// `horAcc8` caveat, IDA `0x1b0cb4`).
+// // BUG (original): `stride == 0` spins forever (`result -= 0` at
+// `0x1b2cfc`); the port returns the window untouched instead.
+// FIDELITY: `Vec` replaces `_TIFFmalloc` (abort-on-OOM instead of NULL),
+// so the 0-return path is unreachable.
+pub fn stub_0x1b2ba4(tif: &TiffCodec, buf: &mut [u8]) -> usize {
+    // IDA 0x1b2bc8..0x1b2bd8.
+    let bps = (tif.bits_per_sample >> 3) as usize;
+    let stride = tif.predictor.as_ref().expect("fpDiff: sp").stride_4 as usize;
+    let cc = buf.len();
+    if stride == 0 {
+        return cc;
+    }
+    let count = cc / bps;
+    // IDA 0x1b2be0..0x1b2bf8.
+    let tmp = buf.to_vec();
+    // IDA 0x1b2c00..0x1b2c4c.
+    for i in 0..count {
+        for j in 0..bps {
+            buf[i + j * count] = tmp[i * bps + (bps - 1 - j)];
+        }
+    }
+    // IDA 0x1b2c58..0x1b2d10.
+    for k in (stride..cc).rev() {
+        buf[k] = buf[k].wrapping_sub(buf[k - stride]);
+    }
+    cc
 }
 
 // 0x1b2f90 — _fpAcc
 #[doc(alias = "_fpAcc")]
-pub fn stub_0x1b2f90() -> ! {
-    todo!("0x1b2f90 _fpAcc")
+// IDA 0x1b2f90 (decompile): floating-point horizontal accumulator (decode
+// side, void). Same `bps`/`stride`/`count` setup (`0x1b2fb4`..`0x1b2fc4`);
+// forward-accumulates `out[k] += out[k-stride]` (Duff's device,
+// `0x1b2fd8`.., 8-wide at `0x1b3020`..`0x1b3354` with `(stride-4 & 7)` head
+// handling at `0x1b3214`..`0x1b32d4`), copies the result aside
+// (`0x1b3098`), then inverse-gathers byte-reversed samples back —
+// `out[i*bps + j] = tmp[i + (bps-1-j)*count]` (Duff's-device gather,
+// `0x1b30ac`.., 8-wide at `0x1b30c0`..`0x1b3208` with `(bps & 7)` head
+// handling at `0x1b3108`..`0x1b31a0`) and frees the copy (`0x1b30f8`).
+// The gather inverts `fpDiff`'s transpose exactly.
+// Same fractional-row / stride-0 caveats as `fpDiff` (IDA `0x1b2ba4`).
+// FIDELITY: a malloc-NULL skips silently in C; `Vec` aborts instead.
+pub fn stub_0x1b2f90(tif: &TiffCodec, buf: &mut [u8]) {
+    // IDA 0x1b2fb4..0x1b2fc4.
+    let bps = (tif.bits_per_sample >> 3) as usize;
+    let stride = tif.predictor.as_ref().expect("fpAcc: sp").stride_4 as usize;
+    let cc = buf.len();
+    if stride == 0 {
+        return;
+    }
+    let count = cc / bps;
+    // IDA 0x1b2fd8..0x1b3088.
+    for k in stride..cc {
+        buf[k] = buf[k].wrapping_add(buf[k - stride]);
+    }
+    // IDA 0x1b3098..0x1b30f8.
+    let tmp = buf.to_vec();
+    for i in 0..count {
+        for j in 0..bps {
+            buf[i * bps + j] = tmp[i + (bps - 1 - j) * count];
+        }
+    }
 }
 
 // 0x1b336c — _PredictorEncodeTile
 #[doc(alias = "_PredictorEncodeTile")]
-pub fn stub_0x1b336c() -> ! {
-    todo!("0x1b336c _PredictorEncodeTile")
+// IDA 0x1b336c (decompile): `sp = *(tif+556)` (`0x1b3384`); null →
+// `__assert_rtn(..., "sp != NULL")` (`0x1b3398`..`0x1b33b8`); null
+// `sp->encodepfunc` (`sp+24`, `0x1b33bc`) → `__assert_rtn(...,
+// "sp->encodepfunc != NULL")` (`0x1b33dc`..`0x1b33e0`); null `sp->encodetile`
+// (`sp+20`, `0x1b33e8`) → `__assert_rtn(..., "sp->encodetile != NULL")`
+// (`0x1b3408`..`0x1b3410`); copies the tile aside (`_TIFFmalloc`,
+// `0x1b3418`..`0x1b3454`, NULL → `TIFFErrorExt` + 0 at `0x1b3440`); `rowsize
+// <= 0` → `__assert_rtn(..., "rowsize > 0")` (`0x1b3458`..`0x1b3480`);
+// `cc % rowsize != 0` → `__assert_rtn(..., "(cc0%rowsize)==0")`
+// (`0x1b348c`..`0x1b34b8`); differences each rowsize window
+// (`0x1b3494`..`0x1b34e0`), runs the saved parent tile encoder
+// (`0x1b34fc`), frees the copy (`0x1b3504`) and returns its result.
+// FIDELITY: `Vec` replaces `_TIFFmalloc` (abort-on-OOM instead of the
+// `TIFFErrorExt` + 0 path).
+// callers pass a mutable window (the hook slots require `&mut`); the window
+// itself is only read — IDA `0x1b3418`..`0x1b3454` copies it aside first.
+pub fn stub_0x1b336c(tif: &TiffCodec, buf: &mut [u8], sample: u16) -> i32 {
+    let sp = tif
+        .predictor
+        .as_ref()
+        .expect("PredictorEncodeTile: sp != NULL");
+    // IDA 0x1b33bc..0x1b33e0.
+    let encodepfunc = sp
+        .encodepfunc_24
+        .expect("PredictorEncodeTile: sp->encodepfunc != NULL");
+    // IDA 0x1b33e8..0x1b3410.
+    let encodetile = sp
+        .encodetile_20
+        .expect("PredictorEncodeTile: sp->encodetile != NULL");
+    // IDA 0x1b3418..0x1b3454.
+    let mut tmp = buf.to_vec();
+    // IDA 0x1b3458..0x1b34b8.
+    let rowsize = sp.rowsize_8 as usize;
+    if rowsize == 0 {
+        panic!("PredictorEncodeTile: rowsize > 0");
+    }
+    if tmp.len() % rowsize != 0 {
+        panic!("PredictorEncodeTile: (cc0%rowsize)==0");
+    }
+    // IDA 0x1b3494..0x1b34e0.
+    for chunk in tmp.chunks_exact_mut(rowsize) {
+        encodepfunc(tif, chunk);
+    }
+    // IDA 0x1b34fc..0x1b3514 (`_TIFFfree` is `tmp` dropping).
+    encodetile(tif, &mut tmp, sample)
 }
 
 // 0x1b355c — _swabHorAcc32
 #[doc(alias = "_swabHorAcc32")]
-pub fn stub_0x1b355c() -> ! {
-    todo!("0x1b355c _swabHorAcc32")
+// IDA 0x1b355c (decompile): 32-bit byte-swap + horizontal accumulator.
+// `count = cc/4` (`0x1b3574`..`0x1b3580`); when `stride < count`
+// (`0x1b3588`) byte-swaps the whole window (`TIFFSwabArrayOfLong`,
+// `0x1b3598`) and accumulates `lane[i] += lane[i-stride]` per row past the
+// first (Duff's device, `0x1b35b0`.., 8-wide at `0x1b35e4`..`0x1b37b0` with
+// `(stride-4 & 7)` head handling at `0x1b3660`..`0x1b3720`).
+// Same fractional-row / stride-0 caveats as `horAcc8` (IDA `0x1b0c78`):
+// the port covers full rows only.
+// FIDELITY: the original returns R0 scratch (see `0x1b3b94`); the port
+// returns `()`. The `TIFFSwabArrayOfLong` call is inlined (that EA,
+// `0x1b5288`, is outside this batch).
+pub fn stub_0x1b355c(tif: &TiffCodec, buf: &mut [u8]) {
+    // IDA 0x1b3574..0x1b3580.
+    let count = buf.len() / 4;
+    // IDA 0x1b357c.
+    let stride = tif
+        .predictor
+        .as_ref()
+        .expect("swabHorAcc32: sp")
+        .stride_4 as usize;
+    // IDA 0x1b3588 (`stride == 0` would hang the original; see above).
+    if stride == 0 || stride >= count {
+        return;
+    }
+    // IDA 0x1b3598.
+    for word in buf.chunks_exact_mut(4) {
+        word.swap(0, 3);
+        word.swap(1, 2);
+    }
+    // IDA 0x1b35b0..: row loop; full rows only (see `horAcc8` notes).
+    let mut off = stride;
+    while off + stride <= count {
+        for k in 0..stride {
+            let a = 4 * (off + k);
+            let b = 4 * (off + k - stride);
+            let v = u32::from_ne_bytes([buf[a], buf[a + 1], buf[a + 2], buf[a + 3]])
+                .wrapping_add(u32::from_ne_bytes([buf[b], buf[b + 1], buf[b + 2], buf[b + 3]]));
+            buf[a..a + 4].copy_from_slice(&v.to_ne_bytes());
+        }
+        off += stride;
+    }
 }
 
 // 0x1b37b8 — _swabHorAcc16
 #[doc(alias = "_swabHorAcc16")]
-pub fn stub_0x1b37b8() -> ! {
-    todo!("0x1b37b8 _swabHorAcc16")
+// IDA 0x1b37b8 (decompile + disasm): 16-bit byte-swap + horizontal
+// accumulator. `count = cc/2` (`0x1b37c8`..`0x1b37cc`); when
+// `stride < count` (`0x1b37d8`) byte-swaps the window
+// (`TIFFSwabArrayOfShort`, `0x1b37e8`) and accumulates lane-wise exactly
+// like `swabHorAcc32` narrowed to 16 bits (Duff's device, `0x1b3800`..).
+// Same fractional-row / stride-0 caveats and `()` return as `swabHorAcc32`
+// (IDA `0x1b355c`).
+pub fn stub_0x1b37b8(tif: &TiffCodec, buf: &mut [u8]) {
+    // IDA 0x1b37c8..0x1b37cc.
+    let count = buf.len() / 2;
+    // IDA 0x1b37d0.
+    let stride = tif
+        .predictor
+        .as_ref()
+        .expect("swabHorAcc16: sp")
+        .stride_4 as usize;
+    // IDA 0x1b37d8 (`stride == 0` would hang the original; see above).
+    if stride == 0 || stride >= count {
+        return;
+    }
+    // IDA 0x1b37e8.
+    for word in buf.chunks_exact_mut(2) {
+        word.swap(0, 1);
+    }
+    // IDA 0x1b3800..: row loop; full rows only (see `horAcc8` notes).
+    let mut off = stride;
+    while off + stride <= count {
+        for k in 0..stride {
+            let a = 2 * (off + k);
+            let b = 2 * (off + k - stride);
+            let v = u16::from_ne_bytes([buf[a], buf[a + 1]])
+                .wrapping_add(u16::from_ne_bytes([buf[b], buf[b + 1]]));
+            buf[a..a + 2].copy_from_slice(&v.to_ne_bytes());
+        }
+        off += stride;
+    }
 }
 
 // 0x1b3a08 — _PredictorPrintDir
 // type: int __fastcall(int, FILE *__stream)
 #[doc(alias = "_PredictorPrintDir")]
-pub fn stub_0x1b3a08() -> ! {
-    todo!("0x1b3a08 _PredictorPrintDir")
+// IDA 0x1b3a08 (decompile): prints `  Predictor: ` plus `horizontal
+// differencing ` (tag 2), `floating point predictor ` (tag 3) or `none `
+// (tag 1) when `tif+44 & 4` (`0x1b3a2c`..`0x1b3a9c`), then the
+// `fprintf(stream, "%u (0x%x)\n", tag, tag)` line (`0x1b3aa8`); chains to
+// the saved parent printer at `sp+52` (`0x1b3abc`), returning its result,
+// else the `fprintf` count (`0x1b3ac4`..`0x1b3ae4`).
+// FIDELITY: `stream` replaces `FILE*`; when neither the flag nor a parent
+// is present the original returns the `tif` pointer as `int` — the port
+// returns 0.
+pub fn stub_0x1b3a08(tif: &TiffCodec, stream: &mut String, flags: u32) -> i32 {
+    // IDA 0x1b3a28.
+    let sp = tif.predictor.as_ref().expect("PredictorPrintDir: sp");
+    let mut result = 0i32;
+    // IDA 0x1b3a2c..0x1b3aa8.
+    if tif.printdir_word_44 & 4 != 0 {
+        stream.push_str("  Predictor: ");
+        match sp.tag_0 {
+            2 => stream.push_str("horizontal differencing "),
+            3 => stream.push_str("floating point predictor "),
+            1 => stream.push_str("none "),
+            _ => {}
+        }
+        let line = format!("{} ({:#x})\n", sp.tag_0, sp.tag_0);
+        result = line.len() as i32;
+        stream.push_str(&line);
+    }
+    // IDA 0x1b3abc..0x1b3ae4.
+    match tif.predictor_print_parent {
+        Some(parent) => parent(tif, stream, flags),
+        None => result,
+    }
 }
 
 // 0x1b3afc — _TIFFStartStrip
 #[doc(alias = "_TIFFStartStrip")]
-pub fn stub_0x1b3afc() -> ! {
-    todo!("0x1b3afc _TIFFStartStrip")
+// IDA 0x1b3afc (decompile + disasm): unless `tif+12 & 0x20`, runs the setup
+// hook at `tif+488` (`LDR R3, [R0,#0x1E8]; BLX R3`, `0x1b3b18`..`0x1b3b1c`,
+// R0 still holds `tif`) and bails on 0 (`0x1b3b20`..`0x1b3b24`), then sets
+// the bit (`0x1b3b2c`..`0x1b3b30`); `tif+452 = strip` (`0x1b3b3c`); without
+// `NOREADRAW` the cursor (`+576`) takes the raw base and the count (`+580`)
+// the strip offset entry (`0x1b3b44`..`0x1b3b74`), else the cursor is 0 and
+// the count is 0; `tif+444 = strip_row_factor * (strip % rows_per_strip)`
+// (`___umodsi3`, `0x1b3b40`..`0x1b3b68`); tail-calls the seek hook at
+// `tif+492` with `(strip / rows_per_strip) as u16` (`0x1b3b70`..`0x1b3b8c`).
+pub fn stub_0x1b3afc(tif: &mut TiffCodec, strip: u32) -> i32 {
+    // IDA 0x1b3b04..0x1b3b30.
+    if tif.flags & TIFF_FLAG_SETUP_20 == 0 {
+        let setup = tif
+            .setup_hook_488
+            .expect("TIFFStartStrip: setup hook is NULL");
+        if setup(tif) == 0 {
+            return 0;
+        }
+        tif.flags |= TIFF_FLAG_SETUP_20;
+    }
+    // IDA 0x1b3b34..0x1b3b3c.
+    let rows = tif.rows_per_strip_168;
+    tif.cur_strip_452 = strip;
+    // IDA 0x1b3b44..0x1b3b74 (offsets are base-relative here).
+    if tif.flags & TIFF_FLAG_NOREADRAW != 0 {
+        tif.raw_cursor_576 = 0;
+        tif.raw_count_580 = 0;
+    } else {
+        tif.raw_cursor_576 = 0;
+        tif.raw_count_580 = tif
+            .strip_bytecounts_180
+            .get(strip as usize)
+            .copied()
+            .expect("TIFFStartStrip: strip OOB");
+    }
+    // FIDELITY: `+580` holds a file offset here but a byte count after the
+    // `Fill*` installs; both shapes are mirrored into the one word.
+    // IDA 0x1b3b48..0x1b3b68 (unsigned mod; zero divisor faults like the
+    // original `___umodsi3`).
+    tif.cur_row_444 = tif.strip_row_factor_96.wrapping_mul(strip % rows);
+    // IDA 0x1b3b70..0x1b3b8c.
+    let seek = tif.seek_hook_492.expect("TIFFStartStrip: seek hook is NULL");
+    seek(tif, (strip / rows) as u16)
 }
 
 // 0x1b3b90 — __TIFFNoPostDecode
 #[doc(alias = "__TIFFNoPostDecode")]
 // IDA 0x1b3b90 (disasm, 1 insn): `BX LR` — the null post-decode hook
-// installed by `PixarLogSetupDecode` (IDA `0x1b0b70`).
-pub fn stub_0x1b3b90() {}
+// installed by `PixarLogSetupDecode` (IDA `0x1b0b70`). Batch-4 widens the
+// signature to the `(tif, buf, cc)` call shape used at IDA `0x1b48b0` and
+// `0x1b434c`; the null hook ignores all three like the 1-insn original.
+pub fn stub_0x1b3b90(_tif: &TiffCodec, _buf: &mut [u8]) {}
 
 // 0x1b3b94 — __TIFFSwab64BitData
 #[doc(alias = "__TIFFSwab64BitData")]
@@ -1189,85 +2065,525 @@ pub fn stub_0x1b3b94(_tif: &TiffCodec, data: &mut [u8]) {
 
 // 0x1b3bec — __TIFFSwab32BitData
 #[doc(alias = "__TIFFSwab32BitData")]
-pub fn stub_0x1b3bec() -> ! {
-    todo!("0x1b3bec __TIFFSwab32BitData")
+// IDA 0x1b3bec (decompile): `assert((cc & 3) == 0)` (`tif_read.c:729`,
+// `0x1b3bfc`..`0x1b3c1c`); returns `TIFFSwabArrayOfLong(ptr, cc/4)`
+// (`0x1b3c34`), i.e. byte-swap every 4-byte unit in place.
+// FIDELITY: the original returns whatever `TIFFSwabArrayOfLong` leaves in
+// `R0` (a void helper); the port returns `()` (same precedent as
+// `0x1b3b94`). The helper itself (EA `0x1b5288`) is outside this batch.
+pub fn stub_0x1b3bec(_tif: &TiffCodec, data: &mut [u8]) {
+    // IDA 0x1b3bfc..0x1b3c1c.
+    assert!(data.len() % 4 == 0, "(cc & 3) == 0");
+    // IDA 0x1b3c34.
+    for word in data.chunks_exact_mut(4) {
+        word.swap(0, 3);
+        word.swap(1, 2);
+    }
 }
 
 // 0x1b3c44 — __TIFFSwab24BitData
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__TIFFSwab24BitData")]
-pub fn stub_0x1b3c44() -> ! {
-    todo!("0x1b3c44 __TIFFSwab24BitData")
+// IDA 0x1b3c44 (decompile): `assert((cc % 3) == 0)` (`tif_read.c:721`,
+// `0x1b3c68`..`0x1b3c88`); returns `TIFFSwabArrayOfTriples(ptr)`
+// (`0x1b3c90`), i.e. reverse every 3-byte unit in place [INFERENCE on the
+// helper's exact loop, per libtiff `TIFFSwabArrayOfTriples`].
+// FIDELITY: returns `()` like `0x1b3bec` above.
+pub fn stub_0x1b3c44(_tif: &TiffCodec, data: &mut [u8]) {
+    // IDA 0x1b3c68..0x1b3c88.
+    assert!(data.len() % 3 == 0, "(cc % 3) == 0");
+    // IDA 0x1b3c90.
+    for unit in data.chunks_exact_mut(3) {
+        unit.swap(0, 2);
+    }
 }
 
 // 0x1b3ca4 — __TIFFSwab16BitData
 #[doc(alias = "__TIFFSwab16BitData")]
-pub fn stub_0x1b3ca4() -> ! {
-    todo!("0x1b3ca4 __TIFFSwab16BitData")
+// IDA 0x1b3ca4 (decompile): `assert((cc & 1) == 0)` (`tif_read.c:713`,
+// `0x1b3cb4`..`0x1b3cd4`); returns `TIFFSwabArrayOfShort(ptr, cc/2)`
+// (`0x1b3ce4`), i.e. byte-swap every 2-byte unit in place.
+// FIDELITY: returns `()` like `0x1b3bec` above.
+pub fn stub_0x1b3ca4(_tif: &TiffCodec, data: &mut [u8]) {
+    // IDA 0x1b3cb4..0x1b3cd4.
+    assert!(data.len() % 2 == 0, "(cc & 1) == 0");
+    // IDA 0x1b3ce4.
+    for word in data.chunks_exact_mut(2) {
+        word.swap(0, 1);
+    }
 }
 
 // 0x1b3cf4 — _TIFFCheckRead
 #[doc(alias = "_TIFFCheckRead")]
-pub fn stub_0x1b3cf4() -> ! {
-    todo!("0x1b3cf4 _TIFFCheckRead")
+// IDA 0x1b3cf4 (decompile): readable when the mode word (`tif+8`) is not 1
+// and the tiled bit (`tif+12 >> 10 & 1`) matches `tiles` (`0x1b3d38`);
+// else `TIFFErrorExt(clientdata, tif_name)` (`0x1b3d68`) and 0
+// (`0x1b3d24`).
+// FIDELITY: `tif_name` is unmodeled; the diagnostic records this module.
+pub fn stub_0x1b3cf4(tif: &mut TiffCodec, tiles: i32) -> i32 {
+    // IDA 0x1b3d38.
+    if tif.mode != 1 && ((tif.flags >> 10) & 1) as i32 == tiles {
+        return 1;
+    }
+    // IDA 0x1b3d68..0x1b3d24.
+    tif.last_error = Some("TIFFCheckRead".to_owned());
+    0
 }
 
 // 0x1b3d80 — _TIFFReadBufferSetup
 #[doc(alias = "_TIFFReadBufferSetup")]
-pub fn stub_0x1b3d80() -> ! {
-    todo!("0x1b3d80 _TIFFReadBufferSetup")
+// IDA 0x1b3d80 (decompile): `NOREADRAW` set → `__assert_rtn`
+// (`0x1b3da4`..`0x1b3dc4`); drops any installed raw window
+// (`0x1b3dc8`..`0x1b3de0`, freeing only when `MYBUFFER` is set); with an
+// explicit buffer installs it (`raw_count = size`, `MYBUFFER` cleared,
+// `0x1b3dec`..`0x1b3df8`); else 1KB-rounds the size, mallocs and marks
+// `MYBUFFER` (`0x1b3e08`..`0x1b3e20`); NULL → `TIFFErrorExt` + `raw_count
+// = 0` + 0 (`0x1b3e58`..`0x1b3e6c`), else 1 (`0x1b3e24`..`0x1b3e30`).
+// FIDELITY: `try_reserve_exact` keeps the NULL path reachable (huge sizes
+// fail instead of aborting); an explicitly installed empty buffer counts
+// as no window on the next call. `raw_base_142` is nulled only on free
+// (mirroring `0x1b3de0`); installs leave the C address cookie stale while
+// `raw_bytes`/`raw_count_143` stay authoritative.
+pub fn stub_0x1b3d80(tif: &mut TiffCodec, buf: Option<Vec<u8>>, size: u32) -> i32 {
+    // IDA 0x1b3d90..0x1b3dc4.
+    if tif.flags & TIFF_FLAG_NOREADRAW != 0 {
+        panic!("TIFFReadBufferSetup: (tif->tif_flags&TIFF_NOREADRAW)==0");
+    }
+    // IDA 0x1b3dc8..0x1b3de0.
+    if !tif.raw_bytes.is_empty() {
+        tif.raw_bytes = Vec::new();
+        tif.raw_base_142 = 0;
+    }
+    if let Some(explicit) = buf {
+        // IDA 0x1b3dec..0x1b3df8.
+        tif.raw_count_143 = size;
+        tif.raw_bytes = explicit;
+        tif.flags &= !TIFF_FLAG_MYBUFFER;
+        // IDA 0x1b3e24..0x1b3e30 (explicit `buf != NULL` always succeeds).
+        return 1;
+    }
+    // IDA 0x1b3e08..0x1b3e20.
+    let rounded = (size.wrapping_add(1023) >> 10) << 10;
+    let mut owned = Vec::new();
+    if owned.try_reserve_exact(rounded as usize).is_err() {
+        // IDA 0x1b3e58..0x1b3e6c.
+        tif.last_error = Some("TIFFReadBufferSetup".to_owned());
+        tif.raw_count_143 = 0;
+        return 0;
+    }
+    owned.resize(rounded as usize, 0);
+    tif.raw_bytes = owned;
+    tif.raw_count_143 = rounded;
+    tif.flags |= TIFF_FLAG_MYBUFFER;
+    // IDA 0x1b3e24..0x1b3e30.
+    1
 }
 
 // 0x1b3e84 — _TIFFReadRawTile1
 // type: int __fastcall(int, int, int, int, char *)
 #[doc(alias = "_TIFFReadRawTile1")]
-pub fn stub_0x1b3e84() -> ! {
-    todo!("0x1b3e84 _TIFFReadRawTile1")
+// IDA 0x1b3e84 (decompile): resolves the tile file offset from the `+176`
+// table and shares `read_raw_bytes` with `TIFFReadRawStrip1` (the
+// `NOREADRAW` assert, mapped fast path with `TIFFErrorExt(module)` + -1 on
+// overrun, and seek+read-proc path with `TIFFErrorExt(module)` + -1 on
+// short I/O all live there at the matching `0x1b43xx` twins).
+pub fn stub_0x1b3e84(tif: &mut TiffCodec, tile: u32, buf: &mut [u8], module: &str) -> isize {
+    // IDA 0x1b3f88 (`OOB` panics where the original over-read).
+    let offset = tif
+        .data_offsets_176
+        .get(tile as usize)
+        .copied()
+        .expect("TIFFReadRawTile1: tile OOB");
+    read_raw_bytes(tif, offset, buf, module, "TIFFReadRawTile1")
 }
 
 // 0x1b4014 — _TIFFFillTile
 // type: int __fastcall(int, int)
 #[doc(alias = "_TIFFFillTile")]
-pub fn stub_0x1b4014() -> ! {
-    todo!("0x1b4014 _TIFFFillTile")
+// IDA 0x1b4014 (decompile): with `NOREADRAW` clear, loads the tile byte
+// count from the `+180` table (`0x1b4038`..`0x1b4048`; 0 →
+// `TIFFErrorExt(clientdata, tif_name)` + 0 at `0x1b4050`..`0x1b4128`), then
+// either the mapped branch — free an owned window, clear `MYBUFFER`
+// (`0x1b4088`..`0x1b40a8`), bounds-check against the mapping
+// (`0x1b40c4`; fail → `curtile = -1`, 0 with no diagnostic) and alias the
+// mapped slice (`0x1b40d4`..`0x1b40e4`) — or the fd branch: grow the window
+// via `TIFFReadBufferSetup` when owned and short (`0x1b40f4`..`0x1b414c`;
+// unowned + short → `TIFFErrorExt(..., "TIFFFillTile")` + 0), read via
+// `TIFFReadRawTile1` (`0x1b4174`, short → 0) and bit-reverse unless the
+// fill-order word matches or `0x100` is set (`0x1b4178`..`0x1b419c`); then
+// the `+488` setup hook unless `0x20` is set (`0x1b41a4`..`0x1b41c4`),
+// `curtile/row/col` from the tile geometry, cursor/count words and the
+// `+492` seek hook tail (`0x1b41c8`..`0x1b4274`).
+// FIDELITY: the mapped install copies (the original aliases); `raw_bytes`
+// is grown, never shrunk, so `len()` doubles as the C `+572` high-water
+// mark at the grow check; `tif_name` diagnostics record this module.
+pub fn stub_0x1b4014(tif: &mut TiffCodec, tile: u32) -> i32 {
+    // IDA 0x1b4024..0x1b4034.
+    if tif.flags & TIFF_FLAG_NOREADRAW == 0 {
+        // IDA 0x1b4038..0x1b4048 (`OOB` panics where the original over-read).
+        let bytecount = tif
+            .strip_bytecounts_180
+            .get(tile as usize)
+            .copied()
+            .expect("TIFFFillTile: tile OOB") as usize;
+        if bytecount == 0 {
+            // IDA 0x1b4050..0x1b4128.
+            tif.last_error = Some("TIFFFillTile".to_owned());
+            return 0;
+        }
+        // IDA 0x1b4080.
+        if tif.flags & TIFF_FLAG_MAPPED_800 != 0
+            && ((tif.fill_order_90 as u32 & tif.flags) != 0
+                || tif.flags & TIFF_FLAG_BITREV_100 != 0)
+        {
+            // IDA 0x1b4088..0x1b40a8.
+            if tif.flags & TIFF_FLAG_MYBUFFER != 0 {
+                tif.raw_bytes = Vec::new();
+            }
+            let mapped_len = tif.mapped_584.len();
+            tif.flags &= !TIFF_FLAG_MYBUFFER;
+            // IDA 0x1b40c4 (short-circuit order mirrors the C `||`).
+            let tileoff = tif
+                .data_offsets_176
+                .get(tile as usize)
+                .copied()
+                .expect("TIFFFillTile: tile OOB") as usize;
+            if bytecount > mapped_len || tileoff > mapped_len - bytecount {
+                // IDA 0x1b40cc..0x1b4268 (C `-1`, silent).
+                tif.cur_tile_476 = u32::MAX;
+                return 0;
+            }
+            // IDA 0x1b40d4..0x1b40e4 (copied, not aliased — see above).
+            tif.raw_count_143 = bytecount as u32;
+            tif.raw_bytes = tif.mapped_584[tileoff..tileoff + bytecount].to_vec();
+        } else {
+            // IDA 0x1b40f4..0x1b414c.
+            if bytecount > tif.raw_bytes.len() {
+                tif.cur_tile_476 = u32::MAX;
+                if tif.flags & TIFF_FLAG_MYBUFFER == 0 {
+                    // IDA 0x1b4104..0x1b4118.
+                    tif.last_error = Some("TIFFFillTile".to_owned());
+                    return 0;
+                }
+                let rounded = ((bytecount as u32).wrapping_add(1023) >> 10) << 10;
+                if stub_0x1b3d80(tif, None, rounded) == 0 {
+                    return 0;
+                }
+            }
+            // IDA 0x1b4174 (take/put-back: the window is tif-owned while
+            // the callee also borrows `tif`).
+            let mut window = std::mem::take(&mut tif.raw_bytes);
+            if window.len() < bytecount {
+                window.resize(bytecount, 0);
+            }
+            let got = stub_0x1b3e84(tif, tile, &mut window[..bytecount], "TIFFFillTile");
+            tif.raw_count_143 = window.len() as u32;
+            tif.raw_bytes = window;
+            if got != bytecount as isize {
+                return 0;
+            }
+            // IDA 0x1b4178..0x1b419c.
+            if (tif.fill_order_90 as u32 & tif.flags) == 0
+                && tif.flags & TIFF_FLAG_BITREV_100 == 0
+            {
+                let reverse = tif
+                    .reverse_bits_hook
+                    .expect("TIFFFillTile: TIFFReverseBits is NULL");
+                reverse(&mut tif.raw_bytes);
+            }
+        }
+    }
+    // IDA 0x1b41a4..0x1b41c4.
+    if tif.flags & TIFF_FLAG_SETUP_20 == 0 {
+        let setup = tif
+            .setup_hook_488
+            .expect("TIFFFillTile: setup hook is NULL");
+        if setup(tif) == 0 {
+            return 0;
+        }
+        tif.flags |= TIFF_FLAG_SETUP_20;
+    }
+    // IDA 0x1b41c8..0x1b4274 (`howmany(x, y) = (x + y - 1) / y`, unsigned
+    // wrapping like the 32-bit original; zero divisors fault likewise).
+    let tile_w = tif.tile_dim_64;
+    let cols = (tif.dim_52.wrapping_add(tile_w.wrapping_sub(1))) / tile_w;
+    tif.cur_tile_476 = tile;
+    let tile_h = tif.tile_dim_68;
+    let rows = (tif.img_dim_56.wrapping_add(tile_h.wrapping_sub(1))) / tile_h;
+    tif.cur_row_444 = tile_h.wrapping_mul(tile % cols);
+    tif.cur_col_472 = tile_w.wrapping_mul(tile % rows);
+    let denom = tif.rows_per_strip_168;
+    if tif.flags & TIFF_FLAG_NOREADRAW != 0 {
+        // IDA 0x1b4220..0x1b422c.
+        tif.raw_cursor_576 = 0;
+        tif.raw_count_580 = 0;
+    } else {
+        tif.raw_cursor_576 = 0;
+        tif.raw_count_580 = tif
+            .strip_bytecounts_180
+            .get(tile as usize)
+            .copied()
+            .expect("TIFFFillTile: tile OOB");
+    }
+    let seek = tif.seek_hook_492.expect("TIFFFillTile: seek hook is NULL");
+    seek(tif, (tile / denom) as u16)
 }
 
 // 0x1b4288 — _TIFFReadEncodedTile
 #[doc(alias = "_TIFFReadEncodedTile")]
-pub fn stub_0x1b4288() -> ! {
-    todo!("0x1b4288 _TIFFReadEncodedTile")
+// IDA 0x1b4288 (decompile): `TIFFCheckRead(tif, 1)` failing returns -1
+// (`0x1b42b8`); tile past `+172` reports `TIFFErrorExt(clientdata,
+// tif_name)` + -1 (`0x1b42c4`..`0x1b4354`); clamps the sample count to the
+// `+480` limit (`0x1b42ac`..`0x1b42f4`); `TIFFFillTile` failing or the
+// `+528` decode hook failing returns -1 (`0x1b4330`..`0x1b4338`); runs the
+// `+624` post-decode hook (`0x1b434c`) and returns the count (`0x1b4364`).
+// FIDELITY: `tif_name` diagnostics record this module; a short caller
+// buffer panics (safe equivalent of the C overrun).
+pub fn stub_0x1b4288(tif: &mut TiffCodec, tile: u32, buf: &mut [u8], max_samples: i32) -> i32 {
+    // IDA 0x1b42ac.
+    let mut count = tif.read_limit_480 as i32;
+    // IDA 0x1b42b8.
+    if stub_0x1b3cf4(tif, 1) == 0 {
+        return -1;
+    }
+    // IDA 0x1b42c4..0x1b4354.
+    if tif.strip_count_172 <= tile {
+        tif.last_error = Some("TIFFReadEncodedTile".to_owned());
+        return -1;
+    }
+    // IDA 0x1b42f4.
+    if max_samples != -1 && max_samples < count {
+        count = max_samples;
+    }
+    // IDA 0x1b4330..0x1b4338.
+    if stub_0x1b4014(tif, tile) == 0 {
+        return -1;
+    }
+    let decode = tif
+        .tif_decodetile_528
+        .expect("TIFFReadEncodedTile: decodetile hook is NULL");
+    let sample = (tile / tif.rows_per_strip_168) as u16;
+    if decode(tif, &mut buf[..count as usize], sample) == 0 {
+        return -1;
+    }
+    // IDA 0x1b434c..0x1b4364.
+    let post = tif
+        .post_decode_hook
+        .expect("TIFFReadEncodedTile: post-decode hook is NULL");
+    post(tif, &mut buf[..count as usize]);
+    count
 }
 
 // 0x1b436c — _TIFFReadRawStrip1
 // type: int __fastcall(int, int, int, int, char *)
 #[doc(alias = "_TIFFReadRawStrip1")]
-pub fn stub_0x1b436c() -> ! {
-    todo!("0x1b436c _TIFFReadRawStrip1")
+// IDA 0x1b436c (decompile): strip twin of `TIFFReadRawTile1` — same
+// `NOREADRAW` assert, mapped fast path and seek+read-proc path at the
+// matching `0x1b43xx` addresses; offset from the shared `+176` table.
+pub fn stub_0x1b436c(tif: &mut TiffCodec, strip: u32, buf: &mut [u8], module: &str) -> isize {
+    // IDA 0x1b4460 (`OOB` panics where the original over-read).
+    let offset = tif
+        .data_offsets_176
+        .get(strip as usize)
+        .copied()
+        .expect("TIFFReadRawStrip1: strip OOB");
+    read_raw_bytes(tif, offset, buf, module, "TIFFReadRawStrip1")
 }
 
 // 0x1b44e4 — _TIFFFillStrip
 // type: int __fastcall(int, int)
 #[doc(alias = "_TIFFFillStrip")]
-pub fn stub_0x1b44e4() -> ! {
-    todo!("0x1b44e4 _TIFFFillStrip")
+// IDA 0x1b44e4 (decompile): `NOREADRAW` short-circuits to `TIFFStartStrip`
+// (`0x1b4504`); 0 byte count funnels to `TIFFErrorExt(...,
+// "TIFFFillStrip")` + 0 (`LABEL_3`, `0x1b4518`..`0x1b46d4`); the mapped
+// branch frees an owned window, clears `MYBUFFER`, bounds-checks (fail →
+// `TIFFErrorExt` + `curstrip = -1` + 0, unlike the tile twin's silent fail)
+// and aliases the mapped slice (`0x1b455c`..`0x1b45f8`); the fd branch
+// grows via `TIFFReadBufferSetup` when owned (`0x1b4608`..`0x1b4660`,
+// unowned + short funnels to `LABEL_3`), reads via `TIFFReadRawStrip1`
+// (`0x1b4688`) and bit-reverses under the same fill-order rule
+// (`0x1b468c`..`0x1b46ac`); tails to `TIFFStartStrip` (`0x1b46c4`).
+// Same `Vec`/high-water/`tif_name` FIDELITY notes as `TIFFFillTile`
+// (IDA `0x1b4014`).
+pub fn stub_0x1b44e4(tif: &mut TiffCodec, strip: u32) -> i32 {
+    // IDA 0x1b44f4..0x1b4504.
+    if tif.flags & TIFF_FLAG_NOREADRAW != 0 {
+        return stub_0x1b3afc(tif, strip);
+    }
+    // IDA 0x1b4508..0x1b4518 (`OOB` panics where the original over-read).
+    let bytecount = tif
+        .strip_bytecounts_180
+        .get(strip as usize)
+        .copied()
+        .expect("TIFFFillStrip: strip OOB") as usize;
+    if bytecount == 0 {
+        // IDA LABEL_3 (0x1b4518..0x1b46d4).
+        tif.last_error = Some("TIFFFillStrip".to_owned());
+        return 0;
+    }
+    // IDA 0x1b455c.
+    if tif.flags & TIFF_FLAG_MAPPED_800 != 0
+        && ((tif.fill_order_90 as u32 & tif.flags) != 0
+            || tif.flags & TIFF_FLAG_BITREV_100 != 0)
+    {
+        // IDA 0x1b4564..0x1b4584.
+        if tif.flags & TIFF_FLAG_MYBUFFER != 0 {
+            tif.raw_bytes = Vec::new();
+        }
+        let mapped_len = tif.mapped_584.len();
+        tif.flags &= !TIFF_FLAG_MYBUFFER;
+        // IDA 0x1b45a0..0x1b45e4 (short-circuit order mirrors the C `||`).
+        let stripoff = tif
+            .data_offsets_176
+            .get(strip as usize)
+            .copied()
+            .expect("TIFFFillStrip: strip OOB") as usize;
+        if bytecount > mapped_len || stripoff > mapped_len - bytecount {
+            tif.last_error = Some("TIFFFillStrip".to_owned());
+            // IDA 0x1b45e0 (C `-1`).
+            tif.cur_strip_452 = u32::MAX;
+            return 0;
+        }
+        // IDA 0x1b45e8..0x1b45f8 (copied, not aliased).
+        tif.raw_count_143 = bytecount as u32;
+        tif.raw_bytes = tif.mapped_584[stripoff..stripoff + bytecount].to_vec();
+    } else {
+        // IDA 0x1b4608..0x1b4660.
+        if bytecount > tif.raw_bytes.len() {
+            tif.cur_strip_452 = u32::MAX;
+            if tif.flags & TIFF_FLAG_MYBUFFER == 0 {
+                // IDA LABEL_3 via 0x1b4618.
+                tif.last_error = Some("TIFFFillStrip".to_owned());
+                return 0;
+            }
+            let rounded = ((bytecount as u32).wrapping_add(1023) >> 10) << 10;
+            if stub_0x1b3d80(tif, None, rounded) == 0 {
+                return 0;
+            }
+        }
+        // IDA 0x1b4688 (take/put-back; window is tif-owned).
+        let mut window = std::mem::take(&mut tif.raw_bytes);
+        if window.len() < bytecount {
+            window.resize(bytecount, 0);
+        }
+        let got = stub_0x1b436c(tif, strip, &mut window[..bytecount], "TIFFFillStrip");
+        tif.raw_count_143 = window.len() as u32;
+        tif.raw_bytes = window;
+        if got != bytecount as isize {
+            return 0;
+        }
+        // IDA 0x1b468c..0x1b46ac.
+        if (tif.fill_order_90 as u32 & tif.flags) == 0
+            && tif.flags & TIFF_FLAG_BITREV_100 == 0
+        {
+            let reverse = tif
+                .reverse_bits_hook
+                .expect("TIFFFillStrip: TIFFReverseBits is NULL");
+            reverse(&mut tif.raw_bytes);
+        }
+    }
+    // IDA 0x1b46c4.
+    stub_0x1b3afc(tif, strip)
 }
 
 // 0x1b46f4 — _TIFFReadTile
 #[doc(alias = "_TIFFReadTile")]
-pub fn stub_0x1b46f4() -> ! {
-    todo!("0x1b46f4 _TIFFReadTile")
+// IDA 0x1b46f4 (decompile): `TIFFCheckRead(tif, 1)` or the out-of-batch
+// `TIFFCheckTile(tif, x, y, z, sample)` failing returns -1 (`0x1b4740`);
+// else `TIFFReadEncodedTile(tif, TIFFComputeTile(...), buf, -1)`
+// (`0x1b4760`..`0x1b4790`).
+pub fn stub_0x1b46f4(
+    tif: &mut TiffCodec,
+    buf: &mut [u8],
+    x: u32,
+    y: u32,
+    z: u32,
+    sample: u16,
+) -> i32 {
+    // IDA 0x1b4740.
+    if stub_0x1b3cf4(tif, 1) == 0 {
+        return -1;
+    }
+    let check = tif
+        .check_tile_hook
+        .expect("TIFFReadTile: TIFFCheckTile is NULL");
+    if check(tif, x, y, z, sample) == 0 {
+        return -1;
+    }
+    // IDA 0x1b4760..0x1b4790.
+    let compute = tif
+        .compute_tile_hook
+        .expect("TIFFReadTile: TIFFComputeTile is NULL");
+    let tile = compute(tif, x, y, z, sample);
+    stub_0x1b4288(tif, tile, buf, -1)
 }
 
 // 0x1b4794 — _TIFFReadEncodedStrip
 #[doc(alias = "_TIFFReadEncodedStrip")]
-pub fn stub_0x1b4794() -> ! {
-    todo!("0x1b4794 _TIFFReadEncodedStrip")
+// IDA 0x1b4794 (decompile): `TIFFCheckRead(tif, 0)` failing returns -1
+// (`0x1b47c0`); strip past `+172` reports `TIFFErrorExt(clientdata,
+// tif_name)` + -1 (`0x1b47cc`..`0x1b48b8`); rows shrink to the partial tail
+// strip (`0x1b47f0`..`0x1b4838`); `TIFFVStripSize` (out-of-batch hook)
+// sizes it, clamped to a non--1 `max` (`0x1b4844`..`0x1b485c`, unsigned
+// comparison like the C); `TIFFFillStrip` failing or the `+520` decode
+// hook returning `<= 0` gives -1 (`0x1b489c`); runs the `+624` post-decode
+// hook (`0x1b48b0`) and returns the count (`0x1b48c8`).
+// FIDELITY: `tif_name` diagnostics record this module; a short caller
+// buffer panics (safe equivalent of the C overrun).
+pub fn stub_0x1b4794(tif: &mut TiffCodec, strip: u32, buf: &mut [u8], max: i32) -> i32 {
+    // IDA 0x1b47c0.
+    if stub_0x1b3cf4(tif, 0) == 0 {
+        return -1;
+    }
+    // IDA 0x1b47cc..0x1b48b8.
+    if tif.strip_count_172 <= strip {
+        tif.last_error = Some("TIFFReadEncodedStrip".to_owned());
+        return -1;
+    }
+    // IDA 0x1b47f0..0x1b4838 (unsigned wrapping like the 32-bit original).
+    let per = tif.strip_row_factor_96;
+    let total = tif.img_dim_56;
+    let strips = (total.wrapping_add(per.wrapping_sub(1))) / per;
+    let mut rows = per;
+    if (per >= total || strips.wrapping_sub(1) == strip % strips) && total % per != 0 {
+        rows = total % per;
+    }
+    // IDA 0x1b4844..0x1b485c.
+    let sized = tif
+        .vstrip_size_hook
+        .expect("TIFFReadEncodedStrip: TIFFVStripSize is NULL");
+    let full = sized(tif, rows);
+    let count = if max == -1 { full } else { full.min(max as u32) };
+    // IDA 0x1b489c (note `<= 0`, unlike the tile twin's `== 0`).
+    if stub_0x1b44e4(tif, strip) == 0 {
+        return -1;
+    }
+    let decode = tif
+        .tif_decodestrip_520
+        .expect("TIFFReadEncodedStrip: decodestrip hook is NULL");
+    let sample = (strip / tif.rows_per_strip_168) as u16;
+    if decode(tif, &mut buf[..count as usize], sample) <= 0 {
+        return -1;
+    }
+    // IDA 0x1b48b0..0x1b48c8.
+    let post = tif
+        .post_decode_hook
+        .expect("TIFFReadEncodedStrip: post-decode hook is NULL");
+    post(tif, &mut buf[..count as usize]);
+    count as i32
 }
 
 // 0x1b48d0 — _TIFFDefaultStripSize
 #[doc(alias = "_TIFFDefaultStripSize")]
-pub fn stub_0x1b48d0() -> ! {
-    todo!("0x1b48d0 _TIFFDefaultStripSize")
+// IDA 0x1b48d0 (decompile + disasm, 2 insns): tail-calls the
+// default-strip-size proc at `tif+548` (`LDR R3, [R0,#0x224]; BX R3`,
+// `0x1b48d0`..`0x1b48d4`, `tif` still in `R0`).
+pub fn stub_0x1b48d0(tif: &TiffCodec) -> i32 {
+    // IDA 0x1b48d0..0x1b48d4 (null proc would crash; panics instead).
+    match tif.default_strip_size_548 {
+        Some(proc) => proc(tif),
+        None => panic!("TIFFDefaultStripSize: proc is NULL"),
+    }
 }
 
 // 0x1b48d8 — _TIFFComputeStrip
@@ -1876,4 +3192,262 @@ pub fn stub_0x1c4540() -> ! {
 #[doc(alias = "__ZN6TagLibC2Ev")]
 pub fn stub_0x1c45f0() -> ! {
     todo!("0x1c45f0 __ZN6TagLibC2Ev")
+}
+
+/// Batch-4 scoped tests: observable contracts of the predictor install/row
+/// codec + tif_read strip/tile ports above.
+#[cfg(test)]
+mod batch4_tests {
+    use super::*;
+
+    fn predictor_tif(tag: u32) -> TiffCodec {
+        let mut tif = TiffCodec::default();
+        let mut sp = PredictorState::default();
+        sp.tag_0 = tag;
+        tif.predictor = Some(sp);
+        tif
+    }
+
+    fn ok_setup(_tif: &mut TiffCodec) -> i32 {
+        1
+    }
+
+    #[test]
+    fn predictor_setup_accepts_and_rejects() {
+        let mut tif = predictor_tif(2);
+        tif.bits_per_sample = 16;
+        tif.planar_config = 1;
+        tif.samples_per_pixel = 3;
+        tif.scanline_size = 60;
+        assert_eq!(stub_0x1b27a0(&mut tif), 1);
+        let sp = tif.predictor.as_ref().expect("sp");
+        assert_eq!((sp.stride_4, sp.rowsize_8), (3, 60));
+        // Bad width for predictor 2.
+        tif.bits_per_sample = 24;
+        assert_eq!(stub_0x1b27a0(&mut tif), 0);
+        assert_eq!(tif.last_error.as_deref(), Some("PredictorSetup"));
+        // Predictor 1 passes through.
+        tif.predictor.as_mut().expect("sp").tag_0 = 1;
+        assert_eq!(stub_0x1b27a0(&mut tif), 1);
+        // Predictor 3 needs IEEE-float sample format.
+        tif.predictor.as_mut().expect("sp").tag_0 = 3;
+        tif.sample_format = 1;
+        assert_eq!(stub_0x1b27a0(&mut tif), 0);
+        tif.sample_format = 3;
+        tif.flags |= TIFF_FLAG_TILED;
+        tif.tile_row_size = 44;
+        assert_eq!(stub_0x1b27a0(&mut tif), 1);
+        assert_eq!(tif.predictor.as_ref().expect("sp").rowsize_8, 44);
+    }
+
+    #[test]
+    fn vsetfield_stores_tag_and_chains() {
+        fn parent(_tif: &mut TiffCodec, tag: u32, value: u16) -> i32 {
+            assert_eq!((tag, value), (99, 7));
+            5
+        }
+        let mut tif = predictor_tif(1);
+        tif.predictor_set_parent = Some(parent);
+        assert_eq!(stub_0x1b22b4(&mut tif, 99, 7), 5);
+        assert_eq!(stub_0x1b22b4(&mut tif, TIFFTAG_PREDICTOR, 2), 1);
+        assert_eq!(tif.predictor.as_ref().expect("sp").tag_0, 2);
+        assert_eq!((tif.flags & 8, tif.printdir_word_44 & 4), (8, 4));
+    }
+
+    #[test]
+    fn encode_setup_installs_hooks_and_row_dispatches() {
+        fn parent_row(_tif: &TiffCodec, buf: &mut [u8], sample: u16) -> i32 {
+            assert_eq!(sample, 9);
+            buf[0] = buf[0].wrapping_add(1);
+            1
+        }
+        let mut tif = predictor_tif(2);
+        tif.bits_per_sample = 8;
+        tif.tif_encoderow_516 = Some(parent_row);
+        tif.predictor_setup_encode_parent = Some(ok_setup);
+        assert_eq!(stub_0x1b289c(&mut tif), 1);
+        assert_eq!(tif.tif_encoderow_516, Some(stub_0x1b2378 as TiffRowCode4));
+        assert_eq!(tif.tif_encodetile_532, Some(stub_0x1b336c as TiffRowCode4));
+        let sp = tif.predictor.as_ref().expect("sp");
+        assert_eq!(sp.encoderow_12, Some(parent_row as PredictorParentCode4));
+        // Second setup is a no-op on hooks (row already installed).
+        assert_eq!(stub_0x1b289c(&mut tif), 1);
+        // EncodeRow runs the differencer then the saved parent.
+        let mut buf = vec![10u8, 20, 30];
+        assert_eq!(stub_0x1b2378(&tif, &mut buf, 9), 1);
+        assert_eq!(buf, vec![11, 10, 10]);
+    }
+
+    #[test]
+    fn decode_setup_swaps_to_swab_under_swab_flag() {
+        let mut tif = predictor_tif(2);
+        tif.bits_per_sample = 16;
+        tif.flags |= TIFF_FLAG_SWAB;
+        tif.predictor_setup_decode_parent = Some(ok_setup);
+        assert_eq!(stub_0x1b29d0(&mut tif), 1);
+        assert_eq!(
+            tif.predictor.as_ref().expect("sp").decodepfunc_40,
+            Some(stub_0x1b37b8 as PredictorPFunc)
+        );
+        assert_eq!(tif.post_decode_hook, Some(stub_0x1b3b90 as NoPostDecodeHook));
+        assert_eq!(tif.tif_decoderow_512, Some(stub_0x1b2598 as TiffRowDecode));
+    }
+
+    #[test]
+    fn fp_diff_acc_round_trip() {
+        let mut tif = predictor_tif(3);
+        tif.bits_per_sample = 32;
+        tif.predictor.as_mut().expect("sp").stride_4 = 1;
+        let orig: Vec<u8> = (0u8..32).collect();
+        let mut buf = orig.clone();
+        assert_eq!(stub_0x1b2ba4(&tif, &mut buf), 32);
+        assert_ne!(buf, orig);
+        stub_0x1b2f90(&tif, &mut buf);
+        assert_eq!(buf, orig);
+    }
+
+    #[test]
+    fn swab_hor_acc32_swaps_then_accumulates() {
+        let mut tif = predictor_tif(2);
+        tif.predictor.as_mut().expect("sp").stride_4 = 1;
+        // Two big-endian lanes: [1, 2] -> swabbed [1, 2] LE -> acc [1, 3].
+        let mut buf = vec![0u8, 0, 0, 1, 0, 0, 0, 2];
+        stub_0x1b355c(&tif, &mut buf);
+        assert_eq!(buf, vec![1, 0, 0, 0, 3, 0, 0, 0]);
+    }
+
+    #[test]
+    fn swab_data_helpers() {
+        let tif = TiffCodec::default();
+        let mut w = vec![1u8, 2, 3, 4];
+        stub_0x1b3bec(&tif, &mut w);
+        assert_eq!(w, vec![4, 3, 2, 1]);
+        let mut s = vec![5u8, 6, 7];
+        stub_0x1b3c44(&tif, &mut s);
+        assert_eq!(s, vec![7, 6, 5]);
+        let mut h = vec![8u8, 9];
+        stub_0x1b3ca4(&tif, &mut h);
+        assert_eq!(h, vec![9, 8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "(cc & 3) == 0")]
+    fn swab32_rejects_fractional() {
+        stub_0x1b3bec(&TiffCodec::default(), &mut vec![1u8, 2, 3]);
+    }
+
+    #[test]
+    fn check_read_matrix() {
+        let mut tif = TiffCodec::default();
+        tif.mode = 0;
+        assert_eq!(stub_0x1b3cf4(&mut tif, 0), 1);
+        assert_eq!(stub_0x1b3cf4(&mut tif, 1), 0);
+        tif.flags |= TIFF_FLAG_TILED;
+        assert_eq!(stub_0x1b3cf4(&mut tif, 1), 1);
+        tif.mode = 1;
+        assert_eq!(stub_0x1b3cf4(&mut tif, 1), 0);
+        assert_eq!(tif.last_error.as_deref(), Some("TIFFCheckRead"));
+    }
+
+    #[test]
+    fn buffer_setup_rounds_and_installs() {
+        let mut tif = TiffCodec::default();
+        assert_eq!(stub_0x1b3d80(&mut tif, None, 8), 1);
+        assert_eq!((tif.raw_bytes.len(), tif.raw_count_143), (1024, 1024));
+        assert_ne!(tif.flags & TIFF_FLAG_MYBUFFER, 0);
+        assert_eq!(stub_0x1b3d80(&mut tif, Some(vec![1u8, 2]), 2), 1);
+        assert_eq!((tif.raw_bytes, tif.raw_count_143), (vec![1, 2], 2));
+        assert_eq!(tif.flags & TIFF_FLAG_MYBUFFER, 0);
+    }
+
+    #[test]
+    fn print_dir_formats_and_chains() {
+        let mut tif = predictor_tif(2);
+        tif.printdir_word_44 |= 4;
+        let mut out = String::new();
+        let n = stub_0x1b3a08(&tif, &mut out, 0);
+        assert_eq!(out, "  Predictor: horizontal differencing 2 (0x2)\n");
+        // `fprintf` returns only the final line's count (`"2 (0x2)\n"`).
+        assert_eq!(n, 8);
+        fn parent(_tif: &TiffCodec, stream: &mut String, _flags: u32) -> i32 {
+            stream.push_str("parent;");
+            42
+        }
+        tif.predictor_print_parent = Some(parent);
+        let mut out2 = String::new();
+        assert_eq!(stub_0x1b3a08(&tif, &mut out2, 0), 42);
+        assert!(out2.ends_with("parent;"));
+    }
+
+    #[test]
+    fn init_cleanup_round_trip() {
+        fn old_get(_tif: &TiffCodec, _tag: u32, _out: &mut u16) -> i32 {
+            3
+        }
+        let mut tif = predictor_tif(1);
+        tif.tif_vgetfield_161 = Some(old_get);
+        assert_eq!(stub_0x1b2688(&mut tif), 1);
+        assert_eq!(tif.predictor.as_ref().expect("sp").tag_0, 1);
+        assert_eq!(tif.predictor_get_parent, Some(old_get as PredictorParentGet));
+        assert_eq!(tif.tif_decoderow_512, None);
+        assert_eq!(stub_0x1b219c(&mut tif), 1);
+        assert_eq!(tif.tif_vgetfield_161, Some(old_get as PredictorParentGet));
+    }
+
+    fn read_tif() -> TiffCodec {
+        let mut tif = TiffCodec::default();
+        tif.mode = 0;
+        tif.flags |= TIFF_FLAG_MYBUFFER | TIFF_FLAG_BITREV_100;
+        tif.strip_bytecounts_180 = vec![8];
+        tif.data_offsets_176 = vec![0];
+        tif.strip_count_172 = 1;
+        tif.rows_per_strip_168 = 1;
+        tif.strip_row_factor_96 = 1;
+        tif.img_dim_56 = 1;
+        tif.seek_proc_612 = Some(|_client, off| off);
+        tif.read_proc_604 = Some(|_client, buf| {
+            buf.copy_from_slice(&[7u8; 8][..buf.len()]);
+            buf.len()
+        });
+        tif.setup_hook_488 = Some(ok_setup);
+        tif.seek_hook_492 = Some(|_tif, _s| 7);
+        tif
+    }
+
+    #[test]
+    fn fill_strip_reads_and_seeks() {
+        let mut tif = read_tif();
+        assert_eq!(stub_0x1b44e4(&mut tif, 0), 7);
+        assert_eq!(&tif.raw_bytes[..8], &[7u8; 8]);
+        assert_eq!(
+            (tif.cur_strip_452, tif.raw_count_580, tif.cur_row_444),
+            (0, 8, 0)
+        );
+    }
+
+    #[test]
+    fn read_encoded_strip_decodes_and_postprocesses() {
+        fn decode(_tif: &TiffCodec, buf: &mut [u8], sample: u16) -> i32 {
+            assert_eq!(sample, 0);
+            buf.fill(9);
+            1
+        }
+        let mut tif = read_tif();
+        tif.vstrip_size_hook = Some(|_tif, _rows| 8);
+        tif.tif_decodestrip_520 = Some(decode);
+        tif.post_decode_hook = Some(stub_0x1b3b90);
+        let mut buf = vec![0u8; 8];
+        assert_eq!(stub_0x1b4794(&mut tif, 0, &mut buf, -1), 8);
+        assert_eq!(buf, vec![9u8; 8]);
+    }
+
+    #[test]
+    fn default_strip_size_calls_proc() {
+        let tif = TiffCodec::default();
+        let r = std::panic::catch_unwind(|| stub_0x1b48d0(&tif));
+        assert!(r.is_err());
+        let mut tif = TiffCodec::default();
+        tif.default_strip_size_548 = Some(|_tif| 8192);
+        assert_eq!(stub_0x1b48d0(&tif), 8192);
+    }
 }
