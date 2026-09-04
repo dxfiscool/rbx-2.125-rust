@@ -161,6 +161,18 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `RBX::StockSound` (IDA `0x37677c`): same opaque shape.
+#[derive(Default)]
+pub struct StockSound {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Soundscape::SoundChannel` (IDA `0x37551c`): same shape.
+#[derive(Default)]
+pub struct SoundChannel {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Heartbeat` (IDA `0x323238`): the per-frame tick value
 /// carried by `signal<void ()(Heartbeat const&)>`; plain data.
 #[derive(Clone, Copy, Default)]
@@ -168,11 +180,17 @@ pub struct Heartbeat {
     _tick: u32,
 }
 
-/// Rust model of `RBX::HeartbeatInstance` (IDA `0x323238`): field layout
-/// unmodeled; subscribes its heartbeat handler via `connect`.
-#[derive(Default)]
+/// Rust model of `RBX::HeartbeatInstance` (IDA `0x323238`): the heartbeat
+/// `connection` at `+4` (disconnected by D2, IDA `0x36b3da`); all else
+/// unmodeled.
 pub struct HeartbeatInstance {
-    _opaque: (),
+    pub connection: Option<HeartbeatConnection>,
+}
+
+impl Default for HeartbeatInstance {
+    fn default() -> Self {
+        Self { connection: None }
+    }
 }
 
 /// Rust model of `boost::_bi::bind_t<void, mf1<void, HeartbeatInstance,
@@ -5605,8 +5623,16 @@ pub fn stub_0x369ae0() -> ! {
 // 0x36b370 — __ZN3RBX17HeartbeatInstanceD2Ev
 #[doc(alias = "RBX::HeartbeatInstance::~HeartbeatInstance()")]
 // was: RBX::HeartbeatInstance::~HeartbeatInstance()
-pub fn stub_0x36b370() -> ! {
-    todo!("0x36b370 RBX::HeartbeatInstance::~HeartbeatInstance()")
+pub fn stub_0x36b370(this: *mut HeartbeatInstance) {
+    // IDA 0x36b370: vtable reset (compiler-managed, disasm 0x36b3ac),
+    // `connection::disconnect(this + 4)` (disasm 0x36b3da), conditional
+    // `weak_release` (disasm 0x36b3e0-0x2b3e8 — the intrusive weak half of
+    // the dropped connection). Dropping the `Option` is the same
+    // disconnect + release.
+    // SAFETY: `this` must point to a valid `HeartbeatInstance`.
+    unsafe {
+        (*this).connection = None;
+    }
 }
 
 // 0x36d948 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEEvT_
@@ -5654,15 +5680,20 @@ pub fn stub_0x36f134() -> ! {
 // 0x371250 — __ZN3RBX17HeartbeatInstanceD1Ev
 #[doc(alias = "RBX::HeartbeatInstance::~HeartbeatInstance()")]
 // was: RBX::HeartbeatInstance::~HeartbeatInstance()
-pub fn stub_0x371250() -> ! {
-    todo!("0x371250 RBX::HeartbeatInstance::~HeartbeatInstance()")
+pub fn stub_0x371250(this: *mut HeartbeatInstance) {
+    // IDA 0x371250: `B.W HeartbeatInstanceD2-shim` — D1 tail-calls D2 (IDA
+    // 0x36b370, disasm 0x371250); storage freed by the caller, never here.
+    // SAFETY: `this` must point to a valid `HeartbeatInstance`.
+    stub_0x36b370(this);
 }
 
 // 0x37551c — __ZNK3RBX10Soundscape12SoundChannel12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Soundscape::SoundChannel::askSetParent(RBX::Instance const*)const")]
 // was: RBX::Soundscape::SoundChannel::askSetParent(RBX::Instance const*)const
-pub fn stub_0x37551c() -> ! {
-    todo!("0x37551c RBX::Soundscape::SoundChannel::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x37551c(_this: *const SoundChannel, _parent: *const Instance) -> bool {
+    // IDA 0x37551c: `return 1` (disasm 0x37551e) — a sound channel accepts
+    // any parent. Twin of `Script::askSetParent` (0x28e114).
+    true
 }
 
 // 0x375744 — __ZN3RBX10Soundscape12SoundChannel9playSoundEPKNS_8InstanceE
@@ -5689,8 +5720,10 @@ pub fn stub_0x376004() -> ! {
 // 0x37677c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")]
 // was: boost::shared_ptr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)
-pub fn stub_0x37677c() -> ! {
-    todo!("0x37677c boost::shared_ptr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")
+pub fn stub_0x37677c() -> SharedPtr<StockSound> {
+    // IDA 0x37677c: `operator new(0x90)` (disasm 0x37679a-0x37679c; 144 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(StockSound::default())
 }
 
 // 0x376a90 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
@@ -5703,113 +5736,186 @@ pub fn stub_0x376a90() -> ! {
 // 0x377154 — __ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")]
 // was: RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)
-pub fn stub_0x377154() -> ! {
-    todo!("0x377154 RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")
+pub fn stub_0x377154(instance: *const Instance) -> *const Instance {
+    // IDA 0x377154: `findServiceProvider(instance)` (disasm 0x377158), null
+    // yields `0` (disasm 0x37715c-0x377162); else `find<SoundService>()`
+    // inside it (tail `B.W shim`, disasm 0x377168). Same shape as
+    // `find<ScriptService>` (0x7039cc): provider approximated by the tree
+    // root, lookup is a pre-order scan for the class name, miss is null.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack = vec![root];
+        while let Some(current) = stack.pop() {
+            if instance_is_a(current, "SoundService") {
+                return current;
+            }
+            for child in (*current).children.iter().rev() {
+                stack.push(SharedPtr::as_ptr(child));
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x3780c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
 // was: boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)
-pub fn stub_0x3780c8() -> ! {
-    todo!("0x3780c8 boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")
+pub fn stub_0x3780c8() -> SharedPtr<SoundChannel> {
+    // IDA 0x3780c8: `operator new(0x90)` (disasm 0x3780e6-0x3780e8; 144 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(SoundChannel::default())
 }
 
 // 0x378178 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x378178() -> ! {
-    todo!("0x378178 boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x378178(ptr: *mut SoundChannel, _deleter: CreatableInstanceDeleter) -> SharedPtr<SoundChannel> {
+    // IDA 0x378178: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(SoundChannel::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x37832c — __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x37832c() -> ! {
-    todo!("0x37832c boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x37832c(ptr: *mut SoundChannel, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<SoundChannel, CreatableInstanceDeleter> {
+    // IDA 0x37832c: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x378434 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x378434() -> ! {
-    todo!("0x378434 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x378434(_block: *mut ControlBlockPd<SoundChannel, CreatableInstanceDeleter>) {
+    // IDA 0x378434: `BX LR` — empty (canonical D1 slot); same as 0xf198.
 }
 
 // 0x378438 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x378438() -> ! {
-    todo!("0x378438 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x378438(block: *mut ControlBlockPd<SoundChannel, CreatableInstanceDeleter>) {
+    // IDA 0x378438: `B.W __ZdlPv$shim` — D0 storage release only (canonical
+    // D0 slot); same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x37843c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x37843c() -> ! {
-    todo!("0x37843c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x37843c(block: *mut ControlBlockPd<SoundChannel, CreatableInstanceDeleter>) {
+    // IDA 0x37843c: `predelete` + null early-out + deleter virtual-delete
+    // (canonical dispose slot); same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x37845c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x37845c() -> ! {
-    todo!("0x37845c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x37845c(block: *const ControlBlockPd<SoundChannel, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x37845c: deleter-name `strcmp`, `this + 0x10` on hit (canonical
+    // get_deleter slot); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x378474 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x378474() -> ! {
-    todo!("0x378474 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x378474(block: *const ControlBlockPd<SoundChannel, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x378474: unconditional `this + 0x10` (canonical untyped slot);
+    // same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x37cdc0 — __ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x37cdc0() -> ! {
-    todo!("0x37cdc0 boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x37cdc0(ptr: *mut StockSound, _deleter: CreatableInstanceDeleter) -> SharedPtr<StockSound> {
+    // IDA 0x37cdc0: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(StockSound::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x37cf74 — __ZN5boost6detail12shared_countC2IPN3RBX10StockSoundENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x37cf74() -> ! {
-    todo!("0x37cf74 boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x37cf74(ptr: *mut StockSound, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<StockSound, CreatableInstanceDeleter> {
+    // IDA 0x37cf74: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x37d07c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x37d07c() -> ! {
-    todo!("0x37d07c boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37d07c(_block: *mut ControlBlockPd<StockSound, CreatableInstanceDeleter>) {
+    // IDA 0x37d07c: `BX LR` — empty (canonical D1 slot); same as 0xf198.
 }
 
 // 0x37d080 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x37d080() -> ! {
-    todo!("0x37d080 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37d080(block: *mut ControlBlockPd<StockSound, CreatableInstanceDeleter>) {
+    // IDA 0x37d080: `B.W __ZdlPv$shim` — D0 storage release only (canonical
+    // D0 slot); same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x37d084 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x37d084() -> ! {
-    todo!("0x37d084 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x37d084(block: *mut ControlBlockPd<StockSound, CreatableInstanceDeleter>) {
+    // IDA 0x37d084: `predelete` + null early-out + deleter virtual-delete
+    // (canonical dispose slot); same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x37d0a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x37d0a4() -> ! {
-    todo!("0x37d0a4 boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x37d0a4(block: *const ControlBlockPd<StockSound, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x37d0a4: deleter-name `strcmp`, `this + 0x10` on hit (canonical
+    // get_deleter slot); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x37d0bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x37d0bc() -> ! {
-    todo!("0x37d0bc boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x37d0bc(block: *const ControlBlockPd<StockSound, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x37d0bc: unconditional `this + 0x10` (canonical untyped slot);
+    // same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x37d98c — __ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
