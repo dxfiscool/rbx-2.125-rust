@@ -741,56 +741,63 @@ pub fn stub_97f8f4() -> ! {
 // type: RBX::Stats::Item *__fastcall(RBX::Stats::Item *, int)
 #[doc(alias = "RBX::Network::RakStatsItem::RakStatsItem(RakNet::RakNetStatistics const*)")]
 #[doc(alias = "__ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE")]
-pub fn stub_984648() -> ! {
-    todo!("0x984648 __ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE")
+pub fn stub_984648(emit: &mut dyn FnMut(&'static str)) {
+ // IDA 0x984648: Stats item plus RakNet counter children.
+ crate::replicator::describe_rak_stats(emit)
 }
 
 // 0x987790 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItem5writeERN6RakNet9BitStreamE
 // type: int __fastcall(__guard **this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::write(RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItem5writeERN6RakNet9BitStreamE")]
-pub fn stub_987790() -> ! {
-    todo!("0x987790 __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItem5writeERN6RakNet9BitStreamE")
+pub fn stub_987790(stream: &mut crate::bitstream::BitStream, capacity: i32, short: i16, write_type: &mut dyn FnMut(&mut crate::bitstream::BitStream)) -> u32 {
+ // IDA 0x987790: item type, int, short.
+ crate::replicator::write_capacity_update(stream, capacity, short, write_type)
 }
 
 // 0x9877c8 — __ZN3RBX7Network16ClientReplicator20RequestCharacterItem5writeERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::ClientReplicator::RequestCharacterItem *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::write(RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator20RequestCharacterItem5writeERN6RakNet9BitStreamE")]
-pub fn stub_9877c8() -> ! {
-    todo!("0x9877c8 __ZN3RBX7Network16ClientReplicator20RequestCharacterItem5writeERN6RakNet9BitStreamE")
+pub fn stub_9877c8(local_player: Option<u32>, write_type: &mut dyn FnMut(), write_rest: &mut dyn FnMut()) -> u32 {
+ // IDA 0x9877c8: local player required, always returns 1.
+ crate::replicator::write_request_character(local_player, write_type, write_rest)
 }
 
 // 0x988ad8 — __ZN3RBX7Network10Compressor13writeRotationERN6RakNet9BitStreamERKN3G3D7Matrix3ENS1_15CompressionTypeE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Network::Compressor::writeRotation(RakNet::BitStream &,G3D::Matrix3 const&,RBX::Network::Compressor::CompressionType)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor13writeRotationERN6RakNet9BitStreamERKN3G3D7Matrix3ENS1_15CompressionTypeE")]
-pub fn stub_988ad8() -> ! {
-    todo!("0x988ad8 __ZN3RBX7Network10Compressor13writeRotationERN6RakNet9BitStreamERKN3G3D7Matrix3ENS1_15CompressionTypeE")
+pub fn stub_988ad8(stream: &mut crate::bitstream::BitStream, quat: [f32; 4], compression: crate::physics::CompressionType) {
+ // IDA 0x988ad8: normalize the primitive quaternion, then `WriteNormQuat` or custom `writeNormQuat` by type.
+ crate::physics::write_rotation(stream, quat, compression)
 }
 
 // 0x988c40 — __ZN3RBX7Network10Compressor16writeTranslationERN6RakNet9BitStreamERKN3G3D7Vector3ENS1_15CompressionTypeE
 // type: unsigned int __fastcall(RakNet::BitStream *this, __guard **, int)
 #[doc(alias = "RBX::Network::Compressor::writeTranslation(RakNet::BitStream &,G3D::Vector3 const&,RBX::Network::Compressor::CompressionType)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor16writeTranslationERN6RakNet9BitStreamERKN3G3D7Vector3ENS1_15CompressionTypeE")]
-pub fn stub_988c40() -> ! {
-    todo!("0x988c40 __ZN3RBX7Network10Compressor16writeTranslationERN6RakNet9BitStreamERKN3G3D7Vector3ENS1_15CompressionTypeE")
+pub fn stub_988c40(stream: &mut crate::bitstream::BitStream, v: [f32; 3], requested: crate::physics::CompressionType) {
+ // IDA 0x988c40: `Quantized` downgrades to `Vector` unless x/z fit +/-1024 and y fits +/-512.
+ crate::physics::write_translation(stream, v, requested)
 }
 
 // 0x988e14 — __ZN3RBX7Network10Compressor12readRotationERN6RakNet9BitStreamERN3G3D7Matrix3E
 // type: void __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, G3D::Matrix3 *)
 #[doc(alias = "RBX::Network::Compressor::readRotation(RakNet::BitStream &,G3D::Matrix3 &)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor12readRotationERN6RakNet9BitStreamERN3G3D7Matrix3E")]
-pub fn stub_988e14() -> ! {
-    todo!("0x988e14 __ZN3RBX7Network10Compressor12readRotationERN6RakNet9BitStreamERN3G3D7Matrix3E")
+pub fn stub_988e14(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 4]) {
+ // IDA 0x988e14: `readNormQuat`-family read into the quaternion; the trailing `toRotationMatrix` stays engine-side.
+ crate::physics::read_rotation(stream, out)
 }
 
 // 0x989114 — __ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Compressor::readCompressionType(RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE")]
-pub fn stub_989114() -> ! {
-    todo!("0x989114 __ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE")
+pub fn stub_989114(stream: &mut crate::bitstream::BitStream) -> crate::physics::CompressionType {
+ // IDA 0x989114: 2-bit compression tag.
+ crate::physics::read_compression_type(stream)
 }
 
 // 0x989268 — __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E

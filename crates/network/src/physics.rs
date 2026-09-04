@@ -136,7 +136,7 @@ impl CompressionType {
 
 /// `RBX::Network::Compressor::readCompressionType` (IDA 0x989114): a 2-bit
 /// tag; short reads throw `std::runtime_error`, mirrored here as panics.
-fn read_compression_type(stream: &mut BitStream) -> CompressionType {
+pub fn read_compression_type(stream: &mut BitStream) -> CompressionType {
     // IDA 0x989134: the 2-byte buffer is zeroed before the read.
     let Some(bits) = stream.read_bits(2) else {
         panic!("Compressor::readTranslation failed reading compressionType");

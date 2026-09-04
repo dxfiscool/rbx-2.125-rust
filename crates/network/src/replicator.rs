@@ -1349,6 +1349,48 @@ mod tests {
         deserialize_sf_flags(&mut stream, &mut || n += 1);
         assert_eq!(n, 3);
     }
+    #[test]
+    fn stats_and_request_items() {
+        // IDA 0x984648: 25 children in order.
+        let mut names = Vec::new();
+        describe_rak_stats(&mut |n| names.push(n));
+        assert_eq!(names.len(), 25);
+        assert_eq!(names[0], "messageDataBytesSentPerSec");
+        assert_eq!(names[24], "packetlossTotal");
+        // IDA 0x987044: ack-gated CFrame write, always 1.
+        let order = core::cell::RefCell::new(Vec::new());
+        let mut acked = |accepted: bool| {
+            write_prop_acknowledgement(
+                accepted,
+                &mut || order.borrow_mut().push("w"),
+                &mut || order.borrow_mut().push("s"),
+            );
+            1
+        };
+        assert_eq!(acked(true), 1);
+        assert_eq!(acked(false), 1);
+        assert_eq!(order.borrow().as_slice(), ["w", "s"]);
+        // IDA 0x987790: capacity triple, always 1.
+        let mut stream = BitStream::new();
+        assert_eq!(
+            write_capacity_update(&mut stream, 32, 7, &mut |s| s.write_u8(9)),
+            1
+        );
+        let mut r = BitStream::from_bytes(&stream.into_bytes());
+        assert_eq!((r.read_u8(), r.read_i32(), r.read_i16()), (Some(9), Some(32), Some(7)));
+        // IDA 0x9877c8: local player required, always 1.
+        assert_eq!(
+            write_request_character(Some(3), &mut || order.borrow_mut().push("t"), &mut || order.borrow_mut().push("r")),
+            1
+        );
+        assert_eq!(order.borrow().as_slice(), ["w", "s", "t", "r"]);
+    }
+
+    #[test]
+    #[should_panic(expected = "without a local Player")]
+    fn request_character_without_player_panics() {
+        write_request_character(None, &mut || {}, &mut || {});
+    }
     }
 
 /// `ClientReplicator::ClientReplicator` C1 (IDA 0x97afc8) / C2 (IDA
@@ -1481,4 +1523,70 @@ pub fn deserialize_sf_flags(stream: &mut BitStream, apply: &mut dyn FnMut()) {
  for _ in 0..count {
  apply();
  }
+}
+
+/// `RakStatsItem::RakStatsItem` (IDA 0x984648): the `Stats` item plus one
+/// bound child per RakNet counter below (`messageSendBuffer` and
+/// `bytesInSendBuffer` each own four priority sub-children engine-side).
+/// Construction stays engine-side; this emits the child names in order.
+pub fn describe_rak_stats(emit: &mut dyn FnMut(&'static str)) {
+ for name in [
+ "messageDataBytesSentPerSec",
+ "messageTotalBytesSentPerSec",
+ "messageDataBytesResentPerSec",
+ "messagesBytesReceivedPerSec",
+ "messagesBytesReceivedAndIgnoredPerSec",
+ "bytesSentPerSec",
+ "bytesReceivedPerSec",
+ "totalMessageBytesPushed",
+ "totalMessageBytesSent",
+ "totalMessageBytesResent",
+ "totalMessagesBytesReceived",
+ "totalMessagesBytesReceivedAndIgnored",
+ "totalBytesSent",
+ "totalBytesReceived",
+ "connectionStartTime",
+ "outgoingBandwidthLimitBytesPerSecond",
+ "isLimitedByOutgoingBandwidthLimit",
+ "congestionControlLimitBytesPerSecond",
+ "isLimitedByCongestionControl",
+ "messageSendBuffer",
+ "bytesInSendBuffer",
+ "messagesInResendQueue",
+ "bytesInResendQueue",
+ "packetlossLastSecond",
+ "packetlossTotal",
+ ] {
+ emit(name);
+ }
+}
+
+/// `ClientCapacityUpdateItem::write` (IDA 0x987790): the item type, an
+/// `int`, and a `short`. Always returns 1.
+pub fn write_capacity_update(
+ stream: &mut BitStream,
+ capacity: i32,
+ short: i16,
+ write_type: &mut dyn FnMut(&mut BitStream),
+) -> u32 {
+ write_type(stream);
+ stream.write_i32(capacity);
+ stream.write_i16(short);
+ 1
+}
+
+/// `RequestCharacterItem::write` (IDA 0x9877c8): needs the local player
+/// (else `std::runtime_error`), then the item type, hack flags, spawn
+/// name, and player id go out engine-side. Always returns 1.
+pub fn write_request_character(
+ local_player: Option<u32>,
+ write_type: &mut dyn FnMut(),
+ write_rest: &mut dyn FnMut(),
+) -> u32 {
+ if local_player.is_none() {
+ panic!("Attempting to send a Character request without a local Player");
+ }
+ write_type();
+ write_rest();
+ 1
 }

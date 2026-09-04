@@ -73,8 +73,9 @@ pub fn stub_984204() -> ! {
 // 0x984648 — __ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE
 // type: RBX::Stats::Item *__fastcall(RBX::Stats::Item *, int)
 #[doc(alias = "RBX::Network::RakStatsItem::RakStatsItem(RakNet::RakNetStatistics const*)")]
-pub fn stub_984648() -> ! {
-    todo!("0x984648 __ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE")
+pub fn stub_984648(emit: &mut dyn FnMut(&'static str)) {
+ // IDA 0x984648: Stats item plus RakNet counter children.
+ crate::replicator::describe_rak_stats(emit)
 }
 
 // 0x985838 — __ZN3RBX7Network12RakStatsItemD0Ev
@@ -157,8 +158,10 @@ pub fn stub_986e40() -> ! {
 // 0x987044 — __ZN25CFrameAcknowledgementItem5writeERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::ClientReplicator **this, RakNet::BitStream *)
 #[doc(alias = "CFrameAcknowledgementItem::write(RakNet::BitStream &)")]
-pub fn stub_987044() -> ! {
-    todo!("0x987044 __ZN25CFrameAcknowledgementItem5writeERN6RakNet9BitStreamE")
+pub fn stub_987044(sync_accepted: bool, write: &mut dyn FnMut(), serialize: &mut dyn FnMut()) -> u32 {
+ // IDA 0x987044: CFrame ack write, always returns 1.
+ crate::replicator::write_prop_acknowledgement(sync_accepted, write, serialize);
+ 1
 }
 
 // 0x987068 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISC_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEbERSA_RKT_
@@ -213,8 +216,9 @@ pub fn stub_987784() -> ! {
 // 0x987790 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItem5writeERN6RakNet9BitStreamE
 // type: int __fastcall(__guard **this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::write(RakNet::BitStream &)")]
-pub fn stub_987790() -> ! {
-    todo!("0x987790 __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItem5writeERN6RakNet9BitStreamE")
+pub fn stub_987790(stream: &mut crate::bitstream::BitStream, capacity: i32, short: i16, write_type: &mut dyn FnMut(&mut crate::bitstream::BitStream)) -> u32 {
+ // IDA 0x987790: item type, int, short.
+ crate::replicator::write_capacity_update(stream, capacity, short, write_type)
 }
 
 // 0x9877b8 — __ZN3RBX7Network16ClientReplicator20RequestCharacterItemD1Ev
@@ -234,8 +238,9 @@ pub fn stub_9877bc() -> ! {
 // 0x9877c8 — __ZN3RBX7Network16ClientReplicator20RequestCharacterItem5writeERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::ClientReplicator::RequestCharacterItem *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::write(RakNet::BitStream &)")]
-pub fn stub_9877c8() -> ! {
-    todo!("0x9877c8 __ZN3RBX7Network16ClientReplicator20RequestCharacterItem5writeERN6RakNet9BitStreamE")
+pub fn stub_9877c8(local_player: Option<u32>, write_type: &mut dyn FnMut(), write_rest: &mut dyn FnMut()) -> u32 {
+ // IDA 0x9877c8: local player required, always returns 1.
+ crate::replicator::write_request_character(local_player, write_type, write_rest)
 }
 
 // 0x987c58 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEED2Ev
@@ -301,8 +306,9 @@ pub fn stub_988e14(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 4])
 // 0x989114 — __ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Compressor::readCompressionType(RakNet::BitStream &)")]
-pub fn stub_989114() -> ! {
-    todo!("0x989114 __ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE")
+pub fn stub_989114(stream: &mut crate::bitstream::BitStream) -> crate::physics::CompressionType {
+ // IDA 0x989114: 2-bit compression tag.
+ crate::physics::read_compression_type(stream)
 }
 
 // 0x989268 — __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E
