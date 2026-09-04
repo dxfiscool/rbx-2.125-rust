@@ -5,200 +5,392 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+/// Rust model of `RobloxExtraSpace::Shared` (IDA `0xf55c84`/`0xf55c74` family):
+/// the reference-counted payload behind the intrusive set. `SharedPtr` is
+/// `rbx_core::SharedPtr` (`Arc`), never `boost::shared_ptr`.
+#[derive(Debug, Default)]
+pub struct ExtraSpaceShared {
+    pub refs: u32,
+}
+
+/// One node of the `RBX::Intrusive::Set<RobloxExtraSpace, ...>` store (IDA
+/// `0xf55c14`/`0xf55c54`/`0xf2ce14` family). The intrusive hook collapses
+/// into the `linked` flag; the set itself is the `Vec` in `RobloxExtraSpace`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct ExtraSpaceNode {
+    pub id: u32,
+    pub refs: u32,
+    pub linked: bool,
+}
+
+/// Rust model of `RobloxExtraSpace` (IDA `0xf55c34`/`0xf55c44`/`0xf55bf4`):
+/// the intrusive-set node store behind `createNewNode`/`eraseRefsFromAllNodes`.
+#[derive(Debug, Default)]
+pub struct RobloxExtraSpace {
+    pub nodes: Vec<ExtraSpaceNode>,
+    pub next_id: u32,
+}
+
+/// Borrowed cursor over the intrusive set (IDA `...::Iterator` family:
+/// `0xf55c64`/`0xf2b4d4`/`0xf2b4c4`/`0xf2b4b4`). The raw node pointer of the
+/// original collapses into an index; out-of-range is the end iterator.
+#[derive(Debug, Clone, Copy)]
+pub struct ExtraSpaceIter {
+    pub index: usize,
+}
+
+/// The page-launch slot bound at IDA `0xf269b4`: `void(std::string,
+/// std::string, std::string, NSObject*, SharedPtr<RBX::Game>)` with the
+/// `RobloxPageViewController *` receiver. `boost::bind`/`list5`/`storage5`
+/// collapse into this tuple (bind/function become closures); the `NSObject *`
+/// page and `SharedPtr<RBX::Game>` game stay opaque addresses (`0` is
+/// `nil`/empty) with no host UIKit runtime here.
+#[derive(Debug, Default)]
+pub struct PageLaunchTask {
+    pub first: String,
+    pub second: String,
+    pub third: String,
+    pub page: usize,
+    pub game: usize,
+}
+
+impl PageLaunchTask {
+    /// Hosted page-launch dispatch (IDA `0xf268e4` `list5::operator()`);
+    /// without the UIKit host this keeps the call shape only.
+    pub fn run(&self) {
+        let _ = (&self.first, &self.second, &self.third, self.page, self.game);
+    }
+}
+
+/// First four bound args of the page-launch slot (IDA `0xf26954`
+/// `storage4`): the three strings plus the page receiver.
+#[derive(Debug, Default)]
+pub struct PageLaunchPrefix {
+    pub first: String,
+    pub second: String,
+    pub third: String,
+    pub page: usize,
+}
+
+/// Unsent-block queue behind `FlurryDataSenderBase` (IDA `0xf129a0`):
+/// `-[FlurryDataSenderBase networkStatusChanged:]` re-fires
+/// `performRetransmitNotSentBlocks` when the network returns.
+#[derive(Debug, Default)]
+pub struct FlurryDataSender {
+    pub pending: Vec<Vec<u8>>,
+}
+
+impl FlurryDataSender {
+    /// Rust model of `performRetransmitNotSentBlocks`: drains the unsent
+    /// queue and reports how many blocks were retransmitted.
+    pub fn perform_retransmit_not_sent_blocks(&mut self) -> usize {
+        let n = self.pending.len();
+        self.pending.clear();
+        n
+    }
+}
 
 // 0xf55c84 — j___ZN5boost6detail12shared_countC2IN16RobloxExtraSpace6SharedEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")]
-pub fn stub_f55c84() -> ! {
-    todo!("0xf55c84 boost::detail::shared_count::shared_count<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")
+pub fn stub_f55c84(ptr: *const ExtraSpaceShared) -> u32 {
+    // IDA 0xf55c84: `__picsymbolstub4` PLT trampoline (LDR R12 / ADD R12,PC /
+    // LDR PC); decompiler marks `// attributes: thunk` with a single tail
+    // call to the real `shared_count` ctor. Models `__shared_count(p)`
+    // adopting `p`: null starts empty, otherwise the use count starts at one
+    // (the atomic itself collapses into `Arc`).
+    if ptr.is_null() { 0 } else { 1 }
 }
 
 // 0xf55c74 — j___ZN5boost10shared_ptrIN16RobloxExtraSpace6SharedEEC2IS2_EEPT_
 // was: boost::shared_ptr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "rbx_core::SharedPtr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")]
-pub fn stub_f55c74() -> ! {
-    todo!("0xf55c74 boost::shared_ptr<RobloxExtraSpace::Shared>::shared_ptr<RobloxExtraSpace::Shared>(RobloxExtraSpace::Shared *)")
+pub fn stub_f55c74(shared: ExtraSpaceShared) -> SharedPtr<ExtraSpaceShared> {
+    // IDA 0xf55c74: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the real `shared_ptr` ctor. `Arc::new` allocates object +
+    // control block together, matching `shared_ptr(p)` adopting a fresh object.
+    SharedPtr::new(shared)
 }
 
 // 0xf55c64 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratordeEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator*(void)")]
-pub fn stub_f55c64() -> ! {
-    todo!("0xf55c64 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator*(void)")
+pub fn stub_f55c64(set: &RobloxExtraSpace, it: ExtraSpaceIter) -> Option<ExtraSpaceNode> {
+    // IDA 0xf55c64: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Iterator::operator*`. Dereferences the cursor; an
+    // out-of-range cursor is the end iterator (`None`).
+    set.nodes.get(it.index).copied()
 }
 
 // 0xf55c54 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E5eraseENS3_8IteratorE
 // type: int __fastcall(int, void *)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::erase(RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator)")]
-pub fn stub_f55c54() -> ! {
-    todo!("0xf55c54 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::erase(RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator)")
+pub fn stub_f55c54(set: &mut RobloxExtraSpace, it: ExtraSpaceIter) -> bool {
+    // IDA 0xf55c54: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Set::erase(Iterator)`. Unhooks the node at the cursor;
+    // the intrusive unlink collapses into the `Vec` removal.
+    if it.index < set.nodes.len() {
+        set.nodes.remove(it.index);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xf55c44 — j___ZN16RobloxExtraSpaceD2Ev
 // type: void __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::~RobloxExtraSpace()")]
-pub fn stub_f55c44() -> ! {
-    todo!("0xf55c44 RobloxExtraSpace::~RobloxExtraSpace()")
+pub fn stub_f55c44(space: &mut RobloxExtraSpace) {
+    // IDA 0xf55c44: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `~RobloxExtraSpace` (0xf55c4c). The member-by-member
+    // destruction collapses: dropping the node store runs the same release.
+    space.nodes.clear();
 }
 
 // 0xf55c34 — j___ZN16RobloxExtraSpaceC2Ev
 // type: RobloxExtraSpace *__fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::RobloxExtraSpace(void)")]
-pub fn stub_f55c34() -> ! {
-    todo!("0xf55c34 RobloxExtraSpace::RobloxExtraSpace(void)")
+pub fn stub_f55c34() -> RobloxExtraSpace {
+    // IDA 0xf55c34: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `RobloxExtraSpace::RobloxExtraSpace()` (0xf55c3c). The
+    // empty intrusive-set head is the default store.
+    RobloxExtraSpace::default()
 }
 
 // 0xf55c14 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E6insertERS2_
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::insert(RobloxExtraSpace&)")]
-pub fn stub_f55c14() -> ! {
-    todo!("0xf55c14 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::insert(RobloxExtraSpace&)")
+pub fn stub_f55c14(set: &mut RobloxExtraSpace, node: ExtraSpaceNode) {
+    // IDA 0xf55c14: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Set::insert(RobloxExtraSpace&)`. Links the node; the
+    // red-black hook collapses into the `Vec` push with `linked` set.
+    let mut node = node;
+    node.linked = true;
+    set.nodes.push(node);
 }
 
 // 0xf55c04 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E4Hook6removeEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Hook::remove(void)")]
-pub fn stub_f55c04() -> ! {
-    todo!("0xf55c04 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Hook::remove(void)")
+pub fn stub_f55c04(hook: &mut ExtraSpaceNode) {
+    // IDA 0xf55c04: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Hook::remove()`. Unhooks one node; the sibling/parent
+    // pointer fixups collapse into clearing `linked`.
+    hook.linked = false;
 }
 
 // 0xf55bf4 — j___ZN16RobloxExtraSpaceC2EPS_
 // type: RobloxExtraSpace *__fastcall(RobloxExtraSpace *__hidden this, RobloxExtraSpace *)
 #[doc(alias = "RobloxExtraSpace::RobloxExtraSpace(RobloxExtraSpace*)")]
-pub fn stub_f55bf4() -> ! {
-    todo!("0xf55bf4 RobloxExtraSpace::RobloxExtraSpace(RobloxExtraSpace*)")
+pub fn stub_f55bf4(other: &RobloxExtraSpace) -> RobloxExtraSpace {
+    // IDA 0xf55bf4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `RobloxExtraSpace(RobloxExtraSpace*)` (0xf55bfc). Copies
+    // the node store; the fresh copy restarts id allocation past the max id.
+    let next_id = other.nodes.iter().map(|n| n.id.wrapping_add(1)).max().unwrap_or(0);
+    RobloxExtraSpace { nodes: other.nodes.clone(), next_id }
 }
 
 // 0xf2ce14 — j___ZN16RobloxExtraSpace13createNewNodeEv
 // type: _DWORD __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::createNewNode(void)")]
-pub fn stub_f2ce14() -> ! {
-    todo!("0xf2ce14 RobloxExtraSpace::createNewNode(void)")
+pub fn stub_f2ce14(space: &mut RobloxExtraSpace) -> u32 {
+    // IDA 0xf2ce14: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `RobloxExtraSpace::createNewNode()`. Allocates one node
+    // and returns its id; the slab free-list collapses into the `Vec`.
+    let id = space.next_id;
+    space.next_id = space.next_id.wrapping_add(1);
+    space.nodes.push(ExtraSpaceNode { id, refs: 0, linked: false });
+    id
 }
 
 // 0xf2b4d4 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorptEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator->(void)")]
-pub fn stub_f2b4d4() -> ! {
-    todo!("0xf2b4d4 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator->(void)")
+pub fn stub_f2b4d4(set: &RobloxExtraSpace, it: ExtraSpaceIter) -> Option<&ExtraSpaceNode> {
+    // IDA 0xf2b4d4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Iterator::operator->`. Borrows the node at the cursor;
+    // the end iterator yields `None`.
+    set.nodes.get(it.index)
 }
 
 // 0xf2b4c4 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorppEv
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator++(void)")]
-pub fn stub_f2b4c4() -> ! {
-    todo!("0xf2b4c4 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::operator++(void)")
+pub fn stub_f2b4c4(it: &mut ExtraSpaceIter) {
+    // IDA 0xf2b4c4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Iterator::operator++`. Advances the cursor by one node;
+    // the tree-successor walk collapses into the index step.
+    it.index = it.index.wrapping_add(1);
 }
 
 // 0xf2b4b4 — j___ZN3RBX9Intrusive3SetI16RobloxExtraSpaceS2_E8IteratorC2EPS2_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::Iterator(RobloxExtraSpace*)")]
-pub fn stub_f2b4b4() -> ! {
-    todo!("0xf2b4b4 RBX::Intrusive::Set<RobloxExtraSpace,RobloxExtraSpace>::Iterator::Iterator(RobloxExtraSpace*)")
+pub fn stub_f2b4b4(index: usize) -> ExtraSpaceIter {
+    // IDA 0xf2b4b4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `Iterator(RobloxExtraSpace*)`. Wraps the node position;
+    // the raw pointer collapses into the index.
+    ExtraSpaceIter { index }
 }
 
 // 0xf2ad54 — j___ZN16RobloxExtraSpace21eraseRefsFromAllNodesEv
 // type: _DWORD __fastcall(RobloxExtraSpace *__hidden this)
 #[doc(alias = "RobloxExtraSpace::eraseRefsFromAllNodes(void)")]
-pub fn stub_f2ad54() -> ! {
-    todo!("0xf2ad54 RobloxExtraSpace::eraseRefsFromAllNodes(void)")
+pub fn stub_f2ad54(space: &mut RobloxExtraSpace) {
+    // IDA 0xf2ad54: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `eraseRefsFromAllNodes()`. Walks every node clearing the
+    // back-refs; the per-node unlink collapses into zeroing `refs`.
+    for node in space.nodes.iter_mut() {
+        node.refs = 0;
+    }
 }
 
 // 0xf26ca4 — j___ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS6_5list5INS6_5valueISsEESI_SI_NSH_IP24RobloxPageViewControllerEENSH_ISD_EEEEEEEEEEvPKNSA_IT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
 // was: void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>> *)const (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>> *)const")]
-pub fn stub_f26ca4() -> ! {
-    todo!("0xf26ca4 void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>> *)const")
+pub fn stub_f26ca4(task: &SharedPtr<PageLaunchTask>) -> std::sync::Weak<PageLaunchTask> {
+    // IDA 0xf26ca4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `enable_shared_from_this<thread_data_base>::
+    // _internal_accept_owner` for the page-launch `thread_data`. Arms the
+    // internal weak owner from the live `SharedPtr` (bind/function become
+    // closures; `Arc::downgrade` is the weak arm).
+    std::sync::Arc::downgrade(task)
 }
 
 // 0xf26ad4 — j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_
 // type: int __fastcall(int, int)
 // was: boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>> &&)")]
-pub fn stub_f26ad4() -> ! {
-    todo!("0xf26ad4 boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)")
+pub fn stub_f26ad4(task: PageLaunchTask) -> std::thread::JoinHandle<()> {
+    // IDA 0xf26ad4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `boost::thread(thread_data<bind_t<...>>&&)` for the page
+    // launch `(string, string, string, NSObject*, SharedPtr<Game>)`. Starts
+    // detached work via `std::thread` (`boost::thread` maps to `std::thread`).
+    std::thread::spawn(move || task.run())
 }
 
 // 0xf26a34 — j___ZN5boost6detail12shared_countC2INS0_11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS4_5list5INS4_5valueISsEESG_SG_NSF_IP24RobloxPageViewControllerEENSF_ISB_EEEEEEEEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>> *) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>> *)")]
-pub fn stub_f26a34() -> ! {
-    todo!("0xf26a34 boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>> *)")
+pub fn stub_f26a34(task: *const PageLaunchTask) -> u32 {
+    // IDA 0xf26a34: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the `shared_count` ctor for the page-launch `thread_data`.
+    // Same adoption shape as 0xf55c84: null starts empty, else count is one.
+    if task.is_null() { 0 } else { 1 }
 }
 
 // 0xf269f4 — j___ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEC2EOSK_
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 // was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>&&)")]
-pub fn stub_f269f4() -> ! {
-    todo!("0xf269f4 boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)")
+pub fn stub_f269f4(task: PageLaunchTask) -> PageLaunchTask {
+    // IDA 0xf269f4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the `thread_data<bind_t<...>>` move ctor. Takes ownership
+    // of the bound page-launch args; the move collapses into the return.
+    task
 }
 
 // 0xf269b4 — j___ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
 // type: int __fastcall(int, int, std::string *, int, std::string *, int, int)
 // was: boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_f269b4() -> ! {
-    todo!("0xf269b4 boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_f269b4(first: String, second: String, third: String, page: usize, game: usize) -> PageLaunchTask {
+    // IDA 0xf269b4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `boost::bind<void,...>` for the page launch `(string,
+    // string, string, NSObject*, SharedPtr<Game>)`. Binds the callable plus
+    // the five args into one slot; the `bind_t`/`list_av_5` wrappers collapse
+    // into the `PageLaunchTask` tuple.
+    PageLaunchTask { first, second, third, page, game }
 }
 
 // 0xf26964 — j___ZN5boost3_bi8storage5INS0_5valueISsEES3_S3_NS2_IP24RobloxPageViewControllerEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S3_S3_S6_SB_
 // type: int __fastcall(int, int, int, int, int, int)
 // was: boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_f26964() -> ! {
-    todo!("0xf26964 boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_f26964(first: String, second: String, third: String, page: usize, game: usize) -> PageLaunchTask {
+    // IDA 0xf26964: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the `storage5<value<string> x3, value<page*>,
+    // value<SharedPtr<Game>>>` ctor. Packs all five bound values; same tuple
+    // as the `bind` at 0xf269b4.
+    PageLaunchTask { first, second, third, page, game }
 }
 
 // 0xf26954 — j___ZN5boost3_bi8storage4INS0_5valueISsEES3_S3_NS2_IP24RobloxPageViewControllerEEEC2ES3_S3_S3_S6_
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>)")]
-pub fn stub_f26954() -> ! {
-    todo!("0xf26954 boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>)")
+pub fn stub_f26954(prefix: PageLaunchPrefix) -> PageLaunchPrefix {
+    // IDA 0xf26954: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the `storage4<value<string> x3, value<page*>>` ctor. Packs
+    // the first four bound values; the copy collapses into the return.
+    prefix
 }
 
 // 0xf268e4 — j___ZN5boost3_bi5list5INS0_5valueISsEES3_S3_NS2_IP24RobloxPageViewControllerEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvSsSsSsP8NSObjectSA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(std::string *)
 // was: void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_f268e4() -> ! {
-    todo!("0xf268e4 void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")
+pub fn stub_f268e4(task: &PageLaunchTask) {
+    // IDA 0xf268e4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling `list5<...>::operator()<page-launch-fn, list0>`: invokes
+    // the bound slot with the stored args. The unwrap-and-call collapses
+    // into `run`.
+    task.run();
 }
 
 // 0xf268d4 — j___ZN5boost3_bi5list5INS0_5valueISsEES3_S3_NS2_IP24RobloxPageViewControllerEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S3_S3_S6_SB_
 // type: int __fastcall(int, int, int, int, int, int)
 // was: boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>) (boost::shared_ptr -> rbx_core::SharedPtr)
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_f268d4() -> ! {
-    todo!("0xf268d4 boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_f268d4(first: String, second: String, third: String, page: usize, game: usize) -> PageLaunchTask {
+    // IDA 0xf268d4: `__picsymbolstub4` PLT trampoline; `// attributes: thunk`
+    // tail-calling the `list5<...>` ctor. Same five-value pack as `storage5`
+    // at 0xf26964 (list5 owns a storage5).
+    PageLaunchTask { first, second, third, page, game }
 }
 
 // 0xf129a0 — ___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0
 #[doc(alias = "___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0")]
-pub fn stub_f129a0() -> ! {
-    todo!("0xf129a0 ___45-[FlurryDataSenderBase networkStatusChanged:]_block_invoke_0")
+pub fn stub_f129a0(sender: &mut FlurryDataSender) -> usize {
+    // IDA 0xf129a0: `__block_invoke_0` for `-[FlurryDataSenderBase
+    // networkStatusChanged:]`; body is one `objc_msgSend` (0xf129b6) to
+    // `performRetransmitNotSentBlocks` on the captured sender (`a1 + 20`).
+    // The block/literal scaffolding collapses; `id` result is the count.
+    sender.perform_retransmit_not_sent_blocks()
 }
 
 // 0xf12774 — ___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0
 // type: void __cdecl(id)
 #[doc(alias = "___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0")]
-pub fn stub_f12774() -> ! {
-    todo!("0xf12774 ___59-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]_block_invoke_0")
+pub fn stub_f12774(log_level: u32) -> bool {
+    // IDA 0xf12774: `__block_invoke_0` for `-[FlurryDataSenderBase
+    // startBackgroundTaskTrackingIfNeeded]`; logs the expiration note via
+    // `NSLog` (0xf127a4) only when `[FlurryUtil logLevel] >= 2` (0xf12796).
+    // Returns whether the log fired.
+    log_level >= 2
 }
 
 // 0xf11f68 — ___35+[FlurryImpl registerBackgoundTask]_block_invoke_0
 // type: void __cdecl(id)
 #[doc(alias = "___35+[FlurryImpl registerBackgoundTask]_block_invoke_0")]
-pub fn stub_f11f68() -> ! {
-    todo!("0xf11f68 ___35+[FlurryImpl registerBackgoundTask]_block_invoke_0")
+pub fn stub_f11f68(log_level: u32) -> bool {
+    // IDA 0xf11f68: `__block_invoke_0` for `+[FlurryImpl
+    // registerBackgoundTask]`; logs the expiration-handler note (0xf11f98)
+    // only when `[FlurryUtil logLevel] == 3` (0xf11f8a). Returns whether the
+    // log fired.
+    log_level == 3
 }
 
 // 0xf11e54 — ___23-[FlurryImpl pauseTime]_block_invoke_0
 #[doc(alias = "___23-[FlurryImpl pauseTime]_block_invoke_0")]
-pub fn stub_f11e54() -> ! {
-    todo!("0xf11e54 ___23-[FlurryImpl pauseTime]_block_invoke_0")
+pub fn stub_f11e54(session_pause: i64, out_slot: &mut i64) -> i64 {
+    // IDA 0xf11e54: `__block_invoke_0` for `-[FlurryImpl pauseTime]`; reads
+    // `[[capture+24] session] pauseTime` (0xf11e68/0xf11e78) and stores it
+    // through the `__block_byref` slot (`*(a1+20)+4` at 0xf11e80), returning
+    // the value (0xf11e82). The ObjC sends collapse into the read.
+    *out_slot = session_pause;
+    session_pause
 }
 
 // 0xf11c1c — ___27-[FlurryImpl pageViewCount]_block_invoke_0
