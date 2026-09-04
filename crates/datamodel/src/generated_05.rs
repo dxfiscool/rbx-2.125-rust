@@ -402,6 +402,11 @@ pub struct EventDescPayload {
     /// `ScriptContext` family (IDA `0x2b8c9c` fire, `0x2b8f38` disconnect):
     /// same `+40` member-pointer pattern as `single`.
     pub triple: Signal<(String, String, SharedPtr<Instance>)>,
+    /// Direct-connect member signal for the 3-arg `(Instance, string,
+    /// Instance)` family (IDA `0x2be4d4` fire, `0x2be728` disconnect):
+    /// same pattern; the `(string, string, Instance)` spelling above is the
+    /// distinct `0x2b8838` event.
+    pub triple_isi: Signal<(SharedPtr<Instance>, String, SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::GenericSlotWrapper` (IDA `0x708378`): the
 /// marshalled script callback behind `connectGeneric`. Native handlers stand
@@ -411,6 +416,7 @@ pub struct GenericSlotWrapper {
     pub on_pair: Option<fn(&SharedPtr<Instance>, &SharedPtr<Instance>)>,
     pub on_single: Option<fn(&SharedPtr<Instance>)>,
     pub on_triple: Option<fn(&str, &str, &SharedPtr<Instance>)>,
+    pub on_triple_isi: Option<fn(&SharedPtr<Instance>, &str, &SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.
@@ -1283,6 +1289,7 @@ pub fn stub_0x70633c(
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
                 triple: Signal::new(),
+                triple_isi: Signal::new(),
             },
         );
     }
@@ -1377,6 +1384,7 @@ pub fn stub_0x707b28(
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
                 triple: Signal::new(),
+                triple_isi: Signal::new(),
             },
         );
     }
@@ -1837,6 +1845,7 @@ pub fn stub_0x709944(
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
                 triple: Signal::new(),
+                triple_isi: Signal::new(),
             },
         );
     }
