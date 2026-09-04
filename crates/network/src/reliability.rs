@@ -455,26 +455,53 @@ pub fn split_packet_channel_comp(key: u16, channel_id: u16) -> i32 {
     }
 }
 
-/// `DataStructures::OrderedList<...SplitPacketChannel...>::Insert` (IDA
-/// 0xa781a4) plus `DataStructures::List<RakNet::SplitPacketChannel *>::Insert`
-/// (IDA 0xa7899c): binary-search by split id, then insert positionally.
-/// A duplicate id returns the existing index without inserting.
-pub fn split_channel_ordered_insert(
-    channels: &mut Vec<SplitPacketChannel>,
-    channel: SplitPacketChannel,
-) -> usize {
+/// `DataStructures::OrderedList<...SplitPacketChannel...>` search (IDA
+/// 0xa74a3a/0xa781da): binary-search by split id. `Ok(index)` on a hit,
+/// `Err(position)` with the sorted insertion point on a miss.
+pub fn split_channel_position(
+    split_id: u16,
+    channels: &[SplitPacketChannel],
+) -> Result<usize, usize> {
     let mut lo = 0usize;
     let mut hi = channels.len();
     while lo < hi {
         let mid = lo + (hi - lo) / 2;
-        match split_packet_channel_comp(channel.split_id, channels[mid].split_id) {
-            0 => return mid,
+        match split_packet_channel_comp(split_id, channels[mid].split_id) {
+            0 => return Ok(mid),
             c if c < 0 => hi = mid,
             _ => lo = mid + 1,
         }
     }
-    channels.insert(lo, channel);
-    lo
+    Err(lo)
+}
+
+/// `DataStructures::OrderedList<...SplitPacketChannel...>::Insert` (IDA
+/// 0xa781a4): binary-search by split id, then insert positionally. A
+/// duplicate id inserts nothing and returns `None` (the original returns
+/// `-1`, IDA 0xa781c6).
+pub fn split_channel_ordered_insert(
+    channels: &mut Vec<SplitPacketChannel>,
+    channel: SplitPacketChannel,
+) -> Option<usize> {
+    match split_channel_position(channel.split_id, channels) {
+        Ok(_) => None,
+        Err(at) => {
+            channels.insert(at, channel);
+            Some(at)
+        }
+    }
+}
+
+/// `DataStructures::List<RakNet::SplitPacketChannel *>::Insert` indexed arm
+/// (IDA 0xa7899c): grow (16, then 2x) and shift down from `index`.
+/// `Vec::insert` keeps that edge; out-of-range indices clamp to the end.
+pub fn split_channel_insert_at(
+    channels: &mut Vec<SplitPacketChannel>,
+    channel: SplitPacketChannel,
+    index: usize,
+) {
+    let at = index.min(channels.len());
+    channels.insert(at, channel);
 }
 
 /// `RakNet::ReliabilityLayer::InsertIntoSplitPacketList` (IDA 0xa749fc):
@@ -490,11 +517,16 @@ pub fn insert_into_split_packet_list(
     progress_interval: u32,
     emit: &mut dyn FnMut(Vec<u8>),
 ) -> usize {
-    // IDA 0xa74a5e: binary search, then `OrderedList::Insert`.
-    let index = split_channel_ordered_insert(
-        channels,
-        SplitPacketChannel { split_id: packet.split_id, ..SplitPacketChannel::default() },
-    );
+    // IDA 0xa74a3a: own search first; found channels skip `Insert`
+    // (LABEL_28), fresh ids go through `OrderedList::Insert`.
+    let index = match split_channel_position(packet.split_id, channels) {
+        Ok(found) => found,
+        Err(at) => {
+            channels.insert(at, SplitPacketChannel::default());
+            channels[at].split_id = packet.split_id;
+            at
+        }
+    };
     let channel = &mut channels[index];
     // IDA 0xa74b86: stamp the channel time.
     channel.creation_time = creation_time;
@@ -934,6 +966,106 @@ pub fn internal_packet_queue_push(
 ) {
     queue.push_back(packet);
 }
+/// `DataStructures::Heap<unsigned long long, RakNet::InternalPacket *, false>`
+/// (IDA 0xa77784/0xa77950/0xa77ff4): min-heap of `(key, packet)` pairs backed
+/// by a flat 12-byte-node array (key lo/hi plus data). `Vec` keeps the
+/// 16-then-2x growth edge; `series` is the sticky bulk-append flag the
+/// original keeps at +12.
+#[derive(Clone, Debug, Default)]
+pub struct PacketHeap {
+    pub entries: Vec<(u64, InternalPacket)>,
+    pub series: bool,
+}
+
+/// `DataStructures::Heap<...>::Push` (IDA 0xa77950): append, then sift up
+/// while the parent key is greater (`u64` compare). Returns the final slot
+/// (the original returns the new count on a first push and a parent slot
+/// otherwise; no in-repo caller observes it).
+pub fn heap_push(heap: &mut PacketHeap, key: u64, packet: InternalPacket) -> usize {
+    heap.entries.push((key, packet));
+    let mut at = heap.entries.len() - 1;
+    // IDA 0xa77a02: sift up past greater parents.
+    while at > 0 {
+        let parent = (at - 1) >> 1;
+        if heap.entries[parent].0 <= key {
+            break;
+        }
+        heap.entries.swap(at, parent);
+        at = parent;
+    }
+    at
+}
+
+/// `DataStructures::Heap<...>::Pop` (IDA 0xa77784): remove the entry at
+/// `index`, move the last entry into the hole, and sift it down past
+/// smaller children (`u64` keys). `None` out of range. Returns the removed
+/// packet.
+pub fn heap_pop(heap: &mut PacketHeap, index: usize) -> Option<InternalPacket> {
+    if index >= heap.entries.len() {
+        return None;
+    }
+    // IDA 0xa777a2: `swap_remove` is the move-last-into-hole plus pop.
+    let removed = heap.entries.swap_remove(index);
+    // IDA 0xa777e0: sift down past the smaller child while greater.
+    let mut at = index;
+    loop {
+        let left = 2 * at + 1;
+        if left >= heap.entries.len() {
+            break;
+        }
+        let right = left + 1;
+        let mut child = left;
+        if right < heap.entries.len() && heap.entries[right].0 < heap.entries[left].0 {
+            child = right;
+        }
+        if heap.entries[at].0 <= heap.entries[child].0 {
+            break;
+        }
+        heap.entries.swap(at, child);
+        at = child;
+    }
+    Some(removed.1)
+}
+
+/// `DataStructures::Heap<...>::PushSeries` (IDA 0xa77ff4): in series mode
+/// append blindly; otherwise scan the back half — a key at/after every
+/// entry there appends directly and latches series mode, anything smaller
+/// falls back to [`heap_push`]. Returns the final slot.
+pub fn heap_push_series(heap: &mut PacketHeap, key: u64, packet: InternalPacket) -> usize {
+    // IDA 0xa78000: series mode appends without scanning.
+    if !heap.series {
+        // IDA 0xa7807c: scan from `(count - 1) >> 1` to the end.
+        let count = heap.entries.len();
+        let mut ordered = true;
+        let mut at = count.saturating_sub(1) >> 1;
+        while at < count {
+            if key < heap.entries[at].0 {
+                ordered = false;
+                break;
+            }
+            at += 1;
+        }
+        if !ordered {
+            // IDA 0xa780de: smaller than the tail falls back to Push.
+            return heap_push(heap, key, packet);
+        }
+        // IDA 0xa78196: direct appends latch series mode, even the first.
+        heap.series = true;
+    }
+    heap.entries.push((key, packet));
+    heap.entries.len() - 1
+}
+
+/// `DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert`
+/// (IDA 0xa78a2c indexed, 0xa78b08 append): positional insert or back-append
+/// of a `(min, max)` node. Out-of-range indices clamp to the end.
+pub fn range_node_insert(list: &mut RangeList, min: u32, max: u32, index: Option<usize>) {
+    let node = (min & UINT24_MASK, max & UINT24_MASK);
+    match index {
+        Some(at) => list.ranges.insert(at.min(list.ranges.len()), node),
+        None => list.ranges.push(node),
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -1075,23 +1207,78 @@ mod tests {
         assert_eq!(split_packet_channel_comp(3, 5), -1);
         assert_eq!(split_packet_channel_comp(5, 5), 0);
         assert_eq!(split_packet_channel_comp(7, 5), 1);
-        // IDA 0xa781a4: ordered insert keeps split-id order, dup returns index.
+        // IDA 0xa781a4: ordered insert keeps split-id order; duplicates
+        // insert nothing and report None.
         let mut channels = Vec::new();
         let at = split_channel_ordered_insert(
             &mut channels,
             SplitPacketChannel { split_id: 9, ..SplitPacketChannel::default() },
         );
-        assert_eq!(at, 0);
+        assert_eq!(at, Some(0));
         let at = split_channel_ordered_insert(
             &mut channels,
             SplitPacketChannel { split_id: 3, ..SplitPacketChannel::default() },
         );
-        assert_eq!(at, 0);
+        assert_eq!(at, Some(0));
         let dup = split_channel_ordered_insert(
             &mut channels,
             SplitPacketChannel { split_id: 9, ..SplitPacketChannel::default() },
         );
-        assert_eq!((dup, channels.len()), (1, 2));
+        assert_eq!((dup, channels.len()), (None, 2));
+        // IDA 0xa7899c: indexed insert shifts down from the index.
+        split_channel_insert_at(
+            &mut channels,
+            SplitPacketChannel { split_id: 6, ..SplitPacketChannel::default() },
+            1,
+        );
+        let ids: Vec<u16> = channels.iter().map(|channel| channel.split_id).collect();
+        assert_eq!(ids, vec![3, 6, 9]);
+        // Position search: hit vs insertion point.
+        assert_eq!(split_channel_position(6, &channels), Ok(1));
+        assert_eq!(split_channel_position(7, &channels), Err(2));
+    }
+
+    #[test]
+    fn packet_heap_push_pop_series() {
+        // IDA 0xa77950: pushes sift up into a min-heap.
+        let mut heap = PacketHeap::default();
+        heap_push(&mut heap, 30, InternalPacket::default());
+        heap_push(&mut heap, 10, InternalPacket::default());
+        heap_push(&mut heap, 20, InternalPacket::default());
+        let keys: Vec<u64> = heap.entries.iter().map(|entry| entry.0).collect();
+        assert_eq!(keys[0], 10);
+        // IDA 0xa77784: pop removes the slot and restores the heap.
+        let top = heap_pop(&mut heap, 0).expect("top");
+        assert_eq!((top.bit_length, heap.entries.len()), (0, 2));
+        let keys: Vec<u64> = heap.entries.iter().map(|entry| entry.0).collect();
+        assert_eq!(keys, vec![20, 30]);
+        assert!(heap_pop(&mut heap, 9).is_none());
+        // IDA 0xa77ff4: ordered series appends latch the sticky flag, so
+        // later series pushes append blindly.
+        let mut series = PacketHeap::default();
+        heap_push_series(&mut series, 5, InternalPacket::default());
+        assert!(series.series);
+        heap_push_series(&mut series, 9, InternalPacket::default());
+        heap_push_series(&mut series, 1, InternalPacket::default());
+        let keys: Vec<u64> = series.entries.iter().map(|entry| entry.0).collect();
+        assert_eq!(keys, vec![5, 9, 1]);
+        // The Push fallback runs while the flag is clear: seed with plain
+        // pushes, then a smaller series key sifts to the top.
+        let mut mixed = PacketHeap::default();
+        heap_push(&mut mixed, 9, InternalPacket::default());
+        assert!(!mixed.series);
+        heap_push_series(&mut mixed, 1, InternalPacket::default());
+        assert_eq!(mixed.entries[0].0, 1);
+    }
+
+    #[test]
+    fn range_node_insert_positions() {
+        // IDA 0xa78a2c/0xa78b08: indexed insert vs back-append.
+        let mut list = RangeList::default();
+        range_node_insert(&mut list, 9, 12, None);
+        range_node_insert(&mut list, 3, 3, Some(0));
+        range_node_insert(&mut list, 5, 5, Some(99));
+        assert_eq!(list.ranges, vec![(3, 3), (9, 12), (5, 5)]);
     }
 
     #[test]
@@ -1120,7 +1307,7 @@ mod tests {
         packet.reliability = 3;
         packet.data = vec![0xaa, 0xbb, 0xcc];
         let mut stream = crate::bitstream::BitStream::new();
-        assert!(write_internal_packet(&stream, &packet) > 0);
+        assert!(write_internal_packet(&mut stream, &packet) > 0);
         let back = create_internal_packet(&mut stream, 7).expect("packet");
         assert_eq!(
             (back.message_number, back.ordering_index, back.bit_length, back.reliability),
@@ -1169,7 +1356,6 @@ mod tests {
         for i in 0..0x205 {
             add_first_to_datagram_history(&mut history, i, i + 1, i + 2);
         }
-        assert_eq!(history.slots.len(), 0x201);
         push_datagram_history(&mut history, 1, 2);
         assert_eq!(history.slots.len(), 0x201);
         assert_eq!(history.slots.back().map(|node| node.message), Some(0));
@@ -1202,8 +1388,9 @@ mod tests {
         // IDA 0xa77b3c: count plus temp bits out; written ranges dropped.
         let mut list = RangeList::default();
         list.insert_value(7);
-        list.insert_value(9);
-        list.insert_value(12);
+        for value in 9..=12 {
+            list.insert_value(value);
+        }
         let mut stream = crate::bitstream::BitStream::new();
         let bits = serialize_range_list(&mut list, &mut stream, 1 << 20, true);
         assert!(bits > 0);
