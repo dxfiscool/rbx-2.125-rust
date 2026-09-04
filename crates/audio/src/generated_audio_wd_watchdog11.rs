@@ -1225,13 +1225,192 @@ pub fn stub_0633ae4(state: &SkateboardPlatformState) -> i32 {
     state.move_state
 }
 
+/// `RBX::Reflection::PropDescriptor<SkateboardPlatform, bool>` cutover
+/// (IDA 0x633b28): name/category/attributes/permissions plus the live
+/// value. The getter/setter member-pointer pair folds into direct field
+/// access (same shape as `Prop<bool>` in reflection).
+#[derive(Debug, Clone)]
+pub struct SkateBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl SkateBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<SkateboardPlatform, int>` cutover
+/// (IDA 0x633cb8): same shape as `SkateBoolProp` with an `i32` value.
+#[derive(Debug, Clone)]
+pub struct SkateIntProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: i32,
+}
+impl SkateIntProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: i32,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Velocity` cutover (IDA 0x633e44): linear + angular parts; the
+/// original passes one 6-float block (`a2[0..2]` linear, `a2[3..5]`
+/// angular).
+#[derive(Debug, Clone, Copy, Default)]
+pub struct Velocity {
+    pub linear: [f32; 3],
+    pub angular: [f32; 3],
+}
+/// `G3D::Matrix3` cutover (IDA 0x633e44): row-major 3x3, read from `a3`
+/// as rows `[a3+0..12]`, `[a3+12..24]`, `[a3+24..36]` (0x633e64-0x633ea6).
+#[derive(Debug, Clone, Copy, Default)]
+pub struct Matrix3 {
+    pub rows: [[f32; 3]; 3],
+}
+/// `RBX::TextureId`/`RBX::ContentId` cutover (IDA 0x634660/0x636e0c):
+/// the URL text plus the cached `Name` word (`+4`, from
+/// `Name::getNullName` / `ContentId::fromAssets`). The cache folds into
+/// the text; `operator!=` compares the text.
+#[derive(Debug, Clone, Default)]
+pub struct TextureId {
+    pub url: String,
+}
+impl TextureId {
+    pub fn new(url: &str) -> Self {
+        Self {
+            url: url.to_owned(),
+        }
+    }
+}
+/// `RBX::Sky` cutover (IDA 0x634660): six skybox faces at +92..+136
+/// (words 23..34: up, lf, rt, bk, ft, dn), the +140 flag (init 1) and
+/// the star count at +144 (word 36, init 3000). The `Instance`/`Described`
+/// bases and the `setName("Sky")` registration fold away.
+#[derive(Debug, Clone)]
+pub struct SkyState {
+    pub sky_up: TextureId,
+    pub sky_lf: TextureId,
+    pub sky_rt: TextureId,
+    pub sky_bk: TextureId,
+    pub sky_ft: TextureId,
+    pub sky_dn: TextureId,
+    pub flag_140: bool,
+    pub num_stars: i32,
+}
+/// Default face set under `FFlag::PlatformSkyboxEnable` (IDA 0x634660).
+pub const SKY_FACES_PLATFORM: [&str; 6] = [
+    "textures/sky/sky512_up.tex",
+    "textures/sky/sky512_lf.tex",
+    "textures/sky/sky512_rt.tex",
+    "textures/sky/sky512_bk.tex",
+    "textures/sky/sky512_ft.tex",
+    "textures/sky/sky512_dn.tex",
+];
+/// Default face set otherwise (IDA 0x634660).
+pub const SKY_FACES_FALLBACK: [&str; 6] = [
+    "sky/null_plainsky512_up.jpg",
+    "sky/null_plainsky512_lf.jpg",
+    "sky/null_plainsky512_rt.jpg",
+    "sky/null_plainsky512_bk.jpg",
+    "sky/null_plainsky512_ft.jpg",
+    "sky/null_plainsky512_dn.jpg",
+];
+/// `RBX::Reflection::BoundProp<bool>` cutover for `Sky` (IDA 0x6368d0):
+/// name/category plus the live value and the member offset (+8). The
+/// `TypedPropertyDescriptor<bool>` base folds into the header fields.
+#[derive(Debug, Clone)]
+pub struct SkyBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl SkyBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::BoundProp<TextureId>` cutover for `Sky`
+/// (IDA 0x636c50): same shape as `SkyBoolProp` with a `TextureId` value.
+#[derive(Debug, Clone)]
+pub struct SkyTextureProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: TextureId,
+}
+impl SkyTextureProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: TextureId,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+
 // 0x0633b04 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardPlatform::MoveState const&)const
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardPlatform::MoveState const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_")]
-pub fn stub_0633b04() -> ! {
-    todo!("0x0633b04 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardPlatform::MoveState const&)const")
+pub fn stub_0633b04(state: &mut SkateboardPlatformState, value: i32) {
+    // IDA 0x633b04 (`GetSetImpl::setValue`): null described writes at
+    // offset 0, else `a2 - 36` (0x633b04-0x633b0c); resolves the setter
+    // member pointer (+12/+16, virtual when the low bit is set,
+    // 0x633b0e-0x633b20) and tail-calls it (0x633b22). The member
+    // pointer folds into the field.
+    state.move_state = value;
 }
 
 // 0x0633b28 — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1239,8 +1418,19 @@ pub fn stub_0633b04() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::PropDescriptor<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>(char const*,char const*,bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0633b28() -> ! {
-    todo!("0x0633b28 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::PropDescriptor<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>(char const*,char const*,bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0633b28(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> SkateBoolProp {
+    // IDA 0x633b28 (`PropDescriptor<SkateboardPlatform, bool>::C2`):
+    // allocates the `GetSetImpl` member triple (0x14 bytes,
+    // 0x633b28-0x633b60), runs `TypedPropertyDescriptor<bool>::C2`
+    // (0x633b62-0x633b90) and installs the `PropDescriptor` vtable
+    // (0x633ba8). The member triple folds into direct field access.
+    SkateBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0633c3c — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbED0Ev
@@ -1257,8 +1447,10 @@ pub fn stub_0633c3c() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_0633c68() -> ! {
-    todo!("0x0633c68 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0633c68() -> bool {
+    // IDA 0x633c68 (`GetSetImpl<bool getter, bool setter>::isReadOnly`):
+    // `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x0633c6c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
@@ -1266,8 +1458,10 @@ pub fn stub_0633c68() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_0633c6c() -> ! {
-    todo!("0x0633c6c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0633c6c() -> bool {
+    // IDA 0x633c6c (`GetSetImpl<bool getter, bool setter>::isWriteOnly`):
+    // `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x0633c70 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -1275,8 +1469,12 @@ pub fn stub_0633c6c() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633c70() -> ! {
-    todo!("0x0633c70 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633c70(state: &SkateboardPlatformState) -> bool {
+    // IDA 0x633c70 (`GetSetImpl::getValue`): same member-pointer resolve
+    // as 0x633ae4 above (null described reads at offset 0, else `a2 -
+    // 36`; virtual when the low bit is set), tail-calling the getter.
+    // The member pointer folds into the field.
+    state.flag
 }
 
 // 0x0633c94 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
@@ -1284,8 +1482,11 @@ pub fn stub_0633c70() -> ! {
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0633c94() -> ! {
-    todo!("0x0633c94 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::GetSetImpl<bool (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0633c94(state: &mut SkateboardPlatformState, value: bool) {
+    // IDA 0x633c94 (`GetSetImpl::setValue`): same member-pointer resolve
+    // as 0x633b04 above, tail-calling the setter with `*a3`
+    // (0x633c94-0x633cb2). The member pointer folds into the field.
+    state.flag = value;
 }
 
 // 0x0633cb8 — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1293,8 +1494,17 @@ pub fn stub_0633c94() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::PropDescriptor<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>(char const*,char const*,int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0633cb8() -> ! {
-    todo!("0x0633cb8 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::PropDescriptor<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>(char const*,char const*,int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0633cb8(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> SkateIntProp {
+    // IDA 0x633cb8 (`PropDescriptor<SkateboardPlatform, int>::C2`): same
+    // member-triple + `TypedPropertyDescriptor<int>::C2` + vtable shape
+    // as the bool twin at 0x633b28.
+    SkateIntProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0633dcc — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiED0Ev
@@ -1311,8 +1521,10 @@ pub fn stub_0633dcc() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_0633df8() -> ! {
-    todo!("0x0633df8 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::isReadOnly(void)const")
+pub fn stub_0633df8() -> bool {
+    // IDA 0x633df8 (`GetSetImpl<int getter, int setter>::isReadOnly`):
+    // `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x0633dfc — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
@@ -1320,8 +1532,10 @@ pub fn stub_0633df8() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_0633dfc() -> ! {
-    todo!("0x0633dfc RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0633dfc() -> bool {
+    // IDA 0x633dfc (`GetSetImpl<int getter, int setter>::isWriteOnly`):
+    // `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x0633e00 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -1329,8 +1543,13 @@ pub fn stub_0633dfc() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633e00() -> ! {
-    todo!("0x0633e00 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633e00(state: &SkateboardPlatformState) -> i32 {
+    // IDA 0x633e00 (`GetSetImpl::getValue`): same member-pointer resolve
+    // as 0x633ae4 above (null described reads at offset 0, else `a2 -
+    // 36`; virtual when the low bit is set, 0x633e00-0x633e1a),
+    // tail-calling the getter (0x633e1c). The member pointer folds into
+    // the field.
+    state.count
 }
 
 // 0x0633e20 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
@@ -1338,8 +1557,11 @@ pub fn stub_0633e00() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_0633e20() -> ! {
-    todo!("0x0633e20 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::GetSetImpl<int (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0633e20(state: &mut SkateboardPlatformState, value: i32) {
+    // IDA 0x633e20 (`GetSetImpl::setValue`): same member-pointer resolve
+    // as 0x633b04 above, tail-calling the setter with the value
+    // (0x633e20-0x633e40). The member pointer folds into the field.
+    state.count = value;
 }
 
 // 0x0633e44 — __ZNK3RBX8Velocity8rotateByERKN3G3D7Matrix3E
@@ -1347,8 +1569,23 @@ pub fn stub_0633e20() -> ! {
 // type: int __fastcall(int result, __int32 *, int)
 #[doc(alias = "RBX::Velocity::rotateBy(G3D::Matrix3 const&)const")]
 #[doc(alias = "__ZNK3RBX8Velocity8rotateByERKN3G3D7Matrix3E")]
-pub fn stub_0633e44() -> ! {
-    todo!("0x0633e44 RBX::Velocity::rotateBy(G3D::Matrix3 const&)const")
+pub fn stub_0633e44(vel: &Velocity, mat: &Matrix3) -> Velocity {
+    // IDA 0x633e44 (`RBX::Velocity::rotateBy`): two row-major
+    // matrix-vector products — first over `a2[0..2]` (0x633e64-0x633ea6),
+    // then over `a2[3..5]` (0x633eb0-0x633ef0) — stored to the result
+    // block (0x633ef2-0x633f06). Each output row is the dot product of
+    // the matrix row with the input vector.
+    let mul = |v: &[f32; 3]| {
+        [
+            mat.rows[0][0] * v[0] + mat.rows[0][1] * v[1] + mat.rows[0][2] * v[2],
+            mat.rows[1][0] * v[0] + mat.rows[1][1] * v[1] + mat.rows[1][2] * v[2],
+            mat.rows[2][0] * v[0] + mat.rows[2][1] * v[1] + mat.rows[2][2] * v[2],
+        ]
+    };
+    Velocity {
+        linear: mul(&vel.linear),
+        angular: mul(&vel.angular),
+    }
 }
 
 // 0x0634630 — __ZN3RBX3Sky11setNumStarsEi
@@ -1356,8 +1593,18 @@ pub fn stub_0633e44() -> ! {
 // type: RBX::Instance *__fastcall(RBX::Instance *this, int)
 #[doc(alias = "RBX::Sky::setNumStars(int)")]
 #[doc(alias = "__ZN3RBX3Sky11setNumStarsEi")]
-pub fn stub_0634630() -> ! {
-    todo!("0x0634630 RBX::Sky::setNumStars(int)")
+pub fn stub_0634630(sky: &mut SkyState, value: i32) -> bool {
+    // IDA 0x634630 (`RBX::Sky::setNumStars`): clamps to 0..5000
+    // (0x634630-0x634644), returns early when unchanged (0x634646-
+    // 0x63464a), else stores at +0x90 (word 36, 0x634654) and tail-calls
+    // `raisePropertyChanged(prop_StarCount)` (0x63464c-0x63465c). The
+    // raise folds into the changed flag.
+    let clamped = value.clamp(0, 5000);
+    if clamped == sky.num_stars {
+        return false;
+    }
+    sky.num_stars = clamped;
+    true
 }
 
 // 0x0634660 — __ZN3RBX3SkyC2Ev
@@ -1365,8 +1612,32 @@ pub fn stub_0634630() -> ! {
 // type: RBX::Instance *__fastcall(RBX::Sky *this)
 #[doc(alias = "RBX::Sky::Sky(void)")]
 #[doc(alias = "__ZN3RBX3SkyC2Ev")]
-pub fn stub_0634660() -> ! {
-    todo!("0x0634660 RBX::Sky::Sky(void)")
+pub fn stub_0634660(platform_skybox_enable: bool) -> SkyState {
+    // IDA 0x634660 (`RBX::Sky::Sky`): `Instance::C2` + vtable installs +
+    // class-descriptor registration (0x63467c-0x634722); the six face
+    // `TextureId`s at +92..+136 start empty with null names
+    // (0x634722-0x634760), the +140 flag is set to 1 and the star count
+    // at +144 (word 36) to 3000 (0x634760-0x634768); `setName("Sky")`
+    // via slot 28 (0x63476a-0x634780); then the faces load
+    // `textures/sky/sky512_{up,lf,rt,bk,ft,dn}.tex` under
+    // `FFlag::PlatformSkyboxEnable`, else `sky/null_plainsky512_{...}.jpg`
+    // (0x634782-0x635860, via `ContentId::fromAssets`). The flag is a
+    // host-seam parameter; the name/registration fold away.
+    let faces = if platform_skybox_enable {
+        SKY_FACES_PLATFORM
+    } else {
+        SKY_FACES_FALLBACK
+    };
+    SkyState {
+        sky_up: TextureId::new(faces[0]),
+        sky_lf: TextureId::new(faces[1]),
+        sky_rt: TextureId::new(faces[2]),
+        sky_bk: TextureId::new(faces[3]),
+        sky_ft: TextureId::new(faces[4]),
+        sky_dn: TextureId::new(faces[5]),
+        flag_140: true,
+        num_stars: 3000,
+    }
 }
 
 // 0x0635864 — __ZNK3RBX3Sky11getNumStarsEv
@@ -1374,8 +1645,10 @@ pub fn stub_0634660() -> ! {
 // type: int __fastcall(RBX::Sky *this)
 #[doc(alias = "RBX::Sky::getNumStars(void)const")]
 #[doc(alias = "__ZNK3RBX3Sky11getNumStarsEv")]
-pub fn stub_0635864() -> ! {
-    todo!("0x0635864 RBX::Sky::getNumStars(void)const")
+pub fn stub_0635864(sky: &SkyState) -> i32 {
+    // IDA 0x635864 (`RBX::Sky::getNumStars`): loads word 36 at +0x90
+    // (0x635864-0x635868).
+    sky.num_stars
 }
 
 // 0x063586c — __ZN3RBX10Reflection14PropDescriptorINS_3SkyEiED1Ev
@@ -1445,16 +1718,26 @@ pub fn stub_0635be8() {
 // demangled: boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_06360a4() -> ! {
-    todo!("0x06360a4 boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")
+pub fn stub_06360a4(platform_skybox_enable: bool) -> SharedPtr<SkyState> {
+    // IDA 0x6360a4 (`Creatable<Instance>::create<Sky>`): `operator
+    // new(0x94)` (0x6360c2-0x6360c4), `Sky::Sky` (0x6360fa-0x6360fc),
+    // then the `shared_ptr<Sky>` ctor with the `Creatable::Deleter`
+    // (0x636100-0x63610a). The raw allocation folds into the `Arc`;
+    // the deleter folds into `Drop`.
+    stub_0636154(stub_0634660(platform_skybox_enable))
 }
 
 // 0x0636154 — __ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0636154() -> ! {
-    todo!("0x0636154 boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0636154(sky: SkyState) -> SharedPtr<SkyState> {
+    // IDA 0x636154 (`shared_ptr<Sky>::shared_ptr<Sky, Creatable
+    // Deleter>`): stores the pointer (0x636170-0x636174), builds the
+    // `shared_count` control block (0x63617a-0x63617c) and, when
+    // non-null, wires the weak owner via `_internal_accept_owner`
+    // (0x6361aa-0x6361be). `Arc::new` adopts the owner directly.
+    SharedPtr::new(sky)
 }
 
 // 0x063621c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -1518,8 +1801,22 @@ pub fn stub_063648c() {
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,bool RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,bool RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_3SkyEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_06368d0() -> ! {
-    todo!("0x06368d0 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sky>(char const*,char const*,bool RBX::Sky::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_06368d0(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> SkyBoolProp {
+    // IDA 0x6368d0 (`BoundProp<bool>::BoundProp<Sky>`):
+    // `TypedPropertyDescriptor<bool>::C2` with the class descriptor
+    // (0x6368ec-0x636958), installs the `BoundProp` vtable
+    // (0x636966-0x636976), allocates the `BoundPropGetSet<Sky>` member
+    // cell (0x14 bytes, 0x63697e-0x6369a2) and links it at +40
+    // (0x6369a4-0x6369c8), then clears the readonly/writeonly attribute
+    // bits when the member reports readable/writable (0x6369ca-0x6369f0).
+    // The member cell folds into direct field access.
+    SkyBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0636a60 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_3SkyEE10isReadOnlyEv
