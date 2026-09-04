@@ -5,7 +5,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
-const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
+use std::sync::Arc;
 
 /// `RBX::Smoke` cutover (IDA 0x637478): the `Color3` at +0x64..+0x6c,
 /// the size at +0x70, the opacity at +0x74 and the rise velocity at
@@ -16,6 +16,7 @@ pub struct SmokeState {
     pub size: f32,
     pub opacity: f32,
     pub rise_velocity: f32,
+    pub flag_60: bool,
 }
 /// Float member selector for the `GetSetImpl<float getter, float
 /// setter>` pairs below (IDA 0x638818/0x638838): the getter/setter
@@ -208,6 +209,7 @@ pub fn stub_0637478() -> SmokeState {
         size: 1.0,
         opacity: 0.5,
         rise_velocity: 1.0,
+        flag_60: true,
     }
 }
 
@@ -693,13 +695,120 @@ pub fn stub_06389cc(state: &mut SmokeState, value: [f32; 3]) -> bool {
     true
 }
 
+/// `boost::function<void(int)>` cutover for the social callbacks
+/// (IDA 0x6396c4): `assign_to_own`/`clear` fold into the `Arc` clone.
+pub type SocialIntFn = Arc<dyn Fn(i32) + Send + Sync>;
+/// `boost::function<void(bool)>` cutover (IDA 0x639b5c).
+pub type SocialBoolFn = Arc<dyn Fn(bool) + Send + Sync>;
+/// `boost::function<void(std::string)>` cutover (IDA 0x6396c4).
+pub type SocialStringFn = Arc<dyn Fn(String) + Send + Sync>;
+/// `LuaWebService::asyncRequest` payload (IDA 0x63a5e0/0x63a888/0x63ab30):
+/// the formatted URL plus the copied value/error callbacks. The parse
+/// (body to `int`/`bool`/`string`) lives in the web-service machinery,
+/// so each variant carries its own value callback.
+pub enum SocialRequest {
+    Int {
+        url: String,
+        on_value: SocialIntFn,
+        on_error: SocialStringFn,
+    },
+    Text {
+        url: String,
+        on_value: SocialStringFn,
+        on_error: SocialStringFn,
+    },
+    Flag {
+        url: String,
+        on_value: SocialBoolFn,
+        on_error: SocialStringFn,
+    },
+}
+/// `RBX::SocialService` cutover (IDA 0x63944c): the +92 flag (init 1)
+/// plus the seven URL templates at +96..+120 (friend, best friend,
+/// group, group rank, group role, stuff, package contents). The
+/// `Instance`/`Described` bases fold away.
+#[derive(Debug, Clone, Default)]
+pub struct SocialServiceState {
+    pub flag_92: bool,
+    pub friend_url: String,
+    pub best_friend_url: String,
+    pub group_url: String,
+    pub group_rank_url: String,
+    pub group_role_url: String,
+    pub stuff_url: String,
+    pub package_contents_url: String,
+}
+/// `RBX::format` cutover (IDA 0x63972a/0x639976/0x639bc2): printf-style
+/// substitution of the two ids in order (`%d`/`i`/`u`/`s` take the next
+/// arg, `%%` takes `%`, anything else is kept literally). The templates
+/// come from game config, so only the substitution discipline is fixed.
+pub fn social_format(template: &str, a: i32, b: i32) -> String {
+    let mut out = String::with_capacity(template.len() + 16);
+    let argv = [a, b];
+    let mut args = argv.iter();
+    let mut chars = template.chars();
+    while let Some(c) = chars.next() {
+        if c != '%' {
+            out.push(c);
+            continue;
+        }
+        match chars.next() {
+            Some('%') => out.push('%'),
+            Some('d') | Some('i') | Some('u') | Some('s') => match args.next() {
+                Some(v) => out.push_str(&v.to_string()),
+                None => out.push_str("%?"),
+            },
+            Some(other) => {
+                out.push('%');
+                out.push(other);
+            }
+            None => out.push('%'),
+        }
+    }
+    out
+}
+/// `RBX::SocialService::StuffType` items (IDA 0x639174 `EnumDesc::C2`:
+/// `addPair` Heads=0 .. Costumes=13).
+pub const STUFF_TYPE_ITEMS: [(&str, i32); 14] = [
+    ("Heads", 0),
+    ("Faces", 1),
+    ("Hats", 2),
+    ("TShirts", 3),
+    ("Shirts", 4),
+    ("Pants", 5),
+    ("Gears", 6),
+    ("Torsos", 7),
+    ("LeftArms", 8),
+    ("RightArms", 9),
+    ("LeftLegs", 10),
+    ("RightLegs", 11),
+    ("Bodies", 12),
+    ("Costumes", 13),
+];
+/// `EnumDesc<StuffType>` cutover (IDA 0x639174): the item table built
+/// by the 14 `addPair` calls.
+#[derive(Debug, Clone, Default)]
+pub struct StuffTypeDesc {
+    pub items: Vec<(String, i32)>,
+}
+
 // 0x0638a08 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_5SmokeEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Smoke>(char const*,char const*,bool RBX::Smoke::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 // type: 
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Smoke>(char const*,char const*,bool RBX::Smoke::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_5SmokeEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0638a08() -> ! {
-    todo!("0x0638a08 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Smoke>(char const*,char const*,bool RBX::Smoke::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0638a08(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> SmokeBoolProp {
+    // IDA 0x638a08 (`BoundProp<bool>::BoundProp<Smoke>`): same
+    // `TypedPropertyDescriptor<bool>::C2` + vtable + member-cell shape
+    // as the `Sky` twin at 0x6368d0 (0x638a08-0x638b90). The member
+    // cell folds into direct field access.
+    SmokeBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0638b98 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE10isReadOnlyEv
@@ -707,8 +816,10 @@ pub fn stub_0638a08() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE10isReadOnlyEv")]
-pub fn stub_0638b98() -> ! {
-    todo!("0x0638b98 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::isReadOnly(void)const")
+pub fn stub_0638b98() -> bool {
+    // IDA 0x638b98 (`BoundPropGetSet<Smoke>::isReadOnly`): `MOVS R0,
+    // #0; BX LR` — always readable.
+    false
 }
 
 // 0x0638b9c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE11isWriteOnlyEv
@@ -716,8 +827,10 @@ pub fn stub_0638b98() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE11isWriteOnlyEv")]
-pub fn stub_0638b9c() -> ! {
-    todo!("0x0638b9c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::isWriteOnly(void)const")
+pub fn stub_0638b9c() -> bool {
+    // IDA 0x638b9c (`BoundPropGetSet<Smoke>::isWriteOnly`): `MOVS R0,
+    // #0; BX LR` — always writable.
+    false
 }
 
 // 0x0638ba0 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE8getValueEPKNS0_13DescribedBaseE
@@ -725,8 +838,14 @@ pub fn stub_0638b9c() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0638ba0() -> ! {
-    todo!("0x0638ba0 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0638ba0(smoke: &SmokeState) -> bool {
+    // IDA 0x638ba0 (`BoundPropGetSet<Smoke>::getValue`): loads the
+    // member offset at +8, adjusts the described (`R1 - 36` when
+    // non-null, 0x638ba0-0x638ba2) and returns the byte there
+    // (0x638ba4). The member is the +0x60 flag (set to 1 by
+    // `Smoke::Smoke`, 0x63759e-0x6375a2); the offset folds into the
+    // field.
+    smoke.flag_60
 }
 
 // 0x0638bac — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE8setValueEPNS0_13DescribedBaseERKb
@@ -734,8 +853,18 @@ pub fn stub_0638ba0() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5SmokeEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0638bac() -> ! {
-    todo!("0x0638bac RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Smoke>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0638bac(smoke: &mut SmokeState, value: bool) -> bool {
+    // IDA 0x638bac (`BoundPropGetSet<Smoke>::setValue`): adjusts the
+    // described (0x638bb0-0x638bb6), returns early when the byte
+    // already matches (0x638bbe-0x638bc6), else stores (0x638bc8),
+    // runs the member hook when the +12/+16 pair is set
+    // (0x638bca-0x638bea) and tail-calls `raisePropertyChanged`
+    // (0x638bee-0x638bf6). Same shape as the `Sky` twin at 0x636a74.
+    if smoke.flag_60 == value {
+        return false;
+    }
+    smoke.flag_60 = value;
+    true
 }
 
 // 0x0639138 — __ZN3RBX13SocialService12setFriendUrlESs
@@ -743,8 +872,10 @@ pub fn stub_0638bac() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setFriendUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService12setFriendUrlESs")]
-pub fn stub_0639138() -> ! {
-    todo!("0x0639138 RBX::SocialService::setFriendUrl(std::string)")
+pub fn stub_0639138(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639138 (`RBX::SocialService::setFriendUrl`): `ADDS R0,
+    // #0x60; B string::assign` — direct assign, no raise.
+    state.friend_url = value;
 }
 
 // 0x0639140 — __ZN3RBX13SocialService16setBestFriendUrlESs
@@ -752,8 +883,10 @@ pub fn stub_0639138() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setBestFriendUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService16setBestFriendUrlESs")]
-pub fn stub_0639140() -> ! {
-    todo!("0x0639140 RBX::SocialService::setBestFriendUrl(std::string)")
+pub fn stub_0639140(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639140 (`RBX::SocialService::setBestFriendUrl`): assigns
+    // at +0x64 (0x639140-0x639142).
+    state.best_friend_url = value;
 }
 
 // 0x0639148 — __ZN3RBX13SocialService11setGroupUrlESs
@@ -761,8 +894,10 @@ pub fn stub_0639140() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setGroupUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService11setGroupUrlESs")]
-pub fn stub_0639148() -> ! {
-    todo!("0x0639148 RBX::SocialService::setGroupUrl(std::string)")
+pub fn stub_0639148(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639148 (`RBX::SocialService::setGroupUrl`): assigns at
+    // +0x68 (0x639148-0x63914a).
+    state.group_url = value;
 }
 
 // 0x0639150 — __ZN3RBX13SocialService15setGroupRankUrlESs
@@ -770,8 +905,10 @@ pub fn stub_0639148() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setGroupRankUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService15setGroupRankUrlESs")]
-pub fn stub_0639150() -> ! {
-    todo!("0x0639150 RBX::SocialService::setGroupRankUrl(std::string)")
+pub fn stub_0639150(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639150 (`RBX::SocialService::setGroupRankUrl`): assigns at
+    // +0x6c (0x639150-0x639152).
+    state.group_rank_url = value;
 }
 
 // 0x0639158 — __ZN3RBX13SocialService15setGroupRoleUrlESs
@@ -779,8 +916,10 @@ pub fn stub_0639150() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setGroupRoleUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService15setGroupRoleUrlESs")]
-pub fn stub_0639158() -> ! {
-    todo!("0x0639158 RBX::SocialService::setGroupRoleUrl(std::string)")
+pub fn stub_0639158(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639158 (`RBX::SocialService::setGroupRoleUrl`): assigns at
+    // +0x70 (0x639158-0x63915a).
+    state.group_role_url = value;
 }
 
 // 0x0639160 — __ZN3RBX13SocialService11setStuffUrlESs
@@ -788,8 +927,10 @@ pub fn stub_0639158() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setStuffUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService11setStuffUrlESs")]
-pub fn stub_0639160() -> ! {
-    todo!("0x0639160 RBX::SocialService::setStuffUrl(std::string)")
+pub fn stub_0639160(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639160 (`RBX::SocialService::setStuffUrl`): assigns at
+    // +0x74 (0x639160-0x639162).
+    state.stuff_url = value;
 }
 
 // 0x0639168 — __ZN3RBX13SocialService21setPackageContentsUrlESs
@@ -797,8 +938,10 @@ pub fn stub_0639160() -> ! {
 // type: 
 #[doc(alias = "RBX::SocialService::setPackageContentsUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13SocialService21setPackageContentsUrlESs")]
-pub fn stub_0639168() -> ! {
-    todo!("0x0639168 RBX::SocialService::setPackageContentsUrl(std::string)")
+pub fn stub_0639168(state: &mut SocialServiceState, value: String) {
+    // IDA 0x639168 (`RBX::SocialService::setPackageContentsUrl`):
+    // assigns at +0x78 (0x639168-0x63916a).
+    state.package_contents_url = value;
 }
 
 // 0x0639170 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC1Ev
@@ -806,8 +949,10 @@ pub fn stub_0639168() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC1Ev")]
-pub fn stub_0639170() -> ! {
-    todo!("0x0639170 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")
+pub fn stub_0639170() -> StuffTypeDesc {
+    // IDA 0x639170 (`EnumDesc<StuffType>::C1`): thunk tail-calling the
+    // `C2` below (0x639170-0x639173).
+    stub_0639174()
 }
 
 // 0x0639174 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC2Ev
@@ -815,8 +960,16 @@ pub fn stub_0639170() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC2Ev")]
-pub fn stub_0639174() -> ! {
-    todo!("0x0639174 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")
+pub fn stub_0639174() -> StuffTypeDesc {
+    // IDA 0x639174 (`EnumDesc<StuffType>::C2`): `EnumDescriptor::C2`
+    // with "Stuff" + typeinfo (0x6391aa), vtable install + table
+    // zeroing (0x6391be-0x639244), then the 14 `addPair` calls
+    // (0x63924a-0x639376: Heads=0 .. Costumes=13).
+    let mut desc = StuffTypeDesc::default();
+    for &(name, value) in &STUFF_TYPE_ITEMS {
+        stub_063a280(&mut desc, value, name);
+    }
+    desc
 }
 
 // 0x0639448 — __ZN3RBX13SocialServiceC1Ev
@@ -824,8 +977,10 @@ pub fn stub_0639174() -> ! {
 // type: _DWORD __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "RBX::SocialService::SocialService(void)")]
 #[doc(alias = "__ZN3RBX13SocialServiceC1Ev")]
-pub fn stub_0639448() -> ! {
-    todo!("0x0639448 RBX::SocialService::SocialService(void)")
+pub fn stub_0639448() -> SocialServiceState {
+    // IDA 0x639448 (`RBX::SocialService::C1`): thunk tail-calling the
+    // `C2` below (0x639448-0x63944b).
+    stub_063944c()
 }
 
 // 0x063944c — __ZN3RBX13SocialServiceC2Ev
@@ -833,8 +988,15 @@ pub fn stub_0639448() -> ! {
 // type: _DWORD __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "RBX::SocialService::SocialService(void)")]
 #[doc(alias = "__ZN3RBX13SocialServiceC2Ev")]
-pub fn stub_063944c() -> ! {
-    todo!("0x063944c RBX::SocialService::SocialService(void)")
+pub fn stub_063944c() -> SocialServiceState {
+    // IDA 0x63944c (`RBX::SocialService::C2`): `Instance::C2` + vtable
+    // installs + class-descriptor registration (0x63946e-0x6394d8);
+    // the +92 flag byte is set to 1 (0x6394dc-0x6394e8); the seven
+    // URL strings at +96..+120 start empty (0x6394ea-0x639560).
+    SocialServiceState {
+        flag_92: true,
+        ..SocialServiceState::default()
+    }
 }
 
 // 0x06396c4 — __ZN3RBX13SocialService14getRankInGroupEiiN5boost8functionIFviEEENS2_IFvSsEEE
@@ -842,8 +1004,29 @@ pub fn stub_063944c() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SocialService::getRankInGroup(int,int,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService14getRankInGroupEiiN5boost8functionIFviEEENS2_IFvSsEEE")]
-pub fn stub_06396c4() -> ! {
-    todo!("0x06396c4 RBX::SocialService::getRankInGroup(int,int,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")
+pub fn stub_06396c4(
+    state: &SocialServiceState,
+    a: i32,
+    b: i32,
+    on_value: SocialIntFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x6396c4 (`RBX::SocialService::getRankInGroup`): loads the
+    // +108 template (0x6396ee); empty URL calls the error callback
+    // with "No groupRankUrl set" (0x6397ac-0x6397e8); else
+    // `RBX::format(template, a, b)` (0x63971c-0x63972a) and
+    // `dispatchRequest<int>` (0x639752-0x639758, at 0x63a5e0).
+    if state.group_rank_url.is_empty() {
+        on_error("No groupRankUrl set".to_owned());
+        return;
+    }
+    stub_063a5e0(
+        &social_format(&state.group_rank_url, a, b),
+        on_value,
+        on_error,
+        issue,
+    );
 }
 
 // 0x0639910 — __ZN3RBX13SocialService14getRoleInGroupEiiN5boost8functionIFvSsEEES4_
@@ -851,8 +1034,28 @@ pub fn stub_06396c4() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SocialService::getRoleInGroup(int,int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService14getRoleInGroupEiiN5boost8functionIFvSsEEES4_")]
-pub fn stub_0639910() -> ! {
-    todo!("0x0639910 RBX::SocialService::getRoleInGroup(int,int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_0639910(
+    state: &SocialServiceState,
+    a: i32,
+    b: i32,
+    on_value: SocialStringFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x639910 (`RBX::SocialService::getRoleInGroup`): same shape
+    // over the +112 template with "No groupRoleUrl set" on empty
+    // (0x63993a-0x639a34), dispatching `dispatchRequest<std::string>`
+    // (0x63999e-0x6399a4, at 0x63a888).
+    if state.group_role_url.is_empty() {
+        on_error("No groupRoleUrl set".to_owned());
+        return;
+    }
+    stub_063a888(
+        &social_format(&state.group_role_url, a, b),
+        on_value,
+        on_error,
+        issue,
+    );
 }
 
 // 0x0639b5c — __ZN3RBX13SocialService13isFriendsWithEiiN5boost8functionIFvbEEENS2_IFvSsEEE
@@ -860,8 +1063,28 @@ pub fn stub_0639910() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SocialService::isFriendsWith(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService13isFriendsWithEiiN5boost8functionIFvbEEENS2_IFvSsEEE")]
-pub fn stub_0639b5c() -> ! {
-    todo!("0x0639b5c RBX::SocialService::isFriendsWith(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_0639b5c(
+    state: &SocialServiceState,
+    a: i32,
+    b: i32,
+    on_value: SocialBoolFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x639b5c (`RBX::SocialService::isFriendsWith`): same shape
+    // over the +96 template with "No friendUrl set" on empty
+    // (0x639b86-0x639c80), dispatching `dispatchRequest<bool>`
+    // (0x639bea-0x639bf0, at 0x63ab30).
+    if state.friend_url.is_empty() {
+        on_error("No friendUrl set".to_owned());
+        return;
+    }
+    stub_063ab30(
+        &social_format(&state.friend_url, a, b),
+        on_value,
+        on_error,
+        issue,
+    );
 }
 
 // 0x0639da8 — __ZN3RBX13SocialService17isBestFriendsWithEiiN5boost8functionIFvbEEENS2_IFvSsEEE
@@ -869,8 +1092,28 @@ pub fn stub_0639b5c() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SocialService::isBestFriendsWith(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService17isBestFriendsWithEiiN5boost8functionIFvbEEENS2_IFvSsEEE")]
-pub fn stub_0639da8() -> ! {
-    todo!("0x0639da8 RBX::SocialService::isBestFriendsWith(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_0639da8(
+    state: &SocialServiceState,
+    a: i32,
+    b: i32,
+    on_value: SocialBoolFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x639da8 (`RBX::SocialService::isBestFriendsWith`): same
+    // shape over the +100 template with "No bestFriendUrl set" on
+    // empty (0x639dd2-0x639ecc), dispatching `dispatchRequest<bool>`
+    // (0x639e36-0x639e3c, at 0x63ab30).
+    if state.best_friend_url.is_empty() {
+        on_error("No bestFriendUrl set".to_owned());
+        return;
+    }
+    stub_063ab30(
+        &social_format(&state.best_friend_url, a, b),
+        on_value,
+        on_error,
+        issue,
+    );
 }
 
 // 0x0639ff4 — __ZN3RBX13SocialService9isInGroupEiiN5boost8functionIFvbEEENS2_IFvSsEEE
@@ -878,8 +1121,28 @@ pub fn stub_0639da8() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SocialService::isInGroup(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService9isInGroupEiiN5boost8functionIFvbEEENS2_IFvSsEEE")]
-pub fn stub_0639ff4() -> ! {
-    todo!("0x0639ff4 RBX::SocialService::isInGroup(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_0639ff4(
+    state: &SocialServiceState,
+    a: i32,
+    b: i32,
+    on_value: SocialBoolFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x639ff4 (`RBX::SocialService::isInGroup`): same shape over
+    // the +104 template with "No groupUrl set" on empty
+    // (0x63a01e-0x63a118), dispatching `dispatchRequest<bool>`
+    // (0x63a082-0x63a088, at 0x63ab30).
+    if state.group_url.is_empty() {
+        on_error("No groupUrl set".to_owned());
+        return;
+    }
+    stub_063ab30(
+        &social_format(&state.group_url, a, b),
+        on_value,
+        on_error,
+        issue,
+    );
 }
 
 // 0x063a240 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EED1Ev
@@ -896,8 +1159,13 @@ pub fn stub_063a240() {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::addPair(RBX::SocialService::StuffType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE7addPairES3_PKc")]
-pub fn stub_063a280() -> ! {
-    todo!("0x063a280 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::addPair(RBX::SocialService::StuffType,char const*)")
+pub fn stub_063a280(desc: &mut StuffTypeDesc, value: i32, name: &str) {
+    // IDA 0x63a280 (`EnumDesc<StuffType>::addPair`): `operator new(0x1c)`
+    // for the `Item` (0x63a2a0-0x63a2aa), `Descriptor::C2(name)`
+    // (0x63a2e4-0x63a2ec), vtable install, value at +0x10
+    // (0x63a30a-0x63a312) and linkage into the item vector/map
+    // (0x63a314-0x63a400). The node allocation folds into the push.
+    desc.items.push((name.to_owned(), value));
 }
 
 // 0x063a5e0 — __ZN3RBX13SocialService15dispatchRequestIiEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
@@ -905,8 +1173,28 @@ pub fn stub_063a280() -> ! {
 // type: int(void)
 #[doc(alias = "void RBX::SocialService::dispatchRequest<int>(std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService15dispatchRequestIiEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE")]
-pub fn stub_063a5e0() -> ! {
-    todo!("0x063a5e0 void RBX::SocialService::dispatchRequest<int>(std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")
+pub fn stub_063a5e0(
+    url: &str,
+    on_value: SocialIntFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x63a5e0 (`SocialService::dispatchRequest<int>`):
+    // `ServiceProvider::create<LuaWebService>` (0x63a5fc-0x63a602);
+    // null service calls the error callback with "Shutting down"
+    // (0x63a634-0x63a686); else both callbacks are copied
+    // (`assign_to_own`, 0x63a63a-0x63a648) and
+    // `LuaWebService::asyncRequest(url, 1112014848, ok, err)` runs
+    // (0x63a64c-0x63a660). The service lookup folds into the `issue`
+    // seam; the response parse lives in the web machinery.
+    match issue {
+        Some(issue) => issue(SocialRequest::Int {
+            url: url.to_owned(),
+            on_value,
+            on_error,
+        }),
+        None => on_error("Shutting down".to_owned()),
+    }
 }
 
 // 0x063a888 — __ZN3RBX13SocialService15dispatchRequestISsEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
@@ -914,8 +1202,24 @@ pub fn stub_063a5e0() -> ! {
 // type: int(void)
 #[doc(alias = "void RBX::SocialService::dispatchRequest<std::string>(std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService15dispatchRequestISsEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE")]
-pub fn stub_063a888() -> ! {
-    todo!("0x063a888 void RBX::SocialService::dispatchRequest<std::string>(std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_063a888(
+    url: &str,
+    on_value: SocialStringFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x63a888 (`SocialService::dispatchRequest<std::string>`):
+    // same create-or-"Shutting down" + `assign_to_own` +
+    // `asyncRequest(url, 1112014848, ok, err)` shape as the `int` twin
+    // at 0x63a5e0 (0x63a888-0x63aac).
+    match issue {
+        Some(issue) => issue(SocialRequest::Text {
+            url: url.to_owned(),
+            on_value,
+            on_error,
+        }),
+        None => on_error("Shutting down".to_owned()),
+    }
 }
 
 // 0x063ab30 — __ZN3RBX13SocialService15dispatchRequestIbEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
@@ -923,8 +1227,24 @@ pub fn stub_063a888() -> ! {
 // type: int(void)
 #[doc(alias = "void RBX::SocialService::dispatchRequest<bool>(std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX13SocialService15dispatchRequestIbEEvRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE")]
-pub fn stub_063ab30() -> ! {
-    todo!("0x063ab30 void RBX::SocialService::dispatchRequest<bool>(std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_063ab30(
+    url: &str,
+    on_value: SocialBoolFn,
+    on_error: SocialStringFn,
+    issue: Option<impl FnOnce(SocialRequest)>,
+) {
+    // IDA 0x63ab30 (`SocialService::dispatchRequest<bool>`): same
+    // create-or-"Shutting down" + `assign_to_own` +
+    // `asyncRequest(url, 1112014848, ok, err)` shape as the `int` twin
+    // at 0x63a5e0 (0x63ab30-0x63c54).
+    match issue {
+        Some(issue) => issue(SocialRequest::Flag {
+            url: url.to_owned(),
+            on_value,
+            on_error,
+        }),
+        None => on_error("Shutting down".to_owned()),
+    }
 }
 
 // 0x063add8 — __ZN3RBX13SocialServiceD1Ev
