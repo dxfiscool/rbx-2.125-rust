@@ -218,29 +218,35 @@ pub fn stub_9c28a8(
 // 0x9c2950 — __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE
 // type: unsigned int __fastcall(RBX::Network::PhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
-pub fn stub_9c2950() -> ! {
-    todo!("0x9c2950 __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c2950(
+    sender: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    packet: &crate::physics::AssemblyPacket<'_>,
+) {
+    // IDA 0x9c2962..0x9c29bc: assembly primitive/PV/+124 nibble arrive as `packet`.
+    sender.write_assembly(stream, packet);
 }
 
 // 0x9c29c0 — __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE
 // type: _DWORD __fastcall(RBX::Network::PhysicsSender *__hidden this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)")]
-pub fn stub_9c29c0() -> ! {
-    todo!("0x9c29c0 __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c29c0(sender: &mut crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, physics: &[crate::physics::CompactCFrame]) {
+    // IDA 0x9c2a1e: `Assembly::getPhysics` scratch slice arrives as `physics`.
+    sender.write_motor_angles(stream, physics);
 }
 
 // 0x9c2aa4 — __ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE
 // type: _DWORD __fastcall(RBX::Network::PhysicsSender *__hidden this, RakNet::BitStream *, const RBX::Velocity *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeVelocity(RakNet::BitStream &,RBX::Velocity const&)")]
-pub fn stub_9c2aa4() -> ! {
-    todo!("0x9c2aa4 __ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE")
+pub fn stub_9c2aa4(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, velocity: &crate::physics::Velocity) {
+    sender.write_velocity(stream, velocity);
 }
 
 // 0x9c2b10 — __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE
 // type: unsigned int __fastcall(double this, const RBX::CompactCFrame *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)")]
-pub fn stub_9c2b10() -> ! {
-    todo!("0x9c2b10 __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE")
+pub fn stub_9c2b10(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, frame: &crate::physics::CompactCFrame) {
+    sender.write_compact_cframe(stream, frame);
 }
 
 // 0x9c2d18 — __ZN3RBX7Network13PhysicsSender7canSendEPKNS_12PartInstanceEPKNS_8AssemblyERN6RakNet9BitStreamE

@@ -1479,29 +1479,35 @@ pub fn stub_9c28a8(
 // 0x9c2950 — __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE
 #[doc(alias = "RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 // was: RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)
-pub fn stub_9c2950() -> ! {
-    todo!("0x9c2950 RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_9c2950(
+    sender: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    packet: &crate::physics::AssemblyPacket<'_>,
+) {
+    // IDA 0x9c2962..0x9c29bc: assembly primitive/PV/+124 nibble arrive as `packet`.
+    sender.write_assembly(stream, packet);
 }
 
 // 0x9c29c0 — __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE
 #[doc(alias = "RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)")]
 // was: RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)
-pub fn stub_9c29c0() -> ! {
-    todo!("0x9c29c0 RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_9c29c0(sender: &mut crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, physics: &[crate::physics::CompactCFrame]) {
+    // IDA 0x9c2a1e: `Assembly::getPhysics` scratch slice arrives as `physics`.
+    sender.write_motor_angles(stream, physics);
 }
 
 // 0x9c2aa4 — __ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE
 #[doc(alias = "RBX::Network::PhysicsSender::writeVelocity(RakNet::BitStream &,RBX::Velocity const&)")]
 // was: RBX::Network::PhysicsSender::writeVelocity(RakNet::BitStream &,RBX::Velocity const&)
-pub fn stub_9c2aa4() -> ! {
-    todo!("0x9c2aa4 RBX::Network::PhysicsSender::writeVelocity(RakNet::BitStream &,RBX::Velocity const&)")
+pub fn stub_9c2aa4(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, velocity: &crate::physics::Velocity) {
+    sender.write_velocity(stream, velocity);
 }
 
 // 0x9c2b10 — __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE
 #[doc(alias = "RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)")]
 // was: RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)
-pub fn stub_9c2b10() -> ! {
-    todo!("0x9c2b10 RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)")
+pub fn stub_9c2b10(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, frame: &crate::physics::CompactCFrame) {
+    sender.write_compact_cframe(stream, frame);
 }
 
 // 0x9c2d18 — __ZN3RBX7Network13PhysicsSender7canSendEPKNS_12PartInstanceEPKNS_8AssemblyERN6RakNet9BitStreamE
@@ -1521,15 +1527,17 @@ pub fn stub_9c2dd4() -> ! {
 // 0x9c30ac — __ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")]
 // was: RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)
-pub fn stub_9c30ac() -> ! {
-    todo!("0x9c30ac RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")
+pub fn stub_9c30ac(heavy: bool, x: f32, y: f32, z: f32, stream: &mut crate::bitstream::BitStream) {
+    // IDA 0x9c30ac: `heavy` arrives in the `this` pointer slot (fastcall bool).
+    crate::custom_serializer::write_vector(heavy, x, y, z, stream);
 }
 
 // 0x9c3488 — __ZN6RakNet9BitStream5WriteIfEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<float>(float const&)")]
 // was: void RakNet::BitStream::Write<float>(float const&)
-pub fn stub_9c3488() -> ! {
-    todo!("0x9c3488 void RakNet::BitStream::Write<float>(float const&)")
+pub fn stub_9c3488(stream: &mut crate::bitstream::BitStream, value: f32) {
+    // IDA 0x9c3488: `Write<float>` template — `ReverseBytes` + `WriteBits(..., 32, 1)`, big-endian.
+    stream.write_f32(value);
 }
 
 // 0x9c35a0 — __ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_

@@ -472,40 +472,47 @@ pub fn stub_9c28a8(
 // type: unsigned int __fastcall(RBX::Network::PhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9c2950() -> ! {
-    todo!("0x9c2950 __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c2950(
+    sender: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    packet: &crate::physics::AssemblyPacket<'_>,
+) {
+    // IDA 0x9c2962..0x9c29bc: assembly primitive/PV/+124 nibble arrive as `packet`.
+    sender.write_assembly(stream, packet);
 }
 
 // 0x9c29c0 — __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE
 // type: _DWORD __fastcall(RBX::Network::PhysicsSender *__hidden this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9c29c0() -> ! {
-    todo!("0x9c29c0 __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c29c0(sender: &mut crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, physics: &[crate::physics::CompactCFrame]) {
+    // IDA 0x9c2a1e: `Assembly::getPhysics` scratch slice arrives as `physics`.
+    sender.write_motor_angles(stream, physics);
 }
 
 // 0x9c2aa4 — __ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE
 // type: _DWORD __fastcall(RBX::Network::PhysicsSender *__hidden this, RakNet::BitStream *, const RBX::Velocity *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeVelocity(RakNet::BitStream &,RBX::Velocity const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE")]
-pub fn stub_9c2aa4() -> ! {
-    todo!("0x9c2aa4 __ZN3RBX7Network13PhysicsSender13writeVelocityERN6RakNet9BitStreamERKNS_8VelocityE")
+pub fn stub_9c2aa4(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, velocity: &crate::physics::Velocity) {
+    sender.write_velocity(stream, velocity);
 }
 
 // 0x9c2b10 — __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE
 // type: unsigned int __fastcall(double this, const RBX::CompactCFrame *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE")]
-pub fn stub_9c2b10() -> ! {
-    todo!("0x9c2b10 __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE")
+pub fn stub_9c2b10(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, frame: &crate::physics::CompactCFrame) {
+    sender.write_compact_cframe(stream, frame);
 }
 
 // 0x9c30ac — __ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE
 // type: unsigned int __fastcall(RBX::Network::CustomSerializer *this, __int32 *, float *, float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE")]
-pub fn stub_9c30ac() -> ! {
-    todo!("0x9c30ac __ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE")
+pub fn stub_9c30ac(heavy: bool, x: f32, y: f32, z: f32, stream: &mut crate::bitstream::BitStream) {
+    // IDA 0x9c30ac: `heavy` arrives in the `this` pointer slot (fastcall bool).
+    crate::custom_serializer::write_vector(heavy, x, y, z, stream);
 }
 
 // 0x9c35a0 — __ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_
