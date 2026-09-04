@@ -418,16 +418,54 @@ pub fn stub_9c1f50(sender: &mut crate::physics::PhysicsSender) {
 // type: unsigned int __fastcall(RBX::Network::PhysicsSender *this, RBX::Primitive *, RakNet::BitStream *, RBX::Network::Replicator *)
 #[doc(alias = "RBX::Network::PhysicsSender::sendChildPrimitiveCoordinateFrame(RBX::Primitive *,RakNet::BitStream *,RBX::Network::Replicator *)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender33sendChildPrimitiveCoordinateFrameEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS0_10ReplicatorE")]
-pub fn stub_9c2504() -> ! {
-    todo!("0x9c2504 __ZN3RBX7Network13PhysicsSender33sendChildPrimitiveCoordinateFrameEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS0_10ReplicatorE")
+pub fn stub_9c2504(
+    sender: &crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    translation: [f32; 3],
+    rotation: [f32; 4],
+    streaming_enabled: bool,
+    part_present: bool,
+    replication_container: bool,
+    try_serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream) -> bool,
+) -> bool {
+    // IDA 0x9c2520..0x9c25a8: streaming assert, null/container/id gates, CF write.
+    debug_assert!(streaming_enabled, "replicator->isStreamingEnabled() Client/Network/PhysicsSender.cpp line: 254");
+    if !part_present {
+        return false;
+    }
+    if !replication_container {
+        return false;
+    }
+    if !try_serialize_id(stream) {
+        return false;
+    }
+    crate::physics::write_translation(stream, translation, sender.translation_compression);
+    crate::physics::write_rotation(stream, rotation, sender.translation_compression);
+    true
 }
 
 // 0x9c28a8 — __ZN3RBX7Network13PhysicsSender17sendChildAssemblyEPN6RakNet9BitStreamEPKNS_8AssemblyE
 // type: int __fastcall(RBX::Network::IdSerializer **this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::sendChildAssembly(RakNet::BitStream *,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender17sendChildAssemblyEPN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9c28a8() -> ! {
-    todo!("0x9c28a8 __ZN3RBX7Network13PhysicsSender17sendChildAssemblyEPN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c28a8(
+    part_present: bool,
+    use_try_serialize_id: bool,
+    can_serialize_id: bool,
+    stream: &mut crate::bitstream::BitStream,
+    serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    sender: &mut crate::physics::PhysicsSender,
+    packet: &crate::physics::AssemblyPacket<'_>,
+) -> bool {
+    // IDA 0x9c28bc..0x9c2946: part assert, id gate, presence bit, id, virtual body.
+    debug_assert!(part_present, "part Client/Network/PhysicsSender.cpp line: 328");
+    if use_try_serialize_id && !can_serialize_id {
+        return false;
+    }
+    stream.write_bit(false);
+    serialize_id(stream);
+    sender.write_assembly(stream, packet);
+    true
 }
 
 // 0x9c2950 — __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE

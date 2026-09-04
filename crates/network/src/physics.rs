@@ -1178,6 +1178,99 @@ impl MechanismTree {
     }
 }
 
+/// `PhysicsSender` per-packet compression select, shared by
+/// `sendMechanismCFrames` (IDA 0x9c2696..0x9c26a2) and `sendMechanism` (IDA
+/// 0x9c27da..0x9c27e6): without the streaming-complex flag or a
+/// complex-moving mechanism the `a4` moving bit picks `Vector` (1) over
+/// `Quantized` (2); a complex-moving mechanism under the flag keeps `Raw`
+/// (0). The values match [`CompressionType`] discriminants exactly.
+pub fn select_mechanism_mode(flag_set: bool, complex_moving: bool, moving: bool) -> CompressionType {
+    if !flag_set || !complex_moving {
+        if moving {
+            CompressionType::Vector
+        } else {
+            CompressionType::Quantized
+        }
+    } else {
+        CompressionType::Raw
+    }
+}
+
+/// `RBX::Network::PhysicsSender::sendMechanismCFrames` (IDA 0x9c25b8):
+/// assert streaming (PhysicsSender.cpp:270) and a non-null mechanism
+/// (:276), select the +16 mode, write the coordinate frame behind the
+/// id gate (`isReplicationContainer` + `trySerializeId`), visit the
+/// mechanism primitives via `sendChildPrimitiveCoordinateFrame`
+/// (engine-side), and return the trailing null-`serializeId` (0x9c2756).
+/// Mechanism/root lookups and the primitive visit stay engine-side.
+#[allow(clippy::too_many_arguments)]
+pub fn send_mechanism_cframes(
+    stream: &mut BitStream,
+    streaming_enabled: bool,
+    mechanism_present: bool,
+    mode: CompressionType,
+    replication_container: bool,
+    try_serialize_id: &mut dyn FnMut(&mut BitStream) -> bool,
+    translation: [f32; 3],
+    rotation: [f32; 4],
+    visit_children: &mut dyn FnMut(),
+    serialize_null_id: &mut dyn FnMut(&mut BitStream) -> bool,
+) -> bool {
+    debug_assert!(
+        streaming_enabled,
+        "replicator.isStreamingEnabled() Client/Network/PhysicsSender.cpp line: 270"
+    );
+    debug_assert!(
+        mechanism_present,
+        "mechanism Client/Network/PhysicsSender.cpp line: 276"
+    );
+    // IDA 0x9c26bc..0x9c26d8.
+    if replication_container && try_serialize_id(stream) {
+        write_translation(stream, translation, mode);
+        write_rotation(stream, rotation, mode);
+    }
+    // IDA 0x9c272a: visitPrimitivesImpl<sendChildPrimitiveCoordinateFrame>.
+    visit_children();
+    // IDA 0x9c2756: trailing null-id.
+    serialize_null_id(stream)
+}
+
+/// `RBX::Network::PhysicsSender::sendMechanism` (IDA 0x9c2758): assert a
+/// non-null assembly (:296), select the +16 mode, write the motor-count
+/// presence bit plus the count byte, write the root body through the
+/// virtual (the `ErrorCompPhysicsSender` override is selected
+/// engine-side), visit each child assembly via `sendChildAssembly`
+/// (engine-side), and close with the `true` terminator (0x9c2892/0x9c28a2).
+/// Assembly lookups and child visits stay engine-side.
+#[allow(clippy::too_many_arguments)]
+pub fn send_mechanism(
+    stream: &mut BitStream,
+    assembly_present: bool,
+    motor_count: u8,
+    write_root: &mut dyn FnMut(&mut BitStream),
+    child_count: usize,
+    visit_child: &mut dyn FnMut(usize, &mut BitStream),
+) {
+    debug_assert!(
+        assembly_present,
+        "assembly Client/Network/PhysicsSender.cpp line: 296"
+    );
+    // IDA 0x9c27f0..0x9c2802: `v14 ? 1 : 0` bit, then the count byte.
+    stream.write_bool(motor_count != 0);
+    if motor_count != 0 {
+        stream.write_u8(motor_count);
+    }
+    // IDA 0x9c2812: virtual root-body write.
+    write_root(stream);
+    // IDA 0x9c281e..0x9c2892: indexed child visits with the IndexArray
+    // invariant (`indexOf(array[n]) == n`, IndexArray.h:113).
+    for n in 0..child_count {
+        visit_child(n, stream);
+    }
+    // IDA 0x9c2892/0x9c28a2: trailing `true` on both paths.
+    stream.write_bool(true);
+}
+
 /// `RBX::Assembly` primitive nesting for `visitPrimitivesImpl` (IDA
 /// 0x9c3778): each node invokes the bind on its own primitive, then
 /// recurses into children that are not assembly roots
@@ -1313,6 +1406,7 @@ mod tests {
     fn rotation_vector_roundtrip() {
         // The Vector tag selects the RakNet packing on both sides without
         // consulting the packet-compression switch (IDA 0x988b62/0x988e9a).
+
         let mut s = BitStream::new();
         write_rotation(&mut s, [0.5, 0.5, 0.5, 0.5], CompressionType::Vector);
         let mut r = BitStream::from_bytes(&s.into_bytes());
@@ -1323,6 +1417,73 @@ mod tests {
             assert!((got - want).abs() < 1.0 / 65535.0 + 1e-6, "{got} vs {want}");
         }
         assert!(out[0] > 0.0);
+    }
+    #[test]
+    fn mechanism_mode_select_truth_table() {
+        // IDA 0x9c2696..0x9c26a2: flag+complex keeps Raw, else moving picks.
+        assert_eq!(select_mechanism_mode(true, true, false), CompressionType::Raw);
+        assert_eq!(select_mechanism_mode(true, true, true), CompressionType::Raw);
+        assert_eq!(select_mechanism_mode(true, false, true), CompressionType::Vector);
+        assert_eq!(select_mechanism_mode(true, false, false), CompressionType::Quantized);
+        assert_eq!(select_mechanism_mode(false, true, true), CompressionType::Vector);
+        assert_eq!(select_mechanism_mode(false, true, false), CompressionType::Quantized);
+    }
+
+    #[test]
+    fn mechanism_cframes_gates_and_terminates() {
+        // IDA 0x9c25b8: container+id gate around the CF write, trailing null-id verdict out.
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        let sent = send_mechanism_cframes(
+            &mut s,
+            true,
+            true,
+            CompressionType::Raw,
+            true,
+            &mut |_| true,
+            [1.0, 2.0, 3.0],
+            [0.0, 0.0, 0.0, 1.0],
+            &mut || {},
+            &mut |_| true,
+        );
+        assert!(sent);
+        assert!(s.bits_written() > 0);
+        let mut s = BitStream::new();
+        let mut visited = false;
+        let sent = send_mechanism_cframes(
+            &mut s,
+            true,
+            true,
+            CompressionType::Raw,
+            false,
+            &mut |_| panic!("gated"),
+            [0.0; 3],
+            [0.0, 0.0, 0.0, 1.0],
+            &mut || visited = true,
+            &mut |_| false,
+        );
+        assert!(!sent);
+        assert!(visited);
+    }
+
+    #[test]
+    fn mechanism_frames_motors_children_terminator() {
+        // IDA 0x9c2758: motor bit+byte, root, indexed children, trailing true.
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        let mut seen = Vec::new();
+        send_mechanism(&mut s, true, 3, &mut |st| st.write_bool(true), 2, &mut |n, st| {
+            seen.push(n);
+            st.write_bool(false);
+        });
+        assert_eq!(seen, vec![0, 1]);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bool(), Some(true));
+        assert_eq!(r.read_u8(), Some(3));
+        assert_eq!(r.read_bool(), Some(true));
+        assert_eq!(r.read_bool(), Some(false));
+        assert_eq!(r.read_bool(), Some(false));
+        assert_eq!(r.read_bool(), Some(true));
     }
 
     #[test]
