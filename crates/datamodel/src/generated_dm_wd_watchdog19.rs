@@ -406,7 +406,7 @@ pub fn stub_43a0fc(value: i32, out: &mut String) {
     // `generated_189::stub_0xc76c`.
     debug_assert!(value >= 0, "0x43a0fc: value>=0 (enumconverter.h:262)");
     match (value >= 0).then(|| gear_genre_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
-        Some((_, name)) => *out = name.to_owned(),
+        Some((_, name)) => *out = (*name).to_owned(),
         None => out.clear(),
     }
 }
@@ -520,7 +520,7 @@ pub fn stub_43a774(value: i32, out: &mut String) {
     // empty-on-miss shape as 0x43a0fc over the 0x41d590 table.
     debug_assert!(value >= 0, "0x43a774: value>=0 (enumconverter.h:262)");
     match (value >= 0).then(|| genre_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
-        Some((_, name)) => *out = name.to_owned(),
+        Some((_, name)) => *out = (*name).to_owned(),
         None => out.clear(),
     }
 }
@@ -629,7 +629,7 @@ pub fn stub_43adec(value: i32, out: &mut String) {
     // + empty-on-miss shape as 0x43a0fc over the 0x41d3d0 table.
     debug_assert!(value >= 0, "0x43adec: value>=0 (enumconverter.h:262)");
     match (value >= 0).then(|| creator_type_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
-        Some((_, name)) => *out = name.to_owned(),
+        Some((_, name)) => *out = (*name).to_owned(),
         None => out.clear(),
     }
 }
