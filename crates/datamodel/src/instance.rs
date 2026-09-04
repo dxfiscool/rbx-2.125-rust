@@ -2010,6 +2010,40 @@ pub struct Wedge {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Instance::EventInvocationSignalData` (IDA `0x5f3e60`):
+/// empty teardown; the payload lands with the signal batch.
+pub struct EventInvocationSignalData {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::OnDemandInstance` (IDA `0x5f4d78`): on-demand base;
+/// members land with the framework batch.
+#[derive(Default)]
+pub struct OnDemandInstance {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ScreenGui` (IDA `0x5fd408`): the screen-GUI leaf;
+/// members land with the GUI batch.
+#[derive(Default)]
+pub struct ScreenGui {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::TextLabel` (IDA `0x5fd4bc`): the text-label leaf;
+/// members land with the GUI batch.
+#[derive(Default)]
+pub struct TextLabel {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::PlayerGui` (IDA `0x5fbee0`): the player-GUI leaf;
+/// members land with the GUI batch.
+#[derive(Default)]
+pub struct PlayerGui {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::EventDesc<PartInstance, void(Instance),
 /// TouchedSignal>` (IDA `0x5ea1cc`): the descriptor identity plus the
 /// locally-connected generic slots; the `TouchedSignal` member lives in
@@ -46367,8 +46401,10 @@ pub fn stub_0x5f3d00() -> ! {
 // 0x5f3e60 — __ZN3RBX8Instance25EventInvocationSignalDataD1Ev
 #[doc(alias = "RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()")]
 // was: RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()
-pub fn stub_0x5f3e60() -> ! {
-    todo!("0x5f3e60 RBX::Instance::EventInvocationSignalData::~EventInvocationSignalData()")
+pub fn stub_0x5f3e60(_data: *mut EventInvocationSignalData) {
+    // IDA 0x5f3e60 (`EventInvocationSignalData::D1`, decompiled empty): no
+    // members carry state, so the memberwise teardown collapses.
+    // SAFETY: `_data` must point to a valid `EventInvocationSignalData`.
 }
 
 // 0x5f3e68 — __ZN3RBX10FWInstanceD2Ev
@@ -46409,8 +46445,13 @@ pub fn stub_0x5f4024() -> ! {
 // 0x5f40d8 — __ZN3RBX8Instance23OutfitChangedSignalDataD0Ev
 #[doc(alias = "RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")]
 // was: RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()
-pub fn stub_0x5f40d8() -> ! {
-    todo!("0x5f40d8 RBX::Instance::OutfitChangedSignalData::~OutfitChangedSignalData()")
+pub fn stub_0x5f40d8(_data: *mut OutfitChangedSignalData) {
+    // IDA 0x5f40d8: `OutfitChangedSignalData::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_data` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_data));
+    }
 }
 
 // 0x5f45d0 — __ZNK3RBX17copy_on_write_ptrISt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEEdeEv
@@ -46437,43 +46478,65 @@ pub fn stub_0x5f4698() -> ! {
 // 0x5f4d78 — __ZN3RBX16OnDemandInstanceD2Ev
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 // was: RBX::OnDemandInstance::~OnDemandInstance()
-pub fn stub_0x5f4d78() -> ! {
-    todo!("0x5f4d78 RBX::OnDemandInstance::~OnDemandInstance()")
+pub fn stub_0x5f4d78(_this: *mut OnDemandInstance) {
+    // IDA 0x5f4d78: `OnDemandInstance::D2` — vtable resets (compiler-managed)
+    // plus memberwise teardown; no members carry state, so the body
+    // collapses.
+    // SAFETY: `_this` must point to a valid `OnDemandInstance`.
 }
 
 // 0x5f4fdc — __ZN3RBX18OnDemandPVInstanceD1Ev
 #[doc(alias = "RBX::OnDemandPVInstance::~OnDemandPVInstance()")]
 // was: RBX::OnDemandPVInstance::~OnDemandPVInstance()
-pub fn stub_0x5f4fdc() -> ! {
-    todo!("0x5f4fdc RBX::OnDemandPVInstance::~OnDemandPVInstance()")
+pub fn stub_0x5f4fdc(_this: *mut OnDemandPVInstance) {
+    // IDA 0x5f4fdc: `OnDemandPVInstance::D1` — base plus memberwise teardown;
+    // dropping the box is the same release.
+    // SAFETY: `_this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x5f5008 — __ZN3RBX18OnDemandPVInstanceD0Ev
 #[doc(alias = "RBX::OnDemandPVInstance::~OnDemandPVInstance()")]
 // was: RBX::OnDemandPVInstance::~OnDemandPVInstance()
-pub fn stub_0x5f5008() -> ! {
-    todo!("0x5f5008 RBX::OnDemandPVInstance::~OnDemandPVInstance()")
+pub fn stub_0x5f5008(_this: *mut OnDemandPVInstance) {
+    // IDA 0x5f5008: `OnDemandPVInstance::D0` — vtable installs plus
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x5f50dc — __ZN3RBX16OnDemandInstanceD1Ev
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 // was: RBX::OnDemandInstance::~OnDemandInstance()
-pub fn stub_0x5f50dc() -> ! {
-    todo!("0x5f50dc RBX::OnDemandInstance::~OnDemandInstance()")
+pub fn stub_0x5f50dc(_this: *mut OnDemandInstance) {
+    // IDA 0x5f50dc: `OnDemandInstance::D1` — base plus memberwise teardown;
+    // no members carry state, so the body collapses.
+    // SAFETY: `_this` must point to a valid `OnDemandInstance`.
 }
 
 // 0x5f50e0 — __ZN3RBX16OnDemandInstanceD0Ev
 #[doc(alias = "RBX::OnDemandInstance::~OnDemandInstance()")]
 // was: RBX::OnDemandInstance::~OnDemandInstance()
-pub fn stub_0x5f50e0() -> ! {
-    todo!("0x5f50e0 RBX::OnDemandInstance::~OnDemandInstance()")
+pub fn stub_0x5f50e0(_this: *mut OnDemandInstance) {
+    // IDA 0x5f50e0: `OnDemandInstance::D0` — vtable installs plus memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x5f5310 — __ZN3RBX16OnDemandInstanceC2Ev
 #[doc(alias = "RBX::OnDemandInstance::OnDemandInstance(void)")]
 // was: RBX::OnDemandInstance::OnDemandInstance(void)
-pub fn stub_0x5f5310() -> ! {
-    todo!("0x5f5310 RBX::OnDemandInstance::OnDemandInstance(void)")
+pub fn stub_0x5f5310() -> OnDemandInstance {
+    // IDA 0x5f5310: `OnDemandInstance::C2` — base init plus member setup; no
+    // members carry state, so the model default is the constructed state.
+    OnDemandInstance::default()
 }
 
 // 0x5f5564 — __ZN3RBX9AllocatorINS_18OnDemandPVInstanceEEC2Ev
@@ -46528,8 +46591,11 @@ pub fn stub_0x5f7bbc() -> ! {
 // 0x5fba88 — __ZNK3RBX13BasePlayerGui11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const")]
 // was: RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const
-pub fn stub_0x5fba88() -> ! {
-    todo!("0x5fba88 RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x5fba88(_child: *const Instance) -> bool {
+    // IDA 0x5fba88: `MOVS R0, #1; BX LR` (disasm 0x5fba88-0x5fba8a) — a
+    // player GUI never refuses a child.
+    // SAFETY: `_child` must be null or point to a valid `Instance`.
+    true
 }
 
 // 0x5fba8c — __ZN3RBX13BasePlayerGui17onDescendantAddedEPNS_8InstanceE
@@ -46549,15 +46615,34 @@ pub fn stub_0x5fbad4() -> ! {
 // 0x5fbee0 — __ZNK3RBX9PlayerGui12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::PlayerGui::askSetParent(RBX::Instance const*)const")]
 // was: RBX::PlayerGui::askSetParent(RBX::Instance const*)const
-pub fn stub_0x5fbee0() -> ! {
-    todo!("0x5fbee0 RBX::PlayerGui::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x5fbee0(parent: *const Instance) -> bool {
+    // IDA 0x5fbee0: null parent returns false (disasm 0x5fbee4-0x5fbef0);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `Network::Player` described descriptor — player GUI parents under the
+    // player. Same shape as 0x5b61a4.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "Player")
 }
 
 // 0x5fbf1c — __ZNK3RBX9PlayerGui15askForbidParentEPKNS_8InstanceE
 #[doc(alias = "RBX::PlayerGui::askForbidParent(RBX::Instance const*)const")]
 // was: RBX::PlayerGui::askForbidParent(RBX::Instance const*)const
-pub fn stub_0x5fbf1c() -> ! {
-    todo!("0x5fbf1c RBX::PlayerGui::askForbidParent(RBX::Instance const*)const")
+pub fn stub_0x5fbf1c(parent: *const Instance) -> bool {
+    // IDA 0x5fbf1c (disasm `0x5fbf1e`-`0x5fbf2a`): vtable call at slot
+    // `+0x54` (the ask entry) with the result folded by `EOR #1` — forbid is
+    // the negation of ask. Same `!ask` shape as the sibling forbids.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return true;
+    }
+    if instance_is_a(parent, "Player") {
+        false
+    } else {
+        true
+    }
 }
 
 // 0x5fcbf8 — __ZN3RBX14CoreGuiService17onDescendantAddedEPNS_8InstanceE
@@ -46584,71 +46669,99 @@ pub fn stub_0x5fd3d4() -> ! {
 // 0x5fd408 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ScreenGuiEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)")]
 // was: boost::shared_ptr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)
-pub fn stub_0x5fd408() -> ! {
-    todo!("0x5fd408 boost::shared_ptr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)")
+pub fn stub_0x5fd408() -> SharedPtr<ScreenGui> {
+    // IDA 0x5fd408: `Creatable::create<ScreenGui>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(ScreenGui::default())
 }
 
 // 0x5fd4bc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9TextLabelEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")]
 // was: boost::shared_ptr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)
-pub fn stub_0x5fd4bc() -> ! {
-    todo!("0x5fd4bc boost::shared_ptr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")
+pub fn stub_0x5fd4bc() -> SharedPtr<TextLabel> {
+    // IDA 0x5fd4bc: `Creatable::create<TextLabel>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(TextLabel::default())
 }
 
 // 0x5fe8e4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerGuiEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")]
 // was: boost::shared_ptr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)
-pub fn stub_0x5fe8e4() -> ! {
-    todo!("0x5fe8e4 boost::shared_ptr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")
+pub fn stub_0x5fe8e4() -> SharedPtr<PlayerGui> {
+    // IDA 0x5fe8e4: `Creatable::create<PlayerGui>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(PlayerGui::default())
 }
 
 // 0x5fe998 — __ZN5boost10shared_ptrIN3RBX9PlayerGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5fe998() -> ! {
-    todo!("0x5fe998 boost::shared_ptr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5fe998(ptr: *mut PlayerGui, _deleter: CreatableInstanceDeleter) -> SharedPtr<PlayerGui> {
+    // IDA 0x5fe998: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(PlayerGui::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x5feb48 — __ZN5boost6detail12shared_countC2IPN3RBX9PlayerGuiENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5feb48() -> ! {
-    todo!("0x5feb48 boost::detail::shared_count::shared_count<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5feb48(ptr: *mut PlayerGui, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<PlayerGui, CreatableInstanceDeleter> {
+    // IDA 0x5feb48: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x5fec50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5fec50() -> ! {
-    todo!("0x5fec50 boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5fec50(_block: *mut ControlBlockPd<PlayerGui, CreatableInstanceDeleter>) {
+    // IDA 0x5fec50: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x5fec54 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5fec54() -> ! {
-    todo!("0x5fec54 boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5fec54(block: *mut ControlBlockPd<PlayerGui, CreatableInstanceDeleter>) {
+    // IDA 0x5fec54: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5fec58 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5fec58() -> ! {
-    todo!("0x5fec58 boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5fec58(_block: *mut ControlBlockPd<PlayerGui, CreatableInstanceDeleter>) {
+    // IDA 0x5fec58: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x5fec7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5fec7c() -> ! {
-    todo!("0x5fec7c boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5fec7c(block: *const ControlBlockPd<PlayerGui, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5fec7c: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5fec94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5fec94() -> ! {
-    todo!("0x5fec94 boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5fec94(block: *const ControlBlockPd<PlayerGui, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5fec94: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5ff480 — __ZN5boost10shared_ptrIN3RBX9TextLabelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
