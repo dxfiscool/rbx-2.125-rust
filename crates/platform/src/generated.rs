@@ -4651,175 +4651,201 @@ pub fn stub_1b304(controller: &crate::generated_176::DebugSettingsViewController
 // 0x1da5c — +[LoginViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginViewController sharedInstance]")]
-pub fn stub_1da5c() -> ! {
-    todo!("0x1da5c +[LoginViewController sharedInstance]")
+pub fn stub_1da5c() -> &'static crate::view_controllers::LoginViewController {
+    // delegate of crate::view_controllers (IDA 0x1da5c)
+    crate::view_controllers::LoginViewController::shared_instance()
 }
 
 // 0x1da6c — -[LoginViewController initWithCoder:]
 // type: LoginViewController *__cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController initWithCoder:]")]
-pub fn stub_1da6c() -> ! {
-    todo!("0x1da6c -[LoginViewController initWithCoder:]")
+pub fn stub_1da6c(coder: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers (IDA 0x1da6c)
+    crate::view_controllers::LoginViewController::shared_instance().init_with_coder(coder);
 }
 
 // 0x1dbd4 — -[LoginViewController dealloc]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController dealloc]")]
-pub fn stub_1dbd4() -> ! {
-    todo!("0x1dbd4 -[LoginViewController dealloc]")
+pub fn stub_1dbd4() {
+    // delegate of crate::view_controllers (IDA 0x1dbd4)
+    crate::view_controllers::LoginViewController::shared_instance().dealloc_outlets();
 }
 
 // 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
-pub fn stub_1dd84() -> ! {
-    todo!("0x1dd84 -[LoginViewController populateEnvironmentPicker]")
+pub fn stub_1dd84(tablet: bool) {
+    // delegate of crate::view_controllers (IDA 0x1dd84)
+    crate::view_controllers::LoginViewController::shared_instance().populate_environment_picker(tablet);
 }
 
 // 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
 // type: void __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
-pub fn stub_1e0d8() -> ! {
-    todo!("0x1e0d8 -[LoginViewController pickerView:didSelectRow:inComponent:]")
+pub fn stub_1e0d8(row: usize) {
+    // delegate of crate::view_controllers (IDA 0x1e0d8)
+    crate::view_controllers::LoginViewController::shared_instance().picker_did_select_row(row);
 }
 
 // 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
-pub fn stub_1e13c() -> ! {
-    todo!("0x1e13c ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")
+pub fn stub_1e13c() {
+    // delegate of crate::view_controllers (IDA 0x1e13c)
+    crate::view_controllers::LoginViewController::shared_instance().picker_did_select_row_block();
 }
 
 // 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
-pub fn stub_1e170() -> ! {
-    todo!("0x1e170 -[LoginViewController numberOfComponentsInPickerView:]")
+pub fn stub_1e170() -> i32 {
+    // delegate of crate::view_controllers (IDA 0x1e170)
+    crate::view_controllers::LoginViewController::shared_instance().number_of_components()
 }
 
 // 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(LoginViewController *self, SEL, id, int)
 #[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_1e174() -> ! {
-    todo!("0x1e174 -[LoginViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_1e174() -> usize {
+    // delegate of crate::view_controllers (IDA 0x1e174)
+    crate::view_controllers::LoginViewController::shared_instance().number_of_rows()
 }
 
 // 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_1e194() -> ! {
-    todo!("0x1e194 -[LoginViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_1e194(row: usize) -> Option<String> {
+    // delegate of crate::view_controllers (IDA 0x1e194)
+    crate::view_controllers::LoginViewController::shared_instance().title_for_row(row)
 }
 
 // 0x1e1b4 — -[LoginViewController viewWillAppear:]
 // type: void __cdecl(LoginViewController *self, SEL, char)
 #[doc(alias = "-[LoginViewController viewWillAppear:]")]
-pub fn stub_1e1b4() -> ! {
-    todo!("0x1e1b4 -[LoginViewController viewWillAppear:]")
+pub fn stub_1e1b4(animated: bool, remember_password: bool, current_password: &str) {
+    // delegate of crate::view_controllers (IDA 0x1e1b4)
+    crate::view_controllers::LoginViewController::shared_instance().login_view_will_appear(animated, remember_password, current_password);
 }
 
 // 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
 #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
-pub fn stub_1e2c4() -> ! {
-    todo!("0x1e2c4 ___38-[LoginViewController viewWillAppear:]_block_invoke")
+pub fn stub_1e2c4() {
+    // delegate of crate::view_controllers (IDA 0x1e2c4)
+    crate::view_controllers::LoginViewController::shared_instance().view_will_appear_block();
 }
 
 // 0x1e2ec — -[LoginViewController viewDidLoad]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidLoad]")]
-pub fn stub_1e2ec() -> ! {
-    todo!("0x1e2ec -[LoginViewController viewDidLoad]")
+pub fn stub_1e2ec(username: Option<&str>, password: Option<&str>, remember_on: bool) {
+    // delegate of crate::view_controllers (IDA 0x1e2ec)
+    crate::view_controllers::LoginViewController::shared_instance().login_view_did_load(username, password, remember_on);
 }
 
 // 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
-pub fn stub_1e898() -> ! {
-    todo!("0x1e898 ___34-[LoginViewController viewDidLoad]_block_invoke")
+pub fn stub_1e898() {
+    // delegate of crate::view_controllers (IDA 0x1e898)
+    crate::view_controllers::LoginViewController::shared_instance().view_did_load_block();
 }
 
 // 0x1e8cc — -[LoginViewController viewDidUnload]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidUnload]")]
-pub fn stub_1e8cc() -> ! {
-    todo!("0x1e8cc -[LoginViewController viewDidUnload]")
+pub fn stub_1e8cc() {
+    // delegate of crate::view_controllers (IDA 0x1e8cc)
+    crate::view_controllers::LoginViewController::shared_instance().login_view_did_unload();
 }
 
 // 0x1e9d0 — -[LoginViewController handleSignupNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController handleSignupNotification:]")]
-pub fn stub_1e9d0() -> ! {
-    todo!("0x1e9d0 -[LoginViewController handleSignupNotification:]")
+pub fn stub_1e9d0(username: Option<&str>, password: Option<&str>) {
+    // delegate of crate::view_controllers (IDA 0x1e9d0)
+    crate::view_controllers::LoginViewController::shared_instance().handle_signup_notification(username, password);
 }
 
 // 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
 #[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
-pub fn stub_1eaa0() -> ! {
-    todo!("0x1eaa0 ___48-[LoginViewController handleSignupNotification:]_block_invoke")
+pub fn stub_1eaa0() {
+    // delegate of crate::view_controllers (IDA 0x1eaa0)
+    crate::view_controllers::LoginViewController::shared_instance().handle_signup_notification_block();
 }
 
 // 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
-pub fn stub_1eb5c() -> ! {
-    todo!("0x1eb5c -[LoginViewController gotLoginFailedNotification:]")
+pub fn stub_1eb5c(error: &str) {
+    // delegate of crate::view_controllers (IDA 0x1eb5c)
+    crate::view_controllers::LoginViewController::shared_instance().got_login_failed_notification(error);
 }
 
 // 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
 #[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
-pub fn stub_1ebdc() -> ! {
-    todo!("0x1ebdc ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")
+pub fn stub_1ebdc() {
+    // delegate of crate::view_controllers (IDA 0x1ebdc)
+    crate::view_controllers::LoginViewController::shared_instance().got_login_failed_notification_block();
 }
 
 // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_1ec84() -> ! {
-    todo!("0x1ec84 -[LoginViewController gotLoginSuccessfulNotification:]")
+pub fn stub_1ec84() {
+    // delegate of crate::view_controllers (IDA 0x1ec84)
+    crate::view_controllers::LoginViewController::shared_instance().got_login_successful_notification();
 }
 
 // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
 #[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
-pub fn stub_1ed04() -> ! {
-    todo!("0x1ed04 ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+pub fn stub_1ed04() {
+    // delegate of crate::view_controllers (IDA 0x1ed04)
+    crate::view_controllers::LoginViewController::shared_instance().got_login_successful_notification_block();
 }
 
 // 0x1ed44 — -[LoginViewController showLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController showLoggingIn]")]
-pub fn stub_1ed44() -> ! {
-    todo!("0x1ed44 -[LoginViewController showLoggingIn]")
+pub fn stub_1ed44() {
+    // delegate of crate::view_controllers (IDA 0x1ed44)
+    crate::view_controllers::LoginViewController::shared_instance().show_logging_in();
 }
 
 // 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
-pub fn stub_1edbc() -> ! {
-    todo!("0x1edbc ___36-[LoginViewController showLoggingIn]_block_invoke")
+pub fn stub_1edbc() {
+    // delegate of crate::view_controllers (IDA 0x1edbc)
+    crate::view_controllers::LoginViewController::shared_instance().show_logging_in_block();
 }
 
 // 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
-pub fn stub_1ee58() -> ! {
-    todo!("0x1ee58 ___36-[LoginViewController showLoggingIn]_block_invoke_2")
+pub fn stub_1ee58() {
+    // delegate of crate::view_controllers (IDA 0x1ee58)
+    crate::view_controllers::LoginViewController::shared_instance().show_logging_in_block_2();
 }
 
 // 0x1eeac — -[LoginViewController stopShowLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController stopShowLoggingIn]")]
-pub fn stub_1eeac() -> ! {
-    todo!("0x1eeac -[LoginViewController stopShowLoggingIn]")
+pub fn stub_1eeac() {
+    // delegate of crate::view_controllers (IDA 0x1eeac)
+    crate::view_controllers::LoginViewController::shared_instance().stop_show_logging_in();
 }
 
 // 0x1eefc — ___40-[LoginViewController stopShowLoggingIn]_block_invoke
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke")]
-pub fn stub_1eefc() -> ! {
-    todo!("0x1eefc ___40-[LoginViewController stopShowLoggingIn]_block_invoke")
+pub fn stub_1eefc() {
+    // delegate of crate::view_controllers (IDA 0x1eefc)
+    crate::view_controllers::LoginViewController::shared_instance().stop_show_logging_in_block();
 }
 
 // 0x1efac — ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")]
-pub fn stub_1efac() -> ! {
-    todo!("0x1efac ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")
+pub fn stub_1efac() {
+    // delegate of crate::view_controllers (IDA 0x1efac)
+    crate::view_controllers::LoginViewController::shared_instance().stop_show_logging_in_block_2();
 }
 
 // 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]

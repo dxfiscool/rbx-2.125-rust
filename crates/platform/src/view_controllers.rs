@@ -1790,6 +1790,37 @@ pub struct LoginViewController {
     logging_in_stops: std::sync::atomic::AtomicU32,
     button_restores: std::sync::atomic::AtomicU32,
     roblox_logo: parking_lot::Mutex<ObjCId>,
+    // Batch 1 (IDA 0x1da5c..0x1efac): environment picker, lifecycle, login-flow state.
+    envs: parking_lot::Mutex<Vec<String>>,
+    base_url: parking_lot::Mutex<String>,
+    memory_bouncer_starts: std::sync::atomic::AtomicU32,
+    coder_init_registrations: std::sync::atomic::AtomicU32,
+    dealloc_outlet_releases: std::sync::atomic::AtomicU32,
+    logo_alpha_bits: std::sync::atomic::AtomicU32,
+    view_will_appear_dispatches: std::sync::atomic::AtomicU32,
+    stop_logging_in_calls: std::sync::atomic::AtomicU32,
+    did_load_marks: std::sync::atomic::AtomicU32,
+    did_unload_marks: std::sync::atomic::AtomicU32,
+    keyboard_registrations: std::sync::atomic::AtomicU32,
+    username_text: parking_lot::Mutex<String>,
+    password_text: parking_lot::Mutex<String>,
+    remember_switch_on: std::sync::atomic::AtomicBool,
+    pending_signup: parking_lot::Mutex<Option<(String, String)>>,
+    signup_dispatches: std::sync::atomic::AtomicU32,
+    signup_applied: std::sync::atomic::AtomicU32,
+    login_failed_dispatches: std::sync::atomic::AtomicU32,
+    login_failed_blocks: std::sync::atomic::AtomicU32,
+    last_login_error: parking_lot::Mutex<String>,
+    password_cleared_to_empty: std::sync::atomic::AtomicBool,
+    login_success_dispatches: std::sync::atomic::AtomicU32,
+    login_transitions: std::sync::atomic::AtomicU32,
+    store_manager_fetches: std::sync::atomic::AtomicU32,
+    password_cleared_on_success: std::sync::atomic::AtomicBool,
+    show_logging_in_calls: std::sync::atomic::AtomicU32,
+    about_button_hidden: std::sync::atomic::AtomicBool,
+    activity_hidden: std::sync::atomic::AtomicBool,
+    field_alpha_bits: std::sync::atomic::AtomicU32,
+    login_animation_calls: std::sync::atomic::AtomicU32,
 }
 
 impl LoginViewController {
@@ -1930,6 +1961,390 @@ impl LoginViewController {
     }
     pub fn roblox_logo(&self) -> ObjCId {
         *self.roblox_logo.lock()
+    }
+    // 0x1da6c — -[LoginViewController initWithCoder:]
+    // type: LoginViewController *__cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1da6c
+    #[doc(alias = "-[LoginViewController initWithCoder:]")]
+    #[doc = "-[LoginViewController initWithCoder:]"]
+    pub fn init_with_coder(&self, coder: ObjCId) {
+        // Super `initWithCoder:` (out of slice), `envs = 0` (IDA 0x1dac4),
+        // then three `addObserver:selector:name:object:` registrations for the
+        // login-failed, login-successful, and signup-finished notifications
+        // (IDA 0x1dad0..0x1dbc6); `coder` only forwards to super.
+        let _ = coder;
+        self.envs.lock().clear();
+        self.coder_init_registrations.fetch_add(3, std::sync::atomic::Ordering::SeqCst);
+        NotificationCenter::default_center().add_observer(self.objc_id());
+    }
+    pub fn coder_init_registration_count(&self) -> u32 {
+        self.coder_init_registrations.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    fn objc_id(&self) -> ObjCId {
+        self as *const Self as ObjCId
+    }
+    // 0x1dbd4 — -[LoginViewController dealloc]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1dbd4
+    #[doc(alias = "-[LoginViewController dealloc]")]
+    #[doc = "-[LoginViewController dealloc]"]
+    pub fn dealloc_outlets(&self) {
+        // `removeObserver:` (IDA 0x1dc06), twelve retained-outlet `release`
+        // sends plus the conditional `envs` release (IDA 0x1dc26..0x1dd58),
+        // then super `dealloc` (out of slice).
+        NotificationCenter::default_center().remove_observer(self.objc_id());
+        self.dealloc_outlet_releases.fetch_add(13, std::sync::atomic::Ordering::SeqCst);
+        self.envs.lock().clear();
+    }
+    pub fn dealloc_outlet_release_count(&self) -> u32 {
+        self.dealloc_outlet_releases.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1dd84
+    #[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
+    #[doc = "-[LoginViewController populateEnvironmentPicker]"]
+    pub fn populate_environment_picker(&self, tablet: bool) {
+        // Fresh `NSMutableArray` (IDA 0x1dda8..0x1ddde); the `www.`/`m.`
+        // prefix follows `thisDeviceIsATablet` (IDA 0x1dde6..0x1de16), the
+        // per-tester hosts use the empty/`m.` prefix (IDA 0x1defc..0x1df0c),
+        // and all 17 entries land in `envs` (IDA 0x1de18..0x1e0d4).
+        let sub = if tablet { "www." } else { "m." };
+        let tester = if tablet { "" } else { "m." };
+        let mut envs = self.envs.lock();
+        envs.clear();
+        envs.push(format!("http://{}roblox.com/", sub));
+        for host in ["sitetest1", "sitetest2", "sitetest3", "sitetest4"] {
+            envs.push(format!("http://{}{}.robloxlabs.com/", sub, host));
+        }
+        for name in ["allen", "anthony", "guru", "rosemary", "sairam", "shannon", "vlad"] {
+            envs.push(format!("http://{}{}.sitetest3.robloxlabs.com/", tester, name));
+        }
+        for host in ["gametest5", "gametest4", "gametest3", "gametest2", "gametest1"] {
+            envs.push(format!("http://{}{}.robloxlabs.com/", sub, host));
+        }
+    }
+    pub fn env_count(&self) -> usize {
+        self.envs.lock().len()
+    }
+    pub fn env_at(&self, row: usize) -> Option<String> {
+        self.envs.lock().get(row).cloned()
+    }
+    // 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
+    // type: void __cdecl(LoginViewController *self, SEL, id, int, int)
+    // IDA 0x1e0d8
+    #[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
+    #[doc = "-[LoginViewController pickerView:didSelectRow:inComponent:]"]
+    pub fn picker_did_select_row(&self, row: usize) {
+        // `objectAtIndex:` + `+[RobloxInfo setBaseUrl:]` (IDA 0x1e106..0x1e11a),
+        // then the main-queue block runs inline (IDA 0x1e138).
+        if let Some(url) = self.env_at(row) {
+            *self.base_url.lock() = url;
+        }
+        self.picker_did_select_row_block();
+    }
+    pub fn base_url(&self) -> String {
+        self.base_url.lock().clone()
+    }
+    // 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
+    // type: void __cdecl(id)
+    // IDA 0x1e13c
+    #[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
+    #[doc = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke"]
+    pub fn picker_did_select_row_block(&self) {
+        // `startMemoryBouncer` on the shared manager (IDA 0x1e158..0x1e16c).
+        self.memory_bouncer_starts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn memory_bouncer_start_count(&self) -> u32 {
+        self.memory_bouncer_starts.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
+    // type: int __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1e170
+    #[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
+    #[doc = "-[LoginViewController numberOfComponentsInPickerView:]"]
+    pub fn number_of_components(&self) -> i32 {
+        // `return 1` (IDA 0x1e172).
+        1
+    }
+    // 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
+    // type: int __cdecl(LoginViewController *self, SEL, id, int)
+    // IDA 0x1e174
+    #[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
+    #[doc = "-[LoginViewController pickerView:numberOfRowsInComponent:]"]
+    pub fn number_of_rows(&self) -> usize {
+        // `[envs count]` (IDA 0x1e174).
+        self.envs.lock().len()
+    }
+    // 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
+    // type: id __cdecl(LoginViewController *self, SEL, id, int, int)
+    // IDA 0x1e194
+    #[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
+    #[doc = "-[LoginViewController pickerView:titleForRow:forComponent:]"]
+    pub fn title_for_row(&self, row: usize) -> Option<String> {
+        // `[envs objectAtIndex:]` (IDA 0x1e194); the NSString lives out of
+        // slice, so the selected URL string is returned.
+        self.env_at(row)
+    }
+    // 0x1e1b4 — -[LoginViewController viewWillAppear:]
+    // type: void __cdecl(LoginViewController *self, SEL, char)
+    // IDA 0x1e1b4
+    #[doc(alias = "-[LoginViewController viewWillAppear:]")]
+    #[doc = "-[LoginViewController viewWillAppear:]"]
+    pub fn login_view_will_appear(&self, animated: bool, remember_password: bool, current_password: &str) {
+        // Logo alpha to 1.0f (IDA 0x1e1ca..0x1e1de, 1065353216 = 1.0f),
+        // main-queue `stopShowLoggingIn` block runs inline (IDA 0x1e210..0x1e224),
+        // then the password field takes the stored password when remembering
+        // or clears to empty (IDA 0x1e240..0x1e2bc).
+        let _ = animated;
+        self.logo_alpha_bits.store(1065353216, std::sync::atomic::Ordering::SeqCst);
+        self.view_will_appear_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.view_will_appear_block();
+        if remember_password {
+            *self.password_text.lock() = current_password.to_owned();
+        } else {
+            self.password_text.lock().clear();
+        }
+    }
+    pub fn logo_alpha(&self) -> f32 {
+        f32::from_bits(self.logo_alpha_bits.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    // 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
+    // IDA 0x1e2c4
+    #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
+    #[doc = "___38-[LoginViewController viewWillAppear:]_block_invoke"]
+    pub fn view_will_appear_block(&self) {
+        // `stopShowLoggingIn` (IDA 0x1e2c4).
+        self.stop_logging_in_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn stop_logging_in_call_count(&self) -> u32 {
+        self.stop_logging_in_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1e2ec — -[LoginViewController viewDidLoad]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1e2ec
+    #[doc(alias = "-[LoginViewController viewDidLoad]")]
+    #[doc = "-[LoginViewController viewDidLoad]"]
+    pub fn login_view_did_load(&self, username: Option<&str>, password: Option<&str>, remember_on: bool) {
+        // Super `viewDidLoad`, `dword_130C3F0 = self` shared mark
+        // (IDA 0x1e30c..0x1e33e), analytics + localized placeholders + version
+        // label (out of slice, IDA 0x1e342..0x1e6c2), username/remember-switch
+        // fills (IDA 0x1e6e2..0x1e7ea), keyboard observers (IDA 0x1e808..0x1e870),
+        // and the memory-bouncer block inline (IDA 0x1e88a).
+        self.did_load_marks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if let Some(name) = username {
+            *self.username_text.lock() = name.to_owned();
+        }
+        self.remember_switch_on.store(remember_on, std::sync::atomic::Ordering::SeqCst);
+        if password.is_some() && remember_on {
+            *self.password_text.lock() = password.unwrap_or_default().to_owned();
+        }
+        self.keyboard_registrations.fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+        NotificationCenter::default_center().add_observer(self.objc_id());
+        self.view_did_load_block();
+    }
+    pub fn did_load_mark_count(&self) -> u32 {
+        self.did_load_marks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn username_text(&self) -> String {
+        self.username_text.lock().clone()
+    }
+    pub fn password_text(&self) -> String {
+        self.password_text.lock().clone()
+    }
+    pub fn is_remember_switch_on(&self) -> bool {
+        self.remember_switch_on.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
+    // type: void __cdecl(id)
+    // IDA 0x1e898
+    #[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
+    #[doc = "___34-[LoginViewController viewDidLoad]_block_invoke"]
+    pub fn view_did_load_block(&self) {
+        // `startMemoryBouncer` on the shared manager (IDA 0x1e8b4..0x1e8c8).
+        self.memory_bouncer_starts.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    // 0x1e8cc — -[LoginViewController viewDidUnload]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1e8cc
+    #[doc(alias = "-[LoginViewController viewDidUnload]")]
+    #[doc = "-[LoginViewController viewDidUnload]"]
+    pub fn login_view_did_unload(&self) {
+        // Ten outlet setters to nil (IDA 0x1e8e6..0x1e99a), super
+        // `viewDidUnload` (out of slice, IDA 0x1e9bc), shared mark cleared
+        // (IDA 0x1e9ca: `dword_130C3F0 = 0`).
+        self.dealloc_outlet_releases.fetch_add(10, std::sync::atomic::Ordering::SeqCst);
+        self.did_unload_marks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.username_text.lock().clear();
+        self.password_text.lock().clear();
+    }
+    pub fn did_unload_mark_count(&self) -> u32 {
+        self.did_unload_marks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1e9d0 — -[LoginViewController handleSignupNotification:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1e9d0
+    #[doc(alias = "-[LoginViewController handleSignupNotification:]")]
+    #[doc = "-[LoginViewController handleSignupNotification:]"]
+    pub fn handle_signup_notification(&self, username: Option<&str>, password: Option<&str>) {
+        // `userInfo` username/password fetched + retained (IDA 0x1e9ee..0x1ea42);
+        // the main-queue block runs only when both are non-nil
+        // (IDA 0x1ea46..0x1ea92, inline here).
+        match (username, password) {
+            (Some(user), Some(pass)) => {
+                *self.pending_signup.lock() = Some((user.to_owned(), pass.to_owned()));
+                self.signup_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                self.handle_signup_notification_block();
+            }
+            _ => {
+                *self.pending_signup.lock() = None;
+            }
+        }
+    }
+    // 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
+    // IDA 0x1eaa0
+    #[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
+    #[doc = "___48-[LoginViewController handleSignupNotification:]_block_invoke"]
+    pub fn handle_signup_notification_block(&self) {
+        // Username/password fields take the retained values, then both are
+        // released (IDA 0x1eab4..0x1eaf6).
+        if let Some((user, pass)) = self.pending_signup.lock().clone() {
+            *self.username_text.lock() = user;
+            *self.password_text.lock() = pass;
+            self.signup_applied.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            *self.pending_signup.lock() = None;
+        }
+    }
+    pub fn signup_applied_count(&self) -> u32 {
+        self.signup_applied.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1eb5c
+    #[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
+    #[doc = "-[LoginViewController gotLoginFailedNotification:]"]
+    pub fn got_login_failed_notification(&self, error: &str) {
+        // `userInfo["Error"]` captured into the main-queue block
+        // (IDA 0x1eb72..0x1ebd4, inline here).
+        *self.last_login_error.lock() = error.to_owned();
+        self.login_failed_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.got_login_failed_notification_block();
+    }
+    // 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
+    // IDA 0x1ebdc
+    #[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
+    #[doc = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke"]
+    pub fn got_login_failed_notification_block(&self) {
+        // `stopShowLoggingIn`, `RobloxAlertWithMessage:` with the error,
+        // password field cleared to empty (IDA 0x1ebf0..0x1ec20).
+        self.stop_logging_in_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.login_failed_blocks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        let message = self.last_login_error.lock().clone();
+        RobloxAlert::alert_with_message(&message);
+        self.password_text.lock().clear();
+        self.password_cleared_to_empty.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn login_failed_block_count(&self) -> u32 {
+        self.login_failed_blocks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
+    // type: void __cdecl(LoginViewController *self, SEL, id)
+    // IDA 0x1ec84
+    #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
+    #[doc = "-[LoginViewController gotLoginSuccessfulNotification:]"]
+    pub fn got_login_successful_notification(&self) {
+        // Store fetch + `doLoginTransition` (IDA 0x1eca4..0x1ecb6), then the
+        // main-queue block inline (IDA 0x1ece8..0x1ecfc).
+        self.store_manager_fetches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.login_transitions.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.login_success_dispatches.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.got_login_successful_notification_block();
+    }
+    // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
+    // IDA 0x1ed04
+    #[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
+    #[doc = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke"]
+    pub fn got_login_successful_notification_block(&self) {
+        // Field at +204 cleared to empty (IDA 0x1ed04).
+        self.password_text.lock().clear();
+        self.password_cleared_on_success.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn login_transition_count(&self) -> u32 {
+        self.login_transitions.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1ed44 — -[LoginViewController showLoggingIn]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1ed44
+    #[doc(alias = "-[LoginViewController showLoggingIn]")]
+    #[doc = "-[LoginViewController showLoggingIn]"]
+    pub fn show_logging_in(&self) {
+        // `aboutButton.hidden = YES` (IDA 0x1ed5a..0x1ed6c), main-queue block
+        // inline (IDA 0x1ed9e..0x1edb2).
+        self.about_button_hidden.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.show_logging_in_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.show_logging_in_block();
+    }
+    pub fn show_logging_in_call_count(&self) -> u32 {
+        self.show_logging_in_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    // 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
+    // IDA 0x1edbc
+    #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
+    #[doc = "___36-[LoginViewController showLoggingIn]_block_invoke"]
+    pub fn show_logging_in_block(&self) {
+        // Indicator unhidden (IDA 0x1edd2..0x1ede6), then the 0.3s
+        // `animateWithDuration:` fade of `loginFieldViews` to alpha 0
+        // (IDA 0x1ee24..0x1ee54) runs inline.
+        self.activity_hidden.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.login_animation_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.show_logging_in_block_2();
+    }
+    // 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
+    // IDA 0x1ee58
+    #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
+    #[doc = "___36-[LoginViewController showLoggingIn]_block_invoke_2"]
+    pub fn show_logging_in_block_2(&self) {
+        // `loginFieldViews.alpha = 0` (IDA 0x1ee6a).
+        self.field_alpha_bits.store(0, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn field_alpha(&self) -> f32 {
+        f32::from_bits(self.field_alpha_bits.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    // 0x1eeac — -[LoginViewController stopShowLoggingIn]
+    // type: void __cdecl(LoginViewController *self, SEL)
+    // IDA 0x1eeac
+    #[doc(alias = "-[LoginViewController stopShowLoggingIn]")]
+    #[doc = "-[LoginViewController stopShowLoggingIn]"]
+    pub fn stop_show_logging_in(&self) {
+        // Main-queue block inline (IDA 0x1eee2..0x1eef4).
+        self.stop_logging_in_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.stop_show_logging_in_block();
+    }
+    // 0x1eefc — ___40-[LoginViewController stopShowLoggingIn]_block_invoke
+    // IDA 0x1eefc
+    #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke")]
+    #[doc = "___40-[LoginViewController stopShowLoggingIn]_block_invoke"]
+    pub fn stop_show_logging_in_block(&self) {
+        // About button unhidden, indicator hidden (IDA 0x1ef12..0x1ef42),
+        // then the 0.5s `animateWithDuration:` restore (IDA 0x1ef80..0x1efaa).
+        self.about_button_hidden.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.activity_hidden.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.login_animation_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.stop_show_logging_in_block_2();
+    }
+    // 0x1efac — ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2
+    // IDA 0x1efac
+    #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")]
+    #[doc = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2"]
+    pub fn stop_show_logging_in_block_2(&self) {
+        // `loginFieldViews.alpha = 1.0f` (IDA 0x1efbe, 1065353216 = 1.0f).
+        self.field_alpha_bits.store(1065353216, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_about_button_hidden(&self) -> bool {
+        self.about_button_hidden.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn is_activity_hidden(&self) -> bool {
+        self.activity_hidden.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 
