@@ -160,6 +160,9 @@ const VTABLE_PROFILE: u32 = 0;
 // IDA off_11CD520: FMOD::ChannelReal vtable installed by C2 (0x71860);
 // 0 here = unlinked host model, same convention as the profile vtables.
 const VTABLE_CHANNEL_REAL: u32 = 0;
+// IDA off_11CD5C8: FMOD::ChannelRealManual3D vtable installed by C2
+// (0x72a74); 0 here = unlinked host model, same convention as above.
+const VTABLE_CHANNEL_MANUAL_3D: u32 = 0;
 
 /// Intrusive doubly-linked node (two words, e.g. ProfileModule +4/+8).
 #[repr(C)]
@@ -4211,6 +4214,31 @@ pub trait EmulatedInner: ChannelInner {
     fn real_stop(ch: *mut ChannelEmulatedState) -> i32;
 }
 
+/// Host seam for the ChannelReal virtuals the tail methods below dispatch
+/// through (IDA vtable slots +60/+68/+84, e.g. 0x719e0/0x72364/0x726d8/
+/// 0x72910/0x73e20). Words cross the seam as raw bits so float/int views
+/// stay exact; voltage/pan names stay neutral because the image never names
+/// these slots.
+pub trait RealVirt {
+    fn virt_set_level(ch: *mut ChannelRealBase, bits: u32) -> i32;
+    fn virt_set_pan(ch: *mut ChannelRealBase, a_bits: u32, b_bits: u32);
+    fn virt_refresh_level(ch: *mut ChannelRealBase, bits: u32) -> i32;
+}
+
+/// Host seam for the SoundI/ReverbI/SpeakerLevelsPool twins behind the
+/// ChannelReal tails (IDA 0x71e34/0x72528/0x725a0/0x72910), same shape as
+/// the ChannelInner/AsyncOs seams.
+pub trait RealSys {
+    /// SoundI length query (vtable +92 called as `(sound, &len, 2)`, 0x71e88).
+    fn sound_length(sound: *mut u8, out_len: *mut u32) -> i32;
+    /// ReverbI::getChanProperties (0x72584/0x72670).
+    fn reverb_get(reverb: *mut u8, slot: i32, chan: u32, out_props: *mut u32) -> i32;
+    /// ReverbI::setChanProperties (0x72628/0x726bc).
+    fn reverb_set(reverb: *mut u8, slot: i32, chan: u32, props: *const u32) -> i32;
+    /// SpeakerLevelsPool::alloc (0x72958).
+    fn speaker_pool_alloc(pool: *mut u8, out_levels: *mut *mut u8);
+}
+
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
 #[doc(alias = "FMOD::ChannelEmulated::isVirtual(bool *)")]
 pub unsafe fn stub_71304(out: *mut bool) -> i32 {
@@ -4565,70 +4593,480 @@ pub fn stub_719d8() -> i32 {
 
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff
 #[doc(alias = "FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_719e0() -> ! {
-    todo!(
-        "0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)"
-    )
+pub unsafe fn stub_719e0<V: RealVirt>(
+    ch: *mut ChannelRealBase,
+    front_left: f32,
+    front_right: f32,
+    center: f32,
+    lfe: f32,
+    back_left: f32,
+    back_right: f32,
+    side_left: f32,
+    side_right: f32,
+) -> i32 {
+    // IDA 0x719e0 (fmod_channel.cpp setSpeakerMix): word 7 set means the mix
+    // is already baked — return 0 (0x71a18). Otherwise the SoundI twin at
+    // word 6 decides (0x71a1c..0x71a40): a multi-channel sound collapses to
+    // pan+level virtuals (+68/+60) per mode flag and channel index, anything
+    // else runs the downmix math below (0x71aec..0x71be4).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 6 must
+    // point to a SoundI block with words 17/22/41 readable, and word 4 to a
+    // block with the level word at +232.
+    const ONE: u32 = 1065353216; // 1.0f bits (IDA 0x71a70/0x71abc/...)
+    const NEG_ONE: u32 = 0xBF800000; // -1.0f bits (-1082130432, 0x71c1c/...)
+    unsafe {
+        if (*ch).word(7) != 0 {
+            return FMOD_OK;
+        }
+        let sound = (*ch).word(6) as *const u32;
+        let mut multi = false;
+        if !sound.is_null() {
+            // IDA 0x71a24..0x71a38: sub-sound present (word 41) ? its word 17
+            // (*(v19+68)) : word 17; multi-channel iff > 1.
+            let sub = *sound.add(41);
+            let channels = if sub == 0 {
+                *sound.add(17)
+            } else {
+                *(sub as *const u32).add(17)
+            };
+            multi = channels > 1;
+        }
+        // SAFETY: word 4 is a valid block with a readable word at +232 per
+        // the caller contract above.
+        let sys_level = *(((*ch).word(4) as *const u8).add(232) as *const f32);
+        if multi {
+            let mode = *sound.add(22);
+            if (mode & 0x10000000) != 0 {
+                // IDA 0x71abc..0x71ae0: mono collapse — pan center, level takes
+                // the center mix scaled by the system level.
+                V::virt_set_pan(ch, 0, ONE);
+                V::virt_set_level(ch, (center * sys_level).to_bits());
+            } else if (mode & 0x20000000) != 0 {
+                // IDA 0x71a50..0x71c4c: stereo collapse keyed on word 2 parity.
+                match (*ch).word(2) % 2 {
+                    1 => {
+                        V::virt_set_pan(ch, ONE, ONE);
+                        V::virt_set_level(ch, (front_right * sys_level).to_bits());
+                    }
+                    0 => {
+                        V::virt_set_pan(ch, NEG_ONE, ONE);
+                        V::virt_set_level(ch, (front_left * sys_level).to_bits());
+                    }
+                    // IDA 0x71a68: any other residue falls out with no virtual
+                    // call; the trailing return 0 still runs.
+                    _ => {}
+                }
+            } else {
+                // IDA 0x71bf4..0x71d8c: per-index pan pair + one mix tap.
+                let (pan_a, pan_b, tap) = match (*ch).word(2) {
+                    0 => (NEG_ONE, ONE, front_left),
+                    1 => (ONE, ONE, front_right),
+                    2 => (0, ONE, center),
+                    3 => (0, 0, lfe),
+                    4 => (NEG_ONE, NEG_ONE, back_left),
+                    5 => (ONE, NEG_ONE, back_right),
+                    6 => (NEG_ONE, 0, side_left),
+                    7 => (ONE, 0, side_right),
+                    // IDA default: bare `return 0` with no virtual call.
+                    _ => return FMOD_OK,
+                };
+                V::virt_set_pan(ch, pan_a, pan_b);
+                V::virt_set_level(ch, (tap * sys_level).to_bits());
+            }
+            return FMOD_OK;
+        }
+        // IDA 0x71aec..0x71be4: downmix — left-folded total clamped at 1.0
+        // drives the +60 level virtual, the (L-R) spreads clamped to [-1,1]
+        // drive the +68 pan virtual.
+        let mut total = front_left + 0.0;
+        total += front_right;
+        total += center;
+        total += lfe;
+        total += back_left;
+        total += back_right;
+        total += side_left;
+        total += side_right;
+        if total > 1.0 {
+            total = 1.0;
+        }
+        let front = (front_left + 0.0 + front_right) + center;
+        let mut pan_hi = ((0.0 - front_left) + front_right) - back_left;
+        pan_hi = ((pan_hi + back_right) - side_left) + side_right;
+        let mut pan_lo = (front - back_left) - back_right;
+        V::virt_set_level(ch, (total * sys_level).to_bits());
+        if pan_hi >= -1.0 {
+            if pan_hi > 1.0 {
+                pan_hi = 1.0;
+            }
+        } else {
+            pan_hi = -1.0;
+        }
+        if pan_lo >= -1.0 {
+            if pan_lo > 1.0 {
+                pan_lo = 1.0;
+            }
+        } else {
+            pan_lo = -1.0;
+        }
+        V::virt_set_pan(ch, pan_hi.to_bits(), pan_lo.to_bits());
+        FMOD_OK
+    }
 }
 
 // 0x71e34 — __ZN4FMOD11ChannelReal11setPositionEjj
 #[doc(alias = "FMOD::ChannelReal::setPosition(unsigned int,unsigned int)")]
-pub fn stub_71e34() -> ! {
-    todo!("0x71e34 FMOD::ChannelReal::setPosition(unsigned int,unsigned int)")
+pub unsafe fn stub_71e34<S: RealSys>(ch: *mut ChannelRealBase, pos: u32, unit: u32) -> i32 {
+    // IDA 0x71e34 (fmod_channel.cpp setPosition): the unit must be 1 (ms),
+    // 2 (pcm) or 4 (bytes), else 25 (0x71e48..0x71e60); a null sound twin
+    // (word 6) stores nothing and returns 0 (0x71e6c..0x71e70). Otherwise
+    // SoundI::getLength (vtable +92, seam) supplies the clamp, the position
+    // converts per the sound format (words +24/+68/+76, 0x71ecc..0x71ffc)
+    // and word 11 keeps the clamped value (0x71eb4..0x71ec8).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 6 must
+    // point to a SoundI block with words 24/68/76 readable.
+    unsafe {
+        if unit != 4 && unit.wrapping_sub(1) > 1 {
+            return 25;
+        }
+        let sound = (*ch).word(6) as *mut u8;
+        if sound.is_null() {
+            return FMOD_OK;
+        }
+        let mut len = 0u32;
+        let rc = S::sound_length(sound, &mut len);
+        if rc != 0 {
+            return rc;
+        }
+        let pcm = match unit {
+            // IDA 0x71f2c: raw pcm passes through.
+            2 => pos,
+            // IDA 0x71ecc..0x71ffc: byte position scaled by bits-per-sample
+            // (word +24 format) over the channel count (word +68).
+            4 => {
+                let channels = *(sound.add(68) as *const u32);
+                if channels == 0 {
+                    // IDA 0x71edc: no channel count — LABEL_11 stores 0.
+                    0
+                } else {
+                    let format = *(sound.add(24) as *const u32);
+                    match format {
+                        1 | 2 | 3 | 4 | 5 => {
+                            let bits = match format {
+                                1 => 8u64,
+                                2 => 16,
+                                3 => 24,
+                                _ => 32,
+                            };
+                            // IDA 0x71f88..0x71f8c: v17 = 8*pos/bits (u64),
+                            // v11 = (u32)v17/channels.
+                            (((8 * pos as u64) / bits) as u32) / channels
+                        }
+                        // IDA 0x71ff8: format 0 maps everything to 0.
+                        0 => 0,
+                        6 => (((14 * pos as u64) >> 3) as u32) / channels,
+                        7 => (((pos as u64) << 6) / 0x24 as u64) as u32 / channels,
+                        8 => (((28 * pos as u64) >> 4) as u32) / channels,
+                        // IDA 0x71f38: packed formats address samples
+                        // directly (LABEL_19).
+                        9 | 10 | 11 => pos,
+                        // IDA LABEL_11: unknown format stores 0.
+                        _ => 0,
+                    }
+                }
+            }
+            // IDA 0x71f14..0x71f24: milliseconds via the sound frequency
+            // (word +76); the float->u32 cast truncates like the original.
+            1 => ((pos as f32 / 1000.0) * *(sound.add(76) as *const f32)) as u32,
+            // Unreachable after the unit check; IDA LABEL_11 stores 0.
+            _ => 0,
+        };
+        if pcm > len {
+            (*ch).set_word(11, len);
+        } else {
+            (*ch).set_word(11, pcm);
+        }
+        rc
+    }
 }
 
 // 0x72008 — __ZN4FMOD11ChannelReal11getPositionEPjj
 #[doc(alias = "FMOD::ChannelReal::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_72008() -> ! {
-    todo!("0x72008 FMOD::ChannelReal::getPosition(unsigned int *,unsigned int)")
+pub unsafe fn stub_72008(ch: *const ChannelRealBase, out: *mut u32, mode: u32) -> i32 {
+    // IDA 0x72008 (fmod_channel.cpp getPosition): null `out` or null sound
+    // twin (word 6) -> 37 (0x72010..0x72020). Mode aliases 0x10000/0x20000/
+    // 0x40000 fold to units 1/2/4 (0x7202c..0x72230); subsound modes
+    // 0x80000/0x100000 additionally require the subsound list (word +156,
+    // else 37 — 0x72034..0x72160). Anything outside units {1,2,4} and the
+    // subsound modes is 25 (0x72044..0x7206c). The word-11 cursor then walks
+    // the subsound lengths (words +132/+156/+160, each length at +40) and
+    // converts per the sound format (words +24/+68/+76, 0x72130..0x722e0).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `out` must be null
+    // or point to a writable u32; a set word 6 must point to a SoundI block
+    // with words 24/68/76/132/156/160 readable.
+    unsafe {
+        if out.is_null() {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        let sound = (*ch).word(6) as *mut u8;
+        if sound.is_null() {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        let mut unit = mode & 0xEFFFFFFF;
+        if unit == 0x10000 {
+            unit = 1;
+        } else if unit == 0x20000 {
+            unit = 2;
+        } else if unit == 0x40000 {
+            unit = 4;
+        }
+        // BUG: original at 0x7202c — the three alias arms jump straight to
+        // LABEL_7 and skip the subsound-use init below (0x72240), so the
+        // flag reads uninitialized r4 there. The host takes the only sane
+        // value (false: plain units never walk subsounds).
+        let mut use_sub = false;
+        if unit == 0x100000 || unit == 0x80000 {
+            use_sub = true;
+            // IDA LABEL_7 (0x72034..0x72160).
+            if *(sound.add(156) as *const u32) == 0 {
+                return FMOD_ERR_INVALID_PARAM;
+            }
+        }
+        if unit != 4 && unit.wrapping_sub(1) > 1 && unit != 0x100000 && unit != 0x80000 {
+            return 25;
+        }
+        let mut pos = (*ch).word(11);
+        let mut sub_idx = 0u32;
+        if use_sub {
+            // IDA 0x720a8..0x720fc: fold the cursor across subsound lengths.
+            let mut walked = false;
+            let count = *(sound.add(160) as *const i32);
+            if count > 0 {
+                let list = *(sound.add(156) as *const *mut u32);
+                let table = *(sound.add(132) as *const *mut u32);
+                let first = *table.add(*list as usize);
+                if first != 0 {
+                    let mut cur_len = *((first as *mut u8).add(40) as *const u32);
+                    if pos >= cur_len {
+                        walked = true;
+                        let mut n = 0u32;
+                        loop {
+                            n += 1;
+                            pos -= cur_len;
+                            if n == count as u32 {
+                                break;
+                            }
+                            let entry = *table.add(*list.add(2 * n as usize) as usize);
+                            if entry == 0 {
+                                break;
+                            }
+                            cur_len = *((entry as *mut u8).add(40) as *const u32);
+                            if cur_len > pos {
+                                break;
+                            }
+                        }
+                        sub_idx = n;
+                    }
+                }
+            }
+            if unit == 0x80000 {
+                *out = if walked { sub_idx } else { 0 };
+                return FMOD_OK;
+            }
+        } else if unit == 0x80000 {
+            *out = 0;
+            return FMOD_OK;
+        }
+        match unit {
+            // IDA 0x72114: subsound ordinal out.
+            0x100000 => {
+                *out = sub_idx;
+                FMOD_OK
+            }
+            // IDA LABEL_37 (0x72164): raw pcm out.
+            2 => {
+                *out = pos;
+                FMOD_OK
+            }
+            // IDA 0x72130..0x722e0: byte/DSP-coefficient units per format.
+            4 => {
+                let format = *(sound.add(24) as *const u32);
+                let channels = *(sound.add(68) as *const u32);
+                match format {
+                    1 | 2 | 3 | 4 | 5 => {
+                        let bits = match format {
+                            1 => 8u64,
+                            2 => 16,
+                            3 => 24,
+                            _ => 32,
+                        };
+                        // IDA 0x721c0..0x721e0: *out = bits*pos>>3, then the
+                        // cursor is re-expressed through the channel count
+                        // and reported again (LABEL_41).
+                        let conv = ((bits * pos as u64) >> 3) as u32;
+                        pos = channels.wrapping_mul(conv);
+                        *out = pos;
+                        FMOD_OK
+                    }
+                    _ => match format {
+                        // IDA 0x722b8: format 0 reports 0.
+                        0 => {
+                            *out = 0;
+                            FMOD_OK
+                        }
+                        6 => {
+                            // IDA 0x722a4: 8*((pos+13)/14), then LABEL_41.
+                            let d = 8u32.wrapping_mul(pos.wrapping_add(13) / 14);
+                            pos = channels.wrapping_mul(d);
+                            *out = pos;
+                            FMOD_OK
+                        }
+                        7 => {
+                            // IDA 0x72280: 36*((pos+63)>>6), then LABEL_41.
+                            let d = 36u32.wrapping_mul(pos.wrapping_add(63) >> 6);
+                            pos = channels.wrapping_mul(d);
+                            *out = pos;
+                            FMOD_OK
+                        }
+                        8 => {
+                            // IDA 0x722d4: 16*((pos+27)/28), then LABEL_41.
+                            let d = 16u32.wrapping_mul(pos.wrapping_add(27) / 0x1C);
+                            pos = channels.wrapping_mul(d);
+                            *out = pos;
+                            FMOD_OK
+                        }
+                        // IDA LABEL_37/LABEL_41: packed formats report the
+                        // cursor as-is.
+                        9 | 10 | 11 => {
+                            *out = pos;
+                            FMOD_OK
+                        }
+                        // IDA default: bare `return 0` leaving *out alone.
+                        _ => FMOD_OK,
+                    },
+                }
+            }
+            _ => {
+                if unit != 1 {
+                    // IDA 0x721e8: unreachable after validation, *out alone.
+                    return FMOD_OK;
+                }
+                // IDA 0x72204..0x72214: milliseconds via the sound frequency.
+                *out = ((pos as f32 / *(sound.add(76) as *const f32)) * 1000.0) as u32;
+                FMOD_OK
+            }
+        }
+    }
 }
 
 // 0x722f0 — __ZN4FMOD11ChannelReal13setLoopPointsEjj
 #[doc(alias = "FMOD::ChannelReal::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_722f0() -> ! {
-    todo!("0x722f0 FMOD::ChannelReal::setLoopPoints(unsigned int,unsigned int)")
+pub unsafe fn stub_722f0(ch: *mut ChannelRealBase, start: u32, length: u32) -> i32 {
+    // IDA 0x722f0 (fmod_channel.cpp setLoopPoints): null sound twin (word 6)
+    // -> 37 (0x722f8); the loop must sit inside the sound length (word +40:
+    // start >= total or start+length > total -> 37, 0x722fc..0x72320), else
+    // words 14/15 take start/length and it returns 0 (0x72310..0x7231c).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 6 must
+    // point to a SoundI block with the length word at +40 readable.
+    unsafe {
+        let sound = (*ch).word(6) as *mut u8;
+        if sound.is_null() {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        let total = *(sound.add(40) as *const u32);
+        if total <= start || total < start.wrapping_add(length) {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        (*ch).set_word(14, start);
+        (*ch).set_word(15, length);
+        FMOD_OK
+    }
 }
 
 // 0x72328 — __ZN4FMOD11ChannelReal12setLoopCountEi
 #[doc(alias = "FMOD::ChannelReal::setLoopCount(int)")]
-pub fn stub_72328() -> ! {
-    todo!("0x72328 FMOD::ChannelReal::setLoopCount(int)")
+pub unsafe fn stub_72328(ch: *mut ChannelRealBase, count: i32) -> i32 {
+    // IDA 0x72328: word 13 (+52) = count (0x72328), return 0 (0x72330).
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        (*ch).set_word(13, count as u32);
+    }
+    FMOD_OK
 }
 
 // 0x72334 — __ZN4FMOD11ChannelReal12getLoopCountEPi
 #[doc(alias = "FMOD::ChannelReal::getLoopCount(int *)")]
-pub fn stub_72334() -> ! {
-    todo!("0x72334 FMOD::ChannelReal::getLoopCount(int *)")
+pub unsafe fn stub_72334(ch: *const ChannelRealBase, out: *mut i32) -> i32 {
+    // IDA 0x72334: null out -> 37 (0x7233c..0x72348); else *out = word 13
+    // (+52, 0x72338..0x72340), return 0 (0x72344).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `out` must be null
+    // or point to a writable i32.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    unsafe {
+        *out = (*ch).word(13) as i32;
+    }
+    FMOD_OK
 }
 
 // 0x7234c — __ZN4FMOD11ChannelReal14setLowPassGainEf
 #[doc(alias = "FMOD::ChannelReal::setLowPassGain(float)")]
-pub fn stub_7234c() -> ! {
-    todo!("0x7234c FMOD::ChannelReal::setLowPassGain(float)")
+pub fn stub_7234c(_gain: f32) -> i32 {
+    // IDA 0x7234c: hardcoded return 0 (0x72350) — the base channel applies
+    // no low-pass gain (cf. the ChannelSoftware twin at 0x73e20, which
+    // forwards to the +60 virtual).
+    FMOD_OK
 }
 
 // 0x72354 — __ZN4FMOD11ChannelReal15set3DAttributesEv
 #[doc(alias = "FMOD::ChannelReal::set3DAttributes(void)")]
-pub fn stub_72354() -> ! {
-    todo!("0x72354 FMOD::ChannelReal::set3DAttributes(void)")
+pub fn stub_72354() -> i32 {
+    // IDA 0x72354: hardcoded return 0 (0x72358) — the base channel applies
+    // no 3D attributes (the Manual3D twin at 0x72a88 carries the real body).
+    FMOD_OK
 }
 
 // 0x7235c — __ZN4FMOD11ChannelReal19set3DMinMaxDistanceEv
 #[doc(alias = "FMOD::ChannelReal::set3DMinMaxDistance(void)")]
-pub fn stub_7235c() -> ! {
-    todo!("0x7235c FMOD::ChannelReal::set3DMinMaxDistance(void)")
+pub fn stub_7235c() -> i32 {
+    // IDA 0x7235c: hardcoded return 0 (0x72360) — base no-op, same shape as
+    // 0x72354.
+    FMOD_OK
 }
 
 // 0x72364 — __ZN4FMOD11ChannelReal14set3DOcclusionEff
 #[doc(alias = "FMOD::ChannelReal::set3DOcclusion(float,float)")]
-pub fn stub_72364() -> ! {
-    todo!("0x72364 FMOD::ChannelReal::set3DOcclusion(float,float)")
+pub unsafe fn stub_72364<V: RealVirt>(ch: *mut ChannelRealBase, _direct: f32, _reverb: f32) -> i32 {
+    // IDA 0x72364 (fmod_channel.cpp set3DOcclusion): null system twin
+    // (word 4) -> 0 (0x72380); both occlusion arguments are ignored and the
+    // +60 virtual is tail-called with the level word at system+232, whose
+    // result passes through (0x7237c).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 4 must
+    // point to a block with the level word at +232 readable.
+    unsafe {
+        let sys = (*ch).word(4) as *mut u8;
+        if sys.is_null() {
+            return FMOD_OK;
+        }
+        V::virt_set_level(ch, *(sys.add(232) as *const u32))
+    }
 }
 
 // 0x72388 — __ZN4FMOD11ChannelReal9isPlayingEPbb
 #[doc(alias = "FMOD::ChannelReal::isPlaying(bool *,bool)")]
-pub fn stub_72388() -> ! {
-    todo!("0x72388 FMOD::ChannelReal::isPlaying(bool *,bool)")
+pub unsafe fn stub_72388(ch: *const ChannelRealBase, out: *mut bool, _update: bool) -> i32 {
+    // IDA 0x72388 (fmod_channel.cpp isPlaying): null out -> 37 (0x7238c);
+    // else *out = (word 9 & 0x50) != 0 (0x72398..0x723a8), return 0. The
+    // trailing bool argument has no body use.
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `out` must be null
+    // or point to a writable bool.
+    if out.is_null() {
+        return FMOD_ERR_INVALID_PARAM;
+    }
+    unsafe {
+        *out = ((*ch).word(9) & 0x50) != 0;
+    }
+    FMOD_OK
 }
 
 // 0x723b0 — __ZN4FMOD11ChannelReal9isVirtualEPb
@@ -4649,14 +5087,18 @@ pub unsafe fn stub_723b0(_ch: *const ChannelRealBase, out: *mut bool) -> i32 {
 
 // 0x723c4 — __ZN4FMOD11ChannelReal11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
 #[doc(alias = "FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_723c4() -> ! {
-    todo!("0x723c4 FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_723c4() -> i32 {
+    // IDA 0x723c4: hardcoded `return 51` (0x723c8) — the base channel has no
+    // spectrum path (same code as the getWaveData twin at 0x723cc).
+    51
 }
 
 // 0x723cc — __ZN4FMOD11ChannelReal11getWaveDataEPfii
 #[doc(alias = "FMOD::ChannelReal::getWaveData(float *,int,int)")]
-pub fn stub_723cc() -> ! {
-    todo!("0x723cc FMOD::ChannelReal::getWaveData(float *,int,int)")
+pub fn stub_723cc() -> i32 {
+    // IDA 0x723cc: hardcoded `return 51` (0x723d0) — the base channel has no
+    // wave-data path (same code as the getSpectrum twin at 0x723c4).
+    51
 }
 
 // 0x723d4 — __ZN4FMOD11ChannelReal10getDSPHeadEPPNS_4DSPIE
@@ -4673,55 +5115,433 @@ pub unsafe fn stub_723d4(_ch: *const ChannelRealBase, out: *mut *mut u8) -> i32 
 
 // 0x723e4 — __ZN4FMOD11ChannelReal7setModeEj
 #[doc(alias = "FMOD::ChannelReal::setMode(unsigned int)")]
-pub fn stub_723e4() -> ! {
-    todo!("0x723e4 FMOD::ChannelReal::setMode(unsigned int)")
+pub unsafe fn stub_723e4(ch: *mut ChannelRealBase, mode: u32) -> i32 {
+    // IDA 0x723e4 (fmod_channel.cpp setMode): word 8 (+32) is the mode cell.
+    // Low 3 bits are radio-selected (0x723f8..0x72520), then the 2D/3D,
+    // loop and doppler groups each keep one survivor bit (0x72410..0x72500),
+    // the 0x40000000 bit and the sign bit copy straight through
+    // (0x7245c..0x72478). A set 0x20 bit bails out early (0x72484); the 8/16
+    // bits re-arm the 2D words on the system twin (word 4, 0x72490..0x724e8).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; a set word 4 must
+    // point to a block with words +344..+420 writable.
+    unsafe {
+        let mut w8 = (*ch).word(8);
+        if (mode & 7) != 0 {
+            w8 &= 0xFFFFFFF8;
+            (*ch).set_word(8, w8);
+            if (mode & 1) != 0 {
+                w8 |= 1;
+                (*ch).set_word(8, w8);
+            } else if (mode & 2) != 0 {
+                w8 |= 2;
+                (*ch).set_word(8, w8);
+            } else if (mode & 4) != 0 {
+                w8 |= 4;
+                (*ch).set_word(8, w8);
+            }
+        }
+        if (mode & 0x40000) != 0 {
+            w8 = w8 & 0xFFF3FFFF | 0x40000;
+            (*ch).set_word(8, w8);
+        } else if (mode & 0x80000) != 0 {
+            w8 = w8 & 0xFFF3FFFF | 0x80000;
+            (*ch).set_word(8, w8);
+        }
+        if (mode & 0x100000) != 0 {
+            w8 = w8 & 0xFBCFFFFF | 0x100000;
+            (*ch).set_word(8, w8);
+        } else if (mode & 0x200000) != 0 {
+            w8 = w8 & 0xFBCFFFFF | 0x200000;
+            (*ch).set_word(8, w8);
+        } else if (mode & 0x4000000) != 0 {
+            w8 = w8 & 0xFBCFFFFF | 0x4000000;
+            (*ch).set_word(8, w8);
+        }
+        if (mode & 0x40000000) != 0 {
+            w8 |= 0x40000000;
+        } else {
+            w8 &= 0xBFFFFFFF;
+        }
+        (*ch).set_word(8, w8);
+        if (mode as i32) >= 0 {
+            w8 &= 0x7FFFFFFF;
+        } else {
+            w8 |= 0x80000000;
+        }
+        (*ch).set_word(8, w8);
+        if (w8 & 0x20) != 0 {
+            return FMOD_OK;
+        }
+        if (mode & 8) != 0 {
+            let sys = (*ch).word(4) as *mut u8;
+            if !sys.is_null() {
+                (*ch).set_word(8, w8 & 0xFFFFFFE7 | 8);
+                *(sys.add(348) as *mut u32) = 1065353216;
+                *(sys.add(420) as *mut u32) = 0;
+                *(sys.add(344) as *mut u32) = 1065353216;
+                *(sys.add(392) as *mut u32) = 1065353216;
+                *(sys.add(352) as *mut u32) = 1065353216;
+            }
+            return FMOD_OK;
+        }
+        if (mode & 0x10) != 0 {
+            (*ch).set_word(8, w8 & 0xFFFFFFE7 | 0x10);
+        }
+        FMOD_OK
+    }
 }
 
 // 0x72528 — __ZN4FMOD11ChannelReal19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
 #[doc(alias = "FMOD::ChannelReal::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_72528() -> ! {
-    todo!("0x72528 FMOD::ChannelReal::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub unsafe fn stub_72528<S: RealSys>(ch: *const ChannelRealBase, props: *mut u32) -> i32 {
+    // IDA 0x72528 (fmod_channel.cpp getReverbProperties): null props -> 37
+    // (0x7253c); null word-4 twin -> 0 (0x7254c). Otherwise the reverb slot
+    // decodes from props[17] (0x20->1, 0x40->2, 0x80->3, else 0;
+    // 0x7255c..0x72598) and ReverbI::getChanProperties on the SystemI twin
+    // (word 1 + 22600) fills the block (0x72584, seam).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `props` must be
+    // null or point to a writable FMOD_REVERB_CHANNELPROPERTIES block
+    // (word 17 readable); a set word 1 must point to a SystemI block.
+    unsafe {
+        if props.is_null() {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        let twin = (*ch).word(4) as *mut u8;
+        if twin.is_null() {
+            return FMOD_OK;
+        }
+        let flags = *props.add(17);
+        let slot = if (flags & 0x20) != 0 {
+            1
+        } else if (flags & 0x40) != 0 {
+            2
+        } else if (flags & 0x80) != 0 {
+            3
+        } else {
+            0
+        };
+        let sys = (*ch).word(1) as *mut u8;
+        let chan = *(twin.add(52) as *const u32);
+        S::reverb_get(sys.add(22600), slot, chan, props)
+    }
 }
 
 // 0x725a0 — __ZN4FMOD11ChannelReal19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 #[doc(alias = "FMOD::ChannelReal::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_725a0() -> ! {
-    todo!("0x725a0 FMOD::ChannelReal::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub unsafe fn stub_725a0<S: RealSys>(ch: *mut ChannelRealBase, props: *const u32) -> i32 {
+    // IDA 0x725a0 (fmod_channel.cpp setReverbProperties): null props -> 37
+    // (0x725b8); null word-4 twin -> 0 (0x726c8). Otherwise each of the four
+    // reverb slots is pushed via ReverbI::setChanProperties (0x72628); a
+    // slot whose 0x10<<slot flag is clear is first refreshed with
+    // ReverbI::getChanProperties into a 19-word stack buffer with word 0
+    // taken from the caller block (LABEL_16, 0x72670..0x726bc, seam). The
+    // first slot takes that path directly when the 0x10 flag is clear but
+    // some flag is set (0x72604). Stops after slot 3 or on the first
+    // failing-then-single set (0x72630..0x72650).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `props` must be
+    // null or point to a readable FMOD_REVERB_CHANNELPROPERTIES block
+    // (words 0/17 readable); a set word 1 must point to a SystemI block.
+    unsafe {
+        if props.is_null() {
+            return FMOD_ERR_INVALID_PARAM;
+        }
+        if ((*ch).word(4) as *mut u8).is_null() {
+            return FMOD_OK;
+        }
+        let flags = *props.add(17);
+        let mut set_count = 0;
+        for i in 0..4 {
+            if (flags & (16u32 << i)) != 0 {
+                set_count += 1;
+            }
+        }
+        let mut tmp = [0u32; 19];
+        let mut slot = 0i32;
+        // IDA 0x72604: jump straight into the LABEL_16 fetch+set for slot 0.
+        let mut first = (flags & 0x10) == 0 && set_count != 0;
+        // IDA leaves this uninitialized until the first set() call; that
+        // call always precedes any read, so no init is needed.
+        let mut result: i32;
+        loop {
+            // IDA 0x72604: the first outer pass skips the set() above and
+            // jumps straight into the LABEL_16 fetch+set below.
+            let jumped = first;
+            if !jumped {
+                let sys = (*ch).word(1) as *mut u8;
+                let twin = (*ch).word(4) as *mut u8;
+                result = S::reverb_set(
+                    sys.add(22600),
+                    slot,
+                    *(twin.add(52) as *const u32),
+                    props,
+                );
+                let mut done = set_count <= 1;
+                if result == 0 {
+                    done = false;
+                }
+                if done {
+                    break;
+                }
+                slot += 1;
+                if slot == 4 {
+                    return FMOD_OK;
+                }
+            }
+            first = false;
+            // IDA inner loop (0x7265c..0x726c4): while the slot flag is clear
+            // and some slot is selected, refresh the slot from the twin and
+            // push it back with word 0 taken from the caller block. The
+            // jumped-to entry pass skips the admission check exactly once.
+            let mut skip_check = jumped;
+            loop {
+                if !skip_check
+                    && ((*props.add(17) & (16u32 << slot as u32)) != 0
+                        || (slot == 0 && set_count == 0))
+                {
+                    break;
+                }
+                skip_check = false;
+                let sys = (*ch).word(1) as *mut u8;
+                let twin = (*ch).word(4) as *mut u8;
+                S::reverb_get(sys.add(22600), slot, *(twin.add(52) as *const u32), tmp.as_mut_ptr());
+                let pushed = slot;
+                slot += 1;
+                tmp[0] = *props;
+                let sys = (*ch).word(1) as *mut u8;
+                let twin = (*ch).word(4) as *mut u8;
+                S::reverb_set(
+                    sys.add(22600),
+                    pushed,
+                    *(twin.add(52) as *const u32),
+                    tmp.as_ptr(),
+                );
+                if slot == 4 {
+                    return FMOD_OK;
+                }
+            }
+        }
+        result
+    }
 }
 
 // 0x726d8 — __ZN4FMOD11ChannelReal19updateSpeakerLevelsEf
 #[doc(alias = "FMOD::ChannelReal::updateSpeakerLevels(float)")]
-pub fn stub_726d8() -> ! {
-    todo!("0x726d8 FMOD::ChannelReal::updateSpeakerLevels(float)")
+pub unsafe fn stub_726d8<V: RealVirt>(ch: *mut ChannelRealBase, level: f32) -> i32 {
+    // IDA 0x726d8 (fmod_channel.cpp updateSpeakerLevels): null system twin
+    // (word 4) or null level table (+340) -> 0 (0x726f4/0x72700). Otherwise
+    // an RMS is accumulated over the strided level row (words 1/2 supply the
+    // host block/index, +1344/+1348 the stride/count; 0x72708..0x7277c), each
+    // output channel normalizes against it, and the signed mixes drive the
+    // +60/+68 virtuals with [-1,1] clamps (0x727dc..0x7289c). The +228==7
+    // path forces a 6-channel walk of the same shape (0x728dc..0x728f8).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; words 1/2/4 must
+    // read valid values and the level table must hold stride*count floats.
+    unsafe {
+        let sys = (*ch).word(4) as *mut u8;
+        if sys.is_null() {
+            return FMOD_OK;
+        }
+        let table = *(sys.add(340) as *const *const f32);
+        if table.is_null() {
+            return FMOD_OK;
+        }
+        let host = (*ch).word(1) as *mut u8;
+        let stride = *(host.add(1344) as *const i32);
+        let out_count = *(host.add(1348) as *const i32);
+        let index = (*ch).word(2) as i32;
+        // IDA 0x72714/0x728dc: the ==7 mixdown walks 6 channels; otherwise a
+        // non-positive count reports silence (LABEL_35, 0x7271c..0x72728).
+        let seven = *(sys.add(228) as *const u32) == 7;
+        let n = if seven { 6 } else { out_count };
+        if !seven && out_count <= 0 {
+            V::virt_set_level(ch, (0.0f32 * level).to_bits());
+            V::virt_set_pan(ch, 0, 0);
+            return FMOD_OK;
+        }
+        // IDA 0x72730..0x72770: accumulate squares at row offsets
+        // {0, stride} ∪ {stride*k : 4 <= k < n} (the v16>1 trip, where the
+        // k=1 step wraps unsigned and also trips — same set on both paths).
+        let at = |k: i32| *table.add((index as isize + k as isize * stride as isize) as usize);
+        let mut acc = at(0);
+        acc *= acc;
+        let mut k = 1i32;
+        while k < n {
+            if k == 1 || k >= 4 {
+                let s = at(k);
+                acc += s * s;
+            }
+            k += 1;
+        }
+        let rms = acc.sqrt();
+        // IDA 0x727dc..0x72820: per-channel normalized mix. Channels 0/4/6
+        // subtract, 1/5/7 add into the first mix; the second mix takes over
+        // past channel 1 with channels 4/5 subtracted (LABEL_19/32).
+        let mut mix_a = 0.0f32;
+        let mut mix_b = 0.0f32;
+        let mut i = 0i32;
+        loop {
+            let norm = if rms == 0.0 {
+                0.0
+            } else {
+                at(i).abs() / rms
+            };
+            if i == 4 || i == 0 || i == 6 {
+                mix_a -= norm;
+                if i > 1 {
+                    if (i as u32).wrapping_sub(4) <= 1 {
+                        mix_b -= norm;
+                    }
+                    i += 1;
+                    if i >= n {
+                        break;
+                    }
+                    continue;
+                }
+                i += 1;
+                mix_b += norm;
+                if i >= n {
+                    break;
+                }
+                continue;
+            }
+            if i == 5 || i == 1 || i == 7 {
+                mix_a += norm;
+            }
+            if i <= 1 {
+                i += 1;
+                mix_b += norm;
+                if i >= n {
+                    break;
+                }
+                continue;
+            }
+            if (i as u32).wrapping_sub(4) <= 1 {
+                mix_b -= norm;
+            }
+            i += 1;
+            if i >= n {
+                break;
+            }
+        }
+        // IDA LABEL_33/35 (0x72824..0x7287c): peak against 1.0 drives the
+        // +60 virtual, then the clamped mixes drive +68.
+        let peak = if rms <= 1.0 { rms } else { 1.0 };
+        V::virt_set_level(ch, (peak * level).to_bits());
+        if mix_a >= -1.0 {
+            if mix_a > 1.0 {
+                mix_a = 1.0;
+            }
+        } else {
+            mix_a = -1.0;
+        }
+        if mix_b >= -1.0 {
+            if mix_b > 1.0 {
+                mix_b = 1.0;
+            }
+        } else {
+            mix_b = -1.0;
+        }
+        V::virt_set_pan(ch, mix_a.to_bits(), mix_b.to_bits());
+        FMOD_OK
+    }
 }
 
 // 0x72910 — __ZN4FMOD11ChannelReal16setSpeakerLevelsEiPfi
 #[doc(alias = "FMOD::ChannelReal::setSpeakerLevels(int,float *,int)")]
-pub fn stub_72910() -> ! {
-    todo!("0x72910 FMOD::ChannelReal::setSpeakerLevels(int,float *,int)")
+pub unsafe fn stub_72910<S: RealSys, V: RealVirt>(
+    ch: *mut ChannelRealBase,
+    index: i32,
+    levels: *const f32,
+    count: i32,
+) -> i32 {
+    // IDA 0x72910 (fmod_channel.cpp setSpeakerLevels): null system twin
+    // (word 4) -> 0 (0x72934). A missing level table (+340) is allocated
+    // from the SpeakerLevelsPool (word 1 + 22164, seam); still missing ->
+    // 44 (0x72958..0x72968). Each tap clamps to [0,1] and lands at row
+    // index + stride*index (stride at word 1 + 1344, 0x72974..0x729d8),
+    // then the +84 virtual refreshes from the system level word +232, whose
+    // result passes through (0x729fc).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; `levels` must
+    // point to `count` readable floats when count > 0; a set word 1 must
+    // point to a host block with words +1344/+22164 addressable.
+    unsafe {
+        let mut sys = (*ch).word(4) as *mut u8;
+        if sys.is_null() {
+            return FMOD_OK;
+        }
+        if (*(sys.add(340) as *const *mut u8)).is_null() {
+            let host = (*ch).word(1) as *mut u8;
+            S::speaker_pool_alloc(host.add(22164), sys.add(340) as *mut *mut u8);
+            sys = (*ch).word(4) as *mut u8;
+            if (*(sys.add(340) as *const *mut u8)).is_null() {
+                return FMOD_ERR_MEMORY;
+            }
+        }
+        if count > 0 {
+            // IDA 0x72974: counted do/while with the word-4 twin re-read per
+            // tap (0x72980).
+            let mut i = 0i32;
+            while i < count {
+                let mut tap = *levels.add(i as usize);
+                if tap >= 0.0 {
+                    if tap > 1.0 {
+                        tap = 1.0;
+                    }
+                } else {
+                    tap = 0.0;
+                }
+                sys = (*ch).word(4) as *mut u8;
+                let host = (*ch).word(1) as *mut u8;
+                let stride = *(host.add(1344) as *const i32);
+                let table = *(sys.add(340) as *const *mut f32);
+                *table.add((i + stride * index) as usize) = tap;
+                i += 1;
+            }
+            sys = (*ch).word(4) as *mut u8;
+        }
+        V::virt_refresh_level(ch, *(sys.add(232) as *const u32))
+    }
 }
 
 // 0x72a04 — __ZN4FMOD11ChannelRealD0Ev
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a04() -> ! {
-    todo!("0x72a04 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a04() {
+    // IDA 0x72a04: D0 deleting dtor — vtable reset (0x72a18) + operator
+    // delete (0x72a1c). Drop glue — no-op (same shape as 0x71818).
 }
 
 // 0x72a28 — __ZN4FMOD11ChannelRealD1Ev
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a28() -> ! {
-    todo!("0x72a28 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a28() {
+    // IDA 0x72a28: D1 dtor — vtable reset (0x72a34); members drop with the
+    // host owner. Drop glue — no-op (same shape as 0x7183c).
 }
 // 0x72a40 — __ZN4FMOD19ChannelRealManual3D5allocEv
 #[doc(alias = "FMOD::ChannelRealManual3D::alloc(void)")]
-pub fn stub_72a40() -> ! {
-    todo!("0x72a40 FMOD::ChannelRealManual3D::alloc(void)")
+pub unsafe fn stub_72a40(ch: *mut ChannelRealBase) -> i32 {
+    // IDA 0x72a40 (fmod_channel.cpp ChannelRealManual3D::alloc): word 20
+    // (+80) = 0 (0x72a4c), then ChannelReal::alloc (0x72a54 — the void
+    // overload at 0x718e8).
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        (*ch).set_word(20, 0);
+        stub_718e8(ch)
+    }
 }
 
 // 0x72a58 — __ZN4FMOD19ChannelRealManual3DC2Ev
 #[doc(alias = "FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")]
-pub fn stub_72a58() -> ! {
-    todo!("0x72a58 FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")
+pub unsafe fn stub_72a58(ch: *mut ChannelRealBase) -> *mut ChannelRealBase {
+    // IDA 0x72a58 (fmod_channel.cpp ChannelRealManual3D ctor): runs
+    // ChannelReal::ChannelReal (0x72a64), installs off_11CD5C8 (0x72a74),
+    // zeroes word 20 (+80, 0x72a7c); returns this (0x72a80).
+    // SAFETY: `ch` must point to a valid ChannelRealBase.
+    unsafe {
+        stub_71854(ch);
+        (*ch).set_word(0, VTABLE_CHANNEL_MANUAL_3D);
+        (*ch).set_word(20, 0);
+        ch
+    }
 }
 
 // 0x72a88 — __ZN4FMOD19ChannelRealManual3D23set2DFreqVolumePanFor3DEv
@@ -4732,26 +5552,71 @@ pub fn stub_72a88() -> ! {
 
 // 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73de4() -> ! {
-    todo!("0x73de4 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73de4() {
+    // IDA 0x73de4: D0 deleting dtor — vtable reset (0x73df8) + operator
+    // delete (0x73dfc). Drop glue — no-op (same shape as 0x72a04).
 }
 
 // 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73e08() -> ! {
-    todo!("0x73e08 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73e08() {
+    // IDA 0x73e08: D1 dtor — vtable reset (0x73e14); members drop with the
+    // host owner. Drop glue — no-op (same shape as 0x72a28).
 }
 
 // 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf
 #[doc(alias = "FMOD::ChannelSoftware::setLowPassGain(float)")]
-pub fn stub_73e20() -> ! {
-    todo!("0x73e20 FMOD::ChannelSoftware::setLowPassGain(float)")
+pub unsafe fn stub_73e20<V: RealVirt>(ch: *mut ChannelRealBase, _gain: f32) -> i32 {
+    // IDA 0x73e20 (fmod_channel_software.cpp setLowPassGain): tail-calls the
+    // +60 virtual with the level word at system+232 — the gain argument has
+    // no body use (cf. the base twin at 0x7234c, which returns 0 outright).
+    // SAFETY: `ch` must point to a valid ChannelRealBase; word 4 must point
+    // to a block with the level word at +232 readable.
+    unsafe {
+        let sys = (*ch).word(4) as *mut u8;
+        V::virt_set_level(ch, *(sys.add(232) as *const u32))
+    }
 }
 
 // 0x73e34 — __ZN4FMOD15ChannelSoftware16setDSPClockDelayEv
 #[doc(alias = "FMOD::ChannelSoftware::setDSPClockDelay(void)")]
-pub fn stub_73e34() -> ! {
-    todo!("0x73e34 FMOD::ChannelSoftware::setDSPClockDelay(void)")
+pub unsafe fn stub_73e34(ch: *mut u8) -> i32 {
+    // IDA 0x73e34 (fmod_channel_software.cpp setDSPClockDelay):
+    // ChannelSoftware carries DSP-clock state past the ChannelReal prefix
+    // (words 95/183/186), so the twin is addressed by raw byte offsets. The
+    // clock node (word 95, +380) mirrors the six system words +196..+216
+    // pairwise (0x73e48..0x73e84); then the pending node (word 186, else
+    // word 183) mirrors the same six words into its +384 block
+    // (0x73ea0..0x73ef0). Returns 0 (0x73ef8).
+    // SAFETY: `ch` must point to a ChannelSoftware block with words 4
+    // (SystemI twin), 95, 183 and 186 readable; the mirrored targets must
+    // be writable.
+    unsafe {
+        let sys = *(ch.add(16) as *const *mut u8);
+        let clock = *(ch.add(380) as *const *mut u32);
+        if !clock.is_null() {
+            *clock.add(80) = *(sys.add(200) as *const u32);
+            *clock.add(79) = *(sys.add(196) as *const u32);
+            *clock.add(82) = *(sys.add(208) as *const u32);
+            *clock.add(81) = *(sys.add(204) as *const u32);
+            *clock.add(84) = *(sys.add(216) as *const u32);
+            *clock.add(83) = *(sys.add(212) as *const u32);
+        }
+        let mut node = *(ch.add(744) as *const *mut u8);
+        if node.is_null() {
+            node = *(ch.add(732) as *const *mut u8);
+        }
+        if !node.is_null() {
+            let dst = *(node.add(384) as *const *mut u32);
+            *dst.add(1) = *(sys.add(200) as *const u32);
+            *dst = *(sys.add(196) as *const u32);
+            *dst.add(3) = *(sys.add(208) as *const u32);
+            *dst.add(2) = *(sys.add(204) as *const u32);
+            *dst.add(5) = *(sys.add(216) as *const u32);
+            *dst.add(4) = *(sys.add(212) as *const u32);
+        }
+        FMOD_OK
+    }
 }
 
 // 0x73f0c — __ZN4FMOD15ChannelSoftware11setPositionEjj
