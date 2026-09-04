@@ -951,109 +951,139 @@ pub fn enum_desc_antialiasing_mode_d0() {
 
 // 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xbf64: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xbf64.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")]
-pub fn stub_0xbf64() -> ! {
-    todo!("0xbf64 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc")
+pub fn enum_desc_antialiasing_mode_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbf94 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xbf94: `rbx::any_cast<T>` the Variant payload, then `convertToItem`. The caller passes the already-cast enum value. Same shape as rbx_reflection::generated::stub_0xbf94.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xbf94() -> ! {
-    todo!("0xbf94 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_antialiasing_mode_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xbfb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
+// IDA 0xbfb4: decompile fails; disasm shows the standard shape — bounds-check the index against the count (`CMP R2,R1` with count at `[R0,#0x28]`, table store from `[R0,#0x90]` on hit, else 0); writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xbfb4.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xbfb4() -> ! {
-    todo!("0xbfb4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_antialiasing_mode_convert_to_value() {
 }
 
 // 0xc010 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xc010: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xc010.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xc010() -> ! {
-    todo!("0xc010 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs")
+pub fn enum_desc_antialiasing_mode_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
 // type: int()
+// IDA 0xc154: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
-pub fn stub_0xc154() -> ! {
-    todo!("0xc154 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev")
+pub fn enum_desc_shadow_mode_d1() {
 }
 
 // 0xc158 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED0Ev
 // type: int __fastcall(int)
+// IDA 0xc158: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc() [0xc158]")]
-pub fn stub_0xc158() -> ! {
-    todo!("0xc158 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED0Ev")
+pub fn enum_desc_shadow_mode_d0() {
 }
 
 // 0xc16c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xc16c: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xc16c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(char const*)const")]
-pub fn stub_0xc16c() -> ! {
-    todo!("0xc16c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupEPKc")
+pub fn enum_desc_shadow_mode_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xc19c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xc19c: `rbx::any_cast<T>` the Variant payload, then `convertToItem`. The caller passes the already-cast enum value. Same shape as rbx_reflection::generated::stub_0xc19c.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xc19c() -> ! {
-    todo!("0xc19c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_shadow_mode_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xc1bc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueEmRNS0_7VariantE
+// IDA 0xc1bc: decompile fails; disasm shows the standard shape — bounds-check the index against the count (`CMP R2,R1` with count at `[R0,#0x28]`, table store from `[R0,#0x90]` on hit, else 0); writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xc1bc.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xc1bc() -> ! {
-    todo!("0xc1bc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_shadow_mode_convert_to_value() {
 }
 
 // 0xc218 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xc218: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xc218.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xc218() -> ! {
-    todo!("0xc218 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringEmRSs")
+pub fn enum_desc_shadow_mode_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc35c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED1Ev
 // type: int()
+// IDA 0xc35c: thunk to the EnumDesc D2; vtable reset + member destroy. Rust Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_0xc35c() -> ! {
-    todo!("0xc35c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED1Ev")
+pub fn enum_desc_quality_level_d1() {
 }
 
 // 0xc360 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED0Ev
 // type: int __fastcall(int)
+// IDA 0xc360: D0 deleting destructor; D1 then `operator delete`. Rust Arc Drop covers it; no explicit body.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc() [0xc360]")]
-pub fn stub_0xc360() -> ! {
-    todo!("0xc360 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED0Ev")
+pub fn enum_desc_quality_level_d0() {
 }
 
 // 0xc374 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
+// IDA 0xc374: `Name::lookup` intern, `convertToValue`, then `convertToItem` on hit; miss returns 0. Same shape as rbx_reflection::generated::stub_0xc374.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(char const*)const")]
-pub fn stub_0xc374() -> ! {
-    todo!("0xc374 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupEPKc")
+pub fn enum_desc_quality_level_lookup(desc: &EnumDesc, name: &str) -> usize {
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xc3a4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
+// IDA 0xc3a4: `rbx::any_cast<T>` the Variant payload, then `convertToItem`. The caller passes the already-cast enum value. Same shape as rbx_reflection::generated::stub_0xc3a4.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0xc3a4() -> ! {
-    todo!("0xc3a4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupERKNS0_7VariantE")
+pub fn enum_desc_quality_level_lookup_variant(desc: &EnumDesc, value: i32) -> usize {
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xc3c4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE
+// IDA 0xc3c4: decompile fails; disasm shows the standard shape — bounds-check the index against the count (`CMP R2,R1` with count at `[R0,#0x28]`, table store from `[R0,#0x90]` on hit, else 0); writes into a Variant out-param. Variant is unmodeled here: cutover no-op. Same shape as rbx_reflection::generated::stub_0xc3c4.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0xc3c4() -> ! {
-    todo!("0xc3c4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE")
+pub fn enum_desc_quality_level_convert_to_value() {
 }
 
 // 0xc420 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
+// IDA 0xc420: `convertToString(index, string&)`; if index < items.size(): out = items[index].name, return true; else return false, out untouched. Same shape as rbx_reflection::generated::stub_0xc420.
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0xc420() -> ! {
-    todo!("0xc420 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs")
+pub fn enum_desc_quality_level_convert_to_string(desc: &EnumDesc, index: usize, out: &mut String) -> bool {
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
