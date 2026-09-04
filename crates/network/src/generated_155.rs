@@ -677,28 +677,52 @@ pub fn stub_26dd4(base_url: &str, port: i32, server: &str) -> String {
     format!("{base_url}Game/Join.ashx?userID=0&serverPort={port}&server={server}")
 }
 
+/// Host load captured by `-[PlaceLauncher startAppWithFile:...]` (IDA 0x27054).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct LocalAppLoad {
+    pub file: String,
+}
+
+/// Host join captured by `-[PlaceLauncher startAppWithId:...]` (IDA 0x276b0).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PlaceIdJoin {
+    pub place_id: i32,
+    pub request: i32,
+}
+
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")]
-pub fn stub_27054() -> ! {
-    todo!("0x27054 -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")
+pub fn stub_27054(has_launcher: bool, game_ready: bool, started: bool, file: &str) -> Option<(LocalAppLoad, bool)> {
+    // IDA 0x27054: nil self yields false (0x2718e..0x27194); preloaded game setup (0x270cc) gates binding loadLocalApp(file) (0x27116) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x2715a..0x271be).
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((LocalAppLoad { file: file.to_owned() }, started))
+    }
 }
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE // was: boost::shared_ptr
 // demangled: loadLocalApp(std::string const&,boost::shared_ptr<RBX::Game>)
 // type: 
 #[doc(alias = "loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_27268() -> ! {
-    todo!("0x27268 loadLocalApp(std::string const&,boost::shared_ptr<RBX::Game>)")
+pub fn stub_27268(file: &str, has_game: bool) -> Option<String> {
+    // IDA 0x27268: RBX::format "Game:Load('rbxasset://%s')" (0x272c8), executeScript on the non-nil game (0x27306..0x27344) — returns the load script.
+    has_game.then(|| format!("Game:Load('rbxasset://{file}')"))
 }
 
 // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
 // demangled: -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")]
-pub fn stub_276b0() -> ! {
-    todo!("0x276b0 -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")
+pub fn stub_276b0(has_launcher: bool, game_ready: bool, started: bool, place_id: i32) -> Option<(PlaceIdJoin, bool)> {
+    // IDA 0x276b0: preloaded game setup via setupPreloadedGameWithNonGameController:isApp: (0x27726) gates binding joinGamePlaceId(placeId, JoinGameRequest 2) (0x2775e) and startGame:controller:preloadedGame:presentGameAutomatically: whose result returns (0x277a2).
+    if !has_launcher || !game_ready {
+        None
+    } else {
+        Some((PlaceIdJoin { place_id, request: 2 }, started))
+    }
 }
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest // was: boost::shared_ptr
