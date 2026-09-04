@@ -793,9 +793,12 @@ pub fn stub_266a1c(vec: &[usize], value: usize) -> Option<usize> {
 // 0x266aac — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEixERS8_
 // type: _DWORD *__fastcall(_DWORD *, int *, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::operator[](std::type_info const* const&)")]
-pub fn stub_266aac() -> ! {
-    todo!("0x266aac boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::operator[](std::type_info const* const&)")
+pub fn stub_266aac(map: &mut TypeDescriptorTable, key: usize) -> &mut usize {
+    // IDA 0x266aac: find-or-construct the node for the key (cf. 0x264b0e..0x264b7e).
+    // was: boost::unordered::detail::table_impl<EnumDescriptor>::operator[].
+    map.table.entry(key).or_insert(0)
 }
+
 
 // 0x266c30 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE18reserve_for_insertEm
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
@@ -888,9 +891,12 @@ pub fn stub_266f6c(map: &mut NameEnumTable, key: usize, value: usize) -> bool {
 // 0x267020 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_10Reflection14EnumDescriptorEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_
 // type: int __fastcall(int, int, _Rb_tree_node_base *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*> const&)")]
-pub fn stub_267020() -> ! {
-    todo!("0x267020 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*> const&)")
+pub fn stub_267020(map: &mut NameEnumTable, key: usize, value: usize) {
+    // IDA 0x267020: node alloc + rebalance + size++ (cf. 0x267050..0x267076).
+    // was: std::_Rb_tree<...>::_M_insert.
+    map.table.insert(key, value);
 }
+
 
 // 0x267078 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_10Reflection14EnumDescriptorEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE16_M_insert_uniqueERKSA_
 // type: int __fastcall(int, int, int *)
@@ -941,30 +947,42 @@ pub fn stub_2671d8(map: &mut DescriptorTable) {
 // 0x267224 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEC2EmRKSG_RKSH_RKSaINS1_8ptr_nodeISE_EEE
 // type: int __fastcall(int result, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::table(unsigned long,RBX::Reflection::EnumDescriptor::TypeHash const&,RBX::Reflection::EnumDescriptor::TypeEqual const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> const&)")]
-pub fn stub_267224() -> ! {
-    todo!("0x267224 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::table(unsigned long,RBX::Reflection::EnumDescriptor::TypeHash const&,RBX::Reflection::EnumDescriptor::TypeEqual const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> const&)")
+pub fn stub_267224(capacity: usize) -> TypeDescriptorTable {
+    // IDA 0x267224: bucket count rounded to the prime list, size 0, max_load 1.0 (cf. 0x264540..0x26459c).
+    // was: boost::unordered::detail::table<EnumDescriptor>::table.
+    TypeDescriptorTable { table: HashMap::with_capacity(hash_min_buckets_for_size(capacity, 1.0)), max_load: 1.0 }
 }
+
 
 // 0x26733c — __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
-pub fn stub_26733c() -> ! {
-    todo!("0x26733c RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")
+pub fn stub_26733c(free: &mut dyn FnMut()) {
+    // IDA 0x26733c: TType teardown then operator delete.
+    // was: RBX::Reflection::TType<...>::~TType D0.
+    free();
 }
+
 
 // 0x267340 — __ZN3RBX10Reflection4TypeD0Ev
 // type: void __fastcall(RBX::Reflection::Type *__hidden this)
 #[doc(alias = "RBX::Reflection::Type::~Type()")]
-pub fn stub_267340() -> ! {
-    todo!("0x267340 RBX::Reflection::Type::~Type()")
+pub fn stub_267340(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x267340: reflection base destroy + delete.
+    destroy();
+    free();
 }
+
 
 // 0x267348 — __ZN3RBX10Reflection10DescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::Descriptor *__hidden this)
 #[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
-pub fn stub_267348() -> ! {
-    todo!("0x267348 RBX::Reflection::Descriptor::~Descriptor()")
+pub fn stub_267348(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x267348: reflection base destroy + delete.
+    destroy();
+    free();
 }
+
 
 // 0x267488 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_10Reflection14EnumDescriptorEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
 // type: void __fastcall(int, _DWORD *)
@@ -979,51 +997,72 @@ pub fn stub_267488(map: &mut NameEnumTable, key: usize) -> bool {
 // 0x2675e0 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEERKS1_v
 // type: int *()
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
-pub fn stub_2675e0() -> ! {
-    todo!("0x2675e0 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")
+pub fn stub_2675e0() -> &'static str {
+    // IDA 0x2675e0: guard-once Type("Array") init (cf. 0x26763e..0x267698).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    reflection_type_name(&CELL, "Array")
 }
+
 
 // 0x2677ac — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEERT_v
 // type: int __fastcall(int)
 #[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
-pub fn stub_2677ac() -> ! {
-    todo!("0x2677ac boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")
+pub fn stub_2677ac(payload: Option<SharedPtr<()>>) -> Option<SharedPtr<()>> {
+    // IDA 0x2677ac: any_cast to shared_ptr<Array> then copy-construct (cf. 0x2677c8..0x2677d4); mismatch throws bad_cast in C++.
+    // was: boost::shared_ptr<Array> retained copy.
+    payload.clone()
 }
+
 
 // 0x26796c — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEERKS1_v
 // type: int *()
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
-pub fn stub_26796c() -> ! {
-    todo!("0x26796c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
+pub fn stub_26796c() -> &'static str {
+    // IDA 0x26796c: guard-once Type("Dictionary") init (cf. 0x2679ca..0x267a24).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    reflection_type_name(&CELL, "Dictionary")
 }
+
 
 // 0x267a50 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsS1_NS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS1_EEEEEEEERT_v
 // type: int __fastcall(int)
 #[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
-pub fn stub_267a50() -> ! {
-    todo!("0x267a50 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
+pub fn stub_267a50(payload: Option<SharedPtr<()>>) -> Option<SharedPtr<()>> {
+    // IDA 0x267a50: any_cast to shared_ptr<Dictionary> then copy-construct (cf. 0x2677c8..0x2677d4); mismatch throws bad_cast in C++.
+    // was: boost::shared_ptr<Dictionary> retained copy.
+    payload.clone()
 }
+
 
 // 0x267c30 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEERKS1_v
 // type: int *()
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
-pub fn stub_267c30() -> ! {
-    todo!("0x267c30 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
+pub fn stub_267c30() -> &'static str {
+    // IDA 0x267c30: guard-once Type("Map") init (cf. 0x267c8e..0x267cea).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    reflection_type_name(&CELL, "Map")
 }
+
 
 // 0x267d18 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt3mapISsS1_St4lessISsESaISt4pairIKSsS1_EEEEEEERT_v
 // type: int __fastcall(int)
 #[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
-pub fn stub_267d18() -> ! {
-    todo!("0x267d18 boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
+pub fn stub_267d18(payload: Option<SharedPtr<()>>) -> Option<SharedPtr<()>> {
+    // IDA 0x267d18: any_cast to shared_ptr<Map> then copy-construct (cf. 0x2677c8..0x2677d4); mismatch throws bad_cast in C++.
+    // was: boost::shared_ptr<Map> retained copy.
+    payload.clone()
 }
+
 
 // 0x267e5c — __ZN3RBX10Reflection4Type12getSingletonIvEERKS1_v
 // type: int *()
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<void>(void)")]
-pub fn stub_267e5c() -> ! {
-    todo!("0x267e5c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<void>(void)")
+pub fn stub_267e5c() -> &'static str {
+    // IDA 0x267e5c: guard-once Type<void>("void") init (cf. 0x267eba..0x267f16).
+    static CELL: OnceLock<&'static str> = OnceLock::new();
+    reflection_type_name(&CELL, "void")
 }
+
 
 // 0x267f44 — __ZN3RBX10Reflection4Type13addToAllTypesEv
 // type: int __fastcall(RBX::Reflection::Type *this)
@@ -1046,16 +1085,20 @@ pub fn stub_267fb0() -> &'static Mutex<Vec<usize>> {
 // 0x267fc0 — __ZN3RBX10Reflection19SignatureDescriptorC1Ev
 // type: RBX::Reflection::SignatureDescriptor *__fastcall(RBX::Reflection::SignatureDescriptor *this)
 #[doc(alias = "RBX::Reflection::SignatureDescriptor::SignatureDescriptor(void)")]
-pub fn stub_267fc0() -> ! {
-    todo!("0x267fc0 RBX::Reflection::SignatureDescriptor::SignatureDescriptor(void)")
+pub fn stub_267fc0(set_void_type: &mut dyn FnMut()) {
+    // IDA 0x267fc0: return type = getSingleton<void>(), empty item list (cf. 0x267fc6..0x267fe8).
+    set_void_type();
 }
+
 
 // 0x268484 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED1Ev
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
-pub fn stub_268484() -> ! {
-    todo!("0x268484 RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
+pub fn stub_268484() {
+    // IDA 0x268484: TType vtable reset + base destroy; static-type teardown, no per-instance work.
+    // was: RBX::Reflection::TType<...>::~TType.
 }
+
 
 // 0x268488 — __ZN3rbx8any_castIN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEEPT_PNS_13placement_anyIT0_EE
 // type: _UNKNOWN ****__fastcall(_UNKNOWN ****)
@@ -1069,13 +1112,17 @@ pub fn stub_268488(type_matches: bool, payload: usize) -> Option<usize> {
 // 0x2684e0 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED1Ev
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
-pub fn stub_2684e0() -> ! {
-    todo!("0x2684e0 RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2684e0() {
+    // IDA 0x2684e0: TType vtable reset + base destroy; static-type teardown, no per-instance work.
+    // was: RBX::Reflection::TType<...>::~TType.
 }
+
 
 // 0x2684e4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev
 // type: void()
 #[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
-pub fn stub_2684e4() -> ! {
-    todo!("0x2684e4 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
+pub fn stub_2684e4() {
+    // IDA 0x2684e4: TType vtable reset + base destroy; static-type teardown, no per-instance work.
+    // was: RBX::Reflection::TType<...>::~TType.
 }
+
