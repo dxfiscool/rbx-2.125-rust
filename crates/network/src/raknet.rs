@@ -7377,64 +7377,280 @@ pub fn stub_5f6a90(
     use_max
 }
 
+// One `SpawnLocation` visited by `SpawnerService::GetSpawnLocation` (IDA 0x63df08).
+#[derive(Clone, Copy, Debug)]
+pub struct SpawnCandidate {
+    /// `*(_BYTE *)(loc + 348)`: neutral spawns accept any player (IDA 0x63df8e).
+    pub allow_neutral: bool,
+    /// `*(loc + 336)`: team color compared against `*(player + 100)` (IDA 0x63df8e).
+    pub team_color: u32,
+}
+
+/// One child visited by `Teams::assignNewPlayerToTeam` (IDA 0x664a54).
+#[derive(Clone, Copy, Debug)]
+pub struct TeamAssignCandidate {
+    /// `ClassDescriptor::isA(Team)` (IDA 0x664ac4).
+    pub is_team: bool,
+    /// `Team::getAutoAssignable` (IDA 0x664ac4).
+    pub auto_assignable: bool,
+    /// `Team::getTeamColor` (IDA 0x664aca/0x664ae2).
+    pub team_color: u32,
+    /// `Teams::getNumPlayersInTeam` (IDA 0x664ad6).
+    pub num_players: u32,
+}
+
+/// `list2<value<Tool*>, value<weak<Player>>>` words built by `boost::_bi::list2::list2` (IDA 0x684824).
+#[derive(Clone, Copy, Debug)]
+pub struct ToolWeakList {
+    /// `value<Tool*>` word (IDA 0x682eaa).
+    pub tool: u32,
+    /// `value<weak<Player>>` word; the `weak_count` copy stays engine-side (IDA 0x682ebc).
+    pub weak: Option<u32>,
+}
+
+/// `PlayerChatLine` author context (IDA 0x79d5a8).
+#[derive(Clone, Debug)]
+pub struct ChatAuthor {
+    /// Display name (`Instance::fw(player) + 24`, IDA 0x79d64e..0x79d65e).
+    pub name: String,
+    /// `*(player + 23)` user id (IDA 0x79d684).
+    pub user_id: u32,
+    /// `*(player + 104)` neutral flag (IDA 0x79d6c4).
+    pub neutral: bool,
+    /// `getTeamFromPlayer` hit's `BrickColor::color3` (IDA 0x79d764..0x79d79a).
+    pub team_color: Option<[f32; 3]>,
+}
+
+/// `PlayerChatLine` name color source (IDA 0x79d5a8).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ChatNameColor {
+    /// Neutral player in a team game → `G3D::Color3::white` (IDA 0x79d6d0).
+    White,
+    /// Team-game player whose team resolved → team color (IDA 0x79d774..0x79d79a).
+    Team([f32; 3]),
+    /// Team-game player with no team → `G3D::Color3::black` (IDA 0x79d7a6).
+    Black,
+    /// Non-team game → `colorFromIndex8(hash(name) & 7, 16)` (IDA 0x79d6dc..0x79d6e8).
+    Indexed(u8),
+    /// Null player → `getColorByIndex(0)` (IDA 0x79d714).
+    Default,
+}
+
+/// One `ChatMessage` as seen by `ChatOutput::onPlayerChatMessage` (IDA 0x7a0ee4).
+#[derive(Clone, Debug)]
+pub struct IncomingChat {
+    /// Message text (`*(msg + 1)`, IDA 0x7a0f3c).
+    pub text: String,
+    /// Chat type (`*(msg + 2)`, IDA 0x7a0ffc; `ChatLine::ChatType` table at `dword_FFD2B0`, 0x7a100a).
+    pub kind: u32,
+    /// Sender (`*(msg + 3)`, IDA 0x7a1058).
+    pub sender: u32,
+}
+
 // 0x63df08 — __ZN3RBX14SpawnerService16GetSpawnLocationEPNS_7Network6PlayerESs
 #[doc(alias = "RBX::SpawnerService::GetSpawnLocation(RBX::Network::Player *,std::string)")]
-pub fn stub_63df08() -> ! {
-    todo!("0x63df08 RBX::SpawnerService::GetSpawnLocation(RBX::Network::Player *,std::string)")
+pub fn stub_63df08(
+    spawns: &[SpawnCandidate],
+    player_neutral: bool,
+    player_team: u32,
+    pick: &mut dyn FnMut(usize) -> usize,
+) -> Option<usize> {
+    // IDA 0x63df08: walks the spawn list at +96 (0x63df46..0x63dfae), keeping locations whose
+    // neutral word is set or whose team color (+336) matches a non-neutral player (+100, 0x63df8e);
+    // the winner is a `rand()` pick (0x63e010), null when nothing matched (0x63dfbc).
+    let matching = spawns
+        .iter()
+        .enumerate()
+        .filter(|(_, s)| s.allow_neutral || (!player_neutral && s.team_color == player_team))
+        .count();
+    if matching == 0 {
+        return None;
+    }
+    let want = pick(matching) % matching;
+    spawns
+        .iter()
+        .enumerate()
+        .filter(|(_, s)| s.allow_neutral || (!player_neutral && s.team_color == player_team))
+        .map(|(i, _)| i)
+        .nth(want)
 }
 
 // 0x664a54 — __ZN3RBX5Teams21assignNewPlayerToTeamEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Teams::assignNewPlayerToTeam(RBX::Network::Player *)")]
-pub fn stub_664a54() -> ! {
-    todo!("0x664a54 RBX::Teams::assignNewPlayerToTeam(RBX::Network::Player *)")
+pub fn stub_664a54(
+    teams: &[TeamAssignCandidate],
+    set_team_color: &mut dyn FnMut(u32),
+    set_neutral: &mut dyn FnMut(bool),
+) -> bool {
+    // IDA 0x664a54: walks `numChildren` (0x664a62/0x664afe); each `isA(Team)` and auto-assignable
+    // child (0x664ac4) with fewer players than the best so far (init 10000, 0x664a7c) becomes the
+    // pick (0x664ad6..0x664aee); then `setTeamColor` plus `setNeutral(0)` (0x664b0e/0x664b16).
+    let mut best_color = 0;
+    let mut best_count = 10_000u32;
+    let mut found = false;
+    for t in teams {
+        if !t.is_team || !t.auto_assignable {
+            continue;
+        }
+        if t.num_players < best_count {
+            best_count = t.num_players;
+            best_color = t.team_color;
+            found = true;
+        }
+    }
+    if found {
+        set_team_color(best_color);
+        set_neutral(false);
+    }
+    found
 }
 
 // 0x664c9c — __ZN3RBX5Teams17getTeamFromPlayerEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Teams::getTeamFromPlayer(RBX::Network::Player *)")]
-pub fn stub_664c9c() -> ! {
-    todo!("0x664c9c RBX::Teams::getTeamFromPlayer(RBX::Network::Player *)")
+pub fn stub_664c9c(
+    player_neutral: bool,
+    player_team_color: u32,
+    get_team_from_color: &mut dyn FnMut(u32) -> Option<u32>,
+) -> Option<u32> {
+    // IDA 0x664c9c: a neutral player (`*(player + 104)`) yields null (0x664ca4), otherwise
+    // `getTeamFromTeamColor(this, player[25])` (0x664caa).
+    if player_neutral {
+        None
+    } else {
+        get_team_from_color(player_team_color)
+    }
 }
 
 // 0x68052c — __ZN3RBX4Tool7dropAllEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Tool::dropAll(RBX::Network::Player *)")]
-pub fn stub_68052c() -> ! {
-    todo!("0x68052c RBX::Tool::dropAll(RBX::Network::Player *)")
+pub fn stub_68052c(
+    data_model_present: bool,
+    workspace: Option<u32>,
+    tools_enabled: &[bool],
+    get_backpack: &mut dyn FnMut() -> u32,
+    set_parent: &mut dyn FnMut(usize, u32),
+) {
+    // IDA 0x68052c: needs `*(this + 92)` (0x68053a) and a `findWorkspace` hit (0x68053e/0x680546);
+    // each `findConstFirstChildOfType<Tool>` (0x680552) reparents to the workspace when enabled
+    // (`*(tool + 393)`, 0x68055a..0x680570), else to `getPlayerBackpack` (0x680568), via
+    // `setParentInternal(..., 0)` (0x68054c) until none remains (0x680558).
+    if !data_model_present {
+        return;
+    }
+    let ws = match workspace {
+        Some(w) => w,
+        None => return,
+    };
+    for (i, enabled) in tools_enabled.iter().enumerate() {
+        let parent = if *enabled { ws } else { get_backpack() };
+        set_parent(i, parent);
+    }
 }
 
 // 0x68057c — __ZN3RBX4Tool22moveAllToolsToBackpackEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Tool::moveAllToolsToBackpack(RBX::Network::Player *)")]
-pub fn stub_68057c() -> ! {
-    todo!("0x68057c RBX::Tool::moveAllToolsToBackpack(RBX::Network::Player *)")
+pub fn stub_68057c(
+    tool_present: bool,
+    data_model_present: bool,
+    tool_count: usize,
+    get_backpack: &mut dyn FnMut() -> u32,
+    set_parent: &mut dyn FnMut(usize, u32),
+) {
+    // IDA 0x68057c: a null tool (0x680584) or null `*(this + 92)` (0x68058a) returns at once;
+    // otherwise each `findConstFirstChildOfType<Tool>` (0x6805a0) reparents to `getPlayerBackpack`
+    // (0x680590) via `setParentInternal(..., 0)` (0x68059a) until none remains (0x6805a8).
+    if !tool_present || !data_model_present {
+        return;
+    }
+    for i in 0..tool_count {
+        let backpack = get_backpack();
+        set_parent(i, backpack);
+    }
 }
 
 // 0x681fd8 — __ZN3RBX4Tool16setTimerCallbackEN5boost8weak_ptrINS_7Network6PlayerEEE
 #[doc(alias = "RBX::Tool::setTimerCallback(rbx_core::WeakPtr<RBX::Network::Player>)")]
-pub fn stub_681fd8() -> ! {
-    todo!("0x681fd8 RBX::Tool::setTimerCallback(boost::weak_ptr<RBX::Network::Player>)")
+pub fn stub_681fd8(
+    timer_service: bool,
+    bind_move_other: &mut dyn FnMut(),
+    delay: &mut dyn FnMut(f64),
+) {
+    // IDA 0x681fd8: a `create<TimerService>` miss skips everything (0x68202c); otherwise binds
+    // `Tool::moveOtherToolsToBackpack` with the weak player (0x68205e), wraps it in
+    // `function<void()>` (0x68206a) and `TimerService::delay`s it 0.2s (0x6820b4,
+    // words 0x3FC99999`9999999A).
+    if !timer_service {
+        return;
+    }
+    bind_move_other();
+    delay(0.2);
 }
 
 // 0x682190 — __ZN3RBX4Tool24moveOtherToolsToBackpackEN5boost8weak_ptrINS_7Network6PlayerEEE
 #[doc(alias = "RBX::Tool::moveOtherToolsToBackpack(rbx_core::WeakPtr<RBX::Network::Player>)")]
-pub fn stub_682190() -> ! {
-    todo!("0x682190 RBX::Tool::moveOtherToolsToBackpack(boost::weak_ptr<RBX::Network::Player>)")
+pub fn stub_682190(
+    player: Option<u32>,
+    tool_words: u32,
+    tools: &[u32],
+    backpack: Option<u32>,
+    move_to_backpack: &mut dyn FnMut(u32, u32),
+    hopper_bin_present: bool,
+    disable_hopper_bin: &mut dyn FnMut(),
+) {
+    // IDA 0x682190: locks the weak player into a shared one (0x6821b2); bails unless
+    // `*(tool + 336) >= 5` (0x6821e6); needs a live player (0x6821ec) and its backpack
+    // (0x6821fc); each carried tool runs `moveToBackpack(shared, tool, backpack)` (0x682250),
+    // then a `HopperBin` child is disabled (0x682270..0x68227c).
+    if tool_words < 5 {
+        return;
+    }
+    if player.is_none() {
+        return;
+    }
+    let pack = match backpack {
+        Some(p) => p,
+        None => return,
+    };
+    for tool in tools {
+        move_to_backpack(*tool, pack);
+    }
+    if hopper_bin_present {
+        disable_hopper_bin();
+    }
 }
 
 // 0x682e2c — __ZN5boost4bindIvN3RBX4ToolENS_8weak_ptrINS1_7Network6PlayerEEEPS2_S6_EENS_3_bi6bind_tIT_NS_4_mfi3mf1ISA_T0_T1_EENS8_9list_av_2IT2_T3_E4typeEEEMSD_FSA_SE_ESH_SI_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list_av_2<RBX::Tool*,rbx_core::WeakPtr<RBX::Network::Player>>::type> boost::bind<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>,RBX::Tool*,rbx_core::WeakPtr<RBX::Network::Player>>(void (RBX::Tool::*)(rbx_core::WeakPtr<RBX::Network::Player>),RBX::Tool*,rbx_core::WeakPtr<RBX::Network::Player>)")]
-pub fn stub_682e2c() -> ! {
-    todo!("0x682e2c boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list_av_2<RBX::Tool*,boost::weak_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>,RBX::Tool*,boost::weak_ptr<RBX::Network::Player>>(void (RBX::Tool::*)(boost::weak_ptr<RBX::Network::Player>),RBX::Tool*,boost::weak_ptr<RBX::Network::Player>)")
+pub fn stub_682e2c(
+    member: u32,
+    tool: u32,
+    weak: Option<u32>,
+    compose: &mut dyn FnMut(u32, u32, Option<u32>),
+) {
+    // IDA 0x682e2c: `bind<void, Tool, weak<Player>>(mf, tool, weak)` — stores the member pointer
+    // (0x682ea2..0x682ea6), builds `list2(value<Tool*>, value<weak>)` (0x682e9a..0x682eae) with a
+    // `weak_count` copy (0x682ebc); the composed bind is the closure.
+    compose(member, tool, weak);
 }
 
 // 0x683034 — __ZN3RBX4Tool21canBePickedUpByPlayerEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Tool::canBePickedUpByPlayer(RBX::Network::Player *)")]
-pub fn stub_683034() -> ! {
-    todo!("0x683034 RBX::Tool::canBePickedUpByPlayer(RBX::Network::Player *)")
+pub fn stub_683034() -> bool {
+    // IDA 0x683034: `MOVS R0, #1; BX LR` — every tool can be picked up.
+    true
 }
 
 // 0x683ee0 — __ZN5boost10shared_ptrIN3RBX7Network6PlayerEEC2IS3_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::Player>::shared_ptr<RBX::Network::Player>(rbx_core::WeakPtr<RBX::Network::Player> const&,boost::detail::sp_nothrow_tag)")]
-pub fn stub_683ee0() -> ! {
-    todo!("0x683ee0 boost::shared_ptr<RBX::Network::Player>::shared_ptr<RBX::Network::Player>(boost::weak_ptr<RBX::Network::Player> const&,boost::detail::sp_nothrow_tag)")
+pub fn stub_683ee0(use_count: u32, ptr: u32) -> Option<u32> {
+    // IDA 0x683ee0: nulls the out shared (0x683eee); when the weak's `pi` is live and its use count
+    // (`*(pi + 4)`) is nonzero (0x683f2c) the count is bumped (0x683f30) and the pointer copied
+    // (0x683f44); an expired weak stays null (spinlock traffic elided).
+    if use_count > 0 {
+        Some(ptr)
+    } else {
+        None
+    }
 }
 
 // 0x684130 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEEvT_
@@ -7474,8 +7690,11 @@ pub fn stub_68434c<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 
 // 0x684434 — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS9_7Network6PlayerEEEEENS5_5list2INS5_5valueIPSA_EENSH_ISE_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
-pub fn stub_684434() -> ! {
-    todo!("0x684434 void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::weak_ptr<RBX::Network::Player>>,boost::_bi::list2<boost::_bi::value<RBX::Tool*>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_684434<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x684434: `basic_vtable0::assign_functor` (`mpl::bool_<false>`) — heap `operator new(0x14)`
+    // (0x68445c), copies the bind words (0x684464..0x68447e) plus a `weak_count` copy (0x6844ac);
+    // a Rust `Box` is always heap, same as `assign_to`.
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x68450c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX4ToolEEENS2_INS_8weak_ptrINS3_7Network6PlayerEEEEEEclINS_4_mfi3mf1IvS4_SA_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -7501,8 +7720,10 @@ pub fn stub_6846c8(op: crate::functor::FunctorOp) -> crate::functor::ManageOutco
 
 // 0x684824 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX4ToolEEENS2_INS_8weak_ptrINS3_7Network6PlayerEEEEEEC2ES6_SB_
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<RBX::Tool *>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>>::list2(boost::_bi::value<RBX::Tool *>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>)")]
-pub fn stub_684824() -> ! {
-    todo!("0x684824 boost::_bi::list2<boost::_bi::value<RBX::Tool *>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>::list2(boost::_bi::value<RBX::Tool *>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>)")
+pub fn stub_684824(tool: u32, weak: Option<u32>) -> ToolWeakList {
+    // IDA 0x684824: `list2` ctor — copies `value<Tool*>` and the `weak_ptr<Player>` value
+    // (register spill plus `weak_count` copy engine-side).
+    ToolWeakList { tool, weak }
 }
 
 // 0x6d1a38 — __ZN3RBX7Network7Players11getGameModeEPKNS_8InstanceE
@@ -7514,20 +7735,74 @@ pub fn stub_6d1a38(client: bool, server: bool, local_player: bool, distributed_p
 
 // 0x79d5a8 — __ZN3RBX14PlayerChatLineC2ENS_8ChatLine8ChatTypeEN5boost10shared_ptrINS_7Network6PlayerEEERKSsfb
 #[doc(alias = "RBX::PlayerChatLine::PlayerChatLine(RBX::ChatLine::ChatType,rbx_core::SharedPtr<RBX::Network::Player>,std::string const&,float,bool)")]
-pub fn stub_79d5a8() -> ! {
-    todo!("0x79d5a8 RBX::PlayerChatLine::PlayerChatLine(RBX::ChatLine::ChatType,boost::shared_ptr<RBX::Network::Player>,std::string const&,float,bool)")
+pub fn stub_79d5a8(
+    author: Option<ChatAuthor>,
+    team_game: bool,
+    roblox_name: &str,
+    hash: &mut dyn FnMut(&str) -> u8,
+) -> (String, u32, ChatNameColor) {
+    // IDA 0x79d5a8: base `ChatLine` ctor (0x79d5da), empty name (0x79d634), width 60.0 (0x79d640).
+    // Null player → `ROBLOXNAME` plus `getColorByIndex(0)` (0x79d6fc..0x79d714). Team game
+    // (0x79d6be): neutral → white (0x79d6d0); resolved team → its color (0x79d774..0x79d79a), else
+    // black (0x79d7a6); otherwise `colorFromIndex8(hash(name) & 7, 16)` (0x79d6dc..0x79d6e8).
+    let a = match author {
+        Some(a) => a,
+        None => return (roblox_name.to_string(), 0, ChatNameColor::Default),
+    };
+    let color = if team_game {
+        if a.neutral {
+            ChatNameColor::White
+        } else {
+            match a.team_color {
+                Some(c) => ChatNameColor::Team(c),
+                None => ChatNameColor::Black,
+            }
+        }
+    } else {
+        ChatNameColor::Indexed(hash(&a.name) & 7)
+    };
+    (a.name, a.user_id, color)
 }
 
 // 0x7a0ee4 — __ZN3RBX10ChatOutput19onPlayerChatMessageERKNS_7Network11ChatMessageE
 #[doc(alias = "RBX::ChatOutput::onPlayerChatMessage(RBX::Network::ChatMessage const&)")]
-pub fn stub_7a0ee4() -> ! {
-    todo!("0x7a0ee4 RBX::ChatOutput::onPlayerChatMessage(RBX::Network::ChatMessage const&)")
+pub fn stub_7a0ee4(
+    filter_emote: bool,
+    msg: &IncomingChat,
+    local_player: Option<u32>,
+    chat_full: &mut dyn FnMut() -> bool,
+    pop_front: &mut dyn FnMut(),
+    sanitize: &mut dyn FnMut(&str) -> String,
+    deliver: &mut dyn FnMut(u32, u32, String, bool),
+) {
+    // IDA 0x7a0ee4: `FilterEmoteChat` drops `/e ` (0x7a0f62..0x7a0f70) and `/emote`
+    // (0x7a0f8e..0x7a0f9c) prefixes; an over-capacity deque pops its front (0x7a0fb0..0x7a0fe0);
+    // `isLocal` defaults to 1 (0x7a0fe6) and compares the sender against the local player
+    // (0x7a0fea..0x7a0ffa); the line is sanitized (0x7a102c), built as a `PlayerChatLine`
+    // (0x7a107a) and pushed to the deque (0x7a10ba) plus the per-character map (0x7a10e6..0x7a1102).
+    if filter_emote && (msg.text.starts_with("/e ") || msg.text.starts_with("/emote")) {
+        return;
+    }
+    while chat_full() {
+        pop_front();
+    }
+    let text = sanitize(&msg.text);
+    let is_local = local_player.map(|l| msg.sender == l).unwrap_or(true);
+    deliver(msg.kind, msg.sender, text, is_local);
 }
 
 // 0x7a3bbc — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10ChatOutputES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>> const&)")]
-pub fn stub_7a3bbc() -> ! {
-    todo!("0x7a3bbc rbx::signals::connection rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>> const&)")
+pub fn stub_7a3bbc<T>(
+    list: &mut crate::signal::SlotList,
+    slot: &mut Option<Box<T>>,
+    functor: T,
+    source_present: bool,
+) -> Option<crate::signal::SlotId> {
+    // IDA 0x7a3bbc: `connect<bind_t<mf1 ChatOutput(ChatMessage)>>` — news the 28-byte
+    // `callable_slot` node (0x7a3bd4), copies the bind (0x7a3c02..0x7a3c12), `insert`s it
+    // (0x7a3c16) and returns the connection (null when sourceless).
+    crate::signal::connect(list, slot, functor, source_present)
 }
 
 // 0x7a8b34 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE6insertEPNS8_4slotE
@@ -7544,22 +7819,31 @@ pub fn stub_7a8d40(target: &mut Option<crate::signal::SlotId>, other: Option<cra
     crate::signal::slot_assign(target, other);
 }
 
+static SIGNAL_MUTEX_7A8D64: parking_lot::Mutex<()> = parking_lot::Mutex::new(());
+
 // 0x7a8d64 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::safe_static_do_get_mutex(void)")]
-pub fn stub_7a8d64() -> ! {
-    todo!("0x7a8d64 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::safe_static_do_get_mutex(void)")
+pub fn stub_7a8d64() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x7a8d64: `safe_static_do_get_mutex` lazily news the heap mutex once
+    // (`__cxa_guard_acquire` at 0x7a8dc0, `operator new(0x2C)` at 0x7a8dd4); a Rust `static`
+    // has the same once semantics.
+    &SIGNAL_MUTEX_7A8D64
 }
 
 // 0x7a8e5c — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10ChatOutputES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7a8e5c() -> ! {
-    todo!("0x7a8e5c rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7a8e5c(slot: &mut Option<crate::signal::SlotId>) {
+    // IDA 0x7a8e5c: `callable_slot` D1 — reseats the vtable (0x7a8e76) and releases the
+    // intrusive connection (0x7a8e7a..0x7a8e80); the bound functor drops with the slot.
+    *slot = None;
 }
 
 // 0x7a8e88 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10ChatOutputES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_7a8e88() -> ! {
-    todo!("0x7a8e88 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_7a8e88(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x7a8e88: `callable_slot` D0 — the D1 body plus `operator delete` (0x7a8f02);
+    // the node unlinks from the signal.
+    list.remove(id);
 }
 
 // 0x7a8f5c — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot10disconnectEv
@@ -7571,20 +7855,23 @@ pub fn stub_7a8f5c(list: &mut crate::signal::SlotList, id: crate::signal::SlotId
 
 // 0x7a906c — __ZNK3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::connected(void)const")]
-pub fn stub_7a906c() -> ! {
-    todo!("0x7a906c rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::connected(void)const")
+pub fn stub_7a906c(list: &crate::signal::SlotList, id: crate::signal::SlotId) -> bool {
+    // IDA 0x7a906c: `slot::connected` — the signal link at +12 is nonzero (0x7a9074).
+    list.contains(id)
 }
 
 // 0x7a9078 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")]
-pub fn stub_7a9078() -> ! {
-    todo!("0x7a9078 rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")
+pub fn stub_7a9078<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x7a9078: `callable::call` — forwards to `bind_t::operator()` (same shape as 0x7a9088).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x7a9080 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")]
-pub fn stub_7a9080() -> ! {
-    todo!("0x7a9080 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")
+pub fn stub_7a9080<A>(slot: &mut dyn FnMut(A), a: A) {
+    // IDA 0x7a9080: non-virtual thunk (`this - 4` adjust) to `callable::call` (0x7a9078).
+    crate::functor::invoke1(slot, a);
 }
 
 // 0x7a9088 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10ChatOutputERKNS4_7Network11ChatMessageEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS7_EEvRKT_
@@ -7601,58 +7888,108 @@ pub fn stub_7a90a0(list: &mut crate::signal::SlotList, id: crate::signal::SlotId
     list.remove(id);
 }
 
+static SIGNAL_MUTEX_7A9190: parking_lot::Mutex<()> = parking_lot::Mutex::new(());
+
 // 0x7a9190 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_7a9190() -> ! {
-    todo!("0x7a9190 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::safe_static_init_mutex(void)")
+pub fn stub_7a9190() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x7a9190: `slot::safe_static_init_mutex` thunk — tail-jumps to
+    // `safe_static_do_get_mutex` (0x7a9194); same once-static shape as 0xa355a0.
+    &SIGNAL_MUTEX_7A9190
 }
+
+static SLOT_MUTEX_7A9194: parking_lot::Mutex<()> = parking_lot::Mutex::new(());
 
 // 0x7a9194 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_7a9194() -> ! {
-    todo!("0x7a9194 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_7a9194() -> &'static parking_lot::Mutex<()> {
+    // IDA 0x7a9194: `slot::safe_static_do_get_mutex` constructs the function-local static
+    // mutex once (`__cxa_guard_acquire` at 0x7a91f0, `mutex::mutex` at 0x7a920a, `__cxa_atexit`
+    // at 0x7a9228); a Rust `static` has the same once semantics.
+    &SLOT_MUTEX_7A9194
 }
 
 // 0x7a9284 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::~slot()")]
-pub fn stub_7a9284() -> ! {
-    todo!("0x7a9284 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::~slot()")
+pub fn stub_7a9284(slot: &mut Option<crate::signal::SlotId>) {
+    // IDA 0x7a9284: `slot` D1 — reseats the vtable (0x7a929e) and releases the intrusive
+    // connection (0x7a92a2..0x7a92a8).
+    *slot = None;
 }
 
 // 0x7a92b0 — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::~slot()")]
-pub fn stub_7a92b0() -> ! {
-    todo!("0x7a92b0 rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot::~slot()")
+pub fn stub_7a92b0(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x7a92b0: `slot` D0 — the D1 body plus `operator delete` (0x7a932a).
+    list.remove(id);
 }
 
 // 0x7a9384 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::~callable()")]
-pub fn stub_7a9384() -> ! {
-    todo!("0x7a9384 rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::~callable()")
+pub fn stub_7a9384(slot: &mut Option<crate::signal::SlotId>) {
+    // IDA 0x7a9384: `callable` D1 — reseats the vtable (0x7a939e) and releases the intrusive
+    // connection (0x7a93a2..0x7a93a8).
+    *slot = None;
 }
 
 // 0x7a93b0 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::~callable()")]
-pub fn stub_7a93b0() -> ! {
-    todo!("0x7a93b0 rbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::~callable()")
+pub fn stub_7a93b0(list: &mut crate::signal::SlotList, id: crate::signal::SlotId) {
+    // IDA 0x7a93b0: `callable` D0 — the D1 body plus `operator delete` (0x7a942a).
+    list.remove(id);
 }
 
 // 0x7aac38 — __ZN3RBX15ServiceProvider4findINS_7Network7PlayersEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::find<RBX::Network::Players>(RBX::Instance const*)")]
-pub fn stub_7aac38() -> ! {
-    todo!("0x7aac38 RBX::Network::Players * RBX::ServiceProvider::find<RBX::Network::Players>(RBX::Instance const*)")
+pub fn stub_7aac38(provider: Option<u32>, find: &mut dyn FnMut(u32) -> u32) -> u32 {
+    // IDA 0x7aac38: a `findServiceProvider` miss returns null (0x7aac44), otherwise
+    // `find<Players>` runs on the provider (0x7aac4c).
+    match provider {
+        Some(p) => find(p),
+        None => 0,
+    }
 }
 
 // 0x8922e8 — __ZN3RBX21PersonalServerService7getRankEPNS_7Network6PlayerEiN5boost8functionIFvSsEEES7_
 #[doc(alias = "RBX::PersonalServerService::getRank(RBX::Network::Player *,int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
-pub fn stub_8922e8() -> ! {
-    todo!("0x8922e8 RBX::PersonalServerService::getRank(RBX::Network::Player *,int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_8922e8(
+    url: &str,
+    key: u32,
+    player_word: u32,
+    format_url: &mut dyn FnMut(&str, u32, u32) -> String,
+    dispatch: &mut dyn FnMut(String),
+    report_missing: &mut dyn FnMut(&'static str),
+) {
+    // IDA 0x8922e8: an empty get-rank URL (`*(url - 12)` length word, 0x89231e) reports
+    // "No personalServerGetRankUrl set" on the failure callback (0x8923e4..0x8923f0); otherwise
+    // the URL is formatted with the key and `*(player + 156)` (0x892350) and `dispatchRequest`ed
+    // with the success/failure callbacks (0x892356..0x892380).
+    if url.is_empty() {
+        report_missing("No personalServerGetRankUrl set");
+        return;
+    }
+    dispatch(format_url(url, key, player_word));
 }
 
 // 0x892534 — __ZN3RBX21PersonalServerService7setRankEPNS_7Network6PlayerEiiN5boost8functionIFvbEEENS5_IFvSsEEE
 #[doc(alias = "RBX::PersonalServerService::setRank(RBX::Network::Player *,int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
-pub fn stub_892534() -> ! {
-    todo!("0x892534 RBX::PersonalServerService::setRank(RBX::Network::Player *,int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_892534(
+    url: &str,
+    key: u32,
+    player_word: u32,
+    rank: u32,
+    format_url: &mut dyn FnMut(&str, u32, u32, u32) -> String,
+    dispatch: &mut dyn FnMut(String),
+    report_missing: &mut dyn FnMut(&'static str),
+) {
+    // IDA 0x892534: the set-rank URL at `*(this + 100)` (0x89255e); formatted with the key,
+    // `*(player + 156)` and the rank (0x8925a4), then `dispatchRequest<bool>` (0x8925d4) — or
+    // "No personalServerSetRankUrl set" on the failure callback when empty.
+    if url.is_empty() {
+        report_missing("No personalServerSetRankUrl set");
+        return;
+    }
+    dispatch(format_url(url, key, player_word, rank));
 }
 
 // 0x8e61c8 — __ZN3RBX20ContextActionService27setupLocalPlayerConnectionsEPNS_7Network6PlayerE
