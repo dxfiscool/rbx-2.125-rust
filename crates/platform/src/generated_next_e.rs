@@ -307,184 +307,272 @@ pub fn stub_1effc(slots: &mut BlockObjectSlots) {
 
 // 0x1f480 — ___copy_helper_block_300
 #[doc(alias = "___copy_helper_block_300")]
-pub fn stub_1f480() -> ! {
-    todo!("0x1f480 ___copy_helper_block_300")
+pub fn stub_1f480(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f480: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f48c — ___destroy_helper_block_301
 #[doc(alias = "___destroy_helper_block_301")]
-pub fn stub_1f48c() -> ! {
-    todo!("0x1f48c ___destroy_helper_block_301")
+pub fn stub_1f48c(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f48c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1f494 — ___copy_helper_block_305
 #[doc(alias = "___copy_helper_block_305")]
-pub fn stub_1f494() -> ! {
-    todo!("0x1f494 ___copy_helper_block_305")
+pub fn stub_1f494(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f494: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f4a0 — ___destroy_helper_block_306
 #[doc(alias = "___destroy_helper_block_306")]
-pub fn stub_1f4a0() -> ! {
-    todo!("0x1f4a0 ___destroy_helper_block_306")
+pub fn stub_1f4a0(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f4a0: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1f660 — ___copy_helper_block_308
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_308")]
-pub fn stub_1f660() -> ! {
-    todo!("0x1f660 ___copy_helper_block_308")
+pub fn stub_1f660(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f660: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f66c — ___destroy_helper_block_309
 #[doc(alias = "___destroy_helper_block_309")]
-pub fn stub_1f66c() -> ! {
-    todo!("0x1f66c ___destroy_helper_block_309")
+pub fn stub_1f66c(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f66c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1f688 — ___copy_helper_block_314
 #[doc(alias = "___copy_helper_block_314")]
-pub fn stub_1f688() -> ! {
-    todo!("0x1f688 ___copy_helper_block_314")
+pub fn stub_1f688(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f688: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f694 — ___destroy_helper_block_315
 #[doc(alias = "___destroy_helper_block_315")]
-pub fn stub_1f694() -> ! {
-    todo!("0x1f694 ___destroy_helper_block_315")
+pub fn stub_1f694(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f694: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1f69c — ___copy_helper_block_320
 #[doc(alias = "___copy_helper_block_320")]
-pub fn stub_1f69c() -> ! {
-    todo!("0x1f69c ___copy_helper_block_320")
+pub fn stub_1f69c(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f69c: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f6a8 — ___destroy_helper_block_321
 #[doc(alias = "___destroy_helper_block_321")]
-pub fn stub_1f6a8() -> ! {
-    todo!("0x1f6a8 ___destroy_helper_block_321")
+pub fn stub_1f6a8(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f6a8: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1f82c — ___copy_helper_block_323
 #[doc(alias = "___copy_helper_block_323")]
-pub fn stub_1f82c() -> ! {
-    todo!("0x1f82c ___copy_helper_block_323")
+pub fn stub_1f82c(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f82c: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1f838 — ___destroy_helper_block_324
 #[doc(alias = "___destroy_helper_block_324")]
-pub fn stub_1f838() -> ! {
-    todo!("0x1f838 ___destroy_helper_block_324")
+pub fn stub_1f838(slots: &mut BlockObjectSlots) {
+    // IDA 0x1f838: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1fa44 — ___copy_helper_block_339
 #[doc(alias = "___copy_helper_block_339")]
-pub fn stub_1fa44() -> ! {
-    todo!("0x1fa44 ___copy_helper_block_339")
+pub fn stub_1fa44(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fa44: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1fa50 — ___destroy_helper_block_340
 #[doc(alias = "___destroy_helper_block_340")]
-pub fn stub_1fa50() -> ! {
-    todo!("0x1fa50 ___destroy_helper_block_340")
+pub fn stub_1fa50(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fa50: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1fc90 — ___copy_helper_block_356
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_356")]
-pub fn stub_1fc90() -> ! {
-    todo!("0x1fc90 ___copy_helper_block_356")
+pub fn stub_1fc90(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fc90: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1fc9c — ___destroy_helper_block_357
 #[doc(alias = "___destroy_helper_block_357")]
-pub fn stub_1fc9c() -> ! {
-    todo!("0x1fc9c ___destroy_helper_block_357")
+pub fn stub_1fc9c(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fc9c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x1fca4 — ___copy_helper_block_359
 #[doc(alias = "___copy_helper_block_359")]
-pub fn stub_1fca4() -> ! {
-    todo!("0x1fca4 ___copy_helper_block_359")
+pub fn stub_1fca4(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fca4: `_Block_object_assign` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.copy_assign();
 }
 
 // 0x1fcc8 — ___destroy_helper_block_360
 #[doc(alias = "___destroy_helper_block_360")]
-pub fn stub_1fcc8() -> ! {
-    todo!("0x1fcc8 ___destroy_helper_block_360")
+pub fn stub_1fcc8(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fcc8: `_Block_object_dispose` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.destroy_dispose();
 }
 
 // 0x1fce4 — ___copy_helper_block_364
 #[doc(alias = "___copy_helper_block_364")]
-pub fn stub_1fce4() -> ! {
-    todo!("0x1fce4 ___copy_helper_block_364")
+pub fn stub_1fce4(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fce4: `_Block_object_assign` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.copy_assign();
 }
 
 // 0x1fd08 — ___destroy_helper_block_365
 #[doc(alias = "___destroy_helper_block_365")]
-pub fn stub_1fd08() -> ! {
-    todo!("0x1fd08 ___destroy_helper_block_365")
+pub fn stub_1fd08(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fd08: `_Block_object_dispose` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.destroy_dispose();
 }
 
 // 0x1fd24 — ___copy_helper_block_367
 #[doc(alias = "___copy_helper_block_367")]
-pub fn stub_1fd24() -> ! {
-    todo!("0x1fd24 ___copy_helper_block_367")
+pub fn stub_1fd24(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fd24: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x1fd30 — ___destroy_helper_block_368
 #[doc(alias = "___destroy_helper_block_368")]
-pub fn stub_1fd30() -> ! {
-    todo!("0x1fd30 ___destroy_helper_block_368")
+pub fn stub_1fd30(slots: &mut BlockObjectSlots) {
+    // IDA 0x1fd30: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x202d0 — __GLOBAL__I_a_5
 #[doc(alias = "global constructor keyed to_a_5")]
-pub fn stub_202d0() -> ! {
-    todo!("0x202d0 global constructor keyed to_a_5")
+pub fn stub_202d0() {
+    // IDA 0x202d0 (`__GLOBAL__I_a_5`): `generic_category()` x2 +
+    // `system_category()` + `ios_base::Init` — same shape as 0x1a7d4. Host
+    // statics initialize on use; nothing to run. Verified via IDA disasm.
 }
 
 // 0x20f08 — ___copy_helper_block__3
 #[doc(alias = "___copy_helper_block__3")]
-pub fn stub_20f08() -> ! {
-    todo!("0x20f08 ___copy_helper_block__3")
+pub fn stub_20f08(slots: &mut BlockObjectSlots) {
+    // IDA 0x20f08: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x20f14 — ___destroy_helper_block__3
 #[doc(alias = "___destroy_helper_block__3")]
-pub fn stub_20f14() -> ! {
-    todo!("0x20f14 ___destroy_helper_block__3")
+pub fn stub_20f14(slots: &mut BlockObjectSlots) {
+    // IDA 0x20f14: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x21adc — ___copy_helper_block_132
 #[doc(alias = "___copy_helper_block_132")]
-pub fn stub_21adc() -> ! {
-    todo!("0x21adc ___copy_helper_block_132")
+pub fn stub_21adc(slots: &mut BlockObjectSlots) {
+    // IDA 0x21adc: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x21ae8 — ___destroy_helper_block_133
 #[doc(alias = "___destroy_helper_block_133")]
-pub fn stub_21ae8() -> ! {
-    todo!("0x21ae8 ___destroy_helper_block_133")
+pub fn stub_21ae8(slots: &mut BlockObjectSlots) {
+    // IDA 0x21ae8: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x21b10 — ___copy_helper_block_142
 #[doc(alias = "___copy_helper_block_142")]
-pub fn stub_21b10() -> ! {
-    todo!("0x21b10 ___copy_helper_block_142")
+pub fn stub_21b10(slots: &mut BlockObjectSlots) {
+    // IDA 0x21b10: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x21b1c — ___destroy_helper_block_143
 #[doc(alias = "___destroy_helper_block_143")]
-pub fn stub_21b1c() -> ! {
-    todo!("0x21b1c ___destroy_helper_block_143")
+pub fn stub_21b1c(slots: &mut BlockObjectSlots) {
+    // IDA 0x21b1c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x21c18 — __GLOBAL__I_a_6
 #[doc(alias = "global constructor keyed to_a_6")]
-pub fn stub_21c18() -> ! {
-    todo!("0x21c18 global constructor keyed to_a_6")
+pub fn stub_21c18() {
+    // IDA 0x21c18 (`__GLOBAL__I_a_6`): `generic_category()` x2 +
+    // `system_category()` + `ios_base::Init` — same shape as 0x1a7d4. Host
+    // statics initialize on use; nothing to run. Verified via IDA disasm.
 }
 
 // 0x23a04 — __ZNSt3mapISsPFvPKcESt4lessISsESaISt4pairIKSsS3_EEEixERS7_
