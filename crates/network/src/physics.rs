@@ -369,6 +369,214 @@ impl PhysicsReceiver {
             self.read_compact_cframe(stream, frame); // IDA 0x9bcd1c
         }
     }
+    /// `RBX::Network::PhysicsReceiver::receiveMechanismCFrames` (IDA
+    /// 0x9bb4ec): drains `receivePart` results; a part whose stored
+    /// timestamp is newer than the incoming stamp is stale — it is
+    /// logged when verbose and reset (IDA 0x9bb594..0x9bb682) —
+    /// otherwise its translation and rotation are read (IDA
+    /// 0x9bb698..0x9bb6a4) and applied via `setPhysics` plus an
+    /// interpolation sample stamped with the remote time (IDA
+    /// 0x9bb6c4..0x9bb6d4). Part lookup and the stream stay
+    /// engine-side; the freshness gate and drain loop live here.
+    /// Returns the number of samples applied.
+    pub fn receive_mechanism_cframes(
+        &self,
+        incoming_stamp: u64,
+        next: &mut dyn FnMut() -> Option<(u64, bool)>,
+        read_pose: &mut dyn FnMut() -> ([f32; 3], [f32; 4]),
+        apply: &mut dyn FnMut([f32; 3], [f32; 4]),
+        log_stale: &mut dyn FnMut(),
+    ) -> usize {
+        let mut applied = 0;
+        while let Some((stored_stamp, has_part)) = next() {
+            // IDA 0x9bb568: `receivePart(...) == 1` keeps the loop going.
+            if !has_part {
+                continue;
+            }
+            if stored_stamp > incoming_stamp {
+                // IDA 0x9bb594: stale ("Physics-in old packet").
+                if self.verbose_logging {
+                    log_stale();
+                }
+                continue; // `reset`, IDA 0x9bb682
+            }
+            let (translation, rotation) = read_pose(); // IDA 0x9bb698..0x9bb6a4
+            apply(translation, rotation); // IDA 0x9bb6c4..0x9bb6d4
+            applied += 1;
+        }
+        applied
+    }
+
+    /// `RBX::Network::PhysicsReceiver::receivePart` verdict (IDA
+    /// 0x9bb95c): the instance ref either fails to resolve, resolves to
+    /// null, resolves outside the workspace, or is ready. A null
+    /// resolution returns 0 (IDA 0x9bb9c6); every other path returns 1,
+    /// with unidentified guids (IDA 0x9bba94..0x9bbaf4) and
+    /// out-of-workspace parts (IDA 0x9bbe88..0x9bbf94) logged when
+    /// verbose and reset. Deserialization and the part table stay
+    /// engine-side.
+    #[must_use]
+    pub fn receive_part_verdict(
+        &self,
+        resolved: bool,
+        part: Option<bool>,
+        log_unidentified: &mut dyn FnMut(),
+        log_outside_workspace: &mut dyn FnMut(),
+    ) -> (bool, bool) {
+        if !resolved {
+            // IDA 0x9bba94: guid did not resolve.
+            if self.verbose_logging {
+                log_unidentified();
+            }
+            return (true, false);
+        }
+        match part {
+            None => (false, false), // IDA 0x9bb9c6
+            Some(in_workspace) => {
+                if !in_workspace {
+                    // IDA 0x9bbe88: "part not in workspace".
+                    if self.verbose_logging {
+                        log_outside_workspace();
+                    }
+                    return (true, false);
+                }
+                // IDA 0x9bbe04..0x9bbf98: assembly asserts stay debug-only.
+                (true, true)
+            }
+        }
+    }
+
+    /// `RBX::Network::PhysicsReceiver::receiveMechanism` (IDA 0x9bc500):
+    /// resets the mechanism item (IDA 0x9bc52e), reads the mechanism
+    /// mode byte when the flag bit is set (IDA 0x9bc542..0x9bc58a),
+    /// reads the root assembly (IDA 0x9bc59a), then drains chained
+    /// parts — each `receivePart` result is asserted ok (IDA
+    /// 0x9bc5f6..0x9bc63c) and read as an assembly — until the
+    /// continuation bit reads set (IDA 0x9bc5a4..0x9bc6f2). Returns the
+    /// mode byte. Item storage and the stream stay engine-side.
+    pub fn receive_mechanism(
+        &self,
+        read_flag: &mut dyn FnMut() -> bool,
+        read_mode: &mut dyn FnMut() -> u8,
+        read_root: &mut dyn FnMut(),
+        read_chained: &mut dyn FnMut(),
+    ) -> u8 {
+        let mode = if read_flag() {
+            // IDA 0x9bc578..0x9bc582: `operator>><unsigned char>`.
+            read_mode()
+        } else {
+            0 // IDA 0x9bc58a
+        };
+        read_root(); // IDA 0x9bc59a
+        while !read_flag() {
+            // IDA 0x9bc5a4: continuation bit clear keeps chaining.
+            read_chained(); // IDA 0x9bc5f0..0x9bc63c
+        }
+        let _ = self.verbose_logging;
+        mode
+    }
+
+    /// `RBX::Network::PhysicsReceiver::readAssembly` (IDA 0x9bc804):
+    /// appends the assembly slot (IDA 0x9bc834), adopts the root part
+    /// (IDA 0x9bc838..0x9bc86e), then reads translation (IDA 0x9bc930),
+    /// rotation (IDA 0x9bc93e), velocity (IDA 0x9bc95e), motor angles
+    /// (IDA 0x9bc96c), and the 4-bit world tag (IDA 0x9bc97c). With a
+    /// root part the world-tag change fires the primitive signal and
+    /// refreshes the assembly notification (IDA 0x9bc9f2..0x9bca9c);
+    /// asserts stay debug-only. Slot storage stays engine-side.
+    pub fn read_assembly(
+        &self,
+        read_pose: &mut dyn FnMut(),
+        read_tag: &mut dyn FnMut() -> u8,
+        on_root: &mut dyn FnMut(u8),
+        has_root: bool,
+    ) {
+        read_pose(); // IDA 0x9bc834..0x9bc96c
+        let tag = read_tag(); // IDA 0x9bc97c
+        if has_root {
+            on_root(tag); // IDA 0x9bc9f2..0x9bca9c
+        }
+    }
+
+
+    /// `RBX::Network::PhysicsReceiver::readTouches` drain loop (IDA
+    /// 0x9bce34): each pair is `(both_present, step)`; absent pairs are
+    /// skipped, present pairs report and step. Returns steps applied.
+    pub fn read_touches(
+        &self,
+        next_pair: &mut dyn FnMut() -> Option<(bool, TouchStep)>,
+        report: &mut dyn FnMut(TouchStep),
+        on_step: &mut dyn FnMut(),
+    ) -> usize {
+        let mut applied = 0;
+        while let Some((present, step)) = next_pair() {
+            // IDA 0x9bcf78: first part failing ends the drain.
+            if !present {
+                continue;
+            }
+            report(step); // IDA 0x9bd326..0x9bd33a
+            on_step(); // `onTouchStep`, IDA 0x9bd4d0
+            applied += 1;
+        }
+        let _ = self.verbose_logging;
+        applied
+    }
+
+
+    /// Shared `receivePacket` driver: resolves the stamp, then dispatches
+    /// items until `End` (or a failed root in uncompressed mode).
+    pub fn direct_receive_packet(
+        use_stream_stamp: bool,
+        stream_stamp: &mut dyn FnMut() -> u64,
+        arg_stamp: u64,
+        compressed: bool,
+        next: &mut dyn FnMut() -> DirectPacketItem,
+        process: &mut dyn FnMut(u64),
+    ) {
+        // IDA 0x9a3982..0x9a39a6.
+        let stamp = if use_stream_stamp { stream_stamp() } else { arg_stamp };
+        loop {
+            match next() {
+                DirectPacketItem::End => break, // IDA 0x9a3aca / 0x9a3ab2
+                DirectPacketItem::CFrames => process(stamp), // IDA 0x9a3c2a..0x9a3c34
+                DirectPacketItem::Root(ok) => {
+                    if !ok && !compressed {
+                        break; // IDA 0x9a3ab2
+                    }
+                    if !ok {
+                        continue; // IDA 0x9a3af4: `goto LABEL_5`
+                    }
+                    process(stamp); // IDA 0x9a3c42..0x9a3d12
+                }
+            }
+        }
+    }
+
+}
+
+/// Touch report for one `readTouches` pair (IDA 0x9bce34): the first
+/// `receivePart` ends the stream when it fails (IDA 0x9bcf78); the
+/// second is asserted ok (IDA 0x9bcf90..0x9bcfdc); the touch bit
+/// selects `reportTouch` vs `reportUntouch` (IDA 0x9bd326..0x9bd33a)
+/// and both present parts step the sender's touch set through the
+/// replicator walk (IDA 0x9bd342..0x9bd70e), with verbose
+/// replication logging (IDA 0x9bd00e..0x9bd278).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum TouchStep {
+    Touch,
+    Untouch,
+}
+
+/// `RBX::Network::DirectPhysicsReceiver::receivePacket` item (IDA
+/// 0x9a3918): the compressed-mode flag bit either ends the stream
+/// (IDA 0x9a3aca), selects mechanism cframes (IDA 0x9a3ae0..0x9a3c34),
+/// or carries a rooted assembly whose bool is the `receiveRootPart`
+/// verdict (IDA 0x9a3af4 / 0x9a3ab2).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DirectPacketItem {
+    End,
+    CFrames,
+    Root(bool),
 }
 
 /// `RBX::Network::PhysicsSender` packet state: the compression gate

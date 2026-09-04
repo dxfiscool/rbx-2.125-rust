@@ -1138,32 +1138,37 @@ pub fn stub_99da28<T>(owned: Option<SharedPtr<T>>) {
 // 0x99da2c — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()
-pub fn stub_99da2c() -> ! {
-    todo!("0x99da2c boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()")
+pub fn stub_99da2c<T>(owned: Option<SharedPtr<T>>) {
+    // IDA 0x99da2c (D0): `operator delete(a1)` (IDA 0x99da30) after the D1
+    // release; dropping the `SharedPtr` frees at zero the same way.
+    drop(owned);
 }
 
 // 0x99da38 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::dispose(void)
-pub fn stub_99da38() -> ! {
-    todo!("0x99da38 boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::dispose(void)")
+pub fn stub_99da38(dispose: &mut dyn FnMut()) {
+    // IDA 0x99da38: when the peer word at +12 is set, its vtable D0 runs
+    // (IDA 0x99da48); the pointee dtor arrives as this closure.
+    dispose();
 }
 
 // 0x99da4c — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_deleter(std::type_info const&)
-pub fn stub_99da4c() -> ! {
-    todo!("0x99da4c boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_deleter(std::type_info const&)")
+pub fn stub_99da4c() -> *const core::ffi::c_void {
+    // IDA 0x99da4c..0x99da4e: `return 0` — `sp_counted_impl_p` carries no
+    // deleter.
+    core::ptr::null()
 }
 
 // 0x99da50 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_untyped_deleter(void)
-pub fn stub_99da50() -> ! {
-    todo!("0x99da50 boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::get_untyped_deleter(void)")
+pub fn stub_99da50() -> *const core::ffi::c_void {
+    // IDA 0x99da50..0x99da52: `return 0`, same as `get_deleter`.
+    core::ptr::null()
 }
-
-// 0x99da54 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)
 pub fn stub_99da54(
@@ -1262,12 +1267,14 @@ pub fn stub_99e6f8(
     // construction is a plain tuple build in Rust.
     (addr, stats)
 }
-
 // 0x99e8f8 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::StatsUpdateJob(rbx_core::SharedPtr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
 // was: RBX::Network::ConcurrentRakPeer::StatsUpdateJob::StatsUpdateJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)
-pub fn stub_99e8f8() -> ! {
-    todo!("0x99e8f8 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::StatsUpdateJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)")
+pub fn stub_99e8f8(job: &mut crate::peer::StatsUpdateJob, retain_peer: &mut dyn FnMut()) {
+    // IDA 0x99e8f8: `DataModelJob` base ("Net Peer Stats", priority 9),
+    // mutex plus both prime-sized maps, the +612 live flag, and the
+    // retained peer pointer.
+    crate::peer::stats_update_job_init(job, retain_peer);
 }
 
 // 0x99f428 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEEPNS4_16RakPeerInterfaceE
@@ -1316,8 +1323,11 @@ pub fn stub_99f938(
 // 0x99f9b8 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::PacketJob(rbx_core::SharedPtr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
 // was: RBX::Network::ConcurrentRakPeer::PacketJob::PacketJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)
-pub fn stub_99f9b8() -> ! {
-    todo!("0x99f9b8 RBX::Network::ConcurrentRakPeer::PacketJob::PacketJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)")
+pub fn stub_99f9b8(job: &mut crate::peer::PacketJob, settings_flag: bool, retain_peer: &mut dyn FnMut()) {
+    // IDA 0x99f9b8: `DataModelJob` base ("Net Peer Send", priority 9), the
+    // send deque plus mutex, the settings enable byte, and the retained
+    // peer pointer.
+    crate::peer::packet_job_init(job, settings_flag, retain_peer);
 }
 
 // 0x9a1930 — __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_
@@ -1467,8 +1477,18 @@ pub fn stub_9a29f4(
 // 0x9a3918 — __ZN3RBX7Network21DirectPhysicsReceiver13receivePacketERN6RakNet9BitStreamEyPNS0_15ReplicatorStats20PhysicsReceiverStatsE
 #[doc(alias = "RBX::Network::DirectPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX::Network::ReplicatorStats::PhysicsReceiverStats *)")]
 // was: RBX::Network::DirectPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX::Network::ReplicatorStats::PhysicsReceiverStats *)
-pub fn stub_9a3918() -> ! {
-    todo!("0x9a3918 RBX::Network::DirectPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX::Network::ReplicatorStats::PhysicsReceiverStats *)")
+pub fn stub_9a3918(
+    use_stream_stamp: bool,
+    stream_stamp: &mut dyn FnMut() -> u64,
+    arg_stamp: u64,
+    compressed: bool,
+    next: &mut dyn FnMut() -> crate::physics::DirectPacketItem,
+    process: &mut dyn FnMut(u64),
+) {
+    // IDA 0x9a3918: timestamp prefix gated on `NewRaknetTimestamp`, then
+    // the compressed/uncompressed dispatch drain with freshness gating
+    // and `setPhysics`.
+    crate::physics::PhysicsReceiver::direct_receive_packet(use_stream_stamp, stream_stamp, arg_stamp, compressed, next, process);
 }
 
 // 0x9a88ec — __ZN3RBX7Network22ErrorCompPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE
@@ -1520,29 +1540,62 @@ pub fn stub_9addcc(stream: &mut crate::bitstream::BitStream) -> u8 {
 // 0x9bb4ec — __ZN3RBX7Network15PhysicsReceiver23receiveMechanismCFramesERN6RakNet9BitStreamEyRKNS_10RemoteTimeE
 #[doc(alias = "RBX::Network::PhysicsReceiver::receiveMechanismCFrames(RakNet::BitStream &,unsigned long long,RBX::RemoteTime const&)")]
 // was: RBX::Network::PhysicsReceiver::receiveMechanismCFrames(RakNet::BitStream &,unsigned long long,RBX::RemoteTime const&)
-pub fn stub_9bb4ec() -> ! {
-    todo!("0x9bb4ec RBX::Network::PhysicsReceiver::receiveMechanismCFrames(RakNet::BitStream &,unsigned long long,RBX::RemoteTime const&)")
+pub fn stub_9bb4ec(
+    receiver: &crate::physics::PhysicsReceiver,
+    incoming_stamp: u64,
+    next: &mut dyn FnMut() -> Option<(u64, bool)>,
+    read_pose: &mut dyn FnMut() -> ([f32; 3], [f32; 4]),
+    apply: &mut dyn FnMut([f32; 3], [f32; 4]),
+    log_stale: &mut dyn FnMut(),
+) -> usize {
+    // IDA 0x9bb4ec: drain parts; stale stamps log and reset, fresh ones
+    // read translation/rotation and apply with an interpolation sample.
+    receiver.receive_mechanism_cframes(incoming_stamp, next, read_pose, apply, log_stale)
 }
 
 // 0x9bb95c — __ZN3RBX7Network15PhysicsReceiver11receivePartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::PhysicsReceiver::receivePart(rbx_core::SharedPtr<RBX::PartInstance> &,RakNet::BitStream &)")]
 // was: RBX::Network::PhysicsReceiver::receivePart(boost::shared_ptr<RBX::PartInstance> &,RakNet::BitStream &)
-pub fn stub_9bb95c() -> ! {
-    todo!("0x9bb95c RBX::Network::PhysicsReceiver::receivePart(boost::shared_ptr<RBX::PartInstance> &,RakNet::BitStream &)")
+pub fn stub_9bb95c(
+    receiver: &crate::physics::PhysicsReceiver,
+    resolved: bool,
+    part_in_workspace: Option<bool>,
+    log_unidentified: &mut dyn FnMut(),
+    log_outside_workspace: &mut dyn FnMut(),
+) -> (bool, bool) {
+    // IDA 0x9bb95c: instance-ref resolve, PartInstance class check, and
+    // workspace gating; null resolves report 0, all other paths 1.
+    receiver.receive_part_verdict(resolved, part_in_workspace, log_unidentified, log_outside_workspace)
 }
 
 // 0x9bc500 — __ZN3RBX7Network15PhysicsReceiver16receiveMechanismERN6RakNet9BitStreamEPNS_12PartInstanceERNS_13MechanismItemE
 #[doc(alias = "RBX::Network::PhysicsReceiver::receiveMechanism(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)")]
 // was: RBX::Network::PhysicsReceiver::receiveMechanism(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)
-pub fn stub_9bc500() -> ! {
-    todo!("0x9bc500 RBX::Network::PhysicsReceiver::receiveMechanism(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)")
+pub fn stub_9bc500(
+    receiver: &crate::physics::PhysicsReceiver,
+    read_flag: &mut dyn FnMut() -> bool,
+    read_mode: &mut dyn FnMut() -> u8,
+    read_root: &mut dyn FnMut(),
+    read_chained: &mut dyn FnMut(),
+) -> u8 {
+    // IDA 0x9bc500: reset, mode byte, root assembly, then chained parts
+    // until the continuation bit reads set.
+    receiver.receive_mechanism(read_flag, read_mode, read_root, read_chained)
 }
 
 // 0x9bc804 — __ZN3RBX7Network15PhysicsReceiver12readAssemblyERN6RakNet9BitStreamEPNS_12PartInstanceERNS_13MechanismItemE
 #[doc(alias = "RBX::Network::PhysicsReceiver::readAssembly(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)")]
 // was: RBX::Network::PhysicsReceiver::readAssembly(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)
-pub fn stub_9bc804() -> ! {
-    todo!("0x9bc804 RBX::Network::PhysicsReceiver::readAssembly(RakNet::BitStream &,RBX::PartInstance *,RBX::MechanismItem &)")
+pub fn stub_9bc804(
+    receiver: &crate::physics::PhysicsReceiver,
+    read_pose: &mut dyn FnMut(),
+    read_tag: &mut dyn FnMut() -> u8,
+    on_root: &mut dyn FnMut(u8),
+    has_root: bool,
+) {
+    // IDA 0x9bc804: append the slot, adopt the root, read pose plus the
+    // 4-bit world tag, and fire the world-change signal on roots.
+    receiver.read_assembly(read_pose, read_tag, on_root, has_root)
 }
 
 // 0x9bcba8 — __ZN3RBX7Network15PhysicsReceiver15readMotorAnglesERN6RakNet9BitStreamERNS_12AssemblyItemE
@@ -1561,8 +1614,15 @@ pub fn stub_9bcba8(
 // 0x9bce34 — __ZN3RBX7Network15PhysicsReceiver11readTouchesERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::PhysicsReceiver::readTouches(RakNet::BitStream &)")]
 // was: RBX::Network::PhysicsReceiver::readTouches(RakNet::BitStream &)
-pub fn stub_9bce34() -> ! {
-    todo!("0x9bce34 RBX::Network::PhysicsReceiver::readTouches(RakNet::BitStream &)")
+pub fn stub_9bce34(
+    receiver: &crate::physics::PhysicsReceiver,
+    next_pair: &mut dyn FnMut() -> Option<(bool, crate::physics::TouchStep)>,
+    report: &mut dyn FnMut(crate::physics::TouchStep),
+    on_step: &mut dyn FnMut(),
+) -> usize {
+    // IDA 0x9bce34: drain touch pairs; present pairs report touch/untouch
+    // and step the sender's touch set.
+    receiver.read_touches(next_pair, report, on_step)
 }
 
 // 0x9be164 — __ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE
@@ -2186,29 +2246,37 @@ pub fn stub_a37008(op: crate::functor::FunctorOp) -> crate::functor::ManageOutco
 // 0xa371cc — __ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
 // was: boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)
-pub fn stub_a371cc() -> ! {
-    todo!("0xa371cc boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")
+pub fn stub_a371cc(retain_players: &mut dyn FnMut(), first: &str, second: &str, packet: u32) -> crate::functor::PlayersPacketBind {
+    // IDA 0xa371cc: retain the players handle, copy both strings, then
+    // forward to `storage4` (IDA 0xa37296).
+    crate::functor::list_players_packet_bind(retain_players, first, second, packet)
 }
 
 // 0xa37558 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
 // was: boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)
-pub fn stub_a37558() -> ! {
-    todo!("0xa37558 boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")
+pub fn stub_a37558(retain_players: &mut dyn FnMut(), first: &str, second: &str, packet: u32) -> crate::functor::PlayersPacketBind {
+    // IDA 0xa37558: retain the players handle, copy both strings, chain
+    // `storage3`, and store the packet word at +16 (IDA 0xa376f4).
+    crate::functor::store_players_packet_bind(retain_players, first, second, packet)
 }
 
 // 0xa3f9d8 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet9BitStreamEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()
-pub fn stub_a3f9d8() -> ! {
-    todo!("0xa3f9d8 boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()")
+pub fn stub_a3f9d8<T>(owned: Option<SharedPtr<T>>) {
+    // IDA 0xa3f9d8 (D0): `operator delete(a1)` (IDA 0xa3f9dc); dropping
+    // the `SharedPtr` frees at zero the same way.
+    drop(owned);
 }
 
 // 0xa3f9e8 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet9BitStreamEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)
-pub fn stub_a3f9e8() -> ! {
-    todo!("0xa3f9e8 boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)")
+pub fn stub_a3f9e8() -> *const core::ffi::c_void {
+    // IDA 0xa3f9e8..0xa3f9ea: `return 0` — `sp_counted_impl_p` carries no
+    // deleter.
+    core::ptr::null()
 }
 
 // 0xa5391c — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13disconnectAllEv
@@ -2937,32 +3005,41 @@ pub fn stub_a5f3a4(peer: &crate::socket::RakPeer, out: Option<&mut Vec<u8>>, len
 #[doc(
     alias = "RakNet::RakPeer::Connect(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int)"
 )]
-pub fn stub_a5f3d8() -> ! {
-    todo!("0xa5f3d8 RakNet::RakPeer::Connect(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f3d8(host: Option<&str>, halted: bool, socket_count: usize, socket_index: usize, send_request: &mut dyn FnMut() -> u32) -> u32 {
+    // IDA 0xa5f3d8: gate, then forward to SendConnectionRequest.
+    crate::socket::RakPeer::connect(host, halted, socket_count, socket_index, send_request)
 }
 
 // 0xa5f460 — __ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjj
 #[doc(
     alias = "RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)"
 )]
-pub fn stub_a5f460() -> ! {
-    todo!("0xa5f460 RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f460(host: &str, ip_version: u32, password: Option<&[u8]>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str, u32) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection)) -> u32 {
+    // IDA 0xa5f460: resolve with the socket's IP version, then queue unless
+    // already connected or already queued.
+    let addr = resolve(host, ip_version);
+    crate::socket::RakPeer::queue_connection_request(addr, connected_active, queued, crate::socket::RequestedConnection { password_len: crate::socket::RakPeer::capped_password_len(password), socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: false, ..crate::socket::RequestedConnection::default() }, enqueue)
 }
 
 // 0xa5f754 — __ZN6RakNet7RakPeer17ConnectWithSocketEPKctS2_iNS_14RakNetSmartPtrINS_12RakNetSocketEEEPNS_9PublicKeyEjjj
 #[doc(
     alias = "RakNet::RakPeer::ConnectWithSocket(char const*,unsigned short,char const*,int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int)"
 )]
-pub fn stub_a5f754() -> ! {
-    todo!("0xa5f754 RakNet::RakPeer::ConnectWithSocket(char const*,unsigned short,char const*,int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int)")
+pub fn stub_a5f754(host: Option<&str>, halted: bool, password: Option<&[u8]>, socket: Option<u32>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection), release_socket: &mut dyn FnMut()) -> u32 {
+    // IDA 0xa5f754: missing host/halt/socket reports 1; the capped password
+    // goes out with the bound socket and the socket ref is released.
+    crate::socket::RakPeer::connect_with_socket(host, halted, socket.is_some(), password, crate::socket::RequestedConnection { socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: true, ..crate::socket::RequestedConnection::default() }, queued, connected_active, resolve, enqueue, release_socket)
 }
 
 // 0xa5f8cc — __ZN6RakNet7RakPeer21SendConnectionRequestEPKctS2_iPNS_9PublicKeyEjjjjjNS_14RakNetSmartPtrINS_12RakNetSocketEEE
 #[doc(
     alias = "RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>)"
 )]
-pub fn stub_a5f8cc() -> ! {
-    todo!("0xa5f8cc RakNet::RakPeer::SendConnectionRequest(char const*,unsigned short,char const*,int,RakNet::PublicKey *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,RakNet::RakNetSmartPtr<RakNet::RakNetSocket>)")
+pub fn stub_a5f8cc(host: &str, password: Option<&[u8]>, socket: Option<u32>, socket_index: u32, send_count: u32, timeout_ms: u32, extra_timeout_ms: u32, resolve: &mut dyn FnMut(&str) -> Option<crate::socket::SystemAddress>, connected_active: bool, queued: &[crate::socket::SystemAddress], enqueue: &mut dyn FnMut(crate::socket::RequestedConnection)) -> u32 {
+    // IDA 0xa5f8cc: version-0 resolve with the bound socket attached, then
+    // the shared queue gate (dupes report 4).
+    let addr = resolve(host);
+    crate::socket::RakPeer::queue_connection_request(addr, connected_active, queued, crate::socket::RequestedConnection { password_len: crate::socket::RakPeer::capped_password_len(password), socket_index, send_count, timeout_ms, extra_timeout_ms, use_socket: socket.is_some(), ..crate::socket::RequestedConnection::default() }, enqueue)
 }
 
 // 0xa5fc00 — __ZN6RakNet7RakPeer8ShutdownEjh14PacketPriority
@@ -2976,8 +3053,9 @@ pub fn stub_a5fc00(peer: &mut crate::socket::RakPeer, block_ms: u32, notify: &mu
 #[doc(
     alias = "RakNet::RakPeer::NotifyAndFlagForShutdown(RakNet::SystemAddress,bool,unsigned char,PacketPriority)"
 )]
-pub fn stub_a60494() -> ! {
-    todo!("0xa60494 RakNet::RakPeer::NotifyAndFlagForShutdown(RakNet::SystemAddress,bool,unsigned char,PacketPriority)")
+pub fn stub_a60494(immediate: bool, send: &mut dyn FnMut(u8, bool), flag_remote: &mut dyn FnMut()) {
+    // IDA 0xa60494: ID 21 goes immediate (+flag) or buffered.
+    crate::socket::RakPeer::notify_and_flag_for_shutdown(immediate, send, flag_remote)
 }
 
 // 0xa606a0 — __ZN6RakNet7RakPeer28ClearRequestedConnectionListEv
@@ -3019,16 +3097,20 @@ pub fn stub_a60ad0(peer: &mut crate::socket::RakPeer) -> u32 {
 #[doc(
     alias = "RakNet::RakPeer::Send(char const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)"
 )]
-pub fn stub_a60af8() -> ! {
-    todo!("0xa60af8 RakNet::RakPeer::Send(char const*,int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
+pub fn stub_a60af8(data: Option<&[u8]>, peer_ready: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, broadcast: bool, guid: Option<u64>, own_guid: u64, addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], bound: &crate::socket::SystemAddress, priority: u8, dispatch: &mut dyn FnMut(crate::socket::SendTarget, &[u8], u32, Option<u32>)) -> u32 {
+    // IDA 0xa60af8: route (broadcast/foreign => buffered, own => loopback)
+    // under the override receipt or the next one.
+    let route = crate::socket::RakPeer::send_route(broadcast, guid, own_guid, addr, unassigned, locals, bound);
+    crate::socket::RakPeer::send_packet(data, peer_ready, receipt_override, next_receipt, route, priority, dispatch)
 }
 
 // 0xa60cac — __ZN6RakNet7RakPeer12SendBufferedEPKcj14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbNS0_18RemoteSystemStruct11ConnectModeEj
 #[doc(
     alias = "RakNet::RakPeer::SendBuffered(char const*,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)"
 )]
-pub fn stub_a60cac() -> ! {
-    todo!("0xa60cac RakNet::RakPeer::SendBuffered(char const*,unsigned int,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,RakNet::RakPeer::RemoteSystemStruct::ConnectMode,unsigned int)")
+pub fn stub_a60cac(data: &[u8], bit_len: u32, priority: u8, reliability: u8, channel: u8, guid: u64, addr: crate::socket::SystemAddress, broadcast: bool, mode: u32, receipt: u64, enqueue: &mut dyn FnMut(crate::socket::BufferedCommand), signal: &mut dyn FnMut()) {
+    // IDA 0xa60cac: command alloc, copy, queue; priority 0 kicks the event.
+    crate::socket::RakPeer::send_buffered(data, bit_len, priority, reliability, channel, guid, addr, broadcast, mode, receipt, enqueue, signal)
 }
 
 // 0xa60dec — __ZN6RakNet7RakPeer12SendLoopbackEPKci
@@ -3042,8 +3124,13 @@ pub fn stub_a60dec(data: Option<&[u8]>, push: &mut dyn FnMut(&[u8])) {
 #[doc(
     alias = "RakNet::RakPeer::Send(RakNet::BitStream const*,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)"
 )]
-pub fn stub_a60f00() -> ! {
-    todo!("0xa60f00 RakNet::RakPeer::Send(RakNet::BitStream const*,PacketPriority,PacketReliability,char,RakNet::AddressOrGUID,bool,unsigned int)")
+pub fn stub_a60f00(data: &[u8], bits_used: usize, peer_ready: bool, receipt_override: Option<u32>, next_receipt: &mut dyn FnMut() -> u32, broadcast: bool, guid: Option<u64>, own_guid: u64, addr: &crate::socket::SystemAddress, unassigned: &crate::socket::SystemAddress, locals: &[crate::socket::SystemAddress], bound: &crate::socket::SystemAddress, priority: u8, dispatch: &mut dyn FnMut(crate::socket::SendTarget, &[u8], u32, Option<u32>)) -> u32 {
+    // IDA 0xa60f00: an empty stream sends nothing; else the shared Send routing.
+    if bits_used == 0 {
+        return 0;
+    }
+    let route = crate::socket::RakPeer::send_route(broadcast, guid, own_guid, addr, unassigned, locals, bound);
+    crate::socket::RakPeer::send_packet(Some(data), peer_ready, receipt_override, next_receipt, route, priority, dispatch)
 }
 
 // 0xa610c4 — __ZN6RakNet7RakPeer8SendListEPPKcPKii14PacketPriority17PacketReliabilitycNS_13AddressOrGUIDEbj

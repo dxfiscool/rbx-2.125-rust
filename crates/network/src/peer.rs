@@ -77,6 +77,54 @@ pub fn stats_reserve_table(stats: &mut std::collections::HashMap<(u32, u16), Con
 /// `node_constructor::construct_with_value` (IDA 0x99c6dc):
 /// placement-constructs the map node; allocator-level, engine-side.
 pub fn stats_node_construct() {}
+/// `ConcurrentRakPeer::StatsUpdateJob` state built by its C2 ctor (IDA
+/// 0x99e8f8): the `DataModelJob` base named `"Net Peer Stats"` at priority
+/// 9 (IDA 0x99e9cc), the stats/callback maps sized through the
+/// `prime_list` search for 10 buckets (IDA 0x99eb6e..0x99ec16), the live
+/// flag at +612 (IDA 0x99ec56), and the retained `RakPeerInterface`
+/// shared pointer at +620/+624 (IDA 0x99ec5c..0x99ecb8). Map storage and
+/// the mutex stay engine-side; the reservation counts and flags live here.
+#[derive(Clone, Debug, Default)]
+pub struct StatsUpdateJob {
+    pub job_name: &'static str,
+    pub stats_reserve: usize,
+    pub callbacks_reserve: usize,
+    pub updates_enabled: bool,
+    pub peer_retained: bool,
+}
+
+/// `StatsUpdateJob::StatsUpdateJob` (IDA 0x99e8f8).
+pub fn stats_update_job_init(job: &mut StatsUpdateJob, retain_peer: &mut dyn FnMut()) {
+    job.job_name = "Net Peer Stats"; // IDA 0x99e9cc
+    job.stats_reserve = 10; // IDA 0x99eb6e..0x99ebb4
+    job.callbacks_reserve = 10; // IDA 0x99ebd0..0x99ec16
+    job.updates_enabled = true; // +612 = 1, IDA 0x99ec56
+    retain_peer(); // shared peer copy, IDA 0x99ec5c..0x99ecb8
+    job.peer_retained = true;
+}
+
+/// `ConcurrentRakPeer::PacketJob` state built by its C2 ctor (IDA
+/// 0x99f9b8): the `DataModelJob` base named `"Net Peer Send"` at priority
+/// 9 (IDA 0x99fa8c), the send deque plus its mutex at +520 (IDA
+/// 0x99fc28..0x99fc54), the enable byte at +564 copied from the
+/// `NetworkSettings` singleton word at +112 (IDA 0x99fc5c..0x99fc66),
+/// and the retained `RakPeerInterface` shared pointer at +568/+572 (IDA
+/// 0x99fc70..0x99fc78). Queue storage stays engine-side.
+#[derive(Clone, Debug, Default)]
+pub struct PacketJob {
+    pub job_name: &'static str,
+    pub send_enabled: bool,
+    pub peer_retained: bool,
+}
+
+/// `PacketJob::PacketJob` (IDA 0x99f9b8).
+pub fn packet_job_init(job: &mut PacketJob, settings_flag: bool, retain_peer: &mut dyn FnMut()) {
+    job.job_name = "Net Peer Send"; // IDA 0x99fa8c
+    job.send_enabled = settings_flag; // +564 = singleton +112, IDA 0x99fc66
+    retain_peer(); // shared peer copy, IDA 0x99fc70..0x99fc78
+    job.peer_retained = true;
+}
+
 
 /// `RBX::Network::Peer::encryptDataPart` (IDA 0xad36dc): AES-CBC encrypts
 /// the stream bytes at `[1..bytes]` in place with the peer key

@@ -157,6 +157,41 @@ pub fn manage_fn_slot(op: FunctorOp, src: &mut FnSlot, dst: &mut FnSlot, tag: &'
         }
     }
     }
+/// Bound `Players` chat args (`boost::_bi::list4` /
+/// `storage4<value<SharedPtr<Players>>, value<string>, value<string>,
+/// value<Packet*>>`, IDA 0xa371cc / 0xa37558): the retained players
+/// handle, the two copied strings, and the packet word stored at +16
+/// (IDA 0xa376f4). Reference counting and string storage stay
+/// engine-side; the composed value lives here.
+#[derive(Clone, Debug, Default)]
+pub struct PlayersPacketBind {
+    pub players_retained: bool,
+    pub first: String,
+    pub second: String,
+    pub packet: u32,
+}
+
+/// `storage4::storage4` (IDA 0xa37558): retains the players handle
+/// (IDA 0xa3757c..0xa375f6), copies both strings (IDA 0xa37602..0xa3760e),
+/// chains `storage3` for the first three words (IDA 0xa3761e), and
+/// stores the packet word (IDA 0xa376f4).
+pub fn store_players_packet_bind(retain_players: &mut dyn FnMut(), first: &str, second: &str, packet: u32) -> PlayersPacketBind {
+    retain_players(); // shared_ptr copy, IDA 0xa3757c..0xa375f6
+    PlayersPacketBind {
+        players_retained: true,
+        first: first.to_owned(), // IDA 0xa37602
+        second: second.to_owned(), // IDA 0xa3760e
+        packet, // IDA 0xa376f4
+    }
+}
+
+/// `list4::list4` (IDA 0xa371cc): same copies as `storage4` (players
+/// retain at 0xa371f0..0xa3726a, strings at 0xa37276..0xa37282),
+/// then forwards to `storage4` (IDA 0xa37296).
+pub fn list_players_packet_bind(retain_players: &mut dyn FnMut(), first: &str, second: &str, packet: u32) -> PlayersPacketBind {
+    store_players_packet_bind(retain_players, first, second, packet)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

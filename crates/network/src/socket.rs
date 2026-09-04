@@ -1659,7 +1659,6 @@ impl RakPeer {
  0
  }
  }
-
  /// `RakPeer::GetAveragePing` (IDA 0xa62d48): the mean of up to five
  /// samples, stopping at the `0xFFFF` sentinel; -1 without a system
  /// or without samples.
