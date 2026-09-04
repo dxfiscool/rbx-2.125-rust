@@ -103,57 +103,43 @@ pub fn stub_0xb11088() -> ! {
 // type: unsigned int __fastcall(int, const G3D::Vector3int16 *, int, RakNet::BitStream *, signed int)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
-pub fn stub_0xb16410() -> ! {
-    todo!("0xb16410 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")
-}
+pub use crate::generated_110::stub_b16410 as stub_0xb16410;
 
 // 0xb168d0 — __ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
 // type: unsigned int __fastcall(int, int, __int16 *, unsigned __int16 *, RBX::MegaClusterInstance::CellChunk **, int, __int16 *, RakNet::BitStream *)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")]
-pub fn stub_0xb168d0() -> ! {
-    todo!("0xb168d0 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")
-}
+pub use crate::generated_110::stub_b168d0 as stub_0xb168d0;
 
 // 0xb17764 — __ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
 // type: unsigned int __fastcall(int, const G3D::Vector3int16 *, RBX::Network::ClusterUpdateBuffer *, RakNet::BitStream *, signed int)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
-pub fn stub_0xb17764() -> ! {
-    todo!("0xb17764 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")
-}
+pub use crate::generated_110::stub_b17764 as stub_0xb17764;
 
 // 0xb17b18 — __ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
 // type: unsigned int __fastcall(int, int, __int16 *, unsigned __int16 *, RBX::MegaClusterInstance::CellChunk **, int, RBX::Network::ClusterUpdateBuffer *, RakNet::BitStream *)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")]
-pub fn stub_0xb17b18() -> ! {
-    todo!("0xb17b18 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")
-}
+pub use crate::generated_110::stub_b17b18 as stub_0xb17b18;
 
 // 0xb189a4 — __ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
 // type: unsigned int __fastcall(G3D::Vector3int16 *, const G3D::Vector3int16 *, int *, RakNet::BitStream *, signed int)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
-pub fn stub_0xb189a4() -> ! {
-    todo!("0xb189a4 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")
-}
+pub use crate::generated_110::stub_b189a4 as stub_0xb189a4;
 
 // 0xb18de4 — __ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
 // type: unsigned int __fastcall(int, int, __int16 *, unsigned __int16 *, RBX::MegaClusterInstance::CellChunk **, int, _DWORD *, RakNet::BitStream *)
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")]
 #[doc(alias = "__ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")]
-pub fn stub_0xb18de4() -> ! {
-    todo!("0xb18de4 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")
-}
+pub use crate::generated_110::stub_b18de4 as stub_0xb18de4;
 
 // 0xb234c8 — __ZNK3RBX15ServiceProvider4findINS_7Network19InstancePacketCacheEEEPT_v
 // type: __guard *__fastcall(_DWORD *, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::InstancePacketCache * RBX::ServiceProvider::find<RBX::Network::InstancePacketCache>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_7Network19InstancePacketCacheEEEPT_v")]
-pub fn stub_0xb234c8() -> ! {
-    todo!("0xb234c8 RBX::Network::InstancePacketCache * RBX::ServiceProvider::find<RBX::Network::InstancePacketCache>(void)const")
-}
+pub use crate::generated_110::stub_b234c8 as stub_0xb234c8;
 
 // 0xb23b3c — __ZN3RBX4Name13callDoDeclareILZNS_7Network20sInstancePacketCacheEEEEvv
 // type: void()
@@ -166,9 +152,7 @@ pub fn stub_0xb23b3c() -> ! {
 // type: void()
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::InstancePacketCache>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_7Network19InstancePacketCacheEEEvv")]
-pub fn stub_0xb23c10() -> ! {
-    todo!("0xb23c10 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::InstancePacketCache>(void)")
-}
+pub use crate::generated_110::stub_b23c10 as stub_0xb23c10;
 
 // 0xb256e8 — __ZN3RBX14FactoryProductINS_11TestServiceENS_8InstanceELZNS_12sTestServiceEES2_E7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
@@ -231,25 +215,19 @@ pub fn stub_0xb34140() -> ! {
 // type: void __fastcall(RBX::Network::PersistentDataStore *this, const std::string *, const void **)
 #[doc(alias = "RBX::Network::PersistentDataStore::getInstance(std::string const&)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore11getInstanceERKSs")]
-pub fn stub_0xb379f4() -> ! {
-    todo!("0xb379f4 RBX::Network::PersistentDataStore::getInstance(std::string const&)")
-}
+pub use crate::generated_110::stub_b379f4 as stub_0xb379f4;
 
 // 0xb3c334 — __ZN3RBX7Network19InstancePacketCacheC1Ev
 // type: int __fastcall(RBX::Network::InstancePacketCache *this)
 #[doc(alias = "RBX::Network::InstancePacketCache::InstancePacketCache(void)")]
 #[doc(alias = "__ZN3RBX7Network19InstancePacketCacheC1Ev")]
-pub fn stub_0xb3c334() -> ! {
-    todo!("0xb3c334 RBX::Network::InstancePacketCache::InstancePacketCache(void)")
-}
+pub use crate::generated_110::stub_b3c334 as stub_0xb3c334;
 
 // 0xb3c340 — __ZN3RBX7Network19InstancePacketCacheC2Ev
 // type: RBX::Instance *__fastcall(RBX::Network::InstancePacketCache *this)
 #[doc(alias = "RBX::Network::InstancePacketCache::InstancePacketCache(void)")]
 #[doc(alias = "__ZN3RBX7Network19InstancePacketCacheC2Ev")]
-pub fn stub_0xb3c340() -> ! {
-    todo!("0xb3c340 RBX::Network::InstancePacketCache::InstancePacketCache(void)")
-}
+pub use crate::generated_110::stub_b3c340 as stub_0xb3c340;
 
 // 0xb3c6d8 — __ZN3RBX7Network19InstancePacketCacheD0Ev
 // type: void __fastcall(RBX::Network::InstancePacketCache *__hidden this)
@@ -348,18 +326,14 @@ pub fn stub_0xb3f14c() -> ! {
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)")]
 #[doc(alias = "__ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network19InstancePacketCache15CachedBitStreamEEEEENS_3argILi1EEEEC2ES9_SB_")]
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)
-pub fn stub_0xb4068c() -> ! {
-    todo!("0xb4068c boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)")
-}
+pub use crate::generated_110::stub_b4068c as stub_0xb4068c;
 
 // 0xb40de8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network19InstancePacketCache15CachedBitStreamES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int, int, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)")]
 #[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network19InstancePacketCache15CachedBitStreamES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
 // was: void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)
-pub fn stub_0xb40de8() -> ! {
-    todo!("0xb40de8 void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)")
-}
+pub use crate::generated_110::stub_b40de8 as stub_0xb40de8;
 
 // 0xb40ff0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19InstancePacketCache15CachedBitStreamEED1Ev
 // type: void()
@@ -389,17 +363,13 @@ pub fn stub_0xb41000() -> ! {
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::InstancePacketCache::CachedBitStream>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19InstancePacketCache15CachedBitStreamEE11get_deleterERKSt9type_info")]
-pub fn stub_0xb4110c() -> ! {
-    todo!("0xb4110c boost::detail::sp_counted_impl_p<RBX::Network::InstancePacketCache::CachedBitStream>::get_deleter(std::type_info const&)")
-}
+pub use crate::generated_110::stub_b4110c as stub_0xb4110c;
 
 // 0xb41110 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19InstancePacketCache15CachedBitStreamEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::InstancePacketCache::CachedBitStream>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19InstancePacketCache15CachedBitStreamEE19get_untyped_deleterEv")]
-pub fn stub_0xb41110() -> ! {
-    todo!("0xb41110 boost::detail::sp_counted_impl_p<RBX::Network::InstancePacketCache::CachedBitStream>::get_untyped_deleter(void)")
-}
+pub use crate::generated_110::stub_b41110 as stub_0xb41110;
 
 // 0xb4cc28 — __Z7makeKeyP11keyInstancehiPc
 // type: unsigned int __fastcall(int, unsigned int, size_t, char *__src)
@@ -438,9 +408,7 @@ pub fn stub_0xb4e9e8() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)")]
 #[doc(alias = "__ZN3RBX11shared_fromINS_19MegaClusterInstanceEEEN5boost10shared_ptrIT_EEPS4_")]
 // was: boost::shared_ptr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)
-pub fn stub_0xb4eeb8() -> ! {
-    todo!("0xb4eeb8 rbx_core::SharedPtr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)")
-}
+pub use crate::generated_110::stub_b4eeb8 as stub_0xb4eeb8;
 
 // 0xb4f14c — __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
@@ -545,9 +513,7 @@ pub fn stub_0xb69b50() -> ! {
 // type: int __fastcall(RBX::FastClusterShadowGenerator *, int, unsigned int, int, unsigned int, int **, int, struct _Unwind_Exception *)
 #[doc(alias = "RBX::FastClusterShadowGenerator::generate(Ogre::VisualEngine *,RBX::GeometryGenerator::Vertex const*,unsigned int,unsigned short const*,unsigned int,std::vector<unsigned int,std::allocator<unsigned int>> const&,std::vector const&<RBX::ShadowInstance,std::allocator<std::vector const>>,bool)")]
 #[doc(alias = "__ZN3RBX26FastClusterShadowGenerator8generateEPN4Ogre12VisualEngineEPKNS_17GeometryGenerator6VertexEjPKtjRKSt6vectorIjSaIjEERKSA_INS_14ShadowInstanceESaISF_EEb")]
-pub fn stub_0xb6a6f8() -> ! {
-    todo!("0xb6a6f8 RBX::FastClusterShadowGenerator::generate(Ogre::VisualEngine *,RBX::GeometryGenerator::Vertex const*,unsigned int,unsigned short const*,unsigned int,std::vector<unsigned int,std::allocator<unsigned int>> const&,std::vector const&<RBX::ShadowInstance,std::allocator<std::vector const>>,bool)")
-}
+pub use crate::generated_110::stub_b6a6f8 as stub_0xb6a6f8;
 
 // 0xb73ca4 — __ZNSt6vectorIN3RBX14ShadowInstanceESaIS1_EE7reserveEm
 // type: unsigned int __fastcall(void **, unsigned int)
