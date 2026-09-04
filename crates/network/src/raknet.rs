@@ -14728,77 +14728,88 @@ pub fn stub_a1b04c() {
 // 0xa1b058 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvELi0EEC1EMS3_FSC_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_a1b058() -> ! {
-    todo!("0xa1b058 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_a1b058() {
+ // IDA 0xa1b058: descriptor table init stays engine-side.
+ crate::player::init_descriptor()
 }
 
 // 0xa1b218 — __ZN3RBX7Network7Players10getPlayersEv
 // type: _DWORD *__fastcall(_DWORD *this, int)
 #[doc(alias = "RBX::Network::Players::getPlayers(void)")]
-pub fn stub_a1b218() -> ! {
-    todo!("0xa1b218 RBX::Network::Players::getPlayers(void)")
+pub fn stub_a1b218(list: &[u32]) -> Vec<u32> {
+ // IDA 0xa1b218: snapshot of the player list.
+ crate::player::players_snapshot(list)
 }
 
 // 0xa1b26c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_a1b26c() -> ! {
-    todo!("0xa1b26c RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_a1b26c() {
+ // IDA 0xa1b26c: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b2b4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEES7_ELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_a1b2b4() -> ! {
-    todo!("0xa1b2b4 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a1b2b4() {
+ // IDA 0xa1b2b4: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b2c0 — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEES7_NS_13FriendService15FriendEventTypeEEN3rbx6signalISA_EEMS3_SD_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()")]
-pub fn stub_a1b2c0() -> ! {
-    todo!("0xa1b2c0 RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()")
+pub fn stub_a1b2c0() {
+ // IDA 0xa1b2c0: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b308 — __ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
-pub fn stub_a1b308() -> ! {
-    todo!("0xa1b308 RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")
+pub fn stub_a1b308() {
+ // IDA 0xa1b308: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b350 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvNS3_10ChatOptionEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(RBX::Network::Players::ChatOption),1>::~BoundFuncDesc()")]
-pub fn stub_a1b350() -> ! {
-    todo!("0xa1b350 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(RBX::Network::Players::ChatOption),1>::~BoundFuncDesc()")
+pub fn stub_a1b350() {
+ // IDA 0xa1b350: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa1b3b8 — __ZNK3RBX7Network7Players14getClassicChatEv
 // type: bool __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::getClassicChat(void)const")]
-pub fn stub_a1b3b8() -> ! {
-    todo!("0xa1b3b8 RBX::Network::Players::getClassicChat(void)const")
+pub fn stub_a1b3b8(players: &crate::player::Players) -> bool {
+ // IDA 0xa1b3b8: (opt & ~2) == 0.
+ players.get_classic_chat()
 }
 
 // 0xa1b3cc — __ZNK3RBX7Network7Players13getBubbleChatEv
 // type: bool __fastcall(RBX::Network::Players *this)
 #[doc(alias = "RBX::Network::Players::getBubbleChat(void)const")]
-pub fn stub_a1b3cc() -> ! {
-    todo!("0xa1b3cc RBX::Network::Players::getBubbleChat(void)const")
+pub fn stub_a1b3cc(players: &crate::player::Players) -> bool {
+ // IDA 0xa1b3cc: (opt - 1) < 2.
+ players.get_bubble_chat()
 }
 
 // 0xa1b3e0 — __ZN3RBX7Network12NetworkOwner10UnassignedEv
 // type: __int64 __fastcall(RBX::Network::NetworkOwner *this)
 #[doc(alias = "RBX::Network::NetworkOwner::Unassigned(void)")]
-pub fn stub_a1b3e0() -> ! {
-    todo!("0xa1b3e0 RBX::Network::NetworkOwner::Unassigned(void)")
+pub fn stub_a1b3e0() -> crate::player::NetworkOwner {
+ // IDA 0xa1b3e0: the all-bits-set owner.
+ crate::player::NetworkOwner::unassigned()
 }
 
 // 0xa1b6b0 — __ZN5boost4bindIN3RBX13worker_thread11work_resultENS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsS8_SsEENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_
 // type: void __fastcall(int, int, int *, const std::string *)
 #[doc(alias = "boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string,rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string),rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string)")]
-pub fn stub_a1b6b0() -> ! {
-    todo!("0xa1b6b0 boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")
+pub fn stub_a1b6b0() {
+ // IDA 0xa1b6b0: abuse-report binder construction stays engine-side.
+ crate::player::bind_abuse_report()
 }
 
 // 0xa1bc50 — __ZSt8for_eachISt20_List_const_iteratorIN3RBX7Network11ChatMessageEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS2_11AbuseReportENS5_10shared_ptrINS2_6PlayerEEERKS3_EENS6_5list3INS5_17reference_wrapperISA_EENS6_5valueISD_EENS5_3argILi1EEEEEEEET0_T_SR_SQ_

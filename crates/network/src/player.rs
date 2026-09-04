@@ -43,6 +43,11 @@ impl NetworkOwner {
     pub fn server() -> Self {
         SERVER_OWNER
     }
+
+    /// IDA 0xa1b3e0: `*this = s; return s` with the all-bits-set static.
+    pub fn unassigned() -> Self {
+        UNASSIGNED_OWNER
+    }
 }
 
 /// `RBX::Network::Players::getGameMode` (IDA 0x6d1a38), reduced to its
@@ -1650,6 +1655,30 @@ mod tests {
         assert_eq!(players.get_max_players(), 12);
         assert!(players.get_character_auto_spawn());
     }
+    #[test]
+    fn players_snapshot_chat_owner_gates() {
+        // IDA 0xa1b218: the list snapshot.
+        assert_eq!(players_snapshot(&[3, 1, 2]), vec![3, 1, 2]);
+        assert!(players_snapshot(&[]).is_empty());
+        // IDA 0xa1b3b8/0xa1b3cc: option-bit chat predicates.
+        let mut players = Players::new();
+        players.chat_option = 0;
+        assert!(players.get_classic_chat());
+        assert!(!players.get_bubble_chat());
+        players.chat_option = 1;
+        assert!(!players.get_classic_chat());
+        assert!(players.get_bubble_chat());
+        players.chat_option = 2;
+        assert!(players.get_classic_chat());
+        assert!(players.get_bubble_chat());
+        // IDA 0xa1b3e0: unassigned owner statics.
+        assert_eq!(NetworkOwner::unassigned(), UNASSIGNED_OWNER);
+        assert_eq!(UNASSIGNED_OWNER, NetworkOwner(u64::MAX));
+        assert_ne!(NetworkOwner::unassigned(), NetworkOwner::server());
+        // IDA 0xa1b058/0xa1b6b0: descriptor/binder no-ops.
+        init_descriptor();
+        bind_abuse_report();
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -1885,4 +1914,37 @@ impl Players {
  pub fn get_character_auto_spawn(&self) -> bool {
  self.auto_spawn
  }
+
+ /// `Players::getClassicChat` (IDA 0xa1b3b8): `(opt & ~2) == 0`, i.e.
+ /// Classic or ClassicAndBubble.
+ #[must_use]
+ pub fn get_classic_chat(&self) -> bool {
+ self.chat_option & !2 == 0
+ }
+
+ /// `Players::getBubbleChat` (IDA 0xa1b3cc): `(opt - 1) < 2`, i.e.
+ /// Bubble or ClassicAndBubble.
+ #[must_use]
+ pub fn get_bubble_chat(&self) -> bool {
+ self.chat_option.wrapping_sub(1) < 2
+ }
+}
+
+/// `NetworkOwner::Unassigned` (IDA 0xa1b3e0): the all-bits-set address;
+/// it equals the default `SystemAddress` and differs from `Server`.
+pub const UNASSIGNED_OWNER: NetworkOwner = NetworkOwner(u64::MAX);
+
+/// Reflection descriptor `C1` constructors (IDA 0xa1b058): descriptor
+/// table init stays engine-side.
+pub fn init_descriptor() {}
+
+/// `boost::bind` abuse-report binder (IDA 0xa1b6b0): packages the report
+/// data and message for the worker thread. Binder construction stays
+/// engine-side.
+pub fn bind_abuse_report() {}
+
+/// `Players::getPlayers` (IDA 0xa1b218): snapshots the player list.
+#[must_use]
+pub fn players_snapshot(list: &[u32]) -> Vec<u32> {
+ list.to_vec()
 }
