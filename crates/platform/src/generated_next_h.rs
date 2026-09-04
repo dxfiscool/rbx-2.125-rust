@@ -483,6 +483,12 @@ pub struct TextBoxSignal {
 pub struct TextBoxConnection {
     slot: SharedPtr<TextBoxSlot>,
 }
+/// was: `RBX::TextBox` — opaque payload; only the shared ownership moves in
+/// the `shared_ptr<TextBox>::operator=` instantiations below (IDA 0x4d238
+/// pilfers the src pair, 0x4d2dc addrefs it), so the pointee stays empty.
+pub struct TextBoxObject {
+    _opaque: [u8; 0],
+}
 
 /// was: `boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>` — Box<dyn
 /// Fn> per AGENTS.md section 4; the shared_ptr<TextBox> arg stays opaque.
@@ -1192,187 +1198,334 @@ pub fn remove_datamodel_slot_4ba50(signal: &DataModelSignal, slot: &SharedPtr<Da
 // 0x4bb40 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot22safe_static_init_mutexEv
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_4bb40() -> ! {
-    todo!("0x4bb40 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")
+pub fn init_datamodel_slot_mutex_4bb40() -> &'static Mutex<()> {
+// IDA 0x4bb40: thunk tail-branch (B.W) into safe_static_do_get_mutex
+// (decompile returns do_get_mutex()).
+    datamodel_slot_mutex_4bb44()
 }
 
 // 0x4bb44 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot24safe_static_do_get_mutexEv
 // type: void *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_4bb44() -> ! {
-    todo!("0x4bb44 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")
+pub fn datamodel_slot_mutex_4bb44() -> &'static Mutex<()> {
+// IDA 0x4bb44: __cxa_guard_acquire on the function-local value guard, then
+// boost::mutex::mutex at the value with __cxa_atexit dtor (decompile).
+// LazyLock folds the guard plus the atexit destroy — same shape as
+// IDA 0x45fa4.
+    datamodel_slot_mutex()
 }
 
 // 0x4bc34 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
-pub fn stub_4bc34() -> ! {
-    todo!("0x4bc34 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn drop_datamodel_callable_4bc34(slot: &SharedPtr<DataModelSlot>) {
+// IDA 0x4bc34: vtable reset, function1::clear on the embedded functor at
+// +0x10 (decompile clears a1+16), vtable reset to slot base, then
+// intrusive_ptr_release of the +0x8 signal link (decompile) — same shape as
+// IDA 0x46094. Arc take is the release; vtable resets are drop glue.
+    slot.callback.lock().take();
+    slot.signal.lock().take();
 }
 
 // 0x4bd08 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
-pub fn stub_4bd08() -> ! {
-    todo!("0x4bd08 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn delete_datamodel_callable_4bd08(slot: SharedPtr<DataModelSlot>) {
+// IDA 0x4bd08: D1 above (decompile clears the functor word, then releases
+// the +0x8 signal link) plus operator delete (decompile); the Arc drop below
+// is the delete — same shape as IDA 0x46168.
+    drop_datamodel_callable_4bc34(&slot);
+    drop(slot);
 }
 
 // 0x4bde0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")]
-pub fn stub_4bde0() -> ! {
-    todo!("0x4bde0 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn drop_datamodel_slot_4bde0(slot: &SharedPtr<DataModelSlot>) {
+// IDA 0x4bde0: vtable reset to slot base, then intrusive_ptr_release of the
+// +0x8 signal link when set (decompile) — same shape as IDA 0x46240. Plain
+// slots never hold a functor, so the callback take is a no-op for them and
+// covers the callable path.
+    slot.callback.lock().take();
+    slot.signal.lock().take();
 }
 
 // 0x4be8c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")]
-pub fn stub_4be8c() -> ! {
-    todo!("0x4be8c rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn delete_datamodel_slot_4be8c(slot: SharedPtr<DataModelSlot>) {
+// IDA 0x4be8c: D1 above plus operator delete (decompile) — same shape as
+// IDA 0x462ec.
+    drop_datamodel_slot_4bde0(&slot);
+    drop(slot);
 }
 
 // 0x4bf3c — __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")]
-pub fn stub_4bf3c() -> ! {
-    todo!("0x4bf3c boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")
+pub fn assign_datamodel_function_4bf3c(slot: &SharedPtr<DataModelSlot>, callback: DataModelCallback) {
+// IDA 0x4bf3c: if the src vtable word is set, store it; small-object flag
+// (bit0) copies the inline words, else the manager-clone op runs through
+// (vtable & ~1) with (src+4, dst+4, 0) (decompile). Box<dyn Fn> is always the
+// indirect path, moved into the empty own storage — same shape as
+// IDA 0x4639c.
+    *slot.callback.lock() = Some(callback);
 }
 
 // 0x4bfdc — __ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEE5clearEv
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")]
-pub fn stub_4bfdc() -> ! {
-    todo!("0x4bfdc boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")
+pub fn clear_propdesc_function_4bfdc(slot: &SharedPtr<PropDescSlot>) {
+// IDA 0x4bfdc: if the vtable word is set and heap-managed (bit0 clear), run
+// the manager destroy op (op 2) through the vtable, then store 0 (decompile).
+// take() drops the functor (destroy) and leaves empty storage — same shape
+// as IDA 0x46464.
+    slot.callback.lock().take();
 }
 
 // 0x4c008 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX7TextBoxEEEE5clearEv
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::TextBox>>::clear(void)")]
-pub fn stub_4c008() -> ! {
-    todo!("0x4c008 boost::function1<void,boost::shared_ptr<RBX::TextBox>>::clear(void)")
+pub fn clear_textbox_function_4c008(slot: &SharedPtr<TextBoxSlot>) {
+// IDA 0x4c008: same vtable-set/heap-managed destroy-op-2-then-store-0 shape
+// as 0x4bfdc (decompile) for the shared_ptr<TextBox> instantiation.
+// take() drops the functor (destroy) and leaves empty storage.
+    slot.callback.lock().take();
 }
 
 // 0x4c034 — __GLOBAL__I_a_18
 #[doc(alias = "global constructor keyed to_a_18")]
-pub fn stub_4c034() -> ! {
-    todo!("0x4c034 global constructor keyed to_a_18")
+pub fn init_global_a18_4c034() {
+// IDA 0x4c034: global ctor keyed to _a_18 — boost::system generic(2x) +
+// system category slots, ios_base::Init + __cxa_atexit, bad_alloc /
+// bad_exception static exception objects, singleton_pool storage +
+// create_object guards (XmlAttribute, XmlElement, FWInstance,
+// OnDemandInstance), then FactoryProduct creators UserInputService and
+// Camera (disasm; decompile failed) — same once-only shape as 0x46490; the
+// runtime owns iostream/category state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4c498 — __GLOBAL__I_a_19
 #[doc(alias = "global constructor keyed to_a_19")]
-pub fn stub_4c498() -> ! {
-    todo!("0x4c498 global constructor keyed to_a_19")
+pub fn init_global_a19_4c498() {
+// IDA 0x4c498: global ctor keyed to _a_19 — same generic/system category
+// slots, ios Init, exception statics, singleton pools, and FactoryProduct
+// creators as 0x4c034 but Camera before UserInputService (disasm; decompile
+// failed). Same once-only shape as 0x46490.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4ce30 — ___copy_helper_block__9
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__9")]
-pub fn stub_4ce30() -> ! {
-    todo!("0x4ce30 ___copy_helper_block__9")
+pub unsafe fn copy_block_capture_4ce30(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4ce30: _Block_object_assign(dst+20, src+20, 3) (decompile). Flag 3
+// is BLOCK_FIELD_IS_OBJECT: the runtime retains the captured object; the
+// host owns the retain, so only the pointer word moves here — same shape as
+// IDA 0x47c04.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4ce3c — ___destroy_helper_block__9
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__9")]
-pub fn stub_4ce3c() -> ! {
-    todo!("0x4ce3c ___destroy_helper_block__9")
+pub unsafe fn destroy_block_capture_4ce3c(block: *mut c_void) {
+// IDA 0x4ce3c: _Block_object_dispose(block+20, 3) (decompile) — the runtime
+// releases the captured object; the word is cleared below — same shape as
+// IDA 0x47c10.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4d090 — ___copy_helper_block_82
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_82")]
-pub fn stub_4d090() -> ! {
-    todo!("0x4d090 ___copy_helper_block_82")
+pub unsafe fn copy_block_capture_4d090(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4d090: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4d09c — ___destroy_helper_block_83
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_83")]
-pub fn stub_4d09c() -> ! {
-    todo!("0x4d09c ___destroy_helper_block_83")
+pub unsafe fn destroy_block_capture_4d09c(block: *mut c_void) {
+// IDA 0x4d09c: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4d170 — ___copy_helper_block_87
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_87")]
-pub fn stub_4d170() -> ! {
-    todo!("0x4d170 ___copy_helper_block_87")
+pub unsafe fn copy_block_capture_4d170(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4d170: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4d17c — ___destroy_helper_block_88
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_88")]
-pub fn stub_4d17c() -> ! {
-    todo!("0x4d17c ___destroy_helper_block_88")
+pub unsafe fn destroy_block_capture_4d17c(block: *mut c_void) {
+// IDA 0x4d17c: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4d238 — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(_DWORD *, __int64 *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox>&&)")]
-pub fn stub_4d238() -> ! {
-    todo!("0x4d238 boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)")
+pub fn assign_textbox_shared_move_4d238(
+    dst: &mut Option<SharedPtr<TextBoxObject>>,
+    src: &mut Option<SharedPtr<TextBoxObject>>,
+) {
+// IDA 0x4d238: move-assign — pilfers the src pair (stores 0/0 into src),
+// stores the pilfered words into dst, then releases the old dst count
+// (decompile). take() moves the Arc out (leaving src empty) and drops the
+// replaced dst value (release).
+    *dst = src.take();
 }
 
 // 0x4d2dc — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox> const&)")]
-pub fn stub_4d2dc() -> ! {
-    todo!("0x4d2dc boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)")
+pub fn assign_textbox_shared_copy_4d2dc(
+    dst: &mut Option<SharedPtr<TextBoxObject>>,
+    src: &Option<SharedPtr<TextBoxObject>>,
+) {
+// IDA 0x4d2dc: copy-assign — shared_count copy (addref) of the src pair,
+// swap into the dst pair, then release the old dst count (decompile). clone
+// is the addref; the replaced dst drops (release).
+    *dst = src.clone();
 }
 
 // 0x4d398 — __GLOBAL__I_a_20
 #[doc(alias = "global constructor keyed to_a_20")]
-pub fn stub_4d398() -> ! {
-    todo!("0x4d398 global constructor keyed to_a_20")
+pub fn init_global_a20_4d398() {
+// IDA 0x4d398: global ctor keyed to _a_20 — same generic/system category
+// slots, ios Init, exception statics, singleton pools, and FactoryProduct
+// creators (UserInputService then Camera) as 0x4c034 (disasm; decompile
+// failed). Same once-only shape as 0x46490.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4d6d4 — __GLOBAL__I_a_21
 // type: int()
 #[doc(alias = "global constructor keyed to_a_21")]
-pub fn stub_4d6d4() -> ! {
-    todo!("0x4d6d4 global constructor keyed to_a_21")
+pub fn init_global_a21_4d6d4() {
+// IDA 0x4d6d4: global ctor keyed to _a_21 — ios_base::Init on __ioinit plus
+// __cxa_atexit of the dtor (disasm; decompile failed). Same once-only shape
+// as 0x46490; the runtime owns iostream state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4dfd8 — ___copy_helper_block__10
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__10")]
-pub fn stub_4dfd8() -> ! {
-    todo!("0x4dfd8 ___copy_helper_block__10")
+pub unsafe fn copy_block_capture_4dfd8(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4dfd8: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4dfe4 — ___destroy_helper_block__10
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__10")]
-pub fn stub_4dfe4() -> ! {
-    todo!("0x4dfe4 ___destroy_helper_block__10")
+pub unsafe fn destroy_block_capture_4dfe4(block: *mut c_void) {
+// IDA 0x4dfe4: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e01c — ___copy_helper_block_94
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_94")]
-pub fn stub_4e01c() -> ! {
-    todo!("0x4e01c ___copy_helper_block_94")
+pub unsafe fn copy_block_capture_4e01c(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e01c: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4e028 — ___destroy_helper_block_95
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_95")]
-pub fn stub_4e028() -> ! {
-    todo!("0x4e028 ___destroy_helper_block_95")
+pub unsafe fn destroy_block_capture_4e028(block: *mut c_void) {
+// IDA 0x4e028: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e030 — ___copy_helper_block_100
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_100")]
-pub fn stub_4e030() -> ! {
-    todo!("0x4e030 ___copy_helper_block_100")
+pub unsafe fn copy_block_captures_4e030(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e030: two captures — _Block_object_assign(dst+20, src+20, 3) then
+// _Block_object_assign(dst+24, src+24, 3) (decompile). Flag 3 is
+// BLOCK_FIELD_IS_OBJECT; the host owns both retains, so only the two
+// pointer words move here.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+    }
 }
 
 // 0x4e054 — ___destroy_helper_block_101
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_101")]
-pub fn stub_4e054() -> ! {
-    todo!("0x4e054 ___destroy_helper_block_101")
+pub unsafe fn destroy_block_captures_4e054(block: *mut c_void) {
+// IDA 0x4e054: two disposes — _Block_object_dispose(block+20, 3) then
+// _Block_object_dispose(block+24, 3) (decompile); the runtime releases both
+// captured objects and both words are cleared below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e4c8 — ___copy_helper_block_133
