@@ -1705,6 +1705,30 @@ mod tests {
         assert_eq!(weak_handle(Some(9)), Some(9));
         assert_eq!(weak_handle(None), None);
     }
+    #[test]
+    fn enum_pair_convert_gates() {
+        // IDA 0xa207bc/0xa20ac8: binder no-op + weak pass-through.
+        bind_friend_status();
+        assert_eq!(weak_handle(Some(9)), Some(9));
+        // IDA 0xa2133c/0xa21bb4: pair membership.
+        assert!(add_chat_option_pair(0, "Classic"));
+        assert!(add_chat_option_pair(2, "ClassicAndBubble"));
+        assert!(!add_chat_option_pair(1, "Classic"));
+        assert!(!add_chat_option_pair(9, "Classic"));
+        assert!(add_player_chat_type_pair(1, "Team"));
+        assert!(!add_player_chat_type_pair(0, "Team"));
+        assert_eq!(player_chat_type_from_value("Whisper"), Some(2));
+        assert_eq!(player_chat_type_from_value("Nope"), None);
+        // IDA 0xa21864/0xa225b0/0xa22640/0xa22744/0xa22804.
+        assert_eq!(generic_convert_chat_option("Bubble"), Some(1));
+        assert_eq!(generic_convert_chat_option("Bogus"), None);
+        assert_eq!(chat_option_value_at(0), Some(0));
+        assert_eq!(chat_option_value_at(2), Some(2));
+        assert_eq!(chat_option_value_at(3), None);
+        assert_eq!(chat_option_name_at(1), Some("Bubble"));
+        assert_eq!(chat_option_name_at(2), Some("ClassicAndBubble"));
+        assert_eq!(chat_option_name_at(7), None);
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -2014,4 +2038,61 @@ pub fn bind_remote_insert() {}
 #[must_use]
 pub fn weak_handle(handle: Option<u32>) -> Option<u32> {
  handle
+}
+
+/// `boost::bind` friend-status binder (IDA 0xa207bc): binder construction
+/// stays engine-side.
+pub fn bind_friend_status() {}
+
+/// `EnumDesc<ChatOption>::addPair` (IDA 0xa2133c): registers the
+/// `(value, name)` pair; asserts `0 <= value <= 2304` and a non-empty
+/// name engine-side. The table is fixed, so this checks membership.
+#[must_use]
+pub fn add_chat_option_pair(value: u32, name: &str) -> bool {
+ chat_option_from_value(name) == Some(value)
+}
+
+/// `EnumDesc<PlayerChatType>::addPair` (IDA 0xa21bb4).
+#[must_use]
+pub fn add_player_chat_type_pair(value: u32, name: &str) -> bool {
+ player_chat_type_from_value(name) == Some(value)
+}
+
+/// `StringConverter<PlayerChatType>::convertToValue` helper: looks the
+/// name up in the singleton descriptor.
+#[must_use]
+pub fn player_chat_type_from_value(name: &str) -> Option<u32> {
+ match name {
+ "All" => Some(0),
+ "Team" => Some(1),
+ "Whisper" => Some(2),
+ _ => None,
+ }
+}
+
+/// `Variant::genericConvert<ChatOption>` (IDA 0xa21864): a Variant
+/// already holding a ChatOption passes through engine-side; a string
+/// Variant goes through `convertToValue`, anything else throws.
+#[must_use]
+pub fn generic_convert_chat_option(text: &str) -> Option<u32> {
+ chat_option_from_value(text)
+}
+
+/// `EnumDesc<ChatOption>::convertToValue` (IDA 0xa22744) and
+/// `lookup(Variant)` (IDA 0xa22640): the indexed value, or `None` when
+/// the index is out of range.
+#[must_use]
+pub fn chat_option_value_at(index: u32) -> Option<u32> {
+ (index < 3).then_some(index)
+}
+
+/// `EnumDesc<ChatOption>::convertToString(uint)` (IDA 0xa22804).
+#[must_use]
+pub fn chat_option_name_at(index: u32) -> Option<&'static str> {
+ match index {
+ 0 => Some("Classic"),
+ 1 => Some("Bubble"),
+ 2 => Some("ClassicAndBubble"),
+ _ => None,
+ }
 }

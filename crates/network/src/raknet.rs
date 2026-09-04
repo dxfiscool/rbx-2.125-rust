@@ -14912,77 +14912,88 @@ pub fn stub_a20280(handle: Option<u32>) -> Option<u32> {
 // 0xa207bc — __ZN5boost4bindIvN3RBX7Network7PlayersEbNS_8weak_ptrINS2_6PlayerEEEiPS3_NS_3argILi1EEES6_NS8_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISD_T0_T1_T2_T3_EENSB_9list_av_4IT4_T5_T6_T7_E4typeEEEMSG_FSD_SH_SI_SJ_ESM_SN_SO_SP_
 // type: void __fastcall(_DWORD *, int, int, int, int *)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,rbx_core::WeakPtr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>)")]
-pub fn stub_a207bc() -> ! {
-    todo!("0xa207bc boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,boost::weak_ptr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>)")
+pub fn stub_a207bc() {
+ // IDA 0xa207bc: binder construction stays engine-side.
+ crate::player::bind_friend_status()
 }
 
 // 0xa20ac8 — __ZN3RBX9weak_fromINS_7Network6PlayerEEEN5boost8weak_ptrIT_EEPS5_
 // type: void __fastcall(int, int)
 #[doc(alias = "rbx_core::WeakPtr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)")]
-pub fn stub_a20ac8() -> ! {
-    todo!("0xa20ac8 boost::weak_ptr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)")
+pub fn stub_a20ac8(handle: Option<u32>) -> Option<u32> {
+ // IDA 0xa20ac8: weak_from<Player> pass-through.
+ crate::player::weak_handle(handle)
 }
 
 // 0xa2133c — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE7addPairES4_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::addPair(RBX::Network::Players::ChatOption,char const*)")]
-pub fn stub_a2133c() -> ! {
-    todo!("0xa2133c RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::addPair(RBX::Network::Players::ChatOption,char const*)")
+pub fn stub_a2133c(value: u32, name: &str) -> bool {
+ // IDA 0xa2133c: register the ChatOption pair.
+ crate::player::add_chat_option_pair(value, name)
 }
 
 // 0xa21864 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network7Players10ChatOptionEEERT_v
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Network::Players::ChatOption & RBX::Reflection::Variant::genericConvert<RBX::Network::Players::ChatOption>(void)")]
-pub fn stub_a21864() -> ! {
-    todo!("0xa21864 RBX::Network::Players::ChatOption & RBX::Reflection::Variant::genericConvert<RBX::Network::Players::ChatOption>(void)")
+pub fn stub_a21864(text: &str) -> Option<u32> {
+ // IDA 0xa21864: string Variant to ChatOption.
+ crate::player::generic_convert_chat_option(text)
 }
 
 // 0xa21bb4 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE7addPairES4_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::addPair(RBX::Network::Players::PlayerChatType,char const*)")]
-pub fn stub_a21bb4() -> ! {
-    todo!("0xa21bb4 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::addPair(RBX::Network::Players::PlayerChatType,char const*)")
+pub fn stub_a21bb4(value: u32, name: &str) -> bool {
+ // IDA 0xa21bb4: register the PlayerChatType pair.
+ crate::player::add_player_chat_type_pair(value, name)
 }
 
 // 0xa22504 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")]
-pub fn stub_a22504() -> ! {
-    todo!("0xa22504 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")
+pub fn stub_a22504() {
+ // IDA 0xa22504: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa22510 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")]
-pub fn stub_a22510() -> ! {
-    todo!("0xa22510 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")
+pub fn stub_a22510() {
+ // IDA 0xa22510: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa225b0 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupEPKc
 // type: int __fastcall(_DWORD *, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(char const*)const")]
-pub fn stub_a225b0() -> ! {
-    todo!("0xa225b0 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(char const*)const")
+pub fn stub_a225b0(name: &str) -> Option<u32> {
+ // IDA 0xa225b0: ChatOption name lookup.
+ crate::player::chat_option_from_value(name)
 }
 
 // 0xa22640 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_a22640() -> ! {
-    todo!("0xa22640 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_a22640(index: u32) -> Option<u32> {
+ // IDA 0xa22640: ChatOption variant lookup.
+ crate::player::chat_option_value_at(index)
 }
 
 // 0xa22744 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_a22744() -> ! {
-    todo!("0xa22744 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_a22744(index: u32) -> Option<u32> {
+ // IDA 0xa22744: indexed ChatOption value.
+ crate::player::chat_option_value_at(index)
 }
 
 // 0xa22804 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_a22804() -> ! {
-    todo!("0xa22804 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(unsigned long,std::string &)const")
+pub fn stub_a22804(index: u32) -> Option<&'static str> {
+ // IDA 0xa22804: indexed ChatOption name.
+ crate::player::chat_option_name_at(index)
 }
 
 // 0xa22948 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED1Ev
