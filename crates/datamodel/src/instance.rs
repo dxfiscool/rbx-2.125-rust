@@ -1558,6 +1558,20 @@ pub struct FaceEnumPropDesc {
     _opaque: (),
 }
 
+/// Rust model of `RBX::BindableEvent` (IDA `0x4ab854`): the bindable-event
+/// leaf; members land with the event batch.
+#[derive(Default)]
+pub struct BindableEvent {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::BindableFunction` (IDA `0x4ac7dc`): the
+/// bindable-function leaf; members land with the event batch.
+#[derive(Default)]
+pub struct BindableFunction {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -29867,8 +29881,14 @@ pub fn stub_0x4a9de0() -> FaceEnumPropDesc {
 // 0x4a9f94 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()
-pub fn stub_0x4a9f94() -> ! {
-    todo!("0x4a9f94 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0x4a9f94(_desc: *mut FaceEnumPropDesc) {
+    // IDA 0x4a9f94: `EnumPropDescriptor<FaceInstance, NormalId>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4a9fc0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10isReadOnlyEv
@@ -29888,8 +29908,10 @@ pub fn stub_0x4a9fd0() -> ! {
 // 0x4a9fe0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4a9fe0() -> ! {
-    todo!("0x4a9fe0 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4a9fe0(first: &FaceInstance, second: &FaceInstance) -> bool {
+    // IDA 0x4a9fe0: reads both values through the bound member getter and
+    // compares. Same template shape as 0x4a8af0, over the face word.
+    stub_0x4a9724(first) == stub_0x4a9724(second)
 }
 
 // 0x4aa008 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -29909,15 +29931,20 @@ pub fn stub_0x4aa02c() -> ! {
 // 0x4aa178 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x4aa178() -> ! {
-    todo!("0x4aa178 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x4aa178(dst: &mut FaceInstance, src: &FaceInstance) {
+    // IDA 0x4aa178: `copyValue(dst, src)` — reads the value through the
+    // member getter and writes it through the member setter. Same template
+    // shape as 0x4a8c88.
+    stub_0x4a94fc(dst, stub_0x4a9724(src));
 }
 
 // 0x4aa19c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::hasStringValue(void)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::hasStringValue(void)const
-pub fn stub_0x4aa19c() -> ! {
-    todo!("0x4aa19c RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::hasStringValue(void)const")
+pub fn stub_0x4aa19c() -> bool {
+    // IDA 0x4aa19c: enum properties always carry string values. Same shape as
+    // 0x4a8cac.
+    true
 }
 
 // 0x4aa1a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
@@ -29965,8 +29992,11 @@ pub fn stub_0x4aa480() -> ! {
 // 0x4aa4b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4aa4b4() -> ! {
-    todo!("0x4aa4b4 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4aa4b4(face: &FaceInstance) -> i32 {
+    // IDA 0x4aa4b4: reads the value through the member getter. Same shape as
+    // 0x4a8fc4, over the face word. (The `NormalId` enumerators land with
+    // the desc batch, so the raw word crosses here.)
+    face.face as i32
 }
 
 // 0x4aa4bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -30000,29 +30030,42 @@ pub fn stub_0x4aa55c() -> ! {
 // 0x4aa59c — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isReadOnly(void)const
-pub fn stub_0x4aa59c() -> ! {
-    todo!("0x4aa59c RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isReadOnly(void)const")
+pub fn stub_0x4aa59c(_desc: &FaceEnumPropDesc) -> bool {
+    // IDA 0x4aa59c: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0; BX LR` (disasm 0x4aa59c-0x4aa59e); a get/set pair is never read-only.
+    false
 }
 
 // 0x4aa5a0 — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isWriteOnly(void)const
-pub fn stub_0x4aa5a0() -> ! {
-    todo!("0x4aa5a0 RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::isWriteOnly(void)const")
+pub fn stub_0x4aa5a0(_desc: &FaceEnumPropDesc) -> bool {
+    // IDA 0x4aa5a0: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x4aa5a0); ...nor write-only.
+    false
 }
 
 // 0x4aa5a4 — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x4aa5a4() -> ! {
-    todo!("0x4aa5a4 RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x4aa5a4(face: &FaceInstance) -> i32 {
+    // IDA 0x4aa5a4: `GetSetImpl<getter, setter>::getValue` — invokes the
+    // member getter (`getFace`, 0x4a9724) through the bound member-function
+    // pointer. Same template shape as 0x4a9124.
+    stub_0x4a9724(face) as i32
 }
 
 // 0x4aa5c4 — __ZNK3RBX10Reflection14PropDescriptorINS_12FaceInstanceENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const
-pub fn stub_0x4aa5c4() -> ! {
-    todo!("0x4aa5c4 RBX::Reflection::PropDescriptor<RBX::FaceInstance,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::FaceInstance::*)(void)const,void (RBX::FaceInstance::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+pub fn stub_0x4aa5c4(face: &mut FaceInstance, value: i32) {
+    // IDA 0x4aa5c4: `GetSetImpl<getter, setter>::setValue` — invokes the
+    // member setter (`setFace`, 0x4a94fc) through the bound member-function
+    // pointer. Same template shape as 0x4a9144. Negative values have no
+    // enumerator; the store keeps the raw word.
+    if value >= 0 {
+        stub_0x4a94fc(face, value as u32);
+    }
 }
 
 // 0x4aae90 — __ZN3RBX10Reflection4Type12getSingletonINS_16DataModelArbiter16ConcurrencyModelEEERKS1_v
@@ -30077,78 +30120,113 @@ pub fn stub_0x4ab1d0() -> ! {
 // 0x4ab854 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13BindableEventEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::BindableEvent> RBX::Creatable<RBX::Instance>::create<RBX::BindableEvent>(void)")]
 // was: boost::shared_ptr<RBX::BindableEvent> RBX::Creatable<RBX::Instance>::create<RBX::BindableEvent>(void)
-pub fn stub_0x4ab854() -> ! {
-    todo!("0x4ab854 boost::shared_ptr<RBX::BindableEvent> RBX::Creatable<RBX::Instance>::create<RBX::BindableEvent>(void)")
+pub fn stub_0x4ab854() -> SharedPtr<BindableEvent> {
+    // IDA 0x4ab854: `Creatable::create<BindableEvent>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(BindableEvent::default())
 }
 
 // 0x4abf40 — __ZN5boost10shared_ptrIN3RBX13BindableEventEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BindableEvent>::shared_ptr<RBX::BindableEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::BindableEvent>::shared_ptr<RBX::BindableEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4abf40() -> ! {
-    todo!("0x4abf40 boost::shared_ptr<RBX::BindableEvent>::shared_ptr<RBX::BindableEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4abf40(ptr: *mut BindableEvent, _deleter: CreatableInstanceDeleter) -> SharedPtr<BindableEvent> {
+    // IDA 0x4abf40: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(BindableEvent::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4ac0f0 — __ZN5boost6detail12shared_countC2IPN3RBX13BindableEventENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4ac0f0() -> ! {
-    todo!("0x4ac0f0 boost::detail::shared_count::shared_count<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4ac0f0(ptr: *mut BindableEvent, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<BindableEvent, CreatableInstanceDeleter> {
+    // IDA 0x4ac0f0: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4ac1f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13BindableEventENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4ac1f8() -> ! {
-    todo!("0x4ac1f8 boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4ac1f8(_block: *mut ControlBlockPd<BindableEvent, CreatableInstanceDeleter>) {
+    // IDA 0x4ac1f8: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x4ac1fc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13BindableEventENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x4ac1fc() -> ! {
-    todo!("0x4ac1fc boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x4ac1fc(block: *mut ControlBlockPd<BindableEvent, CreatableInstanceDeleter>) {
+    // IDA 0x4ac1fc: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x4ac200 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13BindableEventENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x4ac200() -> ! {
-    todo!("0x4ac200 boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x4ac200(_block: *mut ControlBlockPd<BindableEvent, CreatableInstanceDeleter>) {
+    // IDA 0x4ac200: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x4ac220 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13BindableEventENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x4ac220() -> ! {
-    todo!("0x4ac220 boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x4ac220(block: *const ControlBlockPd<BindableEvent, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x4ac220: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x4ac238 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13BindableEventENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x4ac238() -> ! {
-    todo!("0x4ac238 boost::detail::sp_counted_impl_pd<RBX::BindableEvent *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x4ac238(block: *const ControlBlockPd<BindableEvent, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x4ac238: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4ac7dc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16BindableFunctionEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::BindableFunction> RBX::Creatable<RBX::Instance>::create<RBX::BindableFunction>(void)")]
 // was: boost::shared_ptr<RBX::BindableFunction> RBX::Creatable<RBX::Instance>::create<RBX::BindableFunction>(void)
-pub fn stub_0x4ac7dc() -> ! {
-    todo!("0x4ac7dc boost::shared_ptr<RBX::BindableFunction> RBX::Creatable<RBX::Instance>::create<RBX::BindableFunction>(void)")
+pub fn stub_0x4ac7dc() -> SharedPtr<BindableFunction> {
+    // IDA 0x4ac7dc: `Creatable::create<BindableFunction>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(BindableFunction::default())
 }
 
 // 0x4ad788 — __ZN5boost10shared_ptrIN3RBX16BindableFunctionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BindableFunction>::shared_ptr<RBX::BindableFunction,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::BindableFunction>::shared_ptr<RBX::BindableFunction,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4ad788() -> ! {
-    todo!("0x4ad788 boost::shared_ptr<RBX::BindableFunction>::shared_ptr<RBX::BindableFunction,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4ad788(ptr: *mut BindableFunction, _deleter: CreatableInstanceDeleter) -> SharedPtr<BindableFunction> {
+    // IDA 0x4ad788: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(BindableFunction::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x4ad938 — __ZN5boost6detail12shared_countC2IPN3RBX16BindableFunctionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x4ad938() -> ! {
-    todo!("0x4ad938 boost::detail::shared_count::shared_count<RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BindableFunction *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x4ad938(ptr: *mut BindableFunction, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<BindableFunction, CreatableInstanceDeleter> {
+    // IDA 0x4ad938: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x4ada40 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BindableFunctionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
