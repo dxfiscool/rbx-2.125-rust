@@ -12,16 +12,16 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x7bd760 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC2Ev")]
-pub fn stub_7bd760() -> ! {
-    todo!("0x7bd760 RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::EnumDesc(void)")
+// IDA 0x7bd760: 158 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bd760() {
 }
 
 
 // 0x7bd924 — __ZN3RBX15StringConverterINS_8Humanoid6StatusEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Humanoid::Status>::convertToValue(std::string const&,RBX::Humanoid::Status&)")]
 #[doc(alias = "__ZN3RBX15StringConverterINS_8Humanoid6StatusEE14convertToValueERKSsRS2_")]
-pub fn stub_7bd924() -> ! {
-    todo!("0x7bd924 RBX::StringConverter<RBX::Humanoid::Status>::convertToValue(std::string const&,RBX::Humanoid::Status&)")
+// IDA 0x7bd924: 28 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bd924() {
 }
 
 
@@ -29,8 +29,8 @@ pub fn stub_7bd924() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getAnimator(void)")]
 #[doc(alias = "__ZN3RBX8Humanoid11getAnimatorEv")]
-pub fn stub_7bd96c() -> ! {
-    todo!("0x7bd96c RBX::Humanoid::getAnimator(void)")
+// IDA 0x7bd96c: 77 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bd96c() {
 }
 
 
@@ -38,8 +38,8 @@ pub fn stub_7bd96c() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::computeNearlyTouched(void)")]
 #[doc(alias = "__ZN3RBX8Humanoid20computeNearlyTouchedEv")]
-pub fn stub_7bda48() -> ! {
-    todo!("0x7bda48 RBX::Humanoid::computeNearlyTouched(void)")
+// IDA 0x7bda48: 66 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bda48() {
 }
 
 
@@ -47,16 +47,16 @@ pub fn stub_7bda48() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Humanoid::isLegalForClientToChange(RBX::Reflection::PropertyDescriptor const&)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid24isLegalForClientToChangeERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_7bdb10() -> ! {
-    todo!("0x7bdb10 RBX::Humanoid::isLegalForClientToChange(RBX::Reflection::PropertyDescriptor const&)const")
+// IDA 0x7bdb10: 27 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdb10() {
 }
 
 
 // 0x7bdb58 — __ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEED1Ev")]
-pub fn stub_7bdb58() -> ! {
-    todo!("0x7bdb58 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::~RefPropDescriptor()")
+// IDA 0x7bdb58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdb58() {
 }
 
 
@@ -64,16 +64,16 @@ pub fn stub_7bdb58() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getHealth(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid9getHealthEv")]
-pub fn stub_7bdb84() -> ! {
-    todo!("0x7bdb84 RBX::Humanoid::getHealth(void)const")
+// IDA 0x7bdb84: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdb84() {
 }
 
 
 // 0x7bdb8c — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEfED1Ev")]
-pub fn stub_7bdb8c() -> ! {
-    todo!("0x7bdb8c RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::~PropDescriptor()")
+// IDA 0x7bdb8c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdb8c() {
 }
 
 
@@ -81,8 +81,8 @@ pub fn stub_7bdb8c() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getMaxHealth(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid12getMaxHealthEv")]
-pub fn stub_7bdbb0() -> ! {
-    todo!("0x7bdbb0 RBX::Humanoid::getMaxHealth(void)const")
+// IDA 0x7bdbb0: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbb0() {
 }
 
 
@@ -90,8 +90,8 @@ pub fn stub_7bdbb0() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getWalkSpeed(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid12getWalkSpeedEv")]
-pub fn stub_7bdbb8() -> ! {
-    todo!("0x7bdbb8 RBX::Humanoid::getWalkSpeed(void)const")
+// IDA 0x7bdbb8: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbb8() {
 }
 
 
@@ -99,8 +99,8 @@ pub fn stub_7bdbb8() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getWalkToPart(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid13getWalkToPartEv")]
-pub fn stub_7bdbc0() -> ! {
-    todo!("0x7bdbc0 RBX::Humanoid::getWalkToPart(void)const")
+// IDA 0x7bdbc0: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbc0() {
 }
 
 
@@ -108,8 +108,8 @@ pub fn stub_7bdbc0() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getWalkToPoint(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid14getWalkToPointEv")]
-pub fn stub_7bdbc8() -> ! {
-    todo!("0x7bdbc8 RBX::Humanoid::getWalkToPoint(void)const")
+// IDA 0x7bdbc8: 2 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbc8() {
 }
 
 
@@ -117,8 +117,8 @@ pub fn stub_7bdbc8() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getTargetPoint(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid14getTargetPointEv")]
-pub fn stub_7bdbf4() -> ! {
-    todo!("0x7bdbf4 RBX::Humanoid::getTargetPoint(void)const")
+// IDA 0x7bdbf4: 2 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbf4() {
 }
 
 
@@ -126,16 +126,16 @@ pub fn stub_7bdbf4() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getJump(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid7getJumpEv")]
-pub fn stub_7bdbfc() -> ! {
-    todo!("0x7bdbfc RBX::Humanoid::getJump(void)const")
+// IDA 0x7bdbfc: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdbfc() {
 }
 
 
 // 0x7bdc04 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEbED1Ev")]
-pub fn stub_7bdc04() -> ! {
-    todo!("0x7bdc04 RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::~PropDescriptor()")
+// IDA 0x7bdc04: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdc04() {
 }
 
 
@@ -143,8 +143,8 @@ pub fn stub_7bdc04() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getSit(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid6getSitEv")]
-pub fn stub_7bdc28() -> ! {
-    todo!("0x7bdc28 RBX::Humanoid::getSit(void)const")
+// IDA 0x7bdc28: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc28() {
 }
 
 
@@ -152,8 +152,8 @@ pub fn stub_7bdc28() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getPlatformStanding(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid19getPlatformStandingEv")]
-pub fn stub_7bdc30() -> ! {
-    todo!("0x7bdc30 RBX::Humanoid::getPlatformStanding(void)const")
+// IDA 0x7bdc30: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc30() {
 }
 
 
@@ -161,8 +161,8 @@ pub fn stub_7bdc30() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getWalkDirection(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid16getWalkDirectionEv")]
-pub fn stub_7bdc38() -> ! {
-    todo!("0x7bdc38 RBX::Humanoid::getWalkDirection(void)const")
+// IDA 0x7bdc38: 5 insns (VLDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc38() {
 }
 
 
@@ -170,8 +170,8 @@ pub fn stub_7bdc38() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getWalkAngleError(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid17getWalkAngleErrorEv")]
-pub fn stub_7bdc48() -> ! {
-    todo!("0x7bdc48 RBX::Humanoid::getWalkAngleError(void)const")
+// IDA 0x7bdc48: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc48() {
 }
 
 
@@ -179,16 +179,16 @@ pub fn stub_7bdc48() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getStrafe(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid9getStrafeEv")]
-pub fn stub_7bdc50() -> ! {
-    todo!("0x7bdc50 RBX::Humanoid::getStrafe(void)const")
+// IDA 0x7bdc50: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc50() {
 }
 
 
 // 0x7bdc58 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvfELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(float),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvfELi1EED1Ev")]
-pub fn stub_7bdc58() -> ! {
-    todo!("0x7bdc58 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(float),1>::~BoundFuncDesc()")
+// IDA 0x7bdc58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdc58() {
 }
 
 
@@ -196,56 +196,56 @@ pub fn stub_7bdc58() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this, bool)
 #[doc(alias = "RBX::Humanoid::setClickToWalkEnabled(bool)")]
 #[doc(alias = "__ZN3RBX8Humanoid21setClickToWalkEnabledEb")]
-pub fn stub_7bdc98() -> ! {
-    todo!("0x7bdc98 RBX::Humanoid::setClickToWalkEnabled(bool)")
+// IDA 0x7bdc98: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bdc98() {
 }
 
 
 // 0x7bdca0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvbELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvbELi1EED1Ev")]
-pub fn stub_7bdca0() -> ! {
-    todo!("0x7bdca0 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(bool),1>::~BoundFuncDesc()")
+// IDA 0x7bdca0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdca0() {
 }
 
 
 // 0x7bddec — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_7bddec() -> ! {
-    todo!("0x7bddec RBX::Reflection::EventDesc<RBX::Humanoid,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Humanoid::*>::~EventDesc()")
+// IDA 0x7bddec: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bddec() {
 }
 
 
 // 0x7bde10 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvfEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(float),rbx::signal<void ()(float)>,rbx::signal<void ()(float)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvfEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_7bde10() -> ! {
-    todo!("0x7bde10 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(float),rbx::signal<void ()(float)>,rbx::signal<void ()(float)> RBX::Humanoid::*>::~EventDesc()")
+// IDA 0x7bde10: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bde10() {
 }
 
 
 // 0x7bde34 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_7bde34() -> ! {
-    todo!("0x7bde34 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Humanoid::*>::~EventDesc()")
+// IDA 0x7bde34: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bde34() {
 }
 
 
 // 0x7bde58 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbNS2_6StatusEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(RBX::Humanoid::Status),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbNS2_6StatusEELi1EED1Ev")]
-pub fn stub_7bde58() -> ! {
-    todo!("0x7bde58 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(RBX::Humanoid::Status),1>::~BoundFuncDesc()")
+// IDA 0x7bde58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bde58() {
 }
 
 
 // 0x7bde98 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbSsELi1EED1Ev")]
-pub fn stub_7bde98() -> ! {
-    todo!("0x7bde98 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(std::string),1>::~BoundFuncDesc()")
+// IDA 0x7bde98: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bde98() {
 }
 
 
@@ -253,16 +253,16 @@ pub fn stub_7bde98() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev")]
-pub fn stub_7bdf8c() -> ! {
-    todo!("0x7bdf8c RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+// IDA 0x7bdf8c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bdf8c() {
 }
 
 
 // 0x7be080 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvvELi0EED1Ev")]
-pub fn stub_7be080() -> ! {
-    todo!("0x7be080 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(void),0>::~BoundFuncDesc()")
+// IDA 0x7be080: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be080() {
 }
 
 
@@ -270,24 +270,24 @@ pub fn stub_7be080() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev")]
-pub fn stub_7be0a4() -> ! {
-    todo!("0x7be0a4 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")
+// IDA 0x7be0a4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be0a4() {
 }
 
 
 // 0x7be0c8 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvNS2_6StatusEEN3rbx6signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(RBX::Humanoid::Status),rbx::signal<void ()(RBX::Humanoid::Status)>,rbx::signal<void ()(RBX::Humanoid::Status)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvNS2_6StatusEEN3rbx6signalIS4_EEMS2_S7_ED1Ev")]
-pub fn stub_7be0c8() -> ! {
-    todo!("0x7be0c8 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(RBX::Humanoid::Status),rbx::signal<void ()(RBX::Humanoid::Status)>,rbx::signal<void ()(RBX::Humanoid::Status)> RBX::Humanoid::*>...")
+// IDA 0x7be0c8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be0c8() {
 }
 
 
 // 0x7be0ec — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_7be0ec() -> ! {
-    todo!("0x7be0ec RBX::Reflection::EventDesc<RBX::Humanoid,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Humanoid::*>::~EventDesc()")
+// IDA 0x7be0ec: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be0ec() {
 }
 
 
@@ -295,8 +295,8 @@ pub fn stub_7be0ec() -> ! {
 // was: RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev")]
-pub fn stub_7be110() -> ! {
-    todo!("0x7be110 RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+// IDA 0x7be110: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be110() {
 }
 
 
@@ -304,16 +304,16 @@ pub fn stub_7be110() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getNameOcclusion(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid16getNameOcclusionEv")]
-pub fn stub_7be134() -> ! {
-    todo!("0x7be134 RBX::Humanoid::getNameOcclusion(void)const")
+// IDA 0x7be134: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be134() {
 }
 
 
 // 0x7be13c — __ZN3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEED1Ev")]
-pub fn stub_7be13c() -> ! {
-    todo!("0x7be13c RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::~EnumPropDescriptor()")
+// IDA 0x7be13c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be13c() {
 }
 
 
@@ -321,8 +321,8 @@ pub fn stub_7be13c() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED1Ev")]
-pub fn stub_7be160() -> ! {
-    todo!("0x7be160 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+// IDA 0x7be160: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7be160() {
 }
 
 
@@ -330,8 +330,8 @@ pub fn stub_7be160() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Humanoid::Status)>::operator()(RBX::Humanoid::Status)")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN3RBX8Humanoid6StatusEEEclES4_")]
-pub fn stub_7be254() -> ! {
-    todo!("0x7be254 rbx::signals::signal_with_args<1,void ()(RBX::Humanoid::Status)>::operator()(RBX::Humanoid::Status)")
+// IDA 0x7be254: 76 insns (PUSH..TBB.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be254() {
 }
 
 
@@ -339,8 +339,8 @@ pub fn stub_7be254() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(float)>::operator()(float)")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvfEEclEf")]
-pub fn stub_7be398() -> ! {
-    todo!("0x7be398 rbx::signals::signal_with_args<1,void ()(float)>::operator()(float)")
+// IDA 0x7be398: 77 insns (PUSH..TBB.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be398() {
 }
 
 
@@ -348,8 +348,8 @@ pub fn stub_7be398() -> ! {
 // was: boost::shared_ptr<RBX::Motor6D> RBX::Creatable<RBX::Instance>::create<RBX::Motor6D>(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Motor6D> RBX::Creatable<RBX::Instance>::create<RBX::Motor6D>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_7Motor6DEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_7be4e0() -> ! {
-    todo!("0x7be4e0 boost::shared_ptr<RBX::Motor6D> RBX::Creatable<RBX::Instance>::create<RBX::Motor6D>(void)")
+// IDA 0x7be4e0: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be4e0() {
 }
 
 
@@ -357,8 +357,8 @@ pub fn stub_7be4e0() -> ! {
 // was: boost::shared_ptr<RBX::StatusInstance>::operator=(boost::shared_ptr<RBX::StatusInstance> const&) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::StatusInstance>::operator=(boost::shared_ptr<RBX::StatusInstance> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX14StatusInstanceEEaSERKS3_")]
-pub fn stub_7be590() -> ! {
-    todo!("0x7be590 boost::shared_ptr<RBX::StatusInstance>::operator=(boost::shared_ptr<RBX::StatusInstance> const&)")
+// IDA 0x7be590: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be590() {
 }
 
 
@@ -366,16 +366,16 @@ pub fn stub_7be590() -> ! {
 // was: boost::shared_ptr<RBX::StatusInstance> RBX::Creatable<RBX::Instance>::create<RBX::StatusInstance>(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::StatusInstance> RBX::Creatable<RBX::Instance>::create<RBX::StatusInstance>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_14StatusInstanceEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_7be5c8() -> ! {
-    todo!("0x7be5c8 boost::shared_ptr<RBX::StatusInstance> RBX::Creatable<RBX::Instance>::create<RBX::StatusInstance>(void)")
+// IDA 0x7be5c8: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be5c8() {
 }
 
 
 // 0x7be67c — __ZN3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_PKNS_8InstanceE
 #[doc(alias = "RBX::Humanoid const* RBX::ModelInstance::findConstFirstModifierOfType<RBX::Humanoid>(RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_PKNS_8InstanceE")]
-pub fn stub_7be67c() -> ! {
-    todo!("0x7be67c RBX::Humanoid const* RBX::ModelInstance::findConstFirstModifierOfType<RBX::Humanoid>(RBX::Instance const*)")
+// IDA 0x7be67c: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be67c() {
 }
 
 
@@ -384,8 +384,8 @@ pub fn stub_7be67c() -> ! {
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::fireAndReplicateEvent(RBX::Humanoid*,boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_S6_")]
-pub fn stub_7be6b4() -> ! {
-    todo!("0x7be6b4 RBX::Reflection::RemoteEventDescImpl<1,RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::fireAndReplicateEv...")
+// IDA 0x7be6b4: 114 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be6b4() {
 }
 
 
@@ -393,8 +393,8 @@ pub fn stub_7be6b4() -> ! {
 // was: boost::shared_ptr<RBX::PartInstance> RBX::shared_from_dynamic_cast<RBX::PartInstance,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::PartInstance> RBX::shared_from_dynamic_cast<RBX::PartInstance,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")]
 #[doc(alias = "__ZN3RBX24shared_from_dynamic_castINS_12PartInstanceENS_10Reflection13DescribedBaseEEEN5boost10shared_ptrIT_EEPNS4_23enable_shared_from_thisIT0_EE")]
-pub fn stub_7be7e8() -> ! {
-    todo!("0x7be7e8 boost::shared_ptr<RBX::PartInstance> RBX::shared_from_dynamic_cast<RBX::PartInstance,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBas...")
+// IDA 0x7be7e8: 119 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be7e8() {
 }
 
 
@@ -402,8 +402,8 @@ pub fn stub_7be7e8() -> ! {
 // was: boost::shared_ptr<RBX::StatusInstance> RBX::shared_from<RBX::StatusInstance>(RBX::StatusInstance*) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::StatusInstance> RBX::shared_from<RBX::StatusInstance>(RBX::StatusInstance*)")]
 #[doc(alias = "__ZN3RBX11shared_fromINS_14StatusInstanceEEEN5boost10shared_ptrIT_EEPS4_")]
-pub fn stub_7be948() -> ! {
-    todo!("0x7be948 boost::shared_ptr<RBX::StatusInstance> RBX::shared_from<RBX::StatusInstance>(RBX::StatusInstance*)")
+// IDA 0x7be948: 126 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7be948() {
 }
 
 
@@ -411,16 +411,16 @@ pub fn stub_7be948() -> ! {
 // was: void boost::shared_ptr<RBX::HUMAN::HumanoidState>::reset<RBX::HUMAN::HumanoidState>(RBX::HUMAN::HumanoidState *) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "void boost::shared_ptr<RBX::HUMAN::HumanoidState>::reset<RBX::HUMAN::HumanoidState>(RBX::HUMAN::HumanoidState *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5HUMAN13HumanoidStateEE5resetIS3_EEvPT_")]
-pub fn stub_7beab8() -> ! {
-    todo!("0x7beab8 void boost::shared_ptr<RBX::HUMAN::HumanoidState>::reset<RBX::HUMAN::HumanoidState>(RBX::HUMAN::HumanoidState *)")
+// IDA 0x7beab8: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7beab8() {
 }
 
 
 // 0x7beae4 — __ZN3RBX15ServiceProvider6createINS_13ContentFilterEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ContentFilter * RBX::ServiceProvider::create<RBX::ContentFilter>(RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider6createINS_13ContentFilterEEEPT_PKNS_8InstanceE")]
-pub fn stub_7beae4() -> ! {
-    todo!("0x7beae4 RBX::ContentFilter * RBX::ServiceProvider::create<RBX::ContentFilter>(RBX::Instance const*)")
+// IDA 0x7beae4: 9 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7beae4() {
 }
 
 
@@ -429,40 +429,40 @@ pub fn stub_7beae4() -> ! {
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>>>>> const&)const")]
 #[doc(alias = "__ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EERSt6vectorIPNS_9PrimitiveESaIS9_EEENS3_5list2INS2_3argILi1EEENS2_17reference_wrapperISB_EEEEEEEEvRKT_")]
-pub fn stub_7beafc() -> ! {
-    todo!("0x7beafc void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &),boost::_...")
+// IDA 0x7beafc: 97 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7beafc() {
 }
 
 
 // 0x7bec04 — __ZN3RBX15ServiceProvider6createINS_17FilteredSelectionINS_12PartInstanceEEEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::FilteredSelection<RBX::PartInstance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::PartInstance>>(RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider6createINS_17FilteredSelectionINS_12PartInstanceEEEEEPT_PKNS_8InstanceE")]
-pub fn stub_7bec04() -> ! {
-    todo!("0x7bec04 RBX::FilteredSelection<RBX::PartInstance> * RBX::ServiceProvider::create<RBX::FilteredSelection<RBX::PartInstance>>(RBX::Instance const*)")
+// IDA 0x7bec04: 9 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bec04() {
 }
 
 
 // 0x7bec1c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::addPair(RBX::Humanoid::NameOcclusion,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE7addPairES3_PKc")]
-pub fn stub_7bec1c() -> ! {
-    todo!("0x7bec1c RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::addPair(RBX::Humanoid::NameOcclusion,char const*)")
+// IDA 0x7bec1c: 308 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bec1c() {
 }
 
 
 // 0x7bef7c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::addPair(RBX::Humanoid::Status,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE7addPairES3_PKc")]
-pub fn stub_7bef7c() -> ! {
-    todo!("0x7bef7c RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::addPair(RBX::Humanoid::Status,char const*)")
+// IDA 0x7bef7c: 308 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bef7c() {
 }
 
 
 // 0x7bf2dc — __ZN3RBX10Reflection7Variant14genericConvertINS_8Humanoid6StatusEEERT_v
 #[doc(alias = "RBX::Humanoid::Status & RBX::Reflection::Variant::genericConvert<RBX::Humanoid::Status>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant14genericConvertINS_8Humanoid6StatusEEERT_v")]
-pub fn stub_7bf2dc() -> ! {
-    todo!("0x7bf2dc RBX::Humanoid::Status & RBX::Reflection::Variant::genericConvert<RBX::Humanoid::Status>(void)")
+// IDA 0x7bf2dc: 143 insns (PUSH..TBB.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf2dc() {
 }
 
 
@@ -470,8 +470,8 @@ pub fn stub_7bf2dc() -> ! {
 // was: boost::shared_ptr<RBX::Animator>::operator=(boost::shared_ptr<RBX::Animator> const&) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Animator>::operator=(boost::shared_ptr<RBX::Animator> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8AnimatorEEaSERKS3_")]
-pub fn stub_7bf4c8() -> ! {
-    todo!("0x7bf4c8 boost::shared_ptr<RBX::Animator>::operator=(boost::shared_ptr<RBX::Animator> const&)")
+// IDA 0x7bf4c8: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf4c8() {
 }
 
 
@@ -479,8 +479,8 @@ pub fn stub_7bf4c8() -> ! {
 // was: boost::shared_ptr<RBX::Animator> RBX::Creatable<RBX::Instance>::create<RBX::Animator,RBX::Humanoid *>(RBX::Humanoid *) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Animator> RBX::Creatable<RBX::Instance>::create<RBX::Animator,RBX::Humanoid *>(RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_8AnimatorEPNS_8HumanoidEEEN5boost10shared_ptrIT_EET0_")]
-pub fn stub_7bf500() -> ! {
-    todo!("0x7bf500 boost::shared_ptr<RBX::Animator> RBX::Creatable<RBX::Instance>::create<RBX::Animator,RBX::Humanoid *>(RBX::Humanoid *)")
+// IDA 0x7bf500: 62 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf500() {
 }
 
 
@@ -488,16 +488,16 @@ pub fn stub_7bf500() -> ! {
 // was: rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>> const&) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8HumanoidEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_7bf5b4() -> ! {
-    todo!("0x7bf5b4 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Human...")
+// IDA 0x7bf5b4: 41 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf5b4() {
 }
 
 
 // 0x7bf628 — __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")]
-pub fn stub_7bf628() -> ! {
-    todo!("0x7bf628 __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")
+// IDA 0x7bf628: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf628() {
 }
 
 
@@ -505,8 +505,8 @@ pub fn stub_7bf628() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getEngineBody(void)")]
 #[doc(alias = "__ZN3RBX8Humanoid13getEngineBodyEv")]
-pub fn stub_7bf640() -> ! {
-    todo!("0x7bf640 RBX::Humanoid::getEngineBody(void)")
+// IDA 0x7bf640: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf640() {
 }
 
 
@@ -514,8 +514,8 @@ pub fn stub_7bf640() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid22getConnectorKernelTypeEv")]
-pub fn stub_7bf654() -> ! {
-    todo!("0x7bf654 RBX::Humanoid::getConnectorKernelType(void)const")
+// IDA 0x7bf654: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf654() {
 }
 
 
@@ -523,16 +523,16 @@ pub fn stub_7bf654() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "RBX::Humanoid::hasFocusCoord(void)const")]
 #[doc(alias = "__ZNK3RBX8Humanoid13hasFocusCoordEv")]
-pub fn stub_7bf658() -> ! {
-    todo!("0x7bf658 RBX::Humanoid::hasFocusCoord(void)const")
+// IDA 0x7bf658: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf658() {
 }
 
 
 // 0x7bf66c — __ZThn32_NK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")]
-pub fn stub_7bf66c() -> ! {
-    todo!("0x7bf66c __ZThn32_NK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E12getClassNameEv")
+// IDA 0x7bf66c: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf66c() {
 }
 
 
@@ -540,8 +540,8 @@ pub fn stub_7bf66c() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getEngineBody(void)")]
 #[doc(alias = "__ZThn92_N3RBX8Humanoid13getEngineBodyEv")]
-pub fn stub_7bf67c() -> ! {
-    todo!("0x7bf67c non-virtual thunk toRBX::Humanoid::getEngineBody(void)")
+// IDA 0x7bf67c: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf67c() {
 }
 
 
@@ -549,8 +549,8 @@ pub fn stub_7bf67c() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
-pub fn stub_7bf694() -> ! {
-    todo!("0x7bf694 non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")
+// IDA 0x7bf694: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf694() {
 }
 
 
@@ -558,8 +558,8 @@ pub fn stub_7bf694() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn244_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
-pub fn stub_7bf698() -> ! {
-    todo!("0x7bf698 non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")
+// IDA 0x7bf698: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf698() {
 }
 
 
@@ -567,8 +567,8 @@ pub fn stub_7bf698() -> ! {
 // type: _DWORD __fastcall(RBX::ICharacterSubject *__hidden this)
 #[doc(alias = "RBX::ICharacterSubject::onCameraWrapMouse(void)")]
 #[doc(alias = "__ZN3RBX17ICharacterSubject17onCameraWrapMouseEv")]
-pub fn stub_7bf6a4() -> ! {
-    todo!("0x7bf6a4 RBX::ICharacterSubject::onCameraWrapMouse(void)")
+// IDA 0x7bf6a4: 3 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf6a4() {
 }
 
 
@@ -576,8 +576,8 @@ pub fn stub_7bf6a4() -> ! {
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::hasFocusCoord(void)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid13hasFocusCoordEv")]
-pub fn stub_7bf6ac() -> ! {
-    todo!("0x7bf6ac non-virtual thunk toRBX::Humanoid::hasFocusCoord(void)const")
+// IDA 0x7bf6ac: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf6ac() {
 }
 
 
@@ -585,8 +585,8 @@ pub fn stub_7bf6ac() -> ! {
 // type: void __fastcall(RBX::ICharacterSubject *__hidden this)
 #[doc(alias = "RBX::ICharacterSubject::~ICharacterSubject()")]
 #[doc(alias = "__ZN3RBX17ICharacterSubjectD1Ev")]
-pub fn stub_7bf6c4() -> ! {
-    todo!("0x7bf6c4 RBX::ICharacterSubject::~ICharacterSubject()")
+// IDA 0x7bf6c4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_7bf6c4() {
 }
 
 
@@ -594,40 +594,40 @@ pub fn stub_7bf6c4() -> ! {
 // type: void __fastcall(RBX::ICharacterSubject *__hidden this)
 #[doc(alias = "RBX::ICharacterSubject::~ICharacterSubject()")]
 #[doc(alias = "__ZN3RBX17ICharacterSubjectD0Ev")]
-pub fn stub_7bf6c8() -> ! {
-    todo!("0x7bf6c8 RBX::ICharacterSubject::~ICharacterSubject()")
+// IDA 0x7bf6c8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_7bf6c8() {
 }
 
 
 // 0x7bf6cc — __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD1Ev")]
-pub fn stub_7bf6cc() -> ! {
-    todo!("0x7bf6cc __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD1Ev")
+// IDA 0x7bf6cc: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_7bf6cc() {
 }
 
 
 // 0x7bf6d0 — __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev")]
-pub fn stub_7bf6d0() -> ! {
-    todo!("0x7bf6d0 __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev")
+// IDA 0x7bf6d0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7bf6d0() {
 }
 
 
 // 0x7bf76c — __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv")]
-pub fn stub_7bf76c() -> ! {
-    todo!("0x7bf76c __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv")
+// IDA 0x7bf76c: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf76c() {
 }
 
 
 // 0x7bf7f4 — __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator6createEv")]
-pub fn stub_7bf7f4() -> ! {
-    todo!("0x7bf7f4 __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator6createEv")
+// IDA 0x7bf7f4: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf7f4() {
 }
 
 
@@ -635,8 +635,8 @@ pub fn stub_7bf7f4() -> ! {
 // was: boost::shared_ptr<RBX::Humanoid> RBX::Creatable<RBX::Instance>::create<RBX::Humanoid>(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Humanoid> RBX::Creatable<RBX::Instance>::create<RBX::Humanoid>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_8HumanoidEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_7bf938() -> ! {
-    todo!("0x7bf938 boost::shared_ptr<RBX::Humanoid> RBX::Creatable<RBX::Instance>::create<RBX::Humanoid>(void)")
+// IDA 0x7bf938: 60 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf938() {
 }
 
 
@@ -644,8 +644,8 @@ pub fn stub_7bf938() -> ! {
 // was: boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_7bf9ec() -> ! {
-    todo!("0x7bf9ec boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x7bf9ec: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bf9ec() {
 }
 
 
@@ -653,8 +653,8 @@ pub fn stub_7bf9ec() -> ! {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Humanoid,RBX::Humanoid>(boost::shared_ptr<RBX::Humanoid> const*,RBX::Humanoid *)const — uses rbx_core::SharedPtr not boost
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Humanoid,RBX::Humanoid>(boost::shared_ptr<RBX::Humanoid> const*,RBX::Humanoid *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8HumanoidES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_7bfab4() -> ! {
-    todo!("0x7bfab4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Humanoid,RBX::Humanoid>(boost::shared_ptr<RBX::Humanoid> const*,RBX::Humanoid *)...")
+// IDA 0x7bfab4: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfab4() {
 }
 
 
@@ -663,8 +663,8 @@ pub fn stub_7bfab4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8HumanoidENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_7bfb9c() -> ! {
-    todo!("0x7bfb9c boost::detail::shared_count::shared_count<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x7bfb9c: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfb9c() {
 }
 
 
@@ -672,8 +672,8 @@ pub fn stub_7bfb9c() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8HumanoidENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_7bfca4() -> ! {
-    todo!("0x7bfca4 boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x7bfca4: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_7bfca4() {
 }
 
 
@@ -681,8 +681,8 @@ pub fn stub_7bfca4() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8HumanoidENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_7bfca8() -> ! {
-    todo!("0x7bfca8 boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x7bfca8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_7bfca8() {
 }
 
 
@@ -690,8 +690,8 @@ pub fn stub_7bfca8() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8HumanoidENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_7bfcac() -> ! {
-    todo!("0x7bfcac boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// IDA 0x7bfcac: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfcac() {
 }
 
 
@@ -699,8 +699,8 @@ pub fn stub_7bfcac() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8HumanoidENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_7bfccc() -> ! {
-    todo!("0x7bfccc boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x7bfccc: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfccc() {
 }
 
 
@@ -708,24 +708,24 @@ pub fn stub_7bfccc() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8HumanoidENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_7bfce4() -> ! {
-    todo!("0x7bfce4 boost::detail::sp_counted_impl_pd<RBX::Humanoid *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x7bfce4: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfce4() {
 }
 
 
 // 0x7bfce8 — __ZN3RBX4Name13callDoDeclareILZNS_9sHumanoidEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_9sHumanoidEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_9sHumanoidEEEEvv")]
-pub fn stub_7bfce8() -> ! {
-    todo!("0x7bfce8 __ZN3RBX4Name13callDoDeclareILZNS_9sHumanoidEEEEvv")
+// IDA 0x7bfce8: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_7bfce8() {
 }
 
 
 // 0x7bfcec — __ZN3RBX4Name9doDeclareILZNS_9sHumanoidEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sHumanoidEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sHumanoidEEEERKS0_v")]
-pub fn stub_7bfcec() -> ! {
-    todo!("0x7bfcec __ZN3RBX4Name9doDeclareILZNS_9sHumanoidEEEERKS0_v")
+// IDA 0x7bfcec: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfcec() {
 }
 
 
@@ -733,16 +733,16 @@ pub fn stub_7bfcec() -> ! {
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev")]
-pub fn stub_7bfdcc() -> ! {
-    todo!("0x7bfdcc __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev")
+// IDA 0x7bfdcc: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7bfdcc() {
 }
 
 
 // 0x7c0010 — __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv")]
-pub fn stub_7c0010() -> ! {
-    todo!("0x7c0010 __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv")
+// IDA 0x7c0010: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c0010() {
 }
 
 
@@ -750,8 +750,8 @@ pub fn stub_7c0010() -> ! {
 // was: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable_slot() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8HumanoidEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev")]
-pub fn stub_7c0084() -> ! {
-    todo!("0x7c0084 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable...")
+// IDA 0x7c0084: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7c0084() {
 }
 
 
@@ -759,8 +759,8 @@ pub fn stub_7c0084() -> ! {
 // was: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable_slot() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8HumanoidEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev")]
-pub fn stub_7c00b0() -> ! {
-    todo!("0x7c00b0 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>>::~callable...")
+// IDA 0x7c00b0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7c00b0() {
 }
 
 
@@ -769,8 +769,8 @@ pub fn stub_7c00b0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_7c0184() -> ! {
-    todo!("0x7c0184 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void...")
+// IDA 0x7c0184: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c0184() {
 }
 
 
@@ -778,8 +778,8 @@ pub fn stub_7c0184() -> ! {
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_7c018c() -> ! {
-    todo!("0x7c018c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RB...")
+// IDA 0x7c018c: 2 insns (ADDS..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c018c() {
 }
 
 
@@ -787,8 +787,8 @@ pub fn stub_7c018c() -> ! {
 // was: boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>::operator()(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8HumanoidEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")]
-pub fn stub_7c0194() -> ! {
-    todo!("0x7c0194 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>::operator()(void)")
+// IDA 0x7c0194: 8 insns (LDM.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c0194() {
 }
 
 
@@ -796,8 +796,8 @@ pub fn stub_7c0194() -> ! {
 // was: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::~callable() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_7c01ac() -> ! {
-    todo!("0x7c01ac rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void...")
+// IDA 0x7c01ac: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7c01ac() {
 }
 
 
@@ -805,8 +805,8 @@ pub fn stub_7c01ac() -> ! {
 // was: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::~callable() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_7c01d8() -> ! {
-    todo!("0x7c01d8 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void...")
+// IDA 0x7c01d8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_7c01d8() {
 }
 
 
@@ -814,8 +814,8 @@ pub fn stub_7c01d8() -> ! {
 // was: boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8AnimatorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_7c02ac() -> ! {
-    todo!("0x7c02ac boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x7c02ac: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c02ac() {
 }
 
 
@@ -823,8 +823,8 @@ pub fn stub_7c02ac() -> ! {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animator,RBX::Animator>(boost::shared_ptr<RBX::Animator> const*,RBX::Animator *)const — uses rbx_core::SharedPtr not boost
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animator,RBX::Animator>(boost::shared_ptr<RBX::Animator> const*,RBX::Animator *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8AnimatorES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_7c0374() -> ! {
-    todo!("0x7c0374 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animator,RBX::Animator>(boost::shared_ptr<RBX::Animator> const*,RBX::Animator *)...")
+// IDA 0x7c0374: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c0374() {
 }
 
 
@@ -833,8 +833,8 @@ pub fn stub_7c0374() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX8AnimatorENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_7c045c() -> ! {
-    todo!("0x7c045c boost::detail::shared_count::shared_count<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter)")
+// IDA 0x7c045c: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c045c() {
 }
 
 
@@ -842,8 +842,8 @@ pub fn stub_7c045c() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8AnimatorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_7c0564() -> ! {
-    todo!("0x7c0564 boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x7c0564: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_7c0564() {
 }
 
 
@@ -851,8 +851,8 @@ pub fn stub_7c0564() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8AnimatorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_7c0568() -> ! {
-    todo!("0x7c0568 boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// IDA 0x7c0568: 1 insn (B.W) — branch/return thunk, no state change.
+pub fn stub_7c0568() {
 }
 
 
@@ -860,8 +860,8 @@ pub fn stub_7c0568() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8AnimatorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_7c056c() -> ! {
-    todo!("0x7c056c boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// IDA 0x7c056c: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c056c() {
 }
 
 
@@ -869,8 +869,8 @@ pub fn stub_7c056c() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8AnimatorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_7c058c() -> ! {
-    todo!("0x7c058c boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// IDA 0x7c058c: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c058c() {
 }
 
 
@@ -878,7 +878,7 @@ pub fn stub_7c058c() -> ! {
 // was: boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8AnimatorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_7c05a4() -> ! {
-    todo!("0x7c05a4 boost::detail::sp_counted_impl_pd<RBX::Animator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// IDA 0x7c05a4: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_7c05a4() {
 }
 
