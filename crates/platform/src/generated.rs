@@ -672,6 +672,330 @@ pub fn control_user_interaction_enabled() -> bool {
 pub fn user_input_service_for_game(has_game: bool, service_present: bool) -> bool {
     has_game && service_present
 }
+/// Host id standing in for the `GameInputViewController` `self`.
+const GAME_INPUT_ID: ControlId = 3;
+/// Host id standing in for the `GameKeyboard` `self`.
+const GAME_KEYBOARD_ID: ControlId = 4;
+/// Host id standing in for the `GameView` `self`.
+const GAME_VIEW_ID: ControlId = 5;
+/// Minimal `GameInputViewController` counterpart (IDA 0x4c248..0x4c46c):
+/// owns the `ControlView` built by `init:withGame:` and counts the
+/// view-controller lifecycle steps.
+#[derive(Debug, Default)]
+pub struct GameInputViewState {
+    initialized: AtomicBool,
+    has_control_view: AtomicBool,
+    view_set: AtomicBool,
+    loads: AtomicU32,
+    unloads: AtomicU32,
+    releases: AtomicU32,
+}
+impl GameInputViewState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[GameInputViewController init:withBundle:withGame:overlayDataModel:]`
+    /// (IDA 0x4c248): super `initWithNibName:bundle:` (0x4c28a, nil stays
+    /// nil); on success `ControlView alloc` (0x4c2dc) + main-screen bounds
+    /// (0x4c2fc..0x4c31c) + `init:withGame:` with the `shared_count` copy /
+    /// `release` handoff (0x4c324..0x4c374), then `setView:` (0x4c392).
+    /// The `Arc` clone/drop is the count handoff here.
+    pub fn init_with_game(&self, _game_id: u32) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        self.has_control_view.store(true, Ordering::SeqCst);
+        self.view_set.store(true, Ordering::SeqCst);
+        Some(GAME_INPUT_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn has_control_view(&self) -> bool {
+        self.has_control_view.load(Ordering::SeqCst)
+    }
+    /// `-[GameInputViewController dealloc]` (IDA 0x4c3f4): `controlView`
+    /// `release` (0x4c416) then super `dealloc` (0x4c438).
+    pub fn dealloc(&self) {
+        self.has_control_view.store(false, Ordering::SeqCst);
+        self.view_set.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-[GameInputViewController viewDidLoad]` (IDA 0x4c440): super only.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    /// `-[GameInputViewController viewDidUnload]` (IDA 0x4c46c): super only.
+    pub fn view_did_unload(&self) {
+        self.bump(&self.unloads);
+    }
+    pub fn unload_count(&self) -> u32 {
+        self.unloads.load(Ordering::SeqCst)
+    }
+}
+static GAME_INPUT: std::sync::LazyLock<GameInputViewState> =
+    std::sync::LazyLock::new(GameInputViewState::default);
+/// Minimal `GameKeyboard` counterpart (`Client/iOS/GameKeyboard.*` ivars,
+/// IDA 0x4c6ac..0x4d220): the singleton, the hidden `UITextField` + its text
+/// / placeholder, the bound `shared_ptr<TextBox>`, and observable counters
+/// for the `UserInputService` / notification steps out of slice.
+/// `dispatch_sync`/`dispatch_async` to the main queue run inline on the host.
+#[derive(Debug, Default)]
+pub struct GameKeyboardState {
+    initialized: AtomicBool,
+    constructed_textbox: AtomicBool,
+    text_hidden: AtomicBool,
+    interaction_enabled: AtomicBool,
+    first_responder: AtomicBool,
+    observer_regs: AtomicU32,
+    text: parking_lot::Mutex<String>,
+    placeholder: parking_lot::Mutex<String>,
+    parent: parking_lot::Mutex<Option<ControlId>>,
+    has_textbox: AtomicBool,
+    show_calls: AtomicU32,
+    hide_calls: AtomicU32,
+    release_focus_calls: AtomicU32,
+    finish_editing_calls: AtomicU32,
+    last_finished: parking_lot::Mutex<String>,
+    last_confirmed: AtomicBool,
+    releases: AtomicU32,
+}
+impl GameKeyboardState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[GameKeyboard init]` (IDA 0x4c71c): super `-[ControlComponent init]`
+    /// (0x4c75e); nulls `currentTextBox` (0x4c79e..0x4cb2), sizes from the
+    /// main-screen bounds (0x4c7d8..0x4c842), disables interaction (0x4c858),
+    /// builds the hidden delegate `UITextField` (0x4c876..0x4c940) and
+    /// registers the `WillHide` / `WillChangeFrame` observers
+    /// (0x4c962..0x4c9d8).
+    pub fn init_keyboard(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        self.text_hidden.store(true, Ordering::SeqCst);
+        self.interaction_enabled.store(false, Ordering::SeqCst);
+        self.first_responder.store(false, Ordering::SeqCst);
+        self.observer_regs.store(2, Ordering::SeqCst);
+        Some(GAME_KEYBOARD_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn observer_count(&self) -> u32 {
+        self.observer_regs.load(Ordering::SeqCst)
+    }
+    /// `-[GameKeyboard .cxx_construct]` (IDA 0x4d220): zeroes
+    /// `currentTextBox` (0x4d22e..0x4d232).
+    pub fn construct(&self) {
+        self.has_textbox.store(false, Ordering::SeqCst);
+        self.constructed_textbox.store(true, Ordering::SeqCst);
+    }
+    /// `-[GameKeyboard .cxx_destruct]` (IDA 0x4d184): `release`s the bound
+    /// `shared_ptr<TextBox>` (0x4d1da..0x4d1e2); the `Arc` drop is the release.
+    pub fn destruct(&self) {
+        self.has_textbox.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    /// `-[GameKeyboard dealloc]` (IDA 0x4ca18): `textView` release
+    /// (0x4ca3a) then super `dealloc` (0x4ca5c).
+    pub fn dealloc(&self) {
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-[GameKeyboard hideKeyboard]` (IDA 0x4ca64): nulls `currentTextBox`
+    /// (0x4ca9a..0x4cad2), clears + hides the field (0x4cb02..0x4cb18),
+    /// disables interaction (0x4cb2e), resigns first responder (0x4cb42).
+    pub fn hide(&self) {
+        self.has_textbox.store(false, Ordering::SeqCst);
+        *self.text.lock() = String::new();
+        self.text_hidden.store(true, Ordering::SeqCst);
+        self.interaction_enabled.store(false, Ordering::SeqCst);
+        self.first_responder.store(false, Ordering::SeqCst);
+        self.bump(&self.hide_calls);
+    }
+    pub fn hide_call_count(&self) -> u32 {
+        self.hide_calls.load(Ordering::SeqCst)
+    }
+    pub fn is_hidden(&self) -> bool {
+        self.text_hidden.load(Ordering::SeqCst)
+    }
+    pub fn text(&self) -> String {
+        self.text.lock().clone()
+    }
+    /// `-[GameKeyboard setDefaultString:]` (IDA 0x4cbc0): the field
+    /// placeholder (0x4cbda).
+    pub fn set_placeholder(&self, value: &str) {
+        *self.placeholder.lock() = value.to_owned();
+    }
+    pub fn placeholder(&self) -> String {
+        self.placeholder.lock().clone()
+    }
+    /// `-[GameKeyboard setParentView:]` (IDA 0x4cbe0): `[parent
+    /// addSubview:self]` (0x4cbf2).
+    pub fn set_parent(&self, parent: Option<ControlId>) {
+        *self.parent.lock() = parent;
+    }
+    pub fn parent(&self) -> Option<ControlId> {
+        *self.parent.lock()
+    }
+    /// `___29-[GameKeyboard showKeyboard:]_block_invoke` (IDA 0x4cc78): sets
+    /// the field text (0x4ccb4..0x4ccc8), sizes from the main-screen bounds
+    /// (phone `h / 2.5`, pad half-height, 0x4ccfa..0x4cde2), unhides
+    /// (0x4cdfa), enables interaction (0x4ce0e), becomes first responder
+    /// (0x4ce2e).
+    pub fn apply_show_block(&self, text: &str) {
+        *self.text.lock() = text.to_owned();
+        self.text_hidden.store(false, Ordering::SeqCst);
+        self.interaction_enabled.store(true, Ordering::SeqCst);
+        self.first_responder.store(true, Ordering::SeqCst);
+        self.bump(&self.show_calls);
+    }
+    pub fn show_call_count(&self) -> u32 {
+        self.show_calls.load(Ordering::SeqCst)
+    }
+    /// `-[GameKeyboard showKeyboard:]` (IDA 0x4cbf8): when the field is
+    /// hidden builds the `__29…_block_invoke` stack block and
+    /// `dispatch_sync`s it to the main queue (0x4cc5e..0x4cc72, inline on
+    /// the host); an already-visible field returns 0.
+    pub fn show_keyboard(&self, text: &str) -> bool {
+        if !self.text_hidden.load(Ordering::SeqCst) {
+            return false;
+        }
+        self.apply_show_block(text);
+        true
+    }
+    /// `-[GameKeyboard showKeyboardWithTextBox:]` (IDA 0x4ce44): hidden
+    /// field plus a live `TextBox` (`*px`, 0x4ceb6) rebinds `currentTextBox`
+    /// (0x4cece) and shows its `+608` string (0x4cee0..0x4cefc); the
+    /// `std::string` refcount dance (0x4cf12..0x4cf54) frees the temp.
+    pub fn show_with_textbox(&self, has_textbox: bool, text: &str) -> bool {
+        if !self.text_hidden.load(Ordering::SeqCst) || !has_textbox {
+            return false;
+        }
+        self.has_textbox.store(true, Ordering::SeqCst);
+        self.show_keyboard(text)
+    }
+    pub fn has_textbox(&self) -> bool {
+        self.has_textbox.load(Ordering::SeqCst)
+    }
+    /// `-[GameKeyboard keyboardWillHide:]` (IDA 0x4cb80): a live
+    /// `currentTextBox` gets `TextBox::externalReleaseFocus("", 0)`
+    /// (0x4cb92..0x4cba2), then `hideKeyboard` (0x4cbb8).
+    pub fn notify_will_hide(&self) {
+        if self.has_textbox.load(Ordering::SeqCst) {
+            self.bump(&self.release_focus_calls);
+        }
+        self.hide();
+    }
+    pub fn release_focus_count(&self) -> u32 {
+        self.release_focus_calls.load(Ordering::SeqCst)
+    }
+    /// `-[GameKeyboard keyboardWillChangeFrame:]` (IDA 0x4cbbc): empty body.
+    pub fn notify_frame_changed(&self) {}
+    /// `-[GameKeyboard textFieldShouldReturn:]` (IDA 0x4cfdc): the
+    /// `UserInputService` lookup over `currentTextBox` (0x4cff6); when found
+    /// `textboxDidFinishEditing(text, confirmed=1)` (0x4d014..0x4d02e), then
+    /// the `__38…_block_invoke` (`hideKeyboard`) runs via `dispatch_async`
+    /// on the main queue (0x4d060..0x4d072, inline); always returns 1.
+    pub fn text_field_should_return(&self, has_service: bool) -> bool {
+        if has_service {
+            *self.last_finished.lock() = self.text.lock().clone();
+            self.last_confirmed.store(true, Ordering::SeqCst);
+            self.bump(&self.finish_editing_calls);
+        }
+        self.hide();
+        true
+    }
+    /// `-[GameKeyboard textFieldDidEndEditing:]` (IDA 0x4d0a4): only when the
+    /// field is first responder (0x4d0ca); then `textboxDidFinishEditing(text,
+    /// confirmed=0)` (0x4d0e2..0x4d10e) and the `__39…_block_invoke`
+    /// (`hideKeyboard`) via `dispatch_async` (0x4d140..0x4d152, inline).
+    pub fn text_field_did_end_editing(&self, is_first_responder: bool, has_service: bool) {
+        if !is_first_responder {
+            return;
+        }
+        if has_service {
+            *self.last_finished.lock() = self.text.lock().clone();
+            self.last_confirmed.store(false, Ordering::SeqCst);
+            self.bump(&self.finish_editing_calls);
+        }
+        self.hide();
+    }
+    pub fn finish_editing_count(&self) -> u32 {
+        self.finish_editing_calls.load(Ordering::SeqCst)
+    }
+    pub fn last_finished_text(&self) -> String {
+        self.last_finished.lock().clone()
+    }
+    pub fn last_finished_confirmed(&self) -> bool {
+        self.last_confirmed.load(Ordering::SeqCst)
+    }
+}
+static GAME_KEYBOARD: std::sync::LazyLock<GameKeyboardState> =
+    std::sync::LazyLock::new(GameKeyboardState::default);
+/// `+[GameKeyboard sharedInstance]` cell (IDA 0x4c6ac, `dword_130C550`): the
+/// `dispatch_once` initializer lives with the cell.
+static KEYBOARD_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        GAME_KEYBOARD.init_keyboard();
+        GAME_KEYBOARD_ID
+    });
+/// Host `+[GameKeyboard sharedInstance]` (IDA 0x4c6ac): `dispatch_once`
+/// runs `__30…_block_invoke` (alloc + `init`, 0x4c6f8..0x4c716) exactly once.
+pub fn shared_keyboard_id() -> Option<ControlId> {
+    Some(*KEYBOARD_SHARED)
+}
+/// Minimal `GameView` counterpart for `initWithFrame:` / `layoutSubviews`
+/// (IDA 0x4d5ac/0x4d5e4): init state plus the last applied viewport aspect.
+/// The Ogre singletons have no host counterpart; their presence is a flag.
+#[derive(Debug, Default)]
+pub struct HostGameView {
+    initialized: AtomicBool,
+    layout_passes: AtomicU32,
+    last_aspect: parking_lot::Mutex<f32>,
+}
+impl HostGameView {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[GameView initWithFrame:]` (IDA 0x4d5ac): super init with the frame
+    /// (0x4d5e2).
+    pub fn init_with_frame(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(GAME_VIEW_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-[GameView layoutSubviews]` (IDA 0x4d5e4): needs a live Ogre `Root`
+    /// (0x4d5fa), render system (0x4d602) and window (0x4d620); then viewport
+    /// 0 resizes to `(max(w, h), min(w, h))` (0x4d638..0x4d69e) and the camera
+    /// aspect becomes `max / min` (0x4d6a2..0x4d6c4). Missing singletons skip.
+    pub fn layout(&self, render_ready: bool, width: f32, height: f32) -> Option<f32> {
+        if !render_ready {
+            return None;
+        }
+        let (hi, lo) = if width >= height { (width, height) } else { (height, width) };
+        let aspect = if lo == 0.0 { 0.0 } else { hi / lo };
+        *self.last_aspect.lock() = aspect;
+        self.bump(&self.layout_passes);
+        Some(aspect)
+    }
+    pub fn layout_pass_count(&self) -> u32 {
+        self.layout_passes.load(Ordering::SeqCst)
+    }
+    pub fn last_aspect(&self) -> f32 {
+        *self.last_aspect.lock()
+    }
+}
+static HOST_GAME_VIEW: std::sync::LazyLock<HostGameView> =
+    std::sync::LazyLock::new(HostGameView::default);
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
@@ -10936,176 +11260,222 @@ pub fn stub_47338(has_game: bool, service_present: bool) -> bool {
 // 0x4c248 — -[GameInputViewController init:withBundle:withGame:overlayDataModel:]
 // type: id __cdecl(GameInputViewController *self, SEL, id, id, shared_ptr<RBX::Game>, shared_ptr<RBX::OverlayDataModel>)
 #[doc(alias = "-[GameInputViewController init:withBundle:withGame:overlayDataModel:]")]
-pub fn stub_4c248() -> ! {
-    todo!("0x4c248 -[GameInputViewController init:withBundle:withGame:overlayDataModel:]")
+pub fn stub_4c248(game_id: u32) -> Option<ControlId> {
+    // IDA 0x4c248 `-[GameInputViewController init:withBundle:withGame:...]`:
+    // super `initWithNibName:bundle:`; on success `ControlView` alloc +
+    // main-screen bounds + `init:withGame:` (shared-count handoff) + `setView:`.
+    GAME_INPUT.init_with_game(game_id)
 }
 
 // 0x4c3f4 — -[GameInputViewController dealloc]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController dealloc]")]
-pub fn stub_4c3f4() -> ! {
-    todo!("0x4c3f4 -[GameInputViewController dealloc]")
+pub fn stub_4c3f4() {
+    // IDA 0x4c3f4 `-[GameInputViewController dealloc]`: `controlView`
+    // `release`, then super `dealloc`.
+    GAME_INPUT.dealloc();
 }
 
 // 0x4c440 — -[GameInputViewController viewDidLoad]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidLoad]")]
-pub fn stub_4c440() -> ! {
-    todo!("0x4c440 -[GameInputViewController viewDidLoad]")
+pub fn stub_4c440() {
+    // IDA 0x4c440 `-[GameInputViewController viewDidLoad]`: super only.
+    GAME_INPUT.view_did_load();
 }
 
 // 0x4c46c — -[GameInputViewController viewDidUnload]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidUnload]")]
-pub fn stub_4c46c() -> ! {
-    todo!("0x4c46c -[GameInputViewController viewDidUnload]")
+pub fn stub_4c46c() {
+    // IDA 0x4c46c `-[GameInputViewController viewDidUnload]`: super only.
+    GAME_INPUT.view_did_unload();
 }
 
 // 0x4c6ac — +[GameKeyboard sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[GameKeyboard sharedInstance]")]
-pub fn stub_4c6ac() -> ! {
-    todo!("0x4c6ac +[GameKeyboard sharedInstance]")
+pub fn stub_4c6ac() -> Option<ControlId> {
+    // IDA 0x4c6ac `+[GameKeyboard sharedInstance]`: `dispatch_once` runs
+    // `__30…_block_invoke` once; the cell holds the singleton id after.
+    shared_keyboard_id()
 }
 
 // 0x4c6dc — ___30+[GameKeyboard sharedInstance]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___30+[GameKeyboard sharedInstance]_block_invoke")]
-pub fn stub_4c6dc() -> ! {
-    todo!("0x4c6dc ___30+[GameKeyboard sharedInstance]_block_invoke")
+pub fn stub_4c6dc() -> Option<ControlId> {
+    // IDA 0x4c6dc `__30+[GameKeyboard sharedInstance]_block_invoke`: alloc +
+    // `init` into `dword_130C554`.
+    GAME_KEYBOARD.init_keyboard()
 }
 
 // 0x4c71c — -[GameKeyboard init]
 // type: GameKeyboard *__cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard init]")]
-pub fn stub_4c71c() -> ! {
-    todo!("0x4c71c -[GameKeyboard init]")
+pub fn stub_4c71c() -> Option<ControlId> {
+    // IDA 0x4c71c `-[GameKeyboard init]`: super `ControlComponent init`,
+    // null `currentTextBox`, main-screen frame, hidden delegate field, the
+    // two keyboard notification observers.
+    GAME_KEYBOARD.init_keyboard()
 }
 
 // 0x4ca18 — -[GameKeyboard dealloc]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard dealloc]")]
-pub fn stub_4ca18() -> ! {
-    todo!("0x4ca18 -[GameKeyboard dealloc]")
+pub fn stub_4ca18() {
+    // IDA 0x4ca18 `-[GameKeyboard dealloc]`: `textView` release, then super.
+    GAME_KEYBOARD.dealloc();
 }
 
 // 0x4ca64 — -[GameKeyboard hideKeyboard]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard hideKeyboard]")]
-pub fn stub_4ca64() -> ! {
-    todo!("0x4ca64 -[GameKeyboard hideKeyboard]")
+pub fn stub_4ca64() {
+    // IDA 0x4ca64 `-[GameKeyboard hideKeyboard]`: null the `TextBox`, clear
+    // + hide the field, disable interaction, resign first responder.
+    GAME_KEYBOARD.hide();
 }
 
 // 0x4cb80 — -[GameKeyboard keyboardWillHide:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillHide:]")]
-pub fn stub_4cb80() -> ! {
-    todo!("0x4cb80 -[GameKeyboard keyboardWillHide:]")
+pub fn stub_4cb80() {
+    // IDA 0x4cb80 `-[GameKeyboard keyboardWillHide:]`: live `TextBox` gets
+    // `externalReleaseFocus("", 0)`, then `hideKeyboard`.
+    GAME_KEYBOARD.notify_will_hide();
 }
 
 // 0x4cbbc — -[GameKeyboard keyboardWillChangeFrame:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillChangeFrame:]")]
-pub fn stub_4cbbc() -> ! {
-    todo!("0x4cbbc -[GameKeyboard keyboardWillChangeFrame:]")
+pub fn stub_4cbbc() {
+    // IDA 0x4cbbc `-[GameKeyboard keyboardWillChangeFrame:]`: empty body.
+    GAME_KEYBOARD.notify_frame_changed();
 }
 
 // 0x4cbc0 — -[GameKeyboard setDefaultString:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setDefaultString:]")]
-pub fn stub_4cbc0() -> ! {
-    todo!("0x4cbc0 -[GameKeyboard setDefaultString:]")
+pub fn stub_4cbc0(value: &str) {
+    // IDA 0x4cbc0 `-[GameKeyboard setDefaultString:]`: the field placeholder.
+    GAME_KEYBOARD.set_placeholder(value);
 }
 
 // 0x4cbe0 — -[GameKeyboard setParentView:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setParentView:]")]
-pub fn stub_4cbe0() -> ! {
-    todo!("0x4cbe0 -[GameKeyboard setParentView:]")
+pub fn stub_4cbe0(parent: Option<ControlId>) {
+    // IDA 0x4cbe0 `-[GameKeyboard setParentView:]`: `[parent addSubview:self]`.
+    GAME_KEYBOARD.set_parent(parent);
 }
 
 // 0x4cbf8 — -[GameKeyboard showKeyboard:]
 // type: bool __cdecl(GameKeyboard *self, SEL, const char *)
 #[doc(alias = "-[GameKeyboard showKeyboard:]")]
-pub fn stub_4cbf8() -> ! {
-    todo!("0x4cbf8 -[GameKeyboard showKeyboard:]")
+pub fn stub_4cbf8(text: &str) -> bool {
+    // IDA 0x4cbf8 `-[GameKeyboard showKeyboard:]`: hidden field builds the
+    // `__29…_block_invoke` block and `dispatch_sync`s it to main (inline);
+    // visible field returns 0.
+    GAME_KEYBOARD.show_keyboard(text)
 }
 
 // 0x4cc78 — ___29-[GameKeyboard showKeyboard:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___29-[GameKeyboard showKeyboard:]_block_invoke")]
-pub fn stub_4cc78() -> ! {
-    todo!("0x4cc78 ___29-[GameKeyboard showKeyboard:]_block_invoke")
+pub fn stub_4cc78(text: &str) {
+    // IDA 0x4cc78 `__29-[GameKeyboard showKeyboard:]_block_invoke`: set the
+    // field text, size from bounds, unhide, enable interaction, first responder.
+    GAME_KEYBOARD.apply_show_block(text);
 }
 
 // 0x4ce44 — -[GameKeyboard showKeyboardWithTextBox:]
 // type: bool __cdecl(GameKeyboard *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[GameKeyboard showKeyboardWithTextBox:]")]
-pub fn stub_4ce44() -> ! {
-    todo!("0x4ce44 -[GameKeyboard showKeyboardWithTextBox:]")
+pub fn stub_4ce44(has_textbox: bool, text: &str) -> bool {
+    // IDA 0x4ce44 `-[GameKeyboard showKeyboardWithTextBox:]`: hidden field +
+    // live `TextBox` rebinds `currentTextBox` and shows its string.
+    GAME_KEYBOARD.show_with_textbox(has_textbox, text)
 }
 
 // 0x4cfbc — -[GameKeyboard getText]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard getText]")]
-pub fn stub_4cfbc() -> ! {
-    todo!("0x4cfbc -[GameKeyboard getText]")
+pub fn stub_4cfbc() -> String {
+    // IDA 0x4cfbc `-[GameKeyboard getText]`: the field text.
+    GAME_KEYBOARD.text()
 }
 
 // 0x4cfdc — -[GameKeyboard textFieldShouldReturn:]
 // type: char __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldShouldReturn:]")]
-pub fn stub_4cfdc() -> ! {
-    todo!("0x4cfdc -[GameKeyboard textFieldShouldReturn:]")
+pub fn stub_4cfdc(has_service: bool) -> bool {
+    // IDA 0x4cfdc `-[GameKeyboard textFieldShouldReturn:]`:
+    // `textboxDidFinishEditing(text, confirmed=1)` when the service resolves,
+    // then the `__38…` hide block via `dispatch_async` (inline); returns 1.
+    GAME_KEYBOARD.text_field_should_return(has_service)
 }
 
 // 0x4d07c — ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")]
-pub fn stub_4d07c() -> ! {
-    todo!("0x4d07c ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")
+pub fn stub_4d07c() {
+    // IDA 0x4d07c `__38-[GameKeyboard textFieldShouldReturn:]_block_invoke`:
+    // `hideKeyboard`.
+    GAME_KEYBOARD.hide();
 }
 
 // 0x4d0a4 — -[GameKeyboard textFieldDidEndEditing:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldDidEndEditing:]")]
-pub fn stub_4d0a4() -> ! {
-    todo!("0x4d0a4 -[GameKeyboard textFieldDidEndEditing:]")
+pub fn stub_4d0a4(is_first_responder: bool, has_service: bool) {
+    // IDA 0x4d0a4 `-[GameKeyboard textFieldDidEndEditing:]`: first-responder
+    // gate, then `textboxDidFinishEditing(text, confirmed=0)` and the
+    // `__39…` hide block via `dispatch_async` (inline).
+    GAME_KEYBOARD.text_field_did_end_editing(is_first_responder, has_service);
 }
 
 // 0x4d15c — ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")]
-pub fn stub_4d15c() -> ! {
-    todo!("0x4d15c ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")
+pub fn stub_4d15c() {
+    // IDA 0x4d15c `__39-[GameKeyboard textFieldDidEndEditing:]_block_invoke`:
+    // `hideKeyboard`.
+    GAME_KEYBOARD.hide();
 }
 
 // 0x4d184 — -[GameKeyboard .cxx_destruct]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_destruct]")]
-pub fn stub_4d184() -> ! {
-    todo!("0x4d184 -[GameKeyboard .cxx_destruct]")
+pub fn stub_4d184() {
+    // IDA 0x4d184 `-[GameKeyboard .cxx_destruct]`: releases the bound `TextBox`.
+    GAME_KEYBOARD.destruct();
 }
 
 // 0x4d220 — -[GameKeyboard .cxx_construct]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_construct]")]
-pub fn stub_4d220() -> ! {
-    todo!("0x4d220 -[GameKeyboard .cxx_construct]")
+pub fn stub_4d220() {
+    // IDA 0x4d220 `-[GameKeyboard .cxx_construct]`: zeroes `currentTextBox`.
+    GAME_KEYBOARD.construct();
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
 // type: GameView *__cdecl(GameView *self, SEL, CGRect)
 #[doc(alias = "-[GameView initWithFrame:]")]
-pub fn stub_4d5ac() -> ! {
-    todo!("0x4d5ac -[GameView initWithFrame:]")
+pub fn stub_4d5ac() -> Option<ControlId> {
+    // IDA 0x4d5ac `-[GameView initWithFrame:]`: super init with the frame.
+    HOST_GAME_VIEW.init_with_frame()
 }
 
 // 0x4d5e4 — -[GameView layoutSubviews]
 // type: void __cdecl(GameView *self, SEL)
 #[doc(alias = "-[GameView layoutSubviews]")]
-pub fn stub_4d5e4() -> ! {
-    todo!("0x4d5e4 -[GameView layoutSubviews]")
+pub fn stub_4d5e4(render_ready: bool, width: f32, height: f32) -> Option<f32> {
+    // IDA 0x4d5e4 `-[GameView layoutSubviews]`: live Ogre Root + render
+    // system + window resize viewport 0 to (max, min) and set camera aspect
+    // to max / min; missing singletons skip.
+    HOST_GAME_VIEW.layout(render_ready, width, height)
 }
 
 // 0x4f188 — -[JumpButton initWithFrame:]
