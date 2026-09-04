@@ -29,29 +29,21 @@ pub fn stub_5c733c() -> ! {
 
 // 0x5c8a68 — __ZNK3RBX7Message12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Message::askSetParent(RBX::Instance const*)const")]
-pub fn stub_5c8a68() -> ! {
-    todo!("0x5c8a68 RBX::Message::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x5c8a68 as stub_5c8a68;
 
 // 0x5c9708 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4HintEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Hint> RBX::Creatable<RBX::Instance>::create<RBX::Hint>(void)")]
 // was: boost::shared_ptr<RBX::Hint> RBX::Creatable<RBX::Instance>::create<RBX::Hint>(void)
-pub fn stub_5c9708() -> ! {
-    todo!("0x5c9708 rbx_core::SharedPtr<RBX::Hint> RBX::Creatable<RBX::Instance>::create<RBX::Hint>(void)")
-}
+pub use crate::instance::stub_0x5c9708 as stub_5c9708;
 
 // 0x5c9f04 — __ZN5boost10shared_ptrIN3RBX4HintEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Hint>::shared_ptr<RBX::Hint,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Hint>::shared_ptr<RBX::Hint,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_5c9f04() -> ! {
-    todo!("0x5c9f04 rbx_core::SharedPtr<RBX::Hint>::shared_ptr<RBX::Hint,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5c9f04 as stub_5c9f04;
 
 // 0x5ca0b4 — __ZN5boost6detail12shared_countC2IPN3RBX4HintENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_5ca0b4() -> ! {
-    todo!("0x5ca0b4 boost::detail::shared_count::shared_count<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5ca0b4 as stub_5ca0b4;
 
 // 0x5ca1bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4HintENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -73,35 +65,25 @@ pub fn stub_5ca1c4() -> ! {
 
 // 0x5ca1e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4HintENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_5ca1e4() -> ! {
-    todo!("0x5ca1e4 boost::detail::sp_counted_impl_pd<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x5ca1e4 as stub_5ca1e4;
 
 // 0x5ca1fc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4HintENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_5ca1fc() -> ! {
-    todo!("0x5ca1fc boost::detail::sp_counted_impl_pd<RBX::Hint *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x5ca1fc as stub_5ca1fc;
 
 // 0x5ca804 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7MessageEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Message> RBX::Creatable<RBX::Instance>::create<RBX::Message>(void)")]
 // was: boost::shared_ptr<RBX::Message> RBX::Creatable<RBX::Instance>::create<RBX::Message>(void)
-pub fn stub_5ca804() -> ! {
-    todo!("0x5ca804 rbx_core::SharedPtr<RBX::Message> RBX::Creatable<RBX::Instance>::create<RBX::Message>(void)")
-}
+pub use crate::instance::stub_0x5ca804 as stub_5ca804;
 
 // 0x5ca8b4 — __ZN5boost10shared_ptrIN3RBX7MessageEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Message>::shared_ptr<RBX::Message,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Message>::shared_ptr<RBX::Message,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_5ca8b4() -> ! {
-    todo!("0x5ca8b4 rbx_core::SharedPtr<RBX::Message>::shared_ptr<RBX::Message,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5ca8b4 as stub_5ca8b4;
 
 // 0x5caa64 — __ZN5boost6detail12shared_countC2IPN3RBX7MessageENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_5caa64() -> ! {
-    todo!("0x5caa64 boost::detail::shared_count::shared_count<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5caa64 as stub_5caa64;
 
 // 0x5cab6c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -123,15 +105,11 @@ pub fn stub_5cab74() -> ! {
 
 // 0x5cab94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_5cab94() -> ! {
-    todo!("0x5cab94 boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x5cab94 as stub_5cab94;
 
 // 0x5cabac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7MessageENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_5cabac() -> ! {
-    todo!("0x5cabac boost::detail::sp_counted_impl_pd<RBX::Message *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x5cabac as stub_5cabac;
 
 // 0x5cc74c — __ZN3RBXL9TranslateEN5boost10shared_ptrINS_8InstanceEEEPKN3G3D7Vector3E
 #[doc(alias = "RBX::Translate(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3 const*)")]
@@ -167,9 +145,7 @@ pub fn stub_5cca4c() -> ! {
 
 // 0x5cca68 — __ZNK3RBX13ModelInstance12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::ModelInstance::askSetParent(RBX::Instance const*)const")]
-pub fn stub_5cca68() -> ! {
-    todo!("0x5cca68 RBX::ModelInstance::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x5cca68 as stub_5cca68;
 
 // 0x5ccaa4 — __ZN3RBX13ModelInstance17onDescendantAddedEPNS_8InstanceE
 #[doc(alias = "RBX::ModelInstance::onDescendantAdded(RBX::Instance *)")]
@@ -334,22 +310,16 @@ pub fn stub_5d5038() -> ! {
 // 0x5d7738 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4PART5WedgeEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
 // was: boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)
-pub fn stub_5d7738() -> ! {
-    todo!("0x5d7738 rbx_core::SharedPtr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")
-}
+pub use crate::instance::stub_0x5d7738 as stub_5d7738;
 
 // 0x5d77ec — __ZN5boost10shared_ptrIN3RBX4PART5WedgeEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_5d77ec() -> ! {
-    todo!("0x5d77ec rbx_core::SharedPtr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5d77ec as stub_5d77ec;
 
 // 0x5d799c — __ZN5boost6detail12shared_countC2IPN3RBX4PART5WedgeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_5d799c() -> ! {
-    todo!("0x5d799c boost::detail::shared_count::shared_count<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5d799c as stub_5d799c;
 
 // 0x5d7aa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -371,15 +341,11 @@ pub fn stub_5d7aac() -> ! {
 
 // 0x5d7acc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_5d7acc() -> ! {
-    todo!("0x5d7acc boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x5d7acc as stub_5d7acc;
 
 // 0x5d7ae4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4PART5WedgeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_5d7ae4() -> ! {
-    todo!("0x5d7ae4 boost::detail::sp_counted_impl_pd<RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x5d7ae4 as stub_5d7ae4;
 
 // 0x5d95b0 — __ZN3RBX12PartInstance14onChildRemovedEPNS_8InstanceE
 #[doc(alias = "RBX::PartInstance::onChildRemoved(RBX::Instance *)")]
@@ -396,9 +362,7 @@ pub fn stub_5daf54() -> ! {
 
 // 0x5db58c — __ZNK3RBX12PartInstance12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::PartInstance::askSetParent(RBX::Instance const*)const")]
-pub fn stub_5db58c() -> ! {
-    todo!("0x5db58c RBX::PartInstance::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x5db58c as stub_5db58c;
 
 // 0x5de610 — __ZNK3RBX12PartInstance30getConnectedPartsRecursiveImplERN5boost10shared_ptrISt6vectorINS2_INS_8InstanceEEESaIS5_EEEERNS1_9unordered13unordered_setIPS0_NS1_4hashISC_EESt8equal_toISC_ESaISC_EEE
 #[doc(alias = "RBX::PartInstance::getConnectedPartsRecursiveImpl(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> &,boost::unordered::unordered_set<RBX::PartInstance*,boost::hash<RBX::PartInstance*>,std::equal_to<RBX::PartInstance*>,std::allocator<RBX::PartInstance*>> &)const")]
@@ -450,9 +414,7 @@ pub fn stub_5e0f1c() -> ! {
 // 0x5e0ff8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16TouchTransmitterEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)")]
 // was: boost::shared_ptr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)
-pub fn stub_5e0ff8() -> ! {
-    todo!("0x5e0ff8 rbx_core::SharedPtr<RBX::TouchTransmitter> RBX::Creatable<RBX::Instance>::create<RBX::TouchTransmitter>(void)")
-}
+pub use crate::instance::stub_0x5e0ff8 as stub_5e0ff8;
 
 // 0x5e1558 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_16TouchTransmitterEEEPKT_v
 #[doc(alias = "RBX::TouchTransmitter const* RBX::Instance::findConstFirstChildOfType<RBX::TouchTransmitter>(void)const")]
@@ -508,9 +470,7 @@ pub fn stub_5e2888() -> ! {
 
 // 0x5e29e8 — __ZN3RBX8Instance15canClientCreateEv
 #[doc(alias = "RBX::Instance::canClientCreate(void)")]
-pub fn stub_5e29e8() -> ! {
-    todo!("0x5e29e8 RBX::Instance::canClientCreate(void)")
-}
+pub use crate::instance::stub_0x5e29e8 as stub_5e29e8;
 
 // 0x5e29f0 — __ZN3RBX8Instance12onChildAddedEPS0_
 #[doc(alias = "RBX::Instance::onChildAdded(RBX::Instance*)")]
@@ -589,15 +549,11 @@ pub fn stub_5e5ca8() -> ! {
 // 0x5e8890 — __ZN5boost10shared_ptrIN3RBX16TouchTransmitterEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_5e8890() -> ! {
-    todo!("0x5e8890 rbx_core::SharedPtr<RBX::TouchTransmitter>::shared_ptr<RBX::TouchTransmitter,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5e8890 as stub_5e8890;
 
 // 0x5e8a40 — __ZN5boost6detail12shared_countC2IPN3RBX16TouchTransmitterENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_5e8a40() -> ! {
-    todo!("0x5e8a40 boost::detail::shared_count::shared_count<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter)")
-}
+pub use crate::instance::stub_0x5e8a40 as stub_5e8a40;
 
 // 0x5e8b48 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -619,15 +575,11 @@ pub fn stub_5e8b50() -> ! {
 
 // 0x5e8b70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_5e8b70() -> ! {
-    todo!("0x5e8b70 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x5e8b70 as stub_5e8b70;
 
 // 0x5e8b88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_5e8b88() -> ! {
-    todo!("0x5e8b88 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x5e8b88 as stub_5e8b88;
 
 // 0x5ea1cc — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEEC2ESB_PKcSE_NS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")]
