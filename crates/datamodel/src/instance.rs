@@ -947,6 +947,32 @@ pub struct UnlockAllVerb {
     pub data_model: *const DataModel,
 }
 
+/// Rust model of `RBX::Reflection::EnumDesc<T>` (IDA `0x41d3d0`): the
+/// name/value table built by `addPair` in each `EnumDesc::C2`; the live
+/// reflection registry lands elsewhere, so construction collapses into the
+/// static table.
+pub struct EnumDesc {
+    pub name: &'static str,
+    pub pairs: &'static [(i32, &'static str)],
+}
+
+/// Rust model of the synchronization arbiter behind
+/// `DataModel::getSyncronizationArbiter` (IDA `0x41e84c`, member at `+184`
+/// with the alternate source at word `+881`); scheduling lands with the
+/// task subsystem.
+#[derive(Default)]
+pub struct SyncArbiter {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::DataModel::LegacyLock` (IDA `0x41ede0`): the scoped
+/// model lock held across legacy jobs; the task type rides along until the
+/// job subsystem lands.
+pub struct LegacyLock {
+    pub model: SharedPtr<DataModel>,
+    pub task: u32,
+}
+
 /// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
 /// select-all command plus the owning data model.
 pub struct SelectAllCommand {
@@ -15250,62 +15276,122 @@ pub fn stub_0x41d3c4() -> ! {
 
 // 0x41d3d0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::EnumDesc(void)")]
-pub fn stub_0x41d3d0() -> ! {
-    todo!("0x41d3d0 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::EnumDesc(void)")
+pub fn stub_0x41d3d0() -> EnumDesc {
+    // IDA 0x41d3d0: `EnumDesc<CreatorType>::C2` registers the pairs
+    // `(0, User)` (decomp 0x41d4b4) and `(1, Group)` (decomp 0x41d4ca); the
+    // registry insert collapses into the static table.
+    EnumDesc { name: "CreatorType", pairs: &[(0, "User"), (1, "Group")] }
 }
 
 // 0x41d590 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::EnumDesc(void)")]
-pub fn stub_0x41d590() -> ! {
-    todo!("0x41d590 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::EnumDesc(void)")
+pub fn stub_0x41d590() -> EnumDesc {
+    // IDA 0x41d590: `EnumDesc<Genre>::C2` registers `All=0` through
+    // `Tutorial=13` (decomp 0x41d674-0x41d792); the registry insert collapses
+    // into the static table.
+    EnumDesc {
+        name: "Genre",
+        pairs: &[
+            (0, "All"),
+            (1, "TownAndCity"),
+            (2, "Fantasy"),
+            (3, "SciFi"),
+            (4, "Ninja"),
+            (5, "Scary"),
+            (6, "Pirate"),
+            (7, "Adventure"),
+            (8, "Sports"),
+            (9, "Funny"),
+            (10, "WildWest"),
+            (11, "War"),
+            (12, "SkatePark"),
+            (13, "Tutorial"),
+        ],
+    }
 }
 
 // 0x41d864 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::EnumDesc(void)")]
-pub fn stub_0x41d864() -> ! {
-    todo!("0x41d864 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::EnumDesc(void)")
+pub fn stub_0x41d864() -> EnumDesc {
+    // IDA 0x41d864: `EnumDesc<GearGenreSetting>::C2` registers
+    // `(0, AllGenres)` (decomp 0x41d948) and `(1, MatchingGenreOnly)` (decomp
+    // 0x41d95e); the registry insert collapses into the static table.
+    EnumDesc { name: "GearGenreSetting", pairs: &[(0, "AllGenres"), (1, "MatchingGenreOnly")] }
 }
 
 // 0x41da24 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::EnumDesc(void)")]
-pub fn stub_0x41da24() -> ! {
-    todo!("0x41da24 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::EnumDesc(void)")
+pub fn stub_0x41da24() -> EnumDesc {
+    // IDA 0x41da24: `EnumDesc<GearType>::C2` registers `MeleeWeapons=0`
+    // through `Transport=8` (decomp 0x41db08-0x41dbb8); the registry insert
+    // collapses into the static table.
+    EnumDesc {
+        name: "GearType",
+        pairs: &[
+            (0, "MeleeWeapons"),
+            (1, "RangedWeapons"),
+            (2, "Explosives"),
+            (3, "PowerUps"),
+            (4, "NavigationEnhancers"),
+            (5, "MusicalInstruments"),
+            (6, "SocialItems"),
+            (7, "BuildingTools"),
+            (8, "Transport"),
+        ],
+    }
 }
 
 // 0x41dc84 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::EnumDesc(void)")]
-pub fn stub_0x41dc84() -> ! {
-    todo!("0x41dc84 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::EnumDesc(void)")
+pub fn stub_0x41dc84() -> EnumDesc {
+    // IDA 0x41dc84: `EnumDesc<SaveFilter>::C2` registers `(2, SaveAll)`
+    // (decomp 0x41dd68), `(0, SaveWorld)` (decomp 0x41dd7e), `(1, SaveGame)`
+    // (decomp 0x41dd94); the registry insert collapses into the static table.
+    EnumDesc { name: "SaveFilter", pairs: &[(2, "SaveAll"), (0, "SaveWorld"), (1, "SaveGame")] }
 }
 
 // 0x41de60 — __ZN3RBX15StringConverterINS_9DataModel11CreatorTypeEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::DataModel::CreatorType>::convertToValue(std::string const&,RBX::DataModel::CreatorType&)")]
-pub fn stub_0x41de60() -> ! {
-    todo!("0x41de60 RBX::StringConverter<RBX::DataModel::CreatorType>::convertToValue(std::string const&,RBX::DataModel::CreatorType&)")
+pub fn stub_0x41de60(name: &str) -> Option<i32> {
+    // IDA 0x41de60: `StringConverter<CreatorType>::convertToValue` — singleton
+    // `EnumDesc` lookup (disasm 0x41de68-0x41de7c) then the name search with
+    // the value assigned out and true returned, false on miss. The singleton
+    // collapses into the static table of 0x41d3d0 and the out-assign into the
+    // return.
+    stub_0x41d3d0().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41deac — __ZN3RBX15StringConverterINS_9DataModel5GenreEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::DataModel::Genre>::convertToValue(std::string const&,RBX::DataModel::Genre&)")]
-pub fn stub_0x41deac() -> ! {
-    todo!("0x41deac RBX::StringConverter<RBX::DataModel::Genre>::convertToValue(std::string const&,RBX::DataModel::Genre&)")
+pub fn stub_0x41deac(name: &str) -> Option<i32> {
+    // IDA 0x41deac: `StringConverter<Genre>::convertToValue` — same
+    // singleton-lookup + name-search shape as 0x41de60 over the table of
+    // 0x41d590.
+    stub_0x41d590().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41def8 — __ZN3RBX15StringConverterINS_9DataModel16GearGenreSettingEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::DataModel::GearGenreSetting>::convertToValue(std::string const&,RBX::DataModel::GearGenreSetting&)")]
-pub fn stub_0x41def8() -> ! {
-    todo!("0x41def8 RBX::StringConverter<RBX::DataModel::GearGenreSetting>::convertToValue(std::string const&,RBX::DataModel::GearGenreSetting&)")
+pub fn stub_0x41def8(name: &str) -> Option<i32> {
+    // IDA 0x41def8: `StringConverter<GearGenreSetting>::convertToValue` —
+    // same shape as 0x41de60 over the table of 0x41d864.
+    stub_0x41d864().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41df44 — __ZN3RBX15StringConverterINS_9DataModel8GearTypeEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::DataModel::GearType>::convertToValue(std::string const&,RBX::DataModel::GearType&)")]
-pub fn stub_0x41df44() -> ! {
-    todo!("0x41df44 RBX::StringConverter<RBX::DataModel::GearType>::convertToValue(std::string const&,RBX::DataModel::GearType&)")
+pub fn stub_0x41df44(name: &str) -> Option<i32> {
+    // IDA 0x41df44: `StringConverter<GearType>::convertToValue` — same shape
+    // as 0x41de60 over the table of 0x41da24.
+    stub_0x41da24().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41df90 — __ZN3RBX15StringConverterINS_8Instance10SaveFilterEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Instance::SaveFilter>::convertToValue(std::string const&,RBX::Instance::SaveFilter&)")]
-pub fn stub_0x41df90() -> ! {
-    todo!("0x41df90 RBX::StringConverter<RBX::Instance::SaveFilter>::convertToValue(std::string const&,RBX::Instance::SaveFilter&)")
+pub fn stub_0x41df90(name: &str) -> Option<i32> {
+    // IDA 0x41df90: `StringConverter<SaveFilter>::convertToValue` — same
+    // shape as 0x41de60 over the table of 0x41dc84.
+    stub_0x41dc84().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41dfdc — __ZN3RBX9DataModel7canSaveEPKNS_8InstanceE
@@ -15330,14 +15416,22 @@ pub fn stub_0x41e51c() -> ! {
 
 // 0x41e84c — __ZN3RBX9DataModel24getSyncronizationArbiterEv
 #[doc(alias = "RBX::DataModel::getSyncronizationArbiter(void)")]
-pub fn stub_0x41e84c() -> ! {
-    todo!("0x41e84c RBX::DataModel::getSyncronizationArbiter(void)")
+pub fn stub_0x41e84c(model: &DataModel) -> &SyncArbiter {
+    // IDA 0x41e84c: reads the alternate arbiter source at word `+881`
+    // (decomp 0x41e84e), falls back to `this` when null (decomp 0x41e854),
+    // and returns the arbiter member at `+184` (decomp 0x41e85c). No writer
+    // of `+881` is modeled, so the source is always `this` here.
+    &model.sync_arbiter
 }
 
 // 0x41e860 — __ZThn184_N3RBX9DataModel24getSyncronizationArbiterEv
 #[doc(alias = "non-virtual thunk to RBX::DataModel::getSyncronizationArbiter(void)")]
-pub fn stub_0x41e860() -> ! {
-    todo!("0x41e860 non-virtual thunk to RBX::DataModel::getSyncronizationArbiter(void)")
+pub fn stub_0x41e860(model: *const DataModel, _this: *const DataModel) -> *const SyncArbiter {
+    // IDA 0x41e860: `__ZThn184_` thunk to `getSyncronizationArbiter` — the
+    // `this - 184` adjustment is a layout artifact, so the thunk collapses
+    // into the direct member read of 0x41e84c.
+    // SAFETY: `model` must point to a valid `DataModel` outliving the return.
+    unsafe { stub_0x41e84c(&*model) as *const SyncArbiter }
 }
 
 // 0x41e878 — __ZN3RBX9DataModel16doDataModelSetupEN5boost10shared_ptrIS0_EEb
@@ -15350,8 +15444,11 @@ pub fn stub_0x41e878() -> ! {
 // 0x41ede0 — __ZN3RBX9DataModel10LegacyLockC1EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(rbx_core::SharedPtr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
 // was: RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)
-pub fn stub_0x41ede0() -> ! {
-    todo!("0x41ede0 RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")
+pub fn stub_0x41ede0(model: &SharedPtr<DataModel>, task: u32) -> LegacyLock {
+    // IDA 0x41ede0: `LegacyLock::C1` is a thunk to `C2` (decomp shows the
+    // tail-call); the C2 EA sorts into a later file run, so construction is
+    // inlined here — the lock retains the model and keeps the task type.
+    LegacyLock { model: model.clone(), task }
 }
 
 // 0x41ede4 — __ZN3RBX9DataModel18initializeContentsEb
@@ -15362,8 +15459,14 @@ pub fn stub_0x41ede4() -> ! {
 
 // 0x41f220 — __ZN3RBX9DataModel10LegacyLockD1Ev
 #[doc(alias = "RBX::DataModel::LegacyLock::~LegacyLock()")]
-pub fn stub_0x41f220() -> ! {
-    todo!("0x41f220 RBX::DataModel::LegacyLock::~LegacyLock()")
+pub fn stub_0x41f220(_lock: *mut LegacyLock) {
+    // IDA 0x41f220: `LegacyLock::D1` — destroys the `scoped_ptr`
+    // implementation member (decomp 0x41f226); dropping the box releases the
+    // retained model the same way.
+    // SAFETY: `_lock` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_lock));
+    }
 }
 
 // 0x41f230 — __ZN3RBX9DataModel15createDataModelEbPNS_4VerbEPS0_
@@ -15418,44 +15521,84 @@ pub fn stub_0x421b60() -> ! {
 
 // 0x421b80 — __ZN3RBX9DataModelD0Ev
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_0x421b80() -> ! {
-    todo!("0x421b80 RBX::DataModel::~DataModel()")
+pub fn stub_0x421b80(_model: *mut DataModel) {
+    // IDA 0x421b80: `DataModel::D0` — vtable install plus memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_model` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_model));
+    }
 }
 
 // 0x421c20 — __ZN3RBX9DataModelD1Ev
 #[doc(alias = "RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c20() -> ! {
-    todo!("0x421c20 RBX::DataModel::~DataModel()")
+pub fn stub_0x421c20(_model: *mut DataModel) {
+    // IDA 0x421c20: `DataModel::D1` — memberwise teardown; dropping the box
+    // is the same release. Twin of 0x421b80.
+    // SAFETY: `_model` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_model));
+    }
 }
 
 // 0x421c24 — __ZThn32_N3RBX9DataModelD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c24() -> ! {
-    todo!("0x421c24 non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x421c24(model: *const DataModel) {
+    // IDA 0x421c24: `__ZThn32_` thunk to the D0 — the `this - 32` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x421b80.
+    // SAFETY: `model` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(model as *mut DataModel);
+    }
 }
 
 // 0x421c2c — __ZThn36_N3RBX9DataModelD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c2c() -> ! {
-    todo!("0x421c2c non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x421c2c(model: *const DataModel) {
+    // IDA 0x421c2c: `__ZThn36_` thunk to the D0 — the `this - 36` adjustment
+    // is a layout artifact, so the thunk collapses into the direct D0 of
+    // 0x421b80.
+    // SAFETY: `model` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(model as *mut DataModel);
+    }
 }
 
 // 0x421c34 — __ZThn144_N3RBX9DataModelD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c34() -> ! {
-    todo!("0x421c34 non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x421c34(model: *const DataModel) {
+    // IDA 0x421c34: `__ZThn144_` thunk to the D0 — the `this - 144`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D0 of 0x421b80.
+    // SAFETY: `model` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(model as *mut DataModel);
+    }
 }
 
 // 0x421c3c — __ZThn180_N3RBX9DataModelD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c3c() -> ! {
-    todo!("0x421c3c non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x421c3c(model: *const DataModel) {
+    // IDA 0x421c3c: `__ZThn180_` thunk to the D0 — the `this - 180`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D0 of 0x421b80.
+    // SAFETY: `model` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(model as *mut DataModel);
+    }
 }
 
 // 0x421c44 — __ZThn184_N3RBX9DataModelD0Ev
 #[doc(alias = "non-virtual thunk to RBX::DataModel::~DataModel()")]
-pub fn stub_0x421c44() -> ! {
-    todo!("0x421c44 non-virtual thunk to RBX::DataModel::~DataModel()")
+pub fn stub_0x421c44(model: *const DataModel) {
+    // IDA 0x421c44: `__ZThn184_` thunk to the D0 — the `this - 184`
+    // adjustment is a layout artifact, so the thunk collapses into the direct
+    // D0 of 0x421b80.
+    // SAFETY: `model` must be a live box pointer never used again.
+    unsafe {
+        let _ = Box::from_raw(model as *mut DataModel);
+    }
 }
 
 // 0x421c4c — __ZN3RBX9DataModelD2Ev

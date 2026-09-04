@@ -41,6 +41,9 @@ pub struct DataModel {
     pub gear_allowed: i32,
     /// 0-arg member signal at `+2784` fired by `setGear` (IDA `0x41d37e`).
     pub gear_changed: rbx_core::signal::Signal<()>,
+    /// Arbiter member at `+184` behind `getSyncronizationArbiter` (IDA
+    /// `0x41e84c`).
+    pub sync_arbiter: crate::instance::SyncArbiter,
 }
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
