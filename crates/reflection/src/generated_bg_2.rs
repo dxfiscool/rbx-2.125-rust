@@ -701,203 +701,444 @@ pub fn stub_0x17e68() -> bool {
         })
 }
 
+/// Gap-filler `Appirater` usage/counter state behind the `-`/`+` rating-flow
+/// methods (IDA 0x180a8-0x19208). `NSUserDefaults` keys (`kAppiraterUseCount`,
+/// `kAppiraterFirstUseDate`, ...) back these counters on device; with no defaults
+/// store in this crate the same values live in a shared in-memory table.
+/// UI effects (`UIAlertView` show/dismiss, `openURL:`, `NSLog`) have no runtime
+/// here: visibility flags + `*_calls` counters (the `rbx_platform::Appirater`
+/// `*_call_count` pattern) are the observables. Delegate callbacks
+/// (`appiraterDidDisplayAlert:` et al) fire through an opaque `id`; the
+/// `respondsToSelector:` gates collapse and each delivery records a counter.
+static APPIRATER_BUNDLE_VERSION: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+#[derive(Debug, Default)]
+struct AppiraterUsage {
+    current_version: String,
+    first_use_epoch: f64,
+    use_count: u32,
+    significant_event_count: u32,
+    rated_current_version: bool,
+    declined_to_rate: bool,
+    reminder_request_epoch: f64,
+    rating_alert_visible: bool,
+    show_alert_calls: u32,
+    hide_alert_calls: u32,
+    rate_app_calls: u32,
+    last_review_url: String,
+    did_display_alert_calls: u32,
+    did_decline_calls: u32,
+    did_rate_calls: u32,
+    remind_later_calls: u32,
+}
+static APPIRATER_USAGE: parking_lot::Mutex<AppiraterUsage> = parking_lot::Mutex::new(AppiraterUsage {
+    current_version: String::new(),
+    first_use_epoch: 0.0,
+    use_count: 0,
+    significant_event_count: 0,
+    rated_current_version: false,
+    declined_to_rate: false,
+    reminder_request_epoch: 0.0,
+    rating_alert_visible: false,
+    show_alert_calls: 0,
+    hide_alert_calls: 0,
+    rate_app_calls: 0,
+    last_review_url: String::new(),
+    did_display_alert_calls: 0,
+    did_decline_calls: 0,
+    did_rate_calls: 0,
+    remind_later_calls: 0,
+});
+/// `templateReviewURL` (disasm 0x18f6e).
+const TEMPLATE_REVIEW_URL: &str = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
+/// `NSDate date` / `timeIntervalSince1970` (IDA 0x186e2-0x186f2, 0x190c4-0x190d4).
+fn appirater_now_epoch() -> f64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs_f64())
+        .unwrap_or(0.0)
+}
+
 // 0x17f80 — +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
-pub fn stub_0x17f80() -> ! {
-    todo!("0x17f80 +[Appirater sharedInstance]")
+pub fn stub_0x17f80() {
+    // IDA 0x17f80: `+[Appirater sharedInstance]` — nil-check `dword_130C398`
+    // (0x17f94), one-shot `dispatch_once` running the alloc/init block at 0x17fe4
+    // (0x17fd0-0x17fdc). Module statics self-initialize on first use, so the
+    // once-guard collapses; the block body is stub_0x17fe4.
+    stub_0x17fe4();
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
-pub fn stub_0x17fe4() -> ! {
-    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+pub fn stub_0x17fe4() {
+    // IDA 0x17fe4: the `sharedInstance` init block — `alloc`/`init` (0x18008-0x18030),
+    // `setDelegate:` from `dword_130C394` (0x18036, retained in APPIRATER_DELEGATE),
+    // `addObserver:... appWillResignActive` (0x18052-0x18092). No ObjC runtime here:
+    // construction is the statics above, the delegate pointer is already retained,
+    // and resign-active delivery is the platform's job. No explicit body.
 }
 
 // 0x18094 — ___copy_helper_block_
 #[doc(alias = "___copy_helper_block_")]
-pub fn stub_0x18094() -> ! {
-    todo!("0x18094 ___copy_helper_block_")
+pub fn stub_0x18094(_dst: usize, _src: usize) {
+    // IDA 0x18094: `__copy_helper_block_` — `_Block_object_assign` retains the
+    // captured `self` (0x1809a, flag 3 = BLOCK_FIELD_IS_OBJECT). Rust ownership
+    // retains captures by construction; no explicit body.
 }
 
 // 0x180a0 — ___destroy_helper_block_
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_")]
-pub fn stub_0x180a0() -> ! {
-    todo!("0x180a0 ___destroy_helper_block_")
+pub fn stub_0x180a0(_block: usize) {
+    // IDA 0x180a0: `__destroy_helper_block_` — `_Block_object_dispose` releases the
+    // captured `self` (0x180a4). Drop glue covers it; no explicit body.
 }
 
 // 0x180a8 — -[Appirater showRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater showRatingAlert]")]
-pub fn stub_0x180a8() -> ! {
-    todo!("0x180a8 -[Appirater showRatingAlert]")
+pub fn stub_0x180a8() {
+    // IDA 0x180a8: `-showRatingAlert` builds the localized title/message/buttons
+    // (0x180fe-0x1831e), `UIAlertView initWithTitle:...` with `self` as delegate
+    // (0x18346), `setRatingAlert:` (0x18358), `show` (0x1836a), then
+    // `appiraterDidDisplayAlert:` when the delegate responds (0x1837e-0x183c6).
+    // No UI runtime here: visibility + delivery counters are the observables.
+    let mut u = APPIRATER_USAGE.lock();
+    u.rating_alert_visible = true;
+    u.show_alert_calls += 1;
+    u.did_display_alert_calls += 1;
 }
 
 // 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
-pub fn stub_0x183d8() -> ! {
-    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+pub fn stub_0x183d8() -> bool {
+    // IDA 0x183d8: `-ratingConditionsHaveBeenMet` — debug shortcut returns 1
+    // (0x183ea-0x183f6); otherwise every gate must pass: `now - firstUse >=
+    // daysUntilPrompt*86400` (0x18498-0x184aa), `useCount > usesUntilPrompt`
+    // (0x184d0-0x184dc), `sigCount > sigEventsUntilPrompt` (0x184f2-0x184f6),
+    // `!declinedToRate` (0x18516-0x18518), `!ratedCurrentVersion` (0x18530-0x18532),
+    // `now - reminderDate >= timeBeforeReminding*86400` (0x18568-0x18594).
+    // Thresholds come from the APPIRATER_* configuration statics.
+    use std::sync::atomic::Ordering::SeqCst;
+    if APPIRATER_DEBUG.load(SeqCst) {
+        return true;
+    }
+    let u = APPIRATER_USAGE.lock();
+    let now = appirater_now_epoch();
+    let days = f64::from_bits(APPIRATER_DAYS_UNTIL_PROMPT.load(SeqCst));
+    if now - u.first_use_epoch < days * 86400.0 {
+        return false;
+    }
+    if u.use_count <= APPIRATER_USES_UNTIL_PROMPT.load(SeqCst) {
+        return false;
+    }
+    if u.significant_event_count <= APPIRATER_SIGNIFICANT_EVENTS_UNTIL_PROMPT.load(SeqCst) {
+        return false;
+    }
+    if u.declined_to_rate {
+        return false;
+    }
+    if u.rated_current_version {
+        return false;
+    }
+    let remind = f64::from_bits(APPIRATER_TIME_BEFORE_REMINDING.load(SeqCst));
+    now - u.reminder_request_epoch >= remind * 86400.0
 }
 
 // 0x185b0 — -[Appirater incrementUseCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementUseCount]")]
-pub fn stub_0x185b0() -> ! {
-    todo!("0x185b0 -[Appirater incrementUseCount]")
+pub fn stub_0x185b0() {
+    // IDA 0x185b0: `-incrementUseCount` — stores the bundle version on first sight
+    // (0x18642-0x18662); same-version path stamps `firstUseDate` when unset
+    // (0x186b8-0x1870a) and bumps `useCount` (0x18730-0x18740); a version change
+    // resets version/date/counts/flags (0x1877a-0x1884e); `synchronize` (0x1886a).
+    // `_debug` NSLog branches noted. Bundle version crosses via
+    // APPIRATER_BUNDLE_VERSION; persistence is the in-memory table.
+    let bundle = APPIRATER_BUNDLE_VERSION.lock().clone();
+    let mut u = APPIRATER_USAGE.lock();
+    let now = appirater_now_epoch();
+    if u.current_version == bundle {
+        if u.first_use_epoch == 0.0 {
+            u.first_use_epoch = now;
+        }
+        u.use_count += 1;
+    } else {
+        u.current_version = bundle;
+        u.first_use_epoch = now;
+        u.use_count = 1;
+        u.significant_event_count = 0;
+        u.rated_current_version = false;
+        u.declined_to_rate = false;
+        u.reminder_request_epoch = 0.0;
+    }
 }
 
 // 0x18878 — -[Appirater incrementSignificantEventCount]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater incrementSignificantEventCount]")]
-pub fn stub_0x18878() -> ! {
-    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+pub fn stub_0x18878() {
+    // IDA 0x18878: `-incrementSignificantEventCount` — same version-gate shape as
+    // stub_0x185b0 but bumping `kAppiraterSignificantEventCount` (0x189f8-0x18a08);
+    // the version-change reset stores `useCount = 0, sigCount = 1` (0x18a8c-0x18aa0).
+    let bundle = APPIRATER_BUNDLE_VERSION.lock().clone();
+    let mut u = APPIRATER_USAGE.lock();
+    let now = appirater_now_epoch();
+    if u.current_version == bundle {
+        if u.first_use_epoch == 0.0 {
+            u.first_use_epoch = now;
+        }
+        u.significant_event_count += 1;
+    } else {
+        u.current_version = bundle;
+        u.first_use_epoch = now;
+        u.use_count = 0;
+        u.significant_event_count = 1;
+        u.rated_current_version = false;
+        u.declined_to_rate = false;
+        u.reminder_request_epoch = 0.0;
+    }
 }
 
 // 0x18b18 — -[Appirater incrementAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementAndRate:]")]
-pub fn stub_0x18b18() -> ! {
-    todo!("0x18b18 -[Appirater incrementAndRate:]")
+pub fn stub_0x18b18(can_rate: bool) {
+    // IDA 0x18b18: `-incrementAndRate:` — `incrementUseCount` (0x18b30); when the
+    // flag is set and conditions hold (0x18b48) and the probe succeeds (0x18b60),
+    // the alert block runs on the main queue (0x18b98-0x18baa). Queue hop
+    // collapses to the direct call (stub_0x18bb4).
+    stub_0x185b0();
+    if can_rate && stub_0x183d8() && stub_0x17e68() {
+        stub_0x18bb4();
+    }
 }
 
 // 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
 #[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
-pub fn stub_0x18bb4() -> ! {
-    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+pub fn stub_0x18bb4() {
+    // IDA 0x18bb4: the `incrementAndRate:` block — `showRatingAlert` on the
+    // captured `self`. Direct call; capture mechanics need no body.
+    stub_0x180a8();
 }
 
 // 0x18bc8 — ___copy_helper_block_125
 #[doc(alias = "___copy_helper_block_125")]
-pub fn stub_0x18bc8() -> ! {
-    todo!("0x18bc8 ___copy_helper_block_125")
+pub fn stub_0x18bc8(_dst: usize, _src: usize) {
+    // IDA 0x18bc8: `__copy_helper_block_125` — same `_Block_object_assign`
+    // retain as stub_0x18094. No explicit body.
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 #[doc(alias = "___destroy_helper_block_126")]
-pub fn stub_0x18bd4() -> ! {
-    todo!("0x18bd4 ___destroy_helper_block_126")
+pub fn stub_0x18bd4(_block: usize) {
+    // IDA 0x18bd4: `__destroy_helper_block_126` — same `_Block_object_dispose`
+    // release as stub_0x180a0. No explicit body.
 }
 
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
-pub fn stub_0x18bdc() -> ! {
-    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
+pub fn stub_0x18bdc(can_rate: bool) {
+    // IDA 0x18bdc: `-incrementSignificantEventAndRate:` — same gate shape as
+    // stub_0x18b18 over `incrementSignificantEventCount` (0x18bf4-0x18c24),
+    // main-queue alert block (0x18c5c-0x18c6e, stub_0x18c78).
+    stub_0x18878();
+    if can_rate && stub_0x183d8() && stub_0x17e68() {
+        stub_0x18c78();
+    }
 }
 
 // 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 #[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
-pub fn stub_0x18c78() -> ! {
-    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
+pub fn stub_0x18c78() {
+    // IDA 0x18c78: the `incrementSignificantEventAndRate:` block — `showRatingAlert`
+    // on the captured `self`. Direct call.
+    stub_0x180a8();
 }
 
 // 0x18c8c — ___copy_helper_block_130
 #[doc(alias = "___copy_helper_block_130")]
-pub fn stub_0x18c8c() -> ! {
-    todo!("0x18c8c ___copy_helper_block_130")
+pub fn stub_0x18c8c(_dst: usize, _src: usize) {
+    // IDA 0x18c8c: `__copy_helper_block_130` — same retain as stub_0x18094.
+    // No explicit body.
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 #[doc(alias = "___destroy_helper_block_131")]
-pub fn stub_0x18c98() -> ! {
-    todo!("0x18c98 ___destroy_helper_block_131")
+pub fn stub_0x18c98(_block: usize) {
+    // IDA 0x18c98: `__destroy_helper_block_131` — same release as stub_0x180a0.
+    // No explicit body.
 }
 
 // 0x18ca0 — +[Appirater appLaunched]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appLaunched]")]
-pub fn stub_0x18ca0() -> ! {
-    todo!("0x18ca0 +[Appirater appLaunched]")
+pub fn stub_0x18ca0() {
+    // IDA 0x18ca0: `+appLaunched` forwards `appLaunched:YES` (0x18cba).
+    stub_0x18cc0(true);
 }
 
 // 0x18cc0 — +[Appirater appLaunched:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appLaunched:]")]
-pub fn stub_0x18cc0() -> ! {
-    todo!("0x18cc0 +[Appirater appLaunched:]")
+pub fn stub_0x18cc0(first_launch: bool) {
+    // IDA 0x18cc0: `+appLaunched:` captures the flag and runs the
+    // `sharedInstance`/`incrementAndRate:` block on a global queue (0x18cd0-0x18d08,
+    // stub_0x18d10). The queue hop collapses to the direct call.
+    stub_0x17f80();
+    stub_0x18d10(first_launch);
 }
 
 // 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
 #[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
-pub fn stub_0x18d10() -> ! {
-    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
+pub fn stub_0x18d10(can_rate: bool) {
+    // IDA 0x18d10: the `appLaunched:` block — `sharedInstance` (0x18d2e) then
+    // `incrementAndRate:` with the captured flag.
+    stub_0x17f80();
+    stub_0x18b18(can_rate);
 }
 
 // 0x18d4c — -[Appirater hideRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater hideRatingAlert]")]
-pub fn stub_0x18d4c() -> ! {
-    todo!("0x18d4c -[Appirater hideRatingAlert]")
+pub fn stub_0x18d4c() {
+    // IDA 0x18d4c: `-hideRatingAlert` — when the alert is visible (0x18d62-0x18d72),
+    // debug-logs (0x18d8a-0x18d96) and dismisses with button index -1, i.e. no
+    // button (0x18d9e-0x18db8). Visibility flag + hide counter are the observables.
+    let mut u = APPIRATER_USAGE.lock();
+    if u.rating_alert_visible {
+        u.rating_alert_visible = false;
+        u.hide_alert_calls += 1;
+    }
 }
 
 // 0x18dbc — +[Appirater appWillResignActive]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appWillResignActive]")]
-pub fn stub_0x18dbc() -> ! {
-    todo!("0x18dbc +[Appirater appWillResignActive]")
+pub fn stub_0x18dbc() {
+    // IDA 0x18dbc: `+appWillResignActive` — debug log (0x18dcc-0x18dd8),
+    // `sharedInstance` (0x18df4), `hideRatingAlert` (0x18e08).
+    stub_0x17f80();
+    stub_0x18d4c();
 }
 
 // 0x18e0c — +[Appirater appEnteredForeground:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appEnteredForeground:]")]
-pub fn stub_0x18e0c() -> ! {
-    todo!("0x18e0c +[Appirater appEnteredForeground:]")
+pub fn stub_0x18e0c(can_rate: bool) {
+    // IDA 0x18e0c: `+appEnteredForeground:` — same global-queue block shape as
+    // stub_0x18cc0 over `incrementAndRate:` (0x18e1c-0x18e54, stub_0x18e5c).
+    // Queue hop collapses to the direct call.
+    stub_0x17f80();
+    stub_0x18e5c(can_rate);
 }
 
 // 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
 #[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
-pub fn stub_0x18e5c() -> ! {
-    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
+pub fn stub_0x18e5c(can_rate: bool) {
+    // IDA 0x18e5c: the `appEnteredForeground:` block — `sharedInstance` (0x18e7a)
+    // then `incrementAndRate:` with the captured flag.
+    stub_0x17f80();
+    stub_0x18b18(can_rate);
 }
 
 // 0x18e98 — +[Appirater userDidSignificantEvent:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater userDidSignificantEvent:]")]
-pub fn stub_0x18e98() -> ! {
-    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
+pub fn stub_0x18e98(can_rate: bool) {
+    // IDA 0x18e98: `+userDidSignificantEvent:` — global-queue block over
+    // `incrementSignificantEventAndRate:` (0x18ea8-0x18ee0, stub_0x18ee8).
+    // Queue hop collapses to the direct call.
+    stub_0x17f80();
+    stub_0x18ee8(can_rate);
 }
 
 // 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
 #[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
-pub fn stub_0x18ee8() -> ! {
-    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
+pub fn stub_0x18ee8(can_rate: bool) {
+    // IDA 0x18ee8: the `userDidSignificantEvent:` block — `sharedInstance`
+    // (0x18f06) then `incrementSignificantEventAndRate:` with the captured flag.
+    stub_0x17f80();
+    stub_0x18bdc(can_rate);
 }
 
 // 0x18f24 — +[Appirater rateApp]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater rateApp]")]
-pub fn stub_0x18f24() -> ! {
-    todo!("0x18f24 +[Appirater rateApp]")
+pub fn stub_0x18f24() {
+    // IDA 0x18f24: `+rateApp` — substitutes the app id into `templateReviewURL`
+    // (`"...id=APP_ID"`, disasm 0x18f6e; `stringWithFormat:` at 0x18f80,
+    // replacement at 0x18fa2), sets `kAppiraterRatedCurrentVersion`
+    // (0x18fbe-0x18fd0), opens the URL (0x18ff0-0x19024). `synchronize`/`openURL:`
+    // have no target here; the flag, the built URL, and the call count are the
+    // observables.
+    let app_id = APPIRATER_APP_ID.lock().clone();
+    let mut u = APPIRATER_USAGE.lock();
+    u.last_review_url = TEMPLATE_REVIEW_URL.replace("APP_ID", &app_id);
+    u.rated_current_version = true;
+    u.rate_app_calls += 1;
 }
 
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 // type: void __cdecl(Appirater *self, SEL, id, int)
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_0x19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+pub fn stub_0x19028(button: i32) {
+    // IDA 0x19028: `alertView:clickedButtonAtIndex:` — index 2 (remind later)
+    // stamps `kAppiraterReminderRequestDate` (0x190c4-0x19108) and notifies
+    // `appiraterDidOptToRemindLater:` (0x19122-0x191b2); index 1 (rate) runs
+    // `rateApp` (0x19070) and notifies `appiraterDidOptToRate:`; index 0 (decline)
+    // sets `kAppiraterDeclinedToRate` (0x19160-0x19172) and notifies
+    // `appiraterDidDeclineToRate:`. The `respondsToSelector:` gates collapse
+    // (delegate opaque); each delivery records a counter.
+    match button {
+        2 => {
+            let mut u = APPIRATER_USAGE.lock();
+            u.reminder_request_epoch = appirater_now_epoch();
+            u.remind_later_calls += 1;
+        }
+        1 => {
+            stub_0x18f24();
+            APPIRATER_USAGE.lock().did_rate_calls += 1;
+        }
+        0 => {
+            let mut u = APPIRATER_USAGE.lock();
+            u.declined_to_rate = true;
+            u.did_decline_calls += 1;
+        }
+        _ => {}
+    }
 }
 
 // 0x191d4 — -[Appirater ratingAlert]
 // type: UIAlertView *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingAlert]")]
-pub fn stub_0x191d4() -> ! {
-    todo!("0x191d4 -[Appirater ratingAlert]")
+pub fn stub_0x191d4() -> bool {
+    // IDA 0x191d4: `-ratingAlert` returns the retained alert ivar (0x191e2).
+    // The object is platform-owned; visibility is the observable.
+    APPIRATER_USAGE.lock().rating_alert_visible
 }
 
 // 0x191e4 — -[Appirater setRatingAlert:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setRatingAlert:]")]
-pub fn stub_0x191e4() -> ! {
-    todo!("0x191e4 -[Appirater setRatingAlert:]")
+pub fn stub_0x191e4(alert: usize) {
+    // IDA 0x191e4: `-setRatingAlert:` — `objc_setProperty` retain into the ivar
+    // (0x19200). A non-null object means an alert is held (and shown by the
+    // caller at 0x18358-0x1836a); null clears it.
+    APPIRATER_USAGE.lock().rating_alert_visible = alert != 0;
 }
 
 // 0x19208 — -[Appirater delegate]
 // type: AppiraterDelegate *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater delegate]")]
-pub fn stub_0x19208() -> ! {
-    todo!("0x19208 -[Appirater delegate]")
+pub fn stub_0x19208() -> usize {
+    // IDA 0x19208: `-delegate` returns the `_delegate` ivar (0x19216), fed by
+    // `setDelegate:` (stub_0x17e58). Opaque pointer crosses back out.
+    APPIRATER_DELEGATE.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x19218 — -[Appirater setDelegate:]
