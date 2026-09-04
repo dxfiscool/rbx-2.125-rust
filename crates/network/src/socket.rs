@@ -432,6 +432,41 @@ mod tests {
         peer.allow_connection_response_ip_migration(true);
         assert!(peer.allow_ip_migration);
     }
+    #[test]
+    fn plugin_packet_simulator_gates() {
+        // IDA 0xa63bd8/0xa63c14/0xa63c1c: intervals and timeouts.
+        let mut peer = RakPeer::new();
+        peer.set_split_message_progress_interval(7);
+        assert_eq!(peer.split_message_progress_interval(), 7);
+        peer.set_unreliable_timeout(300);
+        assert_eq!(peer.unreliable_timeout_ms, 300);
+        // IDA 0xa63c58: TTL probe gates on host presence.
+        let mut n = 0;
+        RakPeer::send_ttl(None, &mut || n += 1);
+        RakPeer::send_ttl(Some("h"), &mut || n += 1);
+        assert_eq!(n, 1);
+        // IDA 0xa63cf8/0xa63e54: attach dedupes, detach removes.
+        let mut peer = RakPeer::new();
+        assert_eq!(peer.attach_plugin(3, false, &mut || n += 1), 1);
+        assert_eq!(peer.attach_plugin(3, false, &mut || n += 1), 1);
+        assert_eq!(peer.attach_plugin(5, true, &mut || n += 1), 1);
+        assert_eq!(n, 3);
+        peer.detach_plugin(Some(3), false, &mut || n += 10);
+        peer.detach_plugin(None, false, &mut || n += 10);
+        assert_eq!(n, 13);
+        assert!(peer.plugins.is_empty());
+        let order = std::cell::RefCell::new(Vec::new());
+        RakPeer::push_back_packet(false, true, &mut || order.borrow_mut().push("h"), &mut |b| order.borrow_mut().push(if b { "t" } else { "f" }));
+        RakPeer::push_back_packet(true, false, &mut || order.borrow_mut().push("h"), &mut |b| order.borrow_mut().push(if b { "t" } else { "f" }));
+        assert_eq!(order.borrow().as_slice(), ["h", "f"]);
+        let packet = RakPeer::allocate_packet(9);
+        assert_eq!((packet.data.len(), packet.guid), (9, 0));
+        // IDA 0xa64564/0xa64568/0xa64570: compiled-out simulator.
+        RakPeer::apply_network_simulator();
+        peer.set_per_connection_bandwidth_limit(11);
+        assert_eq!(peer.per_connection_bandwidth_limit, 11);
+        assert!(!RakPeer::is_network_simulator_active());
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -772,6 +807,23 @@ pub fn super_fast_hash_incremental(data: &[u8], hash: u32) -> u32 {
  t.wrapping_add(t >> 6)
 }
 
+/// `RakNet::Packet` reduced to its payload plus routing ids (IDA
+/// 0xa6406c): the data buffer, sender address, and sender guid.
+#[derive(Clone, Debug, Default)]
+pub struct Packet {
+ pub data: Vec<u8>,
+ pub address: SystemAddress,
+ pub guid: u64,
+}
+
+impl Packet {
+ #[must_use]
+ pub fn with_data(mut self, data: Vec<u8>) -> Self {
+ self.data = data;
+ self
+ }
+}
+
 /// `RakNet::RakPeer` (IDA 0xa5cb00): sockets, queues, and threads stay
 /// engine-side; the exception list, limits, and password live here.
 #[derive(Clone, Debug, Default)]
@@ -801,6 +853,16 @@ pub struct RakPeer {
  pub default_timeout_ms: u32,
  /// Connection-response IP migration flag (IDA 0xa63aa8).
  pub allow_ip_migration: bool,
+ /// Attached plugin ids at +200/+203, selected by the vtable +44 flag
+ /// (IDA 0xa63cf8).
+ pub plugins: Vec<u32>,
+ pub plugins_alt: Vec<u32>,
+ /// Split-message progress interval (IDA 0xa63bd8).
+ pub split_message_progress_interval: i32,
+ /// Unreliable timeout ms (IDA 0xa63c1c).
+ pub unreliable_timeout_ms: u32,
+ /// Per-connection outgoing bandwidth limit at +0x554 (IDA 0xa64568).
+ pub per_connection_bandwidth_limit: u32,
 }
 
 impl RakPeer {
@@ -1469,6 +1531,86 @@ impl RakPeer {
  /// `RakPeer::AllowConnectionResponseIPMigration` (IDA 0xa63aa8).
  pub fn allow_connection_response_ip_migration(&mut self, allow: bool) {
  self.allow_ip_migration = allow;
+ }
+
+ /// `RakPeer::SetSplitMessageProgressInterval` (IDA 0xa63bd8).
+ pub fn set_split_message_progress_interval(&mut self, interval: i32) {
+ self.split_message_progress_interval = interval;
+ }
+
+ /// `RakPeer::GetSplitMessageProgressInterval` (IDA 0xa63c14).
+ #[must_use]
+ pub fn split_message_progress_interval(&self) -> i32 {
+ self.split_message_progress_interval
+ }
+
+ /// `RakPeer::SetUnreliableTimeout` (IDA 0xa63c1c).
+ pub fn set_unreliable_timeout(&mut self, ms: u32) {
+ self.unreliable_timeout_ms = ms;
+ }
+
+ /// `RakPeer::SendTTL` (IDA 0xa63c58): resolves the host and emits a
+ /// two-byte TTL probe when present.
+ pub fn send_ttl(host: Option<&str>, send: &mut dyn FnMut()) {
+ if host.is_some() {
+ send();
+ }
+ }
+
+ /// `RakPeer::AttachPlugin` (IDA 0xa63cf8): already-attached plugins
+ /// report their 1-based position; otherwise the attach hook runs and
+ /// the id is appended, returning the new count.
+ pub fn attach_plugin(&mut self, id: u32, alt: bool, on_attach: &mut dyn FnMut()) -> u32 {
+ let list = if alt { &mut self.plugins_alt } else { &mut self.plugins };
+ if let Some(pos) = list.iter().position(|&p| p == id) {
+ return (pos + 1) as u32;
+ }
+ on_attach();
+ list.push(id);
+ list.len() as u32
+ }
+
+ /// `RakPeer::DetachPlugin` (IDA 0xa63e54): swap-removes a present id
+ /// and runs the detach hook for non-null plugins.
+ pub fn detach_plugin(&mut self, id: Option<u32>, alt: bool, on_detach: &mut dyn FnMut()) {
+ if let Some(id) = id {
+ let list = if alt { &mut self.plugins_alt } else { &mut self.plugins };
+ if let Some(pos) = list.iter().position(|&p| p == id) {
+ list.swap_remove(pos);
+ }
+ on_detach();
+ }
+ }
+
+ /// `RakPeer::PushBackPacket` (IDA 0xa63ed8): plugin hooks first, then
+ /// the packet queues at the head or tail when present.
+ pub fn push_back_packet(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: &mut dyn FnMut(bool)) {
+ if present {
+ hooks();
+ push(at_head);
+ }
+ }
+
+ /// `RakPeer::AllocatePacket` (IDA 0xa6406c): a packet with a
+ /// zeroed `size`-byte buffer, unassigned guid and address.
+ #[must_use]
+ pub fn allocate_packet(size: usize) -> Packet {
+ Packet::default().with_data(vec![0u8; size])
+ }
+
+ /// `RakPeer::ApplyNetworkSimulator` (IDA 0xa64564): empty (the
+ /// simulator is compiled out of this build).
+ pub fn apply_network_simulator() {}
+
+ /// `RakPeer::SetPerConnectionOutgoingBandwidthLimit` (IDA 0xa64568).
+ pub fn set_per_connection_bandwidth_limit(&mut self, limit: u32) {
+ self.per_connection_bandwidth_limit = limit;
+ }
+
+ /// `RakPeer::IsNetworkSimulatorActive` (IDA 0xa64570): hardcoded 0.
+ #[must_use]
+ pub fn is_network_simulator_active() -> bool {
+ false
  }
 }
 

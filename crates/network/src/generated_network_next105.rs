@@ -752,34 +752,39 @@ pub fn stub_a63ab0() -> ! {
 // 0xa63bd8 — __ZN6RakNet7RakPeer31SetSplitMessageProgressIntervalEi
 // type: unsigned int __fastcall(RakNet::RakPeer *this, int)
 #[doc(alias = "RakNet::RakPeer::SetSplitMessageProgressInterval(int)")]
-pub fn stub_a63bd8() -> ! {
-    todo!("0xa63bd8 RakNet::RakPeer::SetSplitMessageProgressInterval(int)")
+pub fn stub_a63bd8(peer: &mut crate::socket::RakPeer, interval: i32) {
+ // IDA 0xa63bd8: store the interval.
+ peer.set_split_message_progress_interval(interval)
 }
 
 // 0xa63c14 — __ZNK6RakNet7RakPeer31GetSplitMessageProgressIntervalEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::GetSplitMessageProgressInterval(void)const")]
-pub fn stub_a63c14() -> ! {
-    todo!("0xa63c14 RakNet::RakPeer::GetSplitMessageProgressInterval(void)const")
+pub fn stub_a63c14(peer: &crate::socket::RakPeer) -> i32 {
+ // IDA 0xa63c14: load the interval.
+ peer.split_message_progress_interval()
 }
 
 // 0xa63c1c — __ZN6RakNet7RakPeer20SetUnreliableTimeoutEj
 // type: unsigned int __fastcall(RakNet::RakPeer *this, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SetUnreliableTimeout(unsigned int)")]
-pub fn stub_a63c1c() -> ! {
-    todo!("0xa63c1c RakNet::RakPeer::SetUnreliableTimeout(unsigned int)")
+pub fn stub_a63c1c(peer: &mut crate::socket::RakPeer, ms: u32) {
+ // IDA 0xa63c1c: store the timeout.
+ peer.set_unreliable_timeout(ms)
 }
 
 // 0xa63c58 — __ZN6RakNet7RakPeer7SendTTLEPKctij
 // type: int __fastcall(RakNet::RakPeer *this, const char *, unsigned __int16, RakNet::SystemAddress *, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SendTTL(char const*,unsigned short,int,unsigned int)")]
-pub fn stub_a63c58() -> ! {
-    todo!("0xa63c58 RakNet::RakPeer::SendTTL(char const*,unsigned short,int,unsigned int)")
+pub fn stub_a63c58(host: Option<&str>, send: &mut dyn FnMut()) {
+ // IDA 0xa63c58: TTL probe when a host is given.
+ crate::socket::RakPeer::send_ttl(host, send)
 }
 
 // 0xa63cf8 — __ZN6RakNet7RakPeer12AttachPluginEPNS_16PluginInterface2E
 // type: unsigned int __fastcall(RakNet::RakPeer *this, RakNet::PluginInterface2 *)
 #[doc(alias = "RakNet::RakPeer::AttachPlugin(RakNet::PluginInterface2 *)")]
-pub fn stub_a63cf8() -> ! {
-    todo!("0xa63cf8 RakNet::RakPeer::AttachPlugin(RakNet::PluginInterface2 *)")
+pub fn stub_a63cf8(peer: &mut crate::socket::RakPeer, id: u32, alt: bool, on_attach: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa63cf8: dedupe or append, return count.
+ peer.attach_plugin(id, alt, on_attach)
 }

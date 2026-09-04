@@ -699,56 +699,63 @@ pub fn stub_a63ab0() -> ! {
 // type: unsigned int __fastcall(RakNet::RakPeer *this, int)
 #[doc(alias = "RakNet::RakPeer::SetSplitMessageProgressInterval(int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer31SetSplitMessageProgressIntervalEi")]
-pub fn stub_a63bd8() -> ! {
-    todo!("0xa63bd8 RakNet::RakPeer::SetSplitMessageProgressInterval(int)")
+pub fn stub_a63bd8(peer: &mut crate::socket::RakPeer, interval: i32) {
+ // IDA 0xa63bd8: store the interval.
+ peer.set_split_message_progress_interval(interval)
 }
 
 // 0xa63c14 — __ZNK6RakNet7RakPeer31GetSplitMessageProgressIntervalEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::GetSplitMessageProgressInterval(void)const")]
 #[doc(alias = "__ZNK6RakNet7RakPeer31GetSplitMessageProgressIntervalEv")]
-pub fn stub_a63c14() -> ! {
-    todo!("0xa63c14 RakNet::RakPeer::GetSplitMessageProgressInterval(void)const")
+pub fn stub_a63c14(peer: &crate::socket::RakPeer) -> i32 {
+ // IDA 0xa63c14: load the interval.
+ peer.split_message_progress_interval()
 }
 
 // 0xa63c1c — __ZN6RakNet7RakPeer20SetUnreliableTimeoutEj
 // type: unsigned int __fastcall(RakNet::RakPeer *this, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SetUnreliableTimeout(unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer20SetUnreliableTimeoutEj")]
-pub fn stub_a63c1c() -> ! {
-    todo!("0xa63c1c RakNet::RakPeer::SetUnreliableTimeout(unsigned int)")
+pub fn stub_a63c1c(peer: &mut crate::socket::RakPeer, ms: u32) {
+ // IDA 0xa63c1c: store the timeout.
+ peer.set_unreliable_timeout(ms)
 }
 
 // 0xa63c58 — __ZN6RakNet7RakPeer7SendTTLEPKctij
 // type: int __fastcall(RakNet::RakPeer *this, const char *, unsigned __int16, RakNet::SystemAddress *, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SendTTL(char const*,unsigned short,int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer7SendTTLEPKctij")]
-pub fn stub_a63c58() -> ! {
-    todo!("0xa63c58 RakNet::RakPeer::SendTTL(char const*,unsigned short,int,unsigned int)")
+pub fn stub_a63c58(host: Option<&str>, send: &mut dyn FnMut()) {
+ // IDA 0xa63c58: TTL probe when a host is given.
+ crate::socket::RakPeer::send_ttl(host, send)
 }
 
 // 0xa63cf8 — __ZN6RakNet7RakPeer12AttachPluginEPNS_16PluginInterface2E
 // type: unsigned int __fastcall(RakNet::RakPeer *this, RakNet::PluginInterface2 *)
 #[doc(alias = "RakNet::RakPeer::AttachPlugin(RakNet::PluginInterface2 *)")]
 #[doc(alias = "__ZN6RakNet7RakPeer12AttachPluginEPNS_16PluginInterface2E")]
-pub fn stub_a63cf8() -> ! {
-    todo!("0xa63cf8 RakNet::RakPeer::AttachPlugin(RakNet::PluginInterface2 *)")
+pub fn stub_a63cf8(peer: &mut crate::socket::RakPeer, id: u32, alt: bool, on_attach: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa63cf8: dedupe or append, return count.
+ peer.attach_plugin(id, alt, on_attach)
 }
 
 // 0xa63e54 — __ZN6RakNet7RakPeer12DetachPluginEPNS_16PluginInterface2E
 // type: int __fastcall(int this, RakNet::PluginInterface2 *)
 #[doc(alias = "RakNet::RakPeer::DetachPlugin(RakNet::PluginInterface2 *)")]
 #[doc(alias = "__ZN6RakNet7RakPeer12DetachPluginEPNS_16PluginInterface2E")]
-pub fn stub_a63e54() -> ! {
-    todo!("0xa63e54 RakNet::RakPeer::DetachPlugin(RakNet::PluginInterface2 *)")
+pub fn stub_a63e54(peer: &mut crate::socket::RakPeer, id: Option<u32>, alt: bool, on_detach: &mut dyn FnMut()) {
+ // IDA 0xa63e54: swap-remove plus detach hook.
+ peer.detach_plugin(id, alt, on_detach)
 }
 
 // 0xa63ed8 — __ZN6RakNet7RakPeer14PushBackPacketEPNS_6PacketEb
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *, int)
 #[doc(alias = "RakNet::RakPeer::PushBackPacket(RakNet::Packet *,bool)")]
 #[doc(alias = "__ZN6RakNet7RakPeer14PushBackPacketEPNS_6PacketEb")]
-pub fn stub_a63ed8() -> ! {
-    todo!("0xa63ed8 RakNet::RakPeer::PushBackPacket(RakNet::Packet *,bool)")
+pub fn stub_a63ed8(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: &mut dyn FnMut(bool)) {
+ // IDA 0xa63ed8: hooks then head/tail queue.
+ crate::socket::RakPeer::push_back_packet(present, at_head, hooks, push)
 }
 
 // 0xa63fc8 — __ZN6RakNet7RakPeer19ChangeSystemAddressENS_10RakNetGUIDERKNS_13SystemAddressE
@@ -763,8 +770,9 @@ pub fn stub_a63fc8() -> ! {
 // type: int __fastcall(RakNet::RakPeer *this, RakNet *)
 #[doc(alias = "RakNet::RakPeer::AllocatePacket(unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer14AllocatePacketEj")]
-pub fn stub_a6406c() -> ! {
-    todo!("0xa6406c RakNet::RakPeer::AllocatePacket(unsigned int)")
+pub fn stub_a6406c(size: usize) -> crate::socket::Packet {
+ // IDA 0xa6406c: zeroed packet buffer.
+ crate::socket::RakPeer::allocate_packet(size)
 }
 
 // 0xa6410c — __ZN6RakNet7RakPeer9GetSocketENS_13SystemAddressE
@@ -793,24 +801,27 @@ pub fn stub_a64540() -> ! {
 // type: void __fastcall(RakNet::RakPeer *this, float, unsigned __int16, unsigned __int16)
 #[doc(alias = "RakNet::RakPeer::ApplyNetworkSimulator(float,unsigned short,unsigned short)")]
 #[doc(alias = "__ZN6RakNet7RakPeer21ApplyNetworkSimulatorEftt")]
-pub fn stub_a64564() -> ! {
-    todo!("0xa64564 RakNet::RakPeer::ApplyNetworkSimulator(float,unsigned short,unsigned short)")
+pub fn stub_a64564() {
+ // IDA 0xa64564: empty, simulator compiled out.
+ crate::socket::RakPeer::apply_network_simulator()
 }
 
 // 0xa64568 — __ZN6RakNet7RakPeer38SetPerConnectionOutgoingBandwidthLimitEj
 // type: int __fastcall(int this, unsigned int)
 #[doc(alias = "RakNet::RakPeer::SetPerConnectionOutgoingBandwidthLimit(unsigned int)")]
 #[doc(alias = "__ZN6RakNet7RakPeer38SetPerConnectionOutgoingBandwidthLimitEj")]
-pub fn stub_a64568() -> ! {
-    todo!("0xa64568 RakNet::RakPeer::SetPerConnectionOutgoingBandwidthLimit(unsigned int)")
+pub fn stub_a64568(peer: &mut crate::socket::RakPeer, limit: u32) {
+ // IDA 0xa64568: store the limit word.
+ peer.set_per_connection_bandwidth_limit(limit)
 }
 
 // 0xa64570 — __ZN6RakNet7RakPeer24IsNetworkSimulatorActiveEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::IsNetworkSimulatorActive(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer24IsNetworkSimulatorActiveEv")]
-pub fn stub_a64570() -> ! {
-    todo!("0xa64570 RakNet::RakPeer::IsNetworkSimulatorActive(void)")
+pub fn stub_a64570() -> bool {
+ // IDA 0xa64570: hardcoded 0.
+ crate::socket::RakPeer::is_network_simulator_active()
 }
 
 // 0xa64574 — __ZN6RakNet7RakPeer20WriteOutOfBandHeaderEPNS_9BitStreamE
