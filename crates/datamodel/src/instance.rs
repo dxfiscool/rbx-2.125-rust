@@ -1346,6 +1346,14 @@ pub struct DataModelEventDesc {
     pub broadcast: bool,
 }
 
+/// Rust model of `RBX::DataModelMesh` (IDA `0x4750c8`): the data-model mesh
+/// with its level-of-detail axes; mesh data lands with the rendering batch.
+#[derive(Default)]
+pub struct DataModelMesh {
+    pub lod_x: i32,
+    pub lod_y: i32,
+}
+
 /// Rust model of `RBX::DataModel::LegacyLock::Implementation::Events` (IDA
 /// `0x46d698`): the legacy-lock event payload; dispatch lands with the job
 /// subsystem.
@@ -25477,14 +25485,20 @@ pub fn stub_0x470bd0(map: &mut BTreeMap<String, i32>, key: &str) {
 
 // 0x4727ec — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
-pub fn stub_0x4727ec() -> ! {
-    todo!("0x4727ec RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
+pub fn stub_0x4727ec() -> EnumDesc {
+    // IDA 0x4727ec: `EnumDesc<ConcurrencyModel>::C1` is `B.W C2` (disasm
+    // 0x4727ec) — delegates.
+    stub_0x4727f0()
 }
 
 // 0x4727f0 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
-pub fn stub_0x4727f0() -> ! {
-    todo!("0x4727f0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
+pub fn stub_0x4727f0() -> EnumDesc {
+    // IDA 0x4727f0: `EnumDesc<ConcurrencyModel>::C2` registers the pairs
+    // `(0, Serial)` (disasm 0x4728d2-0x4728d4), `(1, Safe)`, `(2, Logical)`,
+    // `(3, Empirical)` (final-R1-before-call reads, disasm 0x4728d8-0x472914);
+    // the registry insert collapses into the static table.
+    EnumDesc { name: "ConcurrencyModel", pairs: vec![(0, "Serial"), (1, "Safe"), (2, "Logical"), (3, "Empirical")] }
 }
 
 // 0x4729dc — __ZN3RBX12DataModelJobC2EPKcNS0_8TaskTypeEbN5boost10shared_ptrINS_16DataModelArbiterEEENS_4Time8IntervalE
@@ -25550,8 +25564,10 @@ pub fn stub_0x473350() -> ! {
 
 // 0x473388 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")]
-pub fn stub_0x473388() -> ! {
-    todo!("0x473388 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")
+pub fn stub_0x473388(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x473388: `EnumDesc<ConcurrencyModel>::addPair` — same push shape
+    // as 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x4736e8 — __ZN3RBX12DataModelJobD1Ev
@@ -25568,14 +25584,22 @@ pub fn stub_0x4736ec() -> ! {
 
 // 0x473860 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")]
-pub fn stub_0x473860() -> ! {
-    todo!("0x473860 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")
+pub fn stub_0x473860(_desc: *mut EnumDesc) {
+    // IDA 0x473860: `EnumDesc<ConcurrencyModel>::D1` — table teardown;
+    // dropping the box is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x473868 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x473868() -> ! {
-    todo!("0x473868 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x473868(desc: &EnumDesc, value: i32) -> Option<&'static str> {
+    // IDA 0x473868: `EnumDesc<ConcurrencyModel>::convertToString` — same
+    // assert-then-search shape as 0x439a84.
+    debug_assert!((0..desc.pairs.len() as i32).contains(&value), "0x473868: value>=0 && value<size");
+    desc.pairs.iter().find(|(v, _)| *v == value).map(|(_, text)| *text)
 }
 
 // 0x4739b0 — __ZN3rbx14implementation12typed_holderIN3RBX16DataModelArbiter16ConcurrencyModelEE14construct_funcEPKcPc
@@ -25586,8 +25610,10 @@ pub fn stub_0x4739b0() -> ! {
 
 // 0x4739c0 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")]
-pub fn stub_0x4739c0() -> ! {
-    todo!("0x4739c0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")
+pub fn stub_0x4739c0(desc: &EnumDesc, name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4739c0: `EnumDesc<ConcurrencyModel>::convertToItem(Name)` — same
+    // pair-search shape as 0x439cf0.
+    desc.pairs.iter().find(|(_, text)| *text == name).copied()
 }
 
 // 0x473a8c — __ZN3rbx8any_castIRKN3RBX16DataModelArbiter16ConcurrencyModelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -25598,112 +25624,168 @@ pub fn stub_0x473a8c() -> ! {
 
 // 0x473b80 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")]
-pub fn stub_0x473b80() -> ! {
-    todo!("0x473b80 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")
+pub fn stub_0x473b80(desc: &mut EnumDesc) {
+    // IDA 0x473b80: `EnumDesc<ConcurrencyModel>::D2` — clears the table in
+    // place. Twin of 0x43a5a0.
+    desc.pairs.clear();
 }
 // 0x473f38 — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::resize(unsigned long,RBX::DataModelArbiter::ConcurrencyModel)")]
 // was: std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::resize(unsigned long,RBX::DataModelArbiter::ConcurrencyModel)
-pub fn stub_0x473f38() -> ! {
-    todo!("0x473f38 std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::resize(unsigned long,RBX::DataModelArbiter::ConcurrencyModel)")
+pub fn stub_0x473f38(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x473f38 (`vector<ConcurrencyModel>::resize`): same shape as
+    // 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x473f70 — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::push_back(RBX::DataModelArbiter::ConcurrencyModel const&)")]
 // was: std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::push_back(RBX::DataModelArbiter::ConcurrencyModel const&)
-pub fn stub_0x473f70() -> ! {
-    todo!("0x473f70 std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::push_back(RBX::DataModelArbiter::ConcurrencyModel const&)")
+pub fn stub_0x473f70(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x473f70 (`vector<ConcurrencyModel>::push_back`): same shape as
+    // 0x45a8b8.
+    items.push(value);
 }
 
 // 0x474004 — __ZNSt3mapIPKN3RBX4NameENS0_16DataModelArbiter16ConcurrencyModelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModelArbiter::ConcurrencyModel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::DataModelArbiter::ConcurrencyModel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x474004() -> ! {
-    todo!("0x474004 std::map<RBX::Name const*,RBX::DataModelArbiter::ConcurrencyModel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x474004<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x474004 (`map<Name, ConcurrencyModel>::operator[]`): same
+    // lookup-or-create shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x47405c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)
-pub fn stub_0x47405c() -> ! {
-    todo!("0x47405c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")
+pub fn stub_0x47405c(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x47405c (`_Rb_tree::_M_insert_unique` with hint): same shape as
+    // 0x45af80.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x474110 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)
-pub fn stub_0x474110() -> ! {
-    todo!("0x474110 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")
+pub fn stub_0x474110(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x474110 (`_Rb_tree::_M_insert`): same plain insert as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x474168 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)
-pub fn stub_0x474168() -> ! {
-    todo!("0x474168 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")
+pub fn stub_0x474168(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x474168 (`_Rb_tree::_M_insert_unique` by value): same shape as
+    // 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x47486c — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,RBX::DataModelArbiter::ConcurrencyModel const&)")]
 // was: std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,RBX::DataModelArbiter::ConcurrencyModel const&)
-pub fn stub_0x47486c() -> ! {
-    todo!("0x47486c std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,RBX::DataModelArbiter::ConcurrencyModel const&)")
+pub fn stub_0x47486c(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x47486c (`vector<ConcurrencyModel>::_M_insert_aux`): same splice
+    // as 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x474950 — __ZNSt12_Vector_baseIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_allocate(unsigned long)
-pub fn stub_0x474950() -> ! {
-    todo!("0x474950 std::_Vector_base<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_allocate(unsigned long)")
+pub fn stub_0x474950(capacity: usize) -> Vec<i32> {
+    // IDA 0x474950 (`_Vector_base<ConcurrencyModel>::_M_allocate`): same safe
+    // allocation as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x474968 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16DataModelArbiter16ConcurrencyModelES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModelArbiter::ConcurrencyModel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *>(RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *)")]
 // was: RBX::DataModelArbiter::ConcurrencyModel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *>(RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *)
-pub fn stub_0x474968() -> ! {
-    todo!("0x474968 RBX::DataModelArbiter::ConcurrencyModel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *>(RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *)")
+pub fn stub_0x474968(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x474968 (`__copy_backward` over the `ConcurrencyModel` range):
+    // same overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x4749c0 — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,unsigned long,RBX::DataModelArbiter::ConcurrencyModel const&)")]
 // was: std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,unsigned long,RBX::DataModelArbiter::ConcurrencyModel const&)
-pub fn stub_0x4749c0() -> ! {
-    todo!("0x4749c0 std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,unsigned long,RBX::DataModelArbiter::ConcurrencyModel const&)")
+pub fn stub_0x4749c0(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x4749c0 (`vector<ConcurrencyModel>::_M_fill_insert`): same splice
+    // as 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x474dfc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>> *)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>> *)
-pub fn stub_0x474dfc() -> ! {
-    todo!("0x474dfc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>> *)")
+pub fn stub_0x474dfc(map: &mut BTreeMap<String, i32>, key: &str) {
+    // IDA 0x474dfc (`_Rb_tree<Name, ConcurrencyModel>::_M_erase` by node):
+    // same keyed erase as 0x470b30.
+    map.remove(key);
 }
 
 // 0x474eec — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)
-pub fn stub_0x474eec() -> ! {
-    todo!("0x474eec RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")
+pub fn stub_0x474eec() -> EnumDesc {
+    // IDA 0x474eec: `EnumDesc<LODType>::C1` is `B.W C2` (same delegation
+    // shape as 0x4727ec) — delegates.
+    stub_0x474ef0()
 }
 
 // 0x474ef0 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)
-pub fn stub_0x474ef0() -> ! {
-    todo!("0x474ef0 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")
+pub fn stub_0x474ef0() -> EnumDesc {
+    // IDA 0x474ef0: `EnumDesc<LODType>::C2` registers the pairs `(2, High)`,
+    // `(1, Medium)`, `(0, Low)` (final-R1-before-call reads, disasm
+    // 0x474fce-0x474ffe); the registry insert collapses into the static
+    // table.
+    EnumDesc { name: "LODType", pairs: vec![(2, "High"), (1, "Medium"), (0, "Low")] }
 }
 
 // 0x4750c8 — __ZN3RBX13DataModelMesh17setLevelOfDetailXENS0_7LODTypeE
 #[doc(alias = "RBX::DataModelMesh::setLevelOfDetailX(RBX::DataModelMesh::LODType)")]
 // was: RBX::DataModelMesh::setLevelOfDetailX(RBX::DataModelMesh::LODType)
-pub fn stub_0x4750c8() -> ! {
-    todo!("0x4750c8 RBX::DataModelMesh::setLevelOfDetailX(RBX::DataModelMesh::LODType)")
+pub fn stub_0x4750c8(mesh: &mut DataModelMesh, level: i32) {
+    // IDA 0x4750c8: compares the word at `+0x80` with the new value (disasm
+    // 0x4750c8-0x4750ce), returns unchanged on equality, else stores (disasm
+    // 0x4750da) with a `PropertyChanged` raise (disasm 0x4750e0-0x4750e4);
+    // the reflection notification collapses.
+    if mesh.lod_x != level {
+        mesh.lod_x = level;
+    }
 }
 
 // 0x4750e8 — __ZN3RBX13DataModelMesh17setLevelOfDetailYENS0_7LODTypeE
 #[doc(alias = "RBX::DataModelMesh::setLevelOfDetailY(RBX::DataModelMesh::LODType)")]
 // was: RBX::DataModelMesh::setLevelOfDetailY(RBX::DataModelMesh::LODType)
-pub fn stub_0x4750e8() -> ! {
-    todo!("0x4750e8 RBX::DataModelMesh::setLevelOfDetailY(RBX::DataModelMesh::LODType)")
+pub fn stub_0x4750e8(mesh: &mut DataModelMesh, level: i32) {
+    // IDA 0x4750e8: `setLevelOfDetailY` — same change-guarded store shape as
+    // 0x4750c8 over the Y axis.
+    if mesh.lod_y != level {
+        mesh.lod_y = level;
+    }
 }
 
 // 0x475108 — __ZN3RBX13DataModelMesh8setScaleERKN3G3D7Vector3E
