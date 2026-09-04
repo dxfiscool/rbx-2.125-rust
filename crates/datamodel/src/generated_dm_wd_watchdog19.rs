@@ -5,109 +5,255 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use crate::generated_05::{Instance, instance_is_a};
+use crate::generated_189::CRenderSettingsItem;
+use crate::generated_190::{RenderSettingsClass, RenderSettingsCreator};
+use crate::instance::CornerWedgeInstance;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+/// Cached class index behind `doGetClassIndex<RunService>` (IDA `0x3af08`):
+/// guard-once assignment from the provider counter, shared crate-wide via
+/// `alloc_class_index` so no two classes collide (cf. `part::WORKSPACE_INDEX`).
+static RUN_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
+/// Cached class index behind `doGetClassIndex<ControllerService>` (IDA `0x3b910`).
+static CONTROLLER_SERVICE_INDEX: AtomicUsize = AtomicUsize::new(0);
 
 // 0xeccc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_eccc() -> ! { todo!("0xeccc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev") }
+pub fn stub_eccc() {
+    // IDA 0xeccc: `Creator::D2` — vtable install, `wasConstructed` assert,
+    // `creators.erase(name)`. Canonical body lives at
+    // `crate::generated_190::stub_0xeccc` (same bytes); delegate so the two
+    // shards cannot drift.
+    crate::generated_190::stub_0xeccc()
+}
 
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_edfc() -> ! { todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv") }
+pub fn stub_edfc() -> &'static str {
+    // IDA 0xedfc: `Creator::getClassName` — assert + `Name::doDeclare`
+    // tail-call returning "RenderSettings". See `generated_190::stub_0xedfc`.
+    crate::generated_190::stub_0xedfc()
+}
 
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
-pub fn stub_ee84() -> ! { todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv") }
+pub fn stub_ee84() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xee84: `Creator::create` — assert + default-construct + adopt.
+    // See `generated_190::stub_0xee84`.
+    crate::generated_190::stub_0xee84()
+}
 
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_f2bc() -> ! { todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev") }
+pub fn stub_f2bc() -> &'static RenderSettingsCreator {
+    // IDA 0xf2bc: `Creator::C2` — registry insert + `isConstructed = 666`.
+    // See `generated_190::stub_0xf2bc`.
+    crate::generated_190::stub_0xf2bc()
+}
 
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_f500() -> ! { todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv") }
+pub fn stub_f500() -> &'static RenderSettingsCreator {
+    // IDA 0xf500: `static_getCreator` — assert + return `&creatorPrivate`.
+    // See `generated_190::stub_0xf500`.
+    crate::generated_190::stub_0xf500()
+}
 
 // 0xfa00 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_fa00() -> ! { todo!("0xfa00 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv") }
+pub fn stub_fa00() -> &'static RenderSettingsClass {
+    // IDA 0xfa00: `Described<CRenderSettingsItem,...>::classDescriptor()`.
+    // See `generated_190::stub_0xfa00`.
+    crate::generated_190::stub_0xfa00()
+}
 
 // 0xfb1c — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb1c() -> ! { todo!("0xfb1c __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_fb1c(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb1c: `Described<CRenderSettingsItem,...>::D1` thunk into
+    // `Instance::~Instance`. See `generated_190::stub_0xfb1c`.
+    crate::generated_190::stub_0xfb1c(item)
+}
 
 // 0xfb20 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb20() -> ! { todo!("0xfb20 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_fb20(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb20: `Described<CRenderSettingsItem,...>::D0` + delete.
+    // See `generated_190::stub_0xfb20`.
+    crate::generated_190::stub_0xfb20(item)
+}
 
 // 0xfb34 — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb34() -> ! { todo!("0xfb34 __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_fb34(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb34: `ZThn32` D1 — `this -= 32`, then D1.
+    // See `generated_190::stub_0xfb34`.
+    crate::generated_190::stub_0xfb34(item)
+}
 
 // 0xfb3c — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb3c() -> ! { todo!("0xfb3c __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_fb3c(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb3c: `ZThn32` D0 — `this -= 32`, D0 + delete.
+    // See `generated_190::stub_0xfb3c`.
+    crate::generated_190::stub_0xfb3c(item)
+}
 
 // 0xfb54 — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_fb54() -> ! { todo!("0xfb54 __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_fb54(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb54: `ZThn36` D1 — `this -= 36`, then D1.
+    // See `generated_190::stub_0xfb54`.
+    crate::generated_190::stub_0xfb54(item)
+}
 
 // 0xfb5c — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_fb5c() -> ! { todo!("0xfb5c __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_fb5c(item: &mut CRenderSettingsItem) {
+    // IDA 0xfb5c: `ZThn36` D0 — `this -= 36`, D0 + delete.
+    // See `generated_190::stub_0xfb5c`.
+    crate::generated_190::stub_0xfb5c(item)
+}
 
 // 0x3af08 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")]
-pub fn stub_3af08() -> ! { todo!("0x3af08 __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv") }
+pub fn stub_3af08() -> usize {
+    // IDA 0x3af08 (decompiled): `doGetClassIndex<RunService>` — guard-once
+    // static `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as `instance::stub_0x3ff958`; the guard collapses into a
+    // 0-sentinel atomic over the shared crate counter.
+    if RUN_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        RUN_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    RUN_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x3b518 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v")]
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")]
-pub fn stub_3b518() -> ! { todo!("0x3b518 __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v") }
+pub fn stub_3b518(instance: *const Instance) -> *const Instance {
+    // IDA 0x3b518 (disasm): `find<ControllerService>` — provider search then
+    // class scan, null on miss. Same root-walk + pre-order shape as
+    // `instance::stub_0x3ff614`, matching the `ControllerService` class.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "ControllerService") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
+}
 
 // 0x3b910 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv")]
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")]
-pub fn stub_3b910() -> ! { todo!("0x3b910 __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv") }
+pub fn stub_3b910() -> usize {
+    // IDA 0x3b910: `doGetClassIndex<ControllerService>` — guard-once static
+    // `index = ServiceProvider::newIndex(1)`, then the cached index.
+    // Same shape as 0x3af08 above.
+    if CONTROLLER_SERVICE_INDEX.load(Ordering::Relaxed) == 0 {
+        let fresh = crate::instance::alloc_class_index();
+        CONTROLLER_SERVICE_INDEX.store(fresh, Ordering::Relaxed);
+    }
+    CONTROLLER_SERVICE_INDEX.load(Ordering::Relaxed)
+}
 
 // 0x2b7568 — __ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v")]
-pub fn stub_2b7568() -> ! { todo!("0x2b7568 __ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v") }
+pub fn stub_2b7568() -> &'static str {
+    // IDA 0x2b7568 (disasm): `Name::declare<sWorkspace>` — loads
+    // `RBX::sWorkspace` ("Workspace", 0x2b7576..0x2b7578), null-checks it
+    // (0x2b757a), declares/interns on the hit path. The interned name is
+    // the "Workspace" literal (same shape as `instance::stub_0x31c30`).
+    "Workspace"
+}
 
 // 0x2b75b0 — __ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v")]
-pub fn stub_2b75b0() -> ! { todo!("0x2b75b0 __ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v") }
+pub fn stub_2b75b0() -> &'static str {
+    // IDA 0x2b75b0: `Name::doDeclare<sWorkspace>` — the declare worker
+    // behind 0x2b7568; returns the interned "Workspace" name.
+    stub_2b7568()
+}
 
 // 0x418c98 — __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_418c98() -> ! { todo!("0x418c98 __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_418c98(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418c98: `ZThn32` D1 of `DescribedCreatable<CornerWedgeInstance>`
+    // — `this -= 32` selects the subobject, then the `Instance` D2.
+    // The adjustment collapses (single modelled address space); member
+    // drops collapse into Rust drop. Drop glue, no-op.
+}
 
 // 0x418cac — __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_418cac() -> ! { todo!("0x418cac __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_418cac(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418cac: `ZThn32` D0 — `this -= 32`, D2, `operator delete`.
+    // The free collapses into Rust ownership (caller drops the box).
+}
 
 // 0x418d60 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_418d60() -> ! { todo!("0x418d60 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_418d60(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418d60: `ZThn36` D1 — `this -= 36`, then the `Instance` D2.
+    // Same collapse as 0x418c98.
+}
 
 // 0x418d74 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_418d74() -> ! { todo!("0x418d74 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_418d74(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418d74: `ZThn36` D0 — `this -= 36`, D2, `operator delete`.
+    // Same collapse as 0x418cac.
+}
 
 // 0x418e94 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_418e94() -> ! { todo!("0x418e94 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_418e94(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418e94: `ZThn32` D1 of `Described<CornerWedgeInstance,...>` —
+    // `this -= 32`, then the `Instance` D2. Same collapse as 0x418c98.
+}
 
 // 0x418ea8 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_418ea8() -> ! { todo!("0x418ea8 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_418ea8(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418ea8: `ZThn32` D0 — `this -= 32`, D2, `operator delete`.
+    // Same collapse as 0x418cac.
+}
 
 // 0x418f5c — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_418f5c() -> ! { todo!("0x418f5c __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_418f5c(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418f5c: `ZThn36` D1 — `this -= 36`, then the `Instance` D2.
+    // Same collapse as 0x418c98.
+}
 
 // 0x418f70 — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_418f70() -> ! { todo!("0x418f70 __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_418f70(_item: &mut CornerWedgeInstance) {
+    // IDA 0x418f70: `ZThn36` D0 — `this -= 36`, D2, `operator delete`.
+    // Same collapse as 0x418cac.
+}
 
 // 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_")]
