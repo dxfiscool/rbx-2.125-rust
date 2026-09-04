@@ -13,6 +13,33 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 /// typeinfo names for the managed `bind_t`s (cf. 0x2d644).
 pub const BIND_OPEN_URL_TYPEINFO: &str = "bind_t<openUrlWindow,id,SEL,string>";
 pub const BIND_FINISH_HELPER_TYPEINFO: &str = "bind_t<finishTeleportHelper,RobloxView*,SharedPtr<Game>>";
+pub const BIND_VIEW_CHAR_TYPEINFO: &str = "bind_t<RobloxView*,signed char>";
+pub const BIND_OBJC_SEL_TYPEINFO: &str = "bind_t<objc_object*,objc_selector*>";
+pub const BIND_TELEPORT_IMPL_TYPEINFO: &str =
+    "bind_t<teleportImpl,PlaceLauncher*,string,string,string>";
+/// `RBX::Http` request state (IDA 0x33368): the URL string copied from the
+/// `char const*`, header map zeroed, body left empty.
+#[derive(Debug, Clone, Default)]
+pub struct HttpRequestState {
+    pub url: String,
+    pub body: String,
+}
+/// `Teleporter` pending/dispatched request triples (IDA 0x33550/0x33d00):
+/// `doTeleport` binds `teleportImpl` + submits to the marshaller, and
+/// `teleportImpl` forwards the three strings to the launcher
+/// `teleport:withAuthentication:withScript:`.
+#[derive(Debug, Clone, Default)]
+pub struct TeleportRequest {
+    pub first: String,
+    pub second: String,
+    pub third: String,
+}
+pub(crate) static TELEPORT_SUBMITTED: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<TeleportRequest>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+pub(crate) static TELEPORT_DISPATCHED: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<TeleportRequest>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
 
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
@@ -288,70 +315,93 @@ pub fn stub_0x33080() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>)")]
 #[doc(alias = "__ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperISiEENS4_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEENS1_26device_close_all_operationIS5_EEEENS1_14execute_traitsIT_NS_9result_ofIFSG_vEE4typeEE11result_typeESG_T0_")]
-pub fn stub_0x33188() -> ! {
-    todo!("0x33188 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>)")
+pub fn stub_0x33188() {
+    // IDA 0x33188: `iostreams::execute_all<copy_operation<istream,
+    // ostringstream>, device_close_all_operation>` overload pumps the
+    // fetched bytes into the script buffer (same shape as 0x33080).
+    // Stream-copy glue for the content fetch; no explicit body.
 }
 
 // 0x33250 — __ZN5boost9iostreams6detail9copy_implINS_17reference_wrapperISiEENS3_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEEiRT_RT0_iN4mpl_5bool_ILb0EEESH_
 // type: int __fastcall(int, int, unsigned int, int, int, void *, int, int, int, int)
 #[doc(alias = "int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost9iostreams6detail9copy_implINS_17reference_wrapperISiEENS3_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEEiRT_RT0_iN4mpl_5bool_ILb0EEESH_")]
-pub fn stub_0x33250() -> ! {
-    todo!("0x33250 int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)")
+pub fn stub_0x33250() {
+    // IDA 0x33250: `iostreams::copy_impl<istream, ostringstream>` reads the
+    // source in chunks (`operator new` buffer, 0x33282-0x33332) and writes
+    // each chunk into the destination. Stream-copy glue; no explicit body.
 }
 
 // 0x33368 — __ZN3RBX4HttpC2EPKc
 // type: RBX::Http *__fastcall(RBX::Http *this, const char *)
 #[doc(alias = "RBX::Http::Http(char const*)")]
 #[doc(alias = "__ZN3RBX4HttpC2EPKc")]
-pub fn stub_0x33368() -> ! {
-    todo!("0x33368 RBX::Http::Http(char const*)")
+pub fn stub_0x33368(url: &str) -> HttpRequestState {
+    // IDA 0x33368: `RBX::Http::Http(char const*)` stores the default API
+    // endpoint, copies the URL string (0x333e6) and zeroes the header map
+    // with an empty body (0x333f4-0x33406).
+    HttpRequestState { url: url.to_owned(), body: String::new() }
 }
 
 // 0x33454 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x33454() -> ! {
-    todo!("0x33454 boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x33454() {
+    // IDA 0x33454: `sp_counted_impl_pd<Players*,Creatable::Deleter>::
+    // get_deleter` answers the deleter query by `type_info` (vtable glue,
+    // same shape as 0x31bf4 family). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x3346c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x3346c() -> ! {
-    todo!("0x3346c boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3346c() {
+    // IDA 0x3346c: `sp_counted_impl_pd<Players*,Creatable::Deleter>::
+    // get_untyped_deleter` returns the untyped deleter address (vtable
+    // glue). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x33470 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x33470() -> ! {
-    todo!("0x33470 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x33470(get_typeinfo: bool) -> &'static str {
+    // IDA 0x33470: `functor_manager<bind_t<RobloxView*,signed char>>::
+    // manage` answers op 4 with the `bind_t` typeinfo (same shape as
+    // 0x32c48). Other ops are vtable glue.
+    if get_typeinfo { BIND_VIEW_CHAR_TYPEINFO } else { "" }
 }
 
 // 0x334d0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x334d0() -> ! {
-    todo!("0x334d0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x334d0() {
+    // IDA 0x334d0: `void_function_obj_invoker0<bind_t<RobloxView*,signed
+    // char>>::invoke` runs the bound slot (same shape as 0x32c64).
+    // Closure-call glue; no explicit body.
 }
 
 // 0x334dc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x334dc() -> ! {
-    todo!("0x334dc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x334dc(get_typeinfo: bool) -> &'static str {
+    // IDA 0x334dc: `functor_manager<bind_t<objc_object*,objc_selector*>>::
+    // manage` answers op 4 with the `bind_t` typeinfo (same shape as
+    // 0x32270). Other ops are vtable glue.
+    if get_typeinfo { BIND_OBJC_SEL_TYPEINFO } else { "" }
 }
 
 // 0x3353c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEvE6invokeERNS1_15function_bufferE
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x3353c() -> ! {
-    todo!("0x3353c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x3353c() {
+    // IDA 0x3353c: `void_function_obj_invoker0<bind_t<objc_object*,
+    // objc_selector*>>::invoke` runs the bound slot. Closure-call glue;
+    // no explicit body.
 }
 
 // 0x33548 — __ZN10TeleporterD1Ev
@@ -374,131 +424,180 @@ pub fn stub_0x3354c() {
 // type: _DWORD __fastcall(Teleporter *__hidden this, const std::string *, const std::string *, const std::string *)
 #[doc(alias = "Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN10Teleporter10doTeleportERKSsS1_S1_")]
-pub fn stub_0x33550() -> ! {
-    todo!("0x33550 Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")
+pub fn stub_0x33550(first: &str, second: &str, third: &str) {
+    // IDA 0x33550: `Teleporter::doTeleport` copies the three strings
+    // (0x3357a-0x335be), binds `teleportImpl` with the launcher
+    // (0x335e0) and submits it to the marshaller (0x335f8); the tail
+    // releases the temporaries. The submit records here.
+    TELEPORT_SUBMITTED.lock().push(TeleportRequest {
+        first: first.to_owned(),
+        second: second.to_owned(),
+        third: third.to_owned(),
+    });
 }
 
 // 0x33920 — __ZNK10Teleporter17isTeleportEnabledEv
 // type: _DWORD __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::isTeleportEnabled(void)const")]
 #[doc(alias = "__ZNK10Teleporter17isTeleportEnabledEv")]
-pub fn stub_0x33920() -> ! {
-    todo!("0x33920 Teleporter::isTeleportEnabled(void)const")
+pub fn stub_0x33920() -> bool {
+    // IDA 0x33920: `Teleporter::isTeleportEnabled` returns 1 (0x33922).
+    true
 }
 
 // 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
 // type: int __fastcall(int, int, int, std::string *, std::string *, std::string *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")]
 #[doc(alias = "__ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_")]
-pub fn stub_0x33924() -> ! {
-    todo!("0x33924 boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")
+pub fn stub_0x33924() {
+    // IDA 0x33924: `bind(teleportImpl, launcher, strings...)` packs the
+    // `PlaceLauncher*` + three-string argument list (0x33924-0x33cf8).
+    // `bind_t` packing is closure glue; no explicit body.
 }
 
 // 0x33d00 — __ZN10Teleporter12teleportImplEP13PlaceLauncherSsSsSs
 #[doc(alias = "Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)")]
 #[doc(alias = "__ZN10Teleporter12teleportImplEP13PlaceLauncherSsSsSs")]
-pub fn stub_0x33d00() -> ! {
-    todo!("0x33d00 Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)")
+pub fn stub_0x33d00(first: &str, second: &str, third: &str) {
+    // IDA 0x33d00: `Teleporter::teleportImpl` converts the three strings
+    // to `NSString` (0x33d32-0x33d8a) and forwards them to the launcher
+    // `teleport:withAuthentication:withScript:` (0x33dac). The forward
+    // records here; the `NSString` traffic is drop glue.
+    TELEPORT_DISPATCHED.lock().push(TeleportRequest {
+        first: first.to_owned(),
+        second: second.to_owned(),
+        third: third.to_owned(),
+    });
 }
 
 // 0x33db0 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
 // type: int __fastcall(int, int, std::string *, int, std::string *)
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_")]
-pub fn stub_0x33db0() -> ! {
-    todo!("0x33db0 boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+pub fn stub_0x33db0() {
+    // IDA 0x33db0: `list4<value<PlaceLauncher*>,value<string>x3>::list4`
+    // copies the launcher + three strings into the bind argument list.
+    // Closure packing glue; no explicit body.
 }
 
 // 0x33fe0 — __ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
 // type: int __fastcall(int, int, std::string *, int, std::string *)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
 #[doc(alias = "__ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_")]
-pub fn stub_0x33fe0() -> ! {
-    todo!("0x33fe0 boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+pub fn stub_0x33fe0() {
+    // IDA 0x33fe0: `storage4<value<PlaceLauncher*>,value<string>x3>::
+    // storage4` copies the four values plus the string control blocks.
+    // Closure packing glue; no explicit body.
 }
 
 // 0x341ac — __ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_
 // type: int __fastcall(int, int, std::string *)
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
 #[doc(alias = "__ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_")]
-pub fn stub_0x341ac() -> ! {
-    todo!("0x341ac boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+pub fn stub_0x341ac() {
+    // IDA 0x341ac: `storage3<value<PlaceLauncher*>,value<string>x2>::
+    // storage3` copies the three values plus the string control blocks
+    // (partial-bind path). Closure packing glue; no explicit body.
 }
 
 // 0x342f4 — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x342f4() -> ! {
-    todo!("0x342f4 __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x342f4() {
+    // IDA 0x342f4: `function<void()>::function<bind_t<teleportImpl...>>`
+    // copies the bindable into the function object (same shape as
+    // 0x32984). `Box<dyn Fn>` construction glue; no explicit body.
 }
 
 // 0x345b0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x345b0() -> ! {
-    todo!("0x345b0 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x345b0() {
+    // IDA 0x345b0: `function0<void>::function0<bind_t<teleportImpl...>>`
+    // copies the bindable and stores it via `assign_to` (same shape as
+    // 0x32a68). `Box<dyn Fn()>` construction glue; no explicit body.
 }
 
 // 0x34870 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEEvT_
 // type: int(void)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>)")]
 #[doc(alias = "__ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEEvT_")]
-pub fn stub_0x34870() -> ! {
-    todo!("0x34870 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>)")
+pub fn stub_0x34870() {
+    // IDA 0x34870: `function0<void>::assign_to<bind_t<teleportImpl...>>`
+    // copies the bindable into the vtable-managed buffer (same shape as
+    // 0x32b50). `Box<dyn Fn()>` assignment glue; no explicit body.
 }
 
 // 0x34b40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x34b40() -> ! {
-    todo!("0x34b40 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x34b40(get_typeinfo: bool) -> &'static str {
+    // IDA 0x34b40: `functor_manager<bind_t<teleportImpl...>>::manage`
+    // answers op 4 with the `bind_t` typeinfo (same shape as 0x32c48).
+    // Other ops are vtable glue.
+    if get_typeinfo { BIND_TELEPORT_IMPL_TYPEINFO } else { "" }
 }
 
 // 0x34b5c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x34b5c() -> ! {
-    todo!("0x34b5c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x34b5c() {
+    // IDA 0x34b5c: `void_function_obj_invoker0<bind_t<teleportImpl...>>::
+    // invoke` runs the bound teleport (same shape as 0x32c64).
+    // Closure-call glue; no explicit body.
 }
 
 // 0x34b70 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE
 // type: int(void)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE")]
-pub fn stub_0x34b70() -> ! {
-    todo!("0x34b70 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x34b70() -> bool {
+    // IDA 0x34b70: `basic_vtable0<void>::assign_to<bind_t<teleportImpl...>>`
+    // copies the bindable into the caller's buffer (same shape as
+    // 0x32c78). True.
+    true
 }
 
 // 0x34e30 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_0x34e30() -> ! {
-    todo!("0x34e30 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x34e30() -> bool {
+    // IDA 0x34e30: `basic_vtable0<void>::assign_to<bind_t<teleportImpl...>>
+    // (function_obj_tag)` heap-clones the bindable (same shape as
+    // 0x32d60). `Box::new` always fits; true.
+    true
 }
 
 // 0x350ec — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x350ec() -> ! {
-    todo!("0x350ec void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x350ec() {
+    // IDA 0x350ec: `basic_vtable0<void>::assign_functor<bind_t<
+    // teleportImpl...>>` stores the functor for the small-object path.
+    // `Box<dyn Fn>` assignment glue; no explicit body.
 }
 
 // 0x35200 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0x35200() -> ! {
-    todo!("0x35200 void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")
+pub fn stub_0x35200() {
+    // IDA 0x35200: `list4<PlaceLauncher*,string,string,string>::operator()`
+    // unwraps the launcher + three strings and calls `teleportImpl`
+    // (same shape as 0x32e74). Closure-call glue; no explicit body.
 }
 
 // 0x35438 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x35438() -> ! {
-    todo!("0x35438 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x35438(get_typeinfo: bool) -> &'static str {
+    // IDA 0x35438: `functor_manager<bind_t<teleportImpl...>>::manager`
+    // clones/destroys through the buffer vtable and answers the typeinfo
+    // query (same shape as 0x32f4c). Other ops are vtable glue.
+    if get_typeinfo { BIND_TELEPORT_IMPL_TYPEINFO } else { "" }
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
