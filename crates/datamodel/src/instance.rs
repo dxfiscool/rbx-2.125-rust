@@ -1627,6 +1627,21 @@ static PYRAMID_NUM_SIDES_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 /// `0x4c5e54`); twin of `CONCURRENCY_MODEL_SINGLETON`.
 static PRISM_NUM_SIDES_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 
+/// Name/value table behind the `LegacyPartType` desc suite (IDA
+/// `0x4c911c`-`0x4c9aa0`): `(0, Ball)`, `(1, Block)`, `(2, Cylinder)` per the
+/// C2 pairs (0x49b530).
+const LEGACY_PART_TYPE_ITEMS: [(i32, &str); 3] = [
+    (0, "Ball"), (1, "Block"), (2, "Cylinder"),
+];
+
+/// Process-wide singleton behind `Singleton<EnumDesc<VisualTrussStyle>>`
+/// (IDA `0x4c687c`); twin of `CONCURRENCY_MODEL_SINGLETON`.
+static VISUAL_TRUSS_STYLE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+
+/// Process-wide singleton behind `Singleton<EnumDesc<LegacyPartType>>` (IDA
+/// `0x4c911c`); twin of `CONCURRENCY_MODEL_SINGLETON`.
+static LEGACY_PART_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -31162,8 +31177,14 @@ pub fn stub_0x4c626c() -> ! {
 // 0x4c63b0 — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToString(RBX::PrismInstance::NumSidesEnum const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToString(RBX::PrismInstance::NumSidesEnum const&)const
-pub fn stub_0x4c63b0() -> ! {
-    todo!("0x4c63b0 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToString(RBX::PrismInstance::NumSidesEnum const&)const")
+pub fn stub_0x4c63b0(value: i32) -> Option<&'static str> {
+    // IDA 0x4c63b0: `EnumDesc<Prism NumSides>::convertToString(value)` — the
+    // value-to-name search. Same shape as 0x4c5988.
+    debug_assert!([3, 5, 6, 8, 10, 20].contains(&value), "0x4c63b0: value in range");
+    PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x4c6550 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13PrismInstance12NumSidesEnumEEERS3_RKT_
@@ -31197,8 +31218,13 @@ pub fn stub_0x4c6618() -> ! {
 // 0x4c661c — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToItem(RBX::PrismInstance::NumSidesEnum const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToItem(RBX::PrismInstance::NumSidesEnum const&)const
-pub fn stub_0x4c661c() -> ! {
-    todo!("0x4c661c RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToItem(RBX::PrismInstance::NumSidesEnum const&)const")
+pub fn stub_0x4c661c(value: i32) -> Option<(i32, &'static str)> {
+    // IDA 0x4c661c: `EnumDesc<Prism NumSides>::convertToItem(value)` — the
+    // value-to-item search. Same shape as 0x4c5bf4.
+    PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c66e8 — __ZN3rbx8any_castIRKN3RBX13PrismInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -31211,8 +31237,13 @@ pub fn stub_0x4c66e8() -> ! {
 // 0x4c67d8 — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PrismInstance::NumSidesEnum&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PrismInstance::NumSidesEnum&)const
-pub fn stub_0x4c67d8() -> ! {
-    todo!("0x4c67d8 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToValue(RBX::Name const&,RBX::PrismInstance::NumSidesEnum&)const")
+pub fn stub_0x4c67d8(name: &str) -> Option<i32> {
+    // IDA 0x4c67d8: `EnumDesc<Prism NumSides>::convertToValue(Name)` — the
+    // name-to-value search. Same shape as 0x4c5db0.
+    PRISM_NUM_SIDES_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4c6854 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -31225,43 +31256,79 @@ pub fn stub_0x4c6854() -> ! {
 // 0x4c687c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::initSingleton(void)
-pub fn stub_0x4c687c() -> ! {
-    todo!("0x4c687c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::initSingleton(void)")
+pub fn stub_0x4c687c() {
+    // IDA 0x4c687c: `Singleton<EnumDesc<VisualTrussStyle>>::initSingleton` —
+    // runs the `C2` table-build into static storage once. Same shape as
+    // 0x4c542c.
+    VISUAL_TRUSS_STYLE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "ExtrudedPartInstance::VisualTrussStyle",
+        pairs: VISUAL_TRUSS_STYLE_ITEMS.to_vec(),
+    });
 }
 
 // 0x4c6880 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::doGetSingleton(void)
-pub fn stub_0x4c6880() -> ! {
-    todo!("0x4c6880 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::doGetSingleton(void)")
+pub fn stub_0x4c6880() -> &'static EnumDesc {
+    // IDA 0x4c6880: `Singleton<EnumDesc<VisualTrussStyle>>::doGetSingleton`
+    // — returns the static, initializing on first use. Same shape as
+    // 0x4c5430.
+    VISUAL_TRUSS_STYLE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "ExtrudedPartInstance::VisualTrussStyle",
+        pairs: VISUAL_TRUSS_STYLE_ITEMS.to_vec(),
+    })
 }
 
 // 0x4c6970 — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()
-pub fn stub_0x4c6970() -> ! {
-    todo!("0x4c6970 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")
+pub fn stub_0x4c6970(_desc: *mut VisualTrussStyleDesc) {
+    // IDA 0x4c6970: `EnumDesc<VisualTrussStyle>::D1` — table teardown;
+    // dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c6974 — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()
-pub fn stub_0x4c6974() -> ! {
-    todo!("0x4c6974 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")
+pub fn stub_0x4c6974(_desc: *mut VisualTrussStyleDesc) {
+    // IDA 0x4c6974: `EnumDesc<VisualTrussStyle>::D2` — memberwise teardown of
+    // the base subobject; no members carry state, so the body collapses.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c6b48 — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()
-pub fn stub_0x4c6b48() -> ! {
-    todo!("0x4c6b48 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")
+pub fn stub_0x4c6b48(_desc: *mut VisualTrussStyleDesc) {
+    // IDA 0x4c6b48: `EnumDesc<VisualTrussStyle>::D0` — vtable install plus
+    // table teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c6be8 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::lookup(char const*)const
-pub fn stub_0x4c6be8() -> ! {
-    todo!("0x4c6be8 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::lookup(char const*)const")
+pub fn stub_0x4c6be8(name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4c6be8 (`EnumDesc<VisualTrussStyle>::lookup(name)`): same
+    // lookup-then-`convertToValue`-then-`convertToItem` chain as 0x4c5798.
+    let value = VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)?;
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c6c18 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE6lookupERKNS0_7VariantE
@@ -31288,8 +31355,14 @@ pub fn stub_0x4c6c94() -> ! {
 // 0x4c6dd8 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToString(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToString(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const
-pub fn stub_0x4c6dd8() -> ! {
-    todo!("0x4c6dd8 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToString(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")
+pub fn stub_0x4c6dd8(value: i32) -> Option<&'static str> {
+    // IDA 0x4c6dd8: `EnumDesc<VisualTrussStyle>::convertToString(value)` —
+    // the value-to-name search. Same shape as 0x4c5988.
+    debug_assert!((0..3).contains(&value), "0x4c6dd8: value in range");
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x4c6f78 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_20ExtrudedPartInstance16VisualTrussStyleEEERS3_RKT_
@@ -31323,8 +31396,13 @@ pub fn stub_0x4c7040() -> ! {
 // 0x4c7044 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToItem(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToItem(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const
-pub fn stub_0x4c7044() -> ! {
-    todo!("0x4c7044 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToItem(RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")
+pub fn stub_0x4c7044(value: i32) -> Option<(i32, &'static str)> {
+    // IDA 0x4c7044: `EnumDesc<VisualTrussStyle>::convertToItem(value)` — the
+    // value-to-item search. Same shape as 0x4c5bf4.
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c7110 — __ZN3rbx8any_castIRKN3RBX20ExtrudedPartInstance16VisualTrussStyleENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -31337,8 +31415,13 @@ pub fn stub_0x4c7110() -> ! {
 // 0x4c7200 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToValue(RBX::Name const&,RBX::ExtrudedPartInstance::VisualTrussStyle&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToValue(RBX::Name const&,RBX::ExtrudedPartInstance::VisualTrussStyle&)const
-pub fn stub_0x4c7200() -> ! {
-    todo!("0x4c7200 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToValue(RBX::Name const&,RBX::ExtrudedPartInstance::VisualTrussStyle&)const")
+pub fn stub_0x4c7200(name: &str) -> Option<i32> {
+    // IDA 0x4c7200: `EnumDesc<VisualTrussStyle>::convertToValue(Name)` — the
+    // name-to-value search. Same shape as 0x4c5db0.
+    VISUAL_TRUSS_STYLE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4c727c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -31351,43 +31434,78 @@ pub fn stub_0x4c727c() -> ! {
 // 0x4c911c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::initSingleton(void)
-pub fn stub_0x4c911c() -> ! {
-    todo!("0x4c911c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::initSingleton(void)")
+pub fn stub_0x4c911c() {
+    // IDA 0x4c911c: `Singleton<EnumDesc<LegacyPartType>>::initSingleton` —
+    // runs the `C2` table-build into static storage once. Same shape as
+    // 0x4c542c.
+    LEGACY_PART_TYPE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "BasicPartInstance::LegacyPartType",
+        pairs: LEGACY_PART_TYPE_ITEMS.to_vec(),
+    });
 }
 
 // 0x4c9120 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)
-pub fn stub_0x4c9120() -> ! {
-    todo!("0x4c9120 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)")
+pub fn stub_0x4c9120() -> &'static EnumDesc {
+    // IDA 0x4c9120: `Singleton<EnumDesc<LegacyPartType>>::doGetSingleton` —
+    // returns the static, initializing on first use. Same shape as 0x4c5430.
+    LEGACY_PART_TYPE_SINGLETON.get_or_init(|| EnumDesc {
+        name: "BasicPartInstance::LegacyPartType",
+        pairs: LEGACY_PART_TYPE_ITEMS.to_vec(),
+    })
 }
 
 // 0x4c9210 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()
-pub fn stub_0x4c9210() -> ! {
-    todo!("0x4c9210 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")
+pub fn stub_0x4c9210(_desc: *mut LegacyPartTypeDesc) {
+    // IDA 0x4c9210: `EnumDesc<LegacyPartType>::D1` — table teardown; dropping
+    // the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c9214 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()
-pub fn stub_0x4c9214() -> ! {
-    todo!("0x4c9214 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")
+pub fn stub_0x4c9214(_desc: *mut LegacyPartTypeDesc) {
+    // IDA 0x4c9214: `EnumDesc<LegacyPartType>::D2` — memberwise teardown of
+    // the base subobject; no members carry state, so the body collapses.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c93e8 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()
-pub fn stub_0x4c93e8() -> ! {
-    todo!("0x4c93e8 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")
+pub fn stub_0x4c93e8(_desc: *mut LegacyPartTypeDesc) {
+    // IDA 0x4c93e8: `EnumDesc<LegacyPartType>::D0` — vtable install plus
+    // table teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4c9488 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::lookup(char const*)const
-pub fn stub_0x4c9488() -> ! {
-    todo!("0x4c9488 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::lookup(char const*)const")
+pub fn stub_0x4c9488(name: &str) -> Option<(i32, &'static str)> {
+    // IDA 0x4c9488 (`EnumDesc<LegacyPartType>::lookup(name)`): same
+    // lookup-then-`convertToValue`-then-`convertToItem` chain as 0x4c5798.
+    let value = LEGACY_PART_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)?;
+    LEGACY_PART_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c94b8 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupERKNS0_7VariantE
@@ -31414,8 +31532,14 @@ pub fn stub_0x4c9534() -> ! {
 // 0x4c9678 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToString(RBX::BasicPartInstance::LegacyPartType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToString(RBX::BasicPartInstance::LegacyPartType const&)const
-pub fn stub_0x4c9678() -> ! {
-    todo!("0x4c9678 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToString(RBX::BasicPartInstance::LegacyPartType const&)const")
+pub fn stub_0x4c9678(value: i32) -> Option<&'static str> {
+    // IDA 0x4c9678: `EnumDesc<LegacyPartType>::convertToString(value)` — the
+    // value-to-name search. Same shape as 0x4c5988.
+    debug_assert!((0..3).contains(&value), "0x4c9678: value in range");
+    LEGACY_PART_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .map(|(_, text)| *text)
 }
 
 // 0x4c9818 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17BasicPartInstance14LegacyPartTypeEEERS3_RKT_
@@ -31449,8 +31573,13 @@ pub fn stub_0x4c98e0() -> ! {
 // 0x4c98e4 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToItem(RBX::BasicPartInstance::LegacyPartType const&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToItem(RBX::BasicPartInstance::LegacyPartType const&)const
-pub fn stub_0x4c98e4() -> ! {
-    todo!("0x4c98e4 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToItem(RBX::BasicPartInstance::LegacyPartType const&)const")
+pub fn stub_0x4c98e4(value: i32) -> Option<(i32, &'static str)> {
+    // IDA 0x4c98e4: `EnumDesc<LegacyPartType>::convertToItem(value)` — the
+    // value-to-item search. Same shape as 0x4c5bf4.
+    LEGACY_PART_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == value)
+        .copied()
 }
 
 // 0x4c99b0 — __ZN3rbx8any_castIRKN3RBX17BasicPartInstance14LegacyPartTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -31463,8 +31592,13 @@ pub fn stub_0x4c99b0() -> ! {
 // 0x4c9aa0 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToValue(RBX::Name const&,RBX::BasicPartInstance::LegacyPartType&)const")]
 // was: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToValue(RBX::Name const&,RBX::BasicPartInstance::LegacyPartType&)const
-pub fn stub_0x4c9aa0() -> ! {
-    todo!("0x4c9aa0 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToValue(RBX::Name const&,RBX::BasicPartInstance::LegacyPartType&)const")
+pub fn stub_0x4c9aa0(name: &str) -> Option<i32> {
+    // IDA 0x4c9aa0: `EnumDesc<LegacyPartType>::convertToValue(Name)` — the
+    // name-to-value search. Same shape as 0x4c5db0.
+    LEGACY_PART_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
 }
 
 // 0x4c9b1c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17BasicPartInstance14LegacyPartTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
