@@ -116,6 +116,25 @@ pub mod prop_binding {
         target(this as *mut u8, &tmp)
     }
 
+    /// Batch 5, IDA 0x25f004 `Light::bool getValue`: DescribedBase-36, `adj >> 1`
+    /// adjust, virtual branch, tail-call getter — the `get_f32` shape over `bool`.
+    pub unsafe fn get_bool(imp: &GetSetImpl, obj: *const u8) -> bool {
+        let this = resolve_this(obj, imp.getter.adj);
+        let target: extern "C" fn(*const u8) -> bool =
+            std::mem::transmute(resolve_target(imp.getter, this));
+        target(this)
+    }
+
+    /// Batch 5, IDA 0x25f028 `Light::bool setValue`: `v4(v6, *a3)` — the setter
+    /// takes the dereferenced byte. The IDA `int` return carries no observable
+    /// output, so the port returns `()`.
+    pub unsafe fn set_bool(imp: &GetSetImpl, obj: *mut u8, value: bool) {
+        let this = resolve_this(obj as *const u8, imp.setter.adj);
+        let target: extern "C" fn(*mut u8, bool) =
+            std::mem::transmute(resolve_target(imp.setter, this));
+        target(this as *mut u8, value)
+    }
+
     /// was: `RBX::Reflection::PropDescriptor<T, V>` storage. The owned `Box<GetSetImpl>`
     /// is the IDA `a1[10]` (`+0x28`) word freed by the dtor (`v2 = a1[10]; if (v2) delete`).
     /// Trailing words: `[INFERENCE]` `attributes` = ctor args a8..a10 passed through to
@@ -306,6 +325,411 @@ pub mod prop_binding {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")]
 // 0x25e9b0 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
+/// Batch 5: 22 IDA-grounded ports 0x25f54c-0x260808 — the `EventDescriptor` /
+/// `FunctionDescriptor` / `YieldFunctionDescriptor` constructor shape,
+/// `MemberDescriptorContainer<T>::declare` + `declareSub` sorted-registry logic,
+/// the `staticData`/`allDescriptors` global registry, the boost unordered
+/// `operator[]` name map, `vector<*Descriptor>::insert`, signature-list clear,
+/// descriptor dtors, `sendEvent` gating, and the tiny fill/no-op/forward helpers.
+/// Ports live in `member_registry` under idiomatic names, wired via the matching
+/// `stub_25*`/`stub_260*`; untouched carriers keep stub bodies.
+/// Conventions: `boost::shared_ptr` -> `crate::SharedPtr` (kept via `_SHARED_PTR`
+/// carrier); `boost::unordered_map<const char*, T>` -> `HashMap<String, usize>`
+/// (content-hashed, matching `StringHashPredicate`/`StringEqualPredicate`);
+/// `RBX::Name` order words (`**(x + 12)`, `**(*(x + 20) + 12)`) -> opaque `u32`
+/// keys handed out by the registry (`[INFERENCE]` — the global `Name` table is
+/// outside this batch); `__cxa_throw`/`ReleaseAssert` -> `panic!` gated by the
+/// `ASSERTS` flag (mirroring `FLog::Asserts`); `boost::call_once` statics ->
+/// `OnceLock`/`Mutex`. `[INFERENCE]` marks the rest; everything else follows the
+/// IDA pseudocode branch-for-branch.
+pub mod member_registry {
+    use std::collections::HashMap;
+    use std::os::raw::c_char;
+    use std::sync::atomic::{AtomicBool, Ordering};
+    use std::sync::{Mutex, OnceLock};
+
+    /// Batch 5: was: `FLog::Asserts` — gates the `ReleaseAssert` paths in
+    /// `sendEvent` (0x25f850), `declareSub` (0x25f8f0/0x25f96c) and friends.
+    /// Off here matches production; tests flip it for the panic paths.
+    pub static ASSERTS: AtomicBool = AtomicBool::new(false);
+
+    /// Batch 5: was: `RBX::Reflection::MemberDescriptor` — name plus the two
+    /// opaque `Name`-order words the registry sorts by (`**(x + 12)` primary,
+    /// `**(*(x + 20) + 12)` tiebreak, IDA 0x25f6ce/0x25f7a2).
+    #[derive(Debug, Clone)]
+    pub struct MemberDescriptor {
+        pub name: String,
+        pub order: u32,
+        pub sub_order: u32,
+    }
+
+    /// Batch 5: descriptor store backing every container + the global list.
+    /// Descriptors are referenced by index (the binary uses pointers; indices are
+    /// the observable-identity equivalent here).
+    #[derive(Debug, Default)]
+    pub struct DescriptorStore {
+        pub descriptors: Vec<MemberDescriptor>,
+        /// was: the global `Name::declare` order counter (`[INFERENCE]`).
+        pub next_order: u32,
+    }
+
+    impl DescriptorStore {
+        pub fn insert(&mut self, name: &str) -> usize {
+            let order = self.next_order;
+            self.next_order += 1;
+            self.descriptors.push(MemberDescriptor { name: name.to_string(), order, sub_order: order });
+            self.descriptors.len() - 1
+        }
+        pub fn order_of(&self, idx: usize) -> u32 {
+            self.descriptors[idx].order
+        }
+        pub fn sub_order_of(&self, idx: usize) -> u32 {
+            self.descriptors[idx].sub_order
+        }
+    }
+
+    /// Batch 5: was: `MemberDescriptorContainer<T>` — the name-ordered member
+    /// vector, the `const char* -> T*` map at +3 (`a1 + 3`, IDA 0x25f712), and the
+    /// sub-collection vector at +9 (`a1[9..10]`, IDA 0x25f71e).
+    /// `hiding_hook` is the process-global hook (IDA 0x25f802/0x25fa3c).
+    #[derive(Debug, Default)]
+    pub struct MemberContainer {
+        pub members: Vec<usize>,
+        pub by_name: HashMap<String, usize>,
+        pub sub_collections: Vec<MemberContainer>,
+        pub hiding_hook: Option<fn(new_desc: usize, old_desc: usize)>,
+    }
+
+    impl MemberContainer {
+        /// `lower_bound` by the primary order word (IDA 0x25f6b8/0x25f94e loops).
+        pub fn lower_bound(&self, store: &DescriptorStore, desc: usize) -> usize {
+            let key = store.order_of(desc);
+            let mut lo = 0;
+            let mut hi = self.members.len();
+            while lo < hi {
+                let mid = (lo + hi) / 2;
+                if store.order_of(self.members[mid]) < key {
+                    lo = mid + 1;
+                } else {
+                    hi = mid;
+                }
+            }
+            lo
+        }
+        /// was: `vector<T*>::insert` at the lower-bound position; returns the
+        /// position. The original returns the element address (`*a1 + 4 * v6`,
+        /// IDA 0x25f8ce) — the index is its position equivalent.
+        pub fn insert_at(&mut self, pos: usize, desc: usize) -> usize {
+            self.members.insert(pos, desc);
+            pos
+        }
+        /// was: `table_impl::operator[]` name registration (`map[key] = desc`,
+        /// IDA 0x25f716/0x25fa06). Boost bucket mechanics collapse into the entry.
+        pub fn register_name(&mut self, store: &DescriptorStore, desc: usize) {
+            self.by_name.insert(store.descriptors[desc].name.clone(), desc);
+        }
+    }
+
+    /// Batch 5: was: the `staticData()::result` 8-byte global (IDA 0x25fa9a zeroed
+    /// pair = begin/end) plus `dword_12B4858` — the process-global ordered
+    /// `allDescriptors` list, lazily built under `call_once` (IDA 0x25fa6a guard).
+    pub static ALL_DESCRIPTORS: OnceLock<Mutex<Vec<usize>>> = OnceLock::new();
+
+    /// Batch 5, IDA 0x25fa50 `MemberDescriptorContainer<T>::staticData` — guard-var
+    /// lazy init returning the global list (the `__cxa_atexit` Collection dtor,
+    /// IDA 0x25faa0, is `Drop` here).
+    pub fn static_data() -> &'static Mutex<Vec<usize>> {
+        ALL_DESCRIPTORS.get_or_init(|| Mutex::new(Vec::new()))
+    }
+
+    /// Batch 5: shared `declare` core behind 0x25f690/0x2604b8/0x260638 (verified
+    /// identical apart from the vector-insert callee type): binary search, insert
+    /// or overwrite, name-map register, `memberHidingHook` on same-name replace,
+    /// sub-collection `declareSub` fan-out, then global-list registration ordered
+    /// by (order, sub_order) (IDA 0x25f796 loop). Returns the registered index;
+    /// the original returns element addresses / a loop residue at the already-
+    /// present early exit (0x25f6da) — both discarded at every call site here.
+    pub fn declare(
+        container: &mut MemberContainer,
+        store: &DescriptorStore,
+        desc: usize,
+    ) -> usize {
+        let pos = container.lower_bound(store, desc);
+        if pos == container.members.len() {
+            container.insert_at(pos, desc);
+            container.register_name(store, desc);
+        } else if container.members[pos] == desc {
+            return pos;
+        } else if store.order_of(container.members[pos]) != store.order_of(desc) {
+            container.insert_at(pos, desc);
+            container.register_name(store, desc);
+        } else {
+            let old = container.members[pos];
+            container.members[pos] = desc;
+            container.register_name(store, desc);
+            if let Some(hook) = container.hiding_hook {
+                hook(desc, old);
+            }
+        }
+        declare_sub_fanout(container, store, desc, desc);
+        register_global(store, desc);
+        pos
+    }
+
+    /// Batch 5: the LABEL_11 fan-out — `declareSub` into every sub-collection
+    /// (IDA 0x25f71e loop).
+    pub fn declare_sub_fanout(
+        container: &mut MemberContainer,
+        store: &DescriptorStore,
+        desc: usize,
+        replaceable: usize,
+    ) {
+        for sub in container.sub_collections.iter_mut() {
+            declare_sub(sub, store, desc, replaceable);
+        }
+    }
+
+    /// Batch 5: global `allDescriptors` scan (IDA 0x25f796): return when present,
+    /// else insert ordered by (`order`, then `sub_order`, IDA 0x25f7a2) and return
+    /// the position.
+    pub fn register_global(store: &DescriptorStore, desc: usize) -> usize {
+        let mut all = static_data().lock().unwrap();
+        if let Some(pos) = all.iter().position(|&d| d == desc) {
+            return pos;
+        }
+        let key = (store.order_of(desc), store.sub_order_of(desc));
+        let pos = all.iter().position(|&d| {
+            let k = (store.order_of(d), store.sub_order_of(d));
+            k > key
+        }).unwrap_or(all.len());
+        all.insert(pos, desc);
+        pos
+    }
+
+    /// Batch 5: shared `declareSub` core behind 0x25f8d0 (IDA): the member.h:216
+    /// `replaceable != descriptor` assert, lower-bound insert, the member.h:227
+    /// `*iter != descriptor` assert, replaceable-slot overwrite, name-keyed
+    /// insert, else the hiding hook — then the sub-collection fan-out (0x25fa0c).
+    /// Returns the registered index.
+    pub fn declare_sub(
+        container: &mut MemberContainer,
+        store: &DescriptorStore,
+        desc: usize,
+        replaceable: usize,
+    ) -> usize {
+        if ASSERTS.load(Ordering::SeqCst) {
+            assert!(
+                replaceable != desc,
+                "replaceable != descriptor file: include/reflection/member.h line: 216"
+            );
+        }
+        let pos = container.lower_bound(store, desc);
+        if pos == container.members.len() {
+            container.insert_at(pos, desc);
+            container.register_name(store, desc);
+        } else {
+            if ASSERTS.load(Ordering::SeqCst) {
+                assert!(
+                    container.members[pos] != desc,
+                    "*iter != descriptor file: include/reflection/member.h line: 227"
+                );
+            }
+            if container.members[pos] == replaceable {
+                container.members[pos] = desc;
+                container.register_name(store, desc);
+            } else if store.order_of(container.members[pos]) != store.order_of(desc) {
+                container.insert_at(pos, desc);
+                container.register_name(store, desc);
+            } else {
+                let old = container.members[pos];
+                if let Some(hook) = container.hiding_hook {
+                    hook(desc, old);
+                    return pos;
+                }
+                return pos;
+            }
+        }
+        declare_sub_fanout(container, store, desc, replaceable);
+        pos
+    }
+    /// Batch 5: was: `RemoteEventCommon::Attributes` fill (IDA 0x25f66c-0x25f674):
+    /// `+8 = functionality`, `+0 = deprecated(1)`, `+4 = member`, returns the slot.
+    #[derive(Debug, Default)]
+    pub struct RemoteEventAttributes {
+        pub deprecated: bool,
+        pub member: u32,
+        pub functionality: u32,
+    }
+
+    impl RemoteEventAttributes {
+        /// Batch 5, IDA 0x25f66c `Attributes::deprecated(functionality, member)`.
+        pub fn set_deprecated(&mut self, functionality: u32, member: u32) -> &mut Self {
+            self.functionality = functionality;
+            self.deprecated = true;
+            self.member = member;
+            self
+        }
+    }
+
+    /// Batch 5: was: `EventDescriptor` / `FunctionDescriptor` /
+    /// `YieldFunctionDescriptor` storage — `Descriptor::Descriptor` base (name,
+    /// attributes pair), category `Name` ([4], IDA 0x25f5a6), class ([5]), member
+    /// ([6]), the `SignatureDescriptor` subobject at +7, and the installed vtable.
+    /// The three ctors (0x25f54c/0x260274/0x260394) are one shape modulo category,
+    /// vtables, and the class-container declare offset (verified by diff).
+    #[derive(Debug, Default)]
+    pub struct MemberDescriptorBase {
+        pub vtable: &'static str,
+        pub name: String,
+        pub attributes: (u32, u32),
+        pub category: String,
+        pub class: usize,
+        pub member: u32,
+        pub signatures: Vec<String>,
+    }
+
+    impl MemberDescriptorBase {
+        /// Shared ctor core: base fields, `Name::declare(category)`, `*a1` install
+        /// (`off_122F768`), final vtable, empty `SignatureDescriptor`, then
+        /// `Container::declare` into the class container (0x25f602/0x26032a/0x26044a).
+        /// `Descriptor::Descriptor` string handling and `Name::declare` interning
+        /// collapse into owned `String`s.
+        pub fn construct(
+            &mut self,
+            name: &str,
+            category: &str,
+            class: usize,
+            member: u32,
+            attr0: u32,
+            attr1: u32,
+            final_vtable: &'static str,
+            container: &mut MemberContainer,
+            store: &mut DescriptorStore,
+        ) {
+            self.name = name.to_string();
+            self.attributes = (attr0, attr1);
+            self.category = category.to_string();
+            self.class = class;
+            self.member = member;
+            self.vtable = final_vtable;
+            self.signatures.clear();
+            let idx = store.insert(name);
+            declare(container, store, idx);
+        }
+    }
+
+    /// Batch 5: `EventDescriptor` category/vtables (IDA 0x25f57c-0x25f602).
+    pub const EVENT_CATEGORY: &str = "Signals";
+    pub const EVENT_MID_VTABLE: &str = "off_122F768";
+    pub const EVENT_VTABLE: &str = "off_122F5A8";
+    /// Batch 5: `FunctionDescriptor` (IDA 0x2602a4-0x26032a).
+    pub const FUNCTION_CATEGORY: &str = "Function";
+    pub const FUNCTION_VTABLE: &str = "off_1222248";
+    /// Batch 5: `YieldFunctionDescriptor` (IDA 0x2603c4-0x26044a).
+    pub const YIELD_FUNCTION_CATEGORY: &str = "YieldFunction";
+    pub const YIELD_FUNCTION_VTABLE: &str = "off_122F5E8";
+
+    /// Batch 5, IDA 0x25f838 `EventDescriptor::isScriptable` — returns 1.
+    pub fn event_is_scriptable() -> bool {
+        true
+    }
+
+    /// Batch 5, IDA 0x25f840 `EventDescriptor::sendEvent` — `ReleaseAssert(false)`
+    /// at event.h:159 when asserts are on; otherwise returns the (zero) flag.
+    pub fn event_send_event() -> i32 {
+        let flag = i32::from(ASSERTS.load(Ordering::SeqCst));
+        if ASSERTS.load(Ordering::SeqCst) {
+            panic!("false file: include/reflection/event.h line: 159");
+        }
+        flag
+    }
+
+    /// Batch 5, IDA 0x25f688 `EventSource::raiseEventInvocation` — empty body.
+    pub fn raise_event_invocation() {}
+
+    /// Batch 5, IDA 0x25f678 `EventSource::processRemoteEvent` — tail-calls the
+    /// descriptor's virtual at +20 (`(*(a2 + 20))(a2, a1)`).
+    pub unsafe fn process_remote_event(desc: *const u8, source: *const u8) {
+        let vtable = *(desc as *const usize);
+        let target: extern "C" fn(*const u8, *const u8) =
+            std::mem::transmute(*((vtable.wrapping_add(20)) as *const usize));
+        target(desc, source);
+    }
+
+    /// Batch 5: was: `std::vector<T*>::insert` end fast-path shared by 0x25f898 /
+    /// 0x260808 — when spare capacity exists and the position is the end, write in
+    /// place and bump (0x25f8ae-0x25f8c6); otherwise the `_M_insert_aux` slow path
+    /// (0x25f8b2). `Vec::insert`/`push` is exactly that split. Returns the position;
+    /// the original returns the element address (`*a1 + 4 * v6`).
+    pub fn descriptor_vec_insert(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+        if pos == list.len() {
+            list.push(value);
+        } else {
+            list.insert(pos, value);
+        }
+        pos
+    }
+
+    /// Batch 5, IDA 0x260110 `std::_List_base<SignatureDescriptor::Item>::_M_clear` —
+    /// walks the intrusive list from head, runs each node's cleanup (`*(v3 + 4)`
+    /// on `node + 6`, 0x26012a — `Drop` here), and frees the node (0x26012e).
+    /// `Vec::clear` drops in order; the intrusive links collapse away.
+    pub fn signature_list_clear(list: &mut Vec<String>) {
+        list.clear();
+    }
+
+    /// Batch 5, IDA 0x260140 `MemberDescriptor::~MemberDescriptor` — empty body.
+    pub fn member_descriptor_d1() {}
+
+    /// Batch 5: was: the `Collection` box behind 0x25fab8 (`*a1` owned, freed when
+    /// non-null) and the descriptor boxes behind 0x25f810/0x2607b8/0x2607e0
+    /// (vtable restore + signature-list clear at +32).
+    #[derive(Debug, Default)]
+    pub struct DescriptorBox {
+        pub vtable: &'static str,
+        pub owned: Option<Box<[u8]>>,
+        pub signatures: Vec<String>,
+    }
+
+    /// Batch 5, IDA 0x25fab8 `Collection::~Collection` — free the owned slot.
+    pub fn collection_d1(slot: &mut Option<Box<[u8]>>) {
+        *slot = None;
+    }
+
+    /// Batch 5, IDA 0x25f810 `~EventDescriptor` — restore `off_122F5A8`, clear +32.
+    pub fn event_descriptor_d1(b: &mut DescriptorBox) {
+        b.vtable = EVENT_VTABLE;
+        b.signatures.clear();
+    }
+
+    /// Batch 5, IDA 0x2607b8 `~FunctionDescriptor` — restore `off_1222248`, clear +32.
+    pub fn function_descriptor_d1(b: &mut DescriptorBox) {
+        b.vtable = FUNCTION_VTABLE;
+        b.signatures.clear();
+    }
+
+    /// Batch 5, IDA 0x2607e0 `~YieldFunctionDescriptor` — `off_122F5E8`, clear +32.
+    pub fn yield_function_descriptor_d1(b: &mut DescriptorBox) {
+        b.vtable = YIELD_FUNCTION_VTABLE;
+        b.signatures.clear();
+    }
+
+    /// Batch 5: was: `boost::unordered::detail::table_impl::operator[]` over
+    /// `map<const char*, T>` (IDA 0x25fad0/0x260a40/0x260bc8) — find-or-insert by
+    /// content hash (`StringHashPredicate`) and content equality. Bucket/rehash
+    /// mechanics collapse into the `HashMap` entry; returns the mapped slot, like
+    /// the original's mapped reference.
+    pub fn unordered_index_or_insert(
+        map: &mut HashMap<String, usize>,
+        key: *const c_char,
+    ) -> &mut usize {
+        let owned = unsafe {
+            assert!(!key.is_null());
+            std::ffi::CStr::from_ptr(key).to_string_lossy().into_owned()
+        };
+        map.entry(owned).or_insert(usize::MAX)
+    }
+}
 pub fn stub_25e9b0() -> bool {
     // IDA 0x25e9b0: MOVS R0, #0; BX LR — read/write-open pair, never write-only.
     false
@@ -603,176 +1027,218 @@ pub fn stub_25effc() -> bool {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")]
 // 0x25f000 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // type: int()
-pub fn stub_25f000() -> ! {
-    todo!("0x25f000 __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+// IDA 0x25f000: MOVS R0, #0; BX LR — read/write-open pair, never write-only.
+pub fn stub_25f000() -> bool {
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x25f004 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_25f004() -> ! {
-    todo!("0x25f004 __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")
+pub unsafe fn stub_25f004(imp: *const prop_binding::GetSetImpl, obj: *const u8) -> bool {
+    // IDA 0x25f004: DescribedBase-36, (adj >> 1) adjust, virtual branch, tail-call getter.
+    prop_binding::get_bool(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 // 0x25f028 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
-pub fn stub_25f028() -> ! {
-    todo!("0x25f028 __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")
+pub unsafe fn stub_25f028(imp: *const prop_binding::GetSetImpl, obj: *mut u8, value: bool) {
+    // IDA 0x25f028 (disasm LDR R1, [R2]; BX R3): setter(this, *a3); void result.
+    prop_binding::set_bool(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int)
-pub fn stub_25f54c() -> ! {
-    todo!("0x25f54c __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x25f54c: `Descriptor` base + `Name::declare("Signals")` + class/member +
+// `off_122F768` -> `off_122F5A8`, empty signatures, `Container::declare(a2 + 68)`.
+// Returns the slot, like the original (`return a1`).
+pub fn stub_25f54c<'a>(base: &'a mut member_registry::MemberDescriptorBase, name: &str, class: usize, member: u32, attr0: u32, attr1: u32, container: &mut member_registry::MemberContainer, store: &mut member_registry::DescriptorStore) -> &'a mut member_registry::MemberDescriptorBase {
+    base.construct(name, member_registry::EVENT_CATEGORY, class, member, attr0, attr1, member_registry::EVENT_VTABLE, container, store);
+    base
 }
 
 #[doc(alias = "RBX::Reflection::RemoteEventCommon::Attributes::deprecated(RBX::Reflection::RemoteEventCommon::Functionality,RBX::Reflection::MemberDescriptor const*)")]
 // 0x25f66c — __ZN3RBX10Reflection17RemoteEventCommon10Attributes10deprecatedENS1_13FunctionalityEPKNS0_16MemberDescriptorE
 // type: int __fastcall(int result, int, int)
-pub fn stub_25f66c() -> ! {
-    todo!("0x25f66c __ZN3RBX10Reflection17RemoteEventCommon10Attributes10deprecatedENS1_13FunctionalityEPKNS0_16MemberDescriptorE")
+// IDA 0x25f66c: `+8 = functionality; +0 = 1; +4 = member`; returns the slot.
+pub fn stub_25f66c(attrs: &mut member_registry::RemoteEventAttributes, functionality: u32, member: u32) -> &mut member_registry::RemoteEventAttributes {
+    attrs.set_deprecated(functionality, member)
 }
 
 #[doc(alias = "RBX::Reflection::EventSource::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")]
 // 0x25f678 — __ZN3RBX10Reflection11EventSource18processRemoteEventERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EERKNS_13SystemAddressE
 // type: int __fastcall(int, int)
-pub fn stub_25f678() -> ! {
-    todo!("0x25f678 __ZN3RBX10Reflection11EventSource18processRemoteEventERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EERKNS_13SystemAddressE")
+// IDA 0x25f678: tail-calls the descriptor virtual at +20 with (desc, source).
+pub unsafe fn stub_25f678(desc: *const u8, source: *const u8) {
+    member_registry::process_remote_event(desc, source)
 }
 
 #[doc(alias = "RBX::Reflection::EventSource::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")]
 // 0x25f688 — __ZN3RBX10Reflection11EventSource20raiseEventInvocationERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EEPKNS_13SystemAddressE
 // type: void()
-pub fn stub_25f688() -> ! {
-    todo!("0x25f688 __ZN3RBX10Reflection11EventSource20raiseEventInvocationERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EEPKNS_13SystemAddressE")
+// IDA 0x25f688: empty body.
+pub fn stub_25f688() {
+    member_registry::raise_event_invocation()
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declare(RBX::Reflection::EventDescriptor*)")]
 // 0x25f690 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE7declareEPS2_
 // type: int __fastcall(int **, int)
-pub fn stub_25f690() -> ! {
-    todo!("0x25f690 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE7declareEPS2_")
+// IDA 0x25f690: `Container<EventDescriptor>::declare` — sorted insert, name map,
+// sub-collection fan-out, global registration. Returns the registered index
+// (addresses / loop residue in the original are discarded at call sites).
+pub fn stub_25f690(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize) -> usize {
+    member_registry::declare(container, store, desc)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescriptor::~EventDescriptor()")]
 // 0x25f810 — __ZN3RBX10Reflection15EventDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::EventDescriptor *__hidden this)
-pub fn stub_25f810() -> ! {
-    todo!("0x25f810 __ZN3RBX10Reflection15EventDescriptorD1Ev")
+// IDA 0x25f810: `~EventDescriptor` — restore `off_122F5A8`, clear the +32 list.
+pub fn stub_25f810(b: &mut member_registry::DescriptorBox) {
+    member_registry::event_descriptor_d1(b)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescriptor::isScriptable(void)const")]
 // 0x25f838 — __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv
 // type: int __fastcall(RBX::Reflection::EventDescriptor *this)
-pub fn stub_25f838() -> ! {
-    todo!("0x25f838 __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv")
+// IDA 0x25f838: returns 1 — events are scriptable.
+pub fn stub_25f838() -> bool {
+    member_registry::event_is_scriptable()
 }
 
 #[doc(alias = "RBX::Reflection::EventDescriptor::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // 0x25f840 — __ZNK3RBX10Reflection15EventDescriptor9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaIS5_EE
 // type: int __fastcall(int, int, int)
-pub fn stub_25f840() -> ! {
-    todo!("0x25f840 __ZNK3RBX10Reflection15EventDescriptor9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaIS5_EE")
+// IDA 0x25f840: `sendEvent` — `ReleaseAssert(false)` (event.h:159) when asserts
+// are on; otherwise returns the zero flag.
+pub fn stub_25f840() -> i32 {
+    member_registry::event_send_event()
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor **,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,RBX::Reflection::EventDescriptor * const&)")]
 // 0x25f898 — __ZNSt6vectorIPN3RBX10Reflection15EventDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: int __fastcall(int *, _DWORD *, _DWORD *)
-pub fn stub_25f898() -> ! {
-    todo!("0x25f898 __ZNSt6vectorIPN3RBX10Reflection15EventDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x25f898: `vector<EventDescriptor*>::insert` — end fast-path or slow path.
+// Returns the position (element address in the original).
+pub fn stub_25f898(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::descriptor_vec_insert(list, pos, value)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declareSub(RBX::Reflection::EventDescriptor*,RBX::Reflection::EventDescriptor*)")]
 // 0x25f8d0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10declareSubEPS2_S4_
 // type: int *__fastcall(int *, int, int, const void *)
-pub fn stub_25f8d0() -> ! {
-    todo!("0x25f8d0 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10declareSubEPS2_S4_")
+// IDA 0x25f8d0: `Container<EventDescriptor>::declareSub` — member.h:216/227
+// asserts, lower-bound insert or replaceable overwrite, name-map register,
+// hiding hook, sub-collection fan-out. Returns the registered index.
+pub fn stub_25f8d0(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize, replaceable: usize) -> usize {
+    member_registry::declare_sub(container, store, desc, replaceable)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::staticData(void)")]
 // 0x25fa50 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv
 // type: double *()
-pub fn stub_25fa50() -> ! {
-    todo!("0x25fa50 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv")
+// IDA 0x25fa50: guard-var lazy init of the global `allDescriptors` list
+// (the `__cxa_atexit` Collection dtor is `Drop` here).
+pub fn stub_25fa50() -> &'static std::sync::Mutex<Vec<usize>> {
+    member_registry::static_data()
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::Collection::~Collection()")]
 // 0x25fab8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10CollectionD1Ev
 // type: void **__fastcall(void **)
-pub fn stub_25fab8() -> ! {
-    todo!("0x25fab8 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10CollectionD1Ev")
+// IDA 0x25fab8: `Collection::~Collection` — free the owned slot when non-null.
+pub fn stub_25fab8(slot: &mut Option<Box<[u8]>>) {
+    member_registry::collection_d1(slot)
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
 // 0x25fad0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 // type: char **__fastcall(_DWORD *, char **, int, int, void *, int, int, int, int)
-pub fn stub_25fad0() -> ! {
-    todo!("0x25fad0 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")
+// IDA 0x25fad0: `table_impl::operator[]` over `map<const char*, EventDescriptor*>` —
+// content-hashed find-or-insert; bucket mechanics collapse into the entry.
+// Returns the mapped slot, like the original mapped reference.
+pub fn stub_25fad0(map: &mut std::collections::HashMap<String, usize>, key: *const std::os::raw::c_char) -> &mut usize {
+    member_registry::unordered_index_or_insert(map, key)
 }
 
 #[doc(alias = "std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")]
 // 0x260110 — __ZNSt10_List_baseIN3RBX10Reflection19SignatureDescriptor4ItemESaIS3_EE8_M_clearEv
 // type: void __fastcall(_DWORD **)
-pub fn stub_260110() -> ! {
-    todo!("0x260110 __ZNSt10_List_baseIN3RBX10Reflection19SignatureDescriptor4ItemESaIS3_EE8_M_clearEv")
+// IDA 0x260110: `std::_List_base<SignatureDescriptor::Item>::_M_clear` — per-node
+// cleanup plus free, in order (`Drop` here); intrusive links collapse away.
+pub fn stub_260110(list: &mut Vec<String>) {
+    member_registry::signature_list_clear(list)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor()")]
 // 0x260140 — __ZN3RBX10Reflection16MemberDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::MemberDescriptor *__hidden this)
-pub fn stub_260140() -> ! {
-    todo!("0x260140 __ZN3RBX10Reflection16MemberDescriptorD1Ev")
+// IDA 0x260140: `MemberDescriptor::~MemberDescriptor` — empty body.
+pub fn stub_260140() {
+    member_registry::member_descriptor_d1()
 }
 
 #[doc(alias = "RBX::Reflection::FunctionDescriptor::FunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x260274 — __ZN3RBX10Reflection18FunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int)
-pub fn stub_260274() -> ! {
-    todo!("0x260274 __ZN3RBX10Reflection18FunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x260274: `FunctionDescriptor` ctor — `Name::declare("Function")`, `off_122F768` -> `off_1222248`, `Container::declare(a2 + 120)`.
+// Returns the slot, like the original (`return a1`).
+pub fn stub_260274<'a>(base: &'a mut member_registry::MemberDescriptorBase, name: &str, class: usize, member: u32, attr0: u32, attr1: u32, container: &mut member_registry::MemberContainer, store: &mut member_registry::DescriptorStore) -> &'a mut member_registry::MemberDescriptorBase {
+    base.construct(name, member_registry::FUNCTION_CATEGORY, class, member, attr0, attr1, member_registry::FUNCTION_VTABLE, container, store);
+    base
 }
 
 #[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x260394 — __ZN3RBX10Reflection23YieldFunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int)
-pub fn stub_260394() -> ! {
-    todo!("0x260394 __ZN3RBX10Reflection23YieldFunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+// IDA 0x260394: `YieldFunctionDescriptor` ctor — `Name::declare("YieldFunction")`, `off_122F768` -> `off_122F5E8`, `Container::declare(a2 + 172)`.
+// Returns the slot, like the original (`return a1`).
+pub fn stub_260394<'a>(base: &'a mut member_registry::MemberDescriptorBase, name: &str, class: usize, member: u32, attr0: u32, attr1: u32, container: &mut member_registry::MemberContainer, store: &mut member_registry::DescriptorStore) -> &'a mut member_registry::MemberDescriptorBase {
+    base.construct(name, member_registry::YIELD_FUNCTION_CATEGORY, class, member, attr0, attr1, member_registry::YIELD_FUNCTION_VTABLE, container, store);
+    base
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::declare(RBX::Reflection::FunctionDescriptor*)")]
 // 0x2604b8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE7declareEPS2_
 // type: int __fastcall(int **, int)
-pub fn stub_2604b8() -> ! {
-    todo!("0x2604b8 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE7declareEPS2_")
+// IDA 0x2604b8: `Container<FunctionDescriptor>::declare` — same shared core as 0x25f690.
+pub fn stub_2604b8(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize) -> usize {
+    member_registry::declare(container, store, desc)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")]
 // 0x260638 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
 // type: int __fastcall(int **, int)
-pub fn stub_260638() -> ! {
-    todo!("0x260638 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_")
+// IDA 0x260638: `Container<YieldFunctionDescriptor>::declare` — same shared core as 0x25f690.
+pub fn stub_260638(container: &mut member_registry::MemberContainer, store: &member_registry::DescriptorStore, desc: usize) -> usize {
+    member_registry::declare(container, store, desc)
 }
 
 #[doc(alias = "RBX::Reflection::FunctionDescriptor::~FunctionDescriptor()")]
 // 0x2607b8 — __ZN3RBX10Reflection18FunctionDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::FunctionDescriptor *__hidden this)
-pub fn stub_2607b8() -> ! {
-    todo!("0x2607b8 __ZN3RBX10Reflection18FunctionDescriptorD1Ev")
+// IDA 0x2607b8: `~FunctionDescriptor` — restore `off_1222248`, clear the +32 list.
+pub fn stub_2607b8(b: &mut member_registry::DescriptorBox) {
+    member_registry::function_descriptor_d1(b)
 }
 
 #[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::~YieldFunctionDescriptor()")]
 // 0x2607e0 — __ZN3RBX10Reflection23YieldFunctionDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::YieldFunctionDescriptor *__hidden this)
-pub fn stub_2607e0() -> ! {
-    todo!("0x2607e0 __ZN3RBX10Reflection23YieldFunctionDescriptorD1Ev")
+// IDA 0x2607e0: `~YieldFunctionDescriptor` — restore `off_122F5E8`, clear the +32 list.
+pub fn stub_2607e0(b: &mut member_registry::DescriptorBox) {
+    member_registry::yield_function_descriptor_d1(b)
 }
 
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
 // 0x260808 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: int __fastcall(int *, _DWORD *, _DWORD *)
-pub fn stub_260808() -> ! {
-    todo!("0x260808 __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+// IDA 0x260808: `vector<YieldFunctionDescriptor*>::insert` — same end fast-path shape as 0x25f898.
+pub fn stub_260808(list: &mut Vec<usize>, pos: usize, value: usize) -> usize {
+    member_registry::descriptor_vec_insert(list, pos, value)
 }
 
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")]
