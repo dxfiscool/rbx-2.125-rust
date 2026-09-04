@@ -246,30 +246,22 @@ pub fn stub_3b9a68() -> ! {
 // 0x3bb8e8 — __ZN3RBX14FormFactorPart15setFormFactorUiENS_12PartInstance10FormFactorE
 // type: int __fastcall(Vector3 *, int)
 #[doc(alias = "__ZN3RBX14FormFactorPart15setFormFactorUiENS_12PartInstance10FormFactorE")]
-pub fn stub_3bb8e8() -> ! {
-    todo!("0x3bb8e8 __ZN3RBX14FormFactorPart15setFormFactorUiENS_12PartInstance10FormFactorE")
-}
+pub use crate::instance::stub_0x3bb8e8 as stub_3bb8e8;
 
 // 0x3bb964 — __ZN3RBX14FormFactorPart16setFormFactorXmlENS_12PartInstance10FormFactorE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "__ZN3RBX14FormFactorPart16setFormFactorXmlENS_12PartInstance10FormFactorE")]
-pub fn stub_3bb964() -> ! {
-    todo!("0x3bb964 __ZN3RBX14FormFactorPart16setFormFactorXmlENS_12PartInstance10FormFactorE")
-}
+pub use crate::instance::stub_0x3bb964 as stub_3bb964;
 
 // 0x3bbe50 — __ZN3RBX17BasicPartInstance20setLegacyPartTypeXmlENS0_14LegacyPartTypeE
 // type: int __fastcall(_DWORD *, int)
 #[doc(alias = "__ZN3RBX17BasicPartInstance20setLegacyPartTypeXmlENS0_14LegacyPartTypeE")]
-pub fn stub_3bbe50() -> ! {
-    todo!("0x3bbe50 __ZN3RBX17BasicPartInstance20setLegacyPartTypeXmlENS0_14LegacyPartTypeE")
-}
+pub use crate::instance::stub_0x3bbe50 as stub_3bbe50;
 
 // 0x3bbecc — __ZN3RBX17BasicPartInstance19setLegacyPartTypeUiENS0_14LegacyPartTypeE
 // type: int __fastcall(Vector3 *, int)
 #[doc(alias = "__ZN3RBX17BasicPartInstance19setLegacyPartTypeUiENS0_14LegacyPartTypeE")]
-pub fn stub_3bbecc() -> ! {
-    todo!("0x3bbecc __ZN3RBX17BasicPartInstance19setLegacyPartTypeUiENS0_14LegacyPartTypeE")
-}
+pub use crate::instance::stub_0x3bbecc as stub_3bbecc;
 
 // 0x3bbf78 — __ZN3RBX17BasicPartInstanceC1Ev
 // type: RBX::BasicPartInstance *__fastcall(RBX::BasicPartInstance *this)
@@ -351,30 +343,22 @@ pub fn stub_3bc15c() -> ! {
 // 0x3bc170 — __ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "__ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE")]
-pub fn stub_3bc170() -> ! {
-    todo!("0x3bc170 __ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE")
-}
+pub use crate::instance::stub_0x3bc170 as stub_3bc170;
 
 // 0x3bc180 — __ZNK3RBX17BasicPartInstance11getPartTypeEv
 // type: int __fastcall(RBX::BasicPartInstance *this)
 #[doc(alias = "__ZNK3RBX17BasicPartInstance11getPartTypeEv")]
-pub fn stub_3bc180() -> ! {
-    todo!("0x3bc180 __ZNK3RBX17BasicPartInstance11getPartTypeEv")
-}
+pub use crate::instance::stub_0x3bc180 as stub_3bc180;
 
 // 0x3bc1e0 — __ZN3RBX17BasicPartInstance23hasThreeDimensionalSizeEv
 // type: int __fastcall(RBX::BasicPartInstance *this)
 #[doc(alias = "__ZN3RBX17BasicPartInstance23hasThreeDimensionalSizeEv")]
-pub fn stub_3bc1e0() -> ! {
-    todo!("0x3bc1e0 __ZN3RBX17BasicPartInstance23hasThreeDimensionalSizeEv")
-}
+pub use crate::instance::stub_0x3bc1e0 as stub_3bc1e0;
 
 // 0x3bc1ec — __ZNK3RBX17BasicPartInstance16partNeeds3dAdornEv
 // type: bool __fastcall(RBX::BasicPartInstance *this)
 #[doc(alias = "__ZNK3RBX17BasicPartInstance16partNeeds3dAdornEv")]
-pub fn stub_3bc1ec() -> ! {
-    todo!("0x3bc1ec __ZNK3RBX17BasicPartInstance16partNeeds3dAdornEv")
-}
+pub use crate::instance::stub_0x3bc1ec as stub_3bc1ec;
 
 // 0x3bc1fc — __ZN3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
@@ -400,9 +384,7 @@ pub fn stub_3bc460() -> ! {
 // 0x3bc484 — __ZNK3RBX17BasicPartInstance17getLegacyPartTypeEv
 // type: int __fastcall(RBX::BasicPartInstance *this)
 #[doc(alias = "__ZNK3RBX17BasicPartInstance17getLegacyPartTypeEv")]
-pub fn stub_3bc484() -> ! {
-    todo!("0x3bc484 __ZNK3RBX17BasicPartInstance17getLegacyPartTypeEv")
-}
+pub use crate::instance::stub_0x3bc484 as stub_3bc484;
 
 // 0x3bc48c — __ZN3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev
 // type: __guard *__fastcall(RBX::FormFactorPart *, _DWORD *)
