@@ -6,6 +6,9 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use parking_lot::Mutex;
+use std::sync::Arc;
+use std::sync::LazyLock;
 use rbx_core::signal::Signal;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
@@ -281,16 +284,45 @@ pub fn stub_b76c(sig: &Signal<u32>, desc: u32) {
     sig.fire(desc);
 }
 
+/// rbx::signals::slot_exception_handler (IDA 0xf6dc): the process-wide slot
+/// error hook consulted by signal::on_error. `parking_lot::Mutex` stands in
+/// for the static function-local guard; None is the null boost::function.
+static SLOT_EXCEPTION_HANDLER: LazyLock<Mutex<Option<Arc<dyn Fn(String) + Send + Sync>>>> =
+    LazyLock::new(|| Mutex::new(None));
+
+/// Host accessor for the slot exception hook (IDA 0xf6dc).
+pub fn slot_exception_handler() -> &'static Mutex<Option<Arc<dyn Fn(String) + Send + Sync>>> {
+    &*SLOT_EXCEPTION_HANDLER
+}
+
 // 0xf574 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
-pub fn stub_f574() -> ! {
-    todo!("0xf574 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")
+pub fn stub_f574(
+    slots: &[Arc<dyn Fn(u32) + Send + Sync>],
+    cursor: &mut usize,
+) -> Option<Arc<dyn Fn(u32) + Send + Sync>> {
+    // IDA 0xf574 (`signal::next`, decompiled 0xf574..0xf64c+): add_ref the
+    // incoming iterator (0xf5c4..0xf5ce, host: Arc clone below); call_once
+    // static-mutex init (0xf5ee) + lock (0xf5f8..0xf608, host: the
+    // parking_lot::Mutex inside Signal — the caller holds the locked
+    // snapshot this slice borrows); intrusive_ptr<slot>::operator= advances
+    // the iterator (0xf61c..0xf636); unlock when locked (0xf638..0xf640);
+    // release the old ref (0xf646.., host: Arc drop); yields the next live
+    // slot or null. Host: bump the cursor over the snapshot, cloning the Arc
+    // (the add_ref) and letting the previous cursor value drop (the release).
+    let slot = slots.get(*cursor)?.clone();
+    *cursor += 1;
+    Some(slot)
 }
 
 // 0xf6dc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")]
-pub fn stub_f6dc() -> ! {
-    todo!("0xf6dc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")
+pub fn stub_f6dc() -> Option<Arc<dyn Fn(String) + Send + Sync>> {
+    // IDA 0xf6dc (`signal::on_error`, decompiled 0xf6dc..0xf702): result =
+    // &slot_exception_handler (0xf6f0); a set handler normalizes through the
+    // nonnull dummy (0xf6f2..0xf6f8); non-null -> return the stored function
+    // (0xf6fe), else the null slot (0xf702). Host: clone the handler Arc.
+    slot_exception_handler().lock().clone()
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_

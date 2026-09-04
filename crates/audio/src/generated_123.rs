@@ -26,6 +26,9 @@ pub enum RenderSettingsAny {
     ShadowMode(i32),
     QualityLevel(i32),
     ResolutionPreset(i32),
+    AntialiasingMode(i32),
+    FrameRateManagerMode(i32),
+    GraphicsMode(i32),
 }
 
 /// Cast failures on the CRenderSettings convert paths (bad_cast).
@@ -55,6 +58,24 @@ pub const RESOLUTION_PRESET_ITEMS: &[(&str, i32)] = &[];
 pub const RESOLUTION_PRESET_BY_NAME: &[(&str, i32)] = &[];
 /// Legacy-name view for the second walk in convertToValue (IDA 0xcc6e..0xcca2).
 pub const RESOLUTION_PRESET_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA AntialiasingMode EnumDesc C2: base + empty tables, no addItems recovered.
+pub const ANTIALIASING_MODE_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xdbf4).
+pub const ANTIALIASING_MODE_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue.
+pub const ANTIALIASING_MODE_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA FrameRateManagerMode EnumDesc C2: base + empty tables, no addItems recovered.
+pub const FRAME_RATE_MANAGER_MODE_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xe134).
+pub const FRAME_RATE_MANAGER_MODE_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue.
+pub const FRAME_RATE_MANAGER_MODE_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA GraphicsMode EnumDesc C2: base + empty tables, no addItems recovered.
+pub const GRAPHICS_MODE_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xe674).
+pub const GRAPHICS_MODE_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue.
+pub const GRAPHICS_MODE_LEGACY_BY_NAME: &[(&str, i32)] = &[];
 
 /// Holder tag for the ShadowMode placement_any (typeinfo name, IDA 0xd64c).
 pub struct ShadowModeHolder {
@@ -95,6 +116,47 @@ static RESOLUTION_PRESET_HOLDER: LazyLock<ResolutionPresetHolder> =
         construct: stub_c9c8,
         destruct: stub_c9d4,
     });
+
+/// Holder tag for the AntialiasingMode placement_any (typeinfo name, IDA 0xdb8c).
+pub struct AntialiasingModeHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static ANTIALIASING_MODE_HOLDER: LazyLock<AntialiasingModeHolder> =
+    LazyLock::new(|| AntialiasingModeHolder {
+        type_name: "N3RBX15CRenderSettings16AntialiasingModeE",
+        construct: stub_da28,
+        destruct: stub_da34,
+    });
+
+/// Holder tag for the FrameRateManagerMode placement_any (typeinfo name per mangled length 20).
+pub struct FrameRateManagerModeHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static FRAME_RATE_MANAGER_MODE_HOLDER: LazyLock<FrameRateManagerModeHolder> =
+    LazyLock::new(|| FrameRateManagerModeHolder {
+        type_name: "N3RBX15CRenderSettings20FrameRateManagerModeE",
+        construct: stub_df68,
+        destruct: stub_df74,
+    });
+
+/// Holder tag for the GraphicsMode placement_any (typeinfo name per mangled length 12).
+pub struct GraphicsModeHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static GRAPHICS_MODE_HOLDER: LazyLock<GraphicsModeHolder> = LazyLock::new(|| GraphicsModeHolder {
+    type_name: "N3RBX15CRenderSettings12GraphicsModeE",
+    construct: stub_e4a8,
+    destruct: stub_e4b4,
+});
 
 // 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
 // type: int()
@@ -744,57 +806,142 @@ pub fn stub_d730() {
 // 0xd7cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_d7cc() -> ! {
-    todo!("0xd7cc RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")
+pub fn stub_d7cc(value: i32, out: &mut String) {
+    // IDA 0xd7cc: same convertToString(item) shape as 0xc76c — asserts at
+    // enumconverter.h:262 (0xd808/0xd828 skip; 0xd860/0xd864/0xd878 hook path)
+    // and :263 (0xd87c/0xd88c skip; 0xd89c/0xd8bc/0xd8be hook, 0xd8c0
+    // ReleaseAssert), then "" or names[value].
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < ANTIALIASING_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= ANTIALIASING_MODE_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(ANTIALIASING_MODE_ITEMS[value as usize].0);
+    }
 }
 
 // 0xd96c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_d96c() -> ! {
-    todo!("0xd96c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")
+pub fn stub_d96c<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xd96c: singleton() (0xd978); holder load (0xd984); same holder?
+    // (0xd98c) -> payload word copy (0xd9a4); else destroy the old payload via
+    // its holder (0xd990..0xd998) and null the tag (0xd99c), then store +
+    // retag (0xd9ae/0xd9b0); return self (0xd9b8). Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::AntialiasingMode(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::AntialiasingMode(value);
+        }
+    }
+    slot
 }
 
 // 0xd9bc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")]
-pub fn stub_d9bc() -> ! {
-    todo!("0xd9bc rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")
+pub fn stub_d9bc() -> &'static AntialiasingModeHolder {
+    // IDA 0xd9bc: cxa_guard_acquire/release around s (0xd9d6..); s =
+    // {typeinfo, destruct_func} (0xda0e..) + construct_func word into
+    // dword_12217A0 (0xda12/0xda16); return s (0xda26). Host: LazyLock.
+    &*ANTIALIASING_MODE_HOLDER
 }
 
 // 0xda28 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")]
-pub fn stub_da28() -> ! {
-    todo!("0xda28 rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")
+pub fn stub_da28(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xda28: null dst -> return src word untouched (0xda2a/0xda30);
+    // else *dst = loaded word (0xda2c/0xda2e, trivial 4-byte enum copy).
+    // SAFETY: holder protocol guarantees src readable and dst writable-or-null.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xda34 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")]
-pub fn stub_da34() -> ! {
-    todo!("0xda34 rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::destruct_func(char *)")
+pub fn stub_da34() {
+    // IDA 0xda34: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xda38 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToItem(RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_da38() -> ! {
-    todo!("0xda38 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToItem(RBX::CRenderSettings::AntialiasingMode const&)const")
+pub fn stub_da38(value: i32) -> u32 {
+    // IDA 0xda38: asserts "value>=0" (enumconverter.h:273, 0xda4c/0xda50 skip;
+    // 0xda82/0xda86 hook, 0xda92 onward) and
+    // "(size_t)value<enumToItem.size()" (:274, 0xda96..; 0xdab6/0xdad0 hook,
+    // 0xdad2 skip, 0xdad4 reload, ReleaseAssert); then 0 (0xdae6), range
+    // recheck (0xdaec..), else enumToItem[value] (0xdafc). Failure -> 0, as original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < ANTIALIASING_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < ANTIALIASING_MODE_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xdb04 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16AntialiasingModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_db04() -> ! {
-    todo!("0xdb04 RBX::CRenderSettings::AntialiasingMode const& rbx::any_cast<RBX::CRenderSettings::AntialiasingMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_db04(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xdb04: holder load (0xdb2e); null holder -> void typeinfo
+    // (0xdb60); holder mismatch (0xdb70) or name mismatch
+    // ("N3RBX15CRenderSettings16AntialiasingModeE", 0xdb7a/0xdb8c) ->
+    // throw bad_placement_any_cast (0xdbba/0xdbc2, host: Err, 0xdbda drops
+    // the bad_cast); else payload at +1 (0xdbaa).
+    match slot {
+        RenderSettingsAny::AntialiasingMode(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xdbf4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::AntialiasingMode&)const")]
-pub fn stub_dbf4() -> ! {
-    todo!("0xdbf4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::AntialiasingMode&)const")
+pub fn stub_dbf4(name: &str, out: &mut i32) -> bool {
+    // IDA 0xdbf4: same two-map lower_bound shape as 0xd6b4 (walks
+    // 0xdbf6..0xdc28; hit stores node+5 and returns 1, else 0).
+    // Host: binary search, primary table then legacy table.
+    match ANTIALIASING_MODE_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = ANTIALIASING_MODE_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match ANTIALIASING_MODE_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = ANTIALIASING_MODE_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xdc70 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev
@@ -807,57 +954,137 @@ pub fn stub_dc70() {
 // 0xdd0c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(RBX::CRenderSettings::FrameRateManagerMode const&)const")]
-pub fn stub_dd0c() -> ! {
-    todo!("0xdd0c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(RBX::CRenderSettings::FrameRateManagerMode const&)const")
+pub fn stub_dd0c(value: i32, out: &mut String) {
+    // IDA 0xdd0c: same convertToString(item) shape as 0xd7cc — asserts at
+    // enumconverter.h:262/263 (0xdd48..0xddb8 hook/skip paths), then "" or
+    // names[value].
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < FRAME_RATE_MANAGER_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= FRAME_RATE_MANAGER_MODE_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(FRAME_RATE_MANAGER_MODE_ITEMS[value as usize].0);
+    }
 }
 
 // 0xdeac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings20FrameRateManagerModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode>(RBX::CRenderSettings::FrameRateManagerMode const&)")]
-pub fn stub_deac() -> ! {
-    todo!("0xdeac rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::FrameRateManagerMode>(RBX::CRenderSettings::FrameRateManagerMode const&)")
+pub fn stub_deac<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xdeac: same placement_any op= shape as 0xd96c — singleton(); same
+    // holder -> payload copy; else destroy + retag; return self.
+    // Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::FrameRateManagerMode(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::FrameRateManagerMode(value);
+        }
+    }
+    slot
 }
 
 // 0xdefc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")]
-pub fn stub_defc() -> ! {
-    todo!("0xdefc rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::singleton(void)")
+pub fn stub_defc() -> &'static FrameRateManagerModeHolder {
+    // IDA 0xdefc: cxa_guard_acquire/release around s; s = {typeinfo,
+    // destruct_func} + construct_func word. Host: LazyLock never drops.
+    &*FRAME_RATE_MANAGER_MODE_HOLDER
 }
 
 // 0xdf68 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")]
-pub fn stub_df68() -> ! {
-    todo!("0xdf68 rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::construct_func(char const*,char *)")
+pub fn stub_df68(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xdf68: same construct_func shape as 0xda28 — null dst -> src word;
+    // else 4-byte copy. SAFETY: holder protocol on src/dst as for 0xda28.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xdf74 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings20FrameRateManagerModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")]
-pub fn stub_df74() -> ! {
-    todo!("0xdf74 rbx::implementation::typed_holder<RBX::CRenderSettings::FrameRateManagerMode>::destruct_func(char *)")
+pub fn stub_df74() {
+    // IDA 0xdf74: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xdf78 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToItem(RBX::CRenderSettings::FrameRateManagerMode const&)const")]
-pub fn stub_df78() -> ! {
-    todo!("0xdf78 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToItem(RBX::CRenderSettings::FrameRateManagerMode const&)const")
+pub fn stub_df78(value: i32) -> u32 {
+    // IDA 0xdf78: asserts "value>=0" (enumconverter.h:273, 0xdf8c/0xdf90 skip;
+    // 0xdfc2/0xdfc6 hook, 0xdfd2 onward) and
+    // "(size_t)value<enumToItem.size()" (:274, 0xdfd6..; 0xdff6/0xe010 hook,
+    // 0xe012 skip, 0xe014 reload, ReleaseAssert at 0xe024..); then 0,
+    // range recheck, else enumToItem[value]. Failure -> 0, as original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < FRAME_RATE_MANAGER_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < FRAME_RATE_MANAGER_MODE_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xe044 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings20FrameRateManagerModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::FrameRateManagerMode const& rbx::any_cast<RBX::CRenderSettings::FrameRateManagerMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_e044() -> ! {
-    todo!("0xe044 RBX::CRenderSettings::FrameRateManagerMode const& rbx::any_cast<RBX::CRenderSettings::FrameRateManagerMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_e044(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xe044: holder load (0xe06e..); null holder -> void typeinfo
+    // (0xe09c/0xe0a0); holder mismatch or name mismatch
+    // ("N3RBX15CRenderSettings20FrameRateManagerModeE", 0xe0b0/0xe0b4) ->
+    // throw bad_placement_any_cast (host: Err); else payload at +1.
+    match slot {
+        RenderSettingsAny::FrameRateManagerMode(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xe134 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::FrameRateManagerMode&)const")]
-pub fn stub_e134() -> ! {
-    todo!("0xe134 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::FrameRateManagerMode&)const")
+pub fn stub_e134(name: &str, out: &mut i32) -> bool {
+    // IDA 0xe134: same two-map lower_bound shape as 0xd6b4 (walks
+    // 0xe136..0xe168; hit stores node+5 and returns 1, else 0).
+    // Host: binary search, primary table then legacy table.
+    match FRAME_RATE_MANAGER_MODE_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = FRAME_RATE_MANAGER_MODE_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match FRAME_RATE_MANAGER_MODE_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = FRAME_RATE_MANAGER_MODE_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xe1b0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev
@@ -870,57 +1097,136 @@ pub fn stub_e1b0() {
 // 0xe24c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(RBX::CRenderSettings::GraphicsMode const&)const")]
-pub fn stub_e24c() -> ! {
-    todo!("0xe24c RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(RBX::CRenderSettings::GraphicsMode const&)const")
+pub fn stub_e24c(value: i32, out: &mut String) {
+    // IDA 0xe24c: same convertToString(item) shape as 0xd7cc — asserts at
+    // enumconverter.h:262/263 (0xe288..0xe2f8 hook/skip paths), then "" or
+    // names[value].
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < GRAPHICS_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= GRAPHICS_MODE_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(GRAPHICS_MODE_ITEMS[value as usize].0);
+    }
 }
 
 // 0xe3ec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12GraphicsModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::GraphicsMode>(RBX::CRenderSettings::GraphicsMode const&)")]
-pub fn stub_e3ec() -> ! {
-    todo!("0xe3ec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::GraphicsMode>(RBX::CRenderSettings::GraphicsMode const&)")
+pub fn stub_e3ec<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xe3ec: same placement_any op= shape as 0xd96c — singleton(); same
+    // holder -> payload copy; else destroy + retag; return self.
+    // Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::GraphicsMode(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::GraphicsMode(value);
+        }
+    }
+    slot
 }
 
 // 0xe43c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::singleton(void)")]
-pub fn stub_e43c() -> ! {
-    todo!("0xe43c rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::singleton(void)")
+pub fn stub_e43c() -> &'static GraphicsModeHolder {
+    // IDA 0xe43c: cxa_guard_acquire/release around s; s = {typeinfo,
+    // destruct_func} + construct_func word. Host: LazyLock never drops.
+    &*GRAPHICS_MODE_HOLDER
 }
 
 // 0xe4a8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::construct_func(char const*,char *)")]
-pub fn stub_e4a8() -> ! {
-    todo!("0xe4a8 rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::construct_func(char const*,char *)")
+pub fn stub_e4a8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xe4a8: same construct_func shape as 0xda28 — null dst -> src word;
+    // else 4-byte copy. SAFETY: holder protocol on src/dst as for 0xda28.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xe4b4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::destruct_func(char *)")]
-pub fn stub_e4b4() -> ! {
-    todo!("0xe4b4 rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::destruct_func(char *)")
+pub fn stub_e4b4() {
+    // IDA 0xe4b4: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xe4b8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToItem(RBX::CRenderSettings::GraphicsMode const&)const")]
-pub fn stub_e4b8() -> ! {
-    todo!("0xe4b8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToItem(RBX::CRenderSettings::GraphicsMode const&)const")
+pub fn stub_e4b8(value: i32) -> u32 {
+    // IDA 0xe4b8: asserts "value>=0" (enumconverter.h:273, 0xe4cc/0xe4d0 skip;
+    // 0xe502/0xe506 hook, 0xe512 onward) and
+    // "(size_t)value<enumToItem.size()" (:274, 0xe516..; 0xe536/0xe550 hook,
+    // 0xe552 skip, 0xe554 reload, ReleaseAssert at 0xe564..); then 0,
+    // range recheck, else enumToItem[value]. Failure -> 0, as original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < GRAPHICS_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < GRAPHICS_MODE_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xe584 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12GraphicsModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::GraphicsMode const& rbx::any_cast<RBX::CRenderSettings::GraphicsMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_e584() -> ! {
-    todo!("0xe584 RBX::CRenderSettings::GraphicsMode const& rbx::any_cast<RBX::CRenderSettings::GraphicsMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_e584(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xe584: holder load; null holder -> void typeinfo; holder mismatch
+    // (0xe5ae) or name mismatch ("N3RBX15CRenderSettings12GraphicsModeE",
+    // 0xe5f0..) -> throw bad_placement_any_cast (host: Err); else payload.
+    match slot {
+        RenderSettingsAny::GraphicsMode(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xe674 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::GraphicsMode&)const")]
-pub fn stub_e674() -> ! {
-    todo!("0xe674 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::GraphicsMode&)const")
+pub fn stub_e674(name: &str, out: &mut i32) -> bool {
+    // IDA 0xe674: same two-map lower_bound shape as 0xd6b4 (walks
+    // 0xe676..0xe6a8; hit stores node+5 and returns 1, else 0).
+    // Host: binary search, primary table then legacy table.
+    match GRAPHICS_MODE_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = GRAPHICS_MODE_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match GRAPHICS_MODE_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = GRAPHICS_MODE_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xe6f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev
