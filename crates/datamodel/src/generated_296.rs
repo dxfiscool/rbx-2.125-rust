@@ -7,120 +7,460 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use rbx_core::WeakPtr;
+use crate::data_model::DataModel;
+use crate::generated_05::SignatureItem;
+use crate::generated_b::BoundMethod;
+
+/// Rust model of `G3D::Vector2` bound by the `0xf59db4` callback: the plain
+/// float pair.
+#[derive(Clone, Copy, Default)]
+pub struct DmVec2 {
+    pub x: f32,
+    pub y: f32,
+}
+
+/// Rust model of `RBX::UIEvent` bound by the `0xf59d94`/`0xf5dc4` callbacks.
+/// // BUG: the event payload layout is unrecovered; opaque by-value carrier.
+#[derive(Clone, Copy, Default)]
+pub struct UiEvent {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Camera::CameraPanMode` bound by `0xf59bf4`/`0xf59e14`.
+/// // BUG: enumerants land with the camera batch; the word travels as-is.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct CameraPanMode(pub u32);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(weak_ptr<DataModel>, bool),
+/// list2<value<weak>, value<bool>>>` (IDA `0xf59bc4`, `0xf59de4`): the
+/// retained weak plus the bound flag.
+#[derive(Clone)]
+pub struct DmWeakBoolBind {
+    pub weak: WeakPtr<DataModel>,
+    pub flag: bool,
+}
+/// Invoker installed for the weak/flag bind (cf. `ViewGameFn` at 0x2d544).
+pub type DmWeakBoolFn = fn(WeakPtr<DataModel>, bool);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(float, weak_ptr<DataModel>),
+/// list2<value<float>, value<weak>>>` (IDA `0xf59bd4`, `0xf59df4`).
+#[derive(Clone)]
+pub struct DmFloatWeakBind {
+    pub value: f32,
+    pub weak: WeakPtr<DataModel>,
+}
+/// Invoker installed for the float/weak bind.
+pub type DmFloatWeakFn = fn(f32, WeakPtr<DataModel>);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(float, float,
+/// weak_ptr<DataModel>), list3<...>>` (IDA `0xf59be4`, `0xf59e04`).
+#[derive(Clone)]
+pub struct DmFloat2WeakBind {
+    pub x: f32,
+    pub y: f32,
+    pub weak: WeakPtr<DataModel>,
+}
+/// Invoker installed for the float-pair/weak bind.
+pub type DmFloat2WeakFn = fn(f32, f32, WeakPtr<DataModel>);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(float, float, bool,
+/// CameraPanMode, weak_ptr<DataModel>), list5<...>>` (IDA `0xf59bf4`,
+/// `0xf59e14`).
+#[derive(Clone)]
+pub struct DmCameraBind {
+    pub x: f32,
+    pub y: f32,
+    pub flag: bool,
+    pub pan: CameraPanMode,
+    pub weak: WeakPtr<DataModel>,
+}
+/// Invoker installed for the camera bind.
+pub type DmCameraFn = fn(f32, f32, bool, CameraPanMode, WeakPtr<DataModel>);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(UIEvent, void*,
+/// weak_ptr<DataModel>), list3<...>>` (IDA `0xf59d94`): the by-value event,
+/// the unretained data pointer, and the weak.
+#[derive(Clone)]
+pub struct DmUiEventBind {
+    pub event: UiEvent,
+    pub data: *mut (),
+    pub weak: WeakPtr<DataModel>,
+}
+/// Invoker installed for the UI-event bind.
+pub type DmUiEventFn = fn(UiEvent, *mut (), WeakPtr<DataModel>);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(weak_ptr<DataModel>),
+/// list1<...>>` (IDA `0xf59da4`).
+#[derive(Clone)]
+pub struct DmWeakBind {
+    pub weak: WeakPtr<DataModel>,
+}
+/// Invoker installed for the bare-weak bind.
+pub type DmWeakFn = fn(WeakPtr<DataModel>);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(weak_ptr<DataModel>,
+/// Vector2, float), list3<...>>` (IDA `0xf59db4`).
+#[derive(Clone)]
+pub struct DmWeakVec2Bind {
+    pub weak: WeakPtr<DataModel>,
+    pub point: DmVec2,
+    pub value: f32,
+}
+/// Invoker installed for the weak/point bind.
+pub type DmWeakVec2Fn = fn(WeakPtr<DataModel>, DmVec2, f32);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(weak_ptr<DataModel>,
+/// UIEvent), list2<...>>` (IDA `0xf59dc4`).
+#[derive(Clone)]
+pub struct DmWeakUiBind {
+    pub weak: WeakPtr<DataModel>,
+    pub event: UiEvent,
+}
+/// Invoker installed for the weak/event bind.
+pub type DmWeakUiFn = fn(WeakPtr<DataModel>, UiEvent);
+
+/// Rust model of `boost::_bi::bind_t<void, void(*)(weak_ptr<DataModel>,
+/// std::string, bool), list3<...>>` (IDA `0xf59dd4`): the weak plus the
+/// copied string and flag.
+#[derive(Clone)]
+pub struct DmWeakStringBind {
+    pub weak: WeakPtr<DataModel>,
+    pub text: String,
+    pub flag: bool,
+}
+/// Invoker installed for the weak/string bind.
+pub type DmWeakStringFn = fn(WeakPtr<DataModel>, String, bool);
+
+/// Rust model of the `boost::function<void(DataModel*)>` slot shared by the
+/// thirteen `0xf59bc4`-`0xf59e14` binds: every bind is fully bound (no
+/// `arg<1>`), so the late `DataModel*` is discarded at call time. The stored
+/// invoker (the installed `stored_vtable`, cf. IDA `0x2d5ba`) rides each
+/// variant; empty is the cleared state (cf. `DataModelCallback`).
+#[derive(Clone)]
+pub enum DmVoidBind {
+    WeakBool(DmWeakBoolBind, DmWeakBoolFn),
+    FloatWeak(DmFloatWeakBind, DmFloatWeakFn),
+    Float2Weak(DmFloat2WeakBind, DmFloat2WeakFn),
+    Camera(DmCameraBind, DmCameraFn),
+    UiEvent(DmUiEventBind, DmUiEventFn),
+    Weak(DmWeakBind, DmWeakFn),
+    WeakVec2(DmWeakVec2Bind, DmWeakVec2Fn),
+    WeakUi(DmWeakUiBind, DmWeakUiFn),
+    WeakString(DmWeakStringBind, DmWeakStringFn),
+}
+/// Nullable `function<void(DataModel*)>` holding one of the thirteen binds.
+#[derive(Clone, Default)]
+pub struct DmVoidCallback {
+    bind: Option<DmVoidBind>,
+}
+impl DmVoidCallback {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.bind.is_none()
+    }
+    pub fn call(&self, dm: *mut DataModel) {
+        // No `arg<1>` appears in any of the thirteen bind lists, so the late
+        // arg is discarded by every arm; cloning the weak re-arms the same
+        // `weak_add_ref` the original `shared_count` copy ran.
+        let _ = dm;
+        match &self.bind {
+            None => {}
+            Some(DmVoidBind::WeakBool(bind, invoke)) => invoke(bind.weak.clone(), bind.flag),
+            Some(DmVoidBind::FloatWeak(bind, invoke)) => invoke(bind.value, bind.weak.clone()),
+            Some(DmVoidBind::Float2Weak(bind, invoke)) => {
+                invoke(bind.x, bind.y, bind.weak.clone())
+            }
+            Some(DmVoidBind::Camera(bind, invoke)) => {
+                invoke(bind.x, bind.y, bind.flag, bind.pan, bind.weak.clone())
+            }
+            Some(DmVoidBind::UiEvent(bind, invoke)) => {
+                invoke(bind.event, bind.data, bind.weak.clone())
+            }
+            Some(DmVoidBind::Weak(bind, invoke)) => invoke(bind.weak.clone()),
+            Some(DmVoidBind::WeakVec2(bind, invoke)) => {
+                invoke(bind.weak.clone(), bind.point, bind.value)
+            }
+            Some(DmVoidBind::WeakUi(bind, invoke)) => invoke(bind.weak.clone(), bind.event),
+            Some(DmVoidBind::WeakString(bind, invoke)) => {
+                invoke(bind.weak.clone(), bind.text.clone(), bind.flag)
+            }
+        }
+    }
+}
+
+/// Rust model of `RBX::OverlayDataModel` for the dtor/weak ports below (IDA
+/// `0xf5bc74`/`0xf5bd34`): only the embedded `enable_shared_from_this` weak
+/// owner is modeled; the wider `DataModel` base lands with a later batch.
+pub struct OverlayDataModel {
+    pub weak_owner: WeakPtr<OverlayDataModel>,
+}
+/// A `void (OverlayDataModel::*)(int)` implementation behind
+/// `OverlayVoidIntFunc::method` once resolved.
+pub type OverlayVoidIntMethod = fn(*mut OverlayDataModel, i32);
+/// Rust model of `BoundFuncDesc<OverlayDataModel, void(int), 1>` (IDA
+/// `0xf5bb14`): signature items at `+8`, bound name (`scoped_ptr<string>`)
+/// at `+12`, stored member pointer at `+10/+11` — twin of `HumanoidFuncVoid1`
+/// in generated_b.
+pub struct OverlayVoidIntFunc {
+    pub items: Vec<SignatureItem>,
+    pub method: BoundMethod,
+    pub method_fn: Option<OverlayVoidIntMethod>,
+    pub bound_name: Option<String>,
+}
+/// Rust model of `PropDescriptor<OverlayDataModel, int>` (IDA `0xf5bb24`):
+/// the getter member encoding plus the stored default value.
+pub struct OverlayIntProp {
+    pub getter: BoundMethod,
+    pub default: i32,
+    pub class_name: String,
+    pub name: String,
+    pub permissions: u32,
+    pub attributes: u32,
+}
 
 // 0xf59bc4 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS7_5list2INS7_5valueISA_EENSE_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS7_5list2INS7_5valueISA_EENSE_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59bc4() -> ! {
-    todo!("0xf59bc4 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS7_5list2INS7_5valueISA_EENSE_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59bc4(slot: &mut DmVoidCallback, bind: DmWeakBoolBind, invoke: DmWeakBoolFn) {
+    // IDA 0xf59bc4: __picsymbolstub4 into `function<void(DataModel*)>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>, bool),
+    // list2<value<weak>, value<bool>>>` — installs the bound (weak, flag)
+    // pair plus its invoker (the `stored_vtable`, cf. 0x2d544); the late
+    // `DataModel*` has no `arg<1>` slot and is discarded at call time.
+    slot.bind = Some(DmVoidBind::WeakBool(bind, invoke));
 }
 
 // 0xf59bd4 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS7_5list2INS7_5valueIfEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS7_5list2INS7_5valueIfEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59bd4() -> ! {
-    todo!("0xf59bd4 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS7_5list2INS7_5valueIfEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59bd4(slot: &mut DmVoidCallback, bind: DmFloatWeakBind, invoke: DmFloatWeakFn) {
+    // IDA 0xf59bd4: __picsymbolstub4 into `function<void(DataModel*)>::C2`
+    // from `bind_t<void, void(*)(float, weak_ptr<DataModel>),
+    // list2<value<float>, value<weak>>>` — same install as 0xf59bc4 for the
+    // (float, weak) pair.
+    slot.bind = Some(DmVoidBind::FloatWeak(bind, invoke));
 }
 
 // 0xf59be4 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS7_5list3INS7_5valueIfEESF_NSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS7_5list3INS7_5valueIfEESF_NSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59be4() -> ! {
-    todo!("0xf59be4 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS7_5list3INS7_5valueIfEESF_NSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59be4(slot: &mut DmVoidCallback, bind: DmFloat2WeakBind, invoke: DmFloat2WeakFn) {
+    // IDA 0xf59be4: __picsymbolstub4 into `function<void(DataModel*)>::C2`
+    // from `bind_t<void, void(*)(float, float, weak_ptr<DataModel>),
+    // list3<value<float>, value<float>, value<weak>>>` — same install as
+    // 0xf59bc4 for the float pair plus weak.
+    slot.bind = Some(DmVoidBind::Float2Weak(bind, invoke));
 }
 
 // 0xf59bf4 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS7_5list5INS7_5valueIfEESH_NSG_IbEENSG_ISA_EENSG_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS7_5list5INS7_5valueIfEESH_NSG_IbEENSG_ISA_EENSG_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59bf4() -> ! {
-    todo!("0xf59bf4 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS7_5list5INS7_5valueIfEESH_NSG_IbEENSG_ISA_EENSG_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59bf4(slot: &mut DmVoidCallback, bind: DmCameraBind, invoke: DmCameraFn) {
+    // IDA 0xf59bf4: __picsymbolstub4 into `function<void(DataModel*)>::C2`
+    // from `bind_t<void, void(*)(float, float, bool, CameraPanMode,
+    // weak_ptr<DataModel>), list5<...>>` — same install as 0xf59bc4 for the
+    // camera 5-tuple.
+    slot.bind = Some(DmVoidBind::Camera(bind, invoke));
 }
 
 // 0xf59d94 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS1_7UIEventEPvNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIS8_EENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS1_7UIEventEPvNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIS8_EENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59d94() -> ! {
-    todo!("0xf59d94 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS1_7UIEventEPvNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIS8_EENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59d94(slot: &mut DmVoidCallback, bind: DmUiEventBind, invoke: DmUiEventFn) {
+    // IDA 0xf59d94: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(UIEvent, void*, weak_ptr<DataModel>),
+    // list3<value<UIEvent>, value<void*>, value<weak>>>` — same install as
+    // 0xf59bc4 for the (event, data, weak) triple.
+    slot.bind = Some(DmVoidBind::UiEvent(bind, invoke));
 }
 
 // 0xf59da4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEENS6_5list1INS6_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEENS6_5list1INS6_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59da4() -> ! {
-    todo!("0xf59da4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEENS6_5list1INS6_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59da4(slot: &mut DmVoidCallback, bind: DmWeakBind, invoke: DmWeakFn) {
+    // IDA 0xf59da4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>), list1<value<weak>>>`
+    // — same install as 0xf59bc4 for the bare weak.
+    slot.bind = Some(DmVoidBind::Weak(bind, invoke));
 }
 
 // 0xf59db4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59db4() -> ! {
-    todo!("0xf59db4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59db4(slot: &mut DmVoidCallback, bind: DmWeakVec2Bind, invoke: DmWeakVec2Fn) {
+    // IDA 0xf59db4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>, Vector2, float),
+    // list3<...>>` — same install as 0xf59bc4 for the (weak, point, value)
+    // triple.
+    slot.bind = Some(DmVoidBind::WeakVec2(bind, invoke));
 }
 
 // 0xf59dc4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EENS1_7UIEventEENS6_5list2INS6_5valueIS9_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EENS1_7UIEventEENS6_5list2INS6_5valueIS9_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59dc4() -> ! {
-    todo!("0xf59dc4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EENS1_7UIEventEENS6_5list2INS6_5valueIS9_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59dc4(slot: &mut DmVoidCallback, bind: DmWeakUiBind, invoke: DmWeakUiFn) {
+    // IDA 0xf59dc4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>, UIEvent), list2<...>>`
+    // — same install as 0xf59bc4 for the (weak, event) pair.
+    slot.bind = Some(DmVoidBind::WeakUi(bind, invoke));
 }
 
 // 0xf59dd4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EESsbENS6_5list3INS6_5valueIS9_EENSD_ISsEENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EESsbENS6_5list3INS6_5valueIS9_EENSD_ISsEENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59dd4() -> ! {
-    todo!("0xf59dd4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EESsbENS6_5list3INS6_5valueIS9_EENSD_ISsEENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59dd4(slot: &mut DmVoidCallback, bind: DmWeakStringBind, invoke: DmWeakStringFn) {
+    // IDA 0xf59dd4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>, std::string, bool),
+    // list3<...>>` — same install as 0xf59bc4; moving the bind copies the
+    // string like the `std::string::string` copy in the 0x282ab8 precedent.
+    slot.bind = Some(DmVoidBind::WeakString(bind, invoke));
 }
 
 // 0xf59de4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS6_5list2INS6_5valueIS9_EENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS6_5list2INS6_5valueIS9_EENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59de4() -> ! {
-    todo!("0xf59de4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEbENS6_5list2INS6_5valueIS9_EENSD_IbEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59de4(slot: &mut DmVoidCallback, bind: DmWeakBoolBind, invoke: DmWeakBoolFn) {
+    // IDA 0xf59de4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(weak_ptr<DataModel>, bool), list2<...>>` —
+    // same (weak, flag) shape as 0xf59bc4.
+    slot.bind = Some(DmVoidBind::WeakBool(bind, invoke));
 }
 
 // 0xf59df4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS6_5list2INS6_5valueIfEENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS6_5list2INS6_5valueIfEENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59df4() -> ! {
-    todo!("0xf59df4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvfNS_8weak_ptrIS2_EEENS6_5list2INS6_5valueIfEENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59df4(slot: &mut DmVoidCallback, bind: DmFloatWeakBind, invoke: DmFloatWeakFn) {
+    // IDA 0xf59df4: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(float, weak_ptr<DataModel>), list2<...>>` —
+    // same (float, weak) shape as 0xf59bd4.
+    slot.bind = Some(DmVoidBind::FloatWeak(bind, invoke));
 }
 
 // 0xf59e04 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIfEESE_NSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIfEESE_NSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59e04() -> ! {
-    todo!("0xf59e04 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffNS_8weak_ptrIS2_EEENS6_5list3INS6_5valueIfEESE_NSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59e04(slot: &mut DmVoidCallback, bind: DmFloat2WeakBind, invoke: DmFloat2WeakFn) {
+    // IDA 0xf59e04: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(float, float, weak_ptr<DataModel>),
+    // list3<...>>` — same float-pair shape as 0xf59be4.
+    slot.bind = Some(DmVoidBind::Float2Weak(bind, invoke));
 }
 
 // 0xf59e14 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS6_5list5INS6_5valueIfEESG_NSF_IbEENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS6_5list5INS6_5valueIfEESG_NSF_IbEENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf59e14() -> ! {
-    todo!("0xf59e14 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvffbNS1_6Camera13CameraPanModeENS_8weak_ptrIS2_EEENS6_5list5INS6_5valueIfEESG_NSF_IbEENSF_IS9_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf59e14(slot: &mut DmVoidCallback, bind: DmCameraBind, invoke: DmCameraFn) {
+    // IDA 0xf59e14: __picsymbolstub4 into `function1<void, DataModel*>::C2`
+    // from `bind_t<void, void(*)(float, float, bool, CameraPanMode,
+    // weak_ptr<DataModel>), list5<...>>` — same camera shape as 0xf59bf4.
+    slot.bind = Some(DmVoidBind::Camera(bind, invoke));
 }
 
 // 0xf5bb04 — j___ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0xf5bb04() -> ! {
-    todo!("0xf5bb04 RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0xf5bb04(desc: *mut OverlayVoidIntFunc, name: &str) {
+    // IDA 0xf5bb04: __picsymbolstub4 into
+    // BoundFuncDesc<OverlayDataModel, void(int), 1>::declareSignature —
+    // `void` return singleton plus the `int` arg declared + added, the same
+    // shape as the Humanoid twin 0x7c7490 (singleton/Name::declare/addArgument
+    // at 0x7c74a0-0x7c74be). The declared name is kept as the bound name;
+    // interning has no global table yet.
+    // SAFETY: `desc` must point to a valid `OverlayVoidIntFunc`.
+    unsafe {
+        (*desc).items.push(SignatureItem { type_name: "int" });
+        (*desc).bound_name = Some(name.to_string());
+    }
 }
 
 // 0xf5bb14 — j___ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EEC2EMS2_FviEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::BoundFuncDesc(void (RBX::OverlayDataModel::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0xf5bb14() -> ! {
-    todo!("0xf5bb14 RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::BoundFuncDesc(void (RBX::OverlayDataModel::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0xf5bb14(
+    method_hi: u32,
+    method_lo: u32,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> OverlayVoidIntFunc {
+    // IDA 0xf5bb14: __picsymbolstub4 into
+    // BoundFuncDesc<OverlayDataModel, void(int), 1>::C2 — base
+    // `FunctionDescriptor` init, vtable set, member-pointer pair at `+10/+11`,
+    // `scoped_ptr` at `+12` nulled, then `declareSignature(name)` (0xf5bb04)
+    // over the `void` return — same shape as the Humanoid twin 0x7c7314.
+    let mut desc = OverlayVoidIntFunc {
+        items: Vec::new(),
+        method: BoundMethod {
+            raw: ((method_hi as u64) << 32) | method_lo as u64,
+        },
+        method_fn: None,
+        bound_name: None,
+    };
+    stub_0xf5bb04(&mut desc as *mut _, name);
+    let _ = (permissions, attributes);
+    desc
 }
 
 // 0xf5bb24 — j___ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::PropDescriptor<int (RBX::OverlayDataModel::*)(void)const,int>(char const*,char const*,int (RBX::OverlayDataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0xf5bb24() -> ! {
-    todo!("0xf5bb24 RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::PropDescriptor<int (RBX::OverlayDataModel::*)(void)const,int>(char const*,char const*,int (RBX::OverlayDataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0xf5bb24(
+    class_name: &str,
+    name: &str,
+    getter_hi: u32,
+    getter_lo: u32,
+    default: i32,
+    permissions: u32,
+    attributes: u32,
+) -> OverlayIntProp {
+    // IDA 0xf5bb24: __picsymbolstub4 into
+    // PropDescriptor<OverlayDataModel, int>::C2<int
+    // (OverlayDataModel::*)(void)const, int> — class link plus
+    // `PropertyDescriptor` base init (compiler-managed here), the getter
+    // member pair (same `+10/+11` encoding as the BoundFuncDesc C2s, cf.
+    // 0x7c3986), and the stored default value.
+    OverlayIntProp {
+        getter: BoundMethod {
+            raw: ((getter_hi as u64) << 32) | getter_lo as u64,
+        },
+        default,
+        class_name: class_name.to_string(),
+        name: name.to_string(),
+        permissions,
+        attributes,
+    }
 }
 
 // 0xf5bc74 — j___ZN3RBX16OverlayDataModelD2Ev
 #[doc(alias = "RBX::OverlayDataModel::~OverlayDataModel()")]
-pub fn stub_0xf5bc74() -> ! {
-    todo!("0xf5bc74 RBX::OverlayDataModel::~OverlayDataModel()")
+pub fn stub_0xf5bc74(this: *mut OverlayDataModel) {
+    // IDA 0xf5bc74: __picsymbolstub4 into OverlayDataModel::D2 (non-deleting)
+    // — member teardown; the modeled half is the embedded weak-owner release
+    // (same shape as the ChildRemovedSignalData D1 at 0x703da4).
+    // // BUG: the wider DataModel/Instance base teardown has no model yet.
+    // SAFETY: `this` must point to a valid `OverlayDataModel`.
+    unsafe {
+        (*this).weak_owner = WeakPtr::new();
+    }
 }
 
 // 0xf5bd04 — j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v")]
-pub fn stub_0xf5bd04() -> ! {
-    todo!("0xf5bd04 j___ZN3RBX4Name9doDeclareILZNS_17sOverlayDataModelEEEERKS0_v")
+pub fn stub_0xf5bd04() -> &'static str {
+    // IDA 0xf5bd04: __picsymbolstub4 into
+    // Name::doDeclare<sOverlayDataModel> — returns the interned static name;
+    // interning has no global table yet (cf. 0x7c3aaa), so this is the
+    // literal.
+    "OverlayDataModel"
 }
 
 // 0xf5bd34 — j___ZN3RBX9weak_fromINS_16OverlayDataModelEEEN5boost8weak_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::Weak<RBX::OverlayDataModel> RBX::weak_from<RBX::OverlayDataModel>(RBX::OverlayDataModel*)")]
 // was: boost::weak_ptr<RBX::OverlayDataModel> RBX::weak_from<RBX::OverlayDataModel>(RBX::OverlayDataModel*)
-pub fn stub_0xf5bd34() -> ! {
-    todo!("0xf5bd34 rbx_core::Weak<RBX::OverlayDataModel> RBX::weak_from<RBX::OverlayDataModel>(RBX::OverlayDataModel*)")
+pub fn stub_0xf5bd34(out: *mut WeakPtr<OverlayDataModel>, this: *const OverlayDataModel) {
+    // IDA 0xf5bd34: __picsymbolstub4 into weak_from<OverlayDataModel> — same
+    // shape as weak_from<Instance> (0x7039e4): null yields an empty weak,
+    // else the embedded weak is cloned with a locked `weak_add_ref`; a dead
+    // (never-owned or expired) owner throws `boost::bad_weak_ptr`, mapped to
+    // a panic.
+    // SAFETY: `out` must be writable; `this` must be null or valid.
+    unsafe {
+        let weak = match this.as_ref() {
+            None => WeakPtr::new(),
+            Some(model) => model.weak_owner.clone(),
+        };
+        if !this.is_null() && weak.upgrade().is_none() {
+            panic!("0xf5bd34 RBX::weak_from<RBX::OverlayDataModel>: bad_weak_ptr");
+        }
+        core::ptr::write(out, weak);
+    }
 }
 
 // 0xf5bd74 — j___ZN5boost10shared_ptrIN3RBX16OverlayDataModelEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE

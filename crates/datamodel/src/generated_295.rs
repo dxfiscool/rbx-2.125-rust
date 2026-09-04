@@ -7,6 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_b::HumanoidTarget;
 use rbx_core::WeakPtr;
 use std::collections::HashMap;
 use crate::instance::PartInstance;
@@ -51,6 +52,14 @@ pub struct TopNErrorsNugget;
 /// `TopNErrorsNugget`. Cloned by the pair suite (IDA `0xf5f834`..`0xf5f854`).
 #[derive(Clone, Copy, Default)]
 pub struct ErrorCompNugget;
+
+/// Rust model of `RBX::FastClusterMeshGenerator` for the C2 below (IDA
+/// `0xf64c24`): the layout lives on the rendering side and is unrecovered;
+/// opaque carrier like `MegaClusterInstance` in `instance.rs`.
+#[derive(Default)]
+pub struct FastClusterMeshGenerator {
+    _opaque: (),
+}
 
 /// Rust model of `boost::unordered_map<shared_ptr<const PartInstance>, ...::Nugget>`
 /// (IDA `0xf5e2a4` / `0xf5f794` families): `boost::hash<shared_ptr>` hashes the stored
@@ -372,39 +381,93 @@ pub fn stub_0xf5f854(out: *mut ErrorCompEntry, part: &SharedPtr<PartInstance>, n
 
 // 0xf5f864 — j___ZSt8for_eachIN3RBX9Intrusive3SetINS0_12PartInstanceENS0_14PhysicsServiceEE8IteratorEN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS0_7Network22ErrorCompPhysicsSenderERS3_EENS8_5list2INS8_5valueIPSD_EENS7_3argILi1EEEEEEEET0_T_SP_SO_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>> std::for_each<RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>(RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>)")]
-pub fn stub_0xf5f864() -> ! {
-    todo!("0xf5f864 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>> std::for_each<RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>(RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::Iterator,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,RBX::PartInstance&>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>)")
+pub fn stub_0xf5f864(items: &[*const PartInstance], bound: &ErrorCompBind) {
+    // IDA 0xf5f864: __picsymbolstub4 (LDR R12,=ptr; ADD R12,PC; LDR PC,[R12])
+    // into for_each over `Intrusive::Set<PartInstance>` iterators applying the
+    // ErrorComp mf1 bind — twin of the TopNErrors loop at 0xf5e324, riding the
+    // `ErrorCompBind` direct call from 0xf5f804.
+    for item in items {
+        (bound.func)(bound.target, *item);
+    }
 }
 
 // 0xf62234 — j___ZN3RBX11shared_fromINS_8HumanoidEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid> RBX::shared_from<RBX::Humanoid>(RBX::Humanoid*)")]
 // was: boost::shared_ptr<RBX::Humanoid> RBX::shared_from<RBX::Humanoid>(RBX::Humanoid*)
-pub fn stub_0xf62234() -> ! {
-    todo!("0xf62234 rbx_core::SharedPtr<RBX::Humanoid> RBX::shared_from<RBX::Humanoid>(RBX::Humanoid*)")
+pub fn stub_0xf62234(ptr: *const HumanoidTarget) -> SharedPtr<HumanoidTarget> {
+    // IDA 0xf62234: __picsymbolstub4 into shared_from<Humanoid> — the
+    // `Humanoid` target collapses to its `Instance` base (cf. `HumanoidTarget`
+    // in generated_b), so this is the same weak-owner lock as
+    // shared_from<PartInstance> (0x5e1610): an expired owner throws
+    // `bad_weak_ptr`, mapped to a panic.
+    // SAFETY: `ptr` must point into a live `SharedPtr<Humanoid>`.
+    unsafe {
+        if (*ptr).weak_owner.upgrade().is_none() {
+            panic!("0xf62234 shared_from<Humanoid>: bad_weak_ptr");
+        }
+        let owned = SharedPtr::from_raw(ptr);
+        let out = owned.clone();
+        core::mem::forget(owned);
+        out
+    }
 }
 
 // 0xf64c24 — j___ZN3RBX24FastClusterMeshGeneratorC2EPN4Ogre12VisualEngineEPNS_8HumanoidEjb
 #[doc(alias = "RBX::FastClusterMeshGenerator::FastClusterMeshGenerator(Ogre::VisualEngine *,RBX::Humanoid *,unsigned int,bool)")]
-pub fn stub_0xf64c24() -> ! {
-    todo!("0xf64c24 RBX::FastClusterMeshGenerator::FastClusterMeshGenerator(Ogre::VisualEngine *,RBX::Humanoid *,unsigned int,bool)")
+pub fn stub_0xf64c24(
+    this: *mut FastClusterMeshGenerator,
+    engine: *const (),
+    humanoid: *const HumanoidTarget,
+    count: u32,
+    flag: bool,
+) -> *mut FastClusterMeshGenerator {
+    // IDA 0xf64c24: __picsymbolstub4 into FastClusterMeshGenerator::C2
+    // (`Ogre::VisualEngine *`, `Humanoid *`, uint, bool) — vtable install plus
+    // the engine/humanoid/count/flag words.
+    // // BUG: the generator layout lives on the rendering side and is
+    // // unrecovered here; construction has no modeled effect yet.
+    let _ = (engine, humanoid, count, flag);
+    this
 }
 
 // 0xf65d44 — j___ZN3RBX17MegaClusterLegacy14bind_templatedINS0_16VoxelGridOverlayEEEvRKN5boost10shared_ptrINS_12PartInstanceEEE
 #[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(boost::shared_ptr<RBX::PartInstance> const&)
-pub fn stub_0xf65d44() -> ! {
-    todo!("0xf65d44 void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(rbx_core::SharedPtr<RBX::PartInstance> const&)")
+pub fn stub_0xf65d44(part: &SharedPtr<PartInstance>) {
+    // IDA 0xf65d44: __picsymbolstub4 into
+    // MegaClusterLegacy::bind_templated<VoxelGridOverlay> (real impl 0xc09ab4):
+    // ReleaseAssert part type == MEGACLUSTER_PART (10) (0xc09af2), retain into
+    // legacy +4/+8 (0xc09b22-0xc09b70), ReleaseAssert gfx null (0xc09b8e), the
+    // part+176 self-link (0xc09bbe), the +64/+76 vector reserves (0xc09bcc-
+    // 0xc09c0c), the TerrainCellListener log, then
+    // `Voxel::Grid::connectListener` (0xc09c48).
+    // // BUG: MegaClusterLegacy layout, the PartInstance gfx word, and the
+    // // voxel grid have no model here; none of the stores run yet.
+    let _ = part;
 }
 
 // 0xf65d54 — j___ZN3RBX17MegaClusterLegacy14bind_templatedINS_19MegaClusterInstanceEEEvRKN5boost10shared_ptrINS_12PartInstanceEEE
 #[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(boost::shared_ptr<RBX::PartInstance> const&)
-pub fn stub_0xf65d54() -> ! {
-    todo!("0xf65d54 void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&)")
+pub fn stub_0xf65d54(part: &SharedPtr<PartInstance>) {
+    // IDA 0xf65d54: __picsymbolstub4 into
+    // MegaClusterLegacy::bind_templated<MegaClusterInstance> (real impl
+    // 0xc09c4c): same body as the VoxelGridOverlay twin (0xf65d44) — asserts,
+    // retain, self-link, reserves — except the log carries the bound part
+    // (`*(a1 + 4)`, 0xc09d82) and the tail is
+    // `MegaClusterInstance::connectListener` (0xc09dde).
+    // // BUG: same unmodeled stores as 0xf65d44.
+    let _ = part;
 }
 
 // 0xf660c4 — j___ZN3RBX13DataModelUtil15getSpecialShapeEPNS_12PartInstanceE
 #[doc(alias = "RBX::DataModelUtil::getSpecialShape(RBX::PartInstance *)")]
-pub fn stub_0xf660c4() -> ! {
-    todo!("0xf660c4 RBX::DataModelUtil::getSpecialShape(RBX::PartInstance *)")
+pub fn stub_0xf660c4(_util: *const (), _part: *const PartInstance) -> *const () {
+    // IDA 0xf660c4: __picsymbolstub4 into DataModelUtil::getSpecialShape
+    // (real impl 0xc248a0): null unless the +45 flag word bit 2 is set and the
+    // +14 table holds a DataModelMesh isA match (0xc248f2-0xc24a0e), in which
+    // case the matching entry pointer returns; the part arg is unused.
+    // // BUG: the DataModelUtil flag/table words and the DataModelMesh
+    // // descriptor walk have no model; always the null path.
+    core::ptr::null()
 }
