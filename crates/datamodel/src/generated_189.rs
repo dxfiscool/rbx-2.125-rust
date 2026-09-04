@@ -235,6 +235,53 @@ pub fn graphics_mode_holder() -> &'static TypedHolder {
 pub fn aa_samples_holder() -> &'static TypedHolder {
     LazyLock::force(&AA_SAMPLES_HOLDER)
 }
+/// Holder identity for `typed_holder<DataModel::GearGenreSetting>::singleton()`
+/// (IDA 0x43a2ec).
+pub const HOLDER_GEAR_GENRE_SETTING: u32 = 8;
+/// Holder identity for `typed_holder<DataModel::Genre>::singleton()` (IDA 0x43a964).
+pub const HOLDER_GENRE: u32 = 9;
+/// Holder identity for `typed_holder<DataModel::GearType>::singleton()`.
+pub const HOLDER_GEAR_TYPE: u32 = 10;
+/// Holder identity for `typed_holder<DataModel::CreatorType>::singleton()`.
+pub const HOLDER_CREATOR_TYPE: u32 = 11;
+/// IDA 0x43a2ec `singleton()::s` — `__cxa_guard` init becomes `LazyLock`.
+static GEAR_GENRE_SETTING_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX9DataModel16GearGenreSettingE",
+    token: HOLDER_GEAR_GENRE_SETTING,
+});
+/// IDA 0x43a964 `singleton()::s`, homed here so datamodel shards share one model.
+static GENRE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX9DataModel5GenreE",
+    token: HOLDER_GENRE,
+});
+/// `typed_holder<GearType>::singleton()::s`, homed here for the same reason.
+static GEAR_TYPE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX9DataModel8GearTypeE",
+    token: HOLDER_GEAR_TYPE,
+});
+/// `typed_holder<CreatorType>::singleton()::s`, homed here for the same reason.
+static CREATOR_TYPE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX9DataModel11CreatorTypeE",
+    token: HOLDER_CREATOR_TYPE,
+});
+/// IDA 0x43a2ec: `typed_holder<GearGenreSetting>::singleton()` (see
+/// `stub_0xc95c` for the init shape).
+pub fn gear_genre_setting_holder() -> &'static TypedHolder {
+    LazyLock::force(&GEAR_GENRE_SETTING_HOLDER)
+}
+/// IDA 0x43a964: `typed_holder<Genre>::singleton()` (see `stub_0xc95c` for
+/// the init shape).
+pub fn genre_holder() -> &'static TypedHolder {
+    LazyLock::force(&GENRE_HOLDER)
+}
+/// `typed_holder<GearType>::singleton()` (see `stub_0xc95c` for the init shape).
+pub fn gear_type_holder() -> &'static TypedHolder {
+    LazyLock::force(&GEAR_TYPE_HOLDER)
+}
+/// `typed_holder<CreatorType>::singleton()` (see `stub_0xc95c` for the init shape).
+pub fn creator_type_holder() -> &'static TypedHolder {
+    LazyLock::force(&CREATOR_TYPE_HOLDER)
+}
 /// Rust model of `Singleton<EnumDesc<ResolutionPreset>>::doGetSingleton`
 /// (IDA `0xfecc`/`0xff9a` touches): the shared ResolutionPreset table the
 /// `EnumPropDescriptor<CRenderSettingsItem, ResolutionPreset>` suite reads.

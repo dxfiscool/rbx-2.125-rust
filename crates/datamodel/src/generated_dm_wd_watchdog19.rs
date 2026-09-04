@@ -10,6 +10,39 @@ use crate::generated_189::CRenderSettingsItem;
 use crate::generated_190::{RenderSettingsClass, RenderSettingsCreator};
 use crate::instance::CornerWedgeInstance;
 use std::sync::atomic::{AtomicUsize, Ordering};
+use crate::generated_189::{
+    HOLDER_CREATOR_TYPE, HOLDER_GEAR_GENRE_SETTING, HOLDER_GEAR_TYPE, HOLDER_GENRE,
+    PlacementAny, TypedHolder, creator_type_holder, gear_genre_setting_holder,
+    gear_type_holder, genre_holder,
+};
+use crate::instance::{EnumDesc, stub_0x41d3d0, stub_0x41d590, stub_0x41d864, stub_0x41da24};
+use std::sync::LazyLock;
+
+/// Shared `GearType` name/value table (IDA `0x41da24` pairs); seeded once
+/// from the canonical ctor.
+static GEAR_TYPE_DESC: LazyLock<EnumDesc> = LazyLock::new(stub_0x41da24);
+/// Shared `GearGenreSetting` table (IDA `0x41d864` pairs).
+static GEAR_GENRE_DESC: LazyLock<EnumDesc> = LazyLock::new(stub_0x41d864);
+/// Shared `Genre` table (IDA `0x41d590` pairs).
+static GENRE_DESC: LazyLock<EnumDesc> = LazyLock::new(stub_0x41d590);
+/// Shared `CreatorType` table (IDA `0x41d3d0` pairs).
+static CREATOR_TYPE_DESC: LazyLock<EnumDesc> = LazyLock::new(stub_0x41d3d0);
+/// IDA 0x41da24 table accessor for the `GearType` conversion suite below.
+fn gear_type_desc() -> &'static EnumDesc {
+    LazyLock::force(&GEAR_TYPE_DESC)
+}
+/// IDA 0x41d864 table accessor for the `GearGenreSetting` suite below.
+fn gear_genre_desc() -> &'static EnumDesc {
+    LazyLock::force(&GEAR_GENRE_DESC)
+}
+/// IDA 0x41d590 table accessor for the `Genre` suite below.
+fn genre_desc() -> &'static EnumDesc {
+    LazyLock::force(&GENRE_DESC)
+}
+/// IDA 0x41d3d0 table accessor for the `CreatorType` suite below.
+fn creator_type_desc() -> &'static EnumDesc {
+    LazyLock::force(&CREATOR_TYPE_DESC)
+}
 
 /// Cached class index behind `doGetClassIndex<RunService>` (IDA `0x3af08`):
 /// guard-once assignment from the provider counter, shared crate-wide via
@@ -258,117 +291,295 @@ pub fn stub_418f70(_item: &mut CornerWedgeInstance) {
 // 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const")]
-pub fn stub_439cf0() -> ! { todo!("0x439cf0 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_") }
+pub fn stub_439cf0(value: i32) -> i32 {
+    // IDA 0x439cf0: `EnumDesc<GearType>::convertToItem` — `ReleaseAssert`
+    // (`value >= 0`, enumconverter.h:273) that falls through, then the
+    // `enumToItem` table hit. The table is dense 0..8 (IDA 0x41da24), so a
+    // hit returns the value itself; a miss falls back to 0, the same
+    // collapse as `generated_189::stub_0xc5ac`.
+    debug_assert!(value >= 0, "0x439cf0: value>=0 (enumconverter.h:273)");
+    gear_type_desc().pairs.iter().find(|(v, _)| *v == value).map(|(v, _)| *v).unwrap_or(0)
+}
 
 // 0x439dbc — __ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 #[doc(alias = "RBX::DataModel::GearType const& rbx::any_cast<RBX::DataModel::GearType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_439dbc() -> ! { todo!("0x439dbc __ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE") }
+pub fn stub_439dbc(slot: &PlacementAny) -> i32 {
+    // IDA 0x439dbc: `any_cast<GearType const&, Region3>` — holder check
+    // with a typeinfo-name fallback; mismatch throws
+    // `rbx::bad_placement_any_cast` (a throw becomes a panic here), hit
+    // returns the payload word. Same shape as `generated_189::stub_0xcaa4`.
+    if slot.holder != HOLDER_GEAR_TYPE {
+        panic!("rbx::bad_placement_any_cast for N3RBX9DataModel8GearTypeE");
+    }
+    slot.value
+}
 
 // 0x439eac — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(RBX::Name const&,RBX::DataModel::GearType&)const")]
-pub fn stub_439eac() -> ! { todo!("0x439eac __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_") }
+pub fn stub_439eac(name: &str, out: &mut i32) -> bool {
+    // IDA 0x439eac: `EnumDesc<GearType>::convertToValue` — map search by
+    // name id over the 0x41da24 table; hit stores the value and returns 1,
+    // miss returns 0. `Name::lookup` collapses into the `&str` itself.
+    // Same shape as `instance::stub_0x3bd850`.
+    match gear_type_desc().pairs.iter().find(|(_, n)| *n == name) {
+        Some((value, _)) => {
+            *out = *value;
+            true
+        }
+        None => false,
+    }
+}
 
 // 0x439f28 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
-pub fn stub_439f28() -> ! { todo!("0x439f28 __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev") }
+pub fn stub_439f28(_desc: &mut EnumDesc) {
+    // IDA 0x439f28: `EnumDesc<GearType>::~EnumDesc` — vtable install plus
+    // the pair-vector/registrar teardown. The table lives in a `LazyLock`
+    // that owns its storage to process exit, so drops collapse into Rust
+    // ownership. Drop glue, no-op.
+}
 
 // 0x43a0fc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const")]
-pub fn stub_43a0fc() -> ! { todo!("0x43a0fc __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_") }
+pub fn stub_43a0fc(value: i32, out: &mut String) {
+    // IDA 0x43a0fc: `EnumDesc<GearGenreSetting>::convertToString` —
+    // `ReleaseAssert(value >= 0)` (:262) and `ReleaseAssert(value <
+    // enumToItem.size())` (:263) that fall through, then
+    // `*out = OOB ? "" : enumToItem[value]`. Same shape as
+    // `generated_189::stub_0xc76c`.
+    debug_assert!(value >= 0, "0x43a0fc: value>=0 (enumconverter.h:262)");
+    match (value >= 0).then(|| gear_genre_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
+        Some((_, name)) => *out = name.to_owned(),
+        None => out.clear(),
+    }
+}
 
 // 0x43a29c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_")]
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearGenreSetting>(RBX::DataModel::GearGenreSetting const&)")]
-pub fn stub_43a29c() -> ! { todo!("0x43a29c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_") }
+pub fn stub_43a29c(slot: &mut PlacementAny, value: i32) -> &mut PlacementAny {
+    // IDA 0x43a29c: `placement_any<Region3>::operator=<GearGenreSetting>` —
+    // singleton touch (0x43a2a8), same-holder copy (0x43a2d4), else destruct
+    // (0x43a2c8) / clear (0x43a2cc) / copy (0x43a2de) / install (0x43a2e0).
+    // Same shape as `generated_189::stub_0xceec`.
+    let _ = gear_genre_setting_holder();
+    if slot.holder == HOLDER_GEAR_GENRE_SETTING {
+        slot.value = value;
+    } else {
+        slot.holder = 0;
+        slot.value = value;
+        slot.holder = HOLDER_GEAR_GENRE_SETTING;
+    }
+    slot
+}
 
 // 0x43a2ec — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE9singletonEv
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE9singletonEv")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::singleton(void)")]
-pub fn stub_43a2ec() -> ! { todo!("0x43a2ec __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE9singletonEv") }
+pub fn stub_43a2ec() -> &'static TypedHolder {
+    // IDA 0x43a2ec: `typed_holder<GearGenreSetting>::singleton` —
+    // `__cxa_guard`-checked init of `s = { typeinfo, destruct_func,
+    // construct_func }`, then return `&s`. Same shape as
+    // `generated_190::stub_0xcf3c`; homed on the shared `LazyLock` model in
+    // `generated_189`.
+    gear_genre_setting_holder()
+}
 
 // 0x43a358 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE14construct_funcEPKcPc")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::construct_func(char const*,char *)")]
-pub fn stub_43a358() -> ! { todo!("0x43a358 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE14construct_funcEPKcPc") }
+pub fn stub_43a358(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0x43a358: `typed_holder<GearGenreSetting>::construct_func` —
+    // `if (dst) { value = *src; *dst = value; } return value`. Same shape
+    // as `generated_190::stub_0xcfa8`.
+    // SAFETY: `src` must be readable; `dst` must be writable when non-null.
+    unsafe {
+        let value = *src;
+        if !dst.is_null() {
+            *dst = value;
+        }
+        value
+    }
+}
 
 // 0x43a364 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::destruct_func(char *)")]
-pub fn stub_43a364() -> ! { todo!("0x43a364 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc") }
+pub fn stub_43a364() {
+    // IDA 0x43a364: `typed_holder<GearGenreSetting>::destruct_func` — empty;
+    // trivial enum payload, nothing to destroy.
+}
 
 // 0x43a368 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToItem(RBX::DataModel::GearGenreSetting const&)const")]
-pub fn stub_43a368() -> ! { todo!("0x43a368 __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_") }
+pub fn stub_43a368(value: i32) -> i32 {
+    // IDA 0x43a368: `EnumDesc<GearGenreSetting>::convertToItem` — same
+    // assert + table-hit shape as 0x439cf0 over the 0x41d864 table.
+    debug_assert!(value >= 0, "0x43a368: value>=0 (enumconverter.h:273)");
+    gear_genre_desc().pairs.iter().find(|(v, _)| *v == value).map(|(v, _)| *v).unwrap_or(0)
+}
 
 // 0x43a434 — __ZN3rbx8any_castIRKN3RBX9DataModel16GearGenreSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX9DataModel16GearGenreSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 #[doc(alias = "RBX::DataModel::GearGenreSetting const& rbx::any_cast<RBX::DataModel::GearGenreSetting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_43a434() -> ! { todo!("0x43a434 __ZN3rbx8any_castIRKN3RBX9DataModel16GearGenreSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE") }
+pub fn stub_43a434(slot: &PlacementAny) -> i32 {
+    // IDA 0x43a434: `any_cast<GearGenreSetting const&, Region3>` — same
+    // holder-check + panic shape as 0x439dbc.
+    if slot.holder != HOLDER_GEAR_GENRE_SETTING {
+        panic!("rbx::bad_placement_any_cast for N3RBX9DataModel16GearGenreSettingE");
+    }
+    slot.value
+}
 
 // 0x43a524 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(RBX::Name const&,RBX::DataModel::GearGenreSetting&)const")]
-pub fn stub_43a524() -> ! { todo!("0x43a524 __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_") }
+pub fn stub_43a524(name: &str, out: &mut i32) -> bool {
+    // IDA 0x43a524: `EnumDesc<GearGenreSetting>::convertToValue` — same
+    // map-search shape as 0x439eac over the 0x41d864 table.
+    match gear_genre_desc().pairs.iter().find(|(_, n)| *n == name) {
+        Some((value, _)) => {
+            *out = *value;
+            true
+        }
+        None => false,
+    }
+}
 
 // 0x43a5a0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
-pub fn stub_43a5a0() -> ! { todo!("0x43a5a0 __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev") }
+pub fn stub_43a5a0(_desc: &mut EnumDesc) {
+    // IDA 0x43a5a0: `EnumDesc<GearGenreSetting>::~EnumDesc` — same drop-glue
+    // shape as 0x439f28.
+}
 
 // 0x43a774 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const")]
-pub fn stub_43a774() -> ! { todo!("0x43a774 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_") }
+pub fn stub_43a774(value: i32, out: &mut String) {
+    // IDA 0x43a774: `EnumDesc<Genre>::convertToString` — same assert +
+    // empty-on-miss shape as 0x43a0fc over the 0x41d590 table.
+    debug_assert!(value >= 0, "0x43a774: value>=0 (enumconverter.h:262)");
+    match (value >= 0).then(|| genre_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
+        Some((_, name)) => *out = name.to_owned(),
+        None => out.clear(),
+    }
+}
 
 // 0x43a914 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_")]
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::Genre>(RBX::DataModel::Genre const&)")]
-pub fn stub_43a914() -> ! { todo!("0x43a914 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_") }
+pub fn stub_43a914(slot: &mut PlacementAny, value: i32) -> &mut PlacementAny {
+    // IDA 0x43a914: `placement_any<Region3>::operator=<Genre>` — same
+    // singleton-touch / store shape as 0x43a29c for the `Genre` holder.
+    let _ = genre_holder();
+    if slot.holder == HOLDER_GENRE {
+        slot.value = value;
+    } else {
+        slot.holder = 0;
+        slot.value = value;
+        slot.holder = HOLDER_GENRE;
+    }
+    slot
+}
 
 // 0x43a964 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE9singletonEv
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE9singletonEv")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::singleton(void)")]
-pub fn stub_43a964() -> ! { todo!("0x43a964 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE9singletonEv") }
+pub fn stub_43a964() -> &'static TypedHolder {
+    // IDA 0x43a964: `typed_holder<Genre>::singleton` — same
+    // `__cxa_guard`-init shape as 0x43a2ec; homed on the shared `LazyLock`
+    // model in `generated_189`.
+    genre_holder()
+}
 
 // 0x43a9d0 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE14construct_funcEPKcPc")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::construct_func(char const*,char *)")]
-pub fn stub_43a9d0() -> ! { todo!("0x43a9d0 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE14construct_funcEPKcPc") }
+pub fn stub_43a9d0(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0x43a9d0: `typed_holder<Genre>::construct_func` — same copy
+    // shape as 0x43a358.
+    // SAFETY: `src` must be readable; `dst` must be writable when non-null.
+    unsafe {
+        let value = *src;
+        if !dst.is_null() {
+            *dst = value;
+        }
+        value
+    }
+}
 
 // 0x43a9dc — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc")]
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::destruct_func(char *)")]
-pub fn stub_43a9dc() -> ! { todo!("0x43a9dc __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc") }
+pub fn stub_43a9dc() {
+    // IDA 0x43a9dc: `typed_holder<Genre>::destruct_func` — empty; same
+    // shape as 0x43a364.
+}
 
 // 0x43a9e0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const")]
-pub fn stub_43a9e0() -> ! { todo!("0x43a9e0 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_") }
+pub fn stub_43a9e0(value: i32) -> i32 {
+    // IDA 0x43a9e0: `EnumDesc<Genre>::convertToItem` — same assert +
+    // table-hit shape as 0x439cf0 over the 0x41d590 table.
+    debug_assert!(value >= 0, "0x43a9e0: value>=0 (enumconverter.h:273)");
+    genre_desc().pairs.iter().find(|(v, _)| *v == value).map(|(v, _)| *v).unwrap_or(0)
+}
 
 // 0x43aaac — __ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 #[doc(alias = "RBX::DataModel::Genre const& rbx::any_cast<RBX::DataModel::Genre const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_43aaac() -> ! { todo!("0x43aaac __ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE") }
+pub fn stub_43aaac(slot: &PlacementAny) -> i32 {
+    // IDA 0x43aaac: `any_cast<Genre const&, Region3>` — same holder-check
+    // + panic shape as 0x439dbc.
+    if slot.holder != HOLDER_GENRE {
+        panic!("rbx::bad_placement_any_cast for N3RBX9DataModel5GenreE");
+    }
+    slot.value
+}
 
 // 0x43ab9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(RBX::Name const&,RBX::DataModel::Genre&)const")]
-pub fn stub_43ab9c() -> ! { todo!("0x43ab9c __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_") }
+pub fn stub_43ab9c(name: &str, out: &mut i32) -> bool {
+    // IDA 0x43ab9c: `EnumDesc<Genre>::convertToValue` — same map-search
+    // shape as 0x439eac over the 0x41d590 table.
+    match genre_desc().pairs.iter().find(|(_, n)| *n == name) {
+        Some((value, _)) => {
+            *out = *value;
+            true
+        }
+        None => false,
+    }
+}
 
 // 0x43ac18 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
-pub fn stub_43ac18() -> ! { todo!("0x43ac18 __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev") }
+pub fn stub_43ac18(_desc: &mut EnumDesc) {
+    // IDA 0x43ac18: `EnumDesc<Genre>::~EnumDesc` — same drop-glue shape as
+    // 0x439f28.
+}
 
 // 0x43adec — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const")]
-pub fn stub_43adec() -> ! { todo!("0x43adec __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_") }
+pub fn stub_43adec(value: i32, out: &mut String) {
+    // IDA 0x43adec: `EnumDesc<CreatorType>::convertToString` — same assert
+    // + empty-on-miss shape as 0x43a0fc over the 0x41d3d0 table.
+    debug_assert!(value >= 0, "0x43adec: value>=0 (enumconverter.h:262)");
+    match (value >= 0).then(|| creator_type_desc().pairs.iter().find(|(v, _)| *v == value)).flatten() {
+        Some((_, name)) => *out = name.to_owned(),
+        None => out.clear(),
+    }
+}
 
 // 0x4419a8 — __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
