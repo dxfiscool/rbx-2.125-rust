@@ -847,6 +847,9 @@ pub struct CRenderSettingsItemState {
     /// Bound `std::string` member behind `BoundProp<std::string, CRenderSettingsItem>`
     /// (IDA 0x11b18 ctor member-offset store; read at 0x11cb0, compared at 0x11cc8).
     pub string_value: String,
+    /// Bound `bool` member behind `BoundProp<bool, CRenderSettingsItem>`
+    /// (IDA 0x125b8 ctor member-offset store; read at 0x12750, compared at 0x1275c).
+    pub bool_value: bool,
 }
 
 /// Get/set pair behind `PropDescriptor<CRenderSettingsItem, int>` (the +0x14
@@ -1917,10 +1920,54 @@ pub fn stub_0x12594(access: &CRenderSettingsAaSamplesAccess, obj: &mut CRenderSe
     (access.set)(obj, value);
 }
 
+/// Get/set pair behind `BoundProp<bool, CRenderSettingsItem>` (IDA 0x125b8 ctor
+/// stores the member offset; `BoundPropGetSet` dispatches through it at 0x12750/0x1275c;
+/// the get/set member-pointer pair behind `PropDescriptor<CRenderSettingsItem, bool>`
+/// dispatches through it at 0x128c8/0x128fc).
+pub struct CRenderSettingsBoolAccess {
+    pub get: Box<dyn Fn(&CRenderSettingsItemState) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut CRenderSettingsItemState, bool) + Send + Sync>,
+}
+
+/// `RBX::Reflection::BoundProp<bool, Mutability::Mutable>` /
+/// `RBX::Reflection::PropDescriptor<CRenderSettingsItem, bool>` (IDA 0x125b8/0x127ac).
+pub struct CRenderSettingsBoolPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: CRenderSettingsBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x125b8 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,bool CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x125b8() -> ! {
-    todo!("0x125b8 __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x125b8(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&CRenderSettingsItemState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut CRenderSettingsItemState, bool) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> CRenderSettingsBoolPropDesc {
+    // IDA 0x125b8: base `TypedPropertyDescriptor<bool>` init, vtable installs,
+    // member-offset store plus name/category/attribute wiring (decompiled 0x125b8;
+    // same ctor shape as the string twin at 0x11b18). Then
+    // `if (isReadOnly() == 1) attrs &= ~0x14` (0x126b2) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0c` (0x126ce); the BoundPropGetSet
+    // member desc hardcodes 0 (see stub_0x12748/stub_0x1274c), so the masks never fire.
+    if stub_0x12748() {
+        attributes &= !0x14;
+    }
+    if stub_0x1274c() {
+        attributes &= !0x0c;
+    }
+    CRenderSettingsBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: CRenderSettingsBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x12748 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv
@@ -1939,20 +1986,48 @@ pub fn stub_0x1274c() -> bool {
 
 // 0x12750 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x12750() -> ! {
-    todo!("0x12750 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x12750(access: &CRenderSettingsBoolAccess, obj: &CRenderSettingsItemState) -> bool {
+    // IDA 0x12750: `return *(member_offset + obj - 36)` (0x12758): the direct
+    // bound-member read with no null guard. The adjust/offset is member-pointer
+    // mechanics; the observable effect is the read. Same shape as the string twin
+    // at 0x11cb0.
+    (access.get)(obj)
 }
 
 // 0x1275c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x1275c() -> ! {
-    todo!("0x1275c __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKb")
+pub fn stub_0x1275c(access: &CRenderSettingsBoolAccess, obj: &mut CRenderSettingsItemState, value: bool) {
+    // IDA 0x1275c: member adjust + offset (0x12760-0x1276a), compare-and-store
+    // early-out when equal (0x1276e-0x12776), else store (0x12778) and
+    // `raisePropertyChanged` when the notify bits are set (0x1277a-0x127a6). Same
+    // compare-and-store shape as the string twin at 0x11cc8.
+    if (access.get)(obj) != value {
+        (access.set)(obj, value);
+    }
 }
 
 // 0x127ac — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMNS_15CRenderSettingsEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x127ac() -> ! {
-    todo!("0x127ac __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMNS_15CRenderSettingsEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x127ac(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&CRenderSettingsItemState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut CRenderSettingsItemState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> CRenderSettingsBoolPropDesc {
+    // IDA 0x127ac: `Described<CRenderSettingsItem>::classDescriptor()` init,
+    // `new(0x14)` member desc holding the (getter, setter) member-pointer pair,
+    // base `TypedPropertyDescriptor<bool>` init, vtable install. Unlike the
+    // EnumPropDescriptor ctors there is no read-only/write-only attribute mask here.
+    // Same shape as the int twin at 0xfb74.
+    CRenderSettingsBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: CRenderSettingsBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x128c0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE10isReadOnlyEv
@@ -1971,20 +2046,55 @@ pub fn stub_0x128c4() -> bool {
 
 // 0x128c8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x128c8() -> ! {
-    todo!("0x128c8 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x128c8(access: &CRenderSettingsBoolAccess, obj: &CRenderSettingsItemState) -> bool {
+    // IDA 0x128c8: null→`obj-36` member adjust, split the member pointer
+    // (offset at +8, encoding at +4), virtual-adjust if the low bit is set,
+    // call the getter (0x128ce-0x128f8). Member-pointer mechanics with no Rust
+    // equivalent; the observable effect is the get. Same shape as the int twin
+    // at 0xfcbc.
+    (access.get)(obj)
 }
 
 // 0x128fc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x128fc() -> ! {
-    todo!("0x128fc __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")
+pub fn stub_0x128fc(access: &CRenderSettingsBoolAccess, obj: &mut CRenderSettingsItemState, value: bool) {
+    // IDA 0x128fc: same member-pointer dispatch as the getValue twin at 0x128c8
+    // through the setter (0x12902-0x1291c); the bool arrives by value. Same shape
+    // as the int twin at 0xfce8.
+    (access.set)(obj, value);
 }
 
 // 0x12920 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::EnumPropDescriptor<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>(char const*,char const*,RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x12920() -> ! {
-    todo!("0x12920 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x12920(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> QualityLevelPropDesc {
+    // IDA 0x12920: `Singleton<EnumDesc<QualityLevel>>` via `call_once` +
+    // `doGetSingleton`, base `PropertyDescriptor` init, enum-desc links at +40/+48,
+    // `new(0x14)` member desc at +44 holding (getter, setter). Then
+    // `if (isReadOnly() == 1) attrs &= ~0x14` (0x12a50) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0c` (0x12a6c); the GetSetImpl member
+    // desc hardcodes 0 (see stub_0x13150/stub_0x13154), so the masks never fire.
+    // Same shape as the AASamples twin at 0x11d30 and the GraphicsMode twin at 0x13a30.
+    if stub_0x13150() {
+        attributes &= !0x14;
+    }
+    if stub_0x13154() {
+        attributes &= !0x0c;
+    }
+    QualityLevelPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: QualityLevelAccess { get, set },
+        enum_desc: quality_level_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x12ad4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED0Ev
@@ -2007,26 +2117,44 @@ pub fn stub_0x12b10() {
 
 // 0x12b20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x12b20() -> ! {
-    todo!("0x12b20 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_0x12b20(desc: &QualityLevelPropDesc, a: &RenderSettingsItemState, b: &RenderSettingsItemState) -> bool {
+    // IDA 0x12b20: `v = member(+44)->get(a)` (vf+8, 0x12b30), then
+    // `return v == member->get(b)` (0x12b46). Same shape as the AASamples twin at
+    // 0x11f30.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x12b48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x12b48() -> ! {
-    todo!("0x12b48 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x12b48(desc: &QualityLevelPropDesc, obj: &RenderSettingsItemState) -> crate::descriptor::Variant {
+    // IDA 0x12b48: `v = getEnumValue(obj)` (vf+68, 0x12b56); out =
+    // `Variant(int, v)` via `Type::getSingleton<int>` + `placement_any<int>`
+    // (0x12b5c-0x12b6a). Same shape as the AASamples twin at 0x11f58.
+    crate::descriptor::Variant::Int((desc.access.get)(obj))
 }
 
 // 0x12b6c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x12b6c() -> ! {
-    todo!("0x12b6c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x12b6c(desc: &QualityLevelPropDesc, obj: &mut RenderSettingsItemState, value: &crate::descriptor::Variant) {
+    // IDA 0x12b6c: int-typed payloads use `any_cast<int>` directly (0x12bea);
+    // anything else goes through `Variant::convert<int>` (0x12bec-0x12c2a); then
+    // `setEnumValue(obj, v)` (vf+72, 0x12c76). Same shape as the AASamples twin
+    // at 0x11f7c.
+    let v = match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x12cbc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x12cbc() -> ! {
-    todo!("0x12cbc __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_0x12cbc(desc: &QualityLevelPropDesc, src: &RenderSettingsItemState, dst: &mut RenderSettingsItemState) {
+    // IDA 0x12cbc: `v = member(+44)->get(src)` (vf+8, 0x12cce), then
+    // `member->set(dst, v)` (vf+12, 0x12cde). Same shape as the AASamples twin at
+    // 0x120cc.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x12ce0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14hasStringValueEv
@@ -2038,26 +2166,56 @@ pub fn stub_0x12ce0() -> bool {
 
 // 0x12ce4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x12ce4() -> ! {
-    todo!("0x12ce4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x12ce4(desc: &QualityLevelPropDesc, obj: &RenderSettingsItemState) -> String {
+    // IDA 0x12ce4: `v = member(+44)->get(obj)` (0x12cf6), then
+    // `EnumDesc<QualityLevel>::convertToString(enumdesc@+48, v)` (0x12d00). Same
+    // shape as the AASamples twin at 0x120f4.
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x12d08 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x12d08() -> ! {
-    todo!("0x12d08 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x12d08(desc: &QualityLevelPropDesc, obj: &mut RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x12d08: `Name::lookup(&name, str)` (0x12d1a),
+    // `convertToValue(enumdesc@+48, name, &out)` (0x12d28); on 1,
+    // `member(+44)->set(obj, out)` (0x12d3e) and return 1, else 0. `&str` folds
+    // the lookup step; `lookup_value` covers `convertToValue` including legacy
+    // names. Same shape as the AASamples twin at 0x12118.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x12d48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x12d48() -> ! {
-    todo!("0x12d48 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x12d48(desc: &QualityLevelPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x12d48: `v = member(+44)->get(obj)` (vf+8, 0x12d56), `clearValue(pair)`
+    // then store int tag 5 + value (0x12d5c-0x12d64), return 5. The tag is the Xml
+    // int type code; the payload is the enum int, which is what the model
+    // returns. Same shape as the AASamples twin at 0x12158.
+    (desc.access.get)(obj)
 }
 
 // 0x12d68 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x12d68() -> ! {
-    todo!("0x12d68 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x12d68(desc: &QualityLevelPropDesc, obj: &mut RenderSettingsItemState, text: &str) -> bool {
+    // IDA 0x12d68: int-typed element values go through `setIntValue` first;
+    // string values go through `Name::lookup` + `convertToValue` then
+    // `member(+44)->set(obj, v)`; a total miss hits `ReleaseAssert(false)`.
+    // `&str` is the extracted element text: numeric text takes the int path,
+    // anything else the string path; unknown names leave `obj` untouched and
+    // report false instead of asserting. Same shape as the AASamples twin at 0x12178.
+    if let Ok(n) = text.parse::<i32>() {
+        if stub_0x13110(desc, obj, n) {
+            return true;
+        }
+    }
+    stub_0x12d08(desc, obj, text)
 }
 
 /// Minimal `CRenderSettingsItem` state visible to its enum descriptors (IDA 0x12fa8
@@ -2067,6 +2225,7 @@ pub fn stub_0x12d68() -> ! {
 pub struct RenderSettingsItemState {
     pub quality_level: i32,
     pub frame_rate_manager_mode: i32,
+    pub graphics_mode: i32,
 }
 
 /// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem, QualityLevel>` (the +44
@@ -2597,10 +2756,77 @@ pub fn stub_0x13a0c(
     (access.set)(obj, value);
 }
 
+/// Get/set pair behind `EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>` (the +44
+/// member desc: IDA 0x13a30 `new(0x14)` holding the getter/setter member pointers).
+pub struct GraphicsModeAccess {
+    pub get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>`
+/// (IDA 0x13a30).
+pub struct GraphicsModePropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: GraphicsModeAccess,
+    /// Singleton link stored at +40/+48 (same layout as the QualityLevel twin).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<GraphicsMode>>::doGetSingleton` (IDA 0x16a10): guard-once
+/// construct + `__cxa_atexit`; the pairs come from the C2 at 0x86d0, reused here so
+/// the singleton and the constructor can never drift apart. Rust: `LazyLock`.
+/// Pairs grounded in decompiled 0x86d0 (`addPair(1, "Automatic")` at 0x87b4,
+/// `(3, "Direct3D")` at 0x87ca, `(4, "OpenGL")` at 0x87e0, `(5, "NoGraphics")` at
+/// 0x87f6; `addLegacy(2, "OpenGL legacy", 1)` at 0x880e).
+static GRAPHICS_MODE_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| {
+        let mut d = crate::enum_desc::enum_desc_crender_settings_graphics_mode_ctor();
+        d.add_pair(1, "Automatic");
+        d.add_pair(3, "Direct3D");
+        d.add_pair(4, "OpenGL");
+        d.add_pair(5, "NoGraphics");
+        d.add_legacy(2, "OpenGL legacy", 1);
+        d
+    });
+
+pub fn graphics_mode_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &GRAPHICS_MODE_DESC
+}
+
 // 0x13a30 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::EnumPropDescriptor<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>(char const*,char const*,RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x13a30() -> ! {
-    todo!("0x13a30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::EnumPropDescriptor<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>(char const*,char const*,RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x13a30(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> GraphicsModePropDesc {
+    // IDA 0x13a30: `Singleton<EnumDesc<GraphicsMode>>` via `call_once` +
+    // `doGetSingleton`, base `PropertyDescriptor` init, enum-desc links at +40/+48,
+    // `new(0x14)` member desc at +44 holding (getter, setter). Then
+    // `if (isReadOnly() == 1) attrs &= ~0x14` (0x13b60) and
+    // `if (isWriteOnly() == 1) attrs &= ~0x0c` (0x13b7c); the GetSetImpl member
+    // desc hardcodes 0 (see stub_0x14260/stub_0x14264), so the masks never fire.
+    // Same shape as the QualityLevel twin at 0x12920.
+    if stub_0x14260() {
+        attributes &= !0x14;
+    }
+    if stub_0x14264() {
+        attributes &= !0x0c;
+    }
+    GraphicsModePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: GraphicsModeAccess { get, set },
+        enum_desc: graphics_mode_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x13be4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED0Ev
@@ -2623,26 +2849,41 @@ pub fn stub_0x13c20() {
 
 // 0x13c30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x13c30() -> ! {
-    todo!("0x13c30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x13c30(desc: &GraphicsModePropDesc, a: &RenderSettingsItemState, b: &RenderSettingsItemState) -> bool {
+    // IDA 0x13c30: `v = member(+44)->get(a)` (vf+8), then
+    // `return v == member->get(b)`. Same shape as the QualityLevel twin at 0x12b20.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x13c58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x13c58() -> ! {
-    todo!("0x13c58 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x13c58(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> crate::descriptor::Variant {
+    // IDA 0x13c58: `v = getEnumValue(obj)` (vf+68); out = `Variant(int, v)` via
+    // `Type::getSingleton<int>` + `placement_any<int>`. Same shape as the
+    // QualityLevel twin at 0x12b48.
+    crate::descriptor::Variant::Int((desc.access.get)(obj))
 }
 
 // 0x13c7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x13c7c() -> ! {
-    todo!("0x13c7c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x13c7c(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, value: &crate::descriptor::Variant) {
+    // IDA 0x13c7c: int-typed payloads use `any_cast<int>` directly; anything else
+    // goes through `Variant::convert<int>`; then `setEnumValue(obj, v)` (vf+72).
+    // Same shape as the QualityLevel twin at 0x12b6c.
+    let v = match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x13dcc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x13dcc() -> ! {
-    todo!("0x13dcc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x13dcc(desc: &GraphicsModePropDesc, src: &RenderSettingsItemState, dst: &mut RenderSettingsItemState) {
+    // IDA 0x13dcc: `v = member(+44)->get(src)` (vf+8), then
+    // `member->set(dst, v)` (vf+12). Same shape as the QualityLevel twin at 0x12cbc.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x13df0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14hasStringValueEv
@@ -2654,32 +2895,66 @@ pub fn stub_0x13df0() -> bool {
 
 // 0x13df4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x13df4() -> ! {
-    todo!("0x13df4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x13df4(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> String {
+    // IDA 0x13df4: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<GraphicsMode>::convertToString(enumdesc@+48, v)`. Same shape as the
+    // QualityLevel twin at 0x12ce4.
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x13e18 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x13e18() -> ! {
-    todo!("0x13e18 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x13e18(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x13e18: `Name::lookup(&name, str)`,
+    // `convertToValue(enumdesc@+48, name, &out)`; on 1,
+    // `member(+44)->set(obj, out)` and return 1, else 0. `&str` folds the lookup
+    // step; `lookup_value` covers `convertToValue` including legacy names. Same
+    // shape as the QualityLevel twin at 0x12d08.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x13e58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x13e58() -> ! {
-    todo!("0x13e58 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x13e58(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x13e58: `v = member(+44)->get(obj)` (vf+8), `clearValue(pair)` then
+    // store int tag 5 + value, return 5. The tag is the Xml int type code; the
+    // payload is the enum int, which is what the model returns. Same shape as the
+    // QualityLevel twin at 0x12d48.
+    (desc.access.get)(obj)
 }
 
 // 0x13e78 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x13e78() -> ! {
-    todo!("0x13e78 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x13e78(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, text: &str) -> bool {
+    // IDA 0x13e78: int-typed element values go through `setIntValue` first;
+    // string values go through `Name::lookup` + `convertToValue` then
+    // `member(+44)->set(obj, v)`; a total miss hits `ReleaseAssert(false)`.
+    // `&str` is the extracted element text: numeric text takes the int path,
+    // anything else the string path; unknown names leave `obj` untouched and
+    // report false instead of asserting. Same shape as the QualityLevel twin at
+    // 0x12d68.
+    if let Ok(n) = text.parse::<i32>() {
+        if stub_0x14220(desc, obj, n) {
+            return true;
+        }
+    }
+    stub_0x13e18(desc, obj, text)
 }
 
 // 0x140b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x140b8() -> ! {
-    todo!("0x140b8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x140b8(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x140b8: `v = member(+44)->get(obj)` (vf+8), return
+    // `convertToIndex(enumdesc@+48, v)` (decompiled 0x140b8). Same conversion as
+    // stub_0x141b0 and the QualityLevel twin at 0x12fa8.
+    stub_0x141b0(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x140d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -2722,8 +2997,21 @@ pub fn stub_0x141b0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x14220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x14220() -> ! {
-    todo!("0x14220 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x14220(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x14220: `if (value >= 0)` and `value < value_to_value.size`, load
+    // `mapped = value_to_value[value]`; `mapped == -1` returns 0, else
+    // `member(+44)->set(obj, mapped)` and return 1. Same shape as the QualityLevel
+    // twin at 0x13110.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x14260 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
