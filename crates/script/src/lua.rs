@@ -3477,6 +3477,86 @@ fn vector3_fuzzy_eq(a: &LuaVector3, b: &LuaVector3, eps: f32) -> bool {
     true
 }
 
+/// `lua_tointeger` host fallback behind [`stub_0x271ecc`] and
+/// [`stub_0x272488`]: numbers truncate toward zero, numeric strings coerce,
+/// everything else (including out-of-range slots) is 0.
+/// (Rust `as` saturates where the C cast is UB — overflow lanes diverge.)
+fn lua_to_integer_or_zero(thread: &LuaThreadState, index: usize) -> i64 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Number(n)) => *n as i64,
+        Some(LuaStackValue::String(s)) => s.parse::<f64>().map_or(0, |v| v as i64),
+        _ => 0,
+    }
+}
+
+/// `vcvt_s32_f32` host conversion behind the int16 scalar arms
+/// ([`stub_0x272050`], [`stub_0x272108`], [`stub_0x2725fc`],
+/// [`stub_0x2726f8`]): round to nearest, ties to even (FPSCR default), then
+/// narrow to 16 bits.
+fn float_to_int16(value: f32) -> i16 {
+    value.round_ties_even() as i32 as i16
+}
+
+/// `luaL_checkudata(L, index, Vector2int16)` host check behind
+/// [`stub_0x27257c`] and siblings.
+fn check_vector2i16_slot(thread: &LuaThreadState, index: usize) -> LuaVector2i16 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR2INT16 => match &ud.payload {
+            LuaUserdataPayload::Vector2i16(v) => *v,
+            _ => panic!("Vector2int16 expected"),
+        },
+        _ => panic!("Vector2int16 expected"),
+    }
+}
+
+/// `luaL_checkudata(L, index, Vector2)` host check behind [`stub_0x272ae8`]
+/// and siblings.
+fn check_vector2_slot(thread: &LuaThreadState, index: usize) -> LuaVector2 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR2 => match &ud.payload {
+            LuaUserdataPayload::Vector2(v) => *v,
+            _ => panic!("Vector2 expected"),
+        },
+        _ => panic!("Vector2 expected"),
+    }
+}
+
+/// Non-throwing `Bridge<Vector3int16>::getValue` host check behind
+/// [`stub_0x272050`]/[`stub_0x272108`].
+fn vector3i16_get_value(thread: &LuaThreadState, index: usize) -> Option<LuaVector3i16> {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR3INT16 => match &ud.payload {
+            LuaUserdataPayload::Vector3i16(v) => Some(*v),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
+/// Non-throwing `Bridge<Vector2int16>::getValue` host check behind
+/// [`stub_0x2725fc`]/[`stub_0x2726f8`].
+fn vector2i16_get_value(thread: &LuaThreadState, index: usize) -> Option<LuaVector2i16> {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR2INT16 => match &ud.payload {
+            LuaUserdataPayload::Vector2i16(v) => Some(*v),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
+/// Non-throwing `Bridge<Vector2>::getValue` host check behind
+/// [`stub_0x272b98`]/[`stub_0x272c6c`].
+fn vector2_get_value(thread: &LuaThreadState, index: usize) -> Option<LuaVector2> {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR2 => match &ud.payload {
+            LuaUserdataPayload::Vector2(v) => Some(*v),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
 /// Length guard behind [`stub_0x270230`] (IDA 0x2702a0): `0x30D40` (200000).
 pub const SUPER_LONG_STRING_LIMIT: usize = 0x30D40;
 
@@ -3492,6 +3572,10 @@ pub const LERP_VECTOR3_FN: u64 = 0x271c4c;
 pub const CROSS_VECTOR3_FN: u64 = 0x271cd0;
 pub const DOT_VECTOR3_FN: u64 = 0x271d48;
 pub const ISCLOSE_VECTOR3_FN: u64 = 0x271dac;
+
+/// `lua_pushcclosure` identity pushed by [`stub_0x272d70`] for the `"lerp"`
+/// member: the callee EA doubles as host id.
+pub const LERP_VECTOR2_FN: u64 = 0x272f6c;
 
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: _DWORD *__fastcall(int, int)
@@ -4835,197 +4919,719 @@ mod bridge_vector_batch_tests {
 // 0x271ecc — __ZN3RBX3Lua18Vector3int16Bridge15newVector3int16EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::newVector3int16(lua_State *)")]
-pub fn stub_0x271ecc() -> ! {
-    todo!("0x271ecc RBX::Lua::Vector3int16Bridge::newVector3int16(lua_State *)")
+pub fn stub_0x271ecc(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271ecc: `n = min(gettop, 3)` lanes (0x271ef0..0x271f2e) read via
+    // `lua_tointeger(L, i)` (0x271f26), extras past 3 ignored, missing lanes
+    // zero-filled (0x271f34..0x271f5e); `Bridge<Vector3int16>::pushNewObject`
+    // (0x271f66); return 1.
+    let lanes = thread.stack_top().min(3);
+    let mut xyz = [0i16; 3];
+    for (lane, slot) in xyz.iter_mut().take(lanes).enumerate() {
+        *slot = lua_to_integer_or_zero(thread, lane + 1) as i16;
+    }
+    let value = LuaVector3i16 { x: xyz[0], y: xyz[1], z: xyz[2] };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(value));
+    1
 }
 
 // 0x271f84 — __ZN3RBX3Lua18Vector3int16Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x271f84() -> ! {
-    todo!("0x271f84 RBX::Lua::Vector3int16Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x271f84(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271f84: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x271fc0 — __ZN3RBX3Lua18Vector3int16Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::on_add(lua_State *)")]
-pub fn stub_0x271fc0() -> ! {
-    todo!("0x271fc0 RBX::Lua::Vector3int16Bridge::on_add(lua_State *)")
+pub fn stub_0x271fc0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271fc0: `luaL_checkudata(1/2, Vector3int16)` (0x271fda/0x271fe0),
+    // per-lane `LDRH` + `ADD` with the xy lanes packed via `PKHBT`
+    // (0x271fe4..0x271ff8, confirmed by disasm); return 1.
+    let a = check_vector3i16_slot(thread, 1);
+    let b = check_vector3i16_slot(thread, 2);
+    let sum = LuaVector3i16 {
+        x: a.x.wrapping_add(b.x),
+        y: a.y.wrapping_add(b.y),
+        z: a.z.wrapping_add(b.z),
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(sum));
+    1
 }
 
 // 0x272008 — __ZN3RBX3Lua18Vector3int16Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::on_sub(lua_State *)")]
-pub fn stub_0x272008() -> ! {
-    todo!("0x272008 RBX::Lua::Vector3int16Bridge::on_sub(lua_State *)")
+pub fn stub_0x272008(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272008: `luaL_checkudata(1/2, Vector3int16)` (0x272022/0x272028),
+    // lane-wise subtract with the xy lanes packed (0x272046) — the `on_add`
+    // mirror; return 1.
+    let a = check_vector3i16_slot(thread, 1);
+    let b = check_vector3i16_slot(thread, 2);
+    let diff = LuaVector3i16 {
+        x: a.x.wrapping_sub(b.x),
+        y: a.y.wrapping_sub(b.y),
+        z: a.z.wrapping_sub(b.z),
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(diff));
+    1
 }
 
 // 0x272050 — __ZN3RBX3Lua18Vector3int16Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::on_mul(lua_State *)")]
-pub fn stub_0x272050() -> ! {
-    todo!("0x272050 RBX::Lua::Vector3int16Bridge::on_mul(lua_State *)")
+pub fn stub_0x272050(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272050: slot 1 `getValue<Vector3int16>` (0x272070) —
+    //   hit → slot 2 `getValue` (0x27208a): hit → lane-wise 16-bit `vmul`
+    //     packed xy (0x2720a8); miss → `lua_tofloat(2)` `vcvt` scalar lane
+    //     `vmul` (0x2720d2..0x2720f6);
+    //   miss → slot 2 is `luaL_checkudata` Vector3int16 (0x2720be),
+    //     `lua_tofloat(1)` `vcvt` scalar lane `vmul` (0x2720d6..0x2720f6).
+    // Push; return 1.
+    let product = if let Some(a) = vector3i16_get_value(thread, 1) {
+        if let Some(b) = vector3i16_get_value(thread, 2) {
+            LuaVector3i16 {
+                x: a.x.wrapping_mul(b.x),
+                y: a.y.wrapping_mul(b.y),
+                z: a.z.wrapping_mul(b.z),
+            }
+        } else {
+            let s = float_to_int16(stub_0x270448(thread, 2));
+            LuaVector3i16 { x: a.x.wrapping_mul(s), y: a.y.wrapping_mul(s), z: a.z.wrapping_mul(s) }
+        }
+    } else {
+        let b = check_vector3i16_slot(thread, 2);
+        let s = float_to_int16(stub_0x270448(thread, 1));
+        LuaVector3i16 { x: s.wrapping_mul(b.x), y: s.wrapping_mul(b.y), z: s.wrapping_mul(b.z) }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(product));
+    1
 }
 
 // 0x272108 — __ZN3RBX3Lua18Vector3int16Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::on_div(lua_State *)")]
-pub fn stub_0x272108() -> ! {
-    todo!("0x272108 RBX::Lua::Vector3int16Bridge::on_div(lua_State *)")
+pub fn stub_0x272108(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272108: slot 1 `getValue<Vector3int16>` (0x27212c) —
+    //   hit → slot 2 `getValue` (0x272146): hit → lane-wise 16-bit `/`
+    //     (0x272170); miss → `lua_tofloat(2)` float lane `/` + `vcvt`
+    //     (0x2721d4..0x27221e);
+    //   miss → slot 2 is `luaL_checkudata` Vector3int16 (0x272188),
+    //     `lua_tointeger(1)` lane `/` (0x2721a0..0x2721c4). Push; return 1.
+    let quotient = if let Some(a) = vector3i16_get_value(thread, 1) {
+        if let Some(b) = vector3i16_get_value(thread, 2) {
+            LuaVector3i16 {
+                x: (a.x as i32).wrapping_div(b.x as i32) as i16,
+                y: (a.y as i32).wrapping_div(b.y as i32) as i16,
+                z: (a.z as i32).wrapping_div(b.z as i32) as i16,
+            }
+        } else {
+            let f = stub_0x270448(thread, 2);
+            LuaVector3i16 {
+                x: float_to_int16(a.x as f32 / f),
+                y: float_to_int16(a.y as f32 / f),
+                z: float_to_int16(a.z as f32 / f),
+            }
+        }
+    } else {
+        let b = check_vector3i16_slot(thread, 2);
+        let n = lua_to_integer_or_zero(thread, 1) as i32;
+        LuaVector3i16 {
+            x: n.wrapping_div(b.x as i32) as i16,
+            y: n.wrapping_div(b.y as i32) as i16,
+            z: n.wrapping_div(b.z as i32) as i16,
+        }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(quotient));
+    1
 }
 
 // 0x272230 — __ZN3RBX3Lua18Vector3int16Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3int16Bridge::on_unm(lua_State *)")]
-pub fn stub_0x272230() -> ! {
-    todo!("0x272230 RBX::Lua::Vector3int16Bridge::on_unm(lua_State *)")
+pub fn stub_0x272230(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272230: `luaL_checkudata(1, Vector3int16)` (0x272246), per-lane
+    // unary minus narrowed to 16 bits (0x27225e), push; return 1.
+    let a = check_vector3i16_slot(thread, 1);
+    let neg = LuaVector3i16 { x: a.x.wrapping_neg(), y: a.y.wrapping_neg(), z: a.z.wrapping_neg() };
+    push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(neg));
+    1
 }
 
 // 0x272268 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int16 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_index(G3D::Vector3int16 const&,char const*,lua_State *)")]
-pub fn stub_0x272268() -> ! {
-    todo!("0x272268 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_index(G3D::Vector3int16 const&,char const*,lua_State *)")
+pub fn stub_0x272268(vector: &LuaVector3i16, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272268: `"x"/"X"`, `"y"/"Y"`, `"z"/"Z"` → `lua_pushinteger`
+    // (0x2722d4..0x27233e); else `runtime_error("%s is not a valid member")`
+    // (0x272370..0x2723a8). The host has no integer slot, so lanes push as
+    // numbers.
+    if key == "x" || key == "X" {
+        thread.push(LuaStackValue::Number(f64::from(i32::from(vector.x))));
+    } else if key == "y" || key == "Y" {
+        thread.push(LuaStackValue::Number(f64::from(i32::from(vector.y))));
+    } else if key == "z" || key == "Z" {
+        thread.push(LuaStackValue::Number(f64::from(i32::from(vector.z))));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x2723d0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(G3D::Vector3int16&,char const*,lua_State *)")]
-pub fn stub_0x2723d0() -> ! {
-    todo!("0x2723d0 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(G3D::Vector3int16&,char const*,lua_State *)")
+pub fn stub_0x2723d0(key: &str) -> ! {
+    // IDA 0x2723d0 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Vector3int16
+    // members are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x272488 — __ZN3RBX3Lua18Vector2int16Bridge15newVector2int16EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::newVector2int16(lua_State *)")]
-pub fn stub_0x272488() -> ! {
-    todo!("0x272488 RBX::Lua::Vector2int16Bridge::newVector2int16(lua_State *)")
+pub fn stub_0x272488(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272488: `n = min(gettop, 2)` lanes (0x2724ac..0x2724ea) read via
+    // `lua_tointeger(L, i)` (0x2724e2), missing lanes zero-filled
+    // (0x2724f0..0x27251a); `Bridge<Vector2int16>::pushNewObject`
+    // (0x272522); return 1.
+    let lanes = thread.stack_top().min(2);
+    let mut xy = [0i16; 2];
+    for (lane, slot) in xy.iter_mut().take(lanes).enumerate() {
+        *slot = lua_to_integer_or_zero(thread, lane + 1) as i16;
+    }
+    let value = LuaVector2i16 { x: xy[0], y: xy[1] };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(value));
+    1
 }
 
 // 0x272540 — __ZN3RBX3Lua18Vector2int16Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x272540() -> ! {
-    todo!("0x272540 RBX::Lua::Vector2int16Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x272540(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272540: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x27257c — __ZN3RBX3Lua18Vector2int16Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::on_add(lua_State *)")]
-pub fn stub_0x27257c() -> ! {
-    todo!("0x27257c RBX::Lua::Vector2int16Bridge::on_add(lua_State *)")
+pub fn stub_0x27257c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x27257c: `luaL_checkudata(1/2, Vector2int16)` (0x272596/0x27259c),
+    // per-lane `LDRH` + `ADD` packed via `PKHBT` (0x2725a0..0x2725ac,
+    // confirmed by disasm); return 1.
+    let a = check_vector2i16_slot(thread, 1);
+    let b = check_vector2i16_slot(thread, 2);
+    let sum = LuaVector2i16 { x: a.x.wrapping_add(b.x), y: a.y.wrapping_add(b.y) };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(sum));
+    1
 }
 
 // 0x2725bc — __ZN3RBX3Lua18Vector2int16Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::on_sub(lua_State *)")]
-pub fn stub_0x2725bc() -> ! {
-    todo!("0x2725bc RBX::Lua::Vector2int16Bridge::on_sub(lua_State *)")
+pub fn stub_0x2725bc(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2725bc: `luaL_checkudata(1/2, Vector2int16)`, lane-wise subtract
+    // packed (0x2725f2) — the `on_add` mirror; return 1.
+    let a = check_vector2i16_slot(thread, 1);
+    let b = check_vector2i16_slot(thread, 2);
+    let diff = LuaVector2i16 { x: a.x.wrapping_sub(b.x), y: a.y.wrapping_sub(b.y) };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(diff));
+    1
 }
 
 // 0x2725fc — __ZN3RBX3Lua18Vector2int16Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::on_mul(lua_State *)")]
-pub fn stub_0x2725fc() -> ! {
-    todo!("0x2725fc RBX::Lua::Vector2int16Bridge::on_mul(lua_State *)")
+pub fn stub_0x2725fc(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2725fc: slot 1 `getValue<Vector2int16>` (0x272620) —
+    //   hit → slot 2 `getValue` (0x272636): hit → lane-wise 16-bit `vmul`
+    //     packed (0x27264a); miss → `lua_tofloat(2)` float lane `vmul` +
+    //     `vcvt` (0x2726b0..0x2726e0);
+    //   miss → slot 2 is `luaL_checkudata` Vector2int16 (0x272664),
+    //     `lua_tofloat(1)` float lane `vmul` + `Vector2int16(Vector2)` ctor
+    //     (0x272684..0x2726a2). Push; return 1.
+    let product = if let Some(a) = vector2i16_get_value(thread, 1) {
+        if let Some(b) = vector2i16_get_value(thread, 2) {
+            LuaVector2i16 { x: a.x.wrapping_mul(b.x), y: a.y.wrapping_mul(b.y) }
+        } else {
+            let f = stub_0x270448(thread, 2);
+            LuaVector2i16 { x: float_to_int16(a.x as f32 * f), y: float_to_int16(a.y as f32 * f) }
+        }
+    } else {
+        let b = check_vector2i16_slot(thread, 2);
+        let f = stub_0x270448(thread, 1);
+        LuaVector2i16 { x: float_to_int16(f * b.x as f32), y: float_to_int16(f * b.y as f32) }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(product));
+    1
 }
 
 // 0x2726f8 — __ZN3RBX3Lua18Vector2int16Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::on_div(lua_State *)")]
-pub fn stub_0x2726f8() -> ! {
-    todo!("0x2726f8 RBX::Lua::Vector2int16Bridge::on_div(lua_State *)")
+pub fn stub_0x2726f8(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2726f8: slot 1 `getValue<Vector2int16>` (0x272718) —
+    //   hit → slot 2 `getValue` (0x27272e): hit → lane-wise 16-bit `/`
+    //     (0x272746); miss → `lua_tofloat(2)` float lane `/` + `vcvt`
+    //     (0x272790..0x2727c0);
+    //   miss → slot 2 is `luaL_checkudata` Vector2int16 (0x272766),
+    //     `lua_tointeger(1)` lane `/` (0x272780). Push; return 1.
+    let quotient = if let Some(a) = vector2i16_get_value(thread, 1) {
+        if let Some(b) = vector2i16_get_value(thread, 2) {
+            LuaVector2i16 {
+                x: (a.x as i32).wrapping_div(b.x as i32) as i16,
+                y: (a.y as i32).wrapping_div(b.y as i32) as i16,
+            }
+        } else {
+            let f = stub_0x270448(thread, 2);
+            LuaVector2i16 { x: float_to_int16(a.x as f32 / f), y: float_to_int16(a.y as f32 / f) }
+        }
+    } else {
+        let b = check_vector2i16_slot(thread, 2);
+        let n = lua_to_integer_or_zero(thread, 1) as i32;
+        LuaVector2i16 { x: n.wrapping_div(b.x as i32) as i16, y: n.wrapping_div(b.y as i32) as i16 }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(quotient));
+    1
 }
 
 // 0x2727d4 — __ZN3RBX3Lua18Vector2int16Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2int16Bridge::on_unm(lua_State *)")]
-pub fn stub_0x2727d4() -> ! {
-    todo!("0x2727d4 RBX::Lua::Vector2int16Bridge::on_unm(lua_State *)")
+pub fn stub_0x2727d4(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2727d4: `luaL_checkudata(1, Vector2int16)` (0x2727f6), unary
+    // minus narrowed to 16 bits (0x2727fc), push; return 1.
+    let a = check_vector2i16_slot(thread, 1);
+    let neg = LuaVector2i16 { x: a.x.wrapping_neg(), y: a.y.wrapping_neg() };
+    push_new_object(thread, lua_bridge_class::VECTOR2INT16, LuaUserdataPayload::Vector2i16(neg));
+    1
 }
 
 // 0x272804 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int16 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(G3D::Vector2int16 const&,char const*,lua_State *)")]
-pub fn stub_0x272804() -> ! {
-    todo!("0x272804 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(G3D::Vector2int16 const&,char const*,lua_State *)")
+pub fn stub_0x272804(vector: &LuaVector2i16, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272804: `"x"/"X"` → `lua_pushinteger` (0x2728a2),
+    // `"y"/"Y"` → `lua_pushinteger` (0x27289c); else
+    // `runtime_error("%s is not a valid member")` (0x2728e0..0x272918).
+    // The host has no integer slot, so lanes push as numbers.
+    if key == "x" || key == "X" {
+        thread.push(LuaStackValue::Number(f64::from(i32::from(vector.x))));
+    } else if key == "y" || key == "Y" {
+        thread.push(LuaStackValue::Number(f64::from(i32::from(vector.y))));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x272940 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(G3D::Vector2int16&,char const*,lua_State *)")]
-pub fn stub_0x272940() -> ! {
-    todo!("0x272940 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(G3D::Vector2int16&,char const*,lua_State *)")
+pub fn stub_0x272940(key: &str) -> ! {
+    // IDA 0x272940 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Vector2int16
+    // members are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x2729f8 — __ZN3RBX3Lua13Vector2Bridge10newVector2EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::newVector2(lua_State *)")]
-pub fn stub_0x2729f8() -> ! {
-    todo!("0x2729f8 RBX::Lua::Vector2Bridge::newVector2(lua_State *)")
+pub fn stub_0x2729f8(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2729f8: `n = min(gettop, 2)` lanes (0x272a1e..0x272a58) read via
+    // `lua_tofloat(L, i)` (0x272a4c), extras past 2 ignored, missing lanes
+    // zero-filled (0x272a5e..0x272a88); `Bridge<Vector2>::pushNewObject`
+    // (0x272a90); return 1.
+    let lanes = thread.stack_top().min(2);
+    let mut xy = [0.0f32; 2];
+    for (lane, slot) in xy.iter_mut().take(lanes).enumerate() {
+        *slot = stub_0x270448(thread, lane + 1);
+    }
+    let value = LuaVector2 { x: xy[0], y: xy[1] };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(value));
+    1
 }
 
 // 0x272aac — __ZN3RBX3Lua13Vector2Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x272aac() -> ! {
-    todo!("0x272aac RBX::Lua::Vector2Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x272aac(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272aac: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x272ae8 — __ZN3RBX3Lua13Vector2Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::on_add(lua_State *)")]
-pub fn stub_0x272ae8() -> ! {
-    todo!("0x272ae8 RBX::Lua::Vector2Bridge::on_add(lua_State *)")
+pub fn stub_0x272ae8(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272ae8: `luaL_checkudata(1/2, Vector2)` (0x272b04/0x272b0a),
+    // lane-wise `vadd` (0x272b2a); return 1.
+    let a = check_vector2_slot(thread, 1);
+    let b = check_vector2_slot(thread, 2);
+    let sum = LuaVector2 { x: a.x + b.x, y: a.y + b.y };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(sum));
+    1
 }
 
 // 0x272b40 — __ZN3RBX3Lua13Vector2Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::on_sub(lua_State *)")]
-pub fn stub_0x272b40() -> ! {
-    todo!("0x272b40 RBX::Lua::Vector2Bridge::on_sub(lua_State *)")
+pub fn stub_0x272b40(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272b40: `luaL_checkudata(1/2, Vector2)` (0x272b5c/0x272b62),
+    // lane-wise `vsub` (0x272b82) — the `on_add` mirror; return 1.
+    let a = check_vector2_slot(thread, 1);
+    let b = check_vector2_slot(thread, 2);
+    let diff = LuaVector2 { x: a.x - b.x, y: a.y - b.y };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(diff));
+    1
 }
 
 // 0x272b98 — __ZN3RBX3Lua13Vector2Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::on_mul(lua_State *)")]
-pub fn stub_0x272b98() -> ! {
-    todo!("0x272b98 RBX::Lua::Vector2Bridge::on_mul(lua_State *)")
+pub fn stub_0x272b98(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272b98: slot 1 `getValue<Vector2>` (0x272bc0) —
+    //   hit → slot 2 `getValue` (0x272bd2): hit → lane-wise `vmul`
+    //     (0x272be4); miss → `lua_tofloat(2)` scalar `vmul` (0x272c30..);
+    //   miss → slot 2 is `luaL_checkudata` Vector2,
+    //     `lua_tofloat(1)` scalar `vmul`. Push; return 1.
+    let product = if let Some(a) = vector2_get_value(thread, 1) {
+        if let Some(b) = vector2_get_value(thread, 2) {
+            LuaVector2 { x: a.x * b.x, y: a.y * b.y }
+        } else {
+            let s = stub_0x270448(thread, 2);
+            LuaVector2 { x: a.x * s, y: a.y * s }
+        }
+    } else {
+        let b = check_vector2_slot(thread, 2);
+        let s = stub_0x270448(thread, 1);
+        LuaVector2 { x: s * b.x, y: s * b.y }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(product));
+    1
 }
 
 // 0x272c6c — __ZN3RBX3Lua13Vector2Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::on_div(lua_State *)")]
-pub fn stub_0x272c6c() -> ! {
-    todo!("0x272c6c RBX::Lua::Vector2Bridge::on_div(lua_State *)")
+pub fn stub_0x272c6c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272c6c: slot 1 `getValue<Vector2>` (0x272c8a) —
+    //   hit → slot 2 `getValue` (0x272c9c): hit → lane-wise `/` (0x272cae),
+    //     miss → `lua_tofloat(2)` via `Vector2::operator/` (0x272cfe..);
+    //   miss → slot 2 is `luaL_checkudata` Vector2 (0x272cce),
+    //     `lua_tofloat(1)` over each lane (0x272cd8..0x272cec). Push; return 1.
+    let quotient = if let Some(a) = vector2_get_value(thread, 1) {
+        if let Some(b) = vector2_get_value(thread, 2) {
+            LuaVector2 { x: a.x / b.x, y: a.y / b.y }
+        } else {
+            let s = stub_0x270448(thread, 2);
+            LuaVector2 { x: a.x / s, y: a.y / s }
+        }
+    } else {
+        let b = check_vector2_slot(thread, 2);
+        let s = stub_0x270448(thread, 1);
+        LuaVector2 { x: s / b.x, y: s / b.y }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(quotient));
+    1
 }
 
 // 0x272d28 — __ZN3RBX3Lua13Vector2Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector2Bridge::on_unm(lua_State *)")]
-pub fn stub_0x272d28() -> ! {
-    todo!("0x272d28 RBX::Lua::Vector2Bridge::on_unm(lua_State *)")
+pub fn stub_0x272d28(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272d28: `luaL_checkudata(1, Vector2)` (0x272d40), per-lane
+    // `vneg` (0x272d58), push; return 1.
+    let a = check_vector2_slot(thread, 1);
+    let neg = LuaVector2 { x: -a.x, y: -a.y };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(neg));
+    1
 }
 
 // 0x272d70 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int32 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_index(G3D::Vector2 const&,char const*,lua_State *)")]
-pub fn stub_0x272d70() -> ! {
-    todo!("0x272d70 RBX::Lua::Bridge<G3D::Vector2,true>::on_index(G3D::Vector2 const&,char const*,lua_State *)")
+pub fn stub_0x272d70(vector: &LuaVector2, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272d70: `"x"/"X"`, `"y"/"Y"` → `lua_pushnumber`
+    // (0x272dde..0x272e7c); `"unit"` (lowercase only) → reciprocal-`sqrt`
+    // normalized push (0x272e9e..0x272ee0); `"magnitude"` (lowercase only)
+    // → `sqrt` push (0x272ee2..0x272efa); `"lerp"` (lowercase only) →
+    // `lua_pushcclosure` (0x272e5c); else
+    // `runtime_error("%s is not a valid member")`.
+    if key == "x" || key == "X" {
+        thread.push(LuaStackValue::Number(f64::from(vector.x)));
+    } else if key == "y" || key == "Y" {
+        thread.push(LuaStackValue::Number(f64::from(vector.y)));
+    } else if key == "unit" {
+        let len = (vector.x * vector.x + vector.y * vector.y).sqrt();
+        let inv = 1.0 / len;
+        let unit = LuaVector2 { x: vector.x * inv, y: vector.y * inv };
+        push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(unit));
+    } else if key == "magnitude" {
+        let len = (vector.x * vector.x + vector.y * vector.y).sqrt();
+        thread.push(LuaStackValue::Number(f64::from(len)));
+    } else if key == "lerp" {
+        thread.push(LuaStackValue::Function(LERP_VECTOR2_FN));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x272f6c — __ZN3RBX3LuaL11lerpVector2EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::lerpVector2(lua_State *)")]
-pub fn stub_0x272f6c() -> ! {
-    todo!("0x272f6c RBX::Lua::lerpVector2(lua_State *)")
+pub fn stub_0x272f6c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x272f6c: `luaL_checkudata(1/2, Vector2)` (0x272f88/0x272f92),
+    // `lua_tofloat(3)` (0x272f98), `a + t * (b - a)` per lane (0x272fcc);
+    // return 1.
+    let a = check_vector2_slot(thread, 1);
+    let b = check_vector2_slot(thread, 2);
+    let t = stub_0x270448(thread, 3);
+    let lerped = LuaVector2 { x: a.x + t * (b.x - a.x), y: a.y + t * (b.y - a.y) };
+    push_new_object(thread, lua_bridge_class::VECTOR2, LuaUserdataPayload::Vector2(lerped));
+    1
 }
 
 // 0x272fe4 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(G3D::Vector2&,char const*,lua_State *)")]
-pub fn stub_0x272fe4() -> ! {
-    todo!("0x272fe4 RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(G3D::Vector2&,char const*,lua_State *)")
+pub fn stub_0x272fe4(key: &str) -> ! {
+    // IDA 0x272fe4 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Vector2 members
+    // are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
+}
+
+#[cfg(test)]
+mod bridge_int16_vector2_batch_tests {
+    use super::*;
+
+    fn v3i16_slot(v: LuaVector3i16) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::VECTOR3INT16.to_owned(),
+            payload: LuaUserdataPayload::Vector3i16(v),
+        })
+    }
+
+    fn v2i16_slot(v: LuaVector2i16) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::VECTOR2INT16.to_owned(),
+            payload: LuaUserdataPayload::Vector2i16(v),
+        })
+    }
+
+    fn v2_slot(v: LuaVector2) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata { class: lua_bridge_class::VECTOR2.to_owned(), payload: LuaUserdataPayload::Vector2(v) })
+    }
+
+    fn v3i16_result(thread: &LuaThreadState) -> LuaVector3i16 {
+        match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Vector3i16(v) => *v,
+                other => panic!("expected Vector3int16, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+    }
+
+    fn v2i16_result(thread: &LuaThreadState) -> LuaVector2i16 {
+        match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Vector2i16(v) => *v,
+                other => panic!("expected Vector2int16, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+    }
+
+    fn v2_result(thread: &LuaThreadState) -> LuaVector2 {
+        match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Vector2(v) => *v,
+                other => panic!("expected Vector2, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn new_int16_truncates_and_zero_fills() {
+        let mut thread = LuaThreadState {
+            stack: vec![LuaStackValue::Number(1.9), LuaStackValue::Number(-2.5), LuaStackValue::Number(300.0)],
+        };
+        assert_eq!(stub_0x271ecc(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 1, y: -2, z: 300 });
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x271ecc(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16::default());
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(7.0)] };
+        assert_eq!(stub_0x272488(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 7, y: 0 });
+    }
+
+    #[test]
+    fn int16_arithmetic_wraps_per_lane() {
+        let a = LuaVector3i16 { x: 1000, y: -2000, z: 3000 };
+        let b = LuaVector3i16 { x: 1, y: 2, z: -4 };
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), v3i16_slot(b)] };
+        assert_eq!(stub_0x271fc0(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 1001, y: -1998, z: 2996 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), v3i16_slot(b)] };
+        assert_eq!(stub_0x272008(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 999, y: -2002, z: 3004 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), v3i16_slot(b)] };
+        assert_eq!(stub_0x272050(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 1000, y: -4000, z: -12000 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), LuaStackValue::Number(2.0)] };
+        assert_eq!(stub_0x272050(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 2000, y: -4000, z: 6000 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), v3i16_slot(b)] };
+        assert_eq!(stub_0x272108(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 1000, y: -1000, z: -750 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a), LuaStackValue::Number(2.0)] };
+        assert_eq!(stub_0x272108(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 500, y: -1000, z: 1500 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(7.0), v3i16_slot(b)] };
+        assert_eq!(stub_0x272108(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: 7, y: 3, z: -1 });
+        let mut thread = LuaThreadState { stack: vec![v3i16_slot(a)] };
+        assert_eq!(stub_0x272230(&mut thread), 1);
+        assert_eq!(v3i16_result(&thread), LuaVector3i16 { x: -1000, y: 2000, z: -3000 });
+        let c = LuaVector2i16 { x: 10, y: -20 };
+        let d = LuaVector2i16 { x: 3, y: 4 };
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c), v2i16_slot(d)] };
+        assert_eq!(stub_0x27257c(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 13, y: -16 });
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c), v2i16_slot(d)] };
+        assert_eq!(stub_0x2725bc(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 7, y: -24 });
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c), v2i16_slot(d)] };
+        assert_eq!(stub_0x2725fc(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 30, y: -80 });
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c), LuaStackValue::Number(2.5)] };
+        assert_eq!(stub_0x2725fc(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 25, y: -50 });
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c), v2i16_slot(d)] };
+        assert_eq!(stub_0x2726f8(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: 3, y: -5 });
+        let mut thread = LuaThreadState { stack: vec![v2i16_slot(c)] };
+        assert_eq!(stub_0x2727d4(&mut thread), 1);
+        assert_eq!(v2i16_result(&thread), LuaVector2i16 { x: -10, y: 20 });
+    }
+
+    #[test]
+    fn int16_index_pushes_lanes_as_numbers() {
+        let v = LuaVector3i16 { x: 5, y: -6, z: 700 };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272268(&v, "x", &mut out), 1);
+        assert_eq!(stub_0x272268(&v, "Y", &mut out), 1);
+        assert_eq!(stub_0x272268(&v, "z", &mut out), 1);
+        assert_eq!(
+            out.stack,
+            vec![
+                LuaStackValue::Number(5.0),
+                LuaStackValue::Number(-6.0),
+                LuaStackValue::Number(700.0),
+            ]
+        );
+        let w = LuaVector2i16 { x: -3, y: 42 };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272804(&w, "X", &mut out), 1);
+        assert_eq!(stub_0x272804(&w, "y", &mut out), 1);
+        assert_eq!(out.stack, vec![LuaStackValue::Number(-3.0), LuaStackValue::Number(42.0)]);
+        assert_eq!(stub_0x271f84(&mut LuaThreadState::default()), 0);
+        assert_eq!(stub_0x272540(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn int16_index_rejects_unknown_key() {
+        let _ = stub_0x272268(&LuaVector3i16::default(), "w", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn int16_newindex_is_read_only() {
+        stub_0x2723d0("x");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn vector2int16_newindex_is_read_only() {
+        stub_0x272940("y");
+    }
+
+    #[test]
+    fn vector2_constructors_and_arithmetic() {
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x2729f8(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2::default());
+        let a = LuaVector2 { x: 5.0, y: 7.0 };
+        let b = LuaVector2 { x: 2.0, y: 4.0 };
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), v2_slot(b)] };
+        assert_eq!(stub_0x272ae8(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 7.0, y: 11.0 });
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), v2_slot(b)] };
+        assert_eq!(stub_0x272b40(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 3.0, y: 3.0 });
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), v2_slot(b)] };
+        assert_eq!(stub_0x272b98(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 10.0, y: 28.0 });
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), LuaStackValue::Number(2.0)] };
+        assert_eq!(stub_0x272b98(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 10.0, y: 14.0 });
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), v2_slot(b)] };
+        assert_eq!(stub_0x272c6c(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 2.5, y: 1.75 });
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a)] };
+        assert_eq!(stub_0x272d28(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: -5.0, y: -7.0 });
+        assert_eq!(stub_0x272aac(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    fn vector2_index_and_lerp() {
+        let v = LuaVector2 { x: 3.0, y: 4.0 };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272d70(&v, "x", &mut out), 1);
+        assert_eq!(stub_0x272d70(&v, "Y", &mut out), 1);
+        assert_eq!(out.stack, vec![LuaStackValue::Number(3.0), LuaStackValue::Number(4.0)]);
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272d70(&v, "magnitude", &mut out), 1);
+        assert_eq!(out.stack.last(), Some(&LuaStackValue::Number(5.0)));
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272d70(&v, "unit", &mut out), 1);
+        let unit = v2_result(&out);
+        assert!((unit.x - 0.6).abs() < 1e-6 && (unit.y - 0.8).abs() < 1e-6);
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x272d70(&v, "lerp", &mut out), 1);
+        assert_eq!(out.stack.last(), Some(&LuaStackValue::Function(LERP_VECTOR2_FN)));
+        let a = LuaVector2 { x: 0.0, y: 0.0 };
+        let b = LuaVector2 { x: 4.0, y: 8.0 };
+        let mut thread = LuaThreadState { stack: vec![v2_slot(a), v2_slot(b), LuaStackValue::Number(0.25)] };
+        assert_eq!(stub_0x272f6c(&mut thread), 1);
+        assert_eq!(v2_result(&thread), LuaVector2 { x: 1.0, y: 2.0 });
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn vector2_index_rejects_uppercase_unit() {
+        let _ = stub_0x272d70(&LuaVector2 { x: 1.0, y: 0.0 }, "Unit", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn vector2_newindex_is_read_only() {
+        stub_0x272fe4("x");
+    }
 }
 
 // 0x27309c — __ZN3RBX3Lua16BrickColorBridge20registerClassLibraryEP9lua_State
