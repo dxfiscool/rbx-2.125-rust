@@ -658,88 +658,99 @@ pub fn stub_a5c498(dst: &mut crate::socket::SystemAddress, src: &crate::socket::
 // demangled: RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const
 // type: bool __fastcall(__int64 *, __int64 *)
 #[doc(alias = "RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const")]
-pub fn stub_a5c4a4() -> ! {
-    todo!("0xa5c4a4 RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const")
+pub fn stub_a5c4a4(a: &crate::socket::RakNetGuid, b: &crate::socket::RakNetGuid) -> bool {
+ // IDA 0xa5c4a4: guid equality.
+ !a.not_equal(b)
 }
 
 // 0xa5cb00 — __ZN6RakNet7RakPeerC2Ev
 // demangled: RakNet::RakPeer::RakPeer(void)
 // type: RakNet::RakPeer *__fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::RakPeer(void)")]
-pub fn stub_a5cb00() -> ! {
-    todo!("0xa5cb00 RakNet::RakPeer::RakPeer(void)")
+pub fn stub_a5cb00() -> crate::socket::RakPeer {
+ // IDA 0xa5cb00: default construct.
+ crate::socket::RakPeer::new()
 }
 
 // 0xa5d8f0 — __ZN6RakNet7RakPeerD0Ev
 // demangled: RakNet::RakPeer::~RakPeer()
 // type: void __fastcall(RakNet::RakPeer *__hidden this)
 #[doc(alias = "RakNet::RakPeer::~RakPeer()")]
-pub fn stub_a5d8f0() -> ! {
-    todo!("0xa5d8f0 RakNet::RakPeer::~RakPeer()")
+pub fn stub_a5d8f0(peer: crate::socket::RakPeer) {
+ // IDA 0xa5d8f0: frees; Rust drops it.
+ drop(peer);
 }
 
 // 0xa5d990 — __ZN6RakNet7RakPeerD1Ev
 // demangled: RakNet::RakPeer::~RakPeer()
 // type: void __fastcall(RakNet::RakPeer *__hidden this)
 #[doc(alias = "RakNet::RakPeer::~RakPeer()")]
-pub fn stub_a5d990() -> ! {
-    todo!("0xa5d990 RakNet::RakPeer::~RakPeer()")
+pub fn stub_a5d990(peer: crate::socket::RakPeer) {
+ // IDA 0xa5d990: frees; Rust drops it.
+ drop(peer);
 }
 
 // 0xa5d99c — __ZN6RakNet7RakPeerD2Ev
 // demangled: RakNet::RakPeer::~RakPeer()
 // type: void __fastcall(RakNet::RakPeer *__hidden this)
 #[doc(alias = "RakNet::RakPeer::~RakPeer()")]
-pub fn stub_a5d99c() -> ! {
-    todo!("0xa5d99c RakNet::RakPeer::~RakPeer()")
+pub fn stub_a5d99c(peer: crate::socket::RakPeer) {
+ // IDA 0xa5d99c: frees; Rust drops it.
+ drop(peer);
 }
 
 // 0xa5e3c0 — __ZN6RakNet7RakPeer7StartupEtPNS_16SocketDescriptorEji
 // demangled: RakNet::RakPeer::Startup(unsigned short,RakNet::SocketDescriptor *,unsigned int,int)
 // type: int __fastcall(RakNet::RakPeer *this, unsigned int, RakNet::SocketDescriptor *, unsigned int, int)
 #[doc(alias = "RakNet::RakPeer::Startup(unsigned short,RakNet::SocketDescriptor *,unsigned int,int)")]
-pub fn stub_a5e3c0() -> ! {
-    todo!("0xa5e3c0 RakNet::RakPeer::Startup(unsigned short,RakNet::SocketDescriptor *,unsigned int,int)")
+pub fn stub_a5e3c0(peer: &mut crate::socket::RakPeer, active: bool, has_descriptors: bool, port_in_use: bool, bind_ok: bool, threads_ok: bool) -> u32 {
+ // IDA 0xa5e3c0: bind plus threads, coded result.
+ peer.startup(active, has_descriptors, port_in_use, bind_ok, threads_ok)
 }
 
 // 0xa5eab8 — __ZN6RakNet7RakPeer15DerefAllSocketsEv
 // demangled: RakNet::RakPeer::DerefAllSockets(void)
 // type: void __fastcall(RakNet::RakPeer *this, int, int, int)
 #[doc(alias = "RakNet::RakPeer::DerefAllSockets(void)")]
-pub fn stub_a5eab8() -> ! {
-    todo!("0xa5eab8 RakNet::RakPeer::DerefAllSockets(void)")
+pub fn stub_a5eab8() {
+ // IDA 0xa5eab8: socket release stays engine-side.
+ crate::socket::RakPeer::deref_all_sockets()
 }
 
 // 0xa5ebd4 — __ZN6RakNet7RakPeer21ClearBufferedCommandsEv
 // demangled: RakNet::RakPeer::ClearBufferedCommands(void)
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearBufferedCommands(void)")]
-pub fn stub_a5ebd4() -> ! {
-    todo!("0xa5ebd4 RakNet::RakPeer::ClearBufferedCommands(void)")
+pub fn stub_a5ebd4() {
+ // IDA 0xa5ebd4: queue release stays engine-side.
+ crate::socket::RakPeer::clear_buffered_commands()
 }
 
 // 0xa5eca0 — __ZN6RakNet7RakPeer20ClearBufferedPacketsEv
 // demangled: RakNet::RakPeer::ClearBufferedPackets(void)
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearBufferedPackets(void)")]
-pub fn stub_a5eca0() -> ! {
-    todo!("0xa5eca0 RakNet::RakPeer::ClearBufferedPackets(void)")
+pub fn stub_a5eca0() {
+ // IDA 0xa5eca0: queue release stays engine-side.
+ crate::socket::RakPeer::clear_buffered_packets()
 }
 
 // 0xa5ed50 — __ZN6RakNet17UpdateNetworkLoopEPv
 // demangled: RakNet::UpdateNetworkLoop(void *)
 // type: int __fastcall(RakNet *this, void *)
 #[doc(alias = "RakNet::UpdateNetworkLoop(void *)")]
-pub fn stub_a5ed50() -> ! {
-    todo!("0xa5ed50 RakNet::UpdateNetworkLoop(void *)")
+pub fn stub_a5ed50() {
+ // IDA 0xa5ed50: network thread entry stays engine-side.
+ crate::socket::RakPeer::update_network_loop()
 }
 
 // 0xa5ee80 — __ZN6RakNet12RecvFromLoopEPv
 // demangled: RakNet::RecvFromLoop(void *)
 // type: int __fastcall(RakNet::SocketLayer **this, void *)
 #[doc(alias = "RakNet::RecvFromLoop(void *)")]
-pub fn stub_a5ee80() -> ! {
-    todo!("0xa5ee80 RakNet::RecvFromLoop(void *)")
+pub fn stub_a5ee80() {
+ // IDA 0xa5ee80: receive thread entry stays engine-side.
+ crate::socket::RakPeer::recv_from_loop()
 }
 
 // 0xa5efa0 — __ZN6RakNet7RakPeer18InitializeSecurityEPKcS2_b

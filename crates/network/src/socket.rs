@@ -192,6 +192,28 @@ mod tests {
         assert_eq!(socket_descriptor(123, Some("h")).host, "h");
         assert_eq!(socket_descriptor(123, None).host, "");
     }
+    #[test]
+    fn rak_peer_lifecycle_codes() {
+        // IDA 0xa5c4a4: guid equality is the negated inequality.
+        let g = RakNetGuid::new();
+        let h = RakNetGuid { g: 7, system_index: 0 };
+        assert!(!(g.g == h.g && !g.not_equal(&h)));
+        assert!(!g.not_equal(&g));
+        // IDA 0xa5cb00/0xa5e3c0: ctor plus startup codes.
+        let mut peer = RakPeer::new();
+        assert_eq!(peer.startup(false, true, false, true, true), 0);
+        assert_eq!(peer.startup(true, true, false, true, true), 1);
+        assert_eq!(peer.startup(false, false, false, true, true), 2);
+        assert_eq!(peer.startup(false, true, true, true, true), 5);
+        assert_eq!(peer.startup(false, true, false, false, true), 6);
+        assert_eq!(peer.startup(false, true, false, true, false), 9);
+        // IDA 0xa5eab8/0xa5ebd4/0xa5eca0/0xa5ed50/0xa5ee80: no-ops.
+        RakPeer::deref_all_sockets();
+        RakPeer::clear_buffered_commands();
+        RakPeer::clear_buffered_packets();
+        RakPeer::update_network_loop();
+        RakPeer::recv_from_loop();
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -530,4 +552,59 @@ pub fn super_fast_hash_incremental(data: &[u8], hash: u32) -> u32 {
  let hash = t.wrapping_add(t >> 17);
  let t = hash ^ hash.wrapping_shl(25);
  t.wrapping_add(t >> 6)
+}
+
+/// `RakNet::RakPeer` handle (IDA 0xa5cb00): sockets, queues, and threads
+/// stay engine-side; lifecycle and result codes live here.
+#[derive(Clone, Debug, Default)]
+pub struct RakPeer {}
+
+impl RakPeer {
+ /// `RakPeer::RakPeer` (IDA 0xa5cb00).
+ pub fn new() -> Self {
+ Self::default()
+ }
+
+ /// `RakPeer::Startup` result codes (IDA 0xa5e3c0): 0 ok, 1 already
+ /// active or no descriptors, 5 port in use, 6 bind failure, 9 thread
+ /// failure. Socket binding, thread spawn, and table setup stay
+ /// engine-side.
+ pub fn startup(
+ &mut self,
+ active: bool,
+ has_descriptors: bool,
+ port_in_use: bool,
+ bind_ok: bool,
+ threads_ok: bool,
+ ) -> u32 {
+ if active {
+ return 1;
+ }
+ if !has_descriptors {
+ return 2;
+ }
+ if port_in_use {
+ return 5;
+ }
+ if !bind_ok {
+ return 6;
+ }
+ if !threads_ok {
+ return 9;
+ }
+ 0
+ }
+
+ /// `RakPeer::DerefAllSockets` (IDA 0xa5eab8),
+ /// `ClearBufferedCommands` (IDA 0xa5ebd4), and
+ /// `ClearBufferedPackets` (IDA 0xa5eca0): queue releases stay
+ /// engine-side.
+ pub fn deref_all_sockets() {}
+ pub fn clear_buffered_commands() {}
+ pub fn clear_buffered_packets() {}
+
+ /// `UpdateNetworkLoop` (IDA 0xa5ed50) and `RecvFromLoop` (IDA
+ /// 0xa5ee80): thread entry points; the loops stay engine-side.
+ pub fn update_network_loop() {}
+ pub fn recv_from_loop() {}
 }

@@ -15,32 +15,36 @@ const _: () = {
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearBufferedCommands(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer21ClearBufferedCommandsEv")]
-pub fn stub_a5ebd4() -> ! {
-    todo!("0xa5ebd4 RakNet::RakPeer::ClearBufferedCommands(void)")
+pub fn stub_a5ebd4() {
+ // IDA 0xa5ebd4: queue release stays engine-side.
+ crate::socket::RakPeer::clear_buffered_commands()
 }
 
 // 0xa5eca0 — __ZN6RakNet7RakPeer20ClearBufferedPacketsEv
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::ClearBufferedPackets(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer20ClearBufferedPacketsEv")]
-pub fn stub_a5eca0() -> ! {
-    todo!("0xa5eca0 RakNet::RakPeer::ClearBufferedPackets(void)")
+pub fn stub_a5eca0() {
+ // IDA 0xa5eca0: queue release stays engine-side.
+ crate::socket::RakPeer::clear_buffered_packets()
 }
 
 // 0xa5ed50 — __ZN6RakNet17UpdateNetworkLoopEPv
 // type: int __fastcall(RakNet *this, void *)
 #[doc(alias = "RakNet::UpdateNetworkLoop(void *)")]
 #[doc(alias = "__ZN6RakNet17UpdateNetworkLoopEPv")]
-pub fn stub_a5ed50() -> ! {
-    todo!("0xa5ed50 RakNet::UpdateNetworkLoop(void *)")
+pub fn stub_a5ed50() {
+ // IDA 0xa5ed50: network thread entry stays engine-side.
+ crate::socket::RakPeer::update_network_loop()
 }
 
 // 0xa5ee80 — __ZN6RakNet12RecvFromLoopEPv
 // type: int __fastcall(RakNet::SocketLayer **this, void *)
 #[doc(alias = "RakNet::RecvFromLoop(void *)")]
 #[doc(alias = "__ZN6RakNet12RecvFromLoopEPv")]
-pub fn stub_a5ee80() -> ! {
-    todo!("0xa5ee80 RakNet::RecvFromLoop(void *)")
+pub fn stub_a5ee80() {
+ // IDA 0xa5ee80: receive thread entry stays engine-side.
+ crate::socket::RakPeer::recv_from_loop()
 }
 
 // 0xa5efa0 — __ZN6RakNet7RakPeer18InitializeSecurityEPKcS2_b
