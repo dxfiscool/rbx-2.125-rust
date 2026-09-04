@@ -8,206 +8,528 @@
 
 use rbx_core::SharedPtr;
 
+// ---- RBX::worker_thread + boost::thread/bind support cluster (IDA 0x23f8f0..0x241df4) ----
+// Ground truth per stub: `decompile(ea)` + `disasm(ea)` via IDA MCP.
+// Boost mapping (AGENTS.md section 4): boost::shared_ptr -> rbx_core::SharedPtr
+// (Arc); boost::mutex -> parking_lot::Mutex; boost::thread/thread_data ->
+// std::thread; boost::bind/function/_bi::bind_t/list2 -> boxed closures;
+// boost exceptions -> thiserror errors + panic_any (host for __cxa_throw).
+// Unmodeled throughout: pthread interrupt/checker state, thread cancellation,
+// and C++ RTTI/vtable offices (thunks adjust `this`, which has no host).
+
+/// was: `RBX::worker_thread::work_result` — int status from the work closure.
+/// 1 means more work is ready, so the loop skips the condvar wait (IDA 0x240024).
+pub type WorkResult = i32;
+/// was: `RBX::worker_thread::work_result` == 1 (IDA 0x240024).
+pub const WORK_HAS_MORE: WorkResult = 1;
+/// was: `boost::function0<RBX::worker_thread::work_result>` -> boxed closure.
+pub type WorkFn = Box<dyn Fn() -> WorkResult + Send + Sync>;
+/// was: `boost::function0<void>` -> boxed closure.
+pub type VoidFn = Box<dyn Fn() + Send + Sync>;
+/// was: `void (*)(boost::function0<void> const&,std::string)` entry (IDA 0x2404f4).
+pub type ThreadEntryFn = fn(Option<&VoidFn>, &str);
+
+/// was: `boost::bad_function_call` — built and thrown when an empty function
+/// object is invoked (IDA 0x23f98a..0x23fa04, 0x240014..0x2400de).
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("boost::bad_function_call: empty function object invoked")]
+pub struct BadFunctionCall;
+
+/// was: `boost::condition_error` (a std::runtime_error) — thrown when the
+/// condvar wait fails (IDA 0x240b3a..0x240b8c).
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("boost::condition_error: {0}")]
+pub struct ConditionError(pub String);
+
+/// was: `boost::exception_detail::clone_impl<error_info_injector<condition_error>>`
+/// — the thrown wrapper around the condition error (IDA 0x240c80..0x241030).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ConditionErrorClone {
+    pub error: ConditionError,
+}
+
+impl ConditionErrorClone {
+    /// was: `clone() const` — the virtual clone the 0x241430 thunk forwards to.
+    pub fn clone_box(&self) -> ConditionErrorClone {
+        self.clone()
+    }
+}
+
+/// was: `boost::throw_exception<boost::bad_function_call>` — host panics with
+/// the value (panic_any is the host for __cxa_throw unwinding).
+pub fn throw_bad_function_call() -> ! {
+    std::panic::panic_any(BadFunctionCall)
+}
+
+/// Host for the 0x240b8c throw site: builds the wrapper and throws it.
+pub fn throw_condition_error(message: impl Into<String>) -> ! {
+    stub_0x240c80(ConditionError(message.into()))
+}
+
+/// Host model of `RBX::boost_detail::once_init_foo`/`init_foo` plus the
+/// `boost::thread_specific_ptr<std::string>` slot written by `thread_function`
+/// (IDA 0x23f924..0x23f980): one-shot init flag and the calling thread's name.
+static THREAD_INIT_ONCE: std::sync::Once = std::sync::Once::new();
+static THREAD_INIT_DONE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+thread_local! {
+    static THREAD_NAME: std::cell::RefCell<Option<String>> =
+        std::cell::RefCell::new(None);
+}
+
+/// was: `RBX::boost_detail::init_foo` — the call_once target (IDA 0x23f924).
+fn boost_detail_init_foo() {
+    THREAD_INIT_DONE.store(true, std::sync::atomic::Ordering::Release);
+}
+
+/// Reads the calling thread's name slot (for tests).
+pub fn thread_name() -> Option<String> {
+    THREAD_NAME.with(|slot| slot.borrow().clone())
+}
+
+/// was: `boost::thread_specific_ptr<std::string>` — the target keeps one
+/// process-wide key; the per-thread value lives in THREAD_NAME above.
+#[derive(Debug, Default)]
+pub struct ThreadNameSlot;
+
+/// Host stand-in for the out-of-range D2: dropping the key handle releases it.
+/// Per-thread values drain at thread exit (unmodeled).
+pub fn thread_specific_ptr_string_d2(_slot: ThreadNameSlot) {}
+
+/// was: `RBX::worker_thread::data` — mutex at +0, condvar at +44, stop flag at
+/// +116 (IDA 0x23ffe4, 0x24015a..0x24018a). Boost mapping: mutex+cond become
+/// the parking_lot pair; the stop byte becomes an AtomicBool.
+#[derive(Debug, Default)]
+pub struct WorkerThreadData {
+    /// Stop flag at +116, set by D2 (IDA 0x240166), polled by threadProc (IDA 0x23ffe4).
+    pub stop: std::sync::atomic::AtomicBool,
+    /// Mutex at +0 (IDA 0x23fa7e, 0x24015a).
+    pub mutex: parking_lot::Mutex<()>,
+    /// Condvar at +44 (IDA 0x23fa8a, 0x240174..0x24018a).
+    pub wake: parking_lot::Condvar,
+}
+
+/// was: `RBX::worker_thread` — SharedPtr<data> plus the boost::thread at +8
+/// (IDA 0x23fa1c..0x23fd1c). Boost mapping: the thread is a std::thread.
+pub struct WorkerThread {
+    pub data: SharedPtr<WorkerThreadData>,
+    pub thread: parking_lot::Mutex<Option<std::thread::JoinHandle<()>>>,
+}
+
+impl Drop for WorkerThread {
+    // Host for D2 (IDA 0x240100): dropping the value runs the same teardown.
+    fn drop(&mut self) {
+        self.data
+            .stop
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+        {
+            let _guard = self.data.mutex.lock();
+            self.data.wake.notify_all();
+        }
+        std::mem::drop(self.thread.lock().take());
+    }
+}
+
+/// Host model of the `function_buffer` holding this batch's
+/// `bind_t<void,void(*)(SharedPtr<data>,const function0<work_result>&),list2<...>>`
+/// (IDA 0x241798/0x241bbc): the bound data handle plus the bound work target.
+/// Both are Arcs, so manager clone/move/destroy are retain/move/release.
+#[derive(Clone, Default)]
+pub struct ThreadProcSlot {
+    pub data: Option<SharedPtr<WorkerThreadData>>,
+    pub work: Option<SharedPtr<WorkFn>>,
+}
+
+/// was: `boost::detail::function::functor_manager_operation_type` for this
+/// bind_t (IDA 0x241c20 switch): 0 clone, 1 move, 2 destroy, 3 check type,
+/// 4 get typeinfo, anything else publishes the typeinfo (IDA 0x241c1a).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(i32)]
+pub enum FunctorOp {
+    Clone = 0,
+    Move = 1,
+    Destroy = 2,
+    CheckType = 3,
+    GetTypeInfo = 4,
+}
+
+/// was: the `function_buffer&` out-param of the manager ops — the host returns
+/// the published value instead (typeinfo name or match bit).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FunctorResult {
+    Done,
+    TypeName(&'static str),
+    TypeMatches(bool),
+}
+
+/// Type name published by the manager ops (IDA 0x241d32 strcmp literal).
+pub const BIND_T_TYPE_NAME: &str = "N5boost3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS4_11work_resultEEEENS0_5list2INS0_5valueIS6_EENSF_IS9_EEEEEE";
+
+/// Shared bind body behind 0x2407fc/0x241444: invoking runs
+/// threadProc(data, work) (IDA 0x241b56: list2::operator() calls threadProc).
+pub fn bind_thread_proc(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> VoidFn {
+    Box::new(move || stub_0x241aac(&data, Some(&work)))
+}
+
 // 0x23f8f0 — __ZN3RBXL15thread_functionERKN5boost9function0IvEESs
 // type: void __fastcall(int, int *, int, int)
 // was: void __fastcall(int, int *, int, int)
 #[doc(alias = "RBX::thread_function(boost::function0<void> const&,std::string)")]
-pub fn stub_0x23f8f0() -> ! {
-    todo!("0x23f8f0 __ZN3RBXL15thread_functionERKN5boost9function0IvEESs")
+// IDA 0x23f8f0: call_once(init_foo) (0x23f924); copy the name into a fresh
+// string and reset the thread-specific slot (0x23f946..0x23f980); empty fn ->
+// bad_function_call + throw (0x23f98a..0x23fa04), else invoke it (0x23f99a).
+pub fn stub_0x23f8f0(func: Option<&VoidFn>, name: &str) {
+    THREAD_INIT_ONCE.call_once(boost_detail_init_foo);
+    THREAD_NAME.with(|slot| *slot.borrow_mut() = Some(name.to_owned()));
+    match func {
+        Some(f) => f(),
+        None => throw_bad_function_call(),
+    }
 }
 
 // 0x23fa10 — __ZN3RBX13worker_threadC1ERKN5boost9function0INS0_11work_resultEEEPKc
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 // was: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::worker_thread::worker_thread(boost::function0<RBX::worker_thread::work_result> const&,char const*)")]
-pub fn stub_0x23fa10() -> ! {
-    todo!("0x23fa10 __ZN3RBX13worker_threadC1ERKN5boost9function0INS0_11work_resultEEEPKc")
+// IDA 0x23fa10: tail-calls C2 (disasm 0x23fa10..0x23fa18: frame around BL to C2).
+pub fn stub_0x23fa10(work: WorkFn, name: &str) -> WorkerThread {
+    stub_0x23fa1c(work, name)
 }
 
 // 0x23fa1c — __ZN3RBX13worker_threadC2ERKN5boost9function0INS0_11work_resultEEEPKc
 // type: int __fastcall(int, int *, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int)
 // was: int __fastcall(int, int *, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int)
 #[doc(alias = "RBX::worker_thread::worker_thread(boost::function0<RBX::worker_thread::work_result> const&,char const*) [0x23fa1c]")]
-pub fn stub_0x23fa1c() -> ! {
-    todo!("0x23fa1c __ZN3RBX13worker_threadC2ERKN5boost9function0INS0_11work_resultEEEPKc")
+// IDA 0x23fa1c: alloc data 0x78 (mutex at +0, condvar at +44, stop = 0 at +116)
+// (0x23fa78..0x23fa9c); wrap in SharedPtr (0x23faae); bind threadProc + work
+// (0x23fb5c); spawn via thread_wrapper + boost::thread (0x23fc44..0x23fc52);
+// release temporaries (0x23fc58..0x23fcfa); return *this (0x23fd1c).
+pub fn stub_0x23fa1c(work: WorkFn, name: &str) -> WorkerThread {
+    let data: SharedPtr<WorkerThreadData> = SharedPtr::new(WorkerThreadData::default());
+    let worker = WorkerThread {
+        data: data.clone(),
+        thread: parking_lot::Mutex::new(None),
+    };
+    let bound: VoidFn = bind_thread_proc(worker.data.clone(), work);
+    let thread_name = name.to_owned();
+    let handle = std::thread::Builder::new()
+        .name(thread_name.clone())
+        .spawn(move || {
+            stub_0x23f8f0(Some(&bound), &thread_name);
+        })
+        .expect("RBX::worker_thread: thread spawn failed");
+    *worker.thread.lock() = Some(handle);
+    worker
 }
 
 // 0x23ffb0 — __ZN3RBX13worker_thread10threadProcEN5boost10shared_ptrINS0_4dataEEERKNS1_9function0INS0_11work_resultEEE
 // type: void __fastcall(boost::mutex **, _DWORD *)
 // was: void __fastcall(boost::mutex **, _DWORD *)
 #[doc(alias = "RBX::worker_thread::threadProc(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&)")]
-pub fn stub_0x23ffb0() -> ! {
-    todo!("0x23ffb0 __ZN3RBX13worker_thread10threadProcEN5boost10shared_ptrINS0_4dataEEERKNS1_9function0INS0_11work_resultEEE")
+// IDA 0x23ffb0: while (!stop) (0x23ffe4): empty fn -> throw bad_function_call
+// (0x240014..0x2400de); if work() != 1 (0x240024) lock + condvar wait
+// (0x240028..0x240044), then re-poll stop.
+pub fn stub_0x23ffb0(data: &SharedPtr<WorkerThreadData>, work: Option<&WorkFn>) {
+    loop {
+        if data.stop.load(std::sync::atomic::Ordering::Acquire) {
+            break;
+        }
+        let Some(work) = work else {
+            throw_bad_function_call()
+        };
+        if work() != WORK_HAS_MORE {
+            let mut guard = data.mutex.lock();
+            data.wake.wait(&mut guard);
+        }
+    }
 }
 
 // 0x2400f4 — __ZN3RBX13worker_threadD1Ev
 // type: void __fastcall(RBX::worker_thread *__hidden this)
 // was: void __fastcall(RBX::worker_thread *__hidden this)
 #[doc(alias = "RBX::worker_thread::~worker_thread()")]
-pub fn stub_0x2400f4() -> ! {
-    todo!("0x2400f4 __ZN3RBX13worker_threadD1Ev")
+// IDA 0x2400f4: tail-calls D2 (disasm 0x2400f4..0x2400fa: BL to D2).
+pub fn stub_0x2400f4(worker: WorkerThread) {
+    stub_0x240100(worker);
 }
 
 // 0x240100 — __ZN3RBX13worker_threadD2Ev
 // type: void __fastcall(boost::mutex **this)
 // was: void __fastcall(boost::mutex **this)
 #[doc(alias = "RBX::worker_thread::~worker_thread() [0x240100]")]
-pub fn stub_0x240100() -> ! {
-    todo!("0x240100 __ZN3RBX13worker_threadD2Ev")
+// IDA 0x240100: lock (0x24015a), stop = 1 (0x240166), cond broadcast
+// (0x240174..0x24018a), unlock (0x24018a..0x240192), thread detach (0x2401a6),
+// release both shared counts (0x2401ac..0x2401c2). Host: Drop runs the same
+// teardown (dropping the JoinHandle detaches; Arcs release).
+pub fn stub_0x240100(worker: WorkerThread) {
+    std::mem::drop(worker);
 }
 
 // 0x2402c4 — __ZN3RBX13worker_thread4wakeEv
 // type: void __fastcall(boost::mutex **this)
 // was: void __fastcall(boost::mutex **this)
 #[doc(alias = "RBX::worker_thread::wake(void)")]
-pub fn stub_0x2402c4() -> ! {
-    todo!("0x2402c4 __ZN3RBX13worker_thread4wakeEv")
+// IDA 0x2402c4: lock (0x2402ee), cond broadcast (0x24032c..0x240338), unlock
+// (0x240342..0x24034a).
+pub fn stub_0x2402c4(worker: &WorkerThread) {
+    let _guard = worker.data.mutex.lock();
+    worker.data.wake.notify_all();
 }
 
 // 0x2403cc — __ZN5boost19thread_specific_ptrISsED1Ev
 #[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")]
-pub fn stub_0x2403cc() -> ! {
-    todo!("0x2403cc __ZN5boost19thread_specific_ptrISsED1Ev")
+// IDA 0x2403cc: tail-calls D2 (disasm 0x2403cc..0x2403d4: BLX to D2).
+pub fn stub_0x2403cc(slot: ThreadNameSlot) {
+    thread_specific_ptr_string_d2(slot);
 }
 
 // 0x2403d8 — __ZN5boost19thread_specific_ptrISsE5resetEPSs
 // type: void __fastcall(int *, const void *)
 // was: void __fastcall(int *, const void *)
 #[doc(alias = "boost::thread_specific_ptr<std::string>::reset(std::string *)")]
-pub fn stub_0x2403d8() -> ! {
-    todo!("0x2403d8 __ZN5boost19thread_specific_ptrISsE5resetEPSs")
+// IDA 0x2403d8: if the slot value != new (0x24042a): retain the new count
+// (0x240462..0x24047c), set_tss_data (0x24048c), release the old (0x240492..0x24049a).
+// Host: replace the thread-local name only when it differs.
+pub fn stub_0x2403d8(_slot: &ThreadNameSlot, name: Option<String>) {
+    THREAD_NAME.with(|slot| {
+        let differs = *slot.borrow() != name;
+        if differs {
+            *slot.borrow_mut() = name;
+        }
+    });
 }
 
 // 0x2404f4 — __ZN5boost4bindIvRKNS_9function0IvEESsS2_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 // type: void __fastcall(double *, int, int *, const std::string *)
 // was: void __fastcall(double *, int, int *, const std::string *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list_av_2<boost::function0<void>,std::string>::type> boost::bind<void,boost::function0<void> const&,std::string,boost::function0<void>,std::string>(void (*)(boost::function0<void> const&,std::string),boost::function0<void>,std::string)")]
-pub fn stub_0x2404f4() -> ! {
-    todo!("0x2404f4 __ZN5boost4bindIvRKNS_9function0IvEESsS2_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")
+// IDA 0x2404f4: copy the function object (0x24052c..0x240574), copy the string
+// (0x24057e), build list2 (0x24058c), pack the bind_t target + captures
+// (0x240594..0x2405dc), release temporaries (0x2405ee..0x24068c).
+// Host: invoking the result calls `entry` with the stored captures.
+pub fn stub_0x2404f4(entry: ThreadEntryFn, func: VoidFn, arg: String) -> VoidFn {
+    Box::new(move || entry(Some(&func), &arg))
 }
 
 // 0x2407fc — __ZN5boost4bindIvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS3_11work_resultEEES5_S8_EENS_3_bi6bind_tIT_PFSD_T0_T1_ENSB_9list_av_2IT2_T3_E4typeEEESH_SJ_SK_
 // type: void __fastcall(boost::detail::sp_counted_base *, int, int *, int, int, int, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
-// was: void __fastcall(boost::detail::sp_counted_base *, int, int *, int, int, int, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
+// was: void __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&,rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result>>(void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result>)")]
-pub fn stub_0x2407fc() -> ! {
-    todo!("0x2407fc __ZN5boost4bindIvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS3_11work_resultEEES5_S8_EENS_3_bi6bind_tIT_PFSD_T0_T1_ENSB_9list_av_2IT2_T3_E4typeEEESH_SJ_SK_")
+// IDA 0x2407fc: retain the data count (0x240880..0x24089a), copy the work fn
+// (0x2408a2..0x2408d4), pack list2 + bind_t (0x2408dc..0x2409xx); invoking the
+// result runs threadProc(data, work) (IDA 0x241aac).
+pub fn stub_0x2407fc(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> VoidFn {
+    bind_thread_proc(data, work)
 }
 
 // 0x240a54 — __ZN5boost22condition_variable_any4waitINS_11unique_lockINS_5mutexEEEEEvRT_
 // type: void __fastcall(int, int)
 // was: void __fastcall(int, int)
 #[doc(alias = "void boost::condition_variable_any::wait<boost::unique_lock<boost::mutex>>(boost::unique_lock<boost::mutex> &)")]
-pub fn stub_0x240a54() -> ! {
-    todo!("0x240a54 __ZN5boost22condition_variable_any4waitINS_11unique_lockINS_5mutexEEEEEvRT_")
+// IDA 0x240a54: build the interruption checker (0x240ab2); unlock (0x240ac0);
+// pthread_cond_wait (0x240ad6); clear the interrupt state (0x240af2..0x240b1c);
+// relock + interruption_point (0x240b20..0x240b34); on failure build a
+// system_error and throw condition_error (0x240b3a..0x240b8c).
+// BUG(host): pthread interruption/checker state is not modeled and the
+// parking_lot wait has no error path, so the throw is unreachable here.
+pub fn stub_0x240a54(data: &SharedPtr<WorkerThreadData>) {
+    let mut guard = data.mutex.lock();
+    data.wake.wait(&mut guard);
 }
 
 // 0x240c80 — __ZN5boost15throw_exceptionINS_15condition_errorEEEvRKT_
 // type: void __fastcall __noreturn(_QWORD *)
 // was: void __fastcall __noreturn(_QWORD *)
 #[doc(alias = "void boost::throw_exception<boost::condition_error>(boost::condition_error const&)")]
-pub fn stub_0x240c80() -> ! {
-    todo!("0x240c80 __ZN5boost15throw_exceptionINS_15condition_errorEEEvRKT_")
+// IDA 0x240c80: allocate the exception (0x240cba), copy the message strings
+// (0x240cf2..0x240f7c), wire the vtables (0x240f40..0x241002), copy the boost
+// exception data (0x24100e), __cxa_throw the clone_impl wrapper (0x241030).
+// Boost mapping: __cxa_throw becomes panic_any with the wrapper value.
+pub fn stub_0x240c80(err: ConditionError) -> ! {
+    std::panic::panic_any(ConditionErrorClone { error: err })
 }
 
 // 0x241040 — __ZN5boost15condition_errorD1Ev
 // type: void __fastcall(std::runtime_error *this)
 // was: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::condition_error::~condition_error()")]
-pub fn stub_0x241040() -> ! {
-    todo!("0x241040 __ZN5boost15condition_errorD1Ev")
+// IDA 0x241040: reset the vtable to runtime_error (0x24105e), release the
+// message rep unless shared-static (0x241062..0x24109a), run ~runtime_error
+// (0x241070). Host: dropping the value frees the message the same way.
+pub fn stub_0x241040(err: ConditionError) {
+    std::mem::drop(err);
 }
 
 // 0x2410a0 — __ZN5boost15condition_errorD0Ev
 // type: void __fastcall(std::runtime_error *this)
 // was: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::condition_error::~condition_error() [0x2410a0]")]
-pub fn stub_0x2410a0() -> ! {
-    todo!("0x2410a0 __ZN5boost15condition_errorD0Ev")
+// IDA 0x2410a0: D1 body (0x2410be..0x2410d0) then operator delete (0x2410d6).
+// Host: dropping the Box frees the value and the allocation.
+pub fn stub_0x2410a0(err: Box<ConditionError>) {
+    stub_0x241040(*err);
 }
 
 // 0x241108 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 // type: std::runtime_error *__fastcall(std::runtime_error *)
 // was: std::runtime_error *__fastcall(std::runtime_error *)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
-pub fn stub_0x241108() -> ! {
-    todo!("0x241108 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev")
+// IDA 0x241108: release the error_info chain (0x241144..0x241178), reset to
+// runtime_error (0x241194), release the message rep (0x241198..0x2411ee), run
+// the base dtor (0x2411a8). Host: dropping the wrapper frees both.
+pub fn stub_0x241108(wrap: ConditionErrorClone) {
+    std::mem::drop(wrap);
 }
 
 // 0x241214 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")]
-pub fn stub_0x241214() -> ! {
-    todo!("0x241214 __ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev")
+// IDA 0x241214: this -= 20 (0x241274) then the injector D1 (0x241274..0x2412bc).
+// Host: single inheritance, no adjustment; forwards to the D1 body.
+pub fn stub_0x241214(wrap: ConditionErrorClone) {
+    stub_0x241108(wrap);
 }
 
 // 0x241324 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
-pub fn stub_0x241324() -> ! {
-    todo!("0x241324 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev")
+// IDA 0x241324: this -= 20 (0x241382) then the clone_impl D1 (0x241382..0x2413c8).
+// Host: single inheritance, no adjustment; forwards to the D1 body.
+pub fn stub_0x241324(wrap: ConditionErrorClone) {
+    stub_0x241108(wrap);
 }
 
 // 0x241430 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")]
-pub fn stub_0x241430() -> ! {
-    todo!("0x241430 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv")
+// IDA 0x241430: load vtable, adjust this by [vtable,#-12] (0x241432..0x24143a),
+// tail-call clone() (0x24143c). Host: no vtable offices; forwards to clone_box.
+// (Decompilation fails for this thunk; disasm only.)
+pub fn stub_0x241430(wrap: &ConditionErrorClone) -> ConditionErrorClone {
+    wrap.clone_box()
 }
 
 // 0x241444 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS0_INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSH_ISB_EEEEEEEEvT_
 // type: void __fastcall(int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
 // was: void __fastcall(int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>)")]
-pub fn stub_0x241444() -> ! {
-    todo!("0x241444 __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS0_INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSH_ISB_EEEEEEEEvT_")
+// IDA 0x241444: copy the bind_t captures (retain the shared data, clone the
+// work fn) then basic_vtable::assign_to installs the stored vtable. Host:
+// returns the installed binding as the function value.
+pub fn stub_0x241444(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> VoidFn {
+    bind_thread_proc(data, work)
 }
 
 // 0x241798 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x241798() -> ! {
-    todo!("0x241798 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")
+// IDA 0x241798: op == 4 publishes the bind_t typeinfo inline (0x24179c..0x2417b2);
+// every other op delegates to manager<mpl::bool_<false>> (0x2417b4).
+// (Decompilation fails for this dispatch stub; disasm only.)
+pub fn stub_0x241798(
+    src: &mut ThreadProcSlot,
+    dst: &mut ThreadProcSlot,
+    op: i32,
+) -> FunctorResult {
+    if op == FunctorOp::GetTypeInfo as i32 {
+        FunctorResult::TypeName(BIND_T_TYPE_NAME)
+    } else {
+        stub_0x241bbc(src, dst, op)
+    }
 }
 
 // 0x2417bc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEvE6invokeERNS1_15function_bufferE
 // type: int __fastcall(_DWORD *)
 // was: int __fastcall(_DWORD *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x2417bc() -> ! {
-    todo!("0x2417bc __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEvE6invokeERNS1_15function_bufferE")
+// IDA 0x2417bc: list2::operator()<threadProc,list0>(buf[0] + 4, buf[0], tmp)
+// (0x2417ce). Host: run threadProc with the slot's captures; missing captures
+// throw bad_function_call instead of faulting (see 0x23ffb0).
+pub fn stub_0x2417bc(slot: &ThreadProcSlot) {
+    match (slot.data.clone(), slot.work.clone()) {
+        (Some(data), Some(work)) => {
+            let work_fn: &WorkFn = &work;
+            stub_0x241aac(&data, Some(work_fn));
+        }
+        _ => throw_bad_function_call(),
+    }
 }
 
 // 0x2417d0 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS9_11work_resultEEEENS5_5list2INS5_5valueISB_EENSK_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, double *, _DWORD *, int, boost::detail::sp_counted_base *, int, int, int, int, void *, int, int, int, int)
 // was: int __fastcall(int, double *, _DWORD *, int, boost::detail::sp_counted_base *, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0x2417d0() -> ! {
-    todo!("0x2417d0 __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS9_11work_resultEEEENS5_5list2INS5_5valueISB_EENSK_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+// IDA 0x2417d0: copy the data handle (retain, 0x241826..0x24186e), copy the
+// work fn (0x241878..0x2418a6), heap-alloc the 28-byte bind copy
+// (0x2418ba..0x241978), install it into the buffer (0x24194a/0x241958),
+// release the temp (0x2419a6..0x2419ae), return 1 (0x2419ce).
+// Host: move the captures into the slot; the small buffer always fits.
+pub fn stub_0x2417d0(
+    dst: &mut ThreadProcSlot,
+    data: SharedPtr<WorkerThreadData>,
+    work: WorkFn,
+) -> bool {
+    *dst = ThreadProcSlot {
+        data: Some(data),
+        work: Some(SharedPtr::new(work)),
+    };
+    true
 }
 
 // 0x241aac — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEclIPFvS7_RKSB_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, void (__fastcall **)(int *, int))
 // was: void __fastcall(int *, void (__fastcall **)(int *, int))
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>::operator()<void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&) &,boost::_bi::list0 &,int)")]
-pub fn stub_0x241aac() -> ! {
-    todo!("0x241aac __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEclIPFvS7_RKSB_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+// IDA 0x241aac: retain the data (0x241b00..0x241b48), call threadProc with the
+// stored captures (0x241b56), release (0x241b5a..0x241b62). Host: the Arc
+// clone scopes the retain across the call.
+pub fn stub_0x241aac(data: &SharedPtr<WorkerThreadData>, work: Option<&WorkFn>) {
+    let retained: SharedPtr<WorkerThreadData> = data.clone();
+    stub_0x23ffb0(&retained, work);
 }
 
 // 0x241bbc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 // was: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::worker_thread::data>,boost::function0<RBX::worker_thread::work_result> const&),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0x241bbc() -> ! {
-    todo!("0x241bbc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS_9function0INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSI_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+// IDA 0x241bbc: clone (retain + copy, 0x241c30..0x241c62), move (0x241cc8..0x241ccc),
+// destroy (0x241cd2..0x241d14), check type via strcmp (0x241d32..0x241d3c),
+// default publishes the bind_t typeinfo (0x241c1a..0x241c1e). Host: Arc
+// clone/move/take/drop are the retain/move/release; the slot only ever holds
+// this bind_t, so the check always matches.
+pub fn stub_0x241bbc(
+    src: &mut ThreadProcSlot,
+    dst: &mut ThreadProcSlot,
+    op: i32,
+) -> FunctorResult {
+    if op == FunctorOp::Clone as i32 {
+        *dst = src.clone();
+        FunctorResult::Done
+    } else if op == FunctorOp::Move as i32 {
+        *dst = std::mem::take(src);
+        FunctorResult::Done
+    } else if op == FunctorOp::Destroy as i32 {
+        *dst = ThreadProcSlot::default();
+        FunctorResult::Done
+    } else if op == FunctorOp::CheckType as i32 {
+        FunctorResult::TypeMatches(true)
+    } else {
+        FunctorResult::TypeName(BIND_T_TYPE_NAME)
+    }
 }
 
 // 0x241df4 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEC2ES8_SC_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::worker_thread::data>>,boost::_bi::value<boost::function0<RBX::worker_thread::work_result>>)")]
-pub fn stub_0x241df4() -> ! {
-    todo!("0x241df4 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEC2ES8_SC_")
+// IDA 0x241df4: copy the shared data (retain, 0x241e48..0x241e90), copy the
+// work fn (0x241e98..0x241eca), storage2 init (0x241ed6), release the temps
+// (0x241edc..0x241f08). Host: assemble the slot; Arcs own the retains.
+pub fn stub_0x241df4(data: SharedPtr<WorkerThreadData>, work: WorkFn) -> ThreadProcSlot {
+    ThreadProcSlot {
+        data: Some(data),
+        work: Some(SharedPtr::new(work)),
+    }
 }
 
 // 0x241f98 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX13worker_thread4dataEEEEENS2_INS_9function0INS5_11work_resultEEEEEEC2ES8_SC_
