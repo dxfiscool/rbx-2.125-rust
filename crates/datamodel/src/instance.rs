@@ -16,6 +16,7 @@ use std::collections::BTreeSet;
 use std::collections::BTreeMap;
 use std::collections::HashSet;
 use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::OnceLock;
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
 /// lifecycle runs through `Creatable` + `SharedPtr`. Raw pointers into this
@@ -1373,6 +1374,19 @@ static FILTERED_MI_INDEX: AtomicUsize = AtomicUsize::new(0);
 /// Cached class index behind `doGetClassIndex<FilteredSelection<PVInstance>>`
 /// (IDA `0x4022fc`): separate instantiation, separate cache.
 static FILTERED_PV_INDEX: AtomicUsize = AtomicUsize::new(0);
+
+/// Static `EnumDesc` storage behind the reflection singletons (IDA `0x45a174`
+/// et al.); each `initSingleton` runs its `C2` table-build once, each
+/// `doGetSingleton` returns the static.
+static SAVE_FILTER_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+/// Static `EnumDesc` storage for `GearType` (IDA `0x45a268`).
+static GEAR_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+/// Static `EnumDesc` storage for `GearGenreSetting` (IDA `0x45a35c`).
+static GEAR_GENRE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+/// Static `EnumDesc` storage for `Genre` (IDA `0x45a450`).
+static GENRE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
+/// Static `EnumDesc` storage for `CreatorType` (IDA `0x45a544`).
+static CREATOR_TYPE_SINGLETON: OnceLock<EnumDesc> = OnceLock::new();
 /// Provider-wide class-index counter behind `ServiceProvider::newIndex`.
 static NEXT_CLASS_INDEX: AtomicUsize = AtomicUsize::new(1);
 
@@ -15695,9 +15709,8 @@ pub fn stub_0x41de60(name: &str) -> Option<i32> {
     // IDA 0x41de60: `StringConverter<CreatorType>::convertToValue` — singleton
     // `EnumDesc` lookup (disasm 0x41de68-0x41de7c) then the name search with
     // the value assigned out and true returned, false on miss. The singleton
-    // collapses into the static table of 0x41d3d0 and the out-assign into the
-    // return.
-    stub_0x41d3d0().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
+    // is 0x45a548 and the out-assign collapses into the return.
+    stub_0x45a548().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41deac — __ZN3RBX15StringConverterINS_9DataModel5GenreEE14convertToValueERKSsRS2_
@@ -15706,7 +15719,7 @@ pub fn stub_0x41deac(name: &str) -> Option<i32> {
     // IDA 0x41deac: `StringConverter<Genre>::convertToValue` — same
     // singleton-lookup + name-search shape as 0x41de60 over the table of
     // 0x41d590.
-    stub_0x41d590().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
+    stub_0x45a454().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41def8 — __ZN3RBX15StringConverterINS_9DataModel16GearGenreSettingEE14convertToValueERKSsRS2_
@@ -15714,7 +15727,7 @@ pub fn stub_0x41deac(name: &str) -> Option<i32> {
 pub fn stub_0x41def8(name: &str) -> Option<i32> {
     // IDA 0x41def8: `StringConverter<GearGenreSetting>::convertToValue` —
     // same shape as 0x41de60 over the table of 0x41d864.
-    stub_0x41d864().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
+    stub_0x45a360().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41df44 — __ZN3RBX15StringConverterINS_9DataModel8GearTypeEE14convertToValueERKSsRS2_
@@ -15722,7 +15735,7 @@ pub fn stub_0x41def8(name: &str) -> Option<i32> {
 pub fn stub_0x41df44(name: &str) -> Option<i32> {
     // IDA 0x41df44: `StringConverter<GearType>::convertToValue` — same shape
     // as 0x41de60 over the table of 0x41da24.
-    stub_0x41da24().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
+    stub_0x45a26c().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41df90 — __ZN3RBX15StringConverterINS_8Instance10SaveFilterEE14convertToValueERKSsRS2_
@@ -15730,7 +15743,7 @@ pub fn stub_0x41df44(name: &str) -> Option<i32> {
 pub fn stub_0x41df90(name: &str) -> Option<i32> {
     // IDA 0x41df90: `StringConverter<SaveFilter>::convertToValue` — same
     // shape as 0x41de60 over the table of 0x41dc84.
-    stub_0x41dc84().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
+    stub_0x45a178().pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x41dfdc — __ZN3RBX9DataModel7canSaveEPKNS_8InstanceE
@@ -21212,71 +21225,92 @@ pub fn stub_0x459f48(block: *const ControlBlockPd<Visit, CreatableInstanceDelete
 // 0x45a174 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Instance10SaveFilterEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::initSingleton(void)
-pub fn stub_0x45a174() -> ! {
-    todo!("0x45a174 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::initSingleton(void)")
+pub fn stub_0x45a174() {
+    // IDA 0x45a174: `Singleton<EnumDesc<SaveFilter>>::initSingleton` — runs
+    // the `C2` table-build into static storage once (the init-guard dance
+    // collapses into `OnceLock`).
+    SAVE_FILTER_SINGLETON.get_or_init(stub_0x41dc84);
 }
 
 // 0x45a178 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Instance10SaveFilterEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::doGetSingleton(void)
-pub fn stub_0x45a178() -> ! {
-    todo!("0x45a178 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::doGetSingleton(void)")
+pub fn stub_0x45a178() -> &'static EnumDesc {
+    // IDA 0x45a178: `Singleton<EnumDesc<SaveFilter>>::doGetSingleton` —
+    // returns the static, initializing on first use.
+    SAVE_FILTER_SINGLETON.get_or_init(stub_0x41dc84)
 }
 
 // 0x45a268 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel8GearTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::initSingleton(void)
-pub fn stub_0x45a268() -> ! {
-    todo!("0x45a268 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::initSingleton(void)")
+pub fn stub_0x45a268() {
+    // IDA 0x45a268: `Singleton<EnumDesc<GearType>>::initSingleton` — same
+    // once-shape as 0x45a174 over the `GearType` table.
+    GEAR_TYPE_SINGLETON.get_or_init(stub_0x41da24);
 }
 
 // 0x45a26c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel8GearTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::doGetSingleton(void)
-pub fn stub_0x45a26c() -> ! {
-    todo!("0x45a26c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::doGetSingleton(void)")
+pub fn stub_0x45a26c() -> &'static EnumDesc {
+    // IDA 0x45a26c: `Singleton<EnumDesc<GearType>>::doGetSingleton` — same
+    // shape as 0x45a178.
+    GEAR_TYPE_SINGLETON.get_or_init(stub_0x41da24)
 }
 
 // 0x45a35c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel16GearGenreSettingEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::initSingleton(void)
-pub fn stub_0x45a35c() -> ! {
-    todo!("0x45a35c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::initSingleton(void)")
+pub fn stub_0x45a35c() {
+    // IDA 0x45a35c: `Singleton<EnumDesc<GearGenreSetting>>::initSingleton` —
+    // same once-shape as 0x45a174.
+    GEAR_GENRE_SINGLETON.get_or_init(stub_0x41d864);
 }
 
 // 0x45a360 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel16GearGenreSettingEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::doGetSingleton(void)
-pub fn stub_0x45a360() -> ! {
-    todo!("0x45a360 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::doGetSingleton(void)")
+pub fn stub_0x45a360() -> &'static EnumDesc {
+    // IDA 0x45a360: `Singleton<EnumDesc<GearGenreSetting>>::doGetSingleton` —
+    // same shape as 0x45a178.
+    GEAR_GENRE_SINGLETON.get_or_init(stub_0x41d864)
 }
 
 // 0x45a450 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel5GenreEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::initSingleton(void)
-pub fn stub_0x45a450() -> ! {
-    todo!("0x45a450 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::initSingleton(void)")
+pub fn stub_0x45a450() {
+    // IDA 0x45a450: `Singleton<EnumDesc<Genre>>::initSingleton` — same
+    // once-shape as 0x45a174.
+    GENRE_SINGLETON.get_or_init(stub_0x41d590);
 }
 
 // 0x45a454 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel5GenreEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::doGetSingleton(void)
-pub fn stub_0x45a454() -> ! {
-    todo!("0x45a454 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::doGetSingleton(void)")
+pub fn stub_0x45a454() -> &'static EnumDesc {
+    // IDA 0x45a454: `Singleton<EnumDesc<Genre>>::doGetSingleton` — same shape
+    // as 0x45a178.
+    GENRE_SINGLETON.get_or_init(stub_0x41d590)
 }
 
 // 0x45a544 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel11CreatorTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::initSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::initSingleton(void)
-pub fn stub_0x45a544() -> ! {
-    todo!("0x45a544 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::initSingleton(void)")
+pub fn stub_0x45a544() {
+    // IDA 0x45a544: `Singleton<EnumDesc<CreatorType>>::initSingleton` — same
+    // once-shape as 0x45a174.
+    CREATOR_TYPE_SINGLETON.get_or_init(stub_0x41d3d0);
 }
 
 // 0x45a548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel11CreatorTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::doGetSingleton(void)")]
 // was: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::doGetSingleton(void)
-pub fn stub_0x45a548() -> ! {
-    todo!("0x45a548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::doGetSingleton(void)")
+pub fn stub_0x45a548() -> &'static EnumDesc {
+    // IDA 0x45a548: `Singleton<EnumDesc<CreatorType>>::doGetSingleton` —
+    // same shape as 0x45a178.
+    CREATOR_TYPE_SINGLETON.get_or_init(stub_0x41d3d0)
 }
 
 // 0x45a638 — __ZN3rbx8any_castIN3RBX8Instance10SaveFilterENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -21296,71 +21330,114 @@ pub fn stub_0x45a78c() -> ! {
 // 0x45a880 — __ZNSt6vectorIN3RBX8Instance10SaveFilterESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::resize(unsigned long,RBX::Instance::SaveFilter)")]
 // was: std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::resize(unsigned long,RBX::Instance::SaveFilter)
-pub fn stub_0x45a880() -> ! {
-    todo!("0x45a880 std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::resize(unsigned long,RBX::Instance::SaveFilter)")
+pub fn stub_0x45a880(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x45a880 (`vector<SaveFilter>::resize`): grows with copies of the
+    // value or truncates; `resize` is the same operation (values are the
+    // `i32` enum codes).
+    items.resize(len, value);
 }
 
 // 0x45a8b8 — __ZNSt6vectorIN3RBX8Instance10SaveFilterESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::push_back(RBX::Instance::SaveFilter const&)")]
 // was: std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::push_back(RBX::Instance::SaveFilter const&)
-pub fn stub_0x45a8b8() -> ! {
-    todo!("0x45a8b8 std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::push_back(RBX::Instance::SaveFilter const&)")
+pub fn stub_0x45a8b8(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x45a8b8 (`vector<SaveFilter>::push_back`): copies the value into
+    // the tail; `push` is the same append.
+    items.push(value);
 }
 
 // 0x45a8e4 — __ZNSt3mapIPKN3RBX4NameENS0_8Instance10SaveFilterESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Instance::SaveFilter,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::operator[](RBX::Name const* const&)")]
 // was: std::map<RBX::Name const*,RBX::Instance::SaveFilter,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::operator[](RBX::Name const* const&)
-pub fn stub_0x45a8e4() -> ! {
-    todo!("0x45a8e4 std::map<RBX::Name const*,RBX::Instance::SaveFilter,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x45a8e4<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x45a8e4 (`map<Name, SaveFilter>::operator[]`): tree search with a
+    // value-initialized (0) slot on miss; `entry().or_insert(0)` is the same
+    // lookup-or-create (the `Name` key collapses into its text).
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x45a93c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8Instance10SaveFilterEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)
-pub fn stub_0x45a93c() -> ! {
-    todo!("0x45a93c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")
+pub fn stub_0x45a93c(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45a93c (`_Rb_tree::_M_insert_unique` with the position hint): the
+    // hint only seeds the search, so the hinted insert collapses into a plain
+    // unique insert. Same shape as 0x3dd5bc.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45a9f0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8Instance10SaveFilterEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)
-pub fn stub_0x45a9f0() -> ! {
-    todo!("0x45a9f0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")
+pub fn stub_0x45a9f0(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x45a9f0 (`_Rb_tree::_M_insert`): links the already-uniqueness-
+    // checked node into the tree; after the check the link is a plain insert.
+    // Same shape as 0x3dd670.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x45aa48 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8Instance10SaveFilterEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)
-pub fn stub_0x45aa48() -> ! {
-    todo!("0x45aa48 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Instance::SaveFilter> const&)")
+pub fn stub_0x45aa48(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45aa48 (`_Rb_tree::_M_insert_unique` by value): search, then link
+    // on miss. Same shape as 0x3dd6c8.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45aab4 — __ZNSt6vectorIN3RBX8Instance10SaveFilterESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,RBX::Instance::SaveFilter const&)")]
 // was: std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,RBX::Instance::SaveFilter const&)
-pub fn stub_0x45aab4() -> ! {
-    todo!("0x45aab4 std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,RBX::Instance::SaveFilter const&)")
+pub fn stub_0x45aab4(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x45aab4 (`vector<SaveFilter>::_M_insert_aux`): shifts the tail
+    // and copies the value into the hole; same splice as 0x4011e8.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x45ab98 — __ZNSt12_Vector_baseIN3RBX8Instance10SaveFilterESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_allocate(unsigned long)
-pub fn stub_0x45ab98() -> ! {
-    todo!("0x45ab98 std::_Vector_base<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_allocate(unsigned long)")
+pub fn stub_0x45ab98(capacity: usize) -> Vec<i32> {
+    // IDA 0x45ab98 (`_Vector_base<SaveFilter>::_M_allocate`): allocates raw
+    // storage without constructing any; same safe allocation as 0x4012c8.
+    Vec::with_capacity(capacity)
 }
 
 // 0x45abb0 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX8Instance10SaveFilterES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Instance::SaveFilter * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *>(RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *)")]
 // was: RBX::Instance::SaveFilter * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *>(RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *)
-pub fn stub_0x45abb0() -> ! {
-    todo!("0x45abb0 RBX::Instance::SaveFilter * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *>(RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *,RBX::Instance::SaveFilter *)")
+pub fn stub_0x45abb0(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x45abb0 (`__copy_backward` over the `SaveFilter` range): copies
+    // `[first, last)` to end at `result`; `copy_within` handles the overlap
+    // the same way (the raw pointers collapse into offsets).
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x45abf0 — __ZNSt6vectorIN3RBX8Instance10SaveFilterESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,unsigned long,RBX::Instance::SaveFilter const&)")]
 // was: std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,unsigned long,RBX::Instance::SaveFilter const&)
-pub fn stub_0x45abf0() -> ! {
-    todo!("0x45abf0 std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Instance::SaveFilter*,std::vector<RBX::Instance::SaveFilter,std::allocator<RBX::Instance::SaveFilter>>>,unsigned long,RBX::Instance::SaveFilter const&)")
+pub fn stub_0x45abf0(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x45abf0 (`vector<SaveFilter>::_M_fill_insert`): splices `count`
+    // copies of the value at the position; `splice` with a repeat tail is the
+    // same insert.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x45ad84 — __ZN3rbx8any_castIN3RBX9DataModel8GearTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -21380,15 +21457,17 @@ pub fn stub_0x45addc() -> ! {
 // 0x45aecc — __ZNSt6vectorIN3RBX9DataModel8GearTypeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::resize(unsigned long,RBX::DataModel::GearType)")]
 // was: std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::resize(unsigned long,RBX::DataModel::GearType)
-pub fn stub_0x45aecc() -> ! {
-    todo!("0x45aecc std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::resize(unsigned long,RBX::DataModel::GearType)")
+pub fn stub_0x45aecc(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x45aecc (`vector<GearType>::resize`): same shape as 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x45af00 — __ZNSt6vectorIN3RBX9DataModel8GearTypeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::push_back(RBX::DataModel::GearType const&)")]
 // was: std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::push_back(RBX::DataModel::GearType const&)
-pub fn stub_0x45af00() -> ! {
-    todo!("0x45af00 std::vector<RBX::DataModel::GearType,std::allocator<RBX::DataModel::GearType>>::push_back(RBX::DataModel::GearType const&)")
+pub fn stub_0x45af00(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x45af00 (`vector<GearType>::push_back`): same shape as 0x45a8b8.
+    items.push(value);
 }
 
 // 0x45af28 — __ZNSt3mapIPKN3RBX4NameENS0_9DataModel8GearTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
