@@ -5,6 +5,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
 use std::sync::Arc;
 
 /// `RBX::Smoke` cutover (IDA 0x637478): the `Color3` at +0x64..+0x6c,
@@ -1301,13 +1302,52 @@ pub fn stub_063b120() {
     // IDA 0x063b120: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
+/// `RBX::Reflection::BoundFuncDesc<SocialService, void(string), 1>`
+/// cutover (IDA 0x63b910): the bound member selector plus the declared
+/// name/description, permissions, attributes and the single string
+/// argument signature. The `FunctionDescriptor` base folds into the
+/// header fields.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum SocialStringSetter {
+    FriendUrl,
+    BestFriendUrl,
+    GroupUrl,
+    GroupRankUrl,
+    GroupRoleUrl,
+    StuffUrl,
+    PackageContentsUrl,
+}
+/// `BoundFuncDesc<SocialService, void(string), 1>` header cutover.
+#[derive(Debug, Clone)]
+pub struct SocialBoundFunc {
+    pub setter: SocialStringSetter,
+    pub name: String,
+    pub description: String,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub arg_name: String,
+}
+/// `RBX::Sparkles` cutover (IDA 0x63c298): the `Effect` base at +92
+/// folds away; the +96 flag byte (init 1) and the `Color3` at
+/// +0x64..+0x6c (init 144.0/25.0/255.0, i.e. 0x43100000/0x41c80000/
+/// 0x437f0000) remain.
+#[derive(Debug, Clone)]
+pub struct SparklesState {
+    pub flag_60: bool,
+    pub color: [f32; 3],
+}
+
 // 0x063b420 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE6resizeEmS2_
 // demangled: std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::resize(unsigned long,RBX::SocialService::StuffType)
 // type: int(void)
 #[doc(alias = "std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::resize(unsigned long,RBX::SocialService::StuffType)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE6resizeEmS2_")]
-pub fn stub_063b420() -> ! {
-    todo!("0x063b420 std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::resize(unsigned long,RBX::SocialService::StuffType)")
+pub fn stub_063b420(v: &mut Vec<i32>, n: usize, value: i32) {
+    // IDA 0x63b420 (`vector<StuffType>::resize`): longer-or-equal goes
+    // through `_M_fill_insert` (0x63b442-0x63b448), shorter truncates
+    // the finish pointer (0x63b436-0x63b440; trivially destructible,
+    // so no drops run). `StuffType` is an int enum.
+    v.resize(n, value);
 }
 
 // 0x063b454 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE9push_backERKS2_
@@ -1315,8 +1355,11 @@ pub fn stub_063b420() -> ! {
 // type: int(void)
 #[doc(alias = "std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::push_back(RBX::SocialService::StuffType const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE9push_backERKS2_")]
-pub fn stub_063b454() -> ! {
-    todo!("0x063b454 std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::push_back(RBX::SocialService::StuffType const&)")
+pub fn stub_063b454(v: &mut Vec<i32>, value: i32) {
+    // IDA 0x63b454 (`vector<StuffType>::push_back`): fast path stores
+    // and bumps finish (0x63b45e-0x63b46e), full path goes through
+    // `_M_insert_aux` (0x63b470-0x63b476, at 0x63b648).
+    v.push(value);
 }
 
 // 0x063b47c — __ZNSt3mapIPKN3RBX4NameENS0_13SocialService9StuffTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
@@ -1324,8 +1367,13 @@ pub fn stub_063b454() -> ! {
 // type: int(void)
 #[doc(alias = "std::map<RBX::Name const*,RBX::SocialService::StuffType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameENS0_13SocialService9StuffTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_063b47c() -> ! {
-    todo!("0x063b47c std::map<RBX::Name const*,RBX::SocialService::StuffType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_063b47c<'a>(m: &'a mut HashMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x63b47c (`map<Name const*, StuffType>::operator[]`):
+    // tree-lowers to the slot (0x63b48c-0x63b4b6), inserts a
+    // default-constructed (0) value on miss via `_M_insert_unique`
+    // (0x63b4ba-0x63b4c4) and returns the mapped slot (0x63b4c8-
+    // 0x63b4d0). The red-black node folds into the entry.
+    m.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x063b4d4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
@@ -1333,8 +1381,19 @@ pub fn stub_063b47c() -> ! {
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_063b4d4() -> ! {
-    todo!("0x063b4d4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")
+pub fn stub_063b4d4(m: &mut HashMap<String, i32>, key: String, value: i32) -> bool {
+    // IDA 0x63b4d4 (`_Rb_tree::insert_unique(hint, value)`): the
+    // position-hint overload delegates to `_M_insert` on a miss and
+    // returns the existing node on a hit (0x63b4d4-0x63b570). The hint
+    // folds away; the hit/miss folds into the entry API.
+    use std::collections::hash_map::Entry;
+    match m.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x063b588 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
@@ -1342,8 +1401,12 @@ pub fn stub_063b4d4() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_063b588() -> ! {
-    todo!("0x063b588 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")
+pub fn stub_063b588(m: &mut HashMap<String, i32>, key: String, value: i32) {
+    // IDA 0x63b588 (`_Rb_tree::_M_insert`): allocates the 0x18-byte
+    // node, copies the pair (0x63b5b2-0x63b5be) and rebalances
+    // (0x63b5c2-0x63b5ca), bumping the size (0x63b5ce-0x63b5d4). The
+    // node and the rebalance fold into the insert.
+    m.insert(key, value);
 }
 
 // 0x063b5e0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
@@ -1351,8 +1414,20 @@ pub fn stub_063b588() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13SocialService9StuffTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_063b5e0() -> ! {
-    todo!("0x063b5e0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SocialService::StuffType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SocialService::StuffType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::SocialService::StuffType> const&)")
+pub fn stub_063b5e0(m: &mut HashMap<String, i32>, key: String, value: i32) -> bool {
+    // IDA 0x63b5e0 (`_Rb_tree::insert_unique(value)`): lowers to the
+    // slot (0x63b5e0-0x63b60c); on a miss `_M_insert`s and returns
+    // inserted=true (0x63b60e-0x63b62c), on a hit returns the existing
+    // node with inserted=false (0x63b62e-0x63b640). Same entry cutover
+    // as the hint overload at 0x63b4d4.
+    use std::collections::hash_map::Entry;
+    match m.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x063b648 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -1360,8 +1435,13 @@ pub fn stub_063b5e0() -> ! {
 // type: int __fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SocialService::StuffType*,std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>>,RBX::SocialService::StuffType const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_063b648() -> ! {
-    todo!("0x063b648 std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SocialService::StuffType*,std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>>,RBX::SocialService::StuffType const&)")
+pub fn stub_063b648(v: &mut Vec<i32>, pos: usize, value: i32) {
+    // IDA 0x63b648 (`vector<StuffType>::_M_insert_aux`): reallocates
+    // and shifts when full (0x63b648-0x63b6c0, `length_error` past
+    // 0x3fffffff), else shifts the tail with `__copy_backward` and
+    // stores (0x63b6c2-0x63b6f0). The growth and the shift fold into
+    // `insert`.
+    v.insert(pos, value);
 }
 
 // 0x063b72c — __ZNSt12_Vector_baseIN3RBX13SocialService9StuffTypeESaIS2_EE11_M_allocateEm
@@ -1369,8 +1449,12 @@ pub fn stub_063b648() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX13SocialService9StuffTypeESaIS2_EE11_M_allocateEm")]
-pub fn stub_063b72c() -> ! {
-    todo!("0x063b72c std::_Vector_base<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_allocate(unsigned long)")
+pub fn stub_063b72c(v: &mut Vec<i32>, n: usize) {
+    // IDA 0x63b72c (`_Vector_base<StuffType>::_M_allocate`):
+    // `throw_bad_alloc` at >= 0x40000000, else `operator new(4*n)`
+    // (0x63b72c-0x63b740). The raw allocation folds into `reserve`
+    // (whose capacity overflow panics the same way).
+    v.reserve(n);
 }
 
 // 0x063b744 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13SocialService9StuffTypeES6_EET0_T_S8_S7_
@@ -1378,8 +1462,11 @@ pub fn stub_063b72c() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::SocialService::StuffType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::SocialService::StuffType *,RBX::SocialService::StuffType *>(RBX::SocialService::StuffType *,RBX::SocialService::StuffType *,RBX::SocialService::StuffType *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13SocialService9StuffTypeES6_EET0_T_S8_S7_")]
-pub fn stub_063b744() -> ! {
-    todo!("0x063b744 RBX::SocialService::StuffType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::SocialService::StuffType *,RBX::SocialService::StuffType *>(RBX::SocialService::StuffType *,RBX::SocialService::StuffType *,RBX::SocialService::StuffType *)")
+pub fn stub_063b744() {
+    // IDA 0x63b744 (`__copy_backward<StuffType*, StuffType*>`):
+    // shifts the POD tail down by the insert span (0x63b744-0x63b77e).
+    // Only called from `_M_insert_aux`/`_M_fill_insert`, both cut over
+    // to `Vec` methods — carrier no-op.
 }
 
 // 0x063b780 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
@@ -1387,8 +1474,14 @@ pub fn stub_063b744() -> ! {
 // type: int(void)
 #[doc(alias = "std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SocialService::StuffType*,std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>>,unsigned long,RBX::SocialService::StuffType const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_063b780() -> ! {
-    todo!("0x063b780 std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SocialService::StuffType*,std::vector<RBX::SocialService::StuffType,std::allocator<RBX::SocialService::StuffType>>>,unsigned long,RBX::SocialService::StuffType const&)")
+pub fn stub_063b780(v: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+    // IDA 0x63b780 (`vector<StuffType>::_M_fill_insert`): in-place
+    // fill when capacity allows (0x63b780-0x63b860), else reallocate
+    // and copy around the new run (0x63b862-0x63b900). The splice
+    // folds into split/extend/append.
+    let tail = v.split_off(pos);
+    v.extend(std::iter::repeat_n(value, n));
+    v.extend(tail);
 }
 
 // 0x063b910 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EEC2EMS2_FvSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -1396,8 +1489,30 @@ pub fn stub_063b780() -> ! {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::BoundFuncDesc(void (RBX::SocialService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EEC2EMS2_FvSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_063b910() -> ! {
-    todo!("0x063b910 RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::BoundFuncDesc(void (RBX::SocialService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_063b910(
+    setter: SocialStringSetter,
+    name: &str,
+    description: &str,
+    permissions: u32,
+    attributes: u32,
+    arg_name: &str,
+) -> SocialBoundFunc {
+    // IDA 0x63b910 (`BoundFuncDesc<SocialService, void(string),
+    // 1>::C2`): `FunctionDescriptor::C2` with the class descriptor
+    // (0x63b948-0x63b968), vtable install, the member pair at +40
+    // (0x63b97c-0x63b982), the +48 slot zeroed (0x63b986) and
+    // `declareSignature()` (0x63b988-0x63b9a0). The member pair folds
+    // into the selector.
+    let mut func = SocialBoundFunc {
+        setter,
+        name: name.to_owned(),
+        description: description.to_owned(),
+        permissions,
+        attributes,
+        arg_name: String::new(),
+    };
+    stub_063ba88(&mut func, arg_name);
+    func
 }
 
 // 0x063ba88 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -1405,8 +1520,14 @@ pub fn stub_063b910() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EE16declareSignatureEPKcNS0_7VariantE")]
-pub fn stub_063ba88() -> ! {
-    todo!("0x063ba88 RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_063ba88(func: &mut SocialBoundFunc, arg_name: &str) {
+    // IDA 0x63ba88 (`BoundFuncDesc::declareSignature`): return type is
+    // `Type::getSingleton<void>` at +28 (0x63ba94-0x63ba98),
+    // `Name::declare(arg)` (0x63ba9c-0x63ba9e) plus
+    // `Type::getSingleton<std::string>` feed `addArgument`
+    // (0x63baa4-0x63bab0). The type singletons fold into the fixed
+    // void(string) shape; the default `Variant` rides the call site.
+    func.arg_name = arg_name.to_owned();
 }
 
 // 0x063bab8 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EED0Ev
@@ -1423,8 +1544,16 @@ pub fn stub_063bab8() {
 // type: 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_063bb84() -> ! {
-    todo!("0x063bb84 RBX::Reflection::BoundFuncDesc<RBX::SocialService,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_063bb84(state: &mut SocialServiceState, setter: SocialStringSetter, args: &[String]) {
+    // IDA 0x63bb84 (`BoundFuncDesc::execute`): adjusts the described
+    // (`a2 - 36` when non-null, 0x63bbd2-0x63bbd6), fetches positional
+    // arg 1 via `ArgHelper::getArg<std::string, 1>` (0x63bbda-
+    // 0x63bbf0, missing-or-nil throws like the twin at 0x5f1810) and
+    // runs `Call1Helper::call` below (0x63bbf4-0x63bbfc).
+    let arg = args.first().cloned().unwrap_or_else(|| {
+        panic!("Argument 1 missing or nil (IDA 0x63bb84)")
+    });
+    stub_063bcc0(state, setter, &arg);
 }
 
 // 0x063bcc0 — __ZN3RBX10Reflection11Call1HelperINS_13SocialServiceEMS2_FvSsESsvE4callEPS2_S4_RNS0_7VariantERKSs
@@ -1432,8 +1561,22 @@ pub fn stub_063bb84() -> ! {
 // type: int __fastcall(int, int, int, int, std::string *)
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::SocialService,void (RBX::SocialService::*)(std::string),std::string,void>::call(RBX::SocialService*,void (RBX::SocialService::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
 #[doc(alias = "__ZN3RBX10Reflection11Call1HelperINS_13SocialServiceEMS2_FvSsESsvE4callEPS2_S4_RNS0_7VariantERKSs")]
-pub fn stub_063bcc0() -> ! {
-    todo!("0x063bcc0 RBX::Reflection::Call1Helper<RBX::SocialService,void (RBX::SocialService::*)(std::string),std::string,void>::call(RBX::SocialService*,void (RBX::SocialService::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
+pub fn stub_063bcc0(state: &mut SocialServiceState, setter: SocialStringSetter, arg: &str) {
+    // IDA 0x63bcc0 (`Call1Helper<SocialService, void(string),
+    // string>::call`): resolves the member pointer against the
+    // instance (virtual when the low bit is set, 0x63bcc0-0x63bd1c),
+    // copies the string arg (0x63bd24-0x63bd26) and invokes the setter
+    // (0x63bd2e-0x63bd32). The member pointer folds into the selector.
+    let value = arg.to_owned();
+    match setter {
+        SocialStringSetter::FriendUrl => stub_0639138(state, value),
+        SocialStringSetter::BestFriendUrl => stub_0639140(state, value),
+        SocialStringSetter::GroupUrl => stub_0639148(state, value),
+        SocialStringSetter::GroupRankUrl => stub_0639150(state, value),
+        SocialStringSetter::GroupRoleUrl => stub_0639158(state, value),
+        SocialStringSetter::StuffUrl => stub_0639160(state, value),
+        SocialStringSetter::PackageContentsUrl => stub_0639168(state, value),
+    }
 }
 
 // 0x063bdf0 — __ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE5clearEv
@@ -1450,8 +1593,16 @@ pub fn stub_063bdf0() {
 // type: 
 #[doc(alias = "RBX::Sparkles::setColor(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX8Sparkles8setColorEN3G3D6Color3E")]
-pub fn stub_063c1a4() -> ! {
-    todo!("0x063c1a4 RBX::Sparkles::setColor(G3D::Color3)")
+pub fn stub_063c1a4(state: &mut SparklesState, color: [f32; 3]) -> bool {
+    // IDA 0x63c1a4 (`RBX::Sparkles::setColor`): same three-word
+    // compare as `Smoke::setColor` at 0x637264 (0x63c1a4-0x63c1e8),
+    // storing all three (0x63c1ec-0x63c1fe) and raising `prop_Color`
+    // (0x63c1f6-0x63c202). The raise folds into the changed flag.
+    if state.color == color {
+        return false;
+    }
+    state.color = color;
+    true
 }
 
 // 0x063c208 — __ZNK3RBX8Sparkles14getLegacyColorEv
@@ -1459,8 +1610,15 @@ pub fn stub_063c1a4() -> ! {
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "RBX::Sparkles::getLegacyColor(void)const")]
 #[doc(alias = "__ZNK3RBX8Sparkles14getLegacyColorEv")]
-pub fn stub_063c208() -> ! {
-    todo!("0x063c208 RBX::Sparkles::getLegacyColor(void)const")
+pub fn stub_063c208(state: &SparklesState) -> [f32; 3] {
+    // IDA 0x63c208 (`RBX::Sparkles::getLegacyColor`): out[0] =
+    // color[0]*255/144, out[1] = color[1]*255/25, out[2] = color[2]
+    // (0x63c208-0x63c238; 255.0 at 0x63c240, 144.0 at 0x63c244).
+    [
+        state.color[0] * 255.0 / 144.0,
+        state.color[1] * 255.0 / 25.0,
+        state.color[2],
+    ]
 }
 
 // 0x063c248 — __ZN3RBX8Sparkles14setLegacyColorEN3G3D6Color3E
@@ -1468,8 +1626,20 @@ pub fn stub_063c208() -> ! {
 // type: 
 #[doc(alias = "RBX::Sparkles::setLegacyColor(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX8Sparkles14setLegacyColorEN3G3D6Color3E")]
-pub fn stub_063c248() -> ! {
-    todo!("0x063c248 RBX::Sparkles::setLegacyColor(G3D::Color3)")
+pub fn stub_063c248(state: &mut SparklesState, legacy: [f32; 3]) -> bool {
+    // IDA 0x63c248 (`RBX::Sparkles::setLegacyColor`): builds
+    // (legacy[0]*255/255, legacy[1]*25/255, legacy[2]) — the 25.0
+    // scale at 0x63c24e, the 255.0/144.0 scales at 0x63c25a-0x63c262,
+    // the two divides at 0x63c270-0x63c274 — then tail-calls
+    // `setColor` above (0x63c278-0x63c284).
+    stub_063c1a4(
+        state,
+        [
+            legacy[0] * 255.0 / 255.0,
+            legacy[1] * 25.0 / 255.0,
+            legacy[2],
+        ],
+    )
 }
 
 // 0x063c294 — __ZN3RBX8SparklesC1Ev
@@ -1477,8 +1647,10 @@ pub fn stub_063c248() -> ! {
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "RBX::Sparkles::Sparkles(void)")]
 #[doc(alias = "__ZN3RBX8SparklesC1Ev")]
-pub fn stub_063c294() -> ! {
-    todo!("0x063c294 RBX::Sparkles::Sparkles(void)")
+pub fn stub_063c294() -> SparklesState {
+    // IDA 0x63c294 (`RBX::Sparkles::C1`): thunk tail-calling the `C2`
+    // below (0x63c294-0x63c297).
+    stub_063c298()
 }
 
 // 0x063c298 — __ZN3RBX8SparklesC2Ev
@@ -1486,8 +1658,17 @@ pub fn stub_063c294() -> ! {
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "RBX::Sparkles::Sparkles(void)")]
 #[doc(alias = "__ZN3RBX8SparklesC2Ev")]
-pub fn stub_063c298() -> ! {
-    todo!("0x063c298 RBX::Sparkles::Sparkles(void)")
+pub fn stub_063c298() -> SparklesState {
+    // IDA 0x63c298 (`RBX::Sparkles::C2`): `Instance::C2("Sparkles")` +
+    // vtable installs + class registration (0x63c2c4-0x63c340);
+    // `Effect::Effect` at +92 (0x63c340-0x63c360); the +96 flag byte
+    // is set to 1 (0x63c360-0x63c370); the color at +0x64..+0x6c loads
+    // 144.0/25.0/255.0 (0x43100000/0x41c80000/0x437f0000,
+    // 0x63c370-0x63c3e0 — legacy-white).
+    SparklesState {
+        flag_60: true,
+        color: [144.0, 25.0, 255.0],
+    }
 }
 
 // 0x063c450 — __ZNK3RBX8Sparkles8getColorEv
@@ -1495,6 +1676,8 @@ pub fn stub_063c298() -> ! {
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "RBX::Sparkles::getColor(void)const")]
 #[doc(alias = "__ZNK3RBX8Sparkles8getColorEv")]
-pub fn stub_063c450() -> ! {
-    todo!("0x063c450 RBX::Sparkles::getColor(void)const")
+pub fn stub_063c450(state: &SparklesState) -> [f32; 3] {
+    // IDA 0x63c450 (`RBX::Sparkles::getColor`): copies the three words
+    // at +0x64/+0x68/+0x6c to the result (0x63c450-0x63c45a).
+    state.color
 }
