@@ -3383,8 +3383,9 @@ pub fn stub_a64570() -> bool {
 
 // 0xa64574 — __ZN6RakNet7RakPeer20WriteOutOfBandHeaderEPNS_9BitStreamE
 #[doc(alias = "RakNet::RakPeer::WriteOutOfBandHeader(RakNet::BitStream *)")]
-pub fn stub_a64574() -> ! {
-    todo!("0xa64574 RakNet::RakPeer::WriteOutOfBandHeader(RakNet::BitStream *)")
+pub fn stub_a64574(stream: &mut crate::bitstream::BitStream, guid: u64) {
+ // IDA 0xa64574: id byte, guid, offline marker.
+ crate::socket::RakPeer::write_out_of_band_header(stream, guid)
 }
 
 // 0xa645b0 — __ZN6RakNet7RakPeer19SetUserUpdateThreadEPFvPNS_16RakPeerInterfaceEPvES3_
@@ -3405,20 +3406,23 @@ pub fn stub_a645bc() -> ! {
 
 // 0xa647f4 — __ZN6RakNet7RakPeer13GetStatisticsENS_13SystemAddressEPNS_16RakNetStatisticsE
 #[doc(alias = "RakNet::RakPeer::GetStatistics(RakNet::SystemAddress,RakNet::RakNetStatistics *)")]
-pub fn stub_a647f4() -> ! {
-    todo!("0xa647f4 RakNet::RakPeer::GetStatistics(RakNet::SystemAddress,RakNet::RakNetStatistics *)")
+pub fn stub_a647f4(unassigned: bool, aggregate: &mut dyn FnMut(), single: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa647f4: aggregate or single fill.
+ crate::socket::RakPeer::get_statistics(unassigned, aggregate, single)
 }
 
 // 0xa64b78 — __ZN6RakNet7RakPeer13GetStatisticsEiPNS_16RakNetStatisticsE
 #[doc(alias = "RakNet::RakPeer::GetStatistics(int,RakNet::RakNetStatistics *)")]
-pub fn stub_a64b78() -> ! {
-    todo!("0xa64b78 RakNet::RakPeer::GetStatistics(int,RakNet::RakNetStatistics *)")
+pub fn stub_a64b78(active: &[bool], index: usize, fill: &mut dyn FnMut()) -> bool {
+ // IDA 0xa64b78: indexed active fill.
+ crate::socket::RakPeer::get_statistics_index(active, index, fill)
 }
 
 // 0xa64bb4 — __ZN6RakNet7RakPeer20GetReceiveBufferSizeEv
 #[doc(alias = "RakNet::RakPeer::GetReceiveBufferSize(void)")]
-pub fn stub_a64bb4() -> ! {
-    todo!("0xa64bb4 RakNet::RakPeer::GetReceiveBufferSize(void)")
+pub fn stub_a64bb4(head: u32, tail: u32, capacity: u32) -> u32 {
+ // IDA 0xa64bb4: ring occupancy.
+ crate::socket::RakPeer::receive_buffer_size(head, tail, capacity)
 }
 
 // 0xa64be8 — __ZN6RakNet7RakPeer28ParseConnectionRequestPacketEPNS0_18RemoteSystemStructERKNS_13SystemAddressEPKci
@@ -3455,8 +3459,9 @@ pub fn stub_a654e0() -> ! {
 
 // 0xa65974 — __ZN6RakNet7RakPeer21ReferenceRemoteSystemERKNS_13SystemAddressEj
 #[doc(alias = "RakNet::RakPeer::ReferenceRemoteSystem(RakNet::SystemAddress const&,unsigned int)")]
-pub fn stub_a65974() -> ! {
-    todo!("0xa65974 RakNet::RakPeer::ReferenceRemoteSystem(RakNet::SystemAddress const&,unsigned int)")
+pub fn stub_a65974(slots: &mut Vec<crate::socket::SystemAddress>, index: usize, addr: crate::socket::SystemAddress) {
+ // IDA 0xa65974: rebind the slot.
+ crate::socket::RakPeer::reference_remote_system(slots, index, addr)
 }
 
 // 0xa65bc8 — __ZN6RakNet27ProcessOfflineNetworkPacketENS_13SystemAddressEPKciPNS_7RakPeerENS_14RakNetSmartPtrINS_12RakNetSocketEEEPby
@@ -3557,8 +3562,9 @@ pub fn stub_a6c38c() -> ! {
 
 // 0xa6c4ec — __ZNK6RakNet7RakPeer8IsActiveEv
 #[doc(alias = "RakNet::RakPeer::IsActive(void)const")]
-pub fn stub_a6c4ec() -> ! {
-    todo!("0xa6c4ec RakNet::RakPeer::IsActive(void)const")
+pub fn stub_a6c4ec(peer: &crate::socket::RakPeer) -> bool {
+ // IDA 0xa6c4ec: active flag.
+ peer.is_active()
 }
 
 // 0xa6c4f8 — __ZN14DataStructures5QueueIPN6RakNet7RakPeer14RecvFromStructEE4PushERKS4_PKcj
@@ -3659,8 +3665,9 @@ pub fn stub_a6d030() -> ! {
 
 // 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
 #[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
-pub fn stub_a6d194() -> ! {
-    todo!("0xa6d194 RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")
+pub fn stub_a6d194() {
+ // IDA 0xa6d194: member init stays engine-side.
+ crate::socket::RakPeer::init_remote_system()
 }
 
 // 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
@@ -3697,26 +3704,30 @@ pub fn stub_a6da80() -> ! {
 
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
 #[doc(alias = "RakNet::RakString::RakString(void)")]
-pub fn stub_a6eaa4() -> ! {
-    todo!("0xa6eaa4 RakNet::RakString::RakString(void)")
+pub fn stub_a6eaa4() -> String {
+ // IDA 0xa6eaa4: empty string.
+ crate::socket::rak_string()
 }
 
 // 0xa6eab4 — __ZN6RakNet9RakString6AssignEPKcPv
 #[doc(alias = "RakNet::RakString::Assign(char const*,void *)")]
-pub fn stub_a6eab4() -> ! {
-    todo!("0xa6eab4 RakNet::RakString::Assign(char const*,void *)")
+pub fn stub_a6eab4(formatted: &str) -> String {
+ // IDA 0xa6eab4: store the formatted text.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
 #[doc(alias = "RakNet::RakString::RakString(char const*,...)")]
-pub fn stub_a6ec58() -> ! {
-    todo!("0xa6ec58 RakNet::RakString::RakString(char const*,...)")
+pub fn stub_a6ec58(formatted: &str) -> String {
+ // IDA 0xa6ec58: format through Assign.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
 #[doc(alias = "RakNet::RakString::~RakString()")]
-pub fn stub_a6ec7c() -> ! {
-    todo!("0xa6ec7c RakNet::RakString::~RakString()")
+pub fn stub_a6ec7c(text: String) {
+ // IDA 0xa6ec7c: frees; Rust drops it.
+ drop(text);
 }
 
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv

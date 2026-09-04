@@ -11,24 +11,27 @@ use rbx_core::SharedPtr;
 // demangled: RakNet::RakString::Assign(char const*,void *)
 // type: int __fastcall(RakNet::RakString *this, const char *__format, va_list)
 #[doc(alias = "RakNet::RakString::Assign(char const*,void *)")]
-pub fn stub_a6eab4() -> ! {
-    todo!("0xa6eab4 RakNet::RakString::Assign(char const*,void *)")
+pub fn stub_a6eab4(formatted: &str) -> String {
+ // IDA 0xa6eab4: store the formatted text.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
 // demangled: RakNet::RakString::RakString(char const*,...)
 // type: RakNet::RakString *(RakNet::RakString *this, const char *, ...)
 #[doc(alias = "RakNet::RakString::RakString(char const*,...)")]
-pub fn stub_a6ec58() -> ! {
-    todo!("0xa6ec58 RakNet::RakString::RakString(char const*,...)")
+pub fn stub_a6ec58(formatted: &str) -> String {
+ // IDA 0xa6ec58: format through Assign.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
 // demangled: RakNet::RakString::~RakString()
 // type: void __fastcall(RakNet::RakString *__hidden this)
 #[doc(alias = "RakNet::RakString::~RakString()")]
-pub fn stub_a6ec7c() -> ! {
-    todo!("0xa6ec7c RakNet::RakString::~RakString()")
+pub fn stub_a6ec7c(text: String) {
+ // IDA 0xa6ec7c: frees; Rust drops it.
+ drop(text);
 }
 
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv

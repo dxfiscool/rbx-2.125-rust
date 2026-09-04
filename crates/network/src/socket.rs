@@ -9,6 +9,8 @@
 
 #![allow(dead_code)]
 
+use super::bitstream::BitStream;
+
 /// `RakNet::PluginInterface2` reduced to its peer handle (+4).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct PluginInterface2 {
@@ -467,6 +469,39 @@ mod tests {
         assert_eq!(peer.per_connection_bandwidth_limit, 11);
         assert!(!RakPeer::is_network_simulator_active());
     }
+    #[test]
+    fn stats_outofband_string_gates() {
+        // IDA 0xa64574: id byte, guid, offline marker.
+        let mut s = BitStream::new();
+        RakPeer::write_out_of_band_header(&mut s, 0x0102_0304_0506_0708);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(13));
+        assert_eq!(r.read_u64(), Some(0x0102_0304_0506_0708));
+        let mut marker = [0u8; 16];
+        assert!(r.read_aligned_bytes(&mut marker));
+        assert_eq!(marker, OFFLINE_MESSAGE_DATA_ID);
+        // IDA 0xa647f4/0xa64b78: aggregate vs indexed fills.
+        let mut n = 0;
+        assert!(RakPeer::get_statistics(true, &mut || n += 1, &mut || false));
+        assert!(!RakPeer::get_statistics(false, &mut || n += 1, &mut || false));
+        assert!(RakPeer::get_statistics_index(&[false, true], 1, &mut || n += 10));
+        assert!(!RakPeer::get_statistics_index(&[false, true], 0, &mut || n += 10));
+        assert!(!RakPeer::get_statistics_index(&[false], 5, &mut || n += 10));
+        assert_eq!(n, 11);
+        // IDA 0xa64bb4/0xa65974/0xa6c4ec/0xa6d194: ring, slot, active.
+        assert_eq!(RakPeer::receive_buffer_size(3, 7, 16), 4);
+        assert_eq!(RakPeer::receive_buffer_size(14, 2, 16), 4);
+        let mut slots = vec![SystemAddress::new()];
+        let a = SystemAddress { family: 2, port: 1, binary: 1, debug_port: 1, system_index: 0 };
+        RakPeer::reference_remote_system(&mut slots, 0, a);
+        RakPeer::reference_remote_system(&mut slots, 9, a);
+        assert_eq!(slots, vec![a]);
+        assert!(RakPeer::new().is_active());
+        RakPeer::init_remote_system();
+        // IDA 0xa6eaa4/0xa6eab4/0xa6ec58: string constructors.
+        assert_eq!(rak_string(), "");
+        assert_eq!(rak_string_format("x"), "x");
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -762,6 +797,29 @@ pub fn socket_descriptor(port: u16, host: Option<&str>) -> SocketDescriptor {
  SocketDescriptor { port, host: host.unwrap_or("").to_owned() }
 }
 
+/// `OFFLINE_MESSAGE_DATA_ID` (IDA 0xa62bc4/0xa645ae): the 16-byte
+/// offline ping marker.
+pub const OFFLINE_MESSAGE_DATA_ID: [u8; 16] = [
+ 0x00, 0xFF, 0xFF, 0x00, 0xFE, 0xFE, 0xFE, 0xFE,
+ 0xFD, 0xFD, 0xFD, 0xFD, 0x12, 0x34, 0x56, 0x78,
+];
+
+/// `RakNet::RakString::RakString` (IDA 0xa6eaa4): points at the shared
+/// empty string; modeled as empty.
+#[must_use]
+pub fn rak_string() -> String {
+ String::new()
+}
+
+/// `RakNet::RakString::RakString(format, ...)` (IDA 0xa6ec58) and
+/// `Assign` (IDA 0xa6eab4): printf formatting stays engine-side (the
+/// 512-byte fast path spills to heap past 0x1FE chars); this stores
+/// the formatted text.
+#[must_use]
+pub fn rak_string_format(formatted: &str) -> String {
+ formatted.to_owned()
+}
+
 /// `SuperFastHashIncremental` (IDA 0xa7cb08, Paul Hsieh's hash as
 /// embedded in RakNet): little-endian halfword loop plus avalanche.
 /// Empty input returns 0 without touching the seed.
@@ -863,12 +921,15 @@ pub struct RakPeer {
  pub unreliable_timeout_ms: u32,
  /// Per-connection outgoing bandwidth limit at +0x554 (IDA 0xa64568).
  pub per_connection_bandwidth_limit: u32,
+ /// Active flag backing `IsActive` (IDA 0xa6c4ec reads byte +4 == 0).
+ pub active: bool,
 }
 
 impl RakPeer {
- /// `RakPeer::RakPeer` (IDA 0xa5cb00).
+ /// `RakPeer::RakPeer` (IDA 0xa5cb00). Fresh peers read active: the
+ /// `IsActive` flag byte at +4 starts zeroed (IDA 0xa6c4ec).
  pub fn new() -> Self {
- Self::default()
+ Self { active: true, ..Self::default() }
  }
 
  /// `RakPeer::Startup` result codes (IDA 0xa5e3c0): 0 ok, 1 already
@@ -1049,6 +1110,13 @@ impl RakPeer {
  /// `RakPeer::DeallocatePacket` (IDA 0xa61810): packet release stays
  /// engine-side.
  pub fn deallocate_packet() {}
+
+ /// `RakPeer::AllocatePacket` (IDA 0xa6406c): a packet with a
+ /// zeroed `size`-byte buffer, unassigned guid and address.
+ #[must_use]
+ pub fn allocate_packet(size: usize) -> Packet {
+ Packet::default().with_data(vec![0u8; size])
+ }
 
  /// `RakPeer::GetMaximumNumberOfPeers` (IDA 0xa61888).
  #[must_use]
@@ -1582,21 +1650,14 @@ impl RakPeer {
  }
  }
 
- /// `RakPeer::PushBackPacket` (IDA 0xa63ed8): plugin hooks first, then
- /// the packet queues at the head or tail when present.
- pub fn push_back_packet(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: &mut dyn FnMut(bool)) {
- if present {
- hooks();
- push(at_head);
- }
- }
-
- /// `RakPeer::AllocatePacket` (IDA 0xa6406c): a packet with a
- /// zeroed `size`-byte buffer, unassigned guid and address.
- #[must_use]
- pub fn allocate_packet(size: usize) -> Packet {
- Packet::default().with_data(vec![0u8; size])
- }
+/// `RakPeer::PushBackPacket` (IDA 0xa63ed8): plugin hooks first, then
+/// the packet queues at the head or tail when present.
+pub fn push_back_packet(present: bool, at_head: bool, hooks: &mut dyn FnMut(), push: &mut dyn FnMut(bool)) {
+if present {
+hooks();
+push(at_head);
+}
+}
 
  /// `RakPeer::ApplyNetworkSimulator` (IDA 0xa64564): empty (the
  /// simulator is compiled out of this build).
@@ -1612,6 +1673,69 @@ impl RakPeer {
  pub fn is_network_simulator_active() -> bool {
  false
  }
+
+ /// `RakPeer::IsActive` (IDA 0xa6c4ec).
+ #[must_use]
+ pub fn is_active(&self) -> bool {
+ self.active
+ }
+
+ /// `RakPeer::WriteOutOfBandHeader` (IDA 0xa64574): the id byte 13,
+ /// the peer guid, and the 16 offline-message bytes.
+ pub fn write_out_of_band_header(stream: &mut BitStream, guid: u64) {
+ stream.write_u8(13);
+ stream.write_u64(guid);
+ stream.write_aligned_bytes(&OFFLINE_MESSAGE_DATA_ID);
+ }
+
+ /// `RakPeer::GetStatistics` (IDA 0xa647f4): unassigned addresses
+ /// aggregate every active system; a specific address fills when found.
+ /// Layer reads stay engine-side.
+ pub fn get_statistics(
+ unassigned: bool,
+ aggregate: &mut dyn FnMut(),
+ single: &mut dyn FnMut() -> bool,
+ ) -> bool {
+ if unassigned {
+ aggregate();
+ true
+ } else {
+ single()
+ }
+ }
+
+ /// `RakPeer::GetStatistics(int)` (IDA 0xa64b78): the indexed active
+ /// system's stats; `false` out of range or inactive.
+ pub fn get_statistics_index(active: &[bool], index: usize, fill: &mut dyn FnMut()) -> bool {
+ if active.get(index).copied().unwrap_or(false) {
+ fill();
+ true
+ } else {
+ false
+ }
+ }
+
+ /// `RakPeer::GetReceiveBufferSize` (IDA 0xa64bb4): ring occupancy
+ /// from head, tail, and capacity.
+ #[must_use]
+ pub fn receive_buffer_size(head: u32, tail: u32, capacity: u32) -> u32 {
+ if head <= tail {
+ tail - head
+ } else {
+ tail.wrapping_sub(head).wrapping_add(capacity)
+ }
+ }
+
+ /// `RakPeer::ReferenceRemoteSystem` (IDA 0xa65974): rebinds the slot
+ /// to the address; the lookup-hash maintenance stays engine-side.
+ pub fn reference_remote_system(slots: &mut Vec<SystemAddress>, index: usize, addr: SystemAddress) {
+ if let Some(slot) = slots.get_mut(index) {
+ *slot = addr;
+ }
+ }
+ /// `RakPeer::RemoteSystemStruct::RemoteSystemStruct` (IDA 0xa6d194):
+ /// member init stays engine-side.
+ pub fn init_remote_system() {}
 }
 
 /// `RakNet::RakString::IPAddressMatch` (IDA 0xa6f1ac): walks both

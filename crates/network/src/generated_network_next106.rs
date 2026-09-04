@@ -73,8 +73,9 @@ pub fn stub_a6d030() -> ! {
 // 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
 // type: RakNet::RakPeer::RemoteSystemStruct *__fastcall(RakNet::RakPeer::RemoteSystemStruct *this)
 #[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
-pub fn stub_a6d194() -> ! {
-    todo!("0xa6d194 RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")
+pub fn stub_a6d194() {
+ // IDA 0xa6d194: member init stays engine-side.
+ crate::socket::RakPeer::init_remote_system()
 }
 
 // 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
@@ -108,29 +109,33 @@ pub fn stub_a6da80() -> ! {
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "RakNet::RakString::RakString(void)")]
-pub fn stub_a6eaa4() -> ! {
-    todo!("0xa6eaa4 RakNet::RakString::RakString(void)")
+pub fn stub_a6eaa4() -> String {
+ // IDA 0xa6eaa4: empty string.
+ crate::socket::rak_string()
 }
 
 // 0xa6eab4 — __ZN6RakNet9RakString6AssignEPKcPv
 // type: int __fastcall(RakNet::RakString *this, const char *__format, va_list)
 #[doc(alias = "RakNet::RakString::Assign(char const*,void *)")]
-pub fn stub_a6eab4() -> ! {
-    todo!("0xa6eab4 RakNet::RakString::Assign(char const*,void *)")
+pub fn stub_a6eab4(formatted: &str) -> String {
+ // IDA 0xa6eab4: store the formatted text.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
 // type: RakNet::RakString *(RakNet::RakString *this, const char *, ...)
 #[doc(alias = "RakNet::RakString::RakString(char const*,...)")]
-pub fn stub_a6ec58() -> ! {
-    todo!("0xa6ec58 RakNet::RakString::RakString(char const*,...)")
+pub fn stub_a6ec58(formatted: &str) -> String {
+ // IDA 0xa6ec58: format through Assign.
+ crate::socket::rak_string_format(formatted)
 }
 
 // 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
 // type: void __fastcall(RakNet::RakString *__hidden this)
 #[doc(alias = "RakNet::RakString::~RakString()")]
-pub fn stub_a6ec7c() -> ! {
-    todo!("0xa6ec7c RakNet::RakString::~RakString()")
+pub fn stub_a6ec7c(text: String) {
+ // IDA 0xa6ec7c: frees; Rust drops it.
+ drop(text);
 }
 
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
