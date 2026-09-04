@@ -7,6 +7,86 @@
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
+/// Gap-filler LoginViewController observable state (IDA 0x1da5c-0x1ec84).
+/// The canonical controller, `LoginManager`/`UserInfo`/`StoreManager`
+/// models and UIKit views live in `rbx_platform`/UIKit, so their effects
+/// record here with matching shapes: the shared instance + field text +
+/// base URL become plain cells, the `envs` array becomes a `Vec<String>`,
+/// alerts/transitions/observers/bouncer starts become counters +
+/// last-value cells.
+pub(crate) static LOGIN_SHARED_HANDLE: std::sync::atomic::AtomicUsize =
+    std::sync::atomic::AtomicUsize::new(0);
+pub(crate) static LOGIN_ENVS: parking_lot::Mutex<Vec<String>> =
+    parking_lot::Mutex::new(Vec::new());
+pub(crate) static LOGIN_BASE_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_LABEL_TEXTS: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) static LOGIN_USERNAME_TEXT: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_PASSWORD_TEXT: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_USER_AGENT: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_REMEMBER_ON: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_SHOWING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_SKIP_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_PICKER_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_ABOUT_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_INDICATOR_HIDDEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+pub(crate) static LOGIN_LOGO_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_OBSERVERS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_TRANSITIONS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static MEMORY_BOUNCER_STARTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_ANALYTICS_VARS: parking_lot::Mutex<Vec<(String, String)>> =
+    parking_lot::Mutex::new(Vec::new());
+pub(crate) static LAST_LOGIN_ALERT: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+pub(crate) static PENDING_LOGIN_SIGNUP: parking_lot::Mutex<(String, String)> =
+    parking_lot::Mutex::new((String::new(), String::new()));
+pub(crate) static LOGIN_SIGNUP_DISPATCHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_OUTLETS: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, usize>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) fn login_outlet(name: &str) -> usize {
+    LOGIN_OUTLETS.lock().get(name).copied().unwrap_or(0)
+}
+pub(crate) fn set_login_outlet(name: &str, handle: usize) {
+    LOGIN_OUTLETS.lock().insert(name.to_owned(), handle);
+}
+/// `CFURLCreateStringByAddingPercentEscapes` mapping behind
+/// `-[NSString stringWithPercentEscape]` (IDA 0x1da08).
+pub(crate) fn percent_escape(input: &str) -> String {
+    // IDA 0x1da08: escapes `\u{FFFC}=,!$&'()*+;@?\n"<>#\t :/` (0x1da4a).
+    // `%` itself is not in the escape set, so pre-escaped input
+    // double-encodes — preserved as-is. The non-ASCII member is replaced
+    // first so every remaining escape byte is ASCII (all slice indices
+    // stay on char boundaries).
+    const ESCAPED: &[u8] = b"=,!$&'()*+;@?\n\"<>#\t :/";
+    let pre = input.replace('\u{FFFC}', "%EF%BF%BC");
+    let mut out = String::with_capacity(pre.len());
+    let mut run = 0;
+    for (i, b) in pre.as_bytes().iter().enumerate() {
+        if ESCAPED.contains(b) {
+            out.push_str(&pre[run..i]);
+            out.push_str(&format!("%{b:02X}"));
+            run = i + 1;
+        }
+    }
+    out.push_str(&pre[run..]);
+    out
+}
+
 // 0x1d36c — -[HomeViewController setIpId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setIpId:]")]
@@ -428,203 +508,386 @@ pub fn stub_0x1d808() -> usize {
 // 0x1d818 — -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")]
-pub fn stub_0x1d818() -> ! {
-    todo!("0x1d818 -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")
+pub fn stub_0x1d818(handle: usize) {
+    // IDA 0x1d818: `setYouAreCurrentlyLoggedInAsTextView:` retains via
+    // `objc_setProperty` (offset 308, 0x1d834). Retain is drop glue; the
+    // handle records in the bg_3 outlet registry.
+    crate::generated_bg_3::set_home_outlet("youAreCurrentlyLoggedInAsTextView", handle);
 }
 
 // 0x1d83c — -[HomeViewController versionLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController versionLabel]")]
-pub fn stub_0x1d83c() -> ! {
-    todo!("0x1d83c -[HomeViewController versionLabel]")
+pub fn stub_0x1d83c() -> usize {
+    // IDA 0x1d83c: `versionLabel` returns the `_versionLabel` ivar
+    // (0x1d84a). Opaque `id` handle; 0 when unset.
+    crate::generated_bg_3::home_outlet("versionLabel")
 }
 
 // 0x1d84c — -[HomeViewController setVersionLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setVersionLabel:]")]
-pub fn stub_0x1d84c() -> ! {
-    todo!("0x1d84c -[HomeViewController setVersionLabel:]")
+pub fn stub_0x1d84c(handle: usize) {
+    // IDA 0x1d84c: `setVersionLabel:` retains via `objc_setProperty`
+    // (offset 312, 0x1d868). Retain is drop glue; the handle records.
+    crate::generated_bg_3::set_home_outlet("versionLabel", handle);
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
 #[doc(alias = "global constructor keyed to_a_4")]
 #[doc(alias = "__GLOBAL__I_a_4")]
-pub fn stub_0x1d870() -> ! {
-    todo!("0x1d870 global constructor keyed to_a_4")
+pub fn stub_0x1d870() {
+    // IDA 0x1d870: `__GLOBAL__I_a_4` — stores
+    // `boost::system::generic_category()` (x2) / `system_category()`
+    // singletons into `__MergedGlobals_38` (disasm 0x1d874-0x1d88e;
+    // decompile unavailable, init thunk). Same cutover as stub_0x16e4c; no
+    // body.
 }
 
 // 0x1da08 — -[NSString stringWithPercentEscape]
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString stringWithPercentEscape]")]
-pub fn stub_0x1da08() -> ! {
-    todo!("0x1da08 -[NSString stringWithPercentEscape]")
+pub fn stub_0x1da08(input: &str) -> String {
+    // IDA 0x1da08: `stringWithPercentEscape` mutable-copies self
+    // (0x1da1a-0x1da2c), escapes via `CFURLCreateStringByAddingPercentEscapes`
+    // (0x1da4a) and autoreleases (0x1da5a). Retain traffic is drop glue;
+    // the escape mapping (percent_escape) is the observable.
+    percent_escape(input)
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginViewController sharedInstance]")]
-pub fn stub_0x1da5c() -> ! {
-    todo!("0x1da5c +[LoginViewController sharedInstance]")
+pub fn stub_0x1da5c() -> usize {
+    // IDA 0x1da5c: `+sharedInstance` returns `dword_130C3F0` (0x1da68),
+    // published by `viewDidLoad` (stub_0x1e2ec) and cleared by
+    // `viewDidUnload` (stub_0x1e8cc). Opaque `id` handle; 0 when unset.
+    LOGIN_SHARED_HANDLE.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x1da6c — -[LoginViewController initWithCoder:]
 // type: LoginViewController *__cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController initWithCoder:]")]
-pub fn stub_0x1da6c() -> ! {
-    todo!("0x1da6c -[LoginViewController initWithCoder:]")
+pub fn stub_0x1da6c() {
+    // IDA 0x1da6c: `initWithCoder:` — super
+    // `RobloxAnimatingPageViewController initWithCoder:` (0x1da8a-0x1da94,
+    // no target here), zeroes `envs` (0x1dac4), and registers the
+    // login-failed / login-successful / signup-finished observers
+    // (0x1dad0-0x1dbc6). Observer delivery has no target here; the env
+    // reset + registration count record.
+    LOGIN_ENVS.lock().clear();
+    LOGIN_OBSERVERS.fetch_add(3, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1dbd4 — -[LoginViewController dealloc]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController dealloc]")]
-pub fn stub_0x1dbd4() -> ! {
-    todo!("0x1dbd4 -[LoginViewController dealloc]")
+pub fn stub_0x1dbd4() {
+    // IDA 0x1dbd4: `dealloc` removes the notification observer
+    // (0x1dbf4-0x1dc06), releases ~16 retained outlets plus `envs` when set
+    // (0x1dc26-0x1dd58), then super dealloc (0x1dd70-0x1dd7a). Release is
+    // drop glue; the env/outlet cells clear.
+    LOGIN_ENVS.lock().clear();
+    LOGIN_OUTLETS.lock().clear();
 }
 
 // 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
-pub fn stub_0x1dd84() -> ! {
-    todo!("0x1dd84 -[LoginViewController populateEnvironmentPicker]")
+pub fn stub_0x1dd84(is_tablet: bool) {
+    // IDA 0x1dd84: rebuilds `envs` (0x1dda8-0x1ddde): `www.` on tablet,
+    // `m.` on phone (0x1dde6-0x1de16) prefixes roblox.com + sitetest1-4
+    // (0x1de38-0x1dee6); an empty/`m.` prefix (0x1defc-0x1df0c) covers the
+    // seven named sitetest3 hosts; gametest5-1 reuse the first prefix
+    // (0x1e02a-0x1e0d4). 17 entries in binary order. The device query
+    // crosses as a parameter.
+    let sub = if is_tablet { "www." } else { "m." };
+    let named = if is_tablet { "" } else { "m." };
+    let mut envs = LOGIN_ENVS.lock();
+    envs.clear();
+    for host in [
+        "roblox.com/",
+        "sitetest1.robloxlabs.com/",
+        "sitetest2.robloxlabs.com/",
+        "sitetest3.robloxlabs.com/",
+        "sitetest4.robloxlabs.com/",
+    ] {
+        envs.push(format!("http://{sub}{host}"));
+    }
+    for user in ["allen", "anthony", "guru", "rosemary", "sairam", "shannon", "vlad"] {
+        envs.push(format!("http://{named}{user}.sitetest3.robloxlabs.com/"));
+    }
+    for n in (1..=5).rev() {
+        envs.push(format!("http://{sub}gametest{n}.robloxlabs.com/"));
+    }
 }
 
 // 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
 // type: void __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
-pub fn stub_0x1e0d8() -> ! {
-    todo!("0x1e0d8 -[LoginViewController pickerView:didSelectRow:inComponent:]")
+pub fn stub_0x1e0d8(row: usize) {
+    // IDA 0x1e0d8: `pickerView:didSelectRow:` pushes `envs[row]` as the
+    // base URL (0x1e106-0x1e11a; `objectAtIndex:` raises on an out-of-range
+    // row, indexing panics the same way) and bounces memory on main
+    // (0x1e138, stub_0x1e13c). The queue hop collapses to the direct call.
+    *LOGIN_BASE_URL.lock() = LOGIN_ENVS.lock()[row].clone();
+    stub_0x1e13c();
 }
 
 // 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
-pub fn stub_0x1e13c() -> ! {
-    todo!("0x1e13c ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")
+pub fn stub_0x1e13c() {
+    // IDA 0x1e13c: the did-select block runs `RobloxMemoryManager
+    // startMemoryBouncer` (0x1e158-0x1e16c). The manager has no target
+    // here; the start records.
+    MEMORY_BOUNCER_STARTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
-pub fn stub_0x1e170() -> ! {
-    todo!("0x1e170 -[LoginViewController numberOfComponentsInPickerView:]")
+pub fn stub_0x1e170() -> i32 {
+    // IDA 0x1e170: `numberOfComponentsInPickerView:` returns 1 (0x1e172).
+    1
 }
 
 // 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(LoginViewController *self, SEL, id, int)
 #[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_0x1e174() -> ! {
-    todo!("0x1e174 -[LoginViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_0x1e174() -> usize {
+    // IDA 0x1e174: `pickerView:numberOfRowsInComponent:` returns the
+    // `envs` count. Reads the shared environment table.
+    LOGIN_ENVS.lock().len()
 }
 
 // 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_0x1e194() -> ! {
-    todo!("0x1e194 -[LoginViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_0x1e194(row: usize) -> String {
+    // IDA 0x1e194: `pickerView:titleForRow:` returns
+    // `[envs objectAtIndex:row]`. `NSArray` raises on an out-of-range row;
+    // indexing panics the same way.
+    LOGIN_ENVS.lock()[row].clone()
 }
 
 // 0x1e1b4 — -[LoginViewController viewWillAppear:]
 // type: void __cdecl(LoginViewController *self, SEL, char)
 #[doc(alias = "-[LoginViewController viewWillAppear:]")]
-pub fn stub_0x1e1b4() -> ! {
-    todo!("0x1e1b4 -[LoginViewController viewWillAppear:]")
+pub fn stub_0x1e1b4(remember_password: bool, saved_password: &str) {
+    // IDA 0x1e1b4: `viewWillAppear:` sets the logo alpha to 1.0
+    // (0x1e1ca-0x1e1de), runs `stopShowLoggingIn` on main (0x1e210-0x1e224,
+    // stub_0x1e2c4), then fills the password field from the saved password
+    // when `LoginManager getRememberPassword` is set, else empty
+    // (0x1e240-0x1e2bc). The manager query crosses as a parameter; the
+    // queue hop collapses to the direct call.
+    LOGIN_LOGO_ALPHA_BITS.store(0x3f800000, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1e2c4();
+    *LOGIN_PASSWORD_TEXT.lock() = if remember_password {
+        saved_password.to_owned()
+    } else {
+        String::new()
+    };
 }
 
 // 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
 #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
-pub fn stub_0x1e2c4() -> ! {
-    todo!("0x1e2c4 ___38-[LoginViewController viewWillAppear:]_block_invoke")
+pub fn stub_0x1e2c4() {
+    // IDA 0x1e2c4: the will-appear block calls `stopShowLoggingIn`
+    // (0x1e21c). The selector body is a later stub; the spinner-hidden
+    // outcome records here.
+    LOGIN_SHOWING.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1e2d8 — ___copy_helper_block__2
 #[doc(alias = "___copy_helper_block__2")]
-pub fn stub_0x1e2d8() -> ! {
-    todo!("0x1e2d8 ___copy_helper_block__2")
+pub fn stub_0x1e2d8(_dst: usize, _src: usize) {
+    // IDA 0x1e2d8: `__copy_helper_block__2` — `_Block_object_assign`
+    // retain (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x1e2e4 — ___destroy_helper_block__2
 #[doc(alias = "___destroy_helper_block__2")]
-pub fn stub_0x1e2e4() -> ! {
-    todo!("0x1e2e4 ___destroy_helper_block__2")
+pub fn stub_0x1e2e4(_block: usize) {
+    // IDA 0x1e2e4: `__destroy_helper_block__2` — `_Block_object_dispose`
+    // release (same shape as stub_0x180a0). No explicit body.
 }
 
 // 0x1e2ec — -[LoginViewController viewDidLoad]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidLoad]")]
-pub fn stub_0x1e2ec() -> ! {
-    todo!("0x1e2ec -[LoginViewController viewDidLoad]")
+pub fn stub_0x1e2ec(
+    handle: usize,
+    os_version: &str,
+    app_version: &str,
+    device_name: &str,
+    user_agent: &str,
+    username: Option<&str>,
+    remember_password: bool,
+    saved_password: Option<&str>,
+    bundle_version: &str,
+) {
+    // IDA 0x1e2ec: `viewDidLoad` — super (0x1e30c-0x1e318, no target here);
+    // publishes self as the shared instance (0x1e33e, stub_0x1da5c);
+    // analytics vars iOSVersion/appVersion/deviceType (0x1e362-0x1e3d6);
+    // localized placeholders + labels (0x1e406-0x1e5b6); version label from
+    // `CFBundleVersion` (0x1e5cc-0x1e606); the UserAgent defaults register
+    // twice (0x1e62e-0x1e686, 0x1e734-0x1e73c — the second is a no-op
+    // duplicate); skip + picker hidden (0x1e6aa-0x1e6c2); username field
+    // when set (0x1e6e2-0x1e722); remember switch (0x1e764-0x1e78c);
+    // password field when set and the switch is on (0x1e79e-0x1e7ea);
+    // keyboard observers (0x1e808-0x1e870); memory-bouncer block on main
+    // (0x1e88a, stub_0x1e898). Device/defaults queries collapse into
+    // parameters; the queue hop collapses to the direct call.
+    LOGIN_SHARED_HANDLE.store(handle, std::sync::atomic::Ordering::SeqCst);
+    *LOGIN_ANALYTICS_VARS.lock() = vec![
+        ("iOSVersion".to_owned(), os_version.to_owned()),
+        ("appVersion".to_owned(), app_version.to_owned()),
+        ("deviceType".to_owned(), device_name.to_owned()),
+    ];
+    let mut texts = LOGIN_LABEL_TEXTS.lock();
+    for (slot, key) in [
+        ("usernamePlaceholder", "UsernameWord"),
+        ("passwordPlaceholder", "PasswordWord"),
+        ("rememberPwLabel", "RememberPassword"),
+        ("loginLabel", "LoginWord"),
+        ("signupLabel", "SignupWord"),
+        ("playNowLabel", "PlayNowButtonLabel"),
+    ] {
+        texts.insert(slot.to_owned(), key.to_owned());
+    }
+    texts.insert("versionLabel".to_owned(), bundle_version.to_owned());
+    drop(texts);
+    *LOGIN_USER_AGENT.lock() = user_agent.to_owned();
+    LOGIN_SKIP_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_PICKER_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    if let Some(name) = username {
+        *LOGIN_USERNAME_TEXT.lock() = name.to_owned();
+    }
+    LOGIN_REMEMBER_ON.store(remember_password, std::sync::atomic::Ordering::SeqCst);
+    if remember_password {
+        if let Some(password) = saved_password {
+            *LOGIN_PASSWORD_TEXT.lock() = password.to_owned();
+        }
+    }
+    LOGIN_OBSERVERS.fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1e898();
 }
 
 // 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
-pub fn stub_0x1e898() -> ! {
-    todo!("0x1e898 ___34-[LoginViewController viewDidLoad]_block_invoke")
+pub fn stub_0x1e898() {
+    // IDA 0x1e898: the did-load block runs `RobloxMemoryManager
+    // startMemoryBouncer` (0x1e8b4-0x1e8c8, same shape as stub_0x1e13c).
+    // Sequences the call.
+    stub_0x1e13c();
 }
 
 // 0x1e8cc — -[LoginViewController viewDidUnload]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidUnload]")]
-pub fn stub_0x1e8cc() -> ! {
-    todo!("0x1e8cc -[LoginViewController viewDidUnload]")
+pub fn stub_0x1e8cc() {
+    // IDA 0x1e8cc: `viewDidUnload` nils 10 login outlets (0x1e8e6-0x1e99a),
+    // super `viewDidUnload` (0x1e9b2-0x1e9bc), then clears the shared
+    // instance (0x1e9ca, stub_0x1da5c). Outlet release is drop glue; the
+    // registry + shared cell clear.
+    LOGIN_OUTLETS.lock().clear();
+    LOGIN_SHARED_HANDLE.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1e9d0 — -[LoginViewController handleSignupNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController handleSignupNotification:]")]
-pub fn stub_0x1e9d0() -> ! {
-    todo!("0x1e9d0 -[LoginViewController handleSignupNotification:]")
+pub fn stub_0x1e9d0(username: Option<&str>, password: Option<&str>) {
+    // IDA 0x1e9d0: `handleSignupNotification:` pulls `username`/`password`
+    // from the notification `userInfo` (0x1e9ee-0x1ea28), retains both
+    // (0x1ea3a-0x1ea42, drop glue), and only with both non-nil
+    // (0x1ea46-0x1ea4e) dispatches the fill-in block on main
+    // (0x1ea7e-0x1ea92, stub_0x1eaa0). The queue hop collapses to the
+    // direct call.
+    if let (Some(username), Some(password)) = (username, password) {
+        *PENDING_LOGIN_SIGNUP.lock() = (username.to_owned(), password.to_owned());
+        LOGIN_SIGNUP_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        stub_0x1eaa0(username, password);
+    }
 }
 
 // 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
 #[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
-pub fn stub_0x1eaa0() -> ! {
-    todo!("0x1eaa0 ___48-[LoginViewController handleSignupNotification:]_block_invoke")
+pub fn stub_0x1eaa0(username: &str, password: &str) {
+    // IDA 0x1eaa0: the signup block fills the username/password fields
+    // (0x1eab4-0x1eae2) and releases the retained pair (0x1eaf6-0x1eb02,
+    // drop glue).
+    *LOGIN_USERNAME_TEXT.lock() = username.to_owned();
+    *LOGIN_PASSWORD_TEXT.lock() = password.to_owned();
 }
 
 // 0x1eb08 — ___copy_helper_block_226
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_226")]
-pub fn stub_0x1eb08() -> ! {
-    todo!("0x1eb08 ___copy_helper_block_226")
+pub fn stub_0x1eb08(_dst: usize, _src: usize) {
+    // IDA 0x1eb08: `__copy_helper_block_226` — three `_Block_object_assign`
+    // retains (0x1eb18-0x1eb34, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1eb38 — ___destroy_helper_block_227
 #[doc(alias = "___destroy_helper_block_227")]
-pub fn stub_0x1eb38() -> ! {
-    todo!("0x1eb38 ___destroy_helper_block_227")
+pub fn stub_0x1eb38(_block: usize) {
+    // IDA 0x1eb38: `__destroy_helper_block_227` — three
+    // `_Block_object_dispose` releases (0x1eb42-0x1eb56, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
-pub fn stub_0x1eb5c() -> ! {
-    todo!("0x1eb5c -[LoginViewController gotLoginFailedNotification:]")
+pub fn stub_0x1eb5c(error: &str) {
+    // IDA 0x1eb5c: `gotLoginFailedNotification:` pulls the `Error` value
+    // from the notification `userInfo` (0x1eb72-0x1ebd0) and dispatches the
+    // failure block on main (0x1ebc0-0x1ebd4, stub_0x1ebdc). The queue hop
+    // collapses to the direct call.
+    stub_0x1ebdc(error);
 }
 
 // 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
 #[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
-pub fn stub_0x1ebdc() -> ! {
-    todo!("0x1ebdc ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")
+pub fn stub_0x1ebdc(error: &str) {
+    // IDA 0x1ebdc: the failure block stops the spinner (0x1ebf0), shows a
+    // `RobloxAlert` with the error (0x1ec0e), and clears the password field
+    // (0x1ec20-0x1ec2c).
+    LOGIN_SHOWING.store(false, std::sync::atomic::Ordering::SeqCst);
+    *LAST_LOGIN_ALERT.lock() = error.to_owned();
+    LOGIN_PASSWORD_TEXT.lock().clear();
 }
 
 // 0x1ec44 — ___copy_helper_block_234
 #[doc(alias = "___copy_helper_block_234")]
-pub fn stub_0x1ec44() -> ! {
-    todo!("0x1ec44 ___copy_helper_block_234")
+pub fn stub_0x1ec44(_dst: usize, _src: usize) {
+    // IDA 0x1ec44: `__copy_helper_block_234` — two `_Block_object_assign`
+    // retains (0x1ec54-0x1ec64, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1ec68 — ___destroy_helper_block_235
 #[doc(alias = "___destroy_helper_block_235")]
-pub fn stub_0x1ec68() -> ! {
-    todo!("0x1ec68 ___destroy_helper_block_235")
+pub fn stub_0x1ec68(_block: usize) {
+    // IDA 0x1ec68: `__destroy_helper_block_235` — two
+    // `_Block_object_dispose` releases (0x1ec72-0x1ec7e, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_0x1ec84() -> ! {
-    todo!("0x1ec84 -[LoginViewController gotLoginSuccessfulNotification:]")
+pub fn stub_0x1ec84() {
+    // IDA 0x1ec84: `gotLoginSuccessfulNotification:` warms the store
+    // manager (0x1eca4, no target here), runs `doLoginTransition`
+    // (0x1ecb6), and dispatches the completion block on main
+    // (0x1ece8-0x1ecfc, a later stub). The transition records; the queue
+    // hop will collapse when the block lands.
+    LOGIN_TRANSITIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
