@@ -1384,6 +1384,37 @@ pub struct BlockMesh {
     _opaque: (),
 }
 
+/// Rust model of `RBX::DialogChoice` (IDA `0x494564`): the dialog choice leaf;
+/// members land with the GUI batch.
+#[derive(Default)]
+pub struct DialogChoice {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::DialogRoot` (IDA `0x4971d0`): the dialog root with the
+/// `DialogChoice` member signal behind `fireEvent` (IDA `0x497918`).
+#[derive(Default)]
+pub struct DialogRoot {
+    pub dialog_choice: Signal<(SharedPtr<Instance>, SharedPtr<Instance>)>,
+}
+
+/// Rust model of `rbx::remote_signal<void ()(SharedPtr<Instance>,
+/// SharedPtr<Instance>)>` (IDA `0x497ba4`): the replication half of the
+/// dialog event; transport lands with the network subsystem.
+#[derive(Default)]
+pub struct DialogRemoteSignal {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::RemoteEventDesc<DialogRoot, ...>` (IDA
+/// `0x496344`): the scriptable/broadcast flags behind `isScriptable`/
+/// `isBroadcast`.
+#[derive(Default)]
+pub struct DialogRemoteEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
 /// Rust model of `RBX::Texture` (IDA `0x491750`): the texture decal; members
 /// land with the GUI batch.
 #[derive(Default)]
@@ -27622,57 +27653,81 @@ pub fn stub_0x493ad4(parent: *const Instance) -> bool {
 // 0x494564 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12DialogChoiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::DialogChoice> RBX::Creatable<RBX::Instance>::create<RBX::DialogChoice>(void)")]
 // was: boost::shared_ptr<RBX::DialogChoice> RBX::Creatable<RBX::Instance>::create<RBX::DialogChoice>(void)
-pub fn stub_0x494564() -> ! {
-    todo!("0x494564 boost::shared_ptr<RBX::DialogChoice> RBX::Creatable<RBX::Instance>::create<RBX::DialogChoice>(void)")
+pub fn stub_0x494564() -> SharedPtr<DialogChoice> {
+    // IDA 0x494564: `Creatable::create<DialogChoice>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(DialogChoice::default())
 }
 
 // 0x494614 — __ZN5boost10shared_ptrIN3RBX12DialogChoiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DialogChoice>::shared_ptr<RBX::DialogChoice,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::DialogChoice>::shared_ptr<RBX::DialogChoice,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x494614() -> ! {
-    todo!("0x494614 boost::shared_ptr<RBX::DialogChoice>::shared_ptr<RBX::DialogChoice,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x494614(ptr: *mut DialogChoice, _deleter: CreatableInstanceDeleter) -> SharedPtr<DialogChoice> {
+    // IDA 0x494614: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(DialogChoice::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x494804 — __ZN5boost6detail12shared_countC2IPN3RBX12DialogChoiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x494804() -> ! {
-    todo!("0x494804 boost::detail::shared_count::shared_count<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x494804(ptr: *mut DialogChoice, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<DialogChoice, CreatableInstanceDeleter> {
+    // IDA 0x494804: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x49490c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12DialogChoiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x49490c() -> ! {
-    todo!("0x49490c boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x49490c(_block: *mut ControlBlockPd<DialogChoice, CreatableInstanceDeleter>) {
+    // IDA 0x49490c: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x494910 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12DialogChoiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x494910() -> ! {
-    todo!("0x494910 boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x494910(block: *mut ControlBlockPd<DialogChoice, CreatableInstanceDeleter>) {
+    // IDA 0x494910: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x494914 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12DialogChoiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x494914() -> ! {
-    todo!("0x494914 boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x494914(_block: *mut ControlBlockPd<DialogChoice, CreatableInstanceDeleter>) {
+    // IDA 0x494914: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x494934 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12DialogChoiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x494934() -> ! {
-    todo!("0x494934 boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x494934(block: *const ControlBlockPd<DialogChoice, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x494934: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x49494c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12DialogChoiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x49494c() -> ! {
-    todo!("0x49494c boost::detail::sp_counted_impl_pd<RBX::DialogChoice *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x49494c(block: *const ControlBlockPd<DialogChoice, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x49494c: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x4954e4 — __ZN3RBX10DialogRoot18signalDialogChoiceEN5boost10shared_ptrINS_8InstanceEEES4_
@@ -27685,22 +27740,42 @@ pub fn stub_0x4954e4() -> ! {
 // 0x49611c — __ZNK3RBX10DialogRoot12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::DialogRoot::askSetParent(RBX::Instance const*)const")]
 // was: RBX::DialogRoot::askSetParent(RBX::Instance const*)const
-pub fn stub_0x49611c() -> ! {
-    todo!("0x49611c RBX::DialogRoot::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x49611c(parent: *const Instance) -> bool {
+    // IDA 0x49611c: null parent returns false (disasm 0x496120-0x49612c);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor — a dialog root may only parent
+    // under a Part. Same shape as 0x3f1b9c/0x4754a4.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x49622c — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_0x49622c() -> ! {
-    todo!("0x49622c RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_0x49622c(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x49622c: `BoundFuncDesc<DialogRoot, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Same family box as the
+    // DataModel descs (no behavioral divergence).
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x496344 — __ZN3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x496344() -> ! {
-    todo!("0x496344 RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x496344(_desc: *mut DialogRemoteEventDesc) {
+    // IDA 0x496344: `RemoteEventDesc<DialogRoot, ...>::D1` — memberwise
+    // teardown of the dialog remote descriptor; dropping the box is the same
+    // release. Twin of 0x3ec400.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x496a28 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_S6_S6_
@@ -27713,64 +27788,96 @@ pub fn stub_0x496a28() -> ! {
 // 0x4971d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10DialogRootEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::DialogRoot> RBX::Creatable<RBX::Instance>::create<RBX::DialogRoot>(void)")]
 // was: boost::shared_ptr<RBX::DialogRoot> RBX::Creatable<RBX::Instance>::create<RBX::DialogRoot>(void)
-pub fn stub_0x4971d0() -> ! {
-    todo!("0x4971d0 boost::shared_ptr<RBX::DialogRoot> RBX::Creatable<RBX::Instance>::create<RBX::DialogRoot>(void)")
+pub fn stub_0x4971d0() -> SharedPtr<DialogRoot> {
+    // IDA 0x4971d0: `Creatable::create<DialogRoot>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(DialogRoot::default())
 }
 
 // 0x497280 — __ZN5boost10shared_ptrIN3RBX10DialogRootEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DialogRoot>::shared_ptr<RBX::DialogRoot,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::DialogRoot>::shared_ptr<RBX::DialogRoot,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x497280() -> ! {
-    todo!("0x497280 boost::shared_ptr<RBX::DialogRoot>::shared_ptr<RBX::DialogRoot,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x497280(ptr: *mut DialogRoot, _deleter: CreatableInstanceDeleter) -> SharedPtr<DialogRoot> {
+    // IDA 0x497280: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(DialogRoot::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x497430 — __ZN5boost6detail12shared_countC2IPN3RBX10DialogRootENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x497430() -> ! {
-    todo!("0x497430 boost::detail::shared_count::shared_count<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x497430(ptr: *mut DialogRoot, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<DialogRoot, CreatableInstanceDeleter> {
+    // IDA 0x497430: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x497538 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x497538() -> ! {
-    todo!("0x497538 boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x497538(_block: *mut ControlBlockPd<DialogRoot, CreatableInstanceDeleter>) {
+    // IDA 0x497538: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x49753c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x49753c() -> ! {
-    todo!("0x49753c boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x49753c(block: *mut ControlBlockPd<DialogRoot, CreatableInstanceDeleter>) {
+    // IDA 0x49753c: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x497540 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x497540() -> ! {
-    todo!("0x497540 boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x497540(_block: *mut ControlBlockPd<DialogRoot, CreatableInstanceDeleter>) {
+    // IDA 0x497540: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x497560 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x497560() -> ! {
-    todo!("0x497560 boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x497560(block: *const ControlBlockPd<DialogRoot, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x497560: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x497578 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x497578() -> ! {
-    todo!("0x497578 boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x497578(block: *const ControlBlockPd<DialogRoot, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x497578: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x497918 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPS2_S6_S6_
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::fireEvent(RBX::DialogRoot*,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::fireEvent(RBX::DialogRoot*,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const
-pub fn stub_0x497918() -> ! {
-    todo!("0x497918 RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::fireEvent(RBX::DialogRoot*,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_0x497918(
+    root: &DialogRoot,
+    first: &SharedPtr<Instance>,
+    second: &SharedPtr<Instance>,
+) {
+    // IDA 0x497918 (`EventDescImpl<2, DialogRoot, ...>::fireEvent`, demangled
+    // `(DialogRoot*, Instance, Instance)`): invokes the member
+    // `signal<void ()(Instance, Instance)>` — the direct `dialog_choice`
+    // fire with retained args. Same shape as 0x3ed188, one arg more.
+    root.dialog_choice.fire((first.clone(), second.clone()));
 }
 
 // 0x497a38 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEE14replicateEventEPNS0_11EventSourceES6_S6_
@@ -27783,36 +27890,54 @@ pub fn stub_0x497a38() -> ! {
 // 0x497ba4 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES5_EEC2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)
-pub fn stub_0x497ba4() -> ! {
-    todo!("0x497ba4 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")
+pub fn stub_0x497ba4() -> DialogRemoteSignal {
+    // IDA 0x497ba4: `remote_signal<...>::C2Ev` — default-constructs the
+    // replication half of the dialog event. Same shape as 0x3ed9c8.
+    DialogRemoteSignal::default()
 }
 
 // 0x4988dc — __ZN3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x4988dc() -> ! {
-    todo!("0x4988dc RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x4988dc(_desc: *mut DialogRemoteEventDesc) {
+    // IDA 0x4988dc: `RemoteEventDesc<DialogRoot, ...>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ee4d0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x498990 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x498990() -> ! {
-    todo!("0x498990 RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x498990(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x498990: `EventDescImpl<2, DialogRoot, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; same shape as
+    // 0x707dcc.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x498af4 — __ZNK3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
-pub fn stub_0x498af4() -> ! {
-    todo!("0x498af4 RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const")
+pub fn stub_0x498af4(desc: &DialogRemoteEventDesc) -> bool {
+    // IDA 0x498af4: returns the scriptable flag — same flag-word read as
+    // 0x3ee6e8.
+    desc.scriptable
 }
 
 // 0x498afc — __ZNK3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const
-pub fn stub_0x498afc() -> ! {
-    todo!("0x498afc RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const")
+pub fn stub_0x498afc(desc: &DialogRemoteEventDesc) -> bool {
+    // IDA 0x498afc: returns the broadcast flag — same flag-word read as
+    // 0x3ee6f0.
+    desc.broadcast
 }
 
 // 0x498b04 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
