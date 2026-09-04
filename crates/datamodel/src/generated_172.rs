@@ -7,6 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::instance::LuaSettings;
 
 // 0x28e24c — __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
@@ -570,27 +571,39 @@ pub fn stub_2b7a00() -> ! {
 
 // 0x2b8008 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_2b8008() -> ! {
-    todo!("0x2b8008 __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_2b8008() {
+    // IDA 0x2b8008: D2 base-object dtor — vtable reset plus the
+    // `wasConstructed` assert plumbing, then the `getCreators` map erase of
+    // this creator (`getClassName` + `Rb_tree::erase`, disasm 0x2b8080-0x2b809a).
+    // Registration itself is unmodeled (cf. 0x2b8610), so the erase collapses
+    // with it; Rust Drop glue covers the rest.
 }
 
 // 0x2b80a4 — __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_2b80a4() -> ! {
-    todo!("0x2b80a4 __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_2b80a4() -> &'static str {
+    // IDA 0x2b80a4: `wasConstructed` assert, then tail-calls
+    // `Name::doDeclare<sLuaSettings>()` (B.W 0x2b810c) — "LuaSettings".
+    "LuaSettings"
 }
 
 // 0x2b8110 — __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_2b8110() -> ! {
-    todo!("0x2b8110 __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator6createEv")
+pub fn stub_2b8110() -> SharedPtr<LuaSettings> {
+    // IDA 0x2b8110: `wasConstructed` assert, then
+    // `Creatable::create<LuaSettings>()` (BLX 0x2b81d2 -> stub_0x2b8254);
+    // the shared-count copy/release around it is Arc adoption.
+    crate::instance::stub_0x2b8254()
 }
 
 // 0x2b8610 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_2b8610() -> ! {
-    todo!("0x2b8610 __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_2b8610() {
+    // IDA 0x2b8610: Creator C2 — vtable install, one-shot
+    // `Name::declare<sLuaSettings>` (disasm 0x2b863c), then the `getCreators`
+    // `std::map` insert (`operator[]`, disasm 0x2b873e). The process-static
+    // `LUA_SETTINGS_CREATOR` (instance.rs) is the constructed singleton.
 }
 
 // 0x2c1df8 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv

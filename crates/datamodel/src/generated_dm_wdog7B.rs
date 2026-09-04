@@ -8,6 +8,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::instance::{Script, ScriptCreator, SCRIPT_CREATOR};
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x1da5c — +[LoginViewController sharedInstance]
@@ -306,8 +307,10 @@ pub fn stub_0x28e24c() -> ! {
 // 0x28e26c — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x28e26c() -> ! {
-    todo!("0x28e26c __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x28e26c() {
+    // IDA 0x28e26c: `B.W CreatorD2` (thunk, size 4) — Script D1 tail-calls D2
+    // (0x28e3c8); the vtable reset is compiler-managed in Rust.
+    stub_0x28e3c8();
 }
 
 // 0x28e354 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv
@@ -320,37 +323,49 @@ pub fn stub_0x28e354() -> ! {
 // 0x28e3c8 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x28e3c8() -> ! {
-    todo!("0x28e3c8 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0x28e3c8() {
+    // IDA 0x28e3c8: D2 base-object dtor — vtable reset to the Creator vtable
+    // (`off_1230984`) plus the `wasConstructed` assert plumbing (line 255);
+    // no members to drop. Rust Drop glue covers it.
 }
 
 // 0x28e464 — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x28e464() -> ! {
-    todo!("0x28e464 __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x28e464() -> &'static str {
+    // IDA 0x28e464: `wasConstructed` assert, then the `doDeclare` tail-call
+    // (same shape as 0x2b80a4); sScript derefs to "Script".
+    "Script"
 }
 
 // 0x28e4ec — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x28e4ec() -> ! {
-    todo!("0x28e4ec __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0x28e4ec() -> SharedPtr<Script> {
+    // IDA 0x28e4ec: `wasConstructed` assert, then
+    // `Creatable::create<Script>()` (-> stub_0x28e630 in instance.rs);
+    // the shared-count copy/release around it is Arc adoption.
+    crate::instance::stub_0x28e630()
 }
 
 // 0x28eac0 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x28eac0() -> ! {
-    todo!("0x28eac0 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x28eac0() {
+    // IDA 0x28eac0: Creator C2 — vtable install, one-shot
+    // `Name::declare<sScript>` (`callDoDeclare`, same shape as 0x2b8610),
+    // then the `getCreators` map insert. The process-static SCRIPT_CREATOR
+    // (instance.rs) is the constructed singleton.
 }
 
 // 0x28ed04 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x28ed04() -> ! {
-    todo!("0x28ed04 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x28ed04() -> &'static ScriptCreator {
+    // IDA 0x28ed04: `Creator::wasConstructed()` assert (line 282), then
+    // returns `creatorPrivate`; same shape as 0x2582c8.
+    &SCRIPT_CREATOR
 }
 
 // 0x28f430 — __ZN3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev

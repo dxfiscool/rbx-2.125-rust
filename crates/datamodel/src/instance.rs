@@ -166,13 +166,26 @@ pub struct PointLightCreator {
 /// Process-static creator behind `static_getCreator` (IDA `0x25d554`).
 pub static POINT_LIGHT_CREATOR: PointLightCreator = PointLightCreator { _private: () };
 
-/// Rust model of `RBX::Script` (IDA `0x28e630`): same opaque shape. The flag
-/// bytes at `+132`/`+134` (`Script::writeXml`, IDA `0x28e0f8`) land with the
-/// write path.
+/// Rust model of `RBX::Script` (IDA `0x28e630`): the `+132`/`+134` flag bytes
+/// read by `Script::writeXml` (IDA `0x28e0f8`); all else unmodeled.
 #[derive(Default)]
 pub struct Script {
-    _opaque: (),
+    /// Flag byte at `+132`: clear takes the `Instance::writeXml` path.
+    pub write_through: bool,
+    /// Flag byte at `+134`: set takes the `Instance::writeXml` path.
+    pub write_filtered: bool,
 }
+
+/// Rust model of `FactoryProduct<Script, ...>::Creator` (IDA `0x28eac0`
+/// vtable + `0x28ed04` `creatorPrivate`, both in generated_dm_wdog7B):
+/// stateless singleton; the C++ vtable/`isConstructed` machinery collapses
+/// into the process-static instance.
+pub struct ScriptCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x28ed04`).
+pub static SCRIPT_CREATOR: ScriptCreator = ScriptCreator { _private: () };
 
 /// Rust model of `RBX::RuntimeScriptService` (IDA `0x28f0b4`): same shape.
 #[derive(Default)]
@@ -192,6 +205,16 @@ pub struct ScriptInformationProvider {
 pub struct LuaSettings {
     _opaque: (),
 }
+
+/// Rust model of `FactoryProduct<LuaSettings, ...>::Creator` (IDA `0x2b8610`
+/// vtable + `0x286b24` `creatorPrivate`): stateless singleton; the C++
+/// vtable/`isConstructed` machinery collapses into the process-static instance.
+pub struct LuaSettingsCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x286b24`).
+pub static LUA_SETTINGS_CREATOR: LuaSettingsCreator = LuaSettingsCreator { _private: () };
 
 /// Rust model of `RBX::LuaStatsItem` (IDA `0x2c1af8`): the `ScriptContext*`
 /// construction argument is stored (threaded into construction, `MOV R4, R1`
@@ -4798,8 +4821,22 @@ pub fn stub_0x284650() -> ! {
 // 0x2857a4 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrEP9lua_Statej
 #[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr(lua_State *,unsigned int)")]
 // was: RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr(lua_State *,unsigned int)
-pub fn stub_0x2857a4() -> ! {
-    todo!("0x2857a4 RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr(lua_State *,unsigned int)")
+pub fn stub_0x2857a4(state: *mut LuaState, index: u32) -> Option<SharedPtr<Instance>> {
+    // IDA 0x2857a4: a none stack type (`lua_type`) yields the empty link;
+    // else `luaL_checkudata` against "Object" plus a `shared_count` copy into
+    // the return slot. `None` is the empty link here.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        if lua_ffi::lua_type(state, index as c_int) == 0 {
+            return None;
+        }
+        let ud = lua_ffi::lua_l_checkudata(
+            state,
+            index as c_int,
+            INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char,
+        ) as *const SharedPtr<Instance>;
+        Some(SharedPtr::clone(&*ud))
+    }
 }
 
 // 0x287acc — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE8on_indexERKS2_PKcP9lua_State
@@ -4812,8 +4849,16 @@ pub fn stub_0x287acc() -> ! {
 // 0x28838c — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE11on_newindexERS2_PKcP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_newindex(RBX::Lua::EventInstance&,char const*,lua_State *)")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_newindex(RBX::Lua::EventInstance&,char const*,lua_State *)
-pub fn stub_0x28838c() -> ! {
-    todo!("0x28838c RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_newindex(RBX::Lua::EventInstance&,char const*,lua_State *)")
+pub fn stub_0x28838c(
+    _event: &mut EventInstance,
+    name: *const c_char,
+    _state: *mut LuaState,
+) -> ! {
+    // IDA 0x28838c: unconditionally throws
+    // `runtime_error("%s cannot be assigned to")` — event members are read-only.
+    // SAFETY: `name` must point to a live NUL-terminated string.
+    let text = unsafe { core::ffi::CStr::from_ptr(name) }.to_string_lossy();
+    panic!("{} cannot be assigned to", text);
 }
 
 
@@ -4855,11 +4900,45 @@ pub fn stub_0x28ce40() -> ! {
     todo!("0x28ce40 RBX::BaseScript::computeNewWorkspace(void)")
 }
 
+/// Target signature saved by the `SaveScriptInfoHelper` bind (IDA `0x28da08`):
+/// the weak model/script links, the info string, then the late `RequestResult`
+/// (`arg<1>`, unmodeled id), two flags (`arg<2>`/`arg<3>`) and the tail bool
+/// (`arg<5>`).
+pub type ScriptInfoFn = fn(
+    WeakPtr<DataModel>,
+    WeakPtr<Script>,
+    String,
+    u32,
+    bool,
+    bool,
+    bool,
+);
+
+/// Rust model of the `boost::bind` result over `SaveScriptInfoHelper` (IDA
+/// `0x28da08`): the saved target fn plus the weak model/script links and the
+/// copied info string (`list7`/`storage3`). Built by weak-count copies +
+/// string copy; dropping reverses it.
+#[derive(Clone)]
+pub struct ScriptInfoBind {
+    pub func: ScriptInfoFn,
+    pub model: WeakPtr<DataModel>,
+    pub script: WeakPtr<Script>,
+    pub info: String,
+}
+
 // 0x28da08 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEENS1_INS2_6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_S6_SsNS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi5EEEEENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_T4_T5_T6_ENSE_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESP_SR_SS_ST_SU_SV_SW_SX_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
-pub fn stub_0x28da08() -> ! {
-    todo!("0x28da08 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")
+pub fn stub_0x28da08(
+    func: ScriptInfoFn,
+    model: &WeakPtr<DataModel>,
+    script: &WeakPtr<Script>,
+    info: &str,
+) -> ScriptInfoBind {
+    // IDA 0x28da08: weak-count copies of the model/script links plus the info
+    // string copy into `list7`/`storage3`; the temporaries' releases at scope
+    // end are the by-value drops. Cloning in is the same retain + copy.
+    ScriptInfoBind { func, model: WeakPtr::clone(model), script: WeakPtr::clone(script), info: info.to_owned() }
 }
 
 // 0x28dcb8 — __ZN3RBX9weak_fromINS_9DataModelEEEN5boost8weak_ptrIT_EEPS4_
@@ -4913,8 +4992,24 @@ pub fn stub_0x28e0e0(instance: *const Instance) -> Option<SharedPtr<ScriptInform
 // 0x28e0f8 — __ZN3RBX6Script8writeXmlERKN5boost8functionIFbPNS_8InstanceEEEENS_11CreatorRoleE
 #[doc(alias = "RBX::Script::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)")]
 // was: RBX::Script::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)
-pub fn stub_0x28e0f8() -> ! {
-    todo!("0x28e0f8 RBX::Script::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)")
+pub fn stub_0x28e0f8(
+    script: &Script,
+    filter: &dyn Fn(&SharedPtr<Instance>) -> bool,
+    role: crate::generated_05::CreatorRole,
+) -> i32 {
+    // IDA 0x28e0f8: flag byte `+132` clear → `Instance::writeXml` (0x6ff48c);
+    // else flag `+134` set → the same delegate; else 0. The delegate (with
+    // the filter/role threading) lands with 0x6ff48c's batch; the diverging
+    // calls below become tail returns then, so the shape is already final.
+    // NOTE: `filter`/`role` thread through to the delegate.
+    let _ = (filter, role);
+    if !script.write_through {
+        return stub_0x6ff48c();
+    }
+    if script.write_filtered {
+        return stub_0x6ff48c();
+    }
+    0
 }
 
 // 0x28e114 — __ZNK3RBX6Script12askSetParentEPKNS_8InstanceE
@@ -43471,85 +43566,116 @@ pub fn stub_0x282734(bind: crate::data_model::WeakThreadStringBind) -> crate::da
 // 0x2828bc — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2828bc() -> ! {
-    todo!("0x2828bc __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2828bc(bind: crate::data_model::WeakThreadStringBind) -> crate::data_model::LuaDmCallback {
+    // IDA 0x2828bc: `function1<void, DataModel*>` ctor from the thread/string
+    // bind — clears the slot (`*a1 = 0`, i.e. `new()`), retains the thread
+    // (`OSAtomicAdd32`), copies the string, installs the vtable via
+    // `assign_to` (twin of 0x282734/ctor and stub_0x282a48). Moving the bind
+    // in is the retain + copy.
+    let mut slot = crate::data_model::LuaDmCallback::new();
+    crate::data_model::stub_0x282a48(&mut slot, bind, weak_thread_string_invoke);
+    slot
 }
 
 // 0x2868bc — __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x2868bc() -> ! {
-    todo!("0x2868bc __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x2868bc() -> &'static str {
+    // IDA 0x2868bc: `creator = static_getCreator()` then tail-calls
+    // `Creator::getClassName` shim (-> 0x2b80a4 in generated_172), which
+    // returns `Name::doDeclare<sLuaSettings>()` — "LuaSettings".
+    let _creator = stub_0x286b24();
+    crate::generated_172::stub_2b80a4()
 }
 
 // 0x2869f0 — __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x2869f0() -> ! {
-    todo!("0x2869f0 __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x2869f0() -> &'static str {
+    // IDA 0x2869f0: ZThn32 `getClassName` — same `static_getCreator` + shim
+    // tail-call as 0x2868bc; the `this -= 32` adjust collapses because
+    // `FactoryProduct` is the primary base here.
+    let _creator = stub_0x286b24();
+    crate::generated_172::stub_2b80a4()
 }
 
 // 0x286b24 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0x286b24() -> ! {
-    todo!("0x286b24 __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x286b24() -> &'static LuaSettingsCreator {
+    // IDA 0x286b24: `Creator::wasConstructed()` assert, then returns
+    // `creatorPrivate`; same shape as 0x2582c8.
+    &LUA_SETTINGS_CREATOR
 }
 
 // 0x286d50 — __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x286d50() -> ! {
-    todo!("0x286d50 __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x286d50() {
+    // IDA 0x286d50: `B.W RBX::Instance::~Instance()` — D1 runs the base dtor
+    // in place; Rust Drop glue covers it.
 }
 
 // 0x286d54 — __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x286d54() -> ! {
-    todo!("0x286d54 __ZN3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x286d54() {
+    // IDA 0x286d54: base `Instance` D2 + `operator delete` (same PUSH-frame D0
+    // shape as 0x25d6b0); Arc Drop glue covers both.
 }
 
 // 0x286df4 — __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x286df4() -> ! {
-    todo!("0x286df4 __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x286df4() {
+    // IDA 0x286df4: ZThn32 D1 — `this -= 0x32` (SUBS 0x286df4) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x286dfc — __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x286dfc() -> ! {
-    todo!("0x286dfc __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x286dfc() {
+    // IDA 0x286dfc: ZThn32 D0 — `this -= 0x32`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x286ea0 — __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x286ea0() -> ! {
-    todo!("0x286ea0 __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x286ea0() {
+    // IDA 0x286ea0: ZThn36 D1 — `this -= 0x36` (SUBS 0x286ea0) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x286ea8 — __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x286ea8() -> ! {
-    todo!("0x286ea8 __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x286ea8() {
+    // IDA 0x286ea8: ZThn36 D0 — `this -= 0x36`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x28e118 — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x28e118() -> ! {
-    todo!("0x28e118 __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x28e118() -> &'static str {
+    // IDA 0x28e118: `creator = static_getCreator()` then tail-calls
+    // `Creator::getClassName` shim (-> 0x28e464 in generated_dm_wdog7B),
+    // which returns `Name::doDeclare<sScript>()` — "Script".
+    let _creator = crate::generated_dm_wdog7B::stub_0x28ed04();
+    crate::generated_dm_wdog7B::stub_0x28e464()
 }
 
 // 0x28e128 — __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x28e128() -> ! {
-    todo!("0x28e128 __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x28e128() -> &'static str {
+    // IDA 0x28e128: ZThn32 `getClassName` — same `static_getCreator` + shim
+    // tail-call as 0x28e118; the `this -= 32` adjust collapses because
+    // `FactoryProduct` is the primary base here.
+    let _creator = crate::generated_dm_wdog7B::stub_0x28ed04();
+    crate::generated_dm_wdog7B::stub_0x28e464()
 }
 
 // 0x28e138 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
@@ -43812,16 +43938,12 @@ pub use crate::data_model::stub_0x4bfcc as stub_0x4bfcc;
 // 0x282a48 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)
-pub fn stub_0x282a48() -> ! {
-    todo!("0x282a48 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)")
-}
+pub use crate::data_model::stub_0x282a48 as stub_0x282a48;
 
 // 0x282c00 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0x282c00() -> ! {
-    todo!("0x282c00 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
-}
+pub use crate::data_model::stub_0x282c00 as stub_0x282c00;
 
 // 0x282c1c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
@@ -43836,9 +43958,7 @@ pub use crate::data_model::stub_0x282da8 as stub_0x282da8;
 // 0x282f78 — __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_0x282f78() -> ! {
-    todo!("0x282f78 void boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
-}
+pub use crate::data_model::stub_0x282f78 as stub_0x282f78;
 
 // 0x2c02a8 — __ZN5boost14singleton_poolIN3RBX12PartInstance20OnDemandPartInstanceELj200ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 #[doc(alias = "boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
