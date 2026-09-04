@@ -452,8 +452,9 @@ pub fn stub_97d42c() -> ! {
 // 0x97d444 — __ZN3RBX7Network16ClientReplicator19readChangedPropertyERN6RakNet9BitStreamENS_10Reflection8PropertyE
 // type: void __fastcall(int, RakNet::BitStream *, _DWORD *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int)
 #[doc(alias = "RBX::Network::ClientReplicator::readChangedProperty(RakNet::BitStream &,RBX::Reflection::Property)")]
-pub fn stub_97d444() -> ! {
-    todo!("0x97d444 __ZN3RBX7Network16ClientReplicator19readChangedPropertyERN6RakNet9BitStreamENS_10Reflection8PropertyE")
+pub fn stub_97d444(streaming: bool, is_parent: bool, is_cframe: bool, special: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97d444: streaming parent/cframe handling, then base.
+ crate::replicator::read_client_changed_property(streaming, is_parent, is_cframe, special, base)
 }
 
 // 0x97dbd0 — __ZN3RBX7Network16ClientReplicator17streamOutInstanceEPNS_8InstanceEb
@@ -466,8 +467,9 @@ pub fn stub_97dbd0() -> ! {
 // 0x97e7b4 — __ZN3RBX7Network16ClientReplicator32writePropAcknowledgementIfNeededEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::ClientReplicator *this, const RBX::Instance *, const RBX::Reflection::PropertyDescriptor *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::writePropAcknowledgementIfNeeded(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
-pub fn stub_97e7b4() -> ! {
-    todo!("0x97e7b4 __ZN3RBX7Network16ClientReplicator32writePropAcknowledgementIfNeededEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE")
+pub fn stub_97e7b4(sync_accepted: bool, write: &mut dyn FnMut(), serialize: &mut dyn FnMut()) {
+ // IDA 0x97e7b4: ack write unless the slave accepts.
+ crate::replicator::write_prop_acknowledgement(sync_accepted, write, serialize)
 }
 
 // 0x97e86c — __ZNK3RBX7Network16ClientReplicator33isLimitedByOutgoingBandwidthLimitEv
@@ -480,15 +482,17 @@ pub fn stub_97e86c() -> ! {
 // 0x97e88c — __ZN3RBX7Network16ClientReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::ClientReplicator *this, const RBX::Instance *, const RBX::Reflection::PropertyDescriptor *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::writeChangedProperty(RBX::Instance const*,RBX::Reflection::PropertyDescriptor const&,RakNet::BitStream &)")]
-pub fn stub_97e88c() -> ! {
-    todo!("0x97e88c __ZN3RBX7Network16ClientReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE")
+pub fn stub_97e88c(ack: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97e88c: ack then base write.
+ crate::replicator::write_client_changed_property(ack, base)
 }
 
 // 0x97e8b4 — __ZN3RBX7Network16ClientReplicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::ClientReplicator *this, const RBX::Instance *, const RBX::Reflection::RefPropertyDescriptor *, const RBX::Guid::Data *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::ClientReplicator::writeChangedRefProperty(RBX::Instance const*,RBX::Reflection::RefPropertyDescriptor const&,RBX::Guid::Data const&,RakNet::BitStream &)")]
-pub fn stub_97e8b4() -> ! {
-    todo!("0x97e8b4 __ZN3RBX7Network16ClientReplicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE")
+pub fn stub_97e8b4(ack: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97e8b4: ack then base ref write.
+ crate::replicator::write_client_changed_property(ack, base)
 }
 
 // 0x97e8e8 — __ZN3RBX7Network16ClientReplicator21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
@@ -515,8 +519,9 @@ pub fn stub_97ecf4() -> ! {
 // 0x97ed00 — __ZN3RBX7Network16ClientReplicator18deserializeSFFlagsERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::ClientReplicator *this, RakNet::BitStream *, int, int)
 #[doc(alias = "RBX::Network::ClientReplicator::deserializeSFFlags(RakNet::BitStream &)")]
-pub fn stub_97ed00() -> ! {
-    todo!("0x97ed00 __ZN3RBX7Network16ClientReplicator18deserializeSFFlagsERN6RakNet9BitStreamE")
+pub fn stub_97ed00(stream: &mut crate::bitstream::BitStream, apply: &mut dyn FnMut()) {
+ // IDA 0x97ed00: apply each server flag pair.
+ crate::replicator::deserialize_sf_flags(stream, apply)
 }
 
 // 0x97ef48 — __ZN3RBX7Network16ClientReplicator19streamOutPartHelperERKNS_4Guid4DataEPNS_12PartInstanceEN5boost10shared_ptrINS_8InstanceEEE

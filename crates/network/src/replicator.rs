@@ -1324,6 +1324,31 @@ mod tests {
         read_stream_data(2, &mut || order.borrow_mut().push("region"), &mut || order.borrow_mut().push("adv"), 0, &mut |n| order.borrow_mut().push(if n == 0 { "j0" } else { "j?" }));
         assert_eq!(order.borrow().as_slice(), ["region", "j3", "adv", "j0"]);
     }
+    #[test]
+    fn client_changed_property_gates() {
+        // IDA 0x97e7b4: gated ack write.
+        let order = core::cell::RefCell::new(Vec::new());
+        write_prop_acknowledgement(true, &mut || order.borrow_mut().push("w"), &mut || order.borrow_mut().push("s"));
+        write_prop_acknowledgement(false, &mut || order.borrow_mut().push("w"), &mut || order.borrow_mut().push("s"));
+        assert_eq!(order.borrow().as_slice(), ["w", "s"]);
+        // IDA 0x97e88c/0x97e8b4: ack then base.
+        let order = core::cell::RefCell::new(Vec::new());
+        write_client_changed_property(&mut || order.borrow_mut().push("ack"), &mut || order.borrow_mut().push("base"));
+        assert_eq!(order.borrow().as_slice(), ["ack", "base"]);
+        // IDA 0x97d444: streaming parent skips base, cframe runs both.
+        let order = core::cell::RefCell::new(Vec::new());
+        read_client_changed_property(false, true, false, &mut || order.borrow_mut().push("sp"), &mut || order.borrow_mut().push("base"));
+        read_client_changed_property(true, true, false, &mut || order.borrow_mut().push("sp"), &mut || order.borrow_mut().push("base"));
+        read_client_changed_property(true, false, true, &mut || order.borrow_mut().push("sp"), &mut || order.borrow_mut().push("base"));
+        read_client_changed_property(true, false, false, &mut || order.borrow_mut().push("sp"), &mut || order.borrow_mut().push("base"));
+        assert_eq!(order.borrow().as_slice(), ["base", "sp", "sp", "base", "base"]);
+        // IDA 0x97ed00: per-pair apply.
+        let mut stream = BitStream::new();
+        stream.write_u16(3);
+        let mut n = 0;
+        deserialize_sf_flags(&mut stream, &mut || n += 1);
+        assert_eq!(n, 3);
+    }
     }
 
 /// `ClientReplicator::ClientReplicator` C1 (IDA 0x97afc8) / C2 (IDA
@@ -1401,4 +1426,59 @@ pub fn read_stream_data(
  advance();
  }
  add_joins(joined);
+}
+
+/// `ClientReplicator::writePropAcknowledgementIfNeeded` (IDA 0x97e7b4):
+/// `PropSync::Slave::onPropertySend` decides; when it does not accept,
+/// the item-type, value, descriptor, and id go out. The membership
+/// assert stays engine-side.
+pub fn write_prop_acknowledgement(
+ sync_accepted: bool,
+ write: &mut dyn FnMut(),
+ serialize: &mut dyn FnMut(),
+) {
+ if !sync_accepted {
+ write();
+ serialize();
+ }
+}
+
+/// `ClientReplicator::writeChangedProperty` (IDA 0x97e88c) and
+/// `writeChangedRefProperty` (IDA 0x97e8b4): the acknowledgement first,
+/// then the base write.
+pub fn write_client_changed_property(ack: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ ack();
+ base();
+}
+
+/// `ClientReplicator::readChangedProperty` (IDA 0x97d444): the slave
+/// sync observes the flag engine-side; streaming Parent changes notify
+/// the GC job and stream out without the base read, streaming CFrame
+/// changes queue interpolation ahead of the base read, and everything
+/// else goes straight to the base read.
+pub fn read_client_changed_property(
+ streaming: bool,
+ is_parent: bool,
+ is_cframe: bool,
+ special: &mut dyn FnMut(),
+ base: &mut dyn FnMut(),
+) {
+ if streaming && is_parent {
+ special();
+ return;
+ }
+ if streaming && is_cframe {
+ special();
+ }
+ base();
+}
+
+/// `ClientReplicator::deserializeSFFlags` (IDA 0x97ed00): a `u16` count
+/// followed by that many server flag name/value pairs (RakString
+/// framing stays engine-side), each applied via `SetValueFromServer`.
+pub fn deserialize_sf_flags(stream: &mut BitStream, apply: &mut dyn FnMut()) {
+ let count = stream.read_u16().unwrap_or(0);
+ for _ in 0..count {
+ apply();
+ }
 }

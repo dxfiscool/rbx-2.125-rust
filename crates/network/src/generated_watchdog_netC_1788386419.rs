@@ -797,8 +797,9 @@ pub fn stub_97cf1c(step: u8, read_region: &mut dyn FnMut(), advance: &mut dyn Fn
 // type: void __fastcall(RBX::Network::ClientReplicator *this, RakNet::BitStream *, int, int)
 #[doc(alias = "RBX::Network::ClientReplicator::deserializeSFFlags(RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator18deserializeSFFlagsERN6RakNet9BitStreamE")]
-pub fn stub_97ed00() -> ! {
-    todo!("0x97ed00 RBX::Network::ClientReplicator::deserializeSFFlags(RakNet::BitStream &)")
+pub fn stub_97ed00(stream: &mut crate::bitstream::BitStream, apply: &mut dyn FnMut()) {
+ // IDA 0x97ed00: apply each server flag pair.
+ crate::replicator::deserialize_sf_flags(stream, apply)
 }
 
 // 0x97f8f4 — __ZN3RBX7Network16ClientReplicator16streamOutTerrainERKN3G3D12Vector3int16E
