@@ -2096,116 +2096,135 @@ pub fn stub_a5391c(list: &mut crate::signal::SlotList) {
 
 // 0xa5533c — __ZN6RakNet9BitStreamC1Ev
 #[doc(alias = "RakNet::BitStream::BitStream(void)")]
-pub fn stub_a5533c() -> ! {
-    todo!("0xa5533c RakNet::BitStream::BitStream(void)")
+pub fn stub_a5533c() -> crate::bitstream::BitStream {
+ // IDA 0xa5533c: default construct.
+ crate::bitstream::BitStream::new()
 }
 
 // 0xa55354 — __ZN6RakNet9BitStreamC1Ej
 #[doc(alias = "RakNet::BitStream::BitStream(unsigned int)")]
-pub fn stub_a55354() -> ! {
-    todo!("0xa55354 RakNet::BitStream::BitStream(unsigned int)")
+pub fn stub_a55354(bits: usize) -> crate::bitstream::BitStream {
+ // IDA 0xa55354: capacity hint only.
+ crate::bitstream::BitStream::with_capacity_bits(bits)
 }
 
 // 0xa553a0 — __ZN6RakNet9BitStreamC1EPhjb
 #[doc(alias = "RakNet::BitStream::BitStream(unsigned char *,unsigned int,bool)")]
-pub fn stub_a553a0() -> ! {
-    todo!("0xa553a0 RakNet::BitStream::BitStream(unsigned char *,unsigned int,bool)")
+pub fn stub_a553a0(bytes: &[u8], _copy: bool) -> crate::bitstream::BitStream {
+ // IDA 0xa553a0: copy or view; the view lifetime is unmodelable so this copies.
+ crate::bitstream::BitStream::from_bytes(bytes)
 }
 
 // 0xa55408 — __ZN6RakNet9BitStreamD1Ev
 #[doc(alias = "RakNet::BitStream::~BitStream()")]
-pub fn stub_a55408() -> ! {
-    todo!("0xa55408 RakNet::BitStream::~BitStream()")
+pub fn stub_a55408(stream: crate::bitstream::BitStream) {
+ // IDA 0xa55408: frees the buffer; Rust drops it.
+ drop(stream);
 }
 
 // 0xa55440 — __ZN6RakNet9BitStream5ResetEv
 #[doc(alias = "RakNet::BitStream::Reset(void)")]
-pub fn stub_a55440() -> ! {
-    todo!("0xa55440 RakNet::BitStream::Reset(void)")
+pub fn stub_a55440(stream: &mut crate::bitstream::BitStream) {
+ // IDA 0xa55440: both cursors to zero.
+ stream.reset()
 }
 
 // 0xa55448 — __ZN6RakNet9BitStream5WriteEPKcj
 #[doc(alias = "RakNet::BitStream::Write(char const*,unsigned int)")]
-pub fn stub_a55448() -> ! {
-    todo!("0xa55448 RakNet::BitStream::Write(char const*,unsigned int)")
+pub fn stub_a55448(stream: &mut crate::bitstream::BitStream, bytes: &[u8]) {
+ // IDA 0xa55448: byte append.
+ stream.write_bytes(bytes)
 }
 
 // 0xa55534 — __ZN6RakNet9BitStream20AddBitsAndReallocateEj
 #[doc(alias = "RakNet::BitStream::AddBitsAndReallocate(unsigned int)")]
-pub fn stub_a55534() -> ! {
-    todo!("0xa55534 RakNet::BitStream::AddBitsAndReallocate(unsigned int)")
+pub fn stub_a55534(stream: &mut crate::bitstream::BitStream, bits: usize) {
+ // IDA 0xa55534: capacity reservation.
+ stream.add_bits_and_reallocate(bits)
 }
 
 // 0xa555e0 — __ZN6RakNet9BitStream9WriteBitsEPKhjb
 #[doc(alias = "RakNet::BitStream::WriteBits(unsigned char const*,unsigned int,bool)")]
-pub fn stub_a555e0() -> ! {
-    todo!("0xa555e0 RakNet::BitStream::WriteBits(unsigned char const*,unsigned int,bool)")
+pub fn stub_a555e0(stream: &mut crate::bitstream::BitStream, bytes: &[u8], count: usize) {
+ // IDA 0xa555e0: low bits out MSB-first.
+ stream.write_raw_bits(bytes, count)
 }
 
 // 0xa557e0 — __ZN6RakNet9BitStream5WriteEPS0_j
 #[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream*,unsigned int)")]
-pub fn stub_a557e0() -> ! {
-    todo!("0xa557e0 RakNet::BitStream::Write(RakNet::BitStream*,unsigned int)")
+pub fn stub_a557e0(stream: &mut crate::bitstream::BitStream, src: &mut crate::bitstream::BitStream, count: usize) {
+ // IDA 0xa557e0: splice bits, consuming the source.
+ stream.write_stream_bits(src, count)
 }
 
 // 0xa55940 — __ZN6RakNet9BitStream5WriteERS0_j
 #[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream&,unsigned int)")]
-pub fn stub_a55940() -> ! {
-    todo!("0xa55940 RakNet::BitStream::Write(RakNet::BitStream&,unsigned int)")
+pub fn stub_a55940(stream: &mut crate::bitstream::BitStream, src: &mut crate::bitstream::BitStream, count: usize) {
+ // IDA 0xa55940: splice bits, consuming the source.
+ stream.write_stream_bits(src, count)
 }
 
 // 0xa5594c — __ZN6RakNet9BitStream5WriteERS0_
 #[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream&)")]
-pub fn stub_a5594c() -> ! {
-    todo!("0xa5594c RakNet::BitStream::Write(RakNet::BitStream&)")
+pub fn stub_a5594c(stream: &mut crate::bitstream::BitStream, src: &mut crate::bitstream::BitStream) {
+ // IDA 0xa5594c: splice the remaining bits.
+ stream.write_remaining_stream(src)
 }
 
 // 0xa5595c — __ZN6RakNet9BitStream4ReadEPcj
 #[doc(alias = "RakNet::BitStream::Read(char *,unsigned int)")]
-pub fn stub_a5595c() -> ! {
-    todo!("0xa5595c RakNet::BitStream::Read(char *,unsigned int)")
+pub fn stub_a5595c(stream: &mut crate::bitstream::BitStream, out: &mut [u8]) -> bool {
+ // IDA 0xa5595c: byte block, nothing consumed on failure.
+ stream.read_bytes(out)
 }
 
 // 0xa559a0 — __ZN6RakNet9BitStream8ReadBitsEPhjb
 #[doc(alias = "RakNet::BitStream::ReadBits(unsigned char *,unsigned int,bool)")]
-pub fn stub_a559a0() -> ! {
-    todo!("0xa559a0 RakNet::BitStream::ReadBits(unsigned char *,unsigned int,bool)")
+pub fn stub_a559a0(stream: &mut crate::bitstream::BitStream, out: &mut [u8], count: usize) -> bool {
+ // IDA 0xa559a0: raw bit window, nothing consumed on failure.
+ stream.read_raw_bits(out, count)
 }
 
 // 0xa55a70 — __ZN6RakNet9BitStream17ResetWritePointerEv
 #[doc(alias = "RakNet::BitStream::ResetWritePointer(void)")]
-pub fn stub_a55a70() -> ! {
-    todo!("0xa55a70 RakNet::BitStream::ResetWritePointer(void)")
+pub fn stub_a55a70(stream: &mut crate::bitstream::BitStream) {
+ // IDA 0xa55a70: write cursor to zero.
+ stream.reset_write_pointer()
 }
 
 // 0xa55a78 — __ZN6RakNet9BitStream6Write0Ev
 #[doc(alias = "RakNet::BitStream::Write0(void)")]
-pub fn stub_a55a78() -> ! {
-    todo!("0xa55a78 RakNet::BitStream::Write0(void)")
+pub fn stub_a55a78(stream: &mut crate::bitstream::BitStream) {
+ // IDA 0xa55a78: Write0.
+ stream.write_bit(false)
 }
 
 // 0xa55b40 — __ZN6RakNet9BitStream6Write1Ev
 #[doc(alias = "RakNet::BitStream::Write1(void)")]
-pub fn stub_a55b40() -> ! {
-    todo!("0xa55b40 RakNet::BitStream::Write1(void)")
+pub fn stub_a55b40(stream: &mut crate::bitstream::BitStream) {
+ // IDA 0xa55b40: Write1.
+ stream.write_bit(true)
 }
 
 // 0xa55c18 — __ZN6RakNet9BitStream7ReadBitEv
 #[doc(alias = "RakNet::BitStream::ReadBit(void)")]
-pub fn stub_a55c18() -> ! {
-    todo!("0xa55c18 RakNet::BitStream::ReadBit(void)")
+pub fn stub_a55c18(stream: &mut crate::bitstream::BitStream) -> Option<bool> {
+ // IDA 0xa55c18: ReadBit.
+ stream.read_bit()
 }
 
 // 0xa55c38 — __ZN6RakNet9BitStream17WriteAlignedBytesEPKhj
 #[doc(alias = "RakNet::BitStream::WriteAlignedBytes(unsigned char const*,unsigned int)")]
-pub fn stub_a55c38() -> ! {
-    todo!("0xa55c38 RakNet::BitStream::WriteAlignedBytes(unsigned char const*,unsigned int)")
+pub fn stub_a55c38(stream: &mut crate::bitstream::BitStream, bytes: &[u8]) {
+ // IDA 0xa55c38: align-up then raw bytes.
+ stream.write_aligned_bytes(bytes)
 }
 
 // 0xa55c58 — __ZN6RakNet9BitStream16ReadAlignedBytesEPhj
 #[doc(alias = "RakNet::BitStream::ReadAlignedBytes(unsigned char *,unsigned int)")]
-pub fn stub_a55c58() -> ! {
-    todo!("0xa55c58 RakNet::BitStream::ReadAlignedBytes(unsigned char *,unsigned int)")
+pub fn stub_a55c58(stream: &mut crate::bitstream::BitStream, out: &mut [u8]) -> bool {
+ // IDA 0xa55c58: align-up then raw bytes.
+ stream.read_aligned_bytes(out)
 }
 
 // 0xa55c9c — __ZN6RakNet9BitStream15WriteCompressedEPKhjb
@@ -2224,44 +2243,51 @@ pub fn stub_a55d2c(stream: &mut crate::bitstream::BitStream, out: &mut [u8]) -> 
 
 // 0xa55e08 — __ZNK6RakNet9BitStream24GetNumberOfBitsAllocatedEv
 #[doc(alias = "RakNet::BitStream::GetNumberOfBitsAllocated(void)const")]
-pub fn stub_a55e08() -> ! {
-    todo!("0xa55e08 RakNet::BitStream::GetNumberOfBitsAllocated(void)const")
+pub fn stub_a55e08(stream: &crate::bitstream::BitStream) -> usize {
+ // IDA 0xa55e08: allocated bit count.
+ stream.bits_allocated()
 }
 
 // 0xa55e0c — __ZN6RakNet9BitStream23PadWithZeroToByteLengthEj
 #[doc(alias = "RakNet::BitStream::PadWithZeroToByteLength(unsigned int)")]
-pub fn stub_a55e0c() -> ! {
-    todo!("0xa55e0c RakNet::BitStream::PadWithZeroToByteLength(unsigned int)")
+pub fn stub_a55e0c(stream: &mut crate::bitstream::BitStream, len: usize) {
+ // IDA 0xa55e0c: zero-fill to length, never shrinks.
+ stream.pad_with_zero_to_byte_length(len)
 }
 
 // 0xa55ef0 — __ZNK6RakNet9BitStream8CopyDataEPPh
 #[doc(alias = "RakNet::BitStream::CopyData(unsigned char **)const")]
-pub fn stub_a55ef0() -> ! {
-    todo!("0xa55ef0 RakNet::BitStream::CopyData(unsigned char **)const")
+pub fn stub_a55ef0(stream: &crate::bitstream::BitStream) -> Vec<u8> {
+ // IDA 0xa55ef0: the used bytes.
+ stream.copy_data()
 }
 
 // 0xa55f30 — __ZN6RakNet9BitStream10IgnoreBitsEj
 #[doc(alias = "RakNet::BitStream::IgnoreBits(unsigned int)")]
-pub fn stub_a55f30() -> ! {
-    todo!("0xa55f30 RakNet::BitStream::IgnoreBits(unsigned int)")
+pub fn stub_a55f30(stream: &mut crate::bitstream::BitStream, count: usize) {
+ // IDA 0xa55f30: skip the read cursor ahead.
+ stream.ignore_bits(count)
 }
 
 // 0xa55f38 — __ZN6RakNet9BitStream11IgnoreBytesEj
 #[doc(alias = "RakNet::BitStream::IgnoreBytes(unsigned int)")]
-pub fn stub_a55f38() -> ! {
-    todo!("0xa55f38 RakNet::BitStream::IgnoreBytes(unsigned int)")
+pub fn stub_a55f38(stream: &mut crate::bitstream::BitStream, count: usize) {
+ // IDA 0xa55f38: skip whole bytes ahead.
+ stream.ignore_bytes(count)
 }
 
 // 0xa55f44 — __ZN6RakNet9BitStream14SetWriteOffsetEj
 #[doc(alias = "RakNet::BitStream::SetWriteOffset(unsigned int)")]
-pub fn stub_a55f44() -> ! {
-    todo!("0xa55f44 RakNet::BitStream::SetWriteOffset(unsigned int)")
+pub fn stub_a55f44(stream: &mut crate::bitstream::BitStream, bits: usize) {
+ // IDA 0xa55f44: reposition the write cursor.
+ stream.set_write_offset(bits)
 }
 
 // 0xa55f48 — __ZN6RakNet9BitStream22IsNetworkOrderInternalEv
 #[doc(alias = "RakNet::BitStream::IsNetworkOrderInternal(void)")]
-pub fn stub_a55f48() -> ! {
-    todo!("0xa55f48 RakNet::BitStream::IsNetworkOrderInternal(void)")
+pub fn stub_a55f48() -> bool {
+ // IDA 0xa55f48: internal check returns 0.
+ crate::bitstream::BitStream::is_network_order()
 }
 
 // 0xa55f4c — __ZN6RakNet9BitStream12ReverseBytesEPhS1_j

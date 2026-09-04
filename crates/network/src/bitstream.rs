@@ -252,6 +252,161 @@ impl BitStream {
         false
     }
 
+ /// `RakNet::BitStream::BitStream(unsigned int)` (IDA 0xa55354):
+ /// capacity hint only; unobservable except via allocation queries.
+ #[must_use]
+ pub fn with_capacity_bits(bits: usize) -> Self {
+ let mut stream = Self::new();
+ stream.bytes.reserve(bits >> 3);
+ stream
+ }
+
+ /// `RakNet::BitStream::Reset` (IDA 0xa55440): both cursors to zero.
+ /// The buffer is truncated so [`into_bytes`](Self::into_bytes) stays
+ /// identical to [`copy_data`](Self::copy_data); capacity is kept.
+ pub fn reset(&mut self) {
+ self.written_bits = 0;
+ self.read_bit = 0;
+ self.bytes.truncate(0);
+ }
+
+ /// `RakNet::BitStream::ResetWritePointer` (IDA 0xa55a70): the write
+ /// cursor to zero, buffer truncated as in [`reset`](Self::reset).
+ pub fn reset_write_pointer(&mut self) {
+ self.written_bits = 0;
+ self.bytes.truncate(0);
+ }
+
+ /// `RakNet::BitStream::SetWriteOffset` (IDA 0xa55f44): reposition the
+ /// write cursor, shrinking the buffer when it moves back.
+ pub fn set_write_offset(&mut self, bits: usize) {
+ self.written_bits = bits;
+ let keep = bits.div_ceil(8);
+ if keep < self.bytes.len() {
+ self.bytes.truncate(keep);
+ }
+ }
+
+ /// `RakNet::BitStream::GetNumberOfBitsAllocated` (IDA 0xa55e08).
+ #[must_use]
+ pub fn bits_allocated(&self) -> usize {
+ self.bytes.capacity() * 8
+ }
+
+ /// `RakNet::BitStream::AddBitsAndReallocate` (IDA 0xa55534):
+ /// capacity reservation; `Vec` growth covers the rest.
+ pub fn add_bits_and_reallocate(&mut self, bits: usize) {
+ self.bytes.reserve(bits >> 3);
+ }
+
+ pub fn ignore_bits(&mut self, count: usize) {
+ self.read_bit += count;
+ }
+
+ pub fn ignore_bytes(&mut self, count: usize) {
+ self.read_bit += 8 * count;
+ }
+
+ /// `RakNet::BitStream::Write(char const*, unsigned int)` (IDA
+ /// 0xa55448): byte append; the aligned `memcpy` fast path and the
+ /// `WriteBits` path are observably identical here.
+ pub fn write_bytes(&mut self, bytes: &[u8]) {
+ for &b in bytes {
+ self.write_u8(b);
+ }
+ }
+
+ /// `RakNet::BitStream::Read(char *, unsigned int)` (IDA 0xa5595c):
+ /// byte append in reverse; nothing is consumed on failure.
+ pub fn read_bytes(&mut self, out: &mut [u8]) -> bool {
+ if self.bits_remaining() < 8 * out.len() {
+ return false;
+ }
+ for b in out.iter_mut() {
+ *b = self.read_u8().expect("BitStream::Read checked above");
+ }
+ true
+ }
+
+ /// `RakNet::BitStream::WriteBits` over a raw buffer (IDA 0xa555e0):
+ /// the low `count` bits of the buffer go out MSB-first, matching the
+ /// `rightAligned = 1` callers.
+ pub fn write_raw_bits(&mut self, bytes: &[u8], count: usize) {
+ let total = bytes.len() * 8;
+ let skip = total.saturating_sub(count);
+ for i in skip..skip + count {
+ let b = bytes.get(i >> 3).copied().unwrap_or(0);
+ self.write_bit(b & (0x80 >> (i & 7)) != 0);
+ }
+ }
+
+ /// `RakNet::BitStream::ReadBits` over a raw buffer (IDA 0xa559a0):
+ /// fills MSB-first; nothing is consumed on failure.
+ pub fn read_raw_bits(&mut self, out: &mut [u8], count: usize) -> bool {
+ if self.bits_remaining() < count {
+ return false;
+ }
+ for b in out.iter_mut() {
+ *b = 0;
+ }
+ for i in 0..count {
+ if self.read_bit().unwrap_or(false) {
+ out[i >> 3] |= 0x80 >> (i & 7);
+ }
+ }
+ true
+ }
+
+ /// `RakNet::BitStream::Write(BitStream *, unsigned int)` (IDA
+ /// 0xa557e0) / `Write(BitStream &, unsigned int)` (IDA 0xa55940):
+ /// copies `count` bits from the source read cursor, consuming them.
+ pub fn write_stream_bits(&mut self, src: &mut BitStream, count: usize) {
+ for _ in 0..count {
+ let Some(b) = src.read_bit() else { break };
+ self.write_bit(b);
+ }
+ }
+
+ /// `RakNet::BitStream::Write(BitStream &)` (IDA 0xa5594c): the
+ /// source's remaining bits.
+ pub fn write_remaining_stream(&mut self, src: &mut BitStream) {
+ let count = src.bits_remaining();
+ self.write_stream_bits(src, count);
+ }
+
+ /// `RakNet::BitStream::WriteAlignedBytes` (IDA 0xa55c38): align-up,
+ /// then raw bytes.
+ pub fn write_aligned_bytes(&mut self, bytes: &[u8]) {
+ self.align_write_up();
+ self.write_bytes(bytes);
+ }
+
+ /// `RakNet::BitStream::ReadAlignedBytes` (IDA 0xa55c58): align-up,
+ /// then raw bytes. Empty reads return `false` like the original.
+ pub fn read_aligned_bytes(&mut self, out: &mut [u8]) -> bool {
+ if out.is_empty() {
+ return false;
+ }
+ self.align_read_up();
+ self.read_bytes(out)
+ }
+
+ /// `RakNet::BitStream::PadWithZeroToByteLength` (IDA 0xa55e0c):
+ /// align-up, then zero-fill to `len` bytes. Never shrinks.
+ pub fn pad_with_zero_to_byte_length(&mut self, len: usize) {
+ self.align_write_up();
+ if self.bytes.len() < len {
+ self.bytes.resize(len, 0);
+ self.written_bits = self.bytes.len() * 8;
+ }
+ }
+
+ /// `RakNet::BitStream::CopyData` (IDA 0xa55ef0): the used bytes.
+ #[must_use]
+ pub fn copy_data(&self) -> Vec<u8> {
+ self.bytes.clone()
+ }
+
     /// Advance the write cursor to the next byte boundary, zero-filling
     /// (IDA 0xa77d60: `*this += ((u8)*this + 7) & 7 ^ 7`).
     ///
@@ -615,5 +770,82 @@ mod tests {
         let mut s = BitStream::new();
         s.write_compressed_u32(0x12345678);
         assert_eq!(s.bits_written(), 33);
+    }
+    #[test]
+    fn cursor_and_copy_semantics() {
+        // IDA 0xa55440/0xa55a70/0xa55f44: cursor positioning.
+        let mut s = BitStream::new();
+        s.write_u8(0xAB);
+        s.reset_write_pointer();
+        assert_eq!(s.bits_written(), 0);
+        assert_eq!(s.into_bytes(), Vec::<u8>::new());
+        let mut s = BitStream::new();
+        s.write_u8(0xAB);
+        s.write_u8(0xCD);
+        s.set_write_offset(8);
+        assert_eq!(s.copy_data(), vec![0xAB]);
+        s.reset();
+        assert_eq!((s.bits_written(), s.bits_remaining()), (0, 0));
+        // IDA 0xa55f30/0xa55f38: skip-ahead reads.
+        let mut r = BitStream::from_bytes(&[0xFF, 0x00]);
+        r.ignore_bits(8);
+        assert_eq!(r.read_u8(), Some(0x00));
+        let mut r = BitStream::from_bytes(&[0xFF, 0x00]);
+        r.ignore_bytes(1);
+        assert_eq!(r.read_u8(), Some(0x00));
+        // IDA 0xa55ef0: copy is the used bytes.
+        let mut s = BitStream::new();
+        s.write_u8(0x12);
+        assert_eq!(s.copy_data(), vec![0x12]);
+    }
+
+    #[test]
+    fn raw_and_aligned_blocks() {
+        // IDA 0xa55448/0xa5595c: byte blocks roundtrip; short reads fail clean.
+        let mut s = BitStream::new();
+        s.write_bit(true);
+        s.write_bytes(&[0xDE, 0xAD]);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bit(), Some(true));
+        let mut out = [0u8; 2];
+        assert!(r.read_bytes(&mut out));
+        assert_eq!(out, [0xDE, 0xAD]);
+        assert!(!r.read_bytes(&mut out));
+        assert!(!BitStream::from_bytes(&[]).read_bytes(&mut out));
+        // IDA 0xa555e0/0xa559a0: raw bit windows take the buffer's low
+        // bits MSB-first (`rightAligned`); here the low 3 of 0xB5.
+        let mut s = BitStream::new();
+        s.write_raw_bits(&[0b1011_0101], 3);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = [0u8; 1];
+        assert!(r.read_raw_bits(&mut out, 3));
+        assert_eq!(out[0] >> 5, 0b101);
+        // IDA 0xa55c38/0xa55c58: aligned blocks skip padding; empty reads fail.
+        let mut s = BitStream::new();
+        s.write_bit(true);
+        s.write_aligned_bytes(&[0x77]);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_bit(), Some(true));
+        let mut out = [0u8; 1];
+        assert!(r.read_aligned_bytes(&mut out));
+        assert_eq!(out, [0x77]);
+        assert!(!r.read_aligned_bytes(&mut [0u8; 0]));
+        // IDA 0xa557e0/0xa5594c: stream splicing consumes the source.
+        let mut s = BitStream::new();
+        let mut t = BitStream::new();
+        t.write_u8(0x5A);
+        s.write_stream_bits(&mut t, 8);
+        assert_eq!(t.bits_remaining(), 0);
+        let mut t = BitStream::new();
+        t.write_u8(0xA5);
+        s.write_remaining_stream(&mut t);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!((r.read_u8(), r.read_u8()), (Some(0x5A), Some(0xA5)));
+        // IDA 0xa55e0c: zero pad never shrinks.
+        let mut s = BitStream::new();
+        s.write_u8(1);
+        s.pad_with_zero_to_byte_length(4);
+        assert_eq!(s.copy_data(), vec![1, 0, 0, 0]);
+        s.pad_with_zero_to_byte_length(1);
     }
 }
