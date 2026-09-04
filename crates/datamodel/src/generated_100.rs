@@ -157,9 +157,7 @@ pub fn stub_5db574() -> ! {
 
 // 0x5db57c — __ZN3RBX12PartInstance19isInContinousMotionEv
 #[doc(alias = "RBX::PartInstance::isInContinousMotion(void)")]
-pub fn stub_5db57c() -> ! {
-    todo!("0x5db57c RBX::PartInstance::isInContinousMotion(void)")
-}
+pub use crate::instance::stub_0x5db57c as stub_5db57c;
 
 // 0x5db584 — __ZThn96_N3RBX12PartInstance19isInContinousMotionEv
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")]
