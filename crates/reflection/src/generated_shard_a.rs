@@ -6315,34 +6315,109 @@ pub fn stub_0xa50350<T>(value: &SharedPtr<T>) -> SharedPtr<T> {
     SharedPtr::clone(value)
 }
 
+/// `Player::LoadDataResultHelper` bundle (IDA 0xa87e84): the weak player id
+/// plus the loaded `map<string, Variant>` rows.
+#[derive(Debug, Clone, Default)]
+pub struct LoadDataResult {
+    pub player: Option<u32>,
+    pub data: Vec<(String, Value)>,
+}
+
+/// `bind<void(*)(weak<Player>, shared<map>), weak<Player>, arg<1>>` cutover
+/// (IDA 0xa981c8): the bound weak player; the data map crosses per call.
+#[derive(Debug, Clone, Default)]
+pub struct BoundPlayerData {
+    pub player: Option<u32>,
+}
+
+/// `boost::function1<void, shared<map>>` holding one player-data bind
+/// (IDA 0xaaa378).
+#[derive(Default, Clone)]
+pub struct PlayerDataFunction {
+    pub bound: Option<BoundPlayerData>,
+}
+
+/// typeinfo name compared by `manage_small` (IDA 0xaaad9c).
+pub const PLAYER_DATA_BIND_T_TYPEINFO: &str = "bind_t<void(*)(weak<Player>,shared<map<string,Variant>>>),list2<value<weak<Player>>,arg<1>>>";
+
+/// `EnumDesc<CameraMode>` link for the Player suite (cf. 0x4aadf4):
+/// guard-once table; item pairs register in the singleton C2.
+pub fn camera_mode_enum_prop(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    EnumProp::new(
+        name,
+        category,
+        initial,
+        crate::descriptor::stub_0x4aadf4().clone(),
+        attributes,
+        permissions,
+    )
+}
+
 // 0xa87e84 — __ZN3RBX7Network6Player20LoadDataResultHelperEN5boost8weak_ptrIS1_EENS2_10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS8_EEEEE
 #[doc(alias = "RBX::Network::Player::LoadDataResultHelper(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0xa87e84() -> ! {
-    todo!("0xa87e84 RBX::Network::Player::LoadDataResultHelper(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_0xa87e84(player: Option<u32>, data: Vec<(String, Value)>) -> LoadDataResult {
+    // IDA 0xa87e84: `Player::LoadDataResultHelper`: bundle the weak player
+    // with the loaded `map<string, Variant>` for `loadDataResult`.
+    // `weak_ptr`/`shared_ptr` ownership is `Arc` glue.
+    LoadDataResult { player, data }
 }
 
 // 0xa88274 — __ZN3RBX7Network6Player14loadDataResultEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
 #[doc(alias = "RBX::Network::Player::loadDataResult(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0xa88274() -> ! {
-    todo!("0xa88274 RBX::Network::Player::loadDataResult(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_0xa88274(result: &LoadDataResult, apply: &dyn Fn(Option<u32>, &[(String, Value)])) {
+    // IDA 0xa88274: `Player::loadDataResult`: apply the loaded
+    // `map<string, Variant>` to the player (datamodel lookup collapses
+    // into the callback).
+    apply(result.player, &result.data);
 }
 
 // 0xa934b0 — __ZN3RBX7Network6Player16getFriendsOnlineEiN5boost8functionIFvNS2_10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEEEENS3_IFvSsEEE
 #[doc(alias = "RBX::Network::Player::getFriendsOnline(int,boost::function<void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_0xa934b0() -> ! {
-    todo!("0xa934b0 RBX::Network::Player::getFriendsOnline(int,boost::function<void ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_0xa934b0(
+    limit: i32,
+    online: Vec<(String, Value)>,
+    on_result: &dyn Fn(Vec<(String, Value)>),
+    on_error: &dyn Fn(String),
+) {
+    // IDA 0xa934b0: `Player::getFriendsOnline`: the friends-service query
+    // collapses into `online`; deliver at most `limit` entries through the
+    // result callback, else the error string.
+    if limit < 0 {
+        on_error("invalid limit".to_owned());
+        return;
+    }
+    let n = (limit as usize).min(online.len());
+    on_result(online[..n].to_vec());
 }
 
 // 0xa981c8 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS2_10Reflection7VariantESt4lessISsESaISt4pairIKSsS9_EEEEES5_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSN_T0_T1_ENSL_9list_av_2IT2_T3_E4typeEEESR_ST_SU_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<Weak<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,Weak<RBX::Network::Player>,boost::arg<1>>(void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),Weak<RBX::Network::Player>,boost::arg<1>)")]
-pub fn stub_0xa981c8() -> ! {
-    todo!("0xa981c8 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>)")
+pub fn stub_0xa981c8(player: Option<u32>) -> BoundPlayerData {
+    // IDA 0xa981c8: `bind<void(weak<Player>, shared<map>), weak<Player>,
+    // arg<1>>`: store the bound weak player plus the arg placeholder via
+    // `list_av_2` (same shape as 0x4a3fac).
+    BoundPlayerData { player }
 }
 
 // 0xa9b5e4 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v
 #[doc(alias = "RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)")]
-pub fn stub_0xa9b5e4() -> ! {
-    todo!("0xa9b5e4 RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)")
+pub fn stub_0xa9b5e4(value: &Value) -> i32 {
+    // IDA 0xa9b5e4: `Variant::genericConvert<MembershipType>`: int/enum
+    // payloads pass, numerics coerce; anything else throws `bad_cast`.
+    // Rust cutover panics.
+    match value {
+        Value::Int(v) => *v,
+        Value::EnumValue(v) => *v,
+        Value::Float(v) => *v as i32,
+        Value::Bool(v) => *v as i32,
+        other => panic!("std::bad_cast in Variant::genericConvert<MembershipType> on {other:?} (IDA 0xa9b5e4)"),
+    }
 }
 
 // 0xaa1b6c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11PlayerMouseES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -6371,8 +6446,10 @@ pub fn stub_0xaa4bfc() {
 
 // 0xaa4cb0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xaa4cb0() -> ! {
-    todo!("0xaa4cb0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0xaa4cb0(call: &dyn Fn(&str), prop: &str) {
+    // IDA 0xaa4cb0: `callable::call`: invoke the stored slot entry
+    // (`*(a1+16)`) with the stored args (`a1+20`, `*(a1+28)`, 0xaa4cbc).
+    call(prop);
 }
 
 // 0xaa4cc0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_E4callES7_
@@ -6401,50 +6478,104 @@ pub fn stub_0xaa4eb4() {
 
 // 0xaaa378 — __ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_7Network6PlayerEEESE_ENSH_5list2INSH_5valueISM_EENS_3argILi1EEEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>)")]
-pub fn stub_0xaaa378() -> ! {
-    todo!("0xaaa378 void boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>)")
+pub fn stub_0xaaa378(func: &mut PlayerDataFunction, bound: &BoundPlayerData) {
+    // IDA 0xaaa378: `function1::assign_to<player-data-bind>` (same shape as
+    // 0x4a442c).
+    func.bound = Some(bound.clone());
 }
 
 // 0xaaa55c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSD_EEEEEENS3_5list2INS3_5valueIS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xaaa55c() -> ! {
-    todo!("0xaaa55c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xaaa55c(
+    op: GenericFunctorOp,
+    src: &BoundPlayerData,
+    slot: &mut Option<BoundPlayerData>,
+) -> Option<&'static str> {
+    // IDA 0xaaa55c: `functor_manager<player-data-bind>::manage` (same shape
+    // as 0x4a4524).
+    if op == GenericFunctorOp::GetType {
+        return Some(PLAYER_DATA_BIND_T_TYPEINFO);
+    }
+    stub_0xaaad08(op, src, slot);
+    None
 }
 
 // 0xaaa580 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSD_EEEEEENS3_5list2INS3_5valueIS9_EENS_3argILi1EEEEEEEvSM_E6invokeERNS1_15function_bufferESM_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>,void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0xaaa580() -> ! {
-    todo!("0xaaa580 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_0xaaa580(
+    bound: &BoundPlayerData,
+    data: &[(String, Value)],
+    call: &dyn Fn(Option<u32>, &[(String, Value)]),
+) {
+    // IDA 0xaaa580: `void_function_obj_invoker1::invoke` tail-calls
+    // `bind_t::operator()` (same shape as 0x4a4540).
+    stub_0xaaa960(bound, data, call);
 }
 
 // 0xaaa598 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_0xaaa598() -> ! {
-    todo!("0xaaa598 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0xaaa598(func: &mut PlayerDataFunction, bound: &BoundPlayerData) -> bool {
+    // IDA 0xaaa598: `basic_vtable1::assign_to` const overload (same shape
+    // as 0x4a4554): store a clone, report success.
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xaaa764 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xaaa764() -> ! {
-    todo!("0xaaa764 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0xaaa764(func: &mut PlayerDataFunction, bound: &BoundPlayerData) -> bool {
+    // IDA 0xaaa764: `basic_vtable1::assign_to` function-obj-tag overload
+    // (same shape as 0x4a463c): store a clone, report success.
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xaaa960 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEclIPFvS7_NS_10shared_ptrIKSt3mapISsNS4_10Reflection7VariantESt4lessISsESaISt4pairIKSsSG_EEEEEENS0_5list1IRSP_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>::operator()<void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list1<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&>>(boost::_bi::type<void>,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>) &,boost::_bi::list1<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&> &,int)")]
-pub fn stub_0xaaa960() -> ! {
-    todo!("0xaaa960 void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list1<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>) &,boost::_bi::list1<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&> &,int)")
+pub fn stub_0xaaa960(
+    bound: &BoundPlayerData,
+    data: &[(String, Value)],
+    call: &dyn Fn(Option<u32>, &[(String, Value)]),
+) {
+    // IDA 0xaaa960: `list2::operator()`: run the bound free function with
+    // the stored weak player and the incoming data map.
+    call(bound.player, data);
 }
 
 // 0xaaad08 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSD_EEEEEENS3_5list2INS3_5valueIS9_EENS_3argILi1EEEEEEEE12manage_smallERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player>,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::arg<1>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xaaad08() -> ! {
-    todo!("0xaaad08 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xaaad08(
+    op: GenericFunctorOp,
+    src: &BoundPlayerData,
+    slot: &mut Option<BoundPlayerData>,
+) -> Option<&'static str> {
+    // IDA 0xaaad08: `functor_manager_common::manage_small`: op 3 (get type)
+    // `strcmp`s the stored typeinfo name
+    // (`"N5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network6PlayerEEE..."`,
+    // 0xaaad9c); match returns it, else the slot op runs (0xaaada2-0xaaae1e).
+    if op == GenericFunctorOp::GetType {
+        return Some(PLAYER_DATA_BIND_T_TYPEINFO);
+    }
+    match op {
+        GenericFunctorOp::Clone | GenericFunctorOp::Move => *slot = Some(src.clone()),
+        GenericFunctorOp::Destroy => *slot = None,
+        _ => {}
+    }
+    None
 }
 
 // 0xaadb98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0xaadb98() -> ! {
-    todo!("0xaadb98 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0xaadb98(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0xaadb98: `setStringValue` (`Name` overload) for CameraMode
+    // (same shape as 0x4aa528).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xaadc2c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv
@@ -6463,14 +6594,16 @@ pub fn stub_0xaadc30() -> bool {
 
 // 0xaadc34 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0xaadc34() -> ! {
-    todo!("0xaadc34 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0xaadc34(prop: &EnumProp) -> i32 {
+    // IDA 0xaadc34: `GetSetImpl<CameraMode>::getValue` (+44 member).
+    prop.value
 }
 
 // 0xaadc58 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE8setValueEPNS0_13DescribedBaseERKS5_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::Camera::CameraMode const&)const")]
-pub fn stub_0xaadc58() -> ! {
-    todo!("0xaadc58 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::Camera::CameraMode const&)const")
+pub fn stub_0xaadc58(prop: &mut EnumProp, value: i32) {
+    // IDA 0xaadc58: `GetSetImpl<CameraMode>::setValue` (+44 member).
+    prop.value = value;
 }
 
 // 0xaadc80 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEED0Ev
