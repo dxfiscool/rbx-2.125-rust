@@ -2254,8 +2254,17 @@ pub enum JoinTarget {
     PlaceId {
         request: i32,
     },
+    /// `joinGamePlaceIdSolo(placeId, game)` (IDA 0x28c50).
+    Solo,
     /// `joinGameWithJoinScript(script, game)` on the `InjectStartScript` thread (IDA 0x267ec..0x268de).
     Script(String),
+    /// `joinGameTeleport(place, auth, script, controller, game)` on a
+    /// `boost::thread` (IDA 0x29e34..0x29e40).
+    Teleport {
+        place: String,
+        auth: String,
+        script: String,
+    },
 }
 
 /// Pending join bound by a `start*` leaf for `startGame:controller:preloadedGame:presentGameAutomatically:`.
@@ -2265,6 +2274,20 @@ pub struct JoinRequest {
     pub target: JoinTarget,
     pub game_id: u32,
     pub present_automatically: bool,
+}
+/// Outcome of `-[PlaceLauncher childAdded:]` (IDA 0x2b1bc): which signal branch
+/// ran. Both player branches connect `playerLoaded:`; they differ only in the
+/// log line (`PlayerChild` vs `PlayerNotChild`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ChildAddedOutcome {
+    /// Nil rbxView (IDA 0x2b326..0x2b33a).
+    NoView,
+    /// Nil datamodel, missing Players service, or nil player (IDA 0x2b34e..0x2b3b8).
+    NoPlayers,
+    /// `player == child`: `PlayerChild` branch (IDA 0x2b3cc..0x2b466).
+    PlayerConnected,
+    /// `player != child`: `PlayerNotChild` branch (IDA 0x2b276..0x2b310).
+    PlayerReconnected,
 }
 
 /// Minimal `HomeViewController` counterpart: the `_btnPlaceLauncher` ivar
@@ -2341,13 +2364,34 @@ pub struct PlaceLauncher {
     last_game_secure: AtomicBool,
     last_game_is_app: AtomicBool,
     idle_timer_disabled: AtomicBool,
+    game_start_threads: AtomicU32,
+    is_leaving_game: AtomicBool,
+    leave_game_calls: AtomicU32,
+    leave_shutdown_calls: AtomicU32,
+    shutdown_completions: AtomicU32,
+    start_leave_posts: AtomicU32,
+    did_leave_posts: AtomicU32,
+    bg_task: parking_lot::Mutex<Option<u32>>,
+    next_bg_task: AtomicU32,
+    game_state: parking_lot::Mutex<String>,
+    session_reports: parking_lot::Mutex<Vec<(u32, i32)>>,
+    page_views: parking_lot::Mutex<Vec<String>>,
+    child_connection_connected: AtomicBool,
+    player_connection_connected: AtomicBool,
+    close_child_calls: AtomicU32,
+    free_memory_checker_running: AtomicBool,
+    memory_warning_shutdowns: AtomicU32,
+    memory_warning_ignores: AtomicU32,
+    teleport_dispatches: AtomicU32,
+    teleport_completions: AtomicU32,
+    teleport_animation_steps: AtomicU32,
+    last_teleport: parking_lot::Mutex<Option<(String, String, String)>>,
+    start_solo_calls: AtomicU32,
+    start_join_script_calls: AtomicU32,
     join_requests: parking_lot::Mutex<Vec<JoinRequest>>,
     alerts: parking_lot::Mutex<Vec<String>>,
     analytics_events: parking_lot::Mutex<Vec<(String, String, String)>>,
 }
-
-/// `+[PlaceLauncher sharedInstance]` (IDA 0x24974): `dispatch_once` is the
-/// process-wide `LazyLock`.
 pub fn shared_place_launcher() -> &'static PlaceLauncher {
     static LAUNCHER: std::sync::LazyLock<PlaceLauncher> =
         std::sync::LazyLock::new(PlaceLauncher::new);
@@ -2768,7 +2812,12 @@ impl PlaceLauncher {
         _controller: ObjCId,
         present: bool,
     ) -> bool {
-        // `createGame:presentGameAutomatically:` then report success.
+        // `RBX::thread_wrapper(fn, "GameStartScript")` + `boost::thread` running
+        // the bound join, detached at `~thread` (IDA 0x294c0..0x294fc); a detached
+        // `std::thread` is the detach.
+        self.game_start_threads.fetch_add(1, Ordering::SeqCst);
+        // `createGame:presentGameAutomatically:` with the preloaded game
+        // (IDA 0x29510..0x29534); always returns 1 (IDA 0x29560).
         self.create_game(game, present);
         true
     }
@@ -2876,6 +2925,391 @@ impl PlaceLauncher {
         // `startGame:controller:preloadedGame:presentGameAutomatically:` (IDA 0x28a72..0x28aa4).
         self.start_preloaded_game(&game, controller, present)
     }
+    // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
+    // IDA 0x28ba8
+    #[doc(alias = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]"]
+    pub fn start_game_solo(&self, place_id: i32, controller: ObjCId, present: bool) -> bool {
+        self.start_solo_calls.fetch_add(1, Ordering::SeqCst);
+        // `setupPreloadedGameWithNonGameController:isApp:` (IDA 0x28c1e); nil
+        // game (or nil self) means failure (IDA 0x28c26, 0x28cc8..0x28cce).
+        let Some(game) = self.setup_preloaded_game(controller, false) else {
+            return false;
+        };
+        // Bind `joinGamePlaceIdSolo(placeId, game)` into `function0<void>`
+        // (IDA 0x28c2c..0x28c5c).
+        self.join_requests.lock().push(JoinRequest {
+            place_id,
+            target: JoinTarget::Solo,
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:`
+        // (IDA 0x28c62..0x28c94).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
+    // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
+    // IDA 0x29280
+    #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
+    #[doc = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]"]
+    pub fn start_game_with_join_script(
+        &self,
+        script: &str,
+        controller: ObjCId,
+        present: bool,
+    ) -> bool {
+        self.start_join_script_calls.fetch_add(1, Ordering::SeqCst);
+        // `setupPreloadedGameWithNonGameController:isApp:` (IDA 0x292f4); nil
+        // game (or nil self) means failure (IDA 0x292fc, 0x293b8..0x293be).
+        let Some(game) = self.setup_preloaded_game(controller, false) else {
+            return false;
+        };
+        // `UTF8String` + bind `joinGameWithJoinScript(script, game)`
+        // (IDA 0x29314..0x2934c).
+        self.join_requests.lock().push(JoinRequest {
+            place_id: *self.last_place_id.lock(),
+            target: JoinTarget::Script(script.to_owned()),
+            game_id: game.id,
+            present_automatically: present,
+        });
+        // `startGame:controller:preloadedGame:presentGameAutomatically:`
+        // (IDA 0x29352..0x29384).
+        self.start_preloaded_game(&game, controller, present)
+    }
+
+    // 0x295c0 — -[PlaceLauncher leaveGameShutdown]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x295c0
+    #[doc(alias = "-[PlaceLauncher leaveGameShutdown]")]
+    #[doc = "-[PlaceLauncher leaveGameShutdown]"]
+    pub fn leave_game_shutdown(&self) {
+        self.leave_shutdown_calls.fetch_add(1, Ordering::SeqCst);
+        // Post `startLeaveGameNotification` with nil userInfo (IDA 0x295fe..0x29622).
+        self.start_leave_posts.fetch_add(1, Ordering::SeqCst);
+        // `dismissViewControllerAnimated:completion:` on the ogre controller
+        // with the 0x29684 block (IDA 0x29634..0x2967c); the dismissal and the
+        // block run inline here.
+        self.ogre_view_controller_present.store(false, Ordering::SeqCst);
+        self.leave_game_shutdown_completion();
+    }
+
+    // 0x29684 — ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
+    // IDA 0x29684
+    #[doc(alias = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke")]
+    #[doc = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke"]
+    pub fn leave_game_shutdown_completion(&self) {
+        self.shutdown_completions.fetch_add(1, Ordering::SeqCst);
+        // Release the ogre controller/view/window (IDA 0x2969e..0x296ee); the
+        // controller slot is what this slice observes.
+        self.ogre_view_controller_present.store(false, Ordering::SeqCst);
+        // `deleteRobloxView` (IDA 0x29700).
+        self.view.lock().take();
+        // `isCurrentlyPlayingGame = 0` (offset 20, IDA 0x2971c) and
+        // `hasReceivedMemoryWarning = 0` (offset 8, IDA 0x29738).
+        self.is_currently_playing_game.store(false, Ordering::SeqCst);
+        self.has_received_memory_warning.store(false, Ordering::SeqCst);
+        // Post `didLeaveGameNotification` (IDA 0x29740..0x29764).
+        self.did_leave_posts.fetch_add(1, Ordering::SeqCst);
+        // `removeObjectForKey:@"RobloxGameState"` + `synchronize`
+        // (IDA 0x29790..0x297c2).
+        self.game_state.lock().clear();
+        // `isLeavingGame = 0` (offset 9, IDA 0x297e8).
+        self.is_leaving_game.store(false, Ordering::SeqCst);
+        // `endBackgroundTask:` + `setBgTask:UIBackgroundTaskInvalid`
+        // (IDA 0x297f4..0x29872); the delegate bg task slot is the store.
+        self.bg_task.lock().take();
+    }
+
+    // 0x298e0 — -[PlaceLauncher leaveGame]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x298e0
+    #[doc(alias = "-[PlaceLauncher leaveGame]")]
+    #[doc = "-[PlaceLauncher leaveGame]"]
+    pub fn leave_game(&self) {
+        self.leave_game_calls.fetch_add(1, Ordering::SeqCst);
+        // Guards: `isCurrentlyPlayingGame` set and `isLeavingGame` clear, with an
+        // ogre controller present (IDA 0x2996e..0x2998e); otherwise no-op.
+        if !self.is_currently_playing_game.load(Ordering::SeqCst)
+            || self.is_leaving_game.load(Ordering::SeqCst)
+            || !self.ogre_view_controller_present.load(Ordering::SeqCst)
+        {
+            return;
+        }
+        // `isLeavingGame = 1` (IDA 0x299a2).
+        self.is_leaving_game.store(true, Ordering::SeqCst);
+        // `setIdleTimerDisabled:0` (IDA 0x299c6..0x299d8).
+        self.idle_timer_disabled.store(false, Ordering::SeqCst);
+        // `RobloxGameState = "leaveGame"` + `synchronize` (IDA 0x299f8..0x29a36).
+        *self.game_state.lock() = "leaveGame".to_owned();
+        // `closeChildConnections` (IDA 0x29a48).
+        self.close_child_connections();
+        // `reportSessionFor:4` + `Visit/Success/LeaveGame` page view
+        // (IDA 0x29a5a..0x29a92).
+        self.session_reports.lock().push((4, *self.last_place_id.lock()));
+        self.page_views.lock().push("Visit/Success/LeaveGame".to_owned());
+        // `beginBackgroundTaskWithExpirationHandler:` with the 0x29bb4 block
+        // (IDA 0x29aec..0x29b12); the bg task id is the store.
+        let id = self.next_bg_task.fetch_add(1, Ordering::SeqCst) + 1;
+        *self.bg_task.lock() = Some(id);
+        // iOS 6+ takes the `dispatch_async(main, 0x29c74-block)` path
+        // (IDA 0x29b2e..0x29ba8); that block calls `leaveGameShutdown` inline.
+        // BUG: original at 0x29b62 — floats compared via `COERCE_FLOAT`;
+        // pre-6.0 falls to the direct call (IDA 0x29b72). Modern iOS always
+        // takes the dispatch path; both end in `leaveGameShutdown`.
+        self.main_dispatches.fetch_add(1, Ordering::SeqCst);
+        self.leave_game_shutdown_dispatch();
+    }
+
+    // 0x29bb4 — ___26-[PlaceLauncher leaveGame]_block_invoke
+    // IDA 0x29bb4
+    #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke")]
+    #[doc = "___26-[PlaceLauncher leaveGame]_block_invoke"]
+    pub fn leave_game_bg_expiration(&self) {
+        // Background-task expiration handler: `isLeavingGame = 0`
+        // (IDA 0x29bde), `endBackgroundTask:` + `setBgTask:Invalid`
+        // (IDA 0x29be8..0x29c1e).
+        self.is_leaving_game.store(false, Ordering::SeqCst);
+        self.bg_task.lock().take();
+    }
+
+    // 0x29c74 — ___26-[PlaceLauncher leaveGame]_block_invoke231
+    // IDA 0x29c74
+    #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke231")]
+    #[doc = "___26-[PlaceLauncher leaveGame]_block_invoke231"]
+    pub fn leave_game_shutdown_dispatch(&self) {
+        // Main-queue block body is just `leaveGameShutdown` (IDA 0x29c74..0x29c90).
+        self.leave_game_shutdown();
+    }
+
+    // 0x29c9c — -[PlaceLauncher disableViewBecauseGoingToBackground]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x29c9c
+    #[doc(alias = "-[PlaceLauncher disableViewBecauseGoingToBackground]")]
+    #[doc = "-[PlaceLauncher disableViewBecauseGoingToBackground]"]
+    pub fn disable_view_for_background(&self) {
+        // `if (rbxView) requestStopRenderingForBackgroundMode` (IDA 0x29ca8..0x29cae).
+        if let Some(view) = self.view.lock().as_ref() {
+            view.request_stop_rendering_for_background_mode();
+        }
+    }
+
+    // 0x29cb4 — -[PlaceLauncher enableViewBecauseGoingToForeground]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x29cb4
+    #[doc(alias = "-[PlaceLauncher enableViewBecauseGoingToForeground]")]
+    #[doc = "-[PlaceLauncher enableViewBecauseGoingToForeground]"]
+    pub fn enable_view_for_foreground(&self) {
+        // `if (rbxView) requestResumeRendering` (IDA 0x29cc0..0x29cc6).
+        if let Some(view) = self.view.lock().as_ref() {
+            view.request_resume_rendering();
+        }
+    }
+
+    // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
+    // IDA 0x29ccc
+    #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
+    #[doc = "-[PlaceLauncher teleport:withAuthentication:withScript:]"]
+    pub fn teleport(&self, place: &str, auth: &str, script: &str, controller: ObjCId) {
+        // `setLastNonGameController:` from the main controller (IDA 0x29d0a..0x29d42).
+        let last = self.last_non_game_controller();
+        self.set_last_non_game_controller(last.or(Some(controller)));
+        // Fresh `SecurePlayerGame(baseURL)` + shared ptr (IDA 0x29d58..0x29da0).
+        let id = self.next_game_id.fetch_add(1, Ordering::SeqCst) + 1;
+        self.last_game_secure.store(true, Ordering::SeqCst);
+        let game = wrap_game(id);
+        // `UTF8String` × 3 + bind `joinGameTeleport` + `boost::thread`
+        // (IDA 0x29db8..0x29e40); the thread detaches at `~thread` (IDA 0x29fdc).
+        *self.last_teleport.lock() = Some((place.to_owned(), auth.to_owned(), script.to_owned()));
+        self.join_requests.lock().push(JoinRequest {
+            place_id: *self.last_place_id.lock(),
+            target: JoinTarget::Teleport {
+                place: place.to_owned(),
+                auth: auth.to_owned(),
+                script: script.to_owned(),
+            },
+            game_id: game.id,
+            present_automatically: false,
+        });
+        self.teleport_dispatches.fetch_add(1, Ordering::SeqCst);
+        // `deleteRobloxView` (IDA 0x29ec6) before the shrink animation.
+        self.view.lock().take();
+        // `setClipsToBounds:1` + `animateWithDuration:0.5` shrink (animations
+        // 0x2a8c8) with completion 0x2a99c (IDA 0x29f06..0x29fca); both blocks
+        // run inline here.
+        self.teleport_animation_steps.fetch_add(1, Ordering::SeqCst);
+        self.teleport_completion(&game, controller);
+    }
+
+    // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
+    // IDA 0x2a8c8
+    #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
+    #[doc = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke"]
+    pub fn teleport_animation_frame(&self, width: f32, height: f32) -> (f32, f32) {
+        // Shrink-to-center frame: the 1×1 view lands at half the parent frame
+        // origin (`vmul_f32(size, 0.5)`), sized 1×1 (IDA 0x2a8e8..0x2a984); a nil
+        // parent view yields a zero origin. Only the step count is observed.
+        self.teleport_animation_steps.fetch_add(1, Ordering::SeqCst);
+        (width * 0.5, height * 0.5)
+    }
+
+    // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
+    // IDA 0x2a99c
+    #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
+    #[doc = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246"]
+    pub fn teleport_completion(&self, game: &SharedPtr<GameHandle>, controller: ObjCId) {
+        self.teleport_completions.fetch_add(1, Ordering::SeqCst);
+        // `finishGameSetup:gameViewController:` on the launcher (IDA 0x2aa18).
+        self.finish_game_setup(game, controller, 0, 0, false, false);
+        // Bind `finishTeleport(view, game, marshaller)` into
+        // `function<void(DataModel*)>` + `DataModel::submitTask(..., 1)`
+        // (IDA 0x2aa3c..0x2aaaa); the datamodel executes it out of slice.
+        self.control_view_tasks.fetch_add(1, Ordering::SeqCst);
+    }
+
+    // 0x2ae54 — -[PlaceLauncher applicationDidReceiveMemoryWarning]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x2ae54
+    #[doc(alias = "-[PlaceLauncher applicationDidReceiveMemoryWarning]")]
+    #[doc = "-[PlaceLauncher applicationDidReceiveMemoryWarning]"]
+    pub fn application_did_receive_memory_warning(&self) {
+        // Out of game: log and ignore (IDA 0x2afc2..0x2afe8).
+        if !self.is_currently_playing_game.load(Ordering::SeqCst) {
+            self.memory_warning_ignores.fetch_add(1, Ordering::SeqCst);
+            return;
+        }
+        // `freeMemoryBytes` log + `print_free_memory` (IDA 0x2aebe..0x2aed6).
+        let place = *self.last_place_id.lock();
+        // Connected when either the child or the player connection is live
+        // (IDA 0x2aeea..0x2af06).
+        let connected =
+            self.child_connection_connected.load(Ordering::SeqCst)
+                || self.player_connection_connected.load(Ordering::SeqCst);
+        // `PlayErrors/OutOfMemory_EarlyExit` + session 5 when connected, else
+        // `PlayErrors/OutOfMemory` + session 6 (IDA 0x2af42..0x2b03c).
+        if connected {
+            self.analytics_events.lock().push((
+                "PlayErrors".to_owned(),
+                "OutOfMemory_EarlyExit".to_owned(),
+                place.to_string(),
+            ));
+            self.session_reports.lock().push((5, place));
+        } else {
+            self.analytics_events.lock().push((
+                "PlayErrors".to_owned(),
+                "OutOfMemory".to_owned(),
+                place.to_string(),
+            ));
+            self.session_reports.lock().push((6, place));
+        }
+        // `closeChildConnections` (IDA 0x2b056).
+        self.close_child_connections();
+        // `warnings_preference` `MemoryError` alert (IDA 0x2b074..0x2b100).
+        if self.warnings_preference.load(Ordering::SeqCst) {
+            self.alerts.lock().push("MemoryError".to_owned());
+        }
+        // In-game shutdown via `leaveGame` (IDA 0x2b108..0x2b142).
+        self.memory_warning_shutdowns.fetch_add(1, Ordering::SeqCst);
+        self.leave_game();
+    }
+
+    // 0x2b1bc — -[PlaceLauncher childAdded:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
+    // IDA 0x2b1bc
+    #[doc(alias = "-[PlaceLauncher childAdded:]")]
+    #[doc = "-[PlaceLauncher childAdded:]"]
+    pub fn child_added(
+        &self,
+        has_view_game: bool,
+        players_found: bool,
+        player_is_child: bool,
+        player_found: bool,
+    ) -> ChildAddedOutcome {
+        self.child_added_connections.fetch_add(1, Ordering::SeqCst);
+        // Nil rbxView: log + `closeChildConnections` (IDA 0x2b326..0x2b33a).
+        if !has_view_game {
+            self.close_child_connections();
+            return ChildAddedOutcome::NoView;
+        }
+        // Nil datamodel/game path (IDA 0x2b34e..0x2b364).
+        // Missing Players service (IDA 0x2b378..0x2b38e) or a nil player
+        // (IDA 0x2b3a2..0x2b3b8): log + `closeChildConnections`.
+        if !players_found || !player_found {
+            self.close_child_connections();
+            return ChildAddedOutcome::NoPlayers;
+        }
+        // Either branch connects `playerLoaded:` on the player-added signal and
+        // swaps the child connection for the player connection
+        // (IDA 0x2b276..0x2b310, 0x2b3cc..0x2b466); `Signal` is
+        // `rbx_core::signal::Signal`, never `boost::signals`.
+        self.child_connection_connected.store(false, Ordering::SeqCst);
+        self.player_connection_connected.store(true, Ordering::SeqCst);
+        if player_is_child {
+            ChildAddedOutcome::PlayerConnected
+        } else {
+            ChildAddedOutcome::PlayerReconnected
+        }
+    }
+
+    // 0x2b548 — -[PlaceLauncher playerLoaded:]
+    // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
+    // IDA 0x2b548
+    #[doc(alias = "-[PlaceLauncher playerLoaded:]")]
+    #[doc = "-[PlaceLauncher playerLoaded:]"]
+    pub fn player_loaded(&self, instance: u32) {
+        // Disconnect the player connection (IDA 0x2b56a), then
+        // `closeChildConnections` (IDA 0x2b57c); the instance id is logged
+        // (IDA 0x2b558).
+        let _ = instance;
+        self.player_connection_connected.store(false, Ordering::SeqCst);
+        self.close_child_connections();
+        // `RobloxGameState = "inGame"` + `synchronize` (IDA 0x2b59a..0x2b5da).
+        *self.game_state.lock() = "inGame".to_owned();
+    }
+
+    // 0x2b5e0 — -[PlaceLauncher closeChildConnections]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x2b5e0
+    #[doc(alias = "-[PlaceLauncher closeChildConnections]")]
+    #[doc = "-[PlaceLauncher closeChildConnections]"]
+    pub fn close_child_connections(&self) {
+        self.close_child_calls.fetch_add(1, Ordering::SeqCst);
+        // Disconnect the child connection when connected (IDA 0x2b5f2..0x2b600),
+        // then the player connection (IDA 0x2b610..0x2b61e).
+        self.child_connection_connected.store(false, Ordering::SeqCst);
+        self.player_connection_connected.store(false, Ordering::SeqCst);
+        // `stopFreeMemoryChecker` (IDA 0x2b63a..0x2b64e).
+        self.free_memory_checker_running.store(false, Ordering::SeqCst);
+    }
+
+    // 0x2b654 — -[PlaceLauncher .cxx_destruct]
+    // type: void __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x2b654
+    #[doc(alias = "-[PlaceLauncher .cxx_destruct]")]
+    #[doc = "-[PlaceLauncher .cxx_destruct]"]
+    pub fn cxx_destruct(&self) {
+        // Weak-release the player + child connection slots (IDA 0x2b68e..0x2b6cc);
+        // `intrusive_ptr` drops are `Arc` drops here.
+        self.player_connection_connected.store(false, Ordering::SeqCst);
+        self.child_connection_connected.store(false, Ordering::SeqCst);
+        // Teleporter `delete px` via vtable+4 (IDA 0x2b6de..0x2b6e6).
+        self.teleporter_callback_set.store(false, Ordering::SeqCst);
+    }
+
+    // 0x2b724 — -[PlaceLauncher .cxx_construct]
+    // type: id __cdecl(PlaceLauncher *self, SEL)
+    // IDA 0x2b724
+    #[doc(alias = "-[PlaceLauncher .cxx_construct]")]
+    #[doc = "-[PlaceLauncher .cxx_construct]"]
+    pub fn cxx_construct(&self) {
+        // Zero the teleporter + both connection slots (IDA 0x2b73c..0x2b74e).
+        self.teleporter_callback_set.store(false, Ordering::SeqCst);
+        self.child_connection_connected.store(false, Ordering::SeqCst);
+        self.player_connection_connected.store(false, Ordering::SeqCst);
+    }
 
     pub fn last_place_id(&self) -> i32 {
         *self.last_place_id.lock()
@@ -2939,6 +3373,87 @@ impl PlaceLauncher {
     }
     pub fn analytics_event_count(&self) -> usize {
         self.analytics_events.lock().len()
+    }
+    pub fn is_leaving_game(&self) -> bool {
+        self.is_leaving_game.load(Ordering::SeqCst)
+    }
+    pub fn leave_game_calls(&self) -> u32 {
+        self.leave_game_calls.load(Ordering::SeqCst)
+    }
+    pub fn leave_shutdown_calls(&self) -> u32 {
+        self.leave_shutdown_calls.load(Ordering::SeqCst)
+    }
+    pub fn shutdown_completions(&self) -> u32 {
+        self.shutdown_completions.load(Ordering::SeqCst)
+    }
+    pub fn start_leave_posts(&self) -> u32 {
+        self.start_leave_posts.load(Ordering::SeqCst)
+    }
+    pub fn did_leave_posts(&self) -> u32 {
+        self.did_leave_posts.load(Ordering::SeqCst)
+    }
+    pub fn bg_task(&self) -> Option<u32> {
+        *self.bg_task.lock()
+    }
+    pub fn game_state(&self) -> String {
+        self.game_state.lock().clone()
+    }
+    pub fn session_reports(&self) -> Vec<(u32, i32)> {
+        self.session_reports.lock().clone()
+    }
+    pub fn page_views(&self) -> Vec<String> {
+        self.page_views.lock().clone()
+    }
+    pub fn child_connection_connected(&self) -> bool {
+        self.child_connection_connected.load(Ordering::SeqCst)
+    }
+    pub fn player_connection_connected(&self) -> bool {
+        self.player_connection_connected.load(Ordering::SeqCst)
+    }
+    pub fn close_child_calls(&self) -> u32 {
+        self.close_child_calls.load(Ordering::SeqCst)
+    }
+    pub fn free_memory_checker_running(&self) -> bool {
+        self.free_memory_checker_running.load(Ordering::SeqCst)
+    }
+    pub fn memory_warning_shutdowns(&self) -> u32 {
+        self.memory_warning_shutdowns.load(Ordering::SeqCst)
+    }
+    pub fn memory_warning_ignores(&self) -> u32 {
+        self.memory_warning_ignores.load(Ordering::SeqCst)
+    }
+    pub fn teleport_dispatches(&self) -> u32 {
+        self.teleport_dispatches.load(Ordering::SeqCst)
+    }
+    pub fn teleport_completions(&self) -> u32 {
+        self.teleport_completions.load(Ordering::SeqCst)
+    }
+    pub fn teleport_animation_steps(&self) -> u32 {
+        self.teleport_animation_steps.load(Ordering::SeqCst)
+    }
+    pub fn last_teleport(&self) -> Option<(String, String, String)> {
+        self.last_teleport.lock().clone()
+    }
+    pub fn start_solo_calls(&self) -> u32 {
+        self.start_solo_calls.load(Ordering::SeqCst)
+    }
+    pub fn start_join_script_calls(&self) -> u32 {
+        self.start_join_script_calls.load(Ordering::SeqCst)
+    }
+    pub fn game_start_threads(&self) -> u32 {
+        self.game_start_threads.load(Ordering::SeqCst)
+    }
+    pub fn set_ogre_view_controller_present(&self, present: bool) {
+        self.ogre_view_controller_present.store(present, Ordering::SeqCst);
+    }
+    pub fn set_child_connection_connected(&self, connected: bool) {
+        self.child_connection_connected.store(connected, Ordering::SeqCst);
+    }
+    pub fn set_player_connection_connected(&self, connected: bool) {
+        self.player_connection_connected.store(connected, Ordering::SeqCst);
+    }
+    pub fn set_free_memory_checker_running(&self, running: bool) {
+        self.free_memory_checker_running.store(running, Ordering::SeqCst);
     }
     pub fn set_reachability(&self, reachability: ReachabilityStatus) {
         *self.reachability.lock() = reachability;

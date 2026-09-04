@@ -312,88 +312,101 @@ pub fn stub_289a8(
 // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")]
-pub fn stub_28ba8() -> ! {
-    todo!("0x28ba8 -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")
+pub fn stub_28ba8(place_id: i32, controller: crate::roblox_view::ObjCId, present: bool) -> bool {
+    // delegate of crate::roblox_view (IDA 0x28ba8)
+    LAUNCHER.start_game_solo(place_id, controller, present)
 }
 
 // 0x29280 — -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")]
-pub fn stub_29280() -> ! {
-    todo!("0x29280 -[PlaceLauncher startGameWithJoinScript:controller:presentGameAutomatically:]")
+pub fn stub_29280(script: &str, controller: crate::roblox_view::ObjCId, present: bool) -> bool {
+    // delegate of crate::roblox_view (IDA 0x29280)
+    LAUNCHER.start_game_with_join_script(script, controller, present)
 }
 
 // 0x29490 — -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, function0<void>, id, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")]
-pub fn stub_29490() -> ! {
-    todo!("0x29490 -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")
+pub fn stub_29490(game_id: u32, controller: crate::roblox_view::ObjCId, present: bool) -> bool {
+    // delegate of crate::roblox_view (IDA 0x29490)
+    LAUNCHER.start_preloaded_game(&crate::roblox_view::wrap_game(game_id), controller, present)
 }
 
 // 0x295c0 — -[PlaceLauncher leaveGameShutdown]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGameShutdown]")]
-pub fn stub_295c0() -> ! {
-    todo!("0x295c0 -[PlaceLauncher leaveGameShutdown]")
+pub fn stub_295c0() {
+    // delegate of crate::roblox_view (IDA 0x295c0)
+    LAUNCHER.leave_game_shutdown();
 }
 
 // 0x29684 — ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
 #[doc(alias = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke")]
-pub fn stub_29684() -> ! {
-    todo!("0x29684 ___34-[PlaceLauncher leaveGameShutdown]_block_invoke")
+pub fn stub_29684() {
+    // delegate of crate::roblox_view (IDA 0x29684)
+    LAUNCHER.leave_game_shutdown_completion();
 }
 
 // 0x298e0 — -[PlaceLauncher leaveGame]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGame]")]
-pub fn stub_298e0() -> ! {
-    todo!("0x298e0 -[PlaceLauncher leaveGame]")
+pub fn stub_298e0() {
+    // delegate of crate::roblox_view (IDA 0x298e0)
+    LAUNCHER.leave_game();
 }
 
 // 0x29bb4 — ___26-[PlaceLauncher leaveGame]_block_invoke
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke")]
-pub fn stub_29bb4() -> ! {
-    todo!("0x29bb4 ___26-[PlaceLauncher leaveGame]_block_invoke")
+pub fn stub_29bb4() {
+    // delegate of crate::roblox_view (IDA 0x29bb4)
+    LAUNCHER.leave_game_bg_expiration();
 }
 
 // 0x29c74 — ___26-[PlaceLauncher leaveGame]_block_invoke231
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke231")]
-pub fn stub_29c74() -> ! {
-    todo!("0x29c74 ___26-[PlaceLauncher leaveGame]_block_invoke231")
+pub fn stub_29c74() {
+    // delegate of crate::roblox_view (IDA 0x29c74)
+    LAUNCHER.leave_game_shutdown_dispatch();
 }
 
 // 0x29c9c — -[PlaceLauncher disableViewBecauseGoingToBackground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher disableViewBecauseGoingToBackground]")]
-pub fn stub_29c9c() -> ! {
-    todo!("0x29c9c -[PlaceLauncher disableViewBecauseGoingToBackground]")
+pub fn stub_29c9c() {
+    // delegate of crate::roblox_view (IDA 0x29c9c)
+    LAUNCHER.disable_view_for_background();
 }
 
 // 0x29cb4 — -[PlaceLauncher enableViewBecauseGoingToForeground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher enableViewBecauseGoingToForeground]")]
-pub fn stub_29cb4() -> ! {
-    todo!("0x29cb4 -[PlaceLauncher enableViewBecauseGoingToForeground]")
+pub fn stub_29cb4() {
+    // delegate of crate::roblox_view (IDA 0x29cb4)
+    LAUNCHER.enable_view_for_foreground();
 }
 
 // 0x29ccc — -[PlaceLauncher teleport:withAuthentication:withScript:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id, id, id)
 #[doc(alias = "-[PlaceLauncher teleport:withAuthentication:withScript:]")]
-pub fn stub_29ccc() -> ! {
-    todo!("0x29ccc -[PlaceLauncher teleport:withAuthentication:withScript:]")
+pub fn stub_29ccc(place: &str, auth: &str, script: &str, controller: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x29ccc)
+    LAUNCHER.teleport(place, auth, script, controller);
 }
 
 // 0x2a8c8 — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")]
-pub fn stub_2a8c8() -> ! {
-    todo!("0x2a8c8 ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke")
+pub fn stub_2a8c8(width: f32, height: f32) -> (f32, f32) {
+    // delegate of crate::roblox_view (IDA 0x2a8c8)
+    LAUNCHER.teleport_animation_frame(width, height)
 }
 
 // 0x2a99c — ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")]
-pub fn stub_2a99c() -> ! {
-    todo!("0x2a99c ___56-[PlaceLauncher teleport:withAuthentication:withScript:]_block_invoke246")
+pub fn stub_2a99c(game_id: u32, controller: crate::roblox_view::ObjCId) {
+    // delegate of crate::roblox_view (IDA 0x2a99c)
+    LAUNCHER.teleport_completion(&crate::roblox_view::wrap_game(game_id), controller);
 }
 
 // 0x2aba4 — __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE
@@ -408,50 +421,62 @@ pub fn stub_2aba4() -> bool {
 // 0x2ae44 — -[PlaceLauncher isCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher isCurrentlyPlayingGame]")]
-pub fn stub_2ae44() -> ! {
-    todo!("0x2ae44 -[PlaceLauncher isCurrentlyPlayingGame]")
+pub fn stub_2ae44() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2ae44)
+    LAUNCHER.is_currently_playing_game()
 }
 
 // 0x2ae54 — -[PlaceLauncher applicationDidReceiveMemoryWarning]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher applicationDidReceiveMemoryWarning]")]
-pub fn stub_2ae54() -> ! {
-    todo!("0x2ae54 -[PlaceLauncher applicationDidReceiveMemoryWarning]")
+pub fn stub_2ae54() {
+    // delegate of crate::roblox_view (IDA 0x2ae54)
+    LAUNCHER.application_did_receive_memory_warning();
 }
 
 // 0x2b1bc — -[PlaceLauncher childAdded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher childAdded:]")]
-pub fn stub_2b1bc() -> ! {
-    todo!("0x2b1bc -[PlaceLauncher childAdded:]")
+pub fn stub_2b1bc(
+    has_view_game: bool,
+    players_found: bool,
+    player_is_child: bool,
+    player_found: bool,
+) -> crate::roblox_view::ChildAddedOutcome {
+    // delegate of crate::roblox_view (IDA 0x2b1bc)
+    LAUNCHER.child_added(has_view_game, players_found, player_is_child, player_found)
 }
 
 // 0x2b548 — -[PlaceLauncher playerLoaded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher playerLoaded:]")]
-pub fn stub_2b548() -> ! {
-    todo!("0x2b548 -[PlaceLauncher playerLoaded:]")
+pub fn stub_2b548(instance: u32) {
+    // delegate of crate::roblox_view (IDA 0x2b548)
+    LAUNCHER.player_loaded(instance);
 }
 
 // 0x2b5e0 — -[PlaceLauncher closeChildConnections]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher closeChildConnections]")]
-pub fn stub_2b5e0() -> ! {
-    todo!("0x2b5e0 -[PlaceLauncher closeChildConnections]")
+pub fn stub_2b5e0() {
+    // delegate of crate::roblox_view (IDA 0x2b5e0)
+    LAUNCHER.close_child_connections();
 }
 
 // 0x2b654 — -[PlaceLauncher .cxx_destruct]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_destruct]")]
-pub fn stub_2b654() -> ! {
-    todo!("0x2b654 -[PlaceLauncher .cxx_destruct]")
+pub fn stub_2b654() {
+    // delegate of crate::roblox_view (IDA 0x2b654)
+    LAUNCHER.cxx_destruct();
 }
 
 // 0x2b724 — -[PlaceLauncher .cxx_construct]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_construct]")]
-pub fn stub_2b724() -> ! {
-    todo!("0x2b724 -[PlaceLauncher .cxx_construct]")
+pub fn stub_2b724() {
+    // delegate of crate::roblox_view (IDA 0x2b724)
+    LAUNCHER.cxx_construct();
 }
 
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
