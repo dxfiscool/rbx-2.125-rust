@@ -480,6 +480,7 @@ pub mod peer;
 pub mod huffman;
 pub mod time;
 pub mod socket;
+pub mod reliability;
 pub mod string_dictionary;
 pub mod id_serializer;
 pub mod functor;

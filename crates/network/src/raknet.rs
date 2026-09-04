@@ -3831,62 +3831,72 @@ pub fn stub_a7090c() -> ! {
 
 // 0xa7092c — __ZN6RakNet16ReliabilityLayerC1Ev
 #[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
-pub fn stub_a7092c() -> ! {
-    todo!("0xa7092c RakNet::ReliabilityLayer::ReliabilityLayer(void)")
+pub fn stub_a7092c() -> crate::reliability::ReliabilityLayer {
+ // IDA 0xa7092c: default construct.
+ crate::reliability::ReliabilityLayer::new()
 }
 
 // 0xa70938 — __ZN6RakNet16ReliabilityLayerC2Ev
 #[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
-pub fn stub_a70938() -> ! {
-    todo!("0xa70938 RakNet::ReliabilityLayer::ReliabilityLayer(void)")
+pub fn stub_a70938() -> crate::reliability::ReliabilityLayer {
+ // IDA 0xa70938: default construct.
+ crate::reliability::ReliabilityLayer::new()
 }
 
 // 0xa7142c — __ZN6RakNet16ReliabilityLayer19InitializeVariablesEv
 #[doc(alias = "RakNet::ReliabilityLayer::InitializeVariables(void)")]
-pub fn stub_a7142c() -> ! {
-    todo!("0xa7142c RakNet::ReliabilityLayer::InitializeVariables(void)")
+pub fn stub_a7142c(layer: &mut crate::reliability::ReliabilityLayer) {
+ // IDA 0xa7142c: zero the regions.
+ layer.init()
 }
 
 // 0xa715f8 — __ZN6RakNet16ReliabilityLayerD1Ev
 #[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
-pub fn stub_a715f8() -> ! {
-    todo!("0xa715f8 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+pub fn stub_a715f8(layer: crate::reliability::ReliabilityLayer) {
+ // IDA 0xa715f8: frees; Rust drops it.
+ drop(layer);
 }
 
 // 0xa71604 — __ZN6RakNet16ReliabilityLayerD2Ev
 #[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
-pub fn stub_a71604() -> ! {
-    todo!("0xa71604 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+pub fn stub_a71604(layer: crate::reliability::ReliabilityLayer) {
+ // IDA 0xa71604: frees; Rust drops it.
+ drop(layer);
 }
 
 // 0xa723c0 — __ZN6RakNet16ReliabilityLayer5ResetEbib
 #[doc(alias = "RakNet::ReliabilityLayer::Reset(bool,int,bool)")]
-pub fn stub_a723c0() -> ! {
-    todo!("0xa723c0 RakNet::ReliabilityLayer::Reset(bool,int,bool)")
+pub fn stub_a723c0(layer: &mut crate::reliability::ReliabilityLayer, full: bool) {
+ // IDA 0xa723c0: free, then reinit when set.
+ layer.reset(full)
 }
 
 // 0xa723f8 — __ZN6RakNet16ReliabilityLayer14SetTimeoutTimeEj
 #[doc(alias = "RakNet::ReliabilityLayer::SetTimeoutTime(unsigned int)")]
-pub fn stub_a723f8() -> ! {
-    todo!("0xa723f8 RakNet::ReliabilityLayer::SetTimeoutTime(unsigned int)")
+pub fn stub_a723f8(layer: &mut crate::reliability::ReliabilityLayer, ms: u32) {
+ // IDA 0xa723f8: store the timeout.
+ layer.set_timeout_time(ms)
 }
 
 // 0xa72400 — __ZN6RakNet16ReliabilityLayer14GetTimeoutTimeEv
 #[doc(alias = "RakNet::ReliabilityLayer::GetTimeoutTime(void)")]
-pub fn stub_a72400() -> ! {
-    todo!("0xa72400 RakNet::ReliabilityLayer::GetTimeoutTime(void)")
+pub fn stub_a72400(layer: &crate::reliability::ReliabilityLayer) -> u32 {
+ // IDA 0xa72400: load the timeout.
+ layer.timeout_time()
 }
 
 // 0xa72408 — __ZN6RakNet16ReliabilityLayer20FreeThreadSafeMemoryEv
 #[doc(alias = "RakNet::ReliabilityLayer::FreeThreadSafeMemory(void)")]
-pub fn stub_a72408() -> ! {
-    todo!("0xa72408 RakNet::ReliabilityLayer::FreeThreadSafeMemory(void)")
+pub fn stub_a72408(layer: &mut crate::reliability::ReliabilityLayer) {
+ // IDA 0xa72408: drain the output queue.
+ layer.free_thread_safe_memory()
 }
 
 // 0xa72d5c — __ZN6RakNet16ReliabilityLayer24ClearPacketsAndDatagramsEv
 #[doc(alias = "RakNet::ReliabilityLayer::ClearPacketsAndDatagrams(void)")]
-pub fn stub_a72d5c() -> ! {
-    todo!("0xa72d5c RakNet::ReliabilityLayer::ClearPacketsAndDatagrams(void)")
+pub fn stub_a72d5c(layer: &mut crate::reliability::ReliabilityLayer) {
+ // IDA 0xa72d5c: packet releases stay engine-side.
+ layer.clear_packets_and_datagrams()
 }
 
 // 0xa72e94 — __ZN6RakNet16ReliabilityLayer38HandleSocketReceiveFromConnectedPlayerEPKcjRNS_13SystemAddressERN14DataStructures4ListIPNS_16PluginInterface2EEEiiPNS_12RakNetRandomEtjyRNS_9BitStreamE
@@ -3931,8 +3941,9 @@ pub fn stub_a74c88() -> ! {
 
 // 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
 #[doc(alias = "RakNet::ReliabilityLayer::Receive(unsigned char **)")]
-pub fn stub_a74d64() -> ! {
-    todo!("0xa74d64 RakNet::ReliabilityLayer::Receive(unsigned char **)")
+pub fn stub_a74d64(layer: &mut crate::reliability::ReliabilityLayer) -> Option<Vec<u8>> {
+ // IDA 0xa74d64: pop or nothing.
+ layer.receive_packet()
 }
 
 // 0xa74dc0 — __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj
