@@ -161,6 +161,58 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Heartbeat` (IDA `0x323238`): the per-frame tick value
+/// carried by `signal<void ()(Heartbeat const&)>`; plain data.
+#[derive(Clone, Copy, Default)]
+pub struct Heartbeat {
+    _tick: u32,
+}
+
+/// Rust model of `RBX::HeartbeatInstance` (IDA `0x323238`): field layout
+/// unmodeled; subscribes its heartbeat handler via `connect`.
+#[derive(Default)]
+pub struct HeartbeatInstance {
+    _opaque: (),
+}
+
+/// Rust model of `boost::_bi::bind_t<void, mf1<void, HeartbeatInstance,
+/// Heartbeat>, list2<value<HeartbeatInstance*>, arg<1>>>` (IDA `0x3233bc`):
+/// the bound target plus the member handler. Twin of the objc-bind shape.
+#[derive(Clone, Copy)]
+pub struct HeartbeatBind {
+    pub func: fn(*const HeartbeatInstance, &Heartbeat),
+    pub target: *const HeartbeatInstance,
+}
+
+/// The bound target travels inside `Signal` closures (`Send + Sync` bounds);
+/// sound under the slot-lifetime contract (the target outlives every slot
+/// that names it — same contract class as the `*mut` link discipline).
+unsafe impl Send for HeartbeatBind {}
+unsafe impl Sync for HeartbeatBind {}
+
+/// Rust model of an `rbx::signals::signal<void ()(Heartbeat const&)>::slot`
+/// link holding the heartbeat bind (IDA `0x323238` connect): same
+/// intrusive-`next` discipline; the callback clears to `None`.
+pub struct HeartbeatSlotNode {
+    pub next: Option<SharedPtr<HeartbeatSlotNode>>,
+    pub bind: Option<HeartbeatBind>,
+}
+
+/// Connection handle returned by the heartbeat `signal::connect` (IDA
+/// `0x323238`): owns the closure's strong ref like `PairConnection`.
+pub struct HeartbeatConnection {
+    pub keep: SharedPtr<dyn Any + Send + Sync>,
+}
+
+/// Rust model of `RBX::InstanceHandle` (IDA `0x322ec8`): a described-object
+/// handle. The `shared_ptr<DescribedBase>` pair collapses into the single
+/// retained pointer word (`operatorLess` compares the `+4` control word and
+/// `empty` the `+0` object word — both collapse into pointer identity here
+/// until `DescribedBase` lands).
+pub struct DescribedHandle {
+    pub ptr: *const (),
+}
+
 /// Rust model of `RBX::AsyncHttpQueue` (IDA `0x2fdf08`): the request queue
 /// behind stats items; threading and dispatch need the queue machinery.
 #[derive(Default)]
@@ -5179,64 +5231,105 @@ pub fn stub_0x313f14(dst: &mut DataModelFunction3, src: &DataModelCallback3) {
 // 0x31410c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0x31410c() -> ! {
-    todo!("0x31410c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_0x31410c(bind: &DataModelCallback3, model: *const DataModel) {
+    // IDA 0x31410c: `void_function_obj_invoker1::invoke` packs the
+    // `DataModel*` arg (disasm 0x314112-0x31411a) and tail-calls the `list3`
+    // operator() (IDA 0x314604, disasm 0x314124). Twin of 0x311e7c.
+    stub_0x314604(bind.func, bind, model);
 }
 
 // 0x314128 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x314128() -> ! {
-    todo!("0x314128 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x314128(dst: &mut DataModelFunction3, src: &DataModelCallback3) -> bool {
+    // IDA 0x314128: `basic_vtable1::assign_to` (no tag): heap-installs via
+    // `assign_functor`; always fits. Twin of 0x311e98.
+    stub_0x313f14(dst, src);
+    true
 }
 
 // 0x3142f4 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x3142f4() -> ! {
-    todo!("0x3142f4 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x3142f4(dst: &mut DataModelFunction3, src: &DataModelCallback3) -> bool {
+    // IDA 0x3142f4: `basic_vtable1::assign_to` with `function_obj_tag`.
+    // Twin of 0x31205c.
+    stub_0x313f14(dst, src);
+    true
 }
 
 // 0x3144bc — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x3144bc() -> ! {
-    todo!("0x3144bc void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x3144bc(src: &DataModelCallback3) -> Box<DataModelCallback3> {
+    // IDA 0x3144bc: `assign_functor` heap-install via memberwise +
+    // `shared_count` copy. Twin of 0x31221c.
+    Box::new(src.clone())
 }
 
 // 0x314604 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEclIPFvS6_SsbENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_0x314604() -> ! {
-    todo!("0x314604 void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
+pub fn stub_0x314604(
+    func: fn(&WeakPtr<ContentFilter>, &str, bool),
+    bind: &DataModelCallback3,
+    _model: *const DataModel,
+) {
+    // IDA 0x314604: weak-lock of the filter (mutex dance, cf. the `0x2b59ec`
+    // family) with skip-on-expired — an expired filter target drops the
+    // callback rather than throwing (documented uncertainty: the locked
+    // region past the tool window may instead `bad_weak_ptr`-throw like the
+    // owner-lock at 0x6ffa10; revisit with full disasm if the path matters);
+    // then `f(bound_weak, bound_string, bound_flag)`. The incoming
+    // `DataModel*` is dead (all list elements are values).
+    if bind.filter.upgrade().is_some() {
+        func(&bind.filter.clone(), &bind.name, bind.flag);
+    }
 }
 
 // 0x322ec8 — __ZN3RBX14InstanceHandleC1EPNS_10Reflection13DescribedBaseE
 #[doc(alias = "RBX::InstanceHandle::InstanceHandle(RBX::Reflection::DescribedBase *)")]
 // was: RBX::InstanceHandle::InstanceHandle(RBX::Reflection::DescribedBase *)
-pub fn stub_0x322ec8() -> ! {
-    todo!("0x322ec8 RBX::InstanceHandle::InstanceHandle(RBX::Reflection::DescribedBase *)")
+pub fn stub_0x322ec8(this: *mut DescribedHandle, target: *const ()) {
+    // IDA 0x322ec8: `shared_from<DescribedBase>(this, a2)` (disasm 0x322ece)
+    // locks the weak owner into the handle and returns `this`; the lock
+    // collapses into the store (model-space contract).
+    // SAFETY: `this` must point to valid uninitialized storage; `target`
+    // must be null or live for the handle's lifetime.
+    unsafe {
+        core::ptr::write(this, DescribedHandle { ptr: target });
+    }
 }
 
 // 0x322ed8 — __ZNK3RBX14InstanceHandle12operatorLessERKS0_
 #[doc(alias = "RBX::InstanceHandle::operatorLess(RBX::InstanceHandle const&)const")]
 // was: RBX::InstanceHandle::operatorLess(RBX::InstanceHandle const&)const
-pub fn stub_0x322ed8() -> ! {
-    todo!("0x322ed8 RBX::InstanceHandle::operatorLess(RBX::InstanceHandle const&)const")
+pub fn stub_0x322ed8(left: &DescribedHandle, right: &DescribedHandle) -> bool {
+    // IDA 0x322ed8: `*(a1 + 4) < *(a2 + 4)` (disasm 0x322ee4) — the control
+    // words; with the pair collapsed into one word this is pointer order.
+    (left.ptr as usize) < (right.ptr as usize)
 }
 
 // 0x322ee8 — __ZNK3RBX14InstanceHandle5emptyEv
 #[doc(alias = "RBX::InstanceHandle::empty(void)const")]
 // was: RBX::InstanceHandle::empty(void)const
-pub fn stub_0x322ee8() -> ! {
-    todo!("0x322ee8 RBX::InstanceHandle::empty(void)const")
+pub fn stub_0x322ee8(this: *const DescribedHandle) -> bool {
+    // IDA 0x322ee8: `*a1 == 0` (disasm 0x322ef2) — null object word.
+    // SAFETY: `this` must point to a valid handle.
+    unsafe { (*this).ptr.is_null() }
 }
 
 // 0x322ef4 — __ZN3RBX14InstanceHandle6linkToEN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
 #[doc(alias = "RBX::InstanceHandle::linkTo(rbx_core::SharedPtr<RBX::Reflection::DescribedBase>)")]
 // was: RBX::InstanceHandle::linkTo(boost::shared_ptr<RBX::Reflection::DescribedBase>)
-pub fn stub_0x322ef4() -> ! {
-    todo!("0x322ef4 RBX::InstanceHandle::linkTo(boost::shared_ptr<RBX::Reflection::DescribedBase>)")
+pub fn stub_0x322ef4(dst: *mut DescribedHandle, src: &DescribedHandle) {
+    // IDA 0x322ef4: thunk into `shared_ptr<DescribedBase>::operator=`
+    // (`attributes: thunk`) — retain, store, release-old; the word copy is
+    // the same ZF-free assignment.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        core::ptr::write(dst, DescribedHandle { ptr: src.ptr });
+    }
 }
 
 // 0x32305c — __ZN3RBX17HeartbeatInstance34onServiceProviderHeartbeatInstanceEPNS_15ServiceProviderES2_
@@ -5249,57 +5342,100 @@ pub fn stub_0x32305c() -> ! {
 // 0x323238 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>> const&)
-pub fn stub_0x323238() -> ! {
-    todo!("0x323238 rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>> const&)")
+pub fn stub_0x323238(sig: &Signal<Heartbeat>, bind: &HeartbeatBind) -> HeartbeatConnection {
+    // IDA 0x323238: `operator new(0x1c)` callable slot (disasm 0x323242-0x323248),
+    // `callable` ctor retaining the bind, slot insert, connection return —
+    // with the concrete-closure `Arc` (cf. the `0x708c08` `Sized` fix).
+    let retained = *bind;
+    // Whole-struct capture: field-precise capture would grab the raw `target`
+    // directly (bypassing the `Send`/`Sync` impls on the bind type).
+    let cb = SharedPtr::new(move |beat: Heartbeat| {
+        let bound = retained;
+        (bound.func)(bound.target, &beat);
+    });
+    sig.connect(cb.clone());
+    HeartbeatConnection { keep: cb }
 }
 
 // 0x3232ac — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x3232ac() -> ! {
-    todo!("0x3232ac rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3232ac(slot: *mut HeartbeatSlotNode) {
+    // IDA 0x3232ac: `callable_slot` D1 — vtable resets (compiler-managed,
+    // disasm 0x3232b0-0x3232bc) + function clear + link release; storage
+    // kept. Same body shape as the triple callslot D1s.
+    // SAFETY: `slot` must point to a valid `HeartbeatSlotNode`.
+    unsafe {
+        (*slot).bind = None;
+        (*slot).next = None;
+    }
 }
 
 // 0x3232d8 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x3232d8() -> ! {
-    todo!("0x3232d8 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3232d8(slot: *mut HeartbeatSlotNode) {
+    // IDA 0x3232d8: `callable_slot` D0 — the D1 body plus `operator delete`.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x3233ac — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
-pub fn stub_0x3233ac() -> ! {
-    todo!("0x3233ac rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+pub fn stub_0x3233ac(slot: &HeartbeatSlotNode, beat: &Heartbeat) {
+    // IDA 0x3233ac: `ADDS R0,#0x10` (disasm 0x3233ac) selects the bind words,
+    // then tail-calls the bind operator() (IDA 0x3233bc, disasm 0x3233ae).
+    if let Some(bind) = &slot.bind {
+        stub_0x3233bc(bind, beat);
+    }
 }
 
 // 0x3233b4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
-pub fn stub_0x3233b4() -> ! {
-    todo!("0x3233b4 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+pub fn stub_0x3233b4(slot: &HeartbeatSlotNode, beat: &Heartbeat) {
+    // IDA 0x3233b4: non-virtual thunk into `callable::call` (IDA 0x3233ac);
+    // the `this` adjustment collapses.
+    stub_0x3233ac(slot, beat);
 }
 
 // 0x3233bc — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")]
 // was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)
-pub fn stub_0x3233bc() -> ! {
-    todo!("0x3233bc void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")
+pub fn stub_0x3233bc(bind: &HeartbeatBind, beat: &Heartbeat) {
+    // IDA 0x3233bc: loads the mf1 callee + bound target (disasm 0x3233bc-0x3233c0),
+    // resolves the member with the virtual-thunk check (`TST R3,#1`, disasm
+    // 0x3233c2-0x323cce — collapses to the direct member here), then the
+    // member call (disasm 0x3233d0). Twin of 0x708a94.
+    (bind.func)(bind.target, beat);
 }
 
 // 0x3233d4 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()
-pub fn stub_0x3233d4() -> ! {
-    todo!("0x3233d4 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_0x3233d4(slot: *mut HeartbeatSlotNode) {
+    // IDA 0x3233d4: `callable` D1 — vtable resets + function clear + link
+    // release; storage kept. Same body as 0x3232ac.
+    // SAFETY: `slot` must point to a valid `HeartbeatSlotNode`.
+    unsafe {
+        (*slot).bind = None;
+        (*slot).next = None;
+    }
 }
 
 // 0x323400 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()
-pub fn stub_0x323400() -> ! {
-    todo!("0x323400 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_0x323400(slot: *mut HeartbeatSlotNode) {
+    // IDA 0x323400: `callable` D0 — the D1 body plus `operator delete`.
+    // Same shape as 0x3232d8.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x352f38 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEii
@@ -5333,29 +5469,40 @@ pub fn stub_0x3622c8() -> ! {
 // 0x362300 — __ZNK3RBX8Instance14verifyAddChildEPKS0_
 #[doc(alias = "RBX::Instance::verifyAddChild(RBX::Instance const*)const")]
 // was: RBX::Instance::verifyAddChild(RBX::Instance const*)const
-pub fn stub_0x362300() -> ! {
-    todo!("0x362300 RBX::Instance::verifyAddChild(RBX::Instance const*)const")
+pub fn stub_0x362300(_this: *const Instance, _child: *const Instance) {
+    // IDA 0x362300: `;` — empty base; subclasses gate adds via overrides.
 }
 
 // 0x362308 — __ZN3RBX8Instance15onChildRemovingEPS0_
 #[doc(alias = "RBX::Instance::onChildRemoving(RBX::Instance*)")]
 // was: RBX::Instance::onChildRemoving(RBX::Instance*)
-pub fn stub_0x362308() -> ! {
-    todo!("0x362308 RBX::Instance::onChildRemoving(RBX::Instance*)")
+pub fn stub_0x362308(_this: *mut Instance, _child: *const Instance) {
+    // IDA 0x362308: `;` — empty base; the reparent path notifies through the
+    // `hooks.removing` override slot instead (cf. 0x6ffc98).
 }
 
 // 0x362310 — __ZN3RBX8Instance17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Instance::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 // was: RBX::Instance::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)
-pub fn stub_0x362310() -> ! {
-    todo!("0x362310 RBX::Instance::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x362310(this: *mut Instance) {
+    // IDA 0x362310: `;` — empty base; subclass overrides run through the
+    // `on_property_changed` hook.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        if let Some(hook) = (*this).hooks.on_property_changed {
+            hook(this);
+        }
+    }
 }
 
 // 0x362368 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEE11getCreatorsEv
 #[doc(alias = "RBX::AbstractFactoryProduct<RBX::Instance>::getCreators(void)")]
 // was: RBX::AbstractFactoryProduct<RBX::Instance>::getCreators(void)
-pub fn stub_0x362368() -> ! {
-    todo!("0x362368 RBX::AbstractFactoryProduct<RBX::Instance>::getCreators(void)")
+pub fn stub_0x362368() {
+    // IDA 0x362368: guard-checked once-init zeroing the creator map plus
+    // `atexit` teardown registration (disasm 0x362382-0x3623be). The
+    // `CREATOR_TABLE` static in `generated_05` carries the same table with
+    // const-init, so initialization collapses to nothing observable.
 }
 
 // 0x362448 — __ZN5boost10shared_ptrIN3RBX6CameraEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_

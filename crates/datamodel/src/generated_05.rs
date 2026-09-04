@@ -81,6 +81,8 @@ pub struct InstanceHooks {
     pub child_removed: Option<Hook2>,
     pub ancestry_changed: Option<Hook3>,
     pub property_changed: Option<fn(*mut Instance, PropertyKind)>,
+    /// `onPropertyChanged` override slot (IDA `0x362310`, empty in base).
+    pub on_property_changed: Option<fn(*mut Instance)>,
     pub on_child_changed: Option<ChildChangedHook>,
     pub data_cost: Option<CostHook>,
     pub read_node: Option<ReadNodeHook>,
