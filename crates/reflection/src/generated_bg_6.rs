@@ -42,6 +42,19 @@ pub(crate) fn c_atoi(input: &str) -> i32 {
 pub(crate) fn parse_bool_value(input: &str) -> bool {
     input == "true" || input == "True"
 }
+/// Gap-filler PlaceLauncher observable state (IDA 0x246d8-0x24a58).
+/// The singleton handle, teleport-callback count, playing flag, last
+/// place id and failure-forward count record here; the three
+/// notification names are binary constants returned directly.
+pub(crate) static PLACE_LAUNCHER_HANDLE: std::sync::atomic::AtomicUsize =
+    std::sync::atomic::AtomicUsize::new(0);
+pub(crate) static PLACE_TELEPORT_CALLBACKS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_IS_PLAYING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_LAST_ID: std::sync::atomic::AtomicI32 = std::sync::atomic::AtomicI32::new(0);
+pub(crate) static PLACE_FAILURE_FORWARDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
@@ -416,202 +429,308 @@ pub fn stub_0x24024(value: &str) {
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc")]
-pub fn stub_0x2415c() -> ! {
-    todo!("0x2415c iOSSettingsService::ReadValueCacheUIWebViews(char const*)")
+pub fn stub_0x2415c(value: &str) -> bool {
+    // IDA 0x2415c: `ReadValueCacheUIWebViews` parses the value with
+    // `SimpleJSON::ParseBool` into the service member. Same shape as
+    // stub_0x23bc8.
+    let parsed = parse_bool_value(value);
+    record_setting_value("CacheUIWebViews", value);
+    parsed
 }
 
 // 0x24178 — __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc")]
-pub fn stub_0x24178() -> ! {
-    todo!("0x24178 iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")
+pub fn stub_0x24178(value: &str) -> i32 {
+    // IDA 0x24178: `ReadValueThumbstickControlStyle` parses the value
+    // with `atoi` into the service member. Same shape as stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("ThumbstickControlStyle", value);
+    parsed
 }
 
 // 0x24194 — __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc")]
-pub fn stub_0x24194() -> ! {
-    todo!("0x24194 iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")
+pub fn stub_0x24194(value: &str) -> bool {
+    // IDA 0x24194: `ReadValueFreeMemoryCheckerActive` parses the value
+    // with `SimpleJSON::ParseBool` into the service member. Same shape
+    // as stub_0x23bc8.
+    let parsed = parse_bool_value(value);
+    record_setting_value("FreeMemoryCheckerActive", value);
+    parsed
 }
 
 // 0x241b0 — __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc")]
-pub fn stub_0x241b0() -> ! {
-    todo!("0x241b0 iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")
+pub fn stub_0x241b0(value: &str) -> i32 {
+    // IDA 0x241b0: `ReadValueFreeMemoryCheckerRateMilliSeconds`
+    // parses the value with `atoi` into the service member. Same shape
+    // as stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("FreeMemoryCheckerRateMilliSeconds", value);
+    parsed
 }
 
 // 0x241cc — __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc")]
-pub fn stub_0x241cc() -> ! {
-    todo!("0x241cc iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")
+pub fn stub_0x241cc(value: &str) -> i32 {
+    // IDA 0x241cc: `ReadValueFreeMemoryCheckerThresholdKiloBytes`
+    // parses the value with `atoi` into the service member. Same shape
+    // as stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("FreeMemoryCheckerThresholdKiloBytes", value);
+    parsed
 }
 
 // 0x241e8 — __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc")]
-pub fn stub_0x241e8() -> ! {
-    todo!("0x241e8 iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")
+pub fn stub_0x241e8(value: &str) -> bool {
+    // IDA 0x241e8: `ReadValueMemoryBouncerActive` parses the value with
+    // `SimpleJSON::ParseBool` into the service member. Same shape as
+    // stub_0x23bc8.
+    let parsed = parse_bool_value(value);
+    record_setting_value("MemoryBouncerActive", value);
+    parsed
 }
 
 // 0x24204 — __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc")]
-pub fn stub_0x24204() -> ! {
-    todo!("0x24204 iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")
+pub fn stub_0x24204(value: &str) -> i32 {
+    // IDA 0x24204: `ReadValueMemoryBouncerEnforceRateMilliSeconds`
+    // parses the value with `atoi` into the service member. Same shape
+    // as stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("MemoryBouncerEnforceRateMilliSeconds", value);
+    parsed
 }
 
 // 0x24220 — __ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc")]
-pub fn stub_0x24220() -> ! {
-    todo!("0x24220 iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")
+pub fn stub_0x24220(value: &str) -> i32 {
+    // IDA 0x24220: `ReadValueMemoryBouncerThresholdKiloBytes` parses
+    // the value with `atoi` into the service member. Same shape as
+    // stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("MemoryBouncerThresholdKiloBytes", value);
+    parsed
 }
 
 // 0x2423c — __ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc")]
-pub fn stub_0x2423c() -> ! {
-    todo!("0x2423c iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")
+pub fn stub_0x2423c(value: &str) -> i32 {
+    // IDA 0x2423c: `ReadValueMemoryBouncerLimitMegaBytes` parses the
+    // value with `atoi` into the service member. Same shape as
+    // stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("MemoryBouncerLimitMegaBytes", value);
+    parsed
 }
 
 // 0x24258 — __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
 #[doc(alias = "__ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc")]
-pub fn stub_0x24258() -> ! {
-    todo!("0x24258 iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")
+pub fn stub_0x24258(value: &str) -> i32 {
+    // IDA 0x24258:
+    // `ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices` parses the
+    // value with `atoi` into the service member. Same shape as
+    // stub_0x239ec.
+    let parsed = c_atoi(value);
+    record_setting_value("MemoryBouncerLimitMegaBytesForLowMemDevices", value);
+    parsed
 }
 
 // 0x24274 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_")]
-pub fn stub_0x24274() -> ! {
-    todo!("0x24274 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,void (*)(char const*)>>,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_0x24274() {
+    // IDA 0x24274: `std::_Rb_tree::_M_insert_unique` (hinted) — tree
+    // node insertion for the settings map. STL glue; the map itself
+    // records via `IOS_SETTINGS_KEYS`. No explicit body.
 }
 
 // 0x24360 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE9_M_insertEPSt18_Rb_tree_node_baseSE_RKS6_")]
-pub fn stub_0x24360() -> ! {
-    todo!("0x24360 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_0x24360() {
+    // IDA 0x24360: `std::_Rb_tree::_M_insert` — tree node splice for
+    // the settings map. STL glue; no explicit body.
 }
 
 // 0x243b0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE16_M_insert_uniqueERKS6_")]
-pub fn stub_0x243b0() -> ! {
-    todo!("0x243b0 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_insert_unique(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_0x243b0() {
+    // IDA 0x243b0: `std::_Rb_tree::_M_insert_unique` (unhinted) — tree
+    // node insertion for the settings map. STL glue; no explicit body.
 }
 
 // 0x24434 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE14_M_create_nodeERKS6_")]
-pub fn stub_0x24434() -> ! {
-    todo!("0x24434 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_create_node(std::pair<std::string const,void (*)(char const*)> const&)")
+pub fn stub_0x24434() {
+    // IDA 0x24434: `std::_Rb_tree::_M_create_node` — node allocation
+    // for the settings map. STL glue; no explicit body.
 }
 
 // 0x24510 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_
 // type: int __fastcall(int, std::string *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE11lower_boundERS1_")]
-pub fn stub_0x24510() -> ! {
-    todo!("0x24510 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::lower_bound(std::string const&)")
+pub fn stub_0x24510() {
+    // IDA 0x24510: `std::_Rb_tree::lower_bound` — key search for the
+    // settings map. STL glue; no explicit body.
 }
 
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
 #[doc(alias = "__GLOBAL__I_a_7")]
-pub fn stub_0x24540() -> ! {
-    todo!("0x24540 global constructor keyed to_a_7")
+pub fn stub_0x24540() {
+    // IDA 0x24540: `__GLOBAL__I_a_7` — boost category singletons,
+    // `std::ios_base::Init` and `exception_ptr`/pool guards (same
+    // cutover as stub_0x1d870; decompile unavailable, init thunk). No
+    // body.
 }
 
 // 0x246d8 — -[PlaceLauncher init]
 // type: PlaceLauncher *__cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher init]")]
-pub fn stub_0x246d8() -> ! {
-    todo!("0x246d8 -[PlaceLauncher init]")
+pub fn stub_0x246d8() {
+    // IDA 0x246d8: `init` supers (0x2473c-0x24746, no target here),
+    // zeroes the view/warning/playing/place fields (0x24748-0x24762),
+    // installs a `Teleporter` (0x24764-0x247b0,
+    // `TeleportService::SetCallback`, counted) and publishes the three
+    // `RBX*Notification` names (0x247b2-0x2482c). Allocation + service
+    // wiring have no target here; the callback + field reset record.
+    PLACE_IS_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_LAST_ID.store(0, std::sync::atomic::Ordering::SeqCst);
+    PLACE_TELEPORT_CALLBACKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x248dc — -[PlaceLauncher dealloc]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher dealloc]")]
-pub fn stub_0x248dc() -> ! {
-    todo!("0x248dc -[PlaceLauncher dealloc]")
+pub fn stub_0x248dc() {
+    // IDA 0x248dc: `dealloc` clears the teleport callback, drops the
+    // teleporter, releases the three notification names
+    // (0x248dc-0x2494e), then super dealloc (0x24950-0x2495a). Release
+    // is drop glue; the callback + playing cells reset.
+    PLACE_TELEPORT_CALLBACKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    PLACE_IS_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_LAUNCHER_HANDLE.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x24974 — +[PlaceLauncher sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[PlaceLauncher sharedInstance]")]
-pub fn stub_0x24974() -> ! {
-    todo!("0x24974 +[PlaceLauncher sharedInstance]")
+pub fn stub_0x24974() -> usize {
+    // IDA 0x24974: `sharedInstance` runs the alloc/init block once
+    // (0x24974-0x249cc, stub_0x249d0) and returns the singleton
+    // (0x249cc). `dispatch_once` collapses to get-or-init on the
+    // handle cell.
+    let mut handle = PLACE_LAUNCHER_HANDLE.load(std::sync::atomic::Ordering::SeqCst);
+    if handle == 0 {
+        handle = stub_0x249d0();
+        PLACE_LAUNCHER_HANDLE.store(handle, std::sync::atomic::Ordering::SeqCst);
+    }
+    handle
 }
 
 // 0x249d0 — ___31+[PlaceLauncher sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[PlaceLauncher sharedInstance]_block_invoke")]
-pub fn stub_0x249d0() -> ! {
-    todo!("0x249d0 ___31+[PlaceLauncher sharedInstance]_block_invoke")
+pub fn stub_0x249d0() -> usize {
+    // IDA 0x249d0: the once block allocs + inits the launcher
+    // (0x249d0-0x249fc) and publishes it (0x249f8). Allocation is drop
+    // glue; init runs for its field/callback observables and the cell
+    // takes a nonzero handle.
+    stub_0x246d8();
+    1
 }
 
 // 0x24a04 — ___copy_helper_block__4
 #[doc(alias = "___copy_helper_block__4")]
-pub fn stub_0x24a04() -> ! {
-    todo!("0x24a04 ___copy_helper_block__4")
+pub fn stub_0x24a04(_dst: usize, _src: usize) {
+    // IDA 0x24a04: `__copy_helper_block__4` — one `_Block_object_assign`
+    // retain (same shape as stub_0x18094). No explicit body.
 }
 
 // 0x24a10 — ___destroy_helper_block__4
 #[doc(alias = "___destroy_helper_block__4")]
-pub fn stub_0x24a10() -> ! {
-    todo!("0x24a10 ___destroy_helper_block__4")
+pub fn stub_0x24a10(_block: usize) {
+    // IDA 0x24a10: `__destroy_helper_block__4` — one
+    // `_Block_object_dispose` release (same shape as stub_0x180a0). No
+    // explicit body.
 }
 
 // 0x24a18 — -[PlaceLauncher getIsCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getIsCurrentlyPlayingGame]")]
-pub fn stub_0x24a18() -> ! {
-    todo!("0x24a18 -[PlaceLauncher getIsCurrentlyPlayingGame]")
+pub fn stub_0x24a18() -> bool {
+    // IDA 0x24a18: `getIsCurrentlyPlayingGame` returns the flag
+    // (0x24a18-0x24a24).
+    PLACE_IS_PLAYING.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x24a28 — -[PlaceLauncher getDidLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getDidLeaveGameNotification]")]
-pub fn stub_0x24a28() -> ! {
-    todo!("0x24a28 -[PlaceLauncher getDidLeaveGameNotification]")
+pub fn stub_0x24a28() -> &'static str {
+    // IDA 0x24a28: `getDidLeaveGameNotification` returns the
+    // `RBXDidLeaveGameNotification` name (0x24a28-0x24a34, constant).
+    "RBXDidLeaveGameNotification"
 }
 
 // 0x24a38 — -[PlaceLauncher getStartLeaveGameNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getStartLeaveGameNotification]")]
-pub fn stub_0x24a38() -> ! {
-    todo!("0x24a38 -[PlaceLauncher getStartLeaveGameNotification]")
+pub fn stub_0x24a38() -> &'static str {
+    // IDA 0x24a38: `getStartLeaveGameNotification` returns the
+    // `RBXStartLeaveGameNotification` name (0x24a38-0x24a44, constant).
+    "RBXStartLeaveGameNotification"
 }
 
 // 0x24a48 — -[PlaceLauncher getGameFinishedLoadingNotification]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher getGameFinishedLoadingNotification]")]
-pub fn stub_0x24a48() -> ! {
-    todo!("0x24a48 -[PlaceLauncher getGameFinishedLoadingNotification]")
+pub fn stub_0x24a48() -> &'static str {
+    // IDA 0x24a48: `getGameFinishedLoadingNotification` returns the
+    // `RBXGameFinishedLoadingNotification` name (0x24a48-0x24a58,
+    // constant).
+    "RBXGameFinishedLoadingNotification"
 }
 
 // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher handleStartGameFailure]")]
-pub fn stub_0x24a58() -> ! {
-    todo!("0x24a58 -[PlaceLauncher handleStartGameFailure]")
+pub fn stub_0x24a58(has_fallback_controller: bool) {
+    // IDA 0x24a58: `handleStartGameFailure` forwards to the last
+    // non-game controller when present (0x24a58-0x24a84, counted) and
+    // clears the playing flag (0x24a86-0x24a8e). The controller query
+    // collapses into a parameter.
+    if has_fallback_controller {
+        PLACE_FAILURE_FORWARDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    PLACE_IS_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x24ab0 — -[PlaceLauncher prepareGame]
