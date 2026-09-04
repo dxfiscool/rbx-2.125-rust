@@ -948,12 +948,23 @@ pub struct UnlockAllVerb {
 }
 
 /// Rust model of `RBX::Reflection::EnumDesc<T>` (IDA `0x41d3d0`): the
-/// name/value table built by `addPair` in each `EnumDesc::C2`; the live
-/// reflection registry lands elsewhere, so construction collapses into the
-/// static table.
+/// name/value table built by `addPair` (IDA `0x431b48`); the live reflection
+/// registry lands elsewhere, so the table itself is the model.
 pub struct EnumDesc {
     pub name: &'static str,
-    pub pairs: &'static [(i32, &'static str)],
+    pub pairs: Vec<(i32, &'static str)>,
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<DataModel, ...>` (IDA
+/// `0x431924`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct DataModelRefDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<DataModel, ...>` (IDA
+/// `0x4319c0`): same storage-only family treatment as `DataModelFuncDesc`.
+pub struct DataModelEnumPropDesc {
+    _opaque: (),
 }
 
 /// Rust model of the synchronization arbiter behind
@@ -15306,7 +15317,7 @@ pub fn stub_0x41d3d0() -> EnumDesc {
     // IDA 0x41d3d0: `EnumDesc<CreatorType>::C2` registers the pairs
     // `(0, User)` (decomp 0x41d4b4) and `(1, Group)` (decomp 0x41d4ca); the
     // registry insert collapses into the static table.
-    EnumDesc { name: "CreatorType", pairs: &[(0, "User"), (1, "Group")] }
+    EnumDesc { name: "CreatorType", pairs: vec![(0, "User"), (1, "Group")] }
 }
 
 // 0x41d590 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEEC2Ev
@@ -15317,7 +15328,7 @@ pub fn stub_0x41d590() -> EnumDesc {
     // into the static table.
     EnumDesc {
         name: "Genre",
-        pairs: &[
+        pairs: vec![
             (0, "All"),
             (1, "TownAndCity"),
             (2, "Fantasy"),
@@ -15342,7 +15353,7 @@ pub fn stub_0x41d864() -> EnumDesc {
     // IDA 0x41d864: `EnumDesc<GearGenreSetting>::C2` registers
     // `(0, AllGenres)` (decomp 0x41d948) and `(1, MatchingGenreOnly)` (decomp
     // 0x41d95e); the registry insert collapses into the static table.
-    EnumDesc { name: "GearGenreSetting", pairs: &[(0, "AllGenres"), (1, "MatchingGenreOnly")] }
+    EnumDesc { name: "GearGenreSetting", pairs: vec![(0, "AllGenres"), (1, "MatchingGenreOnly")] }
 }
 
 // 0x41da24 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEEC2Ev
@@ -15353,7 +15364,7 @@ pub fn stub_0x41da24() -> EnumDesc {
     // collapses into the static table.
     EnumDesc {
         name: "GearType",
-        pairs: &[
+        pairs: vec![
             (0, "MeleeWeapons"),
             (1, "RangedWeapons"),
             (2, "Explosives"),
@@ -15373,7 +15384,7 @@ pub fn stub_0x41dc84() -> EnumDesc {
     // IDA 0x41dc84: `EnumDesc<SaveFilter>::C2` registers `(2, SaveAll)`
     // (decomp 0x41dd68), `(0, SaveWorld)` (decomp 0x41dd7e), `(1, SaveGame)`
     // (decomp 0x41dd94); the registry insert collapses into the static table.
-    EnumDesc { name: "SaveFilter", pairs: &[(2, "SaveAll"), (0, "SaveWorld"), (1, "SaveGame")] }
+    EnumDesc { name: "SaveFilter", pairs: vec![(2, "SaveAll"), (0, "SaveWorld"), (1, "SaveGame")] }
 }
 
 // 0x41de60 — __ZN3RBX15StringConverterINS_9DataModel11CreatorTypeEE14convertToValueERKSsRS2_
@@ -16328,15 +16339,19 @@ pub fn stub_0x4315b8(_desc: *mut DataModelFuncDesc) {
 // 0x431618 — __ZNK3RBX9DataModel19getIsPersonalServerEv
 #[doc(alias = "RBX::DataModel::getIsPersonalServer(void)const")]
 // was: RBX::DataModel::getIsPersonalServer(void)const
-pub fn stub_0x431618() -> ! {
-    todo!("0x431618 RBX::DataModel::getIsPersonalServer(void)const")
+pub fn stub_0x431618(model: &DataModel) -> bool {
+    // IDA 0x431618: returns the personal-server flag (the byte at `+3109`
+    // stored by 0x431620).
+    model.personal_server
 }
 
 // 0x431620 — __ZN3RBX9DataModel19setIsPersonalServerEb
 #[doc(alias = "RBX::DataModel::setIsPersonalServer(bool)")]
 // was: RBX::DataModel::setIsPersonalServer(bool)
-pub fn stub_0x431620() -> ! {
-    todo!("0x431620 RBX::DataModel::setIsPersonalServer(bool)")
+pub fn stub_0x431620(model: &mut DataModel, enabled: bool) {
+    // IDA 0x431620: stores the flag at `this + 3109` (decomp 0x431620) and
+    // returns `this`; the store is the observable half.
+    model.personal_server = enabled;
 }
 
 // 0x431628 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEbED1Ev
@@ -16366,8 +16381,10 @@ pub fn stub_0x43164c(_desc: *mut DataModelYieldDesc) {
 // 0x431768 — __ZN3RBX9DataModel22setUiMessageBrickCountEv
 #[doc(alias = "RBX::DataModel::setUiMessageBrickCount(void)")]
 // was: RBX::DataModel::setUiMessageBrickCount(void)
-pub fn stub_0x431768() -> ! {
-    todo!("0x431768 RBX::DataModel::setUiMessageBrickCount(void)")
+pub fn stub_0x431768(model: &mut DataModel) {
+    // IDA 0x431768: assigns `"[[[progress]]]"` to the ui message at `+2988`
+    // (decomp 0x431768); same field as 0x41c284.
+    model.ui_message = "[[[progress]]]".to_owned();
 }
 
 // 0x43177c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EED1Ev
@@ -16445,29 +16462,46 @@ pub fn stub_0x4318d4(_desc: *mut DataModelFuncDesc) {
 // 0x43191c — __ZNK3RBX9DataModel12getWorkspaceEv
 #[doc(alias = "RBX::DataModel::getWorkspace(void)const")]
 // was: RBX::DataModel::getWorkspace(void)const
-pub fn stub_0x43191c() -> ! {
-    todo!("0x43191c RBX::DataModel::getWorkspace(void)const")
+pub fn stub_0x43191c(model: *const DataModel) -> *const crate::workspace::Workspace {
+    // IDA 0x43191c: returns the workspace link at word `+734` (decomp
+    // 0x431920); null until model setup fills it.
+    // SAFETY: `model` must point to a valid `DataModel`.
+    unsafe { (*model).workspace }
 }
 
 // 0x431924 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()
-pub fn stub_0x431924() -> ! {
-    todo!("0x431924 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()")
+pub fn stub_0x431924(_desc: *mut DataModelRefDesc) {
+    // IDA 0x431924: `RefPropDescriptor<DataModel, Workspace>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431950 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()
-pub fn stub_0x431950() -> ! {
-    todo!("0x431950 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x431950(_desc: *mut DataModelRefDesc) {
+    // IDA 0x431950: `RefPropDescriptor<DataModel, Instance>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x431924.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x43197c — __ZNK3RBX9DataModel10getPlaceIDEv
 #[doc(alias = "RBX::DataModel::getPlaceID(void)const")]
 // was: RBX::DataModel::getPlaceID(void)const
-pub fn stub_0x43197c() -> ! {
-    todo!("0x43197c RBX::DataModel::getPlaceID(void)const")
+pub fn stub_0x43197c(model: &DataModel) -> i32 {
+    // IDA 0x43197c: returns the place id at word `+863` (decomp 0x431980) —
+    // the `place_id` field.
+    model.place_id
 }
 
 // 0x431984 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEiED1Ev
@@ -16480,64 +16514,96 @@ pub fn stub_0x431984() -> ! {
 // 0x4319a8 — __ZNK3RBX9DataModel15getPlaceVersionEv
 #[doc(alias = "RBX::DataModel::getPlaceVersion(void)const")]
 // was: RBX::DataModel::getPlaceVersion(void)const
-pub fn stub_0x4319a8() -> ! {
-    todo!("0x4319a8 RBX::DataModel::getPlaceVersion(void)const")
+pub fn stub_0x4319a8(model: &DataModel) -> i32 {
+    // IDA 0x4319a8: returns the place version at word `+865` — the
+    // `place_version` field. Same shape as 0x43197c.
+    model.place_version
 }
 
 // 0x4319b0 — __ZNK3RBX9DataModel12getCreatorIDEv
 #[doc(alias = "RBX::DataModel::getCreatorID(void)const")]
 // was: RBX::DataModel::getCreatorID(void)const
-pub fn stub_0x4319b0() -> ! {
-    todo!("0x4319b0 RBX::DataModel::getCreatorID(void)const")
+pub fn stub_0x4319b0(model: &DataModel) -> i32 {
+    // IDA 0x4319b0: returns the creator id at word `+866` — the `creator_id`
+    // field. Same shape as 0x43197c.
+    model.creator_id
 }
 
 // 0x4319b8 — __ZNK3RBX9DataModel14getCreatorTypeEv
 #[doc(alias = "RBX::DataModel::getCreatorType(void)const")]
 // was: RBX::DataModel::getCreatorType(void)const
-pub fn stub_0x4319b8() -> ! {
-    todo!("0x4319b8 RBX::DataModel::getCreatorType(void)const")
+pub fn stub_0x4319b8(model: &DataModel) -> i32 {
+    // IDA 0x4319b8: returns the creator type at word `+867` — the
+    // `creator_type` field. Same shape as 0x43197c.
+    model.creator_type
 }
 
 // 0x4319c0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()
-pub fn stub_0x4319c0() -> ! {
-    todo!("0x4319c0 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()")
+pub fn stub_0x4319c0(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x4319c0: `EnumPropDescriptor<DataModel, CreatorType>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4319e4 — __ZNK3RBX9DataModel8getGenreEv
 #[doc(alias = "RBX::DataModel::getGenre(void)const")]
 // was: RBX::DataModel::getGenre(void)const
-pub fn stub_0x4319e4() -> ! {
-    todo!("0x4319e4 RBX::DataModel::getGenre(void)const")
+pub fn stub_0x4319e4(model: &DataModel) -> i32 {
+    // IDA 0x4319e4: returns the genre at word `+868` — the `genre` field.
+    // Same shape as 0x43197c.
+    model.genre
 }
 
 // 0x4319ec — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()
-pub fn stub_0x4319ec() -> ! {
-    todo!("0x4319ec RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")
+pub fn stub_0x4319ec(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x4319ec: `EnumPropDescriptor<DataModel, Genre>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x4319c0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431a10 — __ZNK3RBX9DataModel19getGearGenreSettingEv
 #[doc(alias = "RBX::DataModel::getGearGenreSetting(void)const")]
 // was: RBX::DataModel::getGearGenreSetting(void)const
-pub fn stub_0x431a10() -> ! {
-    todo!("0x431a10 RBX::DataModel::getGearGenreSetting(void)const")
+pub fn stub_0x431a10(model: &DataModel) -> i32 {
+    // IDA 0x431a10: returns the gear-genre setting at word `+869` — the
+    // `gear_genre` field. Same shape as 0x43197c.
+    model.gear_genre
 }
 
 // 0x431a18 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()
-pub fn stub_0x431a18() -> ! {
-    todo!("0x431a18 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()")
+pub fn stub_0x431a18(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x431a18: `EnumPropDescriptor<DataModel, GearGenreSetting>::D1` —
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x4319c0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431a3c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFbNS2_8GearTypeEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(RBX::DataModel::GearType),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(RBX::DataModel::GearType),1>::~BoundFuncDesc()
-pub fn stub_0x431a3c() -> ! {
-    todo!("0x431a3c RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(RBX::DataModel::GearType),1>::~BoundFuncDesc()")
+pub fn stub_0x431a3c(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431a3c: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }// 0x431a7c — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::DataModel::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::DataModel,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::DataModel::*>::~EventDesc()
@@ -16548,43 +16614,65 @@ pub fn stub_0x431a7c() -> ! {
 // 0x431aa0 — __ZNK3RBX9DataModel8getJobIdEv
 #[doc(alias = "RBX::DataModel::getJobId(void)const")]
 // was: RBX::DataModel::getJobId(void)const
-pub fn stub_0x431aa0() -> ! {
-    todo!("0x431aa0 RBX::DataModel::getJobId(void)const")
+pub fn stub_0x431aa0(model: &DataModel) -> String {
+    // IDA 0x431aa0: returns the job-id string at `+3184` (decomp 0x431aac) —
+    // the `job_id` field.
+    model.job_id.clone()
 }
 
 // 0x431ab0 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::~PropDescriptor()
-pub fn stub_0x431ab0() -> ! {
-    todo!("0x431ab0 RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::~PropDescriptor()")
+pub fn stub_0x431ab0(_desc: *mut DataModelPropDesc) {
+    // IDA 0x431ab0: `PropDescriptor<DataModel, string>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431628.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431ad4 — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()
-pub fn stub_0x431ad4() -> ! {
-    todo!("0x431ad4 RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()")
+pub fn stub_0x431ad4(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431ad4: `EventDesc<DataModel, ...>::D1` — memberwise teardown;
+    // dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431af8 — __ZN3RBX9DataModel15getIsGameLoadedEv
 #[doc(alias = "RBX::DataModel::getIsGameLoaded(void)")]
 // was: RBX::DataModel::getIsGameLoaded(void)
-pub fn stub_0x431af8() -> ! {
-    todo!("0x431af8 RBX::DataModel::getIsGameLoaded(void)")
+pub fn stub_0x431af8(model: &DataModel) -> bool {
+    // IDA 0x431af8: returns the loaded flag at `+3108` (decomp 0x431afc) —
+    // the `game_loaded` field.
+    model.game_loaded
 }
 
 // 0x431b00 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()
-pub fn stub_0x431b00() -> ! {
-    todo!("0x431b00 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+pub fn stub_0x431b00(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x431b00: `BoundFuncDesc<DataModel, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release. Twin of 0x431288.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x431b48 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)
-pub fn stub_0x431b48() -> ! {
-    todo!("0x431b48 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")
+pub fn stub_0x431b48(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x431b48: `EnumDesc<CreatorType>::addPair` — interns the name and
+    // pushes the `(value, name)` pair into the table (decomp head past the
+    // frame setup); the interning collapses into the `&'static str` lifetime.
+    desc.pairs.push((value, name));
 }
 
 // 0x431ea8 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel11CreatorTypeEEERT_v
@@ -16597,8 +16685,9 @@ pub fn stub_0x431ea8() -> ! {
 // 0x432094 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)
-pub fn stub_0x432094() -> ! {
-    todo!("0x432094 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")
+pub fn stub_0x432094(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x432094: `EnumDesc<Genre>::addPair` — same push shape as 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x4323f4 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel5GenreEEERT_v

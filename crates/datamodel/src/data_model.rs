@@ -54,6 +54,14 @@ pub struct DataModel {
     /// Hack-flags vector ORed by `allHackFlagsOredTogether` (IDA `0x430df4`,
     /// mutex at `+3116`).
     pub hack_flags: Vec<i32>,
+    /// Workspace link at word `+734` behind `getWorkspace` (IDA `0x43191c`);
+    /// filled by model setup, null until then.
+    pub workspace: *const crate::workspace::Workspace,
+    /// Job-id string at `+3184` behind `getJobId` (IDA `0x431aa0`).
+    pub job_id: String,
+    /// Byte `+3109` behind `setIsPersonalServer` (IDA `0x431620`) /
+    /// `getIsPersonalServer` (IDA `0x431618`).
+    pub personal_server: bool,
 }
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
