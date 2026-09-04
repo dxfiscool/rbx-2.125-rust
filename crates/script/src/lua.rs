@@ -3394,6 +3394,89 @@ fn rbx_ray_unit(ray: &LuaRbxRay) -> LuaRbxRay {
     }
 }
 
+/// `luaL_checkudata(L, index, Vector3int16)` host check behind
+/// [`stub_0x270f80`]: a missing slot or a wrong-typed slot throws, like the
+/// C++ `luaL_checkudata` error.
+fn check_vector3i16_slot(thread: &LuaThreadState, index: usize) -> LuaVector3i16 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR3INT16 => match &ud.payload {
+            LuaUserdataPayload::Vector3i16(v) => *v,
+            _ => panic!("Vector3int16 expected"),
+        },
+        _ => panic!("Vector3int16 expected"),
+    }
+}
+
+/// Non-throwing `Bridge<Vector3>::getValue` host check behind the
+/// [`stub_0x271700`]/[`stub_0x271804`] scalar-vs-vector splits (IDA
+/// 0x271730/0x271744 and 0x27182e/0x271842): class-tag plus payload match,
+/// `None` where the C++ returns 0.
+fn vector3_get_value(thread: &LuaThreadState, index: usize) -> Option<LuaVector3> {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::VECTOR3 => match &ud.payload {
+            LuaUserdataPayload::Vector3(v) => Some(*v),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
+/// `RBX::normalIdToVector3` (IDA 0x35d1e8): cases 0..5 are the six axis unit
+/// vectors behind guarded statics; the default arm hits
+/// `ReleaseAssert("0", NormalId.cpp:268)` and returns `Vector3::zero`.
+fn normal_id_to_vector3(value: i32) -> LuaVector3 {
+    match value {
+        0 => LuaVector3 { x: 1.0, y: 0.0, z: 0.0 },
+        1 => LuaVector3 { x: 0.0, y: 1.0, z: 0.0 },
+        2 => LuaVector3 { x: 0.0, y: 0.0, z: 1.0 },
+        3 => LuaVector3 { x: -1.0, y: 0.0, z: 0.0 },
+        4 => LuaVector3 { x: 0.0, y: -1.0, z: 0.0 },
+        5 => LuaVector3 { x: 0.0, y: 0.0, z: -1.0 },
+        _ => {
+            assert!(
+                false,
+                "0 file: /Volumes/MacintoshHD2/Developer/buildAgent/work/565213a28ede2fde/Client/App/util/NormalId.cpp line: 268"
+            );
+            LuaVector3::default()
+        }
+    }
+}
+
+/// `RBX::Region3::init` host projection (IDA 0x816d64): identity rotation,
+/// center `(min + max) / 2` at +36, `max - min` size at +48.
+fn region3_cframe(region: &LuaRegion3) -> LuaCoordinateFrame {
+    LuaCoordinateFrame {
+        position: LuaVector3 {
+            x: (region.min.x + region.max.x) * 0.5,
+            y: (region.min.y + region.max.y) * 0.5,
+            z: (region.min.z + region.max.z) * 0.5,
+        },
+        rotation: [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]],
+    }
+}
+
+/// `max - min` size lane behind the `"Size"` arm of [`stub_0x270d8c`]
+/// (IDA 0x270e0e reads the +48 size triple).
+fn region3_size(region: &LuaRegion3) -> LuaVector3 {
+    LuaVector3 {
+        x: region.max.x - region.min.x,
+        y: region.max.y - region.min.y,
+        z: region.max.z - region.min.z,
+    }
+}
+
+/// `RBX::Math::fuzzyEq(Vector3, Vector3, float)` (IDA 0x3580c0): per lane an
+/// exactly-unequal pair still passes when
+/// `|a - b| <= (|a| + 1) * eps`.
+fn vector3_fuzzy_eq(a: &LuaVector3, b: &LuaVector3, eps: f32) -> bool {
+    for (x, y) in [(a.x, b.x), (a.y, b.y), (a.z, b.z)] {
+        if x != y && (x - y).abs() > (x.abs() + 1.0) * eps {
+            return false;
+        }
+    }
+    true
+}
+
 /// Length guard behind [`stub_0x270230`] (IDA 0x2702a0): `0x30D40` (200000).
 pub const SUPER_LONG_STRING_LIMIT: usize = 0x30D40;
 
@@ -3401,6 +3484,14 @@ pub const SUPER_LONG_STRING_LIMIT: usize = 0x30D40;
 /// `"ClosestPoint"`/`"Distance"` members: the callee EAs double as host ids.
 pub const CLOSEST_POINT_VECTOR3_FN: u64 = 0x270afc;
 pub const DISTANCE_VECTOR3_FN: u64 = 0x270b48;
+
+/// `lua_pushcclosure` identities pushed by [`stub_0x271954`] for the
+/// `"lerp"`/`"Lerp"`, `"Cross"`, `"Dot"` and `"isClose"` members: the callee
+/// EAs double as host ids.
+pub const LERP_VECTOR3_FN: u64 = 0x271c4c;
+pub const CROSS_VECTOR3_FN: u64 = 0x271cd0;
+pub const DOT_VECTOR3_FN: u64 = 0x271d48;
+pub const ISCLOSE_VECTOR3_FN: u64 = 0x271dac;
 
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: _DWORD *__fastcall(int, int)
@@ -4067,169 +4158,678 @@ mod bridge_push_batch_tests {
 // 0x270b98 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(RBX::RbxRay&,char const*,lua_State *)")]
-pub fn stub_0x270b98() -> ! {
-    todo!("0x270b98 RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(RBX::RbxRay&,char const*,lua_State *)")
+pub fn stub_0x270b98(key: &str) -> ! {
+    // IDA 0x270b98 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw
+    // (0x270bcc..0x270c44) — Ray members are read-only.
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x270c50 — __ZN3RBX3Lua13Region3Bridge10newRegion3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::newRegion3(lua_State *)")]
-pub fn stub_0x270c50() -> ! {
-    todo!("0x270c50 RBX::Lua::Region3Bridge::newRegion3(lua_State *)")
+pub fn stub_0x270c50(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270c50: `n = min(gettop, 2)` lanes (0x270c90..0x270ce8) read via
+    // `luaL_checkudata(i, Vector3)`; missing lanes stay zero
+    // (0x270cee..0x270d18); `Region3::Region3(min, max)` (0x270d24, IDA
+    // 0x816d20) then `Bridge<Region3>::pushNewObject` (0x270d2c); return 1.
+    let lanes = thread.stack_top().min(2);
+    let mut ends = [LuaVector3::default(); 2];
+    for (lane, slot) in ends.iter_mut().take(lanes).enumerate() {
+        *slot = check_vector3_slot(thread, lane + 1);
+    }
+    let region = LuaRegion3 { min: ends[0], max: ends[1] };
+    push_new_object(thread, lua_bridge_class::REGION3, LuaUserdataPayload::Region3(region));
+    1
 }
 
 // 0x270d50 — __ZN3RBX3Lua13Region3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x270d50() -> ! {
-    todo!("0x270d50 RBX::Lua::Region3Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x270d50(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270d50: `luaL_register(L, className, classLibrary)` (0x270d6e),
+    // `lua_setreadonly(L, -1, 1)` (0x270d7a), pop the table. Host no-op like
+    // [`stub_0x270594`]; no values returned.
+    0
 }
 
 // 0x270d8c — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_index(RBX::Region3 const&,char const*,lua_State *)")]
-pub fn stub_0x270d8c() -> ! {
-    todo!("0x270d8c RBX::Lua::Bridge<RBX::Region3,true>::on_index(RBX::Region3 const&,char const*,lua_State *)")
+pub fn stub_0x270d8c(region: &LuaRegion3, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270d8c: `"CFrame"` → identity-rotation `pushNewObject` with the
+    // midpoint center (0x270e20..0x270e36, via `Region3::init` at 0x816d64);
+    // `"Size"` → `max - min` Vector3 push (0x270e0e); else
+    // `runtime_error("%s is not a valid member")` (0x270e68..0x270ea0).
+    if key == "CFrame" {
+        push_new_object(thread, lua_bridge_class::CFRAME, LuaUserdataPayload::CoordinateFrame(region3_cframe(region)));
+    } else if key == "Size" {
+        push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(region3_size(region)));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x270ec8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(RBX::Region3&,char const*,lua_State *)")]
-pub fn stub_0x270ec8() -> ! {
-    todo!("0x270ec8 RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(RBX::Region3&,char const*,lua_State *)")
+pub fn stub_0x270ec8(key: &str) -> ! {
+    // IDA 0x270ec8 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Region3 members
+    // are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x270f80 — __ZN3RBX3Lua18Region3int16Bridge15newRegion3int16EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::newRegion3int16(lua_State *)")]
-pub fn stub_0x270f80() -> ! {
-    todo!("0x270f80 RBX::Lua::Region3int16Bridge::newRegion3int16(lua_State *)")
+pub fn stub_0x270f80(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x270f80: `n = min(gettop, 2)` lanes (0x270fb6..0x271006) read via
+    // `luaL_checkudata(i, Vector3int16)`; missing lanes stay zero
+    // (0x27100e..0x271036); `Region3int16::Region3int16(min, max)`
+    // (0x27103e) then push (0x27104c); return 1.
+    let lanes = thread.stack_top().min(2);
+    let mut ends = [LuaVector3i16::default(); 2];
+    for (lane, slot) in ends.iter_mut().take(lanes).enumerate() {
+        *slot = check_vector3i16_slot(thread, lane + 1);
+    }
+    let region = LuaRegion3i16 { min: ends[0], max: ends[1] };
+    push_new_object(thread, lua_bridge_class::REGION3INT16, LuaUserdataPayload::Region3i16(region));
+    1
 }
 
 // 0x271064 — __ZN3RBX3Lua18Region3int16Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x271064() -> ! {
-    todo!("0x271064 RBX::Lua::Region3int16Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x271064(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271064: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x2710a0 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(RBX::Region3int16 const&,char const*,lua_State *)")]
-pub fn stub_0x2710a0() -> ! {
-    todo!("0x2710a0 RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(RBX::Region3int16 const&,char const*,lua_State *)")
+pub fn stub_0x2710a0(region: &LuaRegion3i16, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2710a0: `"Min"` → `getMinPos` Vector3int16 push (0x271134);
+    // `"Max"` → `getMaxPos` (0x27111e); else
+    // `runtime_error("%s is not a valid member")` (0x271174..0x2711ac).
+    if key == "Min" {
+        push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(region.min));
+    } else if key == "Max" {
+        push_new_object(thread, lua_bridge_class::VECTOR3INT16, LuaUserdataPayload::Vector3i16(region.max));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x2711d4 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(RBX::Region3int16&,char const*,lua_State *)")]
-pub fn stub_0x2711d4() -> ! {
-    todo!("0x2711d4 RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(RBX::Region3int16&,char const*,lua_State *)")
+pub fn stub_0x2711d4(key: &str) -> ! {
+    // IDA 0x2711d4 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Region3int16
+    // members are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
 }
 
 // 0x27128c — __ZN3RBX3Lua13Vector3Bridge10newVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3(lua_State *)")]
-pub fn stub_0x27128c() -> ! {
-    todo!("0x27128c RBX::Lua::Vector3Bridge::newVector3(lua_State *)")
+pub fn stub_0x27128c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x27128c: `n = min(gettop, 3)` lanes (0x2712b2..0x2712ec) read via
+    // `lua_tofloat(L, i)` (0x2712e0), extras past 3 ignored, missing lanes
+    // zero-filled (0x2712f2..0x27131c); `Bridge<Vector3>::pushNewObject`
+    // (0x271324); return 1.
+    let lanes = thread.stack_top().min(3);
+    let mut xyz = [0.0f32; 3];
+    for (lane, slot) in xyz.iter_mut().take(lanes).enumerate() {
+        *slot = stub_0x270448(thread, lane + 1);
+    }
+    let value = LuaVector3 { x: xyz[0], y: xyz[1], z: xyz[2] };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(value));
+    1
 }
 
 // 0x271340 — __ZN3RBX3Lua13Vector3Bridge22newVector3FromNormalIdEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromNormalId(lua_State *)")]
-pub fn stub_0x271340() -> ! {
-    todo!("0x271340 RBX::Lua::Vector3Bridge::newVector3FromNormalId(lua_State *)")
+pub fn stub_0x271340(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271340: `Bridge<EnumItem const*>::getValue(L, 1)` fail →
+    // `runtime_error("Vector3.FromNormalId expects Enum.NormalId input")`
+    // (0x271404); descriptor typeinfo other than `RBX::NormalId` → same throw
+    // (0x271438); else `RBX::normalIdToVector3(value)` (0x2713c6, IDA
+    // 0x35d1e8) push (0x2713d2); return 1.
+    let mut item = LuaEnumItem::default();
+    let slot = thread.slot(1).cloned().unwrap_or(LuaStackValue::Nil);
+    if !stub_0x270008(thread, 1, &mut item, &slot) || item.owner != "NormalId" {
+        panic!("Vector3.FromNormalId expects Enum.NormalId input");
+    }
+    let value = normal_id_to_vector3(item.value);
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(value));
+    1
 }
 
 // 0x2714a0 — __ZN3RBX3Lua13Vector3Bridge18newVector3FromAxisEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromAxis(lua_State *)")]
-pub fn stub_0x2714a0() -> ! {
-    todo!("0x2714a0 RBX::Lua::Vector3Bridge::newVector3FromAxis(lua_State *)")
+pub fn stub_0x2714a0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2714a0: `Bridge<EnumItem const*>::getValue(L, 1)` fail →
+    // `runtime_error("Vector3.FromAxis expects Enum.Axis input")` (0x27156a);
+    // descriptor typeinfo other than `G3D::Vector3::Axis` → same throw
+    // (0x27159e); else `Axes::axisToNormalId` (0x271526) maps X/Y/Z onto
+    // Right/Top/Back, then `normalIdToVector3` (0x27152c) push (0x271538).
+    let mut item = LuaEnumItem::default();
+    let slot = thread.slot(1).cloned().unwrap_or(LuaStackValue::Nil);
+    if !stub_0x270008(thread, 1, &mut item, &slot) || item.owner != "Axis" {
+        panic!("Vector3.FromAxis expects Enum.Axis input");
+    }
+    // `axisToNormalId` maps 0/1/2 (X/Y/Z) onto 0/1/2 (Right/Top/Back), whose
+    // unit vectors coincide; out-of-range lanes fall back to zero [INFERENCE:
+    // the C++ switch default was not recovered].
+    let value = if (0..=2).contains(&item.value) { normal_id_to_vector3(item.value) } else { LuaVector3::default() };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(value));
+    1
 }
 
 // 0x271604 — __ZN3RBX3Lua13Vector3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x271604() -> ! {
-    todo!("0x271604 RBX::Lua::Vector3Bridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x271604(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271604: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x271640 — __ZN3RBX3Lua13Vector3Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_add(lua_State *)")]
-pub fn stub_0x271640() -> ! {
-    todo!("0x271640 RBX::Lua::Vector3Bridge::on_add(lua_State *)")
+pub fn stub_0x271640(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271640: `luaL_checkudata(1, Vector3)` (0x27165a),
+    // `luaL_checkudata(2, Vector3)` (0x271660), lane-wise `vadd`
+    // (0x271696); return 1.
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    let sum = LuaVector3 { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(sum));
+    1
 }
 
 // 0x2716a0 — __ZN3RBX3Lua13Vector3Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_sub(lua_State *)")]
-pub fn stub_0x2716a0() -> ! {
-    todo!("0x2716a0 RBX::Lua::Vector3Bridge::on_sub(lua_State *)")
+pub fn stub_0x2716a0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2716a0: `luaL_checkudata(1/2, Vector3)`, lane-wise `vsub`,
+    // push; return 1 — the `on_add` mirror.
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    let diff = LuaVector3 { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(diff));
+    1
 }
 
 // 0x271700 — __ZN3RBX3Lua13Vector3Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_mul(lua_State *)")]
-pub fn stub_0x271700() -> ! {
-    todo!("0x271700 RBX::Lua::Vector3Bridge::on_mul(lua_State *)")
+pub fn stub_0x271700(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271700: slot 1 `getValue<Vector3>` (0x271730) —
+    //   hit → slot 2 `getValue` (0x271744): hit → lane-wise `vmul`
+    //     (0x271762), miss → `lua_tofloat(2)` scalar `vmul` (0x2717be..);
+    //   miss → slot 2 is `luaL_checkudata` Vector3 (0x271780),
+    //     `lua_tofloat(1)` scalar `vmul` (0x2717a8..). Push; return 1.
+    let product = if let Some(a) = vector3_get_value(thread, 1) {
+        if let Some(b) = vector3_get_value(thread, 2) {
+            LuaVector3 { x: a.x * b.x, y: a.y * b.y, z: a.z * b.z }
+        } else {
+            let s = stub_0x270448(thread, 2);
+            LuaVector3 { x: a.x * s, y: a.y * s, z: a.z * s }
+        }
+    } else {
+        let b = check_vector3_slot(thread, 2);
+        let s = stub_0x270448(thread, 1);
+        LuaVector3 { x: s * b.x, y: s * b.y, z: s * b.z }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(product));
+    1
 }
 
 // 0x271804 — __ZN3RBX3Lua13Vector3Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_div(lua_State *)")]
-pub fn stub_0x271804() -> ! {
-    todo!("0x271804 RBX::Lua::Vector3Bridge::on_div(lua_State *)")
+pub fn stub_0x271804(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271804: slot 1 `getValue<Vector3>` (0x27182e) —
+    //   hit → slot 2 `getValue` (0x271842): hit → lane-wise `/` (0x271868),
+    //     miss → `lua_tofloat(2)` reciprocal lane `vmul` (0x2718d0..0x271900);
+    //   miss → slot 2 is `luaL_checkudata` Vector3 (0x271886),
+    //     `lua_tofloat(1)` over each lane (0x2718aa..0x2718c6). Push; return 1.
+    let quotient = if let Some(a) = vector3_get_value(thread, 1) {
+        if let Some(b) = vector3_get_value(thread, 2) {
+            LuaVector3 { x: a.x / b.x, y: a.y / b.y, z: a.z / b.z }
+        } else {
+            let inv = 1.0 / stub_0x270448(thread, 2);
+            LuaVector3 { x: a.x * inv, y: a.y * inv, z: a.z * inv }
+        }
+    } else {
+        let b = check_vector3_slot(thread, 2);
+        let s = stub_0x270448(thread, 1);
+        LuaVector3 { x: s / b.x, y: s / b.y, z: s / b.z }
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(quotient));
+    1
 }
 
 // 0x27191c — __ZN3RBX3Lua13Vector3Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_unm(lua_State *)")]
-pub fn stub_0x27191c() -> ! {
-    todo!("0x27191c RBX::Lua::Vector3Bridge::on_unm(lua_State *)")
+pub fn stub_0x27191c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x27191c: `luaL_checkudata(1, Vector3)` (0x271932), each lane xor
+    // `0x80000000` (0x27194a, sign flip), push; return 1.
+    let a = check_vector3_slot(thread, 1);
+    let neg = LuaVector3 { x: -a.x, y: -a.y, z: -a.z };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(neg));
+    1
 }
 
 // 0x271954 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int32 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_index(G3D::Vector3 const&,char const*,lua_State *)")]
-pub fn stub_0x271954() -> ! {
-    todo!("0x271954 RBX::Lua::Bridge<G3D::Vector3,true>::on_index(G3D::Vector3 const&,char const*,lua_State *)")
+pub fn stub_0x271954(vector: &LuaVector3, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271954: `"x"/"X"`, `"y"/"Y"`, `"z"/"Z"` → `lua_pushnumber`
+    // (0x2719c4..0x271b12); `"unit"/"Unit"` → reciprocal-`sqrt`
+    // normalized push (0x271b34..0x271b84); `"magnitude"/"Magnitude"` →
+    // `sqrt` push (0x271b86..0x271baa); `"lerp"/"Lerp"` (0x271bb4),
+    // `"Cross"` (0x271bc0), `"Dot"` (0x271bcc), `"isClose"` (0x271aee) →
+    // `lua_pushcclosure`; else `runtime_error("%s is not a valid member")`.
+    if key == "x" || key == "X" {
+        thread.push(LuaStackValue::Number(f64::from(vector.x)));
+    } else if key == "y" || key == "Y" {
+        thread.push(LuaStackValue::Number(f64::from(vector.y)));
+    } else if key == "z" || key == "Z" {
+        thread.push(LuaStackValue::Number(f64::from(vector.z)));
+    } else if key == "unit" || key == "Unit" {
+        let len = (vector.x * vector.x + vector.y * vector.y + vector.z * vector.z).sqrt();
+        let inv = 1.0 / len;
+        let unit = LuaVector3 { x: vector.x * inv, y: vector.y * inv, z: vector.z * inv };
+        push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(unit));
+    } else if key == "magnitude" || key == "Magnitude" {
+        let len = (vector.x * vector.x + vector.y * vector.y + vector.z * vector.z).sqrt();
+        thread.push(LuaStackValue::Number(f64::from(len)));
+    } else if key == "lerp" || key == "Lerp" {
+        thread.push(LuaStackValue::Function(LERP_VECTOR3_FN));
+    } else if key == "Cross" {
+        thread.push(LuaStackValue::Function(CROSS_VECTOR3_FN));
+    } else if key == "Dot" {
+        thread.push(LuaStackValue::Function(DOT_VECTOR3_FN));
+    } else if key == "isClose" {
+        thread.push(LuaStackValue::Function(ISCLOSE_VECTOR3_FN));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x271c4c — __ZN3RBX3LuaL11lerpVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::lerpVector3(lua_State *)")]
-pub fn stub_0x271c4c() -> ! {
-    todo!("0x271c4c RBX::Lua::lerpVector3(lua_State *)")
+pub fn stub_0x271c4c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271c4c: `luaL_checkudata(1/2, Vector3)` (0x271c66/0x271c70),
+    // `lua_tofloat(3)` (0x271c76), `a + t * (b - a)` per lane (0x271cc8);
+    // return 1.
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    let t = stub_0x270448(thread, 3);
+    let lerped = LuaVector3 {
+        x: a.x + t * (b.x - a.x),
+        y: a.y + t * (b.y - a.y),
+        z: a.z + t * (b.z - a.z),
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(lerped));
+    1
 }
 
 // 0x271cd0 — __ZN3RBX3LuaL12crossVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::crossVector3(lua_State *)")]
-pub fn stub_0x271cd0() -> ! {
-    todo!("0x271cd0 RBX::Lua::crossVector3(lua_State *)")
+pub fn stub_0x271cd0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271cd0: `luaL_checkudata(1/2, Vector3)` (0x271cea/0x271cf0),
+    // `(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x)`
+    // (0x271d3e); return 1.
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    let cross = LuaVector3 {
+        x: a.y * b.z - a.z * b.y,
+        y: a.z * b.x - a.x * b.z,
+        z: a.x * b.y - a.y * b.x,
+    };
+    push_new_object(thread, lua_bridge_class::VECTOR3, LuaUserdataPayload::Vector3(cross));
+    1
 }
 
 // 0x271d48 — __ZN3RBX3LuaL10dotVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::dotVector3(lua_State *)")]
-pub fn stub_0x271d48() -> ! {
-    todo!("0x271d48 RBX::Lua::dotVector3(lua_State *)")
+pub fn stub_0x271d48(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271d48: `luaL_checkudata(1/2, Vector3)` (0x271d62/0x271d68),
+    // `a.x*b.x + a.y*b.y + a.z*b.z` in float (0x271d9e), `lua_pushnumber`
+    // (0x271da2); return 1.
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    thread.push(LuaStackValue::Number(f64::from(a.x * b.x + a.y * b.y + a.z * b.z)));
+    1
 }
 
 // 0x271dac — __ZN3RBX3LuaL14isCloseVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::isCloseVector3(lua_State *)")]
-pub fn stub_0x271dac() -> ! {
-    todo!("0x271dac RBX::Lua::isCloseVector3(lua_State *)")
+pub fn stub_0x271dac(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x271dac: `gettop` (0x271dbe); `luaL_checkudata(1/2, Vector3)`
+    // (0x271dd2/0x271ddc); `top < 3` → eps bits 925353388 (`0x3727C5AC`,
+    // 1e-5, 0x271df2), else `lua_tofloat(3) & 0x7FFFFFFF` (abs, 0x271dec);
+    // `Math::fuzzyEq` (0x271dfe, IDA 0x3580c0); `lua_pushboolean`; return 1.
+    let eps = if thread.stack_top() < 3 { f32::from_bits(925353388) } else { stub_0x270448(thread, 3).abs() };
+    let a = check_vector3_slot(thread, 1);
+    let b = check_vector3_slot(thread, 2);
+    thread.push(LuaStackValue::Bool(vector3_fuzzy_eq(&a, &b, eps)));
+    1
 }
 
 // 0x271e14 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_newindex(G3D::Vector3&,char const*,lua_State *)")]
-pub fn stub_0x271e14() -> ! {
-    todo!("0x271e14 RBX::Lua::Bridge<G3D::Vector3,true>::on_newindex(G3D::Vector3&,char const*,lua_State *)")
+pub fn stub_0x271e14(key: &str) -> ! {
+    // IDA 0x271e14 (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw — Vector3 members
+    // are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
+}
+
+#[cfg(test)]
+mod bridge_vector_batch_tests {
+    use super::*;
+
+    fn vector3_slot(v: LuaVector3) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata { class: lua_bridge_class::VECTOR3.to_owned(), payload: LuaUserdataPayload::Vector3(v) })
+    }
+
+    fn vector3i16_slot(v: LuaVector3i16) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::VECTOR3INT16.to_owned(),
+            payload: LuaUserdataPayload::Vector3i16(v),
+        })
+    }
+
+    fn vector3_result(thread: &LuaThreadState) -> LuaVector3 {
+        match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Vector3(v) => *v,
+                other => panic!("expected Vector3, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+    }
+
+    fn enum_slot(owner: &str, value: i32) -> LuaStackValue {
+        LuaStackValue::Userdata(LuaUserdata {
+            class: lua_bridge_class::ENUMITEM.to_owned(),
+            payload: LuaUserdataPayload::EnumItem(LuaEnumItem { owner: owner.to_owned(), value }),
+        })
+    }
+
+    #[test]
+    fn new_vector3_zero_fills_and_ignores_extras() {
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x27128c(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3::default());
+        let mut thread = LuaThreadState {
+            stack: vec![
+                LuaStackValue::Number(1.0),
+                LuaStackValue::Number(2.0),
+                LuaStackValue::Number(3.0),
+                LuaStackValue::Number(4.0),
+            ],
+        };
+        assert_eq!(stub_0x27128c(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 1.0, y: 2.0, z: 3.0 });
+    }
+
+    #[test]
+    fn vector3_arithmetic_matches_lanes() {
+        let a = LuaVector3 { x: 4.0, y: 6.0, z: 8.0 };
+        let b = LuaVector3 { x: 1.0, y: 2.0, z: 4.0 };
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), vector3_slot(b)] };
+        assert_eq!(stub_0x271640(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 5.0, y: 8.0, z: 12.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), vector3_slot(b)] };
+        assert_eq!(stub_0x2716a0(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 3.0, y: 4.0, z: 4.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), vector3_slot(b)] };
+        assert_eq!(stub_0x271700(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 4.0, y: 12.0, z: 32.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), LuaStackValue::Number(2.0)] };
+        assert_eq!(stub_0x271700(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 8.0, y: 12.0, z: 16.0 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(2.0), vector3_slot(b)] };
+        assert_eq!(stub_0x271700(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 2.0, y: 4.0, z: 8.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), vector3_slot(b)] };
+        assert_eq!(stub_0x271804(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 4.0, y: 3.0, z: 2.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), LuaStackValue::Number(2.0)] };
+        assert_eq!(stub_0x271804(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 2.0, y: 3.0, z: 4.0 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(8.0), vector3_slot(b)] };
+        assert_eq!(stub_0x271804(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 8.0, y: 4.0, z: 2.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a)] };
+        assert_eq!(stub_0x27191c(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: -4.0, y: -6.0, z: -8.0 });
+    }
+
+    #[test]
+    fn vector3_index_arms() {
+        let v = LuaVector3 { x: 3.0, y: 4.0, z: 0.0 };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x271954(&v, "x", &mut out), 1);
+        assert_eq!(stub_0x271954(&v, "Y", &mut out), 1);
+        assert_eq!(stub_0x271954(&v, "z", &mut out), 1);
+        assert_eq!(
+            out.stack,
+            vec![
+                LuaStackValue::Number(3.0),
+                LuaStackValue::Number(4.0),
+                LuaStackValue::Number(0.0),
+            ]
+        );
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x271954(&v, "magnitude", &mut out), 1);
+        assert_eq!(out.stack.last(), Some(&LuaStackValue::Number(5.0)));
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x271954(&v, "unit", &mut out), 1);
+        let unit = vector3_result(&out);
+        assert!((unit.x - 0.6).abs() < 1e-6 && (unit.y - 0.8).abs() < 1e-6 && unit.z == 0.0);
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x271954(&v, "Lerp", &mut out), 1);
+        assert_eq!(stub_0x271954(&v, "Cross", &mut out), 1);
+        assert_eq!(stub_0x271954(&v, "Dot", &mut out), 1);
+        assert_eq!(stub_0x271954(&v, "isClose", &mut out), 1);
+        assert_eq!(
+            out.stack,
+            vec![
+                LuaStackValue::Function(LERP_VECTOR3_FN),
+                LuaStackValue::Function(CROSS_VECTOR3_FN),
+                LuaStackValue::Function(DOT_VECTOR3_FN),
+                LuaStackValue::Function(ISCLOSE_VECTOR3_FN),
+            ]
+        );
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn vector3_index_rejects_unknown_key() {
+        let _ = stub_0x271954(&LuaVector3::default(), "w", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    fn vector3_free_fns_match_ida_math() {
+        let a = LuaVector3 { x: 0.0, y: 0.0, z: 0.0 };
+        let b = LuaVector3 { x: 2.0, y: 4.0, z: 6.0 };
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(a), vector3_slot(b), LuaStackValue::Number(0.5)] };
+        assert_eq!(stub_0x271c4c(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 1.0, y: 2.0, z: 3.0 });
+        let x = LuaVector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let y = LuaVector3 { x: 0.0, y: 1.0, z: 0.0 };
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(x), vector3_slot(y)] };
+        assert_eq!(stub_0x271cd0(&mut thread), 1);
+        assert_eq!(vector3_result(&thread), LuaVector3 { x: 0.0, y: 0.0, z: 1.0 });
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(x), vector3_slot(x)] };
+        assert_eq!(stub_0x271d48(&mut thread), 1);
+        assert_eq!(thread.stack.last(), Some(&LuaStackValue::Number(1.0)));
+        let near = LuaVector3 { x: 1.0 + 1e-6, y: 0.0, z: 0.0 };
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(x), vector3_slot(near)] };
+        assert_eq!(stub_0x271dac(&mut thread), 1);
+        assert_eq!(thread.stack.last(), Some(&LuaStackValue::Bool(true)));
+        let far = LuaVector3 { x: 3.0, y: 0.0, z: 0.0 };
+        let mut thread = LuaThreadState {
+            stack: vec![vector3_slot(x), vector3_slot(far), LuaStackValue::Number(0.5)],
+        };
+        assert_eq!(stub_0x271dac(&mut thread), 1);
+        assert_eq!(thread.stack.last(), Some(&LuaStackValue::Bool(false)));
+    }
+
+    #[test]
+    fn region3_new_and_index() {
+        let min = LuaVector3 { x: 0.0, y: 0.0, z: 0.0 };
+        let max = LuaVector3 { x: 4.0, y: 2.0, z: 8.0 };
+        let mut thread = LuaThreadState { stack: vec![vector3_slot(min), vector3_slot(max)] };
+        assert_eq!(stub_0x270c50(&mut thread), 1);
+        let region = match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Region3(r) => *r,
+                other => panic!("expected Region3, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        };
+        assert_eq!(region, LuaRegion3 { min, max });
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x270d8c(&region, "Size", &mut out), 1);
+        assert_eq!(vector3_result(&out), LuaVector3 { x: 4.0, y: 2.0, z: 8.0 });
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x270d8c(&region, "CFrame", &mut out), 1);
+        match out.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::CoordinateFrame(cf) => {
+                    assert_eq!(cf.position, LuaVector3 { x: 2.0, y: 1.0, z: 4.0 });
+                    assert_eq!(cf.rotation, [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]);
+                }
+                other => panic!("expected CoordinateFrame, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+        let mut empty = LuaThreadState::default();
+        assert_eq!(stub_0x270c50(&mut empty), 1);
+        assert!(matches!(
+            empty.stack.last(),
+            Some(LuaStackValue::Userdata(ud)) if ud.payload == LuaUserdataPayload::Region3(LuaRegion3::default())
+        ));
+        assert_eq!(stub_0x270d50(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn region3_index_rejects_unknown_key() {
+        let _ = stub_0x270d8c(&LuaRegion3::default(), "Position", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    fn region3int16_new_and_index() {
+        let min = LuaVector3i16 { x: 0, y: 1, z: 2 };
+        let max = LuaVector3i16 { x: 4, y: 5, z: 6 };
+        let mut thread = LuaThreadState { stack: vec![vector3i16_slot(min), vector3i16_slot(max)] };
+        assert_eq!(stub_0x270f80(&mut thread), 1);
+        let region = LuaRegion3i16 { min, max };
+        assert!(matches!(
+            thread.stack.last(),
+            Some(LuaStackValue::Userdata(ud)) if ud.payload == LuaUserdataPayload::Region3i16(region)
+        ));
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2710a0(&region, "Min", &mut out), 1);
+        assert_eq!(stub_0x2710a0(&region, "Max", &mut out), 1);
+        assert!(matches!(
+            &out.stack[..],
+            [LuaStackValue::Userdata(a), LuaStackValue::Userdata(b)]
+                if a.payload == LuaUserdataPayload::Vector3i16(min)
+                    && b.payload == LuaUserdataPayload::Vector3i16(max)
+        ));
+        assert_eq!(stub_0x271064(&mut LuaThreadState::default()), 0);
+        assert_eq!(stub_0x271604(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn region3int16_index_rejects_unknown_key() {
+        let _ = stub_0x2710a0(&LuaRegion3i16::default(), "Size", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    fn enum_constructors_map_to_unit_vectors() {
+        for (value, expect) in [
+            (0, LuaVector3 { x: 1.0, y: 0.0, z: 0.0 }),
+            (1, LuaVector3 { x: 0.0, y: 1.0, z: 0.0 }),
+            (2, LuaVector3 { x: 0.0, y: 0.0, z: 1.0 }),
+            (3, LuaVector3 { x: -1.0, y: 0.0, z: 0.0 }),
+            (4, LuaVector3 { x: 0.0, y: -1.0, z: 0.0 }),
+            (5, LuaVector3 { x: 0.0, y: 0.0, z: -1.0 }),
+        ] {
+            let mut thread = LuaThreadState { stack: vec![enum_slot("NormalId", value)] };
+            assert_eq!(stub_0x271340(&mut thread), 1);
+            assert_eq!(vector3_result(&thread), expect);
+        }
+        for value in 0..3 {
+            let mut thread = LuaThreadState { stack: vec![enum_slot("Axis", value)] };
+            assert_eq!(stub_0x2714a0(&mut thread), 1);
+            assert_eq!(vector3_result(&thread), normal_id_to_vector3(value));
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "Vector3.FromNormalId expects Enum.NormalId input")]
+    fn from_normal_id_rejects_wrong_descriptor() {
+        let mut thread = LuaThreadState { stack: vec![enum_slot("Axis", 0)] };
+        let _ = stub_0x271340(&mut thread);
+    }
+
+    #[test]
+    #[should_panic(expected = "Vector3.FromAxis expects Enum.Axis input")]
+    fn from_axis_rejects_non_enum() {
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(1.0)] };
+        let _ = stub_0x2714a0(&mut thread);
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn ray_newindex_is_read_only() {
+        stub_0x270b98("Origin");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn region_newindex_is_read_only() {
+        stub_0x270ec8("Size");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn region3int16_newindex_is_read_only() {
+        stub_0x2711d4("Min");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn vector3_newindex_is_read_only() {
+        stub_0x271e14("x");
+    }
 }
 
 // 0x271ecc — __ZN3RBX3Lua18Vector3int16Bridge15newVector3int16EP9lua_State
