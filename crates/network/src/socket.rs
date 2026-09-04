@@ -1046,6 +1046,23 @@ impl Packet {
  }
 }
 
+/// `DataStructures::MemoryPool<RakNet::Packet>::Allocate` (IDA 0xa7d2ac):
+/// pool blocks stay engine-side; hand out a default packet.
+#[must_use]
+pub fn packet_allocate() -> Packet {
+    Packet::default()
+}
+
+/// `DataStructures::MemoryPool<RakNet::Packet>::Release` (IDA 0xa7d3d8):
+/// return a packet to the pool (drop Rust-side).
+pub fn packet_release(_packet: Packet) {}
+
+/// `DataStructures::Queue<RakNet::Packet *>::Push` (IDA 0xa7d1d8): append
+/// a packet to the back of the queue.
+pub fn packet_queue_push(queue: &mut std::collections::VecDeque<Packet>, packet: Packet) {
+    queue.push_back(packet);
+}
+
 /// `RakNet::RakPeer` (IDA 0xa5cb00): sockets, queues, and threads stay
 /// engine-side; the exception list, limits, and password live here.
 #[derive(Clone, Debug, Default)]

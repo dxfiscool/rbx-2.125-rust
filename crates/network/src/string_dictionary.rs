@@ -548,3 +548,42 @@ mod validated_learn_tests {
         assert_eq!(t.into_bytes(), vec![1]);
     }
 }
+
+/// `RakNet::StringTable` lifecycle half (IDA 0xa7c2c4/0xa7c3dc/0xa7c414):
+/// the registered-string history stays engine-side; the reference count
+/// lives here.
+#[derive(Clone, Debug, Default)]
+pub struct StringTable {
+    /// Singleton reference count.
+    pub references: usize,
+}
+
+impl StringTable {
+    /// `AddReference` (IDA 0xa7c3dc).
+    pub fn add_reference(&mut self) {
+        self.references += 1;
+    }
+
+    /// `RemoveReference` (IDA 0xa7c414): release one reference.
+    pub fn remove_reference(&mut self) {
+        self.references = self.references.saturating_sub(1);
+    }
+}
+
+#[cfg(test)]
+mod string_table_tests {
+    use super::*;
+
+    #[test]
+    fn table_refcount() {
+        // IDA 0xa7c3dc/0xa7c414: add, remove, saturate at zero.
+        let mut table = StringTable::default();
+        table.add_reference();
+        table.add_reference();
+        table.remove_reference();
+        assert_eq!(table.references, 1);
+        table.remove_reference();
+        table.remove_reference();
+        assert_eq!(table.references, 0);
+    }
+}

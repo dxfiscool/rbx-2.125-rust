@@ -783,49 +783,60 @@ pub fn stub_a7abe4(socket: &std::net::UdpSocket) -> Option<std::net::SocketAddr>
 // 0xa7b268 — __ZN6RakNet16StringCompressor12AddReferenceEv
 // demangled: RakNet::StringCompressor::AddReference(void)
 // type: void __fastcall(RakNet::StringCompressor *this)
+// 0xa7b268 - __ZN6RakNet16StringCompressor12AddReferenceEv
 #[doc(alias = "RakNet::StringCompressor::AddReference(void)")]
-pub fn stub_a7b268() -> ! {
-    todo!("0xa7b268 RakNet::StringCompressor::AddReference(void)")
+pub fn stub_a7b268() {
+ // IDA 0xa7b268: first reference builds the singleton.
+ crate::string_compressor::add_reference();
 }
 
 // 0xa7b39c — __ZN6RakNet16StringCompressor15RemoveReferenceEv
 // demangled: RakNet::StringCompressor::RemoveReference(void)
 // type: void __fastcall(RakNet::StringCompressor *this)
+// 0xa7b39c - __ZN6RakNet16StringCompressor15RemoveReferenceEv
 #[doc(alias = "RakNet::StringCompressor::RemoveReference(void)")]
-pub fn stub_a7b39c() -> ! {
-    todo!("0xa7b39c RakNet::StringCompressor::RemoveReference(void)")
+pub fn stub_a7b39c() {
+ // IDA 0xa7b39c: release; last drops the singleton.
+ crate::string_compressor::remove_reference();
 }
 
 // 0xa7b470 — __ZN6RakNet16StringCompressor8InstanceEv
 // demangled: RakNet::StringCompressor::Instance(void)
 // type: int __fastcall(RakNet::StringCompressor *this)
+// 0xa7b470 - __ZN6RakNet16StringCompressor8InstanceEv
 #[doc(alias = "RakNet::StringCompressor::Instance(void)")]
-pub fn stub_a7b470() -> ! {
-    todo!("0xa7b470 RakNet::StringCompressor::Instance(void)")
+pub fn stub_a7b470() -> bool {
+ // IDA 0xa7b470: whether the singleton exists.
+ crate::string_compressor::instance_exists()
 }
 
 // 0xa7b480 — __ZN6RakNet16StringCompressorD2Ev
 // demangled: RakNet::StringCompressor::~StringCompressor()
 // type: void __fastcall(RakNet::StringCompressor *__hidden this)
+// 0xa7b480 - __ZN6RakNet16StringCompressorD2Ev
 #[doc(alias = "RakNet::StringCompressor::~StringCompressor()")]
-pub fn stub_a7b480() -> ! {
-    todo!("0xa7b480 RakNet::StringCompressor::~StringCompressor()")
+pub fn stub_a7b480(_compressor: crate::string_compressor::StringCompressor) {
+ // IDA 0xa7b480: dtor drops the language map.
 }
 
 // 0xa7b594 — __ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh
 // demangled: RakNet::StringCompressor::EncodeString(char const*,int,RakNet::BitStream *,unsigned char)
 // type: int __fastcall(RakNet::StringCompressor *this, char *, int, struct _Unwind_Exception *, int)
+// 0xa7b594 - __ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh
 #[doc(alias = "RakNet::StringCompressor::EncodeString(char const*,int,RakNet::BitStream *,unsigned char)")]
-pub fn stub_a7b594() -> ! {
-    todo!("0xa7b594 RakNet::StringCompressor::EncodeString(char const*,int,RakNet::BitStream *,unsigned char)")
+pub fn stub_a7b594(text: Option<&[u8]>, max_chars: i32, out: &mut crate::bitstream::BitStream, language: u8) {
+ // IDA 0xa7b594: framed Huffman encode; map miss is a no-op.
+ let _ = crate::string_compressor::with_instance(|c| c.encode_string(text, max_chars, language, out));
 }
 
 // 0xa7b764 — __ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh
 // demangled: RakNet::StringCompressor::DecodeString(char *,int,RakNet::BitStream *,unsigned char)
 // type: int __fastcall(RakNet::StringCompressor *this, char *, int, RakNet::BitStream *, int)
+// 0xa7b764 - __ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh
 #[doc(alias = "RakNet::StringCompressor::DecodeString(char *,int,RakNet::BitStream *,unsigned char)")]
-pub fn stub_a7b764() -> ! {
-    todo!("0xa7b764 RakNet::StringCompressor::DecodeString(char *,int,RakNet::BitStream *,unsigned char)")
+pub fn stub_a7b764(max_len: usize, language: u8, stream: &mut crate::bitstream::BitStream) -> Option<Vec<u8>> {
+ // IDA 0xa7b764: framed Huffman decode.
+ crate::string_compressor::with_instance(|c| c.decode_string(max_len, language, stream)).flatten()
 }
 
 // 0xa7b854 — __ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
@@ -865,49 +876,60 @@ pub fn stub_a7bbf0() -> ! {
 // 0xa7c2c4 — __ZN6RakNet11StringTableD2Ev
 // demangled: RakNet::StringTable::~StringTable()
 // type: void __fastcall(RakNet::StringTable *__hidden this)
+// 0xa7c2c4 - __ZN6RakNet11StringTableD2Ev
 #[doc(alias = "RakNet::StringTable::~StringTable()")]
-pub fn stub_a7c2c4() -> ! {
-    todo!("0xa7c2c4 RakNet::StringTable::~StringTable()")
+pub fn stub_a7c2c4(_table: crate::string_dictionary::StringTable) {
+ // IDA 0xa7c2c4: dtor drops the string history.
 }
 
 // 0xa7c3dc — __ZN6RakNet11StringTable12AddReferenceEv
 // demangled: RakNet::StringTable::AddReference(void)
 // type: int *__fastcall(RakNet::StringTable *this)
+// 0xa7c3dc - __ZN6RakNet11StringTable12AddReferenceEv
 #[doc(alias = "RakNet::StringTable::AddReference(void)")]
-pub fn stub_a7c3dc() -> ! {
-    todo!("0xa7c3dc RakNet::StringTable::AddReference(void)")
+pub fn stub_a7c3dc(table: &mut crate::string_dictionary::StringTable) {
+ // IDA 0xa7c3dc.
+ table.add_reference();
 }
 
 // 0xa7c414 — __ZN6RakNet11StringTable15RemoveReferenceEv
 // demangled: RakNet::StringTable::RemoveReference(void)
 // type: void __fastcall(RakNet::StringTable *this)
+// 0xa7c414 - __ZN6RakNet11StringTable15RemoveReferenceEv
 #[doc(alias = "RakNet::StringTable::RemoveReference(void)")]
-pub fn stub_a7c414() -> ! {
-    todo!("0xa7c414 RakNet::StringTable::RemoveReference(void)")
+pub fn stub_a7c414(table: &mut crate::string_dictionary::StringTable) {
+ // IDA 0xa7c414.
+ table.remove_reference();
 }
 
 // 0xa7d1d8 — __ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
 // demangled: DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)
 // type: void __fastcall(int **, int *)
+// 0xa7d1d8 - __ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
 #[doc(alias = "DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")]
-pub fn stub_a7d1d8() -> ! {
-    todo!("0xa7d1d8 DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")
+pub fn stub_a7d1d8(queue: &mut std::collections::VecDeque<crate::socket::Packet>, packet: crate::socket::Packet) {
+ // IDA 0xa7d1d8: append a packet.
+ crate::socket::packet_queue_push(queue, packet);
 }
 
 // 0xa7d2ac — __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj
 // demangled: DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)
 // type: int __fastcall(_DWORD *, unsigned int, char *)
+// 0xa7d2ac - __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj
 #[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")]
-pub fn stub_a7d2ac() -> ! {
-    todo!("0xa7d2ac DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")
+pub fn stub_a7d2ac() -> crate::socket::Packet {
+ // IDA 0xa7d2ac: pool blocks stay engine-side.
+ crate::socket::packet_allocate()
 }
 
 // 0xa7d3d8 — __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj
 // demangled: DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
+// 0xa7d3d8 - __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj
 #[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")]
-pub fn stub_a7d3d8() -> ! {
-    todo!("0xa7d3d8 DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")
+pub fn stub_a7d3d8(packet: crate::socket::Packet) {
+ // IDA 0xa7d3d8: return to the pool (drop).
+ crate::socket::packet_release(packet);
 }
 
 // 0xa7e0e8 — __ZN3RBX7Network23RoundRobinPhysicsSenderC1ERNS0_10ReplicatorE

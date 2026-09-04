@@ -482,6 +482,7 @@ pub mod time;
 pub mod socket;
 pub mod reliability;
 pub mod sync_primitives;
+pub mod string_compressor;
 pub mod string_dictionary;
 pub mod id_serializer;
 pub mod functor;

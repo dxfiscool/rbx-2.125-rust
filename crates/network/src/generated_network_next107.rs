@@ -10,15 +10,17 @@ use rbx_core::SharedPtr;
 // 0xa7d2ac — __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")]
-pub fn stub_a7d2ac() -> ! {
-    todo!("0xa7d2ac DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")
+pub fn stub_a7d2ac() -> crate::socket::Packet {
+ // IDA 0xa7d2ac: pool blocks stay engine-side.
+ crate::socket::packet_allocate()
 }
 
 // 0xa7d3d8 — __ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")]
-pub fn stub_a7d3d8() -> ! {
-    todo!("0xa7d3d8 DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")
+pub fn stub_a7d3d8(packet: crate::socket::Packet) {
+ // IDA 0xa7d3d8: return to the pool (drop).
+ crate::socket::packet_release(packet);
 }
 
 // 0xad5300 — __ZN6RakNet16PluginInterface216OnRakPeerStartupEv
