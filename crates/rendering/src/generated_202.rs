@@ -8,143 +8,570 @@
 use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use parking_lot::Mutex;
+use std::sync::{
+    Once, OnceLock,
+    atomic::{AtomicUsize, Ordering},
+};
+
+// ---- impl batch 0x97c0..0x1c740 (29 fns, IDA decompile+disasm grounded) ----
+//
+// Boost mapping (AGENTS.md §4, no boost crate):
+// boost::shared_ptr -> rbx_core::SharedPtr; boost::singleton_pool storage ->
+// GuardedPool behind parking_lot::Mutex; boost::call_once -> std::sync::Once;
+// boost::exception_detail static objects -> Once-guarded markers;
+// __cxa_atexit -> ATEXIT_REGISTRY.
+
+/// Block field flag in every copy/destroy helper below (IDA literal `3`
+/// = BLOCK_FIELD_IS_OBJECT).
+pub const BLOCK_FIELD_IS_OBJECT: i32 = 3;
+
+/// Captured ObjC object slot in a heap block (IDA `*(a1 + 20)` cells).
+/// `_Block_object_assign` retains and `_Block_object_dispose` releases;
+/// modeled by cloning/dropping a `SharedPtr` (was: objc_retain/release).
+pub type BlockSlot = Option<SharedPtr<()>>;
+
+/// IDA `_Block_object_assign` / `_Block_object_assign_shim` for flag 3:
+/// retain `src` into `dst`. The shim adds only a nil-tolerant indirection,
+/// so both spellings map here.
+pub fn block_assign_slot(dst: &mut BlockSlot, src: &BlockSlot) {
+    let _flag = BLOCK_FIELD_IS_OBJECT;
+    *dst = src.clone();
+}
+
+/// IDA `_Block_object_dispose` / `_Block_object_dispose_shim` for flag 3:
+/// release the captured object held by `slot`.
+pub fn block_dispose_slot(slot: &mut BlockSlot) {
+    let _flag = BLOCK_FIELD_IS_OBJECT;
+    *slot = None;
+}
+
+/// Single-capture copy helper shape (IDA `dst + 20` <- `src + 20`).
+pub fn block_copy_1(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_assign_slot(&mut dst[0], &src[0]);
+}
+
+/// Single-capture destroy helper shape (IDA dispose of `a1 + 20`).
+pub fn block_dispose_1(slots: &mut [BlockSlot]) {
+    block_dispose_slot(&mut slots[0]);
+}
+
+/// Triple-capture copy helper shape (IDA `dst + 20/24/28` from `src[5]/[6]/[7]`).
+pub fn block_copy_3(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_assign_slot(&mut dst[0], &src[0]);
+    block_assign_slot(&mut dst[1], &src[1]);
+    block_assign_slot(&mut dst[2], &src[2]);
+}
+
+/// Triple-capture destroy helper shape (IDA dispose of `a1[5]/[6]/[7]`).
+pub fn block_dispose_3(slots: &mut [BlockSlot]) {
+    block_dispose_slot(&mut slots[0]);
+    block_dispose_slot(&mut slots[1]);
+    block_dispose_slot(&mut slots[2]);
+}
+
+/// IDA `OBJC_CLASS___Appirater` instance (0x17fe4: alloc + init).
+pub struct Appirater {
+    /// IDA `setDelegate:` target (global `dword_130C394`).
+    pub delegate: usize,
+}
+
+impl Appirater {
+    /// IDA `-[Appirater init]`.
+    pub fn init(delegate: usize) -> Self {
+        Self { delegate }
+    }
+}
+
+/// Observer entry behind `+[NSNotificationCenter defaultCenter]`
+/// (IDA 0x18052..0x18092).
+pub struct NotificationObserver {
+    pub observer: usize,
+    pub selector: &'static str,
+    pub name: &'static str,
+}
+
+static APP_WILL_RESIGN_OBSERVERS: Mutex<Vec<NotificationObserver>> = Mutex::new(Vec::new());
+
+/// IDA `dword_130C398` — the `+[Appirater sharedInstance]` cell.
+static APPIRATER_SHARED: OnceLock<Appirater> = OnceLock::new();
+
+/// IDA `dword_130C394` — delegate installed before first `sharedInstance`.
+static APPIRATER_DELEGATE: Mutex<usize> = Mutex::new(0);
+
+/// Write path for IDA `dword_130C394` (test hook for the singleton below).
+pub fn set_appirater_delegate(delegate: usize) {
+    *APPIRATER_DELEGATE.lock() = delegate;
+}
+
+/// IDA `UIViewController` node walked by 0x1a124.
+pub struct TopViewController {
+    /// Next controller returned by the external IDA `_topMostController(vc)`
+    /// callee (presented/modal child), if any.
+    pub child: Option<SharedPtr<TopViewController>>,
+}
+
+/// Models the external IDA `_topMostController(UIViewController *)` callee
+/// invoked at 0x1a166: descend one presentation level, if any.
+pub fn top_most_controller_step(vc: &TopViewController) -> Option<SharedPtr<TopViewController>> {
+    vc.child.clone()
+}
+
+/// IDA `cfstr_Uiapplication` / `cfstr_Appdelegate` (0x1a79c..0x1a7b6).
+pub const UI_APPLICATION_PRINCIPAL_CLASS: &str = "UIApplication";
+pub const UI_APPLICATION_DELEGATE_CLASS: &str = "AppDelegate";
+
+/// IDA `NSAutoreleasePool` scope in `_main`
+/// (alloc @0x1a788, init @0x1a798, release @0x1a7ca).
+pub struct AutoreleasePool;
+
+impl AutoreleasePool {
+    pub fn alloc_init() -> Self {
+        Self
+    }
+
+    pub fn release(self) {}
+}
+
+/// Launch record behind IDA `_UIApplicationMain` (0x1a7b6): last argc/argv.
+static LAST_UI_APPLICATION_MAIN: Mutex<Option<(i32, Vec<String>)>> = Mutex::new(None);
+
+/// IDA `_UIApplicationMain(argc, argv, principalClassName, delegateClassName)`.
+pub fn ui_application_main(argc: i32, argv: &[String], principal: &str, delegate: &str) -> i32 {
+    debug_assert_eq!(principal, UI_APPLICATION_PRINCIPAL_CLASS);
+    debug_assert_eq!(delegate, UI_APPLICATION_DELEGATE_CLASS);
+    *LAST_UI_APPLICATION_MAIN.lock() = Some((argc, argv.to_vec()));
+    0
+}
+
+/// IDA `__cxa_atexit` registrations in TU order (dtor labels).
+static ATEXIT_REGISTRY: Mutex<Vec<&'static str>> = Mutex::new(Vec::new());
+
+pub fn register_atexit(dtor: &'static str) {
+    ATEXIT_REGISTRY.lock().push(dtor);
+}
+
+/// IDA `boost::system::generic_category/system_category` statics. Rust's std
+/// carries error categories implicitly; the Once models the TU guard and the
+/// counter records the three observed stores (generic x2 + system).
+static ERROR_CATEGORIES_INIT: Once = Once::new();
+static ERROR_CATEGORIES_COUNT: AtomicUsize = AtomicUsize::new(0);
+
+pub fn ensure_error_categories() {
+    ERROR_CATEGORIES_INIT.call_once(|| {
+        ERROR_CATEGORIES_COUNT.store(3, Ordering::SeqCst);
+    });
+}
+
+/// IDA `std::ios_base::Init::Init` + `__cxa_atexit(~Init)`.
+static IOS_BASE_INIT: Once = Once::new();
+
+pub fn ensure_ios_base_init() {
+    IOS_BASE_INIT.call_once(|| {
+        register_atexit("std::ios_base::Init::~Init");
+    });
+}
+
+/// IDA `boost::exception_detail::exception_ptr_static_exception_object<T>::e`
+/// guarded construction + `__cxa_atexit(~exception_ptr)` (was: boost::exception_ptr).
+pub fn ensure_static_exception_object(guard: &Once, name: &'static str) {
+    guard.call_once(|| {
+        let _ = name;
+        register_atexit("boost::exception_ptr::~exception_ptr");
+    });
+}
+
+static BAD_ALLOC_OBJECT: Once = Once::new();
+static BAD_EXCEPTION_OBJECT: Once = Once::new();
+
+/// Rust model of `boost::singleton_pool<T, RequestedSize, ...>` storage behind
+/// `get_pool()` (IDA `0x17d46`, `0x1a6be`, ...): the pool mutex at `storage`
+/// plus the `create_object` creation guard.
+pub struct GuardedPool {
+    pub requested_size: usize,
+    pool: Mutex<usize>,
+    created: Once,
+}
+
+impl GuardedPool {
+    pub const fn new(requested_size: usize) -> Self {
+        Self {
+            requested_size,
+            pool: Mutex::new(0),
+            created: Once::new(),
+        }
+    }
+
+    /// IDA `singleton_pool<T, N>::get_pool()` — idempotent pool creation behind
+    /// the TU `__ZGVN...storageE` / `...create_objectE` guards.
+    pub fn get_pool(&self) -> usize {
+        self.created.call_once(|| {
+            *self.pool.lock() = self.requested_size;
+        });
+        *self.pool.lock()
+    }
+}
+
+static POOL_XML_ATTRIBUTE: GuardedPool = GuardedPool::new(20);
+static POOL_XML_ELEMENT: GuardedPool = GuardedPool::new(36);
+static POOL_FW_INSTANCE: GuardedPool = GuardedPool::new(28);
+static POOL_ON_DEMAND_INSTANCE: GuardedPool = GuardedPool::new(20);
+static POOL_ON_DEMAND_PV_INSTANCE: GuardedPool = GuardedPool::new(24);
+static POOL_FW_PART_INSTANCE: GuardedPool = GuardedPool::new(56);
+static POOL_ON_DEMAND_PART_INSTANCE: GuardedPool = GuardedPool::new(200);
+
+/// Tail shared by IDA 0x17c58/0x1a5d0/0x1a7d4: the four instance pools those
+/// TUs ensure (XmlAttribute/20, XmlElement/36, FWInstance/28, OnDemandInstance/20).
+pub fn ensure_xml_instance_pools() {
+    POOL_XML_ATTRIBUTE.get_pool();
+    POOL_XML_ELEMENT.get_pool();
+    POOL_FW_INSTANCE.get_pool();
+    POOL_ON_DEMAND_INSTANCE.get_pool();
+}
+
+/// IDA `RBX::Reflection::Singleton<EnumDesc<E>>` + `EnumRegistrar<E>` /
+/// `TypeRegistrar<E>` slots behind `__GLOBAL__I_a`: zero both registrar cells,
+/// run `initSingleton` once, fetch the singleton twice.
+pub struct ReflectionEnumInit {
+    pub name: &'static str,
+    enum_registrar: AtomicUsize,
+    type_registrar: AtomicUsize,
+    singleton_once: Once,
+    singleton_gets: AtomicUsize,
+}
+
+impl ReflectionEnumInit {
+    pub const fn new(name: &'static str) -> Self {
+        Self {
+            name,
+            enum_registrar: AtomicUsize::new(0),
+            type_registrar: AtomicUsize::new(0),
+            singleton_once: Once::new(),
+            singleton_gets: AtomicUsize::new(0),
+        }
+    }
+
+    pub fn run(&self) {
+        // IDA `STR.W R11, [EnumRegistrar]`.
+        self.enum_registrar.store(0, Ordering::SeqCst);
+        // IDA `boost::call_once(flag, initSingleton)`.
+        self.singleton_once.call_once(|| {});
+        // IDA `doGetSingleton()` (first fetch).
+        self.singleton_gets.fetch_add(1, Ordering::SeqCst);
+        // IDA `STR.W R11, [TypeRegistrar]`.
+        self.type_registrar.store(0, Ordering::SeqCst);
+        self.singleton_once.call_once(|| {});
+        // IDA `doGetSingleton()` (second fetch).
+        self.singleton_gets.fetch_add(1, Ordering::SeqCst);
+    }
+
+    pub fn singleton_get_count(&self) -> usize {
+        self.singleton_gets.load(Ordering::SeqCst)
+    }
+}
+
+static ENUM_AA_SAMPLES: ReflectionEnumInit = ReflectionEnumInit::new("AASamples");
+static ENUM_GRAPHICS_MODE: ReflectionEnumInit = ReflectionEnumInit::new("GraphicsMode");
+static ENUM_FRAME_RATE_MANAGER_MODE: ReflectionEnumInit =
+    ReflectionEnumInit::new("FrameRateManagerMode");
+static ENUM_ANTIALIASING_MODE: ReflectionEnumInit = ReflectionEnumInit::new("AntialiasingMode");
+static ENUM_QUALITY_LEVEL: ReflectionEnumInit = ReflectionEnumInit::new("QualityLevel");
+static ENUM_RESOLUTION_PRESET: ReflectionEnumInit = ReflectionEnumInit::new("ResolutionPreset");
+static ENUM_SHADOW_MODE: ReflectionEnumInit = ReflectionEnumInit::new("ShadowMode");
+
+/// IDA `RBX::Reflection::ClassRegistrar<CRenderSettingsItem>::registrar`
+/// zeroed at 0x16ea6, then `classDescriptor()` at 0x16eaa.
+static CLASS_REGISTRAR_CRSI: AtomicUsize = AtomicUsize::new(0);
+static CLASS_DESCRIPTOR_CALLS: AtomicUsize = AtomicUsize::new(0);
+
+pub fn class_descriptor_render_settings_item() -> &'static str {
+    CLASS_DESCRIPTOR_CALLS.fetch_add(1, Ordering::SeqCst);
+    "CRenderSettingsItem"
+}
+
+/// One static descriptor construction inside `__GLOBAL__I_a` (IDA
+/// `EnumPropDescriptor` / `PropDescriptor` / `BoundProp` / `BoundFuncDesc`
+/// ctor plus `__cxa_atexit` of its dtor).
+pub struct PropDescriptorRecord {
+    pub name: &'static str,
+    pub category: &'static str,
+    pub kind: &'static str,
+}
+
+static PROP_DESCRIPTOR_REGISTRY: Mutex<Vec<PropDescriptorRecord>> = Mutex::new(Vec::new());
+
+pub fn register_prop_descriptor(name: &'static str, category: &'static str, kind: &'static str) {
+    PROP_DESCRIPTOR_REGISTRY
+        .lock()
+        .push(PropDescriptorRecord { name, category, kind });
+    register_atexit(kind);
+}
+
+/// IDA `FactoryProduct<T>::creatorPrivate` guarded `Creator` construction
+/// (0x17964..0x179de: Camera, then CRenderSettingsItem).
+static CREATOR_CAMERA: Once = Once::new();
+static CREATOR_CRSI_ITEM: Once = Once::new();
+
+pub fn ensure_factory_creator(guard: &Once, name: &'static str) {
+    guard.call_once(|| {
+        register_atexit(name);
+    });
+}
+
 
 // 0x16e4c — __GLOBAL__I_a
 #[doc(alias = "global constructor keyed to_a")]
 // was: global constructor keyed to_a
-// IDA 0x16e4c: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x16e4c: 911 insns — CRenderSettingsItem TU static init: boost categories +
+// ios_base::Init/atexit, ClassRegistrar zero + classDescriptor(), 7 reflection
+// enums (EnumRegistrar zero + call_once(initSingleton) + 2x doGetSingleton +
+// TypeRegistrar zero), 20 prop/func descriptors each with atexit(dtor),
+// bad_alloc/bad_exception objects, 7 singleton pools, Camera +
+// CRenderSettingsItem factory creators.
 pub fn stub_0x16e4c() {
+    // IDA 0x16e56..0x16e70: generic_category x2 + system_category stores.
+    ensure_error_categories();
+    // IDA 0x16e72..0x16e94: ios_base::Init + __cxa_atexit(~Init).
+    ensure_ios_base_init();
+    // IDA 0x16ea6..0x16eaa: ClassRegistrar<CRenderSettingsItem>::registrar = 0, then classDescriptor().
+    CLASS_REGISTRAR_CRSI.store(0, Ordering::SeqCst);
+    class_descriptor_render_settings_item();
+    // IDA 0x16eae..0x170be: one registrar block per enum, in TU order.
+    ENUM_AA_SAMPLES.run();
+    ENUM_GRAPHICS_MODE.run();
+    ENUM_FRAME_RATE_MANAGER_MODE.run();
+    ENUM_ANTIALIASING_MODE.run();
+    ENUM_QUALITY_LEVEL.run();
+    ENUM_RESOLUTION_PRESET.run();
+    ENUM_SHADOW_MODE.run();
+    // IDA 0x170c2..0x1777c: static prop/func descriptor constructions, in TU order.
+    register_prop_descriptor("graphicsMode", "General", "EnumPropDescriptor<GraphicsMode>");
+    register_prop_descriptor("FrameRateManager", "General", "EnumPropDescriptor<FrameRateManagerMode>");
+    register_prop_descriptor("QualityLevel", "Performance", "EnumPropDescriptor<QualityLevel>");
+    register_prop_descriptor("AlwaysDrawConnectors", "General", "PropDescriptor<bool>");
+    register_prop_descriptor("IsAggregationShown", "Debug", "PropDescriptor<bool>");
+    register_prop_descriptor("IsSynchronizedWithPhysics", "Performance", "BoundProp<bool>");
+    register_prop_descriptor("UsesPaintMessage", "Performance", "BoundProp<bool>");
+    register_prop_descriptor("AASamples", "Quality", "EnumPropDescriptor<AASamples>");
+    register_prop_descriptor("profileName", "Quality", "BoundProp<string>");
+    register_prop_descriptor("Shadow", "Debug", "EnumPropDescriptor<ShadowMode>");
+    register_prop_descriptor("Antialiasing", "Quality", "EnumPropDescriptor<AntialiasingMode>");
+    register_prop_descriptor("ShowBoundingBoxes", "Debug", "PropDescriptor<bool>");
+    register_prop_descriptor("AutoFRMLevel", "Debug", "PropDescriptor<int>");
+    register_prop_descriptor("EnableFRM", "Debug", "PropDescriptor<bool>");
+    register_prop_descriptor("DebugDisableInterpolation", "Debug", "PropDescriptor<bool>");
+    register_prop_descriptor("Resolution", "Screen", "EnumPropDescriptor<ResolutionPreset>");
+    register_prop_descriptor("GetMaxQualityLevel", "", "BoundFuncDesc<int()>");
+    register_prop_descriptor("TextureCacheSize", "Cache", "PropDescriptor<uint>");
+    register_prop_descriptor("MeshCacheSize", "Cache", "PropDescriptor<uint>");
+    register_prop_descriptor("EagerBulkExecution", "Performance", "PropDescriptor<bool>");
+    // IDA 0x1777c..0x177f6: guarded bad_alloc / bad_exception objects.
+    ensure_static_exception_object(&BAD_ALLOC_OBJECT, "bad_alloc");
+    ensure_static_exception_object(&BAD_EXCEPTION_OBJECT, "bad_exception");
+    // IDA 0x177f8..0x17964: guarded singleton_pool get_pool() calls, in TU order.
+    POOL_XML_ATTRIBUTE.get_pool();
+    POOL_XML_ELEMENT.get_pool();
+    POOL_FW_INSTANCE.get_pool();
+    POOL_ON_DEMAND_INSTANCE.get_pool();
+    POOL_ON_DEMAND_PV_INSTANCE.get_pool();
+    POOL_FW_PART_INSTANCE.get_pool();
+    POOL_ON_DEMAND_PART_INSTANCE.get_pool();
+    // IDA 0x17964..0x179de: guarded FactoryProduct creators (Camera, CRenderSettingsItem).
+    ensure_factory_creator(&CREATOR_CAMERA, "FactoryProduct<Camera>::~Creator");
+    ensure_factory_creator(&CREATOR_CRSI_ITEM, "FactoryProduct<CRenderSettingsItem>::~Creator");
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
 // was: global constructor keyed to_a_0
-// IDA 0x17c58: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x17c58: 131 insns — TU prologue (boost categories, ios_base::Init, atexit) + guarded bad_alloc/bad_exception objects + XmlAttribute/XmlElement/FWInstance/OnDemandInstance pools.
 pub fn stub_0x17c58() {
+    ensure_error_categories();
+    ensure_ios_base_init();
+    ensure_static_exception_object(&BAD_ALLOC_OBJECT, "bad_alloc");
+    ensure_static_exception_object(&BAD_EXCEPTION_OBJECT, "bad_exception");
+    ensure_xml_instance_pools();
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Appirater sharedInstance]")]
 // was: +[Appirater sharedInstance]
-// IDA 0x17f80: 36 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x17f80() {
+// IDA 0x17f80: fast path returns dword_130C398 when set; else stack block + dispatch_once(0x17fe4), then return dword_130C398.
+pub fn stub_0x17f80(class_token: usize) -> &'static Appirater {
+    if let Some(shared) = APPIRATER_SHARED.get() {
+        return shared;
+    }
+    APPIRATER_SHARED.get_or_init(|| {
+        let delegate = *APPIRATER_DELEGATE.lock();
+        stub_0x17fe4(class_token, delegate)
+    })
 }
 
 // 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
 #[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
 // was: ___27+[Appirater sharedInstance]_block_invoke
-// IDA 0x17fe4: 49 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x17fe4() {
+// IDA 0x17fe4: +[Appirater alloc] + -[Appirater init], setDelegate:(dword_130C394), defaultCenter addObserver:appWillResignActive.
+pub fn stub_0x17fe4(class_token: usize, delegate: usize) -> Appirater {
+    let instance = Appirater::init(delegate);
+    APP_WILL_RESIGN_OBSERVERS.lock().push(NotificationObserver {
+        observer: class_token,
+        selector: "appWillResignActive",
+        name: "UIApplicationWillResignActiveNotification",
+    });
+    instance
 }
 
 // 0x18094 — ___copy_helper_block_
 #[doc(alias = "___copy_helper_block_")]
 // was: ___copy_helper_block_
-// IDA 0x18094: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x18094() {
+// IDA 0x18094: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x18094(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x180a0 — ___destroy_helper_block_
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_")]
 // was: ___destroy_helper_block_
-// IDA 0x180a0: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x180a0() {
+// IDA 0x180a0: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x180a0(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x18bc8 — ___copy_helper_block_125
 #[doc(alias = "___copy_helper_block_125")]
 // was: ___copy_helper_block_125
-// IDA 0x18bc8: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x18bc8() {
+// IDA 0x18bc8: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x18bc8(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x18bd4 — ___destroy_helper_block_126
 #[doc(alias = "___destroy_helper_block_126")]
 // was: ___destroy_helper_block_126
-// IDA 0x18bd4: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x18bd4() {
+// IDA 0x18bd4: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x18bd4(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x18c8c — ___copy_helper_block_130
 #[doc(alias = "___copy_helper_block_130")]
 // was: ___copy_helper_block_130
-// IDA 0x18c8c: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x18c8c() {
+// IDA 0x18c8c: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x18c8c(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 #[doc(alias = "___destroy_helper_block_131")]
 // was: ___destroy_helper_block_131
-// IDA 0x18c98: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x18c98() {
+// IDA 0x18c98: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x18c98(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1a124 — __Z17topMostControllerv
 // type: _DWORD __fastcall()
 #[doc(alias = "topMostController(void)")]
 // was: topMostController(void)
-// IDA 0x1a124: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1a124() {
+// IDA 0x1a124: sharedApplication -> keyWindow -> rootViewController, then do/while descent via _topMostController until null; return deepest controller.
+pub fn stub_0x1a124(root: SharedPtr<TopViewController>) -> SharedPtr<TopViewController> {
+    let mut top = root;
+    let mut descended = top_most_controller_step(&top);
+    while let Some(next) = descended {
+        top = next;
+        descended = top_most_controller_step(&top);
+    }
+    top
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
 #[doc(alias = "global constructor keyed to_a_1")]
 // was: global constructor keyed to_a_1
-// IDA 0x1a5d0: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x1a5d0: 131 insns — same TU shape as 0x17c58 (prologue + bad_alloc/bad_exception + XmlAttribute/XmlElement/FWInstance/OnDemandInstance pools).
 pub fn stub_0x1a5d0() {
+    ensure_error_categories();
+    ensure_ios_base_init();
+    ensure_static_exception_object(&BAD_ALLOC_OBJECT, "bad_alloc");
+    ensure_static_exception_object(&BAD_EXCEPTION_OBJECT, "bad_exception");
+    ensure_xml_instance_pools();
 }
 
 // 0x1a768 — _main
 // type: int __fastcall(int argc, const char **argv, const char **envp)
 #[doc(alias = "_main")]
 // was: _main
-// IDA 0x1a768: 32 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1a768() {
+// IDA 0x1a768: NSAutoreleasePool alloc/init, UIApplicationMain(argc, argv, "UIApplication", "AppDelegate"), [pool release], return status.
+pub fn stub_0x1a768(argc: i32, argv: Vec<String>) -> i32 {
+    let pool = AutoreleasePool::alloc_init();
+    let status = ui_application_main(
+        argc,
+        &argv,
+        UI_APPLICATION_PRINCIPAL_CLASS,
+        UI_APPLICATION_DELEGATE_CLASS,
+    );
+    pool.release();
+    status
 }
 
 // 0x1a7d4 — __GLOBAL__I_a_2
 #[doc(alias = "global constructor keyed to_a_2")]
 // was: global constructor keyed to_a_2
-// IDA 0x1a7d4: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x1a7d4: 131 insns — same TU shape as 0x17c58 (prologue + bad_alloc/bad_exception + XmlAttribute/XmlElement/FWInstance/OnDemandInstance pools).
 pub fn stub_0x1a7d4() {
+    ensure_error_categories();
+    ensure_ios_base_init();
+    ensure_static_exception_object(&BAD_ALLOC_OBJECT, "bad_alloc");
+    ensure_static_exception_object(&BAD_EXCEPTION_OBJECT, "bad_exception");
+    ensure_xml_instance_pools();
 }
 
 // 0x1ae78 — ___copy_helper_block__0
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block__0")]
 // was: ___copy_helper_block__0
-// IDA 0x1ae78: 17 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1ae78() {
+// IDA 0x1ae78: `_Block_object_assign(dst + 20, src[5], 3); _Block_object_assign(dst + 24, src[6], 3); _Block_object_assign_shim(dst + 28, src[7], 3)` — retain three captures.
+pub fn stub_0x1ae78(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_3(dst, src);
 }
 
 // 0x1aea8 — ___destroy_helper_block__0
 #[doc(alias = "___destroy_helper_block__0")]
 // was: ___destroy_helper_block__0
-// IDA 0x1aea8: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1aea8() {
+// IDA 0x1aea8: `_Block_object_dispose(a1[5], 3); _Block_object_dispose(a1[6], 3); _Block_object_dispose_shim(a1[7], 3)` — release three captures.
+pub fn stub_0x1aea8(slots: &mut [BlockSlot]) {
+    block_dispose_3(slots);
 }
 
 // 0x1b11c — ___copy_helper_block_66
 #[doc(alias = "___copy_helper_block_66")]
 // was: ___copy_helper_block_66
-// IDA 0x1b11c: 17 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1b11c() {
+// IDA 0x1b11c: `_Block_object_assign(dst + 20, src[5], 3); _Block_object_assign(dst + 24, src[6], 3); _Block_object_assign_shim(dst + 28, src[7], 3)` — retain three captures.
+pub fn stub_0x1b11c(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_3(dst, src);
 }
 
 // 0x1b14c — ___destroy_helper_block_67
 #[doc(alias = "___destroy_helper_block_67")]
 // was: ___destroy_helper_block_67
-// IDA 0x1b14c: 13 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1b14c() {
+// IDA 0x1b14c: `_Block_object_dispose(a1[5], 3); _Block_object_dispose(a1[6], 3); _Block_object_dispose_shim(a1[7], 3)` — release three captures.
+pub fn stub_0x1b14c(slots: &mut [BlockSlot]) {
+    block_dispose_3(slots);
 }
 
 // 0x1b308 — __GLOBAL__I_a_3
 #[doc(alias = "global constructor keyed to_a_3")]
 // was: global constructor keyed to_a_3
-// IDA 0x1b308: __GLOBAL__I_a static initializer (runs before main); maps to Rust static-init idiom — no-op glue.
+// IDA 0x1b308: 63 insns — TU prologue (boost categories, ios_base::Init, atexit) + guarded bad_alloc/bad_exception objects; POPNE early-return when the bad_exception guard is set.
 pub fn stub_0x1b308() {
+    ensure_error_categories();
+    ensure_ios_base_init();
+    ensure_static_exception_object(&BAD_ALLOC_OBJECT, "bad_alloc");
+    if BAD_EXCEPTION_OBJECT.is_completed() {
+        return;
+    }
+    ensure_static_exception_object(&BAD_EXCEPTION_OBJECT, "bad_exception");
 }
 
 // 0x1bb88 — ___copy_helper_block__1
@@ -178,29 +605,33 @@ pub fn stub_0x1bba8() {
 // 0x1c5f4 — ___copy_helper_block_224
 #[doc(alias = "___copy_helper_block_224")]
 // was: ___copy_helper_block_224
-// IDA 0x1c5f4: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c5f4() {
+// IDA 0x1c5f4: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1c5f4(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1c600 — ___destroy_helper_block_225
 #[doc(alias = "___destroy_helper_block_225")]
 // was: ___destroy_helper_block_225
-// IDA 0x1c600: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c600() {
+// IDA 0x1c600: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1c600(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1c734 — ___copy_helper_block_246
 #[doc(alias = "___copy_helper_block_246")]
 // was: ___copy_helper_block_246
-// IDA 0x1c734: 4 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c734() {
+// IDA 0x1c734: `_Block_object_assign_shim(dst + 20, src + 20, 3)` — retain the single captured object.
+pub fn stub_0x1c734(dst: &mut [BlockSlot], src: &[BlockSlot]) {
+    block_copy_1(dst, src);
 }
 
 // 0x1c740 — ___destroy_helper_block_247
 #[doc(alias = "___destroy_helper_block_247")]
 // was: ___destroy_helper_block_247
-// IDA 0x1c740: 3 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x1c740() {
+// IDA 0x1c740: `_Block_object_dispose_shim(*(a1 + 20), 3)` — release the single captured object.
+pub fn stub_0x1c740(slots: &mut [BlockSlot]) {
+    block_dispose_1(slots);
 }
 
 // 0x1c874 — ___copy_helper_block_261

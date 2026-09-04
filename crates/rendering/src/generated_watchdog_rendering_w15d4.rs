@@ -11,20 +11,39 @@ use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0x97c0 — __ZN19CRenderSettingsItem19setTextureCacheSizeEj
-// type: int __fastcall(int this, unsigned int)
-#[doc(alias = "CRenderSettingsItem::setTextureCacheSize(unsigned int)")]
-#[doc(alias = "__ZN19CRenderSettingsItem19setTextureCacheSizeEj")]
-// IDA 0x97c0: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0x97c0() {
+/// Field layout behind `CRenderSettingsItem` used by IDA `0x97c0`:
+/// the texture-cache size is the u32 at byte offset `0xA0`.
+#[repr(C)]
+pub struct RenderSettingsItemCacheLayout {
+    _reserved: [u8; 0xA0],
+    pub texture_cache_size: u32,
 }
 
+// 0x97c0 — __ZN19CRenderSettingsItem19setTextureCacheSizeEj
+ // type: int __fastcall(int this, unsigned int)
+ #[doc(alias = "CRenderSettingsItem::setTextureCacheSize(unsigned int)")]
+ #[doc(alias = "__ZN19CRenderSettingsItem19setTextureCacheSizeEj")]
+// IDA 0x97c0: `STR.W R1,[R0,#0xA0]; BX LR` — store size, return this for chaining.
+pub fn stub_0x97c0(item: &mut RenderSettingsItemCacheLayout, size: u32) -> &mut RenderSettingsItemCacheLayout {
+    item.texture_cache_size = size;
+    item
+}
+
+/// Field layout behind `RBX::CRenderSettings` used by IDA `0xb4f4`:
+/// the texture-cache size is the u32 at byte offset `0x40` (word 16).
+#[repr(C)]
+pub struct CRenderSettingsCacheLayout {
+    _reserved: [u8; 0x40],
+    pub texture_cache_size: u32,
+}
+ 
 // 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
-#[doc(alias = "__ZNK3RBX15CRenderSettings19getTextureCacheSizeEv")]
-// IDA 0xb4f4: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_0xb4f4() {
+ // type: int __fastcall(RBX::CRenderSettings *this)
+ #[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
+ #[doc(alias = "__ZNK3RBX15CRenderSettings19getTextureCacheSizeEv")]
+// IDA 0xb4f4: `LDR R0,[R0,#0x40]; BX LR` — load and return the cached size.
+pub fn stub_0xb4f4(settings: &CRenderSettingsCacheLayout) -> u32 {
+    settings.texture_cache_size
 }
 
 // 0x38c928 — __ZN3RBX13UserInputBase11setCursorIdEPNS_5AdornERKNS_9TextureIdE
