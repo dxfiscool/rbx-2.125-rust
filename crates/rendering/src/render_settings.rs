@@ -6,6 +6,103 @@
 
 use rbx_core::SharedPtr;
 
+use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+
+use rbx_core::signal::Signal;
+
+/// Change-notification payload: EA of the `PropertyDescriptor const*` the
+/// original passes to `signal_with_args<1,...>::operator()` (the `+192`
+/// signal on the item). Kept as the image EA so `rg` finds either form.
+pub type DescriptorEa = u32;
+
+pub const DESC_ALWAYS_DRAW_CONNECTORS: DescriptorEa = 0x0130_C030; // IDA 0x9668 &unk_130C030
+pub const DESC_SHOW_AGGREGATION: DescriptorEa = 0x0130_C05C; // IDA 0x96ac &unk_130C05C
+pub const DESC_DEBUG_SHOW_BOUNDING_BOXES: DescriptorEa = 0x0130_C0E0; // IDA 0x973c &unk_130C0E0
+pub const DESC_ENABLE_FRM: DescriptorEa = 0x0130_C138; // IDA 0x9760 &unk_130C138
+pub const DESC_EAGER_BULK_EXECUTION: DescriptorEa = 0x0130_C1E8; // IDA 0x9b08 &unk_130C1E8
+pub const DESC_GRAPHICS_MODE: DescriptorEa = 0x0130_C244; // IDA 0x9608 &unk_130C244
+pub const DESC_FRAME_RATE_MANAGER_MODE: DescriptorEa = 0x0130_C278; // IDA 0x9628 &unk_130C278
+pub const DESC_QUALITY_LEVEL: DescriptorEa = 0x0130_C2AC; // IDA 0x9648/0x9ac8/0x9ae8 &unk_130C2AC
+pub const DESC_AA_SAMPLES: DescriptorEa = 0x0130_C2E0; // IDA 0x96d0 &unk_130C2E0
+pub const DESC_SHADOW_MODE: DescriptorEa = 0x0130_C314; // IDA 0x96fc &unk_130C314
+pub const DESC_ANTIALIASING_MODE: DescriptorEa = 0x0130_C348; // IDA 0x971c &unk_130C348
+pub const DESC_RESOLUTION_PREFERENCE: DescriptorEa = 0x012D_2C78; // IDA 0x97a4 CRenderSettingsItem::prop_resolution
+
+/// `GetDXVideoMemorySize` tier threshold from the ctor branch
+/// (IDA 0x97d0: `vram > &loc_F423FC + 3`, i.e. `> 0x00F423FF`).
+pub const DX_VIDEO_MEMORY_THRESHOLD: u32 = 0x00F4_23FF;
+/// `*(this + 146)` values selected by the VRAM branch (IDA 0x97d0).
+pub const VIDEO_TIER_LOW_VRAM: u32 = 39_322_400;
+pub const VIDEO_TIER_HIGH_VRAM: u32 = 50_332_672;
+
+/// `RBX::CRenderSettings::aaSamples` static: IDA 0x96d0/0xb3e8 read/write a
+/// global, not a field. Atomic models the shared word without `unsafe`.
+static AA_SAMPLES: AtomicI32 = AtomicI32::new(0);
+/// `RBX::PartInstance::disableInterpolation` global (IDA 0x9784/0x9794).
+static DISABLE_INTERPOLATION: AtomicBool = AtomicBool::new(false);
+
+/// `RBX::CRenderSettings` — plain settings block embedded at `+96` in
+/// `CRenderSettingsItem` (IDA 0x97d0 builds it at `(char *)this + 96`;
+/// getters at 0xb33c.. take it directly as `this`).
+///
+/// `#[repr(C)]` scalar layout; offsets verified against the IDA decompiles
+/// cited on each accessor. Total 72 bytes: item `+96..+168`.
+#[repr(C)]
+#[derive(Debug, Default)]
+pub struct RenderSettings {
+    pub unk_word0: i32,               // +0
+    pub graphics_mode: i32,           // +4  (IDA 0xb33c words[1]; set 0x9608)
+    pub antialiasing_mode: i32,       // +8  (IDA 0xb444 words[2]; set 0x971c)
+    pub shadow_mode: i32,             // +12 (IDA 0xb41c words[3]; set 0x96fc)
+    pub frame_rate_manager_mode: i32, // +16 (IDA 0xb364 words[4]; set 0x9628)
+    pub quality_level: i32,           // +20 (IDA 0xb38c words[5]; set 0x9648)
+    pub resolution_preference: i32,   // +24 (IDA 0xb4a4 words[6]; set 0x97a4)
+    pub auto_quality_level: i32,      // +28 (IDA 0xb474 words[7]; set 0x9ac8/0x9ae8)
+    pub max_quality_level: i32,       // +32 (IDA 0xb4cc words[8])
+    pub unk_36: [u8; 4],              // +36
+    pub debug_show_bounding_boxes: bool, // +40 (IDA 0xb46c; set 0x973c)
+    pub enable_frm: bool,             // +41 (IDA 0xb49c; set 0x9760)
+    pub unk_42: [u8; 8], // +42
+    // +50: unaligned DWORD in the original (`*(_DWORD *)((char *)this + 146)`;
+    // 50 % 4 == 2, so no naturally-aligned u32 can sit here). Stored as bytes;
+    // use video_tier()/set_video_tier() (little-endian, matching armv7).
+    pub unk_50_video_tier: [u8; 4],
+    pub unk_54: [u8; 4], // +54
+    pub show_aggregation: bool,       // +58 (IDA 0xb3e0; set 0x96ac)
+    pub always_draw_connectors: bool, // +59 (IDA 0xb3b4; set 0x9668)
+    pub connector_secondary: bool,    // +60 (IDA 0x9668 folds the +156 byte)
+    pub eager_bulk_execution: bool,   // +61 (IDA 0x9b08 writes +157)
+    pub unk_62: [u8; 2],              // +62
+    pub texture_cache_size: u32,      // +64 (IDA 0x97c0 writes item +160)
+    pub mesh_cache_size: u32,         // +68 (IDA 0x97c8 writes item +164)
+}
+
+impl RenderSettings {
+    pub fn video_tier(&self) -> u32 {
+        u32::from_le_bytes(self.unk_50_video_tier)
+    }
+    pub fn set_video_tier(&mut self, tier: u32) {
+        self.unk_50_video_tier = tier.to_le_bytes();
+    }
+}
+
+/// `CRenderSettingsItem` — `GlobalAdvancedSettingsItem` head (vtables,
+/// 96 bytes) + embedded [`RenderSettings`] at `+96` + trailing storage
+/// (IDA 0x97d0): `std::string` rep at `+168`, default `Vector2int16` at
+/// `+172`, `vector<Vector2int16>` at `+176`, flag byte at `+189`, and the
+/// property-changed signal at `+192` (`boost::signals` → [`Signal`]).
+pub struct RenderSettingsItem {
+    pub head: [u8; 96],
+    pub settings: RenderSettings,
+    pub name_rep: u32, // +168: std::string rep pointer; 0 models the empty rep
+    pub default_resolution: [i16; 2], // +172: 800x600 (IDA 0x97d0 words 86/87)
+    pub resolutions: Vec<[i16; 2]>, // +176: vector<G3D::Vector2int16>; ctor pushes the default
+    pub unk_188: u8,      // +188
+    pub unk_189_flag: bool, // +189: ctor sets 1
+    pub _pad_190: [u8; 2], // +190
+    pub changed: Signal<u32>, // +192: fired with the descriptor EA on real changes
+}
+
 // 0x850c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)")]
 // was: RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)
@@ -58,134 +155,272 @@ pub fn stub_9100() {
 // 0x9608 — __ZN19CRenderSettingsItem15setGraphicsModeEN3RBX15CRenderSettings12GraphicsModeE
 #[doc(alias = "CRenderSettingsItem::setGraphicsMode(RBX::CRenderSettings::GraphicsMode)")]
 // was: CRenderSettingsItem::setGraphicsMode(RBX::CRenderSettings::GraphicsMode)
-// IDA 0x9608: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9608() {
+// IDA 0x9608: guarded word store to +100; fires changed(&unk_130C244) at +192 only on change, else early-out.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9608(item: &mut RenderSettingsItem, mode: i32) -> bool {
+    if item.settings.graphics_mode != mode {
+        item.settings.graphics_mode = mode;
+        item.changed.fire(DESC_GRAPHICS_MODE);
+        return true;
+    }
+    false
 }
 
 // 0x9628 — __ZN19CRenderSettingsItem23setFrameRateManagerModeEN3RBX15CRenderSettings20FrameRateManagerModeE
 #[doc(alias = "CRenderSettingsItem::setFrameRateManagerMode(RBX::CRenderSettings::FrameRateManagerMode)")]
 // was: CRenderSettingsItem::setFrameRateManagerMode(RBX::CRenderSettings::FrameRateManagerMode)
-// IDA 0x9628: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9628() {
+// IDA 0x9628: guarded word store to +112; fires changed(&unk_130C278) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9628(item: &mut RenderSettingsItem, mode: i32) -> bool {
+    if item.settings.frame_rate_manager_mode != mode {
+        item.settings.frame_rate_manager_mode = mode;
+        item.changed.fire(DESC_FRAME_RATE_MANAGER_MODE);
+        return true;
+    }
+    false
 }
 
 // 0x9648 — __ZN19CRenderSettingsItem15setQualityLevelEN3RBX15CRenderSettings12QualityLevelE
 #[doc(alias = "CRenderSettingsItem::setQualityLevel(RBX::CRenderSettings::QualityLevel)")]
 // was: CRenderSettingsItem::setQualityLevel(RBX::CRenderSettings::QualityLevel)
-// IDA 0x9648: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9648() {
+// IDA 0x9648: guarded word store to +116; fires changed(&unk_130C2AC) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9648(item: &mut RenderSettingsItem, level: i32) -> bool {
+    if item.settings.quality_level != level {
+        item.settings.quality_level = level;
+        item.changed.fire(DESC_QUALITY_LEVEL);
+        return true;
+    }
+    false
 }
 
 // 0x9668 — __ZN19CRenderSettingsItem23setAlwaysDrawConnectorsEb
 #[doc(alias = "CRenderSettingsItem::setAlwaysDrawConnectors(bool)")]
 // was: CRenderSettingsItem::setAlwaysDrawConnectors(bool)
-// IDA 0x9668: 26 insns (LDRB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9668() {
+// IDA 0x9668: effective-flag fold of the +155 request byte with the +156 secondary byte; fires changed(&unk_130C030) at +192 only when the effective value flips.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9668(item: &mut RenderSettingsItem, enabled: bool) -> bool {
+    // Old effective value: +155 set ? 1 : normalize(+156). (IDA normalizes the
+    // +156 byte with `if (*(this + 156)) v2 = 1`; Rust bools are pre-normalized.)
+    let mut old_effective = true;
+    if !item.settings.always_draw_connectors {
+        old_effective = item.settings.connector_secondary;
+    }
+    item.settings.always_draw_connectors = enabled;
+    if enabled {
+        if old_effective {
+            return false;
+        }
+        item.changed.fire(DESC_ALWAYS_DRAW_CONNECTORS);
+        return true;
+    }
+    let new_effective = item.settings.connector_secondary;
+    if old_effective != new_effective {
+        item.changed.fire(DESC_ALWAYS_DRAW_CONNECTORS);
+        return true;
+    }
+    false
 }
 
 // 0x96ac — __ZN19CRenderSettingsItem18setShowAggregationEb
 #[doc(alias = "CRenderSettingsItem::setShowAggregation(bool)")]
 // was: CRenderSettingsItem::setShowAggregation(bool)
-// IDA 0x96ac: 10 insns (LDRB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_96ac() {
+// IDA 0x96ac: guarded byte store to +154; fires changed(&unk_130C05C) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_96ac(item: &mut RenderSettingsItem, show: bool) -> bool {
+    if item.settings.show_aggregation != show {
+        item.settings.show_aggregation = show;
+        item.changed.fire(DESC_SHOW_AGGREGATION);
+        return true;
+    }
+    false
 }
 
 // 0x96d0 — __ZN19CRenderSettingsItem12setAASamplesEN3RBX15CRenderSettings9AASamplesE
 #[doc(alias = "CRenderSettingsItem::setAASamples(RBX::CRenderSettings::AASamples)")]
 // was: CRenderSettingsItem::setAASamples(RBX::CRenderSettings::AASamples)
-// IDA 0x96d0: 14 insns (MOV..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_96d0() {
+// IDA 0x96d0: guarded store to the RBX::CRenderSettings::aaSamples global (not a field); fires changed(&unk_130C2E0) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_96d0(item: &mut RenderSettingsItem, samples: i32) -> bool {
+    if AA_SAMPLES.load(Ordering::Relaxed) != samples {
+        AA_SAMPLES.store(samples, Ordering::Relaxed);
+        item.changed.fire(DESC_AA_SAMPLES);
+        return true;
+    }
+    false
 }
 
 // 0x96fc — __ZN19CRenderSettingsItem13setShadowModeEN3RBX15CRenderSettings10ShadowModeE
 #[doc(alias = "CRenderSettingsItem::setShadowMode(RBX::CRenderSettings::ShadowMode)")]
 // was: CRenderSettingsItem::setShadowMode(RBX::CRenderSettings::ShadowMode)
-// IDA 0x96fc: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_96fc() {
+// IDA 0x96fc: guarded word store to +108; fires changed(&unk_130C314) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_96fc(item: &mut RenderSettingsItem, mode: i32) -> bool {
+    if item.settings.shadow_mode != mode {
+        item.settings.shadow_mode = mode;
+        item.changed.fire(DESC_SHADOW_MODE);
+        return true;
+    }
+    false
 }
 
 // 0x971c — __ZN19CRenderSettingsItem19setAntialiasingModeEN3RBX15CRenderSettings16AntialiasingModeE
 #[doc(alias = "CRenderSettingsItem::setAntialiasingMode(RBX::CRenderSettings::AntialiasingMode)")]
 // was: CRenderSettingsItem::setAntialiasingMode(RBX::CRenderSettings::AntialiasingMode)
-// IDA 0x971c: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_971c() {
+// IDA 0x971c: guarded word store to +104; fires changed(&unk_130C348) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_971c(item: &mut RenderSettingsItem, mode: i32) -> bool {
+    if item.settings.antialiasing_mode != mode {
+        item.settings.antialiasing_mode = mode;
+        item.changed.fire(DESC_ANTIALIASING_MODE);
+        return true;
+    }
+    false
 }
 
 // 0x973c — __ZN19CRenderSettingsItem25setDebugShowBoundingBoxesEb
 #[doc(alias = "CRenderSettingsItem::setDebugShowBoundingBoxes(bool)")]
 // was: CRenderSettingsItem::setDebugShowBoundingBoxes(bool)
-// IDA 0x973c: 10 insns (LDRB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_973c() {
+// IDA 0x973c: guarded byte store to +136; fires changed(&unk_130C0E0) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_973c(item: &mut RenderSettingsItem, show: bool) -> bool {
+    if item.settings.debug_show_bounding_boxes != show {
+        item.settings.debug_show_bounding_boxes = show;
+        item.changed.fire(DESC_DEBUG_SHOW_BOUNDING_BOXES);
+        return true;
+    }
+    false
 }
 
 // 0x9760 — __ZN19CRenderSettingsItem12setEnableFRMEb
 #[doc(alias = "CRenderSettingsItem::setEnableFRM(bool)")]
 // was: CRenderSettingsItem::setEnableFRM(bool)
-// IDA 0x9760: 10 insns (LDRB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9760() {
+// IDA 0x9760: guarded byte store to +137; fires changed(&unk_130C138) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9760(item: &mut RenderSettingsItem, enable: bool) -> bool {
+    if item.settings.enable_frm != enable {
+        item.settings.enable_frm = enable;
+        item.changed.fire(DESC_ENABLE_FRM);
+        return true;
+    }
+    false
 }
 
 // 0x9784 — __ZNK19CRenderSettingsItem28getDebugDisableInterpolationEv
 #[doc(alias = "CRenderSettingsItem::getDebugDisableInterpolation(void)const")]
 // was: CRenderSettingsItem::getDebugDisableInterpolation(void)const
-// IDA 0x9784: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9784() {
+// IDA 0x9784: returns the RBX::PartInstance::disableInterpolation global byte; no self access, no signal.
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_9784() -> bool {
+    DISABLE_INTERPOLATION.load(Ordering::Relaxed)
 }
 
 // 0x9794 — __ZN19CRenderSettingsItem28setDebugDisableInterpolationEb
 #[doc(alias = "CRenderSettingsItem::setDebugDisableInterpolation(bool)")]
 // was: CRenderSettingsItem::setDebugDisableInterpolation(bool)
-// IDA 0x9794: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9794() {
+// IDA 0x9794: unconditional byte store to the RBX::PartInstance::disableInterpolation global; no signal.
+// FIDELITY: original returns &global (char *); Rust returns the stored byte. Unconditional write, no change signal.
+pub fn stub_9794(value: bool) -> bool {
+    DISABLE_INTERPOLATION.store(value, Ordering::Relaxed);
+    value
 }
 
 // 0x97a4 — __ZN19CRenderSettingsItem23setResolutionPreferenceEN3RBX15CRenderSettings16ResolutionPresetE
 #[doc(alias = "CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)")]
 // was: CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)
-// IDA 0x97a4: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_97a4() {
+// IDA 0x97a4: guarded word store to +120; fires changed(&CRenderSettingsItem::prop_resolution = 0x12D2C78) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_97a4(item: &mut RenderSettingsItem, preset: i32) -> bool {
+    if item.settings.resolution_preference != preset {
+        item.settings.resolution_preference = preset;
+        item.changed.fire(DESC_RESOLUTION_PREFERENCE);
+        return true;
+    }
+    false
 }
 
 // 0x97c0 — __ZN19CRenderSettingsItem19setTextureCacheSizeEj
 #[doc(alias = "CRenderSettingsItem::setTextureCacheSize(unsigned int)")]
 // was: CRenderSettingsItem::setTextureCacheSize(unsigned int)
-// IDA 0x97c0: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_97c0() {
+// IDA 0x97c0: unconditional word store to +160 (STR.W then BX); no compare, no signal.
+// FIDELITY: original returns this with no signal on this path; Rust returns false (no signal fired).
+pub fn stub_97c0(item: &mut RenderSettingsItem, size: u32) -> bool {
+    item.settings.texture_cache_size = size;
+    false
 }
 
 // 0x97c8 — __ZN19CRenderSettingsItem16setMeshCacheSizeEj
 #[doc(alias = "CRenderSettingsItem::setMeshCacheSize(unsigned int)")]
 // was: CRenderSettingsItem::setMeshCacheSize(unsigned int)
-// IDA 0x97c8: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_97c8() {
+// IDA 0x97c8: unconditional word store to +164 (STR.W then BX); no compare, no signal.
+// FIDELITY: original returns this with no signal on this path; Rust returns false (no signal fired).
+pub fn stub_97c8(item: &mut RenderSettingsItem, size: u32) -> bool {
+    item.settings.mesh_cache_size = size;
+    false
 }
 
 // 0x97d0 — __ZN19CRenderSettingsItemC2Ev
 #[doc(alias = "CRenderSettingsItem::CRenderSettingsItem(void)")]
 // was: CRenderSettingsItem::CRenderSettingsItem(void)
-// IDA 0x97d0: 272 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_97d0() {
+// IDA 0x97d0: ctor: GlobalAdvancedSettingsItem base + CRenderSettings at +96, empty string at +168, default 800x600 Vector2int16 at +172 pushed into the +176 vector, flag byte 1 at +189, signal init at +192, and *(+146) from the GetDXVideoMemorySize tier branch.
+// FIDELITY: vtable/base-class and string/vector-allocator mechanics modeled with Rust equivalents (Vec, u32 rep); observable defaults and the VRAM tier branch are 1:1. Takes the VRAM size the original reads via GetDXVideoMemorySize().
+pub fn stub_97d0(dx_video_memory_bytes: u32) -> RenderSettingsItem {
+    let mut settings = RenderSettings::default();
+    // IDA 0x97d0: `*(_DWORD *)(this + 146)` — the unaligned +50 word — selects
+    // the tier by the GetDXVideoMemorySize() branch.
+    settings.set_video_tier(if dx_video_memory_bytes > DX_VIDEO_MEMORY_THRESHOLD {
+        VIDEO_TIER_HIGH_VRAM
+    } else {
+        VIDEO_TIER_LOW_VRAM
+    });
+    RenderSettingsItem {
+        head: [0; 96],
+        settings,
+        name_rep: 0,
+        default_resolution: [800, 600],
+        resolutions: vec![[800, 600]],
+        unk_188: 0,
+        unk_189_flag: true,
+        _pad_190: [0; 2],
+        changed: Signal::new(),
+    }
 }
 
 // 0x9ac8 — __ZN19CRenderSettingsItem19setAutoQualityLevelEi
 #[doc(alias = "CRenderSettingsItem::setAutoQualityLevel(int)")]
 // was: CRenderSettingsItem::setAutoQualityLevel(int)
-// IDA 0x9ac8: 10 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9ac8() {
+// IDA 0x9ac8: guarded word store to +124; fires changed(&unk_130C2AC, shared with quality level) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9ac8(item: &mut RenderSettingsItem, level: i32) -> bool {
+    if item.settings.auto_quality_level != level {
+        item.settings.auto_quality_level = level;
+        item.changed.fire(DESC_QUALITY_LEVEL);
+        return true;
+    }
+    false
 }
 
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 // was: non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)
-// IDA 0x9ae8: 12 insns (LDR..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9ae8() {
+// IDA 0x9ae8: non-virtual __ZThn96_ thunk to setAutoQualityLevel: entry this points at the +96 subobject (compares *(this + 28)), then adjusts back (v2 = this - 96) to write +124 and fire +192.
+// FIDELITY: the -96 adjustment is a no-op in Rust (the item is passed directly); subobject+28 == item+124 is preserved, behavior identical to 0x9ac8.
+pub fn stub_9ae8(item: &mut RenderSettingsItem, level: i32) -> bool {
+    stub_9ac8(item, level)
 }
 
 // 0x9b08 — __ZN19CRenderSettingsItem21setEagerBulkExecutionEb
 #[doc(alias = "CRenderSettingsItem::setEagerBulkExecution(bool)")]
 // was: CRenderSettingsItem::setEagerBulkExecution(bool)
-// IDA 0x9b08: 10 insns (LDRB.W..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_9b08() {
+// IDA 0x9b08: guarded byte store to +157; fires changed(&unk_130C1E8) at +192 only on change.
+// FIDELITY: original returns this-or-signal int; Rust returns whether the change signal fired.
+pub fn stub_9b08(item: &mut RenderSettingsItem, eager: bool) -> bool {
+    if item.settings.eager_bulk_execution != eager {
+        item.settings.eager_bulk_execution = eager;
+        item.changed.fire(DESC_EAGER_BULK_EXECUTION);
+        return true;
+    }
+    false
 }
 
 // 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
@@ -247,8 +482,10 @@ pub fn stub_afdc() {
 // 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
 #[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
 // was: RBX::CRenderSettings::getGraphicsMode(void)const
-// IDA 0xb33c: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b33c() {
+// IDA 0xb33c: LDR words[1] of RBX::CRenderSettings (settings +4 == item +100).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b33c(settings: &RenderSettings) -> i32 {
+    settings.graphics_mode
 }
 
 // 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
@@ -261,8 +498,10 @@ pub fn stub_b340() {
 // 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
 #[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
 // was: RBX::CRenderSettings::getFrameRateManagerMode(void)const
-// IDA 0xb364: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b364() {
+// IDA 0xb364: LDR words[4] of RBX::CRenderSettings (settings +16 == item +112).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b364(settings: &RenderSettings) -> i32 {
+    settings.frame_rate_manager_mode
 }
 
 // 0xb368 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev
@@ -275,8 +514,10 @@ pub fn stub_b368() {
 // 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
 #[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
 // was: RBX::CRenderSettings::getQualityLevel(void)const
-// IDA 0xb38c: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b38c() {
+// IDA 0xb38c: LDR words[5] of RBX::CRenderSettings (settings +20 == item +116).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b38c(settings: &RenderSettings) -> i32 {
+    settings.quality_level
 }
 
 // 0xb390 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev
@@ -289,8 +530,10 @@ pub fn stub_b390() {
 // 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
 #[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
 // was: RBX::CRenderSettings::getAlwaysDrawConnectors(void)const
-// IDA 0xb3b4: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b3b4() {
+// IDA 0xb3b4: LDRB.W byte +59 of RBX::CRenderSettings (item +155).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b3b4(settings: &RenderSettings) -> bool {
+    settings.always_draw_connectors
 }
 
 // 0xb3bc — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev
@@ -303,15 +546,19 @@ pub fn stub_b3bc() {
 // 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
 #[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
 // was: RBX::CRenderSettings::getShowAggregation(void)const
-// IDA 0xb3e0: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b3e0() {
+// IDA 0xb3e0: LDRB.W byte +58 of RBX::CRenderSettings (item +154).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b3e0(settings: &RenderSettings) -> bool {
+    settings.show_aggregation
 }
 
 // 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
 #[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
 // was: RBX::CRenderSettings::getAASamples(void)const
-// IDA 0xb3e8: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b3e8() {
+// IDA 0xb3e8: MOV from the RBX::CRenderSettings::aaSamples global (5 insns); not a field.
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b3e8() -> i32 {
+    AA_SAMPLES.load(Ordering::Relaxed)
 }
 
 // 0xb3f8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev
@@ -324,8 +571,10 @@ pub fn stub_b3f8() {
 // 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
 #[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
 // was: RBX::CRenderSettings::getShadowMode(void)const
-// IDA 0xb41c: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b41c() {
+// IDA 0xb41c: LDR words[3] of RBX::CRenderSettings (settings +12 == item +108).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b41c(settings: &RenderSettings) -> i32 {
+    settings.shadow_mode
 }
 
 // 0xb420 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev
@@ -338,8 +587,10 @@ pub fn stub_b420() {
 // 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
 #[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
 // was: RBX::CRenderSettings::getAntialiasingMode(void)const
-// IDA 0xb444: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b444() {
+// IDA 0xb444: LDR words[2] of RBX::CRenderSettings (settings +8 == item +104).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b444(settings: &RenderSettings) -> i32 {
+    settings.antialiasing_mode
 }
 
 // 0xb448 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev
@@ -352,15 +603,19 @@ pub fn stub_b448() {
 // 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
 #[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
 // was: RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const
-// IDA 0xb46c: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b46c() {
+// IDA 0xb46c: LDRB.W byte +40 of RBX::CRenderSettings (item +136).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b46c(settings: &RenderSettings) -> bool {
+    settings.debug_show_bounding_boxes
 }
 
 // 0xb474 — __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv
 #[doc(alias = "RBX::CRenderSettings::getAutoQualityLevel(void)const")]
 // was: RBX::CRenderSettings::getAutoQualityLevel(void)const
-// IDA 0xb474: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b474() {
+// IDA 0xb474: LDR words[7] of RBX::CRenderSettings (settings +28 == item +124).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b474(settings: &RenderSettings) -> i32 {
+    settings.auto_quality_level
 }
 
 // 0xb478 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev
@@ -373,8 +628,10 @@ pub fn stub_b478() {
 // 0xb49c — __ZNK3RBX15CRenderSettings12getEnableFRMEv
 #[doc(alias = "RBX::CRenderSettings::getEnableFRM(void)const")]
 // was: RBX::CRenderSettings::getEnableFRM(void)const
-// IDA 0xb49c: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_b49c() {
+// IDA 0xb49c: LDRB.W byte +41 of RBX::CRenderSettings (item +137).
+// FIDELITY: 1:1 field/global read; return type fixed from IDA signature.
+pub fn stub_b49c(settings: &RenderSettings) -> bool {
+    settings.enable_frm
 }
 
 // 0xb4a4 — __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
@@ -3689,4 +3946,123 @@ pub fn stub_be6e54() {
 // was: RBX::ViewRbxGfx_InitModule(void)::ViewRbxGfxFactory::Create(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)
 // IDA 0xbef270: 62 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_bef270() {
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::Arc;
+    use std::sync::atomic::{AtomicU32, Ordering as AOrd};
+
+    // Signal slots are weak: the returned handle must be kept alive or the
+    // probe goes dead (same contract as rbx_core::signal::Signal::connect).
+    fn fired_with(item: &RenderSettingsItem) -> (Arc<AtomicU32>, Arc<impl Fn(u32) + Send + Sync>) {
+        let seen = Arc::new(AtomicU32::new(u32::MAX));
+        let probe = Arc::clone(&seen);
+        let handle = Arc::new(move |ea: u32| probe.store(ea, AOrd::SeqCst));
+        item.changed.connect(Arc::clone(&handle));
+        (seen, handle)
+    }
+
+    #[test]
+    fn settings_layout_matches_ida_offsets() {
+        use std::mem::{offset_of, size_of};
+        assert_eq!(size_of::<RenderSettings>(), 72);
+        assert_eq!(offset_of!(RenderSettings, graphics_mode), 4);
+        assert_eq!(offset_of!(RenderSettings, antialiasing_mode), 8);
+        assert_eq!(offset_of!(RenderSettings, shadow_mode), 12);
+        assert_eq!(offset_of!(RenderSettings, frame_rate_manager_mode), 16);
+        assert_eq!(offset_of!(RenderSettings, quality_level), 20);
+        assert_eq!(offset_of!(RenderSettings, resolution_preference), 24);
+        assert_eq!(offset_of!(RenderSettings, auto_quality_level), 28);
+        assert_eq!(offset_of!(RenderSettings, max_quality_level), 32);
+        assert_eq!(offset_of!(RenderSettings, debug_show_bounding_boxes), 40);
+        assert_eq!(offset_of!(RenderSettings, enable_frm), 41);
+        assert_eq!(offset_of!(RenderSettings, unk_50_video_tier), 50);
+        assert_eq!(offset_of!(RenderSettings, show_aggregation), 58);
+        assert_eq!(offset_of!(RenderSettings, always_draw_connectors), 59);
+        assert_eq!(offset_of!(RenderSettings, connector_secondary), 60);
+        assert_eq!(offset_of!(RenderSettings, eager_bulk_execution), 61);
+        assert_eq!(offset_of!(RenderSettings, texture_cache_size), 64);
+        assert_eq!(offset_of!(RenderSettings, mesh_cache_size), 68);
+    }
+
+    #[test]
+    fn guarded_setter_fires_once_then_silent() {
+        let mut item = stub_97d0(0);
+        let (seen, _hook) = fired_with(&item);
+        assert!(stub_9608(&mut item, 3));
+        assert_eq!(seen.load(AOrd::SeqCst), DESC_GRAPHICS_MODE);
+        assert_eq!(stub_b33c(&item.settings), 3);
+        seen.store(u32::MAX, AOrd::SeqCst);
+        assert!(!stub_9608(&mut item, 3));
+        assert_eq!(seen.load(AOrd::SeqCst), u32::MAX);
+    }
+
+    #[test]
+    fn blind_cache_setters_write_without_signal() {
+        let mut item = stub_97d0(0);
+        let (seen, _hook) = fired_with(&item);
+        assert!(!stub_97c0(&mut item, 4096));
+        assert!(!stub_97c8(&mut item, 2048));
+        assert_eq!(item.settings.texture_cache_size, 4096);
+        assert_eq!(item.settings.mesh_cache_size, 2048);
+        assert_eq!(seen.load(AOrd::SeqCst), u32::MAX);
+    }
+
+    #[test]
+    fn connectors_fold_matches_ida_effective_value() {
+        // Fresh item: +155 false, +156 false -> old effective false.
+        let mut item = stub_97d0(0);
+        let (seen, _hook) = fired_with(&item);
+        assert!(stub_9668(&mut item, true));
+        assert_eq!(seen.load(AOrd::SeqCst), DESC_ALWAYS_DRAW_CONNECTORS);
+        // Enabling again: old effective now true -> silent (IDA returns this).
+        seen.store(u32::MAX, AOrd::SeqCst);
+        assert!(!stub_9668(&mut item, true));
+        assert_eq!(seen.load(AOrd::SeqCst), u32::MAX);
+        // Secondary source high: disabling the request leaves effective true -> silent.
+        item.settings.connector_secondary = true;
+        assert!(!stub_9668(&mut item, false));
+        // Secondary low: disabling flips effective true->false -> fires.
+        item.settings.connector_secondary = false;
+        item.settings.always_draw_connectors = true;
+        assert!(stub_9668(&mut item, false));
+    }
+
+    #[test]
+    fn aa_samples_global_round_trip() {
+        let mut item = stub_97d0(0);
+        assert!(stub_96d0(&mut item, 4));
+        assert_eq!(stub_b3e8(), 4);
+        assert!(!stub_96d0(&mut item, 4));
+        AA_SAMPLES.store(0, Ordering::Relaxed);
+    }
+
+    #[test]
+    fn interpolation_global_round_trip() {
+        assert!(!stub_9784());
+        assert!(stub_9794(true));
+        assert!(stub_9784());
+        assert!(!stub_9794(false));
+    }
+
+    #[test]
+    fn thunk_matches_primary_setter() {
+        let mut item = stub_97d0(0);
+        assert!(stub_9ae8(&mut item, 7));
+        assert_eq!(stub_b474(&item.settings), 7);
+        assert!(!stub_9ae8(&mut item, 7));
+    }
+
+    #[test]
+    fn ctor_defaults_match_ida() {
+        let lo = stub_97d0(0);
+        assert_eq!(lo.default_resolution, [800, 600]);
+        assert_eq!(lo.resolutions, vec![[800, 600]]);
+        assert!(lo.unk_189_flag);
+        assert_eq!(lo.settings.video_tier(), VIDEO_TIER_LOW_VRAM);
+        let hi = stub_97d0(DX_VIDEO_MEMORY_THRESHOLD + 1);
+        assert_eq!(hi.settings.video_tier(), VIDEO_TIER_HIGH_VRAM);
+    }
 }
