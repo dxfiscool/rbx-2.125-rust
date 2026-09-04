@@ -278,58 +278,42 @@ pub fn stub_6ca9b8() -> ! {
 // 0x6cac18 — __ZN3RBX9Workspace15serverIsPresentEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::serverIsPresent(RBX::Instance const*)")]
 // was: RBX::Workspace::serverIsPresent(RBX::Instance const*)
-pub fn stub_6cac18() -> ! {
-    todo!("0x6cac18 RBX::Workspace::serverIsPresent(RBX::Instance const*)")
-}
+pub use crate::workspace::stub_0x6cac18 as stub_6cac18;
 
 // 0x6cac28 — __ZN3RBX9Workspace18findConstWorkspaceEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findConstWorkspace(RBX::Instance const*)")]
 // was: RBX::Workspace::findConstWorkspace(RBX::Instance const*)
-pub fn stub_6cac28() -> ! {
-    todo!("0x6cac28 RBX::Workspace::findConstWorkspace(RBX::Instance const*)")
-}
+pub use crate::workspace::stub_0x6cac28 as stub_6cac28;
 
 // 0x6cac2c — __ZN3RBX9Workspace13findWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::findWorkspace(RBX::Instance *)
-pub fn stub_6cac2c() -> ! {
-    todo!("0x6cac2c RBX::Workspace::findWorkspace(RBX::Instance *)")
-}
+pub use crate::workspace::stub_0x6cac2c as stub_6cac2c;
 
 // 0x6cac30 — __ZN3RBX9Workspace15findTopInstanceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findTopInstance(RBX::Instance *)")]
 // was: RBX::Workspace::findTopInstance(RBX::Instance *)
-pub fn stub_6cac30() -> ! {
-    todo!("0x6cac30 RBX::Workspace::findTopInstance(RBX::Instance *)")
-}
+pub use crate::workspace::stub_0x6cac30 as stub_6cac30;
 
 // 0x6cad28 — __ZN3RBX9Workspace21getWorldIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)
-pub fn stub_6cad28() -> ! {
-    todo!("0x6cad28 RBX::Workspace::getWorldIfInWorkspace(RBX::Instance *)")
-}
+pub use crate::workspace::stub_0x6cad28 as stub_6cad28;
 
 // 0x6cad40 — __ZN3RBX9Workspace25getWorkspaceIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)
-pub fn stub_6cad40() -> ! {
-    todo!("0x6cad40 RBX::Workspace::getWorkspaceIfInWorkspace(RBX::Instance *)")
-}
+pub use crate::workspace::stub_0x6cad40 as stub_6cad40;
 
 // 0x6cad68 — __ZN3RBX9Workspace30getContactManagerIfInWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)
-pub fn stub_6cad68() -> ! {
-    todo!("0x6cad68 RBX::Workspace::getContactManagerIfInWorkspace(RBX::Instance *)")
-}
+pub use crate::workspace::stub_0x6cad68 as stub_6cad68;
 
 // 0x6cad8c — __ZN3RBX9Workspace18contextInWorkspaceEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::contextInWorkspace(RBX::Instance const*)")]
 // was: RBX::Workspace::contextInWorkspace(RBX::Instance const*)
-pub fn stub_6cad8c() -> ! {
-    todo!("0x6cad8c RBX::Workspace::contextInWorkspace(RBX::Instance const*)")
-}
+pub use crate::workspace::stub_0x6cad8c as stub_6cad8c;
 
 // 0x6cae14 — __ZN3RBX9Workspace13insertContentENS_9ContentIdE
 #[doc(alias = "RBX::Workspace::insertContent(RBX::ContentId)")]
@@ -383,23 +367,17 @@ pub fn stub_6cb58c() -> ! {
 // 0x6cb718 — __ZNK3RBX9Workspace10getTerrainEv
 #[doc(alias = "RBX::Workspace::getTerrain(void)const")]
 // was: RBX::Workspace::getTerrain(void)const
-pub fn stub_6cb718() -> ! {
-    todo!("0x6cb718 RBX::Workspace::getTerrain(void)const")
-}
+pub use crate::workspace::stub_0x6cb718 as stub_6cb718;
 
 // 0x6cb720 — __ZN3RBX9Workspace13zoomToExtentsEv
 #[doc(alias = "RBX::Workspace::zoomToExtents(void)")]
 // was: RBX::Workspace::zoomToExtents(void)
-pub fn stub_6cb720() -> ! {
-    todo!("0x6cb720 RBX::Workspace::zoomToExtents(void)")
-}
+pub use crate::workspace::stub_0x6cb720 as stub_6cb720;
 
 // 0x6cb73c — __ZNK3RBX9Workspace25getCurrentCameraDangerousEv
 #[doc(alias = "RBX::Workspace::getCurrentCameraDangerous(void)const")]
 // was: RBX::Workspace::getCurrentCameraDangerous(void)const
-pub fn stub_6cb73c() -> ! {
-    todo!("0x6cb73c RBX::Workspace::getCurrentCameraDangerous(void)const")
-}
+pub use crate::workspace::stub_0x6cb73c as stub_6cb73c;
 
 // 0x6cb744 — __ZN3RBX9Workspace16setCurrentCameraEPNS_6CameraE
 #[doc(alias = "RBX::Workspace::setCurrentCamera(RBX::Camera *)")]
@@ -411,30 +389,22 @@ pub fn stub_6cb744() -> ! {
 // 0x6cb8c4 — __ZN3RBX9Workspace17getRealPhysicsFPSEv
 #[doc(alias = "RBX::Workspace::getRealPhysicsFPS(void)")]
 // was: RBX::Workspace::getRealPhysicsFPS(void)
-pub fn stub_6cb8c4() -> ! {
-    todo!("0x6cb8c4 RBX::Workspace::getRealPhysicsFPS(void)")
-}
+pub use crate::workspace::stub_0x6cb8c4 as stub_6cb8c4;
 
 // 0x6cb8f8 — __ZN3RBX9Workspace20getPhysicsThrottlingEv
 #[doc(alias = "RBX::Workspace::getPhysicsThrottling(void)")]
 // was: RBX::Workspace::getPhysicsThrottling(void)
-pub fn stub_6cb8f8() -> ! {
-    todo!("0x6cb8f8 RBX::Workspace::getPhysicsThrottling(void)")
-}
+pub use crate::workspace::stub_0x6cb8f8 as stub_6cb8f8;
 
 // 0x6cb920 — __ZN3RBX9Workspace16getNumAwakePartsEv
 #[doc(alias = "RBX::Workspace::getNumAwakeParts(void)")]
 // was: RBX::Workspace::getNumAwakeParts(void)
-pub fn stub_6cb920() -> ! {
-    todo!("0x6cb920 RBX::Workspace::getNumAwakeParts(void)")
-}
+pub use crate::workspace::stub_0x6cb920 as stub_6cb920;
 
 // 0x6cb974 — __ZN3RBX9WorkspaceC1EPNS_10IDataStateE
 #[doc(alias = "RBX::Workspace::Workspace(RBX::IDataState *)")]
 // was: RBX::Workspace::Workspace(RBX::IDataState *)
-pub fn stub_6cb974() -> ! {
-    todo!("0x6cb974 RBX::Workspace::Workspace(RBX::IDataState *)")
-}
+pub use crate::workspace::stub_0x6cb974 as stub_6cb974;
 
 // 0x6cc0b4 — __ZN3RBX9WorkspaceD0Ev
 #[doc(alias = "RBX::Workspace::~Workspace()")]
@@ -565,9 +535,7 @@ pub fn stub_6ccaa8() -> ! {
 // 0x6ccc18 — __ZNK3RBX9Workspace11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Workspace::askAddChild(RBX::Instance const*)const
-pub fn stub_6ccc18() -> ! {
-    todo!("0x6ccc18 RBX::Workspace::askAddChild(RBX::Instance const*)const")
-}
+pub use crate::model::stub_0x6ccc18 as stub_6ccc18;
 
 // 0x6ccc50 — __ZN3RBX9Workspace20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Workspace::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
@@ -600,30 +568,22 @@ pub fn stub_6ccf30() -> ! {
 // 0x6cd45c — __ZN3RBX9Workspace9getCameraEv
 #[doc(alias = "RBX::Workspace::getCamera(void)")]
 // was: RBX::Workspace::getCamera(void)
-pub fn stub_6cd45c() -> ! {
-    todo!("0x6cd45c RBX::Workspace::getCamera(void)")
-}
+pub use crate::model::stub_0x6cd45c as stub_6cd45c;
 
 // 0x6cd464 — __ZThn280_N3RBX9Workspace9getCameraEv
 #[doc(alias = "non-virtual thunk to RBX::Workspace::getCamera(void)")]
 // was: non-virtual thunk to RBX::Workspace::getCamera(void)
-pub fn stub_6cd464() -> ! {
-    todo!("0x6cd464 non-virtual thunk to RBX::Workspace::getCamera(void)")
-}
+pub use crate::model::stub_0x6cd464 as stub_6cd464;
 
 // 0x6cd478 — __ZNK3RBX9Workspace14getConstCameraEv
 #[doc(alias = "RBX::Workspace::getConstCamera(void)const")]
 // was: RBX::Workspace::getConstCamera(void)const
-pub fn stub_6cd478() -> ! {
-    todo!("0x6cd478 RBX::Workspace::getConstCamera(void)const")
-}
+pub use crate::model::stub_0x6cd478 as stub_6cd478;
 
 // 0x6cd488 — __ZThn280_NK3RBX9Workspace14getConstCameraEv
 #[doc(alias = "non-virtual thunk to RBX::Workspace::getConstCamera(void)const")]
 // was: non-virtual thunk to RBX::Workspace::getConstCamera(void)const
-pub fn stub_6cd488() -> ! {
-    todo!("0x6cd488 non-virtual thunk to RBX::Workspace::getConstCamera(void)const")
-}
+pub use crate::model::stub_0x6cd488 as stub_6cd488;
 
 // 0x6cd498 — __ZN3RBX19destroyIfNotCurrentEN5boost10shared_ptrINS_8InstanceEEEPKNS_6CameraE
 #[doc(alias = "RBX::destroyIfNotCurrent(rbx_core::SharedPtr<RBX::Instance>,RBX::Camera const*)")]
