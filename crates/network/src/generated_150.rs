@@ -6,16 +6,66 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::generated_149::AppiraterState;
-
+use crate::generated_149::{AppiraterState, stub_18b18, stub_18cc0, stub_18e0c};
 /// Host shell for the iOS `AppDelegate` (IDA 0x19228..): init/dealloc and the
 /// window/bg-task accessors below; UIKit objects fold, handles stay.
+/// Launch/lifecycle (`didFinishLaunching`, background/foreground transitions,
+/// `openURL:`, `TryLaunchPlace:`, `main`) keep the decision-relevant values:
+/// registered defaults, session kinds, cookie policy, stored credentials,
+/// `RobloxAppState`, view/game flags, the `appPlaceID` pending slot and the
+/// Flurry/Appirater/page-view side channels as plain data.
 #[derive(Debug, Default)]
 pub struct AppDelegateState {
     pub window_present: bool,
     pub window: Option<String>,
     pub bg_task: u32,
+    pub defaults_registered: bool,
+    pub crash_reporter_init: bool,
+    pub session_kind: Option<i32>,
+    pub analytics_debug_printed: bool,
+    pub upgrade_checks: u32,
+    pub cookie_accept_policy: u32,
+    pub username: Option<String>,
+    pub password: Option<String>,
+    pub flurry_session_key: Option<String>,
+    pub app_state: String,
+    pub game_state: String,
+    pub view_enabled: bool,
+    pub in_game: bool,
+    pub pending_place_id: Option<i32>,
+    pub launched_place_id: Option<i32>,
+    pub login_place_id: Option<i32>,
+    pub login_terminated: bool,
+    pub last_page_view: Option<String>,
+    pub memory_bouncer_active: bool,
+    pub memory_warnings: u32,
+    pub memory_warning_forwarded: u32,
+    pub message_out_connected: bool,
+    pub settings_fetched: bool,
 }
+
+/// Host outcome of `-[AppDelegate TryLaunchPlace:]` (IDA 0x1a234): the
+/// top-controller class name selects one of four launch paths; anything else
+/// logs `UnknowViewcont...` and is ignored.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum TryLaunchAction {
+    SetLoginPlaceId(i32),
+    HomeJumpAndPlay(i32),
+    StartGame(i32),
+    SetJumpToPlaceIdGameInProgress(i32),
+    IgnoredUnknown(String),
+}
+
+/// Host node for `_topMostController`/`topMostController` (IDA 0x1a098/0x1a124):
+/// UIKit pointers fold into indices; the presented/nav/visible relations stay.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ViewControllerNode {
+    pub name: String,
+    pub presented: Option<usize>,
+    pub is_nav: bool,
+    pub visible: Option<usize>,
+}
+
 
 // 0x191d4 — -[Appirater ratingAlert]
 // demangled: -[Appirater ratingAlert]
@@ -69,184 +119,247 @@ pub fn stub_19254(state: AppDelegateState) {
 // demangled: -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
-}
+pub fn stub_192b4(state: &mut AppDelegateState, username: Option<&str>, password: Option<&str>) -> bool {
+    // IDA 0x192b4: -[AppDelegate application:didFinishLaunchingWithOptions:] — registerDefaults YES/NO pair (0x192f8..0x1933c), CrashReporter + SessionReporter sharedInstance, reportSessionFor:7 (0x19356..0x19366), debugCountersPrint, two global-queue dispatches (Flurry/Appirater blocks 0x194ec/0x19514), checkForUpdate, cookie policy 0 (0x193b2..0x193c2), restore saved username/password into CurrentPlayer (0x193c6..0x194e8); UIKit/dispatch fold, stored values + YES return stay.
+    state.defaults_registered = true;
+    state.crash_reporter_init = true;
+    state.session_kind = Some(7);
+    state.analytics_debug_printed = true;
+    state.upgrade_checks += 1;
+    state.cookie_accept_policy = 0;
+    state.username = username.map(str::to_owned);
+    state.password = password.map(str::to_owned);
+    true}
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // demangled: ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
-}
+pub fn stub_194ec(state: &mut AppDelegateState) {
+    // IDA 0x194ec: didFinishLaunching block 1 — Flurry startSession:@"FM7DNRW56339NC22K8GR" (0x194f4..0x19510); the async dispatch folds, the session key stays.
+    state.flurry_session_key = Some("FM7DNRW56339NC22K8GR".to_owned());}
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // demangled: ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
-}
+pub fn stub_19514(state: &mut AppiraterState, now: f64) -> bool {
+    // IDA 0x19514: didFinishLaunching block 2 — setAppId:@"431946152", setDaysUntilPrompt:3.0, setUsesUntilPrompt:10, setTimeBeforeReminding:10.0, appLaunched:YES (0x1951c..0x19598); reuses the Appirater host (generated_149).
+    state.app_id = "431946152".to_owned();
+    state.days_until_prompt = 3.0;
+    state.uses_until_prompt = 10;
+    state.time_before_reminding = 10.0;
+    stub_18cc0(state, true, now)}
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // demangled: -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
-}
+pub fn stub_195a0(state: &mut AppDelegateState) {
+    // IDA 0x195a0: applicationWillResignActive — StandardOut begin/end logs fold, PlaceLauncher disableViewBecauseGoingToBackground (0x196a8..0x196bc) clears the view flag.
+    state.view_enabled = false;}
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // demangled: -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
-}
+pub fn stub_196e4(state: &mut AppDelegateState, username: Option<&str>, password: Option<&str>) {
+    // IDA 0x196e4: applicationDidEnterBackground — RobloxAppState:="tryBackground" + synchronize, leaveGame (0x1979e..0x197b2), drop signup keys, persist CurrentPlayer username/password, reportSessionFor:1, page "RobloxApp/EnterBackGround", then remove RobloxAppState + synchronize (0x199e2..0x19a2c); the key removals fold, end state stays.
+    state.in_game = false;
+    state.username = username.map(str::to_owned);
+    state.password = password.map(str::to_owned);
+    state.session_kind = Some(1);
+    state.last_page_view = Some("RobloxApp/EnterBackGround".to_owned());
+    state.app_state.clear();}
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // demangled: -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
-}
+pub fn stub_19a30(state: &mut AppDelegateState) {
+    // IDA 0x19a30: applicationDidReceiveMemoryWarning — out-of-memory log folds; stopMemoryBouncer:NO returns nonzero while the bouncer runs, and only when it returns zero does the warning forward to PlaceLauncher (0x19b34..0x19b5c).
+    state.memory_warnings += 1;
+    if state.memory_bouncer_active {
+        state.memory_bouncer_active = false;
+    } else {
+        state.memory_warning_forwarded += 1;
+    }}
 
 // 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
 // demangled: -[AppDelegate applicationWillEnterForeground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
-pub fn stub_19b60() -> ! {
-    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
-}
+pub fn stub_19b60(state: &mut AppDelegateState, appirater: &mut AppiraterState, now: f64) -> bool {
+    // IDA 0x19b60: applicationWillEnterForeground — appEnteredForeground:YES (0x19bd4..0x19be8), checkForUpdate, page "RobloxApp/EnterForeGround" (0x19bec..0x19c20); StandardOut begin/end logs fold.
+    state.upgrade_checks += 1;
+    state.last_page_view = Some("RobloxApp/EnterForeGround".to_owned());
+    stub_18e0c(appirater, true, now)}
 
 // 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
 // demangled: -[AppDelegate applicationDidBecomeActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
-pub fn stub_19cdc() -> ! {
-    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
-}
+pub fn stub_19cdc(state: &mut AppDelegateState) -> Option<i32> {
+    // IDA 0x19cdc: applicationDidBecomeActive — RobloxAppState:="tryForeground" + synchronize, enableViewBecauseGoingToForeground, reportSessionFor:0, global-queue settings block (0x19f34), pending appPlaceID drains through TryLaunchPlace: (0x19e70..0x19e90) and is cleared, end log folds, RobloxAppState:="inApp" + synchronize (0x19f04..0x19f30).
+    state.view_enabled = true;
+    state.session_kind = Some(0);
+    state.settings_fetched = true;
+    state.launched_place_id = state.pending_place_id.take();
+    state.app_state = "inApp".to_owned();
+    state.launched_place_id}
 
 // 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // demangled: ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
-pub fn stub_19f34() -> ! {
-    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
-}
+pub fn stub_19f34(state: &mut AppDelegateState) {
+    // IDA 0x19f34: didBecomeActive block — ClientAppSettings::Initialize + singleton, FetchClientSettingsData("iOSAppSettings","D6925E56-BFB9-4908-AAA2-A5B1EC4B2D79"), getiOSSettingsServiceWithForcedReadFromWeb:NO (0x19f3c..0x19f78); the fetch folds, the fact it ran stays.
+    state.settings_fetched = true;}
 
 // 0x19f7c — -[AppDelegate applicationWillTerminate:]
 // demangled: -[AppDelegate applicationWillTerminate:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
-pub fn stub_19f7c() -> ! {
-    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
-}
+pub fn stub_19f7c(state: &mut AppDelegateState, game_state: &str) {
+    // IDA 0x19f7c: applicationWillTerminate — log RobloxGameState/RobloxAppState (fold), RobloxAppState:="terminated" + synchronize (0x1a026..0x1a04e), LoginManager applicationWillTerminate (0x1a052..0x1a066), page "RobloxApp/Exit" (0x1a06a..0x1a094).
+    state.game_state = game_state.to_owned();
+    state.app_state = "terminated".to_owned();
+    state.login_terminated = true;
+    state.last_page_view = Some("RobloxApp/Exit".to_owned());}
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
 // demangled: _topMostController(UIViewController *)
 // type: id __fastcall(id)
 #[doc(alias = "_topMostController(UIViewController *)")]
-pub fn stub_1a098() -> ! {
-    todo!("0x1a098 _topMostController(UIViewController *)")
-}
+pub fn stub_1a098(nodes: &[ViewControllerNode], root: usize) -> Option<usize> {
+    // IDA 0x1a098: _topMostController — walk presentedViewController to the tail (0x1a0a4..0x1a0b4), fold through UINavigationController.visibleViewController (0x1a0bc..0x1a0d2), return 0 when the walk never leaves the input (0x1a0d8..0x1a0e0).
+    let mut top = root;
+    while let Some(next) = nodes.get(top).and_then(|n| n.presented) {
+        top = next;
+    }
+    if nodes.get(top).is_some_and(|n| n.is_nav) {
+        if let Some(visible) = nodes.get(top).and_then(|n| n.visible) {
+            top = visible;
+        }
+    }
+    (top != root).then_some(top)}
 
 // 0x1a124 — __Z17topMostControllerv
 // demangled: topMostController(void)
 // type: _DWORD __fastcall()
 #[doc(alias = "topMostController(void)")]
-pub fn stub_1a124() -> ! {
-    todo!("0x1a124 topMostController(void)")
-}
+pub fn stub_1a124(nodes: &[ViewControllerNode], root: usize) -> usize {
+    // IDA 0x1a124: topMostController — keyWindow.rootViewController (0x1a134..0x1a148), then repeat _topMostController until it returns 0 (0x1a14c..0x1a15e); the UIApplication/UIWindow reads fold into the root index.
+    let mut top = root;
+    while let Some(next) = stub_1a098(nodes, top) {
+        top = next;
+    }
+    top}
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
 // demangled: -[AppDelegate application:openURL:sourceApplication:annotation:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id, id, id)
 #[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
-pub fn stub_1a174() -> ! {
-    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
-}
+pub fn stub_1a174(state: &mut AppDelegateState, url: &str) -> bool {
+    // IDA 0x1a174: application:openURL: — NSLog folds; absoluteString hasPrefix:@"robloxmobile" gates (0x1a196..0x1a1ac), host NSLog folds, host intValue becomes appPlaceID (0x1a1de..0x1a1ee), return YES (0x1a1f0); otherwise NO (0x1a230).
+    let rest = url.strip_prefix("robloxmobile").unwrap_or("");
+    if rest.is_empty() {
+        return false;
+    }
+    let host = rest.strip_prefix("://").unwrap_or(rest).split('/').next().unwrap_or("");
+    match host.parse::<i32>() {
+        Ok(place_id) => {
+            state.pending_place_id = Some(place_id);
+            true
+        }
+        Err(_) => false,
+    }}
 
 // 0x1a234 — -[AppDelegate TryLaunchPlace:]
 // demangled: -[AppDelegate TryLaunchPlace:]
 // type: void __cdecl(AppDelegate *self, SEL, int)
 #[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
-pub fn stub_1a234() -> ! {
-    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
-}
+pub fn stub_1a234(top_controller: &str, place_id: i32) -> TryLaunchAction {
+    // IDA 0x1a234: TryLaunchPlace: — root/top NSLogs fold; LoginViewController -> sharedInstance setLoginPlaceId: (0x1a2c8..0x1a2e0), HomeViewController -> setJumpToPlaceID: + buttonForWebDidTouchUpInside:0 (0x1a2e8..0x1a30c), RobloxNavBarViewController -> PlaceLauncher startGame:controller:request:presentGameAutomatically:(place, top, 0, 1) (0x1a314..0x1a348), GameViewController -> mostRecentViewController setJumpToPlaceIdGameInProgress: (0x1a350..0x1a372), else UnknowViewcont log + ignore (0x1a374..0x1a38c).
+    match top_controller {
+        "LoginViewController" => TryLaunchAction::SetLoginPlaceId(place_id),
+        "HomeViewController" => TryLaunchAction::HomeJumpAndPlay(place_id),
+        "RobloxNavBarViewController" => TryLaunchAction::StartGame(place_id),
+        "GameViewController" => TryLaunchAction::SetJumpToPlaceIdGameInProgress(place_id),
+        other => TryLaunchAction::IgnoredUnknown(other.to_owned()),
+    }}
 
 // 0x1a494 — -[AppDelegate bgTask]
 // demangled: -[AppDelegate bgTask]
 // type: unsigned int __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
-}
+pub fn stub_1a494(state: &AppDelegateState) -> u32 {
+    // IDA 0x1a494: -[AppDelegate bgTask] — dmb-guarded ivar load (0x1a498..0x1a4a0); the barrier folds, the value stays.
+    state.bg_task}
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 // demangled: -[AppDelegate setBgTask:]
 // type: void __cdecl(AppDelegate *self, SEL, unsigned int)
 #[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
-}
+pub fn stub_1a4a8(state: &mut AppDelegateState, bg_task: u32) {
+    // IDA 0x1a4a8: -[AppDelegate setBgTask:] — dmb, ivar store, dmb (0x1a4ac..0x1a4b8); barriers fold.
+    state.bg_task = bg_task;}
 
 // 0x1a4c0 — -[AppDelegate window]
 // demangled: -[AppDelegate window]
 // type: UIWindow *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate window]")]
-pub fn stub_1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
-}
+pub fn stub_1a4c0(state: &AppDelegateState) -> Option<String> {
+    // IDA 0x1a4c0: -[AppDelegate window] — _window ivar load (0x1a4c4); the handle stays as data.
+    state.window.clone()}
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 // demangled: -[AppDelegate setWindow:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
-}
+pub fn stub_1a4d0(state: &mut AppDelegateState, window: Option<String>) {
+    // IDA 0x1a4d0: -[AppDelegate setWindow:] — objc_setProperty retain into _window+12 (0x1a4dc..0x1a4ec); retain folds into ownership.
+    state.window_present = window.is_some();
+    state.window = window;}
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 // demangled: -[AppDelegate .cxx_destruct]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
-}
+pub fn stub_1a4f4(state: &mut AppDelegateState) {
+    // IDA 0x1a4f4: -[AppDelegate .cxx_destruct] — rbx::signals::connection::disconnect on messageOutConnection (0x1a4fa..0x1a50e) + intrusive weak release (0x1a512..0x1a520); the slot release folds into the flag.
+    state.message_out_connected = false;}
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 // demangled: -[AppDelegate .cxx_construct]
 // type: id __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
-}
+pub fn stub_1a5bc(state: &mut AppDelegateState) {
+    // IDA 0x1a5bc: -[AppDelegate .cxx_construct] — messageOutConnection weak_slot.p_ := 0 (0x1a5c2..0x1a5ca); the connection starts empty.
+    state.message_out_connected = false;}
 
 // 0x1a5d0 — __GLOBAL__I_a_1
 // demangled: global constructor keyed to_a_1
 // type: 
 #[doc(alias = "global constructor keyed to_a_1")]
-pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 global constructor keyed to_a_1")
+pub fn stub_1a5d0() {
+    // IDA 0x1a5d0: __GLOBAL__I_a — boost::system generic/system category stores + std::ios_base::Init + bad_alloc exception_ptr guard (disasm 0x1a5d0..0x1a766); was: boost::system -> std::io error categories — static-init no-op shell.
 }
 
 // 0x1a768 — _main
 // demangled: _main
 // type: int __fastcall(int argc, const char **argv, const char **envp)
 #[doc(alias = "_main")]
-pub fn stub_1a768() -> ! {
-    todo!("0x1a768 _main")
-}
+pub fn stub_1a768() -> i32 {
+    // IDA 0x1a768: _main — NSAutoreleasePool alloc/init (0x1a772..0x1a782), UIApplicationMain(argc, argv, @"Uiapplication", @"AppDelegate") (0x1a786..0x1a7a2), pool release (0x1a7a6..0x1a7ae); the runloop never returns in-image, the host returns the zero exit code.
+    0}
 
 // 0x1a7d4 — __GLOBAL__I_a_2
 // demangled: global constructor keyed to_a_2
 // type: 
 #[doc(alias = "global constructor keyed to_a_2")]
-pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 global constructor keyed to_a_2")
+pub fn stub_1a7d4() {
+    // IDA 0x1a7d4: __GLOBAL__I_a — same static-init shape as 0x1a5d0 (disasm 0x1a7d4..0x1a96a: generic/system categories, ios_base::Init, exception_ptr guard); was: boost::system -> std::io — static-init no-op shell.
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
