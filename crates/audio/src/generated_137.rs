@@ -8,6 +8,101 @@
 use rbx_core::SharedPtr;
 use crate::generated_136::NamePresetMap;
 
+/// Host model of `RBX::Reflection::EnumDesc<T>` for the CRenderSettings enum
+/// singletons below (IDA 0x16548..0x16b04): `{items, index_to_value}` table
+/// plus the enum type name passed to the C2 ctor (cf. rbx-reflection
+/// `enum_desc.rs`: "Shadow", "Resolution", "QualityLevel", "Antialiasing",
+/// "FramerateManagerMode", "GraphicsMode", "AASamples").
+/// Audio owns no rbx-reflection dependency (AGENTS.md DAG), so the carrier
+/// lives here; population runs through `add_pair` from the descriptor init
+/// code, mirroring `QualityEnumDesc` in generated_136.rs.
+pub struct RenderEnumDesc {
+    pub name: &'static str,
+    pub items: Vec<(i32, String)>,
+    pub index_to_value: Vec<i32>,
+}
+
+impl RenderEnumDesc {
+    pub fn new(name: &'static str) -> Self {
+        RenderEnumDesc {
+            name,
+            items: Vec::new(),
+            index_to_value: Vec::new(),
+        }
+    }
+
+    pub fn add_pair(&mut self, value: i32, name: &str, index: usize) {
+        self.items.push((value, name.to_owned()));
+        if self.index_to_value.len() <= index {
+            self.index_to_value.resize(index + 1, -1);
+        }
+        self.index_to_value[index] = value;
+    }
+
+    pub fn lookup_value(&self, name: &str) -> Option<i32> {
+        self.items.iter().find(|(_, n)| n == name).map(|(v, _)| *v)
+    }
+
+    pub fn value_to_string(&self, value: i32, out: &mut String) -> bool {
+        if let Some((_, name)) = self.items.iter().find(|(v, _)| *v == value) {
+            *out = name.clone();
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn convert_to_index(&self, value: i32) -> i32 {
+        if value >= 0 && (value as usize) < self.index_to_value.len() {
+            return self.index_to_value[value as usize];
+        }
+        -1
+    }
+}
+
+/// IDA 0x8c4c (`EnumDesc<ShadowMode>::EnumDesc`, string "Shadow" cf.
+/// rbx-reflection `enum_desc_shadow_mode_ctor`).
+pub fn render_enum_desc_shadow_mode_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("Shadow")
+}
+
+/// IDA 0x9100 (`EnumDesc<ResolutionPreset>::EnumDesc`, string "Resolution"
+/// at 0x10c4cb0).
+pub fn render_enum_desc_resolution_preset_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("Resolution")
+}
+
+/// IDA 0x8e24 (`EnumDesc<QualityLevel>::EnumDesc`, string "QualityLevel" at
+/// 0x10c4c8c).
+pub fn render_enum_desc_quality_level_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("QualityLevel")
+}
+
+/// IDA 0x8a88 (`EnumDesc<AntialiasingMode>::EnumDesc`, string "Antialiasing"
+/// cf. rbx-reflection `enum_desc_antialiasing_mode_ctor`).
+pub fn render_enum_desc_antialiasing_mode_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("Antialiasing")
+}
+
+/// IDA 0x88c4 (`EnumDesc<FrameRateManagerMode>::EnumDesc`, string
+/// "FramerateManagerMode" cf. rbx-reflection
+/// `enum_desc_frame_rate_manager_mode_ctor`).
+pub fn render_enum_desc_frame_rate_manager_mode_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("FramerateManagerMode")
+}
+
+/// IDA 0x86d0 (`EnumDesc<GraphicsMode>::EnumDesc`, string "GraphicsMode" cf.
+/// rbx-reflection `enum_desc_graphics_mode_ctor`).
+pub fn render_enum_desc_graphics_mode_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("GraphicsMode")
+}
+
+/// IDA 0x850c (`EnumDesc<AASamples>::EnumDesc`, string "AASamples" cf.
+/// rbx-reflection `enum_desc_aa_samples_ctor`).
+pub fn render_enum_desc_aa_samples_ctor() -> RenderEnumDesc {
+    RenderEnumDesc::new("AASamples")
+}
+
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -614,86 +709,135 @@ pub fn stub_163b8(vec: &mut Vec<i32>, index: usize, n: usize, value: i32) {
 
 // 0x16548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")]
-pub fn stub_16548() -> ! {
-    todo!("0x16548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")
+pub fn stub_16548() -> &'static RenderEnumDesc {
+    // IDA 0x16548 (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x1654c).
+    stub_1654c()
 }
 
 // 0x1654c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")]
-pub fn stub_1654c() -> ! {
-    todo!("0x1654c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::doGetSingleton(void)")
+pub fn stub_1654c() -> &'static RenderEnumDesc {
+    // IDA 0x1654c (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x8c4c) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_shadow_mode_ctor);
+    &S
 }
 
 // 0x1663c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")]
-pub fn stub_1663c() -> ! {
-    todo!("0x1663c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::initSingleton(void)")
+pub fn stub_1663c() -> &'static RenderEnumDesc {
+    // IDA 0x1663c (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x16640).
+    stub_16640()
 }
 
 // 0x16640 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")]
-pub fn stub_16640() -> ! {
-    todo!("0x16640 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset> const>::doGetSingleton(void)")
+pub fn stub_16640() -> &'static RenderEnumDesc {
+    // IDA 0x16640 (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x9100) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_resolution_preset_ctor);
+    &S
 }
 
 // 0x16730 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")]
-pub fn stub_16730() -> ! {
-    todo!("0x16730 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::initSingleton(void)")
+pub fn stub_16730() -> &'static RenderEnumDesc {
+    // IDA 0x16730 (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x16734).
+    stub_16734()
 }
 
 // 0x16734 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")]
-pub fn stub_16734() -> ! {
-    todo!("0x16734 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel> const>::doGetSingleton(void)")
+pub fn stub_16734() -> &'static RenderEnumDesc {
+    // IDA 0x16734 (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x8e24) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_quality_level_ctor);
+    &S
 }
 
 // 0x16824 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")]
-pub fn stub_16824() -> ! {
-    todo!("0x16824 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::initSingleton(void)")
+pub fn stub_16824() -> &'static RenderEnumDesc {
+    // IDA 0x16824 (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x16828).
+    stub_16828()
 }
 
 // 0x16828 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")]
-pub fn stub_16828() -> ! {
-    todo!("0x16828 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode> const>::doGetSingleton(void)")
+pub fn stub_16828() -> &'static RenderEnumDesc {
+    // IDA 0x16828 (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x8a88) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_antialiasing_mode_ctor);
+    &S
 }
 
 // 0x16918 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")]
-pub fn stub_16918() -> ! {
-    todo!("0x16918 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::initSingleton(void)")
+pub fn stub_16918() -> &'static RenderEnumDesc {
+    // IDA 0x16918 (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x1691c).
+    stub_1691c()
 }
 
 // 0x1691c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")]
-pub fn stub_1691c() -> ! {
-    todo!("0x1691c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode> const>::doGetSingleton(void)")
+pub fn stub_1691c() -> &'static RenderEnumDesc {
+    // IDA 0x1691c (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x88c4) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_frame_rate_manager_mode_ctor);
+    &S
 }
 
 // 0x16a0c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")]
-pub fn stub_16a0c() -> ! {
-    todo!("0x16a0c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::initSingleton(void)")
+pub fn stub_16a0c() -> &'static RenderEnumDesc {
+    // IDA 0x16a0c (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x16a10).
+    stub_16a10()
 }
 
 // 0x16a10 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")]
-pub fn stub_16a10() -> ! {
-    todo!("0x16a10 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode> const>::doGetSingleton(void)")
+pub fn stub_16a10() -> &'static RenderEnumDesc {
+    // IDA 0x16a10 (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x86d0) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_graphics_mode_ctor);
+    &S
 }
 
 // 0x16b00 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")]
-pub fn stub_16b00() -> ! {
-    todo!("0x16b00 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::initSingleton(void)")
+pub fn stub_16b00() -> &'static RenderEnumDesc {
+    // IDA 0x16b00 (`initSingleton`, `// attributes: thunk`): tail-calls
+    // `doGetSingleton` (0x16b04).
+    stub_16b04()
 }
 
 // 0x16b04 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")]
-pub fn stub_16b04() -> ! {
-    todo!("0x16b04 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples> const>::doGetSingleton(void)")
+pub fn stub_16b04() -> &'static RenderEnumDesc {
+    // IDA 0x16b04 (`doGetSingleton`: `__cxa_guard_acquire` once-guard,
+    // in-place `EnumDesc::EnumDesc` (0x850c) + `__cxa_atexit` dtor): host
+    // `LazyLock`; destructor runs at process exit.
+    static S: std::sync::LazyLock<RenderEnumDesc> =
+        std::sync::LazyLock::new(render_enum_desc_aa_samples_ctor);
+    &S
 }
 
 // 0x16bf4 — __ZN19CRenderSettingsItemD2Ev
