@@ -1276,6 +1276,109 @@ pub mod camera_enum {
         *out = desc.name_strings[value as usize].clone();
     }
 
+    /// IDA 0x3ca77c/0x3cadf4/0x3cb46c `EnumDesc<T>::convertToItem(value)` (same
+    /// template — enumconverter.h:273/:274 asserts verified per instantiation):
+    /// `value>=0` (:273) and `value<enumToItem.size()` (:274) ReleaseAsserts,
+    /// then `value < 0 ? 0 : (value < size ? table[value] : 0)` (the +120
+    /// item-pointer vector). Miss/empty becomes `None`.
+    pub fn enum_to_item(desc: &EnumDescData, value: i32) -> Option<usize> {
+        assert!(value >= 0, "value>=0 file: include/reflection/enumconverter.h line: 273");
+        assert!(
+            (value as usize) < desc.item_index.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+        desc.convert_to_item(value as usize)
+    }
+
+    /// IDA 0x3ca938/0x3cafb0/0x3cb628 `EnumDesc<T>::convertToValue(name, out)`
+    /// (same template): two ordered tree walks (main name map, then the alias
+    /// map) with upper-bound-then-equality semantics; hit writes `*out` and
+    /// returns 1, miss returns 0.
+    pub fn enum_to_value_by_name(desc: &EnumDescData, name: &str, out: &mut i32) -> bool {
+        if let Some(&v) = desc.by_name.get(name) {
+            *out = v;
+            return true;
+        }
+        if let Some((_, v)) = desc.aliases.iter().find(|(n, _)| n == name) {
+            *out = *v;
+            return true;
+        }
+        false
+    }
+
+    /// was: `FactoryProduct<Camera, ...>::Creator` singleton
+    /// (`creatorPrivate`, IDA 0x3cb878).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct Creator {
+        pub constructed: bool,
+        pub name: &'static str,
+    }
+
+    static CAMERA_CREATOR: Creator = Creator { constructed: true, name: "Camera" };
+
+    /// IDA 0x3cb878 `static_getCreator`: `Creator::wasConstructed()` ReleaseAssert
+    /// (Util/Object.h:282), then return `&creatorPrivate`.
+    pub fn static_get_creator() -> &'static Creator {
+        assert!(
+            CAMERA_CREATOR.constructed,
+            "Creator::wasConstructed() file: include/Util/Object.h line: 282"
+        );
+        &CAMERA_CREATOR
+    }
+
+    /// was: `RBX::Reflection::ClassDescriptor` function-local singleton
+    /// (IDA 0x3cb8ec `describedClassDescriptor` + guard variable).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct ClassDescriptorInfo {
+        pub name: &'static str,
+        pub base: &'static str,
+    }
+
+    static INSTANCE_DESC: std::sync::LazyLock<ClassDescriptorInfo> =
+        std::sync::LazyLock::new(|| ClassDescriptorInfo { name: "Instance", base: "DescribedBase" });
+    static HUMANOID_DESC: std::sync::LazyLock<ClassDescriptorInfo> = std::sync::LazyLock::new(|| {
+        // Base descriptor ensured first, mirroring the IDA call order.
+        let _ = *INSTANCE_DESC;
+        ClassDescriptorInfo { name: "Humanoid", base: "Instance" }
+    });
+
+    /// Base descriptor ensured first, mirroring the IDA call order.
+    pub fn instance_class_descriptor() -> &'static ClassDescriptorInfo {
+        &INSTANCE_DESC
+    }
+
+    /// IDA 0x3cb8ec `Described<Humanoid>::classDescriptor()`: guard-var lazy init
+    /// (ensure `Instance` base, construct `ClassDescriptor(sHumanoid)`,
+    /// `__cxa_atexit` registered dtor — `LazyLock` drop-glue here); returns the
+    /// singleton.
+    pub fn humanoid_class_descriptor() -> &'static ClassDescriptorInfo {
+        &HUMANOID_DESC
+    }
+
+    /// was: `RBX::Instance::~Instance` teardown reached through the
+    /// `Described<Camera>` D1/D0 + `Thn32`/`Thn36` thunks (IDA 0x3cbf50/0x3cbf54/
+    /// 0x3cbff4/0x3cbffc/0x3cc0a0/0x3cc0a8). Owned by the datamodel crate;
+    /// the hook stands in for it. `[INFERENCE]` the trait boundary only.
+    pub trait InstanceTeardown {
+        fn teardown(&self, instance: *mut u8);
+    }
+
+    /// IDA 0x3cbf50/0x3cbf54 D1/D0: `Instance::~Instance(this)` (D0 adds the
+    /// delete artifact; slot stays caller-owned here).
+    pub unsafe fn camera_described_teardown(instance: *mut u8, t: &dyn InstanceTeardown) {
+        t.teardown(instance)
+    }
+
+    /// IDA 0x3cbff4/0x3cbffc `Thn32`: `Instance::~Instance(a1 - 32)`.
+    pub unsafe fn camera_described_teardown_thn32(adj: *const u8, t: &dyn InstanceTeardown) {
+        t.teardown(adj.sub(32) as *mut u8)
+    }
+
+    /// IDA 0x3cc0a0/0x3cc0a8 `Thn36`: `Instance::~Instance(a1 - 36)`.
+    pub unsafe fn camera_described_teardown_thn36(adj: *const u8, t: &dyn InstanceTeardown) {
+        t.teardown(adj.sub(36) as *mut u8)
+    }
+
     #[cfg(test)]
     mod tests {
         use super::*;
@@ -1397,6 +1500,56 @@ pub mod camera_enum {
         fn enum_to_string_rejects_negative() {
             let d = camera_pan_mode_desc();
             enum_to_string(&d, -1, &mut String::new());
+        }
+        #[test]
+        fn enum_to_item_and_value_by_name() {
+            let d = camera_pan_mode_desc();
+            assert_eq!(enum_to_item(&d, 1), d.convert_to_item(1));
+            assert_eq!(enum_to_item(&d, 0), Some(0));
+            let mut v = -1;
+            assert!(enum_to_value_by_name(&d, "EdgeBump", &mut v));
+            assert_eq!(v, 1);
+            assert!(!enum_to_value_by_name(&d, "Bogus", &mut v));
+            let t = camera_type_desc();
+            assert_eq!(enum_to_item(&t, 2), t.convert_to_item(2));
+        }
+
+        #[test]
+        #[should_panic(expected = "value>=0")]
+        fn enum_to_item_rejects_negative() {
+            let d = camera_pan_mode_desc();
+            enum_to_item(&d, -1);
+        }
+
+        #[test]
+        fn creator_and_descriptors() {
+            assert!(static_get_creator().constructed);
+            assert_eq!(static_get_creator().name, "Camera");
+            let h = humanoid_class_descriptor();
+            assert_eq!((h.name, h.base), ("Humanoid", "Instance"));
+            assert_eq!(instance_class_descriptor().name, "Instance");
+        }
+
+        #[test]
+        fn teardown_thunks_adjust_this() {
+            use std::sync::atomic::{AtomicUsize, Ordering};
+            struct Rec {
+                seen: AtomicUsize,
+            }
+            impl InstanceTeardown for Rec {
+                fn teardown(&self, instance: *mut u8) {
+                    self.seen.store(instance as usize, Ordering::SeqCst);
+                }
+            }
+            let r = Rec { seen: AtomicUsize::new(0) };
+            unsafe {
+                camera_described_teardown(0x100 as *mut u8, &r);
+                assert_eq!(r.seen.load(Ordering::SeqCst), 0x100);
+                camera_described_teardown_thn32(0x100 as *const u8, &r);
+                assert_eq!(r.seen.load(Ordering::SeqCst), 0x100 - 32);
+                camera_described_teardown_thn36(0x100 as *const u8, &r);
+                assert_eq!(r.seen.load(Ordering::SeqCst), 0x100 - 36);
+            }
         }
     }
 }
@@ -2376,134 +2529,200 @@ pub fn stub_3ca510(
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToItem(RBX::Camera::CameraPanMode const&)const")]
 // 0x3ca77c — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_3ca77c() -> ! {
-    todo!("0x3ca77c __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE13convertToItemERKS3_")
+pub fn stub_3ca77c(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+) -> Option<usize> {
+    // IDA 0x3ca77c CameraPanMode::convertToItem: asserts + item-table read.
+    camera_enum::enum_to_item(desc, value)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToValue(RBX::Name const&,RBX::Camera::CameraPanMode&)const")]
 // 0x3ca938 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_3ca938() -> ! {
-    todo!("0x3ca938 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueERKNS_4NameERS3_")
+pub unsafe fn stub_3ca938(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+    out: *mut i32,
+) -> bool {
+    // IDA 0x3ca938 CameraPanMode::convertToValue(name): two-map walk, 1/0.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    camera_enum::enum_to_value_by_name(desc, &text, &mut *out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
 // 0x3ca9b4 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_3ca9b4() -> ! {
-    todo!("0x3ca9b4 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED2Ev")
+pub fn stub_3ca9b4(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3ca9b4 CameraPanMode D2: restore off_1240078 + full member teardown.
+    desc.vtable = camera_enum::CAMERA_PAN_MODE_VTAB;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToString(RBX::Camera::CameraMode const&)const")]
 // 0x3cab88 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3cab88() -> ! {
-    todo!("0x3cab88 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringERKS3_")
+pub fn stub_3cab88(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    out: &mut String,
+) {
+    // IDA 0x3cab88 CameraMode::convertToString(value): asserts + table read.
+    camera_enum::enum_to_string(desc, value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToItem(RBX::Camera::CameraMode const&)const")]
 // 0x3cadf4 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_3cadf4() -> ! {
-    todo!("0x3cadf4 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE13convertToItemERKS3_")
+pub fn stub_3cadf4(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+) -> Option<usize> {
+    // IDA 0x3cadf4 CameraMode::convertToItem: asserts + item-table read.
+    camera_enum::enum_to_item(desc, value)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToValue(RBX::Name const&,RBX::Camera::CameraMode&)const")]
 // 0x3cafb0 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_3cafb0() -> ! {
-    todo!("0x3cafb0 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueERKNS_4NameERS3_")
+pub unsafe fn stub_3cafb0(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+    out: *mut i32,
+) -> bool {
+    // IDA 0x3cafb0 CameraMode::convertToValue(name): two-map walk, 1/0.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    camera_enum::enum_to_value_by_name(desc, &text, &mut *out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
 // 0x3cb02c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_3cb02c() -> ! {
-    todo!("0x3cb02c __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED2Ev")
+pub fn stub_3cb02c(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3cb02c CameraMode D2: restore off_1240048 + full member teardown.
+    desc.vtable = camera_enum::CAMERA_MODE_VTAB;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToString(RBX::Camera::CameraType const&)const")]
 // 0x3cb200 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3cb200() -> ! {
-    todo!("0x3cb200 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringERKS3_")
+pub fn stub_3cb200(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    out: &mut String,
+) {
+    // IDA 0x3cb200 CameraType::convertToString(value): asserts + table read.
+    camera_enum::enum_to_string(desc, value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToItem(RBX::Camera::CameraType const&)const")]
 // 0x3cb46c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_3cb46c() -> ! {
-    todo!("0x3cb46c __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE13convertToItemERKS3_")
+pub fn stub_3cb46c(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+) -> Option<usize> {
+    // IDA 0x3cb46c CameraType::convertToItem: asserts + item-table read.
+    camera_enum::enum_to_item(desc, value)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToValue(RBX::Name const&,RBX::Camera::CameraType&)const")]
 // 0x3cb628 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_3cb628() -> ! {
-    todo!("0x3cb628 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueERKNS_4NameERS3_")
+pub unsafe fn stub_3cb628(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+    out: *mut i32,
+) -> bool {
+    // IDA 0x3cb628 CameraType::convertToValue(name): two-map walk, 1/0.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    camera_enum::enum_to_value_by_name(desc, &text, &mut *out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
 // 0x3cb6a4 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_3cb6a4() -> ! {
-    todo!("0x3cb6a4 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED2Ev")
+pub fn stub_3cb6a4(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3cb6a4 CameraType D2: restore off_1240018 + full member teardown.
+    desc.vtable = camera_enum::CAMERA_TYPE_VTAB;
+    desc.destroy_d2()
 }
 
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E17static_getCreatorEv")]
 // 0x3cb878 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E17static_getCreatorEv
 // type: void *()
-pub fn stub_3cb878() -> ! {
-    todo!("0x3cb878 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E17static_getCreatorEv")
+pub fn stub_3cb878() -> &'static camera_enum::Creator {
+    // IDA 0x3cb878: wasConstructed assert + &creatorPrivate.
+    camera_enum::static_get_creator()
 }
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8HumanoidELZNS_9sHumanoidEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sHumanoidEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // 0x3cb8ec — __ZN3RBX10Reflection9DescribedINS_8HumanoidELZNS_9sHumanoidEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sHumanoidEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
-pub fn stub_3cb8ec() -> ! {
-    todo!("0x3cb8ec __ZN3RBX10Reflection9DescribedINS_8HumanoidELZNS_9sHumanoidEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sHumanoidEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_3cb8ec() -> &'static camera_enum::ClassDescriptorInfo {
+    // IDA 0x3cb8ec Described<Humanoid>::classDescriptor() singleton.
+    camera_enum::humanoid_class_descriptor()
 }
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
 // 0x3cbf50 — __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
-pub fn stub_3cbf50() -> ! {
-    todo!("0x3cbf50 __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub unsafe fn stub_3cbf50(instance: *mut u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cbf50 Described<Camera> D1 thunk -> Instance::~Instance.
+    camera_enum::camera_described_teardown(instance, t)
 }
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
 // 0x3cbf54 — __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
-pub fn stub_3cbf54() -> ! {
-    todo!("0x3cbf54 __ZN3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub unsafe fn stub_3cbf54(instance: *mut u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cbf54 Described<Camera> D0: D1 + delete artifact.
+    camera_enum::camera_described_teardown(instance, t)
 }
 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
 // 0x3cbff4 — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
-pub fn stub_3cbff4() -> ! {
-    todo!("0x3cbff4 __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub unsafe fn stub_3cbff4(adj: *const u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cbff4 Thn32: Instance::~Instance(a1 - 32).
+    camera_enum::camera_described_teardown_thn32(adj, t)
 }
 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
 // 0x3cbffc — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
-pub fn stub_3cbffc() -> ! {
-    todo!("0x3cbffc __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub unsafe fn stub_3cbffc(adj: *const u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cbffc Thn32 D0: Instance::~Instance(a1 - 32) + delete artifact.
+    camera_enum::camera_described_teardown_thn32(adj, t)
 }
 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
 // 0x3cc0a0 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
-pub fn stub_3cc0a0() -> ! {
-    todo!("0x3cc0a0 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub unsafe fn stub_3cc0a0(adj: *const u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cc0a0 Thn36: Instance::~Instance(a1 - 36).
+    camera_enum::camera_described_teardown_thn36(adj, t)
 }
 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
 // 0x3cc0a8 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
-pub fn stub_3cc0a8() -> ! {
-    todo!("0x3cc0a8 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub unsafe fn stub_3cc0a8(adj: *const u8, t: &dyn camera_enum::InstanceTeardown) {
+    // IDA 0x3cc0a8 Thn36 D0: Instance::~Instance(a1 - 36) + delete artifact.
+    camera_enum::camera_described_teardown_thn36(adj, t)
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::EventDesc(rbx::signal<void ()(bool)> RBX::Camera::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
