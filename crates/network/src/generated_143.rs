@@ -787,8 +787,8 @@ pub fn stub_9f7824() {
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::~BoundCallbackDesc()")]
-pub fn stub_9f7ab4() -> ! {
-    todo!("0x9f7ab4 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()")
+pub fn stub_9f7ab4() {
+    // IDA 0x9f7ab4: `BoundCallbackDesc<Instance>` D0; descriptor state stays engine-side.
 }
 
 // 0x9f7c10 — __ZNK3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEELi1EE18setGenericCallbackEPNS0_13DescribedBaseENS5_INS4_8functionIFNS5_INS0_5TupleEEENS5_IKSD_EEEEEEE
@@ -796,8 +796,8 @@ pub fn stub_9f7ab4() -> ! {
 // type: void __fastcall(int, int, int *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>),1>::setGenericCallback(RBX::Reflection::DescribedBase *,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>)const")]
-pub fn stub_9f7c10() -> ! {
-    todo!("0x9f7c10 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::setGenericCallback(RBX::Reflection::DescribedBase *,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)const")
+pub fn stub_9f7c10() {
+    // IDA 0x9f7c10: `CallbackDescImpl::setGenericCallback`; the stored callback stays engine-side.
 }
 
 // 0x9f8094 — __ZNK3RBX10Reflection12CallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEEE13clearCallbackEPNS0_13DescribedBaseE
@@ -805,8 +805,8 @@ pub fn stub_9f7c10() -> ! {
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const")]
-pub fn stub_9f8094() -> ! {
-    todo!("0x9f8094 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const")
+pub fn stub_9f8094() {
+    // IDA 0x9f8094: `CallbackDesc::clearCallback`; the stored callback stays engine-side.
 }
 
 // 0x9f8188 — __ZN5boost4bindIN3RBX7Network12FilterResultENS_10shared_ptrINS_8functionIFNS4_INS1_10Reflection5TupleEEENS4_IKS7_EEEEEEENS4_INS1_8InstanceEEESD_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSK_T0_T1_ENSI_9list_av_2IT2_T3_E4typeEEESO_SQ_SR_
@@ -814,8 +814,8 @@ pub fn stub_9f8094() -> ! {
 // type: void __fastcall(_DWORD *, int, pthread_mutex_t **)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list_av_2<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>>::type> boost::bind<RBX::Network::FilterResult,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>>(RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>)")]
-pub fn stub_9f8188() -> ! {
-    todo!("0x9f8188 boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_2<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>>::type> boost::bind<RBX::Network::FilterResult,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>>(RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>)")
+pub fn stub_9f8188() {
+    // IDA 0x9f8188: `boost::bind` over the 1-arg FilterResult functor; the bind object stays engine-side.
 }
 
 // 0x9f87e8 — __ZN3RBX10Reflection16CallbackDescImplIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEELi1EE11callGenericENS5_INS4_8functionIFNS5_INS0_5TupleEEENS5_IKSB_EEEEEEES7_
@@ -823,8 +823,9 @@ pub fn stub_9f8188() -> ! {
 // type: pthread_mutex_t *__fastcall(int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>),1>::callGeneric(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_9f87e8() -> ! {
-    todo!("0x9f87e8 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::callGeneric(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_9f87e8(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9f87e8: `CallbackDescImpl::callGeneric` — invoke the stored callback.
+    call()
 }
 
 // 0x9f905c — __ZN3RBX10Reflection12CallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEEE11callGenericIS3_EENS4_10disable_ifINS4_7is_voidIT_EESD_E4typeENS5_INS4_8functionIFNS5_INS0_5TupleEEENS5_IKSI_EEEEEEESJ_
@@ -832,8 +833,9 @@ pub fn stub_9f87e8() -> ! {
 // type: pthread_mutex_t *__fastcall(int *, int *, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Reflection::Tuple>)")]
-pub fn stub_9f905c() -> ! {
-    todo!("0x9f905c boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Reflection::Tuple>)")
+pub fn stub_9f905c(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9f905c: `CallbackDesc::callGeneric` — invoke the stored callback.
+    call()
 }
 
 // 0x9f963c — __ZN3RBX10Reflection12CallbackDescIFNS_7Network12FilterResultEN5boost10shared_ptrINS_8InstanceEEEEE13convertResultIS3_EENS4_10disable_ifINS4_7is_sameINS5_IKNS0_5TupleEEET_EESG_E4typeENS5_ISD_EE
@@ -841,8 +843,9 @@ pub fn stub_9f905c() -> ! {
 // type: int __fastcall(int **)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::disable_if<boost::is_same<rbx_core::SharedPtr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(rbx_core::SharedPtr<RBX::Reflection::Tuple>)")]
-pub fn stub_9f963c() -> ! {
-    todo!("0x9f963c boost::disable_if<boost::is_same<boost::shared_ptr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(boost::shared_ptr<RBX::Reflection::Tuple>)")
+pub fn stub_9f963c(value: bool) -> bool {
+    // IDA 0x9f963c: `CallbackDesc::convertResult` — the result codec stays engine-side.
+    value
 }
 
 // 0x9f9bec — __ZN5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS4_INS_8functionIFNS4_INS1_10Reflection5TupleEEENS4_IKSD_EEEEEEES6_ENS9_5list2INS9_5valueISJ_EENS_3argILi1EEEEEEEEEvT_
@@ -850,8 +853,9 @@ pub fn stub_9f963c() -> ! {
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "void boost::function1<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>)")]
-pub fn stub_9f9bec() -> ! {
-    todo!("0x9f9bec void boost::function1<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>)")
+pub fn stub_9f9bec<T>(slot: &mut Option<Box<T>>, functor: T) {
+    // IDA 0x9f9bec: `function1::assign_to` — installs the bind into the `function` object (void return).
+    crate::functor::assign_to(slot, functor);
 }
 
 // 0x9fa05c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEEENS3_5list2INS3_5valueISH_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSU_NS1_30functor_manager_operation_typeE
@@ -859,8 +863,9 @@ pub fn stub_9f9bec() -> ! {
 // type: _UNKNOWN **__fastcall(int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_9fa05c() -> ! {
-    todo!("0x9fa05c boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_9fa05c(op: crate::functor::FunctorOp) -> crate::functor::ManageOutcome {
+    // IDA 0x9fa05c: same small-object `manage` shape as 0xa368fc for the `FilterResult(*)(Tuple-fn,Instance)` bind.
+    crate::functor::manage_small(op, "bind_t<FilterResult(*)(Tuple-fn,Instance)>")
 }
 
 // 0x9fa080 — __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tIN3RBX7Network12FilterResultEPFS7_NS_10shared_ptrINS_8functionIFNS8_INS5_10Reflection5TupleEEENS8_IKSB_EEEEEEENS8_INS5_8InstanceEEEENS3_5list2INS3_5valueISH_EENS_3argILi1EEEEEEES7_SJ_E6invokeERNS1_15function_bufferESJ_
@@ -868,8 +873,9 @@ pub fn stub_9fa05c() -> ! {
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_9fa080() -> ! {
-    todo!("0x9fa080 boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_9fa080<R, A>(slot: &mut dyn FnMut(A) -> R, a: A) -> R {
+    // IDA 0x9fa080: `function_obj_invoker1` — bound filter fn plus `Instance`.
+    crate::functor::invoke_ret1(slot, a)
 }
 
 // 0x9fa098 — __ZNK5boost6detail8function13basic_vtable1IN3RBX7Network12FilterResultENS_10shared_ptrINS3_8InstanceEEEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS6_INS_8functionIFNS6_INS3_10Reflection5TupleEEENS6_IKSF_EEEEEEES8_ENSB_5list2INSB_5valueISL_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -877,8 +883,9 @@ pub fn stub_9fa080() -> ! {
 // type: int __fastcall(int, int *, int *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "bool boost::detail::function::basic_vtable1<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_9fa098() -> ! {
-    todo!("0x9fa098 bool boost::detail::function::basic_vtable1<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_9fa098<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    // IDA 0x9fa098: `basic_vtable1::assign_to` — installs the bind, `return 1`.
+    crate::functor::assign_to(slot, functor)
 }
 
 // 0x9fa338 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrINS_8functionIFNS3_IN3RBX10Reflection5TupleEEENS3_IKS7_EEEEEEEEENS_3argILi1EEEEclINS5_7Network12FilterResultEPFSK_SD_NS3_INS5_8InstanceEEEENS0_5list1IRSM_EEEET_NS0_4typeISS_EERT0_RT1_l
