@@ -166,6 +166,50 @@ pub struct HomeViewState {
     pub search_field_visible: bool,
     pub view_loaded: bool,
     pub appeared: bool,
+    /// `loggedInView` shown (`notLoggedInView` hidden) by
+    /// `showCorrectLoggedInState` (IDA 0x1c7da..0x1c814).
+    pub logged_in_shown: bool,
+    /// `jumpToPlaceID` global, 0 = none (IDA 0x1d060/0x1d252).
+    pub jump_to_place_id: Option<i32>,
+    /// `viewMustSegueAfterLoad` global (IDA 0x1c8c0/0x1d244).
+    pub segue_after_load: bool,
+    /// Last `performSegueWithIdentifier:` (`sequeToWeb`, IDA 0x1c8e0/0x1cac4).
+    pub segue_performed: Option<String>,
+    /// Last `RobloxAlertWithMessage:` key (IDA 0x1c954/0x1cb3c/0x1cc18).
+    pub last_alert: Option<String>,
+    /// `placeIdClicked:` launch dispatch (IDA 0x1c95c..0x1ca90).
+    pub last_launch: Option<PlaceLaunch>,
+    /// Debug `placeId`/`portId`/`ipId` text content (IDA 0x1c986..0x1c9d6).
+    pub place_id_text: String,
+    pub port_id_text: String,
+    pub ip_id_text: String,
+    /// Debug fields resigned by `placeIdClicked:` (0x1c9ea..0x1c9fe).
+    pub input_resigned: bool,
+    /// `dismissViewControllerAnimated:` ran (IDA 0x1cadc).
+    pub dismissed: bool,
+    /// `prepareForSegue:` resolved web URL / launch id (IDA 0x1d084..0x1d1d0).
+    pub web_url: Option<String>,
+    pub web_launch_id: Option<i32>,
+    /// Outlet handles (`blueFrame`, `imgAvatar`, `lblPlayerName`; IDA
+    /// 0x1d258..0x1d2ce).
+    pub blue_frame: Option<u32>,
+    pub avatar_view: Option<u32>,
+    pub player_label: Option<u32>,
+}
+
+/// `placeIdClicked:` launch dispatch (IDA 0x1c95c..0x1ca90).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum PlaceLaunch {
+    Local { port: i32, ip: String },
+    Remote { place_id: i32 },
+}
+
+/// `prepareForSegue:sender:` sender kinds (IDA 0x1d0d8..0x1d1bc).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum SegueSender {
+    Button(i32),
+    SearchField(i32),
+    Home,
 }
 
 /// `updateUserInfoDisplay:` label/avatar outcome (IDA 0x1bf0c..0x1c130).
@@ -1013,153 +1057,287 @@ pub fn stub_0x1c748(state: &mut HomeViewState, animated: bool) {
 // 0x1c788 — -[HomeViewController showCorrectLoggedInState]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController showCorrectLoggedInState]")]
-pub fn stub_0x1c788() -> ! {
-    todo!("0x1c788 -[HomeViewController showCorrectLoggedInState]")
+pub fn stub_0x1c788(state: &mut HomeViewState, user_logged_in: bool, player: &PlayerInfo) {
+    // IDA 0x1c788 `-[HomeViewController showCorrectLoggedInState]`: hides
+    // `notLoggedInView` + shows `loggedInView` when `userLoggedIn == 1`
+    // (0x1c7a8..0x1c7f8), the reverse otherwise (0x1c7fe..0x1c814), then the
+    // async refresh block (0x1c820..0x1c858 -> 0x1c860). The queue hop is
+    // synchronous here.
+    state.logged_in_shown = user_logged_in;
+    stub_0x1c860(state, player);
 }
 
 // 0x1c860 — ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[HomeViewController showCorrectLoggedInState]_block_invoke")]
-pub fn stub_0x1c860() -> ! {
-    todo!("0x1c860 ___46-[HomeViewController showCorrectLoggedInState]_block_invoke")
+pub fn stub_0x1c860(state: &mut HomeViewState, player: &PlayerInfo) {
+    // IDA 0x1c860 `__46-[...showCorrectLoggedInState]_block_invoke`:
+    // `updateUserInfoDisplay:YES` shim (single `objc_msgSend`; cf. 0x1bb64).
+    stub_0x1bf0c(state, true, player);
 }
 
 // 0x1c874 — ___copy_helper_block_261
 #[doc(alias = "___copy_helper_block_261")]
-pub fn stub_0x1c874() -> ! {
-    todo!("0x1c874 ___copy_helper_block_261")
+pub fn stub_0x1c874(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1c874 `__copy_helper_block_261`: single
+    // `_Block_object_assign` retain (0x1c87a; cf. 0x1bb88).
+    *dst = src.clone();
 }
 
 // 0x1c880 — ___destroy_helper_block_262
 #[doc(alias = "___destroy_helper_block_262")]
-pub fn stub_0x1c880() -> ! {
-    todo!("0x1c880 ___destroy_helper_block_262")
+pub fn stub_0x1c880(slot: &mut BlockCapture) {
+    // IDA 0x1c880 `__destroy_helper_block_262`: single
+    // `_Block_object_dispose` release (0x1c884; cf. 0x1bb94).
+    *slot = BlockCapture::default();
 }
 
 // 0x1c888 — -[HomeViewController viewDidAppear:]
 // type: void __cdecl(HomeViewController *self, SEL, char)
 #[doc(alias = "-[HomeViewController viewDidAppear:]")]
-pub fn stub_0x1c888() -> ! {
-    todo!("0x1c888 -[HomeViewController viewDidAppear:]")
+pub fn stub_0x1c888(state: &mut HomeViewState, animated: bool) {
+    // IDA 0x1c888 `-[HomeViewController viewDidAppear:]`: super
+    // `RobloxAnimatingPageViewController` call (0x1c8a4..0x1c8ae, host
+    // UIKit); when `viewMustSegueAfterLoad == 1`, clears it and performs
+    // `sequeToWeb` (0x1c8c0..0x1c8e0).
+    let _ = animated;
+    if state.segue_after_load {
+        state.segue_after_load = false;
+        state.segue_performed = Some("sequeToWeb".to_string());
+    }
 }
 
 // 0x1c8e8 — -[HomeViewController handleStartGameFailure]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController handleStartGameFailure]")]
-pub fn stub_0x1c8e8() -> ! {
-    todo!("0x1c8e8 -[HomeViewController handleStartGameFailure]")
+pub fn stub_0x1c8e8(state: &mut HomeViewState) {
+    // IDA 0x1c8e8 `-[HomeViewController handleStartGameFailure]`:
+    // `RobloxAlertWithMessage:` with the localized `GeneralGameStartError`
+    // string (0x1c912..0x1c954).
+    state.last_alert = Some("GeneralGameStartError".to_string());
 }
 
 // 0x1c958 — -[HomeViewController handleStartGameSuccess]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController handleStartGameSuccess]")]
-pub fn stub_0x1c958() -> ! {
-    todo!("0x1c958 -[HomeViewController handleStartGameSuccess]")
+pub fn stub_0x1c958() {
+    // IDA 0x1c958 `-[HomeViewController handleStartGameSuccess]`: empty
+    // body — no-op.
 }
 
 // 0x1c95c — -[HomeViewController placeIdClicked:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController placeIdClicked:]")]
-pub fn stub_0x1c95c() -> ! {
-    todo!("0x1c95c -[HomeViewController placeIdClicked:]")
+pub fn stub_0x1c95c(state: &mut HomeViewState) {
+    // IDA 0x1c95c `-[HomeViewController placeIdClicked:]`: parses
+    // `placeId`/`portId` ints and `ipId` text (0x1c986..0x1c9d6), resigns
+    // all three fields (0x1c9ea..0x1c9fe); with a nonzero port and nonempty
+    // ip runs `startGameLocal:...` (0x1ca24..0x1ca90), otherwise
+    // `startGame:...` with the place id (0x1ca3e..0x1ca5a).
+    let place_id = state.place_id_text.parse::<i32>().unwrap_or(0);
+    let port = state.port_id_text.parse::<i32>().unwrap_or(0);
+    state.input_resigned = true;
+    state.last_launch = Some(if port != 0 && !state.ip_id_text.is_empty() {
+        PlaceLaunch::Local { port, ip: state.ip_id_text.clone() }
+    } else {
+        PlaceLaunch::Remote { place_id }
+    });
 }
 
 // 0x1ca9c — -[HomeViewController searchEditingDidEnd:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController searchEditingDidEnd:]")]
-pub fn stub_0x1ca9c() -> ! {
-    todo!("0x1ca9c -[HomeViewController searchEditingDidEnd:]")
+pub fn stub_0x1ca9c() {
+    // IDA 0x1ca9c `-[HomeViewController searchEditingDidEnd:]`: empty
+    // body — no-op.
 }
 
 // 0x1caa0 — -[HomeViewController searchDidEndOnExit:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController searchDidEndOnExit:]")]
-pub fn stub_0x1caa0() -> ! {
-    todo!("0x1caa0 -[HomeViewController searchDidEndOnExit:]")
+pub fn stub_0x1caa0(state: &mut HomeViewState) {
+    // IDA 0x1caa0 `-[HomeViewController searchDidEndOnExit:]`: performs
+    // `sequeToWeb` with the search field as sender (0x1cac4).
+    state.segue_performed = Some("sequeToWeb".to_string());
 }
 
 // 0x1cac8 — -[HomeViewController signUpButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController signUpButtonDidTouchUpInside:]")]
-pub fn stub_0x1cac8() -> ! {
-    todo!("0x1cac8 -[HomeViewController signUpButtonDidTouchUpInside:]")
+pub fn stub_0x1cac8() {
+    // IDA 0x1cac8 `-[HomeViewController signUpButtonDidTouchUpInside:]`:
+    // empty body — no-op.
 }
 
 // 0x1cacc — -[HomeViewController logInButtonDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController logInButtonDidTouchUpInside:]")]
-pub fn stub_0x1cacc() -> ! {
-    todo!("0x1cacc -[HomeViewController logInButtonDidTouchUpInside:]")
+pub fn stub_0x1cacc(state: &mut HomeViewState) {
+    // IDA 0x1cacc `-[HomeViewController logInButtonDidTouchUpInside:]`:
+    // `dismissViewControllerAnimated:1 completion:0` (0x1cadc, host UIKit).
+    state.dismissed = true;
 }
 
 // 0x1cae0 — -[HomeViewController buttonForWebDidTouchUpInside:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController buttonForWebDidTouchUpInside:]")]
-pub fn stub_0x1cae0() -> ! {
-    todo!("0x1cae0 -[HomeViewController buttonForWebDidTouchUpInside:]")
+pub fn stub_0x1cae0(state: &mut HomeViewState, user_logged_in: bool) {
+    // IDA 0x1cae0 `-[HomeViewController buttonForWebDidTouchUpInside:]`:
+    // logged in -> `sequeToWeb` (0x1cb02..0x1cba6); otherwise
+    // `RobloxAlertWithMessage:` with `YouMustLogin` (0x1cb64..0x1cb3c).
+    if user_logged_in {
+        state.segue_performed = Some("sequeToWeb".to_string());
+    } else {
+        state.last_alert = Some("YouMustLogin".to_string());
+    }
 }
 
 // 0x1cbac — -[HomeViewController btnTouchPlayButtonDisabled:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController btnTouchPlayButtonDisabled:]")]
-pub fn stub_0x1cbac() -> ! {
-    todo!("0x1cbac -[HomeViewController btnTouchPlayButtonDisabled:]")
+pub fn stub_0x1cbac(state: &mut HomeViewState) {
+    // IDA 0x1cbac `-[HomeViewController btnTouchPlayButtonDisabled:]`:
+    // `RobloxAlertWithMessage:` with the localized
+    // `UnsupportedDevicePlayError` string (0x1cbd6..0x1cc18).
+    state.last_alert = Some("UnsupportedDevicePlayError".to_string());
 }
 
 // 0x1cc1c — +[HomeViewController getUrlForButtonTag:recordPageView:]
 // type: id __cdecl(id, SEL, int, char)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:]")]
-pub fn stub_0x1cc1c() -> ! {
-    todo!("0x1cc1c +[HomeViewController getUrlForButtonTag:recordPageView:]")
+pub fn stub_0x1cc1c(
+    base_url: &str,
+    search_url: &str,
+    tag: i32,
+    record_page_view: bool,
+    is_tablet: bool,
+) -> (Option<String>, Option<String>) {
+    // IDA 0x1cc1c `+[HomeViewController getUrlForButtonTag:recordPageView:]`:
+    // forwards to the `query:` variant with an empty query (0x1cc50 ->
+    // 0x1cc54).
+    stub_0x1cc54(base_url, search_url, tag, record_page_view, "", is_tablet)
 }
 
 // 0x1cc54 — +[HomeViewController getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_0x1cc54() -> ! {
-    todo!("0x1cc54 +[HomeViewController getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_0x1cc54(
+    base_url: &str,
+    search_url: &str,
+    tag: i32,
+    record_page_view: bool,
+    query: &str,
+    is_tablet: bool,
+) -> (Option<String>, Option<String>) {
+    // IDA 0x1cc54 `+[HomeViewController
+    // getUrlForButtonTag:recordPageView:query:]`: tag switch over
+    // `baseUrl + suffix` (0x1ccc8..0x1cf16; tablet picks the `Catalog/`,
+    // `My/Character.aspx`, `User.aspx`, `My/Messages.aspx#Inbox` arms at
+    // 0x1cd54/0x1cda8/0x1ce3e/0x1ce92), `setPageViewTracking:` when
+    // recording (0x1cf1c..0x1cf3c), StandardOut URL log (0x1cf40..0x1cf88).
+    // Returns `(url, page)`; the page is `None` unless recording.
+    let (suffix, page): (String, &'static str) = match tag {
+        10 => ("games/list".to_string(), "Games"),
+        11 => (if is_tablet { "Catalog/" } else { "catalog/" }.to_string(), "Catalog"),
+        12 => (
+            if is_tablet { "My/Character.aspx" } else { "inventory" }.to_string(),
+            "Inventory",
+        ),
+        13 => ("mobile-app-upgrades/".to_string(), "BuildersClub"),
+        14 => (if is_tablet { "User.aspx" } else { "" }.to_string(), "Profile"),
+        15 => (
+            if is_tablet { "My/Messages.aspx#Inbox" } else { "inbox" }.to_string(),
+            "Messages",
+        ),
+        16 => (format!("{search_url}{query}"), "Search"),
+        _ => return (None, None),
+    };
+    let url = format!("{base_url}{suffix}");
+    (Some(url), record_page_view.then(|| page.to_string()))
 }
 
 // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
 // type: void __cdecl(HomeViewController *self, SEL, id, id)
 #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
-pub fn stub_0x1cfe8() -> ! {
-    todo!("0x1cfe8 -[HomeViewController prepareForSegue:sender:]")
+pub fn stub_0x1cfe8(
+    state: &mut HomeViewState,
+    dest_is_nav_bar: bool,
+    sender: SegueSender,
+    search_text: &str,
+    base_url: &str,
+    search_url: &str,
+    is_tablet: bool,
+) {
+    // IDA 0x1cfe8 `-[HomeViewController prepareForSegue:sender:]`: only
+    // `RobloxNavBarViewController` destinations are handled (0x1d02a..0x1d044).
+    // A pending `jumpToPlaceID` resolves to the `----item?id=` URL plus
+    // `setJumpToPlacePageAndLaunchGameWithID:` and clears the global
+    // (0x1d060..0x1d0c0); otherwise a button sender resolves via
+    // `getUrlForButtonTag:recordPageView:` (0x1d0d8..0x1d11a), a search
+    // field via the `query:` variant (0x1d12a..0x1d190), and a Home sender
+    // via tag 10 (0x1d196..0x1d1bc). Either way the destination gets
+    // `setUrl:` plus the preloaded web view (0x1d1d0..0x1d232).
+    if !dest_is_nav_bar {
+        return;
+    }
+    if let Some(place_id) = state.jump_to_place_id.take() {
+        state.web_url = Some(format!("http://www.roblox.com/----item?id={place_id}"));
+        state.web_launch_id = Some(place_id);
+        return;
+    }
+    let (tag, query) = match sender {
+        SegueSender::Button(tag) => (tag, ""),
+        SegueSender::SearchField(tag) => (tag, search_text),
+        SegueSender::Home => (10, ""),
+    };
+    let (url, _) = stub_0x1cc54(base_url, search_url, tag, true, query, is_tablet);
+    state.web_url = url;
 }
 
 // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
-pub fn stub_0x1d238() -> ! {
-    todo!("0x1d238 -[HomeViewController viewMustSegueAfterLoad]")
+pub fn stub_0x1d238(state: &mut HomeViewState) {
+    // IDA 0x1d238 `-[HomeViewController viewMustSegueAfterLoad]`:
+    // sets the global (0x1d244), consumed by `viewDidAppear:` (0x1c8c0).
+    state.segue_after_load = true;
 }
 
 // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
 // type: void __cdecl(HomeViewController *self, SEL, int)
 #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
-pub fn stub_0x1d248() -> ! {
-    todo!("0x1d248 -[HomeViewController setJumpToPlaceID:]")
+pub fn stub_0x1d248(state: &mut HomeViewState, place_id: i32) {
+    // IDA 0x1d248 `-[HomeViewController setJumpToPlaceID:]`: stores the
+    // global (0x1d252), consumed by `prepareForSegue:` (0x1d060); 0 clears.
+    state.jump_to_place_id = (place_id != 0).then_some(place_id);
 }
 
 // 0x1d258 — -[HomeViewController blueFrame]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController blueFrame]")]
-pub fn stub_0x1d258() -> ! {
-    todo!("0x1d258 -[HomeViewController blueFrame]")
+pub fn stub_0x1d258(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d258 `-[HomeViewController blueFrame]`: returns the ivar
+    // (0x1d266); opaque platform handle on the host.
+    state.blue_frame
 }
 
 // 0x1d268 — -[HomeViewController setBlueFrame:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setBlueFrame:]")]
-pub fn stub_0x1d268() -> ! {
-    todo!("0x1d268 -[HomeViewController setBlueFrame:]")
+pub fn stub_0x1d268(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d268 `-[HomeViewController setBlueFrame:]`:
+    // `objc_setProperty` retain/setter for slot 196 (0x1d284); host
+    // ownership is the `Option`.
+    state.blue_frame = view;
 }
 
 // 0x1d28c — -[HomeViewController imgAvatar]
 // type: UIImageView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController imgAvatar]")]
-pub fn stub_0x1d28c() -> ! {
-    todo!("0x1d28c -[HomeViewController imgAvatar]")
+pub fn stub_0x1d28c(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d28c `-[HomeViewController imgAvatar]`: returns the ivar
+    // (0x1d29a); opaque platform handle on the host.
+    state.avatar_view
 }
 
 // 0x1d29c — -[HomeViewController setImgAvatar:]
@@ -1172,8 +1350,10 @@ pub fn stub_0x1d29c() -> ! {
 // 0x1d2c0 — -[HomeViewController lblPlayerName]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController lblPlayerName]")]
-pub fn stub_0x1d2c0() -> ! {
-    todo!("0x1d2c0 -[HomeViewController lblPlayerName]")
+pub fn stub_0x1d2c0(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d2c0 `-[HomeViewController lblPlayerName]`: returns the ivar
+    // (0x1d2ce); opaque platform handle on the host.
+    state.player_label
 }
 
 // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
@@ -1186,15 +1366,20 @@ pub fn stub_0x1d2d0() -> ! {
 // 0x1d2f4 — -[HomeViewController placeId]
 // type: UITextField *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController placeId]")]
-pub fn stub_0x1d2f4() -> ! {
-    todo!("0x1d2f4 -[HomeViewController placeId]")
+pub fn stub_0x1d2f4(state: &HomeViewState) -> String {
+    // IDA 0x1d2f4 `-[HomeViewController placeId]`: returns the ivar
+    // (0x1d302); the host models the debug field by its text content.
+    state.place_id_text.clone()
 }
 
 // 0x1d304 — -[HomeViewController setPlaceId:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setPlaceId:]")]
-pub fn stub_0x1d304() -> ! {
-    todo!("0x1d304 -[HomeViewController setPlaceId:]")
+pub fn stub_0x1d304(state: &mut HomeViewState, text: &str) {
+    // IDA 0x1d304 `-[HomeViewController setPlaceId:]`:
+    // `objc_setProperty` retain/setter for slot 208 (0x1d320); the host
+    // models the debug field by its text content.
+    state.place_id_text = text.to_string();
 }
 
 // 0x1d328 — -[HomeViewController portId]
