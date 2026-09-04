@@ -56,6 +56,36 @@ pub struct PlaceLauncherState {
     pub start_leave_game_notification: String,
     /// `RBXGameFinishedLoadingNotification` (IDA 0x246d8/0x24a48).
     pub game_finished_loading_notification: String,
+    /// `resourcePath + "/content"` via `ContentProvider::setAssetFolder`
+    /// + `Game::globalInit` + `TeleportService::SetBaseUrl` (IDA 0x24ab0).
+    pub asset_folder: Option<String>,
+    pub game_global_init: bool,
+    pub teleport_base_url_set: bool,
+    /// `RBX::DataModel::hash = "ios,ios"` (IDA 0x24ab0).
+    pub datamodel_hash: Option<String>,
+    /// `GlobalBasicSettings::loadState("")` ran (IDA 0x24ab0).
+    pub basic_settings_loaded: bool,
+    /// `TaskScheduler::setThreadCount` from settings ran (IDA 0x24ab0).
+    pub scheduler_threads_set: bool,
+    /// Last `RobloxAlertWithMessage:` key (IDA 0x24ab0/0x2512c).
+    pub last_alert: Option<String>,
+    /// Last `StandardOut::printf` line (IDA 0x24ab0).
+    pub last_log: Option<String>,
+    /// `gameFinishedLoadingNotification` posted by
+    /// `placeDidFinishLoading` (IDA 0x253e0).
+    pub finished_notification_posted: bool,
+    pub finished_notification: Option<String>,
+    /// `stopFreeMemoryChecker` ran via `deleteRobloxView` (IDA 0x25440).
+    pub memory_checker_stopped: bool,
+    /// Last non-game controller (via `MainViewController`, IDA 0x24a58).
+    pub last_non_game_controller: Option<u32>,
+    /// `handleStartGameFailure` forwarded to it (IDA 0x24a58).
+    pub failure_forwarded: bool,
+    /// `TooManyParts` warning latched by the part-count block (IDA 0x2512c).
+    pub part_warning: Option<PartWarning>,
+    /// Last `RobloxGoogleAnalytics` event `(category, action, label)`
+    /// (IDA 0x2512c).
+    pub ga_event: Option<GaEvent>,
 }
 
 /// `+[PlaceLauncher sharedInstance]` singleton cell (IDA 0x24974):
@@ -224,64 +254,147 @@ pub fn stub_0x24a48(state: &PlaceLauncherState) -> &str {
     &state.game_finished_loading_notification
 }
 
+/// `TooManyParts` warning (IDA 0x2512c): `WarnPlaceIsNotIdeal` title +
+/// `WarnTooManyParts(partCount, maxParts)` body.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PartWarning {
+    pub max_parts: i32,
+    pub part_count: i32,
+}
+
+/// `RobloxGoogleAnalytics setEventTracking:` latch (IDA 0x2512c).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct GaEvent {
+    pub category: String,
+    pub action: String,
+    pub label: i32,
+}
+
 // 0x24a58 — -[PlaceLauncher handleStartGameFailure]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher handleStartGameFailure]")]
-pub fn stub_0x24a58() -> ! {
-    todo!("0x24a58 -[PlaceLauncher handleStartGameFailure]")
+pub fn stub_0x24a58(state: &mut PlaceLauncherState, controller: Option<u32>) {
+    // IDA 0x24a58: forwards `handleStartGameFailure` to the
+    // `MainViewController getLastNonGameController` when present,
+    // then clears `isCurrentlyPlayingGame`.
+    if controller.is_some() {
+        state.failure_forwarded = true;
+    }
+    state.currently_playing = false;
 }
 
 // 0x24ab0 — -[PlaceLauncher prepareGame]
 // type: bool __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher prepareGame]")]
-pub fn stub_0x24ab0() -> ! {
-    todo!("0x24ab0 -[PlaceLauncher prepareGame]")
+pub fn stub_0x24ab0(state: &mut PlaceLauncherState, reachability: i32, wifi_only: bool, content_path: &str) -> bool {
+    // IDA 0x24ab0 `-[PlaceLauncher prepareGame]`: asset folder +
+    // `globalInit` + teleport base URL; reachability 2 (WiFi) with the
+    // `wifionly_preference` set alerts `WiFiOnlyError`; reachability 0
+    // logs `No Network Connection` and alerts `ConnectionError`;
+    // otherwise stamps `DataModel::hash = "ios,ios"`, loads the basic
+    // settings, sizes the task-scheduler pool, and returns true
+    // (`NSString stringForKey/boolValue` resolve platform-side).
+    state.asset_folder = Some(format!("{content_path}/content"));
+    state.game_global_init = true;
+    state.teleport_base_url_set = true;
+    if reachability == 2 {
+        if wifi_only {
+            state.last_alert = Some("WiFiOnlyError".to_string());
+            return false;
+        }
+    } else if reachability == 0 {
+        state.last_log = Some("PlaceLauncher: No Network Connection available".to_string());
+        state.last_alert = Some("ConnectionError".to_string());
+        return false;
+    }
+    state.datamodel_hash = Some("ios,ios".to_string());
+    state.basic_settings_loaded = true;
+    state.scheduler_threads_set = true;
+    true
 }
 
 // 0x25080 — -[PlaceLauncher setLastPlaceId:]
 // type: void __cdecl(PlaceLauncher *self, SEL, int)
 #[doc(alias = "-[PlaceLauncher setLastPlaceId:]")]
-pub fn stub_0x25080() -> ! {
-    todo!("0x25080 -[PlaceLauncher setLastPlaceId:]")
+pub fn stub_0x25080(state: &mut PlaceLauncherState, place_id: i32) {
+    // IDA 0x25080: `lastPlaceId` IVAR store.
+    state.last_place_id = place_id;
 }
 
 // 0x25090 — -[PlaceLauncher checkPlacePartCount]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher checkPlacePartCount]")]
-pub fn stub_0x25090() -> ! {
-    todo!("0x25090 -[PlaceLauncher checkPlacePartCount]")
+pub fn stub_0x25090(state: &mut PlaceLauncherState, warnings_enabled: bool, max_parts: i32, part_count: Option<i32>) {
+    // IDA 0x25090: when the `warnings_preference` bool is set,
+    // `dispatch_async`s the part-count block on the global queue
+    // (synchronous here; `stringForKey/boolValue` resolve
+    // platform-side).
+    if warnings_enabled {
+        stub_0x2512c(state, max_parts, part_count);
+    }
 }
 
 // 0x2512c — ___36-[PlaceLauncher checkPlacePartCount]_block_invoke
 #[doc(alias = "___36-[PlaceLauncher checkPlacePartCount]_block_invoke")]
-pub fn stub_0x2512c() -> ! {
-    todo!("0x2512c ___36-[PlaceLauncher checkPlacePartCount]_block_invoke")
+pub fn stub_0x2512c(state: &mut PlaceLauncherState, max_parts: i32, part_count: Option<i32>) {
+    // IDA 0x2512c: reads the settings-service ideal-parts value
+    // (`+15`); below 1, or a null game/datamodel link, warns nothing;
+    // more parts than ideal alerts `WarnPlaceIsNotIdeal` /
+    // `WarnTooManyParts(partCount, maxParts)` and tracks
+    // `PlayErrors`/`TooManyParts` labeled with `lastPlaceId`.
+    if max_parts < 1 {
+        return;
+    }
+    let Some(parts) = part_count else {
+        return;
+    };
+    if max_parts < parts {
+        state.part_warning = Some(PartWarning { max_parts, part_count: parts });
+        state.ga_event = Some(GaEvent {
+            category: "PlayErrors".to_string(),
+            action: "TooManyParts".to_string(),
+            label: state.last_place_id,
+        });
+        state.last_alert = Some("WarnPlaceIsNotIdeal/WarnTooManyParts".to_string());
+    }
 }
 
 // 0x253cc — ___copy_helper_block_98
 #[doc(alias = "___copy_helper_block_98")]
-pub fn stub_0x253cc() -> ! {
-    todo!("0x253cc ___copy_helper_block_98")
+pub fn stub_0x253cc(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x253cc `__copy_helper_block_98`: single
+    // `_Block_object_assign` retain (cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x253d8 — ___destroy_helper_block_99
 #[doc(alias = "___destroy_helper_block_99")]
-pub fn stub_0x253d8() -> ! {
-    todo!("0x253d8 ___destroy_helper_block_99")
+pub fn stub_0x253d8(slot: &mut BlockCapture) {
+    // IDA 0x253d8 `__destroy_helper_block_99`: single
+    // `_Block_object_dispose` release (cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x253e0 — -[PlaceLauncher placeDidFinishLoading]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher placeDidFinishLoading]")]
-pub fn stub_0x253e0() -> ! {
-    todo!("0x253e0 -[PlaceLauncher placeDidFinishLoading]")
+pub fn stub_0x253e0(state: &mut PlaceLauncherState, warnings_enabled: bool, max_parts: i32, part_count: Option<i32>) {
+    // IDA 0x253e0: posts `gameFinishedLoadingNotification` on the
+    // default center, then runs `checkPlacePartCount`.
+    state.finished_notification = Some(state.game_finished_loading_notification.clone());
+    state.finished_notification_posted = true;
+    stub_0x25090(state, warnings_enabled, max_parts, part_count);
 }
 
 // 0x25440 — -[PlaceLauncher deleteRobloxView]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher deleteRobloxView]")]
-pub fn stub_0x25440() -> ! {
-    todo!("0x25440 -[PlaceLauncher deleteRobloxView]")
+pub fn stub_0x25440(state: &mut PlaceLauncherState) {
+    // IDA 0x25440: nils `rbxView`, runs the `RobloxView` dtor, and
+    // stops the free-memory checker (dtor folds into host ownership).
+    if state.rbx_view.take().is_some() {
+        state.memory_checker_stopped = true;
+    }
 }
 
 // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
