@@ -55,6 +55,35 @@ pub(crate) static PENDING_LOGIN_SIGNUP: parking_lot::Mutex<(String, String)> =
     parking_lot::Mutex::new((String::new(), String::new()));
 pub(crate) static LOGIN_SIGNUP_DISPATCHES: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_FIELD_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static PENDING_LOGIN: parking_lot::Mutex<(String, String)> =
+    parking_lot::Mutex::new((String::new(), String::new()));
+pub(crate) static LOGIN_ATTEMPTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_LOGOUTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LAST_PAGE_TRACKING: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_HOME_SEGUES: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LAST_HOME_SEGUE_ANIMATED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static USER_DID_CLICK_PLAY_NOW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_FIRST_RESPONDER: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_SCROLL_OFFSET: parking_lot::Mutex<(f32, f32)> =
+    parking_lot::Mutex::new((0.0, 0.0));
+pub(crate) static LOGIN_KEYBOARD_HIDES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_BACKGROUND_PANS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_KEYBOARD_HIDE_DISPATCHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `-[LoginManager doLoginWithUsername:password:]` delivery behind
+/// `login:` / `passwordDidEndOnExit:` (IDA 0x1f0d4/0x1f1c8). The manager
+/// has no target here; the credentials + attempt count record.
+pub(crate) fn record_login_attempt(username: &str, password: &str) {
+    *PENDING_LOGIN.lock() = (username.to_owned(), password.to_owned());
+    LOGIN_ATTEMPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+}
 pub(crate) static LOGIN_OUTLETS: std::sync::LazyLock<
     parking_lot::Mutex<std::collections::HashMap<String, usize>>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
@@ -694,9 +723,9 @@ pub fn stub_0x1e1b4(remember_password: bool, saved_password: &str) {
 #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
 pub fn stub_0x1e2c4() {
     // IDA 0x1e2c4: the will-appear block calls `stopShowLoggingIn`
-    // (0x1e21c). The selector body is a later stub; the spinner-hidden
-    // outcome records here.
-    LOGIN_SHOWING.store(false, std::sync::atomic::Ordering::SeqCst);
+    // (0x1e21c, stub_0x1eeac). The queue hop collapses to the direct
+    // call; the spinner-hidden outcome records through it.
+    stub_0x1eeac();
 }
 
 // 0x1e2d8 — ___copy_helper_block__2
@@ -885,161 +914,269 @@ pub fn stub_0x1ec84() {
     // IDA 0x1ec84: `gotLoginSuccessfulNotification:` warms the store
     // manager (0x1eca4, no target here), runs `doLoginTransition`
     // (0x1ecb6), and dispatches the completion block on main
-    // (0x1ece8-0x1ecfc, a later stub). The transition records; the queue
-    // hop will collapse when the block lands.
+    // (0x1ece8-0x1ecfc, stub_0x1ed04). The transition records; the queue
+    // hop collapses to the direct call.
     LOGIN_TRANSITIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1ed04();
 }
 
 // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
 #[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
-pub fn stub_0x1ed04() -> ! {
-    todo!("0x1ed04 ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+pub fn stub_0x1ed04() {
+    // IDA 0x1ed04: the success block clears the password field via
+    // `setText:` with the empty `CFString` (0x1ed04-0x1ed2a, stru_12CB0D8
+    // is the null constant). The ivar load is drop glue; the clear
+    // records.
+    LOGIN_PASSWORD_TEXT.lock().clear();
 }
 
 // 0x1ed30 — ___copy_helper_block_242
 #[doc(alias = "___copy_helper_block_242")]
-pub fn stub_0x1ed30() -> ! {
-    todo!("0x1ed30 ___copy_helper_block_242")
+pub fn stub_0x1ed30(_dst: usize, _src: usize) {
+    // IDA 0x1ed30: `__copy_helper_block_242` — one `_Block_object_assign`
+    // retain (0x1ed30-0x1ed36, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1ed3c — ___destroy_helper_block_243
 #[doc(alias = "___destroy_helper_block_243")]
-pub fn stub_0x1ed3c() -> ! {
-    todo!("0x1ed3c ___destroy_helper_block_243")
+pub fn stub_0x1ed3c(_block: usize) {
+    // IDA 0x1ed3c: `__destroy_helper_block_243` — one
+    // `_Block_object_dispose` release (0x1ed3c-0x1ed40, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1ed44 — -[LoginViewController showLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController showLoggingIn]")]
-pub fn stub_0x1ed44() -> ! {
-    todo!("0x1ed44 -[LoginViewController showLoggingIn]")
+pub fn stub_0x1ed44() {
+    // IDA 0x1ed44: `showLoggingIn` hides the about button (0x1ed4c-0x1ed6c)
+    // and dispatches the spinner block on main (0x1ed70-0x1edb2,
+    // stub_0x1edbc). The spinner shows; the queue hop collapses to the
+    // direct call.
+    LOGIN_ABOUT_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_SHOWING.store(true, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1edbc();
 }
 
 // 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
+// type: id __fastcall(int)
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
-pub fn stub_0x1edbc() -> ! {
-    todo!("0x1edbc ___36-[LoginViewController showLoggingIn]_block_invoke")
+pub fn stub_0x1edbc() {
+    // IDA 0x1edbc: the spinner block unhides the activity indicator
+    // (0x1edc2-0x1ede6) and runs the 0.5s fade-out animation with no
+    // delay/options/completion (0x1edea-0x1ee4e, stub_0x1ee58). The
+    // animation hop collapses to the direct call.
+    LOGIN_INDICATOR_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1ee58();
 }
 
 // 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
+// type: id __fastcall(int)
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
-pub fn stub_0x1ee58() -> ! {
-    todo!("0x1ee58 ___36-[LoginViewController showLoggingIn]_block_invoke_2")
+pub fn stub_0x1ee58() {
+    // IDA 0x1ee58: the fade-out animation sets the login field views
+    // alpha to 0 (0x1ee58-0x1ee80).
+    LOGIN_FIELD_ALPHA_BITS.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1ee84 — ___copy_helper_block_252
 #[doc(alias = "___copy_helper_block_252")]
-pub fn stub_0x1ee84() -> ! {
-    todo!("0x1ee84 ___copy_helper_block_252")
+pub fn stub_0x1ee84(_dst: usize, _src: usize) {
+    // IDA 0x1ee84: `__copy_helper_block_252` — one `_Block_object_assign`
+    // retain (0x1ee84-0x1ee8a, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1ee90 — ___destroy_helper_block_253
 #[doc(alias = "___destroy_helper_block_253")]
-pub fn stub_0x1ee90() -> ! {
-    todo!("0x1ee90 ___destroy_helper_block_253")
+pub fn stub_0x1ee90(_block: usize) {
+    // IDA 0x1ee90: `__destroy_helper_block_253` — one
+    // `_Block_object_dispose` release (0x1ee90-0x1ee94, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1ee98 — ___copy_helper_block_257
 #[doc(alias = "___copy_helper_block_257")]
-pub fn stub_0x1ee98() -> ! {
-    todo!("0x1ee98 ___copy_helper_block_257")
+pub fn stub_0x1ee98(_dst: usize, _src: usize) {
+    // IDA 0x1ee98: `__copy_helper_block_257` — one `_Block_object_assign`
+    // retain (0x1ee98-0x1ee9e, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1eea4 — ___destroy_helper_block_258
 #[doc(alias = "___destroy_helper_block_258")]
-pub fn stub_0x1eea4() -> ! {
-    todo!("0x1eea4 ___destroy_helper_block_258")
+pub fn stub_0x1eea4(_block: usize) {
+    // IDA 0x1eea4: `__destroy_helper_block_258` — one
+    // `_Block_object_dispose` release (0x1eea4-0x1eea8, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1eeac — -[LoginViewController stopShowLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController stopShowLoggingIn]")]
-pub fn stub_0x1eeac() -> ! {
-    todo!("0x1eeac -[LoginViewController stopShowLoggingIn]")
+pub fn stub_0x1eeac() {
+    // IDA 0x1eeac: `stopShowLoggingIn` dispatches the restore block on
+    // main (0x1eeb2-0x1eef4, stub_0x1eefc). The spinner hides; the queue
+    // hop collapses to the direct call.
+    LOGIN_SHOWING.store(false, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1eefc();
 }
 
 // 0x1eefc — ___40-[LoginViewController stopShowLoggingIn]_block_invoke
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke")]
-pub fn stub_0x1eefc() -> ! {
-    todo!("0x1eefc ___40-[LoginViewController stopShowLoggingIn]_block_invoke")
+pub fn stub_0x1eefc() {
+    // IDA 0x1eefc: the restore block unhides the about button
+    // (0x1ef02-0x1ef28), hides the activity indicator (0x1ef2c-0x1ef42),
+    // and runs the 0.5s fade-in animation with no delay/options/completion
+    // (0x1ef46-0x1efa4, stub_0x1efac). The animation hop collapses to the
+    // direct call.
+    LOGIN_ABOUT_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+    LOGIN_INDICATOR_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1efac();
 }
 
 // 0x1efac — ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")]
-pub fn stub_0x1efac() -> ! {
-    todo!("0x1efac ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")
+pub fn stub_0x1efac() {
+    // IDA 0x1efac: the fade-in animation restores the login field views
+    // alpha to 1.0 (0x1efac-0x1efd6, 0x3f800000).
+    LOGIN_FIELD_ALPHA_BITS.store(0x3f800000, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1efdc — ___copy_helper_block_260
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_260")]
-pub fn stub_0x1efdc() -> ! {
-    todo!("0x1efdc ___copy_helper_block_260")
+pub fn stub_0x1efdc(_dst: usize, _src: usize) {
+    // IDA 0x1efdc: `__copy_helper_block_260` — one `_Block_object_assign`
+    // retain (0x1efdc-0x1efe2, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1efe8 — ___destroy_helper_block_261
 #[doc(alias = "___destroy_helper_block_261")]
-pub fn stub_0x1efe8() -> ! {
-    todo!("0x1efe8 ___destroy_helper_block_261")
+pub fn stub_0x1efe8(_block: usize) {
+    // IDA 0x1efe8: `__destroy_helper_block_261` — one
+    // `_Block_object_dispose` release (0x1efe8-0x1efec, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1eff0 — ___copy_helper_block_263
 #[doc(alias = "___copy_helper_block_263")]
-pub fn stub_0x1eff0() -> ! {
-    todo!("0x1eff0 ___copy_helper_block_263")
+pub fn stub_0x1eff0(_dst: usize, _src: usize) {
+    // IDA 0x1eff0: `__copy_helper_block_263` — one `_Block_object_assign`
+    // retain (0x1eff0-0x1eff6, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1effc — ___destroy_helper_block_264
 #[doc(alias = "___destroy_helper_block_264")]
-pub fn stub_0x1effc() -> ! {
-    todo!("0x1effc ___destroy_helper_block_264")
+pub fn stub_0x1effc(_block: usize) {
+    // IDA 0x1effc: `__destroy_helper_block_264` — one
+    // `_Block_object_dispose` release (0x1effc-0x1f000, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController playNowDidTouchUpInside:]")]
-pub fn stub_0x1f004() -> ! {
-    todo!("0x1f004 -[LoginViewController playNowDidTouchUpInside:]")
+pub fn stub_0x1f004() {
+    // IDA 0x1f004: `playNowDidTouchUpInside:` flags the guest tap
+    // (`_userDidClickPlayNow = 1`, 0x1f008-0x1f024) and, with a non-empty
+    // password field (0x1f028-0x1f04e), falls through to `login:`
+    // (0x1f050-0x1f064); with an empty one it logs out (0x1f068-0x1f090),
+    // tracks the `Login/GuestMode` page view (0x1f094-0x1f0b6), and segues
+    // home animated (0x1f0ba-0x1f0ce, stub_0x1f854). The manager/analytics
+    // hops after the branch record; the `login:` hop collapses to the
+    // direct call.
+    USER_DID_CLICK_PLAY_NOW.store(true, std::sync::atomic::Ordering::SeqCst);
+    if !LOGIN_PASSWORD_TEXT.lock().is_empty() {
+        stub_0x1f0d4();
+    } else {
+        LOGIN_LOGOUTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        *LAST_PAGE_TRACKING.lock() = "Login/GuestMode".to_owned();
+        LOGIN_HOME_SEGUES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        LAST_HOME_SEGUE_ANIMATED.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x1f0d4 — -[LoginViewController login:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController login:]")]
-pub fn stub_0x1f0d4() -> ! {
-    todo!("0x1f0d4 -[LoginViewController login:]")
+pub fn stub_0x1f0d4() {
+    // IDA 0x1f0d4: `login:` ends editing on both fields (0x1f0de-0x1f122,
+    // keyboard dismissal, no target here), shows the spinner
+    // (0x1f126-0x1f134, stub_0x1ed44), then delivers the field texts to
+    // `LoginManager doLoginWithUsername:password:` (0x1f138-0x1f192,
+    // record_login_attempt).
+    stub_0x1ed44();
+    let username = LOGIN_USERNAME_TEXT.lock().clone();
+    let password = LOGIN_PASSWORD_TEXT.lock().clone();
+    record_login_attempt(&username, &password);
 }
 
 // 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController usernameDidEndOnExit:]")]
-pub fn stub_0x1f1a0() -> ! {
-    todo!("0x1f1a0 -[LoginViewController usernameDidEndOnExit:]")
+pub fn stub_0x1f1a0() {
+    // IDA 0x1f1a0: `usernameDidEndOnExit:` moves focus to the password
+    // field (0x1f1a0-0x1f1c4).
+    *LOGIN_FIRST_RESPONDER.lock() = "password".to_owned();
 }
 
 // 0x1f1c8 — -[LoginViewController passwordDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController passwordDidEndOnExit:]")]
-pub fn stub_0x1f1c8() -> ! {
-    todo!("0x1f1c8 -[LoginViewController passwordDidEndOnExit:]")
+pub fn stub_0x1f1c8() {
+    // IDA 0x1f1c8: `passwordDidEndOnExit:` shows the spinner
+    // (0x1f1d2-0x1f1e0, stub_0x1ed44) and delivers the field texts to
+    // `LoginManager doLoginWithUsername:password:` (0x1f1e4-0x1f25a,
+    // record_login_attempt) — the same tail as `login:` (stub_0x1f0d4)
+    // without the end-editing prologue.
+    stub_0x1ed44();
+    let username = LOGIN_USERNAME_TEXT.lock().clone();
+    let password = LOGIN_PASSWORD_TEXT.lock().clone();
+    record_login_attempt(&username, &password);
 }
 
 // 0x1f260 — -[LoginViewController swiToggleRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController swiToggleRememberMyPassword:]")]
-pub fn stub_0x1f260() -> ! {
-    todo!("0x1f260 -[LoginViewController swiToggleRememberMyPassword:]")
+pub fn stub_0x1f260(is_on: bool) {
+    // IDA 0x1f260: `swiToggleRememberMyPassword:` forwards the switch
+    // `isOn` to `LoginManager setRememberPassword:` (0x1f260-0x1f2ba).
+    // The manager has no target here; the switch query crosses as a
+    // parameter and the value records. Matches the `is_tablet` shape of
+    // stub_0x1dd84.
+    LOGIN_REMEMBER_ON.store(is_on, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1f2c0 — -[LoginViewController loginButtonDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController loginButtonDidTouchUpInside:]")]
-pub fn stub_0x1f2c0() -> ! {
-    todo!("0x1f2c0 -[LoginViewController loginButtonDidTouchUpInside:]")
+pub fn stub_0x1f2c0() {
+    // IDA 0x1f2c0: `loginButtonDidTouchUpInside:` clears the guest-tap
+    // flag (`_userDidClickPlayNow = 0`, 0x1f2c0-0x1f2d6) and falls through
+    // to `login:` (0x1f2da-0x1f2dc, stub_0x1f0d4).
+    USER_DID_CLICK_PLAY_NOW.store(false, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1f0d4();
 }
 
 // 0x1f2e0 — -[LoginViewController onKeyboardHide:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardHide:]")]
-pub fn stub_0x1f2e0() -> ! {
-    todo!("0x1f2e0 -[LoginViewController onKeyboardHide:]")
+pub fn stub_0x1f2e0(has_received_memory_warning: bool) {
+    // IDA 0x1f2e0: `onKeyboardHide:` resets the scroll offset to (0, 0)
+    // animated (0x1f2e8-0x1f30c) and, unless the controller has received a
+    // memory warning (0x1f310-0x1f320), restarts the background pan
+    // (0x1f322-0x1f330) and dispatches the hide block on main
+    // (0x1f334-0x1f376, stub_0x1f380 in generated_bg_5). The warning flag
+    // crosses as a parameter; the queue hop collapses when the block
+    // lands.
+    *LOGIN_SCROLL_OFFSET.lock() = (0.0, 0.0);
+    LOGIN_KEYBOARD_HIDES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if !has_received_memory_warning {
+        LOGIN_BACKGROUND_PANS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        LOGIN_KEYBOARD_HIDE_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
