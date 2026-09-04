@@ -5937,10 +5937,69 @@ pub fn stub_0x66e968(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut 
     }
 }
 
+/// Shared `boost::bind_t<mfN<GenericSlotWrapper, ...>>` cutover for the
+/// Player/Players glue below (cf. `BoundMoveStateSlot`): the member triple
+/// folds into the target; arity rides the fn signatures.
+#[derive(Clone)]
+pub struct BoundSlot {
+    pub target: SharedPtr<SlotWrapper>,
+}
+
+/// Shared `boost::functionN<...>` slot holder (cf. `MoveStateSlotFunction`).
+#[derive(Default, Clone)]
+pub struct SlotFunction {
+    pub bound: Option<BoundSlot>,
+}
+
+/// Shared `functor_manager_operation_type` (op 4 = `get_functor_type_tag`,
+/// cf. 0x6320c0).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum GenericFunctorOp {
+    Clone = 0,
+    Move = 1,
+    Destroy = 2,
+    CheckNoCopy = 3,
+    GetType = 4,
+}
+
+/// Shared `functor_manager::manager` core (cf. 0x4a4810/0x6323b0).
+pub fn generic_manage(op: GenericFunctorOp, src: &BoundSlot, slot: &mut Option<BoundSlot>) -> bool {
+    match op {
+        GenericFunctorOp::Clone => {
+            *slot = Some(src.clone());
+            true
+        }
+        GenericFunctorOp::Move => {
+            *slot = Some(src.clone());
+            true
+        }
+        GenericFunctorOp::Destroy => {
+            *slot = None;
+            true
+        }
+        GenericFunctorOp::CheckNoCopy => true,
+        GenericFunctorOp::GetType => false,
+    }
+}
+
+/// typeinfo names compared by the `manage` GetType cases.
+pub const BIND_MF1_INSTANCE_TYPEINFO: &str = "bind_t<mf1<GenericSlotWrapper,Instance>>";
+pub const BIND_MF1_STRING_TYPEINFO: &str = "bind_t<mf1<GenericSlotWrapper,string>>";
+pub const BIND_MF3_TYPEINFO: &str = "bind_t<mf3<GenericSlotWrapper,Instance,Instance,FriendEventType>>";
+pub const BIND_MF4_TYPEINFO: &str = "bind_t<mf4<GenericSlotWrapper,PlayerChatType,Instance,string,Instance>>";
+
 // 0x66ec90 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMNS_12GuiTextMixinEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>(char const*,char const*,bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66ec90() -> ! {
-    todo!("0x66ec90 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>(char const*,char const*,bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66ec90(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<bool> {
+    // IDA 0x66ec90: `PropDescriptor<TextBox, bool>` get/set ctor through
+    // `GuiTextMixin` (same shape as 0x5f0cec).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x66eda4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE10isReadOnlyEv
@@ -5959,20 +6018,30 @@ pub fn stub_0x66eda8() -> bool {
 
 // 0x66edac — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x66edac() -> ! {
-    todo!("0x66edac RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x66edac(prop: &Prop<bool>) -> bool {
+    // IDA 0x66edac: `GetSetImpl<bool>::getValue` through `GuiTextMixin`.
+    prop.value
 }
 
 // 0x66ede0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x66ede0() -> ! {
-    todo!("0x66ede0 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x66ede0(prop: &mut Prop<bool>, value: bool) {
+    // IDA 0x66ede0: `GetSetImpl<bool>::setValue` through `GuiTextMixin`.
+    prop.value = value;
 }
 
 // 0x66ee04 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEfEC2IMNS_12GuiTextMixinEKFfvEMS2_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::PropDescriptor<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>(char const*,char const*,float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x66ee04() -> ! {
-    todo!("0x66ee04 RBX::Reflection::PropDescriptor<RBX::TextBox,float>::PropDescriptor<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>(char const*,char const*,float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x66ee04(
+    name: &str,
+    category: &str,
+    initial: f32,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<f32> {
+    // IDA 0x66ee04: `PropDescriptor<TextBox, float>` get/set ctor through
+    // `GuiTextMixin` (same shape as 0x5f0cec).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 // 0xa3e960 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11StarterGearES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGear,RBX::StarterGear>(rbx_core::SharedPtr<RBX::StarterGear> const*,RBX::StarterGear *)const")]
@@ -5988,146 +6057,247 @@ pub fn stub_0xa3ec64() {
 
 // 0xa3fc30 — __ZNK3RBX10Reflection7Variant3getIbEET_v
 #[doc(alias = "bool RBX::Reflection::Variant::get<bool>(void)const")]
-pub fn stub_0xa3fc30() -> ! {
-    todo!("0xa3fc30 bool RBX::Reflection::Variant::get<bool>(void)const")
+pub fn stub_0xa3fc30(value: &Value) -> bool {
+    // IDA 0xa3fc30: `Variant::get<bool>`: `typeinfo for'bool` check
+    // (0xa3fc6c-0xa3fc72), `any_cast<bool>` direct, else copy +
+    // `convert<bool>`; mismatch throws `bad_cast`. Rust cutover panics.
+    match value {
+        Value::Bool(v) => *v,
+        Value::Int(v) => *v != 0,
+        Value::Float(v) => *v != 0.0,
+        other => panic!("std::bad_cast in Variant::get<bool> on {other:?} (IDA 0xa3fc30)"),
+    }
 }
 
 // 0xa40330 — __ZN3RBX10Reflection9ArgHelper6getArgINS_7Network7Players10ChatOptionELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "RBX::Network::Players::ChatOption RBX::Reflection::ArgHelper::getArg<RBX::Network::Players::ChatOption,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Network::Players::ChatOption> const&,boost::disable_if<boost::is_same<RBX::Network::Players::ChatOption,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_0xa40330() -> ! {
-    todo!("0xa40330 RBX::Network::Players::ChatOption RBX::Reflection::ArgHelper::getArg<RBX::Network::Players::ChatOption,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Network::Players::ChatOption> const&,boost::disable_if<boost::is_same<RBX::Network::Players::ChatOption,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_0xa40330(args: &Arguments, default: Option<i32>) -> i32 {
+    // IDA 0xa40330: `ArgHelper::getArg<Players::ChatOption, 1>`: positional
+    // fetch with default-or-throw (`runtime_error("Argument %d missing or
+    // nil", 1)`, same shape as 0x5f1810).
+    match args.args.first() {
+        Some(Value::Nil) | None => default.unwrap_or_else(|| panic!("Argument 1 missing or nil (IDA 0xa40330)")),
+        Some(Value::Int(v)) => *v,
+        Some(Value::EnumValue(v)) => *v,
+        Some(other) => panic!("Variant::convert<ChatOption> on {other:?} (IDA 0xa40330)"),
+    }
 }
 
 // 0xa413f8 — __ZN3RBX10Reflection18GenericSlotWrapper8execute1IN5boost10shared_ptrINS_8InstanceEEEEEvRKT_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute1<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0xa413f8() -> ! {
-    todo!("0xa413f8 void RBX::Reflection::GenericSlotWrapper::execute1<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0xa413f8(wrapper: &SlotWrapper, id: u32) {
+    // IDA 0xa413f8: `execute1<shared_ptr<Instance>>`: 1-Variant vector with
+    // the Instance tag, vf dispatch, teardown (same shape as 0x4a40c8).
+    (wrapper.invoke)(&[Value::Instance(id)]);
 }
 
 // 0xa41a90 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueINSA_IS9_EEEENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0xa41a90() -> ! {
-    todo!("0xa41a90 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0xa41a90(bound: &BoundSlot, id: u32) {
+    // IDA 0xa41a90: `void_function_obj_invoker1<Instance>::invoke`
+    // tail-calls `bind_t::operator()` (same shape as 0x4a4540).
+    stub_0xa413f8(&bound.target, id);
 }
 
 // 0xa41ab0 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_10Reflection18GenericSlotWrapperERKS6_EENS9_5list2INS9_5valueINS3_ISE_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xa41ab0() -> ! {
-    todo!("0xa41ab0 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0xa41ab0(func: &mut SlotFunction, bound: &BoundSlot) -> bool {
+    // IDA 0xa41ab0: `basic_vtable1<Instance>::assign_to` (same shape as
+    // 0x4a4554).
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xa41d98 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueINSA_IS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xa41d98() -> ! {
-    todo!("0xa41d98 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xa41d98(
+    op: GenericFunctorOp,
+    src: &BoundSlot,
+    slot: &mut Option<BoundSlot>,
+) -> Option<&'static str> {
+    // IDA 0xa41d98: `functor_manager<mf1<Instance>-bind>::manage` (same
+    // shape as 0x4a4524).
+    if op == GenericFunctorOp::GetType {
+        return Some(BIND_MF1_INSTANCE_TYPEINFO);
+    }
+    generic_manage(op, src, slot);
+    None
 }
 
 // 0xa43684 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEES8_RKNS1_13FriendService15FriendEventTypeENS4_IS3_EENS_3argILi1EEENSE_ILi2EEENSE_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISK_T0_T1_T2_T3_EENSI_9list_av_4IT4_T5_T6_T7_E4typeEEEMSN_FSK_SO_SP_SQ_EST_SU_SV_SW_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
-pub fn stub_0xa43684() -> ! {
-    todo!("0xa43684 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
+pub fn stub_0xa43684(wrapper: SharedPtr<SlotWrapper>) -> BoundSlot {
+    // IDA 0xa43684: `bind<mf3<GenericSlotWrapper, Instance, Instance,
+    // FriendEventType>>` (same shape as 0x4a3fac).
+    BoundSlot { target: wrapper }
 }
 
 // 0xa43ce8 — __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEES6_NS_13FriendService15FriendEventTypeEEEvRKT_RKT0_RKT1_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType>(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&)")]
-pub fn stub_0xa43ce8() -> ! {
-    todo!("0xa43ce8 void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType>(boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&)")
+pub fn stub_0xa43ce8(wrapper: &SlotWrapper, a: u32, b: u32, c: i32) {
+    // IDA 0xa43ce8: `execute3<Instance, Instance, FriendEventType>`:
+    // 3-Variant vector, vf dispatch, teardown (same shape as 0x631c68).
+    (wrapper.invoke)(&[Value::Instance(a), Value::Instance(b), Value::EnumValue(c)]);
 }
 
 // 0xa43f98 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
-pub fn stub_0xa43f98() -> ! {
-    todo!("0xa43f98 boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
+pub fn stub_0xa43f98(wrapper: SharedPtr<SlotWrapper>) -> BoundSlot {
+    // IDA 0xa43f98: `storage4<value<wrapper>, arg<1>, arg<2>,
+    // arg<3>>::storage4`: pack the bound wrapper plus three placeholders
+    // (same shape as the `list3` triple at 0x4a3fac).
+    BoundSlot { target: wrapper }
 }
 
 // 0xa44854 — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEES4_NS2_13FriendService15FriendEventTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_SG_RKS6_EENS9_5list4INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEvT_
 #[doc(alias = "void boost::function3<void,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")]
-pub fn stub_0xa44854() -> ! {
-    todo!("0xa44854 void boost::function3<void,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")
+pub fn stub_0xa44854(func: &mut SlotFunction, bound: &BoundSlot) {
+    // IDA 0xa44854: `function3::assign_to<mf3-bind>` (same shape as
+    // 0x4a442c).
+    func.bound = Some(bound.clone());
 }
 
 // 0xa44ccc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEESE_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xa44ccc() -> ! {
-    todo!("0xa44ccc boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xa44ccc(
+    op: GenericFunctorOp,
+    src: &BoundSlot,
+    slot: &mut Option<BoundSlot>,
+) -> Option<&'static str> {
+    // IDA 0xa44ccc: `functor_manager<mf3-bind>::manage` (same shape as
+    // 0x4a4524).
+    if op == GenericFunctorOp::GetType {
+        return Some(BIND_MF3_TYPEINFO);
+    }
+    stub_0xa45004(op, src, slot);
+    None
 }
 
 // 0xa44cf0 — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEESE_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEvSC_SC_SG_E6invokeERNS1_15function_bufferESC_SC_SG_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType)")]
-pub fn stub_0xa44cf0() -> ! {
-    todo!("0xa44cf0 boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)")
+pub fn stub_0xa44cf0(bound: &BoundSlot, a: u32, b: u32, c: i32) {
+    // IDA 0xa44cf0: `void_function_obj_invoker3::invoke` tail-calls
+    // `bind_t::operator()` (same shape as 0x4a4540).
+    stub_0xa43ce8(&bound.target, a, b, c);
 }
 
 // 0xa44d1c — __ZNK5boost6detail8function13basic_vtable3IvNS_10shared_ptrIN3RBX8InstanceEEES6_NS4_13FriendService15FriendEventTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKS6_SI_RKS8_EENSB_5list4INSB_5valueINS3_ISG_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xa44d1c() -> ! {
-    todo!("0xa44d1c bool boost::detail::function::basic_vtable3<void,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0xa44d1c(func: &mut SlotFunction, bound: &BoundSlot) -> bool {
+    // IDA 0xa44d1c: `basic_vtable3::assign_to` (same shape as 0x4a4554).
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xa45004 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEESE_RKNS7_13FriendService15FriendEventTypeEEENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xa45004() -> ! {
-    todo!("0xa45004 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,RBX::FriendService::FriendEventType const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xa45004(op: GenericFunctorOp, src: &BoundSlot, slot: &mut Option<BoundSlot>) -> bool {
+    // IDA 0xa45004: `functor_manager<mf3-bind>::manager` (same shape as
+    // 0x4a4810).
+    generic_manage(op, src, slot)
 }
 
 // 0xa48e90 — __ZN3RBX10Reflection18GenericSlotWrapper8execute1ISsEEvRKT_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute1<std::string>(std::string const&)")]
-pub fn stub_0xa48e90() -> ! {
-    todo!("0xa48e90 void RBX::Reflection::GenericSlotWrapper::execute1<std::string>(std::string const&)")
+pub fn stub_0xa48e90(wrapper: &SlotWrapper, text: &str) {
+    // IDA 0xa48e90: `execute1<string>`: 1-Variant vector, vf dispatch,
+    // teardown (same shape as 0x4a40c8).
+    (wrapper.invoke)(&[Value::Text(text.to_owned())]);
 }
 
 // 0xa490f0 — __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKSsEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")]
-pub fn stub_0xa490f0() -> ! {
-    todo!("0xa490f0 void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")
+pub fn stub_0xa490f0(func: &mut SlotFunction, bound: &BoundSlot) {
+    // IDA 0xa490f0: `function1<string>::assign_to<mf1-bind>` (same shape as
+    // 0x4a442c).
+    func.bound = Some(bound.clone());
 }
 
 // 0xa49568 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKSsEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xa49568() -> ! {
-    todo!("0xa49568 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,std::string const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xa49568(
+    op: GenericFunctorOp,
+    src: &BoundSlot,
+    slot: &mut Option<BoundSlot>,
+) -> Option<&'static str> {
+    // IDA 0xa49568: `functor_manager<mf1<string>-bind>::manage` (same shape
+    // as 0x4a4524).
+    if op == GenericFunctorOp::GetType {
+        return Some(BIND_MF1_STRING_TYPEINFO);
+    }
+    generic_manage(op, src, slot);
+    None
 }
 
 // 0xa4b0f4 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_7Network7Players14PlayerChatTypeERKNS_10shared_ptrINS1_8InstanceEEERKSsSD_NS9_IS3_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISO_T0_T1_T2_T3_T4_EENSM_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSR_FSO_SS_ST_SU_SV_ESY_SZ_S10_S11_S12_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_5<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
-pub fn stub_0xa4b0f4() -> ! {
-    todo!("0xa4b0f4 boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+pub fn stub_0xa4b0f4(wrapper: SharedPtr<SlotWrapper>) -> BoundSlot {
+    // IDA 0xa4b0f4: `bind<mf4<GenericSlotWrapper, PlayerChatType, Instance,
+    // string, Instance>>` (same shape as 0x4a3fac/0x631b4c).
+    BoundSlot { target: wrapper }
 }
 
 // 0xa4b560 — __ZN3RBX10Reflection18GenericSlotWrapper8execute4INS_7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS_8InstanceEEESsS9_EEvRKT_RKT0_RKT1_RKT2_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute4<RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>(RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0xa4b560() -> ! {
-    todo!("0xa4b560 void RBX::Reflection::GenericSlotWrapper::execute4<RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>(RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0xa4b560(wrapper: &SlotWrapper, chat: i32, a: u32, text: &str, b: u32) {
+    // IDA 0xa4b560: `execute4<PlayerChatType, Instance, string, Instance>`:
+    // 4-Variant vector, vf dispatch, teardown (same shape as 0x631c68).
+    (wrapper.invoke)(&[
+        Value::EnumValue(chat),
+        Value::Instance(a),
+        Value::Text(text.to_owned()),
+        Value::Instance(b),
+    ]);
 }
 
 // 0xa4bd28 — __ZN5boost9function4IvN3RBX7Network7Players14PlayerChatTypeENS_10shared_ptrINS1_8InstanceEEESsS7_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS1_10Reflection18GenericSlotWrapperERKS4_RKS7_RKSsSJ_EENSA_5list5INSA_5valueINS5_ISF_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEEEvT_
 #[doc(alias = "void boost::function4<void,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)")]
-pub fn stub_0xa4bd28() -> ! {
-    todo!("0xa4bd28 void boost::function4<void,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)")
+pub fn stub_0xa4bd28(func: &mut SlotFunction, bound: &BoundSlot) {
+    // IDA 0xa4bd28: `function4::assign_to<mf4-bind>` (same shape as
+    // 0x4a442c/0x631fc8).
+    func.bound = Some(bound.clone());
 }
 
 // 0xa4c1a0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS7_7Network7Players14PlayerChatTypeERKNS_10shared_ptrINS7_8InstanceEEERKSsSJ_EENS3_5list5INS3_5valueINSF_IS9_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEE6manageERKNS1_15function_bufferERSZ_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xa4c1a0() -> ! {
-    todo!("0xa4c1a0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xa4c1a0(
+    op: GenericFunctorOp,
+    src: &BoundSlot,
+    slot: &mut Option<BoundSlot>,
+) -> Option<&'static str> {
+    // IDA 0xa4c1a0: `functor_manager<mf4-bind>::manage`: op 4
+    // (`get_functor_type_tag`) returns the `bind_t` typeinfo (same shape as
+    // 0x4a4524/0x6320c0).
+    if op == GenericFunctorOp::GetType {
+        return Some(BIND_MF4_TYPEINFO);
+    }
+    stub_0xa4c4e0(op, src, slot);
+    None
 }
 
 // 0xa4c1c4 — __ZN5boost6detail8function26void_function_obj_invoker4INS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS7_7Network7Players14PlayerChatTypeERKNS_10shared_ptrINS7_8InstanceEEERKSsSJ_EENS3_5list5INS3_5valueINSF_IS9_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEvSC_SH_SsSH_E6invokeERNS1_15function_bufferESC_SH_SsSH_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker4<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,void,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0xa4c1c4() -> ! {
-    todo!("0xa4c1c4 boost::detail::function::void_function_obj_invoker4<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,void,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0xa4c1c4(bound: &BoundSlot, chat: i32, a: u32, text: &str, b: u32) {
+    // IDA 0xa4c1c4: `void_function_obj_invoker4::invoke` tail-calls
+    // `bind_t::operator()` (same shape as 0x4a4540/0x6320dc).
+    stub_0xa4b560(&bound.target, chat, a, text, b);
 }
 
 // 0xa4c1f8 — __ZNK5boost6detail8function13basic_vtable4IvN3RBX7Network7Players14PlayerChatTypeENS_10shared_ptrINS3_8InstanceEEESsS9_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS3_10Reflection18GenericSlotWrapperERKS6_RKS9_RKSsSL_EENSC_5list5INSC_5valueINS7_ISH_EEEENS_3argILi1EEENST_ILi2EEENST_ILi3EEENST_ILi4EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable4<void,RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xa4c1f8() -> ! {
-    todo!("0xa4c1f8 bool boost::detail::function::basic_vtable4<void,RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0xa4c1f8(func: &mut SlotFunction, bound: &BoundSlot) -> bool {
+    // IDA 0xa4c1f8: `basic_vtable4::assign_to` (same shape as 0x4a4554):
+    // store a clone, report success.
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xa4c4e0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS7_7Network7Players14PlayerChatTypeERKNS_10shared_ptrINS7_8InstanceEEERKSsSJ_EENS3_5list5INS3_5valueINSF_IS9_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEE7managerERKNS1_15function_bufferERSZ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xa4c4e0() -> ! {
-    todo!("0xa4c4e0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,RBX::Network::Players::PlayerChatType const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xa4c4e0(op: GenericFunctorOp, src: &BoundSlot, slot: &mut Option<BoundSlot>) -> bool {
+    // IDA 0xa4c4e0: `functor_manager<mf4-bind>::manager` (same shape as
+    // 0x4a4810).
+    generic_manage(op, src, slot)
 }
 
 // 0xa50340 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -6138,8 +6308,11 @@ pub fn stub_0xa50340() {
 
 // 0xa50350 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEEE14construct_funcEPKcPc
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)")]
-pub fn stub_0xa50350() -> ! {
-    todo!("0xa50350 rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)")
+pub fn stub_0xa50350<T>(value: &SharedPtr<T>) -> SharedPtr<T> {
+    // IDA 0xa50350: `typed_holder<shared_ptr<DescribedBase>>::construct_func`:
+    // copy-construct the shared payload with the spinlock-pool refcount bump
+    // (0xa5035c-0xa503a2). Rust: `Arc::clone` covers the refcount.
+    SharedPtr::clone(value)
 }
 
 // 0xa87e84 — __ZN3RBX7Network6Player20LoadDataResultHelperEN5boost8weak_ptrIS1_EENS2_10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS8_EEEEE
