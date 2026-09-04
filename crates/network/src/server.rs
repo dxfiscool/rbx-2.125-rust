@@ -147,6 +147,9 @@ pub struct Server {
     pub players: Option<Vec<SharedPtr<ServerClient>>>,
     pub port: Option<u16>,
     pub active: bool,
+    /// Player-authentication gate set by
+    /// `setIsPlayerAuthenticationRequired` (IDA 0x9caf48).
+    pub player_auth_required: bool,
 }
 
 impl Server {
@@ -223,6 +226,58 @@ impl Server {
             self.players = Some(Vec::new());
         }
     }
+    /// `RBX::Network::Server::setIsPlayerAuthenticationRequired` (IDA
+    /// 0x9caf48): stores the gate.
+    pub fn set_player_authentication_required(&mut self, required: bool) {
+        self.player_auth_required = required;
+    }
+
+    /// `RBX::Network::Server::getPort` (IDA 0x9caf1c): the bound port from
+    /// `start`, or 0 when unbound.
+    pub fn bound_port(&self) -> u16 {
+        self.port.unwrap_or(0)
+    }
+}
+
+
+/// `ID_NEW_INCOMING_CONNECTION` (IDA 0x9c9fd6): the only packet byte
+/// `Server::OnReceive` handles.
+pub const NEW_INCOMING_CONNECTION_BYTE: u8 = 19;
+
+/// `RBX::Network::Server::OnReceive` (IDA 0x9c9fb0): non-19 packets are
+/// ignored (the function returns 1 either way). A new connection logs
+/// "NetworkServer:NewIncomingConnection" and "New connection from %s",
+/// runs `createReplicator` (an empty factory throws
+/// `bad_function_call`, caught and logged as "Server::OnReceive packet
+/// %d: %s", 0x9ca350..0x9cacd8), parents the replicator, sends its top
+/// packet unless it is cheat-handling (0x9ca3d4..0x9ca400), and fires the
+/// +2880 join signal (0x9ca47c). Replication, logging, and signals stay
+/// engine-side behind the closures. Returns whether a replicator was
+/// created and joined.
+pub fn server_on_receive(
+    packet_byte: u8,
+    factory_present: bool,
+    cheat_handling: bool,
+    create_replicator: &mut dyn FnMut(),
+    send_top: &mut dyn FnMut(),
+    fire_join: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9c9fd6.
+    if packet_byte != NEW_INCOMING_CONNECTION_BYTE {
+        return false;
+    }
+    // IDA 0x9ca1c2..0x9ca350: empty factory throws; the catch logs and skips.
+    if !factory_present {
+        return false;
+    }
+    create_replicator();
+    // IDA 0x9ca3d4..0x9ca400.
+    if !cheat_handling {
+        send_top();
+    }
+    // IDA 0x9ca47c.
+    fire_join();
+    true
 }
 
 
@@ -409,6 +464,7 @@ mod tests {
             players: Some(vec![]),
             port: Some(53640),
             active: true,
+            ..Default::default()
         };
         server.tear_down();
         assert!(server.players.is_none());
@@ -419,7 +475,7 @@ mod tests {
     #[test]
     fn provider_swap_resets_and_renotes() {
         // IDA 0x9c8b88: leave stops+drops, join notes a fresh list.
-        let mut server = Server { players: Some(vec![]), port: Some(1), active: true };
+        let mut server = Server { players: Some(vec![]), port: Some(1), active: true, ..Default::default() };
         server.on_service_provider(true, false);
         assert!(server.players.is_none());
         assert!(!server.active);
@@ -442,5 +498,42 @@ mod tests {
         assert!(!ask_add_child(false, true));
         assert!(!ask_add_child(true, false));
         assert!(ask_add_child(true, true));
+    }
+
+    #[test]
+    fn on_receive_handles_only_new_connections() {
+        // IDA 0x9c9fb0: other bytes ignored; empty factory throws; cheat skips sendTop.
+        let run = |byte: u8, factory: bool, cheat: bool| {
+            let calls = core::cell::RefCell::new(Vec::new());
+            let verdict = server_on_receive(
+                byte, factory, cheat,
+                &mut || calls.borrow_mut().push("create"),
+                &mut || calls.borrow_mut().push("top"),
+                &mut || calls.borrow_mut().push("join"),
+            );
+            (verdict, calls.into_inner())
+        };
+        assert_eq!(run(7, true, false), (false, vec![]));
+        assert_eq!(run(NEW_INCOMING_CONNECTION_BYTE, false, false), (false, vec![]));
+        assert_eq!(
+            run(NEW_INCOMING_CONNECTION_BYTE, true, true),
+            (true, vec!["create", "join"])
+        );
+        assert_eq!(
+            run(NEW_INCOMING_CONNECTION_BYTE, true, false),
+            (true, vec!["create", "top", "join"])
+        );
+    }
+
+    #[test]
+    fn auth_flag_and_bound_port() {
+        // IDA 0x9caf48/0x9caf1c.
+        let mut server = Server::default();
+        assert_eq!(server.bound_port(), 0);
+        assert!(!server.player_auth_required);
+        server.set_player_authentication_required(true);
+        assert!(server.player_auth_required);
+        server.port = Some(53640);
+        assert_eq!(server.bound_port(), 53640);
     }
 }

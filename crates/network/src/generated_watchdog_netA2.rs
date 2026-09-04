@@ -798,54 +798,76 @@ pub fn stub_9c8b20(version: &str, debug_local_rcc: bool) -> &str {
 // type: int __fastcall(RBX::Instance *, RakNet::SystemAddress *, int, const void *)
 #[doc(alias = "RBX::Network::Server::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")]
-pub fn stub_9c9fb0() -> ! {
-    todo!("0x9c9fb0 __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9c9fb0(
+    packet_byte: u8,
+    factory_present: bool,
+    cheat_handling: bool,
+    create_replicator: &mut dyn FnMut(),
+    send_top: &mut dyn FnMut(),
+    fire_join: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9c9fb0: byte-19 newcomer flow behind logging, factory, and join closures.
+    crate::server::server_on_receive(packet_byte, factory_present, cheat_handling, create_replicator, send_top, fire_join)
 }
 
 // 0x9cade8 — __ZThn92_N3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, RakNet::SystemAddress *, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZThn92_N3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")]
-pub fn stub_9cade8() -> ! {
-    todo!("0x9cade8 __ZThn92_N3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9cade8(
+    packet_byte: u8,
+    factory_present: bool,
+    cheat_handling: bool,
+    create_replicator: &mut dyn FnMut(),
+    send_top: &mut dyn FnMut(),
+    fire_join: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9cade8 (ZThn92 OnReceive): adjusts `this`, then OnReceive.
+    crate::server::server_on_receive(packet_byte, factory_present, cheat_handling, create_replicator, send_top, fire_join)
 }
 
 // 0x9caf1c — __ZNK3RBX7Network6Server7getPortEv
 // type: int __fastcall(RBX::Network::Server *this)
 #[doc(alias = "RBX::Network::Server::getPort(void)const")]
 #[doc(alias = "__ZNK3RBX7Network6Server7getPortEv")]
-pub fn stub_9caf1c() -> ! {
-    todo!("0x9caf1c __ZNK3RBX7Network6Server7getPortEv")
+pub fn stub_9caf1c(server: &crate::server::Server) -> u16 {
+    // IDA 0x9caf1c: the bound port, 0 when unbound.
+    server.bound_port()
 }
 
 // 0x9caf48 — __ZN3RBX7Network6Server33setIsPlayerAuthenticationRequiredEb
 // type: int __fastcall(int this, bool)
 #[doc(alias = "RBX::Network::Server::setIsPlayerAuthenticationRequired(bool)")]
 #[doc(alias = "__ZN3RBX7Network6Server33setIsPlayerAuthenticationRequiredEb")]
-pub fn stub_9caf48() -> ! {
-    todo!("0x9caf48 __ZN3RBX7Network6Server33setIsPlayerAuthenticationRequiredEb")
+pub fn stub_9caf48(server: &mut crate::server::Server, required: bool) {
+    // IDA 0x9caf48: stores the player-authentication gate.
+    server.set_player_authentication_required(required);
 }
 
 // 0x9cb048 — __ZN5boost8functionIFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS3_6ServerEPNS2_15NetworkSettingsEEED1Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "boost::function<boost::shared_ptr<RBX::Network::ServerReplicator> ()(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)>::~function()")]
 #[doc(alias = "__ZN5boost8functionIFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS3_6ServerEPNS2_15NetworkSettingsEEED1Ev")]
-pub fn stub_9cb048() -> ! {
-    todo!("0x9cb048 __ZN5boost8functionIFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS3_6ServerEPNS2_15NetworkSettingsEEED1Ev")
+pub fn stub_9cb048() {
+    // IDA 0x9cb048: `boost::function<createReplicator>` D1; functor teardown stays engine-side.
 }
 
 // 0x9cb918 — __ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9cb918() -> ! {
-    todo!("0x9cb918 __ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9cb918() -> &'static str {
+    // IDA 0x9cb918: `FactoryProduct<Server>::getClassName` — the `sServer` name.
+    "Server"
 }
 
 // 0x9cb984 — __ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9cb984() -> ! {
-    todo!("0x9cb984 __ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9cb984() -> &'static str {
+    // IDA 0x9cb984 (ZThn32 getClassName): adjusts `this`, then getClassName.
+    "Server"
 }
 
 // 0x9cc8c0 — __ZNK3RBX15ServiceProvider6createINS_7Network19InstancePacketCacheEEEPT_v

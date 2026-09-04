@@ -771,92 +771,113 @@ pub fn stub_9c9f74(child_present: bool, is_server_replicator: bool) -> bool {
 // 0x9c9fb0 — __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(RBX::Instance *, RakNet::SystemAddress *, int, const void *)
 #[doc(alias = "RBX::Network::Server::OnReceive(RakNet::Packet *)")]
-pub fn stub_9c9fb0() -> ! {
-    todo!("0x9c9fb0 __ZN3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9c9fb0(
+    packet_byte: u8,
+    factory_present: bool,
+    cheat_handling: bool,
+    create_replicator: &mut dyn FnMut(),
+    send_top: &mut dyn FnMut(),
+    fire_join: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9c9fb0: byte-19 newcomer flow behind logging, factory, and join closures.
+    crate::server::server_on_receive(packet_byte, factory_present, cheat_handling, create_replicator, send_top, fire_join)
 }
 
 // 0x9cade8 — __ZThn92_N3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, RakNet::SystemAddress *, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Server::OnReceive(RakNet::Packet *)")]
-pub fn stub_9cade8() -> ! {
-    todo!("0x9cade8 __ZThn92_N3RBX7Network6Server9OnReceiveEPN6RakNet6PacketE")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9cade8(
+    packet_byte: u8,
+    factory_present: bool,
+    cheat_handling: bool,
+    create_replicator: &mut dyn FnMut(),
+    send_top: &mut dyn FnMut(),
+    fire_join: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9cade8 (ZThn92 OnReceive): adjusts `this`, then OnReceive.
+    crate::server::server_on_receive(packet_byte, factory_present, cheat_handling, create_replicator, send_top, fire_join)
 }
 
 // 0x9cadf8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::~BoundFuncDesc()")]
-pub fn stub_9cadf8() -> ! {
-    todo!("0x9cadf8 __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EED1Ev")
+pub fn stub_9cadf8() {
+    // IDA 0x9cadf8: `BoundFuncDesc<Server, int(int,int)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9cae6c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_9cae6c() -> ! {
-    todo!("0x9cae6c __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EED1Ev")
+pub fn stub_9cae6c() {
+    // IDA 0x9cae6c: `BoundFuncDesc<Server, int(int)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9caed4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFivELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_9caed4() -> ! {
-    todo!("0x9caed4 __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFivELi0EED1Ev")
+pub fn stub_9caed4() {
+    // IDA 0x9caed4: `BoundFuncDesc<Server, int()>` D1; descriptor state stays engine-side.
 }
 
 // 0x9caf1c — __ZNK3RBX7Network6Server7getPortEv
 // type: int __fastcall(RBX::Network::Server *this)
 #[doc(alias = "RBX::Network::Server::getPort(void)const")]
-pub fn stub_9caf1c() -> ! {
-    todo!("0x9caf1c __ZNK3RBX7Network6Server7getPortEv")
+pub fn stub_9caf1c(server: &crate::server::Server) -> u16 {
+    // IDA 0x9caf1c: the bound port, 0 when unbound.
+    server.bound_port()
 }
 
 // 0x9caf24 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6ServerEiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::~PropDescriptor()")]
-pub fn stub_9caf24() -> ! {
-    todo!("0x9caf24 __ZN3RBX10Reflection14PropDescriptorINS_7Network6ServerEiED1Ev")
+pub fn stub_9caf24() {
+    // IDA 0x9caf24: `PropDescriptor<Server, int>` D1; descriptor state stays engine-side.
 }
 
 // 0x9caf48 — __ZN3RBX7Network6Server33setIsPlayerAuthenticationRequiredEb
 // type: int __fastcall(int this, bool)
 #[doc(alias = "RBX::Network::Server::setIsPlayerAuthenticationRequired(bool)")]
-pub fn stub_9caf48() -> ! {
-    todo!("0x9caf48 __ZN3RBX7Network6Server33setIsPlayerAuthenticationRequiredEb")
+pub fn stub_9caf48(server: &mut crate::server::Server, required: bool) {
+    // IDA 0x9caf48: stores the player-authentication gate.
+    server.set_player_authentication_required(required);
 }
 
 // 0x9caf50 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFvbELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::~BoundFuncDesc()")]
-pub fn stub_9caf50() -> ! {
-    todo!("0x9caf50 __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFvbELi1EED1Ev")
+pub fn stub_9caf50() {
+    // IDA 0x9caf50: `BoundFuncDesc<Server, void(bool)>` D1; descriptor state stays engine-side.
 }
 
 // 0x9cafb8 — __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Server,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)> RBX::Network::Server::*>::~EventDesc()")]
-pub fn stub_9cafb8() -> ! {
-    todo!("0x9cafb8 __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_ED1Ev")
+pub fn stub_9cafb8() {
+    // IDA 0x9cafb8: `EventDesc<Server, ...>` D1; descriptor state stays engine-side.
 }
 
 // 0x9cb000 — __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Server,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Server::*>::~EventDesc()")]
-pub fn stub_9cb000() -> ! {
-    todo!("0x9cb000 __ZN3RBX10Reflection9EventDescINS_7Network6ServerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev")
+pub fn stub_9cb000() {
+    // IDA 0x9cb000: `EventDesc<Server, ...>` D1; descriptor state stays engine-side.
 }
 
 // 0x9cb048 — __ZN5boost8functionIFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS3_6ServerEPNS2_15NetworkSettingsEEED1Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "boost::function<rbx_core::SharedPtr<RBX::Network::ServerReplicator> ()(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)>::~function()")]
-pub fn stub_9cb048() -> ! {
-    todo!("0x9cb048 __ZN5boost8functionIFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS3_6ServerEPNS2_15NetworkSettingsEEED1Ev")
+pub fn stub_9cb048() {
+    // IDA 0x9cb048: `boost::function<createReplicator>` D1; functor teardown stays engine-side.
 }
 
 // 0x9cb40c — __ZN5boost10shared_ptrIN3RBX7Network7PlayersEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::Players>::reset(void)")]
-pub fn stub_9cb40c() -> ! {
-    todo!("0x9cb40c __ZN5boost10shared_ptrIN3RBX7Network7PlayersEE5resetEv")
+pub fn stub_9cb40c(server: &mut crate::server::Server) {
+    // IDA 0x9cb40c: `shared_ptr<Players>` reset (the +685 service); the crate drops the player list.
+    server.players = None;
 }
 
 // 0x9cb4ac — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network6ServerENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS8_EENS2_3argILi1EEEEEEEEEvRKT_

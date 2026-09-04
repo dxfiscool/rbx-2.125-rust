@@ -385,22 +385,24 @@ pub fn stub_9b51e8() -> ! {
 // 0x9cb918 — __ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9cb918() -> ! {
-    todo!("0x9cb918 __ZNK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9cb918() -> &'static str {
+    // IDA 0x9cb918: `FactoryProduct<Server>::getClassName` — the `sServer` name.
+    "Server"
 }
 
 // 0x9cb984 — __ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9cb984() -> ! {
-    todo!("0x9cb984 __ZThn32_NK3RBX14FactoryProductINS_7Network6ServerENS1_4PeerELZNS1_7sServerEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9cb984() -> &'static str {
+    // IDA 0x9cb984 (ZThn32 getClassName): adjusts `this`, then getClassName.
+    "Server"
 }
 
 // 0x9ce888 — __ZN3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Network::Peer *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_9ce888() -> ! {
-    todo!("0x9ce888 __ZN3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_9ce888() {
+    // IDA 0x9ce888: `Described<Server>` D1; descriptor state stays engine-side.
 }
 
 // 0x9ce894 — __ZN3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
