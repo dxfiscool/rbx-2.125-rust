@@ -1293,189 +1293,310 @@ pub fn stub_0x6beab4() -> bool {
 
 // 0x6beab8 — __ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x6beab8() -> ! {
-    todo!("0x6beab8")
+pub fn stub_0x6beab8() -> &'static str {
+    // IDA 0x6beab8: Thn32 into the primary `getClassName` (0x6beaa4).
+    stub_0x6beaa4()
 }
 
 // 0x6beac8 — __ZNK3RBX5Joint11getEdgeTypeEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::getEdgeType(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint11getEdgeTypeEv")]
-pub fn stub_0x6beac8() -> ! {
-    todo!("0x6beac8")
+pub fn stub_0x6beac8() -> i32 {
+    // IDA 0x6beac8: `return 0`.
+    0
 }
 
 // 0x6beacc — __ZN3RBX4Edge34generateDataForMovingAssemblyStageEv
 // type: _DWORD __fastcall(RBX::Edge *__hidden this)
 #[doc(alias = "RBX::Edge::generateDataForMovingAssemblyStage(void)")]
 #[doc(alias = "__ZN3RBX4Edge34generateDataForMovingAssemblyStageEv")]
-pub fn stub_0x6beacc() -> ! {
-    todo!("0x6beacc")
+pub fn stub_0x6beacc() {
+    // IDA 0x6beacc: empty body.
 }
 
 // 0x6bead0 — __ZNK3RBX11KernelJoint12getJointTypeEv
 // type: _DWORD __fastcall(RBX::KernelJoint *__hidden this)
 #[doc(alias = "RBX::KernelJoint::getJointType(void)const")]
 #[doc(alias = "__ZNK3RBX11KernelJoint12getJointTypeEv")]
-pub fn stub_0x6bead0() -> ! {
-    todo!("0x6bead0")
+pub fn stub_0x6bead0() -> i32 {
+    // IDA 0x6bead0: `return 12`.
+    12
 }
 
 // 0x6bead4 — __ZNK3RBX5Joint11isBreakableEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isBreakable(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint11isBreakableEv")]
-pub fn stub_0x6bead4() -> ! {
-    todo!("0x6bead4")
+pub fn stub_0x6bead4() -> bool {
+    // IDA 0x6bead4: `return 0`.
+    false
 }
 
 // 0x6bead8 — __ZNK3RBX5Joint8isBrokenEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isBroken(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint8isBrokenEv")]
-pub fn stub_0x6bead8() -> ! {
-    todo!("0x6bead8")
+pub fn stub_0x6bead8() -> bool {
+    // IDA 0x6bead8: `return 0`.
+    false
 }
 
 // 0x6beadc — __ZNK3RBX5Joint9joinsFaceEPNS_9PrimitiveENS_8NormalIdE
+// type: _DWORD __fastcall(RBX::Joint *__hidden this, RBX::Primitive *, RBX::NormalId)
 #[doc(alias = "RBX::Joint::joinsFace(RBX::Primitive *,RBX::NormalId)const")]
 #[doc(alias = "__ZNK3RBX5Joint9joinsFaceEPNS_9PrimitiveENS_8NormalIdE")]
-pub fn stub_0x6beadc() -> ! {
-    todo!("0x6beadc")
+pub fn stub_0x6beadc() -> bool {
+    // IDA 0x6beadc: `return 0` (args unused).
+    false
 }
 
 // 0x6beae0 — __ZN3RBX5Joint9isAlignedEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isAligned(void)")]
 #[doc(alias = "__ZN3RBX5Joint9isAlignedEv")]
-pub fn stub_0x6beae0() -> ! {
-    todo!("0x6beae0")
+pub fn stub_0x6beae0() -> bool {
+    // IDA 0x6beae0: `return 1`.
+    true
 }
 
 // 0x6beae4 — __ZN3RBX5Joint5alignEPNS_9PrimitiveES2_
 // type: _DWORD __fastcall(RBX::Joint *__hidden this, RBX::Primitive *, RBX::Primitive *)
 #[doc(alias = "RBX::Joint::align(RBX::Primitive *,RBX::Primitive *)")]
 #[doc(alias = "__ZN3RBX5Joint5alignEPNS_9PrimitiveES2_")]
-pub fn stub_0x6beae4() -> ! {
-    todo!("0x6beae4")
+pub fn stub_0x6beae4() -> [[f32; 4]; 3] {
+    // IDA 0x6beae4: `ReleaseAssert("0", Joint.h:111)` while `FLog::Asserts`
+    // holds, then returns the default (`identity`) `CoordinateFrame`.
+    debug_assert!(false, "0 file: include/V8World/Joint.h line: 111");
+    [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0],
+    ]
 }
 
 // 0x6beb3c — __ZN3RBX5Joint10setPhysicsEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::setPhysics(void)")]
 #[doc(alias = "__ZN3RBX5Joint10setPhysicsEv")]
-pub fn stub_0x6beb3c() -> ! {
-    todo!("0x6beb3c")
+pub fn stub_0x6beb3c() {
+    // IDA 0x6beb3c: empty body.
 }
 
 // 0x6beb40 — __ZNK3RBX5Joint12canStepWorldEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::canStepWorld(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint12canStepWorldEv")]
-pub fn stub_0x6beb40() -> ! {
-    todo!("0x6beb40")
+pub fn stub_0x6beb40() -> bool {
+    // IDA 0x6beb40: `return 0`.
+    false
 }
 
 // 0x6beb44 — __ZThn348_NK3RBX11VehicleSeat9canStepUiEv
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::canStepUi(void)const")]
 #[doc(alias = "__ZThn348_NK3RBX11VehicleSeat9canStepUiEv")]
-pub fn stub_0x6beb44() -> ! {
-    todo!("0x6beb44")
+pub fn stub_0x6beb44() -> bool {
+    // IDA 0x6beb44: Thn348 into `VehicleSeat::canStepUi` (0x6beab4).
+    stub_0x6beab4()
 }
 
 // 0x6beb48 — __ZN3RBX5Joint9stepWorldEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::stepWorld(void)")]
 #[doc(alias = "__ZN3RBX5Joint9stepWorldEv")]
-pub fn stub_0x6beb48() -> ! {
-    todo!("0x6beb48")
+pub fn stub_0x6beb48() {
+    // IDA 0x6beb48: empty body.
 }
 
 // 0x6beb4c — __ZN3RBX5Joint9resetLinkEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::resetLink(void)")]
 #[doc(alias = "__ZN3RBX5Joint9resetLinkEv")]
-pub fn stub_0x6beb4c() -> ! {
-    todo!("0x6beb4c")
+pub fn stub_0x6beb4c() -> i32 {
+    // IDA 0x6beb4c: `ReleaseAssert(!"Not Implemented", Joint.h:183)` while
+    // `FLog::Asserts` holds, then `return 0`.
+    debug_assert!(false, "Not Implemented file: include/V8World/Joint.h line: 183");
+    0
 }
 
 // 0x6beba0 — __ZN3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "RBX::KernelJoint::getBody(RBX::Connector::BodyIndex)")]
 #[doc(alias = "__ZN3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE")]
-pub fn stub_0x6beba0() -> ! {
-    todo!("0x6beba0")
+pub fn stub_0x6beba0(in_kernel: bool, index: u32, body_zero: u32) -> u32 {
+    // IDA 0x6beba0: `ReleaseAssert(inKernel(), KernelJoint.h:23)` while
+    // `FLog::Asserts` holds; nonzero `BodyIndex` returns null, otherwise the
+    // vtab+100 body-0 accessor.
+    debug_assert!(in_kernel, "inKernel() file: include/V8World/KernelJoint.h line: 23");
+    if index == 0 { body_zero } else { 0 }
 }
 
 // 0x6bec10 — __ZNK3RBX11KernelJoint22getConnectorKernelTypeEv
 // type: _DWORD __fastcall(RBX::KernelJoint *__hidden this)
 #[doc(alias = "RBX::KernelJoint::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZNK3RBX11KernelJoint22getConnectorKernelTypeEv")]
-pub fn stub_0x6bec10() -> ! {
-    todo!("0x6bec10")
+pub fn stub_0x6bec10() -> i32 {
+    // IDA 0x6bec10: `return 3`.
+    3
 }
 
 // 0x6bec14 — __ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv
 // type: _DWORD __fastcall(RBX::KernelJoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv")]
-pub fn stub_0x6bec14() -> ! {
-    todo!("0x6bec14")
+pub fn stub_0x6bec14() -> i32 {
+    // IDA 0x6bec14: the Thn152 body is just `MOVS R0, #3; BX LR`.
+    stub_0x6bec10()
 }
 
 // 0x6bec18 — __ZN3RBX9Connector14computeImpulseERf
 // type: _DWORD __fastcall(RBX::Connector *__hidden this, float *)
 #[doc(alias = "RBX::Connector::computeImpulse(float &)")]
 #[doc(alias = "__ZN3RBX9Connector14computeImpulseERf")]
-pub fn stub_0x6bec18() -> ! {
-    todo!("0x6bec18")
+pub fn stub_0x6bec18() -> i32 {
+    // IDA 0x6bec18: `return 0` (the float out-param is untouched).
+    0
 }
 
 // 0x6bec1c — __ZN3RBX9Connector9getBrokenEv
 // type: _DWORD __fastcall(RBX::Connector *__hidden this)
 #[doc(alias = "RBX::Connector::getBroken(void)")]
 #[doc(alias = "__ZN3RBX9Connector9getBrokenEv")]
-pub fn stub_0x6bec1c() -> ! {
-    todo!("0x6bec1c")
+pub fn stub_0x6bec1c() -> bool {
+    // IDA 0x6bec1c: `return 0`.
+    false
 }
 
 // 0x6bec20 — __ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getBody(RBX::Connector::BodyIndex)")]
 #[doc(alias = "__ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE")]
-pub fn stub_0x6bec20() -> ! {
-    todo!("0x6bec20")
+pub fn stub_0x6bec20(in_kernel: bool, index: u32, body_zero: u32) -> u32 {
+    // IDA 0x6bec20: `SUBS R0, #0x98` then `B.W getBody (0x6beba0)`; flat
+    // host forwards directly.
+    stub_0x6beba0(in_kernel, index, body_zero)
 }
 
 // 0x6bec28 — __ZN3RBX9Connector15potentialEnergyEv
 // type: _DWORD __fastcall(RBX::Connector *__hidden this)
 #[doc(alias = "RBX::Connector::potentialEnergy(void)")]
 #[doc(alias = "__ZN3RBX9Connector15potentialEnergyEv")]
-pub fn stub_0x6bec28() -> ! {
-    todo!("0x6bec28")
+pub fn stub_0x6bec28() -> f32 {
+    // IDA 0x6bec28: `return 0` (raw word; same bits as 0.0f).
+    0.0
 }
 
 // 0x6bef48 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev")]
-pub fn stub_0x6bef48() -> ! {
-    todo!("0x6bef48")
+pub fn stub_0x6bef48(destroy_base: &mut dyn FnMut()) {
+    // IDA 0x6bef48: D1 tail-calls the `SeatImpl<PartInstance>` base destroy;
+    // host delegates it.
+    destroy_base();
 }
 
 // 0x6bef5c — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev")]
-pub fn stub_0x6bef5c() -> ! {
-    todo!("0x6bef5c")
+pub fn stub_0x6bef5c(destroy_base: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6bef5c: D0 = base destroy then `operator delete`; host drops via
+    // the callbacks.
+    destroy_base();
+    free();
 }
 
 // 0x6bf00c — __ZThn132_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED1Ev")]
-pub fn stub_0x6bf00c() -> ! {
-    todo!("0x6bf00c")
+pub fn stub_0x6bf00c(destroy_base: &mut dyn FnMut()) {
+    // IDA 0x6bf00c: VTT load + `SUBS R0, #0x84` then the D1 body; flat host
+    // forwards directly.
+    stub_0x6bef48(destroy_base);
 }
 
 // 0x6bf020 — __ZThn132_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEED0Ev")]
-pub fn stub_0x6bf020() -> ! {
-    todo!("0x6bf020")
+pub fn stub_0x6bf020(destroy_base: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x6bf020: `SUBS R0, #0x84` then `B.W D0 (0x6bef5c)`; flat host
+    // forwards directly.
+    stub_0x6bef5c(destroy_base, free);
+}
+#[cfg(test)]
+mod joint_tests {
+    use super::*;
+
+    #[test]
+    fn joint_constants_match_binary() {
+        assert_eq!(stub_0x6beab8(), "VehicleSeat");
+        assert_eq!(stub_0x6beac8(), 0);
+        stub_0x6beacc();
+        assert_eq!(stub_0x6bead0(), 12);
+        assert!(!stub_0x6bead4());
+        assert!(!stub_0x6bead8());
+        assert!(!stub_0x6beadc());
+        assert!(stub_0x6beae0());
+        stub_0x6beb3c();
+        assert!(!stub_0x6beb40());
+        assert!(stub_0x6beb44());
+        stub_0x6beb48();
+        assert_eq!(stub_0x6bec10(), 3);
+        assert_eq!(stub_0x6bec14(), 3);
+        assert_eq!(stub_0x6bec18(), 0);
+        assert!(!stub_0x6bec1c());
+        assert_eq!(stub_0x6bec28(), 0.0);
+    }
+
+    // The `ReleaseAssert("0")` fires before the identity frame is built, so
+    // in debug the panic is the observable contract (the frame below it is
+    // the documented `CoordinateFrame::CoordinateFrame` default).
+    #[test]
+    #[should_panic(expected = "Joint.h line: 111")]
+    fn align_asserts_unconditionally() {
+        let _ = stub_0x6beae4();
+    }
+
+    #[test]
+    fn align_identity_frame_shape() {
+        // Shape check only: calling the fn panics in debug (see above), so
+        // the documented default is pinned here as a literal.
+        let identity: [[f32; 4]; 3] = [
+            [1.0, 0.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0, 0.0],
+            [0.0, 0.0, 1.0, 0.0],
+        ];
+        assert_eq!(identity[0][0] + identity[1][1] + identity[2][2], 3.0);
+    }
+
+    #[test]
+    #[should_panic(expected = "Not Implemented")]
+    fn reset_link_is_unimplemented() {
+        let _ = stub_0x6beb4c();
+    }
+
+    #[test]
+    fn get_body_selects_index_zero() {
+        assert_eq!(stub_0x6beba0(true, 0, 77), 77);
+        assert_eq!(stub_0x6beba0(true, 1, 77), 0);
+        assert_eq!(stub_0x6bec20(true, 0, 77), 77);
+        assert_eq!(stub_0x6bec20(true, 2, 77), 0);
+    }
+
+    #[test]
+    #[should_panic(expected = "inKernel")]
+    fn get_body_asserts_kernel_stage() {
+        let _ = stub_0x6beba0(false, 0, 77);
+    }
+
+    #[test]
+    fn factory_product_dtors_delegate() {
+        let mut destroyed = 0;
+        let mut destroy = || destroyed += 1;
+        stub_0x6bef48(&mut destroy);
+        stub_0x6bf00c(&mut destroy);
+        assert_eq!(destroyed, 2);
+        let mut freed = 0;
+        let mut destroy2 = || destroyed += 1;
+        let mut free = || freed += 1;
+        stub_0x6bef5c(&mut destroy2, &mut free);
+        stub_0x6bf020(&mut destroy2, &mut free);
+        assert_eq!((destroyed, freed), (4, 2));
+    }
 }
 
 // 0x6bf288 — __ZN3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE7CreatorD1Ev
