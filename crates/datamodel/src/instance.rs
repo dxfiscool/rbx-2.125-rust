@@ -1819,6 +1819,31 @@ pub struct Frame {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Rocket` (IDA `0x5567bc`): the rocket with the
+/// `PartInstance` target behind `setTarget`; the remaining `BodyMover` base
+/// lands with the joint batch.
+#[derive(Default)]
+pub struct Rocket {
+    pub target: Option<SharedPtr<PartInstance>>,
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<Rocket, PartInstance>`
+/// (IDA `0x559448`): the conditionally-deleted heap payload plus attribute
+/// flags. Twin of `PVRefPropDescriptor`.
+#[derive(Default)]
+pub struct RocketRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// Rust model of `RBX::BodyThrust` (IDA `0x5632a4`): the body-thrust leaf;
+/// members land with the joint batch.
+#[derive(Default)]
+pub struct BodyThrust {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::PhysicsSettings` (IDA `0x525000`): the physics-settings
 /// leaf; members land with the settings batch.
 #[derive(Default)]
@@ -34920,21 +34945,42 @@ pub fn stub_0x54dee8() -> ! {
 
 // 0x55483c — __ZN3RBX15ServiceProvider6createINS_13ScriptContextEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ScriptContext * RBX::ServiceProvider::create<RBX::ScriptContext>(RBX::Instance const*)")]
-pub fn stub_0x55483c() -> ! {
-    todo!("0x55483c RBX::ScriptContext * RBX::ServiceProvider::create<RBX::ScriptContext>(RBX::Instance const*)")
+pub fn stub_0x55483c(instance: *const Instance) -> Option<SharedPtr<ScriptContext>> {
+    // IDA 0x55483c: `ServiceProvider::create<ScriptContext>` — provider
+    // lookup, null yields empty, else default-construct + adopt. Same shape
+    // as 0x52d218.
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(ScriptContext::default()))
 }
 
 // 0x554b04 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()
-pub fn stub_0x554b04() -> ! {
-    todo!("0x554b04 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")
+pub fn stub_0x554b04(_desc: *mut GuiCenterDialogDesc) {
+    // IDA 0x554b04: `BoundFuncDesc<GuiService, (Instance, ...)>::D2` —
+    // memberwise teardown of the base subobject; dropping the box is the same
+    // release. Same shape as 0x544b4c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x556780 — __ZNK3RBX9BodyMover12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::BodyMover::askSetParent(RBX::Instance const*)const")]
-pub fn stub_0x556780() -> ! {
-    todo!("0x556780 RBX::BodyMover::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x556780(parent: *const Instance) -> bool {
+    // IDA 0x556780: null parent returns false (disasm 0x556784-0x556790);
+    // otherwise the parent's `classDescriptor` is checked against the
+    // `PartInstance` described descriptor — a body mover may only parent
+    // under a Part. Same shape as 0x4a9668.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x5623c4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -34952,92 +34998,132 @@ pub fn stub_0x5624a4() -> ! {
 // 0x562ad0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6RocketEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Rocket> RBX::Creatable<RBX::Instance>::create<RBX::Rocket>(void)")]
 // was: boost::shared_ptr<RBX::Rocket> RBX::Creatable<RBX::Instance>::create<RBX::Rocket>(void)
-pub fn stub_0x562ad0() -> ! {
-    todo!("0x562ad0 boost::shared_ptr<RBX::Rocket> RBX::Creatable<RBX::Instance>::create<RBX::Rocket>(void)")
+pub fn stub_0x562ad0() -> SharedPtr<Rocket> {
+    // IDA 0x562ad0: `Creatable::create<Rocket>` — `operator new` + default
+    // ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Rocket::default())
 }
 
 // 0x562b84 — __ZN5boost10shared_ptrIN3RBX6RocketEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Rocket>::shared_ptr<RBX::Rocket,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Rocket>::shared_ptr<RBX::Rocket,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x562b84() -> ! {
-    todo!("0x562b84 boost::shared_ptr<RBX::Rocket>::shared_ptr<RBX::Rocket,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x562b84(ptr: *mut Rocket, _deleter: CreatableInstanceDeleter) -> SharedPtr<Rocket> {
+    // IDA 0x562b84: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Rocket::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x562d34 — __ZN5boost6detail12shared_countC2IPN3RBX6RocketENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x562d34() -> ! {
-    todo!("0x562d34 boost::detail::shared_count::shared_count<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x562d34(ptr: *mut Rocket, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Rocket, CreatableInstanceDeleter> {
+    // IDA 0x562d34: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x562e3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RocketENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x562e3c() -> ! {
-    todo!("0x562e3c boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x562e3c(_block: *mut ControlBlockPd<Rocket, CreatableInstanceDeleter>) {
+    // IDA 0x562e3c: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x562e40 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RocketENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x562e40() -> ! {
-    todo!("0x562e40 boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x562e40(block: *mut ControlBlockPd<Rocket, CreatableInstanceDeleter>) {
+    // IDA 0x562e40: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x562e44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RocketENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x562e44() -> ! {
-    todo!("0x562e44 boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x562e44(_block: *mut ControlBlockPd<Rocket, CreatableInstanceDeleter>) {
+    // IDA 0x562e44: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x562e64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RocketENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x562e64() -> ! {
-    todo!("0x562e64 boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x562e64(block: *const ControlBlockPd<Rocket, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x562e64: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x562e7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RocketENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x562e7c() -> ! {
-    todo!("0x562e7c boost::detail::sp_counted_impl_pd<RBX::Rocket *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x562e7c(block: *const ControlBlockPd<Rocket, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x562e7c: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5632a4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10BodyThrustEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::BodyThrust> RBX::Creatable<RBX::Instance>::create<RBX::BodyThrust>(void)")]
 // was: boost::shared_ptr<RBX::BodyThrust> RBX::Creatable<RBX::Instance>::create<RBX::BodyThrust>(void)
-pub fn stub_0x5632a4() -> ! {
-    todo!("0x5632a4 boost::shared_ptr<RBX::BodyThrust> RBX::Creatable<RBX::Instance>::create<RBX::BodyThrust>(void)")
+pub fn stub_0x5632a4() -> SharedPtr<BodyThrust> {
+    // IDA 0x5632a4: `Creatable::create<BodyThrust>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(BodyThrust::default())
 }
 
 // 0x563358 — __ZN5boost10shared_ptrIN3RBX10BodyThrustEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BodyThrust>::shared_ptr<RBX::BodyThrust,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::BodyThrust>::shared_ptr<RBX::BodyThrust,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x563358() -> ! {
-    todo!("0x563358 boost::shared_ptr<RBX::BodyThrust>::shared_ptr<RBX::BodyThrust,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x563358(ptr: *mut BodyThrust, _deleter: CreatableInstanceDeleter) -> SharedPtr<BodyThrust> {
+    // IDA 0x563358: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(BodyThrust::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x563508 — __ZN5boost6detail12shared_countC2IPN3RBX10BodyThrustENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x563508() -> ! {
-    todo!("0x563508 boost::detail::shared_count::shared_count<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x563508(ptr: *mut BodyThrust, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<BodyThrust, CreatableInstanceDeleter> {
+    // IDA 0x563508: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x563610 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x563610() -> ! {
-    todo!("0x563610 boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x563610(_block: *mut ControlBlockPd<BodyThrust, CreatableInstanceDeleter>) {
+    // IDA 0x563610: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x563614 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x563614() -> ! {
-    todo!("0x563614 boost::detail::sp_counted_impl_pd<RBX::BodyThrust *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x563614(block: *mut ControlBlockPd<BodyThrust, CreatableInstanceDeleter>) {
+    // IDA 0x563614: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x563618 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyThrustENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -36186,15 +36272,25 @@ pub fn stub_0x5906f8() -> ! {
 // 0x5567bc — __ZN3RBX6Rocket9setTargetEPNS_12PartInstanceE
 #[doc(alias = "RBX::Rocket::setTarget(RBX::PartInstance *)")]
 // was: RBX::Rocket::setTarget(RBX::PartInstance *)
-pub fn stub_0x5567bc() -> ! {
-    todo!("0x5567bc RBX::Rocket::setTarget(RBX::PartInstance *)")
+pub fn stub_0x5567bc(rocket: &mut Rocket, target: &SharedPtr<PartInstance>) {
+    // IDA 0x5567bc (`Rocket::setTarget`, decompiled head): stores the
+    // target part and raises the `Target` property notification. The
+    // notification collapses here; the store is the observable state change.
+    // Same shape as 0x4a94fc.
+    rocket.target = Some(target.clone());
 }
 
 // 0x559448 — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()
-pub fn stub_0x559448() -> ! {
-    todo!("0x559448 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x559448(this: *mut RocketRefPropDescriptor) {
+    // IDA 0x559448: `RefPropDescriptor<Rocket, PartInstance>::D1` — vtable
+    // resets (compiler-managed) plus the conditional `operator delete` of
+    // the heap payload. Same shape as 0x3940e0.
+    // SAFETY: `this` must point to a valid `RocketRefPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x561efc — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -36207,22 +36303,34 @@ pub fn stub_0x561efc() -> ! {
 // 0x561fa0 — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()
-pub fn stub_0x561fa0() -> ! {
-    todo!("0x561fa0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x561fa0(this: *mut RocketRefPropDescriptor) {
+    // IDA 0x561fa0: `RefPropDescriptor<Rocket, PartInstance>::D0` — the D1
+    // body plus `operator delete`; the box reclaim is both. Same shape as
+    // 0x395114.
+    // SAFETY: `this` must be a live box pointer that is never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0x561fd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isReadOnly(void)const
-pub fn stub_0x561fd0() -> ! {
-    todo!("0x561fd0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isReadOnly(void)const")
+pub fn stub_0x561fd0(this: *const RocketRefPropDescriptor) -> bool {
+    // IDA 0x561fd0: reads the read-only flag out of the attribute word.
+    // Same shape as 0x395144.
+    // SAFETY: `this` must point to a valid `RocketRefPropDescriptor`.
+    unsafe { (*this).read_only }
 }
 
 // 0x561fe0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isWriteOnly(void)const
-pub fn stub_0x561fe0() -> ! {
-    todo!("0x561fe0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isWriteOnly(void)const")
+pub fn stub_0x561fe0(this: *const RocketRefPropDescriptor) -> bool {
+    // IDA 0x561fe0: reads the write-only flag out of the attribute word.
+    // Same shape as 0x395154.
+    // SAFETY: `this` must point to a valid `RocketRefPropDescriptor`.
+    unsafe { (*this).write_only }
 }
 
 // 0x561ff0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
