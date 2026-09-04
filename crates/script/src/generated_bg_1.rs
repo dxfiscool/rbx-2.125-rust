@@ -101,6 +101,35 @@ pub struct LoginViewState {
     pub login_attempt: Option<(String, String)>,
     /// Fields sent `endEditing:` (IDA 0x1f104/0x1f122).
     pub fields_editing_ended: bool,
+    /// `segueToHomeViewController:` requested (IDA 0x1f854..0x1f8a4).
+    pub home_segue_requested: bool,
+    /// Home VC instantiated from the storyboard (IDA 0x1f8e6..0x1f954).
+    pub home_instantiated: bool,
+    /// Home VC must segue after load (IDA 0x1f968/0x1fb7a).
+    pub home_segue_after_load: bool,
+    /// `robloxLogo.alpha = 0` fade step (IDA 0x1fa2a).
+    pub logo_dimmed: bool,
+    /// Foreground/background initial-X snapshots (IDA 0x1fa9c..0x1fb62).
+    pub home_fg_x: Option<f32>,
+    pub home_bg_x: Option<f32>,
+    /// Home VC presented (IDA 0x1fbd6).
+    pub home_presented: bool,
+    /// `buttonView.alpha = 1.0` restore step (IDA 0x1fc72).
+    pub button_alpha_one: bool,
+    /// `setLoginPlaceId:` value (IDA 0x1fe70..0x1ff2c).
+    pub login_place_id: Option<i32>,
+    /// `prepareForSegue:` resolved nav URL (IDA 0x1fdf0..0x1fe04).
+    pub nav_web_url: Option<String>,
+    /// Preloaded web view attached (IDA 0x1fe24..0x1fe64).
+    pub preloaded_webview: bool,
+}
+
+/// `segueToHomeViewController:` block captures (`self`, home VC; IDA
+/// 0x1f9d0..0x1f9f8, helpers 0x1fca4..0x1fd1e).
+#[derive(Debug, Clone, Default)]
+pub struct SegueCaptures {
+    pub owner: Option<u32>,
+    pub home: Option<u32>,
 }
 
 /// `gotLoginFailedNotification:` block captures (`self`, error string;
