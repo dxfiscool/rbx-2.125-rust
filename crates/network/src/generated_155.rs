@@ -437,100 +437,157 @@ pub fn stub_2512c(threshold: i32, part_count: Option<i32>, place_id: i32) -> Opt
     }
 }
 
+/// Host wiring established by `-[PlaceLauncher setupDatamodelConnections:]` (IDA 0x25e00).
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct DatamodelConnections {
+    pub open_url_window: bool,
+    pub players_child_added: bool,
+    pub prompt_login: bool,
+}
+
+/// Host work items of `-[PlaceLauncher finishGameSetup:gameViewController:]` (IDA 0x25498).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct GameViewSetup {
+    pub game_view_id: String,
+    pub overlay_view_id: String,
+    pub screen_size: (u32, u32),
+    pub finish_now: bool,
+    pub has_overlay: bool,
+}
+
+/// Host outcome of `-[PlaceLauncher setLastNonGameController:]` (IDA 0x26170).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum NonGameControllerSet {
+    Cleared,
+    Prepared,
+    PrepareFailed,
+}
+
+/// Host game object selected by `-[PlaceLauncher setupGame:unsecuredGame:isApp:]` (IDA 0x26558).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum GameKind {
+    UnsecuredStudio,
+    SecurePlayer,
+}
+
 // 0x253cc — ___copy_helper_block_98
 // demangled: ___copy_helper_block_98
 // type: 
 #[doc(alias = "___copy_helper_block_98")]
-pub fn stub_253cc() -> ! {
-    todo!("0x253cc ___copy_helper_block_98")
+pub fn stub_253cc(dst: u32, src: u32) {
+    // IDA 0x253cc: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier.
+    let _ = (dst, src);
 }
 
 // 0x253d8 — ___destroy_helper_block_99
 // demangled: ___destroy_helper_block_99
 // type: 
 #[doc(alias = "___destroy_helper_block_99")]
-pub fn stub_253d8() -> ! {
-    todo!("0x253d8 ___destroy_helper_block_99")
+pub fn stub_253d8(handle: u32) {
+    // IDA 0x253d8: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier.
+    let _ = handle;
 }
 
 // 0x253e0 — -[PlaceLauncher placeDidFinishLoading]
 // demangled: -[PlaceLauncher placeDidFinishLoading]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher placeDidFinishLoading]")]
-pub fn stub_253e0() -> ! {
-    todo!("0x253e0 -[PlaceLauncher placeDidFinishLoading]")
+pub fn stub_253e0(state: &PlaceLauncherState) -> &str {
+    // IDA 0x253e0: posts gameFinishedLoadingNotification (0x25400..0x25424), then checkPlacePartCount (0x2543c) — returns the posted name; caller runs stub_25090 next.
+    &state.game_finished_loading_notification
 }
 
 // 0x25440 — -[PlaceLauncher deleteRobloxView]
 // demangled: -[PlaceLauncher deleteRobloxView]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher deleteRobloxView]")]
-pub fn stub_25440() -> ! {
-    todo!("0x25440 -[PlaceLauncher deleteRobloxView]")
+pub fn stub_25440(has_view: bool) -> bool {
+    // IDA 0x25440: non-nil rbxView zeroed + destroyed (0x2545a..0x25464), free-memory checker stopped (0x25480..0x25494) — returns whether a view was torn down.
+    has_view
 }
 
 // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
 // demangled: -[PlaceLauncher finishGameSetup:gameViewController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, id)
 #[doc(alias = "-[PlaceLauncher finishGameSetup:gameViewController:]")]
-pub fn stub_25498() -> ! {
-    todo!("0x25498 -[PlaceLauncher finishGameSetup:gameViewController:]")
+pub fn stub_25498(game_window: u64, overlay_window: u64, screen: Option<(f32, f32)>, datamodel_loaded: bool, overlay_present: bool) -> GameViewSetup {
+    // IDA 0x25498: stringstream window-handle ids (0x254e8..0x255f8), screen bounds or zero (0x25628..0x25670), RobloxView::create_view (0x256d2); loaded datamodel calls placeDidFinishLoading directly, else connects it as the loaded slot (0x25730..0x257e8); setupDatamodelConnections for datamodel + overlay when present (0x257f2..0x25898).
+    let (w, h) = screen.unwrap_or((0.0, 0.0));
+    GameViewSetup { game_view_id: game_window.to_string(), overlay_view_id: overlay_window.to_string(), screen_size: (w as u32, h as u32), finish_now: datamodel_loaded, has_overlay: overlay_present }
 }
 
 // 0x25e00 — -[PlaceLauncher setupDatamodelConnections:]
 // demangled: -[PlaceLauncher setupDatamodelConnections:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[PlaceLauncher setupDatamodelConnections:]")]
-pub fn stub_25e00() -> ! {
-    todo!("0x25e00 -[PlaceLauncher setupDatamodelConnections:]")
+pub fn stub_25e00(has_gui_service: bool, login_service_created: bool) -> DatamodelConnections {
+    // IDA 0x25e00: GuiService present connects Ogre openUrlWindow: (0x25e2a..0x25eea); main-queue block starts the free-memory checker (0x25f04); Players childAdded: connected (0x25f18..0x25fcc); created LoginService connects handlePromptLoginSignal (0x25fd2..0x2606c).
+    DatamodelConnections { open_url_window: has_gui_service, players_child_added: true, prompt_login: login_service_created }
 }
 
 // 0x2613c — ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
 // demangled: ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")]
-pub fn stub_2613c() -> ! {
-    todo!("0x2613c ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")
+pub fn stub_2613c() -> bool {
+    // IDA 0x2613c: main-queue block starts the free-memory checker (0x26158..0x2616c) — returns whether the checker was started.
+    true
 }
 
 // 0x26170 — -[PlaceLauncher setLastNonGameController:]
 // demangled: -[PlaceLauncher setLastNonGameController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher setLastNonGameController:]")]
-pub fn stub_26170() -> ! {
-    todo!("0x26170 -[PlaceLauncher setLastNonGameController:]")
+pub fn stub_26170(has_controller: bool, game_ready: bool) -> NonGameControllerSet {
+    // IDA 0x26170: controller forwarded to MainViewController (0x26190..0x261a2); non-nil runs prepareGame, whose failure runs handleStartGameFailure (0x261a8..0x261d4).
+    if !has_controller {
+        NonGameControllerSet::Cleared
+    } else if game_ready {
+        NonGameControllerSet::Prepared
+    } else {
+        NonGameControllerSet::PrepareFailed
+    }
 }
 
 // 0x261d8 — -[PlaceLauncher createGame:presentGameAutomatically:]
 // demangled: -[PlaceLauncher createGame:presentGameAutomatically:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher createGame:presentGameAutomatically:]")]
-pub fn stub_261d8() -> ! {
-    todo!("0x261d8 -[PlaceLauncher createGame:presentGameAutomatically:]")
+pub fn stub_261d8(state: &mut PlaceLauncherState, has_host_controller: bool) -> bool {
+    // IDA 0x261d8: clears hasReceivedMemoryWarning + deletes the old view (0x26212..0x26216); with a host controller the caller allocs the game VC, runs finishGameSetup and submits initControlView (0x26246..0x2638a) — returns whether creation proceeds.
+    state.has_received_memory_warning = false;
+    has_host_controller
 }
 
 // 0x2643c — __ZL15initControlViewP10RobloxViewaPN3RBX18FunctionMarshallerE
 // demangled: initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)
 // type: _DWORD __fastcall(RobloxView *, signed __int8, RBX::FunctionMarshaller *)
 #[doc(alias = "initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")]
-pub fn stub_2643c() -> ! {
-    todo!("0x2643c initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")
+pub fn stub_2643c(is_app: bool) -> bool {
+    // IDA 0x2643c: binds initControlViewHelper(view, isApp) and executes it on the marshaller (0x26478..0x264b8) — returns the captured flag.
+    is_app
 }
 
 // 0x26520 — -[PlaceLauncher setupGame:isApp:]
 // demangled: -[PlaceLauncher setupGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupGame:isApp:]")]
-pub fn stub_26520() -> ! {
-    todo!("0x26520 -[PlaceLauncher setupGame:isApp:]")
+pub fn stub_26520(has_launcher: bool) -> bool {
+    // IDA 0x26520: forwards to setupGame:unsecuredGame:0 isApp: (0x26544); nil self yields a nil game (0x2654c) — returns whether setup proceeds.
+    has_launcher
 }
 
 // 0x26558 — -[PlaceLauncher setupGame:unsecuredGame:isApp:]
 // demangled: -[PlaceLauncher setupGame:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]")]
-pub fn stub_26558() -> ! {
-    todo!("0x26558 -[PlaceLauncher setupGame:unsecuredGame:isApp:]")
+pub fn stub_26558(already_playing: bool, unsecured: bool, is_app: bool) -> Option<(GameKind, bool)> {
+    // IDA 0x26558: already playing yields a nil game (0x26594..0x265bc); else ClientAppSettings init + iOSAppSettings fetch (0x265ca..0x265ec), forced settings read (0x26610), idle timer disabled (0x26642), playing=1 + setLastNonGameController (0x26650..0x2665c); UnsecuredStudioGame vs SecurePlayerGame on a5 (0x2666e..0x266ec).
+    if already_playing {
+        None
+    } else {
+        Some((if unsecured { GameKind::UnsecuredStudio } else { GameKind::SecurePlayer }, is_app))
+    }
 }
 
 // 0x26768 — -[PlaceLauncher presentGameViewController]
