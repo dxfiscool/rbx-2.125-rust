@@ -81,14 +81,111 @@ pub struct LocklessUint32 {
 pub struct DataBlockEncryptor {
     pub key: [u8; 16],
 }
+/// `rbx::signals::signal<void ()(RakNet::SystemAddress const&,
+/// boost::shared_ptr<RakNet::BitStream> const&, std::string const&,
+/// std::string const&)>::slot` for the Replicator data path (IDA
+/// 0xb21844..0xb220c0): the callable binds
+/// `mf4 Replicator::member(SystemAddress, BitStream, string, string)`.
+/// The intrusive refcounts are `Arc` bookkeeping via [`SharedPtr`];
+/// `signal_linked` mirrors the +12 owner link read by `connected`
+/// (IDA 0xb21bf4: `*(_DWORD *)(a1 + 12) != 0`), and `chained` the +8
+/// next link spliced by `remove` (IDA 0xb21cdc..0xb21cf2).
+#[derive(Clone, Debug, Default)]
+pub struct ReplicatorDataSlot {
+    pub signal_linked: bool,
+    pub chained: Option<SharedPtr<ReplicatorDataSlot>>,
+}
+
+/// `rbx::callable<slot, bind_t<mf4 Replicator, ...>>` (IDA 0xb21bf8):
+/// the bound slot link; the member-function dispatch (IDA
+/// 0xb21bfe..0xb21c26) is a plain call here (AGENTS.md §4: bind →
+/// closure).
+#[derive(Clone, Debug, Default)]
+pub struct ReplicatorDataCallable {
+    pub slot: Option<SharedPtr<ReplicatorDataSlot>>,
+}
+
+/// `rbx::safe_queue<timestamped_safe_queue_item<RakNet::Packet *>>`
+/// (IDA 0xb35474): deque of timestamped packets behind the queue mutex
+/// (locking stays engine-side); map growth is `VecDeque` growth here.
+#[derive(Clone, Debug, Default)]
+pub struct PacketQueue {
+    pub queue: std::collections::VecDeque<crate::replicator::TimestampedPacket>,
+}
+
+/// `RBX::Network::Replicator::JoinDataItem` (IDA 0xb34060): paced join
+/// payload writer. `send_bytes_per_step` (+32) must stay positive (IDA
+/// 0xb34076..0xb340b4); `writes` counts `write` calls (+36);
+/// `pending_instances` is the unwritten instance tail whose emptiness the
+/// original reports via `*(this+6) == this+24` (IDA 0xb34132). Item bytes
+/// stay engine-side.
+#[derive(Clone, Debug, Default)]
+pub struct JoinDataItem {
+    pub send_bytes_per_step: i32,
+    pub writes: u32,
+    pub pending_instances: u32,
+}
+
+/// `RBX::Reflection::Variant` doubles held by the persistent store (IDA
+/// 0xb36ae0..0xb374c8): only the `double` holder appears on this path
+/// (the `typeinfo for'double` checks, IDA 0xb36d98/0xb37588), so the
+/// crate keeps just the number.
+#[derive(Clone, Debug, PartialEq)]
+pub enum StoredValue {
+    Number(f64),
+}
+
+/// `RBX::Network::PersistentDataStore` (IDA 0xb36628..0xb374c8):
+/// string→variant value map (`std::map` → `BTreeMap`, AGENTS.md §4) with
+/// the running complexity total at +32 (`complexity_used`) and its cap at
+/// +36 (`complexity_limit`), plus the leaderboard dirty flag at +28
+/// cleared by `saveLeaderboard` (IDA 0xb36b18).
+#[derive(Clone, Debug, Default)]
+pub struct PersistentDataStore {
+    pub values: std::collections::BTreeMap<String, StoredValue>,
+    pub complexity_used: u32,
+    pub complexity_limit: u32,
+    pub leaderboard_dirty: bool,
+}
+
+/// `RBX::Network::computeLimit(Variant const&)` (IDA 0xb3745a/0xb36e7a):
+/// per-value complexity cost; the real per-Variant sizing stays
+/// engine-side, so each stored value costs one unit here.
+fn compute_limit(_value: &StoredValue) -> u32 {
+    1
+}
+
+/// `PersistentDataStore::serializeValueMap` (IDA 0xb367d8):
+/// deterministic `key=value` framing of the value map; returns the bytes
+/// appended. The engine-side binary encoding stays engine-side.
+fn serialize_value_map(map: &std::collections::BTreeMap<String, StoredValue>, out: &mut String) -> usize {
+    let base = out.len();
+    for (key, value) in map {
+        let StoredValue::Number(number) = value;
+        out.push_str(key);
+        out.push('=');
+        out.push_str(&number.to_string());
+        out.push('\n');
+    }
+    out.len() - base
+}
 
 // 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 // type: int32_t **__fastcall(int32_t **, int32_t *)
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_")]
-pub fn stub_0xb21844() -> ! {
-    todo!("0xb21844 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
+pub fn stub_0xb21844(
+    slot: &mut Option<SharedPtr<ReplicatorDataSlot>>,
+    next: Option<SharedPtr<ReplicatorDataSlot>>,
+) {
+ // IDA 0xb21844: addrefs the incoming slot (`OSAtomicAdd32(1)`,
+ // 0xb2185c, with the `c->strong < max() - 10` overflow assert,
+ // intrusive_ptr_target.h:184), stores it, then releases the old slot
+ // (destroying plus `free` at zero, 0xb218b8..0xb218ec). The counts are
+ // `Arc` bookkeeping here: moving `next` retains it and dropping the old
+ // value releases it (`Arc::clone` aborts on overflow the same way).
+    *slot = next;
 }
 
 // 0xb218f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
@@ -96,8 +193,14 @@ pub fn stub_0xb21844() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_")]
-pub fn stub_0xb218f8() -> ! {
-    todo!("0xb218f8 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
+pub fn stub_0xb218f8(
+    slot: &mut Option<SharedPtr<ReplicatorDataSlot>>,
+    next: &Option<SharedPtr<ReplicatorDataSlot>>,
+) {
+ // IDA 0xb218f8: the `const&` overload of the above — same addref
+ // (through the source intrusive pointer, 0xb2190e..0xb21966), store,
+ // and old-slot release (0xb2196a..0xb219a8).
+    *slot = next.clone();
 }
 
 // 0xb21bec — __ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv
@@ -105,8 +208,9 @@ pub fn stub_0xb218f8() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv")]
-pub fn stub_0xb21bec() -> ! {
-    todo!("0xb21bec rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::connected(void)const")
+pub fn stub_0xb21bec(slot: &ReplicatorDataSlot) -> bool {
+ // IDA 0xb21bec: reports `*(_DWORD *)(a1 + 12) != 0` — the +12 signal link.
+    slot.signal_linked
 }
 
 // 0xb21bf8 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
@@ -114,8 +218,18 @@ pub fn stub_0xb21bec() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")]
-pub fn stub_0xb21bf8() -> ! {
-    todo!("0xb21bf8 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")
+pub fn stub_0xb21bf8(
+    addr: &crate::socket::SystemAddress,
+    stream: &crate::bitstream::BitStream,
+    first: &str,
+    second: &str,
+    invoke: &mut dyn FnMut(&crate::socket::SystemAddress, &crate::bitstream::BitStream, &str, &str),
+) {
+ // IDA 0xb21bf8: resolves the member-function pointer through the vtable
+ // slot (`a1[4]`, adjusted `this` at `a1[6] + (v1 >> 1)` with the thunk
+ // bit, 0xb21bfe..0xb21c1a) and calls it with the four args; the bound
+ // Replicator target is captured by `invoke`.
+    invoke(addr, stream, first, second);
 }
 
 // 0xb21c28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
@@ -123,8 +237,17 @@ pub fn stub_0xb21bf8() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)"]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")]
-pub fn stub_0xb21c28() -> ! {
-    todo!("0xb21c28 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")
+pub fn stub_0xb21c28(
+    addr: &crate::socket::SystemAddress,
+    stream: &crate::bitstream::BitStream,
+    first: &str,
+    second: &str,
+    invoke: &mut dyn FnMut(&crate::socket::SystemAddress, &crate::bitstream::BitStream, &str, &str),
+) {
+ // IDA 0xb21c28: non-virtual thunk for the above — same dispatch after a
+ // -4 `this` adjustment (`a1[3]`/`a1[5]` instead of `a1[4]`/`a1[6]`,
+ // 0xb21c2e..0xb21c56), so it forwards.
+    stub_0xb21bf8(addr, stream, first, second, invoke);
 }
 
 // 0xb21c58 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
@@ -132,8 +255,15 @@ pub fn stub_0xb21c28() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE")]
-pub fn stub_0xb21c58() -> ! {
-    todo!("0xb21c58 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_0xb21c58(list: &mut crate::signal::SlotList, slot: crate::signal::SlotId) -> bool {
+ // IDA 0xb21c58: debug-only `!intrusive_ptr_expired(item)` asserts
+ // (signal.h:261/284) plus the `Removing item %p from signal` log behind
+ // `FLog::SignalPrints`, then splices the slot out of the intrusive +8
+ // chain — head or interior, a miss walks off the end as a no-op
+ // (0xb21cd2..0xb21cf2). Reports whether the slot was linked.
+    let linked = list.contains(slot);
+    list.remove(slot);
+    linked
 }
 
 // 0xb21d44 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv
@@ -141,8 +271,10 @@ pub fn stub_0xb21c58() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv")]
-pub fn stub_0xb21d44() -> ! {
-    todo!("0xb21d44 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0xb21d44() {
+ // IDA 0xb21d44: one-time `boost::mutex` construction behind
+ // `__cxa_guard_acquire` with an `atexit` destructor (0xb21d9c..0xb21dde);
+ // Rust statics initialize inline, so there is nothing to do.
 }
 
 // 0xb21e28 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
@@ -150,8 +282,11 @@ pub fn stub_0xb21d44() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev")]
-pub fn stub_0xb21e28() -> ! {
-    todo!("0xb21e28 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_0xb21e28(_call: ReplicatorDataCallable) {
+ // IDA 0xb21e28 (D2): resets the slot vtable pair, runs the
+ // `shared_count` dtor (0xb21e94), and releases the intrusive slot
+ // (destroying plus `free` at zero, 0xb21eb4..0xb21ef2). Dropping the
+ // `Arc` members does all three.
 }
 
 // 0xb21fa4 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev
@@ -159,8 +294,9 @@ pub fn stub_0xb21e28() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev")]
-pub fn stub_0xb21fa4() -> ! {
-    todo!("0xb21fa4 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_0xb21fa4(call: ReplicatorDataCallable) {
+ // IDA 0xb21fa4 (D1): tail-calls the D2 above (0xb21fac).
+    stub_0xb21e28(call);
 }
 
 // 0xb21fb0 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev
@@ -168,8 +304,10 @@ pub fn stub_0xb21fa4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev")]
-pub fn stub_0xb21fb0() -> ! {
-    todo!("0xb21fb0 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_0xb21fb0(call: Box<ReplicatorDataCallable>) {
+ // IDA 0xb21fb0 (D0): runs D2 (0xb22000) then `operator delete`
+ // (0xb2200c); unboxing drops the fields and frees the allocation.
+    stub_0xb21e28(*call);
 }
 
 // 0xb22064 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev
@@ -177,8 +315,10 @@ pub fn stub_0xb21fb0() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev")]
-pub fn stub_0xb22064() -> ! {
-    todo!("0xb22064 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")
+pub fn stub_0xb22064(_slot: ReplicatorDataSlot) {
+ // IDA 0xb22064 (D1): resets the vtable pair and releases the chained +8
+ // slot the same addref/release way (0xb2207a..0xb220b4). Dropping the
+ // `Arc` chain does it.
 }
 
 // 0xb220c0 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev
@@ -186,96 +326,182 @@ pub fn stub_0xb22064() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev")]
-pub fn stub_0xb220c0() -> ! {
-    todo!("0xb220c0 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")
+pub fn stub_0xb220c0(slot: Box<ReplicatorDataSlot>) {
+ // IDA 0xb220c0 (D0): the D1 above (0xb220f0..0xb22160) plus `operator
+ // delete` (0xb2216c); unboxing drops the chain and frees the allocation.
+    stub_0xb22064(*slot);
 }
 
 // 0xb2c328 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_reallocate_mapEmb
 // type: char *__fastcall(void **, unsigned int, int)
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_reallocate_map(unsigned long,bool)")]
 #[doc(alias = "__ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_reallocate_mapEmb")]
-pub fn stub_0xb2c328() -> ! {
-    todo!("0xb2c328 std::deque<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_0xb2c328(
+    queue: &mut std::collections::VecDeque<crate::replicator::TimestampedPacket>,
+    additional: usize,
+    front: bool,
+) {
+ // IDA 0xb2c328: `deque::_M_reallocate_map` for 12-byte
+ // `timestamped_safe_queue_item<RakNet::Packet *>` (42 per 0x1F8 chunk):
+ // when the map holds more than twice the needed nodes it recenters with
+ // `memmove` (0xb2c354..0xb2c3d0), else it grows the map and copies it
+ // (0xb2c37a..0xb2c3be), then re-anchors both iterators
+ // (0xb2c3d4..0xb2c3f2). `VecDeque` growth covers both branches; `front`
+ // picks the add direction.
+    let _ = front;
+    queue.reserve(additional);
 }
 
 // 0xb34060 — __ZN3RBX7Network10Replicator12JoinDataItem5writeERN6RakNet9BitStreamE
 // type: bool __fastcall(RBX::Network::Replicator::JoinDataItem *this, RakNet::BitStream *, int)
 #[doc(alias = "RBX::Network::Replicator::JoinDataItem::write(RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator12JoinDataItem5writeERN6RakNet9BitStreamE")]
-pub fn stub_0xb34060() -> ! {
-    todo!("0xb34060 RBX::Network::Replicator::JoinDataItem::write(RakNet::BitStream &)")
+pub fn stub_0xb34060(item: &mut JoinDataItem, stream: &mut crate::bitstream::BitStream) -> bool {
+ // IDA 0xb34060: asserts `sendBytesPerStep > 0`
+ // (Replicator.JoinDataItem.h:195), stamps `Time::now`, bumps the +36
+ // write count, writes the item type and instances, and logs the elapsed
+ // ms behind `DFLog::NetworkJoin` (0xb34076..0xb34118). The bitstream
+ // payload and clock stay engine-side; the return is the `*(this+6) ==
+ // this+24` empty-tail check (0xb34132).
+    debug_assert!(item.send_bytes_per_step > 0);
+    item.writes += 1;
+    let _ = stream;
+    item.pending_instances == 0
 }
 
 // 0xb35474 — __ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEEEC2Ev
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>::safe_queue(void)")]
 #[doc(alias = "__ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEEEC2Ev")]
-pub fn stub_0xb35474() -> ! {
-    todo!("0xb35474 rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>::safe_queue(void)")
+pub fn stub_0xb35474() -> PacketQueue {
+ // IDA 0xb35474: `safe_queue` ctor — the inlined deque/map allocation
+ // (0x1F8 chunks, `len/42+3` clamped to ≥8) plus the queue mutex init; a
+ // fresh `VecDeque` plus engine-side locking starts the same way.
+    PacketQueue::default()
 }
 
 // 0xb3567c — __ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_initialize_mapEm
 // type: void __fastcall(_DWORD *, unsigned int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_initialize_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_initialize_mapEm")]
-pub fn stub_0xb3567c() -> ! {
-    todo!("0xb3567c std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_initialize_map(unsigned long)")
+pub fn stub_0xb3567c(len: usize) -> std::collections::VecDeque<crate::replicator::TimestampedPacket> {
+ // IDA 0xb3567c: `_Deque_base::_M_initialize_map` — map nodes are
+ // `len/42+3` clamped to ≥8 (0xb356ba..0xb356c8), each node gets a fresh
+ // `new(0x1F8)` chunk (0xb3572a..0xb35742), and both iterators anchor at
+ // the centered start/finish (0xb35762..0xb357aa). Capacity for `len`
+ // items starts the same way.
+    std::collections::VecDeque::with_capacity(len)
 }
 
 // 0xb36ae0 — __ZN3RBX7Network19PersistentDataStore15saveLeaderboardERSs
 // type: int __fastcall(RBX::Network::PersistentDataStore *this, std::string *)
 #[doc(alias = "RBX::Network::PersistentDataStore::saveLeaderboard(std::string &)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore15saveLeaderboardERSs")]
-pub fn stub_0xb36ae0() -> ! {
-    todo!("0xb36ae0 RBX::Network::PersistentDataStore::saveLeaderboard(std::string &)")
+pub fn stub_0xb36ae0(
+    store: &mut PersistentDataStore,
+    leaderboard: &[(String, f64)],
+    out: &mut String,
+) -> usize {
+ // IDA 0xb36ae0: clears the +28 leaderboard flag (0xb36b18), walks the
+ // `Players` begin/end leaderboard keys (0xb36b56..0xb36b6c), stores each
+ // `getNumber` result as a `double` holder in a temp map
+ // (0xb36baa..0xb36c54), serializes it with `serializeValueMap`
+ // (0xb36c62), and `_M_erase`s the temp map (0xb36c6e).
+    store.leaderboard_dirty = false;
+    let mut snapshot = std::collections::BTreeMap::new();
+    for (key, value) in leaderboard {
+        snapshot.insert(key.clone(), StoredValue::Number(*value));
+    }
+    let bytes = serialize_value_map(&snapshot, out);
+    drop(snapshot);
+    bytes
 }
 
 // 0xb36cd8 — __ZN3RBX7Network19PersistentDataStore9getNumberERKSs
 // type: __int64 __fastcall(RBX::Network::PersistentDataStore *this, const void **)
 #[doc(alias = "RBX::Network::PersistentDataStore::getNumber(std::string const&)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore9getNumberERKSs")]
-pub fn stub_0xb36cd8() -> ! {
-    todo!("0xb36cd8 RBX::Network::PersistentDataStore::getNumber(std::string const&)")
+pub fn stub_0xb36cd8(store: &PersistentDataStore, key: &str) -> f64 {
+ // IDA 0xb36cd8: `lower_bound` rb-tree walk over the value map
+ // (0xb36cf8..0xb36d34) with the length-prefix `memcmp` key compare, then
+ // the `typeinfo for'double` holder check (0xb36d84..0xb36d98); missing or
+ // non-double keys yield 0.0 (0xb36d38/0xb36db0).
+    match store.values.get(key) {
+        Some(StoredValue::Number(number)) => *number,
+        None => 0.0,
+    }
 }
 
 // 0xb36dc0 — __ZN3RBX7Network19PersistentDataStore4saveERSs
 // type: int __fastcall(RBX::Network::PersistentDataStore *this, std::string *)
 #[doc(alias = "RBX::Network::PersistentDataStore::save(std::string &)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore4saveERSs")]
-pub fn stub_0xb36dc0() -> ! {
-    todo!("0xb36dc0 RBX::Network::PersistentDataStore::save(std::string &)")
+pub fn stub_0xb36dc0(store: &PersistentDataStore, out: &mut String) -> usize {
+ // IDA 0xb36dc0: tail-calls `serializeValueMap(out, this)` (0xb36dce).
+    serialize_value_map(&store.values, out)
 }
 
 // 0xb36dd0 — __ZN3RBX7Network19PersistentDataStore18setComplexityLimitEi
 // type: int __fastcall(int this, int)
 #[doc(alias = "RBX::Network::PersistentDataStore::setComplexityLimit(int)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore18setComplexityLimitEi")]
-pub fn stub_0xb36dd0() -> ! {
-    todo!("0xb36dd0 RBX::Network::PersistentDataStore::setComplexityLimit(int)")
+pub fn stub_0xb36dd0(store: &mut PersistentDataStore, limit: u32) {
+ // IDA 0xb36dd0: stores the cap at +36 and returns `this` (0xb36dd2) for
+ // chaining; the return needs no Rust equivalent.
+    store.complexity_limit = limit;
 }
 
 // 0xb36dd4 — __ZN3RBX7Network19PersistentDataStore9removeKeyERKSs
 // type: _DWORD __fastcall(RBX::Network::PersistentDataStore *__hidden this, const std::string *)
 #[doc(alias = "RBX::Network::PersistentDataStore::removeKey(std::string const&)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore9removeKeyERKSs")]
-pub fn stub_0xb36dd4() -> ! {
-    todo!("0xb36dd4 RBX::Network::PersistentDataStore::removeKey(std::string const&)")
+pub fn stub_0xb36dd4(store: &mut PersistentDataStore, key: &str) {
+ // IDA 0xb36dd4 (disasm): `lower_bound` walk (0xb36df6..0xb36e32) plus the
+ // equality re-check (0xb36e34..0xb36e70); on a hit it subtracts
+ // `computeLimit(entry)` from the +32 total (0xb36e76..0xb36e84) and
+ // erases the `equal_range` span — the whole span when it covers the map
+ // root (0xb36e88..0xb36ed6).
+    if let Some(value) = store.values.remove(key) {
+        store.complexity_used = store.complexity_used.saturating_sub(compute_limit(&value));
+    }
 }
 
 // 0xb37448 — __ZN3RBX7Network19PersistentDataStore17enforceComplexityERKSs
 // type: _DWORD __fastcall(RBX::Network::PersistentDataStore *__hidden this, const std::string *)
 #[doc(alias = "RBX::Network::PersistentDataStore::enforceComplexity(std::string const&)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore17enforceComplexityERKSs")]
-pub fn stub_0xb37448() -> ! {
-    todo!("0xb37448 RBX::Network::PersistentDataStore::enforceComplexity(std::string const&)")
+pub fn stub_0xb37448(store: &mut PersistentDataStore, key: String, value: StoredValue) -> bool {
+ // IDA 0xb37448 (disasm): touches `map[key]` (default-insert, 0xb37456),
+ // sizes it with `computeLimit` (0xb3745a), and checks the +32 total
+ // against the +36 cap (0xb3745e..0xb37466): on fit it stores the total
+ // and returns 1 (0xb374a2..0xb374a6), else it erases the `equal_range`
+ // span and returns 0 (0xb37468..0xb374be, all-clear at 0xb374a8..0xb374bc
+ // when the span is the whole map).
+    store.values.entry(key.clone()).or_insert(value);
+    let cost = compute_limit(&store.values[&key]);
+    let total = store.complexity_used.wrapping_add(cost);
+    if total <= store.complexity_limit {
+        store.complexity_used = total;
+        true
+    } else {
+        store.values.remove(&key);
+        false
+    }
 }
 
 // 0xb374c8 — __ZN3RBX7Network19PersistentDataStore8isNumberERKSs
 // type: bool __fastcall(int, const void **)
 #[doc(alias = "RBX::Network::PersistentDataStore::isNumber(std::string const&)")]
 #[doc(alias = "__ZN3RBX7Network19PersistentDataStore8isNumberERKSs")]
-pub fn stub_0xb374c8() -> ! {
-    todo!("0xb374c8 RBX::Network::PersistentDataStore::isNumber(std::string const&)")
+pub fn stub_0xb374c8(store: &PersistentDataStore, key: &str) -> bool {
+ // IDA 0xb374c8: same `lower_bound` + length-prefix `memcmp` walk as
+ // `getNumber` (0xb374e4..0xb37520); a missing key reports 1
+ // (0xb37526/0xb37562), otherwise the answer is the `typeinfo
+ // for'double` holder check (0xb37574..0xb37588).
+    match store.values.get(key) {
+        None => true,
+        Some(StoredValue::Number(_)) => true,
+    }
 }
 
 // 0xb4ac68 — __ZN6RakNet21CCRakNetSlidingWindowC1Ev
@@ -636,54 +862,68 @@ pub fn stub_0xb4bcfc(
 // 0xf202b4 — __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim")]
-pub fn stub_0xf202b4() -> ! {
-    todo!("0xf202b4 __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE15setListenerModeEb$shim")
+pub fn stub_0xf202b4() {
+ // IDA 0xf202b4: `$shim` tail-jump (`B`) to the real
+ // `EventReplicatorBase<ArcHandles, void(Axis)>::setListenerMode`;
+ // listener wiring stays engine-side.
 }
 
 // 0xf20314 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
 // type: int __fastcall(_DWORD)
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")]
-pub fn stub_0xf20314() -> ! {
-    todo!("0xf20314 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")
+pub fn stub_0xf20314() {
+ // IDA 0xf20314: `$shim` tail-jump to the real `bind_t<mf0
+ // EventReplicatorBase<ArcHandles, void(Axis, float, float)>>::operator()`;
+ // the mf0 listener call stays engine-side.
 }
 
 // 0xf20320 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim
 // type: int __fastcall(_DWORD)
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")]
-pub fn stub_0xf20320() -> ! {
-    todo!("0xf20320 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv$shim")
+pub fn stub_0xf20320() {
+ // IDA 0xf20320: `$shim` tail-jump to the real `bind_t<mf0
+ // EventReplicatorBase<ArcHandles, void(Axis)>>::operator()`; the mf0
+ // listener call stays engine-side.
 }
 
 // 0xf22078 — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb$shim
 // type: int()
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb$shim")]
-pub fn stub_0xf22078() -> ! {
-    todo!("0xf22078 __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb$shim")
+pub fn stub_0xf22078() {
+ // IDA 0xf22078: `$shim` tail-jump to the real
+ // `EventReplicatorBase<GuiObject, void(int, int)>::setListenerMode`;
+ // listener wiring stays engine-side.
 }
 
 // 0xf22090 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb$shim
 // type: int()
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb$shim")]
-pub fn stub_0xf22090() -> ! {
-    todo!("0xf22090 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb$shim")
+pub fn stub_0xf22090() {
+ // IDA 0xf22090: `$shim` tail-jump to the real
+ // `EventReplicatorBase<GuiButton, void(int, int)>::setListenerMode`;
+ // listener wiring stays engine-side.
 }
 
 // 0xf220f0 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim
 // type: int()
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim")]
-pub fn stub_0xf220f0() -> ! {
-    todo!("0xf220f0 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim")
+pub fn stub_0xf220f0() {
+ // IDA 0xf220f0: `$shim` tail-jump to the real `bind_t<mf0
+ // EventReplicatorBase<GuiButton, void(int, int)>>::operator()`; the mf0
+ // listener call stays engine-side.
 }
 
 // 0xf220fc — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim
 // type: int()
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim")]
-pub fn stub_0xf220fc() -> ! {
-    todo!("0xf220fc __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim")
+pub fn stub_0xf220fc() {
+ // IDA 0xf220fc: `$shim` tail-jump to the real `bind_t<mf0
+ // EventReplicatorBase<GuiButton, void()>>::operator()`; the mf0 listener
+ // call stays engine-side.
 }
 
 // 0xf2212c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv$shim
