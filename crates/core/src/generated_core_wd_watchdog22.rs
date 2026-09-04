@@ -1086,40 +1086,110 @@ pub mod gui_textbutton {
             (24, "off_11EAA3C"),
         ],
     ];
-    /// Datamodel-supplied construction hooks for `GuiTextButton::GuiTextButton`.
+    /// Datamodel-supplied construction hooks shared by the `GuiTextButton`
+    /// (0x672d68) and `TextLabel` (0x6782f0) C2s.
     pub struct GuiTextButtonCtor {
-        /// `GuiButton::GuiButton(this, "TextButton")` (IDA 0x672d92).
+        /// `GuiButton::GuiButton` / `GuiLabel::GuiLabel` base with the class
+        /// tag (`"TextButton"` 0x672d92 / `"TextLabel"` 0x67831a).
         pub base: unsafe fn(*mut u8),
-        /// `classDescriptor` + word-12 install + registrar++ (IDA 0x672e0c-0x672e3e).
+        /// `classDescriptor` + word-12 install + registrar++ (IDA
+        /// 0x672e0c-0x672e3e / 0x678394-0x6783c6).
         pub describe: unsafe fn(*mut u8),
-        /// std::string assign at +804 (IDA 0x672ea8; owns the temp
-        /// refcount dance at 0x672f1a-0x672f9e).
+        /// std::string assign at the text offset (owns the temp refcount
+        /// dance, 0x672f1a-0x672f9e / 0x6784a2-0x67852c).
         pub set_text: unsafe fn(*mut u8, &str),
-        /// `BrickColor::color3` default feeding words 203-205 (IDA 0x672e90).
+        /// `BrickColor::color3` default feeding the color words (IDA
+        /// 0x672e90 / 0x678418).
         pub default_text_color: fn() -> [f32; 3],
     }
-    /// IDA 0x672d68 C2: base, vtable rounds (symbolic), describe, the
-    /// `"Button"` text, and the scalar member table below — all stores real.
-    pub unsafe fn guitextbutton_construct(this: *mut u8, ctor: &GuiTextButtonCtor) {
-        (ctor.base)(this); // IDA 0x672d92
-        // Round 1 (0x672dc4) + round 2 (0x672e44): symbolic installs.
-        (ctor.describe)(this); // IDA 0x672e0c-0x672e3e
+    /// Per-class member layout of the text-widget C2s (`GuiTextButton` from
+    /// 0x672d68, `TextLabel` from 0x6782f0).
+    pub struct GuiTextLayout {
+        pub label: &'static str,
+        pub text_byte: usize,
+        pub legacy_word: usize,
+        pub fontsize_word: usize,
+        pub color_words: (usize, usize),
+        pub transp_float: usize,
+        pub zero_qword_byte: usize,
+        pub stroke_float: usize,
+        pub wrap_byte: usize,
+        pub scale_byte: usize,
+        pub xa_word: usize,
+        pub ya_word: usize,
+        pub font_word: usize,
+        /// Extra trailing store (`TextLabel` word-35 `= 1`, IDA 0x6784e6).
+        pub trailing_word: Option<(usize, u32)>,
+    }
+    pub const GUITEXTBUTTON_LAYOUT: GuiTextLayout = GuiTextLayout {
+        label: "Button", // IDA 0x672e80
+        text_byte: 804,
+        legacy_word: LEGACY0_WORD,
+        fontsize_word: FONTSIZE_WORD,
+        color_words: COLOR3_WORDS,
+        transp_float: 205,
+        zero_qword_byte: 824,
+        stroke_float: STROKE_TRANSP_FLOAT,
+        wrap_byte: TEXTWRAP_BYTE,
+        scale_byte: TEXTSCALE_BYTE,
+        xa_word: XA_WORD,
+        ya_word: YA_WORD,
+        font_word: FONT_WORD,
+        trailing_word: None,
+    };
+    /// IDA 0x6782f0 `TextLabel::TextLabel` layout: text at +540 (word 135),
+    /// legacy word 134, fontsize 136, color 137-138, transp float 139,
+    /// zero box at 560, stroke float 144, wrap/scale 580-581, XA/YA/Font
+    /// 146-148, plus word-35 `= 1` (the `GuiQueue` default — IDA 0x6784e6;
+    /// `GuiBase2d::getGuiQueue` reads word 35).
+    pub const GUITEXTLABEL_LAYOUT: GuiTextLayout = GuiTextLayout {
+        label: "Label", // IDA 0x678408
+        text_byte: 540,
+        legacy_word: 134,
+        fontsize_word: 136,
+        color_words: (137, 138),
+        transp_float: 139,
+        zero_qword_byte: 560,
+        stroke_float: 144,
+        wrap_byte: 580,
+        scale_byte: 581,
+        xa_word: 146,
+        ya_word: 147,
+        font_word: 148,
+        trailing_word: Some((35, 1)),
+    };
+    /// Shared C2 body (IDA 0x672d68 / 0x6782f0): base, vtable rounds
+    /// (symbolic), describe, the label text, and the scalar member table —
+    /// all stores real.
+    pub unsafe fn guitext_construct(this: *mut u8, layout: &GuiTextLayout, ctor: &GuiTextButtonCtor) {
+        (ctor.base)(this);
+        (ctor.describe)(this);
         let words = this as *mut u32;
-        words.add(LEGACY0_WORD).write(0); // IDA 0x672e98
-        (ctor.set_text)(this.add(804), "Button"); // IDA 0x672e80-0x672ea8
-        words.add(FONTSIZE_WORD).write(0); // IDA 0x672eb4
-        let c = (ctor.default_text_color)(); // IDA 0x672e90
-        words.add(COLOR3_WORDS.0).write(c[0].to_bits()); // IDA 0x672ebe
-        words.add(COLOR3_WORDS.1).write(c[1].to_bits()); // IDA 0x672ec8
-        (this as *mut f32).add(205).write(c[2]); // IDA 0x672ed2
-        (this.add(824) as *mut u64).write_bytes(0, 2); // IDA 0x672ede (16 B)
-        (this as *mut f32).add(STROKE_TRANSP_FLOAT).write(1.0); // IDA 0x672ee6
-        this.add(TEXTWRAP_BYTE).write(0u8); // IDA 0x672eee
-        this.add(TEXTSCALE_BYTE).write(0u8); // IDA 0x672ef4
-        words.add(XA_WORD).write(2); // IDA 0x672efa
-        words.add(YA_WORD).write(1); // IDA 0x672f02
-        words.add(FONT_WORD).write(0); // IDA 0x672f12
-        // Round 3 (0x672f32): final symbolic installs.
+        words.add(layout.legacy_word).write(0);
+        (ctor.set_text)(this.add(layout.text_byte), layout.label);
+        words.add(layout.fontsize_word).write(0);
+        let c = (ctor.default_text_color)();
+        words.add(layout.color_words.0).write(c[0].to_bits());
+        words.add(layout.color_words.1).write(c[1].to_bits());
+        (this as *mut f32).add(layout.transp_float).write(c[2]);
+        (this.add(layout.zero_qword_byte) as *mut u64).write_bytes(0, 2);
+        (this as *mut f32).add(layout.stroke_float).write(1.0);
+        this.add(layout.wrap_byte).write(0u8);
+        this.add(layout.scale_byte).write(0u8);
+        words.add(layout.xa_word).write(2);
+        words.add(layout.ya_word).write(1);
+        words.add(layout.font_word).write(0);
+        if let Some((w, v)) = layout.trailing_word {
+            words.add(w).write(v);
+        }
+    }
+    /// IDA 0x672d68 C2 for `GuiTextButton` (wraps the shared body).
+    pub unsafe fn guitextbutton_construct(this: *mut u8, ctor: &GuiTextButtonCtor) {
+        guitext_construct(this, &GUITEXTBUTTON_LAYOUT, ctor)
+    }
+    /// IDA 0x6782f0 C2 for `TextLabel` (wraps the shared body).
+    pub unsafe fn guitextlabel_construct(this: *mut u8, ctor: &GuiTextButtonCtor) {
+        guitext_construct(this, &GUITEXTLABEL_LAYOUT, ctor)
     }
     /// `raisePropertyChanged` hook: descriptor crosses as its symbolic name.
     pub type RaiseHook = unsafe fn(*mut u8, &'static str) -> i32;
@@ -1337,6 +1407,96 @@ pub mod gui_textbutton {
         let slot = *vtab.add(RENDER2D_VTAB_WORD);
         let f: unsafe fn(*mut u8, *mut u8, u32) -> i32 = std::mem::transmute::<usize, unsafe fn(*mut u8, *mut u8, u32) -> i32>(slot);
         f(adj, adorn, 0)
+    }
+    /// IDA 0x67834c/0x6783cc/0x6784ba: the three six-word vtable rounds of
+    /// `TextLabel::TextLabel` (post-base, post-describe, final).
+    pub const TEXTLABEL_VTABLE_ROUNDS: [[(usize, &str); 6]; 3] = [
+        [
+            (0, "off_128F558"),
+            (3, "off_128F624"),
+            (8, "off_128F630"),
+            (9, "off_128F644"),
+            (23, "off_128F65C"),
+            (24, "off_128F668"),
+        ],
+        [
+            (0, "off_128F408"),
+            (3, "off_128F4D4"),
+            (8, "off_128F4E0"),
+            (9, "off_128F4F4"),
+            (23, "off_128F50C"),
+            (24, "off_128F518"),
+        ],
+        [
+            (0, "off_11EAAA8"),
+            (3, "off_11EAB78"),
+            (8, "off_11EAB84"),
+            (9, "off_11EAB98"),
+            (23, "off_11EABB0"),
+            (24, "off_11EABBC"),
+        ],
+    ];
+    /// Property descriptors raised by the `TextLabel` setters (symbolic).
+    pub const LDESC_TEXT: &str = "unk_13278C0"; // IDA 0x6786ba (`setText`)
+    pub const LDESC_TEXT2: &str = "unk_13279F4"; // IDA 0x6786c8 + most setters
+    pub const LDESC_TEXT3: &str = "unk_1327A20"; // IDA 0x6786d6 + most setters
+    pub const LDESC_FONTSIZE: &str = "unk_1327AA4"; // IDA 0x6787a8
+    pub const LDESC_FONT: &str = "unk_1327AD8"; // IDA 0x6787e0
+    pub const LDESC_TRANSP: &str = "unk_1327944"; // IDA 0x6788b8 / 0x678dfc
+    pub const LDESC_WRAP: &str = "unk_1327970"; // IDA 0x6788e0
+    pub const LDESC_SCALE: &str = "unk_13279C8"; // IDA 0x678922
+    pub const LDESC_XA: &str = "unk_1327B0C"; // IDA 0x678974
+    pub const LDESC_YA: &str = "unk_1327B40"; // IDA 0x6789b4
+    pub const LDESC_STROKE: &str = "unk_1327A78"; // IDA 0x678d9a
+    /// `TextLabel` field layout (mirrors `GUITEXTLABEL_LAYOUT` for the
+    /// setter helpers).
+    pub const LTEXT_WORD: usize = 135; // std::string at +540
+    pub const LLEGACY_WORD: usize = 134;
+    pub const LFONTSIZE_WORD: usize = 136;
+    pub const LTRANSP_FLOAT: usize = 140;
+    pub const LSTROKE_FLOAT: usize = 144;
+    pub const LWRAP_BYTE: usize = 580;
+    pub const LSCALE_BYTE: usize = 581;
+    pub const LXA_WORD: usize = 146;
+    pub const LYA_WORD: usize = 147;
+    pub const LFONT_WORD: usize = 148;
+    /// was: `FactoryProduct<TextLabel, GuiLabel>::Creator` class key.
+    pub const GUITEXTLABEL_CLASS: gui_textbox::CreatorClass = gui_textbox::CreatorClass {
+        name: "TextLabel", // `sTextLabel`
+        vtab: "off_128EDAC", // IDA 0x679536 (`*a1 = &off_...`)
+    };
+    static LCONSTRUCTED: AtomicBool = AtomicBool::new(false);
+    static LCREATOR_ADDR: AtomicUsize = AtomicUsize::new(0);
+    /// IDA 0x679514 Creator D2 (same template as 0x673f5c).
+    pub unsafe fn label_creator_destroy(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+        gui_textbox::creator_destroy_as(slot, &GUITEXTLABEL_CLASS, &LCONSTRUCTED)
+    }
+    /// Shared `getClassName` tail (IDA 0x679360 + shim, like 0x673da8).
+    pub fn label_creator_class_name() -> &'static str {
+        gui_textbox::static_get_creator_as(&LCREATOR_ADDR, &LCONSTRUCTED);
+        GUITEXTLABEL_CLASS.name
+    }
+    /// D1 never frees; placeholder for the `GuiObjectFini.free` slot.
+    unsafe fn no_free(_: *mut u8) {}
+    /// IDA 0x67929c D1: `~string(this + 540)` then `~GuiObject(this)` —
+    /// note the decompile skips any `GuiLabel` middle (no members there).
+    pub unsafe fn textlabel_d1(
+        this: *mut u8,
+        drop_text: unsafe fn(*mut u8),
+        member: unsafe fn(*mut u8, gui_textbox::GuiObjectMember),
+    ) {
+        drop_text(this.add(540)); // IDA 0x6792a6
+        gui_textbox::gui_object_d2(this, &gui_textbox::GuiObjectFini { member, free: no_free });
+    }
+    /// IDA 0x6792b4 D0: D1 then `operator delete`.
+    pub unsafe fn textlabel_d0(
+        this: *mut u8,
+        drop_text: unsafe fn(*mut u8),
+        member: unsafe fn(*mut u8, gui_textbox::GuiObjectMember),
+        free: unsafe fn(*mut u8),
+    ) {
+        textlabel_d1(this, drop_text, member); // IDA 0x6792d8-0x67930e
+        free(this);
     }
 }
 // 0x672230 — __ZN3RBX7TextBoxD2Ev
