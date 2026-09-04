@@ -409,13 +409,120 @@ pub fn stub_06319d4(signal: &MoveState2Signal) {
     signal.disconnect_all();
 }
 
+/// `RBX::Reflection::GenericSlotWrapper` cutover for the MoveState 2-arg
+/// signal (IDA 0x631b4c/0x631c68): the bound `mf2` target. The stored
+/// `boost::function` folds into the closure; `execute2` packs its two
+/// `MoveState` args into the call directly (cf. `fireEvent` at 0x631924).
+#[derive(Clone)]
+pub struct GenericSlotWrapper {
+    pub callback: MoveState2Fn,
+}
+impl GenericSlotWrapper {
+    pub fn new(callback: MoveState2Fn) -> Self {
+        Self { callback }
+    }
+    pub fn execute(&self, a: i32, b: i32) {
+        (self.callback)(a, b);
+    }
+}
+/// `boost::_bi::bind_t<mf2<GenericSlotWrapper, MoveState, MoveState>>`
+/// cutover (IDA 0x631b4c/0x632394): the bound target plus arg routing.
+/// The `arg<1>/arg<2>` placeholders forward both call args to the target.
+#[derive(Clone)]
+pub struct BoundMoveStateSlot {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+/// `RBX::SkateboardPlatform::MoveState` items (IDA 0x627238 `EnumDesc::C2`:
+/// `addPair` Stopped=0, Coasting=1, Pushing=2, Stopping=3, AirFree=4).
+pub const MOVE_STATE_ITEMS: [(&str, i32); 5] = [
+    ("Stopped", 0),
+    ("Coasting", 1),
+    ("Pushing", 2),
+    ("Stopping", 3),
+    ("AirFree", 4),
+];
+/// `EnumDesc<MoveState>::convertToString` lookup (IDA 0x633670).
+pub fn move_state_to_string(value: i32) -> &'static str {
+    MOVE_STATE_ITEMS
+        .iter()
+        .find(|&&(_, v)| v == value)
+        .map(|&(name, _)| name)
+        .unwrap_or_else(|| panic!("unknown MoveState {value} (IDA 0x633670)"))
+}
+/// `EnumDesc<MoveState>::convertToValue` lookup (IDA 0x633694/0x6339f8).
+pub fn move_state_from_string(name: &str) -> Option<i32> {
+    MOVE_STATE_ITEMS
+        .iter()
+        .find(|&&(n, _)| n == name)
+        .map(|&(_, v)| v)
+}
+/// `RBX::Reflection::EnumPropDescriptor<SkateboardPlatform, MoveState>`
+/// cutover (IDA 0x6332b0): name/category/attributes/permissions, the live
+/// enum value and the item table. The getter/setter member-pointer pair
+/// (+44) folds into direct field access; the `EnumDesc` singleton link
+/// (+40/+48) folds into the owned table.
+#[derive(Debug, Clone)]
+pub struct MoveStateEnumProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: i32,
+}
+impl MoveStateEnumProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: i32,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+    /// `EnumDesc<MoveState>::convertToIndex` (IDA 0x633a2c):
+    /// `ReleaseAssert(value>=0)` (enumconverter.h:350), dense 0..5 maps
+    /// to itself, anything else is -1.
+    pub fn convert_to_index(value: i32) -> i32 {
+        assert!(
+            value >= 0,
+            "value>=0 ../App/include/reflection/enumconverter.h:350 (IDA 0x633a2c)"
+        );
+        if (0..MOVE_STATE_ITEMS.len() as i32).contains(&value) {
+            value
+        } else {
+            -1
+        }
+    }
+}
+/// `RBX::SkateboardPlatform` reflected state for the `GetSetImpl`
+/// member-pointer pairs below (IDA 0x633ae4/0x633b04/0x633c70/0x633c94,
+/// 0x633e00/0x633e20): the getter/setter member pointers fold into direct
+/// field access; the `a2 - 36` described-adjust collapses.
+#[derive(Debug, Clone, Default)]
+pub struct SkateboardPlatformState {
+    pub move_state: i32,
+    pub flag: bool,
+    pub count: i32,
+}
+
 // 0x0631b4c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_18SkateboardPlatform9MoveStateES7_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
 // type: void __fastcall(_DWORD *, int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
 #[doc(alias = "__ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_18SkateboardPlatform9MoveStateES7_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_")]
-pub fn stub_0631b4c() -> ! {
-    todo!("0x0631b4c boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0631b4c(target: SharedPtr<GenericSlotWrapper>) -> BoundMoveStateSlot {
+    // IDA 0x631b4c (`boost::bind` mf2<GenericSlotWrapper, MoveState,
+    // MoveState>): copies the shared target into the `list3` buffer
+    // (0x631bb2-0x631bd4, shared_count bumped) and returns the `bind_t`
+    // triple (0x631bba-0x631bdc). The `arg<1>/arg<2>` placeholders ride
+    // the call signature; `Box<dyn Fn>` carries the target instead.
+    BoundMoveStateSlot { target }
 }
 
 // 0x0631c68 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_18SkateboardPlatform9MoveStateES4_EEvRKT_RKT0_
@@ -423,8 +530,13 @@ pub fn stub_0631b4c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")]
 #[doc(alias = "__ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_18SkateboardPlatform9MoveStateES4_EEvRKT_RKT0_")]
-pub fn stub_0631c68() -> ! {
-    todo!("0x0631c68 void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")
+pub fn stub_0631c68(wrapper: &GenericSlotWrapper, a: i32, b: i32) {
+    // IDA 0x631c68 (`GenericSlotWrapper::execute2<MoveState, MoveState>`):
+    // builds a 2-`Variant` vector tagged `Type::getSingleton<MoveState>`
+    // (0x631cd4-0x631d18, values packed via `placement_any::operator=`)
+    // and dispatches slot 8 (0x631d20); the vector dtor rides Drop
+    // (0x631d30). The pack folds into the direct call.
+    wrapper.execute(a, b);
 }
 
 // 0x0631dd0 — __ZN5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_E5clearEv
@@ -441,8 +553,14 @@ pub fn stub_0631dd0() {
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
 #[doc(alias = "__ZN5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_SD_EENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_")]
-pub fn stub_0631fc8() -> ! {
-    todo!("0x0631fc8 void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_0631fc8(bound: &BoundMoveStateSlot) -> MoveState2Fn {
+    // IDA 0x631fc8 (`function2::assign_to<bind_t>`): copies the `bind_t`
+    // triple into locals (0x631fec-0x632000, shared_count bumped), stores
+    // the `stored_vtable` (0x63203e-0x63204a) and delegates to the
+    // `basic_vtable2::assign_to` below (0x63204c-0x632050). The vtable
+    // folds into the closure; the copy folds into the capture clone.
+    let target = SharedPtr::clone(&bound.target);
+    Arc::new(move |a: i32, b: i32| target.execute(a, b))
 }
 
 // 0x06320c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
@@ -468,8 +586,14 @@ pub fn stub_06320dc() {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")]
-pub fn stub_06320f4() -> ! {
-    todo!("0x06320f4 bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_06320f4(dst: &mut MoveState2Fn, src: &MoveState2Fn) -> bool {
+    // IDA 0x6320f4 (`basic_vtable2::assign_to`, functor overload): copies
+    // the source triple (0x632114-0x63212a, shared_count bumped),
+    // delegates to the `function_obj_tag` overload below
+    // (0x63216c-0x632172), releases the temp (0x632176-0x63217e) and
+    // returns 1 (0x632184). The buffer copy folds into the `Arc` clone.
+    *dst = MoveState2Fn::clone(src);
+    true
 }
 
 // 0x06321dc — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -477,8 +601,14 @@ pub fn stub_06320f4() -> ! {
 // type: int __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_06321dc() -> ! {
-    todo!("0x06321dc bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_06321dc(dst: &mut MoveState2Fn, src: &MoveState2Fn) -> bool {
+    // IDA 0x6321dc (`basic_vtable2::assign_to`, `function_obj_tag`
+    // overload): copies the triple (0x6321fc-0x63220c, shared_count
+    // bumped), delegates to `assign_functor` below (0x632250-0x632254),
+    // releases the temp (0x632258-0x632262) and returns 1 (0x632266).
+    // Same clone discipline as 0x6320f4 above.
+    *dst = MoveState2Fn::clone(src);
+    true
 }
 
 // 0x06322c0 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -486,8 +616,13 @@ pub fn stub_06321dc() -> ! {
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
-pub fn stub_06322c0() -> ! {
-    todo!("0x06322c0 void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_06322c0(dst: &mut MoveState2Fn, src: &MoveState2Fn) {
+    // IDA 0x6322c0 (`basic_vtable2::assign_functor`, `false_type`):
+    // `operator new(0x10)` (0x6322de-0x6322e4), copies the `bind_t`
+    // triple plus its `shared_count` into the heap cell
+    // (0x6322ea-0x632342) and stores the cell in the function buffer
+    // (0x632346-0x63234a). The heap cell folds into the `Arc` clone.
+    *dst = MoveState2Fn::clone(src);
 }
 
 // 0x0632394 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS4_18SkateboardPlatform9MoveStateESA_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSH_ILi2EEEEEEclIS8_S8_EEvRT_RT0_
@@ -495,8 +630,13 @@ pub fn stub_06322c0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS4_18SkateboardPlatform9MoveStateESA_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSH_ILi2EEEEEEclIS8_S8_EEvRT_RT0_")]
-pub fn stub_0632394() -> ! {
-    todo!("0x0632394 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")
+pub fn stub_0632394(bound: &BoundMoveStateSlot, a: i32, b: i32) {
+    // IDA 0x632394 (`bind_t::operator()<MoveState, MoveState>`):
+    // resolves the `mf2` member pointer against the stored target
+    // (0x632394-0x6323a8, the `TST/ADD` member-pointer dance) and tail-
+    // calls it with the two forwarded args (0x6323ac). The placeholders
+    // forward both call args, so this is the direct dispatch.
+    bound.target.execute(a, b);
 }
 
 // 0x06323b0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -738,8 +878,24 @@ pub fn stub_0633280() {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_06332b0() -> ! {
-    todo!("0x06332b0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_06332b0(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> MoveStateEnumProp {
+    // IDA 0x6332b0 (`EnumPropDescriptor<SkateboardPlatform,
+    // MoveState>::C2`): `PropertyDescriptor::C2` with the class descriptor
+    // plus the `EnumDesc<MoveState>` singleton (0x6332d4-0x633342),
+    // installs the `EnumPropDescriptor` vtable (0x633346-0x63336c),
+    // links the singleton at +40/+48 (0x633366/0x633428), allocates the
+    // `GetSetImpl` member triple (0x63338c-0x6333a0, 0x14 bytes at
+    // 0x6333a8-0x6333c0) and clears the readonly/writeonly attribute bits
+    // when the member reports readable/writable (0x6333c8-0x633428). The
+    // member triple folds into direct field access; the attribute-bit
+    // fixups fold into the readable/writable defaults below.
+    MoveStateEnumProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0633464 — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEED0Ev
@@ -756,8 +912,12 @@ pub fn stub_0633464() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10isReadOnlyEv")]
-pub fn stub_0633490() -> ! {
-    todo!("0x0633490 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isReadOnly(void)const")
+pub fn stub_0633490(prop: &MoveStateEnumProp) -> bool {
+    // IDA 0x633490 (`EnumPropDescriptor::isReadOnly`): forwards to slot 0
+    // of the bound member at +44 (0x633490-0x63349a). The member is the
+    // `GetSetImpl` at 0x633adc, which returns 0 — readable.
+    let _ = prop;
+    false
 }
 
 // 0x06334a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11isWriteOnlyEv
@@ -765,8 +925,12 @@ pub fn stub_0633490() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11isWriteOnlyEv")]
-pub fn stub_06334a0() -> ! {
-    todo!("0x06334a0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isWriteOnly(void)const")
+pub fn stub_06334a0(prop: &MoveStateEnumProp) -> bool {
+    // IDA 0x6334a0 (`EnumPropDescriptor::isWriteOnly`): forwards to slot
+    // 1 of the bound member at +44 (0x6334a0-0x6334aa). The member is the
+    // `GetSetImpl` at 0x633ae0, which returns 0 — writable.
+    let _ = prop;
+    false
 }
 
 // 0x06334b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -774,8 +938,12 @@ pub fn stub_06334a0() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_06334b0() -> ! {
-    todo!("0x06334b0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_06334b0(prop: &MoveStateEnumProp, a: i32, b: i32) -> bool {
+    // IDA 0x6334b0 (`EnumPropDescriptor::equalValues`): `getValue` via
+    // slot 8 on both describeds (0x6334b6-0x6334ca) and compares
+    // (0x6334cc-0x6334d4). The member-pointer dance folds into the args.
+    let _ = prop;
+    a == b
 }
 
 // 0x06334d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -783,8 +951,14 @@ pub fn stub_06334b0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_06334d8() -> ! {
-    todo!("0x06334d8 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_06334d8(prop: &MoveStateEnumProp, value: i32) -> i32 {
+    // IDA 0x6334d8 (`EnumPropDescriptor::getVariant`): `getValue` via
+    // slot 68 (0x6334e0-0x6334e4), tags `Type::getSingleton<int>`
+    // (0x6334e8-0x6334ec) and packs with `placement_any::operator=`
+    // (0x6334f0-0x6334f4). The tag is always `int`; the payload is the
+    // value. The described arg folds into `value` (cf. 0x633ae4).
+    let _ = prop;
+    value
 }
 
 // 0x06334fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -792,8 +966,12 @@ pub fn stub_06334d8() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_06334fc() -> ! {
-    todo!("0x06334fc RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_06334fc(prop: &mut MoveStateEnumProp, value: i32) {
+    // IDA 0x6334fc (`EnumPropDescriptor::setVariant`): `any_cast<int>`
+    // on an int payload, else `Variant::convert<int>` on a copied
+    // variant (0x633564-0x6335c8), then `setValue` via slot 72
+    // (0x6335ca-0x6335e0). The variant forms fold into the `i32` arg.
+    prop.value = value;
 }
 
 // 0x0633648 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE9copyValueEPKNS0_13DescribedBaseEPS5_
@@ -801,8 +979,11 @@ pub fn stub_06334fc() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_0633648() -> ! {
-    todo!("0x0633648 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0633648(dst: &mut MoveStateEnumProp, src: &MoveStateEnumProp) {
+    // IDA 0x633648 (`EnumPropDescriptor::copyValue`): `getValue` into a
+    // temp via slot 8, then `setValue` into the destination via slot 12
+    // (same shape as the `TypedPropertyDescriptor` twin at 0x5f0c40).
+    dst.value = src.value;
 }
 
 // 0x063366c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14hasStringValueEv
@@ -810,8 +991,10 @@ pub fn stub_0633648() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14hasStringValueEv")]
-pub fn stub_063366c() -> ! {
-    todo!("0x063366c RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::hasStringValue(void)const")
+pub fn stub_063366c() -> bool {
+    // IDA 0x63366c (`EnumPropDescriptor::hasStringValue`): returns 1
+    // (0x63366c-0x63366e) — enums always have a string form.
+    true
 }
 
 // 0x0633670 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14getStringValueEPKNS0_13DescribedBaseE
@@ -819,8 +1002,11 @@ pub fn stub_063366c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633670() -> ! {
-    todo!("0x0633670 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633670(prop: &MoveStateEnumProp) -> String {
+    // IDA 0x633670 (`EnumPropDescriptor::getStringValue`): `getValue`
+    // via slot 8, then `EnumDesc<MoveState>::convertToString` with the
+    // +48 singleton (0x633670-0x633690).
+    move_state_to_string(prop.value).to_owned()
 }
 
 // 0x0633694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -828,8 +1014,19 @@ pub fn stub_0633670() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0633694() -> ! {
-    todo!("0x0633694 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0633694(prop: &mut MoveStateEnumProp, name: &str) -> bool {
+    // IDA 0x633694 (`EnumPropDescriptor::setStringValue`, string
+    // overload): `Name::lookup` (0x633694-0x6336a0),
+    // `EnumDesc<MoveState>::convertToValue` with the +48 singleton
+    // (0x6336a4-0x6336ac); on success `setValue` via slot 12 and return
+    // 1, else return 0 (0x6336ae-0x6336c8).
+    match move_state_from_string(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x06336d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -837,8 +1034,11 @@ pub fn stub_0633694() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_06336d4() -> ! {
-    todo!("0x06336d4 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_06336d4(prop: &MoveStateEnumProp) -> (i32, i32) {
+    // IDA 0x6336d4 (`EnumPropDescriptor::writeValue`): `getValue` via
+    // slot 8, `clearValue` on the element, stores type tag 5 at +16 and
+    // the value at +20, returns 5 (0x6336d4-0x6336f0).
+    (5, prop.value)
 }
 
 // 0x06336f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -846,8 +1046,19 @@ pub fn stub_06336d4() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_06336f4() -> ! {
-    todo!("0x06336f4 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_06336f4(prop: &mut MoveStateEnumProp, int_value: Option<i32>, text: Option<&str>) {
+    // IDA 0x6336f4 (`EnumPropDescriptor::readValue`): `isXsiNil` returns
+    // early (0x6336f8-0x633700); an int payload goes through
+    // `setIntValue` (0x633708-0x633714); else a string payload goes
+    // through `Name::lookup` + `convertToValue` + slot-12 `setValue`
+    // (0x633716-0x633780), with `ReleaseAssert` diagnostics on bad
+    // input (0x633782-0x6337e0). The XML element folds into the two
+    // payload forms; xsi:nil folds into `None, None`.
+    if let Some(v) = int_value {
+        stub_0633a9c(prop, v);
+    } else if let Some(name) = text {
+        stub_0633694(prop, name);
+    }
 }
 
 // 0x0633934 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -855,8 +1066,11 @@ pub fn stub_06336f4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633934() -> ! {
-    todo!("0x0633934 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633934(prop: &MoveStateEnumProp) -> i32 {
+    // IDA 0x633934 (`EnumPropDescriptor::getIndexValue`): `getValue` via
+    // slot 8, then `EnumDesc<MoveState>::convertToIndex` (0x633934-
+    // 0x633948).
+    MoveStateEnumProp::convert_to_index(prop.value)
 }
 
 // 0x0633950 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -864,8 +1078,18 @@ pub fn stub_0633934() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0633950() -> ! {
-    todo!("0x0633950 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0633950(prop: &mut MoveStateEnumProp, index: u32) -> bool {
+    // IDA 0x633950 (`EnumPropDescriptor::setIndexValue`): bounds-checks
+    // against the item count at +40 (0x633950-0x633958), loads the value
+    // from the index table at +144 (0x63395c-0x633960) and `setValue`s
+    // via slot 12, returning 1 — else returns 0 (0x633962-0x63396e).
+    match MOVE_STATE_ITEMS.get(index as usize) {
+        Some(&(_, v)) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x0633984 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -873,8 +1097,10 @@ pub fn stub_0633950() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633984() -> ! {
-    todo!("0x0633984 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633984(prop: &MoveStateEnumProp) -> i32 {
+    // IDA 0x633984 (`EnumPropDescriptor::getEnumValue`): `getValue` via
+    // slot 8 (0x633984-0x63398a).
+    prop.value
 }
 
 // 0x063398c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -882,8 +1108,18 @@ pub fn stub_0633984() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_063398c() -> ! {
-    todo!("0x063398c RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_063398c(prop: &mut MoveStateEnumProp, value: i32) -> bool {
+    // IDA 0x63398c (`EnumPropDescriptor::setEnumValue`): `__find_if`
+    // with `EnumDescriptor::equalValue` over the +28/+32 item range
+    // (0x63398c-0x6339b0); on a hit `setValue`s via slot 12 and returns
+    // 1, else returns 0 (0x6339b2-0x6339d2). The bind search folds into
+    // the table scan.
+    if MOVE_STATE_ITEMS.iter().any(|&(_, v)| v == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x06339d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -891,8 +1127,16 @@ pub fn stub_063398c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_06339d8() -> ! {
-    todo!("0x06339d8 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_06339d8(prop: &MoveStateEnumProp) -> (&'static str, i32) {
+    // IDA 0x6339d8 (`EnumPropDescriptor::getEnumItem`): `getValue` via
+    // slot 8, then `EnumDesc<MoveState>::convertToItem` with the +44
+    // singleton link (0x6339d8-0x6339f0). The item folds into the
+    // table entry.
+    MOVE_STATE_ITEMS
+        .iter()
+        .find(|&&(_, v)| v == prop.value)
+        .copied()
+        .unwrap_or_else(|| panic!("unknown MoveState {} (IDA 0x6339d8)", prop.value))
 }
 
 // 0x06339f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -900,8 +1144,20 @@ pub fn stub_06339d8() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_06339f8() -> ! {
-    todo!("0x06339f8 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_06339f8(prop: &mut MoveStateEnumProp, name: &str) -> bool {
+    // IDA 0x6339f8 (`EnumPropDescriptor::setStringValue`, `Name`
+    // overload): `EnumDesc<MoveState>::convertToValue` with the +48
+    // singleton on the already-looked-up `Name` (0x6339f8-0x633a08); on
+    // success `setValue`s via slot 12 and returns 1, else 0
+    // (0x633a0a-0x633a22). Same table cutover as the string overload at
+    // 0x633694; the `Name` form folds into `&str`.
+    match move_state_from_string(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x0633a2c — __ZNK3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE14convertToIndexES3_
@@ -909,8 +1165,10 @@ pub fn stub_06339f8() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::convertToIndex(RBX::SkateboardPlatform::MoveState)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE14convertToIndexES3_")]
-pub fn stub_0633a2c() -> ! {
-    todo!("0x0633a2c RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::convertToIndex(RBX::SkateboardPlatform::MoveState)const")
+pub fn stub_0633a2c(value: i32) -> i32 {
+    // IDA 0x633a2c (`EnumDesc<MoveState>::convertToIndex`): shared core
+    // with `MoveStateEnumProp::convert_to_index` above.
+    MoveStateEnumProp::convert_to_index(value)
 }
 
 // 0x0633a9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11setIntValueEPNS0_13DescribedBaseEi
@@ -918,8 +1176,17 @@ pub fn stub_0633a2c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0633a9c() -> ! {
-    todo!("0x0633a9c RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0633a9c(prop: &mut MoveStateEnumProp, value: i32) -> bool {
+    // IDA 0x633a9c (`EnumPropDescriptor::setIntValue`): rejects
+    // negatives (0x633a9c-0x633aa2), indexes the +132 ordinal table with
+    // bounds check (0x633aa4-0x633ab2); a -1 entry rejects, else
+    // `setValue`s via slot 12 and returns 1 (0x633ab4-0x633acc).
+    if value >= 0 && MoveStateEnumProp::convert_to_index(value) != -1 {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x0633adc — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv
@@ -927,8 +1194,10 @@ pub fn stub_0633a9c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv")]
-pub fn stub_0633adc() -> ! {
-    todo!("0x0633adc RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::isReadOnly(void)const")
+pub fn stub_0633adc() -> bool {
+    // IDA 0x633adc (`GetSetImpl<MoveState getter, MoveState
+    // setter>::isReadOnly`): `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x0633ae0 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv
@@ -936,8 +1205,10 @@ pub fn stub_0633adc() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv")]
-pub fn stub_0633ae0() -> ! {
-    todo!("0x0633ae0 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::isWriteOnly(void)const")
+pub fn stub_0633ae0() -> bool {
+    // IDA 0x633ae0 (`GetSetImpl<MoveState getter, MoveState
+    // setter>::isWriteOnly`): `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x0633ae4 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -945,8 +1216,13 @@ pub fn stub_0633ae0() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0633ae4() -> ! {
-    todo!("0x0633ae4 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::GetSetImpl<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0633ae4(state: &SkateboardPlatformState) -> i32 {
+    // IDA 0x633ae4 (`GetSetImpl::getValue`): null described reads the
+    // member at offset 0, else `a2 - 36` (0x633ae4-0x633aea); resolves
+    // the getter member pointer (+4/+8, virtual when the low bit is set,
+    // 0x633aec-0x633afa) and tail-calls it (0x633afc). The member
+    // pointer folds into the field.
+    state.move_state
 }
 
 // 0x0633b04 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_
