@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_137::AudioAppirater;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = {
@@ -14,92 +15,137 @@ const _: () = {
 
 // 0x18ca0 — +[Appirater appLaunched]
 #[doc(alias = "+[Appirater appLaunched]")]
-pub fn stub_18ca0() -> ! {
-    todo!("0x18ca0 +[Appirater appLaunched]")
+pub fn stub_18ca0(current_version: &str, now_secs: f64) {
+    // IDA 0x18ca0 (`+[Appirater appLaunched]`): forwards `YES` to
+    // `appLaunched:` (`stub_18cc0`). Same as the platform 0x18ca0 anchor.
+    stub_18cc0(true, current_version, now_secs);
 }
 
 // 0x18cc0 — +[Appirater appLaunched:]
 #[doc(alias = "+[Appirater appLaunched:]")]
-pub fn stub_18cc0() -> ! {
-    todo!("0x18cc0 +[Appirater appLaunched:]")
+pub fn stub_18cc0(first_launch: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18cc0 (`+[Appirater appLaunched:]`): captures the flag into the
+    // stack block and `dispatch_async`es it to a global queue. The queue
+    // hop collapses; the block is `stub_18d10`. Same as the platform 0x18cc0
+    // anchor.
+    stub_18d10(first_launch, current_version, now_secs);
 }
 
 // 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
 #[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
-pub fn stub_18d10() -> ! {
-    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
+pub fn stub_18d10(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18d10 (`__25+[Appirater appLaunched:]_block_invoke`):
+    // `sharedInstance` then `incrementAndRate:` with the captured flag.
+    // Same as the platform 0x18d10 anchor.
+    AudioAppirater::shared_note_app_launched();
+    crate::generated_137::stub_18b18(can_rate, current_version, now_secs);
 }
 
 // 0x18d4c — -[Appirater hideRatingAlert]
 #[doc(alias = "-[Appirater hideRatingAlert]")]
-pub fn stub_18d4c() -> ! {
-    todo!("0x18d4c -[Appirater hideRatingAlert]")
+pub fn stub_18d4c() -> bool {
+    // IDA 0x18d4c (`-[Appirater hideRatingAlert]`): dismisses `ratingAlert`
+    // when visible; the `_debug` `NSLog` has no host sink. Reports whether
+    // an alert was dismissed. Same as the platform 0x18d4c anchor.
+    AudioAppirater::shared_hide_rating_alert()
 }
 
 // 0x18dbc — +[Appirater appWillResignActive]
 #[doc(alias = "+[Appirater appWillResignActive]")]
-pub fn stub_18dbc() -> ! {
-    todo!("0x18dbc +[Appirater appWillResignActive]")
+pub fn stub_18dbc() {
+    // IDA 0x18dbc (`+[Appirater appWillResignActive]`): `_debug` `NSLog`
+    // (no host sink), then `hideRatingAlert` on `sharedInstance`. Same as
+    // the platform 0x18dbc anchor.
+    AudioAppirater::shared_hide_rating_alert();
 }
 
 // 0x18e0c — +[Appirater appEnteredForeground:]
 #[doc(alias = "+[Appirater appEnteredForeground:]")]
-pub fn stub_18e0c() -> ! {
-    todo!("0x18e0c +[Appirater appEnteredForeground:]")
+pub fn stub_18e0c(entered: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e0c (`+[Appirater appEnteredForeground:]`): same shape as
+    // 0x18cc0 — capture the flag, `dispatch_async` to a global queue; the
+    // block is `stub_18e5c`. Same as the platform 0x18e0c anchor.
+    stub_18e5c(entered, current_version, now_secs);
 }
 
 // 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
 #[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
-pub fn stub_18e5c() -> ! {
-    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
+pub fn stub_18e5c(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e5c (`__34+[Appirater appEnteredForeground:]_block_invoke`):
+    // `sharedInstance` then `incrementAndRate:`. Same as the platform
+    // 0x18e5c anchor.
+    AudioAppirater::shared_note_entered_foreground();
+    crate::generated_137::stub_18b18(can_rate, current_version, now_secs);
 }
 
 // 0x18e98 — +[Appirater userDidSignificantEvent:]
 #[doc(alias = "+[Appirater userDidSignificantEvent:]")]
-pub fn stub_18e98() -> ! {
-    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
+pub fn stub_18e98(significant: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18e98 (`+[Appirater userDidSignificantEvent:]`): same dispatch
+    // shape over `incrementSignificantEventAndRate:`; the block is
+    // `stub_18ee8`. Same as the platform 0x18e98 anchor.
+    stub_18ee8(significant, current_version, now_secs);
 }
 
 // 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
 #[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
-pub fn stub_18ee8() -> ! {
-    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
+pub fn stub_18ee8(can_rate: bool, current_version: &str, now_secs: f64) {
+    // IDA 0x18ee8 (`__37+[Appirater userDidSignificantEvent:]_block_invoke`):
+    // `sharedInstance` then `incrementSignificantEventAndRate:`. Same as the
+    // platform 0x18ee8 anchor.
+    crate::generated_137::stub_18bdc(can_rate, current_version, now_secs);
 }
 
 // 0x18f24 — +[Appirater rateApp]
 #[doc(alias = "+[Appirater rateApp]")]
-pub fn stub_18f24() -> ! {
-    todo!("0x18f24 +[Appirater rateApp]")
+pub fn stub_18f24() -> String {
+    // IDA 0x18f24 (`+[Appirater rateApp]`): review URL from the template
+    // with `APP_ID` replaced, flag `kAppiraterRatedCurrentVersion`,
+    // `openURL:`. Returns the opened URL. Same as the platform 0x18f24
+    // anchor.
+    AudioAppirater::shared_rate_app()
 }
 
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+pub fn stub_19028(button_index: i32, now_secs: f64) {
+    // IDA 0x19028 (`-[Appirater alertView:clickedButtonAtIndex:]`): the
+    // three-way button switch with delegate callbacks; see
+    // `AudioAppirater::alert_view_clicked_button`. Same as the platform
+    // 0x19028 anchor.
+    AudioAppirater::shared_alert_button(button_index, now_secs);
 }
 
 // 0x191d4 — -[Appirater ratingAlert]
 #[doc(alias = "-[Appirater ratingAlert]")]
-pub fn stub_191d4() -> ! {
-    todo!("0x191d4 -[Appirater ratingAlert]")
+pub fn stub_191d4() -> u64 {
+    // IDA 0x191d4 (`-[Appirater ratingAlert]`): returns the `ratingAlert`
+    // ivar. Same as the platform 0x191d4 anchor; `0` is `nil`.
+    AudioAppirater::shared_rating_alert()
 }
 
 // 0x191e4 — -[Appirater setRatingAlert:]
 #[doc(alias = "-[Appirater setRatingAlert:]")]
-pub fn stub_191e4() -> ! {
-    todo!("0x191e4 -[Appirater setRatingAlert:]")
+pub fn stub_191e4(alert: u64) {
+    // IDA 0x191e4 (`-[Appirater setRatingAlert:]`): retained-property store
+    // via `objc_setProperty`. Same as the platform 0x191e4 anchor.
+    AudioAppirater::shared_set_rating_alert(alert);
 }
 
 // 0x19208 — -[Appirater delegate]
 #[doc(alias = "-[Appirater delegate]")]
-pub fn stub_19208() -> ! {
-    todo!("0x19208 -[Appirater delegate]")
+pub fn stub_19208() -> u64 {
+    // IDA 0x19208 (`-[Appirater delegate]`): returns the `_delegate` ivar.
+    // Same as the platform 0x19208 anchor; `0` is `nil`.
+    AudioAppirater::shared_delegate()
 }
 
 // 0x19218 — -[Appirater setDelegate:]
 #[doc(alias = "-[Appirater setDelegate:]")]
-pub fn stub_19218() -> ! {
-    todo!("0x19218 -[Appirater setDelegate:]")
+pub fn stub_19218(delegate: u64) {
+    // IDA 0x19218 (`-[Appirater setDelegate:]`): plain ivar store. Same as
+    // the platform 0x19218 anchor.
+    AudioAppirater::shared_set_delegate(delegate);
 }
 
 // 0x19228 — -[AppDelegate init]

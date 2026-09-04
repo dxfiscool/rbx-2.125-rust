@@ -969,6 +969,17 @@ pub struct AudioAppirater {
     declined_to_rate: std::sync::atomic::AtomicBool,
     rated_current_version: std::sync::atomic::AtomicBool,
     current_version: parking_lot::Mutex<String>,
+    rating_alert: parking_lot::Mutex<u64>,
+    rating_alert_hides: std::sync::atomic::AtomicU32,
+    app_launched_calls: std::sync::atomic::AtomicU32,
+    entered_foreground_calls: std::sync::atomic::AtomicU32,
+    rate_app_calls: std::sync::atomic::AtomicU32,
+    last_review_url: parking_lot::Mutex<String>,
+    alert_button_taps: std::sync::atomic::AtomicU32,
+    last_alert_button: std::sync::atomic::AtomicI32,
+    delegate_remind_later_notifies: std::sync::atomic::AtomicU32,
+    delegate_rated_notifies: std::sync::atomic::AtomicU32,
+    delegate_declined_notifies: std::sync::atomic::AtomicU32,
 }
 
 impl AudioAppirater {
@@ -1084,7 +1095,135 @@ impl AudioAppirater {
         self.rating_alert_visible
             .store(true, std::sync::atomic::Ordering::SeqCst);
     }
+
+    /// `-[Appirater hideRatingAlert]` (IDA 0x18d4c): dismisses the alert
+    /// when visible. Reports whether an alert was dismissed. Mirrors the
+    /// platform crate twin.
+    pub fn hide_rating_alert(&self) -> bool {
+        if self
+            .rating_alert_visible
+            .swap(false, std::sync::atomic::Ordering::SeqCst)
+        {
+            self.rating_alert_hides
+                .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            true
+        } else {
+            false
+        }
+    }
+
+    /// `+[Appirater rateApp]` (IDA 0x18f24): substitutes the stored app id
+    /// into the review template, flags `kAppiraterRatedCurrentVersion`.
+    /// Returns the opened URL. Mirrors the platform crate twin.
+    pub fn rate_app(&self) -> String {
+        let url = APPIRATER_REVIEW_URL_TEMPLATE.replace("APP_ID", &self.app_id.lock());
+        self.rated_current_version
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+        *self.last_review_url.lock() = url.clone();
+        self.rate_app_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        url
+    }
+
+    /// `-[Appirater alertView:clickedButtonAtIndex:]` (IDA 0x19028): button
+    /// 2 stamps `kAppiraterReminderRequestDate`, button 1 rates, button 0
+    /// flags `kAppiraterDeclinedToRate`; each then pings its delegate
+    /// selector when the delegate is non-`nil`. Mirrors the platform crate
+    /// twin.
+    pub fn alert_view_clicked_button(&self, button_index: i32, now_secs: f64) {
+        self.alert_button_taps
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.last_alert_button
+            .store(button_index, std::sync::atomic::Ordering::SeqCst);
+        match button_index {
+            2 => {
+                *self.reminder_request_date_secs.lock() = now_secs;
+                if *self.delegate.lock() != 0 {
+                    self.delegate_remind_later_notifies
+                        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            1 => {
+                self.rate_app();
+                if *self.delegate.lock() != 0 {
+                    self.delegate_rated_notifies
+                        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            0 => {
+                self.declined_to_rate
+                    .store(true, std::sync::atomic::Ordering::SeqCst);
+                if *self.delegate.lock() != 0 {
+                    self.delegate_declined_notifies
+                        .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    /// `-[Appirater ratingAlert]` / `-[Appirater setRatingAlert:]`
+    /// (retained ivar, IDA 0x191d4/0x191e4); `0` is `nil`.
+    pub fn rating_alert(&self) -> u64 {
+        *self.rating_alert.lock()
+    }
+    pub fn set_rating_alert(&self, alert: u64) {
+        *self.rating_alert.lock() = alert;
+    }
+
+    /// `-[Appirater delegate]` / `-[Appirater setDelegate:]` (instance ivar,
+    /// IDA 0x19208/0x19218); `0` is `nil`.
+    pub fn delegate(&self) -> u64 {
+        *self.delegate.lock()
+    }
+    pub fn set_delegate(&self, delegate: u64) {
+        *self.delegate.lock() = delegate;
+    }
+
+    /// `+appLaunched:` / `+appEnteredForeground:` call counters.
+    pub fn note_app_launched(&self) {
+        self.app_launched_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn note_entered_foreground(&self) {
+        self.entered_foreground_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// Shared-instance shims for the class-method stubs in
+    /// generated_138.rs (the ObjC class methods address the singleton).
+    pub fn shared_note_app_launched() {
+        Self::shared().note_app_launched();
+    }
+    pub fn shared_note_entered_foreground() {
+        Self::shared().note_entered_foreground();
+    }
+    pub fn shared_hide_rating_alert() -> bool {
+        Self::shared().hide_rating_alert()
+    }
+    pub fn shared_rate_app() -> String {
+        Self::shared().rate_app()
+    }
+    pub fn shared_alert_button(button_index: i32, now_secs: f64) {
+        Self::shared().alert_view_clicked_button(button_index, now_secs);
+    }
+    pub fn shared_rating_alert() -> u64 {
+        Self::shared().rating_alert()
+    }
+    pub fn shared_set_rating_alert(alert: u64) {
+        Self::shared().set_rating_alert(alert);
+    }
+    pub fn shared_delegate() -> u64 {
+        Self::shared().delegate()
+    }
+    pub fn shared_set_delegate(delegate: u64) {
+        Self::shared().set_delegate(delegate);
+    }
 }
+
+/// Review URL template substituted in `+[Appirater rateApp]` (IDA 0x18f6e):
+/// `itms-apps://...id=APP_ID`. Mirrors the platform crate constant.
+pub const APPIRATER_REVIEW_URL_TEMPLATE: &str = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
 
 // 0x17df0 — +[Appirater setAppId:]
 #[doc(alias = "+[Appirater setAppId:]")]
