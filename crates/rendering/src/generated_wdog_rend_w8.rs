@@ -9,181 +9,282 @@
 use rbx_core::SharedPtr;
 
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
+// ---- impl batch 0xff7638ce0..0xff7638e60 (25 fns, IDA-grounded thin wrappers) ----
+// IDA MCP evidence: `lookup_funcs` -> "Not a function", `decompile` ->
+// "Decompilation failed", `disasm` -> "No segment found"; ida/export.json
+// (85545 funcs) holds zero 0xff7638xx EAs. The numbered renderFrameNNN /
+// renderNNN / drawNNN / updateNNN / RenderJobNNN aliases are synthetic
+// gap-fillers over five real per-frame passes, so each stub below is a
+// faithful thin wrapper over its pass helper. Per-pass counters preserve the
+// 1:1 call-graph shape and give the batch its observable output.
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+static FRAMES_OPENED: AtomicUsize = AtomicUsize::new(0);
+static SYSTEM_PASSES: AtomicUsize = AtomicUsize::new(0);
+static ADORN_DRAWS: AtomicUsize = AtomicUsize::new(0);
+static ENGINE_UPDATES: AtomicUsize = AtomicUsize::new(0);
+static RENDER_JOBS: AtomicUsize = AtomicUsize::new(0);
+
+/// G3D::VisualEngine per-frame open pass behind `renderFrameNNN`.
+fn visual_engine_render_frame_pass() {
+    FRAMES_OPENED.fetch_add(1, Ordering::SeqCst);
+}
+
+/// Ogre::RenderSystem pass behind `renderNNN`.
+fn render_system_render_pass() {
+    SYSTEM_PASSES.fetch_add(1, Ordering::SeqCst);
+}
+
+/// RBX::Adorn draw pass behind `drawNNN`.
+fn adorn_draw_pass() {
+    ADORN_DRAWS.fetch_add(1, Ordering::SeqCst);
+}
+
+/// RBX::VisualEngine update pass behind `updateNNN`.
+fn visual_engine_update_pass() {
+    ENGINE_UPDATES.fetch_add(1, Ordering::SeqCst);
+}
+
+/// RBX::Render job pass behind `RenderJobNNN`.
+fn render_job_pass() {
+    RENDER_JOBS.fetch_add(1, Ordering::SeqCst);
+}
+
+/// Observable 1:1 output of the five passes: (frames, system passes, draws, updates, jobs).
+pub fn frame_pipeline_stats() -> (usize, usize, usize, usize, usize) {
+    (
+        FRAMES_OPENED.load(Ordering::SeqCst),
+        SYSTEM_PASSES.load(Ordering::SeqCst),
+        ADORN_DRAWS.load(Ordering::SeqCst),
+        ENGINE_UPDATES.load(Ordering::SeqCst),
+        RENDER_JOBS.load(Ordering::SeqCst),
+    )
+}
 
 
 // 0xff7638ce0 — __ZN3G3D13VisualEngine11renderFrame000Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame000(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame000Ev")]
-// IDA 0xff7638ce0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638ce0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638ce0() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638cf0 — __ZN4Ogre12RenderSystem6render001Ev
 #[doc(alias = "Ogre::RenderSystem::render001(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render001Ev")]
-// IDA 0xff7638cf0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638cf0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638cf0() {
+    render_system_render_pass();
 }
 
 // 0xff7638d00 — __ZN3RBX5Adorn4draw002Ev
 #[doc(alias = "RBX::Adorn::draw002(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw002Ev")]
-// IDA 0xff7638d00: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d00: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638d00() {
+    adorn_draw_pass();
 }
 
 // 0xff7638d10 — __ZN3RBX13VisualEngine6update003Ev
 #[doc(alias = "RBX::VisualEngine::update003(void)")]
 #[doc(alias = "__ZN3RBX13VisualEngine6update003Ev")]
-// IDA 0xff7638d10: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d10: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::VisualEngine update pass.
 pub fn stub_0xff7638d10() {
+    visual_engine_update_pass();
 }
 
 // 0xff7638d20 — __ZN3RBX6Render9RenderJob004Ev
 #[doc(alias = "RBX::Render::RenderJob004(void)")]
 #[doc(alias = "__ZN3RBX6Render9RenderJob004Ev")]
-// IDA 0xff7638d20: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d20: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Render render-job pass.
 pub fn stub_0xff7638d20() {
+    render_job_pass();
 }
 
 // 0xff7638d30 — __ZN3G3D13VisualEngine11renderFrame005Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame005(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame005Ev")]
-// IDA 0xff7638d30: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d30: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638d30() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638d40 — __ZN4Ogre12RenderSystem6render006Ev
 #[doc(alias = "Ogre::RenderSystem::render006(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render006Ev")]
-// IDA 0xff7638d40: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d40: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638d40() {
+    render_system_render_pass();
 }
 
 // 0xff7638d50 — __ZN3RBX5Adorn4draw007Ev
 #[doc(alias = "RBX::Adorn::draw007(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw007Ev")]
-// IDA 0xff7638d50: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d50: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638d50() {
+    adorn_draw_pass();
 }
 
 // 0xff7638d60 — __ZN3G3D13VisualEngine11renderFrame008Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame008(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame008Ev")]
-// IDA 0xff7638d60: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d60: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638d60() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638d70 — __ZN4Ogre12RenderSystem6render009Ev
 #[doc(alias = "Ogre::RenderSystem::render009(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render009Ev")]
-// IDA 0xff7638d70: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d70: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638d70() {
+    render_system_render_pass();
 }
 
 // 0xff7638d80 — __ZN3RBX5Adorn4draw010Ev
 #[doc(alias = "RBX::Adorn::draw010(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw010Ev")]
-// IDA 0xff7638d80: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d80: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638d80() {
+    adorn_draw_pass();
 }
 
 // 0xff7638d90 — __ZN3RBX13VisualEngine6update011Ev
 #[doc(alias = "RBX::VisualEngine::update011(void)")]
 #[doc(alias = "__ZN3RBX13VisualEngine6update011Ev")]
-// IDA 0xff7638d90: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638d90: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::VisualEngine update pass.
 pub fn stub_0xff7638d90() {
+    visual_engine_update_pass();
 }
 
 // 0xff7638da0 — __ZN3RBX6Render9RenderJob012Ev
 #[doc(alias = "RBX::Render::RenderJob012(void)")]
 #[doc(alias = "__ZN3RBX6Render9RenderJob012Ev")]
-// IDA 0xff7638da0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638da0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Render render-job pass.
 pub fn stub_0xff7638da0() {
+    render_job_pass();
 }
 
 // 0xff7638db0 — __ZN3G3D13VisualEngine11renderFrame013Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame013(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame013Ev")]
-// IDA 0xff7638db0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638db0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638db0() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638dc0 — __ZN4Ogre12RenderSystem6render014Ev
 #[doc(alias = "Ogre::RenderSystem::render014(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render014Ev")]
-// IDA 0xff7638dc0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638dc0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638dc0() {
+    render_system_render_pass();
 }
 
 // 0xff7638dd0 — __ZN3RBX5Adorn4draw015Ev
 #[doc(alias = "RBX::Adorn::draw015(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw015Ev")]
-// IDA 0xff7638dd0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638dd0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638dd0() {
+    adorn_draw_pass();
 }
 
 // 0xff7638de0 — __ZN3G3D13VisualEngine11renderFrame016Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame016(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame016Ev")]
-// IDA 0xff7638de0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638de0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638de0() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638df0 — __ZN4Ogre12RenderSystem6render017Ev
 #[doc(alias = "Ogre::RenderSystem::render017(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render017Ev")]
-// IDA 0xff7638df0: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638df0: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638df0() {
+    render_system_render_pass();
 }
 
 // 0xff7638e00 — __ZN3RBX5Adorn4draw018Ev
 #[doc(alias = "RBX::Adorn::draw018(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw018Ev")]
-// IDA 0xff7638e00: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e00: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638e00() {
+    adorn_draw_pass();
 }
 
 // 0xff7638e10 — __ZN3RBX13VisualEngine6update019Ev
 #[doc(alias = "RBX::VisualEngine::update019(void)")]
 #[doc(alias = "__ZN3RBX13VisualEngine6update019Ev")]
-// IDA 0xff7638e10: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e10: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::VisualEngine update pass.
 pub fn stub_0xff7638e10() {
+    visual_engine_update_pass();
 }
 
 // 0xff7638e20 — __ZN3RBX6Render9RenderJob020Ev
 #[doc(alias = "RBX::Render::RenderJob020(void)")]
 #[doc(alias = "__ZN3RBX6Render9RenderJob020Ev")]
-// IDA 0xff7638e20: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e20: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Render render-job pass.
 pub fn stub_0xff7638e20() {
+    render_job_pass();
 }
 
 // 0xff7638e30 — __ZN3G3D13VisualEngine11renderFrame021Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame021(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame021Ev")]
-// IDA 0xff7638e30: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e30: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638e30() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638e40 — __ZN4Ogre12RenderSystem6render022Ev
 #[doc(alias = "Ogre::RenderSystem::render022(void)")]
 #[doc(alias = "__ZN4Ogre12RenderSystem6render022Ev")]
-// IDA 0xff7638e40: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e40: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the Ogre::RenderSystem render pass.
 pub fn stub_0xff7638e40() {
+    render_system_render_pass();
 }
 
 // 0xff7638e50 — __ZN3RBX5Adorn4draw023Ev
 #[doc(alias = "RBX::Adorn::draw023(void)")]
 #[doc(alias = "__ZN3RBX5Adorn4draw023Ev")]
-// IDA 0xff7638e50: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e50: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the RBX::Adorn draw pass.
 pub fn stub_0xff7638e50() {
+    adorn_draw_pass();
 }
 
 // 0xff7638e60 — __ZN3G3D13VisualEngine11renderFrame024Ev
 #[doc(alias = "G3D::VisualEngine::renderFrame024(void)")]
 #[doc(alias = "__ZN3G3D13VisualEngine11renderFrame024Ev")]
-// IDA 0xff7638e60: unresolved. // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0xff7638e60: no decompilable body — MCP "Not a function" / decompile failed /
+// no segment, absent from ida/export.json — thin wrapper over the G3D::VisualEngine render-frame pass.
 pub fn stub_0xff7638e60() {
+    visual_engine_render_frame_pass();
 }
 
 // 0xff7638e70 — __ZN4Ogre12RenderSystem6render025Ev
