@@ -54,6 +54,11 @@ pub struct Appirater {
     /// `appWillResignActive` observer installed by the sharedInstance block
     /// (IDA 0x17fe4..0x18092).
     pub observes_resign_active: bool,
+    /// `-[Appirater ratingAlert]` slot (IDA 0x191d4..0x19200).
+    pub rating_alert: Option<u32>,
+    /// Delegate callbacks from `alertView:clickedButtonAtIndex:` (IDA
+    /// 0x19028..0x19140).
+    pub delegate_events: Vec<AppiraterDelegateEvent>,
 }
 
 impl Appirater {
@@ -97,6 +102,27 @@ use rbx_reflection::generated::{
 };
 use rbx_reflection::generated_shard_dh::resolution_preset_enum_desc;
 use std::collections::BTreeMap;
+/// `AppiraterDelegate` callback recorded by
+/// `-[Appirater alertView:clickedButtonAtIndex:]` (IDA 0x19028..0x19140).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum AppiraterDelegateEvent {
+    OptToRate,
+    OptToRemindLater,
+    OptToDecline,
+}
+
+/// `AppDelegate` host state (IDA 0x19228..0x19a30): window lifetime,
+/// analytics/launch latches. UIKit objects (`UIWindow`, `UIAlertView`,
+/// `PlaceLauncher`) live on the platform side; only the observable latches
+/// are modeled here.
+#[derive(Debug, Default)]
+pub struct AppDelegate {
+    pub launched: bool,
+    pub flurry_session_key: Option<String>,
+    pub resigned_active: bool,
+    pub entered_background: bool,
+    pub received_memory_warning: bool,
+}
 
 // 0x15ef8 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings12GraphicsModeESaIS2_EE11_M_allocateEm
 // type: int(void)
@@ -756,184 +782,304 @@ pub fn stub_0x18bd4(slot: &mut Option<SharedPtr<Mutex<Appirater>>>) {
 // 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
 // type: void __cdecl(Appirater *self, SEL, char)
 #[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
-pub fn stub_0x18bdc() -> ! {
-    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
+pub fn stub_0x18bdc(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18bdc `-[Appirater incrementSignificantEventAndRate:]`:
+    // `incrementSignificantEventCount` (0x18bf4); when `canRate` and
+    // conditions hold (0x18c0c) and the network is up (0x18c24), the alert
+    // block runs on the main queue (0x18c5c..0x18c6e -> 0x18c78). The queue
+    // hop is synchronous here.
+    stub_0x18878(state, bundle_version, now_epoch);
+    if can_rate && stub_0x183d8(state, now_epoch) && stub_0x17e68(state) {
+        stub_0x18c78(state);
+    }
 }
 
 // 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
 #[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
-pub fn stub_0x18c78() -> ! {
-    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
+pub fn stub_0x18c78(state: &mut Appirater) -> bool {
+    // IDA 0x18c78 `__46-[Appirater incrementSignificantEventAndRate:]_
+    // block_invoke`: `showRatingAlert` shim (single `objc_msgSend`; cf.
+    // 0x18bb4).
+    stub_0x180a8(state)
 }
 
 // 0x18c8c — ___copy_helper_block_130
 #[doc(alias = "___copy_helper_block_130")]
-pub fn stub_0x18c8c() -> ! {
-    todo!("0x18c8c ___copy_helper_block_130")
+pub fn stub_0x18c8c(
+    dst: &mut Option<SharedPtr<Mutex<Appirater>>>,
+    src: &Option<SharedPtr<Mutex<Appirater>>>,
+) {
+    // IDA 0x18c8c `__copy_helper_block_130`: `_Block_object_assign` retain
+    // of the captured self (0x18c92; cf. 0x18094).
+    *dst = src.clone();
 }
 
 // 0x18c98 — ___destroy_helper_block_131
 #[doc(alias = "___destroy_helper_block_131")]
-pub fn stub_0x18c98() -> ! {
-    todo!("0x18c98 ___destroy_helper_block_131")
+pub fn stub_0x18c98(slot: &mut Option<SharedPtr<Mutex<Appirater>>>) {
+    // IDA 0x18c98 `__destroy_helper_block_131`: `_Block_object_dispose`
+    // release of the captured self (0x18c9c; cf. 0x180a0).
+    *slot = None;
 }
 
 // 0x18ca0 — +[Appirater appLaunched]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appLaunched]")]
-pub fn stub_0x18ca0() -> ! {
-    todo!("0x18ca0 +[Appirater appLaunched]")
+pub fn stub_0x18ca0(state: &mut Appirater, bundle_version: &str, now_epoch: f64) {
+    // IDA 0x18ca0 `+[Appirater appLaunched]`: forwards to `appLaunched:`
+    // with 1 (0x18cba).
+    stub_0x18cc0(state, bundle_version, now_epoch, true);
 }
 
 // 0x18cc0 — +[Appirater appLaunched:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appLaunched:]")]
-pub fn stub_0x18cc0() -> ! {
-    todo!("0x18cc0 +[Appirater appLaunched:]")
+pub fn stub_0x18cc0(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18cc0 `+[Appirater appLaunched:]`: builds the
+    // `__25_appLaunched_block_invoke` block capturing `canRate` (0x18cf2..
+    // 0x18d04) and runs it on a global queue (0x18cd0..0x18d08 -> 0x18d10).
+    // The queue hop is synchronous here.
+    stub_0x18d10(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
 #[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
-pub fn stub_0x18d10() -> ! {
-    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
+pub fn stub_0x18d10(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18d10 `__25+[Appirater appLaunched:]_block_invoke`:
+    // `sharedInstance` (0x18d2e) + `incrementAndRate:` with the captured
+    // flag. The shared slot already exists; the call lands on `state`.
+    stub_0x18b18(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18d4c — -[Appirater hideRatingAlert]
 // type: void __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater hideRatingAlert]")]
-pub fn stub_0x18d4c() -> ! {
-    todo!("0x18d4c -[Appirater hideRatingAlert]")
+pub fn stub_0x18d4c(state: &mut Appirater) {
+    // IDA 0x18d4c `-[Appirater hideRatingAlert]`: when the alert `isVisible`
+    // (0x18d62..0x18d72), `dismissWithClickedButtonIndex:-1` (0x18d9e..
+    // 0x18db8).
+    if state.rating_alert_visible {
+        state.rating_alert_visible = false;
+    }
 }
 
 // 0x18dbc — +[Appirater appWillResignActive]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater appWillResignActive]")]
-pub fn stub_0x18dbc() -> ! {
-    todo!("0x18dbc +[Appirater appWillResignActive]")
+pub fn stub_0x18dbc(state: &mut Appirater) {
+    // IDA 0x18dbc `+[Appirater appWillResignActive]`: `sharedInstance`
+    // (0x18df4) + `hideRatingAlert` (0x18e08).
+    stub_0x18d4c(state);
 }
 
 // 0x18e0c — +[Appirater appEnteredForeground:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater appEnteredForeground:]")]
-pub fn stub_0x18e0c() -> ! {
-    todo!("0x18e0c +[Appirater appEnteredForeground:]")
+pub fn stub_0x18e0c(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18e0c `+[Appirater appEnteredForeground:]`: builds the
+    // `__34_appEnteredForeground_block_invoke` block (0x18e3e..0x18e50) and
+    // runs it on a global queue (0x18e1c..0x18e54 -> 0x18e5c). Synchronous
+    // here.
+    stub_0x18e5c(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
 #[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
-pub fn stub_0x18e5c() -> ! {
-    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
+pub fn stub_0x18e5c(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18e5c `__34+[Appirater appEnteredForeground:]_block_invoke`:
+    // `sharedInstance` (0x18e7a) + `incrementAndRate:` (cf. 0x18d10).
+    stub_0x18b18(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18e98 — +[Appirater userDidSignificantEvent:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater userDidSignificantEvent:]")]
-pub fn stub_0x18e98() -> ! {
-    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
+pub fn stub_0x18e98(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18e98 `+[Appirater userDidSignificantEvent:]`: builds the
+    // `__37_userDidSignificantEvent_block_invoke` block (0x18eca..0x18edc)
+    // and runs it on a global queue (0x18ea8..0x18ee0 -> 0x18ee8).
+    // Synchronous here.
+    stub_0x18ee8(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
 #[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
-pub fn stub_0x18ee8() -> ! {
-    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
+pub fn stub_0x18ee8(state: &mut Appirater, bundle_version: &str, now_epoch: f64, can_rate: bool) {
+    // IDA 0x18ee8 `__37+[Appirater userDidSignificantEvent:]_block_invoke`:
+    // `sharedInstance` (0x18f06) + `incrementSignificantEventAndRate:`.
+    stub_0x18bdc(state, bundle_version, now_epoch, can_rate);
 }
 
 // 0x18f24 — +[Appirater rateApp]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[Appirater rateApp]")]
-pub fn stub_0x18f24() -> ! {
-    todo!("0x18f24 +[Appirater rateApp]")
+pub fn stub_0x18f24(state: &mut Appirater) {
+    // IDA 0x18f24 `+[Appirater rateApp]`: formats `templateReviewURL` with
+    // the app id (`APP_ID` substitution, 0x18f6e..0x18fa2), sets
+    // `kAppiraterRatedCurrentVersion` (0x18fbe), synchronizes (0x18fd0),
+    // and opens the URL (0x18ff0..0x19024). The template text and the open
+    // live on the platform side; the rated latch is modeled here.
+    state.prefs.insert(
+        "kAppiraterRatedCurrentVersion".to_owned(),
+        AppiraterPref::Bool(true),
+    );
 }
 
 // 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
 // type: void __cdecl(Appirater *self, SEL, id, int)
 #[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
-pub fn stub_0x19028() -> ! {
-    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+pub fn stub_0x19028(state: &mut Appirater, button: i32, now_epoch: f64) {
+    // IDA 0x19028 `-[Appirater alertView:clickedButtonAtIndex:]`: button 2
+    // stamps `kAppiraterReminderRequestDate` (0x190c4..0x190f6) + delegate
+    // `appiraterDidOptToRemindLater` (0x19122..0x19140); button 1 runs
+    // `rateApp` (0x19070) + delegate `appiraterDidOptToRate`
+    // (0x1908a..0x190aa); button 0 sets `kAppiraterDeclinedToRate` +
+    // delegate `appiraterDidDeclineToRate` (classic Appirater tail).
+    match button {
+        2 => {
+            state.prefs.insert(
+                "kAppiraterReminderRequestDate".to_owned(),
+                AppiraterPref::Float(now_epoch),
+            );
+            if state.delegate.is_some() {
+                state.delegate_events.push(AppiraterDelegateEvent::OptToRemindLater);
+            }
+        }
+        1 => {
+            stub_0x18f24(state);
+            if state.delegate.is_some() {
+                state.delegate_events.push(AppiraterDelegateEvent::OptToRate);
+            }
+        }
+        _ => {
+            state.prefs.insert(
+                "kAppiraterDeclinedToRate".to_owned(),
+                AppiraterPref::Bool(true),
+            );
+            if state.delegate.is_some() {
+                state.delegate_events.push(AppiraterDelegateEvent::OptToDecline);
+            }
+        }
+    }
 }
 
 // 0x191d4 — -[Appirater ratingAlert]
 // type: UIAlertView *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater ratingAlert]")]
-pub fn stub_0x191d4() -> ! {
-    todo!("0x191d4 -[Appirater ratingAlert]")
+pub fn stub_0x191d4(state: &Appirater) -> Option<u32> {
+    // IDA 0x191d4 `-[Appirater ratingAlert]`: `self->ratingAlert` load
+    // (0x191e2).
+    state.rating_alert
 }
 
 // 0x191e4 — -[Appirater setRatingAlert:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setRatingAlert:]")]
-pub fn stub_0x191e4() -> ! {
-    todo!("0x191e4 -[Appirater setRatingAlert:]")
+pub fn stub_0x191e4(state: &mut Appirater, alert: Option<u32>) {
+    // IDA 0x191e4 `-[Appirater setRatingAlert:]`: `objc_setProperty` retain
+    // into slot +4 (0x19200).
+    state.rating_alert = alert;
 }
 
 // 0x19208 — -[Appirater delegate]
 // type: AppiraterDelegate *__cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater delegate]")]
-pub fn stub_0x19208() -> ! {
-    todo!("0x19208 -[Appirater delegate]")
+pub fn stub_0x19208(state: &Appirater) -> Option<u32> {
+    // IDA 0x19208 `-[Appirater delegate]`: `_delegate` load (0x19216).
+    state.delegate
 }
 
 // 0x19218 — -[Appirater setDelegate:]
 // type: void __cdecl(Appirater *self, SEL, id)
 #[doc(alias = "-[Appirater setDelegate:]")]
-pub fn stub_0x19218() -> ! {
-    todo!("0x19218 -[Appirater setDelegate:]")
+pub fn stub_0x19218(state: &mut Appirater, delegate: Option<u32>) {
+    // IDA 0x19218 `-[Appirater setDelegate:]`: `_delegate` store (0x19224).
+    state.delegate = delegate;
 }
 
 // 0x19228 — -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate init]")]
-pub fn stub_0x19228() -> ! {
-    todo!("0x19228 -[AppDelegate init]")
+pub fn stub_0x19228() -> AppDelegate {
+    // IDA 0x19228 `-[AppDelegate init]`: super-init only (0x19242..0x19252).
+    AppDelegate::default()
 }
 
 // 0x19254 — -[AppDelegate dealloc]
 // type: void __cdecl(AppDelegate *self, SEL)
 #[doc(alias = "-[AppDelegate dealloc]")]
-pub fn stub_0x19254() -> ! {
-    todo!("0x19254 -[AppDelegate dealloc]")
+pub fn stub_0x19254(_app: AppDelegate) {
+    // IDA 0x19254 `-[AppDelegate dealloc]`: analytics release + window
+    // release (0x19276..0x1928a), then super-dealloc (0x192a2..0x192ac).
+    // Consuming `app` models the releases; Drop glue covers the rest.
 }
 
 // 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
 // type: char __cdecl(AppDelegate *self, SEL, id, id)
 #[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
-pub fn stub_0x192b4() -> ! {
-    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+pub fn stub_0x192b4(app: &mut AppDelegate, state: &mut Appirater, bundle_version: &str, now_epoch: f64) {
+    // IDA 0x192b4 `-[AppDelegate application:didFinishLaunchingWithOptions:]`:
+    // defaults registration + reporter/flurry bootstrap on background
+    // queues; the Appirater leg is the `appLaunched:` block (0x19514),
+    // applied here synchronously.
+    app.launched = true;
+    stub_0x19514(state, bundle_version, now_epoch);
 }
 
 // 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
-pub fn stub_0x194ec() -> ! {
-    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+pub fn stub_0x194ec(app: &mut AppDelegate) {
+    // IDA 0x194ec `__57_didFinishLaunching_block_invoke`: `+[Flurry
+    // startSession:]` with the app key (0x1950e).
+    app.flurry_session_key = Some("FM7DNRW56339NC22K8GR".to_owned());
 }
 
 // 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
-pub fn stub_0x19514() -> ! {
-    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+pub fn stub_0x19514(state: &mut Appirater, _bundle_version: &str, now_epoch: f64) {
+    // IDA 0x19514 `__57_didFinishLaunching_block_invoke_2`: the launch-time
+    // Appirater config — `setAppId:@"431946152"` (0x1953a),
+    // `setDaysUntilPrompt:3.0` (0x19554), `setUsesUntilPrompt:10` (0x19568),
+    // `setTimeBeforeReminding:10.0` (0x19582), `appLaunched:1` (0x1959a).
+    // `_bundle_version` is unused: the original keys off the running bundle,
+    // which the platform side supplies; `now_epoch` stands in for `NSDate`.
+    stub_0x17df0(state, "431946152");
+    stub_0x17e00(state, 3.0);
+    stub_0x17e14(state, 10);
+    stub_0x17e34(state, 10.0);
+    stub_0x18cc0(state, _bundle_version, now_epoch, true);
 }
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_0x195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+pub fn stub_0x195a0(app: &mut AppDelegate) {
+    // IDA 0x195a0 `-[AppDelegate applicationWillResignActive:]`: log +
+    // `PlaceLauncher disableViewBecauseGoingToBackground` (0x195be..0x19640;
+    // view work lives on the platform side); the latch is modeled here.
+    app.resigned_active = true;
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
-pub fn stub_0x196e4() -> ! {
-    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+pub fn stub_0x196e4(app: &mut AppDelegate) {
+    // IDA 0x196e4 `-[AppDelegate applicationDidEnterBackground:]`:
+    // `NSUserDefaults` writes + session reporting (0x1971c+); view/service
+    // work lives on the platform side; the latch is modeled here.
+    app.entered_background = true;
 }
 
 // 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
 #[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
-pub fn stub_0x19a30() -> ! {
-    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+pub fn stub_0x19a30(app: &mut AppDelegate) {
+    // IDA 0x19a30 `-[AppDelegate applicationDidReceiveMemoryWarning:]`: OOM
+    // log + `stopMemoryBouncer` + `PlaceLauncher` purge (0x19a4e..0x19aee;
+    // service work lives on the platform side); the latch is modeled here.
+    app.received_memory_warning = true;
 }
 
 // 0x30b1c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
