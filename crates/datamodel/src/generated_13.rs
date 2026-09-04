@@ -6,12 +6,15 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
-use rbx_core::SharedPtr;
+use rbx_core::{SharedPtr, WeakPtr};
 
 use parking_lot::Mutex;
 use rbx_core::signal::Signal;
-use crate::generated_05::{ATTR_REFERENT, EventDescPayload, FunctorOp, GenericSlotWrapper, GuidData, GuidIter, GuidTree, Instance, ReferenceBinder, SignatureItem, Variant, XmlElement, instance_is_a};
-use crate::instance::Players;
+use crate::generated_05::{ATTR_REFERENT, CreatorRole, EventDescPayload, FunctorOp, GenericSlotWrapper, GuidData, GuidIter, GuidTree, Instance, ReferenceBinder, SignatureItem, Variant, XmlElement, instance_is_a};
+use crate::instance::{ModelInstance, Players};
+use crate::data_model::DataModel;
+use crate::generated_86::stub_6ffc98;
+use crate::generated_10::stub_0x701240;
 /// `RBX::Network::Players::PlayerChatType` (IDA `0xa4a600`): the tag word
 /// carried by `Variant::ChatType`; enumerant values are not yet resolved.
 pub type PlayerChatType = u32;
@@ -92,6 +95,55 @@ pub struct PlayersInstRetFuncDesc {
 pub struct InstancePtrType {
     pub category: String,
     pub tag: String,
+}
+/// Rust model of `RBX::FriendService::FriendStatus` (IDA `0xa8572c`): the
+/// friendship relation tag; enumerant values are not yet resolved.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct FriendStatus(pub u32);
+/// Rust model of `RBX::AsyncHttpQueue::RequestResult` (IDA `0xa91498`): `1`
+/// is success (the only discriminant consulted here); other values are
+/// unmodeled failures.
+pub type HttpRequestResult = i32;
+/// Rust model of `RBX::Network::Player` (IDA `0xa80f18`): the
+/// friend-status-changed member signal plus the `+116` data-loaded flag
+/// behind `saveInstance` (IDA `0xa83044`). Shared ownership mirrors the
+/// C++ `enable_shared_from_this` (`weak_from<Player>`, IDA `0xa851a8`).
+pub struct Player {
+    pub friend_status_changed: Signal<(SharedPtr<Instance>, FriendStatus)>,
+    pub data_loaded: bool,
+}
+/// Bound `Player` 1-arg member used by `BoundFuncDesc<Player, void
+/// (shared_ptr<Instance>), 1>` (IDA `0xa965a8`): the receiver plus the
+/// retained instance.
+pub type PlayerInstMethod = fn(&Player, &SharedPtr<Instance>);
+/// Rust model of that `BoundFuncDesc`: the member pointer plus the declared
+/// argument name and its reflected type.
+pub struct PlayerInstFuncDesc {
+    pub method: PlayerInstMethod,
+    pub arg_names: [String; 1],
+    pub signature: Vec<SignatureItem>,
+}
+/// Bound `Player` 0-arg member used by `BoundFuncDesc<Player,
+/// shared_ptr<Instance> (void), 0>` (IDA `0xa965fc`): the receiver,
+/// returning a retained instance.
+pub type PlayerVoidRetMethod = fn(&Player) -> SharedPtr<Instance>;
+/// Rust model of that `BoundFuncDesc`: the member pointer plus an empty
+/// signature.
+pub struct PlayerVoidRetFuncDesc {
+    pub method: PlayerVoidRetMethod,
+    pub arg_names: [String; 0],
+    pub signature: Vec<SignatureItem>,
+}
+/// Bound `Player` 1-arg member used by `BoundFuncDesc<Player,
+/// shared_ptr<Instance> (string), 1>` (IDA `0xa969b0`): the receiver plus
+/// the string key, returning a retained instance.
+pub type PlayerStrRetMethod = fn(&Player, &str) -> SharedPtr<Instance>;
+/// Rust model of that `BoundFuncDesc`: the member pointer plus the declared
+/// argument name and its reflected type.
+pub struct PlayerStrRetFuncDesc {
+    pub method: PlayerStrRetMethod,
+    pub arg_names: [String; 1],
+    pub signature: Vec<SignatureItem>,
 }
 /// Rust model of an `rbx::signals::signal<void ()(PlayerChatType,
 /// SharedPtr<Instance>, string, SharedPtr<Instance>)>::slot` link holding a
@@ -1147,137 +1199,287 @@ pub fn stub_a81364(player: &SharedPtr<Instance>) {
 // 0xa83044 — __ZN3RBX7Network6Player12saveInstanceESsN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::saveInstance(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::saveInstance(std::string,boost::shared_ptr<RBX::Instance>)
-pub fn stub_a83044() -> ! {
-    todo!("0xa83044 RBX::Network::Player::saveInstance(std::string,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a83044(player: &Player, key: &str, inst: &SharedPtr<Instance>) {
+    // IDA 0xa83044: `Players::backendProcessing` gate → `runtime_error("LocalScripts
+    // cannot use SaveInstance")`; `+116` data-loaded gate → `runtime_error("Data for
+    // player not yet loaded, wait for DataReady")`; `PersistentDataStore` write;
+    // null write result → `runtime_error("Exceeded DataComplexity limit for Instance
+    // key %s")`; `raisePropertyChanged`. The backend gate, the store write, and the
+    // property-changed fire are unmodeled service state; the data-loaded gate is real.
+    // // BUG: nothing is persisted and no property-changed event fires — the
+    // // PersistentDataStore routing is unmodeled.
+    if !player.data_loaded {
+        panic!("0xa83044: Data for player not yet loaded, wait for DataReady");
+    }
+    let _retained = inst.clone();
+    let _ = key;
 }
 
 // 0xa851a8 — __ZN3RBX7Network6Player29loadCharacterAppearanceScriptEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::loadCharacterAppearanceScript(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::loadCharacterAppearanceScript(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a851a8() -> ! {
-    todo!("0xa851a8 RBX::Network::Player::loadCharacterAppearanceScript(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a851a8(player: &SharedPtr<Player>, inst: &SharedPtr<Instance>) {
+    // IDA 0xa851a8: `weak_from<Player>` plus `weak_from<Instance>`, then
+    // `setAppearanceParent(playerWeak, instWeak, false)` (IDA 0xa8d6b4). The
+    // weak pair is the synchronous retain collapse below.
+    stub_a8d6b4(&SharedPtr::downgrade(player), &SharedPtr::downgrade(inst), false);
 }
 
 // 0xa8572c — __ZN3RBX7Network6Player15getFriendStatusEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::getFriendStatus(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::getFriendStatus(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a8572c() -> ! {
-    todo!("0xa8572c RBX::Network::Player::getFriendStatus(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a8572c(player: &SharedPtr<Instance>, other: &SharedPtr<Instance>) -> FriendStatus {
+    // IDA 0xa8572c: provider → `FriendService` lookup, both userIds, then
+    // `FriendService::getFriendStatus`; a missing service yields 0. The
+    // service lookup and the `+39`/`+156` userId fields are unmodeled — the
+    // miss path is the conservative default.
+    // // BUG: always reports 0 — FriendService routing unmodeled.
+    let _ = (player, other);
+    FriendStatus(0)
 }
 
 // 0xa87d44 — __ZN3RBX7Network6Player27physicsOutBandwidthExceededEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Player::physicsOutBandwidthExceeded(RBX::Instance const*)")]
-pub fn stub_a87d44() -> ! {
-    todo!("0xa87d44 RBX::Network::Player::physicsOutBandwidthExceeded(RBX::Instance const*)")
+pub fn stub_a87d44(player: &SharedPtr<Instance>, inst: &SharedPtr<Instance>) -> bool {
+    // IDA 0xa87d44: tail-calls `Client::physicsOutBandwidthExceeded` (IDA
+    // 0x9688b4) — `findClient(inst, true)`, then
+    // `findConstFirstChildOfType<ClientReplicator>` and its flag word; null
+    // at either step yields 0. The `Client`/replicator lookup is
+    // network-crate state, unmodeled here — the miss path stays.
+    // // BUG: always reports false — Client lookup unmodeled.
+    let _ = (player, inst);
+    false
 }
 
 // 0xa87d50 — __ZN3RBX7Network6Player22getNetworkBufferHealthEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Player::getNetworkBufferHealth(RBX::Instance const*)")]
-pub fn stub_a87d50() -> ! {
-    todo!("0xa87d50 RBX::Network::Player::getNetworkBufferHealth(RBX::Instance const*)")
+pub fn stub_a87d50(player: &SharedPtr<Instance>, inst: &SharedPtr<Instance>) -> i32 {
+    // IDA 0xa87d50: tail-calls `Client::getNetworkBufferHealth` with the same
+    // `findClient` + `ClientReplicator` chain as 0xa87d44. Same unmodeled
+    // lookup, same miss-path default.
+    // // BUG: always reports 0 — Client lookup unmodeled.
+    let _ = (player, inst);
+    0
 }
 
 // 0xa8d6b4 — __ZN3RBX7Network6Player19setAppearanceParentEN5boost8weak_ptrIS1_EENS3_INS_8InstanceEEEb
 #[doc(alias = "RBX::Network::Player::setAppearanceParent(rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::Instance>,bool)")]
 // was: RBX::Network::Player::setAppearanceParent(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool)
-pub fn stub_a8d6b4() -> ! {
-    todo!("0xa8d6b4 RBX::Network::Player::setAppearanceParent(rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::Instance>,bool)")
+pub fn stub_a8d6b4(player: &WeakPtr<Player>, appearance: &WeakPtr<Instance>, flag: bool) {
+    // IDA 0xa8d6b4 (39KB): upgrades both weaks (expired → return), then the
+    // appearance orchestration — Humanoid search, accessory/apparel
+    // reparenting via `setParentInternal`, Humanoid wiring. The orchestration
+    // touches Humanoid/character state unmodeled here.
+    // // BUG: appearance is never reparented — the orchestration is unmodeled.
+    if player.upgrade().is_none() || appearance.upgrade().is_none() {
+        return;
+    }
+    let _ = flag;
 }
 
 // 0xa8e498 — __ZL23setAppearanceParentNullN5boost10shared_ptrIN3RBX8InstanceEEE
 #[doc(alias = "setAppearanceParentNull(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: setAppearanceParentNull(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a8e498() -> ! {
-    todo!("0xa8e498 setAppearanceParentNull(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a8e498(inst: &SharedPtr<Instance>) {
+    // IDA 0xa8e498: null `shared_ptr` returns at once (unspellable here —
+    // only the live path is modeled); else `CharacterAppearance`
+    // `classDescriptor` once-init + `isA` — on match,
+    // `setParentInternal(inst, null, false)` unparents it.
+    // Callers hold both trees via `SharedPtr`; `stub_6ffc98` takes raw pointers
+    // but is a safe fn (its own contract, see `generated_86`).
+    if instance_is_a(SharedPtr::as_ptr(inst), "CharacterAppearance") {
+        let _ = stub_6ffc98(SharedPtr::as_ptr(inst) as *mut Instance, std::ptr::null(), false);
+    }
 }
 
 // 0xa8e5f4 — __ZL29setAppearanceParentNullScriptN5boost10shared_ptrIN3RBX8InstanceEEE
 #[doc(alias = "setAppearanceParentNullScript(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: setAppearanceParentNullScript(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a8e5f4() -> ! {
-    todo!("0xa8e5f4 setAppearanceParentNullScript(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a8e5f4(inst: &SharedPtr<Instance>) {
+    // IDA 0xa8e5f4: null returns at once; `CharacterAppearance isA` →
+    // unparent (same `LABEL_17` as 0xa8e498); else `__dynamic_cast<IEquipable*>`
+    // plus the `Tool isA` chain — a `Tool` keeps its parent for the backpack
+    // branch below, while the IEquipable/backpack-parent lookup deciding the
+    // remaining arms is unmodeled service state.
+    // // BUG: `Tool`s and non-Appearance equipables keep their parent — the
+    // // IEquipable/backpack branch is unmodeled.
+    // Same ownership contract as `stub_a8e498`.
+    let raw = SharedPtr::as_ptr(inst);
+    if instance_is_a(raw, "CharacterAppearance") {
+        let _ = stub_6ffc98(raw as *mut Instance, std::ptr::null(), false);
+    }
 }
 
 // 0xa90080 — __ZL24makeAccoutrementRequestsPSsPSt9exceptionN5boost8weak_ptrIN3RBX7Network6PlayerEEENS3_INS4_9DataModelEEE
 #[doc(alias = "makeAccoutrementRequests(std::string *,std::exception *,rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::DataModel>)")]
 // was: makeAccoutrementRequests(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)
-pub fn stub_a90080() -> ! {
-    todo!("0xa90080 makeAccoutrementRequests(std::string *,std::exception *,rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::DataModel>)")
+pub fn stub_a90080(url: &str, player: &WeakPtr<Player>, data_model: &WeakPtr<DataModel>) {
+    // IDA 0xa90080 (12KB): upgrades both weaks (expired → return), builds the
+    // accoutrement URL request, enqueues it on the `AsyncHttpQueue` with a
+    // `doMakeAccoutrementRequests` bind (IDA 0xa946c0); thrown errors funnel
+    // to `StandardOut::printf("Make Accoutrement Request exception: %s")`.
+    // The queue machinery is unmodeled.
+    // // BUG: no request is ever enqueued — appearance fetch unmodeled.
+    if player.upgrade().is_none() || data_model.upgrade().is_none() {
+        return;
+    }
+    let _ = url;
 }
 
 // 0xa91484 — __ZL8addChildRKN5boost10shared_ptrIN3RBX13ModelInstanceEEERKNS0_INS1_8InstanceEEE
 #[doc(alias = "addChild(rbx_core::SharedPtr<RBX::ModelInstance> const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: addChild(boost::shared_ptr<RBX::ModelInstance> const&,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_a91484() -> ! {
-    todo!("0xa91484 addChild(rbx_core::SharedPtr<RBX::ModelInstance> const&,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_a91484(model: &SharedPtr<ModelInstance>, child: &SharedPtr<Instance>) -> bool {
+    // IDA 0xa91484: `setParentInternal(child, model, false)`; the bool result
+    // propagates (`setParentInternal` panics mirror the C++ throws). Callers
+    // hold both trees via `SharedPtr`; `stub_6ffc98` is a safe fn.
+    stub_6ffc98(SharedPtr::as_ptr(child) as *mut Instance, SharedPtr::as_ptr(model) as *const Instance, false)
 }
 
 // 0xa91498 — __ZL19CharacterLoadHelperN5boost10shared_ptrIN3RBX13ModelInstanceEEENS1_14AsyncHttpQueue13RequestResultENS0_ISt6vectorINS0_INS1_8InstanceEEESaIS8_EEEE
 #[doc(alias = "CharacterLoadHelper(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 // was: CharacterLoadHelper(boost::shared_ptr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)
-pub fn stub_a91498() -> ! {
-    todo!("0xa91498 CharacterLoadHelper(rbx_core::SharedPtr<RBX::ModelInstance>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")
+pub fn stub_a91498(model: &SharedPtr<ModelInstance>, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>) {
+    // IDA 0xa91498: `RequestResult != 1` returns at once (the failure path
+    // only drops the binds); on success the model is retained and `addChild`
+    // (IDA 0xa91484) runs over the loaded vector via `for_each`+`bind`.
+    // Clones plus `Drop` are the retains/releases.
+    if result != 1 {
+        return;
+    }
+    for child in instances.iter() {
+        stub_a91484(model, child);
+    }
 }
 
 // 0xa91a80 — __ZN3RBX7Network6Player19characterChildAddedEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::Player::characterChildAdded(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Network::Player::characterChildAdded(boost::shared_ptr<RBX::Instance>)
-pub fn stub_a91a80() -> ! {
-    todo!("0xa91a80 RBX::Network::Player::characterChildAdded(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_a91a80(player: &Player, child: &SharedPtr<Instance>) {
+    // IDA 0xa91a80: null child returns at once (unspellable — only the live
+    // path is modeled); `Humanoid classDescriptor` once-init + `isA` — on
+    // match, `shared_from<Humanoid>` plus `setupHumanoid(player, humanoid)`
+    // and `connection::disconnect(+280)` (one-shot). The Humanoid wiring and
+    // the connection live in unmodeled character state.
+    // // BUG: Humanoid setup never runs — setupHumanoid/connection unmodeled.
+    let _ = player;
+    if !instance_is_a(SharedPtr::as_ptr(child), "Humanoid") {
+        return;
+    }
+    let _retained = child.clone();
 }
 
 // 0xa91d80 — __Z22copyChildrenToBackpackPN3RBX8InstanceES1_
 #[doc(alias = "copyChildrenToBackpack(RBX::Instance *,RBX::Instance *)")]
-pub fn stub_a91d80() -> ! {
-    todo!("0xa91d80 copyChildrenToBackpack(RBX::Instance *,RBX::Instance *)")
+pub fn stub_a91d80(src: &SharedPtr<Instance>, dst: &SharedPtr<Instance>) {
+    // IDA 0xa91d80: walks the children vector (`ReleaseAssert`s on the
+    // slots, unspellable nulls aside), `clone`s each child
+    // (`Instance::clone`, IDA 0x701240 with role 3) and `setParentInternal`s
+    // the clone into the backpack (a2). `setParentInternal` panics mirror
+    // the C++ throws.
+    // SAFETY: both trees must outlive the call with caller-held ownership.
+    let kids: Vec<SharedPtr<Instance>> = unsafe { (*SharedPtr::as_ptr(src)).children.clone() };
+    for child in kids.iter() {
+        let raw: *const Instance = &**child;
+        if let Some(copy) = stub_0x701240(raw, CreatorRole(3)) {
+            let _ = stub_6ffc98(SharedPtr::as_ptr(&copy) as *mut Instance, SharedPtr::as_ptr(dst) as *const Instance, false);
+        }
+    }
 }
 
 // 0xa921a8 — __ZNK3RBX7Network6Player15verifySetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Player::verifySetParent(RBX::Instance const*)const")]
-pub fn stub_a921a8() -> ! {
-    todo!("0xa921a8 RBX::Network::Player::verifySetParent(RBX::Instance const*)const")
+pub fn stub_a921a8(player: &Player, new_parent: *const Instance) {
+    // IDA 0xa921a8: null parent returns at once; else the new parent's
+    // descriptor `isA Players` — mismatch throws `runtime_error("Parent of
+    // Player can not be changed")`.
+    // SAFETY: `new_parent` must be null or point to a valid `Instance`.
+    let _ = player;
+    if new_parent.is_null() {
+        return;
+    }
+    if !instance_is_a(new_parent, "Players") {
+        panic!("0xa921a8: Parent of Player can not be changed");
+    }
 }
 
 // 0xa9233c — __ZN3RBX7Network6Player21onFriendStatusChangedEN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusE
 #[doc(alias = "RBX::Network::Player::onFriendStatusChanged(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")]
 // was: RBX::Network::Player::onFriendStatusChanged(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)
-pub fn stub_a9233c() -> ! {
-    todo!("0xa9233c RBX::Network::Player::onFriendStatusChanged(rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus)")
+pub fn stub_a9233c(player: &Player, inst: &SharedPtr<Instance>, status: FriendStatus) {
+    // IDA 0xa9233c: retains the instance, fires the member
+    // `signal_with_args<2,(shared_ptr<Instance>, FriendStatus)>` with the
+    // pair, releases. Clone plus `fire` plus `Drop` is the same sequence.
+    player.friend_status_changed.fire((inst.clone(), status));
 }
 
 // 0xa946c0 — __ZL26doMakeAccoutrementRequestsSsN5boost8weak_ptrIN3RBX7Network6PlayerEEENS0_INS1_9DataModelEEE
 #[doc(alias = "doMakeAccoutrementRequests(std::string,rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::DataModel>)")]
 // was: doMakeAccoutrementRequests(std::string,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)
-pub fn stub_a946c0() -> ! {
-    todo!("0xa946c0 doMakeAccoutrementRequests(std::string,rbx_core::Weak<RBX::Network::Player>,rbx_core::Weak<RBX::DataModel>)")
+pub fn stub_a946c0(url: &str, player: &WeakPtr<Player>, data_model: &WeakPtr<DataModel>) {
+    // IDA 0xa946c0 (24KB): the `AsyncHttpQueue` completion behind 0xa90080 —
+    // upgrades the weak pair (expired → return), parses the accoutrement XML
+    // payload, creates/clones appearance instances and reparents them into
+    // the character. Queue + XML + Humanoid state unmodeled.
+    // // BUG: the completion does nothing — appearance assembly unmodeled.
+    if player.upgrade().is_none() || data_model.upgrade().is_none() {
+        return;
+    }
+    let _ = url;
 }
 
 // 0xa957f0 — __ZL16doLoadAppearanceN5boost8weak_ptrIN3RBX7Network6PlayerEEENS1_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS7_INS1_8InstanceEEESaISA_EEEESsbd
 #[doc(alias = "doLoadAppearance(rbx_core::Weak<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double)")]
 // was: doLoadAppearance(boost::weak_ptr<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,std::string,bool,double)
-pub fn stub_a957f0() -> ! {
-    todo!("0xa957f0 doLoadAppearance(rbx_core::Weak<RBX::Network::Player>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,std::string,bool,double)")
+pub fn stub_a957f0(player: &WeakPtr<Player>, result: HttpRequestResult, instances: &SharedPtr<Vec<SharedPtr<Instance>>>, name: &str, flag: bool, timeout: f64) {
+    // IDA 0xa957f0 (9KB): appearance-load completion — weak upgrade (expired
+    // → return), result check, appearance application onto the character.
+    // Queue + Humanoid state unmodeled.
+    // // BUG: the completion does nothing — appearance application unmodeled.
+    if player.upgrade().is_none() {
+        return;
+    }
+    let _ = (result, instances, name, flag, timeout);
 }
 
 // 0xa965a8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_a965a8() -> ! {
-    todo!("0xa965a8 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a965a8(this: *mut PlayerInstFuncDesc) {
+    // IDA 0xa965a8: `BoundFuncDesc<Player, void (shared_ptr<Instance>), 1>`
+    // D2 — vtable resets (compiler-managed) plus member drops (arg-name
+    // release, signature-list `_M_clear`); storage kept. `drop_in_place`
+    // runs the same field drops without freeing.
+    // SAFETY: `this` must point to a valid `PlayerInstFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa965fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()
-pub fn stub_a965fc() -> ! {
-    todo!("0xa965fc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_a965fc(this: *mut PlayerVoidRetFuncDesc) {
+    // IDA 0xa965fc: `BoundFuncDesc<Player, shared_ptr<Instance> (void), 0>`
+    // D2 — same vtable-reset + member-drop sequence as 0xa965a8 on
+    // `PlayerVoidRetFuncDesc`; storage kept.
+    // SAFETY: `this` must point to a valid `PlayerVoidRetFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa969b0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()
-pub fn stub_a969b0() -> ! {
-    todo!("0xa969b0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a969b0(this: *mut PlayerStrRetFuncDesc) {
+    // IDA 0xa969b0: `BoundFuncDesc<Player, shared_ptr<Instance> (string), 1>`
+    // D2 — same vtable-reset + member-drop sequence as 0xa965a8 on
+    // `PlayerStrRetFuncDesc`; storage kept.
+    // SAFETY: `this` must point to a valid `PlayerStrRetFuncDesc` that is not used again.
+    unsafe {
+        core::ptr::drop_in_place(this);
+    }
 }
 
 // 0xa96a58 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
