@@ -35,10 +35,41 @@ pub struct TaskSchedulerSettings {
     _opaque: (),
 }
 
-/// Rust model of `RBX::Camera` (IDA `0x3a798`): same shape.
-#[derive(Default)]
+/// Rust model of `RBX::Camera` (IDA `0x3a798`): the camera-subject link at
+/// `+103` words (IDA `0x3c39b0`); all else unmodeled.
 pub struct Camera {
-    _opaque: (),
+    pub subject: *const Instance,
+}
+
+impl Default for Camera {
+    fn default() -> Self {
+        Self { subject: core::ptr::null() }
+    }
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<Camera, Instance>` (IDA
+/// `0x3d04e0`): the conditionally-deleted heap payload plus attribute flags.
+/// Twin of `PVRefPropDescriptor`.
+#[derive(Default)]
+pub struct CamRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// Rust model of `RBX::ChangeHistoryService::Waypoint` (IDA `0x3d6ba0`): the
+/// named, pointer-ordered item set behind the binary search.
+#[derive(Default)]
+pub struct Waypoint {
+    pub name: String,
+    pub items: BTreeSet<*const Instance>,
+}
+
+/// Rust model of `RBX::ChangeHistoryService` (IDA `0x3d43a4`): the waypoint
+/// list that `requestWaypoint` finds-or-creates into.
+#[derive(Default)]
+pub struct ChangeHistoryService {
+    pub waypoints: Vec<Waypoint>,
 }
 
 /// Rust model of `RBX::Network::Players` (IDA `0x33454`): same shape; only the
@@ -8359,8 +8390,11 @@ pub fn stub_0x3c2b38() -> ! {
 // 0x3c39ac — __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv
 #[doc(alias = "RBX::Camera::getCameraSubjectInstanceDangerous(void)const")]
 // was: RBX::Camera::getCameraSubjectInstanceDangerous(void)const
-pub fn stub_0x3c39ac() -> ! {
-    todo!("0x3c39ac RBX::Camera::getCameraSubjectInstanceDangerous(void)const")
+pub fn stub_0x3c39ac(this: *const Camera) -> *const Instance {
+    // IDA 0x3c39ac: returns `*(this + 103)` (disasm 0x3c39b0) — the stored
+    // camera-subject link ("dangerous": unretained).
+    // SAFETY: `this` must point to a valid `Camera`.
+    unsafe { (*this).subject }
 }
 
 // 0x3c39b4 — __ZN3RBX6Camera16setCameraSubjectEPNS_8InstanceE
@@ -8373,8 +8407,17 @@ pub fn stub_0x3c39b4() -> ! {
 // 0x3c4e90 — __ZNK3RBX6Camera12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Camera::askSetParent(RBX::Instance const*)const")]
 // was: RBX::Camera::askSetParent(RBX::Instance const*)const
-pub fn stub_0x3c4e90() -> ! {
-    todo!("0x3c4e90 RBX::Camera::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x3c4e90(parent: *const Instance) -> bool {
+    // IDA 0x3c4e90: null parent returns `0` (disasm `MOV R0,#0; BEQ locret`);
+    // else the parent class descriptor is checked with
+    // `Workspace::classDescriptor` + `isA`, returned unnegated (disasm tail):
+    // a `Camera` parents only under `Workspace`. Same gate shape as
+    // `Light::askSetParent`, with inverted null handling.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    unsafe { instance_is_a(parent, "Workspace") }
 }
 
 // 0x3c4f8c — __ZNK3RBX6Camera17isPartVisibleFastERKNS_12PartInstanceERKN3G3D6Rect2DERKNS_14ContactManagerE
@@ -8408,15 +8451,25 @@ pub fn stub_0x3c8c84() -> ! {
 // 0x3c9c4c — __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")]
 // was: RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)
-pub fn stub_0x3c9c4c() -> ! {
-    todo!("0x3c9c4c RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")
+pub fn stub_0x3c9c4c(instance: *const Instance) -> Option<SharedPtr<Players>> {
+    // IDA 0x3c9c4c: `ServiceProvider::create<Players>` — provider lookup,
+    // null yields empty, else default-construct + adopt. Same shape as the
+    // `0x28e0c8` service creates.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(Players::default()))
 }
 
 // 0x3c9c64 — __ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::create<RBX::ControllerService>(RBX::Instance const*)")]
 // was: RBX::ControllerService * RBX::ServiceProvider::create<RBX::ControllerService>(RBX::Instance const*)
-pub fn stub_0x3c9c64() -> ! {
-    todo!("0x3c9c64 RBX::ControllerService * RBX::ServiceProvider::create<RBX::ControllerService>(RBX::Instance const*)")
+pub fn stub_0x3c9c64(instance: *const Instance) -> Option<SharedPtr<ControllerService>> {
+    // IDA 0x3c9c64: `ServiceProvider::create<ControllerService>` — same shape.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(ControllerService::default()))
 }
 
 // 0x3d043c — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -8429,22 +8482,34 @@ pub fn stub_0x3d043c() -> ! {
 // 0x3d04e0 — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()
-pub fn stub_0x3d04e0() -> ! {
-    todo!("0x3d04e0 RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x3d04e0(this: *mut CamRefPropDescriptor) {
+    // IDA 0x3d04e0: D0 — vtable resets plus the conditional payload delete,
+    // then `operator delete`; the box reclaim is all three. Same shape as
+    // 0x395114.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0x3d0510 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isReadOnly(void)const
-pub fn stub_0x3d0510() -> ! {
-    todo!("0x3d0510 RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_0x3d0510(this: *const CamRefPropDescriptor) -> bool {
+    // IDA 0x3d0510: attribute-word dispatch like 0x395144; the read-only flag
+    // collapses into the modeled field.
+    // SAFETY: `this` must point to a valid `CamRefPropDescriptor`.
+    unsafe { (*this).read_only }
 }
 
 // 0x3d0520 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isWriteOnly(void)const
-pub fn stub_0x3d0520() -> ! {
-    todo!("0x3d0520 RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_0x3d0520(this: *const CamRefPropDescriptor) -> bool {
+    // IDA 0x3d0520: attribute-word dispatch like 0x395154; the write-only
+    // flag collapses into the modeled field.
+    // SAFETY: `this` must point to a valid `CamRefPropDescriptor`.
+    unsafe { (*this).write_only }
 }
 
 // 0x3d0530 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -8534,15 +8599,19 @@ pub fn stub_0x395618() -> ! {
 // 0x395620 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const
-pub fn stub_0x395620() -> ! {
-    todo!("0x395620 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")
+pub fn stub_0x395620() -> bool {
+    // IDA 0x395620: `GetSetImpl::isReadOnly` returns `0` (decomp) — this
+    // getter/setter pair is never read-only.
+    false
 }
 
 // 0x395624 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const
-pub fn stub_0x395624() -> ! {
-    todo!("0x395624 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")
+pub fn stub_0x395624() -> bool {
+    // IDA 0x395624: `GetSetImpl::isWriteOnly` returns `0` (`MOVS R0,#0`,
+    // verified disasm) — never write-only either.
+    false
 }
 
 // 0x395628 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -8576,22 +8645,31 @@ pub fn stub_0x395670() -> ! {
 // 0x39571c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")]
 // was: RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()
-pub fn stub_0x39571c() -> ! {
-    todo!("0x39571c RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")
+pub fn stub_0x39571c(_this: *mut PVRefType) {
+    // IDA 0x39571c: `B.W __ZdlPv$shim` — D0 storage release only. The unit
+    // payload frees with the box.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_this));
+    }
 }
 
 // 0x3d09ec — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isReadOnly(void)const
-pub fn stub_0x3d09ec() -> ! {
-    todo!("0x3d09ec RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isReadOnly(void)const")
+pub fn stub_0x3d09ec() -> bool {
+    // IDA 0x3d09ec: `GetSetImpl::isReadOnly` returns `0` (`MOVS R0,#0`,
+    // verified disasm) — same const shape as 0x395620.
+    false
 }
 
 // 0x3d09f0 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isWriteOnly(void)const
-pub fn stub_0x3d09f0() -> ! {
-    todo!("0x3d09f0 RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Instance *)>::isWriteOnly(void)const")
+pub fn stub_0x3d09f0() -> bool {
+    // IDA 0x3d09f0: `GetSetImpl::isWriteOnly` returns `0` (`MOVS R0,#0`,
+    // verified disasm) — same const shape as 0x395624.
+    false
 }
 
 // 0x3d09f4 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -8611,8 +8689,21 @@ pub fn stub_0x3d0a14() -> ! {
 // 0x3d43a4 — __ZN3RBX20ChangeHistoryService15requestWaypointEPKcPKNS_8InstanceE
 #[doc(alias = "RBX::ChangeHistoryService::requestWaypoint(char const*,RBX::Instance const*)")]
 // was: RBX::ChangeHistoryService::requestWaypoint(char const*,RBX::Instance const*)
-pub fn stub_0x3d43a4() -> ! {
-    todo!("0x3d43a4 RBX::ChangeHistoryService::requestWaypoint(char const*,RBX::Instance const*)")
+pub fn stub_0x3d43a4(service: *mut ChangeHistoryService, name: &str) -> *mut Waypoint {
+    // IDA 0x3d43a4: `find<ChangeHistoryService>` for the context (disasm
+    // 0x3d43ac), null yields null (disasm 0x3d43b2-0x3d43b4); else the
+    // inner `requestWaypoint(name)` (disasm 0x3d43bd) finds-or-creates the
+    // named waypoint. The find step is the caller's (same shape as 0x3d6fc4);
+    // here the service is already in hand, so only find-or-create remains.
+    // SAFETY: `service` must point to a valid `ChangeHistoryService` outliving
+    // the returned pointer.
+    unsafe {
+        if let Some(slot) = (*service).waypoints.iter_mut().find(|w| w.name == name) {
+            return slot as *mut Waypoint;
+        }
+        (*service).waypoints.push(Waypoint { name: name.to_string(), items: BTreeSet::new() });
+        (*service).waypoints.last_mut().unwrap() as *mut Waypoint
+    }
 }
 
 // 0x3d4700 — __ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE
@@ -8653,15 +8744,51 @@ pub fn stub_0x3d5dbc() -> ! {
 // 0x3d6ba0 — __ZN3RBX20ChangeHistoryService8Waypoint8findItemEPNS_8InstanceE
 #[doc(alias = "RBX::ChangeHistoryService::Waypoint::findItem(RBX::Instance *)")]
 // was: RBX::ChangeHistoryService::Waypoint::findItem(RBX::Instance *)
-pub fn stub_0x3d6ba0() -> ! {
-    todo!("0x3d6ba0 RBX::ChangeHistoryService::Waypoint::findItem(RBX::Instance *)")
+pub fn stub_0x3d6ba0(waypoint: *const Waypoint, item: *const Instance) -> *const Instance {
+    // IDA 0x3d6ba0: binary search of the pointer-ordered item set
+    // (`v5[4] >= a2` descent, disasm 0x3d6ba2-0x3d6bc4); hit returns the item,
+    // miss returns null (disasm 0x3d6bc8+). `BTreeSet` membership is the same
+    // search with the same hit/miss.
+    // SAFETY: `waypoint` must point to a valid `Waypoint`.
+    unsafe {
+        if (*waypoint).items.contains(&item) {
+            item
+        } else {
+            core::ptr::null()
+        }
+    }
 }
 
 // 0x3d6fc4 — __ZN3RBX15ServiceProvider4findINS_20ChangeHistoryServiceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ChangeHistoryService * RBX::ServiceProvider::find<RBX::ChangeHistoryService>(RBX::Instance const*)")]
 // was: RBX::ChangeHistoryService * RBX::ServiceProvider::find<RBX::ChangeHistoryService>(RBX::Instance const*)
-pub fn stub_0x3d6fc4() -> ! {
-    todo!("0x3d6fc4 RBX::ChangeHistoryService * RBX::ServiceProvider::find<RBX::ChangeHistoryService>(RBX::Instance const*)")
+pub fn stub_0x3d6fc4(instance: *const Instance) -> *const Instance {
+    // IDA 0x3d6fc4: `find<ChangeHistoryService>(instance)` — provider search
+    // then class scan, null on miss. Same root-walk + pre-order shape as
+    // `find<ScriptService>` (0x7039cc) and `find<SoundService>` (0x377154).
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack = vec![root];
+        while let Some(current) = stack.pop() {
+            if instance_is_a(current, "ChangeHistoryService") {
+                return current;
+            }
+            // Explicit borrow: an implicit autoref through the raw pointer is rejected.
+            let children: &[SharedPtr<Instance>] = &(*current).children;
+            for child in children.iter().rev() {
+                stack.push(SharedPtr::as_ptr(child));
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x3d6fe0 — __ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_
