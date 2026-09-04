@@ -12,23 +12,17 @@ use rbx_core::SharedPtr;
 
 // 0x46e358 — __ZN3RBX9DataModel10LegacyLock14Implementation6EventsC2Ev
 #[doc(alias = "RBX::DataModel::LegacyLock::Implementation::Events::Events(void)")]
-pub fn stub_46e358() -> ! {
-    todo!("0x46e358 RBX::DataModel::LegacyLock::Implementation::Events::Events(void)")
-}
+pub use crate::instance::stub_0x46e358 as stub_46e358;
 
 // 0x46e404 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
 // was: boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
-pub fn stub_46e404() -> ! {
-    todo!("0x46e404 rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
-}
+pub use crate::instance::stub_0x46e404 as stub_46e404;
 
 // 0x46e4d8 — __ZN5boost6detail12shared_countC2IN3RBX9DataModel10LegacyLock14Implementation6EventsEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
 // was: boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
-pub fn stub_46e4d8() -> ! {
-    todo!("0x46e4d8 boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
-}
+pub use crate::instance::stub_0x46e4d8 as stub_46e4d8;
 
 // 0x46e5d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")]
@@ -54,16 +48,12 @@ pub fn stub_46e5e0() -> ! {
 // 0x46e604 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)
-pub fn stub_46e604() -> ! {
-    todo!("0x46e604 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x46e604 as stub_46e604;
 
 // 0x46e608 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)
-pub fn stub_46e608() -> ! {
-    todo!("0x46e608 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x46e608 as stub_46e608;
 
 // 0x46e60c — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
@@ -75,16 +65,12 @@ pub fn stub_46e60c() -> ! {
 // 0x46e644 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)
-pub fn stub_46e644() -> ! {
-    todo!("0x46e644 std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")
-}
+pub use crate::instance::stub_0x46e644 as stub_46e644;
 
 // 0x46e670 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv
 #[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")]
 // was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)
-pub fn stub_46e670() -> ! {
-    todo!("0x46e670 std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")
-}
+pub use crate::instance::stub_0x46e670 as stub_46e670;
 
 // 0x46e69c — __ZN3RBX9DataModel10LegacyLock14Implementation27safe_static_init_eventsPoolEv
 #[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_init_eventsPool(void)")]
@@ -162,9 +148,7 @@ pub fn stub_46f030() -> ! {
 
 // 0x46f034 — __ZN3RBX9DataModel10LegacyLock14Implementation29safe_static_do_get_currentJobEv
 #[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_currentJob(void)")]
-pub fn stub_46f034() -> ! {
-    todo!("0x46f034 RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_currentJob(void)")
-}
+pub use crate::instance::stub_0x46f034 as stub_46f034;
 
 // 0x46f148 — __ZN3rbx25thread_specific_referenceIN3RBX9DataModel10GenericJobEED1Ev
 #[doc(alias = "rbx::thread_specific_reference<RBX::DataModel::GenericJob>::~thread_specific_reference()")]
@@ -203,9 +187,7 @@ pub fn stub_46f254() -> ! {
 // 0x46f260 — __ZN5boost6detail12shared_countC2IPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS9_EEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")]
 // was: boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)
-pub fn stub_46f260() -> ! {
-    todo!("0x46f260 boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")
-}
+pub use crate::instance::stub_0x46f260 as stub_46f260;
 
 // 0x46f358 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")]
@@ -231,29 +213,21 @@ pub fn stub_46f360() -> ! {
 // 0x46f370 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)
-pub fn stub_46f370() -> ! {
-    todo!("0x46f370 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x46f370 as stub_46f370;
 
 // 0x46f388 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)
-pub fn stub_46f388() -> ! {
-    todo!("0x46f388 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x46f388 as stub_46f388;
 
 // 0x46fd8c — __ZN3RBX9DataModel10MouseStatsC2Ev
 #[doc(alias = "RBX::DataModel::MouseStats::MouseStats(void)")]
-pub fn stub_46fd8c() -> ! {
-    todo!("0x46fd8c RBX::DataModel::MouseStats::MouseStats(void)")
-}
+pub use crate::instance::stub_0x46fd8c as stub_46fd8c;
 
 // 0x46ff84 — __ZN3RBX9DataModel10GenericJobC2EN5boost10shared_ptrIS0_EEPKcNS_12DataModelJob8TaskTypeE
 #[doc(alias = "RBX::DataModel::GenericJob::GenericJob(rbx_core::SharedPtr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")]
 // was: RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)
-pub fn stub_46ff84() -> ! {
-    todo!("0x46ff84 RBX::DataModel::GenericJob::GenericJob(rbx_core::SharedPtr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")
-}
+pub use crate::instance::stub_0x46ff84 as stub_46ff84;
 
 // 0x47013c — __ZN3RBX9DataModel10GenericJobD1Ev
 #[doc(alias = "RBX::DataModel::GenericJob::~GenericJob()")]
@@ -351,15 +325,11 @@ pub fn stub_470bd0() -> ! {
 
 // 0x4727ec — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
-pub fn stub_4727ec() -> ! {
-    todo!("0x4727ec RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
-}
+pub use crate::instance::stub_0x4727ec as stub_4727ec;
 
 // 0x4727f0 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
-pub fn stub_4727f0() -> ! {
-    todo!("0x4727f0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
-}
+pub use crate::instance::stub_0x4727f0 as stub_4727f0;
 
 // 0x4729dc — __ZN3RBX12DataModelJobC2EPKcNS0_8TaskTypeEbN5boost10shared_ptrINS_16DataModelArbiterEEENS_4Time8IntervalE
 #[doc(alias = "RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,rbx_core::SharedPtr<RBX::DataModelArbiter>,RBX::Time::Interval)")]
@@ -448,9 +418,7 @@ pub fn stub_473860() -> ! {
 
 // 0x473868 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_473868() -> ! {
-    todo!("0x473868 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")
-}
+pub use crate::instance::stub_0x473868 as stub_473868;
 
 // 0x4739b0 — __ZN3rbx14implementation12typed_holderIN3RBX16DataModelArbiter16ConcurrencyModelEE14construct_funcEPKcPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::construct_func(char const*,char *)")]
@@ -460,9 +428,7 @@ pub fn stub_4739b0() -> ! {
 
 // 0x4739c0 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")]
-pub fn stub_4739c0() -> ! {
-    todo!("0x4739c0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")
-}
+pub use crate::instance::stub_0x4739c0 as stub_4739c0;
 
 // 0x473a8c — __ZN3rbx8any_castIRKN3RBX16DataModelArbiter16ConcurrencyModelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::DataModelArbiter::ConcurrencyModel const& rbx::any_cast<RBX::DataModelArbiter::ConcurrencyModel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
@@ -490,15 +456,11 @@ pub fn stub_473f70() -> ! {
 
 // 0x474004 — __ZNSt3mapIPKN3RBX4NameENS0_16DataModelArbiter16ConcurrencyModelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModelArbiter::ConcurrencyModel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_474004() -> ! {
-    todo!("0x474004 std::map<RBX::Name const*,RBX::DataModelArbiter::ConcurrencyModel,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::operator[](RBX::Name const* const&)")
-}
+pub use crate::instance::stub_0x474004 as stub_474004;
 
 // 0x47405c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
-pub fn stub_47405c() -> ! {
-    todo!("0x47405c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")
-}
+pub use crate::instance::stub_0x47405c as stub_47405c;
 
 // 0x474110 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
@@ -508,9 +470,7 @@ pub fn stub_474110() -> ! {
 
 // 0x474168 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16DataModelArbiter16ConcurrencyModelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")]
-pub fn stub_474168() -> ! {
-    todo!("0x474168 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModelArbiter::ConcurrencyModel> const&)")
-}
+pub use crate::instance::stub_0x474168 as stub_474168;
 
 // 0x47486c — __ZNSt6vectorIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModelArbiter::ConcurrencyModel*,std::vector<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>>,RBX::DataModelArbiter::ConcurrencyModel const&)")]
@@ -520,9 +480,7 @@ pub fn stub_47486c() -> ! {
 
 // 0x474950 — __ZNSt12_Vector_baseIN3RBX16DataModelArbiter16ConcurrencyModelESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_allocate(unsigned long)")]
-pub fn stub_474950() -> ! {
-    todo!("0x474950 std::_Vector_base<RBX::DataModelArbiter::ConcurrencyModel,std::allocator<RBX::DataModelArbiter::ConcurrencyModel>>::_M_allocate(unsigned long)")
-}
+pub use crate::instance::stub_0x474950 as stub_474950;
 
 // 0x474968 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16DataModelArbiter16ConcurrencyModelES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModelArbiter::ConcurrencyModel * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *>(RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *,RBX::DataModelArbiter::ConcurrencyModel *)")]
@@ -544,15 +502,11 @@ pub fn stub_474dfc() -> ! {
 
 // 0x474eec — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")]
-pub fn stub_474eec() -> ! {
-    todo!("0x474eec RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")
-}
+pub use crate::instance::stub_0x474eec as stub_474eec;
 
 // 0x474ef0 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")]
-pub fn stub_474ef0() -> ! {
-    todo!("0x474ef0 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::EnumDesc(void)")
-}
+pub use crate::instance::stub_0x474ef0 as stub_474ef0;
 
 // 0x4750c8 — __ZN3RBX13DataModelMesh17setLevelOfDetailXENS0_7LODTypeE
 #[doc(alias = "RBX::DataModelMesh::setLevelOfDetailX(RBX::DataModelMesh::LODType)")]
@@ -586,15 +540,11 @@ pub fn stub_475210() -> ! {
 
 // 0x475278 — __ZN3RBX13DataModelMeshC2Ev
 #[doc(alias = "RBX::DataModelMesh::DataModelMesh(void)")]
-pub fn stub_475278() -> ! {
-    todo!("0x475278 RBX::DataModelMesh::DataModelMesh(void)")
-}
+pub use crate::instance::stub_0x475278 as stub_475278;
 
 // 0x4754a4 — __ZNK3RBX13DataModelMesh12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::DataModelMesh::askSetParent(RBX::Instance const*)const")]
-pub fn stub_4754a4() -> ! {
-    todo!("0x4754a4 RBX::DataModelMesh::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x4754a4 as stub_4754a4;
 
 // 0x4754e0 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)")]
@@ -604,9 +554,7 @@ pub fn stub_4754e0() -> ! {
 
 // 0x475840 — __ZNK3RBX13DataModelMesh17getLevelOfDetailXEv
 #[doc(alias = "RBX::DataModelMesh::getLevelOfDetailX(void)const")]
-pub fn stub_475840() -> ! {
-    todo!("0x475840 RBX::DataModelMesh::getLevelOfDetailX(void)const")
-}
+pub use crate::instance::stub_0x475840 as stub_475840;
 
 // 0x475848 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::~EnumPropDescriptor()")]
@@ -616,15 +564,11 @@ pub fn stub_475848() -> ! {
 
 // 0x47586c — __ZNK3RBX13DataModelMesh17getLevelOfDetailYEv
 #[doc(alias = "RBX::DataModelMesh::getLevelOfDetailY(void)const")]
-pub fn stub_47586c() -> ! {
-    todo!("0x47586c RBX::DataModelMesh::getLevelOfDetailY(void)const")
-}
+pub use crate::instance::stub_0x47586c as stub_47586c;
 
 // 0x475874 — __ZNK3RBX13DataModelMesh8getScaleEv
 #[doc(alias = "RBX::DataModelMesh::getScale(void)const")]
-pub fn stub_475874() -> ! {
-    todo!("0x475874 RBX::DataModelMesh::getScale(void)const")
-}
+pub use crate::instance::stub_0x475874 as stub_475874;
 
 // 0x475878 — __ZN3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::~PropDescriptor()")]
@@ -634,12 +578,8 @@ pub fn stub_475878() -> ! {
 
 // 0x47589c — __ZNK3RBX13DataModelMesh12getVertColorEv
 #[doc(alias = "RBX::DataModelMesh::getVertColor(void)const")]
-pub fn stub_47589c() -> ! {
-    todo!("0x47589c RBX::DataModelMesh::getVertColor(void)const")
-}
+pub use crate::instance::stub_0x47589c as stub_47589c;
 
 // 0x4758a0 — __ZNK3RBX13DataModelMesh9getOffsetEv
 #[doc(alias = "RBX::DataModelMesh::getOffset(void)const")]
-pub fn stub_4758a0() -> ! {
-    todo!("0x4758a0 RBX::DataModelMesh::getOffset(void)const")
-}
+pub use crate::instance::stub_0x4758a0 as stub_4758a0;
