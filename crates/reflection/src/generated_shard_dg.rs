@@ -192,8 +192,9 @@ pub fn stub_b4d0() {
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_")]
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_b76c() {
+    // IDA 0xb76c: duplicate of the canonical cutover at `crate::generated::stub_0xb76c` (emit the PropertyDescriptor signal to all connected slots; dispatch lives in `rbx_core::signal::Signal::fire` (cutover no-op); decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xb76c()
 }
 
 // 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
@@ -809,22 +810,34 @@ pub fn stub_ec30() {
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE")]
 // was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)
-pub fn stub_f574() -> ! {
-    todo!("0xf574 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)")
+pub fn stub_f574(
+    slot: rbx_core::SharedPtr<rbx_core::boost_skeletons::SignalSlot>,
+) -> rbx_core::SharedPtr<rbx_core::boost_skeletons::SignalSlot> {
+    // IDA 0xf574: duplicate of the canonical cutover at `crate::generated::stub_0xf574` (mutex-guarded advance to the next live slot; `Arc` keeps it alive, return the retained slot; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xf574(slot)
 }
 
 // 0xf6dc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE8on_errorERSt9exception")]
-pub fn stub_f6dc() -> ! {
-    todo!("0xf6dc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")
+pub fn stub_f6dc() {
+    // IDA 0xf6dc: duplicate of the canonical cutover at `crate::generated::stub_0xf6dc` (invoke the global `slot_exception_handler` when set; wiring owned by script/datamodel (cutover no-op); decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xf6dc()
 }
 
 // 0xfb74 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFjvEMS2_FvjEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>(char const*,char const*,unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFjvEMS2_FvjEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_fb74() -> ! {
-    todo!("0xfb74 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>(char const*,char const*,unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_fb74(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated::CRenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated::CRenderSettingsItemState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> crate::generated::CRenderSettingsIntProp {
+    // IDA 0xfb74: duplicate of the canonical cutover at `crate::generated::stub_0xfb74` (`PropDescriptor<int>` ctor: classDescriptor init, member-desc pair, `TypedPropertyDescriptor<int>` init, vtable install; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xfb74(name, category, get, set, attributes, permissions)
 }
 
 // 0xfc88 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev
@@ -853,13 +866,15 @@ pub fn stub_fcb8() -> bool {
 // 0xfcbc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_fcbc() -> ! {
-    todo!("0xfcbc RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_fcbc(access: &crate::generated::CRenderSettingsIntAccess, obj: &crate::generated::CRenderSettingsItemState) -> i32 {
+    // IDA 0xfcbc: duplicate of the canonical cutover at `crate::generated::stub_0xfcbc` (`GetSetImpl<int>::getValue` member-pointer dispatch folds into the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xfcbc(access, obj)
 }
 
 // 0xfce8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFjvEMS2_FvjEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_fce8() -> ! {
-    todo!("0xfce8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<unsigned int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(unsigned int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_fce8(access: &crate::generated::CRenderSettingsIntAccess, obj: &mut crate::generated::CRenderSettingsItemState, value: i32) {
+    // IDA 0xfce8: duplicate of the canonical cutover at `crate::generated::stub_0xfce8` (`GetSetImpl<int>::setValue` forwards the int payload through the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0xfce8(access, obj, value)
 }

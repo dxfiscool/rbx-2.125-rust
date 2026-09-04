@@ -9,22 +9,25 @@ use rbx_core::SharedPtr;
 // 0x11f58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_11f58() -> ! {
-    todo!("0x11f58 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_11f58(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> crate::descriptor::Variant {
+    // IDA 0x11f58: duplicate of the canonical cutover at `crate::generated::stub_0x11f58` (`v = getEnumValue(obj)` (vf+68), out = `Variant(int, v)`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x11f58(desc, obj)
 }
 
 // 0x11f7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_11f7c() -> ! {
-    todo!("0x11f7c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_11f7c(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, value: &crate::descriptor::Variant) {
+    // IDA 0x11f7c: duplicate of the canonical cutover at `crate::generated::stub_0x11f7c` (`any_cast<int>`/convert then `setEnumValue(obj, v)` (vf+72); decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x11f7c(desc, obj, value)
 }
 
 // 0x120cc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_120cc() -> ! {
-    todo!("0x120cc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_120cc(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, src: &crate::generated::CRenderSettingsItemState, dst: &mut crate::generated::CRenderSettingsItemState) {
+    // IDA 0x120cc: duplicate of the canonical cutover at `crate::generated::stub_0x120cc` (`v = member(+44)->get(src)`, then `member->set(dst, v)`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x120cc(desc, src, dst)
 }
 
 // 0x120f0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14hasStringValueEv
@@ -38,71 +41,81 @@ pub fn stub_120f0() -> bool {
 // 0x120f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_120f4() -> ! {
-    todo!("0x120f4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_120f4(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> String {
+    // IDA 0x120f4: duplicate of the canonical cutover at `crate::generated::stub_0x120f4` (`v = member(+44)->get(obj)`, then `EnumDesc::convertToString`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x120f4(desc, obj)
 }
 
 // 0x12118 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_12118() -> ! {
-    todo!("0x12118 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_12118(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x12118: duplicate of the canonical cutover at `crate::generated::stub_0x12118` (`Name::lookup` + `convertToValue`, set on hit else 0; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12118(desc, obj, name)
 }
 
 // 0x12158 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_12158() -> ! {
-    todo!("0x12158 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_12158(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> i32 {
+    // IDA 0x12158: duplicate of the canonical cutover at `crate::generated::stub_0x12158` (Xml write: int tag 5 payload is the enum int; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12158(desc, obj)
 }
 
 // 0x12178 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_12178() -> ! {
-    todo!("0x12178 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_12178(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, text: &str) -> bool {
+    // IDA 0x12178: duplicate of the canonical cutover at `crate::generated::stub_0x12178` (readValue int-or-string path; total miss leaves `obj` untouched, false; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12178(desc, obj, text)
 }
 
 // 0x123b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_123b8() -> ! {
-    todo!("0x123b8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_123b8(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> i32 {
+    // IDA 0x123b8: duplicate of the canonical cutover at `crate::generated::stub_0x123b8` (`convertToIndex(enumdesc@+48, v)`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x123b8(desc, obj)
 }
 
 // 0x123d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_123d4() -> ! {
-    todo!("0x123d4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_123d4(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, index: usize) -> bool {
+    // IDA 0x123d4: duplicate of the canonical cutover at `crate::generated::stub_0x123d4` (bounds-checked `values[index]` load then member set; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x123d4(desc, obj, index)
 }
 
 // 0x12408 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_12408() -> ! {
-    todo!("0x12408 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12408(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> i32 {
+    // IDA 0x12408: duplicate of the canonical cutover at `crate::generated::stub_0x12408` (tail-forward to `member(+44)->get(obj)`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12408(desc, obj)
 }
 
 // 0x12410 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_12410() -> ! {
-    todo!("0x12410 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_12410(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x12410: duplicate of the canonical cutover at `crate::generated::stub_0x12410` (`find_if` membership check then member set; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12410(desc, obj, value)
 }
 
 // 0x1245c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_1245c() -> ! {
-    todo!("0x1245c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1245c(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &crate::generated::CRenderSettingsItemState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x1245c: duplicate of the canonical cutover at `crate::generated::stub_0x1245c` (`convertToItem` returns the `Item*` or null; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x1245c(desc, obj)
 }
 
 // 0x1247c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_1247c() -> ! {
-    todo!("0x1247c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_1247c(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1247c: duplicate of the canonical cutover at `crate::generated::stub_0x1247c` (`Name` overload: `convertToValue` then member set; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x1247c(desc, obj, name)
 }
 
 // 0x124b0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_
@@ -117,8 +130,9 @@ pub fn stub_124b0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0x12520 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_12520() -> ! {
-    todo!("0x12520 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_12520(desc: &crate::generated::CRenderSettingsAaSamplesPropDesc, obj: &mut crate::generated::CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x12520: duplicate of the canonical cutover at `crate::generated::stub_0x12520` (`value_to_value` map lookup then member set; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12520(desc, obj, value)
 }
 
 // 0x12560 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -140,22 +154,32 @@ pub fn stub_12564() -> bool {
 // 0x12568 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_12568() -> ! {
-    todo!("0x12568 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12568(access: &crate::generated::CRenderSettingsAaSamplesAccess, obj: &crate::generated::CRenderSettingsItemState) -> i32 {
+    // IDA 0x12568: duplicate of the canonical cutover at `crate::generated::stub_0x12568` (`GetSetImpl::getValue` folds into the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12568(access, obj)
 }
 
 // 0x12594 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AASamples const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_12594() -> ! {
-    todo!("0x12594 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AASamples const&)const")
+pub fn stub_12594(access: &crate::generated::CRenderSettingsAaSamplesAccess, obj: &mut crate::generated::CRenderSettingsItemState, value: i32) {
+    // IDA 0x12594: duplicate of the canonical cutover at `crate::generated::stub_0x12594` (`GetSetImpl::setValue` forwards through the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12594(access, obj, value)
 }
 
 // 0x125b8 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,bool CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_125b8() -> ! {
-    todo!("0x125b8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,bool CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_125b8(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated::CRenderSettingsItemState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated::CRenderSettingsItemState, bool) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> crate::generated::CRenderSettingsBoolPropDesc {
+    // IDA 0x125b8: duplicate of the canonical cutover at `crate::generated::stub_0x125b8` (`BoundProp<bool>` ctor with read/write-only attribute masks; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x125b8(name, category, get, set, attributes, permissions)
 }
 
 // 0x12748 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv
@@ -177,22 +201,32 @@ pub fn stub_1274c() -> bool {
 // 0x12750 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_12750() -> ! {
-    todo!("0x12750 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12750(access: &crate::generated::CRenderSettingsBoolAccess, obj: &crate::generated::CRenderSettingsItemState) -> bool {
+    // IDA 0x12750: duplicate of the canonical cutover at `crate::generated::stub_0x12750` (direct bound-member read; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12750(access, obj)
 }
 
 // 0x1275c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_1275c() -> ! {
-    todo!("0x1275c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_1275c(access: &crate::generated::CRenderSettingsBoolAccess, obj: &mut crate::generated::CRenderSettingsItemState, value: bool) {
+    // IDA 0x1275c: duplicate of the canonical cutover at `crate::generated::stub_0x1275c` (compare-and-store with change notify; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x1275c(access, obj, value)
 }
 
 // 0x127ac — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMNS_15CRenderSettingsEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMNS_15CRenderSettingsEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_127ac() -> ! {
-    todo!("0x127ac RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_127ac(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated::CRenderSettingsItemState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated::CRenderSettingsItemState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> crate::generated::CRenderSettingsBoolPropDesc {
+    // IDA 0x127ac: duplicate of the canonical cutover at `crate::generated::stub_0x127ac` (`PropDescriptor<bool>` ctor: member-desc pair, typed init, vtable install; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x127ac(name, category, get, set, attributes, permissions)
 }
 
 // 0x128c0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE10isReadOnlyEv
@@ -214,22 +248,32 @@ pub fn stub_128c4() -> bool {
 // 0x128c8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_128c8() -> ! {
-    todo!("0x128c8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_128c8(access: &crate::generated::CRenderSettingsBoolAccess, obj: &crate::generated::CRenderSettingsItemState) -> bool {
+    // IDA 0x128c8: duplicate of the canonical cutover at `crate::generated::stub_0x128c8` (bool `GetSetImpl::getValue` member-pointer dispatch folds into the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x128c8(access, obj)
 }
 
 // 0x128fc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_128fc() -> ! {
-    todo!("0x128fc RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_128fc(access: &crate::generated::CRenderSettingsBoolAccess, obj: &mut crate::generated::CRenderSettingsItemState, value: bool) {
+    // IDA 0x128fc: duplicate of the canonical cutover at `crate::generated::stub_0x128fc` (bool `GetSetImpl::setValue` forwards through the access closure; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x128fc(access, obj, value)
 }
 
 // 0x12920 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::EnumPropDescriptor<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>(char const*,char const*,RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_12920() -> ! {
-    todo!("0x12920 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::EnumPropDescriptor<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>(char const*,char const*,RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_12920(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated::RenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated::RenderSettingsItemState, i32) + Send + Sync>,
+    mut attributes: u32,
+    permissions: u32,
+) -> crate::generated::QualityLevelPropDesc {
+    // IDA 0x12920: duplicate of the canonical cutover at `crate::generated::stub_0x12920` (`EnumPropDescriptor<QualityLevel>` ctor with singleton enum desc and attribute masks; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12920(name, category, get, set, attributes, permissions)
 }
 
 // 0x12ad4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED0Ev
@@ -256,8 +300,9 @@ pub fn stub_12b10() {
 // 0x12b20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_12b20() -> ! {
-    todo!("0x12b20 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12b20(desc: &crate::generated::QualityLevelPropDesc, a: &crate::generated::RenderSettingsItemState, b: &crate::generated::RenderSettingsItemState) -> bool {
+    // IDA 0x12b20: duplicate of the canonical cutover at `crate::generated::stub_0x12b20` (`v = get(a)`, return `v == get(b)`; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x12b20(desc, a, b)
 }
 
 // 0x12b48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
