@@ -168,22 +168,25 @@ pub fn stub_16b04() -> &'static crate::enum_desc::EnumDesc {
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
 #[doc(alias = "__ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE")]
-pub fn stub_179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_179f4(slot: &mut rbx_core::SharedPtr<crate::generated::Tuple>) {
+    // IDA 0x179f4: duplicate of the canonical cutover at `crate::generated::stub_0x179f4` (holder init with a fresh empty `Tuple` (`operator new(0xC)` + copy-ctor store); decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x179f4(slot)
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_")]
-pub fn stub_17aac() -> ! {
-    todo!("0x17aac boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
+pub fn stub_17aac(ptr: rbx_core::SharedPtr<crate::generated::Tuple>) -> rbx_core::SharedPtr<crate::generated::Tuple> {
+    // IDA 0x17aac: duplicate of the canonical cutover at `crate::generated::stub_0x17aac` (adopt-ctor: clone takes the new count first, the overwritten old drops after; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x17aac(ptr)
 }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE")]
-pub fn stub_17b80() -> ! {
-    todo!("0x17b80 boost::shared_ptr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(boost::shared_ptr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
+pub fn stub_17b80(other: &rbx_core::SharedPtr<crate::generated::Tuple>) -> rbx_core::SharedPtr<crate::generated::Tuple> {
+    // IDA 0x17b80: duplicate of the canonical cutover at `crate::generated::stub_0x17b80` (const copy-ctor: two-word copy + use-count bump, exactly `Arc` clone; decompile+disasm verified). Delegate to keep one source of truth.
+    crate::generated::stub_0x17b80(other)
 }
 
 // 0x31a10 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_

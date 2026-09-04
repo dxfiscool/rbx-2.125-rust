@@ -390,56 +390,63 @@ pub fn stub_0x160b4<'a>(map: &'a mut std::collections::BTreeMap<String, i32>, ke
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
-pub fn stub_0x1610c() -> ! {
-    todo!("0x1610c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x1610c(map: &mut std::collections::BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x1610c: hinted unique-insert twin of `stub_0x14e58` for `EnumDesc<AASamples>` (decompile 0x1610c: same hint fast-paths + rebalance). The position hint collapses — `BTreeMap` insert is logarithmic regardless.
+    stub_0x14e58(map, key, value)
 }
 
 // 0x161c0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
-pub fn stub_0x161c0() -> ! {
-    todo!("0x161c0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x161c0(map: &mut std::collections::BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x161c0: node-insert twin of `stub_0x14e58` for `EnumDesc<AASamples>` (decompile 0x161c0: `operator new(0x18)`, pair copy, insert-and-rebalance). Node identity has no Rust equivalent; exposes the same unique-insert observable (`bool`).
+    stub_0x14e58(map, key, value)
 }
 
 // 0x16218 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
-pub fn stub_0x16218() -> ! {
-    todo!("0x16218 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples> const&)")
+pub fn stub_0x16218(map: &mut std::collections::BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x16218: unique-insert twin of `stub_0x14e58` for `EnumDesc<AASamples>` (decompile 0x16218: same root walk + predecessor check + rebalance). Same `BTreeMap` cutover.
+    stub_0x14e58(map, key, value)
 }
 
 // 0x16280 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,RBX::CRenderSettings::AASamples const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_0x16280() -> ! {
-    todo!("0x16280 std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,RBX::CRenderSettings::AASamples const&)")
+pub fn stub_0x16280(vec: &mut Vec<i32>, pos: usize, value: i32) {
+    // IDA 0x16280: single-insert twin of `stub_0x14ec0` for `vector<AASamples>` (decompile 0x16280: same realloc-or-shift shape). `Vec::insert` covers both paths.
+    stub_0x14ec0(vec, pos, value)
 }
 
 // 0x16364 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings9AASamplesESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIN3RBX15CRenderSettings9AASamplesESaIS2_EE11_M_allocateEm")]
-pub fn stub_0x16364() -> ! {
-    todo!("0x16364 std::_Vector_base<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_allocate(unsigned long)")
+pub fn stub_0x16364(n: usize) -> Vec<std::mem::MaybeUninit<i32>> {
+    // IDA 0x16364: allocate twin of `stub_0x14fa4` for `vector<AASamples>` (decompile 0x16364: `__throw_bad_alloc` guard + `operator new(4*n)`). Same uninitialized-backing cutover.
+    stub_0x14fa4(n)
 }
 
 // 0x1637c — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings9AASamplesES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::AASamples * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *>(RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *)")]
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings9AASamplesES6_EET0_T_S8_S7_")]
-pub fn stub_0x1637c() -> ! {
-    todo!("0x1637c RBX::CRenderSettings::AASamples * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *>(RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *,RBX::CRenderSettings::AASamples *)")
+pub fn stub_0x1637c(buf: &mut [i32], first: usize, last: usize, result_end: usize) -> usize {
+    // IDA 0x1637c: backward-move twin of `stub_0x14fbc` for `AASamples*` (decompile 0x1637c: same word-at-a-time loop). Same `copy_within` cutover.
+    stub_0x14fbc(buf, first, last, result_end)
 }
 
 // 0x163b8 — __ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,unsigned long,RBX::CRenderSettings::AASamples const&)")]
 #[doc(alias = "__ZNSt6vectorIN3RBX15CRenderSettings9AASamplesESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
-pub fn stub_0x163b8() -> ! {
-    todo!("0x163b8 std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::AASamples*,std::vector<RBX::CRenderSettings::AASamples,std::allocator<RBX::CRenderSettings::AASamples>>>,unsigned long,RBX::CRenderSettings::AASamples const&)")
+pub fn stub_0x163b8(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+    // IDA 0x163b8: fill-insert twin of `stub_0x14ff8` for `vector<AASamples>` (decompile 0x163b8: same realloc-or-shift + fill shape). Same `splice` cutover.
+    stub_0x14ff8(vec, pos, n, value)
 }
 
 // 0x16bf4 — __ZN19CRenderSettingsItemD2Ev
@@ -454,148 +461,244 @@ pub fn stub_0x16bf4() {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16d34() -> ! {
-    todo!("0x16d34 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>> *)")
+pub fn stub_0x16d34(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16d34: `_M_erase(node)` — null-guard (0x16d34+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16d34). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<ResolutionPreset>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16d5c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12QualityLevelEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16d5c() -> ! {
-    todo!("0x16d5c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::QualityLevel>> *)")
+pub fn stub_0x16d5c(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16d5c: `_M_erase(node)` — null-guard (0x16d5c+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16d5c). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<QualityLevel>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16d84() -> ! {
-    todo!("0x16d84 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::ShadowMode>> *)")
+pub fn stub_0x16d84(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16d84: `_M_erase(node)` — null-guard (0x16d84+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16d84). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<ShadowMode>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16dac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16AntialiasingModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16dac() -> ! {
-    todo!("0x16dac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AntialiasingMode>> *)")
+pub fn stub_0x16dac(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16dac: `_M_erase(node)` — null-guard (0x16dac+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16dac). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<AntialiasingMode>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16dd4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings20FrameRateManagerModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings20FrameRateManagerModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16dd4() -> ! {
-    todo!("0x16dd4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::FrameRateManagerMode>> *)")
+pub fn stub_0x16dd4(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16dd4: `_M_erase(node)` — null-guard (0x16dd4+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16dd4). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<FrameRateManagerMode>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16dfc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12GraphicsModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings12GraphicsModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16dfc() -> ! {
-    todo!("0x16dfc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::GraphicsMode>> *)")
+pub fn stub_0x16dfc(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16dfc: `_M_erase(node)` — null-guard (0x16dfc+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16dfc). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<GraphicsMode>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16e24 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings9AASamplesEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0x16e24() -> ! {
-    todo!("0x16e24 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CRenderSettings::AASamples>> *)")
+pub fn stub_0x16e24(map: &mut std::collections::BTreeMap<String, i32>, key: &str) -> bool {
+    // IDA 0x16e24: `_M_erase(node)` — null-guard (0x16e24+0xa), recursive left-subtree
+    // erase, `operator delete`, walk right (decompiled 0x16e24). Destroys the subtree
+    // rooted at the node with internal rebalancing. In the name-keyed cutover the
+    // node identity is the key and removal rebalances internally; returns whether
+    // an entry was removed. Backs the `EnumDesc<AASamples>` name tables.
+    map.remove(key).is_some()
 }
 
 // 0x16e4c — __GLOBAL__I_a
 #[doc(alias = "__GLOBAL__I_a")]
-pub fn stub_0x16e4c() -> ! {
-    todo!("0x16e4c global constructor keyed to_a")
+pub fn stub_0x16e4c() {
+    // IDA 0x16e4c: `__GLOBAL__I_a` — stores `boost::system::generic_category()` /
+    // `system_category()` singletons into `__MergedGlobals_33` (disasm 0x16e56-0x16e6c;
+    // decompile unavailable, init thunk). Process-wide error-category singletons;
+    // Rust `std::io` maps categories internally. Static-init glue; no explicit body.
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
 // type: void __fastcall(RBX::DataModel *this)
 #[doc(alias = "RBX::DataModel::serverSave(void)")]
 #[doc(alias = "__ZN3RBX9DataModel10serverSaveEv")]
-pub fn stub_0x179e8() -> ! {
-    todo!("0x179e8 RBX::DataModel::serverSave(void)")
+pub fn stub_0x179e8() {
+    // IDA 0x179e8: `RBX::DataModel::serverSave` is a bare `BX LR` (disasm 0x179e8,
+    // decompile is an empty body) — the out-of-line save path is stripped in this
+    // build; no explicit body.
 }
 
 // 0x179ec — __ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")]
 #[doc(alias = "__ZN3RBX9DataModel17internalSaveAsyncENS_9ContentIdEN5boost8functionIFvbEEE")]
-pub fn stub_0x179ec() -> ! {
-    todo!("0x179ec RBX::DataModel::internalSaveAsync(RBX::ContentId,boost::function<void ()(bool)>)")
+pub fn stub_0x179ec() {
+    // IDA 0x179ec: `RBX::DataModel::internalSaveAsync` is a bare `BX LR`
+    // (disasm 0x179ec) — stripped in this build; no explicit body.
 }
 
 // 0x179f0 — __ZN3RBX9DataModel12internalSaveENS_9ContentIdE
 // type: void()
 #[doc(alias = "RBX::DataModel::internalSave(RBX::ContentId)")]
 #[doc(alias = "__ZN3RBX9DataModel12internalSaveENS_9ContentIdE")]
-pub fn stub_0x179f0() -> ! {
-    todo!("0x179f0 RBX::DataModel::internalSave(RBX::ContentId)")
+pub fn stub_0x179f0() {
+    // IDA 0x179f0: `RBX::DataModel::internalSave` is a bare `BX LR`
+    // (disasm 0x179f0) — stripped in this build; no explicit body.
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "__GLOBAL__I_a_0")]
-pub fn stub_0x17c58() -> ! {
-    todo!("0x17c58 global constructor keyed to_a_0")
+pub fn stub_0x17c58() {
+    // IDA 0x17c58: `__GLOBAL__I_a_0` — stores `boost::system::generic_category()` /
+    // `system_category()` singletons into `__MergedGlobals_34` (disasm 0x17c5c-0x17c76;
+    // decompile unavailable, init thunk). Same cutover as stub_0x16e4c; no explicit body.
 }
+
+/// Gap-filler `Appirater` configuration state behind the `+setX:` class setters
+/// (IDA 0x17df0-0x17e58). The canonical `Appirater` lives in `rbx_platform`
+/// (`view_controllers.rs`, IDA 0x1953a..); this crate cannot depend on platform
+/// (DAG: platform depends on reflection), so the stores land here with matching
+/// types. `id` object pointers are opaque `usize`; `NSString*` content crosses as
+/// `&str`.
+static APPIRATER_DAYS_UNTIL_PROMPT: std::sync::atomic::AtomicU64 =
+    std::sync::atomic::AtomicU64::new(0);
+static APPIRATER_USES_UNTIL_PROMPT: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+static APPIRATER_SIGNIFICANT_EVENTS_UNTIL_PROMPT: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+static APPIRATER_TIME_BEFORE_REMINDING: std::sync::atomic::AtomicU64 =
+    std::sync::atomic::AtomicU64::new(0);
+static APPIRATER_DEBUG: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+static APPIRATER_APP_ID: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+static APPIRATER_DELEGATE: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
 
 // 0x17df0 — +[Appirater setAppId:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setAppId:]")]
-pub fn stub_0x17df0() -> ! {
-    todo!("0x17df0 +[Appirater setAppId:]")
+pub fn stub_0x17df0(app_id: &str) {
+    // IDA 0x17df0: `+[Appirater setAppId:]` stores the object into
+    // `_MergedGlobals243` (0x17dfa `STR R2`). Content crosses as `&str`, matching
+    // `rbx_platform::Appirater::set_app_id` (`parking_lot`, no poison path).
+    *APPIRATER_APP_ID.lock() = app_id.to_owned();
 }
 
 // 0x17e00 — +[Appirater setDaysUntilPrompt:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
-pub fn stub_0x17e00() -> ! {
-    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+pub fn stub_0x17e00(days: f64) {
+    // IDA 0x17e00: `+[Appirater setDaysUntilPrompt:]` stores the double into
+    // `_daysUntilPrompt` (decompiled 0x17e00). Bits through an `AtomicU64`,
+    // matching `rbx_platform::Appirater::set_days_until_prompt`.
+    APPIRATER_DAYS_UNTIL_PROMPT.store(days.to_bits(), std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e14 — +[Appirater setUsesUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
-pub fn stub_0x17e14() -> ! {
-    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+pub fn stub_0x17e14(uses: u32) {
+    // IDA 0x17e14: `+[Appirater setUsesUntilPrompt:]` stores the int into
+    // `_MergedGlobals` (decompiled 0x17e14), matching
+    // `rbx_platform::Appirater::set_uses_until_prompt`.
+    APPIRATER_USES_UNTIL_PROMPT.store(uses, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
 // type: void __cdecl(id, SEL, int)
 #[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
-pub fn stub_0x17e24() -> ! {
-    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+pub fn stub_0x17e24(events: u32) {
+    // IDA 0x17e24: `+[Appirater setSignificantEventsUntilPrompt:]` stores the int
+    // into `dword_122316C` (decompiled 0x17e24). No platform counterpart yet; same
+    // atomic shape as the sibling setters.
+    APPIRATER_SIGNIFICANT_EVENTS_UNTIL_PROMPT.store(events, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e34 — +[Appirater setTimeBeforeReminding:]
 // type: void __cdecl(id, SEL, double)
 #[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
-pub fn stub_0x17e34() -> ! {
-    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+pub fn stub_0x17e34(seconds: f64) {
+    // IDA 0x17e34: `+[Appirater setTimeBeforeReminding:]` stores the double into
+    // `_timeBeforeReminding` (decompiled 0x17e34), matching
+    // `rbx_platform::Appirater::set_time_before_reminding`.
+    APPIRATER_TIME_BEFORE_REMINDING.store(seconds.to_bits(), std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e48 — +[Appirater setDebug:]
 // type: void __cdecl(id, SEL, char)
 #[doc(alias = "+[Appirater setDebug:]")]
-pub fn stub_0x17e48() -> ! {
-    todo!("0x17e48 +[Appirater setDebug:]")
+pub fn stub_0x17e48(debug: bool) {
+    // IDA 0x17e48: `+[Appirater setDebug:]` stores the `BOOL` into `_debug`
+    // (decompiled 0x17e48). No platform counterpart yet; atomic bool.
+    APPIRATER_DEBUG.store(debug, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e58 — +[Appirater setDelegate:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[Appirater setDelegate:]")]
-pub fn stub_0x17e58() -> ! {
-    todo!("0x17e58 +[Appirater setDelegate:]")
+pub fn stub_0x17e58(delegate: usize) {
+    // IDA 0x17e58: `+[Appirater setDelegate:]` stores the object into
+    // `dword_130C394` (decompiled 0x17e58). The delegate object is platform-owned;
+    // only the opaque pointer crosses here. No platform counterpart yet.
+    APPIRATER_DELEGATE.store(delegate, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x17e68 — -[Appirater connectedToNetwork]
 // type: char __cdecl(Appirater *self, SEL)
 #[doc(alias = "-[Appirater connectedToNetwork]")]
-pub fn stub_0x17e68() -> ! {
-    todo!("0x17e68 -[Appirater connectedToNetwork]")
+pub fn stub_0x17e68() -> bool {
+    // IDA 0x17e68: `-[Appirater connectedToNetwork]` builds a zero-address
+    // `SCNetworkReachability` (0x17e84-0x17ea8), reads the flags (0x17eae); when
+    // reachable (`(flags & 6) == 2 || (flags & 1)`, 0x17f4a) it fires a synchronous
+    // `NSURLConnection` probe at `http://www.apple.com/` (0x17ede-0x17f3a) and
+    // returns non-nil (0x17f52), else logs and returns 0 (0x17f60-0x17f64). The
+    // flags gate folds into the probe itself: a blocking TCP connect to the same
+    // host with the request's timeout budget answers the same question.
+    use std::net::ToSocketAddrs;
+    ("www.apple.com", 80)
+        .to_socket_addrs()
+        .ok()
+        .and_then(|mut addrs| addrs.next())
+        .is_some_and(|addr| {
+            std::net::TcpStream::connect_timeout(&addr, std::time::Duration::from_secs(5)).is_ok()
+        })
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
