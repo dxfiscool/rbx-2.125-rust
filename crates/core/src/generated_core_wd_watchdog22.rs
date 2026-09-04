@@ -6,218 +6,517 @@
 
 use crate::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// Batch 9: 31 IDA-grounded ports 0x668878-0x66adec — the GuiObject /
+/// GuiBase2d field readers, the TextBox + GuiObject dtor/thunk lattices, and
+/// the `FactoryProduct<TextBox, GuiObject>` Creator C2/D2/create/getClassName
+/// /static_getCreator. Ports live in `gui_textbox`; `stub_0x*` keeps the
+/// `#[doc(alias)]` + `// 0xADDR` carrier lines and wires into it.
+/// Conventions: GuiObject/GuiBase2d/TextBox storage is datamodel-owned, so
+/// readers are raw-offset loads and teardown sequencing is core-owned while
+/// member destruction runs through caller-supplied hooks (DAG: core never
+/// depends on datamodel); `rbx::remote_signal` teardown is core-owned via
+/// `RemoteSignal`; `boost::shared_ptr` -> `crate::SharedPtr` (Arc);
+/// `ReleaseAssert` -> `assert!` gated on `FLOG_ASSERTS` (was `FLog::Asserts`);
+/// vtable installs are symbolic `off_*` names (addresses live in the target
+/// binary). `[INFERENCE]` marks what the binary does not pin down.
+pub mod gui_textbox {
+    use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+    #[inline]
+    pub fn release_assert(cond: bool, msg: &'static str) {
+        // IDA pattern at 0x669002-0x66902c etc.: `if (FLog::Asserts) { if
+        // (!check) { hook ? hook(...) : ReleaseAssert(...) } }`. The
+        // `_debugHook` override is a test hook (`[INFERENCE]` — no live
+        // override observed); the abort itself is `assert!`.
+        if FLOG_ASSERTS.load(Ordering::Relaxed) && !cond {
+            assert!(cond, "{msg}");
+        }
+    }
+    /// was: `FLog::Asserts` — every ReleaseAssert path below reads it first.
+    pub static FLOG_ASSERTS: AtomicBool = AtomicBool::new(false);
+    /// IDA 0x668882: `Instance::getPersistentDataCost(this) + 6`.
+    pub const GUIOBJECT_PERSISTENT_COST_BONUS: i32 = 6;
+    /// Base cost is datamodel-owned (`Instance::getPersistentDataCost`); the
+    /// `+ 6` rule is core-portable and lives here.
+    #[inline]
+    pub fn gui_object_persistent_cost(instance_cost: i32) -> i32 {
+        instance_cost + GUIOBJECT_PERSISTENT_COST_BONUS // IDA 0x668878
+    }
+    /// IDA 0x668d04: `*((unsigned __int8 *)this + 512)`.
+    pub const CAN_PROCESS_BYTE_OFF: usize = 512;
+    /// IDA 0x668d0c / 0x668d14: `*((_DWORD *)this + 34/35)`.
+    pub const ZINDEX_WORD: usize = 34;
+    pub const GUIQUEUE_WORD: usize = 35;
+    /// was: `RBX::GuiObject` child-rectangle — `getChildRect2D` (0x668d1c)
+    /// forwards `getRect2D`, so the rect crosses the boundary by value.
+    #[repr(C)]
+    #[derive(Clone, Copy, Default, Debug, PartialEq)]
+    pub struct Rect2d {
+        pub min: [f32; 2],
+        pub max: [f32; 2],
+    }
+    /// IDA 0x66a8e4-0x66a91a: the six vtable installs of `GuiObject::~GuiObject`.
+    pub const GUIOBJECT_VTABLE_SLOTS: [(usize, &str); 6] = [
+        (0, "off_11DD358"),   // IDA 0x66a8e4: `*this`
+        (3, "off_11DD424"),   // IDA 0x66a8f0
+        (8, "off_11DD430"),   // IDA 0x66a8f8
+        (9, "off_11DD444"),   // IDA 0x66a904
+        (23, "off_11DD45C"),  // IDA 0x66a912
+        (24, "off_11DD468"),  // IDA 0x66a91a
+    ];
+    /// Member kinds torn down by `GuiObject::~GuiObject` (IDA 0x66a942-0x66aa2a).
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    pub enum GuiObjectMember {
+        ReplicatorUDim2,
+        ReplicatorIntInt,
+        RemoteUDim2,
+        RemoteIntInt,
+        TweenSecond,
+        TweenFirst,
+        Adornable,
+        Instance,
+    }
+    /// Exact teardown order, byte offsets from `this` (IDA 0x66a942-0x66a9ea).
+    pub const GUIOBJECT_SIGNAL_MEMBERS: [(usize, GuiObjectMember); 14] = [
+        (412, GuiObjectMember::ReplicatorUDim2), // IDA 0x66a942
+        (380, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a950
+        (368, GuiObjectMember::RemoteUDim2),    // IDA 0x66a95e
+        (360, GuiObjectMember::RemoteIntInt),   // IDA 0x66a96c
+        (332, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a97a
+        (300, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a988
+        (268, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a996
+        (236, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a9a2
+        (204, GuiObjectMember::ReplicatorIntInt), // IDA 0x66a9ae
+        (192, GuiObjectMember::RemoteIntInt),   // IDA 0x66a9ba
+        (184, GuiObjectMember::RemoteIntInt),   // IDA 0x66a9c6
+        (176, GuiObjectMember::RemoteIntInt),   // IDA 0x66a9d2
+        (168, GuiObjectMember::RemoteIntInt),   // IDA 0x66a9de
+        (160, GuiObjectMember::RemoteIntInt),   // IDA 0x66a9ea
+    ];
+    /// IDA 0x66a9f4: `v68 = *((_DWORD *)this + 36)` — nullable tween pair.
+    pub const TWEEN_WORD: usize = 36;
+    /// IDA 0x66aa1e: `IAdornable` base at `(char *)this + 96`.
+    pub const IADORNABLE_BYTE_OFF: usize = 96;
+    /// Datamodel-supplied teardown for members core cannot own. The walk
+    /// order, offsets, and null check are core-owned and 1:1 with IDA
+    /// 0x66a942-0x66aa2a; only the per-member action crosses the crate line.
+    pub struct GuiObjectFini {
+        pub member: unsafe fn(*mut u8, GuiObjectMember),
+        pub free: unsafe fn(*mut u8),
+    }
+    /// IDA 0x66a8b4 `RBX::GuiObject::~GuiObject` (D2): vtable installs are
+    /// symbolic (`GUIOBJECT_VTABLE_SLOTS` — addresses live in the target
+    /// binary); the member walk, tween branch, and base order are real.
+    pub unsafe fn gui_object_d2(this: *mut u8, fini: &GuiObjectFini) {
+        for &(off, kind) in &GUIOBJECT_SIGNAL_MEMBERS {
+            (fini.member)(this.add(off), kind); // IDA 0x66a942-0x66a9ea
+        }
+        let tween = *(this.add(TWEEN_WORD * 4) as *mut *mut u8); // IDA 0x66a9f4
+        if !tween.is_null() {
+            // IDA 0x66aa02: `~scoped_ptr((int)v68 + 4)` first ...
+            (fini.member)(tween.add(4), GuiObjectMember::TweenSecond);
+            // IDA 0x66aa0c: ... then `~scoped_ptr((int)v68)` ...
+            (fini.member)(tween, GuiObjectMember::TweenFirst);
+            (fini.free)(tween); // IDA 0x66aa12: `operator delete(v68)`
+        }
+        (fini.member)(this.add(IADORNABLE_BYTE_OFF), GuiObjectMember::Adornable); // IDA 0x66aa1e
+        (fini.member)(this, GuiObjectMember::Instance); // IDA 0x66aa2a
+    }
+    /// was: `rbx::remote_signal<void ()(RBX::UDim2)>` — two signal channels
+    /// (the `void()` one at +4, the `(UDim2)` one at +0) each with a nullable
+    /// intrusive slot ref (IDA 0x66b4ce-0x66b4f4: `disconnectAll` then
+    /// conditional `intrusive_ptr_release`). `Signal::disconnect_all` is the
+    /// disconnect; dropping the `SharedPtr` is the release.
+    pub struct RemoteSignal {
+        pub void_channel: crate::signal::Signal<()>,
+        pub void_slot: Option<crate::SharedPtr<()>>,
+        pub udim2_channel: crate::signal::Signal<(f32, f32, f32, f32)>,
+        pub udim2_slot: Option<crate::SharedPtr<()>>,
+    }
+    impl RemoteSignal {
+        pub fn new() -> Self {
+            Self {
+                void_channel: crate::signal::Signal::new(),
+                void_slot: None,
+                udim2_channel: crate::signal::Signal::new(),
+                udim2_slot: None,
+            }
+        }
+        /// IDA 0x66b478 `~remote_signal`: `disconnectAll(a1 + 4)` + release,
+        /// then `disconnectAll(a1)` + release.
+        pub fn disconnect_all(&mut self) {
+            self.void_channel.disconnect_all(); // IDA 0x66b4ce
+            self.void_slot = None; // IDA 0x66b4d4-0x66b4dc
+            self.udim2_channel.disconnect_all(); // IDA 0x66b4e6
+            self.udim2_slot = None; // IDA 0x66b4ec-0x66b4f4
+        }
+    }
+    impl Default for RemoteSignal {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+    /// Teardown for `RBX::TextBox` storage: D2 runs first (wired to
+    /// `stub_0x672230` once ported), `free` is the `operator delete` half.
+    pub struct TextBoxFini {
+        pub d2: unsafe fn(*mut u8),
+        pub free: unsafe fn(*mut u8),
+    }
+    /// was: `FactoryProduct<TextBox, GuiObject>::Creator` construction state.
+    pub struct Creator {
+        pub vtab: &'static str,
+        pub name: &'static str,
+    }
+    /// IDA 0x669054/0x673ff8/0x6795b0 disasm: the Creator `getClassName`
+    /// family returns the declared class name behind the constructed assert.
+    pub const TEXTBOX_CLASS_NAME: &str = "TextBox";
+    /// IDA 0x6696ea / 0x668fda: `a1->__sig = &off_128D304`.
+    pub const TEXTBOX_CREATOR_VTAB: &str = "off_128D304";
+    /// `isConstructed` sentinel (`...13isConstructedE != 666`).
+    pub const WAS_CONSTRUCTED_MAGIC: i32 = 666;
+    /// was: `AbstractFactoryProduct<Instance>::getCreators()::creators` —
+    /// `std::map<Name const*, ICreator const*>` keyed here by class name.
+    static CREATORS: std::sync::LazyLock<
+        parking_lot::Mutex<std::collections::HashMap<&'static str, usize>>,
+    > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+    static CREATOR_CONSTRUCTED: AtomicBool = AtomicBool::new(false);
+    /// was: `...14creatorPrivateE` — address of the static Creator slot,
+    /// recorded at C2 so `static_getCreator` can return it (IDA 0x66995a).
+    static CREATOR_ADDR: AtomicUsize = AtomicUsize::new(0);
+    fn was_constructed() -> bool {
+        CREATOR_CONSTRUCTED.load(Ordering::SeqCst)
+    }
+    /// IDA 0x6698f8 `static_getCreator`: `wasConstructed` assert (Object.h:282)
+    /// then `&creatorPrivateE`.
+    pub fn static_get_creator() -> *const Creator {
+        // IDA 0x669908-0x66995a.
+        release_assert(was_constructed(), "Creator::wasConstructed() file: include/Util/Object.h line: 282");
+        CREATOR_ADDR.load(Ordering::SeqCst) as *const Creator // IDA 0x66995a/0x66996a
+    }
+    /// Shared `getClassName` tail (IDA 0x668cf4/0x669042 via
+    /// `static_getCreator` + the Creator `getClassName` shim at 0x669054).
+    pub fn creator_class_name() -> &'static str {
+        static_get_creator();
+        TEXTBOX_CLASS_NAME
+    }
+    /// IDA 0x6696b4 Creator C2: `Name::declare(sTextBox)` once
+    /// (`call_once`/`doDeclare`, 0x6696ec-0x669702), `find == end` assert
+    /// (Object.h:244), `creators[name] = this`, `isConstructed = 666`, then
+    /// the `find != end` + `wasConstructed` post asserts (Object.h:250-251).
+    pub unsafe fn creator_construct(slot: *mut Creator) -> *mut Creator {
+        use std::sync::LazyLock;
+        static DECLARED: LazyLock<()> = LazyLock::new(|| {});
+        LazyLock::force(&DECLARED); // `Name::declare(sTextBox)` — names live in reflection
+        (*slot).vtab = TEXTBOX_CREATOR_VTAB; // IDA 0x6696ea (`a1->__sig`)
+        release_assert(!was_constructed(), "!wasConstructed() file: include/Util/Object.h line: 245");
+        {
+            let mut map = CREATORS.lock();
+            // IDA 0x66972e-0x669744: `lower_bound` walk asserting absence.
+            release_assert(
+                !map.contains_key(TEXTBOX_CLASS_NAME),
+                "Class::getCreators().find(&name)==Class::getCreators().end() file: include/Util/Object.h line: 244",
+            );
+            map.insert(TEXTBOX_CLASS_NAME, slot as usize); // IDA 0x6697f8-0x669814
+        }
+        (*slot).name = TEXTBOX_CLASS_NAME;
+        CREATOR_ADDR.store(slot as usize, Ordering::SeqCst);
+        CREATOR_CONSTRUCTED.store(true, Ordering::SeqCst); // IDA 0x66981a: `= 666`
+        {
+            let map = CREATORS.lock();
+            // IDA 0x66983a-0x66985c: `find != end` post assert ...
+            release_assert(
+                map.get(TEXTBOX_CLASS_NAME) == Some(&(slot as usize)),
+                "Class::getCreators().find(&name)!=Class::getCreators().end() file: include/Util/Object.h line: 250",
+            );
+        }
+        // IDA 0x6698a0-0x6698ea: `wasConstructed` post assert (Object.h:251).
+        release_assert(was_constructed(), "wasConstructed() file: include/Util/Object.h line: 251");
+        slot // IDA 0x6698f6
+    }
+    /// IDA 0x668fb8 Creator D2: vtable restore (`*a1 = &off_128D304`,
+    /// symbolic here), `wasConstructed` assert (Object.h:255), erase by
+    /// `getClassName` (IDA 0x669042-0x66904a).
+    pub unsafe fn creator_destroy(slot: *mut Creator) -> *mut Creator {
+        (*slot).vtab = TEXTBOX_CREATOR_VTAB; // IDA 0x668fda
+        release_assert(was_constructed(), "wasConstructed() file: include/Util/Object.h line: 255");
+        CREATORS.lock().remove((*slot).name); // IDA 0x66904a
+        slot // IDA 0x669052
+    }
+    /// was: `shared_ptr<Instance>` + `shared_count` out-pair of Creator
+    /// `create` (IDA 0x6690dc): `*a1` takes the `+32` Instance-subobject
+    /// pointer sharing ownership, `(a1 + 1)` the moved count.
+    pub struct TextBoxShared {
+        pub instance_ptr: *mut u8,
+        pub ownership: Option<crate::SharedPtr<u8>>,
+    }
+    /// IDA 0x6690dc: `wasConstructed` assert (Object.h:231), then
+    /// `Creatable<Instance>::create<TextBox>` (datamodel-supplied `alloc`),
+    /// the `+32` adjust (0x6691a8), count move (0x6691b6), local release
+    /// (0x6691bc-0x6691c4 — the Arc drop here).
+    pub unsafe fn textbox_create(
+        out: *mut TextBoxShared,
+        alloc: unsafe fn() -> (*mut u8, crate::SharedPtr<u8>),
+    ) {
+        release_assert(was_constructed(), "wasConstructed() file: include/Util/Object.h line: 231");
+        let (obj, ownership) = alloc(); // IDA 0x669194
+        let instance = obj.wrapping_add(32); // IDA 0x6691a8 (`v17 + 32`)
+        // Move (not clone): net count matches copy-then-release-local.
+        out.write(TextBoxShared { instance_ptr: instance, ownership: Some(ownership) });
+    }
+}
 
 // 0x668878 — __ZNK3RBX9GuiObject21getPersistentDataCostEv
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiObject21getPersistentDataCostEv")]
-pub fn stub_0x668878() {
-    // IDA 0x668878: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x668878(this: *const u8, instance_cost: i32) -> i32 {
+    // IDA 0x668878: `Instance::getPersistentDataCost(this) + 6`; the base
+    // call is datamodel-owned, the `+ 6` rule ports here.
+    let _ = this;
+    gui_textbox::gui_object_persistent_cost(instance_cost)
 }
 
 // 0x668c4c — __ZN3RBX7TextBoxD1Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZN3RBX7TextBoxD1Ev")]
-pub fn stub_0x668c4c() {
-    // IDA 0x668c4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668c4c(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668c4c: D1 thunk straight into D2 (`$shim`).
+    (fini.d2)(this)
 }
 
 // 0x668c50 — __ZN3RBX7TextBoxD0Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZN3RBX7TextBoxD0Ev")]
-pub fn stub_0x668c50() {
-    // IDA 0x668c50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668c50(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668c50: D2 (0x668ca0) then `operator delete` (0x668ca6).
+    (fini.d2)(this);
+    (fini.free)(this)
 }
 
 // 0x668cf0 — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x668cf0() {
-    // IDA 0x668cf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x668cf0() -> &'static str {
+    // IDA 0x668cf0: `static_getCreator` (0x668cf4) + Creator `getClassName` shim.
+    gui_textbox::creator_class_name()
 }
 
 // 0x668d00 — __ZNK3RBX9GuiObject26canProcessMeAndDescendantsEv
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiObject26canProcessMeAndDescendantsEv")]
-pub fn stub_0x668d00() {
-    // IDA 0x668d00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668d00(this: *const u8) -> bool {
+    // IDA 0x668d00: `*((unsigned __int8 *)this + 512)`.
+    *this.add(gui_textbox::CAN_PROCESS_BYTE_OFF) != 0
 }
 
 // 0x668d08 — __ZNK3RBX9GuiBase2d9getZIndexEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiBase2d9getZIndexEv")]
-pub fn stub_0x668d08() {
-    // IDA 0x668d08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668d08(this: *const u32) -> u32 {
+    // IDA 0x668d08: `*((_DWORD *)this + 34)`.
+    *this.add(gui_textbox::ZINDEX_WORD)
 }
 
 // 0x668d10 — __ZNK3RBX9GuiBase2d11getGuiQueueEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiBase2d11getGuiQueueEv")]
-pub fn stub_0x668d10() {
-    // IDA 0x668d10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668d10(this: *const u32) -> u32 {
+    // IDA 0x668d10: `*((_DWORD *)this + 35)`.
+    *this.add(gui_textbox::GUIQUEUE_WORD)
 }
 
 // 0x668d18 — __ZNK3RBX9GuiBase2d9isGuiLeafEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiBase2d9isGuiLeafEv")]
-pub fn stub_0x668d18() {
-    // IDA 0x668d18: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x668d18(_this: *const u8) -> bool {
+    // IDA 0x668d18: constant `0`.
+    false
 }
 
 // 0x668d1c — __ZNK3RBX9GuiBase2d14getChildRect2DEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiBase2d14getChildRect2DEv")]
-pub fn stub_0x668d1c() {
-    // IDA 0x668d1c: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub unsafe fn stub_0x668d1c(
+    this: *mut u8,
+    get_rect: unsafe fn(*mut u8) -> gui_textbox::Rect2d,
+) -> gui_textbox::Rect2d {
+    // IDA 0x668d1c: tail-forward to `GuiBase2d::getRect2D` (datamodel-owned).
+    get_rect(this)
 }
 
 // 0x668d28 — __ZNK3RBX9GuiBase2d14shouldRender2dEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZNK3RBX9GuiBase2d14shouldRender2dEv")]
-pub fn stub_0x668d28() {
-    // IDA 0x668d28: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
+pub fn stub_0x668d28(_this: *const u8) -> bool {
+    // IDA 0x668d28: constant `0`.
+    false
 }
 
 // 0x668d90 — __ZThn32_N3RBX7TextBoxD1Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD1Ev")]
-pub fn stub_0x668d90() {
-    // IDA 0x668d90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668d90(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668d90: `this - 32` adjust into D1.
+    stub_0x668c4c(this.sub(32), fini)
 }
 
 // 0x668d98 — __ZThn32_N3RBX7TextBoxD0Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD0Ev")]
-pub fn stub_0x668d98() {
-    // IDA 0x668d98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668d98(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668d98: `v4 = this - 32` (0x668dc2), D0 (0x668dea), delete (0x668df0).
+    stub_0x668c50(this.sub(32), fini)
 }
 
 // 0x668e3c — __ZThn32_NK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x668e3c() {
-    // IDA 0x668e3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x668e3c() -> &'static str {
+    // IDA 0x668e3c: same `static_getCreator` + `getClassName` tail as 0x668cf0.
+    gui_textbox::creator_class_name()
 }
 
 // 0x668e4c — __ZThn36_N3RBX7TextBoxD1Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD1Ev")]
-pub fn stub_0x668e4c() {
-    // IDA 0x668e4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668e4c(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668e4c: `this - 36` adjust into D1.
+    stub_0x668c4c(this.sub(36), fini)
 }
 
 // 0x668e54 — __ZThn36_N3RBX7TextBoxD0Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD0Ev")]
-pub fn stub_0x668e54() {
-    // IDA 0x668e54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668e54(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668e54: `v4 = this - 36` (0x668e7e), D0 (0x668ea6), delete (0x668eac).
+    stub_0x668c50(this.sub(36), fini)
 }
 
 // 0x668ef8 — __ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv")]
-pub fn stub_0x668ef8() {
-    // IDA 0x668ef8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x668ef8(_this: *const u8) -> bool {
+    // IDA 0x668ef8: constant `0` (thunk adds no adjust).
+    false
 }
 
 // 0x668f08 — __ZThn596_N3RBX7TextBoxD1Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD1Ev")]
-pub fn stub_0x668f08() {
-    // IDA 0x668f08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668f08(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668f08: `this - 596` adjust into D1.
+    stub_0x668c4c(this.sub(596), fini)
 }
 
 // 0x668f10 — __ZThn596_N3RBX7TextBoxD0Ev
 // type: void __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD0Ev")]
-pub fn stub_0x668f10() {
-    // IDA 0x668f10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668f10(this: *mut u8, fini: &gui_textbox::TextBoxFini) {
+    // IDA 0x668f10: `v4 = this - 596` (0x668f3c), D0 (0x668f64), delete (0x668f6a).
+    stub_0x668c50(this.sub(596), fini)
 }
 
 // 0x668fb4 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x668fb4() {
-    // IDA 0x668fb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668fb4(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x668fb4: D1 thunk straight into D2 (`$shim`).
+    gui_textbox::creator_destroy(slot)
 }
 
 // 0x668fb8 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x668fb8() {
-    // IDA 0x668fb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x668fb8(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x668fb8: vtable restore + `wasConstructed` assert + creators erase.
+    gui_textbox::creator_destroy(slot)
 }
 
 // 0x669054 — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x669054() {
-    // IDA 0x669054: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x669054() -> &'static str {
+    // IDA 0x669054 (disasm: FLog::Asserts prologue like 0x673ff8/0x6795b0):
+    // assert-guarded class-name read; same tail as 0x668cf0.
+    gui_textbox::creator_class_name()
 }
 
 // 0x6690dc — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x6690dc() {
-    // IDA 0x6690dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x6690dc(
+    out: *mut gui_textbox::TextBoxShared,
+    alloc: unsafe fn() -> (*mut u8, crate::SharedPtr<u8>),
+) {
+    // IDA 0x6690dc: assert + `Creatable::create<TextBox>` + `+32` + count move.
+    gui_textbox::textbox_create(out, alloc)
 }
 
 // 0x6696b4 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x6696b4() {
-    // IDA 0x6696b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x6696b4(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+    // IDA 0x6696b4: declare-once + creators insert + `isConstructed = 666`.
+    gui_textbox::creator_construct(slot)
 }
 
 // 0x6698f8 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x6698f8() {
-    // IDA 0x6698f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x6698f8() -> *const gui_textbox::Creator {
+    // IDA 0x6698f8: `wasConstructed` assert (Object.h:282) + `&creatorPrivateE`.
+    gui_textbox::static_get_creator()
 }
 
 // 0x66a8b4 — __ZN3RBX9GuiObjectD2Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZN3RBX9GuiObjectD2Ev")]
-pub fn stub_0x66a8b4() {
-    // IDA 0x66a8b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66a8b4(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66a8b4: vtable installs + 14-member walk + tween branch + bases.
+    gui_textbox::gui_object_d2(this, fini)
 }
 
 // 0x66ac8c — __ZN3RBX9GuiObjectD1Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZN3RBX9GuiObjectD1Ev")]
-pub fn stub_0x66ac8c() {
-    // IDA 0x66ac8c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66ac8c(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66ac8c: D1 thunk straight into D2 (`$shim`).
+    gui_textbox::gui_object_d2(this, fini)
 }
 
 // 0x66ac90 — __ZN3RBX9GuiObjectD0Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZN3RBX9GuiObjectD0Ev")]
-pub fn stub_0x66ac90() {
-    // IDA 0x66ac90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66ac90(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66ac90: D2 (0x66ace0) then `operator delete` (0x66ace6).
+    gui_textbox::gui_object_d2(this, fini);
+    (fini.free)(this)
 }
 
 // 0x66ad34 — __ZThn32_N3RBX9GuiObjectD1Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD1Ev")]
-pub fn stub_0x66ad34() {
-    // IDA 0x66ad34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66ad34(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66ad34: `this - 32` adjust into D1.
+    stub_0x66ac8c(this.sub(32), fini)
 }
 
 // 0x66ad3c — __ZThn32_N3RBX9GuiObjectD0Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD0Ev")]
-pub fn stub_0x66ad3c() {
-    // IDA 0x66ad3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66ad3c(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66ad3c: `v1 = this - 32` (0x66ad66), D0 (0x66ad8e), delete (0x66ad94).
+    stub_0x66ac90(this.sub(32), fini)
 }
 
 // 0x66ade4 — __ZThn36_N3RBX9GuiObjectD1Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD1Ev")]
-pub fn stub_0x66ade4() {
-    // IDA 0x66ade4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66ade4(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66ade4: `this - 36` adjust into D1.
+    stub_0x66ac8c(this.sub(36), fini)
 }
 
 // 0x66adec — __ZThn36_N3RBX9GuiObjectD0Ev
 // type: void __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD0Ev")]
-pub fn stub_0x66adec() {
-    // IDA 0x66adec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_0x66adec(this: *mut u8, fini: &gui_textbox::GuiObjectFini) {
+    // IDA 0x66adec: `v1 = this - 36` (0x66ae16), D0 (0x66ae3e), delete (0x66ae44).
+    stub_0x66ac90(this.sub(36), fini)
 }
 
 // 0x66b478 — __ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev
