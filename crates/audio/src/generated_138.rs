@@ -1089,6 +1089,24 @@ pub struct AudioHomeViewController {
     last_login_alert: parking_lot::Mutex<Option<&'static str>>,
     unsupported_device_alerts: std::sync::atomic::AtomicU32,
     last_unsupported_alert: parking_lot::Mutex<Option<&'static str>>,
+    jump_to_place_id: std::sync::atomic::AtomicI32,
+    prepared_segues: std::sync::atomic::AtomicU32,
+    last_prepared_url: parking_lot::Mutex<Option<String>>,
+    last_prepared_kind: parking_lot::Mutex<Option<&'static str>>,
+    webview_attaches: std::sync::atomic::AtomicU32,
+    page_view_tracks: std::sync::atomic::AtomicU32,
+    last_page_view: parking_lot::Mutex<Option<&'static str>>,
+    blue_frame: parking_lot::Mutex<u64>,
+    img_avatar: parking_lot::Mutex<u64>,
+    lbl_player_name: parking_lot::Mutex<u64>,
+    place_id: parking_lot::Mutex<u64>,
+    port_id: parking_lot::Mutex<u64>,
+    ip_id: parking_lot::Mutex<u64>,
+    btn_place_launcher: parking_lot::Mutex<u64>,
+    btn_games: parking_lot::Mutex<u64>,
+    btn_debug_settings: parking_lot::Mutex<u64>,
+    lbl_robux: parking_lot::Mutex<u64>,
+    lbl_tix: parking_lot::Mutex<u64>,
 }
 
 impl AudioHomeViewController {
@@ -1400,9 +1418,284 @@ impl AudioHomeViewController {
         self.login_dismisses
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     }
+
+    /// `-[HomeViewController buttonForWebDidTouchUpInside:]` (IDA 0x1cae0):
+    /// logged in segues `sequeToWeb`, otherwise a `YouMustLogin` alert.
+    /// Mirrors the platform twin.
+    pub fn button_for_web_did_touch_up_inside(&self, logged_in: bool) {
+        use std::sync::atomic::Ordering::SeqCst;
+        if logged_in {
+            self.web_button_segues.fetch_add(1, SeqCst);
+        } else {
+            *self.last_login_alert.lock() = Some("YouMustLogin");
+            self.login_required_alerts.fetch_add(1, SeqCst);
+        }
+    }
+
+    /// `-[HomeViewController btnTouchPlayButtonDisabled:]` (IDA 0x1cbac):
+    /// `UnsupportedDevicePlayError` alert. Mirrors the platform twin.
+    pub fn btn_touch_play_button_disabled(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.last_unsupported_alert.lock() = Some("UnsupportedDevicePlayError");
+        self.unsupported_device_alerts.fetch_add(1, SeqCst);
+    }
+
+    /// `+[HomeViewController getUrlForButtonTag:recordPageView:query:]`
+    /// URL + page table (IDA 0x1cc54..0x1cf3c). `base_url`/`search_url`/
+    /// `tablet` stand in for the out-of-slice `RobloxInfo` lookups;
+    /// unknown tags return nil. Mirrors the platform twin (the analytics
+    /// page track is recorded locally; UIKit logging keeps the stderr
+    /// trace).
+    pub fn url_for_button_tag(
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+        tag: i32,
+        record_page_view: bool,
+        query: &str,
+    ) -> Option<String> {
+        let (url, page): (Option<String>, Option<&'static str>) = match tag {
+            10 => (Some(format!("{base_url}games/list")), Some("Games")),
+            11 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet { "Catalog/" } else { "catalog/" }
+                )),
+                Some("Catalog"),
+            ),
+            12 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet {
+                        "My/Character.aspx"
+                    } else {
+                        "inventory"
+                    }
+                )),
+                Some("Inventory"),
+            ),
+            13 => (
+                Some(format!("{base_url}mobile-app-upgrades/")),
+                Some("BuildersClub"),
+            ),
+            14 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet { "User.aspx" } else { "" }
+                )),
+                Some("Profile"),
+            ),
+            15 => (
+                Some(format!(
+                    "{base_url}{}",
+                    if tablet {
+                        "My/Messages.aspx#Inbox"
+                    } else {
+                        "inbox"
+                    }
+                )),
+                Some("Messages"),
+            ),
+            16 => (
+                Some(format!("{base_url}{search_url}{query}")),
+                Some("Search"),
+            ),
+            _ => (None, None),
+        };
+        if record_page_view {
+            if page.is_some() {
+                AUDIO_PAGE_VIEW_TRACKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            }
+        }
+        eprintln!(
+            "URL being returned: {}",
+            url.as_deref().unwrap_or("(null)")
+        );
+        url
+    }
+
+    /// `+[HomeViewController getUrlForButtonTag:recordPageView:]`
+    /// (IDA 0x1cc1c): forwards with the empty string as `query`.
+    /// Mirrors the platform twin.
+    pub fn url_for_button_tag_no_query(
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+        tag: i32,
+        record_page_view: bool,
+    ) -> Option<String> {
+        Self::url_for_button_tag(base_url, search_url, tablet, tag, record_page_view, "")
+    }
+
+    /// Records a `recordPageView` page track locally (the analytics
+    /// backend lives out of slice).
+    pub fn track_page_view(&self, page: &'static str) {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.last_page_view.lock() = Some(page);
+        self.page_view_tracks.fetch_add(1, SeqCst);
+    }
+
+    /// `-[HomeViewController prepareForSegue:sender:]` (IDA 0x1cfe8):
+    /// non-navbar destinations are a no-op; `jumpToPlaceID` wins with a
+    /// `----item?id=` URL, otherwise button/search/home senders resolve
+    /// through the URL table. Every navbar path attaches the preloaded
+    /// web view. Mirrors the platform twin.
+    pub fn prepare_for_segue(
+        &self,
+        dest_is_nav_bar: bool,
+        sender: AudioHomeSegueSender,
+        base_url: &str,
+        search_url: &str,
+        tablet: bool,
+    ) -> Option<String> {
+        use std::sync::atomic::Ordering::SeqCst;
+        if !dest_is_nav_bar {
+            return None;
+        }
+        let jump = self.jump_to_place_id.load(SeqCst);
+        let (url, kind): (Option<String>, Option<&'static str>) = if jump != 0 {
+            let url = format!("http://www.roblox.com/----item?id={jump}");
+            self.jump_to_place_id.store(0, SeqCst);
+            (Some(url), Some("jump"))
+        } else {
+            match sender {
+                AudioHomeSegueSender::Button(tag) => (
+                    Self::url_for_button_tag_no_query(
+                        base_url,
+                        search_url,
+                        tablet,
+                        tag,
+                        true,
+                    ),
+                    Some("button"),
+                ),
+                AudioHomeSegueSender::SearchField(text) => (
+                    Self::url_for_button_tag(base_url, search_url, tablet, 16, true, &text),
+                    Some("search"),
+                ),
+                AudioHomeSegueSender::Home => (
+                    Self::url_for_button_tag_no_query(base_url, search_url, tablet, 10, true),
+                    Some("home"),
+                ),
+                AudioHomeSegueSender::Other => (None, None),
+            }
+        };
+        *self.last_prepared_url.lock() = url.clone();
+        *self.last_prepared_kind.lock() = kind;
+        self.prepared_segues.fetch_add(1, SeqCst);
+        self.webview_attaches.fetch_add(1, SeqCst);
+        url
+    }
+
+    /// `-[HomeViewController viewMustSegueAfterLoad]` (IDA 0x1d238): sets
+    /// the flag `viewDidAppear:` consumes. Mirrors the platform twin.
+    pub fn view_must_segue_after_load(&self) {
+        self.segue_after_load_pending
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController setJumpToPlaceID:]` (IDA 0x1d248): stores
+    /// the id `prepareForSegue:` consumes. Mirrors the platform twin.
+    pub fn set_jump_to_place_id(&self, place_id: i32) {
+        self.jump_to_place_id
+            .store(place_id, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// Synthesized outlet getter/setter pairs (IDA 0x1d258..0x1d470):
+    /// each getter returns the retained slot, each setter stores it
+    /// (`objc_setProperty`). UIKit objects live out of slice, so `u64`
+    /// ids stand in. Mirrors the platform twins.
+    pub fn blue_frame(&self) -> u64 {
+        *self.blue_frame.lock()
+    }
+    pub fn set_blue_frame(&self, value: u64) {
+        *self.blue_frame.lock() = value;
+    }
+    pub fn img_avatar(&self) -> u64 {
+        *self.img_avatar.lock()
+    }
+    pub fn set_img_avatar(&self, value: u64) {
+        *self.img_avatar.lock() = value;
+    }
+    pub fn lbl_player_name(&self) -> u64 {
+        *self.lbl_player_name.lock()
+    }
+    pub fn set_lbl_player_name(&self, value: u64) {
+        *self.lbl_player_name.lock() = value;
+    }
+    pub fn place_id(&self) -> u64 {
+        *self.place_id.lock()
+    }
+    pub fn set_place_id(&self, value: u64) {
+        *self.place_id.lock() = value;
+    }
+    pub fn port_id(&self) -> u64 {
+        *self.port_id.lock()
+    }
+    pub fn set_port_id(&self, value: u64) {
+        *self.port_id.lock() = value;
+    }
+    pub fn ip_id(&self) -> u64 {
+        *self.ip_id.lock()
+    }
+    pub fn set_ip_id(&self, value: u64) {
+        *self.ip_id.lock() = value;
+    }
+    pub fn btn_place_launcher(&self) -> u64 {
+        *self.btn_place_launcher.lock()
+    }
+    pub fn set_btn_place_launcher(&self, value: u64) {
+        *self.btn_place_launcher.lock() = value;
+    }
+    pub fn btn_games(&self) -> u64 {
+        *self.btn_games.lock()
+    }
+    pub fn set_btn_games(&self, value: u64) {
+        *self.btn_games.lock() = value;
+    }
+    pub fn btn_debug_settings(&self) -> u64 {
+        *self.btn_debug_settings.lock()
+    }
+    pub fn set_btn_debug_settings(&self, value: u64) {
+        *self.btn_debug_settings.lock() = value;
+    }
+    pub fn lbl_robux(&self) -> u64 {
+        *self.lbl_robux.lock()
+    }
+    pub fn set_lbl_robux(&self, value: u64) {
+        *self.lbl_robux.lock() = value;
+    }
+    pub fn lbl_tix(&self) -> u64 {
+        *self.lbl_tix.lock()
+    }
+    pub fn set_lbl_tix(&self, value: u64) {
+        *self.lbl_tix.lock() = value;
+    }
 }
 
-/// `-[NSString intValue]` behind `placeIdClicked:` (IDA 0x1c99c/0x1c9bc):
+/// `-[HomeViewController prepareForSegue:sender:]` sender classes
+/// (IDA 0x1d0d8..0x1d1bc): `UIButton` carries its `tag`, `UITextField`
+/// contributes its text query, `HomeViewController` maps to tag 10.
+/// Mirrors the platform enum.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum AudioHomeSegueSender {
+    Button(i32),
+    SearchField(String),
+    Home,
+    Other,
+ }
+
+/// Process-wide `recordPageView` page-track count behind the
+/// `getUrlForButtonTag:` class methods (IDA 0x1cf1c..0x1cf3c). The
+/// analytics backend lives out of slice; the count preserves the call.
+static AUDIO_PAGE_VIEW_TRACKS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+
+/// Returns the process-wide page-track count (test hook).
+pub fn audio_page_view_tracks() -> u32 {
+    AUDIO_PAGE_VIEW_TRACKS.load(std::sync::atomic::Ordering::SeqCst)
+}
+
 /// leading whitespace, optional sign, saturating digit prefix; empty or
 /// non-numeric → 0. Mirrors the platform helper.
 fn audio_ns_int_value(s: &str) -> i32 {

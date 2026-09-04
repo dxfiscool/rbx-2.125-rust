@@ -14,176 +14,273 @@ const _: () = {
 
 // 0x1cae0 — -[HomeViewController buttonForWebDidTouchUpInside:]
 #[doc(alias = "-[HomeViewController buttonForWebDidTouchUpInside:]")]
-pub fn stub_1cae0() -> ! {
-    todo!("0x1cae0 -[HomeViewController buttonForWebDidTouchUpInside:]")
+pub fn stub_1cae0(controller: &crate::generated_138::AudioHomeViewController, logged_in: bool) {
+    // IDA 0x1cae0 (`-[HomeViewController buttonForWebDidTouchUpInside:]`):
+    // segue when logged in, else a login alert. Same as the platform
+    // 0x1cae0 anchor.
+    controller.button_for_web_did_touch_up_inside(logged_in);
 }
 
 // 0x1cbac — -[HomeViewController btnTouchPlayButtonDisabled:]
 #[doc(alias = "-[HomeViewController btnTouchPlayButtonDisabled:]")]
-pub fn stub_1cbac() -> ! {
-    todo!("0x1cbac -[HomeViewController btnTouchPlayButtonDisabled:]")
+pub fn stub_1cbac(controller: &crate::generated_138::AudioHomeViewController) {
+    // IDA 0x1cbac (`-[HomeViewController btnTouchPlayButtonDisabled:]`):
+    // `UnsupportedDevicePlayError` alert. Same as the platform 0x1cbac
+    // anchor.
+    controller.btn_touch_play_button_disabled();
 }
 
 // 0x1cc1c — +[HomeViewController getUrlForButtonTag:recordPageView:]
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:]")]
-pub fn stub_1cc1c() -> ! {
-    todo!("0x1cc1c +[HomeViewController getUrlForButtonTag:recordPageView:]")
+pub fn stub_1cc1c(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+) -> Option<String> {
+    // IDA 0x1cc1c (`+[HomeViewController getUrlForButtonTag:recordPageView:]`):
+    // forwards with the empty query. Same as the platform 0x1cc1c
+    // anchor.
+    crate::generated_138::AudioHomeViewController::url_for_button_tag_no_query(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+    )
 }
 
 // 0x1cc54 — +[HomeViewController getUrlForButtonTag:recordPageView:query:]
 #[doc(alias = "+[HomeViewController getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_1cc54() -> ! {
-    todo!("0x1cc54 +[HomeViewController getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_1cc54(
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+    tag: i32,
+    record_page_view: bool,
+    query: &str,
+) -> Option<String> {
+    // IDA 0x1cc54 (`+[HomeViewController getUrlForButtonTag:recordPageView:query:]`):
+    // URL + page table. Same as the platform 0x1cc54 anchor.
+    crate::generated_138::AudioHomeViewController::url_for_button_tag(
+        base_url,
+        search_url,
+        tablet,
+        tag,
+        record_page_view,
+        query,
+    )
 }
 
 // 0x1cfe8 — -[HomeViewController prepareForSegue:sender:]
 #[doc(alias = "-[HomeViewController prepareForSegue:sender:]")]
-pub fn stub_1cfe8() -> ! {
-    todo!("0x1cfe8 -[HomeViewController prepareForSegue:sender:]")
+pub fn stub_1cfe8(
+    controller: &crate::generated_138::AudioHomeViewController,
+    dest_is_nav_bar: bool,
+    sender: crate::generated_138::AudioHomeSegueSender,
+    base_url: &str,
+    search_url: &str,
+    tablet: bool,
+) -> Option<String> {
+    // IDA 0x1cfe8 (`-[HomeViewController prepareForSegue:sender:]`):
+    // jump-id or sender URL plus the preloaded web view. Same as the
+    // platform 0x1cfe8 anchor.
+    controller.prepare_for_segue(dest_is_nav_bar, sender, base_url, search_url, tablet)
 }
 
 // 0x1d238 — -[HomeViewController viewMustSegueAfterLoad]
 #[doc(alias = "-[HomeViewController viewMustSegueAfterLoad]")]
-pub fn stub_1d238() -> ! {
-    todo!("0x1d238 -[HomeViewController viewMustSegueAfterLoad]")
+pub fn stub_1d238(controller: &crate::generated_138::AudioHomeViewController) {
+    // IDA 0x1d238 (`-[HomeViewController viewMustSegueAfterLoad]`): sets
+    // the flag `viewDidAppear:` consumes. Same as the platform 0x1d238
+    // anchor.
+    controller.view_must_segue_after_load();
 }
 
 // 0x1d248 — -[HomeViewController setJumpToPlaceID:]
 #[doc(alias = "-[HomeViewController setJumpToPlaceID:]")]
-pub fn stub_1d248() -> ! {
-    todo!("0x1d248 -[HomeViewController setJumpToPlaceID:]")
+pub fn stub_1d248(controller: &crate::generated_138::AudioHomeViewController, place_id: i32) {
+    // IDA 0x1d248 (`-[HomeViewController setJumpToPlaceID:]`): stores the
+    // id `prepareForSegue:` consumes. Same as the platform 0x1d248
+    // anchor.
+    controller.set_jump_to_place_id(place_id);
 }
 
 // 0x1d258 — -[HomeViewController blueFrame]
 #[doc(alias = "-[HomeViewController blueFrame]")]
-pub fn stub_1d258() -> ! {
-    todo!("0x1d258 -[HomeViewController blueFrame]")
+pub fn stub_1d258(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d258 (`-[HomeViewController blueFrame]`): returns the
+    // retained slot. Same as the platform 0x1d258 anchor.
+    controller.blue_frame()
 }
 
 // 0x1d268 — -[HomeViewController setBlueFrame:]
 #[doc(alias = "-[HomeViewController setBlueFrame:]")]
-pub fn stub_1d268() -> ! {
-    todo!("0x1d268 -[HomeViewController setBlueFrame:]")
+pub fn stub_1d268(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d268 (`-[HomeViewController setBlueFrame:]`): retained ivar
+    // store. Same as the platform 0x1d268 anchor.
+    controller.set_blue_frame(value);
 }
 
 // 0x1d28c — -[HomeViewController imgAvatar]
 #[doc(alias = "-[HomeViewController imgAvatar]")]
-pub fn stub_1d28c() -> ! {
-    todo!("0x1d28c -[HomeViewController imgAvatar]")
+pub fn stub_1d28c(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d28c (`-[HomeViewController imgAvatar]`). Same as the
+    // platform 0x1d28c anchor.
+    controller.img_avatar()
 }
 
 // 0x1d29c — -[HomeViewController setImgAvatar:]
 #[doc(alias = "-[HomeViewController setImgAvatar:]")]
-pub fn stub_1d29c() -> ! {
-    todo!("0x1d29c -[HomeViewController setImgAvatar:]")
+pub fn stub_1d29c(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d29c (`-[HomeViewController setImgAvatar:]`). Same as the
+    // platform 0x1d29c anchor.
+    controller.set_img_avatar(value);
 }
 
 // 0x1d2c0 — -[HomeViewController lblPlayerName]
 #[doc(alias = "-[HomeViewController lblPlayerName]")]
-pub fn stub_1d2c0() -> ! {
-    todo!("0x1d2c0 -[HomeViewController lblPlayerName]")
+pub fn stub_1d2c0(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d2c0 (`-[HomeViewController lblPlayerName]`). Same as the
+    // platform 0x1d2c0 anchor.
+    controller.lbl_player_name()
 }
 
 // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
 #[doc(alias = "-[HomeViewController setLblPlayerName:]")]
-pub fn stub_1d2d0() -> ! {
-    todo!("0x1d2d0 -[HomeViewController setLblPlayerName:]")
+pub fn stub_1d2d0(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d2d0 (`-[HomeViewController setLblPlayerName:]`). Same as
+    // the platform 0x1d2d0 anchor.
+    controller.set_lbl_player_name(value);
 }
 
 // 0x1d2f4 — -[HomeViewController placeId]
 #[doc(alias = "-[HomeViewController placeId]")]
-pub fn stub_1d2f4() -> ! {
-    todo!("0x1d2f4 -[HomeViewController placeId]")
+pub fn stub_1d2f4(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d2f4 (`-[HomeViewController placeId]`). Same as the
+    // platform 0x1d2f4 anchor.
+    controller.place_id()
 }
 
 // 0x1d304 — -[HomeViewController setPlaceId:]
 #[doc(alias = "-[HomeViewController setPlaceId:]")]
-pub fn stub_1d304() -> ! {
-    todo!("0x1d304 -[HomeViewController setPlaceId:]")
+pub fn stub_1d304(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d304 (`-[HomeViewController setPlaceId:]`). Same as the
+    // platform 0x1d304 anchor.
+    controller.set_place_id(value);
 }
 
 // 0x1d328 — -[HomeViewController portId]
 #[doc(alias = "-[HomeViewController portId]")]
-pub fn stub_1d328() -> ! {
-    todo!("0x1d328 -[HomeViewController portId]")
+pub fn stub_1d328(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d328 (`-[HomeViewController portId]`). Same as the platform
+    // 0x1d328 anchor.
+    controller.port_id()
 }
 
 // 0x1d338 — -[HomeViewController setPortId:]
 #[doc(alias = "-[HomeViewController setPortId:]")]
-pub fn stub_1d338() -> ! {
-    todo!("0x1d338 -[HomeViewController setPortId:]")
+pub fn stub_1d338(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d338 (`-[HomeViewController setPortId:]`). Same as the
+    // platform 0x1d338 anchor.
+    controller.set_port_id(value);
 }
 
 // 0x1d35c — -[HomeViewController ipId]
 #[doc(alias = "-[HomeViewController ipId]")]
-pub fn stub_1d35c() -> ! {
-    todo!("0x1d35c -[HomeViewController ipId]")
+pub fn stub_1d35c(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d35c (`-[HomeViewController ipId]`). Same as the platform
+    // 0x1d35c anchor.
+    controller.ip_id()
 }
 
 // 0x1d36c — -[HomeViewController setIpId:]
 #[doc(alias = "-[HomeViewController setIpId:]")]
-pub fn stub_1d36c() -> ! {
-    todo!("0x1d36c -[HomeViewController setIpId:]")
+pub fn stub_1d36c(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d36c (`-[HomeViewController setIpId:]`). Same as the
+    // platform 0x1d36c anchor.
+    controller.set_ip_id(value);
 }
 
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
-pub fn stub_1d390() -> ! {
-    todo!("0x1d390 -[HomeViewController btnPlaceLauncher]")
+pub fn stub_1d390(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d390 (`-[HomeViewController btnPlaceLauncher]`). Same as
+    // the platform 0x1d390 anchor.
+    controller.btn_place_launcher()
 }
 
 // 0x1d3a0 — -[HomeViewController setBtnPlaceLauncher:]
 #[doc(alias = "-[HomeViewController setBtnPlaceLauncher:]")]
-pub fn stub_1d3a0() -> ! {
-    todo!("0x1d3a0 -[HomeViewController setBtnPlaceLauncher:]")
+pub fn stub_1d3a0(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d3a0 (`-[HomeViewController setBtnPlaceLauncher:]`). Same
+    // as the platform 0x1d3a0 anchor.
+    controller.set_btn_place_launcher(value);
 }
 
 // 0x1d3c4 — -[HomeViewController btnGames]
 #[doc(alias = "-[HomeViewController btnGames]")]
-pub fn stub_1d3c4() -> ! {
-    todo!("0x1d3c4 -[HomeViewController btnGames]")
+pub fn stub_1d3c4(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d3c4 (`-[HomeViewController btnGames]`). Same as the
+    // platform 0x1d3c4 anchor.
+    controller.btn_games()
 }
 
 // 0x1d3d4 — -[HomeViewController setBtnGames:]
 #[doc(alias = "-[HomeViewController setBtnGames:]")]
-pub fn stub_1d3d4() -> ! {
-    todo!("0x1d3d4 -[HomeViewController setBtnGames:]")
+pub fn stub_1d3d4(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d3d4 (`-[HomeViewController setBtnGames:]`). Same as the
+    // platform 0x1d3d4 anchor.
+    controller.set_btn_games(value);
 }
 
 // 0x1d3f8 — -[HomeViewController btnDebugSettings]
 #[doc(alias = "-[HomeViewController btnDebugSettings]")]
-pub fn stub_1d3f8() -> ! {
-    todo!("0x1d3f8 -[HomeViewController btnDebugSettings]")
+pub fn stub_1d3f8(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d3f8 (`-[HomeViewController btnDebugSettings]`). Same as
+    // the platform 0x1d3f8 anchor.
+    controller.btn_debug_settings()
 }
 
 // 0x1d408 — -[HomeViewController setBtnDebugSettings:]
 #[doc(alias = "-[HomeViewController setBtnDebugSettings:]")]
-pub fn stub_1d408() -> ! {
-    todo!("0x1d408 -[HomeViewController setBtnDebugSettings:]")
+pub fn stub_1d408(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d408 (`-[HomeViewController setBtnDebugSettings:]`). Same
+    // as the platform 0x1d408 anchor.
+    controller.set_btn_debug_settings(value);
 }
 
 // 0x1d42c — -[HomeViewController lblRobux]
 #[doc(alias = "-[HomeViewController lblRobux]")]
-pub fn stub_1d42c() -> ! {
-    todo!("0x1d42c -[HomeViewController lblRobux]")
+pub fn stub_1d42c(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d42c (`-[HomeViewController lblRobux]`). Same as the
+    // platform 0x1d42c anchor.
+    controller.lbl_robux()
 }
 
 // 0x1d43c — -[HomeViewController setLblRobux:]
 #[doc(alias = "-[HomeViewController setLblRobux:]")]
-pub fn stub_1d43c() -> ! {
-    todo!("0x1d43c -[HomeViewController setLblRobux:]")
+pub fn stub_1d43c(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d43c (`-[HomeViewController setLblRobux:]`). Same as the
+    // platform 0x1d43c anchor.
+    controller.set_lbl_robux(value);
 }
 
 // 0x1d460 — -[HomeViewController lblTix]
 #[doc(alias = "-[HomeViewController lblTix]")]
-pub fn stub_1d460() -> ! {
-    todo!("0x1d460 -[HomeViewController lblTix]")
+pub fn stub_1d460(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d460 (`-[HomeViewController lblTix]`). Same as the platform
+    // 0x1d460 anchor.
+    controller.lbl_tix()
 }
 
 // 0x1d470 — -[HomeViewController setLblTix:]
 #[doc(alias = "-[HomeViewController setLblTix:]")]
-pub fn stub_1d470() -> ! {
-    todo!("0x1d470 -[HomeViewController setLblTix:]")
+pub fn stub_1d470(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d470 (`-[HomeViewController setLblTix:]`). Same as the
+    // platform 0x1d470 anchor.
+    controller.set_lbl_tix(value);
 }
 
 // 0x1d494 — -[HomeViewController btnMessages]
