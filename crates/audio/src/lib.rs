@@ -2206,7 +2206,9 @@ pub const ASYNC_THREAD_STACK: u32 = 49152;
 ///// lock, the MemPool (provenance strings elided), and FMOD::Thread.
 pub trait AsyncOs {
     fn crit_enter(&mut self, slot: *mut u8);
-    fn crit_leave(&mut self, slot: *mut u8);
+    /// `FMOD_OS_CriticalSection_Leave` (IDA 0x706b4 keeps its return in R0
+    /// and forwards it to result-queue callbacks).
+    fn crit_leave(&mut self, slot: *mut u8) -> i32;
     /// `FMOD_OS_CriticalSection_Create(slot, 0)` (IDA 0x70bbc): create the
     /// in-place section, 0 on success.
     fn crit_create(&mut self, slot: *mut u8) -> i32;
@@ -2232,7 +2234,9 @@ pub struct NullAsyncOs {
 }
 impl AsyncOs for NullAsyncOs {
     fn crit_enter(&mut self, _slot: *mut u8) {}
-    fn crit_leave(&mut self, _slot: *mut u8) {}
+    fn crit_leave(&mut self, _slot: *mut u8) -> i32 {
+        0
+    }
     fn crit_create(&mut self, _slot: *mut u8) -> i32 {
         0
     }
@@ -3635,16 +3639,247 @@ pub unsafe fn stub_70458(
     get_user_data(ch, out)
 }
 
+///// Word view of a SystemI for the fmod.cpp C entry points (IDA 0x70474,
+///// 0x705cc): words 1/2 thread the `gGlobalMem` ring, word 5483 holds the
+///// slot index + 1 (0 = unlisted). The host allocates at least 21936 bytes
+///// (the real SystemI is 25880) zeroed and runs `SystemI::SystemI` on it.
+#[repr(C)]
+pub struct SystemEntry {
+    pub _w0: u32,
+    pub link_next: *mut SystemEntry,
+    pub link_prev: *mut SystemEntry,
+    pub _pad12: [u8; 21920],
+    pub slot: u32,
+}
+//
+///// Host ring for the `gGlobalMem` system list (IDA 0x70474/0x705cc), same
+///// shape as `AsyncRegistry`: an owned sentinel stands in for the head
+///// struct, and every observable link operation matches.
+pub struct SystemRegistry {
+    pub sentinel: Box<SystemEntry>,
+}
+impl SystemRegistry {
+    pub fn new() -> Self {
+        let mut s: Box<SystemEntry> = unsafe { Box::new(core::mem::zeroed()) };
+        let ptr = &mut *s as *mut SystemEntry;
+        s.link_next = ptr;
+        s.link_prev = ptr;
+        Self { sentinel: s }
+    }
+    fn sentinel_ptr(&mut self) -> *mut SystemEntry {
+        &mut *self.sentinel as *mut SystemEntry
+    }
+    pub fn is_empty(&self) -> bool {
+        self.sentinel.link_next == &*self.sentinel as *const SystemEntry as *mut SystemEntry
+    }
+    pub fn first(&self) -> *mut SystemEntry {
+        self.sentinel.link_next
+    }
+    /// IDA 0x70474 head insert: the new node becomes the first entry.
+    pub fn insert_head(&mut self, node: *mut SystemEntry) {
+        unsafe {
+            let s = self.sentinel_ptr();
+            (*node).link_next = (*s).link_next;
+            (*node).link_prev = s;
+            (*(*s).link_next).link_prev = node;
+            (*s).link_next = node;
+        }
+    }
+}
+//
+///// Host seam for the fmod.cpp outsiders behind 0x70474/0x705cc (pool
+///// provenance strings elided, as with `AsyncOs`).
+pub trait SystemOs {
+    /// `MemPool::calloc(pool, 25880)` + `SystemI::SystemI`; null = OOM.
+    fn system_alloc(&mut self) -> *mut SystemEntry;
+    /// `MemPool::free` for a `system_alloc` block.
+    fn system_free(&mut self, sys: *mut SystemEntry);
+    /// `SystemI::flushDSPConnectionRequests(sys, 1)` (IDA 0x705cc).
+    fn flush_dsp_requests(&mut self, sys: *mut SystemEntry);
+    /// MemPool words +28/+32 (IDA 0x705cc).
+    fn pool_current(&self) -> u32;
+    /// MemPool words +28/+32 (IDA 0x705cc).
+    fn pool_max(&self) -> u32;
+}
+//
+///// Word view of a stream for `threadFunc` (IDA 0x706b4): only the words
+///// the worker touches. Word 69 arrives as the opcode and leaves as the
+///// status; word 15 carries the busy/done bits; words 33/34/35/37 thread
+///// completion into linked owners; word 68 is the job-result slot and
+///// word 84 the sound object.
+#[repr(C)]
+pub struct AsyncStreamView {
+    pub _p00: [u8; 28],
+    pub w7: u32,
+    pub _p01: [u8; 28],
+    pub w15: u32,
+    pub _p02: [u8; 68],
+    pub w33: *mut u8,
+    pub w34: *mut u8,
+    pub w35: u32,
+    pub _p03: [u8; 4],
+    pub w37: *mut u8,
+    pub w38: u32,
+    pub w39: u32,
+    pub _p04: [u8; 80],
+    pub w60: u32,
+    pub w61: u32,
+    pub w62sys: *mut u8,
+    pub _p05: [u8; 20],
+    pub w68slot: *mut AsyncJobResult,
+    pub w69op: u32,
+    pub _p06: [u8; 56],
+    pub w84sound: *mut u8,
+}
+//
+///// Job-result slot (stream word 68) for `threadFunc` (IDA 0x706b4): +536
+///// is the create data, +592 the done-callback slot, +608 its cached
+///// value, +664 the ready byte, +668/+672 the read args, +676 the result.
+#[repr(C)]
+pub struct AsyncJobResult {
+    pub _q00: [u8; 536],
+    pub w536data: u32,
+    pub _q01: [u8; 52],
+    pub w592cb: *mut u8,
+    pub _q02: [u8; 12],
+    pub w608cached: u32,
+    pub _q03: [u8; 52],
+    pub w664ready: u8,
+    pub _q04: [u8; 3],
+    pub w668a: u32,
+    pub w672b: u32,
+    pub w676result: u32,
+}
+//
+///// Work-queue node view: entries carry the stream at word 2.
+///// Prefix-compatible with `AsyncJobNode` for the cast at the pop site.
+#[repr(C)]
+pub struct AsyncWorkNode {
+    pub next: *mut AsyncWorkNode,
+    pub prev: *mut AsyncWorkNode,
+    pub stream: *mut AsyncStreamView,
+}
+//
+///// Result-queue node view: word 2 selects the entry callback the host
+///// runs through `AsyncThreadSys::run_result`.
+#[repr(C)]
+pub struct AsyncResultNode {
+    pub next: *mut AsyncResultNode,
+    pub prev: *mut AsyncResultNode,
+    pub cookie: *mut u8,
+}
+//
+///// Host seam for the stream/sound outsiders behind `threadFunc`
+///// (IDA 0x706b4): every virtual or cross-object call below. Words cross
+///// the seam as values/pointers so the dispatch on the opcode (1/5/7)
+///// and the completion propagation stay on this side.
+pub trait AsyncThreadSys {
+    /// Words for the create path: `(system, data)` from stream words
+    /// 62/7/68 and slot +536 (IDA 0x706b4 opcode 1).
+    fn create_sound_params(&mut self, stream: *mut AsyncStreamView) -> (*mut u8, u32);
+    /// `SystemI::createSoundInternal`; 0 = failure (IDA 0x706b4 opcode 1).
+    fn create_sound_internal(&mut self, sys: *mut u8, data: u32) -> u32;
+    /// `SoundI::updateSubSound(stream, index, 0)` (IDA 0x706b4 opcode 5).
+    fn update_sub_sound(&mut self, stream: *mut AsyncStreamView, index: u32) -> i32;
+    /// `Stream::setPosition` (IDA 0x706b4 opcode 5).
+    fn stream_set_position(&mut self, stream: *mut AsyncStreamView, pos: u32, mode: u32) -> i32;
+    /// `Stream::flush` (IDA 0x706b4 opcode 5).
+    fn stream_flush(&mut self, stream: *mut AsyncStreamView) -> i32;
+    /// Stream word 15 polled by the opcode-7 wait loop.
+    fn read_state(&mut self, stream: *mut AsyncStreamView) -> u32;
+    /// `FMOD_OS_Time_Sleep` (IDA 0x706b4 opcode 7 waits 10 ms).
+    fn sleep_ms(&mut self, ms: u32);
+    /// Sound vtable +92 read (IDA 0x706b4 opcode 7).
+    fn sound_read(&mut self, sound: *mut u8, a: u32, b: u32, c: i32) -> i32;
+    /// Sound word 9 `&= ~0x4000` past a successful read.
+    fn sound_clear_busy(&mut self, sound: *mut u8);
+    /// Enter the system crit at `*(sys + 23528)`, run the vtable +52
+    /// `setPaused` when the sound's word 32 is set (paused = word 9 &
+    /// 0x20), leave (IDA 0x706b4 opcode 7 tail).
+    fn sound_sync_pause(&mut self, sys: *mut u8, sound: *mut u8);
+    /// Stream vtable +8 completion poll (IDA 0x706b4 LABEL_11 tail).
+    fn stream_poll_done(&mut self, stream: *mut AsyncStreamView) -> bool;
+    /// The slot +592 done callback, fired with no args after caching
+    /// +608 into stream word 60 (IDA 0x706b4 LABEL_15 tail).
+    fn fire_done(&mut self, slot: *mut AsyncJobResult);
+    /// One result-queue entry's word-2 callback invoked with the leave
+    /// code; nonzero stops the walk and returns (IDA 0x706b4 LABEL_19).
+    fn run_result(&mut self, entry: *mut AsyncResultNode, code: i32) -> i32;
+}
+//
 // 0x70474 — _FMOD_System_Create
 #[doc(alias = "_FMOD_System_Create")]
-pub fn stub_70474() -> ! {
-    todo!("0x70474 _FMOD_System_Create")
+pub unsafe fn stub_70474(
+    reg: &mut SystemRegistry,
+    out: *mut *mut SystemEntry,
+    os: &mut impl SystemOs,
+) -> i32 {
+    // IDA 0x70474 (fmod.cpp FMOD_System_Create): null out is 37; calloc
+    // 25880 + SystemI::SystemI, written to out even on failure (null → 44).
+    // At most 15 systems share the ring: the taken slot indices (word 5483
+    // minus 1) are collected, the first free one is stored back + 1, and
+    // the node head-inserts. A full ring frees the block and returns 44.
+    // BUG-compat: slot words outside 1..=15 are ignored here — the
+    // original would index the stack OOB.
+    if out.is_null() {
+        return 37;
+    }
+    let sys = os.system_alloc();
+    *out = sys;
+    if sys.is_null() {
+        return 44;
+    }
+    let mut taken = [false; 15];
+    let sentinel = reg.sentinel_ptr();
+    let mut cur = reg.first();
+    while cur != sentinel {
+        let idx = (*cur).slot.wrapping_sub(1);
+        if (idx as usize) < taken.len() {
+            taken[idx as usize] = true;
+        }
+        cur = (*cur).link_next;
+    }
+    let mut index = 0usize;
+    while index < taken.len() && taken[index] {
+        index += 1;
+    }
+    if index == taken.len() {
+        os.system_free(sys);
+        return 44;
+    }
+    (*sys).slot = index as u32 + 1;
+    reg.insert_head(sys);
+    0
 }
 
 // 0x705cc — _FMOD_Memory_GetStats
 #[doc(alias = "_FMOD_Memory_GetStats")]
-pub fn stub_705cc() -> ! {
-    todo!("0x705cc _FMOD_Memory_GetStats")
+pub unsafe fn stub_705cc(
+    reg: &mut SystemRegistry,
+    current: *mut u32,
+    maximum: *mut u32,
+    blocking: bool,
+    os: &mut impl SystemOs,
+) -> i32 {
+    // IDA 0x705cc (fmod.cpp FMOD_Memory_GetStats): with blocking set every
+    // ring system flushes its DSP connection requests first (the next link
+    // is re-read after each flush, as in the original); then the pool
+    // current/max words land when their outs are non-null. Always 0.
+    if blocking {
+        let sentinel = reg.sentinel_ptr();
+        let mut cur = reg.first();
+        while cur != sentinel {
+            os.flush_dsp_requests(cur);
+            cur = (*cur).link_next;
+        }
+    }
+    if !current.is_null() {
+        *current = os.pool_current();
+    }
+    if !maximum.is_null() {
+        *maximum = os.pool_max();
+    }
+    0
 }
 
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv
@@ -3661,14 +3896,149 @@ pub unsafe fn stub_7069c(t: *mut AsyncThread) -> i32 {
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv
 #[doc(alias = "FMOD::AsyncThread::threadFunc(void)")]
-pub fn stub_706b4() -> ! {
-    todo!("0x706b4 FMOD::AsyncThread::threadFunc(void)")
+pub unsafe fn stub_706b4(
+    t: *mut AsyncThread,
+    os: &mut impl AsyncOs,
+    sys: &mut impl AsyncThreadSys,
+) -> i32 {
+    // IDA 0x706b4 (fmod_async.cpp AsyncThread::threadFunc): byte 308
+    // (`veteran`: cleared by reallyRelease) gates the whole body. One job
+    // pops off the job queue under crit (unlink, isolate, null the stream
+    // word, flag byte 329) and runs by opcode — 1 creates the sound
+    // internal, 5 refreshes a sub-sound/position or flushes, 7 waits on the
+    // state bits then reads — converging on (status, result) exactly like
+    // LABEL_34/LABEL_42/LABEL_10. Completion writes the result word, sets
+    // busy bit 0 of word 15, publishes the status locally and into the
+    // linked owners (+37, then +34 or the vtable-polled +33 chain), clears
+    // the in-flight flag, fires the done callback past its ready gate, and
+    // releases. LABEL_19 then walks the result queue under crit, feeding
+    // each entry callback the leave code until one fails or the sentinel
+    // returns. Stream/sound/virtual leaves live behind `AsyncThreadSys`;
+    // every queue/link/word operation above is concrete.
+    if (*t).veteran == 0 {
+        return 0;
+    }
+    os.crit_enter((*t).crit);
+    let job_sentinel = &mut (*t).job_head as *mut *mut AsyncJobNode as *mut AsyncWorkNode;
+    let mut stream: *mut AsyncStreamView = core::ptr::null_mut();
+    if (*t).job_head as *mut AsyncWorkNode != job_sentinel {
+        let node = (*t).job_head as *mut AsyncWorkNode;
+        stream = (*node).stream;
+        let next = (*node).next;
+        let prev = (*node).prev;
+        (*node).stream = core::ptr::null_mut();
+        (*prev).next = next;
+        (*node).next = node;
+        (*next).prev = prev;
+        (*node).prev = node;
+        (*t)._pad329 = 1;
+    }
+    os.crit_leave((*t).crit);
+    if !stream.is_null() {
+        let slot = (*stream).w68slot;
+        let (status, result) = match (*stream).w69op {
+            1 => {
+                let (sys_ptr, data) = sys.create_sound_params(stream);
+                let handle = sys.create_sound_internal(sys_ptr, data);
+                (if handle == 0 { 0 } else { 2 }, handle)
+            }
+            5 => {
+                let first = if (*stream).w39 == 0 {
+                    sys.update_sub_sound(stream, (*stream).w38)
+                } else {
+                    0
+                };
+                let updated = if first != 0 {
+                    first
+                } else {
+                    sys.stream_set_position(stream, 0, 2)
+                };
+                if updated != 0 {
+                    (2, updated as u32)
+                } else {
+                    let handle = sys.stream_flush(stream);
+                    (if handle == 0 { 0 } else { 2 }, handle as u32)
+                }
+            }
+            7 => {
+                while sys.read_state(stream) & 0x440 == 0 {
+                    sys.sleep_ms(10);
+                }
+                if sys.read_state(stream) & 0x40 != 0 {
+                    (0, 0)
+                } else {
+                    let code = sys.sound_read((*stream).w84sound, (*slot).w668a, (*slot).w672b, 1);
+                    if code != 0 {
+                        if code == 36 {
+                            (0, 0)
+                        } else {
+                            (2, code as u32)
+                        }
+                    } else {
+                        sys.sound_clear_busy((*stream).w84sound);
+                        sys.sound_sync_pause((*stream).w62sys, (*stream).w84sound);
+                        (0, 0)
+                    }
+                }
+            }
+            _ => (0, 0),
+        };
+        (*slot).w676result = result;
+        (*stream).w15 |= 1;
+        (*stream).w69op = status;
+        if !(*stream).w37.is_null() {
+            (((*stream).w37).add(276) as *mut u32).write(status);
+        }
+        if (*stream).w34.is_null() {
+            if sys.stream_poll_done(stream) && (*stream).w35 == 1 {
+                let chained = *((*stream).w33 as *mut *mut u8);
+                if !chained.is_null() {
+                    ((chained.add(276)) as *mut u32).write(status);
+                }
+            }
+        } else {
+            (((*stream).w34).add(276) as *mut u32).write(status);
+        }
+        (*t)._pad329 = 0;
+        let slot = (*stream).w68slot;
+        if (*slot).w664ready != 0 && !(*slot).w592cb.is_null() {
+            (*stream).w60 = (*slot).w608cached;
+            sys.fire_done(slot);
+        }
+        (*stream).w15 &= !1;
+        stub_7069c(t);
+    }
+    os.crit_enter((*t).crit);
+    let res_sentinel = &mut (*t).res_head as *mut *mut AsyncJobNode as *mut AsyncResultNode;
+    let mut entry = (*t).res_head as *mut AsyncResultNode;
+    let mut code = os.crit_leave((*t).crit);
+    if entry == res_sentinel {
+        return 0;
+    }
+    loop {
+        let rc = sys.run_result(entry, code);
+        if rc != 0 {
+            return rc;
+        }
+        os.crit_enter((*t).crit);
+        entry = (*entry).next;
+        code = os.crit_leave((*t).crit);
+        if entry == res_sentinel {
+            return 0;
+        }
+    }
 }
 
 // 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv
 #[doc(alias = "FMOD::asyncThreadFunc(void *)")]
-pub fn stub_70ab0() -> ! {
-    todo!("0x70ab0 FMOD::asyncThreadFunc(void *)")
+pub unsafe fn stub_70ab0(
+    t: *mut AsyncThread,
+    os: &mut impl AsyncOs,
+    sys: &mut impl AsyncThreadSys,
+) -> i32 {
+    // IDA 0x70ab0 (asyncThreadFunc): 4-byte thunk tail-calling threadFunc
+    // (B, not BL) — the worker entry `AsyncOs::thread_init` receives.
+    stub_706b4(t, os, sys)
 }
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv
@@ -3819,20 +4189,63 @@ pub unsafe fn stub_70cf0(
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv
 #[doc(alias = "FMOD::AsyncThread::shutDown(void)")]
-pub fn stub_70ddc() -> ! {
-    todo!("0x70ddc FMOD::AsyncThread::shutDown(void)")
+pub unsafe fn stub_70ddc(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // IDA 0x70ddc (fmod_async.cpp AsyncThread::shutDown — free despite the
+    // scope): under the global lock every ring node is reallyReleased (the
+    // next link is saved first: release unlinks and frees). A null global
+    // lock skips the walk. Always 0.
+    if !global_lock.is_null() {
+        os.crit_enter(global_lock);
+        let sentinel = reg.sentinel_ptr();
+        let mut cur = reg.first();
+        while cur != sentinel {
+            let next = (*cur).next;
+            stub_70ab4(cur, os);
+            cur = next;
+        }
+        os.crit_leave(global_lock);
+    }
+    0
 }
 
 // 0x70e5c — __ZN4FMOD11AsyncThread6updateEv
 #[doc(alias = "FMOD::AsyncThread::update(void)")]
-pub fn stub_70e5c() -> ! {
-    todo!("0x70e5c FMOD::AsyncThread::update(void)")
+pub unsafe fn stub_70e5c(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // IDA 0x70e5c (fmod_async.cpp AsyncThread::update): the shutDown walk,
+    // but only done (byte 330) threads are reallyReleased — live ones are
+    // skipped in place. A null global lock skips the walk. Always 0.
+    if !global_lock.is_null() {
+        os.crit_enter(global_lock);
+        let sentinel = reg.sentinel_ptr();
+        let mut cur = reg.first();
+        while cur != sentinel {
+            let next = (*cur).next;
+            if (*cur).done != 0 {
+                stub_70ab4(cur, os);
+            }
+            cur = next;
+        }
+        os.crit_leave(global_lock);
+    }
+    0
 }
 
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
-pub fn stub_70f2c() -> ! {
-    todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
+pub fn stub_70f2c(slot: &mut Option<AsyncRegistry>) -> i32 {
+    // IDA 0x70f2c (global ctor keyed to gAsyncHead): runs the static
+    // initializer, which constructs the empty gAsyncHead ring. The host
+    // owns the ring, so the slot receives a fresh empty registry. Always 0.
+    *slot = Some(AsyncRegistry::new());
+    0
 }
 
 /// FMOD_VECTOR (3 floats; pos/vel pair in set3DAttributes, IDA 0x710a0).
@@ -17294,254 +17707,354 @@ pub fn stub_f28314() -> ! {
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
-pub fn stub_686a4_wd005() -> ! {
-    todo!("0x686a4 FMOD::ProfileCpu::init(void)")
+pub fn stub_686a4_wd005(_cpu: &mut ProfileCpu) -> i32 {
+    // Watchdog copy of IDA 0x686a4; single implementation lives in stub_686a4.
+    stub_686a4(_cpu)
 }
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_686ac_wd006() -> ! {
-    todo!("0x686ac FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_686ac_wd006(
+    usage: Result<[f32; 4], i32>,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x686ac; single implementation lives in stub_686ac.
+    stub_686ac(usage, add_packet)
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
 #[doc(alias = "FMOD::ProfileCpu::release(void)")]
-pub fn stub_68758_wd007() -> ! {
-    todo!("0x68758 FMOD::ProfileCpu::release(void)")
+pub fn stub_68758_wd007(_cpu: Box<ProfileCpu>) -> i32 {
+    // Watchdog copy of IDA 0x68758; single implementation lives in stub_68758.
+    stub_68758(_cpu)
 }
 
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_68794_wd008() -> ! {
-    todo!("0x68794 FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_68794_wd008(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // Watchdog copy of IDA 0x68794; single implementation lives in stub_68794.
+    stub_68794(cpu)
 }
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_687bc_wd009() -> ! {
-    todo!("0x687bc FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_687bc_wd009(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // Watchdog copy of IDA 0x687bc; single implementation lives in stub_687bc.
+    stub_687bc(cpu)
 }
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
 #[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
-pub fn stub_687c0_wd010() -> ! {
-    todo!("0x687c0 FMOD::FMOD_ProfileCpu_Create(void)")
+pub fn stub_687c0_wd010(slot: &mut Option<Box<ProfileCpu>>, profile: &mut Profile) -> i32 {
+    // Watchdog copy of IDA 0x687c0; single implementation lives in stub_687c0.
+    stub_687c0(slot, profile)
 }
 
 // 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy
 #[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
-pub fn stub_68864_wd011() -> ! {
-    todo!("0x68864 FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")
+pub fn stub_68864_wd011(dsp: &ProfileDsp, id: u64) -> i32 {
+    // Watchdog copy of IDA 0x68864; single implementation lives in stub_68864.
+    stub_68864(dsp, id)
 }
 
 // 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE
 #[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
-pub fn stub_68944_wd012() -> ! {
-    todo!("0x68944 FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")
+pub fn stub_68944_wd012(
+    dsp: &mut ProfileDsp,
+    usage: Result<f32, i32>,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x68944; single implementation lives in stub_68944.
+    stub_68944(dsp, usage, max_channels, add_packet)
 }
 
 // 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv
 #[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
-pub fn stub_68a6c_wd013() -> ! {
-    todo!("0x68a6c FMOD::ProfileDsp::growNodeStackSpace(void)")
+pub fn stub_68a6c_wd013(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68a6c; single implementation lives in stub_68a6c.
+    stub_68a6c(dsp)
 }
 
 // 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv
 #[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
-pub fn stub_68adc_wd014() -> ! {
-    todo!("0x68adc FMOD::ProfileDsp::growPacketSpace(void)")
+pub fn stub_68adc_wd014(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68adc; single implementation lives in stub_68adc.
+    stub_68adc(dsp)
 }
 
 // 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_68b68_wd015() -> ! {
-    todo!("0x68b68 FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_68b68_wd015(
+    dsp: &mut ProfileDsp,
+    head: Result<usize, i32>,
+    graph: &[DspSnapshot],
+    dsp_usage: f32,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x68b68; single implementation lives in stub_68b68.
+    stub_68b68(dsp, head, graph, dsp_usage, max_channels, add_packet)
 }
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
 #[doc(alias = "FMOD::ProfileDsp::release(void)")]
-pub fn stub_68dfc_wd016() -> ! {
-    todo!("0x68dfc FMOD::ProfileDsp::release(void)")
+pub fn stub_68dfc_wd016(_dsp: Box<ProfileDsp>) -> i32 {
+    // Watchdog copy of IDA 0x68dfc; single implementation lives in stub_68dfc.
+    stub_68dfc(_dsp)
 }
 
 // 0x68ebc — __ZN4FMOD10ProfileDsp4initEv
 #[doc(alias = "FMOD::ProfileDsp::init(void)")]
-pub fn stub_68ebc_wd017() -> ! {
-    todo!("0x68ebc FMOD::ProfileDsp::init(void)")
+pub fn stub_68ebc_wd017(dsp: &mut ProfileDsp) -> i32 {
+    // Watchdog copy of IDA 0x68ebc; single implementation lives in stub_68ebc.
+    stub_68ebc(dsp)
 }
 
 // 0x69028 — __ZN4FMOD10ProfileDspC2Ev
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69028_wd018() -> ! {
-    todo!("0x69028 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69028_wd018(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // Watchdog copy of IDA 0x69028; single implementation lives in stub_69028.
+    stub_69028(dsp)
 }
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69078_wd019() -> ! {
-    todo!("0x69078 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69078_wd019(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // Watchdog copy of IDA 0x69078; single implementation lives in stub_69078.
+    stub_69078(dsp)
 }
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
 #[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
-pub fn stub_6907c_wd020() -> ! {
-    todo!("0x6907c FMOD::FMOD_ProfileDsp_Create(void)")
+pub fn stub_6907c_wd020(slot: &mut Option<Box<ProfileDsp>>, profile: &mut Profile) -> i32 {
+    // Watchdog copy of IDA 0x6907c; single implementation lives in stub_6907c.
+    stub_6907c(slot, profile)
 }
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6914c_wd021() -> ! {
-    todo!("0x6914c FMOD::Profile::Profile(void)")
+pub fn stub_6914c_wd021(profile: &mut Profile) -> &mut Profile {
+    // Watchdog copy of IDA 0x6914c; single implementation lives in stub_6914c.
+    stub_6914c(profile)
 }
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6919c_wd022() -> ! {
-    todo!("0x6919c FMOD::Profile::Profile(void)")
+pub fn stub_6919c_wd022(profile: &mut Profile) -> &mut Profile {
+    // Watchdog copy of IDA 0x6919c; single implementation lives in stub_6919c.
+    stub_6919c(profile)
 }
 
 // 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE
 #[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
-pub fn stub_691a0_wd023() -> ! {
-    todo!("0x691a0 FMOD::Profile::registerModule(FMOD::ProfileModule *)")
+pub fn stub_691a0_wd023(profile: &mut Profile, module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x691a0; single implementation lives in stub_691a0.
+    stub_691a0(profile, module)
 }
 
 // 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev
 #[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
-pub fn stub_691c8_wd024() -> ! {
-    todo!("0x691c8 FMOD::ProfileModule::ProfileModule(void)")
+pub fn stub_691c8_wd024(module: &mut ProfileModule) -> &mut ProfileModule {
+    // Watchdog copy of IDA 0x691c8; single implementation lives in stub_691c8.
+    stub_691c8(module)
 }
 
 // 0x691fc — __ZN4FMOD13ProfileModule4initEv
 #[doc(alias = "FMOD::ProfileModule::init(void)")]
-pub fn stub_691fc_wd025() -> ! {
-    todo!("0x691fc FMOD::ProfileModule::init(void)")
+pub fn stub_691fc_wd025(_module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x691fc; single implementation lives in stub_691fc.
+    stub_691fc(_module)
 }
 
 // 0x69204 — __ZN4FMOD13ProfileModule7releaseEv
 #[doc(alias = "FMOD::ProfileModule::release(void)")]
-pub fn stub_69204_wd026() -> ! {
-    todo!("0x69204 FMOD::ProfileModule::release(void)")
+pub fn stub_69204_wd026(_module: &mut ProfileModule) -> i32 {
+    // Watchdog copy of IDA 0x69204; single implementation lives in stub_69204.
+    stub_69204(_module)
 }
 
 // 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6920c_wd027() -> ! {
-    todo!("0x6920c FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6920c_wd027() -> i32 {
+    // Watchdog copy of IDA 0x6920c; single implementation lives in stub_6920c.
+    stub_6920c()
 }
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69214_wd028() -> ! {
-    todo!("0x69214 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69214_wd028(client: &mut ProfileClient) -> &mut ProfileClient {
+    // Watchdog copy of IDA 0x69214; single implementation lives in stub_69214.
+    stub_69214(client)
 }
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69280_wd029() -> ! {
-    todo!("0x69280 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69280_wd029(client: &mut ProfileClient) -> &mut ProfileClient {
+    // Watchdog copy of IDA 0x69280; single implementation lives in stub_69280.
+    stub_69280(client)
 }
 
 // 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj
 #[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
-pub fn stub_69284_wd030() -> ! {
-    todo!("0x69284 FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")
+pub fn stub_69284_wd030(client: &mut ProfileClient, ty_a: u8, ty_b: u8, interval: u32) -> i32 {
+    // Watchdog copy of IDA 0x69284; single implementation lives in stub_69284.
+    stub_69284(client, ty_a, ty_b, interval)
 }
 
 // 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69358_wd031() -> ! {
-    todo!("0x69358 FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")
+pub fn stub_69358_wd031(client: &ProfileClient, packet: &[u8]) -> bool {
+    // Watchdog copy of IDA 0x69358; single implementation lives in stub_69358.
+    stub_69358(client, packet)
 }
 
 // 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv
 #[doc(alias = "FMOD::ProfileClient::sendData(void)")]
-pub fn stub_693f4_wd032() -> ! {
-    todo!("0x693f4 FMOD::ProfileClient::sendData(void)")
+pub fn stub_693f4_wd032(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x693f4; single implementation lives in stub_693f4.
+    stub_693f4(client, net)
 }
 
 // 0x69480 — __ZN4FMOD13ProfileClient8readDataEv
 #[doc(alias = "FMOD::ProfileClient::readData(void)")]
-pub fn stub_69480_wd033() -> ! {
-    todo!("0x69480 FMOD::ProfileClient::readData(void)")
+pub fn stub_69480_wd033(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x69480; single implementation lives in stub_69480.
+    stub_69480(client, net)
 }
 
 // 0x695dc — __ZN4FMOD13ProfileClient6updateEj
 #[doc(alias = "FMOD::ProfileClient::update(unsigned int)")]
-pub fn stub_695dc_wd034() -> ! {
-    todo!("0x695dc FMOD::ProfileClient::update(unsigned int)")
+pub fn stub_695dc_wd034(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x695dc; single implementation lives in stub_695dc.
+    stub_695dc(client, net)
 }
 
 // 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69634_wd035() -> ! {
-    todo!("0x69634 FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69634_wd035(client: &mut ProfileClient, packet: &[u8], net: &mut impl ClientNet) -> i32 {
+    // Watchdog copy of IDA 0x69634; single implementation lives in stub_69634.
+    stub_69634(client, packet, net)
 }
 
 // 0x69820 — __ZN4FMOD13ProfileClient7releaseEv
 #[doc(alias = "FMOD::ProfileClient::release(void)")]
-pub fn stub_69820_wd036() -> ! {
-    todo!("0x69820 FMOD::ProfileClient::release(void)")
+pub fn stub_69820_wd036(client: Box<ProfileClient>, close: impl FnOnce(i32)) -> i32 {
+    // Watchdog copy of IDA 0x69820; single implementation lives in stub_69820.
+    stub_69820(client, close)
 }
 
 // 0x6989c — __ZN4FMOD13ProfileClient4initEPv
 #[doc(alias = "FMOD::ProfileClient::init(void *)")]
-pub fn stub_6989c_wd037() -> ! {
-    todo!("0x6989c FMOD::ProfileClient::init(void *)")
+pub fn stub_6989c_wd037(client: &mut ProfileClient, socket: i32) -> i32 {
+    // Watchdog copy of IDA 0x6989c; single implementation lives in stub_6989c.
+    stub_6989c(client, socket)
 }
 
 // 0x69910 — __ZN4FMOD7Profile17getMemoryUsedImplEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_69910_wd038() -> ! {
-    todo!("0x69910 FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_69910_wd038(
+    profile: &Profile,
+    extra: &ProfileMemExtra<'_>,
+    sink: &mut impl MemTracker,
+) -> i32 {
+    // Watchdog copy of IDA 0x69910; single implementation lives in stub_69910.
+    stub_69910(profile, extra, sink)
 }
 
 // 0x69a78 — __ZN4FMOD7Profile7releaseEv
 #[doc(alias = "FMOD::Profile::release(void)")]
-pub fn stub_69a78_wd039() -> ! {
-    todo!("0x69a78 FMOD::Profile::release(void)")
+pub fn stub_69a78_wd039<N>(
+    live: &mut ProfileLive<N>,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69a78; single implementation lives in stub_69a78.
+    stub_69a78(live, os, release_module, clear_singleton)
 }
 
 // 0x69be8 — __ZN4FMOD20FMOD_Profile_ReleaseEv
 #[doc(alias = "FMOD::FMOD_Profile_Release(void)")]
-pub fn stub_69be8_wd040() -> ! {
-    todo!("0x69be8 FMOD::FMOD_Profile_Release(void)")
+pub fn stub_69be8_wd040<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69be8; single implementation lives in stub_69be8.
+    stub_69be8(slot, os, release_module, clear_singleton)
 }
 
 // 0x69c20 — __ZN4FMOD7Profile4initEt
 #[doc(alias = "FMOD::Profile::init(unsigned short)")]
-pub fn stub_69c20_wd041() -> ! {
-    todo!("0x69c20 FMOD::Profile::init(unsigned short)")
+pub fn stub_69c20_wd041<N>(profile: &mut Profile, port: u16, os: &mut impl ProfileOs<N>) -> i32 {
+    // Watchdog copy of IDA 0x69c20; single implementation lives in stub_69c20.
+    stub_69c20(profile, port, os)
 }
 
 // 0x69c9c — __ZN4FMOD19FMOD_Profile_CreateEt
 #[doc(alias = "FMOD::FMOD_Profile_Create(unsigned short)")]
-pub fn stub_69c9c_wd042() -> ! {
-    todo!("0x69c9c FMOD::FMOD_Profile_Create(unsigned short)")
+pub fn stub_69c9c_wd042<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    port: u16,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // Watchdog copy of IDA 0x69c9c; single implementation lives in stub_69c9c.
+    stub_69c9c(slot, port, os, release_module, clear_singleton)
 }
 
 // 0x69d50 — __ZN4FMOD7Profile9addPacketEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69d50_wd043() -> ! {
-    todo!("0x69d50 FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69d50_wd043<N>(
+    live: &mut ProfileLive<N>,
+    packet: &mut [u8],
+    os: &mut impl ProfileOs<N>,
+) -> i32
+where
+    N: ClientNet,
+{
+    // Watchdog copy of IDA 0x69d50; single implementation lives in stub_69d50.
+    stub_69d50(live, packet, os)
 }
 
 // 0x69e0c — __ZN4FMOD7Profile6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::Profile::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_69e0c_wd044() -> ! {
-    todo!("0x69e0c FMOD::Profile::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_69e0c_wd044<N>(
+    live: &mut ProfileLive<N>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet,
+{
+    // Watchdog copy of IDA 0x69e0c; single implementation lives in stub_69e0c.
+    stub_69e0c(live, tick_ms, os, module_update)
 }
 
 // 0x6a018 — __ZN4FMOD19FMOD_Profile_UpdateEPNS_7SystemIEj
 #[doc(alias = "FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6a018_wd045() -> ! {
-    todo!("0x6a018 FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6a018_wd045<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet,
+{
+    // Watchdog copy of IDA 0x6a018; single implementation lives in stub_6a018.
+    stub_6a018(slot, tick_ms, os, module_update)
 }
 
 // 0x6a04c — __ZN4FMOD7Profile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_6a04c_wd046() -> ! {
-    todo!("0x6a04c FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_6a04c_wd046(profile: &mut Profile, flag: bool, run_impl: impl FnOnce() -> i32) -> i32 {
+    // Watchdog copy of IDA 0x6a04c; single implementation lives in stub_6a04c.
+    stub_6a04c(profile, flag, run_impl)
 }
 
 // 0x6d26c — _FMOD_oggpack_look
@@ -17773,12 +18286,26 @@ pub unsafe fn stub_70458_wd073(
 
 // 0x70474 — _FMOD_System_Create
 #[doc(alias = "_FMOD_System_Create")]
-pub fn stub_70474_wd074() -> ! {
-    todo!("0x70474 _FMOD_System_Create")
+pub unsafe fn stub_70474_wd074(
+    reg: &mut SystemRegistry,
+    out: *mut *mut SystemEntry,
+    os: &mut impl SystemOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70474; single implementation lives in stub_70474.
+    stub_70474(reg, out, os)
 }
 
-pub fn stub_705cc_wd075() -> ! {
-    todo!("0x705cc _FMOD_Memory_GetStats")
+// 0x705cc — _FMOD_Memory_GetStats
+#[doc(alias = "_FMOD_Memory_GetStats")]
+pub unsafe fn stub_705cc_wd075(
+    reg: &mut SystemRegistry,
+    current: *mut u32,
+    maximum: *mut u32,
+    blocking: bool,
+    os: &mut impl SystemOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x705cc; single implementation lives in stub_705cc.
+    stub_705cc(reg, current, maximum, blocking, os)
 }
 
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv
@@ -17790,12 +18317,24 @@ pub unsafe fn stub_7069c_wd076(t: *mut AsyncThread) -> i32 {
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv
 #[doc(alias = "FMOD::AsyncThread::threadFunc(void)")]
-pub fn stub_706b4_wd077() -> ! {
-    todo!("0x706b4 FMOD::AsyncThread::threadFunc(void)")
+pub unsafe fn stub_706b4_wd077(
+    t: *mut AsyncThread,
+    os: &mut impl AsyncOs,
+    sys: &mut impl AsyncThreadSys,
+) -> i32 {
+    // Watchdog copy of IDA 0x706b4; single implementation lives in stub_706b4.
+    stub_706b4(t, os, sys)
 }
 
-pub fn stub_70ab0_wd078() -> ! {
-    todo!("0x70ab0 FMOD::asyncThreadFunc(void *)")
+// 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv
+#[doc(alias = "FMOD::asyncThreadFunc(void *)")]
+pub unsafe fn stub_70ab0_wd078(
+    t: *mut AsyncThread,
+    os: &mut impl AsyncOs,
+    sys: &mut impl AsyncThreadSys,
+) -> i32 {
+    // Watchdog copy of IDA 0x70ab0; single implementation lives in stub_70ab0.
+    stub_70ab0(t, os, sys)
 }
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv
@@ -17843,142 +18382,177 @@ pub unsafe fn stub_70cf0_wd083(
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv
 #[doc(alias = "FMOD::AsyncThread::shutDown(void)")]
-pub fn stub_70ddc_wd084() -> ! {
-    todo!("0x70ddc FMOD::AsyncThread::shutDown(void)")
+pub unsafe fn stub_70ddc_wd084(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70ddc; single implementation lives in stub_70ddc.
+    stub_70ddc(reg, global_lock, os)
 }
 
 // 0x70e5c — __ZN4FMOD11AsyncThread6updateEv
 #[doc(alias = "FMOD::AsyncThread::update(void)")]
-pub fn stub_70e5c_wd085() -> ! {
-    todo!("0x70e5c FMOD::AsyncThread::update(void)")
+pub unsafe fn stub_70e5c_wd085(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70e5c; single implementation lives in stub_70e5c.
+    stub_70e5c(reg, global_lock, os)
 }
 
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
-pub fn stub_70f2c_wd086() -> ! {
-    todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
+pub fn stub_70f2c_wd086(slot: &mut Option<AsyncRegistry>) -> i32 {
+    // Watchdog copy of IDA 0x70f2c; single implementation lives in stub_70f2c.
+    stub_70f2c(slot)
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv
 #[doc(alias = "FMOD::Channel::getUserData(void **)")]
-pub fn stub_70f38_wd087() -> ! {
-    todo!("0x70f38 FMOD::Channel::getUserData(void **)")
+pub unsafe fn stub_70f38_wd087<I: ChannelInner>(ch: *const u8, out: *mut *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x70f38; single implementation lives in stub_70f38.
+    stub_70f38::<I>(ch, out)
 }
 
 // 0x70f7c — __ZN4FMOD7Channel11setUserDataEPv
 #[doc(alias = "FMOD::Channel::setUserData(void *)")]
-pub fn stub_70f7c_wd088() -> ! {
-    todo!("0x70f7c FMOD::Channel::setUserData(void *)")
+pub unsafe fn stub_70f7c_wd088<I: ChannelInner>(ch: *const u8, data: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x70f7c; single implementation lives in stub_70f7c.
+    stub_70f7c::<I>(ch, data)
 }
 
 // 0x70fb0 — __ZN4FMOD7Channel12setLoopCountEi
 #[doc(alias = "FMOD::Channel::setLoopCount(int)")]
-pub fn stub_70fb0_wd089() -> ! {
-    todo!("0x70fb0 FMOD::Channel::setLoopCount(int)")
+pub unsafe fn stub_70fb0_wd089<I: ChannelInner>(ch: *const u8, count: i32) -> i32 {
+    // Watchdog copy of IDA 0x70fb0; single implementation lives in stub_70fb0.
+    stub_70fb0::<I>(ch, count)
 }
 
 // 0x70fe4 — __ZN4FMOD7Channel7getModeEPj
 #[doc(alias = "FMOD::Channel::getMode(unsigned int *)")]
-pub fn stub_70fe4_wd090() -> ! {
-    todo!("0x70fe4 FMOD::Channel::getMode(unsigned int *)")
+pub unsafe fn stub_70fe4_wd090<I: ChannelInner>(ch: *const u8, out: *mut u32) -> i32 {
+    // Watchdog copy of IDA 0x70fe4; single implementation lives in stub_70fe4.
+    stub_70fe4::<I>(ch, out)
 }
 
 // 0x71028 — __ZN4FMOD7Channel7setModeEj
 #[doc(alias = "FMOD::Channel::setMode(unsigned int)")]
-pub fn stub_71028_wd091() -> ! {
-    todo!("0x71028 FMOD::Channel::setMode(unsigned int)")
+pub unsafe fn stub_71028_wd091<I: ChannelInner>(ch: *const u8, mode: u32) -> i32 {
+    // Watchdog copy of IDA 0x71028; single implementation lives in stub_71028.
+    stub_71028::<I>(ch, mode)
 }
 
 // 0x7105c — __ZN4FMOD7Channel9isPlayingEPb
 #[doc(alias = "FMOD::Channel::isPlaying(bool *)")]
-pub fn stub_7105c_wd092() -> ! {
-    todo!("0x7105c FMOD::Channel::isPlaying(bool *)")
+pub unsafe fn stub_7105c_wd092<I: ChannelInner>(ch: *const u8, out: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x7105c; single implementation lives in stub_7105c.
+    stub_7105c::<I>(ch, out)
 }
 
 // 0x710a0 — __ZN4FMOD7Channel15set3DAttributesEPK11FMOD_VECTORS3_
 #[doc(alias = "FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
-pub fn stub_710a0_wd093() -> ! {
-    todo!("0x710a0 FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+pub unsafe fn stub_710a0_wd093<I: ChannelInner>(
+    ch: *const u8,
+    pos: *const FmodVector,
+    vel: *const FmodVector,
+) -> i32 {
+    // Watchdog copy of IDA 0x710a0; single implementation lives in stub_710a0.
+    stub_710a0::<I>(ch, pos, vel)
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
 #[doc(
     alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))"
 )]
-pub fn stub_710dc_wd094() -> ! {
-    todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub unsafe fn stub_710dc_wd094<I: ChannelInner>(ch: *const u8, cb: ChannelCallback) -> i32 {
+    // Watchdog copy of IDA 0x710dc; single implementation lives in stub_710dc.
+    stub_710dc::<I>(ch, cb)
 }
 
 // 0x71110 — __ZN4FMOD7Channel15setChannelGroupEPNS_12ChannelGroupE
 #[doc(alias = "FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")]
-pub fn stub_71110_wd095() -> ! {
-    todo!("0x71110 FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")
+pub unsafe fn stub_71110_wd095<I: ChannelInner>(ch: *const u8, group: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x71110; single implementation lives in stub_71110.
+    stub_71110::<I>(ch, group)
 }
 
 // 0x71144 — __ZN4FMOD7Channel11setPriorityEi
 #[doc(alias = "FMOD::Channel::setPriority(int)")]
-pub fn stub_71144_wd096() -> ! {
-    todo!("0x71144 FMOD::Channel::setPriority(int)")
+pub unsafe fn stub_71144_wd096<I: ChannelInner>(ch: *const u8, priority: i32) -> i32 {
+    // Watchdog copy of IDA 0x71144; single implementation lives in stub_71144.
+    stub_71144::<I>(ch, priority)
 }
 
 // 0x71178 — __ZN4FMOD7Channel7setMuteEb
 #[doc(alias = "FMOD::Channel::setMute(bool)")]
-pub fn stub_71178_wd097() -> ! {
-    todo!("0x71178 FMOD::Channel::setMute(bool)")
+pub unsafe fn stub_71178_wd097<I: ChannelInner>(ch: *const u8, mute: bool) -> i32 {
+    // Watchdog copy of IDA 0x71178; single implementation lives in stub_71178.
+    stub_71178::<I>(ch, mute)
 }
 
 // 0x711ac — __ZN4FMOD7Channel12getFrequencyEPf
 #[doc(alias = "FMOD::Channel::getFrequency(float *)")]
-pub fn stub_711ac_wd098() -> ! {
-    todo!("0x711ac FMOD::Channel::getFrequency(float *)")
+pub unsafe fn stub_711ac_wd098<I: ChannelInner>(ch: *const u8, out: *mut f32) -> i32 {
+    // Watchdog copy of IDA 0x711ac; single implementation lives in stub_711ac.
+    stub_711ac::<I>(ch, out)
 }
 
 // 0x711f0 — __ZN4FMOD7Channel12setFrequencyEf
 #[doc(alias = "FMOD::Channel::setFrequency(float)")]
-pub fn stub_711f0_wd099() -> ! {
-    todo!("0x711f0 FMOD::Channel::setFrequency(float)")
+pub unsafe fn stub_711f0_wd099<I: ChannelInner>(ch: *const u8, freq: f32) -> i32 {
+    // Watchdog copy of IDA 0x711f0; single implementation lives in stub_711f0.
+    stub_711f0::<I>(ch, freq)
 }
 
 // 0x71224 — __ZN4FMOD7Channel9setVolumeEf
 #[doc(alias = "FMOD::Channel::setVolume(float)")]
-pub fn stub_71224_wd100() -> ! {
-    todo!("0x71224 FMOD::Channel::setVolume(float)")
+pub unsafe fn stub_71224_wd100<I: ChannelInner>(ch: *const u8, volume: f32) -> i32 {
+    // Watchdog copy of IDA 0x71224; single implementation lives in stub_71224.
+    stub_71224::<I>(ch, volume)
 }
 
 // 0x71260 — __ZN4FMOD7Channel9getPausedEPb
 #[doc(alias = "FMOD::Channel::getPaused(bool *)")]
-pub fn stub_71260_wd101() -> ! {
-    todo!("0x71260 FMOD::Channel::getPaused(bool *)")
+pub unsafe fn stub_71260_wd101<I: ChannelInner>(ch: *const u8, out: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x71260; single implementation lives in stub_71260.
+    stub_71260::<I>(ch, out)
 }
 
 // 0x712a4 — __ZN4FMOD7Channel9setPausedEb
 #[doc(alias = "FMOD::Channel::setPaused(bool)")]
-pub fn stub_712a4_wd102() -> ! {
-    todo!("0x712a4 FMOD::Channel::setPaused(bool)")
+pub unsafe fn stub_712a4_wd102<I: ChannelInner>(ch: *const u8, paused: bool) -> i32 {
+    // Watchdog copy of IDA 0x712a4; single implementation lives in stub_712a4.
+    stub_712a4::<I>(ch, paused)
 }
 
 // 0x712d8 — __ZN4FMOD7Channel4stopEv
 #[doc(alias = "FMOD::Channel::stop(void)")]
-pub fn stub_712d8_wd103() -> ! {
-    todo!("0x712d8 FMOD::Channel::stop(void)")
+pub unsafe fn stub_712d8_wd103<I: ChannelInner>(ch: *const u8) -> i32 {
+    // Watchdog copy of IDA 0x712d8; single implementation lives in stub_712d8.
+    stub_712d8::<I>(ch)
 }
 
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
 #[doc(alias = "FMOD::ChannelEmulated::isVirtual(bool *)")]
-pub fn stub_71304_wd104() -> ! {
-    todo!("0x71304 FMOD::ChannelEmulated::isVirtual(bool *)")
+pub unsafe fn stub_71304_wd104(out: *mut bool) -> i32 {
+    // Watchdog copy of IDA 0x71304; single implementation lives in stub_71304.
+    stub_71304(out)
 }
 
 // 0x7131c — __ZN4FMOD15ChannelEmulated10getDSPHeadEPPNS_4DSPIE
 #[doc(alias = "FMOD::ChannelEmulated::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_7131c_wd105() -> ! {
-    todo!("0x7131c FMOD::ChannelEmulated::getDSPHead(FMOD::DSPI **)")
+pub unsafe fn stub_7131c_wd105(ch: *const ChannelEmulatedState, out: *mut *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x7131c; single implementation lives in stub_7131c.
+    stub_7131c(ch, out)
 }
 
 // 0x71334 — __ZN4FMOD15ChannelEmulated16setSpeakerLevelsEiPfi
 #[doc(alias = "FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")]
-pub fn stub_71334_wd106() -> ! {
-    todo!("0x71334 FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")
+pub fn stub_71334_wd106(_index: i32, _values: *mut f32, _count: i32) -> i32 {
+    // Watchdog copy of IDA 0x71334; single implementation lives in stub_71334.
+    stub_71334(_index, _values, _count)
 }
 
 // 0x7133c — __ZN4FMOD15ChannelEmulated13setSpeakerMixEffffffff
@@ -17991,8 +18565,9 @@ pub fn stub_7133c_wd107() -> ! {
 
 // 0x71344 — __ZN4FMOD15ChannelEmulated6updateEi
 #[doc(alias = "FMOD::ChannelEmulated::update(int)")]
-pub fn stub_71344_wd108() -> ! {
-    todo!("0x71344 FMOD::ChannelEmulated::update(int)")
+pub unsafe fn stub_71344_wd108<I: EmulatedInner>(ch: *mut ChannelEmulatedState, ms: i32) -> i32 {
+    // Watchdog copy of IDA 0x71344; single implementation lives in stub_71344.
+    stub_71344::<I>(ch, ms)
 }
 
 // 0x71540 — __ZN4FMOD15ChannelEmulated5closeEv
