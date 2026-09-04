@@ -104,6 +104,52 @@ pub const DEBUG_DISPLAY_OPTIONS: [&str; 6] =
     ["None", "FPS", "Summary", "Physics", "PhysicsAndOwner", "Render"];
 
 
+/// Host shell for `HomeViewController` (IDA 0x1b3d0..0x1c788): webview warmup,
+/// localized labels, version text, keyboard/tap flags, player-info display
+/// strings, login/logout flow flags. UIKit views/alerts/animations fold;
+/// decisions, texts and ids stay.
+#[derive(Debug, Default, Clone)]
+pub struct HomeViewState {
+    pub webviews_preloaded: bool,
+    pub signup_observer: bool,
+    pub loaded: bool,
+    pub tall_phone_bg: bool,
+    pub tap_recognizer_enabled: bool,
+    pub keyboard_visible: bool,
+    pub keyboard_listening: bool,
+    pub labels: Vec<(String, String)>,
+    pub version: String,
+    pub user_refreshed: bool,
+    pub robux_text: String,
+    pub tix_text: String,
+    pub player_name: Option<String>,
+    pub avatar_url: Option<String>,
+    pub avatar_highlighted: bool,
+    pub logged_in_view: bool,
+    pub login_pending: Option<(String, String)>,
+    pub logout_alert_shown: bool,
+    pub logged_out: bool,
+    pub logout_page_view: Option<String>,
+    pub button_view_alpha_zero: bool,
+    pub dismissed_no_anim: bool,
+    pub search_unhidden: bool,
+}
+
+/// `localizeAndStyleLabels` keys in image order (IDA 0x1bc10..0x1bef4).
+pub const HOME_LABEL_KEYS: [&str; 11] = [
+    "GameWord",
+    "CatalogWord",
+    "InventoryWord",
+    "BuildersClubWord",
+    "ProfileWord",
+    "MessagesWord",
+    "CommunityWord",
+    "WelcomeToRoblox",
+    "YouAreCurrentlyLoggedInAs",
+    "SignupButton",
+    "LoginButton",
+];
+
 
 // 0x191d4 — -[Appirater ratingAlert]
 // demangled: -[Appirater ratingAlert]
@@ -614,209 +660,247 @@ pub fn stub_1b308() {
 // demangled: -[HomeViewController initWithCoder:]
 // type: HomeViewController *__cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController initWithCoder:]")]
-pub fn stub_1b3d0() -> ! {
-    todo!("0x1b3d0 -[HomeViewController initWithCoder:]")
-}
+pub fn stub_1b3d0() -> HomeViewState {
+    // IDA 0x1b3d0: initWithCoder — super RobloxAnimatingPageViewController init (0x1b3f8..0x1b408); UIWebViewCacheManager preloadDesignatedWebViews else designatedWebviewsToHomePages (0x1b41c..0x1b43c); observe SignupViewController signup-finished -> handleSignupNotification: (0x1b440..0x1b470).
+    HomeViewState { webviews_preloaded: true, signup_observer: true, ..HomeViewState::default() }}
 
 // 0x1b4b0 — -[HomeViewController dealloc]
 // demangled: -[HomeViewController dealloc]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController dealloc]")]
-pub fn stub_1b4b0() -> ! {
-    todo!("0x1b4b0 -[HomeViewController dealloc]")
-}
+pub fn stub_1b4b0(state: HomeViewState) {
+    // IDA 0x1b4b0: dealloc — thirty outlet releases (0x1b4bc..0x1b6ec) then super dealloc; drops fold into Rust ownership.
+    drop(state);}
 
 // 0x1b75c — -[HomeViewController viewDidLoad]
 // demangled: -[HomeViewController viewDidLoad]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewDidLoad]")]
-pub fn stub_1b75c() -> ! {
-    todo!("0x1b75c -[HomeViewController viewDidLoad]")
-}
+pub fn stub_1b75c(state: &mut HomeViewState, is_phone: bool, screen_h: f32, bundle_version: &str, search_url: &str) {
+    // IDA 0x1b75c: viewDidLoad — super (0x1b780..0x1b790), hide debug fields/buttons (0x1b794..0x1b7dc), phone 568h blueFrame image (0x1b7e0..0x1b8a4), tap recognizer init disabled + added (0x1ba8..0x1baf0), localizeAndStyleLabels + updateUserInfoDisplay:NO (0x1baf4..0x1bb0c), global-queue searchUrl block 0x1bae4 (0x1bb10..0x1bb3c), keyboard show/hide observers (0x1bb40..0x1bb8c), versionLabel := CFBundleVersion (0x1bb90..0x1bbd6).
+    state.loaded = true;
+    state.tall_phone_bg = is_phone && screen_h == 568.0;
+    state.tap_recognizer_enabled = false;
+    stub_1bc10(state);
+    stub_1bf0c(state, false, "", "", None, None);
+    state.search_unhidden = stub_1bae4(search_url);
+    state.keyboard_listening = true;
+    state.version = bundle_version.to_owned();}
 
 // 0x1bae4 — ___33-[HomeViewController viewDidLoad]_block_invoke
 // demangled: ___33-[HomeViewController viewDidLoad]_block_invoke
 // type: 
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke")]
-pub fn stub_1bae4() -> ! {
-    todo!("0x1bae4 ___33-[HomeViewController viewDidLoad]_block_invoke")
-}
+pub fn stub_1bae4(search_url: &str) -> bool {
+    // IDA 0x1bae4: viewDidLoad block — RobloxInfo searchUrl length gates a main-queue dispatch of block 0x1bb64 (0x1baf0..0x1bb18); the queues fold, the gate stays.
+    !search_url.is_empty()}
 
 // 0x1bb64 — ___33-[HomeViewController viewDidLoad]_block_invoke_2
 // demangled: ___33-[HomeViewController viewDidLoad]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke_2")]
-pub fn stub_1bb64() -> ! {
-    todo!("0x1bb64 ___33-[HomeViewController viewDidLoad]_block_invoke_2")
-}
+pub fn stub_1bb64(state: &mut HomeViewState) {
+    // IDA 0x1bb64: viewDidLoad block 2 — outlet+284 setHidden:NO (0x1bb6c..0x1bb7c); the outlet folds into the flag.
+    state.search_unhidden = true;}
 
 // 0x1bb88 — ___copy_helper_block__1
 // demangled: ___copy_helper_block__1
 // type: 
 #[doc(alias = "___copy_helper_block__1")]
-pub fn stub_1bb88() -> ! {
-    todo!("0x1bb88 ___copy_helper_block__1")
+pub fn stub_1bb88() {
+    // IDA 0x1bb88: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1bb94 — ___destroy_helper_block__1
 // demangled: ___destroy_helper_block__1
 // type: 
 #[doc(alias = "___destroy_helper_block__1")]
-pub fn stub_1bb94() -> ! {
-    todo!("0x1bb94 ___destroy_helper_block__1")
+pub fn stub_1bb94() {
+    // IDA 0x1bb94: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1bb9c — ___copy_helper_block_80
 // demangled: ___copy_helper_block_80
 // type: 
 #[doc(alias = "___copy_helper_block_80")]
-pub fn stub_1bb9c() -> ! {
-    todo!("0x1bb9c ___copy_helper_block_80")
+pub fn stub_1bb9c() {
+    // IDA 0x1bb9c: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1bba8 — ___destroy_helper_block_81
 // demangled: ___destroy_helper_block_81
 // type: 
 #[doc(alias = "___destroy_helper_block_81")]
-pub fn stub_1bba8() -> ! {
-    todo!("0x1bba8 ___destroy_helper_block_81")
+pub fn stub_1bba8() {
+    // IDA 0x1bba8: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1bbb0 — -[HomeViewController keyboardDidShow:]
 // demangled: -[HomeViewController keyboardDidShow:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidShow:]")]
-pub fn stub_1bbb0() -> ! {
-    todo!("0x1bbb0 -[HomeViewController keyboardDidShow:]")
-}
+pub fn stub_1bbb0(state: &mut HomeViewState) {
+    // IDA 0x1bbb0: keyboardDidShow — tapRecognizer setEnabled:YES (0x1bbb8..0x1bbc8).
+    state.tap_recognizer_enabled = true;
+    state.keyboard_visible = true;}
 
 // 0x1bbd0 — -[HomeViewController keyboardDidHide:]
 // demangled: -[HomeViewController keyboardDidHide:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController keyboardDidHide:]")]
-pub fn stub_1bbd0() -> ! {
-    todo!("0x1bbd0 -[HomeViewController keyboardDidHide:]")
-}
+pub fn stub_1bbd0(state: &mut HomeViewState) {
+    // IDA 0x1bbd0: keyboardDidHide — tapRecognizer setEnabled:NO (0x1bbd8..0x1bbe8).
+    state.tap_recognizer_enabled = false;
+    state.keyboard_visible = false;}
 
 // 0x1bbf0 — -[HomeViewController dismissKeyboard]
 // demangled: -[HomeViewController dismissKeyboard]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController dismissKeyboard]")]
-pub fn stub_1bbf0() -> ! {
-    todo!("0x1bbf0 -[HomeViewController dismissKeyboard]")
-}
+pub fn stub_1bbf0(state: &mut HomeViewState) {
+    // IDA 0x1bbf0: dismissKeyboard — searchTextField resignFirstResponder (0x1bbf8..0x1bc08); the field folds, the keyboard hides.
+    state.keyboard_visible = false;}
 
 // 0x1bc10 — -[HomeViewController localizeAndStyleLabels]
 // demangled: -[HomeViewController localizeAndStyleLabels]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController localizeAndStyleLabels]")]
-pub fn stub_1bc10() -> ! {
-    todo!("0x1bc10 -[HomeViewController localizeAndStyleLabels]")
-}
+pub fn stub_1bc10(state: &mut HomeViewState) {
+    // IDA 0x1bc10: localizeAndStyleLabels — eleven mainBundle localizedStringForKey: -> setText: pairs (0x1bc30..0x1bef4, HOME_LABEL_KEYS); the bundle folds, keys stay as values.
+    state.labels = HOME_LABEL_KEYS.iter().map(|k| ((*k).to_owned(), (*k).to_owned())).collect();}
 
 // 0x1bf0c — -[HomeViewController updateUserInfoDisplay:]
 // demangled: -[HomeViewController updateUserInfoDisplay:]
 // type: void __cdecl(HomeViewController *self, SEL, bool)
 #[doc(alias = "-[HomeViewController updateUserInfoDisplay:]")]
-pub fn stub_1bf0c() -> ! {
-    todo!("0x1bf0c -[HomeViewController updateUserInfoDisplay:]")
-}
+pub fn stub_1bf0c(state: &mut HomeViewState, refresh: bool, robux: &str, tix: &str, username: Option<&str>, thumb_url: Option<&str>) {
+    // IDA 0x1bf0c: updateUserInfoDisplay — refresh gates CurrentPlayer UpdatePlayerInfo (0x1bf24..0x1bf3c); lblRobux/lblTix := ": "+Robux/Tix (0x1bf40..0x1bf9c); username present gates lblPlayerName (0x1bfa0..0x1bfdc); thumbnail URL present gates synchronous avatar fetch + setImage, else setHighlighted:YES (0x1bfe0..0x1c108).
+    state.user_refreshed = refresh;
+    state.robux_text = format!(": {robux}");
+    state.tix_text = format!(": {tix}");
+    if let Some(name) = username {
+        state.player_name = Some(name.to_owned());
+    }
+    match thumb_url {
+        Some(url) => {
+            state.avatar_url = Some(url.to_owned());
+            state.avatar_highlighted = false;
+        }
+        None => {
+            state.avatar_highlighted = true;
+        }
+    }}
 
 // 0x1c134 — -[HomeViewController viewDidUnload]
 // demangled: -[HomeViewController viewDidUnload]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController viewDidUnload]")]
-pub fn stub_1c134() -> ! {
-    todo!("0x1c134 -[HomeViewController viewDidUnload]")
-}
+pub fn stub_1c134(state: &mut HomeViewState) {
+    // IDA 0x1c134: viewDidUnload — seventeen outlet setters := nil (0x1c140..0x1c220) then super; outlets fold into cleared host fields.
+    state.labels.clear();
+    state.version.clear();
+    state.robux_text.clear();
+    state.tix_text.clear();
+    state.player_name = None;
+    state.avatar_url = None;
+    state.loaded = false;}
 
 // 0x1c2bc — -[HomeViewController handleSignupNotification:]
 // demangled: -[HomeViewController handleSignupNotification:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController handleSignupNotification:]")]
-pub fn stub_1c2bc() -> ! {
-    todo!("0x1c2bc -[HomeViewController handleSignupNotification:]")
-}
+pub fn stub_1c2bc(state: &mut HomeViewState, username: &str, password: &str, user_logged_in: bool) {
+    // IDA 0x1c2bc: handleSignupNotification — userInfo username/password retain (0x1c2d4..0x1c2f4), LoginManager doLoginWithUsername:password: (0x1c2f8..0x1c30c), showCorrectLoggedInState (0x1c310..0x1c324); retains fold, credentials + login view stay.
+    state.login_pending = Some((username.to_owned(), password.to_owned()));
+    stub_1c788(state, user_logged_in);}
 
 // 0x1c37c — -[HomeViewController logoutTouchUp:]
 // demangled: -[HomeViewController logoutTouchUp:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController logoutTouchUp:]")]
-pub fn stub_1c37c() -> ! {
-    todo!("0x1c37c -[HomeViewController logoutTouchUp:]")
-}
+pub fn stub_1c37c(state: &mut HomeViewState) {
+    // IDA 0x1c37c: logoutTouchUp — UIAlertView RobloxWord/LogoutConfirmation/CancelWord/LogoutWord, delegate self, show + release (0x1c384..0x1c49c); the alert folds, its presentation stays.
+    state.logout_alert_shown = true;}
 
 // 0x1c4b0 — -[HomeViewController alertView:didDismissWithButtonIndex:]
 // demangled: -[HomeViewController alertView:didDismissWithButtonIndex:]
 // type: void __cdecl(HomeViewController *self, SEL, id, int)
 #[doc(alias = "-[HomeViewController alertView:didDismissWithButtonIndex:]")]
-pub fn stub_1c4b0() -> ! {
-    todo!("0x1c4b0 -[HomeViewController alertView:didDismissWithButtonIndex:]")
-}
+pub fn stub_1c4b0(state: &mut HomeViewState, button: i32) {
+    // IDA 0x1c4b0: alertView:didDismissWithButtonIndex — button 1 only: LoginManager doLogout + UserInfo logout (0x1c4c4..0x1c4dc), UIView animations/completion blocks 0x1c5c8/0x1c608 (0x1c4e0..0x1c520), page "Logout/Success" (0x1c524..0x1c552); button 0 (cancel) is a no-op.
+    if button == 1 {
+        state.logged_out = true;
+        state.login_pending = None;
+        state.player_name = None;
+        state.avatar_url = None;
+        stub_1c5c8(state);
+        stub_1c608(state);
+        state.logout_page_view = Some("Logout/Success".to_owned());
+    }}
 
 // 0x1c5c8 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke
 // demangled: ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke
 // type: 
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")]
-pub fn stub_1c5c8() -> ! {
-    todo!("0x1c5c8 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke")
-}
+pub fn stub_1c5c8(state: &mut HomeViewState) {
+    // IDA 0x1c5c8: logout animation block — buttonView setAlpha:0 (0x1c5d0..0x1c5e4); the view folds into the flag.
+    state.button_view_alpha_zero = true;}
 
 // 0x1c5f4 — ___copy_helper_block_224
 // demangled: ___copy_helper_block_224
 // type: 
 #[doc(alias = "___copy_helper_block_224")]
-pub fn stub_1c5f4() -> ! {
-    todo!("0x1c5f4 ___copy_helper_block_224")
+pub fn stub_1c5f4() {
+    // IDA 0x1c5f4: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1c600 — ___destroy_helper_block_225
 // demangled: ___destroy_helper_block_225
 // type: 
 #[doc(alias = "___destroy_helper_block_225")]
-pub fn stub_1c600() -> ! {
-    todo!("0x1c600 ___destroy_helper_block_225")
+pub fn stub_1c600() {
+    // IDA 0x1c600: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1c608 — ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227
 // demangled: ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227
 // type: 
 #[doc(alias = "___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")]
-pub fn stub_1c608() -> ! {
-    todo!("0x1c608 ___58-[HomeViewController alertView:didDismissWithButtonIndex:]_block_invoke227")
-}
+pub fn stub_1c608(state: &mut HomeViewState) {
+    // IDA 0x1c608: logout completion block — presentingViewController gate + foreground/background initial-X capture (0x1c618..0x1c6f4) fold, then dismissViewControllerAnimated:NO (0x1c6f8..0x1c710).
+    state.dismissed_no_anim = true;}
 
 // 0x1c734 — ___copy_helper_block_246
 // demangled: ___copy_helper_block_246
 // type: 
 #[doc(alias = "___copy_helper_block_246")]
-pub fn stub_1c734() -> ! {
-    todo!("0x1c734 ___copy_helper_block_246")
+pub fn stub_1c734() {
+    // IDA 0x1c734: __copy_helper_block — single _Block_object_assign slot; block retain has no host carrier — faithful no-op shell.
 }
 
 // 0x1c740 — ___destroy_helper_block_247
 // demangled: ___destroy_helper_block_247
 // type: 
 #[doc(alias = "___destroy_helper_block_247")]
-pub fn stub_1c740() -> ! {
-    todo!("0x1c740 ___destroy_helper_block_247")
+pub fn stub_1c740() {
+    // IDA 0x1c740: __destroy_helper_block — single _Block_object_dispose slot; block release has no host carrier — faithful no-op shell.
 }
 
 // 0x1c748 — -[HomeViewController viewWillAppear:]
 // demangled: -[HomeViewController viewWillAppear:]
 // type: void __cdecl(HomeViewController *self, SEL, char)
 #[doc(alias = "-[HomeViewController viewWillAppear:]")]
-pub fn stub_1c748() -> ! {
-    todo!("0x1c748 -[HomeViewController viewWillAppear:]")
-}
+pub fn stub_1c748(state: &mut HomeViewState, user_logged_in: bool) {
+    // IDA 0x1c748: viewWillAppear — super RobloxPageViewController viewWillAppear: + showCorrectLoggedInState (0x1c754..0x1c76c).
+    stub_1c788(state, user_logged_in);}
 
 // 0x1c788 — -[HomeViewController showCorrectLoggedInState]
 // demangled: -[HomeViewController showCorrectLoggedInState]
 // type: void __cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController showCorrectLoggedInState]")]
-pub fn stub_1c788() -> ! {
-    todo!("0x1c788 -[HomeViewController showCorrectLoggedInState]")
-}
+pub fn stub_1c788(state: &mut HomeViewState, user_logged_in: bool) {
+    // IDA 0x1c788: showCorrectLoggedInState — userLoggedIn hides notLoggedInView XOR loggedInView (0x1c798..0x1c7d4), then global-queue refresh block 0x1c860 (0x1c7d8..0x1c800, folds); the views fold into the flag.
+    state.logged_in_view = user_logged_in;}
 
 // 0x1c860 — ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
 // demangled: ___46-[HomeViewController showCorrectLoggedInState]_block_invoke
