@@ -11,170 +11,170 @@ use rbx_core::SharedPtr;
 // 0xf2bdf4 — j___ZN5boost6detail12shared_countC2IPN3RBX10CoreScriptENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2bdf4]")]
-pub fn stub_0xf2bdf4() -> ! {
-    todo!("0xf2bdf4 boost::detail::shared_count::shared_count<RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2bdf4() {
+    // IDA 0xf2bdf4: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be04 — j___ZN5boost6detail12shared_countC2IPN3RBX11LuaSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be04]")]
-pub fn stub_0xf2be04() -> ! {
-    todo!("0xf2be04 boost::detail::shared_count::shared_count<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be04() {
+    // IDA 0xf2be04: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be14 — j___ZN5boost6detail12shared_countC2IPN3RBX12LuaStatsItemENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaStatsItem *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be14]")]
-pub fn stub_0xf2be14() -> ! {
-    todo!("0xf2be14 boost::detail::shared_count::shared_count<RBX::LuaStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be14() {
+    // IDA 0xf2be14: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be34 — j___ZN5boost6detail12shared_countC2IPN3RBX13ScriptContextENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be34]")]
-pub fn stub_0xf2be34() -> ! {
-    todo!("0xf2be34 boost::detail::shared_count::shared_count<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be34() {
+    // IDA 0xf2be34: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be44 — j___ZN5boost6detail12shared_countC2IPN3RBX13StarterScriptENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be44]")]
-pub fn stub_0xf2be44() -> ! {
-    todo!("0xf2be44 boost::detail::shared_count::shared_count<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be44() {
+    // IDA 0xf2be44: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be64 — j___ZN5boost6detail12shared_countC2IPN3RBX9Scripting13DebuggerWatchENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be64]")]
-pub fn stub_0xf2be64() -> ! {
-    todo!("0xf2be64 boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be64() {
+    // IDA 0xf2be64: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2be74 — j___ZN5boost6detail12shared_countC2IPN3RBX9Scripting14ScriptDebuggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter) [0xf2be74]")]
-pub fn stub_0xf2be74() -> ! {
-    todo!("0xf2be74 boost::detail::shared_count::shared_count<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0xf2be74() {
+    // IDA 0xf2be74: shared_count ctor thunk (j__); refcount owned by SharedPtr (Arc) — carrier no-op.
 }
 
 // 0xf2bea4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>) [0xf2bea4]")]
-pub fn stub_0xf2bea4() -> ! {
-    todo!("0xf2bea4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf2bea4() {
+    // IDA 0xf2bea4: functor_manager thunk (j__); closure buffer ops fold into Box<dyn Fn> — carrier no-op.
 }
 
 // 0xf2beb4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS7_3Lua13WeakThreadRefEP9lua_StateEENS3_5list3INS3_5valueIPS8_EENSF_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>) [0xf2beb4]")]
-pub fn stub_0xf2beb4() -> ! {
-    todo!("0xf2beb4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf2beb4() {
+    // IDA 0xf2beb4: functor_manager thunk (j__); closure buffer ops fold into Box<dyn Fn> — carrier no-op.
 }
 
 // 0xf2bef4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>) [0xf2bef4]")]
-pub fn stub_0xf2bef4() -> ! {
-    todo!("0xf2bef4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xf2bef4() {
+    // IDA 0xf2bef4: functor_manager thunk (j__); closure buffer ops fold into Box<dyn Fn> — carrier no-op.
 }
 
 // 0xf2bf64 — j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, RBX::Lua::WeakThreadRef *, int, int, int, int)
 #[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf2bf64() -> ! {
-    todo!("0xf2bf64 j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf2bf64() {
+    // IDA 0xf2bf64: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bf84 — j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf2bf84() -> ! {
-    todo!("0xf2bf84 j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf2bf84() {
+    // IDA 0xf2bf84: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bf94 — j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, int, RBX::Lua::WeakThreadRef *, int, int, int, int)
 #[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_")]
-pub fn stub_0xf2bf94() -> ! {
-    todo!("0xf2bf94 j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_")
+pub fn stub_0xf2bf94() {
+    // IDA 0xf2bf94: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bfb4 — j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
 #[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")]
-pub fn stub_0xf2bfb4() -> ! {
-    todo!("0xf2bfb4 j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")
+pub fn stub_0xf2bfb4() {
+    // IDA 0xf2bfb4: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bfc4 — j___ZN5boost8functionIFvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEaSERKS8_
 #[doc(alias = "boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>::operator=(boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)> const&) [0xf2bfc4]")]
-pub fn stub_0xf2bfc4() -> ! {
-    todo!("0xf2bfc4 boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>::operator=(boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)> const&)")
+pub fn stub_0xf2bfc4() {
+    // IDA 0xf2bfc4: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bfe4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>) [0xf2bfe4]")]
-pub fn stub_0xf2bfe4() -> ! {
-    todo!("0xf2bfe4 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>)")
+pub fn stub_0xf2bfe4() {
+    // IDA 0xf2bfe4: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2bff4 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf2bff4() -> ! {
-    todo!("0xf2bff4 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf2bff4() {
+    // IDA 0xf2bff4: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2c0e4 — j___ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS9_3Lua13WeakThreadRefES2_EENS5_5list3INS5_5valueIPSA_EENSF_ISC_EENS_3argILi1EEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, RBX::Lua::WeakThreadRef *, int, int, int, int)
 #[doc(alias = "void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>) [0xf2c0e4]")]
-pub fn stub_0xf2c0e4() -> ! {
-    todo!("0xf2c0e4 void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::_bi::value<RBX::Lua::WeakThreadRef>,boost::arg<1>>>)")
+pub fn stub_0xf2c0e4() {
+    // IDA 0xf2c0e4: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2c104 — j___ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS2_NS_8functionIFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEEvT_
 #[doc(alias = "void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>>>) [0xf2c104]")]
-pub fn stub_0xf2c104() -> ! {
-    todo!("0xf2c104 void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>>>)")
+pub fn stub_0xf2c104() {
+    // IDA 0xf2c104: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2c114 — j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS9_3Lua13WeakThreadRefES2_EENS5_5list3INS5_5valueIPSA_EENSF_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, RBX::Lua::WeakThreadRef *, int, int, int, int)
 #[doc(alias = "j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS9_3Lua13WeakThreadRefES2_EENS5_5list3INS5_5valueIPSA_EENSF_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf2c114() -> ! {
-    todo!("0xf2c114 j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS9_3Lua13WeakThreadRefES2_EENS5_5list3INS5_5valueIPSA_EENSF_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf2c114() {
+    // IDA 0xf2c114: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2c134 — j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0xf2c134() -> ! {
-    todo!("0xf2c134 j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0xf2c134() {
+    // IDA 0xf2c134: function-bind ctor/assign thunk (j__); binds are plain closures — carrier no-op.
 }
 
 // 0xf2c214 — j___ZN5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiE11move_assignERS7_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::move_assign(boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>&) [0xf2c214]")]
-pub fn stub_0xf2c214() -> ! {
-    todo!("0xf2c214 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::move_assign(boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>&)")
+pub fn stub_0xf2c214() {
+    // IDA 0xf2c214: function slot lifecycle thunk; Drop/assignment covers it — carrier no-op.
 }
 
 // 0xf2c224 — j___ZN5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiE13assign_to_ownERKS7_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::assign_to_own(boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int> const&) [0xf2c224]")]
-pub fn stub_0xf2c224() -> ! {
-    todo!("0xf2c224 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::assign_to_own(boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int> const&)")
+pub fn stub_0xf2c224() {
+    // IDA 0xf2c224: function slot lifecycle thunk; Drop/assignment covers it — carrier no-op.
 }
 
 // 0xf2c234 — j___ZN5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiE4swapERS7_
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::swap(boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>&) [0xf2c234]")]
-pub fn stub_0xf2c234() -> ! {
-    todo!("0xf2c234 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::swap(boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>&)")
+pub fn stub_0xf2c234() {
+    // IDA 0xf2c234: function slot lifecycle thunk; Drop/assignment covers it — carrier no-op.
 }
 
 // 0xf2c244 — j___ZN5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiE5clearEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::clear(void) [0xf2c244]")]
-pub fn stub_0xf2c244() -> ! {
-    todo!("0xf2c244 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::clear(void)")
+pub fn stub_0xf2c244() {
+    // IDA 0xf2c244: function slot lifecycle thunk; Drop/assignment covers it — carrier no-op.
 }
 
 // 0xf2c2b4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE
