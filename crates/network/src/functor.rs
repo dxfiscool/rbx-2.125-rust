@@ -68,6 +68,13 @@ pub fn invoke2<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
     slot(a, b);
 }
 
+/// `list3` call-time arity (`listN::operator()` with a 3-arg call list,
+/// IDA 0xa2ac10): the bound values stay engine-side; the caller supplies
+/// the composed closure plus its three call-time args.
+pub fn invoke3<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
+    slot(a, b, c);
+}
+
 /// `void_function_obj_invoker4<F>::invoke` (IDA 0x9d2900).
 pub fn invoke4<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: C, d: D) {
     slot(a, b, c, d);
@@ -124,7 +131,6 @@ pub fn manage_fn_slot(op: FunctorOp, src: &mut FnSlot, dst: &mut FnSlot, tag: &'
             dst.addr = src.addr;
             ManageOutcome::Manager(ManagerToken)
         }
-        // IDA 0x957584 case 1: move, then zero the source.
         FunctorOp::Move => {
             dst.addr = src.addr;
             src.addr = 0;
@@ -171,8 +177,9 @@ mod tests {
         invoke0(&mut || log.push(0));
         invoke1(&mut |a: i32| log.push(a), 1);
         invoke2(&mut |a: i32, b: i32| log.push(a + b), 1, 2);
+        invoke3(&mut |a: i32, b: i32, c: i32| log.push(a + b + c), 1, 2, 4);
         invoke4(&mut |a: i32, b: i32, c: i32, d: i32| log.push(a + b + c + d), 1, 2, 3, 4);
-        assert_eq!(log, vec![0, 1, 3, 10]);
+        assert_eq!(log, vec![0, 1, 3, 7, 10]);
         assert_eq!(invoke_ret0(&mut || 7), 7);
         assert_eq!(invoke_ret1(&mut |a: i32| a * 2, 21), 42);
         assert_eq!(invoke_ret2(&mut |a: i32, b: i32| a - b, 10, 4), 6);
