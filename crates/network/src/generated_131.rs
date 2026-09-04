@@ -9,36 +9,71 @@ use rbx_core::SharedPtr;
 // 0x9be164 — __ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE
 // type: void __fastcall(RBX::Network::PhysicsReceiver *this, RakNet::BitStream *, RBX::Velocity *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::readVelocity(RakNet::BitStream &,RBX::Velocity &)")]
-pub fn stub_9be164() -> ! {
-    todo!("0x9be164 __ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE")
+pub fn stub_9be164(
+    receiver: &crate::physics::PhysicsReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    velocity: &mut crate::physics::Velocity,
+) {
+    // IDA 0x9be164..0x9be2ea: compression gate (+3716 -> +160) selects
+    // `CustomSerializer::readVector` (SFFlag physics compression) or raw
+    // `ReadVector`, else `Velocity::zero()`.
+    receiver.read_velocity(stream, velocity);
 }
 
 // 0x9be2ec — __ZN3RBX7Network15PhysicsReceiver17readCompactCFrameERN6RakNet9BitStreamERNS_13CompactCFrameE
 // type: int __fastcall(RBX::Network::PhysicsReceiver *this, RakNet::BitStream *, RBX::CompactCFrame *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::readCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame &)")]
-pub fn stub_9be2ec() -> ! {
-    todo!("0x9be2ec __ZN3RBX7Network15PhysicsReceiver17readCompactCFrameERN6RakNet9BitStreamERNS_13CompactCFrameE")
+pub fn stub_9be2ec(
+    receiver: &crate::physics::PhysicsReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    frame: &mut crate::physics::CompactCFrame,
+) -> bool {
+    // IDA 0x9be2ec: `ReadBit` fast path (pure-Z rotation from one byte),
+    // else the full axis/angle/translation decode; asserts stay debug-only.
+    receiver.read_compact_cframe(stream, frame);
+    true
 }
 
 // 0x9be624 — __ZN3RBX7Network15PhysicsReceiver10setPhysicsERKNS_13MechanismItemERKNS_10RemoteTimeEj
 // type: void __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::PhysicsReceiver::setPhysics(RBX::MechanismItem const&,RBX::RemoteTime const&,unsigned int)")]
-pub fn stub_9be624() -> ! {
-    todo!("0x9be624 __ZN3RBX7Network15PhysicsReceiver10setPhysicsERKNS_13MechanismItemERKNS_10RemoteTimeEj")
+pub fn stub_9be624(
+    receiver: &crate::physics::PhysicsReceiver,
+    item: crate::physics::MechanismItemSample<'_>,
+    first_flag_28: bool,
+) -> Option<crate::physics::AppliedItem> {
+    // IDA 0x9be624: null/filtered/non-root/grounded parts only log;
+    // ungrounded roots apply via `Assembly::setPhysics` (0x9be8c8).
+    receiver
+        .set_physics_batch(std::slice::from_ref(&item), first_flag_28)
+        .pop()
 }
 
 // 0x9bebb4 — __ZN3RBX7Network15PhysicsReceiver24okDistributedReceivePartERKN5boost10shared_ptrINS_12PartInstanceEEE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::okDistributedReceivePart(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
-pub fn stub_9bebb4() -> ! {
-    todo!("0x9bebb4 __ZN3RBX7Network15PhysicsReceiver24okDistributedReceivePartERKN5boost10shared_ptrINS_12PartInstanceEEE")
+pub fn stub_9bebb4(distributed_gate: bool, filter_allows: bool) -> bool {
+    // IDA 0x9bebb4: replicator +160 gate set => filter vtable verdict (+136);
+    // else allow (1).
+    if distributed_gate { filter_allows } else { true }
 }
 
 // 0x9bebd8 — __ZN3RBX7Network15PhysicsReceiver15receiveRootPartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE
 // type: int __fastcall(int, struct _Unwind_Exception *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::receiveRootPart(rbx_core::SharedPtr<RBX::PartInstance> &,RakNet::BitStream &)")]
-pub fn stub_9bebd8() -> ! {
-    todo!("0x9bebd8 __ZN3RBX7Network15PhysicsReceiver15receiveRootPartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE")
+pub fn stub_9bebd8(
+    received: bool,
+    part_grounded: bool,
+    distributed_gate: bool,
+    filter_allows: bool,
+    drop_part: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9bebd8: `receivePart`, then a received grounded part — or one
+    // failing the distributed filter — has its shared_ptr reset.
+    if received && (part_grounded || (distributed_gate && !filter_allows)) {
+        drop_part();
+    }
+    received
 }
 
 // 0x9bedec — __ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE
@@ -52,8 +87,15 @@ pub fn stub_9bedec(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3])
 // 0x9bfa90 — __ZN3RBX7Network13PhysicsSender11sendTouchesE14PacketPriority
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, char, int, char, int, int, int, int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Network::PhysicsSender::sendTouches(PacketPriority)")]
-pub fn stub_9bfa90() -> ! {
-    todo!("0x9bfa90 __ZN3RBX7Network13PhysicsSender11sendTouchesE14PacketPriority")
+pub fn stub_9bfa90(
+    sender: &mut crate::physics::PhysicsSender,
+    send: &mut dyn FnMut(crate::physics::TouchPair),
+) {
+    // IDA 0x9bfa90: packetize each queued touch within the MTU budget, then
+    // clear the set; framing stays engine-side behind `send`.
+    for pair in sender.touches.drain() {
+        send(pair);
+    }
 }
 
 // 0x9c0908 — __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE
@@ -354,127 +396,154 @@ pub fn stub_9c3778(node: &crate::physics::PrimitiveNode, visit: &mut dyn FnMut(u
 // 0x9c3854 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender8TouchJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::TouchJob> *,RBX::Network::PhysicsSender::TouchJob *,boost::detail::shared_count &)")]
-pub fn stub_9c3854() -> ! {
-    todo!("0x9c3854 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender8TouchJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+pub fn stub_9c3854(job: crate::physics::TouchJob) -> SharedPtr<crate::physics::TouchJob> {
+    // IDA 0x9c3854: `sp_pointer_construct` wires the fresh `TouchJob` into
+    // its `SharedPtr`; `Arc::new` is the whole operation.
+    SharedPtr::new(job)
 }
 
 // 0x9c3a04 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender8TouchJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::TouchJob> const*,RBX::Network::PhysicsSender::TouchJob *)const")]
-pub fn stub_9c3a04() -> ! {
-    todo!("0x9c3a04 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender8TouchJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_9c3a04(_owner: &SharedPtr<crate::physics::TouchJob>) {
+    // IDA 0x9c3a04: `_internal_accept_owner` records the owning
+    // `shared_ptr` in the `enable_shared_from_this` base; `Arc` needs none.
 }
 
 // 0x9c3cb0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
-pub fn stub_9c3cb0() -> ! {
-    todo!("0x9c3cb0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED1Ev")
+pub fn stub_9c3cb0(_job: crate::physics::TouchJob) {
+    // IDA 0x9c3cb0 (D1): `sp_counted_impl_p` teardown; by-value drop covers it.
 }
 
 // 0x9c3cb4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
-pub fn stub_9c3cb4() -> ! {
-    todo!("0x9c3cb4 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED0Ev")
+pub fn stub_9c3cb4(_job: crate::physics::TouchJob) {
+    // IDA 0x9c3cb4 (D0): D1 then `operator delete`; stateless `Copy` drop covers both.
 }
 
 // 0x9c3cc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::dispose(void)")]
-pub fn stub_9c3cc0() -> ! {
-    todo!("0x9c3cc0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE7disposeEv")
+pub fn stub_9c3cc0(_job: crate::physics::TouchJob) {
+    // IDA 0x9c3cc0: `dispose` destroys the managed `TouchJob`; stateless, nothing to run.
 }
 
 // 0x9c3cd4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_deleter(std::type_info const&)")]
-pub fn stub_9c3cd4() -> ! {
-    todo!("0x9c3cd4 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE11get_deleterERKSt9type_info")
+pub fn stub_9c3cd4() -> Option<*const ()> {
+    // IDA 0x9c3cd4: `get_deleter` matches the stored deleter's typeinfo;
+    // `Arc` stores none, so the lookup is always null.
+    None
 }
 
 // 0x9c3cd8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_untyped_deleter(void)")]
-pub fn stub_9c3cd8() -> ! {
-    todo!("0x9c3cd8 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE19get_untyped_deleterEv")
+pub fn stub_9c3cd8() -> Option<*const ()> {
+    // IDA 0x9c3cd8: `get_untyped_deleter` likewise always null under `Arc`.
+    None
 }
 
 // 0x9c3cdc — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::Job> *,RBX::Network::PhysicsSender::Job *,boost::detail::shared_count &)")]
-pub fn stub_9c3cdc() -> ! {
-    todo!("0x9c3cdc __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+pub fn stub_9c3cdc(job: crate::physics::SendJob) -> SharedPtr<crate::physics::SendJob> {
+    // IDA 0x9c3cdc: `sp_pointer_construct` for `PhysicsSender::Job`; same
+    // `Arc::new` mapping as 0x9c3854.
+    SharedPtr::new(job)
 }
 
 // 0x9c3e8c — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::Job> const*,RBX::Network::PhysicsSender::Job *)const")]
-pub fn stub_9c3e8c() -> ! {
-    todo!("0x9c3e8c __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_9c3e8c(_owner: &SharedPtr<crate::physics::SendJob>) {
+    // IDA 0x9c3e8c: `_internal_accept_owner` for `PhysicsSender::Job`; same
+    // no-op `Arc` mapping as 0x9c3a04.
 }
 
 // 0x9c4138 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
-pub fn stub_9c4138() -> ! {
-    todo!("0x9c4138 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED1Ev")
+pub fn stub_9c4138(_job: crate::physics::SendJob) {
+    // IDA 0x9c4138 (D1): `sp_counted_impl_p` teardown; by-value drop covers it.
 }
 
 // 0x9c413c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
-pub fn stub_9c413c() -> ! {
-    todo!("0x9c413c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED0Ev")
+pub fn stub_9c413c(_job: crate::physics::SendJob) {
+    // IDA 0x9c413c (D0): D1 then `operator delete`; stateless `Copy` drop covers both.
 }
 
 // 0x9c4148 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::dispose(void)")]
-pub fn stub_9c4148() -> ! {
-    todo!("0x9c4148 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE7disposeEv")
+pub fn stub_9c4148(_job: crate::physics::SendJob) {
+    // IDA 0x9c4148: `dispose` destroys the managed `Job`; stateless, nothing to run.
 }
 
 // 0x9c415c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_deleter(std::type_info const&)")]
-pub fn stub_9c415c() -> ! {
-    todo!("0x9c415c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE11get_deleterERKSt9type_info")
+pub fn stub_9c415c() -> Option<*const ()> {
+    // IDA 0x9c415c: `get_deleter` always null under `Arc`; same as 0x9c3cd4.
+    None
 }
 
 // 0x9c4160 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_untyped_deleter(void)")]
-pub fn stub_9c4160() -> ! {
-    todo!("0x9c4160 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE19get_untyped_deleterEv")
+pub fn stub_9c4160() -> Option<*const ()> {
+    // IDA 0x9c4160: `get_untyped_deleter` likewise always null under `Arc`.
+    None
 }
 
 // 0x9c469c — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_9c469c() -> ! {
-    todo!("0x9c469c __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev")
+pub fn stub_9c469c(list: &mut crate::signal::SlotList, slot: Option<crate::signal::SlotId>) {
+    // IDA 0x9c469c: `callable_slot` D1 — unlink the `onTouchStep` slot node;
+    // the bound functor itself drops with the caller.
+    if let Some(id) = slot {
+        list.remove(id);
+    }
 }
 
 // 0x9c46f8 — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_9c46f8() -> ! {
-    todo!("0x9c46f8 __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev")
+pub fn stub_9c46f8(list: &mut crate::signal::SlotList, slot: Option<crate::signal::SlotId>) {
+    // IDA 0x9c46f8 (D0): D1 then `operator delete`; unlink covers both.
+    if let Some(id) = slot {
+        list.remove(id);
+    }
 }
 
 // 0x9c4980 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
-pub fn stub_9c4980() -> ! {
-    todo!("0x9c4980 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
+pub fn stub_9c4980(
+    sender: &mut crate::physics::PhysicsSender,
+    pair: crate::physics::TouchPair,
+) -> bool {
+    // IDA 0x9c4980: `callable::call` runs the bound
+    // `PhysicsSender::onTouchStep` functor (IDA 0x9c0ab4 emplace).
+    sender.on_touch_step(pair)
 }
 
 // 0x9c499c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
-pub fn stub_9c499c() -> ! {
-    todo!("0x9c499c __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
+pub fn stub_9c499c(
+    sender: &mut crate::physics::PhysicsSender,
+    pair: crate::physics::TouchPair,
+) -> bool {
+    // IDA 0x9c499c (ZThn4): adjusts `this`, then `callable::call` above.
+    sender.on_touch_step(pair)
 }
 
 // 0x9c56a4 — __ZN3RBX7Network13PhysicsSender8TouchJobC2EN5boost10shared_ptrIS1_EE
@@ -632,8 +701,16 @@ pub fn stub_9c72a8(server: &crate::server::Server) -> usize {
 // 0x9c72d0 — __ZL16createReplicatorN6RakNet13SystemAddressEPN3RBX7Network6ServerEPNS1_15NetworkSettingsE
 // type: void __fastcall(int *, int, int, int, pthread_mutex_t *, boost::detail::shared_count *, pthread_mutex_t *, int)
 #[doc(alias = "createReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
-pub fn stub_9c72d0() -> ! {
-    todo!("0x9c72d0 __ZL16createReplicatorN6RakNet13SystemAddressEPN3RBX7Network6ServerEPNS1_15NetworkSettingsE")
+pub fn stub_9c72d0(factory_present: bool, create: &mut dyn FnMut()) -> bool {
+    // IDA 0x9c72d0: `new ServerReplicator(...)` wired into a fresh
+    // `shared_ptr` (+ `_internal_accept_owner`); a null factory yields no
+    // replicator (cf. the empty-factory gate in `Server::OnReceive`,
+    // IDA 0x9ca1c2..0x9ca350).
+    if !factory_present {
+        return false;
+    }
+    create();
+    true
 }
 
 // 0x9c7444 — __ZN3RBX7Network6ServerC1Ev
@@ -883,27 +960,35 @@ pub fn stub_9cb40c(server: &mut crate::server::Server) {
 // 0x9cb4ac — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network6ServerENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS8_EENS2_3argILi1EEEEEEEEEvRKT_
 // type: void __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>> const&)const")]
-pub fn stub_9cb4ac() -> ! {
-    todo!("0x9cb4ac __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network6ServerENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS8_EENS2_3argILi1EEEEEEEEEvRKT_")
+pub fn stub_9cb4ac(descendant_ids: &[u64], visit: &mut dyn FnMut(u64)) {
+    // IDA 0x9cb4ac: `visitDescendants` walks the refcounted child vector
+    // under the instance lock, invoking the bound `Server` functor per
+    // descendant (ids stand in for the `shared_ptr<Instance>`s).
+    for &id in descendant_ids {
+        visit(id);
+    }
 }
 
 // 0x9cb9f0 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15NetworkOwnerJobES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(rbx_core::SharedPtr<RBX::Network::NetworkOwnerJob> *,RBX::Network::NetworkOwnerJob *,boost::detail::shared_count &)")]
-pub fn stub_9cb9f0() -> ! {
-    todo!("0x9cb9f0 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15NetworkOwnerJobES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+pub fn stub_9cb9f0(job: crate::physics::NetworkOwnerJob) -> SharedPtr<crate::physics::NetworkOwnerJob> {
+    // IDA 0x9cb9f0: `sp_pointer_construct` for `NetworkOwnerJob`; same
+    // `Arc::new` mapping as 0x9c3854.
+    SharedPtr::new(job)
 }
 
 // 0x9cbba0 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network15NetworkOwnerJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(rbx_core::SharedPtr<RBX::Network::NetworkOwnerJob> const*,RBX::Network::NetworkOwnerJob *)const")]
-pub fn stub_9cbba0() -> ! {
-    todo!("0x9cbba0 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network15NetworkOwnerJobES7_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_9cbba0(_owner: &SharedPtr<crate::physics::NetworkOwnerJob>) {
+    // IDA 0x9cbba0: `_internal_accept_owner` for `NetworkOwnerJob`; same
+    // no-op `Arc` mapping as 0x9c3a04.
 }
 
 // 0x9cbe4c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::~sp_counted_impl_p()")]
-pub fn stub_9cbe4c() -> ! {
-    todo!("0x9cbe4c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEED1Ev")
+pub fn stub_9cbe4c(_job: crate::physics::NetworkOwnerJob) {
+    // IDA 0x9cbe4c (D1): `sp_counted_impl_p` teardown; by-value drop covers it.
 }

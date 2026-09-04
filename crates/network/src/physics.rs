@@ -716,6 +716,11 @@ impl SendJob {
     }
 }
 
+/// `RBX::Network::NetworkOwnerJob` (IDA 0x9cb9f0..0x9cbe4c).
+/// Stateless: the original's fields are scheduler bookkeeping.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct NetworkOwnerJob;
+
 /// Approximate-zero test used by `writeCompactCFrame` (IDA 0x9c2b54..0x9c2b8e):
 /// `|v| == 0 || |v| <= (|v| + 1) * 1e-8`, with the `G3D::inf()` guard.
 fn approx_zero(v: f32) -> bool {
