@@ -366,11 +366,9 @@ pub fn stub_0x701ef8(this: *mut Instance) {
 #[doc(alias = "RBX::Instance::~Instance()")]
 pub fn stub_0x701f98(this: *mut Instance) {
     // IDA 0x701f98, disasm `B.W __ZN3RBX8InstanceD2Ev`: D1 tail-jumps to D2
-    // (the `operator delete` lives only in D0).
-    // SAFETY: `this` must point to a valid `Instance`.
-    unsafe {
-        stub_0x701fac(this);
-    }
+    // (the `operator delete` lives only in D0). The call target is a safe
+    // Rust fn, so no `unsafe` block — drops are compiler-managed.
+    stub_0x701fac(this);
 }
 
 // 0x701f9c — __ZThn32_N3RBX8InstanceD0Ev
