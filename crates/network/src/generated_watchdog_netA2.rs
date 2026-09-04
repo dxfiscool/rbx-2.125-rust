@@ -519,32 +519,38 @@ pub fn stub_9c30ac(heavy: bool, x: f32, y: f32, z: f32, stream: &mut crate::bits
 // type: int __fastcall(int, void (*)(void), int, int, int)
 #[doc(alias = "void RBX::IndexedTree::visitConstMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::PhysicsSender,RakNet::BitStream *,RBX::Assembly const*>,boost::_bi::list3<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::_bi::value<RakNet::BitStream *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::PhysicsSender,RakNet::BitStream *,RBX::Assembly const*>,boost::_bi::list3<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::_bi::value<RakNet::BitStream *>,boost::arg<1>>>)")]
 #[doc(alias = "__ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_")]
-pub fn stub_9c35a0() -> ! {
-    todo!("0x9c35a0 __ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_")
+pub fn stub_9c35a0(
+    tree: &crate::physics::AssemblyTree,
+    visit: &mut dyn FnMut(&crate::physics::AssemblyTree),
+) {
+    // IDA 0x9c35c6..0x9c3662: self bind then child assemblies.
+    tree.visit_const_me_and_children(visit);
 }
 
 // 0x9c3664 — __ZN3RBX9Mechanism19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_PNS_8AssemblyE
 // type: int __fastcall(int, int, int, int, int, int, RBX::Assembly *)
 #[doc(alias = "void RBX::Mechanism::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::PhysicsSender,RBX::Primitive *,RakNet::BitStream *,RBX::Network::Replicator *>,boost::_bi::list4<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>,boost::_bi::value<RakNet::BitStream *>,boost::_bi::value<RBX::Network::Replicator *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::PhysicsSender,RBX::Primitive *,RakNet::BitStream *,RBX::Network::Replicator *>,boost::_bi::list4<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>,boost::_bi::value<RakNet::BitStream *>,boost::_bi::value<RBX::Network::Replicator *>>>,RBX::Assembly *)")]
 #[doc(alias = "__ZN3RBX9Mechanism19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_PNS_8AssemblyE")]
-pub fn stub_9c3664() -> ! {
-    todo!("0x9c3664 __ZN3RBX9Mechanism19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_PNS_8AssemblyE")
+pub fn stub_9c3664(tree: &crate::physics::MechanismTree, visit: &mut dyn FnMut(u32)) {
+    // IDA 0x9c367c..0x9c3774: assembly-primitive assert, visit, child-mechanism recurse.
+    tree.visit_primitives(visit);
 }
 
 // 0x9c3778 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_SA_
 // type: int __fastcall(int, void (*)(void), int, int, int, int, int)
 #[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::PhysicsSender,RBX::Primitive *,RakNet::BitStream *,RBX::Network::Replicator *>,boost::_bi::list4<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>,boost::_bi::value<RakNet::BitStream *>,boost::_bi::value<RBX::Network::Replicator *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::PhysicsSender,RBX::Primitive *,RakNet::BitStream *,RBX::Network::Replicator *>,boost::_bi::list4<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>,boost::_bi::value<RakNet::BitStream *>,boost::_bi::value<RBX::Network::Replicator *>>>,RBX::Primitive *)")]
 #[doc(alias = "__ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_SA_")]
-pub fn stub_9c3778() -> ! {
-    todo!("0x9c3778 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_SA_")
+pub fn stub_9c3778(node: &crate::physics::PrimitiveNode, visit: &mut dyn FnMut(u32)) {
+    // IDA 0x9c3794..0x9c3850: primitive bind then non-root children (IDA 0x9c3824).
+    node.visit_primitives(visit);
 }
 
 // 0x9c5830 — __ZN3RBX7Network13PhysicsSender8TouchJobD1Ev
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJobD1Ev")]
-pub fn stub_9c5830() -> ! {
-    todo!("0x9c5830 __ZN3RBX7Network13PhysicsSender8TouchJobD1Ev")
+pub fn stub_9c5830(_job: crate::physics::TouchJob) {
+    // IDA 0x9c5830..0x9c5834 (D1): tail-calls D2 (IDA 0x9c5e38); stateless drop covers it.
 }
 
 // 0x9c583c — __ZN3RBX7Network13PhysicsSender8TouchJobD0Ev
@@ -575,24 +581,25 @@ pub fn stub_9c58fc() -> ! {
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJobD2Ev")]
-pub fn stub_9c5e38() -> ! {
-    todo!("0x9c5e38 __ZN3RBX7Network13PhysicsSender8TouchJobD2Ev")
+pub fn stub_9c5e38(_job: crate::physics::TouchJob) {
+    // IDA 0x9c5e70..0x9c5f24 (D2): vtable reset, weak-ref/shared-count dtors, base Job dtor.
 }
 
 // 0x9c6168 — __ZN3RBX7Network13PhysicsSender3JobD1Ev
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3JobD1Ev")]
-pub fn stub_9c6168() -> ! {
-    todo!("0x9c6168 __ZN3RBX7Network13PhysicsSender3JobD1Ev")
+pub fn stub_9c6168(_job: crate::physics::SendJob) {
+    // IDA 0x9c6168..0x9c616c (D1): tail-calls D2 (IDA 0x9c6568); stateless drop covers it.
 }
 
 // 0x9c6174 — __ZN3RBX7Network13PhysicsSender3JobD0Ev
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3JobD0Ev")]
-pub fn stub_9c6174() -> ! {
-    todo!("0x9c6174 __ZN3RBX7Network13PhysicsSender3JobD0Ev")
+pub fn stub_9c6174(job: crate::physics::SendJob) {
+    // IDA 0x9c6174..0x9c61ca (D0): D2 then `operator delete`; by-value drop covers both.
+    crate::generated_netA_watchdog_57::stub_9c6568(job);
 }
 
 // 0x9c6214 — __ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE

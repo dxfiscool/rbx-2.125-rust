@@ -452,6 +452,15 @@ impl PhysicsSender {
         self.touches_connected = false;
         self.jobs_started = false;
     }
+
+    /// `boost::shared_ptr<PhysicsSender::Job>::reset` (IDA 0x9c2f6c) and
+    /// `shared_ptr<PhysicsSender::TouchJob>::reset` (IDA 0x9c300c):
+    /// release one scheduler job slot. Per-slot storage stays
+    /// engine-side; the crate tracks both slots jointly in
+    /// `jobs_started`, so either reset clears it.
+    pub fn reset_job_slot(&mut self) {
+        self.jobs_started = false;
+    }
 }
 
 impl Drop for PhysicsSender {
