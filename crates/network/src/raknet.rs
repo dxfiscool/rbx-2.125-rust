@@ -3704,72 +3704,81 @@ pub fn stub_a68ed4() -> ! {
 #[doc(
     alias = "DataStructures::List<RakNet::RakString>::Insert(RakNet::RakString const&,char const*,unsigned int)"
 )]
-pub fn stub_a6b9f8() -> ! {
-    todo!("0xa6b9f8 DataStructures::List<RakNet::RakString>::Insert(RakNet::RakString const&,char const*,unsigned int)")
+pub fn stub_a6b9f8(list: &mut Vec<String>, value: String) {
+    // IDA 0xa6b9f8: append the string.
+    crate::socket::rak_string_list_insert(list, value)
 }
 
 // 0xa6bc00 — __ZN14DataStructures5QueueIPN6RakNet6PacketEE10PushAtHeadERKS3_jPKcj
 #[doc(
     alias = "DataStructures::Queue<RakNet::Packet *>::PushAtHead(RakNet::Packet * const&,unsigned int,char const*,unsigned int)"
 )]
-pub fn stub_a6bc00() -> ! {
-    todo!("0xa6bc00 DataStructures::Queue<RakNet::Packet *>::PushAtHead(RakNet::Packet * const&,unsigned int,char const*,unsigned int)")
+pub fn stub_a6bc00(queue: &mut std::collections::VecDeque<crate::socket::Packet>, packet: crate::socket::Packet) {
+    // IDA 0xa6bc00: push then rotate the newcomer to the head.
+    crate::socket::packet_queue_push_at_head(queue, packet)
 }
 
 // 0xa6bcac — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEEaSERKS5_
 #[doc(
     alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> const&)"
 )]
-pub fn stub_a6bcac() -> ! {
-    todo!("0xa6bcac DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> const&)")
+pub fn stub_a6bcac(dst: &mut Vec<crate::socket::SocketHandle>, src: &[crate::socket::SocketHandle]) {
+    // IDA 0xa6bcac: copy-assign the socket list.
+    crate::socket::socket_list_assign(dst, src)
 }
 
 // 0xa6be48 — __ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj
 #[doc(
     alias = "DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)"
 )]
-pub fn stub_a6be48() -> ! {
-    todo!("0xa6be48 DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)")
+pub fn stub_a6be48(queue: &mut std::collections::VecDeque<crate::socket::RequestedConnection>, req: crate::socket::RequestedConnection) {
+    // IDA 0xa6be48: append the connection request.
+    crate::socket::requested_connection_queue_push(queue, req)
 }
 
 // 0xa6bf1c — __ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE8AllocateEPKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate(char const*,unsigned int)"
 )]
-pub fn stub_a6bf1c() -> ! {
-    todo!("0xa6bf1c DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate(char const*,unsigned int)")
+pub fn stub_a6bf1c() -> crate::socket::RemoteSystemIndex {
+    // IDA 0xa6bf1c: pool blocks stay engine-side.
+    crate::socket::remote_system_index_allocate()
 }
 
 // 0xa6c048 — __ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE7ReleaseEPS2_PKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release(RakNet::RemoteSystemIndex*,char const*,unsigned int)"
 )]
-pub fn stub_a6c048() -> ! {
-    todo!("0xa6c048 DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release(RakNet::RemoteSystemIndex*,char const*,unsigned int)")
+pub fn stub_a6c048(index: crate::socket::RemoteSystemIndex) {
+    // IDA 0xa6c048: return to the pool (drop).
+    crate::socket::remote_system_index_release(index)
 }
 
 // 0xa6c11c — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEE5ClearEPKcj
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear(char const*,unsigned int)"
 )]
-pub fn stub_a6c11c() -> ! {
-    todo!("0xa6c11c DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear(char const*,unsigned int)")
+pub fn stub_a6c11c(queue: &mut std::collections::VecDeque<crate::socket::BufferedCommand>) {
+    // IDA 0xa6c11c: drain the buffered-command queue.
+    crate::socket::buffered_command_queue_clear(queue)
 }
 
 // 0xa6c254 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEE5ClearEPKcj
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear(char const*,unsigned int)"
 )]
-pub fn stub_a6c254() -> ! {
-    todo!("0xa6c254 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear(char const*,unsigned int)")
+pub fn stub_a6c254(queue: &mut std::collections::VecDeque<crate::socket::RecvFrom>) {
+    // IDA 0xa6c254: drain the receive queue.
+    crate::socket::recv_from_queue_clear(queue)
 }
 
 // 0xa6c38c — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEE5ClearEPKcj
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear(char const*,unsigned int)"
 )]
-pub fn stub_a6c38c() -> ! {
-    todo!("0xa6c38c DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear(char const*,unsigned int)")
+pub fn stub_a6c38c(queue: &mut std::collections::VecDeque<crate::socket::SocketQueryOutput>) {
+    // IDA 0xa6c38c: drain the socket-query queue.
+    crate::socket::socket_query_output_queue_clear(queue)
 }
 
 // 0xa6c4ec — __ZNK6RakNet7RakPeer8IsActiveEv
@@ -3783,96 +3792,108 @@ pub fn stub_a6c4ec(peer: &crate::socket::RakPeer) -> bool {
 #[doc(
     alias = "DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)"
 )]
-pub fn stub_a6c4f8() -> ! {
-    todo!("0xa6c4f8 DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)")
+pub fn stub_a6c4f8(queue: &mut std::collections::VecDeque<crate::socket::RecvFrom>, recv: crate::socket::RecvFrom) {
+    // IDA 0xa6c4f8: append the receive struct.
+    crate::socket::recv_from_queue_push(queue, recv)
 }
 
 // 0xa6c5cc — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE8AllocateEPKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate(char const*,unsigned int)"
 )]
-pub fn stub_a6c5cc() -> ! {
-    todo!("0xa6c5cc DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate(char const*,unsigned int)")
+pub fn stub_a6c5cc() -> crate::socket::RecvFrom {
+    // IDA 0xa6c5cc: pool blocks stay engine-side.
+    crate::socket::recv_from_allocate()
 }
 
 // 0xa6c6fc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj
 #[doc(
     alias = "DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)"
 )]
-pub fn stub_a6c6fc() -> ! {
-    todo!("0xa6c6fc DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)")
+pub fn stub_a6c6fc(queue: &mut std::collections::VecDeque<crate::socket::SocketQueryOutput>, output: crate::socket::SocketQueryOutput) {
+    // IDA 0xa6c6fc: append the query output.
+    crate::socket::socket_query_output_queue_push(queue, output)
 }
 
 // 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)"
 )]
-pub fn stub_a6c7d0() -> ! {
-    todo!("0xa6c7d0 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")
+pub fn stub_a6c7d0() -> crate::socket::SocketQueryOutput {
+    // IDA 0xa6c7d0: pool blocks stay engine-side.
+    crate::socket::socket_query_output_allocate()
 }
 
 // 0xa6c8e4 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)"
 )]
-pub fn stub_a6c8e4() -> ! {
-    todo!("0xa6c8e4 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")
+pub fn stub_a6c8e4(output: crate::socket::SocketQueryOutput) {
+    // IDA 0xa6c8e4: return to the pool (drop).
+    crate::socket::socket_query_output_release(output)
 }
 
 // 0xa6c9ac — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)"
 )]
-pub fn stub_a6c9ac() -> ! {
-    todo!("0xa6c9ac DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")
+pub fn stub_a6c9ac(recv: crate::socket::RecvFrom) {
+    // IDA 0xa6c9ac: return to the pool (drop).
+    crate::socket::recv_from_release(recv)
 }
 
 // 0xa6ca84 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)"
 )]
-pub fn stub_a6ca84() -> ! {
-    todo!("0xa6ca84 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")
+pub fn stub_a6ca84(cmd: crate::socket::BufferedCommand) {
+    // IDA 0xa6ca84: return to the pool (drop).
+    crate::socket::buffered_command_release(cmd)
 }
 
 // 0xa6cb5c — __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
 #[doc(
     alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)"
 )]
-pub fn stub_a6cb5c() -> ! {
-    todo!("0xa6cb5c void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")
+pub fn stub_a6cb5c(sockets: Vec<crate::socket::SocketHandle>) {
+    // IDA 0xa6cb5c: delete the socket array (drop).
+    crate::socket::delete_socket_array(sockets)
 }
 
 // 0xa6ccdc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
 #[doc(
     alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)"
 )]
-pub fn stub_a6ccdc() -> ! {
-    todo!("0xa6ccdc DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")
+pub fn stub_a6ccdc(queue: &mut std::collections::VecDeque<crate::socket::BufferedCommand>, cmd: crate::socket::BufferedCommand) {
+    // IDA 0xa6ccdc: append the buffered command.
+    crate::socket::buffered_command_queue_push(queue, cmd)
 }
 
 // 0xa6cdb0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
 #[doc(
     alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)"
 )]
-pub fn stub_a6cdb0() -> ! {
-    todo!("0xa6cdb0 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")
+pub fn stub_a6cdb0() -> crate::socket::BufferedCommand {
+    // IDA 0xa6cdb0: pool blocks stay engine-side.
+    crate::socket::buffered_command_allocate()
 }
 
 // 0xa6ced8 — __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
 #[doc(
     alias = "DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)"
 )]
-pub fn stub_a6ced8() -> ! {
-    todo!("0xa6ced8 DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")
+pub fn stub_a6ced8(list: &mut Vec<u64>, guid: u64) {
+    // IDA 0xa6ced8: append the guid.
+    crate::socket::guid_list_insert(list, guid)
 }
 
 // 0xa6d030 — __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
 #[doc(
     alias = "DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)"
 )]
-pub fn stub_a6d030() -> ! {
-    todo!("0xa6d030 DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")
+pub fn stub_a6d030(list: &mut Vec<crate::socket::SystemAddress>, addr: crate::socket::SystemAddress) {
+    // IDA 0xa6d030: append the address.
+    crate::socket::address_list_insert(list, addr)
 }
 
 // 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
@@ -3886,32 +3907,36 @@ pub fn stub_a6d194() {
 #[doc(
     alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)"
 )]
-pub fn stub_a6d2bc() -> ! {
-    todo!("0xa6d2bc DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")
+pub fn stub_a6d2bc(list: &mut Vec<crate::socket::SocketHandle>, socket: crate::socket::SocketHandle) {
+    // IDA 0xa6d2bc: append the socket.
+    crate::socket::socket_list_insert(list, socket)
 }
 
 // 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()"
 )]
-pub fn stub_a6d4c0() -> ! {
-    todo!("0xa6d4c0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d4c0(mut queue: std::collections::VecDeque<crate::socket::BufferedCommand>) {
+    // IDA 0xa6d4c0: drain the queue, then free it (drop).
+    crate::socket::buffered_command_queue_clear(&mut queue)
 }
 
 // 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()"
 )]
-pub fn stub_a6d7a0() -> ! {
-    todo!("0xa6d7a0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d7a0(mut queue: std::collections::VecDeque<crate::socket::RecvFrom>) {
+    // IDA 0xa6d7a0: drain the queue, then free it (drop).
+    crate::socket::recv_from_queue_clear(&mut queue)
 }
 
 // 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
 #[doc(
     alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()"
 )]
-pub fn stub_a6da80() -> ! {
-    todo!("0xa6da80 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6da80(mut queue: std::collections::VecDeque<crate::socket::SocketQueryOutput>) {
+    // IDA 0xa6da80: drain the queue, then free it (drop).
+    crate::socket::socket_query_output_queue_clear(&mut queue)
 }
 
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev

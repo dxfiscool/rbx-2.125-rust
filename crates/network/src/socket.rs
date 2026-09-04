@@ -1219,6 +1219,95 @@ pub fn address_list_insert(list: &mut Vec<SystemAddress>, addr: SystemAddress) {
     list.push(addr);
 }
 
+/// `DataStructures::List<RakNet::RakString>::Insert` (IDA 0xa6b9f8): append
+/// a string. The original doubles capacity (16, then 2x); `Vec` keeps that edge.
+pub fn rak_string_list_insert(list: &mut Vec<String>, value: String) {
+    list.push(value);
+}
+
+/// `DataStructures::Queue<RakNet::Packet *>::PushAtHead` (IDA 0xa6bc00):
+/// pushes then rotates so the new packet lands at the head; `push_front` is
+/// the same observable edge.
+pub fn packet_queue_push_at_head(queue: &mut std::collections::VecDeque<Packet>, packet: Packet) {
+    queue.push_front(packet);
+}
+
+/// `DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=`
+/// (IDA 0xa6bcac): copy-assign the list; smart-pointer refcount bumps stay
+/// engine-side.
+pub fn socket_list_assign(dst: &mut Vec<SocketHandle>, src: &[SocketHandle]) {
+    dst.clear();
+    dst.extend_from_slice(src);
+}
+
+/// `DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push`
+/// (IDA 0xa6be48): append a connection request to the back of the queue.
+pub fn requested_connection_queue_push(
+    queue: &mut std::collections::VecDeque<RequestedConnection>,
+    req: RequestedConnection,
+) {
+    queue.push_back(req);
+}
+
+/// `RakNet::RemoteSystemIndex` (RakPeer.h): intrusive index node
+/// `{ unsigned index; RemoteSystemIndex *next; }`. Pool blocks and links stay
+/// engine-side; only the index crosses here.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct RemoteSystemIndex {
+    pub index: u32,
+}
+
+/// `DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate`
+/// (IDA 0xa6bf1c): pool blocks stay engine-side; hand out a default index.
+#[must_use]
+pub fn remote_system_index_allocate() -> RemoteSystemIndex {
+    RemoteSystemIndex::default()
+}
+
+/// `DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release`
+/// (IDA 0xa6c048): return an index to the pool (drop Rust-side).
+pub fn remote_system_index_release(_index: RemoteSystemIndex) {}
+
+/// `DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear`
+/// (IDA 0xa6c11c): drain the queue; pool blocks stay engine-side.
+pub fn buffered_command_queue_clear(queue: &mut std::collections::VecDeque<BufferedCommand>) {
+    queue.clear();
+}
+
+/// `DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear`
+/// (IDA 0xa6c254): drain the queue; pool blocks stay engine-side.
+pub fn recv_from_queue_clear(queue: &mut std::collections::VecDeque<RecvFrom>) {
+    queue.clear();
+}
+
+/// `DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear`
+/// (IDA 0xa6c38c): drain the queue; pool blocks stay engine-side.
+pub fn socket_query_output_queue_clear(queue: &mut std::collections::VecDeque<SocketQueryOutput>) {
+    queue.clear();
+}
+
+/// `DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push`
+/// (IDA 0xa6c4f8): append a receive struct to the back of the queue.
+pub fn recv_from_queue_push(queue: &mut std::collections::VecDeque<RecvFrom>, recv: RecvFrom) {
+    queue.push_back(recv);
+}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate`
+/// (IDA 0xa6c5cc): pool blocks stay engine-side; hand out a default struct.
+#[must_use]
+pub fn recv_from_allocate() -> RecvFrom {
+    RecvFrom::default()
+}
+
+/// `DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push`
+/// (IDA 0xa6c6fc): append a query output to the back of the queue.
+pub fn socket_query_output_queue_push(
+    queue: &mut std::collections::VecDeque<SocketQueryOutput>,
+    output: SocketQueryOutput,
+) {
+    queue.push_back(output);
+}
+
 /// `RakNet::RakPeer` (IDA 0xa5cb00): sockets, queues, and threads stay
 /// engine-side; the exception list, limits, and password live here.
 #[derive(Clone, Debug, Default)]
