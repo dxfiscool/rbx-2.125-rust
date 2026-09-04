@@ -452,6 +452,11 @@ pub struct GenericSlotWrapper {
     pub on_chat: Option<fn(&SharedPtr<Instance>, &str, super::instance::ChatColor)>,
     pub on_prop2: Option<fn(&SharedPtr<Instance>, *const PropertyDescriptor)>,
     pub on_pair_if: Option<fn(&SharedPtr<Instance>, f32)>,
+    /// `Players` 4-arg `(PlayerChatType, Instance, string, Instance)` chat
+    /// handler behind `GenericSlotWrapper::execute4` (IDA `0xa4b560`) and the
+    /// `PlayerChatted` `fireEvent` fan-out (IDA `0xa4a600`). Native stand-in
+    /// for the Lua frame until the script bridge exists.
+    pub on_player_chat: Option<fn(u32, &SharedPtr<Instance>, &str, &SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.
@@ -460,11 +465,13 @@ pub struct PropertyDescriptor {
 }
 /// Rust model of `RBX::Reflection::Variant` values crossing `fireEvent`
 /// (IDA `0x706742`, `0x707f20`): the 1-arg event carries a property
-/// descriptor, the 2-arg event carries two retained instances.
+/// descriptor, the 2-arg event carries two retained instances, and the
+/// `Players` chat event carries a `PlayerChatType` tag (IDA `0xa4a600`).
 pub enum Variant {
     Property(*const PropertyDescriptor),
     Instance(SharedPtr<Instance>),
     Text(String),
+    ChatType(u32),
 }
 /// Rust model of `RBX::Instance::SaveFilter` (IDA `0x703748` discriminants:
 /// `1` takes the service-exclusion chain, `0` the workspace chain, any other
