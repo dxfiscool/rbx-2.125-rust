@@ -2568,6 +2568,37 @@ pub struct HomeViewControllerState {
     last_prepared_url: parking_lot::Mutex<Option<String>>,
     last_prepared_kind: parking_lot::Mutex<Option<&'static str>>,
     webview_attaches: AtomicU32,
+    // Synthesized outlet ivars (IDA 0x1d258..0x1d84c): UIKit objects live out
+    // of slice, so ids stand in for the retained pointers.
+    blue_frame: parking_lot::Mutex<ObjCId>,
+    img_avatar: parking_lot::Mutex<ObjCId>,
+    lbl_player_name: parking_lot::Mutex<ObjCId>,
+    place_id: parking_lot::Mutex<ObjCId>,
+    port_id: parking_lot::Mutex<ObjCId>,
+    ip_id: parking_lot::Mutex<ObjCId>,
+    btn_games: parking_lot::Mutex<ObjCId>,
+    btn_debug_settings: parking_lot::Mutex<ObjCId>,
+    lbl_robux: parking_lot::Mutex<ObjCId>,
+    lbl_tix: parking_lot::Mutex<ObjCId>,
+    btn_messages: parking_lot::Mutex<ObjCId>,
+    game_label: parking_lot::Mutex<ObjCId>,
+    catalog_label: parking_lot::Mutex<ObjCId>,
+    inventory_label: parking_lot::Mutex<ObjCId>,
+    builders_club_label: parking_lot::Mutex<ObjCId>,
+    profile_label: parking_lot::Mutex<ObjCId>,
+    messages_label: parking_lot::Mutex<ObjCId>,
+    btn_play_disabled: parking_lot::Mutex<ObjCId>,
+    community_label: parking_lot::Mutex<ObjCId>,
+    community_button: parking_lot::Mutex<ObjCId>,
+    button_view: parking_lot::Mutex<ObjCId>,
+    search_text_field: parking_lot::Mutex<ObjCId>,
+    logged_in_view: parking_lot::Mutex<ObjCId>,
+    not_logged_in_view: parking_lot::Mutex<ObjCId>,
+    sign_up_button_label: parking_lot::Mutex<ObjCId>,
+    login_button_label: parking_lot::Mutex<ObjCId>,
+    welcome_to_roblox_text_view: parking_lot::Mutex<ObjCId>,
+    you_are_currently_logged_in_as_text_view: parking_lot::Mutex<ObjCId>,
+    version_label: parking_lot::Mutex<ObjCId>,
 }
 
 impl HomeViewControllerState {
@@ -3218,6 +3249,588 @@ impl HomeViewControllerState {
         // Stores the `jumpToPlaceID` global (IDA 0x1d252) that
         // `prepareForSegue:` consumes (IDA 0x1d060).
         self.jump_to_place_id.store(place_id, Ordering::SeqCst);
+    }
+}
+
+impl HomeViewControllerState {
+    // 0x1d258 — -[HomeViewController blueFrame]
+    // type: UIImageView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d258
+    #[doc(alias = "-[HomeViewController blueFrame]")]
+    #[doc = "-[HomeViewController blueFrame]"]
+    pub fn blue_frame(&self) -> ObjCId {
+        // `return self->_blueFrame` (IDA 0x1d266).
+        *self.blue_frame.lock()
+    }
+
+    // 0x1d268 — -[HomeViewController setBlueFrame:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d268
+    #[doc(alias = "-[HomeViewController setBlueFrame:]")]
+    #[doc = "-[HomeViewController setBlueFrame:]"]
+    pub fn set_blue_frame(&self, frame: ObjCId) {
+        // `objc_setProperty` retained store (IDA 0x1d284).
+        *self.blue_frame.lock() = frame;
+    }
+
+    // 0x1d28c — -[HomeViewController imgAvatar]
+    // type: UIImageView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d28c
+    #[doc(alias = "-[HomeViewController imgAvatar]")]
+    #[doc = "-[HomeViewController imgAvatar]"]
+    pub fn img_avatar(&self) -> ObjCId {
+        // `return self->_imgAvatar`.
+        *self.img_avatar.lock()
+    }
+
+    // 0x1d29c — -[HomeViewController setImgAvatar:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d29c
+    #[doc(alias = "-[HomeViewController setImgAvatar:]")]
+    #[doc = "-[HomeViewController setImgAvatar:]"]
+    pub fn set_img_avatar(&self, avatar: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.img_avatar.lock() = avatar;
+    }
+
+    // 0x1d2c0 — -[HomeViewController lblPlayerName]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d2c0
+    #[doc(alias = "-[HomeViewController lblPlayerName]")]
+    #[doc = "-[HomeViewController lblPlayerName]"]
+    pub fn lbl_player_name(&self) -> ObjCId {
+        // `return self->_lblPlayerName`.
+        *self.lbl_player_name.lock()
+    }
+
+    // 0x1d2d0 — -[HomeViewController setLblPlayerName:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d2d0
+    #[doc(alias = "-[HomeViewController setLblPlayerName:]")]
+    #[doc = "-[HomeViewController setLblPlayerName:]"]
+    pub fn set_lbl_player_name(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.lbl_player_name.lock() = label;
+    }
+
+    // 0x1d2f4 — -[HomeViewController placeId]
+    // type: UITextField *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d2f4
+    #[doc(alias = "-[HomeViewController placeId]")]
+    #[doc = "-[HomeViewController placeId]"]
+    pub fn place_id(&self) -> ObjCId {
+        // `return self->_placeId` (IDA 0x1d302).
+        *self.place_id.lock()
+    }
+
+    // 0x1d304 — -[HomeViewController setPlaceId:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d304
+    #[doc(alias = "-[HomeViewController setPlaceId:]")]
+    #[doc = "-[HomeViewController setPlaceId:]"]
+    pub fn set_place_id(&self, field: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.place_id.lock() = field;
+    }
+
+    // 0x1d328 — -[HomeViewController portId]
+    // type: UITextField *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d328
+    #[doc(alias = "-[HomeViewController portId]")]
+    #[doc = "-[HomeViewController portId]"]
+    pub fn port_id(&self) -> ObjCId {
+        // `return self->_portId`.
+        *self.port_id.lock()
+    }
+
+    // 0x1d338 — -[HomeViewController setPortId:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d338
+    #[doc(alias = "-[HomeViewController setPortId:]")]
+    #[doc = "-[HomeViewController setPortId:]"]
+    pub fn set_port_id(&self, field: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.port_id.lock() = field;
+    }
+
+    // 0x1d35c — -[HomeViewController ipId]
+    // type: UITextField *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d35c
+    #[doc(alias = "-[HomeViewController ipId]")]
+    #[doc = "-[HomeViewController ipId]"]
+    pub fn ip_id(&self) -> ObjCId {
+        // `return self->_ipId`.
+        *self.ip_id.lock()
+    }
+
+    // 0x1d36c — -[HomeViewController setIpId:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d36c
+    #[doc(alias = "-[HomeViewController setIpId:]")]
+    #[doc = "-[HomeViewController setIpId:]"]
+    pub fn set_ip_id(&self, field: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.ip_id.lock() = field;
+    }
+
+    // 0x1d3c4 — -[HomeViewController btnGames]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d3c4
+    #[doc(alias = "-[HomeViewController btnGames]")]
+    #[doc = "-[HomeViewController btnGames]"]
+    pub fn btn_games(&self) -> ObjCId {
+        // `return self->_btnGames`.
+        *self.btn_games.lock()
+    }
+
+    // 0x1d3d4 — -[HomeViewController setBtnGames:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d3d4
+    #[doc(alias = "-[HomeViewController setBtnGames:]")]
+    #[doc = "-[HomeViewController setBtnGames:]"]
+    pub fn set_btn_games(&self, btn: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.btn_games.lock() = btn;
+    }
+
+    // 0x1d3f8 — -[HomeViewController btnDebugSettings]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d3f8
+    #[doc(alias = "-[HomeViewController btnDebugSettings]")]
+    #[doc = "-[HomeViewController btnDebugSettings]"]
+    pub fn btn_debug_settings(&self) -> ObjCId {
+        // `return self->_btnDebugSettings`.
+        *self.btn_debug_settings.lock()
+    }
+
+    // 0x1d408 — -[HomeViewController setBtnDebugSettings:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d408
+    #[doc(alias = "-[HomeViewController setBtnDebugSettings:]")]
+    #[doc = "-[HomeViewController setBtnDebugSettings:]"]
+    pub fn set_btn_debug_settings(&self, btn: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.btn_debug_settings.lock() = btn;
+    }
+
+    // 0x1d42c — -[HomeViewController lblRobux]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d42c
+    #[doc(alias = "-[HomeViewController lblRobux]")]
+    #[doc = "-[HomeViewController lblRobux]"]
+    pub fn lbl_robux(&self) -> ObjCId {
+        // `return self->_lblRobux`.
+        *self.lbl_robux.lock()
+    }
+
+    // 0x1d43c — -[HomeViewController setLblRobux:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d43c
+    #[doc(alias = "-[HomeViewController setLblRobux:]")]
+    #[doc = "-[HomeViewController setLblRobux:]"]
+    pub fn set_lbl_robux(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.lbl_robux.lock() = label;
+    }
+
+    // 0x1d460 — -[HomeViewController lblTix]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d460
+    #[doc(alias = "-[HomeViewController lblTix]")]
+    #[doc = "-[HomeViewController lblTix]"]
+    pub fn lbl_tix(&self) -> ObjCId {
+        // `return self->_lblTix`.
+        *self.lbl_tix.lock()
+    }
+
+    // 0x1d470 — -[HomeViewController setLblTix:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d470
+    #[doc(alias = "-[HomeViewController setLblTix:]")]
+    #[doc = "-[HomeViewController setLblTix:]"]
+    pub fn set_lbl_tix(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.lbl_tix.lock() = label;
+    }
+
+    // 0x1d494 — -[HomeViewController btnMessages]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d494
+    #[doc(alias = "-[HomeViewController btnMessages]")]
+    #[doc = "-[HomeViewController btnMessages]"]
+    pub fn btn_messages(&self) -> ObjCId {
+        // `return self->_btnMessages`.
+        *self.btn_messages.lock()
+    }
+
+    // 0x1d4a4 — -[HomeViewController setBtnMessages:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d4a4
+    #[doc(alias = "-[HomeViewController setBtnMessages:]")]
+    #[doc = "-[HomeViewController setBtnMessages:]"]
+    pub fn set_btn_messages(&self, btn: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.btn_messages.lock() = btn;
+    }
+
+    // 0x1d4c8 — -[HomeViewController gameLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d4c8
+    #[doc(alias = "-[HomeViewController gameLabel]")]
+    #[doc = "-[HomeViewController gameLabel]"]
+    pub fn game_label(&self) -> ObjCId {
+        // `return self->_gameLabel`.
+        *self.game_label.lock()
+    }
+
+    // 0x1d4d8 — -[HomeViewController setGameLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d4d8
+    #[doc(alias = "-[HomeViewController setGameLabel:]")]
+    #[doc = "-[HomeViewController setGameLabel:]"]
+    pub fn set_game_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.game_label.lock() = label;
+    }
+
+    // 0x1d4fc — -[HomeViewController catalogLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d4fc
+    #[doc(alias = "-[HomeViewController catalogLabel]")]
+    #[doc = "-[HomeViewController catalogLabel]"]
+    pub fn catalog_label(&self) -> ObjCId {
+        // `return self->_catalogLabel`.
+        *self.catalog_label.lock()
+    }
+
+    // 0x1d50c — -[HomeViewController setCatalogLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d50c
+    #[doc(alias = "-[HomeViewController setCatalogLabel:]")]
+    #[doc = "-[HomeViewController setCatalogLabel:]"]
+    pub fn set_catalog_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.catalog_label.lock() = label;
+    }
+
+    // 0x1d530 — -[HomeViewController inventoryLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d530
+    #[doc(alias = "-[HomeViewController inventoryLabel]")]
+    #[doc = "-[HomeViewController inventoryLabel]"]
+    pub fn inventory_label(&self) -> ObjCId {
+        // `return self->_inventoryLabel`.
+        *self.inventory_label.lock()
+    }
+
+    // 0x1d540 — -[HomeViewController setInventoryLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d540
+    #[doc(alias = "-[HomeViewController setInventoryLabel:]")]
+    #[doc = "-[HomeViewController setInventoryLabel:]"]
+    pub fn set_inventory_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.inventory_label.lock() = label;
+    }
+
+    // 0x1d564 — -[HomeViewController buildersClubLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d564
+    #[doc(alias = "-[HomeViewController buildersClubLabel]")]
+    #[doc = "-[HomeViewController buildersClubLabel]"]
+    pub fn builders_club_label(&self) -> ObjCId {
+        // `return self->_buildersClubLabel`.
+        *self.builders_club_label.lock()
+    }
+
+    // 0x1d574 — -[HomeViewController setBuildersClubLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d574
+    #[doc(alias = "-[HomeViewController setBuildersClubLabel:]")]
+    #[doc = "-[HomeViewController setBuildersClubLabel:]"]
+    pub fn set_builders_club_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.builders_club_label.lock() = label;
+    }
+
+    // 0x1d598 — -[HomeViewController profileLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d598
+    #[doc(alias = "-[HomeViewController profileLabel]")]
+    #[doc = "-[HomeViewController profileLabel]"]
+    pub fn profile_label(&self) -> ObjCId {
+        // `return self->_profileLabel`.
+        *self.profile_label.lock()
+    }
+
+    // 0x1d5a8 — -[HomeViewController setProfileLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d5a8
+    #[doc(alias = "-[HomeViewController setProfileLabel:]")]
+    #[doc = "-[HomeViewController setProfileLabel:]"]
+    pub fn set_profile_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.profile_label.lock() = label;
+    }
+
+    // 0x1d5cc — -[HomeViewController messagesLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d5cc
+    #[doc(alias = "-[HomeViewController messagesLabel]")]
+    #[doc = "-[HomeViewController messagesLabel]"]
+    pub fn messages_label(&self) -> ObjCId {
+        // `return self->_messagesLabel`.
+        *self.messages_label.lock()
+    }
+
+    // 0x1d5dc — -[HomeViewController setMessagesLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d5dc
+    #[doc(alias = "-[HomeViewController setMessagesLabel:]")]
+    #[doc = "-[HomeViewController setMessagesLabel:]"]
+    pub fn set_messages_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.messages_label.lock() = label;
+    }
+
+    // 0x1d600 — -[HomeViewController btnPlayDisabled]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d600
+    #[doc(alias = "-[HomeViewController btnPlayDisabled]")]
+    #[doc = "-[HomeViewController btnPlayDisabled]"]
+    pub fn btn_play_disabled(&self) -> ObjCId {
+        // `return self->_btnPlayDisabled`.
+        *self.btn_play_disabled.lock()
+    }
+
+    // 0x1d610 — -[HomeViewController setBtnPlayDisabled:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d610
+    #[doc(alias = "-[HomeViewController setBtnPlayDisabled:]")]
+    #[doc = "-[HomeViewController setBtnPlayDisabled:]"]
+    pub fn set_btn_play_disabled(&self, btn: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.btn_play_disabled.lock() = btn;
+    }
+
+    // 0x1d634 — -[HomeViewController communityLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d634
+    #[doc(alias = "-[HomeViewController communityLabel]")]
+    #[doc = "-[HomeViewController communityLabel]"]
+    pub fn community_label(&self) -> ObjCId {
+        // `return self->_communityLabel`.
+        *self.community_label.lock()
+    }
+
+    // 0x1d644 — -[HomeViewController setCommunityLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d644
+    #[doc(alias = "-[HomeViewController setCommunityLabel:]")]
+    #[doc = "-[HomeViewController setCommunityLabel:]"]
+    pub fn set_community_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.community_label.lock() = label;
+    }
+
+    // 0x1d668 — -[HomeViewController communityButton]
+    // type: UIButton *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d668
+    #[doc(alias = "-[HomeViewController communityButton]")]
+    #[doc = "-[HomeViewController communityButton]"]
+    pub fn community_button(&self) -> ObjCId {
+        // `return self->_communityButton`.
+        *self.community_button.lock()
+    }
+
+    // 0x1d678 — -[HomeViewController setCommunityButton:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d678
+    #[doc(alias = "-[HomeViewController setCommunityButton:]")]
+    #[doc = "-[HomeViewController setCommunityButton:]"]
+    pub fn set_community_button(&self, btn: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.community_button.lock() = btn;
+    }
+
+    // 0x1d69c — -[HomeViewController buttonView]
+    // type: UIView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d69c
+    #[doc(alias = "-[HomeViewController buttonView]")]
+    #[doc = "-[HomeViewController buttonView]"]
+    pub fn button_view(&self) -> ObjCId {
+        // `return self->_buttonView`.
+        *self.button_view.lock()
+    }
+
+    // 0x1d6ac — -[HomeViewController setButtonView:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d6ac
+    #[doc(alias = "-[HomeViewController setButtonView:]")]
+    #[doc = "-[HomeViewController setButtonView:]"]
+    pub fn set_button_view(&self, view: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.button_view.lock() = view;
+    }
+
+    // 0x1d6d0 — -[HomeViewController searchTextField]
+    // type: UITextField *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d6d0
+    #[doc(alias = "-[HomeViewController searchTextField]")]
+    #[doc = "-[HomeViewController searchTextField]"]
+    pub fn search_text_field(&self) -> ObjCId {
+        // `return self->_searchTextField` (IDA 0x1d6de).
+        *self.search_text_field.lock()
+    }
+
+    // 0x1d6e0 — -[HomeViewController setSearchTextField:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d6e0
+    #[doc(alias = "-[HomeViewController setSearchTextField:]")]
+    #[doc = "-[HomeViewController setSearchTextField:]"]
+    pub fn set_search_text_field(&self, field: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.search_text_field.lock() = field;
+    }
+
+    // 0x1d704 — -[HomeViewController loggedInView]
+    // type: UIView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d704
+    #[doc(alias = "-[HomeViewController loggedInView]")]
+    #[doc = "-[HomeViewController loggedInView]"]
+    pub fn logged_in_view(&self) -> ObjCId {
+        // `return self->_loggedInView`.
+        *self.logged_in_view.lock()
+    }
+
+    // 0x1d714 — -[HomeViewController setLoggedInView:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d714
+    #[doc(alias = "-[HomeViewController setLoggedInView:]")]
+    #[doc = "-[HomeViewController setLoggedInView:]"]
+    pub fn set_logged_in_view(&self, view: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.logged_in_view.lock() = view;
+    }
+
+    // 0x1d738 — -[HomeViewController notLoggedInView]
+    // type: UIView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d738
+    #[doc(alias = "-[HomeViewController notLoggedInView]")]
+    #[doc = "-[HomeViewController notLoggedInView]"]
+    pub fn not_logged_in_view(&self) -> ObjCId {
+        // `return self->_notLoggedInView`.
+        *self.not_logged_in_view.lock()
+    }
+
+    // 0x1d748 — -[HomeViewController setNotLoggedInView:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d748
+    #[doc(alias = "-[HomeViewController setNotLoggedInView:]")]
+    #[doc = "-[HomeViewController setNotLoggedInView:]"]
+    pub fn set_not_logged_in_view(&self, view: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.not_logged_in_view.lock() = view;
+    }
+
+    // 0x1d76c — -[HomeViewController signUpButtonLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d76c
+    #[doc(alias = "-[HomeViewController signUpButtonLabel]")]
+    #[doc = "-[HomeViewController signUpButtonLabel]"]
+    pub fn sign_up_button_label(&self) -> ObjCId {
+        // `return self->_signUpButtonLabel`.
+        *self.sign_up_button_label.lock()
+    }
+
+    // 0x1d77c — -[HomeViewController setSignUpButtonLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d77c
+    #[doc(alias = "-[HomeViewController setSignUpButtonLabel:]")]
+    #[doc = "-[HomeViewController setSignUpButtonLabel:]"]
+    pub fn set_sign_up_button_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.sign_up_button_label.lock() = label;
+    }
+
+    // 0x1d7a0 — -[HomeViewController loginButtonLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d7a0
+    #[doc(alias = "-[HomeViewController loginButtonLabel]")]
+    #[doc = "-[HomeViewController loginButtonLabel]"]
+    pub fn login_button_label(&self) -> ObjCId {
+        // `return self->_loginButtonLabel`.
+        *self.login_button_label.lock()
+    }
+
+    // 0x1d7b0 — -[HomeViewController setLoginButtonLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d7b0
+    #[doc(alias = "-[HomeViewController setLoginButtonLabel:]")]
+    #[doc = "-[HomeViewController setLoginButtonLabel:]"]
+    pub fn set_login_button_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.login_button_label.lock() = label;
+    }
+
+    // 0x1d7d4 — -[HomeViewController welcomeToRobloxTextView]
+    // type: UITextView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d7d4
+    #[doc(alias = "-[HomeViewController welcomeToRobloxTextView]")]
+    #[doc = "-[HomeViewController welcomeToRobloxTextView]"]
+    pub fn welcome_to_roblox_text_view(&self) -> ObjCId {
+        // `return self->_welcomeToRobloxTextView`.
+        *self.welcome_to_roblox_text_view.lock()
+    }
+
+    // 0x1d7e4 — -[HomeViewController setWelcomeToRobloxTextView:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d7e4
+    #[doc(alias = "-[HomeViewController setWelcomeToRobloxTextView:]")]
+    #[doc = "-[HomeViewController setWelcomeToRobloxTextView:]"]
+    pub fn set_welcome_to_roblox_text_view(&self, view: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.welcome_to_roblox_text_view.lock() = view;
+    }
+
+    // 0x1d808 — -[HomeViewController youAreCurrentlyLoggedInAsTextView]
+    // type: UITextView *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d808
+    #[doc(alias = "-[HomeViewController youAreCurrentlyLoggedInAsTextView]")]
+    #[doc = "-[HomeViewController youAreCurrentlyLoggedInAsTextView]"]
+    pub fn you_are_currently_logged_in_as_text_view(&self) -> ObjCId {
+        // `return self->_youAreCurrentlyLoggedInAsTextView`.
+        *self.you_are_currently_logged_in_as_text_view.lock()
+    }
+
+    // 0x1d818 — -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d818
+    #[doc(alias = "-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")]
+    #[doc = "-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]"]
+    pub fn set_you_are_currently_logged_in_as_text_view(&self, view: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.you_are_currently_logged_in_as_text_view.lock() = view;
+    }
+
+    // 0x1d83c — -[HomeViewController versionLabel]
+    // type: UILabel *__cdecl(HomeViewController *self, SEL)
+    // IDA 0x1d83c
+    #[doc(alias = "-[HomeViewController versionLabel]")]
+    #[doc = "-[HomeViewController versionLabel]"]
+    pub fn version_label(&self) -> ObjCId {
+        // `return self->_versionLabel`.
+        *self.version_label.lock()
+    }
+
+    // 0x1d84c — -[HomeViewController setVersionLabel:]
+    // type: void __cdecl(HomeViewController *self, SEL, id)
+    // IDA 0x1d84c
+    #[doc(alias = "-[HomeViewController setVersionLabel:]")]
+    #[doc = "-[HomeViewController setVersionLabel:]"]
+    pub fn set_version_label(&self, label: ObjCId) {
+        // `objc_setProperty` retained store.
+        *self.version_label.lock() = label;
     }
 }
 
