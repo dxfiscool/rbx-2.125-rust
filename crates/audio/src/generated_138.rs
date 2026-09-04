@@ -188,7 +188,89 @@ pub struct AudioAppDelegate {
     place_launcher_view_disables: std::sync::atomic::AtomicU32,
     place_launcher_view_enables: std::sync::atomic::AtomicU32,
     place_launcher_leaves: std::sync::atomic::AtomicU32,
+    connection_weak_slot: parking_lot::Mutex<u64>,
+    message_connection_alive: std::sync::atomic::AtomicBool,
+    login_place_id: parking_lot::Mutex<Option<i32>>,
+    jump_to_place_id: parking_lot::Mutex<Option<i32>>,
+    web_touch_ups: std::sync::atomic::AtomicU32,
+    started_games: parking_lot::Mutex<Vec<(i32, bool)>>,
+    open_url_calls: std::sync::atomic::AtomicU32,
 }
+
+/// Host view-controller presentation graph for `_topMostController` (IDA
+/// 0x1a098) / `topMostController` (IDA 0x1a124): presented links, navigation
+/// flags, and navigation visible controllers. `id` tokens are `u64` (`0` is
+/// `nil`). Mirrors the platform crate `ViewControllerGraph`.
+#[derive(Debug, Default)]
+pub struct AudioViewControllerGraph {
+    presented: parking_lot::Mutex<HashMap<u64, u64>>,
+    is_navigation: parking_lot::Mutex<HashMap<u64, bool>>,
+    visible: parking_lot::Mutex<HashMap<u64, u64>>,
+}
+
+impl AudioViewControllerGraph {
+    pub fn presented_view_controller(&self, id: u64) -> Option<u64> {
+        self.presented.lock().get(&id).copied()
+    }
+    pub fn is_navigation_controller(&self, id: u64) -> bool {
+        self.is_navigation.lock().get(&id).copied().unwrap_or(false)
+    }
+    pub fn visible_view_controller(&self, id: u64) -> Option<u64> {
+        self.visible.lock().get(&id).copied()
+    }
+    pub fn set_presented_view_controller(&self, id: u64, presented: u64) {
+        self.presented.lock().insert(id, presented);
+    }
+    pub fn set_visible_view_controller(&self, nav: u64, visible: u64) {
+        self.is_navigation.lock().insert(nav, true);
+        self.visible.lock().insert(nav, visible);
+    }
+}
+
+/// `_topMostController` (IDA 0x1a098): walk `presentedViewController` to the
+/// chain end, resolve a navigation controller to its visible controller,
+/// `nil` when nothing sits above the root. Mirrors the platform twin.
+pub fn audio_top_most_controller(graph: &AudioViewControllerGraph, root: u64) -> Option<u64> {
+    let mut top = root;
+    if graph.presented_view_controller(top).is_some() {
+        loop {
+            top = graph.presented_view_controller(top).unwrap_or(top);
+            if graph.presented_view_controller(top).is_none() {
+                break;
+            }
+        }
+    }
+    if graph.is_navigation_controller(top) {
+        if let Some(visible) = graph.visible_view_controller(top) {
+            top = visible;
+        }
+    }
+    if top == root {
+        return None;
+    }
+    Some(top)
+}
+
+/// `-[AppDelegate TryLaunchPlace:]` dispatch outcome (IDA 0x1a334..0x1a488).
+/// Mirrors the platform crate `LaunchAction`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum AudioLaunchAction {
+    LoginPlaceIdSet,
+    HomeJumpTriggered,
+    GameStarted,
+    GameInProgressJumpSet,
+    Unknown,
+}
+
+/// Global deep-link place id stashed by `application:openURL:...` (IDA
+/// 0x1a22e `appPlaceID`), consumed by `applicationDidBecomeActive`.
+/// Mirrors the platform crate `APP_PLACE_ID`.
+pub static AUDIO_APP_PLACE_ID: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+
+/// `_main` invocation record (IDA 0x1a768).
+pub static AUDIO_MAIN_CALLS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 impl AudioAppDelegate {
     /// `-[AppDelegate init]` (IDA 0x19228): only `objc_msgSendSuper2`
@@ -355,6 +437,97 @@ impl AudioAppDelegate {
         self.terminate_calls
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     }
+
+    /// `-[AppDelegate application:openURL:sourceApplication:annotation:]`
+    /// (IDA 0x1a174): logs the open, requires the `robloxmobile` prefix,
+    /// stashes `appPlaceID = [host intValue]`, returns 1. Mirrors the
+    /// platform twin.
+    pub fn application_open_url(
+        &self,
+        url_absolute_string: &str,
+        url_host: &str,
+        url_path: &str,
+        source_application: &str,
+        annotation: &str,
+    ) -> bool {
+        eprintln!(
+            "AppDelegate::openURL URL:\t{url_absolute_string}\nFrom source:\t{source_application}\nWith annotation:{annotation}"
+        );
+        if !url_absolute_string.starts_with("robloxmobile") {
+            return false;
+        }
+        eprintln!("host {url_host}");
+        eprintln!("path {url_path}");
+        AUDIO_APP_PLACE_ID.store(
+            url_host.parse::<u32>().unwrap_or(0),
+            std::sync::atomic::Ordering::SeqCst,
+        );
+        self.open_url_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        true
+    }
+
+    /// `-[AppDelegate TryLaunchPlace:]` (IDA 0x1a234): dispatch over the
+    /// top controller class. `LoginViewController` records the place id;
+    /// `HomeViewController` records the jump + web touch;
+    /// `RobloxNavBarViewController` starts the game; `GameViewController`
+    /// records the in-progress jump. Mirrors the platform twin (which
+    /// drives the live singletons).
+    pub fn try_launch_place(&self, place_id: i32, top_controller_class: &str) -> AudioLaunchAction {
+        if top_controller_class == "LoginViewController" {
+            *self.login_place_id.lock() = Some(place_id);
+            AudioLaunchAction::LoginPlaceIdSet
+        } else if top_controller_class == "HomeViewController" {
+            *self.jump_to_place_id.lock() = Some(place_id);
+            self.web_touch_ups
+                .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            AudioLaunchAction::HomeJumpTriggered
+        } else if top_controller_class == "RobloxNavBarViewController" {
+            self.started_games.lock().push((place_id, true));
+            AudioLaunchAction::GameStarted
+        } else if top_controller_class == "GameViewController" {
+            *self.jump_to_place_id.lock() = Some(place_id);
+            AudioLaunchAction::GameInProgressJumpSet
+        } else {
+            AudioLaunchAction::Unknown
+        }
+    }
+
+    /// `-[AppDelegate bgTask]` / `-[AppDelegate setBgTask:]` (IDA
+    /// 0x1a494/0x1a4a8): atomic ivar with `DMB ISH` barriers (host
+    /// `SeqCst`). Mirrors the platform twin.
+    pub fn bg_task(&self) -> u32 {
+        self.bg_task.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn set_bg_task(&self, task: u32) {
+        self.bg_task
+            .store(task, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[AppDelegate window]` / `-[AppDelegate setWindow:]` (IDA
+    /// 0x1a4c0/0x1a4d0, retained-property store). `None` is `nil`.
+    pub fn window(&self) -> Option<u64> {
+        *self.window.lock()
+    }
+    pub fn set_window(&self, window: Option<u64>) {
+        *self.window.lock() = window;
+    }
+
+    /// `-[AppDelegate .cxx_construct]` (IDA 0x1a5bc): zeroes
+    /// `messageOutConnection.con.weak_slot.p_`. Mirrors the platform twin.
+    pub fn cxx_construct(&self) {
+        *self.connection_weak_slot.lock() = 0;
+        self.message_connection_alive
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[AppDelegate .cxx_destruct]` (IDA 0x1a4f4): `connection::disconnect`
+    /// + weak-slot release. Mirrors the platform twin.
+    pub fn cxx_destruct(&self) {
+        self.message_connection_alive
+            .store(false, std::sync::atomic::Ordering::SeqCst);
+        *self.connection_weak_slot.lock() = 0;
+    }
 }
 
 // 0x19228 — -[AppDelegate init]
@@ -473,80 +646,139 @@ pub fn stub_19f7c(delegate: &AudioAppDelegate) {
 
 // 0x1a098 — __Z18_topMostControllerP16UIViewController
 #[doc(alias = "_topMostController(UIViewController *)")]
-pub fn stub_1a098() -> ! {
-    todo!("0x1a098 _topMostController(UIViewController *)")
+pub fn stub_1a098(graph: &AudioViewControllerGraph, root: u64) -> Option<u64> {
+    // IDA 0x1a098: walk `presentedViewController` to the chain end, resolve
+    // a navigation controller to its visible controller, nil when nothing
+    // sits above the root. Same as the platform 0x1a098 anchor.
+    audio_top_most_controller(graph, root)
 }
 
 // 0x1a124 — __Z17topMostControllerv
 #[doc(alias = "topMostController(void)")]
-pub fn stub_1a124() -> ! {
-    todo!("0x1a124 topMostController(void)")
+pub fn stub_1a124(graph: &AudioViewControllerGraph, key_window_root: u64) -> u64 {
+    // IDA 0x1a124: `sharedApplication` -> `keyWindow` ->
+    // `rootViewController` (passed in on the host), then loop
+    // `_topMostController` until nil and return the last controller. Same
+    // as the platform 0x1a124 anchor.
+    let mut top = key_window_root;
+    while let Some(next) = audio_top_most_controller(graph, top) {
+        top = next;
+    }
+    top
 }
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
 #[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
-pub fn stub_1a174() -> ! {
-    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
+pub fn stub_1a174(
+    delegate: &AudioAppDelegate,
+    url_absolute_string: &str,
+    url_host: &str,
+    url_path: &str,
+    source_application: &str,
+    annotation: &str,
+) -> bool {
+    // IDA 0x1a174: logs the open, requires the `robloxmobile` prefix, logs
+    // host/path, stashes `appPlaceID = [host intValue]`, returns 1. Same as
+    // the platform 0x1a174 anchor.
+    delegate.application_open_url(
+        url_absolute_string,
+        url_host,
+        url_path,
+        source_application,
+        annotation,
+    )
 }
 
 // 0x1a234 — -[AppDelegate TryLaunchPlace:]
 #[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
-pub fn stub_1a234() -> ! {
-    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
+pub fn stub_1a234(
+    delegate: &AudioAppDelegate,
+    place_id: i32,
+    top_controller_class: &str,
+) -> AudioLaunchAction {
+    // IDA 0x1a234: window/root + keyWindow trace feeds the
+    // `topMostController` class read; dispatch over Login/Home/NavBar/Game
+    // controllers lives in the model. Same as the platform 0x1a234 anchor.
+    delegate.try_launch_place(place_id, top_controller_class)
 }
 
 // 0x1a494 — -[AppDelegate bgTask]
 #[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
+pub fn stub_1a494(delegate: &AudioAppDelegate) -> u32 {
+    // IDA 0x1a494: `LDR` the `bgTask` ivar + `DMB ISH`. Same as the
+    // platform 0x1a494 anchor.
+    delegate.bg_task()
 }
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 #[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+pub fn stub_1a4a8(delegate: &AudioAppDelegate, task: u32) {
+    // IDA 0x1a4a8: `DMB ISH`, store the `bgTask` ivar, `DMB ISH`. Same as
+    // the platform 0x1a4a8 anchor.
+    delegate.set_bg_task(task);
 }
 
 // 0x1a4c0 — -[AppDelegate window]
 #[doc(alias = "-[AppDelegate window]")]
-pub fn stub_1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
+pub fn stub_1a4c0(delegate: &AudioAppDelegate) -> Option<u64> {
+    // IDA 0x1a4c0: returns `self->_window`. Same as the platform 0x1a4c0
+    // anchor; `None` is `nil`.
+    delegate.window()
 }
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 #[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+pub fn stub_1a4d0(delegate: &AudioAppDelegate, window: Option<u64>) {
+    // IDA 0x1a4d0: retained-property store via `objc_setProperty`. Same as
+    // the platform 0x1a4d0 anchor.
+    delegate.set_window(window);
 }
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 #[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+pub fn stub_1a4f4(delegate: &AudioAppDelegate) {
+    // IDA 0x1a4f4: `connection::disconnect` + weak-slot release. Same as
+    // the platform 0x1a4f4 anchor.
+    delegate.cxx_destruct();
 }
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 #[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+pub fn stub_1a5bc(delegate: &AudioAppDelegate) {
+    // IDA 0x1a5bc: zeroes `messageOutConnection.con.weak_slot.p_`,
+    // returns self (the host returns `()`). Same as the platform 0x1a5bc
+    // anchor.
+    delegate.cxx_construct();
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
-#[doc(alias = "__GLOBAL__I_a_1")]
-pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 global constructor keyed to_a_1")
+// was: global constructor keyed to_a_1
+#[doc(alias = "global constructor keyed to_a_1")]
+pub fn stub_1a5d0() {
+    // IDA 0x1a5d0 (`__GLOBAL__I_a_1`): `generic_category()` x2 +
+    // `system_category()` stores, `std::ios_base::Init` with `__cxa_atexit`
+    // teardown, guarded statics. Host statics initialize on use; nothing
+    // to run. Same shape as 0x16e4c.
 }
 
 // 0x1a768 — _main
 #[doc(alias = "_main")]
-pub fn stub_1a768() -> ! {
-    todo!("0x1a768 _main")
+pub fn stub_1a768(argc: i32) -> i32 {
+    // IDA 0x1a768..0x1a7d2 (`main`: `NSAutoreleasePool` alloc/init,
+    // `UIApplicationMain(argc, argv, @"UIApplication", @"AppDelegate")`,
+    // pool release, return the status): the pool and app-main have no host
+    // counterpart; records the launch and returns the status (0).
+    let _ = argc;
+    AUDIO_MAIN_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    0
 }
 
 // 0x1a7d4 — __GLOBAL__I_a_2
-#[doc(alias = "__GLOBAL__I_a_2")]
-pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 global constructor keyed to_a_2")
+// was: global constructor keyed to_a_2
+#[doc(alias = "global constructor keyed to_a_2")]
+pub fn stub_1a7d4() {
+    // IDA 0x1a7d4 (`__GLOBAL__I_a_2`): static-init key twin of 0x16e4c /
+    // 0x1a5d0. Static init — carrier no-op.
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
