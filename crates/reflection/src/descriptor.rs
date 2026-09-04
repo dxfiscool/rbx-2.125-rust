@@ -506,58 +506,158 @@ pub fn stub_0x4a5bf8(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> Stri
     desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
+/// `G3D::Vector3` as stored on `Explosion` (12 bytes; IDA 0x4a640a copies `*v4` + `*(v4+8)`).
+pub type Vector3 = [f32; 3];
+
+/// Get/set pair behind `BoundProp<Vector3, Explosion>` (IDA 0x4a60bc ctor stores the member
+/// offset; `BoundPropGetSet` dispatches through it at 0x4a63fc/0x4a6418).
+pub struct ExplosionVector3Access {
+    pub get: Box<dyn Fn(&ExplosionState) -> Vector3 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut ExplosionState, Vector3) + Send + Sync>,
+}
+
+/// Get/set pair behind the float Explosion props (IDA 0x4a64ac/0x4a66dc ctors).
+pub struct ExplosionFloatAccess {
+    pub get: Box<dyn Fn(&ExplosionState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut ExplosionState, f32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::BoundProp<Vector3, Mutability::Mutable>` bound to `Explosion`
+/// (IDA 0x4a60bc): base `TypedPropertyDescriptor<Vector3>` init plus the member offset.
+pub struct BoundVector3Prop {
+    pub name: String,
+    pub category: String,
+    pub access: ExplosionVector3Access,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::BoundProp<float, Mutability::Mutable>` bound to `Explosion` (IDA 0x4a64ac).
+pub struct BoundFloatProp {
+    pub name: String,
+    pub category: String,
+    pub access: ExplosionFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<Explosion, float>` with a getter/setter member-pointer
+/// pair (IDA 0x4a66dc); `GetSetImpl` dispatches through it at 0x4a6824/0x4a6844.
+pub struct ExplosionFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: ExplosionFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x4a5c1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x4a5c1c() -> ! {
-    todo!("0x4a5c1c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x4a5c1c(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, name: &str) -> bool {
+    // IDA 0x4a5c1c: `Name::lookup(&name, str)` (0x4a5c2e), `convertToValue(enumdesc@+48, name, &out)`
+    // (0x4a5c3c); on 1, `member(+44)->set(obj, out)` (0x4a5c52) and return 1, else 0. `&str`
+    // folds the lookup step; `lookup_value` covers `convertToValue` including legacy names.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a5c5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x4a5c5c() -> ! {
-    todo!("0x4a5c5c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x4a5c5c(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> i32 {
+    // IDA 0x4a5c5c: `v = member(+44)->get(obj)` (vf+8, 0x4a5c6a), `clearValue(pair)` then store
+    // int tag 5 + value (0x4a5c70-0x4a5c78), return 5. The tag is the Xml int type code; the
+    // payload is the enum int, which is what the model returns.
+    (desc.access.get)(obj)
 }
 
 // 0x4a5c7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x4a5c7c() -> ! {
-    todo!("0x4a5c7c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x4a5c7c(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, text: &str) -> bool {
+    // IDA 0x4a5c7c: extract the element text into a string, `Name::lookup`, `convertToValue`
+    // (0x4a5d3c-0x4a5d4e); on success `member(+44)->set(obj, v)` (0x4a5d62). Empty/missing text
+    // takes early-out paths that leave the object untouched. `&str` is the extracted text;
+    // unknown names leave `obj` untouched and report false.
+    match desc.enum_desc.lookup_value(text) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a5ebc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a5ebc() -> ! {
-    todo!("0x4a5ebc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a5ebc(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> i32 {
+    // IDA 0x4a5ebc: `v = member(+44)->get(obj)` (vf+8, 0x4a5ecc), return
+    // `convertToIndex(enumdesc@+48, v)`. Same conversion as stub_0x4a5fb8.
+    stub_0x4a5fb8(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x4a5ed8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x4a5ed8() -> ! {
-    todo!("0x4a5ed8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x4a5ed8(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, index: usize) -> bool {
+    // IDA 0x4a5ed8: `if (*(enumdesc+40) > index)` (0x4a5eea) load `values[index]` (0x4a5ef4),
+    // `member(+44)->set(obj, v)` (0x4a5efe), return 1; else return 0.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a5f0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a5f0c() -> ! {
-    todo!("0x4a5f0c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a5f0c(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> i32 {
+    // IDA 0x4a5f0c: tail-jump to `member(+44)->get(obj)` (vf+8); the whole body is the forward.
+    (desc.access.get)(obj)
 }
 
 // 0x4a5f14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4a5f14() -> ! {
-    todo!("0x4a5f14 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4a5f14(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, value: i32) -> bool {
+    // IDA 0x4a5f14: `find_if(items, bind(equalValue, _1, value))` (0x4a5f3e); miss returns 0
+    // (0x4a5f44), hit runs `member(+44)->set(obj, value)` (0x4a5f52) and returns 1.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4a5f60 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a5f60() -> ! {
-    todo!("0x4a5f60 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a5f60(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x4a5f60: `v = member(+44)->get(obj)` (0x4a5f72), return
+    // `convertToItem(enumdesc@+48, &v)` (0x4a5f7e): the `Item*` for the value, or null.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x4a5f80 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x4a5f80() -> ! {
-    todo!("0x4a5f80 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x4a5f80(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, name: &str) -> bool {
+    // IDA 0x4a5f80 (`Name` overload): `convertToValue(enumdesc@+48, name, &out)` (0x4a5f96);
+    // success runs `member(+44)->set(obj, out)` (0x4a5fac) and returns 1, else 0. Same shape as
+    // stub_0x4a5c1c with the `Name::lookup` step already done by the caller.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x4a5fb8 — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE14convertToIndexES3_
@@ -570,8 +670,20 @@ pub fn stub_0x4a5fb8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x4a6028 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x4a6028() -> ! {
-    todo!("0x4a6028 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x4a6028(desc: &ExplosionEnumPropDesc, obj: &mut ExplosionState, value: i32) -> bool {
+    // IDA 0x4a6028: `if (value >= 0)` (0x4a6032) and `value < value_to_value.size` (0x4a6044)
+    // load `mapped = value_to_value[value]` (0x4a6046); `mapped == -1` returns 0 (0x4a6050),
+    // else `member(+44)->set(obj, mapped)` (0x4a605c) and return 1.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x4a606c — __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -590,14 +702,20 @@ pub fn stub_0x4a6070() -> bool {
 
 // 0x4a6074 — __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::GetSetImpl<RBX::Explosion::ExplosionType (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(RBX::Explosion::ExplosionType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a6074() -> ! {
-    todo!("0x4a6074 __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a6074(access: &ExplosionTypeAccess, obj: &ExplosionState) -> i32 {
+    // IDA 0x4a6074: null→`obj-36` member adjust (0x4a6078-0x4a607a), split the member pointer
+    // (offset at +8, encoding at +4), virtual-adjust if the low bit is set (0x4a608a-0x4a608e),
+    // call the getter. The adjust/encoding is member-pointer mechanics with no Rust equivalent;
+    // the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x4a6094 — __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::GetSetImpl<RBX::Explosion::ExplosionType (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(RBX::Explosion::ExplosionType)>::setValue(RBX::Reflection::DescribedBase *,RBX::Explosion::ExplosionType const&)const")]
-pub fn stub_0x4a6094() -> ! {
-    todo!("0x4a6094 __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionENS2_13ExplosionTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_0x4a6094(access: &ExplosionTypeAccess, obj: &mut ExplosionState, value: i32) {
+    // IDA 0x4a6094: same member-pointer dispatch as stub_0x4a6074 through the setter at +12/+16
+    // (0x4a60a0-0x4a60b0); the observable effect is the set.
+    (access.set)(obj, value);
 }
 
 // 0x4a60b8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE13initSingletonEv
@@ -609,8 +727,23 @@ pub fn stub_0x4a60b8() -> &'static crate::enum_desc::EnumDesc {
 
 // 0x4a60bc — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Explosion>(char const*,char const*,G3D::Vector3 RBX::Explosion::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a60bc() -> ! {
-    todo!("0x4a60bc __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a60bc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&ExplosionState) -> Vector3 + Send + Sync>,
+    set: Box<dyn Fn(&mut ExplosionState, Vector3) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> BoundVector3Prop {
+    // IDA 0x4a60bc: base `TypedPropertyDescriptor<Vector3>` init, vtable installs, member-offset
+    // store plus name/category/attribute wiring (same ctor shape as the float twin at 0x4a64ac).
+    BoundVector3Prop {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: ExplosionVector3Access { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a6250 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EED0Ev
@@ -621,14 +754,20 @@ pub fn stub_0x4a6250() {
 
 // 0x4a6280 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x4a6280() -> ! {
-    todo!("0x4a6280 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x4a6280(prop: &BoundVector3Prop, obj: &ExplosionState) -> Vector3 {
+    // IDA 0x4a6280: `v = member(+40)->get(obj)` into a 12-byte temp (vf+8, 0x4a6294), tag the out
+    // `Variant` with `Type::getSingleton<Vector3>` (0x4a629a), placement-move the temp in
+    // (0x4a62a8). The model returns the payload; the tag is implied by the return type.
+    stub_0x4a63fc(&prop.access, obj)
 }
 
 // 0x4a62b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x4a62b0() -> ! {
-    todo!("0x4a62b0 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE9copyValueEPKNS0_13DescribedBaseEPS5_")
+pub fn stub_0x4a62b0(prop: &BoundVector3Prop, src: &ExplosionState, dst: &mut ExplosionState) {
+    // IDA 0x4a62b0: `member(+40)->get(src)` into a temp (0x4a62c6), then
+    // `member(+40)->set(dst, temp)` (0x4a62d6).
+    let v = stub_0x4a63fc(&prop.access, src);
+    stub_0x4a6418(&prop.access, dst, &v);
 }
 
 // 0x4a63c8 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EED0Ev
@@ -653,20 +792,44 @@ pub fn stub_0x4a63f8() -> bool {
 
 // 0x4a63fc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Explosion>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a63fc() -> ! {
-    todo!("0x4a63fc __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a63fc(access: &ExplosionVector3Access, obj: &ExplosionState) -> Vector3 {
+    // IDA 0x4a63fc: null→`obj-36` adjust (0x4a6400-0x4a6402), add the member offset at +8
+    // (0x4a6408), copy 12 bytes out (0x4a640a-0x4a6412). The adjust/offset is member-pointer
+    // mechanics; the observable effect is the field load.
+    (access.get)(obj)
 }
 
 // 0x4a6418 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Explosion>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x4a6418() -> ! {
-    todo!("0x4a6418 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_0x4a6418(access: &ExplosionVector3Access, obj: &mut ExplosionState, value: &Vector3) {
+    // IDA 0x4a6418: member adjust + offset (0x4a6420-0x4a642e), component-wise compare with
+    // early-out when all three match (0x4a643c-0x4a646a), else store (0x4a646e-0x4a6478) and,
+    // when the notify bits at +12/+16 are set, `raisePropertyChanged` (0x4a647a-0x4a6498). The
+    // signal lives on `Instance` (datamodel side); the model keeps the compare-and-store.
+    if (access.get)(obj) != *value {
+        (access.set)(obj, *value);
+    }
 }
 
 // 0x4a64ac — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Explosion>(char const*,char const*,float RBX::Explosion::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a64ac() -> ! {
-    todo!("0x4a64ac __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a64ac(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&ExplosionState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut ExplosionState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> BoundFloatProp {
+    // IDA 0x4a64ac: base `TypedPropertyDescriptor<float>` init, vtable installs, member-offset
+    // store plus name/category/attribute wiring (same ctor shape as the Vector3 twin at 0x4a60bc).
+    BoundFloatProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: ExplosionFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a6640 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EED0Ev
@@ -691,20 +854,43 @@ pub fn stub_0x4a6670() -> bool {
 
 // 0x4a6674 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Explosion>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a6674() -> ! {
-    todo!("0x4a6674 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a6674(access: &ExplosionFloatAccess, obj: &ExplosionState) -> f32 {
+    // IDA 0x4a6674: single load `*(member_offset(a1+8) + obj - 36)` (0x4a667c) — a direct
+    // data-member binding with no virtual adjust.
+    (access.get)(obj)
 }
 
 // 0x4a6680 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Explosion>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x4a6680() -> ! {
-    todo!("0x4a6680 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_9ExplosionEE8setValueEPNS0_13DescribedBaseERKf")
+pub fn stub_0x4a6680(access: &ExplosionFloatAccess, obj: &mut ExplosionState, value: f32) {
+    // IDA 0x4a6680: member adjust + offset (0x4a6684-0x4a6696), early-out when equal (0x4a66a4),
+    // else store (0x4a66a8) and `raisePropertyChanged` when the notify bits are set
+    // (0x4a66ac-0x4a66d8). Same compare-and-store shape as stub_0x4a6418.
+    if (access.get)(obj) != value {
+        (access.set)(obj, value);
+    }
 }
 
 // 0x4a66dc — __ZN3RBX10Reflection14PropDescriptorINS_9ExplosionEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,float>::PropDescriptor<float (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(float)>(char const*,char const*,float (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x4a66dc() -> ! {
-    todo!("0x4a66dc __ZN3RBX10Reflection14PropDescriptorINS_9ExplosionEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x4a66dc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&ExplosionState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut ExplosionState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> ExplosionFloatPropDesc {
+    // IDA 0x4a66dc: base `PropertyDescriptor` init, vtable installs, getter/setter member-pointer
+    // pair stored into the `GetSetImpl` (same shape as the enum twin at 0x4a5834, whose
+    // `new(0x14)` member desc holding (getter, setter) is described there).
+    ExplosionFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: ExplosionFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x4a67f0 — __ZN3RBX10Reflection14PropDescriptorINS_9ExplosionEfED0Ev
@@ -729,14 +915,18 @@ pub fn stub_0x4a6820() -> bool {
 
 // 0x4a6824 — __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,float>::GetSetImpl<float (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x4a6824() -> ! {
-    todo!("0x4a6824 __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x4a6824(access: &ExplosionFloatAccess, obj: &ExplosionState) -> f32 {
+    // IDA 0x4a6824: same member-pointer dispatch as stub_0x4a6074 through the float getter at
+    // +4/+8 (0x4a682e-0x4a683e); the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x4a6844 — __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,float>::GetSetImpl<float (RBX::Explosion::*)(void)const,void (RBX::Explosion::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x4a6844() -> ! {
-    todo!("0x4a6844 __ZNK3RBX10Reflection14PropDescriptorINS_9ExplosionEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")
+pub fn stub_0x4a6844(access: &ExplosionFloatAccess, obj: &mut ExplosionState, value: f32) {
+    // IDA 0x4a6844: same member-pointer dispatch as stub_0x4a6094 through the float setter at
+    // +12/+16 (0x4a6850-0x4a6860); the observable effect is the set.
+    (access.set)(obj, value);
 }
 
 // 0x4a7734 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED1Ev
