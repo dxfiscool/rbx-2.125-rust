@@ -33,13 +33,140 @@ pub fn stub_063c488() {
     // IDA 0x063c488: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
+/// `RBX::Sparkles` cutover (IDA 0x63c298, canonical ctor in
+/// `generated_audio_wd_watchdog12`): the +96 flag byte and the
+/// `Color3` at +0x64..+0x6c. File-local twin of `SmokeState`-style
+/// hosts; the `Instance`/`Described`/`Effect` bases fold away.
+#[derive(Debug, Clone)]
+pub struct SparklesState {
+    pub flag_60: bool,
+    pub color: [f32; 3],
+}
+/// `RBX::Reflection::PropDescriptor<Sparkles, G3D::Color3>` cutover
+/// (IDA 0x63cae0): name/category/attributes/permissions plus the live
+/// value. The getter/setter member-pointer pair folds into direct
+/// field access.
+#[derive(Debug, Clone)]
+pub struct SparklesColorProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: [f32; 3],
+}
+impl SparklesColorProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: [f32; 3],
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::BoundProp<bool>` cutover for `Sparkles`
+/// (IDA 0x63cc8c): name/category plus the live value. The member cell
+/// folds into direct field access.
+#[derive(Debug, Clone)]
+pub struct SparklesBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl SparklesBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::SpawnLocation` cutover (IDA 0x63d248): the team color at
+/// +0x150 (word 84, init 194 = 0xC2), the touched-signal link at +0x154
+/// (word 85, init null — managed by `updateSpawnerTouched`), the
+/// `TouchedSignal` log gate at +344, the Neutral flag at +348 (init
+/// true), the AllowTeamChangeOnTouch flag at +349 (init false) and the
+/// duration at +352 (word 88, init 10). The `Instance`/`Described`/
+/// `BasicPartInstance` bases and the `setName("SpawnLocation")` fold
+/// away. Matches the classic Neutral=true/AllowTeamChangeOnTouch=false
+/// defaults.
+#[derive(Debug, Clone)]
+pub struct SpawnLocationState {
+    pub team_color: u32,
+    pub neutral: bool,
+    pub allow_team_change_on_touch: bool,
+    pub duration: i32,
+    pub touched_logging: bool,
+}
+/// `RBX::SpawnerService` cutover (IDA 0x63db8c): the +92 flag (init 1)
+/// plus the spawn-location list at +96 (words 24/25, init self-linked
+/// empty). The name registration and the task-scheduler call fold away.
+#[derive(Debug, Clone, Default)]
+pub struct SpawnerServiceState {
+    pub flag_92: bool,
+    pub spawns: Vec<SharedPtr<SpawnLocationState>>,
+}
+/// `RBX::Network::Player` fields read by `GetSpawnLocation`
+/// (IDA 0x63df08): Neutral at +104, TeamColor at +100.
+#[derive(Debug, Clone, Copy)]
+pub struct SpawnPlayerRef {
+    pub neutral: bool,
+    pub team_color: u32,
+}
+/// Touched instance offered to `onEvent_spawnerTouched` (IDA 0x63d7b8):
+/// whether `Humanoid::modelIsCharacter` and
+/// `Players::getPlayerFromCharacter` resolved. The world/tree lookup
+/// folds into the flags.
+#[derive(Debug, Clone, Copy)]
+pub struct TouchedCharacter {
+    pub is_character: bool,
+    pub player_resolved: bool,
+}
+/// Team update `onEvent_spawnerTouched` applies to the resolved player
+/// (IDA 0x63d83e-0x63d852): `setTeamColor(+0x150)` plus
+/// `setNeutral(+348)`.
+#[derive(Debug, Clone, Copy)]
+pub struct PlayerTeamUpdate {
+    pub team_color: u32,
+    pub neutral: bool,
+}
+/// `SpawnPlayer` force-field side effect (IDA 0x63e090-0x63e1c0):
+/// `create<ForceField>` + parent to the character +
+/// `DebrisService::addItem(ff, (double)duration)` (with the `ds`
+/// ReleaseAssert, SpawnLocation.cpp line 212). The character/world
+/// handles fold into the effect.
+#[derive(Debug, Clone, Copy)]
+pub enum SpawnEffect {
+    ForceField { duration_secs: f64 },
+}
+
 // 0x063c528 — __ZNK3RBX8Sparkles11askAddChildEPKNS_8InstanceE
 // demangled: RBX::Sparkles::askAddChild(RBX::Instance const*)const
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Sparkles::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX8Sparkles11askAddChildEPKNS_8InstanceE")]
-pub fn stub_063c528() -> ! {
-    todo!("0x063c528 RBX::Sparkles::askAddChild(RBX::Instance const*)const")
+pub fn stub_063c528() -> bool {
+    // IDA 0x63c528 (`RBX::Sparkles::askAddChild`): `MOVS R0, #1; BX
+    // LR` — any child is accepted (same shape as `Smoke` at 0x6378c4).
+    true
 }
 
 // 0x063c52c — __ZNK3RBX8Sparkles12askSetParentEPKNS_8InstanceE
@@ -47,8 +174,13 @@ pub fn stub_063c528() -> ! {
 // type: _DWORD __fastcall(RBX::Sparkles *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Sparkles::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX8Sparkles12askSetParentEPKNS_8InstanceE")]
-pub fn stub_063c52c() -> ! {
-    todo!("0x063c52c RBX::Sparkles::askSetParent(RBX::Instance const*)const")
+pub fn stub_063c52c(parent_is_part: Option<bool>) -> bool {
+    // IDA 0x63c52c (`RBX::Sparkles::askSetParent`): null parent
+    // returns 0 (0x63c530-0x63c53c); else the candidate must `isA`
+    // `Part` (0x63c53e-0x63c556), returning 0 on mismatch and 1
+    // otherwise (0x63c558-0x63c566). Same shape as `Smoke` at
+    // 0x6378c8; null folds into `None`.
+    matches!(parent_is_part, Some(true))
 }
 
 // 0x063c578 — __ZThn32_N3RBX8SparklesD1Ev
@@ -119,8 +251,17 @@ pub fn stub_063c5b8() {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_063cae0() -> ! {
-    todo!("0x063cae0 RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_063cae0(
+    name: &str,
+    category: &str,
+    initial: [f32; 3],
+    attributes: u32,
+    permissions: u32,
+) -> SparklesColorProp {
+    // IDA 0x63cae0 (`PropDescriptor<Sparkles, Color3>::C2`): same
+    // member-triple + `TypedPropertyDescriptor<Color3>::C2` + vtable
+    // shape as the `Smoke` twin at 0x63885c (0x63cae0-0x63cc10).
+    SparklesColorProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x063cbf4 — __ZN3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EED0Ev
@@ -135,72 +276,119 @@ pub fn stub_063cbf4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_063cc20() -> ! {
-    todo!("0x063cc20 RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isReadOnly(void)const")
+pub fn stub_063cc20() -> bool {
+    // IDA 0x63cc20 (`GetSetImpl<Color3 getter, Color3
+    // setter>::isReadOnly`): `MOVS R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x063cc24 — __ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_063cc24() -> ! {
-    todo!("0x063cc24 RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::isWriteOnly(void)const")
+pub fn stub_063cc24() -> bool {
+    // IDA 0x63cc24 (`GetSetImpl<Color3 getter, Color3
+    // setter>::isWriteOnly`): `MOVS R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x063cc28 — __ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_063cc28() -> ! {
-    todo!("0x063cc28 RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_063cc28(state: &SparklesState) -> [f32; 3] {
+    // IDA 0x63cc28 (`GetSetImpl::getValue`): same member-pointer
+    // resolve as the `Smoke` twin at 0x6389a4 (null described reads at
+    // offset 0, else `a2 - 36`; virtual when the low bit is set,
+    // 0x63cc28-0x63cc48), tail-calling the getter (0x63cc4a). The
+    // member is `getColor` (0x63c450); the pointer folds into the
+    // field.
+    state.color
 }
 
 // 0x063cc50 — __ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // demangled: RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_063cc50() -> ! {
-    todo!("0x063cc50 RBX::Reflection::PropDescriptor<RBX::Sparkles,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Sparkles::*)(void)const,void (RBX::Sparkles::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_063cc50(state: &mut SparklesState, value: [f32; 3]) -> bool {
+    // IDA 0x63cc50 (`GetSetImpl::setValue`): same member-pointer
+    // resolve over +12/+16 (0x63cc50-0x63cc70), copying the three
+    // input words for the setter call (0x63cc76-0x63cc82). The member
+    // is `setColor` (0x63c1a4, which compares, stores and raises);
+    // the pointer folds into it.
+    if state.color == value {
+        return false;
+    }
+    state.color = value;
+    true
 }
 
 // 0x063cc8c — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_8SparklesEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sparkles>(char const*,char const*,bool RBX::Sparkles::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sparkles>(char const*,char const*,bool RBX::Sparkles::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_8SparklesEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_063cc8c() -> ! {
-    todo!("0x063cc8c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Sparkles>(char const*,char const*,bool RBX::Sparkles::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_063cc8c(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> SparklesBoolProp {
+    // IDA 0x63cc8c (`BoundProp<bool>::BoundProp<Sparkles>`): same
+    // `TypedPropertyDescriptor<bool>::C2` + vtable + member-cell shape
+    // as the `Smoke` twin at 0x638a08 (0x63cc8c-0x63cdd0).
+    SparklesBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x063ce1c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE10isReadOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE10isReadOnlyEv")]
-pub fn stub_063ce1c() -> ! {
-    todo!("0x063ce1c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isReadOnly(void)const")
+pub fn stub_063ce1c() -> bool {
+    // IDA 0x63ce1c (`BoundPropGetSet<Sparkles>::isReadOnly`): `MOVS
+    // R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x063ce20 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE11isWriteOnlyEv")]
-pub fn stub_063ce20() -> ! {
-    todo!("0x063ce20 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::isWriteOnly(void)const")
+pub fn stub_063ce20() -> bool {
+    // IDA 0x63ce20 (`BoundPropGetSet<Sparkles>::isWriteOnly`): `MOVS
+    // R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x063ce24 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_063ce24() -> ! {
-    todo!("0x063ce24 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_063ce24(state: &SparklesState) -> bool {
+    // IDA 0x63ce24 (`BoundPropGetSet<Sparkles>::getValue`): loads the
+    // member offset at +8, adjusts the described (`R1 - 36` when
+    // non-null) and returns the byte there (0x63ce24-0x63ce2c). The
+    // member is the +96 flag (set to 1 by `Sparkles::Sparkles`,
+    // 0x63c360-0x63c370); the offset folds into the field.
+    state.flag_60
 }
 
 // 0x063ce30 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8SparklesEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_063ce30() -> ! {
-    todo!("0x063ce30 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sparkles>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_063ce30(state: &mut SparklesState, value: bool) -> bool {
+    // IDA 0x63ce30 (`BoundPropGetSet<Sparkles>::setValue`): adjusts
+    // the described (0x63ce34-0x63ce3a), returns early on match
+    // (0x63ce42-0x63ce4a), else stores (0x63ce4c), runs the member
+    // hook when set (0x63ce4e-0x63ce6e) and tail-calls
+    // `raisePropertyChanged` (0x63ce72-0x63ce7a). Same shape as the
+    // `Smoke` twin at 0x638bac.
+    if state.flag_60 == value {
+        return false;
+    }
+    state.flag_60 = value;
+    true
 }
 
 // 0x063d228 — __ZNK3RBX13SpawnLocation12getTeamColorEv
@@ -208,16 +396,22 @@ pub fn stub_063ce30() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "RBX::SpawnLocation::getTeamColor(void)const")]
 #[doc(alias = "__ZNK3RBX13SpawnLocation12getTeamColorEv")]
-pub fn stub_063d228() -> ! {
-    todo!("0x063d228 RBX::SpawnLocation::getTeamColor(void)const")
+pub fn stub_063d228(state: &SpawnLocationState) -> u32 {
+    // IDA 0x63d228 (`RBX::SpawnLocation::getTeamColor`): loads word 84
+    // at +0x150 (0x63d228-0x63d22c).
+    state.team_color
 }
 
 // 0x063d230 — __ZN3RBX13SpawnLocation12setTeamColorENS_10BrickColorE
 // demangled: RBX::SpawnLocation::setTeamColor(RBX::BrickColor)
 #[doc(alias = "RBX::SpawnLocation::setTeamColor(RBX::BrickColor)")]
 #[doc(alias = "__ZN3RBX13SpawnLocation12setTeamColorENS_10BrickColorE")]
-pub fn stub_063d230() -> ! {
-    todo!("0x063d230 RBX::SpawnLocation::setTeamColor(RBX::BrickColor)")
+pub fn stub_063d230(state: &mut SpawnLocationState, value: u32) {
+    // IDA 0x63d230 (`RBX::SpawnLocation::setTeamColor`): stores word
+    // 84 at +0x150 (0x63d238) and tail-calls `raisePropertyChanged`
+    // (0x63d23c-0x63d242). The raise folds away (no listeners in the
+    // host); the store is the observable state.
+    state.team_color = value;
 }
 
 // 0x063d248 — __ZN3RBX13SpawnLocationC1Ev
@@ -225,8 +419,23 @@ pub fn stub_063d230() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "RBX::SpawnLocation::SpawnLocation(void)")]
 #[doc(alias = "__ZN3RBX13SpawnLocationC1Ev")]
-pub fn stub_063d248() -> ! {
-    todo!("0x063d248 RBX::SpawnLocation::SpawnLocation(void)")
+pub fn stub_063d248(touched_logging: bool) -> SpawnLocationState {
+    // IDA 0x63d248 (`RBX::SpawnLocation::SpawnLocation`):
+    // `DescribedCreatable` base + vtable installs + class registration
+    // (0x63d264-0x63d2e8); word 84 (+0x150) = 194 (0xC2, 0x63d2ee-
+    // 0x63d2f2); word 85 (+0x154, the touched connection) = 0
+    // (0x63d2f6-0x63d2fc); +344 = `FLog::TouchedSignal != 0`
+    // (0x63d2fe-0x63d30a); +348 (Neutral) = 1, +349
+    // (AllowTeamChangeOnTouch) = 0 (0x63d30c-0x63d312); word 88 (+352,
+    // duration) = 10 (0x63d314-0x63d31a); `setName("SpawnLocation")`
+    // (0x63d31c-0x63d340). The flag is a host-seam parameter.
+    SpawnLocationState {
+        team_color: 194,
+        neutral: true,
+        allow_team_change_on_touch: false,
+        duration: 10,
+        touched_logging,
+    }
 }
 
 // 0x063d500 — __ZN3RBX13SpawnLocationD0Ev
@@ -314,8 +523,38 @@ pub fn stub_063d7a8() {
 // demangled: RBX::SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "RBX::SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_063d7b8() -> ! {
-    todo!("0x063d7b8 RBX::SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_063d7b8(
+    state: &SpawnLocationState,
+    touched: Option<TouchedCharacter>,
+    backend_processing: bool,
+) -> Option<PlayerTeamUpdate> {
+    // IDA 0x63d7b8 (`RBX::SpawnLocation::onEvent_spawnerTouched`):
+    // `Players::backendProcessing(this, true)` must return 1
+    // (0x63d7bc-0x63d7c8); the touched instance must be non-null
+    // (0x63d7ca-0x63d7ce); `ReleaseAssert(allowTeamChangeOnTouch)`
+    // (SpawnLocation.cpp line 44, 0x63d7d0-0x63d81c — live only via
+    // the `updateSpawnerTouched` connection, which requires the flag,
+    // so the assert is unconditional here);
+    // `Humanoid::modelIsCharacter` must hold (0x63d820-0x63d830) and
+    // `Players::getPlayerFromCharacter` must resolve (0x63d832-
+    // 0x63d83c); then `Player::setTeamColor(+0x150)` plus
+    // `Player::setNeutral(+348)` (0x63d83e-0x63d852). The
+    // backend/character/player lookups fold into the flags.
+    if !backend_processing {
+        return None;
+    }
+    let touched = touched?;
+    assert!(
+        state.allow_team_change_on_touch,
+        "allowTeamChangeOnTouch file: SpawnLocation.cpp line: 44 (IDA 0x63d7b8)"
+    );
+    if !touched.is_character || !touched.player_resolved {
+        return None;
+    }
+    Some(PlayerTeamUpdate {
+        team_color: state.team_color,
+        neutral: state.neutral,
+    })
 }
 
 // 0x063d858 — __ZN3RBX13SpawnLocation20updateSpawnerTouchedEv
@@ -323,8 +562,22 @@ pub fn stub_063d7b8() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "RBX::SpawnLocation::updateSpawnerTouched(void)")]
 #[doc(alias = "__ZN3RBX13SpawnLocation20updateSpawnerTouchedEv")]
-pub fn stub_063d858() -> ! {
-    todo!("0x063d858 RBX::SpawnLocation::updateSpawnerTouched(void)")
+pub fn stub_063d858(state: &SpawnLocationState, connected: &mut bool, client_present: bool) {
+    // IDA 0x63d858 (`RBX::SpawnLocation::updateSpawnerTouched`): when
+    // +349 is set and no client is present (0x63d882-0x63d8b6), an
+    // unconnected +0x154 link connects `TouchedSignal` with
+    // `bind(onEvent_spawnerTouched)` and takes the scoped assignment
+    // (0x63d8b8-0x63d944, at 0x63e4ec); otherwise a connected link
+    // disconnects (0x63d944-0x63da94). The `FLog::TouchedSignal`
+    // `FastLog`s and the `onDemandRead/Write` calls are diagnostics
+    // and fold away; the bind target folds into `stub_063d7b8`.
+    if state.allow_team_change_on_touch && !client_present {
+        if !*connected {
+            stub_063e4ec(connected);
+        }
+    } else if *connected {
+        *connected = false;
+    }
 }
 
 // 0x063da9c — __ZN3RBX13SpawnLocation17onServiceProviderEPNS_15ServiceProviderES2_
@@ -332,8 +585,28 @@ pub fn stub_063d858() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnLocation *__hidden this, RBX::ServiceProvider *, RBX::ServiceProvider *)
 #[doc(alias = "RBX::SpawnLocation::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 #[doc(alias = "__ZN3RBX13SpawnLocation17onServiceProviderEPNS_15ServiceProviderES2_")]
-pub fn stub_063da9c() -> ! {
-    todo!("0x063da9c RBX::SpawnLocation::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_063da9c(
+    spawns: &mut Vec<SharedPtr<SpawnLocationState>>,
+    location: &SharedPtr<SpawnLocationState>,
+    new_service: bool,
+    old_service: bool,
+) {
+    // IDA 0x63da9c (`RBX::SpawnLocation::onServiceProvider`): the
+    // `PartInstance::onServiceProvider` base folds away (0x63daac); a
+    // non-null new provider creates the `SpawnerService`
+    // (`ReleaseAssert(ss)`, 0x63dab0-0x63db02) and hooks a fresh node
+    // holding `this` into the service's +0x60 list (0x63db06-0x63db14,
+    // `operator new(0xc)` + `_List_node_base::hook`); a non-null old
+    // provider finds it (`ReleaseAssert(ss)`) and unhooks (same
+    // hook/unhook discipline as `list::remove` at 0x63e66c). The
+    // asserts fold into the presence flags; the node folds into the
+    // `Vec` slot.
+    if new_service {
+        spawns.push(SharedPtr::clone(location));
+    }
+    if old_service {
+        stub_063e66c(spawns, location);
+    }
 }
 
 // 0x063db8c — __ZN3RBX14SpawnerServiceC2Ev
@@ -341,8 +614,18 @@ pub fn stub_063da9c() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "RBX::SpawnerService::SpawnerService(void)")]
 #[doc(alias = "__ZN3RBX14SpawnerServiceC2Ev")]
-pub fn stub_063db8c() -> ! {
-    todo!("0x063db8c RBX::SpawnerService::SpawnerService(void)")
+pub fn stub_063db8c() -> SpawnerServiceState {
+    // IDA 0x63db8c (`RBX::SpawnerService::SpawnerService`):
+    // `Instance::C2` + vtable installs + class registration
+    // (0x63dbac-0x63dc30); the +92 flag byte is set to 1 (0x63dc34-
+    // 0x63dc40); the list at +96 (words 24/25) is self-linked empty
+    // (0x63dc48-0x63dc60); `setName("SpawnerService")` (0x63dc64-
+    // 0x63dc90); the task-scheduler call folds away (0x63dc94-
+    // 0x63dca8).
+    SpawnerServiceState {
+        flag_92: true,
+        spawns: Vec::new(),
+    }
 }
 
 // 0x063ddd8 — __ZN3RBX14SpawnerServiceD0Ev
@@ -413,8 +696,11 @@ pub fn stub_063dedc() {
 // type: _DWORD __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "RBX::SpawnerService::ClearContents(void)")]
 #[doc(alias = "__ZN3RBX14SpawnerService13ClearContentsEv")]
-pub fn stub_063dee4() -> ! {
-    todo!("0x063dee4 RBX::SpawnerService::ClearContents(void)")
+pub fn stub_063dee4(service: &mut SpawnerServiceState) {
+    // IDA 0x63dee4 (`RBX::SpawnerService::ClearContents`): walks the
+    // +96 list deleting every node (0x63dee4-0x63defe) and re-links it
+    // empty (0x63df00-0x63df04). The node deletes fold into `clear`.
+    service.spawns.clear();
 }
 
 // 0x063df08 — __ZN3RBX14SpawnerService16GetSpawnLocationEPNS_7Network6PlayerESs
@@ -422,8 +708,23 @@ pub fn stub_063dee4() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::SpawnerService::GetSpawnLocation(RBX::Network::Player *,std::string)")]
 #[doc(alias = "__ZN3RBX14SpawnerService16GetSpawnLocationEPNS_7Network6PlayerESs")]
-pub fn stub_063df08() -> ! {
-    todo!("0x063df08 RBX::SpawnerService::GetSpawnLocation(RBX::Network::Player *,std::string)")
+pub fn stub_063df08(
+    spawns: &[SharedPtr<SpawnLocationState>],
+    player: &SpawnPlayerRef,
+) -> Vec<SharedPtr<SpawnLocationState>> {
+    // IDA 0x63df08 (`RBX::SpawnerService::GetSpawnLocation`): walks
+    // the +96 list (0x63df46-0x63df6a); a spawn is collected when its
+    // +348 Neutral flag is set, or when the player is not neutral and
+    // the player's +100 TeamColor equals the spawn's +0x150
+    // (0x63df6e-0x63dfa2). The name arg is unused beyond the
+    // signature. The node walk folds into the slice.
+    spawns
+        .iter()
+        .filter(|spawn| {
+            spawn.neutral || (!player.neutral && player.team_color == spawn.team_color)
+        })
+        .cloned()
+        .collect()
 }
 
 // 0x063e090 — __ZN3RBX14SpawnerService11SpawnPlayerEPNS_9WorkspaceEN5boost10shared_ptrINS_13ModelInstanceEEEN3G3D7Vector3Ei
@@ -431,8 +732,36 @@ pub fn stub_063df08() -> ! {
 // type: int __fastcall(int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,boost::shared_ptr<RBX::ModelInstance>,G3D::Vector3,int)")]
 #[doc(alias = "__ZN3RBX14SpawnerService11SpawnPlayerEPNS_9WorkspaceEN5boost10shared_ptrINS_13ModelInstanceEEEN3G3D7Vector3Ei")]
-pub fn stub_063e090() -> ! {
-    todo!("0x063e090 RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,boost::shared_ptr<RBX::ModelInstance>,G3D::Vector3,int)")
+pub fn stub_063e090(
+    workspace_present: bool,
+    debug_asserts: bool,
+    forcefield_seconds: i32,
+    effects: &mut Vec<SpawnEffect>,
+) {
+    // IDA 0x63e090 (`RBX::SpawnerService::SpawnPlayer`):
+    // `ReleaseAssert(workspace)` (SpawnLocation.cpp line 197,
+    // 0x63e0ee-0x63e136 — gated on `FLog::Asserts`, a host seam);
+    // null workspace returns (0x63e138-0x63e13c); with a positive
+    // force-field duration it creates a `ForceField`, parents it to
+    // the character and files it via `create<DebrisService>` (with
+    // the `ds` ReleaseAssert, line 212) + `addItem(ff,
+    // (double)duration)` (0x63e140-0x63e1c0). The world/character
+    // handles fold into the effect; the tail (positioning) rides the
+    // caller's scene state.
+    if debug_asserts {
+        assert!(
+            workspace_present,
+            "workspace file: SpawnLocation.cpp line: 197 (IDA 0x63e090)"
+        );
+    }
+    if !workspace_present {
+        return;
+    }
+    if forcefield_seconds > 0 {
+        effects.push(SpawnEffect::ForceField {
+            duration_secs: forcefield_seconds as f64,
+        });
+    }
 }
 
 // 0x063e2a8 — __ZN3RBX13SpawnLocation31onAllowTeamChangeOnTouchChangedERKNS_10Reflection18PropertyDescriptorE
@@ -440,8 +769,11 @@ pub fn stub_063e090() -> ! {
 // type: _DWORD __fastcall(RBX::SpawnLocation *__hidden this, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::SpawnLocation::onAllowTeamChangeOnTouchChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX13SpawnLocation31onAllowTeamChangeOnTouchChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_063e2a8() -> ! {
-    todo!("0x063e2a8 RBX::SpawnLocation::onAllowTeamChangeOnTouchChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_063e2a8(state: &SpawnLocationState, connected: &mut bool, client_present: bool) {
+    // IDA 0x63e2a8
+    // (`RBX::SpawnLocation::onAllowTeamChangeOnTouchChanged`): thunk
+    // tail-calling `updateSpawnerTouched` above (0x63e2a8-0x63e2ab).
+    stub_063d858(state, connected, client_present);
 }
 
 // 0x063e2ac — __ZN3RBX10Reflection14PropDescriptorINS_13SpawnLocationENS_10BrickColorEED1Ev
@@ -456,8 +788,16 @@ pub fn stub_063e2ac() {
 // demangled: rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)
 #[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)")]
 #[doc(alias = "__ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13SpawnLocationENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_")]
-pub fn stub_063e4ec() -> ! {
-    todo!("0x063e4ec rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)")
+pub fn stub_063e4ec(connected: &mut bool) {
+    // IDA 0x63e4ec (`PartInstance::TouchedSignal::connect<bind(mf1
+    // onEvent_spawnerTouched)>`): logs under `FLog::TouchedSignal`
+    // (0x63e54a-0x63e564), builds the `TouchedSlot` from the stored
+    // bind triple (0x63e568-0x63e590), runs `signal::connect`
+    // (0x63e594-0x63e59e) and returns the connection (0x63e5a2-
+    // 0x63e5c0). Only called from `updateSpawnerTouched` when the
+    // +0x154 link is down, so the link comes up here; the slot and
+    // the logging fold away.
+    *connected = true;
 }
 
 // 0x063e66c — __ZNSt4listIPN3RBX13SpawnLocationESaIS2_EE6removeERKS2_
@@ -465,8 +805,14 @@ pub fn stub_063e4ec() -> ! {
 // type: int(void)
 #[doc(alias = "std::list<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::remove(RBX::SpawnLocation * const&)")]
 #[doc(alias = "__ZNSt4listIPN3RBX13SpawnLocationESaIS2_EE6removeERKS2_")]
-pub fn stub_063e66c() -> ! {
-    todo!("0x063e66c std::list<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::remove(RBX::SpawnLocation * const&)")
+pub fn stub_063e66c(
+    spawns: &mut Vec<SharedPtr<SpawnLocationState>>,
+    location: &SharedPtr<SpawnLocationState>,
+) {
+    // IDA 0x63e66c (`list<SpawnLocation*>::remove`): walks the +96
+    // list unhooking and deleting every node holding the value
+    // (0x63e678-0x63e69a). The nodes fold into the `Vec` slots.
+    spawns.retain(|spawn| !SharedPtr::ptr_eq(spawn, location));
 }
 
 // 0x063e6a4 — __ZNSt6vectorIPN3RBX13SpawnLocationESaIS2_EE9push_backERKS2_
