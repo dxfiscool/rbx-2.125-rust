@@ -5,10 +5,14 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
+use crate::brick_color_palette::{
+    BRICK_COLOR_PALETTE, brick_color_entry, brickcolor_closest, brickcolor_from_number, brickcolor_parse,
+};
 use parking_lot::Mutex;
 use rbx_core::SharedPtr;
 use std::collections::HashMap;
 use std::sync::LazyLock;
+use std::sync::atomic::{AtomicU64, Ordering};
 
 // ── Hand-written script support (IDA batch 0x267ec..0x2607e0) ────────────────
 // Idiomatic Rust decompilation of the join-script launcher, the
@@ -3557,6 +3561,67 @@ fn vector2_get_value(thread: &LuaThreadState, index: usize) -> Option<LuaVector2
     }
 }
 
+/// `luaL_checkudata(L, index, Color3)` host check behind the Color3 arm of
+/// [`stub_0x2730d8`].
+fn check_color3_slot(thread: &LuaThreadState, index: usize) -> LuaColor3 {
+    match thread.slot(index) {
+        Some(LuaStackValue::Userdata(ud)) if ud.class == lua_bridge_class::COLOR3 => match &ud.payload {
+            LuaUserdataPayload::Color3(v) => *v,
+            _ => panic!("Color3 expected"),
+        },
+        _ => panic!("Color3 expected"),
+    }
+}
+
+/// `RBX::BrickColor::color3` host projection (IDA 0x3047c4 via `color4` at
+/// 0x304710): entry rgb bytes over 255. Invalid numbers hit the
+/// `ReleaseAssert` at BrickColor.cpp:576, mirrored as a panic.
+fn brickcolor_color3(number: u32) -> LuaColor3 {
+    match brick_color_entry(number) {
+        Some(entry) => LuaColor3 {
+            r: f32::from(entry.r) / 255.0,
+            g: f32::from(entry.g) / 255.0,
+            b: f32::from(entry.b) / 255.0,
+        },
+        None => panic!(
+            "static_cast<unsigned int>(number) < colors.size() && colors[number].valid file: Client/App/util/BrickColor.cpp line: 576"
+        ),
+    }
+}
+
+/// `RBX::BrickColor::name` host lookup (IDA 0x304674): entry name, with the
+/// BrickColor.cpp:570 `ReleaseAssert` mirrored as a panic on invalid numbers.
+fn brickcolor_name(number: u32) -> &'static str {
+    match brick_color_entry(number) {
+        Some(entry) => entry.name,
+        None => panic!(
+            "static_cast<unsigned int>(number) < colors.size() && colors[number].valid file: Client/App/util/BrickColor.cpp line: 570"
+        ),
+    }
+}
+
+/// Host stand-in for `G3D::iRandom` behind `BrickColor::random`
+/// (IDA 0x304468): xorshift64 over a time-seeded static (the crate stays
+/// dependency-free, so no `rand` crate).
+static BRICK_COLOR_RNG_STATE: AtomicU64 = AtomicU64::new(0);
+
+/// `RBX::BrickColor::random` host draw (IDA 0x304468):
+/// `iRandom(0, palette_size - 1)` over the 64-entry `colorPalette`.
+fn brickcolor_random() -> u32 {
+    let mut state = BRICK_COLOR_RNG_STATE.load(Ordering::Relaxed);
+    if state == 0 {
+        state = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|elapsed| elapsed.as_nanos() as u64 | 1)
+            .unwrap_or(0x9E3779B97F4A7C15);
+    }
+    state ^= state << 13;
+    state ^= state >> 7;
+    state ^= state << 17;
+    BRICK_COLOR_RNG_STATE.store(state, Ordering::Relaxed);
+    BRICK_COLOR_PALETTE[(state % BRICK_COLOR_PALETTE.len() as u64) as usize]
+}
+
 /// Length guard behind [`stub_0x270230`] (IDA 0x2702a0): `0x30D40` (200000).
 pub const SUPER_LONG_STRING_LIMIT: usize = 0x30D40;
 
@@ -5637,99 +5702,379 @@ mod bridge_int16_vector2_batch_tests {
 // 0x27309c — __ZN3RBX3Lua16BrickColorBridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::BrickColorBridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x27309c() -> ! {
-    todo!("0x27309c RBX::Lua::BrickColorBridge::registerClassLibrary(lua_State *)")
+pub fn stub_0x27309c(_thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x27309c: `luaL_register` + `lua_setreadonly` + pop, like
+    // [`stub_0x270d50`]. Host no-op; no values returned.
+    0
 }
 
 // 0x2730d8 — __ZN3RBX3Lua16BrickColorBridge13newBrickColorEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::BrickColorBridge::newBrickColor(lua_State *)")]
-pub fn stub_0x2730d8() -> ! {
-    todo!("0x2730d8 RBX::Lua::BrickColorBridge::newBrickColor(lua_State *)")
+pub fn stub_0x2730d8(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2730d8: `n = min(gettop, 3)` (0x2730e8..0x2730f0);
+    //   `n == 1`: number → `BrickColor(int)` (0x273104, IDA 0x30456c),
+    //     string → `BrickColor::parse` (0x27317e, IDA 0x3043fc), else
+    //     `luaL_checkudata(1, Color3)` + `closest` (0x2731d4..0x2731ec);
+    //   else (`n` in 0/2/3): `n == 0` pushes 194 with no return (0x27311a),
+    //     `lua_tofloat` lanes with alpha fixed at 1.0 (0x273124..0x2731a6),
+    //     `closest` push (0x2731ae..0x2731b6). Return 1.
+    // BUG(host): the 0-arg double push (194 plus closest-black) is preserved
+    // from the original, which likewise falls through to the second push.
+    let lanes = thread.stack_top().min(3);
+    if lanes == 1 {
+        let number = match thread.slot(1) {
+            Some(LuaStackValue::Number(n)) => brickcolor_from_number(*n as i64),
+            Some(LuaStackValue::String(s)) => match s.parse::<f64>() {
+                // `lua_isnumber` accepts numeric strings first (0x2730fa),
+                // so those take the integer path, not `parse`.
+                // (Lua hex literals diverge from `parse` here [INFERENCE].)
+                Ok(n) => brickcolor_from_number(n as i64),
+                Err(_) => brickcolor_parse(s),
+            },
+            _ => {
+                let color = check_color3_slot(thread, 1);
+                brickcolor_closest(color.r, color.g, color.b)
+            }
+        };
+        push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number }));
+    } else {
+        if lanes == 0 {
+            push_new_object(
+                thread,
+                lua_bridge_class::BRICKCOLOR,
+                LuaUserdataPayload::BrickColor(LuaBrickColor { number: 194 }),
+            );
+        }
+        let mut rgb = [0.0f32; 3];
+        for (lane, slot) in rgb.iter_mut().take(lanes).enumerate() {
+            *slot = stub_0x270448(thread, lane + 1);
+        }
+        let number = brickcolor_closest(rgb[0], rgb[1], rgb[2]);
+        push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number }));
+    }
+    1
 }
 
 // 0x2731f0 — __ZN3RBX3Lua16BrickColorBridge16randomBrickColorEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::BrickColorBridge::randomBrickColor(lua_State *)")]
-pub fn stub_0x2731f0() -> ! {
-    todo!("0x2731f0 RBX::Lua::BrickColorBridge::randomBrickColor(lua_State *)")
+pub fn stub_0x2731f0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2731f0: `BrickColor::random` (0x2731fa, IDA 0x304468) draws
+    // `iRandom(0, palette - 1)` over `colorPalette`, then push (0x273202);
+    // return 1.
+    let number = brickcolor_random();
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number }));
+    1
 }
 
 // 0x27320c — __ZN3RBX3Lua16BrickColorBridge17paletteBrickColorEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::BrickColorBridge::paletteBrickColor(lua_State *)")]
-pub fn stub_0x27320c() -> ! {
-    todo!("0x27320c RBX::Lua::BrickColorBridge::paletteBrickColor(lua_State *)")
+pub fn stub_0x27320c(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x27320c: `lua_tointeger(1)` (0x273288, missing slot reads 0);
+    // negative or `>= colorPalette.size` → `runtime_error("palette index
+    // out of bounds (%d)")` (0x2732d0); else the palette number push
+    // (0x273298); return 1.
+    let index = lua_to_integer_or_zero(thread, 1);
+    if index < 0 || index as usize >= BRICK_COLOR_PALETTE.len() {
+        panic!("palette index out of bounds ({index})");
+    }
+    let number = BRICK_COLOR_PALETTE[index as usize];
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number }));
+    1
 }
 
 // 0x273330 — __ZN3RBX3LuaL9pushWhiteEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushWhite(lua_State *)")]
-pub fn stub_0x273330() -> ! {
-    todo!("0x273330 RBX::Lua::pushWhite(lua_State *)")
+pub fn stub_0x273330(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273330: `pushNewObject<BrickColor>(L, 1)` (0x273336, White);
+    // return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 1 }));
+    1
 }
 
 // 0x273340 — __ZN3RBX3LuaL8pushGrayEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushGray(lua_State *)")]
-pub fn stub_0x273340() -> ! {
-    todo!("0x273340 RBX::Lua::pushGray(lua_State *)")
+pub fn stub_0x273340(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273340: `pushNewObject<BrickColor>(L, 194)` (0x273344, Medium
+    // stone grey); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 194 }));
+    1
 }
 
 // 0x273350 — __ZN3RBX3LuaL12pushDarkGrayEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushDarkGray(lua_State *)")]
-pub fn stub_0x273350() -> ! {
-    todo!("0x273350 RBX::Lua::pushDarkGray(lua_State *)")
+pub fn stub_0x273350(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273350: `pushNewObject<BrickColor>(L, 199)` (0x273354, Dark stone
+    // grey); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 199 }));
+    1
 }
 
 // 0x273360 — __ZN3RBX3LuaL9pushBlackEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushBlack(lua_State *)")]
-pub fn stub_0x273360() -> ! {
-    todo!("0x273360 RBX::Lua::pushBlack(lua_State *)")
+pub fn stub_0x273360(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273360: `pushNewObject<BrickColor>(L, 26)` (0x273364, Black);
+    // return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 26 }));
+    1
 }
 
 // 0x273370 — __ZN3RBX3LuaL7pushRedEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushRed(lua_State *)")]
-pub fn stub_0x273370() -> ! {
-    todo!("0x273370 RBX::Lua::pushRed(lua_State *)")
+pub fn stub_0x273370(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273370: `pushNewObject<BrickColor>(L, 21)` (0x273374, Bright
+    // red); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 21 }));
+    1
 }
 
 // 0x273380 — __ZN3RBX3LuaL10pushYellowEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushYellow(lua_State *)")]
-pub fn stub_0x273380() -> ! {
-    todo!("0x273380 RBX::Lua::pushYellow(lua_State *)")
+pub fn stub_0x273380(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273380: `pushNewObject<BrickColor>(L, 24)` (0x273384, Bright
+    // yellow); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 24 }));
+    1
 }
 
 // 0x273390 — __ZN3RBX3LuaL9pushGreenEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushGreen(lua_State *)")]
-pub fn stub_0x273390() -> ! {
-    todo!("0x273390 RBX::Lua::pushGreen(lua_State *)")
+pub fn stub_0x273390(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x273390: `pushNewObject<BrickColor>(L, 28)` (0x273394, Dark
+    // green); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 28 }));
+    1
 }
 
 // 0x2733a0 — __ZN3RBX3LuaL8pushBlueEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::pushBlue(lua_State *)")]
-pub fn stub_0x2733a0() -> ! {
-    todo!("0x2733a0 RBX::Lua::pushBlue(lua_State *)")
+pub fn stub_0x2733a0(thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2733a0: `pushNewObject<BrickColor>(L, 23)` (0x2733a4, Bright
+    // blue); return 1.
+    push_new_object(thread, lua_bridge_class::BRICKCOLOR, LuaUserdataPayload::BrickColor(LuaBrickColor { number: 23 }));
+    1
 }
 
 // 0x2733b0 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8on_indexERKS2_PKcP9lua_State
-// type: int __fastcall(RBX::BrickColor *, char *__s1, int)
+// type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::BrickColor,true>::on_index(RBX::BrickColor const&,char const*,lua_State *)")]
-pub fn stub_0x2733b0() -> ! {
-    todo!("0x2733b0 RBX::Lua::Bridge<RBX::BrickColor,true>::on_index(RBX::BrickColor const&,char const*,lua_State *)")
+pub fn stub_0x2733b0(color: &LuaBrickColor, key: &str, thread: &mut LuaThreadState) -> i32 {
+    // IDA 0x2733b0: `"number"/"Number"` → `lua_pushinteger` (0x2734c4);
+    // `"Color"` → `color3` (IDA 0x3047c4) `pushNewObject` (0x2734d6..);
+    // `"r"`/`"g"`/`"b"` → `color3` lane `lua_pushnumber` (0x2734f0..);
+    // `"name"/"Name"` → `name` (IDA 0x304674) `lua_pushlstring` (0x2734a6..);
+    // else `runtime_error("%s is not a valid member")` (0x27355e..).
+    // The host has no integer slot, so the number pushes as a number.
+    if key == "number" || key == "Number" {
+        thread.push(LuaStackValue::Number(f64::from(color.number)));
+    } else if key == "Color" {
+        let rgb = brickcolor_color3(color.number);
+        push_new_object(thread, lua_bridge_class::COLOR3, LuaUserdataPayload::Color3(rgb));
+    } else if key == "r" || key == "g" || key == "b" {
+        let rgb = brickcolor_color3(color.number);
+        let lane = if key == "r" { rgb.r } else if key == "g" { rgb.g } else { rgb.b };
+        thread.push(LuaStackValue::Number(f64::from(lane)));
+    } else if key == "name" || key == "Name" {
+        thread.push(LuaStackValue::String(brickcolor_name(color.number).to_owned()));
+    } else {
+        panic!("{key} is not a valid member");
+    }
+    1
 }
 
 // 0x2735bc — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::BrickColor,true>::on_newindex(RBX::BrickColor&,char const*,lua_State *)")]
-pub fn stub_0x2735bc() -> ! {
-    todo!("0x2735bc RBX::Lua::Bridge<RBX::BrickColor,true>::on_newindex(RBX::BrickColor&,char const*,lua_State *)")
+pub fn stub_0x2735bc(key: &str) -> ! {
+    // IDA 0x2735bc (`__noreturn`): unconditional
+    // `runtime_error("%s cannot be assigned to")` throw (0x2735f0..0x273668)
+    // — BrickColor members are read-only, like [`stub_0x270724`].
+    panic!("{key} cannot be assigned to");
+}
+
+#[cfg(test)]
+mod bridge_brickcolor_batch_tests {
+    use super::*;
+    use crate::brick_color_palette::BRICK_COLOR_TABLE;
+
+    fn brick_result(thread: &LuaThreadState) -> LuaBrickColor {
+        match thread.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::BrickColor(v) => *v,
+                other => panic!("expected BrickColor, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn new_brickcolor_dispatches_all_arms() {
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(21.0)] };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 21 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(9999.0)] };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 194 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::String("Bright red".to_owned())] };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 21 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::String("No Such Color".to_owned())] };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 194 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::String("21".to_owned())] };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 21 });
+        let white = LuaColor3 { r: 242.0 / 255.0, g: 243.0 / 255.0, b: 243.0 / 255.0 };
+        let mut thread = LuaThreadState {
+            stack: vec![LuaStackValue::Userdata(LuaUserdata {
+                class: lua_bridge_class::COLOR3.to_owned(),
+                payload: LuaUserdataPayload::Color3(white),
+            })],
+        };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 1 });
+        // 0-arg: the preserved double push (194, then closest-to-black =
+        // Really black 1003: L1 distance 0.2 beats Black's 0.478).
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(thread.stack.len(), 2);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 1003 });
+        assert!(matches!(
+            &thread.stack[0],
+            LuaStackValue::Userdata(ud) if ud.payload == LuaUserdataPayload::BrickColor(LuaBrickColor { number: 194 })
+        ));
+        // 3-lane rgb path resolves through closest().
+        let mut thread = LuaThreadState {
+            stack: vec![
+                LuaStackValue::Number(13.0 / 255.0),
+                LuaStackValue::Number(105.0 / 255.0),
+                LuaStackValue::Number(172.0 / 255.0),
+            ],
+        };
+        assert_eq!(stub_0x2730d8(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 23 });
+    }
+
+    #[test]
+    fn palette_index_bounds_checked() {
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(0.0)] };
+        assert_eq!(stub_0x27320c(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 119 });
+        let mut thread = LuaThreadState::default();
+        assert_eq!(stub_0x27320c(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 119 });
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(63.0)] };
+        assert_eq!(stub_0x27320c(&mut thread), 1);
+        assert_eq!(brick_result(&thread), LuaBrickColor { number: 141 });
+    }
+
+    #[test]
+    #[should_panic(expected = "palette index out of bounds")]
+    fn palette_rejects_negative() {
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(-1.0)] };
+        let _ = stub_0x27320c(&mut thread);
+    }
+
+    #[test]
+    #[should_panic(expected = "palette index out of bounds")]
+    fn palette_rejects_overflow() {
+        let mut thread = LuaThreadState { stack: vec![LuaStackValue::Number(64.0)] };
+        let _ = stub_0x27320c(&mut thread);
+    }
+
+    #[test]
+    fn random_draws_from_palette() {
+        for _ in 0..16 {
+            let mut thread = LuaThreadState::default();
+            assert_eq!(stub_0x2731f0(&mut thread), 1);
+            let got = brick_result(&thread).number;
+            assert!(BRICK_COLOR_PALETTE.contains(&got), "random drew {got} outside the palette");
+        }
+    }
+
+    #[test]
+    fn push_helpers_push_exact_numbers() {
+        for (func, number) in [
+            (stub_0x273330 as fn(&mut LuaThreadState) -> i32, 1),
+            (stub_0x273340, 194),
+            (stub_0x273350, 199),
+            (stub_0x273360, 26),
+            (stub_0x273370, 21),
+            (stub_0x273380, 24),
+            (stub_0x273390, 28),
+            (stub_0x2733a0, 23),
+        ] {
+            let mut thread = LuaThreadState::default();
+            assert_eq!(func(&mut thread), 1);
+            assert_eq!(brick_result(&thread), LuaBrickColor { number });
+        }
+        assert_eq!(stub_0x27309c(&mut LuaThreadState::default()), 0);
+    }
+
+    #[test]
+    fn brickcolor_index_arms() {
+        let red = LuaBrickColor { number: 21 };
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2733b0(&red, "Number", &mut out), 1);
+        assert_eq!(out.stack.last(), Some(&LuaStackValue::Number(21.0)));
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2733b0(&red, "r", &mut out), 1);
+        assert_eq!(stub_0x2733b0(&red, "g", &mut out), 1);
+        assert_eq!(stub_0x2733b0(&red, "b", &mut out), 1);
+        assert_eq!(
+            out.stack,
+            vec![
+                LuaStackValue::Number(f64::from(196.0f32 / 255.0)),
+                LuaStackValue::Number(f64::from(40.0f32 / 255.0)),
+                LuaStackValue::Number(f64::from(28.0f32 / 255.0)),
+            ]
+        );
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2733b0(&red, "Color", &mut out), 1);
+        match out.stack.last() {
+            Some(LuaStackValue::Userdata(ud)) => match &ud.payload {
+                LuaUserdataPayload::Color3(c) => {
+                    assert_eq!(*c, LuaColor3 { r: 196.0 / 255.0, g: 40.0 / 255.0, b: 28.0 / 255.0 });
+                }
+                other => panic!("expected Color3, got {other:?}"),
+            },
+            other => panic!("expected userdata, got {other:?}"),
+        }
+        let mut out = LuaThreadState::default();
+        assert_eq!(stub_0x2733b0(&red, "name", &mut out), 1);
+        // Every table row resolves through name/parse; `parse` is a linear
+        // scan, so duplicated names ("Deep orange" on 1005 and 1017) yield
+        // the first row — mirrored here.
+        let mut first_seen = std::collections::HashSet::new();
+        for entry in BRICK_COLOR_TABLE {
+            if first_seen.insert(entry.name) {
+                assert_eq!(brickcolor_parse(entry.name), entry.number);
+            }
+            assert_eq!(brickcolor_name(entry.number), entry.name);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "is not a valid member")]
+    fn brickcolor_index_rejects_unknown_key() {
+        let _ = stub_0x2733b0(&LuaBrickColor { number: 1 }, "alpha", &mut LuaThreadState::default());
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn brickcolor_newindex_is_read_only() {
+        stub_0x2735bc("Name");
+    }
 }
 
 // 0x273674 — __ZN3RBX3Lua21CoordinateFrameBridge18newCoordinateFrameEP9lua_State
