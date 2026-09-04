@@ -83,6 +83,35 @@ pub(crate) fn set_about_outlet(name: &str, handle: usize) {
     ABOUT_OUTLETS.lock().insert(name.to_owned(), handle);
 }
 
+/// Gap-filler UpgradeCheckHelper + iOSSettingsService observable state
+/// (IDA 0x20e78-0x21ce0). The singleton handle, alert buttons/title/
+/// message, response buffer, connection flag, request/alert/show counts
+/// and opened URL record here; network/JSON/UIKit queries collapse into
+/// parameters at the call sites.
+pub(crate) static UPGRADE_HELPER_HANDLE: std::sync::atomic::AtomicUsize =
+    std::sync::atomic::AtomicUsize::new(0);
+pub(crate) static UPGRADE_ALERT_BUTTONS: parking_lot::Mutex<Vec<String>> =
+    parking_lot::Mutex::new(Vec::new());
+pub(crate) static UPGRADE_ALERT_TITLE: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static UPGRADE_ALERT_MESSAGE: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
+pub(crate) static UPGRADE_IGNORE_ENABLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+pub(crate) static UPGRADE_RESPONSE: parking_lot::Mutex<Vec<u8>> = parking_lot::Mutex::new(Vec::new());
+pub(crate) static UPGRADE_CONNECTION_ACTIVE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static UPGRADE_REQUESTS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LAST_UPGRADE_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static UPGRADE_ALERT_SHOWS: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+pub(crate) static UPGRADE_PARSE_ERRORS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static UPGRADE_OPENED_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static LAST_UPGRADE_ALERT: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static IOS_SETTINGS_INIT_DONE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static IOS_SETTINGS_KEYS: parking_lot::Mutex<Vec<String>> =
+    parking_lot::Mutex::new(Vec::new());
+
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
 pub fn stub_0x1f380() {
@@ -1117,146 +1146,357 @@ pub fn stub_0x20e54(handle: usize) {
 // 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeCheckHelper]")]
-pub fn stub_0x20e78() -> ! {
-    todo!("0x20e78 +[UpgradeCheckHelper getUpgradeCheckHelper]")
+pub fn stub_0x20e78(upgrade_button_text: &str) -> usize {
+    // IDA 0x20e78: `getUpgradeCheckHelper` runs the alloc/init block
+    // once (0x20e78-0x20ed0, stub_0x20ed4) and returns the singleton
+    // (0x20ed0). `dispatch_once` collapses to get-or-init on the
+    // handle cell; the localized button text behind init crosses as a
+    // parameter.
+    let mut handle = UPGRADE_HELPER_HANDLE.load(std::sync::atomic::Ordering::SeqCst);
+    if handle == 0 {
+        handle = stub_0x20ed4(upgrade_button_text);
+        UPGRADE_HELPER_HANDLE.store(handle, std::sync::atomic::Ordering::SeqCst);
+    }
+    handle
 }
 
 // 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
 #[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
-pub fn stub_0x20ed4() -> ! {
-    todo!("0x20ed4 ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")
+pub fn stub_0x20ed4(upgrade_button_text: &str) -> usize {
+    // IDA 0x20ed4: the once block allocs + inits the helper
+    // (0x20ed4-0x20f06) and publishes it (0x20f02). Allocation is drop
+    // glue; init runs for its button/buffer observables and the cell
+    // takes a nonzero handle.
+    stub_0x20f1c(upgrade_button_text);
+    1
 }
 
 // 0x20f08 — ___copy_helper_block__3
 #[doc(alias = "___copy_helper_block__3")]
-pub fn stub_0x20f08() -> ! {
-    todo!("0x20f08 ___copy_helper_block__3")
+pub fn stub_0x20f08(_dst: usize, _src: usize) {
+    // IDA 0x20f08: `__copy_helper_block__3` — one `_Block_object_assign`
+    // retain (0x20f08-0x20f0e, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x20f14 — ___destroy_helper_block__3
 #[doc(alias = "___destroy_helper_block__3")]
-pub fn stub_0x20f14() -> ! {
-    todo!("0x20f14 ___destroy_helper_block__3")
+pub fn stub_0x20f14(_block: usize) {
+    // IDA 0x20f14: `__destroy_helper_block__3` — one
+    // `_Block_object_dispose` release (0x20f14-0x20f18, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x20f1c — -[UpgradeCheckHelper init]
 // type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper init]")]
-pub fn stub_0x20f1c() -> ! {
-    todo!("0x20f1c -[UpgradeCheckHelper init]")
+pub fn stub_0x20f1c(upgrade_button_text: &str) {
+    // IDA 0x20f1c: `init` supers (0x20f34-0x20f3e, no target here),
+    // builds the alert view with the `UpgradeButtonText` button
+    // (0x20f40-0x20f9c), and opens an empty response buffer with no
+    // connection (0x20f9e-0x20fbe). The localized title crosses as a
+    // parameter.
+    *UPGRADE_ALERT_BUTTONS.lock() = vec![upgrade_button_text.to_owned()];
+    UPGRADE_RESPONSE.lock().clear();
+    UPGRADE_CONNECTION_ACTIVE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x21038 — -[UpgradeCheckHelper dealloc]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper dealloc]")]
-pub fn stub_0x21038() -> ! {
-    todo!("0x21038 -[UpgradeCheckHelper dealloc]")
+pub fn stub_0x21038() {
+    // IDA 0x21038: `dealloc` releases the alert view, the live
+    // connection when set, and the response buffer (0x21038-0x21078),
+    // then super dealloc (0x2107a-0x21084). Release is drop glue; the
+    // cells reset.
+    UPGRADE_ALERT_BUTTONS.lock().clear();
+    UPGRADE_ALERT_TITLE.lock().clear();
+    UPGRADE_ALERT_MESSAGE.lock().clear();
+    UPGRADE_RESPONSE.lock().clear();
+    UPGRADE_CONNECTION_ACTIVE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
-pub fn stub_0x210b4() -> ! {
-    todo!("0x210b4 +[UpgradeCheckHelper getUpgradeUrl]")
+pub fn stub_0x210b4(base_url: &str) -> String {
+    // IDA 0x210b4: `getUpgradeUrl` appends
+    // `mobileapi/check-app-version?appVersion=%@` to the `RbxBaseUrl`
+    // (0x210b4-0x210f4). The base URL crosses as a parameter; the `%@`
+    // is filled by the request formatter (stub_0x212cc).
+    format!("{base_url}mobileapi/check-app-version?appVersion=%@")
 }
 
 // 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
 // type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
-pub fn stub_0x2111c() -> ! {
-    todo!("0x2111c -[UpgradeCheckHelper getAlertViewButton:]")
+pub fn stub_0x2111c(title: &str) -> Option<usize> {
+    // IDA 0x2111c: `getAlertViewButton:` walks the alert subviews for
+    // the first `UIButton` whose current title matches (0x2111c-0x21234),
+    // else nil (0x21230). Subview enumeration collapses into a search
+    // of the recorded buttons; the match position stands in for the
+    // button handle.
+    UPGRADE_ALERT_BUTTONS.lock().iter().position(|button| button == title)
 }
 
 // 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
-pub fn stub_0x21254() -> ! {
-    todo!("0x21254 -[UpgradeCheckHelper makeUpgradeRequest:]")
+pub fn stub_0x21254(request_url: Option<&str>) {
+    // IDA 0x21254: `makeUpgradeRequest:` resets the response buffer
+    // (0x21254-0x21266), logs when the request is nil (0x21268-0x21278,
+    // unmodeled), and opens the connection on self (0x2127a-0x212a8).
+    // The request URL crosses as a parameter.
+    UPGRADE_RESPONSE.lock().clear();
+    *LAST_UPGRADE_URL.lock() = request_url.unwrap_or_default().to_owned();
+    UPGRADE_CONNECTION_ACTIVE.store(true, std::sync::atomic::Ordering::SeqCst);
+    UPGRADE_REQUESTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x212cc — +[UpgradeCheckHelper checkForUpdate]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
-pub fn stub_0x212cc() -> ! {
-    todo!("0x212cc +[UpgradeCheckHelper checkForUpdate]")
+pub fn stub_0x212cc(
+    short_version: Option<&str>,
+    reachable: bool,
+    base_url: &str,
+    upgrade_button_text: &str,
+    connection_error_text: &str,
+) {
+    // IDA 0x212cc: `checkForUpdate` bails without a
+    // `CFBundleShortVersionString` (0x212e4). With one it tags
+    // `AppiOSV<version>` (0x212fa-0x21330) and, when reachable
+    // (0x21332-0x21348), formats the upgrade URL (0x2134a-0x21388,
+    // stub_0x210b4) and fires the request through the singleton
+    // (0x2138a-0x213cc, stubs 0x20e78/0x21254); else it shows the
+    // `ConnectionError` alert (0x213ce-0x21418). Bundle/reachability
+    // queries collapse into parameters.
+    let Some(short_version) = short_version else {
+        return;
+    };
+    if reachable {
+        let tag = format!("AppiOSV{short_version}");
+        let url = stub_0x210b4(base_url).replacen("%@", &tag, 1);
+        stub_0x20e78(upgrade_button_text);
+        stub_0x21254(Some(&url));
+    } else {
+        *LAST_UPGRADE_ALERT.lock() = connection_error_text.to_owned();
+    }
 }
 
 // 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL)
 #[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
-pub fn stub_0x214a4() -> ! {
-    todo!("0x214a4 -[UpgradeCheckHelper processCheckForUpdateResponse]")
+pub fn stub_0x214a4(
+    response: Result<(Option<String>, Option<String>), String>,
+    recommend_title: &str,
+    recommend_body: &str,
+    require_title: &str,
+    require_body: &str,
+    ignore_text: &str,
+) {
+    // IDA 0x214a4: `processCheckForUpdateResponse` parses the response
+    // JSON (0x21548-0x21576) and logs parse failures via
+    // `RBX::StandardOut` (0x21578-0x215c0, counted here). With a
+    // non-null `data` + `UpgradeAction` (0x215c2-0x2163c) the `Message`
+    // fills the body unless null (0x2163e-0x2166c). `Recommended`
+    // titles the alert, enables (or adds) the Ignore button, and shows
+    // it on main (0x2166e-0x217a2, stub_0x21abc); `Required` titles it,
+    // disables Ignore when present, and shows it (0x217a4-0x2189a,
+    // stub_0x21af0). JSON/NSNull/localization queries collapse into
+    // parameters: `Err` is a parse failure, `Ok` the action/message
+    // pair with `None`s for nulls.
+    let Ok((action, message)) = response else {
+        UPGRADE_PARSE_ERRORS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        return;
+    };
+    let Some(action) = action else {
+        return;
+    };
+    if action == "Recommended" {
+        *UPGRADE_ALERT_TITLE.lock() = recommend_title.to_owned();
+        *UPGRADE_ALERT_MESSAGE.lock() = message.unwrap_or_else(|| recommend_body.to_owned());
+        let mut buttons = UPGRADE_ALERT_BUTTONS.lock();
+        if buttons.contains(&ignore_text.to_owned()) {
+            UPGRADE_IGNORE_ENABLED.store(true, std::sync::atomic::Ordering::SeqCst);
+        } else {
+            buttons.push(ignore_text.to_owned());
+        }
+        drop(buttons);
+        stub_0x21abc();
+    } else if action == "Required" {
+        *UPGRADE_ALERT_TITLE.lock() = require_title.to_owned();
+        *UPGRADE_ALERT_MESSAGE.lock() = message.unwrap_or_else(|| require_body.to_owned());
+        if UPGRADE_ALERT_BUTTONS.lock().contains(&ignore_text.to_owned()) {
+            UPGRADE_IGNORE_ENABLED.store(false, std::sync::atomic::Ordering::SeqCst);
+        }
+        stub_0x21af0();
+    }
 }
 
 // 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
-pub fn stub_0x21abc() -> ! {
-    todo!("0x21abc ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")
+pub fn stub_0x21abc() {
+    // IDA 0x21abc: the recommended-upgrade block shows the alert view
+    // (0x21abc-0x21ada).
+    UPGRADE_ALERT_SHOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x21adc — ___copy_helper_block_132
 #[doc(alias = "___copy_helper_block_132")]
-pub fn stub_0x21adc() -> ! {
-    todo!("0x21adc ___copy_helper_block_132")
+pub fn stub_0x21adc(_dst: usize, _src: usize) {
+    // IDA 0x21adc: `__copy_helper_block_132` — one `_Block_object_assign`
+    // retain (0x21adc-0x21ae2, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x21ae8 — ___destroy_helper_block_133
 #[doc(alias = "___destroy_helper_block_133")]
-pub fn stub_0x21ae8() -> ! {
-    todo!("0x21ae8 ___destroy_helper_block_133")
+pub fn stub_0x21ae8(_block: usize) {
+    // IDA 0x21ae8: `__destroy_helper_block_133` — one
+    // `_Block_object_dispose` release (0x21ae8-0x21aec, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
 #[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
-pub fn stub_0x21af0() -> ! {
-    todo!("0x21af0 ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")
+pub fn stub_0x21af0() {
+    // IDA 0x21af0: the required-upgrade block shows the alert view
+    // (0x21af0-0x21b0e).
+    UPGRADE_ALERT_SHOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x21b10 — ___copy_helper_block_142
 #[doc(alias = "___copy_helper_block_142")]
-pub fn stub_0x21b10() -> ! {
-    todo!("0x21b10 ___copy_helper_block_142")
+pub fn stub_0x21b10(_dst: usize, _src: usize) {
+    // IDA 0x21b10: `__copy_helper_block_142` — one `_Block_object_assign`
+    // retain (0x21b10-0x21b16, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x21b1c — ___destroy_helper_block_143
 #[doc(alias = "___destroy_helper_block_143")]
-pub fn stub_0x21b1c() -> ! {
-    todo!("0x21b1c ___destroy_helper_block_143")
+pub fn stub_0x21b1c(_block: usize) {
+    // IDA 0x21b1c: `__destroy_helper_block_143` — one
+    // `_Block_object_dispose` release (0x21b1c-0x21c20, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
 #[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
-pub fn stub_0x21b24() -> ! {
-    todo!("0x21b24 -[UpgradeCheckHelper connection:didReceiveData:]")
+pub fn stub_0x21b24(is_current: bool, chunk: &[u8]) {
+    // IDA 0x21b24: `connection:didReceiveData:` appends the chunk when
+    // the connection is current (0x21b24-0x21b54). The pointer
+    // comparison crosses as a parameter.
+    if is_current {
+        UPGRADE_RESPONSE.lock().extend_from_slice(chunk);
+    }
 }
-
 // 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
 #[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
-pub fn stub_0x21b58() -> ! {
-    todo!("0x21b58 -[UpgradeCheckHelper connectionDidFinishLoading:]")
+pub fn stub_0x21b58(
+    is_current: bool,
+    response: Result<(Option<String>, Option<String>), String>,
+    recommend_title: &str,
+    recommend_body: &str,
+    require_title: &str,
+    require_body: &str,
+    ignore_text: &str,
+) {
+    // IDA 0x21b58: `connectionDidFinishLoading:` releases the current
+    // connection, clears it, and processes the buffered response
+    // (0x21b58-0x21b9c, stub_0x214a4). Release is drop glue; the
+    // response parse crosses as a parameter like stub_0x214a4.
+    if is_current {
+        UPGRADE_CONNECTION_ACTIVE.store(false, std::sync::atomic::Ordering::SeqCst);
+        stub_0x214a4(response, recommend_title, recommend_body, require_title, require_body, ignore_text);
+    }
 }
 
 // 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
 // type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
 #[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
-pub fn stub_0x21ba0() -> ! {
-    todo!("0x21ba0 -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")
+pub fn stub_0x21ba0(is_upgrade_alert: bool, button_index: i32) {
+    // IDA 0x21ba0: `alertView:clickedButtonAtIndex:` opens the App
+    // Store URL when button 0 of the upgrade alert fires
+    // (0x21ba0-0x21c12). The alert pointer comparison + index cross as
+    // parameters.
+    if is_upgrade_alert && button_index == 0 {
+        *UPGRADE_OPENED_URL.lock() = "itms://itunes.com/apps/robloxmobile".to_owned();
+    }
 }
 
 // 0x21c18 — __GLOBAL__I_a_6
 #[doc(alias = "global constructor keyed to_a_6")]
 #[doc(alias = "__GLOBAL__I_a_6")]
-pub fn stub_0x21c18() -> ! {
-    todo!("0x21c18 global constructor keyed to_a_6")
+pub fn stub_0x21c18() {
+    // IDA 0x21c18: `__GLOBAL__I_a_6` — stores
+    // `boost::system::generic_category()` (x2) / `system_category()`
+    // singletons, runs `std::ios_base::Init`, and guards the
+    // `exception_ptr` static objects + `singleton_pool` storages
+    // (disasm 0x21c1c-0x21cde; decompile unavailable, init thunk). Same
+    // cutover as stub_0x1d870; no body.
 }
 
 // 0x21ce0 — __ZN18iOSSettingsService4InitEv
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::Init(void)")]
 #[doc(alias = "__ZN18iOSSettingsService4InitEv")]
-pub fn stub_0x21ce0() -> ! {
-    todo!("0x21ce0 iOSSettingsService::Init(void)")
+pub fn stub_0x21ce0() {
+    // IDA 0x21ce0: `iOSSettingsService::Init` registers the 39
+    // settings keys (BugSense/TestFlight/MemoryBouncer/FreeMemory/
+    // SearchEndpoint/GoogleAnalytics/Thumbstick/purchase-timers/device
+    // parts + versions, 0x21ce0-0x239ea) into the service map. The
+    // native callbacks have no target here; the key set records,
+    // once.
+    if IOS_SETTINGS_INIT_DONE.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    *IOS_SETTINGS_KEYS.lock() = [
+        "BugSenseLogLevel",
+        "BugSenseLogLines",
+        "BugSensePercentage",
+        "CacheUIWebViews",
+        "DisablePlayButtonForAll",
+        "DisablePlayButtonForNonBC",
+        "FreeMemoryCheckerActive",
+        "FreeMemoryCheckerRateMilliSeconds",
+        "FreeMemoryCheckerThresholdKiloBytes",
+        "MemoryBouncerActive",
+        "MemoryBouncerEnforceRateMilliSeconds",
+        "MemoryBouncerLimitMegaBytes",
+        "MemoryBouncerLimitMegaBytesForLowMemDevices",
+        "MemoryBouncerThresholdKiloBytes",
+        "SearchEndpointIPad",
+        "SearchEndpointIPhone",
+        "TestFlightLoggingLevel",
+        "TestFlightPercentage",
+        "ThumbstickControlStyle",
+        "TimeIntervalBetweenBCPurchaseInMinutes",
+        "TimeIntervalBetweenCatalogPurchaseInMinutes",
+        "TimeIntervalBetweenRobuxPurchaseInMinutes",
+        "TimeLimitForBillingServiceRetriesBeforeGivingUp",
+        "iOSGoogleAnalyticsAccount2",
+        "iOSGoogleAnalyticsSampleRate",
+        "iPad1_MaximumIdealParts",
+        "iPad2_MaximumIdealParts",
+        "iPad3_MaximumIdealParts",
+        "iPad4_MaximumIdealParts",
+        "iPadMaximumVersion",
+        "iPadMinimumVersion",
+        "iPhone4s_MaximumIdealParts",
+        "iPhone5_MaximumIdealParts",
+        "iPhoneMaximumVersion",
+        "iPhoneMinimumVersion",
+        "iPod4_MaximumIdealParts",
+        "iPod5_MaximumIdealParts",
+        "iPodMaximumVersion",
+        "iPodMinimumVersion",
+    ]
+    .iter()
+    .map(|key| key.to_string())
+    .collect();
 }
