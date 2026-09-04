@@ -68,6 +68,70 @@ pub fn prop_ack_outcome(
     }
 }
 
+/// `ServerReplicator::sendTop` header byte (IDA 0x9dbed4..0x9dbed6):
+/// `operator<<(BitStream &, uchar)` with `0x81` (disasm).
+pub const SEND_TOP_BYTE: u8 = 129;
+
+/// `ServerReplicator::sendTop` (IDA 0x9dbe34): logs
+/// "ServerReplicator:sendTop - begin", writes 129 plus the
+/// streaming-enabled byte (disasm `operator<<(uchar)` /
+/// `operator<<(bool)`, 0x9dbed6/0x9dbeea) with the optional flag word
+/// behind virtual+192(18) (0x9dbf00..0x9dbf14), serializes each
+/// replicable instance id (queuing `NewInstanceItem`s behind
+/// `DelayAddTopReplicationInstance`; non-replicable ones are logged and
+/// disconnected, 0x9dbf26..0x9dc424), and sends at priority 3
+/// (0x9dc4d6). Instance iteration, replication vetting, and the send
+/// stay engine-side.
+pub fn send_top(
+    stream: &mut BitStream,
+    streaming_enabled: bool,
+    extra_flag: Option<bool>,
+    instance_ids: &[u32],
+    serialize_id: &mut dyn FnMut(&mut BitStream, u32),
+    queue_new_instance: &mut dyn FnMut(u32),
+    send: &mut dyn FnMut(&mut BitStream),
+) {
+    stream.write_u8(SEND_TOP_BYTE);
+    stream.write_bool(streaming_enabled);
+    if let Some(flag) = extra_flag {
+        stream.write_bool(flag);
+    }
+    for &id in instance_ids {
+        serialize_id(stream, id);
+        queue_new_instance(id);
+    }
+    send(stream);
+}
+
+/// `ServerReplicator::readPropAcknowledgement` (IDA 0x9dd5f8): reads the
+/// event id int (0x9dd606), the descriptor index in `bits` (0x9dd618,
+/// `vector::_M_range_check` on overflow), and the instance ref (a miss
+/// returns 0, 0x9dd63a); on a hit asserts descriptor membership
+/// (property.h:255, 0x9dd65e..0x9dd6b2) and forwards to
+/// `PropSync::Master::onReceivedAcknowledgement` (0x9dd6b2).
+/// Descriptor tables and `PropSync` stay engine-side behind `on_ack`.
+/// Returns whether the ack applied.
+pub fn read_prop_acknowledgement(
+    stream: &mut BitStream,
+    descriptor_bits: u32,
+    descriptor_count: usize,
+    instance_present: bool,
+    member_matches: bool,
+    on_ack: &mut dyn FnMut(i32) -> bool,
+) -> bool {
+    let event_id = stream.read_i32().expect("BitStream >> int failed");
+    let index = stream.read_bits(descriptor_bits as u8).expect("BitStream ReadBits failed");
+    assert!((index as usize) < descriptor_count, "vector::_M_range_check");
+    if !instance_present {
+        return false;
+    }
+    debug_assert!(
+        member_matches,
+        "!instance || descriptor.isMemberOf(instance) ../App/include/reflection/property.h line: 255"
+    );
+    on_ack(event_id)
+}
+
 /// One synchronized flag for [`serialize_sf_flags`].
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct SynchronizedFlag<'a> {
@@ -481,5 +545,46 @@ mod tests {
         s.write_i16(1234);
         let mut r = BitStream::from_bytes(&s.into_bytes());
         assert_eq!(read_quota(&mut r), (-70000, 1234));
+    }
+
+    #[test]
+    fn send_top_frames_header_and_instances() {
+        // IDA 0x9dbe34: 129 + streaming byte + optional flag, per-id serialize/queue, send.
+        let mut s = BitStream::new();
+        let mut seen = Vec::new();
+        let mut queued = Vec::new();
+        let mut sent = false;
+        send_top(
+            &mut s, true, Some(false), &[7, 9],
+            &mut |st, id| { seen.push(id); st.write_u32(id); },
+            &mut |id| queued.push(id),
+            &mut |_| sent = true,
+        );
+        assert!(sent);
+        assert_eq!(seen, vec![7, 9]);
+        assert_eq!(queued, vec![7, 9]);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(r.read_u8(), Some(SEND_TOP_BYTE));
+        assert_eq!(r.read_bool(), Some(true));
+        assert_eq!(r.read_bool(), Some(false));
+        assert_eq!(r.read_u32(), Some(7));
+    }
+
+    #[test]
+    fn prop_ack_reads_event_index_and_ref() {
+        // IDA 0x9dd5f8: event id, bit index, instance gate, PropSync forward.
+        let mut s = BitStream::new();
+        s.write_i32(42);
+        s.write_bits(2, 2);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut acked = -1;
+        let applied = read_prop_acknowledgement(&mut r, 2, 4, true, true, &mut |id| { acked = id; true });
+        assert!(applied);
+        assert_eq!(acked, 42);
+        let mut s = BitStream::new();
+        s.write_i32(1);
+        s.write_bits(0, 2);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert!(!read_prop_acknowledgement(&mut r, 2, 4, false, true, &mut |_| panic!("no forward on miss")));
     }
     }

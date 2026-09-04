@@ -929,16 +929,18 @@ pub fn stub_9d7414() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
 #[doc(alias = "__ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")]
-pub fn stub_9d7430() -> ! {
-    todo!("0x9d7430 __ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")
+pub fn stub_9d7430(table: &mut crate::player::ReplicatorTable) -> u32 {
+    // IDA 0x9d7430 (C1): `new ServerReplicator` + control block, owner-wired; returns the handle.
+    table.create()
 }
 
 // 0x9d744c — __ZN3RBX7Network16ServerReplicatorC2EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *, pthread_mutex_t *, RBX::ServiceProvider *, pthread_mutex_t *)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
 #[doc(alias = "__ZN3RBX7Network16ServerReplicatorC2EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")]
-pub fn stub_9d744c() -> ! {
-    todo!("0x9d744c __ZN3RBX7Network16ServerReplicatorC2EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")
+pub fn stub_9d744c(table: &mut crate::player::ReplicatorTable) -> u32 {
+    // IDA 0x9d744c (C2): `new ServerReplicator` + control block, owner-wired; returns the handle.
+    table.create()
 }
 
 // 0x9d7e54 — __ZN3RBX7Network16ServerReplicatorD0Ev

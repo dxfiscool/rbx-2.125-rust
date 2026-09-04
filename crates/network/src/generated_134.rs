@@ -23,17 +23,19 @@ pub fn stub_9d7414() -> ! {
 // 0x9d7430 — __ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
-pub fn stub_9d7430() -> ! {
-    todo!("0x9d7430 __ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")
+pub fn stub_9d7430(table: &mut crate::player::ReplicatorTable) -> u32 {
+    // IDA 0x9d7430 (C1): `new ServerReplicator` + control block, owner-wired; returns the handle.
+    table.create()
 }
 
 // 0x9d744c — __ZN3RBX7Network16ServerReplicatorC2EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *, pthread_mutex_t *, RBX::ServiceProvider *, pthread_mutex_t *)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
-pub fn stub_9d744c() -> ! {
-    todo!("0x9d744c __ZN3RBX7Network16ServerReplicatorC2EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE")
-}
+pub fn stub_9d744c(table: &mut crate::player::ReplicatorTable) -> u32 {
+    // IDA 0x9d744c (C2): `new ServerReplicator` + control block, owner-wired; returns the handle.
+    table.create()
 
+}
 // 0x9d7e54 — __ZN3RBX7Network16ServerReplicatorD0Ev
 // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 #[doc(alias = "RBX::Network::ServerReplicator::~ServerReplicator()")]
@@ -220,8 +222,18 @@ pub fn stub_9dbd5c() -> ! {
 // 0x9dbe34 — __ZN3RBX7Network16ServerReplicator7sendTopEPN6RakNet16RakPeerInterfaceE
 // type: int __fastcall(RBX::Network::Replicator *, int, int, const void *)
 #[doc(alias = "RBX::Network::ServerReplicator::sendTop(RakNet::RakPeerInterface *)")]
-pub fn stub_9dbe34() -> ! {
-    todo!("0x9dbe34 __ZN3RBX7Network16ServerReplicator7sendTopEPN6RakNet16RakPeerInterfaceE")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9dbe34(
+    stream: &mut crate::bitstream::BitStream,
+    streaming_enabled: bool,
+    extra_flag: Option<bool>,
+    instance_ids: &[u32],
+    serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream, u32),
+    queue_new_instance: &mut dyn FnMut(u32),
+    send: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+) {
+    // IDA 0x9dbe34: 129 header + id loop + priority-3 send.
+    crate::replicator::send_top(stream, streaming_enabled, extra_flag, instance_ids, serialize_id, queue_new_instance, send);
 }
 
 // 0x9dc8e4 — __ZN3RBX7Network16ServerReplicator19installRemotePlayerESs
@@ -242,10 +254,11 @@ pub fn stub_9dca6c(address_matches: bool, first_byte: Option<u8>) -> crate::repl
 // 0x9dcbc8 — __ZThn1180_N3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, unsigned int *)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_9dcbc8() -> ! {
-    todo!("0x9dcbc8 __ZThn1180_N3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE")
-}
+pub fn stub_9dcbc8(address_matches: bool, first_byte: Option<u8>) -> crate::replicator::ReceiveVerdict {
+    // IDA 0x9dcbc8 (ZThn1180 OnReceive): adjusts `this`, then OnReceive.
+    crate::replicator::on_receive(address_matches, first_byte)
 
+}
 // 0x9dcbd8 — __ZN3RBX7Network16ServerReplicator15sendItemsPacketEv
 // type: int __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::sendItemsPacket(void)")]
