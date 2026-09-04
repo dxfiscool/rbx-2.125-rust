@@ -4737,10 +4737,51 @@ pub fn stub_663328() {
     // IDA 0x663328: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
+/// `RBX::BrickColor` cutover: 4-byte payload (the 0x664040 getter returns it
+/// in a register, 0x664064 — not a multi-lane struct like `Vector3`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct BrickColor(pub u32);
+
+/// `RBX::Reflection::BoundProp<bool, Mutable>` cutover for `Team`
+/// (IDA 0x663b74): unlike `GetSetImpl` (member-function pair), the
+/// `BoundPropGetSet` reads/writes a bound field byte directly
+/// (0x663d14/0x663d34). The field offset folds into storage; the change
+/// callback + `raisePropertyChanged` fold into `on_change`/`changed`.
+#[derive(Clone, Default)]
+pub struct BoundBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+    pub on_change: Option<SharedPtr<dyn Fn(bool) + Send + Sync>>,
+    pub changed: bool,
+}
+
 // 0x663b74 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4TeamEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Team>(char const*,char const*,bool RBX::Team::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_663b74() -> ! {
-    todo!("0x663b74 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Team>(char const*,char const*,bool RBX::Team::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_663b74(
+    name: &str,
+    category: &str,
+    initial: bool,
+    on_change: Option<SharedPtr<dyn Fn(bool) + Send + Sync>>,
+    attributes: u32,
+    permissions: u32,
+) -> BoundBoolProp {
+    // IDA 0x663b74: `BoundProp<bool, Mutable>::BoundProp<Team>` ctor:
+    // class-descriptor fetch, `new` the `BoundPropGetSet` holding the field
+    // offset + change member, forward into the typed-descriptor ctor. The
+    // field offset folds into direct storage; the change member folds into
+    // `on_change`.
+    BoundBoolProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        attributes,
+        permissions,
+        value: initial,
+        on_change,
+        changed: false,
+    }
 }
 
 // 0x663d04 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE10isReadOnlyEv
@@ -4759,20 +4800,42 @@ pub fn stub_663d08() -> bool {
 
 // 0x663d0c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_663d0c() -> ! {
-    todo!("0x663d0c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_663d0c(prop: &BoundBoolProp) -> bool {
+    // IDA 0x663d0c: `BoundPropGetSet::getValue`: direct bound-field byte
+    // read at `*(this + 8) + obj - 36` (0x663d14) — no member-function hop,
+    // unlike `GetSetImpl`.
+    prop.value
 }
 
 // 0x663d18 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_663d18() -> ! {
-    todo!("0x663d18 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_663d18(prop: &mut BoundBoolProp, value: bool) {
+    // IDA 0x663d18: `BoundPropGetSet::setValue`: header strip (`a2 - 36`,
+    // 0x663d22); on change store the byte (0x663d34), run the bound change
+    // member when present (0x663d36-0x663d54), then
+    // `Instance::raisePropertyChanged` (collapsed into `changed`).
+    if prop.value != value {
+        prop.value = value;
+        if let Some(cb) = prop.on_change.clone() {
+            cb(value);
+        }
+        prop.changed = true;
+    }
 }
 
 // 0x663d68 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::PropDescriptor<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>(char const*,char const*,bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_663d68() -> ! {
-    todo!("0x663d68 RBX::Reflection::PropDescriptor<RBX::Team,bool>::PropDescriptor<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>(char const*,char const*,bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_663d68(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<bool> {
+    // IDA 0x663d68: `PropDescriptor<Team, bool>` get/set ctor: `new` the
+    // GetSetImpl, forward into the `TypedPropertyDescriptor` ctor (same
+    // shape as 0x5f0cec).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x663e7c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED0Ev
@@ -4797,20 +4860,33 @@ pub fn stub_663eac() -> bool {
 
 // 0x663eb0 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_663eb0() -> ! {
-    todo!("0x663eb0 RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_663eb0(prop: &Prop<bool>) -> bool {
+    // IDA 0x663eb0: `GetSetImpl<bool>::getValue` for Team: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x663ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_663ed4() -> ! {
-    todo!("0x663ed4 RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_663ed4(prop: &mut Prop<bool>, value: bool) {
+    // IDA 0x663ed4: `GetSetImpl<bool>::setValue` for Team: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x663ef8 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_663ef8() -> ! {
-    todo!("0x663ef8 RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_663ef8(
+    name: &str,
+    category: &str,
+    initial: BrickColor,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<BrickColor> {
+    // IDA 0x663ef8: `PropDescriptor<Team, BrickColor>` get/set ctor: `new`
+    // the GetSetImpl, forward into the `TypedPropertyDescriptor` ctor
+    // (same shape as 0x5f0cec).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x66400c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED0Ev
@@ -4835,20 +4911,34 @@ pub fn stub_66403c() -> bool {
 
 // 0x664040 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_664040() -> ! {
-    todo!("0x664040 RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_664040(prop: &Prop<BrickColor>) -> BrickColor {
+    // IDA 0x664040: `GetSetImpl<BrickColor>::getValue` for Team: header
+    // strip (`a3 - 36`, 0x664048), member-pointer decode
+    // (`offset >> 1`, virtual bit, 0x664058-0x664060), invoke (0x664064).
+    prop.value
 }
 
 // 0x664068 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
-pub fn stub_664068() -> ! {
-    todo!("0x664068 RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")
+pub fn stub_664068(prop: &mut Prop<BrickColor>, value: BrickColor) {
+    // IDA 0x664068: `GetSetImpl<BrickColor>::setValue` for Team: header
+    // strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x66408c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::PropDescriptor<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>(char const*,char const*,int (RBX::Team::*)(void)const,void (RBX::Team::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_66408c() -> ! {
-    todo!("0x66408c RBX::Reflection::PropDescriptor<RBX::Team,int>::PropDescriptor<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>(char const*,char const*,int (RBX::Team::*)(void)const,void (RBX::Team::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_66408c(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<i32> {
+    // IDA 0x66408c: `PropDescriptor<Team, int>` get/set ctor: `new` the
+    // GetSetImpl, forward into the `TypedPropertyDescriptor` ctor (same
+    // shape as 0x5f0cec).
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x6641a0 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED0Ev
@@ -4873,14 +4963,18 @@ pub fn stub_6641d0() -> bool {
 
 // 0x6641d4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_6641d4() -> ! {
-    todo!("0x6641d4 RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_6641d4(prop: &Prop<i32>) -> i32 {
+    // IDA 0x6641d4: `GetSetImpl<int>::getValue` for Team: header strip,
+    // getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x6641f4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_6641f4() -> ! {
-    todo!("0x6641f4 RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_6641f4(prop: &mut Prop<i32>, value: i32) {
+    // IDA 0x6641f4: `GetSetImpl<int>::setValue` for Team: header strip,
+    // setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x665008 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EED1Ev
