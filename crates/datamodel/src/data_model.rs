@@ -732,8 +732,19 @@ impl DataModelSignal {
             slot.call(dm);
         }
     }
-}
 
+    /// `signal::insert` (IDA `0x4b164`): appends the slot and links it.
+    pub fn insert(&self, slot: &SharedPtr<DataModelSlot>) {
+        slot.set_linked(true);
+        self.slots.lock().push(SharedPtr::clone(slot));
+    }
+
+    /// `signal::remove` (IDA `0x4ba50`): unlinks the slot; the asserts
+    /// collapse into the retain-filter below.
+    pub fn remove(&self, slot: &SharedPtr<DataModelSlot>) {
+        self.slots.lock().retain(|s| !SharedPtr::ptr_eq(s, slot));
+    }
+}
 impl Default for DataModelSignal {
     fn default() -> Self {
         Self::new()
@@ -755,6 +766,13 @@ impl DataModelConnection {
         if let Some(slot) = self.slot.upgrade() {
             stub_0x4b860(signal, &slot);
         }
+    }
+}
+impl DataModelConnection {
+    /// `signal::connect` handle (IDA `0x49e7c`): the weak ref installed by
+    /// `intrusive_ptr_add_weak_ref` after `insert`.
+    pub fn new(slot: &SharedPtr<DataModelSlot>) -> Self {
+        Self { slot: SharedPtr::downgrade(slot) }
     }
 }
 

@@ -8,9 +8,10 @@
 
 use rbx_core::SharedPtr;
 use crate::data_model::{
-    ContentId, DataModel, DataModelCallback, ExecuteError, LegacyLock,
-    UploadErrorCallback, UploadSuccessCallback, ViewFlagMarshallerBind, ViewGameFn,
-    ViewGameMarshallerBind,
+    ContentId, DataModel, DataModelCallback, DataModelConnection, DataModelJobBase,
+    DataModelSignal, DataModelSlot, DataModelSlotFn, ExecuteError, FunctionMarshaller,
+    LegacyLock, ManualResetEvent, RenderJob, UploadErrorCallback, UploadSuccessCallback,
+    ViewFlagMarshallerBind, ViewGameFn, ViewGameMarshallerBind, RENDER_JOB_INTERVAL,
 };
 use crate::generated_05::{FunctorOp, Instance, SaveFilter};
 use crate::generated_296::OverlayDataModel;
@@ -18,6 +19,7 @@ use crate::instance::{
     Camera, CRenderSettingsItem, ControllerService, LoginService, ObjcInstanceBind,
     Players, RunService, TaskSchedulerSettings,
 };
+use rbx_core::WeakPtr;
 use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter};
 
 /// Rust model of the `RobloxView` workspace-binding surface behind
@@ -29,6 +31,16 @@ pub struct WorkspaceBinding {
     pub model: Option<SharedPtr<DataModel>>,
     pub overlay: Option<SharedPtr<OverlayDataModel>>,
     pub active: bool,
+}
+/// Rust model of the `DataModel*` objc bind triple behind 0x4bf6c/0x4bfcc:
+/// same 12-byte buffer shape as `instance::ObjcInstanceBind`, but the
+/// callee takes the raw `DataModel*` — `arg<1>` rides the call frame
+/// unretained (cf. IDA 0x4bfcc tail-call).
+#[derive(Clone, Copy)]
+pub struct ObjcDataModelBind {
+    pub func: fn(*mut (), *mut (), *mut DataModel),
+    pub target: *mut (),
+    pub selector: *mut (),
 }
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
@@ -578,166 +590,258 @@ pub fn stub_3bbf8(dst: &mut SharedPtr<Instance>, src: &SharedPtr<Instance>) -> S
 
 // 0x3e190 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3e190() -> ! {
-    todo!("0x3e190 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3e190(block: *mut ControlBlockPd<CRenderSettingsItem, CreatableInstanceDeleter>) {
+    // IDA 0x3e190: D0 storage release only. See `crate::instance::stub_0x3e190`.
+    // (Same release shape as 0x459f0c.)
+    // SAFETY: `block` must be a live box pointer never used again.
+    crate::instance::stub_0x3e190(block)
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
-pub fn stub_3ecf0() -> ! {
-    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")
+pub fn stub_3ecf0(
+    view: *const (),
+    marshaller: *const FunctionMarshaller,
+    model: &SharedPtr<DataModel>,
+) -> RenderJob {
+    // IDA 0x3ecf0 (decompiled): `DataModelJob("Render", TaskType 2, false,
+    // arbiter, 0.02)` (0x3ed50-0x3ed86); vtable install (0x3eda4);
+    // view/marshaller words; `weak_ptr(dm)` (0x3edce); `CEvent(false)`
+    // (0x3ede6).
+    RenderJob {
+        base: DataModelJobBase {
+            name: "Render",
+            task_type: 2,
+            flag: false,
+            arbiter: None,
+            interval: RENDER_JOB_INTERVAL,
+        },
+        view,
+        marshaller,
+        model: SharedPtr::downgrade(model),
+        event: ManualResetEvent::new(false),
+    }
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 // was: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
-pub fn stub_40318() -> ! {
-    todo!("0x40318 rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+pub fn stub_40318(model: &SharedPtr<DataModel>) -> WeakPtr<DataModel> {
+    // IDA 0x40318: `weak_ptr<DataModel>` converting ctor — shares the
+    // control block without retaining. `Arc::downgrade` is the same
+    // non-owning take.
+    SharedPtr::downgrade(model)
 }
 
 // 0x49e7c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")]
-pub fn stub_49e7c() -> ! {
-    todo!("0x49e7c rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")
+pub fn stub_49e7c(signal: &DataModelSignal, callback: DataModelSlotFn) -> DataModelConnection {
+    // IDA 0x49e7c (decompiled): 32-byte `callable` slot allocation (0x49eb6)
+    // + `callable` ctor (0x49ede) + `insert` (0x49f06) + weak-ref install
+    // (0x49f12-0x49f18). The slot starts unlinked; `insert` links it.
+    let slot = SharedPtr::new(DataModelSlot::new(callback));
+    signal.insert(&slot);
+    DataModelConnection::new(&slot)
 }
 
 // 0x4b164 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6insertEPNS6_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::insert(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")]
-pub fn stub_4b164() -> ! {
-    todo!("0x4b164 rbx::signals::signal<void ()(RBX::DataModel *)>::insert(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")
+pub fn stub_4b164(signal: &DataModelSignal, slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4b164: `signal::insert` — links the slot into the list.
+    signal.insert(slot)
 }
 
 // 0x4b374 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")]
-pub fn stub_4b374() -> ! {
-    todo!("0x4b374 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")
+pub fn stub_4b374(dst: &mut Option<SharedPtr<DataModelSlot>>, src: &Option<SharedPtr<DataModelSlot>>) {
+    // IDA 0x4b374 (decompiled): null-checked addref (0x4b3be-0x4b3c8),
+    // store (0x4b3d0), release of the previous (0x4b3d2-0x4b3d8).
+    // Clone-assign + drop is the same path; the raw `slot*` is the
+    // nullable `Option`.
+    *dst = src.clone();
 }
 
 // 0x4b418 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")]
-pub fn stub_4b418() -> ! {
-    todo!("0x4b418 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")
+pub fn stub_4b418(dst: &mut Option<SharedPtr<DataModelSlot>>, src: &Option<SharedPtr<DataModelSlot>>) {
+    // IDA 0x4b418 (decompiled): same addref / store / release path as
+    // 0x4b374 for the `const intrusive_ptr&` overload.
+    *dst = src.clone();
 }
 
 // 0x4b4bc — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")]
-pub fn stub_4b4bc() -> ! {
-    todo!("0x4b4bc rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")
+pub fn stub_4b4bc() {
+    // IDA 0x4b4bc: `signal::safe_static_init_mutex` — one-time init of the
+    // signal static mutex. The mutex lives in `DataModelSignal`, so init is
+    // construction; nothing to do here.
 }
 
 // 0x4b4c0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")]
-pub fn stub_4b4c0() -> ! {
-    todo!("0x4b4c0 rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")
+pub fn stub_4b4c0() {
+    // IDA 0x4b4c0: `signal::safe_static_do_get_mutex` — returns the signal
+    // static mutex. Callers use the mutex inside `DataModelSignal`; the
+    // accessor itself collapses.
 }
 
 // 0x4b5b8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")]
-pub fn stub_4b5b8() -> ! {
-    todo!("0x4b5b8 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")
+pub fn stub_4b5b8(callback: DataModelSlotFn) -> SharedPtr<DataModelSlot> {
+    // IDA 0x4b5b8 (decompiled): zero the words (0x4b5ea-0x4b612) +
+    // `assign_to_own` copy of the function (0x4b638). A fresh unlinked slot
+    // with the cloned closure is the same state.
+    SharedPtr::new(DataModelSlot::new(callback))
 }
 
 // 0x4b6b4 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
-pub fn stub_4b6b4() -> ! {
-    todo!("0x4b6b4 rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")
+pub fn stub_4b6b4(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4b6b4: `callable_slot::~callable_slot` D1 — vtable reset +
+    // `function::clear`; storage is kept by the D1. Drop glue, no-op.
 }
 
 // 0x4b788 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
-pub fn stub_4b788() -> ! {
-    todo!("0x4b788 rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")
+pub fn stub_4b788(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4b788: `callable_slot::~callable_slot` D0 — same teardown as
+    // D1, then `operator delete`. The free collapses into Rust ownership
+    // (caller drops the handle).
 }
 
 // 0x4b860 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")]
-pub fn stub_4b860() -> ! {
-    todo!("0x4b860 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")
+pub fn stub_4b860(signal: &DataModelSignal, slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4b860 (decompiled): linked-check (0x4b88a), static-mutex take
+    // (0x4b8ca-0x4b8ec), unlink + `remove` (0x4b8f0-0x4b8fe), unlock. The
+    // mutex take collapses into `DataModelSignal`'s own lock.
+    if slot.is_linked() {
+        slot.set_linked(false);
+        signal.remove(slot);
+    }
 }
 
 // 0x4b970 — __ZNK3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")]
-pub fn stub_4b970() -> ! {
-    todo!("0x4b970 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")
+pub fn stub_4b970(slot: &DataModelSlot) -> bool {
+    // IDA 0x4b970 (decompiled): `return *(a1 + 12) != 0` — the link word.
+    slot.is_linked()
 }
 
 // 0x4b97c — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-pub fn stub_4b97c() -> ! {
-    todo!("0x4b97c rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+pub fn stub_4b97c(slot: &DataModelSlot, dm: *mut DataModel) {
+    // IDA 0x4b97c (decompiled): `call` tail-calls
+    // `function1::operator()` on the `+16` stored function. Same path as
+    // `DataModelSignal::emit` for one slot.
+    // SAFETY: `dm` must point to a valid `DataModel`.
+    slot.call(dm)
 }
 
 // 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-pub fn stub_4b984() -> ! {
-    todo!("0x4b984 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+pub fn stub_4b984(slot: &DataModelSlot, dm: *mut DataModel) {
+    // IDA 0x4b984: `ZThn4` non-virtual thunk adjusting into 0x4b97c. The
+    // adjustment collapses; direct forward.
+    // SAFETY: same contract as 0x4b97c.
+    stub_4b97c(slot, dm)
 }
 
 // 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")]
-pub fn stub_4b98c() -> ! {
-    todo!("0x4b98c boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")
+pub fn stub_4b98c(callback: &Option<DataModelSlotFn>, dm: *mut DataModel) {
+    // IDA 0x4b98c (decompiled): empty function throws
+    // `boost::bad_function_call` (0x4b9da-0x4ba1e) — a throw becomes a
+    // panic here; else the stored-vtable invoke runs (0x4b9ec).
+    // SAFETY: `dm` must point to a valid `DataModel`.
+    match callback {
+        Some(invoke) => invoke(dm),
+        None => panic!("boost::bad_function_call"),
+    }
 }
 
 // 0x4ba50 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6removeEPNS6_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")]
-pub fn stub_4ba50() -> ! {
-    todo!("0x4ba50 rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")
+pub fn stub_4ba50(signal: &DataModelSignal, slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4ba50 (decompiled): `!intrusive_ptr_expired` asserts
+    // (0x4ba64-0x4ba98, 0x4baee-0x4bafa) that fall through, then the
+    // linked-list unlink (0x4baca-0x4bae2). The asserts collapse into the
+    // retain-filter in `DataModelSignal::remove`.
+    signal.remove(slot)
 }
 
 // 0x4bb40 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_4bb40() -> ! {
-    todo!("0x4bb40 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")
+pub fn stub_4bb40() {
+    // IDA 0x4bb40: `slot::safe_static_init_mutex` — same collapse as
+    // 0x4b4bc for the slot static mutex.
 }
 
 // 0x4bb44 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_4bb44() -> ! {
-    todo!("0x4bb44 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_4bb44() {
+    // IDA 0x4bb44: `slot::safe_static_do_get_mutex` — same collapse as
+    // 0x4b4c0.
 }
 
 // 0x4bc34 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
-pub fn stub_4bc34() -> ! {
-    todo!("0x4bc34 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn stub_4bc34(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4bc34: `callable::~callable` D1 — same drop-glue shape as
+    // 0x4b6b4.
 }
 
 // 0x4bd08 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
-pub fn stub_4bd08() -> ! {
-    todo!("0x4bd08 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn stub_4bd08(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4bd08: `callable::~callable` D0 — same shape as 0x4b788; the
+    // free collapses into Rust ownership.
 }
 
 // 0x4bde0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")]
-pub fn stub_4bde0() -> ! {
-    todo!("0x4bde0 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn stub_4bde0(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4bde0: `slot::~slot` D1 — vtable reset + member drops, storage
+    // kept. Drop glue, no-op (same treatment as `DataModelSlot::drop`,
+    // which unlinks).
 }
 
 // 0x4be8c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")]
-pub fn stub_4be8c() -> ! {
-    todo!("0x4be8c rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn stub_4be8c(_slot: &SharedPtr<DataModelSlot>) {
+    // IDA 0x4be8c: `slot::~slot` D0 — same teardown as D1, then `operator
+    // delete`. The free collapses into Rust ownership.
 }
 
 // 0x4bf3c — __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")]
-pub fn stub_4bf3c() -> ! {
-    todo!("0x4bf3c boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")
+pub fn stub_4bf3c(dst: &mut Option<DataModelSlotFn>, src: &Option<DataModelSlotFn>) {
+    // IDA 0x4bf3c (decompiled): null skip (0x4bf3c), small-functor word
+    // copy (0x4bf44-0x4bf54) vs vtable clone into the buffer (0x4bf6a).
+    // `Arc` clone-assign is the same copy-or-share path.
+    *dst = src.clone();
 }
 
 // 0x4bf6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_4bf6c() -> ! {
-    todo!("0x4bf6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_4bf6c(src: &ObjcInstanceBind, dst: &mut ObjcInstanceBind, op: FunctorOp) -> bool {
+    // IDA 0x4bf6c: `functor_manager::manage` over the `DataModel*` objc
+    // bind triple — byte-identical buffer discipline to 0x31cd0 (the
+    // callee word differs, the manage path does not). Delegate so the two
+    // instantiations cannot drift.
+    crate::instance::stub_0x31cd0(src, dst, op)
 }
 
 // 0x4bfcc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
-pub fn stub_4bfcc() -> ! {
-    todo!("0x4bfcc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")
+pub fn stub_4bfcc(bind: &ObjcDataModelBind, dm: *mut DataModel) {
+    // IDA 0x4bfcc: buffer unwrap + tail-call into the `DataModel*`
+    // `list3::operator()` — `(bind.func)(bound_target, bound_selector,
+    // dm)`. The raw `arg<1>` rides the call frame unretained, unlike the
+    // `SharedPtr` variant at 0x31d48.
+    // SAFETY: `dm` must point to a valid `DataModel` for the call duration.
+    (bind.func)(bind.target, bind.selector, dm)
 }
 
 // 0x258688 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11HttpServiceEEEN5boost10shared_ptrIT_EEv
