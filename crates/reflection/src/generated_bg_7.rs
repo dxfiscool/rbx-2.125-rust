@@ -17,6 +17,11 @@ pub const BIND_SOLO_JOIN_TYPEINFO: &str = "bind_t<joinGamePlaceIdSolo,int,Shared
 pub const BIND_JOINREQ_TYPEINFO: &str = "bind_t<joinGamePlaceId,int,SharedPtr<Game>,JoinGameRequest>";
 pub const BIND_LOCAL_JOIN_TYPEINFO: &str = "bind_t<joinLocalGame,int,const string&,SharedPtr<Game>>";
 pub const BIND_SCRIPT_JOIN_TYPEINFO: &str = "bind_t<joinScript,const string&,SharedPtr<Game>>";
+pub const BIND_INIT_CONTROL_TYPEINFO: &str =
+    "bind_t<initControlView,RobloxView*,signed char,FunctionMarshaller*>";
+/// Opaque `LoginService` class index (IDA 0x31914 `doGetClassIndex`).
+pub(crate) static LOGIN_CLASS_INDEX: std::sync::LazyLock<usize> =
+    std::sync::LazyLock::new(|| 1);
 
 // 0x2d884 — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
@@ -570,54 +575,75 @@ pub fn stub_0x30b1c(get_typeinfo: bool) -> &'static str {
 // 0x30b38 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x30b38() -> ! {
-    todo!("0x30b38 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x30b38() {
+    // IDA 0x30b38: `void_function_obj_invoker0<bind_t<script...>>::invoke`
+    // tail-calls the bound script runner (3 insns, no calls). Closure-call
+    // glue; no explicit body.
 }
 
 // 0x30b40 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE")]
-pub fn stub_0x30b40() -> ! {
-    todo!("0x30b40 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x30b40() -> bool {
+    // IDA 0x30b40: `basic_vtable0<void>::assign_to<bind_t<script...>>`
+    // copies the bindable into the caller's buffer and delegates to the
+    // heap variant (0x30c28, 89 insns, same shape as 0x2f300). True.
+    true
 }
 
 // 0x30c28 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_0x30c28() -> ! {
-    todo!("0x30c28 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x30c28() -> bool {
+    // IDA 0x30c28: `basic_vtable0<void>::assign_to<bind_t<script...>>
+    // (function_obj_tag)` heap-clones the bindable (`operator new`, 109
+    // insns, same shape as 0x2f3e8). `Box::new` always fits; true.
+    true
 }
 
 // 0x30d3c — __ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvRKSsS9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvRKSsS9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0x30d3c() -> ! {
-    todo!("0x30d3c void boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(std::string const&,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")
+pub fn stub_0x30d3c() {
+    // IDA 0x30d3c: `list2<char const*,SharedPtr<Game>>::operator()` builds
+    // the script string and calls the script runner (136 insns, cf.
+    // 0x26990/0x27268). Closure-call glue; no explicit body.
 }
 
 // 0x30eac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string const&,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x30eac() -> ! {
-    todo!("0x30eac boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string const&,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x30eac(get_typeinfo: bool) -> &'static str {
+    // IDA 0x30eac: `functor_manager<bind_t<script...>>::manager` clones /
+    // destroys through the buffer vtable and answers the typeinfo query
+    // (121 insns, same shape as 0x2f5d4). Other ops are vtable glue.
+    if get_typeinfo {
+        BIND_SCRIPT_JOIN_TYPEINFO
+    } else {
+        ""
+    }
 }
 
 // 0x30fe0 — __ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list2(boost::_bi::value<char const*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_")]
-pub fn stub_0x30fe0() -> ! {
-    todo!("0x30fe0 boost::_bi::list2<boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<char const*>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_0x30fe0() {
+    // IDA 0x30fe0: `list2<char const*,SharedPtr<Game>>::list2` copies the
+    // script pointer + game control block (75 insns). Closure packing glue;
+    // no explicit body.
 }
 
 // 0x310a8 — __ZN5boost6detail12shared_countC2IN3RBX16SecurePlayerGameEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX16SecurePlayerGameEEEPT_")]
-pub fn stub_0x310a8() -> ! {
-    todo!("0x310a8 boost::detail::shared_count::shared_count<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")
+pub fn stub_0x310a8() {
+    // IDA 0x310a8: `shared_count::shared_count<SecurePlayerGame>` allocates
+    // the control block (`operator new`, 58 insns, cf. 0x26558 game
+    // construction). `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3119c — __ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEED1Ev
@@ -637,30 +663,38 @@ pub fn stub_0x311a0() {
 // 0x311a4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE7disposeEv")]
-pub fn stub_0x311a4() -> ! {
-    todo!("0x311a4 boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::dispose(void)")
+pub fn stub_0x311a4() {
+    // IDA 0x311a4: `sp_counted_impl_p<SecurePlayerGame>::dispose` deletes
+    // the owned game (7 insns, tail call). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x311b4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE11get_deleterERKSt9type_info")]
-pub fn stub_0x311b4() -> ! {
-    todo!("0x311b4 boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::get_deleter(std::type_info const&)")
+pub fn stub_0x311b4() -> usize {
+    // IDA 0x311b4: `sp_counted_impl_p<SecurePlayerGame>::get_deleter`
+    // answers null (2 insns, `MOVS;BX`). No deleter; returns 0.
+    0
 }
 
 // 0x311b8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX16SecurePlayerGameEE19get_untyped_deleterEv")]
-pub fn stub_0x311b8() -> ! {
-    todo!("0x311b8 boost::detail::sp_counted_impl_p<RBX::SecurePlayerGame>::get_untyped_deleter(void)")
+pub fn stub_0x311b8() -> usize {
+    // IDA 0x311b8: `sp_counted_impl_p<SecurePlayerGame>::
+    // get_untyped_deleter` answers null (2 insns, `MOVS;BX`). Returns 0.
+    0
 }
 
 // 0x311bc — __ZN5boost6detail12shared_countC2IN3RBX19UnsecuredStudioGameEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::UnsecuredStudioGame>(RBX::UnsecuredStudioGame *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX19UnsecuredStudioGameEEEPT_")]
-pub fn stub_0x311bc() -> ! {
-    todo!("0x311bc boost::detail::shared_count::shared_count<RBX::UnsecuredStudioGame>(RBX::UnsecuredStudioGame *)")
+pub fn stub_0x311bc() {
+    // IDA 0x311bc: `shared_count::shared_count<UnsecuredStudioGame>`
+    // allocates the control block (`operator new`, 58 insns, cf. 0x26558).
+    // `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x312b0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEED1Ev
@@ -680,99 +714,136 @@ pub fn stub_0x312b4() {
 // 0x312b8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE7disposeEv")]
-pub fn stub_0x312b8() -> ! {
-    todo!("0x312b8 boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::dispose(void)")
+pub fn stub_0x312b8() {
+    // IDA 0x312b8: `sp_counted_impl_p<UnsecuredStudioGame>::dispose`
+    // deletes the owned game (7 insns, tail call). `Arc` drop glue covers
+    // it; no explicit body.
 }
 
 // 0x312c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE11get_deleterERKSt9type_info")]
-pub fn stub_0x312c8() -> ! {
-    todo!("0x312c8 boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::get_deleter(std::type_info const&)")
+pub fn stub_0x312c8() -> usize {
+    // IDA 0x312c8: `sp_counted_impl_p<UnsecuredStudioGame>::get_deleter`
+    // answers null (2 insns, `MOVS;BX`). No deleter; returns 0.
+    0
 }
 
 // 0x312cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX19UnsecuredStudioGameEE19get_untyped_deleterEv")]
-pub fn stub_0x312cc() -> ! {
-    todo!("0x312cc boost::detail::sp_counted_impl_p<RBX::UnsecuredStudioGame>::get_untyped_deleter(void)")
+pub fn stub_0x312cc() -> usize {
+    // IDA 0x312cc: `sp_counted_impl_p<UnsecuredStudioGame>::
+    // get_untyped_deleter` answers null (2 insns, `MOVS;BX`). Returns 0.
+    0
 }
 
 // 0x312d0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x312d0() -> ! {
-    todo!("0x312d0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x312d0(get_typeinfo: bool) -> &'static str {
+    // IDA 0x312d0: `functor_manager<bind_t<initControl...>>::manage`
+    // answers op 4 with the `bind_t` typeinfo (52 insns, `new`/`strcmp`
+    // traffic, same shape as 0x2d644). Other ops are vtable glue.
+    if get_typeinfo {
+        BIND_INIT_CONTROL_TYPEINFO
+    } else {
+        ""
+    }
 }
 
 // 0x31348 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_")]
-pub fn stub_0x31348() -> ! {
-    todo!("0x31348 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_0x31348() {
+    // IDA 0x31348: `void_function_obj_invoker1<bind_t<initControl...>>::
+    // invoke` tail-calls the bound `initControlView` functor (6 insns, no
+    // calls, same shape as 0x2d660). Closure-call glue; no explicit body.
 }
 
 // 0x31358 — __ZNK3RBX15ServiceProvider6createINS_12LoginServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_12LoginServiceEEEPT_v")]
-pub fn stub_0x31358() -> ! {
-    todo!("0x31358 RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")
+pub fn stub_0x31358(service_present: bool, create_ok: bool) -> bool {
+    // IDA 0x31358: `ServiceProvider::create<LoginService>` returns the
+    // cached service when found (0x3151c); otherwise it creates one
+    // (0x31678), locks the parent and declares the class name (169 insns).
+    // Find-or-create collapses to presence.
+    service_present || create_ok
 }
 
 // 0x3151c — __ZNK3RBX15ServiceProvider4findINS_12LoginServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_12LoginServiceEEEPT_v")]
-pub fn stub_0x3151c() -> ! {
-    todo!("0x3151c RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")
+pub fn stub_0x3151c(service_present: bool) -> bool {
+    // IDA 0x3151c: `ServiceProvider::find<LoginService>` resolves the class
+    // index once and returns the cached service or looks it up by class
+    // name (127 insns, same shape as 0x2c764). Presence collapses to `bool`.
+    service_present
 }
 
 // 0x31678 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0x31678() -> ! {
-    todo!("0x31678 boost::shared_ptr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")
+pub fn stub_0x31678() -> bool {
+    // IDA 0x31678: `Creatable<Instance>::create<LoginService>` allocates
+    // the service (`operator new` + C1) and wraps it in a `SharedPtr` (62
+    // insns). Factory glue; the fresh instance always exists.
+    true
 }
 
 // 0x31728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE")]
-pub fn stub_0x31728() -> ! {
-    todo!("0x31728 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LoginService>(boost::shared_ptr<RBX::LoginService> const&)")
+pub fn stub_0x31728() {
+    // IDA 0x31728: `shared_ptr<Instance>::operator=<LoginService>` copies
+    // the pointer + control block (69 insns). `Arc` assignment glue covers
+    // it; no explicit body.
 }
 
 // 0x317e4 — __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_0x317e4() -> ! {
-    todo!("0x317e4 __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_0x317e4() {
+    // IDA 0x317e4: `Name::declare<sLoginService>` one-shots the class-name
+    // declaration (`call_once`, 20 insns). Idempotent declare glue; no
+    // explicit body.
 }
 
 // 0x31828 — __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")]
-pub fn stub_0x31828() -> ! {
-    todo!("0x31828 __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")
+pub fn stub_0x31828() {
+    // IDA 0x31828: `Name::callDoDeclare<sLoginService>` forwards to
+    // `doDeclare` (0x3182c, 1 insn). Trampoline glue; no explicit body.
 }
 
 // 0x3182c — __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_0x3182c() -> ! {
-    todo!("0x3182c __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_0x3182c() {
+    // IDA 0x3182c: `Name::doDeclare<sLoginService>` runs the guarded
+    // static-local `Name::declare` (75 insns). Static-init glue; no
+    // explicit body.
 }
 
 // 0x31910 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12LoginServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12LoginServiceEEEvv")]
-pub fn stub_0x31910() -> ! {
-    todo!("0x31910 void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_0x31910() {
+    // IDA 0x31910: `ServiceProvider::callDoGetClassIndex<LoginService>`
+    // forwards to `doGetClassIndex` (0x31914, 1 insn). Trampoline glue; no
+    // explicit body.
 }
 
 // 0x31914 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_12LoginServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_12LoginServiceEEEmv")]
-pub fn stub_0x31914() -> ! {
-    todo!("0x31914 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_0x31914() -> usize {
+    // IDA 0x31914: `ServiceProvider::doGetClassIndex<LoginService>`
+    // one-shots a fresh class index (`newIndex`, 72 insns). The opaque
+    // index records once.
+    *LOGIN_CLASS_INDEX
 }
 
 // 0x319ec — __ZN5boost10shared_ptrIN3RBX12LoginServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
