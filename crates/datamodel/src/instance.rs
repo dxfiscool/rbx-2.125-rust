@@ -628,6 +628,177 @@ pub struct MaterialToolVerb {
     pub active: bool,
 }
 
+/// Rust model of `RBX::FillTool` (IDA `0x4087d0`): the studio fill mouse
+/// command plus the owning workspace.
+pub struct FillTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<FillTool, RunStateVerb>` (IDA `0x408394`):
+/// the fill tool verb with its active flag plus the owning data model.
+pub struct FillToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::LockTool` (IDA `0x4091d0`): the studio lock mouse
+/// command plus the owning workspace.
+pub struct LockTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<LockTool, RunStateVerb>` (IDA `0x408d94`):
+/// the lock tool verb with its active flag plus the owning data model.
+pub struct LockToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::AnchorTool` (IDA `0x409d1c`): the studio anchor mouse
+/// command plus the owning workspace.
+pub struct AnchorTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<AnchorTool, RunStateVerb>` (IDA `0x4098e0`):
+/// the anchor tool verb with its active flag plus the owning data model.
+pub struct AnchorToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::SmoothNoOutlinesTool` (IDA `0x40a870`): the studio
+/// smooth mouse command plus the owning workspace.
+pub struct SmoothNoOutlinesTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<SmoothNoOutlinesTool, RunStateVerb>` (IDA
+/// `0x40a434`): the smooth tool verb with its active flag plus the owning
+/// data model.
+pub struct SmoothNoOutlinesToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::OscillateMotorTool` (IDA `0x40b270`): the studio
+/// oscillate-motor mouse command plus the owning workspace.
+pub struct OscillateMotorTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<OscillateMotorTool, RunStateVerb>` (IDA
+/// `0x40ae34`): the oscillate-motor tool verb with its active flag plus the
+/// owning data model.
+pub struct OscillateMotorToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::LeftMotorTool` (IDA `0x40bba8`): the studio left-motor
+/// mouse command plus the owning workspace.
+pub struct LeftMotorTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<LeftMotorTool, RunStateVerb>` (IDA `0x40b76c`):
+/// the left-motor tool verb with its active flag plus the owning data model.
+pub struct LeftMotorToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::RightMotorTool` (IDA `0x40c4e0`): the studio
+/// right-motor mouse command plus the owning workspace.
+pub struct RightMotorTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<RightMotorTool, RunStateVerb>` (IDA `0x40c0a4`):
+/// the right-motor tool verb with its active flag plus the owning data model.
+pub struct RightMotorToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::HingeTool` (IDA `0x40cee0`): the studio hinge mouse
+/// command plus the owning workspace.
+pub struct HingeTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<HingeTool, RunStateVerb>` (IDA `0x40caa4`):
+/// the hinge tool verb with its active flag plus the owning data model.
+pub struct HingeToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::UniversalTool` (IDA `0x40d8e0`): the studio universal
+/// mouse command plus the owning workspace.
+pub struct UniversalTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<UniversalTool, RunStateVerb>` (IDA `0x40d4a4`):
+/// the universal tool verb with its active flag plus the owning data model.
+pub struct UniversalToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::InletTool` (IDA `0x40e2e0`): the studio inlet mouse
+/// command plus the owning workspace.
+pub struct InletTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<InletTool, RunStateVerb>` (IDA `0x40dea4`):
+/// the inlet tool verb with its active flag plus the owning data model.
+pub struct InletToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::StudsTool` (IDA `0x40ece0`): the studio studs mouse
+/// command plus the owning workspace.
+pub struct StudsTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<StudsTool, RunStateVerb>` (IDA `0x40e8a4`):
+/// the studs tool verb with its active flag plus the owning data model.
+pub struct StudsToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::WeldTool` (IDA `0x40f6e0`): the studio weld mouse
+/// command plus the owning workspace.
+pub struct WeldTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<WeldTool, RunStateVerb>` (IDA `0x40f2a4`):
+/// the weld tool verb with its active flag plus the owning data model.
+pub struct WeldToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::GlueTool` (IDA `0x4100e0`): the studio glue mouse
+/// command plus the owning workspace.
+pub struct GlueTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<GlueTool, RunStateVerb>` (IDA `0x40fca4`):
+/// the glue tool verb with its active flag plus the owning data model.
+pub struct GlueToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
 /// Rust model of `RBX::SetManualJointToInfinite` (IDA `0x3fc608`): the studio
 /// joint-strength command plus the owning data model.
 pub struct SetManualJointToInfinite {
@@ -13780,183 +13951,248 @@ pub fn stub_0x407dd0(workspace: *const crate::workspace::Workspace) -> SharedPtr
 // 0x408394 — __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x408394() -> ! {
-    todo!("0x408394 RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x408394(data_model: *const DataModel, active: bool) -> FillToolVerb {
+    // IDA 0x408394: `TToolVerb<FillTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    FillToolVerb { data_model, active }
 }
 
 // 0x4087d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4087d0() -> ! {
-    todo!("0x4087d0 boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4087d0(workspace: *const crate::workspace::Workspace) -> SharedPtr<FillTool> {
+    // IDA 0x4087d0: `Creatable<MouseCommand>::create<FillTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(FillTool { workspace })
 }
 
 // 0x408d94 — __ZN3RBX9TToolVerbINS_8LockToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x408d94() -> ! {
-    todo!("0x408d94 RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x408d94(data_model: *const DataModel, active: bool) -> LockToolVerb {
+    // IDA 0x408d94: `TToolVerb<LockTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    LockToolVerb { data_model, active }
 }
 
 // 0x4091d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4091d0() -> ! {
-    todo!("0x4091d0 boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4091d0(workspace: *const crate::workspace::Workspace) -> SharedPtr<LockTool> {
+    // IDA 0x4091d0: `Creatable<MouseCommand>::create<LockTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(LockTool { workspace })
 }
 
 // 0x4098e0 — __ZN3RBX9TToolVerbINS_10AnchorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x4098e0() -> ! {
-    todo!("0x4098e0 RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x4098e0(data_model: *const DataModel, active: bool) -> AnchorToolVerb {
+    // IDA 0x4098e0: `TToolVerb<AnchorTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    AnchorToolVerb { data_model, active }
 }
 
 // 0x409d1c — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x409d1c() -> ! {
-    todo!("0x409d1c boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x409d1c(workspace: *const crate::workspace::Workspace) -> SharedPtr<AnchorTool> {
+    // IDA 0x409d1c: `Creatable<MouseCommand>::create<AnchorTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(AnchorTool { workspace })
 }
 
 // 0x40a434 — __ZN3RBX9TToolVerbINS_20SmoothNoOutlinesToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40a434() -> ! {
-    todo!("0x40a434 RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40a434(data_model: *const DataModel, active: bool) -> SmoothNoOutlinesToolVerb {
+    // IDA 0x40a434: `TToolVerb<SmoothNoOutlinesTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    SmoothNoOutlinesToolVerb { data_model, active }
 }
 
 // 0x40a870 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40a870() -> ! {
-    todo!("0x40a870 boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40a870(workspace: *const crate::workspace::Workspace) -> SharedPtr<SmoothNoOutlinesTool> {
+    // IDA 0x40a870: `Creatable<MouseCommand>::create<SmoothNoOutlinesTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(SmoothNoOutlinesTool { workspace })
 }
 
 // 0x40ae34 — __ZN3RBX9TToolVerbINS_18OscillateMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40ae34() -> ! {
-    todo!("0x40ae34 RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40ae34(data_model: *const DataModel, active: bool) -> OscillateMotorToolVerb {
+    // IDA 0x40ae34: `TToolVerb<OscillateMotorTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    OscillateMotorToolVerb { data_model, active }
 }
 
 // 0x40b270 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18OscillateMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40b270() -> ! {
-    todo!("0x40b270 boost::shared_ptr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40b270(workspace: *const crate::workspace::Workspace) -> SharedPtr<OscillateMotorTool> {
+    // IDA 0x40b270: `Creatable<MouseCommand>::create<OscillateMotorTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(OscillateMotorTool { workspace })
 }
 
 // 0x40b76c — __ZN3RBX9TToolVerbINS_13LeftMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40b76c() -> ! {
-    todo!("0x40b76c RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40b76c(data_model: *const DataModel, active: bool) -> LeftMotorToolVerb {
+    // IDA 0x40b76c: `TToolVerb<LeftMotorTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    LeftMotorToolVerb { data_model, active }
 }
 
 // 0x40bba8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13LeftMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40bba8() -> ! {
-    todo!("0x40bba8 boost::shared_ptr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40bba8(workspace: *const crate::workspace::Workspace) -> SharedPtr<LeftMotorTool> {
+    // IDA 0x40bba8: `Creatable<MouseCommand>::create<LeftMotorTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(LeftMotorTool { workspace })
 }
 
 // 0x40c0a4 — __ZN3RBX9TToolVerbINS_14RightMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40c0a4() -> ! {
-    todo!("0x40c0a4 RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40c0a4(data_model: *const DataModel, active: bool) -> RightMotorToolVerb {
+    // IDA 0x40c0a4: `TToolVerb<RightMotorTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    RightMotorToolVerb { data_model, active }
 }
 
 // 0x40c4e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14RightMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40c4e0() -> ! {
-    todo!("0x40c4e0 boost::shared_ptr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40c4e0(workspace: *const crate::workspace::Workspace) -> SharedPtr<RightMotorTool> {
+    // IDA 0x40c4e0: `Creatable<MouseCommand>::create<RightMotorTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(RightMotorTool { workspace })
 }
 
 // 0x40caa4 — __ZN3RBX9TToolVerbINS_9HingeToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40caa4() -> ! {
-    todo!("0x40caa4 RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40caa4(data_model: *const DataModel, active: bool) -> HingeToolVerb {
+    // IDA 0x40caa4: `TToolVerb<HingeTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    HingeToolVerb { data_model, active }
 }
 
 // 0x40cee0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9HingeToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40cee0() -> ! {
-    todo!("0x40cee0 boost::shared_ptr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40cee0(workspace: *const crate::workspace::Workspace) -> SharedPtr<HingeTool> {
+    // IDA 0x40cee0: `Creatable<MouseCommand>::create<HingeTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(HingeTool { workspace })
 }
 
 // 0x40d4a4 — __ZN3RBX9TToolVerbINS_13UniversalToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40d4a4() -> ! {
-    todo!("0x40d4a4 RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40d4a4(data_model: *const DataModel, active: bool) -> UniversalToolVerb {
+    // IDA 0x40d4a4: `TToolVerb<UniversalTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    UniversalToolVerb { data_model, active }
 }
 
 // 0x40d8e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13UniversalToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40d8e0() -> ! {
-    todo!("0x40d8e0 boost::shared_ptr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40d8e0(workspace: *const crate::workspace::Workspace) -> SharedPtr<UniversalTool> {
+    // IDA 0x40d8e0: `Creatable<MouseCommand>::create<UniversalTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(UniversalTool { workspace })
 }
 
 // 0x40dea4 — __ZN3RBX9TToolVerbINS_9InletToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40dea4() -> ! {
-    todo!("0x40dea4 RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40dea4(data_model: *const DataModel, active: bool) -> InletToolVerb {
+    // IDA 0x40dea4: `TToolVerb<InletTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    InletToolVerb { data_model, active }
 }
 
 // 0x40e2e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9InletToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40e2e0() -> ! {
-    todo!("0x40e2e0 boost::shared_ptr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40e2e0(workspace: *const crate::workspace::Workspace) -> SharedPtr<InletTool> {
+    // IDA 0x40e2e0: `Creatable<MouseCommand>::create<InletTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(InletTool { workspace })
 }
 
 // 0x40e8a4 — __ZN3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40e8a4() -> ! {
-    todo!("0x40e8a4 RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40e8a4(data_model: *const DataModel, active: bool) -> StudsToolVerb {
+    // IDA 0x40e8a4: `TToolVerb<StudsTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    StudsToolVerb { data_model, active }
 }
 
 // 0x40ece0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9StudsToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40ece0() -> ! {
-    todo!("0x40ece0 boost::shared_ptr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40ece0(workspace: *const crate::workspace::Workspace) -> SharedPtr<StudsTool> {
+    // IDA 0x40ece0: `Creatable<MouseCommand>::create<StudsTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(StudsTool { workspace })
 }
 
 // 0x40f2a4 — __ZN3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40f2a4() -> ! {
-    todo!("0x40f2a4 RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40f2a4(data_model: *const DataModel, active: bool) -> WeldToolVerb {
+    // IDA 0x40f2a4: `TToolVerb<WeldTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    WeldToolVerb { data_model, active }
 }
 
 // 0x40f6e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8WeldToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x40f6e0() -> ! {
-    todo!("0x40f6e0 boost::shared_ptr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x40f6e0(workspace: *const crate::workspace::Workspace) -> SharedPtr<WeldTool> {
+    // IDA 0x40f6e0: `Creatable<MouseCommand>::create<WeldTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(WeldTool { workspace })
 }
 
 // 0x40fca4 — __ZN3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x40fca4() -> ! {
-    todo!("0x40fca4 RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x40fca4(data_model: *const DataModel, active: bool) -> GlueToolVerb {
+    // IDA 0x40fca4: `TToolVerb<GlueTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    GlueToolVerb { data_model, active }
 }
 
 // 0x4100e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GlueToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4100e0() -> ! {
-    todo!("0x4100e0 boost::shared_ptr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4100e0(workspace: *const crate::workspace::Workspace) -> SharedPtr<GlueTool> {
+    // IDA 0x4100e0: `Creatable<MouseCommand>::create<GlueTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(GlueTool { workspace })
 }
 
 // 0x4106a4 — __ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
