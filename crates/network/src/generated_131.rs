@@ -252,15 +252,38 @@ pub fn stub_9c2b10(sender: &crate::physics::PhysicsSender, stream: &mut crate::b
 // 0x9c2d18 — __ZN3RBX7Network13PhysicsSender7canSendEPKNS_12PartInstanceEPKNS_8AssemblyERN6RakNet9BitStreamE
 // type: bool __fastcall(RBX::Network::PhysicsSender *this, const RBX::PartInstance *, const RBX::Assembly *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::PhysicsSender::canSend(RBX::PartInstance const*,RBX::Assembly const*,RakNet::BitStream &)")]
-pub fn stub_9c2d18() -> ! {
-    todo!("0x9c2d18 __ZN3RBX7Network13PhysicsSender7canSendEPKNS_12PartInstanceEPKNS_8AssemblyERN6RakNet9BitStreamE")
+pub fn stub_9c2d18(
+    assembly_present: bool,
+    part_present: bool,
+    primitives_match: bool,
+    stream_gate: Option<bool>,
+    streaming_enabled: bool,
+    serialize_pending: bool,
+) -> bool {
+    // IDA 0x9c2d18: membership assert, null/gate refusals, pending check.
+    crate::physics::can_send(assembly_present, part_present, primitives_match, stream_gate, streaming_enabled, serialize_pending)
 }
 
 // 0x9c2dd4 — __ZN3RBX7Network13PhysicsSender15sendPhysicsDataERN6RakNet9BitStreamEPKNS_12PartInstanceEb
 // type: int __fastcall(RBX::Network::PhysicsSender *this, RakNet::BitStream *, RBX::Primitive **, int)
 #[doc(alias = "RBX::Network::PhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::PartInstance const*,bool)")]
-pub fn stub_9c2dd4() -> ! {
-    todo!("0x9c2dd4 __ZN3RBX7Network13PhysicsSender15sendPhysicsDataERN6RakNet9BitStreamEPKNS_12PartInstanceEb")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_9c2dd4(
+    stream: &mut crate::bitstream::BitStream,
+    part_present: bool,
+    assembly_root: bool,
+    sendable: bool,
+    streaming_enabled: bool,
+    in_streamed_regions: bool,
+    try_serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream) -> bool,
+    serialize_null_id: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    serialize_id: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    use_try_serialize_id: bool,
+    send_cframes: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+    send_mechanism_body: &mut dyn FnMut(&mut crate::bitstream::BitStream),
+) -> bool {
+    // IDA 0x9c2dd4: root/canSend gates, streaming vs direct branches.
+    crate::physics::send_physics_data(stream, part_present, assembly_root, sendable, streaming_enabled, in_streamed_regions, try_serialize_id, serialize_null_id, serialize_id, use_try_serialize_id, send_cframes, send_mechanism_body)
 }
 
 // 0x9c2f6c — __ZN5boost10shared_ptrIN3RBX7Network13PhysicsSender3JobEE5resetEv

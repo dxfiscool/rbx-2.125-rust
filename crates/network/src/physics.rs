@@ -1304,6 +1304,97 @@ impl PrimitiveNode {
     }
 }
 
+/// `RBX::Network::PhysicsSender::canSend` (IDA 0x9c2d18): assert the part
+/// belongs to the assembly (PhysicsSender.cpp:466), refuse nulls, apply
+/// the streaming per-part gate when its flag is set (0x9c2d9c..0x9c2dca),
+/// and otherwise send unless the part is still serialize-pending when
+/// streaming is off (0x9c2db0..0x9c2dc6). The replicator gate and pending
+/// table stay engine-side.
+pub fn can_send(
+    assembly_present: bool,
+    part_present: bool,
+    primitives_match: bool,
+    stream_gate: Option<bool>,
+    streaming_enabled: bool,
+    serialize_pending: bool,
+) -> bool {
+    debug_assert!(
+        !assembly_present
+            || !part_present
+            || primitives_match,
+        "!assembly || !part || (assembly->getConstAssemblyPrimitive() == part->getConstPartPrimitive()) Client/Network/PhysicsSender.cpp line: 466"
+    );
+    // IDA 0x9c2d88..0x9c2d8e.
+    if !assembly_present || !part_present {
+        return false;
+    }
+    // IDA 0x9c2d9c..0x9c2dca.
+    if let Some(pass) = stream_gate {
+        if !pass {
+            return false;
+        }
+    }
+    // IDA 0x9c2db0..0x9c2dd2.
+    if !streaming_enabled {
+        return !serialize_pending;
+    }
+    true
+}
+
+/// `RBX::Network::PhysicsSender::sendPhysicsData` (IDA 0x9c2dd4): assert
+/// the part (:483), require an assembly-root primitive whose `canSend`
+/// passes, then either the streaming branch (extents check selects
+/// `sendMechanismCFrames` on a region miss, else an id-gated fallthrough
+/// to `sendMechanism`) or the direct branch (`trySerializeId`- or
+/// `serializeId`-gated `sendMechanism`). Extents, ids, and mechanism
+/// writes stay engine-side behind the closures.
+#[allow(clippy::too_many_arguments)]
+pub fn send_physics_data(
+    stream: &mut BitStream,
+    part_present: bool,
+    assembly_root: bool,
+    sendable: bool,
+    streaming_enabled: bool,
+    in_streamed_regions: bool,
+    try_serialize_id: &mut dyn FnMut(&mut BitStream) -> bool,
+    serialize_null_id: &mut dyn FnMut(&mut BitStream),
+    serialize_id: &mut dyn FnMut(&mut BitStream),
+    use_try_serialize_id: bool,
+    send_cframes: &mut dyn FnMut(&mut BitStream),
+    send_mechanism_body: &mut dyn FnMut(&mut BitStream),
+) -> bool {
+    debug_assert!(part_present, "part Client/Network/PhysicsSender.cpp line: 483");
+    // IDA 0x9c2e38..0x9c2e5e: null part, non-root, or failed canSend send nothing.
+    if !part_present || !assembly_root || !sendable {
+        return false;
+    }
+    // IDA 0x9c2e6a..0x9c2f10: streaming branch.
+    if streaming_enabled {
+        stream.write_bool(false);
+        if !in_streamed_regions {
+            stream.write_bool(true);
+            send_cframes(stream);
+            return true;
+        }
+        stream.write_bool(false);
+        if !try_serialize_id(stream) {
+            serialize_null_id(stream);
+            return false;
+        }
+    } else if use_try_serialize_id {
+        // IDA 0x9c2f1e..0x9c2f2c.
+        if !try_serialize_id(stream) {
+            return false;
+        }
+    } else {
+        // IDA 0x9c2f4c.
+        serialize_id(stream);
+    }
+    // IDA 0x9c2f58: sendMechanism, sent.
+    send_mechanism_body(stream);
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1503,6 +1594,66 @@ mod tests {
     fn normalize_quat_scales_to_unit() {
         let q = normalize_quat([2.0, 0.0, 0.0, 0.0]);
         assert_eq!(q, [1.0, 0.0, 0.0, 0.0]);
+    }
+
+    #[test]
+    fn can_send_gates() {
+        // IDA 0x9c2d18: nulls refuse, stream gate vetoes, pending blocks only when not streaming.
+        assert!(!can_send(false, true, true, None, true, false));
+        assert!(!can_send(true, false, true, None, true, false));
+        assert!(!can_send(true, true, true, Some(false), true, false));
+        assert!(can_send(true, true, true, Some(true), true, false));
+        assert!(can_send(true, true, true, None, true, true));
+        assert!(!can_send(true, true, true, None, false, true));
+        assert!(can_send(true, true, true, None, false, false));
+    }
+
+    #[test]
+    fn physics_data_branches() {
+        // IDA 0x9c2dd4: region miss -> cframes; region hit + id fail -> null-id; direct -> mechanism.
+        use crate::bitstream::BitStream;
+        let mut s = BitStream::new();
+        let mut cframes = false;
+        let sent = send_physics_data(
+            &mut s, true, true, true, true, false,
+            &mut |_| panic!("id gated by region miss"),
+            &mut |_| panic!("no null id on miss"),
+            &mut |_| panic!("no direct id in streaming"),
+            false,
+            &mut |_| cframes = true,
+            &mut |_| panic!("mechanism not reached on miss"),
+        );
+        assert!(sent && cframes);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!((r.read_bool(), r.read_bool()), (Some(false), Some(true)));
+        let mut s = BitStream::new();
+        let mut nulled = false;
+        let sent = send_physics_data(
+            &mut s, true, true, true, true, true,
+            &mut |_| false,
+            &mut |_| nulled = true,
+            &mut |_| panic!("no direct id in streaming"),
+            false,
+            &mut |_| panic!("no cframes on region hit"),
+            &mut |_| panic!("no mechanism after id fail"),
+        );
+        assert!(!sent && nulled);
+        let mut s = BitStream::new();
+        let mut mechanism = false;
+        let sent = send_physics_data(
+            &mut s, true, true, true, false, true,
+            &mut |_| panic!("flag off skips try"),
+            &mut |_| panic!("no null id off streaming"),
+            &mut |st| st.write_bool(true),
+            false,
+            &mut |_| panic!("no cframes off streaming"),
+            &mut |_| mechanism = true,
+        );
+        assert!(sent && mechanism);
+        assert!(!send_physics_data(
+            &mut s, true, false, true, false, true,
+            &mut |_| true, &mut |_| {}, &mut |_| {}, false, &mut |_| {}, &mut |_| {},
+        ));
     }
 }
 
