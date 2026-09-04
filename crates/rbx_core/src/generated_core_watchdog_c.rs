@@ -1209,6 +1209,73 @@ pub mod camera_enum {
         }
     }
 
+    /// was: `Variant::genericConvert<CameraPanMode>` input — either the payload
+    /// (`any_cast` hit) or text for the `StringConverter` path.
+    #[derive(Debug, Clone, PartialEq, Eq)]
+    pub enum GenericInput {
+        Value(i32),
+        Text(String),
+    }
+
+    /// IDA 0x3c98e0 `Variant::genericConvert<CameraPanMode>`: `any_cast` hit
+    /// returns the payload; otherwise the string path runs
+    /// `StringConverter<CameraPanMode>::convertToValue` (name-table lookup) and,
+    /// on success, writes the value back (assign + singleton hop, no-ops here);
+    /// total miss throws `runtime_error("Unable to cast %s to %s")`, surfaced as
+    /// `Err` so the port stays total.
+    pub fn generic_convert(
+        desc: &EnumDescData,
+        input: &GenericInput,
+    ) -> Result<i32, String> {
+        match input {
+            GenericInput::Value(v) => Ok(*v),
+            GenericInput::Text(s) => desc.lookup_value(s).ok_or_else(|| {
+                format!("Unable to cast {} to CameraPanMode", s)
+            }),
+        }
+    }
+
+    /// IDA 0x3c9c4c/0x3c9c64 `ServiceProvider::create<T>(instance)` shared shape:
+    /// `if (findServiceProvider(a1, a2)) return create<T>(); else return 0`.
+    /// `[INFERENCE]` the provider registry lives outside core; caller hooks
+    /// stand in for both calls.
+    pub unsafe fn service_create(
+        provider: *const u8,
+        instance: *const u8,
+        has_provider: fn(*const u8, *const u8) -> bool,
+        make_service: fn() -> *mut u8,
+    ) -> *mut u8 {
+        if has_provider(provider, instance) {
+            make_service()
+        } else {
+            std::ptr::null_mut()
+        }
+    }
+
+    /// was: `FactoryProduct<Camera, Instance, sCamera>::Creator::getClassName()`
+    /// reached via `static_getCreator` (IDA 0x3c9d7c C++ + 0x3c9d9c `Thn32` thunk —
+    /// identical bodies since the static path ignores the adjusted `this`).
+    pub const CAMERA_CLASS_NAME: &[u8] = b"Camera\0";
+
+    /// IDA 0x3c9d7c/0x3c9d9c: return the `Camera` creator class name.
+    pub fn camera_class_name() -> *const c_char {
+        CAMERA_CLASS_NAME.as_ptr() as *const c_char
+    }
+
+    /// IDA 0x3ca510 `EnumDesc<CameraPanMode>::convertToString(value)` (the
+    /// CameraType/CameraMode instantiations are later files): `value>=0`
+    /// (enumconverter.h:262) and `value<enumToItem.size()` (:263) ReleaseAsserts,
+    /// then `out = value < 0 || value >= size ? "" : table[value]` (the +108
+    /// name-string vector).
+    pub fn enum_to_string(desc: &EnumDescData, value: i32, out: &mut String) {
+        assert!(value >= 0, "value>=0 file: include/reflection/enumconverter.h line: 262");
+        assert!(
+            (value as usize) < desc.name_strings.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+        *out = desc.name_strings[value as usize].clone();
+    }
+
     #[cfg(test)]
     mod tests {
         use super::*;
@@ -1278,6 +1345,58 @@ pub mod camera_enum {
             EventDescriptor::destroy(&mut v);
             assert_eq!(v.vtable, EVENT_DESC_VTAB);
             assert!(v.signatures.is_empty());
+        }
+        #[test]
+        fn generic_convert_hit_string_and_miss() {
+            let d = camera_pan_mode_desc();
+            assert_eq!(generic_convert(&d, &GenericInput::Value(1)), Ok(1));
+            assert_eq!(
+                generic_convert(&d, &GenericInput::Text(String::from("EdgeBump"))),
+                Ok(1)
+            );
+            assert!(generic_convert(&d, &GenericInput::Text(String::from("Bogus"))).is_err());
+        }
+
+        #[test]
+        fn service_create_gates_on_provider() {
+            fn has(p: *const u8, _: *const u8) -> bool {
+                !p.is_null()
+            }
+            fn make() -> *mut u8 {
+                0x777 as *mut u8
+            }
+            unsafe {
+                assert_eq!(
+                    service_create(0x1 as *const u8, std::ptr::null(), has, make),
+                    0x777 as *mut u8
+                );
+                assert!(service_create(std::ptr::null(), std::ptr::null(), has, make).is_null());
+            }
+        }
+
+        #[test]
+        fn class_name_and_enum_to_string() {
+            use std::ffi::CStr;
+            unsafe {
+                assert_eq!(
+                    CStr::from_ptr(camera_class_name()).to_string_lossy(),
+                    "Camera"
+                );
+            }
+            let d = camera_pan_mode_desc();
+            let mut s = String::new();
+            enum_to_string(&d, 1, &mut s);
+            assert_eq!(s, "EdgeBump");
+            let t = camera_type_desc();
+            enum_to_string(&t, 2, &mut s);
+            assert_eq!(s, "Watch");
+        }
+
+        #[test]
+        #[should_panic(expected = "value>=0")]
+        fn enum_to_string_rejects_negative() {
+            let d = camera_pan_mode_desc();
+            enum_to_string(&d, -1, &mut String::new());
         }
     }
 }
@@ -1989,169 +2108,269 @@ pub unsafe fn stub_3c9580(
 #[doc(alias = "RBX::Camera::CameraPanMode & RBX::Reflection::Variant::genericConvert<RBX::Camera::CameraPanMode>(void)")]
 // 0x3c98e0 — __ZN3RBX10Reflection7Variant14genericConvertINS_6Camera13CameraPanModeEEERT_v
 // type: int __fastcall(int)
-pub fn stub_3c98e0() -> ! {
-    todo!("0x3c98e0 __ZN3RBX10Reflection7Variant14genericConvertINS_6Camera13CameraPanModeEEERT_v")
+pub fn stub_3c98e0(input: &camera_enum::GenericInput) -> Result<i32, String> {
+    // IDA 0x3c98e0: any_cast hit returns payload; string path converts by name;
+    // miss throws runtime_error("Unable to cast %s to %s").
+    camera_enum::generic_convert(&camera_enum::camera_pan_mode_desc(), input)
 }
 
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")]
 // 0x3c9c4c — __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE
 // type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
-pub fn stub_3c9c4c() -> ! {
-    todo!("0x3c9c4c __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE")
+pub unsafe fn stub_3c9c4c(
+    provider: *const u8,
+    instance: *const u8,
+    has_provider: fn(*const u8, *const u8) -> bool,
+    make_players: fn() -> *mut u8,
+) -> *mut u8 {
+    // IDA 0x3c9c4c: findServiceProvider ? create<Players>() : 0.
+    camera_enum::service_create(provider, instance, has_provider, make_players)
 }
 
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::create<RBX::ControllerService>(RBX::Instance const*)")]
 // 0x3c9c64 — __ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE
 // type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
-pub fn stub_3c9c64() -> ! {
-    todo!("0x3c9c64 __ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE")
+pub unsafe fn stub_3c9c64(
+    provider: *const u8,
+    instance: *const u8,
+    has_provider: fn(*const u8, *const u8) -> bool,
+    make_service: fn() -> *mut u8,
+) -> *mut u8 {
+    // IDA 0x3c9c64: findServiceProvider ? create<ControllerService>() : 0.
+    camera_enum::service_create(provider, instance, has_provider, make_service)
 }
 
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")]
 // 0x3c9d7c — __ZNK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv
 // type: int()
-pub fn stub_3c9d7c() -> ! {
-    todo!("0x3c9d7c __ZNK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")
+pub fn stub_3c9d7c() -> *const std::os::raw::c_char {
+    // IDA 0x3c9d7c: static_getCreator + Creator::getClassName ("Camera").
+    camera_enum::camera_class_name()
 }
 
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")]
 // 0x3c9d9c — __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv
 // type: int()
-pub fn stub_3c9d9c() -> ! {
-    todo!("0x3c9d9c __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv")
+pub fn stub_3c9d9c() -> *const std::os::raw::c_char {
+    // IDA 0x3c9d9c Thn32: same static path as 0x3c9d7c (adjusted `this` ignored).
+    camera_enum::camera_class_name()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
 // 0x3c9dcc — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev
 // type: int()
-pub fn stub_3c9dcc() -> ! {
-    todo!("0x3c9dcc __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev")
+pub fn stub_3c9dcc(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3c9dcc D1 thunk -> D2 member teardown.
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
 // 0x3c9dd0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED0Ev
 // type: void __fastcall(void *)
-pub fn stub_3c9dd0() -> ! {
-    todo!("0x3c9dd0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED0Ev")
+pub fn stub_3c9dd0(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3c9dd0 D0: D1 teardown; slot stays caller-owned (delete artifact).
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(char const*)const")]
 // 0x3c9e70 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_3c9e70() -> ! {
-    todo!("0x3c9e70 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupEPKc")
+pub unsafe fn stub_3c9e70(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+) -> Option<usize> {
+    // IDA 0x3c9e70 CameraType::lookup(name): Name::lookup + convertToValue +
+    // convertToItem; miss -> 0/None. `[INFERENCE]` host item index stands in
+    // for the IDA Item* address.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    desc.lookup_by_name(&text)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x3c9ea0 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_3c9ea0() -> ! {
-    todo!("0x3c9ea0 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_3c9ea0(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    variant: &crate::generated_core_watchdog_k::render_settings::Variant,
+) -> Option<usize> {
+    // IDA 0x3c9ea0 CameraType::lookup(variant): any_cast payload + convertToItem.
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x3c9ec0 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
-pub fn stub_3c9ec0() -> ! {
-    todo!("0x3c9ec0 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_3c9ec0(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    index: usize,
+    out: &mut crate::generated_core_watchdog_k::render_settings::Variant,
+) -> bool {
+    // IDA 0x3c9ec0 CameraType::convertToValue: table[index] into out-Variant (1/0).
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToString(unsigned long,std::string &)const")]
 // 0x3c9ef4 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_3c9ef4() -> ! {
-    todo!("0x3c9ef4 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringEmRSs")
+pub fn stub_3c9ef4(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: usize,
+    out: &mut String,
+) -> bool {
+    // IDA 0x3c9ef4 CameraType::convertToString: name slot into out (1/0).
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
 // 0x3ca038 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED1Ev
 // type: int()
-pub fn stub_3ca038() -> ! {
-    todo!("0x3ca038 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED1Ev")
+pub fn stub_3ca038(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3ca038 CameraMode D1 thunk -> D2 member teardown.
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
 // 0x3ca03c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED0Ev
 // type: void __fastcall(void *)
-pub fn stub_3ca03c() -> ! {
-    todo!("0x3ca03c __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED0Ev")
+pub fn stub_3ca03c(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3ca03c CameraMode D0: D1 teardown; slot stays caller-owned.
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(char const*)const")]
 // 0x3ca0dc — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_3ca0dc() -> ! {
-    todo!("0x3ca0dc __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupEPKc")
+pub unsafe fn stub_3ca0dc(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+) -> Option<usize> {
+    // IDA 0x3ca0dc CameraMode::lookup(name): Name::lookup + convertToValue +
+    // convertToItem; miss -> 0/None.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    desc.lookup_by_name(&text)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x3ca10c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_3ca10c() -> ! {
-    todo!("0x3ca10c __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupERKNS0_7VariantE")
+pub fn stub_3ca10c(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    variant: &crate::generated_core_watchdog_k::render_settings::Variant,
+) -> Option<usize> {
+    // IDA 0x3ca10c CameraMode::lookup(variant): any_cast payload + convertToItem.
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x3ca12c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
-pub fn stub_3ca12c() -> ! {
-    todo!("0x3ca12c __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_3ca12c(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    index: usize,
+    out: &mut crate::generated_core_watchdog_k::render_settings::Variant,
+) -> bool {
+    // IDA 0x3ca12c CameraMode::convertToValue: table[index] into out-Variant (1/0).
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToString(unsigned long,std::string &)const")]
 // 0x3ca160 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_3ca160() -> ! {
-    todo!("0x3ca160 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringEmRSs")
+pub fn stub_3ca160(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: usize,
+    out: &mut String,
+) -> bool {
+    // IDA 0x3ca160 CameraMode::convertToString: name slot into out (1/0).
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
 // 0x3ca2a4 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED1Ev
 // type: int()
-pub fn stub_3ca2a4() -> ! {
-    todo!("0x3ca2a4 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED1Ev")
+pub fn stub_3ca2a4(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3ca2a4 CameraPanMode D1 thunk -> D2 member teardown.
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
 // 0x3ca2a8 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED0Ev
 // type: void __fastcall(void *)
-pub fn stub_3ca2a8() -> ! {
-    todo!("0x3ca2a8 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED0Ev")
+pub fn stub_3ca2a8(desc: &mut crate::generated_core_watchdog_k::render_settings::EnumDescData) {
+    // IDA 0x3ca2a8 CameraPanMode D0: D1 teardown; slot stays caller-owned.
+    desc.destroy_d1()
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(char const*)const")]
 // 0x3ca348 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_3ca348() -> ! {
-    todo!("0x3ca348 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupEPKc")
+pub unsafe fn stub_3ca348(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    name: *const std::os::raw::c_char,
+) -> Option<usize> {
+    // IDA 0x3ca348 CameraPanMode::lookup(name): Name::lookup + convertToValue +
+    // convertToItem; miss -> 0/None.
+    let text = if name.is_null() {
+        String::new()
+    } else {
+        std::ffi::CStr::from_ptr(name).to_string_lossy().into_owned()
+    };
+    desc.lookup_by_name(&text)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x3ca378 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_3ca378() -> ! {
-    todo!("0x3ca378 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupERKNS0_7VariantE")
+pub fn stub_3ca378(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    variant: &crate::generated_core_watchdog_k::render_settings::Variant,
+) -> Option<usize> {
+    // IDA 0x3ca378 CameraPanMode::lookup(variant): any_cast payload + convertToItem.
+    desc.lookup_by_value(variant)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x3ca398 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
-pub fn stub_3ca398() -> ! {
-    todo!("0x3ca398 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_3ca398(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    index: usize,
+    out: &mut crate::generated_core_watchdog_k::render_settings::Variant,
+) -> bool {
+    // IDA 0x3ca398 CameraPanMode::convertToValue: table[index] into out-Variant (1/0).
+    desc.convert_to_value(index, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToString(unsigned long,std::string &)const")]
 // 0x3ca3cc — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_3ca3cc() -> ! {
-    todo!("0x3ca3cc __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE15convertToStringEmRSs")
+pub fn stub_3ca3cc(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: usize,
+    out: &mut String,
+) -> bool {
+    // IDA 0x3ca3cc CameraPanMode::convertToString: name slot into out (1/0).
+    desc.convert_to_string(value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToString(RBX::Camera::CameraPanMode const&)const")]
 // 0x3ca510 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3ca510() -> ! {
-    todo!("0x3ca510 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE15convertToStringERKS3_")
+pub fn stub_3ca510(
+    desc: &crate::generated_core_watchdog_k::render_settings::EnumDescData,
+    value: i32,
+    out: &mut String,
+) {
+    // IDA 0x3ca510 CameraPanMode::convertToString(value): asserts + table read.
+    camera_enum::enum_to_string(desc, value, out)
 }
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToItem(RBX::Camera::CameraPanMode const&)const")]
