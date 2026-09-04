@@ -1313,6 +1313,14 @@ pub struct DataModelYieldDesc {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Reflection::EventDesc<DataModel, ...>` (IDA `0x45ccdc`):
+/// same flag-pair shape as the other event descriptors.
+#[derive(Default)]
+pub struct DataModelEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
 /// Rust model of `RBX::SelectAllCommand` (IDA `0x415bc4`): the studio
 /// select-all command plus the owning data model.
 pub struct SelectAllCommand {
@@ -21739,43 +21747,62 @@ pub fn stub_0x45bbf0(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> 
 // 0x45bca4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)
-pub fn stub_0x45bca4() -> ! {
-    todo!("0x45bca4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")
+pub fn stub_0x45bca4(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x45bca4 (`_Rb_tree::_M_insert`): same plain insert as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x45bcfc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")]
 // was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)
-pub fn stub_0x45bcfc() -> ! {
-    todo!("0x45bcfc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::Genre> const&)")
+pub fn stub_0x45bcfc(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45bcfc (`_Rb_tree::_M_insert_unique` by value): same shape as
+    // 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45bd64 — __ZNSt6vectorIN3RBX9DataModel5GenreESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,RBX::DataModel::Genre const&)")]
 // was: std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,RBX::DataModel::Genre const&)
-pub fn stub_0x45bd64() -> ! {
-    todo!("0x45bd64 std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,RBX::DataModel::Genre const&)")
+pub fn stub_0x45bd64(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x45bd64 (`vector<Genre>::_M_insert_aux`): same splice as 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x45be48 — __ZNSt12_Vector_baseIN3RBX9DataModel5GenreESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_allocate(unsigned long)")]
 // was: std::_Vector_base<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_allocate(unsigned long)
-pub fn stub_0x45be48() -> ! {
-    todo!("0x45be48 std::_Vector_base<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_allocate(unsigned long)")
+pub fn stub_0x45be48(capacity: usize) -> Vec<i32> {
+    // IDA 0x45be48 (`_Vector_base<Genre>::_M_allocate`): same safe allocation
+    // as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x45be60 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9DataModel5GenreES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModel::Genre * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::Genre *,RBX::DataModel::Genre *>(RBX::DataModel::Genre *,RBX::DataModel::Genre *,RBX::DataModel::Genre *)")]
 // was: RBX::DataModel::Genre * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::Genre *,RBX::DataModel::Genre *>(RBX::DataModel::Genre *,RBX::DataModel::Genre *,RBX::DataModel::Genre *)
-pub fn stub_0x45be60() -> ! {
-    todo!("0x45be60 RBX::DataModel::Genre * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::Genre *,RBX::DataModel::Genre *>(RBX::DataModel::Genre *,RBX::DataModel::Genre *,RBX::DataModel::Genre *)")
+pub fn stub_0x45be60(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x45be60 (`__copy_backward` over the `Genre` range): same
+    // overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x45be9c — __ZNSt6vectorIN3RBX9DataModel5GenreESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,unsigned long,RBX::DataModel::Genre const&)")]
 // was: std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,unsigned long,RBX::DataModel::Genre const&)
-pub fn stub_0x45be9c() -> ! {
-    todo!("0x45be9c std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::Genre*,std::vector<RBX::DataModel::Genre,std::allocator<RBX::DataModel::Genre>>>,unsigned long,RBX::DataModel::Genre const&)")
+pub fn stub_0x45be9c(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x45be9c (`vector<Genre>::_M_fill_insert`): same splice as 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x45c02c — __ZN3rbx8any_castIN3RBX9DataModel11CreatorTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -21792,80 +21819,126 @@ pub fn stub_0x45c084() -> ! {
 
 // 0x45c174 — __ZNSt6vectorIN3RBX9DataModel11CreatorTypeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::resize(unsigned long,RBX::DataModel::CreatorType)")]
-pub fn stub_0x45c174() -> ! {
-    todo!("0x45c174 std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::resize(unsigned long,RBX::DataModel::CreatorType)")
+pub fn stub_0x45c174(items: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x45c174 (`vector<CreatorType>::resize`): same shape as 0x45a880.
+    items.resize(len, value);
 }
 
 // 0x45c1a8 — __ZNSt6vectorIN3RBX9DataModel11CreatorTypeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::push_back(RBX::DataModel::CreatorType const&)")]
-pub fn stub_0x45c1a8() -> ! {
-    todo!("0x45c1a8 std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::push_back(RBX::DataModel::CreatorType const&)")
+pub fn stub_0x45c1a8(items: &mut Vec<i32>, value: i32) {
+    // IDA 0x45c1a8 (`vector<CreatorType>::push_back`): same shape as 0x45a8b8.
+    items.push(value);
 }
 
 // 0x45c1d0 — __ZNSt3mapIPKN3RBX4NameENS0_9DataModel11CreatorTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::DataModel::CreatorType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x45c1d0() -> ! {
-    todo!("0x45c1d0 std::map<RBX::Name const*,RBX::DataModel::CreatorType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x45c1d0<'a>(map: &'a mut BTreeMap<String, i32>, key: &str) -> &'a mut i32 {
+    // IDA 0x45c1d0 (`map<Name, CreatorType>::operator[]`): same
+    // lookup-or-create shape as 0x45a8e4.
+    map.entry(key.to_owned()).or_insert(0)
 }
 
 // 0x45c228 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel11CreatorTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")]
-pub fn stub_0x45c228() -> ! {
-    todo!("0x45c228 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")
+pub fn stub_0x45c228(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45c228 (`_Rb_tree::_M_insert_unique` with hint): same shape as
+    // 0x45af80.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45c2dc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel11CreatorTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")]
-pub fn stub_0x45c2dc() -> ! {
-    todo!("0x45c2dc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")
+pub fn stub_0x45c2dc(map: &mut BTreeMap<String, i32>, key: &str, value: i32) {
+    // IDA 0x45c2dc (`_Rb_tree::_M_insert`): same plain insert as 0x45a9f0.
+    map.insert(key.to_owned(), value);
 }
 
 // 0x45c334 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel11CreatorTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")]
-pub fn stub_0x45c334() -> ! {
-    todo!("0x45c334 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DataModel::CreatorType> const&)")
+pub fn stub_0x45c334(map: &mut BTreeMap<String, i32>, key: &str, value: i32) -> bool {
+    // IDA 0x45c334 (`_Rb_tree::_M_insert_unique` by value): same shape as
+    // 0x45aa48.
+    use std::collections::btree_map::Entry;
+    match map.entry(key.to_owned()) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x45c39c — __ZNSt6vectorIN3RBX9DataModel11CreatorTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::CreatorType*,std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>>,RBX::DataModel::CreatorType const&)")]
-pub fn stub_0x45c39c() -> ! {
-    todo!("0x45c39c std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DataModel::CreatorType*,std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>>,RBX::DataModel::CreatorType const&)")
+pub fn stub_0x45c39c(items: &mut Vec<i32>, index: usize, value: i32) {
+    // IDA 0x45c39c (`vector<CreatorType>::_M_insert_aux`): same splice as
+    // 0x45aab4.
+    let at = index.min(items.len());
+    items.insert(at, value);
 }
 
 // 0x45c480 — __ZNSt12_Vector_baseIN3RBX9DataModel11CreatorTypeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_allocate(unsigned long)")]
-pub fn stub_0x45c480() -> ! {
-    todo!("0x45c480 std::_Vector_base<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_allocate(unsigned long)")
+pub fn stub_0x45c480(capacity: usize) -> Vec<i32> {
+    // IDA 0x45c480 (`_Vector_base<CreatorType>::_M_allocate`): same safe
+    // allocation as 0x45ab98.
+    Vec::with_capacity(capacity)
 }
 
 // 0x45c498 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9DataModel11CreatorTypeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::DataModel::CreatorType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *>(RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *)")]
-pub fn stub_0x45c498() -> ! {
-    todo!("0x45c498 RBX::DataModel::CreatorType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *>(RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *,RBX::DataModel::CreatorType *)")
+pub fn stub_0x45c498(items: &mut Vec<i32>, first: usize, last: usize, result: usize) {
+    // IDA 0x45c498 (`__copy_backward` over the `CreatorType` range): same
+    // overlap-safe copy as 0x45abb0.
+    let len = last.saturating_sub(first);
+    items.copy_within(first..last, result.saturating_sub(len));
 }
 
 // 0x45c4d4 — __ZNSt6vectorIN3RBX9DataModel11CreatorTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::CreatorType*,std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>>,unsigned long,RBX::DataModel::CreatorType const&)")]
-pub fn stub_0x45c4d4() -> ! {
-    todo!("0x45c4d4 std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DataModel::CreatorType*,std::vector<RBX::DataModel::CreatorType,std::allocator<RBX::DataModel::CreatorType>>>,unsigned long,RBX::DataModel::CreatorType const&)")
+pub fn stub_0x45c4d4(items: &mut Vec<i32>, index: usize, count: usize, value: i32) {
+    // IDA 0x45c4d4 (`vector<CreatorType>::_M_fill_insert`): same splice as
+    // 0x45abf0.
+    let at = index.min(items.len());
+    items.splice(at..at, std::iter::repeat(value).take(count));
 }
 
 // 0x45c664 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EEC2EMS2_FvSsSsEPKcS8_S8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::BoundFuncDesc(void (RBX::DataModel::*)(std::string,std::string),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x45c664() -> ! {
-    todo!("0x45c664 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::BoundFuncDesc(void (RBX::DataModel::*)(std::string,std::string),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x45c664() -> DataModelFuncDesc {
+    // IDA 0x45c664: `BoundFuncDesc<DataModel, void(string, string)>::C2` —
+    // binds the member into the class descriptor; the binding lands with
+    // reflection, so the model starts empty.
+    DataModelFuncDesc { _opaque: () }
 }
 
 // 0x45c82c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EE16declareSignatureEPKcNS0_7VariantES6_S7_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x45c82c() -> ! {
-    todo!("0x45c82c RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x45c82c(_name: &str, _sig: &[Variant]) {
+    // IDA 0x45c82c: `BoundFuncDesc<DataModel, ...>::declareSignature` —
+    // registers the signature into the reflection table; the table lands with
+    // reflection, so in datamodel scope the registration collapses. Same
+    // shape as 0x3f0290.
 }
 
 // 0x45c878 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()")]
-pub fn stub_0x45c878() -> ! {
-    todo!("0x45c878 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+pub fn stub_0x45c878(_desc: *mut DataModelFuncDesc) {
+    // IDA 0x45c878: `BoundFuncDesc<DataModel, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of the
+    // D1 family.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x45c94c — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -21882,21 +21955,37 @@ pub fn stub_0x45cb18() -> ! {
 
 // 0x45ccdc — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::EventDesc(rbx::signal<void ()(bool)> RBX::DataModel::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x45ccdc() -> ! {
-    todo!("0x45ccdc RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::EventDesc(rbx::signal<void ()(bool)> RBX::DataModel::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x45ccdc() -> DataModelEventDesc {
+    // IDA 0x45ccdc: `EventDesc<DataModel, void(bool)>::C2` — wires the member
+    // event into the class descriptor; the flag words land with the
+    // reflection registry, so the model starts at defaults. Same shape as
+    // 0x3efce8.
+    DataModelEventDesc::default()
 }
 
 // 0x45ce60 — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()")]
-pub fn stub_0x45ce60() -> ! {
-    todo!("0x45ce60 RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()")
+pub fn stub_0x45ce60(_desc: *mut DataModelEventDesc) {
+    // IDA 0x45ce60: `EventDesc<DataModel, void(bool)>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3eff68.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x45cf14 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x45cf14() -> ! {
-    todo!("0x45cf14 RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x45cf14(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x45cf14: `EventDescImpl<1, DataModel, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; same shape as
+    // 0x707dcc.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x45d068 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
