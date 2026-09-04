@@ -3,6 +3,99 @@
 //! Batch: 100 stubs | skeleton batch | range 0xc154..0xf800 EA-sorted asc filler after 0xf6f8c4, skip existing, rbx_core::SharedPtr not boost
 //! Generated: 2026-09-01
 
+use std::sync::LazyLock;
+use crate::generated::flog_asserts;
+
+// ---- CRenderSettings EnumDesc host model (IDA 0x8c4c/0xc16c..0xd6b4) ----
+// Mirrors the ReverbType template in generated.rs (IDA 0x3775f8..0x377c10):
+// convert tables live in per-enum ITEMS slices; holder tags in
+// RenderSettingsAny; guarded singletons in LazyLock (host cxa_guard).
+// The item-registration (addItem static-init) path for these CRenderSettings
+// enums is not yet recovered, so the tables match a freshly-constructed desc
+// (cf. rbx_reflection EnumDesc::new) — empty, and every convert path behaves
+// as the original does on an empty desc.
+// Boost mapping: throw_exception<bad_placement_any_cast> -> Err,
+// intrusive_ptr/shared_ptr -> Arc (SharedPtr), std::map lower_bound ->
+// binary_search over name-sorted slices.
+
+/// rbx::placement_any<RBX::Region3> holdings for the CRenderSettings enums.
+#[derive(Clone, Default)]
+pub enum RenderSettingsAny {
+    #[default]
+    Empty,
+    ShadowMode(i32),
+    QualityLevel(i32),
+    ResolutionPreset(i32),
+}
+
+/// Cast failures on the CRenderSettings convert paths (bad_cast).
+#[derive(Debug, thiserror::Error)]
+pub enum RenderEnumCastError {
+    #[error("rbx::bad_placement_any_cast")]
+    BadPlacementAnyCast,
+}
+
+/// (name, value) in image/index order; index doubles as the value slot.
+/// IDA 0x8c4c (ShadowMode EnumDesc C2): only the base EnumDescriptor +
+/// empty tables are recovered, no addItem calls seen.
+pub const SHADOW_MODE_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xd6b4).
+pub const SHADOW_MODE_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue (IDA 0xd6ee..0xd722).
+pub const SHADOW_MODE_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA QualityLevel EnumDesc C2: base + empty tables, no addItems recovered.
+pub const QUALITY_LEVEL_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xd174).
+pub const QUALITY_LEVEL_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue (IDA 0xcc6e..0xcca2).
+pub const QUALITY_LEVEL_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+/// IDA ResolutionPreset EnumDesc C2: base + empty tables, no addItems recovered.
+pub const RESOLUTION_PRESET_ITEMS: &[(&str, i32)] = &[];
+/// Name-sorted view for the convertToValue tree search (IDA 0xcc34).
+pub const RESOLUTION_PRESET_BY_NAME: &[(&str, i32)] = &[];
+/// Legacy-name view for the second walk in convertToValue (IDA 0xcc6e..0xcca2).
+pub const RESOLUTION_PRESET_LEGACY_BY_NAME: &[(&str, i32)] = &[];
+
+/// Holder tag for the ShadowMode placement_any (typeinfo name, IDA 0xd64c).
+pub struct ShadowModeHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static SHADOW_MODE_HOLDER: LazyLock<ShadowModeHolder> = LazyLock::new(|| ShadowModeHolder {
+    type_name: "N3RBX15CRenderSettings10ShadowModeE",
+    construct: stub_d4e8,
+    destruct: stub_d4f4,
+});
+
+/// Holder tag for the QualityLevel placement_any (typeinfo name, IDA 0xd084 shape).
+pub struct QualityLevelHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static QUALITY_LEVEL_HOLDER: LazyLock<QualityLevelHolder> = LazyLock::new(|| QualityLevelHolder {
+    type_name: "N3RBX15CRenderSettings12QualityLevelE",
+    construct: stub_cfa8,
+    destruct: stub_cfb4,
+});
+
+/// Holder tag for the ResolutionPreset placement_any (typeinfo name, IDA 0xcb2c).
+pub struct ResolutionPresetHolder {
+    pub type_name: &'static str,
+    pub construct: fn(*const i32, *mut i32) -> i32,
+    pub destruct: fn(),
+}
+
+static RESOLUTION_PRESET_HOLDER: LazyLock<ResolutionPresetHolder> =
+    LazyLock::new(|| ResolutionPresetHolder {
+        type_name: "N3RBX15CRenderSettings16ResolutionPresetE",
+        construct: stub_c9c8,
+        destruct: stub_c9d4,
+    });
+
 // 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
@@ -20,28 +113,58 @@ pub fn stub_c158() {
 // 0xc16c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(char const*)const")]
-pub fn stub_c16c() -> ! {
-    todo!("0xc16c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(char const*)const")
+pub fn stub_c16c(name: &str, value_out: &mut i32) -> u32 {
+    // IDA 0xc16c: Name::lookup (0xc178, host: the &str itself), then
+    // convertToValue(Name) (0xc186 = stub_d6b4); on success convertToItem
+    // (0xc192 = stub_d4f8), else 0 (0xc188/0xc198).
+    if stub_d6b4(name, value_out) {
+        stub_d4f8(*value_out)
+    } else {
+        0
+    }
 }
 
 // 0xc19c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c19c() -> ! {
-    todo!("0xc19c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_c19c(any: &RenderSettingsAny) -> Result<u32, RenderEnumCastError> {
+    // IDA 0xc19c: any_cast<const ShadowMode&> (0xc1ae, throws bad_cast on
+    // mismatch) then convertToItem (0xc1b8 = stub_d4f8).
+    let value = stub_d5c4(any)?;
+    Ok(stub_d4f8(*value))
 }
 
 // 0xc1bc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c1bc() -> ! {
-    todo!("0xc1bc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_c1bc(index: u32, out: &mut i32) -> bool {
+    // IDA 0xc1bc (disasm): ok = false (0xc1c6); count = [this,#0x28] (0xc1c4),
+    // HI (index < count) -> tmp = table(+0x90)[index], ok = true
+    // (0xc1c8..0xc1d6); Singleton call_once + doGetSingleton (0xc1d8..0xc204),
+    // out = singleton-typed Variant via placement op= (0xc206..0xc20c, host:
+    // the i32 assignment below carries the ShadowMode tag); return ok (0xc210).
+    let _ = stub_d47c();
+    if (index as usize) < SHADOW_MODE_ITEMS.len() {
+        *out = SHADOW_MODE_ITEMS[index as usize].1;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc218 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c218() -> ! {
-    todo!("0xc218 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_c218(index: u32, out: &mut String) -> bool {
+    // IDA 0xc218: if (*(this+40) > index) (0xc26c): item = *(this+144)[index]
+    // (0xc27c, same table as 0xc1bc), convertToString(item) into a temp
+    // (0xc286 = the 0xd28c overload), string::assign (0xc292), destroy the
+    // temp (0xc2a4..0xc2f0, host: String drop) and return 1; else return 0.
+    if (index as usize) < SHADOW_MODE_ITEMS.len() {
+        stub_d28c(SHADOW_MODE_ITEMS[index as usize].1, out);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc35c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED1Ev
@@ -61,28 +184,53 @@ pub fn stub_c360() {
 // 0xc374 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(char const*)const")]
-pub fn stub_c374() -> ! {
-    todo!("0xc374 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(char const*)const")
+pub fn stub_c374(name: &str, value_out: &mut i32) -> u32 {
+    // IDA 0xc374: same lookup(char const*) shape as 0xc16c — Name::lookup
+    // (0xc380), convertToValue(Name) (0xc38e = stub_d174); success ->
+    // convertToItem (0xc39a = stub_cfb8), else 0.
+    if stub_d174(name, value_out) {
+        stub_cfb8(*value_out)
+    } else {
+        0
+    }
 }
 
 // 0xc3a4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c3a4() -> ! {
-    todo!("0xc3a4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_c3a4(any: &RenderSettingsAny) -> Result<u32, RenderEnumCastError> {
+    // IDA 0xc3a4: any_cast<const QualityLevel&> (0xc3b6) then convertToItem
+    // (0xc3c0 = stub_cfb8). Same shape as 0xc19c.
+    let value = stub_d084(any)?;
+    Ok(stub_cfb8(*value))
 }
 
 // 0xc3c4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c3c4() -> ! {
-    todo!("0xc3c4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_c3c4(index: u32, out: &mut i32) -> bool {
+    // IDA 0xc3c4 (disasm): same convertToValue(ulong) shape as 0xc1bc —
+    // count(+0x28)/table(+0x90) check, Singleton init, typed assign, ok flag.
+    let _ = stub_cf3c();
+    if (index as usize) < QUALITY_LEVEL_ITEMS.len() {
+        *out = QUALITY_LEVEL_ITEMS[index as usize].1;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc420 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c420() -> ! {
-    todo!("0xc420 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")
+pub fn stub_c420(index: u32, out: &mut String) -> bool {
+    // IDA 0xc420: same convertToString(ulong) shape as 0xc218 — table lookup,
+    // item overload (the 0xcd4c overload) into a temp, assign, return 1.
+    if (index as usize) < QUALITY_LEVEL_ITEMS.len() {
+        stub_cd4c(QUALITY_LEVEL_ITEMS[index as usize].1, out);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc564 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev
@@ -102,77 +250,171 @@ pub fn stub_c568() {
 // 0xc57c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")]
-pub fn stub_c57c() -> ! {
-    todo!("0xc57c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")
+pub fn stub_c57c(name: &str, value_out: &mut i32) -> u32 {
+    // IDA 0xc57c: same lookup(char const*) shape as 0xc16c — Name::lookup
+    // (0xc588), convertToValue(Name) (0xc596 = stub_cc34); success ->
+    // convertToItem (0xc5a2 = stub_c9d8), else 0.
+    if stub_cc34(name, value_out) {
+        stub_c9d8(*value_out)
+    } else {
+        0
+    }
 }
 
 // 0xc5ac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c5ac() -> ! {
-    todo!("0xc5ac RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_c5ac(any: &RenderSettingsAny) -> Result<u32, RenderEnumCastError> {
+    // IDA 0xc5ac: any_cast<const ResolutionPreset&> (0xc5be) then
+    // convertToItem (0xc5c8 = stub_c9d8). Same shape as 0xc19c.
+    let value = stub_caa4(any)?;
+    Ok(stub_c9d8(*value))
 }
 
 // 0xc5cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c5cc() -> ! {
-    todo!("0xc5cc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_c5cc(index: u32, out: &mut i32) -> bool {
+    // IDA 0xc5cc (disasm): same convertToValue(ulong) shape as 0xc1bc —
+    // count(+0x28)/table(+0x90) check, Singleton init, typed assign, ok flag.
+    let _ = stub_c95c();
+    if (index as usize) < RESOLUTION_PRESET_ITEMS.len() {
+        *out = RESOLUTION_PRESET_ITEMS[index as usize].1;
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc628 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c628() -> ! {
-    todo!("0xc628 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")
+pub fn stub_c628(index: u32, out: &mut String) -> bool {
+    // IDA 0xc628: same convertToString(ulong) shape as 0xc218 — table lookup,
+    // item overload (the 0xc76c overload) into a temp, assign, return 1.
+    if (index as usize) < RESOLUTION_PRESET_ITEMS.len() {
+        stub_c76c(RESOLUTION_PRESET_ITEMS[index as usize].1, out);
+        true
+    } else {
+        false
+    }
 }
 
 // 0xc76c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c76c() -> ! {
-    todo!("0xc76c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_c76c(value: i32, out: &mut String) {
+    // IDA 0xc76c: FLog::Asserts-gated ReleaseAsserts "value>=0"
+    // (enumconverter.h:262, 0xc7a8..0xc818) and
+    // "(size_t)value<enumToItem.size()" (:263, 0xc81c..0xc874; host: panic).
+    // Then value <= -1 -> "" (0xc8ae); value >= names.size -> "" (0xc8c6);
+    // else names[value] (0xc896).
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < RESOLUTION_PRESET_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= RESOLUTION_PRESET_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(RESOLUTION_PRESET_ITEMS[value as usize].0);
+    }
 }
 
 // 0xc90c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_c90c() -> ! {
-    todo!("0xc90c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_c90c<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xc90c: singleton() (0xc918); same holder -> payload word copy
+    // (0xc944); else destroy the old payload via its holder (0xc930..0xc93c,
+    // host: enum drop) then store + retag (0xc94e/0xc950); return self (0xc958).
+    // Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::ResolutionPreset(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::ResolutionPreset(value);
+        }
+    }
+    slot
 }
 
 // 0xc95c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")]
-pub fn stub_c95c() -> ! {
-    todo!("0xc95c rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")
+pub fn stub_c95c() -> &'static ResolutionPresetHolder {
+    // IDA 0xc95c: cxa_guard_acquire/release around s (0xc976..0xc9b6);
+    // s = {typeinfo, destruct_func} + construct_func word (0xc9ae/0xc9b2).
+    // Host: LazyLock never drops (atexit equivalent).
+    &*RESOLUTION_PRESET_HOLDER
 }
 
 // 0xc9c8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")]
-pub fn stub_c9c8() -> ! {
-    todo!("0xc9c8 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")
+pub fn stub_c9c8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xc9c8: null dst -> return src word untouched (0xc9ca/0xc9d0);
+    // else *dst = loaded word (0xc9cc/0xc9ce, trivial 4-byte enum copy).
+    // The original returns the loaded word verbatim; host returns it by value.
+    // SAFETY: holder protocol guarantees src readable and dst writable-or-null.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xc9d4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")]
-pub fn stub_c9d4() -> ! {
-    todo!("0xc9d4 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")
+pub fn stub_c9d4() {
+    // IDA 0xc9d4: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c9d8() -> ! {
-    todo!("0xc9d8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_c9d8(value: i32) -> u32 {
+    // IDA 0xc9d8: same assert pair as 0xc76c at enumconverter.h:273/274
+    // (0xc9ec..0xca32/0xca36..0xca74, host: panic); then value < 0 -> 0,
+    // out of range -> 0, else enumToItem[value] (0xca84..0xca9c, dense identity).
+    // NOTE: failure returns 0, which collides with item 0 — as in the original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < RESOLUTION_PRESET_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < RESOLUTION_PRESET_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xcaa4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_caa4() -> ! {
-    todo!("0xcaa4 RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_caa4(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xcaa4: null holder -> void typeinfo (0xcace..0xcb00); holder or
+    // name ("N3RBX15CRenderSettings16ResolutionPresetE", 0xcb10..0xcb2c)
+    // mismatch -> throw bad_placement_any_cast (0xcb5a..0xcb62, host: Err);
+    // else payload at +1 (0xcb4a). Host: the enum tag subsumes both checks.
+    match slot {
+        RenderSettingsAny::ResolutionPreset(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xcb94 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev
@@ -185,8 +427,26 @@ pub fn stub_cb94() {
 // 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")]
-pub fn stub_cc34() -> ! {
-    todo!("0xcc34 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")
+pub fn stub_cc34(name: &str, out: &mut i32) -> bool {
+    // IDA 0xcc34: lower_bound walk over the value map (0xcc4a..0xcc6c) then the
+    // legacy map (0xcc7e..0xcca2) with exact-key rechecks (0xcc66/0xcc9a);
+    // hit stores the value word (node+5, 0xccaa) and returns 1, else 0.
+    // Host: binary search, primary table then legacy table.
+    match RESOLUTION_PRESET_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = RESOLUTION_PRESET_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match RESOLUTION_PRESET_LEGACY_BY_NAME
+            .binary_search_by(|probe| probe.0.cmp(name))
+        {
+            Ok(found) => {
+                *out = RESOLUTION_PRESET_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
@@ -199,57 +459,136 @@ pub fn stub_ccb0() {
 // 0xcd4c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cd4c() -> ! {
-    todo!("0xcd4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")
+pub fn stub_cd4c(value: i32, out: &mut String) {
+    // IDA 0xcd4c: same convertToString(item) shape as 0xc76c — asserts at
+    // enumconverter.h:262/263, then "" or names[value].
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < QUALITY_LEVEL_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= QUALITY_LEVEL_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(QUALITY_LEVEL_ITEMS[value as usize].0);
+    }
 }
 
 // 0xceec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_ceec() -> ! {
-    todo!("0xceec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")
+pub fn stub_ceec<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xceec: same placement_any op= shape as 0xc90c — singleton()
+    // (0xcef8); same holder -> payload copy (0xcf24); else destroy + retag
+    // (0xcf10..0xcf1c/0xcf2e..); return self. Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::QualityLevel(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::QualityLevel(value);
+        }
+    }
+    slot
 }
 
 // 0xcf3c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")]
-pub fn stub_cf3c() -> ! {
-    todo!("0xcf3c rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")
+pub fn stub_cf3c() -> &'static QualityLevelHolder {
+    // IDA 0xcf3c: cxa_guard_acquire/release around s (0xcf56..); s =
+    // {typeinfo, destruct_func} + construct_func word (0xcf8e..). Host:
+    // LazyLock never drops (atexit equivalent).
+    &*QUALITY_LEVEL_HOLDER
 }
 
 // 0xcfa8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")]
-pub fn stub_cfa8() -> ! {
-    todo!("0xcfa8 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")
+pub fn stub_cfa8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xcfa8: null dst -> return src word untouched (0xcfaa/0xcfb0);
+    // else *dst = loaded word (0xcfac/0xcfae, trivial 4-byte enum copy).
+    // SAFETY: holder protocol guarantees src readable and dst writable-or-null.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xcfb4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")]
-pub fn stub_cfb4() -> ! {
-    todo!("0xcfb4 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")
+pub fn stub_cfb4() {
+    // IDA 0xcfb4: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cfb8() -> ! {
-    todo!("0xcfb8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")
+pub fn stub_cfb8(value: i32) -> u32 {
+    // IDA 0xcfb8: same assert pair as 0xc76c at enumconverter.h:273/274
+    // (0xcfcc..0xd012/0xd036..; host: panic); then value < 0 -> 0, out of
+    // range -> 0, else enumToItem[value] (dense identity).
+    // NOTE: failure returns 0, which collides with item 0 — as in the original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < QUALITY_LEVEL_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value >= 0 && (value as usize) < QUALITY_LEVEL_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xd084 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d084() -> ! {
-    todo!("0xd084 RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_d084(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xd084: same any_cast shape as 0xcaa4 — null holder -> void
+    // typeinfo; holder or name ("N3RBX15CRenderSettings12QualityLevelE")
+    // mismatch -> throw bad_placement_any_cast (host: Err); else payload.
+    match slot {
+        RenderSettingsAny::QualityLevel(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")]
-pub fn stub_d174() -> ! {
-    todo!("0xd174 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")
+pub fn stub_d174(name: &str, out: &mut i32) -> bool {
+    // IDA 0xd174: same two-map lower_bound shape as 0xcc34 (walks
+    // 0xd18a..0xd1a6 then 0xd1b8..; hit stores node+5 and returns 1, else 0).
+    // Host: binary search, primary table then legacy table.
+    match QUALITY_LEVEL_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = QUALITY_LEVEL_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match QUALITY_LEVEL_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = QUALITY_LEVEL_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
@@ -262,57 +601,137 @@ pub fn stub_d1f0() {
 // 0xd28c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d28c() -> ! {
-    todo!("0xd28c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")
+pub fn stub_d28c(value: i32, out: &mut String) {
+    // IDA 0xd28c: same convertToString(item) shape as 0xc76c — asserts at
+    // enumconverter.h:262 (0xd2c8..0xd338) / :263, then "" or names[value]
+    // (0xd388..0xd3d0 shape).
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < SHADOW_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    if value < 0 || (value as usize) >= SHADOW_MODE_ITEMS.len() {
+        out.clear();
+    } else {
+        out.clear();
+        out.push_str(SHADOW_MODE_ITEMS[value as usize].0);
+    }
 }
 
 // 0xd42c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings10ShadowModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_d42c() -> ! {
-    todo!("0xd42c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")
+pub fn stub_d42c<'a>(slot: &'a mut RenderSettingsAny, value: i32) -> &'a mut RenderSettingsAny {
+    // IDA 0xd42c: same placement_any op= shape as 0xc90c — singleton(); same
+    // holder -> payload copy; else destroy + retag; return self.
+    // Trivial enum: no-op dtor.
+    match &mut *slot {
+        RenderSettingsAny::ShadowMode(current) => {
+            *current = value;
+        }
+        other => {
+            *other = RenderSettingsAny::ShadowMode(value);
+        }
+    }
+    slot
 }
 
 // 0xd47c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")]
-pub fn stub_d47c() -> ! {
-    todo!("0xd47c rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")
+pub fn stub_d47c() -> &'static ShadowModeHolder {
+    // IDA 0xd47c: cxa_guard_acquire/release around s; s = {typeinfo,
+    // destruct_func} + construct_func word. Host: LazyLock never drops.
+    &*SHADOW_MODE_HOLDER
 }
 
 // 0xd4e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")]
-pub fn stub_d4e8() -> ! {
-    todo!("0xd4e8 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")
+pub fn stub_d4e8(src: *const i32, dst: *mut i32) -> i32 {
+    // IDA 0xd4e8: null dst -> return src word untouched (0xd4ea/0xd4f0);
+    // else *dst = loaded word (0xd4ec/0xd4ee, trivial 4-byte enum copy).
+    // SAFETY: holder protocol guarantees src readable and dst writable-or-null.
+    let value = unsafe { src.read() };
+    if !dst.is_null() {
+        unsafe {
+            dst.write(value);
+        }
+    }
+    value
 }
 
 // 0xd4f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")]
-pub fn stub_d4f4() -> ! {
-    todo!("0xd4f4 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")
+pub fn stub_d4f4() {
+    // IDA 0xd4f4: BX LR — trivial enum, nothing to destroy.
 }
 
 // 0xd4f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d4f8() -> ! {
-    todo!("0xd4f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")
+pub fn stub_d4f8(value: i32) -> u32 {
+    // IDA 0xd4f8: asserts "value>=0" (enumconverter.h:273, 0xd50c..0xd552)
+    // and "(size_t)value<enumToItem.size()" (:274, 0xd556..) then value < 0
+    // -> 0 (0xd5a6..0xd5aa), out of range -> 0, else enumToItem[value]
+    // (0xd5a4..0xd5c0, dense identity). Failure collides with item 0, as original.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (value as usize) < SHADOW_MODE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if value >= 0 && (value as usize) < SHADOW_MODE_ITEMS.len() {
+        value as u32
+    } else {
+        0
+    }
 }
 
 // 0xd5c4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d5c4() -> ! {
-    todo!("0xd5c4 RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_d5c4(slot: &RenderSettingsAny) -> Result<&i32, RenderEnumCastError> {
+    // IDA 0xd5c4: null holder -> void typeinfo (0xd5ee..0xd620); holder or
+    // name ("N3RBX15CRenderSettings10ShadowModeE", 0xd630..0xd64c) mismatch
+    // -> throw bad_placement_any_cast (0xd67a.., host: Err); else payload.
+    match slot {
+        RenderSettingsAny::ShadowMode(value) => Ok(value),
+        _ => Err(RenderEnumCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0xd6b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")]
-pub fn stub_d6b4() -> ! {
-    todo!("0xd6b4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")
+pub fn stub_d6b4(name: &str, out: &mut i32) -> bool {
+    // IDA 0xd6b4: lower_bound walk over the value map (0xd6ca..0xd6ec) then
+    // the legacy map (0xd6fe..0xd722) with exact-key rechecks (0xd6e6/0xd71a);
+    // hit stores the value word (node+5, 0xd72a) and returns 1, else 0.
+    // Host: binary search, primary table then legacy table.
+    match SHADOW_MODE_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            *out = SHADOW_MODE_BY_NAME[found].1;
+            true
+        }
+        Err(_) => match SHADOW_MODE_LEGACY_BY_NAME.binary_search_by(|probe| probe.0.cmp(name)) {
+            Ok(found) => {
+                *out = SHADOW_MODE_LEGACY_BY_NAME[found].1;
+                true
+            }
+            Err(_) => false,
+        },
+    }
 }
 
 // 0xd730 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev

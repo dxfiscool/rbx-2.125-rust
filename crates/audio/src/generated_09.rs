@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use rbx_core::signal::Signal;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
 const _: () = {
@@ -268,8 +269,16 @@ pub fn stub_f6c3b4(x: f32, y: f32) -> f32 {
 
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_b76c(sig: &Signal<u32>, desc: u32) {
+    // IDA 0xb76c (`signal_with_args<1, void(const PropertyDescriptor *)>`
+    // `operator()`, decompiled 0xb76c..0xb81c): null-signal check (0xb79c,
+    // host: an empty slot list); FastLog "Signal with 1 arg executed" when
+    // FLog::SignalPrints (0xb7ce..0xb7e0); next() loop firing each connected
+    // slot with the descriptor (0xb7e6..0xb80a, slot-fun validity bit at +12);
+    // intrusive_ptr_release of the iterator (0xb80c..0xb812, host: Arc drop).
+    // was: boost::signals -> rbx_core::Signal; firing the host slot list
+    // with the descriptor id is the call itself (cf. generated_18 stub_b76c).
+    sig.fire(desc);
 }
 
 // 0xf574 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE
