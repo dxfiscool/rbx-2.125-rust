@@ -39,7 +39,6 @@ pub struct IosSettingsService {
     pub iphone_minimum_version: AtomicI32,
     pub iphone_maximum_version: AtomicI32,
     pub ipod_minimum_version: AtomicI32,
-    pub ipod_maximum_version: AtomicI32,
     pub disable_play_button_for_all: AtomicBool,
     pub disable_play_button_for_non_bc: AtomicBool,
     pub ipad1_maximum_ideal_parts: AtomicI32,
@@ -73,6 +72,8 @@ pub struct IosSettingsService {
     pub memory_bouncer_threshold_kilo_bytes: AtomicI32,
     pub memory_bouncer_limit_mega_bytes: AtomicI32,
     pub memory_bouncer_limit_mega_bytes_for_low_mem_devices: AtomicI32,
+    constructed: AtomicBool,
+    freed: AtomicBool,
 }
 
 impl IosSettingsService {
@@ -452,5 +453,239 @@ impl IosSettingsService {
         let value = parse_int(text);
         Self::shared().bug_sense_log_level.store(value, Ordering::SeqCst);
         value
+    }
+
+    // 0x23d9c — iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)
+    // mangled: __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc
+    // IDA 0x23d9c
+    #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")]
+    pub fn read_value_ios_google_analytics_account2(text: &str) {
+        // `std::string` copy-assign into `_thisPtr + 88`
+        // (IDA 0x23dd2..0x23e0a). Verified via IDA decompile.
+        *Self::shared().ios_google_analytics_account2.lock() = text.to_owned();
+    }
+
+    // 0x23ed4 — iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)
+    // mangled: __ZN18iOSSettingsService36ReadValueiOSGoogleAnalyticsSampleRateEPKc
+    // IDA 0x23ed4
+    #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")]
+    pub fn read_value_ios_google_analytics_sample_rate(text: &str) -> i32 {
+        // `atoi` into `_thisPtr + 92` (IDA 0x23ed8..0x23ee8).
+        // Verified via IDA decompile.
+        let value = parse_int(text);
+        Self::shared().ios_google_analytics_sample_rate.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x23eec — iOSSettingsService::ReadValueSearchEndpointIPad(char const*)
+    // mangled: __ZN18iOSSettingsService25ReadValueSearchEndpointIPadEPKc
+    // IDA 0x23eec
+    #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")]
+    pub fn read_value_search_endpoint_ipad(text: &str) {
+        // `std::string` copy-assign into `_thisPtr + 132`
+        // (IDA 0x23f22..0x23f5a). Verified via IDA decompile.
+        *Self::shared().search_endpoint_ipad.lock() = text.to_owned();
+    }
+
+    // 0x24024 — iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)
+    // mangled: __ZN18iOSSettingsService27ReadValueSearchEndpointIPhoneEPKc
+    // IDA 0x24024
+    #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")]
+    pub fn read_value_search_endpoint_iphone(text: &str) {
+        // `std::string` copy-assign into the singleton slot
+        // (same shape as IDA 0x23eec).
+        *Self::shared().search_endpoint_iphone.lock() = text.to_owned();
+    }
+
+    // 0x2415c — iOSSettingsService::ReadValueCacheUIWebViews(char const*)
+    // mangled: __ZN18iOSSettingsService23ReadValueCacheUIWebViewsEPKc
+    // IDA 0x2415c
+    #[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
+    pub fn read_value_cache_ui_web_views(text: &str) -> bool {
+        // `SimpleJSON::ParseBool` into `_thisPtr + 140`
+        // (IDA 0x24160..0x24170). Verified via IDA decompile.
+        let value = parse_bool(text);
+        Self::shared().cache_ui_web_views.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x24178 — iOSSettingsService::ReadValueThumbstickControlStyle(char const*)
+    // mangled: __ZN18iOSSettingsService29ReadValueThumbstickControlStyleEPKc
+    // IDA 0x24178
+    #[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
+    pub fn read_value_thumbstick_control_style(text: &str) -> i32 {
+        // `atoi` into `_thisPtr + 144` (IDA 0x2417c..0x2418c).
+        // Verified via IDA decompile.
+        let value = parse_int(text);
+        Self::shared().thumbstick_control_style.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x24194 — iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)
+    // mangled: __ZN18iOSSettingsService30ReadValueFreeMemoryCheckerActiveEPKc
+    // IDA 0x24194
+    #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
+    pub fn read_value_free_memory_checker_active(text: &str) -> bool {
+        // `SimpleJSON::ParseBool` into `_thisPtr + 148`
+        // (IDA 0x24198..0x241a8). Verified via IDA decompile.
+        let value = parse_bool(text);
+        Self::shared().free_memory_checker_active.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x241b0 — iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)
+    // mangled: __ZN18iOSSettingsService43ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
+    // IDA 0x241b0
+    #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
+    pub fn read_value_free_memory_checker_rate_milli_seconds(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().free_memory_checker_rate_milli_seconds.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x241cc — iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)
+    // mangled: __ZN18iOSSettingsService46ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
+    // IDA 0x241cc
+    #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
+    pub fn read_value_free_memory_checker_threshold_kilo_bytes(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().free_memory_checker_threshold_kilo_bytes.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x241e8 — iOSSettingsService::ReadValueMemoryBouncerActive(char const*)
+    // mangled: __ZN18iOSSettingsService26ReadValueMemoryBouncerActiveEPKc
+    // IDA 0x241e8
+    #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
+    pub fn read_value_memory_bouncer_active(text: &str) -> bool {
+        // `SimpleJSON::ParseBool` into the singleton slot
+        // (same shape as IDA 0x24194).
+        let value = parse_bool(text);
+        Self::shared().memory_bouncer_active.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x24204 — iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)
+    // mangled: __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
+    // IDA 0x24204
+    #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
+    pub fn read_value_memory_bouncer_enforce_rate_milli_seconds(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().memory_bouncer_enforce_rate_milli_seconds.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x24220 — iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)
+    // mangled: __ZN18iOSSettingsService41ReadValueMemoryBouncerThresholdKiloBytesEPKc
+    // IDA 0x24220
+    #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
+    pub fn read_value_memory_bouncer_threshold_kilo_bytes(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().memory_bouncer_threshold_kilo_bytes.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x2423c — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)
+    // mangled: __ZN18iOSSettingsService37ReadValueMemoryBouncerLimitMegaBytesEPKc
+    // IDA 0x2423c
+    #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
+    pub fn read_value_memory_bouncer_limit_mega_bytes(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().memory_bouncer_limit_mega_bytes.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x24258 — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)
+    // mangled: __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
+    // IDA 0x24258
+    #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
+    pub fn read_value_memory_bouncer_limit_mega_bytes_for_low_mem_devices(text: &str) -> i32 {
+        // `atoi` into the singleton slot (same shape as IDA 0x24178).
+        let value = parse_int(text);
+        Self::shared().memory_bouncer_limit_mega_bytes_for_low_mem_devices.store(value, Ordering::SeqCst);
+        value
+    }
+
+    // 0x43180 — iOSSettingsService::iOSSettingsService(void)
+    // mangled: __ZN18iOSSettingsServiceC2Ev
+    // IDA 0x43180
+    #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
+    pub fn new() {
+        // Empty map + empty strings, `_thisPtr = this` (IDA 0x431a8..0x4320e),
+        // then `Init` (IDA 0x43236). Verified via IDA decompile.
+        let this = Self::shared();
+        this.readers.lock().clear();
+        this.ios_google_analytics_account2.lock().clear();
+        this.search_endpoint_ipad.lock().clear();
+        this.search_endpoint_iphone.lock().clear();
+        this.constructed.store(true, Ordering::SeqCst);
+        this.freed.store(false, Ordering::SeqCst);
+        Self::init();
+    }
+
+    pub fn is_constructed() -> bool {
+        Self::shared().constructed.load(Ordering::SeqCst)
+    }
+
+    // 0x432c8 — iOSSettingsService::~iOSSettingsService()
+    // mangled: __ZN18iOSSettingsServiceD2Ev
+    // IDA 0x432c8
+    #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+    pub fn destroy_d2() {
+        // Vtable reset, string teardown, map erase
+        // (IDA 0x432dc..0x4330a). Verified via IDA decompile.
+        let this = Self::shared();
+        this.readers.lock().clear();
+        this.ios_google_analytics_account2.lock().clear();
+        this.search_endpoint_ipad.lock().clear();
+        this.search_endpoint_iphone.lock().clear();
+        this.constructed.store(false, Ordering::SeqCst);
+    }
+
+    // 0x432b0 — iOSSettingsService::~iOSSettingsService()
+    // mangled: __ZN18iOSSettingsServiceD1Ev
+    // IDA 0x432b0
+    #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+    pub fn destroy_d1() {
+        // Thunk to D2 (IDA 0x432b0). Verified via IDA decompile.
+        Self::destroy_d2();
+    }
+
+    // 0x432b4 — iOSSettingsService::~iOSSettingsService()
+    // mangled: __ZN18iOSSettingsServiceD0Ev
+    // IDA 0x432b4
+    #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+    pub fn delete_d0() {
+        // D2 then `operator delete` (IDA 0x432ba..0x432c4).
+        // Verified via IDA decompile.
+        Self::destroy_d2();
+        Self::shared().freed.store(true, Ordering::SeqCst);
+    }
+
+    pub fn is_freed() -> bool {
+        Self::shared().freed.load(Ordering::SeqCst)
+    }
+
+    // 0xf27354 — iOSSettingsService::iOSSettingsService(void)
+    // mangled: __ZN18iOSSettingsServiceC2Ev$shim
+    // IDA 0xf27354
+    #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
+    pub fn new_shim() {
+        // Thunk to C2 (IDA 0xf2735c). Verified via IDA decompile.
+        Self::new();
+    }
+
+    // 0xf27364 — iOSSettingsService::~iOSSettingsService()
+    // mangled: __ZN18iOSSettingsServiceD2Ev$shim
+    // IDA 0xf27364
+    #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+    pub fn destroy_d2_shim() {
+        // Thunk to D2 (IDA 0xf2736c). Verified via IDA decompile.
+        Self::destroy_d2();
     }
 }

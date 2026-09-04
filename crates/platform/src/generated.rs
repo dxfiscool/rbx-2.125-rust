@@ -22740,112 +22740,126 @@ pub fn stub_23d80(text: &str) -> i32 {
 // mangled: __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")]
-pub fn stub_23d9c() -> ! {
-    todo!("0x23d9c iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")
+pub fn stub_23d9c(text: &str) {
+    // delegate of crate::ios_settings (IDA 0x23d9c)
+    crate::ios_settings::IosSettingsService::read_value_ios_google_analytics_account2(text);
 }
 
 // 0x23ed4 — iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)
 // mangled: __ZN18iOSSettingsService37ReadValueiOSGoogleAnalyticsSampleRateEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")]
-pub fn stub_23ed4() -> ! {
-    todo!("0x23ed4 iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")
+pub fn stub_23ed4(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x23ed4)
+    crate::ios_settings::IosSettingsService::read_value_ios_google_analytics_sample_rate(text)
 }
 
 // 0x23eec — iOSSettingsService::ReadValueSearchEndpointIPad(char const*)
 // mangled: __ZN18iOSSettingsService27ReadValueSearchEndpointIPadEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")]
-pub fn stub_23eec() -> ! {
-    todo!("0x23eec iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")
+pub fn stub_23eec(text: &str) {
+    // delegate of crate::ios_settings (IDA 0x23eec)
+    crate::ios_settings::IosSettingsService::read_value_search_endpoint_ipad(text);
 }
 
 // 0x24024 — iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)
 // mangled: __ZN18iOSSettingsService29ReadValueSearchEndpointIPhoneEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")]
-pub fn stub_24024() -> ! {
-    todo!("0x24024 iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")
+pub fn stub_24024(text: &str) {
+    // delegate of crate::ios_settings (IDA 0x24024)
+    crate::ios_settings::IosSettingsService::read_value_search_endpoint_iphone(text);
 }
 
 // 0x2415c — iOSSettingsService::ReadValueCacheUIWebViews(char const*)
 // mangled: __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
-pub fn stub_2415c() -> ! {
-    todo!("0x2415c iOSSettingsService::ReadValueCacheUIWebViews(char const*)")
+pub fn stub_2415c(text: &str) -> bool {
+    // delegate of crate::ios_settings (IDA 0x2415c)
+    crate::ios_settings::IosSettingsService::read_value_cache_ui_web_views(text)
 }
 
 // 0x24178 — iOSSettingsService::ReadValueThumbstickControlStyle(char const*)
 // mangled: __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
-pub fn stub_24178() -> ! {
-    todo!("0x24178 iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")
+pub fn stub_24178(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x24178)
+    crate::ios_settings::IosSettingsService::read_value_thumbstick_control_style(text)
 }
 
 // 0x24194 — iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)
 // mangled: __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
-pub fn stub_24194() -> ! {
-    todo!("0x24194 iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")
+pub fn stub_24194(text: &str) -> bool {
+    // delegate of crate::ios_settings (IDA 0x24194)
+    crate::ios_settings::IosSettingsService::read_value_free_memory_checker_active(text)
 }
 
 // 0x241b0 — iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)
 // mangled: __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
-pub fn stub_241b0() -> ! {
-    todo!("0x241b0 iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")
+pub fn stub_241b0(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x241b0)
+    crate::ios_settings::IosSettingsService::read_value_free_memory_checker_rate_milli_seconds(text)
 }
 
 // 0x241cc — iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)
 // mangled: __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
-pub fn stub_241cc() -> ! {
-    todo!("0x241cc iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")
+pub fn stub_241cc(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x241cc)
+    crate::ios_settings::IosSettingsService::read_value_free_memory_checker_threshold_kilo_bytes(text)
 }
 
 // 0x241e8 — iOSSettingsService::ReadValueMemoryBouncerActive(char const*)
 // mangled: __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
-pub fn stub_241e8() -> ! {
-    todo!("0x241e8 iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")
+pub fn stub_241e8(text: &str) -> bool {
+    // delegate of crate::ios_settings (IDA 0x241e8)
+    crate::ios_settings::IosSettingsService::read_value_memory_bouncer_active(text)
 }
 
 // 0x24204 — iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)
 // mangled: __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
-pub fn stub_24204() -> ! {
-    todo!("0x24204 iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")
+pub fn stub_24204(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x24204)
+    crate::ios_settings::IosSettingsService::read_value_memory_bouncer_enforce_rate_milli_seconds(text)
 }
 
 // 0x24220 — iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)
 // mangled: __ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
-pub fn stub_24220() -> ! {
-    todo!("0x24220 iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")
+pub fn stub_24220(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x24220)
+    crate::ios_settings::IosSettingsService::read_value_memory_bouncer_threshold_kilo_bytes(text)
 }
 
 // 0x2423c — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)
 // mangled: __ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
-pub fn stub_2423c() -> ! {
-    todo!("0x2423c iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")
+pub fn stub_2423c(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x2423c)
+    crate::ios_settings::IosSettingsService::read_value_memory_bouncer_limit_mega_bytes(text)
 }
 
 // 0x24258 — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)
 // mangled: __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
-pub fn stub_24258() -> ! {
-    todo!("0x24258 iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")
+pub fn stub_24258(text: &str) -> i32 {
+    // delegate of crate::ios_settings (IDA 0x24258)
+    crate::ios_settings::IosSettingsService::read_value_memory_bouncer_limit_mega_bytes_for_low_mem_devices(text)
 }
 
 // 0x31cd0 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
@@ -22951,32 +22965,36 @@ pub fn stub_3353c() -> ! {
 // mangled: __ZN18iOSSettingsServiceC2Ev
 // type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
-pub fn stub_43180() -> ! {
-    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+pub fn stub_43180() {
+    // delegate of crate::ios_settings (IDA 0x43180)
+    crate::ios_settings::IosSettingsService::new();
 }
 
 // 0x432b0 — iOSSettingsService::~iOSSettingsService()
 // mangled: __ZN18iOSSettingsServiceD1Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432b0() -> ! {
-    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b0() {
+    // delegate of crate::ios_settings (IDA 0x432b0)
+    crate::ios_settings::IosSettingsService::destroy_d1();
 }
 
 // 0x432b4 — iOSSettingsService::~iOSSettingsService()
 // mangled: __ZN18iOSSettingsServiceD0Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432b4() -> ! {
-    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b4() {
+    // delegate of crate::ios_settings (IDA 0x432b4)
+    crate::ios_settings::IosSettingsService::delete_d0();
 }
 
 // 0x432c8 — iOSSettingsService::~iOSSettingsService()
 // mangled: __ZN18iOSSettingsServiceD2Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432c8() -> ! {
-    todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432c8() {
+    // delegate of crate::ios_settings (IDA 0x432c8)
+    crate::ios_settings::IosSettingsService::destroy_d2();
 }
 
 // 0x463cc — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)
@@ -27388,16 +27406,18 @@ pub fn stub_f1f36c() -> ! {
 // mangled: j___ZN18iOSSettingsServiceC2Ev
 // type: void __fastcall(iOSSettingsService *this)
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
-pub fn stub_f27354() -> ! {
-    todo!("0xf27354 iOSSettingsService::iOSSettingsService(void)")
+pub fn stub_f27354() {
+    // delegate of crate::ios_settings (IDA 0xf27354)
+    crate::ios_settings::IosSettingsService::new_shim();
 }
 
 // 0xf27364 — iOSSettingsService::~iOSSettingsService()
 // mangled: j___ZN18iOSSettingsServiceD2Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_f27364() -> ! {
-    todo!("0xf27364 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_f27364() {
+    // delegate of crate::ios_settings (IDA 0xf27364)
+    crate::ios_settings::IosSettingsService::destroy_d2_shim();
 }
 // 0xf5e894 — rbx::signals::signal_with_args<2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *,std::string,boost::shared_ptr<RBX::Instance>)
 // mangled: j___ZN3rbx7signals16signal_with_argsILi2EFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE8fireItemEPNS0_6signalIS7_E4slotESsS6_
