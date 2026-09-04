@@ -369,6 +369,40 @@ pub fn deserialize_property_value(stream: &mut BitStream, mut read: impl FnMut(&
     read(stream);
 }
 
+/// `RBX::Network::ServerReplicator::ServerStatsItem` (IDA 0x9e3194): the
+/// per-replicator stats row created by `Creatable::create`; the live
+/// counters stay engine-side, so the crate keeps a stateless marker.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ServerStatsItem;
+
+/// `Creatable<Instance>::create<ServerStatsItem>` (IDA 0x9e3194).
+pub fn create_stats_item() -> ServerStatsItem {
+    ServerStatsItem
+}
+
+/// `Replicator::isLegalReceiveInstance` (IDA 0x9e4388): the body returns
+/// 1 unconditionally (0x9e438a).
+pub fn is_legal_receive_instance() -> bool {
+    true
+}
+
+/// `PropSync::Master::onReceivedPropertyChanged` (IDA 0x9e4fc0): hashes
+/// the (descriptor, instance) pair into the ack table (0x9e5030..0x9e5048);
+/// a known entry whose stored value differs bumps the change counter and
+/// returns true (0x9e50be..0x9e50c8), otherwise false. The table stays
+/// engine-side; the caller supplies the lookup outcome and the counter.
+pub fn on_received_property_changed(
+    known: bool,
+    value_differs: bool,
+    bump: &mut dyn FnMut(),
+) -> bool {
+    if known && value_differs {
+        bump();
+        return true;
+    }
+    false
+}
+
 /// Spawn-name packet marker (IDA 0x9dca6c): a leading `143` (`0x8F`) byte
 /// selects the initial-spawn-name parse (`IgnoreBits(8)` + log).
 pub const SPAWN_NAME_BYTE: u8 = 143;
@@ -716,5 +750,18 @@ mod tests {
         assert_eq!(filter_if_associated_with_other_player(true, true, false, false), (false, false));
         assert_eq!(filter_if_associated_with_other_player(true, true, true, true), (false, false));
         assert_eq!(filter_if_associated_with_other_player(true, true, true, false), (true, true));
+    }
+
+    #[test]
+    fn legal_stats_and_changed_ack() {
+        // IDA 0x9e4388/0x9e3194/0x9e4fc0.
+        assert!(is_legal_receive_instance());
+        assert_eq!(create_stats_item(), ServerStatsItem);
+        let mut bumps = 0;
+        assert!(on_received_property_changed(true, true, &mut || bumps += 1));
+        assert_eq!(bumps, 1);
+        assert!(!on_received_property_changed(true, false, &mut || bumps += 1));
+        assert!(!on_received_property_changed(false, true, &mut || bumps += 1));
+        assert_eq!(bumps, 1);
     }
     }

@@ -500,78 +500,87 @@ pub fn stub_9e309c() {
 // 0x9e3104 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::ServerReplicator,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_9e3104() -> ! {
-    todo!("0x9e3104 __ZN3RBX10Reflection13BoundFuncDescINS_7Network16ServerReplicatorEFvvELi0EED1Ev")
+pub fn stub_9e3104() {
+    // IDA 0x9e3104: `BoundFuncDesc<ServerReplicator, void()>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e314c — __ZN3RBX10Reflection9EventDescINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::ServerReplicator,void ()(int,bool,int),rbx::signal<void ()(int,bool,int)>,rbx::signal<void ()(int,bool,int)> RBX::Network::ServerReplicator::*>::~EventDesc()")]
-pub fn stub_9e314c() -> ! {
-    todo!("0x9e314c __ZN3RBX10Reflection9EventDescINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_ED1Ev")
+pub fn stub_9e314c() {
+    // IDA 0x9e314c: `EventDesc<ServerReplicator, ...>` D1; descriptor state stays engine-side.
 }
 
 // 0x9e3194 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7Network16ServerReplicator15ServerStatsItemEN5boost10shared_ptrIS5_EEEENS8_IT_EET0_
 // type: void __fastcall(int, int *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Instance *, boost::detail::shared_count *, int, int, void *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::ServerReplicator::ServerStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ServerReplicator::ServerStatsItem,rbx_core::SharedPtr<RBX::Network::ServerReplicator>>(rbx_core::SharedPtr<RBX::Network::ServerReplicator>)")]
-pub fn stub_9e3194() -> ! {
-    todo!("0x9e3194 __ZN3RBX9CreatableINS_8InstanceEE6createINS_7Network16ServerReplicator15ServerStatsItemEN5boost10shared_ptrIS5_EEEENS8_IT_EET0_")
+pub fn stub_9e3194() -> crate::replicator::ServerStatsItem {
+    // IDA 0x9e3194: `Creatable::create<ServerStatsItem>`; counters stay engine-side.
+    crate::replicator::create_stats_item()
 }
 
 // 0x9e34e0 — __ZN3RBX11shared_fromINS_7Network16ServerReplicatorEEEN5boost10shared_ptrIT_EEPS5_
 // type: void __fastcall(int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::ServerReplicator> RBX::shared_from<RBX::Network::ServerReplicator>(RBX::Network::ServerReplicator*)")]
-pub fn stub_9e34e0() -> ! {
-    todo!("0x9e34e0 __ZN3RBX11shared_fromINS_7Network16ServerReplicatorEEEN5boost10shared_ptrIT_EEPS5_")
+pub fn stub_9e34e0(table: &crate::player::ReplicatorTable, handle: u32) -> Option<u32> {
+    // IDA 0x9e34e0: `shared_from<ServerReplicator>`; an expired owner throws `bad_weak_ptr`, mirrored as `None`.
+    table.contains(handle).then_some(handle)
 }
 
 // 0x9e39e0 — __ZN3rbx7signals16signal_with_argsILi4EFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEEclES6_S8_S6_Ss
 // type: void __fastcall(_DWORD *, int *, int, int *, std::string *)
 #[doc(alias = "rbx::signals::signal_with_args<4,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)")]
-pub fn stub_9e39e0() -> ! {
-    todo!("0x9e39e0 __ZN3rbx7signals16signal_with_argsILi4EFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEEclES6_S8_S6_Ss")
+pub fn stub_9e39e0(list: &crate::signal::SlotList, fire: impl FnMut()) {
+    // IDA 0x9e39e0: `signal_with_args<4>::operator()` — walk slots via `next`, invoking each.
+    crate::signal::emit_each(list, fire);
 }
 
 // 0x9e4034 — __ZNK5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEEclES6_
 // type: int __fastcall(int *, int *)
 #[doc(alias = "boost::function1<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>>::operator()(rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_9e4034() -> ! {
-    todo!("0x9e4034 __ZNK5boost9function1IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEEEclES6_")
+pub fn stub_9e4034(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9e4034: `function1<FilterResult(shared_ptr)>::operator()`; args stay engine-side.
+    call()
 }
 
 // 0x9e4388 — __ZN3RBX7Network10Replicator22isLegalReceiveInstanceEPNS_8InstanceES3_
 // type: int __fastcall(RBX::Network::Replicator *this, RBX::Instance *, RBX::Instance *)
 #[doc(alias = "RBX::Network::Replicator::isLegalReceiveInstance(RBX::Instance *,RBX::Instance *)")]
-pub fn stub_9e4388() -> ! {
-    todo!("0x9e4388 __ZN3RBX7Network10Replicator22isLegalReceiveInstanceEPNS_8InstanceES3_")
+pub fn stub_9e4388() -> bool {
+    // IDA 0x9e4388..0x9e438a: returns 1 unconditionally.
+    crate::replicator::is_legal_receive_instance()
 }
 
 // 0x9e4490 — __ZNK5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEES6_EclES6_S6_
 // type: struct _Unwind_Exception *__fastcall(int *, int *, int *)
 #[doc(alias = "boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)const")]
-pub fn stub_9e4490() -> ! {
-    todo!("0x9e4490 __ZNK5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEES6_EclES6_S6_")
+pub fn stub_9e4490(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9e4490: `function2<FilterResult(shared_ptr, shared_ptr)>::operator()`; args stay engine-side.
+    call()
 }
 
 // 0x9e49ec — __ZNK5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsEclES6_Ss
 // type: int __fastcall(int *, int *, const std::string *)
 #[doc(alias = "boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string)const")]
-pub fn stub_9e49ec() -> ! {
-    todo!("0x9e49ec __ZNK5boost9function2IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsEclES6_Ss")
+pub fn stub_9e49ec(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9e49ec: `function2<FilterResult(shared_ptr, string)>::operator()`; args stay engine-side.
+    call()
 }
 
 // 0x9e4fc0 — __ZN3RBX7Network8PropSync6Master25onReceivedPropertyChangedENS_10Reflection13ConstPropertyE
 // type: int __fastcall(int, int *, int, int)
 #[doc(alias = "RBX::Network::PropSync::Master::onReceivedPropertyChanged(RBX::Reflection::ConstProperty)")]
-pub fn stub_9e4fc0() -> ! {
-    todo!("0x9e4fc0 __ZN3RBX7Network8PropSync6Master25onReceivedPropertyChangedENS_10Reflection13ConstPropertyE")
+pub fn stub_9e4fc0(known: bool, value_differs: bool, bump: &mut dyn FnMut()) -> bool {
+    // IDA 0x9e4fc0: ack-table lookup; a differing known entry bumps and applies.
+    crate::replicator::on_received_property_changed(known, value_differs, bump)
 }
 
 // 0x9e50d4 — __ZNK5boost9function3IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsNS1_10Reflection7VariantEEclES6_SsS8_
 // type: int __fastcall(int *, int *, const std::string *, int *)
 #[doc(alias = "boost::function3<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::Reflection::Variant)const")]
-pub fn stub_9e50d4() -> ! {
-    todo!("0x9e50d4 __ZNK5boost9function3IN3RBX7Network12FilterResultENS_10shared_ptrINS1_8InstanceEEESsNS1_10Reflection7VariantEEclES6_SsS8_")
+pub fn stub_9e50d4(call: impl FnOnce() -> bool) -> bool {
+    // IDA 0x9e50d4: `function3<FilterResult(shared_ptr, string, Variant)>::operator()`; args stay engine-side.
+    call()
 }
 
 // 0x9e5540 — __ZN3RBX7Network8PropSync6Master17onPropertyChangedENS_10Reflection13ConstPropertyE
