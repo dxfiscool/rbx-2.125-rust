@@ -2010,6 +2010,21 @@ pub struct Wedge {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Reflection::EventDesc<PartInstance, void(Instance),
+/// TouchedSignal>` (IDA `0x5ea1cc`): the descriptor identity plus the
+/// locally-connected generic slots; the `TouchedSignal` member lives in
+/// onDemand storage (see the skipped `getOrCreate*Signal` quintet), so
+/// member-side fire/disconnect/getSignal stay out until that storage is
+/// modeled.
+#[derive(Default)]
+pub struct TouchedEventDesc {
+    pub name: String,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub items: Vec<SignatureItem>,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
+}
+
 /// Rust model of `RBX::Instance::OutfitChangedSignalData` (IDA `0x5e2884`):
 /// empty teardown; the payload lands with the signal batch.
 pub struct OutfitChangedSignalData {
@@ -44624,43 +44639,67 @@ pub fn stub_0x5e8b48(_block: *mut ControlBlockPd<TouchTransmitter, CreatableInst
 // 0x5e8b4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5e8b4c() -> ! {
-    todo!("0x5e8b4c boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5e8b4c(block: *mut ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter>) {
+    // IDA 0x5e8b4c: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5e8b50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5e8b50() -> ! {
-    todo!("0x5e8b50 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5e8b50(_block: *mut ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter>) {
+    // IDA 0x5e8b50: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x5e8b70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5e8b70() -> ! {
-    todo!("0x5e8b70 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5e8b70(block: *const ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5e8b70: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5e8b88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16TouchTransmitterENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5e8b88() -> ! {
-    todo!("0x5e8b88 boost::detail::sp_counted_impl_pd<RBX::TouchTransmitter *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5e8b88(block: *const ControlBlockPd<TouchTransmitter, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5e8b88: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5e8b8c — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvvEN3rbx6signalIS3_EEMS2_FRS6_vEED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::~EventDesc()
-pub fn stub_0x5e8b8c() -> ! {
-    todo!("0x5e8b8c RBX::Reflection::EventDesc<RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::~EventDesc()")
+pub fn stub_0x5e8b8c(_desc: *mut EventDescPayload) {
+    // IDA 0x5e8b8c: `EventDesc<PartInstance, void()>::D0` — vtable install
+    // plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5e8c40 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_12PartInstanceEFvvEN3rbx6signalIS3_EEMS2_FRS6_vEE14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<0,RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x5e8c40() -> ! {
-    todo!("0x5e8c40 RBX::Reflection::EventDescImpl<0,RBX::PartInstance,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5e8c40(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x5e8c40: `EventDescImpl<0, PartInstance, void()>::connectGeneric`
+    // — retain the wrapper and insert into the member signal; same shape as
+    // 0x4f7148.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x5e8e64 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_12PartInstanceEFvvEN3rbx6signalIS3_EEMS2_FRS6_vEE9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISE_EE
@@ -44687,22 +44726,56 @@ pub fn stub_0x5e8f14() -> ! {
 // 0x5ea1cc — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEEC2ESB_PKcSE_NS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5ea1cc() -> ! {
-    todo!("0x5ea1cc RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5ea1cc(
+    this: *mut TouchedEventDesc,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x5ea1cc: `EventDesc<PartInstance, void(Instance), TouchedSignal>`
+    // C2 — base init plus one signature item (`Instance`). Same shape as
+    // 0x4f6f10, over the touched descriptor.
+    // SAFETY: `this` must point to valid uninitialized `TouchedEventDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            TouchedEventDesc {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+                connections: Mutex::new(Vec::new()),
+            },
+        );
+    }
 }
 
 // 0x5ea35c — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::~EventDesc()
-pub fn stub_0x5ea35c() -> ! {
-    todo!("0x5ea35c RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::~EventDesc()")
+pub fn stub_0x5ea35c(_desc: *mut TouchedEventDesc) {
+    // IDA 0x5ea35c: `EventDesc<PartInstance, void(Instance), TouchedSignal>::
+    // D0` — vtable install plus memberwise teardown; dropping the box is the
+    // same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5ea410 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEE14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x5ea410() -> ! {
-    todo!("0x5ea410 RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5ea410(desc: *const TouchedEventDesc, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x5ea410: `EventDescImpl<1, PartInstance, void(Instance),
+    // TouchedSignal>::connectGeneric` — retain the wrapper and insert into
+    // the member signal; same shape as 0x5781e0.
+    // SAFETY: `desc` must point to a valid `TouchedEventDesc`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x5ea5b0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEE9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
@@ -44722,8 +44795,10 @@ pub fn stub_0x5ea70c() -> ! {
 // 0x5ea748 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::safe_static_init_mutex(void)
-pub fn stub_0x5ea748() -> ! {
-    todo!("0x5ea748 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::safe_static_init_mutex(void)")
+pub fn stub_0x5ea748() {
+    // IDA 0x5ea748: `slot::safe_static_init_mutex` — the slot statics are
+    // `const`-initialized, so the once-init is a no-op. Same shape as
+    // 0x4a2eb4.
 }
 
 // 0x5ea74c — __ZNK3RBX10Reflection13EventDescBaseINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEE9getSignalEPS2_
@@ -44918,57 +44993,154 @@ pub fn stub_0x5ebcc8() -> ! {
 // 0x5ebe34 — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEEC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5ebe34() -> ! {
-    todo!("0x5ebe34 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5ebe34(
+    this: *mut TouchedEventDesc,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x5ebe34: second `EventDesc<PartInstance, void(Instance),
+    // TouchedSignal>` C2 (the ended-touch event) — same shape as 0x5ea1cc.
+    // SAFETY: `this` must point to valid uninitialized `TouchedEventDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            TouchedEventDesc {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+                connections: Mutex::new(Vec::new()),
+            },
+        );
+    }
 }
 
 // 0x5ebfc4 — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEEC2ESD_PKcSG_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5ebfc4() -> ! {
-    todo!("0x5ebfc4 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5ebfc4(
+    this: *mut EventDescPayload,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x5ebfc4: `EventDesc<PartInstance, void(Instance), signal>` C2 —
+    // base init plus one signature item (`Instance`). Same shape as 0x4f6f10.
+    // SAFETY: `this` must point to valid uninitialized `EventDescPayload` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            EventDescPayload {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+                connections: Mutex::new(Vec::new()),
+                single: Signal::new(),
+                triple: Signal::new(),
+                triple_isi: Signal::new(),
+                pair_if: Signal::new(),
+            },
+        );
+    }
 }
 
 // 0x5ec154 — __ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::~EventDesc()
-pub fn stub_0x5ec154() -> ! {
-    todo!("0x5ec154 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::~EventDesc()")
+pub fn stub_0x5ec154(_desc: *mut EventDescPayload) {
+    // IDA 0x5ec154: `EventDesc<PartInstance, void(Instance), signal>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release. Same shape as 0x4a3aa8.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5ec208 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEE14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x5ec208() -> ! {
-    todo!("0x5ec208 RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5ec208(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x5ec208: `EventDescImpl<1, PartInstance, void(Instance), signal>:
+    // :connectGeneric` — retain the wrapper and insert into the member
+    // signal; same shape as 0x4a3b5c.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x5ec374 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEE9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISI_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_0x5ec374() -> ! {
-    todo!("0x5ec374 RBX::Reflection::EventDescImpl<1,RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x5ec374(desc: *const EventDescPayload, args: &[Variant]) {
+    // IDA 0x5ec374: `EventDescImpl<1, PartInstance, void(Instance)>::fireEvent`
+    // — assert one arg, `any_cast` the retained `shared_ptr<Instance>`, fire
+    // the member `single` signal plus each connected wrapper's `on_single`.
+    // Same shape as 0x4f729c.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    assert!(args.len() == 1, "0x5ec374: args.size() == 1");
+    let instance = match &args[0] {
+        Variant::Instance(c) => c.clone(),
+        _ => panic!("0x5ec374: any_cast<shared_ptr<Instance>> failed"),
+    };
+    unsafe {
+        (*desc).single.fire(instance.clone());
+        let slots = (*desc).connections.lock().clone();
+        for slot in slots.iter() {
+            if let Some(cb) = slot.on_single {
+                cb(&instance);
+            }
+        }
+    }
 }
 
 // 0x5ec4d0 — __ZNK3RBX10Reflection13EventDescBaseINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEE13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_0x5ec4d0() -> ! {
-    todo!("0x5ec4d0 RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x5ec4d0(desc: *const EventDescPayload) {
+    // IDA 0x5ec4d0: `EventDescBase<PartInstance, void(Instance), signal>::
+    // disconnectAll(source)` — resolves the member signal through the member
+    // pointer and clears it plus the connection list. Same shape as 0x4f73fc.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).single.disconnect_all();
+        (*desc).connections.lock().clear();
+    }
 }
 
 // 0x5ec508 — __ZNK3RBX10Reflection13EventDescBaseINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEE9getSignalEPS2_
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::getSignal(RBX::PartInstance*)const")]
 // was: RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::getSignal(RBX::PartInstance*)const
-pub fn stub_0x5ec508() -> ! {
-    todo!("0x5ec508 RBX::Reflection::EventDescBase<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::getSignal(RBX::PartInstance*)const")
+pub fn stub_0x5ec508(desc: *const EventDescPayload, source: *const Instance) -> *const Signal<SharedPtr<Instance>> {
+    // IDA 0x5ec508: `EventDescBase<PartInstance, void(Instance), signal>::
+    // getSignal(source)` — the non-null source is the remaining precondition
+    // (the active flag has no model), returning the member `single` signal.
+    // Same shape as 0x709e7c.
+    // SAFETY: `desc` must point to a valid `EventDescPayload` outliving the
+    // result; `source` must be non-null.
+    unsafe {
+        debug_assert!(!source.is_null(), "0x5ec508: sourceActive(obj)");
+        &(*desc).single as *const Signal<SharedPtr<Instance>>
+    }
 }
 
 // 0x5ec580 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE8on_errorERSt9exception
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::on_error(std::exception &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::on_error(std::exception &)
-pub fn stub_0x5ec580() -> ! {
-    todo!("0x5ec580 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::on_error(std::exception &)")
+pub fn stub_0x5ec580(err: &str) {
+    // IDA 0x5ec580: `signal<(Instance)>::on_error` — null handler → return
+    // untouched; set handler → invoke with the exception. Same shape as
+    // 0x4a2e64.
+    if let Some(handler) = *SLOT_EXCEPTION_HANDLER.lock() {
+        handler(err);
+    }
 }
 
 // 0x5ec5a8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_
