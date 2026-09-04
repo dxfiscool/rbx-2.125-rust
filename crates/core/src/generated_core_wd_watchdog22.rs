@@ -1256,28 +1256,58 @@ pub mod gui_textbutton {
         pub forwarded: unsafe fn(*mut u8) -> bool,
         /// Current text at +804 for the compare (IDA 0x6730fe).
         pub current_text: unsafe fn(*mut u8) -> String,
-        /// Commit: assign at +804 + `a1[200] = 0` (IDA 0x673110-0x67311e).
+        /// Commit: assign at the text offset + legacy-word clear (IDA
+        /// 0x673110-0x67311e / 0x67869c-0x6786aa).
         pub commit_text: unsafe fn(*mut u8, &str),
         pub raise: RaiseHook,
     }
-    /// IDA 0x67303c `setText`: over-long inputs (`length > 0x400`,
-    /// 0x67309c) pass through a normalize copy with no observable change;
-    /// the profanity/forwarded gate (0x6730f2), the compare (0x6730fe), the
-    /// commit, and the three raises (unk_13275F0/24/50) are real.
-    pub unsafe fn guitextbutton_set_text(this: *mut u8, text: &str, svc: &GuiTextSvc) {
-        let _normalize_copy = text.len() > 0x400; // IDA 0x67309c (`substr` round-trip)
+    /// Descriptor triple raised by the text commit (`setText` 0x67303c /
+    /// 0x6785c8: text, text2, text3).
+    pub struct TextDescs {
+        pub text: &'static str,
+        pub text2: &'static str,
+        pub text3: &'static str,
+    }
+    pub const BUTTON_DESCS: TextDescs = TextDescs {
+        text: DESC_TEXT,
+        text2: DESC_TEXT2,
+        text3: DESC_TEXT3,
+    };
+    pub const LABEL_DESCS: TextDescs = TextDescs {
+        text: LDESC_TEXT,
+        text2: LDESC_TEXT2,
+        text3: LDESC_TEXT3,
+    };
+    /// Shared `setText` body (IDA 0x67303c / 0x6785c8): over-long inputs
+    /// (`length > 0x400`) pass through a normalize copy with no observable
+    /// change; the profanity/forwarded gate, the compare, the commit, and
+    /// the three raises are real.
+    pub unsafe fn guitext_set_text(
+        this: *mut u8,
+        text: &str,
+        svc: &GuiTextSvc,
+        descs: &TextDescs,
+    ) {
+        let _normalize_copy = text.len() > 0x400; // IDA 0x67309c / 0x678628
         if (svc.contains_profanity)(text) && !(svc.forwarded)(this) {
-            return; // IDA 0x6730f2
+            return; // IDA 0x6730f2 / 0x67867e
         }
         if (svc.current_text)(this) != text {
-            // IDA 0x6730fe
+            // IDA 0x6730fe / 0x67868a
             (svc.commit_text)(this, text); // IDA 0x673110-0x67311e
-            (svc.raise)(this, DESC_TEXT); // IDA 0x67312e
-            (svc.raise)(this, DESC_TEXT2); // IDA 0x67313c
-            (svc.raise)(this, DESC_TEXT3); // IDA 0x67314a
+            (svc.raise)(this, descs.text);
+            (svc.raise)(this, descs.text2);
+            (svc.raise)(this, descs.text3);
         }
     }
-    /// IDA 0x673888: `Instance::getPersistentDataCost + max(len/100, 1) + 6`
+    /// IDA 0x67303c `setText` for `GuiTextButton` (wraps the shared body).
+    pub unsafe fn guitextbutton_set_text(this: *mut u8, text: &str, svc: &GuiTextSvc) {
+        guitext_set_text(this, text, svc, &BUTTON_DESCS)
+    }
+    /// IDA 0x6785c8 `setText` for `TextLabel` (wraps the shared body).
+    pub unsafe fn guitextlabel_set_text(this: *mut u8, text: &str, svc: &GuiTextSvc) {
+        guitext_set_text(this, text, svc, &LABEL_DESCS)
+    }
     /// (`v3 = len/0x64 > 1 ? len/0x64 : 1`, 0x6738ae-0x6738cc; the string
     /// copy/destroy dance has no observable effect).
     #[inline]
