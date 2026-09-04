@@ -4,16 +4,233 @@
 //! Batch: 120 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+use parking_lot::Mutex;
 use rbx_core::SharedPtr;
+use std::sync::{Arc, atomic::{AtomicBool, Ordering}};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
+// IDA 0x630ca8..0x632e50 host-seam signal model. Mirrors the
+// DataModelSignal/Slot pair in datamodel (per-signal Mutex instead of the
+// function-static one; same exclusion discipline).
+/// The copied `boost::function<void(MoveState, MoveState)>` behind a slot.
+pub type MoveState2Fn = Arc<dyn Fn(i32, i32) + Send + Sync>;
+/// Slot payload of `rbx::signals::signal<void(MoveState, MoveState)>`: the
+/// copied function plus the link flag (word `+0xC`, tested at IDA
+/// 0x632b92/0x632bfc). Starts unlinked; `insert` links it.
+pub struct MoveState2Slot {
+    linked: AtomicBool,
+    callback: MoveState2Fn,
+}
+impl MoveState2Slot {
+    pub fn new(callback: MoveState2Fn) -> Self {
+        Self { linked: AtomicBool::new(false), callback }
+    }
+    pub fn is_linked(&self) -> bool {
+        self.linked.load(Ordering::SeqCst)
+    }
+    pub fn set_linked(&self, linked: bool) {
+        self.linked.store(linked, Ordering::SeqCst);
+    }
+    pub fn call(&self, a: i32, b: i32) {
+        (self.callback)(a, b);
+    }
+}
+/// Dropping a slot unlinks it (function::clear plus the vtable reset).
+impl Drop for MoveState2Slot {
+    fn drop(&mut self) {
+        self.set_linked(false);
+    }
+}
+/// Rust model of `rbx::signals::signal<void(MoveState, MoveState)>`.
+pub struct MoveState2Signal {
+    slots: Mutex<Vec<SharedPtr<MoveState2Slot>>>,
+}
+impl MoveState2Signal {
+    pub fn new() -> Self {
+        Self { slots: Mutex::new(Vec::new()) }
+    }
+    pub fn insert(&self, slot: &SharedPtr<MoveState2Slot>) {
+        let _static = MOVE_STATE2_SIGNAL_MUTEX.lock();
+        slot.set_linked(true);
+        self.slots.lock().push(SharedPtr::clone(slot));
+    }
+    /// Signal dispatch: snapshot the linked slots, then call each
+    /// (the `callable::call` → stored-function path).
+    pub fn emit(&self, a: i32, b: i32) {
+        let live: Vec<SharedPtr<MoveState2Slot>> = {
+            self.slots.lock().iter().filter(|s| s.is_linked()).map(SharedPtr::clone).collect()
+        };
+        for slot in live {
+            slot.call(a, b);
+        }
+    }
+    pub fn disconnect_all(&self) {
+        let _static = MOVE_STATE2_SIGNAL_MUTEX.lock();
+        let mut slots = self.slots.lock();
+        for slot in slots.iter() {
+            slot.set_linked(false);
+        }
+        slots.clear();
+    }
+    pub fn remove(&self, slot: &SharedPtr<MoveState2Slot>) {
+        let _static = MOVE_STATE2_SIGNAL_MUTEX.lock();
+        slot.set_linked(false);
+        self.slots.lock().retain(|s| !SharedPtr::ptr_eq(s, slot));
+    }
+}
+/// The copied `boost::function<void(shared, shared)>` behind a slot.
+pub type SharedPairFn = Arc<dyn Fn(u32, u32) + Send + Sync>;
+/// Slot payload of `rbx::signals::signal<void(shared, shared)>`; same
+/// link-flag discipline as `MoveState2Slot`.
+pub struct SharedPairSlot {
+    linked: AtomicBool,
+    callback: SharedPairFn,
+}
+impl SharedPairSlot {
+    pub fn new(callback: SharedPairFn) -> Self {
+        Self { linked: AtomicBool::new(false), callback }
+    }
+    pub fn is_linked(&self) -> bool {
+        self.linked.load(Ordering::SeqCst)
+    }
+    pub fn set_linked(&self, linked: bool) {
+        self.linked.store(linked, Ordering::SeqCst);
+    }
+    pub fn call(&self, a: u32, b: u32) {
+        (self.callback)(a, b);
+    }
+}
+impl Drop for SharedPairSlot {
+    fn drop(&mut self) {
+        self.set_linked(false);
+    }
+}
+/// Rust model of `rbx::signals::signal<void(shared, shared)>`.
+pub struct SharedPairSignal {
+    slots: Mutex<Vec<SharedPtr<SharedPairSlot>>>,
+}
+impl SharedPairSignal {
+    pub fn new() -> Self {
+        Self { slots: Mutex::new(Vec::new()) }
+    }
+    pub fn insert(&self, slot: &SharedPtr<SharedPairSlot>) {
+        let _static = SHARED_PAIR_SIGNAL_MUTEX.lock();
+        slot.set_linked(true);
+        self.slots.lock().push(SharedPtr::clone(slot));
+    }
+    pub fn emit(&self, a: u32, b: u32) {
+        let live: Vec<SharedPtr<SharedPairSlot>> = {
+            self.slots.lock().iter().filter(|s| s.is_linked()).map(SharedPtr::clone).collect()
+        };
+        for slot in live {
+            slot.call(a, b);
+        }
+    }
+    pub fn disconnect_all(&self) {
+        let _static = SHARED_PAIR_SIGNAL_MUTEX.lock();
+        let mut slots = self.slots.lock();
+        for slot in slots.iter() {
+            slot.set_linked(false);
+        }
+        slots.clear();
+    }
+}
+/// The copied `boost::function<void(shared)>` behind a slot.
+pub type Touched1Fn = Arc<dyn Fn(u32) + Send + Sync>;
+/// Slot payload of `rbx::signals::signal<void(shared)>`; same link-flag
+/// discipline as `MoveState2Slot`.
+pub struct Touched1Slot {
+    linked: AtomicBool,
+    callback: Touched1Fn,
+}
+impl Touched1Slot {
+    pub fn new(callback: Touched1Fn) -> Self {
+        Self { linked: AtomicBool::new(false), callback }
+    }
+    pub fn is_linked(&self) -> bool {
+        self.linked.load(Ordering::SeqCst)
+    }
+    pub fn set_linked(&self, linked: bool) {
+        self.linked.store(linked, Ordering::SeqCst);
+    }
+    pub fn call(&self, a: u32) {
+        (self.callback)(a);
+    }
+}
+impl Drop for Touched1Slot {
+    fn drop(&mut self) {
+        self.set_linked(false);
+    }
+}
+/// Rust model of `rbx::signals::signal<void(shared)>`.
+pub struct Touched1Signal {
+    slots: Mutex<Vec<SharedPtr<Touched1Slot>>>,
+}
+impl Touched1Signal {
+    pub fn new() -> Self {
+        Self { slots: Mutex::new(Vec::new()) }
+    }
+    pub fn insert(&self, slot: &SharedPtr<Touched1Slot>) {
+        let _static = TOUCHED1_SIGNAL_MUTEX.lock();
+        slot.set_linked(true);
+        self.slots.lock().push(SharedPtr::clone(slot));
+    }
+    pub fn emit(&self, a: u32) {
+        let live: Vec<SharedPtr<Touched1Slot>> = {
+            self.slots.lock().iter().filter(|s| s.is_linked()).map(SharedPtr::clone).collect()
+        };
+        for slot in live {
+            slot.call(a);
+        }
+    }
+    pub fn disconnect_all(&self) {
+        let _static = TOUCHED1_SIGNAL_MUTEX.lock();
+        let mut slots = self.slots.lock();
+        for slot in slots.iter() {
+            slot.set_linked(false);
+        }
+        slots.clear();
+    }
+}
+/// Host side of `EventDesc<SkateboardPlatform, void(MoveState, MoveState)>`
+/// (IDA 0x63152c): the two declared signature argument names (each via
+/// Name::declare + getSingleton<MoveState> + list hook at
+/// 0x6315d4-0x63163a).
+pub struct MoveStateEventDesc {
+    pub arg_names: [String; 2],
+}
+/// Function-static mutex behind the MoveState 2-arg signal's static lock
+/// (cf. `MOVE_STATE_SIGNAL_MUTEX` in generated_audio_wd_watchdog5).
+static MOVE_STATE2_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
+/// Function-static mutex behind the MoveState 2-arg *slot's* static lock
+/// (see `stub_0632e50`); distinct from the signal mutex, same convention
+/// as datamodel's SLOT_STATIC_MUTEX / SLOT_SLOT_STATIC_MUTEX pair.
+static MOVE_STATE2_SLOT_MUTEX: Mutex<()> = Mutex::new(());
+/// Function-static mutex behind the (shared, shared) signal's static lock.
+static SHARED_PAIR_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
+/// Function-static mutex behind the 1-arg touched signal's static lock.
+static TOUCHED1_SIGNAL_MUTEX: Mutex<()> = Mutex::new(());
 
 // 0x0630ca8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 // demangled: RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")]
-pub fn stub_0630ca8() -> ! {
-    todo!("0x0630ca8 RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0630ca8(
+    signal: &Touched1Signal,
+    valid: bool,
+    callback: Touched1Fn,
+) -> Option<SharedPtr<Touched1Slot>> {
+    // IDA 0x630ca8 (EventDescImpl<1>::connectGeneric): GenericSlotWrapper
+    // bind execute1 (0x630d20) + function ctor (0x630d2c) fold into the
+    // callback; valid wrapper -> signal::connect (0x630d48) else a null
+    // connection (0x630d52); function::clear (0x630d5a) plus the temp
+    // releases (0x630d60-0x630d74) ride the dropped clones.
+    if !valid {
+        return None;
+    }
+    let slot = SharedPtr::new(Touched1Slot::new(callback));
+    signal.insert(&slot);
+    Some(slot)
 }
 
 // 0x0630dfc — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
@@ -21,8 +238,15 @@ pub fn stub_0630ca8() -> ! {
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")]
-pub fn stub_0630dfc() -> ! {
-    todo!("0x0630dfc RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0630dfc(signal: &Touched1Signal, arg_count: usize, arg: u32) {
+    // IDA 0x630dfc (EventDescImpl<1>::fireEvent): ReleaseAssert
+    // args.size() == 1 (Event.h:320, 0x630e38-0x630ea8); any_cast the
+    // shared arg + shared_count copy (0x630ecc-0x630ee6);
+    // signal_with_args<1> dispatch (0x630ef2); release (0x630ef8-0x630f00
+    // via drop). The -36 Described adjust (0x630eb2-0x630eb4) collapses —
+    // host ids aren't pointers.
+    debug_assert!(arg_count == 1, "args.size() == 1 Event.h:320");
+    signal.emit(arg);
 }
 
 // 0x0630f5c — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
@@ -30,8 +254,13 @@ pub fn stub_0630dfc() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0630f5c() -> ! {
-    todo!("0x0630f5c RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0630f5c(signal: &Touched1Signal, present: bool) {
+    // IDA 0x630f5c (EventDescBase<1>::disconnectAll): null source -> out
+    // (0x630f60); else signal::disconnectAll on the member signal
+    // (0x630f68).
+    if present {
+        signal.disconnect_all();
+    }
 }
 
 // 0x0630f70 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -57,8 +286,19 @@ pub fn stub_0631160() {
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")]
-pub fn stub_0631214() -> ! {
-    todo!("0x0631214 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0631214(
+    signal: &SharedPairSignal,
+    valid: bool,
+    callback: SharedPairFn,
+) -> Option<SharedPtr<SharedPairSlot>> {
+    // IDA 0x631214 (EventDescImpl<2, shared, shared>::connectGeneric):
+    // same bind/function/connect-or-null shape as the 1-arg twin 0x630ca8.
+    if !valid {
+        return None;
+    }
+    let slot = SharedPtr::new(SharedPairSlot::new(callback));
+    signal.insert(&slot);
+    Some(slot)
 }
 
 // 0x0631368 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
@@ -66,8 +306,12 @@ pub fn stub_0631214() -> ! {
 // type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")]
-pub fn stub_0631368() -> ! {
-    todo!("0x0631368 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0631368(signal: &SharedPairSignal, arg_count: usize, a: u32, b: u32) {
+    // IDA 0x631368 (EventDescImpl<2, shared, shared>::fireEvent): same
+    // assert-size/cast/copy/dispatch shape as the 1-arg twin 0x630dfc with
+    // two shared args.
+    debug_assert!(arg_count == 2, "args.size() == 2 Event.h:320");
+    signal.emit(a, b);
 }
 
 // 0x0631518 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
@@ -75,8 +319,12 @@ pub fn stub_0631368() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0631518() -> ! {
-    todo!("0x0631518 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0631518(signal: &SharedPairSignal, present: bool) {
+    // IDA 0x631518 (EventDescBase<2, shared>::disconnectAll): null source
+    // -> out; else signal::disconnectAll; same shape as 0x630f5c.
+    if present {
+        signal.disconnect_all();
+    }
 }
 
 // 0x063152c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -84,8 +332,12 @@ pub fn stub_0631518() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_063152c() -> ! {
-    todo!("0x063152c RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_063152c(first: &str, second: &str, declare: impl Fn(&str) -> String) -> MoveStateEventDesc {
+    // IDA 0x63152c (EventDesc<MoveState, MoveState> C2): EventDescriptor
+    // base (0x631586); member-offset word (0x6315aa); vtable install
+    // (0x6315ae); per argument: Name::declare + getSingleton<MoveState> +
+    // Signature Item + list hook (0x6315d4-0x63163a, twice).
+    MoveStateEventDesc { arg_names: [declare(first), declare(second)] }
 }
 
 // 0x063171c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_ED0Ev
@@ -102,8 +354,19 @@ pub fn stub_063171c() {
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-pub fn stub_06317d0() -> ! {
-    todo!("0x06317d0 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_06317d0(
+    signal: &MoveState2Signal,
+    valid: bool,
+    callback: MoveState2Fn,
+) -> Option<SharedPtr<MoveState2Slot>> {
+    // IDA 0x6317d0 (EventDescImpl<2, MoveState>::connectGeneric): same
+    // bind/function/connect-or-null shape as the twins 0x630ca8/0x631214.
+    if !valid {
+        return None;
+    }
+    let slot = SharedPtr::new(MoveState2Slot::new(callback));
+    signal.insert(&slot);
+    Some(slot)
 }
 
 // 0x0631924 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
@@ -111,8 +374,11 @@ pub fn stub_06317d0() -> ! {
 // type: int __fastcall(int, int, __int64 *)
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE")]
-pub fn stub_0631924() -> ! {
-    todo!("0x0631924 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0631924(signal: &MoveState2Signal, arg_count: usize, a: i32, b: i32) {
+    // IDA 0x631924 (EventDescImpl<2, MoveState>::fireEvent): same
+    // assert-size/cast/copy/dispatch shape as the twins 0x630dfc/0x631368.
+    debug_assert!(arg_count == 2, "args.size() == 2 Event.h:320");
+    signal.emit(a, b);
 }
 
 // 0x06319c0 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE
@@ -120,8 +386,12 @@ pub fn stub_0631924() -> ! {
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_06319c0() -> ! {
-    todo!("0x06319c0 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_06319c0(signal: &MoveState2Signal) {
+    // IDA 0x6319c0 (EventDescBase<2, MoveState>::disconnectAll): the -36
+    // member-signal adjust (0x6319c4-0x6319c6) collapses — host member
+    // access needs no adjustment; unconditional signal::disconnectAll
+    // (0x6319cc-0x6319d2).
+    signal.disconnect_all();
 }
 
 // 0x06319d4 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE13disconnectAllEv
@@ -129,8 +399,14 @@ pub fn stub_06319c0() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::disconnectAll(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE13disconnectAllEv")]
-pub fn stub_06319d4() -> ! {
-    todo!("0x06319d4 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::disconnectAll(void)")
+pub fn stub_06319d4(signal: &MoveState2Signal) {
+    // IDA 0x6319d4 (signal::disconnectAll): while the head slot is
+    // non-null (0x6319fa/0x631aca): call_once init + lock the static mutex
+    // (0x631a3a-0x631a64), clear each link word walking to null
+    // (0x631a7c-0x631a96), unlock (0x631aa0-0x631aa8), release temps
+    // (0x631ab4-0x631ac4). `disconnect_all` holds the same lock + clear
+    // discipline.
+    signal.disconnect_all();
 }
 
 // 0x0631b4c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_18SkateboardPlatform9MoveStateES7_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
@@ -237,8 +513,15 @@ pub fn stub_06323b0() {
 // type: void __fastcall(int, boost::mutex *, int, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::connect<boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>>(boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")]
-pub fn stub_0632508() -> ! {
-    todo!("0x0632508 rbx::signals::connection rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::connect<boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>>(boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> const&)")
+pub fn stub_0632508(signal: &MoveState2Signal, callback: MoveState2Fn) -> SharedPtr<MoveState2Slot> {
+    // IDA 0x632508 (signal::connect<function>): callable new(32)
+    // (0x632542) + callable ctor (0x63256a) + vtable installs
+    // (0x632584-0x63258a) fold into the slot; insert under the static lock
+    // (0x632592); connection <= slot with add_weak_ref (0x63259a-0x6325a4,
+    // the returned clone).
+    let slot = SharedPtr::new(MoveState2Slot::new(callback));
+    signal.insert(&slot);
+    slot
 }
 
 // 0x06325fc — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6insertEPNS6_4slotE
@@ -246,8 +529,12 @@ pub fn stub_0632508() -> ! {
 // type: void __fastcall(int *, int, int, int (*)(const char *, ...), boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::insert(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6insertEPNS6_4slotE")]
-pub fn stub_06325fc() -> ! {
-    todo!("0x06325fc rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::insert(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)")
+pub fn stub_06325fc(signal: &MoveState2Signal, slot: &SharedPtr<MoveState2Slot>) {
+    // IDA 0x6325fc (signal::insert): ReleaseAssert item non-null
+    // (signal.h:290, 0x63263a-0x6326a6 — collapses, SharedPtr can't spell
+    // null); call_once init + lock the static mutex (0x6326a6-0x6326da);
+    // link the slot (0x6326e2-0x632778). Same shape as datamodel 0x4b164.
+    signal.insert(slot);
 }
 
 // 0x0632808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES6_EE4slotEEaSEPS9_
@@ -255,8 +542,12 @@ pub fn stub_06325fc() -> ! {
 // type: int *__fastcall(int *, int)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot>::operator=(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES6_EE4slotEEaSEPS9_")]
-pub fn stub_0632808() -> ! {
-    todo!("0x0632808 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot>::operator=(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot*)")
+pub fn stub_0632808<T>(dst: &mut SharedPtr<T>, src: &SharedPtr<T>) {
+    // IDA 0x632808: add_ref the new (0x632816), swap in, release the old
+    // (0x632822-0x632828); same sequence as datamodel 0x4b374.
+    // was: boost::intrusive_ptr<...MoveState...slot>::operator=(...).
+    let old = std::mem::replace(dst, SharedPtr::clone(src));
+    drop(old);
 }
 
 // 0x063282c — __ZN3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_EC2IPS7_EERKSB_T_
@@ -264,8 +555,14 @@ pub fn stub_0632808() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>*>(boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> const&,rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_EC2IPS7_EERKSB_T_")]
-pub fn stub_063282c() -> ! {
-    todo!("0x063282c rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>*>(boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> const&,rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>*)")
+pub fn stub_063282c(callback: MoveState2Fn) -> SharedPtr<MoveState2Slot> {
+    // IDA 0x63282c (callable ctor): zero the link word (0x63285e), store
+    // the signal back-pointer (0x63286e), install the callable/function
+    // vtables (0x632874-0x63287a), assign_to_own the function copy
+    // (0x6328ac). Construction returns the retained, unlinked slot (starts
+    // unlinked, like the zeroed link word); same shape as datamodel
+    // 0x4b5b8.
+    SharedPtr::new(MoveState2Slot::new(callback))
 }
 
 // 0x0632928 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE13callable_slotIN5boost8functionIS5_EEED1Ev
@@ -291,8 +588,20 @@ pub fn stub_0632a38() {
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot10disconnectEv")]
-pub fn stub_0632b68() -> ! {
-    todo!("0x0632b68 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::disconnect(void)")
+pub fn stub_0632b68(signal: &MoveState2Signal, slot: &SharedPtr<MoveState2Slot>) {
+    // IDA 0x632b68 (slot::disconnect): null link (+0xC) returns early
+    // (0x632b92); else call_once init + lock the slot static mutex
+    // (0x632bd2-0x632bf4), re-test the link and signal->remove(slot) +
+    // clear it (0x632bf8-0x632c06), unlock (0x632c0e-0x632c18; the landing
+    // pad unlocks on unwind, which RAII guards reproduce). Same shape as
+    // datamodel 0x4b860.
+    if !slot.is_linked() {
+        return;
+    }
+    let _static = stub_0632e50().lock();
+    if slot.is_linked() {
+        signal.remove(slot);
+    }
 }
 
 // 0x0632c78 — __ZNK3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot9connectedEv
@@ -300,8 +609,11 @@ pub fn stub_0632b68() -> ! {
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot9connectedEv")]
-pub fn stub_0632c78() -> ! {
-    todo!("0x0632c78 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::connected(void)const")
+pub fn stub_0632c78(slot: &SharedPtr<MoveState2Slot>) -> bool {
+    // IDA 0x632c78 (slot::connected): the link word (+0xC) is nonzero
+    // exactly when insert linked the slot (0x632c80); same shape as
+    // datamodel 0x4b970.
+    slot.is_linked()
 }
 
 // 0x0632c84 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_
@@ -309,8 +621,11 @@ pub fn stub_0632c78() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_")]
-pub fn stub_0632c84() -> ! {
-    todo!("0x0632c84 rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
+pub fn stub_0632c84(slot: &SharedPtr<MoveState2Slot>, a: i32, b: i32) {
+    // IDA 0x632c84 (callable::call): function2::operator()(slot + 16, a,
+    // b); the link word is not consulted here, only the stored function —
+    // same shape as datamodel 0x4b97c.
+    slot.call(a, b);
 }
 
 // 0x0632c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_
@@ -327,8 +642,13 @@ pub fn stub_0632c8c() {
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::operator()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)const")]
 #[doc(alias = "__ZNK5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_EclES3_S3_")]
-pub fn stub_0632c94() -> ! {
-    todo!("0x0632c94 boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::operator()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)const")
+pub fn stub_0632c94(callback: &MoveState2Fn, a: i32, b: i32) {
+    // IDA 0x632c94 (function2::operator()): dispatches via the stored
+    // invoker ((vtable & ~1) + 4 at 0x632cf8); the landing pads unwind
+    // through RAII guards (0x632d40-0x632d4e). An empty function throws
+    // bad_function_call — Arc-held closures are never empty. Same shape as
+    // datamodel 0x4b98c.
+    callback(a, b);
 }
 
 // 0x0632d5c — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6removeEPNS6_4slotE
@@ -336,8 +656,12 @@ pub fn stub_0632c94() -> ! {
 // type: int __fastcall(char **, char *, int, int (*)(const char *, ...))
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::remove(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6removeEPNS6_4slotE")]
-pub fn stub_0632d5c() -> ! {
-    todo!("0x0632d5c rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::remove(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)")
+pub fn stub_0632d5c(signal: &MoveState2Signal, slot: &SharedPtr<MoveState2Slot>) {
+    // IDA 0x632d5c (signal::remove): ReleaseAsserts the slot is not
+    // expired, locks the static mutex, unlinks the node and clears its
+    // link word. Expired slots cannot be spelled as SharedPtr, so only the
+    // live path is modelled. Same shape as datamodel 0x4ba50.
+    signal.remove(slot);
 }
 
 // 0x0632e4c — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot22safe_static_init_mutexEv
@@ -345,8 +669,11 @@ pub fn stub_0632d5c() -> ! {
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot22safe_static_init_mutexEv")]
-pub fn stub_0632e4c() -> ! {
-    todo!("0x0632e4c rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0632e4c() {
+    // IDA 0x632e4c: single call into safe_static_do_get_mutex (0x632e50)
+    // — the one-time init trampoline; same shape as datamodel 0x4bb40 and
+    // stub_062bdf0 in generated_audio_wd_watchdog5.
+    let _ = stub_0632e50();
 }
 
 // 0x0632e50 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot24safe_static_do_get_mutexEv
@@ -354,8 +681,11 @@ pub fn stub_0632e4c() -> ! {
 // type: void *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot24safe_static_do_get_mutexEv")]
-pub fn stub_0632e50() -> ! {
-    todo!("0x0632e50 rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0632e50() -> &'static Mutex<()> {
+    // IDA 0x632e50: returns the function-static slot mutex via the
+    // __cxa_guard_acquire dance (0x632eac-0x632f14); same shape as
+    // datamodel 0x4bb44 and stub_062bdf4 in generated_audio_wd_watchdog5.
+    &MOVE_STATE2_SLOT_MUTEX
 }
 
 // 0x0632f40 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_ED1Ev
