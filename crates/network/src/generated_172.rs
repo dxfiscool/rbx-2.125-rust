@@ -83,16 +83,18 @@ pub fn stub_ad5324(plugin: &crate::socket::PluginInterface2) {
 // demangled: RBX::Network::InterpolatingPhysicsReceiver::Nugget::receive(RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*)
 // type: void __fastcall(RBX::Network::InterpolatingPhysicsReceiver::Nugget *this, RakNet::BitStream *, unsigned __int64, const RBX::ModelInstance *, RBX::Network::InterpolatingPhysicsReceiver *)
 #[doc(alias = "RBX::Network::InterpolatingPhysicsReceiver::Nugget::receive(RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*)")]
-pub fn stub_ada1b8() -> ! {
-    todo!("0xada1b8 RBX::Network::InterpolatingPhysicsReceiver::Nugget::receive(RakNet::BitStream &,unsigned long long,R")
+pub fn stub_ada1b8(history: &mut crate::physics::NuggetHistory, stamp: u64, model_matched: bool, receive: &mut dyn FnMut(), sample: &mut dyn FnMut(f64)) -> bool {
+ // IDA 0xada1b8: ring store or out-of-order path.
+ crate::physics::nugget_receive(history, stamp, model_matched, receive, sample)
 }
 
 // 0xada7e4 — __ZN3RBX7Network28InterpolatingPhysicsReceiver13receivePacketERN6RakNet9BitStreamEyPNS0_15ReplicatorStats20PhysicsReceiverStatsE
 // demangled: RBX::Network::InterpolatingPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX::Network::ReplicatorStats::PhysicsReceiverStats *)
 // type: void __fastcall(_DWORD *, RakNet::BitStream *, unsigned __int64, int, int, int, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::InterpolatingPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX::Network::ReplicatorStats::PhysicsReceiverStats *)")]
-pub fn stub_ada7e4() -> ! {
-    todo!("0xada7e4 RBX::Network::InterpolatingPhysicsReceiver::receivePacket(RakNet::BitStream &,unsigned long long,RBX")
+pub fn stub_ada7e4(read_root: &mut dyn FnMut() -> Option<u64>, find_nugget: &mut dyn FnMut(u64) -> bool, create_nugget: &mut dyn FnMut(u64), receive_on_nugget: &mut dyn FnMut(u64), finish: &mut dyn FnMut()) {
+ // IDA 0xada7e4: drain roots into nuggets.
+ crate::physics::interpolating_receive_packet(read_root, find_nugget, create_nugget, receive_on_nugget, finish);
 }
 
 // 0xadbe10 — __ZN5boost11multi_index21multi_index_containerIN3RBX7Network28InterpolatingPhysicsReceiver6NuggetENS0_10indexed_byINS0_13hashed_uniqueINS0_3tagINS5_8part_tagEN4mpl_2naESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EENS0_6memberIS5_NS_10shared_ptrINS2_12PartInstanceEEEXadL_ZNS5_4partEEEEESB_SB_EENS0_18ordered_non_uniqueINS8_INS5_14lastUpdate_tagESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EENSD_IS5_yXadL_ZNS5_10lastUpdateEEEEESB_EESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EESaIS5_EE7modify_INS_3_bi6bind_tIvNS_4_mfi3mf4IvS5_RN6RakNet9BitStreamEyPKNS2_13ModelInstanceEPS4_EENSS_5list5INS_3argILi1EEENS_17reference_wrapperISX_EENSS_5valueIyEENS19_IS11_EENS19_IS12_EEEEEEEEbRT_PNS0_6detail17hashed_index_nodeINS1H_18ordered_index_nodeINS1H_15index_node_baseIS5_SP_EEEEEE
@@ -107,32 +109,36 @@ pub fn stub_adbe10() -> ! {
 // demangled: RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)
 // type: int *__fastcall(RBX::Network::Replicator *this, const RBX::Instance *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_adfcdc() -> ! {
-    todo!("0xadfcdc RBX::Network::Replicator::writeNonCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")
+pub fn stub_adfcdc(candidates: &[crate::replicator::PropertyWriteCandidate], replicated: &mut dyn FnMut(usize) -> bool, write: &mut dyn FnMut(usize)) {
+ // IDA 0xadfcdc: string-ish loop.
+ crate::replicator::write_non_cacheable_properties(candidates, replicated, write);
 }
 
 // 0xadfe8c — __ZN3RBX7Network10Replicator23writePropertiesInternalEPKNS_8InstanceERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamEb
 // demangled: RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)
 // type: void __fastcall(RBX::Network::Replicator *, int, _DWORD **, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstProperty const&,RakNet::BitStream &,bool)")]
-pub fn stub_adfe8c() -> ! {
-    todo!("0xadfe8c RBX::Network::Replicator::writePropertiesInternal(RBX::Instance const*,RBX::Reflection::ConstPropert")
+pub fn stub_adfe8c(is_bool: bool, has_default: bool, equals_default: bool, write_bit: &mut dyn FnMut(bool), write_changed: &mut dyn FnMut()) {
+ // IDA 0xadfe8c: default-bit framing.
+ crate::replicator::write_property_internal(is_bool, has_default, equals_default, write_bit, write_changed);
 }
 
 // 0xae03cc — __ZN3RBX7Network10Replicator24writeCacheablePropertiesEPKNS_8InstanceERN6RakNet9BitStreamE
 // demangled: RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)
 // type: int *__fastcall(RBX::Network::Replicator *this, const RBX::Instance *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_ae03cc() -> ! {
-    todo!("0xae03cc RBX::Network::Replicator::writeCacheableProperties(RBX::Instance const*,RakNet::BitStream &)")
+pub fn stub_ae03cc(candidates: &[crate::replicator::PropertyWriteCandidate], replicated: &mut dyn FnMut(usize) -> bool, write: &mut dyn FnMut(usize)) {
+ // IDA 0xae03cc: complement loop.
+ crate::replicator::write_cacheable_properties(candidates, replicated, write);
 }
 
 // 0xae10a8 — __ZNK3RBX7Network10Replicator14getRakNetStatsEv
 // demangled: RBX::Network::Replicator::getRakNetStats(void)const
 // type: char *__fastcall(RBX::Network::Replicator *this)
 #[doc(alias = "RBX::Network::Replicator::getRakNetStats(void)const")]
-pub fn stub_ae10a8() -> ! {
-    todo!("0xae10a8 RBX::Network::Replicator::getRakNetStats(void)const")
+pub fn stub_ae10a8(flag: u32) -> bool {
+ // IDA 0xae10a8: null unless the +0x4b0 flag is set.
+ crate::replicator::has_rak_net_stats(flag)
 }
 
 // 0xae10b8 — __ZN3RBX7Network10ReplicatorC2EN6RakNet13SystemAddressEN5boost10shared_ptrINS0_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEb

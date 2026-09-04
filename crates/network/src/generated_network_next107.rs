@@ -82,8 +82,9 @@ pub fn stub_ad5324(plugin: &crate::socket::PluginInterface2) {
 // 0xae10a8 — __ZNK3RBX7Network10Replicator14getRakNetStatsEv
 // type: char *__fastcall(RBX::Network::Replicator *this)
 #[doc(alias = "RBX::Network::Replicator::getRakNetStats(void)const")]
-pub fn stub_ae10a8() -> ! {
-    todo!("0xae10a8 RBX::Network::Replicator::getRakNetStats(void)const")
+pub fn stub_ae10a8(flag: u32) -> bool {
+ // IDA 0xae10a8: null unless the +0x4b0 flag is set.
+ crate::replicator::has_rak_net_stats(flag)
 }
 
 // 0xae10b8 — __ZN3RBX7Network10ReplicatorC2EN6RakNet13SystemAddressEN5boost10shared_ptrINS0_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEb

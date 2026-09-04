@@ -1590,3 +1590,137 @@ pub fn write_request_character(
  write_rest();
  1
 }
+
+/// One reflected property under the write loops (IDA 0xadfcdc/0xae03cc):
+/// the replicability bit at +28 (`& 4`), whether its type serializes on
+/// the string path (`std::string`, `ProtectedString`, `SystemAddress`, or
+/// a ref property), and whether it is the parent property.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct PropertyWriteCandidate {
+    /// Replicability flags at descriptor +28.
+    pub flags: u8,
+    /// String-ish or ref-property type (IDA 0xadfe36/0xae0534).
+    pub is_wire_string_or_ref: bool,
+    /// `RBX::Instance::propParent` (IDA 0xae056c).
+    pub is_parent_prop: bool,
+}
+
+/// `Replicator::writeNonCacheableProperties` (IDA 0xadfcdc): per
+/// descriptor, the replicated virtual (+284) must accept and bit 4 must be
+/// set; string-ish/ref types go to `writePropertiesInternal`.
+pub fn write_non_cacheable_properties(
+    candidates: &[PropertyWriteCandidate],
+    mut replicated: impl FnMut(usize) -> bool,
+    mut write: impl FnMut(usize),
+) {
+    for (index, candidate) in candidates.iter().enumerate() {
+        if candidate.flags & 4 == 0 {
+            continue;
+        }
+        if !replicated(index) {
+            continue;
+        }
+        if !candidate.is_wire_string_or_ref {
+            continue;
+        }
+        write(index);
+    }
+}
+
+/// `Replicator::writeCacheableProperties` (IDA 0xae03cc): the complement
+/// loop — bit 4 set and replicated, but string-ish types, the parent
+/// property, and ref properties are skipped.
+pub fn write_cacheable_properties(
+    candidates: &[PropertyWriteCandidate],
+    mut replicated: impl FnMut(usize) -> bool,
+    mut write: impl FnMut(usize),
+) {
+    for (index, candidate) in candidates.iter().enumerate() {
+        if candidate.flags & 4 == 0 {
+            continue;
+        }
+        if !replicated(index) {
+            continue;
+        }
+        if candidate.is_wire_string_or_ref || candidate.is_parent_prop {
+            continue;
+        }
+        write(index);
+    }
+}
+
+/// `Replicator::writePropertiesInternal` (IDA 0xadfe8c): bools always take
+/// the changed-property path (+312); otherwise a missing default also
+/// takes it (after a 0 bit), an at-default value takes a 1 bit, and a
+/// changed value takes a 0 bit plus the changed path. Verbose `StandardOut`
+/// logging stays engine-side.
+pub fn write_property_internal(
+    is_bool: bool,
+    has_default: bool,
+    equals_default: bool,
+    write_bit: &mut dyn FnMut(bool),
+    write_changed: &mut dyn FnMut(),
+) {
+    if is_bool {
+        // IDA 0xadffa6: bools skip the default comparison.
+        write_changed();
+        return;
+    }
+    if !has_default {
+        // IDA 0xae0002: no default writes 0 plus the changed path.
+        write_bit(false);
+        write_changed();
+    } else if equals_default {
+        // IDA 0xadff46: at-default writes a 1 bit.
+        write_bit(true);
+    } else {
+        write_bit(false);
+        write_changed();
+    }
+}
+
+/// `Replicator::getRakNetStats` (IDA 0xae10a8): null unless the flag at
+/// +0x4b0 is set, when the stats at +0xd10 are returned. Passthrough gate.
+#[must_use]
+pub fn has_rak_net_stats(flag: u32) -> bool {
+    flag != 0
+}
+
+#[cfg(test)]
+mod property_writer_tests {
+    use super::*;
+
+    #[test]
+    fn cacheable_splits_on_type() {
+        // IDA 0xadfcdc/0xae03cc: string-ish goes non-cacheable, plain goes
+        // cacheable, unset bit 4 goes nowhere.
+        let candidates = [
+            PropertyWriteCandidate { flags: 4, is_wire_string_or_ref: true, is_parent_prop: false },
+            PropertyWriteCandidate { flags: 4, is_wire_string_or_ref: false, is_parent_prop: false },
+            PropertyWriteCandidate { flags: 0, is_wire_string_or_ref: true, is_parent_prop: false },
+            PropertyWriteCandidate { flags: 4, is_wire_string_or_ref: false, is_parent_prop: true },
+        ];
+        let mut non_cached = Vec::new();
+        write_non_cacheable_properties(&candidates, |_| true, &mut |i| non_cached.push(i));
+        assert_eq!(non_cached, vec![0]);
+        let mut cached = Vec::new();
+        write_cacheable_properties(&candidates, |_| true, &mut |i| cached.push(i));
+        assert_eq!(cached, vec![1]);
+        assert!(has_rak_net_stats(1));
+        assert!(!has_rak_net_stats(0));
+    }
+
+    #[test]
+    fn internal_default_bits() {
+        // IDA 0xadfe8c: bool skips bits; at-default writes 1; changed writes 0 + path.
+        let mut bits = Vec::new();
+        let mut changed = 0;
+        write_property_internal(true, true, true, &mut |b| bits.push(b), &mut || changed += 1);
+        assert!((bits.is_empty(), changed) == (true, 1));
+        write_property_internal(false, false, false, &mut |b| bits.push(b), &mut || changed += 1);
+        write_property_internal(false, true, true, &mut |b| bits.push(b), &mut || changed += 1);
+        write_property_internal(false, true, false, &mut |b| bits.push(b), &mut || changed += 1);
+        assert_eq!(bits, vec![false, true, false]);
+        assert_eq!(changed, 3);
+    }
+}

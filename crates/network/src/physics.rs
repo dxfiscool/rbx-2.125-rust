@@ -2052,3 +2052,120 @@ mod round_robin_tests {
         assert_eq!((wrote, sent), (2, 1));
     }
 }
+
+/// `InterpolatingPhysicsReceiver::Nugget` 40-slot sample ring (IDA
+/// 0xada1b8): per-slot mechanism data stays engine-side; the receive
+/// stamps, the head/count pair, and the +16 blend stat live here.
+#[derive(Clone, Debug)]
+pub struct NuggetHistory {
+    /// Receive stamps per slot (`v22[7..8]`, IDA 0xada2f4).
+    pub stamps: [u64; 40],
+    /// Ring head (`*v14`, IDA 0xada2d2).
+    pub head: usize,
+    /// Stored sample count (`v14[1]`, saturates at 40).
+    pub count: usize,
+    /// Blend stat at +16 (IDA 0xada370).
+    pub blend: f64,
+}
+
+impl Default for NuggetHistory {
+    fn default() -> Self {
+        Self { stamps: [0; 40], head: 0, count: 0, blend: 0.0 }
+    }
+}
+
+/// `Nugget::receive` (IDA 0xada1b8): stale stamps take the out-of-order
+/// path (temp receive plus a 1.0 sample, IDA 0xada254); fresh stamps sample
+/// 0.0, advance the head by `(head + 41) % 40`, store, and either clear the
+/// blend (model part matched, IDA 0xada30a) or blend it against the
+/// previous slot delta scaled by 1.2 (IDA 0xada370). Returns stored or not.
+pub fn nugget_receive(
+    history: &mut NuggetHistory,
+    stamp: u64,
+    model_matched: bool,
+    receive: &mut dyn FnMut(),
+    sample: &mut dyn FnMut(f64),
+) -> bool {
+    if history.count > 0 && history.stamps[history.head] > stamp {
+        receive();
+        sample(1.0);
+        return false;
+    }
+    if history.count > 0 {
+        sample(0.0);
+    }
+    history.head = (history.head + 41) % 40;
+    history.count = (history.count + 1).min(40);
+    history.stamps[history.head] = stamp;
+    if model_matched {
+        history.blend = 0.0;
+    } else if history.count > 1 {
+        let prev = history.stamps[(history.head + 39) % 40];
+        let delta = stamp.wrapping_sub(prev) as f64 * 1.2;
+        history.blend = (history.blend * history.blend + delta * delta) / (history.blend + delta);
+    }
+    true
+}
+
+/// `InterpolatingPhysicsReceiver::receivePacket` (IDA 0xada7e4): drain root
+/// parts until the stream ends; known parts run `Nugget::receive` on their
+/// entry (the modify path, IDA 0xadaa92) and unknown parts are constructed
+/// and hashed in (IDA 0xada8ea). The timestamp prefix, counter clears, and
+/// the closing average sample stay engine-side; `finish` marks the packet.
+pub fn interpolating_receive_packet(
+    read_root: &mut dyn FnMut() -> Option<u64>,
+    find_nugget: &mut dyn FnMut(u64) -> bool,
+    create_nugget: &mut dyn FnMut(u64),
+    receive_on_nugget: &mut dyn FnMut(u64),
+    finish: &mut dyn FnMut(),
+) {
+    while let Some(part) = read_root() {
+        if find_nugget(part) {
+            receive_on_nugget(part);
+        } else {
+            create_nugget(part);
+        }
+    }
+    finish();
+}
+
+#[cfg(test)]
+mod nugget_tests {
+    use super::*;
+
+    #[test]
+    fn ring_advance_and_stale() {
+        // IDA 0xada1b8: first stores, newer advances, stale reroutes.
+        let mut history = NuggetHistory::default();
+        let mut received = 0;
+        let mut samples = Vec::new();
+        assert!(nugget_receive(&mut history, 100, false, &mut || received += 1, &mut |v| samples.push(v)));
+        assert_eq!((history.head, history.count, received), (1, 1, 0));
+        assert!(nugget_receive(&mut history, 120, false, &mut || received += 1, &mut |v| samples.push(v)));
+        assert_eq!((history.head, history.count), (2, 2));
+        assert!(!nugget_receive(&mut history, 110, false, &mut || received += 1, &mut |v| samples.push(v)));
+        assert_eq!((received, history.count), (1, 2));
+        assert_eq!(samples, vec![0.0, 1.0]);
+        // Blend against the previous slot: (0 + 24^2) / 24 = 24.
+        assert_eq!(history.blend, 24.0);
+    }
+
+    #[test]
+    fn packet_drain_dispatch() {
+        // IDA 0xada7e4: known parts modify, unknown parts construct.
+        let roots = vec![1u64, 2, 1];
+        let mut roots = roots.into_iter();
+        let seen = std::cell::RefCell::new(std::collections::HashSet::new());
+        let mut created = Vec::new();
+        let mut modified = Vec::new();
+        let mut finished = 0;
+        interpolating_receive_packet(
+            &mut || roots.next(),
+            &mut |part| seen.borrow().contains(&part),
+            &mut |part| { seen.borrow_mut().insert(part); created.push(part); },
+            &mut |part| modified.push(part),
+            &mut || finished += 1,
+        );
+        assert_eq!((created, modified, finished), (vec![1, 2], vec![1], 1));
+    }
+}
