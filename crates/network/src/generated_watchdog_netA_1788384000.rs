@@ -263,8 +263,9 @@ pub fn stub_95edd0(stream: &mut crate::bitstream::BitStream, id: &str) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::ContentId>(RakNet::BitStream &,RBX::ContentId &)")]
 #[doc(alias = "__ZN3RBXrsINS_9ContentIdEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95ede0() -> ! {
-    todo!("0x95ede0 __ZN3RBXrsINS_9ContentIdEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95ede0(stream: &mut crate::bitstream::BitStream) -> String {
+ // IDA 0x95ede0: string plus backslash fix.
+ crate::custom_serializer::read_content_id(stream)
 }
 
 // 0x95efcc — __ZN3RBXlsERN6RakNet9BitStreamERKNS_10BrickColorE
@@ -369,8 +370,9 @@ pub fn stub_95f664(stream: &mut crate::bitstream::BitStream, v: [f32; 2]) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::Vector2>(RakNet::BitStream &,G3D::Vector2 &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D7Vector2EEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f69c() -> ! {
-    todo!("0x95f69c __ZN3RBXrsIN3G3D7Vector2EEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f69c(stream: &mut crate::bitstream::BitStream) -> [f32; 2] {
+ // IDA 0x95f69c: two floats.
+ crate::custom_serializer::read_vector2(stream)
 }
 
 // 0x95f6b4 — __ZN3RBXlsERN6RakNet9BitStreamERKNS_12StreamRegion2IdE
@@ -386,16 +388,18 @@ pub fn stub_95f6b4(stream: &mut crate::bitstream::BitStream, v: [i32; 3]) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::StreamRegion::Id>(RakNet::BitStream &,RBX::StreamRegion::Id &)")]
 #[doc(alias = "__ZN3RBXrsINS_12StreamRegion2IdEEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f750() -> ! {
-    todo!("0x95f750 __ZN3RBXrsINS_12StreamRegion2IdEEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f750(stream: &mut crate::bitstream::BitStream) -> [i32; 3] {
+ // IDA 0x95f750: flag plus bytes or ints.
+ crate::custom_serializer::read_region2_id(stream)
 }
 
 // 0x95f7dc — __ZN3RBXrsIN3G3D7Vector3EEERN6RakNet9BitStreamES5_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::Vector3>(RakNet::BitStream &,G3D::Vector3 &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D7Vector3EEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f7dc() -> ! {
-    todo!("0x95f7dc __ZN3RBXrsIN3G3D7Vector3EEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f7dc(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+ // IDA 0x95f7dc: three floats.
+ crate::custom_serializer::read_vector3(stream)
 }
 
 // 0x95f800 — __ZN3RBXlsERN6RakNet9BitStreamEs
@@ -411,8 +415,9 @@ pub fn stub_95f800(stream: &mut crate::bitstream::BitStream, value: i16) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><short>(RakNet::BitStream &,short &)")]
 #[doc(alias = "__ZN3RBXrsIsEERN6RakNet9BitStreamES3_RT_")]
-pub fn stub_95f818() -> ! {
-    todo!("0x95f818 __ZN3RBXrsIsEERN6RakNet9BitStreamES3_RT_")
+pub fn stub_95f818(stream: &mut crate::bitstream::BitStream) -> i16 {
+ // IDA 0x95f818: Read<short>.
+ crate::custom_serializer::read_short(stream)
 }
 
 // 0x95f828 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D12Vector3int16E
@@ -428,8 +433,9 @@ pub fn stub_95f828(stream: &mut crate::bitstream::BitStream, v: [i16; 3]) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::Vector3int16>(RakNet::BitStream &,G3D::Vector3int16 &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D12Vector3int16EEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f864() -> ! {
-    todo!("0x95f864 __ZN3RBXrsIN3G3D12Vector3int16EEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f864(stream: &mut crate::bitstream::BitStream) -> [i16; 3] {
+ // IDA 0x95f864: three shorts.
+ crate::custom_serializer::read_vector3i16(stream)
 }
 
 // 0x95f884 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D12Vector2int16E
@@ -445,8 +451,9 @@ pub fn stub_95f884(stream: &mut crate::bitstream::BitStream, v: [i16; 2]) {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::Vector2int16>(RakNet::BitStream &,G3D::Vector2int16 &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D12Vector2int16EEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f8b0() -> ! {
-    todo!("0x95f8b0 __ZN3RBXrsIN3G3D12Vector2int16EEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f8b0(stream: &mut crate::bitstream::BitStream) -> [i16; 2] {
+ // IDA 0x95f8b0: two shorts.
+ crate::custom_serializer::read_vector2i16(stream)
 }
 
 // 0x95f8c8 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D15CoordinateFrameE
@@ -462,64 +469,72 @@ pub fn stub_95f8c8(stream: &mut crate::bitstream::BitStream, translation: [f32; 
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::CoordinateFrame>(RakNet::BitStream &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D15CoordinateFrameEEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95f9d0() -> ! {
-    todo!("0x95f9d0 __ZN3RBXrsIN3G3D15CoordinateFrameEEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95f9d0(stream: &mut crate::bitstream::BitStream) -> ([f32; 3], Option<u32>, [f32; 4]) {
+ // IDA 0x95f9d0: translation, orient id or quat; matrix rebuild engine-side.
+ crate::custom_serializer::read_coordinate_frame(stream)
 }
 
 // 0x95fbb8 — __ZN3RBXrsINS_4UDimEEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::UDim>(RakNet::BitStream &,RBX::UDim &)")]
 #[doc(alias = "__ZN3RBXrsINS_4UDimEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fbb8() -> ! {
-    todo!("0x95fbb8 __ZN3RBXrsINS_4UDimEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fbb8(stream: &mut crate::bitstream::BitStream) -> (f32, i32) {
+ // IDA 0x95fbb8: scale float, offset int narrowed to short.
+ crate::custom_serializer::read_udim(stream)
 }
 
 // 0x95fbd8 — __ZN3RBXrsINS_5UDim2EEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::UDim2>(RakNet::BitStream &,RBX::UDim2 &)")]
 #[doc(alias = "__ZN3RBXrsINS_5UDim2EEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fbd8() -> ! {
-    todo!("0x95fbd8 __ZN3RBXrsINS_5UDim2EEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fbd8(stream: &mut crate::bitstream::BitStream) -> (f32, i32, f32, i32) {
+ // IDA 0x95fbd8: two UDims.
+ crate::custom_serializer::read_udim2(stream)
 }
 
 // 0x95fc10 — __ZN3RBXrsINS_6RbxRayEEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::RbxRay>(RakNet::BitStream &,RBX::RbxRay &)")]
 #[doc(alias = "__ZN3RBXrsINS_6RbxRayEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fc10() -> ! {
-    todo!("0x95fc10 __ZN3RBXrsINS_6RbxRayEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fc10(stream: &mut crate::bitstream::BitStream) -> ([f32; 3], [f32; 3]) {
+ // IDA 0x95fc10: origin then direction.
+ crate::custom_serializer::read_rbx_ray(stream)
 }
 
 // 0x95fc54 — __ZN3RBXrsINS_5FacesEEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::Faces>(RakNet::BitStream &,RBX::Faces &)")]
 #[doc(alias = "__ZN3RBXrsINS_5FacesEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fc54() -> ! {
-    todo!("0x95fc54 __ZN3RBXrsINS_5FacesEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fc54(stream: &mut crate::bitstream::BitStream) -> i32 {
+ // IDA 0x95fc54: one int.
+ crate::custom_serializer::read_faces(stream)
 }
 
 // 0x95fc64 — __ZN3RBXrsINS_4AxesEEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::Axes>(RakNet::BitStream &,RBX::Axes &)")]
 #[doc(alias = "__ZN3RBXrsINS_4AxesEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fc64() -> ! {
-    todo!("0x95fc64 __ZN3RBXrsINS_4AxesEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fc64(stream: &mut crate::bitstream::BitStream) -> i32 {
+ // IDA 0x95fc64: one int.
+ crate::custom_serializer::read_axes(stream)
 }
 
 // 0x95fc74 — __ZN3RBXrsINS_10BrickColorEEERN6RakNet9BitStreamES4_RT_
 // type: int __fastcall(RakNet::BitStream *this)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::BrickColor>(RakNet::BitStream &,RBX::BrickColor &)")]
 #[doc(alias = "__ZN3RBXrsINS_10BrickColorEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fc74() -> ! {
-    todo!("0x95fc74 __ZN3RBXrsINS_10BrickColorEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fc74(stream: &mut crate::bitstream::BitStream) -> u32 {
+ // IDA 0x95fc74: 6-bit palette index; deref engine-side.
+ crate::custom_serializer::read_brick_color(stream)
 }
 
 // 0x95fde0 — __ZN3RBXrsIN3G3D6Color3EEERN6RakNet9BitStreamES5_RT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><G3D::Color3>(RakNet::BitStream &,G3D::Color3 &)")]
 #[doc(alias = "__ZN3RBXrsIN3G3D6Color3EEERN6RakNet9BitStreamES5_RT_")]
-pub fn stub_95fde0() -> ! {
-    todo!("0x95fde0 __ZN3RBXrsIN3G3D6Color3EEERN6RakNet9BitStreamES5_RT_")
+pub fn stub_95fde0(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+ // IDA 0x95fde0: three floats.
+ crate::custom_serializer::read_color3(stream)
 }
 
 // 0x95fe04 — __ZN3RBXlsERN6RakNet9BitStreamENS_13SystemAddressE
@@ -535,8 +550,9 @@ pub fn stub_95fe04(stream: &mut crate::bitstream::BitStream, address: u32, port:
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RakNet::BitStream & RBX::operator>><RBX::SystemAddress>(RakNet::BitStream &,RBX::SystemAddress &)")]
 #[doc(alias = "__ZN3RBXrsINS_13SystemAddressEEERN6RakNet9BitStreamES4_RT_")]
-pub fn stub_95fe28() -> ! {
-    todo!("0x95fe28 __ZN3RBXrsINS_13SystemAddressEEERN6RakNet9BitStreamES4_RT_")
+pub fn stub_95fe28(stream: &mut crate::bitstream::BitStream) -> (u32, u16) {
+ // IDA 0x95fe28: address then port.
+ crate::custom_serializer::read_system_address(stream)
 }
 
 // 0x9607ac — __ZN3RBX7Network12IdSerializer6sendIdERN6RakNet9BitStreamERKNS1_2IdE
