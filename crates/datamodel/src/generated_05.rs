@@ -467,11 +467,16 @@ pub struct PropertyDescriptor {
 /// (IDA `0x706742`, `0x707f20`): the 1-arg event carries a property
 /// descriptor, the 2-arg event carries two retained instances, and the
 /// `Players` chat event carries a `PlayerChatType` tag (IDA `0xa4a600`).
+/// `Int` is the `int` argument behind `BoundFuncDesc<Players,
+/// shared_ptr<Instance> (int), 1>::execute` (IDA `0xa4f244`); `Null` is the
+/// empty `shared_ptr` assigned by a null `getVariant` (IDA `0xa4f72c`).
 pub enum Variant {
     Property(*const PropertyDescriptor),
     Instance(SharedPtr<Instance>),
     Text(String),
     ChatType(u32),
+    Int(i32),
+    Null,
 }
 /// Rust model of `RBX::Instance::SaveFilter` (IDA `0x703748` discriminants:
 /// `1` takes the service-exclusion chain, `0` the workspace chain, any other

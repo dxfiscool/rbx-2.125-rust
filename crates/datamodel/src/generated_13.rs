@@ -36,6 +36,44 @@ pub struct PlayersChatFuncDesc {
     pub arg_names: [String; 3],
     pub signature: Vec<SignatureItem>,
 }
+/// Bound `Players` 2-arg member used by `BoundFuncDesc<Players, void
+/// (string, shared_ptr<Instance>), 2>` (IDA `0xa4dcc0`): the receiver plus
+/// the message string and the retained instance.
+pub type PlayersStrInstMethod = fn(&Players, &str, &SharedPtr<Instance>);
+/// Rust model of that `BoundFuncDesc` (IDA `0xa4dcc0`): the member pointer
+/// plus the two declared argument names and their reflected types.
+pub struct PlayersStrInstFuncDesc {
+    pub method: PlayersStrInstMethod,
+    pub arg_names: [String; 2],
+    pub signature: Vec<SignatureItem>,
+}
+/// Bound `Players` 1-arg member used by `BoundFuncDesc<Players,
+/// shared_ptr<Instance> (int), 1>` (IDA `0xa4eedc`): the receiver plus the
+/// integer key, returning a retained instance.
+pub type PlayersIntRetMethod = fn(&Players, i32) -> SharedPtr<Instance>;
+/// Rust model of that `BoundFuncDesc` (IDA `0xa4eedc`): the member pointer
+/// plus the declared argument name and its reflected type.
+pub struct PlayersIntRetFuncDesc {
+    pub method: PlayersIntRetMethod,
+    pub arg_names: [String; 1],
+    pub signature: Vec<SignatureItem>,
+}
+/// Getter behind `RefPropDescriptor<Players, Instance>` (IDA `0xa4f4a0`):
+/// the raw `Instance*` return collapses into an optional retained instance
+/// (`None` is the null return at IDA `0xa50018`).
+pub type PlayersRefGetter = fn(&Players) -> Option<SharedPtr<Instance>>;
+/// Rust model of that `RefPropDescriptor` (IDA `0xa4f4a0`): the name and
+/// category words, the getter, the trailing int word, and the
+/// attributes/permissions words. The `+44` `GetImpl` layer (IDA `0xa503b8`)
+/// collapses away: get-only behavior is in the accessors below.
+pub struct PlayersRefPropDesc {
+    pub name: String,
+    pub category: String,
+    pub getter: PlayersRefGetter,
+    pub flags: i32,
+    pub attributes: u32,
+    pub permissions: u32,
+}
 /// Rust model of an `rbx::signals::signal<void ()(PlayerChatType,
 /// SharedPtr<Instance>, string, SharedPtr<Instance>)>::slot` link holding a
 /// wrapper bind (IDA `0xa4c674` insert): same intrusive-`next` discipline as
@@ -561,135 +599,285 @@ pub fn stub_a4d148(func: &Chat4WrapperFunction, chat_type: PlayerChatType, speak
 // 0xa4d734 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE6removeEPNSB_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
-pub fn stub_a4d734() -> ! {
-    todo!("0xa4d734 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")
+pub fn stub_a4d734(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4d734: `ReleaseAssert(!intrusive_ptr_expired(item))`
+    // (signal.h:261), `SignalPrints` log line, then unlink of the item from
+    // the signal list (list walk with the `intrusive_ptr::operator=` splice).
+    // The log collapses; the expired-assert becomes a linked-assert and the
+    // unlink clears the successor. Twin of 0x7093f0 on `Chat4SlotNode`.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    unsafe {
+        debug_assert!((*slot).next.is_some(), "0xa4d734: intrusive_ptr_expired");
+        (*slot).next = None;
+    }
 }
 
 // 0xa4d820 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)
-pub fn stub_a4d820() -> ! {
-    todo!("0xa4d820 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")
+pub fn stub_a4d820() -> &'static Mutex<()> {
+    // IDA 0xa4d820: guard-checked once-init (`__cxa_guard_acquire`) of the
+    // function-local `safe_static_do_get_mutex::value`, `mutex::mutex` plus
+    // `__cxa_atexit` registration. A `static` with `const` init is the same
+    // once-init; the pthread object lives inside `Mutex`. Twin of 0x7094e4.
+    &CHAT4_SLOT_STATIC_MUTEX
 }
 
 // 0xa4d904 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS3_8InstanceEEESsSA_EE4slotENS7_8functionISB_EELi4ESB_ED2Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_a4d904() -> ! {
-    todo!("0xa4d904 rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_a4d904(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4d904: `callable` D2 — vtable resets (compiler-managed),
+    // `function4::clear(a1 + 4)` running the bind manager destroy op plus
+    // `a1[4] = 0` (disasm `~callable`), then `release(a1[2])` of the link;
+    // storage kept. Same body as the 0x7095d4 twin on `Chat4SlotNode`.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    unsafe {
+        (*slot).func.target = None;
+        (*slot).next = None;
+    }
 }
 
 // 0xa4da9c — __ZN3rbx8callableINS_7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS3_8InstanceEEESsSA_EE4slotENS7_8functionISB_EELi4ESB_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_a4da9c() -> ! {
-    todo!("0xa4da9c rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_a4da9c(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4da9c: `callable` D1 — same vtable-reset + `function4::clear` +
+    // link-release sequence as D2 (IDA 0xa4d904); storage kept.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    stub_a4d904(slot);
 }
 
 // 0xa4daa8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS3_8InstanceEEESsSA_EE4slotENS7_8functionISB_EELi4ESB_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
-pub fn stub_a4daa8() -> ! {
-    todo!("0xa4daa8 rbx::callable<rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+pub fn stub_a4daa8(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4daa8: `callable` D0 — the D1 body (`clear` + `release`) plus
+    // `operator delete`; the box reclaim runs the field drops and frees
+    // together. Same shape as 0x7096e4.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xa4db5c — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
-pub fn stub_a4db5c() -> ! {
-    todo!("0xa4db5c rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")
+pub fn stub_a4db5c(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4db5c: `slot` D1 — vtable resets (compiler-managed) plus the
+    // single `shared_ptr` release of the link word at `+8`; the callback
+    // word was already cleared by the derived `callable` D1. Storage kept.
+    // SAFETY: `slot` must point to a valid `Chat4SlotNode`.
+    unsafe {
+        (*slot).next = None;
+    }
 }
 
 // 0xa4dbb8 — __ZN3rbx7signals6signalIFvN3RBX7Network7Players14PlayerChatTypeEN5boost10shared_ptrINS2_8InstanceEEESsS9_EE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // was: rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
-pub fn stub_a4dbb8() -> ! {
-    todo!("0xa4dbb8 rbx::signals::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")
+pub fn stub_a4dbb8(slot: *mut Chat4SlotNode) {
+    // IDA 0xa4dbb8: `slot` D0 — the D1 body (link release) plus `operator
+    // delete`; the box reclaim runs the field drops and frees together.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0xa4dcc0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS3_FvSsS7_EPKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Players::*)(std::string,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_a4dcc0() -> ! {
-    todo!("0xa4dcc0 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_a4dcc0(this: *mut PlayersStrInstFuncDesc, method: PlayersStrInstMethod, first: &str, second: &str) {
+    // IDA 0xa4dcc0: `Players::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then two
+    // `addArgument` calls for the `std::string` (first) and
+    // `shared_ptr<Instance>` (second) args. The descriptor temps are
+    // compiler-managed here. Twin of 0xa4752c with (string, Instance) args.
+    // SAFETY: `this` must point to valid uninitialized `PlayersStrInstFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayersStrInstFuncDesc {
+                method,
+                arg_names: [first.to_string(), second.to_string()],
+                signature: vec![
+                    SignatureItem { type_name: "string" },
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+            },
+        );
+    }
 }
 
 // 0xa4e000 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
-pub fn stub_a4e000() -> ! {
-    todo!("0xa4e000 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a4e000(this: *mut PlayersStrInstFuncDesc) {
+    // IDA 0xa4e000: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Same shape as 0xa47920.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xa4e0a0 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_a4e0a0() -> ! {
-    todo!("0xa4e0a0 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_a4e0a0(desc: &PlayersStrInstFuncDesc, players: &Players, args: &[Variant]) {
+    // IDA 0xa4e0a0: `source ? source - 36 : 0` member-signal select, two
+    // `ArgHelper::getArg` extracts (`std::string` then
+    // `shared_ptr<Instance>`), then `Call2Helper::call`; the trailing
+    // string and `shared_ptr` releases are `Drop`-managed here. Twin of
+    // 0xa479c0 with (string, Instance) args.
+    assert!(args.len() == 2, "0xa4e0a0: Arguments must hold 2 values");
+    let message = match &args[0] {
+        Variant::Text(s) => s,
+        _ => panic!("0xa4e0a0: any_cast<string> failed"),
+    };
+    let inst = match &args[1] {
+        Variant::Instance(i) => i,
+        _ => panic!("0xa4e0a0: any_cast<SharedPtr<Instance>> failed"),
+    };
+    stub_a4e388(players, desc.method, message, inst);
 }
 
 // 0xa4e388 — __ZN3RBX10Reflection11Call2HelperINS_7Network7PlayersEMS3_FvSsN5boost10shared_ptrINS_8InstanceEEEESsS7_vE4callEPS3_S9_RNS0_7VariantERKSsRKS7_
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::Network::Players,void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),std::string,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Players*,void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call2Helper<RBX::Network::Players,void (RBX::Network::Players::*)(std::string,boost::shared_ptr<RBX::Instance>),std::string,boost::shared_ptr<RBX::Instance>,void>::call(RBX::Network::Players*,void (RBX::Network::Players::*)(std::string,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_a4e388() -> ! {
-    todo!("0xa4e388 RBX::Reflection::Call2Helper<RBX::Network::Players,void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),std::string,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Network::Players*,void (RBX::Network::Players::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_a4e388(players: &Players, method: PlayersStrInstMethod, message: &str, inst: &SharedPtr<Instance>) {
+    // IDA 0xa4e388: member-pointer adjust for the `a3` tag bit, local
+    // `string` copy of the message arg, retained `shared_ptr` copy of the
+    // instance arg, the member call, then the mirrored `shared_ptr` and
+    // string releases. Clones plus the call plus `Drop` are the same
+    // sequence. Twin of 0xa47d30 with (string, Instance) args.
+    let message = message.to_string();
+    let inst = inst.clone();
+    method(players, &message, &inst);
 }
 
 // 0xa4eedc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EEC2EMS3_FS7_iEPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Players::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Players::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_a4eedc() -> ! {
-    todo!("0xa4eedc RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Players::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_a4eedc(this: *mut PlayersIntRetFuncDesc, method: PlayersIntRetMethod, first: &str) {
+    // IDA 0xa4eedc: `Players::classDescriptor` once-init, base
+    // `FunctionDescriptor` init, member-pointer words, then one
+    // `addArgument` call for the `int` arg. Twin of 0xa4752c/0xa4dcc0 with
+    // a single int arg.
+    // SAFETY: `this` must point to valid uninitialized `PlayersIntRetFuncDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayersIntRetFuncDesc {
+                method,
+                arg_names: [first.to_string()],
+                signature: vec![SignatureItem { type_name: "int" }],
+            },
+        );
+    }
 }
 
 // 0xa4f148 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()
-pub fn stub_a4f148() -> ! {
-    todo!("0xa4f148 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")
+pub fn stub_a4f148(this: *mut PlayersIntRetFuncDesc) {
+    // IDA 0xa4f148: D0 — D1 body plus `operator delete`; the box reclaim
+    // runs the field drops and frees together. Same shape as 0xa47920.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xa4f244 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_a4f244() -> ! {
-    todo!("0xa4f244 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_a4f244(desc: &PlayersIntRetFuncDesc, players: &Players, args: &[Variant]) -> SharedPtr<Instance> {
+    // IDA 0xa4f244: `source ? source - 36 : 0` member-signal select, one
+    // `ArgHelper::getArg<int>` extract, then the member call; the returned
+    // `shared_ptr<Instance>` lands in the `Arguments` return slot. Returning
+    // it is the same value; the `shared_ptr` copies are `Drop`-managed here.
+    assert!(args.len() == 1, "0xa4f244: Arguments must hold 1 value");
+    let key = match &args[0] {
+        Variant::Int(i) => *i,
+        _ => panic!("0xa4f244: any_cast<int> failed"),
+    };
+    (desc.method)(players, key)
 }
 
 // 0xa4f4a0 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEEC2IMS3_KFPS4_vEiEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::Network::Players::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_a4f4a0() -> ! {
-    todo!("0xa4f4a0 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::Network::Players::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a4f4a0(this: *mut PlayersRefPropDesc, name: &str, category: &str, getter: PlayersRefGetter, flags: i32, attributes: u32, permissions: u32) {
+    // IDA 0xa4f4a0: `Players::classDescriptor` once-init, base
+    // `PropertyDescriptor` init with the name/category words, then the
+    // `GetImpl<getter>` install at `+44` (the trailing int word rides along
+    // as its template arg). The impl object collapses into the stored
+    // function pointer here; the vtable words are compiler-managed.
+    // SAFETY: `this` must point to valid uninitialized `PlayersRefPropDesc` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            PlayersRefPropDesc { name: name.to_string(), category: category.to_string(), getter, flags, attributes, permissions },
+        );
+    }
 }
 
 // 0xa4f6b4 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_a4f6b4() -> ! {
-    todo!("0xa4f6b4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_a4f6b4(this: *mut PlayersRefPropDesc) {
+    // IDA 0xa4f6b4: D0 — two vtable resets (compiler-managed here), the
+    // conditional `operator delete` of the heap word at `+11`, plus
+    // `operator delete(this)`; the box reclaim frees the same allocation.
+    // SAFETY: `this` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0xa4f6e4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isReadOnly(void)const")]
-pub fn stub_a4f6e4() -> ! {
-    todo!("0xa4f6e4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_a4f6e4(desc: &PlayersRefPropDesc) -> bool {
+    // IDA 0xa4f6e4: delegates through the `+44` impl (`GetImpl::isReadOnly`,
+    // IDA 0xa503b8), which returns `1` — the get-only impl has no setter.
+    let _ = desc;
+    stub_a503b8()
 }
 
 // 0xa4f6f4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isWriteOnly(void)const")]
-pub fn stub_a4f6f4() -> ! {
-    todo!("0xa4f6f4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_a4f6f4(desc: &PlayersRefPropDesc) -> bool {
+    // IDA 0xa4f6f4: delegates through the `+44` impl (`GetImpl::isWriteOnly`,
+    // IDA 0xa503bc), which returns `0` — the getter always yields a value.
+    let _ = desc;
+    stub_a503bc()
 }
 
 // 0xa4f704 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_a4f704() -> ! {
-    todo!("0xa4f704 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a4f704(desc: &PlayersRefPropDesc, first: &Players, second: &Players) -> bool {
+    // IDA 0xa4f704: `getRefValue` (IDA 0xa50018, i.e. `GetImpl::getValue` at
+    // 0xa503c0 plus the `+36` DescribedBase adjust) on both sides, then the
+    // raw pointer compare. `None` is the null return, equal only to `None`;
+    // `SharedPtr::ptr_eq` is the word compare.
+    match ((desc.getter)(first), (desc.getter)(second)) {
+        (Some(a), Some(b)) => SharedPtr::ptr_eq(&a, &b),
+        (None, None) => true,
+        _ => false,
+    }
 }
 
 // 0xa4f72c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_a4f72c() -> ! {
-    todo!("0xa4f72c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_a4f72c(desc: &PlayersRefPropDesc, players: &Players, out: &mut Variant) {
+    // IDA 0xa4f72c: `getRefValue` plus `shared_from` retain into the
+    // `Variant`. The retained clone is that same retain; a null return
+    // assigns the empty `shared_ptr`, which collapses to `Variant::Null`.
+    match (desc.getter)(players) {
+        Some(inst) => *out = Variant::Instance(inst.clone()),
+        None => *out = Variant::Null,
+    }
 }
 
 // 0xa4fb04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
