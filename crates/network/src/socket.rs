@@ -28,6 +28,24 @@ impl PluginInterface2 {
     pub fn set_rak_peer_interface(&mut self, peer: Option<u32>) {
         self.rak_peer = peer;
     }
+    /// `OnRakPeerStartup` (IDA 0xad5300): default hook is empty.
+    pub fn on_rak_peer_startup(&self) {}
+    /// `OnClosedConnection` (IDA 0xad5308): default hook is empty.
+    pub fn on_closed_connection(&self) {}
+    /// `OnFailedConnectionAttempt` (IDA 0xad5310): default hook is empty.
+    pub fn on_failed_connection_attempt(&self) {}
+    /// `UsesReliabilityLayer` (IDA 0xad5314): default returns false
+    /// (`MOVS R0, #0`).
+    #[must_use]
+    pub fn uses_reliability_layer(&self) -> bool {
+        false
+    }
+    /// `OnDirectSocketSend` (IDA 0xad5318): default hook is empty.
+    pub fn on_direct_socket_send(&self) {}
+    /// `OnReliabilityLayerPacketError` (IDA 0xad5320): default hook is empty.
+    pub fn on_reliability_layer_packet_error(&self) {}
+    /// `OnInternalPacket` (IDA 0xad5324): default hook is a bare `BX LR`.
+    pub fn on_internal_packet(&self) {}
 }
 
 /// `RakNet::_RakMalloc_Ex` (IDA 0xa5a900): zeroed bytes; the file/line

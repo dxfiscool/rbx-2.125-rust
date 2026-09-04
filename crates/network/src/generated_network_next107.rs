@@ -26,50 +26,57 @@ pub fn stub_a7d3d8(packet: crate::socket::Packet) {
 // 0xad5300 — __ZN6RakNet16PluginInterface216OnRakPeerStartupEv
 // type: void __fastcall(RakNet::PluginInterface2 *this)
 #[doc(alias = "RakNet::PluginInterface2::OnRakPeerStartup(void)")]
-pub fn stub_ad5300() -> ! {
-    todo!("0xad5300 RakNet::PluginInterface2::OnRakPeerStartup(void)")
+pub fn stub_ad5300(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5300: default hook is empty.
+ plugin.on_rak_peer_startup();
 }
 
 // 0xad5308 — __ZN6RakNet16PluginInterface218OnClosedConnectionERKNS_13SystemAddressENS_10RakNetGUIDENS_24PI2_LostConnectionReasonE
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnClosedConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,RakNet::PI2_LostConnectionReason)")]
-pub fn stub_ad5308() -> ! {
-    todo!("0xad5308 RakNet::PluginInterface2::OnClosedConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,RakNet::PI2_LostConnectionReason)")
+pub fn stub_ad5308(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5308: default hook is empty.
+ plugin.on_closed_connection();
 }
 
 // 0xad5310 — __ZN6RakNet16PluginInterface225OnFailedConnectionAttemptEPNS_6PacketENS_33PI2_FailedConnectionAttemptReasonE
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
-pub fn stub_ad5310() -> ! {
-    todo!("0xad5310 RakNet::PluginInterface2::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_ad5310(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5310: default hook is empty.
+ plugin.on_failed_connection_attempt();
 }
 
 // 0xad5314 — __ZNK6RakNet16PluginInterface220UsesReliabilityLayerEv
 // type: int __fastcall(RakNet::PluginInterface2 *this)
 #[doc(alias = "RakNet::PluginInterface2::UsesReliabilityLayer(void)const")]
-pub fn stub_ad5314() -> ! {
-    todo!("0xad5314 RakNet::PluginInterface2::UsesReliabilityLayer(void)const")
+pub fn stub_ad5314(plugin: &crate::socket::PluginInterface2) -> bool {
+ // IDA 0xad5314: MOVS R0, #0.
+ plugin.uses_reliability_layer()
 }
 
 // 0xad5318 — __ZN6RakNet16PluginInterface218OnDirectSocketSendEPKcjNS_13SystemAddressE
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnDirectSocketSend(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_ad5318() -> ! {
-    todo!("0xad5318 RakNet::PluginInterface2::OnDirectSocketSend(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_ad5318(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5318: default hook is empty.
+ plugin.on_direct_socket_send();
 }
 
 // 0xad5320 — __ZN6RakNet16PluginInterface229OnReliabilityLayerPacketErrorEPKcjNS_13SystemAddressE
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnReliabilityLayerPacketError(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_ad5320() -> ! {
-    todo!("0xad5320 RakNet::PluginInterface2::OnReliabilityLayerPacketError(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_ad5320(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5320: default hook is empty.
+ plugin.on_reliability_layer_packet_error();
 }
 
 // 0xad5324 — __ZN6RakNet16PluginInterface216OnInternalPacketEPNS_14InternalPacketEjNS_13SystemAddressEji
 // type: void()
 #[doc(alias = "RakNet::PluginInterface2::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
-pub fn stub_ad5324() -> ! {
-    todo!("0xad5324 RakNet::PluginInterface2::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
+pub fn stub_ad5324(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5324: bare BX LR.
+ plugin.on_internal_packet();
 }
 
 // 0xae10a8 — __ZNK3RBX7Network10Replicator14getRakNetStatsEv

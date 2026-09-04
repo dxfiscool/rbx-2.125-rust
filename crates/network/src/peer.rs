@@ -78,6 +78,15 @@ pub fn stats_reserve_table(stats: &mut std::collections::HashMap<(u32, u16), Con
 /// placement-constructs the map node; allocator-level, engine-side.
 pub fn stats_node_construct() {}
 
+/// `RBX::Network::Peer::encryptDataPart` (IDA 0xad36dc): AES-CBC encrypts
+/// the stream bytes at `[1..bytes]` in place with the peer key
+/// (`DataBlockEncryptor::SetKey` from `aesKey` at 0xad3752, `Encrypt` at
+/// 0xad37ac) after padding the allocation to
+/// `((8 * bytes + 160) & ~0x7f) + 8` bits (IDA 0xad3782), then sets the
+/// write offset past the ciphertext (IDA 0xad37be). The cipher and key
+/// schedule stay engine-side (`this + 112`); no-op Rust-side.
+pub fn encrypt_data_part() {}
+
 #[cfg(test)]
 mod tests {
     use super::*;

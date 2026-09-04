@@ -944,8 +944,9 @@ pub fn stub_a7e0e8() -> ! {
 // demangled: RBX::Network::RoundRobinPhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::Assembly const*)
 // type: int __fastcall(RBX::Network::IdSerializer **this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::Assembly const*)")]
-pub fn stub_a7e1d0() -> ! {
-    todo!("0xa7e1d0 RBX::Network::RoundRobinPhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_a7e1d0(assembly_present: bool, can_send: bool, write_id: &mut dyn FnMut() -> bool, send_body: &mut dyn FnMut()) -> bool {
+ // IDA 0xa7e1d0: assert, gate, id, mechanism.
+ crate::physics::round_robin_send_physics_data(assembly_present, can_send, write_id, send_body)
 }
 
 // 0xa7e360 — __ZN3RBX7Network23RoundRobinPhysicsSender4stepEv

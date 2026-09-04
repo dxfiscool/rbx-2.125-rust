@@ -2011,3 +2011,44 @@ mod sender_tests {
         assert_eq!(stepped, 1);
     }
 }
+
+/// `RBX::Network::RoundRobinPhysicsSender::sendPhysicsData` (IDA 0xa7e1d0):
+/// asserts the assembly is present (IDA 0xa7e1ec), requires `canSend`
+/// (IDA 0xa7e246), writes the id (`trySerializeId`, falling back to
+/// `serializeId(0)` when that fails, IDA 0xa7e29e), then sends the
+/// mechanism (IDA 0xa7e2c6). The null-id fallback, zero prefix words, and
+/// animation-stats sampling stay engine-side; the gate sequence lives here.
+#[must_use]
+pub fn round_robin_send_physics_data(
+    assembly_present: bool,
+    can_send: bool,
+    write_id: &mut dyn FnMut() -> bool,
+    send_body: &mut dyn FnMut(),
+) -> bool {
+    if !assembly_present || !can_send {
+        return false;
+    }
+    if !write_id() {
+        return false;
+    }
+    send_body();
+    true
+}
+
+#[cfg(test)]
+mod round_robin_tests {
+    use super::*;
+
+    #[test]
+    fn send_gate_sequence() {
+        // IDA 0xa7e1d0: missing assembly or failed gate sends nothing.
+        let mut wrote = 0;
+        let mut sent = 0;
+        assert!(!round_robin_send_physics_data(false, true, &mut || { wrote += 1; true }, &mut || sent += 1));
+        assert!(!round_robin_send_physics_data(true, false, &mut || { wrote += 1; true }, &mut || sent += 1));
+        assert!(!round_robin_send_physics_data(true, true, &mut || { wrote += 1; false }, &mut || sent += 1));
+        assert_eq!((wrote, sent), (1, 0));
+        assert!(round_robin_send_physics_data(true, true, &mut || { wrote += 1; true }, &mut || sent += 1));
+        assert_eq!((wrote, sent), (2, 1));
+    }
+}

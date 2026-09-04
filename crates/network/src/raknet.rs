@@ -4512,56 +4512,65 @@ pub fn stub_a7d3d8(packet: crate::socket::Packet) {
 
 // 0xa7e1d0 — __ZN3RBX7Network23RoundRobinPhysicsSender15sendPhysicsDataERN6RakNet9BitStreamEPKNS_8AssemblyE
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::Assembly const*)")]
-pub fn stub_a7e1d0() -> ! {
-    todo!("0xa7e1d0 RBX::Network::RoundRobinPhysicsSender::sendPhysicsData(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_a7e1d0(assembly_present: bool, can_send: bool, write_id: &mut dyn FnMut() -> bool, send_body: &mut dyn FnMut()) -> bool {
+ // IDA 0xa7e1d0: assert, gate, id, mechanism.
+ crate::physics::round_robin_send_physics_data(assembly_present, can_send, write_id, send_body)
 }
 
 // 0xad36dc — __ZN3RBX7Network4Peer15encryptDataPartERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Peer::encryptDataPart(RakNet::BitStream &)")]
-pub fn stub_ad36dc() -> ! {
-    todo!("0xad36dc RBX::Network::Peer::encryptDataPart(RakNet::BitStream &)")
+pub fn stub_ad36dc() {
+ // IDA 0xad36dc: AES-CBC stays engine-side.
+ crate::peer::encrypt_data_part();
 }
 
 // 0xad5300 — __ZN6RakNet16PluginInterface216OnRakPeerStartupEv
 #[doc(alias = "RakNet::PluginInterface2::OnRakPeerStartup(void)")]
-pub fn stub_ad5300() -> ! {
-    todo!("0xad5300 RakNet::PluginInterface2::OnRakPeerStartup(void)")
+pub fn stub_ad5300(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5300: default hook is empty.
+ plugin.on_rak_peer_startup();
 }
 
 // 0xad5308 — __ZN6RakNet16PluginInterface218OnClosedConnectionERKNS_13SystemAddressENS_10RakNetGUIDENS_24PI2_LostConnectionReasonE
 #[doc(alias = "RakNet::PluginInterface2::OnClosedConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,RakNet::PI2_LostConnectionReason)")]
-pub fn stub_ad5308() -> ! {
-    todo!("0xad5308 RakNet::PluginInterface2::OnClosedConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,RakNet::PI2_LostConnectionReason)")
+pub fn stub_ad5308(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5308: default hook is empty.
+ plugin.on_closed_connection();
 }
 
 // 0xad5310 — __ZN6RakNet16PluginInterface225OnFailedConnectionAttemptEPNS_6PacketENS_33PI2_FailedConnectionAttemptReasonE
 #[doc(alias = "RakNet::PluginInterface2::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
-pub fn stub_ad5310() -> ! {
-    todo!("0xad5310 RakNet::PluginInterface2::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+pub fn stub_ad5310(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5310: default hook is empty.
+ plugin.on_failed_connection_attempt();
 }
 
 // 0xad5314 — __ZNK6RakNet16PluginInterface220UsesReliabilityLayerEv
 #[doc(alias = "RakNet::PluginInterface2::UsesReliabilityLayer(void)const")]
-pub fn stub_ad5314() -> ! {
-    todo!("0xad5314 RakNet::PluginInterface2::UsesReliabilityLayer(void)const")
+pub fn stub_ad5314(plugin: &crate::socket::PluginInterface2) -> bool {
+ // IDA 0xad5314: MOVS R0, #0.
+ plugin.uses_reliability_layer()
 }
 
 // 0xad5318 — __ZN6RakNet16PluginInterface218OnDirectSocketSendEPKcjNS_13SystemAddressE
 #[doc(alias = "RakNet::PluginInterface2::OnDirectSocketSend(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_ad5318() -> ! {
-    todo!("0xad5318 RakNet::PluginInterface2::OnDirectSocketSend(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_ad5318(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5318: default hook is empty.
+ plugin.on_direct_socket_send();
 }
 
 // 0xad5320 — __ZN6RakNet16PluginInterface229OnReliabilityLayerPacketErrorEPKcjNS_13SystemAddressE
 #[doc(alias = "RakNet::PluginInterface2::OnReliabilityLayerPacketError(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_ad5320() -> ! {
-    todo!("0xad5320 RakNet::PluginInterface2::OnReliabilityLayerPacketError(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_ad5320(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5320: default hook is empty.
+ plugin.on_reliability_layer_packet_error();
 }
 
 // 0xad5324 — __ZN6RakNet16PluginInterface216OnInternalPacketEPNS_14InternalPacketEjNS_13SystemAddressEji
 #[doc(alias = "RakNet::PluginInterface2::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
-pub fn stub_ad5324() -> ! {
-    todo!("0xad5324 RakNet::PluginInterface2::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
+pub fn stub_ad5324(plugin: &crate::socket::PluginInterface2) {
+ // IDA 0xad5324: bare BX LR.
+ plugin.on_internal_packet();
 }
 
 // 0xada1b8 — __ZN3RBX7Network28InterpolatingPhysicsReceiver6Nugget7receiveERN6RakNet9BitStreamEyPKNS_13ModelInstanceEPS1_
