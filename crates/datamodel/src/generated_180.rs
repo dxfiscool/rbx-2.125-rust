@@ -295,15 +295,11 @@ pub fn stub_0x2ab2d4() -> ! {
 
 // 0x2b7568 — __ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v")]
-pub fn stub_0x2b7568() -> ! {
-    todo!("0x2b7568 __ZN3RBX4Name7declareILZNS_10sWorkspaceEEEERKS0_v")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_2b7568 as stub_0x2b7568;
 
 // 0x2b75b0 — __ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v")]
-pub fn stub_0x2b75b0() -> ! {
-    todo!("0x2b75b0 __ZN3RBX4Name9doDeclareILZNS_10sWorkspaceEEEERKS0_v")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_2b75b0 as stub_0x2b75b0;
 
 // 0x3afd18 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_4AxesEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int *, int, int, char, int)
@@ -427,16 +423,12 @@ pub fn stub_0x418f70() -> ! {
 // 0x4419a8 — __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x4419a8() -> ! {
-    todo!("0x4419a8 __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4419a8 as stub_0x4419a8;
 
 // 0x442248 — __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x442248() -> ! {
-    todo!("0x442248 __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_442248 as stub_0x442248;
 
 // 0x442368 — __ZN3RBX10Reflection9DescribedINS_9GuiButtonELZNS_10sGuiButtonEENS_17NonFactoryProductINS_9GuiObjectELZNS_10sGuiButtonEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
@@ -462,23 +454,17 @@ pub fn stub_0x4425a8() -> ! {
 // 0x4426c8 — __ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x4426c8() -> ! {
-    todo!("0x4426c8 __ZN3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4426c8 as stub_0x4426c8;
 
 // 0x4430a0 — __ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x4430a0() -> ! {
-    todo!("0x4430a0 __ZN3RBX10Reflection9DescribedINS_19MegaClusterInstanceELZNS_12sMegaClusterEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sMegaClusterEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4430a0 as stub_0x4430a0;
 
 // 0x4497f4 — __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x4497f4() -> ! {
-    todo!("0x4497f4 __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_4497f4 as stub_0x4497f4;
 
 // 0x449914 — __ZN3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
@@ -525,9 +511,7 @@ pub fn stub_0x449a6c() -> ! {
 // 0x450dc0 — __ZN3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_0x450dc0() -> ! {
-    todo!("0x450dc0 __ZN3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
-}
+pub use crate::generated_dm_wd_watchdog19::stub_450dc0 as stub_0x450dc0;
 
 // 0x450ee0 — __ZN3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
