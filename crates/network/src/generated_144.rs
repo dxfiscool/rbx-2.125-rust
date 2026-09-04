@@ -734,131 +734,99 @@ pub fn stub_a0803c(
     crate::player::on_child_changed(is_local_player, is_supersafechat_prop, value, fire);
 }
 
+
+
 // 0xa0807c — __ZN3RBX7Network7PlayersD0Ev
 // demangled: RBX::Network::Players::~Players()
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a0807c() -> ! {
-    todo!("0xa0807c RBX::Network::Players::~Players()")
+pub fn stub_a0807c(players: crate::player::Players) {
+    // IDA 0xa0807c (D0): D2 then `operator delete`; Drop runs tear_down, Rust frees.
+    drop(players);
 }
 
 // 0xa0811c — __ZN3RBX7Network7PlayersD1Ev
 // demangled: RBX::Network::Players::~Players()
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a0811c() -> ! {
-    todo!("0xa0811c RBX::Network::Players::~Players()")
+pub fn stub_a0811c(players: &mut crate::player::Players) {
+    // IDA 0xa0811c (D1): tail-calls D2.
+    players.tear_down();
 }
 
 // 0xa08128 — __ZThn32_N3RBX7Network7PlayersD0Ev
 // demangled: non-virtual thunk to RBX::Network::Players::~Players()
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Players::~Players()")]
-pub fn stub_a08128() -> ! {
-    todo!("0xa08128 non-virtual thunk to RBX::Network::Players::~Players()")
+pub fn stub_a08128(mut players: crate::player::Players) {
+    // IDA 0xa08128 (ZThn32 D0): adjusts `this`, then D0.
+    players.tear_down();
+    drop(players);
 }
 
 // 0xa081cc — __ZThn36_N3RBX7Network7PlayersD0Ev
 // demangled: non-virtual thunk to RBX::Network::Players::~Players()
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::Network::Players::~Players()")]
-pub fn stub_a081cc() -> ! {
-    todo!("0xa081cc non-virtual thunk to RBX::Network::Players::~Players()")
+pub fn stub_a081cc(mut players: crate::player::Players) {
+    // IDA 0xa081cc (ZThn36 D0): adjusts `this`, then D0.
+    players.tear_down();
+    drop(players);
 }
 
-// 0xa08270 — __ZN3RBX7Network7PlayersD2Ev
-// demangled: RBX::Network::Players::~Players()
-// type: void __fastcall(RBX::Network::Players *__hidden this)
-#[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a08270() -> ! {
-    todo!("0xa08270 RBX::Network::Players::~Players()")
+pub fn stub_a08270(players: &mut crate::player::Players) {
+    // IDA 0xa08270 (D2): signal disconnects, message teardown, strings, Instance dtor.
+    players.tear_down();
 }
 
-// 0xa09784 — __ZThn32_N3RBX7Network7PlayersD1Ev
-// demangled: non-virtual thunk to RBX::Network::Players::~Players()
-// type: void __fastcall(RBX::Network::Players *__hidden this)
-#[doc(alias = "non-virtual thunk to RBX::Network::Players::~Players()")]
-pub fn stub_a09784() -> ! {
-    todo!("0xa09784 non-virtual thunk to RBX::Network::Players::~Players()")
+pub fn stub_a09784(mut players: crate::player::Players) {
+    // IDA 0xa09784 (ZThn32 D1): adjusts `this`, then D1.
+    players.tear_down();
 }
 
-// 0xa09790 — __ZThn36_N3RBX7Network7PlayersD1Ev
-// demangled: non-virtual thunk to RBX::Network::Players::~Players()
-// type: void __fastcall(RBX::Network::Players *__hidden this)
-#[doc(alias = "non-virtual thunk to RBX::Network::Players::~Players()")]
-pub fn stub_a09790() -> ! {
-    todo!("0xa09790 non-virtual thunk to RBX::Network::Players::~Players()")
+pub fn stub_a09790(mut players: crate::player::Players) {
+    // IDA 0xa09790 (ZThn36 D1): adjusts `this`, then D1.
+    players.tear_down();
 }
 
-// 0xa0979c — __ZN3RBX7Network7Players13setConnectionEPNS0_17ConcurrentRakPeerE
-// demangled: RBX::Network::Players::setConnection(RBX::Network::ConcurrentRakPeer *)
-// type: int __fastcall(int result, int)
-#[doc(alias = "RBX::Network::Players::setConnection(RBX::Network::ConcurrentRakPeer *)")]
-pub fn stub_a0979c() -> ! {
-    todo!("0xa0979c RBX::Network::Players::setConnection(RBX::Network::ConcurrentRakPeer *)")
+pub fn stub_a0979c(players: &mut crate::player::Players, connected: bool) {
+    // IDA 0xa0979c: stores the peer handle at +196.
+    players.set_connection(connected);
 }
 
-// 0xa097a4 — __ZN3RBX7Network11ChatMessageC2EPKcNS1_8ChatTypeEN5boost10shared_ptrINS0_6PlayerEEE
-// demangled: RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)
-// type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
-// was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>)")]
-pub fn stub_a097a4() -> ! {
-    todo!("0xa097a4 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)")
+pub fn stub_a097a4(text: String, channel: u8, sender: u32) -> crate::player::ChatMessage {
+    // IDA 0xa097a4: `ChatMessage(text, ChatType, player)`.
+    crate::player::ChatMessage::new(text, channel, sender)
 }
 
-// 0xa0997c — __ZN3RBX7Network11ChatMessageC2ERKS1_RKSs
-// demangled: RBX::Network::ChatMessage::ChatMessage(RBX::Network::ChatMessage const&,std::string const&)
-// type: _DWORD *__fastcall(_DWORD *, const std::string *, const std::string *, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(RBX::Network::ChatMessage const&,std::string const&)")]
-pub fn stub_a0997c() -> ! {
-    todo!("0xa0997c RBX::Network::ChatMessage::ChatMessage(RBX::Network::ChatMessage const&,std::string const&)")
-}
-
-// 0xa09b94 — __ZN3RBX7Network11ChatMessageC2EPKcNS1_8ChatTypeEN5boost10shared_ptrINS0_6PlayerEEES8_
-// demangled: RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)
-// type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
-// was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>,rbx_core::SharedPtr<RBX::Network::Player>)")]
-pub fn stub_a09b94() -> ! {
-    todo!("0xa09b94 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)")
-}
-
-// 0xa09dcc — __ZNK3RBX7Network11ChatMessage21getReportAbuseMessageEv
-// demangled: RBX::Network::ChatMessage::getReportAbuseMessage(void)const
-// type: void __fastcall(RBX::Network::ChatMessage *this, _DWORD *)
-#[doc(alias = "RBX::Network::ChatMessage::getReportAbuseMessage(void)const")]
-pub fn stub_a09dcc() -> ! {
-    todo!("0xa09dcc RBX::Network::ChatMessage::getReportAbuseMessage(void)const")
-}
-
-// 0xa0a15c — __ZN3RBX7Network11AbuseReport10addMessageEN5boost10shared_ptrINS0_6PlayerEEERKNS0_11ChatMessageE
-// demangled: RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)
-// type: void __fastcall(int, int *, const std::string *, int)
-// was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::AbuseReport::addMessage(rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")]
 pub fn stub_a0a15c() -> ! {
     todo!("0xa0a15c RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")
 }
 
-// 0xa0a4ec — __ZN3RBX7Network13AbuseReporterC2ESs
-// demangled: RBX::Network::AbuseReporter::AbuseReporter(std::string)
-// type: int __fastcall(int, int)
-#[doc(alias = "RBX::Network::AbuseReporter::AbuseReporter(std::string)")]
+pub fn stub_a0997c(message: crate::player::ChatMessage) -> crate::player::ChatMessage {
+    // IDA 0xa0997c: copy ctor.
+    message.clone()
+}
+
 pub fn stub_a0a4ec() -> ! {
     todo!("0xa0a4ec RBX::Network::AbuseReporter::AbuseReporter(std::string)")
 }
 
-// 0xa0ac84 — __ZN3RBX7Network13AbuseReporter15processRequestsEN5boost10shared_ptrINS1_4dataEEESs
-// demangled: RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)
-// type: int __fastcall(struct _Unwind_Exception **, std::string *)
-// was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::AbuseReporter::processRequests(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string)")]
+pub fn stub_a09b94(text: String, channel: u8, sender: u32) -> crate::player::ChatMessage {
+    // IDA 0xa09b94: `ChatMessage(text, type, players)`; guid stays engine-side.
+    crate::player::ChatMessage::new(text, channel, sender)
+}
+
 pub fn stub_a0ac84() -> ! {
     todo!("0xa0ac84 RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")
 }
 
-// 0xa0ba5c — __ZN3RBX7Network13AbuseReporter3addERNS0_11AbuseReportEN5boost10shared_ptrINS0_6PlayerEEERKSt4listINS0_11ChatMessageESaIS9_EE
+pub fn stub_a09dcc(message: &crate::player::ChatMessage, target_name: Option<&str>) -> String {
+    // IDA 0xa09dcc: channel-tagged abuse text.
+    message.report_abuse_message(target_name)
+}
+
+
 // demangled: RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,boost::shared_ptr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)
 // type: void __fastcall(int, _QWORD *, __int32 *, pthread_mutex_t **, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, boost::mutex *, char, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr

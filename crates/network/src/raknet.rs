@@ -14095,85 +14095,99 @@ pub fn stub_a0803c(
 // 0xa0807c — __ZN3RBX7Network7PlayersD0Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a0807c() -> ! {
-    todo!("0xa0807c RBX::Network::Players::~Players()")
+pub fn stub_a0807c(players: crate::player::Players) {
+    // IDA 0xa0807c (D0): D2 then `operator delete`; Drop runs tear_down, Rust frees.
+    drop(players);
 }
 
 // 0xa0811c — __ZN3RBX7Network7PlayersD1Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a0811c() -> ! {
-    todo!("0xa0811c RBX::Network::Players::~Players()")
+pub fn stub_a0811c(players: &mut crate::player::Players) {
+    // IDA 0xa0811c (D1): tail-calls D2.
+    players.tear_down();
 }
 
 // 0xa08128 — __ZThn32_N3RBX7Network7PlayersD0Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
-pub fn stub_a08128() -> ! {
-    todo!("0xa08128 non-virtual thunk toRBX::Network::Players::~Players()")
+pub fn stub_a08128(mut players: crate::player::Players) {
+    // IDA 0xa08128 (ZThn32 D0): adjusts `this`, then D0.
+    players.tear_down();
+    drop(players);
 }
 
 // 0xa081cc — __ZThn36_N3RBX7Network7PlayersD0Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
-pub fn stub_a081cc() -> ! {
-    todo!("0xa081cc non-virtual thunk toRBX::Network::Players::~Players()")
+pub fn stub_a081cc(mut players: crate::player::Players) {
+    // IDA 0xa081cc (ZThn36 D0): adjusts `this`, then D0.
+    players.tear_down();
+    drop(players);
 }
 
 // 0xa08270 — __ZN3RBX7Network7PlayersD2Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "RBX::Network::Players::~Players()")]
-pub fn stub_a08270() -> ! {
-    todo!("0xa08270 RBX::Network::Players::~Players()")
+pub fn stub_a08270(players: &mut crate::player::Players) {
+    // IDA 0xa08270 (D2): signal disconnects, message teardown, strings, Instance dtor.
+    players.tear_down();
 }
 
 // 0xa09784 — __ZThn32_N3RBX7Network7PlayersD1Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
-pub fn stub_a09784() -> ! {
-    todo!("0xa09784 non-virtual thunk toRBX::Network::Players::~Players()")
+pub fn stub_a09784(mut players: crate::player::Players) {
+    // IDA 0xa09784 (ZThn32 D1): adjusts `this`, then D1.
+    players.tear_down();
 }
 
 // 0xa09790 — __ZThn36_N3RBX7Network7PlayersD1Ev
 // type: void __fastcall(RBX::Network::Players *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
-pub fn stub_a09790() -> ! {
-    todo!("0xa09790 non-virtual thunk toRBX::Network::Players::~Players()")
+pub fn stub_a09790(mut players: crate::player::Players) {
+    // IDA 0xa09790 (ZThn36 D1): adjusts `this`, then D1.
+    players.tear_down();
 }
 
 // 0xa0979c — __ZN3RBX7Network7Players13setConnectionEPNS0_17ConcurrentRakPeerE
 // type: int __fastcall(int result, int)
 #[doc(alias = "RBX::Network::Players::setConnection(RBX::Network::ConcurrentRakPeer *)")]
-pub fn stub_a0979c() -> ! {
-    todo!("0xa0979c RBX::Network::Players::setConnection(RBX::Network::ConcurrentRakPeer *)")
+pub fn stub_a0979c(players: &mut crate::player::Players, connected: bool) {
+    // IDA 0xa0979c: stores the peer handle at +196.
+    players.set_connection(connected);
 }
 
 // 0xa097a4 — __ZN3RBX7Network11ChatMessageC2EPKcNS1_8ChatTypeEN5boost10shared_ptrINS0_6PlayerEEE
 // type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>)")]
-pub fn stub_a097a4() -> ! {
-    todo!("0xa097a4 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)")
+pub fn stub_a097a4(text: String, channel: u8, sender: u32) -> crate::player::ChatMessage {
+    // IDA 0xa097a4: `ChatMessage(text, ChatType, player)`.
+    crate::player::ChatMessage::new(text, channel, sender)
 }
 
 // 0xa0997c — __ZN3RBX7Network11ChatMessageC2ERKS1_RKSs
 // type: _DWORD *__fastcall(_DWORD *, const std::string *, const std::string *, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Network::ChatMessage::ChatMessage(RBX::Network::ChatMessage const&,std::string const&)")]
-pub fn stub_a0997c() -> ! {
-    todo!("0xa0997c RBX::Network::ChatMessage::ChatMessage(RBX::Network::ChatMessage const&,std::string const&)")
+pub fn stub_a0997c(message: crate::player::ChatMessage) -> crate::player::ChatMessage {
+    // IDA 0xa0997c: copy ctor.
+    message.clone()
 }
 
 // 0xa09b94 — __ZN3RBX7Network11ChatMessageC2EPKcNS1_8ChatTypeEN5boost10shared_ptrINS0_6PlayerEEES8_
 // type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>,rbx_core::SharedPtr<RBX::Network::Player>)")]
-pub fn stub_a09b94() -> ! {
-    todo!("0xa09b94 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)")
+pub fn stub_a09b94(text: String, channel: u8, sender: u32) -> crate::player::ChatMessage {
+    // IDA 0xa09b94: `ChatMessage(text, type, players)`; guid stays engine-side.
+    crate::player::ChatMessage::new(text, channel, sender)
 }
 
 // 0xa09dcc — __ZNK3RBX7Network11ChatMessage21getReportAbuseMessageEv
 // type: void __fastcall(RBX::Network::ChatMessage *this, _DWORD *)
 #[doc(alias = "RBX::Network::ChatMessage::getReportAbuseMessage(void)const")]
-pub fn stub_a09dcc() -> ! {
-    todo!("0xa09dcc RBX::Network::ChatMessage::getReportAbuseMessage(void)const")
+pub fn stub_a09dcc(message: &crate::player::ChatMessage, target_name: Option<&str>) -> String {
+    // IDA 0xa09dcc: channel-tagged abuse text.
+    message.report_abuse_message(target_name)
 }
 
 // 0xa0a15c — __ZN3RBX7Network11AbuseReport10addMessageEN5boost10shared_ptrINS0_6PlayerEEERKNS0_11ChatMessageE

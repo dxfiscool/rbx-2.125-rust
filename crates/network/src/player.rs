@@ -141,6 +141,8 @@ pub struct Players {
     pub save_data_url: String,
     /// Leaderboard-save endpoint (IDA 0xa06b00).
     pub save_leaderboard_data_url: String,
+    /// Peer liveness for `setConnection` (IDA 0xa0979c..0xa097a0).
+    pub peer_connected: bool,
     /// Leaderboard keys (IDA 0xa06b0c).
     pub leaderboard_keys: Vec<String>,
 }
@@ -250,6 +252,31 @@ impl Players {
     /// `Players::setChatOption` (IDA 0xa06b30): stores the option at +220.
     pub fn set_chat_option(&mut self, option: u32) {
         self.chat_option = option;
+    }
+    /// `Players::setConnection` (IDA 0xa0979c): stores the peer handle at
+    /// +196. The handle stays engine-side; the crate keeps liveness.
+    pub fn set_connection(&mut self, connected: bool) {
+        self.peer_connected = connected;
+    }
+
+    /// `Players::~Players` (IDA 0xa08270, D2): vtable resets, signal
+    /// disconnects, chat-message teardown, endpoint strings, and the
+    /// `Instance` base dtor (0xa0829e..0xa087c6). Crate-side this drops
+    /// every row, endpoint, and flag.
+    pub fn tear_down(&mut self) {
+        *self = Self::default();
+    }
+}
+
+
+impl Drop for Players {
+    /// D0 (IDA 0xa0807c) is D2 plus `operator delete`; D1 (IDA 0xa0811c)
+    /// tail-calls D2. Rust runs this then frees the box, covering all
+    /// three; the `ZThn*` D0/D1 thunks (IDA
+    /// 0xa08128/0xa081cc/0xa09784/0xa09790) only adjust `this` before the
+    /// same deletes.
+    fn drop(&mut self) {
+        self.tear_down();
     }
 }
 
@@ -384,6 +411,28 @@ pub struct ChatMessage {
     pub sender: u32,
     pub text: String,
     pub channel: u8,
+}
+
+impl ChatMessage {
+    /// `ChatMessage::ChatMessage(text, ChatType, player)` (IDA 0xa097a4)
+    /// and `(text, type, player, ...)` (IDA 0xa09b94, which also stores
+    /// both players and generates the guid, engine-side).
+    pub fn new(text: String, channel: u8, sender: u32) -> Self {
+        Self { sender, text, channel }
+    }
+
+    /// `ChatMessage::getReportAbuseMessage` (IDA 0xa09dcc): channel 1
+    /// prefixes `"[[team]]"`, 2 prefixes `"[[to name]]"` (`"???"` for a
+    /// null target), 3 prefixes `"[[game]]"`; anything else is bare text
+    /// (0xa09e1c..0xa09e2e).
+    pub fn report_abuse_message(&self, target_name: Option<&str>) -> String {
+        match self.channel {
+            1 => format!("[[team]]{}", self.text),
+            2 => format!("[[to {}]]{}", target_name.unwrap_or("???"), self.text),
+            3 => format!("[[game]]{}", self.text),
+            _ => self.text.clone(),
+        }
+    }
 }
 
 /// `Players::chat` (IDA 0xa02198) / `teamChat` (IDA 0xa02d08): `checkChat`
@@ -1030,5 +1079,29 @@ mod tests {
         assert!(fired.is_empty());
         on_child_changed(true, true, true, &mut |v| fired.push(v));
         assert_eq!(fired, vec![true]);
+    }
+
+    #[test]
+    fn teardown_connection_and_messages() {
+        // IDA 0xa08270/0xa0979c/0xa097a4/0xa09dcc.
+        let mut players = Players::new();
+        players.set_connection(true);
+        players.add_leaderboard_key("k".to_owned());
+        players.create_local_player(7);
+        assert!(players.peer_connected);
+        players.tear_down();
+        assert!(!players.peer_connected);
+        assert!(players.leaderboard_keys.is_empty());
+        assert_eq!(players.player_instance_by_id(7), None);
+        let msg = ChatMessage::new("hi".to_owned(), 0, 3);
+        assert_eq!(msg.report_abuse_message(None), "hi");
+        let team = ChatMessage::new("go".to_owned(), 1, 3);
+        assert_eq!(team.report_abuse_message(None), "[[team]]go");
+        let whisper = ChatMessage::new("psst".to_owned(), 2, 3);
+        assert_eq!(whisper.report_abuse_message(Some("bob")), "[[to bob]]psst");
+        assert_eq!(whisper.report_abuse_message(None), "[[to ???]]psst");
+        let game = ChatMessage::new("x".to_owned(), 3, 3);
+        assert_eq!(game.report_abuse_message(None), "[[game]]x");
+        assert_eq!(msg.clone(), msg);
     }
 }
