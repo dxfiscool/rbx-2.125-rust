@@ -243,6 +243,41 @@ pub struct PrismNumSidesPropDesc {
     pub permissions: u32,
 }
 
+/// `RBX::Reflection::PropDescriptor<RBX::PVInstance, G3D::CoordinateFrame>` SetImpl access:
+/// write-only binding, the `new(0xc)` member desc holds the setter pair (IDA 0x6098d4 at
+/// 0x6098fe-0x60992a); `getValue` unconditionally throws (see stub_0x609a14).
+pub struct PVFrameSetAccess {
+    pub default: i32,
+    pub set: Box<dyn Fn(CoordinateFrame) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<RBX::PVInstance, G3D::CoordinateFrame>` (IDA 0x6098d4).
+pub struct PVFrameSetPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PVFrameSetAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance, NumSidesEnum>` get/set access
+/// pair: the `new(0x14)` member desc at +44 holding (getter, setter) (IDA 0x60a27c at
+/// 0x60a35a-0x60a380). Same shape as `PrismNumSidesAccess`.
+pub struct PyramidNumSidesAccess {
+    pub get: Box<dyn Fn() -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance, NumSidesEnum>` (IDA 0x60a27c).
+pub struct PyramidNumSidesPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: PyramidNumSidesAccess,
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
 // 0x5fccec — __ZN3RBX10Reflection9EventDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbEN3rbx6signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)> RBX::StarterGuiService::*>::~EventDesc()")]
 pub fn stub_0x5fccec() {
@@ -1282,50 +1317,110 @@ pub fn stub_0x608554(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), te
 
 // 0x608594 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x608594() -> ! {
-    todo!("0x608594 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x608594(getter: &dyn Fn() -> i32) -> (i32, i32) {
+    // IDA 0x608594: enum int via the +44 member desc (0x6085a2),
+    // `XmlNameValuePair::clearValue` (0x6085a8), int tag 5 + value stored
+    // (0x6085ae-0x6085b0), returns 5 (0x6085b2). The pair is the (tag, value).
+    (5, getter())
 }
 
 // 0x6085b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x6085b4() -> ! {
-    todo!("0x6085b4 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x6085b4(
+    desc: &crate::enum_desc::EnumDesc,
+    setter: &dyn Fn(i32),
+    value: Option<&crate::descriptor::Variant>,
+) {
+    // IDA 0x6085b4: xsi:nil guard returns early (0x6085d8); int-typed payloads go through
+    // `setIntValue` (0x608620-0x608630); string payloads through `Name::lookup` +
+    // `convertToValue` + member-desc store (0x608638-0x60869a), empty string through the
+    // `Name` overload (0x6086bc-0x60876c); anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, 0x6086e6-0x608724). Panic mirrors the assert.
+    match value {
+        None => {}
+        Some(crate::descriptor::Variant::Int(v)) => {
+            stub_0x60895c(desc, setter, *v);
+        }
+        Some(crate::descriptor::Variant::Text(s)) if !s.is_empty() => {
+            stub_0x608554(desc, setter, s);
+        }
+        Some(crate::descriptor::Variant::Text(s)) => {
+            stub_0x6088b8(desc, setter, s);
+        }
+        _ => panic!("ReleaseAssert(false) include/Reflection/Reflection.h:359 (IDA 0x6085b4)"),
+    }
 }
 
 // 0x6087f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x6087f4() -> ! {
-    todo!("0x6087f4 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x6087f4(desc: &crate::enum_desc::EnumDesc, getter: &dyn Fn() -> i32) -> i32 {
+    // IDA 0x6087f4: enum int via the +44 member desc (0x608802), then
+    // `EnumDesc<NumSidesEnum>::convertToIndex` (see stub_0x6088ec).
+    stub_0x6088ec(desc, getter())
 }
 
 // 0x608810 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x608810() -> ! {
-    todo!("0x608810 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x608810(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), index: usize) -> bool {
+    // IDA 0x608810: bounds check against the item count (0x608822), value lookup by
+    // index (0x60882c), store through the +44 member desc (0x608836) returning 1
+    // (0x608838), else 0 (0x608840).
+    match desc.values.get(index) {
+        Some(v) => {
+            setter(*v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x608844 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x608844() -> ! {
-    todo!("0x608844 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x608844(getter: &dyn Fn() -> i32) -> i32 {
+    // IDA 0x608844: single statement -- enum int through the +44 member desc.
+    getter()
 }
 
 // 0x60884c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x60884c() -> ! {
-    todo!("0x60884c RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x60884c(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), value: i32) -> bool {
+    // IDA 0x60884c: `find_if(equalValue)` over the item range (0x608876); miss returns 0
+    // (0x608878/0x608894); hit stores through the +44 member desc (0x60888a) and
+    // returns 1 (0x60888c). Only registered enum values stick.
+    if desc.values.contains(&value) {
+        setter(value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x608898 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x608898() -> ! {
-    todo!("0x608898 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x608898(desc: &crate::enum_desc::EnumDesc, getter: &dyn Fn() -> i32) -> usize {
+    // IDA 0x608898: enum int via the +44 member desc (0x6088aa), then
+    // `EnumDesc<NumSidesEnum>::convertToItem` (0x6088b6) -- same shape as
+    // `EnumDesc::lookup(Variant)` at stub_0x5fe250, including the range asserts.
+    let value = getter();
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x6088b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x6088b8() -> ! {
-    todo!("0x6088b8 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x6088b8(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), name: &str) -> bool {
+    // IDA 0x6088b8 (`Name` overload): `convertToValue(enumdesc@+48, name, &out)` directly
+    // on the interned name (0x6088ce); on hit stores through the +44 member desc
+    // (0x6088e4) and returns 1 (0x6088e6), else returns 0 (0x6088ea). Name interning is
+    // elided: the model keys owned strings (see stub_0x5fe600).
+    match desc.lookup_value(name) {
+        Some(v) => {
+            setter(v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x6088ec — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToIndexES3_
@@ -1338,8 +1433,19 @@ pub fn stub_0x6088ec(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x60895c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x60895c() -> ! {
-    todo!("0x60895c RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x60895c(desc: &crate::enum_desc::EnumDesc, setter: &dyn Fn(i32), value: i32) -> bool {
+    // IDA 0x60895c: `value >= 0` (0x608966), bounds check against the value table
+    // (0x608978), mapped value != -1 (0x608984), store through the +44 member desc
+    // (0x608990) returning 1 (0x608992), else 0. Only registered values stick.
+    if value >= 0 {
+        if let Some(&mapped) = usize::try_from(value).ok().and_then(|s| desc.value_to_value.get(s)) {
+            if mapped != -1 {
+                setter(mapped);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x60899c — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -1358,14 +1464,21 @@ pub fn stub_0x6089a0() -> bool {
 
 // 0x6089a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x6089a4() -> ! {
-    todo!("0x6089a4 RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x6089a4(getter: &dyn Fn() -> i32) -> i32 {
+    // IDA 0x6089a4: member-pointer dispatch out of the GetSetImpl pair: adjust the instance
+    // (0x6089ae-0x6089b6), virtual-adjust when the low bit is set (0x6089ba-0x6089be),
+    // call through (0x6089be). Same shape as stub_0x5ffdbc.
+    getter()
 }
 
 // 0x6089c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::setValue(RBX::Reflection::DescribedBase *,RBX::PrismInstance::NumSidesEnum const&)const")]
-pub fn stub_0x6089c4() -> ! {
-    todo!("0x6089c4 RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::setValue(RBX::Reflection::DescribedBase *,RBX::PrismInstance::NumSidesEnum const&)const")
+pub fn stub_0x6089c4(setter: &dyn Fn(i32), value: i32) {
+    // IDA 0x6089c4: member-pointer dispatch through the setter half (+12/+16):
+    // adjust the instance (0x6089ca-0x6089cc), load member fn + encoded adjust
+    // (0x6089d0-0x6089d8), virtual-adjust when the low bit is set (0x6089dc-0x6089e0),
+    // call `(target.*member)(value)` (0x6089e0). Same shape as stub_0x6036ac.
+    setter(value);
 }
 
 // 0x60939c — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEED1Ev
@@ -1376,8 +1489,27 @@ pub fn stub_0x60939c() {
 
 // 0x6098d4 — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEEC2IiMS2_FvRKS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::PropDescriptor<int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6098d4() -> ! {
-    todo!("0x6098d4 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::PropDescriptor<int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6098d4(
+    name: &str,
+    category: &str,
+    default: i32,
+    set: Box<dyn Fn(CoordinateFrame) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> PVFrameSetPropDesc {
+    // IDA 0x6098d4: base `Described<PVInstance>::classDescriptor` (0x6098f8),
+    // `new(0xc)` SetImpl member desc holding the setter pair (0x6098fe-0x60992a; the
+    // a5/a6 words are the split member-function pointer),
+    // `TypedPropertyDescriptor<CoordinateFrame>` init (0x609972), temp release
+    // (0x60997a-0x60997c), vtable off_1273028 (0x609990). Write-only: `getValue`
+    // unconditionally throws (see stub_0x609a14).
+    PVFrameSetPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PVFrameSetAccess { default, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x6099e0 — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEED0Ev
@@ -1401,13 +1533,20 @@ pub fn stub_0x609a10() {
 // 0x609a14 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 pub fn stub_0x609a14() -> ! {
-    todo!("0x609a14 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+    // IDA 0x609a14 (`__noreturn`): write-only binding -- unconditionally builds
+    // `runtime_error("can't get value")` (0x609a74-0x609afc) and `__cxa_throw`s it
+    // (0x609b24); panic mirrors the throw. Same shape as stub_0x5ffddc, mirrored.
+    panic!("can't get value (IDA 0x609a14)")
 }
 
 // 0x609b34 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
-pub fn stub_0x609b34() -> ! {
-    todo!("0x609b34 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+pub fn stub_0x609b34(setter: &dyn Fn(CoordinateFrame), value: CoordinateFrame) {
+    // IDA 0x609b34: member-pointer dispatch through the setter half (+4/+8):
+    // adjust the instance (0x609b3a-0x609b3c), load member fn + encoded adjust
+    // (0x609b40-0x609b48), virtual-adjust when the low bit is set (0x609b4c-0x609b50),
+    // call `(target.*member)(value)` (0x609b50).
+    setter(value);
 }
 
 // 0x60a258 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEED1Ev
@@ -1418,8 +1557,29 @@ pub fn stub_0x60a258() {
 
 // 0x60a27c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>(char const*,char const*,RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x60a27c() -> ! {
-    todo!("0x60a27c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>(char const*,char const*,RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x60a27c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn() -> i32 + Send + Sync>,
+    set: Box<dyn Fn(i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> PyramidNumSidesPropDesc {
+    // IDA 0x60a27c: `Singleton<EnumDesc<NumSidesEnum>>` via `call_once` + `doGetSingleton`
+    // (0x60a2c0-0x60a2c4), base `PropertyDescriptor` init (0x60a30e), enum-desc links at
+    // +40/+48 (0x60a332/0x60a39c), `new(0x14)` member desc at +44 holding
+    // (getter, setter) (0x60a35a-0x60a380). The trailing `isReadOnly`/`isWriteOnly`
+    // attribute masks (0x60a3ac-0x60a3d2) resolve through the GetSetImpl member desc,
+    // which hardcodes 0 (cf. stub_0x60899c/stub_0x6089a0), so they never fire.
+    // Same shape as stub_0x608170.
+    PyramidNumSidesPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: PyramidNumSidesAccess { get, set },
+        enum_desc: crate::generated::stub_0x4c5430(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x60a430 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEED0Ev
@@ -1442,18 +1602,28 @@ pub fn stub_0x60a46c() {
 
 // 0x60a47c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60a47c() -> ! {
-    todo!("0x60a47c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60a47c(a: i32, b: i32) -> bool {
+    // IDA 0x60a47c: reads the enum int through the +44 member desc for each instance
+    // (0x60a48c/0x60a4a2) and compares. Callers pass the already-read values.
+    // Same shape as stub_0x608370.
+    a == b
 }
 
 // 0x60a4a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x60a4a4() -> ! {
-    todo!("0x60a4a4 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x60a4a4(value: i32) -> crate::descriptor::Variant {
+    // IDA 0x60a4a4: `getEnumValue` through the +68 slot (0x60a4b2), wrapped as a
+    // `(Type<int>, int)` Variant (0x60a4b8-0x60a4c6). Same shape as stub_0x608398.
+    crate::descriptor::Variant::Int(value)
 }
 
 // 0x60a4c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x60a4c8() -> ! {
-    todo!("0x60a4c8 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x60a4c8(setter: &dyn Fn(i32), value: &crate::descriptor::Variant) {
+    // IDA 0x60a4c8: fast path `any_cast<int>` when the Variant holds an int (typeinfo
+    // check 0x60a546, cast 0x60a594); else a copied temp converted via
+    // `Variant::convert<int>` (0x60a548-0x60a574, temp destroyed 0x60a576-0x60a584).
+    // Either way the int lands in the +72 setter slot (0x60a514/0x60a5a4).
+    // Same shape as stub_0x6083bc.
+    setter(value.convert_to_int());
 }
