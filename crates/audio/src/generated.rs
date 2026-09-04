@@ -4032,15 +4032,23 @@ pub fn stub_4528b0() {
 // 0x452950 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")]
-pub fn stub_452950() -> ! {
-    todo!("0x452950 __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_452950() -> SharedPtr<SoundService> {
+    // IDA 0x452950: operator new(0xE0) (0x452984), SoundService ctor
+    // (0x4529a8), shared_ptr<SoundService> with Creatable<Instance>::Deleter
+    // (0x4529b6). Host: Arc construction adopts the deleter/owner wiring
+    // (twin of the provider create at 0x434d00).
+    SharedPtr::new(SoundService::default())
 }
 
 // 0x452a00 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_452a00() -> ! {
-    todo!("0x452a00 __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_452a00(service: SharedPtr<SoundService>) -> SharedPtr<SoundService> {
+    // IDA 0x452a00: ptr word copy (0x452a20), shared_count ctor with the
+    // Creatable deleter (0x452a28), _internal_accept_owner into the
+    // DescribedBase weak slot at +40 on non-null (0x452a56..0x452a66).
+    // Host: Arc move adopts owners (carrier no-op, cf. stub_452ac8).
+    service
 }
 
 // 0x452ac8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -4081,34 +4089,51 @@ pub fn stub_452cc4() {
 // 0x452ce8 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev")]
-pub fn stub_452ce8() -> ! {
-    todo!("0x452ce8 __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev")
+pub fn stub_452ce8() -> &'static SoundServiceCreator {
+    // IDA 0x452ce8: Creator C2 — vtable install (0x452d12),
+    // Name::declare<sSoundService> (0x452d14), then lower_bound walk and
+    // unique insert into AbstractFactoryProduct<Instance>::getCreators()
+    // keyed by name under FLog::Asserts-gated duplicate/isConstructed
+    // ReleaseAsserts. Host: force the name + creator registration
+    // (twin of the SoundChannel path at 0x37855c).
+    let _ = stub_445890();
+    stub_445768()
 }
 
 // 0x452f10 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const&)")]
-pub fn stub_452f10() -> ! {
-    todo!("0x452f10 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE")
+pub fn stub_452f10(service: &SharedPtr<SoundService>) -> SharedPtr<SoundService> {
+    // IDA 0x452f10: shared_count copy (0x452f22), ptr word adopt (0x452f2c),
+    // old count release (0x452f38..0x452f3a). Derived-to-base coercion has no
+    // host image; the Arc clone carries the ownership (cf. stub_452ac8).
+    SharedPtr::clone(service)
 }
 
 // 0x4ab168 — __ZN3RBX10Reflection4Type12getSingletonINS_9SoundTypeEEERKS1_v
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::SoundType>(void)")]
-pub fn stub_4ab168() -> ! {
-    todo!("0x4ab168 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::SoundType>(void)")
+pub fn stub_4ab168() -> &'static SoundTypeEnumDesc {
+    // IDA 0x4ab168 (disasm; Hex-Rays declined): once-init over flag_ptr /
+    // initSingleton (0x4ab16a..0x4ab182), then return the EnumDesc<SoundType>
+    // singleton. Host: delegate to doGetSingleton (twin of 0x378e84).
+    stub_4c2178()
 }
 
 // 0x4c2174 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::initSingleton(void)")]
-pub fn stub_4c2174() -> ! {
-    todo!("0x4c2174 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::initSingleton(void)")
+pub fn stub_4c2174() -> &'static SoundTypeEnumDesc {
+    // IDA 0x4c2174: thunk (B.W) into doGetSingleton; host: delegate.
+    stub_4c2178()
 }
 
 // 0x4c2178 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::doGetSingleton(void)")]
-pub fn stub_4c2178() -> ! {
-    todo!("0x4c2178 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::doGetSingleton(void)")
+pub fn stub_4c2178() -> &'static SoundTypeEnumDesc {
+    // IDA 0x4c2178: guard-once static s (cxa_guard_acquire/release),
+    // EnumDesc C2 in place (0x4c21ee), atexit dtor (0x4c220c, host: LazyLock
+    // never drops), return s. Host: the unit descriptor tag (twin of 0x378e88).
+    &*SOUND_TYPE_ENUM_DESC
 }
 
 // 0x4c2268 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED1Ev
@@ -4131,76 +4156,177 @@ pub fn stub_4c2440() {
 
 // 0x4c24e0 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::lookup(char const*)const")]
-pub fn stub_4c24e0() -> ! {
-    todo!("0x4c24e0 RBX::Reflection::EnumDesc<RBX::SoundType>::lookup(char const*)const")
+pub fn stub_4c24e0(name: &str, value_out: &mut SoundType) -> u32 {
+    // IDA 0x4c24e0: Name::lookup (0x4c24ec, host: the &str itself), then
+    // convertToValue(Name) (0x4c24fa); on success convertToItem (0x4c2506),
+    // else 0 (0x4c24fc/0x4c250c). Twin of the Reverb path at 0x3775f8.
+    if stub_4c2af8(name, value_out) {
+        stub_4c293c(*value_out)
+    } else {
+        0
+    }
 }
 
 // 0x4c2510 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_4c2510() -> ! {
-    todo!("0x4c2510 RBX::Reflection::EnumDesc<RBX::SoundType>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_4c2510(any: &PlacementAny) -> Result<u32, SoundCastError> {
+    // IDA 0x4c2510: any_cast<const SoundType&> (0x4c2522, throws bad_cast on
+    // mismatch) then convertToItem (0x4c252c). Twin of 0x377628.
+    let value = stub_4c2a08(any)?;
+    Ok(stub_4c293c(*value))
 }
 
 // 0x4c2530 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_4c2530() -> ! {
-    todo!("0x4c2530 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_4c2530(index: u32, out: &mut SoundType) -> bool {
+    // IDA 0x4c2530 (disasm; Hex-Rays declined): count = [this,#0x28],
+    // table = [this,#0x90]; HI (index < count) -> out = table[index],
+    // return 1 (0x4c253c..0x4c254a), else return 0. Host table is dense
+    // identity (twin of the Reverb path at 0x377648).
+    if (index as usize) < SOUND_TYPE_ITEMS.len() {
+        if let Some(value) = SoundType::from_i32(SOUND_TYPE_ITEMS[index as usize].1) {
+            *out = value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x4c258c — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_4c258c() -> ! {
-    todo!("0x4c258c RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(unsigned long,std::string &)const")
+pub fn stub_4c258c(index: u32, out: &mut String) -> bool {
+    // IDA 0x4c258c: if (*(this+40) > index): item = *(this+144)[index],
+    // convertToString(item) into a temp, string::assign, destroy the temp,
+    // return 1; else return 0. Twin of the Reverb path at 0x3776a4.
+    if (index as usize) < SOUND_TYPE_ITEMS.len() {
+        stub_4c26d0(SOUND_TYPE_ITEMS[index as usize].1, out);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4c26d0 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE15convertToStringERKS2_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(RBX::SoundType const&)const")]
-pub fn stub_4c26d0() -> ! {
-    todo!("0x4c26d0 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(RBX::SoundType const&)const")
+pub fn stub_4c26d0(value: i32, out: &mut String) {
+    // IDA 0x4c26d0: FLog::Asserts-gated ReleaseAsserts "value>=0"
+    // (enumconverter.h:262) and "(size_t)value<enumToItem.size()" (:263,
+    // host: panic); then value <= -1 -> "" (cf. 0x37792a), out of range -> ""
+    // (cf. 0x377942), else names[value]. Twin of 0x3777e8.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262"
+        );
+        assert!(
+            (value as usize) < SOUND_TYPE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263"
+        );
+    }
+    match SoundType::from_i32(value) {
+        Some(typed) => sound_type_to_string(typed, out),
+        None => out.clear(),
+    }
 }
 
 // 0x4c2870 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9SoundTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::SoundType>(RBX::SoundType const&)")]
-pub fn stub_4c2870() -> ! {
-    todo!("0x4c2870 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::SoundType>(RBX::SoundType const&)")
+pub fn stub_4c2870<'a>(slot: &'a mut PlacementAny, value: SoundType) -> &'a mut PlacementAny {
+    // IDA 0x4c2870: singleton() names the holder (0x4c287c); same holder ->
+    // word copy (0x4c28a8); else destroy old payload (0x4c2894..0x4c28a0,
+    // host: enum drop) then store + retag (0x4c28b2). Trivial enum: no-op
+    // dtor. Twin of the Reverb path at 0x377988.
+    match &mut *slot {
+        PlacementAny::SoundType(current) => {
+            *current = value;
+        }
+        other => {
+            *other = PlacementAny::SoundType(value);
+        }
+    }
+    slot
 }
 
 // 0x4c28c0 — __ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SoundType>::singleton(void)")]
-pub fn stub_4c28c0() -> ! {
-    todo!("0x4c28c0 rbx::implementation::typed_holder<RBX::SoundType>::singleton(void)")
+pub fn stub_4c28c0() -> &'static SoundTypeHolder {
+    // IDA 0x4c28c0: cxa_guard_acquire/release around s
+    // (0x4c28da..0x4c2916); s = {typeinfo, destruct_func} + construct_func
+    // word. Host: LazyLock never drops (atexit equivalent, twin of 0x3779d8).
+    &*SOUND_TYPE_HOLDER
 }
 
 // 0x4c292c — __ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SoundType>::construct_func(char const*,char *)")]
-pub fn stub_4c292c() -> ! {
-    todo!("0x4c292c rbx::implementation::typed_holder<RBX::SoundType>::construct_func(char const*,char *)")
+pub fn stub_4c292c(src: *const SoundType, dst: *mut SoundType) -> SoundType {
+    // IDA 0x4c292c: null dst -> return src word untouched (0x4c292e);
+    // else *dst = loaded word (0x4c2930/0x4c2932, trivial 4-byte enum copy).
+    // Twin of the Reverb path at 0x377a44; host: delegate.
+    stub_sound_type_construct(src, dst)
 }
 
 // 0x4c2938 — __ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SoundType>::destruct_func(char *)")]
-pub fn stub_4c2938() -> ! {
-    todo!("0x4c2938 rbx::implementation::typed_holder<RBX::SoundType>::destruct_func(char *)")
+pub fn stub_4c2938() {
+    // IDA 0x4c2938: BX LR — trivial enum, nothing to destroy (twin of 0x377a50).
+    stub_sound_type_destruct()
 }
 
 // 0x4c293c — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToItem(RBX::SoundType const&)const")]
-pub fn stub_4c293c() -> ! {
-    todo!("0x4c293c RBX::Reflection::EnumDesc<RBX::SoundType>::convertToItem(RBX::SoundType const&)const")
+pub fn stub_4c293c(value: SoundType) -> u32 {
+    // IDA 0x4c293c: same assert pair as 0x4c26d0 at enumconverter.h:273/274
+    // (host: panic); then value < 0 -> 0, out of range -> 0, else
+    // enumToItem[value] (dense identity). Twin of 0x377a54.
+    // NOTE: failure returns 0, which collides with NoSound's item — as in the original.
+    let raw = value as i32;
+    if flog_asserts() {
+        assert!(
+            raw >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273"
+        );
+        assert!(
+            (raw as usize) < SOUND_TYPE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274"
+        );
+    }
+    if (raw as usize) < SOUND_TYPE_ITEMS.len() {
+        raw as u32
+    } else {
+        0
+    }
 }
 
 // 0x4c2a08 — __ZN3rbx8any_castIRKN3RBX9SoundTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::SoundType const& rbx::any_cast<RBX::SoundType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_4c2a08() -> ! {
-    todo!("0x4c2a08 RBX::SoundType const& rbx::any_cast<RBX::SoundType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_4c2a08(slot: &PlacementAny) -> Result<&SoundType, SoundCastError> {
+    // IDA 0x4c2a08: null holder -> void typeinfo; holder or name
+    // ("N3RBX9SoundTypeE") mismatch -> throw bad_placement_any_cast; else
+    // payload at +1. Host: the enum tag subsumes both checks (twin of 0x377b20).
+    match slot {
+        PlacementAny::SoundType(value) => Ok(value),
+        _ => Err(SoundCastError::BadPlacementAnyCast),
+    }
 }
 
 // 0x4c2af8 — __ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(RBX::Name const&,RBX::SoundType&)const")]
-pub fn stub_4c2af8() -> ! {
-    todo!("0x4c2af8 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(RBX::Name const&,RBX::SoundType&)const")
+pub fn stub_4c2af8(name: &str, out: &mut SoundType) -> bool {
+    // IDA 0x4c2af8: two RB-tree lower_bound walks (item map, name map) with
+    // exact-key rechecks; success stores the value word and returns 1, else
+    // 0. Host: binary search over the name-sorted table (twin of 0x377c10).
+    match SOUND_TYPE_BY_NAME_SORTED.binary_search_by(|probe| probe.0.cmp(name)) {
+        Ok(found) => {
+            if let Some(value) = SoundType::from_i32(SOUND_TYPE_BY_NAME_SORTED[found].1) {
+                *out = value;
+                return true;
+            }
+            false
+        }
+        Err(_) => false,
+    }
 }
 
 // 0x4c2b74 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
@@ -4209,30 +4335,186 @@ pub fn stub_4c2b74() {
     // IDA 0x4c2b74: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
+/// RBX::Soundscape::SoundService class descriptor (IDA 0x710c78:
+/// guard-once describedClassDescriptor, base Instance, name "SoundService",
+/// atexit dtor; host: LazyLock never drops). Twin of STOCK_SOUND_DESCRIPTOR.
+static SOUND_SERVICE_DESCRIPTOR: LazyLock<ClassDescriptor> = LazyLock::new(|| ClassDescriptor {
+    name: "SoundService",
+    base: Some(&*SOUND_INSTANCE_DESCRIPTOR),
+});
 // 0x710c78 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_710c78() -> ! {
-    todo!("0x710c78 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_710c78() -> &'static ClassDescriptor {
+    // IDA 0x710c78: guard-once describedClassDescriptor (0x710cd4..0x710d40);
+    // base = Instance classDescriptor, name "SoundService" (0x710d1c),
+    // atexit dtor (host: LazyLock never drops). Twin of 0x378f78.
+    &*SOUND_SERVICE_DESCRIPTOR
 }
 
 // 0x7aac50 — __ZN3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(RBX::Instance const*)")]
-pub fn stub_7aac50() -> ! {
-    todo!("0x7aac50 RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(RBX::Instance const*)")
+pub fn stub_7aac50(provider: &mut ServiceProvider, _instance: &Instance) -> SharedPtr<SoundService> {
+    // IDA 0x7aac50: findServiceProvider(scope, instance) (0x7aac54); on a hit
+    // tail-call create<SoundService> on the found provider (0x7aac64), which
+    // itself finds-or-creates the service (0x434d00). Host: the instance
+    // scope check folds into the provider slot; host: delegate.
+    stub_434d00(provider)
 }
 
+/// RBX::Soundscape::CollisionSound — one loaded impact sample (IDA 0x7f937c:
+/// SoundId at +0, FMOD sound adopted on a Sound::get hit, 3D min/max from
+/// the id payload, has_sound flag at +8).
+#[derive(Clone, Default)]
+pub struct CollisionSound {
+    pub sound_id: SoundId,
+    pub has_sound: bool,
+    pub min_distance: f32,
+    pub max_distance: f32,
+}
+
+/// RBX::Soundscape::CollisionSoundType — material-pair key plus a rand()%3
+/// variant (IDA 0x7f9bb8: (matA & 0xFF0F) | ((matB & 0xFF0F) << 16) with the
+/// smaller material word low, variant added). Material ids in LoadSounds
+/// order: 1 plastic, 2 wood, 6 ice, 4 metal, 5 grass, 3 stone.
+#[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
+pub struct CollisionSoundType(pub u32);
+
+impl CollisionSoundType {
+    /// Canonical pair key with the variant folded in (IDA 0x7f9be6..0x7f9c2c).
+    pub fn with_variant(mat_a: u32, mat_b: u32, variant: u32) -> CollisionSoundType {
+        let (lo, hi) = if mat_a > mat_b {
+            (mat_b, mat_a)
+        } else {
+            (mat_a, mat_b)
+        };
+        CollisionSoundType(((lo & 0xFF0F) | ((hi & 0xFF0F) << 16)).wrapping_add(variant))
+    }
+}
+
+/// RBX::Soundscape::CollisionSoundManager — FMOD system/group words plus the
+/// type -> sound map at +8 (IDA 0x7f9bb8/0x7fca48; std::map -> HashMap, null
+/// shared_ptr -> None).
+#[derive(Clone, Default)]
+pub struct CollisionSoundManager {
+    pub fmod_system: u32,
+    pub channel_group: u32,
+    pub sounds: HashMap<u32, Option<SharedPtr<CollisionSound>>>,
+}
+
+/// The 63 (type, asset) pairs loaded by LoadSounds (IDA 0x7f9e70,
+/// 0x7f9ee4..0x7face8): upper-triangular material matrix in
+/// plastic/wood/ice/metal/grass/stone order, 3 variants each.
+pub const COLLISION_SOUND_TABLE: &[(u32, &str)] = &[
+    (0x01000100, "sounds/plasticplastic.ogg"),
+    (0x01000101, "sounds/plasticplastic2.ogg"),
+    (0x01000102, "sounds/plasticplastic3.ogg"),
+    (0x02000100, "sounds/woodplastic.ogg"),
+    (0x02000101, "sounds/woodplastic2.ogg"),
+    (0x02000102, "sounds/woodplastic3.ogg"),
+    (0x06000100, "sounds/plasticice.ogg"),
+    (0x06000101, "sounds/plasticice2.ogg"),
+    (0x06000102, "sounds/plasticice3.ogg"),
+    (0x04000100, "sounds/plasticmetal.ogg"),
+    (0x04000101, "sounds/plasticmetal2.ogg"),
+    (0x04000102, "sounds/plasticmetal3.ogg"),
+    (0x05000100, "sounds/plasticgrass.ogg"),
+    (0x05000101, "sounds/plasticgrass2.ogg"),
+    (0x05000102, "sounds/plasticgrass3.ogg"),
+    (0x03000100, "sounds/plasticstone.ogg"),
+    (0x03000101, "sounds/plasticstone2.ogg"),
+    (0x03000102, "sounds/plasticstone3.ogg"),
+    (0x02000200, "sounds/woodwood.ogg"),
+    (0x02000201, "sounds/woodwood2.ogg"),
+    (0x02000202, "sounds/woodwood3.ogg"),
+    (0x06000200, "sounds/woodice.ogg"),
+    (0x06000201, "sounds/woodice2.ogg"),
+    (0x06000202, "sounds/woodice3.ogg"),
+    (0x04000200, "sounds/woodmetal.ogg"),
+    (0x04000201, "sounds/woodmetal2.ogg"),
+    (0x04000202, "sounds/woodmetal3.ogg"),
+    (0x05000200, "sounds/woodgrass.ogg"),
+    (0x05000201, "sounds/woodgrass2.ogg"),
+    (0x05000202, "sounds/woodgrass3.ogg"),
+    (0x03000200, "sounds/woodstone.ogg"),
+    (0x03000201, "sounds/woodstone2.ogg"),
+    (0x03000202, "sounds/woodstone3.ogg"),
+    (0x06000600, "sounds/ice.ogg"),
+    (0x06000601, "sounds/ice2.ogg"),
+    (0x06000602, "sounds/ice3.ogg"),
+    (0x04000600, "sounds/icemetal.ogg"),
+    (0x04000601, "sounds/icemetal2.ogg"),
+    (0x04000602, "sounds/icemetal3.ogg"),
+    (0x05000600, "sounds/icegrass.ogg"),
+    (0x05000601, "sounds/icegrass2.ogg"),
+    (0x05000602, "sounds/icegrass3.ogg"),
+    (0x03000600, "sounds/icestone.ogg"),
+    (0x03000601, "sounds/icestone2.ogg"),
+    (0x03000602, "sounds/icestone3.ogg"),
+    (0x04000400, "sounds/metal.ogg"),
+    (0x04000401, "sounds/metal2.ogg"),
+    (0x04000402, "sounds/metal3.ogg"),
+    (0x05000400, "sounds/metalgrass.ogg"),
+    (0x05000401, "sounds/metalgrass2.ogg"),
+    (0x05000402, "sounds/metalgrass3.ogg"),
+    (0x03000400, "sounds/metalstone.ogg"),
+    (0x03000401, "sounds/metalstone2.ogg"),
+    (0x03000402, "sounds/metalstone3.ogg"),
+    (0x05000500, "sounds/grass.ogg"),
+    (0x05000501, "sounds/grass2.ogg"),
+    (0x05000502, "sounds/grass3.ogg"),
+    (0x03000500, "sounds/grassstone.ogg"),
+    (0x03000501, "sounds/grassstone2.ogg"),
+    (0x03000502, "sounds/grassstone3.ogg"),
+    (0x03000300, "sounds/stone.ogg"),
+    (0x03000301, "sounds/stone2.ogg"),
+    (0x03000302, "sounds/stone3.ogg"),
+];
 // 0x7f937c — __ZN3RBX10Soundscape14CollisionSoundC2ENS0_7SoundIdEPNS0_21CollisionSoundManagerEPKNS_8InstanceE
 #[doc(alias = "RBX::Soundscape::CollisionSound::CollisionSound(RBX::Soundscape::SoundId,RBX::Soundscape::CollisionSoundManager *,RBX::Instance const*)")]
-pub fn stub_7f937c() -> ! {
-    todo!("0x7f937c RBX::Soundscape::CollisionSound::CollisionSound(RBX::Soundscape::SoundId,RBX::Soundscape::CollisionSoundManager *,RBX::Instance const*)")
+pub fn stub_7f937c(sound_id: SoundId) -> CollisionSound {
+    // IDA 0x7f937c: SoundId copies (0x7f93f2/0x7f941c), shared_ptr<Sound>
+    // reset over the fresh id (0x7f943a); on a non-empty asset Sound::get
+    // (slot 5, 0x7f9454..0x7f945e) hits, the FMOD sound takes setSoundGroup
+    // (0x7f947a) + set3DMinMaxDistance(min/max from the id payload at
+    // +0x30/+0x34, 0x7f948a) and has_sound = 1 (0x7f946c), else has_sound = 0
+    // (0x7f9494) with StandardOut printfs on the failure paths
+    // (0x7f94b6/0x7f95da). Host: the Sound::get hit is the non-empty asset;
+    // the FMOD words and the 3D distances live on the FMOD side.
+    CollisionSound {
+        has_sound: !sound_id.asset.is_empty(),
+        sound_id,
+        ..CollisionSound::default()
+    }
 }
 
 // 0x7f9bb8 — __ZN3RBX10Soundscape21CollisionSoundManager9PlaySoundEPNS_9PrimitiveE
 // type: _DWORD __fastcall(RBX::Soundscape::CollisionSoundManager *__hidden this, RBX::Primitive *)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::PlaySound(RBX::Primitive *)")]
-pub fn stub_7f9bb8() -> ! {
-    todo!("0x7f9bb8 RBX::Soundscape::CollisionSoundManager::PlaySound(RBX::Primitive *)")
+pub fn stub_7f9bb8(
+    manager: &CollisionSoundManager,
+    mat_a: u32,
+    mat_b: u32,
+    seed: u32,
+    is_part_player: bool,
+    touch_cooldown: u32,
+) -> Option<SharedPtr<CollisionSound>> {
+    // IDA 0x7f9bb8: PartInstance::fromPrimitive (0x7f9bd0); the fw material
+    // words fold into the canonical pair key (0x7f9bd6..0x7f9c0a, smaller
+    // word low); variant = rand() % 3 via the 0x55555556 SMMUL idiom
+    // (0x7f9c0e..0x7f9c2c) added to the key; exact RB-tree match over the
+    // manager map at +8 (0x7f9c34..0x7f9c5a, miss -> return 0x7f9cd2); then
+    // getLinearVelocity (0x7f9c5e), getPartSizeXml (0x7f9c70), the
+    // IsPartPlayer gate (0x7f9c86, 0x7fcf00), the [prim+0xAC] > 1 touch
+    // cooldown gate (0x7f9c8c..0x7f9c92), the -120.0 volume floor (0x7f9c9c),
+    // and CollisionSound::Play(system, group, pos, vel, volume) (0x7f9cce).
+    // Host: the part/physics words arrive as parameters and the FMOD volume
+    // math stays with the Play call; the map hit is returned for it.
+    if is_part_player || touch_cooldown > 1 {
+        return None;
+    }
+    let key = CollisionSoundType::with_variant(mat_a, mat_b, seed % 3);
+    manager.sounds.get(&key.0).and_then(|slot| slot.clone())
 }
 
 // 0x7f9ce8 — __ZN3RBX10Soundscape21CollisionSoundManagerD1Ev
@@ -4252,15 +4534,28 @@ pub fn stub_7f9cec() {
 // 0x7f9e70 — __ZN3RBX10Soundscape21CollisionSoundManager10LoadSoundsEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Soundscape::CollisionSoundManager *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::LoadSounds(RBX::Instance const*)")]
-pub fn stub_7f9e70() -> ! {
-    todo!("0x7f9e70 RBX::Soundscape::CollisionSoundManager::LoadSounds(RBX::Instance const*)")
+pub fn stub_7f9e70(manager: &mut CollisionSoundManager) {
+    // IDA 0x7f9e70: 63 LoadSound(type, path, instance) calls over the
+    // upper-triangular material matrix (0x7f9ee4..0x7face8). Host: replay
+    // COLLISION_SOUND_TABLE in image order.
+    for &(key, path) in COLLISION_SOUND_TABLE {
+        stub_7fca48(manager, key, path);
+    }
 }
 
 // 0x7fca48 — __ZN3RBX10Soundscape21CollisionSoundManager9LoadSoundENS0_18CollisionSoundTypeESsPKNS_8InstanceE
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Soundscape::CollisionSoundManager::LoadSound(RBX::Soundscape::CollisionSoundType,std::string,RBX::Instance const*)")]
-pub fn stub_7fca48() -> ! {
-    todo!("0x7fca48 RBX::Soundscape::CollisionSoundManager::LoadSound(RBX::Soundscape::CollisionSoundType,std::string,RBX::Instance const*)")
+pub fn stub_7fca48(manager: &mut CollisionSoundManager, key: u32, asset: &str) {
+    // IDA 0x7fca48: ContentId::fromAssets(path) (0x7fca70, host: the asset
+    // text), SoundId::SoundId(contentId) (0x7fcaa6), new CollisionSound
+    // (0x7fcaf0), shared_ptr adopt (0x7fcb02), map::operator[] + assign
+    // (0x7fcb22/0x7fcb2c, host: the entry API, cf. stub_7fd084).
+    let sound = stub_7f937c(SoundId {
+        asset: asset.to_owned(),
+        extra: 0,
+    });
+    *stub_7fd084(manager, key) = Some(SharedPtr::new(sound));
 }
 
 // 0x7fcd04 — __ZN3RBX10Soundscape21CollisionSoundManager9PlaySoundESt4pairIPNS_9PrimitiveES4_E
@@ -4297,12 +4592,18 @@ pub fn stub_7fd010() -> ! {
 // 0x7fd084 — __ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(int, int *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::Soundscape::CollisionSoundType,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")]
-pub fn stub_7fd084() -> ! {
-    todo!("0x7fd084 __ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_")
+pub fn stub_7fd084(
+    manager: &mut CollisionSoundManager,
+    key: u32,
+) -> &mut Option<SharedPtr<CollisionSound>> {
+    // IDA 0x7fd084: map::operator[] — lower_bound plus insert-on-miss of a
+    // default (null) shared_ptr, returning the slot. Host: entry API over
+    // the sounds map (None is the null shared_ptr).
+    manager.sounds.entry(key).or_default()
 }
-
 // 0x7fd1cc — __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::CollisionSound> const&)")]
+
 pub fn stub_7fd1cc() -> ! {
     todo!("0x7fd1cc __ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_")
 }
