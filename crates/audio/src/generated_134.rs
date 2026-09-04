@@ -123,6 +123,78 @@ impl ResolutionProp {
         self.setter.is_none()
     }
 }
+/// Host model of `EnumDesc<ResolutionPreset>` for IDA 0x10084..0x10674.
+/// `items` is the ordered (value, name) table (image `+28`/`+32` item vector
+/// at 0x10572..0x1058e); `index_to_value` is the legacy index->value map
+/// (image `+132` qword at 0x10682 / `+156` qword at 0x1065e) with `-1` holes
+/// for unmapped indices. Mirrors `EnumDescModel` in `generated_18.rs`.
+#[derive(Default)]
+pub struct ResolutionEnumDesc {
+    pub items: Vec<(i32, String)>,
+    pub index_to_value: Vec<i32>,
+}
+
+impl ResolutionEnumDesc {
+    /// Host helper mirroring `EnumDescModel::add_pair`: appends the (value,
+    /// name) item and records it in the legacy index->value map at `index`
+    /// (gaps stay `-1`, as in the image table).
+    pub fn add_pair(&mut self, value: i32, name: &str, index: usize) {
+        self.items.push((value, name.to_owned()));
+        if self.index_to_value.len() <= index {
+            self.index_to_value.resize(index + 1, -1);
+        }
+        self.index_to_value[index] = value;
+    }
+
+    /// Host search behind 0x1026c/0x105d0/0x102cc (`Name::lookup` +
+    /// `EnumDesc::convertToValue` at 0x1027a..0x1028c, 0x105da..0x105e6,
+    /// 0x1037e..0x1039e). `Name::lookup` interning has no host effect; the
+    /// host compares names directly.
+    pub fn lookup_value(&self, name: &str) -> Option<i32> {
+        self.items.iter().find(|(_, n)| n == name).map(|(v, _)| *v)
+    }
+
+    /// Host `EnumDesc::convertToString` behind 0x10248 (0x1025c..0x1026a):
+    /// assigns the item name for `value`, returns false with `out` untouched
+    /// when unmapped.
+    pub fn value_to_string(&self, value: i32, out: &mut String) -> bool {
+        if let Some((_, name)) = self.items.iter().find(|(v, _)| *v == value) {
+            *out = name.clone();
+            true
+        } else {
+            false
+        }
+    }
+
+    /// Host `EnumDesc::convertToIndex` behind 0x1050c/0x10604: the legacy
+    /// index->value table indexed by value, `-1` when out of range.
+    pub fn convert_to_index(&self, value: i32) -> i32 {
+        if value >= 0 && (value as usize) < self.index_to_value.len() {
+            return self.index_to_value[value as usize];
+        }
+        -1
+    }
+}
+
+/// Host model of the `XmlElement` int slot IDA 0x102ac writes: `clearValue`
+/// on the pair (0x102bc..0x102c0), type tag `5` at `+16` (0x102c6), value at
+/// `+20` (0x102c8); returns `5` (0x102ca).
+#[derive(Default)]
+pub struct XmlIntSlot {
+    pub value_type: i32,
+    pub int_value: i32,
+}
+
+/// Host model of the `XmlElement` read paths IDA 0x102cc discriminates:
+/// xsi:nil early-out (0x102f0), int pair (0x10338..0x10348), string pair
+/// (0x10356..0x103d6), otherwise the `ReleaseAssert(false)` at
+/// 0x1040c..0x104aa (Reflection.h:359).
+pub enum XmlReadValue {
+    Nil,
+    Int(i32),
+    Text(String),
+    Other,
+}
 
 // 0xf6f8d0 — sub_F6F8D0
 #[doc(alias = "sub_F6F8D0")]
@@ -740,134 +812,318 @@ pub fn stub_10074(prop: &ResolutionProp) -> bool {
 // 0x10084 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_10084() -> ! {
-    todo!("0x10084 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10084(prop: &ResolutionProp, a: &CacheSettings, b: &CacheSettings) -> bool {
+    // IDA 0x10084 (decompiled 0x10084..0x100aa; disasm getValue slot-2 calls
+    // 0x1008a..0x10094 and 0x10096..0x100aa): compares the +44 GetSetImpl
+    // `getValue` of both described objects.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    get(a) == get(b)
 }
 
 // 0x100ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_100ac() -> ! {
-    todo!("0x100ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_100ac(prop: &ResolutionProp, settings: &CacheSettings) -> IntCallResult {
+    // IDA 0x100ac (decompiled 0x100ac..0x100ce; disasm getEnumValue slot-0x44
+    // call 0x100b4..0x100ba, `Type::getSingleton<int>()` 0x100bc..0x100c0,
+    // `placement_any<int>` 0x100c0..0x100ce): tags the out slot with the int
+    // singleton, then stores the enum value as int — same shape as 0xfe54.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    IntCallResult {
+        type_name: "int",
+        value: get(settings),
+    }
 }
 
 // 0x100d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_100d0() -> ! {
-    todo!("0x100d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_100d0(prop: &ResolutionProp, item: &mut CacheItem, value: i32) {
+    // IDA 0x100d0 (decompiled 0x100d0..0x10204; disasm typeinfo-for-int fast
+    // path 0x1011a..0x101cc, `Variant::convert<int>` slow path
+    // 0x10150..0x1018e, `setIntValue` slot-72 call 0x101da..0x10204):
+    // coerces the variant to int, then stores it. The variant-boxing dance
+    // has no host effect; the caller passes the coerced int. The image
+    // returns the stack guard (void).
+    let set = prop.setter.expect("bound setter at IDA 0xfe84");
+    set(item, value);
 }
 
 // 0x10220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_10220() -> ! {
-    todo!("0x10220 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_10220(prop: &ResolutionProp, src: &CacheSettings, dst: &mut CacheItem) {
+    // IDA 0x10220 (decompiled 0x10220..0x10242; disasm getValue slot-8
+    // 0x1022a..0x10232, setValue slot-12 0x10236..0x10242): reads the source
+    // through the +44 GetSetImpl getter, writes it through the setter.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    let set = prop.setter.expect("bound setter at IDA 0xfe84");
+    set(dst, get(src));
 }
 
 // 0x10244 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::hasStringValue(void)const")]
-pub fn stub_10244() -> ! {
-    todo!("0x10244 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::hasStringValue(void)const")
+pub fn stub_10244() -> bool {
+    // IDA 0x10244 (disasm 0x10244..0x10246 `MOVS R0,#1; BX LR`): enum
+    // properties always have a string value.
+    true
 }
 
 // 0x10248 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_10248() -> ! {
-    todo!("0x10248 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10248(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    settings: &CacheSettings,
+    out: &mut String,
+) -> bool {
+    // IDA 0x10248 (decompiled 0x10248..0x1026a; disasm getValue slot-8
+    // 0x10250..0x1025a, `EnumDesc::convertToString` 0x1025c..0x1026a):
+    // renders the current enum value through the +48 enum singleton.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    desc.value_to_string(get(settings), out)
 }
 
 // 0x1026c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_1026c() -> ! {
-    todo!("0x1026c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_1026c(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    name: &str,
+) -> bool {
+    // IDA 0x1026c (decompiled 0x1026c..0x102a8; disasm `Name::lookup`
+    // 0x1027a..0x1027e, `EnumDesc::convertToValue` 0x1027e..0x1028c, setValue
+    // slot-12 0x10298..0x102a2, return 1/0 at 0x102a4/0x102a8).
+    // `Name::lookup` interning has no host effect; the host compares names
+    // directly.
+    match desc.lookup_value(name) {
+        Some(value) => {
+            let set = prop.setter.expect("bound setter at IDA 0xfe84");
+            set(item, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x102ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_102ac() -> ! {
-    todo!("0x102ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_102ac(prop: &ResolutionProp, settings: &CacheSettings, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x102ac (decompiled 0x102ac..0x102ca; disasm getValue slot-8
+    // 0x102ae..0x102ba, `clearValue` 0x102bc..0x102c0, tag `5` at +16
+    // 0x102c6, value at +20 0x102c8, return 5 at 0x102ca).
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    out.value_type = 0; // `clearValue` resets the pair first (0x102c0).
+    out.value_type = 5; // int tag at +16 (0x102c6).
+    out.int_value = get(settings); // value at +20 (0x102c8).
+    5
 }
 
 // 0x102cc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_102cc() -> ! {
-    todo!("0x102cc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_102cc(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    xml: &XmlReadValue,
+) {
+    // IDA 0x102cc (decompiled 0x102cc..0x104aa): xsi:nil early-out (0x102f0);
+    // int pair → `setIntValue` (0x10338..0x10348); string pair →
+    // `Name::lookup` + `convertToValue` + setValue (0x10356..0x103b2) with
+    // the empty-string `validate` fallback (0x103d4..0x10486); anything else
+    // falls into `ReleaseAssert(false)` (0x1040c..0x104aa,
+    // Reflection.h:359), which faults in the image — the host panics with
+    // the same message. The trailing `FLog::Asserts` gate (0x103c4..0x1040c)
+    // has no host effect; the host takes the asserts-on path.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if stub_10674(prop, desc, item, *value) {
+                return;
+            }
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+        XmlReadValue::Text(text) => {
+            if let Some(value) = desc.lookup_value(text) {
+                let set = prop.setter.expect("bound setter at IDA 0xfe84");
+                set(item, value);
+                return;
+            }
+            if text.is_empty() {
+                // Empty string → `validate` virtual (slot-64); the host has
+                // no validators, so this is a no-op.
+                return;
+            }
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+        XmlReadValue::Other => {
+            panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
+        }
+    }
 }
 
 // 0x1050c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1050c() -> ! {
-    todo!("0x1050c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1050c(prop: &ResolutionProp, desc: &ResolutionEnumDesc, settings: &CacheSettings) -> i32 {
+    // IDA 0x1050c (decompiled 0x1050c..0x10526; disasm getValue slot-8
+    // 0x1050e..0x1051c, `convertToIndex` tail-call 0x1051e..0x10524).
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    desc.convert_to_index(get(settings))
 }
 
 // 0x10528 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_10528() -> ! {
-    todo!("0x10528 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_10528(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    index: u32,
+) -> bool {
+    // IDA 0x10528 (decompiled 0x10528..0x10558; disasm count check
+    // 0x1052e..0x1053a, table load `[[desc+144] + 4*index]` 0x1053c..0x10544,
+    // setValue slot-12 0x10544..0x1054e, return 1/0 at 0x10550/0x10558).
+    // Unlike 0x10674, a `-1` hole is stored as-is.
+    if (index as usize) < desc.index_to_value.len() {
+        let value = desc.index_to_value[index as usize];
+        let set = prop.setter.expect("bound setter at IDA 0xfe84");
+        set(item, value);
+        return true;
+    }
+    false
 }
 
 // 0x1055c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1055c() -> ! {
-    todo!("0x1055c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1055c(prop: &ResolutionProp, settings: &CacheSettings) -> i32 {
+    // IDA 0x1055c (disasm 0x1055c..0x10562: load impl at `[a1+0x2C]`,
+    // tail-call its slot-2/getValue virtual): the whole body is the getter.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    get(settings)
 }
 
 // 0x10564 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_10564() -> ! {
-    todo!("0x10564 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_10564(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    value: i32,
+) -> bool {
+    // IDA 0x10564 (decompiled 0x10564..0x105ac; disasm `__find_if` with
+    // `EnumDescriptor::equalValue` over `[desc+28, desc+32)` 0x10572..0x1058e,
+    // setValue slot-12 0x10596..0x105a2, return 1/0 at 0x105a4/0x105ac).
+    // was: boost::bind + __find_if → iterator search (no boost crate per §4).
+    if desc.items.iter().any(|(v, _)| *v == value) {
+        let set = prop.setter.expect("bound setter at IDA 0xfe84");
+        set(item, value);
+        return true;
+    }
+    false
 }
 
 // 0x105b0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_105b0() -> ! {
-    todo!("0x105b0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_105b0(prop: &ResolutionProp, desc: &ResolutionEnumDesc, settings: &CacheSettings) -> i32 {
+    // IDA 0x105b0 (decompiled 0x105b0..0x105ce; disasm getValue slot-8
+    // 0x105b6..0x105c2, `convertToItem` 0x105c4..0x105ce): resolves the
+    // current value to its descriptor item. Item pointers have no host
+    // meaning; the host returns the item's position, or -1 when unmapped.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    let value = get(settings);
+    desc.items
+        .iter()
+        .position(|(v, _)| *v == value)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x105d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_105d0() -> ! {
-    todo!("0x105d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_105d0(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    name: &str,
+) -> bool {
+    // IDA 0x105d0 (decompiled 0x105d0..0x10602; disasm `convertToValue`
+    // 0x105da..0x105e6, setValue slot-12 0x105f2..0x105fc, return 1/0 at
+    // 0x105fe/0x10602): the `Name` overload twin of 0x1026c.
+    match desc.lookup_value(name) {
+        Some(value) => {
+            let set = prop.setter.expect("bound setter at IDA 0xfe84");
+            set(item, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x10604 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")]
-pub fn stub_10604() -> ! {
-    todo!("0x10604 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")
+pub fn stub_10604(desc: &ResolutionEnumDesc, value: i32) -> i32 {
+    // IDA 0x10604 (decompiled 0x10604..0x10672; disasm `value>=0` assert chain
+    // 0x10618..0x1065c, index-table load `[[a1+156] + 4*value]`
+    // 0x1065e..0x1066e, default -1 at 0x10666..0x10672): the
+    // `FLog::Asserts` / `_debugHook` / `ReleaseAssert` gate has no host
+    // effect beyond the assert; the host takes the asserts-on path via
+    // `debug_assert`.
+    debug_assert!(value >= 0, "value>=0 file: ../App/include/reflection/enumconverter.h line: 350");
+    desc.convert_to_index(value)
 }
 
 // 0x10674 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_10674() -> ! {
-    todo!("0x10674 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_10674(
+    prop: &ResolutionProp,
+    desc: &ResolutionEnumDesc,
+    item: &mut CacheItem,
+    value: i32,
+) -> bool {
+    // IDA 0x10674 (decompiled 0x10674..0x106b0; disasm `value>=0` at 0x10678,
+    // count check 0x10682..0x10690, table load 0x10692, `-1` hole check at
+    // 0x1069c, setValue slot-12 0x1069e..0x106a8, return 1/0 at
+    // 0x106aa/0x106b0): the `-1` check is what 0x10528 lacks.
+    if value >= 0 && (value as usize) < desc.index_to_value.len() {
+        let mapped = desc.index_to_value[value as usize];
+        if mapped != -1 {
+            let set = prop.setter.expect("bound setter at IDA 0xfe84");
+            set(item, mapped);
+            return true;
+        }
+    }
+    false
 }
 
 // 0x106b4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const")]
-pub fn stub_106b4() -> ! {
-    todo!("0x106b4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const")
+pub fn stub_106b4(prop: &ResolutionProp) -> bool {
+    // IDA 0x106b4 (disasm 0x106b4..0x106b6 `MOVS R0,#0; BX LR`): the
+    // ResolutionPreset member pointer is bound at 0xfe84, so never read-only.
+    prop.is_read_only()
 }
 
 // 0x106b8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const")]
-pub fn stub_106b8() -> ! {
-    todo!("0x106b8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const")
+pub fn stub_106b8(prop: &ResolutionProp) -> bool {
+    // IDA 0x106b8 (disasm 0x106b8..0x106ba `MOVS R0,#0; BX LR`): the
+    // ResolutionPreset member pointer is bound at 0xfe84, so never write-only.
+    prop.is_write_only()
 }
 
 #[cfg(test)]
@@ -957,5 +1213,157 @@ mod batch3_tests {
         let mut item = CacheItem::default();
         (prop.setter.expect("bound"))(&mut item, 4);
         assert_eq!(item.resolution_preset, 4);
+    }
+}
+
+#[cfg(test)]
+mod batch4_tests {
+    use super::*;
+
+    fn res_get(settings: &CacheSettings) -> i32 {
+        settings.resolution_preference
+    }
+
+    fn res_set(item: &mut CacheItem, value: i32) {
+        item.resolution_preset = value;
+    }
+
+    fn prop() -> ResolutionProp {
+        ResolutionProp {
+            name: "Resolution".to_owned(),
+            category: "Rendering".to_owned(),
+            getter: Some(res_get),
+            setter: Some(res_set),
+            attributes: 0,
+            permissions: 0,
+            enum_type: "ResolutionPreset",
+        }
+    }
+
+    fn desc() -> ResolutionEnumDesc {
+        // Index 2..=3 left as `-1` holes, as in the image legacy table.
+        let mut d = ResolutionEnumDesc::default();
+        d.add_pair(0, "Automatic", 0);
+        d.add_pair(1, "Low", 1);
+        d.add_pair(4, "Ultra", 4);
+        d
+    }
+
+    fn settings_with(value: i32) -> CacheSettings {
+        CacheSettings {
+            resolution_preference: value,
+            ..CacheSettings::default()
+        }
+    }
+
+    #[test]
+    fn equal_values_compares_both_getters() {
+        // IDA 0x10084: getValue(a2) == getValue(a3).
+        let p = prop();
+        assert!(stub_10084(&p, &settings_with(1), &settings_with(1)));
+        assert!(!stub_10084(&p, &settings_with(1), &settings_with(4)));
+    }
+
+    #[test]
+    fn variant_roundtrip_through_int_singleton() {
+        // IDA 0x100ac getVariant + 0x100d0 setVariant + 0x10220 copyValue.
+        let p = prop();
+        let out = stub_100ac(&p, &settings_with(4));
+        assert_eq!(out.type_name, "int");
+        assert_eq!(out.value, 4);
+        let mut item = CacheItem::default();
+        stub_100d0(&p, &mut item, out.value);
+        assert_eq!(item.resolution_preset, 4);
+        let mut dst = CacheItem::default();
+        stub_10220(&p, &settings_with(1), &mut dst);
+        assert_eq!(dst.resolution_preset, 1);
+    }
+
+    #[test]
+    fn string_value_roundtrip() {
+        // IDA 0x10244 hardcoded 1; 0x10248 getStringValue; 0x1026c + 0x105d0
+        // setStringValue overloads.
+        assert!(stub_10244());
+        let p = prop();
+        let d = desc();
+        let mut name = String::new();
+        assert!(stub_10248(&p, &d, &settings_with(1), &mut name));
+        assert_eq!(name, "Low");
+        assert!(!stub_10248(&p, &d, &settings_with(7), &mut name));
+        let mut item = CacheItem::default();
+        assert!(stub_1026c(&p, &d, &mut item, "Ultra"));
+        assert_eq!(item.resolution_preset, 4);
+        assert!(!stub_1026c(&p, &d, &mut item, "Bogus"));
+        assert!(stub_105d0(&p, &d, &mut item, "Low"));
+        assert_eq!(item.resolution_preset, 1);
+        assert!(!stub_105d0(&p, &d, &mut item, "Bogus"));
+    }
+
+    #[test]
+    fn write_value_tags_int_slot() {
+        // IDA 0x102ac: clearValue, tag 5 at +16, value at +20, return 5.
+        let p = prop();
+        let mut slot = XmlIntSlot::default();
+        assert_eq!(stub_102ac(&p, &settings_with(4), &mut slot), 5);
+        assert_eq!(slot.value_type, 5);
+        assert_eq!(slot.int_value, 4);
+    }
+
+    #[test]
+    fn read_value_dispatch() {
+        // IDA 0x102cc: nil no-op, int via setIntValue, text via lookup.
+        let p = prop();
+        let d = desc();
+        let mut item = CacheItem::default();
+        stub_102cc(&p, &d, &mut item, &XmlReadValue::Nil);
+        assert_eq!(item.resolution_preset, 0);
+        stub_102cc(&p, &d, &mut item, &XmlReadValue::Int(1));
+        assert_eq!(item.resolution_preset, 1);
+        stub_102cc(&p, &d, &mut item, &XmlReadValue::Text("Ultra".to_owned()));
+        assert_eq!(item.resolution_preset, 4);
+        stub_102cc(&p, &d, &mut item, &XmlReadValue::Text(String::new()));
+        assert_eq!(item.resolution_preset, 4);
+    }
+
+    #[test]
+    #[should_panic(expected = "Reflection.h line: 359")]
+    fn read_value_other_hits_release_assert() {
+        // IDA 0x102cc trailing `ReleaseAssert(false)` path.
+        let p = prop();
+        let d = desc();
+        let mut item = CacheItem::default();
+        stub_102cc(&p, &d, &mut item, &XmlReadValue::Other);
+    }
+
+    #[test]
+    fn index_and_enum_value_paths() {
+        // IDA 0x1050c getIndexValue, 0x10528 setIndexValue (stores `-1`
+        // holes as-is), 0x1055c getEnumValue, 0x10564 setEnumValue,
+        // 0x105b0 getEnumItem, 0x10604 convertToIndex, 0x10674 setIntValue
+        // (rejects holes), 0x106b4/0x106b8 bound GetSetImpl virtuals.
+        let p = prop();
+        let d = desc();
+        assert_eq!(stub_1050c(&p, &d, &settings_with(4)), 4);
+        assert_eq!(stub_1050c(&p, &d, &settings_with(7)), -1);
+        let mut item = CacheItem::default();
+        assert!(stub_10528(&p, &d, &mut item, 1));
+        assert_eq!(item.resolution_preset, 1);
+        assert!(stub_10528(&p, &d, &mut item, 2));
+        assert_eq!(item.resolution_preset, -1);
+        assert!(!stub_10528(&p, &d, &mut item, 9));
+        assert_eq!(stub_1055c(&p, &settings_with(4)), 4);
+        assert!(stub_10564(&p, &d, &mut item, 4));
+        assert_eq!(item.resolution_preset, 4);
+        assert!(!stub_10564(&p, &d, &mut item, 7));
+        assert_eq!(stub_105b0(&p, &d, &settings_with(1)), 1);
+        assert_eq!(stub_105b0(&p, &d, &settings_with(7)), -1);
+        assert_eq!(stub_10604(&d, 4), 4);
+        assert_eq!(stub_10604(&d, 9), -1);
+        assert!(stub_10674(&p, &d, &mut item, 1));
+        assert_eq!(item.resolution_preset, 1);
+        assert!(!stub_10674(&p, &d, &mut item, 2));
+        assert!(!stub_10674(&p, &d, &mut item, 9));
+        assert!(!stub_106b4(&p));
+        assert!(!stub_106b8(&p));
     }
 }

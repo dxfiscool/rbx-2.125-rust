@@ -12,22 +12,111 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+/// Host stand-ins for IDA 0x106bc..0x10854
+/// (`PropDescriptor<CRenderSettingsItem,ResolutionPreset>` GetSetImpl +
+/// `PropDescriptor<CRenderSettingsItem,bool>`). Unlike the int family in
+/// `generated_134.rs`, the bool pair binds `CRenderSettingsItem` member
+/// functions on both sides (IDA 0x1070c), so its getter reads the item
+/// itself. Only the slots this batch touches are modelled.
+#[derive(Default)]
+pub struct ResolutionSettings {
+    pub resolution_preference: i32,
+}
+
+#[derive(Default)]
+pub struct ResolutionItem {
+    pub resolution_preset: i32,
+}
+
+#[derive(Default)]
+pub struct BoolItem {
+    pub flag: bool,
+}
+
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,ResolutionPreset>`
+/// GetSetImpl (IDA 0x106bc/0x106e8): member-pointer thunk details (the
+/// `a2-36`/`+96` adjusts, `>>1`/`&1` virtual-vs-direct dispatch) have no
+/// host effect.
+pub struct ResolutionPresetPair {
+    pub getter: Option<fn(&ResolutionSettings) -> i32>,
+    pub setter: Option<fn(&mut ResolutionItem, i32)>,
+}
+
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,bool>` (IDA 0x1070c:
+/// classDescriptor fetch 0x10734, GetSetImpl alloc + member-fn stores
+/// 0x1073a..0x10774, `TypedPropertyDescriptor<bool>` ctor 0x107b2, vtable
+/// install 0x107d0).
+pub struct BoolProp {
+    pub name: String,
+    pub category: String,
+    pub getter: Option<fn(&BoolItem) -> bool>,
+    pub setter: Option<fn(&mut BoolItem, bool)>,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+impl BoolProp {
+    /// IDA 0x1084c (disasm 0x1084c..0x1084e `MOVS R0,#0; BX LR`): a bound
+    /// getter is never read-only.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// IDA 0x10850 (disasm 0x10850..0x10852 `MOVS R0,#0; BX LR`): a bound
+    /// setter is never write-only.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
 // 0x106bc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_106bc() -> ! {
-    todo!("0x106bc RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_106bc(prop: &ResolutionPresetPair, settings: &ResolutionSettings) -> i32 {
+    // IDA 0x106bc (decompiled 0x106bc..0x106e6; disasm null-object split
+    // 0x106bc..0x106d6, `a2-36` + 96 adjust 0x106c0..0x106cc,
+    // virtual/indirect dispatch 0x106d8..0x106e6): resolves the stored
+    // `ResolutionPreset (CRenderSettings::*)() const` and calls it. A null
+    // getter faults in the image; the host panics.
+    let get = prop.getter.expect("bound getter at IDA 0xfe84");
+    get(settings)
 }
 
 // 0x106e8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_106e8() -> ! {
-    todo!("0x106e8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_106e8(prop: &ResolutionPresetPair, item: &mut ResolutionItem, value: i32) {
+    // IDA 0x106e8 (decompiled 0x106e8..0x1070a; disasm `a2-36` adjust
+    // 0x106ec..0x106f0, setter fetch 0x106f4, `>>1`/`&1` dispatch
+    // 0x106f6..0x10704, indirect call 0x10704..0x1070a): resolves the stored
+    // `void (CRenderSettingsItem::*)(ResolutionPreset)` and calls it. A null
+    // setter faults in the image; the host panics.
+    let set = prop.setter.expect("bound setter at IDA 0xfe84");
+    set(item, value);
 }
 
 // 0x1070c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_1070c() -> ! {
-    todo!("0x1070c RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_1070c(
+    name: &str,
+    category: &str,
+    getter: fn(&BoolItem) -> bool,
+    setter: fn(&mut BoolItem, bool),
+    attributes: u32,
+    permissions: u32,
+) -> BoolProp {
+    // IDA 0x1070c (decompiled 0x1070c..0x107ee; disasm classDescriptor fetch
+    // 0x10734, GetSetImpl alloc + member-fn stores 0x1073a..0x10774,
+    // `TypedPropertyDescriptor<bool>` ctor 0x107b2, vtable install
+    // 0x107d0): registers the bool get/set pair against the RenderSettings
+    // class descriptor.
+    let _ = crate::generated_134::stub_fa00();
+    BoolProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        getter: Some(getter),
+        setter: Some(setter),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x10820 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED0Ev
@@ -38,20 +127,30 @@ pub fn stub_10820() {
 
 // 0x1084c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_1084c() -> ! {
-    todo!("0x1084c RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")
+pub fn stub_1084c(prop: &BoolProp) -> bool {
+    // IDA 0x1084c (disasm 0x1084c..0x1084e `MOVS R0,#0; BX LR`): the bool
+    // member pointer is bound at 0x1070c, so never read-only.
+    prop.is_read_only()
 }
 
 // 0x10850 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_10850() -> ! {
-    todo!("0x10850 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_10850(prop: &BoolProp) -> bool {
+    // IDA 0x10850 (disasm 0x10850..0x10852 `MOVS R0,#0; BX LR`): the bool
+    // member pointer is bound at 0x1070c, so never write-only.
+    prop.is_write_only()
 }
 
 // 0x10854 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_10854() -> ! {
-    todo!("0x10854 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10854(prop: &BoolProp, item: &BoolItem) -> bool {
+    // IDA 0x10854 (decompiled 0x10854..0x10876; disasm null-object split
+    // 0x10856..0x1085c, getter/dispatch fetch 0x10860..0x1086a, indirect
+    // call 0x1086e..0x10876): resolves the stored
+    // `bool (CRenderSettingsItem::*)() const` and calls it. A null getter
+    // faults in the image; the host panics.
+    let get = prop.getter.expect("bound getter at IDA 0x1070c");
+    get(item)
 }
 
 // 0x10878 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
@@ -610,4 +709,57 @@ pub fn stub_127ac() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")]
 pub fn stub_128c0() -> ! {
     todo!("0x128c0 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")
+}
+
+#[cfg(test)]
+mod batch4_tests {
+    use super::*;
+
+    fn res_get(settings: &ResolutionSettings) -> i32 {
+        settings.resolution_preference
+    }
+
+    fn res_set(item: &mut ResolutionItem, value: i32) {
+        item.resolution_preset = value;
+    }
+
+    fn flag_get(item: &BoolItem) -> bool {
+        item.flag
+    }
+
+    fn flag_set(item: &mut BoolItem, value: bool) {
+        item.flag = value;
+    }
+
+    #[test]
+    fn resolution_pair_getset_roundtrip() {
+        // IDA 0x106bc getValue + 0x106e8 setValue: member-pointer thunk
+        // details have no host effect; the calls are the whole body.
+        let pair = ResolutionPresetPair {
+            getter: Some(res_get),
+            setter: Some(res_set),
+        };
+        let settings = ResolutionSettings {
+            resolution_preference: 4,
+        };
+        assert_eq!(stub_106bc(&pair, &settings), 4);
+        let mut item = ResolutionItem::default();
+        stub_106e8(&pair, &mut item, 4);
+        assert_eq!(item.resolution_preset, 4);
+    }
+
+    #[test]
+    fn bool_prop_getset_roundtrip() {
+        // IDA 0x1070c ctor + 0x1084c/0x10850/0x10854 virtuals.
+        let prop = stub_1070c("ShowGrid", "Rendering", flag_get, flag_set, 0, 0);
+        assert_eq!(prop.name, "ShowGrid");
+        assert_eq!(prop.category, "Rendering");
+        assert!(!stub_1084c(&prop));
+        assert!(!stub_10850(&prop));
+        let item = BoolItem { flag: true };
+        assert!(stub_10854(&prop, &item));
+        let mut target = BoolItem::default();
+        (prop.setter.expect("bound"))(&mut target, true);
+        assert!(stub_10854(&prop, &target));
+    }
 }
