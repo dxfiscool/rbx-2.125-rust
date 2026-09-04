@@ -251,7 +251,7 @@ fn perform_and_wake() {
 
 #[test]
 fn shared_ptr_glue_counts() {
-    let mut slot: Option<SharedPtr<RenderJob>> = None;
+    let mut slot: Option<SharedPtr<parking_lot::Mutex<RenderJob>>> = None;
     let job = test_job();
     let mut src = Some(g::stub_3a0d4(job));
     assert_eq!(g::stub_3dd34(src.as_ref().unwrap()), 1);
@@ -440,7 +440,8 @@ fn composition_pass_defaults_and_setters() {
     assert_eq!(pass.material_scheme, "Default");
     assert_eq!(pass.clear_depth, 0.5);
     assert_eq!(pass.material, Some(77));
-    assert_eq!(pass.material_name, "BaseWhite");
+    // IDA 0xc706e4 stores only the handle — the name is not retained.
+    assert_eq!(pass.custom_type, "");
     assert_eq!(pass.inputs[3].name, "rt0");
     assert_eq!(pass.inputs[3].mrt_index, 1);
     let pass2 = g::stub_c70234(0x6000);
@@ -457,4 +458,185 @@ fn composition_pass_defaults_and_setters() {
     let mut direct = generated_141::CompositionPass::new(0);
     generated_141::stub_c708cc(&mut direct, 0, "x", 0);
     assert_eq!(direct.inputs[0].name, "x");
+}
+
+struct FakeSupport {
+    techniques: usize,
+    compiled: std::cell::Cell<usize>,
+}
+
+impl movable::PassMaterialSupport for FakeSupport {
+    fn compile_material(&self, handle: usize) {
+        self.compiled.set(self.compiled.get() + 1);
+        let _ = handle;
+    }
+    fn supported_techniques(&self, _handle: usize) -> usize {
+        self.techniques
+    }
+}
+
+#[test]
+fn stencil_quad_custom_and_support() {
+    let mut pass = g::stub_c70234(0);
+    assert_eq!(pass.stencil_func, 1);
+    assert_eq!(pass.stencil_mask, u32::MAX);
+    assert_eq!(pass.quad_corners, [-1.0, 1.0, 1.0, -1.0]);
+    g::stub_c70a14(&mut pass, 7);
+    g::stub_c70a18(&mut pass, true);
+    g::stub_c70a20(&mut pass, 2);
+    g::stub_c70a28(&mut pass, 128);
+    g::stub_c70a30(&mut pass, 0xFF);
+    g::stub_c70a38(&mut pass, 1);
+    g::stub_c70a40(&mut pass, 2);
+    g::stub_c70a48(&mut pass, 3);
+    g::stub_c70a50(&mut pass, true);
+    g::stub_c70a58(&mut pass, true, false);
+    g::stub_c70a64(&mut pass, "custom");
+    assert_eq!(pass.clear_stencil, 7);
+    assert!(pass.stencil_check);
+    assert_eq!(pass.stencil_func, 2);
+    assert_eq!(pass.stencil_ref_value, 128);
+    assert_eq!(pass.stencil_mask, 0xFF);
+    assert_eq!(pass.stencil_fail_op, 1);
+    assert_eq!(pass.stencil_depth_fail_op, 2);
+    assert_eq!(pass.stencil_pass_op, 3);
+    assert!(pass.stencil_two_sided);
+    assert_eq!(pass.quad_far_corners, (true, false));
+    assert_eq!(pass.custom_type, "custom");
+    // Non-3 types pass without a material; type 3 needs compile + technique.
+    pass.pass_type = 4;
+    let no_mat = FakeSupport {
+        techniques: 0,
+        compiled: std::cell::Cell::new(0),
+    };
+    assert!(g::stub_c70a70(&pass, &no_mat));
+    assert_eq!(no_mat.compiled.get(), 0);
+    pass.pass_type = 3;
+    assert!(!g::stub_c70a70(&pass, &no_mat));
+    pass.material = Some(9);
+    assert!(!g::stub_c70a70(&pass, &no_mat));
+    let with_tech = FakeSupport {
+        techniques: 2,
+        compiled: std::cell::Cell::new(0),
+    };
+    assert!(g::stub_c70a70(&pass, &with_tech));
+    assert_eq!(with_tech.compiled.get(), 1);
+}
+
+#[test]
+fn target_pass_lifecycle() {
+    let mut target = g::stub_c70ad8(0x9000, None);
+    assert_eq!(target.parent, 0x9000);
+    assert_eq!(target.material_scheme, "Default");
+    assert_eq!(target.visibility_mask, u32::MAX);
+    assert_eq!(target.lod_bias, 1.0);
+    assert!(target.shadows_enabled);
+    let rs = g::stub_c70ae4(0x9000, Some("GLSL"));
+    assert_eq!(rs.material_scheme, "GLSL");
+    g::stub_c70e08(&mut target, 2);
+    g::stub_c70e0c(&mut target, "output");
+    g::stub_c70e18(&mut target, true);
+    g::stub_c70e1c(&mut target, 0xF0);
+    g::stub_c70e20(&mut target, 0.5);
+    g::stub_c70e24(&mut target, "Scheme");
+    g::stub_c70e30(&mut target, false);
+    assert_eq!(target.input_mode, 2);
+    assert_eq!(target.output_name, "output");
+    assert!(target.only_initial);
+    assert_eq!(target.visibility_mask, 0xF0);
+    assert_eq!(target.lod_bias, 0.5);
+    assert_eq!(target.material_scheme, "Scheme");
+    assert!(!target.shadows_enabled);
+    let support = FakeSupport {
+        techniques: 1,
+        compiled: std::cell::Cell::new(0),
+    };
+    // Empty passes: AND over nothing is true (IDA 0xc70f38 break).
+    assert!(g::stub_c70f2c(&target, &support));
+    let idx = g::stub_c70e38(&mut target);
+    assert_eq!(idx, 0);
+    assert_eq!(target.passes.len(), 1);
+    target.passes[0].pass_type = 4;
+    assert!(g::stub_c70f2c(&target, &support));
+    target.passes[0].pass_type = 3;
+    assert!(!g::stub_c70f2c(&target, &support));
+    g::stub_c70cb8();
+    g::stub_c70cc4(target);
+}
+
+struct FakeTechSupport {
+    inner: FakeSupport,
+    max_mrt: u16,
+    ok_formats: Vec<u32>,
+}
+
+impl movable::PassMaterialSupport for FakeTechSupport {
+    fn compile_material(&self, handle: usize) {
+        self.inner.compile_material(handle);
+    }
+    fn supported_techniques(&self, handle: usize) -> usize {
+        self.inner.supported_techniques(handle)
+    }
+}
+
+impl generated_141::TechniqueSupport for FakeTechSupport {
+    fn max_mrt_buffers(&self) -> u16 {
+        self.max_mrt
+    }
+    fn texture_format_ok(&self, format: u32, _srgb: bool) -> bool {
+        self.ok_formats.contains(&format)
+    }
+}
+
+fn tech_support(techs: usize, max_mrt: u16, formats: &[u32]) -> FakeTechSupport {
+    FakeTechSupport {
+        inner: FakeSupport {
+            techniques: techs,
+            compiled: std::cell::Cell::new(0),
+        },
+        max_mrt,
+        ok_formats: formats.to_vec(),
+    }
+}
+
+#[test]
+fn technique_lifecycle_and_support() {
+    let mut technique = g::stub_c71088(0x7000);
+    assert_eq!(technique.parent, 0x7000);
+    assert_eq!(technique.scheme_name, "");
+    assert!(technique.texture_definitions().is_empty());
+    assert!(technique.target_passes.is_empty());
+    // Ctor-created output target pass carries the technique address.
+    assert_eq!(g::stub_c71788(&technique).parent, &technique as *const _ as usize);
+    g::stub_c718d0(&mut technique, "Mask");
+    assert_eq!(technique.scheme_name, "Mask");
+    let di = g::stub_c715e0(&mut technique, "rt");
+    assert_eq!(di, 0);
+    assert_eq!(g::stub_c71688(&technique).len(), 1);
+    assert_eq!(g::stub_c71688(&technique)[0].name, "rt");
+    assert_eq!(g::stub_c71688(&technique)[0].width_factor, 1.0);
+    let ti = g::stub_c71694(&mut technique);
+    assert_eq!(ti, 0);
+    assert_eq!(technique.target_passes.len(), 1);
+    // Output pass (type 3, no material) fails; flip it non-material.
+    let support = tech_support(1, 4, &[7]);
+    assert!(!g::stub_c7178c(&technique, false, &support));
+    technique.output_target_pass.pass_type = 1;
+    technique.target_passes[0].passes.push(generated_141::CompositionPass::new(0));
+    technique.target_passes[0].passes[0].pass_type = 2;
+    assert!(g::stub_c7178c(&technique, false, &support));
+    // Format overflow fails even with valid passes.
+    technique.texture_definitions[0].format_ids = vec![7, 7, 7, 7, 7];
+    assert!(!g::stub_c7178c(&technique, false, &support));
+    technique.texture_definitions[0].format_ids = vec![7];
+    assert!(g::stub_c7178c(&technique, false, &support));
+    technique.texture_definitions[0].format_ids = vec![9];
+    assert!(!g::stub_c7178c(&technique, true, &support));
+    g::stub_c71474(&mut technique);
+    assert!(technique.texture_definitions().is_empty());
+    let technique2 = g::stub_c71094(0x7001);
+    assert_eq!(technique2.parent, 0x7001);
+    g::stub_c712f0();
+    g::stub_c712fc(technique);
+    g::stub_c71260(technique2);
 }

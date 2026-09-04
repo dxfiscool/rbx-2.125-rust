@@ -371,6 +371,155 @@ impl CompositionTargetPass {
     }
 }
 
+/// Texture support probe behind `CompositionTechnique::isSupported` (IDA
+/// `0xc717c8`..`0xc71846`): render-system MRT capacity plus per-format
+/// validation through the texture manager.
+pub trait TechniqueSupport: crate::movable::PassMaterialSupport {
+    /// Max simultaneous MRT buffers (`+816` caps word, IDA `0xc717f8`).
+    fn max_mrt_buffers(&self) -> u16;
+    /// Format validation; `srgb` selects the `isEquivalentFormat` (`a2 ==
+    /// 1`, IDA `0xc71826`) vs `isSupportedFormat` (IDA `0xc71840`) path.
+    fn texture_format_ok(&self, format: u32, srgb: bool) -> bool;
+}
+
+/// was: `Ogre::CompositionTechnique::TextureDefinition` — name at `+0`,
+/// width/height at `+12`/`+16`, size factors at `+20`/`+24`, format list at
+/// `+32` (IDA `0xc7161a`..`0xc7164e`, `0xc717de`..`0xc7180c`).
+#[doc(alias = "Ogre::CompositionTechnique::TextureDefinition")]
+#[derive(Clone, Debug)]
+pub struct TextureDefinition {
+    /// Texture name assigned at creation (IDA `0xc7164e`).
+    pub name: String,
+    /// Explicit width/height (`0` = sized by factor, IDA `0xc71626`..).
+    pub width: u32,
+    pub height: u32,
+    /// Size factors (init `1.0`, IDA `0xc7162a`..`0xc7162c`).
+    pub width_factor: f32,
+    pub height_factor: f32,
+    /// Pixel formats probed by `isSupported` (IDA `0xc71802`..`0xc71850`).
+    pub format_ids: Vec<u32>,
+}
+
+impl TextureDefinition {
+    /// `createTextureDefinition` field init (IDA `0xc7161a`..`0xc7164a`).
+    pub fn new(name: &str) -> Self {
+        Self {
+            name: name.to_string(),
+            width: 0,
+            height: 0,
+            width_factor: 1.0,
+            height_factor: 1.0,
+            format_ids: Vec::new(),
+        }
+    }
+}
+
+/// was: `Ogre::CompositionTechnique` — compositor at `+4`, texture
+/// definitions at `+8`, target passes at `+24`, output target pass at `+40`,
+/// scheme name at `+44` (IDA `0xc71094`..`0xc71188`).
+#[doc(alias = "Ogre::CompositionTechnique")]
+#[derive(Clone, Debug)]
+pub struct CompositionTechnique {
+    /// Owning `Compositor *` at `+4` (IDA `0xc710ce`).
+    pub parent: usize,
+    /// Texture definitions at `+8` (IDA `0xc71652`..`0xc7166a`).
+    pub texture_definitions: Vec<TextureDefinition>,
+    /// Target passes at `+24` (IDA `0xc717aa`..`0xc717ba`).
+    pub target_passes: Vec<CompositionTargetPass>,
+    /// Output target pass at `+40`, created by the ctor (IDA
+    /// `0xc71158`..`0xc71168`).
+    pub output_target_pass: CompositionTargetPass,
+    /// Scheme name at `+44` (IDA `0xc71120`, `0xc718da`).
+    pub scheme_name: String,
+}
+
+impl CompositionTechnique {
+    /// `CompositionTechnique::CompositionTechnique(compositor)` (IDA
+    /// `0xc71094`, via C1 at `0xc71088`): empty definition/pass lists,
+    /// blank scheme, fresh output target pass owned by `self`.
+    pub fn new(parent: usize) -> Self {
+        let mut technique = Self {
+            parent,
+            texture_definitions: Vec::new(),
+            target_passes: Vec::new(),
+            output_target_pass: CompositionTargetPass::new(0, None),
+            scheme_name: String::new(),
+        };
+        let addr = &technique as *const Self as usize;
+        technique.output_target_pass.parent = addr;
+        technique
+    }
+
+    /// `CompositionTechnique::removeAllTextureDefinitions` (IDA `0xc71474`):
+    /// destroy every definition, leave the list empty.
+    pub fn remove_all_texture_definitions(&mut self) {
+        self.texture_definitions.clear();
+    }
+
+    /// `CompositionTechnique::createTextureDefinition(name)` (IDA `0xc715e0`):
+    /// default-init a definition, assign the name, append it, return its
+    /// index.
+    pub fn create_texture_definition(&mut self, name: &str) -> usize {
+        self.texture_definitions.push(TextureDefinition::new(name));
+        self.texture_definitions.len() - 1
+    }
+
+    /// `CompositionTechnique::getTextureDefinitionIterator` (IDA `0xc71688`):
+    /// begin/end view over the definition list.
+    pub fn texture_definitions(&self) -> &[TextureDefinition] {
+        &self.texture_definitions
+    }
+
+    /// `CompositionTechnique::createTargetPass` (IDA `0xc71694`):
+    /// construct a target pass owned by `self`, append it, return its index.
+    pub fn create_target_pass(&mut self) -> usize {
+        let parent = self as *const Self as usize;
+        self.target_passes
+            .push(CompositionTargetPass::new(parent, None));
+        self.target_passes.len() - 1
+    }
+
+    /// `CompositionTechnique::getOutputTargetPass` (IDA `0xc71788`): word at
+    /// `+40`.
+    pub fn output_target_pass(&self) -> &CompositionTargetPass {
+        &self.output_target_pass
+    }
+
+    /// `CompositionTechnique::isSupported(srgb)` (IDA `0xc7178c`): the
+    /// output target pass must pass, then every target pass, then every
+    /// texture definition's format list must fit the MRT caps and validate.
+    pub fn is_supported(&self, srgb: bool, support: &dyn TechniqueSupport) -> bool {
+        if !self.output_target_pass.is_supported(support) {
+            return false; // IDA `0xc717a0`..`0xc717a6`
+        }
+        if !self
+            .target_passes
+            .iter()
+            .all(|p| p.is_supported(support))
+        {
+            return false; // IDA `0xc717aa`..`0xc717c0`
+        }
+        for def in &self.texture_definitions {
+            // IDA `0xc717de`..`0xc71800`: format count must fit the caps.
+            if (def.format_ids.len() as u32) > support.max_mrt_buffers() as u32 {
+                return false;
+            }
+            for format in &def.format_ids {
+                if !support.texture_format_ok(*format, srgb) {
+                    return false; // IDA `0xc71812`..`0xc71846`
+                }
+            }
+        }
+        true
+    }
+
+    /// `CompositionTechnique::setSchemeName` (IDA `0xc718d0`): assign the
+    /// string at `+44`.
+    pub fn set_scheme_name(&mut self, name: &str) {
+        self.scheme_name = name.to_string();
+    }
+}
+
 // 0xc708cc — __ZN4Ogre15CompositionPass8setInputEmRKSsm
 #[doc(alias = "Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")]
 // was: Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)
@@ -387,76 +536,25 @@ pub fn stub_c708cc(pass: &mut CompositionPass, id: usize, input: &str, mrt_index
 #[doc(alias = "Ogre::MaterialManager::DEFAULT_SCHEME_NAME")]
 pub const DEFAULT_SCHEME_NAME: &str = "Default";
 
-/// was: `Ogre::CompositionTargetPass` — field offsets are the IDA `(this+N)`
-/// stores in `C2` (`0xc70ae4`..`0xc70bee`).
-#[doc(alias = "Ogre::CompositionTargetPass")]
-#[derive(Clone, Debug, Default)]
-pub struct CompositionTargetPass {
-    /// +0x00 `mParent` (IDA `0xc70b0e`: `this[0] = a2`).
-    pub parent: usize,
-    /// +0x04 zeroed word (IDA `0xc70b18`: `this[1] = 0`).
-    pub field_04: u32,
-    /// +0x08 empty string (IDA `0xc70b28`: empty-rep store; the input name).
-    pub input_name: String,
-    /// +0x0C `vector<CompositionPass*> mPasses` — impl vtable for
-    /// `std::_Vector_base<Ogre::CompositionPass*, Ogre::STLAllocator...>`
-    /// installed at IDA `0xc70b1e`..`0xc70b2c`, storage zeroed at
-    /// `0xc70b3c`..`0xc70b44`. Raw handles: the binary stores bare pointers.
-    pub passes: Vec<usize>,
-    /// +0x20 visibility mask, `0xFFFFFFFF` (IDA `0xc70b46`..`0xc70b4a`).
-    pub visibility_mask: u32,
-    /// +0x24 `1.0f` (`0x3F800000` at IDA `0xc70b4c`..`0xc70b5c`).
-    pub lod_bias: f32,
-    /// +0x28 material scheme string: `DEFAULT_SCHEME_NAME`, overwritten with
-    /// the render-system name when a render system exists (IDA
-    /// `0xc70b98`..`0xc70bda`).
-    pub material_scheme: String,
-    /// +0x2C set to 1 (IDA `0xc70b9e`..`0xc70ba0`).
-    pub only_initial: bool,
-}
-
 // 0xc70ae4 — __ZN4Ogre21CompositionTargetPassC2EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
 // IDA 0xc70ae4 (C2, 168 insns): stores the parent, zeroes the flag word,
-// default-constructs the input-name string and the passes vector, sets
+// default-constructs the output-name string and the passes vector, sets
 // visibility mask `0xFFFFFFFF` and `1.0f` bias, copies
 // `MaterialManager::DEFAULT_SCHEME_NAME` into the scheme string, sets the
-// +0x2C byte, then — only if `Root::getSingleton().getRenderSystem()` is
-// non-null (`CBZ` at `0xc70bb4`) — reassigns the scheme from the render
-// system's name virtual (`+0x170` slot call at `0xc70bca`..`0xc70bd0`,
-// `std::string::assign` at `0xc70bda`). Remainder is SjLj landing pads.
+// +44 shadows byte, then — only if `Root::getSingleton().getRenderSystem()`
+// is non-null — reassigns the scheme from the render system's name
+// (`0xc70ba8`..`0xc70bda`). Remainder is SjLj landing pads.
 pub fn stub_c70ae4(parent: usize, render_system_name: Option<&str>) -> CompositionTargetPass {
-    let mut target = CompositionTargetPass {
-        // IDA 0xc70b0e: `*this = a2`.
-        parent,
-        // IDA 0xc70b18: `*(this+4) = 0`.
-        field_04: 0,
-        // IDA 0xc70b28: empty string.
-        input_name: String::new(),
-        // IDA 0xc70b1e..0xc70b44: empty passes vector.
-        passes: Vec::new(),
-        // IDA 0xc70b46..0xc70b4a: `*(this+0x20) = 0xFFFFFFFF`.
-        visibility_mask: 0xFFFF_FFFF,
-        // IDA 0xc70b4c..0xc70b5c: `*(this+0x24) = 1.0f`.
-        lod_bias: 1.0,
-        // IDA 0xc70b8a..0xc70b98: scheme = DEFAULT_SCHEME_NAME.
-        material_scheme: DEFAULT_SCHEME_NAME.to_owned(),
-        // IDA 0xc70b9e..0xc70ba0: `*(this+0x2C) = 1`.
-        only_initial: true,
-    };
-    // IDA 0xc70ba8..0xc70bda: conditional render-system scheme override.
-    if let Some(name) = render_system_name {
-        target.material_scheme = name.to_owned();
-    }
-    target
+    CompositionTargetPass::new(parent, render_system_name)
 }
 
 // 0xc70ad8 — __ZN4Ogre21CompositionTargetPassC1EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
-// IDA 0xc70ad8: complete-object ctor veneer — `PUSH; BL C2 (0xc70ae4); POP`
-// (decompile: `return CompositionTargetPass(this, a2)`). Forwards to C2.
+// IDA 0xc70ad8: complete-object ctor veneer — `PUSH; BL C2 (0xc70ae4); POP`.
+// Forwards to C2.
 pub fn stub_c70ad8(parent: usize, render_system_name: Option<&str>) -> CompositionTargetPass {
     // IDA 0xc70adc: tail-branch to C2.
     stub_c70ae4(parent, render_system_name)

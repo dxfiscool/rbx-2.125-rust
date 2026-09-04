@@ -670,176 +670,206 @@ pub fn stub_c70a10(pass: &mut crate::generated_141::CompositionPass, depth: f32)
 // 0xc70a14 — __ZN4Ogre15CompositionPass15setClearStencilEj
 #[doc(alias = "Ogre::CompositionPass::setClearStencil(unsigned int)")]
 // was: Ogre::CompositionPass::setClearStencil(unsigned int)
-// IDA 0xc70a14: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a14() {
+// IDA 0xc70a14: STR word at this + 60.
+pub fn stub_c70a14(pass: &mut crate::generated_141::CompositionPass, stencil: u32) {
+    pass.set_clear_stencil(stencil);
 }
 
 // 0xc70a18 — __ZN4Ogre15CompositionPass15setStencilCheckEb
 #[doc(alias = "Ogre::CompositionPass::setStencilCheck(bool)")]
 // was: Ogre::CompositionPass::setStencilCheck(bool)
-// IDA 0xc70a18: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a18() {
+// IDA 0xc70a18: STRB byte at this + 192.
+pub fn stub_c70a18(pass: &mut crate::generated_141::CompositionPass, check: bool) {
+    pass.set_stencil_check(check);
 }
 
 // 0xc70a20 — __ZN4Ogre15CompositionPass14setStencilFuncENS_15CompareFunctionE
 #[doc(alias = "Ogre::CompositionPass::setStencilFunc(Ogre::CompareFunction)")]
 // was: Ogre::CompositionPass::setStencilFunc(Ogre::CompareFunction)
-// IDA 0xc70a20: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a20() {
+// IDA 0xc70a20: STR word at this + 196.
+pub fn stub_c70a20(pass: &mut crate::generated_141::CompositionPass, func: u32) {
+    pass.set_stencil_func(func);
 }
 
 // 0xc70a28 — __ZN4Ogre15CompositionPass18setStencilRefValueEj
 #[doc(alias = "Ogre::CompositionPass::setStencilRefValue(unsigned int)")]
 // was: Ogre::CompositionPass::setStencilRefValue(unsigned int)
-// IDA 0xc70a28: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a28() {
+// IDA 0xc70a28: STR word at this + 200.
+pub fn stub_c70a28(pass: &mut crate::generated_141::CompositionPass, value: u32) {
+    pass.set_stencil_ref_value(value);
 }
 
 // 0xc70a30 — __ZN4Ogre15CompositionPass14setStencilMaskEj
 #[doc(alias = "Ogre::CompositionPass::setStencilMask(unsigned int)")]
 // was: Ogre::CompositionPass::setStencilMask(unsigned int)
-// IDA 0xc70a30: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a30() {
+// IDA 0xc70a30: STR word at this + 204.
+pub fn stub_c70a30(pass: &mut crate::generated_141::CompositionPass, mask: u32) {
+    pass.set_stencil_mask(mask);
 }
 
 // 0xc70a38 — __ZN4Ogre15CompositionPass16setStencilFailOpENS_16StencilOperationE
 #[doc(alias = "Ogre::CompositionPass::setStencilFailOp(Ogre::StencilOperation)")]
 // was: Ogre::CompositionPass::setStencilFailOp(Ogre::StencilOperation)
-// IDA 0xc70a38: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a38() {
+// IDA 0xc70a38: STR word at this + 208.
+pub fn stub_c70a38(pass: &mut crate::generated_141::CompositionPass, op: u32) {
+    pass.set_stencil_fail_op(op);
 }
 
 // 0xc70a40 — __ZN4Ogre15CompositionPass21setStencilDepthFailOpENS_16StencilOperationE
 #[doc(alias = "Ogre::CompositionPass::setStencilDepthFailOp(Ogre::StencilOperation)")]
 // was: Ogre::CompositionPass::setStencilDepthFailOp(Ogre::StencilOperation)
-// IDA 0xc70a40: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a40() {
+// IDA 0xc70a40: STR word at this + 212.
+pub fn stub_c70a40(pass: &mut crate::generated_141::CompositionPass, op: u32) {
+    pass.set_stencil_depth_fail_op(op);
 }
 
 // 0xc70a48 — __ZN4Ogre15CompositionPass16setStencilPassOpENS_16StencilOperationE
 #[doc(alias = "Ogre::CompositionPass::setStencilPassOp(Ogre::StencilOperation)")]
 // was: Ogre::CompositionPass::setStencilPassOp(Ogre::StencilOperation)
-// IDA 0xc70a48: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a48() {
+// IDA 0xc70a48: STR word at this + 216.
+pub fn stub_c70a48(pass: &mut crate::generated_141::CompositionPass, op: u32) {
+    pass.set_stencil_pass_op(op);
 }
 
 // 0xc70a50 — __ZN4Ogre15CompositionPass27setStencilTwoSidedOperationEb
 #[doc(alias = "Ogre::CompositionPass::setStencilTwoSidedOperation(bool)")]
 // was: Ogre::CompositionPass::setStencilTwoSidedOperation(bool)
-// IDA 0xc70a50: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a50() {
+// IDA 0xc70a50: STRB byte at this + 220.
+pub fn stub_c70a50(pass: &mut crate::generated_141::CompositionPass, two_sided: bool) {
+    pass.set_stencil_two_sided(two_sided);
 }
 
 // 0xc70a58 — __ZN4Ogre15CompositionPass17setQuadFarCornersEbb
 #[doc(alias = "Ogre::CompositionPass::setQuadFarCorners(bool,bool)")]
 // was: Ogre::CompositionPass::setQuadFarCorners(bool,bool)
-// IDA 0xc70a58: 3 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a58() {
+// IDA 0xc70a58: STRB bytes at this + 240/+241.
+pub fn stub_c70a58(pass: &mut crate::generated_141::CompositionPass, a: bool, b: bool) {
+    pass.set_quad_far_corners(a, b);
 }
 
 // 0xc70a64 — __ZN4Ogre15CompositionPass13setCustomTypeERKSs
 #[doc(alias = "Ogre::CompositionPass::setCustomType(std::string const&)")]
 // was: Ogre::CompositionPass::setCustomType(std::string const&)
-// IDA 0xc70a64: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a64() {
+// IDA 0xc70a64: std::string::assign at this + 244.
+pub fn stub_c70a64(pass: &mut crate::generated_141::CompositionPass, custom_type: &str) {
+    pass.set_custom_type(custom_type);
 }
 
 // 0xc70a70 — __ZN4Ogre15CompositionPass12_isSupportedEv
 #[doc(alias = "Ogre::CompositionPass::_isSupported(void)")]
 // was: Ogre::CompositionPass::_isSupported(void)
-// IDA 0xc70a70: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70a70() {
+// IDA 0xc70a70: type != 3 needs no material and passes; type 3 compiles the material and requires a supported technique (null material fails).
+pub fn stub_c70a70(
+    pass: &crate::generated_141::CompositionPass,
+    support: &dyn crate::movable::PassMaterialSupport,
+) -> bool {
+    pass.is_supported(support)
 }
 
 // 0xc70ad8 — __ZN4Ogre21CompositionTargetPassC1EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
-// IDA 0xc70ad8: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70ad8() {
+// IDA 0xc70ad8: C1 tail-calls C2 — the full target-pass init below.
+pub fn stub_c70ad8(parent: usize, render_system_scheme: Option<&str>) -> crate::generated_141::CompositionTargetPass {
+    crate::generated_141::stub_c70ad8(parent, render_system_scheme)
 }
 
 // 0xc70ae4 — __ZN4Ogre21CompositionTargetPassC2EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
-// IDA 0xc70ae4: 168 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70ae4() {
+// IDA 0xc70ae4: technique at +0, input mode 0, blank output, visibility all-bits, lod bias 1.0, scheme DEFAULT (render-system override), shadows on.
+pub fn stub_c70ae4(parent: usize, render_system_scheme: Option<&str>) -> crate::generated_141::CompositionTargetPass {
+    crate::generated_141::stub_c70ae4(parent, render_system_scheme)
 }
 
 // 0xc70cb8 — __ZN4Ogre21CompositionTargetPassD1Ev
 #[doc(alias = "Ogre::CompositionTargetPass::~CompositionTargetPass()")]
 // was: Ogre::CompositionTargetPass::~CompositionTargetPass()
-// IDA 0xc70cb8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0xc70cb8: D1 tail-calls D2 — member teardown without freeing; Rust frees at drop, no manual state.
 pub fn stub_c70cb8() {
 }
 
 // 0xc70cc4 — __ZN4Ogre21CompositionTargetPassD2Ev
 #[doc(alias = "Ogre::CompositionTargetPass::~CompositionTargetPass()")]
 // was: Ogre::CompositionTargetPass::~CompositionTargetPass()
-// IDA 0xc70cc4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c70cc4() {
+// IDA 0xc70cc4: D2 destroys the pass list, strings and output name — ownership ends here.
+pub fn stub_c70cc4(target: crate::generated_141::CompositionTargetPass) {
+    drop(target);
 }
 
 // 0xc70e08 — __ZN4Ogre21CompositionTargetPass12setInputModeENS0_9InputModeE
 #[doc(alias = "Ogre::CompositionTargetPass::setInputMode(Ogre::CompositionTargetPass::InputMode)")]
 // was: Ogre::CompositionTargetPass::setInputMode(Ogre::CompositionTargetPass::InputMode)
-// IDA 0xc70e08: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e08() {
+// IDA 0xc70e08: STR word at this + 4.
+pub fn stub_c70e08(target: &mut crate::generated_141::CompositionTargetPass, mode: u32) {
+    target.set_input_mode(mode);
 }
 
 // 0xc70e0c — __ZN4Ogre21CompositionTargetPass13setOutputNameERKSs
 #[doc(alias = "Ogre::CompositionTargetPass::setOutputName(std::string const&)")]
 // was: Ogre::CompositionTargetPass::setOutputName(std::string const&)
-// IDA 0xc70e0c: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e0c() {
+// IDA 0xc70e0c: std::string::assign at this + 8.
+pub fn stub_c70e0c(target: &mut crate::generated_141::CompositionTargetPass, name: &str) {
+    target.set_output_name(name);
 }
 
 // 0xc70e18 — __ZN4Ogre21CompositionTargetPass14setOnlyInitialEb
 #[doc(alias = "Ogre::CompositionTargetPass::setOnlyInitial(bool)")]
 // was: Ogre::CompositionTargetPass::setOnlyInitial(bool)
-// IDA 0xc70e18: 2 insns (STRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e18() {
+// IDA 0xc70e18: STRB byte at this + 28.
+pub fn stub_c70e18(target: &mut crate::generated_141::CompositionTargetPass, only: bool) {
+    target.set_only_initial(only);
 }
 
 // 0xc70e1c — __ZN4Ogre21CompositionTargetPass17setVisibilityMaskEj
 #[doc(alias = "Ogre::CompositionTargetPass::setVisibilityMask(unsigned int)")]
 // was: Ogre::CompositionTargetPass::setVisibilityMask(unsigned int)
-// IDA 0xc70e1c: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e1c() {
+// IDA 0xc70e1c: STR word at this + 32.
+pub fn stub_c70e1c(target: &mut crate::generated_141::CompositionTargetPass, mask: u32) {
+    target.set_visibility_mask(mask);
 }
 
 // 0xc70e20 — __ZN4Ogre21CompositionTargetPass10setLodBiasEf
 #[doc(alias = "Ogre::CompositionTargetPass::setLodBias(float)")]
 // was: Ogre::CompositionTargetPass::setLodBias(float)
-// IDA 0xc70e20: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e20() {
+// IDA 0xc70e20: STR float at this + 36.
+pub fn stub_c70e20(target: &mut crate::generated_141::CompositionTargetPass, bias: f32) {
+    target.set_lod_bias(bias);
 }
 
 // 0xc70e24 — __ZN4Ogre21CompositionTargetPass17setMaterialSchemeERKSs
 #[doc(alias = "Ogre::CompositionTargetPass::setMaterialScheme(std::string const&)")]
 // was: Ogre::CompositionTargetPass::setMaterialScheme(std::string const&)
-// IDA 0xc70e24: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e24() {
+// IDA 0xc70e24: std::string::assign at this + 40.
+pub fn stub_c70e24(target: &mut crate::generated_141::CompositionTargetPass, scheme: &str) {
+    target.set_material_scheme(scheme);
 }
 
 // 0xc70e30 — __ZN4Ogre21CompositionTargetPass17setShadowsEnabledEb
 #[doc(alias = "Ogre::CompositionTargetPass::setShadowsEnabled(bool)")]
 // was: Ogre::CompositionTargetPass::setShadowsEnabled(bool)
-// IDA 0xc70e30: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e30() {
+// IDA 0xc70e30: STRB byte at this + 44.
+pub fn stub_c70e30(target: &mut crate::generated_141::CompositionTargetPass, enabled: bool) {
+    target.set_shadows_enabled(enabled);
 }
 
 // 0xc70e38 — __ZN4Ogre21CompositionTargetPass10createPassEv
 #[doc(alias = "Ogre::CompositionTargetPass::createPass(void)")]
 // was: Ogre::CompositionTargetPass::createPass(void)
-// IDA 0xc70e38: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70e38() {
+// IDA 0xc70e38: construct a CompositionPass owned by the target, append it, return its index.
+pub fn stub_c70e38(target: &mut crate::generated_141::CompositionTargetPass) -> usize {
+    target.create_pass()
 }
 
 // 0xc70f2c — __ZN4Ogre21CompositionTargetPass12_isSupportedEv
 #[doc(alias = "Ogre::CompositionTargetPass::_isSupported(void)")]
 // was: Ogre::CompositionTargetPass::_isSupported(void)
-// IDA 0xc70f2c: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70f2c() {
+// IDA 0xc70f2c: logical AND over the passes; empty passes yield true.
+pub fn stub_c70f2c(
+    target: &crate::generated_141::CompositionTargetPass,
+    support: &dyn crate::movable::PassMaterialSupport,
+) -> bool {
+    target.is_supported(support)
 }
 
 // 0xc70f4c — __ZNSt6vectorIPN4Ogre15CompositionPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
@@ -872,85 +902,100 @@ pub fn stub_c71048() {
 // 0xc71088 — __ZN4Ogre20CompositionTechniqueC1EPNS_10CompositorE
 #[doc(alias = "Ogre::CompositionTechnique::CompositionTechnique(Ogre::Compositor *)")]
 // was: Ogre::CompositionTechnique::CompositionTechnique(Ogre::Compositor *)
-// IDA 0xc71088: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71088() {
+// IDA 0xc71088: C1 tail-calls C2 — the full technique init below.
+pub fn stub_c71088(parent: usize) -> crate::generated_141::CompositionTechnique {
+    crate::generated_141::CompositionTechnique::new(parent)
 }
 
 // 0xc71094 — __ZN4Ogre20CompositionTechniqueC2EPNS_10CompositorE
 #[doc(alias = "Ogre::CompositionTechnique::CompositionTechnique(Ogre::Compositor *)")]
 // was: Ogre::CompositionTechnique::CompositionTechnique(Ogre::Compositor *)
-// IDA 0xc71094: 168 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71094() {
+// IDA 0xc71094: empty definition/pass lists, blank scheme, fresh output target pass owned by self.
+pub fn stub_c71094(parent: usize) -> crate::generated_141::CompositionTechnique {
+    crate::generated_141::CompositionTechnique::new(parent)
 }
 
 // 0xc71260 — __ZN4Ogre20CompositionTechniqueD0Ev
 #[doc(alias = "Ogre::CompositionTechnique::~CompositionTechnique()")]
 // was: Ogre::CompositionTechnique::~CompositionTechnique()
-// IDA 0xc71260: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c71260() {
+// IDA 0xc71260: D0 runs D2 then frees the 0x38-byte block — ownership ends here.
+pub fn stub_c71260(technique: crate::generated_141::CompositionTechnique) {
+    drop(technique);
 }
 
 // 0xc712f0 — __ZN4Ogre20CompositionTechniqueD1Ev
 #[doc(alias = "Ogre::CompositionTechnique::~CompositionTechnique()")]
 // was: Ogre::CompositionTechnique::~CompositionTechnique()
-// IDA 0xc712f0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0xc712f0: D1 tail-calls D2 — member teardown without freeing; Rust frees at drop, no manual state.
 pub fn stub_c712f0() {
 }
 
 // 0xc712fc — __ZN4Ogre20CompositionTechniqueD2Ev
 #[doc(alias = "Ogre::CompositionTechnique::~CompositionTechnique()")]
 // was: Ogre::CompositionTechnique::~CompositionTechnique()
-// IDA 0xc712fc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_c712fc() {
+// IDA 0xc712fc: D2 destroys the texture definitions, target passes and output pass — ownership ends here.
+pub fn stub_c712fc(technique: crate::generated_141::CompositionTechnique) {
+    drop(technique);
 }
 
 // 0xc71474 — __ZN4Ogre20CompositionTechnique27removeAllTextureDefinitionsEv
 #[doc(alias = "Ogre::CompositionTechnique::removeAllTextureDefinitions(void)")]
 // was: Ogre::CompositionTechnique::removeAllTextureDefinitions(void)
-// IDA 0xc71474: 131 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71474() {
+// IDA 0xc71474: destroy every texture definition, leave the list empty.
+pub fn stub_c71474(technique: &mut crate::generated_141::CompositionTechnique) {
+    technique.remove_all_texture_definitions();
 }
 
 // 0xc715e0 — __ZN4Ogre20CompositionTechnique23createTextureDefinitionERKSs
 #[doc(alias = "Ogre::CompositionTechnique::createTextureDefinition(std::string const&)")]
 // was: Ogre::CompositionTechnique::createTextureDefinition(std::string const&)
-// IDA 0xc715e0: 63 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c715e0() {
+// IDA 0xc715e0: default-init a definition, assign the name, append it, return its index.
+pub fn stub_c715e0(technique: &mut crate::generated_141::CompositionTechnique, name: &str) -> usize {
+    technique.create_texture_definition(name)
 }
 
 // 0xc71688 — __ZN4Ogre20CompositionTechnique28getTextureDefinitionIteratorEv
 #[doc(alias = "Ogre::CompositionTechnique::getTextureDefinitionIterator(void)")]
 // was: Ogre::CompositionTechnique::getTextureDefinitionIterator(void)
-// IDA 0xc71688: 6 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71688() {
+// IDA 0xc71688: begin/end view over the definition list (words at +12/+16).
+pub fn stub_c71688(technique: &crate::generated_141::CompositionTechnique) -> &[crate::generated_141::TextureDefinition] {
+    technique.texture_definitions()
 }
 
 // 0xc71694 — __ZN4Ogre20CompositionTechnique16createTargetPassEv
 #[doc(alias = "Ogre::CompositionTechnique::createTargetPass(void)")]
 // was: Ogre::CompositionTechnique::createTargetPass(void)
-// IDA 0xc71694: 91 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71694() {
+// IDA 0xc71694: construct a target pass owned by the technique, append it, return its index.
+pub fn stub_c71694(technique: &mut crate::generated_141::CompositionTechnique) -> usize {
+    technique.create_target_pass()
 }
 
 // 0xc71788 — __ZN4Ogre20CompositionTechnique19getOutputTargetPassEv
 #[doc(alias = "Ogre::CompositionTechnique::getOutputTargetPass(void)")]
 // was: Ogre::CompositionTechnique::getOutputTargetPass(void)
-// IDA 0xc71788: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c71788() {
+// IDA 0xc71788: return the word at +40 — the ctor-created output target pass.
+pub fn stub_c71788(technique: &crate::generated_141::CompositionTechnique) -> &crate::generated_141::CompositionTargetPass {
+    technique.output_target_pass()
 }
 
 // 0xc7178c — __ZN4Ogre20CompositionTechnique11isSupportedEb
 #[doc(alias = "Ogre::CompositionTechnique::isSupported(bool)")]
 // was: Ogre::CompositionTechnique::isSupported(bool)
-// IDA 0xc7178c: 119 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c7178c() {
+// IDA 0xc7178c: output pass, then every target pass, then every texture definition's formats must fit the MRT caps and validate.
+pub fn stub_c7178c(
+    technique: &crate::generated_141::CompositionTechnique,
+    srgb: bool,
+    support: &dyn crate::generated_141::TechniqueSupport,
+) -> bool {
+    technique.is_supported(srgb, support)
 }
 
 // 0xc718d0 — __ZN4Ogre20CompositionTechnique13setSchemeNameERKSs
 #[doc(alias = "Ogre::CompositionTechnique::setSchemeName(std::string const&)")]
 // was: Ogre::CompositionTechnique::setSchemeName(std::string const&)
-// IDA 0xc718d0: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c718d0() {
+// IDA 0xc718d0: std::string::assign at this + 44.
+pub fn stub_c718d0(technique: &mut crate::generated_141::CompositionTechnique, name: &str) {
+    technique.set_scheme_name(name);
 }
 
 // 0xc718dc — __ZNSt6vectorIPN4Ogre21CompositionTargetPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
@@ -5402,7 +5447,7 @@ pub fn stub_37378(
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
 // IDA 0x39d7c: *a1 = 0, a1[1] = 0, release the count — Option::None drops the Arc.
-pub fn stub_39d7c(slot: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>) {
+pub fn stub_39d7c(slot: &mut Option<SharedPtr<parking_lot::Mutex<crate::roblox_view::RenderJob>>>) {
     crate::roblox_view::shared_ptr_render_job_reset(slot);
 }
 
@@ -5411,8 +5456,8 @@ pub fn stub_39d7c(slot: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>) {
 // was: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
 // IDA 0x3a030: steal the source pair into dst, release the previous count — Option::take.
 pub fn stub_3a030(
-    dst: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>,
-    src: &mut Option<SharedPtr<crate::roblox_view::RenderJob>>,
+    dst: &mut Option<SharedPtr<parking_lot::Mutex<crate::roblox_view::RenderJob>>>,
+    src: &mut Option<SharedPtr<parking_lot::Mutex<crate::roblox_view::RenderJob>>>,
 ) {
     crate::roblox_view::shared_ptr_render_job_move_assign(dst, src);
 }
@@ -5422,7 +5467,7 @@ pub fn stub_3a030(
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
 // IDA 0x3a0d4: store ptr, build shared_count, _internal_accept_owner — Arc::new.
-pub fn stub_3a0d4(job: crate::roblox_view::RenderJob) -> SharedPtr<crate::roblox_view::RenderJob> {
+pub fn stub_3a0d4(job: crate::roblox_view::RenderJob) -> SharedPtr<parking_lot::Mutex<crate::roblox_view::RenderJob>> {
     crate::roblox_view::shared_ptr_render_job_from_raw(job)
 }
 
@@ -5438,7 +5483,7 @@ pub fn stub_3dc60() {
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 // was: boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)
 // IDA 0x3dd34: shared_count ctor from a raw pointer — allocates the control block; the Arc strong count is the observable.
-pub fn stub_3dd34(job: &SharedPtr<crate::roblox_view::RenderJob>) -> usize {
+pub fn stub_3dd34(job: &SharedPtr<parking_lot::Mutex<crate::roblox_view::RenderJob>>) -> usize {
     SharedPtr::strong_count(job)
 }
 

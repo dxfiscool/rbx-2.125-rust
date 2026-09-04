@@ -8,8 +8,9 @@
 //! to marshal render callbacks onto the `FunctionMarshaller`.
 //!
 //! Boost mapping (AGENTS.md §4, no boost crate):
-//! `shared_ptr<RenderJob>` → `Option<SharedPtr<RenderJob>>` (`reset` clears,
-//! move-assign takes, raw-pointer ctor wraps in `Arc`);
+//! `shared_ptr<RenderJob>` → `Option<SharedPtr<Mutex<RenderJob>>>` (`reset`
+//! clears, move-assign takes, raw-pointer ctor wraps in `Arc`; the `Mutex`
+//! covers mutation through the shared slot, IDA `0x370d8`, `0x3721a`);
 //! `sp_counted_impl_p::dispose` → return the stored deleter target (null in
 //! practice); `get_deleter`/`get_untyped_deleter` → `None` (IDA `0x3de40`
 //! /`0x3de44` return 0); `enable_shared_from_this::_internal_accept_owner`
@@ -21,7 +22,7 @@
 use rbx_core::{SharedPtr, WeakPtr};
 
 // ---------------------------------------------------------------------------
-// Layout constants (word = 4 bytes, IDA `this + N`anhors)
+// Layout constants (word = 4 bytes, IDA `this + N` anchors)
 // ---------------------------------------------------------------------------
 
 /// `__ZThn480_*`: the `RBX::TaskScheduler::Job` base sits 480 bytes past the
@@ -126,6 +127,7 @@ impl RenderJob {
     pub fn new(
         view: usize,
         marshaller: usize,
+        datamodel: &SharedPtr<rbx_datamodel::data_model::DataModel>,
     ) -> Self {
         Self {
             datamodel: WeakPtr::new(),
@@ -474,7 +476,9 @@ pub struct RobloxView {
     pub game: usize,
     pub marshaller: usize,
     pub view_update_job: Option<SharedPtr<ViewUpdateJob>>,
-    pub render_job: Option<SharedPtr<RenderJob>>,
+    /// `var6`: shared + mutable like `shared_ptr<RenderJob>` (the stop
+    /// paths mutate through the slot, IDA `0x370d8`, `0x3721a`).
+    pub render_job: Option<SharedPtr<parking_lot::Mutex<RenderJob>>>,
 }
 
 impl RobloxView {
@@ -501,8 +505,8 @@ impl RobloxView {
         sink: &mut Vec<SchedulerOp>,
     ) {
         if cleanup_in_background {
-            if let Some(job) = self.render_job.as_deref_mut() {
-                job.event_signaled = true; // `CEvent::Set(+508)`
+            if let Some(job) = self.render_job.as_ref() {
+                job.lock().event_signaled = true; // `CEvent::Set(+508)`
                 sink.push(SchedulerOp::RemoveRenderJob); // `removeBlocking`
             }
             if self.view_update_job.is_some() {
@@ -513,9 +517,9 @@ impl RobloxView {
             self.view_update_job = None; // IDA `0x37268`
             return;
         }
-        if let Some(job) = self.render_job.as_deref_mut() {
-            job.event_signaled = true; // `CEvent::Set(+508)`, IDA `0x37212`
-            job.stop_requested = true; // word 158 = 1, IDA `0x3721a`
+        if let Some(job) = self.render_job.as_ref() {
+            job.lock().event_signaled = true; // `CEvent::Set(+508)`, IDA `0x37212`
+            job.lock().stop_requested = true; // word 158 = 1, IDA `0x3721a`
             self.render_job = None; // `shared_ptr::reset`, IDA `0x37220`
         }
         if self.view_update_job.is_some() {
@@ -543,7 +547,7 @@ impl RobloxView {
         self.view_update_job = Some(update);
         let mut job = RenderJob::new(self.view, self.marshaller, datamodel);
         job.set_datamodel_live(true);
-        self.render_job = Some(SharedPtr::new(job));
+        self.render_job = Some(SharedPtr::new(parking_lot::Mutex::new(job)));
         sink.push(SchedulerOp::AddRenderJob); // `TaskScheduler::add`, IDA `0x374ac`
         sink.push(SchedulerOp::AddViewUpdateJob); // IDA `0x374e4`
     }
@@ -637,7 +641,7 @@ pub fn manage_perform_bind(
 /// Shared ownership reset for `shared_ptr<RenderJob>` (IDA `0x39d7c`:
 /// clear the pointer, release the count).
 #[inline]
-pub fn shared_ptr_render_job_reset(slot: &mut Option<SharedPtr<RenderJob>>) {
+pub fn shared_ptr_render_job_reset(slot: &mut Option<SharedPtr<parking_lot::Mutex<RenderJob>>>) {
     *slot = None;
 }
 
@@ -645,8 +649,8 @@ pub fn shared_ptr_render_job_reset(slot: &mut Option<SharedPtr<RenderJob>>) {
 /// source pair, release the previous count).
 #[inline]
 pub fn shared_ptr_render_job_move_assign(
-    dst: &mut Option<SharedPtr<RenderJob>>,
-    src: &mut Option<SharedPtr<RenderJob>>,
+    dst: &mut Option<SharedPtr<parking_lot::Mutex<RenderJob>>>,
+    src: &mut Option<SharedPtr<parking_lot::Mutex<RenderJob>>>,
 ) {
     *dst = src.take();
 }
@@ -654,8 +658,10 @@ pub fn shared_ptr_render_job_move_assign(
 /// Owning `shared_ptr<RenderJob>` construction from a raw job pointer
 /// (IDA `0x3a0d4`): wraps the allocation and accepts the weak owner.
 #[inline]
-pub fn shared_ptr_render_job_from_raw(job: RenderJob) -> SharedPtr<RenderJob> {
-    SharedPtr::new(job)
+pub fn shared_ptr_render_job_from_raw(
+    job: RenderJob,
+) -> SharedPtr<parking_lot::Mutex<RenderJob>> {
+    SharedPtr::new(parking_lot::Mutex::new(job))
 }
 
 /// `sp_counted_impl_p<RenderJob>::dispose` (IDA `0x3de30`): invoke the

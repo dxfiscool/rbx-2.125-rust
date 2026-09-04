@@ -361,6 +361,7 @@ impl Entity {
             line: 324,
             source: "Entity::getSubEntity".to_string(),
             message: "Index out of bounds.".to_string(),
+            ..Default::default()
         })
     }
 
