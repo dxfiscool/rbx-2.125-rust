@@ -836,6 +836,13 @@ static SEGUE_AFTER_LOAD: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
 static SEGUE_REQUESTS: parking_lot::Mutex<Vec<(String, String)>> =
     parking_lot::Mutex::new(Vec::new());
+/// Home image initial-X capture behind segue/alert completions (IDA
+/// 0x1fa58 in `generated_bg_5`, 0x1c608 below). The presentation-layer
+/// frame queries collapse into plain values at the call sites.
+pub(crate) fn set_home_image_initial_x(foreground_x: f32, background_x: f32) {
+    *FOREGROUND_INITIAL_X.lock() = foreground_x;
+    *BACKGROUND_INITIAL_X.lock() = background_x;
+}
 static LAST_ROBLOX_ALERT: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
 static LOCAL_LAUNCHES: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
 static LAST_LOCAL_LAUNCH: parking_lot::Mutex<(i32, String)> =
@@ -1036,8 +1043,7 @@ pub fn stub_0x1c608(
     // presentation-layer frames, defaulting each to 0 when the layer is nil
     // (0x1c650-0x1c712). Layer queries collapse into parameters.
     if presenting && !view_dismissed {
-        *FOREGROUND_INITIAL_X.lock() = foreground_x.unwrap_or(0.0);
-        *BACKGROUND_INITIAL_X.lock() = background_x.unwrap_or(0.0);
+        set_home_image_initial_x(foreground_x.unwrap_or(0.0), background_x.unwrap_or(0.0));
     }
     DISMISS_CALLS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }

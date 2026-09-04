@@ -39,6 +39,15 @@ pub(crate) fn set_login_scene_alpha(bits: u32) {
     LOGIN_BG_COPY_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
     LOGIN_FG_COPY_ALPHA_BITS.store(bits, std::sync::atomic::Ordering::SeqCst);
 }
+pub(crate) static LOGIN_HOME_INSTANTIATIONS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_HOME_PRESENTATIONS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_BUTTON_ALPHA_BITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0x3f800000);
+pub(crate) static LOGIN_SEGUE_URL: parking_lot::Mutex<String> = parking_lot::Mutex::new(String::new());
+pub(crate) static LOGIN_SEGUE_PRELOADED: parking_lot::Mutex<String> =
+    parking_lot::Mutex::new(String::new());
 
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
@@ -254,107 +263,186 @@ pub fn stub_0x1f854(animated: bool) {
 
 // 0x1f8b0 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke")]
-pub fn stub_0x1f8b0() -> ! {
-    todo!("0x1f8b0 ___49-[LoginViewController segueToHomeViewController:]_block_invoke")
+pub fn stub_0x1f8b0(animated: bool, has_memory_warning: bool, fg_x: Option<f32>, bg_x: Option<f32>) {
+    // IDA 0x1f8b0: the segue block instantiates the `HomeViewController`
+    // from the main storyboard (0x1f8b0-0x1f922, no target here), flags
+    // it to segue after load when animated (0x1f924-0x1f93c,
+    // stub_0x1d238), and runs the 0.3s animation with the logo fade
+    // (0x1f93e-0x1f9d2, stub_0x1fa18) and the present-home completion
+    // (stub_0x1fa58). The animated byte crosses as a parameter with the
+    // completion's layer queries; both hops collapse to direct calls.
+    LOGIN_HOME_INSTANTIATIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if animated {
+        crate::generated_bg_3::stub_0x1d238();
+    }
+    stub_0x1fa18();
+    stub_0x1fa58(animated, has_memory_warning, fg_x, bg_x);
 }
 
 // 0x1fa18 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2")]
-pub fn stub_0x1fa18() -> ! {
-    todo!("0x1fa18 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2")
+pub fn stub_0x1fa18() {
+    // IDA 0x1fa18: the segue fade-out zeroes the logo alpha
+    // (0x1fa18-0x1fa3e).
+    crate::generated_bg_4::LOGIN_LOGO_ALPHA_BITS.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x1fa44 — ___copy_helper_block_339
 #[doc(alias = "___copy_helper_block_339")]
-pub fn stub_0x1fa44() -> ! {
-    todo!("0x1fa44 ___copy_helper_block_339")
+pub fn stub_0x1fa44(_dst: usize, _src: usize) {
+    // IDA 0x1fa44: `__copy_helper_block_339` — one `_Block_object_assign`
+    // retain (0x1fa44-0x1fa4a, same shape as stub_0x18094). No explicit
+    // body.
 }
 
 // 0x1fa50 — ___destroy_helper_block_340
 #[doc(alias = "___destroy_helper_block_340")]
-pub fn stub_0x1fa50() -> ! {
-    todo!("0x1fa50 ___destroy_helper_block_340")
+pub fn stub_0x1fa50(_block: usize) {
+    // IDA 0x1fa50: `__destroy_helper_block_340` — one
+    // `_Block_object_dispose` release (0x1fa50-0x1fa54, same shape as
+    // stub_0x180a0). No explicit body.
 }
 
 // 0x1fa58 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke342
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke342")]
-pub fn stub_0x1fa58() -> ! {
-    todo!("0x1fa58 ___49-[LoginViewController segueToHomeViewController:]_block_invoke342")
+pub fn stub_0x1fa58(animated: bool, has_memory_warning: bool, fg_x: Option<f32>, bg_x: Option<f32>) {
+    // IDA 0x1fa58: the present-home completion stops the background pan
+    // (0x1fa58-0x1fa66), captures the foreground/background
+    // presentation-layer x into the home controller unless a memory
+    // warning was received (0x1fa68-0x1fb2c, defaulting each to 0 on a
+    // nil layer), flags the home segue-after-load when animated
+    // (0x1fb2e-0x1fb50, stub_0x1d238), and presents the home controller
+    // unanimated with the spinner-restore completion (0x1fb52-0x1fbd4,
+    // stub_0x1fbd8). Layer queries collapse into parameters.
+    LOGIN_BACKGROUND_PAN_STOPS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    if !has_memory_warning {
+        crate::generated_bg_3::set_home_image_initial_x(fg_x.unwrap_or(0.0), bg_x.unwrap_or(0.0));
+    }
+    if animated {
+        crate::generated_bg_3::stub_0x1d238();
+    }
+    LOGIN_HOME_PRESENTATIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x1fbd8();
 }
 
 // 0x1fbd8 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353")]
-pub fn stub_0x1fbd8() -> ! {
-    todo!("0x1fbd8 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_2353")
+pub fn stub_0x1fbd8() {
+    // IDA 0x1fbd8: the presented-home completion stops the spinner
+    // (0x1fbd8-0x1fbe6, stub_0x1eeac) and runs the button fade-in
+    // animation (0x1fbe8-0x1fc5c, stub_0x1fc60). Both hops collapse to
+    // direct calls.
+    crate::generated_bg_4::stub_0x1eeac();
+    stub_0x1fc60();
 }
-
 // 0x1fc60 — ___49-[LoginViewController segueToHomeViewController:]_block_invoke_3
 #[doc(alias = "___49-[LoginViewController segueToHomeViewController:]_block_invoke_3")]
-pub fn stub_0x1fc60() -> ! {
-    todo!("0x1fc60 ___49-[LoginViewController segueToHomeViewController:]_block_invoke_3")
+pub fn stub_0x1fc60() {
+    // IDA 0x1fc60: the button fade-in restores the button-view alpha to
+    // 1.0 (0x1fc60-0x1fc8c, 0x3f800000).
+    LOGIN_BUTTON_ALPHA_BITS.store(0x3f800000, std::sync::atomic::Ordering::SeqCst);
 }
-
 // 0x1fc90 — ___copy_helper_block_356
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_356")]
-pub fn stub_0x1fc90() -> ! {
-    todo!("0x1fc90 ___copy_helper_block_356")
+pub fn stub_0x1fc90(_dst: usize, _src: usize) {
+    // IDA 0x1fc90: `__copy_helper_block_356` — one `_Block_object_assign`
+    // retain (0x1fc90-0x1fc96, same shape as stub_0x18094). No explicit
+    // body.
 }
-
 // 0x1fc9c — ___destroy_helper_block_357
 #[doc(alias = "___destroy_helper_block_357")]
-pub fn stub_0x1fc9c() -> ! {
-    todo!("0x1fc9c ___destroy_helper_block_357")
+pub fn stub_0x1fc9c(_block: usize) {
+    // IDA 0x1fc9c: `__destroy_helper_block_357` — one
+    // `_Block_object_dispose` release (0x1fc9c-0x1fca0, same shape as
+    // stub_0x180a0). No explicit body.
 }
-
 // 0x1fca4 — ___copy_helper_block_359
 #[doc(alias = "___copy_helper_block_359")]
-pub fn stub_0x1fca4() -> ! {
-    todo!("0x1fca4 ___copy_helper_block_359")
+pub fn stub_0x1fca4(_dst: usize, _src: usize) {
+    // IDA 0x1fca4: `__copy_helper_block_359` — two `_Block_object_assign`
+    // retains for the self + home-controller captures (0x1fca4-0x1fcbc,
+    // same shape as stub_0x1eb08). No explicit body.
 }
-
 // 0x1fcc8 — ___destroy_helper_block_360
 #[doc(alias = "___destroy_helper_block_360")]
-pub fn stub_0x1fcc8() -> ! {
-    todo!("0x1fcc8 ___destroy_helper_block_360")
+pub fn stub_0x1fcc8(_block: usize) {
+    // IDA 0x1fcc8: `__destroy_helper_block_360` — two
+    // `_Block_object_dispose` releases (0x1fcc8-0x1fcda, same shape as
+    // stub_0x1eb38). No explicit body.
 }
-
 // 0x1fce4 — ___copy_helper_block_364
 #[doc(alias = "___copy_helper_block_364")]
-pub fn stub_0x1fce4() -> ! {
-    todo!("0x1fce4 ___copy_helper_block_364")
+pub fn stub_0x1fce4(_dst: usize, _src: usize) {
+    // IDA 0x1fce4: `__copy_helper_block_364` — two `_Block_object_assign`
+    // retains (0x1fce4-0x1fcfc, same shape as stub_0x1eb08). No explicit
+    // body.
 }
-
 // 0x1fd08 — ___destroy_helper_block_365
 #[doc(alias = "___destroy_helper_block_365")]
-pub fn stub_0x1fd08() -> ! {
-    todo!("0x1fd08 ___destroy_helper_block_365")
+pub fn stub_0x1fd08(_block: usize) {
+    // IDA 0x1fd08: `__destroy_helper_block_365` — two
+    // `_Block_object_dispose` releases (0x1fd08-0x1fd1a, same shape as
+    // stub_0x1eb38). No explicit body.
 }
-
 // 0x1fd24 — ___copy_helper_block_367
 #[doc(alias = "___copy_helper_block_367")]
-pub fn stub_0x1fd24() -> ! {
-    todo!("0x1fd24 ___copy_helper_block_367")
+pub fn stub_0x1fd24(_dst: usize, _src: usize) {
+    // IDA 0x1fd24: `__copy_helper_block_367` — one `_Block_object_assign`
+    // retain (0x1fd24-0x1fd2a, same shape as stub_0x18094). No explicit
+    // body.
 }
-
 // 0x1fd30 — ___destroy_helper_block_368
 #[doc(alias = "___destroy_helper_block_368")]
-pub fn stub_0x1fd30() -> ! {
-    todo!("0x1fd30 ___destroy_helper_block_368")
+pub fn stub_0x1fd30(_block: usize) {
+    // IDA 0x1fd30: `__destroy_helper_block_368` — one
+    // `_Block_object_dispose` release (0x1fd30-0x1fd34, same shape as
+    // stub_0x180a0). No explicit body.
 }
-
 // 0x1fd38 — -[LoginViewController prepareForSegue:sender:]
 // type: void __cdecl(LoginViewController *self, SEL, id, id)
 #[doc(alias = "-[LoginViewController prepareForSegue:sender:]")]
-pub fn stub_0x1fd38() -> ! {
-    todo!("0x1fd38 -[LoginViewController prepareForSegue:sender:]")
+pub fn stub_0x1fd38(
+    dest_is_navbar: bool,
+    button_tag: Option<i32>,
+    is_tablet: bool,
+    base_url: &str,
+    search_url: &str,
+) {
+    // IDA 0x1fd38: `prepareForSegue:sender:` ignores non-navbar
+    // destinations (0x1fd88 fallthrough). A button sender resolves its
+    // tag via `getUrlForButtonTag:recordPageView:` and points the
+    // destination at it (0x1fda0-0x1fdf8); other senders skip `setUrl:`
+    // (0x1fe04 goto). Every navbar path ends attaching the preloaded web
+    // view for the destination URL (0x1fe20-0x1fe62). Class queries
+    // collapse into parameters; the cache manager has no target here, so
+    // the destination URL + attached URL record. Mirrors the
+    // `SegueSender` shape of stub_0x1cfe8.
+    if !dest_is_navbar {
+        return;
+    }
+    if let Some(tag) = button_tag {
+        let url = crate::generated_bg_3::stub_0x1cc1c(tag, true, is_tablet, base_url, search_url);
+        *LOGIN_SEGUE_URL.lock() = url.clone();
+        *LOGIN_SEGUE_PRELOADED.lock() = url;
+    } else {
+        let url = LOGIN_SEGUE_URL.lock().clone();
+        *LOGIN_SEGUE_PRELOADED.lock() = url;
+    }
 }
 
 // 0x1fe70 — -[LoginViewController setLoginPlaceId:]
 // type: void __cdecl(LoginViewController *self, SEL, int)
 #[doc(alias = "-[LoginViewController setLoginPlaceId:]")]
-pub fn stub_0x1fe70() -> ! {
-    todo!("0x1fe70 -[LoginViewController setLoginPlaceId:]")
+pub fn stub_0x1fe70(place_id: i32) {
+    // IDA 0x1fe70: `setLoginPlaceId:` logs the place id (0x1fe70-0x1fe84,
+    // `NSLog`, unmodeled), instantiates the `HomeViewController` and
+    // points it at the place (0x1fe86-0x1fefc, stub_0x1d248), flags the
+    // guest tap and falls through to `playNowDidTouchUpInside:`
+    // (0x1fefe-0x1ff14, stub_0x1f004).
+    crate::generated_bg_3::stub_0x1d248(place_id);
+    crate::generated_bg_4::USER_DID_CLICK_PLAY_NOW.store(true, std::sync::atomic::Ordering::SeqCst);
+    crate::generated_bg_4::stub_0x1f004();
 }
 
 // 0x1ff5c — -[LoginViewController username]
