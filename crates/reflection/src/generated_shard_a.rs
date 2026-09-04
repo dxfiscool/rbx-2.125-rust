@@ -1297,10 +1297,28 @@ pub fn stub_0x5fccac() {
     // IDA 0x5fccac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
+/// `Singleton<EnumDesc<NumSidesEnum>>` link for the Pyramid suite below (cf.
+/// 0x4aaef8): guard-once table; item pairs register in the singleton C2 and
+/// are unmodeled here, same as the other name-only tables in this crate.
+static NUM_SIDES_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("NumSidesEnum"));
+
+pub fn num_sides_enum_prop(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    EnumProp::new(name, category, initial, NUM_SIDES_DESC.clone(), attributes, permissions)
+}
+
 // 0x60a614 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x60a614() -> ! {
-    todo!("0x60a614 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x60a614(dst: &mut EnumProp, src: &EnumProp) {
+    // IDA 0x60a614: `copyValue` get-then-set (same shape as
+    // 0x4aa178/0x5fa0c8).
+    dst.value = src.value;
 }
 
 // 0x60a638 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE14hasStringValueEv
@@ -1312,62 +1330,114 @@ pub fn stub_0x60a638() -> bool {
 
 // 0x60a63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60a63c() -> ! {
-    todo!("0x60a63c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60a63c(prop: &EnumProp) -> String {
+    // IDA 0x60a63c: `getStringValue` via `convertToString` (same shape as
+    // 0x4aa1a0/0x5fa0f0).
+    prop.enum_desc.lookup_name(prop.value).unwrap_or_default().to_owned()
 }
 
 // 0x60a660 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x60a660() -> ! {
-    todo!("0x60a660 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x60a660(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x60a660: `setStringValue` lookup-and-set (same shape as
+    // 0x4aa1c4/0x5fa114).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x60a6a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x60a6a0() -> ! {
-    todo!("0x60a6a0 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x60a6a0(prop: &EnumProp) -> i32 {
+    // IDA 0x60a6a0: `writeValue` get + int tag store (same shape as
+    // 0x4aa204/0x5fa154).
+    prop.value
 }
 
 // 0x60a6c0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x60a6c0() -> ! {
-    todo!("0x60a6c0 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x60a6c0(prop: &mut EnumProp, text: &str) -> bool {
+    // IDA 0x60a6c0: `readValue` text-lookup-and-set (same shape as
+    // 0x4aa224/0x5fa174).
+    match prop.enum_desc.lookup_value(text) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x60a900 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60a900() -> ! {
-    todo!("0x60a900 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60a900(prop: &EnumProp) -> i32 {
+    // IDA 0x60a900: `getIndexValue` via `convertToIndex` at 0x60a9f8
+    // (same shape as 0x4aa464/0x5fa3b4).
+    prop.convert_to_index(prop.value)
 }
 
 // 0x60a91c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x60a91c() -> ! {
-    todo!("0x60a91c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x60a91c(prop: &mut EnumProp, index: usize) -> bool {
+    // IDA 0x60a91c: `setIndexValue` bounds-check + set (same shape as
+    // 0x4aa480/0x5fa3d0).
+    match prop.enum_desc.values.get(index) {
+        Some(&v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x60a950 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60a950() -> ! {
-    todo!("0x60a950 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60a950(prop: &EnumProp) -> i32 {
+    // IDA 0x60a950: `getEnumValue` tail-jump to the +44 member get
+    // (same shape as 0x4aa4b4/0x5fa404).
+    prop.value
 }
 
 // 0x60a958 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x60a958() -> ! {
-    todo!("0x60a958 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x60a958(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x60a958: `setEnumValue` find-and-set (same shape as
+    // 0x4aa4bc/0x5fa40c).
+    if prop.enum_desc.items.iter().any(|it| it.value == value) {
+        prop.value = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x60a9a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60a9a4() -> ! {
-    todo!("0x60a9a4 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60a9a4(prop: &EnumProp) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x60a9a4: `getEnumItem` via `convertToItem` (same shape as
+    // 0x4aa508/0x5fa458).
+    usize::try_from(prop.value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| prop.enum_desc.items.get(idx).cloned())
 }
 
 // 0x60a9c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x60a9c4() -> ! {
-    todo!("0x60a9c4 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x60a9c4(prop: &mut EnumProp, name: &str) -> bool {
+    // IDA 0x60a9c4: `setStringValue` (`Name` overload, same shape as
+    // 0x4aa528/0x5fa478).
+    match prop.enum_desc.lookup_value(name) {
+        Some(v) => {
+            prop.value = v;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x60a9f8 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_
@@ -1380,8 +1450,19 @@ pub fn stub_0x60a9f8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x60aa68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x60aa68() -> ! {
-    todo!("0x60aa68 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x60aa68(prop: &mut EnumProp, value: i32) -> bool {
+    // IDA 0x60aa68: `setIntValue`: `value_to_value` map, -1 rejects
+    // (same shape as 0x4aa55c/0x5fa51c).
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| prop.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            prop.value = mapped;
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x60aaa8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -1400,14 +1481,18 @@ pub fn stub_0x60aaac() -> bool {
 
 // 0x60aab0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x60aab0() -> ! {
-    todo!("0x60aab0 RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x60aab0(prop: &EnumProp) -> i32 {
+    // IDA 0x60aab0: `GetSetImpl<NumSidesEnum>::getValue` (+44 member):
+    // header strip, getter member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x60aad0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::setValue(RBX::Reflection::DescribedBase *,RBX::PyramidInstance::NumSidesEnum const&)const")]
-pub fn stub_0x60aad0() -> ! {
-    todo!("0x60aad0 RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::setValue(RBX::Reflection::DescribedBase *,RBX::PyramidInstance::NumSidesEnum const&)const")
+pub fn stub_0x60aad0(prop: &mut EnumProp, value: i32) {
+    // IDA 0x60aad0: `GetSetImpl<NumSidesEnum>::setValue` (+44 member):
+    // header strip, setter member-pointer decode, invoke.
+    prop.value = value;
 }
 
 // 0x60d780 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4TeamES6_EEvPKNS_10shared_ptrIT_EEPT0_
