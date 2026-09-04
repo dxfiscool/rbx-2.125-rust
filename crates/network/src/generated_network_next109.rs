@@ -10,6 +10,8 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+use std::collections::BTreeMap;
+use std::sync::LazyLock;
 
 // 0xf3ffe4 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiObjectEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv
 // type: int(void)
@@ -367,8 +369,143 @@ pub fn stub_0xf52284() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::TopNErrorsPhysicsSender::Nugget **,std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>>,RBX::Network::TopNErrorsPhysicsSender::Nugget * const&)")]
 #[doc(alias = "j___ZNSt6vectorIPN3RBX7Network23TopNErrorsPhysicsSender6NuggetESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_")]
-pub fn stub_0xf5e314() -> ! {
-    todo!("0xf5e314 std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::TopNErrorsPhysicsSender::Nugget **,std::vector<RBX::Network::TopNErrorsPhysicsSender::Nugget *,std::allocator<RBX::Network::TopNErrorsPhysicsSender::Nugget *>>>,RBX::Network::TopNErrorsPhysicsSender::Nugget * const&)")
+/// Which network `EnumDesc<T>` instantiation a table set belongs to. The
+/// `convertToItem`/`convertToString` thunks below (IDA 0xf5e444–0xf5e4d4) are
+/// identical instantiations modulo this tag; thunk targets are 0x958be0 /
+/// 0x95807c / 0x95a860 / 0x95a2a8 / 0x959744 (`convertToItem`) and 0x95887c /
+/// 0x957d18 / 0x95a6b4 / 0x959f44 / 0x9593e0 (`convertToString`).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum NetworkEnumKind {
+    #[default]
+    PhysicsSendMethod,
+    PhysicsReceiveMethod,
+    FilterResult,
+    MembershipType,
+    ChatMode,
+}
+
+impl NetworkEnumKind {
+    fn index(self) -> usize {
+        match self {
+            NetworkEnumKind::PhysicsSendMethod => 0,
+            NetworkEnumKind::PhysicsReceiveMethod => 1,
+            NetworkEnumKind::FilterResult => 2,
+            NetworkEnumKind::MembershipType => 3,
+            NetworkEnumKind::ChatMode => 4,
+        }
+    }
+}
+
+/// `RBX::Reflection::EnumDesc<T>` backing tables (IDA 0x958260 D2): the
+/// `enumToItem` index (`Vec<i32>`, desc+120 per IDA 0x958be0), the
+/// `itemToString` names (`Vec<String>`, desc+108 per IDA 0x95887c), the
+/// `addPair` pairs, and the two `_Rb_tree` name maps the D2 disposes with
+/// two `_M_erase` calls (IDA 0x958cac / 0x958148 / 0x95a374 / 0x959810).
+#[derive(Clone, Debug, Default)]
+pub struct NetworkEnumTables {
+    pub pairs: Vec<(i32, String)>,
+    pub enum_to_item: Vec<i32>,
+    pub item_to_string: Vec<String>,
+    pub name_to_value: BTreeMap<usize, i32>,
+    pub value_to_name: BTreeMap<i32, usize>,
+}
+
+static NETWORK_ENUM_TABLES: LazyLock<[NetworkEnumTables; 5]> =
+    LazyLock::new(|| core::array::from_fn(|_| NetworkEnumTables::default()));
+
+/// `Singleton<EnumDesc<T>>::doGetSingleton` (IDA 0x958a1c): the `call_once`
+/// + `__cxa_guard_acquire` sequence constructs each descriptor once and
+/// registers its D2 with `__cxa_atexit`; `LazyLock` is that shape.
+pub fn network_enum_tables(kind: NetworkEnumKind) -> &'static NetworkEnumTables {
+    &NETWORK_ENUM_TABLES[kind.index()]
+}
+
+/// `RBX::Reflection::Variant` as written by `operator=<Enum>` (IDA 0x958a1c,
+/// 0x957eb8, 0x95a0e4, 0x959580): +0 enum-descriptor singleton, +4
+/// `typed_holder<Enum>` singleton, +8 the int value. Both singletons identify
+/// the enum, so one `kind` tag covers both words.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct NetworkEnumVariant {
+    pub kind: Option<NetworkEnumKind>,
+    pub value: i32,
+}
+
+/// Shared body behind the four `Variant::operator=<Enum>` thunks: ensure the
+/// `EnumDesc` singleton (the `call_once` at the head of IDA 0x958a1c), then
+/// the fast store when the holder already matches, else destroy-and-replace.
+/// Rust owns `value`, so both paths collapse to tagging + storing; returns
+/// `*this` like the original.
+pub fn network_enum_variant_assign(
+    variant: &mut NetworkEnumVariant,
+    kind: NetworkEnumKind,
+    value: i32,
+) -> &mut NetworkEnumVariant {
+    let _ = network_enum_tables(kind);
+    variant.kind = Some(kind);
+    variant.value = value;
+    variant
+}
+
+/// `EnumDesc<T>::convertToItem` (IDA 0x958be0, enumconverter.h:273-274):
+/// `ReleaseAssert`s `value >= 0` and `value < enumToItem.size()` when
+/// `FLog::Asserts`, then `enumToItem[value]` — 0 when out of range.
+pub fn network_enum_convert_to_item(tables: &NetworkEnumTables, value: i32) -> i32 {
+    debug_assert!(value >= 0, "value>=0");
+    debug_assert!((value as usize) < tables.enum_to_item.len(), "(size_t)value<enumToItem.size()");
+    if value >= 0 {
+        if let Some(&item) = tables.enum_to_item.get(value as usize) {
+            return item;
+        }
+    }
+    0
+}
+
+/// `EnumDesc<T>::convertToString` (IDA 0x95887c, enumconverter.h:262-263):
+/// same asserts (checked against `enumToItem` size even here), then
+/// `itemToString[value]` — empty when negative or past that table's own end.
+pub fn network_enum_convert_to_string(
+    tables: &NetworkEnumTables,
+    value: i32,
+    out: &mut String,
+) {
+    debug_assert!(value >= 0, "value>=0");
+    debug_assert!((value as usize) < tables.enum_to_item.len(), "(size_t)value<enumToItem.size()");
+    out.clear();
+    if value >= 0 {
+        if let Some(name) = tables.item_to_string.get(value as usize) {
+            out.push_str(name);
+        }
+    }
+}
+
+/// `EnumDesc<T>::~EnumDesc` D2 (IDA 0x958260): vtable reset, pairs teardown,
+/// the `enumToItem`/`itemToString` buffer frees, the item-string refcount
+/// loop, `_M_erase` on both name maps, then the base `EnumDescriptor` dtor.
+/// Owned storage just clears.
+pub fn network_enum_desc_destroy(tables: &mut NetworkEnumTables) {
+    tables.pairs.clear();
+    tables.enum_to_item.clear();
+    tables.item_to_string.clear();
+    // The two `_M_erase` calls at the tail of IDA 0x958260.
+    tables.name_to_value.clear();
+    tables.value_to_name.clear();
+}
+
+/// `std::_Rb_tree<RBX::Name const*, ...>::_M_erase` (IDA 0x958cac): iterative
+/// post-order teardown — recurse into the left child, then walk the right
+/// spine with `operator delete` per node. A `BTreeMap` owns its nodes, so
+/// teardown is `clear`; the ordered map keeps the `_Rb_tree` shape.
+pub fn network_name_map_erase(map: &mut BTreeMap<usize, i32>) {
+    map.clear();
+}
+
+pub fn stub_0xf5e314(nuggets: &mut Vec<usize>, pos: usize, value: usize) {
+    // IDA 0xf5e314: `__picsymbolstub4` tail-jump to 0x953edc. Full capacity
+    // grows to `2 * size` (min 1, `length_error` at 0x3FFFFFFF) with
+    // prefix/suffix memmoves; spare capacity shifts the tail right by one —
+    // exactly `Vec::insert`. Elements are `Nugget *` (4 bytes on target),
+    // kept as addresses.
+    nuggets.insert(pos, value);
 }
 
 // 0xf5e354 — j___ZN3RBX10Reflection7VariantaSINS_15NetworkSettings17PhysicsSendMethodEEERS1_RKT_
@@ -376,8 +513,9 @@ pub fn stub_0xf5e314() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")]
 #[doc(alias = "j___ZN3RBX10Reflection7VariantaSINS_15NetworkSettings17PhysicsSendMethodEEERS1_RKT_")]
-pub fn stub_0xf5e354() -> ! {
-    todo!("0xf5e354 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")
+pub fn stub_0xf5e354(variant: &mut NetworkEnumVariant, value: i32) -> &mut NetworkEnumVariant {
+    // IDA 0xf5e354: `__picsymbolstub4` tail-jump to 0x958a1c.
+    network_enum_variant_assign(variant, NetworkEnumKind::PhysicsSendMethod, value)
 }
 
 // 0xf5e364 — j___ZN3RBX10Reflection7VariantaSINS_15NetworkSettings20PhysicsReceiveMethodEEERS1_RKT_
@@ -385,8 +523,9 @@ pub fn stub_0xf5e354() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsReceiveMethod>(RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
 #[doc(alias = "j___ZN3RBX10Reflection7VariantaSINS_15NetworkSettings20PhysicsReceiveMethodEEERS1_RKT_")]
-pub fn stub_0xf5e364() -> ! {
-    todo!("0xf5e364 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsReceiveMethod>(RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+pub fn stub_0xf5e364(variant: &mut NetworkEnumVariant, value: i32) -> &mut NetworkEnumVariant {
+    // IDA 0xf5e364: `__picsymbolstub4` tail-jump to 0x957eb8.
+    network_enum_variant_assign(variant, NetworkEnumKind::PhysicsReceiveMethod, value)
 }
 
 // 0xf5e374 — j___ZN3RBX10Reflection7VariantaSINS_7Network6Player14MembershipTypeEEERS1_RKT_
@@ -394,8 +533,9 @@ pub fn stub_0xf5e364() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::MembershipType>(RBX::Network::Player::MembershipType const&)")]
 #[doc(alias = "j___ZN3RBX10Reflection7VariantaSINS_7Network6Player14MembershipTypeEEERS1_RKT_")]
-pub fn stub_0xf5e374() -> ! {
-    todo!("0xf5e374 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::MembershipType>(RBX::Network::Player::MembershipType const&)")
+pub fn stub_0xf5e374(variant: &mut NetworkEnumVariant, value: i32) -> &mut NetworkEnumVariant {
+    // IDA 0xf5e374: `__picsymbolstub4` tail-jump to 0x95a0e4.
+    network_enum_variant_assign(variant, NetworkEnumKind::MembershipType, value)
 }
 
 // 0xf5e384 — j___ZN3RBX10Reflection7VariantaSINS_7Network6Player8ChatModeEEERS1_RKT_
@@ -403,8 +543,9 @@ pub fn stub_0xf5e374() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")]
 #[doc(alias = "j___ZN3RBX10Reflection7VariantaSINS_7Network6Player8ChatModeEEERS1_RKT_")]
-pub fn stub_0xf5e384() -> ! {
-    todo!("0xf5e384 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")
+pub fn stub_0xf5e384(variant: &mut NetworkEnumVariant, value: i32) -> &mut NetworkEnumVariant {
+    // IDA 0xf5e384: `__picsymbolstub4` tail-jump to 0x959580.
+    network_enum_variant_assign(variant, NetworkEnumKind::ChatMode, value)
 }
 
 // 0xf5e3b4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev
@@ -412,8 +553,9 @@ pub fn stub_0xf5e384() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev")]
-pub fn stub_0xf5e3b4() -> ! {
-    todo!("0xf5e3b4 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+pub fn stub_0xf5e3b4(tables: &mut NetworkEnumTables) {
+    // IDA 0xf5e3b4: `__picsymbolstub4` tail-jump to 0x958260.
+    network_enum_desc_destroy(tables);
 }
 
 // 0xf5e3c4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED2Ev
@@ -421,8 +563,9 @@ pub fn stub_0xf5e3b4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED2Ev")]
-pub fn stub_0xf5e3c4() -> ! {
-    todo!("0xf5e3c4 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")
+pub fn stub_0xf5e3c4(tables: &mut NetworkEnumTables) {
+    // IDA 0xf5e3c4: `__picsymbolstub4` tail-jump to 0x9576fc.
+    network_enum_desc_destroy(tables);
 }
 
 // 0xf5e3d4 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED2Ev
@@ -430,8 +573,9 @@ pub fn stub_0xf5e3c4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED2Ev")]
-pub fn stub_0xf5e3d4() -> ! {
-    todo!("0xf5e3d4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")
+pub fn stub_0xf5e3d4(tables: &mut NetworkEnumTables) {
+    // IDA 0xf5e3d4: `__picsymbolstub4` tail-jump to 0x959928.
+    network_enum_desc_destroy(tables);
 }
 
 // 0xf5e3e4 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev
@@ -439,8 +583,9 @@ pub fn stub_0xf5e3d4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev")]
-pub fn stub_0xf5e3e4() -> ! {
-    todo!("0xf5e3e4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+pub fn stub_0xf5e3e4(tables: &mut NetworkEnumTables) {
+    // IDA 0xf5e3e4: `__picsymbolstub4` tail-jump to 0x958dc4.
+    network_enum_desc_destroy(tables);
 }
 
 // 0xf5e444 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_
@@ -448,8 +593,9 @@ pub fn stub_0xf5e3e4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_")]
-pub fn stub_0xf5e444() -> ! {
-    todo!("0xf5e444 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_0xf5e444(value: i32) -> i32 {
+    // IDA 0xf5e444: `__picsymbolstub4` tail-jump to 0x958be0.
+    network_enum_convert_to_item(network_enum_tables(NetworkEnumKind::PhysicsSendMethod), value)
 }
 
 // 0xf5e454 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_
@@ -457,8 +603,9 @@ pub fn stub_0xf5e444() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_")]
-pub fn stub_0xf5e454() -> ! {
-    todo!("0xf5e454 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_0xf5e454(value: i32, out: &mut String) {
+    // IDA 0xf5e454: `__picsymbolstub4` tail-jump to 0x95887c.
+    network_enum_convert_to_string(network_enum_tables(NetworkEnumKind::PhysicsSendMethod), value, out);
 }
 
 // 0xf5e464 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE13convertToItemERKS3_
@@ -466,8 +613,9 @@ pub fn stub_0xf5e454() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE13convertToItemERKS3_")]
-pub fn stub_0xf5e464() -> ! {
-    todo!("0xf5e464 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+pub fn stub_0xf5e464(value: i32) -> i32 {
+    // IDA 0xf5e464: `__picsymbolstub4` tail-jump to 0x95807c.
+    network_enum_convert_to_item(network_enum_tables(NetworkEnumKind::PhysicsReceiveMethod), value)
 }
 
 // 0xf5e474 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringERKS3_
@@ -475,8 +623,9 @@ pub fn stub_0xf5e464() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringERKS3_")]
-pub fn stub_0xf5e474() -> ! {
-    todo!("0xf5e474 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+pub fn stub_0xf5e474(value: i32, out: &mut String) {
+    // IDA 0xf5e474: `__picsymbolstub4` tail-jump to 0x957d18.
+    network_enum_convert_to_string(network_enum_tables(NetworkEnumKind::PhysicsReceiveMethod), value, out);
 }
 
 // 0xf5e484 — j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE13convertToItemERKS3_
@@ -484,8 +633,9 @@ pub fn stub_0xf5e474() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE13convertToItemERKS3_")]
-pub fn stub_0xf5e484() -> ! {
-    todo!("0xf5e484 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")
+pub fn stub_0xf5e484(value: i32) -> i32 {
+    // IDA 0xf5e484: `__picsymbolstub4` tail-jump to 0x95a860.
+    network_enum_convert_to_item(network_enum_tables(NetworkEnumKind::FilterResult), value)
 }
 
 // 0xf5e494 — j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringERKS3_
@@ -493,8 +643,9 @@ pub fn stub_0xf5e484() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringERKS3_")]
-pub fn stub_0xf5e494() -> ! {
-    todo!("0xf5e494 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")
+pub fn stub_0xf5e494(value: i32, out: &mut String) {
+    // IDA 0xf5e494: `__picsymbolstub4` tail-jump to 0x95a6b4.
+    network_enum_convert_to_string(network_enum_tables(NetworkEnumKind::FilterResult), value, out);
 }
 
 // 0xf5e4a4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE13convertToItemERKS4_
@@ -502,8 +653,9 @@ pub fn stub_0xf5e494() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE13convertToItemERKS4_")]
-pub fn stub_0xf5e4a4() -> ! {
-    todo!("0xf5e4a4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")
+pub fn stub_0xf5e4a4(value: i32) -> i32 {
+    // IDA 0xf5e4a4: `__picsymbolstub4` tail-jump to 0x95a2a8.
+    network_enum_convert_to_item(network_enum_tables(NetworkEnumKind::MembershipType), value)
 }
 
 // 0xf5e4b4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringERKS4_
@@ -511,8 +663,9 @@ pub fn stub_0xf5e4a4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringERKS4_")]
-pub fn stub_0xf5e4b4() -> ! {
-    todo!("0xf5e4b4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")
+pub fn stub_0xf5e4b4(value: i32, out: &mut String) {
+    // IDA 0xf5e4b4: `__picsymbolstub4` tail-jump to 0x959f44.
+    network_enum_convert_to_string(network_enum_tables(NetworkEnumKind::MembershipType), value, out);
 }
 
 // 0xf5e4c4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_
@@ -520,8 +673,9 @@ pub fn stub_0xf5e4b4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_")]
-pub fn stub_0xf5e4c4() -> ! {
-    todo!("0xf5e4c4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")
+pub fn stub_0xf5e4c4(value: i32) -> i32 {
+    // IDA 0xf5e4c4: `__picsymbolstub4` tail-jump to 0x959744.
+    network_enum_convert_to_item(network_enum_tables(NetworkEnumKind::ChatMode), value)
 }
 
 // 0xf5e4d4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_
@@ -529,44 +683,49 @@ pub fn stub_0xf5e4c4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_")]
-pub fn stub_0xf5e4d4() -> ! {
-    todo!("0xf5e4d4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")
+pub fn stub_0xf5e4d4(value: i32, out: &mut String) {
+    // IDA 0xf5e4d4: `__picsymbolstub4` tail-jump to 0x9593e0.
+    network_enum_convert_to_string(network_enum_tables(NetworkEnumKind::ChatMode), value, out);
 }
 
 // 0xf5e504 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: 
+// type:
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf5e504() -> ! {
-    todo!("0xf5e504 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")
+pub fn stub_0xf5e504(map: &mut BTreeMap<usize, i32>) {
+    // IDA 0xf5e504: `__picsymbolstub4` tail-jump to 0x958cac.
+    network_name_map_erase(map);
 }
 
 // 0xf5e514 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: 
+// type:
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf5e514() -> ! {
-    todo!("0xf5e514 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>> *)")
+pub fn stub_0xf5e514(map: &mut BTreeMap<usize, i32>) {
+    // IDA 0xf5e514: `__picsymbolstub4` tail-jump to 0x958148.
+    network_name_map_erase(map);
 }
 
 // 0xf5e524 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
-// type: 
+// type:
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")]
-pub fn stub_0xf5e524() -> ! {
-    todo!("0xf5e524 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>> *)")
+pub fn stub_0xf5e524(map: &mut BTreeMap<usize, i32>) {
+    // IDA 0xf5e524: `__picsymbolstub4` tail-jump to 0x95a374.
+    network_name_map_erase(map);
 }
 
 // 0xf5e534 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
-// type: 
+// type:
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")]
-pub fn stub_0xf5e534() -> ! {
-    todo!("0xf5e534 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>> *)")
+pub fn stub_0xf5e534(map: &mut BTreeMap<usize, i32>) {
+    // IDA 0xf5e534: `__picsymbolstub4` tail-jump to 0x959810.
+    network_name_map_erase(map);
 }
 
 // 0xf5e5a4 — j___ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE7trySendERN6RakNet9BitStreamES4_
@@ -574,8 +733,17 @@ pub fn stub_0xf5e534() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")]
 #[doc(alias = "j___ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE7trySendERN6RakNet9BitStreamES4_")]
-pub fn stub_0xf5e5a4() -> ! {
-    todo!("0xf5e5a4 RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")
+pub fn stub_0xf5e5a4(
+    dictionary: &crate::string_dictionary::NameSenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    id: usize,
+    text: &str,
+) -> bool {
+    // IDA 0xf5e5a4: `__picsymbolstub4` tail-jump to 0x965f98 (ported in
+    // generated_117.rs): empty text writes one zero byte (`true`); known id
+    // writes its recall code and returns `true`; unknown writes nothing and
+    // returns `false`.
+    dictionary.try_send(stream, id, text)
 }
 
 // 0xf5e5b4 — j___ZN6RakNet9BitStream4ReadIdEEbRT_
@@ -583,8 +751,18 @@ pub fn stub_0xf5e5a4() -> ! {
 // was: boost type — mapped to rbx_core::SharedPtr, see docs/BOOST.md
 #[doc(alias = "bool RakNet::BitStream::Read<double>(double &)")]
 #[doc(alias = "j___ZN6RakNet9BitStream4ReadIdEEbRT_")]
-pub fn stub_0xf5e5b4() -> ! {
-    todo!("0xf5e5b4 bool RakNet::BitStream::Read<double>(double &)")
+pub fn stub_0xf5e5b4(stream: &mut crate::bitstream::BitStream, out: &mut f64) -> bool {
+    // IDA 0xf5e5b4: `__picsymbolstub4` tail-jump to 0x9636d0.
+    // `IsNetworkOrder()` is false (see `BitStream::is_network_order`), so the
+    // original takes the `ReadBits(64)` + `ReverseBytes` arm — exactly
+    // `read_f64`; short reads return false via `None`.
+    match stream.read_f64() {
+        Some(value) => {
+            *out = value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0xf5e5c4 — j___ZN6RakNet9BitStream4ReadIiEEbRT_
