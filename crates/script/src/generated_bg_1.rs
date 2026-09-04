@@ -60,6 +60,21 @@ pub struct LoginViewState {
     /// Remaining outlet handles by ivar name.
     pub outlets: HashMap<String, Option<u32>>,
     pub view_loaded: bool,
+    /// Password field took focus (IDA 0x1f1b0..0x1f1c4).
+    pub password_focused: bool,
+    /// `setRememberPassword:` value (IDA 0x1f282..0x1f2ba).
+    pub remember_set: Option<bool>,
+    /// `userDidClickPlayNow` global (IDA 0x1f024/0x1f2d6/0x1f7fc).
+    pub play_now_flag: bool,
+    /// `scrollView.contentOffset` (IDA 0x1f30c/0x1f4d8).
+    pub scroll_offset: Option<(f32, f32)>,
+    /// Background pan running (IDA 0x1f330/0x1f674).
+    pub background_pan_running: bool,
+    /// Background/foreground images dimmed to alpha 0 (IDA 0x1f5f4..0x1f63c).
+    pub bg_images_dimmed: bool,
+    /// Stored `username`/`password` defaults (IDA 0x1f752..0x1f7dc).
+    pub stored_username: Option<String>,
+    pub stored_password: Option<String>,
     /// `gotLoginFailedNotification:` error text (IDA 0x1ebd0..0x1ec0e).
     pub login_error: Option<String>,
     /// `getStoreMgr` polled (IDA 0x1eca4).
@@ -1073,64 +1088,98 @@ pub fn stub_0x1f0d4(state: &mut LoginViewState) {
 // 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController usernameDidEndOnExit:]")]
-pub fn stub_0x1f1a0() -> ! {
-    todo!("0x1f1a0 -[LoginViewController usernameDidEndOnExit:]")
+pub fn stub_0x1f1a0(state: &mut LoginViewState) {
+    // IDA 0x1f1a0 `-[LoginViewController usernameDidEndOnExit:]`:
+    // `password.becomeFirstResponder` (0x1f1b0..0x1f1c4).
+    state.password_focused = true;
 }
 
 // 0x1f1c8 — -[LoginViewController passwordDidEndOnExit:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController passwordDidEndOnExit:]")]
-pub fn stub_0x1f1c8() -> ! {
-    todo!("0x1f1c8 -[LoginViewController passwordDidEndOnExit:]")
+pub fn stub_0x1f1c8(state: &mut LoginViewState) {
+    // IDA 0x1f1c8 `-[LoginViewController passwordDidEndOnExit:]`:
+    // `showLoggingIn` (0x1f1e0 -> 0x1ed44), then
+    // `doLoginWithUsername:password:` with the field texts (0x1f200..0x1f25a;
+    // cf. 0x1f0d4).
+    stub_0x1ed44(state);
+    state.login_attempt = Some((state.username_text.clone(), state.password_text.clone()));
 }
 
 // 0x1f260 — -[LoginViewController swiToggleRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController swiToggleRememberMyPassword:]")]
-pub fn stub_0x1f260() -> ! {
-    todo!("0x1f260 -[LoginViewController swiToggleRememberMyPassword:]")
+pub fn stub_0x1f260(state: &mut LoginViewState, switch_on: bool) {
+    // IDA 0x1f260 `-[LoginViewController swiToggleRememberMyPassword:]`:
+    // `setRememberPassword:` with the switch state (0x1f282..0x1f2ba).
+    state.remember_switch_on = switch_on;
+    state.remember_set = Some(switch_on);
 }
 
 // 0x1f2c0 — -[LoginViewController loginButtonDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController loginButtonDidTouchUpInside:]")]
-pub fn stub_0x1f2c0() -> ! {
-    todo!("0x1f2c0 -[LoginViewController loginButtonDidTouchUpInside:]")
+pub fn stub_0x1f2c0(state: &mut LoginViewState) {
+    // IDA 0x1f2c0 `-[LoginViewController loginButtonDidTouchUpInside:]`:
+    // `userDidClickPlayNow = 0` (0x1f2d6), then `login:` (0x1f2dc ->
+    // 0x1f0d4).
+    state.play_now_flag = false;
+    stub_0x1f0d4(state);
 }
 
 // 0x1f2e0 — -[LoginViewController onKeyboardHide:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardHide:]")]
-pub fn stub_0x1f2e0() -> ! {
-    todo!("0x1f2e0 -[LoginViewController onKeyboardHide:]")
+pub fn stub_0x1f2e0(state: &mut LoginViewState, has_memory_warning: bool) {
+    // IDA 0x1f2e0 `-[LoginViewController onKeyboardHide:]`:
+    // `scrollView.setContentOffset:(0,0)` (0x1f30c); unless a memory
+    // warning was received, `startBackgroundPan` plus the main-queue
+    // block (0x1f31e..0x1f376 -> 0x1f380). The hop is synchronous here.
+    state.scroll_offset = Some((0.0, 0.0));
+    if !has_memory_warning {
+        state.background_pan_running = true;
+        stub_0x1f380(state);
+    }
 }
 
 // 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
-pub fn stub_0x1f380() -> ! {
-    todo!("0x1f380 ___38-[LoginViewController onKeyboardHide:]_block_invoke")
+pub fn stub_0x1f380(state: &mut LoginViewState) {
+    // IDA 0x1f380 `__38-[...onKeyboardHide:]_block_invoke`: wraps the
+    // restore block in a 0.25s animation (0x1f3c4..0x1f3ec -> 0x1f3f8).
+    // The end state applies synchronously here.
+    stub_0x1f3f8(state);
 }
 
 // 0x1f3f8 — ___38-[LoginViewController onKeyboardHide:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2")]
-pub fn stub_0x1f3f8() -> ! {
-    todo!("0x1f3f8 ___38-[LoginViewController onKeyboardHide:]_block_invoke_2")
+pub fn stub_0x1f3f8(state: &mut LoginViewState) {
+    // IDA 0x1f3f8 `__38-[...onKeyboardHide:]_block_invoke_2`: restores
+    // alpha 1.0 on the background/foreground images and the two
+    // `self+160/164` views (0x1f40c..0x1f45a).
+    state.bg_images_dimmed = false;
 }
 
 // 0x1f480 — ___copy_helper_block_300
 #[doc(alias = "___copy_helper_block_300")]
-pub fn stub_0x1f480() -> ! {
-    todo!("0x1f480 ___copy_helper_block_300")
+pub fn stub_0x1f480(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f480 `__copy_helper_block_300`: single
+    // `_Block_object_assign` retain (0x1f486; cf. 0x1efdc).
+    *dst = src.clone();
 }
 
 // 0x1f48c — ___destroy_helper_block_301
 #[doc(alias = "___destroy_helper_block_301")]
-pub fn stub_0x1f48c() -> ! {
-    todo!("0x1f48c ___destroy_helper_block_301")
+pub fn stub_0x1f48c(slot: &mut BlockCapture) {
+    // IDA 0x1f48c `__destroy_helper_block_301`: single
+    // `_Block_object_dispose` release (0x1f490; cf. 0x1efe8).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f494 — ___copy_helper_block_305
 #[doc(alias = "___copy_helper_block_305")]
-pub fn stub_0x1f494() -> ! {
-    todo!("0x1f494 ___copy_helper_block_305")
+pub fn stub_0x1f494(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f494 `__copy_helper_block_305`: single
+    // `_Block_object_assign` retain (0x1f49a; cf. 0x1f480).
+    *dst = src.clone();
 }

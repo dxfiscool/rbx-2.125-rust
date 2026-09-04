@@ -7,99 +7,148 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_165::BlockCapture;
+use crate::generated_bg_1::LoginViewState;
 
 // 0x1f4a0 — ___destroy_helper_block_306
 #[doc(alias = "___destroy_helper_block_306")]
-pub fn stub_0x1f4a0() -> ! {
-    todo!("0x1f4a0 ___destroy_helper_block_306")
+pub fn stub_0x1f4a0(slot: &mut BlockCapture) {
+    // IDA 0x1f4a0 `__destroy_helper_block_306`: single
+    // `_Block_object_dispose` release (0x1f4a4; cf. 0x1f48c).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f4a8 — -[LoginViewController onKeyboardShow:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController onKeyboardShow:]")]
-pub fn stub_0x1f4a8() -> ! {
-    todo!("0x1f4a8 -[LoginViewController onKeyboardShow:]")
+pub fn stub_0x1f4a8(state: &mut LoginViewState, has_memory_warning: bool) {
+    // IDA 0x1f4a8 `-[LoginViewController onKeyboardShow:]`:
+    // `scrollView.setContentOffset:(0,112)` (0x1f4d8; 112.0f =
+    // `0x42E00000`); unless a memory warning was received, the main-queue
+    // block (0x1f51e..0x1f530 -> 0x1f538). The hop is synchronous here.
+    state.scroll_offset = Some((0.0, 112.0));
+    if !has_memory_warning {
+        stub_0x1f538(state);
+    }
 }
 
 // 0x1f538 — ___38-[LoginViewController onKeyboardShow:]_block_invoke
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke")]
-pub fn stub_0x1f538() -> ! {
-    todo!("0x1f538 ___38-[LoginViewController onKeyboardShow:]_block_invoke")
+pub fn stub_0x1f538(state: &mut LoginViewState) {
+    // IDA 0x1f538 `__38-[...onKeyboardShow:]_block_invoke`: wraps the dim
+    // block and the pan-stop block in one animation with completion
+    // (0x1f580..0x1f5d6 -> 0x1f5e0/0x1f674). End states apply
+    // synchronously here.
+    stub_0x1f5e0(state);
+    stub_0x1f674(state);
 }
 
 // 0x1f5e0 — ___38-[LoginViewController onKeyboardShow:]_block_invoke_2
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2")]
-pub fn stub_0x1f5e0() -> ! {
-    todo!("0x1f5e0 ___38-[LoginViewController onKeyboardShow:]_block_invoke_2")
+pub fn stub_0x1f5e0(state: &mut LoginViewState) {
+    // IDA 0x1f5e0 `__38-[...onKeyboardShow:]_block_invoke_2`: dims alpha 0
+    // on the background/foreground images and the two `self+160/164`
+    // views (0x1f5f4..0x1f63c; cf. 0x1f3f8).
+    state.bg_images_dimmed = true;
 }
 
 // 0x1f660 — ___copy_helper_block_308
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_308")]
-pub fn stub_0x1f660() -> ! {
-    todo!("0x1f660 ___copy_helper_block_308")
+pub fn stub_0x1f660(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f660 `__copy_helper_block_308`: single
+    // `_Block_object_assign` retain (0x1f666; cf. 0x1f494).
+    *dst = src.clone();
 }
 
 // 0x1f66c — ___destroy_helper_block_309
 #[doc(alias = "___destroy_helper_block_309")]
-pub fn stub_0x1f66c() -> ! {
-    todo!("0x1f66c ___destroy_helper_block_309")
+pub fn stub_0x1f66c(slot: &mut BlockCapture) {
+    // IDA 0x1f66c `__destroy_helper_block_309`: single
+    // `_Block_object_dispose` release (0x1f670; cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f674 — ___38-[LoginViewController onKeyboardShow:]_block_invoke311
 // type: id __fastcall(int)
 #[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke311")]
-pub fn stub_0x1f674() -> ! {
-    todo!("0x1f674 ___38-[LoginViewController onKeyboardShow:]_block_invoke311")
+pub fn stub_0x1f674(state: &mut LoginViewState) {
+    // IDA 0x1f674 `__38-[...onKeyboardShow:]_block_invoke311`:
+    // `stopBackgroundPan` completion shim (single `objc_msgSend`).
+    state.background_pan_running = false;
 }
 
 // 0x1f688 — ___copy_helper_block_314
 #[doc(alias = "___copy_helper_block_314")]
-pub fn stub_0x1f688() -> ! {
-    todo!("0x1f688 ___copy_helper_block_314")
+pub fn stub_0x1f688(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f688 `__copy_helper_block_314`: single
+    // `_Block_object_assign` retain (0x1f68e; cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x1f694 — ___destroy_helper_block_315
 #[doc(alias = "___destroy_helper_block_315")]
-pub fn stub_0x1f694() -> ! {
-    todo!("0x1f694 ___destroy_helper_block_315")
+pub fn stub_0x1f694(slot: &mut BlockCapture) {
+    // IDA 0x1f694 `__destroy_helper_block_315`: single
+    // `_Block_object_dispose` release (0x1f698; cf. 0x1f66c).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f69c — ___copy_helper_block_320
 #[doc(alias = "___copy_helper_block_320")]
-pub fn stub_0x1f69c() -> ! {
-    todo!("0x1f69c ___copy_helper_block_320")
+pub fn stub_0x1f69c(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f69c `__copy_helper_block_320`: single
+    // `_Block_object_assign` retain (0x1f6a2; cf. 0x1f688).
+    *dst = src.clone();
 }
 
 // 0x1f6a8 — ___destroy_helper_block_321
 #[doc(alias = "___destroy_helper_block_321")]
-pub fn stub_0x1f6a8() -> ! {
-    todo!("0x1f6a8 ___destroy_helper_block_321")
+pub fn stub_0x1f6a8(slot: &mut BlockCapture) {
+    // IDA 0x1f6a8 `__destroy_helper_block_321`: single
+    // `_Block_object_dispose` release (0x1f6ac; cf. 0x1f694).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f6b0 — -[LoginViewController doLoginTransition]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController doLoginTransition]")]
-pub fn stub_0x1f6b0() -> ! {
-    todo!("0x1f6b0 -[LoginViewController doLoginTransition]")
+pub fn stub_0x1f6b0(state: &mut LoginViewState, remember_password: bool, play_now: bool) {
+    // IDA 0x1f6b0 `-[LoginViewController doLoginTransition]`: when the
+    // password is not remembered, clears the field on the main queue
+    // (0x1f6e8..0x1f72e -> 0x1f808); stores `username`/`password` defaults
+    // (0x1f752..0x1f7dc); segues home with `userDidClickPlayNow`
+    // (0x1f7fc). The hop is synchronous here.
+    if !remember_password {
+        stub_0x1f808(state);
+    }
+    state.stored_username = Some(state.username_text.clone());
+    state.stored_password = Some(state.password_text.clone());
+    state.home_segue_animated = Some(play_now);
 }
 
 // 0x1f808 — ___40-[LoginViewController doLoginTransition]_block_invoke
 #[doc(alias = "___40-[LoginViewController doLoginTransition]_block_invoke")]
-pub fn stub_0x1f808() -> ! {
-    todo!("0x1f808 ___40-[LoginViewController doLoginTransition]_block_invoke")
+pub fn stub_0x1f808(state: &mut LoginViewState) {
+    // IDA 0x1f808 `__40-[...doLoginTransition]_block_invoke`: clears the
+    // `self+204` (password) field text (0x1f808; cf. 0x1ed04).
+    state.password_text.clear();
 }
 
 // 0x1f82c — ___copy_helper_block_323
 #[doc(alias = "___copy_helper_block_323")]
-pub fn stub_0x1f82c() -> ! {
-    todo!("0x1f82c ___copy_helper_block_323")
+pub fn stub_0x1f82c(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1f82c `__copy_helper_block_323`: single
+    // `_Block_object_assign` retain (0x1f832; cf. 0x1f69c).
+    *dst = src.clone();
 }
 
 // 0x1f838 — ___destroy_helper_block_324
 #[doc(alias = "___destroy_helper_block_324")]
-pub fn stub_0x1f838() -> ! {
-    todo!("0x1f838 ___destroy_helper_block_324")
+pub fn stub_0x1f838(slot: &mut BlockCapture) {
+    // IDA 0x1f838 `__destroy_helper_block_324`: single
+    // `_Block_object_dispose` release (0x1f83c; cf. 0x1f6a8).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f840 — -[LoginViewController externalSegueToHomeViewController:]
