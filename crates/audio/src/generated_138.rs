@@ -1107,6 +1107,20 @@ pub struct AudioHomeViewController {
     btn_debug_settings: parking_lot::Mutex<u64>,
     lbl_robux: parking_lot::Mutex<u64>,
     lbl_tix: parking_lot::Mutex<u64>,
+    btn_messages: parking_lot::Mutex<u64>,
+    game_label: parking_lot::Mutex<u64>,
+    catalog_label: parking_lot::Mutex<u64>,
+    inventory_label: parking_lot::Mutex<u64>,
+    builders_club_label: parking_lot::Mutex<u64>,
+    profile_label: parking_lot::Mutex<u64>,
+    messages_label: parking_lot::Mutex<u64>,
+    btn_play_disabled: parking_lot::Mutex<u64>,
+    community_label: parking_lot::Mutex<u64>,
+    community_button: parking_lot::Mutex<u64>,
+    button_view: parking_lot::Mutex<u64>,
+    search_text_field: parking_lot::Mutex<u64>,
+    logged_in_view: parking_lot::Mutex<u64>,
+    not_logged_in_view: parking_lot::Mutex<u64>,
 }
 
 impl AudioHomeViewController {
@@ -1670,6 +1684,94 @@ impl AudioHomeViewController {
     }
     pub fn set_lbl_tix(&self, value: u64) {
         *self.lbl_tix.lock() = value;
+    }
+    /// Synthesized outlet getter/setter pairs (IDA 0x1d494..0x1d748):
+    /// getters return the retained slot, setters store it
+    /// (`objc_setProperty`). UIKit objects live out of slice, so `u64`
+    /// ids stand in. Mirrors the platform twins.
+    pub fn btn_messages(&self) -> u64 {
+        *self.btn_messages.lock()
+    }
+    pub fn set_btn_messages(&self, value: u64) {
+        *self.btn_messages.lock() = value;
+    }
+    pub fn game_label(&self) -> u64 {
+        *self.game_label.lock()
+    }
+    pub fn set_game_label(&self, value: u64) {
+        *self.game_label.lock() = value;
+    }
+    pub fn catalog_label(&self) -> u64 {
+        *self.catalog_label.lock()
+    }
+    pub fn set_catalog_label(&self, value: u64) {
+        *self.catalog_label.lock() = value;
+    }
+    pub fn inventory_label(&self) -> u64 {
+        *self.inventory_label.lock()
+    }
+    pub fn set_inventory_label(&self, value: u64) {
+        *self.inventory_label.lock() = value;
+    }
+    pub fn builders_club_label(&self) -> u64 {
+        *self.builders_club_label.lock()
+    }
+    pub fn set_builders_club_label(&self, value: u64) {
+        *self.builders_club_label.lock() = value;
+    }
+    pub fn profile_label(&self) -> u64 {
+        *self.profile_label.lock()
+    }
+    pub fn set_profile_label(&self, value: u64) {
+        *self.profile_label.lock() = value;
+    }
+    pub fn messages_label(&self) -> u64 {
+        *self.messages_label.lock()
+    }
+    pub fn set_messages_label(&self, value: u64) {
+        *self.messages_label.lock() = value;
+    }
+    pub fn btn_play_disabled(&self) -> u64 {
+        *self.btn_play_disabled.lock()
+    }
+    pub fn set_btn_play_disabled(&self, value: u64) {
+        *self.btn_play_disabled.lock() = value;
+    }
+    pub fn community_label(&self) -> u64 {
+        *self.community_label.lock()
+    }
+    pub fn set_community_label(&self, value: u64) {
+        *self.community_label.lock() = value;
+    }
+    pub fn community_button(&self) -> u64 {
+        *self.community_button.lock()
+    }
+    pub fn set_community_button(&self, value: u64) {
+        *self.community_button.lock() = value;
+    }
+    pub fn button_view(&self) -> u64 {
+        *self.button_view.lock()
+    }
+    pub fn set_button_view(&self, value: u64) {
+        *self.button_view.lock() = value;
+    }
+    pub fn search_text_field(&self) -> u64 {
+        *self.search_text_field.lock()
+    }
+    pub fn set_search_text_field(&self, value: u64) {
+        *self.search_text_field.lock() = value;
+    }
+    pub fn logged_in_view(&self) -> u64 {
+        *self.logged_in_view.lock()
+    }
+    pub fn set_logged_in_view(&self, value: u64) {
+        *self.logged_in_view.lock() = value;
+    }
+    pub fn not_logged_in_view(&self) -> u64 {
+        *self.not_logged_in_view.lock()
+    }
+    pub fn set_not_logged_in_view(&self, value: u64) {
+        *self.not_logged_in_view.lock() = value;
     }
 }
 
