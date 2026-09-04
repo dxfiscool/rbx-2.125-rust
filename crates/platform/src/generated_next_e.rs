@@ -10,29 +10,132 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+
 /// Host record of an ObjC block's captured `__strong` object slots behind
 /// `___copy_helper_block_*` / `___destroy_helper_block_*` (IDA 0x1b11c..).
 /// Copy calls `_Block_object_assign` per slot (flags 3 =
 /// `BLOCK_FIELD_IS_OBJECT`, retains); destroy calls `_Block_object_dispose`
-/// per slot (releases). No ObjC runtime on the host, so retains/releases
-/// are recorded as counts against the per-EA slot layout below.
+/// per slot (releases). A block may also capture a `boost::shared_ptr` by
+/// value (IDA 0x2acec/0x2ada4): the `shared_count` copy-construct (addref)
+/// on copy, `sp_counted_base::release` on destroy. No ObjC runtime on the
+/// host, so retains/releases are recorded as counts against the per-EA
+/// slot layout below.
 #[derive(Debug, Default)]
 pub struct BlockObjectSlots {
     pub slots: u32,
     pub retains: u32,
     pub releases: u32,
+    pub shared_slots: u32,
+    pub shared_retains: u32,
+    pub shared_releases: u32,
 }
 
 impl BlockObjectSlots {
     pub fn with_slots(slots: u32) -> Self {
-        Self { slots, retains: 0, releases: 0 }
+        Self { slots, ..Self::default() }
+    }
+    pub fn with_shared(slots: u32, shared_slots: u32) -> Self {
+        Self { slots, shared_slots, ..Self::default() }
     }
     pub fn copy_assign(&mut self) {
         self.retains += self.slots;
+        self.shared_retains += self.shared_slots;
     }
     pub fn destroy_dispose(&mut self) {
         self.releases += self.slots;
+        self.shared_releases += self.shared_slots;
     }
+}
+
+/// `joinGameTeleport` URL (IDA 0x2a3b0..0x2a3dc): `place` plus
+/// `"?suggest=" + auth` when auth is non-empty.
+pub fn join_teleport_url(place: &str, auth: &str) -> String {
+    if auth.is_empty() {
+        place.to_owned()
+    } else {
+        format!("{place}?suggest={auth}")
+    }
+}
+
+/// `joinGameTeleport` request (IDA 0x2a350): the teleported URL, the script
+/// handed to `executeUrlScript` (0x2a48a), the game, and whether the
+/// controller got `handleStartGameSuccess` (0x2a49c..0x2a4b0).
+#[derive(Debug, Clone)]
+pub struct TeleportRequest {
+    pub url: String,
+    pub script: String,
+    pub game: SharedPtr<crate::roblox_view::GameHandle>,
+    pub notify_controller: bool,
+}
+
+impl TeleportRequest {
+    pub fn new(
+        url: &str,
+        script: &str,
+        game: SharedPtr<crate::roblox_view::GameHandle>,
+        notify_controller: bool,
+    ) -> Self {
+        Self { url: url.to_owned(), script: script.to_owned(), game, notify_controller }
+    }
+}
+
+/// Resolution of the `executeUrlScript` chain (IDA 0x2ba54): `Impersonator(7)`
+/// (0x2ba78); when `isUrl(url)` (0x2babe) the content is fetched
+/// (ContentProvider create + `getContent`, 0x2bb02..0x2bb5a) and the source
+/// runs via `executeSignedScript` (0x2bb9c).
+#[derive(Debug, Clone)]
+pub struct UrlScriptExecution {
+    pub url: String,
+    pub fetched_source: Option<String>,
+    pub executed: bool,
+}
+
+/// `executeScript` run (IDA 0x2bf74): `LegacyLock` (0x2bfde); when the
+/// datamodel flag is set (0x2bff2) the source is trusted
+/// (`ProtectedString::fromTrustedSource`, 0x2c00a) and runs in a new thread
+/// at impersonation 7 (0x2c022).
+#[derive(Debug, Clone)]
+pub struct ScriptExecution {
+    pub source: String,
+    pub trusted: bool,
+    pub new_thread: bool,
+    pub impersonation: u32,
+}
+
+/// Outcome of `presentGameView_block_invoke` (IDA 0x2c138): `sharedInstance`
+/// (0x2c156) with nil guards on main (0x2c15e), the Ogre controller
+/// (0x2c176) and the last non-game controller (0x2c18c); the present
+/// (animated 0, completion `block_invoke_2`) runs only when the presented
+/// controller differs (0x2c1a2..0x2c1ee).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PresentGameViewAction {
+    Presented,
+    NoMain,
+    NoOgreView,
+    NoLastNonGame,
+    AlreadyPresented,
+}
+
+pub fn present_game_view_step(
+    main: Option<crate::view_controllers::ObjCId>,
+    ogre_view_controller: Option<crate::view_controllers::ObjCId>,
+    last_non_game_controller: Option<crate::view_controllers::ObjCId>,
+    presented_view_controller: Option<crate::view_controllers::ObjCId>,
+) -> PresentGameViewAction {
+    if main.is_none() {
+        return PresentGameViewAction::NoMain;
+    }
+    let ogre = match ogre_view_controller {
+        Some(id) => id,
+        None => return PresentGameViewAction::NoOgreView,
+    };
+    if last_non_game_controller.is_none() {
+        return PresentGameViewAction::NoLastNonGame;
+    }
+    if presented_view_controller == Some(ogre) {
+        return PresentGameViewAction::AlreadyPresented;
+    }
+    PresentGameViewAction::Presented
 }
 
 /// Host model of `std::map<std::string, void (*)(char const *)>` behind
@@ -721,26 +824,38 @@ pub fn stub_24540() {
 
 // 0x24a04 — ___copy_helper_block__4
 #[doc(alias = "___copy_helper_block__4")]
-pub fn stub_24a04() -> ! {
-    todo!("0x24a04 ___copy_helper_block__4")
+pub fn stub_24a04(slots: &mut BlockObjectSlots) {
+    // IDA 0x24a04: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x24a10 — ___destroy_helper_block__4
 #[doc(alias = "___destroy_helper_block__4")]
-pub fn stub_24a10() -> ! {
-    todo!("0x24a10 ___destroy_helper_block__4")
+pub fn stub_24a10(slots: &mut BlockObjectSlots) {
+    // IDA 0x24a10: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x253cc — ___copy_helper_block_98
 #[doc(alias = "___copy_helper_block_98")]
-pub fn stub_253cc() -> ! {
-    todo!("0x253cc ___copy_helper_block_98")
+pub fn stub_253cc(slots: &mut BlockObjectSlots) {
+    // IDA 0x253cc: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x253d8 — ___destroy_helper_block_99
 #[doc(alias = "___destroy_helper_block_99")]
-pub fn stub_253d8() -> ! {
-    todo!("0x253d8 ___destroy_helper_block_99")
+pub fn stub_253d8(slots: &mut BlockObjectSlots) {
+    // IDA 0x253d8: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
@@ -813,137 +928,246 @@ pub fn stub_28d98(
 
 // 0x298a0 — ___copy_helper_block_191
 #[doc(alias = "___copy_helper_block_191")]
-pub fn stub_298a0() -> ! {
-    todo!("0x298a0 ___copy_helper_block_191")
+pub fn stub_298a0(slots: &mut BlockObjectSlots) {
+    // IDA 0x298a0: `_Block_object_assign` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.copy_assign();
 }
 
 // 0x298c4 — ___destroy_helper_block_192
 #[doc(alias = "___destroy_helper_block_192")]
-pub fn stub_298c4() -> ! {
-    todo!("0x298c4 ___destroy_helper_block_192")
+pub fn stub_298c4(slots: &mut BlockObjectSlots) {
+    // IDA 0x298c4: `_Block_object_dispose` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.destroy_dispose();
 }
 
 // 0x29c34 — ___copy_helper_block_217
 #[doc(alias = "___copy_helper_block_217")]
-pub fn stub_29c34() -> ! {
-    todo!("0x29c34 ___copy_helper_block_217")
+pub fn stub_29c34(slots: &mut BlockObjectSlots) {
+    // IDA 0x29c34: `_Block_object_assign` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.copy_assign();
 }
 
 // 0x29c58 — ___destroy_helper_block_218
 #[doc(alias = "___destroy_helper_block_218")]
-pub fn stub_29c58() -> ! {
-    todo!("0x29c58 ___destroy_helper_block_218")
+pub fn stub_29c58(slots: &mut BlockObjectSlots) {
+    // IDA 0x29c58: `_Block_object_dispose` x2 on slots +0x14/+0x18
+    // (flags 3). Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(2);
+    slots.destroy_dispose();
 }
 
 // 0x29c88 — ___copy_helper_block_232
 #[doc(alias = "___copy_helper_block_232")]
-pub fn stub_29c88() -> ! {
-    todo!("0x29c88 ___copy_helper_block_232")
+pub fn stub_29c88(slots: &mut BlockObjectSlots) {
+    // IDA 0x29c88: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x29c94 — ___destroy_helper_block_233
 #[doc(alias = "___destroy_helper_block_233")]
-pub fn stub_29c94() -> ! {
-    todo!("0x29c94 ___destroy_helper_block_233")
+pub fn stub_29c94(slots: &mut BlockObjectSlots) {
+    // IDA 0x29c94: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x2a350 — __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2a350() -> ! {
-    todo!("0x2a350 joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_2a350(
+    place: &str,
+    auth: &str,
+    script: &str,
+    controller: Option<crate::view_controllers::ObjCId>,
+    game: SharedPtr<crate::roblox_view::GameHandle>,
+    http_get: &dyn Fn(&str) -> String,
+    slot: &mut Option<TeleportRequest>,
+) {
+    // IDA 0x2a350 `joinGameTeleport`: copy place, append `?suggest=` +
+    // auth when non-empty (0x2a3b0..0x2a3dc), `Http::get` (0x2a3fa..0x2a438),
+    // `executeUrlScript(game, script)` (0x2a48a), then
+    // `[controller handleStartGameSuccess]` when present
+    // (0x2a49c..0x2a4b0). Verified via IDA decompile.
+    let url = join_teleport_url(place, auth);
+    let _response = http_get(&url);
+    *slot = Some(TeleportRequest::new(&url, script, game, controller.is_some()));
 }
 
 // 0x2a988 — ___copy_helper_block_243
 #[doc(alias = "___copy_helper_block_243")]
-pub fn stub_2a988() -> ! {
-    todo!("0x2a988 ___copy_helper_block_243")
+pub fn stub_2a988(slots: &mut BlockObjectSlots) {
+    // IDA 0x2a988: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x2a994 — ___destroy_helper_block_244
 #[doc(alias = "___destroy_helper_block_244")]
-pub fn stub_2a994() -> ! {
-    todo!("0x2a994 ___destroy_helper_block_244")
+pub fn stub_2a994(slots: &mut BlockObjectSlots) {
+    // IDA 0x2a994: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x2acec — ___copy_helper_block_247
 // type: void __fastcall(_DWORD *, const shared_count *)
 #[doc(alias = "___copy_helper_block_247")]
-pub fn stub_2acec() -> ! {
-    todo!("0x2acec ___copy_helper_block_247")
+pub fn stub_2acec(slots: &mut BlockObjectSlots) {
+    // IDA 0x2acec: `_Block_object_assign` on +0x14/+0x18 (0x2ad18, 0x2ad64),
+    // plain field copy at +0x1C (`STR`, no retain, 0x2ad2a), and a
+    // `shared_count` copy (addref) at +0x20 under SjLj (0x2ad4e..0x2ad56).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_shared(2, 1);
+    slots.copy_assign();
 }
 
 // 0x2ada4 — ___destroy_helper_block_248
 #[doc(alias = "___destroy_helper_block_248")]
-pub fn stub_2ada4() -> ! {
-    todo!("0x2ada4 ___destroy_helper_block_248")
+pub fn stub_2ada4(slots: &mut BlockObjectSlots) {
+    // IDA 0x2ada4: `_Block_object_dispose` on +0x14/+0x18 (0x2adc6, 0x2adce),
+    // then `sp_counted_base::release` on +0x20 when non-nil
+    // (0x2addc..0x2ae06) under SjLj. Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_shared(2, 1);
+    slots.destroy_dispose();
 }
 
 // 0x2ba00 — ___copy_helper_block_425
 #[doc(alias = "___copy_helper_block_425")]
-pub fn stub_2ba00() -> ! {
-    todo!("0x2ba00 ___copy_helper_block_425")
+pub fn stub_2ba00(slots: &mut BlockObjectSlots) {
+    // IDA 0x2ba00: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x2ba0c — ___destroy_helper_block_426
 #[doc(alias = "___destroy_helper_block_426")]
-pub fn stub_2ba0c() -> ! {
-    todo!("0x2ba0c ___destroy_helper_block_426")
+pub fn stub_2ba0c(slots: &mut BlockObjectSlots) {
+    // IDA 0x2ba0c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x2ba40 — ___copy_helper_block_429
 #[doc(alias = "___copy_helper_block_429")]
-pub fn stub_2ba40() -> ! {
-    todo!("0x2ba40 ___copy_helper_block_429")
+pub fn stub_2ba40(slots: &mut BlockObjectSlots) {
+    // IDA 0x2ba40: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x2ba4c — ___destroy_helper_block_430
 #[doc(alias = "___destroy_helper_block_430")]
-pub fn stub_2ba4c() -> ! {
-    todo!("0x2ba4c ___destroy_helper_block_430")
+pub fn stub_2ba4c(slots: &mut BlockObjectSlots) {
+    // IDA 0x2ba4c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2ba54() -> ! {
-    todo!("0x2ba54 executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2ba54(
+    url: &str,
+    is_url: bool,
+    fetch_content: &dyn Fn(&str) -> Option<String>,
+    slot: &mut Option<UrlScriptExecution>,
+) {
+    // IDA 0x2ba54 `executeUrlScript`: `Impersonator(7)` (0x2ba78); when
+    // `isUrl(url)` (0x2babe): `LegacyLock`, ContentProvider create (0x2bb02)
+    // + `getContent` (0x2bb1e), stream copy (0x2bb5a), then
+    // `executeSignedScript(source)` (0x2bb9c). Otherwise nothing executes.
+    // Verified via IDA decompile.
+    if !is_url {
+        *slot = Some(UrlScriptExecution { url: url.to_owned(), fetched_source: None, executed: false });
+        return;
+    }
+    match fetch_content(url) {
+        Some(source) => *slot = Some(UrlScriptExecution { url: url.to_owned(), fetched_source: Some(source), executed: true }),
+        None => *slot = Some(UrlScriptExecution { url: url.to_owned(), fetched_source: None, executed: false }),
+    }
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bdb0() -> ! {
-    todo!("0x2bdb0 executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bdb0(verified_source: &str, slot: &mut Option<String>) {
+    // IDA 0x2bdb0 `executeSignedScript`: `verifyScriptSignature` (0x2be18),
+    // assign the verified source (0x2be2a), `executeScript` (0x2be4a).
+    // Verified via IDA decompile.
+    *slot = Some(verified_source.to_owned());
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bf74() -> ! {
-    todo!("0x2bf74 executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")
+pub fn stub_2bf74(source: &str, datamodel_ready: bool, slot: &mut Option<ScriptExecution>) {
+    // IDA 0x2bf74 `executeScript`: `LegacyLock` (0x2bfde); when the
+    // datamodel flag at +3005 is set (0x2bff2): create `ScriptContext`
+    // (0x2c000), `ProtectedString::fromTrustedSource` (0x2c00a),
+    // `executeInNewThread` at impersonation 7 (0x2c022).
+    // Verified via IDA decompile.
+    if !datamodel_ready {
+        *slot = None;
+        return;
+    }
+    *slot = Some(ScriptExecution { source: source.to_owned(), trusted: true, new_thread: true, impersonation: 7 });
 }
 
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke")]
-pub fn stub_2c138() -> ! {
-    todo!("0x2c138 ____ZL15presentGameViewv_block_invoke")
+pub fn stub_2c138(
+    main: Option<crate::view_controllers::ObjCId>,
+    ogre_view_controller: Option<crate::view_controllers::ObjCId>,
+    last_non_game_controller: Option<crate::view_controllers::ObjCId>,
+    presented_view_controller: Option<crate::view_controllers::ObjCId>,
+) -> PresentGameViewAction {
+    // IDA 0x2c138 `presentGameView_block_invoke`: `sharedInstance`
+    // (0x2c156); nil guards on main (0x2c15e), the Ogre controller
+    // (0x2c176) and the last non-game controller (0x2c18c); present
+    // (animated 0, completion `block_invoke_2`) only when the presented
+    // controller differs (0x2c1a2..0x2c1ee). Verified via IDA decompile.
+    present_game_view_step(main, ogre_view_controller, last_non_game_controller, presented_view_controller)
 }
 
 // 0x2c1f8 — ____ZL15presentGameViewv_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke_2")]
-pub fn stub_2c1f8() -> ! {
-    todo!("0x2c1f8 ____ZL15presentGameViewv_block_invoke_2")
+pub fn stub_2c1f8(captured: Option<crate::view_controllers::ObjCId>) -> bool {
+    // IDA 0x2c1f8 `presentGameView_block_invoke_2`: forwards
+    // `handleStartGameSuccess` to the captured controller when non-nil
+    // (0x2c1fc..0x2c20c). Returns whether the send ran.
+    // Verified via IDA decompile.
+    captured.is_some()
 }
 
 // 0x2c210 — ___copy_helper_block_499
 #[doc(alias = "___copy_helper_block_499")]
-pub fn stub_2c210() -> ! {
-    todo!("0x2c210 ___copy_helper_block_499")
+pub fn stub_2c210(slots: &mut BlockObjectSlots) {
+    // IDA 0x2c210: `_Block_object_assign` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.copy_assign();
 }
 
 // 0x2c21c — ___destroy_helper_block_500
 #[doc(alias = "___destroy_helper_block_500")]
-pub fn stub_2c21c() -> ! {
-    todo!("0x2c21c ___destroy_helper_block_500")
+pub fn stub_2c21c(slots: &mut BlockObjectSlots) {
+    // IDA 0x2c21c: `_Block_object_dispose` x1 on slot +0x14 (flags 3).
+    // Verified via IDA disasm.
+    *slots = BlockObjectSlots::with_slots(1);
+    slots.destroy_dispose();
 }
 
 // 0x2c5b0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv
