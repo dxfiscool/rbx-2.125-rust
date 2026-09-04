@@ -17,6 +17,7 @@ use std::collections::BTreeMap;
 use std::collections::HashSet;
 use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::OnceLock;
+use core::ffi::{c_char, c_int, c_void};
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
 /// lifecycle runs through `Creatable` + `SharedPtr`. Raw pointers into this
@@ -4241,25 +4242,143 @@ pub fn stub_0x26c350(dst: &mut SharedPtr<DescribedBase>, src: &SharedPtr<Describ
     SharedPtr::clone(dst)
 }
 
+/// Opaque `lua_State` handle for the `RBX::Lua` bridge bodies below. The
+/// script crate's `LuaStateRef` is the canonical model; this handle keeps the
+/// bridge call structure compiling until the cutover lands there.
+pub struct LuaState {
+    _opaque: (),
+}
+
+/// Raw Lua 5.1 C API surface used by the `RBX::Lua` bridge bodies below
+/// (`lua.h`/`lauxlib.h`, cf. `include/lua/luabridge.h`).
+///
+/// The script crate owns the live bindings; these declarations preserve the
+/// original call structure 1:1. They must only run against a live `lua_State`.
+/// `lua_settop` returns `int` in this build — both `registerClass` bodies
+/// tail-call it (disasm `0x27a5da`, `0x27aa80`).
+pub(crate) mod lua_ffi {
+    use super::LuaState;
+    use core::ffi::{c_char, c_int, c_void};
+    extern "C" {
+        pub fn lua_type(state: *mut LuaState, index: c_int) -> c_int;
+        pub fn lua_touserdata(state: *mut LuaState, index: c_int) -> *mut c_void;
+        pub fn lua_getmetatable(state: *mut LuaState, index: c_int) -> c_int;
+        pub fn lua_getfield(state: *mut LuaState, index: c_int, name: *const c_char) -> c_int;
+        pub fn lua_rawequal(state: *mut LuaState, i1: c_int, i2: c_int) -> c_int;
+        pub fn lua_settop(state: *mut LuaState, index: c_int) -> c_int;
+        pub fn lua_l_newmetatable(state: *mut LuaState, name: *const c_char) -> c_int;
+        pub fn lua_pushstring(state: *mut LuaState, s: *const c_char);
+        pub fn lua_pushcclosure(state: *mut LuaState, func: *const c_void, n: c_int);
+        pub fn lua_settable(state: *mut LuaState, index: c_int);
+        pub fn lua_setreadonly(state: *mut LuaState, index: c_int, v: c_int);
+        pub fn lua_setfield(state: *mut LuaState, index: c_int, name: *const c_char) -> c_int;
+        pub fn lua_l_checkudata(
+            state: *mut LuaState,
+            index: c_int,
+            name: *const c_char,
+        ) -> *mut c_void;
+        pub fn lua_pushboolean(state: *mut LuaState, b: c_int);
+        pub fn lua_createtable(state: *mut LuaState, narr: c_int, nrec: c_int);
+        pub fn lua_pushlstring(state: *mut LuaState, s: *const c_char, len: usize);
+        pub fn lua_newuserdata(state: *mut LuaState, size: usize) -> *mut c_void;
+        pub fn lua_setmetatable(state: *mut LuaState, index: c_int) -> c_int;
+        pub fn lua_pushlightuserdata(state: *mut LuaState, p: *const c_void);
+        pub fn lua_rawget(state: *mut LuaState, index: c_int);
+        pub fn lua_rawset(state: *mut LuaState, index: c_int);
+        pub fn lua_pushvalue(state: *mut LuaState, index: c_int);
+        pub fn lua_remove(state: *mut LuaState, index: c_int);
+        pub fn lua_pushnil(state: *mut LuaState);
+    }
+}
+
+/// `Bridge<shared_ptr<Instance>, false>::className` (IDA `0x12301a0`).
+pub const INSTANCE_BRIDGE_CLASS: &[u8] = b"Object\0";
+/// `Bridge<EventInstance, true>::className` (IDA `0x123078c`).
+pub const EVENT_BRIDGE_CLASS: &[u8] = b"RBXScriptSignal\0";
+
+/// Rust model of `RBX::Lua::EventInstance` (IDA `0x27afcc`/`0x280bac`): the
+/// 12-byte bridged event — head instance pointer plus the retaining link
+/// (`+4`/`+8`; `on_gc` releases `+8`, IDA `0x27aa84`).
+#[derive(Clone)]
+pub struct EventInstance {
+    pub target: *const Instance,
+    pub link: Option<SharedPtr<Instance>>,
+}
+
+/// Payload region behind
+/// `any_cast<shared_ptr<vector<shared_ptr<Instance>>> const&, Region3>`
+/// (IDA `0x26ee14`): the stored type identity plus the retained vector. The
+/// C++ region carries `{ typeinfo, payload }`; the identity collapses into
+/// the mangled name the original falls back to comparing.
+pub struct InstanceVecRegion {
+    pub type_name: &'static str,
+    pub value: SharedPtr<Vec<SharedPtr<Instance>>>,
+}
+
+/// Invoker installed as the `stored_vtable` for the thread/script bind (IDA
+/// `0x282b08` via `stub_0x282a48`): retains the thread across the call.
+/// Running the script text is the script crate's dispatch (out of crate), so
+/// the modeled half is the retain — twin of `view_game_marshaller_invoke`.
+fn weak_thread_string_invoke(
+    thread: &SharedPtr<crate::data_model::LuaWeakThreadRef>,
+    script: &str,
+    dm: *mut DataModel,
+) {
+    let _retained: SharedPtr<crate::data_model::LuaWeakThreadRef> = SharedPtr::clone(thread);
+    let _ = (script, dm);
+}
+
 // 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
 // was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
-pub fn stub_0x26c38c() -> ! {
-    todo!("0x26c38c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+pub fn stub_0x26c38c(
+    state: *mut LuaState,
+    index: u32,
+    out: &mut Option<SharedPtr<DescribedBase>>,
+) -> bool {
+    // IDA 0x26c38c: a non-none stack type (`lua_type`, 0x26c3d2) delegates to
+    // `Bridge::getValue<shared_ptr<DescribedBase>>` (0x26ff94); a none slot
+    // assigns the empty link (`operator=<Instance>` from a null temporary,
+    // disasm 0x26c3e2-0x26c40a) and returns true. Empty has no `Arc` form, so
+    // `None` is the empty link; the temporary's retain/release collapses into
+    // the assignment.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        if lua_ffi::lua_type(state, index as c_int) != 0 {
+            return stub_0x26ff94(state, index, out);
+        }
+    }
+    *out = None;
+    true
 }
 
 // 0x26c830 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
 // was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)
-pub fn stub_0x26c830() -> ! {
-    todo!("0x26c830 bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26c830(state: *mut LuaState, index: u32, out: &mut Variant) -> bool {
+    // IDA 0x26c830: a non-none stack type delegates to
+    // `Bridge::getValue<Variant>` (0x26fa78); a none slot stores the type
+    // singleton plus a null-link placement copy and returns true — exactly
+    // `Variant::Null`, the empty-link variant.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        if lua_ffi::lua_type(state, index as c_int) != 0 {
+            return stub_0x26fa78(state, index, out);
+        }
+    }
+    *out = Variant::Null;
+    true
 }
 
 // 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x26dce4() -> ! {
-    todo!("0x26dce4 RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x26dce4(state: *mut LuaState, instance: &SharedPtr<Instance>) -> i32 {
+    // IDA 0x26dce4: retains the link (`shared_count` copy) and delegates to
+    // `SharedPtrBridge::push` (0x2a4890); the temporary's release and
+    // `return 1` follow. The borrow + call reproduce retain/push/release.
+    stub_0x2a4890(state, Some(instance));
+    1
 }
 
 // 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
@@ -4272,8 +4391,19 @@ pub fn stub_0x26df08() -> ! {
 // 0x26ee14 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt6vectorINS2_IN3RBX8InstanceEEESaIS6_EEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> const& rbx::any_cast<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 // was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
-pub fn stub_0x26ee14() -> ! {
-    todo!("0x26ee14 boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0x26ee14(
+    region: &InstanceVecRegion,
+) -> &SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x26ee14: compares the stored `typeinfo` against
+    // `typeid(shared_ptr<vector<shared_ptr<Instance>> const>)`, falling back
+    // to the mangled-name compare
+    // ("N5boost10shared_ptrIKSt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEE");
+    // mismatch throws `bad_placement_any_cast`, else the payload past the tag
+    // (`a1 + 1`) is returned. The identity collapses into the name check.
+    if region.type_name != "N5boost10shared_ptrIKSt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEE" {
+        panic!("0x26ee14: bad_placement_any_cast");
+    }
+    &region.value
 }
 
 // 0x26ef04 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
@@ -4286,78 +4416,241 @@ pub fn stub_0x26ef04() -> ! {
 // 0x26fa78 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
 // was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)
-pub fn stub_0x26fa78() -> ! {
-    todo!("0x26fa78 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")
+pub fn stub_0x26fa78(state: *mut LuaState, index: u32, out: &mut Variant) -> bool {
+    // IDA 0x26fa78: `ud = lua_touserdata(L, idx)`; false for null; the
+    // metatable check plus registry["Object"] `rawequal` (with `settop`
+    // restore) must match; then the userdata's link is placement-copied with
+    // the `shared_ptr<Instance>` type tag and true is returned.
+    // SAFETY: `state` must be live and the userdata must hold a Rust-model
+    // `SharedPtr` written by `pushNewObject` (0x2b7770).
+    unsafe {
+        let ud = lua_ffi::lua_touserdata(state, index as c_int) as *const SharedPtr<Instance>;
+        if ud.is_null() {
+            return false;
+        }
+        if lua_ffi::lua_getmetatable(state, index as c_int) == 0 {
+            return false;
+        }
+        lua_ffi::lua_getfield(state, -10000, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+        let same = lua_ffi::lua_rawequal(state, -1, -2) != 0;
+        lua_ffi::lua_settop(state, -3);
+        if !same {
+            return false;
+        }
+        *out = Variant::Instance(SharedPtr::clone(&*ud));
+        true
+    }
 }
 
 // 0x26ff94 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &)")]
 // was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
-pub fn stub_0x26ff94() -> ! {
-    todo!("0x26ff94 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+pub fn stub_0x26ff94(
+    state: *mut LuaState,
+    index: u32,
+    out: &mut Option<SharedPtr<DescribedBase>>,
+) -> bool {
+    // IDA 0x26ff94: same metatable-shape check as 0x26fa78 against
+    // registry["Object"]; on match the userdata's link is assigned through
+    // `operator=<Instance>` and true is returned. The `Instance*` ->
+    // `DescribedBase*` adjustment is unmodeled (no hierarchy yet), so the
+    // stored link arrives post-adjustment — the same convention as 0x26c350.
+    // SAFETY: `state` must be live and the userdata must hold a Rust-model
+    // `SharedPtr` written by `pushNewObject` (0x2b7770).
+    unsafe {
+        let ud = lua_ffi::lua_touserdata(state, index as c_int) as *const SharedPtr<DescribedBase>;
+        if ud.is_null() {
+            return false;
+        }
+        if lua_ffi::lua_getmetatable(state, index as c_int) == 0 {
+            return false;
+        }
+        lua_ffi::lua_getfield(state, -10000, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+        let same = lua_ffi::lua_rawequal(state, -1, -2) != 0;
+        lua_ffi::lua_settop(state, -3);
+        if !same {
+            return false;
+        }
+        *out = Some(SharedPtr::clone(&*ud));
+        true
+    }
 }
 
 // 0x277af4 — __ZN3RBX6CellID14fromParametersEbPfN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::CellID::fromParameters(bool,float *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::CellID::fromParameters(bool,float *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x277af4() -> ! {
-    todo!("0x277af4 RBX::CellID::fromParameters(bool,float *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x277af4(
+    flag: bool,
+    coords: &[f32; 3],
+    instance: &SharedPtr<Instance>,
+) -> crate::generated_224::CellId {
+    // IDA 0x277af4: retains the link (`shared_count` copy), delegates to
+    // `CellID::C2` (0x897568), releases the temporary. Clone/drop reproduce
+    // the retain/release pairing.
+    let retained = SharedPtr::clone(instance);
+    let id = crate::generated_224::stub_0x897568(flag, coords, &retained);
+    drop(retained);
+    id
 }
 
 // 0x27a4f8 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
-pub fn stub_0x27a4f8() -> ! {
-    todo!("0x27a4f8 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+pub fn stub_0x27a4f8(state: *mut LuaState, on_index: *const c_void, on_newindex: *const c_void) -> i32 {
+    // IDA 0x27a4f8: `newmetatable("Object")`, `protect_metatable` (0x295320),
+    // installs `__index`/`__newindex`/`__gc` (0x27a5e0)/`__tostring` (0x27a608),
+    // `setreadonly(-1, 1)`, then tail-calls `lua_settop(-2)` (0x27a5da) whose
+    // return value is the result.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        lua_ffi::lua_l_newmetatable(state, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+        crate::generated_datamodel_shard_272::stub_0x295320(state, -1);
+        lua_ffi::lua_pushstring(state, b"__index ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, on_index, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__newindex ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, on_newindex, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__gc ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, stub_0x27a5e0 as *const c_void, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__tostring ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, stub_0x27a608 as *const c_void, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_setreadonly(state, -1, 1);
+        lua_ffi::lua_settop(state, -2)
+    }
 }
 
 // 0x27a5e0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE5on_gcEP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_gc(lua_State *)")]
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_gc(lua_State *)
-pub fn stub_0x27a5e0() -> ! {
-    todo!("0x27a5e0 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_gc(lua_State *)")
+pub fn stub_0x27a5e0(state: *mut LuaState) -> i32 {
+    // IDA 0x27a5e0: `ud = luaL_checkudata(L, 1, "Object")`, then
+    // `release(*(::sp_counted_base **)(ud + 4))` drops the userdata's retain;
+    // returns 0. The release dispatches through the block vtable past the
+    // userdata words (out of model), so the modeled half is the check +
+    // return; the script-crate cutover owns the live release.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        lua_ffi::lua_l_checkudata(state, 1, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+    }
+    0
 }
 
 // 0x27a608 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringEP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_tostring(lua_State *)")]
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(lua_State *)
-pub fn stub_0x27a608() -> ! {
-    todo!("0x27a608 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(lua_State *)")
+pub fn stub_0x27a608(state: *mut LuaState) -> i32 {
+    // IDA 0x27a608: `ud = luaL_checkudata(L, 1, "Object")`, then the
+    // `(link, L)` overload (0x280b90).
+    // SAFETY: `state` must be live and slot 1 must hold an object userdata.
+    unsafe {
+        let ud =
+            lua_ffi::lua_l_checkudata(state, 1, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char)
+                as *const SharedPtr<Instance>;
+        stub_0x280b90(&*ud, state)
+    }
 }
 
 // 0x27a970 — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
-pub fn stub_0x27a970() -> ! {
-    todo!("0x27a970 RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+pub fn stub_0x27a970(state: *mut LuaState, on_index: *const c_void, on_newindex: *const c_void) -> i32 {
+    // IDA 0x27a970: same metatable build as 0x27a4f8 for "RBXScriptSignal",
+    // plus `__eq` (0x27aaac); `setreadonly(-1, 1)`, then tail-calls
+    // `lua_settop(-2)` (0x27aa80) whose return value is the result.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        lua_ffi::lua_l_newmetatable(state, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char);
+        crate::generated_datamodel_shard_272::stub_0x295320(state, -1);
+        lua_ffi::lua_pushstring(state, b"__index ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, on_index, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__newindex ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, on_newindex, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__gc ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, stub_0x27aa84 as *const c_void, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__eq ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, stub_0x27aaac as *const c_void, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_pushstring(state, b"__tostring ".as_ptr() as *const c_char);
+        lua_ffi::lua_pushcclosure(state, stub_0x27aae8 as *const c_void, 0);
+        lua_ffi::lua_settable(state, -3);
+        lua_ffi::lua_setreadonly(state, -1, 1);
+        lua_ffi::lua_settop(state, -2)
+    }
 }
 
 // 0x27aa84 — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE5on_gcEP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_gc(lua_State *)")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_gc(lua_State *)
-pub fn stub_0x27aa84() -> ! {
-    todo!("0x27aa84 RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_gc(lua_State *)")
+pub fn stub_0x27aa84(state: *mut LuaState) -> i32 {
+    // IDA 0x27aa84: `ud = luaL_checkudata(L, 1, "RBXScriptSignal")`, then
+    // `weak_release(*(::sp_counted_base **)(ud + 8))` drops the event link's
+    // weak retain; returns 0. Same out-of-model release as 0x27a5e0: the
+    // modeled half is the check + return.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        lua_ffi::lua_l_checkudata(state, 1, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char);
+    }
+    0
 }
 
 // 0x27aaac — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE5on_eqEP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_eq(lua_State *)")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_eq(lua_State *)
-pub fn stub_0x27aaac() -> ! {
-    todo!("0x27aaac RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_eq(lua_State *)")
+pub fn stub_0x27aaac(state: *mut LuaState) -> i32 {
+    // IDA 0x27aaac: `luaL_checkudata` slots 1 and 2 against "RBXScriptSignal"
+    // (disasm 0x27aac4/0x27aad0), `EventInstance::operator==` (0x27afcc,
+    // disasm 0x27aad8), `lua_pushboolean`, return 1.
+    // SAFETY: `state` must be live and slots 1-2 must hold event userdata.
+    unsafe {
+        let a = lua_ffi::lua_l_checkudata(state, 1, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char)
+            as *const EventInstance;
+        let b = lua_ffi::lua_l_checkudata(state, 2, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char)
+            as *const EventInstance;
+        let eq = stub_0x27afcc(&*a, &*b);
+        lua_ffi::lua_pushboolean(state, eq as c_int);
+        1
+    }
 }
 
 // 0x27aae8 — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE11on_tostringEP9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(lua_State *)")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(lua_State *)
-pub fn stub_0x27aae8() -> ! {
-    todo!("0x27aae8 RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(lua_State *)")
+pub fn stub_0x27aae8(state: *mut LuaState) -> i32 {
+    // IDA 0x27aae8: `ud = luaL_checkudata(L, 1, "RBXScriptSignal")`, then the
+    // `(event, L)` overload (0x28864c).
+    // SAFETY: `state` must be live and slot 1 must hold an event userdata.
+    unsafe {
+        let ud =
+            lua_ffi::lua_l_checkudata(state, 1, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char)
+                as *const EventInstance;
+        stub_0x28864c(&*ud, state)
+    }
 }
 
 // 0x27afcc — __ZNK3RBX3Lua13EventInstanceeqERKS1_
 #[doc(alias = "RBX::Lua::EventInstance::operator==(RBX::Lua::EventInstance const&)const")]
 // was: RBX::Lua::EventInstance::operator==(RBX::Lua::EventInstance const&)const
-pub fn stub_0x27afcc() -> ! {
-    todo!("0x27afcc RBX::Lua::EventInstance::operator==(RBX::Lua::EventInstance const&)const")
+pub fn stub_0x27afcc(lhs: &EventInstance, rhs: &EventInstance) -> bool {
+    // IDA 0x27afcc: false unless the head pointers match; retains both links
+    // (`shared_ptr` copies); false when either link is empty; else the `+4`
+    // px words are compared.
+    if lhs.target != rhs.target {
+        return false;
+    }
+    match (&lhs.link, &rhs.link) {
+        (Some(l), Some(r)) => {
+            let _l = SharedPtr::clone(l);
+            let _r = SharedPtr::clone(r);
+            SharedPtr::as_ptr(l) == SharedPtr::as_ptr(r)
+        }
+        _ => false,
+    }
 }
 
 // 0x27c004 — __ZN3RBX3Lua12ObjectBridge11newInstanceEP9lua_State
@@ -4370,15 +4663,21 @@ pub fn stub_0x27c004() -> ! {
 // 0x27c244 — __ZN3RBX3Lua12ObjectBridge12lockInstanceEP9lua_State
 #[doc(alias = "RBX::Lua::ObjectBridge::lockInstance(lua_State *)")]
 // was: RBX::Lua::ObjectBridge::lockInstance(lua_State *)
-pub fn stub_0x27c244() -> ! {
-    todo!("0x27c244 RBX::Lua::ObjectBridge::lockInstance(lua_State *)")
+pub fn stub_0x27c244(state: *mut LuaState) -> i32 {
+    // IDA 0x27c244: `lua_pushboolean(L, 1)`; return 1.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        lua_ffi::lua_pushboolean(state, 1);
+    }
+    1
 }
 
 // 0x27c254 — __ZN3RBX3Lua12ObjectBridge14unlockInstanceEP9lua_State
 #[doc(alias = "RBX::Lua::ObjectBridge::unlockInstance(lua_State *)")]
 // was: RBX::Lua::ObjectBridge::unlockInstance(lua_State *)
-pub fn stub_0x27c254() -> ! {
-    todo!("0x27c254 RBX::Lua::ObjectBridge::unlockInstance(lua_State *)")
+pub fn stub_0x27c254() -> i32 {
+    // IDA 0x27c254: single `MOVS R0, #0` — returns 0 with no stack traffic.
+    0
 }
 
 // 0x27c258 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State
@@ -4405,29 +4704,88 @@ pub fn stub_0x27ef18() -> ! {
 // 0x280b90 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_tostring(rbx_core::SharedPtr<RBX::Instance> const&,lua_State *)")]
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)
-pub fn stub_0x280b90() -> ! {
-    todo!("0x280b90 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)")
+pub fn stub_0x280b90(instance: &SharedPtr<Instance>, state: *mut LuaState) -> i32 {
+    // IDA 0x280b90: `fw = Instance::fw(*a1)` (`*(this + 0x44)`, 0x701ef4);
+    // pushes `*(fw + 24)` with length `*(*(fw + 24) - 12)`; returns 1. The
+    // name store is modeled as `Instance::name.text` — that same string — so
+    // the push reads it directly.
+    // SAFETY: `state` must be a live Lua state.
+    let text = &instance.name.text;
+    unsafe {
+        lua_ffi::lua_pushlstring(state, text.as_ptr() as *const c_char, text.len());
+    }
+    1
 }
 
 // 0x280bac — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 #[doc(alias = "RBX::Lua::EventInstance* RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::pushNewObject<RBX::Lua::EventInstance>(lua_State *,RBX::Lua::EventInstance)")]
 // was: RBX::Lua::EventInstance* RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::pushNewObject<RBX::Lua::EventInstance>(lua_State *,RBX::Lua::EventInstance)
-pub fn stub_0x280bac() -> ! {
-    todo!("0x280bac RBX::Lua::EventInstance* RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::pushNewObject<RBX::Lua::EventInstance>(lua_State *,RBX::Lua::EventInstance)")
+pub fn stub_0x280bac(state: *mut LuaState, event: &EventInstance) -> *mut EventInstance {
+    // IDA 0x280bac: `ud = lua_newuserdata(L, 12)`; the 12-byte copy retains
+    // the link (`shared_count` copy under the pool mutex); metatable =
+    // registry["RBXScriptSignal"]; returns `ud`. The copy's retain is `Clone`;
+    // the userdata bytes belong to Lua.
+    // SAFETY: `state` must be a live Lua state.
+    let _retained = event.clone();
+    unsafe {
+        let ud = lua_ffi::lua_newuserdata(state, 12) as *mut EventInstance;
+        lua_ffi::lua_getfield(state, -10000, EVENT_BRIDGE_CLASS.as_ptr() as *const c_char);
+        lua_ffi::lua_setmetatable(state, -2);
+        ud
+    }
 }
 
 // 0x280c4c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)
-pub fn stub_0x280c4c() -> ! {
-    todo!("0x280c4c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")
+pub fn stub_0x280c4c(
+    state: *mut LuaState,
+    index: u32,
+    out: &mut Option<SharedPtr<Instance>>,
+) -> bool {
+    // IDA 0x280c4c: a non-none stack type delegates to
+    // `Bridge::getValue<shared_ptr<Instance>>` (0x281494); a none slot assigns
+    // the empty link and returns true — `None` is the empty link here.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        if lua_ffi::lua_type(state, index as c_int) != 0 {
+            return stub_0x281494(state, index, out);
+        }
+    }
+    *out = None;
+    true
 }
 
 // 0x281494 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)
-pub fn stub_0x281494() -> ! {
-    todo!("0x281494 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")
+pub fn stub_0x281494(
+    state: *mut LuaState,
+    index: u32,
+    out: &mut Option<SharedPtr<Instance>>,
+) -> bool {
+    // IDA 0x281494: same metatable-shape check as 0x26fa78 against
+    // registry["Object"]; on match assigns the userdata's link (`operator=`)
+    // and returns true.
+    // SAFETY: `state` must be live and the userdata must hold a Rust-model
+    // `SharedPtr` written by `pushNewObject` (0x2b7770).
+    unsafe {
+        let ud = lua_ffi::lua_touserdata(state, index as c_int) as *const SharedPtr<Instance>;
+        if ud.is_null() {
+            return false;
+        }
+        if lua_ffi::lua_getmetatable(state, index as c_int) == 0 {
+            return false;
+        }
+        lua_ffi::lua_getfield(state, -10000, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+        let same = lua_ffi::lua_rawequal(state, -1, -2) != 0;
+        lua_ffi::lua_settop(state, -3);
+        if !same {
+            return false;
+        }
+        *out = Some(SharedPtr::clone(&*ud));
+        true
+    }
 }
 
 // 0x284650 — __ZN24YieldFunctionStateObjectC2EPKN3RBX10Reflection23YieldFunctionDescriptorEN5boost10shared_ptrINS0_8InstanceEEEP9lua_State
@@ -4462,8 +4820,18 @@ pub fn stub_0x28838c() -> ! {
 // 0x28864c — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE11on_tostringERKS2_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(RBX::Lua::EventInstance const&,lua_State *)")]
 // was: RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(RBX::Lua::EventInstance const&,lua_State *)
-pub fn stub_0x28864c() -> ! {
-    todo!("0x28864c RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::on_tostring(RBX::Lua::EventInstance const&,lua_State *)")
+pub fn stub_0x28864c(event: &EventInstance, state: *mut LuaState) -> i32 {
+    // IDA 0x28864c: builds `"Signal " + name` where the name is the instance
+    // string behind the target link (`*(*(ev) + 12) + 4`, the same store
+    // 0x280b90 pushes), pushes it with `lua_pushlstring`, frees the
+    // `std::string` temporary, returns 1. `format!` is the temporary.
+    // SAFETY: `event.target` must point to a live `Instance`; `state` live.
+    let name = unsafe { &(*event.target).name.text };
+    let text = format!("Signal {}", name);
+    unsafe {
+        lua_ffi::lua_pushlstring(state, text.as_ptr() as *const c_char, text.len());
+    }
+    1
 }
 
 // 0x28c2f4 — __ZN3RBX6Script20SaveScriptInfoHelperEN5boost8weak_ptrINS_9DataModelEEENS2_IS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb
@@ -4970,8 +5338,36 @@ pub fn stub_0x2a4854() -> ! {
 // 0x2a4890 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE4pushEP9lua_StateN5boost10shared_ptrIS2_EE
 #[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2a4890() -> ! {
-    todo!("0x2a4890 RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2a4890(state: *mut LuaState, instance: Option<&SharedPtr<Instance>>) {
+    // IDA 0x2a4890: an empty link pushes nil; else the registry cache keyed by
+    // the push fn (`pushlightuserdata`) plus the link's block (`pi` subkey,
+    // `luabridge.h:179` non-nil assert) is consulted — hit pushes the cached
+    // userdata, miss installs one via `pushNewObject` (0x2b7770) and caches
+    // it (`pushlightuserdata(pi)` + `pushvalue(-2)` + `rawset(-4)`). The
+    // block address has no `Arc` form; `as_ptr` (1:1 with the link) is the key.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        let Some(link) = instance else {
+            lua_ffi::lua_pushnil(state);
+            return;
+        };
+        lua_ffi::lua_pushlightuserdata(state, stub_0x2a4890 as *const c_void);
+        lua_ffi::lua_rawget(state, -10000);
+        debug_assert!(
+            lua_ffi::lua_type(state, -1) != 0,
+            "!lua_isnil( L, -1 ) file: include/lua/luabridge.h line: 179"
+        );
+        lua_ffi::lua_pushlightuserdata(state, SharedPtr::as_ptr(link) as *const c_void);
+        lua_ffi::lua_rawget(state, -2);
+        if lua_ffi::lua_type(state, -1) == 0 {
+            lua_ffi::lua_settop(state, -2);
+            let _ud = stub_0x2b7770(state, link);
+            lua_ffi::lua_pushlightuserdata(state, SharedPtr::as_ptr(link) as *const c_void);
+            lua_ffi::lua_pushvalue(state, -2);
+            lua_ffi::lua_rawset(state, -4);
+        }
+        lua_ffi::lua_remove(state, -2);
+    }
 }
 
 // 0x2a4ca0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEEENS0_10connectionERKT_
@@ -6003,8 +6399,18 @@ pub fn stub_0x2b6414(slot: *mut TripleSlotNode) {
 // 0x2b7770 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13pushNewObjectIS5_EEPS5_P9lua_StateT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>* RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::pushNewObject<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: boost::shared_ptr<RBX::Instance>* RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::pushNewObject<boost::shared_ptr<RBX::Instance>>(lua_State *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2b7770() -> ! {
-    todo!("0x2b7770 boost::shared_ptr<RBX::Instance>* RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::pushNewObject<boost::shared_ptr<RBX::Instance>>(lua_State *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2b7770(state: *mut LuaState, instance: &SharedPtr<Instance>) -> *mut SharedPtr<Instance> {
+    // IDA 0x2b7770: `ud = lua_newuserdata(L, 8)`; the `shared_count` copy into
+    // `ud[1]` retains the link; metatable = registry["Object"]; returns `ud`.
+    // The copy's retain is `Clone`; the userdata bytes belong to Lua.
+    // SAFETY: `state` must be a live Lua state.
+    let _retained = SharedPtr::clone(instance);
+    unsafe {
+        let ud = lua_ffi::lua_newuserdata(state, 8) as *mut SharedPtr<Instance>;
+        lua_ffi::lua_getfield(state, -10000, INSTANCE_BRIDGE_CLASS.as_ptr() as *const c_char);
+        lua_ffi::lua_setmetatable(state, -2);
+        ud
+    }
 }
 
 // 0x2b7e68 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexEP9lua_State
@@ -43020,15 +43426,17 @@ pub fn stub_0x25ddfc() {
 // 0x25de9c — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x25de9c() -> ! {
-    todo!("0x25de9c __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25de9c() {
+    // IDA 0x25de9c: ZThn32 D1 — `this -= 0x32` (SUBS 0x25de9c) then the Instance D2 in place;
+    // the base offset collapses under single inheritance.
 }
 
 // 0x25dea4 — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x25dea4() -> ! {
-    todo!("0x25dea4 __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dea4() {
+    // IDA 0x25dea4: ZThn32 D0 — `this -= 0x32`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25df48 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -43050,8 +43458,14 @@ pub fn stub_0x25df50() {
 // 0x282734 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x282734() -> ! {
-    todo!("0x282734 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x282734(bind: crate::data_model::WeakThreadStringBind) -> crate::data_model::LuaDmCallback {
+    // IDA 0x282734: `function<void(DataModel*)>` ctor from the thread/string
+    // bind — retains the thread (`OSAtomicAdd32`, 0x282aa6), copies the string
+    // (0x282ab8), installs the vtable via `assign_to` (twin of stub_0x282a48).
+    // Moving the bind in is the retain + copy.
+    let mut slot = crate::data_model::LuaDmCallback::new();
+    crate::data_model::stub_0x282a48(&mut slot, bind, weak_thread_string_invoke);
+    slot
 }
 
 // 0x2828bc — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE

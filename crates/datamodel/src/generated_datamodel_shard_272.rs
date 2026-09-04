@@ -441,8 +441,17 @@ pub fn stub_0x294e3c() -> ! {
 // 0x295320 — __ZN3RBX3Lua17protect_metatableEP9lua_Statei
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::protect_metatable(lua_State *,int)")]
-pub fn stub_0x295320() -> ! {
-    todo!("0x295320 RBX::Lua::protect_metatable(lua_State *,int)")
+pub fn stub_0x295320(state: *mut crate::instance::LuaState, index: i32) -> i32 {
+    // IDA 0x295320: `lua_pushstring(L, "The metatable is locked")`, then
+    // `return lua_setfield(L, idx - 1, "__metatable")`.
+    // SAFETY: `state` must be a live Lua state.
+    unsafe {
+        crate::instance::lua_ffi::lua_pushstring(
+            state,
+            b"The metatable is locked ".as_ptr() as *const core::ffi::c_char,
+        );
+        crate::instance::lua_ffi::lua_setfield(state, index - 1, b"__metatable ".as_ptr() as *const core::ffi::c_char)
+    }
 }
 
 // 0x29534c — __ZN3RBX13ScriptContext16addStarterScriptEi

@@ -8,6 +8,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_05::Instance;
 
 // 0x85d5b4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_19CustomEventReceiverENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
@@ -528,18 +529,29 @@ pub fn stub_0x894920() -> ! {
     todo!("0x894920 RBX::Reflection::Call1Helper<RBX::PersonalServerService,void (RBX::PersonalServerService::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::PersonalServerService*,void (RBX::PersonalServerService::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
 }
 
+/// Rust model of `RBX::CellID` (IDA `0x897568`): the flag byte, three coords,
+/// and the retaining instance link (words `+16`-`+23`).
+pub struct CellId {
+    pub flag: bool,
+    pub coords: [f32; 3],
+    pub link: SharedPtr<Instance>,
+}
+
 // 0x897564 — __ZN3RBX6CellIDC1EbPfN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::CellID::CellID(bool,float *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::CellID::CellID(bool,float *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x897564() -> ! {
-    todo!("0x897564 RBX::CellID::CellID(bool,float *,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x897564(flag: bool, coords: &[f32; 3], instance: &SharedPtr<Instance>) -> CellId {
+    // IDA 0x897564: `B.W CellIDC2` — C1 tail-calls C2 (0x897568).
+    stub_0x897568(flag, coords, instance)
 }
 
 // 0x897568 — __ZN3RBX6CellIDC2EbPfN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::CellID::CellID(bool,float *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::CellID::CellID(bool,float *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x897568() -> ! {
-    todo!("0x897568 RBX::CellID::CellID(bool,float *,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x897568(flag: bool, coords: &[f32; 3], instance: &SharedPtr<Instance>) -> CellId {
+    // IDA 0x897568: zero-fill, flag byte at `+0`, three coord words at
+    // `+4`/`+8`/`+12`, `operator=` retains the link at `+16`.
+    CellId { flag, coords: *coords, link: SharedPtr::clone(instance) }
 }
 
 // 0x89f838 — __ZNK3RBX16BindableFunction12askSetParentEPKNS_8InstanceE
