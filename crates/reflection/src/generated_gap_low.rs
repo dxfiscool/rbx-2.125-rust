@@ -67,6 +67,10 @@ static HOLDER_ANTIALIASING_MODE: LazyLock<TypedHolder> =
     LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings16AntialiasingModeE"));
 static HOLDER_FRAME_RATE_MANAGER_MODE: LazyLock<TypedHolder> =
     LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings20FrameRateManagerModeE"));
+static HOLDER_GRAPHICS_MODE: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings12GraphicsModeE"));
+static HOLDER_AA_SAMPLES: LazyLock<TypedHolder> =
+    LazyLock::new(|| typed_holder_init("N3RBX15CRenderSettings9AASamplesE"));
 
 /// IDA 0xc95c: function-local `static s` with `__cxa_guard_acquire`/`release`
 /// one-time fill; `LazyLock` is the Rust equivalent.
@@ -88,6 +92,13 @@ fn holder_antialiasing_mode() -> &'static TypedHolder {
 
 fn holder_frame_rate_manager_mode() -> &'static TypedHolder {
     &HOLDER_FRAME_RATE_MANAGER_MODE
+}
+fn holder_graphics_mode() -> &'static TypedHolder {
+    &HOLDER_GRAPHICS_MODE
+}
+
+fn holder_aa_samples() -> &'static TypedHolder {
+    &HOLDER_AA_SAMPLES
 }
 
 /// IDA 0xc90c: `operator=<T>`: same-holder short path (`a1[1] = *a2`); else
@@ -1094,29 +1105,34 @@ pub fn stub_0xe24c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xe3ec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12GraphicsModeEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::GraphicsMode>(RBX::CRenderSettings::GraphicsMode const&)")]
-pub fn stub_0xe3ec() -> ! {
-    todo!("0xe3ec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::GraphicsMode>(RBX::C")
+pub fn stub_0xe3ec(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xe3ec: `operator=<GraphicsMode>`; returns `a1` (decompiled 0xe3ec: same-holder `a1[1] = *a2`, else destroy/clear/rebind).
+    placement_any_assign(cell, holder_graphics_mode(), value);
+    cell
 }
 
 // 0xe43c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::singleton(void)")]
-pub fn stub_0xe43c() -> ! {
-    todo!("0xe43c rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::singleton(void)")
+pub fn stub_0xe43c() -> &'static TypedHolder {
+    // IDA 0xe43c: `singleton()` returns `&s` (guard-once fill of typeinfo/destruct/construct, decompiled 0xe43c).
+    holder_graphics_mode()
 }
 
 // 0xe4a8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::construct_func(char const*,char *)")]
-pub fn stub_0xe4a8() -> ! {
-    todo!("0xe4a8 rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::construct_func(char const*,char *)")
+pub fn stub_0xe4a8(src: &i32, dst: &mut i32) {
+    // IDA 0xe4a8: `construct_func`; copies one word when the destination is set.
+    (holder_graphics_mode().construct)(src, dst);
 }
 
 // 0xe4b4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12GraphicsModeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::destruct_func(char *)")]
-pub fn stub_0xe4b4() -> ! {
-    todo!("0xe4b4 rbx::implementation::typed_holder<RBX::CRenderSettings::GraphicsMode>::destruct_func(char *)")
+pub fn stub_0xe4b4(storage: &mut i32) {
+    // IDA 0xe4b4: `destruct_func`; empty body (`BX LR`, decompiled 0xe4b4).
+    (holder_graphics_mode().destruct)(storage);
 }
 
 // 0xe4b8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE13convertToItemERKS3_
@@ -1132,8 +1148,9 @@ pub fn stub_0xe4b8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xe584 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12GraphicsModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::GraphicsMode const& rbx::any_cast<RBX::CRenderSettings::GraphicsMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xe584() -> ! {
-    todo!("0xe584 RBX::CRenderSettings::GraphicsMode const& rbx::any_cast<RBX::CRenderSettings::GraphicsMode const&,RBX::Region3>(rbx::pla")
+pub fn stub_0xe584(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xe584: `any_cast<GraphicsMode const&, Region3>`; typeinfo + `"N3RBX15CRenderSettings12GraphicsModeE"` name check, mismatch throws `bad_placement_any_cast`; returns `a1 + 1` (decompiled 0xe584).
+    placement_any_cast(cell, holder_graphics_mode())
 }
 
 // 0xe674 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueERKNS_4NameERS3_
@@ -1167,29 +1184,34 @@ pub fn stub_0xe78c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 // 0xe92c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings9AASamplesEEERS3_RKT_
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AASamples>(RBX::CRenderSettings::AASamples const&)")]
-pub fn stub_0xe92c() -> ! {
-    todo!("0xe92c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AASamples>(RBX::CRen")
+pub fn stub_0xe92c(cell: &mut PlacementAnyCell, value: i32) -> &mut PlacementAnyCell {
+    // IDA 0xe92c: `operator=<AASamples>`; returns `a1` (decompiled 0xe92c: same-holder `a1[1] = *a2`, else destroy/clear/rebind).
+    placement_any_assign(cell, holder_aa_samples(), value);
+    cell
 }
 
 // 0xe97c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE9singletonEv
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::singleton(void)")]
-pub fn stub_0xe97c() -> ! {
-    todo!("0xe97c rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::singleton(void)")
+pub fn stub_0xe97c() -> &'static TypedHolder {
+    // IDA 0xe97c: `singleton()` returns `&s` (guard-once fill of typeinfo/destruct/construct, decompiled 0xe97c).
+    holder_aa_samples()
 }
 
 // 0xe9e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::construct_func(char const*,char *)")]
-pub fn stub_0xe9e8() -> ! {
-    todo!("0xe9e8 rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::construct_func(char const*,char *)")
+pub fn stub_0xe9e8(src: &i32, dst: &mut i32) {
+    // IDA 0xe9e8: `construct_func`; copies one word when the destination is set.
+    (holder_aa_samples().construct)(src, dst);
 }
 
 // 0xe9f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings9AASamplesEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::destruct_func(char *)")]
-pub fn stub_0xe9f4() -> ! {
-    todo!("0xe9f4 rbx::implementation::typed_holder<RBX::CRenderSettings::AASamples>::destruct_func(char *)")
+pub fn stub_0xe9f4(storage: &mut i32) {
+    // IDA 0xe9f4: `destruct_func`; empty body (`BX LR`, decompiled 0xe9f4).
+    (holder_aa_samples().destruct)(storage);
 }
 
 // 0xe9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE13convertToItemERKS3_
@@ -1205,8 +1227,9 @@ pub fn stub_0xe9f8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0xeac4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings9AASamplesENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::CRenderSettings::AASamples const& rbx::any_cast<RBX::CRenderSettings::AASamples const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xeac4() -> ! {
-    todo!("0xeac4 RBX::CRenderSettings::AASamples const& rbx::any_cast<RBX::CRenderSettings::AASamples const&,RBX::Region3>(rbx::placement")
+pub fn stub_0xeac4(cell: &PlacementAnyCell) -> &i32 {
+    // IDA 0xeac4: `any_cast<AASamples const&, Region3>`; typeinfo + `"N3RBX15CRenderSettings9AASamplesE"` name check, mismatch throws `bad_placement_any_cast`; returns `a1 + 1` (decompiled 0xeac4).
+    placement_any_cast(cell, holder_aa_samples())
 }
 
 // 0xebb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueERKNS_4NameERS3_
@@ -1237,6 +1260,28 @@ mod holder_any_tests {
         assert!(std::ptr::eq(holder_resolution_preset(), stub_0xc95c()));
         assert_eq!(holder_quality_level().type_name, "N3RBX15CRenderSettings12QualityLevelE");
         assert!(std::ptr::eq(holder_shadow_mode(), stub_0xd47c()));
+    }
+    #[test]
+    fn graphics_and_aa_round_trip() {
+        assert!(std::ptr::eq(holder_graphics_mode(), stub_0xe43c()));
+        assert_eq!(holder_graphics_mode().type_name, "N3RBX15CRenderSettings12GraphicsModeE");
+        assert!(std::ptr::eq(holder_aa_samples(), stub_0xe97c()));
+        assert_eq!(holder_aa_samples().type_name, "N3RBX15CRenderSettings9AASamplesE");
+        let mut cell = PlacementAnyCell::default();
+        stub_0xe3ec(&mut cell, 4);
+        assert_eq!(*stub_0xe584(&cell), 4);
+        let mut other = PlacementAnyCell::default();
+        stub_0xe92c(&mut other, 2);
+        assert_eq!(*stub_0xeac4(&other), 2);
+        let mut dst = 0;
+        stub_0xe4a8(&6, &mut dst);
+        assert_eq!(dst, 6);
+        stub_0xe4b4(&mut dst);
+        assert_eq!(dst, 6);
+        stub_0xe9e8(&8, &mut dst);
+        assert_eq!(dst, 8);
+        stub_0xe9f4(&mut dst);
+        assert_eq!(dst, 8);
     }
 
     #[test]

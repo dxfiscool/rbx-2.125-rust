@@ -5,12 +5,108 @@
 #![allow(non_snake_case)]
 #![allow(clippy::all)]
 use rbx_core::SharedPtr;
+use crate::descriptor::Variant;
+use std::sync::LazyLock;
+
+// ---- CRenderSettingsItem / ResolutionPreset models (IDA 0xfd0c..0x1055c) ----
+// `EnumPropDescriptor<CRenderSettingsItem, ResolutionPreset>` keeps the enum
+// singleton link at +40/+48 and the member GetSetImpl at +44 (IDA 0xfe84), and
+// every accessor below dispatches through that member (vf+8 get / vf+12 set),
+// exactly like the `ExplosionEnumPropDesc` precedent in `descriptor.rs`. The
+// member-function pointers themselves have no Rust form and are elided (cf.
+// `generated_refl_35.rs` batch-2 note); the access closures close over the
+// described field instead.
+
+/// `CRenderSettingsItem` described state covered here (IDA 0xfe30: the
+/// `DescribedBase` adjusts by -36 to this).
+#[derive(Debug, Clone, Default)]
+pub struct RenderSettingsItemState {
+    pub resolution_preset: i32,
+}
+
+/// Get/set pair behind the member at +44 (cf. `ExplosionTypeAccess`).
+pub struct ResolutionPresetAccess {
+    pub get: Box<dyn Fn(&RenderSettingsItemState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut RenderSettingsItemState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem, ResolutionPreset>`
+/// (IDA 0xfe84).
+pub struct ResolutionPresetPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: ResolutionPresetAccess,
+    /// Singleton link stored at +40/+48 (IDA 0xfe84 `doGetSingleton`).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `Singleton<EnumDesc<ResolutionPreset>>` backing store. The C2 at 0x9100
+/// installs the name `"Resolution"` with empty tables; pairs are registered by
+/// the `addPair` stubs, so the model starts empty too.
+static RESOLUTION_PRESET_DESC: LazyLock<crate::enum_desc::EnumDesc> =
+    LazyLock::new(|| crate::enum_desc::EnumDesc::new("Resolution"));
+
+pub fn resolution_preset_enum_desc() -> &'static crate::enum_desc::EnumDesc {
+    &RESOLUTION_PRESET_DESC
+}
+
+/// Canonical member access closing over `resolution_preset`.
+pub fn resolution_preset_access() -> ResolutionPresetAccess {
+    ResolutionPresetAccess {
+        get: Box::new(|obj: &RenderSettingsItemState| obj.resolution_preset),
+        set: Box::new(|obj: &mut RenderSettingsItemState, value: i32| {
+            obj.resolution_preset = value;
+        }),
+    }
+}
+
+/// `RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int (),0>` (IDA 0xfd0c):
+/// member-function slot stored at +40, `Type::getSingleton<int>` return at +28.
+#[derive(Debug, Clone)]
+pub struct BoundFunc0Desc {
+    pub name: String,
+    pub category: String,
+    pub member: usize,
+    pub return_type: &'static str,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `XmlElement` value payload as consumed at IDA 0x102cc: xsi:nil leaves the
+/// object untouched; otherwise the int form is tried first, then the string
+/// form. Anything else hit `ReleaseAssert(false)` (`Reflection.h:359`) and has
+/// no representable state here.
+#[derive(Debug, Clone)]
+pub enum XmlReadValue {
+    Nil,
+    Int(i32),
+    Text(String),
+}
 
 // 0xfd0c — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::BoundFuncDesc(int (CRenderSettingsItem::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_fd0c() -> ! {
-    todo!("0xfd0c RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::BoundFuncDesc(int (CRenderSettingsItem::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_fd0c(
+    member: usize,
+    name: &str,
+    category: &str,
+    permissions: u32,
+    attributes: u32,
+) -> BoundFunc0Desc {
+    // IDA 0xfd0c: `classDescriptor` + `FunctionDescriptor` base init (name/category),
+    // vtable install, member-function pair stored at +40 (decompiled 0xfd0c `v8` at
+    // `v14 + 40`), `Type::getSingleton<int>` return stored at +28. The member
+    // pointer itself has no Rust form and is kept as an opaque slot.
+    BoundFunc0Desc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        return_type: "int",
+        permissions,
+        attributes,
+    }
 }
 
 // 0xfe04 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev
@@ -23,22 +119,51 @@ pub fn stub_fe04() {
 // 0xfe30 — __ZNK3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_fe30() -> ! {
-    todo!("0xfe30 RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_fe30(
+    desc: &BoundFunc0Desc,
+    obj: Option<&RenderSettingsItemState>,
+    invoke: &dyn Fn(&RenderSettingsItemState) -> i32,
+) -> Variant {
+    // IDA 0xfe30: `instance = a2 ? a2 - 36 : 0`, then `Call0Helper::call(instance,
+    // member@+40, member@+44, args + 4)` (decompiled 0xfe30). A null instance
+    // trapped in the callee; the port panics instead. The member dispatch is
+    // elided (no Rust form for member-function pointers); `invoke` is the bound
+    // `int (CRenderSettingsItem::*)(void)`.
+    let _ = desc.member;
+    let obj = obj.expect("BoundFuncDesc::execute on null instance (IDA 0xfe30)");
+    stub_fe54(obj, invoke)
 }
 
 // 0xfe54 — __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<CRenderSettingsItem,int (CRenderSettingsItem::*)(void),int>::call(CRenderSettingsItem*,int (CRenderSettingsItem::*)(void),RBX::Reflection::Variant &)")]
 #[doc(alias = "__ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE")]
-pub fn stub_fe54() -> ! {
-    todo!("0xfe54 RBX::Reflection::Call0Helper<CRenderSettingsItem,int (CRenderSettingsItem::*)(void),int>::call(CRenderSettingsItem*,int (CRenderSettingsItem::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_fe54(obj: &RenderSettingsItemState, invoke: &dyn Fn(&RenderSettingsItemState) -> i32) -> Variant {
+    // IDA 0xfe54: this-adjust (`a1 + (a3 >> 1)`) with virtual dispatch when the
+    // member tag is odd, then `v = call(this)`; out gets `Type::getSingleton<int>`
+    // and `placement_any<int> = v` (decompiled 0xfe54). Adjustment/dispatch are
+    // member-pointer mechanics with no Rust form; the call and the int `Variant`
+    // wrap are the observable behavior.
+    Variant::Int(invoke(obj))
 }
 
 // 0xfe84 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_fe84() -> ! {
-    todo!("0xfe84 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_fe84(name: &str, category: &str, attributes: u32, permissions: u32) -> ResolutionPresetPropDesc {
+    // IDA 0xfe84: `classDescriptor` + `Singleton<EnumDesc<ResolutionPreset>>`
+    // fetch, `PropertyDescriptor` base init, enum link stored at +40/+48, vtable
+    // install, member GetSetImpl `new(0x14)` holding the getter/setter pair at +44,
+    // then the read/write-only flag fixups (decompiled 0xfe84). Same shape as the
+    // `ExplosionEnumPropDesc` ctor at 0x4a5834. The getter/setter member pointers
+    // (a4..a7) have no Rust form; the canonical field access is installed.
+    ResolutionPresetPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: resolution_preset_access(),
+        enum_desc: resolution_preset_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x10038 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED0Ev
@@ -65,29 +190,43 @@ pub fn stub_10074() {
 // 0x10084 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_10084() -> ! {
-    todo!("0x10084 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10084(desc: &ResolutionPresetPropDesc, a: &RenderSettingsItemState, b: &RenderSettingsItemState) -> bool {
+    // IDA 0x10084: `v = member(+44)->get(a)` then `return v == member->get(b)`
+    // (both through vf+8, decompiled 0x10084). Same as 0x4a5a34.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x100ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_100ac() -> ! {
-    todo!("0x100ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_100ac(desc: &ResolutionPresetPropDesc, obj: &RenderSettingsItemState) -> Variant {
+    // IDA 0x100ac: `v = getEnumValue(obj)` (vf+68), out = `Variant(int, v)` with
+    // `Type<int>` + `placement_any<int>=` (decompiled 0x100ac). Same as 0x4a5a5c.
+    Variant::Int((desc.access.get)(obj))
 }
 
 // 0x100d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_100d0() -> ! {
-    todo!("0x100d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_100d0(desc: &ResolutionPresetPropDesc, obj: &mut RenderSettingsItemState, value: &Variant) {
+    // IDA 0x100d0: int-typed payloads use `any_cast<int>` directly; anything else
+    // goes through `Variant::convert<int>`; then `setEnumValue(obj, v)` (vf+72,
+    // decompiled 0x100d0). Same as 0x4a5a80.
+    let v = match value {
+        Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x10220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_10220() -> ! {
-    todo!("0x10220 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_10220(desc: &ResolutionPresetPropDesc, src: &RenderSettingsItemState, dst: &mut RenderSettingsItemState) {
+    // IDA 0x10220: `v = member(+44)->get(src)` (vf+8), then `member->set(dst, v)`
+    // (vf+12, decompiled 0x10220). Same as 0x4a5bcc.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x10244 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14hasStringValueEv
@@ -101,50 +240,108 @@ pub fn stub_10244() -> bool {
 // 0x10248 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_10248() -> ! {
-    todo!("0x10248 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_10248(desc: &ResolutionPresetPropDesc, obj: &RenderSettingsItemState) -> String {
+    // IDA 0x10248: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<ResolutionPreset>::convertToString(enumdesc@+48, v)` (decompiled
+    // 0x10248). Same as 0x4a5bf8.
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x1026c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_1026c() -> ! {
-    todo!("0x1026c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_1026c(desc: &ResolutionPresetPropDesc, obj: &mut RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1026c: `Name::lookup(&name, str)`, `convertToValue(enumdesc@+48, name,
+    // &out)`; on 1, `member(+44)->set(obj, out)` and return 1, else 0 (decompiled
+    // 0x1026c). `&str` folds the lookup step; `lookup_value` covers
+    // `convertToValue` including legacy names. Same as 0x4a5c1c.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x102ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_102ac() -> ! {
-    todo!("0x102ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_102ac(desc: &ResolutionPresetPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x102ac: `v = member(+44)->get(obj)` (vf+8), `clearValue(pair)` then store
+    // int tag 5 + value, return 5 (decompiled 0x102ac). The tag is the Xml int type
+    // code; the payload is the enum int, which is what the model returns. Same as
+    // 0x4a5c5c.
+    (desc.access.get)(obj)
 }
 
 // 0x102cc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_102cc() -> ! {
-    todo!("0x102cc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_102cc(desc: &ResolutionPresetPropDesc, obj: &mut RenderSettingsItemState, value: &XmlReadValue) -> bool {
+    // IDA 0x102cc: xsi:nil returns untouched; an int-valued element runs
+    // `setIntValue` and returns on success; a string-valued element runs
+    // `Name::lookup` + `convertToValue` then `member(+44)->set(obj, v)`; any other
+    // shape falls into `ReleaseAssert(false)` (`Reflection.h:359`, decompiled
+    // 0x102cc). A failed int mapping falls through to the string check and then
+    // the assert, so it panics too.
+    match value {
+        XmlReadValue::Nil => false,
+        XmlReadValue::Int(v) => {
+            match usize::try_from(*v)
+                .ok()
+                .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+            {
+                Some(mapped) if mapped != -1 => {
+                    (desc.access.set)(obj, mapped);
+                    true
+                }
+                _ => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x102cc)"),
+            }
+        }
+        XmlReadValue::Text(text) => match desc.enum_desc.lookup_value(text) {
+            Some(v) => {
+                (desc.access.set)(obj, v);
+                true
+            }
+            None => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x102cc)"),
+        },
+    }
 }
 
 // 0x1050c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_1050c() -> ! {
-    todo!("0x1050c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1050c(desc: &ResolutionPresetPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x1050c: `v = member(+44)->get(obj)` (vf+8), return
+    // `convertToIndex(enumdesc@+48, v)` (decompiled 0x1050c). Same as 0x4a5ebc.
+    stub_10604(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x10528 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_10528() -> ! {
-    todo!("0x10528 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_10528(desc: &ResolutionPresetPropDesc, obj: &mut RenderSettingsItemState, index: usize) -> bool {
+    // IDA 0x10528: `if (*(enumdesc+40) > index)` load `values[index]`,
+    // `member(+44)->set(obj, v)`, return 1; else return 0 (decompiled 0x10528).
+    // Same as 0x4a5ed8.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x1055c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_1055c() -> ! {
-    todo!("0x1055c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1055c(desc: &ResolutionPresetPropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x1055c: tail-jump to `member(+44)->get(obj)` (vf+8, disasm 0x1055c);
+    // the whole body is the forward. Same as 0x4a5f0c.
+    (desc.access.get)(obj)
 }
 
 // 0x10564 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -725,4 +922,113 @@ pub fn stub_11f20() {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11equalValuesEPKNS0_13DescribedBaseES8_")]
 pub fn stub_11f30() -> ! {
     todo!("0x11f30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+#[cfg(test)]
+mod resolution_preset_tests {
+    use super::*;
+    use crate::enum_desc::EnumDesc;
+
+    static TEST_DESC: LazyLock<EnumDesc> = LazyLock::new(|| {
+        let mut d = EnumDesc::new("Resolution");
+        d.add_pair(0, "Low");
+        d.add_pair(1, "High");
+        d
+    });
+
+    fn test_desc() -> ResolutionPresetPropDesc {
+        ResolutionPresetPropDesc {
+            name: "Resolution".to_owned(),
+            category: "Rendering".to_owned(),
+            access: resolution_preset_access(),
+            enum_desc: &TEST_DESC,
+            attributes: 0,
+            permissions: 0,
+        }
+    }
+
+    #[test]
+    fn ctor_links_enum_singleton() {
+        let desc = stub_fe84("Resolution", "Rendering", 0, 0);
+        assert_eq!(desc.name, "Resolution");
+        assert!(std::ptr::eq(desc.enum_desc, resolution_preset_enum_desc()));
+        assert_eq!(desc.enum_desc.enum_name, "Resolution");
+        let func = stub_fd0c(0x40, "Replay", "Rendering", 0, 0);
+        assert_eq!(func.return_type, "int");
+    }
+
+    #[test]
+    fn execute_calls_member_and_wraps_int() {
+        let func = stub_fd0c(0x40, "Replay", "Rendering", 0, 0);
+        let obj = RenderSettingsItemState { resolution_preset: 1 };
+        let out = stub_fe30(&func, Some(&obj), &|o| o.resolution_preset + 10);
+        match out {
+            Variant::Int(v) => assert_eq!(v, 11),
+            _ => panic!("expected int variant"),
+        }
+        assert!(matches!(stub_fe54(&obj, &|o| o.resolution_preset), Variant::Int(1)));
+    }
+
+    #[test]
+    #[should_panic]
+    fn execute_null_instance_panics() {
+        let func = stub_fd0c(0x40, "Replay", "Rendering", 0, 0);
+        let _ = stub_fe30(&func, None, &|o| o.resolution_preset);
+    }
+
+    #[test]
+    fn value_round_trip() {
+        let desc = test_desc();
+        let a = RenderSettingsItemState { resolution_preset: 1 };
+        let b = RenderSettingsItemState { resolution_preset: 0 };
+        assert!(stub_10084(&desc, &a, &a));
+        assert!(!stub_10084(&desc, &a, &b));
+        assert!(matches!(stub_100ac(&desc, &a), Variant::Int(1)));
+        let mut dst = RenderSettingsItemState::default();
+        stub_100d0(&desc, &mut dst, &Variant::Int(1));
+        assert_eq!(dst.resolution_preset, 1);
+        stub_100d0(&desc, &mut dst, &Variant::Float(0.0));
+        assert_eq!(dst.resolution_preset, 0);
+        let mut cp = RenderSettingsItemState::default();
+        stub_10220(&desc, &a, &mut cp);
+        assert_eq!(cp.resolution_preset, 1);
+        assert_eq!(stub_1055c(&desc, &a), 1);
+        assert_eq!(stub_102ac(&desc, &a), 1);
+    }
+
+    #[test]
+    fn string_index_xml_paths() {
+        let desc = test_desc();
+        let a = RenderSettingsItemState { resolution_preset: 1 };
+        assert_eq!(stub_10248(&desc, &a), "High");
+        let mut obj = RenderSettingsItemState::default();
+        assert!(stub_1026c(&desc, &mut obj, "High"));
+        assert_eq!(obj.resolution_preset, 1);
+        assert!(!stub_1026c(&desc, &mut obj, "Ultra"));
+        assert_eq!(stub_1050c(&desc, &a), 1);
+        assert!(stub_10528(&desc, &mut obj, 0));
+        assert_eq!(obj.resolution_preset, 0);
+        assert!(!stub_10528(&desc, &mut obj, 9));
+        assert!(stub_102cc(&desc, &mut obj, &XmlReadValue::Text("High".to_owned())));
+        assert_eq!(obj.resolution_preset, 1);
+        assert!(stub_102cc(&desc, &mut obj, &XmlReadValue::Int(0)));
+        assert_eq!(obj.resolution_preset, 0);
+        assert!(!stub_102cc(&desc, &mut obj, &XmlReadValue::Nil));
+    }
+
+    #[test]
+    #[should_panic]
+    fn read_unknown_name_panics() {
+        let desc = test_desc();
+        let mut obj = RenderSettingsItemState::default();
+        let _ = stub_102cc(&desc, &mut obj, &XmlReadValue::Text("Ultra".to_owned()));
+    }
+
+    #[test]
+    #[should_panic]
+    fn read_unmapped_int_panics() {
+        let desc = test_desc();
+        let mut obj = RenderSettingsItemState::default();
+        let _ = stub_102cc(&desc, &mut obj, &XmlReadValue::Int(7));
+    }
 }
