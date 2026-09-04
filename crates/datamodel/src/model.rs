@@ -5,6 +5,68 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
 use rbx_core::SharedPtr;
+use rbx_core::WeakPtr;
+use rbx_core::signal::Signal;
+use crate::generated_05::Instance;
+use crate::instance::{
+    AccoutrementBind, PartAdornment, PartInstance, PartRefPropDescriptor, PVRefExtra, Vector3,
+};
+use crate::workspace::Workspace;
+use std::any::Any;
+use std::sync::Arc;
+
+/// Rust model of `RBX::PartDragTool` (IDA `0x2f15ec` family): the
+/// `enable_shared_from_this` weak owner behind `shared_from<PartDragTool>`
+/// plus the rotate-grab flag behind the cursor-name branch (IDA `0x2f184c`).
+pub struct PartDragTool {
+    pub weak_owner: WeakPtr<PartDragTool>,
+    pub grab_rotate: bool,
+}
+
+/// Rust model of `RBX::RunDragger` (IDA `0x2f2bf0`/`0x2f2ff8`): the workspace
+/// link (`+40`), the drag-part weak (`+24`), the grab point and the
+/// upright-applied flag behind the `turnUpright` tail call. Body/frame/
+/// velocity words land with the physics batch.
+pub struct RunDragger {
+    pub workspace: *const Workspace,
+    pub drag_part: WeakPtr<PartInstance>,
+    pub hit: Vector3,
+    pub upright: bool,
+}
+
+/// Rust model of `RBX::BoxSelectCommand` (IDA `0x2f6ff4`): the workspace link
+/// (`+16`) plus the selection corners (the `+92` region, empty at
+/// construction); the `MouseCommand` base C2 collapses (compiler-managed).
+pub struct BoxSelectCommand {
+    pub workspace: *const Workspace,
+    pub anchor: Option<Vector3>,
+    pub current: Option<Vector3>,
+}
+
+/// Rust model of `RBX::InterpolatedCFrame::FrameInfo` (IDA `0x3252f8`): one
+/// history-ring entry — sample time plus position. Rotation/velocity words
+/// land with the CFrame batch.
+pub struct FrameSample {
+    pub time: f64,
+    pub pos: Vector3,
+}
+
+/// Rust model of `RBX::InterpolatedCFrame` (IDA `0x3252f8`/`0x325998`): the
+/// `circular_buffer<FrameInfo>` history (`+96`), the previous-frame local
+/// time and the adaptive rate (`+64` accumulation). The `NUM_HISTORY`
+/// capacity assert (IDA `0x3253d0`) rides `Vec` growth.
+pub struct InterpolatedCFrame {
+    pub samples: Vec<FrameSample>,
+    pub local_time: f64,
+    pub rate: f64,
+}
+
+/// Connection handle returned by the `TouchedSignal::connect<Accoutrement>`
+/// instantiation (IDA `0x390270`): owns the slot closure's strong ref so the
+/// `Signal`'s weak slot stays live — same discipline as `HeartbeatConnection`.
+pub struct TouchedConnection {
+    pub keep: SharedPtr<dyn Any + Send + Sync>,
+}
 
 // 135 stubs in this file | batch range 0x2e6070..0x6d1334 (60 existing + 75 new slice C)
 
@@ -263,169 +325,415 @@ pub fn stub_0x2f15e4() -> ! {
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)")]
 // was: boost::shared_ptr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)
-pub fn stub_0x2f15ec() -> ! {
-    todo!("0x2f15ec boost::shared_ptr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)")
+pub fn stub_0x2f15ec(this: *const PartDragTool) -> Option<SharedPtr<PartDragTool>> {
+    // IDA 0x2f15ec: null yields the empty `shared_ptr` (0x2f1638-0x2f16be);
+    // otherwise the weak at `+32` is locked under the use-count check
+    // (0x2f163c-0x2f169a) and an expired owner throws `bad_weak_ptr`
+    // (0x2f1642-0x2f16fe). The spinlock retain collapses into `Arc`.
+    // SAFETY: `this` must be null or point to a `PartDragTool` whose weak
+    // owner was armed by a live `SharedPtr<PartDragTool>`.
+    if this.is_null() {
+        return None;
+    }
+    match unsafe { (*this).weak_owner.upgrade() } {
+        Some(owned) => Some(owned),
+        None => panic!("0x2f15ec shared_from: bad_weak_ptr"),
+    }
 }
 
 // 0x2f1830 — __ZNK3RBX12PartDragTool14drawConnectorsEv
 #[doc(alias = "RBX::PartDragTool::drawConnectors(void)const")]
 // was: RBX::PartDragTool::drawConnectors(void)const
-pub fn stub_0x2f1830() -> ! {
-    todo!("0x2f1830 RBX::PartDragTool::drawConnectors(void)const")
+pub fn stub_0x2f1830(_tool: &PartDragTool) -> bool {
+    // IDA 0x2f1830: single `MOVS R0, #1` (0x2f1832) — connectors always drawn.
+    true
 }
 
 // 0x2f1834 — __ZNK3RBX12PartDragTool13getCursorNameEv
 #[doc(alias = "RBX::PartDragTool::getCursorName(void)const")]
 // was: RBX::PartDragTool::getCursorName(void)const
-pub fn stub_0x2f1834() -> ! {
-    todo!("0x2f1834 RBX::PartDragTool::getCursorName(void)const")
+pub fn stub_0x2f1834(tool: &PartDragTool) -> &'static str {
+    // IDA 0x2f1834: the flag at `+88` selects the cursor name (0x2f184c-0x2f185a);
+    // the `std::string` copy (0x2f1862) collapses into the borrow.
+    if tool.grab_rotate {
+        "GrabRotateCursor"
+    } else {
+        "DragCursor"
+    }
 }
 
 // 0x2f2bf0 — __ZN3RBX10RunDragger9initLocalEPNS_9WorkspaceEN5boost8weak_ptrINS_12PartInstanceEEERKN3G3D7Vector3E
 #[doc(alias = "RBX::RunDragger::initLocal(RBX::Workspace *,rbx_core::WeakPtr<RBX::PartInstance>,G3D::Vector3 const&)")]
 // was: RBX::RunDragger::initLocal(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)
-pub fn stub_0x2f2bf0() -> ! {
-    todo!("0x2f2bf0 RBX::RunDragger::initLocal(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")
+pub fn stub_0x2f2bf0(
+    workspace: *const Workspace,
+    part: &WeakPtr<PartInstance>,
+    hit: Vector3,
+) -> RunDragger {
+    // IDA 0x2f2bf0: `ReleaseAssert(!_dragPart.expired())` (0x2f2c4e-0x2f2c6e) plus
+    // the `nonNullInWorkspace` assert (0x2f2cc2-0x2f2cde); the workspace store
+    // (`+40`, 0x2f2d2e) and drag-part weak store (`+24`, 0x2f2d36-0x2f2d3e);
+    // body/frame capture (0x2f2d4c-0x2f2d8c), velocity zeroing
+    // (0x2f2d98-0x2f2dae), `inf` bounds with the `-1`/`0` sentinels
+    // (0x2f2db6-0x2f2df4) and the `turnUpright` tail call (0x2f2e20) collapse —
+    // body/frame/velocity words land with the physics batch. The world-match
+    // assert (0x2f2e34-0x2f2e5a) collapses (no World model).
+    if part.upgrade().is_none() {
+        panic!("0x2f2bf0 initLocal: !_dragPart.expired()");
+    }
+    RunDragger { workspace, drag_part: part.clone(), hit, upright: true }
 }
 
 // 0x2f2f3c — __ZN3RBX10RunDragger11turnUprightEPNS_12PartInstanceE
 #[doc(alias = "RBX::RunDragger::turnUpright(RBX::PartInstance *)")]
 // was: RBX::RunDragger::turnUpright(RBX::PartInstance *)
-pub fn stub_0x2f2f3c() -> ! {
-    todo!("0x2f2f3c RBX::RunDragger::turnUpright(RBX::PartInstance *)")
+pub fn stub_0x2f2f3c(part: *const PartInstance) -> bool {
+    // IDA 0x2f2f3c: `ReleaseAssert(part)` (0x2f2f50-0x2f2f82); non-standard parts
+    // return early (0x2f2f92-0x2f2f9a); standard parts read the frame (0x2f2fa2),
+    // pick the closest object-normal id against `unitY` (0x2f2fba-0x2f2fc0) and,
+    // unless already Y-up (`== 1`, 0x2f2fc6), reset rotation to identity through
+    // the `+208` setter (0x2f2fc8-0x2f2ff2). Frame/normal math collapses (no
+    // CFrame model): the already-upright path, `false` = no realignment.
+    // SAFETY: `part` must be non-null.
+    if part.is_null() {
+        panic!("0x2f2f3c turnUpright: part");
+    }
+    false
 }
 
 // 0x2f2ff8 — __ZN3RBX10RunDragger4initEPNS_9WorkspaceEN5boost8weak_ptrINS_12PartInstanceEEERKN3G3D7Vector3E
 #[doc(alias = "RBX::RunDragger::init(RBX::Workspace *,rbx_core::WeakPtr<RBX::PartInstance>,G3D::Vector3 const&)")]
 // was: RBX::RunDragger::init(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)
-pub fn stub_0x2f2ff8() -> ! {
-    todo!("0x2f2ff8 RBX::RunDragger::init(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")
+pub fn stub_0x2f2ff8(
+    workspace: *const Workspace,
+    part: &WeakPtr<PartInstance>,
+    hit: Vector3,
+) -> RunDragger {
+    // IDA 0x2f2ff8: same expired/nonNull asserts as `initLocal` (0x2f305a-0x2f3126)
+    // and workspace/weak stores (0x2f313a-0x2f314a); additionally the grab point
+    // is rotated into part-local space with the frame-row dot products
+    // (0x2f316e-0x2f31fe) before the shared frame capture, velocity zeroing,
+    // `inf` bounds and `turnUpright` tail (0x2f320a-0x2f32c0). The local-offset
+    // math collapses (no CoordinateFrame model); the stored world-space hit
+    // round-trips it.
+    if part.upgrade().is_none() {
+        panic!("0x2f2ff8 init: !_dragPart.expired()");
+    }
+    RunDragger { workspace, drag_part: part.clone(), hit, upright: true }
 }
 
 // 0x2f61c0 — __ZN3RBX13ArrowToolBase9findDecalEPNS_12PartInstanceERKNS_7UIEventE
 #[doc(alias = "RBX::ArrowToolBase::findDecal(RBX::PartInstance *,RBX::UIEvent const&)")]
 // was: RBX::ArrowToolBase::findDecal(RBX::PartInstance *,RBX::UIEvent const&)
-pub fn stub_0x2f61c0() -> ! {
-    todo!("0x2f61c0 RBX::ArrowToolBase::findDecal(RBX::PartInstance *,RBX::UIEvent const&)")
+pub fn stub_0x2f61c0(
+    children: &[SharedPtr<Instance>],
+    surface: i32,
+    _face: i32,
+) -> Option<SharedPtr<Instance>> {
+    // IDA 0x2f61c0: `getSurface` resolves the hit (disasm 0x2f61de); a zero
+    // surface returns null (0x2f61e2-0x2f61e4); otherwise the part children are
+    // scanned (0x2f6206-0x2f6246) for the first `isA<Decal>` (0x2f622a) whose
+    // face word (`+0x74`) matches the hit face (0x2f623a-0x2f623e). The
+    // face-word compare collapses — `Instance` models no face word — so the
+    // first Decal wins. Same class-name match as 0x392c78.
+    if surface == 0 {
+        return None;
+    }
+    children.iter().find(|c| c.class_name == "Decal").cloned()
 }
 
 // 0x2f6ff4 — __ZN3RBX16BoxSelectCommandC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::BoxSelectCommand::BoxSelectCommand(RBX::Workspace *)")]
 // was: RBX::BoxSelectCommand::BoxSelectCommand(RBX::Workspace *)
-pub fn stub_0x2f6ff4() -> ! {
-    todo!("0x2f6ff4 RBX::BoxSelectCommand::BoxSelectCommand(RBX::Workspace *)")
+pub fn stub_0x2f6ff4(workspace: *const Workspace) -> BoxSelectCommand {
+    // IDA 0x2f6ff4: `MouseCommand` C2 (decomp 0x2f7016, compiler-managed), vtable
+    // installs (0x2f702e-0x2f703a), workspace store (`+16`, 0x2f7042), zeroed
+    // words (`+17/+18/+27`, corners `+92..+108`) and the empty-vector begin/end
+    // self-pointers (`+25/+26 = +92`, 0x2f707a-0x2f7084). The lifetime `FastLog`
+    // collapses. `None` corners are the empty `+92` vector pair.
+    BoxSelectCommand { workspace, anchor: None, current: None }
 }
 
 // 0x2f79c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16BoxSelectCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BoxSelectCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::BoxSelectCommand,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::BoxSelectCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::BoxSelectCommand,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x2f79c8() -> ! {
-    todo!("0x2f79c8 boost::shared_ptr<RBX::BoxSelectCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::BoxSelectCommand,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x2f79c8(workspace: *const Workspace) -> SharedPtr<BoxSelectCommand> {
+    // IDA 0x2f79c8: `operator new(0x70)` (0x2f79fe), the C2 above (0x2f7a24), then
+    // the `shared_ptr` with the `Creatable` deleter (0x2f7a32) — the deleter
+    // collapses into `Arc`.
+    SharedPtr::new(stub_0x2f6ff4(workspace))
 }
 
 // 0x3252f8 — __ZN3RBX18InterpolatedCFrame8setValueEPNS_12PartInstanceERKN3G3D15CoordinateFrameERKNS_10RemoteTimeE
 #[doc(alias = "RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)")]
 // was: RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)
-pub fn stub_0x3252f8() -> ! {
-    todo!("0x3252f8 RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)")
+pub fn stub_0x3252f8(frame: &mut InterpolatedCFrame, pos: Vector3, remote: f64, now: f64) {
+    // IDA 0x3252f8: refresh flag set (0x325306), `notifyMoved` (0x325312),
+    // `dt = now - remote` stored (`+80`, 0x32531a-0x32532c). Empty history
+    // appends (0x325330-0x325334). Otherwise `remote - latest.time` decides
+    // (0x325338-0x325348): stale (`< 0`) samples drop (0x325532 fallthrough);
+    // equal overwrites the latest slot in place (0x325360-0x3253ae); newer
+    // appends to the ring (0x325468-0x32549c), seeding base fields below two
+    // frames (0x3254a4-0x32552a) or accumulating the interval rate above
+    // (0x3254a6-0x3254ee). Rotation/ring-capacity words collapse (no CFrame
+    // model); the `NUM_HISTORY` assert (0x3253c8-0x32540c) rides `Vec` growth.
+    frame.local_time = now;
+    match frame.samples.last().map(|s| s.time) {
+        Some(t) if remote < t => {}
+        Some(t) if remote == t => {
+            frame.samples.last_mut().expect("0x3252f8 history").pos = pos;
+        }
+        _ => {
+            if let Some(prev) = frame.samples.last() {
+                frame.rate += remote - prev.time;
+            }
+            frame.samples.push(FrameSample { time: remote, pos });
+        }
+    }
 }
 
 // 0x325998 — __ZN3RBX18InterpolatedCFrame12computeValueEPNS_12PartInstanceE
 #[doc(alias = "RBX::InterpolatedCFrame::computeValue(RBX::PartInstance *)")]
 // was: RBX::InterpolatedCFrame::computeValue(RBX::PartInstance *)
-pub fn stub_0x325998() -> ! {
-    todo!("0x325998 RBX::InterpolatedCFrame::computeValue(RBX::PartInstance *)")
+pub fn stub_0x325998(frame: &mut InterpolatedCFrame, now: f64) -> Vector3 {
+    // IDA 0x325998: `ReleaseAssert(now >= prevFrame.localTime)` (0x3259ca-0x325a18),
+    // refresh flag cleared (0x325a1c). With 2+ samples (0x325a24) the ring is
+    // scanned for the first sample at/after the sample-target time
+    // (0x325a46-0x325a78; the target-time op, 0x325a2c, collapses — no
+    // RemoteTime model, so `now` is the target): none → rate decays `*= 0.9`,
+    // `prevLocal = now` (0x325a7e-0x32598); first-sample hit → rate `*= 0.5`
+    // (0x325ab6); later hit below `1000.0` → rate `*= 1.1` (0x325ab0-0x325abe);
+    // then `interpolate` runs (0x325ac2). The frame copy-out (0x325ad0-0x325ae0)
+    // collapses into the returned position.
+    assert!(
+        now >= frame.local_time,
+        "0x325998 computeValue: now >= prevFrame.localTime"
+    );
+    if frame.samples.len() > 1 {
+        match frame.samples.iter().position(|s| s.time >= now) {
+            None => {
+                frame.rate *= 0.9;
+                frame.local_time = now;
+            }
+            Some(idx) => {
+                if idx == 0 {
+                    frame.rate *= 0.5;
+                } else {
+                    if frame.rate < 1000.0 {
+                        frame.rate *= 1.1;
+                    }
+                    let a = &frame.samples[idx - 1];
+                    let b = &frame.samples[idx];
+                    let span = (b.time - a.time).max(f64::EPSILON);
+                    let t = ((now - a.time) / span).clamp(0.0, 1.0) as f32;
+                    let lerp = |x: f32, y: f32| x + (y - x) * t;
+                    return Vector3 {
+                        x: lerp(a.pos.x, b.pos.x),
+                        y: lerp(a.pos.y, b.pos.y),
+                        z: lerp(a.pos.z, b.pos.z),
+                    };
+                }
+            }
+        }
+    }
+    frame
+        .samples
+        .last()
+        .map(|s| Vector3 { x: s.pos.x, y: s.pos.y, z: s.pos.z })
+        .unwrap_or(Vector3 { x: 0.0, y: 0.0, z: 0.0 })
 }
 
 // 0x38f01c — __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE
 #[doc(alias = "RBX::Accoutrement::dropAll(RBX::ModelInstance *)")]
 // was: RBX::Accoutrement::dropAll(RBX::ModelInstance *)
-pub fn stub_0x38f01c() -> ! {
-    todo!("0x38f01c RBX::Accoutrement::dropAll(RBX::ModelInstance *)")
+pub fn stub_0x38f01c(
+    children: &mut Vec<SharedPtr<Instance>>,
+    dropped: &mut Vec<SharedPtr<Instance>>,
+) {
+    // IDA 0x38f01c: `R1 = 0` + tail-call to `dropAllOthers` (disasm
+    // 0x38f01c-0x38f01e) — drop-all is drop-all-others with a null exception.
+    stub_0x38f024(children, None, dropped);
 }
 
 // 0x38f024 — __ZN3RBX12Accoutrement13dropAllOthersEPNS_13ModelInstanceEPS0_
 #[doc(alias = "RBX::Accoutrement::dropAllOthers(RBX::ModelInstance *,RBX::Accoutrement*)")]
 // was: RBX::Accoutrement::dropAllOthers(RBX::ModelInstance *,RBX::Accoutrement*)
-pub fn stub_0x38f024() -> ! {
-    todo!("0x38f024 RBX::Accoutrement::dropAllOthers(RBX::ModelInstance *,RBX::Accoutrement*)")
+pub fn stub_0x38f024(
+    children: &mut Vec<SharedPtr<Instance>>,
+    except: Option<*const Instance>,
+    dropped: &mut Vec<SharedPtr<Instance>>,
+) {
+    // IDA 0x38f024: null workspace returns (disasm 0x38f032-0x38f036, behind
+    // `findWorkspace` at 0x38f02c — the live-list call collapses it); then the
+    // re-scan loop (0x38f040): first `Accoutrement` child (0x38f042, same
+    // class-name match as 0x392c78), done when none (0x38f046-0x38f04a),
+    // `except` skipped (0x38f04c-0x38f04e), else `setParent(child, ws)`
+    // (0x38f038-0x38f03c). Draining here is the same observable outcome as the
+    // re-scan — every non-except Accoutrement leaves the model list for the
+    // workspace list.
+    let mut kept = Vec::with_capacity(children.len());
+    for child in children.drain(..) {
+        let is_acc = child.class_name == "Accoutrement";
+        let skipped = except.map_or(false, |e| SharedPtr::as_ptr(&child) == e);
+        if is_acc && !skipped {
+            dropped.push(child);
+        } else {
+            kept.push(child);
+        }
+    }
+    *children = kept;
 }
 
 // 0x390270 — __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_12AccoutrementENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_
 #[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>)")]
 // was: rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>)
-pub fn stub_0x390270() -> ! {
-    todo!("0x390270 rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>)")
+pub fn stub_0x390270(signal: &Signal<SharedPtr<Instance>>, bind: AccoutrementBind) -> TouchedConnection {
+    // IDA 0x390270: the `bind_t` is boxed into a `TouchedSlot` (decomp 0x390314,
+    // disasm 0x39030a-0x390314), `signal::connect` links it (0x390322) and the
+    // `connection` is returned through the out-param; the slot temp is destroyed
+    // (0x39032c) and the source `function1` cleared (0x390338). The
+    // `FLog`/`flogPrint` branches (0x3902d2-0x3902e8, 0x39033e-0x390366) collapse.
+    // The closure is the slot; the handle keeps its strong ref alive.
+    let retained = bind;
+    // Whole-struct capture: field-precise capture would grab the raw `target`
+    // directly (bypassing the `Send`/`Sync` impls on the bind type) — same fix
+    // as 0x323238/0x3903f0.
+    let slot = Arc::new(move |hit: SharedPtr<Instance>| {
+        let bound = retained;
+        (bound.func)(bound.target, &hit)
+    });
+    signal.connect(slot.clone());
+    TouchedConnection { keep: slot }
 }
 
 // 0x392738 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EED2Ev
 #[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::~vector()")]
 // was: std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::~vector()
-pub fn stub_0x392738() -> ! {
-    todo!("0x392738 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::~vector()")
+pub fn stub_0x392738(parts: Vec<WeakPtr<PartInstance>>) {
+    // IDA 0x392738: per-element `weak_release` (decomp 0x39278e-0x3927a4), then
+    // `operator delete` of the buffer (0x3927ac-0x3927b0) — `Vec` drop glue.
+    drop(parts);
 }
 
 // 0x393b34 — __ZN3RBX13PartAdornment10setAdorneeEPNS_12PartInstanceE
 #[doc(alias = "RBX::PartAdornment::setAdornee(RBX::PartInstance *)")]
 // was: RBX::PartAdornment::setAdornee(RBX::PartInstance *)
-pub fn stub_0x393b34() -> ! {
-    todo!("0x393b34 RBX::PartAdornment::setAdornee(RBX::PartInstance *)")
+pub fn stub_0x393b34(this: *mut PartAdornment, adornee: *const PartInstance) {
+    // IDA 0x393b34: current adornee locked from the `+132` weak via the
+    // nothrow `shared_ptr(weak)` ctor (decomp 0x393b5a, disasm
+    // `ADD.W R1, R6, #0x84`); on change (`v12 != a2`, decomp 0x393b9e),
+    // `shared_from<PartInstance>` on the incoming link (0x393bac) re-arms the
+    // weak (`px` 0x393bb2, `pi` 0x393bc2) and `raisePropertyChanged` fires
+    // (0x393bea). The change signal belongs to the Instance domain; the
+    // modeled half is the compare + weak re-arm. Same EA as the instance.rs
+    // twin.
+    // BUG: clearing a live adornee to null runs `shared_from(null)` in the
+    // original (null weak-owner read at 0x393bac); model space panics with
+    // the `bad_weak_ptr` mapping instead of faulting.
+    // SAFETY: `this` must point to a valid `PartAdornment`; `adornee` must be
+    // null or point into a live `SharedPtr<PartInstance>` for the weak's life.
+    unsafe {
+        let current = (*this).adornee.upgrade();
+        let same = match &current {
+            Some(owned) => SharedPtr::as_ptr(owned) == adornee,
+            None => adornee.is_null(),
+        };
+        if !same {
+            if adornee.is_null() {
+                panic!("0x393b34 setAdornee: bad_weak_ptr");
+            }
+            if (*adornee).weak_owner.upgrade().is_none() {
+                panic!("0x393b34 setAdornee: bad_weak_ptr");
+            }
+            (*this).adornee = (*adornee).weak_owner.clone();
+        }
+    }
 }
 
 // 0x393c44 — __ZN3RBX13PartAdornmentC2EPKc
 #[doc(alias = "RBX::PartAdornment::PartAdornment(char const*)")]
 // was: RBX::PartAdornment::PartAdornment(char const*)
-pub fn stub_0x393c44() -> ! {
-    todo!("0x393c44 RBX::PartAdornment::PartAdornment(char const*)")
+pub fn stub_0x393c44(adornee_slot: &mut WeakPtr<PartInstance>) {
+    // IDA 0x393c44: `GuiBase3d` C2 (decomp 0x393c64, compiler-managed), vtable
+    // installs (0x393c96-0x393cb4), class-descriptor registration
+    // (0x393cdc-0x393d3a) and the adornee weak zeroed (`+33/+34 = 0`,
+    // 0x393d40-0x393d46). Only the weak zeroing is model state; the name arg
+    // rides the base C2.
+    *adornee_slot = WeakPtr::new();
 }
 
 // 0x39406c — __ZNK3RBX13PartAdornment19getAdorneeDangerousEv
 #[doc(alias = "RBX::PartAdornment::getAdorneeDangerous(void)const")]
 // was: RBX::PartAdornment::getAdorneeDangerous(void)const
-pub fn stub_0x39406c() -> ! {
-    todo!("0x39406c RBX::PartAdornment::getAdorneeDangerous(void)const")
+pub fn stub_0x39406c(adornee: &WeakPtr<PartInstance>) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x39406c: nothrow `shared_ptr(weak)` lock of the `+132` weak (decomp
+    // 0x394078, disasm 0x394072-0x394078) with the temp release
+    // (0x394082-0x394084); the raw `px` return (disasm 0x394088-0x39408c) is
+    // null when expired — `None` here. Unretained, hence dangerous.
+    adornee.upgrade()
 }
 
 // 0x394090 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()
-pub fn stub_0x394090() -> ! {
-    todo!("0x394090 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x394090(desc: &mut PartRefPropDescriptor) {
+    // IDA 0x394090: vtable resets (decomp 0x3940a6-0x3940aa, compiler-managed)
+    // plus the conditional `operator delete` of the `+11` heap payload
+    // (0x3940ac-0x3940b2) — the `owned` take. Twin of 0x3940e0; storage kept (D1).
+    desc.owned = None;
 }
 
 // 0x395bb8 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x395bb8() -> ! {
-    todo!("0x395bb8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x395bb8(desc: &mut PartRefPropDescriptor, read_only: bool, write_only: bool) {
+    // IDA 0x395bb8: base `PropertyDescriptor` C2 on the PartAdornment class
+    // descriptor + `RefType<PartInstance*>` singleton (decomp 0x395bca-0x395c10,
+    // registration-managed), vtable installs (0x395c26-0x395c28) and the `0x14`-byte
+    // getter/setter payload `new` at `+11` (0x395c2c-0x395c4e). The member-fn pair
+    // collapses (Rust calls `stub_0x393b34`/the weak lock directly); the payload
+    // box and attribute flags are the model state.
+    desc.owned = Some(Box::new(PVRefExtra { words: [0; 8] }));
+    desc.read_only = read_only;
+    desc.write_only = write_only;
 }
 
 // 0x395c5c — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()
-pub fn stub_0x395c5c() -> ! {
-    todo!("0x395c5c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+pub fn stub_0x395c5c(desc: Box<PartRefPropDescriptor>) {
+    // IDA 0x395c5c: same as the D1 (0x394090: vtable resets + `+11` payload delete,
+    // decomp 0x395c72-0x395c7e) plus `operator delete(this)` — the D0 frees
+    // storage, so ownership moves in and drops.
+    drop(desc);
 }
 
 // 0x395c8c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const
-pub fn stub_0x395c8c() -> ! {
-    todo!("0x395c8c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")
+pub fn stub_0x395c8c(desc: &PartRefPropDescriptor) -> bool {
+    // IDA 0x395c8c: delegates through the `+44` attribute word's first vtable slot
+    // (decomp 0x395c98) — the read-only flag behind it.
+    desc.read_only
 }
 
 // 0x395c9c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const
-pub fn stub_0x395c9c() -> ! {
-    todo!("0x395c9c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")
+pub fn stub_0x395c9c(desc: &PartRefPropDescriptor) -> bool {
+    // IDA 0x395c9c: delegates through the `+44` attribute word's second vtable slot
+    // (decomp 0x395ca8) — the write-only flag behind it.
+    desc.write_only
 }
 
 // 0x395cac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x395cac() -> ! {
-    todo!("0x395cac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x395cac(a: &WeakPtr<PartInstance>, b: &WeakPtr<PartInstance>) -> bool {
+    // IDA 0x395cac: each side's ref is read through the `+44` getter's slot `+8`
+    // (decomp 0x395cbc/0x395cc6, disasm 0x395cb2-0x395cc6) and the raw pointers
+    // compared (`CMP` + `IT EQ`, disasm 0x395ccc-0x395cd0).
+    a.upgrade().as_ref().map(SharedPtr::as_ptr) == b.upgrade().as_ref().map(SharedPtr::as_ptr)
 }
 
 // 0x6cc1a0 — __ZN3RBX9WorkspaceD2Ev
