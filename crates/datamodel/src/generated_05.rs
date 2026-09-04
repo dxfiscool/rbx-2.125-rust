@@ -84,6 +84,10 @@ pub struct InstanceHooks {
     pub on_child_changed: Option<ChildChangedHook>,
     pub data_cost: Option<CostHook>,
     pub read_node: Option<ReadNodeHook>,
+    /// Drag-primitive qualification behind `getPrimitivesConst` (IDA `0x2e28bc`):
+    /// the `+36`-link word plus the `+168` virtual, evaluated after the
+    /// `PartInstance` `isA`. Unset (base default) collects nothing.
+    pub primitive_filter: Option<fn(*const Instance) -> bool>,
 }
 /// XML tag/attribute names used by the `Instance::read*` family
 /// (IDA `0x6feebc`, `0x6ff018`, `0x6ff03e`, `0x6ff092`).

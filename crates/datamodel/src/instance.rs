@@ -158,6 +158,26 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Primitive` (IDA `0x2e28bc`): the drag-plane leaf;
+/// collected by `DragUtilities::getPrimitivesConst` out of `PartInstance`
+/// subtrees. Layout unmodeled.
+#[derive(Default)]
+pub struct Primitive {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Explosion` (IDA `0x2e4a84`): same opaque shape.
+#[derive(Default)]
+pub struct Explosion {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::LuaDragger` (IDA `0x2e74dc`): same opaque shape.
+#[derive(Default)]
+pub struct LuaDragger {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Stats::StatsService` (IDA `0x2b0e50`): same shape; only
 /// create/ctor/D0 exist in this file (partial cluster).
 #[derive(Default)]
@@ -4108,78 +4128,144 @@ pub fn stub_0x2d0e18(block: *const ControlBlockPd<AdvLuaDragger, CreatableInstan
 // 0x2db274 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_RS9_IPNS4_9PrimitiveESaISG_EEENSD_5list2INS2_3argILi1EEENS2_17reference_wrapperISI_EEEEEEET0_T_SU_ST_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>)
-pub fn stub_0x2db274() -> ! {
-    todo!("0x2db274 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<std::allocator<RBX::Primitive>>>>)")
+pub fn stub_0x2db274(
+    items: &[SharedPtr<Instance>],
+    func: fn(&SharedPtr<Instance>, &mut Vec<*const Primitive>),
+    acc: &mut Vec<*const Primitive>,
+) -> fn(&SharedPtr<Instance>, &mut Vec<*const Primitive>) {
+    // IDA 0x2db274: `for (i = first; i != last; i += 8)` over the `shared_ptr`
+    // vector (disasm 0x2db28c) applying the `list2` binder
+    // `f(child, primitivesVec)` per child (disasm 0x2db29e-0x2db2a0); the
+    // binder copy-back (`*a1 = i`, disasm 0x2bdaa-0x2bdae) returns the functor.
+    // The `reference_wrapper` arg is the threaded accumulator.
+    for item in items {
+        func(item, acc);
+    }
+    func
 }
 
 // 0x2db2bc — __ZN3RBX13DragUtilities14getPrimitives2EN5boost10shared_ptrINS_8InstanceEEERSt6vectorIPNS_9PrimitiveESaIS7_EE
 #[doc(alias = "RBX::DragUtilities::getPrimitives2(rbx_core::SharedPtr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)")]
 // was: RBX::DragUtilities::getPrimitives2(boost::shared_ptr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)
-pub fn stub_0x2db2bc() -> ! {
-    todo!("0x2db2bc RBX::DragUtilities::getPrimitives2(boost::shared_ptr<RBX::Instance>,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)")
+pub fn stub_0x2db2bc(this: &SharedPtr<Instance>, out: &mut Vec<*const Primitive>) -> usize {
+    // IDA 0x2db2bc: tail-calls `getPrimitives` (IDA 0x2e28b8).
+    stub_0x2e28b8(SharedPtr::as_ptr(this), out)
 }
 
 // 0x2e28b8 — __ZN3RBX13DragUtilities13getPrimitivesEPKNS_8InstanceERSt6vectorIPNS_9PrimitiveESaIS6_EE
 #[doc(alias = "RBX::DragUtilities::getPrimitives(RBX::Instance const*,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)")]
 // was: RBX::DragUtilities::getPrimitives(RBX::Instance const*,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)
-pub fn stub_0x2e28b8() -> ! {
-    todo!("0x2e28b8 RBX::DragUtilities::getPrimitives(RBX::Instance const*,std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)")
+pub fn stub_0x2e28b8(this: *const Instance, out: &mut Vec<*const Primitive>) -> usize {
+    // IDA 0x2e28b8: thunk (`attributes: thunk`) into `getPrimitivesConst`
+    // (IDA 0x2e28bc).
+    // SAFETY: `this` must be null or point to a valid `Instance` subtree.
+    stub_0x2e28bc(this, out)
 }
 
 // 0x2e28bc — __ZN3RBX13DragUtilities18getPrimitivesConstEPKNS_8InstanceERSt6vectorIPKNS_9PrimitiveESaIS7_EE
 #[doc(alias = "RBX::DragUtilities::getPrimitivesConst(RBX::Instance const*,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 // was: RBX::DragUtilities::getPrimitivesConst(RBX::Instance const*,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
-pub fn stub_0x2e28bc() -> ! {
-    todo!("0x2e28bc RBX::DragUtilities::getPrimitivesConst(RBX::Instance const*,std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+pub fn stub_0x2e28bc(this: *const Instance, out: &mut Vec<*const Primitive>) -> usize {
+    // IDA 0x2e28bc: null instance skips everything; else push when the class
+    // is `PartInstance` (`isA`, disasm 0x2e28d4-0x2e2902) AND the `+36`-link /
+    // `+168`-virtual gate holds (disasm 0x2e2902-0x2e290e, collapsed into the
+    // `primitive_filter` hook, unset by default); then recurse every child
+    // with the count re-read per iteration (disasm 0x2e2914-0x2e2936),
+    // returning the final child count.
+    // SAFETY: `this` must be null or point to a valid `Instance` subtree.
+    unsafe {
+        if this.is_null() {
+            return 0;
+        }
+        let accept = instance_is_a(this, "PartInstance")
+            && (*this).hooks.primitive_filter.map_or(false, |hook| hook(this));
+        if accept {
+            out.push(this as *const Primitive);
+        }
+        // Explicit borrow of the child vector (an implicit autoref through the
+        // raw pointer is rejected); re-read per iteration like 0x2e2936.
+        // SAFETY: same live-subtree contract as above; no mutation occurs here.
+        let children: &[SharedPtr<Instance>] = unsafe { &(*this).children };
+        let mut index = 0usize;
+        loop {
+            let count = children.len();
+            if index >= count {
+                return count;
+            }
+            let child = SharedPtr::as_ptr(&children[index]);
+            stub_0x2e28bc(child, out);
+            index += 1;
+        }
+    }
 }
 
 // 0x2e4a84 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ExplosionEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Explosion> RBX::Creatable<RBX::Instance>::create<RBX::Explosion>(void)")]
 // was: boost::shared_ptr<RBX::Explosion> RBX::Creatable<RBX::Instance>::create<RBX::Explosion>(void)
-pub fn stub_0x2e4a84() -> ! {
-    todo!("0x2e4a84 boost::shared_ptr<RBX::Explosion> RBX::Creatable<RBX::Instance>::create<RBX::Explosion>(void)")
+pub fn stub_0x2e4a84() -> SharedPtr<Explosion> {
+    // IDA 0x2e4a84: `operator new(0xa0)` (disasm 0x2e4aa2-0x2e4aa4; 160 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Explosion::default())
 }
 
 // 0x2e4c24 — __ZN5boost10shared_ptrIN3RBX9ExplosionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Explosion>::shared_ptr<RBX::Explosion,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Explosion>::shared_ptr<RBX::Explosion,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2e4c24() -> ! {
-    todo!("0x2e4c24 boost::shared_ptr<RBX::Explosion>::shared_ptr<RBX::Explosion,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2e4c24(ptr: *mut Explosion, _deleter: CreatableInstanceDeleter) -> SharedPtr<Explosion> {
+    // IDA 0x2e4c24: store px + `shared_count` ctor + null-skip (prologue
+    // through disasm 0x2e4c40); same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Explosion::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2e4dd8 — __ZN5boost6detail12shared_countC2IPN3RBX9ExplosionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2e4dd8() -> ! {
-    todo!("0x2e4dd8 boost::detail::shared_count::shared_count<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2e4dd8(ptr: *mut Explosion, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Explosion, CreatableInstanceDeleter> {
+    // IDA 0x2e4dd8: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2e4ee0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2e4ee0() -> ! {
-    todo!("0x2e4ee0 boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e4ee0(_block: *mut ControlBlockPd<Explosion, CreatableInstanceDeleter>) {
+    // IDA 0x2e4ee0: `BX LR` — empty (disasm 0x2e4ee0); same as 0xf198.
 }
 
 // 0x2e4ee4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2e4ee4() -> ! {
-    todo!("0x2e4ee4 boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2e4ee4(block: *mut ControlBlockPd<Explosion, CreatableInstanceDeleter>) {
+    // IDA 0x2e4ee4: `predelete` (disasm 0x2e4eec), null early-out, deleter
+    // virtual-delete; same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2e4f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2e4f04() -> ! {
-    todo!("0x2e4f04 boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2e4f04(block: *const ControlBlockPd<Explosion, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2e4f04: deleter-name `strcmp` (disasm 0x2e4f0e-0x2e4f14), `this +
+    // 0x10` on hit (disasm 0x2e4f08); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2e4f1c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2e4f1c() -> ! {
-    todo!("0x2e4f1c boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2e4f1c(block: *const ControlBlockPd<Explosion, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2e4f1c: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2e51d0 — __ZN3RBX10LuaDragger15mouseDownPublicEN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS2_IKSt6vectorIS4_SaIS4_EEEE
@@ -4199,57 +4285,81 @@ pub fn stub_0x2e700c() -> ! {
 // 0x2e74dc — __ZNK3RBX10LuaDragger12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::LuaDragger::askSetParent(RBX::Instance const*)const")]
 // was: RBX::LuaDragger::askSetParent(RBX::Instance const*)const
-pub fn stub_0x2e74dc() -> ! {
-    todo!("0x2e74dc RBX::LuaDragger::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x2e74dc(_this: *const LuaDragger, _parent: *const Instance) -> bool {
+    // IDA 0x2e74dc: `return 0`; a `LuaDragger` accepts no parent. Same
+    // deny-all shape as `AdvLuaDragger::askSetParent` (0x2d07e0).
+    false
 }
 
 // 0x2e776c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10LuaDraggerEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)")]
 // was: boost::shared_ptr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)
-pub fn stub_0x2e776c() -> ! {
-    todo!("0x2e776c boost::shared_ptr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)")
+pub fn stub_0x2e776c() -> SharedPtr<LuaDragger> {
+    // IDA 0x2e776c: `operator new(0x9c)` (disasm 0x2e778a-0x2e778c; 156 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(LuaDragger::default())
 }
 
 // 0x2e781c — __ZN5boost10shared_ptrIN3RBX10LuaDraggerEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2e781c() -> ! {
-    todo!("0x2e781c boost::shared_ptr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2e781c(ptr: *mut LuaDragger, _deleter: CreatableInstanceDeleter) -> SharedPtr<LuaDragger> {
+    // IDA 0x2e781c: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(LuaDragger::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2e79cc — __ZN5boost6detail12shared_countC2IPN3RBX10LuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2e79cc() -> ! {
-    todo!("0x2e79cc boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2e79cc(ptr: *mut LuaDragger, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<LuaDragger, CreatableInstanceDeleter> {
+    // IDA 0x2e79cc: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2e7ad4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2e7ad4() -> ! {
-    todo!("0x2e7ad4 boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e7ad4(_block: *mut ControlBlockPd<LuaDragger, CreatableInstanceDeleter>) {
+    // IDA 0x2e7ad4: `BX LR` — empty (disasm 0x2e7ad4); same as 0xf198.
 }
 
 // 0x2e7ad8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2e7ad8() -> ! {
-    todo!("0x2e7ad8 boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e7ad8(block: *mut ControlBlockPd<LuaDragger, CreatableInstanceDeleter>) {
+    // IDA 0x2e7ad8: `B.W __ZdlPv$shim` — D0 storage release only; same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2e7adc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2e7adc() -> ! {
-    todo!("0x2e7adc boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2e7adc(block: *mut ControlBlockPd<LuaDragger, CreatableInstanceDeleter>) {
+    // IDA 0x2e7adc: `predelete` (disasm 0x2e7ae4), null early-out (disasm
+    // 0x2e7ae8-0x2e7aec), deleter virtual-delete (disasm 0x2e7aee+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2e7afc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2e7afc() -> ! {
-    todo!("0x2e7afc boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2e7afc(block: *const ControlBlockPd<LuaDragger, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2e7afc: deleter-name `strcmp` (disasm 0x2e7b06-0x2e7b0a), `this +
+    // 0x10` on hit (disasm 0x2e7b00); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }// 0x2e7b14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
@@ -4260,8 +4370,15 @@ pub fn stub_0x2e7b14() -> ! {
 // 0x2e8128 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEES6_ET_SD_SD_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance> const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&,std::random_access_iterator_tag)
-pub fn stub_0x2e8128() -> ! {
-    todo!("0x2e8128 __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&,std::random_access_iterator_tag)")
+pub fn stub_0x2e8128(haystack: &[SharedPtr<Instance>], needle: *const Instance) -> usize {
+    // IDA 0x2e8128: 8-wide unrolled `std::find` over the `shared_ptr` vector
+    // comparing `px` words (disasm 0x2e812e-0x2e8158); the unroll collapses
+    // into a linear identity scan, position on hit or `len` on miss (the
+    // past-the-end iterator).
+    haystack
+        .iter()
+        .position(|candidate| SharedPtr::as_ptr(candidate) == needle)
+        .unwrap_or(haystack.len())
 }
 
 // 0x2e8ee8 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EEC2EMS2_FvS6_S8_SD_EPKcSJ_SJ_SJ_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
