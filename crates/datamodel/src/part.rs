@@ -6,6 +6,10 @@
 
 use rbx_core::SharedPtr;
 use std::sync::atomic::{AtomicUsize, Ordering};
+use crate::instance::{CloneTool, GameTool, GrabTool, HammerTool, PartInstance, Vector3};
+use crate::workspace::Workspace;
+use crate::generated_05::Instance;
+use crate::model::PartDragTool;
 
 /// Cached class index behind `doGetClassIndex<Workspace>` (IDA `0x2b7698`):
 /// assigned once from the provider index counter, same guard-once shape as
@@ -157,22 +161,38 @@ pub fn stub_0x2da160() -> ! {
 // 0x2db7a4 — __ZN3RBX9CloneToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::CloneTool::CloneTool(RBX::Workspace *)")]
 // was: RBX::CloneTool::CloneTool(RBX::Workspace *)
-pub fn stub_0x2db7a4() -> ! {
-    todo!("0x2db7a4 RBX::CloneTool::CloneTool(RBX::Workspace *)")
+pub fn stub_0x2db7a4(workspace: *mut Workspace) -> CloneTool {
+    // IDA 0x2db7a4 (C1): thunk (`B.W`) to C2 (0x2db7a8) — the vtable fixup
+    // between the two is compiler-owned.
+    stub_0x2db7a8(workspace)
 }
 
 // 0x2db7a8 — __ZN3RBX9CloneToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::CloneTool::CloneTool(RBX::Workspace *)")]
 // was: RBX::CloneTool::CloneTool(RBX::Workspace *)
-pub fn stub_0x2db7a8() -> ! {
-    todo!("0x2db7a8 RBX::CloneTool::CloneTool(RBX::Workspace *)")
+pub fn stub_0x2db7a8(workspace: *mut Workspace) -> CloneTool {
+    // IDA 0x2db7a8 (C2): base `MouseCommand` ctor threading the workspace
+    // (0x2db7c8), vtable installs (0x2db7e0-0x2db7ea), zeroed words `+16`
+    // and `+17` (0x2db802-0x2db80c); the lifetime log (0x2db810-0x2db860)
+    // has no observable contract. Only the workspace link is modelled (see
+    // `CloneTool`).
+    CloneTool { workspace: workspace as *const Workspace }
 }
 
 // 0x2dbe5c — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12PartDragToolEPNS_12PartInstanceEN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEEEENSC_IT_EET0_T1_T2_T3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::PartDragTool,RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: boost::shared_ptr<RBX::PartDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::PartDragTool,RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2dbe5c() -> ! {
-    todo!("0x2dbe5c boost::shared_ptr<RBX::PartDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::PartDragTool,RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2dbe5c(
+    part: *const PartInstance,
+    point: Vector3,
+    workspace: *mut Workspace,
+    host: Option<SharedPtr<Instance>>,
+) -> SharedPtr<PartDragTool> {
+    // IDA 0x2dbe5c: `operator new` + `PartDragTool` C2 (0x2f094c), wrapped
+    // in a `shared_ptr` with `Creatable::Deleter`. `SharedPtr::new` owns the
+    // allocation; the custom deleter collapses to `Drop` until the
+    // creatable pool is modelled (same shape as `stub_0x682f50`).
+    SharedPtr::new(crate::model::stub_0x2f094c(part, point, workspace, host))
 }
 
 // 0x2dc07c — __ZN5boost10shared_ptrIN3RBX12PartDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
@@ -395,15 +415,21 @@ pub fn stub_0x2e27ec() -> ! {
 // 0x2e2f2c — __ZN3RBX8GameToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::GameTool::GameTool(RBX::Workspace *)")]
 // was: RBX::GameTool::GameTool(RBX::Workspace *)
-pub fn stub_0x2e2f2c() -> ! {
-    todo!("0x2e2f2c RBX::GameTool::GameTool(RBX::Workspace *)")
+pub fn stub_0x2e2f2c(workspace: *mut Workspace) -> GameTool {
+    // IDA 0x2e2f2c (C1): thunk to C2 (0x2e2f30); the vtable fixup between
+    // the two is compiler-owned.
+    stub_0x2e2f30(workspace)
 }
 
 // 0x2e2f30 — __ZN3RBX8GameToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::GameTool::GameTool(RBX::Workspace *)")]
 // was: RBX::GameTool::GameTool(RBX::Workspace *)
-pub fn stub_0x2e2f30() -> ! {
-    todo!("0x2e2f30 RBX::GameTool::GameTool(RBX::Workspace *)")
+pub fn stub_0x2e2f30(workspace: *mut Workspace) -> GameTool {
+    // IDA 0x2e2f30 (C2): base `MouseCommand` ctor threading the workspace
+    // (0x2e2f50), vtable installs (0x2e2f70-0x2e2f7c), and the empty-string
+    // member at `+16` (0x2e2fa6); the lifetime log (0x2e2fac-0x2e2ffc) is
+    // unobservable. Only the workspace link is modelled (see `GameTool`).
+    GameTool { workspace: workspace as *const Workspace }
 }
 
 // 0x2e304c — __ZNK3RBX8GameTool13draggablePartEPKNS_12PartInstanceERKN3G3D7Vector3E
@@ -416,29 +442,42 @@ pub fn stub_0x2e304c() -> ! {
 // 0x2e37c4 — __ZN3RBX8GrabToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::GrabTool::GrabTool(RBX::Workspace *)")]
 // was: RBX::GrabTool::GrabTool(RBX::Workspace *)
-pub fn stub_0x2e37c4() -> ! {
-    todo!("0x2e37c4 RBX::GrabTool::GrabTool(RBX::Workspace *)")
+pub fn stub_0x2e37c4(workspace: *mut Workspace) -> GrabTool {
+    // IDA 0x2e37c4 (C1): thunk to C2 (0x2e37c8); the vtable fixup between
+    // the two is compiler-owned.
+    stub_0x2e37c8(workspace)
 }
 
 // 0x2e37c8 — __ZN3RBX8GrabToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::GrabTool::GrabTool(RBX::Workspace *)")]
 // was: RBX::GrabTool::GrabTool(RBX::Workspace *)
-pub fn stub_0x2e37c8() -> ! {
-    todo!("0x2e37c8 RBX::GrabTool::GrabTool(RBX::Workspace *)")
+pub fn stub_0x2e37c8(workspace: *mut Workspace) -> GrabTool {
+    // IDA 0x2e37c8 (C2): base `MouseCommand` ctor threading the workspace
+    // plus vtable installs (only the base-ctor spill sequence is legible in
+    // the decompile); member layout lands with the tool batch. Only the
+    // workspace link is modelled (see `GrabTool`).
+    GrabTool { workspace: workspace as *const Workspace }
 }
 
 // 0x2e4518 — __ZN3RBX10HammerToolC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::HammerTool::HammerTool(RBX::Workspace *)")]
 // was: RBX::HammerTool::HammerTool(RBX::Workspace *)
-pub fn stub_0x2e4518() -> ! {
-    todo!("0x2e4518 RBX::HammerTool::HammerTool(RBX::Workspace *)")
+pub fn stub_0x2e4518(workspace: *mut Workspace) -> HammerTool {
+    // IDA 0x2e4518 (C1): thunk to C2 (0x2e451c); the vtable fixup between
+    // the two is compiler-owned.
+    stub_0x2e451c(workspace)
 }
 
 // 0x2e451c — __ZN3RBX10HammerToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::HammerTool::HammerTool(RBX::Workspace *)")]
 // was: RBX::HammerTool::HammerTool(RBX::Workspace *)
-pub fn stub_0x2e451c() -> ! {
-    todo!("0x2e451c RBX::HammerTool::HammerTool(RBX::Workspace *)")
+pub fn stub_0x2e451c(workspace: *mut Workspace) -> HammerTool {
+    // IDA 0x2e451c (C2): base `MouseCommand` ctor threading the workspace
+    // (0x2e453c), vtable installs (0x2e4554-0x2e455e), zeroed words `+16`
+    // and `+17` (0x2e4576-0x2e4580); the lifetime log (0x2e4584-0x2e45d4)
+    // has no observable contract. Only the workspace link is modelled (see
+    // `HammerTool`).
+    HammerTool { workspace: workspace as *const Workspace }
 }
 
 

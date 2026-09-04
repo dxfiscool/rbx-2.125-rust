@@ -9,8 +9,8 @@ use rbx_core::WeakPtr;
 use rbx_core::signal::Signal;
 use crate::generated_05::Instance;
 use crate::instance::{
-    AccoutrementBind, PartAdornment, PartInstance, PartRefPropDescriptor, PVInstance, PVRefExtra,
-    Vector3,
+    AccoutrementBind, MouseCommand, PartAdornment, PartInstance, PartRefPropDescriptor, PVInstance,
+    PVRefExtra, Vector3,
 };
 use crate::workspace::Workspace;
 use std::any::Any;
@@ -19,9 +19,16 @@ use std::sync::Arc;
 /// Rust model of `RBX::PartDragTool` (IDA `0x2f15ec` family): the
 /// `enable_shared_from_this` weak owner behind `shared_from<PartDragTool>`
 /// plus the rotate-grab flag behind the cursor-name branch (IDA `0x2f184c`).
+/// The C2 stores (IDA `0x2f094c`) are the drag part, the grab point, the
+/// workspace link, and the associated host instance (4th ctor arg, whose
+/// exact role lands with the drag batch).
 pub struct PartDragTool {
     pub weak_owner: WeakPtr<PartDragTool>,
     pub grab_rotate: bool,
+    pub drag_part: *const PartInstance,
+    pub grab_point: Vector3,
+    pub workspace: *mut Workspace,
+    pub host: Option<SharedPtr<Instance>>,
 }
 
 /// Rust model of `RBX::RunDragger` (IDA `0x2f2bf0`/`0x2f2ff8`): the workspace
@@ -474,15 +481,39 @@ pub fn stub_0x2ef364(_tool: &NewNullTool, _evt: &UIEvent) -> (Option<SharedPtr<P
 // 0x2f0948 — __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2f0948() -> ! {
-    todo!("0x2f0948 RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2f0948(
+    part: *const PartInstance,
+    point: Vector3,
+    workspace: *mut Workspace,
+    host: Option<SharedPtr<Instance>>,
+) -> PartDragTool {
+    // IDA 0x2f0948 (C1): delegates to C2 (0x2f094c); the vtable fixup
+    // between the two is compiler-owned.
+    stub_0x2f094c(part, point, workspace, host)
 }
 
 // 0x2f094c — __ZN3RBX12PartDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2f094c() -> ! {
-    todo!("0x2f094c RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2f094c(
+    part: *const PartInstance,
+    point: Vector3,
+    workspace: *mut Workspace,
+    host: Option<SharedPtr<Instance>>,
+) -> PartDragTool {
+    // IDA 0x2f094c (C2): base `MouseCommand` ctor threading the workspace
+    // (0x2f0974), vtable installs, then the member stores — the drag part,
+    // the grab point, the workspace link, and the retained host instance.
+    // The `enable_shared_from_this` weak arms when the `Creatable::create`
+    // wrapper (0x2dbe5c) retains the result, so it starts empty here.
+    PartDragTool {
+        weak_owner: WeakPtr::new(),
+        grab_rotate: false,
+        drag_part: part,
+        grab_point: point,
+        workspace,
+        host,
+    }
 }
 
 // 0x2f0bb8 — __ZN3RBX12PartDragTool11onMouseDownERKNS_7UIEventE
@@ -544,36 +575,48 @@ pub fn stub_0x2f13d0() -> ! {
 // 0x2f13d8 — __ZN3RBX12PartDragToolD0Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
 // was: RBX::PartDragTool::~PartDragTool()
-pub fn stub_0x2f13d8() -> ! {
-    todo!("0x2f13d8 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f13d8(tool: PartDragTool) {
+    // IDA 0x2f13d8 (D0): D2 plus `operator delete` — `drop` of the owned
+    // value is exactly that.
+    stub_0x2f1484(tool);
 }
 
 // 0x2f1478 — __ZN3RBX12PartDragToolD1Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
 // was: RBX::PartDragTool::~PartDragTool()
-pub fn stub_0x2f1478() -> ! {
-    todo!("0x2f1478 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f1478(tool: PartDragTool) {
+    // IDA 0x2f1478 (D1 `~PartDragTool`): runs member destructors
+    // (`weak_owner`, `host`, base `MouseCommand`); Rust drops `tool` at
+    // scope end — the same sequence.
+    drop(tool);
 }
 
 // 0x2f147c — __ZThn36_N3RBX12PartDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // was: non-virtual thunk toRBX::PartDragTool::~PartDragTool()
-pub fn stub_0x2f147c() -> ! {
-    todo!("0x2f147c non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f147c(tool: PartDragTool) {
+    // IDA 0x2f147c (`Thn36` to D0): non-virtual thunk with a
+    // compiler-owned `this` adjustment; forwards to the D0 body.
+    stub_0x2f13d8(tool);
 }
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
 #[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
 // was: RBX::PartDragTool::~PartDragTool()
-pub fn stub_0x2f1484() -> ! {
-    todo!("0x2f1484 RBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f1484(tool: PartDragTool) {
+    // IDA 0x2f1484 (D2 `~PartDragTool`): vtable resets are
+    // compiler-managed here; member teardown is `drop` — the twin of D1
+    // (0x2f1478) for the deleting-destructor path.
+    drop(tool);
 }
 
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // was: non-virtual thunk toRBX::PartDragTool::~PartDragTool()
-pub fn stub_0x2f15e4() -> ! {
-    todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f15e4(tool: PartDragTool) {
+    // IDA 0x2f15e4 (`Thn36` to D1): non-virtual thunk with a
+    // compiler-owned `this` adjustment; forwards to the D1 body.
+    stub_0x2f1478(tool);
 }
 
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -1159,22 +1202,35 @@ pub fn stub_0x6ccda0() -> ! {
 // 0x6ccf30 — __ZN3RBX9Workspace15setMouseCommandEN5boost10shared_ptrINS_12MouseCommandEEE
 #[doc(alias = "RBX::Workspace::setMouseCommand(rbx_core::SharedPtr<RBX::MouseCommand>)")]
 // was: RBX::Workspace::setMouseCommand(boost::shared_ptr<RBX::MouseCommand>)
-pub fn stub_0x6ccf30() -> ! {
-    todo!("0x6ccf30 RBX::Workspace::setMouseCommand(boost::shared_ptr<RBX::MouseCommand>)")
+pub fn stub_0x6ccf30(ws: &mut Workspace, cmd: SharedPtr<MouseCommand>) {
+    // IDA 0x6ccf30: logs under `MouseCommandLifetime` (0x6ccfac), resolves
+    // the provider and the active plugin (0x6ccfbc-0x6ccfd4), then retains
+    // the command via `shared_ptr::operator=` (0x6cd046) — the store behind
+    // `Workspace::current_command` (`+0x1C8`). The log and the plugin
+    // notification land with their batches; the retain is the `Option`
+    // store (cloned `SharedPtr` is the `shared_count` copy).
+    ws.current_command = Some(cmd);
 }
 
 // 0x6cd45c — __ZN3RBX9Workspace9getCameraEv
 #[doc(alias = "RBX::Workspace::getCamera(void)")]
 // was: RBX::Workspace::getCamera(void)
-pub fn stub_0x6cd45c() -> ! {
-    todo!("0x6cd45c RBX::Workspace::getCamera(void)")
+pub fn stub_0x6cd45c(ws: *const Workspace) -> *const () {
+    // IDA 0x6cd45c: virtual `getCamera` (slot `+200`, 0x6cd45c) — the
+    // override lattice collapses to the stored camera until vtables are
+    // modelled, so this returns `current_camera` like the dangerous
+    // accessor (0x6cb73c); the const fallback stays with `getConstCamera`.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { (*ws).current_camera }
 }
 
 // 0x6cd464 — __ZThn280_N3RBX9Workspace9getCameraEv
 #[doc(alias = "non-virtual thunk toRBX::Workspace::getCamera(void)")]
 // was: non-virtual thunk toRBX::Workspace::getCamera(void)
-pub fn stub_0x6cd464() -> ! {
-    todo!("0x6cd464 non-virtual thunk toRBX::Workspace::getCamera(void)")
+pub fn stub_0x6cd464(ws: *const Workspace) -> *const () {
+    // IDA 0x6cd464 (`Thn280` to `getCamera`): non-virtual thunk with a
+    // compiler-owned `this` adjustment; forwards to the virtual body.
+    stub_0x6cd45c(ws)
 }
 
 // 0x6cd478 — __ZNK3RBX9Workspace14getConstCameraEv
@@ -1373,9 +1429,28 @@ fn world_reset(_world: *const ()) {}
 // 0x6ce400 — __ZN3RBX9Workspace12detachParentEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::detachParent(RBX::Instance *)")]
 // was: RBX::Workspace::detachParent(RBX::Instance *)
-pub fn stub_0x6ce400() -> ! {
-    todo!("0x6ce400 RBX::Workspace::detachParent(RBX::Instance *)")
+pub fn stub_0x6ce400(child: *const Instance) {
+    // IDA 0x6ce400: retains the child via `shared_from<Instance>`
+    // (0x6ce424), clears its parent through `setParentInternal`
+    // (0x6ce45c), then drops emptied models via `clearEmptiedModels`
+    // (0x6ce468). Both callees land with the tree batch, so their slots
+    // are seams; the detach-then-sweep order is modelled.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    unsafe {
+        set_parent_internal_slot(child, core::ptr::null());
+        clear_emptied_models_slot(child);
+    }
 }
+/// Seam for `RBX::Instance::setParentInternal` (IDA `0x6ce45c`) as called
+/// by `detachParent`: forwards once the tree batch lands.
+/// # Safety
+/// Both pointers must be null or valid `Instance`s.
+unsafe fn set_parent_internal_slot(_child: *const Instance, _parent: *const Instance) {}
+/// Seam for `RBX::Workspace::clearEmptiedModels` (IDA `0x6ce468`) as
+/// called by `detachParent`: forwards to `stub_0x6ce4d4` once it lands.
+/// # Safety
+/// `child` must be null or point to a valid `Instance`.
+unsafe fn clear_emptied_models_slot(_child: *const Instance) {}
 
 // 0x6ce4d4 — __ZN3RBX9Workspace18clearEmptiedModelsERN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Workspace::clearEmptiedModels(rbx_core::SharedPtr<RBX::Instance> &)")]

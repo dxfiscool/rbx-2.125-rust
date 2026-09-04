@@ -43576,22 +43576,27 @@ pub fn stub_0x5cc504(_model: *mut ModelInstance) {
 // 0x5cc514 — __ZThn32_N3RBX13ModelInstanceD0Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc514() -> ! {
-    todo!("0x5cc514 non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc514(model: *mut ModelInstance) {
+    // IDA 0x5cc514 (`Thn32` to D0): non-virtual thunk adjusting `this`
+    // across the second base; the adjustment is compiler-owned, so this
+    // forwards to the D0 body.
+    stub_0x5cc458(model);
 }
 
 // 0x5cc51c — __ZThn36_N3RBX13ModelInstanceD0Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc51c() -> ! {
-    todo!("0x5cc51c non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc51c(model: *mut ModelInstance) {
+    // IDA 0x5cc51c (`Thn36` to D0): same forward shape as 0x5cc514.
+    stub_0x5cc458(model);
 }
 
 // 0x5cc524 — __ZThn120_N3RBX13ModelInstanceD0Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc524() -> ! {
-    todo!("0x5cc524 non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc524(model: *mut ModelInstance) {
+    // IDA 0x5cc524 (`Thn120` to D0): same forward shape as 0x5cc514.
+    stub_0x5cc458(model);
 }
 
 // 0x5cc52c — __ZN3RBX13ModelInstanceD2Ev
@@ -43610,22 +43615,27 @@ pub fn stub_0x5cc52c(model: *mut ModelInstance) {
 // 0x5cc6b0 — __ZThn32_N3RBX13ModelInstanceD1Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc6b0() -> ! {
-    todo!("0x5cc6b0 non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc6b0(model: *mut ModelInstance) {
+    // IDA 0x5cc6b0 (`Thn32` to D1): non-virtual thunk adjusting `this`
+    // across the second base; the adjustment is compiler-owned, so this
+    // forwards to the D1 body.
+    stub_0x5cc504(model);
 }
 
 // 0x5cc6c0 — __ZThn36_N3RBX13ModelInstanceD1Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc6c0() -> ! {
-    todo!("0x5cc6c0 non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc6c0(model: *mut ModelInstance) {
+    // IDA 0x5cc6c0 (`Thn36` to D1): same forward shape as 0x5cc6b0.
+    stub_0x5cc504(model);
 }
 
 // 0x5cc6d0 — __ZThn120_N3RBX13ModelInstanceD1Ev
 #[doc(alias = "non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")]
 // was: non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()
-pub fn stub_0x5cc6d0() -> ! {
-    todo!("0x5cc6d0 non_virtual_thunk_to RBX::ModelInstance::~ModelInstance()")
+pub fn stub_0x5cc6d0(model: *mut ModelInstance) {
+    // IDA 0x5cc6d0 (`Thn120` to D1): same forward shape as 0x5cc6b0.
+    stub_0x5cc504(model);
 }
 
 // 0x5cc6e0 — __ZN3RBX13ModelInstance21hackPhysicalCharacterEv
