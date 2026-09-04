@@ -3,6 +3,353 @@
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
+/// Batch: 26 IDA-grounded ports 0x25f04c-0x2620f0 — the boost::exception_detail
+/// clone/error-info family, boost::detail shared_count/sp_counted_base control
+/// blocks, singleton_pool<XmlAttribute>::get_pool, the two static exception_ptr
+/// objects (bad_alloc_/bad_exception_), TU static initializers
+/// __GLOBAL__I_a_56/57/58 and initStaticData2/staticData2. Untouched carriers
+/// keep stub bodies; ports live in `boost_exception` under idiomatic names,
+/// wired via `stub_0x*`.
+/// Conventions: `boost::shared_ptr` -> `crate::SharedPtr` (`Arc`), kept via
+/// `CloneImpl.info`; `boost::exception` -> `thiserror`; `boost::unordered` ->
+/// `HashMap`; `boost::mutex` -> `parking_lot::Mutex`; `__cxa_throw` paths ->
+/// `panic!` (noreturn in the binary too). `[INFERENCE]` marks what the binary
+/// does not pin down; everything else follows the IDA pseudocode + disassembly
+/// branch-for-branch (decompile+disasm per EA, cross-checked ida/export.json).
+pub mod boost_exception {
+    use std::collections::HashMap;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    use std::sync::LazyLock;
+
+    /// was: `boost::detail::spinlock_pool<1>` bucket count (IDA `% 0x29` at
+    /// 0x2600f0/0x260dca/0x260e06/0x261f80/0x26201e).
+    pub const SPIN_POOL_LEN: usize = 41;
+    /// was: `Thn20` non-virtual thunks (IDA 0x25fdc8 `a1 - 20`, 0x260098
+    /// `a1 - 20`) — offset of the `clone_impl` subobject inside the
+    /// `error_info_injector` derived object.
+    pub const NONVIRTUAL_THUNK_BIAS: usize = 20;
+
+    static SPINLOCKS: LazyLock<Vec<parking_lot::Mutex<()>>> =
+        LazyLock::new(|| (0..SPIN_POOL_LEN).map(|_| parking_lot::Mutex::new(())).collect());
+
+    fn spinlocks() -> &'static Vec<parking_lot::Mutex<()>> {
+        &SPINLOCKS
+    }
+
+    /// IDA 0x2600c2/0x2600f0: use-count slot `((pi + 4) % 0x29)`.
+    pub fn spin_slot_use(block_addr: usize) -> usize {
+        block_addr.wrapping_add(4) % SPIN_POOL_LEN
+    }
+
+    /// IDA 0x260e06: weak-count slot `((this + 8) % 0x29)`.
+    pub fn spin_slot_weak(block_addr: usize) -> usize {
+        block_addr.wrapping_add(8) % SPIN_POOL_LEN
+    }
+
+    /// was: `boost::thread_resource_error` (a `boost::system::system_error`).
+    /// IDA 0x25fc58 copies its message strings into the thrown `clone_impl`.
+    #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+    #[error("thread resource error: {detail}")]
+    pub struct ThreadResourceError {
+        pub detail: &'static str,
+    }
+
+    /// was: `boost::exception_detail::bad_alloc_` — payload of the static
+    /// `exception_ptr` built at IDA 0x261df8.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    pub struct BadAlloc_;
+
+    /// was: `boost::exception_detail::bad_exception_` — payload of the static
+    /// `exception_ptr` built at IDA 0x2620f0.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+    pub struct BadException_;
+
+    /// was: `boost::exception_detail::error_info_container` — the refcounted
+    /// `error_info` map adopted by `copy_boost_exception` (IDA 0x25fdd0
+    /// `refcount_ptr<...>::adopt`). `boost::unordered` -> `HashMap`.
+    #[derive(Debug, Clone, Default)]
+    pub struct ErrorInfoContainer {
+        pub entries: HashMap<String, String>,
+    }
+
+    /// was: `boost::exception_detail::clone_impl<E>` (0x1C-byte image at IDA
+    /// 0x25ff88: vtable, error-info ref, payload words). `clone()` copies the
+    /// payload and shares (`addref`s) the error info; `rethrow()` builds the
+    /// thrown copy the same way ahead of `__cxa_throw`.
+    #[derive(Debug, Clone)]
+    pub struct CloneImpl<E> {
+        pub payload: E,
+        pub info: Option<crate::SharedPtr<ErrorInfoContainer>>,
+    }
+
+    impl<E: Clone> CloneImpl<E> {
+        /// IDA `clone()` virtual (`*(vtab + 20)` at 0x25fe2e): fresh box with
+        /// copied payload, error info shared (refcount +1 in C++, `Arc`
+        /// clone here).
+        pub fn clone_box(&self) -> Self {
+            Self { payload: self.payload.clone(), info: self.info.clone() }
+        }
+
+        /// IDA 0x25ff88 `rethrow()`: `__cxa_allocate_exception(0x1C)`, copy
+        /// payload words (`exception[1]`, `+8`, `+16`), `addref` the error
+        /// info, install vtables, `__cxa_throw`. The throw itself has no
+        /// `core`-model equivalent — callers `panic!` with the built value.
+        pub fn rethrow_copy(&self) -> Self {
+            self.clone_box()
+        }
+
+        /// IDA 0x25fdd0 `copy_boost_exception(dst, src)`: `dst[2..=4] =
+        /// src[2..=4]` (payload words) + adopt the cloned error info
+        /// (`adopt` + addref, old container released — the assignment drop
+        /// below is that release).
+        pub fn copy_from(&mut self, src: &Self) {
+            self.payload = src.payload.clone();
+            self.info = src.info.clone();
+        }
+    }
+
+    /// IDA `Thn20` thunks (0x25fdc8, 0x260098): `this -= 20` to reach the
+    /// `clone_impl` subobject, then run the destructor body.
+    pub fn nonvirtual_thunk_adjust(this: *mut u8) -> *mut u8 {
+        this.wrapping_sub(NONVIRTUAL_THUNK_BIAS)
+    }
+
+    /// IDA `Tv0_n12` virtual thunks (0x2600b0, 0x260e60):
+    /// `this += *(vtab - 12)` (the `top_offset`) to reach the `clone()`
+    /// target. The offset lives in the binary vtable; callers pass it in.
+    pub fn virtual_thunk_adjust(this: *const u8, top_offset: isize) -> *const u8 {
+        (this as isize).wrapping_add(top_offset) as *const u8
+    }
+
+    /// was: `boost::detail::sp_counted_base` layout `{ vtable, use_count(+4),
+    /// weak_count(+8) }`; `vtable` records which `sp_counted_impl_p<E>`
+    /// instantiation owns the block (e.g. `off_1223058` at IDA 0x260edc).
+    /// Counters are the source of truth; the carrying `Arc` mirrors them
+    /// (every owner goes through `SharedCount`, so both agree).
+    #[derive(Debug)]
+    pub struct ControlBlock {
+        pub uses: AtomicUsize,
+        pub weaks: AtomicUsize,
+        pub vtable: &'static str,
+    }
+
+    impl ControlBlock {
+        /// IDA 0x260e70: `operator new(0x10)`, `uses = 1`, `weaks = 1`,
+        /// install vtable, store payload pointer.
+        pub fn new(vtable: &'static str) -> Self {
+            Self { uses: AtomicUsize::new(1), weaks: AtomicUsize::new(1), vtable }
+        }
+
+        /// IDA 0x2600c0 `shared_count(const shared_count&)`: copy `pi_`, and
+        /// when non-null lock the use slot and `++use_count`.
+        pub fn addref_use(&self) {
+            let _g = spinlocks()[spin_slot_use(self as *const _ as usize)].lock();
+            self.uses.fetch_add(1, Ordering::AcqRel);
+        }
+
+        /// IDA 0x260d98 `release()`: lock the use slot, `--use_count`; when
+        /// it was 1 run dispose (vtable slot 2, `+8`); then lock the weak
+        /// slot, `--weak_count`; when it was 1 run destroy (vtable slot 3,
+        /// `+12`). Returns `(disposed, destroyed)`.
+        pub fn release(&self) -> (bool, bool) {
+            let disposed = {
+                let _g = spinlocks()[spin_slot_use(self as *const _ as usize)].lock();
+                self.uses.fetch_sub(1, Ordering::AcqRel) == 1
+            };
+            let mut destroyed = false;
+            if disposed {
+                // IDA `(*(vtab + 8))(this)`: dispose drops the managed object.
+                let _g = spinlocks()[spin_slot_weak(self as *const _ as usize)].lock();
+                destroyed = self.weaks.fetch_sub(1, Ordering::AcqRel) == 1;
+                // IDA `(*(vtab + 12))(this)`: destroy frees the block;
+                // the carrying `Arc` frees it here ([INFERENCE] on allocator).
+            }
+            (disposed, destroyed)
+        }
+
+        /// IDA 0x260e48/0x260f70 `get_untyped_deleter()`: plain
+        /// `sp_counted_impl_p` carries no deleter — returns null.
+        pub fn untyped_deleter(&self) -> Option<&'static str> {
+            None
+        }
+
+        pub fn use_count(&self) -> usize {
+            self.uses.load(Ordering::Acquire)
+        }
+
+        pub fn weak_count(&self) -> usize {
+            self.weaks.load(Ordering::Acquire)
+        }
+    }
+
+    /// IDA 0x260e38 `destroy()`: null stays null, else the deleting dtor
+    /// (vtable slot 1, `+4`) runs. Returns whether dispose ran.
+    pub fn destroy_block(block: Option<&ControlBlock>) -> bool {
+        block.is_some()
+    }
+
+    /// was: `boost::detail::shared_count` — nullable owning handle to the
+    /// control block. `Clone` is the copy-ctor addref (IDA 0x2600c0),
+    /// `Drop` is release (IDA 0x260d98).
+    #[derive(Debug, Default)]
+    pub struct SharedCount {
+        pub block: Option<crate::SharedPtr<ControlBlock>>,
+    }
+
+    impl Clone for SharedCount {
+        fn clone(&self) -> Self {
+            if let Some(b) = &self.block {
+                b.addref_use();
+            }
+            Self { block: self.block.clone() }
+        }
+    }
+
+    impl Drop for SharedCount {
+        fn drop(&mut self) {
+            if let Some(b) = &self.block {
+                b.release();
+            }
+        }
+    }
+
+    impl SharedCount {
+        /// IDA 0x260e70 `shared_count(Y*)`: fresh block, counts (1, 1).
+        /// `vtable` names the `sp_counted_impl_p<E>` instantiation
+        /// (`off_1223058` for `clone_impl<bad_alloc_>`).
+        pub fn from_payload_kind(vtable: &'static str) -> Self {
+            Self { block: Some(crate::SharedPtr::new(ControlBlock::new(vtable))) }
+        }
+
+        pub fn use_count(&self) -> usize {
+            self.block.as_ref().map(|b| b.use_count()).unwrap_or(0)
+        }
+    }
+
+    /// was: `boost::singleton_pool<XmlAttribute, 20, ...>` storage (IDA
+    /// 0x25ff10): zeroed words, then `RequestedSize = 20`, `NextSize =
+    /// StartSize = 32` (`dword_1221528/2C/30`). `get_pool` inits once
+    /// (function-static `f` flag) and returns the storage address.
+    #[derive(Debug)]
+    pub struct SingletonPool {
+        pub requested_size: usize,
+        pub next_size: usize,
+        pub start_size: usize,
+    }
+
+    /// IDA 0x25ff10.
+    static XML_ATTRIBUTE_POOL: LazyLock<SingletonPool> =
+        LazyLock::new(|| SingletonPool { requested_size: 20, next_size: 32, start_size: 32 });
+
+    pub fn xml_attribute_pool() -> &'static SingletonPool {
+        &XML_ATTRIBUTE_POOL
+    }
+
+    /// was: `singleton_pool<XmlElement, 36, ...>` storage, touched by the
+    /// `__GLOBAL__I_a_*` ctors alongside the `XmlAttribute` pool (IDA
+    /// 0x25f37c/0x26025c/0x261094 `get_pool` calls).
+    static XML_ELEMENT_POOL: LazyLock<SingletonPool> =
+        LazyLock::new(|| SingletonPool { requested_size: 36, next_size: 32, start_size: 32 });
+
+    pub fn xml_element_pool() -> &'static SingletonPool {
+        &XML_ELEMENT_POOL
+    }
+
+    /// was: `exception_ptr.hpp:123` (IDA 0x261e94/0x261e96) — source stamp
+    /// recorded on the static `exception_ptr` builds.
+    pub const STATIC_EP_SOURCE_FILE: &str = "boost/exception/detail/exception_ptr.hpp";
+    pub const STATIC_EP_SOURCE_LINE: u32 = 123;
+
+    /// was: `exception_ptr_static_exception_object<bad_alloc_>::e` +
+    /// function-local `ep` (IDA 0x261df8). Guarded init builds the
+    /// `clone_impl` once (`__cxa_atexit(~exception_ptr)`); every call copies
+    /// `ep` with an addref (IDA 0x261fe8-0x26203e spinlock inc).
+    static STATIC_BAD_ALLOC_EP: LazyLock<crate::SharedPtr<CloneImpl<BadAlloc_>>> =
+        LazyLock::new(|| crate::SharedPtr::new(CloneImpl { payload: BadAlloc_, info: None }));
+
+    pub fn static_bad_alloc() -> crate::SharedPtr<CloneImpl<BadAlloc_>> {
+        STATIC_BAD_ALLOC_EP.clone()
+    }
+
+    /// IDA 0x2620f0, same shape for `bad_exception_`.
+    static STATIC_BAD_EXCEPTION_EP: LazyLock<crate::SharedPtr<CloneImpl<BadException_>>> =
+        LazyLock::new(|| crate::SharedPtr::new(CloneImpl { payload: BadException_, info: None }));
+
+    pub fn static_bad_exception() -> crate::SharedPtr<CloneImpl<BadException_>> {
+        STATIC_BAD_EXCEPTION_EP.clone()
+    }
+
+    /// was: the three `boost::system` category singletons stored into merged
+    /// globals by each `__GLOBAL__I_a_*` ctor — `generic_category()` ×2 then
+    /// `system_category()` ×1 (IDA 0x25f056/66/6c, 0x260148/58/5e,
+    /// 0x260f80/90/96 into `dword_131E344/348/34C`, `3BC/3C0/3C4`,
+    /// `3CC/3D0/3D4`).
+    static ERROR_CATEGORIES: LazyLock<(&'static str, &'static str, &'static str)> =
+        LazyLock::new(|| ("generic", "generic", "system"));
+
+    pub fn error_categories() -> &'static (&'static str, &'static str, &'static str) {
+        &ERROR_CATEGORIES
+    }
+
+    /// IDA 0x25f04c `__GLOBAL__I_a_56`: TU static-init — error categories,
+    /// `std::ios_base::Init` (+ `atexit` dtor), guarded inits for the
+    /// Light-family `PropDescriptor` statics, the two static
+    /// `exception_ptr` objects, the `XmlAttribute`/`XmlElement`/RBX
+    /// `singleton_pool` storages and the `FactoryProduct` creators.
+    /// `PropDescriptor`/`FactoryProduct`/RBX-pool statics are owned by the
+    /// reflection/datamodel crates (see their `__GLOBAL__` ports); the
+    /// core-owned effects below are idempotent via `LazyLock` statics.
+    pub fn ensure_init_a56() {
+        let _ = error_categories();
+        let _ = static_bad_alloc();
+        let _ = static_bad_exception();
+        let _ = xml_attribute_pool();
+        let _ = xml_element_pool();
+    }
+
+    /// IDA 0x260144 `__GLOBAL__I_a_57`: same core-owned set — categories,
+    /// `ios_base::Init`, both static `exception_ptr` objects (via 0x261df8 /
+    /// 0x2620f0 + `atexit(~exception_ptr)`), `XmlAttribute` pool (via
+    /// 0x25ff10) and `XmlElement` pool.
+    pub fn ensure_init_a57() {
+        let _ = error_categories();
+        let _ = static_bad_alloc();
+        let _ = static_bad_exception();
+        let _ = xml_attribute_pool();
+        let _ = xml_element_pool();
+    }
+
+    /// IDA 0x260f7c `__GLOBAL__I_a_58`: identical core-owned set to a_57
+    /// (categories, ios init, both static eps, both Xml pools).
+    pub fn ensure_init_a58() {
+        ensure_init_a57();
+    }
+
+    /// IDA 0x25fc58 `throw_exception<thread_resource_error>`: builds the
+    /// 0x2C-byte `clone_impl<error_info_injector<thread_resource_error>>`
+    /// (copies the `system_error` message strings, installs
+    /// `off_1221B68`-family vtables) and `__cxa_throw`s it. `__noreturn`
+    /// in the binary; `-> !` here.
+    pub fn throw_thread_resource_error(err: ThreadResourceError) -> ! {
+        panic!("{}", err);
+    }
+
+    /// was: function-local `vector<ClassDescriptor*>` zero-init +
+    /// `__cxa_atexit(~vector)` (IDA 0x2610dc, guard `byte_131E3F4`).
+    /// The `ClassDescriptor` rows themselves are owned by the reflection
+    /// crate; core keeps the registry shell.
+    static STATIC_DATA2: LazyLock<parking_lot::Mutex<Vec<&'static str>>> =
+        LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+
+    pub fn static_data2() -> &'static parking_lot::Mutex<Vec<&'static str>> {
+        &STATIC_DATA2
+    }
+
+    /// IDA 0x2610d8 `initStaticData2` — thunk straight into `staticData2`.
+    pub fn init_static_data2() {
+        let _ = static_data2();
+    }
+}
 
 #[doc(alias = "__ZNK3RBX5Light8getColorEv")]
 // 0x25c0f0 — __ZNK3RBX5Light8getColorEv
@@ -85,157 +432,185 @@ pub fn stub_0x25d5cc() {
 #[doc(alias = "__GLOBAL__I_a_56")]
 // 0x25f04c — __GLOBAL__I_a_56
 pub fn stub_0x25f04c() {
-    // IDA 0x25f04c: Name interning declare shim (static Name registry key). &'static str registry — carrier no-op.
+    // IDA 0x25f04c: __GLOBAL__I_a_56 TU static-init; disasm calls generic_category x2 + system_category + ios_base::Init + guarded PropDescriptor/singleton-pool/exception_ptr/factory inits. Core-owned effects idempotent.
+    boost_exception::ensure_init_a56();
 }
 
 #[doc(alias = "__ZN5boost15throw_exceptionINS_21thread_resource_errorEEEvRKT_")]
 // 0x25fc58 — __ZN5boost15throw_exceptionINS_21thread_resource_errorEEEvRKT_
-pub fn stub_0x25fc58() {
-    // IDA 0x25fc58: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
+pub fn stub_0x25fc58(err: boost_exception::ThreadResourceError) -> ! {
+    // IDA 0x25fc58: throw_exception<thread_resource_error> — builds 0x2C-byte clone_impl<error_info_injector<...>> (copies message strings, installs vtables) then __cxa_throw. __noreturn -> -> !.
+    boost_exception::throw_thread_resource_error(err);
 }
 
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev")]
 // 0x25fdc0 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
-pub fn stub_0x25fdc0() {
-    // IDA 0x25fdc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25fdc0(_this: &mut boost_exception::CloneImpl<boost_exception::ThreadResourceError>) {
+    // IDA 0x25fdc0: D1 thunk delegating to D2 (attributes: thunk). Member drops run via Rust Drop glue; nothing to emit.
 }
 
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev")]
 // 0x25fdc8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
-pub fn stub_0x25fdc8() {
-    // IDA 0x25fdc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25fdc8(this: *mut u8) -> *mut u8 {
+    // IDA 0x25fdc8: non-virtual thunk to clone_impl<error_info_injector<thread_resource_error>>::~clone_impl — this -= 20, then D1.
+    boost_exception::nonvirtual_thunk_adjust(this)
 }
 
 #[doc(alias = "__ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_")]
 // 0x25fdd0 — __ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_
-pub fn stub_0x25fdd0() {
-    // IDA 0x25fdd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25fdd0<E: Clone>(
+    dst: &mut boost_exception::CloneImpl<E>,
+    src: &boost_exception::CloneImpl<E>,
+) {
+    // IDA 0x25fdd0: copy_boost_exception — dst[2..=4] = src[2..=4] plus error_info adopt/addref dance (clone via vtab+20, adopt, release old when count hits 1).
+    dst.copy_from(src);
 }
 
 #[doc(alias = "__ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
 // 0x25ff10 — __ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_0x25ff10() {
-    // IDA 0x25ff10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25ff10() -> &'static boost_exception::SingletonPool {
+    // IDA 0x25ff10: singleton_pool<XmlAttribute,20>::get_pool — once-init mutex + RequestedSize 20 / NextSize = StartSize 32, return storage.
+    boost_exception::xml_attribute_pool()
 }
 
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")]
 // 0x25ff60 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
-pub fn stub_0x25ff60() {
-    // IDA 0x25ff60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25ff60(_this: &mut boost_exception::CloneImpl<boost_exception::BadException_>) {
+    // IDA 0x25ff60: clone_impl<bad_exception_> D1 — runs ~bad_exception_ on the subobject, returns this. Drop glue covers it.
 }
 
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev")]
 // 0x25ff70 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
-pub fn stub_0x25ff70() {
-    // IDA 0x25ff70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25ff70(this: boost_exception::CloneImpl<boost_exception::BadException_>) {
+    // IDA 0x25ff70: clone_impl<bad_exception_> D0 — D1 then operator delete. By-value drop is the delete.
+    drop(this);
 }
 
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv")]
 // 0x25ff88 — __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv
-pub fn stub_0x25ff88() {
-    // IDA 0x25ff88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x25ff88(
+    this: &boost_exception::CloneImpl<boost_exception::BadException_>,
+) -> boost_exception::CloneImpl<boost_exception::BadException_> {
+    // IDA 0x25ff88: clone_impl<bad_exception_>::rethrow — __cxa_allocate_exception(0x1C), copy payload words + error_info addref, install vtables, __cxa_throw. Returns the thrown image; the throw itself is the caller's panic!.
+    this.rethrow_copy()
 }
 
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev")]
 // 0x260098 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
-pub fn stub_0x260098() {
-    // IDA 0x260098: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260098(this: *mut u8) -> *mut u8 {
+    // IDA 0x260098: non-virtual thunk to clone_impl<bad_exception_> D0 — this -= 20, ~bad_exception_, operator delete. Returns the adjusted object address.
+    boost_exception::nonvirtual_thunk_adjust(this)
 }
 
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv")]
 // 0x2600b0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
-pub fn stub_0x2600b0() {
-    // IDA 0x2600b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x2600b0(this: *const u8, top_offset: isize) -> *const u8 {
+    // IDA 0x2600b0: virtual thunk to clone_impl<bad_exception_>::clone — this += *(vtab - 12), then clone. Offset passed in (it lives in the binary vtable).
+    boost_exception::virtual_thunk_adjust(this, top_offset)
 }
 
 #[doc(alias = "__ZN5boost6detail12shared_countC1ERKS1_")]
 // 0x2600c0 — __ZN5boost6detail12shared_countC1ERKS1_
-pub fn stub_0x2600c0() {
-    // IDA 0x2600c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x2600c0(dst: &mut boost_exception::SharedCount, src: &boost_exception::SharedCount) {
+    // IDA 0x2600c0: shared_count copy ctor — copy pi_, lock slot ((pi+4) % 0x29), ++use_count.
+    *dst = src.clone();
 }
 
 #[doc(alias = "__GLOBAL__I_a_57")]
 // 0x260144 — __GLOBAL__I_a_57
 pub fn stub_0x260144() {
-    // IDA 0x260144: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x260144: __GLOBAL__I_a_57 — categories, ios_base::Init, guarded static eps (via 0x261df8/0x2620f0) + XmlAttribute/XmlElement pools.
+    boost_exception::ensure_init_a57();
 }
 
 #[doc(alias = "__ZN5boost6detail15sp_counted_base7releaseEv")]
 // 0x260d98 — __ZN5boost6detail15sp_counted_base7releaseEv
-pub fn stub_0x260d98() {
-    // IDA 0x260d98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260d98(block: &boost_exception::ControlBlock) -> (bool, bool) {
+    // IDA 0x260d98: sp_counted_base::release — locked use--, dispose at 0 (vtab+8), locked weak--, destroy at 0 (vtab+12). Returns (disposed, destroyed).
+    block.release()
 }
 
 #[doc(alias = "__ZN5boost6detail15sp_counted_base7destroyEv")]
 // 0x260e38 — __ZN5boost6detail15sp_counted_base7destroyEv
-pub fn stub_0x260e38() {
-    // IDA 0x260e38: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_0x260e38(block: Option<&boost_exception::ControlBlock>) -> bool {
+    // IDA 0x260e38: sp_counted_base::destroy — null stays null, else deleting dtor (vtab+4). Returns whether dispose ran.
+    boost_exception::destroy_block(block)
 }
 
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEE19get_untyped_deleterEv")]
 // 0x260e48 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEE19get_untyped_deleterEv
-pub fn stub_0x260e48() {
-    // IDA 0x260e48: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_0x260e48() -> Option<&'static str> {
+    // IDA 0x260e48: sp_counted_impl_p<clone_impl<bad_exception_>>::get_untyped_deleter — plain impl carries none, returns 0.
+    None
 }
 
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")]
 // 0x260e50 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
-pub fn stub_0x260e50() {
-    // IDA 0x260e50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260e50(_this: &mut boost_exception::CloneImpl<boost_exception::BadAlloc_>) {
+    // IDA 0x260e50: clone_impl<bad_alloc_> D1 — runs ~bad_alloc_, returns this. Drop glue covers it.
 }
 
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv")]
 // 0x260e60 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
-pub fn stub_0x260e60() {
-    // IDA 0x260e60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260e60(this: *const u8, top_offset: isize) -> *const u8 {
+    // IDA 0x260e60: virtual thunk to clone_impl<bad_alloc_>::clone — this += *(vtab - 12), then clone.
+    boost_exception::virtual_thunk_adjust(this, top_offset)
 }
 
 #[doc(alias = "__ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_10bad_alloc_EEEEEPT_")]
 // 0x260e70 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_10bad_alloc_EEEEEPT_
-pub fn stub_0x260e70() {
-    // IDA 0x260e70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260e70() -> boost_exception::SharedCount {
+    // IDA 0x260e70: shared_count<clone_impl<bad_alloc_>> ctor — *pi = 0, new(0x10) block with uses = weaks = 1, vtable off_1223058, store payload.
+    boost_exception::SharedCount::from_payload_kind("off_1223058")
 }
 
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEED0Ev")]
 // 0x260f68 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEED0Ev
-pub fn stub_0x260f68() {
-    // IDA 0x260f68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260f68(block: Box<boost_exception::ControlBlock>) {
+    // IDA 0x260f68: sp_counted_impl_p<clone_impl<bad_alloc_>> D0 thunk — operator delete. Box drop is the delete.
+    drop(block);
 }
 
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE19get_untyped_deleterEv")]
 // 0x260f70 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE19get_untyped_deleterEv
-pub fn stub_0x260f70() {
-    // IDA 0x260f70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x260f70() -> Option<&'static str> {
+    // IDA 0x260f70: sp_counted_impl_p<clone_impl<bad_alloc_>>::get_untyped_deleter — returns 0.
+    None
 }
 
 #[doc(alias = "__GLOBAL__I_a_58")]
 // 0x260f7c — __GLOBAL__I_a_58
 pub fn stub_0x260f7c() {
-    // IDA 0x260f7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x260f7c: __GLOBAL__I_a_58 — identical core-owned set to a_57 (categories, ios init, both static eps, both Xml pools).
+    boost_exception::ensure_init_a58();
 }
 
 #[doc(alias = "__ZL15initStaticData2v")]
 // 0x2610d8 — __ZL15initStaticData2v
 pub fn stub_0x2610d8() {
-    // IDA 0x2610d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x2610d8: initStaticData2 — thunk straight into staticData2.
+    boost_exception::init_static_data2();
 }
 
 #[doc(alias = "__ZL11staticData2v")]
 // 0x2610dc — __ZL11staticData2v
 pub fn stub_0x2610dc() {
-    // IDA 0x2610dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x2610dc: staticData2 — guarded zero-init of the ClassDescriptor* vector + atexit(~vector). Registry shell init.
+    boost_exception::init_static_data2();
 }
 
 #[doc(alias = "__ZN5boost16exception_detail27get_static_exception_objectINS0_10bad_alloc_EEENS_13exception_ptrEv")]
 // 0x261df8 — __ZN5boost16exception_detail27get_static_exception_objectINS0_10bad_alloc_EEENS_13exception_ptrEv
-pub fn stub_0x261df8() {
-    // IDA 0x261df8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_0x261df8() -> crate::SharedPtr<boost_exception::CloneImpl<boost_exception::BadAlloc_>> {
+    // IDA 0x261df8: get_static_exception_object<bad_alloc_> — guarded once-build of the static clone_impl + ep (exception_ptr.hpp:123, atexit(~exception_ptr)); every return copies ep with an addref.
+    boost_exception::static_bad_alloc()
 }
 
 #[doc(alias = "__ZN5boost16exception_detail27get_static_exception_objectINS0_14bad_exception_EEENS_13exception_ptrEv")]
 // 0x2620f0 — __ZN5boost16exception_detail27get_static_exception_objectINS0_14bad_exception_EEENS_13exception_ptrEv
-pub fn stub_0x2620f0() {
-    // IDA 0x2620f0: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
+pub fn stub_0x2620f0() -> crate::SharedPtr<boost_exception::CloneImpl<boost_exception::BadException_>> {
+    // IDA 0x2620f0: get_static_exception_object<bad_exception_> — same shape for bad_exception_.
+    boost_exception::static_bad_exception()
 }
 
 #[doc(alias = "__ZN5boost21thread_resource_errorD0Ev")]
@@ -662,4 +1037,139 @@ pub fn stub_0x28612c() {
 // 0x286170 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
 pub fn stub_0x286170() {
     // IDA 0x286170: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+}
+
+
+#[cfg(test)]
+mod batch_ad_tests {
+    use super::boost_exception::*;
+    use super::*;
+
+    #[test]
+    fn thunk_bias_matches_ida_thn20() {
+        let base = 0x1000 as *mut u8;
+        assert_eq!(stub_0x25fdc8(base), 0xFEC as *mut u8);
+        assert_eq!(stub_0x260098(base), 0xFEC as *mut u8);
+        assert_eq!(NONVIRTUAL_THUNK_BIAS, 20);
+    }
+
+    #[test]
+    fn virtual_thunk_adds_top_offset() {
+        let base = 0x1000 as *const u8;
+        assert_eq!(stub_0x2600b0(base, -12), 0xFF4 as *const u8);
+        assert_eq!(stub_0x260e60(base, 0), base);
+    }
+
+    #[test]
+    fn spin_slots_match_ida_mod41() {
+        let addr = 0x1223000usize;
+        assert_eq!(spin_slot_use(addr), (addr + 4) % 41);
+        assert_eq!(spin_slot_weak(addr), (addr + 8) % 41);
+        assert_eq!(SPIN_POOL_LEN, 41);
+    }
+
+    #[test]
+    fn shared_count_copy_addrefs_and_release_disposes() {
+        let src = stub_0x260e70();
+        assert_eq!(src.use_count(), 1);
+        let mut dst = SharedCount::default();
+        stub_0x2600c0(&mut dst, &src);
+        assert_eq!(src.use_count(), 2);
+        assert_eq!(dst.use_count(), 2);
+        let block = src.block.as_ref().unwrap();
+        assert_eq!(block.vtable, "off_1223058");
+        let (disposed, destroyed) = stub_0x260d98(block);
+        assert!(!disposed && !destroyed);
+        drop(dst);
+        drop(src);
+    }
+
+    #[test]
+    fn release_last_owner_disposes_and_destroys() {
+        let sole = stub_0x260e70();
+        let block = sole.block.as_ref().unwrap();
+        assert_eq!(block.use_count(), 1);
+        assert_eq!(block.weak_count(), 1);
+        let (disposed, destroyed) = stub_0x260d98(block);
+        assert!(disposed && destroyed);
+        assert!(stub_0x260e38(Some(block)));
+        assert!(!stub_0x260e38(None));
+    }
+
+    #[test]
+    fn untyped_deleter_is_null() {
+        assert!(stub_0x260e48().is_none());
+        assert!(stub_0x260f70().is_none());
+        let owned = stub_0x260e70();
+        assert!(owned.block.as_ref().unwrap().untyped_deleter().is_none());
+    }
+
+    #[test]
+    fn deleting_dtor_frees_block() {
+        let block = Box::new(ControlBlock::new("off_1223058"));
+        stub_0x260f68(block);
+    }
+
+    #[test]
+    fn clone_rethrow_shares_error_info() {
+        let mut info = ErrorInfoContainer::default();
+        info.entries.insert("file".to_string(), "exception_ptr.hpp".to_string());
+        let e = CloneImpl { payload: BadException_, info: Some(crate::SharedPtr::new(info)) };
+        let thrown = stub_0x25ff88(&e);
+        assert!(std::ptr::eq(
+            thrown.info.as_ref().unwrap().as_ref() as *const _,
+            e.info.as_ref().unwrap().as_ref() as *const _
+        ));
+        let mut dst = CloneImpl { payload: BadAlloc_, info: None };
+        let src = CloneImpl { payload: BadAlloc_, info: e.info.clone() };
+        stub_0x25fdd0(&mut dst, &src);
+        assert!(dst.info.is_some());
+    }
+
+    #[test]
+    fn pool_sizes_match_disasm_words() {
+        let pool = stub_0x25ff10();
+        assert_eq!((pool.requested_size, pool.next_size, pool.start_size), (20, 32, 32));
+        assert!(std::ptr::eq(pool, xml_attribute_pool()));
+        assert_eq!(xml_element_pool().requested_size, 36);
+    }
+
+    #[test]
+    fn static_exception_objects_are_singletons() {
+        let a1 = stub_0x261df8();
+        let a2 = stub_0x261df8();
+        assert!(crate::SharedPtr::ptr_eq(&a1, &a2));
+        let b1 = stub_0x2620f0();
+        let b2 = stub_0x2620f0();
+        assert!(crate::SharedPtr::ptr_eq(&b1, &b2));
+        assert_eq!((STATIC_EP_SOURCE_FILE, STATIC_EP_SOURCE_LINE), ("boost/exception/detail/exception_ptr.hpp", 123));
+    }
+
+    #[test]
+    fn global_inits_and_static_data_are_idempotent() {
+        stub_0x25f04c();
+        stub_0x260144();
+        stub_0x260f7c();
+        stub_0x2610d8();
+        stub_0x2610dc();
+        assert_eq!(*error_categories(), ("generic", "generic", "system"));
+        assert!(static_data2().lock().is_empty());
+    }
+
+    #[test]
+    #[should_panic(expected = "thread resource error")]
+    fn throw_exception_noreturn_panics() {
+        stub_0x25fc58(ThreadResourceError { detail: "test-spawn" });
+    }
+
+    #[test]
+    fn dtor_glue_runs_without_effect() {
+        let mut injector = CloneImpl { payload: ThreadResourceError { detail: "x" }, info: None };
+        stub_0x25fdc0(&mut injector);
+        let mut be = CloneImpl { payload: BadException_, info: None };
+        stub_0x25ff60(&mut be);
+        stub_0x25ff70(be);
+        let mut ba = CloneImpl { payload: BadAlloc_, info: None };
+        stub_0x260e50(&mut ba);
+    }
 }
