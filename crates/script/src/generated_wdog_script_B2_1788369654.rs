@@ -34,6 +34,22 @@ pub struct CRenderSettingsBoolProp {
     pub attributes: u32,
     pub permissions: u32,
 }
+/// Get/set pair behind `BoundProp<std::string, CRenderSettingsItem>`
+/// (IDA 0x11b18 ctor member-offset store; read at 0x11cb0, compared at 0x11cc8).
+pub struct CRenderSettingsStringAccess {
+    pub get: Box<dyn Fn(&CRenderSettingsItemState) -> String + Send + Sync>,
+    pub set: Box<dyn Fn(&mut CRenderSettingsItemState, &str) + Send + Sync>,
+}
+
+/// `RBX::Reflection::BoundProp<std::string, (Mutability)1>` bound to
+/// `CRenderSettingsItem` (IDA 0x11b18).
+pub struct CRenderSettingsStringProp {
+    pub name: String,
+    pub category: String,
+    pub access: CRenderSettingsStringAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
 
 /// IDA 0x10564/0x110e8 `setEnumValue` core: `std::find_if` with
 /// `EnumDescriptor::equalValue` over the descriptor items.
@@ -653,155 +669,289 @@ pub fn stub_0x1162c(
 // 0x11650 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14hasStringValueEv")]
-pub fn stub_0x11650() -> ! {
-    todo!("0x11650 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14hasStringValueEv")
+pub fn stub_0x11650() -> bool {
+    // IDA 0x11650 `hasStringValue`: hardcoded `return 1` — enum props always
+    // have a string form (cf. 0x10244/0x10dc8).
+    true
 }
 
 // 0x11654 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x11654() -> ! {
-    todo!("0x11654 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x11654(prop: &CRenderSettingsShadowPropDesc, obj: &CRenderSettingsItemState, out: &mut String) {
+    // IDA 0x11654 `getStringValue`: v = getValue(impl), then
+    // `EnumDesc<ShadowMode>::convertToString(desc, v, out)` (cf. 0x10dcc).
+    let value = (prop.access.get)(obj);
+    aa_string_of(prop.enum_desc, value, out);
 }
 
 // 0x11678 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x11678() -> ! {
-    todo!("0x11678 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x11678(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x11678 `setStringValue`: `Name::lookup(text)` +
+    // `EnumDesc::convertToValue`; on a hit `setValue` runs and 1 returns,
+    // otherwise 0 (cf. 0x10df0).
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x116b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0x116b8() -> ! {
-    todo!("0x116b8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x116b8(
+    prop: &CRenderSettingsShadowPropDesc,
+    obj: &CRenderSettingsItemState,
+    pair: &mut ScriptXmlNameValuePair,
+) -> u32 {
+    // IDA 0x116b8 `writeValue`: v = getValue, `clearValue`, type tag 5,
+    // payload v; returns 5 (cf. 0x10e30).
+    let value = (prop.access.get)(obj);
+    *pair = ScriptXmlNameValuePair { int_value: Some(value), text: None };
+    5
 }
 
 // 0x116d8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0x116d8() -> ! {
-    todo!("0x116d8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x116d8(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, element: &ScriptXmlElement) {
+    // IDA 0x116d8 `readValue`: same shape as the twins at 0x102cc/0x10e50 —
+    // xsi:nil returns; int payload runs `setIntValue`; string payload goes
+    // through `convertToValue` into `setValue`, empty string falls back to
+    // 0; anything else hits `ReleaseAssert(false)` (Reflection.h:359).
+    if element.is_xsi_nil {
+        return;
+    }
+    if let Some(value) = element.pair.int_value {
+        (prop.access.set)(obj, value);
+        return;
+    }
+    if let Some(text) = &element.pair.text {
+        if let Some(value) = prop.enum_desc.lookup_value(text) {
+            (prop.access.set)(obj, value);
+            return;
+        }
+        if text.is_empty() {
+            (prop.access.set)(obj, 0);
+            return;
+        }
+    }
+    panic!("false file: ../App/include/Reflection/Reflection.h line: 359");
 }
 
 // 0x11918 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x11918() -> ! {
-    todo!("0x11918 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x11918(prop: &CRenderSettingsShadowPropDesc, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x11918 `getIndexValue`: v = getValue(impl), then
+    // `EnumDesc::convertToIndex(desc, v)` (cf. 0x11090).
+    let value = (prop.access.get)(obj);
+    aa_index_of(prop.enum_desc, value)
 }
 
 // 0x11934 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0x11934() -> ! {
-    todo!("0x11934 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x11934(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, index: u32) -> bool {
+    // IDA 0x11934 `setIndexValue`: count = [desc+40]; idx < count loads the
+    // ordinal from [desc+144][idx], runs `setValue` and returns 1; otherwise
+    // 0 (cf. 0x110ac).
+    if (index as usize) < prop.enum_desc.values.len() {
+        let ordinal = prop
+            .enum_desc
+            .value_ordinals
+            .get(index as usize)
+            .copied()
+            .unwrap_or(index as i32);
+        (prop.access.set)(obj, ordinal);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x11968 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x11968() -> ! {
-    todo!("0x11968 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x11968(prop: &CRenderSettingsShadowPropDesc, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x11968 `getEnumValue`: `getValue(impl)` through the +44 GetSet
+    // impl (cf. 0x110e0).
+    (prop.access.get)(obj)
 }
 
 // 0x11970 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x11970() -> ! {
-    todo!("0x11970 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x11970(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x11970 `setEnumValue`: `std::find_if` with `equalValue`; a hit
+    // runs `setValue` and returns 1, a miss returns 0 (cf. 0x110e8).
+    if aa_has_value(prop.enum_desc, value) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x119bc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x119bc() -> ! {
-    todo!("0x119bc __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x119bc(prop: &CRenderSettingsShadowPropDesc, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x119bc `getEnumItem`: v = getValue(impl), then
+    // `EnumDesc<ShadowMode>::convertToItem(desc, v)` (cf. 0x11134).
+    let value = (prop.access.get)(obj);
+    aa_item_of(prop.enum_desc, value)
 }
 
 // 0x119dc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x119dc() -> ! {
-    todo!("0x119dc __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x119dc(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x119dc `setStringValue` (Name overload): `convertToValue` on the
+    // interned name; on a hit `setValue` runs and 1 returns, otherwise 0
+    // (cf. 0x11154).
+    if let Some(value) = prop.enum_desc.lookup_value(name) {
+        (prop.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x11a10 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToIndex(RBX::CRenderSettings::ShadowMode)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_")]
-pub fn stub_0x11a10() -> ! {
-    todo!("0x11a10 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_")
+pub fn stub_0x11a10(desc: &EnumDesc, value: i32) -> i32 {
+    // IDA 0x11a10 `convertToIndex`: ShadowMode instantiation of the
+    // 0x10604/0x11188 shape; LABEL_7 core in `aa_index_of`.
+    aa_index_of(desc, value)
 }
 
 // 0x11a80 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x11a80() -> ! {
-    todo!("0x11a80 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x11a80(prop: &CRenderSettingsShadowPropDesc, obj: &mut CRenderSettingsItemState, index: i32) -> bool {
+    // IDA 0x11a80 `setIntValue`: negative indices fail; the [desc+132]
+    // ordinal table yields the payload, -1 entries fail; otherwise `setValue`
+    // runs and 1 returns (cf. 0x111f8).
+    if index >= 0 {
+        if let Some(&payload) = prop.enum_desc.values.get(index as usize) {
+            if payload != -1 {
+                (prop.access.set)(obj, payload);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x11ac0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x11ac0() -> ! {
-    todo!("0x11ac0 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x11ac0() -> bool {
+    // IDA 0x11ac0 GetSetImpl `isReadOnly`: hardcoded `return 0`.
+    false
 }
 
 // 0x11ac4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x11ac4() -> ! {
-    todo!("0x11ac4 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x11ac4() -> bool {
+    // IDA 0x11ac4 GetSetImpl `isWriteOnly`: hardcoded `return 0`.
+    false
 }
 
 // 0x11ac8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x11ac8() -> ! {
-    todo!("0x11ac8 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x11ac8(access: &CRenderSettingsShadowAccess, obj: &CRenderSettingsItemState) -> i32 {
+    // IDA 0x11ac8 GetSetImpl `getValue`: member-pointer adjust then the
+    // getter call (cf. 0x11240).
+    (access.get)(obj)
 }
 
 // 0x11af4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ShadowMode const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x11af4() -> ! {
-    todo!("0x11af4 __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x11af4(access: &CRenderSettingsShadowAccess, obj: &mut CRenderSettingsItemState, value: i32) {
+    // IDA 0x11af4 GetSetImpl `setValue`: member adjust then the setter call
+    // (cf. 0x1126c).
+    (access.set)(obj, value)
 }
 
 // 0x11b18 — __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,std::string  CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x11b18() -> ! {
-    todo!("0x11b18 __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x11b18(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&CRenderSettingsItemState) -> String + Send + Sync>,
+    set: Box<dyn Fn(&mut CRenderSettingsItemState, &str) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> CRenderSettingsStringProp {
+    // IDA 0x11b18 `BoundProp<std::string>` ctor: `classDescriptor` init
+    // (0x11b3e), `TypedPropertyDescriptor<std::string>` base init, fresh
+    // BoundPropGetSet block holding the owner + member offset, then the
+    // read-only/write-only attribute masks (both queries return 0 below, so
+    // the masks never fire; cf. 0x379958).
+    CRenderSettingsStringProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: CRenderSettingsStringAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x11ca8 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv")]
-pub fn stub_0x11ca8() -> ! {
-    todo!("0x11ca8 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv")
+pub fn stub_0x11ca8() -> bool {
+    // IDA 0x11ca8 BoundPropGetSet<std::string> `isReadOnly`: hardcoded
+    // `return 0` (0x11caa).
+    false
 }
 
 // 0x11cac — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv")]
-pub fn stub_0x11cac() -> ! {
-    todo!("0x11cac __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv")
+pub fn stub_0x11cac() -> bool {
+    // IDA 0x11cac BoundPropGetSet<std::string> `isWriteOnly`: hardcoded
+    // `return 0` (0x11cae).
+    false
 }
 
 // 0x11cb0 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x11cb0() -> ! {
-    todo!("0x11cb0 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x11cb0(access: &CRenderSettingsStringAccess, obj: &CRenderSettingsItemState) -> String {
+    // IDA 0x11cb0 BoundPropGetSet<std::string> `getValue`: member-offset
+    // load `*(member_offset(a2+8) + obj - 36)` into the out string (0x11cb2..
+    // 0x11cc6); the pair folds into `access`.
+    (access.get)(obj)
 }
 
 // 0x11cc8 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x11cc8() -> ! {
-    todo!("0x11cc8 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x11cc8(access: &CRenderSettingsStringAccess, obj: &mut CRenderSettingsItemState, value: &str) -> bool {
+    // IDA 0x11cc8 BoundPropGetSet<std::string> `setValue`: member adjust
+    // (0x11cd6..0x11ce0), `compare` with early-out when equal
+    // (0x11ce6..0x11cea), else `assign` (0x11cf0) and
+    // `raisePropertyChanged` when the notify bits are set (0x11cf4..0x11d2a).
+    // The signal lives on Instance (datamodel side); the model keeps the
+    // compare-and-store (cf. 0x379afc).
+    if (access.get)(obj) != value {
+        (access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x11d30 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
