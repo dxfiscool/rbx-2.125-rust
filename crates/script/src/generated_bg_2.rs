@@ -419,176 +419,244 @@ pub fn stub_0x1ffd4(state: &mut LoginViewState, view: Option<u32>) {
 // 0x1fff8 — -[LoginViewController mainView]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController mainView]")]
-pub fn stub_0x1fff8() -> ! {
-    todo!("0x1fff8 -[LoginViewController mainView]")
+pub fn stub_0x1fff8(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x1fff8 `-[LoginViewController mainView]`: GET (disasm
+    // `_mainView` IVAR load); opaque platform handle on the host.
+    state.outlets.get("mainView").copied().flatten()
 }
 
 // 0x20008 — -[LoginViewController setMainView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setMainView:]")]
-pub fn stub_0x20008() -> ! {
-    todo!("0x20008 -[LoginViewController setMainView:]")
+pub fn stub_0x20008(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20008 `-[LoginViewController setMainView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("mainView".to_string(), view);
 }
 
 // 0x2002c — -[LoginViewController EnvironmentPicker]
 // type: UIPickerView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController EnvironmentPicker]")]
-pub fn stub_0x2002c() -> ! {
-    todo!("0x2002c -[LoginViewController EnvironmentPicker]")
+pub fn stub_0x2002c(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x2002c `-[LoginViewController EnvironmentPicker]`: GET (disasm
+    // `_EnvironmentPicker` IVAR load); the handle — rows live in `envs`
+    // (cf. 0x1dd84).
+    state.outlets.get("EnvironmentPicker").copied().flatten()
 }
 
 // 0x2003c — -[LoginViewController setEnvironmentPicker:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setEnvironmentPicker:]")]
-pub fn stub_0x2003c() -> ! {
-    todo!("0x2003c -[LoginViewController setEnvironmentPicker:]")
+pub fn stub_0x2003c(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x2003c `-[LoginViewController setEnvironmentPicker:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.outlets.insert("EnvironmentPicker".to_string(), view);
 }
 
 // 0x20060 — -[LoginViewController rememberPwLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController rememberPwLabel]")]
-pub fn stub_0x20060() -> ! {
-    todo!("0x20060 -[LoginViewController rememberPwLabel]")
+pub fn stub_0x20060(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20060 `-[LoginViewController rememberPwLabel]`: GET (disasm
+    // `_rememberPwLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1e2ec).
+    state.outlets.get("rememberPwLabel").copied().flatten()
 }
 
 // 0x20070 — -[LoginViewController setRememberPwLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRememberPwLabel:]")]
-pub fn stub_0x20070() -> ! {
-    todo!("0x20070 -[LoginViewController setRememberPwLabel:]")
+pub fn stub_0x20070(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20070 `-[LoginViewController setRememberPwLabel:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.outlets.insert("rememberPwLabel".to_string(), view);
 }
 
 // 0x20094 — -[LoginViewController loginLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginLabel]")]
-pub fn stub_0x20094() -> ! {
-    todo!("0x20094 -[LoginViewController loginLabel]")
+pub fn stub_0x20094(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20094 `-[LoginViewController loginLabel]`: GET (disasm
+    // `_loginLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1e2ec).
+    state.outlets.get("loginLabel").copied().flatten()
 }
 
 // 0x200a4 — -[LoginViewController setLoginLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginLabel:]")]
-pub fn stub_0x200a4() -> ! {
-    todo!("0x200a4 -[LoginViewController setLoginLabel:]")
+pub fn stub_0x200a4(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x200a4 `-[LoginViewController setLoginLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("loginLabel".to_string(), view);
 }
 
 // 0x200c8 — -[LoginViewController signupLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController signupLabel]")]
-pub fn stub_0x200c8() -> ! {
-    todo!("0x200c8 -[LoginViewController signupLabel]")
+pub fn stub_0x200c8(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x200c8 `-[LoginViewController signupLabel]`: GET (disasm
+    // `_signupLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1e2ec).
+    state.outlets.get("signupLabel").copied().flatten()
 }
 
 // 0x200d8 — -[LoginViewController setSignupLabel:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSignupLabel:]")]
-pub fn stub_0x200d8() -> ! {
-    todo!("0x200d8 -[LoginViewController setSignupLabel:]")
+pub fn stub_0x200d8(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x200d8 `-[LoginViewController setSignupLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("signupLabel".to_string(), view);
 }
 
 // 0x200fc — -[LoginViewController swiRememberMyPassword]
 // type: UISwitch *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController swiRememberMyPassword]")]
-pub fn stub_0x200fc() -> ! {
-    todo!("0x200fc -[LoginViewController swiRememberMyPassword]")
+pub fn stub_0x200fc(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x200fc `-[LoginViewController swiRememberMyPassword]`: GET
+    // (disasm `_swiRememberMyPassword` IVAR load); the on/off state is
+    // `remember_switch_on` (cf. 0x1e764).
+    state.outlets.get("swiRememberMyPassword").copied().flatten()
 }
 
 // 0x2010c — -[LoginViewController setSwiRememberMyPassword:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setSwiRememberMyPassword:]")]
-pub fn stub_0x2010c() -> ! {
-    todo!("0x2010c -[LoginViewController setSwiRememberMyPassword:]")
+pub fn stub_0x2010c(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x2010c `-[LoginViewController setSwiRememberMyPassword:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.outlets.insert("swiRememberMyPassword".to_string(), view);
 }
 
 // 0x20130 — -[LoginViewController scrollView]
 // type: UIScrollView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController scrollView]")]
-pub fn stub_0x20130() -> ! {
-    todo!("0x20130 -[LoginViewController scrollView]")
+pub fn stub_0x20130(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20130 `-[LoginViewController scrollView]`: GET (disasm
+    // `_scrollView` IVAR load); the offset is `scroll_offset` (cf.
+    // 0x1f2e0).
+    state.outlets.get("scrollView").copied().flatten()
 }
 
 // 0x20140 — -[LoginViewController setScrollView:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setScrollView:]")]
-pub fn stub_0x20140() -> ! {
-    todo!("0x20140 -[LoginViewController setScrollView:]")
+pub fn stub_0x20140(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20140 `-[LoginViewController setScrollView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("scrollView".to_string(), view);
 }
 
 // 0x20164 — -[LoginViewController imgUsernamePasswordBackground]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController imgUsernamePasswordBackground]")]
-pub fn stub_0x20164() -> ! {
-    todo!("0x20164 -[LoginViewController imgUsernamePasswordBackground]")
+pub fn stub_0x20164(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20164 `-[LoginViewController imgUsernamePasswordBackground]`:
+    // GET (disasm `_imgUsernamePasswordBackground` IVAR load); opaque
+    // platform handle on the host.
+    state.outlets.get("imgUsernamePasswordBackground").copied().flatten()
 }
 
 // 0x20174 — -[LoginViewController setImgUsernamePasswordBackground:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setImgUsernamePasswordBackground:]")]
-pub fn stub_0x20174() -> ! {
-    todo!("0x20174 -[LoginViewController setImgUsernamePasswordBackground:]")
+pub fn stub_0x20174(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20174 `-[LoginViewController
+    // setImgUsernamePasswordBackground:]`: SET (disasm `objc_setProperty`
+    // prologue); host ownership is the outlet slot.
+    state.outlets.insert("imgUsernamePasswordBackground".to_string(), view);
 }
 
 // 0x20198 — -[LoginViewController robloxLogo]
 // type: UIImageView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController robloxLogo]")]
-pub fn stub_0x20198() -> ! {
-    todo!("0x20198 -[LoginViewController robloxLogo]")
+pub fn stub_0x20198(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20198 `-[LoginViewController robloxLogo]`: GET (disasm
+    // `_robloxLogo` IVAR load); alpha tracked by `logo_alpha_reset` /
+    // `logo_dimmed` (cf. 0x1e1b4/0x1fa18).
+    state.outlets.get("robloxLogo").copied().flatten()
 }
 
 // 0x201a8 — -[LoginViewController setRobloxLogo:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setRobloxLogo:]")]
-pub fn stub_0x201a8() -> ! {
-    todo!("0x201a8 -[LoginViewController setRobloxLogo:]")
+pub fn stub_0x201a8(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x201a8 `-[LoginViewController setRobloxLogo:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("robloxLogo".to_string(), view);
 }
 
 // 0x201cc — -[LoginViewController loginFieldViews]
 // type: UIView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginFieldViews]")]
-pub fn stub_0x201cc() -> ! {
-    todo!("0x201cc -[LoginViewController loginFieldViews]")
+pub fn stub_0x201cc(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x201cc `-[LoginViewController loginFieldViews]`: GET (disasm
+    // `_loginFieldViews` IVAR load); alpha tracked by `fields_alpha_zero`
+    // (cf. 0x1ee58).
+    state.outlets.get("loginFieldViews").copied().flatten()
 }
 
 // 0x201dc — -[LoginViewController setLoginFieldViews:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginFieldViews:]")]
-pub fn stub_0x201dc() -> ! {
-    todo!("0x201dc -[LoginViewController setLoginFieldViews:]")
+pub fn stub_0x201dc(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x201dc `-[LoginViewController setLoginFieldViews:]`: SET
+    // (disasm `objc_setProperty` prologue); host ownership is the outlet
+    // slot.
+    state.outlets.insert("loginFieldViews".to_string(), view);
 }
 
 // 0x20200 — -[LoginViewController loginActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController loginActivityIndicator]")]
-pub fn stub_0x20200() -> ! {
-    todo!("0x20200 -[LoginViewController loginActivityIndicator]")
+pub fn stub_0x20200(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20200 `-[LoginViewController loginActivityIndicator]`: GET
+    // (disasm `_loginActivityIndicator` IVAR load); visibility tracked by
+    // `activity_shown` (cf. 0x1edbc).
+    state.outlets.get("loginActivityIndicator").copied().flatten()
 }
 
 // 0x20210 — -[LoginViewController setLoginActivityIndicator:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setLoginActivityIndicator:]")]
-pub fn stub_0x20210() -> ! {
-    todo!("0x20210 -[LoginViewController setLoginActivityIndicator:]")
+pub fn stub_0x20210(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20210 `-[LoginViewController setLoginActivityIndicator:]`:
+    // SET (disasm `objc_setProperty` prologue); host ownership is the
+    // outlet slot.
+    state.outlets.insert("loginActivityIndicator".to_string(), view);
 }
 
 // 0x20234 — -[LoginViewController aboutButton]
 // type: UIButton *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController aboutButton]")]
-pub fn stub_0x20234() -> ! {
-    todo!("0x20234 -[LoginViewController aboutButton]")
+pub fn stub_0x20234(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20234 `-[LoginViewController aboutButton]`: GET (disasm
+    // `_aboutButton` IVAR load); visibility tracked by `about_hidden`
+    // (cf. 0x1ed44).
+    state.outlets.get("aboutButton").copied().flatten()
 }
 
 // 0x20244 — -[LoginViewController setAboutButton:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController setAboutButton:]")]
-pub fn stub_0x20244() -> ! {
-    todo!("0x20244 -[LoginViewController setAboutButton:]")
+pub fn stub_0x20244(state: &mut LoginViewState, view: Option<u32>) {
+    // IDA 0x20244 `-[LoginViewController setAboutButton:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.outlets.insert("aboutButton".to_string(), view);
 }
 
 // 0x20268 — -[LoginViewController playNowLabel]
 // type: UILabel *__cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController playNowLabel]")]
-pub fn stub_0x20268() -> ! {
-    todo!("0x20268 -[LoginViewController playNowLabel]")
+pub fn stub_0x20268(state: &LoginViewState) -> Option<u32> {
+    // IDA 0x20268 `-[LoginViewController playNowLabel]`: GET (disasm
+    // `_playNowLabel` IVAR load); the handle — the text lives in the
+    // `labels` table (cf. 0x1e2ec).
+    state.outlets.get("playNowLabel").copied().flatten()
 }
 
 // 0x20278 — -[LoginViewController setPlayNowLabel:]
