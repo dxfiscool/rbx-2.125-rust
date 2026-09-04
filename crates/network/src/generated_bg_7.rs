@@ -497,310 +497,448 @@ pub fn stub_26a9dc() -> ! {
 // 0x26a9e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26a9e4() -> ! {
-    todo!("0x26a9e4 __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26a9e4(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26a9e4: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26aa88 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_26aa88() -> ! {
-    todo!("0x26aa88 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_26aa88() -> &'static ScriptClassDescriptor {
+    // IDA 0x26aa88: guard-checked once init of the StarterScript descriptor over its base (cf. 0x26aae4 shape).
+    static CELL: OnceLock<ScriptClassDescriptor> = OnceLock::new();
+    CELL.get_or_init(|| ScriptClassDescriptor { name: "StarterScript", base: "BaseScript" })
 }
+
 
 // 0x26aba4 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26aba4() -> ! {
-    todo!("0x26aba4 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26aba4(this: usize, destroy: &mut dyn FnMut(usize)) {
+    // IDA 0x26aba4: base destroy body.
+    destroy(this);
 }
+
 
 // 0x26aba8 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26aba8() -> ! {
-    todo!("0x26aba8 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26aba8(this: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26aba8: base destroy then operator delete.
+    destroy(this);
+    free(this);
 }
+
 
 // 0x26ac48 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26ac48() -> ! {
-    todo!("0x26ac48 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26ac48(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26ac48: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26ac50 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26ac50() -> ! {
-    todo!("0x26ac50 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26ac50(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26ac50: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26acf4 — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26acf4() -> ! {
-    todo!("0x26acf4 __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26acf4(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26acf4: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26acfc — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26acfc() -> ! {
-    todo!("0x26acfc __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26acfc(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26acfc: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ada0() -> ! {
-    todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26ada0(this: usize, destroy: &mut dyn FnMut(usize)) {
+    // IDA 0x26ada0: base destroy body.
+    destroy(this);
 }
+
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ada4() -> ! {
-    todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26ada4(this: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26ada4: base destroy then operator delete.
+    destroy(this);
+    free(this);
 }
+
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ae44() -> ! {
-    todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26ae44(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26ae44: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ae4c() -> ! {
-    todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26ae4c(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26ae4c: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26aef0() -> ! {
-    todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26aef0(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26aef0: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26aef8() -> ! {
-    todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26aef8(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26aef8: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26af9c — __ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE10link_pointERKSC_RPNS1_22hashed_index_node_implISaIcEEEST_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "boost::multi_index::detail::hashed_index<boost::multi_index::identity<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>,boost::hash<RBX::ProtectedString>,std::equal_to<RBX::ProtectedString>,boost::multi_index::detail::nth_layer<1,boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,boost::flyweights::hashed_factory_class<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,RBX::ProtectedString,mpl_::na,mpl_::na,mpl_::na>::index_list,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>,boost::mpl::vector0<mpl_::na>,boost::multi_index::detail::hashed_unique_tag>::link_point(boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString> const&,boost::multi_index::detail::hashed_index_node_impl<std::allocator<char>> *&,boost::multi_index::detail::hashed_unique_tag)")]
-pub fn stub_26af9c() -> ! {
-    todo!("0x26af9c boost::multi_index::detail::hashed_index<boost::multi_index::identity<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>,boost::hash<RBX::ProtectedString>,std::equal_to<RBX::ProtectedString>,boost::multi_index::detail::nth_layer<1,boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,boost::flyweights::hashed_factory_class<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,RBX::ProtectedString,mpl_::na,mpl_::na,mpl_::na>::index_list,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>,boost::mpl::vector0<mpl_::na>,boost::multi_index::detail::hashed_unique_tag>::link_point(boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString> const&,boost::multi_index::detail::hashed_index_node_impl<std::allocator<char>> *&,boost::multi_index::detail::hashed_unique_tag)")
+pub fn stub_26af9c(set: &mut std::collections::HashSet<String>, key: &str) -> bool {
+    // IDA 0x26af9c: links the interned node into the hashed index.
+    // was: boost::multi_index hashed_index::link_point (ProtectedString flyweight).
+    set.insert(key.to_owned())
 }
+
 
 // 0x26afd0 — __ZN5boost11multi_index6detail10auto_spaceImSaINS_10flyweights6detail16refcounted_valueINS4_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES8_EEEEC2ERKSC_m
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "boost::multi_index::detail::auto_space<unsigned long,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>::auto_space(std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>> const&,unsigned long)")]
-pub fn stub_26afd0() -> ! {
-    todo!("0x26afd0 boost::multi_index::detail::auto_space<unsigned long,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>::auto_space(std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>> const&,unsigned long)")
+pub fn stub_26afd0(size: usize) -> Vec<usize> {
+    // IDA 0x26afd0: allocates size slots, bad_alloc at >= 0x40000000 (cf. 0x26afda..0x26afe8).
+    assert!(size < 0x4000_0000, "bad_alloc");
+    vec![0; size]
 }
+
 
 // 0x26aff4 — __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State
 // type: void()
 #[doc(alias = "RBX::BaseScript::extraErrorReporting(lua_State *)")]
-pub fn stub_26aff4() -> ! {
-    todo!("0x26aff4 RBX::BaseScript::extraErrorReporting(lua_State *)")
+pub fn stub_26aff4() {
+    // IDA 0x26aff4: empty base implementation (0x26aff4).
 }
+
 
 // 0x26aff8 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26aff8() -> ! {
-    todo!("0x26aff8 __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26aff8(this: usize, destroy: &mut dyn FnMut(usize)) {
+    // IDA 0x26aff8: base destroy body.
+    destroy(this);
 }
+
 
 // 0x26affc — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26affc() -> ! {
-    todo!("0x26affc __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26affc(this: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+    // IDA 0x26affc: base destroy then operator delete.
+    destroy(this);
+    free(this);
 }
+
 
 // 0x26b09c — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26b09c() -> ! {
-    todo!("0x26b09c __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26b09c(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26b09c: this-32 adjust then tail-call the primary dtor.
+    destroy_at(this - 32);
 }
+
 
 // 0x26b0a4 — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26b0a4() -> ! {
-    todo!("0x26b0a4 __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26b0a4(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26b0a4: this-32 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 32);
+    free_at(this - 32);
 }
+
 
 // 0x26b148 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_26b148() -> ! {
-    todo!("0x26b148 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_26b148(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26b148: this-36 adjust then tail-call the primary dtor.
+    destroy_at(this - 36);
 }
+
 
 // 0x26b150 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_26b150() -> ! {
-    todo!("0x26b150 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_26b150(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+    // IDA 0x26b150: this-36 adjust then tail-call the primary dtor + delete.
+    destroy_at(this - 36);
+    free_at(this - 36);
 }
+
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, std::string *)
 #[doc(alias = "RBX::Lua::LuaArguments::getString(int,std::string &)const")]
-pub fn stub_26b464() -> ! {
-    todo!("0x26b464 RBX::Lua::LuaArguments::getString(int,std::string &)const")
+pub fn stub_26b464(args: &[LuaArg], index: usize) -> Option<String> {
+    // IDA 0x26b464: indexed slot within range and lua_type == string (4), then assign (cf. 0x26b474..0x26b4a6).
+    match args.get(index) {
+        Some(LuaArg::Str(s)) => Some(s.clone()),
+        _ => None,
+    }
 }
+
 
 // 0x26b4ac — __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")]
-pub fn stub_26b4ac() -> ! {
-    todo!("0x26b4ac RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")
+pub fn stub_26b4ac(args: &[LuaArg], index: usize) -> Option<[f32; 3]> {
+    // IDA 0x26b4ac: indexed slot within range and userdata/vector type, then copy.
+    match args.get(index) {
+        Some(LuaArg::Vec3(v)) => Some(*v),
+        _ => None,
+    }
 }
+
 
 // 0x26b4d8 — __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")]
-pub fn stub_26b4d8() -> ! {
-    todo!("0x26b4d8 RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")
+pub fn stub_26b4d8(args: &[LuaArg], index: usize) -> Option<([f32; 3], [f32; 3])> {
+    // IDA 0x26b4d8: indexed slot within range and Region3 userdata, then copy both corners.
+    match args.get(index) {
+        Some(LuaArg::Region3(lo, hi)) => Some((*lo, *hi)),
+        _ => None,
+    }
 }
+
 
 // 0x26b504 — __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")]
-pub fn stub_26b504() -> ! {
-    todo!("0x26b504 RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")
+pub fn stub_26b504(args: &[LuaArg], index: usize) -> Option<[f32; 3]> {
+    // IDA 0x26b504: indexed slot within range and userdata/vector type, then copy.
+    match args.get(index) {
+        Some(LuaArg::Vec3(v)) => Some(*v),
+        _ => None,
+    }
 }
+
 
 // 0x26b530 — __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")]
-pub fn stub_26b530() -> ! {
-    todo!("0x26b530 RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")
+pub fn stub_26b530(args: &[LuaArg], index: usize) -> Option<([f32; 3], [f32; 3])> {
+    // IDA 0x26b530: indexed slot within range and Region3 userdata, then copy both corners.
+    match args.get(index) {
+        Some(LuaArg::Region3(lo, hi)) => Some((*lo, *hi)),
+        _ => None,
+    }
 }
+
 
 // 0x26b55c — __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const")]
-pub fn stub_26b55c() -> ! {
-    todo!("0x26b55c RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const")
+pub fn stub_26b55c(args: &[LuaArg], index: usize) -> Option<SharedPtr<()>> {
+    // IDA 0x26b55c: indexed slot within range and userdata/instance type, then retain.
+    // was: boost::shared_ptr<DescribedBase> retained copy.
+    match args.get(index) {
+        Some(LuaArg::Object(o)) => Some(SharedPtr::clone(o)),
+        _ => None,
+    }
 }
+
 
 // 0x26b660 — __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, double *)
 #[doc(alias = "RBX::Lua::LuaArguments::getDouble(int,double &)const")]
-pub fn stub_26b660() -> ! {
-    todo!("0x26b660 RBX::Lua::LuaArguments::getDouble(int,double &)const")
+pub fn stub_26b660(args: &[LuaArg], index: usize) -> Option<f64> {
+    // IDA 0x26b660: indexed slot within range and lua_type == number, then assign.
+    match args.get(index) {
+        Some(LuaArg::Num(n)) => Some(*n),
+        _ => None,
+    }
 }
+
 
 // 0x26b6a0 — __ZNK3RBX3Lua12LuaArguments7getBoolEiRb
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, bool *)
 #[doc(alias = "RBX::Lua::LuaArguments::getBool(int,bool &)const")]
-pub fn stub_26b6a0() -> ! {
-    todo!("0x26b6a0 RBX::Lua::LuaArguments::getBool(int,bool &)const")
+pub fn stub_26b6a0(args: &[LuaArg], index: usize) -> Option<bool> {
+    // IDA 0x26b6a0: indexed slot within range and lua_type == boolean, then assign.
+    match args.get(index) {
+        Some(LuaArg::Bool(b)) => Some(*b),
+        _ => None,
+    }
 }
+
 
 // 0x26b6e4 — __ZNK3RBX3Lua12LuaArguments7getEnumEiRKNS_10Reflection14EnumDescriptorERi
 // type: bool __fastcall(RBX::Lua::LuaArguments *this, int, const RBX::Reflection::EnumDescriptor *, int *)
 #[doc(alias = "RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")]
-pub fn stub_26b6e4() -> ! {
-    todo!("0x26b6e4 RBX::Lua::LuaArguments::getEnum(int,RBX::Reflection::EnumDescriptor const&,int &)const")
+pub fn stub_26b6e4(args: &[LuaArg], index: usize) -> Option<i32> {
+    // IDA 0x26b6e4: indexed slot within range and enum userdata matching the descriptor, then assign.
+    match args.get(index) {
+        Some(LuaArg::Enum(v)) => Some(*v),
+        _ => None,
+    }
 }
+
 
 // 0x26b788 — __ZN3RBX3Lua12LuaArguments3getEP9lua_StateiRNS_10Reflection7VariantEb
 // type: int __fastcall(struct _Unwind_Exception *, int, int, int)
 #[doc(alias = "RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")]
-pub fn stub_26b788() -> ! {
-    todo!("0x26b788 RBX::Lua::LuaArguments::get(lua_State *,int,RBX::Reflection::Variant &,bool)")
+pub fn stub_26b788(tag: u8, convert: &mut dyn FnMut(u8) -> Option<LuaArg>) -> Option<LuaArg> {
+    // IDA 0x26b788: dispatches on the lua_type tag to the typed getter above.
+    convert(tag)
 }
+
 
 // 0x26c138 — __ZN3RBX3Lua12LuaArguments4pushERKNS_10Reflection7VariantEP9lua_State
 // type: int()
 #[doc(alias = "RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")]
-pub fn stub_26c138() -> ! {
-    todo!("0x26c138 RBX::Lua::LuaArguments::push(RBX::Reflection::Variant const&,lua_State *)")
+pub fn stub_26c138(push: &mut dyn FnMut()) {
+    // IDA 0x26c138: withVariantValue<ArgumentPusher> thunk (cf. 0x26c138).
+    push();
 }
+
 
 // 0x26c140 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")]
-pub fn stub_26c140() -> ! {
-    todo!("0x26c140 bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")
+pub fn stub_26c140(metatable_matches: bool, value: [i16; 3]) -> Option<[i16; 3]> {
+    // IDA 0x26c140: userdata + metatable/rawequal check then 3xint16 copy (cf. 0x26c152..0x26c1b0).
+    metatable_matches.then_some(value)
 }
+
 
 // 0x26c1b8 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")]
-pub fn stub_26c1b8() -> ! {
-    todo!("0x26c1b8 bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")
+pub fn stub_26c1b8(metatable_matches: bool, lo: [i16; 3], hi: [i16; 3]) -> Option<([i16; 3], [i16; 3])> {
+    // IDA 0x26c1b8: userdata + metatable check then both-corner copy.
+    metatable_matches.then_some((lo, hi))
 }
+
 
 // 0x26c230 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")]
-pub fn stub_26c230() -> ! {
-    todo!("0x26c230 bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")
+pub fn stub_26c230(metatable_matches: bool, value: [f32; 3]) -> Option<[f32; 3]> {
+    // IDA 0x26c230: userdata + metatable check then 3xfloat copy.
+    metatable_matches.then_some(value)
 }
+
 
 // 0x26c2ac — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")]
-pub fn stub_26c2ac() -> ! {
-    todo!("0x26c2ac bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")
+pub fn stub_26c2ac(metatable_matches: bool, lo: [f32; 3], hi: [f32; 3]) -> Option<([f32; 3], [f32; 3])> {
+    // IDA 0x26c2ac: userdata + metatable check then both-corner copy.
+    metatable_matches.then_some((lo, hi))
 }
+
 
 // 0x26c350 — __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSINS1_8InstanceEEERS4_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
-pub fn stub_26c350() -> ! {
-    todo!("0x26c350 boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_26c350(slot: &mut SharedPtr<()>, value: SharedPtr<()>) {
+    // IDA 0x26c350: retains the new counted impl, stores it, releases the old (cf. 0x26c358..0x26c380).
+    // was: boost::shared_ptr<DescribedBase>::operator=<Instance> → Arc assign.
+    *slot = value;
 }
+
 
 // 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")]
-pub fn stub_26c38c() -> ! {
-    todo!("0x26c38c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")
+pub fn stub_26c38c(args: &[LuaArg], index: usize) -> Option<SharedPtr<()>> {
+    // IDA 0x26c38c: userdata metatable check then shared_ptr retain.
+    // was: boost::shared_ptr retained copy.
+    match args.get(index) {
+        Some(LuaArg::Object(o)) => Some(SharedPtr::clone(o)),
+        _ => None,
+    }
 }
+
 
 // 0x26c474 — __ZNK3RBX10Reflection4TypeneERKS1_
 // type: bool __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::Type::operator!=(RBX::Reflection::Type const&)const")]
-pub fn stub_26c474() -> ! {
-    todo!("0x26c474 RBX::Reflection::Type::operator!=(RBX::Reflection::Type const&)const")
+pub fn stub_26c474(this: usize, other: usize, same_type: bool) -> bool {
+    // IDA 0x26c474: asserts (type != right.type) == (this != &right) (type.h:45, cf. 0x26c48e..0x26c4ee) then pointer inequality (0x26c4fe).
+    assert!((!same_type) == (this != other), "(type!=right.type) == (this!=&right) type.h:45");
+    this != other
 }
+
 
 // 0x26c500 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEiEEN5boost10shared_ptrIT_EERKT0_
 // type: int __fastcall(_DWORD *, int *)
 #[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,int>(int const&)")]
-pub fn stub_26c500() -> ! {
-    todo!("0x26c500 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,int>(int const&)")
+pub fn stub_26c500(capacity: i32) -> SharedPtr<Vec<usize>> {
+    // IDA 0x26c500: single-shot counted alloc of the vector.
+    // was: rbx::make_shared<vector<Variant>, int> → SharedPtr (Arc).
+    let mut v = Vec::new();
+    v.reserve(capacity.max(0) as usize);
+    SharedPtr::new(v)
 }
+
 
 // 0x26c6a4 — __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEaSERKSF_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)")]
-pub fn stub_26c6a4() -> ! {
-    todo!("0x26c6a4 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)")
+pub fn stub_26c6a4(slot: &mut SharedPtr<()>, value: SharedPtr<()>) {
+    // IDA 0x26c6a4: retains the new counted impl, stores it, releases the old (cf. 0x26c358..0x26c380).
+    // was: boost::shared_ptr<DescribedBase>::operator=<Instance> → Arc assign.
+    *slot = value;
 }
+
 
 // 0x26c6dc — __ZN3rbx11make_sharedIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(void)")]
-pub fn stub_26c6dc() -> ! {
-    todo!("0x26c6dc boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(void)")
+pub fn stub_26c6dc() -> SharedPtr<Vec<usize>> {
+    // IDA 0x26c6dc: single-shot counted alloc of the empty vector.
+    // was: rbx::make_shared<vector<Variant> const> → SharedPtr (Arc).
+    SharedPtr::new(Vec::new())
 }
+
 
 // 0x26c830 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
