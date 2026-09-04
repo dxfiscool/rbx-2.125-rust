@@ -13,9 +13,14 @@ use std::collections::HashMap;
 use std::sync::{LazyLock, Once};
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 
-use super::generated_475::{Button, Plugin, Toolbar};
+use super::generated_475::{Button, Plugin, PluginMouse, Toolbar};
 
 // ---- impl batch 0x888478..0x889828 (26 fns, IDA decompile+disasm grounded) ----
+// ---- impl batch 0x88a49c..0x88ae58 (26 fns, IDA decompile grounded) ----
+// Plugin / PluginMouse `shared_ptr` + `sp_counted` family mirrors the ported
+// Toolbar cluster (`0x889c0c`..`0x889f04`); vtables `off_12ACDD8` (Plugin) /
+// `off_12ACFF8` (PluginMouse). `Described<PluginManager>` D0/D1 + Thn32/Thn36
+// carry the `a1 - 32/36` secondary-base adjustment before `~Instance`.
 //
 // Boost mapping (AGENTS.md §4, no boost crate):
 // boost::shared_ptr → rbx_core::SharedPtr (`Arc`); `shared_count` copy +
@@ -823,39 +828,67 @@ pub fn stub_88a450(states: &Mutex<HashMap<usize, PluginManagerStateEntry>>, data
 
 #[doc(alias = "std::_Rb_tree<RBX::DataModel *,std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>,std::_Select1st<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>,std::less<RBX::DataModel *>,std::allocator<std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry>>>::_M_create_node(std::pair<RBX::DataModel * const,RBX::PluginManager::StateDataEntry> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN3RBX9DataModelESt4pairIKS2_NS0_13PluginManager14StateDataEntryEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE14_M_create_nodeERKS7_")]
-// IDA 0x88a49c: 107 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a49c() {
+// IDA 0x88a49c: `operator new(0x3c)` (`0x88a4c2`); key copy `*(v6 + 16) =
+// *(a2)` (`0x88a4d2`); toolbar-map `_M_copy` + plugin-list range copy into the
+// fresh node (same halves as `0x88a294`/`0x889f58`).
+// was: node alloc + pair copy → owned node with a cloned entry (`Arc`s +1 each).
+// // BUG: Rb-tree links/color are unobservable through the map API.
+pub fn stub_88a49c(data_model: usize, entry: &PluginManagerStateEntry) -> DataModelStateNode {
+    DataModelStateNode {
+        data_model,
+        entry: PluginManagerStateEntry {
+            toolbars: entry.toolbars.clone(),
+            plugins: entry.plugins.to_vec(),
+        },
+    }
 }
 
 // 0x88a5c0 — __ZN5boost10shared_ptrIN3RBX6PluginEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 
 #[doc(alias = "boost::shared_ptr<RBX::Plugin>::shared_ptr<RBX::Plugin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX6PluginEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-// IDA 0x88a5c0: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a5c0() {
+// IDA 0x88a5c0: `*a1 = a2` (`0x88a5e0`); `shared_count` C2 allocating the
+// control block (`0x88a5e8`, i.e. `0x88a770`); `_internal_accept_owner` when
+// non-null (`0x88a616`/`0x88a626`).
+// was: raw-ptr takeover + control-block alloc + weak wiring → fresh `Arc`.
+// // BUG: the raw-pointer ownership transfer is unobservable — the `Arc`
+// starts at count 1; the `off_12ACDD8` vtable folds into `Arc` drop glue.
+pub fn stub_88a5c0(plugin: Plugin) -> SharedPtr<Plugin> {
+    SharedPtr::new(plugin)
 }
 
 // 0x88a688 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6PluginES6_EEvPKNS_10shared_ptrIT_EEPT0_
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Plugin,RBX::Plugin>(boost::shared_ptr<RBX::Plugin> const*,RBX::Plugin *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6PluginES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-// IDA 0x88a688: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a688() {
+// IDA 0x88a688: `weak_ptr::expired` gate; `shared_count` copy assigned into
+// the weak slot with a temp release (same shape as `0x889cd4`); wired from
+// `0x88a5c0` with the owner at `a2 + 40` (`0x88a626`).
+// was: weak-slot init from the owner → `Arc::downgrade` (same observable:
+// a weak handle tied to the owner's count).
+pub fn stub_88a688(owner: &SharedPtr<Plugin>) -> std::sync::Weak<Plugin> {
+    SharedPtr::downgrade(owner)
 }
 
 // 0x88a770 — __ZN5boost6detail12shared_countC2IPN3RBX6PluginENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX6PluginENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-// IDA 0x88a770: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a770() {
+// IDA 0x88a770: `*a1 = 0` (`0x88a79c`); `operator new(0x14)` (`0x88a7c4`);
+// use/weak counts `= 1` (`0x88a7d2`/`0x88a7d6`); vtable `off_12ACDD8`
+// (`0x88a7dc`); ptr store (`0x88a7e2`).
+// was: control-block alloc with counts (1, 1) → fresh `Arc` (counts implicit).
+pub fn stub_88a770(plugin: Plugin) -> SharedPtr<Plugin> {
+    stub_88a5c0(plugin)
 }
 
 // 0x88a878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-// IDA 0x88a878: 1 insn (BX) — branch/return thunk, no state change.
+// IDA 0x88a878: D1 body is empty (`;`) — pure vtable teardown glue for
+// `sp_counted_impl_pd<Plugin *, Creatable<Instance>::Deleter>`; the release
+// runs through `sp_counted_base` → `Arc` drop glue. No manual state.
 pub fn stub_88a878() {
 }
 
@@ -863,7 +896,9 @@ pub fn stub_88a878() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-// IDA 0x88a87c: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x88a87c: D0 thunk (`attributes: thunk`): `return operator delete(a1)`
+// — deleting-destructor free after the D1 teardown; control-block free folds
+// into `Arc` dealloc. No manual state.
 pub fn stub_88a87c() {
 }
 
@@ -871,31 +906,47 @@ pub fn stub_88a87c() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-// IDA 0x88a880: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a880() {
+// IDA 0x88a880: `v2 = *(a1 + 12)` (`0x88a882`); `Instance::predelete(v2)`
+// (`0x88a888`); virtual D8 `(*(v2->vtable + 8))(v2)` (`0x88a89c`) when
+// non-null, else return.
+// was: predelete hook + virtual delete → drop the owned value.
+// // BUG: the `predelete` hook and virtual-dispatch deletion are
+// unobservable here → plain drop.
+pub fn stub_88a880(plugin: Plugin) {
+    drop(plugin);
 }
 
 // 0x88a8a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-// IDA 0x88a8a0: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a8a0() {
+// IDA 0x88a8a0: `result = a1 + 16` (`0x88a8a4`); type-info name compare
+// against `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (`0x88a8b2`) → null
+// (`0x88a8b4`) or the deleter slot (`0x88a8b6`).
+// was: RTTI-gated deleter query → whether the stored deleter is the
+// `Creatable<Instance>` one (always true in this model).
+pub fn stub_88a8a0(type_name: &str) -> bool {
+    type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE"
 }
 
 // 0x88a8b8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Plugin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6PluginENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-// IDA 0x88a8b8: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88a8b8() {
+// IDA 0x88a8b8: `return a1 + 16` (`0x88a8ba`, ADDS..BX) — the untyped
+// deleter slot is unconditionally present for
+// `sp_counted_impl_pd<Plugin *, Creatable<Instance>::Deleter>`.
+pub fn stub_88a8b8() -> bool {
+    true
 }
 
 // 0x88a8bc — __ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// IDA 0x88a8bc: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x88a8bc: D1 thunk (`attributes: thunk`) tail-calling
+// `RBX::Instance::~Instance(this)` — base-class teardown; `Arc` drop glue
+// covers the release. No manual state.
 pub fn stub_88a8bc() {
 }
 
@@ -903,7 +954,9 @@ pub fn stub_88a8bc() {
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// IDA 0x88a8c0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88a8c0: D0: `RBX::Instance::~Instance(a1)` (`0x88a910`) then
+// `operator delete(a1)` (`0x88a916`) — deleting-destructor free folds into
+// `Arc` dealloc. No manual state.
 pub fn stub_88a8c0() {
 }
 
@@ -911,7 +964,9 @@ pub fn stub_88a8c0() {
 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// IDA 0x88a960: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88a960: `Thn32` D1: `this - 32` adjustment (`0x88a962`) then
+// `RBX::Instance::~Instance` — the `Described<PluginManager>` secondary-base
+// destructor thunk. No manual state.
 pub fn stub_88a960() {
 }
 
@@ -919,7 +974,9 @@ pub fn stub_88a960() {
 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// IDA 0x88a968: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88a968: `Thn32` D0: `v4 = a1 - 32` (`0x88a992`);
+// `RBX::Instance::~Instance(v4)` (`0x88a9ba`); `operator delete(v4)`
+// (`0x88a9c0`). Adjustment + free fold into `Arc` dealloc. No manual state.
 pub fn stub_88a968() {
 }
 
@@ -927,7 +984,9 @@ pub fn stub_88a968() {
 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// IDA 0x88aa0c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88aa0c: `Thn36` D1: `this - 36` adjustment (`0x88aa0e`) then
+// `RBX::Instance::~Instance` — same secondary-base thunk as `0x88a960` for
+// the other base offset. No manual state.
 pub fn stub_88aa0c() {
 }
 
@@ -935,7 +994,9 @@ pub fn stub_88aa0c() {
 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PluginManagerELZNS_14sPluginManagerEENS_17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// IDA 0x88aa14: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88aa14: `Thn36` D0: `v4 = a1 - 36` (`0x88aa3e`);
+// `RBX::Instance::~Instance(v4)` (`0x88aa66`); `operator delete(v4)`
+// (`0x88aa6c`). Adjustment + free fold into `Arc` dealloc. No manual state.
 pub fn stub_88aa14() {
 }
 
@@ -943,31 +1004,48 @@ pub fn stub_88aa14() {
 
 #[doc(alias = "boost::shared_ptr<RBX::PluginMouse>::shared_ptr<RBX::PluginMouse,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11PluginMouseEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-// IDA 0x88aab8: 70 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88aab8() {
+// IDA 0x88aab8: `*a1 = a2` (`0x88aad8`); `shared_count` C2 allocating the
+// control block (`0x88aae0`, i.e. `0x88ac68`); `_internal_accept_owner` when
+// non-null (`0x88ab0e`/`0x88ab1e`).
+// was: raw-ptr takeover + control-block alloc + weak wiring → fresh `Arc`.
+// // BUG: the raw-pointer ownership transfer is unobservable — the `Arc`
+// starts at count 1; the `off_12ACFF8` vtable folds into `Arc` drop glue.
+pub fn stub_88aab8(mouse: PluginMouse) -> SharedPtr<PluginMouse> {
+    SharedPtr::new(mouse)
 }
 
 // 0x88ab80 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11PluginMouseES6_EEvPKNS_10shared_ptrIT_EEPT0_
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PluginMouse,RBX::PluginMouse>(boost::shared_ptr<RBX::PluginMouse> const*,RBX::PluginMouse *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11PluginMouseES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-// IDA 0x88ab80: 83 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88ab80() {
+// IDA 0x88ab80: `weak_ptr::expired` gate; `shared_count` copy assigned into
+// the weak slot with a temp release (same shape as `0x889cd4`); wired from
+// `0x88aab8` with the owner at `a2 + 40` (`0x88ab1e`).
+// was: weak-slot init from the owner → `Arc::downgrade` (same observable:
+// a weak handle tied to the owner's count).
+pub fn stub_88ab80(owner: &SharedPtr<PluginMouse>) -> std::sync::Weak<PluginMouse> {
+    SharedPtr::downgrade(owner)
 }
 
 // 0x88ac68 — __ZN5boost6detail12shared_countC2IPN3RBX11PluginMouseENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX11PluginMouseENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-// IDA 0x88ac68: 58 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88ac68() {
+// IDA 0x88ac68: `*a1 = 0` (`0x88ac94`); `operator new(0x14)` (`0x88acbc`);
+// use/weak counts `= 1` (`0x88acca`/`0x88acce`); vtable `off_12ACFF8`
+// (`0x88acd4`); ptr store (`0x88acda`).
+// was: control-block alloc with counts (1, 1) → fresh `Arc` (counts implicit).
+pub fn stub_88ac68(mouse: PluginMouse) -> SharedPtr<PluginMouse> {
+    stub_88aab8(mouse)
 }
 
 // 0x88ad70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-// IDA 0x88ad70: 1 insn (BX) — branch/return thunk, no state change.
+// IDA 0x88ad70: D1 body is empty (`;`) — pure vtable teardown glue for
+// `sp_counted_impl_pd<PluginMouse *, Creatable<Instance>::Deleter>`; the
+// release runs through `sp_counted_base` → `Arc` drop glue. No manual state.
 pub fn stub_88ad70() {
 }
 
@@ -975,7 +1053,9 @@ pub fn stub_88ad70() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-// IDA 0x88ad74: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x88ad74: D0 thunk (`attributes: thunk`): `return operator delete(a1)`
+// — deleting-destructor free after the D1 teardown; control-block free folds
+// into `Arc` dealloc. No manual state.
 pub fn stub_88ad74() {
 }
 
@@ -983,31 +1063,47 @@ pub fn stub_88ad74() {
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-// IDA 0x88ad78: 13 insns (PUSH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88ad78() {
+// IDA 0x88ad78: `v2 = *(a1 + 12)` (`0x88ad7a`); `Instance::predelete(v2)`
+// (`0x88ad80`); virtual D8 `(*(v2->vtable + 8))(v2)` (`0x88ad94`) when
+// non-null, else return.
+// was: predelete hook + virtual delete → drop the owned value.
+// // BUG: the `predelete` hook and virtual-dispatch deletion are
+// unobservable here → plain drop.
+pub fn stub_88ad78(mouse: PluginMouse) {
+    drop(mouse);
 }
 
 // 0x88ad98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-// IDA 0x88ad98: 10 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88ad98() {
+// IDA 0x88ad98: `result = a1 + 16` (`0x88ad9c`); type-info name compare
+// against `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (`0x88adaa`) → null
+// (`0x88adac`) or the deleter slot (`0x88adae`).
+// was: RTTI-gated deleter query → whether the stored deleter is the
+// `Creatable<Instance>` one (always true in this model).
+pub fn stub_88ad98(type_name: &str) -> bool {
+    type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE"
 }
 
 // 0x88adb0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PluginMouse *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11PluginMouseENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-// IDA 0x88adb0: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88adb0() {
+// IDA 0x88adb0: `return a1 + 16` (`0x88adb2`, ADDS..BX) — the untyped
+// deleter slot is unconditionally present for
+// `sp_counted_impl_pd<PluginMouse *, Creatable<Instance>::Deleter>`.
+pub fn stub_88adb0() -> bool {
+    true
 }
 
 // 0x88adb4 — __ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// IDA 0x88adb4: 1 insn (B.W) — branch/return thunk, no state change.
+// IDA 0x88adb4: D1 thunk (`attributes: thunk`) tail-calling
+// `RBX::Instance::~Instance(this)` — base-class teardown of
+// `Described<Plugin>`; `Arc` drop glue covers the release. No manual state.
 pub fn stub_88adb4() {
 }
 
@@ -1015,7 +1111,9 @@ pub fn stub_88adb4() {
 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// IDA 0x88adb8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88adb8: D0: `RBX::Instance::~Instance(a1)` (`0x88ae08`) then
+// `operator delete(a1)` (`0x88ae0e`) — deleting-destructor free folds into
+// `Arc` dealloc. No manual state.
 pub fn stub_88adb8() {
 }
 
@@ -1023,7 +1121,9 @@ pub fn stub_88adb8() {
 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6PluginELZNS_7sPluginEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sPluginEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// IDA 0x88ae58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+// IDA 0x88ae58: `Thn32` D1: `this - 32` adjustment (`0x88ae5a`) then
+// `RBX::Instance::~Instance` — the `Described<Plugin>` secondary-base
+// destructor thunk. No manual state.
 pub fn stub_88ae58() {
 }
 
