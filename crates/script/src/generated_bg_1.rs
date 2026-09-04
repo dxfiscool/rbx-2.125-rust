@@ -8,6 +8,74 @@
 
 use rbx_core::SharedPtr;
 use crate::generated_165::HomeViewState;
+use crate::generated_165::{BlockCapture, DisplayPickerCaptures};
+use parking_lot::Mutex;
+use std::collections::HashMap;
+use std::sync::LazyLock;
+
+/// Host-side `LoginViewController` state (LoginViewController.m, IDA
+/// 0x1da6c..0x1eaa0). UIKit views live on the platform side; only the
+/// observable latches are modeled here.
+#[derive(Debug, Clone, Default)]
+pub struct LoginViewState {
+    /// The three notification observers installed by `initWithCoder:`
+    /// (IDA 0x1dad0..0x1dbc6).
+    pub login_failed_observer: bool,
+    pub login_success_observer: bool,
+    pub signup_observer: bool,
+    /// `envs` environment URL list (IDA 0x1dd84..0x1e0d4).
+    pub envs: Vec<String>,
+    /// `+[RobloxInfo baseUrl]` selection (IDA 0x1e106..0x1e11a).
+    pub base_url: Option<String>,
+    /// Memory-bouncer start requested (IDA 0x1e13c/0x1e898).
+    pub memory_bouncer_started: bool,
+    /// `robloxLogo.alpha = 1.0` reset (IDA 0x1e1ca..0x1e1de).
+    pub logo_alpha_reset: bool,
+    /// `stopShowLoggingIn` ran (IDA 0x1e2c4).
+    pub logging_in_hidden: bool,
+    /// Prefilled field text (IDA 0x1e2a2/0x1e722/0x1e7ea/0x1eaa0).
+    pub username_text: String,
+    pub password_text: String,
+    /// Field placeholders (IDA 0x1e44c/0x1e49c).
+    pub placeholders: HashMap<String, String>,
+    /// Localized labels (IDA 0x1e4e6..0x1e5b6).
+    pub labels: HashMap<String, String>,
+    /// `CFBundleVersion` stamp (IDA 0x1e5cc..0x1e606).
+    pub version_text: Option<String>,
+    /// Analytics `setCustomVariableWithLabel:` pairs (IDA 0x1e362..0x1e3d6).
+    pub custom_vars: HashMap<String, String>,
+    /// `UserAgent` defaults registered (IDA 0x1e62e..0x1e73c).
+    pub user_agent_registered: bool,
+    /// `btnSkip`/`EnvironmentPicker` hidden (IDA 0x1e6aa/0x1e6c2).
+    pub skip_hidden: bool,
+    pub env_picker_hidden: bool,
+    /// `swiRememberMyPassword.on` (IDA 0x1e764..0x1e78c).
+    pub remember_switch_on: bool,
+    /// Keyboard observers installed (IDA 0x1e808..0x1e870).
+    pub keyboard_observers: bool,
+    /// `viewDidLoad` published the singleton (IDA 0x1e33e).
+    pub singleton_set: bool,
+    /// `viewDidUnload` cleared the singleton (IDA 0x1e9ca).
+    pub singleton_cleared: bool,
+    /// Remaining outlet handles by ivar name.
+    pub outlets: HashMap<String, Option<u32>>,
+    pub view_loaded: bool,
+}
+
+/// `handleSignupNotification:` block captures (`self`, username, password;
+/// IDA 0x1ea7e..0x1ea90, helpers 0x1eb08..0x1eb34).
+#[derive(Debug, Clone, Default)]
+pub struct SignupCaptures {
+    pub owner: Option<u32>,
+    pub username: Option<String>,
+    pub password: Option<String>,
+}
+
+/// `+[LoginViewController sharedInstance]` slot (IDA 0x1da5c..0x1da68,
+/// `dword_130C3F0`; set by `viewDidLoad` at 0x1e33e, cleared by
+/// `viewDidUnload` at 0x1e9ca).
+static LOGIN_SHARED: LazyLock<Mutex<LoginViewState>> =
+    LazyLock::new(|| Mutex::new(LoginViewState::default()));
 
 // 0x1d3f8 — -[HomeViewController btnDebugSettings]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
@@ -397,172 +465,333 @@ pub fn stub_0x1d7e4(state: &mut HomeViewState, view: Option<u32>) {
 // 0x1d808 — -[HomeViewController youAreCurrentlyLoggedInAsTextView]
 // type: UITextView *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController youAreCurrentlyLoggedInAsTextView]")]
-pub fn stub_0x1d808() -> ! {
-    todo!("0x1d808 -[HomeViewController youAreCurrentlyLoggedInAsTextView]")
+pub fn stub_0x1d808(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d808 `-[HomeViewController youAreCurrentlyLoggedInAsTextView]`:
+    // GET (disasm `_youAreCurrentlyLoggedInAsTextView` IVAR load); the
+    // handle — the text lives in the `labels` table (cf. 0x1bc10).
+    state.outlet("youAreCurrentlyLoggedInAsTextView")
 }
 
 // 0x1d818 — -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")]
-pub fn stub_0x1d818() -> ! {
-    todo!("0x1d818 -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")
+pub fn stub_0x1d818(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d818 `-[HomeViewController
+    // setYouAreCurrentlyLoggedInAsTextView:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("youAreCurrentlyLoggedInAsTextView", view);
 }
 
 // 0x1d83c — -[HomeViewController versionLabel]
 // type: UILabel *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController versionLabel]")]
-pub fn stub_0x1d83c() -> ! {
-    todo!("0x1d83c -[HomeViewController versionLabel]")
+pub fn stub_0x1d83c(state: &HomeViewState) -> Option<u32> {
+    // IDA 0x1d83c `-[HomeViewController versionLabel]`: GET (disasm
+    // `_versionLabel` IVAR load); the handle — the text is `version_text`
+    // (cf. 0x1ba92).
+    state.outlet("versionLabel")
 }
 
 // 0x1d84c — -[HomeViewController setVersionLabel:]
 // type: void __cdecl(HomeViewController *self, SEL, id)
 #[doc(alias = "-[HomeViewController setVersionLabel:]")]
-pub fn stub_0x1d84c() -> ! {
-    todo!("0x1d84c -[HomeViewController setVersionLabel:]")
+pub fn stub_0x1d84c(state: &mut HomeViewState, view: Option<u32>) {
+    // IDA 0x1d84c `-[HomeViewController setVersionLabel:]`: SET (disasm
+    // `objc_setProperty` prologue); host ownership is the outlet slot.
+    state.set_outlet("versionLabel", view);
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
 // was: global constructor keyed to_a_4
 #[doc(alias = "global constructor keyed to_a_4")]
-pub fn stub_0x1d870() -> ! {
-    todo!("0x1d870 global constructor keyed to_a_4")
+pub fn stub_0x1d870() {
+    // IDA 0x1d870 `__GLOBAL__I_a_4`: same `generic_category` x2 +
+    // `system_category` merged-globals init plus `ios_base::Init` +
+    // `__cxa_atexit` as 0x1b308 (disasm 0x1d870..0x1d8b0; cf. 0x16e4c).
+    // Host error categories need no init beyond `std::io`.
 }
 
 // 0x1da08 — -[NSString stringWithPercentEscape]
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString stringWithPercentEscape]")]
-pub fn stub_0x1da08() -> ! {
-    todo!("0x1da08 -[NSString stringWithPercentEscape]")
+pub fn stub_0x1da08(text: &str) -> String {
+    // IDA 0x1da08 `-[NSString stringWithPercentEscape]`:
+    // `CFURLCreateStringByAddingPercentEscapes` escaping `=,!$&'()*+;@?"<># :/`
+    // plus whitespace/control chars (0x1da1a..0x1da4a, encoding `0x8000100` =
+    // UTF-8). Host percent-encodes per RFC 3986 with uppercase hex.
+    let mut out = String::with_capacity(text.len());
+    for b in text.bytes() {
+        if b.is_ascii_alphanumeric() || matches!(b, b'-' | b'_' | b'.' | b'~') {
+            out.push(b as char);
+        } else {
+            out.push_str(&format!("%{b:02X}"));
+        }
+    }
+    out
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginViewController sharedInstance]")]
-pub fn stub_0x1da5c() -> ! {
-    todo!("0x1da5c +[LoginViewController sharedInstance]")
+pub fn stub_0x1da5c() -> parking_lot::MutexGuard<'static, LoginViewState> {
+    // IDA 0x1da5c `+[LoginViewController sharedInstance]`: returns the
+    // `dword_130C3F0` slot (0x1da68); host `LazyLock<Mutex<..>>` singleton.
+    LOGIN_SHARED.lock()
 }
 
 // 0x1da6c — -[LoginViewController initWithCoder:]
 // type: LoginViewController *__cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController initWithCoder:]")]
-pub fn stub_0x1da6c() -> ! {
-    todo!("0x1da6c -[LoginViewController initWithCoder:]")
+pub fn stub_0x1da6c() -> LoginViewState {
+    // IDA 0x1da6c `-[LoginViewController initWithCoder:]`: super
+    // `RobloxAnimatingPageViewController` init (0x1da8a..0x1da94, always
+    // succeeds on the host), `envs = nil` (0x1dac4), then the three
+    // notification observers (0x1dad0..0x1dbc6).
+    LoginViewState {
+        login_failed_observer: true,
+        login_success_observer: true,
+        signup_observer: true,
+        ..LoginViewState::default()
+    }
 }
 
 // 0x1dbd4 — -[LoginViewController dealloc]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController dealloc]")]
-pub fn stub_0x1dbd4() -> ! {
-    todo!("0x1dbd4 -[LoginViewController dealloc]")
+pub fn stub_0x1dbd4(state: &mut LoginViewState) {
+    // IDA 0x1dbd4 `-[LoginViewController dealloc]`: `removeObserver:`
+    // (0x1dbf4..0x1dc06), releases the fifteen outlets plus `envs`
+    // (0x1dc26..0x1dd58), then super dealloc (0x1dd70..0x1dd7a, host Drop
+    // glue). The owned state folds back to default.
+    *state = LoginViewState::default();
 }
 
 // 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
-pub fn stub_0x1dd84() -> ! {
-    todo!("0x1dd84 -[LoginViewController populateEnvironmentPicker]")
+pub fn stub_0x1dd84(state: &mut LoginViewState, is_tablet: bool) {
+    // IDA 0x1dd84 `-[LoginViewController populateEnvironmentPicker]`:
+    // rebuilds `envs` (0x1dda8..0x1ddde); the host prefix is `www.` on
+    // tablets, `m.` on phones (0x1de02..0x1de16), and the `allen..vlad`
+    // sitetest entries take `m.` only on phones (0x1defc..0x1df0c).
+    // Order: roblox, sitetest1..4, allen, anthony, guru, rosemary, sairam,
+    // shannon, vlad, gametest5..1 (0x1de38..0x1e0d4).
+    let prefix = if is_tablet { "www." } else { "m." };
+    let dev_prefix = if is_tablet { "" } else { "m." };
+    let mut envs = vec![
+        format!("http://{prefix}roblox.com/"),
+        format!("http://{prefix}sitetest1.robloxlabs.com/"),
+        format!("http://{prefix}sitetest2.robloxlabs.com/"),
+        format!("http://{prefix}sitetest3.robloxlabs.com/"),
+        format!("http://{prefix}sitetest4.robloxlabs.com/"),
+    ];
+    for dev in ["allen", "anthony", "guru", "rosemary", "sairam", "shannon", "vlad"] {
+        envs.push(format!("http://{dev_prefix}{dev}.sitetest3.robloxlabs.com/"));
+    }
+    for test in ["gametest5", "gametest4", "gametest3", "gametest2", "gametest1"] {
+        envs.push(format!("http://{prefix}{test}.robloxlabs.com/"));
+    }
+    state.envs = envs;
 }
 
 // 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
 // type: void __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
-pub fn stub_0x1e0d8() -> ! {
-    todo!("0x1e0d8 -[LoginViewController pickerView:didSelectRow:inComponent:]")
+pub fn stub_0x1e0d8(state: &mut LoginViewState, row: usize) {
+    // IDA 0x1e0d8 `-[LoginViewController
+    // pickerView:didSelectRow:inComponent:]`: `setBaseUrl:` to
+    // `envs[row]` (0x1e106..0x1e11a), then the main-queue hop (0x1e138)
+    // into the memory-bouncer block (cf. 0x1e13c). The hop is synchronous
+    // here.
+    if let Some(url) = state.envs.get(row).cloned() {
+        state.base_url = Some(url);
+        stub_0x1e13c(state);
+    }
 }
 
 // 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
-pub fn stub_0x1e13c() -> ! {
-    todo!("0x1e13c ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")
+pub fn stub_0x1e13c(state: &mut LoginViewState) {
+    // IDA 0x1e13c `__59-[...pickerView:didSelectRow:inComponent:]_block_invoke`:
+    // `startMemoryBouncer` on the shared manager (0x1e158..0x1e16c).
+    state.memory_bouncer_started = true;
 }
 
 // 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
-pub fn stub_0x1e170() -> ! {
-    todo!("0x1e170 -[LoginViewController numberOfComponentsInPickerView:]")
+pub fn stub_0x1e170() -> i32 {
+    // IDA 0x1e170 `-[LoginViewController numberOfComponentsInPickerView:]`:
+    // returns 1 (0x1e172; cf. 0x1b2bc).
+    1
 }
 
 // 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(LoginViewController *self, SEL, id, int)
 #[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_0x1e174() -> ! {
-    todo!("0x1e174 -[LoginViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_0x1e174(state: &LoginViewState) -> i32 {
+    // IDA 0x1e174 `-[LoginViewController
+    // pickerView:numberOfRowsInComponent:]`: `[envs count]` (0x1e178; cf.
+    // 0x1b2c0).
+    state.envs.len() as i32
 }
 
 // 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(LoginViewController *self, SEL, id, int, int)
 #[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_0x1e194() -> ! {
-    todo!("0x1e194 -[LoginViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_0x1e194(state: &LoginViewState, row: usize) -> Option<String> {
+    // IDA 0x1e194 `-[LoginViewController pickerView:titleForRow:forComponent:]`:
+    // `[envs objectAtIndex:]` (0x1e198); host returns `None` out of range
+    // instead of raising (cf. 0x1b2e0).
+    state.envs.get(row).cloned()
 }
 
 // 0x1e1b4 — -[LoginViewController viewWillAppear:]
 // type: void __cdecl(LoginViewController *self, SEL, char)
 #[doc(alias = "-[LoginViewController viewWillAppear:]")]
-pub fn stub_0x1e1b4() -> ! {
-    todo!("0x1e1b4 -[LoginViewController viewWillAppear:]")
+pub fn stub_0x1e1b4(state: &mut LoginViewState, remember_password: bool, saved_password: Option<&str>) {
+    // IDA 0x1e1b4 `-[LoginViewController viewWillAppear:]`:
+    // `robloxLogo.alpha = 1.0` (0x1e1ca..0x1e1de), the `stopShowLoggingIn`
+    // block on the main queue (0x1e210..0x1e224 -> 0x1e2c4), then the
+    // password field takes the saved password when remembered (0x1e240..0x1e2a2)
+    // and is cleared otherwise (0x1e2bc). The queue hop is synchronous here.
+    state.logo_alpha_reset = true;
+    stub_0x1e2c4(state);
+    state.password_text = if remember_password {
+        saved_password.unwrap_or("").to_string()
+    } else {
+        String::new()
+    };
 }
 
 // 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
 #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
-pub fn stub_0x1e2c4() -> ! {
-    todo!("0x1e2c4 ___38-[LoginViewController viewWillAppear:]_block_invoke")
+pub fn stub_0x1e2c4(state: &mut LoginViewState) {
+    // IDA 0x1e2c4 `__38-[LoginViewController viewWillAppear:]_block_invoke`:
+    // `stopShowLoggingIn` shim (single `objc_msgSend`; cf. 0x1bb64).
+    state.logging_in_hidden = true;
 }
 
 // 0x1e2d8 — ___copy_helper_block__2
 #[doc(alias = "___copy_helper_block__2")]
-pub fn stub_0x1e2d8() -> ! {
-    todo!("0x1e2d8 ___copy_helper_block__2")
+pub fn stub_0x1e2d8(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1e2d8 `__copy_helper_block__2`: single
+    // `_Block_object_assign` retain (0x1e2de; cf. 0x1bb88).
+    *dst = src.clone();
 }
 
 // 0x1e2e4 — ___destroy_helper_block__2
 #[doc(alias = "___destroy_helper_block__2")]
-pub fn stub_0x1e2e4() -> ! {
-    todo!("0x1e2e4 ___destroy_helper_block__2")
+pub fn stub_0x1e2e4(slot: &mut BlockCapture) {
+    // IDA 0x1e2e4 `__destroy_helper_block__2`: single
+    // `_Block_object_dispose` release (0x1e2e8; cf. 0x1bb94).
+    *slot = BlockCapture::default();
 }
 
 // 0x1e2ec — -[LoginViewController viewDidLoad]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidLoad]")]
-pub fn stub_0x1e2ec() -> ! {
-    todo!("0x1e2ec -[LoginViewController viewDidLoad]")
+pub fn stub_0x1e2ec(
+    state: &mut LoginViewState,
+    os_version: &str,
+    app_version: &str,
+    device_name: &str,
+    username: Option<&str>,
+    password: Option<&str>,
+    remember_password: bool,
+    bundle_version: &str,
+    user_agent: &str,
+) {
+    // IDA 0x1e2ec `-[LoginViewController viewDidLoad]`: super (0x1e30c..0x1e318),
+    // publish singleton (0x1e33e), analytics vars for iOS/app/device
+    // (0x1e342..0x1e3d6), Username/Password placeholders (0x1e406..0x1e49c),
+    // Remember/Login/Signup/PlayNow labels + `CFBundleVersion` stamp
+    // (0x1e4ae..0x1e606), UserAgent defaults (0x1e62e..0x1e73c, twice —
+    // 0x1e734), skip/picker hidden (0x1e6aa/0x1e6c2), username prefill when
+    // known (0x1e6e2..0x1e722), remember switch (0x1e764..0x1e78c),
+    // password prefill when remembered and on (0x1e79e..0x1e7ea),
+    // keyboard observers (0x1e808..0x1e870), memory-bouncer block
+    // (0x1e88a -> 0x1e898).
+    state.singleton_set = true;
+    state.custom_vars.insert("iOSVersion".to_string(), os_version.to_string());
+    state.custom_vars.insert("appVersion".to_string(), app_version.to_string());
+    state.custom_vars.insert("deviceType".to_string(), device_name.to_string());
+    state.placeholders.insert("username".to_string(), "UsernameWord".to_string());
+    state.placeholders.insert("password".to_string(), "PasswordWord".to_string());
+    for key in ["RememberPassword", "LoginWord", "SignupWord", "PlayNowButtonLabel"] {
+        state.labels.insert(key.to_string(), key.to_string());
+    }
+    state.version_text = Some(bundle_version.to_string());
+    state.user_agent_registered = !user_agent.is_empty();
+    state.skip_hidden = true;
+    state.env_picker_hidden = true;
+    if let Some(name) = username {
+        if !name.is_empty() {
+            state.username_text = name.to_string();
+        }
+    }
+    state.remember_switch_on = remember_password;
+    if password.is_some() && remember_password {
+        state.password_text = password.unwrap_or("").to_string();
+    }
+    state.keyboard_observers = true;
+    stub_0x1e898(state);
+    state.view_loaded = true;
 }
 
 // 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
-pub fn stub_0x1e898() -> ! {
-    todo!("0x1e898 ___34-[LoginViewController viewDidLoad]_block_invoke")
+pub fn stub_0x1e898(state: &mut LoginViewState) {
+    // IDA 0x1e898 `__34-[LoginViewController viewDidLoad:]_block_invoke`:
+    // `startMemoryBouncer` on the shared manager (0x1e8b4..0x1e8c8; cf.
+    // 0x1e13c).
+    state.memory_bouncer_started = true;
 }
 
 // 0x1e8cc — -[LoginViewController viewDidUnload]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController viewDidUnload]")]
-pub fn stub_0x1e8cc() -> ! {
-    todo!("0x1e8cc -[LoginViewController viewDidUnload]")
+pub fn stub_0x1e8cc(state: &mut LoginViewState) {
+    // IDA 0x1e8cc `-[LoginViewController viewDidUnload]`: nils the ten
+    // outlets via setters (0x1e8e6..0x1e99a), super `viewDidUnload`
+    // (0x1e9b2..0x1e9bc, host UIKit), clears the singleton slot (0x1e9ca).
+    state.outlets.clear();
+    state.singleton_cleared = true;
 }
 
 // 0x1e9d0 — -[LoginViewController handleSignupNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController handleSignupNotification:]")]
-pub fn stub_0x1e9d0() -> ! {
-    todo!("0x1e9d0 -[LoginViewController handleSignupNotification:]")
+pub fn stub_0x1e9d0(state: &mut LoginViewState, username: Option<&str>, password: Option<&str>) {
+    // IDA 0x1e9d0 `-[LoginViewController handleSignupNotification:]`:
+    // pulls `username`/`password` from `userInfo` (0x1e9ee..0x1ea28),
+    // retains both (0x1ea3a..0x1ea42); when both exist, runs the
+    // main-queue fill block (0x1ea7e..0x1ea92 -> 0x1eaa0). The hop is
+    // synchronous here.
+    if let (Some(name), Some(pass)) = (username, password) {
+        stub_0x1eaa0(state, name, pass);
+    }
 }
 
 // 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
 #[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
-pub fn stub_0x1eaa0() -> ! {
-    todo!("0x1eaa0 ___48-[LoginViewController handleSignupNotification:]_block_invoke")
+pub fn stub_0x1eaa0(state: &mut LoginViewState, username: &str, password: &str) {
+    // IDA 0x1eaa0 `__48-[...handleSignupNotification:]_block_invoke`:
+    // stamps the retained credentials into the fields (0x1eab4..0x1eae2);
+    // the releases (0x1eaf6..0x1eafa) fold into host ownership.
+    state.username_text = username.to_string();
+    state.password_text = password.to_string();
 }
 
 // 0x1eb08 — ___copy_helper_block_226
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_226")]
-pub fn stub_0x1eb08() -> ! {
-    todo!("0x1eb08 ___copy_helper_block_226")
+pub fn stub_0x1eb08(dst: &mut SignupCaptures, src: &SignupCaptures) {
+    // IDA 0x1eb08 `__copy_helper_block_226`: `_Block_object_assign`
+    // retain of the three captures (0x1eb18..0x1eb34; cf. 0x1ae78).
+    *dst = src.clone();
 }
 
 // 0x1eb38 — ___destroy_helper_block_227
