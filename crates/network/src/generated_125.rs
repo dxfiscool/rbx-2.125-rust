@@ -577,8 +577,9 @@ pub fn stub_9804d0() -> ! {
 // 0x980570 — __ZN6RakNet9BitStream4ReadItEEbRT_
 // type: int __fastcall(RakNet::BitStream *, unsigned __int8 *, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned short>(unsigned short &)")]
-pub fn stub_980570() -> ! {
-    todo!("0x980570 __ZN6RakNet9BitStream4ReadItEEbRT_")
+pub fn stub_980570(stream: &mut crate::bitstream::BitStream) -> Option<u16> {
+ // IDA 0x980570: Read<unsigned short>.
+ stream.read_u16()
 }
 
 // 0x981138 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network16ClientReplicatorERKNS_4Guid4DataEPNS_12PartInstanceENS2_10shared_ptrIS0_EEEENS3_5list4INS3_5valueIPS8_EENSJ_ISA_EENSJ_ISE_EENS2_3argILi1EEEEEEEEEvRKT_

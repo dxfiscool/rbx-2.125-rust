@@ -668,8 +668,9 @@ pub fn stub_960c8c(ser: &crate::string_dictionary::IdSerializer, stream: &mut cr
 // type: int __fastcall(int, RakNet::BitStream *this)
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")]
 #[doc(alias = "__ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE7trySendERN6RakNet9BitStreamES4_")]
-pub fn stub_965f98() -> ! {
-    todo!("0x965f98 RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")
+pub fn stub_965f98(dict: &crate::string_dictionary::NameSenderDictionary, stream: &mut crate::bitstream::BitStream, id: usize, text: &str) -> bool {
+ // IDA 0x965f98: known-name-only send.
+ dict.try_send(stream, id, text)
 }
 
 // 0x968fb0 — __ZN3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE

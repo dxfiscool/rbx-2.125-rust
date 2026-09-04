@@ -490,6 +490,14 @@ impl IdSerializer {
  };
  (name, extra)
  }
+
+ /// `IdSerializer::deserializeInstanceRef` (IDA 0x9610e0): the id via
+ /// [`deserialize_id`](Self::deserialize_id), then the registry lookup
+ /// (engine-side) asserting the instance lives in this datamodel.
+ pub fn deserialize_instance_ref(&mut self, stream: &mut BitStream, resolve: &mut dyn FnMut(String, u32) -> Option<u32>) -> Option<u32> {
+ let (name, extra) = self.deserialize_id(stream);
+ resolve(name, extra)
+ }
 }
 
 #[cfg(test)]
@@ -730,4 +738,23 @@ mod id_serializer_tests {
  let mut r = BitStream::from_bytes(&w.into_bytes());
  assert_eq!(s.deserialize_id_without_dictionary(&mut r), (String::new(), 0));
  }
+    #[test]
+    fn instance_ref_resolves_through_callback() {
+        // IDA 0x9610e0: id first, then the registry lookup.
+        let mut tx = ser();
+        let mut rx = ser();
+        let mut w = BitStream::new();
+        tx.serialize_guid(&mut w, 5, "SpawnLocation", 0x3C);
+        let mut r = BitStream::from_bytes(&w.into_bytes());
+        let got = rx.deserialize_instance_ref(&mut r, &mut |name, extra| {
+            assert_eq!((name.as_str(), extra), ("SpawnLocation", 0x3C));
+            Some(42)
+        });
+        assert_eq!(got, Some(42));
+        // Null id resolves to whatever the registry says (here: none).
+        let mut w = BitStream::new();
+        tx.serialize_id(&mut w, None);
+        let mut r = BitStream::from_bytes(&w.into_bytes());
+        assert_eq!(rx.deserialize_instance_ref(&mut r, &mut |_, _| None), None);
+    }
 }

@@ -630,104 +630,121 @@ pub fn stub_960c8c(ser: &crate::string_dictionary::IdSerializer, stream: &mut cr
 
 // 0x961094 — __ZN3RBX7Network12IdSerializer20serializeInstanceRefEPKNS_8InstanceERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::IdSerializer::serializeInstanceRef(RBX::Instance const*,RakNet::BitStream &)")]
-pub fn stub_961094() -> ! {
-    todo!("0x961094 RBX::Network::IdSerializer::serializeInstanceRef(RBX::Instance const*,RakNet::BitStream &)")
+pub fn stub_961094(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, id: Option<(usize, &str, u32)>) {
+ // IDA 0x961094: instance ref through serialize_id.
+ ser.serialize_id(stream, id)
 }
 
 // 0x9610e0 — __ZN3RBX7Network12IdSerializer22deserializeInstanceRefERN6RakNet9BitStreamERPNS_8InstanceERNS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::deserializeInstanceRef(RakNet::BitStream &,RBX::Instance *&,RBX::Guid::Data &)")]
-pub fn stub_9610e0() -> ! {
-    todo!("0x9610e0 RBX::Network::IdSerializer::deserializeInstanceRef(RakNet::BitStream &,RBX::Instance *&,RBX::Guid::Data &)")
+pub fn stub_9610e0(ser: &mut crate::string_dictionary::IdSerializer, stream: &mut crate::bitstream::BitStream, resolve: &mut dyn FnMut(String, u32) -> Option<u32>) -> Option<u32> {
+ // IDA 0x9610e0: id plus registry lookup.
+ ser.deserialize_instance_ref(stream, resolve)
 }
 
 // 0x962a24 — __ZN6RakNet9BitStream5WriteIiEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<int>(int const&)")]
-pub fn stub_962a24() -> ! {
-    todo!("0x962a24 void RakNet::BitStream::Write<int>(int const&)")
+pub fn stub_962a24(stream: &mut crate::bitstream::BitStream, value: i32) {
+ // IDA 0x962a24: Write<int>.
+ stream.write_i32(value)
 }
 
 // 0x962b38 — __ZN6RakNet9BitStream4ReadIlEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<long>(long &)")]
-pub fn stub_962b38() -> ! {
-    todo!("0x962b38 bool RakNet::BitStream::Read<long>(long &)")
+pub fn stub_962b38(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+ // IDA 0x962b38: Read<long> (32-bit).
+ stream.read_i32()
 }
 
 // 0x962c60 — __ZN6RakNet9BitStream5WriteIyEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")]
-pub fn stub_962c60() -> ! {
-    todo!("0x962c60 void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")
+pub fn stub_962c60(stream: &mut crate::bitstream::BitStream, value: u64) {
+ // IDA 0x962c60: Write<unsigned long long>.
+ stream.write_u64(value)
 }
 
 // 0x962d98 — __ZN6RakNet9BitStream4ReadIyEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")]
-pub fn stub_962d98() -> ! {
-    todo!("0x962d98 bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")
+pub fn stub_962d98(stream: &mut crate::bitstream::BitStream) -> Option<u64> {
+ // IDA 0x962d98: Read<unsigned long long>.
+ stream.read_u64()
 }
 
 // 0x962ee4 — __ZN6RakNet9BitStream5WriteIlEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<long>(long const&)")]
-pub fn stub_962ee4() -> ! {
-    todo!("0x962ee4 void RakNet::BitStream::Write<long>(long const&)")
+pub fn stub_962ee4(stream: &mut crate::bitstream::BitStream, value: i32) {
+ // IDA 0x962ee4: Write<long> (32-bit).
+ stream.write_i32(value)
 }
 
 // 0x962ff8 — __ZN6RakNet9BitStream4ReadIiEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<int>(int &)")]
-pub fn stub_962ff8() -> ! {
-    todo!("0x962ff8 bool RakNet::BitStream::Read<int>(int &)")
+pub fn stub_962ff8(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+ // IDA 0x962ff8: Read<int>.
+ stream.read_i32()
 }
 
 // 0x963120 — __ZN6RakNet9BitStream5WriteIjEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")]
-pub fn stub_963120() -> ! {
-    todo!("0x963120 void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")
+pub fn stub_963120(stream: &mut crate::bitstream::BitStream, value: u32) {
+ // IDA 0x963120: Write<unsigned int>.
+ stream.write_u32(value)
 }
 
 // 0x963234 — __ZN6RakNet9BitStream4ReadIjEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")]
-pub fn stub_963234() -> ! {
-    todo!("0x963234 bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")
+pub fn stub_963234(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+ // IDA 0x963234: Read<unsigned int>.
+ stream.read_u32()
 }
 
 // 0x96335c — __ZN6RakNet9BitStream5WriteImEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")]
-pub fn stub_96335c() -> ! {
-    todo!("0x96335c void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")
+pub fn stub_96335c(stream: &mut crate::bitstream::BitStream, value: u32) {
+ // IDA 0x96335c: Write<unsigned long> (32-bit).
+ stream.write_u32(value)
 }
 
 // 0x963470 — __ZN6RakNet9BitStream4ReadImEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")]
-pub fn stub_963470() -> ! {
-    todo!("0x963470 bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")
+pub fn stub_963470(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+ // IDA 0x963470: Read<unsigned long> (32-bit).
+ stream.read_u32()
 }
 
 // 0x963598 — __ZN6RakNet9BitStream5WriteIdEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<double>(double const&)")]
-pub fn stub_963598() -> ! {
-    todo!("0x963598 void RakNet::BitStream::Write<double>(double const&)")
+pub fn stub_963598(stream: &mut crate::bitstream::BitStream, value: f64) {
+ // IDA 0x963598: Write<double>.
+ stream.write_f64(value)
 }
 
 // 0x9636d0 — __ZN6RakNet9BitStream4ReadIdEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<double>(double &)")]
-pub fn stub_9636d0() -> ! {
-    todo!("0x9636d0 bool RakNet::BitStream::Read<double>(double &)")
+pub fn stub_9636d0(stream: &mut crate::bitstream::BitStream) -> Option<f64> {
+ // IDA 0x9636d0: Read<double>.
+ stream.read_f64()
 }
 
 // 0x96381c — __ZN6RakNet9BitStream5WriteIsEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<short>(short const&)")]
-pub fn stub_96381c() -> ! {
-    todo!("0x96381c void RakNet::BitStream::Write<short>(short const&)")
+pub fn stub_96381c(stream: &mut crate::bitstream::BitStream, value: i16) {
+ // IDA 0x96381c: Write<short>.
+ stream.write_i16(value)
 }
 
 // 0x963930 — __ZN6RakNet9BitStream4ReadIsEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<short>(short &)")]
-pub fn stub_963930() -> ! {
-    todo!("0x963930 bool RakNet::BitStream::Read<short>(short &)")
+pub fn stub_963930(stream: &mut crate::bitstream::BitStream) -> Option<i16> {
+ // IDA 0x963930: Read<short>.
+ stream.read_i16()
 }
 
 // 0x965f98 — __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE7trySendERN6RakNet9BitStreamES4_
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")]
-pub fn stub_965f98() -> ! {
-    todo!("0x965f98 RBX::Network::SenderDictionary<RBX::Name const*>::trySend(RakNet::BitStream &,RBX::Name const*)")
+pub fn stub_965f98(dict: &crate::string_dictionary::NameSenderDictionary, stream: &mut crate::bitstream::BitStream, id: usize, text: &str) -> bool {
+ // IDA 0x965f98: known-name-only send.
+ dict.try_send(stream, id, text)
 }
 
 // 0x968fb0 — __ZN3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE
@@ -840,8 +857,9 @@ pub fn stub_97ed00() -> ! {
 
 // 0x980570 — __ZN6RakNet9BitStream4ReadItEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned short>(unsigned short &)")]
-pub fn stub_980570() -> ! {
-    todo!("0x980570 bool RakNet::BitStream::Read<unsigned short>(unsigned short &)")
+pub fn stub_980570(stream: &mut crate::bitstream::BitStream) -> Option<u16> {
+ // IDA 0x980570: Read<unsigned short>.
+ stream.read_u16()
 }
 
 // 0x984648 — __ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE
