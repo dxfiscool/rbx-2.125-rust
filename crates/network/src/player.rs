@@ -1729,6 +1729,56 @@ mod tests {
         assert_eq!(chat_option_name_at(2), Some("ClassicAndBubble"));
         assert_eq!(chat_option_name_at(7), None);
     }
+    #[test]
+    fn player_chat_type_convert_gates() {
+        // IDA 0xa229f4/0xa22a84/0xa22b88/0xa22f3c: lookups and indexed values.
+        assert_eq!(player_chat_type_from_value("Team"), Some(1));
+        assert_eq!(player_chat_type_from_value("Nope"), None);
+        assert_eq!(player_chat_type_value_at(0), Some(0));
+        assert_eq!(player_chat_type_value_at(2), Some(2));
+        assert_eq!(player_chat_type_value_at(3), None);
+        // IDA 0xa22c48/0xa22d8c/0xa23284: indexed names.
+        assert_eq!(player_chat_type_name_at(0), Some("All"));
+        assert_eq!(player_chat_type_name_at(2), Some("Whisper"));
+        assert_eq!(player_chat_type_name_at(5), None);
+        assert_eq!(chat_option_name_at(0), Some("Classic"));
+        // IDA 0xa22f2c/0xa22f38/0xa23424: holder copy/empty-destruct.
+        assert_eq!(construct_player_chat_type(2), 2);
+        destruct_player_chat_type();
+        assert_eq!(construct_chat_option(1), 1);
+        // IDA 0xa22948/0xa22954/0xa23008: descriptor drops.
+        drop_descriptor();
+    }
+    #[test]
+    fn receive_chat_filter_abuse_gates() {
+        // IDA 0xa0ef50: unknown senders drop; clients add; servers gate.
+        let log = std::cell::RefCell::new(Vec::new());
+        let mut recv = |known: bool, server: bool, vis: bool, empty: bool, nourl: bool| {
+            on_receive_chat(
+                known, server, vis, empty, nourl,
+                &mut || log.borrow_mut().push("add"),
+                &mut || log.borrow_mut().push("direct"),
+                &mut || log.borrow_mut().push("filter"),
+            )
+        };
+        assert!(!recv(false, true, true, false, false));
+        assert!(!recv(true, false, false, false, false));
+        assert!(recv(true, true, false, false, false));
+        assert!(!recv(true, true, true, true, false));
+        assert!(!recv(true, true, true, false, true));
+        assert!(recv(true, true, true, false, false));
+        assert_eq!(
+            log.borrow().as_slice(),
+            ["add", "filter", "add", "add", "direct", "add", "filter"]
+        );
+        // IDA 0xa12108: file + fire, always 0.
+        let mut adds = 0;
+        let mut fires = 0;
+        assert_eq!(on_receive_report_abuse(false, &mut || adds += 1, &mut || fires += 1), 0);
+        assert_eq!((adds, fires), (0, 1));
+        assert_eq!(on_receive_report_abuse(true, &mut || adds += 1, &mut || fires += 1), 0);
+        assert_eq!((adds, fires), (1, 2));
+    }
 }
 
 /// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
@@ -2095,4 +2145,108 @@ pub fn chat_option_name_at(index: u32) -> Option<&'static str> {
  2 => Some("ClassicAndBubble"),
  _ => None,
  }
+}
+
+/// `EnumDesc<PlayerChatType>::convertToValue` (IDA 0xa22b88),
+/// `lookup(Variant)` (IDA 0xa22a84), and `convertToItem` (IDA 0xa22f3c):
+/// the indexed value, or `None` when out of range (the asserts stay
+/// engine-side).
+#[must_use]
+pub fn player_chat_type_value_at(index: u32) -> Option<u32> {
+ (index < 3).then_some(index)
+}
+
+/// `EnumDesc<PlayerChatType>::convertToString(uint)` (IDA 0xa22c48) and
+/// `convertToString(PlayerChatType)` (IDA 0xa22d8c).
+#[must_use]
+pub fn player_chat_type_name_at(index: u32) -> Option<&'static str> {
+ match index {
+ 0 => Some("All"),
+ 1 => Some("Team"),
+ 2 => Some("Whisper"),
+ _ => None,
+ }
+}
+
+/// `typed_holder<PlayerChatType>::construct_func` (IDA 0xa22f2c):
+/// copies the value into the holder slot.
+#[must_use]
+pub fn construct_player_chat_type(value: u32) -> u32 {
+ value
+}
+
+/// `typed_holder<PlayerChatType>::destruct_func` (IDA 0xa22f38): empty.
+pub fn destruct_player_chat_type() {}
+
+/// `typed_holder<ChatOption>::construct_func` (IDA 0xa23424): same copy.
+#[must_use]
+pub fn construct_chat_option(value: u32) -> u32 {
+ value
+}
+
+/// `Players::OnReceiveChat` (IDA 0xa0ef50): kinds 135/136/140 carry the
+/// sender guid plus message (140 adds the whisper target); kind 139 is a
+/// senderless system message. The sender must resolve to the expected
+/// player, else the packet is logged and dropped. Clients add directly;
+/// servers apply the chat-option/team gate first. Servers then relay
+/// non-empty messages: straight over RakNet when no filter URL is set,
+/// otherwise via a `contentFilterAsync` worker. Returns whether the
+/// filter worker was dispatched.
+pub fn on_receive_chat(
+ sender_known: bool,
+ server_side: bool,
+ chat_visible: bool,
+ message_empty: bool,
+ filter_url_empty: bool,
+ add: &mut dyn FnMut(),
+ send_direct: &mut dyn FnMut(),
+ dispatch_filter: &mut dyn FnMut(),
+) -> bool {
+ if !sender_known {
+ return false;
+ }
+ if !server_side || chat_visible {
+ add();
+ }
+ if !server_side || message_empty {
+ return false;
+ }
+ if filter_url_empty {
+ send_direct();
+ return false;
+ }
+ dispatch_filter();
+ true
+}
+
+/// `Players::contentFilterAsync` (IDA 0xa11b88): relays the message
+/// unless it is already filtered, then releases the peer.
+pub fn content_filter_async(
+ peer_present: bool,
+ already_filtered: bool,
+ send: &mut dyn FnMut(),
+ release: &mut dyn FnMut(),
+) {
+ if !peer_present {
+ return;
+ }
+ if !already_filtered {
+ send();
+ }
+ release();
+}
+
+/// `Players::OnReceiveReportAbuse` (IDA 0xa12108): parses the abuser id
+/// and message, files the report, and fires the abuse signal. Always
+/// returns 0.
+pub fn on_receive_report_abuse(
+ reporter_present: bool,
+ add: &mut dyn FnMut(),
+ fire: &mut dyn FnMut(),
+) -> u32 {
+ if reporter_present {
+ add();
+ }
+ fire();
+ 0
 }

@@ -1836,22 +1836,25 @@ pub fn stub_a018b4(binary_address: u32, port: u16, print_port: bool) -> String {
 // 0xa0ef50 — __ZN3RBX7Network7Players13OnReceiveChatEPNS0_6PlayerEPN6RakNet16RakPeerInterfaceEPNS4_6PacketEh
 #[doc(alias = "RBX::Network::Players::OnReceiveChat(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *,unsigned char)")]
 // was: RBX::Network::Players::OnReceiveChat(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *,unsigned char)
-pub fn stub_a0ef50() -> ! {
-    todo!("0xa0ef50 RBX::Network::Players::OnReceiveChat(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *,unsigned char)")
+pub fn stub_a0ef50(sender_known: bool, server_side: bool, chat_visible: bool, message_empty: bool, filter_url_empty: bool, add: &mut dyn FnMut(), send_direct: &mut dyn FnMut(), dispatch_filter: &mut dyn FnMut()) -> bool {
+ // IDA 0xa0ef50: gate, add, relay-or-filter chat packets.
+ crate::player::on_receive_chat(sender_known, server_side, chat_visible, message_empty, filter_url_empty, add, send_direct, dispatch_filter)
 }
 
 // 0xa11b88 — __ZN3RBX7Network7Players18contentFilterAsyncESsSsPN6RakNet6PacketE
 #[doc(alias = "RBX::Network::Players::contentFilterAsync(std::string,std::string,RakNet::Packet *)")]
 // was: RBX::Network::Players::contentFilterAsync(std::string,std::string,RakNet::Packet *)
-pub fn stub_a11b88() -> ! {
-    todo!("0xa11b88 RBX::Network::Players::contentFilterAsync(std::string,std::string,RakNet::Packet *)")
+pub fn stub_a11b88(peer_present: bool, already_filtered: bool, send: &mut dyn FnMut(), release: &mut dyn FnMut()) {
+ // IDA 0xa11b88: relay unless filtered, then release the peer.
+ crate::player::content_filter_async(peer_present, already_filtered, send, release)
 }
 
 // 0xa12108 — __ZN3RBX7Network7Players20OnReceiveReportAbuseEPNS0_6PlayerEPN6RakNet16RakPeerInterfaceEPNS4_6PacketE
 #[doc(alias = "RBX::Network::Players::OnReceiveReportAbuse(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *)")]
 // was: RBX::Network::Players::OnReceiveReportAbuse(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *)
-pub fn stub_a12108() -> ! {
-    todo!("0xa12108 RBX::Network::Players::OnReceiveReportAbuse(RBX::Network::Player *,RakNet::RakPeerInterface *,RakNet::Packet *)")
+pub fn stub_a12108(reporter_present: bool, add: &mut dyn FnMut(), fire: &mut dyn FnMut()) -> u32 {
+ // IDA 0xa12108: file the abuse report and fire the signal.
+ crate::player::on_receive_report_abuse(reporter_present, add, fire)
 }
 
 // 0xa1e020 — __ZN5boost4bindIvN3RBX7Network7PlayersESsSsPN6RakNet6PacketENS_10shared_ptrIS3_EESsSsS6_EENS_3_bi6bind_tIT_NS_4_mfi3mf3ISB_T0_T1_T2_T3_EENS9_9list_av_4IT4_T5_T6_T7_E4typeEEEMSE_FSB_SF_SG_SH_ESK_SL_SM_SN_
@@ -14999,92 +15002,105 @@ pub fn stub_a22804(index: u32) -> Option<&'static str> {
 // 0xa22948 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")]
-pub fn stub_a22948() -> ! {
-    todo!("0xa22948 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")
+pub fn stub_a22948() {
+ // IDA 0xa22948: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa22954 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")]
-pub fn stub_a22954() -> ! {
-    todo!("0xa22954 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")
+pub fn stub_a22954() {
+ // IDA 0xa22954: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa229f4 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupEPKc
 // type: int __fastcall(_DWORD *, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(char const*)const")]
-pub fn stub_a229f4() -> ! {
-    todo!("0xa229f4 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(char const*)const")
+pub fn stub_a229f4(name: &str) -> Option<u32> {
+ // IDA 0xa229f4: PlayerChatType name lookup.
+ crate::player::player_chat_type_from_value(name)
 }
 
 // 0xa22a84 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_a22a84() -> ! {
-    todo!("0xa22a84 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_a22a84(index: u32) -> Option<u32> {
+ // IDA 0xa22a84: PlayerChatType variant lookup.
+ crate::player::player_chat_type_value_at(index)
 }
 
 // 0xa22b88 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE14convertToValueEmRNS0_7VariantE
 // type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_a22b88() -> ! {
-    todo!("0xa22b88 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_a22b88(index: u32) -> Option<u32> {
+ // IDA 0xa22b88: indexed PlayerChatType value.
+ crate::player::player_chat_type_value_at(index)
 }
 
 // 0xa22c48 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_a22c48() -> ! {
-    todo!("0xa22c48 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(unsigned long,std::string &)const")
+pub fn stub_a22c48(index: u32) -> Option<&'static str> {
+ // IDA 0xa22c48: indexed PlayerChatType name.
+ crate::player::player_chat_type_name_at(index)
 }
 
 // 0xa22d8c — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringERKS4_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(RBX::Network::Players::PlayerChatType const&)const")]
-pub fn stub_a22d8c() -> ! {
-    todo!("0xa22d8c RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(RBX::Network::Players::PlayerChatType const&)const")
+pub fn stub_a22d8c(value: u32) -> Option<&'static str> {
+ // IDA 0xa22d8c: PlayerChatType value to name.
+ crate::player::player_chat_type_name_at(value)
 }
 
 // 0xa22f2c — __ZN3rbx14implementation12typed_holderIN3RBX7Network7Players14PlayerChatTypeEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Players::PlayerChatType>::construct_func(char const*,char *)")]
-pub fn stub_a22f2c() -> ! {
-    todo!("0xa22f2c rbx::implementation::typed_holder<RBX::Network::Players::PlayerChatType>::construct_func(char const*,char *)")
+pub fn stub_a22f2c(value: u32) -> u32 {
+ // IDA 0xa22f2c: copy into the holder slot.
+ crate::player::construct_player_chat_type(value)
 }
 
 // 0xa22f38 — __ZN3rbx14implementation12typed_holderIN3RBX7Network7Players14PlayerChatTypeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Players::PlayerChatType>::destruct_func(char *)")]
-pub fn stub_a22f38() -> ! {
-    todo!("0xa22f38 rbx::implementation::typed_holder<RBX::Network::Players::PlayerChatType>::destruct_func(char *)")
+pub fn stub_a22f38() {
+ // IDA 0xa22f38: empty holder destructor.
+ crate::player::destruct_player_chat_type()
 }
 
 // 0xa22f3c — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE13convertToItemERKS4_
 // type: int __fastcall(int, int *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToItem(RBX::Network::Players::PlayerChatType const&)const")]
-pub fn stub_a22f3c() -> ! {
-    todo!("0xa22f3c RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToItem(RBX::Network::Players::PlayerChatType const&)const")
+pub fn stub_a22f3c(index: u32) -> Option<u32> {
+ // IDA 0xa22f3c: indexed item or null when out of range.
+ crate::player::player_chat_type_value_at(index)
 }
 
 // 0xa23008 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")]
-pub fn stub_a23008() -> ! {
-    todo!("0xa23008 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")
+pub fn stub_a23008() {
+ // IDA 0xa23008: chained descriptor destructor; the Rust side drops nothing.
+ crate::player::drop_descriptor()
 }
 
 // 0xa23284 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringERKS4_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(RBX::Network::Players::ChatOption const&)const")]
-pub fn stub_a23284() -> ! {
-    todo!("0xa23284 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(RBX::Network::Players::ChatOption const&)const")
+pub fn stub_a23284(value: u32) -> Option<&'static str> {
+ // IDA 0xa23284: ChatOption value to name.
+ crate::player::chat_option_name_at(value)
 }
 
 // 0xa23424 — __ZN3rbx14implementation12typed_holderIN3RBX7Network7Players10ChatOptionEE14construct_funcEPKcPc
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Players::ChatOption>::construct_func(char const*,char *)")]
-pub fn stub_a23424() -> ! {
-    todo!("0xa23424 rbx::implementation::typed_holder<RBX::Network::Players::ChatOption>::construct_func(char const*,char *)")
+pub fn stub_a23424(value: u32) -> u32 {
+ // IDA 0xa23424: copy into the holder slot.
+ crate::player::construct_chat_option(value)
 }
 
 // 0xa23430 — __ZN3rbx14implementation12typed_holderIN3RBX7Network7Players10ChatOptionEE13destruct_funcEPc
