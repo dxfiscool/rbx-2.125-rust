@@ -550,9 +550,7 @@ pub fn stub_682d38() -> ! {
 // 0x682f50 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16ToolMouseCommandEPNS_9WorkspaceEPNS_4ToolEEEN5boost10shared_ptrIT_EET0_T1_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)")]
 // was: boost::shared_ptr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)
-pub fn stub_682f50() -> ! {
-    todo!("0x682f50 rbx_core::SharedPtr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)")
-}
+pub use crate::workspace::stub_0x682f50 as stub_682f50;
 
 // 0x683008 — __ZNK3RBX4Tool11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Tool::askAddChild(RBX::Instance const*)const")]
