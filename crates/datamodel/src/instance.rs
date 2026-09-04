@@ -161,6 +161,38 @@ pub struct AdvLuaDragger {
     _opaque: (),
 }
 
+/// Rust model of `RBX::BillboardGui` (IDA `0x3c0434`): field layout unmodeled;
+/// adornee/player presence lands with the gui subsystem.
+#[derive(Default)]
+pub struct BillboardGui {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<FormFactorPart,
+/// PartInstance::FormFactor>` (IDA `0x3bc1fc`): the conditionally-deleted heap
+/// payload; enum metadata lands with the descriptor domain.
+#[derive(Default)]
+pub struct FFEnumPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<BasicPartInstance,
+/// BasicPartInstance::LegacyPartType>` (IDA `0x3bc460`): same shape.
+#[derive(Default)]
+pub struct BPEnumPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+}
+
+/// Rust model of `RBX::Reflection::RefPropDescriptor<BillboardGui, Instance>`
+/// (IDA `0x3c0f7c`): the conditionally-deleted heap payload plus attribute
+/// flags. Twin of `PVRefPropDescriptor`.
+#[derive(Default)]
+pub struct BBRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
 /// Rust model of `RBX::ArcHandles` (IDA `0x3a8a58`): same opaque shape.
 #[derive(Default)]
 pub struct ArcHandles {
@@ -7625,50 +7657,65 @@ pub fn stub_0x3bc104(_this: *mut BasicPartInstance) {
 // 0x3bc114 — __ZThn32_N3RBX17BasicPartInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc114() -> ! {
-    todo!("0x3bc114 non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc114(part: *mut BasicPartInstance) {
+    // IDA 0x3bc114: `Thn32` D0 thunk — `this - 32` then the D0 body. Same
+    // collapse as the `PartAdornment` thunks.
+    // SAFETY: `part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(part));
+    }
 }
 
 // 0x3bc11c — __ZThn36_N3RBX17BasicPartInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc11c() -> ! {
-    todo!("0x3bc11c non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc11c(part: *mut BasicPartInstance) {
+    // IDA 0x3bc11c: `Thn36` D0 thunk — `this - 36` then the D0 body.
+    // SAFETY: `part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(part));
+    }
 }
 
 // 0x3bc124 — __ZThn132_N3RBX17BasicPartInstanceD0Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc124() -> ! {
-    todo!("0x3bc124 non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc124(part: *mut BasicPartInstance) {
+    // IDA 0x3bc124: `Thn132` D0 thunk — `this - 132` then the D0 body.
+    // SAFETY: `part` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(part));
+    }
 }
 
 // 0x3bc12c — __ZN3RBX17BasicPartInstanceD2Ev
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc12c() -> ! {
-    todo!("0x3bc12c RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc12c(_this: *mut BasicPartInstance) {
+    // IDA 0x3bc12c: D2 calls the `PartInstance` base dtor only (disasm
+    // 0x3bc12e); the base teardown collapses (unmodeled members), so empty —
+    // twin of D1 (0x3bc104).
 }
 
 // 0x3bc134 — __ZThn32_N3RBX17BasicPartInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc134() -> ! {
-    todo!("0x3bc134 non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc134(_this: *mut BasicPartInstance) {
+    // IDA 0x3bc134: `Thn32` D1 thunk — `this - 32` then the D1 body (empty).
 }
 
 // 0x3bc148 — __ZThn36_N3RBX17BasicPartInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc148() -> ! {
-    todo!("0x3bc148 non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc148(_this: *mut BasicPartInstance) {
+    // IDA 0x3bc148: `Thn36` D1 thunk — `this - 36` then the D1 body (empty).
 }
 
 // 0x3bc15c — __ZThn132_N3RBX17BasicPartInstanceD1Ev
 #[doc(alias = "non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")]
 // was: non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()
-pub fn stub_0x3bc15c() -> ! {
-    todo!("0x3bc15c non-virtual thunk to RBX::BasicPartInstance::~BasicPartInstance()")
+pub fn stub_0x3bc15c(_this: *mut BasicPartInstance) {
+    // IDA 0x3bc15c: `Thn132` D1 thunk — `this - 132` then the D1 body (empty).
 }
 
 // 0x3bc170 — __ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE
@@ -7702,8 +7749,14 @@ pub fn stub_0x3bc1ec() -> ! {
 // 0x3bc1fc — __ZN3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()
-pub fn stub_0x3bc1fc() -> ! {
-    todo!("0x3bc1fc RBX::Reflection::EnumPropDescriptor<RBX::FormFactorPart,RBX::PartInstance::FormFactor>::~EnumPropDescriptor()")
+pub fn stub_0x3bc1fc(this: *mut FFEnumPropDescriptor) {
+    // IDA 0x3bc1fc: vtable reset (disasm 0x3bc210, compiler-managed) plus the
+    // conditional `operator delete` of the `+11` payload (disasm 0x3bc212-0x3bc218).
+    // Same shape as the `RefProp` D1s.
+    // SAFETY: `this` must point to a valid `FFEnumPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x3bc220 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_14FormFactorPartENS_12PartInstance10FormFactorEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -7716,8 +7769,13 @@ pub fn stub_0x3bc220() -> ! {
 // 0x3bc460 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17BasicPartInstanceENS2_14LegacyPartTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()
-pub fn stub_0x3bc460() -> ! {
-    todo!("0x3bc460 RBX::Reflection::EnumPropDescriptor<RBX::BasicPartInstance,RBX::BasicPartInstance::LegacyPartType>::~EnumPropDescriptor()")
+pub fn stub_0x3bc460(this: *mut BPEnumPropDescriptor) {
+    // IDA 0x3bc460: vtable reset (disasm 0x3bc474) plus the conditional
+    // `operator delete` of the `+11` payload (disasm 0x3bc476-0x3bc47c).
+    // SAFETY: `this` must point to a valid `BPEnumPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x3bc484 — __ZNK3RBX17BasicPartInstance17getLegacyPartTypeEv
@@ -8129,15 +8187,29 @@ pub fn stub_0x3bffc0() -> ! {
 // 0x3c0434 — __ZNK3RBX12BillboardGui12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::BillboardGui::askSetParent(RBX::Instance const*)const")]
 // was: RBX::BillboardGui::askSetParent(RBX::Instance const*)const
-pub fn stub_0x3c0434() -> ! {
-    todo!("0x3c0434 RBX::BillboardGui::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x3c0434(parent: *const Instance) -> bool {
+    // IDA 0x3c0434: null parent returns `1` (disasm `BEQ locret`); else the
+    // parent class descriptor is checked with `GuiBase2d::classDescriptor` +
+    // `isA`, and a hit returns `0` (disasm tail): a `BillboardGui` parents
+    // anywhere EXCEPT under `GuiBase2d` — the exclusion twin of
+    // `Light::askSetParent`. The `+0x24` residue is the null sentinel.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return true;
+    }
+    unsafe { !instance_is_a(parent, "GuiBase2d") }
 }
 
 // 0x3c0f7c — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()
-pub fn stub_0x3c0f7c() -> ! {
-    todo!("0x3c0f7c RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x3c0f7c(this: *mut BBRefPropDescriptor) {
+    // IDA 0x3c0f7c: vtable stores (disasm 0x3c0f80-0x3c0f92, compiler-managed)
+    // plus the conditional payload delete; same shape as 0x703498/0x3940e0.
+    // SAFETY: `this` must point to a valid `BBRefPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 
 // 0x3c2560 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -8150,22 +8222,33 @@ pub fn stub_0x3c2560() -> ! {
 // 0x3c2604 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()
-pub fn stub_0x3c2604() -> ! {
-    todo!("0x3c2604 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x3c2604(this: *mut BBRefPropDescriptor) {
+    // IDA 0x3c2604: D0 — the D1 body plus `operator delete`; the box reclaim
+    // is both. Same shape as 0x395114.
+    // SAFETY: `this` must be a live box pointer that is never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 
 // 0x3c2634 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isReadOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isReadOnly(void)const
-pub fn stub_0x3c2634() -> ! {
-    todo!("0x3c2634 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_0x3c2634(this: *const BBRefPropDescriptor) -> bool {
+    // IDA 0x3c2634: attribute-word dispatch like 0x395144; the read-only flag
+    // collapses into the modeled field.
+    // SAFETY: `this` must point to a valid `BBRefPropDescriptor`.
+    unsafe { (*this).read_only }
 }
 
 // 0x3c2644 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isWriteOnly(void)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isWriteOnly(void)const
-pub fn stub_0x3c2644() -> ! {
-    todo!("0x3c2644 RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_0x3c2644(this: *const BBRefPropDescriptor) -> bool {
+    // IDA 0x3c2644: attribute-word dispatch like 0x395154; the write-only
+    // flag collapses into the modeled field.
+    // SAFETY: `this` must point to a valid `BBRefPropDescriptor`.
+    unsafe { (*this).write_only }
 }
 
 // 0x3c2654 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
