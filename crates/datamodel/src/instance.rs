@@ -799,6 +799,154 @@ pub struct GlueToolVerb {
     pub active: bool,
 }
 
+/// Rust model of `RBX::FlatTool` (IDA `0x410ae0`): the studio flat mouse
+/// command plus the owning workspace.
+pub struct FlatTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<FlatTool, RunStateVerb>` (IDA `0x4106a4`):
+/// the flat tool verb with its active flag plus the owning data model.
+pub struct FlatToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::TToolVerb<AdvArrowTool, RunStateVerb>` (IDA `0x4110a4`):
+/// the adv-arrow tool verb with its active flag plus the owning data model.
+/// The tool model lands with its `create` EA.
+pub struct AdvArrowToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::AdvRotateTool` (IDA `0x411918`): the studio adv-rotate
+/// mouse command plus the owning workspace.
+pub struct AdvRotateTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<AdvRotateTool, RunStateVerb>` (IDA `0x4114dc`):
+/// the adv-rotate tool verb with its active flag plus the owning data model.
+pub struct AdvRotateToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::AdvMoveTool` (IDA `0x4125f4`): the studio adv-move
+/// mouse command plus the owning workspace.
+pub struct AdvMoveTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<AdvMoveTool, RunStateVerb>` (IDA `0x4121b8`):
+/// the adv-move tool verb with its active flag plus the owning data model.
+pub struct AdvMoveToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::MoveResizeJoinTool` (IDA `0x413174`): the studio
+/// move-resize-join mouse command plus the owning workspace.
+pub struct MoveResizeJoinTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<MoveResizeJoinTool, RunStateVerb>` (IDA
+/// `0x412c84`): the move-resize-join tool verb with its active flag plus the
+/// owning data model.
+pub struct MoveResizeJoinToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::AxisRotateTool` (IDA `0x413bd0`): the studio
+/// axis-rotate mouse command plus the owning workspace.
+pub struct AxisRotateTool {
+    pub workspace: *const crate::workspace::Workspace,
+}
+
+/// Rust model of `RBX::TToolVerb<AxisRotateTool, RunStateVerb>` (IDA `0x413798`):
+/// the axis-rotate tool verb with its active flag plus the owning data model.
+pub struct AxisRotateToolVerb {
+    pub data_model: *const DataModel,
+    pub active: bool,
+}
+
+/// Rust model of `RBX::ResetCommand` (IDA `0x414914`): the studio reset
+/// command plus the owning data model.
+pub struct ResetCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::StopCommand` (IDA `0x414a5c`): the studio stop command
+/// plus the owning data model.
+pub struct StopCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::RunCommand` (IDA `0x414ba4`): the studio run command
+/// plus the owning data model.
+pub struct RunCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::MoveUpBrickVerb` (IDA `0x414cec`): the studio
+/// move-up-brick verb plus the owning data model.
+pub struct MoveUpBrickVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::MoveUpSelectionVerb` (IDA `0x414e3c`): the studio
+/// move-up-selection verb with its step offset plus the owning data model.
+pub struct MoveUpSelectionVerb {
+    pub data_model: *const DataModel,
+    pub name: String,
+    pub offset: f32,
+}
+
+/// Rust model of `RBX::MoveUpPlateVerb` (IDA `0x415020`): the studio
+/// move-up-plate verb plus the owning data model.
+pub struct MoveUpPlateVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::AllCanSelectCommand` (IDA `0x415210`): the studio
+/// all-can-select command plus the owning data model.
+pub struct AllCanSelectCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::CanNotSelectCommand` (IDA `0x415358`): the studio
+/// can-not-select command plus the owning data model.
+pub struct CanNotSelectCommand {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::CanCollideVerb` (IDA `0x4154a0`): the studio
+/// can-collide verb plus the owning data model.
+pub struct CanCollideVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::TranslucentVerb` (IDA `0x415694`): the studio
+/// translucent verb plus the owning data model.
+pub struct TranslucentVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::AnchorVerb` (IDA `0x415888`): the studio anchor verb
+/// plus the owning data model.
+pub struct AnchorVerb {
+    pub data_model: *const DataModel,
+}
+
+/// Rust model of `RBX::UnlockAllVerb` (IDA `0x415a7c`): the studio unlock-all
+/// verb plus the owning data model.
+pub struct UnlockAllVerb {
+    pub data_model: *const DataModel,
+}
+
 /// Rust model of `RBX::SetManualJointToInfinite` (IDA `0x3fc608`): the studio
 /// joint-strength command plus the owning data model.
 pub struct SetManualJointToInfinite {
@@ -14198,183 +14346,236 @@ pub fn stub_0x4100e0(workspace: *const crate::workspace::Workspace) -> SharedPtr
 // 0x4106a4 — __ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x4106a4() -> ! {
-    todo!("0x4106a4 RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x4106a4(data_model: *const DataModel, active: bool) -> FlatToolVerb {
+    // IDA 0x4106a4: `TToolVerb<FlatTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    FlatToolVerb { data_model, active }
 }
 
 // 0x410ae0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FlatToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x410ae0() -> ! {
-    todo!("0x410ae0 boost::shared_ptr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x410ae0(workspace: *const crate::workspace::Workspace) -> SharedPtr<FlatTool> {
+    // IDA 0x410ae0: `Creatable<MouseCommand>::create<FlatTool>(Workspace)` —
+    // same shape as 0x4047d4.
+    SharedPtr::new(FlatTool { workspace })
 }
 
 // 0x4110a4 — __ZN3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x4110a4() -> ! {
-    todo!("0x4110a4 RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x4110a4(data_model: *const DataModel, active: bool) -> AdvArrowToolVerb {
+    // IDA 0x4110a4: `TToolVerb<AdvArrowTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    AdvArrowToolVerb { data_model, active }
 }
 
 // 0x4114dc — __ZN3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x4114dc() -> ! {
-    todo!("0x4114dc RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x4114dc(data_model: *const DataModel, active: bool) -> AdvRotateToolVerb {
+    // IDA 0x4114dc: `TToolVerb<AdvRotateTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    AdvRotateToolVerb { data_model, active }
 }
 
 // 0x411918 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13AdvRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x411918() -> ! {
-    todo!("0x411918 boost::shared_ptr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x411918(workspace: *const crate::workspace::Workspace) -> SharedPtr<AdvRotateTool> {
+    // IDA 0x411918: `Creatable<MouseCommand>::create<AdvRotateTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(AdvRotateTool { workspace })
 }
 
 // 0x411d70 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>> *)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)
-pub fn stub_0x411d70() -> ! {
-    todo!("0x411d70 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")
+pub fn stub_0x411d70(items: &mut Vec<(WeakPtr<PartInstance>, f32)>, index: usize) {
+    // IDA 0x411d70 (`_Rb_tree<weak_ptr<Part>, float>::_M_erase` by node):
+    // unlinks and frees the node; the node position collapses into the
+    // index. Same keyed-erase shape as 0x3df534, positional.
+    if index < items.len() {
+        items.remove(index);
+    }
 }
 
 // 0x411d98 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>> *)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)
-pub fn stub_0x411d98() -> ! {
-    todo!("0x411d98 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")
+pub fn stub_0x411d98(node: *mut (WeakPtr<PartInstance>, f32)) {
+    // IDA 0x411d98 (`_Rb_tree<weak_ptr<Part>, float>::_M_destroy_node`): runs
+    // the pair dtor in place plus storage release; dropping the box is both.
+    // SAFETY: `node` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(node));
+    }
 }
 
 // 0x4121b8 — __ZN3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x4121b8() -> ! {
-    todo!("0x4121b8 RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x4121b8(data_model: *const DataModel, active: bool) -> AdvMoveToolVerb {
+    // IDA 0x4121b8: `TToolVerb<AdvMoveTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    AdvMoveToolVerb { data_model, active }
 }
 
 // 0x4125f4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11AdvMoveToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4125f4() -> ! {
-    todo!("0x4125f4 boost::shared_ptr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4125f4(workspace: *const crate::workspace::Workspace) -> SharedPtr<AdvMoveTool> {
+    // IDA 0x4125f4: `Creatable<MouseCommand>::create<AdvMoveTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(AdvMoveTool { workspace })
 }
 
 // 0x412c84 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x412c84() -> ! {
-    todo!("0x412c84 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x412c84(data_model: *const DataModel, active: bool) -> MoveResizeJoinToolVerb {
+    // IDA 0x412c84: `TToolVerb<MoveResizeJoinTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    MoveResizeJoinToolVerb { data_model, active }
 }
 
 // 0x4130c0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18MoveResizeJoinToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x4130c0() -> ! {
-    todo!("0x4130c0 boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x4130c0(workspace: *const crate::workspace::Workspace) -> SharedPtr<MoveResizeJoinTool> {
+    // IDA 0x4130c0: `Creatable<MouseCommand>::create<MoveResizeJoinTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(MoveResizeJoinTool { workspace })
 }
 
 // 0x413174 — __ZN3RBX18MoveResizeJoinToolC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")]
 // was: RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)
-pub fn stub_0x413174() -> ! {
-    todo!("0x413174 RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")
+pub fn stub_0x413174(workspace: *const crate::workspace::Workspace) -> MoveResizeJoinTool {
+    // IDA 0x413174: `MoveResizeJoinTool::C2(Workspace*)` — links the
+    // workspace.
+    MoveResizeJoinTool { workspace }
 }
 
 // 0x413798 — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
 #[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
 // was: RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
-pub fn stub_0x413798() -> ! {
-    todo!("0x413798 RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+pub fn stub_0x413798(data_model: *const DataModel, active: bool) -> AxisRotateToolVerb {
+    // IDA 0x413798: `TToolVerb<AxisRotateTool, RunStateVerb>::C2(DataModel*,
+    // bool)` — links the model and keeps the active flag. Same shape as
+    // 0x404394.
+    AxisRotateToolVerb { data_model, active }
 }
 
 // 0x413bd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AxisRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
 // was: boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)
-pub fn stub_0x413bd0() -> ! {
-    todo!("0x413bd0 boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")
+pub fn stub_0x413bd0(workspace: *const crate::workspace::Workspace) -> SharedPtr<AxisRotateTool> {
+    // IDA 0x413bd0: `Creatable<MouseCommand>::create<AxisRotateTool>(Workspace)`
+    // — same shape as 0x4047d4.
+    SharedPtr::new(AxisRotateTool { workspace })
 }
 
 // 0x414914 — __ZN3RBX12ResetCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::ResetCommand::ResetCommand(RBX::DataModel *)")]
 // was: RBX::ResetCommand::ResetCommand(RBX::DataModel *)
-pub fn stub_0x414914() -> ! {
-    todo!("0x414914 RBX::ResetCommand::ResetCommand(RBX::DataModel *)")
+pub fn stub_0x414914(data_model: *const DataModel) -> ResetCommand {
+    // IDA 0x414914: `ResetCommand::C2(DataModel*)` — links the model.
+    ResetCommand { data_model }
 }
 
 // 0x414a5c — __ZN3RBX11StopCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::StopCommand::StopCommand(RBX::DataModel *)")]
 // was: RBX::StopCommand::StopCommand(RBX::DataModel *)
-pub fn stub_0x414a5c() -> ! {
-    todo!("0x414a5c RBX::StopCommand::StopCommand(RBX::DataModel *)")
+pub fn stub_0x414a5c(data_model: *const DataModel) -> StopCommand {
+    // IDA 0x414a5c: `StopCommand::C2(DataModel*)` — links the model.
+    StopCommand { data_model }
 }
 
 // 0x414ba4 — __ZN3RBX10RunCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::RunCommand::RunCommand(RBX::DataModel *)")]
 // was: RBX::RunCommand::RunCommand(RBX::DataModel *)
-pub fn stub_0x414ba4() -> ! {
-    todo!("0x414ba4 RBX::RunCommand::RunCommand(RBX::DataModel *)")
+pub fn stub_0x414ba4(data_model: *const DataModel) -> RunCommand {
+    // IDA 0x414ba4: `RunCommand::C2(DataModel*)` — links the model.
+    RunCommand { data_model }
 }
 
 // 0x414cec — __ZN3RBX15MoveUpBrickVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")]
 // was: RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)
-pub fn stub_0x414cec() -> ! {
-    todo!("0x414cec RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")
+pub fn stub_0x414cec(data_model: *const DataModel) -> MoveUpBrickVerb {
+    // IDA 0x414cec: `MoveUpBrickVerb::C2(DataModel*)` — links the model.
+    MoveUpBrickVerb { data_model }
 }
 
 // 0x414e3c — __ZN3RBX19MoveUpSelectionVerbC2EPNS_9DataModelERKSsf
 #[doc(alias = "RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")]
 // was: RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)
-pub fn stub_0x414e3c() -> ! {
-    todo!("0x414e3c RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")
+pub fn stub_0x414e3c(data_model: *const DataModel, name: &str, offset: f32) -> MoveUpSelectionVerb {
+    // IDA 0x414e3c: `MoveUpSelectionVerb::C2(DataModel*, string const&,
+    // float)` — links the model, retains the name, keeps the step offset.
+    MoveUpSelectionVerb { data_model, name: name.to_owned(), offset }
 }
 
 // 0x415020 — __ZN3RBX15MoveUpPlateVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")]
 // was: RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)
-pub fn stub_0x415020() -> ! {
-    todo!("0x415020 RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")
+pub fn stub_0x415020(data_model: *const DataModel) -> MoveUpPlateVerb {
+    // IDA 0x415020: `MoveUpPlateVerb::C2(DataModel*)` — links the model.
+    MoveUpPlateVerb { data_model }
 }
 
 // 0x415210 — __ZN3RBX19AllCanSelectCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")]
 // was: RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)
-pub fn stub_0x415210() -> ! {
-    todo!("0x415210 RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")
+pub fn stub_0x415210(data_model: *const DataModel) -> AllCanSelectCommand {
+    // IDA 0x415210: `AllCanSelectCommand::C2(DataModel*)` — links the model.
+    AllCanSelectCommand { data_model }
 }
 
 // 0x415358 — __ZN3RBX19CanNotSelectCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")]
 // was: RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)
-pub fn stub_0x415358() -> ! {
-    todo!("0x415358 RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")
+pub fn stub_0x415358(data_model: *const DataModel) -> CanNotSelectCommand {
+    // IDA 0x415358: `CanNotSelectCommand::C2(DataModel*)` — links the model.
+    CanNotSelectCommand { data_model }
 }
 
 // 0x4154a0 — __ZN3RBX14CanCollideVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")]
 // was: RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)
-pub fn stub_0x4154a0() -> ! {
-    todo!("0x4154a0 RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")
+pub fn stub_0x4154a0(data_model: *const DataModel) -> CanCollideVerb {
+    // IDA 0x4154a0: `CanCollideVerb::C2(DataModel*)` — links the model.
+    CanCollideVerb { data_model }
 }
 
 // 0x415694 — __ZN3RBX15TranslucentVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")]
 // was: RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)
-pub fn stub_0x415694() -> ! {
-    todo!("0x415694 RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")
+pub fn stub_0x415694(data_model: *const DataModel) -> TranslucentVerb {
+    // IDA 0x415694: `TranslucentVerb::C2(DataModel*)` — links the model.
+    TranslucentVerb { data_model }
 }
 
 // 0x415888 — __ZN3RBX10AnchorVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")]
 // was: RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)
-pub fn stub_0x415888() -> ! {
-    todo!("0x415888 RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")
+pub fn stub_0x415888(data_model: *const DataModel) -> AnchorVerb {
+    // IDA 0x415888: `AnchorVerb::C2(DataModel*)` — links the model.
+    AnchorVerb { data_model }
 }
 
 // 0x415a7c — __ZN3RBX13UnlockAllVerbC2EPNS_9DataModelE
 #[doc(alias = "RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")]
 // was: RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)
-pub fn stub_0x415a7c() -> ! {
-    todo!("0x415a7c RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")
+pub fn stub_0x415a7c(data_model: *const DataModel) -> UnlockAllVerb {
+    // IDA 0x415a7c: `UnlockAllVerb::C2(DataModel*)` — links the model.
+    UnlockAllVerb { data_model }
 }
 
 // 0x415bc4 — __ZN3RBX16SelectAllCommandC2EPNS_9DataModelE
