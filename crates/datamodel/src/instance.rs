@@ -2073,6 +2073,27 @@ pub struct PrismEnumPropDesc {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Reflection::PropDescriptor<PVInstance,
+/// CoordinateFrame>` (IDA `0x60939c`): same storage-only family treatment
+/// as `DataModelFuncDesc`.
+pub struct PVPropDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<PyramidInstance,
+/// NumSidesEnum>` (IDA `0x60a258`): same storage-only family treatment;
+/// the value suite rides a `PyramidInstance`-member batch.
+pub struct PyramidEnumPropDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Team` (IDA `0x60d5f0`): the team leaf; members land
+/// with the service batch.
+#[derive(Default)]
+pub struct Team {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::EventDesc<PartInstance, void(Instance),
 /// TouchedSignal>` (IDA `0x5ea1cc`): the descriptor identity plus the
 /// locally-connected generic slots; the `TouchedSignal` member lives in
@@ -48613,8 +48634,13 @@ pub fn stub_0x609324() -> ! {
 // 0x60939c — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x60939c() -> ! {
-    todo!("0x60939c RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x60939c(_desc: *mut PVPropDesc) {
+    // IDA 0x60939c: `PropDescriptor<PVInstance, CoordinateFrame>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x6093c0 — __ZN3RBX6FWBase4initINS_12FWPVInstanceEEEPT_S4_
@@ -48662,29 +48688,44 @@ pub fn stub_0x6097c8() -> ! {
 // 0x6098d4 — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEEC2IiMS2_FvRKS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::PropDescriptor<int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::PropDescriptor<int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x6098d4() -> ! {
-    todo!("0x6098d4 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::PropDescriptor<int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,int,void (RBX::PVInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6098d4() -> PVPropDesc {
+    // IDA 0x6098d4: `PropDescriptor<PVInstance, CoordinateFrame>::C2` —
+    // binds the member get/set pair plus the name and attribute words. Same
+    // shape as 0x5aa50c.
+    PVPropDesc { _opaque: () }
 }
 
 // 0x6099e0 — __ZN3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()
-pub fn stub_0x6099e0() -> ! {
-    todo!("0x6099e0 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+pub fn stub_0x6099e0(_desc: *mut PVPropDesc) {
+    // IDA 0x6099e0: `PropDescriptor<PVInstance, CoordinateFrame>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x609a0c — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const
-pub fn stub_0x609a0c() -> ! {
-    todo!("0x609a0c RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x609a0c(_desc: &PVPropDesc) -> bool {
+    // IDA 0x609a0c: `SetImpl<setter>::isReadOnly` — `MOVS R0, #0; BX LR`
+    // (disasm 0x609a0c-0x609a0e); a setter-only property still reports
+    // not-read-only.
+    false
 }
 
 // 0x609a10 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const
-pub fn stub_0x609a10() -> ! {
-    todo!("0x609a10 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x609a10(_desc: &PVPropDesc) -> bool {
+    // IDA 0x609a10: `SetImpl<setter>::isWriteOnly` — `MOVS R0, #1; BX LR`
+    // (disasm 0x609a10-0x609a12); a setter-only property is always
+    // write-only.
+    true
 }
 
 // 0x609a14 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -48725,22 +48766,36 @@ pub fn stub_0x60a030() -> ! {
 // 0x60a258 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()
-pub fn stub_0x60a258() -> ! {
-    todo!("0x60a258 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()")
+pub fn stub_0x60a258(_desc: *mut PyramidEnumPropDesc) {
+    // IDA 0x60a258: `EnumPropDescriptor<PyramidInstance, NumSidesEnum>::D1`
+    // — memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x60a27c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>(char const*,char const*,RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>(char const*,char const*,RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
-pub fn stub_0x60a27c() -> ! {
-    todo!("0x60a27c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::EnumPropDescriptor<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>(char const*,char const*,RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x60a27c() -> PyramidEnumPropDesc {
+    // IDA 0x60a27c: `EnumPropDescriptor<PyramidInstance, NumSidesEnum>::C2`
+    // — binds the member get/set pair plus the name and attribute words.
+    // Same shape as 0x608170.
+    PyramidEnumPropDesc { _opaque: () }
 }
 
 // 0x60a430 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()")]
 // was: RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()
-pub fn stub_0x60a430() -> ! {
-    todo!("0x60a430 RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::~EnumPropDescriptor()")
+pub fn stub_0x60a430(_desc: *mut PyramidEnumPropDesc) {
+    // IDA 0x60a430: `EnumPropDescriptor<PyramidInstance, NumSidesEnum>::D0`
+    // — vtable install plus memberwise teardown; dropping the box is the
+    // same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x60a45c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10isReadOnlyEv
@@ -48865,8 +48920,14 @@ pub fn stub_0x60a9c4() -> ! {
 // 0x60a9f8 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToIndex(RBX::PyramidInstance::NumSidesEnum)const")]
 // was: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToIndex(RBX::PyramidInstance::NumSidesEnum)const
-pub fn stub_0x60a9f8() -> ! {
-    todo!("0x60a9f8 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToIndex(RBX::PyramidInstance::NumSidesEnum)const")
+pub fn stub_0x60a9f8(value: i32) -> Option<usize> {
+    // IDA 0x60a9f8: `EnumDesc<Pyramid NumSides>::convertToIndex` — asserts
+    // `value>=0`, then the position search over the grounded C2 pairs
+    // (3, 4, 5, 6, 8, 10, 20 per 0x49bb88). Same shape as 0x6088ec.
+    debug_assert!(value >= 0, "0x60a9f8: value>=0");
+    PYRAMID_NUM_SIDES_ITEMS
+        .iter()
+        .position(|(v, _)| *v == value)
 }
 
 // 0x60aa68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi
@@ -48879,15 +48940,19 @@ pub fn stub_0x60aa68() -> ! {
 // 0x60aaa8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isReadOnly(void)const
-pub fn stub_0x60aaa8() -> ! {
-    todo!("0x60aaa8 RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isReadOnly(void)const")
+pub fn stub_0x60aaa8(_desc: &PyramidEnumPropDesc) -> bool {
+    // IDA 0x60aaa8: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0` (disasm 0x60aaa8); a get/set pair is never read-only.
+    false
 }
 
 // 0x60aaac — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isWriteOnly(void)const
-pub fn stub_0x60aaac() -> ! {
-    todo!("0x60aaac RBX::Reflection::PropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::GetSetImpl<RBX::PyramidInstance::NumSidesEnum (RBX::PyramidInstance::*)(void)const,void (RBX::PyramidInstance::*)(RBX::PyramidInstance::NumSidesEnum)>::isWriteOnly(void)const")
+pub fn stub_0x60aaac(_desc: &PyramidEnumPropDesc) -> bool {
+    // IDA 0x60aaac: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0` (disasm 0x60aaac); ...nor write-only.
+    false
 }
 
 // 0x60aab0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -49173,71 +49238,108 @@ pub fn stub_0x60d584() -> ! {
 // 0x60d5d8 — __ZN3RBX15ServiceProvider6createINS_5TeamsEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Teams * RBX::ServiceProvider::create<RBX::Teams>(RBX::Instance const*)")]
 // was: RBX::Teams * RBX::ServiceProvider::create<RBX::Teams>(RBX::Instance const*)
-pub fn stub_0x60d5d8() -> ! {
-    todo!("0x60d5d8 RBX::Teams * RBX::ServiceProvider::create<RBX::Teams>(RBX::Instance const*)")
+pub fn stub_0x60d5d8(instance: *const Instance) -> Option<SharedPtr<Team>> {
+    // IDA 0x60d5d8: `ServiceProvider::create<Teams>` — provider lookup, null
+    // yields empty, else default-construct + adopt. Same shape as 0x52d218.
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(Team::default()))
 }
 
 // 0x60d5f0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4TeamEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Team> RBX::Creatable<RBX::Instance>::create<RBX::Team>(void)")]
 // was: boost::shared_ptr<RBX::Team> RBX::Creatable<RBX::Instance>::create<RBX::Team>(void)
-pub fn stub_0x60d5f0() -> ! {
-    todo!("0x60d5f0 boost::shared_ptr<RBX::Team> RBX::Creatable<RBX::Instance>::create<RBX::Team>(void)")
+pub fn stub_0x60d5f0() -> SharedPtr<Team> {
+    // IDA 0x60d5f0: `Creatable::create<Team>` — `operator new` + default ctor
+    // + adoption; same collapse as 0xef04.
+    SharedPtr::new(Team::default())
 }
 
 // 0x60d6a0 — __ZN3RBX15ServiceProvider6createINS_8LightingEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Lighting * RBX::ServiceProvider::create<RBX::Lighting>(RBX::Instance const*)")]
 // was: RBX::Lighting * RBX::ServiceProvider::create<RBX::Lighting>(RBX::Instance const*)
-pub fn stub_0x60d6a0() -> ! {
-    todo!("0x60d6a0 RBX::Lighting * RBX::ServiceProvider::create<RBX::Lighting>(RBX::Instance const*)")
+pub fn stub_0x60d6a0(instance: *const Instance) -> Option<SharedPtr<Lighting>> {
+    // IDA 0x60d6a0: `ServiceProvider::create<Lighting>` — provider lookup,
+    // null yields empty, else default-construct + adopt. Same shape as
+    // 0x60d5d8.
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(Lighting::default()))
 }
 
 // 0x60d6b8 — __ZN5boost10shared_ptrIN3RBX4TeamEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Team>::shared_ptr<RBX::Team,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Team>::shared_ptr<RBX::Team,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x60d6b8() -> ! {
-    todo!("0x60d6b8 boost::shared_ptr<RBX::Team>::shared_ptr<RBX::Team,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x60d6b8(ptr: *mut Team, _deleter: CreatableInstanceDeleter) -> SharedPtr<Team> {
+    // IDA 0x60d6b8: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Team::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x60d868 — __ZN5boost6detail12shared_countC2IPN3RBX4TeamENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x60d868() -> ! {
-    todo!("0x60d868 boost::detail::shared_count::shared_count<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x60d868(ptr: *mut Team, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Team, CreatableInstanceDeleter> {
+    // IDA 0x60d868: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x60d970 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x60d970() -> ! {
-    todo!("0x60d970 boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x60d970(_block: *mut ControlBlockPd<Team, CreatableInstanceDeleter>) {
+    // IDA 0x60d970: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x60d974 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x60d974() -> ! {
-    todo!("0x60d974 boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x60d974(block: *mut ControlBlockPd<Team, CreatableInstanceDeleter>) {
+    // IDA 0x60d974: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x60d978 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x60d978() -> ! {
-    todo!("0x60d978 boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x60d978(_block: *mut ControlBlockPd<Team, CreatableInstanceDeleter>) {
+    // IDA 0x60d978: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x60d998 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x60d998() -> ! {
-    todo!("0x60d998 boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x60d998(block: *const ControlBlockPd<Team, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x60d998: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x60d9b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4TeamENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x60d9b0() -> ! {
-    todo!("0x60d9b0 boost::detail::sp_counted_impl_pd<RBX::Team *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x60d9b0(block: *const ControlBlockPd<Team, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x60d9b0: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x6104bc — __ZNK3RBX9ScreenGui12askSetParentEPKNS_8InstanceE
