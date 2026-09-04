@@ -23,8 +23,10 @@ pub fn stub_28e26c() -> ! {
 
 // 0x28e354 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_28e354() -> ! {
-    todo!("0x28e354 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_28e354() -> &'static crate::instance::LocalScriptCreator {
+    // IDA 0x28e354: `Creator::wasConstructed()` assert (line 282), then
+    // returns `creatorPrivate`; same shape as 0x2582c8.
+    &crate::instance::LOCAL_SCRIPT_CREATOR
 }
 
 // 0x28e3c8 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev
@@ -428,8 +430,10 @@ pub fn stub_2aa27c() -> ! {
 
 // 0x2aa4a8 — __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_2aa4a8() -> ! {
-    todo!("0x2aa4a8 __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_2aa4a8() -> &'static str {
+    // IDA 0x2aa4a8: `wasConstructed` assert (line 236), then tail-calls
+    // `Name::doDeclare<sLocalScript>()` — "LocalScript".
+    "LocalScript"
 }
 
 // 0x2aab10 — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E15isNullClassNameEv

@@ -1167,6 +1167,17 @@ pub struct LocalScript {
     _opaque: (),
 }
 
+/// Rust model of `FactoryProduct<LocalScript, ...>::Creator` (IDA `0x2aa4a8`
+/// area + `0x28e354` `creatorPrivate`, both in generated_172): stateless
+/// singleton; the C++ vtable/`isConstructed` machinery collapses into the
+/// process-static instance.
+pub struct LocalScriptCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x28e354`).
+pub static LOCAL_SCRIPT_CREATOR: LocalScriptCreator = LocalScriptCreator { _private: () };
+
 /// Rust model of `RBX::TestService` (IDA `0x440b48`): the test service;
 /// members land with the service batch.
 #[derive(Default)]
@@ -5199,67 +5210,188 @@ pub fn stub_0x28fd0c() -> ! {
     todo!("0x28fd0c boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>> const&)")
 }
 
+/// `RequestResult` behind `ScriptInformationProvider` (IDA `0x28fe44`): the
+/// fetch outcome word threaded through the `function5` call chain. The enum
+/// layout lands with the provider; the id rides here.
+pub type ScriptRequestResult = u32;
+
+/// Terminal invoker stored as the `ScriptInfoCallback` vtable (IDA `0x290010`
+/// via `stub_0x28fe44`): receives the retained weak links, the info string,
+/// and the `list5` call args. The 4th call arg (`float`) has no `arg<4>` slot
+/// in the bind and is skipped by the original too. Twin of
+/// `weak_thread_string_invoke` for the 5-arg bind shape.
+pub type ScriptInfoFn5 = fn(
+    model: &WeakPtr<DataModel>,
+    script: &WeakPtr<Script>,
+    info: &str,
+    result: ScriptRequestResult,
+    a: bool,
+    b: bool,
+    d: bool,
+);
+
+/// Nullable `function5<void, RequestResult, bool, bool, float, bool>` holding
+/// the ScriptInfo bind (IDA `0x28fe44`): empty is the cleared state (twin of
+/// `LuaDmCallback` for the 5-arg bind shape).
+#[derive(Default)]
+pub struct ScriptInfoCallback {
+    bind: Option<ScriptInfoBind>,
+    invoke: Option<ScriptInfoFn5>,
+}
+
+impl ScriptInfoCallback {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Stored-vtable `invoke` (IDA `0x290010`): forwards the five call args
+    /// into `list7::operator()` (IDA `0x290458`), i.e. `call` on the slot
+    /// (same doctrine as 0x282c00).
+    pub fn call(&self, result: ScriptRequestResult, a: bool, b: bool, c: f32, d: bool) {
+        if let (Some(bind), Some(invoke)) = (&self.bind, self.invoke) {
+            stub_0x290458(bind, result, a, b, c, d, invoke);
+        }
+    }
+}
+
+/// Local invoker stored as the `ScriptInfoCallback` vtable: retains the weak
+/// links plus the info string across the call; running the saved
+/// `ScriptInfoBind::func` is the helper dispatch (out of scope here), so the
+/// modeled half is the retain — twin of `weak_thread_string_invoke`.
+fn script_info_invoke(
+    model: &WeakPtr<DataModel>,
+    script: &WeakPtr<Script>,
+    info: &str,
+    result: ScriptRequestResult,
+    a: bool,
+    b: bool,
+    d: bool,
+) {
+    let _retained_model = WeakPtr::clone(model);
+    let _retained_script = WeakPtr::clone(script);
+    let _ = (info, result, a, b, d);
+}
+
 // 0x28fe44 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEEvT_
 #[doc(alias = "void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)")]
 // was: void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)
-pub fn stub_0x28fe44() -> ! {
-    todo!("0x28fe44 void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)")
+pub fn stub_0x28fe44(slot: &mut ScriptInfoCallback, bind: ScriptInfoBind, invoke: ScriptInfoFn5) {
+    // IDA 0x28fe44: `function5::assign_to<scriptinfo bind>` — builds the
+    // `storage3` temp (weak copies + string copy), installs
+    // `stored_vtable`, drops the temp. Storing the moved-in bind retains +
+    // copies the same way; storing `invoke` installs the vtable. The
+    // caller's temporaries release at scope end, which the by-value
+    // parameter's drop reproduces (twin of stub_0x282a48).
+    slot.bind = Some(bind);
+    slot.invoke = Some(invoke);
 }
 
 // 0x28fff4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x28fff4() -> ! {
-    todo!("0x28fff4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x28fff4(dst: &mut ScriptInfoBind, src: &ScriptInfoBind, op: FunctorOp) -> bool {
+    // IDA 0x28fff4: `functor_manager<scriptinfo bind>::manage` — clone ops
+    // memberwise-copy the bind (weak copies + string copy); destroy is a
+    // no-op on the small buffer; check-type always matches this single-type
+    // manager; get-type installs the typeinfo. Same doctrine as 0x4bf6c.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move | FunctorOp::GetType => {
+            *dst = src.clone();
+            true
+        }
+        FunctorOp::Destroy => true,
+        FunctorOp::CheckType => true,
+    }
 }
 
 // 0x290010 — __ZN5boost6detail8function26void_function_obj_invoker5INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEvSC_bbfbE6invokeERNS1_15function_bufferESC_bbfb
 #[doc(alias = "boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)")]
 // was: boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)
-pub fn stub_0x290010() -> ! {
-    todo!("0x290010 boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)")
+pub fn stub_0x290010(
+    slot: &ScriptInfoCallback,
+    result: ScriptRequestResult,
+    a: bool,
+    b: bool,
+    c: f32,
+    d: bool,
+) {
+    // IDA 0x290010: the stored-vtable `invoke` — wraps the five call args in
+    // `list5` and tail-calls `list7::operator()`, i.e. `call` on the slot
+    // (same doctrine as 0x282c00).
+    slot.call(result, a, b, c, d);
 }
 
 // 0x290058 — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x290058() -> ! {
-    todo!("0x290058 bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x290058(slot: &mut ScriptInfoCallback, bind: ScriptInfoBind, invoke: ScriptInfoFn5) -> bool {
+    // IDA 0x290058: `basic_vtable::assign_to` — retains/copies the bind into
+    // a temp, delegates to the small-buffer assign, releases the temp,
+    // reports success. The temp + release collapse; the stored copy is the
+    // same (same doctrine as 0x282c1c).
+    stub_0x28fe44(slot, bind, invoke);
+    true
 }
 
 // 0x2901fc — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x2901fc() -> ! {
-    todo!("0x2901fc bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x2901fc(slot: &mut ScriptInfoCallback, bind: ScriptInfoBind, invoke: ScriptInfoFn5) -> bool {
+    // IDA 0x2901fc: the `function_obj_tag` overload of 0x290058 — also copies
+    // the bind into the caller's buffer; same outcome (cf. 0x282da8).
+    stub_0x290058(slot, bind, invoke)
 }
 
 // 0x290398 — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x290398() -> ! {
-    todo!("0x290398 void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x290398(slot: &mut ScriptInfoCallback, bind: ScriptInfoBind, invoke: ScriptInfoFn5) {
+    // IDA 0x290398: `basic_vtable::assign_functor` — placement-copies the
+    // bind into the buffer and installs the manager; storing the moved-in
+    // bind is the same copy + install.
+    stub_0x28fe44(slot, bind, invoke);
 }
 
 // 0x290458 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEclIPFvS6_S9_SsNS4_25ScriptInformationProvider13RequestResultEbbbENS0_5list5IRSK_RbSP_RfSP_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)")]
 // was: void boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)
-pub fn stub_0x290458() -> ! {
-    todo!("0x290458 void boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)")
+pub fn stub_0x290458(
+    bind: &ScriptInfoBind,
+    result: ScriptRequestResult,
+    a: bool,
+    b: bool,
+    c: f32,
+    d: bool,
+    invoke: ScriptInfoFn5,
+) {
+    // IDA 0x290458: `list7::operator()` — retains the weak links (weak-count
+    // copies) and the info string, calls the terminal with the `list5` call
+    // args (the `float` 4th arg has no `arg<4>` slot and is skipped by the
+    // bind), then releases all three. Dropping `retained_*`/`info` here is
+    // the release (same doctrine as 0x282f78).
+    let retained_model = WeakPtr::clone(&bind.model);
+    let retained_script = WeakPtr::clone(&bind.script);
+    let info = bind.info.clone();
+    let _ = c;
+    invoke(&retained_model, &retained_script, &info, result, a, b, d);
 }
 
 // 0x290624 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x290624() -> ! {
-    todo!("0x290624 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x290624(dst: &mut ScriptInfoBind, src: &ScriptInfoBind, op: FunctorOp) -> bool {
+    // IDA 0x290624: `functor_manager<scriptinfo bind>::manager` (the
+    // `mpl::bool_<false>` heap variant) — same clone/destroy/check-type
+    // doctrine as 0x28fff4; the heap-box traffic collapses into the clone.
+    stub_0x28fff4(dst, src, op)
 }
 
 // 0x290768 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEED2Ev
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()")]
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()
-pub fn stub_0x290768() -> ! {
-    todo!("0x290768 boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()")
+pub fn stub_0x290768() {
+    // IDA 0x290768: `storage3` D2 — destroys the three values (two weak
+    // releases + string free). Rust Drop glue on `ScriptInfoValues` covers it.
 }
 
 // 0x290884 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEC2ES7_SA_SB_SD_SE_SF_SG_
@@ -43681,22 +43813,32 @@ pub fn stub_0x28e128() -> &'static str {
 // 0x28e138 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
-pub fn stub_0x28e138() -> ! {
-    todo!("0x28e138 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")
+pub fn stub_0x28e138() -> &'static str {
+    // IDA 0x28e138: one-shot `Name::declare<sBaseScript>` via
+    // `boost::call_once` (disasm 0x28e13a-0x28e154) then tail-calls
+    // `Name::doDeclare<sBaseScript>()` (B.W 0x28e15c) — "BaseScript".
+    "BaseScript"
 }
 
 // 0x28e160 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
-pub fn stub_0x28e160() -> ! {
-    todo!("0x28e160 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")
+pub fn stub_0x28e160() -> &'static str {
+    // IDA 0x28e160: ZThn32 `getClassName` — disasm byte-identical to 0x28e138
+    // (`call_once` declare + `doDeclare` tail-call); the `this -= 32` adjust
+    // collapses because `NonFactoryProduct` is the primary base here.
+    "BaseScript"
 }
 
 // 0x28e22c — __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x28e22c() -> ! {
-    todo!("0x28e22c __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x28e22c() -> &'static str {
+    // IDA 0x28e22c: `creator = static_getCreator()` then tail-calls
+    // `Creator::getClassName` shim (-> 0x2aa4a8 in generated_172), which
+    // returns `Name::doDeclare<sLocalScript>()` — "LocalScript".
+    let _creator = crate::generated_172::stub_28e354();
+    crate::generated_172::stub_2aa4a8()
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
