@@ -60,6 +60,40 @@ pub struct LoginViewState {
     /// Remaining outlet handles by ivar name.
     pub outlets: HashMap<String, Option<u32>>,
     pub view_loaded: bool,
+    /// `gotLoginFailedNotification:` error text (IDA 0x1ebd0..0x1ec0e).
+    pub login_error: Option<String>,
+    /// `getStoreMgr` polled (IDA 0x1eca4).
+    pub store_mgr_polled: bool,
+    /// `doLoginTransition` requested (IDA 0x1ecb6).
+    pub login_transition_requested: bool,
+    /// `showLoggingIn` ran (IDA 0x1ed44).
+    pub logging_in_shown: bool,
+    /// `aboutButton` hidden by `showLoggingIn` (IDA 0x1ed5a..0x1ed6c).
+    pub about_hidden: bool,
+    /// `loginActivityIndicator` shown (IDA 0x1edd2..0x1ede6).
+    pub activity_shown: bool,
+    /// `loginFieldViews.alpha = 0` animation end (IDA 0x1ee6a).
+    pub fields_alpha_zero: bool,
+    /// `playNowDidTouchUpInside:` ran (IDA 0x1f004).
+    pub play_now_clicked: bool,
+    /// Guest-mode logout path taken (IDA 0x1f080..0x1f090).
+    pub guest_mode: bool,
+    /// `setPageViewTracking:` page for guest mode (IDA 0x1f0b6).
+    pub guest_page_view: Option<String>,
+    /// `segueToHomeViewController:` animated flag (IDA 0x1f064).
+    pub home_segue_animated: Option<bool>,
+    /// `login:` credentials (IDA 0x1f154..0x1f19a).
+    pub login_attempt: Option<(String, String)>,
+    /// Fields sent `endEditing:` (IDA 0x1f104/0x1f122).
+    pub fields_editing_ended: bool,
+}
+
+/// `gotLoginFailedNotification:` block captures (`self`, error string;
+/// IDA 0x1ebc0..0x1ebd0, helpers 0x1ec44..0x1ec7e).
+#[derive(Debug, Clone, Default)]
+pub struct LoginErrorCaptures {
+    pub owner: Option<u32>,
+    pub error: Option<String>,
 }
 
 /// `handleSignupNotification:` block captures (`self`, username, password;
@@ -796,159 +830,244 @@ pub fn stub_0x1eb08(dst: &mut SignupCaptures, src: &SignupCaptures) {
 
 // 0x1eb38 — ___destroy_helper_block_227
 #[doc(alias = "___destroy_helper_block_227")]
-pub fn stub_0x1eb38() -> ! {
-    todo!("0x1eb38 ___destroy_helper_block_227")
+pub fn stub_0x1eb38(slot: &mut SignupCaptures) {
+    // IDA 0x1eb38 `__destroy_helper_block_227`: `_Block_object_dispose`
+    // release of the three captures (0x1eb42..0x1eb56; cf. 0x1aea8).
+    *slot = SignupCaptures::default();
 }
 
 // 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
-pub fn stub_0x1eb5c() -> ! {
-    todo!("0x1eb5c -[LoginViewController gotLoginFailedNotification:]")
+pub fn stub_0x1eb5c(state: &mut LoginViewState, error: &str) {
+    // IDA 0x1eb5c `-[LoginViewController gotLoginFailedNotification:]`:
+    // pulls `Error` from `userInfo` (0x1eb72) and runs the main-queue
+    // block (0x1ebc0..0x1ebd4 -> 0x1ebdc). The hop is synchronous here.
+    stub_0x1ebdc(state, error);
 }
 
 // 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
 #[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
-pub fn stub_0x1ebdc() -> ! {
-    todo!("0x1ebdc ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")
+pub fn stub_0x1ebdc(state: &mut LoginViewState, error: &str) {
+    // IDA 0x1ebdc `__50-[...gotLoginFailedNotification:]_block_invoke`:
+    // `stopShowLoggingIn` (0x1ebf0 -> 0x1eeac),
+    // `RobloxAlertWithMessage:` with the error (0x1ec0e), password cleared
+    // (0x1ec20..0x1ec24).
+    stub_0x1eeac(state);
+    state.login_error = Some(error.to_string());
+    state.password_text.clear();
 }
 
 // 0x1ec44 — ___copy_helper_block_234
 #[doc(alias = "___copy_helper_block_234")]
-pub fn stub_0x1ec44() -> ! {
-    todo!("0x1ec44 ___copy_helper_block_234")
+pub fn stub_0x1ec44(dst: &mut LoginErrorCaptures, src: &LoginErrorCaptures) {
+    // IDA 0x1ec44 `__copy_helper_block_234`: `_Block_object_assign`
+    // retain of the two captures (0x1ec54..0x1ec64; cf. 0x1eb08).
+    *dst = src.clone();
 }
 
 // 0x1ec68 — ___destroy_helper_block_235
 #[doc(alias = "___destroy_helper_block_235")]
-pub fn stub_0x1ec68() -> ! {
-    todo!("0x1ec68 ___destroy_helper_block_235")
+pub fn stub_0x1ec68(slot: &mut LoginErrorCaptures) {
+    // IDA 0x1ec68 `__destroy_helper_block_235`: `_Block_object_dispose`
+    // release of the two captures (0x1ec72..0x1ec7e; cf. 0x1eb38).
+    *slot = LoginErrorCaptures::default();
 }
 
 // 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_0x1ec84() -> ! {
-    todo!("0x1ec84 -[LoginViewController gotLoginSuccessfulNotification:]")
+pub fn stub_0x1ec84(state: &mut LoginViewState) {
+    // IDA 0x1ec84 `-[LoginViewController gotLoginSuccessfulNotification:]`:
+    // `getStoreMgr` (0x1eca4), `doLoginTransition` (0x1ecb6), then the
+    // main-queue block (0x1ece8..0x1ecfc -> 0x1ed04). The hop is
+    // synchronous here.
+    state.store_mgr_polled = true;
+    state.login_transition_requested = true;
+    stub_0x1ed04(state);
 }
 
 // 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
 #[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
-pub fn stub_0x1ed04() -> ! {
-    todo!("0x1ed04 ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+pub fn stub_0x1ed04(state: &mut LoginViewState) {
+    // IDA 0x1ed04 `__54-[...gotLoginSuccessfulNotification:]_block_invoke`:
+    // clears the `self+204` (password) field text (0x1ed04).
+    state.password_text.clear();
 }
 
 // 0x1ed30 — ___copy_helper_block_242
 #[doc(alias = "___copy_helper_block_242")]
-pub fn stub_0x1ed30() -> ! {
-    todo!("0x1ed30 ___copy_helper_block_242")
+pub fn stub_0x1ed30(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1ed30 `__copy_helper_block_242`: single
+    // `_Block_object_assign` retain (0x1ed36; cf. 0x1e2d8).
+    *dst = src.clone();
 }
 
 // 0x1ed3c — ___destroy_helper_block_243
 #[doc(alias = "___destroy_helper_block_243")]
-pub fn stub_0x1ed3c() -> ! {
-    todo!("0x1ed3c ___destroy_helper_block_243")
+pub fn stub_0x1ed3c(slot: &mut BlockCapture) {
+    // IDA 0x1ed3c `__destroy_helper_block_243`: single
+    // `_Block_object_dispose` release (0x1ed40; cf. 0x1e2e4).
+    *slot = BlockCapture::default();
 }
 
 // 0x1ed44 — -[LoginViewController showLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController showLoggingIn]")]
-pub fn stub_0x1ed44() -> ! {
-    todo!("0x1ed44 -[LoginViewController showLoggingIn]")
+pub fn stub_0x1ed44(state: &mut LoginViewState) {
+    // IDA 0x1ed44 `-[LoginViewController showLoggingIn]`: hides
+    // `aboutButton` (0x1ed5a..0x1ed6c), then the main-queue block
+    // (0x1ed9e..0x1edb2 -> 0x1edbc). The hop is synchronous here.
+    state.about_hidden = true;
+    state.logging_in_shown = true;
+    stub_0x1edbc(state);
 }
 
 // 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
-pub fn stub_0x1edbc() -> ! {
-    todo!("0x1edbc ___36-[LoginViewController showLoggingIn]_block_invoke")
+pub fn stub_0x1edbc(state: &mut LoginViewState) {
+    // IDA 0x1edbc `__36-[LoginViewController showLoggingIn:]_block_invoke`:
+    // unhides the activity indicator (0x1edd2..0x1ede6), then the 0.5s
+    // fade animation block (0x1ee24..0x1ee54 -> 0x1ee58, completion nil).
+    // The animation end state applies synchronously here.
+    state.activity_shown = true;
+    stub_0x1ee58(state);
 }
 
 // 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
 #[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
-pub fn stub_0x1ee58() -> ! {
-    todo!("0x1ee58 ___36-[LoginViewController showLoggingIn]_block_invoke_2")
+pub fn stub_0x1ee58(state: &mut LoginViewState) {
+    // IDA 0x1ee58 `__36-[LoginViewController showLoggingIn:]_block_invoke_2`:
+    // `loginFieldViews.alpha = 0` fade step (0x1ee6a).
+    state.fields_alpha_zero = true;
 }
 
 // 0x1ee84 — ___copy_helper_block_252
 #[doc(alias = "___copy_helper_block_252")]
-pub fn stub_0x1ee84() -> ! {
-    todo!("0x1ee84 ___copy_helper_block_252")
+pub fn stub_0x1ee84(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1ee84 `__copy_helper_block_252`: single
+    // `_Block_object_assign` retain (0x1ee8a; cf. 0x1ed30).
+    *dst = src.clone();
 }
 
 // 0x1ee90 — ___destroy_helper_block_253
 #[doc(alias = "___destroy_helper_block_253")]
-pub fn stub_0x1ee90() -> ! {
-    todo!("0x1ee90 ___destroy_helper_block_253")
+pub fn stub_0x1ee90(slot: &mut BlockCapture) {
+    // IDA 0x1ee90 `__destroy_helper_block_253`: single
+    // `_Block_object_dispose` release (0x1ee94; cf. 0x1ed3c).
+    *slot = BlockCapture::default();
 }
 
 // 0x1ee98 — ___copy_helper_block_257
 #[doc(alias = "___copy_helper_block_257")]
-pub fn stub_0x1ee98() -> ! {
-    todo!("0x1ee98 ___copy_helper_block_257")
+pub fn stub_0x1ee98(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1ee98 `__copy_helper_block_257`: single
+    // `_Block_object_assign` retain (0x1ee9e; cf. 0x1ee84).
+    *dst = src.clone();
 }
 
 // 0x1eea4 — ___destroy_helper_block_258
 #[doc(alias = "___destroy_helper_block_258")]
-pub fn stub_0x1eea4() -> ! {
-    todo!("0x1eea4 ___destroy_helper_block_258")
+pub fn stub_0x1eea4(slot: &mut BlockCapture) {
+    // IDA 0x1eea4 `__destroy_helper_block_258`: single
+    // `_Block_object_dispose` release (0x1eea8; cf. 0x1ee90).
+    *slot = BlockCapture::default();
 }
 
 // 0x1eeac — -[LoginViewController stopShowLoggingIn]
 // type: void __cdecl(LoginViewController *self, SEL)
 #[doc(alias = "-[LoginViewController stopShowLoggingIn]")]
-pub fn stub_0x1eeac() -> ! {
-    todo!("0x1eeac -[LoginViewController stopShowLoggingIn]")
+pub fn stub_0x1eeac(state: &mut LoginViewState) {
+    // IDA 0x1eeac `-[LoginViewController stopShowLoggingIn]`: runs the
+    // main-queue block (0x1eee2..0x1eef4 -> 0x1eefc). The hop is
+    // synchronous here.
+    stub_0x1eefc(state);
 }
 
 // 0x1eefc — ___40-[LoginViewController stopShowLoggingIn]_block_invoke
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke")]
-pub fn stub_0x1eefc() -> ! {
-    todo!("0x1eefc ___40-[LoginViewController stopShowLoggingIn]_block_invoke")
+pub fn stub_0x1eefc(state: &mut LoginViewState) {
+    // IDA 0x1eefc `__40-[...stopShowLoggingIn]_block_invoke`: unhides
+    // `aboutButton` (0x1ef12..0x1ef28), hides the activity indicator
+    // (0x1ef3a..0x1ef42), then the 0.5s restore animation block
+    // (0x1ef80..0x1efaa -> 0x1efac, completion nil). The end state applies
+    // synchronously here.
+    state.about_hidden = false;
+    state.activity_shown = false;
+    stub_0x1efac(state);
 }
 
 // 0x1efac — ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2
 #[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")]
-pub fn stub_0x1efac() -> ! {
-    todo!("0x1efac ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")
+pub fn stub_0x1efac(state: &mut LoginViewState) {
+    // IDA 0x1efac `__40-[...stopShowLoggingIn]_block_invoke_2`:
+    // `loginFieldViews.alpha = 1.0` restore step (0x1efbe).
+    state.fields_alpha_zero = false;
+    state.logging_in_hidden = true;
 }
 
 // 0x1efdc — ___copy_helper_block_260
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_260")]
-pub fn stub_0x1efdc() -> ! {
-    todo!("0x1efdc ___copy_helper_block_260")
+pub fn stub_0x1efdc(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1efdc `__copy_helper_block_260`: single
+    // `_Block_object_assign` retain (0x1efe2; cf. 0x1ee98).
+    *dst = src.clone();
 }
 
 // 0x1efe8 — ___destroy_helper_block_261
 #[doc(alias = "___destroy_helper_block_261")]
-pub fn stub_0x1efe8() -> ! {
-    todo!("0x1efe8 ___destroy_helper_block_261")
+pub fn stub_0x1efe8(slot: &mut BlockCapture) {
+    // IDA 0x1efe8 `__destroy_helper_block_261`: single
+    // `_Block_object_dispose` release (0x1efec; cf. 0x1eea4).
+    *slot = BlockCapture::default();
 }
 
 // 0x1eff0 — ___copy_helper_block_263
 #[doc(alias = "___copy_helper_block_263")]
-pub fn stub_0x1eff0() -> ! {
-    todo!("0x1eff0 ___copy_helper_block_263")
+pub fn stub_0x1eff0(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x1eff0 `__copy_helper_block_263`: single
+    // `_Block_object_assign` retain (0x1eff6; cf. 0x1efdc).
+    *dst = src.clone();
 }
 
 // 0x1effc — ___destroy_helper_block_264
 #[doc(alias = "___destroy_helper_block_264")]
-pub fn stub_0x1effc() -> ! {
-    todo!("0x1effc ___destroy_helper_block_264")
+pub fn stub_0x1effc(slot: &mut BlockCapture) {
+    // IDA 0x1effc `__destroy_helper_block_264`: single
+    // `_Block_object_dispose` release (0x1f000; cf. 0x1efe8).
+    *slot = BlockCapture::default();
 }
 
 // 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController playNowDidTouchUpInside:]")]
-pub fn stub_0x1f004() -> ! {
-    todo!("0x1f004 -[LoginViewController playNowDidTouchUpInside:]")
+pub fn stub_0x1f004(state: &mut LoginViewState) {
+    // IDA 0x1f004 `-[LoginViewController playNowDidTouchUpInside:]`:
+    // sets `userDidClickPlayNow` (0x1f024); with a nonempty password field
+    // runs `login:` (0x1f028..0x1f0ce -> 0x1f0d4), otherwise `doLogout` +
+    // `setPageViewTracking:@"Login/GuestMode"` + `segueToHomeViewController:1`
+    // (0x1f080..0x1f064).
+    state.play_now_clicked = true;
+    if !state.password_text.is_empty() {
+        stub_0x1f0d4(state);
+    } else {
+        state.guest_mode = true;
+        state.guest_page_view = Some("Login/GuestMode".to_string());
+        state.home_segue_animated = Some(true);
+    }
 }
 
 // 0x1f0d4 — -[LoginViewController login:]
 // type: void __cdecl(LoginViewController *self, SEL, id)
 #[doc(alias = "-[LoginViewController login:]")]
-pub fn stub_0x1f0d4() -> ! {
-    todo!("0x1f0d4 -[LoginViewController login:]")
+pub fn stub_0x1f0d4(state: &mut LoginViewState) {
+    // IDA 0x1f0d4 `-[LoginViewController login:]`: `endEditing:` on both
+    // fields (0x1f0f0..0x1f122), `showLoggingIn` (0x1f134 -> 0x1ed44),
+    // `doLoginWithUsername:password:` with the field texts (0x1f154..0x1f19a).
+    state.fields_editing_ended = true;
+    stub_0x1ed44(state);
+    state.login_attempt = Some((state.username_text.clone(), state.password_text.clone()));
 }
 
 // 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
