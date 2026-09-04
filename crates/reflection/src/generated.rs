@@ -2959,32 +2959,70 @@ pub fn stub_0x140b8(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) 
 
 // 0x140d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x140d4() -> ! {
-    todo!("0x140d4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x140d4(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, index: usize) -> bool {
+    // IDA 0x140d4: `if (*(enumdesc+40) > index)` load `values[index]`,
+    // `member(+44)->set(obj, v)`, return 1; else return 0 (decompiled 0x140d4).
+    // Same shape as the ResolutionPreset twin at 0x10528.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x14108 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x14108() -> ! {
-    todo!("0x14108 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x14108(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x14108: tail-jump to `member(+44)->get(obj)` (vf+8, decompiled 0x14108);
+    // the whole body is the forward. Same shape as the ResolutionPreset twin at
+    // 0x1055c.
+    (desc.access.get)(obj)
 }
 
 // 0x14110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x14110() -> ! {
-    todo!("0x14110 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x14110(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x14110: `find_if(items, bind(equalValue, _1, value))`; miss returns 0,
+    // hit runs `member(+44)->set(obj, value)` and returns 1 (decompiled 0x14110).
+    // Same shape as the ResolutionPreset twin at 0x10564.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x1415c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x1415c() -> ! {
-    todo!("0x1415c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x1415c(desc: &GraphicsModePropDesc, obj: &RenderSettingsItemState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x1415c: `v = member(+44)->get(obj)`, return
+    // `convertToItem(enumdesc@+48, &v)` (decompiled 0x1415c: `get` at 0x1416e,
+    // `convertToItem` at 0x1417a): the `Item*` for the value, or null. Same shape
+    // as the ResolutionPreset twin at 0x105b0.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x1417c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x1417c() -> ! {
-    todo!("0x1417c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x1417c(desc: &GraphicsModePropDesc, obj: &mut RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1417c (`Name` overload): `convertToValue(enumdesc@+48, name, &out)`
+    // (decompiled 0x1417c at 0x14192); success runs `member(+44)->set(obj, out)`
+    // (0x141a8) and returns 1, else 0. Same shape as the ResolutionPreset twin at
+    // 0x105d0.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x141b0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_
@@ -3030,14 +3068,21 @@ pub fn stub_0x14264() -> bool {
 
 // 0x14268 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x14268() -> ! {
-    todo!("0x14268 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x14268(access: &GraphicsModeAccess, obj: &RenderSettingsItemState) -> i32 {
+    // IDA 0x14268: null-to-member adjust (`a2-36`, 0x14270-0x14278), split the member
+    // pointer (offset/encoding at +4, 0x1426c/0x1427e-0x14284), virtual-adjust when the
+    // tag is odd (0x1428c-0x14290), call the getter (decompiled 0x14268). The
+    // adjust/encoding is member-pointer mechanics with no Rust equivalent; the
+    // observable effect is the get. Same shape as 0x106bc.
+    (access.get)(obj)
 }
 
 // 0x14294 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::GraphicsMode const&)const")]
-pub fn stub_0x14294() -> ! {
-    todo!("0x14294 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::GraphicsMode const&)const")
+pub fn stub_0x14294(access: &GraphicsModeAccess, obj: &mut RenderSettingsItemState, value: i32) {
+    // IDA 0x14294: same member-pointer dispatch as 0x14268 through the setter
+    // (decompiled 0x14294); the observable effect is the set. Same shape as 0x106e8.
+    (access.set)(obj, value);
 }
 
 // 0x16548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE13initSingletonEv
@@ -3147,14 +3192,19 @@ pub fn stub_0x16b04() -> &'static crate::enum_desc::EnumDesc {
 
 // 0x380a0 — __ZN10RobloxView16onPlaceIDChangedEPKN3RBX10Reflection18PropertyDescriptorE
 #[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x380a0() -> ! {
-    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x380a0() {
+    // IDA 0x380a0 (`RobloxView::onPlaceIDChanged`): empty body, bare `ret`
+    // (decompiled 0x380a0). No-op.
 }
 
 // 0x3d2f4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6insertEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_0x3d2f4() -> ! {
-    todo!("0x3d2f4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_0x3d2f4() {
+    // IDA 0x3d2f4 (`signal<void ()(PropertyDescriptor const*)>::insert`): FLog-gated
+    // asserts, mutex lock, slot-list splice into the intrusive list (decompiled
+    // 0x3d2f4). Cutover no-op: `rbx_core::signal::Signal` links slots in `connect`
+    // (see stub_0x3a278), so by the time the original calls `insert` the slot is
+    // already registered; the splice has no separate equivalent.
 }
 
 // 0x3d5b0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
@@ -3169,8 +3219,15 @@ pub fn stub_0x3d5b0() -> &'static parking_lot::Mutex<()> {
 
 // 0x3d848 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6removeEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_0x3d848() -> ! {
-    todo!("0x3d848 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_0x3d848<T>(slot: rbx_core::SharedPtr<T>) {
+    // IDA 0x3d848 (`signal<void ()(PropertyDescriptor const*)>::remove`): expired-check
+    // asserts (signal.h:261 at 0x3d85c-0x3d892, signal.h:284 at 0x3d8e6-0x3d924), list
+    // search + splice-out via `intrusive_ptr::operator=` (0x3d8c2-0x3d8e2), release.
+    // Cutover: the signal keeps only weak refs (see stub_0x3a278), so slot lifetime IS
+    // the `Arc`; releasing this link is the whole unlink+release.
+    // BUG: original at 0x3d848 keeps scanning past a missing item into the assert path
+    // only under `FLog::Asserts`; the cutover drops unconditionally.
+    drop(slot);
 }
 
 // 0x3d938 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot22safe_static_init_mutexEv
@@ -3226,14 +3283,74 @@ pub fn stub_0x257b5c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 
 // 0x257ebc — __ZN3RBX10Reflection7Variant14genericConvertINS_11HttpService15HttpContentTypeEEERT_v
 #[doc(alias = "RBX::HttpService::HttpContentType & RBX::Reflection::Variant::genericConvert<RBX::HttpService::HttpContentType>(void)")]
-pub fn stub_0x257ebc() -> ! {
-    todo!("0x257ebc RBX::HttpService::HttpContentType & RBX::Reflection::Variant::genericConvert<RBX::HttpService::HttpContentType>(void)")
+pub fn stub_0x257ebc(desc: &crate::enum_desc::EnumDesc, value: &crate::descriptor::Variant) -> i32 {
+    // IDA 0x257ebc (`Variant::genericConvert<HttpContentType>`): an `HttpContentType`
+    // payload via `any_cast` returns directly (0x257f10-0x257fb4); a string payload goes
+    // through `StringConverter<HttpContentType>::convertToValue` + `placement_any` store
+    // (0x257f48-0x257f8c); anything else throws `runtime_error("Unable to cast %s to
+    // %s")` (0x257fe4-0x25803c). `convertToValue` consults the same `EnumDesc` tables
+    // the `addPair` stubs fill (see stub_0x257b5c), so the cutover reads them directly;
+    // enums are ints, which is what the model returns.
+    match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        crate::descriptor::Variant::Text(s) => match desc.lookup_value(s) {
+            Some(v) => v,
+            None => panic!("Unable to cast {s} to HttpContentType (IDA 0x257ebc)"),
+        },
+        _ => panic!("Unable to cast non-string Variant to HttpContentType (IDA 0x257ebc)"),
+    }
 }
 
 // 0x2594ac — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_11HttpServiceEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x2594ac() -> ! {
-    todo!("0x2594ac RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+/// `RBX::HttpService` described state covered here (IDA 0x2594d2: the
+/// `DescribedBase` adjusts by -36 to this, same as `RenderSettingsItemState`).
+#[derive(Debug, Clone, Default)]
+pub struct HttpServiceState {
+    pub bool_prop: bool,
+}
+/// Get/set pair behind `BoundProp<bool, HttpService>` (IDA 0x2594ac `new(0x14)`
+/// member desc holding the member offset).
+pub struct HttpServiceBoolAccess {
+    pub get: Box<dyn Fn(&HttpServiceState) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut HttpServiceState, bool) + Send + Sync>,
+}
+/// `RBX::Reflection::BoundProp<bool, Mutable>` bound to `HttpService` (IDA 0x2594ac).
+pub struct HttpServiceBoolPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: HttpServiceBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+/// Canonical member access closing over `bool_prop`.
+pub fn http_service_bool_access() -> HttpServiceBoolAccess {
+    HttpServiceBoolAccess {
+        get: Box::new(|obj: &HttpServiceState| obj.bool_prop),
+        set: Box::new(|obj: &mut HttpServiceState, value: bool| {
+            obj.bool_prop = value;
+        }),
+    }
+}
+pub fn stub_0x2594ac(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> HttpServiceBoolPropDesc {
+    // IDA 0x2594ac: `Described<HttpService>::classDescriptor()` init (0x2594d2),
+    // base `TypedPropertyDescriptor<bool>` init (0x259534), temp release
+    // (0x25953c-0x25953e), vtable install (0x259552), member GetSetImpl `new(0x14)`
+    // holding the member offset. Same shape as the `Explosion` `BoundProp` ctors
+    // (0x4a60bc/0x4a64ac). The member offset has no Rust form; the canonical field
+    // access is installed.
+    HttpServiceBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: http_service_bool_access(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x25963c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE10isReadOnlyEv
@@ -3252,14 +3369,23 @@ pub fn stub_0x259640() -> bool {
 
 // 0x259644 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x259644() -> ! {
-    todo!("0x259644 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x259644(access: &HttpServiceBoolAccess, obj: &HttpServiceState) -> bool {
+    // IDA 0x259644: single byte load `*(member_offset(a1+8) + obj - 36)` (0x25964c) --
+    // a direct data-member binding with no virtual adjust. Same shape as 0x4a6674.
+    (access.get)(obj)
 }
 
 // 0x259650 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x259650() -> ! {
-    todo!("0x259650 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x259650(access: &HttpServiceBoolAccess, obj: &mut HttpServiceState, value: bool) {
+    // IDA 0x259650: null-to-`obj-36` adjust (0x259658-0x25965a), early-out when the bound
+    // byte already equals `v` (0x259668); else store (0x25966c) and, when the notify bits
+    // at +12/+16 are set, member-dispatch + `raisePropertyChanged` (0x25966e-0x25969a).
+    // The signal lives on `Instance` (datamodel side); the model keeps the
+    // compare-and-store. Same shape as stub_0x4a6680.
+    if (access.get)(obj) != value {
+        (access.set)(obj, value);
+    }
 }
 
 // 0x25a540 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
@@ -3347,8 +3473,21 @@ pub fn stub_0x8c4c() -> crate::enum_desc::EnumDesc {
 
 // 0xfe84 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0xfe84() -> ! {
-    todo!("0xfe84 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::EnumPropDescriptor<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>(char const*,char const*,RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0xfe84(name: &str, category: &str, attributes: u32, permissions: u32) -> crate::generated_shard_dh::ResolutionPresetPropDesc {
+    // IDA 0xfe84: `classDescriptor` + `Singleton<EnumDesc<ResolutionPreset>>`
+    // fetch, `PropertyDescriptor` base init, enum link stored at +40/+48, vtable
+    // install, member GetSetImpl `new(0x14)` holding the getter/setter pair at +44,
+    // then the read/write-only flag fixups (decompiled 0xfe84). Same shape as the
+    // `ExplosionEnumPropDesc` ctor at 0x4a5834. The getter/setter member pointers
+    // (a4..a7) have no Rust form; the canonical field access is installed.
+    crate::generated_shard_dh::ResolutionPresetPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: crate::generated_shard_dh::resolution_preset_access(),
+        enum_desc: crate::generated_shard_dh::resolution_preset_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x10038 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED0Ev
@@ -3371,26 +3510,40 @@ pub fn stub_0x10074() {
 
 // 0x10084 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10084() -> ! {
-    todo!("0x10084 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10084(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, a: &crate::generated_shard_dh::RenderSettingsItemState, b: &crate::generated_shard_dh::RenderSettingsItemState) -> bool {
+    // IDA 0x10084: `v = member(+44)->get(a)` then `return v == member->get(b)`
+    // (both through vf+8, decompiled 0x10084). Same as 0x4a5a34.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x100ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x100ac() -> ! {
-    todo!("0x100ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x100ac(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> crate::descriptor::Variant {
+    // IDA 0x100ac: `v = getEnumValue(obj)` (vf+68), out = `Variant(int, v)` with
+    // `Type<int>` + `placement_any<int>=` (decompiled 0x100ac). Same as 0x4a5a5c.
+    crate::descriptor::Variant::Int((desc.access.get)(obj))
 }
 
 // 0x100d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x100d0() -> ! {
-    todo!("0x100d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x100d0(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: &crate::descriptor::Variant) {
+    // IDA 0x100d0: int-typed payloads use `any_cast<int>` directly; anything else
+    // goes through `Variant::convert<int>`; then `setEnumValue(obj, v)` (vf+72,
+    // decompiled 0x100d0). Same as 0x4a5a80.
+    let v = match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x10220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x10220() -> ! {
-    todo!("0x10220 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x10220(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, src: &crate::generated_shard_dh::RenderSettingsItemState, dst: &mut crate::generated_shard_dh::RenderSettingsItemState) {
+    // IDA 0x10220: `v = member(+44)->get(src)` (vf+8), then `member->set(dst, v)`
+    // (vf+12, decompiled 0x10220). Same as 0x4a5bcc.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x10244 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14hasStringValueEv
@@ -3402,62 +3555,145 @@ pub fn stub_0x10244() -> bool {
 
 // 0x10248 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10248() -> ! {
-    todo!("0x10248 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10248(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> String {
+    // IDA 0x10248: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<ResolutionPreset>::convertToString(enumdesc@+48, v)` (decompiled
+    // 0x10248). Same as 0x4a5bf8.
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x1026c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x1026c() -> ! {
-    todo!("0x1026c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x1026c(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x1026c: `Name::lookup(&name, str)`, `convertToValue(enumdesc@+48, name,
+    // &out)`; on 1, `member(+44)->set(obj, out)` and return 1, else 0 (decompiled
+    // 0x1026c). `&str` folds the lookup step; `lookup_value` covers
+    // `convertToValue` including legacy names. Same as 0x4a5c1c.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x102ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x102ac() -> ! {
-    todo!("0x102ac RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x102ac(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x102ac: `v = member(+44)->get(obj)` (vf+8), `clearValue(pair)` then store
+    // int tag 5 + value, return 5 (decompiled 0x102ac). The tag is the Xml int type
+    // code; the payload is the enum int, which is what the model returns. Same as
+    // 0x4a5c5c.
+    (desc.access.get)(obj)
 }
 
 // 0x102cc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x102cc() -> ! {
-    todo!("0x102cc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x102cc(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: &crate::generated_shard_dh::XmlReadValue) -> bool {
+    // IDA 0x102cc: xsi:nil returns untouched; an int-valued element runs
+    // `setIntValue` and returns on success; a string-valued element runs
+    // `Name::lookup` + `convertToValue` then `member(+44)->set(obj, v)`; any other
+    // shape falls into `ReleaseAssert(false)` (`Reflection.h:359`, decompiled
+    // 0x102cc). A failed int mapping falls through to the string check and then
+    // the assert, so it panics too.
+    match value {
+        crate::generated_shard_dh::XmlReadValue::Nil => false,
+        crate::generated_shard_dh::XmlReadValue::Int(v) => {
+            match usize::try_from(*v)
+                .ok()
+                .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+            {
+                Some(mapped) if mapped != -1 => {
+                    (desc.access.set)(obj, mapped);
+                    true
+                }
+                _ => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x102cc)"),
+            }
+        }
+        crate::generated_shard_dh::XmlReadValue::Text(text) => match desc.enum_desc.lookup_value(text) {
+            Some(v) => {
+                (desc.access.set)(obj, v);
+                true
+            }
+            None => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x102cc)"),
+        },
+    }
 }
 
 // 0x1050c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x1050c() -> ! {
-    todo!("0x1050c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x1050c(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x1050c: `v = member(+44)->get(obj)` (vf+8), return
+    // `convertToIndex(enumdesc@+48, v)` (decompiled 0x1050c). Same as 0x4a5ebc.
+    stub_0x10604(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x10528 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x10528() -> ! {
-    todo!("0x10528 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x10528(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, index: usize) -> bool {
+    // IDA 0x10528: `if (*(enumdesc+40) > index)` load `values[index]`,
+    // `member(+44)->set(obj, v)`, return 1; else return 0 (decompiled 0x10528).
+    // Same as 0x4a5ed8.
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x1055c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x1055c() -> ! {
-    todo!("0x1055c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x1055c(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x1055c: tail-jump to `member(+44)->get(obj)` (vf+8, decompiled 0x1055c);
+    // the whole body is the forward. Same as 0x4a5f0c.
+    (desc.access.get)(obj)
 }
 
 // 0x10564 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x10564() -> ! {
-    todo!("0x10564 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x10564(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x10564: `find_if(items, bind(equalValue, _1, value))` (`__find_if` at
+    // 0x1058e with `EnumDescriptor::equalValue`); miss returns 0 (0x10590), hit runs
+    // `member(+44)->set(obj, value)` (0x105a2) and returns 1 (decompiled 0x10564).
+    // Same as 0x4a5f14.
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x105b0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x105b0() -> ! {
-    todo!("0x105b0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x105b0(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> Option<crate::enum_desc::EnumItem> {
+    // IDA 0x105b0: `v = member(+44)->get(obj)` (decompiled 0x105b0), return
+    // `convertToItem(enumdesc@+48, &v)`: the `Item*` for the value, or null.
+    // Same as 0x4a5f60.
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x105d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x105d0() -> ! {
-    todo!("0x105d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x105d0(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x105d0 (`Name` overload): `convertToValue(enumdesc@+48, name, &out)`
+    // (decompiled 0x105d0); success runs `member(+44)->set(obj, out)` and returns 1,
+    // else 0. Same as 0x4a5f80.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x10604 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_
@@ -3470,8 +3706,21 @@ pub fn stub_0x10604(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0x10674 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x10674() -> ! {
-    todo!("0x10674 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x10674(desc: &crate::generated_shard_dh::ResolutionPresetPropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: i32) -> bool {
+    // IDA 0x10674: `if (value >= 0)` (0x1067e) and `value < value_to_value.size`
+    // (0x10690) load `mapped = value_to_value[value]` (0x10692); `mapped == -1`
+    // returns 0 (0x1069c), else `member(+44)->set(obj, mapped)` (0x106a8) and
+    // return 1 (decompiled 0x10674). Same as 0x4a6028.
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x106b4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -3490,20 +3739,44 @@ pub fn stub_0x106b8() -> bool {
 
 // 0x106bc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x106bc() -> ! {
-    todo!("0x106bc RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x106bc(access: &crate::generated_shard_dh::ResolutionPresetAccess, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x106bc: null-to-`obj-36` member adjust (0x106be-0x106cc), split the member
+    // pointer (offset at +8, encoding at +4), virtual-adjust if the low bit is set
+    // (0x106e0-0x106e4), call the getter (decompiled 0x106bc). The adjust/encoding
+    // is member-pointer mechanics with no Rust equivalent; the observable effect is
+    // the get. Same as 0x4a6074.
+    (access.get)(obj)
 }
 
 // 0x106e8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_0x106e8() -> ! {
-    todo!("0x106e8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_0x106e8(access: &crate::generated_shard_dh::ResolutionPresetAccess, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: i32) {
+    // IDA 0x106e8: same member-pointer dispatch as 0x106bc through the setter at
+    // +12/+16 (decompiled 0x106e8); the observable effect is the set. Same as 0x4a6094.
+    (access.set)(obj, value);
 }
 
 // 0x1070c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x1070c() -> ! {
-    todo!("0x1070c RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x1070c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated_shard_dh::RenderSettingsItemState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated_shard_dh::RenderSettingsItemState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> crate::generated_shard_dh::RenderSettingsItemBoolPropDesc {
+    // IDA 0x1070c: `Described<CRenderSettingsItem>::classDescriptor()` init,
+    // `new(0x14)` member desc holding the (getter, setter) member-pointer pair,
+    // base `TypedPropertyDescriptor<bool>` init, temp release, vtable install
+    // (decompiled 0x1070c). Same shape as 0xfb74.
+    crate::generated_shard_dh::RenderSettingsItemBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: crate::generated_shard_dh::RenderSettingsItemBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x10820 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED0Ev
@@ -3528,20 +3801,42 @@ pub fn stub_0x10850() -> bool {
 
 // 0x10854 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10854() -> ! {
-    todo!("0x10854 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10854(access: &crate::generated_shard_dh::RenderSettingsItemBoolAccess, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> bool {
+    // IDA 0x10854: `a2 ? a2-36 : 0` base adjust, split the member-pointer pair at
+    // +4/+8, virtual-adjust when the low bit is set, call the getter (decompiled
+    // 0x10854). Same dispatch shape as 0x106bc; the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x10878 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x10878() -> ! {
-    todo!("0x10878 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x10878(access: &crate::generated_shard_dh::RenderSettingsItemBoolAccess, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: bool) {
+    // IDA 0x10878: same member-pointer dispatch as 0x10854 through the setter at
+    // +12/+16 (decompiled 0x10878); the observable effect is the set.
+    (access.set)(obj, value);
 }
 
 // 0x1089c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFivEMS2_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x1089c() -> ! {
-    todo!("0x1089c RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x1089c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&crate::generated_shard_dh::RenderSettingsItemState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut crate::generated_shard_dh::RenderSettingsItemState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> crate::generated_shard_dh::RenderSettingsItemIntPropDesc {
+    // IDA 0x1089c: `Described<CRenderSettingsItem>::classDescriptor()` init,
+    // `new(0x14)` member desc holding the (getter, setter) member-pointer pair,
+    // base `TypedPropertyDescriptor<int>` init, temp release, vtable install
+    // (decompiled 0x1089c). Same shape as 0xfb74.
+    crate::generated_shard_dh::RenderSettingsItemIntPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: crate::generated_shard_dh::RenderSettingsItemIntAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x109b0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE10isReadOnlyEv
@@ -3560,20 +3855,39 @@ pub fn stub_0x109b4() -> bool {
 
 // 0x109b8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x109b8() -> ! {
-    todo!("0x109b8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x109b8(access: &crate::generated_shard_dh::RenderSettingsItemIntAccess, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x109b8: null-to-`obj-36` member adjust, split the member pointer
+    // (offset at +8, encoding at +4), virtual-adjust if the low bit is set, call
+    // the getter (decompiled 0x109b8). Same shape as 0x106bc; the observable
+    // effect is the get.
+    (access.get)(obj)
 }
 
 // 0x109e4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_0x109e4() -> ! {
-    todo!("0x109e4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::GetSetImpl<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0x109e4(access: &crate::generated_shard_dh::RenderSettingsItemIntAccess, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: i32) {
+    // IDA 0x109e4: same member-pointer dispatch as 0x109b8 through the setter at
+    // +12/+16 (decompiled 0x109e4); the observable effect is the set.
+    (access.set)(obj, value);
 }
 
 // 0x10a08 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::EnumPropDescriptor<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>(char const*,char const*,RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x10a08() -> ! {
-    todo!("0x10a08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::EnumPropDescriptor<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>(char const*,char const*,RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x10a08(name: &str, category: &str, attributes: u32, permissions: u32) -> crate::generated_shard_dh::AntialiasingModePropDesc {
+    // IDA 0x10a08: `classDescriptor` + `Singleton<EnumDesc<AntialiasingMode>>`
+    // fetch, `PropertyDescriptor` base init, enum link stored at +40/+48, vtable
+    // install, member GetSetImpl `new(0x14)` holding the getter/setter pair at +44,
+    // then the read/write-only flag fixups (decompiled 0x10a08). Same shape as
+    // 0xfe84. The getter/setter member pointers (a4..a7) have no Rust form; the
+    // canonical field access is installed.
+    crate::generated_shard_dh::AntialiasingModePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: crate::generated_shard_dh::antialiasing_mode_access(),
+        enum_desc: crate::generated_shard_dh::antialiasing_mode_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x10bbc — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED0Ev
@@ -3596,26 +3910,40 @@ pub fn stub_0x10bf8() {
 
 // 0x10c08 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10c08() -> ! {
-    todo!("0x10c08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10c08(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, a: &crate::generated_shard_dh::RenderSettingsItemState, b: &crate::generated_shard_dh::RenderSettingsItemState) -> bool {
+    // IDA 0x10c08: `v = member(+44)->get(a)` then `return v == member->get(b)`
+    // (both through vf+8, decompiled 0x10c08). Same as stub_0x10084.
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x10c30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x10c30() -> ! {
-    todo!("0x10c30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x10c30(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> crate::descriptor::Variant {
+    // IDA 0x10c30: `v = getEnumValue(obj)` (vf+68), out = `Variant(int, v)` with
+    // `Type<int>` + `placement_any<int>=` (decompiled 0x10c30). Same as stub_0x100ac.
+    crate::descriptor::Variant::Int((desc.access.get)(obj))
 }
 
 // 0x10c54 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x10c54() -> ! {
-    todo!("0x10c54 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x10c54(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: &crate::descriptor::Variant) {
+    // IDA 0x10c54: int-typed payloads use `any_cast<int>` directly; anything else
+    // goes through `Variant::convert<int>`; then `setEnumValue(obj, v)` (vf+72,
+    // decompiled 0x10c54). Same as stub_0x100d0.
+    let v = match value {
+        crate::descriptor::Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x10da4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x10da4() -> ! {
-    todo!("0x10da4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x10da4(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, src: &crate::generated_shard_dh::RenderSettingsItemState, dst: &mut crate::generated_shard_dh::RenderSettingsItemState) {
+    // IDA 0x10da4: `v = member(+44)->get(src)` (vf+8), then `member->set(dst, v)`
+    // (vf+12, decompiled 0x10da4). Same as stub_0x10220.
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x10dc8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14hasStringValueEv
@@ -3627,53 +3955,121 @@ pub fn stub_0x10dc8() -> bool {
 
 // 0x10dcc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10dcc() -> ! {
-    todo!("0x10dcc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10dcc(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> String {
+    // IDA 0x10dcc: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<AntialiasingMode>::convertToString(enumdesc@+48, v)` (decompiled
+    // 0x10dcc). Same as stub_0x10248.
+    let v = (desc.access.get)(obj);
+    desc.enum_desc.lookup_name(v).unwrap_or_default().to_owned()
 }
 
 // 0x10df0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x10df0() -> ! {
-    todo!("0x10df0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x10df0(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, name: &str) -> bool {
+    // IDA 0x10df0: `Name::lookup(&name, str)`, `convertToValue(enumdesc@+48, name,
+    // &out)`; on 1, `member(+44)->set(obj, out)` and return 1, else 0 (decompiled
+    // 0x10df0). `&str` folds the lookup step; `lookup_value` covers
+    // `convertToValue` including legacy names. Same as stub_0x1026c.
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x10e30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x10e30() -> ! {
-    todo!("0x10e30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x10e30(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x10e30: `v = member(+44)->get(obj)` (vf+8), `clearValue(pair)` then store
+    // int tag 5 + value, return 5 (decompiled 0x10e30). The tag is the Xml int type
+    // code; the payload is the enum int, which is what the model returns. Same as
+    // stub_0x102ac.
+    (desc.access.get)(obj)
 }
 
 // 0x10e50 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x10e50() -> ! {
-    todo!("0x10e50 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x10e50(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &mut crate::generated_shard_dh::RenderSettingsItemState, value: &crate::generated_shard_dh::XmlReadValue) -> bool {
+    // IDA 0x10e50: xsi:nil returns untouched; an int-valued element runs
+    // `setIntValue` and returns on success; a string-valued element runs
+    // `Name::lookup` + `convertToValue` then `member(+44)->set(obj, v)`; any other
+    // shape falls into `ReleaseAssert(false)` (`Reflection.h:359`, decompiled
+    // 0x10e50). A failed int mapping falls through to the string check and then
+    // the assert, so it panics too. Same as stub_0x102cc.
+    match value {
+        crate::generated_shard_dh::XmlReadValue::Nil => false,
+        crate::generated_shard_dh::XmlReadValue::Int(v) => {
+            match usize::try_from(*v)
+                .ok()
+                .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+            {
+                Some(mapped) if mapped != -1 => {
+                    (desc.access.set)(obj, mapped);
+                    true
+                }
+                _ => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x10e50)"),
+            }
+        }
+        crate::generated_shard_dh::XmlReadValue::Text(text) => match desc.enum_desc.lookup_value(text) {
+            Some(v) => {
+                (desc.access.set)(obj, v);
+                true
+            }
+            None => panic!("false file: ../App/include/Reflection/Reflection.h line: 359 (IDA 0x10e50)"),
+        },
+    }
 }
 
 // 0x11090 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11090() -> ! {
-    todo!("0x11090 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11090(desc: &crate::generated_shard_dh::AntialiasingModePropDesc, obj: &crate::generated_shard_dh::RenderSettingsItemState) -> i32 {
+    // IDA 0x11090: `v = member(+44)->get(obj)` (vf+8), return
+    // `convertToIndex(enumdesc@+48, v)` (decompiled 0x11090). Same conversion as
+    // stub_0x11188 (the `AntialiasingMode` twin of stub_0x10604).
+    stub_0x11188(desc.enum_desc, (desc.access.get)(obj))
 }
 
 // 0x179f4 — __ZN3RBX9DataModel11uploadPlaceERKSsNS_8Instance10SaveFilterEN5boost8functionIFvNS5_10shared_ptrIKNS_10Reflection5TupleEEEEEENS6_IFvSsEEE
 // was: RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)
 #[doc(alias = "RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_0x179f4() -> ! {
-    todo!("0x179f4 RBX::DataModel::uploadPlace(std::string const&,RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
+/// `RBX::Reflection::Tuple` (IDA 0x17aac/0x17b80): argument tuple for bound calls.
+/// Layout unmodeled (holds `Variant` payloads in the original); only the shared
+/// ownership manipulated at 0x179f4/0x17aac/0x17b80 is cut over.
+#[derive(Debug, Clone, Default)]
+pub struct Tuple;
+pub fn stub_0x179f4(slot: &mut rbx_core::SharedPtr<Tuple>) {
+    // IDA 0x179f4 (`RBX::DataModel::uploadPlace`): `operator new(0xC)` holder init,
+    // fresh empty `Tuple` shared_ptr (0x17a2a), store into the member via the
+    // `shared_ptr<Tuple const>` copy-ctor (0x17a32), release the temp (0x17a64).
+    // The `DataModel` half lives in datamodel (which depends on this crate); the
+    // observable effect is the member reset to a fresh `Tuple`.
+    *slot = rbx_core::SharedPtr::new(Tuple);
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
 // was: rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
-pub fn stub_0x17aac() -> ! {
-    todo!("0x17aac rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")
+pub fn stub_0x17aac(ptr: rbx_core::SharedPtr<Tuple>) -> rbx_core::SharedPtr<Tuple> {
+    // IDA 0x17aac (`shared_ptr<Tuple>::shared_ptr` adopt ctor): store the pointer
+    // (`*a1 = a2`, 0x17ada), adopt the control block (`shared_count` at 0x17b08),
+    // release the previous one (0x17b16-0x17b1c). Exactly `Arc` clone-adopt: the
+    // clone takes the new count first, the overwritten old drops after.
+    // BUG: original at 0x17aac reads the incoming `shared_count` out-param `v15`
+    // before it is written when the caller passes garbage; the cutover takes the
+    // already-formed `Arc` instead, so the garbage path is unrepresentable.
+    rbx_core::SharedPtr::clone(&ptr)
 }
 
 // 0x17b80 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEC2IS3_EERKNS0_IT_EENS_6detail24sp_enable_if_convertibleIS7_S4_E4typeE
 // was: rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")]
-pub fn stub_0x17b80() -> ! {
-    todo!("0x17b80 rbx_core::SharedPtr<RBX::Reflection::Tuple const>::shared_ptr<RBX::Reflection::Tuple>(rbx_core::SharedPtr<RBX::Reflection::Tuple> const&,boost::detail::sp_enable_if_convertible<RBX::Reflection::Tuple,RBX::Reflection::Tuple const>::type)")
+pub fn stub_0x17b80(other: &rbx_core::SharedPtr<Tuple>) -> rbx_core::SharedPtr<Tuple> {
+    // IDA 0x17b80 (`shared_ptr<Tuple const>::shared_ptr<Tuple>` copy ctor): copy both
+    // words (`*a1 = *a2`, 0x17ba8-0x17bb4), bump the use count under the spinlock
+    // pool mutex (0x17bfe-0x17c14). Exactly `Arc` clone.
+    rbx_core::SharedPtr::clone(other)
 }
 
 // 0x31a10 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -3693,8 +4089,25 @@ pub fn stub_0x32520() {
 // 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
-pub fn stub_0x3a278() -> ! {
-    todo!("0x3a278 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")
+/// Opaque `RBX::Reflection::PropertyDescriptor` handle. Reflection only forwards it
+/// through the `PropertyDescriptor const*` signal (IDA 0x3a278/0x3d2f4); the real type
+/// is described through `ClassDescriptor` (cf. `InstanceHandle` in descriptor.rs).
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Default)]
+pub struct PropertyDescriptorHandle {
+    pub id: u32,
+}
+pub fn stub_0x3a278(
+    signal: &rbx_core::signal::Signal<PropertyDescriptorHandle>,
+) -> rbx_core::SharedPtr<dyn Fn(PropertyDescriptorHandle) + Send + Sync> {
+    // IDA 0x3a278 (`signal::connect<bind_t<mf1<RobloxView::onPlaceIDChanged>>>`):
+    // `new(28)` slot holding the bound member call (0x3a290-0x3a2ce), `signal::insert`
+    // (0x3a2d2), out-param `*a1 = slot`, weak-ref bump (0x3a2dc-0x3a2e0). The bound
+    // target is the 0x380a0 no-op. The slot is owned by the returned `Arc` (cf. the
+    // `ExplosionSlot` holders in descriptor.rs) while `Signal::connect` keeps the
+    // weak ref.
+    let slot = std::sync::Arc::new(|_: PropertyDescriptorHandle| stub_0x380a0());
+    signal.connect(std::sync::Arc::clone(&slot));
+    slot
 }
 
 // 0x3a930 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6CameraES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -3707,8 +4120,12 @@ pub fn stub_0x3a930() {
 // 0x3d508 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEEaSERKSC_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
-pub fn stub_0x3d508() -> ! {
-    todo!("0x3d508 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")
+pub fn stub_0x3d508<T>(slot: &mut rbx_core::SharedPtr<T>, other: &rbx_core::SharedPtr<T>) {
+    // IDA 0x3d508 (`intrusive_ptr<slot>::operator=`): add_ref the incoming ptr
+    // (0x3d55c), assign (0x3d564), release the old one (0x3d56c, decompiled 0x3d508).
+    // Exactly `Arc` clone-assign: the clone bumps the new count first, the
+    // overwritten old drops after.
+    *slot = rbx_core::SharedPtr::clone(other);
 }
 
 // 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
@@ -3728,8 +4145,11 @@ pub fn stub_0x3d754() {
 // 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x3d808() -> ! {
-    todo!("0x3d808 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d808() {
+    // IDA 0x3d808 (`callable<slot, bind_t<mf1<RobloxView::onPlaceIDChanged>>>::call`):
+    // single tail-call into the bind operator() (0x3d81a, decompiled 0x3d808), whose
+    // terminal target is the 0x380a0 no-op.
+    stub_0x380a0();
 }
 
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -3742,8 +4162,13 @@ pub fn stub_0x3d81c() {
 // 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
 // was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
-pub fn stub_0x3d830() -> ! {
-    todo!("0x3d830 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+pub fn stub_0x3d830() {
+    // IDA 0x3d830 (`bind_t<mf1<RobloxView::onPlaceIDChanged>>::operator()`):
+    // member-pointer adjust (`v3 >> 1` offset, low-bit virtual adjust at
+    // 0x3d840-0x3d844), call the mf1 target (decompiled 0x3d830). The target is
+    // `RobloxView::onPlaceIDChanged`, the 0x380a0 no-op; the adjust is
+    // member-pointer mechanics with no Rust equivalent.
+    stub_0x380a0();
 }
 
 // 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
@@ -3770,8 +4195,16 @@ pub fn stub_0x3e0b0() {
 // 0x46c18 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_0x46c18() -> ! {
-    todo!("0x46c18 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_0x46c18(
+    signal: &rbx_core::signal::Signal<PropertyDescriptorHandle>,
+) -> rbx_core::SharedPtr<dyn Fn(PropertyDescriptorHandle) + Send + Sync> {
+    // IDA 0x46c18 (`signal::connect<bind_t<objc CharacterMove ...>>`): same
+    // `new(28)` + `insert` + out-param + weak-bump shape as 0x3a278 (0x46c30-0x46c72).
+    // The bound target is an iOS `objc_msgSend` to `CharacterMove`, which has no
+    // cutover form; the registration itself is preserved as a no-op slot.
+    let slot = std::sync::Arc::new(|_: PropertyDescriptorHandle| {});
+    signal.connect(std::sync::Arc::clone(&slot));
+    slot
 }
 
 // 0x46c8c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
@@ -3791,8 +4224,11 @@ pub fn stub_0x46d38() {
 // 0x46de8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x46de8() -> ! {
-    todo!("0x46de8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x46de8(callable: &PropertySignalSlotFn, arg: PropertyDescriptorHandle) {
+    // IDA 0x46de8 (`callable<slot, objc-bind>::call`): dispatches the stored triple
+    // `(a1+16)(*(a1+20), *(a1+24), a2)` (decompiled 0x46de8). The triple is the opaque
+    // `invoke`; dispatch runs it, and an empty slot panics like 0x4a158.
+    stub_0x4a158(callable, arg);
 }
 
 // 0x46df8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -3819,15 +4255,30 @@ pub fn stub_0x46eb4() {
 // 0x4a04c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_EC2IPS9_EERKSD_T_
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")]
-pub fn stub_0x4a04c() -> ! {
-    todo!("0x4a04c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")
+/// `rbx::signals::...::slot` callable holding one `PropertyDescriptor` callback
+/// (IDA 0x4a04c/0x4a148/0x46de8/0x4f640/0x4a27c): the stored bind triple or
+/// `boost::function1` behind the slot vtable. `None` is an empty `function1`.
+#[derive(Clone)]
+pub struct PropertySignalSlotFn {
+    pub invoke: Option<rbx_core::SharedPtr<dyn Fn(PropertyDescriptorHandle) + Send + Sync>>,
+}
+pub fn stub_0x4a04c(
+    invoke: rbx_core::SharedPtr<dyn Fn(PropertyDescriptorHandle) + Send + Sync>,
+) -> PropertySignalSlotFn {
+    // IDA 0x4a04c (`callable<slot, function1<...>>::callable`): vtable installs
+    // (off_12243E8/1224404 at 0x4a094-0x4a09a), `assign_to_own(a1+4, a2)` stores the
+    // function (0x4a0cc). Cutover: the vtable is the type itself; ownership is the
+    // `Arc`.
+    PropertySignalSlotFn { invoke: Some(invoke) }
 }
 
 // 0x4a148 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4a148() -> ! {
-    todo!("0x4a148 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4a148(callable: &PropertySignalSlotFn, arg: PropertyDescriptorHandle) {
+    // IDA 0x4a148 (`callable<slot, function1<...>>::call`): single jump into
+    // `function1::operator()(a1+16)` (decompiled 0x4a148), which throws on empty.
+    stub_0x4a158(callable, arg);
 }
 
 // 0x4a150 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
@@ -3840,36 +4291,80 @@ pub fn stub_0x4a150() {
 // 0x4a158 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_
 // was: boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")]
-pub fn stub_0x4a158() -> ! {
-    todo!("0x4a158 boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")
+pub fn stub_0x4a158(callable: &PropertySignalSlotFn, arg: PropertyDescriptorHandle) {
+    // IDA 0x4a158 (`function1<void, PropertyDescriptor const*>::operator()`): null
+    // check (0x4a1a6) throws `bad_function_call` (0x4a1e0-0x4a20e); else the indirect
+    // call through the manager invoker (0x4a1b8).
+    match &callable.invoke {
+        Some(invoke) => invoke(arg),
+        None => panic!("boost::bad_function_call (IDA 0x4a158)"),
+    }
 }
 
 // 0x4a21c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x4a21c() -> ! {
-    todo!("0x4a21c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+/// `functor_manager<bind_t<objc...>>` type tag (IDA 0x4a21c writes the bind_t
+/// typeinfo at 0x4a274-0x4a278 and strcmp-checks it at 0x4a256-0x4a264).
+pub const OBJC_BIND_TYPE_NAME: &str = "N5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS0_5list3INS0_5valueIS3_EENSD_IS4_EENS_3argILi1EEEEEEE";
+pub fn stub_0x4a21c(slot: &PropertySignalSlotFn, dest: Option<&mut PropertySignalSlotFn>, op: u32, type_name: &str) {
+    // IDA 0x4a21c (`functor_manager<objc-bind>::manage`): `a3 <= 1` with a dest copies
+    // the functor triple (0x4a22c-0x4a236); `a3 == 2` returns (0x4a23e); `a3 == 3`
+    // strcmp-checks the stored type name, keeping on match and zeroing the functor word
+    // on mismatch (0x4a256-0x4a264); `a3 == 4` and anything higher writes the bind_t
+    // typeinfo (0x4a274-0x4a278), which has no Rust form. Copy is an `Arc` clone; the
+    // model holds a single concrete bind type, so the check is a name compare.
+    match op {
+        0 | 1 => {
+            if let Some(d) = dest {
+                d.invoke = slot.invoke.clone();
+            }
+        }
+        2 => {}
+        3 => {
+            if let Some(d) = dest {
+                if type_name != OBJC_BIND_TYPE_NAME {
+                    d.invoke = None;
+                }
+            }
+        }
+        _ => {}
+    }
 }
 
 // 0x4a27c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")]
-pub fn stub_0x4a27c() -> ! {
-    todo!("0x4a27c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")
+pub fn stub_0x4a27c(callable: &PropertySignalSlotFn, arg: PropertyDescriptorHandle) {
+    // IDA 0x4a27c (`void_function_obj_invoker1<objc-bind>::invoke`): calls the stored
+    // triple with its two bound words plus the call arg (decompiled 0x4a27c). The bound
+    // words are captured in the opaque `invoke`; an empty slot panics like 0x4a158.
+    stub_0x4a158(callable, arg);
 }
 
 // 0x4bfdc — __ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEE5clearEv
 // was: boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")]
-pub fn stub_0x4bfdc() -> ! {
-    todo!("0x4bfdc boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")
+pub fn stub_0x4bfdc(callable: &mut PropertySignalSlotFn) {
+    // IDA 0x4bfdc (`function1<void, PropertyDescriptor const*>::clear`): destroys the
+    // manager-held functor unless the small-object tag is set (0x4bfe6-0x4c000), then
+    // zeroes the word and returns 0 (0x4bc004-0x4bc002). Cutover: drop the `Arc`.
+    callable.invoke = None;
 }
 
 // 0x4f470 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_0x4f470() -> ! {
-    todo!("0x4f470 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_0x4f470(
+    signal: &rbx_core::signal::Signal<PropertyDescriptorHandle>,
+) -> rbx_core::SharedPtr<dyn Fn(PropertyDescriptorHandle) + Send + Sync> {
+    // IDA 0x4f470 (`signal::connect<bind_t<objc JumpButton ...>>`): same
+    // `new(28)` + `insert` + out-param + weak-bump shape as 0x3a278 (0x4f488-0x4f4ca).
+    // The bound target is an iOS `objc_msgSend` to `JumpButton`, which has no cutover
+    // form; the registration itself is preserved as a no-op slot.
+    let slot = std::sync::Arc::new(|_: PropertyDescriptorHandle| {});
+    signal.connect(std::sync::Arc::clone(&slot));
+    slot
 }
 
 // 0x4f4e4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
@@ -3889,8 +4384,11 @@ pub fn stub_0x4f590() {
 // 0x4f640 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4f640() -> ! {
-    todo!("0x4f640 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4f640(callable: &PropertySignalSlotFn, arg: PropertyDescriptorHandle) {
+    // IDA 0x4f640 (`callable<slot, objc-bind(JumpButton)>::call`): dispatches the stored
+    // triple `(a1+16)(*(a1+20), *(a1+24), a2)` (decompiled 0x4f640), same layout as
+    // 0x46de8. The triple is the opaque `invoke`; an empty slot panics like 0x4a158.
+    stub_0x4a158(callable, arg);
 }
 
 // 0x4f650 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -3917,15 +4415,30 @@ pub fn stub_0x4f70c() {
 // 0x256d10 — __ZN3RBX11HttpService10encodeJSONEN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsNS_10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEE
 // was: RBX::HttpService::encodeJSON(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
 #[doc(alias = "RBX::HttpService::encodeJSON(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
-pub fn stub_0x256d10() -> ! {
-    todo!("0x256d10 RBX::HttpService::encodeJSON(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_0x256d10(http_api_enabled: bool, table_body: &str) -> String {
+    // IDA 0x256d10 (`HttpService::encodeJSON`): `if (!DFFlag::UserHttpAPIEnabled)` throw
+    // `runtime_error("API disabled")` (0x256d68-0x256e52); else stringstream brace-newline +
+    // `JsonWriter::writeTableEntries` + newline-brace + `str()` (0x256d96-0x256dd2). Table
+    // rendering is `JsonWriter`'s own EA; the caller supplies the rendered body.
+    if !http_api_enabled {
+        panic!("API disabled (IDA 0x256d10)");
+    }
+    format!("{{\n{table_body}\n}}")
 }
 
 // 0x257828 — __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET_
 // was: void RBX::Reflection::resume_adapter<std::string>(boost::function<void ()(RBX::Reflection::Variant)>,std::string)
 #[doc(alias = "void RBX::Reflection::resume_adapter<std::string>(boost::function<void ()(RBX::Reflection::Variant)>,std::string)")]
-pub fn stub_0x257828() -> ! {
-    todo!("0x257828 void RBX::Reflection::resume_adapter<std::string>(boost::function<void ()(RBX::Reflection::Variant)>,std::string)")
+pub fn stub_0x257828(
+    resume: &rbx_core::SharedPtr<dyn Fn(crate::descriptor::Variant) + Send + Sync>,
+    value: &str,
+) {
+    // IDA 0x257828 (`resume_adapter<string>`): copy `*a2` into the
+    // `typed_holder<string>` singleton staging (0x25785e-0x257882), invoke
+    // `function1<Variant>::operator()` with the staged pair (0x2578d4), then release
+    // the staging (0x2578da-0x2578e6). The holder dance stages the string across the
+    // call; the observable effect is resuming with the string payload.
+    resume(crate::descriptor::Variant::Text(value.to_owned()));
 }
 
 // 0x257a10 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED1Ev
@@ -3952,15 +4465,69 @@ pub fn stub_0x258800() {
 // 0x2596a0 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EEC2EMS2_FSsSI_EPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x2596a0() -> ! {
-    todo!("0x2596a0 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+/// `shared_ptr<unordered_map<string, Variant> const>` (IDA 0x2596a0/0x259bfc):
+/// `boost::unordered_map` becomes `HashMap` per the cutover rules; ownership is the
+/// shared pointer.
+pub type HttpVarMap = std::collections::HashMap<String, crate::descriptor::Variant>;
+/// One `SignatureDescriptor` argument (IDA 0x259838/0x259f34 `addArgument`).
+pub struct HttpFuncArg {
+    pub name: String,
+    pub type_name: &'static str,
+}
+/// `BoundFuncDesc<HttpService, string(map), 1>` (IDA 0x2596a0): string-returning,
+/// one table argument.
+pub struct HttpTableFuncDesc {
+    pub name: String,
+    pub category: String,
+    /// Member-function pair stored at +40 (IDA 0x2596bc `__PAIR64__`; opaque: member
+    /// pointers have no Rust form).
+    pub member: (usize, usize),
+    pub return_type: &'static str,
+    pub args: Vec<HttpFuncArg>,
+    /// Scoped default for arg 1 from +48 (`void` in the original = no default).
+    pub arg_default: Option<rbx_core::SharedPtr<HttpVarMap>>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+pub fn stub_0x2596a0(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HttpTableFuncDesc {
+    // IDA 0x2596a0: `Described<HttpService>::classDescriptor()` + `FunctionDescriptor`
+    // base init, member pair at +40, `declareSignature` fixing a string return with one
+    // table argument (same inline shape as 0x259dbc at 0x259e7e), vtable install.
+    // Same shape as the `CoreGuiBoundFuncDesc` ctor (see stub_0x811644).
+    let mut desc = HttpTableFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        return_type: "string",
+        args: Vec::new(),
+        arg_default: None,
+        permissions,
+        attributes,
+    };
+    stub_0x259838(&mut desc, arg_name);
+    desc
 }
 
 // 0x259838 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE16declareSignatureEPKcS7_
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x259838() -> ! {
-    todo!("0x259838 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x259838(desc: &mut HttpTableFuncDesc, arg_name: &str) {
+    // IDA 0x259838: return type fixed to `Type::getSingleton<string>` at +28
+    // (0x259848), `Name::declare(arg name)` (0x259852), argument type
+    // `Type::getSingleton<shared_ptr<map>>` (0x259854), `SignatureDescriptor::addArgument`
+    // (0x259866). Same shape as stub_0x811814.
+    desc.return_type = "string";
+    desc.args.push(HttpFuncArg {
+        name: arg_name.to_owned(),
+        type_name: "SharedPtr<Map<String,Variant>>",
+    });
 }
 
 // 0x259868 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EED0Ev
@@ -4008,36 +4575,118 @@ pub fn stub_0x258dd0() {
 // 0x259984 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x259984() -> ! {
-    todo!("0x259984 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x259984(
+    desc: &HttpTableFuncDesc,
+    obj: Option<&HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    invoke: &dyn Fn(&HttpServiceState, &rbx_core::SharedPtr<HttpVarMap>) -> String,
+) -> crate::descriptor::Variant {
+    // IDA 0x259984 (`BoundFuncDesc<..., string(map), 1>::execute`): `instance = a2 ?
+    // a2-36 : 0` (0x2599d4-0x2599d6; null stays null), `getArg<map, 1>` (0x2599ee),
+    // `Call1Helper::call(instance, member@+40, args)` (0x259a02), temp release
+    // (0x259a08-0x259a10). The member dispatch is elided (no Rust form for
+    // member-function pointers); `invoke` is the bound member function.
+    let _ = desc.member;
+    let obj = obj.expect("BoundFuncDesc::execute on null instance (IDA 0x259984)");
+    let arg = stub_0x259bfc(args, desc.arg_default.as_ref());
+    stub_0x259a6c(obj, invoke, &arg)
 }
 
 // 0x259a6c — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEESI_SsE4callEPS2_SK_RS7_RKSI_
 // was: RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
-pub fn stub_0x259a6c() -> ! {
-    todo!("0x259a6c RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")
+pub fn stub_0x259a6c(
+    obj: &HttpServiceState,
+    invoke: &dyn Fn(&HttpServiceState, &rbx_core::SharedPtr<HttpVarMap>) -> String,
+    arg: &rbx_core::SharedPtr<HttpVarMap>,
+) -> crate::descriptor::Variant {
+    // IDA 0x259a6c (`Call1Helper<..., string(map), map, string>::call`): this-adjust
+    // (`a1 + (a3 >> 1)`) with virtual dispatch when the member tag is odd
+    // (0x259abe-0x259acc), then `v = call(this, arg)` (0x259af2); out gets
+    // `Type::getSingleton<string>` and `placement_any<string> = v` (0x259afe-0x259b0a).
+    // Adjustment/dispatch are member-pointer mechanics with no Rust form; the call and
+    // the string `Variant` wrap are the observable behavior. Same shape as stub_0xfe54.
+    crate::descriptor::Variant::Text(invoke(obj, arg))
 }
 
 // 0x259bfc — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE
 // was: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)
 #[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_0x259bfc() -> ! {
-    todo!("0x259bfc rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_0x259bfc(
+    args: &[crate::descriptor::Variant],
+    default: Option<&rbx_core::SharedPtr<HttpVarMap>>,
+) -> rbx_core::SharedPtr<HttpVarMap> {
+    // IDA 0x259bfc (`ArgHelper::getArg<map, 1>`): arg 1 present as a map-typed Variant
+    // goes through `convert<map>` (0x259c36-0x259cb2); otherwise the +48 default wins,
+    // and a missing default throws `runtime_error("Argument 1 missing or nil")`
+    // (0x259cce-0x259d86). `descriptor::Variant` has no map payload, so a present arg
+    // can never satisfy the convert; the cutover honors the presence check, then
+    // default-or-throw.
+    if args.is_empty() {
+        // No arg 1 at all: straight to the default/throw path (0x259c36 fallthrough).
+    }
+    match default {
+        Some(d) => rbx_core::SharedPtr::clone(d),
+        None => panic!("Argument 1 missing or nil (IDA 0x259bfc)"),
+    }
 }
 
 // 0x259dbc — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EEC2EMS2_FSI_SsEPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x259dbc() -> ! {
-    todo!("0x259dbc RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+/// `BoundFuncDesc<HttpService, map(string), 1>` (IDA 0x259dbc): map-returning,
+/// one string argument.
+pub struct HttpStringFuncDesc {
+    pub name: String,
+    pub category: String,
+    /// Member-function pair stored at +40 (IDA 0x259dd8 `__PAIR64__`; opaque).
+    pub member: (usize, usize),
+    pub return_type: &'static str,
+    pub args: Vec<HttpFuncArg>,
+    /// Scoped default for arg 1 from +48 (`void` in the original = no default).
+    pub arg_default: Option<String>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+pub fn stub_0x259dbc(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HttpStringFuncDesc {
+    // IDA 0x259dbc: `Described<HttpService>::classDescriptor()` (0x259df4) +
+    // `FunctionDescriptor` base init (0x259e14), vtable install (0x259e2a), member pair
+    // at +40 (0x259e2e), `declareSignature` fixing a map return with one string argument
+    // (0x259e7e). Same shape as stub_0x2596a0 with the types swapped.
+    let mut desc = HttpStringFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        return_type: "SharedPtr<Map<String,Variant>>",
+        args: Vec::new(),
+        arg_default: None,
+        permissions,
+        attributes,
+    };
+    stub_0x259f34(&mut desc, arg_name);
+    desc
 }
 
 // 0x259f34 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE16declareSignatureEPKcS7_
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x259f34() -> ! {
-    todo!("0x259f34 RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x259f34(desc: &mut HttpStringFuncDesc, arg_name: &str) {
+    // IDA 0x259f34: return type fixed to `Type::getSingleton<shared_ptr<map>>`,
+    // `Name::declare(arg name)`, argument type `Type::getSingleton<string>`,
+    // `SignatureDescriptor::addArgument`. Same shape as stub_0x259838 with the types
+    // swapped.
+    desc.return_type = "SharedPtr<Map<String,Variant>>";
+    desc.args.push(HttpFuncArg {
+        name: arg_name.to_owned(),
+        type_name: "string",
+    });
 }
 
 // 0x259f64 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED0Ev
@@ -4050,8 +4699,29 @@ pub fn stub_0x259f64() {
 // 0x25a030 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x25a030() -> ! {
-    todo!("0x25a030 RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x25a030(
+    desc: &HttpStringFuncDesc,
+    obj: Option<&HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    invoke: &dyn Fn(&HttpServiceState, &str) -> rbx_core::SharedPtr<HttpVarMap>,
+) -> rbx_core::SharedPtr<HttpVarMap> {
+    // IDA 0x25a030 (`BoundFuncDesc<..., map(string), 1>::execute`): instance adjust
+    // (null stays null), `getArg<string, 1>` (0x25a09c), `Call1Helper::call` with the
+    // member pair (0x25a0b0), temp release. String args come from `Text` payloads; a
+    // non-text or missing arg falls back to the +48 default, else
+    // `runtime_error("Argument 1 missing or nil")` (same shape as 0x259bfc). The member
+    // dispatch is elided; `invoke` is the bound member function. The map return has no
+    // `Variant` payload in the cutover, so it is returned directly.
+    let _ = desc.member;
+    let obj = obj.expect("BoundFuncDesc::execute on null instance (IDA 0x25a030)");
+    let text: &str = match args.first() {
+        Some(crate::descriptor::Variant::Text(s)) => s,
+        _ => match &desc.arg_default {
+            Some(d) => d,
+            None => panic!("Argument 1 missing or nil (IDA 0x25a030)"),
+        },
+    };
+    invoke(obj, text)
 }
 
 // 0x25a170 — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_
