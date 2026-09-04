@@ -21,25 +21,19 @@ pub fn stub_0xad7534() -> ! {
 // type: int __fastcall(RBX::Network::InterpolatingPhysicsReceiver::Job *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::InterpolatingPhysicsReceiver::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network28InterpolatingPhysicsReceiver3Job16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xade270() -> ! {
-    todo!("0xade270 RBX::Network::InterpolatingPhysicsReceiver::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_ade270 as stub_0xade270;
 
 // 0xb0d0d8 — __ZN3RBX7Network10Replicator11SendDataJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::Replicator::SendDataJob *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::Replicator::SendDataJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator11SendDataJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xb0d0d8() -> ! {
-    todo!("0xb0d0d8 RBX::Network::Replicator::SendDataJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_b0d0d8 as stub_0xb0d0d8;
 
 // 0xb0dcdc — __ZN3RBX7Network10Replicator14SendClusterJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::Replicator::SendClusterJob *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::Replicator::SendClusterJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator14SendClusterJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xb0dcdc() -> ! {
-    todo!("0xb0dcdc RBX::Network::Replicator::SendClusterJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_b0dcdc as stub_0xb0dcdc;
 
 // 0xb14120 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS7_5list1INS7_5valueINS9_INS1_7Network10ReplicatorEEEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
@@ -53,25 +47,19 @@ pub fn stub_0xb14120() -> ! {
 // type: int __fastcall(RBX::Network::Replicator::PingJob *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::Replicator::PingJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator7PingJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xb32a48() -> ! {
-    todo!("0xb32a48 RBX::Network::Replicator::PingJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_b32a48 as stub_0xb32a48;
 
 // 0xb33300 — __ZN3RBX7Network10Replicator17ProcessPacketsJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::Replicator::ProcessPacketsJob *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::Replicator::ProcessPacketsJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xb33300() -> ! {
-    todo!("0xb33300 RBX::Network::Replicator::ProcessPacketsJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_b33300 as stub_0xb33300;
 
 // 0xb5bfe8 — __ZN3RBX7Network10Replicator9StreamJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 // type: int __fastcall(RBX::Network::Replicator::StreamJob *this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RBX::Network::Replicator::StreamJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network10Replicator9StreamJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_0xb5bfe8() -> ! {
-    todo!("0xb5bfe8 RBX::Network::Replicator::StreamJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
-}
+pub use crate::generated_110::stub_b5bfe8 as stub_0xb5bfe8;
 
 // 0xbef8c4 — __ZN3RBX10ViewRbxGfx12getDataModelEv
 // type: _DWORD __fastcall(RBX::ViewRbxGfx *__hidden this)
