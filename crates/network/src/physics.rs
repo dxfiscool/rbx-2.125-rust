@@ -385,6 +385,9 @@ pub struct PhysicsSender {
     /// Live `Workspace` touch-signal connection (`scoped_connection` at +44,
     /// IDA 0x9c0ab8/0x9c2230).
     pub touches_connected: bool,
+    /// Job (`+4`, IDA 0x9c0f14) and `TouchJob` (`+12`, IDA 0x9c1370) slots
+    /// submitted to the `TaskScheduler` by `start` (IDA 0x9c0dd4).
+    pub jobs_started: bool,
     /// Double at +80, bits `0x3FA999999999999A` = 0.05 (IDA 0x9c09fe..0x9c0a00).
     pub interval_80: f64,
     /// Byte at +108 set to 1 (IDA 0x9c0a12).
@@ -405,6 +408,7 @@ impl PhysicsSender {
             temp_motor_angles: Vec::new(),
             touches: HashSet::new(),
             touches_connected: false,
+            jobs_started: false,
             interval_80: 0.05, // IDA 0x9c09fe..0x9c0a00
             flag_108: true,    // IDA 0x9c0a12
             field_112: 1,      // IDA 0x9c0a18
@@ -428,6 +432,17 @@ impl PhysicsSender {
         self.touches_connected = true;
     }
 
+    /// `RBX::Network::PhysicsSender::start` (IDA 0x9c0dd4): `connectTouches`
+    /// (0x9c0df6), then a `Job` (0x1F8 bytes, stored at +4) and a `TouchJob`
+    /// (stored at +12), each submitted via `TaskScheduler::singleton()->add`
+    /// (0x9c1176/0x9c11cc and 0x9c15d0/0x9c1626). Job construction and
+    /// scheduler submission stay engine-side; this records the touch
+    /// connection and both slots as live.
+    pub fn start(&mut self) {
+        self.connect_touches();
+        self.jobs_started = true;
+    }
+
     /// `RBX::Network::PhysicsSender::~PhysicsSender` (IDA 0x9c1f50, D2):
     /// removes both scheduler jobs (IDA 0x9c2016/0x9c2148), resets the job
     /// pointers (IDA 0x9c20da/0x9c220c), disconnects the touch connection
@@ -435,6 +450,7 @@ impl PhysicsSender {
     pub fn tear_down(&mut self) {
         self.touches.clear();
         self.touches_connected = false;
+        self.jobs_started = false;
     }
 }
 
@@ -1364,6 +1380,18 @@ mod sender_tests {
         sender.tear_down();
         assert!(sender.touches.is_empty());
         assert!(!sender.touches_connected);
+    }
+
+    #[test]
+    fn start_connects_and_submits_jobs() {
+        // IDA 0x9c0dd4: connectTouches + Job/TouchJob scheduler submission.
+        let mut sender = PhysicsSender::new();
+        assert!(!sender.jobs_started);
+        sender.start();
+        assert!(sender.touches_connected);
+        assert!(sender.jobs_started);
+        sender.tear_down();
+        assert!(!sender.jobs_started);
     }
 
     #[test]

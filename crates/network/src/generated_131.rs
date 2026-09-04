@@ -67,43 +67,49 @@ pub fn stub_9c0908() -> crate::physics::PhysicsSender {
 // 0x9c0a9c — __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::PhysicsSender::onTouchStep(RBX::TouchPair const&)")]
-pub fn stub_9c0a9c() -> ! {
-    todo!("0x9c0a9c __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE")
+pub fn stub_9c0a9c(sender: &mut crate::physics::PhysicsSender, pair: crate::physics::TouchPair) -> bool {
+    // IDA 0x9c0ab4: emplace into the unordered set at +20.
+    sender.on_touch_step(pair)
 }
 
 // 0x9c0ab8 — __ZN3RBX7Network13PhysicsSender14connectTouchesEv
 // type: void __fastcall(RBX::Network::PhysicsSender *this)
 #[doc(alias = "RBX::Network::PhysicsSender::connectTouches(void)")]
-pub fn stub_9c0ab8() -> ! {
-    todo!("0x9c0ab8 __ZN3RBX7Network13PhysicsSender14connectTouchesEv")
+pub fn stub_9c0ab8(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c0bd4..0x9c0c5e: insert the `onTouchStep` slot into the workspace touch signal.
+    sender.connect_touches();
 }
 
 // 0x9c0dd4 — __ZN3RBX7Network13PhysicsSender5startEN5boost10shared_ptrIS1_EE
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, void *, int, char, char, int, int, int, int)
 #[doc(alias = "RBX::Network::PhysicsSender::start(rbx_core::SharedPtr<RBX::Network::PhysicsSender>)")]
-pub fn stub_9c0dd4() -> ! {
-    todo!("0x9c0dd4 __ZN3RBX7Network13PhysicsSender5startEN5boost10shared_ptrIS1_EE")
+pub fn stub_9c0dd4(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c0dd4: connectTouches + Job/TouchJob scheduler submission.
+    sender.start();
 }
 
 // 0x9c1ea4 — __ZN3RBX7Network13PhysicsSenderD0Ev
 // type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
-pub fn stub_9c1ea4() -> ! {
-    todo!("0x9c1ea4 __ZN3RBX7Network13PhysicsSenderD0Ev")
+pub fn stub_9c1ea4(sender: crate::physics::PhysicsSender) {
+    // IDA 0x9c1ef4..0x9c1efa: D2 then `operator delete`.
+    drop(sender);
 }
 
 // 0x9c1f44 — __ZN3RBX7Network13PhysicsSenderD1Ev
 // type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
-pub fn stub_9c1f44() -> ! {
-    todo!("0x9c1f44 __ZN3RBX7Network13PhysicsSenderD1Ev")
+pub fn stub_9c1f44(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c1f48: tail-calls D2.
+    sender.tear_down();
 }
 
 // 0x9c1f50 — __ZN3RBX7Network13PhysicsSenderD2Ev
 // type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
-pub fn stub_9c1f50() -> ! {
-    todo!("0x9c1f50 __ZN3RBX7Network13PhysicsSenderD2Ev")
+pub fn stub_9c1f50(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c2016..0x9c2248: scheduler removes, job resets, signal disconnect, touch-set teardown.
+    sender.tear_down();
 }
 
 // 0x9c2504 — __ZN3RBX7Network13PhysicsSender33sendChildPrimitiveCoordinateFrameEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS0_10ReplicatorE
