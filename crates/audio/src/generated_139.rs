@@ -509,152 +509,399 @@ pub fn stub_1d748(controller: &crate::generated_138::AudioHomeViewController, va
 
 // 0x1d76c — -[HomeViewController signUpButtonLabel]
 #[doc(alias = "-[HomeViewController signUpButtonLabel]")]
-pub fn stub_1d76c() -> ! {
-    todo!("0x1d76c -[HomeViewController signUpButtonLabel]")
+pub fn stub_1d76c(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d76c (`-[HomeViewController signUpButtonLabel]`). Same as
+    // the platform 0x1d76c anchor.
+    controller.sign_up_button_label()
 }
 
 // 0x1d77c — -[HomeViewController setSignUpButtonLabel:]
 #[doc(alias = "-[HomeViewController setSignUpButtonLabel:]")]
-pub fn stub_1d77c() -> ! {
-    todo!("0x1d77c -[HomeViewController setSignUpButtonLabel:]")
+pub fn stub_1d77c(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d77c (`-[HomeViewController setSignUpButtonLabel:]`). Same
+    // as the platform 0x1d77c anchor.
+    controller.set_sign_up_button_label(value);
 }
 
 // 0x1d7a0 — -[HomeViewController loginButtonLabel]
 #[doc(alias = "-[HomeViewController loginButtonLabel]")]
-pub fn stub_1d7a0() -> ! {
-    todo!("0x1d7a0 -[HomeViewController loginButtonLabel]")
+pub fn stub_1d7a0(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d7a0 (`-[HomeViewController loginButtonLabel]`). Same as
+    // the platform 0x1d7a0 anchor.
+    controller.login_button_label()
 }
 
 // 0x1d7b0 — -[HomeViewController setLoginButtonLabel:]
 #[doc(alias = "-[HomeViewController setLoginButtonLabel:]")]
-pub fn stub_1d7b0() -> ! {
-    todo!("0x1d7b0 -[HomeViewController setLoginButtonLabel:]")
+pub fn stub_1d7b0(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d7b0 (`-[HomeViewController setLoginButtonLabel:]`). Same
+    // as the platform 0x1d7b0 anchor.
+    controller.set_login_button_label(value);
 }
 
 // 0x1d7d4 — -[HomeViewController welcomeToRobloxTextView]
 #[doc(alias = "-[HomeViewController welcomeToRobloxTextView]")]
-pub fn stub_1d7d4() -> ! {
-    todo!("0x1d7d4 -[HomeViewController welcomeToRobloxTextView]")
+pub fn stub_1d7d4(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d7d4 (`-[HomeViewController welcomeToRobloxTextView]`).
+    // Same as the platform 0x1d7d4 anchor.
+    controller.welcome_to_roblox_text_view()
 }
 
 // 0x1d7e4 — -[HomeViewController setWelcomeToRobloxTextView:]
 #[doc(alias = "-[HomeViewController setWelcomeToRobloxTextView:]")]
-pub fn stub_1d7e4() -> ! {
-    todo!("0x1d7e4 -[HomeViewController setWelcomeToRobloxTextView:]")
+pub fn stub_1d7e4(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d7e4 (`-[HomeViewController setWelcomeToRobloxTextView:]`).
+    // Same as the platform 0x1d7e4 anchor.
+    controller.set_welcome_to_roblox_text_view(value);
 }
 
 // 0x1d808 — -[HomeViewController youAreCurrentlyLoggedInAsTextView]
 #[doc(alias = "-[HomeViewController youAreCurrentlyLoggedInAsTextView]")]
-pub fn stub_1d808() -> ! {
-    todo!("0x1d808 -[HomeViewController youAreCurrentlyLoggedInAsTextView]")
+pub fn stub_1d808(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d808 (`-[HomeViewController youAreCurrentlyLoggedInAsTextView]`).
+    // Same as the platform 0x1d808 anchor.
+    controller.you_are_currently_logged_in_as_text_view()
 }
 
 // 0x1d818 — -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]
 #[doc(alias = "-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")]
-pub fn stub_1d818() -> ! {
-    todo!("0x1d818 -[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]")
+pub fn stub_1d818(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d818 (`-[HomeViewController setYouAreCurrentlyLoggedInAsTextView:]`).
+    // Same as the platform 0x1d818 anchor.
+    controller.set_you_are_currently_logged_in_as_text_view(value);
 }
 
 // 0x1d83c — -[HomeViewController versionLabel]
 #[doc(alias = "-[HomeViewController versionLabel]")]
-pub fn stub_1d83c() -> ! {
-    todo!("0x1d83c -[HomeViewController versionLabel]")
+pub fn stub_1d83c(controller: &crate::generated_138::AudioHomeViewController) -> u64 {
+    // IDA 0x1d83c (`-[HomeViewController versionLabel]`). Same as the
+    // platform 0x1d83c anchor.
+    controller.version_label()
 }
 
 // 0x1d84c — -[HomeViewController setVersionLabel:]
 #[doc(alias = "-[HomeViewController setVersionLabel:]")]
-pub fn stub_1d84c() -> ! {
-    todo!("0x1d84c -[HomeViewController setVersionLabel:]")
+pub fn stub_1d84c(controller: &crate::generated_138::AudioHomeViewController, value: u64) {
+    // IDA 0x1d84c (`-[HomeViewController setVersionLabel:]`). Same as
+    // the platform 0x1d84c anchor.
+    controller.set_version_label(value);
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
 #[doc(alias = "__GLOBAL__I_a_4")]
-pub fn stub_1d870() -> ! {
-    todo!("0x1d870 global constructor keyed to_a_4")
+pub fn stub_1d870() {
+    // IDA 0x1d870 (`__GLOBAL__I_a_4`, disasm `generic_category` x2 +
+    // `system_category` stores into the merged error-category globals):
+    // records the category-singleton init. `boost::system` maps to Rust
+    // per AGENTS.md (no runtime init needed), so only the call is
+    // recorded.
+    audio_error_category_init();
 }
 
 // 0x1da08 — -[NSString stringWithPercentEscape]
 #[doc(alias = "-[NSString stringWithPercentEscape]")]
-pub fn stub_1da08() -> ! {
-    todo!("0x1da08 -[NSString stringWithPercentEscape]")
+pub fn stub_1da08(s: &str) -> String {
+    // IDA 0x1da08 (`-[NSString stringWithPercentEscape]`):
+    // `CFURLCreateStringByAddingPercentEscapes` leaving nothing
+    // unescaped beyond the URL-legal set, UTF-8 encoded. The illegal set
+    // (`"\u{FFFC}=,!$&'()*+;@?\n\"<>#\t :/"`) is subsumed by escaping
+    // everything outside alphanumerics plus `$-_.+!*'(),`.
+    audio_percent_escape(s)
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
 #[doc(alias = "+[LoginViewController sharedInstance]")]
-pub fn stub_1da5c() -> ! {
-    todo!("0x1da5c +[LoginViewController sharedInstance]")
+pub fn stub_1da5c() -> &'static AudioLoginViewController {
+    // IDA 0x1da5c (`+[LoginViewController sharedInstance]`): returns the
+    // `dword_130C3F0` singleton.
+    AudioLoginViewController::shared_instance()
 }
 
 // 0x1da6c — -[LoginViewController initWithCoder:]
 #[doc(alias = "-[LoginViewController initWithCoder:]")]
-pub fn stub_1da6c() -> ! {
-    todo!("0x1da6c -[LoginViewController initWithCoder:]")
+pub fn stub_1da6c(controller: &AudioLoginViewController) -> bool {
+    // IDA 0x1da6c (`-[LoginViewController initWithCoder:]`): super init,
+    // nil `envs`, three notification observers (login-failed, login-ok,
+    // signup-finished).
+    controller.init_with_coder()
 }
 
 // 0x1dbd4 — -[LoginViewController dealloc]
 #[doc(alias = "-[LoginViewController dealloc]")]
-pub fn stub_1dbd4() -> ! {
-    todo!("0x1dbd4 -[LoginViewController dealloc]")
+pub fn stub_1dbd4(controller: &AudioLoginViewController) {
+    // IDA 0x1dbd4 (`-[LoginViewController dealloc]`): removes the
+    // notification observer, releases the 15 retained outlets plus the
+    // `envs` array when non-nil, then super `dealloc`.
+    controller.dealloc();
 }
 
 // 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
 #[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
-pub fn stub_1dd84() -> ! {
-    todo!("0x1dd84 -[LoginViewController populateEnvironmentPicker]")
+pub fn stub_1dd84(controller: &AudioLoginViewController, tablet: bool) {
+    // IDA 0x1dd84 (`-[LoginViewController populateEnvironmentPicker]`):
+    // rebuilds `envs` with the 17 environment URLs (`www.` when tablet,
+    // else `m.`).
+    controller.populate_environment_picker(tablet);
 }
 
 // 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
 #[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
-pub fn stub_1e0d8() -> ! {
-    todo!("0x1e0d8 -[LoginViewController pickerView:didSelectRow:inComponent:]")
+pub fn stub_1e0d8(controller: &AudioLoginViewController, row: usize) -> Option<String> {
+    // IDA 0x1e0d8 (`-[LoginViewController pickerView:didSelectRow:...]`):
+    // `setBaseUrl:` to `envs[row]`, then the main-queue block starts the
+    // memory bouncer.
+    controller.picker_did_select_row(row)
 }
 
 // 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
 #[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
-pub fn stub_1e13c() -> ! {
-    todo!("0x1e13c ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")
+pub fn stub_1e13c(controller: &AudioLoginViewController) {
+    // IDA 0x1e13c (picker-select block): `startMemoryBouncer`.
+    controller.picker_select_block();
 }
 
 // 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
 #[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
-pub fn stub_1e170() -> ! {
-    todo!("0x1e170 -[LoginViewController numberOfComponentsInPickerView:]")
+pub fn stub_1e170(controller: &AudioLoginViewController) -> i32 {
+    // IDA 0x1e170 (`numberOfComponentsInPickerView:`): returns 1.
+    controller.number_of_components()
 }
 
 // 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
 #[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_1e174() -> ! {
-    todo!("0x1e174 -[LoginViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_1e174(controller: &AudioLoginViewController) -> usize {
+    // IDA 0x1e174 (`pickerView:numberOfRowsInComponent:`): `envs.count`.
+    controller.number_of_rows()
 }
 
 // 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
 #[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_1e194() -> ! {
-    todo!("0x1e194 -[LoginViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_1e194(controller: &AudioLoginViewController, row: usize) -> Option<String> {
+    // IDA 0x1e194 (`pickerView:titleForRow:...`): `envs[row]`.
+    controller.title_for_row(row)
 }
 
 // 0x1e1b4 — -[LoginViewController viewWillAppear:]
 #[doc(alias = "-[LoginViewController viewWillAppear:]")]
-pub fn stub_1e1b4() -> ! {
-    todo!("0x1e1b4 -[LoginViewController viewWillAppear:]")
+pub fn stub_1e1b4(
+    controller: &AudioLoginViewController,
+    animated: bool,
+    remember_password: bool,
+    saved_password: &str,
+) {
+    // IDA 0x1e1b4 (`-[LoginViewController viewWillAppear:]`): logo
+    // `alpha = 1.0`, main-queue `stopShowLoggingIn`, password field from
+    // the saved password when remembered, else empty.
+    controller.view_will_appear(animated, remember_password, saved_password);
 }
 
 // 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
 #[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
-pub fn stub_1e2c4() -> ! {
-    todo!("0x1e2c4 ___38-[LoginViewController viewWillAppear:]_block_invoke")
+pub fn stub_1e2c4(controller: &AudioLoginViewController) {
+    // IDA 0x1e2c4 (`__38-[LoginViewController viewWillAppear:]_block_invoke`):
+    // `stopShowLoggingIn`.
+    controller.stop_show_logging_in();
 }
 
 // 0x1e2d8 — ___copy_helper_block__2
 #[doc(alias = "___copy_helper_block__2")]
-pub fn stub_1e2d8() -> ! {
-    todo!("0x1e2d8 ___copy_helper_block__2")
+pub fn stub_1e2d8(slot: &mut u64, src: u64) {
+    // IDA 0x1e2d8 (disasm one `__Block_object_assign` at +0x14): retain
+    // the capture. Same shape as 0x1bb9c in generated_138.
+    *slot = src;
 }
 
 // 0x1e2e4 — ___destroy_helper_block__2
 #[doc(alias = "___destroy_helper_block__2")]
-pub fn stub_1e2e4() -> ! {
-    todo!("0x1e2e4 ___destroy_helper_block__2")
+pub fn stub_1e2e4(slot: &mut u64) {
+    // IDA 0x1e2e4 (disasm one `__Block_object_dispose` at +0x14):
+    // release the capture. Same shape as 0x1bba8 in generated_138.
+    *slot = 0;
+}
+
+/// Process-wide error-category init count behind `__GLOBAL__I_a_4`
+/// (IDA 0x1d870, disasm `boost::system::generic_category` x2 +
+/// `system_category` stores). `boost::system` maps to Rust per AGENTS.md
+/// (no runtime init needed), so only the call is recorded.
+static AUDIO_ERROR_CATEGORY_INITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+
+/// Records one `__GLOBAL__I_a_4` run (IDA 0x1d870).
+pub fn audio_error_category_init() {
+    AUDIO_ERROR_CATEGORY_INITS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+}
+
+/// Returns the process-wide error-category init count (test hook).
+pub fn audio_error_category_inits() -> u32 {
+    AUDIO_ERROR_CATEGORY_INITS.load(std::sync::atomic::Ordering::SeqCst)
+}
+
+/// `-[NSString stringWithPercentEscape]` (IDA 0x1da08):
+/// `CFURLCreateStringByAddingPercentEscapes` with no unescaped extras,
+/// UTF-8 encoded: everything outside alphanumerics plus `$-_.+!*'(),`
+/// becomes `%XX` (uppercase hex).
+pub fn audio_percent_escape(s: &str) -> String {
+    const LEGAL: &[u8] = b"$-_.+!*'(),";
+    let mut out = String::with_capacity(s.len());
+    for b in s.bytes() {
+        if b.is_ascii_alphanumeric() || LEGAL.contains(&b) {
+            out.push(b as char);
+        } else {
+            out.push('%');
+            out.push(char::from_digit((b >> 4) as u32, 16).unwrap().to_ascii_uppercase());
+            out.push(char::from_digit((b & 0xF) as u32, 16).unwrap().to_ascii_uppercase());
+        }
+    }
+    out
+}
+
+/// Audio-crate host for `LoginViewController` (IDA 0x1da5c..0x1e2c4):
+/// environment list, observer/init flags, release records, base-url
+/// selection, picker/login-appear state. UIKit outlets have no host
+/// counterpart (`u64` ids are not needed here — nothing in this slice
+/// touches them); the picker-visible `envs` strings do live here.
+#[derive(Debug, Default)]
+pub struct AudioLoginViewController {
+    initialized: std::sync::atomic::AtomicBool,
+    observers_registered: std::sync::atomic::AtomicU32,
+    deallocated: std::sync::atomic::AtomicBool,
+    released_ivar_count: std::sync::atomic::AtomicU32,
+    envs_had_entries_on_dealloc: std::sync::atomic::AtomicBool,
+    envs: parking_lot::Mutex<Vec<String>>,
+    base_url: parking_lot::Mutex<Option<String>>,
+    picker_selections: std::sync::atomic::AtomicU32,
+    memory_bouncer_starts: std::sync::atomic::AtomicU32,
+    logo_alpha_bits: std::sync::atomic::AtomicU32,
+    stop_logging_in_dispatches: std::sync::atomic::AtomicU32,
+    view_will_appears: std::sync::atomic::AtomicU32,
+    password_text: parking_lot::Mutex<String>,
+}
+
+impl AudioLoginViewController {
+    /// `+[LoginViewController sharedInstance]` (IDA 0x1da5c): the
+    /// `dword_130C3F0` singleton.
+    pub fn shared_instance() -> &'static Self {
+        static CONTROLLER: std::sync::LazyLock<AudioLoginViewController> =
+            std::sync::LazyLock::new(AudioLoginViewController::default);
+        &CONTROLLER
+    }
+
+    /// `-[LoginViewController initWithCoder:]` (IDA 0x1da6c): super
+    /// init, nil `envs`, three notification observers (login-failed,
+    /// login-ok, signup-finished).
+    pub fn init_with_coder(&self) -> bool {
+        use std::sync::atomic::Ordering::SeqCst;
+        *self.envs.lock() = Vec::new();
+        self.observers_registered.store(3, SeqCst);
+        self.initialized.store(true, SeqCst);
+        true
+    }
+
+    /// `-[LoginViewController dealloc]` (IDA 0x1dbd4): removes the
+    /// notification observer, releases the 15 retained outlets plus the
+    /// `envs` array when non-nil (Rust drops cover the stores), then
+    /// super `dealloc`.
+    pub fn dealloc(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.observers_registered.store(0, SeqCst);
+        self.envs_had_entries_on_dealloc
+            .store(!self.envs.lock().is_empty(), SeqCst);
+        *self.envs.lock() = Vec::new();
+        self.released_ivar_count.store(15, SeqCst);
+        self.deallocated.store(true, SeqCst);
+    }
+
+    /// `-[LoginViewController populateEnvironmentPicker]` (IDA 0x1dd84):
+    /// rebuilds `envs` with the 17 environment URLs. `tablet` stands in
+    /// for `+[RobloxInfo thisDeviceIsATablet]` (out of slice): the host
+    /// prefix is `www.` when tablet, else `m.`; the personal `sitetest3`
+    /// hosts take no prefix on tablet and `m.` on phone.
+    pub fn populate_environment_picker(&self, tablet: bool) {
+        let host = if tablet { "www." } else { "m." };
+        let personal = if tablet { "" } else { "m." };
+        let mut envs = Vec::with_capacity(17);
+        envs.push(format!("http://{host}roblox.com/"));
+        for n in 1..=4 {
+            envs.push(format!("http://{host}sitetest{n}.robloxlabs.com/"));
+        }
+        for name in [
+            "allen", "anthony", "guru", "rosemary", "sairam", "shannon", "vlad",
+        ] {
+            envs.push(format!("http://{personal}{name}.sitetest3.robloxlabs.com/"));
+        }
+        for n in (1..=5).rev() {
+            envs.push(format!("http://{host}gametest{n}.robloxlabs.com/"));
+        }
+        *self.envs.lock() = envs;
+    }
+
+    /// `-[LoginViewController pickerView:didSelectRow:inComponent:]`
+    /// (IDA 0x1e0d8): `setBaseUrl:` to `envs[row]`, then the main-queue
+    /// block (`stub_1e13c`) starts the memory bouncer. Out-of-range rows
+    /// select nothing (NSArray would throw; the host returns `None`).
+    pub fn picker_did_select_row(&self, row: usize) -> Option<String> {
+        let url = self.envs.lock().get(row).cloned()?;
+        *self.base_url.lock() = Some(url.clone());
+        self.picker_selections
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.picker_select_block();
+        Some(url)
+    }
+
+    /// `__59-[LoginViewController pickerView:...]_block_invoke`
+    /// (IDA 0x1e13c): `startMemoryBouncer`.
+    pub fn picker_select_block(&self) {
+        self.memory_bouncer_starts
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[LoginViewController numberOfComponentsInPickerView:]`
+    /// (IDA 0x1e170): returns 1.
+    pub fn number_of_components(&self) -> i32 {
+        1
+    }
+
+    /// `-[LoginViewController pickerView:numberOfRowsInComponent:]`
+    /// (IDA 0x1e174): `envs.count`.
+    pub fn number_of_rows(&self) -> usize {
+        self.envs.lock().len()
+    }
+
+    /// `-[LoginViewController pickerView:titleForRow:forComponent:]`
+    /// (IDA 0x1e194): `envs[row]` (`None` when out of range).
+    pub fn title_for_row(&self, row: usize) -> Option<String> {
+        self.envs.lock().get(row).cloned()
+    }
+
+    /// `-[LoginViewController viewWillAppear:]` (IDA 0x1e1b4): logo
+    /// `alpha = 1.0`, main-queue `stopShowLoggingIn`, password field from
+    /// the saved password when `LoginManager.rememberPassword` is set
+    /// (both out of slice, threaded in), else empty. `animated` only
+    /// reaches the super call.
+    pub fn view_will_appear(
+        &self,
+        animated: bool,
+        remember_password: bool,
+        saved_password: &str,
+    ) {
+        use std::sync::atomic::Ordering::SeqCst;
+        let _ = animated;
+        self.logo_alpha_bits.store(0x3F80_0000, SeqCst);
+        self.stop_show_logging_in();
+        *self.password_text.lock() = if remember_password {
+            saved_password.to_owned()
+        } else {
+            String::new()
+        };
+        self.view_will_appears.fetch_add(1, SeqCst);
+    }
+
+    /// `__38-[LoginViewController viewWillAppear:]_block_invoke`
+    /// (IDA 0x1e2c4): `stopShowLoggingIn`.
+    pub fn stop_show_logging_in(&self) {
+        self.stop_logging_in_dispatches
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x1e2ec — -[LoginViewController viewDidLoad]

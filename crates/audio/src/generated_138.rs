@@ -1121,6 +1121,11 @@ pub struct AudioHomeViewController {
     search_text_field: parking_lot::Mutex<u64>,
     logged_in_view: parking_lot::Mutex<u64>,
     not_logged_in_view: parking_lot::Mutex<u64>,
+    sign_up_button_label: parking_lot::Mutex<u64>,
+    login_button_label: parking_lot::Mutex<u64>,
+    welcome_to_roblox_text_view: parking_lot::Mutex<u64>,
+    you_are_currently_logged_in_as_text_view: parking_lot::Mutex<u64>,
+    version_label: parking_lot::Mutex<u64>,
 }
 
 impl AudioHomeViewController {
@@ -1772,6 +1777,40 @@ impl AudioHomeViewController {
     }
     pub fn set_not_logged_in_view(&self, value: u64) {
         *self.not_logged_in_view.lock() = value;
+    }
+    /// Synthesized outlet getter/setter pairs (IDA 0x1d76c..0x1d84c):
+    /// getters return the retained slot, setters store it
+    /// (`objc_setProperty`). UIKit objects live out of slice, so `u64`
+    /// ids stand in. Mirrors the platform twins.
+    pub fn sign_up_button_label(&self) -> u64 {
+        *self.sign_up_button_label.lock()
+    }
+    pub fn set_sign_up_button_label(&self, value: u64) {
+        *self.sign_up_button_label.lock() = value;
+    }
+    pub fn login_button_label(&self) -> u64 {
+        *self.login_button_label.lock()
+    }
+    pub fn set_login_button_label(&self, value: u64) {
+        *self.login_button_label.lock() = value;
+    }
+    pub fn welcome_to_roblox_text_view(&self) -> u64 {
+        *self.welcome_to_roblox_text_view.lock()
+    }
+    pub fn set_welcome_to_roblox_text_view(&self, value: u64) {
+        *self.welcome_to_roblox_text_view.lock() = value;
+    }
+    pub fn you_are_currently_logged_in_as_text_view(&self) -> u64 {
+        *self.you_are_currently_logged_in_as_text_view.lock()
+    }
+    pub fn set_you_are_currently_logged_in_as_text_view(&self, value: u64) {
+        *self.you_are_currently_logged_in_as_text_view.lock() = value;
+    }
+    pub fn version_label(&self) -> u64 {
+        *self.version_label.lock()
+    }
+    pub fn set_version_label(&self, value: u64) {
+        *self.version_label.lock() = value;
     }
 }
 
