@@ -784,50 +784,58 @@ pub fn stub_96d260() -> u32 {
 
 // 0x97afc8 — __ZN3RBX7Network16ClientReplicatorC1EN6RakNet13SystemAddressEPNS0_6ClientES3_PNS_15NetworkSettingsE
 #[doc(alias = "RBX::Network::ClientReplicator::ClientReplicator(RakNet::SystemAddress,RBX::Network::Client *,RakNet::SystemAddress,RBX::NetworkSettings *)")]
-pub fn stub_97afc8() -> ! {
-    todo!("0x97afc8 RBX::Network::ClientReplicator::ClientReplicator(RakNet::SystemAddress,RBX::Network::Client *,RakNet::SystemAddress,RBX::NetworkSettings *)")
+pub fn stub_97afc8() {
+ // IDA 0x97afc8: C1 delegates to C2.
+ crate::replicator::init_client_replicator()
 }
 
 // 0x97b010 — __ZN3RBX7Network16ClientReplicatorC2EN6RakNet13SystemAddressEPNS0_6ClientES3_PNS_15NetworkSettingsE
 #[doc(alias = "RBX::Network::ClientReplicator::ClientReplicator(RakNet::SystemAddress,RBX::Network::Client *,RakNet::SystemAddress,RBX::NetworkSettings *)")]
-pub fn stub_97b010() -> ! {
-    todo!("0x97b010 RBX::Network::ClientReplicator::ClientReplicator(RakNet::SystemAddress,RBX::Network::Client *,RakNet::SystemAddress,RBX::NetworkSettings *)")
+pub fn stub_97b010() {
+ // IDA 0x97b010: member init stays engine-side.
+ crate::replicator::init_client_replicator()
 }
 
 // 0x97be3c — __ZN3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE
 #[doc(alias = "RBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_97be3c() -> ! {
-    todo!("0x97be3c RBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")
+pub fn stub_97be3c(from_server: bool, kind: u8, base: &mut dyn FnMut() -> u32, mismatch: &mut dyn FnMut()) -> u32 {
+ // IDA 0x97be3c: server type-142 mismatches, else base.
+ crate::replicator::client_replicator_on_receive(from_server, kind, base, mismatch)
 }
 
 // 0x97c3ec — __ZThn1180_N3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_97c3ec() -> ! {
-    todo!("0x97c3ec non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")
+pub fn stub_97c3ec(from_server: bool, kind: u8, base: &mut dyn FnMut() -> u32, mismatch: &mut dyn FnMut()) -> u32 {
+ // IDA 0x97c3ec: non-virtual thunk, same dispatch.
+ crate::replicator::client_replicator_on_receive(from_server, kind, base, mismatch)
 }
 
 // 0x97c3fc — __ZN3RBX7Network16ClientReplicator13processPacketEPN6RakNet6PacketE
 #[doc(alias = "RBX::Network::ClientReplicator::processPacket(RakNet::Packet *)")]
-pub fn stub_97c3fc() -> ! {
-    todo!("0x97c3fc RBX::Network::ClientReplicator::processPacket(RakNet::Packet *)")
+pub fn stub_97c3fc(is_streaming_config: bool, configure: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97c3fc: kind 129 configures, else base.
+ crate::replicator::process_packet(is_streaming_config, configure, base)
 }
 
 // 0x97ca44 — __ZN3RBX7Network16ClientReplicator14receiveClusterERN6RakNet9BitStreamEPNS_8InstanceE
 #[doc(alias = "RBX::Network::ClientReplicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")]
-pub fn stub_97ca44() -> ! {
-    todo!("0x97ca44 RBX::Network::ClientReplicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")
+pub fn stub_97ca44(streaming: bool, count: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97ca44: count streaming regions, then base.
+ crate::replicator::client_receive_cluster(streaming, count, base)
 }
 
 // 0x97cf08 — __ZN3RBX7Network16ClientReplicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE
 #[doc(alias = "RBX::Network::ClientReplicator::readItem(RakNet::BitStream &,RBX::Network::Item::ItemType)")]
-pub fn stub_97cf08() -> ! {
-    todo!("0x97cf08 RBX::Network::ClientReplicator::readItem(RakNet::BitStream &,RBX::Network::Item::ItemType)")
+pub fn stub_97cf08(kind: u8, stream_data: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0x97cf08: item 13 is stream data, else base.
+ crate::replicator::read_client_item(kind, stream_data, base)
 }
 
 // 0x97cf1c — __ZN3RBX7Network16ClientReplicator14readStreamDataERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::ClientReplicator::readStreamData(RakNet::BitStream &)")]
-pub fn stub_97cf1c() -> ! {
-    todo!("0x97cf1c RBX::Network::ClientReplicator::readStreamData(RakNet::BitStream &)")
+pub fn stub_97cf1c(step: u8, read_region: &mut dyn FnMut(), advance: &mut dyn FnMut(), joined: u32, add_joins: &mut dyn FnMut(u32)) {
+ // IDA 0x97cf1c: region step plus join count.
+ crate::replicator::read_stream_data(step, read_region, advance, joined, add_joins)
 }
 
 // 0x97d444 — __ZN3RBX7Network16ClientReplicator19readChangedPropertyERN6RakNet9BitStreamENS_10Reflection8PropertyE

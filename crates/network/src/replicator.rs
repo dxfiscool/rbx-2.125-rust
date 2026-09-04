@@ -1291,4 +1291,114 @@ mod tests {
         base_stats_item_update(&mut || ran = true);
         assert!(ran);
     }
+    #[test]
+    fn client_replicator_dispatch_gates() {
+        // IDA 0x97afc8/0x97b010: ctor no-op.
+        init_client_replicator();
+        // IDA 0x97be3c: mismatch only from the server with kind 142.
+        let order = core::cell::RefCell::new(Vec::new());
+        let mut recv = |server: bool, kind: u8| {
+            client_replicator_on_receive(
+                server,
+                kind,
+                &mut || { order.borrow_mut().push("base"); 7 },
+                &mut || order.borrow_mut().push("mm"),
+            )
+        };
+        assert_eq!(recv(false, 142), 7);
+        assert_eq!(recv(true, 100), 7);
+        assert_eq!(recv(true, 142), 1);
+        assert_eq!(order.borrow().as_slice(), ["base", "base", "mm"]);
+        // IDA 0x97c3fc/0x97ca44/0x97cf08: config/cluster/item gates.
+        let order = core::cell::RefCell::new(Vec::new());
+        process_packet(false, &mut || order.borrow_mut().push("cfg"), &mut || order.borrow_mut().push("base"));
+        process_packet(true, &mut || order.borrow_mut().push("cfg"), &mut || order.borrow_mut().push("base"));
+        client_receive_cluster(false, &mut || order.borrow_mut().push("count"), &mut || order.borrow_mut().push("base"));
+        client_receive_cluster(true, &mut || order.borrow_mut().push("count"), &mut || order.borrow_mut().push("base"));
+        read_client_item(7, &mut || order.borrow_mut().push("stream"), &mut || order.borrow_mut().push("base"));
+        read_client_item(13, &mut || order.borrow_mut().push("stream"), &mut || order.borrow_mut().push("base"));
+        assert_eq!(order.borrow().as_slice(), ["base", "cfg", "base", "count", "base", "base", "stream"]);
+        // IDA 0x97cf1c: step dispatch plus join accumulation.
+        let order = core::cell::RefCell::new(Vec::new());
+        read_stream_data(0, &mut || order.borrow_mut().push("region"), &mut || order.borrow_mut().push("adv"), 3, &mut |n| order.borrow_mut().push(if n == 3 { "j3" } else { "j?" }));
+        read_stream_data(2, &mut || order.borrow_mut().push("region"), &mut || order.borrow_mut().push("adv"), 0, &mut |n| order.borrow_mut().push(if n == 0 { "j0" } else { "j?" }));
+        assert_eq!(order.borrow().as_slice(), ["region", "j3", "adv", "j0"]);
     }
+    }
+
+/// `ClientReplicator::ClientReplicator` C1 (IDA 0x97afc8) / C2 (IDA
+/// 0x97b010): C1 delegates to C2; member and vtable init stays
+/// engine-side.
+pub fn init_client_replicator() {}
+
+/// `ClientReplicator::OnReceive` (IDA 0x97be3c) and its non-virtual thunk
+/// (IDA 0x97c3ec): packets not from the server, or not of type 142, go to
+/// `Replicator::OnReceive`. A type-142 packet from the server is a
+/// protocol mismatch: it logs, fires the connection-failed signal, and
+/// requests a disconnect. Always returns 1.
+pub fn client_replicator_on_receive(
+ from_server: bool,
+ kind: u8,
+ base: &mut dyn FnMut() -> u32,
+ mismatch: &mut dyn FnMut(),
+) -> u32 {
+ if from_server && kind == 142 {
+ mismatch();
+ 1
+ } else {
+ base()
+ }
+}
+
+/// `ClientReplicator::processPacket` (IDA 0x97c3fc): kind 129 carries the
+/// streaming handshake (physics sender/receiver, GC job, guid
+/// re-registration); everything else goes to `Replicator::processPacket`.
+pub fn process_packet(
+ is_streaming_config: bool,
+ configure: &mut dyn FnMut(),
+ base: &mut dyn FnMut(),
+) {
+ if is_streaming_config {
+ configure();
+ } else {
+ base();
+ }
+}
+
+/// `ClientReplicator::receiveCluster` (IDA 0x97ca44): streaming clients
+/// count the terrain region, then `Replicator::receiveCluster` runs.
+pub fn client_receive_cluster(streaming: bool, count: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ if streaming {
+ count();
+ }
+ base();
+}
+
+/// `ClientReplicator::readItem` (IDA 0x97cf08): item 13 is stream data,
+/// everything else goes to `Replicator::readItem`.
+pub fn read_client_item(kind: u8, stream_data: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ if kind == 13 {
+ stream_data();
+ } else {
+ base();
+ }
+}
+
+/// `ClientReplicator::readStreamData` (IDA 0x97cf1c): two flag bits pick
+/// the region step — 0 reads the region id off the wire, 1..3 advance
+/// the cached coordinates — then `readJoinData` instances are counted.
+/// Timing averages stay engine-side.
+pub fn read_stream_data(
+ step: u8,
+ read_region: &mut dyn FnMut(),
+ advance: &mut dyn FnMut(),
+ joined: u32,
+ add_joins: &mut dyn FnMut(u32),
+) {
+ if step == 0 {
+ read_region();
+ } else {
+ advance();
+ }
+ add_joins(joined);
+}
