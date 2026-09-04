@@ -12,7 +12,6 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x5fd66c — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
 // IDA 0x5fd66c: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fd66c() {
@@ -37,7 +36,6 @@ pub fn stub_5fd684() {
 }
 
 // 0x5fd728 — __ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
 // IDA 0x5fd728: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -91,7 +89,6 @@ pub fn stub_5fd888() {
 
 // 0x5fd88c — __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv
 // IDA 0x5fd88c: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fd88c() {
@@ -125,7 +122,6 @@ pub fn stub_5fd8c0() {
 }
 
 // 0x5fd964 — __ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv
 // IDA 0x5fd964: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -188,7 +184,6 @@ pub fn stub_5fdc88() {
 
 // 0x5fdc8c — __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv
 // IDA 0x5fdc8c: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fdc8c() {
@@ -222,7 +217,6 @@ pub fn stub_5fddd0() {
 }
 
 // 0x5fdf00 — __ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv
 // IDA 0x5fdf00: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -258,7 +252,6 @@ pub fn stub_5fe170() {
 
 // 0x5fe178 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev
 // type: int()
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev
 // IDA 0x5fe178: 1 insn (B.W) — branch/return thunk, no state change.
@@ -353,7 +346,6 @@ pub fn stub_5fe600() {
 // 0x5fe67c — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev
 // IDA 0x5fe67c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_5fe67c() {
@@ -362,14 +354,12 @@ pub fn stub_5fe67c() {
 // 0x5fe718 — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv
 // IDA 0x5fe718: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fe718() {
 }
 
 // 0x5fe7a0 — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv
 // IDA 0x5fe7a0: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -451,14 +441,12 @@ pub fn stub_5fec94() {
 
 // 0x5fec98 — __ZN3RBX4Name13callDoDeclareILZNS_10sPlayerGuiEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sPlayerGuiEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sPlayerGuiEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_10sPlayerGuiEEEEvv
 // IDA 0x5fec98: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_5fec98() {
 }
 
 // 0x5fec9c — __ZN3RBX4Name9doDeclareILZNS_10sPlayerGuiEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sPlayerGuiEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sPlayerGuiEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_10sPlayerGuiEEEERKS0_v
 // IDA 0x5fec9c: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -468,7 +456,6 @@ pub fn stub_5fec9c() {
 // 0x5fed80 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev
 // IDA 0x5fed80: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fed80() {
@@ -477,7 +464,6 @@ pub fn stub_5fed80() {
 // 0x5fefc8 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv
 // IDA 0x5fefc8: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5fefc8() {
@@ -485,14 +471,12 @@ pub fn stub_5fefc8() {
 
 // 0x5ff03c — __ZN3RBX4Name13callDoDeclareILZNS_14sBasePlayerGuiEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sBasePlayerGuiEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sBasePlayerGuiEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_14sBasePlayerGuiEEEEvv
 // IDA 0x5ff03c: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_5ff03c() {
 }
 
 // 0x5ff040 — __ZN3RBX4Name9doDeclareILZNS_14sBasePlayerGuiEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sBasePlayerGuiEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sBasePlayerGuiEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_14sBasePlayerGuiEEEERKS0_v
 // IDA 0x5ff040: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -502,7 +486,6 @@ pub fn stub_5ff040() {
 // 0x5ff120 — __ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // IDA 0x5ff120: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5ff120() {
@@ -511,7 +494,6 @@ pub fn stub_5ff120() {
 // 0x5ff240 — __ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // IDA 0x5ff240: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5ff240() {
@@ -519,7 +501,6 @@ pub fn stub_5ff240() {
 
 // 0x5ff360 — __ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // IDA 0x5ff360: 94 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -658,14 +639,12 @@ pub fn stub_5ffa74() {
 
 // 0x5ffa78 — __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 // IDA 0x5ffa78: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_5ffa78() {
 }
 
 // 0x5ffa7c — __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
 // IDA 0x5ffa7c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -674,14 +653,12 @@ pub fn stub_5ffa7c() {
 
 // 0x5ffb1c — __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 // IDA 0x5ffb1c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_5ffb1c() {
 }
 
 // 0x5ffb24 — __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
 // IDA 0x5ffb24: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -690,14 +667,12 @@ pub fn stub_5ffb24() {
 
 // 0x5ffbc8 — __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
 // IDA 0x5ffbc8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_5ffbc8() {
 }
 
 // 0x5ffbd0 — __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
 // IDA 0x5ffbd0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.

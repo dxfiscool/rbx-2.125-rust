@@ -40,7 +40,6 @@ pub fn stub_6115e8() {
 // 0x611740 — __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD1Ev
 // type: 
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD1Ev
 // IDA 0x611740: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_611740() {
@@ -48,7 +47,6 @@ pub fn stub_611740() {
 
 // 0x611744 — __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD1Ev
 // type: 
-#[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD1Ev
 // IDA 0x611744: 1 insn (B.W) — branch/return thunk, no state change.
@@ -76,7 +74,6 @@ pub fn stub_611890() {
 // 0x611930 — __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv
 // type: 
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv
 // IDA 0x611930: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_611930() {
@@ -102,7 +99,6 @@ pub fn stub_611a84() {
 
 // 0x611bdc — __ZThn32_NK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv
 // type: 
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE12getClassNameEv
 // IDA 0x611bdc: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -166,7 +162,6 @@ pub fn stub_61214c() {
 // 0x612168 — __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE17static_getCreatorEv")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE17static_getCreatorEv
 // IDA 0x612168: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_612168() {
@@ -174,7 +169,6 @@ pub fn stub_612168() {
 
 // 0x6121dc — __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator12getClassNameEv
 // IDA 0x6121dc: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -184,7 +178,6 @@ pub fn stub_6121dc() {
 // 0x612264 — __ZN3RBX4Name13callDoDeclareILZNS_8sGuiMainEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_8sGuiMainEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_8sGuiMainEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_8sGuiMainEEEEvv
 // IDA 0x612264: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_612264() {
@@ -192,7 +185,6 @@ pub fn stub_612264() {
 
 // 0x612268 — __ZN3RBX4Name9doDeclareILZNS_8sGuiMainEEEERKS0_v
 // type: 
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_8sGuiMainEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_8sGuiMainEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_8sGuiMainEEEERKS0_v
 // IDA 0x612268: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -202,7 +194,6 @@ pub fn stub_612268() {
 // 0x612348 — __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorD2Ev
 // IDA 0x612348: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_612348() {
@@ -210,7 +201,6 @@ pub fn stub_612348() {
 
 // 0x6123e4 — __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator6createEv
 // type: 
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7Creator6createEv
 // IDA 0x6123e4: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -301,7 +291,6 @@ pub fn stub_6128d0() {
 // 0x6128d4 — __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_7GuiMainENS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEE7CreatorC2Ev
 // IDA 0x6128d4: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_6128d4() {
@@ -309,7 +298,6 @@ pub fn stub_6128d4() {
 
 // 0x612b18 — __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorD2Ev
 // IDA 0x612b18: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -319,7 +307,6 @@ pub fn stub_612b18() {
 // 0x612bb4 — __ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator12getClassNameEv
 // IDA 0x612bb4: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_612bb4() {
@@ -327,7 +314,6 @@ pub fn stub_612bb4() {
 
 // 0x612c3c — __ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator6createEv
 // type: 
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7Creator6createEv
 // IDA 0x612c3c: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -337,7 +323,6 @@ pub fn stub_612c3c() {
 // 0x612d80 — __ZN3RBX4Name13callDoDeclareILZNS_10sScreenGuiEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sScreenGuiEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sScreenGuiEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_10sScreenGuiEEEEvv
 // IDA 0x612d80: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_612d80() {
@@ -345,7 +330,6 @@ pub fn stub_612d80() {
 
 // 0x612d84 — __ZN3RBX4Name9doDeclareILZNS_10sScreenGuiEEEERKS0_v
 // type: 
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sScreenGuiEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sScreenGuiEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_10sScreenGuiEEEERKS0_v
 // IDA 0x612d84: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -355,7 +339,6 @@ pub fn stub_612d84() {
 // 0x612e64 — __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE7CreatorC2Ev
 // IDA 0x612e64: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_612e64() {
@@ -363,7 +346,6 @@ pub fn stub_612e64() {
 
 // 0x6130a8 — __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE17static_getCreatorEv
 // IDA 0x6130a8: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -373,7 +355,6 @@ pub fn stub_6130a8() {
 // 0x61311c — __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x61311c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_61311c() {
@@ -381,7 +362,6 @@ pub fn stub_61311c() {
 
 // 0x613264 — __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x613264: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -391,7 +371,6 @@ pub fn stub_613264() {
 // 0x613304 — __ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x613304: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_613304() {
@@ -399,7 +378,6 @@ pub fn stub_613304() {
 
 // 0x613448 — __ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x613448: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -409,7 +387,6 @@ pub fn stub_613448() {
 // 0x6135a0 — __ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x6135a0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_6135a0() {
@@ -417,7 +394,6 @@ pub fn stub_6135a0() {
 
 // 0x6136e4 — __ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x6136e4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -427,7 +403,6 @@ pub fn stub_6136e4() {
 // 0x61383c — __ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x61383c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_61383c() {
@@ -435,7 +410,6 @@ pub fn stub_61383c() {
 
 // 0x613980 — __ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn168_N3RBX10Reflection9DescribedINS_7GuiMainELZNS_8sGuiMainEENS_14FactoryProductIS2_NS_9ScreenGuiELZNS_8sGuiMainEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x613980: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -561,7 +535,6 @@ pub fn stub_613fd0() {
 // 0x613fe8 — __ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x613fe8: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_613fe8() {
@@ -569,7 +542,6 @@ pub fn stub_613fe8() {
 
 // 0x613fec — __ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x613fec: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -579,7 +551,6 @@ pub fn stub_613fec() {
 // 0x61408c — __ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x61408c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_61408c() {
@@ -587,7 +558,6 @@ pub fn stub_61408c() {
 
 // 0x614094 — __ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x614094: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -597,7 +567,6 @@ pub fn stub_614094() {
 // 0x614138 — __ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: 
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x614138: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_614138() {
@@ -605,7 +574,6 @@ pub fn stub_614138() {
 
 // 0x614140 — __ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: 
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_9ScreenGuiELZNS_10sScreenGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x614140: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -804,7 +772,6 @@ pub fn stub_615424() {
 // 0x61558c — __ZN3RBX4Name7declareILZNS_6sMouseEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_6sMouseEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_6sMouseEEEERKS0_v")]
 // was: __ZN3RBX4Name7declareILZNS_6sMouseEEEERKS0_v
 // IDA 0x61558c: 20 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_61558c() {
@@ -813,7 +780,6 @@ pub fn stub_61558c() {
 // 0x6155d0 — __ZN3RBX4Name13callDoDeclareILZNS_6sMouseEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sMouseEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sMouseEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_6sMouseEEEEvv
 // IDA 0x6155d0: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_6155d0() {
@@ -821,7 +787,6 @@ pub fn stub_6155d0() {
 
 // 0x6155d4 — __ZN3RBX4Name9doDeclareILZNS_6sMouseEEEERKS0_v
 // type: 
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sMouseEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sMouseEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_6sMouseEEEERKS0_v
 // IDA 0x6155d4: 73 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.

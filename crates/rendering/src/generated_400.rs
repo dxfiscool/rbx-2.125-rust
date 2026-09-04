@@ -339,7 +339,6 @@ pub fn stub_5f6948() {
 
 // 0x5f6968 — sub_5F6968
 #[doc(alias = "sub_5F6968")]
-#[doc(alias = "sub_5F6968")]
 // was: sub_5F6968
 // IDA 0x5f6968: 8 insns (ADDS..SUBS). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5f6968() {

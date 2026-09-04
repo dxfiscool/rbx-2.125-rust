@@ -56,7 +56,6 @@ pub fn stub_573a60() {
 
 // 0x573b00 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
 // IDA 0x573b00: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_573b00() {
@@ -108,7 +107,6 @@ pub fn stub_573b30() {
 }
 
 // 0x573bd4 — __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
 // IDA 0x573bd4: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -162,7 +160,6 @@ pub fn stub_573d34() {
 
 // 0x573d38 — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
 // IDA 0x573d38: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_573d38() {
@@ -187,7 +184,6 @@ pub fn stub_573d50() {
 }
 
 // 0x573df4 — __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
 // IDA 0x573df4: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -231,7 +227,6 @@ pub fn stub_573fe4() {
 }
 
 // 0x574128 — __ZNK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
 // IDA 0x574128: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -284,7 +279,6 @@ pub fn stub_57428c() {
 }
 
 // 0x5743d0 — __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
 // IDA 0x5743d0: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -383,7 +377,6 @@ pub fn stub_57486c() {
 
 // 0x57490c — __ZNK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv")]
 // was: __ZNK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv
 // IDA 0x57490c: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_57490c() {
@@ -408,7 +401,6 @@ pub fn stub_57493c() {
 }
 
 // 0x5749e0 — __ZThn32_NK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEE12getClassNameEv
 // IDA 0x5749e0: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -435,14 +427,12 @@ pub fn stub_574a10() {
 
 // 0x574ab4 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev
 // IDA 0x574ab4: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_574ab4() {
 }
 
 // 0x574ab8 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev
 // IDA 0x574ab8: 1 insn (B.W) — branch/return thunk, no state change.
@@ -451,14 +441,12 @@ pub fn stub_574ab8() {
 
 // 0x574abc — __ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv
 // IDA 0x574abc: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_574abc() {
 }
 
 // 0x574ac0 — __ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v
 // IDA 0x574ac0: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -468,7 +456,6 @@ pub fn stub_574ac0() {
 // 0x574ba0 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev
 // IDA 0x574ba0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_574ba0() {
@@ -477,14 +464,12 @@ pub fn stub_574ba0() {
 // 0x574c3c — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv
 // IDA 0x574c3c: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_574c3c() {
 }
 
 // 0x574cc4 — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv
 // IDA 0x574cc4: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -518,14 +503,12 @@ pub fn stub_574f80() {
 
 // 0x575088 — __ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv
 // IDA 0x575088: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_575088() {
 }
 
 // 0x57508c — __ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v
 // IDA 0x57508c: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -535,7 +518,6 @@ pub fn stub_57508c() {
 // 0x57516c — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev
 // IDA 0x57516c: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_57516c() {
@@ -543,7 +525,6 @@ pub fn stub_57516c() {
 
 // 0x5753b0 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv
 // type: int(void)
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv
 // IDA 0x5753b0: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -553,7 +534,6 @@ pub fn stub_5753b0() {
 // 0x575424 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev
 // IDA 0x575424: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_575424() {
@@ -562,14 +542,12 @@ pub fn stub_575424() {
 // 0x5754c0 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv
 // IDA 0x5754c0: 42 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_5754c0() {
 }
 
 // 0x575548 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv
 // IDA 0x575548: 110 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -651,14 +629,12 @@ pub fn stub_575a3c() {
 
 // 0x575a40 — __ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv
 // IDA 0x575a40: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_575a40() {
 }
 
 // 0x575a44 — __ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v")]
 // was: __ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v
 // IDA 0x575a44: 72 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
@@ -668,7 +644,6 @@ pub fn stub_575a44() {
 // 0x575b24 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev
 // IDA 0x575b24: 184 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_575b24() {
@@ -677,14 +652,12 @@ pub fn stub_575b24() {
 // 0x575d68 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv
 // IDA 0x575d68: 37 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_575d68() {
 }
 
 // 0x575ddc — __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x575ddc: 1 insn (B.W) — branch/return thunk, no state change.
@@ -693,14 +666,12 @@ pub fn stub_575ddc() {
 
 // 0x575de0 — __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x575de0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_575de0() {
 }
 
 // 0x575e80 — __ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x575e80: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
@@ -709,7 +680,6 @@ pub fn stub_575e80() {
 
 // 0x575e88 — __ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x575e88: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_575e88() {
@@ -717,14 +687,12 @@ pub fn stub_575e88() {
 
 // 0x575f2c — __ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // IDA 0x575f2c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
 pub fn stub_575f2c() {
 }
 
 // 0x575f34 — __ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_18StarterPackServiceELZNS_19sStarterPackServiceEENS_17NonFactoryProductINS_6HopperELZNS_19sStarterPackServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // IDA 0x575f34: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.

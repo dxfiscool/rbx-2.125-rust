@@ -794,7 +794,7 @@ pub fn stub_0xd3d568(target: &mut ParticleEmitter, value: &str) {
 // IDA 0xd43b58: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b58(cmd: CmdEmittedEmitterQuota) {
     // IDA 0xd43b58: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b5c — __ZN4Ogre14ParticleSystem8CmdWidthD1Ev
@@ -805,7 +805,7 @@ pub fn stub_0xd43b58(cmd: CmdEmittedEmitterQuota) {
 // IDA 0xd43b5c: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b5c(cmd: CmdWidth) {
     // IDA 0xd43b5c: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b60 — __ZN4Ogre14ParticleSystem11CmdRendererD1Ev
@@ -816,7 +816,7 @@ pub fn stub_0xd43b5c(cmd: CmdWidth) {
 // IDA 0xd43b60: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b60(cmd: CmdRenderer) {
     // IDA 0xd43b60: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b64 — __ZN4Ogre14ParticleSystem9CmdSortedD1Ev
@@ -827,7 +827,7 @@ pub fn stub_0xd43b60(cmd: CmdRenderer) {
 // IDA 0xd43b64: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b64(cmd: CmdSorted) {
     // IDA 0xd43b64: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b68 — __ZN4Ogre14ParticleSystem13CmdLocalSpaceD1Ev
@@ -838,7 +838,7 @@ pub fn stub_0xd43b64(cmd: CmdSorted) {
 // IDA 0xd43b68: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b68(cmd: CmdLocalSpace) {
     // IDA 0xd43b68: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b6c — __ZN4Ogre14ParticleSystem20CmdIterationIntervalD1Ev
@@ -849,7 +849,7 @@ pub fn stub_0xd43b68(cmd: CmdLocalSpace) {
 // IDA 0xd43b6c: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b6c(cmd: CmdIterationInterval) {
     // IDA 0xd43b6c: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b70 — __ZN4Ogre14ParticleSystem20CmdNonvisibleTimeoutD1Ev
@@ -860,7 +860,7 @@ pub fn stub_0xd43b6c(cmd: CmdIterationInterval) {
 // IDA 0xd43b70: 1 insn (BX) — branch/return thunk, no state change.
 pub fn stub_0xd43b70(cmd: CmdNonvisibleTimeout) {
     // IDA 0xd43b70: 2 insns — D1 body empty; stateless `ParamCommand`, nothing to run down.
-    drop(cmd);
+    let _ = cmd;
 }
 
 // 0xd43b74 — __ZN4Ogre9RadixSortISt4listIPNS_8ParticleENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEES3_fED1Ev

@@ -13,7 +13,6 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: void __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")]
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 // IDA 0x89e2d8: 99 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e2d8() {
 }
@@ -22,7 +21,6 @@ pub fn stub_89e2d8() {
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
 #[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm")]
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
 // IDA 0x89e400: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e400() {
 }
@@ -31,7 +29,6 @@ pub fn stub_89e400() {
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm")]
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
 // IDA 0x89e490: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e490() {
 }
@@ -40,7 +37,6 @@ pub fn stub_89e490() {
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISL_EEPNS1_10ptr_bucketE")]
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
 // IDA 0x89e4bc: 34 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e4bc() {
 }
@@ -49,7 +45,6 @@ pub fn stub_89e4bc() {
 // type: std::string *__fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>>>::construct(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEEEEE9constructEv")]
-#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>>>::construct(void)")]
 // IDA 0x89e514: 26 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e514() {
 }
@@ -58,7 +53,6 @@ pub fn stub_89e514() {
 // type: _DWORD *__fastcall(_DWORD *, const std::string *, const shared_count *)
 #[doc(alias = "std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>::pair(std::string const&,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>> const&)")]
 #[doc(alias = "__ZNSt4pairISsS_ImN5boost10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEC2ERKSsRKS6_")]
-#[doc(alias = "std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>::pair(std::string const&,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>> const&)")]
 // IDA 0x89e550: 77 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e550() {
 }
@@ -67,7 +61,6 @@ pub fn stub_89e550() {
 // type: _DWORD *__fastcall(int, const shared_count *)
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>,std::allocator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>> const&)")]
 #[doc(alias = "__ZNSt4listISt4pairISsS0_ImN5boost10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEESaIS8_EE14_M_create_nodeERKS8_")]
-#[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>,std::allocator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>> const&)")]
 // IDA 0x89e628: 106 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e628() {
 }
@@ -76,7 +69,6 @@ pub fn stub_89e628() {
 // type: void __fastcall(int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")]
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 // IDA 0x89e744: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e744() {
 }
@@ -85,7 +77,6 @@ pub fn stub_89e744() {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::ControlledLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::ControlledLRUCache(unsigned long,RBX::CacheSizeEnforceMethod)")]
 #[doc(alias = "__ZN3RBX18ControlledLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEEC2EmNS_22CacheSizeEnforceMethodE")]
-#[doc(alias = "RBX::ControlledLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::ControlledLRUCache(unsigned long,RBX::CacheSizeEnforceMethod)")]
 // IDA 0x89e77c: 194 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e77c() {
 }
@@ -94,7 +85,6 @@ pub fn stub_89e77c() {
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::LRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::LRUCache(void)")]
 #[doc(alias = "__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEEC2Ev")]
-#[doc(alias = "RBX::LRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::LRUCache(void)")]
 // IDA 0x89e984: 81 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89e984() {
 }
@@ -103,7 +93,6 @@ pub fn stub_89e984() {
 // type: int __fastcall(int result, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>> const&)")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSI_RKSK_RKSaINS1_8ptr_nodeISF_EEE")]
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>>>>>> const&)")]
 // IDA 0x89ea64: 36 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89ea64() {
 }
@@ -112,7 +101,6 @@ pub fn stub_89ea64() {
 // type: int __fastcall(int result, unsigned int)
 #[doc(alias = "RBX::MemEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::resize(unsigned long)")]
 #[doc(alias = "__ZN3RBX19MemEnforcedLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6resizeEm")]
-#[doc(alias = "RBX::MemEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::resize(unsigned long)")]
 // IDA 0x89ead0: 39 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89ead0() {
 }
@@ -121,7 +109,6 @@ pub fn stub_89ead0() {
 // type: void __fastcall(_DWORD *, const std::string *, const shared_count *, int)
 #[doc(alias = "RBX::MemEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::insert(std::string const&,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem> const&,unsigned long)")]
 #[doc(alias = "__ZN3RBX19MemEnforcedLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6insertERKSsRKS5_m")]
-#[doc(alias = "RBX::MemEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::insert(std::string const&,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem> const&,unsigned long)")]
 // IDA 0x89eb34: 39 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89eb34() {
 }
@@ -130,7 +117,6 @@ pub fn stub_89eb34() {
 // type: unsigned int __fastcall(unsigned int result, unsigned int)
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::resize(unsigned long)")]
 #[doc(alias = "__ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6resizeEm")]
-#[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::resize(unsigned long)")]
 // IDA 0x89eb9c: 47 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89eb9c() {
 }
@@ -139,7 +125,6 @@ pub fn stub_89eb9c() {
 // type: unsigned int __fastcall(_DWORD *, const std::string *, const shared_count *, int)
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::insert(std::string const&,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem> const&,unsigned long)")]
 #[doc(alias = "__ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6insertERKSsRKS5_m")]
-#[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem>>::insert(std::string const&,rbx_core::SharedPtr<RBX::CacheableContentProvider::CachedItem> const&,unsigned long)")]
 // IDA 0x89ec14: 45 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89ec14() {
 }
@@ -148,7 +133,6 @@ pub fn stub_89ec14() {
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function2<RBX::TaskScheduler::StepResult,std::string,rbx_core::SharedPtr<std::string const>>::clear(void)")]
 #[doc(alias = "__ZN5boost9function2IN3RBX13TaskScheduler10StepResultESsNS_10shared_ptrIKSsEEE5clearEv")]
-#[doc(alias = "boost::function2<RBX::TaskScheduler::StepResult,std::string,rbx_core::SharedPtr<std::string const>>::clear(void)")]
 // IDA 0x89eee4: 20 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_89eee4() {
 }

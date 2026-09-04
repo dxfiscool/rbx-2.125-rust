@@ -821,7 +821,6 @@ pub fn stub_64b98c() {
 // 0x64baa0 — __ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EE15classDescriptorEv
 // IDA 0x64baa0: 92 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_64baa0() {
@@ -902,7 +901,6 @@ pub fn stub_64be34() {
 // 0x64bed8 — __ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv")]
 // was: __ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv
 // IDA 0x64bed8: 1 insn (B.W) — branch/return thunk, no state change.
 pub fn stub_64bed8() {
@@ -911,7 +909,6 @@ pub fn stub_64bed8() {
 // 0x64bedc — __ZN3RBX10Reflection9DescribedI26TotalCountTimeIntervalItemLZ27sTotalCountTimeIntervalItemENS_17NonFactoryProductINS_5Stats4ItemELZ27sTotalCountTimeIntervalItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI26TotalCountTimeIntervalItemLZ27sTotalCountTimeIntervalItemENS_17NonFactoryProductINS_5Stats4ItemELZ27sTotalCountTimeIntervalItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedI26TotalCountTimeIntervalItemLZ27sTotalCountTimeIntervalItemENS_17NonFactoryProductINS_5Stats4ItemELZ27sTotalCountTimeIntervalItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedI26TotalCountTimeIntervalItemLZ27sTotalCountTimeIntervalItemENS_17NonFactoryProductINS_5Stats4ItemELZ27sTotalCountTimeIntervalItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // IDA 0x64bedc: 91 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_64bedc() {
@@ -919,7 +916,6 @@ pub fn stub_64bedc() {
 
 // 0x64bffc — __ZN3RBX10Reflection9DescribedI13ProfilingItemLZ14sProfilingItemENS_17NonFactoryProductINS_5Stats4ItemELZ14sProfilingItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "__ZN3RBX10Reflection9DescribedI13ProfilingItemLZ14sProfilingItemENS_17NonFactoryProductINS_5Stats4ItemELZ14sProfilingItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI13ProfilingItemLZ14sProfilingItemENS_17NonFactoryProductINS_5Stats4ItemELZ14sProfilingItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedI13ProfilingItemLZ14sProfilingItemENS_17NonFactoryProductINS_5Stats4ItemELZ14sProfilingItemEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // IDA 0x64bffc: 91 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.

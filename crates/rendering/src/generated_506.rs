@@ -12,7 +12,6 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0xf25a50 — __ZN4Ogre16RenderQueueGroup13addRenderableEPNS_10RenderableEPNS_9TechniqueEt$shim
 // type: int __fastcall(Ogre::RenderQueueGroup *this, Ogre::Renderable *, Ogre::Technique *, unsigned __int16)
 #[doc(alias = "__ZN4Ogre16RenderQueueGroup13addRenderableEPNS_10RenderableEPNS_9TechniqueEt$shim")]
-#[doc(alias = "__ZN4Ogre16RenderQueueGroup13addRenderableEPNS_10RenderableEPNS_9TechniqueEt$shim")]
 // was: __ZN4Ogre16RenderQueueGroup13addRenderableEPNS_10RenderableEPNS_9TechniqueEt$shim
 // IDA 0xf25a50: 3 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
 pub fn stub_0xf25a50() {
