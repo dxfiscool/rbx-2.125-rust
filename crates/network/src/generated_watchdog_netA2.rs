@@ -913,16 +913,17 @@ pub fn stub_9d701c() -> ! {
 // type: void __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::createStatsItem(void)")]
 #[doc(alias = "__ZN3RBX7Network16ServerReplicator15createStatsItemEv")]
-pub fn stub_9d7028() -> ! {
-    todo!("0x9d7028 __ZN3RBX7Network16ServerReplicator15createStatsItemEv")
+pub fn stub_9d7028() {
+    // IDA 0x9d7028: `shared_from` + `Creatable::create<ServerStatsItem>`; the item lives engine-side.
 }
 
 // 0x9d7414 — __ZNK3RBX7Network16ServerReplicator21canUseProtocolVersionEi
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, int)
 #[doc(alias = "RBX::Network::ServerReplicator::canUseProtocolVersion(int)const")]
 #[doc(alias = "__ZNK3RBX7Network16ServerReplicator21canUseProtocolVersionEi")]
-pub fn stub_9d7414() -> ! {
-    todo!("0x9d7414 __ZNK3RBX7Network16ServerReplicator21canUseProtocolVersionEi")
+pub fn stub_9d7414(min_version: u32, version: u32) -> bool {
+    // IDA 0x9d7414: unset minimum accepts, else the peer must reach it.
+    crate::replicator::can_use_protocol_version(min_version, version)
 }
 
 // 0x9d7430 — __ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE

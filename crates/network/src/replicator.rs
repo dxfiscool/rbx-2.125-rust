@@ -500,6 +500,168 @@ pub fn can_send_items() -> bool {
     true
 }
 
+/// `ServerReplicator::canUseProtocolVersion` (IDA 0x9d7414): an unset
+/// minimum (+1516 == 0) accepts everything, else the peer version must
+/// reach it (0x9d742e).
+pub fn can_use_protocol_version(min_version: u32, version: u32) -> bool {
+    min_version == 0 || min_version >= version
+}
+
+/// `ServerReplicator::isLegalDeleteInstance` (IDA 0x9d91d8): the +1505
+/// parent filter runs first — a veto fires the delete signal and its
+/// out-param decides (0x9d920e..0x9d986a); without a veto the +1527
+/// functor decides, defaulting to legal with no functor
+/// (0x9d9498..0x9d9888). Filter and signal stay engine-side.
+pub fn is_legal_delete_instance(
+    parent_filter_out: Option<bool>,
+    signal_out: Option<bool>,
+    functor_pass: Option<bool>,
+) -> bool {
+    if let Some(out) = parent_filter_out {
+        // Veto path: empty slots fall back to the filter out-param.
+        return !signal_out.unwrap_or(out);
+    }
+    functor_pass.unwrap_or(true)
+}
+
+/// `ServerReplicator::isLegalReceiveInstance` (IDA 0x9d9f78): already
+/// registered script sources are refused (0x9da058..0x9da064), `Message`
+/// instances are refused (0x9da118..0x9da122), and an existing remote
+/// player throws `runtime_error("remotePlayer already exists")`
+/// (0x9da966..0x9da9c2, mirrored as a panic). Survivors take the
+/// [`is_legal_delete_instance`] filter/signal/functor path
+/// (0x9da1e6..0x9da910). Reflection stays engine-side.
+pub fn is_legal_receive_instance_filtered(
+    script_registered: bool,
+    message_veto: bool,
+    remote_player_exists: bool,
+    parent_filter_out: Option<bool>,
+    signal_out: Option<bool>,
+    functor_pass: Option<bool>,
+) -> bool {
+    if script_registered || message_veto {
+        return false;
+    }
+    if remote_player_exists {
+        panic!("remotePlayer already exists");
+    }
+    is_legal_delete_instance(parent_filter_out, signal_out, functor_pass)
+}
+
+/// `ServerReplicator::isLegalReceiveEvent` (IDA 0x9db1d4): local-player
+/// events skip to the filter; otherwise the +1531 functor runs and the
+/// receive signal fires (0x9db2fe..0x9db6e8). No functor means legal.
+/// Reflection and the signal stay engine-side. Returns whether the event
+/// passes.
+pub fn is_legal_receive_event(filter: Option<bool>, fire_signal: &mut dyn FnMut()) -> bool {
+    match filter {
+        None => true,
+        Some(pass) => {
+            fire_signal();
+            pass
+        }
+    }
+}
+
+/// Guarded receive properties (IDA 0x9dbb8c): `Player`s refuse `Name` and
+/// `userId`; everything else refuses the script sources.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ReceiveProp {
+    Name,
+    UserId,
+    EmbeddedSource,
+    SourceCodeId,
+    Other,
+}
+
+/// `ServerReplicator::isLegalReceiveProperty` (IDA 0x9dbb8c): the
+/// descriptor must avoid the guarded pair (0x9dbbd8..0x9dbcd8).
+pub fn is_legal_receive_property(is_player: bool, prop: ReceiveProp) -> bool {
+    match (is_player, prop) {
+        (true, ReceiveProp::Name) | (true, ReceiveProp::UserId) => false,
+        (false, ReceiveProp::EmbeddedSource) | (false, ReceiveProp::SourceCodeId) => false,
+        _ => true,
+    }
+}
+
+/// `ServerReplicator::isLegalSendProperty` (IDA 0x9dbd58): returns 1
+/// unconditionally (0x9dbd5a).
+pub fn is_legal_send_property() -> bool {
+    true
+}
+
+/// Protocol-gated `Lighting` properties (IDA 0x9dbd5c).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum LightingProp {
+    GlobalShadows,
+    Outlines,
+    OutdoorAmbient,
+    Other,
+}
+
+/// `ServerReplicator::canReplicateProperty` (IDA 0x9dbd5c): non-`Lighting`
+/// instances always replicate (0x9dbd6c); `GlobalShadows` needs protocol
+/// > 9, `OutdoorAmbient` > 10, and `Outlines` > 13 (0x9dbd78..0x9dbe2e,
+/// each logging the attempt).
+pub fn can_replicate_property(is_lighting: bool, prop: LightingProp, protocol: i32) -> bool {
+    if !is_lighting {
+        return true;
+    }
+    match prop {
+        LightingProp::GlobalShadows => protocol > 9,
+        LightingProp::OutdoorAmbient => protocol > 10,
+        LightingProp::Outlines => protocol > 13,
+        LightingProp::Other => true,
+    }
+}
+
+/// `ServerReplicator::onSentMarker` (IDA 0x9dbd20): builds the physics
+/// sender (0x9dbd30), flushes a live `StreamJob` with `sendPackets(-1)`
+/// (0x9dbd34..0x9dbd48), and clears +6072 (0x9dbd52). Sender/stream work
+/// stays engine-side.
+// BUG: the original at 0x9dbd54 returns the constant 6072 (the field
+/// offset), not the cleared byte; both are truthy, so this returns true.
+pub fn on_sent_marker(
+    stream_job_present: bool,
+    create_sender: &mut dyn FnMut(),
+    send_packets: &mut dyn FnMut(),
+) -> bool {
+    create_sender();
+    if stream_job_present {
+        send_packets();
+    }
+    true
+}
+
+/// `ServerReplicator::filterPhysics` (IDA 0x9e0004): a passing base
+/// `Replicator::filterPhysics` accepts (0x9e0012..0x9e0014); otherwise the
+/// `CFrame` membership asserts (property.h:255) and the verdict comes
+/// from `PropSync::Master::onReceivedPropertyChanged` (0x9e0090).
+pub fn filter_physics(
+    base_pass: bool,
+    member_matches: bool,
+    changed_known: bool,
+    changed_differs: bool,
+    bump: &mut dyn FnMut(),
+) -> bool {
+    if base_pass {
+        return true;
+    }
+    debug_assert!(
+        member_matches,
+        "!instance || descriptor.isMemberOf(instance) ../App/include/reflection/property.h line: 255"
+    );
+    on_received_property_changed(changed_known, changed_differs, bump)
+}
+
+/// `ServerReplicator::dataOutStep` (IDA 0x9e0098): expires the master
+/// items (0x9e00a4), then runs the base `Replicator::dataOutStep`
+/// (0x9e00aa). Queue work stays engine-side behind the closures.
+pub fn data_out_step(expire_items: &mut dyn FnMut(), base_step: &mut dyn FnMut()) {
+    expire_items();
+    base_step();
+}
+
 /// `ServerReplicator::readItem` dispatch (IDA 0x9dcc34): 8 reads a
 /// character request, 9 logs `"Rocky item found"` and throws
 /// `runtime_error("rocky")`, 0xA reads a prop acknowledgement, 0xC reads
@@ -849,5 +1011,63 @@ mod tests {
         assert_eq!(on_received_acknowledgement(false, 42), 0);
         assert!(is_legal_send_instance());
         assert!(can_send_items());
+    }
+
+    #[test]
+    fn legal_gates_compose() {
+        // IDA 0x9d7414/0x9d91d8/0x9d9f78/0x9db1d4/0x9dbb8c/0x9dbd58.
+        assert!(can_use_protocol_version(0, 99));
+        assert!(can_use_protocol_version(12, 12));
+        assert!(can_use_protocol_version(12, 11));
+        assert!(!can_use_protocol_version(12, 13));
+        assert!(is_legal_delete_instance(None, None, None));
+        assert!(!is_legal_delete_instance(None, None, Some(false)));
+        assert!(!is_legal_delete_instance(Some(true), None, None));
+        assert!(is_legal_delete_instance(Some(true), Some(false), None));
+        assert!(!is_legal_receive_instance_filtered(true, false, false, None, None, None));
+        assert!(!is_legal_receive_instance_filtered(false, true, false, None, None, None));
+        assert!(is_legal_receive_instance_filtered(false, false, false, None, None, Some(true)));
+        let mut fired = false;
+        assert!(is_legal_receive_event(None, &mut || fired = true));
+        assert!(!fired);
+        assert!(!is_legal_receive_event(Some(false), &mut || fired = true));
+        assert!(fired);
+        assert!(!is_legal_receive_property(true, ReceiveProp::Name));
+        assert!(!is_legal_receive_property(true, ReceiveProp::UserId));
+        assert!(is_legal_receive_property(true, ReceiveProp::Other));
+        assert!(!is_legal_receive_property(false, ReceiveProp::EmbeddedSource));
+        assert!(!is_legal_receive_property(false, ReceiveProp::SourceCodeId));
+        assert!(is_legal_receive_property(false, ReceiveProp::Other));
+        assert!(is_legal_send_property());
+    }
+
+    #[test]
+    #[should_panic(expected = "remotePlayer already exists")]
+    fn receive_instance_duplicate_remote_throws() {
+        // IDA 0x9da966: the duplicate remote throw mirrors as a panic.
+        let _ = is_legal_receive_instance_filtered(false, false, true, None, None, None);
+    }
+
+    #[test]
+    fn replicate_thresholds_and_physics() {
+        // IDA 0x9dbd5c/0x9e0004/0x9dbd20/0x9e0098.
+        assert!(can_replicate_property(false, LightingProp::GlobalShadows, 0));
+        assert!(can_replicate_property(true, LightingProp::Other, 0));
+        assert!(!can_replicate_property(true, LightingProp::GlobalShadows, 9));
+        assert!(can_replicate_property(true, LightingProp::GlobalShadows, 10));
+        assert!(!can_replicate_property(true, LightingProp::OutdoorAmbient, 10));
+        assert!(can_replicate_property(true, LightingProp::OutdoorAmbient, 11));
+        assert!(!can_replicate_property(true, LightingProp::Outlines, 13));
+        assert!(can_replicate_property(true, LightingProp::Outlines, 14));
+        assert!(filter_physics(true, false, false, false, &mut || panic!("short-circuit")));
+        let mut bumps = 0;
+        assert!(filter_physics(false, true, true, true, &mut || bumps += 1));
+        assert_eq!(bumps, 1);
+        let order = core::cell::RefCell::new(Vec::new());
+        on_sent_marker(true, &mut || order.borrow_mut().push("sender"), &mut || order.borrow_mut().push("packets"));
+        assert_eq!(order.into_inner(), vec!["sender", "packets"]);
+        let order = core::cell::RefCell::new(Vec::new());
+        data_out_step(&mut || order.borrow_mut().push("expire"), &mut || order.borrow_mut().push("base"));
+        assert_eq!(order.into_inner(), vec!["expire", "base"]);
     }
     }

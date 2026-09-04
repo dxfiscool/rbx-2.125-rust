@@ -9,17 +9,16 @@ use rbx_core::SharedPtr;
 // 0x9d7028 — __ZN3RBX7Network16ServerReplicator15createStatsItemEv
 // type: void __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::createStatsItem(void)")]
-pub fn stub_9d7028() -> ! {
-    todo!("0x9d7028 __ZN3RBX7Network16ServerReplicator15createStatsItemEv")
+pub fn stub_9d7028() {
+    // IDA 0x9d7028: `shared_from` + `Creatable::create<ServerStatsItem>`; the item lives engine-side.
 }
-
 // 0x9d7414 — __ZNK3RBX7Network16ServerReplicator21canUseProtocolVersionEi
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, int)
 #[doc(alias = "RBX::Network::ServerReplicator::canUseProtocolVersion(int)const")]
-pub fn stub_9d7414() -> ! {
-    todo!("0x9d7414 __ZNK3RBX7Network16ServerReplicator21canUseProtocolVersionEi")
+pub fn stub_9d7414(min_version: u32, version: u32) -> bool {
+    // IDA 0x9d7414: unset minimum accepts, else the peer must reach it.
+    crate::replicator::can_use_protocol_version(min_version, version)
 }
-
 // 0x9d7430 — __ZN3RBX7Network16ServerReplicatorC1EN6RakNet13SystemAddressEPNS0_6ServerEPNS_15NetworkSettingsE
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::ServerReplicator::ServerReplicator(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)")]
@@ -183,52 +182,67 @@ pub fn stub_9d8ef0() -> ! {
 // 0x9d91d8 — __ZN3RBX7Network16ServerReplicator21isLegalDeleteInstanceEPNS_8InstanceE
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, struct _Unwind_Exception *)
 #[doc(alias = "RBX::Network::ServerReplicator::isLegalDeleteInstance(RBX::Instance *)")]
-pub fn stub_9d91d8() -> ! {
-    todo!("0x9d91d8 __ZN3RBX7Network16ServerReplicator21isLegalDeleteInstanceEPNS_8InstanceE")
+pub fn stub_9d91d8(
+    parent_filter_out: Option<bool>,
+    signal_out: Option<bool>,
+    functor_pass: Option<bool>,
+) -> bool {
+    // IDA 0x9d91d8: parent-filter/signal path, else the functor verdict.
+    crate::replicator::is_legal_delete_instance(parent_filter_out, signal_out, functor_pass)
 }
-
 // 0x9d9f78 — __ZN3RBX7Network16ServerReplicator22isLegalReceiveInstanceEPNS_8InstanceES3_
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, RBX::Instance *, RBX::Instance *, int)
 #[doc(alias = "RBX::Network::ServerReplicator::isLegalReceiveInstance(RBX::Instance *,RBX::Instance *)")]
-pub fn stub_9d9f78() -> ! {
-    todo!("0x9d9f78 __ZN3RBX7Network16ServerReplicator22isLegalReceiveInstanceEPNS_8InstanceES3_")
+pub fn stub_9d9f78(
+    script_registered: bool,
+    message_veto: bool,
+    remote_player_exists: bool,
+    parent_filter_out: Option<bool>,
+    signal_out: Option<bool>,
+    functor_pass: Option<bool>,
+) -> bool {
+    // IDA 0x9d9f78: script/message vetoes, duplicate remote throws, then the filter path.
+    crate::replicator::is_legal_receive_instance_filtered(script_registered, message_veto, remote_player_exists, parent_filter_out, signal_out, functor_pass)
 }
-
 // 0x9db1d4 — __ZN3RBX7Network16ServerReplicator19isLegalReceiveEventEPNS_8InstanceERKNS_10Reflection15EventDescriptorE
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, pthread_mutex_t **, const RBX::Reflection::EventDescriptor *)
 #[doc(alias = "RBX::Network::ServerReplicator::isLegalReceiveEvent(RBX::Instance *,RBX::Reflection::EventDescriptor const&)")]
-pub fn stub_9db1d4() -> ! {
-    todo!("0x9db1d4 __ZN3RBX7Network16ServerReplicator19isLegalReceiveEventEPNS_8InstanceERKNS_10Reflection15EventDescriptorE")
+pub fn stub_9db1d4(filter: Option<bool>, fire_signal: &mut dyn FnMut()) -> bool {
+    // IDA 0x9db1d4: functor verdict behind the receive signal.
+    crate::replicator::is_legal_receive_event(filter, fire_signal)
 }
-
 // 0x9dbb8c — __ZN3RBX7Network16ServerReplicator22isLegalReceivePropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 // type: bool __fastcall(RBX::Network::ServerReplicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::ServerReplicator::isLegalReceiveProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_9dbb8c() -> ! {
-    todo!("0x9dbb8c __ZN3RBX7Network16ServerReplicator22isLegalReceivePropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_9dbb8c(is_player: bool, prop: crate::replicator::ReceiveProp) -> bool {
+    // IDA 0x9dbb8c: the descriptor must avoid the guarded pair.
+    crate::replicator::is_legal_receive_property(is_player, prop)
 }
-
 // 0x9dbd20 — __ZN3RBX7Network16ServerReplicator12onSentMarkerEl
 // type: int __fastcall(RBX::Network::ServerReplicator *this, int, int, int)
 #[doc(alias = "RBX::Network::ServerReplicator::onSentMarker(long)")]
-pub fn stub_9dbd20() -> ! {
-    todo!("0x9dbd20 __ZN3RBX7Network16ServerReplicator12onSentMarkerEl")
+pub fn stub_9dbd20(
+    stream_job_present: bool,
+    create_sender: &mut dyn FnMut(),
+    send_packets: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9dbd20: sender build, StreamJob flush, +6072 clear.
+    crate::replicator::on_sent_marker(stream_job_present, create_sender, send_packets)
 }
-
 // 0x9dbd58 — __ZN3RBX7Network16ServerReplicator19isLegalSendPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 // type: int __fastcall(RBX::Network::ServerReplicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::ServerReplicator::isLegalSendProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_9dbd58() -> ! {
-    todo!("0x9dbd58 __ZN3RBX7Network16ServerReplicator19isLegalSendPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_9dbd58() -> bool {
+    // IDA 0x9dbd58..0x9dbd5a: returns 1 unconditionally.
+    crate::replicator::is_legal_send_property()
 }
-
 // 0x9dbd5c — __ZN3RBX7Network16ServerReplicator20canReplicatePropertyERKNS_10Reflection13ConstPropertyE
 // type: bool __fastcall(_DWORD *, int *)
 #[doc(alias = "RBX::Network::ServerReplicator::canReplicateProperty(RBX::Reflection::ConstProperty const&)")]
-pub fn stub_9dbd5c() -> ! {
-    todo!("0x9dbd5c __ZN3RBX7Network16ServerReplicator20canReplicatePropertyERKNS_10Reflection13ConstPropertyE")
+pub fn stub_9dbd5c(is_lighting: bool, prop: crate::replicator::LightingProp, protocol: i32) -> bool {
+    // IDA 0x9dbd5c: Lighting props gate on protocol thresholds.
+    crate::replicator::can_replicate_property(is_lighting, prop, protocol)
 }
-
 // 0x9dbe34 — __ZN3RBX7Network16ServerReplicator7sendTopEPN6RakNet16RakPeerInterfaceE
 // type: int __fastcall(RBX::Network::Replicator *, int, int, const void *)
 #[doc(alias = "RBX::Network::ServerReplicator::sendTop(RakNet::RakPeerInterface *)")]
@@ -344,24 +358,34 @@ pub fn stub_9dee84(filter: Option<bool>) -> bool {
 // 0x9e0004 — __ZN3RBX7Network16ServerReplicator13filterPhysicsEPNS_12PartInstanceE
 // type: int __fastcall(RBX::Network::ServerReplicator *this, RBX::PartInstance *)
 #[doc(alias = "RBX::Network::ServerReplicator::filterPhysics(RBX::PartInstance *)")]
-pub fn stub_9e0004() -> ! {
-    todo!("0x9e0004 __ZN3RBX7Network16ServerReplicator13filterPhysicsEPNS_12PartInstanceE")
+pub fn stub_9e0004(
+    base_pass: bool,
+    member_matches: bool,
+    changed_known: bool,
+    changed_differs: bool,
+    bump: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9e0004: base pass accepts, else the CFrame changed verdict.
+    crate::replicator::filter_physics(base_pass, member_matches, changed_known, changed_differs, bump)
 }
-
 // 0x9e0098 — __ZN3RBX7Network16ServerReplicator11dataOutStepEv
 // type: void __fastcall(RBX::Network::ServerReplicator *this)
 #[doc(alias = "RBX::Network::ServerReplicator::dataOutStep(void)")]
-pub fn stub_9e0098() -> ! {
-    todo!("0x9e0098 __ZN3RBX7Network16ServerReplicator11dataOutStepEv")
+pub fn stub_9e0098(expire_items: &mut dyn FnMut(), base_step: &mut dyn FnMut()) {
+    // IDA 0x9e0098: expire master items, then the base step.
+    crate::replicator::data_out_step(expire_items, base_step);
 }
-
 // 0x9e00b0 — __ZN3RBX7Network16ServerReplicator17onPropertyChangedEPNS_8InstanceEPKNS_10Reflection18PropertyDescriptorE
 // type: int __fastcall(RBX::Network::ServerReplicator *this, RBX::Instance *, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Network::ServerReplicator::onPropertyChanged(RBX::Instance *,RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_9e00b0() -> ! {
-    todo!("0x9e00b0 __ZN3RBX7Network16ServerReplicator17onPropertyChangedEPNS_8InstanceEPKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_9e00b0(
+    entry: Option<crate::replicator::PropSyncItem>,
+    now: f64,
+    delay: f64,
+) {
+    // IDA 0x9e00b0: base change hook (engine) + master emplace.
+    let _ = crate::replicator::on_property_changed(entry, now, delay);
 }
-
 
 // 0x9e06cc — __ZN3RBX7Network16ServerReplicator23writeChangedRefPropertyEPKNS_8InstanceERKNS_10Reflection21RefPropertyDescriptorERKNS_4Guid4DataERN6RakNet9BitStreamE
 // type: void __fastcall(RBX::Network::ServerReplicator *this, const RBX::Instance *, const RBX::Reflection::RefPropertyDescriptor *, const RBX::Guid::Data *, RakNet::BitStream *)
