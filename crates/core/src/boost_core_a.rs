@@ -745,169 +745,217 @@ pub fn stub_4573e4() {
 #[doc(alias = "rbx_core::SharedPtr<RBX::GuiRoot>::shared_ptr<RBX::GuiRoot,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x457c98 — __ZN5boost10shared_ptrIN3RBX7GuiRootEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::GuiRoot>::shared_ptr<RBX::GuiRoot,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_457c98() {
-    // IDA 0x457c98: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_457c98<T>(raw: Box<T>) -> SharedPtr<T> {
+    // IDA 0x457c98: *out = p; shared_count(out+1, p, deleter); if (p) _internal_accept_owner(p+40, out, p).
+    // Arc adoption covers the block; the weak owner is wired on first downgrade (cf. stub_0x457d60).
+    crate::shared_ptr::shared_ptr_from_raw(raw)
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiRoot,RBX::GuiRoot>(rbx_core::SharedPtr<RBX::GuiRoot> const*,RBX::GuiRoot *)const")]
 // 0x457d60 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7GuiRootES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiRoot,RBX::GuiRoot>(boost::shared_ptr<RBX::GuiRoot> const*,RBX::GuiRoot *)const
-pub fn stub_457d60() {
-    // IDA 0x457d60: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
+pub fn stub_457d60<T>(owner: &mut crate::WeakPtr<T>, shared: &SharedPtr<T>) {
+    // IDA 0x457d60: if (!weak.use_count()) { if (px) px += 36; weak = shared; } — adopt the owner once.
+    if owner.upgrade().is_none() {
+        *owner = SharedPtr::downgrade(shared);
+    }
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x457e4c — __ZN5boost6detail12shared_countC2IPN3RBX7GuiRootENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_457e4c() {
-    // IDA 0x457e4c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_457e4c<T>(px: Box<T>) -> crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x457e4c: *out = 0; b = new(0x14); b.use = 1; b.weak = 1; b.vtable set; b.px = p; *out = b.
+    crate::shared_ptr::ControlBlockPd::new(px, crate::shared_ptr::CreatableInstanceDeleter)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x457f54 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7GuiRootENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn stub_457f54() {
-    // IDA 0x457f54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x457f54: D1 per-family twin of 0x456430 (single-block dtor) — member dtors already ran; Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x457f58 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7GuiRootENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_457f58() {
-    // IDA 0x457f58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_457f58<T, D>(block: Box<crate::shared_ptr::ControlBlockPd<T, D>>) {
+    // IDA 0x457f58 [thunk]: operator delete(a1) — frees the 0x14 control block after D1 ran.
+    drop(block);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x457f5c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7GuiRootENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_457f5c() {
-    // IDA 0x457f5c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_457f5c<T>(value: Box<T>, predelete: impl FnOnce(&T)) {
+    // IDA 0x457f5c: v2 = *(this+12); predelete(v2); if (v2) v2->release() (virtual +8); D0 then frees the block.
+    predelete(&value);
+    drop(value);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x457f7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7GuiRootENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_457f7c() {
-    // IDA 0x457f7c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_457f7c<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x457f7c: r = this+16; if (ti.name != "N3RBX9CreatableINS_8InstanceEE7DeleterE") return 0; return r.
+    block.get_deleter(type_name)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x457f94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7GuiRootENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::GuiRoot *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_457f94() {
-    // IDA 0x457f94: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_457f94<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+) -> crate::shared_ptr::CreatableInstanceDeleter {
+    // IDA 0x457f94: return this+16 — unconditionally the stored deleter.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Workspace>::shared_ptr<RBX::Workspace,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x457f98 — __ZN5boost10shared_ptrIN3RBX9WorkspaceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::Workspace>::shared_ptr<RBX::Workspace,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_457f98() {
-    // IDA 0x457f98: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_457f98<T>(raw: Box<T>) -> SharedPtr<T> {
+    // IDA 0x457f98: *out = p; shared_count(out+1, p, deleter); if (p) _internal_accept_owner(p+40, out, p).
+    // Arc adoption covers the block; the weak owner is wired on first downgrade (cf. stub_0x458060).
+    crate::shared_ptr::shared_ptr_from_raw(raw)
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(rbx_core::SharedPtr<RBX::Workspace> const*,RBX::Workspace *)const")]
 // 0x458060 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9WorkspaceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(boost::shared_ptr<RBX::Workspace> const*,RBX::Workspace *)const
-pub fn stub_458060() {
-    // IDA 0x458060: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
+pub fn stub_458060<T>(owner: &mut crate::WeakPtr<T>, shared: &SharedPtr<T>) {
+    // IDA 0x458060: if (!weak.use_count()) { if (px) px += 36; weak = shared; } — adopt the owner once.
+    if owner.upgrade().is_none() {
+        *owner = SharedPtr::downgrade(shared);
+    }
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x45814c — __ZN5boost6detail12shared_countC2IPN3RBX9WorkspaceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_45814c() {
-    // IDA 0x45814c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_45814c<T>(px: Box<T>) -> crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x45814c: *out = 0; b = new(0x14); b.use = 1; b.weak = 1; b.vtable set; b.px = p; *out = b.
+    crate::shared_ptr::ControlBlockPd::new(px, crate::shared_ptr::CreatableInstanceDeleter)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x458254 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9WorkspaceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn stub_458254() {
-    // IDA 0x458254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x458254: D1 per-family twin of 0x456430 (single-block dtor) — member dtors already ran; Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x458258 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9WorkspaceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_458258() {
-    // IDA 0x458258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_458258<T, D>(block: Box<crate::shared_ptr::ControlBlockPd<T, D>>) {
+    // IDA 0x458258 [thunk]: operator delete(a1) — frees the 0x14 control block after D1 ran.
+    drop(block);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x45825c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9WorkspaceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_45825c() {
-    // IDA 0x45825c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_45825c<T>(value: Box<T>, predelete: impl FnOnce(&T)) {
+    // IDA 0x45825c: v2 = *(this+12); predelete(v2); if (v2) v2->release() (virtual +8); D0 then frees the block.
+    predelete(&value);
+    drop(value);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x45827c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9WorkspaceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_45827c() {
-    // IDA 0x45827c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_45827c<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x45827c: r = this+16; if (ti.name != "N3RBX9CreatableINS_8InstanceEE7DeleterE") return 0; return r.
+    block.get_deleter(type_name)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x458294 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9WorkspaceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_458294() {
-    // IDA 0x458294: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_458294<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+) -> crate::shared_ptr::CreatableInstanceDeleter {
+    // IDA 0x458294: return this+16 — unconditionally the stored deleter.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ChangeHistoryService> RBX::Creatable<RBX::Instance>::create<RBX::ChangeHistoryService>(void)")]
 // 0x45847c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20ChangeHistoryServiceEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::ChangeHistoryService> RBX::Creatable<RBX::Instance>::create<RBX::ChangeHistoryService>(void)
-pub fn stub_45847c() {
-    // IDA 0x45847c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_45847c<T>(make: impl FnOnce() -> Box<T>) -> SharedPtr<T> {
+    // IDA 0x45847c: v1 = new(0xC4); ChangeHistoryService::ChangeHistoryService(v1); shared_ptr<CHS, Deleter>(out, v1).
+    crate::shared_ptr::shared_ptr_from_raw(make())
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ChangeHistoryService>::shared_ptr<RBX::ChangeHistoryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x45852c — __ZN5boost10shared_ptrIN3RBX20ChangeHistoryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::ChangeHistoryService>::shared_ptr<RBX::ChangeHistoryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_45852c() {
-    // IDA 0x45852c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+pub fn stub_45852c<T>(raw: Box<T>) -> SharedPtr<T> {
+    // IDA 0x45852c: *out = p; shared_count(out+1, p, deleter); if (p) _internal_accept_owner(p+40, out, p).
+    // Arc adoption covers the block; the weak owner is wired on first downgrade (cf. stub_0x4585f4).
+    crate::shared_ptr::shared_ptr_from_raw(raw)
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(rbx_core::SharedPtr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const")]
 // 0x4585f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ChangeHistoryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(boost::shared_ptr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const
-pub fn stub_4585f4() {
-    // IDA 0x4585f4: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
+pub fn stub_4585f4<T>(owner: &mut crate::WeakPtr<T>, shared: &SharedPtr<T>) {
+    // IDA 0x4585f4: if (!weak.use_count()) { if (px) px += 36; weak = shared; } — adopt the owner once.
+    if owner.upgrade().is_none() {
+        *owner = SharedPtr::downgrade(shared);
+    }
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x4586e0 — __ZN5boost6detail12shared_countC2IPN3RBX20ChangeHistoryServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_4586e0() {
-    // IDA 0x4586e0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_4586e0<T>(px: Box<T>) -> crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x4586e0: *out = 0; b = new(0x14); b.use = 1; b.weak = 1; b.vtable set; b.px = p; *out = b.
+    crate::shared_ptr::ControlBlockPd::new(px, crate::shared_ptr::CreatableInstanceDeleter)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x4587e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ChangeHistoryServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn stub_4587e8() {
-    // IDA 0x4587e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x4587e8: D1 per-family twin of 0x456430 (single-block dtor) — member dtors already ran; Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x4587f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ChangeHistoryServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_4587f0() {
-    // IDA 0x4587f0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_4587f0<T>(value: Box<T>, predelete: impl FnOnce(&T)) {
+    // IDA 0x4587f0: v2 = *(this+12); predelete(v2); if (v2) v2->release() (virtual +8); D0 then frees the block.
+    predelete(&value);
+    drop(value);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x458810 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ChangeHistoryServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_458810() {
-    // IDA 0x458810: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_458810<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x458810: r = this+16; if (ti.name != "N3RBX9CreatableINS_8InstanceEE7DeleterE") return 0; return r.
+    block.get_deleter(type_name)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x458828 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ChangeHistoryServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_458828() {
-    // IDA 0x458828: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+pub fn stub_458828<T>(
+    block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>,
+) -> crate::shared_ptr::CreatableInstanceDeleter {
+    // IDA 0x458828: return this+16 — unconditionally the stored deleter.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>::~vector()")]
