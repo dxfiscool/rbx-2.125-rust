@@ -886,178 +886,257 @@ pub fn stub_4dac58(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() ->
 // 0x4f1df8 — __ZN3RBX4Flag21canBePickedUpByPlayerEPNS_7Network6PlayerE
 #[doc(alias = "RBX::Flag::canBePickedUpByPlayer(RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX4Flag21canBePickedUpByPlayerEPNS_7Network6PlayerE")]
-pub fn stub_4f1df8() -> ! {
-    todo!("0x4f1df8 __ZN3RBX4Flag21canBePickedUpByPlayerEPNS_7Network6PlayerE")
+pub fn stub_4f1df8(player_team: u32, flag_neutral: bool, flag_team: u32) -> bool {
+    // IDA 0x4f1df8: !neutral[104] ? team[100] != player[472] : false.
+    if flag_neutral {
+        false
+    } else {
+        flag_team != player_team
+    }
 }
 
 // 0x516a30 — __ZN3RBX10GuiBuilder17buildNetworkStatsEv
 // type: _DWORD __fastcall(RBX::GuiBuilder *__hidden this)
 #[doc(alias = "RBX::GuiBuilder::buildNetworkStats(void)")]
 #[doc(alias = "__ZN3RBX10GuiBuilder17buildNetworkStatsEv")]
-pub fn stub_516a30() -> ! {
-    todo!("0x516a30 __ZN3RBX10GuiBuilder17buildNetworkStatsEv")
+pub fn stub_516a30(build: &mut dyn FnMut()) {
+    // IDA 0x516a30: GuiBuilder::buildNetworkStats — stats GuiItem tree (below truncation).
+    build();
 }
 
 // 0x518284 — __ZN3RBX10GuiBuilder18buildNetworkStats2Ev
 // type: _DWORD __fastcall(RBX::GuiBuilder *__hidden this)
 #[doc(alias = "RBX::GuiBuilder::buildNetworkStats2(void)")]
 #[doc(alias = "__ZN3RBX10GuiBuilder18buildNetworkStats2Ev")]
-pub fn stub_518284() -> ! {
-    todo!("0x518284 __ZN3RBX10GuiBuilder18buildNetworkStats2Ev")
+pub fn stub_518284(build: &mut dyn FnMut()) {
+    // IDA 0x518284: GuiBuilder::buildNetworkStats2 — stats GuiItem tree (below truncation).
+    build();
 }
 
 // 0x52d620 — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(int,int)>::setListenerMode(bool)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb")]
-pub fn stub_52d620() -> ! {
-    todo!("0x52d620 __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE15setListenerModeEb")
+pub fn stub_52d620(rep: &mut EventReplicator, mode: bool, watch: &mut dyn FnMut(bool)) {
+    // IDA 0x52d620: setListenerMode — store mode; attach/detach watch on transition (below truncation).
+    rep.listener_mode = mode;
+    watch(mode);
+    rep.watched = mode;
 }
 
 // 0x52d780 — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE15setListenerModeEb
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(RBX::UDim2)>::setListenerMode(bool)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE15setListenerModeEb")]
-pub fn stub_52d780() -> ! {
-    todo!("0x52d780 __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE15setListenerModeEb")
+pub fn stub_52d780(rep: &mut EventReplicator, mode: bool, watch: &mut dyn FnMut(bool)) {
+    // IDA 0x52d780: setListenerMode — store mode; attach/detach watch on transition (below truncation).
+    rep.listener_mode = mode;
+    watch(mode);
+    rep.watched = mode;
 }
 
 // 0x52d9c4 — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(int,int)>::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_52d9c4() -> ! {
-    todo!("0x52d9c4 __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_52d9c4(connected20: bool, desc_match: bool, instance: usize, desc: usize, get: &mut dyn FnMut(usize, usize) -> i32, fire: &mut dyn FnMut(i32)) {
+    // IDA 0x52d9c4: unconnected gate; descriptor match; getter read; event fire (below truncation).
+    if connected20 || !desc_match {
+        return;
+    }
+    let v = get(desc, instance);
+    fire(v);
 }
 
 // 0x52da24 — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiObject,void ()(RBX::UDim2)>::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_52da24() -> ! {
-    todo!("0x52da24 __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFvNS_5UDim2EEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_52da24(connected20: bool, desc_match: bool, instance: usize, desc: usize, get: &mut dyn FnMut(usize, usize) -> i32, fire: &mut dyn FnMut(i32)) {
+    // IDA 0x52da24: unconnected gate; descriptor match; getter read; event fire (below truncation).
+    if connected20 || !desc_match {
+        return;
+    }
+    let v = get(desc, instance);
+    fire(v);
 }
 
 // 0x52e250 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE15setListenerModeEb
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::setListenerMode(bool)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE15setListenerModeEb")]
-pub fn stub_52e250() -> ! {
-    todo!("0x52e250 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE15setListenerModeEb")
+pub fn stub_52e250(rep: &mut EventReplicator, mode: bool, watch: &mut dyn FnMut(bool)) {
+    // IDA 0x52e250: setListenerMode — store mode; attach/detach watch on transition (below truncation).
+    rep.listener_mode = mode;
+    watch(mode);
+    rep.watched = mode;
 }
 
 // 0x52e3b0 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::setListenerMode(bool)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb")]
-pub fn stub_52e3b0() -> ! {
-    todo!("0x52e3b0 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE15setListenerModeEb")
+pub fn stub_52e3b0(rep: &mut EventReplicator, mode: bool, watch: &mut dyn FnMut(bool)) {
+    // IDA 0x52e3b0: setListenerMode — store mode; attach/detach watch on transition (below truncation).
+    rep.listener_mode = mode;
+    watch(mode);
+    rep.watched = mode;
 }
 
 // 0x52e510 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_52e510() -> ! {
-    todo!("0x52e510 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_52e510(connected20: bool, desc_match: bool, instance: usize, desc: usize, get: &mut dyn FnMut(usize, usize) -> i32, fire: &mut dyn FnMut(i32)) {
+    // IDA 0x52e510: unconnected gate; descriptor match; getter read; event fire (below truncation).
+    if connected20 || !desc_match {
+        return;
+    }
+    let v = get(desc, instance);
+    fire(v);
 }
 
 // 0x52e570 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_52e570() -> ! {
-    todo!("0x52e570 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_52e570(connected20: bool, desc_match: bool, instance: usize, desc: usize, get: &mut dyn FnMut(usize, usize) -> i32, fire: &mut dyn FnMut(i32)) {
+    // IDA 0x52e570: unconnected gate; descriptor match; getter read; event fire (below truncation).
+    if connected20 || !desc_match {
+        return;
+    }
+    let v = get(desc, instance);
+    fire(v);
 }
 
 // 0x52ee40 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_52ee40() -> ! {
-    todo!("0x52ee40 __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEEENS0_10connectionERKT_")
+pub fn stub_52ee40(slots: &mut Vec<VoidSlotConn>, target: usize) -> u64 {
+    // IDA 0x52ee40: operator new islot; callable ctor; signal::insert; connection (mf0 flavor).
+    let id = slots.len() as u64;
+    slots.push(VoidSlotConn { id, target, live: true });
+    id
 }
 
 // 0x52eeb4 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE23listenerConnectionAddedEv
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::listenerConnectionAdded(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE23listenerConnectionAddedEv")]
-pub fn stub_52eeb4() -> ! {
-    todo!("0x52eeb4 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE23listenerConnectionAddedEv")
+pub fn stub_52eeb4(instance: usize, desc: usize, read: &mut dyn FnMut(usize, usize) -> i32, write: &mut dyn FnMut(usize, usize, i32)) {
+    // IDA 0x52eeb4: read current; push (current+1) or 1 when negative.
+    let cur = read(desc, instance);
+    let next = if cur >= 0 { cur + 1 } else { 1 };
+    write(desc, instance, next);
 }
 
 // 0x52ef00 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED1Ev")]
-pub fn stub_52ef00() -> ! {
-    todo!("0x52ef00 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED1Ev")
+pub fn stub_52ef00(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52ef00: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x52ef2c — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED0Ev")]
-pub fn stub_52ef2c() -> ! {
-    todo!("0x52ef2c __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEED0Ev")
+pub fn stub_52ef2c(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52ef2c: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x52f000 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv")]
-pub fn stub_52f000() -> ! {
-    todo!("0x52f000 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv")
+pub fn stub_52f000(invoke: &mut dyn FnMut()) {
+    // IDA 0x52f000: callable::call tail-calls bind_t::operator().
+    invoke();
 }
 
 // 0x52f008 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv")]
-pub fn stub_52f008() -> ! {
-    todo!("0x52f008 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv")
+pub fn stub_52f008(invoke: &mut dyn FnMut()) {
+    // IDA 0x52f008: non-virtual thunk tail-calls the operator().
+    invoke();
 }
 
 // 0x52f010 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv")]
-pub fn stub_52f010() -> ! {
-    todo!("0x52f010 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv")
+pub fn stub_52f010(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x52f010: mf0 dispatch (virtual adjust); obj->method().
+    call(obj, is_virtual);
 }
 
 // 0x52f028 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_52f028() -> ! {
-    todo!("0x52f028 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED1Ev")
+pub fn stub_52f028(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f028: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x52f054 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_52f054() -> ! {
-    todo!("0x52f054 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_ED0Ev")
+pub fn stub_52f054(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f054: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x52f128 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_52f128() -> ! {
-    todo!("0x52f128 __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_")
+pub fn stub_52f128(slots: &mut Vec<VoidSlotConn>, target: usize) -> u64 {
+    // IDA 0x52f128: operator new islot; callable ctor; signal::insert; connection (mf0 flavor).
+    let id = slots.len() as u64;
+    slots.push(VoidSlotConn { id, target, live: true });
+    id
 }
 
 // 0x52f19c — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE23listenerConnectionAddedEv
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::listenerConnectionAdded(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE23listenerConnectionAddedEv")]
-pub fn stub_52f19c() -> ! {
-    todo!("0x52f19c __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE23listenerConnectionAddedEv")
+pub fn stub_52f19c(instance: usize, desc: usize, read: &mut dyn FnMut(usize, usize) -> i32, write: &mut dyn FnMut(usize, usize, i32)) {
+    // IDA 0x52f19c: read current; push (current+1) or 1 when negative.
+    let cur = read(desc, instance);
+    let next = if cur >= 0 { cur + 1 } else { 1 };
+    write(desc, instance, next);
 }
 
 // 0x52f1e8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev")]
-pub fn stub_52f1e8() -> ! {
-    todo!("0x52f1e8 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev")
+pub fn stub_52f1e8(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f1e8: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x52f214 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev")]
-pub fn stub_52f214() -> ! {
-    todo!("0x52f214 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonES2_EEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev")
+pub fn stub_52f214(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f214: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x52f2e8 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
-pub fn stub_52f2e8() -> ! {
-    todo!("0x52f2e8 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")
+pub fn stub_52f2e8(invoke: &mut dyn FnMut()) {
+    // IDA 0x52f2e8: callable::call tail-calls bind_t::operator().
+    invoke();
 }
 
 // 0x52f2f0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
