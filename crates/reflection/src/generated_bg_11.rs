@@ -72,6 +72,45 @@ pub struct CameraControlInit {
     pub height: f32,
     pub multitouch: bool,
 }
+/// `CharacterMove` movement output (IDA 0x4698c/0x469e8): zeroed-move
+/// count plus the last thumbstick vector and move count.
+/// `moveLocalCharacter` lives out of slice.
+pub(crate) static MOVEMENT_ZEROED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CHARACTER_MOVES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CHARACTER_MOVE_VEC: std::sync::LazyLock<
+    parking_lot::Mutex<(f32, f32)>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new((0.0, 0.0)));
+/// `ControlView` lifecycle state (IDA 0x47638-0x481cc): game presence,
+/// visibility, event wiring, tap invalidations, connection counters
+/// and keyboard shows. Views, observers and gestures live out of
+/// slice.
+pub(crate) static CONTROL_GAME_SET: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CONTROL_VISIBLE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CONTROL_EVENTS: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static TAP_INVALIDATIONS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOCAL_PLAYER_CONNS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static TEXTBOX_KEYBOARDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static INPUT_BINDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `ControlView::init:withGame:` args (IDA 0x47638): frame plus game
+/// presence; observers, pinch recognizer and event setup are engine
+/// glue.
+#[derive(Debug, Clone, Default)]
+pub struct ControlViewInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+    pub game_present: bool,
+}
 /// `cameraTouch` tracking + `UIEvent` signal state (IDA 0x450a0-0x46464):
 /// whether a touch is captured for the pan, the signal/slot mutex
 /// handles and the slot-connected flag. Touch sets and signal payloads
@@ -992,206 +1031,312 @@ pub fn stub_0x46704(service_present: bool) {
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
 // type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
-pub fn stub_0x467e8() -> ! {
-    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+pub fn stub_0x467e8() {
+    // IDA 0x467e8: `localCharacterMovementEnabledChange:` compiles to
+    // an empty body (decompiled 0x467e8). No explicit body.
 }
 
 // 0x467ec — -[CharacterMove touchesEnded:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesEnded:withEvent:]")]
-pub fn stub_0x467ec() -> ! {
-    todo!("0x467ec -[CharacterMove touchesEnded:withEvent:]")
+pub fn stub_0x467ec(thumbstick_match: bool) {
+    // IDA 0x467ec: `touchesEnded:` cancels the movement when a touch
+    // matches `thumbstickTouch` (0x46870-0x468a0). It sequences the
+    // cancel here.
+    if thumbstick_match {
+        stub_0x4698c(true);
+    }
 }
 
 // 0x468bc — -[CharacterMove touchesCancelled:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesCancelled:withEvent:]")]
-pub fn stub_0x468bc() -> ! {
-    todo!("0x468bc -[CharacterMove touchesCancelled:withEvent:]")
+pub fn stub_0x468bc(thumbstick_match: bool) {
+    // IDA 0x468bc: `touchesCancelled:` cancels on a thumbstick match
+    // (same shape as 0x467ec). It sequences the cancel here.
+    if thumbstick_match {
+        stub_0x4698c(true);
+    }
 }
 
 // 0x4698c — -[CharacterMove cancelMovement]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove cancelMovement]")]
-pub fn stub_0x4698c() -> ! {
-    todo!("0x4698c -[CharacterMove cancelMovement]")
+pub fn stub_0x4698c(service_present: bool) {
+    // IDA 0x4698c: `cancelMovement` supers to `ThumbStickControl`
+    // (0x469a8-0x469b2) and zeroes the character move through the
+    // input service when present (0x469c4-0x469de). The zero records
+    // here.
+    if service_present {
+        *CHARACTER_MOVE_VEC.lock() = (0.0, 0.0);
+        MOVEMENT_ZEROED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x469e8 — -[CharacterMove touchesMoved:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesMoved:withEvent:]")]
-pub fn stub_0x469e8() -> ! {
-    todo!("0x469e8 -[CharacterMove touchesMoved:withEvent:]")
+pub fn stub_0x469e8(thumbstick_match: bool, service_present: bool, dx: f32, dy: f32) {
+    // IDA 0x469e8: `touchesMoved:` supers to `ThumbStickControl`
+    // (0x46a30-0x46a36) and, for a thumbstick touch with a service,
+    // drives `moveLocalCharacter` with the stick vector (0x46aa2-0x46be8).
+    // The vector records here.
+    if thumbstick_match && service_present {
+        *CHARACTER_MOVE_VEC.lock() = (dx, dy);
+        CHARACTER_MOVES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x46f64 — __GLOBAL__I_a_16
 #[doc(alias = "global constructor keyed to_a_16")]
 #[doc(alias = "__GLOBAL__I_a_16")]
-pub fn stub_0x46f64() -> ! {
-    todo!("0x46f64 global constructor keyed to_a_16")
+pub fn stub_0x46f64() {
+    // IDA 0x46f64: `__GLOBAL__I_a_16` runs the `a_16`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x47178 — -[ControlComponent init]
 // type: ControlComponent *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent init]")]
-pub fn stub_0x47178() -> ! {
-    todo!("0x47178 -[ControlComponent init]")
+pub fn stub_0x47178() {
+    // IDA 0x47178: `ControlComponent::init` supers to `UIView`.
+    // Super-init glue; no explicit body.
 }
 
 // 0x471c0 — -[ControlComponent findControlView]
 // type: id __cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent findControlView]")]
-pub fn stub_0x471c0() -> ! {
-    todo!("0x471c0 -[ControlComponent findControlView]")
+pub fn stub_0x471c0(is_self_view: bool, ancestor_view_present: bool) -> bool {
+    // IDA 0x471c0: `findControlView` returns self when it is a
+    // `ControlView` (0x47202), else walks superviews for one, stopping
+    // past non-`UIView`s (0x47218-0x47264). The hit reports here.
+    is_self_view || ancestor_view_present
 }
 
 // 0x47274 — -[ControlComponent getGameFromControlView]
 // type: Game *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getGameFromControlView]")]
-pub fn stub_0x47274() -> ! {
-    todo!("0x47274 -[ControlComponent getGameFromControlView]")
+pub fn stub_0x47274(view_found: bool, game_present: bool) -> bool {
+    // IDA 0x47274: `getGameFromControlView` finds the view (0x472a4)
+    // and returns its game, null without one (0x472ae-0x47318).
+    // Presence reports here.
+    view_found && game_present
 }
 
 // 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
 // type: UserInputService *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getUserInputServiceForGameDataModel]")]
-pub fn stub_0x47338() -> ! {
-    todo!("0x47338 -[ControlComponent getUserInputServiceForGameDataModel]")
+pub fn stub_0x47338(game_present: bool, service_present: bool) -> bool {
+    // IDA 0x47338: `getUserInputServiceForGameDataModel` gets the game
+    // (0x47368) and finds the `UserInputService` on a live datamodel
+    // (0x47374-0x473b2), else null (0x473a6-0x473e0). Presence reports
+    // here.
+    game_present && service_present
 }
 
 // 0x47424 — __GLOBAL__I_a_17
 #[doc(alias = "global constructor keyed to_a_17")]
 #[doc(alias = "__GLOBAL__I_a_17")]
-pub fn stub_0x47424() -> ! {
-    todo!("0x47424 global constructor keyed to_a_17")
+pub fn stub_0x47424() {
+    // IDA 0x47424: `__GLOBAL__I_a_17` runs the `a_17`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x47638 — -[ControlView init:withGame:]
 // type: id __cdecl(ControlView *self, SEL, CGRect, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView init:withGame:]")]
-pub fn stub_0x47638() -> ! {
-    todo!("0x47638 -[ControlView init:withGame:]")
+pub fn stub_0x47638(x: f32, y: f32, width: f32, height: f32, game_present: bool) -> ControlViewInit {
+    // IDA 0x47638: `ControlView::init:withGame:` supers (0x47668),
+    // observes leave-game (0x476d6-0x4772e), stores the game (0x47746),
+    // sizes the frame, sets up input + pinch (0x47754-0x4785e), hides
+    // when not modal (0x47884-0x478aa) and wires events (0x478c2). The
+    // frame + game record here; observers are engine glue.
+    ControlViewInit { x, y, width, height, game_present }
 }
 
 // 0x47904 — -[ControlView dealloc]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView dealloc]")]
-pub fn stub_0x47904() -> ! {
-    todo!("0x47904 -[ControlView dealloc]")
+pub fn stub_0x47904() {
+    // IDA 0x47904: `dealloc` drops observers, game and controls.
+    // Release is drop glue; the lifecycle flags reset here.
+    CONTROL_GAME_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    CONTROL_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
+    CONTROL_EVENTS.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x479f8 — -[ControlView setGame:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView setGame:]")]
-pub fn stub_0x479f8() -> ! {
-    todo!("0x479f8 -[ControlView setGame:]")
+pub fn stub_0x479f8(game_present: bool) {
+    // IDA 0x479f8: `setGame:` stores the game. Presence records here.
+    CONTROL_GAME_SET.store(game_present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47aec — -[ControlView gotStartLeaveGameNotification:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView gotStartLeaveGameNotification:]")]
-pub fn stub_0x47aec() -> ! {
-    todo!("0x47aec -[ControlView gotStartLeaveGameNotification:]")
+pub fn stub_0x47aec() {
+    // IDA 0x47aec: `gotStartLeaveGameNotification:` tears the controls
+    // down for the leave. The teardown records here.
+    CONTROL_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
+    CONTROL_EVENTS.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47afc — -[ControlView dataModelChanged:]
 // type: void __cdecl(ControlView *self, SEL, DataModel *)
 #[doc(alias = "-[ControlView dataModelChanged:]")]
-pub fn stub_0x47afc() -> ! {
-    todo!("0x47afc -[ControlView dataModelChanged:]")
+pub fn stub_0x47afc(datamodel_present: bool) {
+    // IDA 0x47afc: `dataModelChanged:` wires `setupEvents` +
+    // `setupInputControls` for a live datamodel (0x47b02-0x47b1e),
+    // else `disconnectEvents` (0x47b2a-0x47b34). It sequences here.
+    if datamodel_present {
+        stub_0x47f48();
+    } else {
+        stub_0x4818c();
+    }
 }
 
 // 0x47b38 — -[ControlView setControlVisibility:]
 // type: void __cdecl(ControlView *self, SEL, char)
 #[doc(alias = "-[ControlView setControlVisibility:]")]
-pub fn stub_0x47b38() -> ! {
-    todo!("0x47b38 -[ControlView setControlVisibility:]")
+pub fn stub_0x47b38(visible: bool) {
+    // IDA 0x47b38: `setControlVisibility:` captures the flag in a
+    // block and dispatches it to main (0x47b6c-0x47b88). It sequences
+    // the block here.
+    stub_0x47b90(visible);
 }
 
 // 0x47b90 — ___36-[ControlView setControlVisibility:]_block_invoke
 #[doc(alias = "___36-[ControlView setControlVisibility:]_block_invoke")]
-pub fn stub_0x47b90() -> ! {
-    todo!("0x47b90 ___36-[ControlView setControlVisibility:]_block_invoke")
+pub fn stub_0x47b90(visible: bool) {
+    // IDA 0x47b90: the visibility block applies the flag on the main
+    // queue. It records here.
+    CONTROL_VISIBLE.store(visible, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47c04 — ___copy_helper_block__8
 #[doc(alias = "___copy_helper_block__8")]
-pub fn stub_0x47c04() -> ! {
-    todo!("0x47c04 ___copy_helper_block__8")
+pub fn stub_0x47c04() {
+    // IDA 0x47c04: `__copy_helper_block__8` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x47c10 — ___destroy_helper_block__8
 #[doc(alias = "___destroy_helper_block__8")]
-pub fn stub_0x47c10() -> ! {
-    todo!("0x47c10 ___destroy_helper_block__8")
+pub fn stub_0x47c10() {
+    // IDA 0x47c10: `__destroy_helper_block__8` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x47c18 — -[ControlView showControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView showControls]")]
-pub fn stub_0x47c18() -> ! {
-    todo!("0x47c18 -[ControlView showControls]")
+pub fn stub_0x47c18() {
+    // IDA 0x47c18: `showControls` shows the controls (also the
+    // modal-enabled branch at 0x48268). It records here.
+    CONTROL_VISIBLE.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47c2c — -[ControlView hideControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView hideControls]")]
-pub fn stub_0x47c2c() -> ! {
-    todo!("0x47c2c -[ControlView hideControls]")
+pub fn stub_0x47c2c() {
+    // IDA 0x47c2c: `hideControls` hides the controls (also the
+    // non-modal branch at 0x48274 and the init path at 0x478aa). It
+    // records here.
+    CONTROL_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47c40 — -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")]
-pub fn stub_0x47c40() -> ! {
-    todo!("0x47c40 -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")
+pub fn stub_0x47c40(consumed: bool, is_tap: bool) {
+    // IDA 0x47c40: `postMouseEventProcessedFromOverlay:` invalidates
+    // the tap gesture on a consumed matching input (same shape as
+    // 0x47d48). It records here.
+    if consumed && is_tap {
+        TAP_INVALIDATIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x47d48 — -[ControlView postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_0x47d48() -> ! {
-    todo!("0x47d48 -[ControlView postMouseEventProcessed:inputObject:event:]")
+pub fn stub_0x47d48(consumed: bool, is_tap: bool) {
+    // IDA 0x47d48: `postMouseEventProcessed:` invalidates the tap
+    // gesture on a consumed matching `tapTouch` (0x47d62-0x47d74).
+    if consumed && is_tap {
+        TAP_INVALIDATIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x47d78 — -[ControlView setupLocalPlayerConnections]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
-pub fn stub_0x47d78() -> ! {
-    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+pub fn stub_0x47d78() {
+    // IDA 0x47d78: `setupLocalPlayerConnections` wires the
+    // local-player signals. Signal glue; the install records here.
+    LOCAL_PLAYER_CONNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x47d7c — -[ControlView textBoxFocusGained:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[ControlView textBoxFocusGained:]")]
-pub fn stub_0x47d7c() -> ! {
-    todo!("0x47d7c -[ControlView textBoxFocusGained:]")
+pub fn stub_0x47d7c(textbox_present: bool) {
+    // IDA 0x47d7c: `textBoxFocusGained:` shows the keyboard with the
+    // box when present, else an empty keyboard (0x47de6-0x47e6c). The
+    // show records here.
+    if textbox_present {
+        TEXTBOX_KEYBOARDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x47ea4 — -[ControlView getGame]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, ControlView *self, SEL)
 #[doc(alias = "-[ControlView getGame]")]
-pub fn stub_0x47ea4() -> ! {
-    todo!("0x47ea4 -[ControlView getGame]")
+pub fn stub_0x47ea4() -> bool {
+    // IDA 0x47ea4: `getGame` returns the stored game presence.
+    CONTROL_GAME_SET.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x47f48 — -[ControlView setupEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupEvents]")]
-pub fn stub_0x47f48() -> ! {
-    todo!("0x47f48 -[ControlView setupEvents]")
+pub fn stub_0x47f48() {
+    // IDA 0x47f48: `setupEvents` connects `gameLoaded` (0x47fe6-0x4804a)
+    // and `dataModelChanged:` (0x4808e-0x480c0), then binds the input
+    // service (0x480d8). Signal installs are drop glue; the wiring
+    // records here.
+    CONTROL_EVENTS.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4818c — -[ControlView disconnectEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView disconnectEvents]")]
-pub fn stub_0x4818c() -> ! {
-    todo!("0x4818c -[ControlView disconnectEvents]")
+pub fn stub_0x4818c() {
+    // IDA 0x4818c: `disconnectEvents` detaches the view connections.
+    // The detach records here.
+    CONTROL_EVENTS.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x481cc — -[ControlView bindToUserInputService:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView bindToUserInputService:]")]
-pub fn stub_0x481cc() -> ! {
-    todo!("0x481cc -[ControlView bindToUserInputService:]")
+pub fn stub_0x481cc(datamodel_present: bool, modal: bool) {
+    // IDA 0x481cc: `bindToUserInputService:` enables touch on the
+    // found service (0x4823c-0x48250), shows or hides by modality
+    // (0x4825e-0x48282) and connects the focus/property/mouse slots
+    // (0x482b8-0x484fe). The bind records here.
+    if !datamodel_present {
+        return;
+    }
+    if modal {
+        stub_0x47c18();
+    } else {
+        stub_0x47c2c();
+    }
+    INPUT_BINDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
