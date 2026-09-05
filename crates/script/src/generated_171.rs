@@ -7,349 +7,553 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
+
+/// Bound ObjC-forwarding functor for the UIEvent signal (IDA 0x463cc,
+/// 0x4642c): the stored target/selector pair plus the armed latch and
+/// dispatch count. The `bind_t` argument shuffling folds into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BindSlot {
+    pub bound: bool,
+    pub calls: u32,
+}
+/// `__GLOBAL__I_a` one-shot latches (IDA 0x46490/0x46f64/0x47424).
+static GLOBAL_A15_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A16_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A17_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `CharacterMove` observable state (IDA 0x466cc..0x469e8): the frame, the
+/// input-service connection, movement latch, and move vector.
+/// `ThumbStickControl` peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct CharMove {
+    pub frame: [f32; 4],
+    pub connected: bool,
+    pub moving: bool,
+    pub move_vec: [f32; 2],
+}
+
+/// `ControlComponent` observable state (IDA 0x47178..0x47274): user
+/// interaction plus the resolved control view and game handles.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct CtrlComp {
+    pub interaction: bool,
+    pub view: Option<u32>,
+    pub game: Option<u32>,
+}
+/// `ControlView` observable state (IDA 0x47638..0x49acc): the frame, bound
+/// game, control visibility, event wiring, tap/pinch tracking, input
+/// binding, built controls, focused box, and delivered mouse events.
+/// UIKit peers (menu, jump, camera, pinch) fold into the host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct CtrlView {
+    pub frame: [f32; 4],
+    pub game: Option<u32>,
+    pub controls_visible: bool,
+    pub events_up: bool,
+    pub tap_touch: Option<u32>,
+    pub pinch_scale: f32,
+    pub pinch_time: f32,
+    pub input_bound: bool,
+    pub controls_built: bool,
+    pub menu_built: bool,
+    pub focused_textbox: Option<u32>,
+    pub mouse_events: u32,
+}
 
 // 0x463cc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x463cc() -> ! {
-    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x463cc(slot: &mut BindSlot, op: u32) {
+    // IDA 0x463cc: `functor_manager<bind_t...>::manage` — clone (op 0)
+    // copies the buffer (0x463de..0x463e6), destroy (op 1) drops it, and
+    // the type queries (ops 3/4, 0x463f4/0x463d6) answer metadata; the
+    // buffer/type glue folds into the host.
+    match op {
+        0 => slot.bound = true,
+        1 => slot.bound = false,
+        _ => {}
+    }
 }
 
 // 0x4642c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
-pub fn stub_0x4642c() -> ! {
-    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")
+pub fn stub_0x4642c(slot: &mut BindSlot) {
+    // IDA 0x4642c: `void_function_obj_invoker3::invoke` calls through to
+    // the stored target/selector with the bound args (0x46462); the
+    // ObjC send folds into the host.
+    if slot.bound {
+        slot.calls += 1;
+    }
 }
 
 // 0x46490 — __GLOBAL__I_a_15
 #[doc(alias = "global constructor keyed to_a_15")]
-pub fn stub_0x46490() -> ! {
-    todo!("0x46490 global constructor keyed to_a_15")
+pub fn stub_0x46490() -> u32 {
+    // IDA 0x46490: `__GLOBAL__I_a_15` — see `GLOBAL_A15_INIT`.
+    *GLOBAL_A15_INIT
 }
 
 // 0x466cc — -[CharacterMove init:]
 // type: id __cdecl(CharacterMove *self, SEL, CGRect)
 #[doc(alias = "-[CharacterMove init:]")]
-pub fn stub_0x466cc() -> ! {
-    todo!("0x466cc -[CharacterMove init:]")
+pub fn stub_0x466cc(frame: [f32; 4]) -> CharMove {
+    // IDA 0x466cc: `CharacterMove init:` chains to `ThumbStickControl
+    // init:` with the frame (0x466e6..0x46702); the superclass glue
+    // folds into the host.
+    CharMove { frame, ..CharMove::default() }
 }
 
 // 0x46704 — -[CharacterMove setupCharacterMoveConnection]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove setupCharacterMoveConnection]")]
-pub fn stub_0x46704() -> ! {
-    todo!("0x46704 -[CharacterMove setupCharacterMoveConnection]")
+pub fn stub_0x46704(move_: &mut CharMove) {
+    // IDA 0x46704: `setupCharacterMoveConnection` resolves the input
+    // service (0x46738) and wires the movement connection when present
+    // (0x46760); the service lookup folds into the host.
+    move_.connected = true;
 }
 
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
 // type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
-pub fn stub_0x467e8() -> ! {
-    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+pub fn stub_0x467e8() {
+    // IDA 0x467e8: `localCharacterMovementEnabledChange:` — empty body;
+    // no-op.
 }
 
 // 0x467ec — -[CharacterMove touchesEnded:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesEnded:withEvent:]")]
-pub fn stub_0x467ec() -> ! {
-    todo!("0x467ec -[CharacterMove touchesEnded:withEvent:]")
+pub fn stub_0x467ec(move_: &mut CharMove, thumb: bool) {
+    // IDA 0x467ec: `touchesEnded` enumerates the touches (0x46838..) and
+    // cancels when one is the thumbstick touch (0x46870..0x468a0).
+    if thumb {
+        stub_0x4698c(move_);
+    }
 }
 
 // 0x468bc — -[CharacterMove touchesCancelled:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesCancelled:withEvent:]")]
-pub fn stub_0x468bc() -> ! {
-    todo!("0x468bc -[CharacterMove touchesCancelled:withEvent:]")
+pub fn stub_0x468bc(move_: &mut CharMove, thumb: bool) {
+    // IDA 0x468bc: `touchesCancelled` — same cancel-on-thumbstick-touch
+    // shape as 0x467ec.
+    if thumb {
+        stub_0x4698c(move_);
+    }
 }
 
 // 0x4698c — -[CharacterMove cancelMovement]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove cancelMovement]")]
-pub fn stub_0x4698c() -> ! {
-    todo!("0x4698c -[CharacterMove cancelMovement]")
+pub fn stub_0x4698c(move_: &mut CharMove) {
+    // IDA 0x4698c: `cancelMovement` chains to super (0x469a8..0x469b2),
+    // then zeroes the local-character move via the input service
+    // (0x469c4..0x469de); the service send folds into the host.
+    move_.moving = false;
+    move_.move_vec = [0.0, 0.0];
 }
 
 // 0x469e8 — -[CharacterMove touchesMoved:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesMoved:withEvent:]")]
-pub fn stub_0x469e8() -> ! {
-    todo!("0x469e8 -[CharacterMove touchesMoved:withEvent:]")
+pub fn stub_0x469e8(move_: &mut CharMove, dx: f32, dy: f32) {
+    // IDA 0x469e8: `touchesMoved` tracks the thumbstick drag, re-seats
+    // the stick visuals, and drives the local character (the projection
+    // math folds into the host).
+    move_.moving = true;
+    move_.move_vec = [dx, dy];
 }
 
 // 0x46f64 — __GLOBAL__I_a_16
 #[doc(alias = "global constructor keyed to_a_16")]
-pub fn stub_0x46f64() -> ! {
-    todo!("0x46f64 global constructor keyed to_a_16")
+pub fn stub_0x46f64() -> u32 {
+    // IDA 0x46f64: `__GLOBAL__I_a_16` — see `GLOBAL_A16_INIT`.
+    *GLOBAL_A16_INIT
 }
 
 // 0x47178 — -[ControlComponent init]
 // type: ControlComponent *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent init]")]
-pub fn stub_0x47178() -> ! {
-    todo!("0x47178 -[ControlComponent init]")
+pub fn stub_0x47178() -> CtrlComp {
+    // IDA 0x47178: `ControlComponent init` chains to super (0x47192..)
+    // and enables user interaction (0x471b4).
+    CtrlComp { interaction: true, ..CtrlComp::default() }
 }
 
 // 0x471c0 — -[ControlComponent findControlView]
 // type: id __cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent findControlView]")]
-pub fn stub_0x471c0() -> ! {
-    todo!("0x471c0 -[ControlComponent findControlView]")
+pub fn stub_0x471c0(comp: &CtrlComp) -> Option<u32> {
+    // IDA 0x471c0: `findControlView` answers self when it is a
+    // `ControlView`, else walks superviews for one (0x471e8..0x47268)
+    // and answers null past a non-`UIView` ancestor (0x47264).
+    comp.view
 }
 
 // 0x47274 — -[ControlComponent getGameFromControlView]
 // type: Game *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getGameFromControlView]")]
-pub fn stub_0x47274() -> ! {
-    todo!("0x47274 -[ControlComponent getGameFromControlView]")
+pub fn stub_0x47274(comp: &CtrlComp) -> Option<u32> {
+    // IDA 0x47274: `getGameFromControlView` finds the view (0x472a4)
+    // and answers its game, defaulting to null (0x472ae..0x472ce).
+    if comp.view.is_some() { comp.game } else { None }
 }
 
 // 0x47424 — __GLOBAL__I_a_17
 #[doc(alias = "global constructor keyed to_a_17")]
-pub fn stub_0x47424() -> ! {
-    todo!("0x47424 global constructor keyed to_a_17")
+pub fn stub_0x47424() -> u32 {
+    // IDA 0x47424: `__GLOBAL__I_a_17` — see `GLOBAL_A17_INIT`.
+    *GLOBAL_A17_INIT
 }
 
 // 0x47638 — -[ControlView init:withGame:]
 // type: id __cdecl(ControlView *self, SEL, CGRect, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView init:withGame:]")]
-pub fn stub_0x47638() -> ! {
-    todo!("0x47638 -[ControlView init:withGame:]")
+pub fn stub_0x47638(frame: [f32; 4], game: Option<u32>) -> CtrlView {
+    // IDA 0x47638: `ControlView init:withGame:` chains to super, registers
+    // notifications, installs the pinch recognizer, and binds the game;
+    // the UIKit/service glue folds into the host.
+    CtrlView { frame, game, controls_visible: true, ..CtrlView::default() }
 }
 
 // 0x47904 — -[ControlView dealloc]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView dealloc]")]
-pub fn stub_0x47904() -> ! {
-    todo!("0x47904 -[ControlView dealloc]")
+pub fn stub_0x47904(view: &mut CtrlView) {
+    // IDA 0x47904: `dealloc` removes the notification observer (0x47924..)
+    // and releases the menu/jump/camera/pinch peers
+    // (0x47946..0x479cc); drop glue covers it and the record resets.
+    *view = CtrlView::default();
 }
 
 // 0x479f8 — -[ControlView setGame:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView setGame:]")]
-pub fn stub_0x479f8() -> ! {
-    todo!("0x479f8 -[ControlView setGame:]")
+pub fn stub_0x479f8(view: &mut CtrlView, game: Option<u32>) {
+    // IDA 0x479f8: `setGame:` rebinds the shared game (0x47a28) and
+    // refreshes from the data model; the `shared_ptr` glue folds into
+    // the host.
+    view.game = game;
 }
 
 // 0x47aec — -[ControlView gotStartLeaveGameNotification:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView gotStartLeaveGameNotification:]")]
-pub fn stub_0x47aec() -> ! {
-    todo!("0x47aec -[ControlView gotStartLeaveGameNotification:]")
+pub fn stub_0x47aec(view: &mut CtrlView) {
+    // IDA 0x47aec: `gotStartLeaveGameNotification:` disconnects events
+    // (0x47af8).
+    view.events_up = false;
 }
 
 // 0x47afc — -[ControlView dataModelChanged:]
 // type: void __cdecl(ControlView *self, SEL, DataModel *)
 #[doc(alias = "-[ControlView dataModelChanged:]")]
-pub fn stub_0x47afc() -> ! {
-    todo!("0x47afc -[ControlView dataModelChanged:]")
+pub fn stub_0x47afc(view: &mut CtrlView, model: Option<u32>) {
+    // IDA 0x47afc: `dataModelChanged:` sets up events plus input controls
+    // for a live model (0x47b12..0x47b1e) and disconnects for null
+    // (0x47b2a..0x47b34).
+    view.events_up = model.is_some();
 }
 
 // 0x47b38 — -[ControlView setControlVisibility:]
 // type: void __cdecl(ControlView *self, SEL, char)
 #[doc(alias = "-[ControlView setControlVisibility:]")]
-pub fn stub_0x47b38() -> ! {
-    todo!("0x47b38 -[ControlView setControlVisibility:]")
+pub fn stub_0x47b38(view: &mut CtrlView, visible: bool) {
+    // IDA 0x47b38: `setControlVisibility:` captures the flag in a block
+    // (0x47b6c..0x47b84) and `dispatch_async`s it to main (0x47b88); the
+    // queue hop folds into the caller — see `stub_0x47b90`.
+    stub_0x47b90(view, visible);
 }
 
 // 0x47b90 — ___36-[ControlView setControlVisibility:]_block_invoke
 #[doc(alias = "___36-[ControlView setControlVisibility:]_block_invoke")]
-pub fn stub_0x47b90() -> ! {
-    todo!("0x47b90 ___36-[ControlView setControlVisibility:]_block_invoke")
+pub fn stub_0x47b90(view: &mut CtrlView, visible: bool) {
+    // IDA 0x47b90: the visibility block hides the menu (0x47bc0) and the
+    // camera/jump peer (0x47bd4..0x47bf6) exactly when `visible` is
+    // false.
+    view.controls_visible = visible;
 }
 
 // 0x47c04 — ___copy_helper_block__8
 #[doc(alias = "___copy_helper_block__8")]
-pub fn stub_0x47c04() -> ! {
-    todo!("0x47c04 ___copy_helper_block__8")
+pub fn stub_0x47c04() {
+    // IDA 0x47c04: `__copy_helper_block__8` retains the captured view
+    // (0x47c0a); `Arc` glue covers it — no-op.
 }
 
 // 0x47c10 — ___destroy_helper_block__8
 #[doc(alias = "___destroy_helper_block__8")]
-pub fn stub_0x47c10() -> ! {
-    todo!("0x47c10 ___destroy_helper_block__8")
+pub fn stub_0x47c10() {
+    // IDA 0x47c10: `__destroy_helper_block__8` releases the captured
+    // view (pair of 0x47c04); `Arc` glue covers it — no-op.
 }
 
 // 0x47c18 — -[ControlView showControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView showControls]")]
-pub fn stub_0x47c18() -> ! {
-    todo!("0x47c18 -[ControlView showControls]")
+pub fn stub_0x47c18(view: &mut CtrlView) {
+    // IDA 0x47c18: `showControls` shows via `setControlVisibility:`
+    // (0x47c26).
+    stub_0x47b38(view, true);
 }
 
 // 0x47c2c — -[ControlView hideControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView hideControls]")]
-pub fn stub_0x47c2c() -> ! {
-    todo!("0x47c2c -[ControlView hideControls]")
+pub fn stub_0x47c2c(view: &mut CtrlView) {
+    // IDA 0x47c2c: `hideControls` hides via `setControlVisibility:`
+    // (0x47c3a).
+    stub_0x47b38(view, false);
 }
 
 // 0x47c40 — -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")]
-pub fn stub_0x47c40() -> ! {
-    todo!("0x47c40 -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")
+pub fn stub_0x47c40(view: &mut CtrlView) {
+    // IDA 0x47c40: `postMouseEventProcessedFromOverlay` forwards the
+    // overlay mouse event to the game through the data model; the
+    // routing folds into the host and delivery is observed.
+    view.mouse_events += 1;
 }
 
 // 0x47d48 — -[ControlView postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_0x47d48() -> ! {
-    todo!("0x47d48 -[ControlView postMouseEventProcessed:inputObject:event:]")
+pub fn stub_0x47d48(view: &mut CtrlView, touch: Option<u32>, processed: bool) {
+    // IDA 0x47d48: `postMouseEventProcessed` invalidates the tap gesture
+    // (0x47d74) when the processed touch is the tap touch (0x47d62).
+    if processed && touch.is_some() && touch == view.tap_touch {
+        stub_0x48ff8(view, touch);
+    }
 }
 
 // 0x47d78 — -[ControlView setupLocalPlayerConnections]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
-pub fn stub_0x47d78() -> ! {
-    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+pub fn stub_0x47d78() {
+    // IDA 0x47d78: `setupLocalPlayerConnections` — empty body; no-op.
 }
 
 // 0x47d7c — -[ControlView textBoxFocusGained:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[ControlView textBoxFocusGained:]")]
-pub fn stub_0x47d7c() -> ! {
-    todo!("0x47d7c -[ControlView textBoxFocusGained:]")
+pub fn stub_0x47d7c(view: &mut CtrlView, textbox: u32) {
+    // IDA 0x47d7c: `textBoxFocusGained:` routes the focused box to the
+    // game keyboard (0x47d9c..); the keyboard presentation folds into
+    // the host and the focus target is observed.
+    view.focused_textbox = Some(textbox);
 }
 
 // 0x47ea4 — -[ControlView getGame]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, ControlView *self, SEL)
 #[doc(alias = "-[ControlView getGame]")]
-pub fn stub_0x47ea4() -> ! {
-    todo!("0x47ea4 -[ControlView getGame]")
+pub fn stub_0x47ea4(view: &CtrlView) -> Option<u32> {
+    // IDA 0x47ea4: `getGame` copies the bound shared game out
+    // (0x47ee4..0x47f0a); the `shared_ptr` glue folds into the host.
+    view.game
 }
 
 // 0x47f48 — -[ControlView setupEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupEvents]")]
-pub fn stub_0x47f48() -> ! {
-    todo!("0x47f48 -[ControlView setupEvents]")
+pub fn stub_0x47f48(view: &mut CtrlView) {
+    // IDA 0x47f48: `setupEvents` wires the game-loaded and input-service
+    // connections; the signal glue folds into the host.
+    view.events_up = true;
 }
 
 // 0x4818c — -[ControlView disconnectEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView disconnectEvents]")]
-pub fn stub_0x4818c() -> ! {
-    todo!("0x4818c -[ControlView disconnectEvents]")
+pub fn stub_0x4818c(view: &mut CtrlView) {
+    // IDA 0x4818c: `disconnectEvents` disconnects the game-loaded and
+    // both input-property connections (0x481a0..0x481c8).
+    view.events_up = false;
 }
 
 // 0x481cc — -[ControlView bindToUserInputService:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView bindToUserInputService:]")]
-pub fn stub_0x481cc() -> ! {
-    todo!("0x481cc -[ControlView bindToUserInputService:]")
+pub fn stub_0x481cc(view: &mut CtrlView) {
+    // IDA 0x481cc: `bindToUserInputService:` resolves the input service
+    // from the model and binds the overlay properties; the service glue
+    // folds into the host.
+    view.input_bound = true;
 }
 
 // 0x48604 — -[ControlView bindUserInputService]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView bindUserInputService]")]
-pub fn stub_0x48604() -> ! {
-    todo!("0x48604 -[ControlView bindUserInputService]")
+pub fn stub_0x48604(view: &mut CtrlView) {
+    // IDA 0x48604: `bindUserInputService` resolves the game/overlay
+    // models itself, then binds like 0x481cc.
+    view.input_bound = true;
 }
 
 // 0x487d4 — -[ControlView isValidUserInputProperty:]
 // type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView isValidUserInputProperty:]")]
-pub fn stub_0x487d4() -> ! {
-    todo!("0x487d4 -[ControlView isValidUserInputProperty:]")
+pub fn stub_0x487d4(view: &CtrlView, name: Option<&str>) -> bool {
+    // IDA 0x487d4: `isValidUserInputProperty:` needs a live game
+    // (0x487e4..0x487ea), a descriptor (0x487ec), and a name other than
+    // `Parent` (0x487ee..0x48804).
+    view.game.is_some() && matches!(name, Some(n) if n != "Parent")
 }
 
 // 0x48918 — -[ControlView userInputPropertyChangedOnOverlay:]
 // type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView userInputPropertyChangedOnOverlay:]")]
-pub fn stub_0x48918() -> ! {
-    todo!("0x48918 -[ControlView userInputPropertyChangedOnOverlay:]")
+pub fn stub_0x48918() {
+    // IDA 0x48918: `userInputPropertyChangedOnOverlay:` applies the
+    // overlay property change through to the input service; neither the
+    // overlay lookup nor the application touches `ControlView` state —
+    // no-op.
 }
 
 // 0x48a50 — -[ControlView setupInputControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupInputControls]")]
-pub fn stub_0x48a50() -> ! {
-    todo!("0x48a50 -[ControlView setupInputControls]")
+pub fn stub_0x48a50(view: &mut CtrlView) {
+    // IDA 0x48a50: `setupInputControls` builds and seats the camera,
+    // move, jump, menu, and keyboard controls; the UIKit glue folds into
+    // the host.
+    view.controls_built = true;
 }
 
 // 0x48fe8 — -[ControlView gameLoaded]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView gameLoaded]")]
-pub fn stub_0x48fe8() -> ! {
-    todo!("0x48fe8 -[ControlView gameLoaded]")
+pub fn stub_0x48fe8(view: &mut CtrlView) {
+    // IDA 0x48fe8: `gameLoaded` shows via `showControls` (0x48ff4).
+    stub_0x47c18(view);
 }
 
 // 0x48ff8 — -[ControlView invalidateTapGesture:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView invalidateTapGesture:]")]
-pub fn stub_0x48ff8() -> ! {
-    todo!("0x48ff8 -[ControlView invalidateTapGesture:]")
+pub fn stub_0x48ff8(view: &mut CtrlView, touch: Option<u32>) {
+    // IDA 0x48ff8: `invalidateTapGesture:` clears the tap touch for a
+    // null gesture (0x48ffc) or a matching touch (0x49006..0x49012).
+    if touch.is_none() || touch == view.tap_touch {
+        view.tap_touch = None;
+    }
 }
 
 // 0x49018 — -[ControlView createNativeMenu]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView createNativeMenu]")]
-pub fn stub_0x49018() -> ! {
-    todo!("0x49018 -[ControlView createNativeMenu]")
+pub fn stub_0x49018(view: &mut CtrlView) {
+    // IDA 0x49018: `createNativeMenu` allocs/inits the menu button
+    // (0x49038..0x4907c) and adds it as a subview (0x49088); the UIKit
+    // glue folds into the host.
+    view.menu_built = true;
 }
 
 // 0x4908c — -[ControlView checkTouchesForTap:withEvent:]
 // type: id __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView checkTouchesForTap:withEvent:]")]
-pub fn stub_0x4908c() -> ! {
-    todo!("0x4908c -[ControlView checkTouchesForTap:withEvent:]")
+pub fn stub_0x4908c(view: &CtrlView, touches: &[u32]) -> Option<u32> {
+    // IDA 0x4908c: `checkTouchesForTap` answers the tap touch when it is
+    // set (0x490ba..0x490c2) and present in the set (0x490da..), else
+    // null.
+    match view.tap_touch {
+        Some(t) if touches.contains(&t) => Some(t),
+        _ => None,
+    }
 }
 
 // 0x4918c — -[ControlView sendMouseEventToGame:withTouch:]
 // type: void __cdecl(ControlView *self, SEL, UIEvent, id)
 #[doc(alias = "-[ControlView sendMouseEventToGame:withTouch:]")]
-pub fn stub_0x4918c() -> ! {
-    todo!("0x4918c -[ControlView sendMouseEventToGame:withTouch:]")
+pub fn stub_0x4918c(view: &mut CtrlView) {
+    // IDA 0x4918c: `sendMouseEventToGame:withTouch:` routes the mouse
+    // event to the game via the data model; delivery is observed.
+    view.mouse_events += 1;
 }
 
 // 0x49314 — -[ControlView touchesBegan:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesBegan:withEvent:]")]
-pub fn stub_0x49314() -> ! {
-    todo!("0x49314 -[ControlView touchesBegan:withEvent:]")
+pub fn stub_0x49314(view: &mut CtrlView, touches: &[u32]) {
+    // IDA 0x49314: `touchesBegan` claims the tap touch when none is held
+    // and exactly one touch lands (0x4935e..0x4937c), then tracks it.
+    if view.tap_touch.is_none() && touches.len() == 1 {
+        view.tap_touch = Some(touches[0]);
+    }
 }
 
 // 0x4951c — -[ControlView touchesEnded:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesEnded:withEvent:]")]
-pub fn stub_0x4951c() -> ! {
-    todo!("0x4951c -[ControlView touchesEnded:withEvent:]")
+pub fn stub_0x4951c(view: &mut CtrlView, touch: Option<u32>) {
+    // IDA 0x4951c: `touchesEnded` resets the pinch clock (0x4955c),
+    // resolves the tap (0x4956c), and releases a matching tap touch
+    // (same shape as 0x49920).
+    view.pinch_time = -1.0;
+    if touch.is_some() && touch == view.tap_touch {
+        view.tap_touch = None;
+    }
 }
 
 // 0x49684 — -[ControlView touchesMoved:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesMoved:withEvent:]")]
-pub fn stub_0x49684() -> ! {
-    todo!("0x49684 -[ControlView touchesMoved:withEvent:]")
+pub fn stub_0x49684(view: &mut CtrlView, tap_moved: bool) {
+    // IDA 0x49684: `touchesMoved` re-checks the tap drag (0x496b8) and
+    // forwards the moves; the mouse routing folds into the host — see
+    // `stub_0x497d0`.
+    stub_0x497d0(view, tap_moved);
 }
 
 // 0x497d0 — -[ControlView checkTapTouchMove:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView checkTapTouchMove:]")]
-pub fn stub_0x497d0() -> ! {
-    todo!("0x497d0 -[ControlView checkTapTouchMove:]")
+pub fn stub_0x497d0(view: &mut CtrlView, tap_moved: bool) {
+    // IDA 0x497d0: `checkTapTouchMove:` enumerates the touches
+    // (0x4981c..) and invalidates the tap once it drags past the tap
+    // slop; the distance threshold folds into the host.
+    if tap_moved {
+        view.tap_touch = None;
+    }
 }
 
 // 0x49920 — -[ControlView touchesCancelled:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesCancelled:withEvent:]")]
-pub fn stub_0x49920() -> ! {
-    todo!("0x49920 -[ControlView touchesCancelled:withEvent:]")
+pub fn stub_0x49920(view: &mut CtrlView, touch: Option<u32>) {
+    // IDA 0x49920: `touchesCancelled` enumerates (0x4996c..) and releases
+    // the tap touch on a match (0x49998, same shape as 0x467ec).
+    if touch.is_some() && touch == view.tap_touch {
+        view.tap_touch = None;
+    }
 }
 
 // 0x499e0 — -[ControlView twoFingerPinch:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView twoFingerPinch:]")]
-pub fn stub_0x499e0() -> ! {
-    todo!("0x499e0 -[ControlView twoFingerPinch:]")
+pub fn stub_0x499e0(view: &mut CtrlView, began: bool, scale: f32) {
+    // IDA 0x499e0: `twoFingerPinch:` resets the pinch baseline on begin
+    // (0x49a0e..0x49a20), ends the camera pan (0x49a3c), clears the tap
+    // (0x49a50), and zooms by the scale delta through the input service
+    // (0x49a6c..0x49a9e); the service send folds into the host.
+    if began {
+        view.pinch_scale = 1.0;
+    }
+    view.tap_touch = None;
+    view.pinch_scale = scale;
 }
 
 // 0x49acc — -[ControlView oneFingerSingleTap]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView oneFingerSingleTap]")]
-pub fn stub_0x49acc() -> ! {
-    todo!("0x49acc -[ControlView oneFingerSingleTap]")
+pub fn stub_0x49acc(view: &mut CtrlView) {
+    // IDA 0x49acc: `oneFingerSingleTap` resolves the input service
+    // (0x49aea..0x49af0) and clicks the tap point (0x49afe..); delivery
+    // is observed.
+    view.mouse_events += 1;
 }
 
 // 0x49bb4 — -[ControlView gestureRecognizer:shouldReceiveTouch:]
@@ -1043,4 +1247,195 @@ pub fn stub_0x4e860() -> ! {
 #[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
 pub fn stub_0x4e868() -> ! {
     todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+}
+
+#[cfg(test)]
+mod control_batch_tests {
+    use super::*;
+
+    #[test]
+    fn functor_lifecycle() {
+        let mut slot = BindSlot::default();
+        stub_0x4642c(&mut slot);
+        assert_eq!(slot.calls, 0);
+        stub_0x463cc(&mut slot, 0);
+        assert!(slot.bound);
+        stub_0x4642c(&mut slot);
+        stub_0x4642c(&mut slot);
+        assert_eq!(slot.calls, 2);
+        stub_0x463cc(&mut slot, 2);
+        assert!(slot.bound);
+        stub_0x463cc(&mut slot, 1);
+        assert!(!slot.bound);
+        stub_0x4642c(&mut slot);
+        assert_eq!(slot.calls, 2);
+        assert_eq!(stub_0x46490(), 1);
+        assert_eq!(stub_0x46f64(), 1);
+        assert_eq!(stub_0x47424(), 1);
+    }
+
+    #[test]
+    fn char_move() {
+        let mut move_ = stub_0x466cc([0.0, 0.0, 120.0, 120.0]);
+        assert_eq!(move_.frame, [0.0, 0.0, 120.0, 120.0]);
+        assert!(!move_.connected);
+        stub_0x46704(&mut move_);
+        assert!(move_.connected);
+        stub_0x467e8();
+        stub_0x467ec(&mut move_, false);
+        assert!(!move_.moving);
+        stub_0x469e8(&mut move_, 0.5, -0.25);
+        assert!(move_.moving);
+        assert_eq!(move_.move_vec, [0.5, -0.25]);
+        stub_0x467ec(&mut move_, false);
+        assert!(move_.moving);
+        stub_0x467ec(&mut move_, true);
+        assert!(!move_.moving);
+        assert_eq!(move_.move_vec, [0.0, 0.0]);
+        stub_0x469e8(&mut move_, 1.0, 0.0);
+        stub_0x468bc(&mut move_, true);
+        assert!(!move_.moving);
+        stub_0x4698c(&mut move_);
+        assert_eq!(move_.move_vec, [0.0, 0.0]);
+    }
+
+    #[test]
+    fn components() {
+        let comp = stub_0x47178();
+        assert!(comp.interaction);
+        assert_eq!(stub_0x471c0(&comp), None);
+        assert_eq!(stub_0x47274(&comp), None);
+        let wired = CtrlComp { interaction: true, view: Some(3), game: Some(9) };
+        assert_eq!(stub_0x471c0(&wired), Some(3));
+        assert_eq!(stub_0x47274(&wired), Some(9));
+        let noview = CtrlComp { interaction: true, view: None, game: Some(9) };
+        assert_eq!(stub_0x47274(&noview), None);
+    }
+
+    #[test]
+    fn control_view() {
+        let mut view = stub_0x47638([0.0; 4], Some(5));
+        assert_eq!(view.game, Some(5));
+        assert!(view.controls_visible);
+        assert!(!view.events_up);
+        stub_0x47afc(&mut view, Some(7));
+        assert!(view.events_up);
+        stub_0x47afc(&mut view, None);
+        assert!(!view.events_up);
+        stub_0x47afc(&mut view, Some(7));
+        stub_0x47aec(&mut view);
+        assert!(!view.events_up);
+        stub_0x47b38(&mut view, false);
+        assert!(!view.controls_visible);
+        stub_0x47b90(&mut view, true);
+        assert!(view.controls_visible);
+        stub_0x47c18(&mut view);
+        assert!(view.controls_visible);
+        stub_0x479f8(&mut view, Some(11));
+        assert_eq!(view.game, Some(11));
+        stub_0x47c04();
+        stub_0x47c10();
+        stub_0x47904(&mut view);
+        assert_eq!(view, CtrlView::default());
+    }
+}
+
+#[cfg(test)]
+mod control_view_event_tests {
+    use super::*;
+
+    #[test]
+    fn events_and_binding() {
+        let mut view = stub_0x47638([0.0; 4], Some(5));
+        assert_eq!(stub_0x47ea4(&view), Some(5));
+        stub_0x47d78();
+        assert!(!view.events_up);
+        stub_0x47f48(&mut view);
+        assert!(view.events_up);
+        stub_0x4818c(&mut view);
+        assert!(!view.events_up);
+        stub_0x47afc(&mut view, Some(1));
+        stub_0x47aec(&mut view);
+        assert!(!view.events_up);
+        assert!(!view.input_bound);
+        stub_0x481cc(&mut view);
+        assert!(view.input_bound);
+        view.input_bound = false;
+        stub_0x48604(&mut view);
+        assert!(view.input_bound);
+        stub_0x48918();
+        assert!(!view.controls_built);
+        stub_0x48a50(&mut view);
+        assert!(view.controls_built);
+        assert!(!view.menu_built);
+        stub_0x49018(&mut view);
+        assert!(view.menu_built);
+        stub_0x47d7c(&mut view, 21);
+        assert_eq!(view.focused_textbox, Some(21));
+        stub_0x479f8(&mut view, None);
+        assert!(!stub_0x487d4(&view, Some("TouchEnabled")));
+        stub_0x479f8(&mut view, Some(5));
+        assert!(stub_0x487d4(&view, Some("TouchEnabled")));
+        assert!(!stub_0x487d4(&view, Some("Parent")));
+        assert!(!stub_0x487d4(&view, None));
+    }
+
+    #[test]
+    fn visibility_flow() {
+        let mut view = stub_0x47638([0.0; 4], None);
+        stub_0x47c2c(&mut view);
+        assert!(!view.controls_visible);
+        stub_0x48fe8(&mut view);
+        assert!(view.controls_visible);
+    }
+
+    #[test]
+    fn tap_tracking() {
+        let mut view = stub_0x47638([0.0; 4], None);
+        stub_0x49314(&mut view, &[7, 8]);
+        assert_eq!(view.tap_touch, None);
+        stub_0x49314(&mut view, &[7]);
+        assert_eq!(view.tap_touch, Some(7));
+        stub_0x49314(&mut view, &[9]);
+        assert_eq!(view.tap_touch, Some(7));
+        assert_eq!(stub_0x4908c(&view, &[7, 9]), Some(7));
+        assert_eq!(stub_0x4908c(&view, &[9]), None);
+        stub_0x49684(&mut view, false);
+        assert_eq!(view.tap_touch, Some(7));
+        stub_0x497d0(&mut view, true);
+        assert_eq!(view.tap_touch, None);
+        stub_0x49314(&mut view, &[7]);
+        stub_0x49920(&mut view, Some(8));
+        assert_eq!(view.tap_touch, Some(7));
+        stub_0x49920(&mut view, Some(7));
+        assert_eq!(view.tap_touch, None);
+        stub_0x49314(&mut view, &[7]);
+        stub_0x47d48(&mut view, Some(8), true);
+        assert_eq!(view.tap_touch, Some(7));
+        stub_0x47d48(&mut view, Some(7), true);
+        assert_eq!(view.tap_touch, None);
+        stub_0x49314(&mut view, &[7]);
+        stub_0x48ff8(&mut view, None);
+        assert_eq!(view.tap_touch, None);
+        stub_0x49314(&mut view, &[7]);
+        stub_0x4951c(&mut view, Some(7));
+        assert_eq!(view.tap_touch, None);
+        assert_eq!(view.pinch_time, -1.0);
+    }
+
+    #[test]
+    fn pinch_and_mouse() {
+        let mut view = stub_0x47638([0.0; 4], None);
+        stub_0x49314(&mut view, &[3]);
+        stub_0x499e0(&mut view, true, 1.5);
+        assert_eq!(view.pinch_scale, 1.5);
+        assert_eq!(view.tap_touch, None);
+        stub_0x499e0(&mut view, false, 2.0);
+        assert_eq!(view.pinch_scale, 2.0);
+        assert_eq!(view.mouse_events, 0);
+        stub_0x47c40(&mut view);
+        stub_0x4918c(&mut view);
+        stub_0x49acc(&mut view);
+        assert_eq!(view.mouse_events, 3);
+    }
 }
