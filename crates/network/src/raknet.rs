@@ -56,6 +56,14 @@ pub fn stub_953b7c(
     sender.write_assembly(base, stream, key, packet, fingerprint);
 }
 
+/// `RBX::Network::ItemQueue` intrusive list (IDA 0x9addf8 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct ItemQueue {
+ pub count: usize,
+ pub items: Vec<usize>,
+ pub in_code: u32,
+}
+
 // 0x957584 — __ZN5boost6detail8function15functor_managerIPFNS_10shared_ptrIN3RBX7Network16ServerReplicatorEEEN6RakNet13SystemAddressEPNS5_6ServerEPNS4_15NetworkSettingsEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 #[doc(
     alias = "boost::detail::function::functor_manager<boost::shared_ptr<RBX::Network::ServerReplicator> (*)(RakNet::SystemAddress,RBX::Network::Server *,RBX::NetworkSettings *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
@@ -11153,152 +11161,200 @@ pub fn stub_9ab4a0(services: &[usize], is_match: &mut dyn FnMut(usize) -> bool) 
 
 // 0x9abb18 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_7Network18PhysicsPacketCacheEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::PhysicsPacketCache>(void)")]
-pub fn stub_9abb18() -> ! {
-    todo!("0x9abb18 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::PhysicsPacketCache>(void)")
+pub fn stub_9abb18(index: &mut u64, alloc: &mut dyn FnMut() -> u64) {
+ // IDA 0x9abb18: guard-gated newIndex assignment.
+ if *index == 0 {
+ *index = alloc();
+ }
 }
 
 // 0x9abbe0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEED2Ev
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::~table()")]
-pub fn stub_9abbe0() -> ! {
-    todo!("0x9abbe0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::~table()")
+pub fn stub_9abbe0(map: &mut NuggetMap) {
+ // IDA 0x9abbe0: unordered table dtor — drop buckets.
+ map.entries.clear();
 }
 
 // 0x9ac3ec — __ZN3RBX7Network19GuidRegistryServiceC1Ev
 #[doc(alias = "RBX::Network::GuidRegistryService::GuidRegistryService(void)")]
-pub fn stub_9ac3ec() -> ! {
-    todo!("0x9ac3ec RBX::Network::GuidRegistryService::GuidRegistryService(void)")
+pub fn stub_9ac3ec(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9ac3ec: ctor tail-calls the sibling overload.
+ init(slot);
+ slot
 }
 
 // 0x9ac3f8 — __ZN3RBX7Network19GuidRegistryServiceC2Ev
 #[doc(alias = "RBX::Network::GuidRegistryService::GuidRegistryService(void)")]
-pub fn stub_9ac3f8() -> ! {
-    todo!("0x9ac3f8 RBX::Network::GuidRegistryService::GuidRegistryService(void)")
+pub fn stub_9ac3f8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9ac3f8: GuidRegistryService ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9ac6cc — __ZN3RBX7Network19GuidRegistryServiceD0Ev
 #[doc(alias = "RBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9ac6cc() -> ! {
-    todo!("0x9ac6cc RBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9ac6cc(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9ac6cc: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9ac7c0 — __ZN3RBX7Network19GuidRegistryServiceD1Ev
 #[doc(alias = "RBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9ac7c0() -> ! {
-    todo!("0x9ac7c0 RBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9ac7c0(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9ac7c0: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0x9ac8a4 — __ZThn32_N3RBX7Network19GuidRegistryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9ac8a4() -> ! {
-    todo!("0x9ac8a4 non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9ac8a4(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9ac8a4: this-32 adjust then tail-call the primary dtor.
+ destroy_at(this - 32);
 }
 
 // 0x9ac99c — __ZThn36_N3RBX7Network19GuidRegistryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9ac99c() -> ! {
-    todo!("0x9ac99c non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9ac99c(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9ac99c: this-36 adjust then tail-call the primary dtor.
+ destroy_at(this - 36);
 }
 
 // 0x9aca94 — __ZThn32_N3RBX7Network19GuidRegistryServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9aca94() -> ! {
-    todo!("0x9aca94 non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9aca94(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9aca94: this-32 adjust then tail-call the primary dtor.
+ destroy_at(this - 32);
 }
 
 // 0x9acb74 — __ZThn36_N3RBX7Network19GuidRegistryServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")]
-pub fn stub_9acb74() -> ! {
-    todo!("0x9acb74 non-virtual thunk toRBX::Network::GuidRegistryService::~GuidRegistryService()")
+pub fn stub_9acb74(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9acb74: this-36 adjust then tail-call the primary dtor.
+ destroy_at(this - 36);
 }
 
 // 0x9addf8 — __ZN3RBX7Network9ItemQueueC1Ev
 #[doc(alias = "RBX::Network::ItemQueue::ItemQueue(void)")]
-pub fn stub_9addf8() -> ! {
-    todo!("0x9addf8 RBX::Network::ItemQueue::ItemQueue(void)")
+pub fn stub_9addf8(queue: &mut ItemQueue) {
+ // IDA 0x9addf8: clears count, self-links, clears inCode.
+ queue.count = 0;
+ queue.items.clear();
+ queue.in_code = 0;
 }
 
 // 0x9ade08 — __ZN3RBX7Network9ItemQueueD1Ev
 #[doc(alias = "RBX::Network::ItemQueue::~ItemQueue()")]
-pub fn stub_9ade08() -> ! {
-    todo!("0x9ade08 RBX::Network::ItemQueue::~ItemQueue()")
+pub fn stub_9ade08(queue: &mut ItemQueue, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9ade08: asserts inCode == 0, frees nodes.
+ debug_assert_eq!(queue.in_code, 0);
+ for item in queue.items.drain(..) {
+ free(item);
+ }
+ queue.count = 0;
 }
 
 // 0x9adf3c — __ZNK3RBX7Network9ItemQueue5emptyEv
 #[doc(alias = "RBX::Network::ItemQueue::empty(void)const")]
-pub fn stub_9adf3c() -> ! {
-    todo!("0x9adf3c RBX::Network::ItemQueue::empty(void)const")
+pub fn stub_9adf3c(queue: &ItemQueue) -> bool {
+ // IDA 0x9adf3c: empty when the head link is self or null.
+ queue.items.is_empty()
 }
 
 // 0x9adf58 — __ZNK3RBX7Network9ItemQueue4sizeEv
 #[doc(alias = "RBX::Network::ItemQueue::size(void)const")]
-pub fn stub_9adf58() -> ! {
-    todo!("0x9adf58 RBX::Network::ItemQueue::size(void)const")
+pub fn stub_9adf58(queue: &ItemQueue) -> usize {
+ // IDA 0x9adf58: returns the count at +0.
+ queue.count
 }
 
 // 0x9adf5c — __ZNK3RBX7Network9ItemQueue9head_waitEv
 #[doc(alias = "RBX::Network::ItemQueue::head_wait(void)const")]
-pub fn stub_9adf5c() -> ! {
-    todo!("0x9adf5c RBX::Network::ItemQueue::head_wait(void)const")
+pub fn stub_9adf5c(queue: &ItemQueue, now: f64, head_time: f64) -> f64 {
+ // IDA 0x9adf5c: empty -> 0 else now minus the head enqueue time.
+ if queue.items.is_empty() { 0.0 } else { now - head_time }
 }
 
 // 0x9adf98 — __ZN3RBX7Network9ItemQueue9deleteAllEv
 #[doc(alias = "RBX::Network::ItemQueue::deleteAll(void)")]
-pub fn stub_9adf98() -> ! {
-    todo!("0x9adf98 RBX::Network::ItemQueue::deleteAll(void)")
+pub fn stub_9adf98(queue: &mut ItemQueue, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9adf98: pops all, destroys each item.
+ for item in queue.items.drain(..) {
+ destroy(item);
+ }
+ queue.count = 0;
 }
 
 // 0x9adfc8 — __ZN3RBX7Network9ItemQueue14pop_if_presentERPNS0_4ItemE
 #[doc(alias = "RBX::Network::ItemQueue::pop_if_present(RBX::Network::Item *&)")]
-pub fn stub_9adfc8() -> ! {
-    todo!("0x9adfc8 RBX::Network::ItemQueue::pop_if_present(RBX::Network::Item *&)")
+pub fn stub_9adfc8(queue: &mut ItemQueue) -> Option<usize> {
+ // IDA 0x9adfc8: pops the front item when present (below truncation).
+ if queue.items.is_empty() {
+ None
+ } else {
+ queue.count = queue.count.saturating_sub(1);
+ Some(queue.items.remove(0))
+ }
 }
 
 // 0x9ae0f0 — __ZN3RBX7Network9ItemQueue9push_backEPNS0_4ItemE
 #[doc(alias = "RBX::Network::ItemQueue::push_back(RBX::Network::Item *)")]
-pub fn stub_9ae0f0() -> ! {
-    todo!("0x9ae0f0 RBX::Network::ItemQueue::push_back(RBX::Network::Item *)")
+pub fn stub_9ae0f0(queue: &mut ItemQueue, item: usize) {
+ // IDA 0x9ae0f0: stamps the enqueue time, appends.
+ queue.items.push(item);
+ queue.count += 1;
 }
 
 // 0x9ae1bc — __ZN3RBX7Network9ItemQueue10push_frontEPNS0_4ItemE
 #[doc(alias = "RBX::Network::ItemQueue::push_front(RBX::Network::Item *)")]
-pub fn stub_9ae1bc() -> ! {
-    todo!("0x9ae1bc RBX::Network::ItemQueue::push_front(RBX::Network::Item *)")
+pub fn stub_9ae1bc(queue: &mut ItemQueue, item: usize) {
+ // IDA 0x9ae1bc: stamps the enqueue time, prepends.
+ queue.items.insert(0, item);
+ queue.count += 1;
 }
 
 // 0x9b0060 — __ZN3RBX7Network15NetworkOwnerJobC1EN5boost10shared_ptrINS_9DataModelEEE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(rbx_core::SharedPtr<RBX::DataModel>)")]
-pub fn stub_9b0060() -> ! {
-    todo!("0x9b0060 RBX::Network::NetworkOwnerJob::NetworkOwnerJob(boost::shared_ptr<RBX::DataModel>)")
+pub fn stub_9b0060(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b0060: C1 tail-calls the C2 overload (disasm only, no decomp).
+ init(slot);
+ slot
 }
 
 // 0x9b006c — __ZN3RBX7Network15NetworkOwnerJobC2EN5boost10shared_ptrINS_9DataModelEEE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(rbx_core::SharedPtr<RBX::DataModel>)")]
-pub fn stub_9b006c() -> ! {
-    todo!("0x9b006c RBX::Network::NetworkOwnerJob::NetworkOwnerJob(boost::shared_ptr<RBX::DataModel>)")
+pub fn stub_9b006c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b006c: NetworkOwnerJob ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b040c — __ZN3RBX7Network15NetworkOwnerJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_9b040c() -> ! {
-    todo!("0x9b040c RBX::Network::NetworkOwnerJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_9b040c(factor: f32, compute: &mut dyn FnMut(f64) -> f64) -> f64 {
+ // IDA 0x9b040c: computeStandardSleepTime scaled by the float at +488.
+ compute(factor as f64)
 }
 
 // 0x9b042c — __ZN3RBX7Network15NetworkOwnerJob5errorERKNS_13TaskScheduler3Job5StatsE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_9b042c() -> ! {
-    todo!("0x9b042c RBX::Network::NetworkOwnerJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_9b042c(factor: f32, compute: &mut dyn FnMut(f64) -> i32) -> i32 {
+ // IDA 0x9b042c: computeStandardError with the float at +488.
+ compute(factor as f64)
 }
 
 // 0x9b044c — __ZN3RBX7Network15NetworkOwnerJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_9b044c() -> ! {
-    todo!("0x9b044c RBX::Network::NetworkOwnerJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_9b044c(step: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b044c: stepDataModelJob (below truncation).
+ step()
 }
 
 // 0x9b0804 — __ZN3RBX7Network15NetworkOwnerJob21updatePlayerLocationsEPNS0_6ServerE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::updatePlayerLocations(RBX::Network::Server *)")]
-pub fn stub_9b0804() -> ! {
-    todo!("0x9b0804 RBX::Network::NetworkOwnerJob::updatePlayerLocations(RBX::Network::Server *)")
+pub fn stub_9b0804(update: &mut dyn FnMut() -> u32) -> u32 {
+ // IDA 0x9b0804: updatePlayerLocations (below truncation).
+ update()
 }
 
 // 0x9b0968 — __ZN3RBX7Network15NetworkOwnerJob18updateNetworkOwnerEPNS_12PartInstanceE
