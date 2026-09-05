@@ -47,6 +47,27 @@ pub(crate) static BG_COPY: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
 pub(crate) static FG_IMAGE_X: std::sync::LazyLock<parking_lot::Mutex<f32>> =
     std::sync::LazyLock::new(|| parking_lot::Mutex::new(0.0));
+/// Page layer + navbar state (IDA 0x53a98-0x543dc): background image
+/// x, animation/background/foreground views, navbar back-button
+/// visibility, URL and leave signals plus appear count. Views live
+/// out of slice.
+pub(crate) static BG_IMAGE_X: std::sync::LazyLock<parking_lot::Mutex<f32>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(0.0));
+pub(crate) static ANIM_VIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static IMG_BG: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static IMG_FG: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_BACK_VISIBLE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_URL: std::sync::LazyLock<
+    parking_lot::Mutex<String>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static NAV_LEAVE_SIGNALS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static NAV_APPEARS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
@@ -501,176 +522,220 @@ pub fn stub_539fc() {
 // 0x53a04 — -[RobloxAnimatingPageViewController foregroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundCopy]")]
-pub fn stub_53a04() -> ! {
-    todo!("0x53a04 -[RobloxAnimatingPageViewController foregroundCopy]")
+pub fn stub_53a04() -> bool {
+    // IDA 0x53a04: `foregroundCopy` returns the ivar. Presence
+    // reports here.
+    FG_COPY.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x53a14 — -[RobloxAnimatingPageViewController setForegroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundCopy:]")]
-pub fn stub_53a14() -> ! {
-    todo!("0x53a14 -[RobloxAnimatingPageViewController setForegroundCopy:]")
+pub fn stub_53a14(present: bool) {
+    // IDA 0x53a14: `setForegroundCopy:` stores the ivar. It records
+    // here.
+    FG_COPY.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53a38 — -[RobloxAnimatingPageViewController backgroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundCopy]")]
-pub fn stub_53a38() -> ! {
-    todo!("0x53a38 -[RobloxAnimatingPageViewController backgroundCopy]")
+pub fn stub_53a38() -> bool {
+    // IDA 0x53a38: `backgroundCopy` returns the ivar. Presence
+    // reports here.
+    BG_COPY.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x53a48 — -[RobloxAnimatingPageViewController setBackgroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundCopy:]")]
-pub fn stub_53a48() -> ! {
-    todo!("0x53a48 -[RobloxAnimatingPageViewController setBackgroundCopy:]")
+pub fn stub_53a48(present: bool) {
+    // IDA 0x53a48: `setBackgroundCopy:` stores the ivar. It records
+    // here.
+    BG_COPY.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53a6c — -[RobloxAnimatingPageViewController foregroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundImageInitialX]")]
-pub fn stub_53a6c() -> ! {
-    todo!("0x53a6c -[RobloxAnimatingPageViewController foregroundImageInitialX]")
+pub fn stub_53a6c() -> f32 {
+    // IDA 0x53a6c: `foregroundImageInitialX` returns the ivar
+    // (decompiled 0x53a6c).
+    *FG_IMAGE_X.lock()
 }
 
 // 0x53a80 — -[RobloxAnimatingPageViewController setForegroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundImageInitialX:]")]
-pub fn stub_53a80() -> ! {
-    todo!("0x53a80 -[RobloxAnimatingPageViewController setForegroundImageInitialX:]")
+pub fn stub_53a80(x: f32) {
+    // IDA 0x53a80: `setForegroundImageInitialX:` stores the ivar.
+    *FG_IMAGE_X.lock() = x;
 }
 
 // 0x53a98 — -[RobloxAnimatingPageViewController backgroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundImageInitialX]")]
-pub fn stub_53a98() -> ! {
-    todo!("0x53a98 -[RobloxAnimatingPageViewController backgroundImageInitialX]")
+pub fn stub_53a98() -> f32 {
+    // IDA 0x53a98: `backgroundImageInitialX` returns the ivar (same
+    // shape as 0x53a6c).
+    *BG_IMAGE_X.lock()
 }
 
 // 0x53aac — -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")]
-pub fn stub_53aac() -> ! {
-    todo!("0x53aac -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")
+pub fn stub_53aac(x: f32) {
+    // IDA 0x53aac: `setBackgroundImageInitialX:` stores the ivar
+    // (same shape as 0x53a80).
+    *BG_IMAGE_X.lock() = x;
 }
 
 // 0x53ac4 — -[RobloxAnimatingPageViewController animationView]
 // type: UIView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animationView]")]
-pub fn stub_53ac4() -> ! {
-    todo!("0x53ac4 -[RobloxAnimatingPageViewController animationView]")
+pub fn stub_53ac4() -> bool {
+    // IDA 0x53ac4: `animationView` returns the ivar. Presence reports
+    // here.
+    ANIM_VIEW.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x53ad4 — -[RobloxAnimatingPageViewController setAnimationView:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setAnimationView:]")]
-pub fn stub_53ad4() -> ! {
-    todo!("0x53ad4 -[RobloxAnimatingPageViewController setAnimationView:]")
+pub fn stub_53ad4(present: bool) {
+    // IDA 0x53ad4: `setAnimationView:` stores the ivar. It records
+    // here.
+    ANIM_VIEW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53af8 — -[RobloxAnimatingPageViewController imgBackground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgBackground]")]
-pub fn stub_53af8() -> ! {
-    todo!("0x53af8 -[RobloxAnimatingPageViewController imgBackground]")
+pub fn stub_53af8() -> bool {
+    // IDA 0x53af8: `imgBackground` returns the ivar. Presence reports
+    // here.
+    IMG_BG.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x53b08 — -[RobloxAnimatingPageViewController setImgBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgBackground:]")]
-pub fn stub_53b08() -> ! {
-    todo!("0x53b08 -[RobloxAnimatingPageViewController setImgBackground:]")
+pub fn stub_53b08(present: bool) {
+    // IDA 0x53b08: `setImgBackground:` stores the ivar. It records
+    // here.
+    IMG_BG.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53b2c — -[RobloxAnimatingPageViewController imgForeground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgForeground]")]
-pub fn stub_53b2c() -> ! {
-    todo!("0x53b2c -[RobloxAnimatingPageViewController imgForeground]")
+pub fn stub_53b2c() -> bool {
+    // IDA 0x53b2c: `imgForeground` returns the ivar. Presence reports
+    // here.
+    IMG_FG.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x53b3c — -[RobloxAnimatingPageViewController setImgForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgForeground:]")]
-pub fn stub_53b3c() -> ! {
-    todo!("0x53b3c -[RobloxAnimatingPageViewController setImgForeground:]")
+pub fn stub_53b3c(present: bool) {
+    // IDA 0x53b3c: `setImgForeground:` stores the ivar (same shape as
+    // 0x53b08).
+    IMG_FG.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53b60 — -[RobloxNavBarViewController initWithCoder:]
 // type: RobloxNavBarViewController *__cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController initWithCoder:]")]
-pub fn stub_53b60() -> ! {
-    todo!("0x53b60 -[RobloxNavBarViewController initWithCoder:]")
+pub fn stub_53b60() {
+    // IDA 0x53b60: `RobloxNavBarViewController::initWithCoder:`
+    // supers. Super-init glue; no explicit body.
 }
 
 // 0x53cbc — -[RobloxNavBarViewController dealloc]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController dealloc]")]
-pub fn stub_53cbc() -> ! {
-    todo!("0x53cbc -[RobloxNavBarViewController dealloc]")
+pub fn stub_53cbc() {
+    // IDA 0x53cbc: `dealloc` drops the bar views. Release is drop
+    // glue; the navbar state resets here.
+    NAV_BACK_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
+    *NAV_URL.lock() = String::new();
 }
 
 // 0x53e6c — -[RobloxNavBarViewController setUrl:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setUrl:]")]
-pub fn stub_53e6c() -> ! {
-    todo!("0x53e6c -[RobloxNavBarViewController setUrl:]")
+pub fn stub_53e6c(url: &str) {
+    // IDA 0x53e6c: `setUrl:` stores the URL. It records here.
+    *NAV_URL.lock() = url.to_owned();
 }
 
 // 0x53e8c — -[RobloxNavBarViewController getUrl]
 // type: id __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController getUrl]")]
-pub fn stub_53e8c() -> ! {
-    todo!("0x53e8c -[RobloxNavBarViewController getUrl]")
+pub fn stub_53e8c() -> String {
+    // IDA 0x53e8c: `getUrl` returns the URL.
+    NAV_URL.lock().clone()
 }
 
 // 0x53e9c — -[RobloxNavBarViewController gotStartLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotStartLeaveGameNotification:]")]
-pub fn stub_53e9c() -> ! {
-    todo!("0x53e9c -[RobloxNavBarViewController gotStartLeaveGameNotification:]")
+pub fn stub_53e9c() {
+    // IDA 0x53e9c: `gotStartLeaveGameNotification:` handles the leave
+    // start. The signal records here.
+    NAV_LEAVE_SIGNALS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53f38 — -[RobloxNavBarViewController gotDidLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotDidLeaveGameNotification:]")]
-pub fn stub_53f38() -> ! {
-    todo!("0x53f38 -[RobloxNavBarViewController gotDidLeaveGameNotification:]")
+pub fn stub_53f38() {
+    // IDA 0x53f38: `gotDidLeaveGameNotification:` handles the leave
+    // finish (same shape as 0x53e9c). The signal records here.
+    NAV_LEAVE_SIGNALS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53fac — -[RobloxNavBarViewController viewWillAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewWillAppear:]")]
-pub fn stub_53fac() -> ! {
-    todo!("0x53fac -[RobloxNavBarViewController viewWillAppear:]")
+pub fn stub_53fac() {
+    // IDA 0x53fac: `viewWillAppear:` supers. Super glue; no explicit
+    // body.
 }
 
 // 0x53ffc — -[RobloxNavBarViewController viewDidAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewDidAppear:]")]
-pub fn stub_53ffc() -> ! {
-    todo!("0x53ffc -[RobloxNavBarViewController viewDidAppear:]")
+pub fn stub_53ffc() {
+    // IDA 0x53ffc: `viewDidAppear:` records the appearance. It
+    // records here.
+    NAV_APPEARS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x540c4 — ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")]
-pub fn stub_540c4() -> ! {
-    todo!("0x540c4 ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")
+pub fn stub_540c4() {
+    // IDA 0x540c4: the appear block runs post-appear work on main
+    // (continuation of 0x53ffc, counted there). View glue; no explicit
+    // body.
 }
 
 // 0x540f0 — ___copy_helper_block__15
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__15")]
-pub fn stub_540f0() -> ! {
-    todo!("0x540f0 ___copy_helper_block__15")
+pub fn stub_540f0() {
+    // IDA 0x540f0: `__copy_helper_block__15` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x540fc — ___destroy_helper_block__15
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__15")]
-pub fn stub_540fc() -> ! {
-    todo!("0x540fc ___destroy_helper_block__15")
+pub fn stub_540fc() {
+    // IDA 0x540fc: `__destroy_helper_block__15` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x54104 — -[RobloxNavBarViewController viewDidLoad]
