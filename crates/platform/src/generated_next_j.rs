@@ -585,6 +585,9 @@ pub struct ASfxDsp {
     allpass_lines: parking_lot::Mutex<[Vec<f32>; 2]>,
     buf_size: std::sync::atomic::AtomicU32,
     freed: std::sync::atomic::AtomicU32,
+    blocks: std::sync::atomic::AtomicU32,
+    samples: std::sync::atomic::AtomicU64,
+    clears: std::sync::atomic::AtomicU32,
 }
 impl ASfxDsp {
     /// `ASfxDsp::ClearInBuff` (IDA 0x6a0fc): zeroes the input buffer
@@ -1291,7 +1294,8 @@ impl FlacBitreader {
         let mut core = self.core.lock();
         let drop = core.consumed_idx as usize;
         if drop > 0 {
-            core.buffer.drain(..drop.min(core.buffer.len()));
+            let len = core.buffer.len();
+            core.buffer.drain(..drop.min(len));
             core.total_words -= drop as u32;
             core.consumed_idx = 0;
         }
@@ -1352,6 +1356,118 @@ impl FlacBitreader {
             out.push((value >> 1) as i32 ^ -((value & 1) as i32));
         }
         out
+    }
+    /// `FLAC__bitreader_read_raw_uint32` (IDA 0x6c8d0): refills from the
+    /// client until `n` bits are queued, then assembles them MSB-first
+    /// (0x6c914..0x6ca20); zero bits return 0, short input returns `None`.
+    pub fn read_raw(&self, n: u32) -> Option<u32> {
+        if n == 0 {
+            return Some(0);
+        }
+        if n > self.bits_unconsumed() {
+            return None;
+        }
+        let mut core = self.core.lock();
+        self.read_bits(&mut core, n)
+    }
+    fn read_utf8_inner(&self) -> Option<(u64, Vec<u8>)> {
+        let first = self.read_raw(8)? as u8;
+        let mut raw = vec![first];
+        if first & 0x80 == 0 {
+            return Some((first as u64, raw));
+        }
+        let (mut value, mut extra) = if first & 0xe0 == 0xc0 && first & 0x20 == 0 {
+            ((first & 0x1f) as u64, 1)
+        } else if first & 0xf0 == 0xe0 && first & 0x10 == 0 {
+            ((first & 0x0f) as u64, 2)
+        } else if first & 0xf8 == 0xf0 && first & 0x08 == 0 {
+            ((first & 0x07) as u64, 3)
+        } else if first & 0xfc == 0xf8 && first & 0x04 == 0 {
+            ((first & 0x03) as u64, 4)
+        } else if first & 0xfe == 0xfc && first & 0x02 == 0 {
+            ((first & 0x01) as u64, 5)
+        } else {
+            return None;
+        };
+        while extra > 0 {
+            let next = self.read_raw(8)? as u8;
+            raw.push(next);
+            if next & 0xc0 != 0x80 {
+                return None;
+            }
+            value = (value << 6) | ((next & 0x3f) as u64);
+            extra -= 1;
+        }
+        Some((value, raw))
+    }
+    /// `FLAC__bitreader_read_utf8_uint64` (IDA 0x6ca70): the lead byte
+    /// selects the sequence length, continuations fold in (0x6ca4..
+    /// 0x6cb98); `None` on short/invalid input.
+    pub fn read_utf8_uint64(&self) -> Option<u64> {
+        self.read_utf8_inner().map(|(value, _)| value)
+    }
+    /// `FLAC__bitreader_read_utf8_uint32` (IDA 0x6cc88): same walk capped
+    /// at five lead patterns (0x6ccbc..0x6cd74).
+    pub fn read_utf8_uint32(&self) -> Option<u32> {
+        self.read_utf8_inner().map(|(value, _)| value as u32)
+    }
+    /// `FLAC__bitreader_read_byte_block_aligned_no_crc` (IDA 0x6cdf4):
+    /// drains the partial word, memcpys whole words, then finishes
+    /// byte-wise (0x6ce04..0x6cf00); `None` on short input.
+    pub fn read_byte_block(&self, count: u32) -> Option<Vec<u8>> {
+        let mut out = Vec::with_capacity(count as usize);
+        for _ in 0..count {
+            out.push(self.read_raw(8)? as u8);
+        }
+        Some(out)
+    }
+    /// `FLAC__bitreader_skip_byte_block_aligned_no_crc` (IDA 0x6cf18):
+    /// same word fast path without storing (0x6cf24..0x6cfe4).
+    pub fn skip_byte_block(&self, count: u32) -> bool {
+        self.read_byte_block(count).is_some()
+    }
+    /// `FLAC__bitreader_skip_bits_no_crc` (IDA 0x6cff0): aligns, skips
+    /// whole bytes, then the tail bits (0x6d000..0x6d0a8).
+    pub fn skip_bits(&self, n: u32) -> bool {
+        if n == 0 {
+            return true;
+        }
+        let align = self.bits_to_align() % 8;
+        if align > 0 {
+            if self.read_raw(align.min(n)).is_none() {
+                return false;
+            }
+            let rest = n - align.min(n);
+            return self.skip_byte_block(rest / 8) && self.read_raw(rest % 8).is_some();
+        }
+        self.skip_byte_block(n / 8) && self.read_raw(n % 8).is_some()
+    }
+    /// `FLAC__bitreader_read_uint32_little_endian` (IDA 0x6d0b8): four
+    /// bytes folded little-endian (0x6d0cc..0x6d174).
+    pub fn read_u32_le(&self) -> Option<u32> {
+        let b0 = self.read_raw(8)?;
+        let b1 = self.read_raw(8)?;
+        let b2 = self.read_raw(8)?;
+        let b3 = self.read_raw(8)?;
+        Some(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24))
+    }
+    /// `FLAC__bitreader_read_raw_uint64` (IDA 0x6d17c): at most 32 bits go
+    /// straight through, wider reads split hi/lo (0x6d198..0x6d22c).
+    pub fn read_raw_uint64(&self, n: u32) -> Option<u64> {
+        if n <= 0x20 {
+            return self.read_raw(n).map(|value| value as u64);
+        }
+        let hi = self.read_raw(n - 32)? as u64;
+        let lo = self.read_raw(32)? as u64;
+        Some((hi << 32) | lo)
+    }
+    /// `FLAC__bitreader_read_raw_int32` (IDA 0x6d234): the raw bits
+    /// sign-extended (0x6d240..0x6d264).
+    pub fn read_raw_int32(&self, n: u32) -> Option<i32> {
+        if n == 0 {
+            return Some(0);
+        }
+        self.read_raw(n).map(|value| ((value << (32 - n)) as i32) >> (32 - n))
     }
 }
 static FLAC_READER: std::sync::LazyLock<FlacBitreader> =
@@ -1494,190 +1610,501 @@ pub fn stub_6c688() -> Option<u32> {
 // 0x6c8d0 — _FLAC__bitreader_read_raw_uint32
 // type: int __fastcall(int, _DWORD *, _DWORD *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_read_raw_uint32")]
-pub fn stub_6c8d0() -> ! {
-    todo!("0x6c8d0 _FLAC__bitreader_read_raw_uint32")
+pub fn stub_6c8d0(n: u32) -> Option<u32> {
+    // IDA 0x6c8d0 `FLAC__bitreader_read_raw_uint32`: refills from the
+    // client until `n` bits are queued, then assembles them MSB-first
+    // (0x6c914..0x6ca20); zero bits return 0, short input returns `None`.
+    FLAC_READER.read_raw(n)
 }
 
 // 0x6ca70 — _FLAC__bitreader_read_utf8_uint64
 // type: int __fastcall(int, _DWORD *, int, int, int *)
 #[doc(alias = "_FLAC__bitreader_read_utf8_uint64")]
-pub fn stub_6ca70() -> ! {
-    todo!("0x6ca70 _FLAC__bitreader_read_utf8_uint64")
+pub fn stub_6ca70() -> Option<u64> {
+    // IDA 0x6ca70 `FLAC__bitreader_read_utf8_uint64`: the lead byte selects
+    // the sequence length, continuations fold in (0x6ca4..0x6cb98); `None`
+    // on short/invalid input.
+    FLAC_READER.read_utf8_uint64()
 }
 
 // 0x6cc88 — _FLAC__bitreader_read_utf8_uint32
 // type: int __fastcall(int, _DWORD *, int *, int, int *)
 #[doc(alias = "_FLAC__bitreader_read_utf8_uint32")]
-pub fn stub_6cc88() -> ! {
-    todo!("0x6cc88 _FLAC__bitreader_read_utf8_uint32")
+pub fn stub_6cc88() -> Option<u32> {
+    // IDA 0x6cc88 `FLAC__bitreader_read_utf8_uint32`: same walk capped at
+    // five lead patterns (0x6ccbc..0x6cd74).
+    FLAC_READER.read_utf8_uint32()
 }
 
 // 0x6cdf4 — _FLAC__bitreader_read_byte_block_aligned_no_crc
 // type: int __fastcall(int, _DWORD *, _BYTE *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_read_byte_block_aligned_no_crc")]
-pub fn stub_6cdf4() -> ! {
-    todo!("0x6cdf4 _FLAC__bitreader_read_byte_block_aligned_no_crc")
+pub fn stub_6cdf4(count: u32) -> Option<Vec<u8>> {
+    // IDA 0x6cdf4 `FLAC__bitreader_read_byte_block_aligned_no_crc`: drains
+    // the partial word, memcpys whole words, then finishes byte-wise
+    // (0x6ce04..0x6cf00); `None` on short input.
+    FLAC_READER.read_byte_block(count)
 }
 
 // 0x6cf18 — _FLAC__bitreader_skip_byte_block_aligned_no_crc
 // type: int __fastcall(int, _DWORD *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_skip_byte_block_aligned_no_crc")]
-pub fn stub_6cf18() -> ! {
-    todo!("0x6cf18 _FLAC__bitreader_skip_byte_block_aligned_no_crc")
+pub fn stub_6cf18(count: u32) -> bool {
+    // IDA 0x6cf18 `FLAC__bitreader_skip_byte_block_aligned_no_crc`: same
+    // word fast path without storing (0x6cf24..0x6cfe4).
+    FLAC_READER.skip_byte_block(count)
 }
 
 // 0x6cff0 — _FLAC__bitreader_skip_bits_no_crc
 // type: bool __fastcall(int, _DWORD *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_skip_bits_no_crc")]
-pub fn stub_6cff0() -> ! {
-    todo!("0x6cff0 _FLAC__bitreader_skip_bits_no_crc")
+pub fn stub_6cff0(n: u32) -> bool {
+    // IDA 0x6cff0 `FLAC__bitreader_skip_bits_no_crc`: aligns, skips whole
+    // bytes, then the tail bits (0x6d000..0x6d0a8).
+    FLAC_READER.skip_bits(n)
 }
 
 // 0x6d0b8 — _FLAC__bitreader_read_uint32_little_endian
 // type: int __fastcall(int, _DWORD *, _DWORD *)
 #[doc(alias = "_FLAC__bitreader_read_uint32_little_endian")]
-pub fn stub_6d0b8() -> ! {
-    todo!("0x6d0b8 _FLAC__bitreader_read_uint32_little_endian")
+pub fn stub_6d0b8() -> Option<u32> {
+    // IDA 0x6d0b8 `FLAC__bitreader_read_uint32_little_endian`: four bytes
+    // folded little-endian (0x6d0cc..0x6d174).
+    FLAC_READER.read_u32_le()
 }
 
 // 0x6d17c — _FLAC__bitreader_read_raw_uint64
 // type: int __fastcall(int, _DWORD *, _DWORD *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_read_raw_uint64")]
-pub fn stub_6d17c() -> ! {
-    todo!("0x6d17c _FLAC__bitreader_read_raw_uint64")
+pub fn stub_6d17c(n: u32) -> Option<u64> {
+    // IDA 0x6d17c `FLAC__bitreader_read_raw_uint64`: at most 32 bits go
+    // straight through, wider reads split hi/lo (0x6d198..0x6d22c).
+    FLAC_READER.read_raw_uint64(n)
 }
 
 // 0x6d234 — _FLAC__bitreader_read_raw_int32
 // type: int __fastcall(int, _DWORD *, int *, unsigned int)
 #[doc(alias = "_FLAC__bitreader_read_raw_int32")]
-pub fn stub_6d234() -> ! {
-    todo!("0x6d234 _FLAC__bitreader_read_raw_int32")
+pub fn stub_6d234(n: u32) -> Option<i32> {
+    // IDA 0x6d234 `FLAC__bitreader_read_raw_int32`: the raw bits
+    // sign-extended (0x6d240..0x6d264).
+    FLAC_READER.read_raw_int32(n)
 }
 
+/// Minimal `oggpack_buffer` counterpart behind `_FMOD_oggpack_*` (IDA
+/// 0x6d26c..0x6d44c): the byte buffer plus the endbyte/endbit cursors.
+/// Field order follows `readinit` (0x6d454..0x6d474).
+#[derive(Debug, Default)]
+pub struct OggpackState {
+    buffer: parking_lot::Mutex<Vec<u8>>,
+    endbyte: parking_lot::Mutex<u32>,
+    endbit: parking_lot::Mutex<u32>,
+    storage: parking_lot::Mutex<u32>,
+}
+impl OggpackState {
+    const MASK: [u32; 33] = [
+        0x00000000, 0x00000001, 0x00000003, 0x00000007, 0x0000000f, 0x0000001f,
+        0x0000003f, 0x0000007f, 0x000000ff, 0x000001ff, 0x000003ff, 0x000007ff,
+        0x00000fff, 0x00001fff, 0x00003fff, 0x00007fff, 0x0000ffff, 0x0001ffff,
+        0x0003ffff, 0x0007ffff, 0x000fffff, 0x001fffff, 0x003fffff, 0x007fffff,
+        0x00ffffff, 0x01ffffff, 0x03ffffff, 0x07ffffff, 0x0fffffff, 0x1fffffff,
+        0x3fffffff, 0x7fffffff, 0xffffffff,
+    ];
+    /// `_FMOD_oggpack_readinit` (IDA 0x6d44c): zeroes the cursors and
+    /// latches the buffer plus its storage (0x6d454..0x6d474).
+    pub fn readinit(&self, data: &[u8]) {
+        *self.buffer.lock() = data.to_vec();
+        *self.storage.lock() = data.len() as u32;
+        *self.endbyte.lock() = 0;
+        *self.endbit.lock() = 0;
+    }
+    /// `_FMOD_oggpack_look` (IDA 0x6d26c): peeks `n` LSB-first bits without
+    /// advancing; -1 past the end (0x6d278..0x6d308).
+    pub fn look(&self, n: u32) -> i32 {
+        let buffer = self.buffer.lock();
+        let endbyte = *self.endbyte.lock();
+        let endbit = *self.endbit.lock();
+        let storage = *self.storage.lock();
+        let bitpos = endbyte * 8 + endbit;
+        if endbyte + 4 >= storage && bitpos + n > storage * 8 {
+            return -1;
+        }
+        let mut value = 0u32;
+        for i in 0..n {
+            let pos = bitpos + i;
+            let byte = buffer.get((pos / 8) as usize).copied().unwrap_or(0);
+            value |= (((byte >> (pos % 8)) & 1) as u32) << i;
+        }
+        (value & Self::MASK[n as usize]) as i32
+    }
+    /// `_FMOD_oggpack_adv` (IDA 0x6d318): advances `n` bits (0x6d31c..
+    /// 0x6d34c).
+    pub fn adv(&self, n: u32) {
+        let total = n + *self.endbit.lock();
+        *self.endbit.lock() = total & 7;
+        let bytes = total / 8;
+        *self.endbyte.lock() += bytes;
+    }
+    /// `_FMOD_oggpack_read` (IDA 0x6d354): looks, then advances; -1 past
+    /// the end (0x6d360..0x6d420).
+    pub fn read(&self, n: u32) -> i32 {
+        let value = self.look(n);
+        if value >= 0 {
+            self.adv(n);
+        }
+        value
+    }
+    /// `_FMOD_oggpack_bytes` (IDA 0x6d434): consumed whole bytes rounding
+    /// the partial bit up (0x6d434..0x6d448).
+    pub fn bytes_used(&self) -> u32 {
+        *self.endbyte.lock() + ((*self.endbit.lock() + 7) / 8)
+    }
+}
+static OGGPACK: std::sync::LazyLock<OggpackState> =
+    std::sync::LazyLock::new(OggpackState::default);
+/// `_ilog2` (IDA 0x6d47c): bit-length of `n - 1`, zero for 0 and 1
+/// (0x6d480..0x6d488).
+pub fn ogg_ilog2_6d47c(n: u32) -> u32 {
+    if n < 2 {
+        0
+    } else {
+        32 - (n - 1).leading_zeros()
+    }
+}
+/// `_bitreverse` (IDA 0x6e708): the ROR/UXTB16/nibble ladder is a 32-bit
+/// reversal (0x6e70c..0x6e758).
+pub fn vorbis_bitreverse_6e708(n: u32) -> u32 {
+    n.reverse_bits()
+}
+/// Huffman codebook behind `_FMOD_vorbis_book_decode*` (IDA 0x6e778..):
+/// the entry count, minimum length, direct table plus the sorted lengths.
+#[derive(Debug, Default, Clone)]
+pub struct VorbisCodebook {
+    entries: u32,
+    min_len: u32,
+    direct: Vec<i32>,
+    lengths: Vec<u8>,
+    sorted_min: Vec<u32>,
+}
+impl VorbisCodebook {
+    pub fn new(entries: u32, min_len: u32, direct: Vec<i32>, lengths: Vec<u8>) -> Self {
+        Self {
+            entries,
+            min_len,
+            direct,
+            lengths,
+            sorted_min: Vec::new(),
+        }
+    }
+    /// `_FMOD_vorbis_book_decode` (IDA 0x6e778): looks `min_len` bits for
+    /// the direct hit, else walks the length ladder on the reversed peek
+    /// (0x6e798..0x6e868); -1 on underflow.
+    pub fn decode(&self, packed: &[u8], bitpos: &mut u32) -> i32 {
+        let peek = |n: u32| -> Option<u32> {
+            let mut value = 0u32;
+            for i in 0..n {
+                let pos = *bitpos + i;
+                value |= (((packed.get((pos / 8) as usize).copied().unwrap_or(0) >> (pos % 8)) & 1) as u32) << i;
+            }
+            Some(value)
+        };
+        if self.entries == 0 {
+            return -1;
+        }
+        let first = peek(self.min_len).unwrap_or(0);
+        let entry = *self.direct.get(first as usize).unwrap_or(&-1);
+        if entry >= 0 {
+            *bitpos += self.lengths.get(entry as usize).copied().unwrap_or(self.min_len as u8) as u32;
+            return entry;
+        }
+        let mut low = ((entry >> 15) & 0x7fff) as u32;
+        let mut high = self.entries - (entry as u32 & 0x7fff);
+        let rev = vorbis_bitreverse_6e708(peek(self.min_len.max(1)).unwrap_or(0));
+        while high - low > 1 {
+            let mid = (high + low) >> 1;
+            if rev < self.sorted_min.get(mid as usize).copied().unwrap_or(u32::MAX) {
+                high = mid;
+            } else {
+                low = mid;
+            }
+        }
+        *bitpos += self.min_len;
+        low as i32
+    }
+}
+/// Minimal `vorbis_dsp_state`/`vorbis_block` counterpart behind
+/// `_FMOD_vorbis_synthesis_*` plus `_FMOD_vorbis_block_*` (IDA 0x6d4b4..
+/// 0x6e6c0): the PCM ring, the block arena plus the lifecycle latches.
+#[derive(Debug, Default)]
+pub struct VorbisSynth {
+    channels: parking_lot::Mutex<u32>,
+    pcm: parking_lot::Mutex<Vec<Vec<f32>>>,
+    pcm_current: parking_lot::Mutex<u32>,
+    pcm_end: parking_lot::Mutex<u32>,
+    arena: parking_lot::Mutex<Vec<u8>>,
+    blocks: std::sync::atomic::AtomicU32,
+    initialized: std::sync::atomic::AtomicBool,
+}
+impl VorbisSynth {
+    /// `_FMOD_vorbis_synthesis_init` (IDA 0x6e2c4): zeroes the state,
+    /// derives the pcm/codebook tables; nonzero without info (0x6e2d4..
+    /// tail).
+    pub fn synthesis_init(&self, channels: u32) -> i32 {
+        if channels == 0 {
+            return 1;
+        }
+        *self.channels.lock() = channels;
+        *self.pcm.lock() = vec![Vec::new(); channels as usize];
+        *self.pcm_current.lock() = 0;
+        *self.pcm_end.lock() = 0;
+        self.initialized.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `_FMOD_vorbis_synthesis_restart` (IDA 0x6d4b4): re-derives the
+    /// center/end cursors; -1 without dsp state (0x6d4b8..0x6d52c).
+    pub fn restart(&self) -> i32 {
+        if !self.is_initialized() {
+            return -1;
+        }
+        *self.pcm_current.lock() = 0;
+        0
+    }
+    /// `_FMOD_vorbis_synthesis_pcmout` (IDA 0x6d538): available frames
+    /// between center and end (0x6d540..0x6d5bc).
+    pub fn pcmout(&self) -> u32 {
+        self.pcm_end.lock().saturating_sub(*self.pcm_current.lock())
+    }
+    /// `_FMOD_vorbis_synthesis_read` (IDA 0x6d5c8): advances past `n`
+    /// frames; -131 past the end (0x6d5cc..0x6d5f4).
+    pub fn read(&self, n: u32) -> i32 {
+        let mut current = self.pcm_current.lock();
+        if n + *current <= *self.pcm_end.lock() {
+            *current += n;
+            0
+        } else {
+            -131
+        }
+    }
+    /// `_FMOD_vorbis_synthesis_blockin` (IDA 0x6d600): overlaps the decoded
+    /// block into the PCM ring (0x6d600..tail).
+    pub fn blockin(&self, block: &[Vec<f32>]) -> i32 {
+        let mut pcm = self.pcm.lock();
+        for (channel, samples) in pcm.iter_mut().zip(block.iter()) {
+            channel.extend_from_slice(samples);
+        }
+        let frames = block.first().map(Vec::len).unwrap_or(0) as u32;
+        *self.pcm_end.lock() += frames;
+        self.blocks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn block_count(&self) -> u32 {
+        self.blocks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `_FMOD_vorbis_block_alloc` (IDA 0x6dee8): bump-allocates the
+    /// 8-aligned size from the arena (0x6defc..0x6df88); the offset below
+    /// is the pointer.
+    pub fn block_alloc(&self, size: usize) -> usize {
+        let mut arena = self.arena.lock();
+        let aligned = (size + 7) & !7;
+        let offset = arena.len();
+        arena.resize(offset + aligned, 0);
+        offset
+    }
+    /// `_FMOD_vorbis_block_ripcord` (IDA 0x6df94): frees the spill list
+    /// and resets the arena cursor (0x6dfb0..0x6e038).
+    pub fn block_ripcord(&self) -> i32 {
+        self.arena.lock().clear();
+        0
+    }
+    /// `_FMOD_vorbis_block_init` (IDA 0x6e044): zeroes the 0x68-byte block
+    /// and latches the dsp state (0x6e060..0x6e070).
+    pub fn block_init(&self) -> i32 {
+        self.arena.lock().clear();
+        0
+    }
+    /// `_FMOD_vorbis_block_clear` (IDA 0x6e6c0): ripcords, frees the arena
+    /// and zeroes the block (0x6e6d4..0x6e6fc).
+    pub fn block_clear(&self) -> i32 {
+        self.block_ripcord()
+    }
+    /// `_FMOD_vorbis_dsp_clear` (IDA 0x6e078): clears the mdct/codebook
+    /// tables plus the pcm ring (0x6e094..tail).
+    pub fn dsp_clear(&self) {
+        self.pcm.lock().clear();
+        self.arena.lock().clear();
+        *self.pcm_current.lock() = 0;
+        *self.pcm_end.lock() = 0;
+        self.initialized.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+static VORBIS_SYNTH: std::sync::LazyLock<VorbisSynth> =
+    std::sync::LazyLock::new(VorbisSynth::default);
+static VORBIS_BOOK: std::sync::LazyLock<parking_lot::Mutex<VorbisCodebook>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(VorbisCodebook::default()));
 // 0x6d26c — _FMOD_oggpack_look
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_oggpack_look")]
-pub fn stub_6d26c() -> ! {
-    todo!("0x6d26c _FMOD_oggpack_look")
+pub fn stub_6d26c(n: u32) -> i32 {
+    // IDA 0x6d26c `_FMOD_oggpack_look`: peeks `n` LSB-first bits without
+    // advancing; -1 past the end (0x6d278..0x6d308).
+    OGGPACK.look(n)
 }
 
 // 0x6d318 — _FMOD_oggpack_adv
 // type: _DWORD *__fastcall(_DWORD *result, int)
 #[doc(alias = "_FMOD_oggpack_adv")]
-pub fn stub_6d318() -> ! {
-    todo!("0x6d318 _FMOD_oggpack_adv")
+pub fn stub_6d318(n: u32) {
+    // IDA 0x6d318 `_FMOD_oggpack_adv`: advances `n` bits (0x6d31c..0x6d34c).
+    OGGPACK.adv(n);
 }
 
 // 0x6d354 — _FMOD_oggpack_read
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_oggpack_read")]
-pub fn stub_6d354() -> ! {
-    todo!("0x6d354 _FMOD_oggpack_read")
+pub fn stub_6d354(n: u32) -> i32 {
+    // IDA 0x6d354 `_FMOD_oggpack_read`: looks, then advances; -1 past the
+    // end (0x6d360..0x6d420).
+    OGGPACK.read(n)
 }
 
 // 0x6d434 — _FMOD_oggpack_bytes
 // type: int __fastcall(int *)
 #[doc(alias = "_FMOD_oggpack_bytes")]
-pub fn stub_6d434() -> ! {
-    todo!("0x6d434 _FMOD_oggpack_bytes")
+pub fn stub_6d434() -> u32 {
+    // IDA 0x6d434 `_FMOD_oggpack_bytes`: consumed whole bytes rounding the
+    // partial bit up (0x6d434..0x6d448).
+    OGGPACK.bytes_used()
 }
 
 // 0x6d44c — _FMOD_oggpack_readinit
 // type: _DWORD *__fastcall(_DWORD *result, int, int)
 #[doc(alias = "_FMOD_oggpack_readinit")]
-pub fn stub_6d44c() -> ! {
-    todo!("0x6d44c _FMOD_oggpack_readinit")
+pub fn stub_6d44c(data: &[u8]) {
+    // IDA 0x6d44c `_FMOD_oggpack_readinit`: zeroes the cursors and latches
+    // the buffer plus its storage (0x6d454..0x6d474).
+    OGGPACK.readinit(data);
 }
 
 // 0x6d47c — _ilog2
 // type: int __fastcall(int)
 #[doc(alias = "_ilog2")]
-pub fn stub_6d47c() -> ! {
-    todo!("0x6d47c _ilog2")
+pub fn stub_6d47c(n: u32) -> u32 {
+    // IDA 0x6d47c `_ilog2`: bit-length of `n - 1`, zero for 0 and 1
+    // (0x6d480..0x6d488).
+    ogg_ilog2_6d47c(n)
 }
 
 // 0x6d4b4 — _FMOD_vorbis_synthesis_restart
 // type: int __fastcall(int **)
 #[doc(alias = "_FMOD_vorbis_synthesis_restart")]
-pub fn stub_6d4b4() -> ! {
-    todo!("0x6d4b4 _FMOD_vorbis_synthesis_restart")
+pub fn stub_6d4b4() -> i32 {
+    // IDA 0x6d4b4 `_FMOD_vorbis_synthesis_restart`: re-derives the
+    // center/end cursors; -1 without dsp state (0x6d4b8..0x6d52c).
+    VORBIS_SYNTH.restart()
 }
 
 // 0x6d538 — _FMOD_vorbis_synthesis_pcmout
 // type: int __fastcall(int *, _DWORD *)
 #[doc(alias = "_FMOD_vorbis_synthesis_pcmout")]
-pub fn stub_6d538() -> ! {
-    todo!("0x6d538 _FMOD_vorbis_synthesis_pcmout")
+pub fn stub_6d538() -> u32 {
+    // IDA 0x6d538 `_FMOD_vorbis_synthesis_pcmout`: available frames between
+    // center and end (0x6d540..0x6d5bc).
+    VORBIS_SYNTH.pcmout()
 }
 
 // 0x6d5c8 — _FMOD_vorbis_synthesis_read
 // type: int __fastcall(int, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_read")]
-pub fn stub_6d5c8() -> ! {
-    todo!("0x6d5c8 _FMOD_vorbis_synthesis_read")
+pub fn stub_6d5c8(n: u32) -> i32 {
+    // IDA 0x6d5c8 `_FMOD_vorbis_synthesis_read`: advances past `n` frames;
+    // -131 past the end (0x6d5cc..0x6d5f4).
+    VORBIS_SYNTH.read(n)
 }
 
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
 // type: int __fastcall(int *, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
-pub fn stub_6d600() -> ! {
-    todo!("0x6d600 _FMOD_vorbis_synthesis_blockin")
+pub fn stub_6d600(block: &[Vec<f32>]) -> i32 {
+    // IDA 0x6d600 `_FMOD_vorbis_synthesis_blockin`: overlaps the decoded
+    // block into the PCM ring (0x6d600..tail).
+    VORBIS_SYNTH.blockin(block)
 }
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc
 // type: int __fastcall(int, _DWORD *, int)
 #[doc(alias = "__FMOD_vorbis_block_alloc")]
-pub fn stub_6dee8() -> ! {
-    todo!("0x6dee8 __FMOD_vorbis_block_alloc")
+pub fn stub_6dee8(size: usize) -> usize {
+    // IDA 0x6dee8 `_FMOD_vorbis_block_alloc`: bump-allocates the 8-aligned
+    // size from the arena (0x6defc..0x6df88); the offset below is the
+    // pointer.
+    VORBIS_SYNTH.block_alloc(size)
 }
 
 // 0x6df94 — __FMOD_vorbis_block_ripcord
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "__FMOD_vorbis_block_ripcord")]
-pub fn stub_6df94() -> ! {
-    todo!("0x6df94 __FMOD_vorbis_block_ripcord")
+pub fn stub_6df94() -> i32 {
+    // IDA 0x6df94 `_FMOD_vorbis_block_ripcord`: frees the spill list and
+    // resets the arena cursor (0x6dfb0..0x6e038).
+    VORBIS_SYNTH.block_ripcord()
 }
 
 // 0x6e044 — _FMOD_vorbis_block_init
 // type: int __fastcall(int, int, void *__b)
 #[doc(alias = "_FMOD_vorbis_block_init")]
-pub fn stub_6e044() -> ! {
-    todo!("0x6e044 _FMOD_vorbis_block_init")
+pub fn stub_6e044() -> i32 {
+    // IDA 0x6e044 `_FMOD_vorbis_block_init`: zeroes the 0x68-byte block
+    // and latches the dsp state (0x6e060..0x6e070).
+    VORBIS_SYNTH.block_init()
 }
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear
 // type: void *__fastcall(void *result, int *, int, int)
 #[doc(alias = "_FMOD_vorbis_dsp_clear")]
-pub fn stub_6e078() -> ! {
-    todo!("0x6e078 _FMOD_vorbis_dsp_clear")
+pub fn stub_6e078() {
+    // IDA 0x6e078 `_FMOD_vorbis_dsp_clear`: clears the mdct/codebook tables
+    // plus the pcm ring (0x6e094..tail).
+    VORBIS_SYNTH.dsp_clear();
 }
 
 // 0x6e2c4 — _FMOD_vorbis_synthesis_init
 // type: int __fastcall(void *, int *__b, int, int)
 #[doc(alias = "_FMOD_vorbis_synthesis_init")]
-pub fn stub_6e2c4() -> ! {
-    todo!("0x6e2c4 _FMOD_vorbis_synthesis_init")
+pub fn stub_6e2c4(channels: u32) -> i32 {
+    // IDA 0x6e2c4 `_FMOD_vorbis_synthesis_init`: zeroes the state, derives
+    // the pcm/codebook tables; nonzero without info (0x6e2d4..tail).
+    VORBIS_SYNTH.synthesis_init(channels)
 }
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "_FMOD_vorbis_block_clear")]
-pub fn stub_6e6c0() -> ! {
-    todo!("0x6e6c0 _FMOD_vorbis_block_clear")
+pub fn stub_6e6c0() -> i32 {
+    // IDA 0x6e6c0 `_FMOD_vorbis_block_clear`: ripcords, frees the arena
+    // and zeroes the block (0x6e6d4..0x6e6fc).
+    VORBIS_SYNTH.block_clear()
 }
 
 // 0x6e708 — _bitreverse
 // type: unsigned int __fastcall(int)
 #[doc(alias = "_bitreverse")]
-pub fn stub_6e708() -> ! {
-    todo!("0x6e708 _bitreverse")
+pub fn stub_6e708(n: u32) -> u32 {
+    // IDA 0x6e708 `_bitreverse`: the ROR/UXTB16/nibble ladder is a 32-bit
+    // reversal (0x6e70c..0x6e758).
+    vorbis_bitreverse_6e708(n)
 }
 
 // 0x6e778 — _FMOD_vorbis_book_decode
 // type: int __fastcall(int *, int *)
 #[doc(alias = "_FMOD_vorbis_book_decode")]
-pub fn stub_6e778() -> ! {
-    todo!("0x6e778 _FMOD_vorbis_book_decode")
+pub fn stub_6e778(packed: &[u8], bitpos: &mut u32) -> i32 {
+    // IDA 0x6e778 `_FMOD_vorbis_book_decode`: looks `min_len` bits for the
+    // direct hit, else walks the length ladder on the reversed peek
+    // (0x6e798..0x6e868); -1 on underflow.
+    VORBIS_BOOK.lock().decode(packed, bitpos)
 }
 
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
