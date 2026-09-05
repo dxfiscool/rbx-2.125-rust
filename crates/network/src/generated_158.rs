@@ -6,6 +6,21 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
+
+/// `rbx::signals` slot connection (IDA 0x3a278 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct SignalSlotConn {
+ pub id: u64,
+ pub target: usize,
+ pub live: bool,
+}
+
+/// `std::map<Name const*, ICreator const*>` (IDA 0x3aa30 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct CreatorMap {
+ pub entries: HashMap<String, usize>,
+}
 
 /// `RobloxInfo` cached URL strings (IDA 0x36918/0x369c0/0x36ab0: dword_130C460/64/68).
 #[derive(Clone, Debug, Default)]
@@ -537,8 +552,12 @@ pub fn stub_39e10(job: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
-pub fn stub_39ea8() -> ! {
-    todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
+pub fn stub_39ea8(dst: &mut Option<usize>, src: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x39ea8: move-assign — steal src pair (src zeroed); release old dst.
+    let old = std::mem::replace(dst, src.take());
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
@@ -546,8 +565,9 @@ pub fn stub_39ea8() -> ! {
 // type: int __fastcall(int, void *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_39f4c() -> ! {
-    todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_39f4c(make: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x39f4c: shared_ptr<ViewUpdateJob> construct (below truncation).
+    make()
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
@@ -555,8 +575,12 @@ pub fn stub_39f4c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
-pub fn stub_3a030() -> ! {
-    todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+pub fn stub_3a030(dst: &mut Option<usize>, src: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a030: move-assign — steal src pair (src zeroed); release old dst.
+    let old = std::mem::replace(dst, src.take());
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
@@ -564,16 +588,17 @@ pub fn stub_3a030() -> ! {
 // type: int __fastcall(int, void *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_3a0d4() -> ! {
-    todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_3a0d4(make: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3a0d4: shared_ptr<RenderJob> construct (below truncation).
+    make()
 }
 
 // 0x3a1b8 — __ZN17QuitEventListenerD1Ev
 // demangled: QuitEventListener::~QuitEventListener()
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
-pub fn stub_3a1b8() -> ! {
-    todo!("0x3a1b8 QuitEventListener::~QuitEventListener()")
+pub fn stub_3a1b8() {
+    // IDA 0x3a1b8: empty QuitEventListener dtor body.
 }
 
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
@@ -581,8 +606,15 @@ pub fn stub_3a1b8() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Game>::operator=(rbx_core::SharedPtr<RBX::Game> const&)")]
-pub fn stub_3a1bc() -> ! {
-    todo!("0x3a1bc boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")
+pub fn stub_3a1bc(dst: &mut Option<usize>, src: Option<usize>, retain: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a1bc: shared_ptr<Game> copy-assign — retain src; release old (below truncation).
+    if let Some(s) = src {
+        retain(s);
+    }
+    let old = std::mem::replace(dst, src);
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
@@ -590,8 +622,11 @@ pub fn stub_3a1bc() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost:")]
-pub fn stub_3a278() -> ! {
-    todo!("0x3a278 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection")
+pub fn stub_3a278(slots: &mut Vec<SignalSlotConn>, target: usize) -> u64 {
+    // IDA 0x3a278: operator new islot; callable ctor; signal::insert; connection (mf1 flavor).
+    let id = slots.len() as u64;
+    slots.push(SignalSlotConn { id, target, live: true });
+    id
 }
 
 // 0x3a2ec — __ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE
@@ -599,8 +634,12 @@ pub fn stub_3a278() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")]
-pub fn stub_3a2ec() -> ! {
-    todo!("0x3a2ec boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)")
+pub fn stub_3a2ec(dst: &mut Option<usize>, src: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a2ec: move-assign — steal src pair (src zeroed); release old dst.
+    let old = std::mem::replace(dst, src.take());
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
@@ -608,8 +647,11 @@ pub fn stub_3a2ec() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
-pub fn stub_3a390() -> ! {
-    todo!("0x3a390 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(")
+pub fn stub_3a390(slots: &mut Vec<SignalSlotConn>, target: usize) -> u64 {
+    // IDA 0x3a390: operator new islot; callable ctor; signal::insert; connection (mf0 flavor).
+    let id = slots.len() as u64;
+    slots.push(SignalSlotConn { id, target, live: true });
+    id
 }
 
 // 0x3a408 — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv
@@ -617,8 +659,14 @@ pub fn stub_3a390() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")]
-pub fn stub_3a408() -> ! {
-    todo!("0x3a408 __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")
+pub fn stub_3a408(slot: &mut Option<usize>, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3a408: CRenderSettingsItem singleton (below truncation).
+    if let Some(v) = *slot {
+        return v;
+    }
+    let v = init();
+    *slot = Some(v);
+    v
 }
 
 // 0x3a5bc — __ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_
@@ -626,8 +674,11 @@ pub fn stub_3a408() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
-pub fn stub_3a5bc() -> ! {
-    todo!("0x3a5bc void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
+pub fn stub_3a5bc(slot: &mut Option<usize>, value: Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a5bc: shared_ptr<Sequence>::reset — release old, store new (below truncation).
+    if let Some(p) = slot.replace(value) {
+        release(p);
+    }
 }
 
 // 0x3a660 — __ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv
@@ -635,8 +686,11 @@ pub fn stub_3a5bc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::ViewBase>::reset(void)")]
-pub fn stub_3a660() -> ! {
-    todo!("0x3a660 boost::shared_ptr<RBX::ViewBase>::reset(void)")
+pub fn stub_3a660(job: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a660: shared_ptr<ViewBase>::reset — clear + release.
+    if let Some(p) = job.take() {
+        release(p);
+    }
 }
 
 // 0x3a6f8 — __ZN5boost13exception_ptrD1Ev
@@ -644,16 +698,20 @@ pub fn stub_3a660() -> ! {
 // type: void __fastcall(boost::exception_ptr *__hidden this)
 // was: boost::shared_ptr
 #[doc(alias = "boost::exception_ptr::~exception_ptr()")]
-pub fn stub_3a6f8() -> ! {
-    todo!("0x3a6f8 boost::exception_ptr::~exception_ptr()")
+pub fn stub_3a6f8(slot: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x3a6f8: exception_ptr dtor — release counted base.
+    if let Some(p) = slot.take() {
+        release(p);
+    }
 }
 
 // 0x3a790 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
 // demangled: __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
 // type: 
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")]
-pub fn stub_3a790() -> ! {
-    todo!("0x3a790 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")
+pub fn stub_3a790(destroy: &mut dyn FnMut()) {
+    // IDA 0x3a790: Creator<Camera> D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x3a798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6CameraEEEN5boost10shared_ptrIT_EEv
@@ -661,8 +719,12 @@ pub fn stub_3a790() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")]
-pub fn stub_3a798() -> ! {
-    todo!("0x3a798 boost::shared_ptr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")
+pub fn stub_3a798(alloc: &mut dyn FnMut(usize) -> usize, construct: &mut dyn FnMut(usize), share: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3a798: new(0x1DC); Camera::Camera; shared_ptr attach.
+    let p = alloc(0x1DC);
+    construct(p);
+    share(p);
+    p
 }
 
 // 0x3a850 — __ZN5boost6detail15sp_counted_base12weak_releaseEv
@@ -670,8 +732,13 @@ pub fn stub_3a798() -> ! {
 // type: _DWORD __fastcall(boost::detail::sp_counted_base *__hidden this)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_base::weak_release(void)")]
-pub fn stub_3a850() -> ! {
-    todo!("0x3a850 boost::detail::sp_counted_base::weak_release(void)")
+pub fn stub_3a850(weak: &mut u32, destroy: &mut dyn FnMut()) {
+    // IDA 0x3a850: spinlock; weak_refs--; dispose when it hits zero from one.
+    let old = *weak;
+    *weak = old.wrapping_sub(1);
+    if old == 1 {
+        destroy();
+    }
 }
 
 // 0x3a930 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6CameraES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -679,8 +746,13 @@ pub fn stub_3a850() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(rbx_core::SharedPtr<RBX::Camera> const*,RBX::Camera *)const")]
-pub fn stub_3a930() -> ! {
-    todo!("0x3a930 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const")
+pub fn stub_3a930(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x3a930: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x3aa10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -688,8 +760,9 @@ pub fn stub_3a930() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3aa10() -> ! {
-    todo!("0x3aa10 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3aa10(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3aa10: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3aa18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -697,56 +770,83 @@ pub fn stub_3aa10() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_3aa18() -> ! {
-    todo!("0x3aa18 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_3aa18(block: usize, type_name: &str) -> usize {
+    // IDA 0x3aa18: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x3aa30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_ESH_
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>)
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,")]
-pub fn stub_3aa30() -> ! {
-    todo!("0x3aa30 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name co")
+pub fn stub_3aa30(map: &mut CreatorMap, keys: &[String]) {
+    // IDA 0x3aa30: _Rb_tree range erase.
+    for k in keys {
+        map.entries.remove(k);
+    }
 }
 
 // 0x3aa90 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEED1Ev
 // demangled: std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()
 // type: 
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")]
-pub fn stub_3aa90() -> ! {
-    todo!("0x3aa90 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")
+pub fn stub_3aa90(map: &mut CreatorMap) {
+    // IDA 0x3aa90: ~map — erase all nodes.
+    map.entries.clear();
 }
 
 // 0x3aaa0 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
 // demangled: __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")]
-pub fn stub_3aaa0() -> ! {
-    todo!("0x3aaa0 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")
+pub fn stub_3aaa0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3aaa0: Creator<Camera> C2 — vtable + registration (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x3acc8 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEEixERSA_
 // demangled: std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_3acc8() -> ! {
-    todo!("0x3acc8 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* cons")
+pub fn stub_3acc8(map: &mut CreatorMap, key: String, make: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3acc8: map operator[] — find or default-insert.
+    if let Some(&v) = map.entries.get(&key) {
+        return v;
+    }
+    let v = make();
+    map.entries.insert(key, v);
+    v
 }
 
 // 0x3ad20 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // demangled: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreator const*> const&)
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreato")]
-pub fn stub_3ad20() -> ! {
-    todo!("0x3ad20 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name co")
+pub fn stub_3ad20(map: &mut CreatorMap, key: String, value: usize) -> bool {
+    // IDA 0x3ad20: unique insert; false when present.
+    if map.entries.contains_key(&key) {
+        return false;
+    }
+    map.entries.insert(key, value);
+    true
 }
 
 // 0x3add8 — __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v
 // demangled: __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_3add8() -> ! {
-    todo!("0x3add8 __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_3add8(has_name: bool, null_name: usize, once: &mut dyn FnMut(), declared: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3add8: null sRunService -> getNullName; else call_once(callDoDeclare) + doDeclare.
+    if !has_name {
+        return null_name;
+    }
+    once();
+    declared()
 }
 
 // 0x3ae20 — __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v
