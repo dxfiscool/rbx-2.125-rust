@@ -72,6 +72,36 @@ pub struct CameraControlInit {
     pub height: f32,
     pub multitouch: bool,
 }
+/// `cameraTouch` tracking + `UIEvent` signal state (IDA 0x450a0-0x46464):
+/// whether a touch is captured for the pan, the signal/slot mutex
+/// handles and the slot-connected flag. Touch sets and signal payloads
+/// live out of slice.
+pub(crate) static CAMERA_TOUCH_SET: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static SIGNAL_UIEVENT_MUTEX: std::sync::LazyLock<u32> =
+    std::sync::LazyLock::new(|| 1);
+pub(crate) static SIGNAL_UIEVENT_SLOT_MUTEX: std::sync::LazyLock<u32> =
+    std::sync::LazyLock::new(|| 1);
+pub(crate) static UI_SLOT_CONNECTED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// typeinfo name for the managed `bind_t<objc_object*,objc_selector*,
+/// bool,void*,UIEvent>` (IDA 0x463cc, cf. 0x2d644).
+pub const BIND_UIEVENT_OBJC_TYPEINFO: &str =
+    "bind_t<objc_object*,objc_selector*,bool,void*,UIEvent>";
+/// `CharacterMove` movement-signal connections (IDA 0x46704 wires
+/// `localCharacterMovementEnabledChange:` when the input service
+/// exists).
+pub(crate) static CHARACTER_MOVE_CONNS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `CharacterMove::init:` frame (IDA 0x466cc supers to
+/// `ThumbStickControl`).
+#[derive(Debug, Clone, Default)]
+pub struct CharacterMoveInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+}
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
@@ -652,80 +682,123 @@ pub fn stub_0x44e58() {
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesBegan:withEvent:]")]
-pub fn stub_0x450a0() -> ! {
-    todo!("0x450a0 -[CameraControl touchesBegan:withEvent:]")
+pub fn stub_0x450a0(touch_count: u32) {
+    // IDA 0x450a0: `touchesBegan:` captures the single touch as
+    // `cameraTouch` and begins the pan when none is captured
+    // (0x450d2-0x450f6), then forwards to the delegate (0x45120).
+    // The forward is drop glue; the capture records here.
+    if !CAMERA_TOUCH_SET.load(std::sync::atomic::Ordering::SeqCst) && touch_count == 1 {
+        CAMERA_TOUCH_SET.store(true, std::sync::atomic::Ordering::SeqCst);
+        stub_0x44d04();
+    }
+    CAMERA_TOUCHES.fetch_add(touch_count, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45124 — -[CameraControl touchesEnded:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesEnded:withEvent:]")]
-pub fn stub_0x45124() -> ! {
-    todo!("0x45124 -[CameraControl touchesEnded:withEvent:]")
+pub fn stub_0x45124(matching: bool, ended: u32) {
+    // IDA 0x45124: `touchesEnded:` clears a matching `cameraTouch` and
+    // ends the pan, then forwards to the delegate (same shape as
+    // 0x450a0 tail). The clear records here.
+    if matching {
+        CAMERA_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+        stub_0x44dec();
+    }
+    CAMERA_TOUCHES.fetch_sub(ended.min(CAMERA_TOUCHES.load(std::sync::atomic::Ordering::SeqCst)), std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45234 — -[CameraControl touchesCancelled:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesCancelled:withEvent:]")]
-pub fn stub_0x45234() -> ! {
-    todo!("0x45234 -[CameraControl touchesCancelled:withEvent:]")
+pub fn stub_0x45234(matching: bool, cancelled: u32) {
+    // IDA 0x45234: `touchesCancelled:` clears a matching `cameraTouch`
+    // and ends the pan (same shape as 0x45124). The clear records
+    // here.
+    if matching {
+        CAMERA_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+        stub_0x44dec();
+    }
+    CAMERA_TOUCHES.fetch_sub(cancelled.min(CAMERA_TOUCHES.load(std::sync::atomic::Ordering::SeqCst)), std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45344 — -[CameraControl touchesMoved:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesMoved:withEvent:]")]
-pub fn stub_0x45344() -> ! {
-    todo!("0x45344 -[CameraControl touchesMoved:withEvent:]")
+pub fn stub_0x45344(camera_in_set: bool) {
+    // IDA 0x45344: `touchesMoved:` pans when `cameraTouch` is in the
+    // set (0x453e8-0x45418), then forwards to the delegate (0x4541c).
+    // The pan records here.
+    if camera_in_set {
+        stub_0x44e58();
+    }
 }
 
 // 0x45454 — -[CameraControl .cxx_construct]
 // type: id __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl .cxx_construct]")]
-pub fn stub_0x45454() -> ! {
-    todo!("0x45454 -[CameraControl .cxx_construct]")
+pub fn stub_0x45454() {
+    // IDA 0x45454: `.cxx_construct` runs member constructors in place.
+    // Construction glue; no explicit body.
 }
 
 // 0x4546c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")]
-pub fn stub_0x4546c() -> ! {
-    todo!("0x4546c rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")
+pub fn stub_0x4546c() {
+    // IDA 0x4546c: `signal<bool,void*,UIEvent>::connect<function<...>>`
+    // installs the slot (same shape as 0x3a278). Closure + slot glue;
+    // the install records here.
+    UI_SLOT_CONNECTED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45554 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE")]
-pub fn stub_0x45554() -> ! {
-    todo!("0x45554 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_0x45554() {
+    // IDA 0x45554: `signal<bool,void*,UIEvent>::insert(slot *)`
+    // appends the slot (same shape as 0x3d2f4). The install records
+    // here.
+    UI_SLOT_CONNECTED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45764 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_")]
-pub fn stub_0x45764() -> ! {
-    todo!("0x45764 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+pub fn stub_0x45764() {
+    // IDA 0x45764: `intrusive_ptr<slot>::operator=(slot*)`
+    // copy-assigns the slot (same shape as 0x3c0c8). `Arc` clone glue
+    // covers it; no explicit body.
 }
 
 // 0x45808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_")]
-pub fn stub_0x45808() -> ! {
-    todo!("0x45808 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")
+pub fn stub_0x45808() {
+    // IDA 0x45808: `intrusive_ptr<slot>::operator=(const&)`
+    // copy-assigns the slot (same shape as 0x3d508). `Arc` clone glue
+    // covers it; no explicit body.
 }
 
 // 0x458ac — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv")]
-pub fn stub_0x458ac() -> ! {
-    todo!("0x458ac rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x458ac() -> u32 {
+    // IDA 0x458ac: `signal<bool,void*,UIEvent>::safe_static_do_get_mutex`
+    // one-shots the static signal mutex (same shape as 0x3d5b0). The
+    // opaque handle records once.
+    *SIGNAL_UIEVENT_MUTEX
 }
 
 // 0x459a4 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_")]
-pub fn stub_0x459a4() -> ! {
-    todo!("0x459a4 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")
+pub fn stub_0x459a4() {
+    // IDA 0x459a4: `callable<slot,function<...>>::callable` wraps the
+    // bound slot (same shape as 0x46de8). Closure-wrapping glue; no
+    // explicit body.
 }
 
 // 0x45aa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev
@@ -745,23 +818,29 @@ pub fn stub_0x45b74() {
 // 0x45c4c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv")]
-pub fn stub_0x45c4c() -> ! {
-    todo!("0x45c4c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")
+pub fn stub_0x45c4c() {
+    // IDA 0x45c4c: `signal<bool,void*,UIEvent>::slot::disconnect`
+    // detaches the slot. The detach records here.
+    UI_SLOT_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45d5c — __ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv")]
-pub fn stub_0x45d5c() -> ! {
-    todo!("0x45d5c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")
+pub fn stub_0x45d5c() -> bool {
+    // IDA 0x45d5c: `signal<bool,void*,UIEvent>::slot::connected`
+    // reports the attach state.
+    UI_SLOT_CONNECTED.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x45d68 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_")]
-pub fn stub_0x45d68() -> ! {
-    todo!("0x45d68 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn stub_0x45d68() {
+    // IDA 0x45d68: `callable<slot,function3<...>>::call` invokes the
+    // stored target on the event args. Closure-call glue; no explicit
+    // body.
 }
 
 // 0x45d98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
@@ -774,30 +853,39 @@ pub fn stub_0x45d98() {
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")]
 #[doc(alias = "__ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_")]
-pub fn stub_0x45dc8() -> ! {
-    todo!("0x45dc8 boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")
+pub fn stub_0x45dc8() {
+    // IDA 0x45dc8: `function3<void,bool,void*,UIEvent>::operator()`
+    // runs the stored target. Closure-call glue; no explicit body.
 }
 
 // 0x45eb0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE")]
-pub fn stub_0x45eb0() -> ! {
-    todo!("0x45eb0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_0x45eb0() {
+    // IDA 0x45eb0: `signal<bool,void*,UIEvent>::remove(slot *)`
+    // detaches the slot (same shape as 0x3d848). The detach records
+    // here.
+    UI_SLOT_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x45fa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv")]
-pub fn stub_0x45fa0() -> ! {
-    todo!("0x45fa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x45fa0() {
+    // IDA 0x45fa0: `signal<bool,void*,UIEvent>::slot::
+    // safe_static_init_mutex` one-shots the static slot mutex (same
+    // shape as 0x3c920). One-shot init glue; no explicit body.
 }
 
 // 0x45fa4 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv")]
-pub fn stub_0x45fa4() -> ! {
-    todo!("0x45fa4 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0x45fa4() -> u32 {
+    // IDA 0x45fa4: `signal<bool,void*,UIEvent>::slot::
+    // safe_static_do_get_mutex` one-shots the static slot mutex (same
+    // shape as 0x458ac). The opaque handle records once.
+    *SIGNAL_UIEVENT_SLOT_MUTEX
 }
 
 // 0x46094 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev
@@ -832,53 +920,73 @@ pub fn stub_0x462ec() {
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")]
 #[doc(alias = "__ZN5boost9function3IvbPvN3RBX7UIEventEE13assign_to_ownERKS4_")]
-pub fn stub_0x4639c() -> ! {
-    todo!("0x4639c boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")
+pub fn stub_0x4639c() {
+    // IDA 0x4639c: `function3<void,bool,void*,UIEvent>::assign_to_own`
+    // copy-assigns the function (same shape as 0x3e288). `Box<dyn Fn>`
+    // assignment glue; no explicit body.
 }
 
 // 0x463cc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x463cc() -> ! {
-    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x463cc(get_typeinfo: bool) -> &'static str {
+    // IDA 0x463cc: `functor_manager<bind_t<objc_object*,objc_selector*,
+    // bool,void*,UIEvent>>::manage` answers op 4 with the `bind_t`
+    // typeinfo (same shape as 0x4a21c). Other ops are vtable glue.
+    if get_typeinfo { BIND_UIEVENT_OBJC_TYPEINFO } else { "" }
 }
 
 // 0x4642c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_")]
-pub fn stub_0x4642c() -> ! {
-    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")
+pub fn stub_0x4642c() {
+    // IDA 0x4642c: `void_function_obj_invoker3<bind_t<objc...>>::invoke`
+    // runs the bound slot on the event args (same shape as 0x4a27c).
+    // Closure-call glue; no explicit body.
 }
 
 // 0x46464 — __ZN5boost9function3IvbPvN3RBX7UIEventEE5clearEv
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")]
 #[doc(alias = "__ZN5boost9function3IvbPvN3RBX7UIEventEE5clearEv")]
-pub fn stub_0x46464() -> ! {
-    todo!("0x46464 boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")
+pub fn stub_0x46464() {
+    // IDA 0x46464: `function3<void,bool,void*,UIEvent>::clear` drops
+    // the stored target (same shape as 0x4bfdc). `Box<dyn Fn>` drop
+    // glue covers it; no explicit body.
 }
 
 // 0x46490 — __GLOBAL__I_a_15
 #[doc(alias = "global constructor keyed to_a_15")]
 #[doc(alias = "__GLOBAL__I_a_15")]
-pub fn stub_0x46490() -> ! {
-    todo!("0x46490 global constructor keyed to_a_15")
+pub fn stub_0x46490() {
+    // IDA 0x46490: `__GLOBAL__I_a_15` runs the `a_15`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x466cc — -[CharacterMove init:]
 // type: id __cdecl(CharacterMove *self, SEL, CGRect)
 #[doc(alias = "-[CharacterMove init:]")]
-pub fn stub_0x466cc() -> ! {
-    todo!("0x466cc -[CharacterMove init:]")
+pub fn stub_0x466cc(x: f32, y: f32, width: f32, height: f32) -> CharacterMoveInit {
+    // IDA 0x466cc: `CharacterMove::init:` supers to
+    // `ThumbStickControl::init:` on the frame (0x466e6-0x46702). The
+    // frame records here.
+    CharacterMoveInit { x, y, width, height }
 }
 
 // 0x46704 — -[CharacterMove setupCharacterMoveConnection]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove setupCharacterMoveConnection]")]
-pub fn stub_0x46704() -> ! {
-    todo!("0x46704 -[CharacterMove setupCharacterMoveConnection]")
+pub fn stub_0x46704(service_present: bool) {
+    // IDA 0x46704: `setupCharacterMoveConnection` connects
+    // `localCharacterMovementEnabledChange:` to the input service
+    // signal when the service exists (0x46738-0x4679c, same connect
+    // shape as 0x46c18). The install records here.
+    if service_present {
+        CHARACTER_MOVE_CONNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
