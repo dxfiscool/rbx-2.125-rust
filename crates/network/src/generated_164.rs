@@ -251,186 +251,250 @@ pub fn stub_258150(get: &mut dyn FnMut() -> String) -> String {
 // demangled: non-virtual thunk to RBX::HttpService::~HttpService()
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
-pub fn stub_258160() -> ! {
-    todo!("0x258160 non-virtual thunk to RBX::HttpService::~HttpService()")
+pub fn stub_258160(destroy: &mut dyn FnMut()) {
+    // IDA 0x258160: thunk adjusts (-32) then Instance dtor.
+    destroy();
 }
 
 // 0x258168 — __ZThn32_N3RBX11HttpServiceD0Ev
 // demangled: non-virtual thunk to RBX::HttpService::~HttpService()
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
-pub fn stub_258168() -> ! {
-    todo!("0x258168 non-virtual thunk to RBX::HttpService::~HttpService()")
+pub fn stub_258168(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x258168: thunk adjusts then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
-pub fn stub_25820c() -> ! {
-    todo!("0x25820c __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
+pub fn stub_25820c(get: &mut dyn FnMut() -> String) -> String {
+    // IDA 0x25820c: Thn32 getClassName — static creator + name.
+    get()
 }
 
 // 0x25821c — __ZThn36_N3RBX11HttpServiceD1Ev
 // demangled: non-virtual thunk to RBX::HttpService::~HttpService()
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
-pub fn stub_25821c() -> ! {
-    todo!("0x25821c non-virtual thunk to RBX::HttpService::~HttpService()")
+pub fn stub_25821c(destroy: &mut dyn FnMut()) {
+    // IDA 0x25821c: thunk adjusts (-36) then Instance dtor.
+    destroy();
 }
 
 // 0x258224 — __ZThn36_N3RBX11HttpServiceD0Ev
 // demangled: non-virtual thunk to RBX::HttpService::~HttpService()
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
-pub fn stub_258224() -> ! {
-    todo!("0x258224 non-virtual thunk to RBX::HttpService::~HttpService()")
+pub fn stub_258224(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x258224: thunk adjusts then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")]
-pub fn stub_2582c8() -> ! {
-    todo!("0x2582c8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")
+pub fn stub_2582c8(check_asserts: bool, constructed: bool, creator: usize) -> usize {
+    // IDA 0x2582c8: ReleaseAssert(Creator::wasConstructed()); return creator.
+    if check_asserts {
+        assert!(constructed, "Creator::wasConstructed()");
+    }
+    creator
 }
 
 // 0x25833c — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")]
-pub fn stub_25833c() -> ! {
-    todo!("0x25833c __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")
+pub fn stub_25833c(check_asserts: bool, constructed: bool, name: &str) -> &str {
+    // IDA 0x25833c: ReleaseAssert(wasConstructed()) when FLog::Asserts; return Name::declare(sHttpService).
+    if check_asserts {
+        assert!(constructed, "wasConstructed() file: include/Util/Object.h line: 236");
+    }
+    name
 }
 
 // 0x2583c4 — __ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv")]
-pub fn stub_2583c4() -> ! {
-    todo!("0x2583c4 __ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv")
+pub fn stub_2583c4(declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x2583c4: thunk tail-calls doDeclare.
+    declare()
 }
 
 // 0x2583c8 — __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v")]
-pub fn stub_2583c8() -> ! {
-    todo!("0x2583c8 __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v")
+pub fn stub_2583c8(guard: &mut bool, cached: &mut usize, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x2583c8: cxa_guard one-time Name::declare(sHttpService).
+    if !*guard {
+        *cached = declare();
+        *guard = true;
+    }
+    *cached
 }
 
 // 0x2584a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")]
-pub fn stub_2584a8() -> ! {
-    todo!("0x2584a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")
+pub fn stub_2584a8(check_asserts: bool, constructed: bool, destroy: &mut dyn FnMut()) {
+    // IDA 0x2584a8: Creator D2 — vtable reset + wasConstructed assert (below truncation).
+    if check_asserts {
+        assert!(constructed, "Creator::wasConstructed()");
+    }
+    destroy();
 }
 
 // 0x258544 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")]
-pub fn stub_258544() -> ! {
-    todo!("0x258544 __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")
+pub fn stub_258544(create: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x258544: Creator::create — alloc + shared attach (below truncation).
+    create()
 }
 
 // 0x258688 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11HttpServiceEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")]
-pub fn stub_258688() -> ! {
-    todo!("0x258688 boost::shared_ptr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")
+pub fn stub_258688(alloc: &mut dyn FnMut(usize) -> usize, construct: &mut dyn FnMut(usize), share: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x258688: new(0x70); HttpService::HttpService; shared_ptr attach.
+    let p = alloc(0x70);
+    construct(p);
+    share(p);
+    p
 }
 
 // 0x258738 — __ZN5boost10shared_ptrIN3RBX11HttpServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_258738() -> ! {
-    todo!("0x258738 boost::shared_ptr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_258738(slot: &mut Option<usize>, ptr: usize, make_count: &mut dyn FnMut(usize), accept: &mut dyn FnMut(usize)) {
+    // IDA 0x258738: px store; shared_count attach; _internal_accept_owner when px set.
+    *slot = Some(ptr);
+    make_count(ptr);
+    if ptr != 0 {
+        accept(ptr);
+    }
 }
 
 // 0x258800 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11HttpServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpService,RBX::HttpService>(boost::shared_ptr<RBX::HttpService> const*,RBX::HttpService *)const
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpService,RBX::HttpService>(rbx_core::SharedPtr<RBX::HttpService> const*,RBX::HttpService *)const")]
-pub fn stub_258800() -> ! {
-    todo!("0x258800 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpService,RBX::HttpService>(boost::shared_ptr<RBX::HttpService> const*,RBX::HttpService *)const")
+pub fn stub_258800(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x258800: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x2588e8 — __ZN5boost6detail12shared_countC2IPN3RBX11HttpServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // demangled: boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_2588e8() -> ! {
-    todo!("0x2588e8 boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_2588e8(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x2588e8: operator new(0x14); use=weak=1; store px.
+    let block = alloc(0x14);
+    init(block, px);
+    block
 }
 
 // 0x2589f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2589f0() -> ! {
-    todo!("0x2589f0 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f0() {
+    // IDA 0x2589f0: empty sp_counted_impl_pd<HttpService> D2 body.
 }
 
 // 0x2589f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_2589f4() -> ! {
-    todo!("0x2589f4 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f4(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x2589f4: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x2589f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_2589f8() -> ! {
-    todo!("0x2589f8 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_2589f8(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x2589f8: predelete; null px -> result else virtual destroy.
+    let r = predelete(px);
+    if px != 0 {
+        destroy(px)
+    } else {
+        r
+    }
 }
 
 // 0x258a18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_258a18() -> ! {
-    todo!("0x258a18 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_258a18(block: usize, type_name: &str) -> usize {
+    // IDA 0x258a18: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x258a30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_258a30() -> ! {
-    todo!("0x258a30 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_258a30(block: usize) -> usize {
+    // IDA 0x258a30: return block + 16.
+    block + 16
 }
 
 // 0x258a34 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")]
-pub fn stub_258a34() -> ! {
-    todo!("0x258a34 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")
+pub fn stub_258a34(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x258a34: Creator<HttpService> C2 — vtable + registration (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x258c78 — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_258c78() -> ! {
-    todo!("0x258c78 __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_258c78(destroy: &mut dyn FnMut()) {
+    // IDA 0x258c78: Described<HttpService> D1 thunk tail-calls Instance dtor.
+    destroy();
 }
 
 // 0x258c7c — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_258c7c() -> ! {
-    todo!("0x258c7c __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_258c7c(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x258c7c: Described<HttpService> D0 — dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x258d1c — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_258d1c() -> ! {
-    todo!("0x258d1c __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_258d1c(destroy: &mut dyn FnMut()) {
+    // IDA 0x258d1c: Thn32 D1 adjusts then Instance dtor.
+    destroy();
 }
 
 // 0x258d24 — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_258d24() -> ! {
-    todo!("0x258d24 __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_258d24(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x258d24: Thn32 D0 adjusts then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x258dc8 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
