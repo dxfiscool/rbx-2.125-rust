@@ -853,16 +853,26 @@ pub fn stub_3add8(has_name: bool, null_name: usize, once: &mut dyn FnMut(), decl
 // demangled: __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v
 // type: 
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_3ae20() -> ! {
-    todo!("0x3ae20 __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_3ae20(guard: &mut bool, cached: &mut usize, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3ae20: cxa_guard one-time Name::declare(sRunService).
+    if !*guard {
+        *cached = declare();
+        *guard = true;
+    }
+    *cached
 }
 
 // 0x3af08 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv
 // demangled: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)
 // type: 
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")]
-pub fn stub_3af08() -> ! {
-    todo!("0x3af08 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")
+pub fn stub_3af08(guard: &mut bool, index: &mut usize, alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3af08: guarded one-time ServiceProvider::newIndex<RunService>.
+    if !*guard {
+        *index = alloc();
+        *guard = true;
+    }
+    *index
 }
 
 // 0x3afe0 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -870,8 +880,13 @@ pub fn stub_3af08() -> ! {
 // type: int __fastcall(_DWORD, _DWORD)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3afe0() -> ! {
-    todo!("0x3afe0 boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3afe0(slot: &mut Option<usize>, ptr: usize, make_count: &mut dyn FnMut(usize), accept: &mut dyn FnMut(usize)) {
+    // IDA 0x3afe0: px store; shared_count attach; _internal_accept_owner when px set.
+    *slot = Some(ptr);
+    make_count(ptr);
+    if ptr != 0 {
+        accept(ptr);
+    }
 }
 
 // 0x3b008 — __ZN5boost6detail12shared_countC2IPN3RBX10RunServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -879,8 +894,11 @@ pub fn stub_3afe0() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3b008() -> ! {
-    todo!("0x3b008 boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3b008(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3b008: operator new(0x14); use=weak=1; store px.
+    let block = alloc(0x14);
+    init(block, px);
+    block
 }
 
 // 0x3b108 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -888,8 +906,8 @@ pub fn stub_3b008() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3b108() -> ! {
-    todo!("0x3b108 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3b108() {
+    // IDA 0x3b108: empty sp_counted_impl_pd<RunService> D2 body.
 }
 
 // 0x3b110 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -897,8 +915,14 @@ pub fn stub_3b108() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_3b110() -> ! {
-    todo!("0x3b110 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_3b110(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3b110: predelete; null px -> result else virtual destroy.
+    let r = predelete(px);
+    if px != 0 {
+        destroy(px)
+    } else {
+        r
+    }
 }
 
 // 0x3b130 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -906,8 +930,13 @@ pub fn stub_3b110() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_3b130() -> ! {
-    todo!("0x3b130 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_3b130(block: usize, type_name: &str) -> usize {
+    // IDA 0x3b130: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x3b148 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -915,8 +944,9 @@ pub fn stub_3b130() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_3b148() -> ! {
-    todo!("0x3b148 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_3b148(block: usize) -> usize {
+    // IDA 0x3b148: return block + 16.
+    block + 16
 }
 
 // 0x3b14c — __ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_
@@ -924,24 +954,27 @@ pub fn stub_3b148() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
-pub fn stub_3b14c() -> ! {
-    todo!("0x3b14c boost::detail::shared_count::shared_count<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
+pub fn stub_3b14c(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3b14c: operator new(0x10); use=weak=1; store px.
+    let block = alloc(0x10);
+    init(block, px);
+    block
 }
 
 // 0x3b268 — __ZN3RBX5Tasks11Coordinator9onPreStepEPNS_13TaskScheduler3JobE
 // demangled: RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3b268() -> ! {
-    todo!("0x3b268 RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3b268() {
+    // IDA 0x3b268: empty Coordinator::onPreStep body.
 }
 
 // 0x3b26c — __ZN3RBX5Tasks11Coordinator10onPostStepEPNS_13TaskScheduler3JobE
 // demangled: RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3b26c() -> ! {
-    todo!("0x3b26c RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3b26c() {
+    // IDA 0x3b26c: empty Coordinator::onPostStep body.
 }
 
 // 0x3b270 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED1Ev
@@ -949,8 +982,8 @@ pub fn stub_3b26c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p()")]
-pub fn stub_3b270() -> ! {
-    todo!("0x3b270 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p()")
+pub fn stub_3b270() {
+    // IDA 0x3b270: empty sp_counted_impl_p<Sequence> D2 body.
 }
 
 // 0x3b274 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED0Ev
@@ -958,8 +991,9 @@ pub fn stub_3b270() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p()")]
-pub fn stub_3b274() -> ! {
-    todo!("0x3b274 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p()")
+pub fn stub_3b274(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3b274: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3b278 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE7disposeEv
@@ -967,8 +1001,11 @@ pub fn stub_3b274() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::dispose(void)")]
-pub fn stub_3b278() -> ! {
-    todo!("0x3b278 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::dispose(void)")
+pub fn stub_3b278(px: usize, teardown: &mut dyn FnMut(usize)) {
+    // IDA 0x3b278: Sequence dispose — vtable reset, member delete, mutex destroy (below truncation).
+    if px != 0 {
+        teardown(px);
+    }
 }
 
 // 0x3b32c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE11get_deleterERKSt9type_info
@@ -976,8 +1013,9 @@ pub fn stub_3b278() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_deleter(std::type_info const&)")]
-pub fn stub_3b32c() -> ! {
-    todo!("0x3b32c boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_deleter(std::type_info const&)")
+pub fn stub_3b32c() -> usize {
+    // IDA 0x3b32c: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3b330 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE19get_untyped_deleterEv
@@ -985,8 +1023,9 @@ pub fn stub_3b32c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_untyped_deleter(void)")]
-pub fn stub_3b330() -> ! {
-    todo!("0x3b330 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_untyped_deleter(void)")
+pub fn stub_3b330() -> usize {
+    // IDA 0x3b330: plain impl_p has no untyped deleter -> 0.
+    0
 }
 
 // 0x3b334 — __ZN5boost6detail12shared_countC2IN3RBX5Tasks17ExclusiveSequenceEEEPT_
@@ -994,8 +1033,11 @@ pub fn stub_3b330() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::ExclusiveSequence>(RBX::Tasks::ExclusiveSequence *)")]
-pub fn stub_3b334() -> ! {
-    todo!("0x3b334 boost::detail::shared_count::shared_count<RBX::Tasks::ExclusiveSequence>(RBX::Tasks::ExclusiveSequence *)")
+pub fn stub_3b334(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3b334: operator new(0x10); use=weak=1; store px.
+    let block = alloc(0x10);
+    init(block, px);
+    block
 }
 
 // 0x3b450 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED1Ev
@@ -1003,8 +1045,8 @@ pub fn stub_3b334() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p()")]
-pub fn stub_3b450() -> ! {
-    todo!("0x3b450 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p()")
+pub fn stub_3b450() {
+    // IDA 0x3b450: empty sp_counted_impl_p<ExclusiveSequence> D2 body.
 }
 
 // 0x3b454 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED0Ev
@@ -1012,8 +1054,9 @@ pub fn stub_3b450() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p()")]
-pub fn stub_3b454() -> ! {
-    todo!("0x3b454 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p()")
+pub fn stub_3b454(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3b454: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3b458 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE7disposeEv
@@ -1021,8 +1064,11 @@ pub fn stub_3b454() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::dispose(void)")]
-pub fn stub_3b458() -> ! {
-    todo!("0x3b458 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::dispose(void)")
+pub fn stub_3b458(px: usize, teardown: &mut dyn FnMut(usize)) {
+    // IDA 0x3b458: ExclusiveSequence dispose — vtable reset, member delete, mutex destroy (below truncation).
+    if px != 0 {
+        teardown(px);
+    }
 }
 
 // 0x3b50c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE11get_deleterERKSt9type_info
@@ -1030,8 +1076,9 @@ pub fn stub_3b458() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_deleter(std::type_info const&)")]
-pub fn stub_3b50c() -> ! {
-    todo!("0x3b50c boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_deleter(std::type_info const&)")
+pub fn stub_3b50c() -> usize {
+    // IDA 0x3b50c: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3b510 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE19get_untyped_deleterEv
@@ -1039,8 +1086,9 @@ pub fn stub_3b50c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_untyped_deleter(void)")]
-pub fn stub_3b510() -> ! {
-    todo!("0x3b510 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_untyped_deleter(void)")
+pub fn stub_3b510() -> usize {
+    // IDA 0x3b510: plain impl_p has no untyped deleter -> 0.
+    0
 }
 
 // 0x3b518 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v
@@ -1048,8 +1096,9 @@ pub fn stub_3b510() -> ! {
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")]
-pub fn stub_3b518() -> ! {
-    todo!("0x3b518 RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")
+pub fn stub_3b518(found: Option<usize>) -> Option<usize> {
+    // IDA 0x3b518: ServiceProvider::find<ControllerService> (below truncation).
+    found
 }
 
 // 0x3b674 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17ControllerServiceEEEN5boost10shared_ptrIT_EEv
@@ -1057,8 +1106,12 @@ pub fn stub_3b518() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")]
-pub fn stub_3b674() -> ! {
-    todo!("0x3b674 boost::shared_ptr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")
+pub fn stub_3b674(alloc: &mut dyn FnMut(usize) -> usize, construct: &mut dyn FnMut(usize), share: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3b674: new(0x64); ControllerService::ControllerService; shared_ptr attach.
+    let p = alloc(0x64);
+    construct(p);
+    share(p);
+    p
 }
 
 // 0x3b724 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17ControllerServiceEEERS3_RKNS0_IT_EE
@@ -1066,6 +1119,13 @@ pub fn stub_3b674() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const&)")]
-pub fn stub_3b724() -> ! {
-    todo!("0x3b724 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const&)")
+pub fn stub_3b724(dst: &mut Option<usize>, src: Option<usize>, retain: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) {
+    // IDA 0x3b724: shared_ptr<Instance> copy-assign — retain src; release old (below truncation).
+    if let Some(s) = src {
+        retain(s);
+    }
+    let old = std::mem::replace(dst, src);
+    if let Some(p) = old {
+        release(p);
+    }
 }
