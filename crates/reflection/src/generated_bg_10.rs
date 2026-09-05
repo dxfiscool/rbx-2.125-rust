@@ -45,6 +45,39 @@ pub(crate) static USERINFO_REQUESTS: std::sync::atomic::AtomicU32 =
 /// out of slice.
 pub(crate) static USERINFO_COOKIES_CLEARED: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+/// `RobloxGoogleAnalytics` state (IDA 0x41cc4-0x424cc): init flag,
+/// last page view, sent/deferred events + custom vars, and the
+/// `debug_<name>` counters. The GAI tracker + delayed selectors live
+/// out of slice.
+pub(crate) static GAI_INITIALIZED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static GAI_LAST_PAGE_VIEW: std::sync::LazyLock<
+    parking_lot::Mutex<String>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static GAI_PAGEVIEW_SENDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static GAI_PAGEVIEW_DEFERS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+#[derive(Debug, Clone, Default)]
+pub struct GaiEvent {
+    pub category: String,
+    pub action: String,
+    pub label: String,
+    pub value: i32,
+}
+pub(crate) static GAI_EVENTS: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<GaiEvent>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+pub(crate) static GAI_EVENT_DEFERS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static GAI_CUSTOM_VARS: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<(String, String)>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+pub(crate) static GAI_CUSTOM_DEFERS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static GAI_DEBUG_COUNTERS: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, u32>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
 /// `Tasks::Sequence` advance count (IDA 0x3ebb0/0x3ebb4 tail-call
 /// `SequenceBase::advance`). Step dispatch is scheduler glue.
 pub(crate) static TASKS_SEQUENCE_ADVANCES: std::sync::atomic::AtomicU32 =
@@ -1045,137 +1078,200 @@ pub fn stub_0x41b70(username: &str) {
 // 0x41b94 — -[UserInfo username]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo username]")]
-pub fn stub_0x41b94() -> ! {
-    todo!("0x41b94 -[UserInfo username]")
+pub fn stub_0x41b94() -> String {
+    // IDA 0x41b94: `username` returns the ivar (set from "UserName"
+    // at 0x40dca).
+    USERINFO_STATE.lock().username.clone()
 }
 
 // 0x41ba4 — -[UserInfo setUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUsername:]")]
-pub fn stub_0x41ba4() -> ! {
-    todo!("0x41ba4 -[UserInfo setUsername:]")
+pub fn stub_0x41ba4(username: &str) {
+    // IDA 0x41ba4: `setUsername:` stores the ivar.
+    USERINFO_STATE.lock().username = username.to_owned();
 }
 
 // 0x41bc8 — -[UserInfo password]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo password]")]
-pub fn stub_0x41bc8() -> ! {
-    todo!("0x41bc8 -[UserInfo password]")
+pub fn stub_0x41bc8() -> String {
+    // IDA 0x41bc8: `password` returns the ivar.
+    USERINFO_STATE.lock().password.clone()
 }
 
 // 0x41bd8 — -[UserInfo setPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setPassword:]")]
-pub fn stub_0x41bd8() -> ! {
-    todo!("0x41bd8 -[UserInfo setPassword:]")
+pub fn stub_0x41bd8(password: &str) {
+    // IDA 0x41bd8: `setPassword:` stores the ivar.
+    USERINFO_STATE.lock().password = password.to_owned();
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
 #[doc(alias = "global constructor keyed to_a_11")]
 #[doc(alias = "__GLOBAL__I_a_11")]
-pub fn stub_0x41bfc() -> ! {
-    todo!("0x41bfc global constructor keyed to_a_11")
+pub fn stub_0x41bfc() {
+    // IDA 0x41bfc: `__GLOBAL__I_a_11` runs the `a_11`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x41cc4 — +[RobloxGoogleAnalytics initialize]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
-pub fn stub_0x41cc4() -> ! {
-    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+pub fn stub_0x41cc4() {
+    // IDA 0x41cc4: `initialize` dispatches the tracker-setup block to
+    // main once (`initializeDone` gate, 0x41cd2-0x41cec). The gate
+    // records here; the block runs at 0x41cf0.
+    if !GAI_INITIALIZED.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        stub_0x41cf0();
+    }
 }
 
 // 0x41cf0 — ___35+[RobloxGoogleAnalytics initialize]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
-pub fn stub_0x41cf0() -> ! {
-    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+pub fn stub_0x41cf0() {
+    // IDA 0x41cf0: the `initialize` block creates the GAI tracker
+    // (out of slice). Completion records here.
+    GAI_INITIALIZED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x41f28 — +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
-pub fn stub_0x41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+pub fn stub_0x41f28() {
+    // IDA 0x41f28: `release` compiles to an empty body (decompiled
+    // 0x41f28). No explicit body.
 }
 
 // 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
-pub fn stub_0x41f2c() -> ! {
-    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+pub fn stub_0x41f2c(url: &str) {
+    // IDA 0x41f2c: `callBackPageTracking:` unwraps the "url" entry
+    // (0x41f56) and forwards to `setPageViewTracking:` (0x41f6e).
+    stub_0x41f74(url);
 }
 
 // 0x41f74 — +[RobloxGoogleAnalytics setPageViewTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
-pub fn stub_0x41f74() -> ! {
-    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+pub fn stub_0x41f74(url: &str) {
+    // IDA 0x41f74: `setPageViewTracking:` sends the view when
+    // initialized (0x41f90-0x41fd6), else re-dispatches after a delay
+    // (0x42012-0x42030). The send/deflect records here.
+    if GAI_INITIALIZED.load(std::sync::atomic::Ordering::SeqCst) {
+        *GAI_LAST_PAGE_VIEW.lock() = url.to_owned();
+        GAI_PAGEVIEW_SENDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    } else {
+        GAI_PAGEVIEW_DEFERS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
-pub fn stub_0x4203c() -> ! {
-    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+pub fn stub_0x4203c(category: &str, action: &str, label: &str, value: i32) {
+    // IDA 0x4203c: `callBackEventTracking:` unwraps category/action/
+    // label/value (0x42078-0x420bc) and forwards to `setEventTracking:`
+    // (0x420d8).
+    stub_0x420e4(category, action, label, value);
 }
 
 // 0x420e4 — +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id, id, int)
 #[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
-pub fn stub_0x420e4() -> ! {
-    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+pub fn stub_0x420e4(category: &str, action: &str, label: &str, value: i32) {
+    // IDA 0x420e4: `setEventTracking:` sends the event when initialized
+    // (0x42106-0x4216c), else re-dispatches after a delay (0x421b0-0x42222).
+    // The send/deflect records here.
+    if GAI_INITIALIZED.load(std::sync::atomic::Ordering::SeqCst) {
+        GAI_EVENTS.lock().push(GaiEvent {
+            category: category.to_owned(),
+            action: action.to_owned(),
+            label: label.to_owned(),
+            value,
+        });
+    } else {
+        GAI_EVENT_DEFERS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x42230 — +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
-pub fn stub_0x42230() -> ! {
-    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+pub fn stub_0x42230(label: &str, value: &str) {
+    // IDA 0x42230: `callbackCustomVariableTracking:` unwraps the
+    // label/value entries and forwards to `setCustomVariableWithLabel:`
+    // (same shape as 0x41f2c).
+    stub_0x42298(label, value);
 }
 
 // 0x42298 — +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
-pub fn stub_0x42298() -> ! {
-    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+pub fn stub_0x42298(label: &str, value: &str) {
+    // IDA 0x42298: `setCustomVariableWithLabel:` sets the variable when
+    // initialized (0x422b6-0x422fe), else re-dispatches after a delay
+    // (0x42348-0x42366). The send/deflect records here.
+    if GAI_INITIALIZED.load(std::sync::atomic::Ordering::SeqCst) {
+        GAI_CUSTOM_VARS.lock().push((label.to_owned(), value.to_owned()));
+    } else {
+        GAI_CUSTOM_DEFERS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x42374 — +[RobloxGoogleAnalytics debugCountersPrint]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
-pub fn stub_0x42374() -> ! {
-    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+pub fn stub_0x42374() {
+    // IDA 0x42374: `debugCountersPrint` logs the counters. Log glue;
+    // no explicit body.
 }
 
 // 0x424cc — +[RobloxGoogleAnalytics debugCounterIncrement:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
-pub fn stub_0x424cc() -> ! {
-    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+pub fn stub_0x424cc(name: &str) {
+    // IDA 0x424cc: `debugCounterIncrement:` reads the `debug_<name>`
+    // default, adds one, stores it back and logs (0x424f2-0x42576).
+    // The increment records here.
+    let mut counters = GAI_DEBUG_COUNTERS.lock();
+    let entry = counters.entry(name.to_owned()).or_insert(0);
+    *entry += 1;
 }
 
 // 0x42580 — __GLOBAL__I_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
 #[doc(alias = "__GLOBAL__I_a_12")]
-pub fn stub_0x42580() -> ! {
-    todo!("0x42580 global constructor keyed to_a_12")
+pub fn stub_0x42580() {
+    // IDA 0x42580: `__GLOBAL__I_a_12` runs the `a_12`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxWebUtility sharedInstance]")]
-pub fn stub_0x42718() -> ! {
-    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+pub fn stub_0x42718() -> usize {
+    // IDA 0x42718: `sharedInstance` once-allocates the
+    // `RobloxWebUtility` (same shape as 0x41144). The singleton handle
+    // records here as nonzero.
+    1
 }
 
 // 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
 #[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
-pub fn stub_0x42774() -> ! {
-    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+pub fn stub_0x42774() {
+    // IDA 0x42774: the `sharedInstance` once block allocs + inits the
+    // utility. Allocation is drop glue; no explicit body.
 }
 
 // 0x427a8 — ___copy_helper_block__7
 #[doc(alias = "___copy_helper_block__7")]
-pub fn stub_0x427a8() -> ! {
-    todo!("0x427a8 ___copy_helper_block__7")
+pub fn stub_0x427a8() {
+    // IDA 0x427a8: `__copy_helper_block__7` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
