@@ -392,16 +392,22 @@ pub fn stub_3faac(pending: bool, dispatched: bool) -> bool {
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd")]
-pub fn stub_3fac4() -> ! {
-    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+pub fn stub_3fac4(datamodel_present: bool, stopped: bool, job_present: bool) -> bool {
+    // IDA 0x3fac4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x3fac4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x3fac4(datamodel_present, stopped, job_present)
 }
 
 // 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob4wakeEv")]
-pub fn stub_3fb9c() -> ! {
-    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+pub fn stub_3fb9c(job_alive: bool) {
+    // IDA 0x3fb9c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x3fb9c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x3fb9c(job_alive)
 }
 
 // 0x3fcf8 — __ZN5boost12bad_weak_ptrD0Ev
@@ -443,7 +449,10 @@ pub fn stub_3fd88() {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
 pub fn stub_3fdb8() -> ! {
-    todo!("0x3fdb8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+    // IDA 0x3fdb8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x3fdb8` (diverges via `panic!`).
+    // Delegate to keep one source of truth.
+    crate::generated_bg_10::stub_0x3fdb8()
 }
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
@@ -454,8 +463,11 @@ pub fn stub_3fee0() {
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
-pub fn stub_3ff18() -> ! {
-    todo!("0x3ff18 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+pub fn stub_3ff18() {
+    // IDA 0x3ff18: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x3ff18`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x3ff18()
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
@@ -481,73 +493,103 @@ pub fn stub_3ff90() {
 // type: int __fastcall(int, int, int, int, char, std::exception *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE")]
-pub fn stub_3ffc0() -> ! {
-    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boos")
+pub fn stub_3ffc0() {
+    // IDA 0x3ffc0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x3ffc0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x3ffc0()
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE")]
-pub fn stub_40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value")
+pub fn stub_40160(get_typeinfo: bool) -> &'static str {
+    // IDA 0x40160: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40160`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40160(get_typeinfo)
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost:")
+pub fn stub_401dc() {
+    // IDA 0x401dc: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x401dc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x401dc()
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
-pub fn stub_401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<Roblox")
+pub fn stub_401f0(get_typeinfo: bool) -> &'static str {
+    // IDA 0x401f0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x401f0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x401f0(get_typeinfo)
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::v")
+pub fn stub_40270() {
+    // IDA 0x40270: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40270`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40270()
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,b")
+pub fn stub_4027c() {
+    // IDA 0x4027c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x4027c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x4027c()
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
-pub fn stub_402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::V")
+pub fn stub_402a8(get_typeinfo: bool) -> &'static str {
+    // IDA 0x402a8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x402a8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x402a8(get_typeinfo)
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::v")
+pub fn stub_40308() {
+    // IDA 0x40308: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40308`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40308()
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 #[doc(alias = "__ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")]
-pub fn stub_40318() -> ! {
-    todo!("0x40318 boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+pub fn stub_40318() {
+    // IDA 0x40318: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40318`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40318()
 }
 
 // 0x403f0 — __ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE")]
-pub fn stub_403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_403f0() -> &'static str {
+    // IDA 0x403f0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x403f0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x403f0()
 }
 
 // 0x404f0 — __ZN10RobloxView13ViewUpdateJobD1Ev
@@ -570,79 +612,120 @@ pub fn stub_4059c() {
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40650(standard_sleep: f64) -> f64 {
+    // IDA 0x40650: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40650`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40650(standard_sleep)
 }
 
 // 0x40680 — __ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40680(standard_error: f64) -> f64 {
+    // IDA 0x40680: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40680`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40680(standard_error)
 }
 
 // 0x406a8 — __ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv")]
-pub fn stub_406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+pub fn stub_406a8() -> f64 {
+    // IDA 0x406a8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x406a8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x406a8()
 }
 
 // 0x406b4 — __ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_406b4(view_check_ok: bool) -> bool {
+    // IDA 0x406b4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x406b4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x406b4(view_check_ok)
 }
 
 // 0x406e0 — __ZN5boost9function0IvE5clearEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function0<void>::clear(void)")]
 #[doc(alias = "__ZN5boost9function0IvE5clearEv")]
-pub fn stub_406e0() -> ! {
-    todo!("0x406e0 boost::function0<void>::clear(void)")
+pub fn stub_406e0() {
+    // IDA 0x406e0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x406e0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x406e0()
 }
 
 // 0x4070c — __GLOBAL__I_a_10
 #[doc(alias = "__GLOBAL__I_a_10")]
-pub fn stub_4070c() -> ! {
-    todo!("0x4070c global constructor keyed to_a_10")
+pub fn stub_4070c() {
+    // IDA 0x4070c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x4070c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x4070c()
 }
 
 // 0x40984 — -[UserInfo init]
 // type: UserInfo *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo init]")]
-pub fn stub_40984() -> ! {
-    todo!("0x40984 -[UserInfo init]")
+pub fn stub_40984() {
+    // IDA 0x40984: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40984`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40984()
 }
 
 // 0x409b0 — -[UserInfo setUserLoggedIn:]
 // type: void __cdecl(UserInfo *self, SEL, char)
 #[doc(alias = "-[UserInfo setUserLoggedIn:]")]
-pub fn stub_409b0() -> ! {
-    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+pub fn stub_409b0(logged_in: bool) {
+    // IDA 0x409b0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x409b0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x409b0(logged_in)
 }
 
 // 0x40ab4 — -[UserInfo userLoggedIn]
 // type: char __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userLoggedIn]")]
-pub fn stub_40ab4() -> ! {
-    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+pub fn stub_40ab4() -> bool {
+    // IDA 0x40ab4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40ab4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40ab4()
 }
 
 // 0x40ac4 — -[UserInfo UpdatePlayerInfo]
 // type: void __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
-pub fn stub_40ac4() -> ! {
-    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+pub fn stub_40ac4(base_url: &str, user_agent: &str) -> String {
+    // IDA 0x40ac4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40ac4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40ac4(base_url, user_agent)
 }
 
 // 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
 #[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
-pub fn stub_40c58() -> ! {
-    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+pub fn stub_40c58(
+    http_ok: bool,
+    user_id: &str,
+    username: &str,
+    robux: &str,
+    tickets: &str,
+    thumb_url: &str,
+    bc_member: bool,
+) {
+    // IDA 0x40c58: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x40c58`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x40c58(http_ok, user_id, username, robux, tickets, thumb_url, bc_member)
 }
 
 // 0x41104 — ___copy_helper_block__6
