@@ -17,6 +17,21 @@ use super::generated_datamodel_shard_291::{
     HopperBinEventDesc, HopperBinFuncDesc, HopperBinStringProp, HopperBinStringSetter,
     stub_0x5715ac, stub_0x5715f8, stub_0x571654,
 };
+use super::generated_datamodel_shard_291::{
+    HopperBinEnumProp, HOPPER_BIN_TYPE_ITEMS, stub_0x5715a8,
+};
+use crate::generated_05::Variant;
+
+/// Rust model of `RBX::Reflection::BoundProp<bool, Mutability1>` over
+/// `HopperBin` (IDA `0x5784b8`): the `"Active"` name word with the `+0x124`
+/// (`active`) member and the `dataChanged` callback (IDA `0x579ada`-`0x579b10`
+/// registration); the member/callback pointers collapse into direct
+/// `active` access.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct HopperBinBoolProp {
+    pub name: String,
+    pub category: String,
+}
 use crate::instance::{HopperBin, HopperBinRemoteEventDesc};
 
 /// Rust model of `RBX::Reflection::GenericSlotWrapper` restricted to the
@@ -902,119 +917,209 @@ pub fn stub_0x577f94(desc: &HopperBinEventDesc) {
 // 0x5784b8 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_9HopperBinEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HopperBin>(char const*,char const*,bool RBX::HopperBin::*,void (RBX::HopperBin::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_9HopperBinEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x5784b8() -> ! {
-    todo!("0x5784b8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HopperBin>(char const*,char const*,bool RBX::HopperBin::*,void (RBX::HopperBin::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5784b8(name: &str, category: &str) -> HopperBinBoolProp {
+    // IDA 0x5784b8 `BoundProp<bool, Mut1>::BoundProp<HopperBin>`: stores
+    // the name/category words with the `+0x124` bool member and the
+    // `dataChanged` callback (registration disasm 0x579ada-0x579b10:
+    // `("Active", <R6 category>, 0x124, dataChanged)`). The name/category
+    // words are the payload; member and callback collapse.
+    HopperBinBoolProp {
+        name: name.to_string(),
+        category: category.to_string(),
+    }
 }
 
 // 0x57864c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE10isReadOnlyEv")]
-pub fn stub_0x57864c() -> ! {
-    todo!("0x57864c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::isReadOnly(void)const")
+pub fn stub_0x57864c(_desc: &HopperBinBoolProp) -> bool {
+    // IDA 0x57864c (decompiled): `BoundPropGetSet::isReadOnly` — `MOVS R0,
+    // #0`; the mutable (`Mutability1`) pair is never read-only.
+    false
 }
 
 // 0x578650 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE11isWriteOnlyEv")]
-pub fn stub_0x578650() -> ! {
-    todo!("0x578650 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::isWriteOnly(void)const")
+pub fn stub_0x578650(_desc: &HopperBinBoolProp) -> bool {
+    // IDA 0x578650 (decompiled): `BoundPropGetSet::isWriteOnly` — `MOVS R0,
+    // #0`; ...nor write-only.
+    false
 }
 
 // 0x578654 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x578654() -> ! {
-    todo!("0x578654 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578654(bin: &crate::instance::HopperBin) -> bool {
+    // IDA 0x578654 (decompiled): `BoundPropGetSet::getValue` — reads the
+    // bool at the bound member (`*(desc + 8)`); the registration binds byte
+    // `+0x124`, the `active` word behind `disable` (IDA 0x5715ac).
+    bin.active
 }
 
 // 0x578660 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9HopperBinEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0x578660() -> ! {
-    todo!("0x578660 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HopperBin>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x578660(bin: &mut crate::instance::HopperBin, value: bool) {
+    // IDA 0x578660 (decompiled): `BoundPropGetSet::setValue` — no-op when
+    // the member already matches (0x578678); else stores (0x57867c), runs
+    // the change callback (`dataChanged`, 0x579ae6 — 0x5715a8, collapsed)
+    // when present (0x57867e-0x57869c), and raises the property change
+    // (0x5786aa, collapsed).
+    if bin.active != value {
+        bin.active = value;
+        stub_0x5715a8(bin);
+    }
 }
 
 // 0x5786b0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::EnumPropDescriptor<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>(char const*,char const*,RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x5786b0() -> ! {
-    todo!("0x5786b0 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::EnumPropDescriptor<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>(char const*,char const*,RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5786b0(name: &str, category: &str) -> HopperBinEnumProp {
+    // IDA 0x5786b0 `EnumPropDescriptor<HopperBin, BinType>::C2` — stores the
+    // name/category words with the `getBinType`/`setBinType` member pair
+    // (registration disasm 0x579a80-0x579ac2: `("BinType", getBinType,
+    // setBinType)`). The name/category words are the payload; the member
+    // pair collapses into direct `bin_type` access.
+    HopperBinEnumProp {
+        name: name.to_string(),
+        category: category.to_string(),
+    }
 }
 
 // 0x578864 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED0Ev")]
-pub fn stub_0x578864() -> ! {
-    todo!("0x578864 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")
+pub fn stub_0x578864(desc: *mut HopperBinEnumProp) {
+    // IDA 0x578864: `EnumPropDescriptor<HopperBin, BinType>::D0` — runs the
+    // `D1` body then releases storage; dropping the box is the same
+    // release, twin of 0x573690.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x578890 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10isReadOnlyEv")]
-pub fn stub_0x578890() -> ! {
-    todo!("0x578890 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::isReadOnly(void)const")
+pub fn stub_0x578890(_desc: &HopperBinEnumProp) -> bool {
+    // IDA 0x578890 (decompiled): `EnumPropDescriptor::isReadOnly` —
+    // delegates to the underlying `GetSetImpl<getBinType, setBinType>`
+    // (`*(a1 + 44)` vtable `+0`, 0x57889c); a get/set pair is never
+    // read-only, as in 0x56ec78.
+    false
 }
 
 // 0x5788a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11isWriteOnlyEv")]
-pub fn stub_0x5788a0() -> ! {
-    todo!("0x5788a0 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::isWriteOnly(void)const")
+pub fn stub_0x5788a0(_desc: &HopperBinEnumProp) -> bool {
+    // IDA 0x5788a0 (decompiled): `EnumPropDescriptor::isWriteOnly` —
+    // delegates to the underlying impl (vtable `+4`, 0x5788ac); ...nor
+    // write-only, as in 0x56ec7c.
+    false
 }
 
 // 0x5788b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_0x5788b0() -> ! {
-    todo!("0x5788b0 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5788b0(a: &crate::instance::HopperBin, b: &crate::instance::HopperBin) -> bool {
+    // IDA 0x5788b0 (decompiled): `EnumPropDescriptor::equalValues` —
+    // compares the converted enum values (`getEnumValue` on both,
+    // 0x5788c0-0x5788d6); the converter is the identity over the desc
+    // table, so the `bin_type` words compare directly.
+    a.bin_type == b.bin_type
 }
 
 // 0x5788d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x5788d8() -> ! {
-    todo!("0x5788d8 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x5788d8(bin: &crate::instance::HopperBin) -> Variant {
+    // IDA 0x5788d8 (decompiled): `EnumPropDescriptor::getVariant` — reads
+    // the int through the converter (`+68`, 0x5788e6) and stores it under
+    // the `int` singleton (0x5788ec-0x5788fa). `BinType` crosses generic
+    // boundaries as `Variant::Int` bits, as in `Faces`.
+    Variant::Int(bin.bin_type)
 }
 
 // 0x5788fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x5788fc() -> ! {
-    todo!("0x5788fc RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5788fc(bin: &mut crate::instance::HopperBin, variant: &Variant) {
+    // IDA 0x5788fc (decompiled): `EnumPropDescriptor::setVariant` — an
+    // `int`-typed variant converts directly (0x57897a-0x5789c8), anything
+    // else goes through `Variant::convert<int>` (0x57897c-0x5789b8), then
+    // the `setEnumValue` path runs (0x5789d8). The model has no `convert`
+    // machinery, so non-`Int` variants set nothing.
+    if let Variant::Int(value) = variant {
+        let value = *value;
+        if HOPPER_BIN_TYPE_ITEMS.iter().any(|(v, _)| *v == value) {
+            bin.bin_type = value;
+        }
+    }
 }
 
 // 0x578a48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_0x578a48() -> ! {
-    todo!("0x578a48 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x578a48(src: &crate::instance::HopperBin, dst: &mut crate::instance::HopperBin) {
+    // IDA 0x578a48 (decompiled): `EnumPropDescriptor::copyValue` — reads
+    // the enum value off the source (`getEnumValue`, 0x578a5a) and writes
+    // it through `setEnumValue` on the destination (0x578a6a). The source
+    // word already came through the table, so the validated write is a
+    // direct copy.
+    dst.bin_type = src.bin_type;
 }
 
 // 0x578a6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14hasStringValueEv")]
-pub fn stub_0x578a6c() -> ! {
-    todo!("0x578a6c RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::hasStringValue(void)const")
+pub fn stub_0x578a6c(_desc: &HopperBinEnumProp) -> bool {
+    // IDA 0x578a6c (decompiled): `EnumPropDescriptor::hasStringValue` —
+    // `MOVS R0, #1`; the `BinType` table always has string names.
+    true
 }
 
 // 0x578a70 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x578a70() -> ! {
-    todo!("0x578a70 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578a70(bin: &crate::instance::HopperBin) -> Option<String> {
+    // IDA 0x578a70 (decompiled): `EnumPropDescriptor::getStringValue` —
+    // `convertToString(getEnumValue(...))` (0x578a7a-0x578a92); the table
+    // search misses on out-of-range raw words.
+    HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == bin.bin_type)
+        .map(|(_, text)| text.to_string())
 }
 
 // 0x578a94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x578a94() -> ! {
-    todo!("0x578a94 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x578a94(bin: &mut crate::instance::HopperBin, name: &str) -> bool {
+    // IDA 0x578a94 (decompiled): `EnumPropDescriptor::setStringValue` —
+    // `Name::lookup` (0x578aa6) + `convertToValue` (0x578ab4); on a hit the
+    // value goes through `setEnumValue` (0x578aca) and the result is true,
+    // on a miss the result is false (0x578ab6-0x578ad0). `Name` collapses
+    // to the stored bytes; same shape as 0x56e830.
+    if let Some(value) = HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        bin.bin_type = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x578ad4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
 pub fn stub_0x578ad4() -> ! {
+    // BLOCKED: needs XmlElement serialization infra
     todo!("0x578ad4 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
 }
 
@@ -1022,14 +1127,20 @@ pub fn stub_0x578ad4() -> ! {
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
 pub fn stub_0x578af4() -> ! {
+    // BLOCKED: needs XmlElement + IReferenceBinder deserialization infra
     todo!("0x578af4 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
 }
 
 // 0x578d34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x578d34() -> ! {
-    todo!("0x578d34 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578d34(bin: &crate::instance::HopperBin) -> Option<usize> {
+    // IDA 0x578d34 (decompiled): `EnumPropDescriptor::getIndexValue` —
+    // `convertToIndex(getEnumValue(...))` (0x578d42); the position search
+    // misses on out-of-range raw words. Same shape as 0x56ead0.
+    HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .position(|(v, _)| *v == bin.bin_type)
 }
 
 #[cfg(test)]
@@ -1291,5 +1402,53 @@ mod batch_d_tests {
         assert_eq!(desc.signal.len(), 2);
         stub_0x577bb0(&desc);
         assert_eq!(count.load(Ordering::SeqCst), 12);
+    }
+}
+
+#[cfg(test)]
+mod batch_e_tests {
+    use super::*;
+    use crate::instance::HopperBin;
+
+    #[test]
+    fn active_bool_prop_tracks_member() {
+        let prop = stub_0x5784b8("Active", "Behavior");
+        assert!(!stub_0x57864c(&prop));
+        assert!(!stub_0x578650(&prop));
+        let mut bin = HopperBin::default();
+        assert!(!stub_0x578654(&bin));
+        stub_0x578660(&mut bin, true);
+        assert!(stub_0x578654(&bin));
+        stub_0x578660(&mut bin, true);
+        assert!(bin.active);
+    }
+
+    #[test]
+    fn bintype_virtuals_round_trip() {
+        let prop = stub_0x5786b0("BinType", "Behavior");
+        assert!(!stub_0x578890(&prop));
+        assert!(!stub_0x5788a0(&prop));
+        assert!(stub_0x578a6c(&prop));
+        let mut bin = HopperBin::default();
+        assert!(stub_0x5788b0(&bin, &HopperBin::default()));
+        assert!(matches!(stub_0x5788d8(&bin), Variant::Int(0)));
+        stub_0x5788fc(&mut bin, &Variant::Int(3));
+        assert_eq!(bin.bin_type, 3);
+        stub_0x5788fc(&mut bin, &Variant::Int(99));
+        assert_eq!(bin.bin_type, 3);
+        stub_0x5788fc(&mut bin, &Variant::Null);
+        assert_eq!(bin.bin_type, 3);
+        assert_eq!(stub_0x578a70(&bin).as_deref(), Some("Clone"));
+        assert!(stub_0x578a94(&mut bin, "Hammer"));
+        assert_eq!(bin.bin_type, 4);
+        assert!(!stub_0x578a94(&mut bin, "Nope"));
+        assert_eq!(stub_0x578d34(&bin), Some(4));
+        let mut other = HopperBin::default();
+        stub_0x578a48(&bin, &mut other);
+        assert!(stub_0x5788b0(&bin, &other));
+        other.bin_type = 99;
+        assert_eq!(stub_0x578a70(&other), None);
+        assert_eq!(stub_0x578d34(&other), None);
+        stub_0x578864(Box::into_raw(Box::new(prop)));
     }
 }
