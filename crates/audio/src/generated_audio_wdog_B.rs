@@ -4,8 +4,13 @@
 //! Batch: 120 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
-
 use rbx_core::SharedPtr;
+use crate::generated::flog_asserts;
+use crate::generated_134::{XmlIntSlot, XmlReadValue};
+use crate::generated_audio_wd_watchdog18::{
+    FontSizeVariant, GuiButtonFontSizeProp, GuiTextButtonState, FONTSIZE_ITEMS, fontsize_index,
+    fontsize_name,
+};
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -14,29 +19,48 @@ const _: () = {
 // 0x676c70 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x676c70() -> ! {
-    todo!("0x676c70 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x676c70() -> bool {
+    // IDA 0x676c70 (`GetSetImpl<GuiTextButton Font>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x676c74 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x676c74() -> ! {
-    todo!("0x676c74 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x676c74(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x676c74 (`GetSetImpl<GuiTextButton Font>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +800 `Instance`-to-mixin adjust; virtual when the low bit
+    // is set) tail-calling the getter. The member is `getFont`;
+    // the pointer folds into the field.
+    state.font
 }
 
 // 0x676ca0 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::Font const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x676ca0() -> ! {
-    todo!("0x676ca0 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x676ca0(state: &mut GuiTextButtonState, value: u32) {
+    // IDA 0x676ca0 (`GetSetImpl<GuiTextButton Font>::setValue`): the
+    // member-pointer resolve over +12/+16 tail-calling the setter
+    // with the input word. The member is `setFont`; the pointer
+    // folds into the field (its raises fold into the store).
+    state.font = value;
 }
 
 // 0x676cc4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::EnumPropDescriptor<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>(char const*,char const*,RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x676cc4() -> ! {
-    todo!("0x676cc4 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x676cc4(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonFontSizeProp {
+    // IDA 0x676cc4 (`EnumPropDescriptor<GuiTextButton, FontSize>`
+    // ctor): the `GuiTextButton` `classDescriptor` call, the
+    // `EnumDesc<FontSize>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `font_size` field. Same shape as the `TextBox` twin at
+    // 0x670580.
+    GuiButtonFontSizeProp::new(name, category, attributes, permissions)
 }
 
 // 0x676e78 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED0Ev
@@ -49,141 +73,273 @@ pub fn stub_0x676e78() {
 // 0x676ea4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10isReadOnlyEv")]
-pub fn stub_0x676ea4() -> ! {
-    todo!("0x676ea4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10isReadOnlyEv")
+pub fn stub_0x676ea4() -> bool {
+    // IDA 0x676ea4 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::isReadOnly`): delegates to the inner `GetSet` at
+    // +44 — always readable.
+    false
 }
 
 // 0x676eb4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11isWriteOnlyEv")]
-pub fn stub_0x676eb4() -> ! {
-    todo!("0x676eb4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11isWriteOnlyEv")
+pub fn stub_0x676eb4() -> bool {
+    // IDA 0x676eb4 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::isWriteOnly`): delegates to the inner `GetSet` at
+    // +44 — always writable.
+    false
 }
 
 // 0x676ec4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_0x676ec4() -> ! {
-    todo!("0x676ec4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_0x676ec4(first: &GuiTextButtonState, second: &GuiTextButtonState) -> bool {
+    // IDA 0x676ec4 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the sizes.
+    first.font_size == second.font_size
 }
 
 // 0x676eec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x676eec() -> ! {
-    todo!("0x676eec __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x676eec(state: &GuiTextButtonState) -> FontSizeVariant {
+    // IDA 0x676eec (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::getVariant`): reads the inner value, tags it with
+    // the plain-`int` singleton and placement-moves it in. Host:
+    // the `FontSize` tag.
+    FontSizeVariant::FontSize(state.font_size)
 }
 
 // 0x676f10 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x676f10() -> ! {
-    todo!("0x676f10 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x676f10(state: &mut GuiTextButtonState, variant: &FontSizeVariant) {
+    // IDA 0x676f10 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setVariant`): an int-typed variant runs
+    // `any_cast<int>`; anything else runs `Variant::convert<int>`
+    // (throws on failure); then the +72 setter. Host:
+    // convert-or-throw, then store.
+    let value = match *variant {
+        FontSizeVariant::FontSize(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x676f10)"),
+    };
+    state.font_size = value;
 }
 
 // 0x67705c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_0x67705c() -> ! {
-    todo!("0x67705c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_0x67705c(first: &GuiTextButtonState, second: &mut GuiTextButtonState) {
+    // IDA 0x67705c (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::copyValue`): inner `getValue` on the source then
+    // inner `setValue` on the target. Host: copy the size.
+    second.font_size = first.font_size;
 }
 
 // 0x677080 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14hasStringValueEv")]
-pub fn stub_0x677080() -> ! {
-    todo!("0x677080 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14hasStringValueEv")
+pub fn stub_0x677080() -> bool {
+    // IDA 0x677080 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x677084 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x677084() -> ! {
-    todo!("0x677084 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x677084(state: &GuiTextButtonState) -> String {
+    // IDA 0x677084 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::getStringValue`): inner value via the +44 `GetSet`
+    // plus `EnumDesc::convertToString`. Host: the grounded item
+    // name.
+    fontsize_name(state.font_size).to_owned()
 }
 
 // 0x6770a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x6770a8() -> ! {
-    todo!("0x6770a8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x6770a8(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x6770a8 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setStringValue`): `Name::lookup` +
+    // `EnumDesc::convertToValue`; on a hit the inner `setValue`
+    // runs and 1 returns, else 0. Host: table position decides.
+    match FONTSIZE_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font_size = FONTSIZE_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x6770e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0x6770e8() -> ! {
-    todo!("0x6770e8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_0x6770e8(state: &GuiTextButtonState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x6770e8 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::writeValue`): inner `getValue`, `clearValue`, int
+    // tag `5` at +16, value at +20, returns 5.
+    out.value_type = 5;
+    out.int_value = state.font_size as i32;
+    5
 }
 
 // 0x677108 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0x677108() -> ! {
-    todo!("0x677108 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_0x677108(state: &mut GuiTextButtonState, xml: &XmlReadValue) {
+    // IDA 0x677108 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, size)) = FONTSIZE_ITEMS.get(*value as usize) {
+                    state.font_size = *size;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x677108)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_0x6770a8(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x677108)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x677108)");
+            }
+        }
+    }
 }
 
 // 0x677348 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x677348() -> ! {
-    todo!("0x677348 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x677348(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x677348 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    fontsize_index(state.font_size)
 }
 
 // 0x677364 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0x677364() -> ! {
-    todo!("0x677364 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_0x677364(state: &mut GuiTextButtonState, index: u32) -> bool {
+    // IDA 0x677364 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setIndexValue`): bounds-checks the index against
+    // the item count, stores `items[index]` through the inner
+    // `setValue` and returns 1, else 0.
+    match FONTSIZE_ITEMS.get(index as usize) {
+        Some((_, size)) => {
+            state.font_size = *size;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x677398 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x677398() -> ! {
-    todo!("0x677398 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x677398(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x677398 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::getEnumValue`): the inner `getValue` straight
+    // through.
+    state.font_size
 }
 
 // 0x6773a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x6773a0() -> ! {
-    todo!("0x6773a0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x6773a0(state: &mut GuiTextButtonState, value: u32) -> bool {
+    // IDA 0x6773a0 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setEnumValue`): `find_if` with `equalValue` over
+    // the items; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Host: membership decides.
+    if FONTSIZE_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.font_size = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x6773ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x6773ec() -> ! {
-    todo!("0x6773ec __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_0x6773ec(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x6773ec (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    fontsize_index(state.font_size)
 }
 
 // 0x67740c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x67740c() -> ! {
-    todo!("0x67740c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_0x67740c(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x67740c (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setStringValue` over `Name`): `convertToValue` on
+    // the name; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Same string edge as 0x6770a8 — host forwards into
+    // that twin (`Name` folds into `&str`).
+    stub_0x6770a8(state, name)
 }
 
 // 0x677440 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x677440() -> ! {
-    todo!("0x677440 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_0x677440(state: &mut GuiTextButtonState, index: i32) -> bool {
+    // IDA 0x677440 (`EnumPropDescriptor<GuiTextButton,
+    // FontSize>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, size)) = FONTSIZE_ITEMS.get(index as usize) {
+            state.font_size = *size;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x677480 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x677480() -> ! {
-    todo!("0x677480 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x677480() -> bool {
+    // IDA 0x677480 (`GetSetImpl<GuiTextButton FontSize>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x677484 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x677484() -> ! {
-    todo!("0x677484 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x677484() -> bool {
+    // IDA 0x677484 (`GetSetImpl<GuiTextButton FontSize>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x677488 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

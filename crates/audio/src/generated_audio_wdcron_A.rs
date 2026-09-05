@@ -1443,8 +1443,20 @@ pub fn stub_676bf8(state: &mut GuiTextButtonState, name: &str) -> bool {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_676c2c() -> ! {
-    todo!("0x676c2c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_676c2c(state: &mut GuiTextButtonState, index: i32) -> bool {
+    // IDA 0x676c2c (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, font)) = FONT_ITEMS.get(index as usize) {
+            state.font = *font;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x676c6c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1452,6 +1464,8 @@ pub fn stub_676c2c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_676c6c() -> ! {
-    todo!("0x676c6c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_676c6c() -> bool {
+    // IDA 0x676c6c (`GetSetImpl<GuiTextButton Font>::isReadOnly`):
+    // returns constant 0.
+    false
 }
