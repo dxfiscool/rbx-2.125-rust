@@ -106,6 +106,21 @@ pub struct AnimVC {
     pub img_bg: Option<u32>,
     pub img_fg: Option<u32>,
 }
+/// `RobloxNavBarViewController` observable state (IDA 0x53b60..0x5465c):
+/// the URL string, back-button latch, load/appear latches, home-button
+/// latch, fullscreen text, place launches, and user-info refreshes.
+/// WebKit/label peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct NavBarVC {
+    pub url: String,
+    pub back_enabled: bool,
+    pub loaded: bool,
+    pub appeared: bool,
+    pub home_enabled: bool,
+    pub fullscreen: Option<String>,
+    pub launches: u32,
+    pub info_refresh: u32,
+}
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
@@ -1192,176 +1207,243 @@ pub fn stub_0x53b2c(vc: &AnimVC) -> Option<u32> {
 // 0x53b3c — -[RobloxAnimatingPageViewController setImgForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgForeground:]")]
-pub fn stub_0x53b3c() -> ! {
-    todo!("0x53b3c -[RobloxAnimatingPageViewController setImgForeground:]")
+pub fn stub_0x53b3c(vc: &mut AnimVC, img: u32) {
+    // IDA 0x53b3c: `setImgForeground:` stores the image handle (twin of
+    // 0x53b08).
+    vc.img_fg = Some(img);
 }
 
 // 0x53b60 — -[RobloxNavBarViewController initWithCoder:]
 // type: RobloxNavBarViewController *__cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController initWithCoder:]")]
-pub fn stub_0x53b60() -> ! {
-    todo!("0x53b60 -[RobloxNavBarViewController initWithCoder:]")
+pub fn stub_0x53b60() -> NavBarVC {
+    // IDA 0x53b60: `initWithCoder:` chains to super (0x53b7e..0x53b8c)
+    // and builds the URL string plus observers; the Foundation glue
+    // folds into the host.
+    NavBarVC::default()
 }
 
 // 0x53cbc — -[RobloxNavBarViewController dealloc]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController dealloc]")]
-pub fn stub_0x53cbc() -> ! {
-    todo!("0x53cbc -[RobloxNavBarViewController dealloc]")
+pub fn stub_0x53cbc(vc: &mut NavBarVC) {
+    // IDA 0x53cbc: `dealloc` removes the observer (0x53cdc..0x53cee),
+    // clears the launcher back-pointer (0x53d0a..0x53d1c), and releases
+    // the labels/toolbar; drop glue covers it and the record resets.
+    *vc = NavBarVC::default();
 }
 
 // 0x53e6c — -[RobloxNavBarViewController setUrl:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setUrl:]")]
-pub fn stub_0x53e6c() -> ! {
-    todo!("0x53e6c -[RobloxNavBarViewController setUrl:]")
+pub fn stub_0x53e6c(vc: &mut NavBarVC, url: &str) {
+    // IDA 0x53e6c: `setUrl:` replaces the URL string (0x53e86).
+    vc.url = url.to_string();
 }
 
 // 0x53e8c — -[RobloxNavBarViewController getUrl]
 // type: id __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController getUrl]")]
-pub fn stub_0x53e8c() -> ! {
-    todo!("0x53e8c -[RobloxNavBarViewController getUrl]")
+pub fn stub_0x53e8c(vc: &NavBarVC) -> String {
+    // IDA 0x53e8c: `getUrl` answers the URL string (0x53e9a).
+    vc.url.clone()
 }
 
 // 0x53e9c — -[RobloxNavBarViewController gotStartLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotStartLeaveGameNotification:]")]
-pub fn stub_0x53e9c() -> ! {
-    todo!("0x53e9c -[RobloxNavBarViewController gotStartLeaveGameNotification:]")
+pub fn stub_0x53e9c(vc: &mut NavBarVC, is_last: bool) {
+    // IDA 0x53e9c: `gotStartLeaveGameNotification:` shows the
+    // `EndingGame` fullscreen text when this controller is current
+    // (0x53ebc..0x53f1c).
+    if is_last {
+        vc.fullscreen = Some("EndingGame".to_string());
+    }
 }
 
 // 0x53f38 — -[RobloxNavBarViewController gotDidLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotDidLeaveGameNotification:]")]
-pub fn stub_0x53f38() -> ! {
-    todo!("0x53f38 -[RobloxNavBarViewController gotDidLeaveGameNotification:]")
+pub fn stub_0x53f38(vc: &mut NavBarVC, is_last: bool, jump_pending: bool) {
+    // IDA 0x53f38: `gotDidLeaveGameNotification:` hides the fullscreen
+    // text when current (0x53f6c..0x53f7c) and fires a pending place
+    // launch (0x53f8e..0x53fa8).
+    if is_last {
+        stub_0x545a8(vc);
+    }
+    if jump_pending {
+        vc.launches += 1;
+    }
 }
 
 // 0x53fac — -[RobloxNavBarViewController viewWillAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewWillAppear:]")]
-pub fn stub_0x53fac() -> ! {
-    todo!("0x53fac -[RobloxNavBarViewController viewWillAppear:]")
+pub fn stub_0x53fac(vc: &mut NavBarVC) {
+    // IDA 0x53fac: `viewWillAppear:` chains to super (0x53fc8..) and
+    // refreshes the user display (0x53fec..0x53ff2).
+    vc.appeared = true;
+    vc.info_refresh += 1;
 }
 
 // 0x53ffc — -[RobloxNavBarViewController viewDidAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewDidAppear:]")]
-pub fn stub_0x53ffc() -> ! {
-    todo!("0x53ffc -[RobloxNavBarViewController viewDidAppear:]")
+pub fn stub_0x53ffc(vc: &mut NavBarVC, navigate: bool) {
+    // IDA 0x53ffc: `viewDidAppear:` chains to super (0x5401c..) and
+    // starts a pending navigation game (0x54036..0x54070); the home
+    // button is enabled by the appear block — see `stub_0x540c4`.
+    vc.appeared = true;
+    stub_0x540c4(vc);
+    if navigate {
+        vc.launches += 1;
+    }
 }
 
 // 0x540c4 — ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")]
-pub fn stub_0x540c4() -> ! {
-    todo!("0x540c4 ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")
+pub fn stub_0x540c4(vc: &mut NavBarVC) {
+    // IDA 0x540c4: the appear block enables the home button (0x540d6).
+    vc.home_enabled = true;
 }
 
 // 0x540f0 — ___copy_helper_block__15
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__15")]
-pub fn stub_0x540f0() -> ! {
-    todo!("0x540f0 ___copy_helper_block__15")
+pub fn stub_0x540f0() {
+    // IDA 0x540f0: `__copy_helper_block__15` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x540fc — ___destroy_helper_block__15
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__15")]
-pub fn stub_0x540fc() -> ! {
-    todo!("0x540fc ___destroy_helper_block__15")
+pub fn stub_0x540fc() {
+    // IDA 0x540fc: `__destroy_helper_block__15` releases captures (pair
+    // of 0x540f0); `Arc` glue covers it — no-op.
 }
 
 // 0x54104 — -[RobloxNavBarViewController viewDidLoad]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidLoad]")]
-pub fn stub_0x54104() -> ! {
-    todo!("0x54104 -[RobloxNavBarViewController viewDidLoad]")
+pub fn stub_0x54104(vc: &mut NavBarVC) {
+    // IDA 0x54104: `viewDidLoad` chains to super (0x54124..) and builds
+    // the web view and labels; the UIKit glue folds into the host.
+    vc.loaded = true;
 }
 
 // 0x543dc — -[RobloxNavBarViewController hideBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideBackButton]")]
-pub fn stub_0x543dc() -> ! {
-    todo!("0x543dc -[RobloxNavBarViewController hideBackButton]")
+pub fn stub_0x543dc(vc: &mut NavBarVC) {
+    // IDA 0x543dc: `hideBackButton` disables the back button (0x543f8).
+    vc.back_enabled = false;
 }
 
 // 0x543fc — -[RobloxNavBarViewController showBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController showBackButton]")]
-pub fn stub_0x543fc() -> ! {
-    todo!("0x543fc -[RobloxNavBarViewController showBackButton]")
+pub fn stub_0x543fc(vc: &mut NavBarVC) {
+    // IDA 0x543fc: `showBackButton` enables the back button (0x54418).
+    vc.back_enabled = true;
 }
 
 // 0x5441c — -[RobloxNavBarViewController viewDidUnload]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidUnload]")]
-pub fn stub_0x5441c() -> ! {
-    todo!("0x5441c -[RobloxNavBarViewController viewDidUnload]")
+pub fn stub_0x5441c(vc: &mut NavBarVC) {
+    // IDA 0x5441c: `viewDidUnload` clears the image/button/toolbar
+    // outlets (0x54434..0x54492) and chains to super; the outlet glue
+    // folds into the host.
+    vc.loaded = false;
 }
 
 // 0x5449c — -[RobloxNavBarViewController showFullscreenText:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController showFullscreenText:]")]
-pub fn stub_0x5449c() -> ! {
-    todo!("0x5449c -[RobloxNavBarViewController showFullscreenText:]")
+pub fn stub_0x5449c(vc: &mut NavBarVC, text: &str) {
+    // IDA 0x5449c: `showFullscreenText:` sets the loading text
+    // (0x544b4..0x544c6) and `dispatch_async`s the show block
+    // (0x544f8..0x5450a); the queue hop folds into the caller — see
+    // `stub_0x54514`.
+    stub_0x54514(vc, text);
 }
 
 // 0x54514 — ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")]
-pub fn stub_0x54514() -> ! {
-    todo!("0x54514 ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")
+pub fn stub_0x54514(vc: &mut NavBarVC, text: &str) {
+    // IDA 0x54514: the show block starts the spinner and seats/shows the
+    // loading overlay (0x54536..0x5457a).
+    vc.fullscreen = Some(text.to_string());
 }
 
 // 0x54594 — ___copy_helper_block_134
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_134")]
-pub fn stub_0x54594() -> ! {
-    todo!("0x54594 ___copy_helper_block_134")
+pub fn stub_0x54594() {
+    // IDA 0x54594: `__copy_helper_block_134` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x545a0 — ___destroy_helper_block_135
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_135")]
-pub fn stub_0x545a0() -> ! {
-    todo!("0x545a0 ___destroy_helper_block_135")
+pub fn stub_0x545a0() {
+    // IDA 0x545a0: `__destroy_helper_block_135` releases captures (pair
+    // of 0x54594); `Arc` glue covers it — no-op.
 }
 
 // 0x545a8 — -[RobloxNavBarViewController hideFullscreenText]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideFullscreenText]")]
-pub fn stub_0x545a8() -> ! {
-    todo!("0x545a8 -[RobloxNavBarViewController hideFullscreenText]")
+pub fn stub_0x545a8(vc: &mut NavBarVC) {
+    // IDA 0x545a8: `hideFullscreenText` `dispatch_async`s the hide block
+    // (0x545de..0x545f0); the queue hop folds into the caller — see
+    // `stub_0x545f8`.
+    stub_0x545f8(vc);
 }
 
 // 0x545f8 — ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")]
-pub fn stub_0x545f8() -> ! {
-    todo!("0x545f8 ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")
+pub fn stub_0x545f8(vc: &mut NavBarVC) {
+    // IDA 0x545f8: the hide block hides the overlay and stops the
+    // spinner (0x5460c..0x5461e).
+    vc.fullscreen = None;
 }
 
 // 0x54648 — ___copy_helper_block_139
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_139")]
-pub fn stub_0x54648() -> ! {
-    todo!("0x54648 ___copy_helper_block_139")
+pub fn stub_0x54648() {
+    // IDA 0x54648: `__copy_helper_block_139` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x54654 — ___destroy_helper_block_140
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_140")]
-pub fn stub_0x54654() -> ! {
-    todo!("0x54654 ___destroy_helper_block_140")
+pub fn stub_0x54654() {
+    // IDA 0x54654: `__destroy_helper_block_140` releases captures (pair
+    // of 0x54648); `Arc` glue covers it — no-op.
 }
 
 // 0x5465c — +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]
 // type: char __cdecl(id, SEL, id, int)
 #[doc(alias = "+[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")]
-pub fn stub_0x5465c() -> ! {
-    todo!("0x5465c +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")
+pub fn stub_0x5465c(url: &str, base: &str, nav_type: i32, refresh_robux: &mut bool) -> bool {
+    // IDA 0x5465c: `checkForInAppPurchases` flags a robux refresh and
+    // answers no-purchase for form submits (0x54664..0x54684), else
+    // matches the buy-URL prefix (0x54694..0x546f4); the string glue
+    // folds into the host.
+    if nav_type == 1 {
+        *refresh_robux = true;
+        false
+    } else {
+        url.starts_with(&format!("{base}mobile-app-upgrades/buy"))
+    }
 }
 
 #[cfg(test)]
@@ -1654,5 +1736,86 @@ mod anim_layer_batch_tests {
         stub_0x53b08(&mut vc, 5);
         assert_eq!(stub_0x53af8(&vc), Some(5));
         assert_eq!(stub_0x53b2c(&vc), None);
+    }
+}
+
+#[cfg(test)]
+mod navbar_batch_tests {
+    use super::*;
+
+    #[test]
+    fn img_foreground() {
+        let mut vc = stub_0x52178();
+        assert_eq!(stub_0x53b2c(&vc), None);
+        stub_0x53b3c(&mut vc, 9);
+        assert_eq!(stub_0x53b2c(&vc), Some(9));
+    }
+
+    #[test]
+    fn navbar_lifecycle() {
+        let mut vc = stub_0x53b60();
+        stub_0x53e6c(&mut vc, "https://roblox.com");
+        assert_eq!(stub_0x53e8c(&vc), "https://roblox.com");
+        stub_0x54104(&mut vc);
+        assert!(vc.loaded);
+        stub_0x53fac(&mut vc);
+        assert!(vc.appeared);
+        assert_eq!(vc.info_refresh, 1);
+        stub_0x53ffc(&mut vc, false);
+        assert!(vc.home_enabled);
+        assert_eq!(vc.launches, 0);
+        stub_0x53ffc(&mut vc, true);
+        assert_eq!(vc.launches, 1);
+        stub_0x543dc(&mut vc);
+        assert!(!vc.back_enabled);
+        stub_0x543fc(&mut vc);
+        assert!(vc.back_enabled);
+        stub_0x5441c(&mut vc);
+        assert!(!vc.loaded);
+        stub_0x540f0();
+        stub_0x540fc();
+        stub_0x54594();
+        stub_0x545a0();
+        stub_0x54648();
+        stub_0x54654();
+        stub_0x53cbc(&mut vc);
+        assert_eq!(vc, NavBarVC::default());
+    }
+
+    #[test]
+    fn leave_and_fullscreen() {
+        let mut vc = stub_0x53b60();
+        stub_0x53e9c(&mut vc, false);
+        assert_eq!(vc.fullscreen, None);
+        stub_0x53e9c(&mut vc, true);
+        assert_eq!(vc.fullscreen, Some("EndingGame".to_string()));
+        stub_0x53f38(&mut vc, false, false);
+        assert!(vc.fullscreen.is_some());
+        assert_eq!(vc.launches, 0);
+        stub_0x53f38(&mut vc, true, true);
+        assert_eq!(vc.fullscreen, None);
+        assert_eq!(vc.launches, 1);
+        stub_0x5449c(&mut vc, "Loading");
+        assert_eq!(vc.fullscreen, Some("Loading".to_string()));
+        stub_0x545a8(&mut vc);
+        assert_eq!(vc.fullscreen, None);
+    }
+
+    #[test]
+    fn iap_check() {
+        let mut refresh = false;
+        assert!(!stub_0x5465c("https://x.com/", "https://roblox.com/", 1, &mut refresh));
+        assert!(refresh);
+        let mut refresh2 = false;
+        assert!(stub_0x5465c(
+            "https://roblox.com/mobile-app-upgrades/buy?id=1",
+            "https://roblox.com/",
+            0,
+            &mut refresh2
+        ));
+        assert!(!refresh2);
+        let mut refresh3 = false;
+        assert!(!stub_0x5465c("https://roblox.com/games/1", "https://roblox.com/", 0, &mut refresh3));
+        assert!(!refresh3);
     }
 }
