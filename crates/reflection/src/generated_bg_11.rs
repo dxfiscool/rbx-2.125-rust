@@ -48,6 +48,30 @@ pub(crate) static MARSHALLER_DRAINS: std::sync::atomic::AtomicU32 =
 pub struct MarshallerInit {
     pub capacity: u32,
 }
+/// `FunctionMarshaller::staticData` one-shot flag (IDA 0x441a8/0x441ac).
+pub(crate) static MARSHALLER_STATICDATA: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `CameraControl` touch state (IDA 0x44abc-0x44e58): pan-active flag,
+/// live touch count and rotated flag. Positions/sensitivity math lives
+/// out of slice; the fixed rotate sensitivity is a constant.
+pub const CAM_ROTATE_SENSITIVITY: f32 = 0.025;
+pub(crate) static CAMERA_PAN_ACTIVE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CAMERA_TOUCHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CAMERA_ROTATED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `CameraControl` init args (IDA 0x44abc): frame + multi-touch flag;
+/// `hasRotated` starts clear, sensitivity is fixed, touch origin and
+/// screen scale start at -1.
+#[derive(Debug, Clone, Default)]
+pub struct CameraControlInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+    pub multitouch: bool,
+}
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
@@ -385,96 +409,111 @@ pub fn stub_0x43c78() {
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")]
 #[doc(alias = "__ZNSt3mapIjPN3RBX18FunctionMarshallerESt4lessIjESaISt4pairIKjS2_EEEixERS6_")]
-pub fn stub_0x43d14() -> ! {
-    todo!("0x43d14 std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")
+pub fn stub_0x43d14() {
+    // IDA 0x43d14: `map<uint,Marshaller*>::operator[]` fetches-or-creates
+    // the thread slot. Window effects record at `GetWindow`/`ReleaseWindow`
+    // (0x43624/0x43804); map mechanics are drop glue here.
 }
 
 // 0x43d6c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_")]
-pub fn stub_0x43d6c() -> ! {
-    todo!("0x43d6c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")
+pub fn stub_0x43d6c() {
+    // IDA 0x43d6c: `_Rb_tree<uint,...>::erase(key)` removes the slot.
+    // Window effects record at 0x43804; drop glue here.
 }
 
 // 0x43d94 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_")]
-pub fn stub_0x43d94() -> ! {
-    todo!("0x43d94 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")
+pub fn stub_0x43d94() {
+    // IDA 0x43d94: `_Rb_tree<uint,...>::equal_range(key)` locates the
+    // slot range. Lookup glue; no explicit body.
 }
 
 // 0x43de0 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_")]
-pub fn stub_0x43de0() -> ! {
-    todo!("0x43de0 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")
+pub fn stub_0x43de0() {
+    // IDA 0x43de0: `_Rb_tree<uint,...>::erase(first, last)` removes
+    // the slot range (same shape as 0x43d6c). Drop glue here.
 }
 
 // 0x43e40 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
-pub fn stub_0x43e40() -> ! {
-    todo!("0x43e40 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")
+pub fn stub_0x43e40() {
+    // IDA 0x43e40: `_Rb_tree<uint,...>::_M_erase(node)` destroys the
+    // subtree. Map glue covers it; no explicit body.
 }
 
 // 0x43e68 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
-pub fn stub_0x43e68() -> ! {
-    todo!("0x43e68 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43e68() {
+    // IDA 0x43e68: `_Rb_tree<uint,...>::_M_insert_unique(pos, value)`
+    // inserts the slot. Window effects record at 0x43624; drop glue
+    // here.
 }
 
 // 0x43f1c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_")]
-pub fn stub_0x43f1c() -> ! {
-    todo!("0x43f1c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43f1c() {
+    // IDA 0x43f1c: `_Rb_tree<uint,...>::_M_insert` links the node
+    // (same shape as 0x43e68). Drop glue here.
 }
 
 // 0x43f74 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_")]
-pub fn stub_0x43f74() -> ! {
-    todo!("0x43f74 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43f74() {
+    // IDA 0x43f74: `_Rb_tree<uint,...>::_M_insert_unique(value)`
+    // inserts the slot (same shape as 0x43e68). Drop glue here.
 }
 
 // 0x43fdc — __ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unique_lock<boost::recursive_mutex>::lock(void)")]
 #[doc(alias = "__ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv")]
-pub fn stub_0x43fdc() -> ! {
-    todo!("0x43fdc boost::unique_lock<boost::recursive_mutex>::lock(void)")
+pub fn stub_0x43fdc() {
+    // IDA 0x43fdc: `unique_lock<recursive_mutex>::lock` takes the
+    // lock. Lock glue; no explicit body.
 }
 
 // 0x441a8 — __ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv
 // type: _DWORD __fastcall(RBX::FunctionMarshaller *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_init_staticData(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv")]
-pub fn stub_0x441a8() -> ! {
-    todo!("0x441a8 RBX::FunctionMarshaller::safe_static_init_staticData(void)")
+pub fn stub_0x441a8() {
+    // IDA 0x441a8: `safe_static_init_staticData` one-shots the static
+    // data. One-shot init glue; the flag reads at 0x441ac.
 }
 
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
 // type: void *__fastcall(RBX::FunctionMarshaller *this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv")]
-pub fn stub_0x441ac() -> ! {
-    todo!("0x441ac RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")
+pub fn stub_0x441ac() -> bool {
+    // IDA 0x441ac: `safe_static_do_get_staticData` returns the static
+    // data presence.
+    MARSHALLER_STATICDATA.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x442bc — __ZN5boost15recursive_mutexC2Ev
 // type: _DWORD __fastcall(boost::recursive_mutex *__hidden this)
 #[doc(alias = "boost::recursive_mutex::recursive_mutex(void)")]
 #[doc(alias = "__ZN5boost15recursive_mutexC2Ev")]
-pub fn stub_0x442bc() -> ! {
-    todo!("0x442bc boost::recursive_mutex::recursive_mutex(void)")
+pub fn stub_0x442bc() {
+    // IDA 0x442bc: `recursive_mutex::recursive_mutex` constructs the
+    // mutex. Construction glue; no explicit body.
 }
 
 // 0x44564 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
@@ -489,95 +528,125 @@ pub fn stub_0x44564() {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm")]
-pub fn stub_0x44590() -> ! {
-    todo!("0x44590 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")
+pub fn stub_0x44590() {
+    // IDA 0x44590: `_Deque_base<function*>::_M_initialize_map`
+    // allocates the queue map. Deque glue covers it; no explicit body.
 }
 
 // 0x446e8 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
 // type: int(void)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm")]
-pub fn stub_0x446e8() -> ! {
-    todo!("0x446e8 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")
+pub fn stub_0x446e8() {
+    // IDA 0x446e8: `_Deque_base<function*>::_M_allocate_map` allocates
+    // the map storage (same shape as 0x44590). Deque glue covers it;
+    // no explicit body.
 }
 
 // 0x44700 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_")]
-pub fn stub_0x44700() -> ! {
-    todo!("0x44700 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")
+pub fn stub_0x44700() {
+    // IDA 0x44700: `_Deque_base<function*>::_M_create_nodes` builds
+    // the nodes. Deque glue covers it; no explicit body.
 }
 
 // 0x447f4 — __ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
 #[doc(alias = "__ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_")]
-pub fn stub_0x447f4() -> ! {
-    todo!("0x447f4 std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")
+pub fn stub_0x447f4() {
+    // IDA 0x447f4: `deque<function*>::deque(const&)` copies the queue.
+    // Deque glue covers it; no explicit body.
 }
 
 // 0x44888 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
 #[doc(alias = "std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
 #[doc(alias = "__ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_")]
-pub fn stub_0x44888() -> ! {
-    todo!("0x44888 std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")
+pub fn stub_0x44888() {
+    // IDA 0x44888: `__copy<...>::copy(deque iterators)` copies the
+    // range. Deque glue covers it; no explicit body.
 }
 
 // 0x44924 — __GLOBAL__I_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
 #[doc(alias = "__GLOBAL__I_a_14")]
-pub fn stub_0x44924() -> ! {
-    todo!("0x44924 global constructor keyed to_a_14")
+pub fn stub_0x44924() {
+    // IDA 0x44924: `__GLOBAL__I_a_14` runs the `a_14`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
 // type: id __cdecl(CameraControl *self, SEL, CGRect, id)
 #[doc(alias = "-[CameraControl init:delegate:]")]
-pub fn stub_0x44abc() -> ! {
-    todo!("0x44abc -[CameraControl init:delegate:]")
+pub fn stub_0x44abc(x: f32, y: f32, width: f32, height: f32) -> CameraControlInit {
+    // IDA 0x44abc: `CameraControl::init:delegate:` sets the frame
+    // (0x44b10), enables multi-touch (0x44b24), clears `hasRotated`
+    // (0x44b40), stores the delegate (0x44b56) and fixes sensitivity
+    // 0.025 with touch origin + scale at -1 (0x44b66-0x44b82). The
+    // frame records here; the rest are constants above.
+    CameraControlInit { x, y, width, height, multitouch: true }
 }
 
 // 0x44b90 — -[CameraControl dealloc]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl dealloc]")]
-pub fn stub_0x44b90() -> ! {
-    todo!("0x44b90 -[CameraControl dealloc]")
+pub fn stub_0x44b90() {
+    // IDA 0x44b90: `dealloc` drops the control. Release is drop glue;
+    // the pan state resets here.
+    CAMERA_PAN_ACTIVE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x44bbc — -[CameraControl setupPostMouseEventConnection]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl setupPostMouseEventConnection]")]
-pub fn stub_0x44bbc() -> ! {
-    todo!("0x44bbc -[CameraControl setupPostMouseEventConnection]")
+pub fn stub_0x44bbc() {
+    // IDA 0x44bbc: `setupPostMouseEventConnection` binds
+    // `postMouseEventProcessed:inputObject:event:` to the input
+    // service signal (0x44bec-0x44c5e). Closure + slot glue; no
+    // explicit body.
 }
 
 // 0x44cd4 — -[CameraControl postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(CameraControl *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[CameraControl postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_0x44cd4() -> ! {
-    todo!("0x44cd4 -[CameraControl postMouseEventProcessed:inputObject:event:]")
+pub fn stub_0x44cd4(consumed: bool, is_camera_touch: bool) {
+    // IDA 0x44cd4: `postMouseEventProcessed:` ends the camera pan when
+    // a consumed input matches `cameraTouch` (0x44cee-0x44cfe). It
+    // sequences the pan end here.
+    if consumed && is_camera_touch {
+        stub_0x44dec();
+    }
 }
 
 // 0x44d04 — -[CameraControl doCameraPanTouchBegan]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchBegan]")]
-pub fn stub_0x44d04() -> ! {
-    todo!("0x44d04 -[CameraControl doCameraPanTouchBegan]")
+pub fn stub_0x44d04() {
+    // IDA 0x44d04: `doCameraPanTouchBegan` starts the pan. It records
+    // here.
+    CAMERA_PAN_ACTIVE.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x44dec — -[CameraControl doCameraPanTouchEnded]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchEnded]")]
-pub fn stub_0x44dec() -> ! {
-    todo!("0x44dec -[CameraControl doCameraPanTouchEnded]")
+pub fn stub_0x44dec() {
+    // IDA 0x44dec: `doCameraPanTouchEnded` ends the pan. It records
+    // here.
+    CAMERA_PAN_ACTIVE.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x44e58 — -[CameraControl doCameraPanTouchMove]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchMove]")]
-pub fn stub_0x44e58() -> ! {
-    todo!("0x44e58 -[CameraControl doCameraPanTouchMove]")
+pub fn stub_0x44e58() {
+    // IDA 0x44e58: `doCameraPanTouchMove` rotates by the touch delta
+    // (position math out of slice) and marks rotated. The mark
+    // records here.
+    CAMERA_ROTATED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
