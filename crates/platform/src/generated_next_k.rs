@@ -14,50 +14,94 @@ const _: () = {
 // 0x71178 — __ZN4FMOD7Channel7setMuteEb
 // type: int __fastcall(FMOD::Channel *this, bool, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setMute(bool)")]
-pub fn stub_71178() -> ! {
-    todo!("0x71178 FMOD::Channel::setMute(bool)")
+pub fn stub_71178(handle: u32, muted: bool) -> i32 {
+    // IDA 0x71178 `Channel::setMute`: validates, forwards (0x7118c..
+    // 0x711a8).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.with_row(handle, |row| row.muted = muted) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x711ac — __ZN4FMOD7Channel12getFrequencyEPf
 // type: int __fastcall(FMOD::Channel *this, float *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getFrequency(float *)")]
-pub fn stub_711ac() -> ! {
-    todo!("0x711ac FMOD::Channel::getFrequency(float *)")
+pub fn stub_711ac(handle: u32) -> (i32, f32) {
+    // IDA 0x711ac `Channel::getFrequency`: validates, zeroes the rate on
+    // failure, forwards (0x711c0..0x711dc).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.get(handle, |row| row.frequency) {
+        Some(frequency) => (0, frequency),
+        None => (FmodChannels::INVALID, 0.0),
+    }
 }
 
 // 0x711f0 — __ZN4FMOD7Channel12setFrequencyEf
 // type: int __fastcall(FMOD::Channel *this, float, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setFrequency(float)")]
-pub fn stub_711f0() -> ! {
-    todo!("0x711f0 FMOD::Channel::setFrequency(float)")
+pub fn stub_711f0(handle: u32, frequency: f32) -> i32 {
+    // IDA 0x711f0 `Channel::setFrequency`: validates, forwards (0x71204..
+    // 0x71220).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.with_row(handle, |row| row.frequency = frequency) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x71224 — __ZN4FMOD7Channel9setVolumeEf
 // type: int __fastcall(FMOD::Channel *this, float, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setVolume(float)")]
-pub fn stub_71224() -> ! {
-    todo!("0x71224 FMOD::Channel::setVolume(float)")
+pub fn stub_71224(handle: u32, volume: f32) -> i32 {
+    // IDA 0x71224 `Channel::setVolume`: validates, forwards with the ramp
+    // flag clear (0x7123c..0x7125c).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.with_row(handle, |row| row.volume = volume) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x71260 — __ZN4FMOD7Channel9getPausedEPb
 // type: int __fastcall(FMOD::Channel *this, bool *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getPaused(bool *)")]
-pub fn stub_71260() -> ! {
-    todo!("0x71260 FMOD::Channel::getPaused(bool *)")
+pub fn stub_71260(handle: u32) -> (i32, bool) {
+    // IDA 0x71260 `Channel::getPaused`: validates, zeroes the flag on
+    // failure, forwards (0x71274..0x71290).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.get(handle, |row| row.paused) {
+        Some(paused) => (0, paused),
+        None => (FmodChannels::INVALID, false),
+    }
 }
 
 // 0x712a4 — __ZN4FMOD7Channel9setPausedEb
 // type: int __fastcall(FMOD::Channel *this, bool, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setPaused(bool)")]
-pub fn stub_712a4() -> ! {
-    todo!("0x712a4 FMOD::Channel::setPaused(bool)")
+pub fn stub_712a4(handle: u32, paused: bool) -> i32 {
+    // IDA 0x712a4 `Channel::setPaused`: validates, forwards (0x712b8..
+    // 0x712d4).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.with_row(handle, |row| row.paused = paused) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x712d8 — __ZN4FMOD7Channel4stopEv
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::stop(void)")]
-pub fn stub_712d8() -> ! {
-    todo!("0x712d8 FMOD::Channel::stop(void)")
+pub fn stub_712d8(handle: u32) -> i32 {
+    // IDA 0x712d8 `Channel::stop`: validates, forwards (0x712e8..0x71300).
+    use crate::generated_next_j::{FMOD_CHANNELS, FmodChannels};
+    match FMOD_CHANNELS.with_row(handle, |row| {
+        row.playing = false;
+        row.stopped = true;
+    }) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb

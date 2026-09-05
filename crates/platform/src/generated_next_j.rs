@@ -2492,7 +2492,120 @@ impl FmodAsyncThread {
     pub fn processed_count(&self) -> u32 {
         self.processed.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `AsyncThread::AsyncThread` (IDA 0x70c98): zeroes the lists plus the
+    /// latches (0x70ca8..0x70ce4); the struct below starts zeroed.
+    pub fn construct(&self) {
+        self.running.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.stop_requested.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.pending.store(0, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `AsyncThread::init` (IDA 0x70bbc): creates the critical section,
+    /// starts the thread and links the head (0x70bcc..0x70c80).
+    pub fn init(&self) -> i32 {
+        self.construct();
+        self.set_running(true);
+        0
+    }
+    pub fn is_running(&self) -> bool {
+        self.running.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `AsyncThread::reallyRelease` (IDA 0x70ab4): unlinks plus frees the
+    /// queued requests (0x70ac8..0x70b2c tail).
+    pub fn really_release(&self) -> i32 {
+        self.pending.store(0, std::sync::atomic::Ordering::SeqCst);
+        self.running.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `AsyncThread::getAsyncThread` (IDA 0x70cf0): returns the head or
+    /// allocs plus inits one (0x70d10..tail).
+    pub fn get_thread(&self) -> i32 {
+        if !self.is_running() {
+            self.init();
+        }
+        0
+    }
+    /// `AsyncThread::shutDown` (IDA 0x70ddc): releases every thread on the
+    /// head list (0x70df8..0x70e40).
+    pub fn shut_down(&self) -> i32 {
+        self.really_release()
+    }
+    /// `AsyncThread::update` (IDA 0x70e5c): releases the stop-flagged
+    /// threads (0x70e78..0x70ecc).
+    pub fn update(&self) -> i32 {
+        if self.stop_requested() {
+            self.really_release();
+        }
+        0
+    }
 }
+/// One `FMOD::ChannelI` row behind the `FMOD::Channel::*` validate
+/// wrappers (IDA 0x70f38..): handle 0 is never valid.
+#[derive(Debug, Clone)]
+pub struct FmodChannelRow {
+    pub valid: bool,
+    pub user_data: u32,
+    pub loop_count: i32,
+    pub mode: u32,
+    pub playing: bool,
+    pub muted: bool,
+    pub frequency: f32,
+    pub volume: f32,
+    pub paused: bool,
+    pub stopped: bool,
+    pub priority: u32,
+    pub pos: [f32; 3],
+    pub vel: [f32; 3],
+    pub group: u32,
+    pub callback: bool,
+}
+impl Default for FmodChannelRow {
+    fn default() -> Self {
+        Self {
+            valid: true,
+            user_data: 0,
+            loop_count: 0,
+            mode: 0,
+            playing: false,
+            muted: false,
+            frequency: 44100.0,
+            volume: 1.0,
+            paused: false,
+            stopped: true,
+            priority: 128,
+            pos: [0.0; 3],
+            vel: [0.0; 3],
+            group: 0,
+            callback: false,
+        }
+    }
+}
+/// Minimal channel table behind `FMOD::Channel::*` (IDA 0x70f38..0x712d8):
+/// each wrapper validates the handle, zeroes the out-param on failure and
+/// forwards on success.
+#[derive(Debug, Default)]
+pub struct FmodChannels {
+    rows: parking_lot::Mutex<Vec<FmodChannelRow>>,
+}
+impl FmodChannels {
+    pub const INVALID: i32 = 37;
+    /// Allocates a channel row; the 1-based index below is the handle.
+    pub fn alloc(&self) -> u32 {
+        let mut rows = self.rows.lock();
+        rows.push(FmodChannelRow::default());
+        rows.len() as u32
+    }
+    pub fn with_row<T>(&self, handle: u32, f: impl FnOnce(&mut FmodChannelRow) -> T) -> Option<T> {
+        self.rows.lock().get_mut(handle.checked_sub(1)? as usize).map(f)
+    }
+    pub fn get<T: Clone>(&self, handle: u32, f: impl FnOnce(&FmodChannelRow) -> T) -> Option<T> {
+        self.rows.lock().get(handle.checked_sub(1)? as usize).map(f)
+    }
+    pub fn channel_count(&self) -> u32 {
+        self.rows.lock().len() as u32
+    }
+}
+pub static FMOD_CHANNELS: std::sync::LazyLock<FmodChannels> =
+    std::sync::LazyLock::new(FmodChannels::default);
 static FMOD_ASYNC: std::sync::LazyLock<FmodAsyncThread> =
     std::sync::LazyLock::new(FmodAsyncThread::default);
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
@@ -2730,139 +2843,213 @@ pub fn stub_706b4() -> i32 {
 // 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv
 // type: int __fastcall(FMOD::AsyncThread *this, void *)
 #[doc(alias = "FMOD::asyncThreadFunc(void *)")]
-pub fn stub_70ab0() -> ! {
-    todo!("0x70ab0 FMOD::asyncThreadFunc(void *)")
+pub fn stub_70ab0() -> i32 {
+    // IDA 0x70ab0 `asyncThreadFunc` thunk: tail-calls `threadFunc` above.
+    FMOD_ASYNC.thread_func()
 }
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::reallyRelease(void)")]
-pub fn stub_70ab4() -> ! {
-    todo!("0x70ab4 FMOD::AsyncThread::reallyRelease(void)")
+pub fn stub_70ab4() -> i32 {
+    // IDA 0x70ab4 `AsyncThread::reallyRelease`: unlinks plus frees the
+    // queued requests (0x70ac8..0x70b2c tail).
+    FMOD_ASYNC.really_release()
 }
 
 // 0x70bbc — __ZN4FMOD11AsyncThread4initEbPNS_7SystemIE
 // type: int __fastcall(FMOD::AsyncThread *this, bool, FMOD::SystemI *)
 #[doc(alias = "FMOD::AsyncThread::init(bool,FMOD::SystemI *)")]
-pub fn stub_70bbc() -> ! {
-    todo!("0x70bbc FMOD::AsyncThread::init(bool,FMOD::SystemI *)")
+pub fn stub_70bbc() -> i32 {
+    // IDA 0x70bbc `AsyncThread::init`: creates the critical section,
+    // starts the thread and links the head (0x70bcc..0x70c80).
+    FMOD_ASYNC.init()
 }
 
 // 0x70c98 — __ZN4FMOD11AsyncThreadC2Ev
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70c98() -> ! {
-    todo!("0x70c98 FMOD::AsyncThread::AsyncThread(void)")
+pub fn stub_70c98() -> i32 {
+    // IDA 0x70c98 `AsyncThread::AsyncThread`: zeroes the lists plus the
+    // latches (0x70ca8..0x70ce4); the struct below starts zeroed.
+    FMOD_ASYNC.construct();
+    0
 }
 
 // 0x70cec — __ZN4FMOD11AsyncThreadC1Ev
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70cec() -> ! {
-    todo!("0x70cec FMOD::AsyncThread::AsyncThread(void)")
+pub fn stub_70cec() -> i32 {
+    // IDA 0x70cec `AsyncThread::AsyncThread` thunk: tail-calls the C2 ctor
+    // above.
+    FMOD_ASYNC.construct();
+    0
 }
 
 // 0x70cf0 — __ZN4FMOD11AsyncThread14getAsyncThreadEPNS_6SoundIE
 // type: int __fastcall(FMOD::AsyncThread *this, FMOD::SoundI *)
 #[doc(alias = "FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")]
-pub fn stub_70cf0() -> ! {
-    todo!("0x70cf0 FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")
+pub fn stub_70cf0() -> i32 {
+    // IDA 0x70cf0 `AsyncThread::getAsyncThread`: returns the head or
+    // allocs plus inits one (0x70d10..tail).
+    FMOD_ASYNC.get_thread()
 }
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::shutDown(void)")]
-pub fn stub_70ddc() -> ! {
-    todo!("0x70ddc FMOD::AsyncThread::shutDown(void)")
+pub fn stub_70ddc() -> i32 {
+    // IDA 0x70ddc `AsyncThread::shutDown`: releases every thread on the
+    // head list (0x70df8..0x70e40).
+    FMOD_ASYNC.shut_down()
 }
 
 // 0x70e5c — __ZN4FMOD11AsyncThread6updateEv
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::update(void)")]
-pub fn stub_70e5c() -> ! {
-    todo!("0x70e5c FMOD::AsyncThread::update(void)")
+pub fn stub_70e5c() -> i32 {
+    // IDA 0x70e5c `AsyncThread::update`: releases the stop-flagged threads
+    // (0x70e78..0x70ecc).
+    FMOD_ASYNC.update()
 }
 
 // 0x70ef8 — __Z41__static_initialization_and_destruction_0ii
 // type: int __fastcall(int result, int)
 #[doc(alias = "__static_initialization_and_destruction_0(int,int)")]
-pub fn stub_70ef8() -> ! {
-    todo!("0x70ef8 __static_initialization_and_destruction_0(int,int)")
+pub fn stub_70ef8() {
+    // IDA 0x70ef8 `__static_initialization_and_destruction_0`: links the
+    // empty `gAsyncHead` list (0x70f18..0x70f20).
+    let _ = &*FMOD_ASYNC;
 }
 
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
-pub fn stub_70f2c() -> ! {
-    todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
+pub fn stub_70f2c() {
+    // IDA 0x70f2c: global ctor keyed to `gAsyncHead` — runs the static
+    // init (sole call); the LazyLock below is the head.
+    let _ = &*FMOD_ASYNC;
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv
 // type: int __fastcall(FMOD::Channel *this, void **, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getUserData(void **)")]
-pub fn stub_70f38() -> ! {
-    todo!("0x70f38 FMOD::Channel::getUserData(void **)")
+pub fn stub_70f38(handle: u32) -> (i32, u32) {
+    // IDA 0x70f38 `Channel::getUserData`: validates, zeroes the out-param
+    // on failure, forwards (0x70f4c..0x70f68).
+    match FMOD_CHANNELS.get(handle, |row| row.user_data) {
+        Some(data) => (0, data),
+        None => (FmodChannels::INVALID, 0),
+    }
 }
 
 // 0x70f7c — __ZN4FMOD7Channel11setUserDataEPv
 // type: int __fastcall(FMOD::Channel *this, void *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setUserData(void *)")]
-pub fn stub_70f7c() -> ! {
-    todo!("0x70f7c FMOD::Channel::setUserData(void *)")
+pub fn stub_70f7c(handle: u32, data: u32) -> i32 {
+    // IDA 0x70f7c `Channel::setUserData`: validates, forwards (0x70f90..
+    // 0x70fa4).
+    match FMOD_CHANNELS.with_row(handle, |row| row.user_data = data) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x70fb0 — __ZN4FMOD7Channel12setLoopCountEi
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setLoopCount(int)")]
-pub fn stub_70fb0() -> ! {
-    todo!("0x70fb0 FMOD::Channel::setLoopCount(int)")
+pub fn stub_70fb0(handle: u32, count: i32) -> i32 {
+    // IDA 0x70fb0 `Channel::setLoopCount`: validates, forwards (0x70fc4..
+    // 0x70fe0).
+    match FMOD_CHANNELS.with_row(handle, |row| row.loop_count = count) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x70fe4 — __ZN4FMOD7Channel7getModeEPj
 // type: int __fastcall(FMOD::Channel *this, unsigned int *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getMode(unsigned int *)")]
-pub fn stub_70fe4() -> ! {
-    todo!("0x70fe4 FMOD::Channel::getMode(unsigned int *)")
+pub fn stub_70fe4(handle: u32) -> (i32, u32) {
+    // IDA 0x70fe4 `Channel::getMode`: validates, zeroes the mode on
+    // failure, forwards (0x70ff8..0x71014).
+    match FMOD_CHANNELS.get(handle, |row| row.mode) {
+        Some(mode) => (0, mode),
+        None => (FmodChannels::INVALID, 0),
+    }
 }
 
 // 0x71028 — __ZN4FMOD7Channel7setModeEj
 // type: int __fastcall(FMOD::Channel *this, unsigned int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setMode(unsigned int)")]
-pub fn stub_71028() -> ! {
-    todo!("0x71028 FMOD::Channel::setMode(unsigned int)")
+pub fn stub_71028(handle: u32, mode: u32) -> i32 {
+    // IDA 0x71028 `Channel::setMode`: validates, forwards (0x7103c..
+    // 0x71058).
+    match FMOD_CHANNELS.with_row(handle, |row| row.mode = mode) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x7105c — __ZN4FMOD7Channel9isPlayingEPb
 // type: int __fastcall(FMOD::Channel *this, bool *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::isPlaying(bool *)")]
-pub fn stub_7105c() -> ! {
-    todo!("0x7105c FMOD::Channel::isPlaying(bool *)")
+pub fn stub_7105c(handle: u32) -> (i32, bool) {
+    // IDA 0x7105c `Channel::isPlaying`: validates, zeroes the flag on
+    // failure, forwards (0x71070..0x7108c).
+    match FMOD_CHANNELS.get(handle, |row| row.playing && !row.stopped) {
+        Some(playing) => (0, playing),
+        None => (FmodChannels::INVALID, false),
+    }
 }
 
 // 0x710a0 — __ZN4FMOD7Channel15set3DAttributesEPK11FMOD_VECTORS3_
 // type: int __fastcall(FMOD::ChannelI *, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
-pub fn stub_710a0() -> ! {
-    todo!("0x710a0 FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+pub fn stub_710a0(handle: u32, pos: [f32; 3], vel: [f32; 3]) -> i32 {
+    // IDA 0x710a0 `Channel::set3DAttributes`: validates, forwards
+    // (0x710b8..0x710d8).
+    match FMOD_CHANNELS.with_row(handle, |row| {
+        row.pos = pos;
+        row.vel = vel;
+    }) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
 // type: int __fastcall(FMOD::ChannelI *, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
-pub fn stub_710dc() -> ! {
-    todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub fn stub_710dc(handle: u32) -> i32 {
+    // IDA 0x710dc `Channel::setCallback`: validates, forwards (0x710f0..
+    // 0x7110c).
+    match FMOD_CHANNELS.with_row(handle, |row| row.callback = true) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x71110 — __ZN4FMOD7Channel15setChannelGroupEPNS_12ChannelGroupE
 // type: int __fastcall(FMOD::ChannelI *, FMOD::ChannelGroupI *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")]
-pub fn stub_71110() -> ! {
-    todo!("0x71110 FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")
+pub fn stub_71110(handle: u32, group: u32) -> i32 {
+    // IDA 0x71110 `Channel::setChannelGroup`: validates, forwards
+    // (0x71124..0x71140).
+    match FMOD_CHANNELS.with_row(handle, |row| row.group = group) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
 
 // 0x71144 — __ZN4FMOD7Channel11setPriorityEi
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setPriority(int)")]
-pub fn stub_71144() -> ! {
-    todo!("0x71144 FMOD::Channel::setPriority(int)")
+pub fn stub_71144(handle: u32, priority: u32) -> i32 {
+    // IDA 0x71144 `Channel::setPriority`: validates, zeroes nothing,
+    // forwards (0x71158..0x71174).
+    match FMOD_CHANNELS.with_row(handle, |row| row.priority = priority) {
+        Some(()) => 0,
+        None => FmodChannels::INVALID,
+    }
 }
