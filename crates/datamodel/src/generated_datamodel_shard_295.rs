@@ -532,6 +532,7 @@ pub fn stub_0x589f58() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsSsEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS6_5list3INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEEEEEEED1Ev")]
 pub fn stub_0x589fcc() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x589fcc rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
@@ -540,6 +541,7 @@ pub fn stub_0x589fcc() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsSsEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS6_5list3INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEEEEEEED0Ev")]
 pub fn stub_0x589ff8() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x589ff8 rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
@@ -547,6 +549,7 @@ pub fn stub_0x589ff8() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs")]
 pub fn stub_0x58a0cc() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58a0cc rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")
 }
 
@@ -554,6 +557,7 @@ pub fn stub_0x58a0cc() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs")]
 pub fn stub_0x58a0e8() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58a0e8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")
 }
 
@@ -562,6 +566,7 @@ pub fn stub_0x58a0e8() -> ! {
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list2<std::string &,std::string &>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string> &,boost::_bi::list2<std::string &,std::string &> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX13InsertServiceEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_SsSsEENS0_5list2IRSsSG_EEEEvNS0_4typeIvEERT_RT0_i")]
 pub fn stub_0x58a104() -> ! {
+    // BLOCKED: core-owned `boost::bind` list infra (no exact-EA native anywhere)
     todo!("0x58a104 void boost::_bi::list3<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list2<std::string &,std::string &>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string> &,boost::_bi::list2<std::string &,std::string &> &,int)")
 }
 
@@ -570,6 +575,7 @@ pub fn stub_0x58a104() -> ! {
 #[doc(alias = "boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>::operator()(RBX::InsertService*,std::string,std::string)const")]
 #[doc(alias = "__ZNK5boost4_mfi3mf2IvN3RBX13InsertServiceESsSsEclEPS3_SsSs")]
 pub fn stub_0x58a2ac() -> ! {
+    // BLOCKED: core-owned `boost::bind` member-function infra (no exact-EA native anywhere)
     todo!("0x58a2ac boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>::operator()(RBX::InsertService*,std::string,std::string)const")
 }
 
@@ -577,6 +583,7 @@ pub fn stub_0x58a2ac() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED1Ev")]
 pub fn stub_0x58a470() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58a470 rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::~callable()")
 }
 
@@ -584,6 +591,7 @@ pub fn stub_0x58a470() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED0Ev")]
 pub fn stub_0x58a49c() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58a49c rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::~callable()")
 }
 
@@ -591,6 +599,7 @@ pub fn stub_0x58a49c() -> ! {
 #[doc(alias = "std::pair<std::string const,RBX::InsertService::Callback>::pair(std::string const&,RBX::InsertService::Callback const&)")]
 #[doc(alias = "__ZNSt4pairIKSsN3RBX13InsertService8CallbackEEC2ERS0_RKS3_")]
 pub fn stub_0x58ad14() -> ! {
+    // BLOCKED: STL `std::pair` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58ad14 std::pair<std::string const,RBX::InsertService::Callback>::pair(std::string const&,RBX::InsertService::Callback const&)")
 }
 
@@ -599,6 +608,7 @@ pub fn stub_0x58ad14() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,RBX::InsertService::Callback>>,std::pair<std::string const,RBX::InsertService::Callback> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
 pub fn stub_0x58ae00() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58ae00 std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,RBX::InsertService::Callback>>,std::pair<std::string const,RBX::InsertService::Callback> const&)")
 }
 
@@ -607,6 +617,7 @@ pub fn stub_0x58ae00() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,RBX::InsertService::Callback> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_")]
 pub fn stub_0x58aeec() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58aeec std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,RBX::InsertService::Callback> const&)")
 }
 
@@ -615,6 +626,7 @@ pub fn stub_0x58aeec() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert_unique(std::pair<std::string const,RBX::InsertService::Callback> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueERKS5_")]
 pub fn stub_0x58af3c() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58af3c std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_insert_unique(std::pair<std::string const,RBX::InsertService::Callback> const&)")
 }
 
@@ -623,6 +635,7 @@ pub fn stub_0x58af3c() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_create_node(std::pair<std::string const,RBX::InsertService::Callback> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE14_M_create_nodeERKS5_")]
 pub fn stub_0x58afc0() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58afc0 std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_create_node(std::pair<std::string const,RBX::InsertService::Callback> const&)")
 }
 
@@ -631,6 +644,7 @@ pub fn stub_0x58afc0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::lower_bound(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE11lower_boundERS1_")]
 pub fn stub_0x58b0f0() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58b0f0 std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::lower_bound(std::string const&)")
 }
 
@@ -638,6 +652,7 @@ pub fn stub_0x58b0f0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::InsertService::Callback>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E")]
 pub fn stub_0x58b124() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58b124 std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::InsertService::Callback>> *)")
 }
 
@@ -646,6 +661,7 @@ pub fn stub_0x58b124() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13InsertService8CallbackEESt10_Select1stIS5_ESt4lessISsESaIS5_EE4findERS1_")]
 pub fn stub_0x58b204() -> ! {
+    // BLOCKED: STL `_Rb_tree` infra for the unmodeled `Callback` map (no native anywhere)
     todo!("0x58b204 std::_Rb_tree<std::string,std::pair<std::string const,RBX::InsertService::Callback>,std::_Select1st<std::pair<std::string const,RBX::InsertService::Callback>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::find(std::string const&)")
 }
 
@@ -654,6 +670,7 @@ pub fn stub_0x58b204() -> ! {
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string,int,int)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS6_5list4INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEEENS0_10connectionERKT_")]
 pub fn stub_0x58b254() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b254 rbx::signals::connection rbx::signals::signal<void ()(std::string,int,int)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)")
 }
 
@@ -663,6 +680,7 @@ pub fn stub_0x58b254() -> ! {
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsiiEE4slotEEaSEPS6_")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,int)>::slot>::operator=(rbx::signals::signal<void ()(std::string,int,int)>::slot*)
 pub fn stub_0x58b2c8() -> ! {
+    // BLOCKED: core-owned `SharedPtr` slot infra (no exact-EA native anywhere)
     todo!("0x58b2c8 rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,int,int)>::slot>::operator=(rbx::signals::signal<void ()(std::string,int,int)>::slot*)")
 }
 
@@ -670,6 +688,7 @@ pub fn stub_0x58b2c8() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS6_5list4INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEED1Ev")]
 pub fn stub_0x58b2ec() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b2ec rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
 }
 
@@ -677,6 +696,7 @@ pub fn stub_0x58b2ec() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS6_5list4INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEED0Ev")]
 pub fn stub_0x58b318() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b318 rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
 }
 
@@ -684,6 +704,7 @@ pub fn stub_0x58b318() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE4slot10disconnectEv")]
 pub fn stub_0x58b3ec() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58b3ec rbx::signals::signal<void ()(std::string,int,int)>::slot::disconnect(void)")
 }
 
@@ -691,6 +712,7 @@ pub fn stub_0x58b3ec() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvSsiiEE4slot9connectedEv")]
 pub fn stub_0x58b4fc() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58b4fc rbx::signals::signal<void ()(std::string,int,int)>::slot::connected(void)const")
 }
 
@@ -698,6 +720,7 @@ pub fn stub_0x58b4fc() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callESsii")]
 pub fn stub_0x58b508() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b508 rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)")
 }
 
@@ -705,6 +728,7 @@ pub fn stub_0x58b508() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callESsii")]
 pub fn stub_0x58b530() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b530 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)")
 }
 
@@ -713,6 +737,7 @@ pub fn stub_0x58b530() -> ! {
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list3<std::string &,int &,int &>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int> &,boost::_bi::list3<std::string &,int &,int &> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIPN3RBX13InsertServiceEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEEEclINS_4_mfi3mf3IvS4_SsiiEENS0_5list3IRSsRiSI_EEEEvNS0_4typeIvEERT_RT0_i")]
 pub fn stub_0x58b558() -> ! {
+    // BLOCKED: core-owned `boost::bind` list infra (no exact-EA native anywhere)
     todo!("0x58b558 void boost::_bi::list4<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list3<std::string &,int &,int &>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int> &,boost::_bi::list3<std::string &,int &,int &> &,int)")
 }
 
@@ -720,6 +745,7 @@ pub fn stub_0x58b558() -> ! {
 #[doc(alias = "boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>::operator()(RBX::InsertService*,std::string,int,int)const")]
 #[doc(alias = "__ZNK5boost4_mfi3mf3IvN3RBX13InsertServiceESsiiEclEPS3_Ssii")]
 pub fn stub_0x58b688() -> ! {
+    // BLOCKED: core-owned `boost::bind` member-function infra (no exact-EA native anywhere)
     todo!("0x58b688 boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>::operator()(RBX::InsertService*,std::string,int,int)const")
 }
 
@@ -728,6 +754,7 @@ pub fn stub_0x58b688() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::slot::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE4slot24safe_static_do_get_mutexEv")]
 pub fn stub_0x58b7c4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58b7c4 rbx::signals::signal<void ()(std::string,int,int)>::slot::safe_static_do_get_mutex(void)")
 }
 
@@ -735,6 +762,7 @@ pub fn stub_0x58b7c4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE4slotD1Ev")]
 pub fn stub_0x58b8b4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58b8b4 rbx::signals::signal<void ()(std::string,int,int)>::slot::~slot()")
 }
 
@@ -742,6 +770,7 @@ pub fn stub_0x58b8b4() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_ED1Ev")]
 pub fn stub_0x58b8e0() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b8e0 rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::~callable()")
 }
 
@@ -749,6 +778,7 @@ pub fn stub_0x58b8e0() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_ED0Ev")]
 pub fn stub_0x58b90c() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b90c rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::~callable()")
 }
 
@@ -757,6 +787,7 @@ pub fn stub_0x58b90c() -> ! {
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string,RBX::ContentId)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvNS2_13InsertServiceESsS3_EENS8_5list3INS8_5valueIPSC_EENS7_3argILi1EEENSI_ILi2EEEEEEEEENS0_10connectionERKT_")]
 pub fn stub_0x58b9e0() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58b9e0 rbx::signals::connection rbx::signals::signal<void ()(std::string,RBX::ContentId)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")
 }
 
@@ -765,6 +796,7 @@ pub fn stub_0x58b9e0() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::insert(rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE6insertEPNS5_4slotE")]
 pub fn stub_0x58ba54() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58ba54 rbx::signals::signal<void ()(std::string,RBX::ContentId)>::insert(rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot *)")
 }
 
@@ -774,6 +806,7 @@ pub fn stub_0x58ba54() -> ! {
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE4slotEEaSEPS8_")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot>::operator=(rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot*)
 pub fn stub_0x58bc60() -> ! {
+    // BLOCKED: core-owned `SharedPtr` slot infra (no exact-EA native anywhere)
     todo!("0x58bc60 rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot>::operator=(rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot*)")
 }
 
@@ -783,6 +816,7 @@ pub fn stub_0x58bc60() -> ! {
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE4slotEEaSERKS9_")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot> const&)
 pub fn stub_0x58bc84() -> ! {
+    // BLOCKED: core-owned `SharedPtr` slot infra (no exact-EA native anywhere)
     todo!("0x58bc84 rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot> const&)")
 }
 
@@ -790,6 +824,7 @@ pub fn stub_0x58bc84() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE22safe_static_init_mutexEv")]
 pub fn stub_0x58bca8() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58bca8 rbx::signals::signal<void ()(std::string,RBX::ContentId)>::safe_static_init_mutex(void)")
 }
 
@@ -797,6 +832,7 @@ pub fn stub_0x58bca8() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE24safe_static_do_get_mutexEv")]
 pub fn stub_0x58bcac() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0x58bcac rbx::signals::signal<void ()(std::string,RBX::ContentId)>::safe_static_do_get_mutex(void)")
 }
 
@@ -804,6 +840,7 @@ pub fn stub_0x58bcac() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvNS2_13InsertServiceESsS3_EENS8_5list3INS8_5valueIPSC_EENS7_3argILi1EEENSI_ILi2EEEEEEEED1Ev")]
 pub fn stub_0x58bda4() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58bda4 rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
@@ -811,6 +848,7 @@ pub fn stub_0x58bda4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvNS2_13InsertServiceESsS3_EENS8_5list3INS8_5valueIPSC_EENS7_3argILi1EEENSI_ILi2EEEEEEEED0Ev")]
 pub fn stub_0x58bdd0() -> ! {
+    // BLOCKED: core-owned `rbx::signals`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0x58bdd0 rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
