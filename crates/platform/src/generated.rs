@@ -3482,6 +3482,16 @@ pub struct ExtLoginState {
     localized: AtomicBool,
     localize_runs: AtomicU32,
     releases: AtomicU32,
+    logging_in: AtomicBool,
+    password_focused: AtomicBool,
+    login_attempts: AtomicU32,
+    failed_count: AtomicU32,
+    dismissed: AtomicU32,
+    notified: AtomicU32,
+    cancel_count: AtomicU32,
+    success_user: parking_lot::Mutex<String>,
+    username_field: parking_lot::Mutex<Option<ControlId>>,
+    password_field: parking_lot::Mutex<Option<ControlId>>,
 }
 impl ExtLoginState {
     fn bump(&self, c: &AtomicU32) {
@@ -3543,6 +3553,95 @@ impl ExtLoginState {
     }
     pub fn is_localized(&self) -> bool {
         self.localized.load(Ordering::SeqCst)
+    }
+    /// `-usernameDidEndOnExit:` (IDA 0x66078): the password field becomes
+    /// first responder (0x66088..0x6609c).
+    pub fn username_did_end_on_exit(&self) {
+        self.password_focused.store(true, Ordering::SeqCst);
+    }
+    pub fn is_password_focused(&self) -> bool {
+        self.password_focused.load(Ordering::SeqCst)
+    }
+    /// `-passwordDidEndOnExit:` (IDA 0x660a0): fires `doLogin:` (0x660ae).
+    pub fn password_did_end_on_exit(&self, username: &str, password: &str) {
+        self.do_login(username, password);
+    }
+    /// `-showLoggingIn` (IDA 0x660b4): the spinner unhides, the login view
+    /// hides (0x660c8..0x660fa).
+    pub fn show_logging_in(&self) {
+        self.logging_in.store(true, Ordering::SeqCst);
+    }
+    /// `-showLoginFields` (IDA 0x66100): the spinner hides, the login view
+    /// unhides (0x66114..0x66146).
+    pub fn show_login_fields(&self) {
+        self.logging_in.store(false, Ordering::SeqCst);
+    }
+    pub fn is_logging_in(&self) -> bool {
+        self.logging_in.load(Ordering::SeqCst)
+    }
+    /// `-gotLoginFailedNotification:` (IDA 0x6614c): the main-queue block
+    /// (0x6619c) shows the login fields again (inline below).
+    pub fn got_login_failed(&self) {
+        self.bump(&self.failed_count);
+        self.show_login_fields();
+    }
+    pub fn failed_count(&self) -> u32 {
+        self.failed_count.load(Ordering::SeqCst)
+    }
+    /// `-gotLoginSuccessfulNotification:` (IDA 0x661c4): captures the
+    /// encoded user name, dismisses on the main queue (0x66244), then the
+    /// completion (0x662a0) posts the login-finished notification (inline).
+    pub fn got_login_success(&self, username: &str) {
+        *self.success_user.lock() = username.to_owned();
+        self.bump(&self.dismissed);
+        self.bump(&self.notified);
+    }
+    pub fn success_user(&self) -> String {
+        self.success_user.lock().clone()
+    }
+    pub fn dismiss_count(&self) -> u32 {
+        self.dismissed.load(Ordering::SeqCst)
+    }
+    pub fn notify_count(&self) -> u32 {
+        self.notified.load(Ordering::SeqCst)
+    }
+    /// `-doLogin:` (IDA 0x663e8): shows the spinner, then asks the shared
+    /// `LoginManager` to log in with the field texts (0x66400..0x6647a).
+    pub fn do_login(&self, username: &str, password: &str) {
+        self.show_logging_in();
+        *self.success_user.lock() = username.to_owned();
+        let _ = password;
+        self.bump(&self.login_attempts);
+    }
+    pub fn login_attempts(&self) -> u32 {
+        self.login_attempts.load(Ordering::SeqCst)
+    }
+    /// `-cancelTouched:` (IDA 0x66480): the main-queue block (0x664d0)
+    /// dismisses, and its completion (0x66528) posts the login-finished
+    /// notification with the cancel error (inline below).
+    pub fn cancel_touched(&self) {
+        self.bump(&self.cancel_count);
+        self.bump(&self.dismissed);
+        self.bump(&self.notified);
+    }
+    pub fn cancel_count(&self) -> u32 {
+        self.cancel_count.load(Ordering::SeqCst)
+    }
+    /// `-usernameTextField` / `-setUsernameTextField:` (IDA
+    /// 0x66608/0x66618): `objc_setProperty` at 160 (0x66634).
+    pub fn username_text_field(&self) -> Option<ControlId> {
+        *self.username_field.lock()
+    }
+    pub fn set_username_text_field(&self, field: Option<ControlId>) {
+        *self.username_field.lock() = field;
+    }
+    /// `-passwordTextField` / `-setPasswordTextField:` (IDA
+    /// 0x6663c/0x6664c): `objc_setProperty` at 164 (0x66668).
+    pub fn password_text_field(&self) -> Option<ControlId> {
+        *self.password_field.lock()
+    }
+    pub fn set_password_text_field(&self, field: Option<ControlId>) {
+        *self.password_field.lock() = field;
     }
 }
 static EXTLOGIN: std::sync::LazyLock<ExtLoginState> =
@@ -12591,120 +12690,151 @@ pub fn stub_65f64() {
 // 0x66078 — -[ExternalLoginViewController usernameDidEndOnExit:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController usernameDidEndOnExit:]")]
-pub fn stub_66078() -> ! {
-    todo!("0x66078 -[ExternalLoginViewController usernameDidEndOnExit:]")
+pub fn stub_66078() {
+    // IDA 0x66078 `-usernameDidEndOnExit:`: the password field becomes
+    // first responder (0x66088..0x6609c).
+    EXTLOGIN.username_did_end_on_exit();
 }
 
 // 0x660a0 — -[ExternalLoginViewController passwordDidEndOnExit:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController passwordDidEndOnExit:]")]
-pub fn stub_660a0() -> ! {
-    todo!("0x660a0 -[ExternalLoginViewController passwordDidEndOnExit:]")
+pub fn stub_660a0(username: &str, password: &str) {
+    // IDA 0x660a0 `-passwordDidEndOnExit:`: fires `doLogin:` (0x660ae).
+    EXTLOGIN.password_did_end_on_exit(username, password);
 }
 
 // 0x660b4 — -[ExternalLoginViewController showLoggingIn]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController showLoggingIn]")]
-pub fn stub_660b4() -> ! {
-    todo!("0x660b4 -[ExternalLoginViewController showLoggingIn]")
+pub fn stub_660b4() {
+    // IDA 0x660b4 `-showLoggingIn`: the spinner unhides, the login view
+    // hides (0x660c8..0x660fa).
+    EXTLOGIN.show_logging_in();
 }
 
 // 0x66100 — -[ExternalLoginViewController showLoginFields]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController showLoginFields]")]
-pub fn stub_66100() -> ! {
-    todo!("0x66100 -[ExternalLoginViewController showLoginFields]")
+pub fn stub_66100() {
+    // IDA 0x66100 `-showLoginFields`: the spinner hides, the login view
+    // unhides (0x66114..0x66146).
+    EXTLOGIN.show_login_fields();
 }
 
 // 0x6614c — -[ExternalLoginViewController gotLoginFailedNotification:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController gotLoginFailedNotification:]")]
-pub fn stub_6614c() -> ! {
-    todo!("0x6614c -[ExternalLoginViewController gotLoginFailedNotification:]")
+pub fn stub_6614c() {
+    // IDA 0x6614c `-gotLoginFailedNotification:`: the block runs on the
+    // main queue (0x66182..0x66194); inline below.
+    EXTLOGIN.got_login_failed();
 }
 
 // 0x6619c — ___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke")]
-pub fn stub_6619c() -> ! {
-    todo!("0x6619c ___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke")
+pub fn stub_6619c() {
+    // IDA 0x6619c login-failed block: shows the login fields (sole call).
+    EXTLOGIN.show_login_fields();
 }
 
 // 0x661c4 — -[ExternalLoginViewController gotLoginSuccessfulNotification:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController gotLoginSuccessfulNotification:]")]
-pub fn stub_661c4() -> ! {
-    todo!("0x661c4 -[ExternalLoginViewController gotLoginSuccessfulNotification:]")
+pub fn stub_661c4(username: &str) {
+    // IDA 0x661c4 `-gotLoginSuccessfulNotification:`: captures the encoded
+    // user name and dismisses on the main queue (0x661da..0x6623c); inline.
+    EXTLOGIN.got_login_success(username);
 }
 
 // 0x66244 — ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
-pub fn stub_66244() -> ! {
-    todo!("0x66244 ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+pub fn stub_66244(username: &str) {
+    // IDA 0x66244 login-success block: dismisses with the completion above
+    // (0x66266..0x6629e); inline below.
+    EXTLOGIN.got_login_success(username);
 }
 
 // 0x662a0 — ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2")]
-pub fn stub_662a0() -> ! {
-    todo!("0x662a0 ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2")
+pub fn stub_662a0(username: &str) {
+    // IDA 0x662a0 login-success completion: posts the login-finished
+    // notification with success plus the user name (0x662c0..0x6634c).
+    EXTLOGIN.got_login_success(username);
 }
 
 // 0x663e8 — -[ExternalLoginViewController doLogin:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController doLogin:]")]
-pub fn stub_663e8() -> ! {
-    todo!("0x663e8 -[ExternalLoginViewController doLogin:]")
+pub fn stub_663e8(username: &str, password: &str) {
+    // IDA 0x663e8 `-doLogin:`: shows the spinner, then asks the shared
+    // `LoginManager` with the field texts (0x66400..0x6647a).
+    EXTLOGIN.do_login(username, password);
 }
 
 // 0x66480 — -[ExternalLoginViewController cancelTouched:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController cancelTouched:]")]
-pub fn stub_66480() -> ! {
-    todo!("0x66480 -[ExternalLoginViewController cancelTouched:]")
+pub fn stub_66480() {
+    // IDA 0x66480 `-cancelTouched:`: the dismiss block runs on the main
+    // queue (0x664b6..0x664c8); inline below.
+    EXTLOGIN.cancel_touched();
 }
 
 // 0x664d0 — ___45-[ExternalLoginViewController cancelTouched:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___45-[ExternalLoginViewController cancelTouched:]_block_invoke")]
-pub fn stub_664d0() -> ! {
-    todo!("0x664d0 ___45-[ExternalLoginViewController cancelTouched:]_block_invoke")
+pub fn stub_664d0() {
+    // IDA 0x664d0 `cancelTouched` block: dismisses with the completion
+    // above (0x664f4..0x66524); the dismiss plus post below.
+    EXTLOGIN.cancel_touched();
 }
 
 // 0x66528 — ___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2")]
-pub fn stub_66528() -> ! {
-    todo!("0x66528 ___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2")
+pub fn stub_66528(username: &str) {
+    // IDA 0x66528 `cancelTouched` completion: posts the login-finished
+    // notification with the cancel error dictionary (0x66548..0x665c4).
+    EXTLOGIN.cancel_touched();
+    let _ = username;
 }
 
 // 0x66608 — -[ExternalLoginViewController usernameTextField]
 // type: UITextField *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController usernameTextField]")]
-pub fn stub_66608() -> ! {
-    todo!("0x66608 -[ExternalLoginViewController usernameTextField]")
+pub fn stub_66608() -> Option<ControlId> {
+    // IDA 0x66608 `-usernameTextField`: returns the ivar (0x66616).
+    EXTLOGIN.username_text_field()
 }
 
 // 0x66618 — -[ExternalLoginViewController setUsernameTextField:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setUsernameTextField:]")]
-pub fn stub_66618() -> ! {
-    todo!("0x66618 -[ExternalLoginViewController setUsernameTextField:]")
+pub fn stub_66618(field: Option<ControlId>) {
+    // IDA 0x66618 `-setUsernameTextField:`: `objc_setProperty` at 160
+    // (0x66634).
+    EXTLOGIN.set_username_text_field(field);
 }
 
 // 0x6663c — -[ExternalLoginViewController passwordTextField]
 // type: UITextField *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController passwordTextField]")]
-pub fn stub_6663c() -> ! {
-    todo!("0x6663c -[ExternalLoginViewController passwordTextField]")
+pub fn stub_6663c() -> Option<ControlId> {
+    // IDA 0x6663c `-passwordTextField`: returns the ivar (0x6664a).
+    EXTLOGIN.password_text_field()
 }
 
 // 0x6664c — -[ExternalLoginViewController setPasswordTextField:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setPasswordTextField:]")]
-pub fn stub_6664c() -> ! {
-    todo!("0x6664c -[ExternalLoginViewController setPasswordTextField:]")
+pub fn stub_6664c(field: Option<ControlId>) {
+    // IDA 0x6664c `-setPasswordTextField:`: `objc_setProperty` at 164
+    // (0x66668).
+    EXTLOGIN.set_password_text_field(field);
 }
 
 // 0x66670 — -[ExternalLoginViewController loginButton]
