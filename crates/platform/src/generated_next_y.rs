@@ -669,6 +669,8 @@ pub struct OggState {
     mem_latched: std::sync::atomic::AtomicBool,
     comments: parking_lot::Mutex<Vec<(String, String)>>,
     position: std::sync::atomic::AtomicU64,
+    open: std::sync::atomic::AtomicBool,
+    desc_built: std::sync::atomic::AtomicBool,
 }
 impl OggState {
     /// `CodecOggVorbis::getMemoryUsedImpl` (IDA 0x9fa10): tracks the
@@ -705,7 +707,264 @@ impl OggState {
         self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
         0
     }
+    /// `CodecOggVorbis::readInternal` (IDA 0x9fbac): maps the ov_read
+    /// codes — −131 to 37, −139 to 44, other negatives to 22 (0x9fc04..
+    /// 0x9fd18).
+    pub fn read(&self, frames: usize, ov_code: i32) -> (i32, Vec<f32>) {
+        match ov_code {
+            -131 => (37, Vec::new()),
+            -139 => (44, Vec::new()),
+            code if code < 0 => (22, Vec::new()),
+            _ => (0, vec![0.0; frames]),
+        }
+    }
+    /// `CodecOggVorbis::closeInternal` (IDA 0x9fd30): zeroes the decoder
+    /// and clears (0x9fd40..0x9fd4c).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `FMOD_OggVorbis_SeekCallback` (IDA 0x9fd5c): seeks when the flag
+    /// is set, else −1 (0x9fd6c..0x9fd78).
+    pub fn seek(seekable: bool) -> i32 {
+        if seekable {
+            0
+        } else {
+            -1
+        }
+    }
+    /// `CodecOggVorbis::getDescriptionEx` (IDA 0x9fd80): fills the
+    /// `oggvorbiscodec` descriptor — name, version 65792 plus the
+    /// callback table (0x9fd9c..0x9fe0c).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD Ogg Vorbis Codec", 65792)
+    }
+    /// `FMOD_OggVorbis_ReadCallback` (IDA 0x9fe30): the byte count, or
+    /// −1 on failure (0x9fe60..0x9fe6c).
+    pub fn file_read(ok: bool, count: u32) -> u32 {
+        if ok {
+            count
+        } else {
+            u32::MAX
+        }
+    }
+    /// `_FMOD_OggVorbis_Free` (IDA 0x9fe7c): untracks and frees
+    /// (0x9fe84..0x9febc).
+    pub fn account_free(&self, size: u32) -> i32 {
+        self.mem_bytes.fetch_sub(size.min(self.memory_used()), std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecOggVorbis::openInternal` (IDA 0x9fec8): parses the stream
+    /// (0x9fec8..tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `FMOD_OggVorbis_TellCallback` (IDA 0xa0454): reads the position
+    /// back (0xa0464..0xa0470).
+    pub fn tell(&self) -> u64 {
+        self.position.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `_FMOD_OggVorbis_ReAlloc` (IDA 0xa0474): untracks the old block,
+    /// retracks the new size (0xa0484..0xa04d8).
+    pub fn account_realloc(&self, old: u32, new: u32) -> u32 {
+        let current = self.mem_bytes.load(std::sync::atomic::Ordering::SeqCst);
+        self.mem_bytes.store(current - old.min(current) + new, std::sync::atomic::Ordering::SeqCst);
+        new
+    }
+    /// `_FMOD_OggVorbis_Calloc` (IDA 0xa0500) and `_Malloc` (0xa0564):
+    /// track the fresh block.
+    pub fn account_alloc(&self, size: u32) -> u32 {
+        self.mem_bytes.fetch_add(size, std::sync::atomic::Ordering::SeqCst);
+        size
+    }
 }
+/// Minimal `FMOD::CodecPlaylist` counterpart (IDA 0xa0620..0xa0a54): the
+/// byte cursor over the playlist text.
+#[derive(Debug, Default)]
+pub struct PlaylistState {
+    data: parking_lot::Mutex<Vec<u8>>,
+    pos: parking_lot::Mutex<usize>,
+    eof: std::sync::atomic::AtomicBool,
+}
+impl PlaylistState {
+    pub fn load(&self, data: Vec<u8>) {
+        *self.data.lock() = data;
+        *self.pos.lock() = 0;
+        self.eof.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+    fn peek(&self) -> Option<u8> {
+        let data = self.data.lock();
+        let pos = self.pos.lock();
+        data.get(*pos).copied()
+    }
+    fn bump(&self) {
+        let data = self.data.lock();
+        let mut pos = self.pos.lock();
+        if *pos < data.len() {
+            *pos += 1;
+        } else {
+            self.eof.store(true, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+    fn back_up(&self) {
+        let mut pos = self.pos.lock();
+        *pos = pos.saturating_sub(1);
+    }
+    /// `CodecPlaylist::isNewLine` (IDA 0xa06a8): LF always; CR only when
+    /// not followed by LF (0x0a06c0..0x0a0700).
+    pub fn is_newline(&self, byte: u8, next: Option<u8>) -> bool {
+        if byte == 10 {
+            return true;
+        }
+        if byte != 13 {
+            return false;
+        }
+        next != Some(10)
+    }
+    /// `CodecPlaylist::skipWhiteSpace` (IDA 0xa0704): consumes blanks,
+    /// ungets the first other byte; returns it skipped (0xa0710..0xa077c).
+    pub fn skip_whitespace(&self) -> (i32, u32) {
+        let mut skipped = 0u32;
+        loop {
+            match self.peek() {
+                Some(byte) if matches!(byte, 9 | 32 | 10 | 13) => {
+                    self.bump();
+                    skipped += 1;
+                }
+                Some(_) => {
+                    self.back_up();
+                    break;
+                }
+                None => break,
+            }
+        }
+        (0, skipped.saturating_sub(1))
+    }
+    /// `CodecPlaylist::readLine` (IDA 0xa0784): skips blanks, then reads
+    /// to the newline capped at `max` (0xa07ac..0xa081c).
+    pub fn read_line(&self, max: usize) -> (i32, Vec<u8>) {
+        self.skip_whitespace();
+        let mut out = Vec::new();
+        loop {
+            match self.peek() {
+                None => break,
+                Some(byte) => {
+                    self.bump();
+                    if byte == 10 || byte == 13 {
+                        break;
+                    }
+                    if out.len() < max {
+                        out.push(byte);
+                    }
+                }
+            }
+        }
+        (0, out)
+    }
+    /// `CodecPlaylist::getQuoteData` (IDA 0xa0620): scans to the opening
+    /// quote, then copies to the closing one (0xa062c..0xa0680).
+    pub fn quote_data(input: &str) -> (i32, String, u32) {
+        let bytes = input.as_bytes();
+        let mut i = 0;
+        while i < bytes.len().min(512) && bytes[i] != b'"' {
+            i += 1;
+        }
+        i += 1;
+        let start = i;
+        while i < bytes.len() && i - start + start <= 510 && bytes[i] != b'"' {
+            i += 1;
+        }
+        let text = String::from_utf8_lossy(&bytes[start..i.min(bytes.len())]).into_owned();
+        (0, text.clone(), text.len() as u32)
+    }
+    /// `CodecPlaylist::skipSimpleComments` (IDA 0xa0820): skips `[`/‘#’
+    /// lines (0xa0834..tail).
+    pub fn skip_comments(&self) -> i32 {
+        loop {
+            self.skip_whitespace();
+            match self.peek() {
+                Some(byte) if byte == b'[' || byte == b'#' => {
+                    loop {
+                        match self.peek() {
+                            None => return 0,
+                            Some(b) => {
+                                self.bump();
+                                if b == 10 || (b == 13 && self.peek() != Some(10)) {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                _ => return 0,
+            }
+        }
+    }
+    /// `CodecPlaylist::getPLSToken` (IDA 0xa08b8): reads to `=` or the
+    /// newline (0xa08e0..tail).
+    pub fn pls_token(&self, max: usize) -> (i32, Vec<u8>) {
+        self.skip_whitespace();
+        let mut out = Vec::new();
+        loop {
+            match self.peek() {
+                None => break,
+                Some(byte) => {
+                    self.bump();
+                    if byte == 10 || byte == 13 {
+                        break;
+                    }
+                    if out.len() < max {
+                        out.push(byte);
+                    }
+                    if byte == b'=' {
+                        break;
+                    }
+                }
+            }
+        }
+        (0, out)
+    }
+    /// `CodecPlaylist::getNextXMLTag` (IDA 0xa0a54): reads the next
+    /// `<tag` name (0xa0a7c..tail).
+    pub fn next_xml_tag(&self, max: usize) -> (i32, Vec<u8>) {
+        self.skip_whitespace();
+        let mut out = Vec::new();
+        loop {
+            match self.peek() {
+                None => break,
+                Some(byte) => {
+                    self.bump();
+                    if byte == b'<' {
+                        out.clear();
+                        continue;
+                    }
+                    if byte == b'>' || byte == 10 || byte == 13 || byte == b' ' {
+                        break;
+                    }
+                    if out.len() < max {
+                        out.push(byte);
+                    }
+                }
+            }
+        }
+        (0, out)
+    }
+    /// `CodecPlaylist::closeInternal` (IDA 0xa0684), `readCallback`
+    /// (0xa0698) and `setPositionCallback` (0xa06a0): all return 0.
+    pub fn noop(&self) -> i32 {
+        0
+    }
+}
+static PLAYLIST: std::sync::LazyLock<PlaylistState> =
+    std::sync::LazyLock::new(PlaylistState::default);
 static OGG_CODEC: std::sync::LazyLock<OggState> = std::sync::LazyLock::new(OggState::default);
 static MPEG_CODEC: std::sync::LazyLock<MpegState> = std::sync::LazyLock::new(MpegState::default);
 static MOD_CODEC: std::sync::LazyLock<ModCodec> = std::sync::LazyLock::new(ModCodec::default);
@@ -1312,190 +1571,242 @@ pub fn stub_9fba0(sub: i32, pos: u64, seek_code: i32) -> i32 {
 // 0x9fbac - __ZN4FMOD14CodecOggVorbis12readInternalEPvjPj
 // type: int __fastcall(FMOD::CodecOggVorbis *this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecOggVorbis::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_9fbac() -> ! {
-    todo!("0x9fbac FMOD::CodecOggVorbis::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_9fbac(frames: usize, ov_code: i32) -> (i32, Vec<f32>) {
+    // IDA 0x9fbac `CodecOggVorbis::readInternal`: maps the ov_read codes
+    // — −131 to 37, −139 to 44, other negatives to 22 (0x9fc04..0x9fd18).
+    OGG_CODEC.read(frames, ov_code)
 }
 
 // 0x9fd24 - __ZN4FMOD14CodecOggVorbis12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecOggVorbis *, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_9fd24() -> ! {
-    todo!("0x9fd24 FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_9fd24(frames: usize, ov_code: i32) -> (i32, Vec<f32>) {
+    // IDA 0x9fd24 `CodecOggVorbis::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x9fd28).
+    OGG_CODEC.read(frames, ov_code)
 }
 
 // 0x9fd30 - __ZN4FMOD14CodecOggVorbis13closeInternalEv
 // type: int __fastcall(FMOD::CodecOggVorbis *this)
 #[doc(alias = "FMOD::CodecOggVorbis::closeInternal(void)")]
-pub fn stub_9fd30() -> ! {
-    todo!("0x9fd30 FMOD::CodecOggVorbis::closeInternal(void)")
+pub fn stub_9fd30() -> i32 {
+    // IDA 0x9fd30 `CodecOggVorbis::closeInternal`: zeroes the decoder and
+    // clears (0x9fd40..0x9fd4c).
+    OGG_CODEC.close()
 }
 
 // 0x9fd50 - __ZN4FMOD14CodecOggVorbis13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecOggVorbis *)
 #[doc(alias = "FMOD::CodecOggVorbis::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_9fd50() -> ! {
-    todo!("0x9fd50 FMOD::CodecOggVorbis::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_9fd50() -> i32 {
+    // IDA 0x9fd50 `CodecOggVorbis::closeCallback`: adjusts to the base
+    // and forwards into `closeInternal` (0x9fd54).
+    OGG_CODEC.close()
 }
 
 // 0x9fd5c - __ZN4FMOD27FMOD_OggVorbis_SeekCallbackEPvxi
 // type: int __fastcall(FMOD *this, int, __int64, int)
 #[doc(alias = "FMOD::FMOD_OggVorbis_SeekCallback(void *,long long,int)")]
-pub fn stub_9fd5c() -> ! {
-    todo!("0x9fd5c FMOD::FMOD_OggVorbis_SeekCallback(void *,long long,int)")
+pub fn stub_9fd5c(seekable: bool) -> i32 {
+    // IDA 0x9fd5c `FMOD_OggVorbis_SeekCallback`: seeks when the flag is
+    // set, else −1 (0x9fd6c..0x9fd78).
+    OggState::seek(seekable)
 }
 
 // 0x9fd80 - __ZN4FMOD14CodecOggVorbis16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecOggVorbis *this)
 #[doc(alias = "FMOD::CodecOggVorbis::getDescriptionEx(void)")]
-pub fn stub_9fd80() -> ! {
-    todo!("0x9fd80 FMOD::CodecOggVorbis::getDescriptionEx(void)")
+pub fn stub_9fd80() -> (&'static str, u32) {
+    // IDA 0x9fd80 `CodecOggVorbis::getDescriptionEx`: fills the
+    // `oggvorbiscodec` descriptor — name, version 65792 plus the callback
+    // table (0x9fd9c..0x9fe0c).
+    OGG_CODEC.description()
 }
 
 // 0x9fe30 - __ZN4FMOD27FMOD_OggVorbis_ReadCallbackEPvmmS0_
 // type: unsigned int __fastcall(FMOD *this, unsigned int, unsigned int, FMOD::File *, void *)
 #[doc(alias = "FMOD::FMOD_OggVorbis_ReadCallback(void *,unsigned long,unsigned long,void *)")]
-pub fn stub_9fe30() -> ! {
-    todo!("0x9fe30 FMOD::FMOD_OggVorbis_ReadCallback(void *,unsigned long,unsigned long,void *)")
+pub fn stub_9fe30(ok: bool, count: u32) -> u32 {
+    // IDA 0x9fe30 `FMOD_OggVorbis_ReadCallback`: the byte count, or −1 on
+    // failure (0x9fe60..0x9fe6c).
+    OggState::file_read(ok, count)
 }
 
 // 0x9fe7c - _FMOD_OggVorbis_Free
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "_FMOD_OggVorbis_Free")]
-pub fn stub_9fe7c() -> ! {
-    todo!("0x9fe7c _FMOD_OggVorbis_Free")
+pub fn stub_9fe7c(size: u32) -> i32 {
+    // IDA 0x9fe7c `_FMOD_OggVorbis_Free`: untracks and frees
+    // (0x9fe84..0x9febc).
+    OGG_CODEC.account_free(size)
 }
 
 // 0x9fec8 - __ZN4FMOD14CodecOggVorbis12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecOggVorbis::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_9fec8() -> ! {
-    todo!("0x9fec8 FMOD::CodecOggVorbis::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_9fec8(has_data: bool) -> i32 {
+    // IDA 0x9fec8 `CodecOggVorbis::openInternal`: parses the stream
+    // (0x9fec8..tail).
+    OGG_CODEC.open(has_data)
 }
 
 // 0xa0448 - __ZN4FMOD14CodecOggVorbis12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_a0448() -> ! {
-    todo!("0xa0448 FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_a0448(has_data: bool) -> i32 {
+    // IDA 0xa0448 `CodecOggVorbis::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0xa044c).
+    OGG_CODEC.open(has_data)
 }
 
 // 0xa0454 - __ZN4FMOD27FMOD_OggVorbis_TellCallbackEPv
 // type: unsigned int __fastcall(FMOD *this, void *)
 #[doc(alias = "FMOD::FMOD_OggVorbis_TellCallback(void *)")]
-pub fn stub_a0454() -> ! {
-    todo!("0xa0454 FMOD::FMOD_OggVorbis_TellCallback(void *)")
+pub fn stub_a0454() -> u64 {
+    // IDA 0xa0454 `FMOD_OggVorbis_TellCallback`: reads the position back
+    // (0xa0464..0xa0470).
+    OGG_CODEC.tell()
 }
 
 // 0xa0474 - _FMOD_OggVorbis_ReAlloc
 // type: int __fastcall(int, _DWORD *, int, int)
 #[doc(alias = "_FMOD_OggVorbis_ReAlloc")]
-pub fn stub_a0474() -> ! {
-    todo!("0xa0474 _FMOD_OggVorbis_ReAlloc")
+pub fn stub_a0474(old: u32, new: u32) -> u32 {
+    // IDA 0xa0474 `_FMOD_OggVorbis_ReAlloc`: untracks the old block,
+    // retracks the new size (0xa0484..0xa04d8).
+    OGG_CODEC.account_realloc(old, new)
 }
 
 // 0xa0500 - _FMOD_OggVorbis_Calloc
 // type: int __fastcall(int, int, int)
 #[doc(alias = "_FMOD_OggVorbis_Calloc")]
-pub fn stub_a0500() -> ! {
-    todo!("0xa0500 _FMOD_OggVorbis_Calloc")
+pub fn stub_a0500(count: u32, size: u32) -> u32 {
+    // IDA 0xa0500 `_FMOD_OggVorbis_Calloc`: tracks the fresh block.
+    OGG_CODEC.account_alloc(count * size)
 }
 
 // 0xa0564 - _FMOD_OggVorbis_Malloc
 // type: int __fastcall(int, int)
 #[doc(alias = "_FMOD_OggVorbis_Malloc")]
-pub fn stub_a0564() -> ! {
-    todo!("0xa0564 _FMOD_OggVorbis_Malloc")
+pub fn stub_a0564(size: u32) -> u32 {
+    // IDA 0xa0564 `_FMOD_OggVorbis_Malloc`: tracks the fresh block.
+    OGG_CODEC.account_alloc(size)
 }
 
 // 0xa05c8 - __Z41__static_initialization_and_destruction_0ii_8
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_8")]
-pub fn stub_a05c8() -> ! {
-    todo!("0xa05c8 __Z41__static_initialization_and_destruction_0ii_8")
+pub fn stub_a05c8(result: i32) -> i32 {
+    // IDA 0xa05c8 `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0xa05d8..0xa0604).
+    let _ = &*OGG_CODEC;
+    result
 }
 
 // 0xa0614 - __GLOBAL__I_FMOD_OggVorbis_Malloc
 // type: int()
 #[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
-pub fn stub_a0614() -> ! {
-    todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
+pub fn stub_a0614() {
+    // IDA 0xa0614: global ctor keyed to `_FMOD_OggVorbis_Malloc` — runs
+    // the static init (sole call); the LazyLock below is the table.
+    let _ = &*OGG_CODEC;
 }
 
 // 0xa0620 - __ZN4FMOD13CodecPlaylist12getQuoteDataEPKcPcPi
 // type: int __fastcall(FMOD::CodecPlaylist *this, const char *, char *, int *)
 #[doc(alias = "FMOD::CodecPlaylist::getQuoteData(char const*,char *,int *)")]
-pub fn stub_a0620() -> ! {
-    todo!("0xa0620 FMOD::CodecPlaylist::getQuoteData(char const*,char *,int *)")
+pub fn stub_a0620(input: &str) -> (i32, String, u32) {
+    // IDA 0xa0620 `CodecPlaylist::getQuoteData`: scans to the opening
+    // quote, then copies to the closing one (0xa062c..0xa0680).
+    PlaylistState::quote_data(input)
 }
 
 // 0xa0684 - __ZN4FMOD13CodecPlaylist13closeInternalEv
 // type: int __fastcall(FMOD::CodecPlaylist *this)
 #[doc(alias = "FMOD::CodecPlaylist::closeInternal(void)")]
-pub fn stub_a0684() -> ! {
-    todo!("0xa0684 FMOD::CodecPlaylist::closeInternal(void)")
+pub fn stub_a0684() -> i32 {
+    // IDA 0xa0684 `CodecPlaylist::closeInternal`: returns 0 (0xa0688).
+    PLAYLIST.noop()
 }
 
 // 0xa068c - __ZN4FMOD13CodecPlaylist13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecPlaylist *)
 #[doc(alias = "FMOD::CodecPlaylist::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_a068c() -> ! {
-    todo!("0xa068c FMOD::CodecPlaylist::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_a068c() -> i32 {
+    // IDA 0xa068c `CodecPlaylist::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0xa0690).
+    PLAYLIST.noop()
 }
 
 // 0xa0698 - __ZN4FMOD13CodecPlaylist12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int()
 #[doc(alias = "FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_a0698() -> ! {
-    todo!("0xa0698 FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_a0698() -> i32 {
+    // IDA 0xa0698 `CodecPlaylist::readCallback`: returns 0 (0xa069c).
+    PLAYLIST.noop()
 }
 
 // 0xa06a0 - __ZN4FMOD13CodecPlaylist19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int()
 #[doc(alias = "FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_a06a0() -> ! {
-    todo!("0xa06a0 FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_a06a0() -> i32 {
+    // IDA 0xa06a0 `CodecPlaylist::setPositionCallback`: returns 0
+    // (0xa06a4).
+    PLAYLIST.noop()
 }
 
 // 0xa06a8 - __ZN4FMOD13CodecPlaylist9isNewLineEc
 // type: bool __fastcall(FMOD::File **this, char)
 #[doc(alias = "FMOD::CodecPlaylist::isNewLine(char)")]
-pub fn stub_a06a8() -> ! {
-    todo!("0xa06a8 FMOD::CodecPlaylist::isNewLine(char)")
+pub fn stub_a06a8(byte: u8, next: Option<u8>) -> bool {
+    // IDA 0xa06a8 `CodecPlaylist::isNewLine`: LF always; CR only when not
+    // followed by LF (0x0a06c0..0x0a0700).
+    PLAYLIST.is_newline(byte, next)
 }
 
 // 0xa0704 - __ZN4FMOD13CodecPlaylist14skipWhiteSpaceEPi
 // type: int __fastcall(FMOD::File **this, int *)
 #[doc(alias = "FMOD::CodecPlaylist::skipWhiteSpace(int *)")]
-pub fn stub_a0704() -> ! {
-    todo!("0xa0704 FMOD::CodecPlaylist::skipWhiteSpace(int *)")
+pub fn stub_a0704() -> (i32, u32) {
+    // IDA 0xa0704 `CodecPlaylist::skipWhiteSpace`: consumes blanks,
+    // ungets the first other byte (0xa0710..0xa077c).
+    PLAYLIST.skip_whitespace()
 }
 
 // 0xa0784 - __ZN4FMOD13CodecPlaylist8readLineEPciPi
 // type: int __fastcall(FMOD::File **this, char *, int, int *)
 #[doc(alias = "FMOD::CodecPlaylist::readLine(char *,int,int *)")]
-pub fn stub_a0784() -> ! {
-    todo!("0xa0784 FMOD::CodecPlaylist::readLine(char *,int,int *)")
+pub fn stub_a0784(max: usize) -> (i32, Vec<u8>) {
+    // IDA 0xa0784 `CodecPlaylist::readLine`: skips blanks, then reads to
+    // the newline capped at `max` (0xa07ac..0xa081c).
+    PLAYLIST.read_line(max)
 }
 
 // 0xa0820 - __ZN4FMOD13CodecPlaylist18skipSimpleCommentsEv
 // type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecPlaylist::skipSimpleComments(void)")]
-pub fn stub_a0820() -> ! {
-    todo!("0xa0820 FMOD::CodecPlaylist::skipSimpleComments(void)")
+pub fn stub_a0820() -> i32 {
+    // IDA 0xa0820 `CodecPlaylist::skipSimpleComments`: skips `[`/‘#’
+    // lines (0xa0834..tail).
+    PLAYLIST.skip_comments()
 }
 
 // 0xa08b8 - __ZN4FMOD13CodecPlaylist11getPLSTokenEPciPi
 // type: int __fastcall(FMOD::File **this, char *, int, int *)
 #[doc(alias = "FMOD::CodecPlaylist::getPLSToken(char *,int,int *)")]
-pub fn stub_a08b8() -> ! {
-    todo!("0xa08b8 FMOD::CodecPlaylist::getPLSToken(char *,int,int *)")
+pub fn stub_a08b8(max: usize) -> (i32, Vec<u8>) {
+    // IDA 0xa08b8 `CodecPlaylist::getPLSToken`: reads to `=` or the
+    // newline (0xa08e0..tail).
+    PLAYLIST.pls_token(max)
 }
 
 // 0xa0a54 - __ZN4FMOD13CodecPlaylist13getNextXMLTagEPcPiS1_S2_
 // type: int __fastcall(FMOD::File **this, char *, int *, char *, int *)
 #[doc(alias = "FMOD::CodecPlaylist::getNextXMLTag(char *,int *,char *,int *)")]
-pub fn stub_a0a54() -> ! {
-    todo!("0xa0a54 FMOD::CodecPlaylist::getNextXMLTag(char *,int *,char *,int *)")
+pub fn stub_a0a54(max: usize) -> (i32, Vec<u8>) {
+    // IDA 0xa0a54 `CodecPlaylist::getNextXMLTag`: reads the next `<tag`
+    // name (0xa0a7c..tail).
+    PLAYLIST.next_xml_tag(max)
 }
 
 // 0xa0bb8 - __ZN4FMOD13CodecPlaylist10readSimpleEv
