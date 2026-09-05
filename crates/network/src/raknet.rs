@@ -11789,176 +11789,210 @@ pub fn stub_9b41e4(value: i32) -> i32 {
 // 0x9b41ec — __ZNK3RBX15NetworkSettings22getExtraMemoryUsedInMBEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings22getExtraMemoryUsedInMBEv")]
-pub fn stub_9b41ec() -> ! {
-    todo!("0x9b41ec RBX::NetworkSettings::getExtraMemoryUsedInMB(void)const")
+pub fn stub_9b41ec(value: i32) -> i32 {
+ // IDA 0x9b41ec: returns the int at +55.
+ value
 }
 
 // 0x9b41f4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev")]
-pub fn stub_9b41f4() -> ! {
-    todo!("0x9b41f4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+pub fn stub_9b41f4(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b41f4: PropDescriptor dtor frees the name at +10 when present.
+ destroy(slot);
 }
 
 // 0x9b450c — __ZN3RBX15NetworkSettingsD1Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZN3RBX15NetworkSettingsD1Ev")]
-pub fn stub_9b450c() -> ! {
-    todo!("0x9b450c RBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b450c(destroy: &mut dyn FnMut()) {
+ // IDA 0x9b450c: D1: primary dtor (below truncation).
+ destroy();
 }
 
 // 0x9b45f4 — __ZN3RBX15NetworkSettingsD0Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZN3RBX15NetworkSettingsD0Ev")]
-pub fn stub_9b45f4() -> ! {
-    todo!("0x9b45f4 RBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b45f4(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b45f4: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b47d8 — __ZThn32_N3RBX15NetworkSettingsD1Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15NetworkSettingsD1Ev")]
-pub fn stub_9b47d8() -> ! {
-    todo!("0x9b47d8 non-virtual thunk toRBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b47d8(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9b47d8: this-32 adjust then tail-call the D1 dtor.
+ destroy_at(this - 32);
 }
 
 // 0x9b48c8 — __ZThn32_N3RBX15NetworkSettingsD0Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15NetworkSettingsD0Ev")]
-pub fn stub_9b48c8() -> ! {
-    todo!("0x9b48c8 non-virtual thunk toRBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b48c8(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9b48c8: this-32 adjust then the D0 dtor + delete.
+ destroy_at(this - 32);
+ free_at(this - 32);
 }
 
 // 0x9b4aa8 — __ZThn36_N3RBX15NetworkSettingsD1Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15NetworkSettingsD1Ev")]
-pub fn stub_9b4aa8() -> ! {
-    todo!("0x9b4aa8 non-virtual thunk toRBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b4aa8(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4aa8: this-36 adjust then tail-call the D1 dtor.
+ destroy_at(this - 36);
 }
 
 // 0x9b4b98 — __ZThn36_N3RBX15NetworkSettingsD0Ev
 // type: void __fastcall(RBX::NetworkSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15NetworkSettingsD0Ev")]
-pub fn stub_9b4b98() -> ! {
-    todo!("0x9b4b98 non-virtual thunk toRBX::NetworkSettings::~NetworkSettings()")
+pub fn stub_9b4b98(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4b98: this-36 adjust then the D0 dtor + delete.
+ destroy_at(this - 36);
+ free_at(this - 36);
 }
 
 // 0x9b528c — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_9b528c() -> ! {
-    todo!("0x9b528c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::PropDescriptor<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>(char const*,char const*,bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b528c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b528c: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b54b4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev")]
-pub fn stub_9b54b4() -> ! {
-    todo!("0x9b54b4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+pub fn stub_9b54b4(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b54b4: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b54dc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_9b54dc() -> ! {
-    todo!("0x9b54dc RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::isReadOnly(void)const")
+pub fn stub_9b54dc() -> bool {
+ // IDA 0x9b54dc: isReadOnly returns 0.
+ false
 }
 
 // 0x9b54e0 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_9b54e0() -> ! {
-    todo!("0x9b54e0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_9b54e0() -> bool {
+ // IDA 0x9b54e0: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b54e4 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_9b54e4() -> ! {
-    todo!("0x9b54e4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b54e4(get: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x9b54e4: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b5508 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_9b5508() -> ! {
-    todo!("0x9b5508 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_9b5508(set: &mut dyn FnMut(bool)) {
+ // IDA 0x9b5508: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(true);
 }
 
 // 0x9b5530 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, char, int, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_9b5530() -> ! {
-    todo!("0x9b5530 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::PropDescriptor<float (RBX::NetworkSettings::*)(void)const,int>(char const*,char const*,float (RBX::NetworkSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b5530(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b5530: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b5744 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev")]
-pub fn stub_9b5744() -> ! {
-    todo!("0x9b5744 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
+pub fn stub_9b5744(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b5744: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b576c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv")]
-pub fn stub_9b576c() -> ! {
-    todo!("0x9b576c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::isReadOnly(void)const")
+pub fn stub_9b576c() -> bool {
+ // IDA 0x9b576c: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0x9b5770 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv")]
-pub fn stub_9b5770() -> ! {
-    todo!("0x9b5770 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_9b5770() -> bool {
+ // IDA 0x9b5770: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0x9b5774 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_9b5774() -> ! {
-    todo!("0x9b5774 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b5774(get: &mut dyn FnMut() -> f32) -> f32 {
+ // IDA 0x9b5774: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b5798 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
 // type: void __noreturn()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf")]
-pub fn stub_9b5798() -> ! {
-    todo!("0x9b5798 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_9b5798() {
+ // IDA 0x9b5798: read-only setValue throws std::runtime_error (__noreturn).
+ panic!("read-only property");
 }
 
 // 0x9b58b8 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_9b58b8() -> ! {
-    todo!("0x9b58b8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::PropDescriptor<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>(char const*,char const*,int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b58b8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b58b8: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b5ae0 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev")]
-pub fn stub_9b5ae0() -> ! {
-    todo!("0x9b5ae0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+pub fn stub_9b5ae0(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b5ae0: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b5b08 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_9b5b08() -> ! {
-    todo!("0x9b5b08 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::isReadOnly(void)const")
+pub fn stub_9b5b08() -> bool {
+ // IDA 0x9b5b08: isReadOnly returns 0.
+ false
 }
 
 // 0x9b5b0c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_9b5b0c() -> ! {
-    todo!("0x9b5b0c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::isWriteOnly(void)const")
+pub fn stub_9b5b0c() -> bool {
+ // IDA 0x9b5b0c: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b5b10 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_9b5b10() -> ! {
-    todo!("0x9b5b10 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b5b10(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b5b10: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b5b34 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
