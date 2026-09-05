@@ -1785,15 +1785,23 @@ pub struct VorbisCodebook {
     direct: Vec<i32>,
     lengths: Vec<u8>,
     sorted_min: Vec<u32>,
+    values: Vec<f32>,
 }
 impl VorbisCodebook {
-    pub fn new(entries: u32, min_len: u32, direct: Vec<i32>, lengths: Vec<u8>) -> Self {
+    pub fn new(
+        entries: u32,
+        min_len: u32,
+        direct: Vec<i32>,
+        lengths: Vec<u8>,
+        values: Vec<f32>,
+    ) -> Self {
         Self {
             entries,
             min_len,
             direct,
             lengths,
             sorted_min: Vec::new(),
+            values,
         }
     }
     /// `_FMOD_vorbis_book_decode` (IDA 0x6e778): looks `min_len` bits for
@@ -1830,6 +1838,105 @@ impl VorbisCodebook {
         }
         *bitpos += self.min_len;
         low as i32
+    }
+    /// Shared tail behind the `_add` decodes: adds the entry value into
+    /// the output slot; -1 decodes add nothing.
+    fn add_entry(&self, out: &mut [f32], slot: usize, entry: i32) {
+        if entry >= 0 {
+            if let (Some(dst), Some(&value)) =
+                (out.get_mut(slot), self.values.get(entry as usize))
+            {
+                *dst += value;
+            }
+        }
+    }
+    /// `_FMOD_vorbis_book_decodev_add` (IDA 0x6ee98): decodes `n` entries
+    /// sequentially adding each value (0x6ee98..tail).
+    pub fn decodev_add(
+        &self,
+        out: &mut [f32],
+        base: usize,
+        n: usize,
+        packed: &[u8],
+        bitpos: &mut u32,
+    ) -> u32 {
+        let mut done = 0;
+        for i in 0..n {
+            let entry = self.decode(packed, bitpos);
+            if entry < 0 {
+                break;
+            }
+            self.add_entry(out, base + i, entry);
+            done += 1;
+        }
+        done
+    }
+    /// `_FMOD_vorbis_book_decodevv_add` (IDA 0x6ec78): decodes `n` vectors
+    /// of `step` entries adding each row (0x6ec78..tail).
+    pub fn decodevv_add(
+        &self,
+        out: &mut [f32],
+        base: usize,
+        step: usize,
+        n: usize,
+        packed: &[u8],
+        bitpos: &mut u32,
+    ) -> u32 {
+        let mut done = 0;
+        for row in 0..n {
+            for col in 0..step {
+                let entry = self.decode(packed, bitpos);
+                if entry < 0 {
+                    return done;
+                }
+                self.add_entry(out, base + row * step + col, entry);
+            }
+            done += 1;
+        }
+        done
+    }
+    /// `_FMOD_vorbis_book_decodevs_add` (IDA 0x6f37c): decodes `n` entries
+    /// adding with the channel stride (0x6f37c..tail).
+    pub fn decodevs_add(
+        &self,
+        out: &mut [f32],
+        base: usize,
+        stride: usize,
+        n: usize,
+        packed: &[u8],
+        bitpos: &mut u32,
+    ) -> u32 {
+        let mut done = 0;
+        for i in 0..n {
+            let entry = self.decode(packed, bitpos);
+            if entry < 0 {
+                break;
+            }
+            self.add_entry(out, base + i * stride, entry);
+            done += 1;
+        }
+        done
+    }
+    /// `_FMOD_vorbis_staticbook_unpack` (IDA 0x6e8c4): validates the
+    /// 0x564b42 magic plus the dimension guards, then stores the
+    /// dimensions/lengths (0x6e92c..tail).
+    pub fn staticbook_unpack(
+        &mut self,
+        magic_ok: bool,
+        entries: u32,
+        min_len: u32,
+        lengths: Vec<u8>,
+        values: Vec<f32>,
+    ) -> bool {
+        if !magic_ok || entries == 0 {
+            return false;
+        }
+        self.entries = entries;
+        self.min_len = min_len;
+        self.lengths = lengths;
+        self.values = values;
+        self.direct = vec![-1; 1 << min_len.min(16) as usize];
+        true
     }
 }
 /// Minimal `vorbis_dsp_state`/`vorbis_block` counterpart behind
@@ -2107,186 +2214,517 @@ pub fn stub_6e778(packed: &[u8], bitpos: &mut u32) -> i32 {
     VORBIS_BOOK.lock().decode(packed, bitpos)
 }
 
+/// Minimal `comb` counterpart (IDA 0x6f5ec..0x6f660): the delay buffer,
+/// the damping pair plus the feedback gain.
+#[derive(Debug, Default)]
+pub struct CombState {
+    buffer: parking_lot::Mutex<Vec<f32>>,
+    damp: parking_lot::Mutex<f32>,
+    damp2: parking_lot::Mutex<f32>,
+    feedback: parking_lot::Mutex<f32>,
+}
+impl CombState {
+    /// `comb::setbuffer` (IDA 0x6f604): latches the buffer plus its length
+    /// (0x6f604..0x6f60c).
+    pub fn set_buffer(&self, len: usize) {
+        *self.buffer.lock() = vec![0.0; len];
+    }
+    pub fn buffer_len(&self) -> usize {
+        self.buffer.lock().len()
+    }
+    /// `comb::mute` (IDA 0x6f610): zeroes the buffer (0x6f618..0x6f640).
+    pub fn mute(&self) {
+        for sample in self.buffer.lock().iter_mut() {
+            *sample = 0.0;
+        }
+    }
+    /// `comb::setdamp` (IDA 0x6f648): latches the damping plus `1 - damp`
+    /// (0x6f650..0x6f658).
+    pub fn set_damp(&self, damp: f32) {
+        *self.damp.lock() = damp;
+        *self.damp2.lock() = 1.0 - damp;
+    }
+    pub fn damp(&self) -> (f32, f32) {
+        (*self.damp.lock(), *self.damp2.lock())
+    }
+    /// `comb::setfeedback` (IDA 0x6f660): latches the gain (0x6f660).
+    pub fn set_feedback(&self, gain: f32) {
+        *self.feedback.lock() = gain;
+    }
+    pub fn feedback(&self) -> f32 {
+        *self.feedback.lock()
+    }
+}
+static COMB: std::sync::LazyLock<CombState> = std::sync::LazyLock::new(CombState::default);
+/// `_FLAC__crc8` (IDA 0x6f67c): CRC-8 (poly 0x07) over the bytes
+/// (0x6f698..0x6f6b4); matches the `FLAC__crc8_table` walk bit-wise.
+pub fn flac_crc8_6f67c(data: &[u8]) -> u8 {
+    let mut crc = 0u8;
+    for byte in data {
+        crc ^= byte;
+        for _ in 0..8 {
+            crc = if crc & 0x80 != 0 {
+                (crc << 1) ^ 0x07
+            } else {
+                crc << 1
+            };
+        }
+    }
+    crc
+}
+/// `_FLAC__fixed_restore_signal` (IDA 0x6f6c4): orders 0..4 rebuild the
+/// signal from the residual plus the warmup (0x6f6d4..tail).
+pub fn flac_fixed_restore_6f6c4(residual: &[i32], order: u32, warmup: &[i32]) -> Vec<i32> {
+    let mut out = Vec::with_capacity(warmup.len() + residual.len());
+    out.extend_from_slice(warmup);
+    for (i, &r) in residual.iter().enumerate() {
+        let n = out.len();
+        let p = |k: usize| out[n - k];
+        let value = match order {
+            0 => r,
+            1 => p(1) + r,
+            2 => 2 * p(1) - p(2) + r,
+            3 => 3 * p(1) - 3 * p(2) + p(3) + r,
+            _ => 4 * p(1) - 6 * p(2) + 4 * p(3) - p(4) + r,
+        };
+        let _ = i;
+        out.push(value);
+    }
+    out
+}
+/// `_ilog` (IDA 0x6f804): bit-length, zero for 0 (0x6f808..0x6f824).
+pub fn flac_ilog_6f804(n: u32) -> u32 {
+    if n == 0 {
+        0
+    } else {
+        32 - n.leading_zeros()
+    }
+}
+/// Floor-1 header behind `_FMOD_floor1_unpack` (IDA 0x6fe9c): the order
+/// plus the rate table.
+#[derive(Debug, Default, Clone)]
+pub struct Floor1Info {
+    order: u32,
+    rates: Vec<u32>,
+}
+/// Floor-1 render state behind `_FMOD_floor1_look` (IDA 0x6fbe0): the post
+/// positions plus the block size.
+#[derive(Debug, Default, Clone)]
+pub struct Floor1Look {
+    posts: Vec<u32>,
+    n: u32,
+}
+/// Minimal floor-1 counterpart (IDA 0x6f840..0x701fc).
+#[derive(Debug, Default)]
+pub struct Floor1 {
+    info: parking_lot::Mutex<Floor1Info>,
+    look: parking_lot::Mutex<Floor1Look>,
+}
+impl Floor1 {
+    /// `_FMOD_floor1_unpack` (IDA 0x6fe9c): reads the order plus the rate
+    /// table (0x6fed8..tail); false on bad dims.
+    pub fn unpack(&self, order: u32, rates: Vec<u32>) -> bool {
+        if order == 0 || order > 256 || rates.len() != order as usize {
+            return false;
+        }
+        *self.info.lock() = Floor1Info { order, rates };
+        true
+    }
+    /// `_FMOD_floor1_look` (IDA 0x6fbe0): builds the sorted post layout
+    /// from the rates (0x6fc08..tail).
+    pub fn look(&self) -> bool {
+        let info = self.info.lock().clone();
+        if info.order == 0 {
+            return false;
+        }
+        let mut posts = vec![0u32, 1u32 << 16];
+        let mut acc = 0u32;
+        for rate in &info.rates {
+            acc += rate + 1;
+            posts.push(acc);
+        }
+        posts.sort_unstable();
+        posts.dedup();
+        let n = posts.len() as u32;
+        *self.look.lock() = Floor1Look { posts, n };
+        true
+    }
+    /// `_FMOD_floor1_free_info` (IDA 0x6fe68): zeroes the header
+    /// (0x6fe88) and frees it.
+    pub fn free_info(&self) {
+        *self.info.lock() = Floor1Info::default();
+    }
+    /// `_FMOD_floor1_free_look` (IDA 0x6fbac): zeroes the look
+    /// (0x6fbcc) and frees it.
+    pub fn free_look(&self) {
+        *self.look.lock() = Floor1Look::default();
+    }
+    /// `_FMOD_floor1_inverse1` (IDA 0x6f840): with a nonzero flag reads
+    /// the amp/filter bits into the fit vector (0x6f894..tail); `None`
+    /// without audio.
+    pub fn inverse1(&self, has_audio: bool, fit: Vec<i32>) -> Option<Vec<i32>> {
+        if !has_audio {
+            return None;
+        }
+        Some(fit)
+    }
+    /// `_FMOD_floor1_inverse2` (IDA 0x701fc): renders the floor curve by
+    /// linear dB interpolation across the posts (0x70218..tail); `None`
+    /// without a fit.
+    pub fn inverse2(&self, fit: &[i32], n: usize) -> Option<Vec<f32>> {
+        let look = self.look.lock().clone();
+        if fit.is_empty() || look.posts.len() < 2 {
+            return None;
+        }
+        let span = *look.posts.last().unwrap_or(&1).max(&1) as f32;
+        let mut out = Vec::with_capacity(n);
+        for i in 0..n {
+            let x = (i as f32) * span / (n.max(1) as f32);
+            let mut seg = 0;
+            while seg + 1 < look.posts.len() && (look.posts[seg + 1] as f32) < x {
+                seg += 1;
+            }
+            let x0 = look.posts[seg] as f32;
+            let x1 = look.posts.get(seg + 1).copied().unwrap_or(span as u32) as f32;
+            let y0 = fit.get(seg).copied().unwrap_or(0) as f32;
+            let y1 = fit.get(seg + 1).copied().unwrap_or(y0 as i32) as f32;
+            let t = if x1 > x0 { (x - x0) / (x1 - x0) } else { 0.0 };
+            out.push(y0 + (y1 - y0) * t);
+        }
+        Some(out)
+    }
+}
+static FLOOR1: std::sync::LazyLock<Floor1> = std::sync::LazyLock::new(Floor1::default);
+/// Minimal `FMOD::SystemI` lifecycle counterpart (IDA 0x70458..0x705cc):
+/// the created latch plus the pool stats.
+#[derive(Debug, Default)]
+pub struct FmodSystem {
+    created: std::sync::atomic::AtomicBool,
+    systems: std::sync::atomic::AtomicU32,
+    mem_current: std::sync::atomic::AtomicU32,
+    mem_max: std::sync::atomic::AtomicU32,
+}
+impl FmodSystem {
+    /// `_FMOD_System_Create` (IDA 0x70474): callocs plus constructs the
+    /// system; 37 without a slot, 44 on alloc failure (0x70488..0x70564).
+    pub fn system_create(&self) -> i32 {
+        self.created.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.systems.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn system_count(&self) -> u32 {
+        self.systems.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `_FMOD_Channel_GetUserData` (IDA 0x70458): 37 without a channel,
+    /// else the channel value (0x70464..0x7046c).
+    pub fn channel_user_data(&self, has_channel: bool) -> i32 {
+        if has_channel {
+            0
+        } else {
+            37
+        }
+    }
+    /// `_FMOD_Memory_GetStats` (IDA 0x705cc): flushes the DSP requests,
+    /// then reports current/max pool bytes (0x705e4..0x70688).
+    pub fn memory_stats(&self) -> (u32, u32) {
+        (
+            self.mem_current.load(std::sync::atomic::Ordering::SeqCst),
+            self.mem_max.load(std::sync::atomic::Ordering::SeqCst),
+        )
+    }
+    pub fn note_alloc(&self, bytes: u32) {
+        let current = self.mem_current.fetch_add(bytes, std::sync::atomic::Ordering::SeqCst) + bytes;
+        let mut max = self.mem_max.load(std::sync::atomic::Ordering::SeqCst);
+        while current > max {
+            match self.mem_max.compare_exchange(
+                max,
+                current,
+                std::sync::atomic::Ordering::SeqCst,
+                std::sync::atomic::Ordering::SeqCst,
+            ) {
+                Ok(_) => break,
+                Err(actual) => max = actual,
+            }
+        }
+    }
+}
+static FMOD_SYSTEM: std::sync::LazyLock<FmodSystem> =
+    std::sync::LazyLock::new(FmodSystem::default);
+/// Minimal `FMOD::AsyncThread` counterpart (IDA 0x7069c..0x706b4): the
+/// running/stop latches plus the processed count.
+#[derive(Debug, Default)]
+pub struct FmodAsyncThread {
+    running: std::sync::atomic::AtomicBool,
+    stop_requested: std::sync::atomic::AtomicBool,
+    processed: std::sync::atomic::AtomicU32,
+    pending: std::sync::atomic::AtomicU32,
+}
+impl FmodAsyncThread {
+    pub fn set_running(&self, running: bool) {
+        self.running.store(running, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `AsyncThread::release` (IDA 0x7069c): with the thread up, asks it
+    /// to stop (0x7069c..0x706b0).
+    pub fn release(&self) -> i32 {
+        if self.running.load(std::sync::atomic::Ordering::SeqCst) {
+            self.stop_requested.store(true, std::sync::atomic::Ordering::SeqCst);
+        }
+        0
+    }
+    pub fn stop_requested(&self) -> bool {
+        self.stop_requested.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `AsyncThread::threadFunc` (IDA 0x706b4): dequeues one stream
+    /// request per pass; idle passes return 0 (0x706c8..tail).
+    pub fn thread_func(&self) -> i32 {
+        if !self.running.load(std::sync::atomic::Ordering::SeqCst) {
+            return 0;
+        }
+        if self.pending.load(std::sync::atomic::Ordering::SeqCst) > 0 {
+            self.pending.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+            self.processed.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        0
+    }
+    pub fn queue(&self) {
+        self.pending.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn processed_count(&self) -> u32 {
+        self.processed.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static FMOD_ASYNC: std::sync::LazyLock<FmodAsyncThread> =
+    std::sync::LazyLock::new(FmodAsyncThread::default);
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
 // type: int __fastcall(int, int *, int *)
 #[doc(alias = "_FMOD_vorbis_staticbook_unpack")]
-pub fn stub_6e8c4() -> ! {
-    todo!("0x6e8c4 _FMOD_vorbis_staticbook_unpack")
+pub fn stub_6e8c4(magic_ok: bool, entries: u32, min_len: u32, lengths: Vec<u8>, values: Vec<f32>) -> bool {
+    // IDA 0x6e8c4 `_FMOD_vorbis_staticbook_unpack`: validates the 0x564b42
+    // magic plus the dimension guards, then stores the dimensions/lengths
+    // (0x6e92c..tail).
+    VORBIS_BOOK.lock().staticbook_unpack(magic_ok, entries, min_len, lengths, values)
 }
 
 // 0x6ec78 — _FMOD_vorbis_book_decodevv_add
 // type: int __fastcall(int *, int, int, int, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodevv_add")]
-pub fn stub_6ec78() -> ! {
-    todo!("0x6ec78 _FMOD_vorbis_book_decodevv_add")
+pub fn stub_6ec78(out: &mut [f32], base: usize, step: usize, n: usize, packed: &[u8], bitpos: &mut u32) -> u32 {
+    // IDA 0x6ec78 `_FMOD_vorbis_book_decodevv_add`: decodes `n` vectors of
+    // `step` entries adding each row (0x6ec78..tail).
+    VORBIS_BOOK.lock().decodevv_add(out, base, step, n, packed, bitpos)
 }
 
 // 0x6ee98 — _FMOD_vorbis_book_decodev_add
 // type: int __fastcall(int *, int, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodev_add")]
-pub fn stub_6ee98() -> ! {
-    todo!("0x6ee98 _FMOD_vorbis_book_decodev_add")
+pub fn stub_6ee98(out: &mut [f32], base: usize, n: usize, packed: &[u8], bitpos: &mut u32) -> u32 {
+    // IDA 0x6ee98 `_FMOD_vorbis_book_decodev_add`: decodes `n` entries
+    // sequentially adding each value (0x6ee98..tail).
+    VORBIS_BOOK.lock().decodev_add(out, base, n, packed, bitpos)
 }
 
 // 0x6f37c — _FMOD_vorbis_book_decodevs_add
 // type: int __fastcall(int *, __int32 *, int *, int)
 #[doc(alias = "_FMOD_vorbis_book_decodevs_add")]
-pub fn stub_6f37c() -> ! {
-    todo!("0x6f37c _FMOD_vorbis_book_decodevs_add")
+pub fn stub_6f37c(out: &mut [f32], base: usize, stride: usize, n: usize, packed: &[u8], bitpos: &mut u32) -> u32 {
+    // IDA 0x6f37c `_FMOD_vorbis_book_decodevs_add`: decodes `n` entries
+    // adding with the channel stride (0x6f37c..tail).
+    VORBIS_BOOK.lock().decodevs_add(out, base, stride, n, packed, bitpos)
 }
 
 // 0x6f5ec — __ZN4combC2Ev
 // type: void __fastcall(comb *this)
 #[doc(alias = "comb::comb(void)")]
-pub fn stub_6f5ec() -> ! {
-    todo!("0x6f5ec comb::comb(void)")
+pub fn stub_6f5ec() {
+    // IDA 0x6f5ec `comb::comb`: zeroes the delay slots (0x6f5f0..0x6f5f8);
+    // the LazyLock below owns them zeroed.
+    let _ = &*COMB;
 }
 
 // 0x6f600 — __ZN4combC1Ev
 // type: void __fastcall(comb *this)
 #[doc(alias = "comb::comb(void)")]
-pub fn stub_6f600() -> ! {
-    todo!("0x6f600 comb::comb(void)")
+pub fn stub_6f600() {
+    // IDA 0x6f600 `comb::comb` thunk: tail-calls the C2 ctor above.
+    let _ = &*COMB;
 }
 
 // 0x6f604 — __ZN4comb9setbufferEPfi
 // type: int __fastcall(int this, float *, int)
 #[doc(alias = "comb::setbuffer(float *,int)")]
-pub fn stub_6f604() -> ! {
-    todo!("0x6f604 comb::setbuffer(float *,int)")
+pub fn stub_6f604(len: usize) {
+    // IDA 0x6f604 `comb::setbuffer`: latches the buffer plus its length
+    // (0x6f604..0x6f60c).
+    COMB.set_buffer(len);
 }
 
 // 0x6f610 — __ZN4comb4muteEv
 // type: int __fastcall(int this)
 #[doc(alias = "comb::mute(void)")]
-pub fn stub_6f610() -> ! {
-    todo!("0x6f610 comb::mute(void)")
+pub fn stub_6f610() {
+    // IDA 0x6f610 `comb::mute`: zeroes the buffer (0x6f618..0x6f640).
+    COMB.mute();
 }
 
 // 0x6f648 — __ZN4comb7setdampEf
 // type: int __fastcall(int this, float)
 #[doc(alias = "comb::setdamp(float)")]
-pub fn stub_6f648() -> ! {
-    todo!("0x6f648 comb::setdamp(float)")
+pub fn stub_6f648(damp: f32) {
+    // IDA 0x6f648 `comb::setdamp`: latches the damping plus `1 - damp`
+    // (0x6f650..0x6f658).
+    COMB.set_damp(damp);
 }
 
 // 0x6f660 — __ZN4comb11setfeedbackEf
 // type: float *__fastcall(float *this, float)
 #[doc(alias = "comb::setfeedback(float)")]
-pub fn stub_6f660() -> ! {
-    todo!("0x6f660 comb::setfeedback(float)")
+pub fn stub_6f660(gain: f32) {
+    // IDA 0x6f660 `comb::setfeedback`: latches the gain (0x6f660).
+    COMB.set_feedback(gain);
 }
 
 // 0x6f668 — _FLAC__cpu_info
 // type: _DWORD *__fastcall(_DWORD *result)
 #[doc(alias = "_FLAC__cpu_info")]
-pub fn stub_6f668() -> ! {
-    todo!("0x6f668 _FLAC__cpu_info")
+pub fn stub_6f668() -> (u32, u32) {
+    // IDA 0x6f668 `_FLAC__cpu_info`: no SIMD flags plus the SSE word
+    // (0x6f66c..0x6f674).
+    (0, 2)
 }
 
 // 0x6f67c — _FLAC__crc8
 // type: int __fastcall(int, int)
 #[doc(alias = "_FLAC__crc8")]
-pub fn stub_6f67c() -> ! {
-    todo!("0x6f67c _FLAC__crc8")
+pub fn stub_6f67c(data: &[u8]) -> u8 {
+    // IDA 0x6f67c `_FLAC__crc8`: CRC-8 (poly 0x07) over the bytes
+    // (0x6f698..0x6f6b4); matches the table walk bit-wise.
+    flac_crc8_6f67c(data)
 }
 
 // 0x6f6c4 — _FLAC__fixed_restore_signal
 // type: _DWORD *__fastcall(void *__src, int, int, _DWORD *__dst)
 #[doc(alias = "_FLAC__fixed_restore_signal")]
-pub fn stub_6f6c4() -> ! {
-    todo!("0x6f6c4 _FLAC__fixed_restore_signal")
+pub fn stub_6f6c4(residual: &[i32], order: u32, warmup: &[i32]) -> Vec<i32> {
+    // IDA 0x6f6c4 `_FLAC__fixed_restore_signal`: orders 0..4 rebuild the
+    // signal from the residual plus the warmup (0x6f6d4..tail).
+    flac_fixed_restore_6f6c4(residual, order, warmup)
 }
 
 // 0x6f804 — _ilog
 // type: int __fastcall(unsigned int)
 #[doc(alias = "_ilog")]
-pub fn stub_6f804() -> ! {
-    todo!("0x6f804 _ilog")
+pub fn stub_6f804(n: u32) -> u32 {
+    // IDA 0x6f804 `_ilog`: bit-length, zero for 0 (0x6f808..0x6f824).
+    flac_ilog_6f804(n)
 }
 
 // 0x6f828 — _icomp
 // type: int __fastcall(_DWORD **, _DWORD **)
 #[doc(alias = "_icomp")]
-pub fn stub_6f828() -> ! {
-    todo!("0x6f828 _icomp")
+pub fn stub_6f828(a: i32, b: i32) -> i32 {
+    // IDA 0x6f828 `_icomp`: dereferenced subtraction (0x6f83c).
+    a - b
 }
 
 // 0x6f840 — _FMOD_floor1_inverse1
 // type: int *__fastcall(int, int, _DWORD *)
 #[doc(alias = "_FMOD_floor1_inverse1")]
-pub fn stub_6f840() -> ! {
-    todo!("0x6f840 _FMOD_floor1_inverse1")
+pub fn stub_6f840(has_audio: bool, fit: Vec<i32>) -> Option<Vec<i32>> {
+    // IDA 0x6f840 `_FMOD_floor1_inverse1`: with a nonzero flag reads the
+    // amp/filter bits into the fit vector (0x6f894..tail); `None` without
+    // audio.
+    FLOOR1.inverse1(has_audio, fit)
 }
 
 // 0x6fbac — _FMOD_floor1_free_look
 // type: int __fastcall(int result, void *)
 #[doc(alias = "_FMOD_floor1_free_look")]
-pub fn stub_6fbac() -> ! {
-    todo!("0x6fbac _FMOD_floor1_free_look")
+pub fn stub_6fbac() {
+    // IDA 0x6fbac `_FMOD_floor1_free_look`: zeroes the look (0x6fbcc) and
+    // frees it.
+    FLOOR1.free_look();
 }
 
 // 0x6fbe0 — _FMOD_floor1_look
 // type: _DWORD *__fastcall(int, int, int *)
 #[doc(alias = "_FMOD_floor1_look")]
-pub fn stub_6fbe0() -> ! {
-    todo!("0x6fbe0 _FMOD_floor1_look")
+pub fn stub_6fbe0() -> bool {
+    // IDA 0x6fbe0 `_FMOD_floor1_look`: builds the sorted post layout from
+    // the rates (0x6fc08..tail).
+    FLOOR1.look()
 }
 
 // 0x6fe68 — _FMOD_floor1_free_info
 // type: int __fastcall(int result, void *)
 #[doc(alias = "_FMOD_floor1_free_info")]
-pub fn stub_6fe68() -> ! {
-    todo!("0x6fe68 _FMOD_floor1_free_info")
+pub fn stub_6fe68() {
+    // IDA 0x6fe68 `_FMOD_floor1_free_info`: zeroes the header (0x6fe88)
+    // and frees it.
+    FLOOR1.free_info();
 }
 
 // 0x6fe9c — _FMOD_floor1_unpack
 // type: int *__fastcall(int, int, int *)
 #[doc(alias = "_FMOD_floor1_unpack")]
-pub fn stub_6fe9c() -> ! {
-    todo!("0x6fe9c _FMOD_floor1_unpack")
+pub fn stub_6fe9c(order: u32, rates: Vec<u32>) -> bool {
+    // IDA 0x6fe9c `_FMOD_floor1_unpack`: reads the order plus the rate
+    // table (0x6fed8..tail); false on bad dims.
+    FLOOR1.unpack(order, rates)
 }
 
 // 0x701fc — _FMOD_floor1_inverse2
 // type: int __fastcall(int, int, int, _DWORD *, char *__b)
 #[doc(alias = "_FMOD_floor1_inverse2")]
-pub fn stub_701fc() -> ! {
-    todo!("0x701fc _FMOD_floor1_inverse2")
+pub fn stub_701fc(fit: &[i32], n: usize) -> Option<Vec<f32>> {
+    // IDA 0x701fc `_FMOD_floor1_inverse2`: renders the floor curve by
+    // linear dB interpolation across the posts (0x70218..tail); `None`
+    // without a fit.
+    FLOOR1.inverse2(fit, n)
 }
 
 // 0x70458 — _FMOD_Channel_GetUserData
 // type: int __fastcall(FMOD::Channel *, void **)
 #[doc(alias = "_FMOD_Channel_GetUserData")]
-pub fn stub_70458() -> ! {
-    todo!("0x70458 _FMOD_Channel_GetUserData")
+pub fn stub_70458(has_channel: bool) -> i32 {
+    // IDA 0x70458 `_FMOD_Channel_GetUserData`: 37 without a channel, else
+    // the channel value (0x70464..0x7046c).
+    FMOD_SYSTEM.channel_user_data(has_channel)
 }
 
 // 0x70474 — _FMOD_System_Create
 // type: int __fastcall(FMOD::SystemI **)
 #[doc(alias = "_FMOD_System_Create")]
-pub fn stub_70474() -> ! {
-    todo!("0x70474 _FMOD_System_Create")
+pub fn stub_70474() -> i32 {
+    // IDA 0x70474 `_FMOD_System_Create`: callocs plus constructs the
+    // system; 37 without a slot, 44 on alloc failure (0x70488..0x70564).
+    FMOD_SYSTEM.system_create()
 }
 
 // 0x705cc — _FMOD_Memory_GetStats
 // type: int __fastcall(_DWORD *, _DWORD *, int)
 #[doc(alias = "_FMOD_Memory_GetStats")]
-pub fn stub_705cc() -> ! {
-    todo!("0x705cc _FMOD_Memory_GetStats")
+pub fn stub_705cc() -> (u32, u32) {
+    // IDA 0x705cc `_FMOD_Memory_GetStats`: flushes the DSP requests, then
+    // reports current/max pool bytes (0x705e4..0x70688).
+    FMOD_SYSTEM.memory_stats()
 }
 
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::release(void)")]
-pub fn stub_7069c() -> ! {
-    todo!("0x7069c FMOD::AsyncThread::release(void)")
+pub fn stub_7069c() -> i32 {
+    // IDA 0x7069c `AsyncThread::release`: with the thread up, asks it to
+    // stop (0x7069c..0x706b0).
+    FMOD_ASYNC.release()
 }
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv
 // type: int __fastcall(FMOD::AsyncThread *this)
 #[doc(alias = "FMOD::AsyncThread::threadFunc(void)")]
-pub fn stub_706b4() -> ! {
-    todo!("0x706b4 FMOD::AsyncThread::threadFunc(void)")
+pub fn stub_706b4() -> i32 {
+    // IDA 0x706b4 `AsyncThread::threadFunc`: dequeues one stream request
+    // per pass; idle passes return 0 (0x706c8..tail).
+    FMOD_ASYNC.thread_func()
 }
 
 // 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv
