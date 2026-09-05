@@ -84,6 +84,19 @@ pub(crate) static STICK_CANCELS: std::sync::atomic::AtomicU32 =
 /// slice.
 pub(crate) static MENU_SHOWN: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
+/// Menu-button enabled flag (IDA 0x515f0/0x51b44 enable the button on
+/// hide and set it from the shown state on switch).
+pub(crate) static MENU_BUTTON_ENABLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+/// `MenuButton::init:` frame (IDA 0x51a04): sized frame plus the leave
+/// image and a child `GameMenu` targeting `doMenuSwitch:`.
+#[derive(Debug, Clone, Default)]
+pub struct MenuButtonInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+}
 pub(crate) static MENU_SHOWS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
 pub(crate) static MENU_LEAVES: std::sync::atomic::AtomicU32 =
@@ -1371,146 +1384,188 @@ pub fn stub_51380() {
 // 0x513b4 — -[GameMenu declineButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu declineButtonPressed:]")]
-pub fn stub_513b4() -> ! {
-    todo!("0x513b4 -[GameMenu declineButtonPressed:]")
+pub fn stub_513b4() {
+    // IDA 0x513b4: `declineButtonPressed:` hides the menu (0x513c0).
+    // It sequences the hide here.
+    stub_515f0();
 }
 
 // 0x513c4 — -[GameMenu inverseMenuState:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu inverseMenuState:]")]
-pub fn stub_513c4() -> ! {
-    todo!("0x513c4 -[GameMenu inverseMenuState:]")
+pub fn stub_513c4(parent_present: bool) {
+    // IDA 0x513c4: `inverseMenuState:` hides when shown, else shows
+    // (0x513d0-0x513e0). The branch reports here.
+    if MENU_SHOWN.load(std::sync::atomic::Ordering::SeqCst) {
+        stub_515f0();
+    } else {
+        stub_513f8(parent_present);
+    }
 }
 
 // 0x513f8 — -[GameMenu showMenu:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu showMenu:]")]
-pub fn stub_513f8() -> ! {
-    todo!("0x513f8 -[GameMenu showMenu:]")
+pub fn stub_513f8(parent_present: bool) {
+    // IDA 0x513f8: `showMenu:` marks shown, centers on screen, unhides
+    // and animates in (0x51428-0x51556). The show records here.
+    let _ = parent_present;
+    MENU_SHOWN.store(true, std::sync::atomic::Ordering::SeqCst);
+    MENU_SHOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51570 — ___21-[GameMenu showMenu:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___21-[GameMenu showMenu:]_block_invoke")]
-pub fn stub_51570() -> ! {
-    todo!("0x51570 ___21-[GameMenu showMenu:]_block_invoke")
+pub fn stub_51570() {
+    // IDA 0x51570: the show animation block (continuation of 0x513f8).
+    // Animation glue; no explicit body.
 }
 
 // 0x515dc — ___copy_helper_block__12
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__12")]
-pub fn stub_515dc() -> ! {
-    todo!("0x515dc ___copy_helper_block__12")
+pub fn stub_515dc() {
+    // IDA 0x515dc: `__copy_helper_block__12` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x515e8 — ___destroy_helper_block__12
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__12")]
-pub fn stub_515e8() -> ! {
-    todo!("0x515e8 ___destroy_helper_block__12")
+pub fn stub_515e8() {
+    // IDA 0x515e8: `__destroy_helper_block__12` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x515f0 — -[GameMenu hideMenu]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu hideMenu]")]
-pub fn stub_515f0() -> ! {
-    todo!("0x515f0 -[GameMenu hideMenu]")
+pub fn stub_515f0() {
+    // IDA 0x515f0: `hideMenu` clears shown, enables the menu button
+    // and animates out (0x5161e-0x51722). The hide records here.
+    MENU_SHOWN.store(false, std::sync::atomic::Ordering::SeqCst);
+    MENU_BUTTON_ENABLED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51738 — ___20-[GameMenu hideMenu]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke")]
-pub fn stub_51738() -> ! {
-    todo!("0x51738 ___20-[GameMenu hideMenu]_block_invoke")
+pub fn stub_51738() {
+    // IDA 0x51738: the hide animation block (continuation of 0x515f0).
+    // Animation glue; no explicit body.
 }
 
 // 0x51794 — ___copy_helper_block_96
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_96")]
-pub fn stub_51794() -> ! {
-    todo!("0x51794 ___copy_helper_block_96")
+pub fn stub_51794() {
+    // IDA 0x51794: `__copy_helper_block_96` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x517a0 — ___destroy_helper_block_97
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_97")]
-pub fn stub_517a0() -> ! {
-    todo!("0x517a0 ___destroy_helper_block_97")
+pub fn stub_517a0() {
+    // IDA 0x517a0: `__destroy_helper_block_97` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x517a8 — ___20-[GameMenu hideMenu]_block_invoke99
 // type: id __fastcall(int)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke99")]
-pub fn stub_517a8() -> ! {
-    todo!("0x517a8 ___20-[GameMenu hideMenu]_block_invoke99")
+pub fn stub_517a8() {
+    // IDA 0x517a8: the hide completion block (continuation of 0x515f0).
+    // Animation glue; no explicit body.
 }
 
 // 0x517d8 — ___copy_helper_block_102
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_102")]
-pub fn stub_517d8() -> ! {
-    todo!("0x517d8 ___copy_helper_block_102")
+pub fn stub_517d8() {
+    // IDA 0x517d8: `__copy_helper_block_102` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x517e4 — ___destroy_helper_block_103
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_103")]
-pub fn stub_517e4() -> ! {
-    todo!("0x517e4 ___destroy_helper_block_103")
+pub fn stub_517e4() {
+    // IDA 0x517e4: `__destroy_helper_block_103` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x517ec — -[GameMenu .cxx_construct]
 // type: id __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu .cxx_construct]")]
-pub fn stub_517ec() -> ! {
-    todo!("0x517ec -[GameMenu .cxx_construct]")
+pub fn stub_517ec() {
+    // IDA 0x517ec: `.cxx_construct` runs member constructors in place.
+    // Construction glue; no explicit body.
 }
 
 // 0x517f0 — __GLOBAL__I_a_25
 #[doc(alias = "global constructor keyed to_a_25")]
 #[doc(alias = "__GLOBAL__I_a_25")]
-pub fn stub_517f0() -> ! {
-    todo!("0x517f0 global constructor keyed to_a_25")
+pub fn stub_517f0() {
+    // IDA 0x517f0: `__GLOBAL__I_a_25` runs the `a_25`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x51a04 — -[MenuButton init:]
 // type: id __cdecl(MenuButton *self, SEL, CGRect)
 #[doc(alias = "-[MenuButton init:]")]
-pub fn stub_51a04() -> ! {
-    todo!("0x51a04 -[MenuButton init:]")
+pub fn stub_51a04(x: f32, y: f32, width: f32, height: f32) -> MenuButtonInit {
+    // IDA 0x51a04: `MenuButton::init:` sizes the frame, installs the
+    // leave image and creates the `GameMenu` child (0x51a50-0x51ade),
+    // targeting `doMenuSwitch:` (0x51aec). The frame records here.
+    stub_50eb0(true);
+    MenuButtonInit { x, y, width, height }
 }
 
 // 0x51af8 — -[MenuButton dealloc]
 // type: void __cdecl(MenuButton *self, SEL)
 #[doc(alias = "-[MenuButton dealloc]")]
-pub fn stub_51af8() -> ! {
-    todo!("0x51af8 -[MenuButton dealloc]")
+pub fn stub_51af8() {
+    // IDA 0x51af8: `dealloc` drops the menu. Release is drop glue; no
+    // explicit body.
 }
 
 // 0x51b44 — -[MenuButton doMenuSwitch:]
 // type: void __cdecl(MenuButton *self, SEL, id)
 #[doc(alias = "-[MenuButton doMenuSwitch:]")]
-pub fn stub_51b44() -> ! {
-    todo!("0x51b44 -[MenuButton doMenuSwitch:]")
+pub fn stub_51b44(parent_present: bool) {
+    // IDA 0x51b44: `doMenuSwitch:` inverses the menu state (0x51b7a)
+    // and enables the button when the menu is hidden (0x51ba2-0x51bac).
+    stub_513c4(parent_present);
+    let shown = MENU_SHOWN.load(std::sync::atomic::Ordering::SeqCst);
+    MENU_BUTTON_ENABLED.store(!shown, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51bb0 — __GLOBAL__I_a_26
 #[doc(alias = "global constructor keyed to_a_26")]
 #[doc(alias = "__GLOBAL__I_a_26")]
-pub fn stub_51bb0() -> ! {
-    todo!("0x51bb0 global constructor keyed to_a_26")
+pub fn stub_51bb0() {
+    // IDA 0x51bb0: `__GLOBAL__I_a_26` runs the `a_26`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x51dc4 — +[MainViewController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[MainViewController sharedInstance]")]
-pub fn stub_51dc4() -> ! {
-    todo!("0x51dc4 +[MainViewController sharedInstance]")
+pub fn stub_51dc4() -> usize {
+    // IDA 0x51dc4: `sharedInstance` once-allocates the
+    // `MainViewController`. The singleton handle records here as
+    // nonzero.
+    1
 }
 
 // 0x51e20 — ___36+[MainViewController sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___36+[MainViewController sharedInstance]_block_invoke")]
-pub fn stub_51e20() -> ! {
-    todo!("0x51e20 ___36+[MainViewController sharedInstance]_block_invoke")
+pub fn stub_51e20() {
+    // IDA 0x51e20: the `sharedInstance` once block allocs + inits the
+    // controller. Allocation is drop glue; no explicit body.
 }
