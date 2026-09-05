@@ -44,6 +44,20 @@ impl SchedulerBlockers {
 pub struct BoostMutex {
     pub locked: bool,
 }
+/// `boost::lock_error` / `thread_resource_error` cloneable values (IDA
+/// 0x3c2a0..0x3cb60): allocation plus copy-construction (0x3c2da..0x3c3e4,
+/// 0x3c5ec..0x3c612) fold into owned clones; the this-adjust on clone
+/// (0x3c62a) folds into the host.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum SyncErrorKind {
+    Lock,
+    ThreadResource,
+}
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct BoostSyncError {
+    pub kind: SyncErrorKind,
+    pub message: String,
+}
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
@@ -377,167 +391,190 @@ pub fn stub_0x3c170(mutex: &mut BoostMutex) -> i32 {
 // type: int __fastcall(std::string *)
 #[doc(alias = "void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")]
 pub fn stub_0x3c2a0() -> ! {
-    todo!("0x3c2a0 __ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_")
+    // IDA 0x3c2a0: `throw_exception<lock_error>` allocates and throws
+    // (noreturn).
+    panic!("boost::lock_error")
 }
 
 // 0x3c470 — __ZN5boost10lock_errorD0Ev
 // type: void __fastcall(boost::lock_error *__hidden this)
 #[doc(alias = "boost::lock_error::~lock_error() [0x3c470]")]
-pub fn stub_0x3c470() -> ! {
-    todo!("0x3c470 __ZN5boost10lock_errorD0Ev")
+pub fn stub_0x3c470() {
+    // IDA 0x3c470: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3c4a0 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev
 // type: int(void)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
-pub fn stub_0x3c4a0() -> ! {
-    todo!("0x3c4a0 __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev")
+pub fn stub_0x3c4a0() {
+    // IDA 0x3c4a0: D2 dtor member teardown; drop glue covers it — no-op.
 }
 
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector() [0x3c4e0]")]
-pub fn stub_0x3c4e0() -> ! {
-    todo!("0x3c4e0 __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev")
+pub fn stub_0x3c4e0() {
+    // IDA 0x3c4e0: thn20 D1 (this-adjust plus base dtor); drop glue covers
+    // it — no-op.
 }
 
 // 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl() [0x3c528]")]
-pub fn stub_0x3c528() -> ! {
-    todo!("0x3c528 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")
+pub fn stub_0x3c528() {
+    // IDA 0x3c528: virtual-thunk D1 (adjust plus base dtor); drop glue
+    // covers it — no-op.
 }
 
 // 0x3c570 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl() [0x3c570]")]
-pub fn stub_0x3c570() -> ! {
-    todo!("0x3c570 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
+pub fn stub_0x3c570() {
+    // IDA 0x3c570: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3c5b8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
-pub fn stub_0x3c5b8() -> ! {
-    todo!("0x3c5b8 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv")
+pub fn stub_0x3c5b8(err: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3c5b8: `clone` copy-constructs (0x3c5ec..0x3c612); the
+    // this-adjust (0x3c62a) folds into the host.
+    err.clone()
 }
 
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl() [0x3c678]")]
-pub fn stub_0x3c678() -> ! {
-    todo!("0x3c678 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
+pub fn stub_0x3c678() {
+    // IDA 0x3c678: thn20 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x3c680 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector() [0x3c680]")]
-pub fn stub_0x3c680() -> ! {
-    todo!("0x3c680 __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")
+pub fn stub_0x3c680() {
+    // IDA 0x3c680: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3c698 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")]
-pub fn stub_0x3c698() -> ! {
-    todo!("0x3c698 __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_")
+pub fn stub_0x3c698(slot: &mut Option<u32>, next: Option<u32>) {
+    // IDA 0x3c698: `refcount_ptr::adopt` releases the held container
+    // (0x3c6a2..0x3c6b0, folds into `Arc` drop), stores the new one
+    // (0x3c6b4), and add-refs it (0x3c6b6..0x3c6c4, folds into `Arc`
+    // clone).
+    *slot = next;
 }
 
 // 0x3c6c8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")]
-pub fn stub_0x3c6c8() -> ! {
-    todo!("0x3c6c8 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_")
+pub fn stub_0x3c6c8(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3c6c8: C1 copy ctor; owned clone covers it.
+    src.clone()
 }
 
 // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
 // type: void __fastcall(boost::thread_resource_error *__hidden this)
 #[doc(alias = "boost::thread_resource_error::~thread_resource_error() [0x3c928]")]
-pub fn stub_0x3c928() -> ! {
-    todo!("0x3c928 __ZN5boost21thread_resource_errorD1Ev")
+pub fn stub_0x3c928() {
+    // IDA 0x3c928: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3c958 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector() [0x3c958]")]
-pub fn stub_0x3c958() -> ! {
-    todo!("0x3c958 __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev")
+pub fn stub_0x3c958() {
+    // IDA 0x3c958: D2 dtor member teardown; drop glue covers it — no-op.
 }
 
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector() [0x3c998]")]
-pub fn stub_0x3c998() -> ! {
-    todo!("0x3c998 __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev")
+pub fn stub_0x3c998() {
+    // IDA 0x3c998: thn20 D1 (same shape as 0x3c4e0) — no-op.
 }
 
 // 0x3c9e0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl() [0x3c9e0]")]
-pub fn stub_0x3c9e0() -> ! {
-    todo!("0x3c9e0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev")
+pub fn stub_0x3c9e0() {
+    // IDA 0x3c9e0: virtual-thunk D1 (same shape as 0x3c528) — no-op.
 }
 
 // 0x3ca28 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-pub fn stub_0x3ca28() -> ! {
-    todo!("0x3ca28 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
+pub fn stub_0x3ca28() {
+    // IDA 0x3ca28: D0 dtor (same shape as 0x3c570) — no-op.
 }
 
 // 0x3ca70 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
-pub fn stub_0x3ca70() -> ! {
-    todo!("0x3ca70 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")
+pub fn stub_0x3ca70(err: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3ca70: `clone` for the thread flavor — same shape as 0x3c5b8.
+    err.clone()
 }
 
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl() [0x3cb30]")]
-pub fn stub_0x3cb30() -> ! {
-    todo!("0x3cb30 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
+pub fn stub_0x3cb30() {
+    // IDA 0x3cb30: thn20 D0 (same shape as 0x3c678) — no-op.
 }
 
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
-pub fn stub_0x3cb38() -> ! {
-    todo!("0x3cb38 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")
+pub fn stub_0x3cb38(err: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3cb38: virtual-thunk `clone` (adjust plus clone, same shape as
+    // 0x3ca70).
+    err.clone()
 }
 
 // 0x3cb48 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector() [0x3cb48]")]
-pub fn stub_0x3cb48() -> ! {
-    todo!("0x3cb48 __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev")
+pub fn stub_0x3cb48() {
+    // IDA 0x3cb48: D0 dtor (same shape as 0x3c680) — no-op.
 }
 
 // 0x3cb60 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")]
-pub fn stub_0x3cb60() -> ! {
-    todo!("0x3cb60 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_")
+pub fn stub_0x3cb60(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3cb60: C1 copy ctor (same shape as 0x3c6c8).
+    src.clone()
 }
 
 // 0x3db4c — __ZN5boost6detail12shared_countC2IN3RBX8ViewBaseEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)")]
-pub fn stub_0x3db4c() -> ! {
-    todo!("0x3db4c __ZN5boost6detail12shared_countC2IN3RBX8ViewBaseEEEPT_")
+pub fn stub_0x3db4c() {
+    // IDA 0x3db4c: `shared_count` ctor for ViewBase — same control block
+    // shape as 0x3b14c; `Arc` glue covers it — no-op.
 }
 
 // 0x3dc40 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()")]
-pub fn stub_0x3dc40() -> ! {
-    todo!("0x3dc40 __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED1Ev")
+pub fn stub_0x3dc40() {
+    // IDA 0x3dc40: D1 dtor has an empty body (same shape as 0x3b270) —
+    // no-op.
 }
 
 // 0x3dc44 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p() [0x3dc44]")]
-pub fn stub_0x3dc44() -> ! {
-    todo!("0x3dc44 __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED0Ev")
+pub fn stub_0x3dc44() {
+    // IDA 0x3dc44: D0 dtor (same shape as 0x3b274) — no-op.
 }
 
 // 0x3dc48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)")]
-pub fn stub_0x3dc48() -> ! {
-    todo!("0x3dc48 __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE7disposeEv")
+pub fn stub_0x3dc48() {
+    // IDA 0x3dc48: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3dc5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)")]
-pub fn stub_0x3dc5c() -> ! {
-    todo!("0x3dc5c __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE19get_untyped_deleterEv")
+pub fn stub_0x3dc5c() -> u32 {
+    // IDA 0x3dc5c: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3e030 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
@@ -856,5 +893,59 @@ mod join_boost_glue_batch_tests {
         let mut mutex = BoostMutex { locked: true };
         assert_eq!(stub_0x3c170(&mut mutex), 0);
         assert!(!mutex.locked);
+    }
+}
+
+#[cfg(test)]
+mod boost_exception_batch_tests {
+    use super::*;
+
+    #[test]
+    #[should_panic(expected = "boost::lock_error")]
+    fn throw_lock_error() {
+        stub_0x3c2a0();
+    }
+
+    #[test]
+    fn clone_and_copy_errors() {
+        let lock = BoostSyncError { kind: SyncErrorKind::Lock, message: "m".to_owned() };
+        assert_eq!(stub_0x3c5b8(&lock), lock);
+        assert_eq!(stub_0x3c6c8(&lock), lock);
+        let thread = BoostSyncError { kind: SyncErrorKind::ThreadResource, message: "t".to_owned() };
+        assert_eq!(stub_0x3ca70(&thread), thread);
+        assert_eq!(stub_0x3cb38(&thread), thread);
+        assert_eq!(stub_0x3cb60(&thread), thread);
+    }
+
+    #[test]
+    fn adopt_swaps_slot() {
+        let mut slot = Some(1u32);
+        stub_0x3c698(&mut slot, Some(2));
+        assert_eq!(slot, Some(2));
+        stub_0x3c698(&mut slot, None);
+        assert_eq!(slot, None);
+    }
+
+    #[test]
+    fn exception_noops_and_nulls() {
+        stub_0x3c470();
+        stub_0x3c4a0();
+        stub_0x3c4e0();
+        stub_0x3c528();
+        stub_0x3c570();
+        stub_0x3c678();
+        stub_0x3c680();
+        stub_0x3c928();
+        stub_0x3c958();
+        stub_0x3c998();
+        stub_0x3c9e0();
+        stub_0x3ca28();
+        stub_0x3cb30();
+        stub_0x3cb48();
+        stub_0x3db4c();
+        stub_0x3dc40();
+        stub_0x3dc44();
+        stub_0x3dc48();
+        assert_eq!(stub_0x3dc5c(), 0);
     }
 }
