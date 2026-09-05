@@ -13,6 +13,57 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use crate::generated_110::BoostMutex;
 use std::collections::BTreeMap;
 use std::ops::Bound::{Excluded, Included, Unbounded};
+use crate::generated_169::ViewSignal;
+
+/// `FunctionMarshaller::StaticData` singleton handle (IDA 0x441ac: guarded
+/// once-init at 0x44208..0x44284).
+static MARSHALLER_STATIC: LazyLock<u32> = LazyLock::new(|| 1);
+/// `__GLOBAL__I_a_14` one-shot latch (IDA 0x44924).
+static GLOBAL_A14_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// Callback queue (IDA 0x44564..0x44888: `std::deque<function<void()>*>`
+/// map/node machinery folds into the host `Vec`).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct FnQueue {
+    pub items: Vec<u32>,
+}
+
+/// `CameraControl` observable state (IDA 0x44abc..0x45454): frame,
+/// multi-touch, delegate, sensitivity 0.025, begin (-1,-1) and scale -1
+/// (0x44b10..0x44b82); the camera touch, pan latch, update count, and post
+/// connection. ObjC peers fold into the host.
+#[derive(Clone, Debug, PartialEq)]
+pub struct CameraControl {
+    pub frame: [f32; 4],
+    pub multi_touch: bool,
+    pub has_rotated: bool,
+    pub delegate: u32,
+    pub rotate_sensitivity: f32,
+    pub touch_begin: (f32, f32),
+    pub screen_scale: f32,
+    pub camera_touch: Option<u32>,
+    pub panning: bool,
+    pub pan_updates: u32,
+    pub post_connected: bool,
+}
+
+impl Default for CameraControl {
+    fn default() -> Self {
+        Self {
+            frame: [0.0; 4],
+            multi_touch: false,
+            has_rotated: false,
+            delegate: 0,
+            rotate_sensitivity: 0.0,
+            touch_begin: (-1.0, -1.0),
+            screen_scale: -1.0,
+            camera_touch: None,
+            panning: false,
+            pan_updates: 0,
+            post_connected: false,
+        }
+    }
+}
 
 /// `RBX::FunctionMarshaller` observable state (IDA 0x4352c..0x43b98): the
 /// ctor wires the thread (folds into the id); window binding, wakefulness,
@@ -927,166 +978,227 @@ pub fn stub_0x441a8() -> u32 {
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
 // type: void *__fastcall(RBX::FunctionMarshaller *this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")]
-pub fn stub_0x441ac() -> ! {
-    todo!("0x441ac RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")
+pub fn stub_0x441ac() -> u32 {
+    // IDA 0x441ac: `safe_static_do_get_staticData` — see
+    // `MARSHALLER_STATIC`.
+    *MARSHALLER_STATIC
 }
 
 // 0x442bc — __ZN5boost15recursive_mutexC2Ev
 // type: _DWORD __fastcall(boost::recursive_mutex *__hidden this)
 #[doc(alias = "boost::recursive_mutex::recursive_mutex(void)")]
-pub fn stub_0x442bc() -> ! {
-    todo!("0x442bc boost::recursive_mutex::recursive_mutex(void)")
+pub fn stub_0x442bc(mutex: &mut BoostMutex) {
+    // IDA 0x442bc: `recursive_mutex` C2 ctor constructs unlocked; the
+    // pthread init folds into the host.
+    mutex.locked = false;
 }
 
 // 0x44564 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")]
-pub fn stub_0x44564() -> ! {
-    todo!("0x44564 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")
+pub fn stub_0x44564(queue: &mut FnQueue) {
+    // IDA 0x44564: deque D2 destroys the map and nodes; drop glue covers
+    // it.
+    queue.items.clear();
 }
 
 // 0x44590 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
-pub fn stub_0x44590() -> ! {
-    todo!("0x44590 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")
+pub fn stub_0x44590(queue: &mut FnQueue, n: usize) {
+    // IDA 0x44590: map init reserves for `n` nodes; folds into `reserve`.
+    queue.items.reserve(n);
 }
 
 // 0x446e8 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
 // type: int(void)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
-pub fn stub_0x446e8() -> ! {
-    todo!("0x446e8 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")
+pub fn stub_0x446e8(queue: &mut FnQueue, n: usize) {
+    // IDA 0x446e8: map allocation reserves storage; folds into `reserve`.
+    queue.items.reserve(n);
 }
 
 // 0x44700 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
-pub fn stub_0x44700() -> ! {
-    todo!("0x44700 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")
+pub fn stub_0x44700(queue: &mut FnQueue, n: usize) {
+    // IDA 0x44700: node creation reserves storage; folds into `reserve`.
+    queue.items.reserve(n);
 }
 
 // 0x447f4 — __ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
-pub fn stub_0x447f4() -> ! {
-    todo!("0x447f4 std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")
+pub fn stub_0x447f4(src: &FnQueue) -> FnQueue {
+    // IDA 0x447f4: deque copy ctor clones entries.
+    src.clone()
 }
 
 // 0x44888 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
 #[doc(alias = "std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
-pub fn stub_0x44888() -> ! {
-    todo!("0x44888 std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")
+pub fn stub_0x44888(dst: &mut FnQueue, src: &FnQueue) {
+    // IDA 0x44888: `__copy` across deque iterators clones the range.
+    dst.items = src.items.clone();
 }
 
 // 0x44924 — __GLOBAL__I_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
-pub fn stub_0x44924() -> ! {
-    todo!("0x44924 global constructor keyed to_a_14")
+pub fn stub_0x44924() -> u32 {
+    // IDA 0x44924: `__GLOBAL__I_a_14` — see `GLOBAL_A14_INIT`.
+    *GLOBAL_A14_INIT
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
 // type: id __cdecl(CameraControl *self, SEL, CGRect, id)
 #[doc(alias = "-[CameraControl init:delegate:]")]
-pub fn stub_0x44abc() -> ! {
-    todo!("0x44abc -[CameraControl init:delegate:]")
+pub fn stub_0x44abc(frame: [f32; 4], delegate: u32) -> CameraControl {
+    // IDA 0x44abc: `init:delegate:` chains to super (0x44ae8), sets the
+    // frame (0x44b10) and multi-touch (0x44b24), zeroes rotation
+    // (0x44b40), stores the delegate (0x44b56), sets sensitivity 0.025
+    // (0x44b66), begin (-1,-1) (0x44b7c..0x44b80), and scale -1 (0x44b82).
+    CameraControl {
+        frame,
+        multi_touch: true,
+        delegate,
+        rotate_sensitivity: 0.025,
+        ..CameraControl::default()
+    }
 }
 
 // 0x44b90 — -[CameraControl dealloc]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl dealloc]")]
-pub fn stub_0x44b90() -> ! {
-    todo!("0x44b90 -[CameraControl dealloc]")
+pub fn stub_0x44b90(control: &mut CameraControl) {
+    // IDA 0x44b90: `dealloc` releases peers and chains to super; drop glue
+    // covers it and the record resets.
+    *control = CameraControl::default();
 }
 
 // 0x44bbc — -[CameraControl setupPostMouseEventConnection]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl setupPostMouseEventConnection]")]
-pub fn stub_0x44bbc() -> ! {
-    todo!("0x44bbc -[CameraControl setupPostMouseEventConnection]")
+pub fn stub_0x44bbc(control: &mut CameraControl) {
+    // IDA 0x44bbc: `setupPostMouseEventConnection` wires the post-mouse
+    // callback through the input service (folds into the host).
+    control.post_connected = true;
 }
 
 // 0x44cd4 — -[CameraControl postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(CameraControl *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[CameraControl postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_0x44cd4() -> ! {
-    todo!("0x44cd4 -[CameraControl postMouseEventProcessed:inputObject:event:]")
+pub fn stub_0x44cd4(control: &mut CameraControl, touch: Option<u32>, processed: bool) {
+    // IDA 0x44cd4: when the processed touch is the camera touch
+    // (0x44cee), the pan ends (0x44cfe).
+    if processed && touch.is_some() && touch == control.camera_touch {
+        control.panning = false;
+    }
 }
 
 // 0x44d04 — -[CameraControl doCameraPanTouchBegan]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchBegan]")]
-pub fn stub_0x44d04() -> ! {
-    todo!("0x44d04 -[CameraControl doCameraPanTouchBegan]")
+pub fn stub_0x44d04(control: &mut CameraControl) {
+    // IDA 0x44d04: `doCameraPanTouchBegan` starts the pan.
+    control.panning = true;
 }
 
 // 0x44dec — -[CameraControl doCameraPanTouchEnded]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchEnded]")]
-pub fn stub_0x44dec() -> ! {
-    todo!("0x44dec -[CameraControl doCameraPanTouchEnded]")
+pub fn stub_0x44dec(control: &mut CameraControl) {
+    // IDA 0x44dec: `doCameraPanTouchEnded` ends the pan and releases the
+    // touch.
+    control.panning = false;
+    control.camera_touch = None;
 }
 
 // 0x44e58 — -[CameraControl doCameraPanTouchMove]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchMove]")]
-pub fn stub_0x44e58() -> ! {
-    todo!("0x44e58 -[CameraControl doCameraPanTouchMove]")
+pub fn stub_0x44e58(control: &mut CameraControl) {
+    // IDA 0x44e58: `doCameraPanTouchMove` advances the pan; the projection
+    // math folds into the host.
+    control.pan_updates += 1;
 }
 
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesBegan:withEvent:]")]
-pub fn stub_0x450a0() -> ! {
-    todo!("0x450a0 -[CameraControl touchesBegan:withEvent:]")
+pub fn stub_0x450a0(control: &mut CameraControl, touch: Option<u32>, count: usize) {
+    // IDA 0x450a0: with no camera touch and exactly one touch (0x450d2),
+    // the touch becomes the camera touch (0x450ee) and the pan begins
+    // (0x450f6); the delegate forward (0x45120) folds into the host.
+    if control.camera_touch.is_none() && count == 1 {
+        control.camera_touch = touch;
+        control.panning = true;
+    }
 }
 
 // 0x45124 — -[CameraControl touchesEnded:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesEnded:withEvent:]")]
-pub fn stub_0x45124() -> ! {
-    todo!("0x45124 -[CameraControl touchesEnded:withEvent:]")
+pub fn stub_0x45124(control: &mut CameraControl, touch: Option<u32>) {
+    // IDA 0x45124: `touchesEnded` releases a matching camera touch
+    // (counterpart of 0x450a0); the delegate forward folds into the host.
+    if touch.is_some() && touch == control.camera_touch {
+        control.camera_touch = None;
+        control.panning = false;
+    }
 }
 
 // 0x45234 — -[CameraControl touchesCancelled:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesCancelled:withEvent:]")]
-pub fn stub_0x45234() -> ! {
-    todo!("0x45234 -[CameraControl touchesCancelled:withEvent:]")
+pub fn stub_0x45234(control: &mut CameraControl, touch: Option<u32>) {
+    // IDA 0x45234: `touchesCancelled` releases a matching camera touch
+    // (same shape as 0x45124).
+    if touch.is_some() && touch == control.camera_touch {
+        control.camera_touch = None;
+        control.panning = false;
+    }
 }
 
 // 0x45344 — -[CameraControl touchesMoved:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesMoved:withEvent:]")]
-pub fn stub_0x45344() -> ! {
-    todo!("0x45344 -[CameraControl touchesMoved:withEvent:]")
+pub fn stub_0x45344(control: &mut CameraControl) {
+    // IDA 0x45344: `touchesMoved` advances tracking; the delegate forward
+    // folds into the host.
+    control.pan_updates += 1;
 }
 
 // 0x45454 — -[CameraControl .cxx_construct]
 // type: id __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl .cxx_construct]")]
-pub fn stub_0x45454() -> ! {
-    todo!("0x45454 -[CameraControl .cxx_construct]")
+pub fn stub_0x45454() -> CameraControl {
+    // IDA 0x45454: `.cxx_construct` runs C++ ivar inits; folds into
+    // `Default`.
+    CameraControl::default()
 }
 
 // 0x4546c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")]
-pub fn stub_0x4546c() -> ! {
-    todo!("0x4546c rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")
+pub fn stub_0x4546c(sig: &mut ViewSignal) -> u32 {
+    // IDA 0x4546c: `connect` for the UIEvent bind flavor — same slot
+    // record as 0x3a390.
+    sig.connect()
 }
 
 // 0x45554 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
-pub fn stub_0x45554() -> ! {
-    todo!("0x45554 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_0x45554(sig: &mut ViewSignal) {
+    // IDA 0x45554: UIEvent-flavor `insert` — see `ViewSignal::insert`.
+    sig.insert();
 }
 
 // 0x45764 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
-pub fn stub_0x45764() -> ! {
-    todo!("0x45764 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+pub fn stub_0x45764() {
+    // IDA 0x45764: `intrusive_ptr<slot>::operator=` from a raw slot
+    // pointer (add-ref/swap/release, same shape as 0x3c0c8); `Arc` glue
+    // covers it — no-op.
 }
 
 #[cfg(test)]
@@ -1277,5 +1389,95 @@ mod marshaller_map_batch_tests {
         let mut mutex = BoostMutex::default();
         assert_eq!(stub_0x43fdc(&mut mutex), 0);
         assert!(mutex.locked);
+    }
+}
+
+#[cfg(test)]
+mod camera_queue_batch_tests {
+    use super::*;
+    use crate::generated_169::ViewSignal;
+
+    #[test]
+    fn static_and_queue() {
+        assert_eq!(stub_0x441ac(), 1);
+        let mut mutex = BoostMutex::default();
+        stub_0x442bc(&mut mutex);
+        assert!(!mutex.locked);
+        let mut queue = FnQueue::default();
+        stub_0x44590(&mut queue, 4);
+        stub_0x446e8(&mut queue, 4);
+        stub_0x44700(&mut queue, 4);
+        assert_eq!(stub_0x447f4(&queue), queue);
+        let mut dst = FnQueue::default();
+        dst.items.push(1);
+        stub_0x44888(&mut dst, &queue);
+        assert!(dst.items.is_empty());
+        queue.items.push(7);
+        stub_0x44888(&mut dst, &queue);
+        assert_eq!(dst.items, vec![7]);
+        stub_0x44564(&mut dst);
+        assert!(dst.items.is_empty());
+        assert_eq!(stub_0x44924(), 1);
+    }
+
+    #[test]
+    fn camera_lifecycle() {
+        let mut control = stub_0x44abc([0.0, 0.0, 320.0, 480.0], 42);
+        assert_eq!(control.frame, [0.0, 0.0, 320.0, 480.0]);
+        assert!(control.multi_touch);
+        assert_eq!(control.delegate, 42);
+        assert_eq!(control.rotate_sensitivity, 0.025);
+        assert_eq!(control.touch_begin, (-1.0, -1.0));
+        assert_eq!(control.screen_scale, -1.0);
+        assert!(!control.post_connected);
+        stub_0x44bbc(&mut control);
+        assert!(control.post_connected);
+        assert_eq!(stub_0x45454(), CameraControl::default());
+    }
+
+    #[test]
+    fn touch_tracking() {
+        let mut control = stub_0x44abc([0.0; 4], 1);
+        stub_0x450a0(&mut control, Some(11), 2);
+        assert_eq!(control.camera_touch, None);
+        assert!(!control.panning);
+        stub_0x450a0(&mut control, Some(11), 1);
+        assert_eq!(control.camera_touch, Some(11));
+        assert!(control.panning);
+        stub_0x450a0(&mut control, Some(12), 1);
+        assert_eq!(control.camera_touch, Some(11));
+        stub_0x44e58(&mut control);
+        assert_eq!(control.pan_updates, 1);
+        stub_0x45344(&mut control);
+        assert_eq!(control.pan_updates, 2);
+        stub_0x44cd4(&mut control, Some(12), true);
+        assert!(control.panning);
+        stub_0x44cd4(&mut control, Some(11), true);
+        assert!(!control.panning);
+        assert_eq!(control.camera_touch, Some(11));
+        stub_0x44d04(&mut control);
+        assert!(control.panning);
+        stub_0x44dec(&mut control);
+        assert!(!control.panning);
+        assert_eq!(control.camera_touch, None);
+        stub_0x450a0(&mut control, Some(13), 1);
+        stub_0x45124(&mut control, Some(14));
+        assert_eq!(control.camera_touch, Some(13));
+        stub_0x45124(&mut control, Some(13));
+        assert_eq!(control.camera_touch, None);
+        stub_0x450a0(&mut control, Some(15), 1);
+        stub_0x45234(&mut control, Some(15));
+        assert_eq!(control.camera_touch, None);
+        stub_0x44b90(&mut control);
+        assert_eq!(control, CameraControl::default());
+    }
+
+    #[test]
+    fn uievent_signal() {
+        let mut sig = ViewSignal::default();
+        assert_eq!(stub_0x4546c(&mut sig), 1);
+        stub_0x45554(&mut sig);
+        assert_eq!(sig.slots, 2);
+        stub_0x45764();
     }
 }
