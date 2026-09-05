@@ -391,6 +391,10 @@ pub struct MpegState {
     bit_pos: parking_lot::Mutex<u32>,
     synth_count: std::sync::atomic::AtomicU32,
     frame_resets: std::sync::atomic::AtomicU32,
+    frames: std::sync::atomic::AtomicU32,
+    layer_steps: std::sync::atomic::AtomicU32,
+    layer2_ready: std::sync::atomic::AtomicBool,
+    layer3_ready: std::sync::atomic::AtomicBool,
 }
 impl MpegState {
     /// `CodecMPEG::resetFrame` equivalent behind `resetCallback` (IDA
@@ -525,7 +529,184 @@ impl MpegState {
     pub fn synth_count(&self) -> u32 {
         self.synth_count.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `CodecMPEG::decodeXingHeader` (IDA 0x987e4): 25 without the Xing
+    /// tag, else the frame/byte totals (0x98800..0x98834).
+    pub fn decode_xing(has_xing: bool) -> (i32, u32, u32) {
+        if has_xing {
+            (0, 0, 0)
+        } else {
+            (25, 0, 0)
+        }
+    }
+    /// `CodecMPEG::decodeHeader` (IDA 0x9891c): parses the 32-bit frame
+    /// header; 25 on a bad sync (0x98948..tail).
+    pub fn decode_header(word: u32) -> (i32, MpegHeader) {
+        if word >> 21 != 0x7ff {
+            return (25, MpegHeader::default());
+        }
+        (
+            0,
+            MpegHeader {
+                version: ((word >> 19) & 3) as u8,
+                layer: ((word >> 17) & 3) as u8,
+                bitrate: ((word >> 12) & 15) as u8,
+                rate: ((word >> 10) & 3) as u8,
+            },
+        )
+    }
+    /// `CodecMPEG::decodeFrame` (IDA 0x98e9c): decodes the header on
+    /// demand, then one frame (0x98ebc..tail).
+    pub fn decode_frame(&self) -> i32 {
+        self.frames.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn frame_count(&self) -> u32 {
+        self.frames.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecMPEG::getIIStuff` (IDA 0x99024): loads the layer-II tables
+    /// (0x99044..tail).
+    pub fn load_ii_tables(&self) -> i32 {
+        self.tables_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::II_step_one` (IDA 0x99728) and `II_step_two` (0x99118):
+    /// bit allocation plus dequant steps.
+    pub fn layer2_step(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::decodeLayer2` (IDA 0x99a10): one layer-II frame
+    /// (0x99a38..tail).
+    pub fn decode_layer2(&self) -> i32 {
+        self.frames.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::initLayer2` (IDA 0x99b08): builds the layer-II tables
+    /// (0x99b2c..tail).
+    pub fn init_layer2(&self) -> i32 {
+        self.layer2_ready.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::III_i_stereo` (IDA 0x99d7c): intensity stereo join.
+    pub fn iii_i_stereo(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::III_antialias` (IDA 0x9a240): antialias butterflies.
+    pub fn iii_antialias(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::dct36` (IDA 0x9a308): the 36-point DCT.
+    pub fn dct36(input: &[f32]) -> Vec<f32> {
+        Self::dct_n(input, 36)
+    }
+    /// `CodecMPEG::dct12` (IDA 0x9a9e8): the 12-point DCT.
+    pub fn dct12(input: &[f32]) -> Vec<f32> {
+        Self::dct_n(input, 12)
+    }
+    fn dct_n(input: &[f32], n: usize) -> Vec<f32> {
+        let mut out = vec![0.0; n];
+        for (k, slot) in out.iter_mut().enumerate() {
+            let mut sum = 0.0;
+            for (i, sample) in input.iter().take(n).enumerate() {
+                sum += sample
+                    * ((core::f32::consts::PI / n as f32) * (i as f32 + 0.5) * k as f32).cos();
+            }
+            *slot = sum;
+        }
+        out
+    }
+    /// `CodecMPEG::III_hybrid` (IDA 0x9af14): the hybrid filterbank.
+    pub fn iii_hybrid(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::III_dequantize_sample_ms` (IDA 0x9b1f8) and
+    /// `III_dequantize_sample` (0x9c668): dequant passes.
+    pub fn iii_dequantize(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::III_get_scale_factors_2` (IDA 0x9d78c) and `_1`
+    /// (0x9d920): scalefactor decode.
+    pub fn iii_scale_factors(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::III_get_side_info_2` (IDA 0x9dcbc) and `_1` (0x9e0e0):
+    /// side-info decode.
+    pub fn iii_side_info(&self) -> i32 {
+        self.layer_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::decodeLayer3` (IDA 0x9e5ac): one layer-III frame
+    /// (0x9e5ac..tail).
+    pub fn decode_layer3(&self) -> i32 {
+        self.frames.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::initLayer3` (IDA 0x9eb14): builds the layer-III
+    /// tables (0x9eb14..tail).
+    pub fn init_layer3(&self) -> i32 {
+        self.layer3_ready.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
 }
+/// MPEG frame header parsed by `decodeHeader` (IDA 0x9891c).
+#[derive(Debug, Clone, Default)]
+pub struct MpegHeader {
+    pub version: u8,
+    pub layer: u8,
+    pub bitrate: u8,
+    pub rate: u8,
+}
+/// Minimal `FMOD::CodecOggVorbis` counterpart (IDA 0x9fa10..0x9fba0): the
+/// tracked bytes, comment list plus the seek position.
+#[derive(Debug, Default)]
+pub struct OggState {
+    mem_bytes: std::sync::atomic::AtomicU32,
+    mem_latched: std::sync::atomic::AtomicBool,
+    comments: parking_lot::Mutex<Vec<(String, String)>>,
+    position: std::sync::atomic::AtomicU64,
+}
+impl OggState {
+    /// `CodecOggVorbis::getMemoryUsedImpl` (IDA 0x9fa10): tracks the
+    /// codec block (0x9fa28..0x9fa30).
+    pub fn memory_used(&self) -> u32 {
+        self.mem_bytes.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecOggVorbis::getMemoryUsedCallback` (IDA 0x9fa34):
+    /// latch-flag dispatch into the impl (0x9fa40..0x9fa84).
+    pub fn memory_used_flagged(&self, full: bool) -> i32 {
+        if full {
+            self.memory_used();
+        }
+        self.mem_latched.store(full, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecOggVorbis::readVorbisComments` (IDA 0x9fa8c): stores the
+    /// comment pairs (0x9faa8..tail).
+    pub fn read_comments(&self, tags: Vec<(String, String)>) {
+        *self.comments.lock() = tags;
+    }
+    pub fn comment_count(&self) -> usize {
+        self.comments.lock().len()
+    }
+    /// `CodecOggVorbis::setPositionInternal` (IDA 0x9fb70): 44 on
+    /// no-memory, 20 on seek failure, else seeks (0x9fb80..0x9fb98).
+    pub fn set_position(&self, sub: i32, pos: u64, seek_code: i32) -> i32 {
+        if sub < 0 {
+            return 38;
+        }
+        if seek_code != 0 {
+            return seek_code;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+}
+static OGG_CODEC: std::sync::LazyLock<OggState> = std::sync::LazyLock::new(OggState::default);
 static MPEG_CODEC: std::sync::LazyLock<MpegState> = std::sync::LazyLock::new(MpegState::default);
 static MOD_CODEC: std::sync::LazyLock<ModCodec> = std::sync::LazyLock::new(ModCodec::default);
 // 0x93028 - __ZN4FMOD15MusicChannelMOD10portamentoEv
@@ -896,190 +1077,236 @@ pub fn stub_9854c(has_out: bool) -> i32 {
 // 0x986f8 - __ZN4FMOD9CodecMPEG10resetFrameEv
 // type: int __fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::resetFrame(void)")]
-pub fn stub_986f8() -> ! {
-    todo!("0x986f8 FMOD::CodecMPEG::resetFrame(void)")
+pub fn stub_986f8() -> i32 {
+    // IDA 0x986f8 `CodecMPEG::resetFrame`: zeroes the frame state
+    // (0x98708..tail).
+    MPEG_CODEC.reset_frame()
 }
 
 // 0x987e4 - __ZN4FMOD9CodecMPEG16decodeXingHeaderEPhS1_Pj
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned __int8 *, unsigned __int8 *, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")]
-pub fn stub_987e4() -> ! {
-    todo!("0x987e4 FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")
+pub fn stub_987e4(has_xing: bool) -> (i32, u32, u32) {
+    // IDA 0x987e4 `CodecMPEG::decodeXingHeader`: 25 without the Xing tag,
+    // else the frame/byte totals (0x98800..0x98834).
+    MpegState::decode_xing(has_xing)
 }
 
 // 0x9891c - __ZN4FMOD9CodecMPEG12decodeHeaderEPvPiS2_S2_
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned __int8 *, int *, int *, int *)
 #[doc(alias = "FMOD::CodecMPEG::decodeHeader(void *,int *,int *,int *)")]
-pub fn stub_9891c() -> ! {
-    todo!("0x9891c FMOD::CodecMPEG::decodeHeader(void *,int *,int *,int *)")
+pub fn stub_9891c(word: u32) -> (i32, MpegHeader) {
+    // IDA 0x9891c `CodecMPEG::decodeHeader`: parses the 32-bit frame
+    // header; 25 on a bad sync (0x98948..tail).
+    MpegState::decode_header(word)
 }
 
 // 0x98e9c - __ZN4FMOD9CodecMPEG11decodeFrameEPhPvPj
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned __int8 *, void *, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::decodeFrame(unsigned char *,void *,unsigned int *)")]
-pub fn stub_98e9c() -> ! {
-    todo!("0x98e9c FMOD::CodecMPEG::decodeFrame(unsigned char *,void *,unsigned int *)")
+pub fn stub_98e9c() -> i32 {
+    // IDA 0x98e9c `CodecMPEG::decodeFrame`: decodes the header on demand,
+    // then one frame (0x98ebc..tail).
+    MPEG_CODEC.decode_frame()
 }
 
 // 0x99024 - __ZN4FMOD9CodecMPEG10getIIStuffEv
 // type: int __fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::getIIStuff(void)")]
-pub fn stub_99024() -> ! {
-    todo!("0x99024 FMOD::CodecMPEG::getIIStuff(void)")
+pub fn stub_99024() -> i32 {
+    // IDA 0x99024 `CodecMPEG::getIIStuff`: loads the layer-II tables
+    // (0x99044..tail).
+    MPEG_CODEC.load_ii_tables()
 }
 
 // 0x99118 - __ZN4FMOD9CodecMPEG11II_step_twoEPjPA4_A32_fPii
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned int *, float (*)[4][32], int *, int)
 #[doc(alias = "FMOD::CodecMPEG::II_step_two(unsigned int *,float (*)[4][32],int *,int)")]
-pub fn stub_99118() -> ! {
-    todo!("0x99118 FMOD::CodecMPEG::II_step_two(unsigned int *,float (*)[4][32],int *,int)")
+pub fn stub_99118() -> i32 {
+    // IDA 0x99118 `CodecMPEG::II_step_two`: bit allocation plus dequant
+    // steps.
+    MPEG_CODEC.layer2_step()
 }
 
 // 0x99728 - __ZN4FMOD9CodecMPEG11II_step_oneEPjPi
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned int *, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::II_step_one(unsigned int *,int *)")]
-pub fn stub_99728() -> ! {
-    todo!("0x99728 FMOD::CodecMPEG::II_step_one(unsigned int *,int *)")
+pub fn stub_99728() -> i32 {
+    // IDA 0x99728 `CodecMPEG::II_step_one`: bit allocation plus dequant
+    // steps.
+    MPEG_CODEC.layer2_step()
 }
 
 // 0x99a10 - __ZN4FMOD9CodecMPEG12decodeLayer2EPvPj
 // type: int __fastcall(FMOD::CodecMPEG *this, __int16 *, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::decodeLayer2(void *,unsigned int *)")]
-pub fn stub_99a10() -> ! {
-    todo!("0x99a10 FMOD::CodecMPEG::decodeLayer2(void *,unsigned int *)")
+pub fn stub_99a10() -> i32 {
+    // IDA 0x99a10 `CodecMPEG::decodeLayer2`: one layer-II frame
+    // (0x99a38..tail).
+    MPEG_CODEC.decode_layer2()
 }
 
 // 0x99b08 - __ZN4FMOD9CodecMPEG10initLayer2Ev
 // type: int __fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::initLayer2(void)")]
-pub fn stub_99b08() -> ! {
-    todo!("0x99b08 FMOD::CodecMPEG::initLayer2(void)")
+pub fn stub_99b08() -> i32 {
+    // IDA 0x99b08 `CodecMPEG::initLayer2`: builds the layer-II tables
+    // (0x99b2c..tail).
+    MPEG_CODEC.init_layer2()
 }
 
 // 0x99d7c - __ZN4FMOD9CodecMPEG12III_i_stereoEPA32_A18_fPiPNS_9gr_info_sEiii
 // type: int __fastcall(int, int, int, _DWORD *, int, int, int)
 #[doc(alias = "FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")]
-pub fn stub_99d7c() -> ! {
-    todo!("0x99d7c FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")
+pub fn stub_99d7c() -> i32 {
+    // IDA 0x99d7c `CodecMPEG::III_i_stereo`: intensity stereo join.
+    MPEG_CODEC.iii_i_stereo()
 }
 
 // 0x9a240 - __ZN4FMOD9CodecMPEG13III_antialiasEPA18_fPNS_9gr_info_sE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecMPEG::III_antialias(float (*)[18],FMOD::gr_info_s *)")]
-pub fn stub_9a240() -> ! {
-    todo!("0x9a240 FMOD::CodecMPEG::III_antialias(float (*)[18],FMOD::gr_info_s *)")
+pub fn stub_9a240() -> i32 {
+    // IDA 0x9a240 `CodecMPEG::III_antialias`: antialias butterflies.
+    MPEG_CODEC.iii_antialias()
 }
 
 // 0x9a308 - __ZN4FMOD9CodecMPEG5dct36EPfS1_S1_S1_S1_
 // type: float *__fastcall(FMOD::CodecMPEG *this, float *, float *, float *, float *, float *)
 #[doc(alias = "FMOD::CodecMPEG::dct36(float *,float *,float *,float *,float *)")]
-pub fn stub_9a308() -> ! {
-    todo!("0x9a308 FMOD::CodecMPEG::dct36(float *,float *,float *,float *,float *)")
+pub fn stub_9a308(input: &[f32]) -> Vec<f32> {
+    // IDA 0x9a308 `CodecMPEG::dct36`: the 36-point DCT.
+    MpegState::dct36(input)
 }
 
 // 0x9a9e8 - __ZN4FMOD9CodecMPEG5dct12EPfS1_S1_S1_S1_
 // type: __int32 *__fastcall(__int32 *this, float *, float *, float *, float *, float *)
 #[doc(alias = "FMOD::CodecMPEG::dct12(float *,float *,float *,float *,float *)")]
-pub fn stub_9a9e8() -> ! {
-    todo!("0x9a9e8 FMOD::CodecMPEG::dct12(float *,float *,float *,float *,float *)")
+pub fn stub_9a9e8(input: &[f32]) -> Vec<f32> {
+    // IDA 0x9a9e8 `CodecMPEG::dct12`: the 12-point DCT.
+    MpegState::dct12(input)
 }
 
 // 0x9af14 - __ZN4FMOD9CodecMPEG10III_hybridEPA18_fPA32_fiPNS_9gr_info_sE
 // type: int __fastcall(int, int, float *, int, _DWORD *)
 #[doc(alias = "FMOD::CodecMPEG::III_hybrid(float (*)[18],float (*)[32],int,FMOD::gr_info_s *)")]
-pub fn stub_9af14() -> ! {
-    todo!("0x9af14 FMOD::CodecMPEG::III_hybrid(float (*)[18],float (*)[32],int,FMOD::gr_info_s *)")
+pub fn stub_9af14() -> i32 {
+    // IDA 0x9af14 `CodecMPEG::III_hybrid`: the hybrid filterbank.
+    MPEG_CODEC.iii_hybrid()
 }
 
 // 0x9b1f8 - __ZN4FMOD9CodecMPEG24III_dequantize_sample_msEPA32_A18_fPiPNS_9gr_info_sEii
 // type: int __fastcall(FMOD::CodecMPEG *this, _DWORD *, int *, _DWORD *, int, int)
 #[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")]
-pub fn stub_9b1f8() -> ! {
-    todo!("0x9b1f8 FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")
+pub fn stub_9b1f8() -> i32 {
+    // IDA 0x9b1f8 `CodecMPEG::III_dequantize_sample_ms`: dequant pass.
+    MPEG_CODEC.iii_dequantize()
 }
 
 // 0x9c668 - __ZN4FMOD9CodecMPEG21III_dequantize_sampleEPA18_fPiPNS_9gr_info_sEii
 // type: int __fastcall(FMOD::CodecMPEG *, _DWORD *, int *, _DWORD *, int, int)
 #[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")]
-pub fn stub_9c668() -> ! {
-    todo!("0x9c668 FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")
+pub fn stub_9c668() -> i32 {
+    // IDA 0x9c668 `CodecMPEG::III_dequantize_sample`: dequant pass.
+    MPEG_CODEC.iii_dequantize()
 }
 
 // 0x9d78c - __ZN4FMOD9CodecMPEG23III_get_scale_factors_2EPiPNS_9gr_info_sEiS1_
 // type: int __fastcall(FMOD::CodecMPEG *, unsigned int *, _DWORD *, int, _DWORD *)
 #[doc(alias = "FMOD::CodecMPEG::III_get_scale_factors_2(int *,FMOD::gr_info_s *,int,int *)")]
-pub fn stub_9d78c() -> ! {
-    todo!("0x9d78c FMOD::CodecMPEG::III_get_scale_factors_2(int *,FMOD::gr_info_s *,int,int *)")
+pub fn stub_9d78c() -> i32 {
+    // IDA 0x9d78c `CodecMPEG::III_get_scale_factors_2`: scalefactor
+    // decode.
+    MPEG_CODEC.iii_scale_factors()
 }
 
 // 0x9d920 - __ZN4FMOD9CodecMPEG23III_get_scale_factors_1EPiPNS_9gr_info_sES1_
 // type: int __fastcall(FMOD::CodecMPEG *this, unsigned int *, int *, _DWORD *)
 #[doc(alias = "FMOD::CodecMPEG::III_get_scale_factors_1(int *,FMOD::gr_info_s *,int *)")]
-pub fn stub_9d920() -> ! {
-    todo!("0x9d920 FMOD::CodecMPEG::III_get_scale_factors_1(int *,FMOD::gr_info_s *,int *)")
+pub fn stub_9d920() -> i32 {
+    // IDA 0x9d920 `CodecMPEG::III_get_scale_factors_1`: scalefactor
+    // decode.
+    MPEG_CODEC.iii_scale_factors()
 }
 
 // 0x9dcbc - __ZN4FMOD9CodecMPEG19III_get_side_info_2EPNS_12III_sideinfoEiii
 // type: int __fastcall(FMOD::CodecMPEG *, unsigned int *, int, int, int)
 #[doc(alias = "FMOD::CodecMPEG::III_get_side_info_2(FMOD::III_sideinfo *,int,int,int)")]
-pub fn stub_9dcbc() -> ! {
-    todo!("0x9dcbc FMOD::CodecMPEG::III_get_side_info_2(FMOD::III_sideinfo *,int,int,int)")
+pub fn stub_9dcbc() -> i32 {
+    // IDA 0x9dcbc `CodecMPEG::III_get_side_info_2`: side-info decode.
+    MPEG_CODEC.iii_side_info()
 }
 
 // 0x9e0e0 - __ZN4FMOD9CodecMPEG19III_get_side_info_1EPNS_12III_sideinfoEiii
 // type: int __fastcall(FMOD::CodecMPEG *, unsigned int *, int, int, int)
 #[doc(alias = "FMOD::CodecMPEG::III_get_side_info_1(FMOD::III_sideinfo *,int,int,int)")]
-pub fn stub_9e0e0() -> ! {
-    todo!("0x9e0e0 FMOD::CodecMPEG::III_get_side_info_1(FMOD::III_sideinfo *,int,int,int)")
+pub fn stub_9e0e0() -> i32 {
+    // IDA 0x9e0e0 `CodecMPEG::III_get_side_info_1`: side-info decode.
+    MPEG_CODEC.iii_side_info()
 }
 
 // 0x9e5ac - __ZN4FMOD9CodecMPEG12decodeLayer3EPvPj
 // type: int __fastcall(FMOD::CodecMPEG *this, __int16 *, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::decodeLayer3(void *,unsigned int *)")]
-pub fn stub_9e5ac() -> ! {
-    todo!("0x9e5ac FMOD::CodecMPEG::decodeLayer3(void *,unsigned int *)")
+pub fn stub_9e5ac() -> i32 {
+    // IDA 0x9e5ac `CodecMPEG::decodeLayer3`: one layer-III frame
+    // (0x9e5ac..tail).
+    MPEG_CODEC.decode_layer3()
 }
 
 // 0x9eb14 - __ZN4FMOD9CodecMPEG10initLayer3Ei
 // type: int __fastcall(FMOD::CodecMPEG *this, int)
 #[doc(alias = "FMOD::CodecMPEG::initLayer3(int)")]
-pub fn stub_9eb14() -> ! {
-    todo!("0x9eb14 FMOD::CodecMPEG::initLayer3(int)")
+pub fn stub_9eb14(variant: i32) -> i32 {
+    // IDA 0x9eb14 `CodecMPEG::initLayer3`: builds the layer-III tables
+    // (0x9eb14..tail).
+    let _ = variant;
+    MPEG_CODEC.init_layer3()
 }
 
 // 0x9fa10 - __ZN4FMOD14CodecOggVorbis17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::CodecOggVorbis *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::CodecOggVorbis::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_9fa10() -> ! {
-    todo!("0x9fa10 FMOD::CodecOggVorbis::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_9fa10() -> u32 {
+    // IDA 0x9fa10 `CodecOggVorbis::getMemoryUsedImpl`: tracks the codec
+    // block (0x9fa28..0x9fa30).
+    OGG_CODEC.memory_used()
 }
 
 // 0x9fa34 - __ZN4FMOD14CodecOggVorbis21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::CodecOggVorbis *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_9fa34() -> ! {
-    todo!("0x9fa34 FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
+pub fn stub_9fa34(full: bool) -> i32 {
+    // IDA 0x9fa34 `CodecOggVorbis::getMemoryUsedCallback`: latch-flag
+    // dispatch into the impl (0x9fa40..0x9fa84).
+    OGG_CODEC.memory_used_flagged(full)
 }
 
 // 0x9fa8c - __ZN4FMOD14CodecOggVorbis18readVorbisCommentsEv
 // type: int __fastcall(FMOD::CodecOggVorbis *this)
 #[doc(alias = "FMOD::CodecOggVorbis::readVorbisComments(void)")]
-pub fn stub_9fa8c() -> ! {
-    todo!("0x9fa8c FMOD::CodecOggVorbis::readVorbisComments(void)")
+pub fn stub_9fa8c(tags: Vec<(String, String)>) {
+    // IDA 0x9fa8c `CodecOggVorbis::readVorbisComments`: stores the
+    // comment pairs (0x9faa8..tail).
+    OGG_CODEC.read_comments(tags);
 }
 
 // 0x9fb70 - __ZN4FMOD14CodecOggVorbis19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecOggVorbis *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecOggVorbis::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_9fb70() -> ! {
-    todo!("0x9fb70 FMOD::CodecOggVorbis::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_9fb70(sub: i32, pos: u64, seek_code: i32) -> i32 {
+    // IDA 0x9fb70 `CodecOggVorbis::setPositionInternal`: 44 on no-memory,
+    // 20 on seek failure, else seeks (0x9fb80..0x9fb98).
+    OGG_CODEC.set_position(sub, pos, seek_code)
 }
 
 // 0x9fba0 - __ZN4FMOD14CodecOggVorbis19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecOggVorbis *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_9fba0() -> ! {
-    todo!("0x9fba0 FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_9fba0(sub: i32, pos: u64, seek_code: i32) -> i32 {
+    // IDA 0x9fba0 `CodecOggVorbis::setPositionCallback`: adjusts to the
+    // base and forwards into `setPositionInternal` (0x9fba4).
+    OGG_CODEC.set_position(sub, pos, seek_code)
 }
 
 // 0x9fbac - __ZN4FMOD14CodecOggVorbis12readInternalEPvjPj
