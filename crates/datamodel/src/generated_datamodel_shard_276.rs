@@ -15,6 +15,123 @@ use rbx_core::shared_ptr::{
     ControlBlockPd, CreatableInstanceDeleter, shared_ptr_from_raw,
 };
 use std::sync::Arc;
+use crate::instance::MarketplaceService;
+
+/// Signature argument kinds behind the marketplace descriptors (IDA
+/// `0x8d8346` `getSingleton<SharedPtr<Instance>>`, `0x8d8382`
+/// `getSingleton<int>`, `0x8d83ba` `getSingleton<bool>`, `0x8d86ea`
+/// `getSingleton<CurrencyType>`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MarketplaceArgKind {
+    Instance,
+    Int,
+    Bool,
+    Currency,
+}
+
+/// One `SignatureDescriptor::Item` (IDA `0x8d8354`): the declared name plus
+/// the argument kind.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct MarketplaceSigArg {
+    pub name: String,
+    pub kind: MarketplaceArgKind,
+}
+
+/// Method behind `BoundFuncDesc<MarketplaceService, void ()(Instance, int,
+/// bool, CurrencyType), 4>` (IDA `0x8d8b88` `Call4Helper::call`): the
+/// member function invoked by `execute`.
+pub type MarketplaceMethod4 = fn(
+    &MarketplaceService,
+    &SharedPtr<Instance>,
+    i32,
+    bool,
+    MarketplaceCurrency,
+);
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<MarketplaceService, void
+/// ()(Instance, int, bool, CurrencyType), 4>` (IDA `0x8d85c8`): the stored
+/// method words plus the declared 4-arg signature.
+pub struct MarketplaceFunc4Desc {
+    pub name: String,
+    pub method: MarketplaceMethod4,
+    pub signature: Vec<MarketplaceSigArg>,
+}
+
+/// Yield method behind `BoundYieldFuncDesc<MarketplaceService, bool
+/// ()(Instance, int), bool, 2>` (IDA `0x8d919c` `execute`).
+pub type MarketplaceYieldMethod =
+    fn(&MarketplaceService, &SharedPtr<Instance>, i32) -> bool;
+
+/// Resume continuation behind `resume_adapter<bool>` (IDA `0x8d9256`): the
+/// `function<void ()(bool)>` fed by the trap result.
+pub type MarketplaceResumeFn = Arc<dyn Fn(bool) + Send + Sync>;
+
+/// Error continuation behind `function1<void, string>` (IDA `0x8d9272`).
+pub type MarketplaceErrorFn = Arc<dyn Fn(&str) + Send + Sync>;
+
+/// Rust model of `RBX::Reflection::BoundYieldFuncDesc<MarketplaceService,
+/// bool ()(Instance, int), bool, 2>` (IDA `0x8d8e70`): the stored yield
+/// method plus the declared 2-arg signature (return type is `bool`, IDA
+/// `0x8d904a`).
+pub struct MarketplaceYieldDesc {
+    pub name: String,
+    pub method: MarketplaceYieldMethod,
+    pub signature: Vec<MarketplaceSigArg>,
+}
+
+/// Rust model of `RBX::Reflection::GenericSlotWrapper` restricted to the
+/// 4-arg marketplace slot (IDA `0x8dd740` `execute4`).
+pub struct MarketplaceSlotWrapper4 {
+    pub handler: MarketplaceHandler4,
+}
+
+impl MarketplaceSlotWrapper4 {
+    /// IDA `0x8dd740`: packs the 4-`Variant` vector (`Instance`/`int`/
+    /// `bool`/`CurrencyType` singletons, 0x8dd7da-0x8dd844), dispatches the
+    /// wrapped slot (`*a1 + 8`, 0x8dd854), destroys the vector (0x8dd85e).
+    pub fn execute4(
+        &self,
+        instance: &SharedPtr<Instance>,
+        product: i32,
+        purchased: bool,
+        currency: MarketplaceCurrency,
+    ) {
+        (self.handler)(SharedPtr::clone(instance), product, purchased, currency);
+    }
+}
+
+/// Rust model of `boost::_bi::bind_t<void, mf4<GenericSlotWrapper, ...>,
+/// list5<value<SharedPtr<GenericSlotWrapper>>, arg<1..4>>>` (IDA `0x8dd624`).
+#[derive(Clone)]
+pub struct MarketplaceBind4 {
+    pub wrapper: SharedPtr<MarketplaceSlotWrapper4>,
+}
+
+/// Rust model of `boost::function4<void, SharedPtr<Instance>, int, bool,
+/// CurrencyType>` holding that bind (IDA `0x8ddc84`).
+#[derive(Clone, Default)]
+pub struct MarketplaceFunction4 {
+    pub target: Option<MarketplaceBind4>,
+}
+
+/// `typeinfo` name compared by the 4-arg `manager` check-type path (IDA
+/// `0x8de196` `strcmp`).
+pub const MARKETPLACE_BIND4_TYPE_NAME: &str = "N5boost3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKiRKbRKNS4_18MarketplaceService12CurrencyTypeEEENS0_5list5INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSP_ILi2EEENSP_ILi3EEENSP_ILi4EEEEEEE";
+
+/// Shared 4-arg `manager` switch (IDA `0x8de09c`): same Clone/Move/Destroy/
+/// Check/GetType discipline as the 3-arg twin.
+fn marketplace_manage4(
+    slot: &mut MarketplaceFunction4,
+    other: &MarketplaceFunction4,
+    op: MarketplaceBindOp,
+) {
+    match op {
+        MarketplaceBindOp::Clone | MarketplaceBindOp::Move => *slot = other.clone(),
+        MarketplaceBindOp::Destroy => *slot = MarketplaceFunction4::default(),
+        MarketplaceBindOp::Check | MarketplaceBindOp::GetType => {}
+    }
+}
+
 
 /// Rust model of `RBX::TextureTrail` (IDA `0x860708`): the trail adornment
 /// leaf; the `PartInstance` ref behind `assignIDREF` is the only member
@@ -660,48 +777,87 @@ pub fn stub_0x8d6f7c(
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable3<void,boost::shared_ptr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x8d6fa8() -> ! {
-    todo!("0x8d6fa8 bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x8d6fa8(dst: &mut MarketplaceFunction3, src: &MarketplaceBind3) -> bool {
+    // IDA 0x8d6fa8 `basic_vtable3::assign_to<bind_t<...>>` (words form):
+    // copies the bind words plus the `shared_count` (0x8d6fc8-0x8d6fe2),
+    // installs through the nested `assign_to` (0x8d7026), releases the temp
+    // (0x8d7034), returns 1 (0x8d7054). Clone-assign plus success is the
+    // same outcome.
+    stub_0x8d6e68(dst, src);
+    true
 }
 
 // 0x8d7090 — __ZNK5boost6detail8function13basic_vtable3IvNS_10shared_ptrIN3RBX8InstanceEEEibE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKS6_RKiRKbEENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable3<void,boost::shared_ptr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x8d7090() -> ! {
-    todo!("0x8d7090 bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x8d7090(dst: &mut MarketplaceFunction3, src: &MarketplaceBind3) -> bool {
+    // IDA 0x8d7090 `basic_vtable3::assign_to<bind_t<...>>` (count form):
+    // retains via `shared_count` copy (0x8d70c6), `assign_functor`
+    // (0x8d7108), releases (0x8d7116), returns 1 (0x8d7136).
+    stub_0x8d7174(&mut dst.target, src);
+    true
 }
 
 // 0x8d7174 — __ZNK5boost6detail8function13basic_vtable3IvNS_10shared_ptrIN3RBX8InstanceEEEibE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKS6_RKiRKbEENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "void boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: void boost::detail::function::basic_vtable3<void,boost::shared_ptr<RBX::Instance>,int,bool>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x8d7174() -> ! {
-    todo!("0x8d7174 void boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,int,bool>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x8d7174(dst: &mut Option<MarketplaceBind3>, src: &MarketplaceBind3) {
+    // IDA 0x8d7174 `basic_vtable3::assign_functor<bind_t<...>>`: `operator
+    // new(0x10)` (0x8d719c), copies the bind words plus the `shared_count`
+    // (0x8d71ae-0x8d71f6), stores the fresh functor (0x8d71fe). The clone
+    // into the slot is the same retained copy.
+    *dst = Some(src.clone());
 }
 
 // 0x8d7248 — __ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEclINS_4_mfi3mf3IvS6_RKNS3_INS4_8InstanceEEERKiRKbEENS0_5list3IRSI_RiRbEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(_DWORD *, char **, int *)
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&> &,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &> &,int)")]
 // was: void boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,int &,bool &>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&> &,boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,int &,bool &> &,int)
-pub fn stub_0x8d7248() -> ! {
-    todo!("0x8d7248 void boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&> &,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &> &,int)")
+pub fn stub_0x8d7248(
+    wrapper: &MarketplaceSlotWrapper,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+) {
+    // IDA 0x8d7248 `list4<value<wrapper>, arg<1..3>>::operator()<mf3,
+    // list3>`: unpacks the three arg refs (0x8d724a-0x8d7256), adjusts to
+    // the member (`*a1 + (v5 >> 1)`, virtual when `v5 & 1`, 0x8d725c-0x8d7264)
+    // and invokes the `mf3` (0x8d725c body) — the `execute3` path.
+    stub_0x8d6ae4(wrapper, instance, product, purchased);
 }
 
 // 0x8d7270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKiRKbEENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x8d7270() -> ! {
-    todo!("0x8d7270 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x8d7270(
+    slot: &mut MarketplaceFunction3,
+    other: &MarketplaceFunction3,
+    op: MarketplaceBindOp,
+) {
+    // IDA 0x8d7270 `functor_manager<...>::manager`: 0 clones (`new` +
+    // bind copy, 0x8d72ee-0x8d7322), 1 moves (0x8d7326-0x8d732c), 2 destroys
+    // (release + `delete`, 0x8d7330-0x8d734e), 3 checks the `typeinfo` name
+    // (`strcmp`, 0x8d736a; single monomorph, always matches), default writes
+    // the `typeinfo` (0x8d72ce-0x8d72d0).
+    marketplace_manage(slot, other, op);
 }
 
 // 0x8d8294 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8d8294() -> ! {
-    todo!("0x8d8294 RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8d8294(name: &str) -> MarketplaceEvent3Desc {
+    // IDA 0x8d8294 `EventDesc<MarketplaceService, void ()(Instance, int,
+    // bool), ...>::EventDesc`: `classDescriptor` once-init (0x8d82d4),
+    // `EventDescriptor` base init (0x8d82f2), the member-signal pointer at
+    // `+40` (0x8d8316), then the 3-item signature list (`Instance`, `int`,
+    // `bool` singletons, 0x8d8346-0x8d83de). The descriptor owns its member
+    // signal here, so construction is name + fresh signals.
+    let _ = MARKETPLACE_BIND3_TYPE_NAME;
+    MarketplaceEvent3Desc { name: name.to_string(), ..Default::default() }
 }
 
 // 0x8d84f0 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
@@ -720,16 +876,39 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8d8514 as stub_0x8d8514;
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::BoundFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),char const*,char const*,char const*,char const*,bool,char const*,RBX::MarketplaceService::CurrencyType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::BoundFuncDesc(void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),char const*,char const*,char const*,char const*,bool,char const*,RBX::MarketplaceService::CurrencyType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8d85c8() -> ! {
-    todo!("0x8d85c8 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::BoundFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),char const*,char const*,char const*,char const*,bool,char const*,RBX::MarketplaceService::CurrencyType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8d85c8(
+    name: &str,
+    method: MarketplaceMethod4,
+    args: [&str; 4],
+) -> MarketplaceFunc4Desc {
+    // IDA 0x8d85c8 `BoundFuncDesc<MarketplaceService, void ()(Instance,
+    // int, bool, CurrencyType), 4>::BoundFuncDesc`: `classDescriptor`
+    // once-init (0x8d8600), `FunctionDescriptor` base init (0x8d8620),
+    // stores the method words (0x8d863a), the bool + currency tag words
+    // (0x8d867c-0x8d8698), then `declareSignature` (0x8d8736).
+    let mut desc = MarketplaceFunc4Desc { name: name.to_string(), method, signature: Vec::new() };
+    stub_0x8d88a4(&mut desc, args);
+    desc
 }
 
 // 0x8d88a4 — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEELi4EE16declareSignatureEPKcNS0_7VariantESB_SC_SB_SC_SB_SC_
 // type: int __fastcall(int, int, int *, int, int *, int, int *, int, int *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x8d88a4() -> ! {
-    todo!("0x8d88a4 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x8d88a4(desc: &mut MarketplaceFunc4Desc, args: [&str; 4]) {
+    // IDA 0x8d88a4 `BoundFuncDesc<...>::declareSignature`: `addArgument`s
+    // the four params with the `Instance`/`int`/`bool`/`CurrencyType`
+    // singletons (0x8d88bc-0x8d8922). Recording the (name, kind) pairs is
+    // the same declaration.
+    let kinds = [
+        MarketplaceArgKind::Instance,
+        MarketplaceArgKind::Int,
+        MarketplaceArgKind::Bool,
+        MarketplaceArgKind::Currency,
+    ];
+    for (name, kind) in args.iter().zip(kinds) {
+        desc.signature.push(MarketplaceSigArg { name: name.to_string(), kind });
+    }
 }
 
 // 0x8d8928 — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEELi4EED0Ev
@@ -742,32 +921,75 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8d8928 as stub_0x8d8928;
 // type: void __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_0x8d8a54() -> ! {
-    todo!("0x8d8a54 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),4>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x8d8a54(
+    desc: &MarketplaceFunc4Desc,
+    service: &MarketplaceService,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8d8a54 `BoundFuncDesc<...>::execute`: adjusts the service
+    // (`a2 - 36`, 0x8d8aa6), `getArg<1..4>`s the typed args out of the
+    // `Arguments` vector (0x8d8ac2-0x8d8b00), then
+    // `Call4Helper::call` (0x8d8b1c) with retain/release bracketing
+    // (0x8d8b22-0x8d8b2a). The typed signature guarantees the unpacking;
+    // the dispatch is the `Call4Helper` path.
+    stub_0x8d8b88(desc.method, service, instance, product, purchased, currency);
 }
 
 // 0x8d8b88 — __ZN3RBX10Reflection11Call4HelperINS_18MarketplaceServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEES6_ibS7_vE4callEPS2_S9_RNS0_7VariantERKS6_RKiRKbRKS7_
 // type: void __fastcall(int, char *, int, int, const shared_count *, boost::detail::sp_counted_base *, unsigned __int8 *, _DWORD *, int, int)
 #[doc(alias = "RBX::Reflection::Call4Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)")]
 // was: RBX::Reflection::Call4Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)
-pub fn stub_0x8d8b88() -> ! {
-    todo!("0x8d8b88 RBX::Reflection::Call4Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)")
+pub fn stub_0x8d8b88(
+    method: MarketplaceMethod4,
+    service: &MarketplaceService,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8d8b88 `Call4Helper<MarketplaceService, ...>::call`: resolves
+    // the direct/virtual member (`a3 & 1` selects the vtable slot,
+    // 0x8d8bd8-0x8d8be8), retains the arg `shared_ptr` (0x8d8bfc), invokes
+    // (0x8d8c1c), releases (0x8d8c28). The stored fn is already resolved;
+    // retain + invoke + `Drop` is the same sequence.
+    let instance = SharedPtr::clone(instance);
+    method(service, &instance, product, purchased, currency);
 }
 
 // 0x8d8e70 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_18MarketplaceServiceEFbN5boost10shared_ptrINS_8InstanceEEEiEbLi2EEC2EMS2_FvS6_iNS3_8functionIFvbEEENS9_IFvSsEEEEPKcSH_SH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::BoundYieldFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(boost::shared_ptr<RBX::Instance>,int),bool,2>::BoundYieldFuncDesc(void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8d8e70() -> ! {
-    todo!("0x8d8e70 RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::BoundYieldFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8d8e70(
+    name: &str,
+    method: MarketplaceYieldMethod,
+    args: [&str; 2],
+) -> MarketplaceYieldDesc {
+    // IDA 0x8d8e70 `BoundYieldFuncDesc<MarketplaceService, bool
+    // ()(Instance, int), bool, 2>::BoundYieldFuncDesc`: same
+    // `classDescriptor` + `YieldFunctionDescriptor` init (0x8d8ea8-0x8d8ec8),
+    // stores the method words (0x8d8ee2), then `declareSignature`
+    // (0x8d8f4a).
+    let mut desc = MarketplaceYieldDesc { name: name.to_string(), method, signature: Vec::new() };
+    stub_0x8d903c(&mut desc, args);
+    desc
 }
 
 // 0x8d903c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_18MarketplaceServiceEFbN5boost10shared_ptrINS_8InstanceEEEiEbLi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 // type: int __fastcall(int, int, int *, int, int *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(boost::shared_ptr<RBX::Instance>,int),bool,2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x8d903c() -> ! {
-    todo!("0x8d903c RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x8d903c(desc: &mut MarketplaceYieldDesc, args: [&str; 2]) {
+    // IDA 0x8d903c `BoundYieldFuncDesc<...>::declareSignature`: records the
+    // `bool` return type (0x8d904a) and `addArgument`s `(Instance, int)`
+    // (0x8d9058-0x8d9084).
+    let kinds = [MarketplaceArgKind::Instance, MarketplaceArgKind::Int];
+    for (name, kind) in args.iter().zip(kinds) {
+        desc.signature.push(MarketplaceSigArg { name: name.to_string(), kind });
+    }
 }
 
 // 0x8d9088 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_18MarketplaceServiceEFbN5boost10shared_ptrINS_8InstanceEEEiEbLi2EED0Ev
@@ -780,8 +1002,27 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8d9088 as stub_0x8d9088;
 // type: void __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, char, int, int, int, char, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(boost::shared_ptr<RBX::Instance>,int),bool,2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
-pub fn stub_0x8d919c() -> ! {
-    todo!("0x8d919c RBX::Reflection::BoundYieldFuncDesc<RBX::MarketplaceService,bool ()(rbx_core::SharedPtr<RBX::Instance>,int),bool,2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_0x8d919c(
+    desc: &MarketplaceYieldDesc,
+    service: &MarketplaceService,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    on_resume: &MarketplaceResumeFn,
+    on_error: &MarketplaceErrorFn,
+) -> bool {
+    // IDA 0x8d919c `BoundYieldFuncDesc<...>::execute`: resolves the
+    // direct/virtual member (0x8d91ca-0x8d920a), `getArg<1..2>`s
+    // (0x8d9220-0x8d9232), wraps the `Variant` continuation in
+    // `resume_adapter<bool>` (0x8d9256-0x8d9262), invokes with both
+    // continuations (0x8d9288), then clears them (0x8d9290-0x8d92b0). The
+    // trap runs synchronously here: the method result feeds the resume
+    // continuation and returns. The error continuation fires only on
+    // panic-free failure paths, which this model has none of — it stays
+    // wired for the bridge.
+    let _ = on_error;
+    let result = (desc.method)(service, instance, product);
+    on_resume(result);
+    result
 }
 
 // 0x8dd22c — __ZN3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEED0Ev
@@ -794,8 +1035,12 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8dd22c as stub_0x8dd22c;
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x8dd2e0() -> ! {
-    todo!("0x8dd2e0 RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x8dd2e0(desc: &MarketplaceEvent4Desc, wrapper: &SharedPtr<MarketplaceSlotWrapper4>) {
+    // IDA 0x8dd2e0 `EventDescImpl<4, ...>::connectGeneric`: same
+    // retain/bind/function/connect/clear/release shape as the 3-arg twin
+    // (0x8dd310-0x8dd3ba), over `GenericSlotWrapper::execute4` with
+    // `arg<1..4>`.
+    desc.signal.connect(SharedPtr::clone(&wrapper.handler));
 }
 
 // 0x8dd444 — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEE12isScriptableEv
@@ -808,111 +1053,199 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8dd444 as stub_0x8dd444;
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::isBroadcast(void)const
-pub fn stub_0x8dd44c() -> ! {
-    todo!("0x8dd44c RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::isBroadcast(void)const")
+pub fn stub_0x8dd44c(desc: &MarketplaceEvent4Desc) -> bool {
+    // IDA 0x8dd44c `RemoteEventDesc<...>::isBroadcast`: `*(a1 + 44) & 1`
+    // (0x8dd452).
+    desc.broadcast
 }
 
 // 0x8dd454 — __ZNK3RBX10Reflection13EventDescImplILi4ENS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
 // type: void __fastcall(int, int, _DWORD *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_0x8dd454() -> ! {
-    todo!("0x8dd454 RBX::Reflection::EventDescImpl<4,RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x8dd454(
+    desc: &MarketplaceEvent4Desc,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8dd454 `EventDescImpl<4, ...>::fireEvent` (args-vector form):
+    // asserts `args.size() == 4` (0x8dd490-0x8dd506), adjusts the service
+    // (`a2 - 36`), `any_cast`s the four args (0x8dd528-0x8dd57c), then
+    // `signal_with_args<4>::operator()` (0x8dd592). Typed arity covers the
+    // assert and the casts; dispatch is the 0x8d29f0 path.
+    stub_0x8d29f0(desc, instance, product, purchased, currency);
 }
 
 // 0x8dd600 — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_0x8dd600() -> ! {
-    todo!("0x8dd600 RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x8dd600(
+    desc: &MarketplaceEvent4Desc,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8dd600 `RemoteEventDesc<...>::sendEvent`: tail-calls the remote
+    // half's virtual at `*a2 + 12` — the remote emit.
+    desc.remote.emit(instance, product, purchased, currency);
 }
 
 // 0x8dd610 — __ZNK3RBX10Reflection13EventDescBaseINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_0x8dd610() -> ! {
-    todo!("0x8dd610 RBX::Reflection::EventDescBase<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x8dd610(desc: &MarketplaceEvent4Desc) {
+    // IDA 0x8dd610 `EventDescBase<...>::disconnectAll`: adjusts the service
+    // (`a2 - 36`) and `signal::disconnectAll`s the member — same shape as
+    // the 3-arg twin (0x8d69b4).
+    desc.signal.disconnect_all();
 }
 
 // 0x8dd624 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKiRKbRKNS1_18MarketplaceService12CurrencyTypeENS4_IS3_EENS_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISP_T0_T1_T2_T3_T4_EENSN_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSS_FSP_ST_SU_SV_SW_ESZ_S10_S11_S12_S13_
 // type: void __fastcall(_DWORD *, int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list_av_5<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)
-pub fn stub_0x8dd624() -> ! {
-    todo!("0x8dd624 boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list_av_5<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+pub fn stub_0x8dd624(wrapper: &SharedPtr<MarketplaceSlotWrapper4>) -> MarketplaceBind4 {
+    // IDA 0x8dd624 `bind<void, GenericSlotWrapper, Instance const&, int
+    // const&, bool const&, CurrencyType const&, SharedPtr<...>,
+    // arg<1..4>>`: retains the wrapper (0x8dd654), builds the `list5`
+    // (0x8dd68e), stores the bind words plus the count (0x8dd696-0x8dd6cc).
+    MarketplaceBind4 { wrapper: SharedPtr::clone(wrapper) }
 }
 
 // 0x8dd740 — __ZN3RBX10Reflection18GenericSlotWrapper8execute4IN5boost10shared_ptrINS_8InstanceEEEibNS_18MarketplaceService12CurrencyTypeEEEvRKT_RKT0_RKT1_RKT2_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute4<rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>(rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)")]
 // was: void RBX::Reflection::GenericSlotWrapper::execute4<boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>(boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)
-pub fn stub_0x8dd740() -> ! {
-    todo!("0x8dd740 void RBX::Reflection::GenericSlotWrapper::execute4<rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>(rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&)")
+pub fn stub_0x8dd740(
+    wrapper: &MarketplaceSlotWrapper4,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8dd740 `GenericSlotWrapper::execute4<...>` — see
+    // `MarketplaceSlotWrapper4::execute4`.
+    wrapper.execute4(instance, product, purchased, currency);
 }
 
 // 0x8ddc84 — __ZN5boost9function4IvNS_10shared_ptrIN3RBX8InstanceEEEibNS2_18MarketplaceService12CurrencyTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKS4_RKiRKbRKS6_EENS9_5list5INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSS_ILi2EEENSS_ILi3EEENSS_ILi4EEEEEEEEEvT_
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::function4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)")]
 // was: void boost::function4<void,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)
-pub fn stub_0x8ddc84() -> ! {
-    todo!("0x8ddc84 void boost::function4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>)")
+pub fn stub_0x8ddc84(dst: &mut MarketplaceFunction4, src: &MarketplaceBind4) {
+    // IDA 0x8ddc84 `function4::assign_to<bind_t<...>>`: copies the bind
+    // words plus the `shared_count` (0x8ddca8-0x8ddcbc), installs the stored
+    // vtable through `basic_vtable4::assign_to` (0x8ddd0c), releases the
+    // temp (0x8ddd1a).
+    dst.target = Some(src.clone());
 }
 
 // 0x8ddd7c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKiRKbRKNS7_18MarketplaceService12CurrencyTypeEEENS3_5list5INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSS_ILi2EEENSS_ILi3EEENSS_ILi4EEEEEEEE6manageERKNS1_15function_bufferERS10_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x8ddd7c() -> ! {
-    todo!("0x8ddd7c boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x8ddd7c(
+    slot: &mut MarketplaceFunction4,
+    other: &MarketplaceFunction4,
+    op: MarketplaceBindOp,
+) {
+    // IDA 0x8ddd7c `functor_manager<...>::manage`: non-`GetType` ops go to
+    // `manager()` (0x8ddd80); `GetType` (4) writes the `typeinfo`
+    // (0x8ddd92-0x8ddd96).
+    let _ = MARKETPLACE_BIND4_TYPE_NAME;
+    marketplace_manage4(slot, other, op);
 }
 
 // 0x8ddd98 — __ZN5boost6detail8function26void_function_obj_invoker4INS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKiRKbRKNS7_18MarketplaceService12CurrencyTypeEEENS3_5list5INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSS_ILi2EEENSS_ILi3EEENSS_ILi4EEEEEEEvSC_ibSK_E6invokeERNS1_15function_bufferESC_ibSK_
 // type: int __fastcall(int *, int, int, char, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker4<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)")]
 // was: boost::detail::function::void_function_obj_invoker4<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,void,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)
-pub fn stub_0x8ddd98() -> ! {
-    todo!("0x8ddd98 boost::detail::function::void_function_obj_invoker4<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)")
+pub fn stub_0x8ddd98(
+    bind: &MarketplaceBind4,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8ddd98 `void_function_obj_invoker4<...>::invoke`: builds the
+    // `list4` of arg refs (0x8dddb0-0x8dddbc) and runs
+    // `list5::operator()` (0x8dddc8) — the `execute4` path.
+    stub_0x8dd740(&bind.wrapper, instance, product, purchased, currency);
 }
 
 // 0x8dddcc — __ZNK5boost6detail8function13basic_vtable4IvNS_10shared_ptrIN3RBX8InstanceEEEibNS4_18MarketplaceService12CurrencyTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS4_10Reflection18GenericSlotWrapperERKS6_RKiRKbRKS8_EENSB_5list5INSB_5valueINS3_ISG_EEEENS_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable4<void,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x8dddcc() -> ! {
-    todo!("0x8dddcc bool boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x8dddcc(dst: &mut MarketplaceFunction4, src: &MarketplaceBind4) -> bool {
+    // IDA 0x8dddcc `basic_vtable4::assign_to<bind_t<...>>` (words form):
+    // copies the bind words plus the `shared_count` (0x8dddec-0x8dde06),
+    // installs through the nested `assign_to` (0x8dde4a), releases
+    // (0x8dde58), returns 1 (0x8dde78).
+    stub_0x8ddc84(dst, src);
+    true
 }
 
 // 0x8ddeb4 — __ZNK5boost6detail8function13basic_vtable4IvNS_10shared_ptrIN3RBX8InstanceEEEibNS4_18MarketplaceService12CurrencyTypeEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS4_10Reflection18GenericSlotWrapperERKS6_RKiRKbRKS8_EENSB_5list5INSB_5valueINS3_ISG_EEEENS_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable4<void,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x8ddeb4() -> ! {
-    todo!("0x8ddeb4 bool boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x8ddeb4(dst: &mut MarketplaceFunction4, src: &MarketplaceBind4) -> bool {
+    // IDA 0x8ddeb4 `basic_vtable4::assign_to<bind_t<...>>` (count form):
+    // retains via `shared_count` copy (0x8ddeea), `assign_functor`
+    // (0x8ddf2c), releases (0x8ddf3a), returns 1 (0x8ddf5a).
+    stub_0x8ddf98(&mut dst.target, src);
+    true
 }
 
 // 0x8ddf98 — __ZNK5boost6detail8function13basic_vtable4IvNS_10shared_ptrIN3RBX8InstanceEEEibNS4_18MarketplaceService12CurrencyTypeEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS4_10Reflection18GenericSlotWrapperERKS6_RKiRKbRKS8_EENSB_5list5INSB_5valueINS3_ISG_EEEENS_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "void boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: void boost::detail::function::basic_vtable4<void,boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x8ddf98() -> ! {
-    todo!("0x8ddf98 void boost::detail::function::basic_vtable4<void,rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x8ddf98(dst: &mut Option<MarketplaceBind4>, src: &MarketplaceBind4) {
+    // IDA 0x8ddf98 `basic_vtable4::assign_functor<bind_t<...>>`:
+    // `operator new(0x10)` (0x8ddfc0), copies the bind words plus the
+    // `shared_count` (0x8ddfd2-0x8de01a), stores the fresh functor
+    // (0x8de022).
+    *dst = Some(src.clone());
 }
 
 // 0x8de06c — __ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEclINS_4_mfi3mf4IvS6_RKNS3_INS4_8InstanceEEERKiRKbRKNS4_18MarketplaceService12CurrencyTypeEEENS0_5list4IRSJ_RiRbRSR_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(_DWORD *, char **, int *)
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::operator()<boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list4<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&> &,boost::_bi::list4<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&> &,int)")]
 // was: void boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::operator()<boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list4<boost::shared_ptr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&> &,boost::_bi::list4<boost::shared_ptr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&> &,int)
-pub fn stub_0x8de06c() -> ! {
-    todo!("0x8de06c void boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::operator()<boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list4<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&> &,boost::_bi::list4<rbx_core::SharedPtr<RBX::Instance>&,int &,bool &,RBX::MarketplaceService::CurrencyType&> &,int)")
+pub fn stub_0x8de06c(
+    wrapper: &MarketplaceSlotWrapper4,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+    currency: MarketplaceCurrency,
+) {
+    // IDA 0x8de06c `list5<value<wrapper>, arg<1..4>>::operator()<mf4,
+    // list4>`: unpacks the four arg refs (0x8de072-0x8de07c), adjusts to
+    // the member (`*a1 + (v5 >> 1)`, virtual when `v5 & 1`, 0x8de084-0x8de08c)
+    // and invokes the `mf4` (0x8de098) — the `execute4` path.
+    stub_0x8dd740(wrapper, instance, product, purchased, currency);
 }
 
 // 0x8de09c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKiRKbRKNS7_18MarketplaceService12CurrencyTypeEEENS3_5list5INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSS_ILi2EEENSS_ILi3EEENSS_ILi4EEEEEEEE7managerERKNS1_15function_bufferERS10_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x8de09c() -> ! {
-    todo!("0x8de09c boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&,RBX::MarketplaceService::CurrencyType const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x8de09c(
+    slot: &mut MarketplaceFunction4,
+    other: &MarketplaceFunction4,
+    op: MarketplaceBindOp,
+) {
+    // IDA 0x8de09c `functor_manager<...>::manager`: 0 clones (0x8de10e-0x8de14e),
+    // 1 moves (0x8de152-0x8de158), 2 destroys (0x8de15c-0x8de17a), 3 checks
+    // the `typeinfo` name (0x8de196; single monomorph, always matches),
+    // default writes the `typeinfo` (0x8de0fa-0x8de0fc).
+    marketplace_manage4(slot, other, op);
 }
 
 // 0x8df0c4 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_EC2ESC_PKcSF_SF_SF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -1423,5 +1756,129 @@ mod marketplace_batch1_tests {
         );
         stub_0x8d6f60(&mut other, &slot, MarketplaceBindOp::Destroy);
         assert!(other.target.is_none());
+    }
+}
+
+#[cfg(test)]
+mod marketplace_batch2_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+
+    static SEEN4: AtomicI32 = AtomicI32::new(0);
+
+    fn rec_method(
+        _: &MarketplaceService,
+        _: &SharedPtr<Instance>,
+        product: i32,
+        purchased: bool,
+        currency: MarketplaceCurrency,
+    ) {
+        SEEN4.store(product + i32::from(purchased) + currency.0, Ordering::Relaxed);
+    }
+
+    fn yield_method(_: &MarketplaceService, _: &SharedPtr<Instance>, product: i32) -> bool {
+        product > 0
+    }
+
+    #[test]
+    fn func_desc_declare_and_call() {
+        let desc = stub_0x8d85c8("PromptPurchase", rec_method, ["player", "product", "purchased", "currency"]);
+        assert_eq!(desc.signature.len(), 4);
+        assert_eq!(desc.signature[3].kind, MarketplaceArgKind::Currency);
+        let service = MarketplaceService::default();
+        let inst = SharedPtr::new(Instance::default());
+        stub_0x8d8a54(&desc, &service, &inst, 10, true, MarketplaceCurrency(3));
+        assert_eq!(SEEN4.load(Ordering::Relaxed), 14);
+        stub_0x8d8b88(rec_method, &service, &inst, 1, false, MarketplaceCurrency(2));
+        assert_eq!(SEEN4.load(Ordering::Relaxed), 3);
+    }
+
+    #[test]
+    fn yield_desc_traps_bool() {
+        let desc = stub_0x8d8e70("PlayerOwnsAsset", yield_method, ["player", "asset"]);
+        assert_eq!(desc.signature.len(), 2);
+        let service = MarketplaceService::default();
+        let inst = SharedPtr::new(Instance::default());
+        let resumed = Arc::new(AtomicBool::new(false));
+        let probe = Arc::clone(&resumed);
+        let on_resume: MarketplaceResumeFn = Arc::new(move |v| probe.store(v, Ordering::Relaxed));
+        let on_error: MarketplaceErrorFn = Arc::new(|_| {});
+        assert!(stub_0x8d919c(&desc, &service, &inst, 7, &on_resume, &on_error));
+        assert!(resumed.load(Ordering::Relaxed));
+        assert!(!stub_0x8d919c(&desc, &service, &inst, -1, &on_resume, &on_error));
+    }
+
+    #[test]
+    fn event4_connect_fire_disconnect() {
+        let desc = MarketplaceEvent4Desc { name: "PromptPurchaseFinished".to_string(), ..Default::default() };
+        assert!(!stub_0x8dd44c(&desc));
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        let wrapper = SharedPtr::new(MarketplaceSlotWrapper4 {
+            handler: Arc::new(move |_, p: i32, _: bool, _: MarketplaceCurrency| {
+                probe.store(p, Ordering::Relaxed);
+            }),
+        });
+        stub_0x8dd2e0(&desc, &wrapper);
+        assert_eq!(desc.signal.len(), 1);
+        let inst = SharedPtr::new(Instance::default());
+        stub_0x8dd454(&desc, &inst, 11, true, MarketplaceCurrency(0));
+        assert_eq!(seen.load(Ordering::Relaxed), 11);
+        stub_0x8dd600(&desc, &inst, 12, false, MarketplaceCurrency(0));
+        stub_0x8dd610(&desc);
+        assert_eq!(desc.signal.len(), 0);
+    }
+
+    #[test]
+    fn bind4_execute_invoker_and_manager() {
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        let wrapper = SharedPtr::new(MarketplaceSlotWrapper4 {
+            handler: Arc::new(move |_, p: i32, _: bool, c: MarketplaceCurrency| {
+                probe.store(p + c.0, Ordering::Relaxed);
+            }),
+        });
+        let bind = stub_0x8dd624(&wrapper);
+        let inst = SharedPtr::new(Instance::default());
+        stub_0x8dd740(&wrapper, &inst, 5, true, MarketplaceCurrency(1));
+        assert_eq!(seen.load(Ordering::Relaxed), 6);
+        stub_0x8ddd98(&bind, &inst, 7, false, MarketplaceCurrency(2));
+        assert_eq!(seen.load(Ordering::Relaxed), 9);
+        stub_0x8de06c(&wrapper, &inst, 1, true, MarketplaceCurrency(1));
+        assert_eq!(seen.load(Ordering::Relaxed), 2);
+        let mut slot = MarketplaceFunction4::default();
+        stub_0x8ddc84(&mut slot, &bind);
+        assert!(slot.target.is_some());
+        assert!(stub_0x8dddcc(&mut slot, &bind));
+        assert!(stub_0x8ddeb4(&mut slot, &bind));
+        stub_0x8ddf98(&mut slot.target, &bind);
+        assert!(slot.target.is_some());
+        let mut other = MarketplaceFunction4::default();
+        stub_0x8ddd7c(&mut other, &slot, MarketplaceBindOp::Clone);
+        assert!(other.target.is_some());
+        stub_0x8de09c(&mut other, &slot, MarketplaceBindOp::Destroy);
+        assert!(other.target.is_none());
+        assert_eq!(
+            MARKETPLACE_BIND4_TYPE_NAME,
+            "N5boost3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKiRKbRKNS4_18MarketplaceService12CurrencyTypeEEENS0_5list5INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSP_ILi2EEENSP_ILi3EEENSP_ILi4EEEEEEE"
+        );
+    }
+
+    #[test]
+    fn vtable3_wrappers_report_success() {
+        let wrapper = SharedPtr::new(MarketplaceSlotWrapper {
+            handler: Arc::new(|_, _, _| {}),
+        });
+        let bind = stub_0x8d69c8(&wrapper);
+        let mut slot = MarketplaceFunction3::default();
+        assert!(stub_0x8d6fa8(&mut slot, &bind));
+        assert!(slot.target.is_some());
+        assert!(stub_0x8d7090(&mut slot, &bind));
+        stub_0x8d7174(&mut slot.target, &bind);
+        assert!(slot.target.is_some());
+        stub_0x8d7248(&wrapper, &SharedPtr::new(Instance::default()), 0, false);
+        let mut other = MarketplaceFunction3::default();
+        stub_0x8d7270(&mut other, &slot, MarketplaceBindOp::Move);
+        assert!(other.target.is_some());
     }
 }
