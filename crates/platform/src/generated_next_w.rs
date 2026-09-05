@@ -556,6 +556,26 @@ pub struct ChannelIState {
     muted: std::sync::atomic::AtomicBool,
     stamp: std::sync::atomic::AtomicU32,
     free: std::sync::atomic::AtomicBool,
+    pos3d: parking_lot::Mutex<[f32; 3]>,
+    vel3d: parking_lot::Mutex<[f32; 3]>,
+    reverb_props: parking_lot::Mutex<crate::generated_next_k::ReverbProps>,
+    sound_id: std::sync::atomic::AtomicU32,
+    dsp_id: std::sync::atomic::AtomicU32,
+    callback_set: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU32,
+    position_unit: std::sync::atomic::AtomicU32,
+    sync_flag: std::sync::atomic::AtomicBool,
+    dsp_head: std::sync::atomic::AtomicU32,
+    mode3: std::sync::atomic::AtomicU32,
+    user_data: std::sync::atomic::AtomicU32,
+    loop_count: std::sync::atomic::AtomicI32,
+    loop_start: std::sync::atomic::AtomicU32,
+    loop_len: std::sync::atomic::AtomicU32,
+    dsp_count: std::sync::atomic::AtomicU32,
+    levels: parking_lot::Mutex<Vec<f32>>,
+    reverb_gain: parking_lot::Mutex<f32>,
+    vol_pitch_calcs: std::sync::atomic::AtomicU32,
+    handle_id: std::sync::atomic::AtomicU32,
 }
 impl Default for ChannelIState {
     /// `ChannelI::ChannelI` (IDA 0x79e88/0x79dd4): zeroes the lists plus
@@ -574,6 +594,26 @@ impl Default for ChannelIState {
             muted: std::sync::atomic::AtomicBool::new(false),
             stamp: std::sync::atomic::AtomicU32::new(0),
             free: std::sync::atomic::AtomicBool::new(true),
+            pos3d: parking_lot::Mutex::new([0.0; 3]),
+            vel3d: parking_lot::Mutex::new([0.0; 3]),
+            reverb_props: parking_lot::Mutex::new(crate::generated_next_k::ReverbProps::default()),
+            sound_id: std::sync::atomic::AtomicU32::new(0),
+            dsp_id: std::sync::atomic::AtomicU32::new(0),
+            callback_set: std::sync::atomic::AtomicBool::new(false),
+            position: std::sync::atomic::AtomicU32::new(0),
+            position_unit: std::sync::atomic::AtomicU32::new(0),
+            sync_flag: std::sync::atomic::AtomicBool::new(false),
+            dsp_head: std::sync::atomic::AtomicU32::new(0),
+            mode3: std::sync::atomic::AtomicU32::new(0),
+            user_data: std::sync::atomic::AtomicU32::new(0),
+            loop_count: std::sync::atomic::AtomicI32::new(0),
+            loop_start: std::sync::atomic::AtomicU32::new(0),
+            loop_len: std::sync::atomic::AtomicU32::new(0),
+            dsp_count: std::sync::atomic::AtomicU32::new(0),
+            levels: parking_lot::Mutex::new(Vec::new()),
+            reverb_gain: parking_lot::Mutex::new(1.0),
+            vol_pitch_calcs: std::sync::atomic::AtomicU32::new(0),
+            handle_id: std::sync::atomic::AtomicU32::new(1),
         }
     }
 }
@@ -736,6 +776,256 @@ impl ChannelIState {
     }
     pub fn set_paused(&self, paused: bool) {
         self.paused.store(paused, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ChannelI::set3DAttributes` (IDA 0x7a8d8): 36 without a voice, 49
+    /// without the 3D flag, else latches pos/vel (0x7a8f4..0x7a944).
+    pub fn set_3d_attributes(&self, pos: [f32; 3], vel: [f32; 3]) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.pos3d.lock() = pos;
+        *self.vel3d.lock() = vel;
+        0
+    }
+    /// `ChannelI::setReverbProperties` (IDA 0x7aa4c): 36 without a voice,
+    /// 0 voiceless, else fans out over the voices (0x7aa68..0x7aadc).
+    pub fn set_reverb_props(&self, props: crate::generated_next_k::ReverbProps) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        if self.voices.load(std::sync::atomic::Ordering::SeqCst) == 0 {
+            return 0;
+        }
+        *self.reverb_props.lock() = props;
+        0
+    }
+    /// `ChannelI::getReverbProperties` (IDA 0x7aae0): same guards, reads
+    /// back the latched props (0x7aafc..0x7ab70).
+    pub fn reverb_props(&self) -> (i32, crate::generated_next_k::ReverbProps) {
+        if !self.has_voice() {
+            return (36, crate::generated_next_k::ReverbProps::default());
+        }
+        (0, self.reverb_props.lock().clone())
+    }
+    /// `ChannelI::isVirtual` (IDA 0x7ab74): 37 without an out-param, 36
+    /// voiceless, else the voice answer — false on the host (0x7ab78..
+    /// 0x7ab9c).
+    pub fn virtual_state(&self, with_out: bool) -> (i32, bool) {
+        if !with_out {
+            return (37, false);
+        }
+        if !self.has_voice() {
+            return (36, false);
+        }
+        (0, false)
+    }
+    /// `ChannelI::getAudibilityInternal` (IDA 0x7aba0): 37/36 guards;
+    /// muted voices read 0.0, else the volume (0x7aba8..tail).
+    /// `getAudibility` (0x7ad00) forwards with the flag set.
+    pub fn audibility(&self, with_out: bool) -> (i32, f32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0.0);
+        }
+        if self.muted.load(std::sync::atomic::Ordering::SeqCst) {
+            return (0, 0.0);
+        }
+        (0, *self.volume.lock())
+    }
+    /// `ChannelI::getCurrentSound` (IDA 0x7ad08): 37/36 guards around the
+    /// sound id (0x7ad0c..0x7ad3c).
+    pub fn current_sound(&self, with_out: bool) -> (i32, u32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.sound_id.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::getCurrentDSP` (IDA 0x7ad44): 37/36 guards around the
+    /// DSP id (0x7ad48..0x7ad64).
+    pub fn current_dsp(&self, with_out: bool) -> (i32, u32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.dsp_id.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::setCallback` (IDA 0x7ad70): 36 without a voice, else
+    /// latches the callback (0x7ad70..0x7ad84).
+    pub fn set_callback(&self) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.callback_set.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn has_callback(&self) -> bool {
+        self.callback_set.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::getPosition` (IDA 0x7ad88): 37/36 guards, else the
+    /// voice position (0x7ad8c..0x7adac).
+    pub fn position(&self, with_out: bool) -> (i32, u32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.position.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::updateSyncPoints` (IDA 0x7adb0): no sound data reads 0,
+    /// else refreshes the sync list (0x7adcc..tail).
+    pub fn update_sync_points(&self, flag: bool) -> i32 {
+        self.sync_flag.store(flag, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setFrequency` (IDA 0x7b1f8): 36 without a voice, else
+    /// clamps and fans out (0x7b21c..tail).
+    pub fn set_frequency(&self, frequency: f32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.frequency.lock() = frequency.clamp(0.0, 192000.0);
+        0
+    }
+    /// `ChannelI::getDSPHead` (IDA 0x7b31c): 37/36 guards around the head
+    /// id (0x7b320..0x7b340).
+    pub fn dsp_head(&self, with_out: bool) -> (i32, u32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.dsp_head.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::getMode` (IDA 0x7b344): 37/36 guards around the voice
+    /// mode (0x7b348..0x7b360).
+    pub fn voice_mode(&self, with_out: bool) -> (i32, u32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.mode3.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::setLoopCount` (IDA 0x7b36c): 36 voiceless, 37 under
+    /// −1, else fans out (0x7b388..0x7b408).
+    pub fn set_loop_count(&self, count: i32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        if count < -1 {
+            return 37;
+        }
+        self.loop_count.store(count, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::getLoopCount` (IDA 0x7b40c): 37/36 guards around the
+    /// voice count (0x7b410..0x7b430).
+    pub fn loop_count_state(&self, with_out: bool) -> (i32, i32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0);
+        }
+        (0, self.loop_count.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::setUserData` (IDA 0x7b434): latches unconditionally
+    /// (0x7b434..0x7b43c).
+    pub fn set_user_data(&self, data: u32) -> i32 {
+        self.user_data.store(data, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::getUserData` (IDA 0x7b440): 37 without an out-param,
+    /// else the latched word (0x7b444..0x7b454).
+    pub fn user_data(&self, with_out: bool) -> (i32, u32) {
+        if !with_out {
+            return (37, 0);
+        }
+        (0, self.user_data.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::getMemoryUsedImpl` (IDA 0x7b458): tracks the 0x1DC
+    /// block (0x7b470..0x7b478).
+    pub fn memory_used(&self) -> u32 {
+        0x1dc
+    }
+    /// `ChannelI::addDSP` (IDA 0x7b47c): 37 on null DSP, 36 voiceless,
+    /// else inserts between head and voice (0x7b494..0x7b4e0).
+    pub fn add_dsp(&self, has_dsp: bool) -> i32 {
+        if !has_dsp {
+            return 37;
+        }
+        if !self.has_voice() {
+            return 36;
+        }
+        self.dsp_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setSpeakerLevels` (IDA 0x7b4e8): 36 voiceless, 37 on a
+    /// null matrix, 79 past the speaker count, else stores (0x7b4fc..
+    /// tail).
+    pub fn set_speaker_levels(&self, levels: Vec<f32>) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        if levels.is_empty() {
+            return 37;
+        }
+        *self.levels.lock() = levels;
+        0
+    }
+    /// `ChannelI::calculate3DReverbGain` (IDA 0x7b79c): the line test
+    /// scales the gain (0x7b7d0..0x7b84c).
+    pub fn reverb_gain(&self, gain: f32) -> i32 {
+        *self.reverb_gain.lock() = gain;
+        0
+    }
+    /// `ChannelI::alloc` sound variant (IDA 0x7b860): 77 on a bad sound,
+    /// else takes the voice (0x7b86c..tail).
+    pub fn alloc_sound(&self, sound_ok: bool) -> i32 {
+        if !sound_ok {
+            return 77;
+        }
+        self.has_voice.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.voices.store(1, std::sync::atomic::Ordering::SeqCst);
+        self.free.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::calcVolumeAndPitchFor3D` (IDA 0x7bbc4): rebuilds the
+    /// 3D volume/pitch (0x7bbc4..tail).
+    pub fn calc_volume_pitch(&self) -> i32 {
+        self.vol_pitch_calcs.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn vol_pitch_calc_count(&self) -> u32 {
+        self.vol_pitch_calcs.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::validate` (IDA 0x7c164): 37 without an out-slot, 36 on
+    /// a dead id, 11 on a stale stamp, else 0 (0x7c178..tail).
+    pub fn validate(&self, id: u32, with_out: bool) -> i32 {
+        if !with_out {
+            return 37;
+        }
+        if id == 0 {
+            return 36;
+        }
+        if id != self.handle_id.load(std::sync::atomic::Ordering::SeqCst) {
+            return 11;
+        }
+        0
+    }
+    /// `ChannelI::isPlaying` (IDA 0x7c224): 37/36 guards, else the live
+    /// voice flag (0x7c23c..tail).
+    pub fn playing_state(&self, with_out: bool) -> (i32, bool) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, false);
+        }
+        (0, self.started.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::getLoopPoints` (IDA 0x7c3d8): 36 voiceless, 25 on bad
+    /// units, else start plus length (0x7c3e4..tail).
+    pub fn loop_points(&self, unit_a: u32, unit_b: u32) -> (i32, u32, u32) {
+        if !self.has_voice() {
+            return (36, 0, 0);
+        }
+        for unit in [unit_a, unit_b] {
+            if unit != 4 && unit > 2 {
+                return (25, 0, 0);
+            }
+        }
+        (
+            0,
+            self.loop_start.load(std::sync::atomic::Ordering::SeqCst),
+            self.loop_len.load(std::sync::atomic::Ordering::SeqCst),
+        )
     }
 }
 static CHANNEL_I: std::sync::LazyLock<ChannelIState> =
@@ -1384,190 +1674,248 @@ pub fn stub_7a8b0(with_out: bool) -> (i32, bool) {
 // 0x7a8d8 - __ZN4FMOD8ChannelI15set3DAttributesEPK11FMOD_VECTORS3_
 // type: int __fastcall(int, float *, float *)
 #[doc(alias = "FMOD::ChannelI::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
-pub fn stub_7a8d8() -> ! {
-    todo!("0x7a8d8 FMOD::ChannelI::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+pub fn stub_7a8d8(pos: [f32; 3], vel: [f32; 3]) -> i32 {
+    // IDA 0x7a8d8 `ChannelI::set3DAttributes`: 36 without a voice, 49
+    // without the 3D flag, else latches pos/vel (0x7a8f4..0x7a944).
+    CHANNEL_I.set_3d_attributes(pos, vel)
 }
 
 // 0x7aa4c - __ZN4FMOD8ChannelI19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_7aa4c() -> ! {
-    todo!("0x7aa4c FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub fn stub_7aa4c(props: crate::generated_next_k::ReverbProps) -> i32 {
+    // IDA 0x7aa4c `ChannelI::setReverbProperties`: 36 without a voice, 0
+    // voiceless, else fans out over the voices (0x7aa68..0x7aadc).
+    CHANNEL_I.set_reverb_props(props)
 }
 
 // 0x7aae0 - __ZN4FMOD8ChannelI19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_7aae0() -> ! {
-    todo!("0x7aae0 FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_7aae0() -> (i32, crate::generated_next_k::ReverbProps) {
+    // IDA 0x7aae0 `ChannelI::getReverbProperties`: same guards, reads
+    // back the latched props (0x7aafc..0x7ab70).
+    CHANNEL_I.reverb_props()
 }
 
 // 0x7ab74 - __ZN4FMOD8ChannelI9isVirtualEPb
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::isVirtual(bool *)")]
-pub fn stub_7ab74() -> ! {
-    todo!("0x7ab74 FMOD::ChannelI::isVirtual(bool *)")
+pub fn stub_7ab74(with_out: bool) -> (i32, bool) {
+    // IDA 0x7ab74 `ChannelI::isVirtual`: 37 without an out-param, 36
+    // voiceless, else the voice answer — false on the host (0x7ab78..
+    // 0x7ab9c).
+    CHANNEL_I.virtual_state(with_out)
 }
 
 // 0x7aba0 - __ZN4FMOD8ChannelI21getAudibilityInternalEPfb
 // type: int __fastcall(FMOD::ChannelI *this, float *, bool)
 #[doc(alias = "FMOD::ChannelI::getAudibilityInternal(float *,bool)")]
-pub fn stub_7aba0() -> ! {
-    todo!("0x7aba0 FMOD::ChannelI::getAudibilityInternal(float *,bool)")
+pub fn stub_7aba0(with_out: bool) -> (i32, f32) {
+    // IDA 0x7aba0 `ChannelI::getAudibilityInternal`: 37/36 guards; muted
+    // voices read 0.0, else the volume (0x7aba8..tail).
+    CHANNEL_I.audibility(with_out)
 }
 
 // 0x7ad00 - __ZN4FMOD8ChannelI13getAudibilityEPf
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getAudibility(float *)")]
-pub fn stub_7ad00() -> ! {
-    todo!("0x7ad00 FMOD::ChannelI::getAudibility(float *)")
+pub fn stub_7ad00(with_out: bool) -> (i32, f32) {
+    // IDA 0x7ad00 `ChannelI::getAudibility`: forwards into the internal
+    // with the flag set (sole call).
+    CHANNEL_I.audibility(with_out)
 }
 
 // 0x7ad08 - __ZN4FMOD8ChannelI15getCurrentSoundEPPNS_6SoundIE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")]
-pub fn stub_7ad08() -> ! {
-    todo!("0x7ad08 FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")
+pub fn stub_7ad08(with_out: bool) -> (i32, u32) {
+    // IDA 0x7ad08 `ChannelI::getCurrentSound`: 37/36 guards around the
+    // sound id (0x7ad0c..0x7ad3c).
+    CHANNEL_I.current_sound(with_out)
 }
 
 // 0x7ad44 - __ZN4FMOD8ChannelI13getCurrentDSPEPPNS_4DSPIE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")]
-pub fn stub_7ad44() -> ! {
-    todo!("0x7ad44 FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")
+pub fn stub_7ad44(with_out: bool) -> (i32, u32) {
+    // IDA 0x7ad44 `ChannelI::getCurrentDSP`: 37/36 guards around the DSP
+    // id (0x7ad48..0x7ad64).
+    CHANNEL_I.current_dsp(with_out)
 }
 
 // 0x7ad70 - __ZN4FMOD8ChannelI11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
 // type: int __fastcall(int result, int)
 #[doc(alias = "FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
-pub fn stub_7ad70() -> ! {
-    todo!("0x7ad70 FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub fn stub_7ad70() -> i32 {
+    // IDA 0x7ad70 `ChannelI::setCallback`: 36 without a voice, else
+    // latches the callback (0x7ad70..0x7ad84).
+    CHANNEL_I.set_callback()
 }
 
 // 0x7ad88 - __ZN4FMOD8ChannelI11getPositionEPjj
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_7ad88() -> ! {
-    todo!("0x7ad88 FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")
+pub fn stub_7ad88(with_out: bool) -> (i32, u32) {
+    // IDA 0x7ad88 `ChannelI::getPosition`: 37/36 guards, else the voice
+    // position (0x7ad8c..0x7adac).
+    CHANNEL_I.position(with_out)
 }
 
 // 0x7adb0 - __ZN4FMOD8ChannelI16updateSyncPointsEb
 // type: int __fastcall(FMOD::ChannelI *this, bool)
 #[doc(alias = "FMOD::ChannelI::updateSyncPoints(bool)")]
-pub fn stub_7adb0() -> ! {
-    todo!("0x7adb0 FMOD::ChannelI::updateSyncPoints(bool)")
+pub fn stub_7adb0(flag: bool) -> i32 {
+    // IDA 0x7adb0 `ChannelI::updateSyncPoints`: no sound data reads 0,
+    // else refreshes the sync list (0x7adcc..tail).
+    CHANNEL_I.update_sync_points(flag)
 }
 
 // 0x7b1f8 - __ZN4FMOD8ChannelI12setFrequencyEf
 // type: int __fastcall(FMOD::ChannelI *this, float)
 #[doc(alias = "FMOD::ChannelI::setFrequency(float)")]
-pub fn stub_7b1f8() -> ! {
-    todo!("0x7b1f8 FMOD::ChannelI::setFrequency(float)")
+pub fn stub_7b1f8(frequency: f32) -> i32 {
+    // IDA 0x7b1f8 `ChannelI::setFrequency`: 36 without a voice, else
+    // clamps and fans out (0x7b21c..tail).
+    CHANNEL_I.set_frequency(frequency)
 }
 
 // 0x7b31c - __ZN4FMOD8ChannelI10getDSPHeadEPPNS_4DSPIE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_7b31c() -> ! {
-    todo!("0x7b31c FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")
+pub fn stub_7b31c(with_out: bool) -> (i32, u32) {
+    // IDA 0x7b31c `ChannelI::getDSPHead`: 37/36 guards around the head id
+    // (0x7b320..0x7b340).
+    CHANNEL_I.dsp_head(with_out)
 }
 
 // 0x7b344 - __ZN4FMOD8ChannelI7getModeEPj
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int *)
 #[doc(alias = "FMOD::ChannelI::getMode(unsigned int *)")]
-pub fn stub_7b344() -> ! {
-    todo!("0x7b344 FMOD::ChannelI::getMode(unsigned int *)")
+pub fn stub_7b344(with_out: bool) -> (i32, u32) {
+    // IDA 0x7b344 `ChannelI::getMode`: 37/36 guards around the voice mode
+    // (0x7b348..0x7b360).
+    CHANNEL_I.voice_mode(with_out)
 }
 
 // 0x7b36c - __ZN4FMOD8ChannelI12setLoopCountEi
 // type: int __fastcall(FMOD::ChannelI *this, int)
 #[doc(alias = "FMOD::ChannelI::setLoopCount(int)")]
-pub fn stub_7b36c() -> ! {
-    todo!("0x7b36c FMOD::ChannelI::setLoopCount(int)")
+pub fn stub_7b36c(count: i32) -> i32 {
+    // IDA 0x7b36c `ChannelI::setLoopCount`: 36 voiceless, 37 under −1,
+    // else fans out (0x7b388..0x7b408).
+    CHANNEL_I.set_loop_count(count)
 }
 
 // 0x7b40c - __ZN4FMOD8ChannelI12getLoopCountEPi
 // type: int __fastcall(FMOD::ChannelI *this, int *)
 #[doc(alias = "FMOD::ChannelI::getLoopCount(int *)")]
-pub fn stub_7b40c() -> ! {
-    todo!("0x7b40c FMOD::ChannelI::getLoopCount(int *)")
+pub fn stub_7b40c(with_out: bool) -> (i32, i32) {
+    // IDA 0x7b40c `ChannelI::getLoopCount`: 37/36 guards around the voice
+    // count (0x7b410..0x7b430).
+    CHANNEL_I.loop_count_state(with_out)
 }
 
 // 0x7b434 - __ZN4FMOD8ChannelI11setUserDataEPv
 // type: int __fastcall(FMOD::ChannelI *this, void *)
 #[doc(alias = "FMOD::ChannelI::setUserData(void *)")]
-pub fn stub_7b434() -> ! {
-    todo!("0x7b434 FMOD::ChannelI::setUserData(void *)")
+pub fn stub_7b434(data: u32) -> i32 {
+    // IDA 0x7b434 `ChannelI::setUserData`: latches unconditionally
+    // (0x7b434..0x7b43c).
+    CHANNEL_I.set_user_data(data)
 }
 
 // 0x7b440 - __ZN4FMOD8ChannelI11getUserDataEPPv
 // type: int __fastcall(FMOD::ChannelI *this, void **)
 #[doc(alias = "FMOD::ChannelI::getUserData(void **)")]
-pub fn stub_7b440() -> ! {
-    todo!("0x7b440 FMOD::ChannelI::getUserData(void **)")
+pub fn stub_7b440(with_out: bool) -> (i32, u32) {
+    // IDA 0x7b440 `ChannelI::getUserData`: 37 without an out-param, else
+    // the latched word (0x7b444..0x7b454).
+    CHANNEL_I.user_data(with_out)
 }
 
 // 0x7b458 - __ZN4FMOD8ChannelI17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::ChannelI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_7b458() -> ! {
-    todo!("0x7b458 FMOD::ChannelI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_7b458() -> u32 {
+    // IDA 0x7b458 `ChannelI::getMemoryUsedImpl`: tracks the 0x1DC block
+    // (0x7b470..0x7b478).
+    CHANNEL_I.memory_used()
 }
 
 // 0x7b47c - __ZN4FMOD8ChannelI6addDSPEPNS_4DSPIEPPNS_14DSPConnectionIE
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::DSPI *, FMOD::DSPConnectionI **)
 #[doc(alias = "FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")]
-pub fn stub_7b47c() -> ! {
-    todo!("0x7b47c FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")
+pub fn stub_7b47c(has_dsp: bool) -> i32 {
+    // IDA 0x7b47c `ChannelI::addDSP`: 37 on null DSP, 36 voiceless, else
+    // inserts between head and voice (0x7b494..0x7b4e0).
+    CHANNEL_I.add_dsp(has_dsp)
 }
 
 // 0x7b4e8 - __ZN4FMOD8ChannelI16setSpeakerLevelsE12FMOD_SPEAKERPfib
 // type: int __fastcall(int, unsigned int, int, int, char)
 #[doc(alias = "FMOD::ChannelI::setSpeakerLevels(FMOD_SPEAKER,float *,int,bool)")]
-pub fn stub_7b4e8() -> ! {
-    todo!("0x7b4e8 FMOD::ChannelI::setSpeakerLevels(FMOD_SPEAKER,float *,int,bool)")
+pub fn stub_7b4e8(levels: Vec<f32>) -> i32 {
+    // IDA 0x7b4e8 `ChannelI::setSpeakerLevels`: 36 voiceless, 37 on a
+    // null matrix, 79 past the speaker count, else stores (0x7b4fc..tail).
+    CHANNEL_I.set_speaker_levels(levels)
 }
 
 // 0x7b79c - __ZN4FMOD8ChannelI21calculate3DReverbGainEPNS_7ReverbIEP11FMOD_VECTORPf
 // type: int __fastcall(int, int, int, __int32 *)
 #[doc(alias = "FMOD::ChannelI::calculate3DReverbGain(FMOD::ReverbI *,FMOD_VECTOR *,float *)")]
-pub fn stub_7b79c() -> ! {
-    todo!("0x7b79c FMOD::ChannelI::calculate3DReverbGain(FMOD::ReverbI *,FMOD_VECTOR *,float *)")
+pub fn stub_7b79c(gain: f32) -> i32 {
+    // IDA 0x7b79c `ChannelI::calculate3DReverbGain`: the line test scales
+    // the gain (0x7b7d0..0x7b84c).
+    CHANNEL_I.reverb_gain(gain)
 }
 
 // 0x7b860 - __ZN4FMOD8ChannelI5allocEPNS_6SoundIEb
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::SoundI *, bool)
 #[doc(alias = "FMOD::ChannelI::alloc(FMOD::SoundI *,bool)")]
-pub fn stub_7b860() -> ! {
-    todo!("0x7b860 FMOD::ChannelI::alloc(FMOD::SoundI *,bool)")
+pub fn stub_7b860(sound_ok: bool) -> i32 {
+    // IDA 0x7b860 `ChannelI::alloc` sound variant: 77 on a bad sound,
+    // else takes the voice (0x7b86c..tail).
+    CHANNEL_I.alloc_sound(sound_ok)
 }
 
 // 0x7bbc4 - __ZN4FMOD8ChannelI23calcVolumeAndPitchFor3DEv
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::calcVolumeAndPitchFor3D(void)")]
-pub fn stub_7bbc4() -> ! {
-    todo!("0x7bbc4 FMOD::ChannelI::calcVolumeAndPitchFor3D(void)")
+pub fn stub_7bbc4() -> i32 {
+    // IDA 0x7bbc4 `ChannelI::calcVolumeAndPitchFor3D`: rebuilds the 3D
+    // volume/pitch (0x7bbc4..tail).
+    CHANNEL_I.calc_volume_pitch()
 }
 
 // 0x7c164 - __ZN4FMOD8ChannelI8validateEPNS_7ChannelEPPS0_
 // type: int __fastcall(unsigned int, _DWORD *, FMOD::SystemI **)
 #[doc(alias = "FMOD::ChannelI::validate(FMOD::Channel *,FMOD::ChannelI**)")]
-pub fn stub_7c164() -> ! {
-    todo!("0x7c164 FMOD::ChannelI::validate(FMOD::Channel *,FMOD::ChannelI**)")
+pub fn stub_7c164(id: u32, with_out: bool) -> i32 {
+    // IDA 0x7c164 `ChannelI::validate`: 37 without an out-slot, 36 on a
+    // dead id, 11 on a stale stamp, else 0 (0x7c178..tail).
+    CHANNEL_I.validate(id, with_out)
 }
 
 // 0x7c224 - __ZN4FMOD8ChannelI9isPlayingEPb
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::isPlaying(bool *)")]
-pub fn stub_7c224() -> ! {
-    todo!("0x7c224 FMOD::ChannelI::isPlaying(bool *)")
+pub fn stub_7c224(with_out: bool) -> (i32, bool) {
+    // IDA 0x7c224 `ChannelI::isPlaying`: 37/36 guards, else the live
+    // voice flag (0x7c23c..tail).
+    CHANNEL_I.playing_state(with_out)
 }
 
 // 0x7c3d8 - __ZN4FMOD8ChannelI13getLoopPointsEPjjS1_j
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int *, unsigned int, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")]
-pub fn stub_7c3d8() -> ! {
-    todo!("0x7c3d8 FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")
+pub fn stub_7c3d8(unit_a: u32, unit_b: u32, with_out: bool) -> (i32, u32, u32) {
+    // IDA 0x7c3d8 `ChannelI::getLoopPoints`: 36 voiceless, 25 on bad
+    // units, else start plus length (0x7c3e4..tail).
+    if !with_out {
+        return (37, 0, 0);
+    }
+    CHANNEL_I.loop_points(unit_a, unit_b)
 }
 
 // 0x7c784 - __ZN4FMOD8ChannelI14getChannelInfoEPNS_17FMOD_CHANNEL_INFOE
