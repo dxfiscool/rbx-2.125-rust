@@ -106,10 +106,11 @@ pub struct AnimVC {
     pub img_bg: Option<u32>,
     pub img_fg: Option<u32>,
 }
-/// `RobloxNavBarViewController` observable state (IDA 0x53b60..0x5465c):
+/// `RobloxNavBarViewController` observable state (IDA 0x53b60..0x55290):
 /// the URL string, back-button latch, load/appear latches, home-button
-/// latch, fullscreen text, place launches, and user-info refreshes.
-/// WebKit/label peers fold into the host.
+/// latch, fullscreen text, place launches, user-info refreshes, the page
+/// spinner, the robux-refresh flag, dismissal, the web view, and the
+/// most-recent latch. WebKit/label peers fold into the host.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct NavBarVC {
     pub url: String,
@@ -120,6 +121,24 @@ pub struct NavBarVC {
     pub fullscreen: Option<String>,
     pub launches: u32,
     pub info_refresh: u32,
+    pub loading: bool,
+    pub refresh_robux: bool,
+    pub dismissed: bool,
+    pub web_view: Option<u32>,
+    pub web_depth: u32,
+    pub spinner: Option<u32>,
+    pub btn_back: Option<u32>,
+    pub toolbar: Option<u32>,
+    pub top_toolbar: Option<u32>,
+    pub lbl_robux: Option<u32>,
+    pub lbl_tix: Option<u32>,
+    pub page_spinner: Option<u32>,
+    pub overlay: Option<u32>,
+    pub load_label: Option<u32>,
+    pub btn_home: Option<u32>,
+    pub robux_img: Option<u32>,
+    pub tix_img: Option<u32>,
+    pub recent: bool,
 }
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
