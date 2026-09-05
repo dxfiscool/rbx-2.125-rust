@@ -301,6 +301,131 @@ static STARTER_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "StarterSc
 /// `Name::doDeclare<sCoreScript>` singleton (IDA 0x26a5e0: guarded once-init
 /// at 0x26a63c..0x26a666 answering the static at 0x26a694).
 static CORE_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "CoreScript");
+/// `RBX::NormalId` face ids for `Vector3.FromNormalId` (IDA 0x271340).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum NormalId {
+    Top,
+    Bottom,
+    Front,
+    Back,
+    Left,
+    Right,
+}
+
+impl NormalId {
+    /// `RBX::normalIdToVector3` (IDA 0x2713c6).
+    pub fn to_vector(self) -> Vector3 {
+        let (x, y, z) = match self {
+            NormalId::Top => (0.0, 1.0, 0.0),
+            NormalId::Bottom => (0.0, -1.0, 0.0),
+            NormalId::Front => (0.0, 0.0, -1.0),
+            NormalId::Back => (0.0, 0.0, 1.0),
+            NormalId::Left => (-1.0, 0.0, 0.0),
+            NormalId::Right => (1.0, 0.0, 0.0),
+        };
+        Vector3 { x, y, z }
+    }
+}
+
+/// `G3D::Vector3::Axis` ids for `Vector3.FromAxis` (IDA 0x2714a0).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VectorAxis {
+    X,
+    Y,
+    Z,
+}
+
+impl VectorAxis {
+    /// `axisToNormalId` plus `normalIdToVector3` (IDA 0x271526..0x27152c).
+    pub fn to_vector(self) -> Vector3 {
+        match self {
+            VectorAxis::X => Vector3 { x: 1.0, y: 0.0, z: 0.0 },
+            VectorAxis::Y => Vector3 { x: 0.0, y: 1.0, z: 0.0 },
+            VectorAxis::Z => Vector3 { x: 0.0, y: 0.0, z: 1.0 },
+        }
+    }
+}
+
+/// `RbxRay` index outcomes (IDA 0x2708ec): pushed vectors fold into values;
+/// method closures fold into tags.
+#[derive(Clone, Debug, PartialEq)]
+pub enum RbxRayIndex {
+    Origin(Vector3),
+    Direction(Vector3),
+    Unit(RbxRay),
+    Method(RbxRayMethod),
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum RbxRayMethod {
+    ClosestPoint,
+    Distance,
+}
+
+/// `Region3` index outcomes (IDA 0x270d8c): `CFrame` pushes a coordinate
+/// frame (0x270e36, folds into the marker); `Size` pushes the extent vector
+/// (0x270e0e).
+#[derive(Clone, Debug, PartialEq)]
+pub enum Region3Index {
+    Size(Vector3),
+    CFrame,
+}
+
+/// `Region3int16` index outcomes (IDA 0x2710a0): `getMinPos` (0x271134) and
+/// `getMaxPos` (0x27111e).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum Region3i16Index {
+    Min(Vector3int16),
+    Max(Vector3int16),
+}
+
+/// `Vector3` index outcomes (IDA 0x271954): components and magnitude push
+/// numbers (0x271b02/0x271baa); `unit` pushes a vector (0x271b80); method
+/// names push closures (0x271bd8). Note only `Cross` lacks a lowercase
+/// alias (0x271ab6).
+#[derive(Clone, Debug, PartialEq)]
+pub enum Vector3Index {
+    Component(f32),
+    Unit(Vector3),
+    Method(Vec3Method),
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Vec3Method {
+    Lerp,
+    Cross,
+    Dot,
+    IsClose,
+}
+
+/// Second operand of Vector3 `mul`/`div` (IDA 0x271700/0x271804): a vector
+/// or, when `getValue` on the other side fails, a `lua_tofloat` scalar
+/// (0x2717a8/0x2718d0).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum VecOperand {
+    Vec(Vector3),
+    Scalar(f32),
+}
+
+impl BridgeState {
+    pub fn push_vec3(&mut self, v: Vector3) {
+        self.stack.push(BridgeVal::Vec3(v));
+    }
+}
+
+/// Closest point on a ray to a point: `origin + dir * dot(p - origin, dir)`.
+pub fn ray_closest_point(ray: &RbxRay, point: &Vector3) -> Vector3 {
+    let dx = point.x - ray.origin.x;
+    let dy = point.y - ray.origin.y;
+    let dz = point.z - ray.origin.z;
+    let t = dx * ray.direction.x + dy * ray.direction.y + dz * ray.direction.z;
+    Vector3 {
+        x: ray.origin.x + ray.direction.x * t,
+        y: ray.origin.y + ray.direction.y * t,
+        z: ray.origin.z + ray.direction.z * t,
+    }
+}
+
 // Extra pushed value shapes (IDA 0x26e1d8..0x2708b0): two-int vector,
 // Color3 triple, and ray pair for the `pushNewObject` family.
 #[repr(C)]
@@ -1146,169 +1271,364 @@ pub fn stub_0x2708b0() -> ClassLibrary {
 // 0x2708ec — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(RBX::RbxRay const&,char const*,lua_State *)")]
-pub fn stub_0x2708ec() -> ! {
-    todo!("0x2708ec __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State")
+pub fn stub_0x2708ec(ray: &RbxRay, key: &str) -> RbxRayIndex {
+    // IDA 0x2708ec: `Bridge<RbxRay>::on_index` pushes Origin (0x2709bc..
+    // 0x270a40) and Direction (0x270a3c) vectors, a fresh unit ray
+    // (0x270980/0x270a36), or the ClosestPoint/Distance closures
+    // (0x27099a..0x270a64); anything else throws "%s is not a valid
+    // member" (0x270a96..0x270ace). Pushes fold into values.
+    match key {
+        "Origin" => RbxRayIndex::Origin(ray.origin),
+        "Direction" => RbxRayIndex::Direction(ray.direction),
+        "unit" | "Unit" => {
+            let len = (ray.direction.x * ray.direction.x
+                + ray.direction.y * ray.direction.y
+                + ray.direction.z * ray.direction.z)
+                .sqrt();
+            let d = if len == 0.0 { ray.direction } else {
+                Vector3 {
+                    x: ray.direction.x / len,
+                    y: ray.direction.y / len,
+                    z: ray.direction.z / len,
+                }
+            };
+            RbxRayIndex::Unit(RbxRay { origin: ray.origin, direction: d })
+        }
+        "ClosestPoint" => RbxRayIndex::Method(RbxRayMethod::ClosestPoint),
+        "Distance" => RbxRayIndex::Method(RbxRayMethod::Distance),
+        _ => panic!("{key} is not a valid member"),
+    }
 }
 
 // 0x270afc — __ZN3RBX3LuaL19closestPointVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::closestPointVector3(lua_State *)")]
-pub fn stub_0x270afc() -> ! {
-    todo!("0x270afc __ZN3RBX3LuaL19closestPointVector3EP9lua_State")
+pub fn stub_0x270afc(ray: &RbxRay, point: &Vector3) -> Vector3 {
+    // IDA 0x270afc: `closestPointVector3` type-checks a ray and a vector
+    // (0x270b18/0x270b2a, folds into typed inputs), computes the closest
+    // point (0x270b34), and pushes it (0x270b3e, folds into the return).
+    ray_closest_point(ray, point)
 }
 
 // 0x270b48 — __ZN3RBX3LuaL15distanceVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::distanceVector3(lua_State *)")]
-pub fn stub_0x270b48() -> ! {
-    todo!("0x270b48 __ZN3RBX3LuaL15distanceVector3EP9lua_State")
+pub fn stub_0x270b48(ray: &RbxRay, point: &Vector3) -> f32 {
+    // IDA 0x270b48: `distanceVector3` type-checks a ray and a vector
+    // (0x270b62/0x270b74), measures the distance (0x270b7c), and pushes the
+    // number (0x270b8e, folds into the return).
+    let c = ray_closest_point(ray, point);
+    ((point.x - c.x) * (point.x - c.x)
+        + (point.y - c.y) * (point.y - c.y)
+        + (point.z - c.z) * (point.z - c.z))
+        .sqrt()
 }
 
 // 0x270b98 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(RBX::RbxRay&,char const*,lua_State *)")]
-pub fn stub_0x270b98() -> ! {
-    todo!("0x270b98 __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State")
+pub fn stub_0x270b98(key: &str) -> ! {
+    // IDA 0x270b98: `Bridge<RbxRay>::on_newindex` always throws `"%s cannot
+    // be assigned to"` (0x270bcc..0x270c44).
+    panic!("{key} cannot be assigned to")
 }
 
 // 0x270c50 — __ZN3RBX3Lua13Region3Bridge10newRegion3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::newRegion3(lua_State *)")]
-pub fn stub_0x270c50() -> ! {
-    todo!("0x270c50 __ZN3RBX3Lua13Region3Bridge10newRegion3EP9lua_State")
+pub fn stub_0x270c50(state: &mut BridgeState, parts: &[Vector3]) -> i32 {
+    // IDA 0x270c50: `newRegion3` clamps to 2 Vector3 args (0x270c96..
+    // 0x270c98), zero-fills the rest (0x270cee..0x270d18), constructs the
+    // region, pushes it, and answers 1. Corners fold into component-wise
+    // min/max.
+    let zero = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
+    let mut it = parts.iter();
+    let a = it.next().copied().unwrap_or(zero);
+    let b = it.next().copied().unwrap_or(zero);
+    state.stack.push(BridgeVal::Region3(Region3 {
+        min: Vector3 {
+            x: a.x.min(b.x),
+            y: a.y.min(b.y),
+            z: a.z.min(b.z),
+        },
+        max: Vector3 {
+            x: a.x.max(b.x),
+            y: a.y.max(b.y),
+            z: a.z.max(b.z),
+        },
+    }));
+    1
 }
 
 // 0x270d50 — __ZN3RBX3Lua13Region3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x270d50() -> ! {
-    todo!("0x270d50 __ZN3RBX3Lua13Region3Bridge20registerClassLibraryEP9lua_State")
+pub fn stub_0x270d50() -> ClassLibrary {
+    // IDA 0x270d50: registers the Region3 library read-only (0x270d6e..
+    // 0x270d7a).
+    ClassLibrary { name: "Region3", readonly: true }
 }
 
 // 0x270d8c — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_index(RBX::Region3 const&,char const*,lua_State *)")]
-pub fn stub_0x270d8c() -> ! {
-    todo!("0x270d8c __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8on_indexERKS2_PKcP9lua_State")
+pub fn stub_0x270d8c(region: &Region3, key: &str) -> Region3Index {
+    // IDA 0x270d8c: `Bridge<Region3>::on_index` pushes the CFrame
+    // (0x270dec..0x270e36, folds into the marker) or the Size vector
+    // (0x270dfa..0x270e0e), else throws "%s is not a valid member"
+    // (0x270e68..0x270ea0).
+    match key {
+        "CFrame" => Region3Index::CFrame,
+        "Size" => Region3Index::Size(Vector3 {
+            x: region.max.x - region.min.x,
+            y: region.max.y - region.min.y,
+            z: region.max.z - region.min.z,
+        }),
+        _ => panic!("{key} is not a valid member"),
+    }
 }
 
 // 0x270ec8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(RBX::Region3&,char const*,lua_State *)")]
-pub fn stub_0x270ec8() -> ! {
-    todo!("0x270ec8 __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_newindexERS2_PKcP9lua_State")
+pub fn stub_0x270ec8(key: &str) -> ! {
+    // IDA 0x270ec8: `Bridge<Region3>::on_newindex` always throws `"%s cannot
+    // be assigned to"` (0x270efc..0x270f74).
+    panic!("{key} cannot be assigned to")
 }
 
 // 0x270f80 — __ZN3RBX3Lua18Region3int16Bridge15newRegion3int16EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::newRegion3int16(lua_State *)")]
-pub fn stub_0x270f80() -> ! {
-    todo!("0x270f80 __ZN3RBX3Lua18Region3int16Bridge15newRegion3int16EP9lua_State")
+pub fn stub_0x270f80(state: &mut BridgeState, parts: &[Vector3int16]) -> i32 {
+    // IDA 0x270f80: `newRegion3int16` clamps to 2 Vector3int16 args
+    // (0x270fbc..0x270fbe), zero-fills the rest (0x27100e..0x271036),
+    // pushes the region, and answers 1. Same corner fold as 0x270c50.
+    let zero = Vector3int16 { x: 0, y: 0, z: 0 };
+    let mut it = parts.iter();
+    let a = it.next().copied().unwrap_or(zero);
+    let b = it.next().copied().unwrap_or(zero);
+    state.stack.push(BridgeVal::Region3i16(Region3int16 {
+        min: Vector3int16 {
+            x: a.x.min(b.x),
+            y: a.y.min(b.y),
+            z: a.z.min(b.z),
+        },
+        max: Vector3int16 {
+            x: a.x.max(b.x),
+            y: a.y.max(b.y),
+            z: a.z.max(b.z),
+        },
+    }));
+    1
 }
 
 // 0x271064 — __ZN3RBX3Lua18Region3int16Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x271064() -> ! {
-    todo!("0x271064 __ZN3RBX3Lua18Region3int16Bridge20registerClassLibraryEP9lua_State")
+pub fn stub_0x271064() -> ClassLibrary {
+    // IDA 0x271064: registers the Region3int16 library read-only (same
+    // shape as 0x270d50).
+    ClassLibrary { name: "Region3int16", readonly: true }
 }
 
 // 0x2710a0 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(RBX::Region3int16 const&,char const*,lua_State *)")]
-pub fn stub_0x2710a0() -> ! {
-    todo!("0x2710a0 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexERKS2_PKcP9lua_State")
+pub fn stub_0x2710a0(region: &Region3int16, key: &str) -> Region3i16Index {
+    // IDA 0x2710a0: `Bridge<Region3int16>::on_index` answers Min via
+    // `getMinPos` (0x271100..0x271134) and Max via `getMaxPos`
+    // (0x27110e..0x27111e), else throws "%s is not a valid member"
+    // (0x271174..0x2711ac).
+    match key {
+        "Min" => Region3i16Index::Min(region.min),
+        "Max" => Region3i16Index::Max(region.max),
+        _ => panic!("{key} is not a valid member"),
+    }
 }
 
 // 0x2711d4 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(RBX::Region3int16&,char const*,lua_State *)")]
-pub fn stub_0x2711d4() -> ! {
-    todo!("0x2711d4 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexERS2_PKcP9lua_State")
+pub fn stub_0x2711d4(key: &str) -> ! {
+    // IDA 0x2711d4: `Bridge<Region3int16>::on_newindex` always throws `"%s
+    // cannot be assigned to"` (0x271208..0x271280).
+    panic!("{key} cannot be assigned to")
 }
 
 // 0x27128c — __ZN3RBX3Lua13Vector3Bridge10newVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3(lua_State *)")]
-pub fn stub_0x27128c() -> ! {
-    todo!("0x27128c __ZN3RBX3Lua13Vector3Bridge10newVector3EP9lua_State")
+pub fn stub_0x27128c(state: &mut BridgeState, comps: &[f32]) -> i32 {
+    // IDA 0x27128c: `newVector3` reads up to 3 components through
+    // `lua_tofloat` (0x2712d6..0x2712ec), zero-pads the rest (0x2712f2..
+    // 0x27131c), pushes the vector (0x271324), and answers 1 (0x27133a).
+    let mut xyz = [0.0f32; 3];
+    for (i, c) in comps.iter().take(3).enumerate() {
+        xyz[i] = *c;
+    }
+    state.push_vec3(Vector3 { x: xyz[0], y: xyz[1], z: xyz[2] });
+    1
 }
 
 // 0x271340 — __ZN3RBX3Lua13Vector3Bridge22newVector3FromNormalIdEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromNormalId(lua_State *)")]
-pub fn stub_0x271340() -> ! {
-    todo!("0x271340 __ZN3RBX3Lua13Vector3Bridge22newVector3FromNormalIdEP9lua_State")
+pub fn stub_0x271340(normal: Option<NormalId>) -> Vector3 {
+    // IDA 0x271340: `newVector3FromNormalId` requires an EnumDescriptor item
+    // (0x271394); anything else throws "Vector3.FromNormalId expects
+    // Enum.NormalId input" (0x271404..0x271426, repeated at 0x271438..
+    // 0x271464 for non-NormalId enums), then maps through
+    // `normalIdToVector3` (0x2713c6) and pushes (0x2713d2, folds into the
+    // return).
+    match normal {
+        Some(id) => id.to_vector(),
+        None => panic!("Vector3.FromNormalId expects Enum.NormalId input"),
+    }
 }
 
 // 0x2714a0 — __ZN3RBX3Lua13Vector3Bridge18newVector3FromAxisEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromAxis(lua_State *)")]
-pub fn stub_0x2714a0() -> ! {
-    todo!("0x2714a0 __ZN3RBX3Lua13Vector3Bridge18newVector3FromAxisEP9lua_State")
+pub fn stub_0x2714a0(axis: Option<VectorAxis>) -> Vector3 {
+    // IDA 0x2714a0: `newVector3FromAxis` requires an EnumDescriptor item
+    // (0x2714f4); anything else throws "Vector3.FromAxis expects Enum.Axis
+    // input" (0x27156a..0x2715ca), then maps axis to normal id to vector
+    // (0x271526..0x27152c) and pushes (0x271538, folds into the return).
+    match axis {
+        Some(a) => a.to_vector(),
+        None => panic!("Vector3.FromAxis expects Enum.Axis input"),
+    }
 }
 
 // 0x271604 — __ZN3RBX3Lua13Vector3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x271604() -> ! {
-    todo!("0x271604 __ZN3RBX3Lua13Vector3Bridge20registerClassLibraryEP9lua_State")
+pub fn stub_0x271604() -> ClassLibrary {
+    // IDA 0x271604: registers the Vector3 library read-only (same shape as
+    // 0x270594).
+    ClassLibrary { name: "Vector3", readonly: true }
 }
 
 // 0x271640 — __ZN3RBX3Lua13Vector3Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_add(lua_State *)")]
-pub fn stub_0x271640() -> ! {
-    todo!("0x271640 __ZN3RBX3Lua13Vector3Bridge6on_addEP9lua_State")
+pub fn stub_0x271640(a: &Vector3, b: &Vector3) -> Vector3 {
+    // IDA 0x271640: `on_add` type-checks two Vector3s (0x27165a/0x271660)
+    // and pushes the component sum (0x271696, folds into the return).
+    Vector3 { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z }
 }
 
 // 0x2716a0 — __ZN3RBX3Lua13Vector3Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_sub(lua_State *)")]
-pub fn stub_0x2716a0() -> ! {
-    todo!("0x2716a0 __ZN3RBX3Lua13Vector3Bridge6on_subEP9lua_State")
+pub fn stub_0x2716a0(a: &Vector3, b: &Vector3) -> Vector3 {
+    // IDA 0x2716a0: `on_sub` type-checks two Vector3s (0x2716ba/0x2716c0)
+    // and pushes the component difference (0x2716f6, folds into the return).
+    Vector3 { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z }
 }
 
 // 0x271700 — __ZN3RBX3Lua13Vector3Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_mul(lua_State *)")]
-pub fn stub_0x271700() -> ! {
-    todo!("0x271700 __ZN3RBX3Lua13Vector3Bridge6on_mulEP9lua_State")
+pub fn stub_0x271700(a: VecOperand, b: VecOperand) -> Vector3 {
+    // IDA 0x271700: `on_mul` reads arg1 by value-or-throw (0x271730); when
+    // arg1 is a vector the second may be a vector or a `lua_tofloat` scalar
+    // (same fallback shape as 0x271804), and vice versa (0x271780..0x2717ac).
+    match (a, b) {
+        (VecOperand::Vec(x), VecOperand::Vec(y)) => {
+            Vector3 { x: x.x * y.x, y: x.y * y.y, z: x.z * y.z }
+        }
+        (VecOperand::Vec(v), VecOperand::Scalar(s))
+        | (VecOperand::Scalar(s), VecOperand::Vec(v)) => {
+            Vector3 { x: v.x * s, y: v.y * s, z: v.z * s }
+        }
+        (VecOperand::Scalar(_), VecOperand::Scalar(_)) => {
+            panic!("Vector3 expected")
+        }
+    }
 }
 
 // 0x271804 — __ZN3RBX3Lua13Vector3Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_div(lua_State *)")]
-pub fn stub_0x271804() -> ! {
-    todo!("0x271804 __ZN3RBX3Lua13Vector3Bridge6on_divEP9lua_State")
+pub fn stub_0x271804(a: &Vector3, b: VecOperand) -> Vector3 {
+    // IDA 0x271804: `on_div` requires a Vector3 first arg (0x27182e); the
+    // second is a vector (component divide, 0x271868..0x271870) or a
+    // `lua_tofloat` scalar applied through its reciprocal (0x2718d0..
+    // 0x2718e4). IEEE division (no trap) is preserved.
+    match b {
+        VecOperand::Vec(v) => Vector3 { x: a.x / v.x, y: a.y / v.y, z: a.z / v.z },
+        VecOperand::Scalar(s) => {
+            let r = 1.0 / s;
+            Vector3 { x: a.x * r, y: a.y * r, z: a.z * r }
+        }
+    }
 }
 
 // 0x27191c — __ZN3RBX3Lua13Vector3Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_unm(lua_State *)")]
-pub fn stub_0x27191c() -> ! {
-    todo!("0x27191c __ZN3RBX3Lua13Vector3Bridge6on_unmEP9lua_State")
+pub fn stub_0x27191c(v: &Vector3) -> Vector3 {
+    // IDA 0x27191c: `on_unm` negates by XOR-ing the sign bit of each
+    // component (0x27194a, `^ 0x80000000`); float negation is identical.
+    Vector3 { x: -v.x, y: -v.y, z: -v.z }
 }
 
 // 0x271954 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int32 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_index(G3D::Vector3 const&,char const*,lua_State *)")]
-pub fn stub_0x271954() -> ! {
-    todo!("0x271954 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexERKS3_PKcP9lua_State")
+pub fn stub_0x271954(v: &Vector3, key: &str) -> Vector3Index {
+    // IDA 0x271954: `Bridge<Vector3>::on_index` — components and magnitude
+    // push numbers (0x2719c4..0x271baa); `unit` pushes the normalized vector
+    // (0x271a44..0x271b80); lerp/Lerp, Cross, Dot, isClose push closures
+    // (0x271a9a..0x271bd8); anything else throws "%s is not a valid member"
+    // (0x271bee..0x271c26). Pushes fold into values.
+    match key {
+        "x" | "X" => Vector3Index::Component(v.x),
+        "y" | "Y" => Vector3Index::Component(v.y),
+        "z" | "Z" => Vector3Index::Component(v.z),
+        "unit" | "Unit" => {
+            let len = (v.x * v.x + v.y * v.y + v.z * v.z).sqrt();
+            Vector3Index::Unit(Vector3 { x: v.x / len, y: v.y / len, z: v.z / len })
+        }
+        "magnitude" | "Magnitude" => {
+            Vector3Index::Component((v.x * v.x + v.y * v.y + v.z * v.z).sqrt())
+        }
+        "lerp" | "Lerp" => Vector3Index::Method(Vec3Method::Lerp),
+        "Cross" => Vector3Index::Method(Vec3Method::Cross),
+        "Dot" => Vector3Index::Method(Vec3Method::Dot),
+        "isClose" => Vector3Index::Method(Vec3Method::IsClose),
+        _ => panic!("{key} is not a valid member"),
+    }
 }
 
 // 0x271c4c — __ZN3RBX3LuaL11lerpVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::lerpVector3(lua_State *)")]
-pub fn stub_0x271c4c() -> ! {
-    todo!("0x271c4c __ZN3RBX3LuaL11lerpVector3EP9lua_State")
+pub fn stub_0x271c4c(a: &Vector3, b: &Vector3, t: f32) -> Vector3 {
+    // IDA 0x271c4c: `lerpVector3` type-checks two Vector3s plus a float
+    // (0x271c66..0x271c76) and pushes `a + (b - a) * t` (0x271cc8, folds
+    // into the return).
+    Vector3 {
+        x: a.x + (b.x - a.x) * t,
+        y: a.y + (b.y - a.y) * t,
+        z: a.z + (b.z - a.z) * t,
+    }
 }
 
 // 0x271cd0 — __ZN3RBX3LuaL12crossVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::crossVector3(lua_State *)")]
-pub fn stub_0x271cd0() -> ! {
-    todo!("0x271cd0 __ZN3RBX3LuaL12crossVector3EP9lua_State")
+pub fn stub_0x271cd0(a: &Vector3, b: &Vector3) -> Vector3 {
+    // IDA 0x271cd0: `crossVector3` type-checks two Vector3s (0x271cea/
+    // 0x271cf0) and pushes the cross product (0x271d3e, folds into the
+    // return).
+    Vector3 {
+        x: a.y * b.z - a.z * b.y,
+        y: a.z * b.x - a.x * b.z,
+        z: a.x * b.y - a.y * b.x,
+    }
 }
 
 #[cfg(test)]
@@ -1621,5 +1941,157 @@ mod lua_bridge_batch_tests {
     #[should_panic(expected = "cannot be assigned to")]
     fn color_newindex_throws() {
         stub_0x270724("r");
+    }
+}
+
+#[cfg(test)]
+mod vector_math_batch_tests {
+    use super::*;
+
+    fn v(x: f32, y: f32, z: f32) -> Vector3 {
+        Vector3 { x, y, z }
+    }
+    #[test]
+    fn ray_index_and_methods() {
+        let ray = RbxRay { origin: v(1.0, 0.0, 0.0), direction: v(0.0, 2.0, 0.0) };
+        assert_eq!(stub_0x2708ec(&ray, "Origin"), RbxRayIndex::Origin(v(1.0, 0.0, 0.0)));
+        assert_eq!(stub_0x2708ec(&ray, "Direction"), RbxRayIndex::Direction(v(0.0, 2.0, 0.0)));
+        assert_eq!(
+            stub_0x2708ec(&ray, "unit"),
+            RbxRayIndex::Unit(RbxRay { origin: v(1.0, 0.0, 0.0), direction: v(0.0, 1.0, 0.0) })
+        );
+        assert_eq!(stub_0x2708ec(&ray, "ClosestPoint"), RbxRayIndex::Method(RbxRayMethod::ClosestPoint));
+        assert_eq!(stub_0x2708ec(&ray, "Distance"), RbxRayIndex::Method(RbxRayMethod::Distance));
+        let uray = RbxRay { origin: v(1.0, 0.0, 0.0), direction: v(0.0, 1.0, 0.0) };
+        let c = stub_0x270afc(&uray, &v(3.0, 4.0, 0.0));
+        assert_eq!(c, v(1.0, 4.0, 0.0));
+        assert_eq!(stub_0x270b48(&uray, &v(3.0, 4.0, 0.0)), 2.0);
+    }
+
+    #[test]
+    #[should_panic(expected = "not a valid member")]
+    fn ray_index_throws() {
+        stub_0x2708ec(&RbxRay { origin: v(0.0, 0.0, 0.0), direction: v(0.0, 0.0, 1.0) }, "Foo");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn ray_newindex_throws() {
+        stub_0x270b98("Origin");
+    }
+
+    #[test]
+    fn region_bridges() {
+        let mut state = BridgeState::new();
+        assert_eq!(stub_0x270c50(&mut state, &[v(1.0, 5.0, 0.0), v(3.0, 2.0, 4.0)]), 1);
+        assert_eq!(stub_0x270c50(&mut state, &[]), 1);
+        assert_eq!(stub_0x270d50(), ClassLibrary { name: "Region3", readonly: true });
+        let region = Region3 { min: v(1.0, 2.0, 3.0), max: v(4.0, 6.0, 8.0) };
+        assert_eq!(stub_0x270d8c(&region, "Size"), Region3Index::Size(v(3.0, 4.0, 5.0)));
+        assert_eq!(stub_0x270d8c(&region, "CFrame"), Region3Index::CFrame);
+        match &state.stack[0] {
+            BridgeVal::Region3(r) => assert_eq!(*r, Region3 { min: v(1.0, 2.0, 0.0), max: v(3.0, 5.0, 4.0) }),
+            other => panic!("expected region, got {other:?}"),
+        }
+        let vi = Vector3int16 { x: 2, y: 1, z: 0 };
+        assert_eq!(stub_0x270f80(&mut state, &[vi]), 1);
+        assert_eq!(stub_0x271064(), ClassLibrary { name: "Region3int16", readonly: true });
+        let regioni = Region3int16 { min: vi, max: Vector3int16 { x: 5, y: 5, z: 5 } };
+        assert_eq!(stub_0x2710a0(&regioni, "Min"), Region3i16Index::Min(vi));
+        assert_eq!(
+            stub_0x2710a0(&regioni, "Max"),
+            Region3i16Index::Max(Vector3int16 { x: 5, y: 5, z: 5 })
+        );
+    }
+
+    #[test]
+    #[should_panic(expected = "not a valid member")]
+    fn region_index_throws() {
+        stub_0x270d8c(&Region3 { min: v(0.0, 0.0, 0.0), max: v(1.0, 1.0, 1.0) }, "X");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn region_newindex_throws() {
+        stub_0x270ec8("Size");
+        stub_0x2711d4("Min");
+    }
+
+    #[test]
+    fn vector_constructors() {
+        let mut state = BridgeState::new();
+        assert_eq!(stub_0x27128c(&mut state, &[1.0, 2.0]), 1);
+        assert_eq!(stub_0x27128c(&mut state, &[1.0, 2.0, 3.0, 4.0]), 1);
+        match &state.stack[0] {
+            BridgeVal::Vec3(got) => assert_eq!(*got, v(1.0, 2.0, 0.0)),
+            other => panic!("expected vector, got {other:?}"),
+        }
+        assert_eq!(stub_0x271340(Some(NormalId::Top)), v(0.0, 1.0, 0.0));
+        assert_eq!(stub_0x271340(Some(NormalId::Front)), v(0.0, 0.0, -1.0));
+        assert_eq!(stub_0x271340(Some(NormalId::Left)), v(-1.0, 0.0, 0.0));
+        assert_eq!(stub_0x2714a0(Some(VectorAxis::Z)), v(0.0, 0.0, 1.0));
+        assert_eq!(stub_0x271604(), ClassLibrary { name: "Vector3", readonly: true });
+    }
+
+    #[test]
+    #[should_panic(expected = "Enum.NormalId")]
+    fn normal_id_requires_enum() {
+        stub_0x271340(None);
+    }
+
+    #[test]
+    #[should_panic(expected = "Enum.Axis")]
+    fn axis_requires_enum() {
+        stub_0x2714a0(None);
+    }
+
+    #[test]
+    fn vector_arithmetic() {
+        let a = v(1.0, 2.0, 3.0);
+        let b = v(4.0, 5.0, 6.0);
+        assert_eq!(stub_0x271640(&a, &b), v(5.0, 7.0, 9.0));
+        assert_eq!(stub_0x2716a0(&a, &b), v(-3.0, -3.0, -3.0));
+        assert_eq!(
+            stub_0x271700(VecOperand::Vec(a), VecOperand::Vec(b)),
+            v(4.0, 10.0, 18.0)
+        );
+        assert_eq!(
+            stub_0x271700(VecOperand::Vec(a), VecOperand::Scalar(2.0)),
+            v(2.0, 4.0, 6.0)
+        );
+        assert_eq!(stub_0x271804(&a, VecOperand::Vec(b)), v(0.25, 0.4, 0.5));
+        assert_eq!(stub_0x271804(&a, VecOperand::Scalar(2.0)), v(0.5, 1.0, 1.5));
+        assert_eq!(stub_0x27191c(&a), v(-1.0, -2.0, -3.0));
+        assert_eq!(stub_0x271c4c(&a, &b, 0.5), v(2.5, 3.5, 4.5));
+        assert_eq!(stub_0x271cd0(&v(1.0, 0.0, 0.0), &v(0.0, 1.0, 0.0)), v(0.0, 0.0, 1.0));
+    }
+
+    #[test]
+    #[should_panic(expected = "Vector3 expected")]
+    fn mul_rejects_scalars() {
+        stub_0x271700(VecOperand::Scalar(1.0), VecOperand::Scalar(2.0));
+    }
+
+    #[test]
+    fn vector_index() {
+        let a = v(3.0, 4.0, 0.0);
+        assert_eq!(stub_0x271954(&a, "x"), Vector3Index::Component(3.0));
+        assert_eq!(stub_0x271954(&a, "Y"), Vector3Index::Component(4.0));
+        assert_eq!(stub_0x271954(&a, "magnitude"), Vector3Index::Component(5.0));
+        assert_eq!(
+            stub_0x271954(&a, "unit"),
+            Vector3Index::Unit(v(0.6, 0.8, 0.0))
+        );
+        assert_eq!(stub_0x271954(&a, "lerp"), Vector3Index::Method(Vec3Method::Lerp));
+        assert_eq!(stub_0x271954(&a, "Lerp"), Vector3Index::Method(Vec3Method::Lerp));
+        assert_eq!(stub_0x271954(&a, "Cross"), Vector3Index::Method(Vec3Method::Cross));
+        assert_eq!(stub_0x271954(&a, "Dot"), Vector3Index::Method(Vec3Method::Dot));
+        assert_eq!(stub_0x271954(&a, "isClose"), Vector3Index::Method(Vec3Method::IsClose));
+    }
+
+    #[test]
+    #[should_panic(expected = "not a valid member")]
+    fn vector_index_throws() {
+        stub_0x271954(&v(0.0, 0.0, 0.0), "cross");
     }
 }
