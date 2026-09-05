@@ -5,7 +5,8 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
-use core::sync::atomic::{AtomicU32, Ordering};
+use std::sync::atomic::{AtomicU32, Ordering};
+use crate::generated_audio_wd_watchdog13::SpawnPlayerRef;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog14::SurfaceVariant;
@@ -15,14 +16,77 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 /// `RBX::Team` cutover (IDA 0x662fcc): the score at +92 (word 23,
 /// init 0), the team color at +96 (word 24, init 194 overwritten to
-/// 1 at 0x6630fc) and the auto-assignable flag at +100 (init 1,
-/// 0x6630b6; +101 init 1 folds away). The `Instance`/`Described`
-/// bases and the `setName("Team")` fold away.
+/// 1 at 0x6630fc), the auto-assignable flag at +100 (init 1,
+/// 0x6630b6) and the auto-color-characters flag at +101 (init 1,
+/// 0x6630c6). The `Instance`/`Described` bases and the
+/// `setName("Team")` fold away.
 #[derive(Debug, Clone)]
 pub struct TeamState {
     pub score: i32,
     pub team_color: u32,
     pub auto_assignable: bool,
+    pub auto_color_characters: bool,
+}
+/// `RBX::Reflection::BoundProp<bool>` cutover for `Team` (IDA
+/// 0x663b74, `AutoColorCharacters`): name/category plus the live
+/// value. The member cell (offset 101 = 0x65, IDA a_268 0x664374)
+/// folds into the field (same shape as `SparklesBoolProp` at
+/// 0x63cc8c).
+#[derive(Debug, Clone)]
+pub struct TeamBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl TeamBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<Team, _>` cutover (IDA 0x663d68
+/// bool `AutoAssignable`, 0x663ef8 `BrickColor` `TeamColor`,
+/// 0x66408c int `Score`, all IDA a_268 0x6642ac-0x664346):
+/// name/category/attributes/permissions. The getter/setter
+/// member-pointer pairs fold into direct field access.
+#[derive(Debug, Clone)]
+pub struct TeamPropDesc {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TeamPropDesc {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Teams` cutover (IDA 0x6645dc): the +92 flag (init 1) plus
+/// the team list at +96 (copy_on_write vector, init empty). The
+/// name registration folds away (same shape as `SpawnerServiceState`
+/// at 0x63db8c).
+#[derive(Debug, Clone, Default)]
+pub struct TeamsState {
+    pub flag_92: bool,
+    pub teams: Vec<SharedPtr<TeamState>>,
 }
 /// Process-wide static-init run count behind the `__GLOBAL__I_a_*`
 /// ctors in this file (IDA 0x662c48). The category/ios/descriptor/
@@ -385,13 +449,15 @@ pub fn stub_662fcc() -> TeamState {
     // installs + class registration (0x662fee-0x663088); word 23
     // (+92, score) = 0 (0x6630ac); word 24 (+96, team color) = 194
     // then overwritten to 1 (0x6630b2 then 0x6630fc); +100
-    // (auto-assignable) = 1 (0x6630b6, +101 = 1 folds away);
+    // (auto-assignable) = 1 (0x6630b6) and +101
+    // (auto-color-characters) = 1 (0x6630c6);
     // `setName("Team")` (0x6630d2-0x6630de). Host: the grounded
     // cutover.
     TeamState {
         score: 0,
         team_color: 1,
         auto_assignable: true,
+        auto_color_characters: true,
     }
 }
 
@@ -502,8 +568,12 @@ pub fn stub_66334c() -> bool {
 // 0x663350 — __ZNK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv
 // demangled: __ZNK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv")]
-pub fn stub_663350() -> ! {
-    todo!("0x663350 __ZNK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv")
+pub fn stub_663350() -> &'static str {
+    // IDA 0x663350 (`FactoryProduct<Team>::getClassName`):
+    // `static_getCreator` (0x663354) then the `Creator::getClassName`
+    // shim. Host: the declared name directly (grounded by the
+    // `setName("Team")` in the ctor at 0x6630d2).
+    "Team"
 }
 
 // 0x663360 — __ZThn32_NK3RBX14FactoryProductINS_4TeamENS_8InstanceELZNS_5sTeamEES2_E12getClassNameEv
@@ -517,40 +587,71 @@ pub fn stub_663360() {
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Team>(char const*,char const*,bool RBX::Team::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Team>(char const*,char const*,bool RBX::Team::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4TeamEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_663b74() -> ! {
-    todo!("0x663b74 __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4TeamEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_663b74(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> TeamBoolProp {
+    // IDA 0x663b74 (`BoundProp<bool>::BoundProp<Team>`): the `Team`
+    // `classDescriptor` call + `TypedPropertyDescriptor<bool>`
+    // member-cell init (name/category/member/attributes/
+    // permissions). The single object is `AutoColorCharacters`
+    // (static `prop_AutoColorCharacters`, member offset 101 = 0x65,
+    // IDA a_268 0x664368-0x664382). The cell folds into the field
+    // (same shape as `SparklesBoolProp` at 0x63cc8c).
+    TeamBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x663d04 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE10isReadOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE10isReadOnlyEv")]
-pub fn stub_663d04() -> ! {
-    todo!("0x663d04 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE10isReadOnlyEv")
+pub fn stub_663d04() -> bool {
+    // IDA 0x663d04 (`BoundPropGetSet<Team>::isReadOnly`): `MOVS R0,
+    // #0; BX LR` — always readable.
+    false
 }
 
 // 0x663d08 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE11isWriteOnlyEv")]
-pub fn stub_663d08() -> ! {
-    todo!("0x663d08 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE11isWriteOnlyEv")
+pub fn stub_663d08() -> bool {
+    // IDA 0x663d08 (`BoundPropGetSet<Team>::isWriteOnly`): `MOVS R0,
+    // #0; BX LR` — always writable.
+    false
 }
 
 // 0x663d0c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_663d0c() -> ! {
-    todo!("0x663d0c __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_663d0c(state: &TeamState) -> bool {
+    // IDA 0x663d0c (`BoundPropGetSet<Team>::getValue`): loads the
+    // member offset at +8, adjusts the described (`R1 - 36` when
+    // non-null) and returns the byte there. The member is the +101
+    // `AutoColorCharacters` cell; the offset folds into the field
+    // (same shape as `Sparkles` at 0x63ce24).
+    state.auto_color_characters
 }
 
 // 0x663d18 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_663d18() -> ! {
-    todo!("0x663d18 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8setValueEPNS0_13DescribedBaseERKb")
+pub fn stub_663d18(state: &mut TeamState, value: bool) -> bool {
+    // IDA 0x663d18 (`BoundPropGetSet<Team>::setValue`): adjusts the
+    // described, returns early on match, else stores (0x663d30-
+    // 0x663d34), runs the member hook when set and tail-calls
+    // `raisePropertyChanged` (0x663d36-0x663d62). The raise folds
+    // into the changed flag (same shape as `Sparkles` at 0x63ce30).
+    if state.auto_color_characters == value {
+        return false;
+    }
+    state.auto_color_characters = value;
+    true
 }
 
 // 0x663d68 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -558,8 +659,19 @@ pub fn stub_663d18() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::PropDescriptor<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>(char const*,char const*,bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_663d68() -> ! {
-    todo!("0x663d68 __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_663d68(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TeamPropDesc {
+    // IDA 0x663d68 (`PropDescriptor<Team, bool>` ctor): the `Team`
+    // `classDescriptor` call + `operator new` impl holding the
+    // getter/setter member-pointer pair, then the
+    // `TypedPropertyDescriptor<bool>` base init. The single object
+    // is `AutoAssignable` (setter `setAutoAssignable`, IDA a_268
+    // 0x664346). The pair folds into direct field access.
+    TeamPropDesc::new(name, category, attributes, permissions)
 }
 
 // 0x663e7c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED0Ev
@@ -574,32 +686,44 @@ pub fn stub_663e7c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_663ea8() -> ! {
-    todo!("0x663ea8 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_663ea8() -> bool {
+    // IDA 0x663ea8 (`GetSetImpl<bool>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x663eac — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_663eac() -> ! {
-    todo!("0x663eac __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_663eac() -> bool {
+    // IDA 0x663eac (`GetSetImpl<bool>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x663eb0 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_663eb0() -> ! {
-    todo!("0x663eb0 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_663eb0(state: &TeamState) -> bool {
+    // IDA 0x663eb0 (`GetSetImpl<bool>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member is
+    // `getAutoAssignable` (IDA a_268 0x664346); the pointer folds
+    // into the field.
+    state.auto_assignable
 }
 
 // 0x663ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::GetSetImpl<bool (RBX::Team::*)(void)const,void (RBX::Team::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_663ed4() -> ! {
-    todo!("0x663ed4 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")
+pub fn stub_663ed4(state: &mut TeamState, value: bool) -> bool {
+    // IDA 0x663ed4 (`GetSetImpl<bool>::setValue`): the
+    // member-pointer resolve tail-calling the setter with the input
+    // byte. The member is `setAutoAssignable` (host:
+    // stub_662fa8); the pointer folds into it.
+    stub_662fa8(state, value)
 }
 
 // 0x663ef8 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -607,8 +731,17 @@ pub fn stub_663ed4() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_663ef8() -> ! {
-    todo!("0x663ef8 __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_663ef8(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TeamPropDesc {
+    // IDA 0x663ef8 (`PropDescriptor<Team, BrickColor>` ctor): same
+    // `classDescriptor` + impl + base-init shape for the single
+    // object (`TeamColor`, setter `setTeamColor`, IDA a_268
+    // 0x6642fa). The pair folds into direct field access.
+    TeamPropDesc::new(name, category, attributes, permissions)
 }
 
 // 0x66400c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED0Ev
@@ -623,32 +756,43 @@ pub fn stub_66400c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_664038() -> ! {
-    todo!("0x664038 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_664038() -> bool {
+    // IDA 0x664038 (`GetSetImpl<BrickColor>::isReadOnly`): `MOVS
+    // R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x66403c — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_66403c() -> ! {
-    todo!("0x66403c __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_66403c() -> bool {
+    // IDA 0x66403c (`GetSetImpl<BrickColor>::isWriteOnly`): `MOVS
+    // R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x664040 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_664040() -> ! {
-    todo!("0x664040 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_664040(state: &TeamState) -> u32 {
+    // IDA 0x664040 (`GetSetImpl<BrickColor>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member is
+    // `getTeamColor`; the pointer folds into the field.
+    state.team_color
 }
 
 // 0x664068 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Team::*)(void)const,void (RBX::Team::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_664068() -> ! {
-    todo!("0x664068 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_664068(state: &mut TeamState, value: u32) -> bool {
+    // IDA 0x664068 (`GetSetImpl<BrickColor>::setValue`): the
+    // member-pointer resolve tail-calling the setter with the input
+    // word. The member is `setTeamColor` (host: stub_662f84); the
+    // pointer folds into it.
+    stub_662f84(state, value)
 }
 
 // 0x66408c — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -656,8 +800,17 @@ pub fn stub_664068() -> ! {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::PropDescriptor<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>(char const*,char const*,int (RBX::Team::*)(void)const,void (RBX::Team::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_4TeamEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_66408c() -> ! {
-    todo!("0x66408c __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_66408c(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TeamPropDesc {
+    // IDA 0x66408c (`PropDescriptor<Team, int>` ctor): same
+    // `classDescriptor` + impl + base-init shape for the single
+    // object (`Score`, setter `setScore`, IDA a_268 0x6642ac). The
+    // pair folds into direct field access.
+    TeamPropDesc::new(name, category, attributes, permissions)
 }
 
 // 0x6641a0 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED0Ev
@@ -672,32 +825,43 @@ pub fn stub_6641a0() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_6641cc() -> ! {
-    todo!("0x6641cc __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")
+pub fn stub_6641cc() -> bool {
+    // IDA 0x6641cc (`GetSetImpl<int>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x6641d0 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_6641d0() -> ! {
-    todo!("0x6641d0 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")
+pub fn stub_6641d0() -> bool {
+    // IDA 0x6641d0 (`GetSetImpl<int>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x6641d4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6641d4() -> ! {
-    todo!("0x6641d4 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_6641d4(state: &TeamState) -> i32 {
+    // IDA 0x6641d4 (`GetSetImpl<int>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member is
+    // `getScore`; the pointer folds into the field.
+    state.score
 }
 
 // 0x6641f4 — __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 // demangled: RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::GetSetImpl<int (RBX::Team::*)(void)const,void (RBX::Team::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_6641f4() -> ! {
-    todo!("0x6641f4 __ZNK3RBX10Reflection14PropDescriptorINS_4TeamEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")
+pub fn stub_6641f4(state: &mut TeamState, value: i32) -> bool {
+    // IDA 0x6641f4 (`GetSetImpl<int>::setValue`): the
+    // member-pointer resolve tail-calling the setter with the input
+    // word. The member is `setScore` (host: stub_662f60); the
+    // pointer folds into it.
+    stub_662f60(state, value)
 }
 
 // 0x6645d4 — __ZN3RBX5Teams14rebalanceTeamsEv
@@ -705,8 +869,9 @@ pub fn stub_6641f4() -> ! {
 // type: _DWORD __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::rebalanceTeams(void)")]
 #[doc(alias = "__ZN3RBX5Teams14rebalanceTeamsEv")]
-pub fn stub_6645d4() -> ! {
-    todo!("0x6645d4 __ZN3RBX5Teams14rebalanceTeamsEv")
+pub fn stub_6645d4() {
+    // IDA 0x6645d4 (`RBX::Teams::rebalanceTeams`): empty body —
+    // no-op.
 }
 
 // 0x6645d8 — __ZN3RBX5TeamsC1Ev
@@ -714,8 +879,10 @@ pub fn stub_6645d4() -> ! {
 // type: _DWORD __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::Teams(void)")]
 #[doc(alias = "__ZN3RBX5TeamsC1Ev")]
-pub fn stub_6645d8() -> ! {
-    todo!("0x6645d8 __ZN3RBX5TeamsC1Ev")
+pub fn stub_6645d8() -> TeamsState {
+    // IDA 0x6645d8 (`RBX::Teams::Teams` C1): thunk tail-calling the
+    // C2 (host: stub_6645dc).
+    stub_6645dc()
 }
 
 // 0x6645dc — __ZN3RBX5TeamsC2Ev
@@ -723,8 +890,17 @@ pub fn stub_6645d8() -> ! {
 // type: _DWORD __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::Teams(void)")]
 #[doc(alias = "__ZN3RBX5TeamsC2Ev")]
-pub fn stub_6645dc() -> ! {
-    todo!("0x6645dc __ZN3RBX5TeamsC2Ev")
+pub fn stub_6645dc() -> TeamsState {
+    // IDA 0x6645dc (`RBX::Teams::Teams` C2): `ServiceProvider` base
+    // + vtable installs + class registration (0x664668-0x664690);
+    // the +92 flag byte is set to 1 (0x66469e); the team list at
+    // +96 is an empty copy_on_write vector (0x6646c2-0x6646da);
+    // `setName("Teams")` (0x6646f8-0x664706). Host: the cleared
+    // cutover (same shape as `SpawnerServiceState` at 0x63db8c).
+    TeamsState {
+        flag_92: true,
+        teams: Vec::new(),
+    }
 }
 
 // 0x66482c — __ZN3RBX5TeamsD0Ev
@@ -795,8 +971,22 @@ pub fn stub_6649cc() {
 // type: _DWORD __fastcall(RBX::Teams *__hidden this)
 #[doc(alias = "RBX::Teams::isTeamGame(void)")]
 #[doc(alias = "__ZN3RBX5Teams10isTeamGameEv")]
-pub fn stub_6649d4() -> ! {
-    todo!("0x6649d4 __ZN3RBX5Teams10isTeamGameEv")
+pub fn stub_6649d4(players_present: bool, players: &[SpawnPlayerRef]) -> bool {
+    // IDA 0x6649d4 (`RBX::Teams::isTeamGame`): a null `Players`
+    // service returns 0 (0x6649e4-0x6649e8); zero children returns 0
+    // (0x6649f2-0x6649f4); the child slots (8-byte `shared_ptr`
+    // elements, 0x664a0a-0x664a16) skip nulls (0x664a16-0x664a1c)
+    // and non-`Player`s (`isA`, 0x664a1e-0x664a2e); the first
+    // non-neutral (+104) child returns 1 immediately
+    // (0x664a30-0x664a3c); exhausting the list returns 0
+    // (0x664a3e-0x664a4c). (The decompiler misreads the loop-bottom
+    // `MOVS R0, #0` as a post-loop reset — the disasm shows it feeds
+    // the next compare/return.) Host: the slice holds the `Player`
+    // children; nulls/non-players fold out.
+    if !players_present {
+        return false;
+    }
+    players.iter().any(|player| !player.neutral)
 }
 
 // 0x664a54 — __ZN3RBX5Teams21assignNewPlayerToTeamEPNS_7Network6PlayerE
