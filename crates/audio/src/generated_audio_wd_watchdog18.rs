@@ -899,6 +899,66 @@ impl TextLabelFontSizeProp {
         }
     }
 }
+/// `RBX::Reflection::PropDescriptor<TextLabel, std::string>` cutover
+/// (IDA 0x67c6e0): name/category/attributes/permissions. The member
+/// pair folds into the `text` field (`getText`/`setText`).
+#[derive(Debug, Clone)]
+pub struct TextLabelStringProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelStringProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// One `RBX::TimerService::Item`: a `boost::function0<void>` closure
+/// with its deadline. The list at +104 stays sorted ascending by
+/// deadline (IDA 0x67d6da-0x67d71c). `boost::function0` is an `Arc`
+/// closure in the host.
+#[derive(Clone)]
+pub struct TimerItem {
+    pub deadline: f64,
+    pub action: std::sync::Arc<dyn Fn() + Send + Sync>,
+}
+/// `RBX::TimerService` cutover (IDA 0x67d4f8): the +104
+/// deadline-sorted item list plus the +92 cell (set at 0x67d5b2; no
+/// reader in range — carried opaquely). The +96
+/// `HeartbeatInstance` cell and the vtables/class descriptor fold
+/// away.
+#[derive(Clone, Default)]
+pub struct TimerServiceState {
+    pub active: bool,
+    pub items: Vec<TimerItem>,
+}
+/// `G3D::CoordinateFrame` rotation behind `RBX::Tool::grip` (IDA
+/// 0x67e7a0+): row-major rows; column `j` is
+/// `[rotation[0][j], rotation[1][j], rotation[2][j]]`. The grip
+/// translation rides alongside. Column identities are grounded by
+/// disasm: right = column 0, up = column 1, forward = −column 2
+/// (`MOVS R2, #0/#1/#2` ahead of the `column` calls at
+/// 0x67ebc6/0x67ea92/0x67e90e).
+#[derive(Debug, Clone, Copy)]
+pub struct ToolGrip {
+    pub rotation: [[f32; 3]; 3],
+    pub translation: [f32; 3],
+}
+impl ToolGrip {
+    pub fn column(&self, index: usize) -> [f32; 3] {
+        [
+            self.rotation[0][index],
+            self.rotation[1][index],
+            self.rotation[2][index],
+        ]
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
