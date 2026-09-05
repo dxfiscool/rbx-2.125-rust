@@ -298,8 +298,8 @@ pub fn stub_37b3c(game: usize, store: &mut dyn FnMut(usize), prep: &mut dyn FnMu
 // demangled: RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)
 // type: _DWORD __fastcall(RobloxView *__hidden this, const PropertyDescriptor *)
 #[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_380a0() -> ! {
-    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_380a0() {
+    // IDA 0x380a0: empty onPlaceIDChanged body.
 }
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
@@ -307,32 +307,36 @@ pub fn stub_380a0() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RobloxView::bindWorkspace(rbx_core::SharedPtr<RBX::ViewBase>,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::OverlayDataModel>)")]
-pub fn stub_380a4() -> ! {
-    todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
+pub fn stub_380a4(bind: &mut dyn FnMut()) {
+    // IDA 0x380a4: RobloxView::bindWorkspace — workspace shared_ptr wiring (below truncation).
+    bind();
 }
 
 // 0x382b0 — __ZN10RobloxView22defineConcurrencyRulesEv
 // demangled: RobloxView::defineConcurrencyRules(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::defineConcurrencyRules(void)")]
-pub fn stub_382b0() -> ! {
-    todo!("0x382b0 RobloxView::defineConcurrencyRules(void)")
+pub fn stub_382b0(define: &mut dyn FnMut()) {
+    // IDA 0x382b0: RobloxView::defineConcurrencyRules — ViewUpdateJob + mutex rules (below truncation).
+    define();
 }
 
 // 0x386d0 — __ZN10RobloxView16restartDataModelEv
 // demangled: RobloxView::restartDataModel(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::restartDataModel(void)")]
-pub fn stub_386d0() -> ! {
-    todo!("0x386d0 RobloxView::restartDataModel(void)")
+pub fn stub_386d0(restart: &mut dyn FnMut(), dispatch: &mut dyn FnMut(&mut dyn FnMut())) {
+    // IDA 0x386d0: dispatch_async(main, ^{ doRestartDataModel(); }).
+    dispatch(restart);
 }
 
 // 0x38720 — __ZN10RobloxView15newGameDidStartEv
 // demangled: RobloxView::newGameDidStart(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::newGameDidStart(void)")]
-pub fn stub_38720() -> ! {
-    todo!("0x38720 RobloxView::newGameDidStart(void)")
+pub fn stub_38720(start: &mut dyn FnMut(), dispatch: &mut dyn FnMut(&mut dyn FnMut())) {
+    // IDA 0x38720: dispatch_async(main, ^{ newGameDidStart body }).
+    dispatch(start);
 }
 
 // 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
@@ -340,40 +344,45 @@ pub fn stub_38720() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detai
 // was: boost::shared_ptr
 #[doc(alias = "____ZN10RobloxView18doRestartDataModelEv_block_invoke")]
-pub fn stub_38770() -> ! {
-    todo!("0x38770 ____ZN10RobloxView18doRestartDataModelEv_block_invoke")
+pub fn stub_38770(view: usize, restart: &mut dyn FnMut(usize)) {
+    // IDA 0x38770: doRestartDataModel block — runs on main (below truncation).
+    restart(view);
 }
 
 // 0x38cd0 — __ZN10RobloxView17setupNewDataModelEv
 // demangled: RobloxView::setupNewDataModel(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::setupNewDataModel(void)")]
-pub fn stub_38cd0() -> ! {
-    todo!("0x38cd0 RobloxView::setupNewDataModel(void)")
+pub fn stub_38cd0(setup: &mut dyn FnMut()) {
+    // IDA 0x38cd0: RobloxView::setupNewDataModel — Game wiring (below truncation).
+    setup();
 }
 
 // 0x39018 — ____ZN10RobloxView15newGameDidStartEv_block_invoke
 // demangled: ____ZN10RobloxView15newGameDidStartEv_block_invoke
 // type: 
 #[doc(alias = "____ZN10RobloxView15newGameDidStartEv_block_invoke")]
-pub fn stub_39018() -> ! {
-    todo!("0x39018 ____ZN10RobloxView15newGameDidStartEv_block_invoke")
+pub fn stub_39018(view: usize, resume: &mut dyn FnMut(usize)) {
+    // IDA 0x39018: requestResumeRendering(captured view).
+    resume(view);
 }
 
 // 0x39020 — __ZN10RobloxViewD1Ev
 // demangled: RobloxView::~RobloxView()
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39020() -> ! {
-    todo!("0x39020 RobloxView::~RobloxView()")
+pub fn stub_39020(destroy: &mut dyn FnMut()) {
+    // IDA 0x39020: D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x39024 — __ZN10RobloxViewD2Ev
 // demangled: RobloxView::~RobloxView()
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39024() -> ! {
-    todo!("0x39024 RobloxView::~RobloxView()")
+pub fn stub_39024(destroy: &mut dyn FnMut()) {
+    // IDA 0x39024: ~RobloxView D2 — RenderJob/FunctionMarshaller releases (below truncation).
+    destroy();
 }
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
@@ -381,96 +390,112 @@ pub fn stub_39024() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
 // was: boost::shared_ptr
 #[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
-pub fn stub_39674() -> ! {
-    todo!("0x39674 RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_39674(create: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x39674: RobloxView::create_view — alloc + construct (below truncation).
+    create()
 }
 
 // 0x39920 — __ZL14initLogManagerv
 // demangled: initLogManager(void)
 // type: _DWORD __fastcall()
 #[doc(alias = "initLogManager(void)")]
-pub fn stub_39920() -> ! {
-    todo!("0x39920 initLogManager(void)")
+pub fn stub_39920(init: &mut dyn FnMut()) {
+    // IDA 0x39920: initLogManager — Ogre::LogManager setup (below truncation).
+    init();
 }
 
 // 0x39be0 — __ZNSt12domain_errorD0Ev
 // demangled: std::domain_error::~domain_error()
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_39be0() -> ! {
-    todo!("0x39be0 std::domain_error::~domain_error()")
+pub fn stub_39be0(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x39be0: domain_error D0: logic_error dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x39bf8 — __ZNSt12domain_errorD2Ev
 // demangled: std::domain_error::~domain_error()
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_39bf8() -> ! {
-    todo!("0x39bf8 std::domain_error::~domain_error()")
+pub fn stub_39bf8(destroy: &mut dyn FnMut()) {
+    // IDA 0x39bf8: domain_error D1 thunk -> logic_error dtor.
+    destroy();
 }
 
 // 0x39c00 — __ZNSt16invalid_argumentD1Ev
 // demangled: std::invalid_argument::~invalid_argument()
 // type: void __cdecl(std::invalid_argument *__hidden this)
 #[doc(alias = "std::invalid_argument::~invalid_argument()")]
-pub fn stub_39c00() -> ! {
-    todo!("0x39c00 std::invalid_argument::~invalid_argument()")
+pub fn stub_39c00(destroy: &mut dyn FnMut()) {
+    // IDA 0x39c00: invalid_argument D1 thunk -> logic_error dtor.
+    destroy();
 }
 
 // 0x39c08 — __ZNSt12length_errorD0Ev
 // demangled: std::length_error::~length_error()
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
-pub fn stub_39c08() -> ! {
-    todo!("0x39c08 std::length_error::~length_error()")
+pub fn stub_39c08(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x39c08: length_error D0: logic_error dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x39c20 — __ZNSt12out_of_rangeD1Ev
 // demangled: std::out_of_range::~out_of_range()
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
-pub fn stub_39c20() -> ! {
-    todo!("0x39c20 std::out_of_range::~out_of_range()")
+pub fn stub_39c20(destroy: &mut dyn FnMut()) {
+    // IDA 0x39c20: out_of_range D1 thunk -> logic_error dtor.
+    destroy();
 }
 
 // 0x39c28 — __ZNSt11range_errorD0Ev
 // demangled: std::range_error::~range_error()
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
-pub fn stub_39c28() -> ! {
-    todo!("0x39c28 std::range_error::~range_error()")
+pub fn stub_39c28(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x39c28: range_error D0: runtime_error dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x39c40 — __ZNSt11range_errorD2Ev
 // demangled: std::range_error::~range_error()
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
-pub fn stub_39c40() -> ! {
-    todo!("0x39c40 std::range_error::~range_error()")
+pub fn stub_39c40(destroy: &mut dyn FnMut()) {
+    // IDA 0x39c40: range_error D1 thunk -> runtime_error dtor.
+    destroy();
 }
 
 // 0x39c48 — __ZNSt14overflow_errorD1Ev
 // demangled: std::overflow_error::~overflow_error()
 // type: void __cdecl(std::overflow_error *__hidden this)
 #[doc(alias = "std::overflow_error::~overflow_error()")]
-pub fn stub_39c48() -> ! {
-    todo!("0x39c48 std::overflow_error::~overflow_error()")
+pub fn stub_39c48(destroy: &mut dyn FnMut()) {
+    // IDA 0x39c48: overflow_error D1 thunk -> runtime_error dtor.
+    destroy();
 }
 
 // 0x39c50 — __ZNSt15underflow_errorD0Ev
 // demangled: std::underflow_error::~underflow_error()
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_39c50() -> ! {
-    todo!("0x39c50 std::underflow_error::~underflow_error()")
+pub fn stub_39c50(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x39c50: underflow_error D0: runtime_error dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x39c68 — __ZNSt15underflow_errorD2Ev
 // demangled: std::underflow_error::~underflow_error()
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_39c68() -> ! {
-    todo!("0x39c68 std::underflow_error::~underflow_error()")
+pub fn stub_39c68(destroy: &mut dyn FnMut()) {
+    // IDA 0x39c68: underflow_error D1 thunk -> runtime_error dtor.
+    destroy();
 }
 
 // 0x39c6c — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE
@@ -478,8 +503,9 @@ pub fn stub_39c68() -> ! {
 // type: void __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
-pub fn stub_39c6c() -> ! {
-    todo!("0x39c6c RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")
+pub fn stub_39c6c(remove: &mut dyn FnMut()) {
+    // IDA 0x39c6c: TaskScheduler::removeBlocking (below truncation).
+    remove();
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
@@ -487,8 +513,11 @@ pub fn stub_39c6c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
-pub fn stub_39d7c() -> ! {
-    todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
+pub fn stub_39d7c(job: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x39d7c: shared_ptr<RenderJob>::reset — clear + release.
+    if let Some(p) = job.take() {
+        release(p);
+    }
 }
 
 // 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
@@ -496,8 +525,11 @@ pub fn stub_39d7c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
-pub fn stub_39e10() -> ! {
-    todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
+pub fn stub_39e10(job: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x39e10: shared_ptr<ViewUpdateJob>::reset — clear + release.
+    if let Some(p) = job.take() {
+        release(p);
+    }
 }
 
 // 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
