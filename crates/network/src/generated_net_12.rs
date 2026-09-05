@@ -10,120 +10,184 @@ use rbx_core::SharedPtr;
 // 0x1142e4 — __ZL19SupportsExportDepthi_0
 // type: _DWORD __fastcall(int)
 #[doc(alias = "__ZL19SupportsExportDepthi_0")]
-pub fn stub_1142e4() -> ! { todo!("0x1142e4 __ZL19SupportsExportDepthi_0") }
+pub fn stub_1142e4(bpp: i32) -> bool { // IDA 0x1142e4: PNG depths 4/1/24/8/32.
+    bpp == 4 || bpp == 1 || bpp == 24 || bpp == 8 || bpp == 32
+}
 
 // 0x114314 — __ZL18SupportsExportType15FREE_IMAGE_TYPE_0
 #[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_0")]
-pub fn stub_114314() -> ! { todo!("0x114314 __ZL18SupportsExportType15FREE_IMAGE_TYPE_0") }
+pub fn stub_114314(image_type: u32) -> bool { // IDA 0x114314: 9 → true; else !(t - 1 > 1) or t == 10.
+    if image_type == 9 {
+        return true;
+    }
+    !(image_type.wrapping_sub(1) > 1) || image_type == 10
+}
 
 // 0x114338 — __ZL19SupportsICCProfilesv_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL19SupportsICCProfilesv_0")]
-pub fn stub_114338() -> ! { todo!("0x114338 __ZL19SupportsICCProfilesv_0") }
+pub fn stub_114338() -> i32 { // IDA 0x114338: return 1.
+    1
+}
 
 // 0x114340 — __Z7InitPNGP6Plugini
 #[doc(alias = "InitPNG(Plugin *,int)")]
-pub fn stub_114340() -> ! { todo!("0x114340 InitPNG(Plugin *,int)") }
+pub fn stub_114340(fif: i32, format_id: &mut i32) -> crate::generated_net_11::PluginNode { // IDA 0x114340: s_format_id = fif; install PNG Format/Extension/Description/Load/Save/Validate/MimeType/Export/ICC procs; null reserved slots.
+    *format_id = fif;
+    crate::generated_net_11::PluginNode { fif, format: "PNG".to_owned(), procs: [0; 15] }
+}
 
 // 0x114414 — __ZL8ValidateP11FreeImageIOPv_0
 // type: bool __fastcall(unsigned __int8 *, int)
 #[doc(alias = "__ZL8ValidateP11FreeImageIOPv_0")]
-pub fn stub_114414() -> ! { todo!("0x114414 __ZL8ValidateP11FreeImageIOPv_0") }
+pub fn stub_114414(read_eight: &mut dyn FnMut() -> [u8; 8]) -> bool { // IDA 0x114414: read 8 bytes through IO; match the PNG signature.
+    read_eight() == [0x89, b'P', b'N', b'G', 0x0D, 0x0A, 0x1A, 0x0A]
+}
 
 // 0x1144a8 — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__0
 #[doc(alias = "__ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__0")]
-pub fn stub_1144a8() -> ! { todo!("0x1144a8 __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__0") }
+pub fn stub_1144a8(dib: Option<&crate::generated_net_08::FreeImageInfo>, save: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> i32) -> i32 { // IDA 0x1144a8: null → 0; dispatch on color type/bpp to the PNG row path; result.
+    match dib {
+        Some(d) => save(d),
+        None => 0,
+    }
+}
 
 // 0x115258 — __ZL10_WriteProcP14png_struct_defPhm
 #[doc(alias = "_WriteProc(png_struct_def *,unsigned char *,unsigned long)")]
-pub fn stub_115258() -> ! { todo!("0x115258 _WriteProc(png_struct_def *,unsigned char *,unsigned long)") }
+pub fn stub_115258(data: &[u8], write: &mut dyn FnMut(&[u8]) -> usize) -> usize { // IDA 0x115258: forward to the IO write proc.
+    write(data)
+}
 
 // 0x1152a4 — __ZL13error_handlerP14png_struct_defPKc
 #[doc(alias = "error_handler(png_struct_def *,char const*)")]
-pub fn stub_1152a4() -> ! { todo!("0x1152a4 error_handler(png_struct_def *,char const*)") }
+pub fn stub_1152a4(msg: &str) -> ! { // IDA 0x1152a4: noreturn throw of the message (char const*).
+    panic!("{}", msg)
+}
 
 // 0x1152d0 — __ZL9_ReadProcP14png_struct_defPhm
 #[doc(alias = "_ReadProc(png_struct_def *,unsigned char *,unsigned long)")]
-pub fn stub_1152d0() -> ! { todo!("0x1152d0 _ReadProc(png_struct_def *,unsigned char *,unsigned long)") }
+pub fn stub_1152d0(dst: &mut [u8], read: &mut dyn FnMut(&mut [u8]) -> usize) -> Result<usize, &'static str> { // IDA 0x1152d0: empty read with nonzero size → throw "Read error: invalid or corrupted PNG file".
+    let n = read(dst);
+    if !dst.is_empty() && n == 0 {
+        return Err("Read error: invalid or corrupted PNG file");
+    }
+    Ok(n)
+}
 
 // 0x11535c — __ZL4LoadP11FreeImageIOPviiS1__0
 #[doc(alias = "__ZL4LoadP11FreeImageIOPviiS1__0")]
-pub fn stub_11535c() -> ! { todo!("0x11535c __ZL4LoadP11FreeImageIOPviiS1__0") }
+pub fn stub_11535c(load: &mut dyn FnMut() -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11535c: PNG IHDR/PLTE/IDAT decode into a fresh dib; null on failure.
+    load()
+}
 
 // 0x11600c — __ZL13_tiffReadProcPvS_i
 // type: _DWORD __fastcall(void *, void *, int)
 #[doc(alias = "_tiffReadProc(void *,void *,int)")]
-pub fn stub_11600c() -> ! { todo!("0x11600c _tiffReadProc(void *,void *,int)") }
+pub fn stub_11600c(dst: &mut [u8], count: usize, read: &mut dyn FnMut(&mut [u8]) -> usize) -> usize { // IDA 0x11600c: count * read(dst, count, 1, handle).
+    let n = count.min(dst.len());
+    count * read(&mut dst[..n])
+}
 
 // 0x116054 — __ZL14_tiffWriteProcPvS_i
 // type: _DWORD __fastcall(void *, void *, int)
 #[doc(alias = "_tiffWriteProc(void *,void *,int)")]
-pub fn stub_116054() -> ! { todo!("0x116054 _tiffWriteProc(void *,void *,int)") }
+pub fn stub_116054(src: &[u8], count: usize, write: &mut dyn FnMut(&[u8]) -> usize) -> usize { // IDA 0x116054: count * write(src, count, 1, handle).
+    count * write(&src[..count.min(src.len())])
+}
 
 // 0x11609c — __ZL13_tiffSeekProcPvji
 // type: _DWORD __fastcall(void *, unsigned int, int)
 #[doc(alias = "_tiffSeekProc(void *,unsigned int,int)")]
-pub fn stub_11609c() -> ! { todo!("0x11609c _tiffSeekProc(void *,unsigned int,int)") }
+pub fn stub_11609c(seek: &mut dyn FnMut(u32, i32), tell: &mut dyn FnMut() -> i32, offset: u32, whence: i32) -> i32 { // IDA 0x11609c: seek through IO; return tell through IO.
+    seek(offset, whence);
+    tell()
+}
 
 // 0x1160fc — __ZL14_tiffCloseProcPv
 // type: _DWORD __fastcall(void *)
 #[doc(alias = "_tiffCloseProc(void *)")]
-pub fn stub_1160fc() -> ! { todo!("0x1160fc _tiffCloseProc(void *)") }
+pub fn stub_1160fc() -> i32 { // IDA 0x1160fc: return 0.
+    0
+}
 
 // 0x116104 — __ZL13_tiffSizeProcPv
 // type: _DWORD __fastcall(void *)
 #[doc(alias = "_tiffSizeProc(void *)")]
-pub fn stub_116104() -> ! { todo!("0x116104 _tiffSizeProc(void *)") }
+pub fn stub_116104(tell: &mut dyn FnMut() -> i32, seek: &mut dyn FnMut(i32, i32)) -> i32 { // IDA 0x116104: tell; seek END; tell (size); seek back; return size.
+    let pos = tell();
+    seek(0, 2);
+    let size = tell();
+    seek(pos, 0);
+    size
+}
 
 // 0x1161d0 — __ZL12_tiffMapProcPvPS_Pj
 // type: _DWORD __fastcall(void *, void **, unsigned int *)
 #[doc(alias = "_tiffMapProc(void *,void **,unsigned int *)")]
-pub fn stub_1161d0() -> ! { todo!("0x1161d0 _tiffMapProc(void *,void **,unsigned int *)") }
+pub fn stub_1161d0() -> i32 { // IDA 0x1161d0: unmapped TIFF client (return 0).
+    0
+}
 
 // 0x1161d8 — __ZL14_tiffUnmapProcPvS_j
 // type: _DWORD __fastcall(void *, void *, unsigned int)
 #[doc(alias = "_tiffUnmapProc(void *,void *,unsigned int)")]
-pub fn stub_1161d8() -> ! { todo!("0x1161d8 _tiffUnmapProc(void *,void *,unsigned int)") }
+pub fn stub_1161d8() { // IDA 0x1161d8: empty unmap body.
+}
 
 // 0x1161dc — __ZL19msdosWarningHandlerPKcS0_Pv
 // type: _DWORD __fastcall(const char *, const char *, void *)
 #[doc(alias = "msdosWarningHandler(char const*,char const*,void *)")]
-pub fn stub_1161dc() -> ! { todo!("0x1161dc msdosWarningHandler(char const*,char const*,void *)") }
+pub fn stub_1161dc(_a: &str, _b: &str) { // IDA 0x1161dc: empty msdos warning handler body.
+}
 
 // 0x1161e0 — __ZL17msdosErrorHandlerPKcS0_Pv
 // type: _DWORD __fastcall(const char *, const char *, void *)
 #[doc(alias = "msdosErrorHandler(char const*,char const*,void *)")]
-pub fn stub_1161e0() -> ! { todo!("0x1161e0 msdosErrorHandler(char const*,char const*,void *)") }
+pub fn stub_1161e0(_a: &str, _b: &str) { // IDA 0x1161e0: empty msdos error handler body.
+}
 
 // 0x1161e4 — __ZL6Formatv_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL6Formatv_1")]
-pub fn stub_1161e4() -> ! { todo!("0x1161e4 __ZL6Formatv_1") }
+pub fn stub_1161e4() -> &'static str { // IDA 0x1161e4: return "TIFF".
+    "TIFF"
+}
 
 // 0x1161f4 — __ZL11Descriptionv_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL11Descriptionv_1")]
-pub fn stub_1161f4() -> ! { todo!("0x1161f4 __ZL11Descriptionv_1") }
+pub fn stub_1161f4() -> &'static str { // IDA 0x1161f4: return "Tagged Image File Format".
+    "Tagged Image File Format"
+}
 
 // 0x116204 — __ZL9Extensionv_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL9Extensionv_1")]
-pub fn stub_116204() -> ! { todo!("0x116204 __ZL9Extensionv_1") }
+pub fn stub_116204() -> &'static str { // IDA 0x116204: return "tif,tiff".
+    "tif,tiff"
+}
 
 // 0x116214 — __ZL7RegExprv_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL7RegExprv_1")]
-pub fn stub_116214() -> ! { todo!("0x116214 __ZL7RegExprv_1") }
+pub fn stub_116214() -> &'static [u8] { // IDA 0x116214: return "^[MI][MI][\\x01*][\\x01*]".
+    b"^[MI][MI][\x01*][\x01*]"
+}
 
 // 0x116224 — __ZL8MimeTypev_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL8MimeTypev_1")]
-pub fn stub_116224() -> ! { todo!("0x116224 __ZL8MimeTypev_1") }
+pub fn stub_116224() -> &'static str { // IDA 0x116224: return "image/tiff".
+    "image/tiff"
+}
 
 // 0x116234 — __ZL19SupportsExportDepthi_1
 // type: bool __fastcall(int)
 #[doc(alias = "__ZL19SupportsExportDepthi_1")]
-pub fn stub_116234() -> ! { todo!("0x116234 __ZL19SupportsExportDepthi_1") }
+pub fn stub_116234(bpp: i32) -> bool { // IDA 0x116234: TIFF depths 4/1/24/8/32.
+    bpp == 4 || bpp == 1 || bpp == 24 || bpp == 8 || bpp == 32
+}
 
 // 0x116264 — __ZL18SupportsExportType15FREE_IMAGE_TYPE_1
 #[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_1")]
