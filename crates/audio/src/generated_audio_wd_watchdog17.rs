@@ -5,6 +5,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use core::sync::atomic::{AtomicU32, Ordering};
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog13::SurfaceState;
@@ -16,6 +17,26 @@ use crate::generated_audio_wd_watchdog14::{
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 
+/// `RBX::Reflection::Type<RBX::Surface>` cutover (IDA 0x65fee4): the
+/// registered tag. The `Descriptor` base, vtable, typeinfo and the
+/// all-types registry fold in.
+#[derive(Debug, Clone)]
+pub struct SurfaceTypeTag {
+    pub name: String,
+}
+/// Process-wide static-init run count behind the `__GLOBAL__I_a_*`
+/// ctors in this file (IDA 0x65ff94). The category/ios/descriptor/
+/// pool/guard stores fold into host statics (initialized on use),
+/// so only the run is recorded.
+static WATCHDOG17_STATIC_INITS: AtomicU32 = AtomicU32::new(0);
+/// Records one `__GLOBAL__I_a_*` run in this file.
+pub fn watchdog17_static_init() {
+    WATCHDOG17_STATIC_INITS.fetch_add(1, Ordering::SeqCst);
+}
+/// Returns the recorded static-init run count (test hook).
+pub fn watchdog17_static_inits() -> u32 {
+    WATCHDOG17_STATIC_INITS.load(Ordering::SeqCst)
+}
 // 0x65edd8 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1EfMNS_12PartInstanceEKFfS1_EMS2_FvS1_fEE8getValueEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceGetSet<(RBX::NormalId)1,float,float (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,float)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,float,float (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -371,80 +392,123 @@ pub fn stub_065f6d4() {
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isReadOnly(void)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_065f700() -> ! {
-    todo!("0x65f700 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_065f700() -> bool {
+    // IDA 0x65f700 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // isReadOnly`): delegates to the inner face-1 `GetSet` at +44 —
+    // always readable (same shape as the face-2 twin at 0x659e5c).
+    false
 }
 
 // 0x65f710 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11isWriteOnlyEv
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isWriteOnly(void)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_065f710() -> ! {
-    todo!("0x65f710 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_065f710() -> bool {
+    // IDA 0x65f710 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // isWriteOnly`): delegates to the inner face-1 `GetSet` at +44 —
+    // always writable (same shape as the face-2 twin at 0x659e6c).
+    false
 }
 
 // 0x65f720 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11equalValuesEPKNS_10Reflection13DescribedBaseES7_
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11equalValuesEPKNS_10Reflection13DescribedBaseES7_")]
-pub fn stub_065f720() -> ! {
-    todo!("0x65f720 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065f720(first: &PartSurfaceData, second: &PartSurfaceData) -> bool {
+    // IDA 0x65f720 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // equalValues`): reads the inner value for both instances via
+    // the +44 `GetSet` and compares. Host: compare the face-1 type
+    // slots.
+    first.faces[1].surface_type == second.faces[1].surface_type
 }
 
 // 0x65f748 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10getVariantEPKNS_10Reflection13DescribedBaseERNS4_7VariantE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10getVariantEPKNS_10Reflection13DescribedBaseERNS4_7VariantE")]
-pub fn stub_065f748() -> ! {
-    todo!("0x65f748 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_065f748(part: &PartSurfaceData) -> SurfaceVariant {
+    // IDA 0x65f748 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // getVariant`): reads the inner value, tags it with the
+    // `SurfaceType` singleton and placement-moves it in. Same as
+    // the face-2 twin at 0x659ea4.
+    SurfaceVariant::SurfaceType(part.faces[1].surface_type)
 }
 
 // 0x65f770 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10setVariantEPNS_10Reflection13DescribedBaseERKNS4_7VariantE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10setVariantEPNS_10Reflection13DescribedBaseERKNS4_7VariantE")]
-pub fn stub_065f770() -> ! {
-    todo!("0x65f770 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_065f770(part: &mut PartSurfaceData, variant: &SurfaceVariant) {
+    // IDA 0x65f770 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // setVariant`): any-cast-or-convert then inner set, same as the
+    // face-2 twin at 0x659ecc (decompile same length 2118). Host:
+    // the convert-or-throw into the face-1 slot.
+    part.faces[1].surface_type = stub_0658e24(variant);
 }
 
 // 0x65f8c8 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE9copyValueEPKNS_10Reflection13DescribedBaseEPS5_
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE9copyValueEPKNS_10Reflection13DescribedBaseEPS5_")]
-pub fn stub_065f8c8() -> ! {
-    todo!("0x65f8c8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_065f8c8(first: &PartSurfaceData, second: &mut PartSurfaceData) {
+    // IDA 0x65f8c8 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // copyValue`): inner `getValue` + inner `setValue`, same as the
+    // face-2 twin at 0x65a024. Host: copy the face-1 type slot.
+    second.faces[1].surface_type = first.faces[1].surface_type;
 }
 
 // 0x65f8ec — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14hasStringValueEv
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::hasStringValue(void)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_065f8ec() -> ! {
-    todo!("0x65f8ec RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_065f8ec() -> bool {
+    // IDA 0x65f8ec (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x65f8f0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14getStringValueEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getStringValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14getStringValueEPKNS_10Reflection13DescribedBaseE")]
-pub fn stub_065f8f0() -> ! {
-    todo!("0x65f8f0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065f8f0(part: &PartSurfaceData) -> String {
+    // IDA 0x65f8f0 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // getStringValue`): singleton once + inner `getValue` +
+    // `convertToString`, same as the face-2 twin at 0x65a04c
+    // (decompile same length 1431). Host: the grounded item name.
+    surface_type_name(part.faces[1].surface_type).to_owned()
 }
 
 // 0x65f940 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14setStringValueEPNS_10Reflection13DescribedBaseERKSs
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14setStringValueEPNS_10Reflection13DescribedBaseERKSs")]
-pub fn stub_065f940() -> ! {
-    todo!("0x65f940 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_065f940(part: &mut PartSurfaceData, name: &str) -> bool {
+    // IDA 0x65f940 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // setStringValue(string)`): lookup + convert + conditional
+    // inner set, same as the face-2 twin at 0x65a09c. Host: table
+    // position decides.
+    match SURFACE_TYPE_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            part.faces[1].surface_type = SURFACE_TYPE_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x65f9a4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10writeValueEPKNS_10Reflection13DescribedBaseEP10XmlElement
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10writeValueEPKNS_10Reflection13DescribedBaseEP10XmlElement")]
-pub fn stub_065f9a4() -> ! {
-    todo!("0x65f9a4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_065f9a4(part: &PartSurfaceData, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x65f9a4 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // writeValue`): inner `getValue`, `clearValue`, tag `5` at +16,
+    // value at +20, returns 5 — same as the face-2 twin at 0x65a100.
+    out.value_type = 0;
+    out.value_type = 5;
+    out.int_value = part.faces[1].surface_type as i32;
+    5
 }
 
 // 0x65f9c4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE9readValueEPNS_10Reflection13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -452,88 +516,160 @@ pub fn stub_065f9a4() -> ! {
 // type: int __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE9readValueEPNS_10Reflection13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_065f9c4() -> ! {
-    todo!("0x65f9c4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_065f9c4(part: &mut PartSurfaceData, xml: &XmlReadValue) {
+    // IDA 0x65f9c4 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // readValue`): xsi:nil early-out, string pair with fallthrough,
+    // raw int set, else `ReleaseAssert(false)` (Surface.cpp line
+    // 313) — same as the face-2 twin at 0x65a120 (decompile length
+    // 5112 vs 5111, same shape).
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            part.faces[1].surface_type = *value as u32;
+        }
+        XmlReadValue::Text(text) => {
+            if stub_065f940(part, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: Client/App/v8datamodel/Surface.cpp line: 313 (IDA 0x65f9c4)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: Client/App/v8datamodel/Surface.cpp line: 313 (IDA 0x65f9c4)");
+            }
+        }
+    }
 }
 
 // 0x65fc1c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE13getIndexValueEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getIndexValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE13getIndexValueEPKNS_10Reflection13DescribedBaseE")]
-pub fn stub_065fc1c() -> ! {
-    todo!("0x65fc1c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065fc1c(part: &PartSurfaceData) -> i32 {
+    // IDA 0x65fc1c (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // getIndexValue`, disasm singleton once + inner `getValue` +
+    // tail-call `EnumDesc::convertToIndex`): the item index of the
+    // live value (host: stub_065a544). Same as the face-2 twin at
+    // 0x65a378.
+    stub_065a544(part.faces[1].surface_type as i32)
 }
 
 // 0x65fc64 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE13setIndexValueEPNS_10Reflection13DescribedBaseEm
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE13setIndexValueEPNS_10Reflection13DescribedBaseEm")]
-pub fn stub_065fc64() -> ! {
-    todo!("0x65fc64 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_065fc64(part: &mut PartSurfaceData, index: u32) -> bool {
+    // IDA 0x65fc64 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // setIndexValue`): `count > index` gates storing the indexed
+    // item's value, same as the face-2 twin at 0x65a3c0. Host:
+    // table read decides.
+    match SURFACE_TYPE_ITEMS.get(index as usize) {
+        Some((_, value)) => {
+            part.faces[1].surface_type = *value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x65fcc0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE12getEnumValueEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE12getEnumValueEPKNS_10Reflection13DescribedBaseE")]
-pub fn stub_065fcc0() -> ! {
-    todo!("0x65fcc0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065fcc0(part: &PartSurfaceData) -> u32 {
+    // IDA 0x65fcc0 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // getEnumValue`): inner `getValue` through the +44 `GetSet`.
+    // Host: the face-1 slot.
+    part.faces[1].surface_type
 }
 
 // 0x65fcc8 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE12setEnumValueEPNS_10Reflection13DescribedBaseEi
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE12setEnumValueEPNS_10Reflection13DescribedBaseEi")]
-pub fn stub_065fcc8() -> ! {
-    todo!("0x65fcc8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_065fcc8(part: &mut PartSurfaceData, value: u32) -> bool {
+    // IDA 0x65fcc8 (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // setEnumValue`): `find_if` membership + conditional inner set,
+    // same as the face-2 twin at 0x65a424. Host: table membership
+    // decides.
+    if SURFACE_TYPE_ITEMS.iter().any(|(_, v)| *v == value) {
+        part.faces[1].surface_type = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x65fd3c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11getEnumItemEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumItem(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11getEnumItemEPKNS_10Reflection13DescribedBaseE")]
-pub fn stub_065fd3c() -> ! {
-    todo!("0x65fd3c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065fd3c(part: &PartSurfaceData) -> Option<u32> {
+    // IDA 0x65fd3c (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // getEnumItem`, disasm singleton once + inner `getValue` +
+    // `convertToItem`): the table entry for the live value. Same
+    // as the face-2 twin at 0x65a498.
+    SURFACE_TYPE_ITEMS
+        .iter()
+        .position(|(_, v)| *v == part.faces[1].surface_type)
+        .map(|i| i as u32)
 }
 
 // 0x65fd8c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14setStringValueEPNS_10Reflection13DescribedBaseERKNS_4NameE
 // demangled: RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14setStringValueEPNS_10Reflection13DescribedBaseERKNS_4NameE")]
-pub fn stub_065fd8c() -> ! {
-    todo!("0x65fd8c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_065fd8c(part: &mut PartSurfaceData, name: &str) -> bool {
+    // IDA 0x65fd8c (`SurfaceEnumPropDescriptor<1, SurfaceType>::
+    // setStringValue(Name)`): convert + conditional inner set, same
+    // as the face-2 twin at 0x65a4e8. Host: the string twin in
+    // this file.
+    stub_065f940(part, name)
 }
 
 // 0x65fde8 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 // demangled: RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_065fde8() -> ! {
-    todo!("0x65fde8 RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_065fde8() -> bool {
+    // IDA 0x65fde8 (`SurfaceGetSet<1, SurfaceType>::isReadOnly`):
+    // returns 0 — always readable.
+    false
 }
 
 // 0x65fdec — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 // demangled: RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_065fdec() -> ! {
-    todo!("0x65fdec RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_065fdec() -> bool {
+    // IDA 0x65fdec (`SurfaceGetSet<1, SurfaceType>::isWriteOnly`):
+    // returns 0 — always writable.
+    false
 }
 
 // 0x65fdf0 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE8getValueEPKNS_10Reflection13DescribedBaseE
 // demangled: RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE8getValueEPKNS_10Reflection13DescribedBaseE")]
-pub fn stub_065fdf0() -> ! {
-    todo!("0x65fdf0 RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_065fdf0(part: &PartSurfaceData) -> u32 {
+    // IDA 0x65fdf0 (`SurfaceGetSet<1, SurfaceType>::getValue`): the
+    // member-pointer resolve tail-calling the getter with the face
+    // baked in (`, 1)`). Same shape as the face-2 twin at 0x65a5bc.
+    part.faces[1].surface_type
 }
 
 // 0x65fe10 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE8setValueEPNS_10Reflection13DescribedBaseERKS2_
 // demangled: RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::setValue(RBX::Reflection::DescribedBase *,RBX::SurfaceType const&)const
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::setValue(RBX::Reflection::DescribedBase *,RBX::SurfaceType const&)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE8setValueEPNS_10Reflection13DescribedBaseERKS2_")]
-pub fn stub_065fe10() -> ! {
-    todo!("0x65fe10 RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::setValue(RBX::Reflection::DescribedBase *,RBX::SurfaceType const&)const")
+pub fn stub_065fe10(part: &mut PartSurfaceData, value: u32) {
+    // IDA 0x65fe10 (`SurfaceGetSet<1, SurfaceType>::setValue`): the
+    // member-pointer resolve tail-calling the setter with
+    // `(instance, 1, value)`. Same shape as the face-2 twin at
+    // 0x65a5dc.
+    part.faces[1].surface_type = value;
 }
 
 // 0x65fe34 — __ZN3rbx8any_castIN3RBX16LegacyController9InputTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -541,8 +677,16 @@ pub fn stub_065fe10() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::LegacyController::InputType * rbx::any_cast<RBX::LegacyController::InputType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
 #[doc(alias = "__ZN3rbx8any_castIN3RBX16LegacyController9InputTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")]
-pub fn stub_065fe34() -> ! {
-    todo!("0x65fe34 RBX::LegacyController::InputType * rbx::any_cast<RBX::LegacyController::InputType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+pub fn stub_065fe34(variant: &SurfaceVariant) -> Option<u32> {
+    // IDA 0x65fe34 (`any_cast<InputType>`): null input returns null
+    // (0x65fe34-0x65fe36); a typeinfo-pointer or mangled-name match
+    // (`N3RBX16LegacyController9InputTypeE`) returns the payload
+    // (0x65fe5e-0x65fe84); else null (0x65fe88). Host: tagged
+    // match.
+    match *variant {
+        SurfaceVariant::SurfaceInput(value) => Some(value),
+        _ => None,
+    }
 }
 
 // 0x65fe8c — __ZN3rbx8any_castIN3RBX11SurfaceTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -550,8 +694,14 @@ pub fn stub_065fe34() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::SurfaceType * rbx::any_cast<RBX::SurfaceType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
 #[doc(alias = "__ZN3rbx8any_castIN3RBX11SurfaceTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")]
-pub fn stub_065fe8c() -> ! {
-    todo!("0x65fe8c RBX::SurfaceType * rbx::any_cast<RBX::SurfaceType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+pub fn stub_065fe8c(variant: &SurfaceVariant) -> Option<u32> {
+    // IDA 0x65fe8c (`any_cast<SurfaceType>`): same null/match/null
+    // shape over `N3RBX11SurfaceTypeE` (0x65fe8c-0x65fee0). Host:
+    // tagged match.
+    match *variant {
+        SurfaceVariant::SurfaceType(value) => Some(value),
+        _ => None,
+    }
 }
 
 // 0x65fee4 — __ZN3RBX10Reflection4TypeC2INS_7SurfaceEEEPKcS5_PT_
@@ -559,8 +709,22 @@ pub fn stub_065fe8c() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::Surface>(char const*,char const*,RBX::Surface *)")]
 #[doc(alias = "__ZN3RBX10Reflection4TypeC2INS_7SurfaceEEEPKcS5_PT_")]
-pub fn stub_065fee4() -> ! {
-    todo!("0x65fee4 RBX::Reflection::Type::Type<RBX::Surface>(char const*,char const*,RBX::Surface *)")
+pub fn stub_065fee4(tag: &str) -> SurfaceTypeTag {
+    // IDA 0x65fee4 (`Type<Surface>` ctor): `Descriptor` base init
+    // (0x65fefa), vtable + typeinfo install (0x65ff1a-0x65ff1c),
+    // `Name::declare(tag)` (0x65ff24-0x65ff2e), the non-empty-tag
+    // `ReleaseAssert` gated on `FLog::Asserts` (Type.h line 77,
+    // 0x65ff32-0x65ff7e — a host seam) and `addToAllTypes`
+    // (0x65ff80). The vtable/registry fold into the host tag.
+    if flog_asserts() {
+        assert!(
+            !tag.is_empty(),
+            "!this->tag.empty() file: include/reflection/Type.h line: 77 (IDA 0x65fee4)"
+        );
+    }
+    SurfaceTypeTag {
+        name: tag.to_owned(),
+    }
 }
 
 // 0x65ff90 — __ZN3RBX10Reflection5TTypeINS_7SurfaceEED0Ev
@@ -575,8 +739,16 @@ pub fn stub_065ff90() {
 // demangled: global constructor keyed to_a_266
 #[doc(alias = "global constructor keyed to\_a_266")]
 #[doc(alias = "__GLOBAL__I_a_266")]
-pub fn stub_065ff94() -> ! {
-    todo!("0x65ff94 global constructor keyed to_a_266")
+pub fn stub_065ff94() {
+    // IDA 0x65ff94 (`__GLOBAL__I_a_266`): `ios_base::Init` +
+    // `__cxa_atexit` (0x65ffa8-0x65ffca), the error-category stores,
+    // the per-face `Surface` descriptor static constructions
+    // (faces 1/4/3/0/5/2 x Type/Input/float, 0x660030-0x66064a),
+    // the `Type<Surface>` singleton (0x66065c), the
+    // `boost::exception` statics, the `singleton_pool` guards and
+    // the `Camera` creator (0x660682-0x66087e). Host statics
+    // initialize on use; only the run is recorded.
+    watchdog17_static_init();
 }
 
 // 0x660890 — __ZN3RBX16SurfaceSelection10setSurfaceENS_8NormalIdE
