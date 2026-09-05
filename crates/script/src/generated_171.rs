@@ -35,6 +35,30 @@ pub struct GameKeys {
     pub current_box: Option<u32>,
     pub submitted: u32,
 }
+/// `__GLOBAL__I_a` one-shot latches (IDA 0x4d398/0x4d6d4).
+static GLOBAL_A20_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A21_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `GameView` observable state (IDA 0x4d5ac..0x4d5e4): the frame and the
+/// Ogre viewport layout count. The render glue folds into the host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct GameViewState {
+    pub frame: [f32; 4],
+    pub layouts: u32,
+}
+
+/// `GameViewController` observable state (IDA 0x4d70c..0x4dc08): load and
+/// appear latches, status-bar hiding, the resolved control view, and the
+/// URL window. WebKit/UIKit peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct GameVC {
+    pub loaded: bool,
+    pub appeared: bool,
+    pub status_hidden: bool,
+    pub control: Option<u32>,
+    pub web_open: bool,
+    pub layouts: u32,
+}
 
 /// Bound ObjC-forwarding functor for the UIEvent signal (IDA 0x463cc,
 /// 0x4642c): the stored target/selector pair plus the armed latch and
@@ -1052,175 +1076,227 @@ pub fn stub_0x4d07c(keys: &mut GameKeys) {
 // 0x4d090 — ___copy_helper_block_82
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_82")]
-pub fn stub_0x4d090() -> ! {
-    todo!("0x4d090 ___copy_helper_block_82")
+pub fn stub_0x4d090() {
+    // IDA 0x4d090: `__copy_helper_block_82` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x4d09c — ___destroy_helper_block_83
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_83")]
-pub fn stub_0x4d09c() -> ! {
-    todo!("0x4d09c ___destroy_helper_block_83")
+pub fn stub_0x4d09c() {
+    // IDA 0x4d09c: `__destroy_helper_block_83` releases captures (pair
+    // of 0x4d090); `Arc` glue covers it — no-op.
 }
 
 // 0x4d0a4 — -[GameKeyboard textFieldDidEndEditing:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldDidEndEditing:]")]
-pub fn stub_0x4d0a4() -> ! {
-    todo!("0x4d0a4 -[GameKeyboard textFieldDidEndEditing:]")
+pub fn stub_0x4d0a4(keys: &mut GameKeys, first: bool) {
+    // IDA 0x4d0a4: `textFieldDidEndEditing:` when the field is first
+    // responder (0x4d0ca) finishes editing with the field text (flag 0,
+    // 0x4d0e2..0x4d10e), then `dispatch_async`s the hide block
+    // (0x4d140..); the service send and queue hop fold into the caller
+    // — see `stub_0x4d15c`.
+    if first {
+        keys.submitted += 1;
+        stub_0x4d15c(keys);
+    }
 }
 
 // 0x4d15c — ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")]
-pub fn stub_0x4d15c() -> ! {
-    todo!("0x4d15c ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")
+pub fn stub_0x4d15c(keys: &mut GameKeys) {
+    // IDA 0x4d15c: the end-editing block hides via `hideKeyboard`.
+    stub_0x4ca64(keys);
 }
 
 // 0x4d170 — ___copy_helper_block_87
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_87")]
-pub fn stub_0x4d170() -> ! {
-    todo!("0x4d170 ___copy_helper_block_87")
+pub fn stub_0x4d170() {
+    // IDA 0x4d170: `__copy_helper_block_87` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x4d17c — ___destroy_helper_block_88
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_88")]
-pub fn stub_0x4d17c() -> ! {
-    todo!("0x4d17c ___destroy_helper_block_88")
+pub fn stub_0x4d17c() {
+    // IDA 0x4d17c: `__destroy_helper_block_88` releases captures (pair
+    // of 0x4d170); `Arc` glue covers it — no-op.
 }
 
 // 0x4d184 — -[GameKeyboard .cxx_destruct]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_destruct]")]
-pub fn stub_0x4d184() -> ! {
-    todo!("0x4d184 -[GameKeyboard .cxx_destruct]")
+pub fn stub_0x4d184(keys: &mut GameKeys) {
+    // IDA 0x4d184: `.cxx_destruct` releases the current box
+    // (0x4d1be..0x4d1e2); the release glue folds into the host.
+    keys.current_box = None;
 }
 
 // 0x4d220 — -[GameKeyboard .cxx_construct]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_construct]")]
-pub fn stub_0x4d220() -> ! {
-    todo!("0x4d220 -[GameKeyboard .cxx_construct]")
+pub fn stub_0x4d220() -> GameKeys {
+    // IDA 0x4d220: `.cxx_construct` zeroes the current box
+    // (0x4d22e..0x4d232); folds into `Default`.
+    GameKeys::default()
 }
 
 // 0x4d398 — __GLOBAL__I_a_20
 #[doc(alias = "global constructor keyed to_a_20")]
-pub fn stub_0x4d398() -> ! {
-    todo!("0x4d398 global constructor keyed to_a_20")
+pub fn stub_0x4d398() -> u32 {
+    // IDA 0x4d398: `__GLOBAL__I_a_20` — see `GLOBAL_A20_INIT`.
+    *GLOBAL_A20_INIT
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
 // type: GameView *__cdecl(GameView *self, SEL, CGRect)
 #[doc(alias = "-[GameView initWithFrame:]")]
-pub fn stub_0x4d5ac() -> ! {
-    todo!("0x4d5ac -[GameView initWithFrame:]")
+pub fn stub_0x4d5ac(frame: [f32; 4]) -> GameViewState {
+    // IDA 0x4d5ac: `GameView initWithFrame:` chains to super with the
+    // frame (0x4d5c6..0x4d5e2).
+    GameViewState { frame, layouts: 0 }
 }
 
 // 0x4d5e4 — -[GameView layoutSubviews]
 // type: void __cdecl(GameView *self, SEL)
 #[doc(alias = "-[GameView layoutSubviews]")]
-pub fn stub_0x4d5e4() -> ! {
-    todo!("0x4d5e4 -[GameView layoutSubviews]")
+pub fn stub_0x4d5e4(view: &mut GameViewState) {
+    // IDA 0x4d5e4: `layoutSubviews` re-seats the Ogre viewport from the
+    // singleton render system (0x4d5f4..); the render glue folds into
+    // the host and the layout pass is observed.
+    view.layouts += 1;
 }
 
 // 0x4d6d4 — __GLOBAL__I_a_21
 // type: int()
 #[doc(alias = "global constructor keyed to_a_21")]
-pub fn stub_0x4d6d4() -> ! {
-    todo!("0x4d6d4 global constructor keyed to_a_21")
+pub fn stub_0x4d6d4() -> u32 {
+    // IDA 0x4d6d4: `__GLOBAL__I_a_21` — see `GLOBAL_A21_INIT`.
+    *GLOBAL_A21_INIT
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]
 // type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
 #[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
-pub fn stub_0x4d70c() -> ! {
-    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
+pub fn stub_0x4d70c() -> GameVC {
+    // IDA 0x4d70c: `initWithNibName:bundle:` chains to super (0x4d72a..),
+    // seats the game view, tunes the web-view tween (0x4d768), and
+    // registers notifications; the UIKit glue folds into the host.
+    GameVC::default()
 }
 
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController dealloc]")]
-pub fn stub_0x4d8cc() -> ! {
-    todo!("0x4d8cc -[GameViewController dealloc]")
+pub fn stub_0x4d8cc(vc: &mut GameVC) {
+    // IDA 0x4d8cc: `dealloc` drops the web view (0x4d8e0..0x4d902),
+    // removes the observer (0x4d91e..0x4d930), releases the game view
+    // (0x4d94e), and chains to super (0x4d966..); drop glue covers it
+    // and the record resets.
+    *vc = GameVC::default();
 }
 
 // 0x4d978 — -[GameViewController viewWillAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewWillAppear:]")]
-pub fn stub_0x4d978() -> ! {
-    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+pub fn stub_0x4d978(vc: &mut GameVC) {
+    // IDA 0x4d978: `viewWillAppear:` chains to super (0x4d992..) and
+    // hides the status bar (0x4db8..0x4d9ca).
+    vc.status_hidden = true;
 }
 
 // 0x4d9d4 — -[GameViewController viewDidAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewDidAppear:]")]
-pub fn stub_0x4d9d4() -> ! {
-    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+pub fn stub_0x4d9d4(vc: &mut GameVC) {
+    // IDA 0x4d9d4: `viewDidAppear:` chains to super (0x4d9ee..0x4d9f8);
+    // the hierarchy glue folds into the host.
+    vc.appeared = true;
 }
 
 // 0x4da00 — -[GameViewController viewDidLoad]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController viewDidLoad]")]
-pub fn stub_0x4da00() -> ! {
-    todo!("0x4da00 -[GameViewController viewDidLoad]")
+pub fn stub_0x4da00(vc: &mut GameVC) {
+    // IDA 0x4da00: `viewDidLoad` chains to super (0x4da1a..) and
+    // registers the user-agent defaults (0x4da4c..0x4da9e); the
+    // defaults glue folds into the host.
+    vc.loaded = true;
 }
 
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
-pub fn stub_0x4dab8() -> ! {
-    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+pub fn stub_0x4dab8() {
+    // IDA 0x4dab8: `didReceiveMemoryWarning` chains to super
+    // (0x4dad2..0x4dadc) — no-op.
 }
 
 // 0x4dae4 — -[GameViewController resizeGameView]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController resizeGameView]")]
-pub fn stub_0x4dae4() -> ! {
-    todo!("0x4dae4 -[GameViewController resizeGameView]")
+pub fn stub_0x4dae4(vc: &mut GameVC) {
+    // IDA 0x4dae4: `resizeGameView` re-lays-out the game view (0x4dafe).
+    vc.layouts += 1;
 }
 
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_0x4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+pub fn stub_0x4db04() -> bool {
+    // IDA 0x4db04: `shouldAutorotate` answers true (0x4db06).
+    true
 }
 
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
-pub fn stub_0x4db08() -> ! {
-    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+pub fn stub_0x4db08() -> u32 {
+    // IDA 0x4db08: `supportedInterfaceOrientations` answers 24
+    // (landscape mask, 0x4db0a).
+    24
 }
 
 // 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(GameViewController *self, SEL, int)
 #[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_0x4db0c() -> ! {
-    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_0x4db0c(orientation: u32) -> bool {
+    // IDA 0x4db0c: `shouldAutorotateToInterfaceOrientation:` answers true
+    // for 4 (0x4db10..0x4db12) and defers to `== 3` otherwise (0x4db1a).
+    orientation == 4 || orientation == 3
 }
 
 // 0x4db20 — -[GameViewController getControlView]
 // type: id __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController getControlView]")]
-pub fn stub_0x4db20() -> ! {
-    todo!("0x4db20 -[GameViewController getControlView]")
+pub fn stub_0x4db20(vc: &GameVC) -> Option<u32> {
+    // IDA 0x4db20: `getControlView` answers the first game-view subview
+    // (0x4db62..0x4db88), else null (0x4db80..0x4db94).
+    vc.control
 }
 
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(GameViewController *self, SEL, id, id, int)
 #[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_0x4db9c() -> ! {
-    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_0x4db9c(open_native: bool, iap_check: i32) -> bool {
+    // IDA 0x4db9c: `webView:shouldStartLoadWithRequest:` answers
+    // `!FFlag || checkForInAppPurchases(...) == 0` (0x4dbde..); the
+    // flag/store glue folds into the host.
+    !open_native || iap_check == 0
 }
 
 // 0x4dc08 — -[GameViewController closeUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController closeUrlWindow:]")]
-pub fn stub_0x4dc08() -> ! {
-    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+pub fn stub_0x4dc08(vc: &mut GameVC) {
+    // IDA 0x4dc08: `closeUrlWindow:` tears down the URL window with its
+    // animation; the WebKit glue folds into the host.
+    vc.web_open = false;
 }
 
 // 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
@@ -1721,5 +1797,71 @@ mod keyboard_batch_tests {
         stub_0x4ce3c();
         stub_0x4ca18(&mut keys);
         assert_eq!(keys, GameKeys::default());
+    }
+}
+
+#[cfg(test)]
+mod game_view_batch_tests {
+    use super::*;
+
+    #[test]
+    fn keyboard_teardown() {
+        let mut keys = stub_0x4d220();
+        assert_eq!(keys, GameKeys::default());
+        stub_0x4d0a4(&mut keys, false);
+        assert_eq!(keys.submitted, 0);
+        keys.shown = true;
+        stub_0x4d0a4(&mut keys, true);
+        assert_eq!(keys.submitted, 1);
+        assert!(!keys.shown);
+        keys.current_box = Some(9);
+        stub_0x4d184(&mut keys);
+        assert_eq!(keys.current_box, None);
+        stub_0x4d090();
+        stub_0x4d09c();
+        stub_0x4d170();
+        stub_0x4d17c();
+        assert_eq!(stub_0x4d398(), 1);
+        assert_eq!(stub_0x4d6d4(), 1);
+    }
+
+    #[test]
+    fn game_view() {
+        let mut view = stub_0x4d5ac([0.0, 0.0, 320.0, 480.0]);
+        assert_eq!(view.frame, [0.0, 0.0, 320.0, 480.0]);
+        stub_0x4d5e4(&mut view);
+        stub_0x4d5e4(&mut view);
+        assert_eq!(view.layouts, 2);
+    }
+
+    #[test]
+    fn game_vc() {
+        let mut vc = stub_0x4d70c();
+        assert!(!vc.loaded);
+        stub_0x4da00(&mut vc);
+        assert!(vc.loaded);
+        stub_0x4d978(&mut vc);
+        assert!(vc.status_hidden);
+        stub_0x4d9d4(&mut vc);
+        assert!(vc.appeared);
+        stub_0x4dab8();
+        stub_0x4dae4(&mut vc);
+        assert_eq!(vc.layouts, 1);
+        assert!(stub_0x4db04());
+        assert_eq!(stub_0x4db08(), 24);
+        assert!(stub_0x4db0c(3));
+        assert!(stub_0x4db0c(4));
+        assert!(!stub_0x4db0c(1));
+        assert_eq!(stub_0x4db20(&vc), None);
+        vc.control = Some(2);
+        assert_eq!(stub_0x4db20(&vc), Some(2));
+        assert!(stub_0x4db9c(false, 5));
+        assert!(!stub_0x4db9c(true, 5));
+        assert!(stub_0x4db9c(true, 0));
+        vc.web_open = true;
+        stub_0x4dc08(&mut vc);
+        assert!(!vc.web_open);
+        stub_0x4d8cc(&mut vc);
+        assert_eq!(vc, GameVC::default());
     }
 }
