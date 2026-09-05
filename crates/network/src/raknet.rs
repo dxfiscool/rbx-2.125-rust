@@ -5280,163 +5280,445 @@ pub fn stub_b07980() -> ! {
 
 // 0xb0891c — __ZN3RBX7Network16serializeGenericISsEEvRKNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::serializeGeneric<std::string>(RBX::Reflection::Variant const&,RakNet::BitStream &)")]
-pub fn stub_b0891c() -> ! {
-    todo!("0xb0891c void RBX::Network::serializeGeneric<std::string>(RBX::Reflection::Variant const&,RakNet::BitStream &)")
+pub fn stub_b0891c(stream: &mut crate::bitstream::BitStream, value: &str) {
+    // IDA 0xb0891c: placement-any type check (`boost::throw_exception<bad_placement_any_cast>`
+    // unless the variant holds `std::string`), then `RBX::operator<<(BitStream, string)`.
+    stream.write_string(value);
+}
+
+/// `RBX::Network::SenderDictionary<RBX::SystemAddress>` (IDA 0xb08aa8): maps
+/// each peer address to the dense id assigned at first sight; `next` is the
+/// ring cursor at +1048.
+#[derive(Clone, Debug, Default)]
+pub struct SystemAddressSenderDictionary {
+    pub index_of: HashMap<(u32, u16), u8>,
+    pub next: u32,
+}
+
+impl SystemAddressSenderDictionary {
+    /// `SenderDictionary<SystemAddress>::send` (IDA 0xb08aa8): the null address
+    /// (`binary == -1 && port == 0xFFFF`) writes one zero byte; a known address
+    /// writes its stored id byte; a fresh address is filed under the current
+    /// `next`, writes `(next | 0x80)` plus the full address via
+    /// `RBX::operator<<`, and advances `next` as `next % 127 + 1`.
+    pub fn send(
+        &mut self,
+        stream: &mut crate::bitstream::BitStream,
+        address: u32,
+        port: u16,
+    ) {
+        if address == u32::MAX && port == 0xFFFF {
+            stream.write_bits(0, 8);
+            return;
+        }
+        if let Some(&index) = self.index_of.get(&(address, port)) {
+            stream.write_bits(u32::from(index), 8);
+            return;
+        }
+        let index = self.next as u8;
+        self.index_of.insert((address, port), index);
+        stream.write_bits(u32::from(index) | 0x80, 8);
+        crate::custom_serializer::write_system_address(stream, address, port);
+        self.next = self.next % 127 + 1;
+    }
 }
 
 // 0xb08aa8 — __ZN3RBX7Network16SenderDictionaryINS_13SystemAddressEE4sendERN6RakNet9BitStreamERKS2_
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")]
-pub fn stub_b08aa8() -> ! {
-    todo!("0xb08aa8 RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")
+pub fn stub_b08aa8(
+    dict: &mut SystemAddressSenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    address: u32,
+    port: u16,
+) {
+    // IDA 0xb08aa8: null address (`binary == -1 && port == 0xFFFF`) writes one
+    // zero byte; otherwise the address is inserted into the `<SystemAddress, u8>`
+    // map and a fresh entry also writes `(index | 0x80)` + the full address via
+    // `RBX::operator<<`, advancing `next` as `next % 127 + 1`.
+    dict.send(stream, address, port);
 }
 
 // 0xb08b80 — __ZN3RBX7Network16serializeGenericINS_9ContentIdEEEvRKNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::serializeGeneric<RBX::ContentId>(RBX::Reflection::Variant const&,RakNet::BitStream &)")]
-pub fn stub_b08b80() -> ! {
-    todo!("0xb08b80 void RBX::Network::serializeGeneric<RBX::ContentId>(RBX::Reflection::Variant const&,RakNet::BitStream &)")
+pub fn stub_b08b80(stream: &mut crate::bitstream::BitStream, id: &str) {
+    // IDA 0xb08b80: placement-any type check (expects `RBX::ContentId`), then
+    // `RBX::operator<<(BitStream, ContentId)`.
+    crate::custom_serializer::write_content_id(stream, id);
 }
 
 // 0xb08d10 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection4TypeEE4sendERN6RakNet9BitStreamEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::send(RakNet::BitStream &,RBX::Reflection::Type const*)const")]
-pub fn stub_b08d10() -> ! {
-    todo!("0xb08d10 RBX::Network::DescriptorSender<RBX::Reflection::Type>::send(RakNet::BitStream &,RBX::Reflection::Type const*)const")
+pub fn stub_b08d10(
+    sender: &crate::id_serializer::DescriptorSender,
+    stream: &mut crate::bitstream::BitStream,
+    descriptor: u32,
+) {
+    // IDA 0xb08d10: `descToId` map lookup by descriptor pointer (Streaming.h:49
+    // `iter != descToId.end()` assert, debug-only); unknown descriptors write
+    // the all-ones mask, then `WriteBits(index, bits)`.
+    sender.send_index(stream, descriptor);
 }
 
 // 0xb08fa0 — __ZN3RBX7Network18deserializeGenericIbEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<bool>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b08fa0() -> ! {
-    todo!("0xb08fa0 void RBX::Network::deserializeGeneric<bool>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b08fa0(stream: &mut crate::bitstream::BitStream) -> bool {
+    // IDA 0xb08fa0: `RBX::operator>><bool>`, then the variant takes the
+    // `bool` singleton type and the read value.
+    stream.read_bool().expect("BitStream >> bool failed")
 }
 
 // 0xb09048 — __ZN3RBX7Network18deserializeGenericIiEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<int>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09048() -> ! {
-    todo!("0xb09048 void RBX::Network::deserializeGeneric<int>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09048(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0xb09048: `RBX::operator>><int>`, then the variant takes the
+    // `int` singleton type and the read value.
+    stream.read_i32().expect("BitStream >> int failed")
 }
 
 // 0xb090f4 — __ZN3RBX7Network18deserializeGenericIlEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<long>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b090f4() -> ! {
-    todo!("0xb090f4 void RBX::Network::deserializeGeneric<long>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b090f4(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0xb090f4: `RBX::operator>><long>` (armv7 `long` is 4 bytes), then
+    // the variant takes the `long` singleton type and the read value.
+    stream.read_i32().expect("BitStream >> long failed")
 }
 
 // 0xb091a0 — __ZN3RBX7Network18deserializeGenericIfEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<float>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b091a0() -> ! {
-    todo!("0xb091a0 void RBX::Network::deserializeGeneric<float>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b091a0(stream: &mut crate::bitstream::BitStream) -> f32 {
+    // IDA 0xb091a0: `RBX::operator>><float>`, then the variant takes the
+    // `float` singleton type and the read value.
+    stream.read_f32().expect("BitStream >> float failed")
 }
 
 // 0xb0924c — __ZN3RBX7Network18deserializeGenericIdEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<double>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b0924c() -> ! {
-    todo!("0xb0924c void RBX::Network::deserializeGeneric<double>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b0924c(stream: &mut crate::bitstream::BitStream) -> f64 {
+    // IDA 0xb0924c: `RBX::operator>><double>`, then the variant takes the
+    // `double` singleton type and the read value.
+    stream.read_f64().expect("BitStream >> double failed")
 }
 
 // 0xb0930c — __ZN3RBX7Network18deserializeGenericINS_4UDimEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::UDim>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b0930c() -> ! {
-    todo!("0xb0930c void RBX::Network::deserializeGeneric<RBX::UDim>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b0930c(stream: &mut crate::bitstream::BitStream) -> (f32, i32) {
+    // IDA 0xb0930c: `RBX::operator>><RBX::UDim>` (`scale`, `offset`), then the
+    // variant takes the `UDim` singleton type and the read value.
+    crate::custom_serializer::read_udim(stream)
 }
 
 // 0xb093cc — __ZN3RBX7Network18deserializeGenericINS_5UDim2EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::UDim2>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b093cc() -> ! {
-    todo!("0xb093cc void RBX::Network::deserializeGeneric<RBX::UDim2>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b093cc(stream: &mut crate::bitstream::BitStream) -> (f32, i32, f32, i32) {
+    // IDA 0xb093cc: `RBX::operator>><RBX::UDim2>` (two `UDim`s), then the
+    // variant takes the `UDim2` singleton type and the read value.
+    crate::custom_serializer::read_udim2(stream)
 }
 
 // 0xb094a0 — __ZN3RBX7Network18deserializeGenericINS_5FacesEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::Faces>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b094a0() -> ! {
-    todo!("0xb094a0 void RBX::Network::deserializeGeneric<RBX::Faces>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b094a0(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0xb094a0: default-constructed `Faces`, `RBX::operator>><RBX::Faces>`,
+    // then the variant takes the `Faces` singleton type and the read value.
+    crate::custom_serializer::read_faces(stream)
 }
 
 // 0xb09558 — __ZN3RBX7Network18deserializeGenericINS_4AxesEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::Axes>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09558() -> ! {
-    todo!("0xb09558 void RBX::Network::deserializeGeneric<RBX::Axes>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09558(stream: &mut crate::bitstream::BitStream) -> i32 {
+    // IDA 0xb09558: default-constructed `Axes`, `RBX::operator>><RBX::Axes>`,
+    // then the variant takes the `Axes` singleton type and the read value.
+    crate::custom_serializer::read_axes(stream)
 }
 
 // 0xb09610 — __ZN3RBX7Network18deserializeGenericINS_10BrickColorEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::BrickColor>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09610() -> ! {
-    todo!("0xb09610 void RBX::Network::deserializeGeneric<RBX::BrickColor>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09610(stream: &mut crate::bitstream::BitStream) -> u32 {
+    // IDA 0xb09610: `RBX::operator>><RBX::BrickColor>` (palette index 194 in
+    // this slice), then the variant takes the `BrickColor` singleton type.
+    crate::custom_serializer::read_brick_color(stream)
 }
 // 0xb096c0 — __ZN3RBX7Network18deserializeGenericIN3G3D6Color3EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Color3>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b096c0() -> ! {
-    todo!("0xb096c0 void RBX::Network::deserializeGeneric<G3D::Color3>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b096c0(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+    // IDA 0xb096c0: `RBX::operator>><G3D::Color3>`, then the variant takes the
+    // `Color3` singleton type and the read value.
+    crate::custom_serializer::read_color3(stream)
 }
 
 // 0xb0977c — __ZN3RBX7Network18deserializeGenericIN3G3D7Vector2EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector2>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b0977c() -> ! {
-    todo!("0xb0977c void RBX::Network::deserializeGeneric<G3D::Vector2>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b0977c(stream: &mut crate::bitstream::BitStream) -> [f32; 2] {
+    // IDA 0xb0977c: `RBX::operator>><G3D::Vector2>`, then the variant takes the
+    // `Vector2` singleton type and the read value.
+    crate::custom_serializer::read_vector2(stream)
 }
 
 // 0xb09838 — __ZN3RBX7Network18deserializeGenericIN3G3D7Vector3EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector3>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09838() -> ! {
-    todo!("0xb09838 void RBX::Network::deserializeGeneric<G3D::Vector3>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09838(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+    // IDA 0xb09838: `RBX::operator>><G3D::Vector3>`, then the variant takes the
+    // `Vector3` singleton type and the read value.
+    crate::custom_serializer::read_vector3(stream)
 }
 
 // 0xb09900 — __ZN3RBX7Network18deserializeGenericIN3G3D12Vector3int16EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector3int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09900() -> ! {
-    todo!("0xb09900 void RBX::Network::deserializeGeneric<G3D::Vector3int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09900(stream: &mut crate::bitstream::BitStream) -> [i16; 3] {
+    // IDA 0xb09900: `RBX::operator>><G3D::Vector3int16>`, then the variant
+    // takes the `Vector3int16` singleton type and the read value.
+    crate::custom_serializer::read_vector3i16(stream)
 }
 
 // 0xb099c8 — __ZN3RBX7Network18deserializeGenericIN3G3D12Vector2int16EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector2int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b099c8() -> ! {
-    todo!("0xb099c8 void RBX::Network::deserializeGeneric<G3D::Vector2int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b099c8(stream: &mut crate::bitstream::BitStream) -> [i16; 2] {
+    // IDA 0xb099c8: `RBX::operator>><G3D::Vector2int16>`, then the variant
+    // takes the `Vector2int16` singleton type and the read value.
+    crate::custom_serializer::read_vector2i16(stream)
 }
 
 // 0xb09a80 — __ZN3RBX7Network18deserializeGenericINS_9ContentIdEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
 #[doc(alias = "void RBX::Network::deserializeGeneric<RBX::ContentId>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
-pub fn stub_b09a80() -> ! {
-    todo!("0xb09a80 void RBX::Network::deserializeGeneric<RBX::ContentId>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+pub fn stub_b09a80(stream: &mut crate::bitstream::BitStream) -> String {
+    // IDA 0xb09a80: `RBX::operator>><RBX::ContentId>` into a temp string, then
+    // the variant takes the `ContentId` singleton type and the read value.
+    crate::custom_serializer::read_content_id(stream)
+}
+
+/// `rbx::timestamped_safe_queue<RakNet::Packet *>` item (IDA 0xb0ab04): the
+/// packet bytes plus the enqueue timestamp at +4 the deadline compares against.
+#[derive(Clone, Debug, Default)]
+pub struct TimestampedPacket {
+    pub payload: Vec<u8>,
+    pub enqueued_secs: f64,
+}
+
+/// `RBX::Voxel::SerializerConstants` 2-bit cell markers (IDA 0xb0ad92 /
+/// 0xb0aeb8-ish / 0xb0afc2): engine-side enum values, passed in like the
+/// `end_marker` of `voxel_encode_cells` in `crate::replicator`.
+#[derive(Clone, Copy, Debug)]
+pub struct VoxelCellMarkers {
+    pub new_cell: u8,
+    pub repeat_cell: u8,
+    pub end_sequence: u8,
+}
+
+/// One decoded voxel cell write (IDA 0xb0ac2c / 0xb0b000): chunk-relative
+/// coords plus the two payload bytes accumulated through the 8-slot window.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct VoxelCellDelta {
+    pub x: i32,
+    pub y: i32,
+    pub z: i32,
+    pub payload: [u8; 2],
+}
+
+/// `RBX::Voxel::Serializer<MegaClusterInstance>::decodeCells` wire pump,
+/// shared by both instantiations (IDA 0xb0ac2c / 0xb0b000). Outer
+/// (`LABEL_26`): 1-bit continue, then — unless the cell stays in the cached
+/// region — a 1-bit terminator plus the 4/2/4 region words, then the 5/4/5
+/// cell bits rebased by `32/16/32 *` the region words. Inner: 2-bit markers
+/// (`kNewCellMarker` breaks to the 8+8-bit payload, `kRepeatCellMarker`
+/// reads a 5-bit-group varint run with a Serializer.h:223 `count > 0`
+/// assert, `kEndSequenceMarker` opens the next region). `accept` is the
+/// `CellUpdateFilter`/`ClusterUpdateBuffer::chk` gate (true = apply) and
+/// `apply` is the engine-side `MegaClusterInstance::setCellInternal`; the
+/// chunk-order coordinate stepping and the dword_1382xxx masks stay there too.
+pub fn decode_voxel_cells(
+    stream: &mut crate::bitstream::BitStream,
+    markers: VoxelCellMarkers,
+    accept: &mut dyn FnMut([i32; 3]) -> bool,
+    apply: &mut dyn FnMut(VoxelCellDelta),
+) {
+    let (mut rx, mut ry, mut rz) = (-1i32, -1i32, -1i32);
+    let (mut x, mut y, mut z): (i32, i32, i32);
+    let mut window = [0u16; 8];
+    let mut window_len = 0usize;
+    'outer: loop {
+        // IDA LABEL_26: 1-bit region-change flag.
+        if stream.read_bits(1).unwrap_or(0) != 0 {
+            // A set second bit ends the sequence (returns).
+            if stream.read_bits(1).unwrap_or(0) != 0 {
+                return;
+            }
+            rx = stream.read_bits(4).unwrap_or(0) as i32;
+            ry = stream.read_bits(2).unwrap_or(0) as i32;
+            rz = stream.read_bits(4).unwrap_or(0) as i32;
+        }
+        // IDA LABEL_3: 5/4/5 cell bits rebased onto the region words.
+        let lo = stream.read_bits(5).unwrap_or(0) as i32;
+        let hi = stream.read_bits(4).unwrap_or(0) as i32;
+        let zz = stream.read_bits(5).unwrap_or(0) as i32;
+        x = lo + 32 * rx;
+        y = hi + 16 * ry;
+        z = zz + 32 * rz;
+        loop {
+            let marker = stream.read_bits(2).unwrap_or(0) as u8;
+            if marker == markers.new_cell {
+                break;
+            }
+            if marker == markers.repeat_cell {
+                // IDA 0xb0ae80: 3-bit pad, then 5-bit groups carrying 4 count
+                // bits each while bit 0x10 is set.
+                let _pad = stream.read_bits(3).unwrap_or(0);
+                let mut count = 0u32;
+                let mut shift = 0u32;
+                loop {
+                    let group = stream.read_bits(5).unwrap_or(0);
+                    count |= (group & 0xF) << shift;
+                    shift += 4;
+                    if group & 0x10 == 0 {
+                        break;
+                    }
+                }
+                debug_assert!(count > 0);
+                for _ in 0..count {
+                    // IDA 0xb0af1a: apply unless the update buffer filters it.
+                    if accept([x, y, z]) {
+                        apply(VoxelCellDelta { x, y, z, payload: [0, 0] });
+                    }
+                    // Chunk-order step; the exact masked increments live in
+                    // the engine-side iterator.
+                    x += 1;
+                }
+                continue;
+            }
+            // IDA LABEL_25: end marker opens the next region; any other value
+            // loops back for the next marker in the original.
+            if marker == markers.end_sequence {
+                continue 'outer;
+            }
+        }
+        // IDA 0xb0ad9c: the two payload bytes through the 8-slot window.
+        let hi_byte = stream.read_bits(8).unwrap_or(0) as u8;
+        let lo_byte = stream.read_bits(8).unwrap_or(0) as u8;
+        window[(window_len + 7) & 7] = u16::from(lo_byte) | (u16::from(hi_byte) << 8);
+        if window_len <= 7 {
+            window_len += 1;
+        }
+        // IDA 0xb0adca: skip the write when the update buffer already holds it.
+        if accept([x, y, z]) {
+            apply(VoxelCellDelta { x, y, z, payload: [hi_byte, lo_byte] });
+        }
+        // The LABEL_11 masked step to the next cell is engine-side; loop back
+        // for the next marker.
+    }
 }
 
 // 0xb0ab04 — __ZN3rbx22timestamped_safe_queueIPN6RakNet6PacketEE13pop_if_waitedEN3RBX4Time8IntervalERS3_
 #[doc(alias = "rbx::timestamped_safe_queue<RakNet::Packet *>::pop_if_waited(RBX::Time::Interval,RakNet::Packet *&)")]
-pub fn stub_b0ab04() -> ! {
-    todo!("0xb0ab04 rbx::timestamped_safe_queue<RakNet::Packet *>::pop_if_waited(RBX::Time::Interval,RakNet::Packet *&)")
+pub fn stub_b0ab04(
+    queue: &mut Vec<TimestampedPacket>,
+    wait_secs: f64,
+    now_secs: f64,
+) -> Option<Vec<u8>> {
+    // IDA 0xb0ab04: lock the queue mutex; when the queue is non-empty and
+    // `now >= front.time + wait`, pop the front packet and report success.
+    match queue.first() {
+        Some(front) if now_secs >= front.enqueued_secs + wait_secs => {
+            Some(queue.remove(0).payload)
+        }
+        _ => None,
+    }
 }
 
 // 0xb0ac2c — __ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
-pub fn stub_b0ac2c() -> ! {
-    todo!("0xb0ac2c void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
+pub fn stub_b0ac2c(
+    stream: &mut crate::bitstream::BitStream,
+    markers: VoxelCellMarkers,
+    accept: &mut dyn FnMut([i32; 3]) -> bool,
+    apply: &mut dyn FnMut(VoxelCellDelta),
+) {
+    // IDA 0xb0ac2c: `OneQuarterClusterChunkCellIterator` instantiation — the
+    // chunk→cell scaling is engine-side, the wire fields match 0xb0b000.
+    decode_voxel_cells(stream, markers, accept, apply);
 }
 
 // 0xb0b000 — __ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
 #[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
-pub fn stub_b0b000() -> ! {
-    todo!("0xb0b000 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
+pub fn stub_b0b000(
+    stream: &mut crate::bitstream::BitStream,
+    markers: VoxelCellMarkers,
+    accept: &mut dyn FnMut([i32; 3]) -> bool,
+    apply: &mut dyn FnMut(VoxelCellDelta),
+) {
+    // IDA 0xb0b000: `ClusterCellIterator` instantiation — same wire fields as
+    // 0xb0ac2c, only the engine-side chunk→cell scaling differs.
+    decode_voxel_cells(stream, markers, accept, apply);
 }
 
 // 0xb0b70c — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15ClassDescriptorEE5learnERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learn(RakNet::BitStream &)")]
-pub fn stub_b0b70c() -> ! {
-    todo!("0xb0b70c RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learn(RakNet::BitStream &)")
+pub fn stub_b0b70c(
+    recv: &mut crate::id_serializer::DescriptorReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    classes: &[(String, u32)],
+) {
+    // IDA 0xb0b70c: `count = operator>><unsigned long>`; the slot vector is
+    // resized to `count`, then each slot `learnName`s one wire string.
+    let count = stream.read_u32().unwrap_or(0) as usize;
+    *recv = crate::id_serializer::DescriptorReceiver::new(count);
+    for slot in 0..count {
+        let name = stream.read_string();
+        recv.learn_class(slot, &name, classes);
+    }
 }
 
 // 0xb0b934 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection18PropertyDescriptorEE5learnERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learn(RakNet::BitStream &)")]
-pub fn stub_b0b934() -> ! {
-    todo!("0xb0b934 RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learn(RakNet::BitStream &)")
+pub fn stub_b0b934(
+    recv: &mut crate::id_serializer::DescriptorReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    classes: &[(String, u32)],
+    properties: &[(u32, String, u32)],
+) {
+    // IDA 0xb0b934: count + resize as above; each slot reads an `int` link and
+    // a `"Class:Member"` string, then `learnName`s it.
+    let count = stream.read_u32().unwrap_or(0) as usize;
+    *recv = crate::id_serializer::DescriptorReceiver::new(count);
+    for slot in 0..count {
+        let _link = stream.read_i32().unwrap_or(0);
+        let qualified = stream.read_string();
+        recv.learn_property(slot, &qualified, classes, properties);
+    }
 }
 
 // 0xb0bb5c — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15EventDescriptorEE5learnERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learn(RakNet::BitStream &)")]
-pub fn stub_b0bb5c() -> ! {
-    todo!("0xb0bb5c RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learn(RakNet::BitStream &)")
+pub fn stub_b0bb5c(
+    recv: &mut crate::id_serializer::DescriptorReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    classes: &[(String, u32)],
+    events: &[(u32, String, u32)],
+) {
+    // IDA 0xb0bb5c: same shape as 0xb0b934 (`int` link + `"Class:Member"`
+    // string per slot), resolving through the event table.
+    let count = stream.read_u32().unwrap_or(0) as usize;
+    *recv = crate::id_serializer::DescriptorReceiver::new(count);
+    for slot in 0..count {
+        let _link = stream.read_i32().unwrap_or(0);
+        let qualified = stream.read_string();
+        recv.learn_event(slot, &qualified, classes, events);
+    }
 }
 
 // 0xb0bd84 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection4TypeEE5learnERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learn(RakNet::BitStream &)")]
-pub fn stub_b0bd84() -> ! {
-    todo!("0xb0bd84 RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learn(RakNet::BitStream &)")
+pub fn stub_b0bd84(
+    recv: &mut crate::id_serializer::DescriptorReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    types: &[(String, u32)],
+) {
+    // IDA 0xb0bd84: count + resize as above; each slot `learnName`s one wire
+    // string through `getAllTypes`.
+    let count = stream.read_u32().unwrap_or(0) as usize;
+    *recv = crate::id_serializer::DescriptorReceiver::new(count);
+    for slot in 0..count {
+        let name = stream.read_string();
+        recv.learn_type(slot, &name, types);
+    }
 }
 
 // 0xb0bfac — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEE5teachERN6RakNet9BitStreamE
@@ -24367,176 +24649,212 @@ pub fn stub_abd3c0(set: &mut dyn FnMut(f32), value: f32) {
 // 0xabd3e8 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, char, int, int, int, int, int, __guard *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Network::Player>(char const*,char const*,float RBX::Network::Player::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_abd3e8() -> ! {
-    todo!("0xabd3e8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Network::Player>(char const*,char const*,float RBX::Network::Player::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abd3e8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabd3e8: BoundProp ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabd600 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6PlayerEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::isReadOnly(void)const")]
-pub fn stub_abd600() -> ! {
-    todo!("0xabd600 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::isReadOnly(void)const")
+pub fn stub_abd600() -> bool {
+ // IDA 0xabd600: isReadOnly returns 0.
+ false
 }
 
 // 0xabd604 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6PlayerEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::isWriteOnly(void)const")]
-pub fn stub_abd604() -> ! {
-    todo!("0xabd604 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::isWriteOnly(void)const")
+pub fn stub_abd604() -> bool {
+ // IDA 0xabd604: isWriteOnly returns 0.
+ false
 }
 
 // 0xabd608 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6PlayerEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_abd608() -> ! {
-    todo!("0xabd608 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abd608(value: f32) -> f32 {
+ // IDA 0xabd608: getValue loads the float member.
+ value
 }
 
 // 0xabd614 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6PlayerEE8setValueEPNS0_13DescribedBaseERKf
 // type: float *__fastcall(int, int, float *)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_abd614() -> ! {
-    todo!("0xabd614 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Player>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_abd614(current: &mut f32, value: f32, notify: &mut dyn FnMut()) {
+ // IDA 0xabd614: stores when different; raisePropertyChanged on change.
+ if *current != value {
+ *current = value;
+ notify();
+ }
 }
 
 // 0xabd670 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EEC2EMS3_FviN5boost8functionIFvSsEEES9_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_abd670() -> ! {
-    todo!("0xabd670 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abd670(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabd670: BoundYieldFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabd8dc — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_abd8dc() -> ! {
-    todo!("0xabd8dc RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_abd8dc(destroy: &mut dyn FnMut()) {
+ // IDA 0xabd8dc: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xabd9d8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
 // type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_abd9d8() -> ! {
-    todo!("0xabd9d8 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_abd9d8(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> String) -> String {
+ // IDA 0xabd9d8: execute unmarshals int, yields string (below truncation).
+ call(obj, arg)
 }
 
 // 0xabdc94 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EEC2EMS3_FviN5boost8functionIFviEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(int)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_abdc94() -> ! {
-    todo!("0xabdc94 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(int)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abdc94(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabdc94: BoundYieldFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabdf00 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")]
-pub fn stub_abdf00() -> ! {
-    todo!("0xabdf00 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")
+pub fn stub_abdf00(destroy: &mut dyn FnMut()) {
+ // IDA 0xabdf00: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xabdffc — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
 // type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_abdffc() -> ! {
-    todo!("0xabdffc RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_abdffc(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> i32) -> i32 {
+ // IDA 0xabdffc: execute unmarshals int, yields int (below truncation).
+ call(obj, arg)
 }
 
 // 0xabe2b8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EEC2EMS3_FviNS4_8functionIFvSJ_EEENSM_IFvSsEEEEPKcSU_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_abe2b8() -> ! {
-    todo!("0xabe2b8 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abe2b8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabe2b8: BoundYieldFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabe5ac — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")]
-pub fn stub_abe5ac() -> ! {
-    todo!("0xabe5ac RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")
+pub fn stub_abe5ac(destroy: &mut dyn FnMut()) {
+ // IDA 0xabe5ac: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xabe6a8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS4_8functionIFvS8_EEENSR_IFvSsEEE
 // type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_abe6a8() -> ! {
-    todo!("0xabe6a8 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_abe6a8(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> usize) -> usize {
+ // IDA 0xabe6a8: execute unmarshals int, yields the data map (below truncation).
+ call(obj, arg)
 }
 
 // 0xabe964 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FS5_S9_EPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_abe964() -> ! {
-    todo!("0xabe964 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abe964(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabe964: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabebf4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 // type: void __fastcall(int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_abebf4() -> ! {
-    todo!("0xabebf4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_abebf4(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xabebf4: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0xabec94 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_abec94() -> ! {
-    todo!("0xabec94 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_abec94(obj: usize, arg: usize, call: &mut dyn FnMut(usize, usize) -> i32) -> i32 {
+ // IDA 0xabec94: execute unmarshals Instance, returns FriendStatus (below truncation).
+ call(obj, arg)
 }
 
 // 0xabeecc — __ZN3RBX10Reflection11Call1HelperINS_7Network6PlayerEMS3_FNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEES9_S5_E4callEPS3_SB_RNS0_7VariantERKS9_
 // type: void __fastcall(int, char *, int, _DWORD *, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Network::Player,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendStatus>::call(RBX::Network::Player*,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_abeecc() -> ! {
-    todo!("0xabeecc RBX::Reflection::Call1Helper<RBX::Network::Player,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus>::call(RBX::Network::Player*,RBX::FriendService::FriendStatus (RBX::Network::Player::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_abeecc(obj: usize, arg: usize, call: &mut dyn FnMut(usize, usize) -> i32) -> i32 {
+ // IDA 0xabeecc: Call1Helper::call tail-calls the member with the unmarshalled arg.
+ call(obj, arg)
 }
 
 // 0xabf1f0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EEC2EMS3_FfS5_EPKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::BoundFuncDesc(float (RBX::Network::Player::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_abf1f0() -> ! {
-    todo!("0xabf1f0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::BoundFuncDesc(float (RBX::Network::Player::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_abf1f0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabf1f0: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabf45c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")]
-pub fn stub_abf45c() -> ! {
-    todo!("0xabf45c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_abf45c(destroy: &mut dyn FnMut()) {
+ // IDA 0xabf45c: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xabf558 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_abf558() -> ! {
-    todo!("0xabf558 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_abf558(obj: usize, pos: [f32; 3], call: &mut dyn FnMut(usize, [f32; 3]) -> f32) -> f32 {
+ // IDA 0xabf558: execute unmarshals Vector3, returns float (below truncation).
+ call(obj, pos)
 }
 
 // 0xabf648 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsEC2IMS3_KFSsvEMS3_FvRKSsEEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::PropDescriptor<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>(char const*,char const*,std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_abf648() -> ! {
-    todo!("0xabf648 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::PropDescriptor<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>(char const*,char const*,std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abf648(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabf648: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabf870 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")]
-pub fn stub_abf870() -> ! {
-    todo!("0xabf870 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")
+pub fn stub_abf870(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xabf870: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xabf898 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsE10GetSetImplIMS3_KFSsvEMS3_FvRKSsEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::GetSetImpl<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>::isReadOnly(void)const")]
-pub fn stub_abf898() -> ! {
-    todo!("0xabf898 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::GetSetImpl<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_abf898() -> bool {
+ // IDA 0xabf898: isReadOnly returns 0.
+ false
 }
 
 // 0xabf89c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsE10GetSetImplIMS3_KFSsvEMS3_FvRKSsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::GetSetImpl<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>::isWriteOnly(void)const")]
-pub fn stub_abf89c() -> ! {
-    todo!("0xabf89c RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::GetSetImpl<std::string (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_abf89c() -> bool {
+ // IDA 0xabf89c: isWriteOnly returns 0.
+ false
 }
 
 // 0xabf8a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsE10GetSetImplIMS3_KFSsvEMS3_FvRKSsEE8getValueEPKNS0_13DescribedBaseE
