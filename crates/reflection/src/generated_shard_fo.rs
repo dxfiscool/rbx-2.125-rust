@@ -608,173 +608,248 @@ pub fn stub_46704(service_present: bool) {
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
 // type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
-pub fn stub_467e8() -> ! {
-    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+pub fn stub_467e8() {
+    // IDA 0x467e8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x467e8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x467e8()
 }
 
 // 0x467ec — -[CharacterMove touchesEnded:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesEnded:withEvent:]")]
-pub fn stub_467ec() -> ! {
-    todo!("0x467ec -[CharacterMove touchesEnded:withEvent:]")
+pub fn stub_467ec(thumbstick_match: bool) {
+    // IDA 0x467ec: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x467ec`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x467ec(thumbstick_match)
 }
 
 // 0x468bc — -[CharacterMove touchesCancelled:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesCancelled:withEvent:]")]
-pub fn stub_468bc() -> ! {
-    todo!("0x468bc -[CharacterMove touchesCancelled:withEvent:]")
+pub fn stub_468bc(thumbstick_match: bool) {
+    // IDA 0x468bc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x468bc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x468bc(thumbstick_match)
 }
 
 // 0x4698c — -[CharacterMove cancelMovement]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove cancelMovement]")]
-pub fn stub_4698c() -> ! {
-    todo!("0x4698c -[CharacterMove cancelMovement]")
+pub fn stub_4698c(service_present: bool) {
+    // IDA 0x4698c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4698c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4698c(service_present)
 }
 
 // 0x469e8 — -[CharacterMove touchesMoved:withEvent:]
 // type: void __cdecl(CharacterMove *self, SEL, id, id)
 #[doc(alias = "-[CharacterMove touchesMoved:withEvent:]")]
-pub fn stub_469e8() -> ! {
-    todo!("0x469e8 -[CharacterMove touchesMoved:withEvent:]")
+pub fn stub_469e8(thumbstick_match: bool, service_present: bool, dx: f32, dy: f32) {
+    // IDA 0x469e8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x469e8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x469e8(thumbstick_match, service_present, dx, dy)
 }
 
 // 0x46f64 — __GLOBAL__I_a_16
 #[doc(alias = "global constructor keyed to_a_16")]
 #[doc(alias = "__GLOBAL__I_a_16")]
-pub fn stub_46f64() -> ! {
-    todo!("0x46f64 global constructor keyed to_a_16")
+pub fn stub_46f64() {
+    // IDA 0x46f64: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x46f64`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x46f64()
 }
 
 // 0x47178 — -[ControlComponent init]
 // type: ControlComponent *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent init]")]
-pub fn stub_47178() -> ! {
-    todo!("0x47178 -[ControlComponent init]")
+pub fn stub_47178() {
+    // IDA 0x47178: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47178`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47178()
 }
 
 // 0x471c0 — -[ControlComponent findControlView]
 // type: id __cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent findControlView]")]
-pub fn stub_471c0() -> ! {
-    todo!("0x471c0 -[ControlComponent findControlView]")
+pub fn stub_471c0(is_self_view: bool, ancestor_view_present: bool) -> bool {
+    // IDA 0x471c0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x471c0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x471c0(is_self_view, ancestor_view_present)
 }
 
 // 0x47274 — -[ControlComponent getGameFromControlView]
 // type: Game *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getGameFromControlView]")]
-pub fn stub_47274() -> ! {
-    todo!("0x47274 -[ControlComponent getGameFromControlView]")
+pub fn stub_47274(view_found: bool, game_present: bool) -> bool {
+    // IDA 0x47274: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47274`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47274(view_found, game_present)
 }
 
 // 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
 // type: UserInputService *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getUserInputServiceForGameDataModel]")]
-pub fn stub_47338() -> ! {
-    todo!("0x47338 -[ControlComponent getUserInputServiceForGameDataModel]")
+pub fn stub_47338(game_present: bool, service_present: bool) -> bool {
+    // IDA 0x47338: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47338`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47338(game_present, service_present)
 }
 
 // 0x47424 — __GLOBAL__I_a_17
 #[doc(alias = "global constructor keyed to_a_17")]
 #[doc(alias = "__GLOBAL__I_a_17")]
-pub fn stub_47424() -> ! {
-    todo!("0x47424 global constructor keyed to_a_17")
+pub fn stub_47424() {
+    // IDA 0x47424: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47424`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47424()
 }
 
 // 0x47638 — -[ControlView init:withGame:]
 // type: id __cdecl(ControlView *self, SEL, CGRect, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView init:withGame:]")]
-pub fn stub_47638() -> ! {
-    todo!("0x47638 -[ControlView init:withGame:]")
+pub fn stub_47638(x: f32, y: f32, width: f32, height: f32, game_present: bool) -> crate::generated_bg_11::ControlViewInit {
+    // IDA 0x47638: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47638`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47638(x, y, width, height, game_present)
 }
 
 // 0x47904 — -[ControlView dealloc]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView dealloc]")]
-pub fn stub_47904() -> ! {
-    todo!("0x47904 -[ControlView dealloc]")
+pub fn stub_47904() {
+    // IDA 0x47904: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47904`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47904()
 }
 
 // 0x479f8 — -[ControlView setGame:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView setGame:]")]
-pub fn stub_479f8() -> ! {
-    todo!("0x479f8 -[ControlView setGame:]")
+pub fn stub_479f8(game_present: bool) {
+    // IDA 0x479f8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x479f8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x479f8(game_present)
 }
 
 // 0x47aec — -[ControlView gotStartLeaveGameNotification:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView gotStartLeaveGameNotification:]")]
-pub fn stub_47aec() -> ! {
-    todo!("0x47aec -[ControlView gotStartLeaveGameNotification:]")
+pub fn stub_47aec() {
+    // IDA 0x47aec: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47aec`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47aec()
 }
 
 // 0x47afc — -[ControlView dataModelChanged:]
 // type: void __cdecl(ControlView *self, SEL, DataModel *)
 #[doc(alias = "-[ControlView dataModelChanged:]")]
-pub fn stub_47afc() -> ! {
-    todo!("0x47afc -[ControlView dataModelChanged:]")
+pub fn stub_47afc(datamodel_present: bool) {
+    // IDA 0x47afc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47afc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47afc(datamodel_present)
 }
 
 // 0x47b38 — -[ControlView setControlVisibility:]
 // type: void __cdecl(ControlView *self, SEL, char)
 #[doc(alias = "-[ControlView setControlVisibility:]")]
-pub fn stub_47b38() -> ! {
-    todo!("0x47b38 -[ControlView setControlVisibility:]")
+pub fn stub_47b38(visible: bool) {
+    // IDA 0x47b38: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47b38`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47b38(visible)
 }
 
 // 0x47b90 — ___36-[ControlView setControlVisibility:]_block_invoke
 #[doc(alias = "___36-[ControlView setControlVisibility:]_block_invoke")]
-pub fn stub_47b90() -> ! {
-    todo!("0x47b90 ___36-[ControlView setControlVisibility:]_block_invoke")
+pub fn stub_47b90(visible: bool) {
+    // IDA 0x47b90: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47b90`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47b90(visible)
 }
 
 // 0x47c04 — ___copy_helper_block__8
 #[doc(alias = "___copy_helper_block__8")]
-pub fn stub_47c04() -> ! {
-    todo!("0x47c04 ___copy_helper_block__8")
+pub fn stub_47c04() {
+    // IDA 0x47c04: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47c04`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47c04()
 }
 
 // 0x47c10 — ___destroy_helper_block__8
 #[doc(alias = "___destroy_helper_block__8")]
-pub fn stub_47c10() -> ! {
-    todo!("0x47c10 ___destroy_helper_block__8")
+pub fn stub_47c10() {
+    // IDA 0x47c10: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47c10`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47c10()
 }
 
 // 0x47c18 — -[ControlView showControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView showControls]")]
-pub fn stub_47c18() -> ! {
-    todo!("0x47c18 -[ControlView showControls]")
+pub fn stub_47c18() {
+    // IDA 0x47c18: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47c18`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47c18()
 }
 
 // 0x47c2c — -[ControlView hideControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView hideControls]")]
-pub fn stub_47c2c() -> ! {
-    todo!("0x47c2c -[ControlView hideControls]")
+pub fn stub_47c2c() {
+    // IDA 0x47c2c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47c2c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47c2c()
 }
 
 // 0x47c40 — -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")]
-pub fn stub_47c40() -> ! {
-    todo!("0x47c40 -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")
+pub fn stub_47c40(consumed: bool, is_tap: bool) {
+    // IDA 0x47c40: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47c40`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47c40(consumed, is_tap)
 }
 
 // 0x47d48 — -[ControlView postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_47d48() -> ! {
-    todo!("0x47d48 -[ControlView postMouseEventProcessed:inputObject:event:]")
+pub fn stub_47d48(consumed: bool, is_tap: bool) {
+    // IDA 0x47d48: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47d48`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47d48(consumed, is_tap)
 }
 
 // 0x47d78 — -[ControlView setupLocalPlayerConnections]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
-pub fn stub_47d78() -> ! {
-    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+pub fn stub_47d78() {
+    // IDA 0x47d78: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47d78`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47d78()
 }
 
 // 0x47d7c — -[ControlView textBoxFocusGained:]
