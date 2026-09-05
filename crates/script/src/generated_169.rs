@@ -21,6 +21,7 @@ use std::collections::BTreeMap;
 pub struct ViewSignal {
     pub slots: u32,
     pub next_id: u32,
+    pub fired: u32,
 }
 
 impl ViewSignal {
@@ -30,6 +31,21 @@ impl ViewSignal {
         self.slots += 1;
         self.next_id += 1;
         self.next_id
+    }
+
+    /// `insert` (IDA 0x3be00): links a slot under the mutex.
+    pub fn insert(&mut self) {
+        self.slots += 1;
+    }
+
+    /// `remove` (IDA 0x3cf40): unlinks the slot (saturating).
+    pub fn remove(&mut self) {
+        self.slots = self.slots.saturating_sub(1);
+    }
+
+    /// Bind `operator()` (IDA 0x3cf28): the member call.
+    pub fn fire(&mut self) {
+        self.fired += 1;
     }
 }
 
@@ -42,6 +58,18 @@ static RUN_SERVICE_NAME: LazyLock<&'static str> = LazyLock::new(|| "RunService")
 /// `ServiceProvider::doGetClassIndex<RunService>` once-index (IDA 0x3af08:
 /// guarded counter at 0x3af64..0x3afb2 folds into the host).
 static RUNSERVICE_CLASS_INDEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// `Name::doDeclare<sControllerService>` singleton (IDA 0x3b828: guarded
+/// once-init answering the static, same shape as 0x3ae20).
+static CONTROLLER_SERVICE_NAME: LazyLock<&'static str> = LazyLock::new(|| "ControllerService");
+/// `ServiceProvider::doGetClassIndex<ControllerService>` once-index (IDA
+/// 0x3b910: same guarded-counter shape as 0x3af08).
+static CONTROLLERSERVICE_CLASS_INDEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// Opaque `signal<void()>` static mutex handle (IDA 0x3c920: guarded
+/// once-init, same shape as 0x3d5b0).
+static SIGNAL_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// Opaque void-signal slot static mutex handle (IDA 0x3d030: same shape as
+/// 0x3d938).
+static SLOT_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 
 /// Created service instance record (IDA 0x3a798/0x3b674: sized operator new
 /// plus ctor plus shared_ptr wrap fold into the host; liveness observed).
@@ -483,161 +511,196 @@ pub fn stub_0x3b674() -> CreatedInstance {
 
 // 0x3b724 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17ControllerServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const&)")]
-pub fn stub_0x3b724() -> ! {
-    todo!("0x3b724 rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const&)")
+pub fn stub_0x3b724() {
+    // IDA 0x3b724: `shared_ptr<Instance>::operator=(const ControllerService
+    // ref)` add-refs, swaps, and releases (same shape as 0x3a1bc); `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x3b7e0 — __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_0x3b7e0() -> ! {
-    todo!("0x3b7e0 __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_0x3b7e0() -> &'static str {
+    // IDA 0x3b7e0: `Name::declare<sControllerService>` thunk forwarding to
+    // the `doDeclare` shim (same shape as 0x26a4f8).
+    stub_0x3b828()
 }
 
 // 0x3b828 — __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_0x3b828() -> ! {
-    todo!("0x3b828 __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_0x3b828() -> &'static str {
+    // IDA 0x3b828: `doDeclare<sControllerService>` — see
+    // `CONTROLLER_SERVICE_NAME`.
+    *CONTROLLER_SERVICE_NAME
 }
 
 // 0x3b910 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")]
-pub fn stub_0x3b910() -> ! {
-    todo!("0x3b910 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")
+pub fn stub_0x3b910() -> u32 {
+    // IDA 0x3b910: `doGetClassIndex<ControllerService>` — see
+    // `CONTROLLERSERVICE_CLASS_INDEX`.
+    *CONTROLLERSERVICE_CLASS_INDEX
 }
 
 // 0x3b9e8 — __ZN5boost10shared_ptrIN3RBX17ControllerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x3b9e8() -> ! {
-    todo!("0x3b9e8 rbx_core::SharedPtr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b9e8() {
+    // IDA 0x3b9e8: `shared_ptr` ctor installs the pointer, builds the
+    // count, and accepts the owner (same shape as 0x3afe0); `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x3ba10 — __ZN5boost6detail12shared_countC2IPN3RBX17ControllerServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x3ba10() -> ! {
-    todo!("0x3ba10 boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3ba10() {
+    // IDA 0x3ba10: `shared_count` ctor (same shape as 0x3b14c); `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x3bb10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x3bb10() -> ! {
-    todo!("0x3bb10 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3bb10() {
+    // IDA 0x3bb10: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3bb18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0x3bb18() -> ! {
-    todo!("0x3bb18 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3bb18() {
+    // IDA 0x3bb18: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3bb38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3bb38() -> ! {
-    todo!("0x3bb38 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3bb38() -> u32 {
+    // IDA 0x3bb38: `get_deleter` answers null without an exact deleter
+    // match (same shape as 0x3aa18).
+    0
 }
 
 // 0x3bb50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x3bb50() -> ! {
-    todo!("0x3bb50 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3bb50() -> u32 {
+    // IDA 0x3bb50: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3bb58 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")]
-pub fn stub_0x3bb58() -> ! {
-    todo!("0x3bb58 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")
+pub fn stub_0x3bb58(class_name: Option<&str>) -> bool {
+    // IDA 0x3bb58: `isNullClassName` asserts the empty/name-null
+    // correspondence (object.h:360, 0x3bb7a..0x3bbac) and answers whether
+    // the class name is null (0x3bbf4).
+    class_name.is_none()
 }
 
 // 0x3bbf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::operator=(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x3bbf8() -> ! {
-    todo!("0x3bbf8 rbx_core::SharedPtr<RBX::Instance>::operator=(rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x3bbf8() {
+    // IDA 0x3bbf8: `shared_ptr<Instance>::operator=` (same shape as
+    // 0x3a1bc); `Arc` glue covers it — no-op.
 }
 
 // 0x3bcb8 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EEdlEPv
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")]
-pub fn stub_0x3bcb8() -> ! {
-    todo!("0x3bcb8 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")
+pub fn stub_0x3bcb8(strong: u32) {
+    // IDA 0x3bcb8: slot-target `operator delete` release-asserts a zero
+    // strong count (intrusive_ptr_target.h:133, 0x3bcf6..0x3bd64) before
+    // freeing (folds into drop).
+    if strong != 0 {
+        panic!("c->strong == 0 file: ../Base/include/rbx/intrusive_ptr_target.h line: 133");
+    }
 }
 
 // 0x3be00 — __ZN3rbx7signals6signalIFvvEE6insertEPNS3_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")]
-pub fn stub_0x3be00() -> ! {
-    todo!("0x3be00 rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_0x3be00(sig: &mut ViewSignal) {
+    // IDA 0x3be00: void-signal `insert` — see `ViewSignal::insert`.
+    sig.insert();
 }
 
 // 0x3c920 — __ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")]
-pub fn stub_0x3c920() -> ! {
-    todo!("0x3c920 rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")
+pub fn stub_0x3c920() -> u32 {
+    // IDA 0x3c920: void-signal `safe_static_init_mutex` — see
+    // `SIGNAL_VOID_MUTEX`.
+    *SIGNAL_VOID_MUTEX
 }
 
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
-pub fn stub_0x3cdb8() -> ! {
-    todo!("0x3cdb8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_0x3cdb8() {
+    // IDA 0x3cdb8: `callable_slot` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot() [0x3ce64]")]
-pub fn stub_0x3ce64() -> ! {
-    todo!("0x3ce64 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_0x3ce64() {
+    // IDA 0x3ce64: `callable_slot` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_0x3cf18() -> ! {
-    todo!("0x3cf18 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_0x3cf18(sig: &mut ViewSignal) {
+    // IDA 0x3cf18: void-flavor `callable::call` invoking the bound member;
+    // the call folds into the fire count.
+    sig.fire();
 }
 
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_0x3cf20() -> ! {
-    todo!("0x3cf20 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_0x3cf20(sig: &mut ViewSignal) {
+    // IDA 0x3cf20: thn4 `call` adjusts `this` and forwards.
+    stub_0x3cf18(sig);
 }
 
 // 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
-pub fn stub_0x3cf28() -> ! {
-    todo!("0x3cf28 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+pub fn stub_0x3cf28(sig: &mut ViewSignal) {
+    // IDA 0x3cf28: bind `operator()` — see `ViewSignal::fire`.
+    sig.fire();
 }
 
 // 0x3cf40 — __ZN3rbx7signals6signalIFvvEE6removeEPNS3_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")]
-pub fn stub_0x3cf40() -> ! {
-    todo!("0x3cf40 rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_0x3cf40(sig: &mut ViewSignal) {
+    // IDA 0x3cf40: void-signal `remove` — see `ViewSignal::remove`.
+    sig.remove();
 }
 
 // 0x3d030 — __ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x3d030() -> ! {
-    todo!("0x3d030 rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x3d030() -> u32 {
+    // IDA 0x3d030: void-signal slot `safe_static_init_mutex` — see
+    // `SLOT_VOID_MUTEX`.
+    *SLOT_VOID_MUTEX
 }
 
 // 0x3d038 — __ZN3rbx7signals6signalIFvvEE4slotD1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::~slot()")]
-pub fn stub_0x3d038() -> ! {
-    todo!("0x3d038 rbx::signals::signal<void ()(void)>::slot::~slot()")
+pub fn stub_0x3d038() {
+    // IDA 0x3d038: void-signal `slot` D1 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x3d0e4 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_0x3d0e4() -> ! {
-    todo!("0x3d0e4 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_0x3d0e4() {
+    // IDA 0x3d0e4: `callable` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable() [0x3d190]")]
-pub fn stub_0x3d190() -> ! {
-    todo!("0x3d190 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_0x3d190() {
+    // IDA 0x3d190: `callable` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x3d240 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EE6countsC2Ev
@@ -1248,5 +1311,67 @@ mod factory_batch_tests {
         stub_0x3b110();
         stub_0x3b268();
         stub_0x3b26c();
+    }
+}
+
+#[cfg(test)]
+mod void_signal_batch_tests {
+    use super::*;
+
+    #[test]
+    fn controller_names_and_index() {
+        assert_eq!(stub_0x3b7e0(), "ControllerService");
+        assert_eq!(stub_0x3b828(), "ControllerService");
+        assert_eq!(stub_0x3b910(), 1);
+        assert_eq!(stub_0x3af08(), 1);
+    }
+
+    #[test]
+    fn void_signal_flow() {
+        let mut sig = ViewSignal::default();
+        stub_0x3be00(&mut sig);
+        assert_eq!(sig.slots, 1);
+        stub_0x3cf28(&mut sig);
+        assert_eq!(sig.fired, 1);
+        stub_0x3cf18(&mut sig);
+        assert_eq!(sig.fired, 2);
+        stub_0x3cf20(&mut sig);
+        assert_eq!(sig.fired, 3);
+        stub_0x3cf40(&mut sig);
+        assert_eq!(sig.slots, 0);
+        stub_0x3cf40(&mut sig);
+        assert_eq!(sig.slots, 0);
+        assert_eq!(stub_0x3c920(), 1);
+        assert_eq!(stub_0x3d030(), 1);
+    }
+
+    #[test]
+    fn null_name_and_delete() {
+        assert!(stub_0x3bb58(None));
+        assert!(!stub_0x3bb58(Some("ControllerService")));
+        stub_0x3bcb8(0);
+    }
+
+    #[test]
+    #[should_panic(expected = "c->strong == 0")]
+    fn delete_asserts_live() {
+        stub_0x3bcb8(3);
+    }
+
+    #[test]
+    fn glue_noops_and_nulls() {
+        stub_0x3b724();
+        stub_0x3b9e8();
+        stub_0x3ba10();
+        stub_0x3bb10();
+        stub_0x3bb18();
+        stub_0x3bbf8();
+        stub_0x3cdb8();
+        stub_0x3ce64();
+        stub_0x3d0e4();
+        stub_0x3d190();
+        stub_0x3d038();
+        assert_eq!(stub_0x3bb38(), 0);
+        assert_eq!(stub_0x3bb50(), 0);
     }
 }
