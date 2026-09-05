@@ -372,6 +372,26 @@ impl TextBoxYAlignProp {
         }
     }
 }
+/// `RBX::Reflection::EnumPropDescriptor<TextBox, XAlignment>`
+/// cutover (IDA 0x66da0c): name/category/attributes/permissions.
+/// The member pair folds into the `x_alignment` field.
+#[derive(Debug, Clone)]
+pub struct TextBoxXAlignProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxXAlignProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).

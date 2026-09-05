@@ -8,8 +8,9 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    TextBoxBoolProp, TextBoxBoolSlot, TextBoxState, TextBoxYAlignProp, YAlignmentVariant,
-    YALIGNMENT_ITEMS, yalignment_index, yalignment_name,
+    TextBoxBoolProp, TextBoxBoolSlot, TextBoxState, TextBoxXAlignProp, TextBoxYAlignProp,
+    XAlignmentVariant, YAlignmentVariant, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, xalignment_index,
+    xalignment_name, yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -629,96 +630,176 @@ pub fn stub_66ceb0(state: &TextBoxState) -> i32 {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_66ced0() -> ! {
-    todo!("0x66ced0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_66ced0(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66ced0 (`EnumPropDescriptor<YAlignment>::setStringValue`
+    // over `Name`): `convertToValue` on the name (0x66cee6); on a
+    // hit the inner `setValue` runs and 1 returns, else 0
+    // (0x66ceec-0x66cf02). Same string edge as 0x66cb6c — host
+    // forwards into that twin (`Name` folds into `&str`).
+    stub_66cb6c(state, name)
 }
 
 // 0x66cf04 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(RBX::Name const&,RBX::TextService::YAlignment&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(RBX::Name const&,RBX::TextService::YAlignment&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_66cf04() -> ! {
-    todo!("0x66cf04 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_66cf04(name: &str) -> Option<u32> {
+    // IDA 0x66cf04 (`EnumDesc<YAlignment>::convertToValue(Name)`):
+    // red-black-tree search for the name id (0x66cf06-0x66cf38),
+    // returning 1 with the value on a hit (else 0). Host: the
+    // table value (`None` on a miss).
+    YALIGNMENT_ITEMS
+        .iter()
+        .find(|(n, _)| *n == name)
+        .map(|(_, v)| *v)
 }
 
 // 0x66cf80 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE13convertToItemERKS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToItem(RBX::TextService::YAlignment const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToItem(RBX::TextService::YAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE13convertToItemERKS3_")]
-pub fn stub_66cf80() -> ! {
-    todo!("0x66cf80 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE13convertToItemERKS3_")
+pub fn stub_66cf80(value: u32) -> i32 {
+    // IDA 0x66cf80 (`EnumDesc<YAlignment>::convertToItem`):
+    // FLog::Asserts-gated `value>=0` (enumconverter.h:273,
+    // 0x66cf94-0x66cfda) and `value<enumToItem.size` (line 274,
+    // 0x66cfde-0x66d01c) ReleaseAsserts — host seams; then the
+    // value-indexed item (LABEL_13). Host: asserts + table index.
+    if flog_asserts() {
+        assert!(
+            value < YALIGNMENT_ITEMS.len() as u32,
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274 (IDA 0x66cf80)"
+        );
+    }
+    yalignment_index(value)
 }
 
 // 0x66d04c — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_")]
-pub fn stub_66d04c() -> ! {
-    todo!("0x66d04c __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_")
+pub fn stub_66d04c(value: u32) -> i32 {
+    // IDA 0x66d04c (`EnumDesc<YAlignment>::convertToIndex`):
+    // FLog::Asserts-gated `value>=0` (enumconverter.h:350,
+    // 0x66d060-0x66d096) — host seam; then the value-indexed
+    // `enumToItem` entry or -1 past the end (0x66d0a6-0x66d0ba).
+    // Host: the table index (-1 on a miss).
+    yalignment_index(value)
 }
 
 // 0x66d0bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_66d0bc() -> ! {
-    todo!("0x66d0bc __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_66d0bc(state: &mut TextBoxState, index: i32) -> bool {
+    // IDA 0x66d0bc (`EnumPropDescriptor<YAlignment>::setIntValue`):
+    // rejects negative indices (0x66d0c6), bounds-checks against
+    // the item count and rejects `-1`-valued items (0x66d0d8-0x66d0e4),
+    // then stores through the inner `setValue` and returns 1, else
+    // 0 (0x66d0e6-0x66d0f2). Table values are non-negative by
+    // type, so the `-1` check folds away.
+    if index >= 0 {
+        if let Some((_, align)) = YALIGNMENT_ITEMS.get(index as usize) {
+            state.y_alignment = *align;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x66d0fc — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(RBX::TextService::YAlignment const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(RBX::TextService::YAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_")]
-pub fn stub_66d0fc() -> ! {
-    todo!("0x66d0fc __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_")
+pub fn stub_66d0fc(value: i32) -> String {
+    // IDA 0x66d0fc (`EnumDesc<YAlignment>::convertToString`):
+    // FLog::Asserts-gated `value >= 0` (enumconverter.h:262) and
+    // `value < enumToItem.size` (line 263) ReleaseAsserts — host
+    // seams; then a negative value yields "", else the
+    // value-indexed item name. Same shape as the `XAlignment` twin
+    // at 0x66e380. Host: asserts + table name with "" fallback.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262 (IDA 0x66d0fc)"
+        );
+        assert!(
+            (value as usize) < YALIGNMENT_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263 (IDA 0x66d0fc)"
+        );
+    }
+    if value >= 0 {
+        yalignment_name(value as u32).to_owned()
+    } else {
+        String::new()
+    }
 }
 
 // 0x66d29c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_66d29c() -> ! {
-    todo!("0x66d29c __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_66d29c() -> bool {
+    // IDA 0x66d29c (`GetSetImpl<YAlignment>::isReadOnly`): returns
+    // constant 0 (0x66d29e).
+    false
 }
 
 // 0x66d2a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_66d2a0() -> ! {
-    todo!("0x66d2a0 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_66d2a0() -> bool {
+    // IDA 0x66d2a0 (`GetSetImpl<YAlignment>::isWriteOnly`): returns
+    // constant 0 (0x66d2a2).
+    false
 }
 
 // 0x66d2a4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66d2a4() -> ! {
-    todo!("0x66d2a4 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_66d2a4(state: &TextBoxState) -> u32 {
+    // IDA 0x66d2a4 (`GetSetImpl<YAlignment>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0
+    // with the +536 `Instance`-to-mixin adjust, 0x66d2a6-0x66d2b4;
+    // virtual when the low bit is set) tail-calling the getter.
+    // The member is `getYAlignment` (IDA 0x668744, the only
+    // `YAlignment` getter); the pointer folds into the field.
+    state.y_alignment
 }
 
 // 0x66d2d0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::YAlignment const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::YAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_66d2d0() -> ! {
-    todo!("0x66d2d0 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_66d2d0(state: &mut TextBoxState, value: u32) {
+    // IDA 0x66d2d0 (`GetSetImpl<YAlignment>::setValue`): the
+    // member-pointer resolve over +12/+16 tail-calling the setter
+    // with the input word. The member is `setYAlignment` (the only
+    // `YAlignment` setter on `TextBox`); the pointer folds into
+    // the field (its raises fold into the store).
+    state.y_alignment = value;
 }
 
 // 0x66d2f4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::initSingleton(void)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE13initSingletonEv")]
-pub fn stub_66d2f4() -> ! {
-    todo!("0x66d2f4 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE13initSingletonEv")
+pub fn stub_66d2f4() {
+    // IDA 0x66d2f4 (`Singleton<EnumDesc<YAlignment>>::initSingleton`):
+    // thunk tail-calling `doGetSingleton` (host: stub_066d2f8).
+    // The singleton folds into the host table — carrier no-op.
 }
 
 // 0x66d2f8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSingleton(void)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv")]
-pub fn stub_66d2f8() -> ! {
-    todo!("0x66d2f8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv")
+pub fn stub_66d2f8() {
+    // IDA 0x66d2f8 (`Singleton<EnumDesc<YAlignment>>::doGetSingleton`):
+    // `__cxa_guard` once-init constructing the `EnumDesc` and
+    // registering `__cxa_atexit` teardown (0x66d354+). Host
+    // statics initialize on use — carrier no-op.
 }
 
 // 0x66d3e8 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED1Ev
@@ -749,72 +830,120 @@ pub fn stub_66d5c0() {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::lookup(char const*)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupEPKc")]
-pub fn stub_66d660() -> ! {
-    todo!("0x66d660 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupEPKc")
+pub fn stub_66d660(name: &str) -> Option<u32> {
+    // IDA 0x66d660 (`EnumDesc<YAlignment>::lookup(name)`):
+    // `Name::lookup` (0x66d66c) + `convertToValue` (0x66d67a); on a
+    // hit `convertToItem` (0x66d686), else 0. Host: the item index
+    // (`None` on a miss); the lookup folds into the compare.
+    YALIGNMENT_ITEMS
+        .iter()
+        .position(|(n, _)| *n == name)
+        .map(|i| i as u32)
 }
 
 // 0x66d690 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupERKNS0_7VariantE
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::lookup(RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupERKNS0_7VariantE")]
-pub fn stub_66d690() -> ! {
-    todo!("0x66d690 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE6lookupERKNS0_7VariantE")
+pub fn stub_66d690(variant: &YAlignmentVariant) -> Option<u32> {
+    // IDA 0x66d690 (`EnumDesc<YAlignment>::lookup(variant)`):
+    // `any_cast<YAlignment>` (throws on a miss, host: stub_066d8f4)
+    // then `convertToItem` (0x66d6ac). Host: the item index of the
+    // cast value.
+    YALIGNMENT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == stub_66d8f4(variant))
+        .map(|i| i as u32)
 }
 
 // 0x66d6b0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueEmRNS0_7VariantE
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(unsigned long,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_66d6b0() -> ! {
-    todo!("0x66d6b0 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_66d6b0(index: u32) -> Option<u32> {
+    // IDA 0x66d6b0 (`EnumDesc<YAlignment>::convertToValue(index)`):
+    // `count > index` gates reading the indexed item's value plus
+    // the `Type` tag and placement (0x66d6be-0x66d6d8), returning 1
+    // (else 0). Host: the value (`None` past the end); the
+    // tag/placement fold away.
+    YALIGNMENT_ITEMS.get(index as usize).map(|(_, v)| *v)
 }
 
 // 0x66d6e4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringEmRSs
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(unsigned long,std::string &)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringEmRSs")]
-pub fn stub_66d6e4() -> ! {
-    todo!("0x66d6e4 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringEmRSs")
+pub fn stub_66d6e4(index: u32, out: &mut String) -> bool {
+    // IDA 0x66d6e4 (`EnumDesc<YAlignment>::convertToString(index)`):
+    // `count > index` gates reading the value and converting it to
+    // a name assigned into the out string, returning 1 (else 0 with
+    // `out` untouched). Host: assign on hit, report.
+    match YALIGNMENT_ITEMS.get(index as usize) {
+        Some((_, value)) => {
+            *out = yalignment_name(*value).to_owned();
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66d828 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10YAlignmentEEERS3_RKT_
 // demangled: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::YAlignment>(RBX::TextService::YAlignment const&)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::YAlignment>(RBX::TextService::YAlignment const&)")]
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10YAlignmentEEERS3_RKT_")]
-pub fn stub_66d828() -> ! {
-    todo!("0x66d828 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService10YAlignmentEEERS3_RKT_")
+pub fn stub_66d828(value: u32) -> u32 {
+    // IDA 0x66d828 (`placement_any::operator=<YAlignment>`):
+    // ensures the holder singleton, then stores the value and
+    // (re)tags the holder (destroying the old payload first). Host
+    // values are `Copy` with the tag in the type — the move is
+    // identity.
+    value
 }
 
 // 0x66d878 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE9singletonEv
 // demangled: rbx::implementation::typed_holder<RBX::TextService::YAlignment>::singleton(void)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::YAlignment>::singleton(void)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE9singletonEv")]
-pub fn stub_66d878() -> ! {
-    todo!("0x66d878 __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE9singletonEv")
+pub fn stub_66d878() {
+    // IDA 0x66d878 (`typed_holder<YAlignment>::singleton`):
+    // `__cxa_guard` once-init publishing the typeinfo and the
+    // construct/destruct funcs. Host type tags need no init —
+    // carrier no-op.
 }
 
 // 0x66d8e4 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE14construct_funcEPKcPc
 // demangled: rbx::implementation::typed_holder<RBX::TextService::YAlignment>::construct_func(char const*,char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::YAlignment>::construct_func(char const*,char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE14construct_funcEPKcPc")]
-pub fn stub_66d8e4() -> ! {
-    todo!("0x66d8e4 __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE14construct_funcEPKcPc")
+pub fn stub_66d8e4() {
+    // IDA 0x66d8e4 (`typed_holder<YAlignment>::construct_func`):
+    // copies the held value pointer when non-null. Host values are
+    // `Copy` — carrier no-op.
 }
 
 // 0x66d8f0 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE13destruct_funcEPc
 // demangled: rbx::implementation::typed_holder<RBX::TextService::YAlignment>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::YAlignment>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE13destruct_funcEPc")]
-pub fn stub_66d8f0() -> ! {
-    todo!("0x66d8f0 __ZN3rbx14implementation12typed_holderIN3RBX11TextService10YAlignmentEE13destruct_funcEPc")
+pub fn stub_66d8f0() {
+    // IDA 0x66d8f0 (`typed_holder<YAlignment>::destruct_func`):
+    // empty body — carrier no-op.
 }
 
 // 0x66d8f4 — __ZN3rbx8any_castIRKN3RBX11TextService10YAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // demangled: RBX::TextService::YAlignment const& rbx::any_cast<RBX::TextService::YAlignment const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
 #[doc(alias = "RBX::TextService::YAlignment const& rbx::any_cast<RBX::TextService::YAlignment const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService10YAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_66d8f4() -> ! {
-    todo!("0x66d8f4 __ZN3rbx8any_castIRKN3RBX11TextService10YAlignmentENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_66d8f4(variant: &YAlignmentVariant) -> u32 {
+    // IDA 0x66d8f4 (`any_cast<YAlignment>`): null input misses; the
+    // typeinfo-pointer or mangled-name
+    // (`N3RBX11TextService10YAlignmentE`) match returns the payload,
+    // else `bad_placement_any_cast` is thrown (host: panic). Host:
+    // tagged match.
+    match *variant {
+        YAlignmentVariant::YAlignment(value) => value,
+        _ => panic!("rbx::bad_placement_any_cast (IDA 0x66d8f4)"),
+    }
 }
 
 // 0x66d9e4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService10YAlignmentEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -829,8 +958,15 @@ pub fn stub_66d9e4() {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::EnumPropDescriptor<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>(char const*,char const*,RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::EnumPropDescriptor<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment)>(char const*,char const*,RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::XAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_66da0c() -> ! {
-    todo!("0x66da0c __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_66da0c(name: &str, category: &str, attributes: u32, permissions: u32) -> TextBoxXAlignProp {
+    // IDA 0x66da0c (`EnumPropDescriptor<TextBox, XAlignment>` ctor):
+    // the `TextBox` `classDescriptor` call, the
+    // `EnumDesc<XAlignment>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `x_alignment` field (see below).
+    TextBoxXAlignProp::new(name, category, attributes, permissions)
 }
 
 // 0x66dbc0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEED0Ev
@@ -845,32 +981,43 @@ pub fn stub_66dbc0() {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10isReadOnlyEv")]
-pub fn stub_66dbec() -> ! {
-    todo!("0x66dbec __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10isReadOnlyEv")
+pub fn stub_66dbec() -> bool {
+    // IDA 0x66dbec (`EnumPropDescriptor<XAlignment>::isReadOnly`):
+    // delegates to the inner `GetSet` at +44 — always readable.
+    false
 }
 
 // 0x66dbfc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11isWriteOnlyEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11isWriteOnlyEv")]
-pub fn stub_66dbfc() -> ! {
-    todo!("0x66dbfc __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11isWriteOnlyEv")
+pub fn stub_66dbfc() -> bool {
+    // IDA 0x66dbfc (`EnumPropDescriptor<XAlignment>::isWriteOnly`):
+    // delegates to the inner `GetSet` at +44 — always writable.
+    false
 }
 
 // 0x66dc0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_66dc0c() -> ! {
-    todo!("0x66dc0c __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_66dc0c(first: &TextBoxState, second: &TextBoxState) -> bool {
+    // IDA 0x66dc0c (`EnumPropDescriptor<XAlignment>::equalValues`):
+    // reads the inner value for both instances via the +44 `GetSet`
+    // and compares. Host: compare the alignments.
+    first.x_alignment == second.x_alignment
 }
 
 // 0x66dc34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_66dc34() -> ! {
-    todo!("0x66dc34 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_66dc34(state: &TextBoxState) -> XAlignmentVariant {
+    // IDA 0x66dc34 (`EnumPropDescriptor<XAlignment>::getVariant`):
+    // reads the inner value, tags it with the plain-`int`
+    // singleton and placement-moves it in. Host: the `XAlignment`
+    // tag.
+    XAlignmentVariant::XAlignment(state.x_alignment)
 }
 
 // 0x66dc58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
