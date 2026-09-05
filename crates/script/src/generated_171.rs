@@ -46,10 +46,10 @@ pub struct GameViewState {
     pub frame: [f32; 4],
     pub layouts: u32,
 }
-
-/// `GameViewController` observable state (IDA 0x4d70c..0x4dc08): load and
-/// appear latches, status-bar hiding, the resolved control view, and the
-/// URL window. WebKit/UIKit peers fold into the host.
+/// `GameViewController` observable state (IDA 0x4d70c..0x4e868): load and
+/// appear latches, status-bar hiding, the resolved control view, the URL
+/// window plus its URL, and the login/signup prompts. WebKit/UIKit peers
+/// fold into the host.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct GameVC {
     pub loaded: bool,
@@ -57,6 +57,9 @@ pub struct GameVC {
     pub status_hidden: bool,
     pub control: Option<u32>,
     pub web_open: bool,
+    pub url: String,
+    pub login_shown: bool,
+    pub signup_shown: bool,
     pub layouts: u32,
 }
 
@@ -1302,176 +1305,218 @@ pub fn stub_0x4dc08(vc: &mut GameVC) {
 // 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
-pub fn stub_0x4de58() -> ! {
-    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+pub fn stub_0x4de58(vc: &mut GameVC) {
+    // IDA 0x4de58: the close-window block runs the collapse animation
+    // (0x4deba, see `stub_0x4df1c`) and the removal block (0x4def8, see
+    // `stub_0x4dfec`).
+    stub_0x4df1c(vc);
+    stub_0x4dfec(vc);
 }
 
 // 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
-pub fn stub_0x4df1c() -> ! {
-    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+pub fn stub_0x4df1c(_vc: &mut GameVC) {
+    // IDA 0x4df1c: the close animation block interpolates the web-view
+    // frame (0x4df2c..); pure geometry folds into the host — no-op.
 }
 
 // 0x4dfd8 — ___copy_helper_block__10
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__10")]
-pub fn stub_0x4dfd8() -> ! {
-    todo!("0x4dfd8 ___copy_helper_block__10")
+pub fn stub_0x4dfd8() {
+    // IDA 0x4dfd8: `__copy_helper_block__10` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4dfe4 — ___destroy_helper_block__10
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__10")]
-pub fn stub_0x4dfe4() -> ! {
-    todo!("0x4dfe4 ___destroy_helper_block__10")
+pub fn stub_0x4dfe4() {
+    // IDA 0x4dfe4: `__destroy_helper_block__10` releases captures (pair
+    // of 0x4dfd8); `Arc` glue covers it — no-op.
 }
 
 // 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
-pub fn stub_0x4dfec() -> ! {
-    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
+pub fn stub_0x4dfec(vc: &mut GameVC) {
+    // IDA 0x4dfec: the removal block drops the web view from its
+    // superview and releases it (0x4e000).
+    vc.web_open = false;
 }
 
 // 0x4e01c — ___copy_helper_block_94
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_94")]
-pub fn stub_0x4e01c() -> ! {
-    todo!("0x4e01c ___copy_helper_block_94")
+pub fn stub_0x4e01c() {
+    // IDA 0x4e01c: `__copy_helper_block_94` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x4e028 — ___destroy_helper_block_95
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_95")]
-pub fn stub_0x4e028() -> ! {
-    todo!("0x4e028 ___destroy_helper_block_95")
+pub fn stub_0x4e028() {
+    // IDA 0x4e028: `__destroy_helper_block_95` releases captures (pair
+    // of 0x4e01c); `Arc` glue covers it — no-op.
 }
 
 // 0x4e030 — ___copy_helper_block_100
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_100")]
-pub fn stub_0x4e030() -> ! {
-    todo!("0x4e030 ___copy_helper_block_100")
+pub fn stub_0x4e030() {
+    // IDA 0x4e030: `__copy_helper_block_100` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e054 — ___destroy_helper_block_101
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_101")]
-pub fn stub_0x4e054() -> ! {
-    todo!("0x4e054 ___destroy_helper_block_101")
+pub fn stub_0x4e054() {
+    // IDA 0x4e054: `__destroy_helper_block_101` releases captures (pair
+    // of 0x4e030); `Arc` glue covers it — no-op.
 }
 
 // 0x4e070 — -[GameViewController closeUrlWindow]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController closeUrlWindow]")]
-pub fn stub_0x4e070() -> ! {
-    todo!("0x4e070 -[GameViewController closeUrlWindow]")
+pub fn stub_0x4e070(vc: &mut GameVC) {
+    // IDA 0x4e070: `closeUrlWindow` forwards to `closeUrlWindow:` with a
+    // null sender (0x4e07e).
+    stub_0x4dc08(vc);
 }
 
 // 0x4e084 — -[GameViewController openUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
 #[doc(alias = "-[GameViewController openUrlWindow:]")]
-pub fn stub_0x4e084() -> ! {
-    todo!("0x4e084 -[GameViewController openUrlWindow:]")
+pub fn stub_0x4e084(vc: &mut GameVC, url: &str) {
+    // IDA 0x4e084: `openUrlWindow:` sizes the web view, installs the
+    // close button, and loads the URL (blocks 0x4e2ac/0x4e4dc/0x4e5fc);
+    // the WebKit/layout glue folds into the host.
+    vc.web_open = true;
+    vc.url = url.to_string();
 }
 
 // 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
-pub fn stub_0x4e2ac() -> ! {
-    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
+pub fn stub_0x4e2ac(vc: &mut GameVC) {
+    // IDA 0x4e2ac: the open block allocs the web view (0x4e2d2) and
+    // seats the close button (0x4e2fc..); construction folds into
+    // `stub_0x4e084`.
+    vc.web_open = true;
 }
 
 // 0x4e4c8 — ___copy_helper_block_133
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_133")]
-pub fn stub_0x4e4c8() -> ! {
-    todo!("0x4e4c8 ___copy_helper_block_133")
+pub fn stub_0x4e4c8() {
+    // IDA 0x4e4c8: `__copy_helper_block_133` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e4d4 — ___destroy_helper_block_134
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_134")]
-pub fn stub_0x4e4d4() -> ! {
-    todo!("0x4e4d4 ___destroy_helper_block_134")
+pub fn stub_0x4e4d4() {
+    // IDA 0x4e4d4: `__destroy_helper_block_134` releases captures (pair
+    // of 0x4e4c8); `Arc` glue covers it — no-op.
 }
 
 // 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
-pub fn stub_0x4e4dc() -> ! {
-    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
+pub fn stub_0x4e4dc() {
+    // IDA 0x4e4dc: the load block builds the URL request and loads it
+    // into the web view (0x4e524..0x4e56e); the load folds into
+    // `stub_0x4e084` — no-op.
 }
 
 // 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
-pub fn stub_0x4e5fc() -> ! {
-    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
+pub fn stub_0x4e5fc(_vc: &mut GameVC) {
+    // IDA 0x4e5fc: the open animation block interpolates the web-view
+    // frame (0x4e612..); pure geometry folds into the host — no-op.
 }
 
 // 0x4e6dc — ___copy_helper_block_148
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_148")]
-pub fn stub_0x4e6dc() -> ! {
-    todo!("0x4e6dc ___copy_helper_block_148")
+pub fn stub_0x4e6dc() {
+    // IDA 0x4e6dc: `__copy_helper_block_148` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e6e8 — ___destroy_helper_block_149
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_149")]
-pub fn stub_0x4e6e8() -> ! {
-    todo!("0x4e6e8 ___destroy_helper_block_149")
+pub fn stub_0x4e6e8() {
+    // IDA 0x4e6e8: `__destroy_helper_block_149` releases captures (pair
+    // of 0x4e6dc); `Arc` glue covers it — no-op.
 }
 
 // 0x4e6f0 — ___copy_helper_block_153
 // type: int __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_153")]
-pub fn stub_0x4e6f0() -> ! {
-    todo!("0x4e6f0 ___copy_helper_block_153")
+pub fn stub_0x4e6f0() {
+    // IDA 0x4e6f0: `__copy_helper_block_153` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e714 — ___destroy_helper_block_154
 // type: int __fastcall(int)
 #[doc(alias = "___destroy_helper_block_154")]
-pub fn stub_0x4e714() -> ! {
-    todo!("0x4e714 ___destroy_helper_block_154")
+pub fn stub_0x4e714() {
+    // IDA 0x4e714: `__destroy_helper_block_154` releases captures (pair
+    // of 0x4e6f0); `Arc` glue covers it — no-op.
 }
 
 // 0x4e730 — -[GameViewController handlePromptLoginSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
-pub fn stub_0x4e730() -> ! {
-    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
+pub fn stub_0x4e730(vc: &mut GameVC) {
+    // IDA 0x4e730: `handlePromptLoginSignal` captures self in a block
+    // (0x4e766..0x4e774) and `dispatch_async`s it to main (0x4e778);
+    // the queue hop folds into the caller — see `stub_0x4e780`.
+    stub_0x4e780(vc);
 }
 
 // 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
-pub fn stub_0x4e780() -> ! {
-    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+pub fn stub_0x4e780(vc: &mut GameVC) {
+    // IDA 0x4e780: the login block instantiates the login view controller
+    // from the main storyboard (0x4e7b6..0x4e838) and presents it; the
+    // storyboard glue folds into the host.
+    vc.login_shown = true;
 }
 
 // 0x4e854 — ___copy_helper_block_174
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_174")]
-pub fn stub_0x4e854() -> ! {
-    todo!("0x4e854 ___copy_helper_block_174")
+pub fn stub_0x4e854() {
+    // IDA 0x4e854: `__copy_helper_block_174` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e860 — ___destroy_helper_block_175
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_175")]
-pub fn stub_0x4e860() -> ! {
-    todo!("0x4e860 ___destroy_helper_block_175")
+pub fn stub_0x4e860() {
+    // IDA 0x4e860: `__destroy_helper_block_175` releases captures (pair
+    // of 0x4e854); `Arc` glue covers it — no-op.
 }
 
 // 0x4e868 — -[GameViewController handlePromptSignupSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
-pub fn stub_0x4e868() -> ! {
-    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+pub fn stub_0x4e868(vc: &mut GameVC) {
+    // IDA 0x4e868: `handlePromptSignupSignal` — same dispatch_async-block
+    // shape as 0x4e730 (0x4e89e..0x4e8b0) for the signup controller; the
+    // storyboard/queue glue folds into the host.
+    vc.signup_shown = true;
 }
 
 #[cfg(test)]
@@ -1863,5 +1908,53 @@ mod game_view_batch_tests {
         assert!(!vc.web_open);
         stub_0x4d8cc(&mut vc);
         assert_eq!(vc, GameVC::default());
+    }
+}
+
+#[cfg(test)]
+mod url_prompt_batch_tests {
+    use super::*;
+
+    #[test]
+    fn url_window() {
+        let mut vc = stub_0x4d70c();
+        stub_0x4e084(&mut vc, "https://roblox.com");
+        assert!(vc.web_open);
+        assert_eq!(vc.url, "https://roblox.com");
+        stub_0x4e2ac(&mut vc);
+        assert!(vc.web_open);
+        stub_0x4e4dc();
+        stub_0x4e5fc(&mut vc);
+        stub_0x4de58(&mut vc);
+        assert!(!vc.web_open);
+        stub_0x4e084(&mut vc, "https://roblox.com/games");
+        stub_0x4e070(&mut vc);
+        assert!(!vc.web_open);
+        stub_0x4dfd8();
+        stub_0x4dfe4();
+        stub_0x4e01c();
+        stub_0x4e028();
+        stub_0x4e030();
+        stub_0x4e054();
+        stub_0x4e4c8();
+        stub_0x4e4d4();
+        stub_0x4e6dc();
+        stub_0x4e6e8();
+        stub_0x4e6f0();
+        stub_0x4e714();
+    }
+
+    #[test]
+    fn prompts() {
+        let mut vc = stub_0x4d70c();
+        stub_0x4e730(&mut vc);
+        assert!(vc.login_shown);
+        assert!(!vc.signup_shown);
+        stub_0x4e780(&mut vc);
+        assert!(vc.login_shown);
+        stub_0x4e868(&mut vc);
+        assert!(vc.signup_shown);
+        stub_0x4e854();
+        stub_0x4e860();
     }
 }
