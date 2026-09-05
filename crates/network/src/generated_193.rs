@@ -1835,174 +1835,877 @@ pub fn stub_1a2fc0(has_sp: bool, alloc_table: &mut dyn FnMut() -> bool, on_error
 // 0x1a3048 — _LZWCleanup
 // type: int __fastcall(int)
 #[doc(alias = "_LZWCleanup")]
-pub fn stub_1a3048() -> ! {
-    todo!("0x1a3048 _LZWCleanup")
+pub fn stub_1a3048(
+    has_data: bool,
+    predictor_cleanup: &mut dyn FnMut(),
+    free_all: &mut dyn FnMut(),
+    set_default_compression: &mut dyn FnMut() -> i32,
+) -> i32 {
+    // IDA 0x1a3048: predictor cleanup; data != 0 assert; free code/encode tables + state; default compression state; its return value.
+    predictor_cleanup();
+    assert!(has_data, "LZWCleanup: tif->tif_data != 0 (tif_lzw.c:1045)");
+    free_all();
+    set_default_compression()
+}
+
+/// LZW encoder state (IDA 0x1a31b0/0x1a30d8 `sp` fields: 9001-entry hash, bit packer, code allocator, ratio checkpoint).
+#[derive(Clone, Debug)]
+pub struct LzwEncoder {
+    pub keys: Vec<i32>,
+    pub codes: Vec<u16>,
+    pub acc: u32,
+    pub bits: u32,
+    pub width: u16,
+    pub next_code: u16,
+    pub max_code: u16,
+    pub pending: u16,
+    pub in_count: u32,
+    pub in_bits: u32,
+    pub checkpoint: u32,
+    pub max_ratio: u32,
+}
+
+impl LzwEncoder {
+    /// Fresh encoder matching the 0x1a2dc8 reset block (hash cleared by the caller via `clear_hash`).
+    pub fn fresh() -> Self {
+        LzwEncoder {
+            keys: vec![-1; 9001],
+            codes: vec![0; 9001],
+            acc: 0,
+            bits: 0,
+            width: 9,
+            next_code: 258,
+            max_code: 511,
+            pending: 0xFFFF,
+            in_count: 0,
+            in_bits: 0,
+            checkpoint: 10000,
+            max_ratio: 0,
+        }
+    }
+}
+
+/// Emit one code with the shared LZW encode bit-packer (IDA 0x1a30d8/0x1a31b0 rule: acc <<= width | code; bits += width − 8; head byte, plus a second byte while bits > 7).
+fn lzw_put(enc: &mut LzwEncoder, code: u32, out: &mut Vec<u8>) {
+    enc.acc = (enc.acc << enc.width) | code;
+    enc.bits += enc.width as u32 - 8;
+    out.push((enc.acc >> enc.bits) as u8);
+    if enc.bits > 7 {
+        enc.bits -= 8;
+        out.push((enc.acc >> enc.bits) as u8);
+    }
+}
+
+/// Trailing partial byte, padded left (IDA 0x1a30d8 tail: `*p++ = acc << (8 − bits)` when bits remain).
+fn lzw_put_flush(enc: &mut LzwEncoder, out: &mut Vec<u8>) {
+    if enc.bits > 0 {
+        out.push((enc.acc << (8 - enc.bits)) as u8);
+        enc.bits = 0;
+    }
 }
 
 // 0x1a30d8 — _LZWPostEncode
 // type: unknown
 #[doc(alias = "_LZWPostEncode")]
-pub fn stub_1a30d8() -> ! {
-    todo!("0x1a30d8 _LZWPostEncode")
+pub fn stub_1a30d8(enc: &mut LzwEncoder, out: &mut Vec<u8>, flush: &mut dyn FnMut(&mut Vec<u8>) -> bool) -> bool {
+    // IDA 0x1a30d8: flush hook when the cursor passes the limit (FALSE → FALSE); drain a pending code; emit EOI (0x101) + trailing partial; TRUE.
+    if !flush(out) {
+        return false;
+    }
+    if enc.pending != 0xFFFF {
+        lzw_put(enc, enc.pending as u32, out);
+        enc.pending = 0xFFFF;
+    }
+    lzw_put(enc, 0x101, out);
+    lzw_put_flush(enc, out);
+    true
 }
 
 // 0x1a31b0 — _LZWEncode
 // type: unknown
 #[doc(alias = "_LZWEncode")]
-pub fn stub_1a31b0() -> ! {
-    todo!("0x1a31b0 _LZWEncode")
+pub fn stub_1a31b0(
+    enc: &mut LzwEncoder,
+    src: &[u8],
+    out_limit: usize,
+    out: &mut Vec<u8>,
+    flush: &mut dyn FnMut(&mut Vec<u8>) -> bool,
+    clear_hash: &mut dyn FnMut(&mut Vec<i32>),
+) -> bool {
+    // IDA 0x1a31b0: hash-table LZW compressor — CLEAR (0x100) on the first code; (prev ^ (32·byte)) probe with 9001-step rehash; miss → emit prev, insert, grow width at maxcode (assert ≤ 12), ratio-based or 4094-full table clear + CLEAR; hit → follow code; FALSE when the table is missing (caller passes an empty hash) or a flush fails, else TRUE.
+    if enc.keys.is_empty() {
+        return false;
+    }
+    assert!(enc.width <= 12, "LZWEncode: nbits <= BITS_MAX (tif_lzw.c:940)");
+    let mut pos = 0;
+    if enc.pending == 0xFFFF && !src.is_empty() {
+        lzw_put(enc, 0x100, out);
+        enc.in_bits += enc.width as u32;
+        enc.pending = src[0] as u16;
+        pos = 1;
+        enc.in_count += 1;
+    }
+    while pos < src.len() {
+        let b = src[pos] as u32;
+        enc.in_count += 1;
+        let key = enc.pending as u32 + (b << 12);
+        let mut h = (enc.pending as usize ^ (32 * b as usize)) % 9001;
+        if enc.keys[h] as u32 != key {
+            if enc.keys[h] >= 0 {
+                let step = if h != 0 { 9001 - h } else { 1 };
+                loop {
+                    h = (h + 9001 - step) % 9001;
+                    if enc.keys[h] as u32 == key {
+                        break;
+                    }
+                    if enc.keys[h] < 0 {
+                        break;
+                    }
+                }
+            }
+            if enc.keys[h] as u32 == key {
+                enc.pending = enc.codes[h];
+                pos += 1;
+                continue;
+            }
+            if out.len() > out_limit && !flush(out) {
+                return false;
+            }
+            lzw_put(enc, enc.pending as u32, out);
+            enc.codes[h] = enc.next_code;
+            enc.keys[h] = key as i32;
+            enc.pending = b as u16;
+            enc.next_code += 1;
+            if enc.next_code == 4094 {
+                clear_hash(&mut enc.keys);
+                lzw_put(enc, 0x100, out);
+                enc.next_code = 258;
+            }
+            enc.in_bits += enc.width as u32;
+            if enc.max_code >= enc.next_code {
+                if enc.checkpoint > enc.in_count {
+                    pos += 1;
+                    continue;
+                }
+                enc.checkpoint = enc.in_count.wrapping_add(10000);
+                let ratio = if enc.in_count < 0x800000 {
+                    (enc.in_count.wrapping_shl(8)).wrapping_div(enc.in_bits)
+                } else if enc.in_bits >> 8 != 0 {
+                    enc.in_count / (enc.in_bits >> 8)
+                } else {
+                    0x7FFF_FFFF
+                };
+                if ratio > enc.max_ratio {
+                    enc.max_ratio = ratio;
+                    pos += 1;
+                    continue;
+                }
+                clear_hash(&mut enc.keys);
+                lzw_put(enc, 0x100, out);
+                enc.next_code = 258;
+                enc.in_bits = enc.width as u32;
+                enc.in_count = 0;
+                enc.max_code = 511;
+                enc.width = 9;
+                pos += 1;
+                continue;
+            }
+            enc.width += 1;
+            assert!(enc.width <= 12, "LZWEncode: nbits <= BITS_MAX (tif_lzw.c:940)");
+            enc.max_code = (1 << enc.width) - 1;
+            pos += 1;
+            continue;
+        }
+        enc.pending = enc.codes[h];
+        pos += 1;
+    }
+    true
 }
 
 // 0x1a363c — _LZWDecodeCompat
 // type: unknown
 #[doc(alias = "_LZWDecodeCompat")]
-pub fn stub_1a363c() -> ! {
-    todo!("0x1a363c _LZWDecodeCompat")
+pub fn stub_1a363c(
+    st: &mut LzwDecodeState,
+    src: &[u8],
+    pos: &mut usize,
+    in_bits: &mut u32,
+    dst: &mut [u8],
+    strip_no: u32,
+    on_warn: &mut dyn FnMut(&str, u32),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x1a363c: old-style LZW decode — same core as 0x1a4404 with byte-granular bit pulls; TRUE when the output exactly fills.
+    lzw_decode_core(st, src, pos, in_bits, dst, strip_no, on_warn, on_error)
+}
+
+/// LZW pre-decode reset block (IDA 0x1a40d0: compat flag, maxcode 510/511, width 9, output bit budget).
+#[derive(Clone, Copy, Debug)]
+pub struct LzwPreDecodeInit {
+    pub compat: bool,
+    pub max_code: u32,
+    pub width: u16,
+    pub data_bits: u32,
 }
 
 // 0x1a40d0 — _LZWPreDecode
 // type: unknown
 #[doc(alias = "_LZWPreDecode")]
-pub fn stub_1a40d0() -> ! {
-    todo!("0x1a40d0 _LZWPreDecode")
+pub fn stub_1a40d0(
+    has_sp: bool,
+    table_ready: bool,
+    setup_table: &mut dyn FnMut(),
+    new_style: bool,
+    compat_hooked: bool,
+    hook_compat: &mut dyn FnMut(),
+    warn: &mut dyn FnMut(&str),
+    out_len: usize,
+) -> LzwPreDecodeInit {
+    // IDA 0x1a40d0: sp assert; setup hook when the decode table is null; old-style codes (first byte 0 with bit0 of the second clear is new-style) warn once + swap the decode hooks; reset bit state, width 9, maxcode 510/511; the string-area zero + cursor block is caller-side.
+    assert!(has_sp, "LZWPreDecode: sp != NULL (tif_lzw.c:259)");
+    if !table_ready {
+        setup_table();
+    }
+    let compat = !new_style;
+    if compat && !compat_hooked {
+        warn("Old-style LZW codes, convert file");
+        hook_compat();
+    }
+    LzwPreDecodeInit { compat, max_code: if compat { 511 } else { 510 }, width: 9, data_bits: 8 * out_len as u32 }
 }
 
 // 0x1a4214 — _LZWSetupDecode
 // type: unknown
 #[doc(alias = "_LZWSetupDecode")]
-pub fn stub_1a4214() -> ! {
-    todo!("0x1a4214 _LZWSetupDecode")
+pub fn stub_1a4214(
+    has_state: bool,
+    alloc_state_ok: bool,
+    init_predictor: &mut dyn FnMut(),
+    table_ready: bool,
+    alloc_table_ok: bool,
+    on_error: &mut dyn FnMut(&str),
+) -> Option<LzwDecodeState> {
+    // IDA 0x1a4214: alloc state + predictor init when null (fail → "LZWPreDecode" error + None — the C mislabels it, kept literally); table alloc + 256 singletons when missing (fail → " LZWSetupDecode" error + None — leading space literal); Some(state).
+    if !has_state {
+        if !alloc_state_ok {
+            on_error("LZWPreDecode");
+            return None;
+        }
+        init_predictor();
+    }
+    assert!(has_state || alloc_state_ok, "LZWSetupDecode: sp != NULL (tif_lzw.c:222)");
+    if table_ready {
+        return Some(LzwDecodeState::fresh());
+    }
+    if !alloc_table_ok {
+        on_error(" LZWSetupDecode");
+        return None;
+    }
+    Some(LzwDecodeState::fresh())
+}
+
+/// LZW decode code-table entry: IDA 8-byte layout {link, len, first, last} (tif_lzw.c).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct LzwCodeEntry {
+    pub link: u32,
+    pub len: u16,
+    pub first: u8,
+    pub last: u8,
+}
+
+/// Persistent LZW decoder state (the IDA `sp` fields touched by Decode/Compat/PreDecode/SetupDecode).
+#[derive(Clone, Debug)]
+pub struct LzwDecodeState {
+    pub table: Vec<LzwCodeEntry>,
+    pub next_code: usize,
+    pub width: u16,
+    pub mask: u32,
+    pub old_idx: usize,
+    pub bit_buf: u32,
+    pub bit_len: u32,
+    pub pending: Vec<u8>,
+    pub partial_len: u32,
+    pub partial_entry: usize,
+}
+
+impl LzwDecodeState {
+    /// Fresh decode table: 256 singletons, cursor at entry 258, width 9 (IDA 0x1a4214 4-wide unrolled init).
+    pub fn fresh() -> Self {
+        let mut table = vec![LzwCodeEntry::default(); 5120];
+        for (i, e) in table.iter_mut().enumerate().take(256) {
+            e.first = i as u8;
+            e.last = i as u8;
+            e.len = 1;
+        }
+        LzwDecodeState { table, next_code: 258, width: 9, mask: 511, old_idx: 0, bit_buf: 0, bit_len: 0, pending: Vec::new(), partial_len: 0, partial_entry: 0 }
+    }
+    /// Clear-code reset: zero entries past 258, cursor back, width 9 (IDA 0x1a4404 memset 0x97E8).
+    pub fn clear(&mut self) {
+        for e in self.table.iter_mut().skip(258) {
+            *e = LzwCodeEntry::default();
+        }
+        self.next_code = 258;
+        self.width = 9;
+        self.mask = 511;
+    }
+}
+
+/// Byte string for a code: `last` bytes up the link chain, reversed (IDA walks the same chain backward into the output).
+fn lzw_string(table: &[LzwCodeEntry], idx: usize, out: &mut Vec<u8>) {
+    let mut chain = idx;
+    let mut rev = Vec::new();
+    loop {
+        let e = &table[chain];
+        rev.push(e.last);
+        if e.len <= 1 {
+            break;
+        }
+        chain = e.link as usize;
+    }
+    out.extend(rev.iter().rev());
+}
+
+/// Shared LZW decode core (IDA 0x1a4404 + 0x1a363c Compat: identical string-table logic, Compat pulls bits byte-granular — same bytes): resume a partial string; codes until EOI (257), Clear (256), output full, or input exhausted (EOI warning); TRUE iff the output exactly fills.
+fn lzw_decode_core(
+    st: &mut LzwDecodeState,
+    src: &[u8],
+    pos: &mut usize,
+    in_bits: &mut u32,
+    dst: &mut [u8],
+    strip_no: u32,
+    on_warn: &mut dyn FnMut(&str, u32),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    assert!(!st.table.is_empty(), "LZWDecode: sp->dec_codetab != NULL (tif_lzw.c:364)");
+    let mut out = 0;
+    if !st.pending.is_empty() {
+        let n = st.pending.len().min(dst.len());
+        dst[..n].copy_from_slice(&st.pending[..n]);
+        out += n;
+        st.pending.drain(..n);
+        if !st.pending.is_empty() {
+            return true;
+        }
+    }
+    if st.partial_len > 0 {
+        let mut tmp = Vec::new();
+        lzw_string(&st.table, st.partial_entry, &mut tmp);
+        let n = (st.partial_len as usize).min(tmp.len()).min(dst.len() - out);
+        dst[out..out + n].copy_from_slice(&tmp[tmp.len() - n..]);
+        out += n;
+        st.partial_len -= n as u32;
+        if st.partial_len > 0 {
+            return true;
+        }
+    }
+    loop {
+        if out >= dst.len() {
+            break;
+        }
+        if st.width as u32 > *in_bits {
+            on_warn("LZWDecode: Strip %d not terminated with EOI code", strip_no);
+            break;
+        }
+        while st.bit_len < st.width as u32 {
+            if *pos >= src.len() {
+                break;
+            }
+            st.bit_buf |= (src[*pos] as u32) << st.bit_len;
+            *pos += 1;
+            st.bit_len += 8;
+        }
+        if st.bit_len < st.width as u32 {
+            on_warn("LZWDecode: Strip %d not terminated with EOI code", strip_no);
+            break;
+        }
+        let code = (st.bit_buf & st.mask) as usize;
+        st.bit_buf >>= st.width;
+        st.bit_len -= st.width as u32;
+        *in_bits -= st.width as u32;
+        if code == 257 {
+            break;
+        }
+        if code == 256 {
+            st.clear();
+            continue;
+        }
+        if code >= 5119 || st.old_idx >= 5119 {
+            on_error("LZWDecode");
+            return false;
+        }
+        let first = if st.next_code > code { st.table[code].first } else { st.table[st.old_idx].first };
+        let old_len = st.table[st.old_idx].len;
+        if st.next_code < st.table.len() {
+            st.table[st.next_code] = LzwCodeEntry { link: st.old_idx as u32, len: old_len + 1, first, last: first };
+            st.next_code += 1;
+        }
+        if st.next_code > st.mask as usize {
+            st.width = (st.width + 1).min(12);
+            st.mask = (1 << st.width) - 1;
+        }
+        let mut tmp = Vec::new();
+        lzw_string(&st.table, code.min(st.table.len() - 1), &mut tmp);
+        let room = dst.len() - out;
+        if tmp.len() > room {
+            dst[out..].copy_from_slice(&tmp[..room]);
+            st.pending = tmp[room..].to_vec();
+            return true;
+        }
+        dst[out..out + tmp.len()].copy_from_slice(&tmp);
+        out += tmp.len();
+        st.old_idx = code;
+    }
+    out == dst.len()
 }
 
 // 0x1a4404 — _LZWDecode
 // type: unknown
 #[doc(alias = "_LZWDecode")]
-pub fn stub_1a4404() -> ! {
-    todo!("0x1a4404 _LZWDecode")
+pub fn stub_1a4404(
+    has_sp: bool,
+    st: &mut LzwDecodeState,
+    src: &[u8],
+    pos: &mut usize,
+    in_bits: &mut u32,
+    dst: &mut [u8],
+    strip_no: u32,
+    on_warn: &mut dyn FnMut(&str, u32),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x1a4404: sp + dec_codetab asserts; the shared decode core; TRUE iff the output exactly fills (IDA returns 1 only when no output remains, else error + 0).
+    assert!(has_sp, "LZWDecode: sp != NULL (tif_lzw.c:363)");
+    if !lzw_decode_core(st, src, pos, in_bits, dst, strip_no, on_warn, on_error) {
+        return false;
+    }
+    if dst.is_empty() {
+        return true;
+    }
+    true
 }
 
 // 0x1a4fd8 — _TIFFInitNeXT
 // type: unknown
 #[doc(alias = "_TIFFInitNeXT")]
-pub fn stub_1a4fd8() -> ! {
-    todo!("0x1a4fd8 _TIFFInitNeXT")
+pub fn stub_1a4fd8() -> bool {
+    // IDA 0x1a4fd8: install NeXTDecode on the strip/tile rows (caller-side); TRUE.
+    true
 }
 
 // 0x1a4ff8 — _NeXTDecode
 // type: unknown
 #[doc(alias = "_NeXTDecode")]
-pub fn stub_1a4ff8() -> ! {
-    todo!("0x1a4ff8 _NeXTDecode")
+pub fn stub_1a4ff8(src: &[u8], dst: &mut [u8], width: usize, stride: usize, on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a4ff8: dst prefilled 0xFF (IDA Duff 8-wide); op 0 → literal `stride` bytes; op 64 → sparse copy (count to dst offset, row not advanced); else 2-bit pixels ((op & 0x3F) pixels of (op >> 6)) packed MSB-first, row-bounded by `width` with `stride` advance; FALSE on truncation.
+    dst.fill(0xFF);
+    let mut p = 0usize;
+    let mut row = 0usize;
+    let mut col = 0usize;
+    let mut remaining = dst.len() as isize;
+    while remaining > 0 {
+        if p >= src.len() {
+            on_error("NeXTDecode");
+            return false;
+        }
+        let op = src[p];
+        p += 1;
+        if op == 0 {
+            if src.len() - p < stride || row + stride > dst.len() {
+                on_error("NeXTDecode");
+                return false;
+            }
+            dst[row..row + stride].copy_from_slice(&src[p..p + stride]);
+            p += stride;
+            row += stride;
+            remaining -= stride as isize;
+            col = 0;
+        } else if op == 64 {
+            if src.len() - p < 4 {
+                on_error("NeXTDecode");
+                return false;
+            }
+            let at = ((src[p] as usize) << 8) | src[p + 1] as usize;
+            let count = ((src[p + 2] as usize) << 8) | src[p + 3] as usize;
+            if src.len() - p < 4 + count || stride < at + count || row + stride > dst.len() {
+                on_error("NeXTDecode");
+                return false;
+            }
+            dst[row + at..row + at + count].copy_from_slice(&src[p + 4..p + 4 + count]);
+            p += 4 + count;
+        } else {
+            let mut n = (op & 0x3F) as usize;
+            let val = op >> 6;
+            while n > 0 {
+                if col >= width {
+                    row += stride;
+                    remaining -= stride as isize;
+                    col = 0;
+                    if remaining <= 0 {
+                        break;
+                    }
+                    if row >= dst.len() {
+                        on_error("NeXTDecode");
+                        return false;
+                    }
+                }
+                if row + col / 4 >= dst.len() {
+                    on_error("NeXTDecode");
+                    return false;
+                }
+                let cell = &mut dst[row + col / 4];
+                match col % 4 {
+                    0 => *cell = val << 6,
+                    1 => *cell |= val << 4,
+                    2 => *cell |= val << 2,
+                    _ => *cell |= val,
+                }
+                col += 1;
+                n -= 1;
+            }
+        }
+    }
+    true
+}
+
+/// One OJPEG stream table reference: data pointer + head word (IDA 0x1a52bc: out = ptr + 4, len = head − 4).
+pub type OjpegTableRef = Option<(u32, u32)>;
+
+/// Shared body of the Q/DC/AC WriteStreamTable fns (IDA 0x1a52bc/0x1a5300/0x1a5344): present table → (ptr + 4, head − 4); returns the running stream count, post-incremented.
+fn ojpeg_write_stream_table(table: OjpegTableRef, out_ptr: &mut u32, out_len: &mut u32, counter: &mut u32) -> u32 {
+    if let Some((ptr, head)) = table {
+        *out_ptr = ptr + 4;
+        *out_len = head - 4;
+    }
+    let n = *counter;
+    *counter += 1;
+    n
 }
 
 // 0x1a52bc — _OJPEGWriteStreamQTable
 // type: unknown
 #[doc(alias = "_OJPEGWriteStreamQTable")]
-pub fn stub_1a52bc() -> ! {
-    todo!("0x1a52bc _OJPEGWriteStreamQTable")
+pub fn stub_1a52bc(t: usize, tables: &[OjpegTableRef], out_ptr: &mut u32, out_len: &mut u32, counter: &mut u32) -> u32 {
+    // IDA 0x1a52bc: Q-table stream entry for table t.
+    ojpeg_write_stream_table(tables[t], out_ptr, out_len, counter)
 }
 
 // 0x1a5300 — _OJPEGWriteStreamDcTable
 // type: unknown
 #[doc(alias = "_OJPEGWriteStreamDcTable")]
-pub fn stub_1a5300() -> ! {
-    todo!("0x1a5300 _OJPEGWriteStreamDcTable")
+pub fn stub_1a5300(t: usize, tables: &[OjpegTableRef], out_ptr: &mut u32, out_len: &mut u32, counter: &mut u32) -> u32 {
+    // IDA 0x1a5300: DC-table stream entry for table t.
+    ojpeg_write_stream_table(tables[t], out_ptr, out_len, counter)
 }
 
 // 0x1a5344 — _OJPEGWriteStreamAcTable
 // type: unknown
 #[doc(alias = "_OJPEGWriteStreamAcTable")]
-pub fn stub_1a5344() -> ! {
-    todo!("0x1a5344 _OJPEGWriteStreamAcTable")
+pub fn stub_1a5344(t: usize, tables: &[OjpegTableRef], out_ptr: &mut u32, out_len: &mut u32, counter: &mut u32) -> u32 {
+    // IDA 0x1a5344: AC-table stream entry for table t.
+    ojpeg_write_stream_table(tables[t], out_ptr, out_len, counter)
 }
 
 // 0x1a5388 — _OJPEGLibjpegJpegSourceMgrInitSource
 // type: unknown
 #[doc(alias = "_OJPEGLibjpegJpegSourceMgrInitSource")]
-pub fn stub_1a5388() -> ! {
-    todo!("0x1a5388 _OJPEGLibjpegJpegSourceMgrInitSource")
+pub fn stub_1a5388() {
+    // IDA 0x1a5388: nop source-manager init.
 }
 
 // 0x1a538c — _OJPEGLibjpegJpegSourceMgrTermSource
 // type: unknown
 #[doc(alias = "_OJPEGLibjpegJpegSourceMgrTermSource")]
-pub fn stub_1a538c() -> ! {
-    todo!("0x1a538c _OJPEGLibjpegJpegSourceMgrTermSource")
+pub fn stub_1a538c() {
+    // IDA 0x1a538c: nop source-manager term.
+}
+
+/// OJPEG buffered-reader state (IDA 0x1a5390: buffer to-go/cursor, file to-go/position, eof flag).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct OjpegReadState {
+    pub buf_togo: u16,
+    pub buf_ptr: u32,
+    pub file_togo: u32,
+    pub file_pos: u32,
+    pub eof_ok: bool,
 }
 
 // 0x1a5390 — _OJPEGReadSkip
 // type: unknown
 #[doc(alias = "_OJPEGReadSkip")]
-pub fn stub_1a5390() -> ! {
-    todo!("0x1a5390 _OJPEGReadSkip")
+pub fn stub_1a5390(st: &mut OjpegReadState, n: u16) {
+    // IDA 0x1a5390: consume from the buffer first, spill into the file region (clamped, clears eof_ok).
+    if n <= st.buf_togo {
+        st.buf_togo -= n;
+        st.buf_ptr += n as u32;
+    } else {
+        let rest = (n - st.buf_togo) as u32;
+        st.buf_ptr += st.buf_togo as u32;
+        st.buf_togo = 0;
+        if rest > 0 {
+            let take = rest.min(st.file_togo);
+            st.file_pos += take;
+            st.file_togo -= take;
+            st.eof_ok = false;
+        }
+    }
+}
+
+/// OJPEG buffer-fill state (IDA 0x1a540c: file to-go, dir cursor/count, phase, data pointer, buffer to-go).
+#[derive(Clone, Debug, Default)]
+pub struct OjpegFillState {
+    pub file_togo: u32,
+    pub dir_index: usize,
+    pub dir_count: usize,
+    pub phase: u32,
+    pub data_ptr: u32,
+    pub buf_togo: u16,
 }
 
 // 0x1a540c — _OJPEGReadBufferFill
 // type: unknown
 #[doc(alias = "_OJPEGReadBufferFill")]
-pub fn stub_1a540c() -> ! {
-    todo!("0x1a540c _OJPEGReadBufferFill")
+pub fn stub_1a540c(
+    st: &mut OjpegFillState,
+    dirs: &[(u32, u32)],
+    total: u32,
+    strip_ptr: u32,
+    strip_len: u32,
+    eof_ok: &mut bool,
+    skip_hook: &mut dyn FnMut(u32, u8),
+    read: &mut dyn FnMut(u32, u16) -> Option<u16>,
+) -> bool {
+    // IDA 0x1a540c: phase machine over strip/dir sources until file_togo ≠ 0 (phase 3 = exhausted → FALSE); skip hook when the machine ran or eof was already clear (IDA clears it per iteration); bounded read (asserts n > 0, ≤ 2048, ≤ file_togo); TRUE.
+    let mut touched = false;
+    while st.file_togo == 0 {
+        touched = true;
+        match st.phase {
+            1 => st.phase = 2,
+            0 => {
+                st.phase = 1;
+                if strip_ptr != 0 {
+                    st.data_ptr = strip_ptr;
+                    st.file_togo = strip_len;
+                }
+            }
+            2 => {
+                if st.dir_index != st.dir_count {
+                    if let Some(&(len, comp)) = dirs.get(st.dir_index) {
+                        st.data_ptr = len;
+                        if len != 0 && len < total {
+                            let mut togo = comp;
+                            if togo != 0 && togo + len > total {
+                                togo = total - len;
+                            }
+                            st.file_togo = togo;
+                            if togo == 0 {
+                                st.data_ptr = 0;
+                            }
+                        } else {
+                            st.data_ptr = 0;
+                        }
+                    }
+                    st.dir_index += 1;
+                } else {
+                    st.phase = 3;
+                }
+            }
+            _ => return false,
+        }
+    }
+    if touched || !*eof_ok {
+        skip_hook(st.data_ptr, 0);
+        *eof_ok = true;
+    }
+    let want = st.file_togo.min(2048) as u16;
+    let n = match read(st.data_ptr, want) {
+        Some(n) => n,
+        None => return false,
+    };
+    assert!(n > 0, "OJPEGReadBufferFill: n>0 (tif_ojpeg.c:1883)");
+    assert!(n <= 2048, "OJPEGReadBufferFill: n<=OJPEG_BUFFER (tif_ojpeg.c:1884)");
+    assert!((n as u32) <= st.file_togo, "OJPEGReadBufferFill: (uint16)n<=sp->in_buffer_file_togo (tif_ojpeg.c:1886)");
+    st.buf_togo = n;
+    st.data_ptr += n as u32;
+    st.file_togo -= n as u32;
+    true
 }
 
 // 0x1a5610 — _OJPEGReadByte
 // type: unknown
 #[doc(alias = "_OJPEGReadByte")]
-pub fn stub_1a5610() -> ! {
-    todo!("0x1a5610 _OJPEGReadByte")
+pub fn stub_1a5610(st: &mut OjpegReadState, out: &mut u8, fill: &mut dyn FnMut() -> bool, byte_at: &mut dyn FnMut(u32) -> u8) -> bool {
+    // IDA 0x1a5610: refill when empty (fail → FALSE); assert non-empty after fill; consume one byte.
+    if st.buf_togo == 0 {
+        if !fill() {
+            return false;
+        }
+        assert!(st.buf_togo > 0, "OJPEGReadByte: sp->in_buffer_togo>0 (tif_ojpeg.c:1943)");
+    }
+    *out = byte_at(st.buf_ptr);
+    st.buf_ptr += 1;
+    st.buf_togo -= 1;
+    true
 }
 
 // 0x1a56a4 — _OJPEGReadWord
 // type: unknown
 #[doc(alias = "_OJPEGReadWord")]
-pub fn stub_1a56a4() -> ! {
-    todo!("0x1a56a4 _OJPEGReadWord")
+pub fn stub_1a56a4(st: &mut OjpegReadState, out: &mut u16, fill: &mut dyn FnMut() -> bool, byte_at: &mut dyn FnMut(u32) -> u8) -> bool {
+    // IDA 0x1a56a4: big-endian word via two ReadBytes.
+    let (mut hi, mut lo) = (0u8, 0u8);
+    if !stub_1a5610(st, &mut hi, fill, byte_at) {
+        return false;
+    }
+    *out = (hi as u16) << 8;
+    if !stub_1a5610(st, &mut lo, fill, byte_at) {
+        return false;
+    }
+    *out |= lo as u16;
+    true
 }
 
 // 0x1a570c — _OJPEGReadHeaderInfoSecStreamSos
 // type: unknown
 #[doc(alias = "_OJPEGReadHeaderInfoSecStreamSos")]
-pub fn stub_1a570c() -> ! {
-    todo!("0x1a570c _OJPEGReadHeaderInfoSecStreamSos")
+pub fn stub_1a570c(
+    subsampling: u8,
+    has_data: bool,
+    comp_count: u8,
+    read_word: &mut dyn FnMut() -> Option<u16>,
+    read_byte: &mut dyn FnMut() -> Option<u8>,
+    skip: &mut dyn FnMut(u16),
+    set_comp: &mut dyn FnMut(u8, u8, u8),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x1a570c: subsamplingcorrect == 0 assert; empty → error + FALSE; SOS length must equal 2·count + 6 and the comp count must match (else error + FALSE); per-comp (id, table) bytes stored; trailing 3 skipped; TRUE.
+    assert_eq!(subsampling, 0, "OJPEGReadHeaderInfoSecStreamSos: sp->subsamplingcorrect==0 (tif_ojpeg.c:1640)");
+    if !has_data {
+        on_error("OJPEGReadHeaderInfoSecStreamSos");
+        return false;
+    }
+    if read_word() != Some(2 * comp_count as u16 + 6) {
+        on_error("OJPEGReadHeaderInfoSecStreamSos");
+        return false;
+    }
+    if read_byte() != Some(comp_count) {
+        on_error("OJPEGReadHeaderInfoSecStreamSos");
+        return false;
+    }
+    for i in 0..comp_count {
+        match (read_byte(), read_byte()) {
+            (Some(a), Some(b)) => set_comp(i, a, b),
+            _ => return false,
+        }
+    }
+    skip(3);
+    true
 }
 
 // 0x1a58b0 — _OJPEGPostEncode
 // type: unknown
 #[doc(alias = "_OJPEGPostEncode")]
-pub fn stub_1a58b0() -> ! {
-    todo!("0x1a58b0 _OJPEGPostEncode")
+pub fn stub_1a58b0(on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a58b0: OJPEG encode path unsupported — error + FALSE.
+    on_error("OJPEGPostEncode");
+    false
 }
 
 // 0x1a58e0 — _OJPEGEncode
-// type: int __fastcall(int)
+// type: unknown
 #[doc(alias = "_OJPEGEncode")]
-pub fn stub_1a58e0() -> ! {
-    todo!("0x1a58e0 _OJPEGEncode")
+pub fn stub_1a58e0(on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a58e0: OJPEG encode path unsupported — error + FALSE.
+    on_error("OJPEGEncode");
+    false
 }
 
 // 0x1a5910 — _OJPEGPreEncode
 // type: unknown
 #[doc(alias = "_OJPEGPreEncode")]
-pub fn stub_1a5910() -> ! {
-    todo!("0x1a5910 _OJPEGPreEncode")
+pub fn stub_1a5910(on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a5910: OJPEG encode path unsupported — error + FALSE.
+    on_error("OJPEGPreEncode");
+    false
 }
 
 // 0x1a5940 — _OJPEGSetupEncode
 // type: unknown
 #[doc(alias = "_OJPEGSetupEncode")]
-pub fn stub_1a5940() -> ! {
-    todo!("0x1a5940 _OJPEGSetupEncode")
+pub fn stub_1a5940(on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a5940: OJPEG encode path unsupported — error + FALSE.
+    on_error("OJPEGSetupEncode");
+    false
+}
+
+/// OJPEG codec defaults installed at init (IDA 0x1a5970: 2,2 subsampling, jpeg proc 1).
+#[derive(Clone, Copy, Debug)]
+pub struct OjpegDefaults {
+    pub ycc_h: u8,
+    pub ycc_v: u8,
+    pub proc: u8,
 }
 
 // 0x1a5970 — _TIFFInitOJPEG
 // type: unknown
 #[doc(alias = "_TIFFInitOJPEG")]
-pub fn stub_1a5970() -> ! {
-    todo!("0x1a5970 _TIFFInitOJPEG")
+pub fn stub_1a5970(scheme: u32, merge_ok: bool, alloc_ok: bool, set_field: &mut dyn FnMut(u32, u32), on_error: &mut dyn FnMut(&str)) -> Option<OjpegDefaults> {
+    // IDA 0x1a5970: scheme == COMPRESSION_OJPEG assert; merge + alloc (fail → error + None); zeroed state with 2,2 subsampling, proc 1, setfield(530, 2); hook install caller-side.
+    assert_eq!(scheme, 6, "TIFFInitOJPEG: scheme==COMPRESSION_OJPEG (tif_ojpeg.c:397)");
+    if !merge_ok || !alloc_ok {
+        on_error("TIFFInitOJPEG");
+        return None;
+    }
+    set_field(530, 2);
+    Some(OjpegDefaults { ycc_h: 2, ycc_v: 2, proc: 1 })
 }
 
 // 0x1a5b50 — _OJPEGPrintDir
 // type: int __fastcall(int, FILE *__stream)
 #[doc(alias = "_OJPEGPrintDir")]
-pub fn stub_1a5b50() -> ! {
-    todo!("0x1a5b50 _OJPEGPrintDir")
+pub fn stub_1a5b50(
+    has_sp: bool,
+    flags: u32,
+    interchange: u32,
+    interchange_len: u32,
+    qtables: &[u32],
+    dctables: &[u32],
+    actables: &[u32],
+    proc: u8,
+    restart: u16,
+    print: &mut dyn FnMut(&str),
+) {
+    // IDA 0x1a5b50: sp assert; flag-gated directory print (bits 2–8): interchange format/length, Q/DC/AC table lists, proc, restart interval.
+    assert!(has_sp, "OJPEGPrintDir: sp!=NULL (tif_ojpeg.c:582)");
+    if flags & 4 != 0 {
+        print(&format!("  JpegInterchangeFormat: {}", interchange));
+    }
+    if flags & 8 != 0 {
+        print(&format!("  JpegInterchangeFormatLength: {}", interchange_len));
+    }
+    if flags & 0x10 != 0 {
+        let mut s = String::from("  JpegQTables:");
+        for q in qtables {
+            s.push_str(&format!(" {}", q));
+        }
+        print(&s);
+    }
+    if flags & 0x20 != 0 {
+        let mut s = String::from("  JpegDcTables:");
+        for t in dctables {
+            s.push_str(&format!(" {}", t));
+        }
+        print(&s);
+    }
+    if flags & 0x40 != 0 {
+        let mut s = String::from("  JpegAcTables:");
+        for t in actables {
+            s.push_str(&format!(" {}", t));
+        }
+        print(&s);
+    }
+    if flags & 0x80 != 0 {
+        print(&format!("  JpegProc: {}", proc));
+    }
+    if flags & 0x100 != 0 {
+        print(&format!("  JpegRestartInterval: {}", restart));
+    }
 }
