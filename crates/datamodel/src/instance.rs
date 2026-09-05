@@ -2917,6 +2917,60 @@ pub struct AnimatorBoundFuncDesc {
     pub member: Option<AnimatorLoadFn>,
 }
 
+/// Member-function signature behind `mf2<void, AnimationTrackState, float,
+/// float>` (IDA `0x39e1fc`): the keyframe-weight handler both float-pair
+/// slots invoke.
+pub type AnimPairFunc = fn(&SharedPtr<AnimationTrackState>, f32, f32);
+
+/// Rust model of the function object behind the `(float, float)` signal slots
+/// (IDA `0x39e228`): the retained state (the `value<AnimationTrackState*>`
+/// word is kept alive, cf. `TripleFunction`) plus the `mf2` handler.
+#[derive(Clone, Default)]
+pub struct AnimPairFunction {
+    pub target: Option<SharedPtr<AnimationTrackState>>,
+    pub func: Option<AnimPairFunc>,
+}
+
+/// Rust model of an `rbx::signals::signal<void ()(float, float)>::slot` link
+/// holding the `mf2` bind (IDA `0x39e1ac` call): the intrusive successor
+/// becomes `next`; retain/release become `clone`/`drop`. Same discipline as
+/// `TripleSlotNode`.
+pub struct AnimPairSlotNode {
+    pub next: Option<SharedPtr<AnimPairSlotNode>>,
+    pub func: AnimPairFunction,
+}
+
+/// Member-function signature behind `mf4<void, AnimationTrackState, float ×
+/// 4>` (IDA `0x39e860`).
+pub type AnimQuadFunc = fn(&SharedPtr<AnimationTrackState>, f32, f32, f32, f32);
+
+/// Rust model of the function object behind the `(float × 4)` signal slots
+/// (IDA `0x39e5cc`): same retain discipline as `AnimPairFunction`.
+#[derive(Clone, Default)]
+pub struct AnimQuadFunction {
+    pub target: Option<SharedPtr<AnimationTrackState>>,
+    pub func: Option<AnimQuadFunc>,
+}
+
+/// Rust model of an `rbx::signals::signal<void ()(float, float, float,
+/// float)>::slot` link (IDA `0x39e39c` insert): same intrusive-`next`
+/// discipline as `AnimPairSlotNode`.
+pub struct AnimQuadSlotNode {
+    pub next: Option<SharedPtr<AnimQuadSlotNode>>,
+    pub func: AnimQuadFunction,
+}
+
+/// Process-wide mutex behind the float-quad slot guards (IDA `0x39e9a4`);
+/// twin of `TRIPLE_SLOT_STATIC_MUTEX`.
+static ANIM_QUAD_SLOT_MUTEX: Mutex<()> = Mutex::new(());
+
+/// Connection handle returned by the float-quad `signal::connect` (IDA
+/// `0x39e328`): owns the closure's strong ref like `TripleConnection`, so
+/// dropping it expires the weak slot.
+pub struct AnimQuadConnection {
+    pub keep: SharedPtr<dyn Any + Send + Sync>,
+}
+
 /// Rust model of `RBX::PartInstance` (IDA `0x3a68d8`): the
 /// `enable_shared_from_this` weak owner (same `+40` discipline), the `Locked`
 /// flag (name word `+48`, IDA `0x5de910`/`0x5e0e00`), the continuous-motion
@@ -11111,6 +11165,335 @@ pub fn stub_0x39bdb4(
     // SAFETY: `candidate` is a live model-space handle.
     if !instance_is_a(ptr, "Keyframe") {
         return;
+    }
+}
+
+// 0x39e1ac — __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
+pub fn stub_0x39e1ac(slot: &AnimPairSlotNode, first: f32, second: f32) {
+    // IDA 0x39e1ac: spills the two float args into the `list2` (decomp
+    // 0x39e1b2-0x39e1c0) then the bound `mf2` call through the `list3`
+    // (decomp 0x39e1d0). Same shape as 0x2b5d4c.
+    if let (Some(target), Some(func)) = (&slot.func.target, &slot.func.func) {
+        func(&target.clone(), first, second);
+    }
+}
+
+// 0x39e1d4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff
+#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
+pub fn stub_0x39e1d4(slot: &AnimPairSlotNode, first: f32, second: f32) {
+    // IDA 0x39e1d4: non-virtual thunk into `callable::call` (IDA 0x39e1ac);
+    // the `a1 + 20` / `a1 + 12` member adjustments (decomp 0x39e1f8) are the
+    // 4-byte `this` shift — same receiver, same args. Cf. 0x2b5d68.
+    stub_0x39e1ac(slot, first, second);
+}
+
+// 0x39e1fc — __ZN5boost3_bi5list3INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_ffEENS0_5list2IRfSG_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_ffEENS0_5list2IRfSG_EEEEvNS0_4typeIvEERT_RT0_i")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list2<float &,float &>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float> &,boost::_bi::list2<float &,float &> &,int)")]
+pub fn stub_0x39e1fc(
+    target: &SharedPtr<AnimationTrackState>,
+    func: AnimPairFunc,
+    first: f32,
+    second: f32,
+) {
+    // IDA 0x39e1fc: `list3` application — resolves the `mf2` member (decomp
+    // 0x39e200-0x39e21e, virtual-dispatch adjust when `v4 & 1`) and applies
+    // it to the bound state plus the two float args (decomp 0x39e212-0x39e216
+    // spills). The member collapses into the handler; the dispatch adjust is
+    // compiler-managed. Twin of 0x2b5f3c.
+    func(&target.clone(), first, second);
+}
+
+// 0x39e228 — __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED1Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED1Ev")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::~callable()")]
+pub fn stub_0x39e228(slot: *mut AnimPairSlotNode) {
+    // IDA 0x39e228: `callable` D1 — vtable resets (compiler-managed, decomp
+    // 0x39e23a-0x39e242) + link release (decomp 0x39e246-0x39e24c); storage
+    // kept. Same body as 0x2b63e8.
+    // SAFETY: `slot` must point to a valid `AnimPairSlotNode`.
+    unsafe {
+        (*slot).func = AnimPairFunction::default();
+        (*slot).next = None;
+    }
+}
+
+// 0x39e254 — __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED0Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED0Ev")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::~callable()")]
+pub fn stub_0x39e254(slot: *mut AnimPairSlotNode) {
+    // IDA 0x39e254: `callable` D0 — the D1 body (decomp 0x39e284-0x39e2c2)
+    // plus `operator delete` (decomp 0x39e2ce); the box reclaim runs the
+    // field drops and frees together. Same shape as 0x2b6414.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
+
+// 0x39e328 — __ZN3rbx7signals6signalIFvffffEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEEENS0_10connectionERKT_
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEEENS0_10connectionERKT_")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(float,float,float,float)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>> const&)")]
+pub fn stub_0x39e328(
+    sig: &Signal<(f32, f32, f32, f32)>,
+    func: &AnimQuadFunction,
+) -> AnimQuadConnection {
+    // IDA 0x39e328: `operator new` callable slot + `callable` ctor retaining
+    // the `bind_t` arg (decomp spills at 0x39e358-0x39e37e) + slot insert +
+    // connection return (decomp 0x39e382-0x39e388). The closure retains the
+    // same function (clone) with the concrete-closure `Arc` (cf. the
+    // `0x708c08` `Sized` fix); the handle owns the strong ref. Twin of
+    // 0x2b9bac.
+    let retained = func.clone();
+    let cb = SharedPtr::new(move |args: (f32, f32, f32, f32)| {
+        if let (Some(target), Some(f)) = (&retained.target, &retained.func) {
+            f(&target.clone(), args.0, args.1, args.2, args.3);
+        }
+    });
+    sig.connect(cb.clone());
+    AnimQuadConnection { keep: cb }
+}
+
+// 0x39e39c — __ZN3rbx7signals6signalIFvffffEE6insertEPNS3_4slotE
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE6insertEPNS3_4slotE")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::insert(rbx::signals::signal<void ()(float,float,float,float)>::slot *)")]
+pub fn stub_0x39e39c(head: *mut Option<SharedPtr<AnimQuadSlotNode>>, slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39e39c: mutex acquisition over the signal (prologue through
+    // decomp asserts at 0x39e3da-0x39e408) then the intrusive link of the
+    // slot. The signal list itself is unmodeled, so the head is an explicit
+    // out-param; push-front order is unobservable without a fire path. Same
+    // head-explicit collapse as the triple `insert` (IDA 0x2b57e0).
+    // SAFETY: `head` must be writable; `slot` must be a live box pointer with
+    // no concurrent/shared mutation; the node must stay alive while linked.
+    unsafe {
+        let guard = ANIM_QUAD_SLOT_MUTEX.lock();
+        let owned = SharedPtr::from_raw(slot);
+        let linked = owned.clone();
+        core::mem::forget(owned);
+        (*slot).next = (*head).clone();
+        *head = Some(linked);
+        drop(guard);
+    }
+}
+
+// 0x39e5a8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSEPS6_
+#[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSEPS6_")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float,float)>::slot>::operator=(rbx::signals::signal<void ()(float,float,float,float)>::slot*)")]
+pub fn stub_0x39e5a8(dst: *mut Option<SharedPtr<AnimQuadSlotNode>>, src: Option<SharedPtr<AnimQuadSlotNode>>) {
+    // IDA 0x39e5a8: move-assign variant (`aSEPS6_`, pointer `src`): add_ref
+    // (decomp 0x39e5b2-0x39e5b6), store (decomp 0x39e5bc), release-old
+    // (decomp 0x39e5c0-0x39e5c2) — same order as 0x2b59ec. Taking `src` by
+    // value is the move.
+    // SAFETY: `dst` must be writable.
+    unsafe {
+        *dst = src;
+    }
+}
+
+// 0x39e5cc — __ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED1Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED1Ev")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::~callable_slot()")]
+pub fn stub_0x39e5cc(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39e5cc: `callable_slot` D1 — vtable resets (compiler-managed,
+    // decomp 0x39e5de-0x39e5e6) + link release (decomp 0x39e5ea-0x39e5f0);
+    // storage kept. Same body as 0x2b5b30.
+    // SAFETY: `slot` must point to a valid `AnimQuadSlotNode`.
+    unsafe {
+        (*slot).func = AnimQuadFunction::default();
+        (*slot).next = None;
+    }
+}
+
+// 0x39e5f8 — __ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED0Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED0Ev")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::~callable_slot()")]
+pub fn stub_0x39e5f8(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39e5f8: `callable_slot` D0 — the D1 body (decomp 0x39e628-0x39e666)
+    // plus `operator delete` (decomp 0x39e672); the box reclaim runs the
+    // field drops and frees together. Same shape as 0x2b5b5c.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
+
+// 0x39e6cc — __ZN3rbx7signals6signalIFvffffEE4slot10disconnectEv
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot10disconnectEv")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::disconnect(void)")]
+pub fn stub_0x39e6cc(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39e6cc: mutex-guarded unlink of the slot (decomp prologue from
+    // 0x39e6de; the `+12` link-word check at 0x39e6f6 gates the guard); here
+    // clearing the callback and the successor is the unlink, and the static
+    // lock is the same guard. Same shape as the 0x2b5c30 disconnect.
+    // SAFETY: `slot` must point to a valid `AnimQuadSlotNode` with no
+    // concurrent/shared mutation.
+    unsafe {
+        let _guard = ANIM_QUAD_SLOT_MUTEX.lock();
+        (*slot).func = AnimQuadFunction::default();
+        (*slot).next = None;
+    }
+}
+
+// 0x39e7dc — __ZNK3rbx7signals6signalIFvffffEE4slot9connectedEv
+#[doc(alias = "__ZNK3rbx7signals6signalIFvffffEE4slot9connectedEv")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::connected(void)const")]
+pub fn stub_0x39e7dc(slot: *const AnimQuadSlotNode) -> bool {
+    // IDA 0x39e7dc: `*(a1 + 12) != 0` (decomp 0x39e7e4) — the intrusive link
+    // word; same as 0x2b5d40.
+    // SAFETY: `slot` must point to a valid `AnimQuadSlotNode`.
+    unsafe { (*slot).next.is_some() }
+}
+
+// 0x39e7e8 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
+pub fn stub_0x39e7e8(
+    slot: &AnimQuadSlotNode,
+    first: f32,
+    second: f32,
+    third: f32,
+    fourth: f32,
+) {
+    // IDA 0x39e7e8: spills the four float args into the `list4` (decomp
+    // 0x39e7ee-0x39e814) then the bound `mf4` call through the `list5`
+    // (decomp 0x39e822). Same shape as 0x2b5d4c.
+    if let (Some(target), Some(func)) = (&slot.func.target, &slot.func.func) {
+        func(&target.clone(), first, second, third, fourth);
+    }
+}
+
+// 0x39e824 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff
+#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
+pub fn stub_0x39e824(
+    slot: &AnimQuadSlotNode,
+    first: f32,
+    second: f32,
+    third: f32,
+    fourth: f32,
+) {
+    // IDA 0x39e824: non-virtual thunk into `callable::call` (IDA 0x39e7e8);
+    // the `a1 + 20` / `a1 + 12` member adjustments (decomp 0x39e85e) are the
+    // 4-byte `this` shift — same receiver, same args. Cf. 0x2b5d68.
+    stub_0x39e7e8(slot, first, second, third, fourth);
+}
+
+// 0x39e860 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_ffffEENS0_5list4IRfSI_SI_SI_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "__ZN5boost3_bi5list5INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_ffffEENS0_5list4IRfSI_SI_SI_EEEEvNS0_4typeIvEERT_RT0_i")]
+#[doc(alias = "void boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState *>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::operator()<boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list4<float &,float &,float &,float &>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float> &,boost::_bi::list4<float &,float &,float &,float &> &,int)")]
+pub fn stub_0x39e860(
+    target: &SharedPtr<AnimationTrackState>,
+    func: AnimQuadFunc,
+    first: f32,
+    second: f32,
+    third: f32,
+    fourth: f32,
+) {
+    // IDA 0x39e860: `list5` application — resolves the `mf4` member (decomp
+    // 0x39e86e-0x39e896, virtual-dispatch adjust when `v4 & 1`) and applies
+    // it to the bound state plus the four float args (decomp 0x39e8ae). The
+    // member collapses into the handler; the dispatch adjust is
+    // compiler-managed. Twin of 0x2b5f3c.
+    func(&target.clone(), first, second, third, fourth);
+}
+
+// 0x39e8b0 — __ZN3rbx7signals6signalIFvffffEE6removeEPNS3_4slotE
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE6removeEPNS3_4slotE")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::remove(rbx::signals::signal<void ()(float,float,float,float)>::slot *)")]
+pub fn stub_0x39e8b0(head: *mut Option<SharedPtr<AnimQuadSlotNode>>, slot: *const AnimQuadSlotNode) {
+    // IDA 0x39e8b0: `ReleaseAssert(!intrusive_ptr_expired(item))`
+    // (signal.h:261, `FLog::Asserts` load at decomp 0x39e8c4-0x39e8fa) plus
+    // the log line, then unlink of the item. Membership in the head chain
+    // stands in for non-expiry; unlinking by identity is the removal. Same
+    // shape as 0x2b6104.
+    // SAFETY: `head` must be writable; `slot` must be a node of that chain.
+    unsafe {
+        let mut cursor = head;
+        while let Some(node) = (*cursor).clone() {
+            if SharedPtr::as_ptr(&node) == slot {
+                *cursor = (*node).next.clone();
+                return;
+            }
+            let node_ptr = SharedPtr::as_ptr(&node) as *mut AnimQuadSlotNode;
+            cursor = &mut (*node_ptr).next;
+        }
+        debug_assert!(false, "0x39e8b0: intrusive_ptr_expired");
+    }
+}
+
+// 0x39e9a0 — __ZN3rbx7signals6signalIFvffffEE4slot22safe_static_init_mutexEv
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot22safe_static_init_mutexEv")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::safe_static_init_mutex(void)")]
+pub fn stub_0x39e9a0() -> &'static Mutex<()> {
+    // IDA 0x39e9a0: slot-level `safe_static_init_mutex` thunk into
+    // `safe_static_do_get_mutex` (IDA 0x39e9a4) — same shape as 0x2b61f4.
+    stub_0x39e9a4()
+}
+
+// 0x39e9a4 — __ZN3rbx7signals6signalIFvffffEE4slot24safe_static_do_get_mutexEv
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot24safe_static_do_get_mutexEv")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::safe_static_do_get_mutex(void)")]
+pub fn stub_0x39e9a4() -> &'static Mutex<()> {
+    // IDA 0x39e9a4: guard-checked once-init + mutex construction (decomp
+    // 0x39ea00-0x39ea68); a `static` with const init is the same once-init.
+    // Twin of 0x2b61f8.
+    &ANIM_QUAD_SLOT_MUTEX
+}
+
+// 0x39ea94 — __ZN3rbx7signals6signalIFvffffEE4slotD1Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slotD1Ev")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::~slot()")]
+pub fn stub_0x39ea94(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39ea94: `slot` D1 — vtable reset (compiler-managed, decomp
+    // 0x39eaa6-0x39eaae) + link release (decomp 0x39eab2-0x39eab8); the
+    // callback word belongs to the `callable` subclass. Same body as
+    // 0x2b62e8.
+    // SAFETY: `slot` must point to a valid `AnimQuadSlotNode`.
+    unsafe {
+        (*slot).next = None;
+    }
+}
+
+// 0x39eac0 — __ZN3rbx7signals6signalIFvffffEE4slotD0Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slotD0Ev")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::~slot()")]
+pub fn stub_0x39eac0(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39eac0: `slot` D0 — the D1 body (decomp 0x39eaf0-0x39eb2e) plus
+    // `operator delete` (decomp 0x39eb3a); the box reclaim runs the field
+    // drops and frees together. Same shape as 0x2b6314.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
+}
+
+// 0x39eb94 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED1Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED1Ev")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::~callable()")]
+pub fn stub_0x39eb94(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39eb94: `callable` D1 — vtable resets (compiler-managed, decomp
+    // 0x39eba6-0x39ebae) + link release (decomp 0x39ebb2-0x39ebb8); storage
+    // kept. Same body as 0x2b63e8.
+    // SAFETY: `slot` must point to a valid `AnimQuadSlotNode`.
+    unsafe {
+        (*slot).func = AnimQuadFunction::default();
+        (*slot).next = None;
+    }
+}
+
+// 0x39ebc0 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED0Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED0Ev")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::~callable()")]
+pub fn stub_0x39ebc0(slot: *mut AnimQuadSlotNode) {
+    // IDA 0x39ebc0: `callable` D0 — the D1 body (decomp 0x39ebf0-0x39ec2e)
+    // plus `operator delete` (decomp 0x39ec3a); the box reclaim is both. Same
+    // shape as 0x2b6414.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
     }
 }
 

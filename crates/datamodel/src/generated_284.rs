@@ -14,177 +14,133 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
-pub fn stub_0x39e1ac() -> ! {
-    todo!("0x39e1ac")
-}
+pub use crate::instance::stub_0x39e1ac as stub_39e1ac;
 
 // 0x39e1d4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")]
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
-pub fn stub_0x39e1d4() -> ! {
-    todo!("0x39e1d4")
-}
+pub use crate::instance::stub_0x39e1d4 as stub_39e1d4;
 
 // 0x39e1fc — __ZN5boost3_bi5list3INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_ffEENS0_5list2IRfSG_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(_DWORD *, char **, int **)
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_ffEENS0_5list2IRfSG_EEEEvNS0_4typeIvEERT_RT0_i")]
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list2<float &,float &>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float> &,boost::_bi::list2<float &,float &> &,int)")]
-pub fn stub_0x39e1fc() -> ! {
-    todo!("0x39e1fc")
-}
+pub use crate::instance::stub_0x39e1fc as stub_39e1fc;
 
 // 0x39e228 — __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED1Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::~callable()")]
-pub fn stub_0x39e228() -> ! {
-    todo!("0x39e228")
-}
+pub use crate::instance::stub_0x39e228 as stub_39e228;
 
 // 0x39e254 — __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_ED0Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::~callable()")]
-pub fn stub_0x39e254() -> ! {
-    todo!("0x39e254")
-}
+pub use crate::instance::stub_0x39e254 as stub_39e254;
 
 // 0x39e328 — __ZN3rbx7signals6signalIFvffffEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEEENS0_10connectionERKT_")]
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(float,float,float,float)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>> const&)")]
-pub fn stub_0x39e328() -> ! {
-    todo!("0x39e328")
-}
+pub use crate::instance::stub_0x39e328 as stub_39e328;
 
 // 0x39e39c — __ZN3rbx7signals6signalIFvffffEE6insertEPNS3_4slotE
 // type: void __fastcall(int *, int, int, int (*)(const char *, ...), boost::mutex *, char, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE6insertEPNS3_4slotE")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::insert(rbx::signals::signal<void ()(float,float,float,float)>::slot *)")]
-pub fn stub_0x39e39c() -> ! {
-    todo!("0x39e39c")
-}
+pub use crate::instance::stub_0x39e39c as stub_39e39c;
 
 // 0x39e5a8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSEPS6_
 // type: int *__fastcall(int *, int)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSEPS6_")]
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float,float)>::slot>::operator=(rbx::signals::signal<void ()(float,float,float,float)>::slot*)")]
-pub fn stub_0x39e5a8() -> ! {
-    todo!("0x39e5a8")
-}
+pub use crate::instance::stub_0x39e5a8 as stub_39e5a8;
 
 // 0x39e5cc — __ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED1Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::~callable_slot()")]
-pub fn stub_0x39e5cc() -> ! {
-    todo!("0x39e5cc")
-}
+pub use crate::instance::stub_0x39e5cc as stub_39e5cc;
 
 // 0x39e5f8 — __ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS6_5list5INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEENSH_ILi3EEENSH_ILi4EEEEEEEED0Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>>::~callable_slot()")]
-pub fn stub_0x39e5f8() -> ! {
-    todo!("0x39e5f8")
-}
+pub use crate::instance::stub_0x39e5f8 as stub_39e5f8;
 
 // 0x39e6cc — __ZN3rbx7signals6signalIFvffffEE4slot10disconnectEv
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot10disconnectEv")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::disconnect(void)")]
-pub fn stub_0x39e6cc() -> ! {
-    todo!("0x39e6cc")
-}
+pub use crate::instance::stub_0x39e6cc as stub_39e6cc;
 
 // 0x39e7dc — __ZNK3rbx7signals6signalIFvffffEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "__ZNK3rbx7signals6signalIFvffffEE4slot9connectedEv")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::connected(void)const")]
-pub fn stub_0x39e7dc() -> ! {
-    todo!("0x39e7dc")
-}
+pub use crate::instance::stub_0x39e7dc as stub_39e7dc;
 
 // 0x39e7e8 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
-pub fn stub_0x39e7e8() -> ! {
-    todo!("0x39e7e8")
-}
+pub use crate::instance::stub_0x39e7e8 as stub_39e7e8;
 
 // 0x39e824 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")]
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
-pub fn stub_0x39e824() -> ! {
-    todo!("0x39e824")
-}
+pub use crate::instance::stub_0x39e824 as stub_39e824;
 
 // 0x39e860 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_ffffEENS0_5list4IRfSI_SI_SI_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(_DWORD *, char **, _DWORD **)
 #[doc(alias = "__ZN5boost3_bi5list5INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_ffffEENS0_5list4IRfSI_SI_SI_EEEEvNS0_4typeIvEERT_RT0_i")]
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState *>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::operator()<boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list4<float &,float &,float &,float &>>(boost::_bi::type<void>,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float> &,boost::_bi::list4<float &,float &,float &,float &> &,int)")]
-pub fn stub_0x39e860() -> ! {
-    todo!("0x39e860")
-}
+pub use crate::instance::stub_0x39e860 as stub_39e860;
 
 // 0x39e8b0 — __ZN3rbx7signals6signalIFvffffEE6removeEPNS3_4slotE
 // type: int __fastcall(char **, char *, int, int (*)(const char *, ...))
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE6removeEPNS3_4slotE")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::remove(rbx::signals::signal<void ()(float,float,float,float)>::slot *)")]
-pub fn stub_0x39e8b0() -> ! {
-    todo!("0x39e8b0")
-}
+pub use crate::instance::stub_0x39e8b0 as stub_39e8b0;
 
 // 0x39e9a0 — __ZN3rbx7signals6signalIFvffffEE4slot22safe_static_init_mutexEv
 // type: void *()
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot22safe_static_init_mutexEv")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x39e9a0() -> ! {
-    todo!("0x39e9a0")
-}
+pub use crate::instance::stub_0x39e9a0 as stub_39e9a0;
 
 // 0x39e9a4 — __ZN3rbx7signals6signalIFvffffEE4slot24safe_static_do_get_mutexEv
 // type: void *()
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slot24safe_static_do_get_mutexEv")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_0x39e9a4() -> ! {
-    todo!("0x39e9a4")
-}
+pub use crate::instance::stub_0x39e9a4 as stub_39e9a4;
 
 // 0x39ea94 — __ZN3rbx7signals6signalIFvffffEE4slotD1Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slotD1Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::~slot()")]
-pub fn stub_0x39ea94() -> ! {
-    todo!("0x39ea94")
-}
+pub use crate::instance::stub_0x39ea94 as stub_39ea94;
 
 // 0x39eac0 — __ZN3rbx7signals6signalIFvffffEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4slotD0Ev")]
 #[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::slot::~slot()")]
-pub fn stub_0x39eac0() -> ! {
-    todo!("0x39eac0")
-}
+pub use crate::instance::stub_0x39eac0 as stub_39eac0;
 
 // 0x39eb94 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED1Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::~callable()")]
-pub fn stub_0x39eb94() -> ! {
-    todo!("0x39eb94")
-}
+pub use crate::instance::stub_0x39eb94 as stub_39eb94;
 
 // 0x39ebc0 — __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_ED0Ev")]
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::~callable()")]
-pub fn stub_0x39ebc0() -> ! {
-    todo!("0x39ebc0")
-}
+pub use crate::instance::stub_0x39ebc0 as stub_39ebc0;
 
 // 0x39ec94 — __ZN3rbx13remote_signalIFvfffEEC2Ev
 // type: int __fastcall(_DWORD *, int, int, int, int, int)
