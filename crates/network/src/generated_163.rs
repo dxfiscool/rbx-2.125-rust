@@ -7,179 +7,247 @@
 
 use rbx_core::SharedPtr;
 
+/// `GameKeyboard` text state (IDA 0x4cbf8 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct GameKeyboard {
+ pub text: String,
+ pub placeholder: String,
+ pub current_text_box: Option<usize>,
+ pub hidden: bool,
+}
+
+/// Static-init state for `__GLOBAL__I_a_19` (IDA 0x4c498).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA19 {
+ pub done: bool,
+}
+
 // 0x4c440 — -[GameInputViewController viewDidLoad]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidLoad]")]
-pub fn stub_4c440() -> ! {
-    todo!("0x4c440 -[GameInputViewController viewDidLoad]")
+pub fn stub_4c440(super_call: &mut dyn FnMut()) {
+    // IDA 0x4c440: super viewDidLoad.
+    super_call();
 }
 
 // 0x4c46c — -[GameInputViewController viewDidUnload]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidUnload]")]
-pub fn stub_4c46c() -> ! {
-    todo!("0x4c46c -[GameInputViewController viewDidUnload]")
+pub fn stub_4c46c(super_call: &mut dyn FnMut()) {
+    // IDA 0x4c46c: super viewDidUnload.
+    super_call();
 }
 
 // 0x4c498 — __GLOBAL__I_a_19
 // demangled: global constructor keyed to_a_19
 #[doc(alias = "global constructor keyed to_a_19")]
-pub fn stub_4c498() -> ! {
-    todo!("0x4c498 global constructor keyed to_a_19")
+pub fn stub_4c498(state: &mut GlobalInitA19, init: &mut dyn FnMut()) {
+    // IDA 0x4c498: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x4c6ac — +[GameKeyboard sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[GameKeyboard sharedInstance]")]
-pub fn stub_4c6ac() -> ! {
-    todo!("0x4c6ac +[GameKeyboard sharedInstance]")
+pub fn stub_4c6ac(slot: &mut Option<usize>, alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4c6ac: dispatch_once sharedInstance.
+    if let Some(v) = *slot {
+        return v;
+    }
+    let v = alloc();
+    *slot = Some(v);
+    v
 }
 
 // 0x4c6dc — ___30+[GameKeyboard sharedInstance]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___30+[GameKeyboard sharedInstance]_block_invoke")]
-pub fn stub_4c6dc() -> ! {
-    todo!("0x4c6dc ___30+[GameKeyboard sharedInstance]_block_invoke")
+pub fn stub_4c6dc(alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4c6dc: sharedInstance block — alloc + init.
+    alloc()
 }
 
 // 0x4c71c — -[GameKeyboard init]
 // type: GameKeyboard *__cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard init]")]
-pub fn stub_4c71c() -> ! {
-    todo!("0x4c71c -[GameKeyboard init]")
+pub fn stub_4c71c(ok: bool, setup: &mut dyn FnMut()) -> bool {
+    // IDA 0x4c71c: GameKeyboard init — text field + notifications (below truncation).
+    if !ok {
+        return false;
+    }
+    setup();
+    true
 }
 
 // 0x4ca18 — -[GameKeyboard dealloc]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard dealloc]")]
-pub fn stub_4ca18() -> ! {
-    todo!("0x4ca18 -[GameKeyboard dealloc]")
+pub fn stub_4ca18(release: &mut dyn FnMut(), teardown: &mut dyn FnMut()) {
+    // IDA 0x4ca18: release textView; super dealloc.
+    release();
+    teardown();
 }
 
 // 0x4ca64 — -[GameKeyboard hideKeyboard]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard hideKeyboard]")]
-pub fn stub_4ca64() -> ! {
-    todo!("0x4ca64 -[GameKeyboard hideKeyboard]")
+pub fn stub_4ca64(hide: &mut dyn FnMut()) {
+    // IDA 0x4ca64: hideKeyboard animation (below truncation).
+    hide();
 }
 
 // 0x4cb80 — -[GameKeyboard keyboardWillHide:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillHide:]")]
-pub fn stub_4cb80() -> ! {
-    todo!("0x4cb80 -[GameKeyboard keyboardWillHide:]")
+pub fn stub_4cb80(has_box: bool, release_focus: &mut dyn FnMut(), hide: &mut dyn FnMut()) {
+    // IDA 0x4cb80: externalReleaseFocus when set; hideKeyboard.
+    if has_box {
+        release_focus();
+    }
+    hide();
 }
 
 // 0x4cbbc — -[GameKeyboard keyboardWillChangeFrame:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillChangeFrame:]")]
-pub fn stub_4cbbc() -> ! {
-    todo!("0x4cbbc -[GameKeyboard keyboardWillChangeFrame:]")
+pub fn stub_4cbbc() {
+    // IDA 0x4cbbc: empty keyboardWillChangeFrame body.
 }
 
 // 0x4cbc0 — -[GameKeyboard setDefaultString:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setDefaultString:]")]
-pub fn stub_4cbc0() -> ! {
-    todo!("0x4cbc0 -[GameKeyboard setDefaultString:]")
+pub fn stub_4cbc0(kb: &mut GameKeyboard, text: String) {
+    // IDA 0x4cbc0: textView placeholder = string.
+    kb.placeholder = text;
 }
 
 // 0x4cbe0 — -[GameKeyboard setParentView:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setParentView:]")]
-pub fn stub_4cbe0() -> ! {
-    todo!("0x4cbe0 -[GameKeyboard setParentView:]")
+pub fn stub_4cbe0(add: &mut dyn FnMut()) {
+    // IDA 0x4cbe0: parent addSubview:self.
+    add();
 }
 
 // 0x4cbf8 — -[GameKeyboard showKeyboard:]
 // type: bool __cdecl(GameKeyboard *self, SEL, const char *)
 #[doc(alias = "-[GameKeyboard showKeyboard:]")]
-pub fn stub_4cbf8() -> ! {
-    todo!("0x4cbf8 -[GameKeyboard showKeyboard:]")
+pub fn stub_4cbf8(kb: &GameKeyboard, text: &str, show: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x4cbf8: hidden ? dispatch show block : NO.
+    if kb.hidden {
+        show(text);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x4cc78 — ___29-[GameKeyboard showKeyboard:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___29-[GameKeyboard showKeyboard:]_block_invoke")]
-pub fn stub_4cc78() -> ! {
-    todo!("0x4cc78 ___29-[GameKeyboard showKeyboard:]_block_invoke")
+pub fn stub_4cc78(show: &mut dyn FnMut()) {
+    // IDA 0x4cc78: show block — configure + display text field (below truncation).
+    show();
 }
 
 // 0x4ce30 — ___copy_helper_block__9
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__9")]
-pub fn stub_4ce30() -> ! {
-    todo!("0x4ce30 ___copy_helper_block__9")
+pub fn stub_4ce30(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x4ce30: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x4ce3c — ___destroy_helper_block__9
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__9")]
-pub fn stub_4ce3c() -> ! {
-    todo!("0x4ce3c ___destroy_helper_block__9")
+pub fn stub_4ce3c(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4ce3c: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x4ce44 — -[GameKeyboard showKeyboardWithTextBox:]
 // type: bool __cdecl(GameKeyboard *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[GameKeyboard showKeyboardWithTextBox:]")]
-pub fn stub_4ce44() -> ! {
-    todo!("0x4ce44 -[GameKeyboard showKeyboardWithTextBox:]")
+pub fn stub_4ce44(kb: &mut GameKeyboard, text_box: usize, show: &mut dyn FnMut(usize) -> bool) -> bool {
+    // IDA 0x4ce44: showKeyboardWithTextBox (below truncation).
+    kb.current_text_box = Some(text_box);
+    show(text_box)
 }
 
 // 0x4cfbc — -[GameKeyboard getText]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard getText]")]
-pub fn stub_4cfbc() -> ! {
-    todo!("0x4cfbc -[GameKeyboard getText]")
+pub fn stub_4cfbc(kb: &GameKeyboard) -> &str {
+    // IDA 0x4cfbc: return textView text.
+    &kb.text
 }
 
 // 0x4cfdc — -[GameKeyboard textFieldShouldReturn:]
 // type: char __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldShouldReturn:]")]
-pub fn stub_4cfdc() -> ! {
-    todo!("0x4cfdc -[GameKeyboard textFieldShouldReturn:]")
+pub fn stub_4cfdc(has_service: bool, text: &str, finish: &mut dyn FnMut(&str), hide: &mut dyn FnMut()) -> bool {
+    // IDA 0x4cfdc: textboxDidFinishEditing when service; dispatch hide; YES.
+    if has_service {
+        finish(text);
+    }
+    hide();
+    true
 }
 
 // 0x4d07c — ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")]
-pub fn stub_4d07c() -> ! {
-    todo!("0x4d07c ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")
+pub fn stub_4d07c(hide: &mut dyn FnMut()) {
+    // IDA 0x4d07c: block — hideKeyboard.
+    hide();
 }
 
 // 0x4d090 — ___copy_helper_block_82
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_82")]
-pub fn stub_4d090() -> ! {
-    todo!("0x4d090 ___copy_helper_block_82")
+pub fn stub_4d090(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x4d090: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x4d09c — ___destroy_helper_block_83
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_83")]
-pub fn stub_4d09c() -> ! {
-    todo!("0x4d09c ___destroy_helper_block_83")
+pub fn stub_4d09c(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4d09c: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x4d0a4 — -[GameKeyboard textFieldDidEndEditing:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldDidEndEditing:]")]
-pub fn stub_4d0a4() -> ! {
-    todo!("0x4d0a4 -[GameKeyboard textFieldDidEndEditing:]")
+pub fn stub_4d0a4(is_first: bool, has_service: bool, text: &str, finish: &mut dyn FnMut(&str), hide: &mut dyn FnMut()) {
+    // IDA 0x4d0a4: firstResponder ? finish editing : skip; dispatch hide.
+    if is_first && has_service {
+        finish(text);
+    }
+    hide();
 }
 
 // 0x4d15c — ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")]
-pub fn stub_4d15c() -> ! {
-    todo!("0x4d15c ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")
+pub fn stub_4d15c(hide: &mut dyn FnMut()) {
+    // IDA 0x4d15c: block — hideKeyboard.
+    hide();
 }
 
 // 0x4d170 — ___copy_helper_block_87
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_87")]
-pub fn stub_4d170() -> ! {
-    todo!("0x4d170 ___copy_helper_block_87")
+pub fn stub_4d170(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x4d170: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x4d17c — ___destroy_helper_block_88
