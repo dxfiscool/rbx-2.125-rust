@@ -919,6 +919,19 @@ pub struct CrashState {
     testflight_active: AtomicBool,
     bugsense_active: AtomicBool,
     releases: AtomicU32,
+    bugsense_lines: AtomicI32,
+    bugsense_level: AtomicI32,
+    bugsense_configured: AtomicBool,
+    testflight_sdk: parking_lot::Mutex<String>,
+    testflight_synced: AtomicBool,
+    fastlog_connected: AtomicBool,
+    external_log_set: AtomicBool,
+    setup_runs: AtomicU32,
+    log_attempts: AtomicU32,
+    log_lines: AtomicU32,
+    crash_logs: AtomicU32,
+    analytics: AtomicU32,
+    sdk_name: parking_lot::Mutex<String>,
 }
 impl CrashState {
     fn bump(&self, c: &AtomicU32) {
@@ -948,6 +961,144 @@ impl CrashState {
     }
     pub fn dealloc(&self) {
         self.bump(&self.releases);
+    }
+    /// `setupBugsense` (IDA 0x64188): latches bugsense unless either
+    /// reporter runs, then fires the global72 block inline.
+    pub fn setup_bugsense(&self) {
+        if self.testflight_active.load(Ordering::SeqCst) || self.bugsense_active.load(Ordering::SeqCst) {
+            return;
+        }
+        self.bugsense_active.store(true, Ordering::SeqCst);
+    }
+    pub fn bugsense_active(&self) -> bool {
+        self.bugsense_active.load(Ordering::SeqCst)
+    }
+    /// `__30-setupBugsense_block_invoke` (IDA 0x641cc, inline): reads the
+    /// BugSenseLogLines/LogLevel flags, installs the completion block and
+    /// brings up the shared controller.
+    pub fn bugsense_block_1(&self, log_lines: i32, log_level: i32) {
+        self.bugsense_lines.store(log_lines, Ordering::SeqCst);
+        self.bugsense_level.store(log_level, Ordering::SeqCst);
+        self.bugsense_configured.store(true, Ordering::SeqCst);
+    }
+    pub fn bugsense_configured(&self) -> bool {
+        self.bugsense_configured.load(Ordering::SeqCst)
+    }
+    /// `__30-setupBugsense_block_invoke_2` (IDA 0x64308): logs the crash
+    /// id/count; a recorded crash with saved version+state tracks the
+    /// analytics event.
+    pub fn bugsense_block_2(&self, crash_count: u32, has_saved: bool) {
+        self.bump(&self.crash_logs);
+        if crash_count >= 1 && has_saved {
+            self.bump(&self.analytics);
+        }
+    }
+    /// `setupTestFlight` (IDA 0x6447c): latches testflight unless either
+    /// reporter runs, then fires the global81 block inline.
+    pub fn setup_testflight(&self) {
+        if self.bugsense_active.load(Ordering::SeqCst) || self.testflight_active.load(Ordering::SeqCst) {
+            return;
+        }
+        self.testflight_active.store(true, Ordering::SeqCst);
+    }
+    pub fn testflight_active(&self) -> bool {
+        self.testflight_active.load(Ordering::SeqCst)
+    }
+    /// `__32-setupTestFlight_block_invoke` (IDA 0x644c0, inline): takeOff
+    /// with the key, an init log, and the CrashReporterSDK default.
+    pub fn testflight_block(&self) {
+        *self.testflight_sdk.lock() = "0576a0e0-8658-4d8c-b700-19f970ede0bb".to_owned();
+        *self.sdk_name.lock() = "TestFlight".to_owned();
+        self.testflight_synced.store(true, Ordering::SeqCst);
+    }
+    pub fn sdk_name(&self) -> String {
+        self.sdk_name.lock().clone()
+    }
+    /// `setupFastLogConnection` (IDA 0x64558): installs the external log
+    /// func, then connects the tryLogMessage bind_t and keeps the
+    /// connection when it differs.
+    pub fn setup_fastlog(&self) {
+        self.external_log_set.store(true, Ordering::SeqCst);
+        self.fastlog_connected.store(true, Ordering::SeqCst);
+    }
+    pub fn fastlog_connected(&self) -> bool {
+        self.fastlog_connected.load(Ordering::SeqCst)
+    }
+    /// `-setup` (IDA 0x64764): syncs flags; with a game or app state the
+    /// stored SDK picks TestFlight/BugSense; else a d100 roll races the
+    /// BugSense/TestFlight percentages; always ends with the fast-log
+    /// connection.
+    pub fn setup(
+        &self,
+        game_state: bool,
+        app_state: bool,
+        sdk: Option<String>,
+        roll: u32,
+        bs_present: bool,
+        bs_pct: i32,
+        tf_present: bool,
+        tf_pct: i32,
+    ) {
+        self.bump(&self.setup_runs);
+        FLAGS.sync();
+        if game_state || app_state {
+            match sdk.as_deref() {
+                Some(s) if s.contains("TestFlight") => self.setup_testflight(),
+                Some(s) if s.contains("BugSense") => self.setup_bugsense(),
+                _ => {}
+            }
+        } else {
+            if bs_present && bs_pct >= 1 && (1..=bs_pct as u32).contains(&roll) {
+                self.setup_bugsense();
+            }
+            if !self.bugsense_active.load(Ordering::SeqCst) {
+                if tf_present {
+                    if tf_pct >= 1 && roll >= 1 && roll <= (tf_pct + bs_pct) as u32 && !bs_present {
+                        self.setup_testflight();
+                    }
+                } else if !bs_present {
+                    self.setup_testflight();
+                }
+            }
+        }
+        self.setup_fastlog();
+    }
+    pub fn setup_run_count(&self) -> u32 {
+        self.setup_runs.load(Ordering::SeqCst)
+    }
+    /// `tryLogMessage:` (IDA 0x649dc): a nonempty message fires the
+    /// `__31…` block inline.
+    pub fn try_log_message(&self, message: &str) {
+        if message.is_empty() {
+            return;
+        }
+        self.bump(&self.log_attempts);
+    }
+    pub fn log_attempt_count(&self) -> u32 {
+        self.log_attempts.load(Ordering::SeqCst)
+    }
+    /// `__31-tryLogMessage_block_invoke` (IDA 0x64a74, inline): at/above
+    /// the settings threshold logs via TestFlight or NSLog. Returns the
+    /// sink name.
+    pub fn try_log_block(&self, level: i32, threshold: i32, testflight: bool) -> &'static str {
+        if level < threshold {
+            return "skip";
+        }
+        self.bump(&self.log_lines);
+        if testflight {
+            "tflog"
+        } else {
+            "nslog"
+        }
+    }
+    /// `-cxx_destruct` (IDA 0x64ae4): disconnects the slot with a weak
+    /// release when held.
+    pub fn cxx_destruct(&self) {
+        self.fastlog_connected.store(false, Ordering::SeqCst);
+    }
+    /// `-cxx_construct` (IDA 0x64bac): zeroes the connection weak slot.
+    pub fn cxx_construct(&self) {
+        self.fastlog_connected.store(false, Ordering::SeqCst);
     }
 }
 static CRASH: std::sync::LazyLock<CrashState> =
@@ -18311,92 +18462,127 @@ pub fn stub_64140() {
 // 0x64188 — -[CrashReporter setupBugsense]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter setupBugsense]")]
-pub fn stub_64188() -> ! {
-    todo!("0x64188 -[CrashReporter setupBugsense]")
+pub fn stub_64188() {
+    // IDA 0x64188 `setupBugsense`: latches bugsense unless either reporter
+    // runs, then fires the global72 block (0x641a4..0x641c8, inline).
+    CRASH.setup_bugsense();
 }
 
 // 0x641cc — ___30-[CrashReporter setupBugsense]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___30-[CrashReporter setupBugsense]_block_invoke")]
-pub fn stub_641cc() -> ! {
-    todo!("0x641cc ___30-[CrashReporter setupBugsense]_block_invoke")
+pub fn stub_641cc(log_lines: i32, log_level: i32) {
+    // IDA 0x641cc `__30-setupBugsense_block_invoke` (via async, inline):
+    // reads the BugSenseLogLines/LogLevel flags, installs the completion
+    // block, and brings up the shared controller (0x641f2..tail).
+    CRASH.bugsense_block_1(log_lines, log_level);
 }
 
 // 0x64308 — ___30-[CrashReporter setupBugsense]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___30-[CrashReporter setupBugsense]_block_invoke_2")]
-pub fn stub_64308() -> ! {
-    todo!("0x64308 ___30-[CrashReporter setupBugsense]_block_invoke_2")
+pub fn stub_64308(crash_count: u32, has_saved: bool) {
+    // IDA 0x64308 `__30-setupBugsense_block_invoke_2`: logs the crash
+    // id/count (0x64330..0x64356); a recorded crash with saved
+    // version+state tracks the analytics event (0x64366..0x643f8+).
+    CRASH.bugsense_block_2(crash_count, has_saved);
 }
 
 // 0x6447c — -[CrashReporter setupTestFlight]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter setupTestFlight]")]
-pub fn stub_6447c() -> ! {
-    todo!("0x6447c -[CrashReporter setupTestFlight]")
+pub fn stub_6447c() {
+    // IDA 0x6447c `setupTestFlight`: latches testflight unless either
+    // reporter runs, then fires the global81 block (0x64498..0x644bc,
+    // inline).
+    CRASH.setup_testflight();
 }
 
 // 0x644c0 — ___32-[CrashReporter setupTestFlight]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___32-[CrashReporter setupTestFlight]_block_invoke")]
-pub fn stub_644c0() -> ! {
-    todo!("0x644c0 ___32-[CrashReporter setupTestFlight]_block_invoke")
+pub fn stub_644c0() {
+    // IDA 0x644c0 `__32-setupTestFlight_block_invoke` (via async, inline):
+    // takeOff with the key, an init log, and the CrashReporterSDK default
+    // (0x644e6..0x64552).
+    CRASH.testflight_block();
 }
 
 // 0x64558 — -[CrashReporter setupFastLogConnection]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter setupFastLogConnection]")]
-pub fn stub_64558() -> ! {
-    todo!("0x64558 -[CrashReporter setupFastLogConnection]")
+pub fn stub_64558() {
+    // IDA 0x64558 `setupFastLogConnection`: installs the external log
+    // func (0x64582..), then connects the tryLogMessage bind_t and keeps
+    // the connection when it differs (0x645ea..0x6464e).
+    CRASH.setup_fastlog();
 }
 
 // 0x64764 — -[CrashReporter setup]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter setup]")]
-pub fn stub_64764() -> ! {
-    todo!("0x64764 -[CrashReporter setup]")
+pub fn stub_64764(game: bool, app: bool, sdk: Option<String>, roll: u32, bs_present: bool, bs_pct: i32, tf_present: bool, tf_pct: i32) {
+    // IDA 0x64764 `-setup`: syncs flags (0x6478c..0x6479c); with a game or
+    // app state the stored SDK picks TestFlight/BugSense (0x647bc..0x6494a);
+    // else a d100 roll races the BugSense/TestFlight percentages
+    // (0x64800..0x6493e); always ends with the fast-log connection
+    // (0x64952).
+    CRASH.setup(game, app, sdk, roll, bs_present, bs_pct, tf_present, tf_pct);
 }
 
 // 0x6496c — -[CrashReporter init]
 // type: CrashReporter *__cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter init]")]
-pub fn stub_6496c() -> ! {
-    todo!("0x6496c -[CrashReporter init]")
+pub fn stub_6496c(game: bool, app: bool, sdk: Option<String>, roll: u32, bs_present: bool, bs_pct: i32, tf_present: bool, tf_pct: i32) {
+    // IDA 0x6496c `-init`: super init (0x64990); on success runs `setup`
+    // (0x649a6).
+    CRASH.init_reporter();
+    CRASH.setup(game, app, sdk, roll, bs_present, bs_pct, tf_present, tf_pct);
 }
 
 // 0x649b0 — -[CrashReporter dealloc]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter dealloc]")]
-pub fn stub_649b0() -> ! {
-    todo!("0x649b0 -[CrashReporter dealloc]")
+pub fn stub_649b0() {
+    // IDA 0x649b0 `-dealloc`: super only (0x649ca..0x649d4).
+    CRASH.dealloc();
 }
 
 // 0x649dc — -[CrashReporter tryLogMessage:]
 // type: void __cdecl(CrashReporter *self, SEL, const StandardOutMessage *)
 #[doc(alias = "-[CrashReporter tryLogMessage:]")]
-pub fn stub_649dc() -> ! {
-    todo!("0x649dc -[CrashReporter tryLogMessage:]")
+pub fn stub_649dc(message: &str) {
+    // IDA 0x649dc `tryLogMessage:`: a nonempty message fires the `__31…`
+    // block on the global queue (0x64a04..0x64a6a, inline on the host).
+    CRASH.try_log_message(message);
 }
 
 // 0x64a74 — ___31-[CrashReporter tryLogMessage:]_block_invoke
 // type: void __fastcall(int)
 #[doc(alias = "___31-[CrashReporter tryLogMessage:]_block_invoke")]
-pub fn stub_64a74() -> ! {
-    todo!("0x64a74 ___31-[CrashReporter tryLogMessage:]_block_invoke")
+pub fn stub_64a74(level: i32, threshold: i32, testflight: bool) -> String {
+    // IDA 0x64a74 `__31-tryLogMessage_block_invoke` (via async, inline):
+    // at/above the settings threshold logs via TestFlight or NSLog
+    // (0x64a9e..0x64ac8).
+    CRASH.try_log_block(level, threshold, testflight).to_owned()
 }
 
 // 0x64ae4 — -[CrashReporter .cxx_destruct]
 // type: void __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter .cxx_destruct]")]
-pub fn stub_64ae4() -> ! {
-    todo!("0x64ae4 -[CrashReporter .cxx_destruct]")
+pub fn stub_64ae4() {
+    // IDA 0x64ae4 `-cxx_destruct`: disconnects the slot (0x64b42) with a
+    // weak release when held (0x64b48..0x64b50).
+    CRASH.cxx_destruct();
 }
 
 // 0x64bac — -[CrashReporter .cxx_construct]
 // type: id __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter .cxx_construct]")]
-pub fn stub_64bac() -> ! {
-    todo!("0x64bac -[CrashReporter .cxx_construct]")
+pub fn stub_64bac() {
+    // IDA 0x64bac `-cxx_construct`: zeroes the connection weak slot
+    // (0x64bba).
+    CRASH.cxx_construct();
 }
 
 // 0x66740 — -[NSString(Escaping) stringWithPercentEscape]_1

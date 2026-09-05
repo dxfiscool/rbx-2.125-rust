@@ -1214,84 +1214,166 @@ pub unsafe fn destroy_block_capture_64180(block: *mut core::ffi::c_void) {
 // 0x646fc — __ZL13fastLogMesagehPKc
 // type: void __fastcall(int, const char *)
 #[doc(alias = "fastLogMesage(unsigned char,char const*)")]
-pub fn stub_646fc() -> ! {
-    todo!("0x646fc fastLogMesage(unsigned char,char const*)")
+pub fn fast_log_message_646fc(testflight_active: bool, level: u8) -> &'static str {
+// IDA 0x646fc `fastLogMesage`: level 2 goes to TestFlight when active
+// else NSLog (0x64712..0x6475c); level 1 printfs (0x64764+); anything
+// else is silent. Returns the sink name.
+    match level {
+        2 if testflight_active => "tflog",
+        2 => "nslog",
+        1 => "printf",
+        _ => "ignore",
+    }
 }
 
 // 0x64ad0 — ___copy_helper_block_118
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_118")]
-pub fn stub_64ad0() -> ! {
-    todo!("0x64ad0 ___copy_helper_block_118")
+pub unsafe fn copy_block_capture_64ad0(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x64ad0: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x64adc — ___destroy_helper_block_119
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_119")]
-pub fn stub_64adc() -> ! {
-    todo!("0x64adc ___destroy_helper_block_119")
+pub unsafe fn destroy_block_capture_64adc(block: *mut core::ffi::c_void) {
+// IDA 0x64adc: _Block_object_dispose(block+20, 3) (126B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
+/// was: `boost::function<void ()(RBX::StandardOutMessage const&)>` —
+/// Box<dyn Fn> per AGENTS.md section 4; the message moves as an owned
+/// `String`. IDA 0x64bc0 wires these into the slot below (decompile).
+pub type StdoutCallback = Box<dyn Fn(String) + Send + Sync + 'static>;
+/// was: `rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::
+/// slot` — intrusive slot node with the signal link and next link, same
+/// contract as the UiEventSlot family in generated_next_h.
+pub struct StdoutSlot {
+    callback: parking_lot::Mutex<Option<StdoutCallback>>,
+    signal: parking_lot::Mutex<Option<SharedPtr<StdoutSignal>>>,
+    next: parking_lot::Mutex<Option<SharedPtr<StdoutSlot>>>,
+}
+/// was: `rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>` —
+/// owns the intrusive slot-list head under the class-wide static mutex.
+pub struct StdoutSignal {
+    head: parking_lot::Mutex<Option<SharedPtr<StdoutSlot>>>,
+}
+/// was: `rbx::signals::connection` for the stdout signal — the weak ref
+/// the original adds is automatic for `Weak`, so only the strong slot is
+/// retained here.
+pub struct StdoutConnection {
+    slot: SharedPtr<StdoutSlot>,
+}
 // 0x64bc0 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE7connectIN5boost8functionIS6_EEEENS0_10connectionERKT_
 // type: void __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::connect<boost::function<void ()(RBX::StandardOutMessage const&)>>(boost::function<void ()(RBX::StandardOutMessage const&)> const&)")]
-pub fn stub_64bc0() -> ! {
-    todo!("0x64bc0 rbx::signals::connection rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::connect<boost::function<void ()(RBX::StandardOutMessage const&)>>(boost::function<void ()(RBX::StandardOutMessage const&)> const&)")
+pub fn connect_stdout_signal_64bc0(
+    signal: &SharedPtr<StdoutSignal>,
+    callback: StdoutCallback,
+) -> StdoutConnection {
+// IDA 0x64bc0: signal::connect news a 32-byte callable_slot, runs the
+// callable ctor, inserts it, and weak-refs the returned connection
+// (decompile).
+    let slot = new_stdout_callable_650fc(signal, callback);
+    insert_stdout_slot_64ca8(signal, SharedPtr::clone(&slot));
+    StdoutConnection { slot }
 }
 
 // 0x64ca8 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE6insertEPNS7_4slotE
 // type: void __fastcall(int *, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::insert(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot *)")]
-pub fn stub_64ca8() -> ! {
-    todo!("0x64ca8 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::insert(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot *)")
+pub fn insert_stdout_slot_64ca8(signal: &StdoutSignal, slot: SharedPtr<StdoutSlot>) {
+// IDA 0x64ca8: ReleaseAssert(item), call_once static-mutex init, lock_guard,
+// then head-insert on the intrusive list (decompile).
+    debug_assert!(SharedPtr::strong_count(&slot) > 0, "item");
+    let _guard = stdout_signal_mutex_65004().lock();
+    let mut head = signal.head.lock();
+    *slot.next.lock() = head.take();
+    *head = Some(slot);
 }
 
 // 0x64eb8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEEaSEPSA_
 // type: int *__fastcall(int *, int)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot*)")]
-pub fn stub_64eb8() -> ! {
-    todo!("0x64eb8 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot*)")
+pub fn retain_stdout_slot_64eb8(slot: SharedPtr<StdoutSlot>) -> SharedPtr<StdoutSlot> {
+// IDA 0x64eb8: intrusive_ptr::operator=(slot*) — add_ref(new), swap,
+// release(old) (decompile). Arc move folds addref+release — return the
+// retained slot.
+    slot
 }
 
 // 0x64f5c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEEaSERKSB_
 // type: int *__fastcall(int *, int *)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> const&)")]
-pub fn stub_64f5c() -> ! {
-    todo!("0x64f5c boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> const&)")
+pub fn clone_stdout_slot_64f5c(slot: &SharedPtr<StdoutSlot>) -> SharedPtr<StdoutSlot> {
+// IDA 0x64f5c: intrusive_ptr::operator=(const&) — add_ref plus assign
+// (decompile). Arc move folds addref+release — return the retained slot.
+    SharedPtr::clone(slot)
 }
 
 // 0x65000 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::safe_static_init_mutex(void)")]
-pub fn stub_65000() -> ! {
-    todo!("0x65000 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::safe_static_init_mutex(void)")
+pub fn init_stdout_signal_mutex_65000() {
+// IDA 0x65000: safe_static_init_mutex thunk tail-branches into
+// safe_static_do_get_mutex (decompile).
+    let _ = stdout_signal_mutex_65004();
 }
 
 // 0x65004 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE24safe_static_do_get_mutexEv
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::safe_static_do_get_mutex(void)")]
-pub fn stub_65004() -> ! {
-    todo!("0x65004 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::safe_static_do_get_mutex(void)")
+pub fn stdout_signal_mutex_65004() -> &'static parking_lot::Mutex<()> {
+// IDA 0x65004: safe_static_do_get_mutex — guard-checked init of the
+// class-wide signal mutex value (decompile: __cxa_guard + new + mutex).
+// LazyLock folds the guard plus the atexit destroy.
+    static VALUE: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &VALUE
 }
 
 // 0x650fc — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEN5boost8functionIS7_EELi1ES7_EC2IPS8_EERKSC_T_
 // type: _DWORD *__fastcall(_DWORD *, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>*>(boost::function<void ()(RBX::StandardOutMessage const&)> const&,rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>*)")]
-pub fn stub_650fc() -> ! {
-    todo!("0x650fc rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>*>(boost::function<void ()(RBX::StandardOutMessage const&)> const&,rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>*)")
+pub fn new_stdout_callable_650fc(
+    signal: &SharedPtr<StdoutSignal>,
+    callback: StdoutCallback,
+) -> SharedPtr<StdoutSlot> {
+// IDA 0x650fc: callable ctor — signal link, vtable tags, then
+// function1::assign_to_own copies the functor in (decompile).
+    SharedPtr::new(StdoutSlot {
+        callback: parking_lot::Mutex::new(Some(callback)),
+        signal: parking_lot::Mutex::new(Some(SharedPtr::clone(signal))),
+        next: parking_lot::Mutex::new(None),
+    })
 }
 
 // 0x651f8 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE13callable_slotIN5boost8functionIS6_EEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::callable_slot<boost::function<void ()(RBX::StandardOutMessage const&)>>::~callable_slot()")]
-pub fn stub_651f8() -> ! {
-    todo!("0x651f8 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::callable_slot<boost::function<void ()(RBX::StandardOutMessage const&)>>::~callable_slot()")
+pub fn drop_stdout_callable_slot_651f8(slot: &SharedPtr<StdoutSlot>) {
+// IDA 0x651f8 `callable_slot D1` — vtable reset + function::clear + member
+// release (decompile).
+    slot.callback.lock().take();
 }
 
 // 0x652cc — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE13callable_slotIN5boost8functionIS6_EEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::callable_slot<boost::function<void ()(RBX::StandardOutMessage const&)>>::~callable_slot()")]
-pub fn stub_652cc() -> ! {
-    todo!("0x652cc rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::callable_slot<boost::function<void ()(RBX::StandardOutMessage const&)>>::~callable_slot()")
+pub fn delete_stdout_callable_slot_652cc(slot: SharedPtr<StdoutSlot>) {
+// IDA 0x652cc `callable_slot D0` — D1 above plus operator delete (decompile);
+// the Arc drop below is the delete.
+    slot.callback.lock().take();
+    drop(slot);
 }
 
 // 0x653a4 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot10disconnectEv
