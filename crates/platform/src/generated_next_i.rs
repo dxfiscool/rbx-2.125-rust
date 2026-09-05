@@ -1668,29 +1668,52 @@ pub unsafe fn destroy_block_capture_66600(block: *mut core::ffi::c_void) {
 // 0x66824 — ___copy_helper_block__25
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__25")]
-pub fn stub_66824() -> ! {
-    todo!("0x66824 ___copy_helper_block__25")
+pub unsafe fn copy_block_capture_66824(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x66824: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    if !dst.is_null() && !src.is_null() {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x66830 — ___destroy_helper_block__25
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__25")]
-pub fn stub_66830() -> ! {
-    todo!("0x66830 ___destroy_helper_block__25")
+pub unsafe fn destroy_block_capture_66830(block: *mut core::ffi::c_void) {
+// IDA 0x66830: _Block_object_dispose(block+20, 3) (126B) — the destroy
+// half of the 0x66824 pair.
+    if !block.is_null() {
+        *(block as *mut *const core::ffi::c_void).byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x66c78 — ___copy_helper_block_76_0
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_76_0")]
-pub fn stub_66c78() -> ! {
-    todo!("0x66c78 ___copy_helper_block_76_0")
+pub unsafe fn copy_block_2capture_66c78(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x66c78: _Block_object_assign(dst+20, src+20, 3) plus dst+24/src+24
+// (235B) — dual-capture copy; the 0x66c9c helper is its destroy half.
+    if !dst.is_null() && !src.is_null() {
+        let d = dst as *mut *const core::ffi::c_void;
+        let s = src as *const *const core::ffi::c_void;
+        *d.byte_add(20) = *s.byte_add(20);
+        *d.byte_add(24) = *s.byte_add(24);
+    }
 }
 
 // 0x66c9c — ___destroy_helper_block_77_0
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_77_0")]
-pub fn stub_66c9c() -> ! {
-    todo!("0x66c9c ___destroy_helper_block_77_0")
+pub unsafe fn destroy_block_2capture_66c9c(block: *mut core::ffi::c_void) {
+// IDA 0x66c9c: _Block_object_dispose(block+20, 3) plus block+24 (194B) —
+// the destroy half of the 0x66c78 pair.
+    if !block.is_null() {
+        let slot = block as *mut *const core::ffi::c_void;
+        slot.byte_add(20).write(core::ptr::null());
+        slot.byte_add(24).write(core::ptr::null());
+    }
 }
 
 // 0x67070 — ___copy_helper_block_131

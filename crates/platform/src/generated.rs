@@ -3492,6 +3492,10 @@ pub struct ExtLoginState {
     success_user: parking_lot::Mutex<String>,
     username_field: parking_lot::Mutex<Option<ControlId>>,
     password_field: parking_lot::Mutex<Option<ControlId>>,
+    login_button: parking_lot::Mutex<Option<ControlId>>,
+    login_label: parking_lot::Mutex<Option<ControlId>>,
+    logging_indicator: parking_lot::Mutex<Option<ControlId>>,
+    login_view: parking_lot::Mutex<Option<ControlId>>,
 }
 impl ExtLoginState {
     fn bump(&self, c: &AtomicU32) {
@@ -3643,6 +3647,233 @@ impl ExtLoginState {
     pub fn set_password_text_field(&self, field: Option<ControlId>) {
         *self.password_field.lock() = field;
     }
+    /// `-loginButton` / `-setLoginButton:` (IDA 0x66670/0x66680):
+    /// `objc_setProperty` at 168 (0x6669c).
+    pub fn login_button(&self) -> Option<ControlId> {
+        *self.login_button.lock()
+    }
+    pub fn set_login_button(&self, view: Option<ControlId>) {
+        *self.login_button.lock() = view;
+    }
+    /// `-loginLabel` / `-setLoginLabel:` (IDA 0x666a4/0x666b4):
+    /// `objc_setProperty` at 172 (0x666d0).
+    pub fn login_label(&self) -> Option<ControlId> {
+        *self.login_label.lock()
+    }
+    pub fn set_login_label(&self, view: Option<ControlId>) {
+        *self.login_label.lock() = view;
+    }
+    /// `-loggingInIndicator` / `-setLoggingInIndicator:` (IDA
+    /// 0x666d8/0x666e8): `objc_setProperty` at 176 (0x66704).
+    pub fn logging_in_indicator(&self) -> Option<ControlId> {
+        *self.logging_indicator.lock()
+    }
+    pub fn set_logging_in_indicator(&self, view: Option<ControlId>) {
+        *self.logging_indicator.lock() = view;
+    }
+    /// `-loginView` / `-setLoginView:` (IDA 0x6670c/0x6671c):
+    /// `objc_setProperty` at 180 (0x66738).
+    pub fn login_view(&self) -> Option<ControlId> {
+        *self.login_view.lock()
+    }
+    pub fn set_login_view(&self, view: Option<ControlId>) {
+        *self.login_view.lock() = view;
+    }
+}
+/// Host id standing in for the `AppController` `self`.
+const APPCTL_ID: ControlId = 30;
+/// Game-connect reply dispatch for `-processResponseToGameConnect:`
+/// (IDA 0x66cb8): the transport error, the `status` cases plus the
+/// empty/unparseable tail.
+#[derive(Debug, Clone)]
+pub enum GameConnectReply<'a> {
+    TransportError,
+    Authenticated {
+        auth_url: &'a str,
+        ticket: &'a str,
+        join_url: &'a str,
+    },
+    Denied,
+    Pending { job_id: &'a str },
+    Empty,
+}
+/// Minimal `AppController` counterpart (IDA 0x66794..0x67034): the shared
+/// cell, launch urls plus the polling/login counters.
+#[derive(Debug, Default)]
+pub struct AppState {
+    initialized: AtomicBool,
+    place_id: AtomicI32,
+    app_id: AtomicI32,
+    app_action: parking_lot::Mutex<String>,
+    app_launcher_url: parking_lot::Mutex<String>,
+    game_launcher_url: parking_lot::Mutex<String>,
+    current_launcher_url: parking_lot::Mutex<String>,
+    observer_regs: AtomicU32,
+    releases: AtomicU32,
+    launch_after_login: AtomicBool,
+    polls: AtomicU32,
+    polls_main: AtomicU32,
+    logs: AtomicU32,
+    auth_count: AtomicU32,
+    joins: AtomicU32,
+    last_join_url: parking_lot::Mutex<String>,
+    last_poll_job: parking_lot::Mutex<Option<String>>,
+    last_poll_method: parking_lot::Mutex<String>,
+}
+impl AppState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `+[AppController sharedInstance]` (IDA 0x66794): `dispatch_once`
+    /// runs the alloc plus init block (0x667f0, inline below).
+    pub fn shared_instance(&self) -> ControlId {
+        self.init_controller();
+        APPCTL_ID
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-init` (IDA 0x66838): zeroes the place id, latches the app id plus
+    /// action, builds both launcher urls, then registers the login
+    /// failed/successful observers (0x6688e..0x66a58).
+    pub fn init_controller(&self) -> Option<ControlId> {
+        self.place_id.store(0, Ordering::SeqCst);
+        self.app_id.store(70_395_720, Ordering::SeqCst);
+        *self.app_action.lock() = "blocky play".to_owned();
+        *self.app_launcher_url.lock() =
+            "game/connect/%d/app/%d/appaction/%@".to_owned();
+        *self.game_launcher_url.lock() =
+            "Game/PlaceLauncher.ashx?request=RequestGame&placeId=%d&isPartyLeader=false&gender=&isTeleport=false"
+                .to_owned();
+        *self.current_launcher_url.lock() = self.game_launcher_url.lock().clone();
+        self.observer_regs.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(APPCTL_ID)
+    }
+    pub fn app_id(&self) -> i32 {
+        self.app_id.load(Ordering::SeqCst)
+    }
+    pub fn app_action(&self) -> String {
+        self.app_action.lock().clone()
+    }
+    /// `-dealloc` (IDA 0x66a68): releases both launcher urls, then super
+    /// (0x66a8c..0x66ac2).
+    pub fn dealloc(&self) {
+        self.app_launcher_url.lock().clear();
+        self.game_launcher_url.lock().clear();
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-checkForGameLaunch` (IDA 0x66acc): with the flag set, clears it
+    /// and polls to load with a nil job (0x66ad8..0x66af2).
+    pub fn check_for_game_launch(&self) {
+        if self
+            .launch_after_login
+            .compare_exchange(true, false, Ordering::SeqCst, Ordering::SeqCst)
+            .is_ok()
+        {
+            self.perform_polling_to_load(None);
+        }
+    }
+    pub fn set_launch_after_login(&self, launch: bool) {
+        self.launch_after_login.store(launch, Ordering::SeqCst);
+    }
+    /// `-gotLoginFailedNotification:` (IDA 0x66af8) plus
+    /// `-gotLoginSuccessfulNotification:` (IDA 0x66b08): both check for a
+    /// pending game launch (sole call each).
+    pub fn got_login_failed(&self) {
+        self.check_for_game_launch();
+    }
+    pub fn got_login_success(&self) {
+        self.check_for_game_launch();
+    }
+    /// `-authenticateUserWithUrl:ticket:` (IDA 0x66b18): empty body.
+    pub fn authenticate(&self, _url: &str, _ticket: &str) {
+        self.bump(&self.auth_count);
+    }
+    pub fn auth_count(&self) -> u32 {
+        self.auth_count.load(Ordering::SeqCst)
+    }
+    /// `-runJoinScriptWithUrl:` (IDA 0x66b1c): builds the request with the
+    /// user-agent header, then the shared `PlaceLauncher` injects the join
+    /// script (0x66b48..0x66bca).
+    pub fn run_join_script(&self, url: &str) {
+        *self.last_join_url.lock() = url.to_owned();
+        self.bump(&self.joins);
+    }
+    pub fn join_count(&self) -> u32 {
+        self.joins.load(Ordering::SeqCst)
+    }
+    pub fn last_join_url(&self) -> String {
+        self.last_join_url.lock().clone()
+    }
+    /// `-performPollingOnMainThreadWithObject:` (IDA 0x66bd0): the block
+    /// fires after half a second on the main queue (inline below).
+    pub fn poll_on_main(&self, job: Option<&str>) {
+        self.bump(&self.polls_main);
+        self.perform_polling_to_load(job);
+    }
+    pub fn main_poll_count(&self) -> u32 {
+        self.polls_main.load(Ordering::SeqCst)
+    }
+    /// `-performPollingToLoad:` (IDA 0x66e48): appends the escaped job id,
+    /// picks GET over POST for a job, stamps the user-agent header, then
+    /// sends the request async (0x66e72..0x67028).
+    pub fn perform_polling_to_load(&self, job: Option<&str>) {
+        *self.last_poll_job.lock() = job.map(str::to_owned);
+        *self.last_poll_method.lock() = if job.is_some() { "GET" } else { "POST" }.to_owned();
+        self.bump(&self.polls);
+    }
+    pub fn poll_count(&self) -> u32 {
+        self.polls.load(Ordering::SeqCst)
+    }
+    pub fn last_poll_method(&self) -> String {
+        self.last_poll_method.lock().clone()
+    }
+    /// `-processResponseToGameConnect:data:error:` (IDA 0x66cb8): the
+    /// transport error logs and re-polls nil; status 2 authenticates plus
+    /// runs the join script; status 0 polls the job id; status 4 and the
+    /// empty tail log and re-poll nil (0x66cc6..0x66d44).
+    pub fn process_response(&self, reply: GameConnectReply<'_>) {
+        match reply {
+            GameConnectReply::TransportError | GameConnectReply::Denied | GameConnectReply::Empty => {
+                self.bump(&self.logs);
+                self.poll_on_main(None);
+            }
+            GameConnectReply::Authenticated {
+                auth_url,
+                ticket,
+                join_url,
+            } => {
+                self.authenticate(auth_url, ticket);
+                self.run_join_script(join_url);
+            }
+            GameConnectReply::Pending { job_id } => {
+                self.poll_on_main(Some(job_id));
+            }
+        }
+    }
+    pub fn log_count(&self) -> u32 {
+        self.logs.load(Ordering::SeqCst)
+    }
+}
+static APPCTL: std::sync::LazyLock<AppState> = std::sync::LazyLock::new(AppState::default);
+/// `-[NSString(Escaping) stringWithPercentEscape]` (IDA 0x66740): escapes
+/// through `CFURLCreateStringByAddingPercentEscapes` with the leave plus
+/// force sets at 0x66782; unreserved bytes pass through, the rest take
+/// uppercase `%XX`.
+pub fn percent_escape_66740(input: &str) -> String {
+    let mut out = String::with_capacity(input.len());
+    for byte in input.bytes() {
+        if byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_' | b'.' | b'~') {
+            out.push(byte as char);
+        } else {
+            out.push_str(&format!("%{byte:02X}"));
+        }
+    }
+    out
 }
 static EXTLOGIN: std::sync::LazyLock<ExtLoginState> =
     std::sync::LazyLock::new(ExtLoginState::default);
@@ -12840,57 +13071,66 @@ pub fn stub_6664c(field: Option<ControlId>) {
 // 0x66670 — -[ExternalLoginViewController loginButton]
 // type: UIButton *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController loginButton]")]
-pub fn stub_66670() -> ! {
-    todo!("0x66670 -[ExternalLoginViewController loginButton]")
+pub fn stub_66670() -> Option<ControlId> {
+    // IDA 0x66670 `-loginButton`: returns the ivar (0x6667e).
+    EXTLOGIN.login_button()
 }
 
 // 0x66680 — -[ExternalLoginViewController setLoginButton:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setLoginButton:]")]
-pub fn stub_66680() -> ! {
-    todo!("0x66680 -[ExternalLoginViewController setLoginButton:]")
+pub fn stub_66680(view: Option<ControlId>) {
+    // IDA 0x66680 `-setLoginButton:`: `objc_setProperty` at 168 (0x6669c).
+    EXTLOGIN.set_login_button(view);
 }
 
 // 0x666a4 — -[ExternalLoginViewController loginLabel]
 // type: UILabel *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController loginLabel]")]
-pub fn stub_666a4() -> ! {
-    todo!("0x666a4 -[ExternalLoginViewController loginLabel]")
+pub fn stub_666a4() -> Option<ControlId> {
+    // IDA 0x666a4 `-loginLabel`: returns the ivar (0x666b2).
+    EXTLOGIN.login_label()
 }
 
 // 0x666b4 — -[ExternalLoginViewController setLoginLabel:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setLoginLabel:]")]
-pub fn stub_666b4() -> ! {
-    todo!("0x666b4 -[ExternalLoginViewController setLoginLabel:]")
+pub fn stub_666b4(view: Option<ControlId>) {
+    // IDA 0x666b4 `-setLoginLabel:`: `objc_setProperty` at 172 (0x666d0).
+    EXTLOGIN.set_login_label(view);
 }
 
 // 0x666d8 — -[ExternalLoginViewController loggingInIndicator]
 // type: UIActivityIndicatorView *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController loggingInIndicator]")]
-pub fn stub_666d8() -> ! {
-    todo!("0x666d8 -[ExternalLoginViewController loggingInIndicator]")
+pub fn stub_666d8() -> Option<ControlId> {
+    // IDA 0x666d8 `-loggingInIndicator`: returns the ivar (0x666e6).
+    EXTLOGIN.logging_in_indicator()
 }
 
 // 0x666e8 — -[ExternalLoginViewController setLoggingInIndicator:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setLoggingInIndicator:]")]
-pub fn stub_666e8() -> ! {
-    todo!("0x666e8 -[ExternalLoginViewController setLoggingInIndicator:]")
+pub fn stub_666e8(view: Option<ControlId>) {
+    // IDA 0x666e8 `-setLoggingInIndicator:`: `objc_setProperty` at 176
+    // (0x66704).
+    EXTLOGIN.set_logging_in_indicator(view);
 }
 
 // 0x6670c — -[ExternalLoginViewController loginView]
 // type: UIView *__cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController loginView]")]
-pub fn stub_6670c() -> ! {
-    todo!("0x6670c -[ExternalLoginViewController loginView]")
+pub fn stub_6670c() -> Option<ControlId> {
+    // IDA 0x6670c `-loginView`: returns the ivar (0x6671a).
+    EXTLOGIN.login_view()
 }
 
 // 0x6671c — -[ExternalLoginViewController setLoginView:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController setLoginView:]")]
-pub fn stub_6671c() -> ! {
-    todo!("0x6671c -[ExternalLoginViewController setLoginView:]")
+pub fn stub_6671c(view: Option<ControlId>) {
+    // IDA 0x6671c `-setLoginView:`: `objc_setProperty` at 180 (0x66738).
+    EXTLOGIN.set_login_view(view);
 }
 
 // 0x2a7ef0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev
@@ -18816,106 +19056,142 @@ pub fn stub_64bac() {
 // 0x66740 — -[NSString(Escaping) stringWithPercentEscape]_1
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_1")]
-pub fn stub_66740() -> ! {
-    todo!("0x66740 -[NSString(Escaping) stringWithPercentEscape]_1")
+pub fn stub_66740(input: &str) -> String {
+    // IDA 0x66740 `stringWithPercentEscape`: escapes through
+    // `CFURLCreateStringByAddingPercentEscapes` (0x66752..0x66782).
+    percent_escape_66740(input)
 }
 
 // 0x66794 — +[AppController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[AppController sharedInstance]")]
-pub fn stub_66794() -> ! {
-    todo!("0x66794 +[AppController sharedInstance]")
+pub fn stub_66794() -> ControlId {
+    // IDA 0x66794 `+sharedInstance`: `dispatch_once` runs the alloc plus
+    // init block (0x667c0..0x667ea); the LazyLock below is the once cell.
+    APPCTL.shared_instance()
 }
 
 // 0x667f0 — ___31+[AppController sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[AppController sharedInstance]_block_invoke")]
-pub fn stub_667f0() -> ! {
-    todo!("0x667f0 ___31+[AppController sharedInstance]_block_invoke")
+pub fn stub_667f0() -> ControlId {
+    // IDA 0x667f0 `sharedInstance` block: alloc plus init stores the
+    // `dword_130C6E4` cell (0x66802..0x66820); inline below.
+    APPCTL.shared_instance()
 }
 
 // 0x66838 — -[AppController init]
 // type: AppController *__cdecl(AppController *self, SEL)
 #[doc(alias = "-[AppController init]")]
-pub fn stub_66838() -> ! {
-    todo!("0x66838 -[AppController init]")
+pub fn stub_66838() -> Option<ControlId> {
+    // IDA 0x66838 `-init`: zeroes the place id, latches the app id plus
+    // action, builds both launcher urls, then registers the login
+    // failed/successful observers (0x6688e..0x66a58).
+    APPCTL.init_controller()
 }
 
 // 0x66a68 — -[AppController dealloc]
 // type: void __cdecl(AppController *self, SEL)
 #[doc(alias = "-[AppController dealloc]")]
-pub fn stub_66a68() -> ! {
-    todo!("0x66a68 -[AppController dealloc]")
+pub fn stub_66a68() {
+    // IDA 0x66a68 `-dealloc`: releases both launcher urls, then super
+    // (0x66a8c..0x66ac2).
+    APPCTL.dealloc();
 }
 
 // 0x66acc — -[AppController checkForGameLaunch]
 // type: void __cdecl(AppController *self, SEL)
 #[doc(alias = "-[AppController checkForGameLaunch]")]
-pub fn stub_66acc() -> ! {
-    todo!("0x66acc -[AppController checkForGameLaunch]")
+pub fn stub_66acc() {
+    // IDA 0x66acc `-checkForGameLaunch`: with the flag set, clears it and
+    // polls to load with a nil job (0x66ad8..0x66af2).
+    APPCTL.check_for_game_launch();
 }
 
 // 0x66af8 — -[AppController gotLoginFailedNotification:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController gotLoginFailedNotification:]")]
-pub fn stub_66af8() -> ! {
-    todo!("0x66af8 -[AppController gotLoginFailedNotification:]")
+pub fn stub_66af8() {
+    // IDA 0x66af8 `-gotLoginFailedNotification:`: checks for a pending game
+    // launch (sole call, 0x66b04).
+    APPCTL.got_login_failed();
 }
 
 // 0x66b08 — -[AppController gotLoginSuccessfulNotification:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController gotLoginSuccessfulNotification:]")]
-pub fn stub_66b08() -> ! {
-    todo!("0x66b08 -[AppController gotLoginSuccessfulNotification:]")
+pub fn stub_66b08() {
+    // IDA 0x66b08 `-gotLoginSuccessfulNotification:`: checks for a pending
+    // game launch (sole call, 0x66b14).
+    APPCTL.got_login_success();
 }
 
 // 0x66b18 — -[AppController authenticateUserWithUrl:ticket:]
 // type: void __cdecl(AppController *self, SEL, id, id)
 #[doc(alias = "-[AppController authenticateUserWithUrl:ticket:]")]
-pub fn stub_66b18() -> ! {
-    todo!("0x66b18 -[AppController authenticateUserWithUrl:ticket:]")
+pub fn stub_66b18(url: &str, ticket: &str) {
+    // IDA 0x66b18 `-authenticateUserWithUrl:ticket:`: empty body.
+    APPCTL.authenticate(url, ticket);
 }
 
 // 0x66b1c — -[AppController runJoinScriptWithUrl:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController runJoinScriptWithUrl:]")]
-pub fn stub_66b1c() -> ! {
-    todo!("0x66b1c -[AppController runJoinScriptWithUrl:]")
+pub fn stub_66b1c(url: &str) {
+    // IDA 0x66b1c `-runJoinScriptWithUrl:`: builds the request with the
+    // user-agent header, then the shared `PlaceLauncher` injects the join
+    // script (0x66b48..0x66bca).
+    APPCTL.run_join_script(url);
 }
 
 // 0x66bd0 — -[AppController performPollingOnMainThreadWithObject:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController performPollingOnMainThreadWithObject:]")]
-pub fn stub_66bd0() -> ! {
-    todo!("0x66bd0 -[AppController performPollingOnMainThreadWithObject:]")
+pub fn stub_66bd0(job: Option<&str>) {
+    // IDA 0x66bd0 `-performPollingOnMainThreadWithObject:`: the block
+    // fires after half a second on the main queue (0x66bf0..0x66c36);
+    // inline below.
+    APPCTL.poll_on_main(job);
 }
 
 // 0x66c44 — ___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke")]
-pub fn stub_66c44() -> ! {
-    todo!("0x66c44 ___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke")
+pub fn stub_66c44(job: Option<&str>) {
+    // IDA 0x66c44 polling block: performs `performPollingToLoad:` on the
+    // main thread with the job object (0x66c74); inline below.
+    APPCTL.perform_polling_to_load(job);
 }
 
 // 0x66cb8 — -[AppController processResponseToGameConnect:data:error:]
 // type: void __cdecl(AppController *self, SEL, id, id, id)
 #[doc(alias = "-[AppController processResponseToGameConnect:data:error:]")]
-pub fn stub_66cb8() -> ! {
-    todo!("0x66cb8 -[AppController processResponseToGameConnect:data:error:]")
+pub fn stub_66cb8(reply: GameConnectReply<'_>) {
+    // IDA 0x66cb8 `-processResponseToGameConnect:data:error:`: the
+    // transport error logs and re-polls nil; status 2 authenticates plus
+    // runs the join script; status 0 polls the job id; status 4 and the
+    // empty tail log and re-poll nil (0x66cc6..0x66d44).
+    APPCTL.process_response(reply);
 }
 
 // 0x66e48 — -[AppController performPollingToLoad:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController performPollingToLoad:]")]
-pub fn stub_66e48() -> ! {
-    todo!("0x66e48 -[AppController performPollingToLoad:]")
+pub fn stub_66e48(job: Option<&str>) {
+    // IDA 0x66e48 `-performPollingToLoad:`: appends the escaped job id,
+    // picks GET over POST for a job, stamps the user-agent header, then
+    // sends the request async (0x66e72..0x67028).
+    APPCTL.perform_polling_to_load(job);
 }
 
 // 0x67034 — ___38-[AppController performPollingToLoad:]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___38-[AppController performPollingToLoad:]_block_invoke")]
-pub fn stub_67034() -> ! {
-    todo!("0x67034 ___38-[AppController performPollingToLoad:]_block_invoke")
+pub fn stub_67034(reply: GameConnectReply<'_>) {
+    // IDA 0x67034 polling completion: forwards to
+    // `processResponseToGameConnect:` (0x67052), then releases the block
+    // capture (0x67052 tail).
+    APPCTL.process_response(reply);
 }
 
 // 0x670b0 — -[AppController launchAppLocal:]
