@@ -7,6 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_110::{FunctorOp, JoinGameCallback};
 use std::sync::LazyLock;
 
 /// Opaque `signal<const PropertyDescriptor*>` static mutex handle (IDA
@@ -26,6 +27,23 @@ pub struct PropChangeSignal {
     pub slots: u32,
     pub next_id: u32,
     pub fired: u32,
+}
+
+/// FMOD codec/DSP description record (IDA 0x81074..0x107170): each getter
+/// zeroes its static desc, stamps the name plus version 65792 and the
+/// callback table, and answers it. Callbacks fold into the host; name and
+/// version are observed.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CodecDescription {
+    pub name: &'static str,
+    pub version: u32,
+}
+
+/// FreeImage tag description slot (IDA 0x1c7470): the old string is freed
+/// and the new one duplicated.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct TagSlot {
+    pub description: String,
 }
 
 impl PropChangeSignal {
@@ -242,174 +260,228 @@ pub fn stub_0x4a150(sig: &mut PropChangeSignal) {
 // 0x4a158 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_
 // type: int(void)
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")]
-pub fn stub_0x4a158() -> ! {
-    todo!("0x4a158 boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::operator()(RBX::Reflection::PropertyDescriptor const*)const")
+pub fn stub_0x4a158(cb: &Option<JoinGameCallback>) -> JoinGameCallback {
+    // IDA 0x4a158: `function1::operator()` throws `bad_function_call` on an
+    // empty function (0x4a1a6..0x4a1ea) and otherwise invokes through the
+    // vtable (0x4a1b8, folds into the host). The invoked record is observed.
+    match cb {
+        Some(record) => record.clone(),
+        None => panic!("boost::bad_function_call"),
+    }
 }
 
 // 0x4a21c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x4a21c() -> ! {
-    todo!("0x4a21c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x4a21c(_op: FunctorOp) -> &'static str {
+    // IDA 0x4a21c: `functor_manager::manage` for the ObjC bind flavor —
+    // same op dispatch as 0x3e030 (0x4a226..0x4a244) with its own bind
+    // typeinfo (0x4a276..0x4a278).
+    "bind_t<objc,propdesc>"
 }
 
 // 0x4a27c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")]
-pub fn stub_0x4a27c() -> ! {
-    todo!("0x4a27c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")
+pub fn stub_0x4a27c(sig: &mut PropChangeSignal) {
+    // IDA 0x4a27c: invoker thunk forwarding to the ObjC bind call (same
+    // shape as 0x3e090); the slot invocation folds into the fire count.
+    sig.fire();
 }
 
 // 0x4bfdc — __ZN5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEE5clearEv
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")]
-pub fn stub_0x4bfdc() -> ! {
-    todo!("0x4bfdc boost::function1<void,RBX::Reflection::PropertyDescriptor const*>::clear(void)")
+pub fn stub_0x4bfdc(cb: &mut Option<JoinGameCallback>) -> u32 {
+    // IDA 0x4bfdc: `function1::clear` — same destroy-and-null shape as
+    // 0x406e0 (0x4bfe2..0x4c004).
+    *cb = None;
+    0
 }
 
 // 0x4f470 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_0x4f470() -> ! {
-    todo!("0x4f470 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_0x4f470(sig: &mut PropChangeSignal) -> u32 {
+    // IDA 0x4f470: `connect` for the `JumpButton` bind flavor — same slot
+    // record as 0x3a278.
+    sig.connect()
 }
 
 // 0x4f4e4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_0x4f4e4() -> ! {
-    todo!("0x4f4e4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x4f4e4() {
+    // IDA 0x4f4e4: `callable_slot` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x4f590 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot() [0x4f590]")]
-pub fn stub_0x4f590() -> ! {
-    todo!("0x4f590 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x4f590() {
+    // IDA 0x4f590: `callable_slot` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x4f640 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4f640() -> ! {
-    todo!("0x4f640 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4f640(sig: &mut PropChangeSignal) {
+    // IDA 0x4f640: JumpButton-flavor `callable::call`; the closure call
+    // folds into the fire count.
+    sig.fire();
 }
 
 // 0x4f650 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4f650() -> ! {
-    todo!("0x4f650 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4f650(sig: &mut PropChangeSignal) {
+    // IDA 0x4f650: thn4 `call` adjusts `this` and forwards.
+    stub_0x4f640(sig);
 }
 
 // 0x4f660 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_0x4f660() -> ! {
-    todo!("0x4f660 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x4f660() {
+    // IDA 0x4f660: `callable` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x4f70c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable() [0x4f70c]")]
-pub fn stub_0x4f70c() -> ! {
-    todo!("0x4f70c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x4f70c() {
+    // IDA 0x4f70c: `callable` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x81074 — __ZN4FMOD9CodecAIFF16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecAIFF *this)
 #[doc(alias = "FMOD::CodecAIFF::getDescriptionEx(void)")]
-pub fn stub_0x81074() -> ! {
-    todo!("0x81074 FMOD::CodecAIFF::getDescriptionEx(void)")
+pub fn stub_0x81074() -> CodecDescription {
+    // IDA 0x81074: `CodecAIFF::getDescriptionEx` stamps "FMOD AIFF Codec"
+    // plus version 65792 and callbacks (0x81090..0x810ec).
+    CodecDescription { name: "FMOD AIFF Codec", version: 65792 }
 }
 
 // 0x815ec — __ZN4FMOD8CodecDLS16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecDLS *this)
 #[doc(alias = "FMOD::CodecDLS::getDescriptionEx(void)")]
-pub fn stub_0x815ec() -> ! {
-    todo!("0x815ec FMOD::CodecDLS::getDescriptionEx(void)")
+pub fn stub_0x815ec() -> CodecDescription {
+    // IDA 0x815ec: `CodecDLS::getDescriptionEx` stamps "FMOD DLS Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD DLS Codec", version: 65792 }
 }
 
 // 0x83320 — __ZN4FMOD9CodecFLAC16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecFLAC *this)
 #[doc(alias = "FMOD::CodecFLAC::getDescriptionEx(void)")]
-pub fn stub_0x83320() -> ! {
-    todo!("0x83320 FMOD::CodecFLAC::getDescriptionEx(void)")
+pub fn stub_0x83320() -> CodecDescription {
+    // IDA 0x83320: `CodecFLAC::getDescriptionEx` stamps "FMOD FLAC Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD FLAC Codec", version: 65792 }
 }
 
 // 0x834d4 — __ZN4FMOD8CodecFSB16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::getDescriptionEx(void)")]
-pub fn stub_0x834d4() -> ! {
-    todo!("0x834d4 FMOD::CodecFSB::getDescriptionEx(void)")
+pub fn stub_0x834d4() -> CodecDescription {
+    // IDA 0x834d4: `CodecFSB::getDescriptionEx` stamps "FMOD FSB Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD FSB Codec", version: 65792 }
 }
 
 // 0x88644 — __ZN4FMOD7CodecIT16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::getDescriptionEx(void)")]
-pub fn stub_0x88644() -> ! {
-    todo!("0x88644 FMOD::CodecIT::getDescriptionEx(void)")
+pub fn stub_0x88644() -> CodecDescription {
+    // IDA 0x88644: `CodecIT::getDescriptionEx` stamps "FMOD IT Codec" plus
+    // version 65792.
+    CodecDescription { name: "FMOD IT Codec", version: 65792 }
 }
 
 // 0x8f57c — __ZN4FMOD9CodecMIDI16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMIDI *this)
 #[doc(alias = "FMOD::CodecMIDI::getDescriptionEx(void)")]
-pub fn stub_0x8f57c() -> ! {
-    todo!("0x8f57c FMOD::CodecMIDI::getDescriptionEx(void)")
+pub fn stub_0x8f57c() -> CodecDescription {
+    // IDA 0x8f57c: `CodecMIDI::getDescriptionEx` stamps "FMOD MIDI Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD MIDI Codec", version: 65792 }
 }
 
 // 0x935c4 — __ZN4FMOD8CodecMOD16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMOD *this)
 #[doc(alias = "FMOD::CodecMOD::getDescriptionEx(void)")]
-pub fn stub_0x935c4() -> ! {
-    todo!("0x935c4 FMOD::CodecMOD::getDescriptionEx(void)")
+pub fn stub_0x935c4() -> CodecDescription {
+    // IDA 0x935c4: `CodecMOD::getDescriptionEx` stamps "FMOD MOD Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD MOD Codec", version: 65792 }
 }
 
 // 0x964e4 — __ZN4FMOD9CodecMPEG16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::getDescriptionEx(void)")]
-pub fn stub_0x964e4() -> ! {
-    todo!("0x964e4 FMOD::CodecMPEG::getDescriptionEx(void)")
+pub fn stub_0x964e4() -> CodecDescription {
+    // IDA 0x964e4: `CodecMPEG::getDescriptionEx` stamps "FMOD MPEG Codec"
+    // plus version 65792.
+    CodecDescription { name: "FMOD MPEG Codec", version: 65792 }
 }
 
 // 0x1043dc — __ZN4FMOD8DSPDelay16getDescriptionExEv
 // type: _DWORD __fastcall(FMOD::DSPDelay *__hidden this)
 #[doc(alias = "FMOD::DSPDelay::getDescriptionEx(void)")]
-pub fn stub_0x1043dc() -> ! {
-    todo!("0x1043dc FMOD::DSPDelay::getDescriptionEx(void)")
+pub fn stub_0x1043dc() -> CodecDescription {
+    // IDA 0x1043dc: `DSPDelay::getDescriptionEx` stamps "FMOD Delay" plus
+    // version 65792 (0x1043f8..0x104414).
+    CodecDescription { name: "FMOD Delay", version: 65792 }
 }
 
 // 0x105e0c — __ZN4FMOD10DSPTremolo16getDescriptionExEv
 // type: _DWORD __fastcall(FMOD::DSPTremolo *__hidden this)
 #[doc(alias = "FMOD::DSPTremolo::getDescriptionEx(void)")]
-pub fn stub_0x105e0c() -> ! {
-    todo!("0x105e0c FMOD::DSPTremolo::getDescriptionEx(void)")
+pub fn stub_0x105e0c() -> CodecDescription {
+    // IDA 0x105e0c: `DSPTremolo::getDescriptionEx` stamps "FMOD Tremolo"
+    // plus version 65792.
+    CodecDescription { name: "FMOD Tremolo", version: 65792 }
 }
 
 // 0x107170 — __ZN4FMOD15CodecAudioQueue16getDescriptionExEv
 // type: _DWORD __fastcall(FMOD::CodecAudioQueue *__hidden this)
 #[doc(alias = "FMOD::CodecAudioQueue::getDescriptionEx(void)")]
-pub fn stub_0x107170() -> ! {
-    todo!("0x107170 FMOD::CodecAudioQueue::getDescriptionEx(void)")
+pub fn stub_0x107170() -> CodecDescription {
+    // IDA 0x107170: `CodecAudioQueue::getDescriptionEx` stamps "FMOD Audio
+    // Queue Codec" plus version 65792.
+    CodecDescription { name: "FMOD Audio Queue Codec", version: 65792 }
 }
 
 // 0x1c44d4 — __ZN6TagLib17getTagDescriptionENS_7MDMODELEt
 #[doc(alias = "TagLib::getTagDescription(TagLib::MDMODEL,unsigned short)")]
-pub fn stub_0x1c44d4() -> ! {
-    todo!("0x1c44d4 TagLib::getTagDescription(TagLib::MDMODEL,unsigned short)")
+pub fn stub_0x1c44d4(desc: Option<&str>) -> Option<String> {
+    // IDA 0x1c44d4: `getTagDescription` looks up the tag info (0x1c44e0,
+    // folds into the input) and answers its description word (0x1c44e8) or
+    // null (0x1c44ec).
+    desc.map(str::to_owned)
 }
 
 // 0x1c7470 — _FreeImage_SetTagDescription
 #[doc(alias = "_FreeImage_SetTagDescription")]
-pub fn stub_0x1c7470() -> ! {
-    todo!("0x1c7470 _FreeImage_SetTagDescription")
+pub fn stub_0x1c7470(tag: &mut TagSlot, desc: Option<&str>) -> i32 {
+    // IDA 0x1c7470: null tag or description answers 0 (0x1c7478..0x1c748c);
+    // otherwise the old string is freed (0x1c74a0..0x1c74a4) and the new
+    // one duplicated (0x1c74ac..0x1c74c0), answering 1.
+    match desc {
+        Some(text) => {
+            tag.description = text.to_owned();
+            1
+        }
+        None => 0,
+    }
 }
 
 // 0x1cc694 — __ZL11Descriptionv_2
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL11Descriptionv_2")]
-pub fn stub_0x1cc694() -> ! {
-    todo!("0x1cc694 __ZL11Descriptionv_2")
+pub fn stub_0x1cc694() -> &'static str {
+    // IDA 0x1cc694: `Description()` answers "Truevision Targa" (0x1cc69c).
+    "Truevision Targa"
 }
 
 // 0x1f0b54 — _cid_get_postscript_name
@@ -820,5 +892,73 @@ mod prop_signal_batch_tests {
         stub_0x46e08();
         stub_0x46eb4();
         stub_0x4a04c();
+    }
+}
+
+#[cfg(test)]
+mod functor_codec_batch_tests {
+    use super::*;
+
+    #[test]
+    fn function_call_and_clear() {
+        let cb = JoinGameCallback { place_id: 5, url: String::new(), game_live: true, with_request: false };
+        assert_eq!(stub_0x4a158(&Some(cb.clone())), cb);
+        let mut slot = Some(cb);
+        assert_eq!(stub_0x4bfdc(&mut slot), 0);
+        assert_eq!(slot, None);
+    }
+
+    #[test]
+    #[should_panic(expected = "bad_function_call")]
+    fn empty_call_throws() {
+        stub_0x4a158(&None);
+    }
+
+    #[test]
+    fn objc_functor_answers_type() {
+        assert_eq!(stub_0x4a21c(FunctorOp::GetType), "bind_t<objc,propdesc>");
+        let mut sig = PropChangeSignal::default();
+        assert_eq!(stub_0x4f470(&mut sig), 1);
+        assert_eq!(sig.fired, 0);
+        stub_0x4f4e4();
+        stub_0x4f590();
+        stub_0x4f640(&mut sig);
+        stub_0x4f650(&mut sig);
+        stub_0x4f660();
+        stub_0x4f70c();
+        assert_eq!(sig.fired, 2);
+    }
+
+    #[test]
+    fn codec_descriptions() {
+        for (got, name) in [
+            (stub_0x81074(), "FMOD AIFF Codec"),
+            (stub_0x815ec(), "FMOD DLS Codec"),
+            (stub_0x83320(), "FMOD FLAC Codec"),
+            (stub_0x834d4(), "FMOD FSB Codec"),
+            (stub_0x88644(), "FMOD IT Codec"),
+            (stub_0x8f57c(), "FMOD MIDI Codec"),
+            (stub_0x935c4(), "FMOD MOD Codec"),
+            (stub_0x964e4(), "FMOD MPEG Codec"),
+            (stub_0x1043dc(), "FMOD Delay"),
+            (stub_0x105e0c(), "FMOD Tremolo"),
+            (stub_0x107170(), "FMOD Audio Queue Codec"),
+        ] {
+            assert_eq!(got, CodecDescription { name, version: 65792 });
+        }
+        assert_eq!(stub_0x1cc694(), "Truevision Targa");
+    }
+
+    #[test]
+    fn tag_description_flow() {
+        assert_eq!(stub_0x1c44d4(Some("ID3v2")), Some("ID3v2".to_owned()));
+        assert_eq!(stub_0x1c44d4(None), None);
+        let mut tag = TagSlot::default();
+        assert_eq!(stub_0x1c7470(&mut tag, None), 0);
+        assert_eq!(tag.description, "");
+        assert_eq!(stub_0x1c7470(&mut tag, Some("genre")), 1);
+        assert_eq!(tag.description, "genre");
+        assert_eq!(stub_0x1c7470(&mut tag, Some("title")), 1);
+        assert_eq!(tag.description, "title");
     }
 }
