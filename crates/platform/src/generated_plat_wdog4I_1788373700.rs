@@ -976,8 +976,9 @@ pub fn stub_7c3d8(unit_a: u32, unit_b: u32, with_out: bool) -> (i32, u32, u32) {
 // type: int __fastcall(FMOD::ChannelI *, int)
 #[doc(alias = "__ZN4FMOD8ChannelI14getChannelInfoEPNS_17FMOD_CHANNEL_INFOE")]
 #[doc(alias = "FMOD::ChannelI::getChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
-pub fn stub_7c784() -> ! {
-    todo!("0x7c784 __ZN4FMOD8ChannelI14getChannelInfoEPNS_17FMOD_CHANNEL_INFOE")
+pub fn stub_7c784() -> (i32, crate::generated_next_w::ChannelInfo) {
+    // Dupe of 0x7c784 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7c784()
 }
 
 // 0x7c83c — __ZN4FMOD8ChannelI11setPositionEjj
@@ -985,8 +986,9 @@ pub fn stub_7c784() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int, unsigned int)
 #[doc(alias = "__ZN4FMOD8ChannelI11setPositionEjj")]
 #[doc(alias = "FMOD::ChannelI::setPosition(unsigned int,unsigned int)")]
-pub fn stub_7c83c() -> ! {
-    todo!("0x7c83c __ZN4FMOD8ChannelI11setPositionEjj")
+pub fn stub_7c83c(pos: u32, unit: u32) -> i32 {
+    // Dupe of 0x7c83c (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7c83c(pos, unit)
 }
 
 // 0x7ce58 — __ZN4FMOD8ChannelI13setLoopPointsEjjjj
@@ -994,8 +996,9 @@ pub fn stub_7c83c() -> ! {
 // type: int __fastcall(unsigned __int64 this, unsigned int, unsigned int, unsigned int)
 #[doc(alias = "__ZN4FMOD8ChannelI13setLoopPointsEjjjj")]
 #[doc(alias = "FMOD::ChannelI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")]
-pub fn stub_7ce58() -> ! {
-    todo!("0x7ce58 __ZN4FMOD8ChannelI13setLoopPointsEjjjj")
+pub fn stub_7ce58(start: u32, unit_a: u32, len: u32, unit_b: u32) -> i32 {
+    // Dupe of 0x7ce58 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7ce58(start, unit_a, len, unit_b)
 }
 
 // 0x7d208 — __ZN4FMOD8ChannelI14setChannelInfoEPNS_17FMOD_CHANNEL_INFOE
@@ -1003,7 +1006,8 @@ pub fn stub_7ce58() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN4FMOD8ChannelI14setChannelInfoEPNS_17FMOD_CHANNEL_INFOE")]
 #[doc(alias = "FMOD::ChannelI::setChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
-pub fn stub_7d208() -> ! {
-    todo!("0x7d208 __ZN4FMOD8ChannelI14setChannelInfoEPNS_17FMOD_CHANNEL_INFOE")
+pub fn stub_7d208(info: crate::generated_next_w::ChannelInfo) -> i32 {
+    // Dupe of 0x7d208 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7d208(info)
 }
 

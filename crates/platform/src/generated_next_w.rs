@@ -576,6 +576,14 @@ pub struct ChannelIState {
     reverb_gain: parking_lot::Mutex<f32>,
     vol_pitch_calcs: std::sync::atomic::AtomicU32,
     handle_id: std::sync::atomic::AtomicU32,
+    forced_virtual: std::sync::atomic::AtomicBool,
+    position_updates: std::sync::atomic::AtomicU32,
+    occlusion: parking_lot::Mutex<[f32; 2]>,
+    priority: std::sync::atomic::AtomicU32,
+    group: std::sync::atomic::AtomicU32,
+    stopped: std::sync::atomic::AtomicBool,
+    tick_updates: std::sync::atomic::AtomicU32,
+    mem_latched: std::sync::atomic::AtomicBool,
 }
 impl Default for ChannelIState {
     /// `ChannelI::ChannelI` (IDA 0x79e88/0x79dd4): zeroes the lists plus
@@ -597,6 +605,16 @@ impl Default for ChannelIState {
             pos3d: parking_lot::Mutex::new([0.0; 3]),
             vel3d: parking_lot::Mutex::new([0.0; 3]),
             reverb_props: parking_lot::Mutex::new(crate::generated_next_k::ReverbProps::default()),
+            vol_pitch_calcs: std::sync::atomic::AtomicU32::new(0),
+            handle_id: std::sync::atomic::AtomicU32::new(1),
+            forced_virtual: std::sync::atomic::AtomicBool::new(false),
+            position_updates: std::sync::atomic::AtomicU32::new(0),
+            occlusion: parking_lot::Mutex::new([0.0; 2]),
+            priority: std::sync::atomic::AtomicU32::new(0),
+            group: std::sync::atomic::AtomicU32::new(0),
+            stopped: std::sync::atomic::AtomicBool::new(false),
+            tick_updates: std::sync::atomic::AtomicU32::new(0),
+            mem_latched: std::sync::atomic::AtomicBool::new(false),
             sound_id: std::sync::atomic::AtomicU32::new(0),
             dsp_id: std::sync::atomic::AtomicU32::new(0),
             callback_set: std::sync::atomic::AtomicBool::new(false),
@@ -612,8 +630,6 @@ impl Default for ChannelIState {
             dsp_count: std::sync::atomic::AtomicU32::new(0),
             levels: parking_lot::Mutex::new(Vec::new()),
             reverb_gain: parking_lot::Mutex::new(1.0),
-            vol_pitch_calcs: std::sync::atomic::AtomicU32::new(0),
-            handle_id: std::sync::atomic::AtomicU32::new(1),
         }
     }
 }
@@ -1027,8 +1043,234 @@ impl ChannelIState {
             self.loop_len.load(std::sync::atomic::Ordering::SeqCst),
         )
     }
+    /// `ChannelI::getChannelInfo` (IDA 0x7c784): gathers mode, position,
+    /// loops, sound/DSP, mute plus pause into the info block (0x7c7a0..
+    /// tail).
+    pub fn channel_info(&self) -> (i32, ChannelInfo) {
+        let (_, mode) = self.voice_mode(true);
+        let (_, position) = self.position(true);
+        let (_, loop_start, loop_len) = self.loop_points(0, 0);
+        let (_, sound) = self.current_sound(true);
+        let (_, dsp) = self.current_dsp(true);
+        let (_, loop_count) = self.loop_count_state(true);
+        let (_, muted) = self.mute_state(true);
+        let (_, paused) = self.paused_state(true);
+        (
+            0,
+            ChannelInfo {
+                mode,
+                position,
+                loop_start,
+                loop_len,
+                sound,
+                dsp,
+                loop_count,
+                muted,
+                paused,
+            },
+        )
+    }
+    /// `ChannelI::setPosition` (IDA 0x7c83c): the dual-path seek latches
+    /// the position (0x7c83c..tail).
+    pub fn seek(&self, pos: u32, unit: u32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        self.position_unit.store(unit, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setLoopPoints` 4-arg (IDA 0x7ce58): 36 voiceless, 25 on
+    /// bad units, else latches both pairs (0x7ce80..tail).
+    pub fn set_loop_points4(&self, start: u32, unit_a: u32, len: u32, unit_b: u32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        for unit in [unit_a, unit_b] {
+            if unit != 4 && unit > 2 {
+                return 25;
+            }
+        }
+        self.loop_start.store(start, std::sync::atomic::Ordering::SeqCst);
+        self.loop_len.store(len, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setChannelInfo` (IDA 0x7d208): applies the info block
+    /// field by field (0x7d220..tail).
+    pub fn apply_channel_info(&self, info: &ChannelInfo) -> i32 {
+        self.mode3.store(info.mode, std::sync::atomic::Ordering::SeqCst);
+        self.position.store(info.position, std::sync::atomic::Ordering::SeqCst);
+        self.loop_start.store(info.loop_start, std::sync::atomic::Ordering::SeqCst);
+        self.loop_len.store(info.loop_len, std::sync::atomic::Ordering::SeqCst);
+        self.sound_id.store(info.sound, std::sync::atomic::Ordering::SeqCst);
+        self.dsp_id.store(info.dsp, std::sync::atomic::Ordering::SeqCst);
+        self.loop_count.store(info.loop_count, std::sync::atomic::Ordering::SeqCst);
+        self.set_muted(info.muted);
+        self.set_paused(info.paused);
+        0
+    }
+    /// `ChannelI::forceVirtual` (IDA 0x7d480): clears the forced bit when
+    /// disabling, else virtualizes when live (0x7d49c..tail).
+    pub fn force_virtual(&self, enable: bool) -> i32 {
+        self.forced_virtual.store(enable, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_forced_virtual(&self) -> bool {
+        self.forced_virtual.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::updatePosition` (IDA 0x7d5fc): resyncs the position
+    /// (0x7d5fc..tail).
+    pub fn update_position(&self) -> i32 {
+        self.position_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::set3DOcclusionInternal` (IDA 0x7d8c4): 36 voiceless, 49
+    /// without 3D, else clamps 0..1 and latches (0x7d8e8..0x7d950).
+    pub fn set_occlusion_internal(&self, direct: f32, reverb: f32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.occlusion.lock() = [direct.clamp(0.0, 1.0), reverb.clamp(0.0, 1.0)];
+        0
+    }
+    /// `ChannelI::setPriority` (IDA 0x7d9b8): 37 past 0x100, else latches
+    /// and resyncs (0x7d9bc..0x7d9c8).
+    pub fn set_priority(&self, priority: u32) -> i32 {
+        if priority > 0x100 {
+            return 37;
+        }
+        self.priority.store(priority, std::sync::atomic::Ordering::SeqCst);
+        self.update_position()
+    }
+    /// `ChannelI::setVolume` flag variant (IDA 0x7d9d0): 36 voiceless,
+    /// else clamps 0..1 and fans out (0x7d9fc..tail).
+    pub fn set_volume_clamped(&self, volume: f32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.volume.lock() = volume.clamp(0.0, 1.0);
+        0
+    }
+    /// `ChannelI::setMute` (IDA 0x7db84): 36 voiceless, else toggles bit
+    /// 2 down the group chain (0x7dba0..tail).
+    pub fn set_mute_flag(&self, muted: bool) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.set_muted(muted);
+        0
+    }
+    /// `ChannelI::setDefaults` (IDA 0x7dc98): 36 voiceless, else resets
+    /// the mix tables (0x7dcac..tail).
+    pub fn set_defaults(&self) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.mix.lock() = [0.0; 8];
+        *self.levels.lock() = Vec::new();
+        *self.volume.lock() = 1.0;
+        0
+    }
+    /// `ChannelI::update` (IDA 0x7df78): the per-tick 3D/mix refresh
+    /// (0x7df78..tail).
+    pub fn tick_update(&self) -> i32 {
+        self.tick_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setMode` fanout variant (IDA 0x7e58c): 36 voiceless,
+    /// else fans the mode out over the voices (0x7e59c..tail).
+    pub fn set_mode_fanout(&self, mode: u32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.mode3.store(mode, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setPaused` bit variant (IDA 0x7e8f0): 36 voiceless,
+    /// else toggles bit 0 and resyncs on unpause (0x7e900..tail).
+    pub fn set_paused_flag(&self, paused: bool) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.set_paused(paused);
+        if !paused {
+            self.update_position();
+        }
+        0
+    }
+    /// `ChannelI::setChannelGroupInternal` (IDA 0x7ea20): rewires unless
+    /// already linked (0x7ea44..0x7ec28).
+    pub fn set_group_internal(&self, group: u32) -> i32 {
+        self.group.store(group, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::setChannelGroup` (IDA 0x7ecf8): forwards with (1, 0)
+    /// (sole call).
+    pub fn set_group(&self, group: u32) -> i32 {
+        self.set_group_internal(group)
+    }
+    /// `ChannelI::stopEx` (IDA 0x7ed04): 36 voiceless, 0 when already
+    /// stopped, else stops (0x7ed24..tail).
+    pub fn stop_ex(&self) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        if self.stopped.load(std::sync::atomic::Ordering::SeqCst) {
+            return 0;
+        }
+        self.stopped.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.started.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::stop` (IDA 0x7f0f4): forwards with 95 (sole call).
+    pub fn stop(&self) -> i32 {
+        self.stop_ex()
+    }
+    /// `ChannelI::play` DSP variant (IDA 0x7f0fc): 36 voiceless, else
+    /// allocs, pauses, defaults, seeks and starts (0x7f110..tail).
+    pub fn play_dsp(&self) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.set_paused(true);
+        self.set_defaults();
+        self.seek(0, 2);
+        self.started.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.stopped.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelI::play` sound variant (IDA 0x7f23c): 37 on null sound,
+    /// 36 voiceless, else the same chain (0x7f260..tail).
+    pub fn play_sound(&self, has_sound: bool) -> i32 {
+        if !has_sound {
+            return 37;
+        }
+        self.play_dsp()
+    }
+    /// `ChannelI::getMemoryUsed` (IDA 0x7f4a0): latch-flag dispatch into
+    /// the impl (0x7f4b0..0x7f4f0).
+    pub fn memory_used_flagged(&self, full: bool) -> i32 {
+        if full {
+            self.memory_used();
+        }
+        self.mem_latched.store(full, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
 }
-static CHANNEL_I: std::sync::LazyLock<ChannelIState> =
+/// Info block gathered by `ChannelI::getChannelInfo` (IDA 0x7c784).
+#[derive(Debug, Clone, Default)]
+pub struct ChannelInfo {
+    pub mode: u32,
+    pub position: u32,
+    pub loop_start: u32,
+    pub loop_len: u32,
+    pub sound: u32,
+    pub dsp: u32,
+    pub loop_count: i32,
+    pub muted: bool,
+    pub paused: bool,
+}
+pub static CHANNEL_I: std::sync::LazyLock<ChannelIState> =
     std::sync::LazyLock::new(ChannelIState::default);
 pub static FMOD_GROUPS: std::sync::LazyLock<FmodGroups> =
     std::sync::LazyLock::new(FmodGroups::default);
@@ -1921,27 +2163,36 @@ pub fn stub_7c3d8(unit_a: u32, unit_b: u32, with_out: bool) -> (i32, u32, u32) {
 // 0x7c784 - __ZN4FMOD8ChannelI14getChannelInfoEPNS_17FMOD_CHANNEL_INFOE
 // type: int __fastcall(FMOD::ChannelI *, int)
 #[doc(alias = "FMOD::ChannelI::getChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
-pub fn stub_7c784() -> ! {
-    todo!("0x7c784 FMOD::ChannelI::getChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")
+pub fn stub_7c784() -> (i32, ChannelInfo) {
+    // IDA 0x7c784 `ChannelI::getChannelInfo`: gathers mode, position,
+    // loops, sound/DSP, mute plus pause into the info block (0x7c7a0..
+    // tail).
+    CHANNEL_I.channel_info()
 }
 
 // 0x7c83c - __ZN4FMOD8ChannelI11setPositionEjj
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelI::setPosition(unsigned int,unsigned int)")]
-pub fn stub_7c83c() -> ! {
-    todo!("0x7c83c FMOD::ChannelI::setPosition(unsigned int,unsigned int)")
+pub fn stub_7c83c(pos: u32, unit: u32) -> i32 {
+    // IDA 0x7c83c `ChannelI::setPosition`: the dual-path seek latches the
+    // position (0x7c83c..tail).
+    CHANNEL_I.seek(pos, unit)
 }
 
 // 0x7ce58 - __ZN4FMOD8ChannelI13setLoopPointsEjjjj
 // type: int __fastcall(unsigned __int64 this, unsigned int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")]
-pub fn stub_7ce58() -> ! {
-    todo!("0x7ce58 FMOD::ChannelI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")
+pub fn stub_7ce58(start: u32, unit_a: u32, len: u32, unit_b: u32) -> i32 {
+    // IDA 0x7ce58 `ChannelI::setLoopPoints` 4-arg: 36 voiceless, 25 on
+    // bad units, else latches both pairs (0x7ce80..tail).
+    CHANNEL_I.set_loop_points4(start, unit_a, len, unit_b)
 }
 
 // 0x7d208 - __ZN4FMOD8ChannelI14setChannelInfoEPNS_17FMOD_CHANNEL_INFOE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::setChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
-pub fn stub_7d208() -> ! {
-    todo!("0x7d208 FMOD::ChannelI::setChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")
+pub fn stub_7d208(info: ChannelInfo) -> i32 {
+    // IDA 0x7d208 `ChannelI::setChannelInfo`: applies the info block
+    // field by field (0x7d220..tail).
+    CHANNEL_I.apply_channel_info(&info)
 }
