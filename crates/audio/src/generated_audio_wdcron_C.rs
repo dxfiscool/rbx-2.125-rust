@@ -4,7 +4,7 @@
 //! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 use rbx_core::SharedPtr;
-use crate::generated_audio_wd_watchdog18::{TimerServiceState, ToolGrip};
+use crate::generated_audio_wd_watchdog18::{TimerServiceState, ToolGrip, ToolState};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 /// `G3D::Vector3` cross product (IDA `setGripRight/Up/Forward`
@@ -249,8 +249,28 @@ pub fn stub_67ebd0(state: &mut ToolGrip, right: [f32; 3]) -> bool {
 // demangled: RBX::Tool::setToolTip(std::string)
 #[doc(alias = "RBX::Tool::setToolTip(std::string)")]
 #[doc(alias = "__ZN3RBX4Tool10setToolTipESs")]
-pub fn stub_67ecf4() -> ! {
-    todo!("0x67ecf4 __ZN3RBX4Tool10setToolTipESs")
+pub fn stub_67ecf4(state: &mut ToolState, text: &str, filter_pass: bool) {
+    // IDA 0x67ecf4 (`RBX::Tool::setToolTip`): over-0x400 inputs are
+    // cut down (0x67ed54-0x67ed94); a profanity hit without the fw+22
+    // override skips silently (0x67edae); on difference from the +396
+    // tooltip (0x67edba) it assigns it and raises once (0x67ede0,
+    // folds into the mutation). Same shape as `setText` without the
+    // word-zeroing. Host: mutate on change only.
+    if !filter_pass {
+        return;
+    }
+    let mut clipped = text.to_owned();
+    if clipped.len() > 0x400 {
+        let mut end = 0x400;
+        while !clipped.is_char_boundary(end) {
+            end -= 1;
+        }
+        clipped.truncate(end);
+    }
+    if state.tooltip == clipped {
+        return;
+    }
+    state.tooltip = clipped;
 }
 
 // 0x67ee94 — __ZN3RBX4Tool23special_equipped_signalC2Ev
@@ -258,8 +278,11 @@ pub fn stub_67ecf4() -> ! {
 // type: _DWORD __fastcall(RBX::Tool::special_equipped_signal *__hidden this)
 #[doc(alias = "RBX::Tool::special_equipped_signal::special_equipped_signal(void)")]
 #[doc(alias = "__ZN3RBX4Tool23special_equipped_signalC2Ev")]
-pub fn stub_67ee94() -> ! {
-    todo!("0x67ee94 __ZN3RBX4Tool23special_equipped_signalC2Ev")
+pub fn stub_67ee94() {
+    // IDA 0x67ee94 (`RBX::Tool::special_equipped_signal::
+    // special_equipped_signal`): zeroed slot plus the once-mutex init
+    // (0x67eec4-0x67ef16). Signal construction folds into the host
+    // fire closures. Carrier no-op.
 }
 
 // 0x67ef78 — __ZN3RBX4Tool23special_equipped_signalclEN5boost10shared_ptrINS_8InstanceEEE
@@ -267,15 +290,23 @@ pub fn stub_67ee94() -> ! {
 #[doc(alias = "RBX::Tool::special_equipped_signal::operator()(rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZN3RBX4Tool23special_equipped_signalclEN5boost10shared_ptrINS_8InstanceEEE")]
 pub fn stub_67ef78() -> ! {
-    todo!("0x67ef78 __ZN3RBX4Tool23special_equipped_signalclEN5boost10shared_ptrINS_8InstanceEEE")
+    // IDA 0x67ef78 (`RBX::Tool::special_equipped_signal::
+    // operator()`): `__noreturn`, throws `std::runtime_error("Don't
+    // use Event.fireEvent for equipped signal!")` (0x67efa4-0x67f088).
+    // Host: panic with the exact message.
+    panic!("Don't use Event.fireEvent for equipped signal!")
 }
 
 // 0x67f098 — __ZN3RBX4Tool23special_equipped_signal8equippedEN5boost10shared_ptrINS_8InstanceEEE
 // demangled: RBX::Tool::special_equipped_signal::equipped(boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "RBX::Tool::special_equipped_signal::equipped(rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZN3RBX4Tool23special_equipped_signal8equippedEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_67f098() -> ! {
-    todo!("0x67f098 __ZN3RBX4Tool23special_equipped_signal8equippedEN5boost10shared_ptrINS_8InstanceEEE")
+pub fn stub_67f098(fire_equipped: impl Fn()) {
+    // IDA 0x67f098 (`RBX::Tool::special_equipped_signal::equipped`):
+    // arms the slot flag, stores the character shared/weak pair and
+    // fires the `signal_with_args` with it (0x67f0be-0x67f11a). The
+    // slot/ownership machinery folds; host keeps the fire edge.
+    fire_equipped();
 }
 
 // 0x67f188 — __ZN3RBX4ToolC2Ev
@@ -283,8 +314,12 @@ pub fn stub_67f098() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::Tool(void)")]
 #[doc(alias = "__ZN3RBX4ToolC2Ev")]
-pub fn stub_67f188() -> ! {
-    todo!("0x67f188 __ZN3RBX4ToolC2Ev")
+pub fn stub_67f188() -> ToolState {
+    // IDA 0x67f188 (`RBX::Tool::Tool`, C2): the `BackpackItem` base,
+    // vtables, class descriptor and registrar fold away; +392/+393
+    // flags set, the +396 tooltip empty, backend and signal cells
+    // cleared. Host: the fresh state.
+    ToolState::default()
 }
 
 // 0x67f8b0 — __ZN3RBX4ToolD0Ev
@@ -372,8 +407,11 @@ pub fn stub_68028c() {
 // demangled: RBX::Tool::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "RBX::Tool::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZN3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE")]
-pub fn stub_680294() -> ! {
-    todo!("0x680294 __ZN3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE")
+pub fn stub_680294() {
+    // IDA 0x680294 (`RBX::Tool::render3dSelect`): renders each child
+    // through `__dynamic_cast` + `Adorn` (0x6802a4-0x6802e2) — pure
+    // `Adorn` rasterization with no modeled-cell effect. Carrier
+    // no-op.
 }
 
 // 0x680308 — __ZThn304_N3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -389,8 +427,14 @@ pub fn stub_680308() {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, RBX::ModelInstance *)
 #[doc(alias = "RBX::Tool::characterCanUnequipTool(RBX::ModelInstance *)")]
 #[doc(alias = "__ZN3RBX4Tool23characterCanUnequipToolEPNS_13ModelInstanceE")]
-pub fn stub_680310() -> ! {
-    todo!("0x680310 __ZN3RBX4Tool23characterCanUnequipToolEPNS_13ModelInstanceE")
+pub fn stub_680310(can_unequip: bool) -> bool {
+    // IDA 0x680310 (`RBX::Tool::characterCanUnequipTool`): true on
+    // every degenerate path — null model, non-character model, no
+    // `Tool` child, first child failing the `Tool` `isA`
+    // (0x680318-0x680358, per disasm); otherwise the first child's
+    // +0xCC virtual decides (ungrounded target). Host: the seam
+    // preserves the edge for that live path.
+    can_unequip
 }
 
 // 0x680374 — __ZN3RBX4Tool9getHandleEv
@@ -398,8 +442,10 @@ pub fn stub_680310() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getHandle(void)")]
 #[doc(alias = "__ZN3RBX4Tool9getHandleEv")]
-pub fn stub_680374() -> ! {
-    todo!("0x680374 __ZN3RBX4Tool9getHandleEv")
+pub fn stub_680374(has_handle: bool) -> bool {
+    // IDA 0x680374 (`RBX::Tool::getHandle`): thunk forwarding to
+    // `getHandleConst` (host: the 0x680378 twin).
+    stub_680378(has_handle)
 }
 
 // 0x680378 — __ZNK3RBX4Tool14getHandleConstEv
@@ -407,8 +453,12 @@ pub fn stub_680374() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getHandleConst(void)const")]
 #[doc(alias = "__ZNK3RBX4Tool14getHandleConstEv")]
-pub fn stub_680378() -> ! {
-    todo!("0x680378 __ZNK3RBX4Tool14getHandleConstEv")
+pub fn stub_680378(has_handle: bool) -> bool {
+    // IDA 0x680378 (`RBX::Tool::getHandleConst`): finds the "Handle"
+    // child by name and checks it is a part (0x680378+). The child
+    // list folds into the `has_handle` seam; callers only branch on
+    // nullness.
+    has_handle
 }
 
 // 0x6804e8 — __ZN3RBX4Tool11getLocationEv
@@ -416,8 +466,18 @@ pub fn stub_680378() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getLocation(void)")]
 #[doc(alias = "__ZN3RBX4Tool11getLocationEv")]
-pub fn stub_6804e8() -> ! {
-    todo!("0x6804e8 __ZN3RBX4Tool11getLocationEv")
+pub fn stub_6804e8(handle: Option<&ToolGrip>) -> ToolGrip {
+    // IDA 0x6804e8 (`RBX::Tool::getLocation`): without a handle
+    // returns the identity `CoordinateFrame` (0x680514); otherwise
+    // the handle part's frame (0x6804fa-0x68050a). Host: the option
+    // edge with the grounded identity floor.
+    match handle {
+        Some(frame) => *frame,
+        None => ToolGrip {
+            rotation: [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]],
+            translation: [0.0, 0.0, 0.0],
+        },
+    }
 }
 
 // 0x68051c — __ZThn328_N3RBX4Tool11getLocationEv
@@ -434,8 +494,10 @@ pub fn stub_68051c() {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, RBX::Network::Player *)
 #[doc(alias = "RBX::Tool::dropAll(RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX4Tool7dropAllEPNS_7Network6PlayerE")]
-pub fn stub_68052c() -> ! {
-    todo!("0x68052c __ZN3RBX4Tool7dropAllEPNS_7Network6PlayerE")
+pub fn stub_68052c() {
+    // IDA 0x68052c (`RBX::Tool::dropAll`): moves workspace tools
+    // into the character/backpack (0x68052c+). Inventory + player +
+    // workspace plumbing folds away. Carrier no-op.
 }
 
 // 0x68057c — __ZN3RBX4Tool22moveAllToolsToBackpackEPNS_7Network6PlayerE
@@ -443,8 +505,11 @@ pub fn stub_68052c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, RBX::Network::Player *)
 #[doc(alias = "RBX::Tool::moveAllToolsToBackpack(RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX4Tool22moveAllToolsToBackpackEPNS_7Network6PlayerE")]
-pub fn stub_68057c() -> ! {
-    todo!("0x68057c __ZN3RBX4Tool22moveAllToolsToBackpackEPNS_7Network6PlayerE")
+pub fn stub_68057c() {
+    // IDA 0x68057c (`RBX::Tool::moveAllToolsToBackpack`): moves each
+    // `Tool` child of the character into the player backpack
+    // (0x680584-0x6805a8). Inventory plumbing folds away. Carrier
+    // no-op.
 }
 
 // 0x6805ac — __ZN3RBX4Tool11createMouseEv
@@ -452,8 +517,10 @@ pub fn stub_68057c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::createMouse(void)")]
 #[doc(alias = "__ZN3RBX4Tool11createMouseEv")]
-pub fn stub_6805ac() -> ! {
-    todo!("0x6805ac __ZN3RBX4Tool11createMouseEv")
+pub fn stub_6805ac() {
+    // IDA 0x6805ac (`RBX::Tool::createMouse`): creates a `Mouse`
+    // through `Creatable` and zeroes its command (0x6805cc-0x680606).
+    // No `Mouse` state is modeled in the host. Carrier no-op.
 }
 
 // 0x680664 — __ZN3RBX4Tool19setBackendToolStateEi
@@ -461,8 +528,24 @@ pub fn stub_6805ac() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, int)
 #[doc(alias = "RBX::Tool::setBackendToolState(int)")]
 #[doc(alias = "__ZN3RBX4Tool19setBackendToolStateEi")]
-pub fn stub_680664() -> ! {
-    todo!("0x680664 __ZN3RBX4Tool19setBackendToolStateEi")
+pub fn stub_680664(state: &mut ToolState, new_state: u32, fire_equipped: impl Fn(), fire_unequipped: impl Fn()) {
+    // IDA 0x680664 (`RBX::Tool::setBackendToolState`): on change of
+    // word 84 (+336, 0x680692-0x6806b6) the edges fire — rising to
+    // >= 5 equips (mouse creation + the +428 `equipped` fire,
+    // 0x6806c0-0x680734) and falling from >= 5 unequips (flag/refs
+    // cleared, the +452 fire, workspace mouse reset,
+    // 0x680744-0x680780) — then word 84 stores (0x680786). The
+    // mouse/workspace/joint cells fold into the fire seams.
+    if state.backend_state == new_state {
+        return;
+    }
+    if state.backend_state <= 4 && new_state >= 5 {
+        fire_equipped();
+    }
+    if state.backend_state >= 5 && new_state <= 4 {
+        fire_unequipped();
+    }
+    state.backend_state = new_state;
 }
 
 // 0x680814 — __ZN3RBX4Tool11onEquippingEv
@@ -470,8 +553,10 @@ pub fn stub_680664() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::onEquipping(void)")]
 #[doc(alias = "__ZN3RBX4Tool11onEquippingEv")]
-pub fn stub_680814() -> ! {
-    todo!("0x680814 __ZN3RBX4Tool11onEquippingEv")
+pub fn stub_680814() {
+    // IDA 0x680814 (`RBX::Tool::onEquipping`): local-player, mouse
+    // and workspace wiring for the equip path. Player/mouse plumbing
+    // folds into the `fire_equipped` seam. Carrier no-op.
 }
 
 // 0x6809b0 — __ZN3RBX4Tool17connectTouchEventEv
@@ -479,8 +564,10 @@ pub fn stub_680814() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::connectTouchEvent(void)")]
 #[doc(alias = "__ZN3RBX4Tool17connectTouchEventEv")]
-pub fn stub_6809b0() -> ! {
-    todo!("0x6809b0 __ZN3RBX4Tool17connectTouchEventEv")
+pub fn stub_6809b0() {
+    // IDA 0x6809b0 (`RBX::Tool::connectTouchEvent`): connects the
+    // touch handler (welds + slots). Connection management folds
+    // into the host seams. Carrier no-op.
 }
 
 // 0x680c28 — __ZN3RBX4Tool21onEvent_HandleTouchedEN5boost10shared_ptrINS_8InstanceEEE
@@ -488,8 +575,10 @@ pub fn stub_6809b0() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Tool::onEvent_HandleTouched(rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZN3RBX4Tool21onEvent_HandleTouchedEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_680c28() -> ! {
-    todo!("0x680c28 __ZN3RBX4Tool21onEvent_HandleTouchedEN5boost10shared_ptrINS_8InstanceEEE")
+pub fn stub_680c28() {
+    // IDA 0x680c28 (`RBX::Tool::onEvent_HandleTouched`): the touch
+    // handler (welds + `Touched` signal). World plumbing folds away.
+    // Carrier no-op.
 }
 
 // 0x680ea8 — __ZN3RBX4Tool19rebuildBackendStateEv
@@ -497,8 +586,24 @@ pub fn stub_680c28() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::rebuildBackendState(void)")]
 #[doc(alias = "__ZN3RBX4Tool19rebuildBackendStateEv")]
-pub fn stub_680ea8() -> ! {
-    todo!("0x680ea8 __ZN3RBX4Tool19rebuildBackendStateEv")
+pub fn stub_680ea8(
+    state: &mut ToolState,
+    has_handle: bool,
+    in_workspace: bool,
+    is_character: bool,
+    has_torso: bool,
+    has_right_arm: bool,
+    has_right_shoulder: bool,
+    fire_equipped: impl Fn(),
+    fire_unequipped: impl Fn(),
+) {
+    // IDA 0x680ea8 (`RBX::Tool::rebuildBackendState`):
+    // `computeDesiredState` (host: the 0x680f20 twin over the world
+    // seams) then `setDesiredState` (host: the 0x680f9c twin — the
+    // provider assert at Tool.cpp:242 folds). Host: compute, then
+    // step.
+    let desired = stub_680f20(has_handle, in_workspace, is_character, has_torso, has_right_arm, has_right_shoulder);
+    stub_680f9c(state, desired, fire_equipped, fire_unequipped);
 }
 
 // 0x680f20 — __ZN3RBX4Tool19computeDesiredStateEv
@@ -506,8 +611,23 @@ pub fn stub_680ea8() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::computeDesiredState(void)")]
 #[doc(alias = "__ZN3RBX4Tool19computeDesiredStateEv")]
-pub fn stub_680f20() -> ! {
-    todo!("0x680f20 __ZN3RBX4Tool19computeDesiredStateEv")
+pub fn stub_680f20(
+    has_handle: bool,
+    in_workspace: bool,
+    is_character: bool,
+    has_torso: bool,
+    has_right_arm: bool,
+    has_right_shoulder: bool,
+) -> u32 {
+    // IDA 0x680f20 (`RBX::Tool::computeDesiredState`): the
+    // `backendProcessing` assert folds; with a handle in the
+    // workspace (0x680f8c-0x680f94) the parent-model version runs,
+    // else 0. Host: the world seams.
+    if has_handle && in_workspace {
+        stub_681190(is_character, has_torso, has_right_arm, has_right_shoulder)
+    } else {
+        0
+    }
 }
 
 // 0x680f9c — __ZN3RBX4Tool15setDesiredStateENS0_9ToolStateEPKNS_15ServiceProviderE
@@ -515,8 +635,20 @@ pub fn stub_680f20() -> ! {
 // type: int __fastcall(RBX::Tool *this)
 #[doc(alias = "RBX::Tool::setDesiredState(RBX::Tool::ToolState,RBX::ServiceProvider const*)")]
 #[doc(alias = "__ZN3RBX4Tool15setDesiredStateENS0_9ToolStateEPKNS_15ServiceProviderE")]
-pub fn stub_680f9c() -> ! {
-    todo!("0x680f9c __ZN3RBX4Tool15setDesiredStateENS0_9ToolStateEPKNS_15ServiceProviderE")
+pub fn stub_680f9c(state: &mut ToolState, target: u32, fire_equipped: impl Fn(), fire_unequipped: impl Fn()) {
+    // IDA 0x680f9c (`RBX::Tool::setDesiredState`): the tool-count +
+    // `backendProcessing` asserts fold; target 5 from 0 jumps via
+    // `fromNothingToEquipped`, target 0 from 5 via
+    // `fromEquippedToNothing`, otherwise the machine steps down
+    // (5: `downFrom_Equipped`; 4/3: connection disconnects; 1:
+    // `downFrom_HasHandle`, 0x6810b6-0x681120) or up (0:
+    // `connectTouchEvent`; 1: `upTo_InWorkspace`; 2:
+    // `upTo_InCharacter`; ...) one state at a time. Every step is
+    // weld/connection/character plumbing except the `setBackend`
+    // edges, which fire exactly on the 5-boundary crossings — the
+    // 0x680664 twin reproduces those edges for a direct jump, and
+    // intermediate backend values are unobserved. Host: delegate.
+    stub_680664(state, target, fire_equipped, fire_unequipped);
 }
 
 // 0x681190 — __ZN3RBX4Tool19computeDesiredStateEPNS_8InstanceE
@@ -524,8 +656,24 @@ pub fn stub_680f9c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Tool::computeDesiredState(RBX::Instance *)")]
 #[doc(alias = "__ZN3RBX4Tool19computeDesiredStateEPNS_8InstanceE")]
-pub fn stub_681190() -> ! {
-    todo!("0x681190 __ZN3RBX4Tool19computeDesiredStateEPNS_8InstanceE")
+pub fn stub_681190(is_character: bool, has_torso: bool, has_right_arm: bool, has_right_shoulder: bool) -> u32 {
+    // IDA 0x681190 (`RBX::Tool::computeDesiredState(Model)`): 2 by
+    // default; a character model lifts to 3, a torso to 4, a right
+    // arm to 5, kept only with a right shoulder else 4
+    // (0x68119c-0x6811ce). Host: the part-presence seams.
+    if !is_character {
+        return 2;
+    }
+    if !has_torso {
+        return 3;
+    }
+    if !has_right_arm {
+        return 4;
+    }
+    if !has_right_shoulder {
+        return 4;
+    }
+    5
 }
 
 // 0x6811d4 — __ZN3RBX4Tool22getNumToolsInCharacterEv
@@ -533,8 +681,11 @@ pub fn stub_681190() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getNumToolsInCharacter(void)")]
 #[doc(alias = "__ZN3RBX4Tool22getNumToolsInCharacterEv")]
-pub fn stub_6811d4() -> ! {
-    todo!("0x6811d4 __ZN3RBX4Tool22getNumToolsInCharacterEv")
+pub fn stub_6811d4(tool_count: u32) -> u32 {
+    // IDA 0x6811d4 (`RBX::Tool::getNumToolsInCharacter`): counts the
+    // character model's child `Tool`s (0x6811e2-0x681258). The child
+    // list folds into the count seam; callers only compare it.
+    tool_count
 }
 
 // 0x681264 — __ZN3RBX4Tool21fromNothingToEquippedEv
@@ -542,8 +693,12 @@ pub fn stub_6811d4() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::fromNothingToEquipped(void)")]
 #[doc(alias = "__ZN3RBX4Tool21fromNothingToEquippedEv")]
-pub fn stub_681264() -> ! {
-    todo!("0x681264 __ZN3RBX4Tool21fromNothingToEquippedEv")
+pub fn stub_681264(state: &mut ToolState, fire_equipped: impl Fn(), fire_unequipped: impl Fn()) {
+    // IDA 0x681264 (`RBX::Tool::fromNothingToEquipped`): walks the
+    // `upTo_InWorkspace`/`upTo_InCharacter`/`upTo_HasTorso`/
+    // `upTo_Equipped` chain and lands via `setBackendToolState(5)`
+    // (0x6812e2). Host: the landing edge (host: the 0x680664 twin).
+    stub_680664(state, 5, fire_equipped, fire_unequipped);
 }
 
 // 0x6812e8 — __ZN3RBX4Tool21fromEquippedToNothingEv
@@ -551,8 +706,11 @@ pub fn stub_681264() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::fromEquippedToNothing(void)")]
 #[doc(alias = "__ZN3RBX4Tool21fromEquippedToNothingEv")]
-pub fn stub_6812e8() -> ! {
-    todo!("0x6812e8 __ZN3RBX4Tool21fromEquippedToNothingEv")
+pub fn stub_6812e8(state: &mut ToolState, fire_equipped: impl Fn(), fire_unequipped: impl Fn()) {
+    // IDA 0x6812e8 (`RBX::Tool::fromEquippedToNothing`): tears down
+    // via `downFrom_Equipped` and lands via `setBackendToolState(0)`
+    // (0x681376). Host: the landing edge (host: the 0x680664 twin).
+    stub_680664(state, 0, fire_equipped, fire_unequipped);
 }
 
 // 0x68137c — __ZN3RBX4Tool13upTo_EquippedEv
@@ -560,8 +718,10 @@ pub fn stub_6812e8() -> ! {
 // type: void __fastcall(RBX::Tool *this)
 #[doc(alias = "RBX::Tool::upTo_Equipped(void)")]
 #[doc(alias = "__ZN3RBX4Tool13upTo_EquippedEv")]
-pub fn stub_68137c() -> ! {
-    todo!("0x68137c __ZN3RBX4Tool13upTo_EquippedEv")
+pub fn stub_68137c() {
+    // IDA 0x68137c (`RBX::Tool::upTo_Equipped`): welds the handle to
+    // the right arm grip (0x68137c+). Weld plumbing folds away (the
+    // grip frame itself is modeled in `ToolGrip`). Carrier no-op.
 }
 
 // 0x6815c0 — __ZN3RBX4Tool13upTo_HasTorsoEv
@@ -569,8 +729,10 @@ pub fn stub_68137c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::upTo_HasTorso(void)")]
 #[doc(alias = "__ZN3RBX4Tool13upTo_HasTorsoEv")]
-pub fn stub_6815c0() -> ! {
-    todo!("0x6815c0 __ZN3RBX4Tool13upTo_HasTorsoEv")
+pub fn stub_6815c0() {
+    // IDA 0x6815c0 (`RBX::Tool::upTo_HasTorso`): torso-attach wiring
+    // with backend add/remove events (0x6815c0+). World plumbing
+    // folds away. Carrier no-op.
 }
 
 // 0x6818c0 — __ZN3RBX4Tool16upTo_InCharacterEv

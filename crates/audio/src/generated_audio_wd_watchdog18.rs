@@ -938,6 +938,18 @@ pub struct TimerServiceState {
     pub active: bool,
     pub items: Vec<TimerItem>,
 }
+/// `RBX::Tool` cutover (IDA 0x67f188): the backend `ToolState`
+/// word 84 (+336; 0 = Nothing, 2 = in-character w/o torso parts, 3
+/// = torso, 4 = right arm, 5 = equipped — IDA 0x681190-0x6811ce)
+/// and the +396 tooltip string (C2 seeds ""). The +392/+393 flags,
+/// the +344 grip frame (see `ToolGrip`), the mouse/workspace/joint
+/// cells and the vtables/class descriptor fold away (the grip lives
+/// in its own twin set).
+#[derive(Debug, Clone, Default)]
+pub struct ToolState {
+    pub backend_state: u32,
+    pub tooltip: String,
+}
 /// `G3D::CoordinateFrame` rotation behind `RBX::Tool::grip` (IDA
 /// 0x67e7a0+): row-major rows; column `j` is
 /// `[rotation[0][j], rotation[1][j], rotation[2][j]]`. The grip
