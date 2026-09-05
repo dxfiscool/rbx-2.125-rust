@@ -8,7 +8,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::generated_189::{CRenderSettingsItem, RenderEnumDesc, stub_0x8a88};
+use crate::generated_189::{CRenderSettingsItem, RenderEnumDesc, stub_0x8a88, stub_0x8c4c};
 use crate::generated_190::{IntVariant, RenderInt32PropDesc, RenderXmlInput, RenderXmlIntValue};
 use std::sync::LazyLock;
 
@@ -35,6 +35,30 @@ static ANTIALIASING_MODE_ENUM_DESC: LazyLock<RenderEnumDesc> = LazyLock::new(stu
 /// Singleton accessor for the AA enum table.
 pub fn antialiasing_mode_enum_desc() -> &'static RenderEnumDesc {
     LazyLock::force(&ANTIALIASING_MODE_ENUM_DESC)
+}
+
+// 0x11290/0x11444 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEEC2/D0Ev
+/// Rust model of `EnumPropDescriptor<CRenderSettingsItem, ShadowMode>`
+/// (IDA `0x11290` C2 / `0x11444` D0): the shared `EnumDesc<ShadowMode>`
+/// table (via `shadow_mode_enum_desc()`, built by 0x8c4c), the bound
+/// getter/setter pair in the heap impl, and the read/write-only flags (both
+/// queries return 0 per `0x11470`/`0x11480`, so the bits stay set). Same
+/// shape as `RenderAAEnumPropDesc` (0x10a08).
+pub struct RenderShadowEnumPropDesc {
+    pub name: &'static str,
+    pub category: &'static str,
+    pub getter: fn(&CRenderSettingsItem) -> i32,
+    pub setter: fn(&mut CRenderSettingsItem, i32),
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// The `EnumDesc<ShadowMode>` singleton behind the shadow descriptor suite;
+/// built once by the 0x8c4c constructor.
+static SHADOW_MODE_ENUM_DESC: LazyLock<RenderEnumDesc> = LazyLock::new(stub_0x8c4c);
+/// Singleton accessor for the shadow enum table.
+pub fn shadow_mode_enum_desc() -> &'static RenderEnumDesc {
+    LazyLock::force(&SHADOW_MODE_ENUM_DESC)
 }
 
 // 0x109b0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiE10GetSetImplIMNS_15CRenderSettingsEKFivEMS2_FviEE10isReadOnlyEv
@@ -372,204 +396,375 @@ pub fn stub_0x111f8(desc: &RenderAAEnumPropDesc, item: &mut CRenderSettingsItem,
 // 0x11238 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::isReadOnly(void)const")]
-pub fn stub_0x11238() -> ! {
-    todo!("0x11238 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::isReadOnly(void)const")
+pub fn stub_0x11238() -> bool {
+    // IDA 0x11238..0x1123a (decompiled):
+    // `GetSetImpl<AntialiasingMode (CRenderSettings::*)() const, void
+    // (CRenderSettingsItem::*)(AntialiasingMode)>::isReadOnly` returns `0`.
+    // Same shape as 0x106b4.
+    false
 }
 
 // 0x1123c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::isWriteOnly(void)const")]
-pub fn stub_0x1123c() -> ! {
-    todo!("0x1123c RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::isWriteOnly(void)const")
+pub fn stub_0x1123c() -> bool {
+    // IDA 0x1123c..0x1123e (decompiled): the AA-member `GetSetImpl`
+    // `isWriteOnly` twin — returns `0`. Same shape as 0x106b8.
+    false
 }
 
 // 0x11240 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11240() -> ! {
-    todo!("0x11240 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11240(desc: &RenderAAEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x11240..0x1126a (decompiled): `GetSetImpl<...>::getValue` —
+    // resolves the bound `AntialiasingMode (CRenderSettings::*)() const`
+    // member through the `+4` slot (0x11244..0x11268) and invokes it. The
+    // member-pointer dance collapses into the stored getter fn; same shape
+    // as 0x106bc.
+    (desc.getter)(item)
 }
 
 // 0x1126c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_0x1126c() -> ! {
-    todo!("0x1126c RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::GetSetImpl<RBX::CRenderSettings::AntialiasingMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AntialiasingMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AntialiasingMode const&)const")
+pub fn stub_0x1126c(desc: &RenderAAEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) {
+    // IDA 0x1126c..0x1128c (decompiled): `GetSetImpl<...>::setValue` —
+    // resolves the bound `void (CRenderSettingsItem::*)(AntialiasingMode)`
+    // member through the `+12` slot (0x11278..0x11288) and invokes it with
+    // `*a3`. Collapses into the stored setter fn; same shape as 0x106e8.
+    (desc.setter)(item, value)
 }
 
 // 0x11290 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::EnumPropDescriptor<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>(char const*,char const*,RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x11290() -> ! {
-    todo!("0x11290 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::EnumPropDescriptor<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>(char const*,char const*,RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x11290(
+    name: &'static str,
+    category: &'static str,
+    getter: fn(&CRenderSettingsItem) -> i32,
+    setter: fn(&mut CRenderSettingsItem, i32),
+) -> RenderShadowEnumPropDesc {
+    // IDA 0x11290 (decompiled prologue through the `classDescriptor()` touch,
+    // same call shape as 0xfe84..0xfea8):
+    // `EnumPropDescriptor<CRenderSettingsItem, ShadowMode>::C2` — same
+    // construction shape as the ResolutionPreset twin (0xfe84):
+    // `EnumDesc<ShadowMode>` singleton touch, `PropertyDescriptor` C2,
+    // enum-table stores, GetSetImpl alloc with the member pair, vtable
+    // install. The member pointers collapse into the getter/setter fns.
+    let _ = shadow_mode_enum_desc();
+    RenderShadowEnumPropDesc { name, category, getter, setter, read_only: false, write_only: false }
 }
 
 // 0x11444 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor()")]
-pub fn stub_0x11444() -> ! {
-    todo!("0x11444 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor()")
+pub fn stub_0x11444(_desc: *mut RenderShadowEnumPropDesc) {
+    // IDA 0x11444..0x11462 (decompiled): `EnumPropDescriptor<...>::D0` —
+    // vtable install (0x11458), impl `delete` on the `+44` slot
+    // (0x1145a..0x11460), `operator delete`. Same drop-glue shape as
+    // 0x10038.
 }
 
 // 0x11470 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::isReadOnly(void)const")]
-pub fn stub_0x11470() -> ! {
-    todo!("0x11470 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::isReadOnly(void)const")
+pub fn stub_0x11470(desc: &RenderShadowEnumPropDesc) -> bool {
+    // IDA 0x11470..0x1147c (decompiled): `isReadOnly` delegates to the
+    // `+44` impl slot `+0` query, which returns `0` (cf. 0x10064).
+    desc.read_only
 }
 
 // 0x11480 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::isWriteOnly(void)const")]
-pub fn stub_0x11480() -> ! {
-    todo!("0x11480 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::isWriteOnly(void)const")
+pub fn stub_0x11480(desc: &RenderShadowEnumPropDesc) -> bool {
+    // IDA 0x11480..0x1148c (decompiled): `isWriteOnly` delegates to the
+    // `+44` impl slot `+4` query, which returns `0` (cf. 0x10074).
+    desc.write_only
 }
 
 // 0x11490 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11490() -> ! {
-    todo!("0x11490 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11490(
+    desc: &RenderShadowEnumPropDesc,
+    first: &CRenderSettingsItem,
+    second: &CRenderSettingsItem,
+) -> bool {
+    // IDA 0x11490..0x114b6 (decompiled): `equalValues` — `getValue` through
+    // the `+44` slot `+8` on both sides (0x114a0/0x114b6) and compare. Same
+    // shape as 0x10084.
+    (desc.getter)(first) == (desc.getter)(second)
 }
 
 // 0x114b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x114b8() -> ! {
-    todo!("0x114b8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x114b8(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> IntVariant {
+    // IDA 0x114b8..0x114da (decompiled): `getVariant` — `getEnumValue`
+    // through vtable `+68` (0x114c6), `Type::getSingleton<int>` tag
+    // (0x114cc), `placement_any<int>::operator=` (0x114da). Same shape as
+    // 0x100ac.
+    IntVariant { value: (desc.getter)(item) }
 }
 
 // 0x114dc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x114dc() -> ! {
-    todo!("0x114dc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x114dc(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, variant: &IntVariant) {
+    // IDA 0x114dc (decompiled): `setVariant` — same holder-identity int fast
+    // path plus generic `Variant::convert<int>` fallback as 0x100d0, then
+    // the `+72` setter. Our variant only holds ints, so both paths collapse
+    // into the stored setter fn.
+    (desc.setter)(item, variant.value)
 }
 
 // 0x1162c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x1162c() -> ! {
-    todo!("0x1162c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x1162c(desc: &RenderShadowEnumPropDesc, dst: &mut CRenderSettingsItem, src: &CRenderSettingsItem) {
+    // IDA 0x1162c..0x1164e (decompiled): `copyValue` — `getValue` through
+    // the `+44` slot `+8` into a spill (0x1163e), then the `+12` setter
+    // (0x1164e). Same shape as 0x10220.
+    let value = (desc.getter)(src);
+    (desc.setter)(dst, value)
 }
 
 // 0x11650 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::hasStringValue(void)const")]
-pub fn stub_0x11650() -> ! {
-    todo!("0x11650 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::hasStringValue(void)const")
+pub fn stub_0x11650() -> bool {
+    // IDA 0x11650..0x11652 (decompiled): `hasStringValue` returns `1`. Same
+    // shape as 0x10244.
+    true
 }
 
 // 0x11654 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11654() -> ! {
-    todo!("0x11654 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11654(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem, out: &mut String) {
+    // IDA 0x11654..0x11676 (decompiled): `getStringValue` — `getValue`
+    // through the `+44` slot `+8` (0x11666), then
+    // `EnumDesc<ShadowMode>::convertToString`, which is the same
+    // table-driven body as 0xd28c: empty when out of range. Same shape as
+    // 0x10248.
+    let value = (desc.getter)(item);
+    match (value >= 0).then(|| shadow_mode_enum_desc().lookup_name(value)).flatten() {
+        Some(name) => *out = name.to_owned(),
+        None => out.clear(),
+    }
 }
 
 // 0x11678 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x11678() -> ! {
-    todo!("0x11678 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x11678(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x11678..0x116a8 (decompiled): `setStringValue` — `Name::lookup`
+    // (0x1168a), `EnumDesc<ShadowMode>::convertToValue` (0x11698), miss
+    // returns 0, hit sets through the `+44` slot `+12` and returns 1. Same
+    // shape as 0x1026c.
+    if let Some(value) = shadow_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x116b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x116b8() -> ! {
-    todo!("0x116b8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x116b8(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> RenderXmlIntValue {
+    // IDA 0x116b8..0x116d6 (decompiled): `writeValue` — `getValue` through
+    // the `+44` slot `+8` (0x116c6), `clearValue` (0x116cc), type word `5`
+    // (0x116d2), int word (0x116d4), return `5` (0x116d6). Same shape as
+    // 0x102ac.
+    RenderXmlIntValue { kind: 5, int_value: (desc.getter)(item) }
 }
 
 // 0x116d8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x116d8() -> ! {
-    todo!("0x116d8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x116d8(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, input: &RenderXmlInput) {
+    // IDA 0x116d8 (decompiled): `readValue` — same `isXsiNil` bail / int
+    // (`setIntValue`) / string (`Name::lookup` + `convertToValue` + set with
+    // `setStringValue`-mismatch fallback) / `ReleaseAssert(false)` shape as
+    // 0x102cc. `setIntValue` for this desc is the direct member set (cf.
+    // 0x11a80 shape).
+    match input {
+        RenderXmlInput::Nil => {}
+        RenderXmlInput::Int(value) => (desc.setter)(item, *value),
+        RenderXmlInput::Text(name) => {
+            if !stub_0x11678(desc, item, name) {
+                debug_assert!(false, "0x116d8: false (Reflection.h:359)");
+            }
+        }
+    }
 }
 
 // 0x11918 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11918() -> ! {
-    todo!("0x11918 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11918(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> Option<usize> {
+    // IDA 0x11918 (decompiled): `getIndexValue` — `getValue` through the
+    // `+44` slot `+8`, then `EnumDesc<ShadowMode>::convertToIndex`: assert
+    // plus position search. Same shape as 0x1050c.
+    let value = (desc.getter)(item);
+    debug_assert!(value >= 0, "0x11918: value>=0");
+    shadow_mode_enum_desc().pairs.iter().position(|(v, _)| *v == value)
 }
 
 // 0x11934 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x11934() -> ! {
-    todo!("0x11934 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x11934(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, index: usize) -> bool {
+    // IDA 0x11934..0x1195c (decompiled): `setIndexValue` — `count > index`
+    // check against the enum count at `+40` (0x11946), indexed value load
+    // from the value table at `+144` (0x11950), `+44` slot `+12` set
+    // (0x1195a), return 1 (0x1195c); miss returns 0. The `+144` table holds
+    // the values in registration order, so `pairs` stands in. Same shape as
+    // 0x110ac.
+    match shadow_mode_enum_desc().pairs.get(index) {
+        Some((value, _)) => {
+            (desc.setter)(item, *value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x11968 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11968() -> ! {
-    todo!("0x11968 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11968(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x11968..0x1196e (decompiled): `getEnumValue` — `getValue`
+    // through the `+44` slot `+8`. Same delegation as 0x1055c without the
+    // variant wrap.
+    (desc.getter)(item)
 }
 
 // 0x11970 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x11970() -> ! {
-    todo!("0x11970 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x11970(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) -> bool {
+    // IDA 0x11970..0x119b8 (decompiled): `setEnumValue` — `find_if` with
+    // `equalValue` over the enum items, miss returns 0, hit sets through the
+    // `+44` slot `+12` and returns 1. Same shape as 0x10564.
+    if shadow_mode_enum_desc().pairs.iter().any(|(v, _)| *v == value) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x119bc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x119bc() -> ! {
-    todo!("0x119bc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x119bc(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x119bc..0x119da (decompiled): `getEnumItem` — `getValue` through
+    // the `+44` slot `+8` (0x119ce), then
+    // `EnumDesc<ShadowMode>::convertToItem` (0x119da), which is the
+    // identity-table body of 0xd4f8. Same shape as 0x105b0.
+    let value = (desc.getter)(item);
+    let table = shadow_mode_enum_desc();
+    if value >= 0 && (value as usize) < table.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0x119dc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x119dc() -> ! {
-    todo!("0x119dc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x119dc(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x119dc..0x11a0e (decompiled): `setStringValue` on the `Name` —
+    // `EnumDesc<ShadowMode>::convertToValue` (0x119f2), miss returns 0
+    // (0x119f4), hit sets through the `+44` slot `+12` and returns 1.
+    // `Name::c_str` collapses into the `&str` itself; same shape as 0x105d0.
+    if let Some(value) = shadow_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x11a10 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToIndex(RBX::CRenderSettings::ShadowMode)const")]
-pub fn stub_0x11a10() -> ! {
-    todo!("0x11a10 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToIndex(RBX::CRenderSettings::ShadowMode)const")
+pub fn stub_0x11a10(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0x11a10..0x11a7e (decompiled): `EnumDesc<ShadowMode>::convertToIndex`
+    // — `ReleaseAssert(value >= 0)` (enumconverter.h:350, 0x11a24..0x11a64)
+    // falls through, then `value < table ? table[value] : -1` over the
+    // value→index remap. The remap is identity over the registered pairs
+    // here, so the position search stands in. Same shape as 0x10604.
+    debug_assert!(value >= 0, "0x11a10: value>=0");
+    desc.pairs.iter().position(|(v, _)| *v == value).map(|i| i as i32).unwrap_or(-1)
 }
 
 // 0x11a80 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x11a80() -> ! {
-    todo!("0x11a80 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x11a80(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, index: i32) -> bool {
+    // IDA 0x11a80..0x11abc (decompiled): `setIntValue` — `index >= 0` gate
+    // (0x11a8a), bounds check against the value table at `+132`
+    // (0x11a8e..0x11a9c), `-1`-hole check (0x11aa8), `+44` slot `+12` set,
+    // return 1; miss returns 0. Same shape as 0x10674.
+    if index >= 0 {
+        if let Some((value, _)) = shadow_mode_enum_desc().pairs.get(index as usize) {
+            if *value != -1 {
+                (desc.setter)(item, *value);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x11ac0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isReadOnly(void)const")]
-pub fn stub_0x11ac0() -> ! {
-    todo!("0x11ac0 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isReadOnly(void)const")
+pub fn stub_0x11ac0() -> bool {
+    // IDA 0x11ac0..0x11ac2 (decompiled):
+    // `GetSetImpl<ShadowMode (CRenderSettings::*)() const, void
+    // (CRenderSettingsItem::*)(ShadowMode)>::isReadOnly` returns `0`. Same
+    // shape as 0x106b4.
+    false
 }
 
 // 0x11ac4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isWriteOnly(void)const")]
-pub fn stub_0x11ac4() -> ! {
-    todo!("0x11ac4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::isWriteOnly(void)const")
+pub fn stub_0x11ac4() -> bool {
+    // IDA 0x11ac4..0x11ac6 (decompiled): the ShadowMode-member `GetSetImpl`
+    // `isWriteOnly` twin — returns `0`. Same shape as 0x106b8.
+    false
 }
 
 // 0x11ac8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x11ac8() -> ! {
-    todo!("0x11ac8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x11ac8(desc: &RenderShadowEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x11ac8..0x11af2 (decompiled): `GetSetImpl<...>::getValue` —
+    // resolves the bound `ShadowMode (CRenderSettings::*)() const` member
+    // through the `+4` slot (0x11acc..0x11af0) and invokes it. The
+    // member-pointer dance collapses into the stored getter fn; same shape
+    // as 0x106bc.
+    (desc.getter)(item)
 }
 
 // 0x11af4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_0x11af4() -> ! {
-    todo!("0x11af4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::GetSetImpl<RBX::CRenderSettings::ShadowMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ShadowMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ShadowMode const&)const")
+pub fn stub_0x11af4(desc: &RenderShadowEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) {
+    // IDA 0x11af4 (decompiled): `GetSetImpl<...>::setValue` — resolves the
+    // bound `void (CRenderSettingsItem::*)(ShadowMode)` member through the
+    // `+12` slot and invokes it with `*a3`. Collapses into the stored
+    // setter fn; same shape as 0x106e8.
+    (desc.setter)(item, value)
 }
 
 // 0x11b18 — __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1057,6 +1252,42 @@ mod aa_enum_desc_tests {
         assert!(stub_0x10be8(&desc) == false && stub_0x10bf8(&desc) == false);
         assert!(stub_0x10dc8());
         stub_0x10bbc(&mut desc as *mut RenderAAEnumPropDesc);
+    }
+
+    #[test]
+    fn shadow_index_remap_and_guards() {
+        let desc = shadow_mode_enum_desc();
+        assert_eq!(stub_0x11a10(desc, 3), 2);
+        assert_eq!(stub_0x11a10(desc, 2), 3);
+        assert_eq!(stub_0x11a10(desc, 9), -1);
+        let mut d = stub_0x11290(
+            "ShadowMode",
+            "Rendering",
+            |item: &CRenderSettingsItem| item.shadow_mode,
+            |item: &mut CRenderSettingsItem, value: i32| {
+                item.shadow_mode = value;
+            },
+        );
+        let mut item = CRenderSettingsItem::default();
+        assert!(stub_0x11970(&d, &mut item, 3));
+        assert_eq!(stub_0x11968(&d, &item), 3);
+        assert_eq!(stub_0x11918(&d, &item), Some(2));
+        assert!(stub_0x11934(&d, &mut item, 3));
+        assert_eq!(item.shadow_mode, 2);
+        assert!(!stub_0x11970(&d, &mut item, 7));
+        assert!(!stub_0x11a80(&d, &mut item, 9));
+        assert!(stub_0x11a80(&d, &mut item, 0));
+        assert_eq!(item.shadow_mode, 0);
+        assert_eq!(stub_0x11ac8(&d, &item), 0);
+        stub_0x11af4(&d, &mut item, 1);
+        assert_eq!(item.shadow_mode, 1);
+        assert!(!stub_0x11ac0() && !stub_0x11ac4());
+        let mut out = String::new();
+        stub_0x11654(&d, &item, &mut out);
+        assert_eq!(out, "All");
+        assert!(stub_0x11470(&d) == false && stub_0x11480(&d) == false);
+        assert!(stub_0x11650());
+        stub_0x11444(&mut d as *mut RenderShadowEnumPropDesc);
     }
 
     #[test]
