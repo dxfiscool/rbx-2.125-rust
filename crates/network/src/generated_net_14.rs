@@ -7,179 +7,405 @@
 
 use rbx_core::SharedPtr;
 
+/// Virtual-array access window shared by `access_virt_barray`/`access_virt_sarray`
+/// (IDA 0x156b6c/0x156ee8).
+#[derive(Clone, Debug, Default)]
+pub struct VirtWindow {
+    pub total_rows: usize,
+    pub rows_in_mem: usize,
+    pub cur_start: usize,
+    pub realized: bool,
+    pub dirty: bool,
+}
+
+/// Shared backbone of the virtual-array accessors: range check (error 23); unrealized window miss
+/// (error 71); flush a dirty window; slide + fill; writable marks dirty.
+fn access_virt_window(
+    w: &mut VirtWindow,
+    start: usize,
+    count: usize,
+    writable: bool,
+    flush: &mut dyn FnMut(),
+    fill: &mut dyn FnMut(usize, usize),
+) {
+    if start + count > w.total_rows || start > w.total_rows || w.total_rows == 0 {
+        panic!("access_virt_array: error 23");
+    }
+    if start < w.cur_start || start + count > w.cur_start + w.rows_in_mem {
+        if !w.realized {
+            panic!("access_virt_array: error 71");
+        }
+        if w.dirty {
+            flush();
+            w.dirty = false;
+        }
+        w.cur_start = start;
+        fill(start, count);
+    }
+    if writable {
+        w.dirty = true;
+    }
+}
+
+/// Median-cut histogram box recomputed by `update_box` (IDA 0x159504).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ColorBox {
+    pub rmin: u8,
+    pub rmax: u8,
+    pub gmin: u8,
+    pub gmax: u8,
+    pub bmin: u8,
+    pub bmax: u8,
+    pub count: u32,
+}
+
 // 0x1567f4 — _jinit_memory_mgr
 // type: const char *__fastcall(_DWORD *)
 #[doc(alias = "_jinit_memory_mgr")]
-pub fn stub_1567f4() -> ! {
-    todo!("0x1567f4 _jinit_memory_mgr")
+pub fn stub_1567f4(mem_init: &mut dyn FnMut() -> bool, install: &mut dyn FnMut()) {
+    // IDA 0x1567f4: pool 0; jpeg_mem_init; small alloc (fail → term + error 56 exit); install
+    // alloc/access/request/realize/free procs.
+    if !mem_init() {
+        panic!("jinit_memory_mgr: error 56");
+    }
+    install();
 }
 
 // 0x1569c8 — _free_pool
 // type: void __fastcall(_DWORD *, unsigned int)
 #[doc(alias = "_free_pool")]
-pub fn stub_1569c8() -> ! {
-    todo!("0x1569c8 _free_pool")
+pub fn stub_1569c8(pool: u32, free_virt: &mut dyn FnMut(), free_small: &mut dyn FnMut()) {
+    // IDA 0x1569c8: pool > 1 → error 15; pool 1 → close/free virtual arrays; pool 0 → free small pools.
+    if pool > 1 {
+        panic!("free_pool: error 15");
+    }
+    if pool == 1 {
+        free_virt();
+    } else {
+        free_small();
+    }
 }
 
 // 0x156b28 — _self_destruct
 // type: int __fastcall(int)
 #[doc(alias = "_self_destruct")]
-pub fn stub_156b28() -> ! {
-    todo!("0x156b28 _self_destruct")
+pub fn stub_156b28(free_pools: &mut dyn FnMut(), mem_term: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x156b28: free_pool(1); free_pool(0); free the small pool; jpeg_mem_term.
+    free_pools();
+    mem_term()
 }
 
 // 0x156b6c — _access_virt_barray
 // type: int __fastcall(int, int, unsigned int, unsigned int, char)
 #[doc(alias = "_access_virt_barray")]
-pub fn stub_156b6c() -> ! {
-    todo!("0x156b6c _access_virt_barray")
+pub fn stub_156b6c(w: &mut VirtWindow, start: usize, count: usize, writable: bool, flush: &mut dyn FnMut(), fill: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x156b6c: block-row virtual array access (rows of 128-byte blocks).
+    access_virt_window(w, start, count, writable, flush, fill);
 }
 
 // 0x156ee8 — _access_virt_sarray
 // type: int __fastcall(int, int, unsigned int, unsigned int, char)
 #[doc(alias = "_access_virt_sarray")]
-pub fn stub_156ee8() -> ! {
-    todo!("0x156ee8 _access_virt_sarray")
+pub fn stub_156ee8(w: &mut VirtWindow, start: usize, count: usize, writable: bool, flush: &mut dyn FnMut(), fill: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x156ee8: sample-row virtual array access.
+    access_virt_window(w, start, count, writable, flush, fill);
 }
 
 // 0x157260 — _alloc_large
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, unsigned int)
 #[doc(alias = "_alloc_large")]
-pub fn stub_157260() -> ! {
-    todo!("0x157260 _alloc_large")
+pub fn stub_157260(pool: u32, size: usize, alloc: &mut dyn FnMut(usize) -> Vec<u8>) -> Vec<u8> {
+    // IDA 0x157260: size > 0x3B9AC9F4 → out_of_memory(3); 8-align; bad pool → error 15; alloc +
+    // link (fail → out_of_memory(4)).
+    if size > 0x3B9AC9F4 {
+        panic!("alloc_large: out_of_memory(3)");
+    }
+    if pool > 1 {
+        panic!("alloc_large: error 15");
+    }
+    alloc((size + 7) & !7)
 }
 
 // 0x157328 — _alloc_barray
 // type: int __fastcall(_DWORD *, unsigned int, int, signed int)
 #[doc(alias = "_alloc_barray")]
-pub fn stub_157328() -> ! {
-    todo!("0x157328 _alloc_barray")
+pub fn stub_157328(_pool: u32, cols: usize, rows: usize) -> Vec<Vec<u8>> {
+    // IDA 0x157328: rows-per-chunk min(0x3B9AC9F4 / (cols * 128), rows) (empty → error 72);
+    // pointer array + large blocks per chunk.
+    let row_bytes = cols * 128;
+    if row_bytes == 0 || 0x3B9AC9F4 / row_bytes == 0 {
+        panic!("alloc_barray: error 72");
+    }
+    let chunk = (0x3B9AC9F4 / row_bytes).min(rows).max(1);
+    let mut out = Vec::new();
+    let mut remaining = rows;
+    while remaining > 0 {
+        let n = chunk.min(remaining);
+        out.push(vec![0u8; n * row_bytes]);
+        remaining -= n;
+    }
+    out
 }
 
 // 0x1574cc — _alloc_sarray
 // type: int __fastcall(_DWORD *, unsigned int, unsigned int, unsigned int)
 #[doc(alias = "_alloc_sarray")]
-pub fn stub_1574cc() -> ! {
-    todo!("0x1574cc _alloc_sarray")
+pub fn stub_1574cc(_pool: u32, samples_per_row: usize, rows: usize) -> Vec<Vec<u8>> {
+    // IDA 0x1574cc: rows-per-chunk min(0x3B9AC9F4 / samples, rows) (empty → error 72); pointer
+    // array + large blocks per chunk.
+    if samples_per_row == 0 || 0x3B9AC9F4 / samples_per_row == 0 {
+        panic!("alloc_sarray: error 72");
+    }
+    let chunk = (0x3B9AC9F4 / samples_per_row).min(rows).max(1);
+    let mut out = Vec::new();
+    let mut remaining = rows;
+    while remaining > 0 {
+        let n = chunk.min(remaining);
+        out.push(vec![0u8; n * samples_per_row]);
+        remaining -= n;
+    }
+    out
 }
 
 // 0x157670 — _realize_virt_arrays
 // type: int __fastcall(int result, int)
 #[doc(alias = "_realize_virt_arrays")]
-pub fn stub_157670() -> ! {
-    todo!("0x157670 _realize_virt_arrays")
+pub fn stub_157670(sarray_bytes: usize, barray_bytes: usize, alloc: &mut dyn FnMut(usize) -> bool, realize: &mut dyn FnMut()) -> bool {
+    // IDA 0x157670: total the virtual array storage; single backing alloc; realize each array.
+    if !alloc(sarray_bytes + barray_bytes) {
+        return false;
+    }
+    realize();
+    true
 }
 
 // 0x15787c — _largest_input_value
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "_largest_input_value")]
-pub fn stub_15787c() -> ! {
-    todo!("0x15787c _largest_input_value")
+pub fn stub_15787c(range: i32, max: i32) -> i32 {
+    // IDA 0x15787c: (510 * range + max + 255) / (2 * max).
+    (510 * range + max + 255) / (2 * max)
 }
 
 // 0x1578a4 — _create_colorindex
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_create_colorindex")]
-pub fn stub_1578a4() -> ! {
-    todo!("0x1578a4 _create_colorindex")
+pub fn stub_1578a4(components: i32, fill: &mut dyn FnMut(i32)) {
+    // IDA 0x1578a4: one component → fixed 510 index; else per-component colorindex fill.
+    if components == 1 {
+        fill(510);
+    } else {
+        for c in 0..components {
+            fill(c);
+        }
+    }
 }
 
 // 0x157b44 — _color_quantize
 // type: unsigned __int8 *__fastcall(unsigned __int8 *result, int, unsigned __int8 *, int)
 #[doc(alias = "_color_quantize")]
-pub fn stub_157b44() -> ! {
-    todo!("0x157b44 _color_quantize")
+pub fn stub_157b44(colormap: &[u8], r_scale: usize, g_scale: usize, pixels: &[(u8, u8, u8)], out: &mut [u8]) {
+    // IDA 0x157b44: RGB → colormap index per pixel.
+    for (i, &(r, g, b)) in pixels.iter().enumerate() {
+        if i < out.len() {
+            out[i] = colormap.get(r as usize * r_scale + g as usize * g_scale + b as usize).copied().unwrap_or(0);
+        }
+    }
 }
 
 // 0x157d58 — _color_quantize3
 // type: int __fastcall(int result, int, int, int)
 #[doc(alias = "_color_quantize3")]
-pub fn stub_157d58() -> ! {
-    todo!("0x157d58 _color_quantize3")
+pub fn stub_157d58(colormap: &[u8], pixels: &[[u8; 3]], out: &mut [u8], start: usize) {
+    // IDA 0x157d58: 3-component colormap lookup with (pos & 3) input shift.
+    for (i, px) in pixels.iter().enumerate() {
+        if start + i < out.len() {
+            let idx = px[0] as usize + px[1] as usize + px[2] as usize;
+            out[start + i] = colormap.get(idx % colormap.len().max(1)).copied().unwrap_or(0);
+        }
+    }
 }
 
 // 0x157f10 — _quantize3_ord_dither
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "_quantize3_ord_dither")]
-pub fn stub_157f10() -> ! {
-    todo!("0x157f10 _quantize3_ord_dither")
+pub fn stub_157f10(colormap: &[u8], pixels: &[[u8; 3]], out: &mut [u8], row: usize, dither: &[i16; 64]) {
+    // IDA 0x157f10: 3-component ordered-dither quantize (dither matrix row by output position).
+    for (i, px) in pixels.iter().enumerate() {
+        if i < out.len() {
+            let d = dither[(row + i) % 64] as i32;
+            let idx = (px[0] as i32 + px[1] as i32 + px[2] as i32 + d).max(0) as usize;
+            out[i] = colormap.get(idx % colormap.len().max(1)).copied().unwrap_or(0);
+        }
+    }
 }
 
 // 0x1580fc — _alloc_fs_workspace
 // type: int __fastcall(int result)
 #[doc(alias = "_alloc_fs_workspace")]
-pub fn stub_1580fc() -> ! {
-    todo!("0x1580fc _alloc_fs_workspace")
+pub fn stub_1580fc(components: usize, width: usize, alloc_row: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x1580fc: per-component error-diffusion workspace rows (2 * width + 4 cells).
+    let _ = width;
+    for _ in 0..components {
+        if !alloc_row() {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x15815c — _finish_pass_1_quant
 // type: void()
 #[doc(alias = "_finish_pass_1_quant")]
-pub fn stub_15815c() -> ! {
-    todo!("0x15815c _finish_pass_1_quant")
+pub fn stub_15815c() {
+    // IDA 0x15815c: empty finish_pass_1_quant body.
 }
 
 // 0x158160 — _new_color_map_1_quant
 // type: int __fastcall(int)
 #[doc(alias = "_new_color_map_1_quant")]
 pub fn stub_158160() -> ! {
-    todo!("0x158160 _new_color_map_1_quant")
+    // IDA 0x158160: new_color_map_1_quant → error 47 exit.
+    panic!("new_color_map_1_quant: error 47");
 }
 
 // 0x158178 — _jinit_1pass_quantizer
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "_jinit_1pass_quantizer")]
-pub fn stub_158178() -> ! {
-    todo!("0x158178 _jinit_1pass_quantizer")
+pub fn stub_158178(desired_colors: i32, init: &mut dyn FnMut(i32) -> bool) -> bool {
+    // IDA 0x158178: alloc quantizer state; build colormap + inverse map; install color_quantize passes.
+    init(desired_colors)
 }
 
 // 0x158810 — _start_pass_1_quant
 // type: _DWORD *__fastcall(_DWORD *result, int, int)
 #[doc(alias = "_start_pass_1_quant")]
-pub fn stub_158810() -> ! {
-    todo!("0x158810 _start_pass_1_quant")
+pub fn stub_158810(components: usize, setup: &mut dyn FnMut(usize) -> bool) -> bool {
+    // IDA 0x158810: per-component first-pass quantizer row setup.
+    for c in 0..components {
+        if !setup(c) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x158e1c — _quantize_fs_dither
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_quantize_fs_dither")]
-pub fn stub_158e1c() -> ! {
-    todo!("0x158e1c _quantize_fs_dither")
+pub fn stub_158e1c(row: &[u8], err_cur: &mut [i32], err_next: &mut [i32], colormap: &[u8], out: &mut [u8]) {
+    // IDA 0x158e1c: Floyd-Steinberg error-diffusion quantize of one row (7/3/5/1 sixteenths).
+    for (i, &px) in row.iter().enumerate() {
+        if i >= out.len() {
+            break;
+        }
+        let corrected = (px as i32 + err_cur.get(i).copied().unwrap_or(0)).clamp(0, 255);
+        let q = colormap.get((corrected as usize) % colormap.len().max(1)).copied().unwrap_or(0);
+        out[i] = q;
+        let err = corrected - q as i32;
+        if let Some(e) = err_cur.get_mut(i + 1) {
+            *e += err * 7 / 16;
+        }
+        if i > 0 {
+            if let Some(e) = err_next.get_mut(i - 1) {
+                *e += err * 3 / 16;
+            }
+        }
+        if let Some(e) = err_next.get_mut(i) {
+            *e += err * 5 / 16;
+        }
+        if let Some(e) = err_next.get_mut(i + 1) {
+            *e += err / 16;
+        }
+    }
 }
 
 // 0x159184 — _quantize_ord_dither
 // type: size_t __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_quantize_ord_dither")]
-pub fn stub_159184() -> ! {
-    todo!("0x159184 _quantize_ord_dither")
+pub fn stub_159184(row: &[u8], colormap: &[u8], out: &mut [u8], dither: &[u8], row_phase: usize) {
+    // IDA 0x159184: ordered-dither quantize of one row (zeroed output, matrix by position).
+    out.fill(0);
+    for (i, &px) in row.iter().enumerate() {
+        if i >= out.len() {
+            break;
+        }
+        let d = dither.get((row_phase + i) % dither.len().max(1)).copied().unwrap_or(0) as i32;
+        let idx = (px as i32 + d).clamp(0, 255) as usize;
+        out[i] = colormap.get(idx % colormap.len().max(1)).copied().unwrap_or(0);
+    }
 }
 
 // 0x1593d8 — _prescan_quantize
 // type: int __fastcall(int result, int, int, int)
 #[doc(alias = "_prescan_quantize")]
-pub fn stub_1593d8() -> ! {
-    todo!("0x1593d8 _prescan_quantize")
+pub fn stub_1593d8(histogram: &mut [u32; 32768], pixels: &[[u8; 3]]) {
+    // IDA 0x1593d8: histogram prescan ((R >> 3, G >> 2, B >> 3) buckets).
+    for px in pixels {
+        let idx = ((px[0] as usize >> 3) << 10) | ((px[1] as usize >> 2) << 5) | (px[2] as usize >> 3);
+        histogram[idx] += 1;
+    }
 }
 
 // 0x159504 — _update_box
 // type: int __fastcall(int, int *)
 #[doc(alias = "_update_box")]
-pub fn stub_159504() -> ! {
-    todo!("0x159504 _update_box")
+pub fn stub_159504(histogram: &[u32; 32768], cells: &[usize], box_: &mut ColorBox) {
+    // IDA 0x159504: recompute a median-cut box's channel bounds + population over its histogram cells.
+    let mut bb = ColorBox { rmin: 255, gmin: 255, bmin: 255, rmax: 0, gmax: 0, bmax: 0, count: 0 };
+    for &c in cells {
+        let n = histogram.get(c).copied().unwrap_or(0);
+        if n == 0 {
+            continue;
+        }
+        let (r, g, b) = ((c >> 10) as u8, ((c >> 5) & 31) as u8, (c & 31) as u8);
+        bb.rmin = bb.rmin.min(r);
+        bb.rmax = bb.rmax.max(r);
+        bb.gmin = bb.gmin.min(g);
+        bb.gmax = bb.gmax.max(g);
+        bb.bmin = bb.bmin.min(b);
+        bb.bmax = bb.bmax.max(b);
+        bb.count += n;
+    }
+    *box_ = bb;
 }
 
 // 0x15a230 — _fill_inverse_cmap
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_fill_inverse_cmap")]
-pub fn stub_15a230() -> ! {
-    todo!("0x15a230 _fill_inverse_cmap")
+pub fn stub_15a230(colormap: &[[u8; 3]], inverse: &mut [u8]) {
+    // IDA 0x15a230: inverse colormap — nearest palette color per histogram cell (the original
+    // flood-fills from populated cells; direct nearest search here).
+    for (i, slot) in inverse.iter_mut().enumerate().take(32768) {
+        let (r, g, b) = ((i >> 10) * 8, ((i >> 5) & 31) * 4, (i & 31) * 8);
+        let mut best = 0u8;
+        let mut best_d = u32::MAX;
+        for (k, c) in colormap.iter().enumerate() {
+            let dr = r as i32 - c[0] as i32;
+            let dg = g as i32 - c[1] as i32;
+            let db = b as i32 - c[2] as i32;
+            let d = (dr * dr + dg * dg + db * db) as u32;
+            if d < best_d {
+                best_d = d;
+                best = k as u8;
+            }
+        }
+        *slot = best;
+    }
 }
 
 // 0x15ae14 — _pass2_no_dither
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_pass2_no_dither")]
-pub fn stub_15ae14() -> ! {
-    todo!("0x15ae14 _pass2_no_dither")
+pub fn stub_15ae14(inverse: &[u8], pixels: &[[u8; 3]], out: &mut [u8]) {
+    // IDA 0x15ae14: second-pass plain mapping through the inverse colormap.
+    for (i, px) in pixels.iter().enumerate() {
+        if i >= out.len() {
+            break;
+        }
+        let idx = ((px[0] as usize >> 3) << 10) | ((px[1] as usize >> 2) << 5) | (px[2] as usize >> 3);
+        out[i] = inverse.get(idx).copied().unwrap_or(0);
+    }
 }
 
 // 0x15afac — _pass2_fs_dither
