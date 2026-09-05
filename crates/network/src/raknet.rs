@@ -13153,78 +13153,98 @@ pub fn stub_9c3cd8() -> usize {
 // 0x9c3cdc — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::Job> *,RBX::Network::PhysicsSender::Job *,boost::detail::shared_count &)")]
-pub fn stub_9c3cdc() -> ! {
-    todo!("0x9c3cdc void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> *,RBX::Network::PhysicsSender::Job *,boost::detail::shared_count &)")
+pub fn stub_9c3cdc(make: &mut dyn FnMut()) {
+ // IDA 0x9c3cdc: sp_pointer_construct<PhysicsSender::Job> (below truncation).
+ make();
 }
 
 // 0x9c3e8c — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::Job> const*,RBX::Network::PhysicsSender::Job *)const")]
-pub fn stub_9c3e8c() -> ! {
-    todo!("0x9c3e8c void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> const*,RBX::Network::PhysicsSender::Job *)const")
+pub fn stub_9c3e8c(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9c3e8c: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9c4138 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
-pub fn stub_9c4138() -> ! {
-    todo!("0x9c4138 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")
+pub fn stub_9c4138() {
+ // IDA 0x9c4138: empty sp_counted_impl_p<PhysicsSender::Job> D2 body.
 }
 
 // 0x9c413c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
-pub fn stub_9c413c() -> ! {
-    todo!("0x9c413c boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")
+pub fn stub_9c413c(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9c413c: D0: operator delete.
+ free(block);
 }
 
 // 0x9c4148 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::dispose(void)")]
-pub fn stub_9c4148() -> ! {
-    todo!("0x9c4148 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::dispose(void)")
+pub fn stub_9c4148(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9c4148: null px -> 0 else the virtual destroy.
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0x9c415c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_deleter(std::type_info const&)")]
-pub fn stub_9c415c() -> ! {
-    todo!("0x9c415c boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_deleter(std::type_info const&)")
+pub fn stub_9c415c() -> usize {
+ // IDA 0x9c415c: get_deleter returns 0.
+ 0
 }
 
 // 0x9c4160 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_untyped_deleter(void)")]
-pub fn stub_9c4160() -> ! {
-    todo!("0x9c4160 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_untyped_deleter(void)")
+pub fn stub_9c4160() -> usize {
+ // IDA 0x9c4160: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0x9c469c — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_9c469c() -> ! {
-    todo!("0x9c469c rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_9c469c(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9c469c: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0x9c46f8 — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_9c46f8() -> ! {
-    todo!("0x9c46f8 rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_9c46f8(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9c46f8: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0x9c4980 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
-pub fn stub_9c4980() -> ! {
-    todo!("0x9c4980 rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")
+pub fn stub_9c4980(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+ // IDA 0x9c4980: mf1 inline dispatch (virtual adjust); obj->method().
+ call(obj, is_virtual);
 }
 
 // 0x9c499c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
-pub fn stub_9c499c() -> ! {
-    todo!("0x9c499c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")
+pub fn stub_9c499c(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+ // IDA 0x9c499c: non-virtual thunk adjusts inward then tail-calls the operator().
+ call(obj, is_virtual);
 }
 
 // 0x9c56a4 — __ZN3RBX7Network13PhysicsSender8TouchJobC2EN5boost10shared_ptrIS1_EE
@@ -13595,8 +13615,9 @@ pub fn stub_9cb40c(server: &mut crate::server::Server) {
 #[doc(
     alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>> const&)const"
 )]
-pub fn stub_9cb4ac() -> ! {
-    todo!("0x9cb4ac void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Server,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Server*>,boost::arg<1>>> const&)const")
+pub fn stub_9cb4ac(visit: &mut dyn FnMut()) {
+ // IDA 0x9cb4ac: visitDescendants with the Server bind (below truncation).
+ visit();
 }
 
 // 0x9cb9f0 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15NetworkOwnerJobES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
@@ -13604,8 +13625,9 @@ pub fn stub_9cb4ac() -> ! {
 #[doc(
     alias = "void boost::detail::sp_pointer_construct<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(boost::shared_ptr<RBX::Network::NetworkOwnerJob> *,RBX::Network::NetworkOwnerJob *,boost::detail::shared_count &)"
 )]
-pub fn stub_9cb9f0() -> ! {
-    todo!("0x9cb9f0 void boost::detail::sp_pointer_construct<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(boost::shared_ptr<RBX::Network::NetworkOwnerJob> *,RBX::Network::NetworkOwnerJob *,boost::detail::shared_count &)")
+pub fn stub_9cb9f0(make: &mut dyn FnMut()) {
+ // IDA 0x9cb9f0: sp_pointer_construct<NetworkOwnerJob> (below truncation).
+ make();
 }
 
 // 0x9cbba0 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network15NetworkOwnerJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -13613,8 +13635,13 @@ pub fn stub_9cb9f0() -> ! {
 #[doc(
     alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(boost::shared_ptr<RBX::Network::NetworkOwnerJob> const*,RBX::Network::NetworkOwnerJob *)const"
 )]
-pub fn stub_9cbba0() -> ! {
-    todo!("0x9cbba0 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::NetworkOwnerJob,RBX::Network::NetworkOwnerJob>(boost::shared_ptr<RBX::Network::NetworkOwnerJob> const*,RBX::Network::NetworkOwnerJob *)const")
+pub fn stub_9cbba0(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9cbba0: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9cbe4c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEED1Ev
@@ -13622,8 +13649,8 @@ pub fn stub_9cbba0() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::~sp_counted_impl_p()"
 )]
-pub fn stub_9cbe4c() -> ! {
-    todo!("0x9cbe4c boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::~sp_counted_impl_p()")
+pub fn stub_9cbe4c() {
+ // IDA 0x9cbe4c: empty sp_counted_impl_p<NetworkOwnerJob> D2 body.
 }
 
 // 0x9cbe50 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEED0Ev
@@ -13631,15 +13658,17 @@ pub fn stub_9cbe4c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::~sp_counted_impl_p()"
 )]
-pub fn stub_9cbe50() -> ! {
-    todo!("0x9cbe50 boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::~sp_counted_impl_p()")
+pub fn stub_9cbe50(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9cbe50: D0: operator delete.
+ free(block);
 }
 
 // 0x9cbe5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::dispose(void)")]
-pub fn stub_9cbe5c() -> ! {
-    todo!("0x9cbe5c boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::dispose(void)")
+pub fn stub_9cbe5c(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9cbe5c: null px -> 0 else the virtual destroy.
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0x9cbe70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEE11get_deleterERKSt9type_info
@@ -13647,8 +13676,9 @@ pub fn stub_9cbe5c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_9cbe70() -> ! {
-    todo!("0x9cbe70 boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::get_deleter(std::type_info const&)")
+pub fn stub_9cbe70() -> usize {
+ // IDA 0x9cbe70: get_deleter returns 0.
+ 0
 }
 
 // 0x9cbe74 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network15NetworkOwnerJobEE19get_untyped_deleterEv
@@ -13656,8 +13686,9 @@ pub fn stub_9cbe70() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::get_untyped_deleter(void)"
 )]
-pub fn stub_9cbe74() -> ! {
-    todo!("0x9cbe74 boost::detail::sp_counted_impl_p<RBX::Network::NetworkOwnerJob>::get_untyped_deleter(void)")
+pub fn stub_9cbe74() -> usize {
+ // IDA 0x9cbe74: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0x9cbe78 — __ZNK3RBX15ServiceProvider6createINS_7Network18ClusterPacketCacheEEEPT_v
@@ -13665,8 +13696,9 @@ pub fn stub_9cbe74() -> ! {
 #[doc(
     alias = "RBX::Network::ClusterPacketCache * RBX::ServiceProvider::create<RBX::Network::ClusterPacketCache>(void)const"
 )]
-pub fn stub_9cbe78() -> ! {
-    todo!("0x9cbe78 RBX::Network::ClusterPacketCache * RBX::ServiceProvider::create<RBX::Network::ClusterPacketCache>(void)const")
+pub fn stub_9cbe78(make: &mut dyn FnMut()) {
+ // IDA 0x9cbe78: create<ClusterPacketCache> (below truncation).
+ make();
 }
 
 // 0x9cc5bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network18ClusterPacketCacheES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -13674,8 +13706,13 @@ pub fn stub_9cbe78() -> ! {
 #[doc(
     alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClusterPacketCache,RBX::Network::ClusterPacketCache>(boost::shared_ptr<RBX::Network::ClusterPacketCache> const*,RBX::Network::ClusterPacketCache *)const"
 )]
-pub fn stub_9cc5bc() -> ! {
-    todo!("0x9cc5bc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClusterPacketCache,RBX::Network::ClusterPacketCache>(boost::shared_ptr<RBX::Network::ClusterPacketCache> const*,RBX::Network::ClusterPacketCache *)const")
+pub fn stub_9cc5bc(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9cc5bc: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9cc878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network18ClusterPacketCacheENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -13683,8 +13720,8 @@ pub fn stub_9cc5bc() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_9cc878() -> ! {
-    todo!("0x9cc878 boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9cc878() {
+ // IDA 0x9cc878: empty sp_counted_impl_pd<ClusterPacketCache> D2 body.
 }
 
 // 0x9cc87c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network18ClusterPacketCacheENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -13692,8 +13729,9 @@ pub fn stub_9cc878() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_9cc87c() -> ! {
-    todo!("0x9cc87c boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9cc87c(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9cc87c: D0: operator delete.
+ free(block);
 }
 
 // 0x9cc888 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network18ClusterPacketCacheENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -13701,8 +13739,14 @@ pub fn stub_9cc87c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)"
 )]
-pub fn stub_9cc888() -> ! {
-    todo!("0x9cc888 boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_9cc888(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9cc888: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0x9cc8a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network18ClusterPacketCacheENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -13710,8 +13754,13 @@ pub fn stub_9cc888() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_9cc8a4() -> ! {
-    todo!("0x9cc8a4 boost::detail::sp_counted_impl_pd<RBX::Network::ClusterPacketCache *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_9cc8a4(block: usize, type_name: &str) -> usize {
+ // IDA 0x9cc8a4: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0x9cc8bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network18ClusterPacketCacheENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
