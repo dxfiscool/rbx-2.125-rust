@@ -11359,152 +11359,235 @@ pub fn stub_9b0804(update: &mut dyn FnMut() -> u32) -> u32 {
 
 // 0x9b0968 — __ZN3RBX7Network15NetworkOwnerJob18updateNetworkOwnerEPNS_12PartInstanceE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::updateNetworkOwner(RBX::PartInstance *)")]
-pub fn stub_9b0968() -> ! {
-    todo!("0x9b0968 RBX::Network::NetworkOwnerJob::updateNetworkOwner(RBX::PartInstance *)")
+pub fn stub_9b0968(update: &mut dyn FnMut() -> usize) -> usize {
+ // IDA 0x9b0968: updateNetworkOwner (below truncation).
+ update()
 }
 
 // 0x9b0e18 — __ZN3RBX7Network15NetworkOwnerJob17clientCanSimulateEPNS_12PartInstanceESt23_Rb_tree_const_iteratorISt4pairIKNS_13SystemAddressENS1_14ClientLocationEEE
 #[doc(alias = "RBX::Network::NetworkOwnerJob::clientCanSimulate(RBX::PartInstance *,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>)")]
-pub fn stub_9b0e18() -> ! {
-    todo!("0x9b0e18 RBX::Network::NetworkOwnerJob::clientCanSimulate(RBX::PartInstance *,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>)")
+pub fn stub_9b0e18(check: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x9b0e18: clientCanSimulate (below truncation).
+ check()
 }
 
 // 0x9b0f04 — __ZN3RBX7Network15NetworkOwnerJob12switchOwnersEPNS_12PartInstanceESt23_Rb_tree_const_iteratorISt4pairIKNS_13SystemAddressENS1_14ClientLocationEEESA_
 #[doc(alias = "RBX::Network::NetworkOwnerJob::switchOwners(RBX::PartInstance *,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>)")]
-pub fn stub_9b0f04() -> ! {
-    todo!("0x9b0f04 RBX::Network::NetworkOwnerJob::switchOwners(RBX::PartInstance *,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::_Rb_tree_const_iterator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>)")
+pub fn stub_9b0f04(switch: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b0f04: switchOwners (below truncation).
+ switch()
+}
+
+/// `NetworkOwnerJob` client-location table (IDA 0x9b10f8 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct ClientLocMap {
+ pub entries: HashMap<u32, u64>,
 }
 
 // 0x9b10f8 — __ZN3RBX7Network15NetworkOwnerJobD1Ev
 #[doc(alias = "RBX::Network::NetworkOwnerJob::~NetworkOwnerJob()")]
-pub fn stub_9b10f8() -> ! {
-    todo!("0x9b10f8 RBX::Network::NetworkOwnerJob::~NetworkOwnerJob()")
+pub fn stub_9b10f8(map: &mut ClientLocMap, destroy: &mut dyn FnMut()) {
+ // IDA 0x9b10f8: D1: map erase (below truncation).
+ map.entries.clear();
+ destroy();
 }
 
 // 0x9b1230 — __ZN3RBX7Network15NetworkOwnerJobD0Ev
 #[doc(alias = "RBX::Network::NetworkOwnerJob::~NetworkOwnerJob()")]
-pub fn stub_9b1230() -> ! {
-    todo!("0x9b1230 RBX::Network::NetworkOwnerJob::~NetworkOwnerJob()")
+pub fn stub_9b1230(map: &mut ClientLocMap, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b1230: D0: map erase then operator delete (below truncation).
+ map.entries.clear();
+ destroy(map.entries.len());
+ free(map.entries.len());
 }
 
 // 0x9b137c — __ZNSt8_Rb_treeIN3RBX13SystemAddressESt4pairIKS1_NS0_7Network15NetworkOwnerJob14ClientLocationEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_
 #[doc(alias = "std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>,std::_Select1st<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>>::_M_insert_unique(std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation> const&)")]
-pub fn stub_9b137c() -> ! {
-    todo!("0x9b137c std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>,std::_Select1st<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>>::_M_insert_unique(std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation> const&)")
+pub fn stub_9b137c(map: &mut ClientLocMap, key: u32, value: u64) -> bool {
+ // IDA 0x9b137c: unique insert; false when the key exists.
+ if map.entries.contains_key(&key) {
+ false
+ } else {
+ map.entries.insert(key, value);
+ true
+ }
 }
 
 // 0x9b14bc — __ZNSt8_Rb_treeIN3RBX13SystemAddressESt4pairIKS1_NS0_7Network15NetworkOwnerJob14ClientLocationEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>,std::_Select1st<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>> *)")]
-pub fn stub_9b14bc() -> ! {
-    todo!("0x9b14bc std::_Rb_tree<RBX::SystemAddress,std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>,std::_Select1st<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>,std::less<RBX::SystemAddress>,std::allocator<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SystemAddress const,RBX::Network::NetworkOwnerJob::ClientLocation>> *)")
+pub fn stub_9b14bc(map: &mut ClientLocMap) {
+ // IDA 0x9b14bc: erases the whole subtree.
+ map.entries.clear();
 }
 
 // 0x9b1c00 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")]
-pub fn stub_9b1c00() -> ! {
-    todo!("0x9b1c00 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")
+pub fn stub_9b1c00(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b1c00: EnumDesc C1 tail-calls the C2 overload.
+ init(slot);
+ slot
 }
 
 // 0x9b1c0c — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")]
-pub fn stub_9b1c0c() -> ! {
-    todo!("0x9b1c0c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")
+pub fn stub_9b1c0c(name: &mut String, values: &mut Vec<(String, i32)>) {
+ // IDA 0x9b1c0c: EnumDescriptor("PhysicsSendMethod") + value list init.
+ *name = "PhysicsSendMethod".to_string();
+ values.clear();
 }
 
 // 0x9b1e50 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")]
-pub fn stub_9b1e50() -> ! {
-    todo!("0x9b1e50 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")
+pub fn stub_9b1e50(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b1e50: EnumDesc C1 tail-calls the C2 overload.
+ init(slot);
+ slot
 }
 
 // 0x9b1e5c — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")]
-pub fn stub_9b1e5c() -> ! {
-    todo!("0x9b1e5c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")
+pub fn stub_9b1e5c(name: &mut String, values: &mut Vec<(String, i32)>) {
+ // IDA 0x9b1e5c: EnumDescriptor("PhysicsReceiveMethod") + value list init.
+ *name = "PhysicsReceiveMethod".to_string();
+ values.clear();
 }
 
 // 0x9b2524 — __ZN3RBX15NetworkSettings15setDataSendRateEf
 #[doc(alias = "RBX::NetworkSettings::setDataSendRate(float)")]
-pub fn stub_9b2524() -> ! {
-    todo!("0x9b2524 RBX::NetworkSettings::setDataSendRate(float)")
+pub fn stub_9b2524(current: &mut f32, value: f32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2524: clamp to [5.0, 120.0]; raisePropertyChanged on change.
+ let v = value.min(120.0).max(5.0);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b2570 — __ZN3RBX15NetworkSettings13setDataGCRateEf
 #[doc(alias = "RBX::NetworkSettings::setDataGCRate(float)")]
-pub fn stub_9b2570() -> ! {
-    todo!("0x9b2570 RBX::NetworkSettings::setDataGCRate(float)")
+pub fn stub_9b2570(current: &mut f32, value: f32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2570: clamp to [2.0, 60.0]; raisePropertyChanged on change.
+ let v = value.min(60.0).max(2.0);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b25bc — __ZN3RBX15NetworkSettings18setPhysicsSendRateEf
 #[doc(alias = "RBX::NetworkSettings::setPhysicsSendRate(float)")]
-pub fn stub_9b25bc() -> ! {
-    todo!("0x9b25bc RBX::NetworkSettings::setPhysicsSendRate(float)")
+pub fn stub_9b25bc(current: &mut f32, value: f32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b25bc: clamp to [5.0, 120.0]; raisePropertyChanged on change.
+ let v = value.min(120.0).max(5.0);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b2608 — __ZN3RBX15NetworkSettings14setReceiveRateEd
 #[doc(alias = "RBX::NetworkSettings::setReceiveRate(double)")]
-pub fn stub_9b2608() -> ! {
-    todo!("0x9b2608 RBX::NetworkSettings::setReceiveRate(double)")
+pub fn stub_9b2608(current: &mut f64, value: f64, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2608: clamp to [5.0, 120.0]; raisePropertyChanged on change.
+ let v = value.min(120.0).max(5.0);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b2668 — __ZN3RBX15NetworkSettings20setPhysicsSendMethodERKNS0_17PhysicsSendMethodE
 #[doc(alias = "RBX::NetworkSettings::setPhysicsSendMethod(RBX::NetworkSettings::PhysicsSendMethod const&)")]
-pub fn stub_9b2668() -> ! {
-    todo!("0x9b2668 RBX::NetworkSettings::setPhysicsSendMethod(RBX::NetworkSettings::PhysicsSendMethod const&)")
+pub fn stub_9b2668(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2668: stores at +36; raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b2690 — __ZN3RBX15NetworkSettings28dummySetPhysicsReceiveMethodERKNS0_20PhysicsReceiveMethodE
 #[doc(alias = "RBX::NetworkSettings::dummySetPhysicsReceiveMethod(RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
-pub fn stub_9b2690() -> ! {
-    todo!("0x9b2690 RBX::NetworkSettings::dummySetPhysicsReceiveMethod(RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+pub fn stub_9b2690(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2690: stores at +37; raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b26b8 — __ZN3RBX15NetworkSettings22setPhysicsSendPriorityERK14PacketPriority
 #[doc(alias = "RBX::NetworkSettings::setPhysicsSendPriority(PacketPriority const&)")]
-pub fn stub_9b26b8() -> ! {
-    todo!("0x9b26b8 RBX::NetworkSettings::setPhysicsSendPriority(PacketPriority const&)")
+pub fn stub_9b26b8(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b26b8: stores at +38; raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b26e0 — __ZN3RBX15NetworkSettings19setPhysicsMtuAdjustEi
 #[doc(alias = "RBX::NetworkSettings::setPhysicsMtuAdjust(int)")]
-pub fn stub_9b26e0() -> ! {
-    todo!("0x9b26e0 RBX::NetworkSettings::setPhysicsMtuAdjust(int)")
+pub fn stub_9b26e0(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b26e0: clamps to [-1000, 0]; raisePropertyChanged on change.
+ let v = value.min(0).max(-1000);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b271c — __ZN3RBX15NetworkSettings23setReplicationMtuAdjustEi
 #[doc(alias = "RBX::NetworkSettings::setReplicationMtuAdjust(int)")]
-pub fn stub_9b271c() -> ! {
-    todo!("0x9b271c RBX::NetworkSettings::setReplicationMtuAdjust(int)")
+pub fn stub_9b271c(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b271c: clamps to [-1000, 0]; raisePropertyChanged on change.
+ let v = value.min(0).max(-1000);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b2758 — __ZN3RBX15NetworkSettings19setDataSendPriorityERK14PacketPriority
 #[doc(alias = "RBX::NetworkSettings::setDataSendPriority(PacketPriority const&)")]
-pub fn stub_9b2758() -> ! {
-    todo!("0x9b2758 RBX::NetworkSettings::setDataSendPriority(PacketPriority const&)")
+pub fn stub_9b2758(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2758: stores at +39; raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b2780 — __ZN3RBX15NetworkSettings22setExtraMemoryUsedInMBEi
 #[doc(alias = "RBX::NetworkSettings::setExtraMemoryUsedInMB(int)")]
-pub fn stub_9b2780() -> ! {
-    todo!("0x9b2780 RBX::NetworkSettings::setExtraMemoryUsedInMB(int)")
+pub fn stub_9b2780(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b2780: floors at 0; raisePropertyChanged on change.
+ let v = value.max(0);
+ if v != *current {
+ *current = v;
+ notify();
+ }
 }
 
 // 0x9b27ac — __ZNK3RBX15NetworkSettings19getFreeMemoryMBytesEv
 #[doc(alias = "RBX::NetworkSettings::getFreeMemoryMBytes(void)const")]
-pub fn stub_9b27ac() -> ! {
-    todo!("0x9b27ac RBX::NetworkSettings::getFreeMemoryMBytes(void)const")
+pub fn stub_9b27ac(free_bytes: u32) -> u32 {
+ // IDA 0x9b27ac: bytes * (1/1024)^2 = MBytes.
+ ((free_bytes as f32) * 0.0009765625 * 0.0009765625) as u32
 }
 
 // 0x9b27d4 — __ZNK3RBX15NetworkSettings23getFreeMemoryPoolMBytesEv
 #[doc(alias = "RBX::NetworkSettings::getFreeMemoryPoolMBytes(void)const")]
-pub fn stub_9b27d4() -> ! {
-    todo!("0x9b27d4 RBX::NetworkSettings::getFreeMemoryPoolMBytes(void)const")
+pub fn stub_9b27d4(pool_bytes: u32) -> u32 {
+ // IDA 0x9b27d4: pool bytes * (1/1024)^2 = MBytes.
+ ((pool_bytes as f32) * 0.0009765625 * 0.0009765625) as u32
 }
 
 // 0x9b27fc — __ZNK3RBX15NetworkSettings24getRenderStreamedRegionsEv
 #[doc(alias = "RBX::NetworkSettings::getRenderStreamedRegions(void)const")]
-pub fn stub_9b27fc() -> ! {
-    todo!("0x9b27fc RBX::NetworkSettings::getRenderStreamedRegions(void)const")
+pub fn stub_9b27fc(flag: bool) -> bool {
+ // IDA 0x9b27fc: returns Workspace::showStreamedRegions.
+ flag
 }
 
 // 0x9b280c — __ZN3RBX15NetworkSettings24setRenderStreamedRegionsEb
