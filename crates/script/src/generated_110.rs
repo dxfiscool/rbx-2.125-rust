@@ -44,6 +44,24 @@ impl SchedulerBlockers {
 pub struct BoostMutex {
     pub locked: bool,
 }
+/// `bind_t<Marshaller>` typeinfo answer for the `functor_manager` glue
+/// (IDA 0x3e030, cf. the `BIND_*_TYPEINFO` pattern).
+pub const MARSHALLER_BIND_TYPEINFO: &str = "bind_t<FunctionMarshaller>";
+/// `functor_manager` operation select (IDA 0x3e03a..0x3e058).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FunctorOp {
+    CloneMove,
+    Check,
+    GetType,
+    Destroy,
+}
+/// `FunctionMarshaller` zero-arg callback state (IDA 0x3e090/0x3e094): the
+/// virtual-aware member call (0x3e09e..0x3e0a6) folds into the host; the
+/// invocation count is observed.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct MarshallerCallback {
+    pub calls: u32,
+}
 /// `boost::lock_error` / `thread_resource_error` cloneable values (IDA
 /// 0x3c2a0..0x3cb60): allocation plus copy-construction (0x3c2da..0x3c3e4,
 /// 0x3c5ec..0x3c612) fold into owned clones; the this-adjust on clone
@@ -579,165 +597,201 @@ pub fn stub_0x3dc5c() -> u32 {
 
 // 0x3e030 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x3e030() -> ! {
-    todo!("0x3e030 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x3e030(_op: FunctorOp) -> &'static str {
+    // IDA 0x3e030: `functor_manager::manage` clones/moves (0x3e040..
+    // 0x3e04e), checks (0x3e052), and answers the bind typeinfo on destroy
+    // and get-type (0x3e058..0x3e08a). Buffer management folds into the
+    // host closure; the type name is observed.
+    MARSHALLER_BIND_TYPEINFO
 }
 
 // 0x3e090 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x3e090() -> ! {
-    todo!("0x3e090 __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEvE6invokeERNS1_15function_bufferE")
+pub fn stub_0x3e090(cb: &mut MarshallerCallback) {
+    // IDA 0x3e090: invoker thunk forwarding to the bind call.
+    cb.calls += 1;
 }
 
 // 0x3e094 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)")]
-pub fn stub_0x3e094() -> ! {
-    todo!("0x3e094 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")
+pub fn stub_0x3e094(cb: &mut MarshallerCallback) {
+    // IDA 0x3e094: bind call invoking the member function (0x3e094..
+    // 0x3e0a6, virtual-aware).
+    cb.calls += 1;
 }
 
 // 0x3e198 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_0x3e198() -> ! {
-    todo!("0x3e198 __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x3e198() -> u32 {
+    // IDA 0x3e198: `singleton_pool<NormalBreakConnector,48>::get_pool`
+    // one-shots the storage (0x3e1aa..0x3e1ba) with the mutex and sizes
+    // (0x3e1be..0x3e1d4, block 48) and answers it (0x3e1e2). The storage
+    // address folds into the host; the block size is observed.
+    48
 }
 
 // 0x3e238 — __ZN5boost14singleton_poolI10XmlElementLj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_0x3e238() -> ! {
-    todo!("0x3e238 __ZN5boost14singleton_poolI10XmlElementLj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x3e238() -> u32 {
+    // IDA 0x3e238: `singleton_pool<XmlElement,36>::get_pool` — same
+    // once-storage shape as 0x3e198 with block size 36.
+    36
 }
 
 // 0x3e288 — __ZN5boost9function0IvE13assign_to_ownERKS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::function0<void>::assign_to_own(boost::function0<void> const&)")]
-pub fn stub_0x3e288() -> ! {
-    todo!("0x3e288 __ZN5boost9function0IvE13assign_to_ownERKS1_")
+pub fn stub_0x3e288() {
+    // IDA 0x3e288: `assign_to_own` copies small functors inline
+    // (0x3e290..0x3e2a0) or manager-clones the rest (0x3e2b6); closure
+    // assignment glue covers it — no-op.
 }
 
 // 0x3e2b8 — __ZN5boost16exception_detail14bad_exception_D1Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_exception_::~bad_exception_() [0x3e2b8]")]
-pub fn stub_0x3e2b8() -> ! {
-    todo!("0x3e2b8 __ZN5boost16exception_detail14bad_exception_D1Ev")
+pub fn stub_0x3e2b8() {
+    // IDA 0x3e2b8: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3e2e8 — __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
-pub fn stub_0x3e2e8() -> ! {
-    todo!("0x3e2e8 __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv")
+pub fn stub_0x3e2e8(err: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3e2e8: `clone` for the bad-exception flavor — same shape as
+    // 0x3c5b8.
+    err.clone()
 }
 
 // 0x3e3a8 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")]
-pub fn stub_0x3e3a8() -> ! {
-    todo!("0x3e3a8 __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE")
+pub fn stub_0x3e3a8(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3e3a8: C1 copy ctor for the bad-exception flavor — same shape
+    // as 0x3c6c8.
+    src.clone()
 }
 
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_() [0x3e528]")]
-pub fn stub_0x3e528() -> ! {
-    todo!("0x3e528 __ZThn20_N5boost16exception_detail14bad_exception_D0Ev")
+pub fn stub_0x3e528() {
+    // IDA 0x3e528: thn20 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
-pub fn stub_0x3e558() -> ! {
-    todo!("0x3e558 __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_")
+pub fn stub_0x3e558() {
+    // IDA 0x3e558: `shared_ptr<const clone_base>` ctor — same control block
+    // shape as 0x3b14c; `Arc` glue covers it — no-op.
 }
 
 // 0x3e640 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p() [0x3e640]")]
-pub fn stub_0x3e640() -> ! {
-    todo!("0x3e640 __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev")
+pub fn stub_0x3e640() {
+    // IDA 0x3e640: D1 dtor has an empty body (same shape as 0x3b270) —
+    // no-op.
 }
 
 // 0x3e648 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS2_
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)")]
-pub fn stub_0x3e648() -> ! {
-    todo!("0x3e648 __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS2_")
+pub fn stub_0x3e648(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3e648: C1 copy ctor for the bad-alloc flavor — same shape as
+    // 0x3c6c8.
+    src.clone()
 }
 
 // 0x3e7c8 — __ZN5boost16exception_detail10bad_alloc_D1Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_() [0x3e7c8]")]
-pub fn stub_0x3e7c8() -> ! {
-    todo!("0x3e7c8 __ZN5boost16exception_detail10bad_alloc_D1Ev")
+pub fn stub_0x3e7c8() {
+    // IDA 0x3e7c8: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3e7f8 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")]
-pub fn stub_0x3e7f8() -> ! {
-    todo!("0x3e7f8 __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv")
+pub fn stub_0x3e7f8(err: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3e7f8: `clone` for the bad-alloc flavor — same shape as
+    // 0x3c5b8.
+    err.clone()
 }
 
 // 0x3e8b8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
 pub fn stub_0x3e8b8() -> ! {
-    todo!("0x3e8b8 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv")
+    // IDA 0x3e8b8: virtual-thunk `rethrow` adjusts `this` (0x3e8c4) and
+    // throws the bad-alloc (noreturn).
+    panic!("boost::bad_alloc")
 }
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl() [0x3e8c8]")]
-pub fn stub_0x3e8c8() -> ! {
-    todo!("0x3e8c8 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev")
+pub fn stub_0x3e8c8() {
+    // IDA 0x3e8c8: virtual-thunk D0 (adjust, teardown, delete); drop glue
+    // covers it — no-op.
 }
 
 // 0x3e900 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")]
-pub fn stub_0x3e900() -> ! {
-    todo!("0x3e900 __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE")
+pub fn stub_0x3e900(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3e900: C1 copy ctor with clone tag for the bad-alloc flavor —
+    // same shape as 0x3c6c8.
+    src.clone()
 }
 
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_() [0x3ea80]")]
-pub fn stub_0x3ea80() -> ! {
-    todo!("0x3ea80 __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev")
+pub fn stub_0x3ea80() {
+    // IDA 0x3ea80: thn20 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
-pub fn stub_0x3eab0() -> ! {
-    todo!("0x3eab0 __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_")
+pub fn stub_0x3eab0() {
+    // IDA 0x3eab0: `shared_ptr<const clone_base>` ctor for the bad-alloc
+    // flavor — same shape as 0x3e558; `Arc` glue covers it — no-op.
 }
 
 // 0x3eb98 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")]
-pub fn stub_0x3eb98() -> ! {
-    todo!("0x3eb98 __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv")
+pub fn stub_0x3eb98() {
+    // IDA 0x3eb98: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3eba8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3eba8() -> ! {
-    todo!("0x3eba8 __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info")
+pub fn stub_0x3eba8() -> u32 {
+    // IDA 0x3eba8: `get_deleter` answers null (same shape as 0x3b32c).
+    0
 }
 
 // 0x3ebb8 — __ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int(void)
 #[doc(alias = "void rbx_core::SharedPtr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
-pub fn stub_0x3ebb8() -> ! {
-    todo!("0x3ebb8 __ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")
+pub fn stub_0x3ebb8() {
+    // IDA 0x3ebb8: `intrusive_ptr_weak_release` (same weak-count shape as
+    // 0x3a850); `Weak` drop glue covers it — no-op.
 }
 
 // 0x3fcf8 — __ZN5boost12bad_weak_ptrD0Ev
 // type: void __fastcall(boost::bad_weak_ptr *__hidden this)
 #[doc(alias = "boost::bad_weak_ptr::~bad_weak_ptr()")]
-pub fn stub_0x3fcf8() -> ! {
-    todo!("0x3fcf8 __ZN5boost12bad_weak_ptrD0Ev")
+pub fn stub_0x3fcf8() {
+    // IDA 0x3fcf8: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3fd10 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl() [0x3fd10]")]
-pub fn stub_0x3fd10() -> ! {
-    todo!("0x3fd10 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")
+pub fn stub_0x3fd10() {
+    // IDA 0x3fd10: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3fd38 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
@@ -947,5 +1001,56 @@ mod boost_exception_batch_tests {
         stub_0x3dc44();
         stub_0x3dc48();
         assert_eq!(stub_0x3dc5c(), 0);
+    }
+}
+
+#[cfg(test)]
+mod marshaller_baderr_batch_tests {
+    use super::*;
+
+    #[test]
+    fn functor_manage_and_invoke() {
+        assert_eq!(stub_0x3e030(FunctorOp::GetType), MARSHALLER_BIND_TYPEINFO);
+        assert_eq!(stub_0x3e030(FunctorOp::CloneMove), "bind_t<FunctionMarshaller>");
+        let mut cb = MarshallerCallback::default();
+        stub_0x3e090(&mut cb);
+        stub_0x3e094(&mut cb);
+        assert_eq!(cb.calls, 2);
+        assert_eq!(stub_0x3e198(), 48);
+        assert_eq!(stub_0x3e238(), 36);
+        stub_0x3e288();
+    }
+
+    #[test]
+    fn bad_flavor_clones() {
+        let exc = BoostSyncError { kind: SyncErrorKind::Lock, message: "e".to_owned() };
+        assert_eq!(stub_0x3e2e8(&exc), exc);
+        assert_eq!(stub_0x3e3a8(&exc), exc);
+        assert_eq!(stub_0x3e648(&exc), exc);
+        assert_eq!(stub_0x3e7f8(&exc), exc);
+        assert_eq!(stub_0x3e900(&exc), exc);
+    }
+
+    #[test]
+    #[should_panic(expected = "boost::bad_alloc")]
+    fn rethrow_throws() {
+        stub_0x3e8b8();
+    }
+
+    #[test]
+    fn bad_noops_and_nulls() {
+        stub_0x3e2b8();
+        stub_0x3e528();
+        stub_0x3e558();
+        stub_0x3e640();
+        stub_0x3e7c8();
+        stub_0x3e8c8();
+        stub_0x3ea80();
+        stub_0x3eab0();
+        stub_0x3eb98();
+        stub_0x3ebb8();
+        stub_0x3fcf8();
+        stub_0x3fd10();
+        assert_eq!(stub_0x3eba8(), 0);
     }
 }
