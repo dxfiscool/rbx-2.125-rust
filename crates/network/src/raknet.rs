@@ -12432,176 +12432,218 @@ pub fn stub_9b73cc(inner: &mut dyn FnMut() -> bool) -> bool {
 // 0x9b73dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::isWriteOnly(void)const")]
-pub fn stub_9b73dc() -> ! {
-    todo!("0x9b73dc RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::isWriteOnly(void)const")
+pub fn stub_9b73dc(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x9b73dc: forwards to the impl at +44.
+ inner()
 }
 
 // 0x9b73ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE11equalValuesEPKNS0_13DescribedBaseES7_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b73ec() -> ! {
-    todo!("0x9b73ec RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b73ec(current: i32, candidate: i32) -> bool {
+ // IDA 0x9b73ec: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0x9b7414 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_9b7414() -> ! {
-    todo!("0x9b7414 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_9b7414(value: i32) -> (String, i32) {
+ // IDA 0x9b7414: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0x9b74c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_9b74c4() -> ! {
-    todo!("0x9b74c4 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_9b74c4(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b74c4: Variant::get<int> then setValue.
+ set(value);
 }
 
 // 0x9b74e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_9b74e0() -> ! {
-    todo!("0x9b74e0 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_9b74e0(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b74e0: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0x9b7504 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::hasStringValue(void)const")]
-pub fn stub_9b7504() -> ! {
-    todo!("0x9b7504 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::hasStringValue(void)const")
+pub fn stub_9b7504() -> bool {
+ // IDA 0x9b7504: hasStringValue returns 1.
+ true
 }
 
 // 0x9b7508 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b7508() -> ! {
-    todo!("0x9b7508 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b7508(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
+ // IDA 0x9b7508: converts the enum value to its name (below truncation).
+ to_string(value)
 }
 
 // 0x9b752c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_9b752c() -> ! {
-    todo!("0x9b752c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_9b752c(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b752c: Name::lookup then setValue (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0x9b75d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_9b75d0() -> ! {
-    todo!("0x9b75d0 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_9b75d0(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0x9b75d0: clears the pair, writes type 5 + value; returns 5.
+ write(value);
+ 5
 }
 
 // 0x9b75f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_9b75f0() -> ! {
-    todo!("0x9b75f0 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_9b75f0(parse: &mut dyn FnMut()) {
+ // IDA 0x9b75f0: readValue parses the pair (below truncation).
+ parse();
 }
 
 // 0x9b78b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b78b4() -> ! {
-    todo!("0x9b78b4 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b78b4(value: i32) -> i32 {
+ // IDA 0x9b78b4: asserts the enum value > -1, returns it.
+ debug_assert!(value > -1);
+ value
 }
 
 // 0x9b7930 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_9b7930() -> ! {
-    todo!("0x9b7930 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_9b7930(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0x9b7930: in-range index -> set + return 1 else 0.
+ if items.len() > index {
+ set(items[index]);
+ 1
+ } else {
+ 0
+ }
 }
 
 // 0x9b7964 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b7964() -> ! {
-    todo!("0x9b7964 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b7964(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b7964: getEnumValue forwards to the impl.
+ get()
 }
 
 // 0x9b7974 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_9b7974() -> ! {
-    todo!("0x9b7974 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_9b7974(items: &[i32], value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b7974: finds the value in the item list then sets it (below truncation).
+ if items.contains(&value) {
+ set(value);
+ }
 }
 
 // 0x9b7a40 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b7a40() -> ! {
-    todo!("0x9b7a40 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b7a40(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0x9b7a40: EnumDesc::convertToItem on the impl value.
+ convert(value)
 }
 
 // 0x9b7a60 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_9b7a60() -> ! {
-    todo!("0x9b7a60 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_9b7a60(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b7a60: walks the item list for the name then sets it (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0x9b7af4 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isReadOnly(void)const")]
-pub fn stub_9b7af4() -> ! {
-    todo!("0x9b7af4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isReadOnly(void)const")
+pub fn stub_9b7af4() -> bool {
+ // IDA 0x9b7af4: isReadOnly returns 0.
+ false
 }
 
 // 0x9b7af8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isWriteOnly(void)const")]
-pub fn stub_9b7af8() -> ! {
-    todo!("0x9b7af8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isWriteOnly(void)const")
+pub fn stub_9b7af8() -> bool {
+ // IDA 0x9b7af8: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b7afc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b7afc() -> ! {
-    todo!("0x9b7afc RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b7afc(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b7afc: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b7b20 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::NetworkSettings::PhysicsSendMethod const&)const")]
-pub fn stub_9b7b20() -> ! {
-    todo!("0x9b7b20 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_9b7b20(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0x9b7b20: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0x9b7b48 — __ZN3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EEC2INS_15NetworkSettingsEEEPKcS7_MT_dNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, char, int, int, int, int, int, __guard *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,double RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b7b48() -> ! {
-    todo!("0x9b7b48 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,double RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b7b48(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b7b48: BoundProp ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b7ee4 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
-pub fn stub_9b7ee4() -> ! {
-    todo!("0x9b7ee4 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_9b7ee4() -> bool {
+ // IDA 0x9b7ee4: isReadOnly returns 0.
+ false
 }
 
 // 0x9b7ee8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
-pub fn stub_9b7ee8() -> ! {
-    todo!("0x9b7ee8 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_9b7ee8() -> bool {
+ // IDA 0x9b7ee8: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b7eec — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
 // type: __int64 __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b7eec() -> ! {
-    todo!("0x9b7eec RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b7eec(get: &mut dyn FnMut() -> f64) -> f64 {
+ // IDA 0x9b7eec: getValue loads the double at *(a1 + 8) + (a2 - 36).
+ get()
 }
 
 // 0x9b7efc — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8setValueEPNS0_13DescribedBaseERKd
 // type: double *__fastcall(int, int, double *)
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
-pub fn stub_9b7efc() -> ! {
-    todo!("0x9b7efc RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+pub fn stub_9b7efc(current: &mut f64, value: f64, notify: &mut dyn FnMut()) {
+ // IDA 0x9b7efc: stores when different; raisePropertyChanged on change.
+ if *current != value {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b7f58 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsEC2IMS2_KFKSsvEMS2_FvRS5_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
