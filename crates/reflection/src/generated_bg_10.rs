@@ -6,6 +6,35 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `RenderJob` wake count (IDA 0x3fb9c sets +628 and reschedules;
+/// a dead weak job throws `bad_weak_ptr`).
+pub(crate) static RENDERJOB_WAKES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// typeinfo names for the render-prepare/perform/metric `bind_t`s (IDA
+/// 0x40160/0x401f0/0x402a8, cf. 0x2d644).
+pub const BIND_RENDER_PREPARE_TYPEINFO: &str = "bind_t<RenderJob*,ViewBase*,double>";
+pub const BIND_METRIC_MF2_TYPEINFO: &str = "bind_t<mf2<ViewBase,IMetric*,double>,ViewBase*,RenderJob*,double>";
+pub const BIND_RENDER_PERFORM_TYPEINFO: &str = "bind_t<RenderJob*,ViewBase*>";
+/// `UserInfo` player state (IDA 0x40984-0x40c58): login flag plus the
+/// fields the update block stores from the `mobileapi/userinfo` JSON
+/// (UserID/UserName/RobuxBalance/TicketsBalance/ThumbnailUrl/
+/// IsAnyBuildersClubMember, 0x40d98-0x40eaa). Request building +
+/// parsing lives out of slice; values record here.
+#[derive(Debug, Default)]
+pub struct UserInfoState {
+    pub logged_in: bool,
+    pub user_id: String,
+    pub username: String,
+    pub robux: String,
+    pub tickets: String,
+    pub thumb_url: String,
+    pub bc_member: bool,
+}
+pub(crate) static USERINFO_STATE: std::sync::LazyLock<
+    parking_lot::Mutex<UserInfoState>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(UserInfoState::default()));
+pub(crate) static USERINFO_REQUESTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 /// `Tasks::Sequence` advance count (IDA 0x3ebb0/0x3ebb4 tail-call
 /// `SequenceBase::advance`). Step dispatch is scheduler glue.
 pub(crate) static TASKS_SEQUENCE_ADVANCES: std::sync::atomic::AtomicU32 =
@@ -429,16 +458,25 @@ pub fn stub_0x3faac(pending: bool, dispatched: bool) -> bool {
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd")]
-pub fn stub_0x3fac4() -> ! {
-    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+pub fn stub_0x3fac4(datamodel_present: bool, stopped: bool, job_present: bool) -> bool {
+    // IDA 0x3fac4: `scheduleRenderPerform` locks the weak datamodel
+    // (0x3faee); with a live datamodel, a clear +158 stop flag and a
+    // job present it runs prepare + `wake` (0x3fb38-0x3fb5c).
+    datamodel_present && !stopped && job_present
 }
 
 // 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob4wakeEv")]
-pub fn stub_0x3fb9c() -> ! {
-    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+pub fn stub_0x3fb9c(job_alive: bool) {
+    // IDA 0x3fb9c: `wake` sets +628 (0x3fbbe) and reschedules the job
+    // (0x3fbc6-0x3fc58); a dead weak job throws `bad_weak_ptr`
+    // (0x3fbf8-0x3fcde).
+    if !job_alive {
+        panic!("bad_weak_ptr (IDA 0x3fb9c)");
+    }
+    RENDERJOB_WAKES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x3fcf8 — __ZN5boost12bad_weak_ptrD0Ev
@@ -482,7 +520,7 @@ pub fn stub_0x3fd88() {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
 pub fn stub_0x3fdb8() -> ! {
-    todo!("0x3fdb8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+    panic!("rethrow bad_weak_ptr (IDA 0x3fdb8)")
 }
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
@@ -495,8 +533,9 @@ pub fn stub_0x3fee0() {
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
-pub fn stub_0x3ff18() -> ! {
-    todo!("0x3ff18 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+pub fn stub_0x3ff18() {
+    // IDA 0x3ff18: virtual thunk to the `rethrow` above: this-adjust +
+    // tail-call. Rust uses static dispatch; no thunk needed.
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
@@ -524,73 +563,98 @@ pub fn stub_0x3ff90() {
 // type: int __fastcall(int, int, int, int, char, std::exception *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE")]
-pub fn stub_0x3ffc0() -> ! {
-    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")
+pub fn stub_0x3ffc0() {
+    // IDA 0x3ffc0: `clone_impl<error_info_injector<bad_weak_ptr>>::
+    // clone_impl` tagged copy-constructs the injector (same shape as
+    // 0x3e900). Exception-clone glue; no explicit body.
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x40160(get_typeinfo: bool) -> &'static str {
+    // IDA 0x40160: `functor_manager<bind_t<RenderJob*,ViewBase*,
+    // double>>::manage` answers op 4 with the `bind_t` typeinfo (same
+    // shape as 0x32c48). Other ops are vtable glue.
+    if get_typeinfo { BIND_RENDER_PREPARE_TYPEINFO } else { "" }
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x401dc() {
+    // IDA 0x401dc: `void_function_obj_invoker0<bind_t<RenderJob*,
+    // ViewBase*,double>>::invoke` runs the bound prepare (same shape
+    // as 0x32c64). Closure-call glue; no explicit body.
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x401f0(get_typeinfo: bool) -> &'static str {
+    // IDA 0x401f0: `functor_manager<bind_t<mf2<ViewBase,IMetric*,
+    // double>>>::manage` answers op 4 with the `bind_t` typeinfo
+    // (same shape as 0x40160). Other ops are vtable glue.
+    if get_typeinfo { BIND_METRIC_MF2_TYPEINFO } else { "" }
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x40270() {
+    // IDA 0x40270: `void_function_obj_invoker0<bind_t<mf2<...>>>::
+    // invoke` runs the bound metric call (same shape as 0x401dc).
+    // Closure-call glue; no explicit body.
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0x4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+pub fn stub_0x4027c() {
+    // IDA 0x4027c: `list3<ViewBase*,RenderJob*,double>::operator()`
+    // unwraps the triple and calls the `mf2` target (same shape as
+    // 0x32e74). Closure-call glue; no explicit body.
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x402a8(get_typeinfo: bool) -> &'static str {
+    // IDA 0x402a8: `functor_manager<bind_t<RenderJob*,ViewBase*>>::
+    // manage` answers op 4 with the `bind_t` typeinfo (same shape as
+    // 0x40160). Other ops are vtable glue.
+    if get_typeinfo { BIND_RENDER_PERFORM_TYPEINFO } else { "" }
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x40308() {
+    // IDA 0x40308: `void_function_obj_invoker0<bind_t<RenderJob*,
+    // ViewBase*>>::invoke` runs the bound perform (same shape as
+    // 0x401dc). Closure-call glue; no explicit body.
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 #[doc(alias = "__ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")]
-pub fn stub_0x40318() -> ! {
-    todo!("0x40318 boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+pub fn stub_0x40318() {
+    // IDA 0x40318: `weak_ptr<DataModel>::weak_ptr(shared_ptr
+    // <DataModel> const&)` locks the weak view. `Arc` downgrade glue
+    // covers it; no explicit body.
 }
 
 // 0x403f0 — __ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE")]
-pub fn stub_0x403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_0x403f0() -> &'static str {
+    // IDA 0x403f0: `ViewUpdateJob::ViewUpdateJob` inits the `Job` base
+    // named "UpdateRbxView" (0x4045a) and zeroes the window slots
+    // (0x4047e-0x4048e). The name records here; base init is engine
+    // glue.
+    "UpdateRbxView"
 }
 
 // 0x404f0 — __ZN10RobloxView13ViewUpdateJobD1Ev
@@ -613,80 +677,130 @@ pub fn stub_0x4059c() {
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x40650(standard_sleep: f64) -> f64 {
+    // IDA 0x40650: `ViewUpdateJob::sleepTime` unconditionally returns
+    // `computeStandardSleepTime(stats, 60.0)` (0x4065c-0x40670). The
+    // standard computation lives out of slice; its value crosses as a
+    // parameter.
+    standard_sleep
 }
 
 // 0x40680 — __ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x40680(standard_error: f64) -> f64 {
+    // IDA 0x40680: `ViewUpdateJob::error` unconditionally returns
+    // `computeStandardError(stats, 30.0)` (0x4068c-0x406a0). Same
+    // parameter convention as 0x40650.
+    standard_error
 }
 
 // 0x406a8 — __ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv")]
-pub fn stub_0x406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+pub fn stub_0x406a8() -> f64 {
+    // IDA 0x406a8: `ViewUpdateJob::getPriorityFactor` returns 1.0
+    // (0x406b0).
+    1.0
 }
 
 // 0x406b4 — __ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x406b4(view_check_ok: bool) -> bool {
+    // IDA 0x406b4: `ViewUpdateJob::step` runs the view check virtual
+    // (+20) and, when it returns 1, the follow-up (+24), then always
+    // the update (+40), returning 1 (0x406c6-0x406de). The check gate
+    // reports here.
+    let _ = view_check_ok;
+    true
 }
 
 // 0x406e0 — __ZN5boost9function0IvE5clearEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function0<void>::clear(void)")]
 #[doc(alias = "__ZN5boost9function0IvE5clearEv")]
-pub fn stub_0x406e0() -> ! {
-    todo!("0x406e0 boost::function0<void>::clear(void)")
+pub fn stub_0x406e0() {
+    // IDA 0x406e0: `function0<void>::clear` drops the stored target
+    // (same shape as 0x4bfdc). `Box<dyn Fn>` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x4070c — __GLOBAL__I_a_10
 #[doc(alias = "global constructor keyed to_a_10")]
 #[doc(alias = "__GLOBAL__I_a_10")]
-pub fn stub_0x4070c() -> ! {
-    todo!("0x4070c global constructor keyed to_a_10")
+pub fn stub_0x4070c() {
+    // IDA 0x4070c: `__GLOBAL__I_a_10` runs the `a_10`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x40984 — -[UserInfo init]
 // type: UserInfo *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo init]")]
-pub fn stub_0x40984() -> ! {
-    todo!("0x40984 -[UserInfo init]")
+pub fn stub_0x40984() {
+    // IDA 0x40984: `UserInfo::init` supers to `NSUserDefaults`
+    // (0x4099e-0x409ae). Fresh state records here.
+    *USERINFO_STATE.lock() = UserInfoState::default();
 }
 
 // 0x409b0 — -[UserInfo setUserLoggedIn:]
 // type: void __cdecl(UserInfo *self, SEL, char)
 #[doc(alias = "-[UserInfo setUserLoggedIn:]")]
-pub fn stub_0x409b0() -> ! {
-    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+pub fn stub_0x409b0(logged_in: bool) {
+    // IDA 0x409b0: `setUserLoggedIn:` stores the flag. It records
+    // here.
+    USERINFO_STATE.lock().logged_in = logged_in;
 }
 
 // 0x40ab4 — -[UserInfo userLoggedIn]
 // type: char __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userLoggedIn]")]
-pub fn stub_0x40ab4() -> ! {
-    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+pub fn stub_0x40ab4() -> bool {
+    // IDA 0x40ab4: `userLoggedIn` returns the flag.
+    USERINFO_STATE.lock().logged_in
 }
 
 // 0x40ac4 — -[UserInfo UpdatePlayerInfo]
 // type: void __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
-pub fn stub_0x40ac4() -> ! {
-    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+pub fn stub_0x40ac4(base_url: &str, user_agent: &str) -> String {
+    // IDA 0x40ac4: `UpdatePlayerInfo` GETs `{base}mobileapi/userinfo`
+    // (http: rewritten to https:, 0x40ae8-0x40b2a) with the UA header
+    // (0x40b8a-0x40bc4) via an async connection (0x40be0-0x40c4a). The
+    // URL builds here; the header + send live out of slice.
+    let _ = user_agent;
+    USERINFO_REQUESTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    format!("{base_url}mobileapi/userinfo").replace("http:", "https:")
 }
 
 // 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
 #[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
-pub fn stub_0x40c58() -> ! {
-    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+pub fn stub_0x40c58(
+    http_ok: bool,
+    user_id: &str,
+    username: &str,
+    robux: &str,
+    tickets: &str,
+    thumb_url: &str,
+    bc_member: bool,
+) {
+    // IDA 0x40c58: the update completion block parses the JSON on HTTP
+    // 200 and stores UserID/UserName/RobuxBalance/TicketsBalance/
+    // ThumbnailUrl/IsAnyBuildersClubMember (0x40d0e-0x40eaa); other
+    // codes only log (0x40eb6-0x41040). The store records here.
+    if !http_ok {
+        return;
+    }
+    let mut info = USERINFO_STATE.lock();
+    info.user_id = user_id.to_owned();
+    info.username = username.to_owned();
+    info.robux = robux.to_owned();
+    info.tickets = tickets.to_owned();
+    info.thumb_url = thumb_url.to_owned();
+    info.bc_member = bc_member;
 }
 
 // 0x41104 — ___copy_helper_block__6
