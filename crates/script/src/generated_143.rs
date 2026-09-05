@@ -749,176 +749,243 @@ pub fn stub_0x25d758() {
 // 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d7fc() -> ! {
-    todo!("0x25d7fc __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d7fc() {
+    // IDA 0x25d7fc: thn36 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25d804 — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d804() -> ! {
-    todo!("0x25d804 __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d804() {
+    // IDA 0x25d804: thn36 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25d8a8 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d8a8() -> ! {
-    todo!("0x25d8a8 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d8a8() {
+    // IDA 0x25d8a8: thn92 D1 adjusts by -92 and runs the Light dtor
+    // (0x25d8aa); both fold into drop glue — no-op.
 }
 
 // 0x25d8b0 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d8b0() -> ! {
-    todo!("0x25d8b0 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d8b0() {
+    // IDA 0x25d8b0: thn92 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25d954 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d954() -> ! {
-    todo!("0x25d954 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d954() {
+    // IDA 0x25d954: `Described<PointLight>` D1 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25d958 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d958() -> ! {
-    todo!("0x25d958 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d958() {
+    // IDA 0x25d958: `Described<PointLight>` D0 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25d9f8 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d9f8() -> ! {
-    todo!("0x25d9f8 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d9f8() {
+    // IDA 0x25d9f8: thn32 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25da00 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25da00() -> ! {
-    todo!("0x25da00 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25da00() {
+    // IDA 0x25da00: thn32 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25daa4 — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25daa4() -> ! {
-    todo!("0x25daa4 __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25daa4() {
+    // IDA 0x25daa4: thn36 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25daac — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25daac() -> ! {
-    todo!("0x25daac __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25daac() {
+    // IDA 0x25daac: thn36 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25db50 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25db50() -> ! {
-    todo!("0x25db50 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25db50() {
+    // IDA 0x25db50: thn92 D1 (adjust plus Light dtor, same shape as
+    // 0x25d8a8) — no-op.
 }
 
 // 0x25db58 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25db58() -> ! {
-    todo!("0x25db58 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25db58() {
+    // IDA 0x25db58: thn92 D0 (adjust, teardown, delete) — no-op.
 }
 
 // 0x25dbfc — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25dbfc() -> ! {
-    todo!("0x25dbfc __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dbfc() {
+    // IDA 0x25dbfc: `DescribedNonCreatable<Light>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25dc00 — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dc00() -> ! {
-    todo!("0x25dc00 __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dc00() {
+    // IDA 0x25dc00: `DescribedNonCreatable<Light>` D0 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25dca0 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25dca0() -> ! {
-    todo!("0x25dca0 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dca0() {
+    // IDA 0x25dca0: thn32 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25dca8 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dca8() -> ! {
-    todo!("0x25dca8 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dca8() {
+    // IDA 0x25dca8: thn32 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25dd4c — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25dd4c() -> ! {
-    todo!("0x25dd4c __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dd4c() {
+    // IDA 0x25dd4c: thn36 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25dd54 — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dd54() -> ! {
-    todo!("0x25dd54 __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dd54() {
+    // IDA 0x25dd54: thn36 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25ddf8 — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25ddf8() -> ! {
-    todo!("0x25ddf8 __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25ddf8() {
+    // IDA 0x25ddf8: `Described<Light>` D1 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25ddfc — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25ddfc() -> ! {
-    todo!("0x25ddfc __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25ddfc() {
+    // IDA 0x25ddfc: `Described<Light>` D0 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25de9c — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25de9c() -> ! {
-    todo!("0x25de9c __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25de9c() {
+    // IDA 0x25de9c: thn32 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25dea4 — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dea4() -> ! {
-    todo!("0x25dea4 __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dea4() {
+    // IDA 0x25dea4: thn32 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25df48 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25df48() -> ! {
-    todo!("0x25df48 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25df48() {
+    // IDA 0x25df48: thn36 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25df50 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25df50() -> ! {
-    todo!("0x25df50 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25df50() {
+    // IDA 0x25df50: thn36 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25dff4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x25dff4() -> ! {
-    todo!("0x25dff4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x25dff4(name: &str) -> PropBinding {
+    // IDA 0x25dff4: `EnumPropDescriptor<SpotLight, NormalId>` C2 ctor
+    // registers into the class descriptor (0x25e018, folds into the host
+    // registry); getter/setter member pointers fold into the host.
+    PropBinding { class: "SpotLight", name: name.to_owned() }
+}
+
+#[cfg(test)]
+mod light_dtor_batch_tests {
+    use super::*;
+
+    #[test]
+    fn light_dtors() {
+        stub_0x25d7fc();
+        stub_0x25d804();
+        stub_0x25d8a8();
+        stub_0x25d8b0();
+        stub_0x25d954();
+        stub_0x25d958();
+        stub_0x25d9f8();
+        stub_0x25da00();
+        stub_0x25daa4();
+        stub_0x25daac();
+        stub_0x25db50();
+        stub_0x25db58();
+        stub_0x25dbfc();
+        stub_0x25dc00();
+        stub_0x25dca0();
+        stub_0x25dca8();
+        stub_0x25dd4c();
+        stub_0x25dd54();
+        stub_0x25ddf8();
+        stub_0x25ddfc();
+        stub_0x25de9c();
+        stub_0x25dea4();
+        stub_0x25df48();
+        stub_0x25df50();
+    }
+
+    #[test]
+    fn enum_prop_registers() {
+        assert_eq!(
+            stub_0x25dff4("Shadows"),
+            PropBinding { class: "SpotLight", name: "Shadows".to_owned() }
+        );
+    }
 }
 
 #[cfg(test)]
