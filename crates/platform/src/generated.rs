@@ -2650,6 +2650,11 @@ pub struct CacheState {
     flushed: AtomicBool,
     home_pages: AtomicBool,
     observer_regs: AtomicU32,
+    preload_tags: parking_lot::Mutex<Vec<i32>>,
+    webviews_empty: AtomicBool,
+    preload_requests: AtomicU32,
+    home_reloads: AtomicU32,
+    reloads: AtomicU32,
     releases: AtomicU32,
 }
 impl CacheState {
@@ -2662,6 +2667,7 @@ impl CacheState {
     pub fn init_cache(&self, precaching: bool) -> Option<ControlId> {
         self.precaching.store(precaching, Ordering::SeqCst);
         self.cache_initialized.store(false, Ordering::SeqCst);
+        self.webviews_empty.store(true, Ordering::SeqCst);
         self.build_pages();
         self.observer_regs.store(2, Ordering::SeqCst);
         self.initialized.store(true, Ordering::SeqCst);
@@ -2687,10 +2693,19 @@ impl CacheState {
     pub fn pages_version(&self) -> u32 {
         self.pages_version.load(Ordering::SeqCst)
     }
+    /// `-flush` (IDA 0x58588): an initialized cache clears and releases
+    /// its webviews.
+    pub fn flush(&self) {
+        if self.cache_initialized.load(Ordering::SeqCst) {
+            self.cache_initialized.store(false, Ordering::SeqCst);
+            self.webviews_empty.store(true, Ordering::SeqCst);
+        }
+        self.flushed.store(true, Ordering::SeqCst);
+    }
     /// `-dealloc` (IDA 0x58348): flushes the cache, releases the preload
     /// list, then super.
     pub fn dealloc(&self) {
-        self.flushed.store(true, Ordering::SeqCst);
+        self.flush();
         self.bump(&self.releases);
     }
     pub fn release_count(&self) -> u32 {
@@ -2714,6 +2729,195 @@ impl CacheState {
 }
 static WEBCACHE: std::sync::LazyLock<CacheState> =
     std::sync::LazyLock::new(CacheState::default);
+impl CacheState {
+    /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
+    /// (tags 13/11/10/12/15) rebuilds the preload list.
+    pub fn set_pages_to_preload(&self) {
+        *self.preload_tags.lock() = vec![13, 11, 10, 12, 15];
+        self.build_pages();
+    }
+    pub fn preload_tags(&self) -> Vec<i32> {
+        self.preload_tags.lock().clone()
+    }
+    /// `preloadDesignatedWebViews` (IDA 0x585dc): with precaching and a
+    /// cold cache the `__50…` block runs inline and returns true.
+    pub fn preload(&self) -> bool {
+        if !self.precaching.load(Ordering::SeqCst) || self.cache_initialized.load(Ordering::SeqCst) {
+            return false;
+        }
+        self.apply_preload(self.preload_tags.lock().len());
+        true
+    }
+    /// `__50-preloadDesignatedWebViews_block_invoke` (IDA 0x58658,
+    /// inline): the webviews dict builds and each page loads.
+    pub fn apply_preload(&self, pages: usize) {
+        self.webviews_empty.store(false, Ordering::SeqCst);
+        self.cache_initialized.store(true, Ordering::SeqCst);
+        self.preload_requests.fetch_add(pages as u32, Ordering::SeqCst);
+    }
+    pub fn preload_request_count(&self) -> u32 {
+        self.preload_requests.load(Ordering::SeqCst)
+    }
+    /// `designatedWebviewsToHomePages` (IDA 0x58858): with precaching the
+    /// `__54…` block runs inline.
+    pub fn designated_to_home(&self) {
+        if self.precaching.load(Ordering::SeqCst) {
+            self.apply_home_reload(self.preload_tags.lock().len());
+        }
+    }
+    /// `__54-designatedWebviewsToHomePages_block_invoke` (IDA 0x588b8,
+    /// inline): each cached view reloads its home URL.
+    pub fn apply_home_reload(&self, count: usize) {
+        self.home_reloads.fetch_add(count as u32, Ordering::SeqCst);
+    }
+    pub fn home_reload_count(&self) -> u32 {
+        self.home_reloads.load(Ordering::SeqCst)
+    }
+    /// `getPreloadedWebViewForUrl:` (IDA 0x58a08): needs an initialized,
+    /// precaching cache with live webviews; a known URL returns its view,
+    /// reloading on pad URL mismatch or phone back history.
+    pub fn preloaded_view(
+        &self,
+        url_known: bool,
+        url_matches: bool,
+        can_go_back: bool,
+        is_pad: bool,
+    ) -> Option<ControlId> {
+        if !(self.cache_initialized.load(Ordering::SeqCst)
+            && self.precaching.load(Ordering::SeqCst)
+            && !self.webviews_empty.load(Ordering::SeqCst))
+        {
+            return None;
+        }
+        if !url_known {
+            return None;
+        }
+        if is_pad {
+            if !url_matches {
+                self.bump(&self.reloads);
+            }
+        } else if can_go_back {
+            self.bump(&self.reloads);
+        }
+        Some(CACHED_VIEW_ID)
+    }
+    pub fn reload_count(&self) -> u32 {
+        self.reloads.load(Ordering::SeqCst)
+    }
+}
+/// Host id for a preloaded cache web view (IDA 0x58a08).
+const CACHED_VIEW_ID: ControlId = 16;
+/// `+sharedInstance` cell (IDA 0x584e4, `dword_130C620`): the
+/// `dispatch_once` initializer lives with the cell.
+static CACHE_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        WEBCACHE.init_cache(false);
+        WEBCACHE_ID
+    });
+/// Host `+sharedInstance` (IDA 0x584e4).
+pub fn shared_cache_id() -> Option<ControlId> {
+    Some(*CACHE_SHARED)
+}
+/// Host id standing in for the `RobloxPageViewController` `self`.
+const PAGE_ID: ControlId = 17;
+/// Minimal `RobloxPageViewController` counterpart (IDA 0x58d48..0x58eb8):
+/// lifecycle counters, the UserAgent registration latch and the idiom
+/// branch both orientation leaves test.
+#[derive(Debug, Default)]
+pub struct PageState {
+    initialized: AtomicBool,
+    failures: AtomicU32,
+    successes: AtomicU32,
+    loads: AtomicU32,
+    wills: AtomicU32,
+    ua_registered: AtomicBool,
+    releases: AtomicU32,
+}
+impl PageState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x58d50): super init.
+    pub fn init_coder(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(PAGE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-handleStartGameFailure` (IDA 0x58d48): empty body; counted.
+    pub fn handle_failure(&self) {
+        self.bump(&self.failures);
+    }
+    pub fn failure_count(&self) -> u32 {
+        self.failures.load(Ordering::SeqCst)
+    }
+    /// `-handleStartGameSuccess` (IDA 0x58d4c): empty body; counted.
+    pub fn handle_success(&self) {
+        self.bump(&self.successes);
+    }
+    pub fn success_count(&self) -> u32 {
+        self.successes.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x58d7c): super plus the UserAgent defaults
+    /// registration.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+        self.ua_registered.store(true, Ordering::SeqCst);
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    pub fn ua_registered(&self) -> bool {
+        self.ua_registered.load(Ordering::SeqCst)
+    }
+    /// `-viewWillAppear:` (IDA 0x58e20): super only.
+    pub fn will_appear(&self, _animated: bool) {
+        self.bump(&self.wills);
+    }
+    pub fn will_appear_count(&self) -> u32 {
+        self.wills.load(Ordering::SeqCst)
+    }
+    /// `-shouldAutorotate` (IDA 0x58e4c): always 1.
+    pub fn should_autorotate(&self) -> bool {
+        true
+    }
+    /// `-supportedInterfaceOrientations` (IDA 0x58e50): 6 by default; the
+    /// pad mask is 24 (no-idiom devices read as phone).
+    pub fn orientations(&self, is_pad: bool) -> u32 {
+        if is_pad {
+            24
+        } else {
+            6
+        }
+    }
+    /// `-shouldAutorotateToInterfaceOrientation:` (IDA 0x58eb8): pad
+    /// allows landscape (3/4), phone allows portrait (1/2).
+    pub fn should_rotate_to(&self, orientation: i32, is_pad: bool) -> bool {
+        if is_pad {
+            orientation == 3 || orientation == 4
+        } else {
+            orientation == 1 || orientation == 2
+        }
+    }
+}
+static PAGE: std::sync::LazyLock<PageState> =
+    std::sync::LazyLock::new(PageState::default);
+/// `-[NSString(Escaping) stringWithPercentEscape]` (IDA 0x58f40): the
+/// `CFURLCreateStringByAddingPercentEscapes` pass escapes the
+/// "=,!$&'()*+;@?\n\"<>#\t :/" set; alphanumerics and `-_.~` pass through
+/// and the rest escape as UTF-8 %XX.
+pub fn percent_escape(input: &str) -> String {
+    let mut out = String::with_capacity(input.len());
+    for byte in input.bytes() {
+        if byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_' | b'.' | b'~') {
+            out.push(byte as char);
+        } else {
+            out.push_str(&format!("%{byte:02X}"));
+        }
+    }
+    out
+}
 /// `+getStoreMgr` cell (IDA 0x557dc, `dword_130C600`): the `dispatch_once`
 /// initializer lives with the cell.
 static STORE_SHARED: std::sync::LazyLock<ControlId> =
@@ -14575,127 +14779,168 @@ pub fn stub_583b8(preloaded: bool) {
 // 0x583f0 — -[UIWebViewCacheManager setPagesToPreload]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager setPagesToPreload]")]
-pub fn stub_583f0() -> ! {
-    todo!("0x583f0 -[UIWebViewCacheManager setPagesToPreload]")
+pub fn stub_583f0() {
+    // IDA 0x583f0 `-setPagesToPreload`: builds the button-tag URL array
+    // (tags 13/11/10/12/15 plus the base URL, 0x58414..0x5849a+).
+    WEBCACHE.set_pages_to_preload();
 }
 
 // 0x584e4 — +[UIWebViewCacheManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UIWebViewCacheManager sharedInstance]")]
-pub fn stub_584e4() -> ! {
-    todo!("0x584e4 +[UIWebViewCacheManager sharedInstance]")
+pub fn stub_584e4() -> Option<ControlId> {
+    // IDA 0x584e4 `+sharedInstance`: `dispatch_once` runs the `__39…`
+    // block (0x58510..0x5853a); the cell holds the singleton after.
+    shared_cache_id()
 }
 
 // 0x58540 — ___39+[UIWebViewCacheManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39+[UIWebViewCacheManager sharedInstance]_block_invoke")]
-pub fn stub_58540() -> ! {
-    todo!("0x58540 ___39+[UIWebViewCacheManager sharedInstance]_block_invoke")
+pub fn stub_58540() {
+    // IDA 0x58540 `__39-sharedInstance_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x58552..0x58570).
+    WEBCACHE.init_cache(false);
 }
 
 // 0x58588 — -[UIWebViewCacheManager flush]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager flush]")]
-pub fn stub_58588() -> ! {
-    todo!("0x58588 -[UIWebViewCacheManager flush]")
+pub fn stub_58588() {
+    // IDA 0x58588 `-flush`: an initialized cache clears and releases its
+    // webviews (0x5859a..0x585d6).
+    WEBCACHE.flush();
 }
 
 // 0x585dc — -[UIWebViewCacheManager preloadDesignatedWebViews]
 // type: char __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager preloadDesignatedWebViews]")]
-pub fn stub_585dc() -> ! {
-    todo!("0x585dc -[UIWebViewCacheManager preloadDesignatedWebViews]")
+pub fn stub_585dc() -> bool {
+    // IDA 0x585dc `preloadDesignatedWebViews`: with precaching and a cold
+    // cache the `__50…` block runs via `dispatch_async` and returns 1
+    // (0x585ee..0x58650); otherwise 0.
+    WEBCACHE.preload()
 }
 
 // 0x58658 — ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")]
-pub fn stub_58658() -> ! {
-    todo!("0x58658 ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")
+pub fn stub_58658(pages: usize) {
+    // IDA 0x58658 `__50-preloadDesignatedWebViews_block_invoke` (via
+    // `dispatch_async` on main, inline): the webviews dict builds and each
+    // preload page gets a loading web view (0x58692..0x58816).
+    WEBCACHE.apply_preload(pages);
 }
 
 // 0x58858 — -[UIWebViewCacheManager designatedWebviewsToHomePages]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager designatedWebviewsToHomePages]")]
-pub fn stub_58858() -> ! {
-    todo!("0x58858 -[UIWebViewCacheManager designatedWebviewsToHomePages]")
+pub fn stub_58858() {
+    // IDA 0x58858 `designatedWebviewsToHomePages`: with precaching the
+    // `__54…` block runs on the global queue (0x5886c..0x588b0, inline).
+    WEBCACHE.designated_to_home();
 }
 
 // 0x588b8 — ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")]
-pub fn stub_588b8() -> ! {
-    todo!("0x588b8 ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")
+pub fn stub_588b8(count: usize) {
+    // IDA 0x588b8 `__54-designatedWebviewsToHomePages_block_invoke` (via
+    // `dispatch_async`, inline): each cached view reloads its home URL
+    // (0x58978..0x589ba).
+    WEBCACHE.apply_home_reload(count);
 }
 
 // 0x58a08 — -[UIWebViewCacheManager getPreloadedWebViewForUrl:]
 // type: id __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager getPreloadedWebViewForUrl:]")]
-pub fn stub_58a08() -> ! {
-    todo!("0x58a08 -[UIWebViewCacheManager getPreloadedWebViewForUrl:]")
+pub fn stub_58a08(url_known: bool, url_matches: bool, can_go_back: bool, is_pad: bool) -> Option<ControlId> {
+    // IDA 0x58a08 `getPreloadedWebViewForUrl:`: needs an initialized,
+    // precaching cache with live webviews (0x58a22..0x58a56); a known URL
+    // returns its view, reloading on pad URL mismatch or phone back
+    // history (0x58a6e..0x58bae).
+    WEBCACHE.preloaded_view(url_known, url_matches, can_go_back, is_pad)
 }
 
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameFailure]")]
-pub fn stub_58d48() -> ! {
-    todo!("0x58d48 -[RobloxPageViewController handleStartGameFailure]")
+pub fn stub_58d48() {
+    // IDA 0x58d48 `-handleStartGameFailure`: empty body; counted.
+    PAGE.handle_failure();
 }
 
 // 0x58d4c — -[RobloxPageViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameSuccess]")]
-pub fn stub_58d4c() -> ! {
-    todo!("0x58d4c -[RobloxPageViewController handleStartGameSuccess]")
+pub fn stub_58d4c() {
+    // IDA 0x58d4c `-handleStartGameSuccess`: empty body; counted.
+    PAGE.handle_success();
 }
 
 // 0x58d50 — -[RobloxPageViewController initWithCoder:]
 // type: RobloxPageViewController *__cdecl(RobloxPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxPageViewController initWithCoder:]")]
-pub fn stub_58d50() -> ! {
-    todo!("0x58d50 -[RobloxPageViewController initWithCoder:]")
+pub fn stub_58d50() -> Option<ControlId> {
+    // IDA 0x58d50 `-initWithCoder:`: super init (0x58d7a).
+    PAGE.init_coder()
 }
 
 // 0x58d7c — -[RobloxPageViewController viewDidLoad]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController viewDidLoad]")]
-pub fn stub_58d7c() -> ! {
-    todo!("0x58d7c -[RobloxPageViewController viewDidLoad]")
+pub fn stub_58d7c() {
+    // IDA 0x58d7c `-viewDidLoad`: super (0x58da0) plus the UserAgent
+    // defaults registration (0x58dbc..0x58e18).
+    PAGE.view_did_load();
 }
 
 // 0x58e20 — -[RobloxPageViewController viewWillAppear:]
 // type: void __cdecl(RobloxPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxPageViewController viewWillAppear:]")]
-pub fn stub_58e20() -> ! {
-    todo!("0x58e20 -[RobloxPageViewController viewWillAppear:]")
+pub fn stub_58e20(animated: bool) {
+    // IDA 0x58e20 `-viewWillAppear:`: super only (0x58e44).
+    PAGE.will_appear(animated);
 }
 
 // 0x58e4c — -[RobloxPageViewController shouldAutorotate]
 // type: char __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotate]")]
-pub fn stub_58e4c() -> ! {
-    todo!("0x58e4c -[RobloxPageViewController shouldAutorotate]")
+pub fn stub_58e4c() -> bool {
+    // IDA 0x58e4c `-shouldAutorotate`: always 1 (0x58e4e).
+    PAGE.should_autorotate()
 }
 
 // 0x58e50 — -[RobloxPageViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController supportedInterfaceOrientations]")]
-pub fn stub_58e50() -> ! {
-    todo!("0x58e50 -[RobloxPageViewController supportedInterfaceOrientations]")
+pub fn stub_58e50(is_pad: bool) -> u32 {
+    // IDA 0x58e50 `-supportedInterfaceOrientations`: 6 by default; with an
+    // idiom-capable device the pad mask is 24 and the phone falls back to
+    // 6 (0x58e6e..0x58e9a).
+    PAGE.orientations(is_pad)
 }
 
 // 0x58eb8 — -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(RobloxPageViewController *self, SEL, int)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_58eb8() -> ! {
-    todo!("0x58eb8 -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_58eb8(orientation: i32, is_pad: bool) -> bool {
+    // IDA 0x58eb8 `-shouldAutorotateToInterfaceOrientation:`: pad allows
+    // landscape-right(4)/left(3) (0x58f12..0x58f26); phone allows
+    // portrait(1)/upside-down(2) (0x58f2a..0x58f36); no-idiom devices read
+    // as phone.
+    PAGE.should_rotate_to(orientation, is_pad)
 }
 
 // 0x58f40 — -[NSString(Escaping) stringWithPercentEscape]_0
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_0")]
-pub fn stub_58f40() -> ! {
-    todo!("0x58f40 -[NSString(Escaping) stringWithPercentEscape]_0")
+pub fn stub_58f40(input: &str) -> String {
+    // IDA 0x58f40 `-[NSString(Escaping) stringWithPercentEscape]`: mutable
+    // copy, then `CFURLCreateStringByAddingPercentEscapes` escaping
+    // "=,!$&'()*+;@?\n\"<>#\t :/" (0x58f52..0x58f82); alphanumerics and
+    // `-_.~` pass through, the rest escape as UTF-8 %XX.
+    percent_escape(input)
 }
 
 // 0x58f94 — +[LoginManager sharedInstance]
