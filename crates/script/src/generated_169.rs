@@ -70,6 +70,32 @@ static SIGNAL_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 /// Opaque void-signal slot static mutex handle (IDA 0x3d030: same shape as
 /// 0x3d938).
 static SLOT_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// `RobloxView::RenderJob` observable state (IDA 0x3ecf0..0x3fb9c): the
+/// ctor wires view/marshaller/datamodel peers (folds into the host);
+/// wake/prepare/perform latches, the step count, the last error, metric
+/// overrides, and the graphics mode are observed.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct RenderJobState {
+    pub live: bool,
+    pub awake: bool,
+    pub prepared: bool,
+    pub performed: bool,
+    pub steps: u32,
+    pub last_error: f64,
+    pub metrics: Vec<(String, f32)>,
+    pub graphics_mode: String,
+}
+
+/// Render-schedule bind typeinfo answers (IDA 0x40160/0x401f0, same manage
+/// shape as 0x3e030).
+pub const RENDER_PERFORM_BIND_TYPEINFO: &str = "bind_t<scheduleRenderPerform>";
+pub const IMETRIC_BIND_TYPEINFO: &str = "bind_t<IMetric>";
+
+/// Render-schedule invocation counter (IDA 0x401dc/0x40270/0x4027c).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct RenderCallback {
+    pub calls: u32,
+}
 /// `intrusive_ptr_target` strong/weak counters (IDA 0x3d240: zeroed at
 /// 0x3d250/0x3d29c with alignment asserts, atomic.h:135, folding into the
 /// host).
@@ -923,172 +949,231 @@ pub fn stub_0x3ecd0() {
 // 0x3ecd4 — __ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")]
-pub fn stub_0x3ecd4() -> ! {
-    todo!("0x3ecd4 Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd4() {
+    // IDA 0x3ecd4: `windowResized` has an empty body — no-op.
 }
 
 // 0x3ecd8 — __ZN4Ogre19WindowEventListener13windowClosingEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")]
-pub fn stub_0x3ecd8() -> ! {
-    todo!("0x3ecd8 Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd8() -> i32 {
+    // IDA 0x3ecd8: `windowClosing` answers 1 (0x3ecda).
+    1
 }
 
 // 0x3ecdc — __ZN17QuitEventListener12windowClosedEPN4Ogre12RenderWindowE
 // type: _DWORD __fastcall(QuitEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "QuitEventListener::windowClosed(Ogre::RenderWindow *)")]
-pub fn stub_0x3ecdc() -> ! {
-    todo!("0x3ecdc QuitEventListener::windowClosed(Ogre::RenderWindow *)")
+pub fn stub_0x3ecdc(log: &mut Vec<String>) -> i32 {
+    // IDA 0x3ecdc: `windowClosed` logs the close request (puts shim) and
+    // answers success; the stream folds into the log.
+    log.push("Request to close OGRE render window received".to_owned());
+    1
 }
 
 // 0x3ecec — __ZN4Ogre19WindowEventListener17windowFocusChangeEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")]
-pub fn stub_0x3ecec() -> ! {
-    todo!("0x3ecec Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")
+pub fn stub_0x3ecec() {
+    // IDA 0x3ecec: `windowFocusChange` has an empty body — no-op.
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
-pub fn stub_0x3ecf0() -> ! {
-    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")
+pub fn stub_0x3ecf0() -> RenderJobState {
+    // IDA 0x3ecf0: `RenderJob` ctor wires the view, marshaller, and
+    // datamodel peers (folds into host ownership); the job starts live.
+    RenderJobState { live: true, ..RenderJobState::default() }
 }
 
 // 0x3ee80 — __ZN10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
-pub fn stub_0x3ee80() -> ! {
-    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_0x3ee80(job: &mut RenderJobState) {
+    // IDA 0x3ee80: D1 dtor tears down; drop glue covers it and the job is
+    // marked dead.
+    job.live = false;
 }
 
 // 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob() [0x3ef40]")]
-pub fn stub_0x3ef40() -> ! {
-    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_0x3ef40(job: &mut RenderJobState) {
+    // IDA 0x3ef40: D0 dtor (teardown plus delete); drop glue covers it and
+    // the job is marked dead.
+    job.live = false;
 }
 
 // 0x3f008 — __ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x3f008() -> ! {
-    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f008(enabled: bool, standard: f64) -> f64 {
+    // IDA 0x3f008: `sleepTime` stores +Inf when disabled (0x3f036..
+    // 0x3f046, 0x7FEFFFFFFFFFFFFF) and otherwise answers
+    // `computeStandardSleepTime(stats, 60.0)` (0x3f01a..0x3f02e, folds into
+    // the input).
+    if enabled {
+        standard
+    } else {
+        f64::INFINITY
+    }
 }
 
 // 0x3f058 — __ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x3f058() -> ! {
-    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f058(job: &mut RenderJobState, enabled: bool, standard: f64) {
+    // IDA 0x3f058: `error` zeroes the error words when disabled
+    // (0x3f084..0x3f08a) and otherwise stores
+    // `computeStandardError(stats, 30.0)` (0x3f06a..0x3f07c, folds into the
+    // input).
+    job.last_error = if enabled { standard } else { 0.0 };
 }
 
 // 0x3f090 — __ZNK3RBX13TaskScheduler3Job26getDesiredConcurrencyCountEv
 // type: int __fastcall(RBX::TaskScheduler::Job *this)
 #[doc(alias = "RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")]
-pub fn stub_0x3f090() -> ! {
-    todo!("0x3f090 RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")
+pub fn stub_0x3f090() -> u32 {
+    // IDA 0x3f090: `getDesiredConcurrencyCount` answers 1 (0x3f092).
+    1
 }
 
 // 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x3f094() -> ! {
-    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f094(job: &mut RenderJobState) -> u32 {
+    // IDA 0x3f094: `stepDataModelJob` steps cameras and the datamodel
+    // (folds into the host); the step count is observed.
+    job.steps += 1;
+    job.steps
 }
 
 // 0x3f598 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_0x3f598() -> ! {
-    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_0x3f598(job: &RenderJobState, name: &str) -> f32 {
+    // IDA 0x3f598: `getMetricValue` dispatches "Render FPS", "Render Duty",
+    // "Render Job Time", "Render Nominal FPS", and siblings (0x3f5c2..) to
+    // job average queries; the engine queries fold into the metric table.
+    job.metrics.iter().find(|(n, _)| n == name).map(|(_, v)| *v).unwrap_or(0.0)
 }
 
 // 0x3f700 — __ZNK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_0x3f700() -> ! {
-    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_0x3f700(job: &RenderJobState, name: &str) -> String {
+    // IDA 0x3f700: `getMetric` formats "Graphics Mode" and siblings into
+    // the out string; formatting folds into the stored mode.
+    if name == "Graphics Mode" {
+        job.graphics_mode.clone()
+    } else {
+        String::new()
+    }
 }
 
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
-pub fn stub_0x3f904() -> ! {
-    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_0x3f904(job: &mut RenderJobState) {
+    // IDA 0x3f904: thn480 D1 (adjust plus base dtor); drop glue covers it
+    // and the job is marked dead.
+    job.live = false;
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob() [0x3f9c8]")]
-pub fn stub_0x3f9c8() -> ! {
-    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_0x3f9c8(job: &mut RenderJobState) {
+    // IDA 0x3f9c8: thn480 D0 (adjust, teardown, delete); drop glue covers
+    // it and the job is marked dead.
+    job.live = false;
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_0x3fa94() -> ! {
-    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_0x3fa94(job: &RenderJobState, name: &str) -> f32 {
+    // IDA 0x3fa94: thn480 `getMetricValue` (adjust plus dispatch, same
+    // shape as 0x3f598).
+    stub_0x3f598(job, name)
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_0x3faa4() -> ! {
-    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_0x3faa4(job: &RenderJobState, name: &str) -> String {
+    // IDA 0x3faa4: thn480 `getMetric` (adjust plus format, same shape as
+    // 0x3f700).
+    stub_0x3f700(job, name)
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
-pub fn stub_0x3faac() -> ! {
-    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+pub fn stub_0x3faac(job: &mut RenderJobState) {
+    // IDA 0x3faac: `scheduleRenderPrepare` schedules unless already queued
+    // (flag at +632, 0x3faac..0x3fac2, folds into the latch).
+    job.prepared = true;
 }
 
 // 0x3fac4 — __ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
-pub fn stub_0x3fac4() -> ! {
-    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+pub fn stub_0x3fac4(job: &mut RenderJobState, has_model: bool) {
+    // IDA 0x3fac4: `scheduleRenderPerform` schedules the perform against
+    // the live datamodel (0x3fb02..0x3fb38, folds into the host).
+    job.performed = has_model;
 }
 
 // 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
-pub fn stub_0x3fb9c() -> ! {
-    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+pub fn stub_0x3fb9c(job: &mut RenderJobState) {
+    // IDA 0x3fb9c: `wake` raises the wake flag (0x3fbbe) through the
+    // scheduler singleton (folds into the host).
+    job.awake = true;
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x40160(_op: crate::generated_110::FunctorOp) -> &'static str {
+    // IDA 0x40160: `functor_manager::manage` for the scheduleRenderPerform
+    // bind — same op dispatch as 0x3e030.
+    RENDER_PERFORM_BIND_TYPEINFO
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x401dc(cb: &mut RenderCallback) {
+    // IDA 0x401dc: invoker thunk forwarding to the bind call (same shape
+    // as 0x3e090).
+    cb.calls += 1;
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x401f0(_op: crate::generated_110::FunctorOp) -> &'static str {
+    // IDA 0x401f0: `functor_manager::manage` for the IMetric bind — same
+    // op dispatch as 0x3e030.
+    IMETRIC_BIND_TYPEINFO
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x40270(cb: &mut RenderCallback) {
+    // IDA 0x40270: invoker thunk forwarding to the bind call (same shape
+    // as 0x3e090).
+    cb.calls += 1;
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
-pub fn stub_0x4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+pub fn stub_0x4027c(cb: &mut RenderCallback) {
+    // IDA 0x4027c: `list3` bind call invoking the member (virtual-aware at
+    // 0x4029a..0x4029e, same shape as 0x3e094).
+    cb.calls += 1;
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
@@ -1483,5 +1568,87 @@ mod step_count_batch_tests {
         stub_0x3e190();
         stub_0x3eccc();
         stub_0x3ecd0();
+    }
+}
+
+#[cfg(test)]
+mod render_job_batch_tests {
+    use super::*;
+    use crate::generated_110::FunctorOp;
+
+    #[test]
+    fn window_events() {
+        stub_0x3ecd4();
+        assert_eq!(stub_0x3ecd8(), 1);
+        let mut log = Vec::new();
+        assert_eq!(stub_0x3ecdc(&mut log), 1);
+        assert_eq!(log, vec!["Request to close OGRE render window received".to_owned()]);
+        stub_0x3ecec();
+    }
+
+    #[test]
+    fn render_job_lifecycle() {
+        let mut job = stub_0x3ecf0();
+        assert!(job.live);
+        assert!(!job.awake && !job.prepared && !job.performed);
+        stub_0x3fb9c(&mut job);
+        assert!(job.awake);
+        stub_0x3faac(&mut job);
+        assert!(job.prepared);
+        stub_0x3fac4(&mut job, false);
+        assert!(!job.performed);
+        stub_0x3fac4(&mut job, true);
+        assert!(job.performed);
+        assert_eq!(stub_0x3f094(&mut job), 1);
+        assert_eq!(stub_0x3f094(&mut job), 2);
+        stub_0x3ee80(&mut job);
+        assert!(!job.live);
+        let mut job = stub_0x3ecf0();
+        stub_0x3ef40(&mut job);
+        assert!(!job.live);
+        let mut job = stub_0x3ecf0();
+        stub_0x3f904(&mut job);
+        assert!(!job.live);
+        let mut job = stub_0x3ecf0();
+        stub_0x3f9c8(&mut job);
+        assert!(!job.live);
+    }
+
+    #[test]
+    fn sleep_error_and_concurrency() {
+        assert_eq!(stub_0x3f008(false, 0.016), f64::INFINITY);
+        assert_eq!(stub_0x3f008(true, 0.016), 0.016);
+        let mut job = stub_0x3ecf0();
+        stub_0x3f058(&mut job, false, 0.5);
+        assert_eq!(job.last_error, 0.0);
+        stub_0x3f058(&mut job, true, 0.5);
+        assert_eq!(job.last_error, 0.5);
+        assert_eq!(stub_0x3f090(), 1);
+    }
+
+    #[test]
+    fn metrics() {
+        let job = RenderJobState {
+            metrics: vec![("Render FPS".to_owned(), 60.0)],
+            graphics_mode: "OpenGL".to_owned(),
+            ..RenderJobState::default()
+        };
+        assert_eq!(stub_0x3f598(&job, "Render FPS"), 60.0);
+        assert_eq!(stub_0x3f598(&job, "Nope"), 0.0);
+        assert_eq!(stub_0x3fa94(&job, "Render FPS"), 60.0);
+        assert_eq!(stub_0x3f700(&job, "Graphics Mode"), "OpenGL");
+        assert_eq!(stub_0x3f700(&job, "Nope"), "");
+        assert_eq!(stub_0x3faa4(&job, "Graphics Mode"), "OpenGL");
+    }
+
+    #[test]
+    fn render_functor_glue() {
+        assert_eq!(stub_0x40160(FunctorOp::GetType), RENDER_PERFORM_BIND_TYPEINFO);
+        assert_eq!(stub_0x401f0(FunctorOp::Destroy), IMETRIC_BIND_TYPEINFO);
+        let mut cb = RenderCallback::default();
+        stub_0x401dc(&mut cb);
+        stub_0x40270(&mut cb);
+        stub_0x4027c(&mut cb);
+        assert_eq!(cb.calls, 3);
     }
 }
