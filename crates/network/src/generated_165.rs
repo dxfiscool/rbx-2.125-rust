@@ -6,6 +6,24 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+/// AsyncHttpQueue::AsyncRetryTask (IDA 0x301b4c: 12-byte deque element).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct AsyncRetryTask {
+    pub words: [u32; 3],
+}
+
+/// AsyncHttpQueue retry deque: `std::deque<AsyncRetryTask>` (IDA 0x301b4c et al.; 504-byte chunks folded into VecDeque growth).
+pub type RetryDeque = std::collections::VecDeque<AsyncRetryTask>;
+
+/// HttpQueueStatsItem instance (IDA 0x302418: Stats::Item with queue/process averages, slow count, name).
+#[derive(Debug, Default)]
+pub struct HttpQueueStatsItem {
+    pub name: String,
+    pub avg_queue_ms: f64,
+    pub avg_process_ms: f64,
+    pub slow_requests: i32,
+}
+
 /// Queue mutex: `boost::shared_ptr<mutex>` guarding AsyncHttpQueue requests (IDA 0x300d3c et al.).
 pub type QueueMutex = std::sync::Mutex<()>;
 
@@ -492,194 +510,203 @@ pub fn stub_3019a8(queue: std::sync::Weak<crate::generated_164::AsyncHttpQueue>,
 // 0x301afc — __ZN5boost8weak_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // demangled: boost::weak_ptr<RBX::AsyncHttpQueue>::weak_ptr<RBX::AsyncHttpQueue>(boost::shared_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_enable_if_convertible<RBX::AsyncHttpQueue,RBX::AsyncHttpQueue>::type)
 #[doc(alias = "rbx_core::WeakPtr<RBX::AsyncHttpQueue>::weak_ptr<RBX::AsyncHttpQueue>(rbx_core::SharedPtr<RBX::AsyncHttpQueue> const&,boost::detail::sp_enable_if_convertible<RBX::AsyncHttpQueue,RBX::AsyncHttpQueue>::type)")]
-pub fn stub_301afc() -> ! {
-    todo!("0x301afc boost::weak_ptr<RBX::AsyncHttpQueue>::weak_ptr<RBX::AsyncHttpQueue>(boost::shared_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_enable_if_convertible<RBX::AsyncHttpQueue,RBX::AsyncHttpQueue>::type)")
+pub fn stub_301afc(src: &std::sync::Weak<crate::generated_164::AsyncHttpQueue>) -> std::sync::Weak<crate::generated_164::AsyncHttpQueue> { // IDA 0x301afc: weak_ptr copy with spinlocked weak-retain (maps to atomic Weak clone).
+    src.clone()
 }
 
 // 0x301b4c — __ZNSt5dequeIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EE9pop_frontEv
 // demangled: std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::pop_front(void)
 // type: int(void)
 #[doc(alias = "std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::pop_front(void)")]
-pub fn stub_301b4c() -> ! {
-    todo!("0x301b4c std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::pop_front(void)")
+pub fn stub_301b4c(q: &mut RetryDeque) { // IDA 0x301b4c: deque pop_front (chunk-boundary dance folded into VecDeque).
+    q.pop_front();
 }
 
 // 0x301b80 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EE15_M_allocate_mapEm
 // demangled: std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_allocate_map(unsigned long)
 // type: int(void)
 #[doc(alias = "std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_allocate_map(unsigned long)")]
-pub fn stub_301b80() -> ! {
-    todo!("0x301b80 std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_allocate_map(unsigned long)")
+pub fn stub_301b80(n: usize) -> Vec<Vec<AsyncRetryTask>> { // IDA 0x301b80: deque map alloc (bad_alloc at 0x40000000+); chunk-pointer array.
+    if n >= 0x40000000 {
+        panic!("_M_allocate_map: bad_alloc");
+    }
+    Vec::with_capacity(n)
 }
 
 // 0x301b98 — __ZNSt10_List_baseIN3RBX14AsyncHttpQueue7RequestESaIS2_EE8_M_clearEv
 // demangled: std::_List_base<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_clear(void)
 // type: int __fastcall(int, int, int, int, int, std::string *, int, int, int, int)
 #[doc(alias = "std::_List_base<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_clear(void)")]
-pub fn stub_301b98() -> ! {
-    todo!("0x301b98 std::_List_base<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_clear(void)")
+pub fn stub_301b98(q: &mut Vec<HttpRequest>) { // IDA 0x301b98: list clear (per-node release + destroy folded into drop).
+    q.clear();
 }
 
 // 0x301f74 — __ZNSt5dequeIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EEC2ERKS4_
 // demangled: std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::deque(std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>> const&)
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::deque(std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>> const&)")]
-pub fn stub_301f74() -> ! {
-    todo!("0x301f74 std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::deque(std::deque<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>> const&)")
+pub fn stub_301f74(src: &RetryDeque) -> RetryDeque { // IDA 0x301f74: deque range ctor (map sizing + elementwise copy folded into clone).
+    src.clone()
 }
 
 // 0x302028 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EED2Ev
 // demangled: std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::~_Deque_base()
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::~_Deque_base()")]
-pub fn stub_302028() -> ! {
-    todo!("0x302028 std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::~_Deque_base()")
+pub fn stub_302028(q: RetryDeque) { // IDA 0x302028: deque-base dtor (chunk deletes folded into drop).
+    drop(q);
 }
 
 // 0x302054 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EE17_M_initialize_mapEm
 // demangled: std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_initialize_map(unsigned long)
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_initialize_map(unsigned long)")]
-pub fn stub_302054() -> ! {
-    todo!("0x302054 std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_initialize_map(unsigned long)")
+pub fn stub_302054(q: &mut RetryDeque, n: usize) { // IDA 0x302054: deque map init (count/centering folded into VecDeque growth).
+    q.reserve(n);
 }
 
 // 0x3021d4 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EE15_M_create_nodesEPPS2_S6_
 // demangled: std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_create_nodes(RBX::AsyncHttpQueue::AsyncRetryTask**,RBX::AsyncHttpQueue::AsyncRetryTask**)
 // type: void __fastcall(int, _DWORD *, unsigned int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_create_nodes(RBX::AsyncHttpQueue::AsyncRetryTask**,RBX::AsyncHttpQueue::AsyncRetryTask**)")]
-pub fn stub_3021d4() -> ! {
-    todo!("0x3021d4 std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::_M_create_nodes(RBX::AsyncHttpQueue::AsyncRetryTask**,RBX::AsyncHttpQueue::AsyncRetryTask**)")
+pub fn stub_3021d4(n: usize) -> Vec<Vec<AsyncRetryTask>> { // IDA 0x3021d4: deque chunk-node allocs (0x1F8-byte nodes); capacity array.
+    (0..n).map(|_| Vec::with_capacity(42)).collect()
 }
 
 // 0x302324 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18HttpQueueStatsItemEPNS_14AsyncHttpQueueEPS1_EEN5boost10shared_ptrIT_EET0_T1_
 // demangled: boost::shared_ptr<RBX::HttpQueueStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::HttpQueueStatsItem,RBX::AsyncHttpQueue *,RBX::Instance*>(RBX::AsyncHttpQueue *,RBX::Instance*)
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpQueueStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::HttpQueueStatsItem,RBX::AsyncHttpQueue *,RBX::Instance*>(RBX::AsyncHttpQueue *,RBX::Instance*)")]
-pub fn stub_302324() -> ! {
-    todo!("0x302324 boost::shared_ptr<RBX::HttpQueueStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::HttpQueueStatsItem,RBX::AsyncHttpQueue *,RBX::Instance*>(RBX::AsyncHttpQueue *,RBX::Instance*)")
+pub fn stub_302324(item: HttpQueueStatsItem) -> SharedPtr<HttpQueueStatsItem> { // IDA 0x302324: Creatable::create — shared_ptr with Creatable deleter; Arc ownership.
+    SharedPtr::new(item)
 }
 
 // 0x3023dc — __ZN3RBX18HttpQueueStatsItem4initEv
 // demangled: RBX::HttpQueueStatsItem::init(void)
 // type: _DWORD __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "RBX::HttpQueueStatsItem::init(void)")]
-pub fn stub_3023dc() -> ! {
-    todo!("0x3023dc RBX::HttpQueueStatsItem::init(void)")
+pub fn stub_3023dc(slots: &mut [i32; 3], create_child: &mut dyn FnMut(&str) -> i32) -> i32 { // IDA 0x3023dc: create "Average time in queue", "Average process time", "Num slow requests"; returns the last.
+    slots[0] = create_child("Average time in queue");
+    slots[1] = create_child("Average process time");
+    slots[2] = create_child("Num slow requests");
+    slots[2]
 }
 
 // 0x302418 — __ZN3RBX18HttpQueueStatsItemC2EPNS_14AsyncHttpQueueEPNS_8InstanceE
 // demangled: RBX::HttpQueueStatsItem::HttpQueueStatsItem(RBX::AsyncHttpQueue *,RBX::Instance *)
 // type: _DWORD __fastcall(RBX::HttpQueueStatsItem *__hidden this, RBX::AsyncHttpQueue *, RBX::Instance *)
 #[doc(alias = "RBX::HttpQueueStatsItem::HttpQueueStatsItem(RBX::AsyncHttpQueue *,RBX::Instance *)")]
-pub fn stub_302418() -> ! {
-    todo!("0x302418 RBX::HttpQueueStatsItem::HttpQueueStatsItem(RBX::AsyncHttpQueue *,RBX::Instance *)")
+pub fn stub_302418(queue_id: u32) -> HttpQueueStatsItem { // IDA 0x302418: Instance base + Stats::Item descriptor, name "HttpQueue_<id>" (refcount dance folded into String).
+    HttpQueueStatsItem { name: format!("HttpQueue_{}", queue_id), ..Default::default() }
 }
 
 // 0x30266c — __ZN3RBX18HttpQueueStatsItemD1Ev
 // demangled: RBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_30266c() -> ! {
-    todo!("0x30266c RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_30266c(item: HttpQueueStatsItem) { // IDA 0x30266c: destructor D1 (vtable resets + string/Instance teardown folded into drop).
+    drop(item);
 }
 
 // 0x3026a8 — __ZN3RBX18HttpQueueStatsItemD0Ev
 // demangled: RBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_3026a8() -> ! {
-    todo!("0x3026a8 RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_3026a8(item: HttpQueueStatsItem) { // IDA 0x3026a8: destructor D0 (teardown + operator delete folded into drop).
+    drop(item);
 }
 
 // 0x30277c — __ZN3RBX18HttpQueueStatsItem6updateEv
 // demangled: RBX::HttpQueueStatsItem::update(void)
 // type: _DWORD __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "RBX::HttpQueueStatsItem::update(void)")]
-pub fn stub_30277c() -> ! {
-    todo!("0x30277c RBX::HttpQueueStatsItem::update(void)")
+pub fn stub_30277c(avg_queue_ms: f64, avg_process_ms: f64, slow_requests: i32, format_msec: &mut dyn FnMut(f64) -> String, format_int: &mut dyn FnMut(i32) -> String) -> (String, String, String) { // IDA 0x30277c: format the two averages ("%.4f msec") and the slow count.
+    (format_msec(avg_queue_ms), format_msec(avg_process_ms), format_int(slow_requests))
 }
 
 // 0x3027d0 — __ZThn32_N3RBX18HttpQueueStatsItemD1Ev
 // demangled: non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_3027d0() -> ! {
-    todo!("0x3027d0 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_3027d0(item: HttpQueueStatsItem) { // IDA 0x3027d0: non-virtual thunk (this-32 adjustment folded in); destroy.
+    drop(item);
 }
 
 // 0x302810 — __ZThn32_N3RBX18HttpQueueStatsItemD0Ev
 // demangled: non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_302810() -> ! {
-    todo!("0x302810 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_302810(item: HttpQueueStatsItem) { // IDA 0x302810: non-virtual thunk (this-32 + delete folded in); destroy.
+    drop(item);
 }
 
 // 0x3028e8 — __ZThn36_N3RBX18HttpQueueStatsItemD1Ev
 // demangled: non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_3028e8() -> ! {
-    todo!("0x3028e8 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_3028e8(item: HttpQueueStatsItem) { // IDA 0x3028e8: non-virtual thunk (this-36 adjustment folded in); destroy.
+    drop(item);
 }
 
 // 0x302928 — __ZThn36_N3RBX18HttpQueueStatsItemD0Ev
 // demangled: non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
-pub fn stub_302928() -> ! {
-    todo!("0x302928 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_302928(item: HttpQueueStatsItem) { // IDA 0x302928: non-virtual thunk (this-36 + delete folded in); destroy.
+    drop(item);
 }
 
 // 0x3029fc — __ZN5boost10shared_ptrIN3RBX18HttpQueueStatsItemEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::HttpQueueStatsItem>::shared_ptr<RBX::HttpQueueStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpQueueStatsItem>::shared_ptr<RBX::HttpQueueStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3029fc() -> ! {
-    todo!("0x3029fc boost::shared_ptr<RBX::HttpQueueStatsItem>::shared_ptr<RBX::HttpQueueStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3029fc<T>(value: T) -> SharedPtr<T> { // IDA 0x3029fc: shared_ptr<StatsItem> ctor with Creatable deleter (+ accept_owner latch by caller); Arc ownership.
+    SharedPtr::new(value)
 }
 
 // 0x302ac4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18HttpQueueStatsItemES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpQueueStatsItem,RBX::HttpQueueStatsItem>(boost::shared_ptr<RBX::HttpQueueStatsItem> const*,RBX::HttpQueueStatsItem *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpQueueStatsItem,RBX::HttpQueueStatsItem>(rbx_core::SharedPtr<RBX::HttpQueueStatsItem> const*,RBX::HttpQueueStatsItem *)const")]
-pub fn stub_302ac4() -> ! {
-    todo!("0x302ac4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HttpQueueStatsItem,RBX::HttpQueueStatsItem>(boost::shared_ptr<RBX::HttpQueueStatsItem> const*,RBX::HttpQueueStatsItem *)const")
+pub fn stub_302ac4<T>(slot: &mut std::sync::Weak<T>, value: &SharedPtr<T>) { // IDA 0x302ac4: if the described-base weak expired, latch the new weak owner.
+    if slot.upgrade().is_none() {
+        *slot = SharedPtr::downgrade(value);
+    }
 }
 
 // 0x302bac — __ZN5boost6detail12shared_countC2IPN3RBX18HttpQueueStatsItemENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // demangled: boost::detail::shared_count::shared_count<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_302bac() -> ! {
-    todo!("0x302bac boost::detail::shared_count::shared_count<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_302bac<T>(value: T) -> SharedPtr<T> { // IDA 0x302bac: shared_count ctor for StatsItem+Deleter (control block, use/weak 1); Arc alloc.
+    SharedPtr::new(value)
 }
 
 // 0x302cb4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_302cb4() -> ! {
-    todo!("0x302cb4 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_302cb4<T>(v: SharedPtr<T>) { // IDA 0x302cb4: counted-impl dtor (empty body; base releases).
+    drop(v);
 }
 
 // 0x302cb8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_302cb8() -> ! {
-    todo!("0x302cb8 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_302cb8<T>(v: SharedPtr<T>) { // IDA 0x302cb8: deleting-destructor thunk (operator delete); drop.
+    drop(v);
 }
 
 // 0x302cbc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_302cbc() -> ! {
-    todo!("0x302cbc boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_302cbc<T>(value: SharedPtr<T>, predelete: &mut dyn FnMut()) { // IDA 0x302cbc: Instance::predelete, then destroy via the Deleter; drop covers both.
+    predelete();
+    drop(value);
 }
 
 // 0x302cdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_302cdc() -> ! {
-    todo!("0x302cdc boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_302cdc(type_name: &str) -> bool { // IDA 0x302cdc: deleter query — non-null iff the requested type is the Creatable deleter (name preserved verbatim).
+    type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE"
 }
 
 // 0x302cf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
