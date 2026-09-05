@@ -306,6 +306,45 @@ pub struct SplitChannel {
     pub packets: Vec<u32>,
 }
 
+/// One queued outgoing packet (IDA 0xa76828): the 8-byte-aligned bit cost
+/// plus the packet handle. The 16-minimum/double table growth
+/// (0xa7686c..0xa768c0) folds into `Vec`.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct OutPacket {
+    pub bits: u32,
+    pub handle: u32,
+}
+
+/// One send-heap entry (IDA 0xa74dc0/0xa75100): the priority the time heap
+/// orders by plus the assembled packet.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct SendEntry {
+    pub priority: u8,
+    pub packet: InternalPacket,
+}
+
+/// One datagram-history node (IDA 0xa7696c/0xa76b88): the message-number key
+/// plus the two trailing words queued at 0xa76a4e..0xa76a58.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct HistoryEntry {
+    pub key: u32,
+    pub lo: u32,
+    pub hi: u32,
+}
+
+/// `RakNetStatistics` snapshot (IDA 0xa76e74): the running counters copied
+/// into the out struct (0xa76e88..0xa76f12, block copies fold into the host;
+/// `GetTimeUS` at 0xa76e84 folds into the host clock).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct ReliabilityStats {
+    pub datagrams: u64,
+    pub received: u64,
+    pub resend_pending: usize,
+    pub output_queued: usize,
+    pub acked_bytes: f64,
+    pub bytes_queued: u64,
+}
+
 /// `RakNet::ReliabilityLayer` observable state (IDA 0xa70938..0xa749fc),
 /// mirroring `rbx_network::reliability::ReliabilityLayer`: the opaque window
 /// words at +60/+96 are `0x4000` out of the ctor (0xa7097c/0xa70994), the
@@ -330,6 +369,38 @@ pub struct ReliabilityState {
     pub plugin_notes: u64,
     pub datagrams: u64,
     pub received: u64,
+    /// Last-update timestamp at word 539 (IDA 0xa71516/0xa76422).
+    pub last_ack_ms: u32,
+    /// Ready flag at word 541 (IDA 0xa76c6c).
+    pub outgoing_ready: bool,
+    /// Send-queue depth at word 607 (IDA 0xa76c7c).
+    pub send_queue_len: u32,
+    /// Ack ranges waiting at word 970 (IDA 0xa7648e/0xa76c8e).
+    pub acks_waiting: bool,
+    /// Pending ack range count drained by `SendACKs` (IDA 0xa76468).
+    pub pending_ack_ranges: u32,
+    /// Acks emitted (covers the `SendACKs` call at 0xa74d26).
+    pub acks_sent: u64,
+    /// Aligned pending bits at words 957-958 (IDA 0xa76852/0xa7685c).
+    pub pending_bits: u64,
+    /// Outgoing packet table (IDA 0xa76828).
+    pub outgoing: Vec<OutPacket>,
+    /// Datagram records (IDA 0xa766b8).
+    pub datagram_table: Vec<u32>,
+    /// Datagram history ring, evicted past 0x200 entries (IDA 0xa76996).
+    pub datagram_history: VecDeque<HistoryEntry>,
+    /// History sequence at +76, wrapped to 24 bits (IDA 0xa76a1e).
+    pub history_counter: u32,
+    /// Time-heap queue (IDA 0xa74dc0/0xa75100).
+    pub send_heap: Vec<SendEntry>,
+    /// Next reliable message number.
+    pub message_number: u32,
+    /// Next split-packet id.
+    pub split_id_counter: u16,
+    /// `Update` pump runs (IDA 0xa75548).
+    pub update_count: u64,
+    /// Bytes queued stat at +3924/+3932 (IDA 0xa74e6c/0xa74e82).
+    pub bytes_queued: u64,
 }
 
 impl ReliabilityState {
@@ -1338,164 +1409,628 @@ mod reliability_layer_batch_tests {
     }
 }
 
+/// Assemble a complete split channel into one packet (IDA 0xa74c88/0xa76ca4):
+/// header fields copy from the channel head (0xa76d02..0xa76d16) and payloads
+/// concatenate. MODEL: header words fold into defaults; the payload
+/// concatenates the 4-byte packet handles losslessly.
+pub fn assemble_split_channel(channel: &SplitChannel) -> InternalPacket {
+    let mut data = Vec::with_capacity(channel.packets.len() * 4);
+    for handle in &channel.packets {
+        data.extend_from_slice(&handle.to_le_bytes());
+    }
+    InternalPacket {
+        length_bits: (data.len() * 8).min(u16::MAX as usize) as u16,
+        data,
+        ..InternalPacket::default()
+    }
+}
+
+/// Push a datagram-history node with 0x200-entry eviction (IDA 0xa76996..
+/// 0xa76a1e): past the cap the oldest chain is released and the 24-bit
+/// sequence bumps; the pool allocate (0xa76a38) folds into the host.
+pub fn push_history(state: &mut ReliabilityState, key: u32, lo: u32, hi: u32) -> u32 {
+    if state.datagram_history.len() > 0x200 {
+        state.datagram_history.pop_front();
+        state.history_counter = (state.history_counter + 1) & 0x00ff_ffff;
+    }
+    let id = state.history_counter;
+    state.history_counter = (state.history_counter + 1) & 0x00ff_ffff;
+    state.datagram_history.push_back(HistoryEntry { key, lo, hi });
+    id
+}
+
+/// Serialize an `InternalPacket` (IDA 0xa76a68): the written kind remaps
+/// 7→3, 6→2, 5→0 (0xa76a94..0xa76aa0), then the 3-bit kind (0xa76aae), split
+/// bit (0xa76ab4..0xa76ac4), var16 length (0xa76ae2), number for the original
+/// kind under mask `0xdc` {2,3,4,6,7} (0xa76af4 — note the parse side at
+/// 0xa74826 covers only {2,3,4}), ordering index for {1,4}
+/// (0xa76b02..0xa76b20), channel word plus byte for mask `0x9a`
+/// (0xa76b34..0xa76b48), the split triple (0xa76b4c..0xa76b68), and the
+/// payload bytes (0xa76b76). MODEL: byte-aligned LE framing matching
+/// `create_internal_packet`; returns the wire bytes (the original answers
+/// the bit count, 0xa76b86).
+pub fn write_internal_packet(pkt: &InternalPacket) -> Vec<u8> {
+    let kind = match pkt.reliability {
+        7 => 3,
+        6 => 2,
+        5 => 0,
+        r => r,
+    };
+    let mut wire = Vec::new();
+    wire.push((kind & 7) | if pkt.has_split { 8 } else { 0 });
+    wire.extend_from_slice(&pkt.length_bits.to_le_bytes());
+    if matches!(pkt.reliability, 2 | 3 | 4 | 6 | 7) {
+        wire.extend_from_slice(&pkt.message_number.to_le_bytes()[..3]);
+    }
+    if matches!(pkt.reliability, 1 | 4) {
+        wire.extend_from_slice(&pkt.ordering_index.to_le_bytes()[..3]);
+    }
+    if matches!(pkt.reliability, 1 | 3 | 4 | 7) {
+        wire.push(pkt.ordering_channel);
+    }
+    if pkt.has_split {
+        wire.extend_from_slice(&pkt.split_id.to_le_bytes());
+        wire.extend_from_slice(&pkt.split_index.to_le_bytes());
+        wire.extend_from_slice(&pkt.split_count.to_le_bytes());
+    }
+    wire.extend_from_slice(&pkt.data);
+    wire
+}
+
+/// Fragment a packet for the MTU (IDA 0xa75100): 24-byte header baseline
+/// (0xa75126, the per-reliability table at 0xa75148 folds into the host),
+/// payload split across fragments pushed to the time heap (0xa754a4) with
+/// per-priority stats (0xa754c8..0xa754e2), and the original released
+/// (0xa75500). Returns the fragment count.
+pub fn split_packet_into(
+    state: &mut ReliabilityState,
+    base: &InternalPacket,
+    priority: u8,
+    mtu: usize,
+) -> usize {
+    let room = mtu.saturating_sub(24).max(1);
+    let mut chunks: Vec<&[u8]> = base.data.chunks(room).collect();
+    if chunks.is_empty() {
+        chunks.push(&[]);
+    }
+    let count = chunks.len();
+    let split_id = state.split_id_counter;
+    state.split_id_counter = state.split_id_counter.wrapping_add(1);
+    for (i, chunk) in chunks.into_iter().enumerate() {
+        state.send_heap.push(SendEntry {
+            priority,
+            packet: InternalPacket {
+                has_split: true,
+                length_bits: (chunk.len() * 8).min(u16::MAX as usize) as u16,
+                split_id: u32::from(split_id),
+                split_index: i as u16,
+                split_count: count as u32,
+                data: chunk.to_vec(),
+                ..base.clone()
+            },
+        });
+    }
+    count
+}
+
 // 0xa74c88 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned int, unsigned __int64, int, RakNet::SystemAddress *, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, RakNet::BitStream *)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa74c88() -> ! {
-    todo!("0xa74c88")
+pub fn stub_0xa74c88(
+    state: &mut ReliabilityState,
+    split_id: u16,
+    expected_total: u32,
+) -> Option<InternalPacket> {
+    // IDA 0xa74c88: binary-searches the channel by split id
+    // (0xa74c98..0xa74cf2); when the channel holds `expected_total` packets
+    // (0xa74d0e) it emits acks (0xa74d26), builds the packet (0xa74d32), and
+    // removes the channel by shift-down (0xa74d36..0xa74d58). MODEL: socket
+    // peers fold into the host; the ack is counted.
+    let pos = state.split_channels.binary_search_by_key(&split_id, |c| c.id).ok()?;
+    if expected_total == 0 || state.split_channels[pos].packets.len() as u32 != expected_total {
+        return None;
+    }
+    let channel = state.split_channels.remove(pos);
+    state.acks_sent += 1;
+    Some(assemble_split_channel(&channel))
 }
 
 // 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned __int8 **)
 #[doc(alias = "RakNet::ReliabilityLayer::Receive(unsigned char **)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer7ReceiveEPPh")]
-pub fn stub_0xa74d64() -> ! {
-    todo!("0xa74d64")
+pub fn stub_0xa74d64(state: &mut ReliabilityState) -> Option<(Vec<u8>, u32)> {
+    // IDA 0xa74d64: `Receive` walks the output ring (0xa74d66..0xa74d98),
+    // answers the packet bytes plus bit length (0xa74da4/0xa74da8), and
+    // releases the packet (0xa74db8); an empty ring answers 0. MODEL: the
+    // ring folds into the queue; empty is `None`.
+    state.output.pop_front().map(|bytes| {
+        let bits = (bytes.len() * 8) as u32;
+        (bytes, bits)
+    })
 }
 
 // 0xa74dc0 — __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj
 // type: int __fastcall(int, const void *, int, unsigned int, unsigned int, unsigned int, int, int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj")]
-pub fn stub_0xa74dc0() -> ! {
-    todo!("0xa74dc0")
+pub fn stub_0xa74dc0(
+    state: &mut ReliabilityState,
+    data: &[u8],
+    mut priority: u8,
+    mut reliability: u8,
+    mut channel: u8,
+    mtu: usize,
+) -> bool {
+    // IDA 0xa74dc0: `Send` clamps priority above 4 to 1 (0xa74dde..0xa74de0),
+    // channels above 0x1f to 0 (0xa74de8..0xa74dea), and reliabilities above
+    // 7 to 2 (0xa74df0..0xa74df2); empty payloads answer 0 (0xa74dfc/0xa750fe).
+    // Otherwise the packet is allocated (0xa74e12..0xa74e2e), queued with
+    // byte stats (0xa74e3e..0xa74e82), and either pushed to the time heap
+    // (0xa75052..0xa750ec) or fragmented via `SplitPacket` (0xa74fb6/0xa750f0),
+    // answering 1. MODEL: pool/heap peers fold into the host queue.
+    if priority > 4 {
+        priority = 1;
+    }
+    if channel > 0x1f {
+        channel = 0;
+    }
+    if reliability > 7 {
+        reliability = 2;
+    }
+    if data.is_empty() {
+        return false;
+    }
+    state.bytes_queued += ((data.len() + 7) / 8) as u64;
+    let number = if matches!(reliability, 2 | 3 | 4) {
+        let n = state.message_number;
+        state.message_number += 1;
+        n
+    } else {
+        0x00ff_ffff
+    };
+    let base = InternalPacket {
+        reliability,
+        ordering_channel: channel,
+        length_bits: (data.len() * 8).min(u16::MAX as usize) as u16,
+        message_number: number,
+        data: data.to_vec(),
+        ..InternalPacket::default()
+    };
+    if data.len() + 24 <= mtu {
+        state.send_heap.push(SendEntry { priority, packet: base });
+    } else {
+        split_packet_into(state, &base, priority, mtu);
+    }
+    true
 }
 
 // 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
 // type: int __fastcall(int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE")]
-pub fn stub_0xa75100() -> ! {
-    todo!("0xa75100")
+pub fn stub_0xa75100(
+    state: &mut ReliabilityState,
+    data: &[u8],
+    reliability: u8,
+    channel: u8,
+    priority: u8,
+    mtu: usize,
+) -> usize {
+    // IDA 0xa75100: `SplitPacket` — see `split_packet_into`.
+    let base = InternalPacket {
+        reliability,
+        ordering_channel: channel,
+        length_bits: (data.len() * 8).min(u16::MAX as usize) as u16,
+        data: data.to_vec(),
+        ..InternalPacket::default()
+    };
+    split_packet_into(state, &base, priority, mtu)
 }
 
 // 0xa75548 — __ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE
 // type: bool __fastcall(int, RakNet::SocketLayer *, sockaddr *, int, unsigned __int64, int, _DWORD *, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, void **)
 #[doc(alias = "RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa75548() -> ! {
-    todo!("0xa75548")
+pub fn stub_0xa75548(state: &mut ReliabilityState, ack_timed_out: bool) -> bool {
+    // IDA 0xa75548: `Update` pumps retransmits, acks, and split builds; on an
+    // ack timeout it latches the dead flag (0xa757b8) and answers 1
+    // (0xa757b6), else it clears finished packets (0xa763f8) and answers
+    // whether the pump is idle (0xa76412). MODEL: the socket/queue pump folds
+    // into the host; the latch, run count, and idle answer are observed.
+    if ack_timed_out {
+        state.dead_connection = true;
+        return true;
+    }
+    state.update_count += 1;
+    true
 }
 
 // 0xa7641c — __ZN6RakNet16ReliabilityLayer10AckTimeoutEy
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned __int64)
 #[doc(alias = "RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer10AckTimeoutEy")]
-pub fn stub_0xa7641c() -> ! {
-    todo!("0xa7641c")
+pub fn stub_0xa7641c(state: &ReliabilityState, now: u64) -> bool {
+    // IDA 0xa7641c: `AckTimeout` treats a last-update within the last 0x2711
+    // ms as live (0xa76422..0xa76448); otherwise the link is dead once
+    // `now - last` passes the timeout — or overflows 32 bits
+    // (0xa76450..0xa76464).
+    let base = u64::from(state.last_ack_ms);
+    if now <= base {
+        base - now >= 0x2711
+    } else {
+        let diff = now - base;
+        diff > u64::from(state.timeout_ms) || diff > u64::from(u32::MAX)
+    }
 }
 
 // 0xa76468 — __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE
 // type: int __fastcall(RakNet::ReliabilityLayer *this, RakNet::SocketLayer *, sockaddr *, unsigned __int64, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, void **)
 #[doc(alias = "RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa76468() -> ! {
-    todo!("0xa76468")
+pub fn stub_0xa76468(state: &mut ReliabilityState) -> u32 {
+    // IDA 0xa76468: `SendACKs` serializes the pending ack ranges into
+    // MTU-sized datagrams (0xa7648a..0xa764ce) and clears them. MODEL: socket
+    // writes fold into the host; the drained range count is observed.
+    if !state.acks_waiting {
+        return 0;
+    }
+    state.acks_waiting = false;
+    let n = state.pending_ack_ranges;
+    state.pending_ack_ranges = 0;
+    state.acks_sent += 1;
+    n
 }
 
 // 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
 #[doc(alias = "RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv")]
-pub fn stub_0xa765e0() -> ! {
-    todo!("0xa765e0")
+pub fn stub_0xa765e0(state: &mut ReliabilityState) {
+    // IDA 0xa765e0: `ResetPacketsAndDatagrams` drops the four packet tables
+    // past 0x200 entries (pairs 944/942, 947/945, 950/948, 953/951 at
+    // 0xa765ea..0xa76682) and zeroes their counts. MODEL: table capacities
+    // fold into the host; all four queues drain but configuration is kept.
+    state.output.clear();
+    state.resend.clear();
+    state.split_channels.clear();
+    state.send_heap.clear();
+    state.outgoing.clear();
+    state.datagram_table.clear();
+    state.datagram_history.clear();
+    state.resend_bytes = 0;
+    state.pending_bits = 0;
 }
 
 // 0xa766b8 — __ZN6RakNet16ReliabilityLayer12PushDatagramEv
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
 #[doc(alias = "RakNet::ReliabilityLayer::PushDatagram(void)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer12PushDatagramEv")]
-pub fn stub_0xa766b8() -> ! {
-    todo!("0xa766b8")
+pub fn stub_0xa766b8(state: &mut ReliabilityState, record: u32) -> u64 {
+    // IDA 0xa766b8: `PushDatagram` answers the pending bit count (0xa766c2);
+    // when nonzero it appends the datagram record with 16-minimum/double
+    // growth (0xa766da..0xa76720). MODEL: growth folds into `Vec`.
+    if state.pending_bits == 0 {
+        return 0;
+    }
+    state.datagram_table.push(record);
+    state.pending_bits
 }
 
 // 0xa76828 — __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb
 // type: void __fastcall(_DWORD *, unsigned __int64, int, char)
 #[doc(alias = "RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb")]
-pub fn stub_0xa76828() -> ! {
-    todo!("0xa76828")
+pub fn stub_0xa76828(state: &mut ReliabilityState, bits: u32, handle: u32) {
+    // IDA 0xa76828: `PushPacket` adds the 8-byte-aligned bit cost (0xa7684c)
+    // to the pending totals (0xa76852/0xa7685c) and appends the packet with
+    // 16-minimum/double growth (0xa7686a..0xa768c0). MODEL: growth folds into
+    // `Vec`.
+    state.pending_bits += (u64::from(bits) + 7) & !7;
+    state.outgoing.push(OutPacket { bits, handle });
 }
 
 // 0xa7696c — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y
 // type: _DWORD *__fastcall(int, int, _DWORD *, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y")]
-pub fn stub_0xa7696c() -> ! {
-    todo!("0xa7696c")
+pub fn stub_0xa7696c(state: &mut ReliabilityState, key: u32, lo: u32, hi: u32) -> u32 {
+    // IDA 0xa7696c: `AddFirstToDatagramHistory` — see `push_history` (the
+    // queued triple lands at 0xa76a4e..0xa76a58).
+    push_history(state, key, lo, hi)
 }
 
 // 0xa76a68 — __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy
 // type: int __fastcall(int, RakNet::BitStream *this, int)
 #[doc(alias = "RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy")]
-pub fn stub_0xa76a68() -> ! {
-    todo!("0xa76a68")
+pub fn stub_0xa76a68(packet: &InternalPacket) -> Vec<u8> {
+    // IDA 0xa76a68: `WriteToBitStreamFromInternalPacket` — see
+    // `write_internal_packet`.
+    write_internal_packet(packet)
 }
 
 // 0xa76b88 — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy")]
-pub fn stub_0xa76b88() -> ! {
-    todo!("0xa76b88")
+pub fn stub_0xa76b88(state: &mut ReliabilityState, key: u32, lo: u32) -> u32 {
+    // IDA 0xa76b88: `AddFirstToDatagramHistory` two-word form — same
+    // 0x200-capped ring as 0xa7696c (0xa76bb2..0xa76c3a) with a zeroed third
+    // word.
+    push_history(state, key, lo, 0)
 }
 
 // 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
 // type: bool __fastcall(RakNet::ReliabilityLayer *this)
 #[doc(alias = "RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv")]
-pub fn stub_0xa76c68() -> ! {
-    todo!("0xa76c68")
+pub fn stub_0xa76c68(state: &ReliabilityState) -> bool {
+    // IDA 0xa76c68: ready when the word-541 flag is set, else when the
+    // word-607 queue is nonempty (0xa76c6a..0xa76c7c).
+    state.outgoing_ready || state.send_queue_len != 0
 }
 
 // 0xa76c84 — __ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv
 // type: bool __fastcall(RakNet::ReliabilityLayer *this)
 #[doc(alias = "RakNet::ReliabilityLayer::AreAcksWaiting(void)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv")]
-pub fn stub_0xa76c84() -> ! {
-    todo!("0xa76c84")
+pub fn stub_0xa76c84(state: &ReliabilityState) -> bool {
+    // IDA 0xa76c84: acks wait while the word-970 range list is nonempty
+    // (0xa76c8e).
+    state.acks_waiting
 }
 
 // 0xa76c90 — __ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi
 // type: int __fastcall(int this, int)
 #[doc(alias = "RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi")]
-pub fn stub_0xa76c90() -> ! {
-    todo!("0xa76c90")
+pub fn stub_0xa76c90(state: &mut ReliabilityState, interval: i32) {
+    // IDA 0xa76c90: `SetSplitMessageProgressInterval` stores the interval
+    // word (0xa76c90).
+    state.split_progress_interval = interval;
 }
 
 // 0xa76c94 — __ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj
 // type: int __fastcall(int this, unsigned int)
 #[doc(alias = "RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj")]
-pub fn stub_0xa76c94() -> ! {
-    todo!("0xa76c94")
+pub fn stub_0xa76c94(state: &mut ReliabilityState, seconds: u32) {
+    // IDA 0xa76c94: `SetUnreliableTimeout` stores `1000 * seconds` ms
+    // (0xa76c9c).
+    state.unreliable_timeout_ms = seconds.saturating_mul(1000);
 }
 
 // 0xa76ca4 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy")]
-pub fn stub_0xa76ca4() -> ! {
-    todo!("0xa76ca4")
+pub fn stub_0xa76ca4(
+    state: &mut ReliabilityState,
+    index: usize,
+    _time_lo: u32,
+    _time_hi: u32,
+) -> Option<InternalPacket> {
+    // IDA 0xa76ca4: `BuildPacketFromSplitPacketList` assembles the channel's
+    // payloads, releases each fragment and its refcounted bytes
+    // (0xa76e02..0xa76e2c), frees the channel (0xa76e4a..0xa76e5c), and
+    // answers the assembled packet (0xa76e68). MODEL: timestamps fold into
+    // the host.
+    let channel = state.split_channels.get(index)?.clone();
+    state.split_channels.remove(index);
+    Some(assemble_split_channel(&channel))
 }
 
 // 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
 // type: int __fastcall(RakNet::ReliabilityLayer *this)
 #[doc(alias = "RakNet::ReliabilityLayer::IsDeadConnection(void)const")]
 #[doc(alias = "__ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv")]
-pub fn stub_0xa76e6c() -> ! {
-    todo!("0xa76e6c")
+pub fn stub_0xa76e6c(state: &ReliabilityState) -> bool {
+    // IDA 0xa76e6c: `IsDeadConnection` answers the flag byte at 2228
+    // (0xa76e70).
+    state.dead_connection
 }
 
 // 0xa76e74 — __ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE
 // type: int __fastcall(int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE")]
-pub fn stub_0xa76e74() -> ! {
-    todo!("0xa76e74")
+pub fn stub_0xa76e74(state: &ReliabilityState) -> ReliabilityStats {
+    // IDA 0xa76e74: `GetStatistics` snapshots the running counters into the
+    // out struct — see `ReliabilityStats`.
+    ReliabilityStats {
+        datagrams: state.datagrams,
+        received: state.received,
+        resend_pending: state.resend.len(),
+        output_queued: state.output.len(),
+        acked_bytes: state.acked_bytes,
+        bytes_queued: state.bytes_queued,
+    }
+}
+
+#[cfg(test)]
+mod reliability_pump_batch_tests {
+    use super::*;
+
+    #[test]
+    fn build_complete_channel_assembles() {
+        let mut st = stub_0xa70938();
+        assert_eq!(stub_0xa749fc(&mut st, 9, 100), 0);
+        assert_eq!(stub_0xa749fc(&mut st, 9, 101), 0);
+        assert!(stub_0xa74c88(&mut st, 9, 3).is_none());
+        let pkt = stub_0xa74c88(&mut st, 9, 2).expect("complete channel builds");
+        assert_eq!(pkt.data.len(), 8);
+        assert_eq!(&pkt.data[..4], &100u32.to_le_bytes());
+        assert_eq!(&pkt.data[4..], &101u32.to_le_bytes());
+        assert_eq!(pkt.length_bits, 64);
+        assert!(st.split_channels.is_empty());
+        assert_eq!(st.acks_sent, 1);
+        assert!(stub_0xa74c88(&mut st, 9, 2).is_none());
+    }
+
+    #[test]
+    fn build_from_channel_index() {
+        let mut st = stub_0xa70938();
+        stub_0xa749fc(&mut st, 4, 7);
+        let pkt = stub_0xa76ca4(&mut st, 0, 0, 0).expect("index builds");
+        assert_eq!(pkt.data, 7u32.to_le_bytes());
+        assert!(st.split_channels.is_empty());
+        assert!(stub_0xa76ca4(&mut st, 0, 0, 0).is_none());
+    }
+
+    #[test]
+    fn receive_pops_output() {
+        let mut st = stub_0xa70938();
+        assert!(stub_0xa74d64(&mut st).is_none());
+        assert!(stub_0xa72e94(&mut st, Some(&[1, 2, 3])));
+        let (bytes, bits) = stub_0xa74d64(&mut st).expect("queued datagram");
+        assert_eq!(bytes, vec![1, 2, 3]);
+        assert_eq!(bits, 24);
+        assert!(stub_0xa74d64(&mut st).is_none());
+    }
+
+    #[test]
+    fn send_clamps_queues_and_splits() {
+        let mut st = stub_0xa70938();
+        assert!(!stub_0xa74dc0(&mut st, &[], 0, 2, 0, 1500));
+        assert!(stub_0xa74dc0(&mut st, &[1, 2], 9, 9, 0xff, 1500));
+        let entry = &st.send_heap[0];
+        assert_eq!(entry.priority, 1);
+        assert_eq!(entry.packet.reliability, 2);
+        assert_eq!(entry.packet.ordering_channel, 0);
+        assert_eq!(entry.packet.message_number, 0);
+        assert_eq!(st.message_number, 1);
+        assert_eq!(st.bytes_queued, 1);
+        let big = vec![0xabu8; 100];
+        assert!(stub_0xa74dc0(&mut st, &big, 0, 2, 0, 50));
+        assert_eq!(st.send_heap.len(), 1 + 4);
+        let frag = &st.send_heap[1].packet;
+        assert!(frag.has_split);
+        assert_eq!((frag.split_index, frag.split_count), (0, 4));
+        assert_eq!(st.send_heap[4].packet.split_index, 3);
+        assert_eq!(stub_0xa75100(&mut st, &[9u8; 10], 0, 0, 3, 1000), 1);
+        assert_eq!(st.send_heap.len(), 1 + 4 + 1);
+    }
+
+    #[test]
+    fn update_and_ack_timeout() {
+        let mut st = stub_0xa70938();
+        stub_0xa723f8(&mut st, 5000);
+        st.last_ack_ms = 1000;
+        assert!(stub_0xa75548(&mut st, false));
+        assert_eq!(st.update_count, 1);
+        assert!(!st.dead_connection);
+        assert!(!stub_0xa7641c(&st, 2000));
+        assert!(stub_0xa7641c(&st, 7000));
+        assert!(!stub_0xa7641c(&st, 500));
+        st.last_ack_ms = 0x10000;
+        assert!(!stub_0xa7641c(&st, 0x10000 - 100));
+        assert!(stub_0xa7641c(&st, 0x10000 - 0x2711));
+        assert!(stub_0xa7641c(&st, u64::from(u32::MAX) + 100_000));
+        assert!(stub_0xa75548(&mut st, true));
+        assert!(st.dead_connection);
+        assert!(stub_0xa76e6c(&st));
+    }
+
+    #[test]
+    fn ack_send_flow() {
+        let mut st = stub_0xa70938();
+        assert!(!stub_0xa76c84(&st));
+        assert_eq!(stub_0xa76468(&mut st), 0);
+        st.acks_waiting = true;
+        st.pending_ack_ranges = 3;
+        assert!(stub_0xa76c84(&st));
+        assert_eq!(stub_0xa76468(&mut st), 3);
+        assert!(!stub_0xa76c84(&st));
+        assert_eq!(st.acks_sent, 1);
+    }
+
+    #[test]
+    fn reset_packets_keeps_config() {
+        let mut st = stub_0xa70938();
+        stub_0xa723f8(&mut st, 4242);
+        stub_0xa76c90(&mut st, 7);
+        st.output.push_back(vec![1]);
+        st.resend.push(ResendEntry { number: 1, bits: 8, reliability: 0 });
+        st.split_channels.push(SplitChannel { id: 1, packets: vec![2] });
+        st.send_heap.push(SendEntry::default());
+        st.outgoing.push(OutPacket { bits: 8, handle: 1 });
+        stub_0xa765e0(&mut st);
+        assert!(st.output.is_empty());
+        assert!(st.resend.is_empty());
+        assert!(st.split_channels.is_empty());
+        assert!(st.send_heap.is_empty());
+        assert!(st.outgoing.is_empty());
+        assert_eq!(st.timeout_ms, 4242);
+        assert_eq!(st.split_progress_interval, 7);
+        stub_0xa76c94(&mut st, 30);
+        assert_eq!(st.unreliable_timeout_ms, 30_000);
+    }
+
+    #[test]
+    fn datagram_push_history_and_flags() {
+        let mut st = stub_0xa70938();
+        assert_eq!(stub_0xa766b8(&mut st, 11), 0);
+        assert!(st.datagram_table.is_empty());
+        stub_0xa76828(&mut st, 80, 5);
+        assert_eq!(st.pending_bits, 80);
+        assert_eq!(st.outgoing, vec![OutPacket { bits: 80, handle: 5 }]);
+        assert_eq!(stub_0xa766b8(&mut st, 11), 80);
+        assert_eq!(st.datagram_table, vec![11]);
+        assert!(!stub_0xa76c68(&st));
+        st.outgoing_ready = true;
+        assert!(stub_0xa76c68(&st));
+        st.outgoing_ready = false;
+        st.send_queue_len = 5;
+        assert!(stub_0xa76c68(&st));
+        assert!(!stub_0xa76e6c(&st));
+        let first = stub_0xa7696c(&mut st, 0xabcd, 1, 2);
+        assert_eq!(stub_0xa76b88(&mut st, 0x1234, 3), first + 1);
+        for i in 0..520u32 {
+            stub_0xa7696c(&mut st, i, i, i);
+        }
+        assert_eq!(st.datagram_history.len(), 513);
+        assert_eq!(
+            st.datagram_history.back(),
+            Some(&HistoryEntry { key: 519, lo: 519, hi: 519 })
+        );
+    }
+
+    #[test]
+    fn write_read_round_trip_with_remap() {
+        let pkt = InternalPacket {
+            reliability: 2,
+            length_bits: 16,
+            message_number: 9,
+            data: vec![0xDE, 0xAD],
+            ..InternalPacket::default()
+        };
+        let wire = stub_0xa76a68(&pkt);
+        let back = create_internal_packet(&wire).expect("round trip");
+        assert_eq!(back.reliability, 2);
+        assert_eq!(back.message_number, 9);
+        assert_eq!(back.data, vec![0xDE, 0xAD]);
+        let seven = InternalPacket { reliability: 7, ..pkt.clone() };
+        let wire7 = stub_0xa76a68(&seven);
+        assert_eq!(wire7[0] & 7, 3);
+        let back2 = stub_0xa74750(&wire).expect("stub parse");
+        assert_eq!(back2.message_number, 9);
+    }
+
+    #[test]
+    fn stats_snapshot() {
+        let mut st = stub_0xa70938();
+        stub_0xa72e94(&mut st, Some(&[1, 2, 3]));
+        st.acked_bytes = 12.0;
+        st.bytes_queued = 4;
+        let stats = stub_0xa76e74(&st);
+        assert_eq!(stats.datagrams, 1);
+        assert_eq!(stats.received, 1);
+        assert_eq!(stats.output_queued, 1);
+        assert_eq!(stats.acked_bytes, 12.0);
+        assert_eq!(stats.bytes_queued, 4);
+    }
 }
 
 // 0xa77058 — __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
