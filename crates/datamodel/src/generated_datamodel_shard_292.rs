@@ -13,6 +13,28 @@ use parking_lot::Mutex;
 use std::sync::Arc;
 use rbx_core::shared_ptr::{ControlBlockPd, shared_ptr_from_raw};
 use crate::instance::ScriptMouseCommand;
+use super::generated_datamodel_shard_291::{
+    HopperBinEventDesc, HopperBinFuncDesc, HopperBinStringProp, HopperBinStringSetter,
+    stub_0x5715ac, stub_0x5715f8, stub_0x571654,
+};
+use crate::instance::{HopperBin, HopperBinRemoteEventDesc};
+
+/// Rust model of `RBX::Reflection::GenericSlotWrapper` restricted to the
+/// 0-arg `HopperBin` slot (IDA `0x5779ac`/`0x577cec` `connectGeneric`): the
+/// native handler stands in for the Lua frame until the script bridge
+/// exists; 0-arg twin of `HandlesSlotWrapper1`.
+pub struct HopperBinSlotWrapper0 {
+    pub handler: HopperBinHandler0,
+}
+
+impl HopperBinSlotWrapper0 {
+    pub fn execute0(&self) {
+        // IDA `connectGeneric` binds `GenericSlotWrapper::execute0<>()` —
+        // packs the empty `Variant` vector and dispatches the wrapped slot;
+        // the handler is the same dispatch.
+        (self.handler)();
+    }
+}
 
 /// `RBX::Creatable<RBX::MouseCommand>::Deleter` tag stored at the
 /// `sp_counted_impl_pd` block `+16` (IDA `0x576294` compares
@@ -641,143 +663,240 @@ pub fn stub_0x576714(call: &mut HopperBinCallable0) {
 // 0x57749c — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsEC2IiMS2_FvRKSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::PropDescriptor<int,void (RBX::HopperBin::*)(std::string const&)>(char const*,char const*,int,void (RBX::HopperBin::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsEC2IiMS2_FvRKSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x57749c() -> ! {
-    todo!("0x57749c RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::PropDescriptor<int,void (RBX::HopperBin::*)(std::string const&)>(char const*,char const*,int,void (RBX::HopperBin::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x57749c(
+    name: &str,
+    category: &str,
+    setter: HopperBinStringSetter,
+) -> HopperBinStringProp {
+    // IDA 0x57749c (decompiled + registration disasm): `PropDescriptor<
+    // HopperBin, string>::C2` — runs the `Described<HopperBin>`
+    // `classDescriptor` (0x5774c0), boxes the setter member words
+    // (0x5774c6-0x5774f2), and runs the `TypedPropertyDescriptor<string>`
+    // base (0x57753a). One template serves two registrations (IDA
+    // `__GLOBAL__I_a_212`): `("Command", "Data", setLegacyCommand)`
+    // (0x579cce) and `("TextureName", setLegacyTextureName)` (0x579d1a).
+    // The name/category/setter words are the whole payload.
+    HopperBinStringProp {
+        name: name.to_string(),
+        category: category.to_string(),
+        setter,
+    }
 }
 
 // 0x5775a8 — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED0Ev")]
-pub fn stub_0x5775a8() -> ! {
-    todo!("0x5775a8 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")
+pub fn stub_0x5775a8(desc: *mut HopperBinStringProp) {
+    // IDA 0x5775a8: `PropDescriptor<HopperBin, string>::D0` — runs the `D1`
+    // body then releases storage; dropping the box is the same release,
+    // twin of 0x573744.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x5775d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE10isReadOnlyEv")]
-pub fn stub_0x5775d4() -> ! {
-    todo!("0x5775d4 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_0x5775d4(_desc: &HopperBinStringProp) -> bool {
+    // IDA 0x5775d4 (decompiled): `SetImpl::isReadOnly` — `MOVS R0, #0`; a
+    // set-only impl is still not read-only.
+    false
 }
 
 // 0x5775d8 — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE11isWriteOnlyEv")]
-pub fn stub_0x5775d8() -> ! {
-    todo!("0x5775d8 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_0x5775d8(_desc: &HopperBinStringProp) -> bool {
+    // IDA 0x5775d8 (decompiled): `SetImpl::isWriteOnly` — `MOVS R0, #1`; a
+    // setter-only impl with no getter is write-only.
+    true
 }
 
 // 0x5775dc — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x5775dc() -> ! {
-    todo!("0x5775dc RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5775dc(_desc: &HopperBinStringProp) -> ! {
+    // IDA 0x5775dc (decompiled): `SetImpl::getValue` throws
+    // `runtime_error("can't get value")` unconditionally — a setter-only
+    // impl has nothing to read. Same shape as 0x3bde98.
+    panic!("0x5775dc getValue<HopperBin, string>: can't get value");
 }
 
 // 0x5776fc — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE8setValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinESsE7SetImplIMS2_FvRKSsEE8setValueEPNS0_13DescribedBaseES6_")]
-pub fn stub_0x5776fc() -> ! {
-    todo!("0x5776fc RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::SetImpl<void (RBX::HopperBin::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x5776fc(desc: &HopperBinStringProp, bin: &mut HopperBin, value: &str) {
+    // IDA 0x5776fc (decompiled): `SetImpl::setValue` — adjusts the source
+    // (`a2 ? a2 - 36 : 0`, 0x577702-0x577704) and invokes the bound setter
+    // member through the stored member pointer (0x577708-0x57771c). The
+    // registration (`__GLOBAL__I_a_212`) binds `setLegacyCommand` for
+    // `"Command"` (0x579cce) and `setLegacyTextureName` for `"TextureName"`
+    // (0x579d1a).
+    match desc.setter {
+        HopperBinStringSetter::LegacyCommand => stub_0x5715f8(bin, value),
+        HopperBinStringSetter::LegacyTextureName => stub_0x571654(bin, value),
+    }
 }
 
 // 0x577720 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::BoundFuncDesc(void (RBX::HopperBin::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0x577720() -> ! {
-    todo!("0x577720 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::BoundFuncDesc(void (RBX::HopperBin::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x577720(name: &str) -> HopperBinFuncDesc {
+    // IDA 0x577720: `BoundFuncDesc<HopperBin, void(), 0>::C2` — stores the
+    // member pointer (`disable`, IDA 0x579c66) under the `"Disable"` name
+    // (0x579c74-0x579c84). The name word is the payload; the member
+    // collapses into `execute` (0x5778d8).
+    HopperBinFuncDesc { name: name.to_string() }
 }
 
 // 0x577824 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED0Ev")]
-pub fn stub_0x577824() -> ! {
-    todo!("0x577824 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x577824(desc: *mut HopperBinFuncDesc) {
+    // IDA 0x577824: `BoundFuncDesc<HopperBin, void(), 0>::D0` — runs the
+    // `D1` body then releases storage; dropping the box is the same
+    // release, twin of 0x573720.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x5778d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_0x5778d8() -> ! {
-    todo!("0x5778d8 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5778d8(_desc: &HopperBinFuncDesc, bin: &mut HopperBin) {
+    // IDA 0x5778d8 (decompiled): `BoundFuncDesc::execute` — adjusts the
+    // source (`a2 ? a2 - 36 : 0`, 0x5778dc-0x5778de) and invokes the bound
+    // member through the stored member pointer (0x5778e2-0x5778f2). The
+    // registration (`__GLOBAL__I_a_212`, 0x579c66-0x579c84) binds
+    // `HopperBin::disable` under `"Disable"`.
+    stub_0x5715ac(bin);
 }
 
 // 0x5778f8 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x5778f8() -> ! {
-    todo!("0x5778f8 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_0x5778f8(desc: *mut HopperBinEventDesc) {
+    // IDA 0x5778f8: `EventDesc<HopperBin, void()>::D0` — runs the `D1` body
+    // then releases storage; dropping the box is the same release, twin of
+    // 0x5736fc.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x5779ac — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-pub fn stub_0x5779ac() -> ! {
-    todo!("0x5779ac RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5779ac(desc: &HopperBinEventDesc, wrapper: &SharedPtr<HopperBinSlotWrapper0>) {
+    // IDA 0x5779ac (decompiled) `EventDescImpl<0, HopperBin, void()>::
+    // connectGeneric`: retains the wrapper `shared_ptr`, `bind`s the 0-arg
+    // slot with the empty `Variant` vector (0x577a2a-0x577a3e), wraps it in
+    // a `function<void()>` (0x577a4a), adjusts to the member signal (`+
+    // *(a1 + 40) - 36`) and `connect`s (0x577a66). The wrapper's handler is
+    // already the bound 0-arg closure; connecting it to the member signal
+    // is the same subscription. Same shape as 0x56cd3c.
+    desc.signal.connect(SharedPtr::clone(&wrapper.handler));
 }
 
 // 0x577bb0 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")]
-pub fn stub_0x577bb0() -> ! {
-    todo!("0x577bb0 RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x577bb0(desc: &HopperBinEventDesc) {
+    // IDA 0x577bb0 `EventDescImpl<0, HopperBin, void()>::fireEvent`: asserts
+    // the empty arity, adjusts the source, and calls the member signal with
+    // no args. Same shape as 0x56ceb0 with zero args.
+    desc.signal.emit();
 }
 
 // 0x577c24 — __ZNK3RBX10Reflection13EventDescBaseINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0x577c24() -> ! {
-    todo!("0x577c24 RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x577c24(desc: &HopperBinEventDesc) {
+    // IDA 0x577c24 `EventDescBase<0, HopperBin, void()>::disconnectAll`:
+    // adjusts the source and `disconnectAll`s the member signal. Same shape
+    // as 0x56cf4c with zero args.
+    desc.signal.disconnect_all();
 }
 
 // 0x577c38 — __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED0Ev")]
-pub fn stub_0x577c38() -> ! {
-    todo!("0x577c38 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+pub fn stub_0x577c38(desc: *mut HopperBinRemoteEventDesc) {
+    // IDA 0x577c38: `RemoteEventDesc<HopperBin, void()>::D0` — runs the `D1`
+    // body then releases storage; dropping the box is the same release,
+    // twin of 0x5736d8.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x577cec — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-pub fn stub_0x577cec() -> ! {
-    todo!("0x577cec RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x577cec(desc: &HopperBinEventDesc, wrapper: &SharedPtr<HopperBinSlotWrapper0>) {
+    // IDA 0x577cec (decompiled) `EventDescImpl<0, HopperBin, void(),
+    // remote_signal>::connectGeneric`: same retain + bind + wrap shape as
+    // 0x5779ac, but first replays the member signal into existing slots
+    // (`signal_with_args<0>::operator()`, 0x577da6), then `connect`s the new
+    // wrapper (0x577db4).
+    desc.signal.emit();
+    desc.signal.connect(SharedPtr::clone(&wrapper.handler));
 }
 
 // 0x577f00 — __ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE12isScriptableEv")]
-pub fn stub_0x577f00() -> ! {
-    todo!("0x577f00 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")
+pub fn stub_0x577f00(desc: &HopperBinRemoteEventDesc) -> bool {
+    // IDA 0x577f00 (disasm): `RemoteEventDesc::isScriptable` — `LDR R0,
+    // [R0, #0x30]; AND R0, #1` (0x577f00-0x577f06); 0-arg twin of 0x56cea0.
+    desc.scriptable
 }
 
 // 0x577f08 — __ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE11isBroadcastEv")]
-pub fn stub_0x577f08() -> ! {
-    todo!("0x577f08 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")
+pub fn stub_0x577f08(desc: &HopperBinRemoteEventDesc) -> bool {
+    // IDA 0x577f08 (disasm): `RemoteEventDesc::isBroadcast` — `LDR R0,
+    // [R0, #0x2C]; AND R0, #1` (0x577f08-0x577f0e); 0-arg twin of 0x56cea8.
+    desc.broadcast
 }
 
 // 0x577f10 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")]
-pub fn stub_0x577f10() -> ! {
-    todo!("0x577f10 RBX::Reflection::EventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x577f10(desc: &HopperBinEventDesc) {
+    // IDA 0x577f10 `EventDescImpl<0, HopperBin, void(), remote_signal>::
+    // fireEvent`: asserts the empty arity and calls the member signal with
+    // no args. Same shape as 0x577bb0 over the remote impl.
+    desc.signal.emit();
 }
 
 // 0x577f84 — __ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISB_EE
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISB_EE")]
-pub fn stub_0x577f84() -> ! {
-    todo!("0x577f84 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x577f84(desc: &HopperBinEventDesc) {
+    // IDA 0x577f84 `RemoteEventDesc<HopperBin, void()>::sendEvent`:
+    // tail-calls the remote half with the (empty) `Variant` vector. Same
+    // shape as 0x56cf3c with zero args.
+    desc.remote.emit();
 }
 
 // 0x577f94 — __ZNK3RBX10Reflection13EventDescBaseINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0x577f94() -> ! {
-    todo!("0x577f94 RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x577f94(desc: &HopperBinEventDesc) {
+    // IDA 0x577f94 `EventDescBase<0, HopperBin, void(), remote_signal>::
+    // disconnectAll`: adjusts the source and `disconnectAll`s the member
+    // signal. Same shape as 0x577c24 over the remote impl.
+    desc.signal.disconnect_all();
 }
 
 // 0x5784b8 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_9HopperBinEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
@@ -1066,5 +1185,111 @@ mod batch_c_tests {
         stub_0x575808();
         stub_0x575a40();
         stub_0x575a44();
+    }
+}
+
+#[cfg(test)]
+mod batch_d_tests {
+    use super::*;
+    use crate::instance::HopperBin;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    #[test]
+    fn string_setters_dispatch_by_registration() {
+        let cmd = stub_0x57749c(
+            "Command",
+            "Data",
+            HopperBinStringSetter::LegacyCommand,
+        );
+        assert!(!stub_0x5775d4(&cmd));
+        assert!(stub_0x5775d8(&cmd));
+        let mut bin = HopperBin::default();
+        stub_0x5776fc(&cmd, &mut bin, "GameTool");
+        assert_eq!(bin.bin_type, 1);
+        let tex = stub_0x57749c(
+            "TextureName",
+            "Appearance",
+            HopperBinStringSetter::LegacyTextureName,
+        );
+        stub_0x5776fc(&tex, &mut bin, "sword");
+        assert_eq!(bin.item.texture_id, "rbxasset://Textures/sword.png");
+        stub_0x5775a8(Box::into_raw(Box::new(cmd)));
+        stub_0x5775a8(Box::into_raw(Box::new(tex)));
+    }
+
+    #[test]
+    #[should_panic(expected = "can't get value")]
+    fn string_getter_panics_set_only() {
+        let prop = stub_0x57749c(
+            "Command",
+            "Data",
+            HopperBinStringSetter::LegacyCommand,
+        );
+        stub_0x5775dc(&prop);
+    }
+
+    #[test]
+    fn disable_func_executes() {
+        let desc = stub_0x577720("Disable");
+        let mut bin = HopperBin::default();
+        bin.active = true;
+        stub_0x5778d8(&desc, &mut bin);
+        assert!(!bin.active);
+        stub_0x577824(Box::into_raw(Box::new(desc)));
+    }
+
+    #[test]
+    fn event0_connect_fire_disconnect() {
+        let desc = HopperBinEventDesc::default();
+        let count = Arc::new(AtomicUsize::new(0));
+        let probe = Arc::clone(&count);
+        let wrapper = SharedPtr::new(HopperBinSlotWrapper0 {
+            handler: Arc::new(move || {
+                probe.fetch_add(1, Ordering::SeqCst);
+            }),
+        });
+        stub_0x5779ac(&desc, &wrapper);
+        assert_eq!(desc.signal.len(), 1);
+        stub_0x577bb0(&desc);
+        assert_eq!(count.load(Ordering::SeqCst), 1);
+        stub_0x577f10(&desc);
+        assert_eq!(count.load(Ordering::SeqCst), 2);
+        stub_0x577f84(&desc);
+        assert_eq!(desc.remote.len(), 0);
+        let remote_desc = HopperBinRemoteEventDesc::default();
+        assert!(!stub_0x577f00(&remote_desc));
+        assert!(!stub_0x577f08(&remote_desc));
+        stub_0x577c24(&desc);
+        assert_eq!(desc.signal.len(), 0);
+        stub_0x577f94(&desc);
+        wrapper.execute0();
+        assert_eq!(count.load(Ordering::SeqCst), 3);
+        stub_0x5778f8(Box::into_raw(Box::new(HopperBinEventDesc::default())));
+        stub_0x577c38(Box::into_raw(Box::new(HopperBinRemoteEventDesc::default())));
+    }
+
+    #[test]
+    fn remote_connect_replays_then_subscribes() {
+        let desc = HopperBinEventDesc::default();
+        let count = Arc::new(AtomicUsize::new(0));
+        let first = Arc::clone(&count);
+        let w1 = SharedPtr::new(HopperBinSlotWrapper0 {
+            handler: Arc::new(move || {
+                first.fetch_add(1, Ordering::SeqCst);
+            }),
+        });
+        stub_0x5779ac(&desc, &w1);
+        let second = Arc::clone(&count);
+        let w2 = SharedPtr::new(HopperBinSlotWrapper0 {
+            handler: Arc::new(move || {
+                second.fetch_add(10, Ordering::SeqCst);
+            }),
+        });
+        stub_0x577cec(&desc, &w2);
+        // Replay fired w1 (+1), then both subscribed: w1 + w2.
+        assert_eq!(count.load(Ordering::SeqCst), 1);
+        assert_eq!(desc.signal.len(), 2);
+        stub_0x577bb0(&desc);
+        assert_eq!(count.load(Ordering::SeqCst), 12);
     }
 }

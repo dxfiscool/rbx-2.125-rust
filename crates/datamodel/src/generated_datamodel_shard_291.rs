@@ -1514,10 +1514,14 @@ pub struct HopperBinEnumProp {
 
 /// Rust model of `RBX::Reflection::EventDesc<RBX::HopperBin, void ()(void)>`
 /// (IDA `0x5736fc`): the script-side 0-arg hopper-bin event descriptor; the
-/// signal member collapses into the name word until the signal port lands.
+/// member signal (`signal`) and the replication half (`remote`) land with
+/// the 0-arg connect/fire batch (IDA `0x5779ac`/`0x577cec`), twin of
+/// `HandlesEvent1Desc`.
 #[derive(Default)]
 pub struct HopperBinEventDesc {
     pub name: String,
+    pub signal: crate::generated_datamodel_shard_292::HopperBinSignal0,
+    pub remote: crate::generated_datamodel_shard_292::HopperBinSignal0,
 }
 
 /// Rust model of `RBX::Reflection::BoundFuncDesc<RBX::HopperBin, void
@@ -1529,11 +1533,19 @@ pub struct HopperBinFuncDesc {
 }
 
 /// Rust model of `RBX::Reflection::PropDescriptor<RBX::HopperBin,
-/// std::string>` (IDA `0x573744`): the name/category words; the bound
-/// getter/setter member pointers collapse.
+/// std::string>` (IDA `0x573744`): the name/category words; the bound setter
+/// member pointer collapses into `setter` — one template serves the
+/// `"Command"`/`"Data"` → `setLegacyCommand` (IDA `0x579cce`) and the
+/// `"TextureName"` → `setLegacyTextureName` (IDA `0x579d1a`) registrations.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HopperBinStringSetter {
+    LegacyCommand,
+    LegacyTextureName,
+}
 pub struct HopperBinStringProp {
     pub name: String,
     pub category: String,
+    pub setter: HopperBinStringSetter,
 }
 
 // 0x573664 — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev
@@ -2054,7 +2066,8 @@ mod hopper_bin_ctor_dtor_tests {
         stub_0x573720(Box::into_raw(Box::new(HopperBinFuncDesc::default())));
         stub_0x573744(Box::into_raw(Box::new(HopperBinStringProp {
             name: "Command".to_string(),
-            category: "Behavior".to_string(),
+            category: "Data".to_string(),
+            setter: HopperBinStringSetter::LegacyCommand,
         })));
         stub_0x573768(std::ptr::null());
     }
