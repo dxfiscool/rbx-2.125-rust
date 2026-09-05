@@ -980,171 +980,246 @@ pub fn stub_41b70(username: &str) {
 // 0x41b94 — -[UserInfo username]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo username]")]
-pub fn stub_41b94() -> ! {
-    todo!("0x41b94 -[UserInfo username]")
+pub fn stub_41b94() -> String {
+    // IDA 0x41b94: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b94`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b94()
 }
 
 // 0x41ba4 — -[UserInfo setUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUsername:]")]
-pub fn stub_41ba4() -> ! {
-    todo!("0x41ba4 -[UserInfo setUsername:]")
+pub fn stub_41ba4(username: &str) {
+    // IDA 0x41ba4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41ba4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41ba4(username)
 }
 
 // 0x41bc8 — -[UserInfo password]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo password]")]
-pub fn stub_41bc8() -> ! {
-    todo!("0x41bc8 -[UserInfo password]")
+pub fn stub_41bc8() -> String {
+    // IDA 0x41bc8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41bc8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41bc8()
 }
 
 // 0x41bd8 — -[UserInfo setPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setPassword:]")]
-pub fn stub_41bd8() -> ! {
-    todo!("0x41bd8 -[UserInfo setPassword:]")
+pub fn stub_41bd8(password: &str) {
+    // IDA 0x41bd8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41bd8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41bd8(password)
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
 #[doc(alias = "__GLOBAL__I_a_11")]
-pub fn stub_41bfc() -> ! {
-    todo!("0x41bfc global constructor keyed to_a_11")
+pub fn stub_41bfc() {
+    // IDA 0x41bfc: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41bfc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41bfc()
 }
 
 // 0x41cc4 — +[RobloxGoogleAnalytics initialize]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
-pub fn stub_41cc4() -> ! {
-    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+pub fn stub_41cc4() {
+    // IDA 0x41cc4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41cc4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41cc4()
 }
 
 // 0x41cf0 — ___35+[RobloxGoogleAnalytics initialize]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
-pub fn stub_41cf0() -> ! {
-    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+pub fn stub_41cf0() {
+    // IDA 0x41cf0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41cf0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41cf0()
 }
 
 // 0x41f28 — +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
-pub fn stub_41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+pub fn stub_41f28() {
+    // IDA 0x41f28: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41f28`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41f28()
 }
 
 // 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
-pub fn stub_41f2c() -> ! {
-    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+pub fn stub_41f2c(url: &str) {
+    // IDA 0x41f2c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41f2c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41f2c(url)
 }
 
 // 0x41f74 — +[RobloxGoogleAnalytics setPageViewTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
-pub fn stub_41f74() -> ! {
-    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+pub fn stub_41f74(url: &str) {
+    // IDA 0x41f74: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41f74`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41f74(url)
 }
 
 // 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
-pub fn stub_4203c() -> ! {
-    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+pub fn stub_4203c(category: &str, action: &str, label: &str, value: i32) {
+    // IDA 0x4203c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x4203c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x4203c(category, action, label, value)
 }
 
 // 0x420e4 — +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id, id, int)
 #[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
-pub fn stub_420e4() -> ! {
-    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+pub fn stub_420e4(category: &str, action: &str, label: &str, value: i32) {
+    // IDA 0x420e4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x420e4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x420e4(category, action, label, value)
 }
 
 // 0x42230 — +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
-pub fn stub_42230() -> ! {
-    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+pub fn stub_42230(label: &str, value: &str) {
+    // IDA 0x42230: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42230`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42230(label, value)
 }
 
 // 0x42298 — +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
-pub fn stub_42298() -> ! {
-    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+pub fn stub_42298(label: &str, value: &str) {
+    // IDA 0x42298: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42298`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42298(label, value)
 }
 
 // 0x42374 — +[RobloxGoogleAnalytics debugCountersPrint]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
-pub fn stub_42374() -> ! {
-    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+pub fn stub_42374() {
+    // IDA 0x42374: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42374`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42374()
 }
 
 // 0x424cc — +[RobloxGoogleAnalytics debugCounterIncrement:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
-pub fn stub_424cc() -> ! {
-    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+pub fn stub_424cc(name: &str) {
+    // IDA 0x424cc: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x424cc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x424cc(name)
 }
 
 // 0x42580 — __GLOBAL__I_a_12
 #[doc(alias = "__GLOBAL__I_a_12")]
-pub fn stub_42580() -> ! {
-    todo!("0x42580 global constructor keyed to_a_12")
+pub fn stub_42580() {
+    // IDA 0x42580: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42580`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42580()
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxWebUtility sharedInstance]")]
-pub fn stub_42718() -> ! {
-    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+pub fn stub_42718() -> usize {
+    // IDA 0x42718: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42718`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42718()
 }
 
 // 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
 #[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
-pub fn stub_42774() -> ! {
-    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+pub fn stub_42774() {
+    // IDA 0x42774: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x42774`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x42774()
 }
 
 // 0x427a8 — ___copy_helper_block__7
 #[doc(alias = "___copy_helper_block__7")]
-pub fn stub_427a8() -> ! {
-    todo!("0x427a8 ___copy_helper_block__7")
+pub fn stub_427a8() {
+    // IDA 0x427a8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x427a8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x427a8()
 }
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
-pub fn stub_427b4() -> ! {
-    todo!("0x427b4 ___destroy_helper_block__7")
+pub fn stub_427b4() {
+    // IDA 0x427b4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x427b4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x427b4()
 }
 
 // 0x427c0 — -[RobloxWebUtility init]
 // type: RobloxWebUtility *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility init]")]
-pub fn stub_427c0() -> ! {
-    todo!("0x427c0 -[RobloxWebUtility init]")
+pub fn stub_427c0() -> usize {
+    // IDA 0x427c0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x427c0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x427c0()
 }
 
 // 0x42880 — -[RobloxWebUtility dealloc]
 // type: void __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility dealloc]")]
-pub fn stub_42880() -> ! {
-    todo!("0x42880 -[RobloxWebUtility dealloc]")
+pub fn stub_42880() {
+    // IDA 0x42880: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42880`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42880()
 }
 
 // 0x4290c — -[RobloxWebUtility getiOSLogQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSLogQueue]")]
-pub fn stub_4290c() -> ! {
-    todo!("0x4290c -[RobloxWebUtility getiOSLogQueue]")
+pub fn stub_4290c() -> usize {
+    // IDA 0x4290c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4290c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4290c()
 }
 
 // 0x4291c — -[RobloxWebUtility getiOSSettingsQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsQueue]")]
-pub fn stub_4291c() -> ! {
-    todo!("0x4291c -[RobloxWebUtility getiOSSettingsQueue]")
+pub fn stub_4291c() -> usize {
+    // IDA 0x4291c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4291c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4291c()
 }
 
 // 0x4292c — -[RobloxWebUtility setCachediOSSettings:]
