@@ -64,6 +64,7 @@ pub struct TextBoxState {
     pub text_stroke_color3: [f32; 3],
     pub text_color: u32,
     pub font: u32,
+    pub font_size: u32,
 }
 /// Bool member selected by a `PropDescriptor<TextBox, bool>`'s
 /// member-pointer pair (IDA 0x67283e-0x6728f6: three objects over
@@ -1080,8 +1081,18 @@ pub fn stub_066f9d0(state: &TextBoxState) -> u32 {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_066f9d8() -> ! {
-    todo!("0x66f9d8 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_066f9d8(state: &mut TextBoxState, value: u32) -> bool {
+    // IDA 0x66f9d8 (`EnumPropDescriptor<Font>::setEnumValue`):
+    // `find_if` over the items with `equalValue(value)`
+    // (0x66fa02) using the enum-desc item range at +48+28/+32;
+    // found stores via the inner `setValue` and returns 1
+    // (0x66fa16-0x66fa18), else 0. Host: table membership decides.
+    if FONT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.font = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x66fa24 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -1089,8 +1100,15 @@ pub fn stub_066f9d8() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_066fa24() -> ! {
-    todo!("0x66fa24 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066fa24(state: &TextBoxState) -> Option<u32> {
+    // IDA 0x66fa24 (`EnumPropDescriptor<Font>::getEnumItem`): inner
+    // `getValue` (0x66fa36) then `EnumDesc::convertToItem`
+    // (0x66fa42, host: stub_066faf4). Host: the item index of the
+    // live value.
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as u32)
 }
 
 // 0x66fa44 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -1098,8 +1116,18 @@ pub fn stub_066fa24() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_066fa44() -> ! {
-    todo!("0x66fa44 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_066fa44(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66fa44 (`EnumPropDescriptor<Font>::setStringValue(Name)`):
+    // `EnumDesc::convertToValue(name)` (0x66fa5a, host: stub_066fa78);
+    // hit stores via the inner `setValue` and returns 1
+    // (0x66fa70-0x66fa72), else 0. Host: table lookup decides.
+    match FONT_ITEMS.iter().find(|(n, _)| *n == name) {
+        Some((_, value)) => {
+            state.font = *value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66fa78 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueERKNS_4NameERS3_
@@ -1107,8 +1135,15 @@ pub fn stub_066fa44() -> ! {
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_066fa78() -> ! {
-    todo!("0x66fa78 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const")
+pub fn stub_066fa78(name: &str) -> Option<u32> {
+    // IDA 0x66fa78 (`EnumDesc<Font>::convertToValue(Name)`): RB-tree
+    // lower_bound walks over the name→value maps (0x66fa8e-0x66fad2)
+    // with exact-match checks (0x66faa2-0x66fab0); hit fills the out
+    // value and returns 1, else 0. Host: table lookup.
+    FONT_ITEMS
+        .iter()
+        .find(|(n, _)| *n == name)
+        .map(|(_, v)| *v)
 }
 
 // 0x66faf4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE13convertToItemERKS3_
@@ -1116,8 +1151,31 @@ pub fn stub_066fa78() -> ! {
 // type: int __fastcall(int, int *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE13convertToItemERKS3_")]
-pub fn stub_066faf4() -> ! {
-    todo!("0x66faf4 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const")
+pub fn stub_066faf4(value: i32) -> Option<u32> {
+    // IDA 0x66faf4 (`EnumDesc<Font>::convertToItem`):
+    // FLog::Asserts-gated `value >= 0` (enumconverter.h line 273)
+    // and `value < items.size` (line 274) ReleaseAsserts — host
+    // seams; then a negative value yields 0, an over-size value
+    // yields 0, else the item (0x66fba0-0x66fbb8). Host: the item
+    // index (`None` for the null slots).
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 273 (IDA 0x66faf4)"
+        );
+        assert!(
+            (value as usize) < FONT_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274 (IDA 0x66faf4)"
+        );
+    }
+    if value >= 0 {
+        FONT_ITEMS
+            .iter()
+            .position(|(_, v)| *v == value as u32)
+            .map(|i| i as u32)
+    } else {
+        None
+    }
 }
 
 // 0x66fbc0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_
@@ -1125,8 +1183,28 @@ pub fn stub_066faf4() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_")]
-pub fn stub_066fbc0() -> ! {
-    todo!("0x66fbc0 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")
+pub fn stub_066fbc0(value: i32) -> i32 {
+    // IDA 0x66fbc0 (`EnumDesc<Font>::convertToIndex`):
+    // FLog::Asserts-gated `value >= 0` (enumconverter.h line 350,
+    // 0x66fbd4-0x66fc10 — a host seam), then the `enumToItem` table
+    // read with -1 past the end (0x66fc1a-0x66fc2e). Same shape as
+    // the `InputType` twin at 0x659cc8. Host: item position, -1
+    // when absent.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 350 (IDA 0x66fbc0)"
+        );
+    }
+    if value >= 0 {
+        FONT_ITEMS
+            .iter()
+            .position(|(_, v)| *v == value as u32)
+            .map(|i| i as i32)
+            .unwrap_or(-1)
+    } else {
+        -1
+    }
 }
 
 // 0x66fc30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi
@@ -1134,8 +1212,20 @@ pub fn stub_066fbc0() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_066fc30() -> ! {
-    todo!("0x66fc30 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_066fc30(state: &mut TextBoxState, raw: i32) -> bool {
+    // IDA 0x66fc30 (`EnumPropDescriptor<Font>::setIntValue`): `raw
+    // >= 0` (0x66fc3a) and in the `enumToItem`-shaped map at +48+132
+    // (0x66fc4c) with a non--1 value (0x66fc58) gates the inner
+    // `setValue` (0x66fc64) returning 1; else 0. The map is dense
+    // identity for `Font`, so the index reads the table. Host:
+    // table read decides.
+    if raw >= 0 {
+        if let Some((_, value)) = FONT_ITEMS.get(raw as usize) {
+            state.font = *value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x66fc70 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringERKS3_
@@ -1143,8 +1233,27 @@ pub fn stub_066fc30() -> ! {
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringERKS3_")]
-pub fn stub_066fc70() -> ! {
-    todo!("0x66fc70 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const")
+pub fn stub_066fc70(value: i32) -> String {
+    // IDA 0x66fc70 (`EnumDesc<Font>::convertToString`): same
+    // FLog::Asserts-gated `value >= 0` (:262) / size (:263) shape
+    // as the `XAlignment` twin at 0x66e380, then "" for negative or
+    // over-size values, else the value-indexed item name. Host:
+    // asserts + table name with "" fallback.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262 (IDA 0x66fc70)"
+        );
+        assert!(
+            (value as usize) < FONT_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263 (IDA 0x66fc70)"
+        );
+    }
+    if value >= 0 {
+        font_name(value as u32).to_owned()
+    } else {
+        String::new()
+    }
 }
 
 // 0x66fe10 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1152,8 +1261,10 @@ pub fn stub_066fc70() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_066fe10() -> ! {
-    todo!("0x66fe10 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isReadOnly(void)const")
+pub fn stub_066fe10() -> bool {
+    // IDA 0x66fe10 (`GetSetImpl<Font>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x66fe14 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -1161,8 +1272,10 @@ pub fn stub_066fe10() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_066fe14() -> ! {
-    todo!("0x66fe14 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isWriteOnly(void)const")
+pub fn stub_066fe14() -> bool {
+    // IDA 0x66fe14 (`GetSetImpl<Font>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x66fe18 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -1170,8 +1283,12 @@ pub fn stub_066fe14() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066fe18() -> ! {
-    todo!("0x66fe18 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066fe18(state: &TextBoxState) -> u32 {
+    // IDA 0x66fe18 (`GetSetImpl<Font>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member is
+    // `getFont` (the only `Font` getter); the pointer folds into
+    // the field.
+    state.font
 }
 
 // 0x66fe44 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -1179,16 +1296,22 @@ pub fn stub_066fe18() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::Font const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_066fe44() -> ! {
-    todo!("0x66fe44 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::Font const&)const")
+pub fn stub_066fe44(state: &mut TextBoxState, value: u32) {
+    // IDA 0x66fe44 (`GetSetImpl<Font>::setValue`): the
+    // member-pointer resolve tail-calling the setter with the input
+    // word. The member is `setFont`; the pointer folds into the
+    // field.
+    state.font = value;
 }
 
 // 0x66fe68 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::initSingleton(void)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE13initSingletonEv")]
-pub fn stub_066fe68() -> ! {
-    todo!("0x66fe68 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::initSingleton(void)")
+pub fn stub_066fe68() {
+    // IDA 0x66fe68 (`Singleton<EnumDesc<Font>>::initSingleton`):
+    // thunk tail-calling `doGetSingleton` (host: stub_066fe6c).
+    // The singleton folds into the host table — carrier no-op.
 }
 
 // 0x66fe6c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv
@@ -1196,8 +1319,11 @@ pub fn stub_066fe68() -> ! {
 // type: void *()
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv")]
-pub fn stub_066fe6c() -> ! {
-    todo!("0x66fe6c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton(void)")
+pub fn stub_066fe6c() {
+    // IDA 0x66fe6c (`Singleton<EnumDesc<Font>>::doGetSingleton`):
+    // `__cxa_guard` once-init constructing the `EnumDesc` and
+    // registering `__cxa_atexit` teardown. Host statics initialize
+    // on use — carrier no-op.
 }
 
 // 0x66ff5c — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED1Ev
@@ -1231,8 +1357,15 @@ pub fn stub_0670134() {
 // type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupEPKc")]
-pub fn stub_06701d4() -> ! {
-    todo!("0x6701d4 RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(char const*)const")
+pub fn stub_06701d4(name: &str) -> Option<u32> {
+    // IDA 0x6701d4 (`EnumDesc<Font>::lookup(name)`): `Name::lookup`
+    // + `convertToValue`; on a hit `convertToItem`, else 0. Host:
+    // the item index (`None` on a miss). Same shape as the
+    // `XAlignment` twin at 0x66e8e4.
+    FONT_ITEMS
+        .iter()
+        .position(|(n, _)| *n == name)
+        .map(|i| i as u32)
 }
 
 // 0x670204 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupERKNS0_7VariantE
@@ -1240,8 +1373,14 @@ pub fn stub_06701d4() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupERKNS0_7VariantE")]
-pub fn stub_0670204() -> ! {
-    todo!("0x670204 RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0670204(variant: &FontVariant) -> Option<u32> {
+    // IDA 0x670204 (`EnumDesc<Font>::lookup(variant)`):
+    // `any_cast<Font>` (throws on a miss, host: stub_0670468) then
+    // `convertToItem`. Host: the item index of the cast value.
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == stub_0670468(variant))
+        .map(|i| i as u32)
 }
 
 // 0x670224 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueEmRNS0_7VariantE
@@ -1249,8 +1388,13 @@ pub fn stub_0670204() -> ! {
 // type: int __fastcall(int, unsigned int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_0670224() -> ! {
-    todo!("0x670224 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0670224(index: u32) -> Option<u32> {
+    // IDA 0x670224 (`EnumDesc<Font>::convertToValue`): `count >
+    // index` gates reading the indexed item's value plus the `Type`
+    // tag and placement, returning 1 (else 0). Host: the value
+    // (`None` past the end). Same shape as the `XAlignment` twin
+    // at 0x66e934.
+    FONT_ITEMS.get(index as usize).map(|(_, v)| *v)
 }
 
 // 0x670258 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringEmRSs
@@ -1258,8 +1402,19 @@ pub fn stub_0670224() -> ! {
 // type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringEmRSs")]
-pub fn stub_0670258() -> ! {
-    todo!("0x670258 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0670258(index: u32, out: &mut String) -> bool {
+    // IDA 0x670258 (`EnumDesc<Font>::convertToString(index)`):
+    // `count > index` gates reading the value and converting it to
+    // a name assigned into the out string, returning 1 (else 0 with
+    // `out` untouched). Same shape as the `XAlignment` twin at
+    // 0x66e968. Host: assign on hit, report.
+    match FONT_ITEMS.get(index as usize) {
+        Some((_, value)) => {
+            *out = font_name(*value).to_owned();
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67039c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService4FontEEERS3_RKT_
@@ -1267,8 +1422,13 @@ pub fn stub_0670258() -> ! {
 // type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::Font>(RBX::TextService::Font const&)")]
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService4FontEEERS3_RKT_")]
-pub fn stub_067039c() -> ! {
-    todo!("0x67039c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::Font>(RBX::TextService::Font const&)")
+pub fn stub_067039c(value: u32) -> u32 {
+    // IDA 0x67039c (`placement_any::operator=<Font>`): ensures the
+    // holder singleton, then stores the value and (re)tags the
+    // holder (destroying the old payload first). Host values are
+    // `Copy` with the tag in the type — the move is identity. Same
+    // shape as the `XAlignment` twin at 0x66eaac.
+    value
 }
 
 // 0x6703ec — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE9singletonEv
@@ -1276,8 +1436,10 @@ pub fn stub_067039c() -> ! {
 // type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::Font>::singleton(void)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE9singletonEv")]
-pub fn stub_06703ec() -> ! {
-    todo!("0x6703ec rbx::implementation::typed_holder<RBX::TextService::Font>::singleton(void)")
+pub fn stub_06703ec() {
+    // IDA 0x6703ec (`typed_holder<Font>::singleton`): `__cxa_guard`
+    // once-init publishing the typeinfo and the construct/destruct
+    // funcs. Host type tags need no init — carrier no-op.
 }
 
 // 0x670458 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE14construct_funcEPKcPc
@@ -1285,8 +1447,10 @@ pub fn stub_06703ec() -> ! {
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::Font>::construct_func(char const*,char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE14construct_funcEPKcPc")]
-pub fn stub_0670458() -> ! {
-    todo!("0x670458 rbx::implementation::typed_holder<RBX::TextService::Font>::construct_func(char const*,char *)")
+pub fn stub_0670458() {
+    // IDA 0x670458 (`typed_holder<Font>::construct_func`): copies
+    // the held value pointer when non-null. Host values are `Copy`
+    // — carrier no-op.
 }
 
 // 0x670464 — __ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE13destruct_funcEPc
@@ -1294,8 +1458,9 @@ pub fn stub_0670458() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::Font>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService4FontEE13destruct_funcEPc")]
-pub fn stub_0670464() -> ! {
-    todo!("0x670464 rbx::implementation::typed_holder<RBX::TextService::Font>::destruct_func(char *)")
+pub fn stub_0670464() {
+    // IDA 0x670464 (`typed_holder<Font>::destruct_func`): empty
+    // body — carrier no-op.
 }
 
 // 0x670468 — __ZN3rbx8any_castIRKN3RBX11TextService4FontENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -1303,8 +1468,15 @@ pub fn stub_0670464() -> ! {
 // type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::TextService::Font const& rbx::any_cast<RBX::TextService::Font const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService4FontENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0670468() -> ! {
-    todo!("0x670468 RBX::TextService::Font const& rbx::any_cast<RBX::TextService::Font const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0670468(variant: &FontVariant) -> u32 {
+    // IDA 0x670468 (`any_cast<Font>`): null input misses; the
+    // typeinfo-pointer or mangled-name match returns the payload;
+    // else `bad_placement_any_cast` is thrown (host: panic). Same
+    // shape as the `XAlignment` twin at 0x66eb78.
+    match *variant {
+        FontVariant::Font(value) => value,
+        _ => panic!("rbx::bad_placement_any_cast (IDA 0x670468)"),
+    }
 }
 
 // 0x670558 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService4FontEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -1321,8 +1493,19 @@ pub fn stub_0670558() {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::EnumPropDescriptor<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>(char const*,char const*,RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0670580() -> ! {
-    todo!("0x670580 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::EnumPropDescriptor<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>(char const*,char const*,RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0670580(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TextBoxFontProp {
+    // IDA 0x670580 (`EnumPropDescriptor<FontSize>` ctor): the
+    // `TextBox` `classDescriptor` call, the `EnumDesc<FontSize>`
+    // singleton once-init and the `PropertyDescriptor` base init
+    // with name/category/attributes/permissions plus the impl
+    // holding the getter/setter member-pointer pair. The pair folds
+    // into the `font_size` field (see below).
+    TextBoxFontProp::new(name, category, attributes, permissions)
 }
 
 // 0x670734 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEED0Ev
@@ -1339,8 +1522,10 @@ pub fn stub_0670734() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10isReadOnlyEv")]
-pub fn stub_0670760() -> ! {
-    todo!("0x670760 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isReadOnly(void)const")
+pub fn stub_0670760() -> bool {
+    // IDA 0x670760 (`EnumPropDescriptor<FontSize>::isReadOnly`):
+    // delegates to the inner `GetSet` at +44 — always readable.
+    false
 }
 
 // 0x670770 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11isWriteOnlyEv
