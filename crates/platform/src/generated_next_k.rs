@@ -447,7 +447,7 @@ impl Manual3D {
     }
 }
 static MANUAL_3D: std::sync::LazyLock<Manual3D> = std::sync::LazyLock::new(Manual3D::default);
-static REAL_CHANNEL: std::sync::LazyLock<RealChannel> =
+pub static REAL_CHANNEL: std::sync::LazyLock<RealChannel> =
     std::sync::LazyLock::new(RealChannel::default);
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
 // type: int __fastcall(FMOD::ChannelEmulated *this, bool *, int, bool)

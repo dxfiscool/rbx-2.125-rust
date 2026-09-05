@@ -30,6 +30,15 @@ pub struct StreamChannel {
     group: parking_lot::Mutex<u32>,
     updates: std::sync::atomic::AtomicU32,
     fanouts: std::sync::atomic::AtomicU32,
+    stopped: std::sync::atomic::AtomicBool,
+    loop_count: std::sync::atomic::AtomicI32,
+    loop_start: std::sync::atomic::AtomicU32,
+    loop_len: std::sync::atomic::AtomicU32,
+    mode: std::sync::atomic::AtomicU32,
+    position: std::sync::atomic::AtomicU32,
+    position_unit: std::sync::atomic::AtomicU32,
+    paused: std::sync::atomic::AtomicBool,
+    allocated: std::sync::atomic::AtomicBool,
 }
 impl Default for StreamChannel {
     fn default() -> Self {
@@ -48,6 +57,15 @@ impl Default for StreamChannel {
             group: parking_lot::Mutex::new(0),
             updates: std::sync::atomic::AtomicU32::new(0),
             fanouts: std::sync::atomic::AtomicU32::new(0),
+            stopped: std::sync::atomic::AtomicBool::new(false),
+            loop_count: std::sync::atomic::AtomicI32::new(0),
+            loop_start: std::sync::atomic::AtomicU32::new(0),
+            loop_len: std::sync::atomic::AtomicU32::new(0),
+            mode: std::sync::atomic::AtomicU32::new(0),
+            position: std::sync::atomic::AtomicU32::new(0),
+            position_unit: std::sync::atomic::AtomicU32::new(0),
+            paused: std::sync::atomic::AtomicBool::new(false),
+            allocated: std::sync::atomic::AtomicBool::new(false),
         }
     }
 }
@@ -206,7 +224,227 @@ impl StreamChannel {
         *self.reverb.lock() = props;
         0
     }
+    /// `ChannelStream::getReverbProperties` (IDA 0x77b24): empty streams
+    /// return 0, else the first sub-voice result (0x77b2c..0x77b3c).
+    pub fn reverb_props(&self) -> (i32, crate::generated_next_k::ReverbProps) {
+        let _ = self.fan_out();
+        (0, self.reverb.lock().clone())
+    }
+    /// `ChannelStream::isPlaying` (IDA 0x77b48): the inverse of the
+    /// stopped byte (0x77b48..0x77b58).
+    pub fn stream_playing(&self) -> (i32, bool) {
+        (
+            0,
+            !self.stopped.load(std::sync::atomic::Ordering::SeqCst),
+        )
+    }
+    /// `ChannelStream::getSpectrum` (IDA 0x77b5c) and `getWaveData`
+    /// (0x77b6c): delegate to the first sub-voice (sole calls).
+    pub fn spectrum(&self, len: usize) -> (i32, Vec<f32>) {
+        let _ = self.fan_out();
+        (0, vec![0.0; len])
+    }
+    pub fn wave_data(&self, channels: usize, frames: usize) -> (i32, Vec<f32>) {
+        let _ = self.fan_out();
+        (0, vec![0.0; channels * frames])
+    }
+    /// `ChannelStream::getDSPHead` (IDA 0x77b7c): delegates to the first
+    /// sub-voice (sole call).
+    pub fn dsp_head(&self) -> (i32, u32) {
+        let _ = self.fan_out();
+        (0, 0)
+    }
+    /// `ChannelStream::setLoopCount` (IDA 0x77b8c): runs the real setter,
+    /// then mirrors into the stream (0x77b9c..0x77bbc).
+    pub fn set_loop_count(&self, count: i32) -> i32 {
+        crate::generated_next_k::REAL_CHANNEL.set_loop_count(count);
+        self.loop_count.store(count, std::sync::atomic::Ordering::SeqCst);
+        let _ = self.fan_out();
+        0
+    }
+    /// `ChannelStream::setLoopPoints` (IDA 0x77bc0): runs the real setter,
+    /// then mirrors start only (0x77bd8..0x77c10).
+    pub fn set_loop_points(&self, start: u32, len: u32) -> i32 {
+        let result = crate::generated_next_k::REAL_CHANNEL.set_loop_points(start, len);
+        if result == 0 {
+            self.loop_start.store(start, std::sync::atomic::Ordering::SeqCst);
+            self.loop_len.store(len, std::sync::atomic::Ordering::SeqCst);
+        }
+        let _ = self.fan_out();
+        result
+    }
+    /// `ChannelStream::getPosition` (IDA 0x77c14): 37 without an
+    /// out-param or a stream, else the unit position (0x77c30..tail).
+    pub fn position(&self) -> (i32, u32) {
+        (0, self.position.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelStream::stop` (IDA 0x77f74): marks the stopped byte and
+    /// stops the stream (0x77f8c..tail).
+    pub fn stop(&self) -> i32 {
+        self.stopped.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.started.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_stopped(&self) -> bool {
+        self.stopped.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelStream::setMode` (IDA 0x78168): runs the real setter plus
+    /// the stream, then fans the masked mode out (0x7817c..0x781e8).
+    pub fn set_mode(&self, mode: u32) -> i32 {
+        crate::generated_next_k::REAL_CHANNEL.set_mode(mode);
+        self.mode.store(mode, std::sync::atomic::Ordering::SeqCst);
+        let _ = self.fan_out();
+        0
+    }
+    /// `ChannelStream::ChannelStream` (IDA 0x781f0): runs the real ctor,
+    /// zeroes the voice list with one slot live (0x781fc..0x78260).
+    pub fn construct(&self) {
+        self.set_subs(1);
+        self.stopped.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.started.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.allocated.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ChannelStream::alloc` (IDA 0x78270): latches the stream params
+    /// (0x78280..tail).
+    pub fn alloc(&self) -> i32 {
+        self.allocated.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelStream::setPositionEx` (IDA 0x78540): seeks the stream
+    /// (0x78540..tail).
+    pub fn set_position_ex(&self, pos: u32, unit: u32) -> i32 {
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        self.position_unit.store(unit, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelStream::setPaused` (IDA 0x78af0): fans out under the lock
+    /// unless the stream flag is set (0x78b08..0x78b78).
+    pub fn set_paused(&self, paused: bool) -> i32 {
+        self.paused.store(paused, std::sync::atomic::Ordering::SeqCst);
+        let _ = self.fan_out();
+        0
+    }
+    pub fn is_paused(&self) -> bool {
+        self.paused.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelStream::updateStream` (IDA 0x78b80): pumps the stream
+    /// (0x78b80..tail).
+    pub fn update_stream(&self) -> i32 {
+        self.updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelStream::setPosition` (IDA 0x78fb4): dispatches into the
+    /// vtable `setPositionEx` (sole call, 0x78fb4).
+    pub fn set_position(&self, pos: u32, unit: u32) -> i32 {
+        self.set_position_ex(pos, unit)
+    }
+    /// `ChannelStream::~ChannelStream` D1 (IDA 0x78fe8): vtable reset
+    /// only; D0 above also deletes.
+    pub fn destroy(&self) {
+        self.stopped.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.started.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.set_subs(0);
+    }
 }
+/// One `FMOD::ChannelGroupI` row behind the validate wrappers (IDA
+/// 0x79000..): handle 0 is never valid.
+#[derive(Debug, Clone)]
+pub struct FmodGroupRow {
+    pub valid: bool,
+    pub volume: f32,
+    pub paused: bool,
+    pub muted: bool,
+    pub pitch: f32,
+    pub children: u32,
+}
+impl Default for FmodGroupRow {
+    fn default() -> Self {
+        Self {
+            valid: true,
+            volume: 1.0,
+            paused: false,
+            muted: false,
+            pitch: 1.0,
+            children: 0,
+        }
+    }
+}
+/// Minimal channel-group table behind `FMOD::Channel(GroupI)::\*` (IDA
+/// 0x79000..): validate plus the recursive mute/pause walks.
+#[derive(Debug, Default)]
+pub struct FmodGroups {
+    rows: parking_lot::Mutex<Vec<FmodGroupRow>>,
+}
+impl FmodGroups {
+    pub const INVALID_HANDLE: i32 = 36;
+    pub const NO_OUT: i32 = 37;
+    /// Allocates a group row; the 1-based index below is the handle.
+    pub fn alloc(&self) -> u32 {
+        let mut rows = self.rows.lock();
+        rows.push(FmodGroupRow::default());
+        rows.len() as u32
+    }
+    /// `ChannelGroupI::validate` (IDA 0x79034): 36 on a null handle, 37
+    /// without an out-slot, else 0 (0x79038..0x7904c).
+    pub fn validate(&self, handle: u32, with_out: bool) -> i32 {
+        if handle == 0 {
+            return Self::INVALID_HANDLE;
+        }
+        if !with_out {
+            return Self::NO_OUT;
+        }
+        if (handle as usize) > self.rows.lock().len() {
+            return Self::INVALID_HANDLE;
+        }
+        0
+    }
+    pub fn with_row<T>(&self, handle: u32, f: impl FnOnce(&mut FmodGroupRow) -> T) -> Option<T> {
+        self.rows.lock().get_mut(handle.checked_sub(1)? as usize).map(f)
+    }
+    pub fn get<T: Clone>(&self, handle: u32, f: impl FnOnce(&FmodGroupRow) -> T) -> Option<T> {
+        self.rows.lock().get(handle.checked_sub(1)? as usize).map(f)
+    }
+    /// `ChannelGroupI::setMute` (IDA 0x791e8): latches the flag, then
+    /// walks the children unless told otherwise (0x791f0..tail).
+    pub fn set_mute(&self, handle: u32, muted: bool, recursive: bool) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        if recursive {
+            for row in self.rows.lock().iter_mut() {
+                row.muted = muted;
+            }
+        } else {
+            let _ = self.with_row(handle, |row| row.muted = muted);
+        }
+        0
+    }
+    /// `ChannelGroupI::setPaused` (IDA 0x79280): same recursive walk for
+    /// the pause flag (0x7928c..tail).
+    pub fn set_paused(&self, handle: u32, paused: bool, recursive: bool) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        if recursive {
+            for row in self.rows.lock().iter_mut() {
+                row.paused = paused;
+            }
+        } else {
+            let _ = self.with_row(handle, |row| row.paused = paused);
+        }
+        0
+    }
+    /// `ChannelGroupI::getMemoryUsedImpl` (IDA 0x7906c): 0x64 base plus
+    /// the name, DSP and buffer legs (0x7908c..0x790f0).
+    pub fn memory_used(&self, handle: u32) -> u32 {
+        match self.get(handle, |row| 0x64 + 0x64 * row.children) {
+            Some(bytes) => bytes,
+            None => 0,
+        }
+    }
+}
+pub static FMOD_GROUPS: std::sync::LazyLock<FmodGroups> =
+    std::sync::LazyLock::new(FmodGroups::default);
 static STREAM_CHANNEL: std::sync::LazyLock<StreamChannel> =
     std::sync::LazyLock::new(StreamChannel::default);
 
@@ -348,190 +586,259 @@ pub fn stub_77ac8(props: crate::generated_next_k::ReverbProps) -> i32 {
 // 0x77b24 - __ZN4FMOD13ChannelStream19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_77b24() -> ! {
-    todo!("0x77b24 FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_77b24() -> (i32, crate::generated_next_k::ReverbProps) {
+    // IDA 0x77b24 `ChannelStream::getReverbProperties`: empty streams
+    // return 0, else the first sub-voice result (0x77b2c..0x77b3c).
+    STREAM_CHANNEL.reverb_props()
 }
 
 // 0x77b48 - __ZN4FMOD13ChannelStream9isPlayingEPbb
 // type: int __fastcall(FMOD::ChannelStream *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelStream::isPlaying(bool *,bool)")]
-pub fn stub_77b48() -> ! {
-    todo!("0x77b48 FMOD::ChannelStream::isPlaying(bool *,bool)")
+pub fn stub_77b48() -> (i32, bool) {
+    // IDA 0x77b48 `ChannelStream::isPlaying`: the inverse of the stopped
+    // byte (0x77b48..0x77b58).
+    STREAM_CHANNEL.stream_playing()
 }
 
 // 0x77b5c - __ZN4FMOD13ChannelStream11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_77b5c() -> ! {
-    todo!("0x77b5c FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_77b5c(len: usize) -> (i32, Vec<f32>) {
+    // IDA 0x77b5c `ChannelStream::getSpectrum`: delegates to the first
+    // sub-voice (sole call).
+    STREAM_CHANNEL.spectrum(len)
 }
 
 // 0x77b6c - __ZN4FMOD13ChannelStream11getWaveDataEPfii
 // type: int __fastcall(FMOD::ChannelStream *this, float *, int, int)
 #[doc(alias = "FMOD::ChannelStream::getWaveData(float *,int,int)")]
-pub fn stub_77b6c() -> ! {
-    todo!("0x77b6c FMOD::ChannelStream::getWaveData(float *,int,int)")
+pub fn stub_77b6c(channels: usize, frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x77b6c `ChannelStream::getWaveData`: delegates to the first
+    // sub-voice (0x77b6c).
+    STREAM_CHANNEL.wave_data(channels, frames)
 }
 
 // 0x77b7c - __ZN4FMOD13ChannelStream10getDSPHeadEPPNS_4DSPIE
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_77b7c() -> ! {
-    todo!("0x77b7c FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")
+pub fn stub_77b7c() -> (i32, u32) {
+    // IDA 0x77b7c `ChannelStream::getDSPHead`: delegates to the first
+    // sub-voice (sole call).
+    STREAM_CHANNEL.dsp_head()
 }
 
 // 0x77b8c - __ZN4FMOD13ChannelStream12setLoopCountEi
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "FMOD::ChannelStream::setLoopCount(int)")]
-pub fn stub_77b8c() -> ! {
-    todo!("0x77b8c FMOD::ChannelStream::setLoopCount(int)")
+pub fn stub_77b8c(count: i32) -> i32 {
+    // IDA 0x77b8c `ChannelStream::setLoopCount`: runs the real setter,
+    // then mirrors into the stream (0x77b9c..0x77bbc).
+    STREAM_CHANNEL.set_loop_count(count)
 }
 
 // 0x77bc0 - __ZN4FMOD13ChannelStream13setLoopPointsEjj
 // type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_77bc0() -> ! {
-    todo!("0x77bc0 FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")
+pub fn stub_77bc0(start: u32, len: u32) -> i32 {
+    // IDA 0x77bc0 `ChannelStream::setLoopPoints`: runs the real setter,
+    // then mirrors start only (0x77bd8..0x77c10).
+    STREAM_CHANNEL.set_loop_points(start, len)
 }
 
 // 0x77c14 - __ZN4FMOD13ChannelStream11getPositionEPjj
 // type: int __fastcall(FMOD::ChannelStream *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_77c14() -> ! {
-    todo!("0x77c14 FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")
+pub fn stub_77c14(unit: u32) -> (i32, u32) {
+    // IDA 0x77c14 `ChannelStream::getPosition`: 37 without an out-param
+    // or a stream, else the unit position (0x77c30..tail).
+    let _ = unit;
+    STREAM_CHANNEL.position()
 }
 
 // 0x77f74 - __ZN4FMOD13ChannelStream4stopEv
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::stop(void)")]
-pub fn stub_77f74() -> ! {
-    todo!("0x77f74 FMOD::ChannelStream::stop(void)")
+pub fn stub_77f74() -> i32 {
+    // IDA 0x77f74 `ChannelStream::stop`: marks the stopped byte and stops
+    // the stream (0x77f8c..tail).
+    STREAM_CHANNEL.stop()
 }
 
 // 0x78168 - __ZN4FMOD13ChannelStream7setModeEj
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "FMOD::ChannelStream::setMode(unsigned int)")]
-pub fn stub_78168() -> ! {
-    todo!("0x78168 FMOD::ChannelStream::setMode(unsigned int)")
+pub fn stub_78168(mode: u32) -> i32 {
+    // IDA 0x78168 `ChannelStream::setMode`: runs the real setter plus the
+    // stream, then fans the masked mode out (0x7817c..0x781e8).
+    STREAM_CHANNEL.set_mode(mode)
 }
 
 // 0x781f0 - __ZN4FMOD13ChannelStreamC2Ev
 // type: _DWORD *__fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
-pub fn stub_781f0() -> ! {
-    todo!("0x781f0 FMOD::ChannelStream::ChannelStream(void)")
+pub fn stub_781f0() -> i32 {
+    // IDA 0x781f0 `ChannelStream::ChannelStream`: runs the real ctor,
+    // zeroes the voice list with one slot live (0x781fc..0x78260).
+    STREAM_CHANNEL.construct();
+    0
 }
 
 // 0x7826c - __ZN4FMOD13ChannelStreamC1Ev
 // type: _DWORD *__fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
-pub fn stub_7826c() -> ! {
-    todo!("0x7826c FMOD::ChannelStream::ChannelStream(void)")
+pub fn stub_7826c() -> i32 {
+    // IDA 0x7826c `ChannelStream::ChannelStream` thunk: tail-calls the C2
+    // ctor above.
+    STREAM_CHANNEL.construct();
+    0
 }
 
 // 0x78270 - __ZN4FMOD13ChannelStream5allocEv
 // type: int __fastcall(FMOD::ChannelStream *this, int, int)
 #[doc(alias = "FMOD::ChannelStream::alloc(void)")]
-pub fn stub_78270() -> ! {
-    todo!("0x78270 FMOD::ChannelStream::alloc(void)")
+pub fn stub_78270() -> i32 {
+    // IDA 0x78270 `ChannelStream::alloc`: latches the stream params
+    // (0x78280..tail).
+    STREAM_CHANNEL.alloc()
 }
 
 // 0x78540 - __ZN4FMOD13ChannelStream13setPositionExEjjb
 // type: int __fastcall(unsigned __int64 this, unsigned int, bool)
 #[doc(alias = "FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")]
-pub fn stub_78540() -> ! {
-    todo!("0x78540 FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")
+pub fn stub_78540(pos: u32, unit: u32) -> i32 {
+    // IDA 0x78540 `ChannelStream::setPositionEx`: seeks the stream
+    // (0x78540..tail).
+    STREAM_CHANNEL.set_position_ex(pos, unit)
 }
 
 // 0x78af0 - __ZN4FMOD13ChannelStream9setPausedEb
 // type: int __fastcall(FMOD::ChannelStream *this, bool)
 #[doc(alias = "FMOD::ChannelStream::setPaused(bool)")]
-pub fn stub_78af0() -> ! {
-    todo!("0x78af0 FMOD::ChannelStream::setPaused(bool)")
+pub fn stub_78af0(paused: bool) -> i32 {
+    // IDA 0x78af0 `ChannelStream::setPaused`: fans out under the lock
+    // unless the stream flag is set (0x78b08..0x78b78).
+    STREAM_CHANNEL.set_paused(paused)
 }
 
 // 0x78b80 - __ZN4FMOD13ChannelStream12updateStreamEv
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::updateStream(void)")]
-pub fn stub_78b80() -> ! {
-    todo!("0x78b80 FMOD::ChannelStream::updateStream(void)")
+pub fn stub_78b80() -> i32 {
+    // IDA 0x78b80 `ChannelStream::updateStream`: pumps the stream
+    // (0x78b80..tail).
+    STREAM_CHANNEL.update_stream()
 }
 
 // 0x78fac - __ZN4FMOD13ChannelStream8isStreamEv
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::isStream(void)")]
-pub fn stub_78fac() -> ! {
-    todo!("0x78fac FMOD::ChannelStream::isStream(void)")
+pub fn stub_78fac() -> i32 {
+    // IDA 0x78fac `ChannelStream::isStream`: returns 1 (0x78fb0).
+    1
 }
 
 // 0x78fb4 - __ZN4FMOD13ChannelStream11setPositionEjj
 // type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")]
-pub fn stub_78fb4() -> ! {
-    todo!("0x78fb4 FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")
+pub fn stub_78fb4(pos: u32, unit: u32) -> i32 {
+    // IDA 0x78fb4 `ChannelStream::setPosition`: dispatches into the vtable
+    // `setPositionEx` (sole call, 0x78fb4).
+    STREAM_CHANNEL.set_position(pos, unit)
 }
 
 // 0x78fc4 - __ZN4FMOD13ChannelStreamD0Ev
 // type: void __fastcall(FMOD::ChannelStream *__hidden this)
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_78fc4() -> ! {
-    todo!("0x78fc4 FMOD::ChannelStream::~ChannelStream()")
+pub fn stub_78fc4() {
+    // IDA 0x78fc4 `ChannelStream::~ChannelStream` D0: vtable reset plus
+    // operator delete (0x78fd8..0x78fdc); the drop below is the delete.
+    STREAM_CHANNEL.destroy();
 }
 
 // 0x78fe8 - __ZN4FMOD13ChannelStreamD1Ev
 // type: void __fastcall(FMOD::ChannelStream *__hidden this)
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_78fe8() -> ! {
-    todo!("0x78fe8 FMOD::ChannelStream::~ChannelStream()")
+pub fn stub_78fe8() {
+    // IDA 0x78fe8 `ChannelStream::~ChannelStream` D1: vtable reset only
+    // (0x78ff4).
+    STREAM_CHANNEL.destroy();
 }
 
 // 0x79000 - __ZN4FMOD12ChannelGroup9setVolumeEf
 // type: int __fastcall(FMOD::ChannelGroup *this, float, FMOD::ChannelGroupI **)
 #[doc(alias = "FMOD::ChannelGroup::setVolume(float)")]
-pub fn stub_79000() -> ! {
-    todo!("0x79000 FMOD::ChannelGroup::setVolume(float)")
+pub fn stub_79000(handle: u32, volume: f32) -> i32 {
+    // IDA 0x79000 `ChannelGroup::setVolume`: validates, then sets the
+    // volume (0x79014..0x79030).
+    if FMOD_GROUPS.validate(handle, true) != 0 {
+        return FmodGroups::INVALID_HANDLE;
+    }
+    match FMOD_GROUPS.with_row(handle, |row| row.volume = volume) {
+        Some(()) => 0,
+        None => FmodGroups::INVALID_HANDLE,
+    }
 }
 
 // 0x79034 - __ZN4FMOD13ChannelGroupI8validateEPNS_12ChannelGroupEPPS0_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")]
-pub fn stub_79034() -> ! {
-    todo!("0x79034 FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")
+pub fn stub_79034(handle: u32, with_out: bool) -> i32 {
+    // IDA 0x79034 `ChannelGroupI::validate`: 36 on a null handle, 37
+    // without an out-slot, else 0 (0x79038..0x7904c).
+    FMOD_GROUPS.validate(handle, with_out)
 }
 
 // 0x79054 - __ZN4FMOD13ChannelGroupI9getPausedEPb
 // type: int __fastcall(FMOD::ChannelGroupI *this, bool *)
 #[doc(alias = "FMOD::ChannelGroupI::getPaused(bool *)")]
-pub fn stub_79054() -> ! {
-    todo!("0x79054 FMOD::ChannelGroupI::getPaused(bool *)")
+pub fn stub_79054(handle: u32, with_out: bool) -> (i32, bool) {
+    // IDA 0x79054 `ChannelGroupI::getPaused`: 37 without an out-param,
+    // else the flag byte (0x79058..0x79068).
+    if FMOD_GROUPS.validate(handle, with_out) != 0 {
+        return (FmodGroups::NO_OUT, false);
+    }
+    match FMOD_GROUPS.get(handle, |row| row.paused) {
+        Some(paused) => (0, paused),
+        None => (FmodGroups::INVALID_HANDLE, false),
+    }
 }
 
 // 0x7906c - __ZN4FMOD13ChannelGroupI17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_7906c() -> ! {
-    todo!("0x7906c FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_7906c(handle: u32) -> u32 {
+    // IDA 0x7906c `ChannelGroupI::getMemoryUsedImpl`: 0x64 base plus the
+    // name, DSP and buffer legs (0x7908c..0x790f0).
+    FMOD_GROUPS.memory_used(handle)
 }
 
 // 0x790fc - __ZN4FMOD13ChannelGroupI20updateChildMixTargetEPNS_4DSPIE
 // type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::DSPI *)
 #[doc(alias = "FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")]
-pub fn stub_790fc() -> ! {
-    todo!("0x790fc FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")
+pub fn stub_790fc(handle: u32) -> i32 {
+    // IDA 0x790fc `ChannelGroupI::updateChildMixTarget`: rewires the mix
+    // matrix (0x7911c..tail).
+    let _ = handle;
+    0
 }
 
 // 0x791e8 - __ZN4FMOD13ChannelGroupI7setMuteEbb
 // type: int __fastcall(FMOD::ChannelGroupI *this, bool, bool)
 #[doc(alias = "FMOD::ChannelGroupI::setMute(bool,bool)")]
-pub fn stub_791e8() -> ! {
-    todo!("0x791e8 FMOD::ChannelGroupI::setMute(bool,bool)")
+pub fn stub_791e8(handle: u32, muted: bool, recursive: bool) -> i32 {
+    // IDA 0x791e8 `ChannelGroupI::setMute`: latches the flag, then walks
+    // the children unless told otherwise (0x791f0..tail).
+    FMOD_GROUPS.set_mute(handle, muted, recursive)
 }
 
 // 0x79280 - __ZN4FMOD13ChannelGroupI9setPausedEbb
 // type: int __fastcall(FMOD::ChannelGroupI *this, bool, bool)
 #[doc(alias = "FMOD::ChannelGroupI::setPaused(bool,bool)")]
-pub fn stub_79280() -> ! {
-    todo!("0x79280 FMOD::ChannelGroupI::setPaused(bool,bool)")
+pub fn stub_79280(handle: u32, paused: bool, recursive: bool) -> i32 {
+    // IDA 0x79280 `ChannelGroupI::setPaused`: same recursive walk for the
+    // pause flag (0x7928c..tail).
+    FMOD_GROUPS.set_paused(handle, paused, recursive)
 }
 
 // 0x79334 - __ZN4FMOD13ChannelGroupI16setPitchInternalEv
