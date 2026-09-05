@@ -9,6 +9,83 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use parking_lot::Mutex;
+use std::sync::Arc;
+use rbx_core::shared_ptr::{ControlBlockPd, shared_ptr_from_raw};
+use crate::instance::ScriptMouseCommand;
+
+/// `RBX::Creatable<RBX::MouseCommand>::Deleter` tag stored at the
+/// `sp_counted_impl_pd` block `+16` (IDA `0x576294` compares
+/// `"N3RBX9CreatableINS_12MouseCommandEE7DeleterE"`); first native carrier in
+/// the workspace — twin of `rbx_core::CreatableInstanceDeleter`.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub struct CreatableMouseCommandDeleter;
+
+/// `typeinfo` name compared by the `get_deleter` path (IDA `0x576294`).
+pub const CREATABLE_MOUSE_COMMAND_DELETER_TYPE_NAME: &str =
+    "N3RBX9CreatableINS_12MouseCommandEE7DeleterE";
+
+/// Slot callback behind the 0-arg `HopperBin` event `void ()(void)` (IDA
+/// `0x57654c` `signal::connect` target): 0-arg twin of `HandlesHandler1`.
+pub type HopperBinHandler0 = Arc<dyn Fn() + Send + Sync>;
+
+/// Rust model of `boost::_bi::bind_t<void, mf0<void, HopperBin>,
+/// list1<value<HopperBin*>>>` (IDA `0x5766d0` `operator()`): the retained
+/// target collapses into the resolved 0-arg handler.
+#[derive(Clone, Default)]
+pub struct HopperBinBind0 {
+    pub handler: Option<HopperBinHandler0>,
+}
+
+/// Rust model of `rbx::signals::signal<void ()(void)>::callable_slot<...>`
+/// (IDA `0x5765c0` D1): the intrusive slot node behind `signal::connect`
+/// (IDA `0x57654c`); retain/release become `Some`/`None`.
+#[derive(Clone, Default)]
+pub struct HopperBinSlot0 {
+    pub handler: Option<HopperBinHandler0>,
+}
+
+/// Rust model of `rbx::callable<signal<void()>::slot, bind_t<...>, 0, void
+/// ()(void)>` (IDA `0x5766c0` `call`): the functor holder; `call` invokes
+/// the retained bind.
+#[derive(Clone, Default)]
+pub struct HopperBinCallable0 {
+    pub bind: Option<HopperBinBind0>,
+}
+
+/// Rust model of `rbx::signals::connection` holding a 0-arg `HopperBin` slot
+/// (IDA `0x57654c` return): the intrusive link collapses into the connected
+/// flag.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub struct HopperBinConnection0 {
+    pub connected: bool,
+}
+
+/// Rust model of `rbx::signals::signal<void ()(void)>` subscribed with
+/// `HopperBin` mf0 binds (IDA `0x57654c` `insert` target): 0-arg twin of
+/// `HandlesSignal1`; `Mutex` replaces the intrusive list.
+#[derive(Default)]
+pub struct HopperBinSignal0 {
+    slots: Mutex<Vec<HopperBinHandler0>>,
+}
+
+impl HopperBinSignal0 {
+    pub fn connect(&self, handler: HopperBinHandler0) {
+        self.slots.lock().push(handler);
+    }
+    pub fn emit(&self) {
+        let live = self.slots.lock().clone();
+        for slot in &live {
+            slot();
+        }
+    }
+    pub fn disconnect_all(&self) {
+        self.slots.lock().clear();
+    }
+    pub fn len(&self) -> usize {
+        self.slots.lock().len()
+    }
+}
 
 // 0x573944 — __ZN3RBX13RelativePanelC2Ev
 #[doc(alias = "RBX::RelativePanel::RelativePanel(void)")]
@@ -353,134 +430,212 @@ pub use rbx_core::generated_core_shard_iu::stub_0x57508c as stub_0x57508c;
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(boost::shared_ptr<RBX::HopperBin> const*,RBX::HopperBin *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(rbx_core::SharedPtr<RBX::HopperBin> const*,RBX::HopperBin *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x575808() -> ! {
-    todo!("0x575808 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(rbx_core::SharedPtr<RBX::HopperBin> const*,RBX::HopperBin *)const")
-}
+pub use rbx_reflection::generated::stub_0x575808 as stub_0x575808;
 
 // 0x575a40 — __ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv")]
-pub fn stub_0x575a40() -> ! {
-    todo!("0x575a40 __ZN3RBX4Name13callDoDeclareILZNS_10sHopperBinEEEEvv")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x575a40 as stub_0x575a40;
 
 // 0x575a44 — __ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v")]
-pub fn stub_0x575a44() -> ! {
-    todo!("0x575a44 __ZN3RBX4Name9doDeclareILZNS_10sHopperBinEEEERKS0_v")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x575a44 as stub_0x575a44;
 
 // 0x575fd8 — __ZN5boost10shared_ptrIN3RBX18ScriptMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18ScriptMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
-pub fn stub_0x575fd8() -> ! {
-    todo!("0x575fd8 rbx_core::SharedPtr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+pub fn stub_0x575fd8(
+    ptr: *mut ScriptMouseCommand,
+    _deleter: CreatableMouseCommandDeleter,
+) -> SharedPtr<ScriptMouseCommand> {
+    // IDA 0x575fd8 (decompiled): store px (0x575ff8), `shared_count` ctor
+    // (0x576000), null-skip of `accept_owner` (0x57602e). Same shape as
+    // 0x575740 over `ScriptMouseCommand`.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(ScriptMouseCommand::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x5760a0 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18ScriptMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(boost::shared_ptr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(rbx_core::SharedPtr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18ScriptMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x5760a0() -> ! {
-    todo!("0x5760a0 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(rbx_core::SharedPtr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const")
+pub fn stub_0x5760a0() {
+    // IDA 0x5760a0 (decompiled): `enable_shared_from_this<MouseCommand>::
+    // _internal_accept_owner` — if the weak half is expired, store the owner
+    // ptr + `weak_count::operator=` (0x5760c6-0x57611c). Rust:
+    // `rbx_core::SharedPtr`/`Weak` covers it; no explicit body. Same
+    // treatment as 0x575808.
 }
 
 // 0x576184 — __ZN5boost6detail12shared_countC2IPN3RBX18ScriptMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX18ScriptMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
-pub fn stub_0x576184() -> ! {
-    todo!("0x576184 boost::detail::shared_count::shared_count<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+pub fn stub_0x576184(
+    ptr: *mut ScriptMouseCommand,
+    deleter: CreatableMouseCommandDeleter,
+) -> ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter> {
+    // IDA 0x576184 (decompiled): `operator new(0x14)` with use/weak counts
+    // at 1 (0x5761d8-0x5761f8); same block-new shape as 0x5758f4.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, deleter)
 }
 
 // 0x57627c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_0x57627c() -> ! {
-    todo!("0x57627c boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x57627c(
+    _block: *mut ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter>,
+) {
+    // IDA 0x57627c (decompiled): empty body; the vtable reset is
+    // compiler-managed and storage is released by the D0 path. Same shape
+    // as 0xf198.
 }
 
 // 0x576280 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_0x576280() -> ! {
-    todo!("0x576280 boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x576280(
+    block: *mut ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter>,
+) {
+    // IDA 0x576280 (decompiled): thunk to `operator delete`; storage release
+    // only, same as 0x575a00.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x576284 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")]
-pub fn stub_0x576284() -> ! {
-    todo!("0x576284 boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")
+pub fn stub_0x576284(
+    block: *mut ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter>,
+) {
+    // IDA 0x576284 (decompiled): reads px at `+12` (0x576284), virtual-dtors
+    // it when non-null (0x576288-0x576290). `dispose_with` with the no-op
+    // predelete takes the payload — the delete; same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x576294 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x576294() -> ! {
-    todo!("0x576294 boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x576294(
+    _block: *const ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter>,
+    type_name: &str,
+) -> Option<CreatableMouseCommandDeleter> {
+    // IDA 0x576294 (decompiled): pointer-compare against
+    // `"N3RBX9CreatableINS_12MouseCommandEE7DeleterE"` (0x5762a6), mismatch
+    // returns `0` (0x5762a8); a hit returns `this + 16` (0x5762aa). The tag
+    // is stateless, so a hit carries a fresh value; same shape as 0xf1bc.
+    if type_name == CREATABLE_MOUSE_COMMAND_DELETER_TYPE_NAME {
+        Some(CreatableMouseCommandDeleter)
+    } else {
+        None
+    }
 }
 
 // 0x5762ac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18ScriptMouseCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x5762ac() -> ! {
-    todo!("0x5762ac boost::detail::sp_counted_impl_pd<RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5762ac(
+    _block: *const ControlBlockPd<ScriptMouseCommand, CreatableMouseCommandDeleter>,
+) -> CreatableMouseCommandDeleter {
+    // IDA 0x5762ac (decompiled): unconditional `this + 16` (0x5762ae);
+    // same shape as 0xf1d4.
+    CreatableMouseCommandDeleter
 }
 
 // 0x57654c — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_0x57654c() -> ! {
-    todo!("0x57654c rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>> const&)")
+pub fn stub_0x57654c(signal: &HopperBinSignal0, bind: &HopperBinBind0) -> HopperBinConnection0 {
+    // IDA 0x57654c (decompiled): `new` the `callable_slot` node copying the
+    // bind words (0x576564-0x5765a2), `signal::insert` it (0x5765a6), weak-add
+    // the returned connection (0x5765b4). Retaining the resolved handler in
+    // the signal list is the same subscription.
+    if let Some(handler) = bind.handler.clone() {
+        signal.connect(handler);
+        HopperBinConnection0 { connected: true }
+    } else {
+        HopperBinConnection0 { connected: false }
+    }
 }
 
 // 0x5765c0 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev")]
-pub fn stub_0x5765c0() -> ! {
-    todo!("0x5765c0 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>::~callable_slot()")
+pub fn stub_0x5765c0(slot: &mut HopperBinSlot0) {
+    // IDA 0x5765c0 (decompiled): `callable_slot::D1` — vtable reset
+    // (0x5765da) + `intrusive_ptr_release` when linked (0x5765de-0x5765e4).
+    // Clearing the retained handler is the same release.
+    slot.handler = None;
 }
 
 // 0x5765ec — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9HopperBinEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev")]
-pub fn stub_0x5765ec() -> ! {
-    todo!("0x5765ec rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>>::~callable_slot()")
+pub fn stub_0x5765ec(slot: &mut HopperBinSlot0) {
+    // IDA 0x5765ec: `callable_slot::D0` — runs the `D1` body then releases
+    // storage; same release as 0x5765c0.
+    stub_0x5765c0(slot);
 }
 
 // 0x5766c0 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_0x5766c0() -> ! {
-    todo!("0x5766c0 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::call(void)")
+pub fn stub_0x5766c0(call: &HopperBinCallable0) {
+    // IDA 0x5766c0 (decompiled): `callable::call` tail-calls
+    // `bind_t::operator()` — the 0-arg member invocation.
+    if let Some(bind) = &call.bind {
+        stub_0x5766d0(bind);
+    }
 }
 
 // 0x5766c8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_0x5766c8() -> ! {
-    todo!("0x5766c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::call(void)")
+pub fn stub_0x5766c8(call: &HopperBinCallable0) {
+    // IDA 0x5766c8 (disasm): `Thn4_callable::call` — `ADDS R0, #0xC` then
+    // tail-calls `bind_t::operator()`; same invocation as 0x5766c0.
+    stub_0x5766c0(call);
 }
 
 // 0x5766d0 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX9HopperBinEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX9HopperBinEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")]
-pub fn stub_0x5766d0() -> ! {
-    todo!("0x5766d0 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>::operator()(void)")
+pub fn stub_0x5766d0(bind: &HopperBinBind0) {
+    // IDA 0x5766d0 (decompiled): `bind_t::operator()` — virtual-dispatches
+    // the `mf0` member on the retained `HopperBin*` (0x5766d0-0x5766e2) and
+    // invokes it (0x5766e6). The resolved handler is the same call.
+    if let Some(handler) = &bind.handler {
+        handler();
+    }
 }
 
 // 0x5766e8 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_0x5766e8() -> ! {
-    todo!("0x5766e8 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::~callable()")
+pub fn stub_0x5766e8(call: &mut HopperBinCallable0) {
+    // IDA 0x5766e8 (decompiled): `callable::D1` — vtable reset (0x576702) +
+    // `intrusive_ptr_release` when linked (0x576706-0x57670c); same release
+    // shape as 0x5765c0.
+    call.bind = None;
 }
 
 // 0x576714 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9HopperBinEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_0x576714() -> ! {
-    todo!("0x576714 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HopperBin>,boost::_bi::list1<boost::_bi::value<RBX::HopperBin*>>>,0,void ()(void)>::~callable()")
+pub fn stub_0x576714(call: &mut HopperBinCallable0) {
+    // IDA 0x576714: `callable::D0` — runs the `D1` body then releases
+    // storage; same release as 0x5766e8.
+    stub_0x5766e8(call);
 }
 
 // 0x57749c — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsEC2IiMS2_FvRKSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -843,5 +998,73 @@ mod batch_b_tests {
         stub_0x574ac0();
         stub_0x575088();
         stub_0x57508c();
+    }
+}
+
+#[cfg(test)]
+mod batch_c_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    #[test]
+    fn signal0_connect_call_emit_disconnect() {
+        let signal = HopperBinSignal0::default();
+        let count = Arc::new(AtomicUsize::new(0));
+        let probe = Arc::clone(&count);
+        let bind = HopperBinBind0 {
+            handler: Some(Arc::new(move || {
+                probe.fetch_add(1, Ordering::SeqCst);
+            })),
+        };
+        let conn = stub_0x57654c(&signal, &bind);
+        assert!(conn.connected);
+        assert_eq!(signal.len(), 1);
+        stub_0x5766d0(&bind);
+        assert_eq!(count.load(Ordering::SeqCst), 1);
+        let call = HopperBinCallable0 {
+            bind: Some(bind.clone()),
+        };
+        stub_0x5766c0(&call);
+        stub_0x5766c8(&call);
+        assert_eq!(count.load(Ordering::SeqCst), 3);
+        signal.emit();
+        assert_eq!(count.load(Ordering::SeqCst), 4);
+        signal.disconnect_all();
+        assert_eq!(signal.len(), 0);
+        let empty = HopperBinBind0::default();
+        assert!(!stub_0x57654c(&signal, &empty).connected);
+        stub_0x5766d0(&empty);
+    }
+
+    #[test]
+    fn slot_and_callable_dtors_release() {
+        let mut slot = HopperBinSlot0 {
+            handler: Some(Arc::new(|| {})),
+        };
+        stub_0x5765c0(&mut slot);
+        assert!(slot.handler.is_none());
+        slot.handler = Some(Arc::new(|| {}));
+        stub_0x5765ec(&mut slot);
+        assert!(slot.handler.is_none());
+        let mut call = HopperBinCallable0 {
+            bind: Some(HopperBinBind0::default()),
+        };
+        stub_0x5766e8(&mut call);
+        assert!(call.bind.is_none());
+        call.bind = Some(HopperBinBind0::default());
+        stub_0x576714(&mut call);
+        assert!(call.bind.is_none());
+    }
+
+    #[test]
+    fn mouse_command_deleter_registry() {
+        assert_eq!(
+            CREATABLE_MOUSE_COMMAND_DELETER_TYPE_NAME,
+            "N3RBX9CreatableINS_12MouseCommandEE7DeleterE"
+        );
+        stub_0x5760a0();
+        stub_0x575808();
+        stub_0x575a40();
+        stub_0x575a44();
     }
 }
