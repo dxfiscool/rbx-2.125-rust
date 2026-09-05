@@ -5,6 +5,12 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use crate::generated::flog_asserts;
+use crate::generated_134::{XmlIntSlot, XmlReadValue};
+use crate::generated_audio_wd_watchdog18::{
+    TextLabelBoolProp, TextLabelBoolSlot, TextLabelColorProp, TextLabelColorSlot, TextLabelFloatProp,
+    TextLabelFloatSlot, TextLabelState, XALIGNMENT_ITEMS, xalignment_index, xalignment_name,
+};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x67ac7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -12,8 +18,49 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_67ac7c() -> ! {
-    todo!("0x67ac7c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_67ac7c(state: &mut TextLabelState, xml: &XmlReadValue) {
+    // IDA 0x67ac7c (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table. (The string edge
+    // duplicates the `setStringValue` twin — that EA sits in a later
+    // batch; each twin owns its edge.)
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, align)) = XALIGNMENT_ITEMS.get(*value as usize) {
+                    state.x_alignment = *align;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67ac7c)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            let mut hit = false;
+            if let Some(index) = XALIGNMENT_ITEMS.iter().position(|(n, _)| *n == text) {
+                state.x_alignment = XALIGNMENT_ITEMS[index].1;
+                hit = true;
+            }
+            if hit {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67ac7c)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67ac7c)");
+            }
+        }
+    }
 }
 
 // 0x67aebc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -21,8 +68,12 @@ pub fn stub_67ac7c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67aebc() -> ! {
-    todo!("0x67aebc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_67aebc(state: &TextLabelState) -> i32 {
+    // IDA 0x67aebc (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    xalignment_index(state.x_alignment)
 }
 
 // 0x67aed8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -30,8 +81,18 @@ pub fn stub_67aebc() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_67aed8() -> ! {
-    todo!("0x67aed8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_67aed8(state: &mut TextLabelState, index: u32) -> bool {
+    // IDA 0x67aed8 (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::setIndexValue`): bounds-checks the index against
+    // the item count, stores `items[index]` through the inner
+    // `setValue` and returns 1, else 0.
+    match XALIGNMENT_ITEMS.get(index as usize) {
+        Some((_, align)) => {
+            state.x_alignment = *align;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67af0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -39,8 +100,11 @@ pub fn stub_67aed8() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67af0c() -> ! {
-    todo!("0x67af0c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_67af0c(state: &TextLabelState) -> u32 {
+    // IDA 0x67af0c (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::getEnumValue`): the inner `getValue` straight
+    // through.
+    state.x_alignment
 }
 
 // 0x67af14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -48,8 +112,17 @@ pub fn stub_67af0c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67af14() -> ! {
-    todo!("0x67af14 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_67af14(state: &mut TextLabelState, value: u32) -> bool {
+    // IDA 0x67af14 (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::setEnumValue`): `find_if` with `equalValue` over
+    // the items; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Host: membership decides.
+    if XALIGNMENT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.x_alignment = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x67af60 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -57,8 +130,12 @@ pub fn stub_67af14() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_67af60() -> ! {
-    todo!("0x67af60 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_67af60(state: &TextLabelState) -> i32 {
+    // IDA 0x67af60 (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    xalignment_index(state.x_alignment)
 }
 
 // 0x67af80 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -66,17 +143,40 @@ pub fn stub_67af60() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_67af80() -> ! {
-    todo!("0x67af80 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_67af80(state: &mut TextLabelState, name: &str) -> bool {
+    // IDA 0x67af80 (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::setStringValue` over `Name`): `convertToValue`
+    // on the name; on a hit the inner `setValue` runs and 1
+    // returns, else 0. Same string edge as the `setStringValue`
+    // twin (later batch; inlined here so each twin owns its edge —
+    // `Name` folds into `&str`).
+    match XALIGNMENT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.x_alignment = XALIGNMENT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
-
 // 0x67afb4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67afb4() -> ! {
-    todo!("0x67afb4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_67afb4(state: &mut TextLabelState, index: i32) -> bool {
+    // IDA 0x67afb4 (`EnumPropDescriptor<TextLabel,
+    // XAlignment>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, align)) = XALIGNMENT_ITEMS.get(index as usize) {
+            state.x_alignment = *align;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x67aff4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -84,8 +184,10 @@ pub fn stub_67afb4() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_67aff4() -> ! {
-    todo!("0x67aff4 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_67aff4() -> bool {
+    // IDA 0x67aff4 (`GetSetImpl<TextLabel XAlignment>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67aff8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -93,8 +195,10 @@ pub fn stub_67aff4() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_67aff8() -> ! {
-    todo!("0x67aff8 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_67aff8() -> bool {
+    // IDA 0x67aff8 (`GetSetImpl<TextLabel XAlignment>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67affc — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -102,8 +206,13 @@ pub fn stub_67aff8() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67affc() -> ! {
-    todo!("0x67affc __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67affc(state: &TextLabelState) -> u32 {
+    // IDA 0x67affc (`GetSetImpl<TextLabel XAlignment>::getValue`):
+    // the member-pointer resolve (null described reads at offset 0
+    // with the +536 `Instance`-to-mixin adjust; virtual when the low
+    // bit is set) tail-calling the getter. The member is
+    // `getXAlignment`; the pointer folds into the field.
+    state.x_alignment
 }
 
 // 0x67b028 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -111,8 +220,13 @@ pub fn stub_67affc() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::XAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_67b028() -> ! {
-    todo!("0x67b028 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_67b028(state: &mut TextLabelState, value: u32) {
+    // IDA 0x67b028 (`GetSetImpl<TextLabel XAlignment>::setValue`):
+    // the member-pointer resolve over +12/+16 tail-calling the
+    // setter with the input word. The member is `setXAlignment`;
+    // the pointer folds into the field (its raises fold into the
+    // store).
+    state.x_alignment = value;
 }
 
 // 0x67b04c — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMNS_12GuiTextMixinEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

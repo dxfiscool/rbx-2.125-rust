@@ -770,6 +770,74 @@ impl TextLabelXAlignProp {
         }
     }
 }
+/// Float member selected by a `PropDescriptor<TextLabel, float>`'s
+/// member-pointer pair (same two-member layout).
+#[derive(Debug, Clone, Copy)]
+pub enum TextLabelFloatSlot {
+    TextTransparency,
+    TextStrokeTransparency,
+}
+/// `Color3` member selected by a `PropDescriptor<TextLabel, Color3>`'s
+/// member-pointer pair (same two-member layout).
+#[derive(Debug, Clone, Copy)]
+pub enum TextLabelColorSlot {
+    TextColor3,
+    TextStrokeColor3,
+}
+impl TextLabelState {
+    pub fn float_slot(&self, slot: TextLabelFloatSlot) -> f32 {
+        match slot {
+            TextLabelFloatSlot::TextTransparency => self.text_transparency,
+            TextLabelFloatSlot::TextStrokeTransparency => self.text_stroke_transparency,
+        }
+    }
+    pub fn color_slot(&self, slot: TextLabelColorSlot) -> [f32; 3] {
+        match slot {
+            TextLabelColorSlot::TextColor3 => self.text_color3,
+            TextLabelColorSlot::TextStrokeColor3 => self.text_stroke_color3,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<TextLabel, float>` cutover (IDA
+/// 0x67b1c0): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct TextLabelFloatProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelFloatProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<TextLabel, Color3>` cutover (IDA
+/// 0x67b358): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct TextLabelColorProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelColorProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
