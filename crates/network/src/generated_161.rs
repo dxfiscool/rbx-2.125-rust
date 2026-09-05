@@ -7,6 +7,14 @@
 
 use rbx_core::SharedPtr;
 
+/// `signal<void(bool, void*, UIEvent)>` slot connection (IDA 0x4546c et al.).
+#[derive(Clone, Debug, Default)]
+pub struct UiEventSlot {
+ pub id: u64,
+ pub target: usize,
+ pub live: bool,
+}
+
 /// `std::deque<function<void()>*>` queue (IDA 0x44564 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct FunctorQueue {
@@ -799,181 +807,275 @@ pub fn stub_45234(cancelled_ours: bool, end_pan: &mut dyn FnMut(), forward: &mut
 // 0x45344 — -[CameraControl touchesMoved:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesMoved:withEvent:]")]
-pub fn stub_45344() -> ! {
-    todo!("0x45344 -[CameraControl touchesMoved:withEvent:]")
+pub fn stub_45344(moved_ours: bool, move_pan: &mut dyn FnMut(), forward: &mut dyn FnMut()) {
+    // IDA 0x45344: touchesMoved — move pan when ours moves; forward (below truncation).
+    if moved_ours {
+        move_pan();
+    }
+    forward();
 }
 
 // 0x45454 — -[CameraControl .cxx_construct]
 // type: id __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl .cxx_construct]")]
-pub fn stub_45454() -> ! {
-    todo!("0x45454 -[CameraControl .cxx_construct]")
+pub fn stub_45454(touch: &mut CameraTouch) {
+    // IDA 0x45454: cxx_construct — touchBeginPos = 0.
+    touch.begin = (0.0, 0.0);
 }
 
 // 0x4546c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // demangled: rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")]
-pub fn stub_4546c() -> ! {
-    todo!("0x4546c rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")
+pub fn stub_4546c(slots: &mut Vec<UiEventSlot>, target: usize) -> u64 {
+    // IDA 0x4546c: operator new islot; callable ctor; signal connect (below truncation).
+    let id = slots.len() as u64;
+    slots.push(UiEventSlot { id, target, live: true });
+    id
 }
 
 // 0x45554 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
-pub fn stub_45554() -> ! {
-    todo!("0x45554 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_45554(slots: &mut Vec<UiEventSlot>, target: usize) -> u64 {
+    // IDA 0x45554: signal::insert — new islot; insert (below truncation).
+    let id = slots.len() as u64;
+    slots.push(UiEventSlot { id, target, live: true });
+    id
 }
 
 // 0x45764 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
-pub fn stub_45764() -> ! {
-    todo!("0x45764 rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+pub fn stub_45764(slot: &mut Option<usize>, value: Option<usize>, add_ref: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) -> Option<usize> {
+    // IDA 0x45764: add_ref(new); store; release(old).
+    if let Some(v) = value {
+        add_ref(v);
+    }
+    let old = std::mem::replace(slot, value);
+    if let Some(o) = old {
+        release(o);
+    }
+    *slot
 }
 
 // 0x45808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")]
-pub fn stub_45808() -> ! {
-    todo!("0x45808 rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")
+pub fn stub_45808(slot: &mut Option<usize>, value: Option<usize>, add_ref: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) -> Option<usize> {
+    // IDA 0x45808: add_ref(new); store; release(old).
+    if let Some(v) = value {
+        add_ref(v);
+    }
+    let old = std::mem::replace(slot, value);
+    if let Some(o) = old {
+        release(o);
+    }
+    *slot
 }
 
 // 0x458ac — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")]
-pub fn stub_458ac() -> ! {
-    todo!("0x458ac rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")
+pub fn stub_458ac(guard: &mut bool, slot: &mut Option<usize>, alloc: &mut dyn FnMut(usize) -> usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x458ac: guarded one-time mutex alloc (0x2C) + construct.
+    if !*guard {
+        let m = alloc(0x2C);
+        init(m);
+        *slot = Some(m);
+        *guard = true;
+    }
+    slot.unwrap_or(0)
 }
 
 // 0x459a4 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")]
-pub fn stub_459a4() -> ! {
-    todo!("0x459a4 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")
+pub fn stub_459a4(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x459a4: callable ctor — vtable + functor assign (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x45aa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")]
-pub fn stub_45aa0() -> ! {
-    todo!("0x45aa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+pub fn stub_45aa0(slots: &mut Vec<UiEventSlot>, id: u64, clear: &mut dyn FnMut(u64), release: &mut dyn FnMut(u64)) {
+    // IDA 0x45aa0: D1: function clear; vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        clear(s.id);
+        release(s.id);
+    }
 }
 
 // 0x45b74 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")]
-pub fn stub_45b74() -> ! {
-    todo!("0x45b74 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+pub fn stub_45b74(slots: &mut Vec<UiEventSlot>, id: u64, clear: &mut dyn FnMut(u64), release: &mut dyn FnMut(u64)) {
+    // IDA 0x45b74: D0: function clear; vtable resets; release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        clear(s.id);
+        release(s.id);
+    }
 }
 
 // 0x45c4c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")]
-pub fn stub_45c4c() -> ! {
-    todo!("0x45c4c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")
+pub fn stub_45c4c(slots: &mut Vec<UiEventSlot>, id: u64, disconnect: &mut dyn FnMut(u64)) {
+    // IDA 0x45c4c: slot::disconnect (below truncation).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        disconnect(s.id);
+    }
 }
 
 // 0x45d5c — __ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")]
-pub fn stub_45d5c() -> ! {
-    todo!("0x45d5c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")
+pub fn stub_45d5c(live: bool) -> bool {
+    // IDA 0x45d5c: connected = slot word != 0.
+    live
 }
 
 // 0x45d68 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
-pub fn stub_45d68() -> ! {
-    todo!("0x45d68 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn stub_45d68(target: usize, processed: bool, input: usize, event: usize, invoke: &mut dyn FnMut(usize, bool, usize, usize)) {
+    // IDA 0x45d68: callable::call forwards to function3::operator().
+    invoke(target, processed, input, event);
 }
 
 // 0x45d98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 // demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
-pub fn stub_45d98() -> ! {
-    todo!("0x45d98 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn stub_45d98(target: usize, processed: bool, input: usize, event: usize, invoke: &mut dyn FnMut(usize, bool, usize, usize)) {
+    // IDA 0x45d98: non-virtual thunk adjusts inward then tail-calls the operator().
+    invoke(target, processed, input, event);
 }
 
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
 // demangled: boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")]
-pub fn stub_45dc8() -> ! {
-    todo!("0x45dc8 boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")
+pub fn stub_45dc8(has_fn: bool, invoke: &mut dyn FnMut()) {
+    // IDA 0x45dc8: function3::operator() — empty call throws (below truncation).
+    if !has_fn {
+        panic!("bad_function_call");
+    }
+    invoke();
 }
 
 // 0x45eb0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
-pub fn stub_45eb0() -> ! {
-    todo!("0x45eb0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_45eb0(slots: &mut Vec<UiEventSlot>, id: u64, expired: bool, remove: &mut dyn FnMut(u64)) {
+    // IDA 0x45eb0: ReleaseAssert(!expired); remove slot.
+    assert!(!expired, "!boost::intrusive_ptr_expired(item)");
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        remove(s.id);
+    }
 }
 
 // 0x45fa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_45fa0() -> ! {
-    todo!("0x45fa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")
+pub fn stub_45fa0(get: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x45fa0: thunk tail-calls safe_static_do_get_mutex.
+    get()
 }
 
 // 0x45fa4 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_45fa4() -> ! {
-    todo!("0x45fa4 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_45fa4(guard: &mut bool, slot: &mut Option<usize>, alloc: &mut dyn FnMut(usize) -> usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x45fa4: guarded one-time mutex alloc + construct.
+    if !*guard {
+        let m = alloc(0x2C);
+        init(m);
+        *slot = Some(m);
+        *guard = true;
+    }
+    slot.unwrap_or(0)
 }
 
 // 0x46094 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")]
-pub fn stub_46094() -> ! {
-    todo!("0x46094 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")
+pub fn stub_46094(slots: &mut Vec<UiEventSlot>, id: u64, clear: &mut dyn FnMut(u64), release: &mut dyn FnMut(u64)) {
+    // IDA 0x46094: D1: function clear; vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        clear(s.id);
+        release(s.id);
+    }
 }
 
 // 0x46168 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")]
-pub fn stub_46168() -> ! {
-    todo!("0x46168 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::~callable()")
+pub fn stub_46168(slots: &mut Vec<UiEventSlot>, id: u64, clear: &mut dyn FnMut(u64), release: &mut dyn FnMut(u64)) {
+    // IDA 0x46168: D0: function clear; vtable resets; release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        clear(s.id);
+        release(s.id);
+    }
 }
 
 // 0x46240 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotD1Ev
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")]
-pub fn stub_46240() -> ! {
-    todo!("0x46240 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")
+pub fn stub_46240(slots: &mut Vec<UiEventSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x46240: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x462ec — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotD0Ev
 // demangled: rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")]
-pub fn stub_462ec() -> ! {
-    todo!("0x462ec rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::~slot()")
+pub fn stub_462ec(slots: &mut Vec<UiEventSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x462ec: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x4639c — __ZN5boost9function3IvbPvN3RBX7UIEventEE13assign_to_ownERKS4_
 // demangled: boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")]
-pub fn stub_4639c() -> ! {
-    todo!("0x4639c boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")
+pub fn stub_4639c(dst: usize, has_src: bool, is_small: bool, copy: &mut dyn FnMut(usize, bool)) -> usize {
+    // IDA 0x4639c: function3::assign_to_own — inline small copy else heap clone; return dst.
+    if has_src {
+        copy(dst, is_small);
+    }
+    dst
 }
 
 // 0x463cc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_463cc() -> ! {
-    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_463cc(op: u32, manage: &mut dyn FnMut(u32) -> usize) -> usize {
+    // IDA 0x463cc: functor_manager::manage — clone/move/destroy by op (below truncation).
+    manage(op)
 }
 
 // 0x4642c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_
 // demangled: boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
-pub fn stub_4642c() -> ! {
-    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")
+pub fn stub_4642c(target: usize, sel: usize, a: bool, b: usize, c: usize, invoke: &mut dyn FnMut(usize, usize, bool, usize, usize)) {
+    // IDA 0x4642c: invoker forwards objc msgSend(target, sel, processed, input, event).
+    invoke(target, sel, a, b, c);
 }
