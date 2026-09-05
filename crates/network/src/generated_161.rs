@@ -7,6 +7,26 @@
 
 use rbx_core::SharedPtr;
 
+/// `std::deque<function<void()>*>` queue (IDA 0x44564 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct FunctorQueue {
+ pub items: Vec<usize>,
+}
+
+/// Static-init state for `__GLOBAL__I_a_14` (IDA 0x44924).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA14 {
+ pub done: bool,
+}
+
+/// CameraControl touch state (IDA 0x44d04 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct CameraTouch {
+ pub has_touch: bool,
+ pub begin: (f32, f32),
+ pub has_rotated: bool,
+}
+
 /// `iOSSettingsService` settings + handler map (IDA 0x43180 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct SettingsService {
@@ -526,188 +546,254 @@ pub fn stub_43de0(reg: &mut MarshallerRegistry, keys: &[u32]) {
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")]
-pub fn stub_43e40() -> ! {
-    todo!("0x43e40 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")
+pub fn stub_43e40(reg: &mut MarshallerRegistry, keys: &[u32]) {
+    // IDA 0x43e40: _Rb_tree node erase.
+    for k in keys {
+        reg.entries.remove(k);
+    }
 }
 
 // 0x43e68 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_43e68() -> ! {
-    todo!("0x43e68 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_43e68(reg: &mut MarshallerRegistry, key: u32, value: usize) -> bool {
+    // IDA 0x43e68: hinted unique insert; false when present.
+    if reg.entries.contains_key(&key) {
+        return false;
+    }
+    reg.entries.insert(key, value);
+    true
 }
 
 // 0x43f1c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_43f1c() -> ! {
-    todo!("0x43f1c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_43f1c(reg: &mut MarshallerRegistry, key: u32, value: usize) {
+    // IDA 0x43f1c: hinted insert.
+    reg.entries.insert(key, value);
 }
 
 // 0x43f74 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_43f74() -> ! {
-    todo!("0x43f74 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_43f74(reg: &mut MarshallerRegistry, key: u32, value: usize) -> bool {
+    // IDA 0x43f74: unique insert; false when present.
+    if reg.entries.contains_key(&key) {
+        return false;
+    }
+    reg.entries.insert(key, value);
+    true
 }
 
 // 0x43fdc — __ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
 // demangled: boost::unique_lock<boost::recursive_mutex>::lock(void)
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unique_lock<boost::recursive_mutex>::lock(void)")]
-pub fn stub_43fdc() -> ! {
-    todo!("0x43fdc boost::unique_lock<boost::recursive_mutex>::lock(void)")
+pub fn stub_43fdc(lock: &mut dyn FnMut()) {
+    // IDA 0x43fdc: unique_lock::lock (below truncation).
+    lock();
 }
 
 // 0x441a8 — __ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv
 // demangled: RBX::FunctionMarshaller::safe_static_init_staticData(void)
 // type: _DWORD __fastcall(RBX::FunctionMarshaller *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_init_staticData(void)")]
-pub fn stub_441a8() -> ! {
-    todo!("0x441a8 RBX::FunctionMarshaller::safe_static_init_staticData(void)")
+pub fn stub_441a8(get: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x441a8: thunk tail-calls safe_static_do_get_staticData.
+    get()
 }
 
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
 // demangled: RBX::FunctionMarshaller::safe_static_do_get_staticData(void)
 // type: void *__fastcall(RBX::FunctionMarshaller *this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")]
-pub fn stub_441ac() -> ! {
-    todo!("0x441ac RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")
+pub fn stub_441ac(guard: &mut bool, init: &mut dyn FnMut()) {
+    // IDA 0x441ac: guarded one-time StaticData init.
+    if !*guard {
+        init();
+        *guard = true;
+    }
 }
 
 // 0x442bc — __ZN5boost15recursive_mutexC2Ev
 // demangled: boost::recursive_mutex::recursive_mutex(void)
 // type: _DWORD __fastcall(boost::recursive_mutex *__hidden this)
 #[doc(alias = "boost::recursive_mutex::recursive_mutex(void)")]
-pub fn stub_442bc() -> ! {
-    todo!("0x442bc boost::recursive_mutex::recursive_mutex(void)")
+pub fn stub_442bc(init: &mut dyn FnMut()) {
+    // IDA 0x442bc: recursive_mutex ctor (below truncation).
+    init();
 }
 
 // 0x44564 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
 // demangled: std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()
 // type: int __fastcall(_DWORD)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")]
-pub fn stub_44564() -> ! {
-    todo!("0x44564 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")
+pub fn stub_44564(q: &mut FunctorQueue, free: &mut dyn FnMut(usize)) {
+    // IDA 0x44564: _Deque_base dtor — delete nodes.
+    for item in q.items.drain(..) {
+        free(item);
+    }
 }
 
 // 0x44590 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm
 // demangled: std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
-pub fn stub_44590() -> ! {
-    todo!("0x44590 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")
+pub fn stub_44590(q: &mut FunctorQueue, cap: usize) {
+    // IDA 0x44590: deque map initialize — reserve.
+    q.items.reserve(cap);
 }
 
 // 0x446e8 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
 // demangled: std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)
 // type: int(void)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
-pub fn stub_446e8() -> ! {
-    todo!("0x446e8 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")
+pub fn stub_446e8(count: usize, alloc: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x446e8: throw bad_alloc when huge else operator new.
+    if count >= 0x40000000 {
+        panic!("std::bad_alloc");
+    }
+    alloc(count)
 }
 
 // 0x44700 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // demangled: std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
-pub fn stub_44700() -> ! {
-    todo!("0x44700 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")
+pub fn stub_44700(q: &mut FunctorQueue, count: usize, alloc: &mut dyn FnMut() -> usize) {
+    // IDA 0x44700: create nodes (0x200 each).
+    for _ in 0..count {
+        q.items.push(alloc());
+    }
 }
 
 // 0x447f4 — __ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
 // demangled: std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
-pub fn stub_447f4() -> ! {
-    todo!("0x447f4 std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")
+pub fn stub_447f4(dst: &mut FunctorQueue, src: &[usize]) {
+    // IDA 0x447f4: deque range construct.
+    dst.items.extend_from_slice(src);
 }
 
 // 0x44888 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
 // demangled: std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)
 #[doc(alias = "std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
-pub fn stub_44888() -> ! {
-    todo!("0x44888 std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")
+pub fn stub_44888(dst: &mut Vec<usize>, src: &[usize]) {
+    // IDA 0x44888: deque copy.
+    dst.extend_from_slice(src);
 }
 
 // 0x44924 — __GLOBAL__I_a_14
 // demangled: global constructor keyed to_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
-pub fn stub_44924() -> ! {
-    todo!("0x44924 global constructor keyed to_a_14")
+pub fn stub_44924(state: &mut GlobalInitA14, init: &mut dyn FnMut()) {
+    // IDA 0x44924: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
 // type: id __cdecl(CameraControl *self, SEL, CGRect, id)
 #[doc(alias = "-[CameraControl init:delegate:]")]
-pub fn stub_44abc() -> ! {
-    todo!("0x44abc -[CameraControl init:delegate:]")
+pub fn stub_44abc(ok: bool, enable_touch: &mut dyn FnMut()) -> bool {
+    // IDA 0x44abc: super init; set frame; multitouch on (below truncation).
+    if !ok {
+        return false;
+    }
+    enable_touch();
+    true
 }
 
 // 0x44b90 — -[CameraControl dealloc]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl dealloc]")]
-pub fn stub_44b90() -> ! {
-    todo!("0x44b90 -[CameraControl dealloc]")
+pub fn stub_44b90(teardown: &mut dyn FnMut()) {
+    // IDA 0x44b90: super dealloc.
+    teardown();
 }
 
 // 0x44bbc — -[CameraControl setupPostMouseEventConnection]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl setupPostMouseEventConnection]")]
-pub fn stub_44bbc() -> ! {
-    todo!("0x44bbc -[CameraControl setupPostMouseEventConnection]")
+pub fn stub_44bbc(connect: &mut dyn FnMut()) {
+    // IDA 0x44bbc: setup post-mouse-event connection (below truncation).
+    connect();
 }
 
 // 0x44cd4 — -[CameraControl postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(CameraControl *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[CameraControl postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_44cd4() -> ! {
-    todo!("0x44cd4 -[CameraControl postMouseEventProcessed:inputObject:event:]")
+pub fn stub_44cd4(has_touch: bool, matches: bool, end_pan: &mut dyn FnMut()) {
+    // IDA 0x44cd4: touch matches cameraTouch and processed -> pan ended.
+    if has_touch && matches {
+        end_pan();
+    }
 }
 
 // 0x44d04 — -[CameraControl doCameraPanTouchBegan]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchBegan]")]
-pub fn stub_44d04() -> ! {
-    todo!("0x44d04 -[CameraControl doCameraPanTouchBegan]")
+pub fn stub_44d04(begin: &mut dyn FnMut()) {
+    // IDA 0x44d04: hasRotated=0; capture touch begin (below truncation).
+    begin();
 }
 
 // 0x44dec — -[CameraControl doCameraPanTouchEnded]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchEnded]")]
-pub fn stub_44dec() -> ! {
-    todo!("0x44dec -[CameraControl doCameraPanTouchEnded]")
+pub fn stub_44dec(touch: &mut CameraTouch, reset_input: &mut dyn FnMut()) {
+    // IDA 0x44dec: touchBeginPos = -1; cameraTouch = nil; reset input when NewCameraControls.
+    touch.begin = (-1.0, -1.0);
+    touch.has_touch = false;
+    reset_input();
 }
 
 // 0x44e58 — -[CameraControl doCameraPanTouchMove]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchMove]")]
-pub fn stub_44e58() -> ! {
-    todo!("0x44e58 -[CameraControl doCameraPanTouchMove]")
+pub fn stub_44e58(pan: &mut dyn FnMut()) {
+    // IDA 0x44e58: doCameraPanTouchMove (below truncation).
+    pan();
 }
 
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesBegan:withEvent:]")]
-pub fn stub_450a0() -> ! {
-    todo!("0x450a0 -[CameraControl touchesBegan:withEvent:]")
+pub fn stub_450a0(has_touch: bool, count: usize, capture: &mut dyn FnMut(), began: &mut dyn FnMut(), forward: &mut dyn FnMut()) {
+    // IDA 0x450a0: first touch captured + began; forward to delegate.
+    if !has_touch && count == 1 {
+        capture();
+        began();
+    }
+    forward();
 }
 
 // 0x45124 — -[CameraControl touchesEnded:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesEnded:withEvent:]")]
-pub fn stub_45124() -> ! {
-    todo!("0x45124 -[CameraControl touchesEnded:withEvent:]")
+pub fn stub_45124(ended_ours: bool, end_pan: &mut dyn FnMut(), forward: &mut dyn FnMut()) {
+    // IDA 0x45124: touchesEnded — end pan when ours ends; forward (below truncation).
+    if ended_ours {
+        end_pan();
+    }
+    forward();
 }
 
 // 0x45234 — -[CameraControl touchesCancelled:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesCancelled:withEvent:]")]
-pub fn stub_45234() -> ! {
-    todo!("0x45234 -[CameraControl touchesCancelled:withEvent:]")
+pub fn stub_45234(cancelled_ours: bool, end_pan: &mut dyn FnMut(), forward: &mut dyn FnMut()) {
+    // IDA 0x45234: touchesCancelled — end pan when ours cancels; forward (below truncation).
+    if cancelled_ours {
+        end_pan();
+    }
+    forward();
 }
 
 // 0x45344 — -[CameraControl touchesMoved:withEvent:]
