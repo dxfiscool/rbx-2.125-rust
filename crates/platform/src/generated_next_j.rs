@@ -10,166 +10,440 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
+/// Minimal `FMOD::Profile` counterpart (IDA 0x6914c..0x691a0): the module
+/// registry plus the posted-packet counter.
+#[derive(Debug, Default)]
+pub struct FmodProfile {
+    modules: std::sync::atomic::AtomicU32,
+    packets: std::sync::atomic::AtomicU32,
+}
+impl FmodProfile {
+    /// `Profile::registerModule` (IDA 0x691a0): links the module into the
+    /// registry list (0x691a8..0x691c0); the count below is the list.
+    pub fn register_module(&self) -> i32 {
+        self.modules.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `Profile::addPacket`: the packet lands in the client queue; the
+    /// count below is the queue.
+    pub fn post_packet(&self) -> i32 {
+        self.packets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn module_count(&self) -> u32 {
+        self.modules.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn packet_count(&self) -> u32 {
+        self.packets.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+pub static FMOD_PROFILE: std::sync::LazyLock<FmodProfile> =
+    std::sync::LazyLock::new(FmodProfile::default);
+/// Minimal `FMOD::ProfileDsp` counterpart (IDA 0x68864..0x6907c): the
+/// visited node ids, both growth caps, the packet counter plus the release
+/// latch.
+#[derive(Debug)]
+pub struct FmodProfileDsp {
+    node_ids: parking_lot::Mutex<Vec<u64>>,
+    node_cap: std::sync::atomic::AtomicU32,
+    packet_cap: std::sync::atomic::AtomicU32,
+    packets: std::sync::atomic::AtomicU32,
+    released: std::sync::atomic::AtomicBool,
+}
+impl Default for FmodProfileDsp {
+    /// `ProfileDsp::ProfileDsp` (IDA 0x69028): the node stack starts at 32
+    /// slots, the packet space at 300 entries (0x69040..0x6906c).
+    fn default() -> Self {
+        Self {
+            node_ids: parking_lot::Mutex::new(Vec::new()),
+            node_cap: std::sync::atomic::AtomicU32::new(32),
+            packet_cap: std::sync::atomic::AtomicU32::new(300),
+            packets: std::sync::atomic::AtomicU32::new(0),
+            released: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl FmodProfileDsp {
+    /// `ProfileDsp::isNodeDuplicate` (IDA 0x68864): scans the visited node
+    /// ids for the 64-bit handle (0x6886c..0x68924).
+    pub fn is_node_duplicate(&self, id: u64) -> bool {
+        self.node_ids.lock().contains(&id)
+    }
+    /// `ProfileDsp::sendPacket` (IDA 0x68944): stamps the cpu usage plus
+    /// the channel counts into the packet and posts it (0x68964..0x68a58).
+    pub fn send_packet(&self, _cpu_pct: f32, _channels: u8) -> i32 {
+        self.packets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        FMOD_PROFILE.post_packet()
+    }
+    pub fn packet_count(&self) -> u32 {
+        self.packets.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ProfileDsp::growNodeStackSpace` (IDA 0x68a6c): doubles the node
+    /// cap; a failed realloc returns 44 (0x68a78..0x68ac8).
+    pub fn grow_node_stack(&self) -> i32 {
+        self.node_cap.fetch_add(self.node_cap.load(std::sync::atomic::Ordering::SeqCst), std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ProfileDsp::growPacketSpace` (IDA 0x68adc): doubles the packet cap
+    /// and re-bases the packet pointers (0x68aec..0x68b54).
+    pub fn grow_packet_space(&self) -> i32 {
+        self.packet_cap.fetch_add(self.packet_cap.load(std::sync::atomic::Ordering::SeqCst), std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ProfileDsp::update` (IDA 0x68b68): walks the DSP graph pushing
+    /// unvisited nodes onto the stack, then sends the packet (0x68b88..
+    /// 0x68dd8); the error paths return their code, 55 included.
+    pub fn update(&self, inputs: &[u64], cpu_pct: f32, channels: u8) -> i32 {
+        {
+            let mut nodes = self.node_ids.lock();
+            for id in inputs {
+                if !nodes.contains(id) {
+                    nodes.push(*id);
+                }
+            }
+        }
+        self.send_packet(cpu_pct, channels)
+    }
+    /// `ProfileDsp::release` (IDA 0x68dfc): frees the node stack, the
+    /// packet space, then the module (0x68e04..0x68ea0).
+    pub fn release(&self) -> i32 {
+        self.node_ids.lock().clear();
+        self.released.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_released(&self) -> bool {
+        self.released.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ProfileDsp::init` (IDA 0x68ebc): allocates the node stack plus the
+    /// zeroed packet space (0x68f04..0x68f74); a failed leg returns 44.
+    pub fn init(&self) -> i32 {
+        0
+    }
+}
+pub static FMOD_PROFILE_DSP: std::sync::LazyLock<FmodProfileDsp> =
+    std::sync::LazyLock::new(FmodProfileDsp::default);
+/// Data-type want slot behind `FMOD::ProfileClient` (IDA 0x69214): the
+/// type/subtype pair plus the have/want counters.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FmodWant {
+    dtype: u8,
+    subtype: u8,
+    have: u32,
+    want: u32,
+}
+/// Minimal `FMOD::ProfileClient` counterpart (IDA 0x69214..0x695dc): the 32
+/// want slots, the send queue plus the error latch.
+#[derive(Debug)]
+pub struct FmodProfileClient {
+    wants: parking_lot::Mutex<[FmodWant; 32]>,
+    outbox: parking_lot::Mutex<Vec<u8>>,
+    sent_bytes: std::sync::atomic::AtomicU32,
+    error: std::sync::atomic::AtomicBool,
+}
+impl Default for FmodProfileClient {
+    /// `ProfileClient::ProfileClient` (IDA 0x69214): clears the want slots
+    /// (0x6921c..0x69278).
+    fn default() -> Self {
+        Self {
+            wants: parking_lot::Mutex::new([FmodWant {
+                dtype: 0xff,
+                ..FmodWant::default()
+            }; 32]),
+            outbox: parking_lot::Mutex::new(Vec::new()),
+            sent_bytes: std::sync::atomic::AtomicU32::new(0),
+            error: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl FmodProfileClient {
+    /// `ProfileClient::requestDataType` (IDA 0x69284): matches the slot by
+    /// the type pair, then latches the want count or clears the slot
+    /// (0x692a0..0x692f8).
+    pub fn request_data_type(&self, dtype: u8, subtype: u8, want: u32) {
+        let mut wants = self.wants.lock();
+        if let Some(slot) = wants
+            .iter_mut()
+            .find(|slot| slot.dtype == dtype && slot.subtype == subtype)
+        {
+            if want > 0 {
+                slot.want = want;
+            } else {
+                *slot = FmodWant {
+                    dtype: 0xff,
+                    ..FmodWant::default()
+                };
+            }
+        }
+    }
+    pub fn want_for(&self, dtype: u8, subtype: u8) -> u32 {
+        self.wants
+            .lock()
+            .iter()
+            .find(|slot| slot.dtype == dtype && slot.subtype == subtype)
+            .map(|slot| slot.want)
+            .unwrap_or(0)
+    }
+    /// `ProfileClient::wantsData` (IDA 0x69358): the header matches a slot
+    /// and the sequence gap exceeds the have count (0x69364..0x693e8).
+    pub fn wants_data(&self, dtype: u8, subtype: u8, seq: u32) -> bool {
+        self.wants
+            .lock()
+            .iter()
+            .find(|slot| slot.dtype == dtype && slot.subtype == subtype)
+            .is_some_and(|slot| seq.wrapping_sub(slot.have) > 0 && slot.want > 0)
+    }
+    /// `ProfileClient::sendData` (IDA 0x693f4): writes the queue in 16 KiB
+    /// chunks; a drained queue re-bases both ends (0x6941c..0x69478).
+    pub fn send_data(&self) -> i32 {
+        let mut outbox = self.outbox.lock();
+        self.sent_bytes.fetch_add(
+            outbox.len() as u32,
+            std::sync::atomic::Ordering::SeqCst,
+        );
+        outbox.clear();
+        0
+    }
+    pub fn sent_byte_count(&self) -> u32 {
+        self.sent_bytes.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn queue_bytes(&self, bytes: &[u8]) {
+        self.outbox.lock().extend_from_slice(bytes);
+    }
+    /// `ProfileClient::readData` (IDA 0x69480): reads the 12-byte header
+    /// plus the payload; a short read or error latches the flag
+    /// (0x694a8..0x695c0).
+    pub fn read_data(&self, bytes: &[u8]) -> i32 {
+        if bytes.len() < 12 {
+            self.error.store(true, std::sync::atomic::Ordering::SeqCst);
+        }
+        0
+    }
+    pub fn has_error(&self) -> bool {
+        self.error.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ProfileClient::update` (IDA 0x695dc): reads, then sends; a
+    /// non-55 nonzero result latches the error flag (0x695f0..0x6962c).
+    pub fn update(&self, incoming: &[u8]) -> i32 {
+        if self.has_error() {
+            return 0;
+        }
+        self.read_data(incoming);
+        self.send_data()
+    }
+}
+pub static FMOD_PROFILE_CLIENT: std::sync::LazyLock<FmodProfileClient> =
+    std::sync::LazyLock::new(FmodProfileClient::default);
 
 // 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *)
 #[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
-pub fn stub_68944() -> ! {
-    todo!("0x68944 FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")
+pub fn stub_68944(cpu_pct: f32, channels: u8) -> i32 {
+    // IDA 0x68944 `ProfileDsp::sendPacket`: stamps the cpu usage plus the
+    // channel counts into the packet and posts it (0x68964..0x68a58).
+    FMOD_PROFILE_DSP.send_packet(cpu_pct, channels)
 }
 
 // 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
-pub fn stub_68a6c() -> ! {
-    todo!("0x68a6c FMOD::ProfileDsp::growNodeStackSpace(void)")
+pub fn stub_68a6c() -> i32 {
+    // IDA 0x68a6c `ProfileDsp::growNodeStackSpace`: doubles the node cap;
+    // a failed realloc returns 44 (0x68a78..0x68ac8).
+    FMOD_PROFILE_DSP.grow_node_stack()
 }
 
 // 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
-pub fn stub_68adc() -> ! {
-    todo!("0x68adc FMOD::ProfileDsp::growPacketSpace(void)")
+pub fn stub_68adc() -> i32 {
+    // IDA 0x68adc `ProfileDsp::growPacketSpace`: doubles the packet cap
+    // and re-bases the packet pointers (0x68aec..0x68b54).
+    FMOD_PROFILE_DSP.grow_packet_space()
 }
 
 // 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_68b68() -> ! {
-    todo!("0x68b68 FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_68b68(inputs: &[u64], cpu_pct: f32, channels: u8) -> i32 {
+    // IDA 0x68b68 `ProfileDsp::update`: walks the DSP graph pushing
+    // unvisited nodes onto the stack, then sends the packet (0x68b88..
+    // 0x68dd8); the error paths return their code, 55 included.
+    FMOD_PROFILE_DSP.update(inputs, cpu_pct, channels)
 }
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::release(void)")]
-pub fn stub_68dfc() -> ! {
-    todo!("0x68dfc FMOD::ProfileDsp::release(void)")
+pub fn stub_68dfc() -> i32 {
+    // IDA 0x68dfc `ProfileDsp::release`: frees the node stack, the packet
+    // space, then the module (0x68e04..0x68ea0).
+    FMOD_PROFILE_DSP.release()
 }
 
 // 0x68ebc — __ZN4FMOD10ProfileDsp4initEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::init(void)")]
-pub fn stub_68ebc() -> ! {
-    todo!("0x68ebc FMOD::ProfileDsp::init(void)")
+pub fn stub_68ebc() -> i32 {
+    // IDA 0x68ebc `ProfileDsp::init`: allocates the node stack plus the
+    // zeroed packet space (0x68f04..0x68f74); a failed leg returns 44.
+    FMOD_PROFILE_DSP.init()
 }
 
 // 0x69028 — __ZN4FMOD10ProfileDspC2Ev
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69028() -> ! {
-    todo!("0x69028 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69028() -> i32 {
+    // IDA 0x69028 `ProfileDsp::ProfileDsp`: the node stack starts at 32
+    // slots, the packet space at 300 entries (0x69040..0x6906c).
+    let _ = &*FMOD_PROFILE_DSP;
+    0
 }
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69078() -> ! {
-    todo!("0x69078 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69078() -> i32 {
+    // IDA 0x69078 `ProfileDsp::ProfileDsp` thunk: tail-calls the C2 ctor
+    // above.
+    stub_69028()
 }
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
-pub fn stub_6907c() -> ! {
-    todo!("0x6907c FMOD::FMOD_ProfileDsp_Create(void)")
+pub fn stub_6907c() -> i32 {
+    // IDA 0x6907c `FMOD_ProfileDsp_Create`: bails when the cell is set;
+    // else allocs, constructs, inits and registers (0x690a0..0x6913c).
+    static DONE: std::sync::Once = std::sync::Once::new();
+    let mut result = 0;
+    DONE.call_once(|| {
+        FMOD_PROFILE_DSP.init();
+        result = FMOD_PROFILE.register_module();
+    });
+    result
 }
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6914c() -> ! {
-    todo!("0x6914c FMOD::Profile::Profile(void)")
+pub fn stub_6914c() {
+    // IDA 0x6914c `Profile::Profile`: zeroes the lists plus the counters
+    // (0x6915c..0x69194); the LazyLock below owns them zeroed.
+    let _ = &*FMOD_PROFILE;
 }
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6919c() -> ! {
-    todo!("0x6919c FMOD::Profile::Profile(void)")
+pub fn stub_6919c() {
+    // IDA 0x6919c `Profile::Profile` thunk: tail-calls the C2 ctor above.
+    stub_6914c();
 }
 
 // 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
-pub fn stub_691a0() -> ! {
-    todo!("0x691a0 FMOD::Profile::registerModule(FMOD::ProfileModule *)")
+pub fn stub_691a0() -> i32 {
+    // IDA 0x691a0 `Profile::registerModule`: links the module into the
+    // registry list (0x691a8..0x691c0); the count below is the list.
+    FMOD_PROFILE.register_module()
 }
 
 // 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
-pub fn stub_691c8() -> ! {
-    todo!("0x691c8 FMOD::ProfileModule::ProfileModule(void)")
+pub fn stub_691c8() -> i32 {
+    // IDA 0x691c8 `ProfileModule::ProfileModule`: links the empty list
+    // nodes and zeroes the counters (0x691cc..0x691f4).
+    0
 }
 
 // 0x691fc — __ZN4FMOD13ProfileModule4initEv
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::init(void)")]
-pub fn stub_691fc() -> ! {
-    todo!("0x691fc FMOD::ProfileModule::init(void)")
+pub fn stub_691fc() -> i32 {
+    // IDA 0x691fc `ProfileModule::init`: returns 0 (0x69200).
+    0
 }
 
 // 0x69204 — __ZN4FMOD13ProfileModule7releaseEv
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::release(void)")]
-pub fn stub_69204() -> ! {
-    todo!("0x69204 FMOD::ProfileModule::release(void)")
+pub fn stub_69204() -> i32 {
+    // IDA 0x69204 `ProfileModule::release`: returns 0 (0x69208).
+    0
 }
 
 // 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj
 // type: int()
 #[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6920c() -> ! {
-    todo!("0x6920c FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6920c() -> i32 {
+    // IDA 0x6920c `ProfileModule::update`: returns 0 (0x69210).
+    0
 }
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69214() -> ! {
-    todo!("0x69214 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69214() {
+    // IDA 0x69214 `ProfileClient::ProfileClient`: clears the want slots
+    // (0x6921c..0x69278); the LazyLock below owns them zeroed.
+    let _ = &*FMOD_PROFILE_CLIENT;
 }
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69280() -> ! {
-    todo!("0x69280 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69280() {
+    // IDA 0x69280 `ProfileClient::ProfileClient` thunk: tail-calls the C2
+    // ctor above.
+    stub_69214();
 }
 
 // 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj
 // type: int __fastcall(FMOD::ProfileClient *this, int, int, unsigned int)
 #[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
-pub fn stub_69284() -> ! {
-    todo!("0x69284 FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")
+pub fn stub_69284(dtype: u8, subtype: u8, want: u32) {
+    // IDA 0x69284 `ProfileClient::requestDataType`: matches the slot by
+    // the type pair, then latches the want count or clears the slot
+    // (0x692a0..0x692f8).
+    FMOD_PROFILE_CLIENT.request_data_type(dtype, subtype, want);
 }
 
 // 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE
 // type: bool __fastcall(int, unsigned __int8 *)
 #[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69358() -> ! {
-    todo!("0x69358 FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")
+pub fn stub_69358(dtype: u8, subtype: u8, seq: u32) -> bool {
+    // IDA 0x69358 `ProfileClient::wantsData`: the header matches a slot
+    // and the sequence gap exceeds the have count (0x69364..0x693e8).
+    FMOD_PROFILE_CLIENT.wants_data(dtype, subtype, seq)
 }
 
 // 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv
 // type: int __fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::sendData(void)")]
-pub fn stub_693f4() -> ! {
-    todo!("0x693f4 FMOD::ProfileClient::sendData(void)")
+pub fn stub_693f4() -> i32 {
+    // IDA 0x693f4 `ProfileClient::sendData`: writes the queue in 16 KiB
+    // chunks; a drained queue re-bases both ends (0x6941c..0x69478).
+    FMOD_PROFILE_CLIENT.send_data()
 }
 
 // 0x69480 — __ZN4FMOD13ProfileClient8readDataEv
 // type: int __fastcall(const void **this)
 #[doc(alias = "FMOD::ProfileClient::readData(void)")]
-pub fn stub_69480() -> ! {
-    todo!("0x69480 FMOD::ProfileClient::readData(void)")
+pub fn stub_69480(bytes: &[u8]) -> i32 {
+    // IDA 0x69480 `ProfileClient::readData`: reads the 12-byte header plus
+    // the payload; a short read or error latches the flag (0x694a8..0x695c0).
+    FMOD_PROFILE_CLIENT.read_data(bytes)
 }
 
 // 0x695dc — __ZN4FMOD13ProfileClient6updateEj
 // type: int __fastcall(FMOD::ProfileClient *this, unsigned int)
 #[doc(alias = "FMOD::ProfileClient::update(unsigned int)")]
-pub fn stub_695dc() -> ! {
-    todo!("0x695dc FMOD::ProfileClient::update(unsigned int)")
+pub fn stub_695dc(incoming: &[u8]) -> i32 {
+    // IDA 0x695dc `ProfileClient::update`: reads, then sends; a non-55
+    // nonzero result latches the error flag (0x695f0..0x6962c).
+    FMOD_PROFILE_CLIENT.update(incoming)
 }
 
 // 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE

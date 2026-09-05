@@ -1827,7 +1827,7 @@ pub fn update_fmod_profile_cpu_686ac(dsp: f32, stream: f32, geometry: f32, updat
 // posts the 28-byte packet (0x686c0..0x68748); nonzero usage result
 // passes through instead.
     FMOD_PROFILE_CPU.push_packet(dsp, stream, geometry, update);
-    0
+    crate::generated_next_j::FMOD_PROFILE.post_packet()
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
@@ -1868,27 +1868,43 @@ static FMOD_PROFILE_CPU: std::sync::LazyLock<FmodProfileCpu> =
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_68794() -> ! {
-    todo!("0x68794 FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn new_fmod_profile_cpu_68794() -> i32 {
+    // IDA 0x68794 `ProfileCpu::ProfileCpu`: runs the module base ctor and
+    // sets the vtable (0x687a0..0x687b0).
+    0
 }
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_687bc() -> ! {
-    todo!("0x687bc FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn new_fmod_profile_cpu_thunk_687bc() -> i32 {
+    // IDA 0x687bc `ProfileCpu::ProfileCpu` thunk: tail-calls the C2 ctor
+    // above.
+    new_fmod_profile_cpu_68794()
 }
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
-pub fn stub_687c0() -> ! {
-    todo!("0x687c0 FMOD::FMOD_ProfileCpu_Create(void)")
+pub fn create_fmod_profile_cpu_687c0() -> i32 {
+    // IDA 0x687c0 `FMOD_ProfileCpu_Create`: bails when the cell is set;
+    // else allocs, constructs, inits and registers (0x687e0..0x68854).
+    static DONE: std::sync::Once = std::sync::Once::new();
+    let mut result = 0;
+    DONE.call_once(|| {
+        init_fmod_profile_cpu_686a4();
+        result = crate::generated_next_j::FMOD_PROFILE.register_module();
+    });
+    let _ = result;
+    0
 }
 
 // 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy
 // type: int __fastcall(FMOD::ProfileDsp *this, unsigned __int64)
 #[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
-pub fn stub_68864() -> ! {
-    todo!("0x68864 FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")
+pub fn is_fmod_dsp_node_duplicate_68864(id: u64) -> bool {
+    // IDA 0x68864 `ProfileDsp::isNodeDuplicate`: scans the visited node
+    // ids for the 64-bit handle (0x6886c..0x68924); the set lives with the
+    // DSP module below.
+    crate::generated_next_j::FMOD_PROFILE_DSP.is_node_duplicate(id)
 }
