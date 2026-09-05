@@ -43,6 +43,12 @@ pub struct PlaceLauncherState {
     pub memory_warning: bool,
     /// `isCurrentlyPlayingGame` (IDA 0x246d8/0x24a18).
     pub currently_playing: bool,
+    /// `isLeavingGame` (IDA 0x299a2 sets, 0x29bb4/0x29684 clear).
+    pub is_leaving_game: bool,
+    /// `childConnection`/`playerConnection` live flags (IDA 0x2b1bc
+    /// connects, 0x2b5e0/0x2b548 disconnect).
+    pub child_connected: bool,
+    pub player_connected: bool,
     /// `lastPlaceId` (IDA 0x246d8).
     pub last_place_id: i32,
     /// `teleporter` shared_ptr (IDA 0x246d8/0x248dc).
@@ -174,6 +180,9 @@ pub fn stub_0x246d8(state: &mut PlaceLauncherState, window: Option<u32>) {
     state.rbx_view = None;
     state.memory_warning = false;
     state.currently_playing = false;
+    state.is_leaving_game = false;
+    state.child_connected = false;
+    state.player_connected = false;
     state.last_place_id = 0;
     state.teleporter = Some(TeleporterState { window });
     state.teleport_callback_set = true;
@@ -904,11 +913,13 @@ pub fn stub_0x29684(
     end_background_task: &mut dyn FnMut(),
 ) {
     // IDA 0x29684: releases the ogre controller/view/window,
-    // `deleteRobloxView` (0x25440), clears the playing/memory latches
-    // (`self+20`/`self+8`), posts the did-leave notification (`self+24`),
-    // logs, drops the `RobloxGameState` default (+ synchronize), clears the
-    // teleport callback latch (`self+9` [INFERENCE: adjacent flag slot]),
-    // and ends the background task.
+    // `deleteRobloxView` (0x25440), clears the memory/playing latches
+    // (`hasReceivedMemoryWarning`/`isCurrentlyPlayingGame`, 0x2971c/0x29738),
+    // posts the did-leave notification (`didLeaveGameNotification`),
+    // logs, drops the `RobloxGameState` default (+ synchronize), clears
+    // `isLeavingGame` (0x297e8; disasm `STRB` via the `isLeavingGame`
+    // IVAR ref — not the teleport callback), and ends the delegate
+    // background task.
     release_controllers();
     stub_0x25440(state);
     state.currently_playing = false;
@@ -917,7 +928,7 @@ pub fn stub_0x29684(
     post_notification(&notification);
     state.posted_notification = Some(notification);
     clear_game_state();
-    state.teleport_callback_set = false;
+    state.is_leaving_game = false;
     end_background_task();
 }
 
@@ -1164,190 +1175,708 @@ mod launcher_setup_tests {
     }
 }
 
+#[cfg(test)]
+mod launcher_leave_tests {
+    use super::*;
+    use std::cell::{Cell, RefCell};
+    fn armed() -> PlaceLauncherState {
+        let mut state = PlaceLauncherState::default();
+        state.currently_playing = true;
+        state.child_connected = true;
+        state.rbx_view = Some(7);
+        state
+    }
+    #[test]
+    fn leave_game_guards_and_latches() {
+        let idle: RefCell<Vec<bool>> = RefCell::new(vec![]);
+        let gs: RefCell<Vec<String>> = RefCell::new(vec![]);
+        let sync = Cell::new(0);
+        let sessions: RefCell<Vec<i32>> = RefCell::new(vec![]);
+        let pages: RefCell<Vec<String>> = RefCell::new(vec![]);
+        let bg_set: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let bg_end: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let dispatched = Cell::new(0);
+        let shutdowns = Cell::new(0);
+        let mut run = |present: bool, version: f32| {
+            let mut state = armed();
+            if !present {
+                state.currently_playing = false;
+            }
+            let mut set_idle = |v: bool| idle.borrow_mut().push(v);
+            let mut set_gs = |v: &str| gs.borrow_mut().push(v.to_owned());
+            let mut sync_fn = || sync.set(sync.get() + 1);
+            let mut report = |kind: i32| sessions.borrow_mut().push(kind);
+            let mut track = |p: &str| pages.borrow_mut().push(p.to_owned());
+            let mut begin = |_: &mut dyn FnMut(u32)| 11u32;
+            let mut set_bg = |v: u32| bg_set.borrow_mut().push(v);
+            let mut end_bg = |v: u32| bg_end.borrow_mut().push(v);
+            let mut dispatch = |f: &mut dyn FnMut()| {
+                dispatched.set(dispatched.get() + 1);
+                f();
+            };
+            let mut shutdown = |_: &mut PlaceLauncherState| shutdowns.set(shutdowns.get() + 1);
+            stub_0x298e0(
+                &mut state, present, version, &mut set_idle, &mut set_gs, &mut sync_fn,
+                &mut report, &mut track, &mut begin, &mut set_bg, &mut end_bg,
+                &mut dispatch, &mut shutdown,
+            );
+            state
+        };
+        let idle_before = idle.borrow().len();
+        let quiet = run(false, 7.0);
+        assert!(!quiet.is_leaving_game);
+        assert_eq!(idle.borrow().len(), idle_before);
+        let leaving = run(true, 5.0);
+        assert!(leaving.is_leaving_game);
+        assert!(!leaving.child_connected);
+        assert!(leaving.memory_checker_stopped);
+        assert_eq!((shutdowns.get(), dispatched.get()), (1, 0));
+        let modern = run(true, 7.0);
+        assert!(modern.is_leaving_game);
+        assert_eq!((shutdowns.get(), dispatched.get()), (2, 1));
+        assert_eq!(gs.borrow().last().map(String::as_str), Some("leaveGame"));
+        assert_eq!(pages.borrow().last().map(String::as_str), Some("Visit/Success/LeaveGame"));
+        assert_eq!(sessions.borrow().last(), Some(&4));
+        assert_eq!(bg_set.borrow().last(), Some(&11));
+        let _ = bg_end;
+    }
+    #[test]
+    fn leave_game_double_leave_noop() {
+        let mut state = armed();
+        state.is_leaving_game = true;
+        let mut idle_calls = 0;
+        let mut set_idle = |_: bool| idle_calls += 1;
+        let mut set_gs = |_: &str| {};
+        let mut sync_fn = || {};
+        let mut report = |_: i32| {};
+        let mut track = |_: &str| {};
+        let mut begin = |_: &mut dyn FnMut(u32)| 0u32;
+        let mut set_bg = |_: u32| {};
+        let mut end_bg = |_: u32| {};
+        let mut dispatch = |_: &mut dyn FnMut()| {};
+        let mut shutdown = |_: &mut PlaceLauncherState| {};
+        stub_0x298e0(
+            &mut state, true, 7.0, &mut set_idle, &mut set_gs, &mut sync_fn,
+            &mut report, &mut track, &mut begin, &mut set_bg, &mut end_bg,
+            &mut dispatch, &mut shutdown,
+        );
+        assert_eq!(idle_calls, 0);
+    }
+    #[test]
+    fn expiration_handler_clears_leaving_and_task() {
+        let mut state = armed();
+        state.is_leaving_game = true;
+        let ended = Cell::new(0u32);
+        let mut end_bg = |v: u32| ended.set(v);
+        let reset = Cell::new(99u32);
+        let mut set_bg = |v: u32| reset.set(v);
+        stub_0x29bb4(&mut state, 11, &mut end_bg, &mut set_bg);
+        assert!(!state.is_leaving_game);
+        assert_eq!((ended.get(), reset.get()), (11, 0));
+    }
+    #[test]
+    fn bg_fg_view_gates_on_rbx_view() {
+        let live = armed();
+        let calls = Cell::new(0);
+        let mut stop = |v: u32| {
+            assert_eq!(v, 7);
+            calls.set(calls.get() + 1);
+        };
+        stub_0x29c9c(&live, &mut stop);
+        stub_0x29cb4(&live, &mut stop);
+        assert_eq!(calls.get(), 2);
+        let mut dead = PlaceLauncherState::default();
+        dead.rbx_view = None;
+        stub_0x29c9c(&dead, &mut stop);
+        stub_0x29cb4(&dead, &mut stop);
+        assert_eq!(calls.get(), 2);
+    }
+    #[test]
+    fn memory_warning_branches() {
+        let mut out = armed();
+        out.last_place_id = 42;
+        let printed: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let mut print = |v: u32| printed.borrow_mut().push(v);
+        let reported: RefCell<Vec<(i32, i32)>> = RefCell::new(vec![]);
+        let mut report = |kind: i32, place: i32| reported.borrow_mut().push((kind, place));
+        let left = Cell::new(0);
+        let mut leave = |_: &mut PlaceLauncherState| left.set(left.get() + 1);
+        stub_0x2ae54(&mut out, 1024, true, &mut print, &mut report, &mut leave);
+        assert_eq!(*reported.borrow(), [(5, 42)]);
+        assert_eq!(out.ga_event.as_ref().map(|e| e.action.as_str()), Some("OutOfMemory_EarlyExit"));
+        assert_eq!(out.last_alert.as_deref(), Some("MemoryError"));
+        assert!(out.last_log.as_deref().unwrap().contains("in-game shutdown"));
+        assert!(!out.child_connected && !out.player_connected);
+        assert_eq!(left.get(), 1);
+        let mut quiet = PlaceLauncherState::default();
+        stub_0x2ae54(&mut quiet, 0, false, &mut print, &mut report, &mut leave);
+        assert!(quiet.last_log.as_deref().unwrap().contains("ignoring"));
+        assert_eq!(left.get(), 1);
+        assert_eq!(stub_0x2ae44(&out), true);
+        assert_eq!(stub_0x2ae44(&quiet), false);
+    }
+    #[test]
+    fn child_and_player_connection_flow() {
+        let mut state = armed();
+        state.player_connected = true;
+        let linked = Cell::new(0);
+        let mut link = || linked.set(linked.get() + 1);
+        stub_0x2b1bc(&mut state, true, true, true, &mut link);
+        assert_eq!(linked.get(), 1);
+        assert!(state.player_connected && !state.child_connected);
+        stub_0x2b1bc(&mut state, false, false, false, &mut link);
+        assert_eq!(linked.get(), 1);
+        let mut loaded = armed();
+        loaded.player_connected = true;
+        loaded.child_connected = true;
+        let stamped = RefCell::new(vec![]);
+        let mut stamp = |v: &str| stamped.borrow_mut().push(v.to_owned());
+        let syncs = Cell::new(0);
+        let mut sync_fn = || syncs.set(syncs.get() + 1);
+        stub_0x2b548(&mut loaded, &mut stamp, &mut sync_fn);
+        assert!(!loaded.player_connected && !loaded.child_connected);
+        assert_eq!(*stamped.borrow(), ["inGame"]);
+        assert_eq!(syncs.get(), 1);
+        assert!(loaded.memory_checker_stopped);
+        let mut built = PlaceLauncherState::default();
+        stub_0x2b724(&mut built);
+        assert!(built.teleporter.is_none());
+        built.teleporter = Some(TeleporterState { window: None });
+        built.player_connected = true;
+        stub_0x2b654(&mut built);
+        assert!(built.teleporter.is_none() && !built.player_connected);
+    }
+    #[test]
+    fn teleport_helpers_round_trip() {
+        let game = GameToken { unsecured: false, is_app: true };
+        let calls = RefCell::new(vec![]);
+        let mut http = |url: &str| {
+            calls.borrow_mut().push(url.to_owned());
+            format!("resp:{url}")
+        };
+        let ran = RefCell::new(vec![]);
+        let mut exec = |resp: &str, extra: &str, _: &GameToken| {
+            ran.borrow_mut().push((resp.to_owned(), extra.to_owned()));
+        };
+        let ok = Cell::new(0);
+        let mut success = || ok.set(ok.get() + 1);
+        stub_0x2a350("u", "s", "x", &game, true, &mut http, &mut exec, &mut success);
+        assert_eq!(*calls.borrow(), ["u?suggest=s"]);
+        assert_eq!(*ran.borrow(), [("resp:u?suggest=s".to_string(), "x".to_string())]);
+        assert_eq!(ok.get(), 1);
+        stub_0x2a350("u", "", "x", &game, false, &mut http, &mut exec, &mut success);
+        assert_eq!(calls.borrow().last().map(String::as_str), Some("u"));
+        assert_eq!(ok.get(), 1);
+        let marshalled: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let mut marshal = |v: u32, _: &GameToken| marshalled.borrow_mut().push(v);
+        stub_0x2aba4(3, &game, &mut marshal);
+        assert_eq!(*marshalled.borrow(), [3]);
+        let mut cap = FinishTeleportCapture {
+            first: Some(1),
+            second: Some(2),
+            raw: 5,
+            game: Some(game),
+        };
+        let src = cap.clone();
+        let mut dst = FinishTeleportCapture::default();
+        stub_0x2acec(&mut dst, &src);
+        assert_eq!((dst.first, dst.second, dst.raw, dst.game), (Some(1), Some(2), 5, Some(game)));
+        stub_0x2ada4(&mut dst);
+        assert_eq!((dst.first, dst.raw, dst.game), (None, 0, None));
+        let _ = cap;
+    }
+    #[test]
+    fn teleport_finish_animation_flow() {
+        let game = GameToken { unsecured: true, is_app: false };
+        let gamed = Cell::new(0);
+        let mut set_game = |v: u32, _: &GameToken| gamed.set(v);
+        let framed = RefCell::new(vec![]);
+        let mut set_frame = |v: u32, b: [i32; 4]| framed.borrow_mut().push((v, b));
+        let clips: RefCell<Vec<(u32, bool)>> = RefCell::new(vec![]);
+        let mut set_clips = |v: u32, c: bool| clips.borrow_mut().push((v, c));
+        let animated = Cell::new(0.0f64);
+        let mut animate = |d: f64, a: &mut dyn FnMut(), c: &mut dyn FnMut()| {
+            animated.set(d);
+            a();
+            c();
+        };
+        stub_0x2b754(
+            9, &game, true, Some(4), Some(6), Some([1, 2, 3, 4]),
+            &mut set_game, &mut set_frame, &mut set_clips, &mut animate,
+        );
+        assert_eq!(gamed.get(), 6);
+        assert_eq!(*framed.borrow(), [(4, [1, 2, 3, 4])]);
+        assert_eq!(*clips.borrow(), [(4, false)]);
+        assert_eq!(animated.get(), 0.5);
+        stub_0x2b754(
+            9, &game, false, Some(4), Some(6), None,
+            &mut set_game, &mut set_frame, &mut set_clips, &mut animate,
+        );
+        assert_eq!(framed.borrow().len(), 1);
+        stub_0x2b980(None, None, &mut set_frame);
+        stub_0x2ba14(None, &mut set_clips);
+        assert_eq!((framed.borrow().len(), clips.borrow().len()), (1, 1));
+        let src = BlockCapture { target: Some(8) };
+        for (copy, drop_fn) in [
+            (stub_0x2a988 as fn(&mut BlockCapture, &BlockCapture), stub_0x2a994 as fn(&mut BlockCapture)),
+            (stub_0x2ba00 as fn(&mut BlockCapture, &BlockCapture), stub_0x2ba0c as fn(&mut BlockCapture)),
+            (stub_0x2ba40 as fn(&mut BlockCapture, &BlockCapture), stub_0x2ba4c as fn(&mut BlockCapture)),
+            (stub_0x29c34 as fn(&mut BlockCapture, &BlockCapture), stub_0x29c58 as fn(&mut BlockCapture)),
+            (stub_0x29c88 as fn(&mut BlockCapture, &BlockCapture), stub_0x29c94 as fn(&mut BlockCapture)),
+        ] {
+            let mut dst = BlockCapture::default();
+            copy(&mut dst, &src);
+            assert_eq!(dst.target, Some(8));
+            drop_fn(&mut dst);
+            assert_eq!(dst.target, None);
+        }
+        let mut state = armed();
+        let mut shutdowns = 0;
+        let mut shutdown = |_: &mut PlaceLauncherState| shutdowns += 1;
+        stub_0x29c74(&mut state, &mut shutdown);
+        assert_eq!(shutdowns, 1);
+    }
+}
+
 // 0x298e0 — -[PlaceLauncher leaveGame]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGame]")]
-pub fn stub_0x298e0() -> ! {
-    todo!("0x298e0 -[PlaceLauncher leaveGame]")
+pub fn stub_0x298e0(
+    state: &mut PlaceLauncherState,
+    ogre_controller_present: bool,
+    system_version: f32,
+    set_idle_timer_disabled: &mut dyn FnMut(bool),
+    set_game_state: &mut dyn FnMut(&str),
+    synchronize_defaults: &mut dyn FnMut(),
+    report_session: &mut dyn FnMut(i32),
+    track_page_view: &mut dyn FnMut(&str),
+    begin_bg_task: &mut dyn FnMut(&mut dyn FnMut(u32)) -> u32,
+    set_bg_task: &mut dyn FnMut(u32),
+    end_bg_task: &mut dyn FnMut(u32),
+    dispatch_main: &mut dyn FnMut(&mut dyn FnMut()),
+    leave_shutdown: &mut dyn FnMut(&mut PlaceLauncherState),
+) {
+    // IDA 0x298e0: no-ops unless playing, not already leaving, and the
+    // ogre controller exists (0x2996e/0x29978/0x2998e); otherwise latches
+    // `isLeavingGame`, re-enables the idle timer, stamps
+    // `RobloxGameState = "leaveGame"` + synchronize, closes the child
+    // connections (0x2b5e0), reports session 4, tracks
+    // `Visit/Success/LeaveGame`, begins the delegate background task
+    // (expiration block 0x29bb4), and `dispatch_async`s the
+    // `leaveGameShutdown` block (0x29c74) on iOS 6+ (disasm `VMOV.F32
+    // D0, #6.0` + `VCMPE`, so a genuine `f32` compare) or shuts down
+    // inline on older systems (0x29b72).
+    if !state.currently_playing || state.is_leaving_game || !ogre_controller_present {
+        return;
+    }
+    state.is_leaving_game = true;
+    set_idle_timer_disabled(false);
+    set_game_state("leaveGame");
+    synchronize_defaults();
+    stub_0x2b5e0(state);
+    report_session(4);
+    track_page_view("Visit/Success/LeaveGame");
+    let mut expiration = |current_task: u32| {
+        stub_0x29bb4(state, current_task, end_bg_task, set_bg_task);
+    };
+    let bg_task = begin_bg_task(&mut expiration);
+    set_bg_task(bg_task);
+    if system_version >= 6.0 {
+        let mut shutdown = || leave_shutdown(state);
+        dispatch_main(&mut shutdown);
+    } else {
+        leave_shutdown(state);
+    }
 }
 
 // 0x29bb4 — ___26-[PlaceLauncher leaveGame]_block_invoke
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke")]
-pub fn stub_0x29bb4() -> ! {
-    todo!("0x29bb4 ___26-[PlaceLauncher leaveGame]_block_invoke")
+pub fn stub_0x29bb4(
+    state: &mut PlaceLauncherState,
+    delegate_bg_task: u32,
+    end_bg_task: &mut dyn FnMut(u32),
+    set_bg_task: &mut dyn FnMut(u32),
+) {
+    // IDA 0x29bb4: background-task expiration handler — clears
+    // `isLeavingGame` (disasm `STRB` via the `isLeavingGame` IVAR ref,
+    // 0x29bde), ends the delegate `bgTask`, and resets it to
+    // `UIBackgroundTaskInvalid`.
+    state.is_leaving_game = false;
+    end_bg_task(delegate_bg_task);
+    set_bg_task(0);
 }
 
 // 0x29c34 — ___copy_helper_block_217
 #[doc(alias = "___copy_helper_block_217")]
-pub fn stub_0x29c34() -> ! {
-    todo!("0x29c34 ___copy_helper_block_217")
+pub fn stub_0x29c34(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x29c34 `__copy_helper_block_217`: two `_Block_object_assign`
+    // retains (+20/+24, cf. 0x1f660); the host retains the whole capture.
+    *dst = src.clone();
 }
 
 // 0x29c58 — ___destroy_helper_block_218
 #[doc(alias = "___destroy_helper_block_218")]
-pub fn stub_0x29c58() -> ! {
-    todo!("0x29c58 ___destroy_helper_block_218")
+pub fn stub_0x29c58(slot: &mut BlockCapture) {
+    // IDA 0x29c58 `__destroy_helper_block_218`: two
+    // `_Block_object_dispose` releases (+20/+24, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x29c74 — ___26-[PlaceLauncher leaveGame]_block_invoke231
 #[doc(alias = "___26-[PlaceLauncher leaveGame]_block_invoke231")]
-pub fn stub_0x29c74() -> ! {
-    todo!("0x29c74 ___26-[PlaceLauncher leaveGame]_block_invoke231")
+pub fn stub_0x29c74(
+    state: &mut PlaceLauncherState,
+    leave_shutdown: &mut dyn FnMut(&mut PlaceLauncherState),
+) {
+    // IDA 0x29c74: main-queue block — `leaveGameShutdown` (0x295c0).
+    leave_shutdown(state);
 }
 
 // 0x29c88 — ___copy_helper_block_232
 #[doc(alias = "___copy_helper_block_232")]
-pub fn stub_0x29c88() -> ! {
-    todo!("0x29c88 ___copy_helper_block_232")
+pub fn stub_0x29c88(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x29c88 `__copy_helper_block_232`: single
+    // `_Block_object_assign` retain (+20, cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x29c94 — ___destroy_helper_block_233
 #[doc(alias = "___destroy_helper_block_233")]
-pub fn stub_0x29c94() -> ! {
-    todo!("0x29c94 ___destroy_helper_block_233")
+pub fn stub_0x29c94(slot: &mut BlockCapture) {
+    // IDA 0x29c94 `__destroy_helper_block_233`: single
+    // `_Block_object_dispose` release (+20, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x29c9c — -[PlaceLauncher disableViewBecauseGoingToBackground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher disableViewBecauseGoingToBackground]")]
-pub fn stub_0x29c9c() -> ! {
-    todo!("0x29c9c -[PlaceLauncher disableViewBecauseGoingToBackground]")
+pub fn stub_0x29c9c(state: &PlaceLauncherState, stop_rendering: &mut dyn FnMut(u32)) {
+    // IDA 0x29c9c: with a live `rbxView`, `requestStopRenderingForBackgroundMode`.
+    if let Some(view) = state.rbx_view {
+        stop_rendering(view);
+    }
 }
 
 // 0x29cb4 — -[PlaceLauncher enableViewBecauseGoingToForeground]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher enableViewBecauseGoingToForeground]")]
-pub fn stub_0x29cb4() -> ! {
-    todo!("0x29cb4 -[PlaceLauncher enableViewBecauseGoingToForeground]")
+pub fn stub_0x29cb4(state: &PlaceLauncherState, resume_rendering: &mut dyn FnMut(u32)) {
+    // IDA 0x29cb4: with a live `rbxView`, `requestResumeRendering`.
+    if let Some(view) = state.rbx_view {
+        resume_rendering(view);
+    }
 }
 
 // 0x2a350 — __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x2a350() -> ! {
-    todo!("0x2a350 joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_0x2a350(
+    url: &str,
+    suggest: &str,
+    extra: &str,
+    game: &GameToken,
+    controller_present: bool,
+    http_get: &mut dyn FnMut(&str) -> String,
+    execute_url_script: &mut dyn FnMut(&str, &str, &GameToken),
+    handle_start_game_success: &mut dyn FnMut(),
+) {
+    // IDA 0x2a350: appends `?suggest=<suggest>` when the suggest string is
+    // non-empty (0x2a3b8 length check), `RBX::Http(url).get` against
+    // `GetBaseURL()`, then `executeUrlScript(result, extra)` (the third
+    // string rides along verbatim), then `handleStartGameSuccess` when a
+    // controller was supplied (string retains/releases fold into host
+    // ownership).
+    let full = if suggest.is_empty() {
+        url.to_owned()
+    } else {
+        format!("{url}?suggest={suggest}")
+    };
+    let response = http_get(&full);
+    execute_url_script(&response, extra, game);
+    if controller_present {
+        handle_start_game_success();
+    }
 }
 
 // 0x2a988 — ___copy_helper_block_243
 #[doc(alias = "___copy_helper_block_243")]
-pub fn stub_0x2a988() -> ! {
-    todo!("0x2a988 ___copy_helper_block_243")
+pub fn stub_0x2a988(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x2a988 `__copy_helper_block_243`: single
+    // `_Block_object_assign` retain (+20, cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x2a994 — ___destroy_helper_block_244
 #[doc(alias = "___destroy_helper_block_244")]
-pub fn stub_0x2a994() -> ! {
-    todo!("0x2a994 ___destroy_helper_block_244")
+pub fn stub_0x2a994(slot: &mut BlockCapture) {
+    // IDA 0x2a994 `__destroy_helper_block_244`: single
+    // `_Block_object_dispose` release (+20, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x2aba4 — __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
-pub fn stub_0x2aba4() -> ! {
-    todo!("0x2aba4 finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")
+pub fn stub_0x2aba4(
+    view: u32,
+    game: &GameToken,
+    execute: &mut dyn FnMut(u32, &GameToken),
+) {
+    // IDA 0x2aba4: binds `finishTeleportHelper(view, game)`
+    // (`boost::bind` → closure) into `FunctionMarshaller::Execute`, then
+    // clears the functor (cf. 0x2643c).
+    execute(view, game);
+}
+
+/// Block capture for `finishTeleport` (IDA 0x2acec/0x2ada4): two retained
+/// ObjC slots (+20/+24), a raw word (+28), and the copied
+/// `shared_ptr<RBX::Game>` (+32).
+#[derive(Debug, Clone, Default)]
+pub struct FinishTeleportCapture {
+    pub first: Option<u32>,
+    pub second: Option<u32>,
+    pub raw: u32,
+    pub game: Option<GameToken>,
 }
 
 // 0x2acec — ___copy_helper_block_247
 // type: void __fastcall(_DWORD *, const shared_count *)
 #[doc(alias = "___copy_helper_block_247")]
-pub fn stub_0x2acec() -> ! {
-    todo!("0x2acec ___copy_helper_block_247")
+pub fn stub_0x2acec(dst: &mut FinishTeleportCapture, src: &FinishTeleportCapture) {
+    // IDA 0x2acec `__copy_helper_block_247`: two `_Block_object_assign`
+    // retains (+20/+24), a raw word copy (+28), and a `shared_count`
+    // copy (+32); the host clones the whole capture.
+    *dst = src.clone();
 }
 
 // 0x2ada4 — ___destroy_helper_block_248
 #[doc(alias = "___destroy_helper_block_248")]
-pub fn stub_0x2ada4() -> ! {
-    todo!("0x2ada4 ___destroy_helper_block_248")
+pub fn stub_0x2ada4(slot: &mut FinishTeleportCapture) {
+    // IDA 0x2ada4 `__destroy_helper_block_248`: two
+    // `_Block_object_dispose` releases (+20/+24) plus the `shared_count`
+    // release (+32); the host drops the whole capture.
+    *slot = FinishTeleportCapture::default();
 }
 
 // 0x2ae44 — -[PlaceLauncher isCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher isCurrentlyPlayingGame]")]
-pub fn stub_0x2ae44() -> ! {
-    todo!("0x2ae44 -[PlaceLauncher isCurrentlyPlayingGame]")
+pub fn stub_0x2ae44(state: &PlaceLauncherState) -> bool {
+    // IDA 0x2ae44: `isCurrentlyPlayingGame` IVAR load (same latch as
+    // `getIsCurrentlyPlayingGame`, 0x24a18).
+    state.currently_playing
 }
 
 // 0x2ae54 — -[PlaceLauncher applicationDidReceiveMemoryWarning]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher applicationDidReceiveMemoryWarning]")]
-pub fn stub_0x2ae54() -> ! {
-    todo!("0x2ae54 -[PlaceLauncher applicationDidReceiveMemoryWarning]")
+pub fn stub_0x2ae54(
+    state: &mut PlaceLauncherState,
+    free_memory_bytes: u32,
+    warnings_enabled: bool,
+    print_free_memory: &mut dyn FnMut(u32),
+    report_session: &mut dyn FnMut(i32, i32),
+    leave_game: &mut dyn FnMut(&mut PlaceLauncherState),
+) {
+    // IDA 0x2ae54: out of game it just logs and ignores (0x2afc2); in
+    // game it prints free memory, tracks `PlayErrors/OutOfMemory_EarlyExit`
+    // + session 5 when a child/player connection is live else
+    // `PlayErrors/OutOfMemory` + session 6 (0x2aeea/0x2af06), closes the
+    // child connections (0x2b056), alerts `MemoryError` when the warnings
+    // preference is set, logs the in-game shutdown, and leaves the game.
+    if !state.currently_playing {
+        state.last_log = Some("PlaceLauncher: applicationDidReceiveMemoryWarning receive while out of game, ignoring".to_string());
+        return;
+    }
+    print_free_memory(free_memory_bytes);
+    let place_id = state.last_place_id;
+    if state.child_connected || state.player_connected {
+        state.ga_event = Some(GaEvent {
+            category: "PlayErrors".to_string(),
+            action: "OutOfMemory_EarlyExit".to_string(),
+            label: place_id,
+        });
+        report_session(5, place_id);
+    } else {
+        state.ga_event = Some(GaEvent {
+            category: "PlayErrors".to_string(),
+            action: "OutOfMemory".to_string(),
+            label: place_id,
+        });
+        report_session(6, place_id);
+    }
+    stub_0x2b5e0(state);
+    if warnings_enabled {
+        state.last_alert = Some("MemoryError".to_string());
+    }
+    state.last_log = Some("PlaceLauncher: applicationDidReceiveMemoryWarning resulting in in-game shutdown".to_string());
+    leave_game(state);
 }
 
 // 0x2b1bc — -[PlaceLauncher childAdded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher childAdded:]")]
-pub fn stub_0x2b1bc() -> ! {
-    todo!("0x2b1bc -[PlaceLauncher childAdded:]")
+pub fn stub_0x2b1bc(
+    state: &mut PlaceLauncherState,
+    players_present: bool,
+    local_player_present: bool,
+    added_is_local_player: bool,
+    connect_player_loaded: &mut dyn FnMut(),
+) {
+    // IDA 0x2b1bc: with no `rbxView`, datamodel, `Players` service, or
+    // local player it closes the child connections (0x2b326/0x2b34e/
+    // 0x2b378/0x2b3a2); otherwise it connects `playerLoaded:` on the
+    // player signal into `playerConnection` and disconnects
+    // `childConnection` — both the local-child and other-child arms
+    // connect identically, differing only in the log line.
+    if state.rbx_view.is_none() || !players_present || !local_player_present {
+        stub_0x2b5e0(state);
+        return;
+    }
+    let _ = added_is_local_player;
+    connect_player_loaded();
+    state.player_connected = true;
+    state.child_connected = false;
 }
 
 // 0x2b548 — -[PlaceLauncher playerLoaded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher playerLoaded:]")]
-pub fn stub_0x2b548() -> ! {
-    todo!("0x2b548 -[PlaceLauncher playerLoaded:]")
+pub fn stub_0x2b548(
+    state: &mut PlaceLauncherState,
+    set_game_state: &mut dyn FnMut(&str),
+    synchronize_defaults: &mut dyn FnMut(),
+) {
+    // IDA 0x2b548: disconnects `playerConnection`, closes the child
+    // connections, then stamps `RobloxGameState = "inGame"` + synchronize.
+    state.player_connected = false;
+    stub_0x2b5e0(state);
+    set_game_state("inGame");
+    synchronize_defaults();
 }
 
 // 0x2b5e0 — -[PlaceLauncher closeChildConnections]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher closeChildConnections]")]
-pub fn stub_0x2b5e0() -> ! {
-    todo!("0x2b5e0 -[PlaceLauncher closeChildConnections]")
+pub fn stub_0x2b5e0(state: &mut PlaceLauncherState) {
+    // IDA 0x2b5e0: disconnects `childConnection`/`playerConnection`
+    // when connected (0x2b5fc/0x2b61a), then stops the free-memory
+    // checker (intrusive releases fold into host ownership).
+    state.child_connected = false;
+    state.player_connected = false;
+    state.memory_checker_stopped = true;
 }
 
 // 0x2b654 — -[PlaceLauncher .cxx_destruct]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_destruct]")]
-pub fn stub_0x2b654() -> ! {
-    todo!("0x2b654 -[PlaceLauncher .cxx_destruct]")
+pub fn stub_0x2b654(state: &mut PlaceLauncherState) {
+    // IDA 0x2b654 `-[PlaceLauncher .cxx_destruct]`: releases the
+    // player/child connection slots and the teleporter (intrusive
+    // releases fold into host ownership).
+    state.player_connected = false;
+    state.child_connected = false;
+    state.teleporter = None;
 }
 
 // 0x2b724 — -[PlaceLauncher .cxx_construct]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_construct]")]
-pub fn stub_0x2b724() -> ! {
-    todo!("0x2b724 -[PlaceLauncher .cxx_construct]")
+pub fn stub_0x2b724(state: &mut PlaceLauncherState) {
+    // IDA 0x2b724 `-[PlaceLauncher .cxx_construct]`: zeroes the
+    // teleporter and both connection slots.
+    state.teleporter = None;
+    state.child_connected = false;
+    state.player_connected = false;
 }
 
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x2b754() -> ! {
-    todo!("0x2b754 finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_0x2b754(
+    view: u32,
+    game: &GameToken,
+    main_controller_present: bool,
+    ogre_view: Option<u32>,
+    first_subview: Option<u32>,
+    screen_bounds: Option<[i32; 4]>,
+    set_game: &mut dyn FnMut(u32, &GameToken),
+    set_frame: &mut dyn FnMut(u32, [i32; 4]),
+    set_clips_to_bounds: &mut dyn FnMut(u32, bool),
+    animate: &mut dyn FnMut(f64, &mut dyn FnMut(), &mut dyn FnMut()),
+) {
+    // IDA 0x2b754: no-ops without the shared `MainViewController`;
+    // otherwise `setGame:`s the first enumerated ogre-controller subview
+    // (0x2b838/0x2b86c) and runs `animateWithDuration:0.5` (disasm
+    // `VMOV.F64 D16, #0.5`, so a genuine `f64`) with the frame-sizing
+    // animations block (0x2b980) and the clips completion (0x2ba14).
+    // The view rides the animation cookies; the host keeps it explicit.
+    let _ = view;
+    if !main_controller_present {
+        return;
+    }
+    if let Some(subview) = first_subview {
+        set_game(subview, game);
+    }
+    let mut animations = || {
+        stub_0x2b980(ogre_view, screen_bounds, set_frame);
+    };
+    let mut completion = || {
+        stub_0x2ba14(ogre_view, set_clips_to_bounds);
+    };
+    animate(0.5, &mut animations, &mut completion);
 }
-
 // 0x2b980 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")]
-pub fn stub_0x2b980() -> ! {
-    todo!("0x2b980 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")
+pub fn stub_0x2b980(
+    view: Option<u32>,
+    screen_bounds: Option<[i32; 4]>,
+    set_frame: &mut dyn FnMut(u32, [i32; 4]),
+) {
+    // IDA 0x2b980: sizes the ogre controller's view to the main-screen
+    // bounds (zeroed when headless, cf. 0x25498); nil views no-op.
+    if let Some(view) = view {
+        set_frame(view, screen_bounds.unwrap_or([0, 0, 0, 0]));
+    }
 }
 
 // 0x2ba00 — ___copy_helper_block_425
 #[doc(alias = "___copy_helper_block_425")]
-pub fn stub_0x2ba00() -> ! {
-    todo!("0x2ba00 ___copy_helper_block_425")
+pub fn stub_0x2ba00(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x2ba00 `__copy_helper_block_425`: single
+    // `_Block_object_assign` retain (+20, cf. 0x1f660).
+    *dst = src.clone();
 }
-
 // 0x2ba0c — ___destroy_helper_block_426
 #[doc(alias = "___destroy_helper_block_426")]
-pub fn stub_0x2ba0c() -> ! {
-    todo!("0x2ba0c ___destroy_helper_block_426")
+pub fn stub_0x2ba0c(slot: &mut BlockCapture) {
+    // IDA 0x2ba0c `__destroy_helper_block_426`: single
+    // `_Block_object_dispose` release (+20, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x2ba14 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")]
-pub fn stub_0x2ba14() -> ! {
-    todo!("0x2ba14 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")
+pub fn stub_0x2ba14(view: Option<u32>, set_clips_to_bounds: &mut dyn FnMut(u32, bool)) {
+    // IDA 0x2ba14: completion block — `setClipsToBounds:NO` on the ogre
+    // controller's view; nil views no-op.
+    if let Some(view) = view {
+        set_clips_to_bounds(view, false);
+    }
 }
-
 // 0x2ba40 — ___copy_helper_block_429
 #[doc(alias = "___copy_helper_block_429")]
-pub fn stub_0x2ba40() -> ! {
-    todo!("0x2ba40 ___copy_helper_block_429")
+pub fn stub_0x2ba40(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x2ba40 `__copy_helper_block_429`: single
+    // `_Block_object_assign` retain (+20, cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x2ba4c — ___destroy_helper_block_430
 #[doc(alias = "___destroy_helper_block_430")]
-pub fn stub_0x2ba4c() -> ! {
-    todo!("0x2ba4c ___destroy_helper_block_430")
+pub fn stub_0x2ba4c(slot: &mut BlockCapture) {
+    // IDA 0x2ba4c `__destroy_helper_block_430`: single
+    // `_Block_object_dispose` release (+20, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
 
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke
