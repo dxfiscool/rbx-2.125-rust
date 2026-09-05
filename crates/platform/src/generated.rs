@@ -3622,6 +3622,32 @@ pub struct SignupViewState {
     anim_runs: AtomicU32,
     warnings: AtomicU32,
     wills: AtomicU32,
+    username_status: parking_lot::Mutex<FieldStatus>,
+    password_status: parking_lot::Mutex<FieldStatus>,
+    verify_status: parking_lot::Mutex<FieldStatus>,
+    presented: AtomicBool,
+    dismisses: AtomicU32,
+    verify_calls: AtomicU32,
+    email: parking_lot::Mutex<String>,
+    birth_string: parking_lot::Mutex<String>,
+    signing_up_visible: AtomicBool,
+}
+/// Status-button presentation behind the signup verify flow (IDA
+/// 0x5f890..0x602b8): the badge image, its hidden latch and whether it
+/// takes touches.
+#[derive(Debug, Clone, Default)]
+pub struct FieldStatus {
+    pub image: String,
+    pub hidden: bool,
+    pub enabled: bool,
+}
+impl FieldStatus {
+    fn hidden() -> Self {
+        Self { image: String::new(), hidden: true, enabled: false }
+    }
+    fn badge(image: &str) -> Self {
+        Self { image: image.to_owned(), hidden: false, enabled: false }
+    }
 }
 impl SignupViewState {
     fn bump(&self, c: &AtomicU32) {
@@ -3851,6 +3877,165 @@ impl SignupViewState {
     }
     pub fn bounds_synced(&self) -> bool {
         self.bounds_synced.load(Ordering::SeqCst)
+    }
+    /// `cancelTouch:` (IDA 0x5f87c): animated dismiss, nil completion.
+    pub fn cancel_touch(&self) {
+        self.presented.store(false, Ordering::SeqCst);
+        self.bump(&self.dismisses);
+    }
+    pub fn dismiss_count(&self) -> u32 {
+        self.dismisses.load(Ordering::SeqCst)
+    }
+    /// `usernameDoneEdit:` (IDA 0x5f890): takes the username, blacks the
+    /// label, hides/disables the status; short nonempty reds with xmark
+    /// shown, long checkmarks and verifies.
+    pub fn username_done(&self, text: &str) {
+        *self.username.lock() = text.to_owned();
+        self.bump(&self.styled_buttons);
+        *self.username_status.lock() = FieldStatus::hidden();
+        if text.len() < 3 {
+            if !text.is_empty() {
+                *self.recommended_username.lock() = String::new();
+                self.bump(&self.styled_buttons);
+                *self.username_status.lock() =
+                    FieldStatus { image: "xmark".to_owned(), hidden: false, enabled: true };
+            }
+        } else {
+            *self.username_status.lock() = FieldStatus::badge("checkmark");
+            SIGNUP.check_username(text);
+            self.bump(&self.verify_calls);
+        }
+    }
+    pub fn username_status(&self) -> FieldStatus {
+        self.username_status.lock().clone()
+    }
+    /// `gotRecommendedUsernameResponse:` (IDA 0x5faa0): retains the
+    /// posted value as recommendedUsername.
+    pub fn got_recommended(&self, value: &str) {
+        *self.recommended_username.lock() = value.to_owned();
+    }
+    /// `gotUsernameVerifyResponse:` (IDA 0x5fb10): taken clears any
+    /// recommendation, suggests an alternate and reds; free greens; then
+    /// the status shows.
+    pub fn got_username_verify(&self, taken: bool) {
+        if taken {
+            *self.recommended_username.lock() = String::new();
+            SIGNUP.get_alternate(&self.username.lock().clone());
+            self.bump(&self.verify_calls);
+            self.username_block_fail();
+        } else {
+            self.username_block_ok();
+        }
+        self.username_block_show();
+    }
+    /// `__50-..._block_invoke` (IDA 0x5fc70): red label, xmark shown
+    /// with interaction.
+    pub fn username_block_fail(&self) {
+        self.bump(&self.styled_buttons);
+        *self.username_status.lock() =
+            FieldStatus { image: "xmark".to_owned(), hidden: false, enabled: true };
+    }
+    /// `__50-...327` (IDA 0x5fd50): green label.
+    pub fn username_block_ok(&self) {
+        self.bump(&self.styled_buttons);
+    }
+    /// `__50-...333` (IDA 0x5fdd8): status shown.
+    pub fn username_block_show(&self) {
+        self.username_status.lock().hidden = false;
+    }
+    /// `passwordDoneEdit:` (IDA 0x5fe10): takes the password, blacks the
+    /// label, hides/disables both statuses, clears verify; a nonempty
+    /// checkmarks it and verifies against the username unless it xmarks.
+    pub fn password_done(&self, text: &str) {
+        *self.password.lock() = text.to_owned();
+        self.bump(&self.styled_buttons);
+        *self.password_status.lock() = FieldStatus::hidden();
+        *self.password_verify.lock() = String::new();
+        *self.verify_status.lock() = FieldStatus::hidden();
+        if !text.is_empty() {
+            *self.password_status.lock() = FieldStatus::badge("checkmark");
+            let check_user = if self.username_status.lock().image == "xmark" {
+                String::new()
+            } else {
+                self.username.lock().clone()
+            };
+            SIGNUP.check_password(text, &check_user);
+            self.bump(&self.verify_calls);
+        }
+    }
+    pub fn password_status(&self) -> FieldStatus {
+        self.password_status.lock().clone()
+    }
+    /// `gotPasswordVerifyResponse:` (IDA 0x60010): success greens, failure
+    /// reds, then the status shows.
+    pub fn got_password_verify(&self, valid: bool) {
+        if valid {
+            self.password_block_ok();
+        } else {
+            self.password_block_fail();
+        }
+        self.password_block_show();
+    }
+    /// `__50-..._block_invoke` (IDA 0x60130): xmark with interaction,
+    /// red label.
+    pub fn password_block_fail(&self) {
+        self.bump(&self.styled_buttons);
+        *self.password_status.lock() =
+            FieldStatus { image: "xmark".to_owned(), hidden: false, enabled: true };
+    }
+    /// `__50-...348` (IDA 0x601f8): green label.
+    pub fn password_block_ok(&self) {
+        self.bump(&self.styled_buttons);
+    }
+    /// `__50-...352` (IDA 0x60280): status shown.
+    pub fn password_block_show(&self) {
+        self.password_status.lock().hidden = false;
+    }
+    /// `verifyDoneEdit:` (IDA 0x602b8): takes the verify text, blacks the
+    /// label; a nonempty checkmarks it, greens on passwordsMatch else reds
+    /// with xmark+enabled, shows the status and advances to gender.
+    pub fn verify_done(&self, text: &str) {
+        *self.password_verify.lock() = text.to_owned();
+        self.bump(&self.styled_buttons);
+        *self.verify_status.lock() = FieldStatus::hidden();
+        if !text.is_empty() {
+            *self.verify_status.lock() = FieldStatus::badge("checkmark");
+            if SIGNUP.passwords_match(&self.password.lock().clone(), text) {
+                self.bump(&self.styled_buttons);
+            } else {
+                self.bump(&self.styled_buttons);
+                *self.verify_status.lock() =
+                    FieldStatus { image: "xmark".to_owned(), hidden: false, enabled: true };
+            }
+            *self.verify_status.lock() = FieldStatus {
+                hidden: false,
+                ..self.verify_status.lock().clone()
+            };
+            self.gender_touch_up();
+        }
+    }
+    pub fn verify_status(&self) -> FieldStatus {
+        self.verify_status.lock().clone()
+    }
+    pub fn verify_call_count(&self) -> u32 {
+        self.verify_calls.load(Ordering::SeqCst)
+    }
+    /// `signupTouchUp:` (IDA 0x604f8): disables cancel + signup, shows
+    /// the signing-up view, then `doSignUp:...` with the form fields.
+    /// Returns the posted response.
+    pub fn signup_touch_up(&self) -> String {
+        self.signup_enabled.store(false, Ordering::SeqCst);
+        self.signing_up_visible.store(true, Ordering::SeqCst);
+        let user = self.username.lock().clone();
+        let pass = self.password.lock().clone();
+        let verify = self.password_verify.lock().clone();
+        let birth = self.birth_string.lock().clone();
+        let gender = self.gender.load(Ordering::SeqCst);
+        let email = self.email.lock().clone();
+        SIGNUP.do_signup(&user, &pass, &verify, &birth, gender, &email)
+    }
+    pub fn signing_up_visible(&self) -> bool {
+        self.signing_up_visible.load(Ordering::SeqCst)
     }
 }
 static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
@@ -10209,112 +10394,155 @@ pub fn stub_5f7f8() {
 // 0x5f87c — -[SignupViewController cancelTouch:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController cancelTouch:]")]
-pub fn stub_5f87c() -> ! {
-    todo!("0x5f87c -[SignupViewController cancelTouch:]")
+pub fn stub_5f87c() {
+    // IDA 0x5f87c `cancelTouch:`: animated dismiss, nil completion
+    // (0x5f88c).
+    SIGNUPVC.cancel_touch();
 }
 
 
 // 0x5f890 — -[SignupViewController usernameDoneEdit:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController usernameDoneEdit:]")]
-pub fn stub_5f890() -> ! {
-    todo!("0x5f890 -[SignupViewController usernameDoneEdit:]")
+pub fn stub_5f890(text: &str) {
+    // IDA 0x5f890 `usernameDoneEdit:`: takes the username (0x5f8b6), blacks
+    // the label, hides/disables the status (0x5f8e4..0x5f954); short
+    // nonempty reds with xmark shown (0x5f97e..0x5f9a6), long checkmarks
+    // and verifies (0x5f994..0x5f9de).
+    SIGNUPVC.username_done(text);
 }
 
 
 // 0x5faa0 — -[SignupViewController gotRecommendedUsernameResponse:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController gotRecommendedUsernameResponse:]")]
-pub fn stub_5faa0() -> ! {
-    todo!("0x5faa0 -[SignupViewController gotRecommendedUsernameResponse:]")
+pub fn stub_5faa0(value: &str) {
+    // IDA 0x5faa0 `gotRecommendedUsernameResponse:`: retains the posted
+    // recommend-notification value as recommendedUsername (0x5fab8..0x5fb0a).
+    SIGNUPVC.got_recommended(value);
 }
 
 
 // 0x5fb10 — -[SignupViewController gotUsernameVerifyResponse:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController gotUsernameVerifyResponse:]")]
-pub fn stub_5fb10() -> ! {
-    todo!("0x5fb10 -[SignupViewController gotUsernameVerifyResponse:]")
+pub fn stub_5fb10(taken: bool) {
+    // IDA 0x5fb10 `gotUsernameVerifyResponse:`: taken clears any
+    // recommendation, suggests an alternate and runs the __50 (red)
+    // block (0x5fb66..0x5fbd6); free runs the 327 (green) block
+    // (0x5fc0a..0x5fc18); then the 333 (show) block (0x5fc54..0x5fc68),
+    // all via `dispatch_async` (inline).
+    SIGNUPVC.got_username_verify(taken);
 }
 
 
 // 0x5fc70 — ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke")]
-pub fn stub_5fc70() -> ! {
-    todo!("0x5fc70 ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke")
+pub fn stub_5fc70() {
+    // IDA 0x5fc70 `__50-..._block_invoke` (via async, inline): reds the
+    // username label, xmarks the status shown with interaction
+    // (0x5fc7c..0x5fd1c+shim).
+    SIGNUPVC.username_block_fail();
 }
 
 
 // 0x5fd50 — ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke327
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke327")]
-pub fn stub_5fd50() -> ! {
-    todo!("0x5fd50 ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke327")
+pub fn stub_5fd50() {
+    // IDA 0x5fd50 `__50-...327` (via async, inline): greens the username
+    // label.
+    SIGNUPVC.username_block_ok();
 }
 
 
 // 0x5fdd8 — ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke333
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke333")]
-pub fn stub_5fdd8() -> ! {
-    todo!("0x5fdd8 ___50-[SignupViewController gotUsernameVerifyResponse:]_block_invoke333")
+pub fn stub_5fdd8() {
+    // IDA 0x5fdd8 `__50-...333` (via async, inline): shows the username
+    // status (setHidden:0).
+    SIGNUPVC.username_block_show();
 }
 
 
 // 0x5fe10 — -[SignupViewController passwordDoneEdit:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController passwordDoneEdit:]")]
-pub fn stub_5fe10() -> ! {
-    todo!("0x5fe10 -[SignupViewController passwordDoneEdit:]")
+pub fn stub_5fe10(text: &str) {
+    // IDA 0x5fe10 `passwordDoneEdit:`: takes the password (0x5fe34), blacks
+    // the label, hides/disables both statuses, clears verify (0x5fe5e..0x5ff02);
+    // a nonempty checkmarks it (0x5ff24..0x5ff6a) and verifies against the
+    // username unless it xmarks (0x5ff88..0x6000a).
+    SIGNUPVC.password_done(text);
 }
 
 
 // 0x60010 — -[SignupViewController gotPasswordVerifyResponse:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController gotPasswordVerifyResponse:]")]
-pub fn stub_60010() -> ! {
-    todo!("0x60010 -[SignupViewController gotPasswordVerifyResponse:]")
+pub fn stub_60010(valid: bool) {
+    // IDA 0x60010 `gotPasswordVerifyResponse:`: success runs the 348
+    // (green) block (0x60084..0x60092), failure the __50 (red) block
+    // (0x600c8..0x600d8), then the 352 (show) block (0x60112..0x60126),
+    // all via `dispatch_async` (inline).
+    SIGNUPVC.got_password_verify(valid);
 }
 
 
 // 0x60130 — ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke")]
-pub fn stub_60130() -> ! {
-    todo!("0x60130 ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke")
+pub fn stub_60130() {
+    // IDA 0x60130 `__50-..._block_invoke` (via async, inline): xmark on
+    // the password status with interaction, reds the label (0x6015c..0x601ca+).
+    SIGNUPVC.password_block_fail();
 }
 
 
 // 0x601f8 — ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke348
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke348")]
-pub fn stub_601f8() -> ! {
-    todo!("0x601f8 ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke348")
+pub fn stub_601f8() {
+    // IDA 0x601f8 `__50-...348` (via async, inline): greens the password
+    // label.
+    SIGNUPVC.password_block_ok();
 }
 
 
 // 0x60280 — ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke352
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke352")]
-pub fn stub_60280() -> ! {
-    todo!("0x60280 ___50-[SignupViewController gotPasswordVerifyResponse:]_block_invoke352")
+pub fn stub_60280() {
+    // IDA 0x60280 `__50-...352` (via async, inline): shows the password
+    // status (setHidden:0).
+    SIGNUPVC.password_block_show();
 }
 
 
 // 0x602b8 — -[SignupViewController verifyDoneEdit:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController verifyDoneEdit:]")]
-pub fn stub_602b8() -> ! {
-    todo!("0x602b8 -[SignupViewController verifyDoneEdit:]")
+pub fn stub_602b8(text: &str) {
+    // IDA 0x602b8 `verifyDoneEdit:`: takes the verify text (0x602de),
+    // hides/disables the status (0x60318..0x60330), blacks the label
+    // (0x60348..0x6037a); a nonempty checkmarks it (0x603b4..0x603e2),
+    // greens on passwordsMatch else reds with xmark+enabled
+    // (0x60416..0x604c8), shows the status (0x604d4) and advances to the
+    // gender step (0x604f2).
+    SIGNUPVC.verify_done(text);
 }
 
 
 // 0x604f8 — -[SignupViewController signupTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController signupTouchUp:]")]
-pub fn stub_604f8() -> ! {
-    todo!("0x604f8 -[SignupViewController signupTouchUp:]")
+pub fn stub_604f8() -> String {
+    // IDA 0x604f8 `signupTouchUp:`: disables cancel + signup (0x6051e..),
+    // shows the signing-up view (0x60554), then `doSignUp:...` with the
+    // form fields (0x605d8). Returns the posted response.
+    SIGNUPVC.signup_touch_up()
 }
 
 
