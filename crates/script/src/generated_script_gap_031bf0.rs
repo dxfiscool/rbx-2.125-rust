@@ -658,173 +658,378 @@ pub fn stub_0x34b70() {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_0x34e30() -> ! {
-    todo!("0x34e30 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x34e30() {
+    // IDA 0x34e30: `basic_vtable0<void>::assign_to<bind_t<PlaceLauncher,...>>
+    // (function_obj_tag)` copies the bound triple and forwards to
+    // `assign_functor` (0x34ec0). Buffer ops fold into `Box<dyn Fn>` —
+    // carrier no-op.
 }
 
 // 0x350ec — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x350ec() -> ! {
-    todo!("0x350ec void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x350ec() {
+    // IDA 0x350ec: `basic_vtable0<void>::assign_functor<bind_t<PlaceLauncher,
+    // ...>>` heap-allocates the bound copy (`operator new(0x14)` at 0x35114,
+    // copies at 0x3511a..0x3518c) and stores it (0x35192). Buffer ops fold
+    // into `Box<dyn Fn>` — carrier no-op.
 }
 
 // 0x35200 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0x35200() -> ! {
-    todo!("0x35200 void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")
+pub fn stub_0x35200(
+    place: &str,
+    auth: &str,
+    script: &str,
+    invoke: &mut dyn FnMut(&str, &str, &str),
+) {
+    // IDA 0x35200: `list4<PlaceLauncher,string x3>::operator()` copies the
+    // three bound strings (0x35230..0x35276) and calls `teleportImpl`
+    // (0x35288), releasing the copies after (0x35298..). MODEL: the copies
+    // are borrows; the dispatch is a caller callback.
+    invoke(place, auth, script);
 }
 
 // 0x35438 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0x35438() -> ! {
-    todo!("0x35438 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x35438() {
+    // IDA 0x35438: `functor_manager<bind_t<PlaceLauncher,...>>::manager`
+    // switch: clone (0x354ac), move (0x3550e), destroy (0x35516), type
+    // check (0x35550), typeinfo (default). Closure-buffer ops fold into
+    // `Box<dyn Fn>` — carrier no-op.
 }
 
+/// `__GLOBAL__I_a_8` one-shot latch (IDA 0x355c8): boost categories,
+/// `ios_base::Init`, exception statics, singleton pools, and the
+/// `FactoryProduct` creators run once behind `__cxa_atexit` guards.
+static GLOBAL_A8_INIT: LazyLock<u32> = LazyLock::new(|| 1);
 // 0x355c8 — __GLOBAL__I_a_8
 #[doc(alias = "global constructor keyed to_a_8")]
 #[doc(alias = "__GLOBAL__I_a_8")]
-pub fn stub_0x355c8() -> ! {
-    todo!("0x355c8 global constructor keyed to_a_8")
+pub fn stub_0x355c8() -> u32 {
+    // IDA 0x355c8: static-init ctor keyed to `a_8` — `generic_category` /
+    // `system_category` (0x355cc..0x355e6), `ios_base::Init` (0x355ea),
+    // `exception_ptr` statics, `singleton_pool` pools (XmlAttribute,
+    // XmlElement, FWInstance, OnDemandInstance, OnDemandPVInstance), and
+    // `FactoryProduct` creators (ScriptContext, TaskSchedulerSettings,
+    // Camera, UserInputService), each guarded (0x35618..0x3585a).
+    // MODEL: runtime statics self-initialize; the once latch is observed.
+    *GLOBAL_A8_INIT
 }
 
+/// `Reachability` observable state (IDA 0x3588c..0x35ce4, Reachability.m).
+/// System objects (`SCNetworkReachabilityRef`, run loop, autorelease pool)
+/// live on the host; only the observable latches are modeled here.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct ReachabilityState {
+    /// Probed target: hostname or dotted-quad address (IDA 0x35a00/0x35a80).
+    pub target: String,
+    /// `localWiFiRef` ivar (IDA 0x35a78/0x35b96): routes status through
+    /// `localWiFiStatusForFlags:` instead of `networkStatusForFlags:`.
+    pub local_wifi_ref: bool,
+    /// Notifier scheduled on the run loop (IDA 0x3588c/0x35970).
+    pub notifier_running: bool,
+    /// `kNetworkReachabilityChangedNotification` posts via
+    /// `ReachabilityCallback` (IDA 0x358ec).
+    pub notifications_posted: u32,
+}
+/// `-[Reachability networkStatusForFlags:]` outcomes (IDA 0x35c6c).
+pub const REACHABILITY_NOT_REACHABLE: u32 = 0;
+pub const REACHABILITY_VIA_WIFI: u32 = 1;
+pub const REACHABILITY_VIA_WWAN: u32 = 2;
+/// `kNetworkReachabilityChangedNotification` name posted by
+/// `ReachabilityCallback` (IDA 0x358ec).
+pub const REACHABILITY_CHANGED_NOTIFICATION: &str = "kNetworkReachabilityChangedNotification";
 // 0x3588c — -[Reachability startNotifier]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability startNotifier]")]
-pub fn stub_0x3588c() -> ! {
-    todo!("0x3588c -[Reachability startNotifier]")
+pub fn stub_0x3588c(
+    state: &mut ReachabilityState,
+    callback_ok: bool,
+    schedule_ok: bool,
+) -> bool {
+    // IDA 0x3588c: `startNotifier` installs `ReachabilityCallback` via
+    // `SCNetworkReachabilitySetCallback` (0x358ba) and schedules on the
+    // current run loop (0x358ce); returns nonzero only if both succeed
+    // (0x358e6). MODEL: host installs fold into the caller; the latch and
+    // the combined outcome are observed.
+    state.notifier_running = callback_ok && schedule_ok;
+    state.notifier_running
 }
 
 // 0x358ec — _ReachabilityCallback
 // type: id __fastcall(int, int, int)
 #[doc(alias = "_ReachabilityCallback")]
-pub fn stub_0x358ec() -> ! {
-    todo!("0x358ec _ReachabilityCallback")
+pub fn stub_0x358ec(state: &mut ReachabilityState) -> &'static str {
+    // IDA 0x358ec: `ReachabilityCallback` drains into an autorelease pool
+    // (0x3590a..0x3591e) and posts `kNetworkReachabilityChangedNotification`
+    // (0x35938..0x35954). MODEL: pool/release fold into the host; the post
+    // is counted and the notification name observed.
+    state.notifications_posted += 1;
+    REACHABILITY_CHANGED_NOTIFICATION
 }
 
 // 0x35970 — -[Reachability stopNotifier]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability stopNotifier]")]
-pub fn stub_0x35970() -> ! {
-    todo!("0x35970 -[Reachability stopNotifier]")
+pub fn stub_0x35970(state: &mut ReachabilityState) {
+    // IDA 0x35970: `stopNotifier` unschedules from the run loop when the
+    // ref is non-null (0x35984..0x359a4). MODEL: the ref folds into host
+    // ownership; the latch always clears.
+    state.notifier_running = false;
 }
 
 // 0x359a8 — -[Reachability dealloc]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability dealloc]")]
-pub fn stub_0x359a8() -> ! {
-    todo!("0x359a8 -[Reachability dealloc]")
+pub fn stub_0x359a8(state: &mut ReachabilityState) {
+    // IDA 0x359a8: `dealloc` runs `stopNotifier` (0x359be), `CFRelease`s
+    // the ref when non-null (0x359ce..0x359d4), then super `dealloc`
+    // (0x359ec..0x359f6). MODEL: releases fold into host ownership; the
+    // state resets to default.
+    *state = ReachabilityState::default();
 }
 
 // 0x35a00 — +[Reachability reachabilityWithHostName:]
 // type: id __cdecl(id, SEL, id)
 #[doc(alias = "+[Reachability reachabilityWithHostName:]")]
-pub fn stub_0x35a00() -> ! {
-    todo!("0x35a00 +[Reachability reachabilityWithHostName:]")
+pub fn stub_0x35a00(host: &str, create_ok: bool) -> Option<ReachabilityState> {
+    // IDA 0x35a00: `reachabilityWithHostName:` takes the UTF-8 hostname
+    // (0x35a14), creates the ref (0x35a22), and on success stores it with
+    // `localWiFiRef = 0` (0x35a72..0x35a78); failure returns null
+    // (0x35a24). MODEL: the ref folds into host ownership; `None` is the
+    // null answer.
+    create_ok.then(|| ReachabilityState {
+        target: host.to_owned(),
+        ..ReachabilityState::default()
+    })
 }
 
 // 0x35a80 — +[Reachability reachabilityWithAddress:]
 // type: id __cdecl(id, SEL, const sockaddr_in *)
 #[doc(alias = "+[Reachability reachabilityWithAddress:]")]
-pub fn stub_0x35a80() -> ! {
-    todo!("0x35a80 +[Reachability reachabilityWithAddress:]")
+pub fn stub_0x35a80(octets: [u8; 4], create_ok: bool) -> Option<ReachabilityState> {
+    // IDA 0x35a80: `reachabilityWithAddress:` creates the ref from the
+    // `sockaddr` (0x35a9a) and on success stores it with `localWiFiRef = 0`
+    // (0x35aee..0x35af4); failure returns null (0x35a9c). MODEL: the
+    // sockaddr folds into a dotted-quad target string.
+    create_ok.then(|| ReachabilityState {
+        target: format!("{}.{}.{}.{}", octets[0], octets[1], octets[2], octets[3]),
+        ..ReachabilityState::default()
+    })
 }
 
 // 0x35af8 — +[Reachability reachabilityForInternetConnection]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForInternetConnection]")]
-pub fn stub_0x35af8() -> ! {
-    todo!("0x35af8 +[Reachability reachabilityForInternetConnection]")
+pub fn stub_0x35af8(create_ok: bool) -> Option<ReachabilityState> {
+    // IDA 0x35af8: `reachabilityForInternetConnection` builds a zeroed
+    // `sockaddr` (0x35b22) and forwards to `reachabilityWithAddress:`
+    // (0x35b3e).
+    stub_0x35a80([0, 0, 0, 0], create_ok)
 }
 
 // 0x35b44 — +[Reachability reachabilityForLocalWiFi]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForLocalWiFi]")]
-pub fn stub_0x35b44() -> ! {
-    todo!("0x35b44 +[Reachability reachabilityForLocalWiFi]")
+pub fn stub_0x35b44(create_ok: bool) -> Option<ReachabilityState> {
+    // IDA 0x35b44: `reachabilityForLocalWiFi` builds the link-local
+    // `sockaddr` (0x35b6e..0x35b80), forwards to `reachabilityWithAddress:`
+    // (0x35b82), and sets `localWiFiRef = 1` (0x35b96).
+    stub_0x35a80([169, 254, 0, 0], create_ok).map(|mut state| {
+        state.local_wifi_ref = true;
+        state
+    })
 }
 
 // 0x35ba8 — -[Reachability localWiFiStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)
 #[doc(alias = "-[Reachability localWiFiStatusForFlags:]")]
-pub fn stub_0x35ba8() -> ! {
-    todo!("0x35ba8 -[Reachability localWiFiStatusForFlags:]")
+pub fn stub_0x35ba8(flags: u32) -> bool {
+    // IDA 0x35ba8: `localWiFiStatusForFlags:` logs the flags (0x35bba) and
+    // returns `(flags & 0x20002) == 131074` (0x35bcc), i.e. reachable
+    // (bit 1) and direct (bit 17) together.
+    flags & 0x20002 == 0x20002
 }
 
 // 0x35bd0 — _PrintReachabilityFlags
 #[doc(alias = "_PrintReachabilityFlags")]
-pub fn stub_0x35bd0() -> ! {
-    todo!("0x35bd0 _PrintReachabilityFlags")
+pub fn stub_0x35bd0(flags: u32) -> String {
+    // IDA 0x35bd0: `PrintReachabilityFlags` maps each flag bit to a letter
+    // (`-` when clear) and `NSLog`s the code with the caller label
+    // (0x35c64): `d` = 0x20000, `l` = 0x10000, `D` = 0x20, `i` = 0x10,
+    // `C` = 8, `c` = 4, `W` = 0x40000, `R` = 2, `t` = 1. MODEL: the log
+    // sink folds into the host; the code is returned in `NSLog` arg order.
+    const BITS: [(u32, char); 9] = [
+        (0x40000, 'W'),
+        (0x2, 'R'),
+        (0x1, 't'),
+        (0x4, 'c'),
+        (0x8, 'C'),
+        (0x10, 'i'),
+        (0x20, 'D'),
+        (0x10000, 'l'),
+        (0x20000, 'd'),
+    ];
+    BITS.iter()
+        .map(|(bit, letter)| if flags & bit != 0 { *letter } else { '-' })
+        .collect()
 }
 
 // 0x35c6c — -[Reachability networkStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)
 #[doc(alias = "-[Reachability networkStatusForFlags:]")]
-pub fn stub_0x35c6c() -> ! {
-    todo!("0x35c6c -[Reachability networkStatusForFlags:]")
+pub fn stub_0x35c6c(flags: u32) -> u32 {
+    // IDA 0x35c6c: `networkStatusForFlags:` logs the flags (0x35c7e),
+    // returns 0 when unreachable (bit 1 clear, 0x35c88), 2 on WWAN
+    // (0x40000, 0x35cae), else 1 when no connection is required (bit 2
+    // clear) or the link is direct without intervention (0x28 set with
+    // bit 4 clear), else 0 (0x35c94..0x35cb2).
+    if flags & 0x2 == 0 {
+        return REACHABILITY_NOT_REACHABLE;
+    }
+    if flags & 0x40000 != 0 {
+        return REACHABILITY_VIA_WWAN;
+    }
+    let direct = flags & 0x28 != 0;
+    let mut wifi = flags & 0x4 == 0;
+    if direct && flags & 0x10 == 0 {
+        wifi = true;
+    }
+    if wifi { REACHABILITY_VIA_WIFI } else { REACHABILITY_NOT_REACHABLE }
 }
 
 // 0x35cb8 — -[Reachability connectionRequired]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability connectionRequired]")]
-pub fn stub_0x35cb8() -> ! {
-    todo!("0x35cb8 -[Reachability connectionRequired]")
+pub fn stub_0x35cb8(flags: u32, get_ok: bool) -> bool {
+    // IDA 0x35cb8: `connectionRequired` reads the flags (0x35cd2) and
+    // answers bit 2 (0x35cdc); a failed read answers 0 (0x35cd4).
+    get_ok && flags & 0x4 != 0
 }
 
 // 0x35ce4 — -[Reachability currentReachabilityStatus]
 // type: int __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability currentReachabilityStatus]")]
-pub fn stub_0x35ce4() -> ! {
-    todo!("0x35ce4 -[Reachability currentReachabilityStatus]")
+pub fn stub_0x35ce4(state: &ReachabilityState, flags: u32, get_ok: bool) -> u32 {
+    // IDA 0x35ce4: `currentReachabilityStatus` reads the flags (0x35d00),
+    // answers 0 on failure (0x35d02), else dispatches on `localWiFiRef`
+    // to `localWiFiStatusForFlags:` (0x35d20) or `networkStatusForFlags:`
+    // (0x35d2c).
+    if !get_ok {
+        return REACHABILITY_NOT_REACHABLE;
+    }
+    if state.local_wifi_ref {
+        u32::from(stub_0x35ba8(flags))
+    } else {
+        stub_0x35c6c(flags)
+    }
 }
 
+/// `RobloxAlert` queued request (IDA 0x35d3c/0x35e90, RobloxAlert.m).
+/// The `dispatch_async` to the main queue folds into the caller; the
+/// request is observed here.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct AlertRequest {
+    pub message: String,
+    pub has_delegate: bool,
+}
+/// `UIAlertView` built by the alert blocks (IDA 0x35d8c/0x35ee4).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct AlertView {
+    /// Localized title (`RobloxWord`, 0x35f5e).
+    pub title: String,
+    pub message: String,
+    /// Cancel button (`OkWord` without delegate, `CancelWord` with).
+    pub cancel: String,
+    /// `OkWord` other button, present only with a delegate (0x35fcc).
+    pub other: Option<String>,
+    pub has_delegate: bool,
+}
 // 0x35d3c — +[RobloxAlert RobloxAlertWithMessage:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessage:]")]
-pub fn stub_0x35d3c() -> ! {
-    todo!("0x35d3c +[RobloxAlert RobloxAlertWithMessage:]")
+pub fn stub_0x35d3c(message: &str) -> AlertRequest {
+    // IDA 0x35d3c: `RobloxAlertWithMessage:` captures the message in a
+    // stack block (0x35d70..0x35d80) and `dispatch_async`s it to the main
+    // queue (0x35d82). MODEL: the queue hop folds into the caller; the
+    // queued request is observed.
+    AlertRequest { message: message.to_owned(), has_delegate: false }
 }
 
 // 0x35d8c — ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
 #[doc(alias = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")]
-pub fn stub_0x35d8c() -> ! {
-    todo!("0x35d8c ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")
+pub fn stub_0x35d8c(message: &str) -> AlertView {
+    // IDA 0x35d8c: the `RobloxAlertWithMessage:` block builds a
+    // `UIAlertView` with the localized title (0x35dd2..0x35e06), the
+    // message, no delegate, and the `OkWord` cancel button (0x35e0e..
+    // 0x35e4c), shows it (0x35e5c), and releases it. MODEL: alloc/show/
+    // release fold into host ownership; the shown view is observed.
+    AlertView {
+        title: "Roblox".to_string(),
+        message: message.to_owned(),
+        cancel: "OK".to_string(),
+        other: None,
+        has_delegate: false,
+    }
 }
 
 // 0x35e7c — ___copy_helper_block__5
 #[doc(alias = "___copy_helper_block__5")]
-pub fn stub_0x35e7c() -> ! {
-    todo!("0x35e7c ___copy_helper_block__5")
+pub fn stub_0x35e7c() {
+    // IDA 0x35e7c: `__copy_helper_block__5` retains the captured message
+    // (`_Block_object_assign`, 0x35e82). Block retain glue; no explicit
+    // body.
 }
 
 // 0x35e88 — ___destroy_helper_block__5
 #[doc(alias = "___destroy_helper_block__5")]
-pub fn stub_0x35e88() -> ! {
-    todo!("0x35e88 ___destroy_helper_block__5")
+pub fn stub_0x35e88() {
+    // IDA 0x35e88: `__destroy_helper_block__5` releases the captured
+    // message (`_Block_object_dispose`, 0x35e8c). Block release glue; no
+    // explicit body.
 }
 
 // 0x35e90 — +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")]
-pub fn stub_0x35e90() -> ! {
-    todo!("0x35e90 +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")
+pub fn stub_0x35e90(message: &str, has_delegate: bool) -> AlertRequest {
+    // IDA 0x35e90: `RobloxAlertWithMessageAndDelegate:Delegate:` captures
+    // message + delegate in a stack block (0x35ec4..0x35eda) and
+    // `dispatch_async`s it to the main queue (0x35edc). MODEL: the queue
+    // hop folds into the caller; the queued request is observed.
+    AlertRequest { message: message.to_owned(), has_delegate }
 }
 
 // 0x35ee4 — ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
 #[doc(alias = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")]
-pub fn stub_0x35ee4() -> ! {
-    todo!("0x35ee4 ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")
+pub fn stub_0x35ee4(message: &str, has_delegate: bool) -> AlertView {
+    // IDA 0x35ee4: the delegate block builds a `UIAlertView` with the
+    // `RobloxWord` title (0x35f5e), the message (0x35f64), the delegate
+    // (0x35f6a), the `CancelWord` cancel button (0x35f88) and the `OkWord`
+    // other button (0x35fa6..0x35fcc), shows it (0x35fdc), and releases
+    // it. MODEL: alloc/show/release fold into host ownership; the shown
+    // view is observed.
+    AlertView {
+        title: "Roblox".to_string(),
+        message: message.to_owned(),
+        cancel: "Cancel".to_string(),
+        other: Some("OK".to_string()),
+        has_delegate,
+    }
 }
 
 // 0x35ffc — ___copy_helper_block_19
 #[doc(alias = "___copy_helper_block_19")]
-pub fn stub_0x35ffc() -> ! {
-    todo!("0x35ffc ___copy_helper_block_19")
+pub fn stub_0x35ffc() {
+    // IDA 0x35ffc: `__copy_helper_block_19` retains both captures
+    // (message at 0x3600c, delegate at 0x3601c). Block retain glue; no
+    // explicit body.
 }
 
 // 0x36020 — ___destroy_helper_block_20
@@ -1197,5 +1402,106 @@ mod stream_teleport_batch_tests {
         stub_0x345b0();
         stub_0x34870();
         stub_0x34b70();
+    }
+}
+
+#[cfg(test)]
+mod reachability_alert_batch_tests {
+    use super::*;
+
+    #[test]
+    fn placelauncher_tail_carriers_and_global_init() {
+        stub_0x34e30();
+        stub_0x350ec();
+        stub_0x35438();
+        let mut seen = Vec::new();
+        stub_0x35200("p", "a", "s", &mut |p, a, s| {
+            seen.push((p.to_owned(), a.to_owned(), s.to_owned()));
+        });
+        assert_eq!(seen, [("p".to_string(), "a".to_string(), "s".to_string())]);
+        assert_eq!(stub_0x355c8(), 1);
+        assert_eq!(stub_0x355c8(), 1);
+    }
+
+    #[test]
+    fn notifier_lifecycle() {
+        let mut state = ReachabilityState::default();
+        assert!(stub_0x3588c(&mut state, true, true));
+        assert!(state.notifier_running);
+        assert!(!stub_0x3588c(&mut state, true, false));
+        assert!(!state.notifier_running);
+        stub_0x3588c(&mut state, true, true);
+        assert_eq!(stub_0x358ec(&mut state), REACHABILITY_CHANGED_NOTIFICATION);
+        assert_eq!(state.notifications_posted, 1);
+        stub_0x35970(&mut state);
+        assert!(!state.notifier_running);
+        stub_0x359a8(&mut state);
+        assert_eq!(state, ReachabilityState::default());
+    }
+
+    #[test]
+    fn constructors_chain() {
+        assert!(stub_0x35a00("apple.com", false).is_none());
+        let host = stub_0x35a00("apple.com", true).unwrap();
+        assert_eq!(host.target, "apple.com");
+        assert!(!host.local_wifi_ref);
+        assert!(stub_0x35a80([1, 2, 3, 4], false).is_none());
+        let addr = stub_0x35a80([10, 0, 0, 1], true).unwrap();
+        assert_eq!(addr.target, "10.0.0.1");
+        let internet = stub_0x35af8(true).unwrap();
+        assert_eq!(internet.target, "0.0.0.0");
+        assert!(!internet.local_wifi_ref);
+        assert!(stub_0x35af8(false).is_none());
+        let wifi = stub_0x35b44(true).unwrap();
+        assert!(wifi.local_wifi_ref);
+        assert!(stub_0x35b44(false).is_none());
+    }
+
+    #[test]
+    fn flag_predicates_match_ida() {
+        assert_eq!(stub_0x35bd0(0), "---------");
+        assert_eq!(stub_0x35bd0(0x20002), "-R------d");
+        assert_eq!(stub_0x35bd0(0xFFFFFFFF), "WRtcCiDld");
+        assert!(stub_0x35ba8(0x20002));
+        assert!(!stub_0x35ba8(0x2));
+        assert!(!stub_0x35ba8(0x20000));
+        assert_eq!(stub_0x35c6c(0), REACHABILITY_NOT_REACHABLE);
+        assert_eq!(stub_0x35c6c(0x2), REACHABILITY_VIA_WIFI);
+        assert_eq!(stub_0x35c6c(0x40002), REACHABILITY_VIA_WWAN);
+        assert_eq!(stub_0x35c6c(0x2 | 0x4), REACHABILITY_NOT_REACHABLE);
+        assert!(!stub_0x35cb8(0x4, false));
+        assert!(stub_0x35cb8(0x4, true));
+        assert!(!stub_0x35cb8(0x0, true));
+    }
+
+    #[test]
+    fn current_status_dispatches_on_wifi_ref() {
+        let plain = ReachabilityState::default();
+        let wifi = ReachabilityState { local_wifi_ref: true, ..ReachabilityState::default() };
+        assert_eq!(stub_0x35ce4(&plain, 0x2, false), REACHABILITY_NOT_REACHABLE);
+        assert_eq!(stub_0x35ce4(&plain, 0x2, true), REACHABILITY_VIA_WIFI);
+        assert_eq!(stub_0x35ce4(&wifi, 0x20002, true), 1);
+        assert_eq!(stub_0x35ce4(&wifi, 0x2, true), 0);
+    }
+
+    #[test]
+    fn alert_request_and_view_shapes() {
+        let req = stub_0x35d3c("hello");
+        assert_eq!(req.message, "hello");
+        assert!(!req.has_delegate);
+        let view = stub_0x35d8c("hello");
+        assert_eq!(view.title, "Roblox");
+        assert_eq!(view.message, "hello");
+        assert_eq!(view.cancel, "OK");
+        assert_eq!(view.other, None);
+        stub_0x35e7c();
+        stub_0x35e88();
+        let dreq = stub_0x35e90("bye", true);
+        assert!(dreq.has_delegate);
+        let dview = stub_0x35ee4("bye", true);
+        assert_eq!(dview.cancel, "Cancel");
+        assert_eq!(dview.other, Some("OK".to_string()));
+        assert!(dview.has_delegate);
+        stub_0x35ffc();
     }
 }
