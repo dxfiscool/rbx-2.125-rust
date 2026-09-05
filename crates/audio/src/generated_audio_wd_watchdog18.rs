@@ -565,6 +565,74 @@ impl GuiButtonXAlignProp {
         }
     }
 }
+/// Float member selected by a `PropDescriptor<GuiTextButton, float>`'s
+/// member-pointer pair (same two-member layout as `TextBox`).
+#[derive(Debug, Clone, Copy)]
+pub enum GuiButtonFloatSlot {
+    TextTransparency,
+    TextStrokeTransparency,
+}
+/// `Color3` member selected by a `PropDescriptor<GuiTextButton, Color3>`'s
+/// member-pointer pair (same two-member layout as `TextBox`).
+#[derive(Debug, Clone, Copy)]
+pub enum GuiButtonColorSlot {
+    TextColor3,
+    TextStrokeColor3,
+}
+impl GuiTextButtonState {
+    pub fn float_slot(&self, slot: GuiButtonFloatSlot) -> f32 {
+        match slot {
+            GuiButtonFloatSlot::TextTransparency => self.text_transparency,
+            GuiButtonFloatSlot::TextStrokeTransparency => self.text_stroke_transparency,
+        }
+    }
+    pub fn color_slot(&self, slot: GuiButtonColorSlot) -> [f32; 3] {
+        match slot {
+            GuiButtonColorSlot::TextColor3 => self.text_color3,
+            GuiButtonColorSlot::TextStrokeColor3 => self.text_stroke_color3,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<GuiTextButton, float>` cutover
+/// (IDA 0x675fb8): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct GuiButtonFloatProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonFloatProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<GuiTextButton, Color3>` cutover
+/// (IDA 0x676150): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct GuiButtonColorProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonColorProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
