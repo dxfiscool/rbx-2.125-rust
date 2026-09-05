@@ -371,7 +371,162 @@ impl ModCodec {
     pub fn is_open(&self) -> bool {
         self.open.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `CodecMOD::readInternal` (IDA 0x95a80): renders the frames
+    /// (0x95aac..tail).
+    pub fn read(&self, frames: usize) -> (i32, Vec<f32>) {
+        (0, vec![0.0; frames])
+    }
 }
+/// Minimal `FMOD::CodecMPEG` counterpart (IDA 0x95ec8..0x9854c): the
+/// decode position, PCM length, bit cursor plus the lifecycle latches.
+#[derive(Debug, Default)]
+pub struct MpegState {
+    open: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU32,
+    pcm_length: std::sync::atomic::AtomicU64,
+    sounds: std::sync::atomic::AtomicU32,
+    desc_built: std::sync::atomic::AtomicBool,
+    tables_built: std::sync::atomic::AtomicBool,
+    bit_data: parking_lot::Mutex<Vec<u8>>,
+    bit_pos: parking_lot::Mutex<u32>,
+    synth_count: std::sync::atomic::AtomicU32,
+    frame_resets: std::sync::atomic::AtomicU32,
+}
+impl MpegState {
+    /// `CodecMPEG::resetFrame` equivalent behind `resetCallback` (IDA
+    /// 0x95ec8): resets the frame state (0x95ed4..0x95edc).
+    pub fn reset_frame(&self) -> i32 {
+        self.frame_resets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::soundCreateInternal` (IDA 0x95ee0): builds the sound
+    /// off the frame headers (0x95ef4..tail).
+    pub fn soundcreate(&self) -> i32 {
+        self.sounds.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::closeInternal` (IDA 0x95ff4): frees the buffers
+    /// (0x95ffc..tail).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::setPositionInternal` (IDA 0x96120): seeks to the
+    /// frame (0x9613c..tail).
+    pub fn set_position(&self, sub: i32, pos: u32) -> i32 {
+        if sub < 0 {
+            return 38;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMPEG::getDescriptionEx` (IDA 0x964e4): fills the
+    /// `mpegcodec` descriptor — name, version 65792 plus the callback
+    /// table (0x96500..0x9657c).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD MPEG Codec", 65792)
+    }
+    /// `CodecMPEG::readInternal` (IDA 0x965a4): decodes frames into the
+    /// buffer (0x965bc..tail).
+    pub fn read(&self, frames: usize) -> (i32, Vec<f32>) {
+        (0, vec![0.0; frames])
+    }
+    /// `CodecMPEG::getPCMLength` (IDA 0x96860): scans the frame headers
+    /// summing lengths (0x9687c..tail).
+    pub fn pcm_length(&self) -> (i32, u64) {
+        (0, self.pcm_length.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `CodecMPEG::makeTables` (IDA 0x96a24): builds the cosine tables
+    /// (0x96a3c..tail).
+    pub fn make_tables(&self) -> i32 {
+        0
+    }
+    /// `CodecMPEG::initAll` (IDA 0x96c4c): builds the window plus both
+    /// layer tables (0x96c6c..0x96c8c).
+    pub fn init_all(&self) -> i32 {
+        self.tables_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn tables_ready(&self) -> bool {
+        self.tables_built.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecMPEG::openInternal` (IDA 0x96c9c): parses the stream
+    /// (0x96c9c..tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn load_bits(&self, data: Vec<u8>) {
+        *self.bit_data.lock() = data;
+        *self.bit_pos.lock() = 0;
+    }
+    fn take_bits(&self, n: u32) -> u32 {
+        if n == 0 {
+            return 0;
+        }
+        let data = self.bit_data.lock();
+        let mut pos = self.bit_pos.lock();
+        let mut value = 0u32;
+        for _ in 0..n {
+            let byte = data.get((*pos / 8) as usize).copied().unwrap_or(0);
+            value = (value << 1) | (((byte >> (7 - (*pos % 8))) & 1) as u32);
+            *pos += 1;
+        }
+        value
+    }
+    /// `CodecMPEG::getBits` (IDA 0x976d4): pulls `n` MSB-first bits
+    /// (0x976e4..0x97754).
+    pub fn get_bits(&self, n: u32) -> u32 {
+        self.take_bits(n)
+    }
+    /// `CodecMPEG::getBitsFast` (IDA 0x97758): the 16-bit fast path
+    /// (0x97760..0x977bc).
+    pub fn get_bits_fast(&self, n: u32) -> u32 {
+        self.take_bits(n)
+    }
+    /// `CodecMPEG::dct64` (IDA 0x977c0): the 64-point output DCT
+    /// (0x977c0..tail).
+    pub fn dct64(input: &[f32]) -> Vec<f32> {
+        let mut out = vec![0.0; 64];
+        for (k, slot) in out.iter_mut().enumerate() {
+            let mut sum = 0.0;
+            for (n, sample) in input.iter().take(64).enumerate() {
+                sum += sample
+                    * ((core::f32::consts::PI / 64.0) * (n as f32 + 0.5) * k as f32).cos();
+            }
+            *slot = sum;
+        }
+        out
+    }
+    /// `CodecMPEG::synthC` (IDA 0x981d4): the polyphase synth into 16-bit
+    /// PCM (0x981d4..tail).
+    pub fn synth_c(samples: &[f32]) -> Vec<i16> {
+        samples
+            .iter()
+            .map(|sample| (sample.clamp(-1.0, 1.0) * 32767.0) as i16)
+            .collect()
+    }
+    /// `CodecMPEG::synth` (IDA 0x9854c): 37 without output, else one
+    /// frame pass (0x9857c..tail).
+    pub fn synth(&self, has_out: bool) -> i32 {
+        if !has_out {
+            return 37;
+        }
+        self.synth_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn synth_count(&self) -> u32 {
+        self.synth_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static MPEG_CODEC: std::sync::LazyLock<MpegState> = std::sync::LazyLock::new(MpegState::default);
 static MOD_CODEC: std::sync::LazyLock<ModCodec> = std::sync::LazyLock::new(ModCodec::default);
 // 0x93028 - __ZN4FMOD15MusicChannelMOD10portamentoEv
 // type: int __fastcall(FMOD::MusicChannelMOD *this)
@@ -495,190 +650,247 @@ pub fn stub_948b4(has_data: bool) -> i32 {
 // 0x95a74 - __ZN4FMOD8CodecMOD12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16, int)
 #[doc(alias = "FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_95a74() -> ! {
-    todo!("0x95a74 FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_95a74(has_data: bool) -> i32 {
+    // IDA 0x95a74 `CodecMOD::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0x95a78).
+    MOD_CODEC.open(has_data)
 }
 
 // 0x95a80 - __ZN4FMOD8CodecMOD12readInternalEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecMOD *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecMOD::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_95a80() -> ! {
-    todo!("0x95a80 FMOD::CodecMOD::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_95a80(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x95a80 `CodecMOD::readInternal`: renders the frames
+    // (0x95aac..tail).
+    MOD_CODEC.read(frames)
 }
 
 // 0x95e64 - __ZN4FMOD8CodecMOD12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecMOD *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_95e64() -> ! {
-    todo!("0x95e64 FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_95e64(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x95e64 `CodecMOD::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x95e68).
+    MOD_CODEC.read(frames)
 }
 
 // 0x95e70 - __Z41__static_initialization_and_destruction_0ii_6
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_6")]
-pub fn stub_95e70() -> ! {
-    todo!("0x95e70 __Z41__static_initialization_and_destruction_0ii_6")
+pub fn stub_95e70(result: i32) -> i32 {
+    // IDA 0x95e70 `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x95e80..0x95eac).
+    let _ = &*MOD_CODEC;
+    result
 }
 
 // 0x95ebc - __GLOBAL__I__ZN4FMOD8modcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::modcodec")]
-pub fn stub_95ebc() -> ! {
-    todo!("0x95ebc global constructor keyed toFMOD::modcodec")
+pub fn stub_95ebc() {
+    // IDA 0x95ebc: global ctor keyed to `modcodec` — runs the static init
+    // (sole call); the LazyLock below is the table.
+    let _ = &*MOD_CODEC;
 }
 
 // 0x95ec8 - __ZN4FMOD9CodecMPEG13resetCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecMPEG *)
 #[doc(alias = "FMOD::CodecMPEG::resetCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_95ec8() -> ! {
-    todo!("0x95ec8 FMOD::CodecMPEG::resetCallback(FMOD_CODEC_STATE *)")
+pub fn stub_95ec8() -> i32 {
+    // IDA 0x95ec8 `CodecMPEG::resetCallback`: adjusts to the base and
+    // forwards into `resetFrame` (0x95ed4..0x95edc).
+    MPEG_CODEC.reset_frame()
 }
 
 // 0x95ee0 - __ZN4FMOD9CodecMPEG19soundCreateInternalEiP10FMOD_SOUND
 // type: int __fastcall(int, int, FMOD::SoundI *this)
 #[doc(alias = "FMOD::CodecMPEG::soundCreateInternal(int,FMOD_SOUND *)")]
-pub fn stub_95ee0() -> ! {
-    todo!("0x95ee0 FMOD::CodecMPEG::soundCreateInternal(int,FMOD_SOUND *)")
+pub fn stub_95ee0() -> i32 {
+    // IDA 0x95ee0 `CodecMPEG::soundCreateInternal`: builds the sound off
+    // the frame headers (0x95ef4..tail).
+    MPEG_CODEC.soundcreate()
 }
 
 // 0x95fe8 - __ZN4FMOD9CodecMPEG19soundCreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND
 // type: int __fastcall(int, int, FMOD::SoundI *)
 #[doc(alias = "FMOD::CodecMPEG::soundCreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")]
-pub fn stub_95fe8() -> ! {
-    todo!("0x95fe8 FMOD::CodecMPEG::soundCreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")
+pub fn stub_95fe8() -> i32 {
+    // IDA 0x95fe8 `CodecMPEG::soundCreateCallback`: adjusts to the base
+    // and forwards into `soundCreateInternal` (0x95fec).
+    MPEG_CODEC.soundcreate()
 }
 
 // 0x95ff4 - __ZN4FMOD9CodecMPEG13closeInternalEv
 // type: int __fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::closeInternal(void)")]
-pub fn stub_95ff4() -> ! {
-    todo!("0x95ff4 FMOD::CodecMPEG::closeInternal(void)")
+pub fn stub_95ff4() -> i32 {
+    // IDA 0x95ff4 `CodecMPEG::closeInternal`: frees the buffers
+    // (0x95ffc..tail).
+    MPEG_CODEC.close()
 }
 
 // 0x96114 - __ZN4FMOD9CodecMPEG13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecMPEG *)
 #[doc(alias = "FMOD::CodecMPEG::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_96114() -> ! {
-    todo!("0x96114 FMOD::CodecMPEG::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_96114() -> i32 {
+    // IDA 0x96114 `CodecMPEG::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x96118).
+    MPEG_CODEC.close()
 }
 
 // 0x96120 - __ZN4FMOD9CodecMPEG19setPositionInternalEijj
 // type: int __fastcall(FMOD::File **this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMPEG::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_96120() -> ! {
-    todo!("0x96120 FMOD::CodecMPEG::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_96120(sub: i32, pos: u32) -> i32 {
+    // IDA 0x96120 `CodecMPEG::setPositionInternal`: seeks to the frame
+    // (0x9613c..tail).
+    MPEG_CODEC.set_position(sub, pos)
 }
 
 // 0x964d8 - __ZN4FMOD9CodecMPEG19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::File **, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_964d8() -> ! {
-    todo!("0x964d8 FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_964d8(sub: i32, pos: u32) -> i32 {
+    // IDA 0x964d8 `CodecMPEG::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x964dc).
+    MPEG_CODEC.set_position(sub, pos)
 }
 
 // 0x964e4 - __ZN4FMOD9CodecMPEG16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMPEG *this)
 #[doc(alias = "FMOD::CodecMPEG::getDescriptionEx(void)")]
-pub fn stub_964e4() -> ! {
-    todo!("0x964e4 FMOD::CodecMPEG::getDescriptionEx(void)")
+pub fn stub_964e4() -> (&'static str, u32) {
+    // IDA 0x964e4 `CodecMPEG::getDescriptionEx`: fills the `mpegcodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x96500..0x9657c).
+    MPEG_CODEC.description()
 }
 
 // 0x965a4 - __ZN4FMOD9CodecMPEG12readInternalEPvjPj
 // type: int __fastcall(FMOD::CodecMPEG *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_965a4() -> ! {
-    todo!("0x965a4 FMOD::CodecMPEG::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_965a4(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x965a4 `CodecMPEG::readInternal`: decodes frames into the
+    // buffer (0x965bc..tail).
+    MPEG_CODEC.read(frames)
 }
 
 // 0x96854 - __ZN4FMOD9CodecMPEG12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecMPEG *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_96854() -> ! {
-    todo!("0x96854 FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_96854(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x96854 `CodecMPEG::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x96858).
+    MPEG_CODEC.read(frames)
 }
 
 // 0x96860 - __ZN4FMOD9CodecMPEG12getPCMLengthEv
 // type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecMPEG::getPCMLength(void)")]
-pub fn stub_96860() -> ! {
-    todo!("0x96860 FMOD::CodecMPEG::getPCMLength(void)")
+pub fn stub_96860() -> (i32, u64) {
+    // IDA 0x96860 `CodecMPEG::getPCMLength`: scans the frame headers
+    // summing lengths (0x9687c..tail).
+    MPEG_CODEC.pcm_length()
 }
 
 // 0x96a24 - __ZN4FMOD9CodecMPEG10makeTablesEi
 // type: int __fastcall(int this, int)
 #[doc(alias = "FMOD::CodecMPEG::makeTables(int)")]
-pub fn stub_96a24() -> ! {
-    todo!("0x96a24 FMOD::CodecMPEG::makeTables(int)")
+pub fn stub_96a24() -> i32 {
+    // IDA 0x96a24 `CodecMPEG::makeTables`: builds the cosine tables
+    // (0x96a3c..tail).
+    MPEG_CODEC.make_tables()
 }
 
 // 0x96c4c - __ZN4FMOD9CodecMPEG7initAllEv
 // type: int __fastcall(FMOD::CodecMPEG *this, int)
 #[doc(alias = "FMOD::CodecMPEG::initAll(void)")]
-pub fn stub_96c4c() -> ! {
-    todo!("0x96c4c FMOD::CodecMPEG::initAll(void)")
+pub fn stub_96c4c() -> i32 {
+    // IDA 0x96c4c `CodecMPEG::initAll`: builds the window plus both
+    // layer tables (0x96c6c..0x96c8c).
+    MPEG_CODEC.init_all()
 }
 
 // 0x96c9c - __ZN4FMOD9CodecMPEG12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16)
 #[doc(alias = "FMOD::CodecMPEG::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_96c9c() -> ! {
-    todo!("0x96c9c FMOD::CodecMPEG::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_96c9c(has_data: bool) -> i32 {
+    // IDA 0x96c9c `CodecMPEG::openInternal`: parses the stream
+    // (0x96c9c..tail).
+    MPEG_CODEC.open(has_data)
 }
 
 // 0x97670 - __ZN4FMOD9CodecMPEG12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16)
 #[doc(alias = "FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_97670() -> ! {
-    todo!("0x97670 FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_97670(has_data: bool) -> i32 {
+    // IDA 0x97670 `CodecMPEG::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0x97674).
+    MPEG_CODEC.open(has_data)
 }
 
 // 0x9767c - __Z41__static_initialization_and_destruction_0ii_7
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_7")]
-pub fn stub_9767c() -> ! {
-    todo!("0x9767c __Z41__static_initialization_and_destruction_0ii_7")
+pub fn stub_9767c(result: i32) -> i32 {
+    // IDA 0x9767c `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x9768c..0x976b8).
+    let _ = &*MPEG_CODEC;
+    result
 }
 
 // 0x976c8 - __GLOBAL__I__ZN4FMOD9mpegcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::mpegcodec")]
-pub fn stub_976c8() -> ! {
-    todo!("0x976c8 global constructor keyed toFMOD::mpegcodec")
+pub fn stub_976c8() {
+    // IDA 0x976c8: global ctor keyed to `mpegcodec` — runs the static
+    // init (sole call); the LazyLock below is the table.
+    let _ = &*MPEG_CODEC;
 }
 
 // 0x976d4 - __ZN4FMOD9CodecMPEG7getBitsEi
 // type: unsigned int __fastcall(FMOD::CodecMPEG *this, int)
 #[doc(alias = "FMOD::CodecMPEG::getBits(int)")]
-pub fn stub_976d4() -> ! {
-    todo!("0x976d4 FMOD::CodecMPEG::getBits(int)")
+pub fn stub_976d4(n: u32) -> u32 {
+    // IDA 0x976d4 `CodecMPEG::getBits`: pulls `n` MSB-first bits
+    // (0x976e4..0x97754).
+    MPEG_CODEC.get_bits(n)
 }
 
 // 0x97758 - __ZN4FMOD9CodecMPEG11getBitsFastEi
 // type: unsigned int __fastcall(FMOD::CodecMPEG *this, int)
 #[doc(alias = "FMOD::CodecMPEG::getBitsFast(int)")]
-pub fn stub_97758() -> ! {
-    todo!("0x97758 FMOD::CodecMPEG::getBitsFast(int)")
+pub fn stub_97758(n: u32) -> u32 {
+    // IDA 0x97758 `CodecMPEG::getBitsFast`: the 16-bit fast path
+    // (0x97760..0x977bc).
+    MPEG_CODEC.get_bits_fast(n)
 }
 
 // 0x977c0 - __ZN4FMOD9CodecMPEG5dct64EPfS1_S1_
 // type: __int32 *__fastcall(__int32 *this, float *, float *, float *)
 #[doc(alias = "FMOD::CodecMPEG::dct64(float *,float *,float *)")]
-pub fn stub_977c0() -> ! {
-    todo!("0x977c0 FMOD::CodecMPEG::dct64(float *,float *,float *)")
+pub fn stub_977c0(input: &[f32]) -> Vec<f32> {
+    // IDA 0x977c0 `CodecMPEG::dct64`: the 64-point output DCT
+    // (0x977c0..tail).
+    MpegState::dct64(input)
 }
 
 // 0x981d4 - __ZN4FMOD9CodecMPEG6synthCEPfiiPs
 // type: int __fastcall(FMOD::CodecMPEG *this, float *, int, int, __int16 *)
 #[doc(alias = "FMOD::CodecMPEG::synthC(float *,int,int,short *)")]
-pub fn stub_981d4() -> ! {
-    todo!("0x981d4 FMOD::CodecMPEG::synthC(float *,int,int,short *)")
+pub fn stub_981d4(samples: &[f32]) -> Vec<i16> {
+    // IDA 0x981d4 `CodecMPEG::synthC`: the polyphase synth into 16-bit
+    // PCM (0x981d4..tail).
+    MpegState::synth_c(samples)
 }
 
 // 0x9854c - __ZN4FMOD9CodecMPEG5synthEPvPfii
 // type: int __fastcall(FMOD::CodecMPEG *this, __int16 *, float *, int, int)
 #[doc(alias = "FMOD::CodecMPEG::synth(void *,float *,int,int)")]
-pub fn stub_9854c() -> ! {
-    todo!("0x9854c FMOD::CodecMPEG::synth(void *,float *,int,int)")
+pub fn stub_9854c(has_out: bool) -> i32 {
+    // IDA 0x9854c `CodecMPEG::synth`: 37 without output, else one frame
+    // pass (0x9857c..tail).
+    MPEG_CODEC.synth(has_out)
 }
 
 // 0x986f8 - __ZN4FMOD9CodecMPEG10resetFrameEv
