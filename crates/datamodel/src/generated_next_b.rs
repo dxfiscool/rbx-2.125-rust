@@ -10,6 +10,7 @@ use rbx_core::SharedPtr;
 use crate::generated_189::{CRenderSettingsItem, RenderEnumDesc, stub_0x86d0};
 use crate::generated_190::{IntVariant, RenderXmlInput, RenderXmlIntValue};
 use crate::generated_191::{RenderFrameRateEnumPropDesc, frame_rate_manager_mode_enum_desc};
+use std::collections::BTreeMap;
 use std::sync::LazyLock;
 
 // 0x13a30/0x13be4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2/D0Ev
@@ -425,204 +426,378 @@ pub fn stub_13c58(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem)
 // 0x13c7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_13c7c() -> ! {
-    todo!("0x13c7c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_13c7c(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, variant: &IntVariant) {
+    // IDA 0x13c7c (decompiled): `setVariant` — same holder-identity int fast
+    // path plus generic `Variant::convert<int>` fallback as 0x100d0, then
+    // the `+72` setter. Our variant only holds ints, so both paths collapse
+    // into the stored setter fn.
+    (desc.setter)(item, variant.value)
 }
 
 // 0x13dcc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_13dcc() -> ! {
-    todo!("0x13dcc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_13dcc(desc: &RenderGraphicsEnumPropDesc, dst: &mut CRenderSettingsItem, src: &CRenderSettingsItem) {
+    // IDA 0x13dcc..0x13dee (decompiled): `copyValue` — `getValue` through
+    // the `+44` slot `+8` into a spill (0x13dde), then the `+12` setter.
+    // Same shape as 0x10220.
+    let value = (desc.getter)(src);
+    (desc.setter)(dst, value)
 }
 
 // 0x13df0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::hasStringValue(void)const")]
-pub fn stub_13df0() -> ! {
-    todo!("0x13df0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::hasStringValue(void)const")
+pub fn stub_13df0() -> bool {
+    // IDA 0x13df0..0x13df2 (decompiled): `hasStringValue` returns `1`. Same
+    // shape as 0x10244.
+    true
 }
 
 // 0x13df4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_13df4() -> ! {
-    todo!("0x13df4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_13df4(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem, out: &mut String) {
+    // IDA 0x13df4..0x13e16 (decompiled): `getStringValue` — `getValue`
+    // through the `+44` slot `+8` (0x13dfe), then
+    // `EnumDesc<GraphicsMode>::convertToString`: empty when out of range.
+    // Same shape as 0x10248.
+    let value = (desc.getter)(item);
+    match (value >= 0).then(|| graphics_mode_enum_desc().lookup_name(value)).flatten() {
+        Some(name) => *out = name.to_owned(),
+        None => out.clear(),
+    }
 }
 
 // 0x13e18 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_13e18() -> ! {
-    todo!("0x13e18 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_13e18(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x13e18..0x13e50 (decompiled): `setStringValue` — `Name::lookup`
+    // (0x13e22), `EnumDesc<GraphicsMode>::convertToValue`, miss returns 0,
+    // hit sets through the `+44` slot `+12` and returns 1. Same shape as
+    // 0x1026c.
+    if let Some(value) = graphics_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x13e58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_13e58() -> ! {
-    todo!("0x13e58 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_13e58(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> RenderXmlIntValue {
+    // IDA 0x13e58..0x13e76 (decompiled): `writeValue` — `getValue` through
+    // the `+44` slot `+8` (0x13e66), `clearValue` (0x13e6c), type word `5`
+    // (0x13e72), int word (0x13e74), return `5`. Same shape as 0x102ac.
+    RenderXmlIntValue { kind: 5, int_value: (desc.getter)(item) }
 }
 
 // 0x13e78 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_13e78() -> ! {
-    todo!("0x13e78 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_13e78(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, input: &RenderXmlInput) {
+    // IDA 0x13e78 (decompiled): `readValue` — same `isXsiNil` bail / int
+    // (`setIntValue`) / string (`Name::lookup` + `convertToValue` + set with
+    // `setStringValue`-mismatch fallback) / `ReleaseAssert(false)` shape as
+    // 0x102cc. `setIntValue` for this desc is the direct member set (cf.
+    // 0x14220 shape).
+    match input {
+        RenderXmlInput::Nil => {}
+        RenderXmlInput::Int(value) => (desc.setter)(item, *value),
+        RenderXmlInput::Text(name) => {
+            if !stub_13e18(desc, item, name) {
+                debug_assert!(false, "0x13e78: false (Reflection.h:359)");
+            }
+        }
+    }
 }
 
 // 0x140b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_140b8() -> ! {
-    todo!("0x140b8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_140b8(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> Option<usize> {
+    // IDA 0x140b8..0x140d2 (decompiled): `getIndexValue` — `getValue`
+    // through the `+44` slot `+8` (0x140c8), then
+    // `EnumDesc<GraphicsMode>::convertToIndex` (0x140ca): assert plus
+    // position search. Same shape as 0x1050c.
+    let value = (desc.getter)(item);
+    debug_assert!(value >= 0, "0x140b8: value>=0");
+    graphics_mode_enum_desc().pairs.iter().position(|(v, _)| *v == value)
 }
 
 // 0x140d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_140d4() -> ! {
-    todo!("0x140d4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_140d4(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, index: usize) -> bool {
+    // IDA 0x140d4..0x14106 (decompiled): `setIndexValue` — `count > index`
+    // check against the enum count at `+40` (0x140e6), indexed value load
+    // from the value table at `+144`, `+44` slot `+12` set, return 1; miss
+    // returns 0. The `+144` table holds the values in registration order, so
+    // `pairs` stands in. Same shape as 0x110ac.
+    match graphics_mode_enum_desc().pairs.get(index) {
+        Some((value, _)) => {
+            (desc.setter)(item, *value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x14108 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_14108() -> ! {
-    todo!("0x14108 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_14108(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x14108..0x1410e (decompiled): `getEnumValue` — `getValue`
+    // through the `+44` slot `+8`. Same delegation as 0x1055c without the
+    // variant wrap.
+    (desc.getter)(item)
 }
 
 // 0x14110 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_14110() -> ! {
-    todo!("0x14110 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_14110(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) -> bool {
+    // IDA 0x14110..0x14158 (decompiled): `setEnumValue` — `find_if` with
+    // `equalValue` over the enum items (0x1411e), miss returns 0, hit sets
+    // through the `+44` slot `+12` and returns 1. Same shape as 0x10564.
+    if graphics_mode_enum_desc().pairs.iter().any(|(v, _)| *v == value) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x1415c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1415c() -> ! {
-    todo!("0x1415c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1415c(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x1415c..0x1417a (decompiled): `getEnumItem` — `getValue` through
+    // the `+44` slot `+8` (0x1416e), then
+    // `EnumDesc<GraphicsMode>::convertToItem` (0x14178), which is the
+    // identity-table body (cf. 0xda38). Same shape as 0x105b0.
+    let value = (desc.getter)(item);
+    let table = graphics_mode_enum_desc();
+    if value >= 0 && (value as usize) < table.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0x1417c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_1417c() -> ! {
-    todo!("0x1417c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_1417c(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x1417c..0x141aa (decompiled): `setStringValue` on the `Name` —
+    // `EnumDesc<GraphicsMode>::convertToValue` (0x14192), miss returns 0,
+    // hit sets through the `+44` slot `+12` and returns 1. `Name::c_str`
+    // collapses into the `&str` itself; same shape as 0x105d0.
+    if let Some(value) = graphics_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x141b0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToIndex(RBX::CRenderSettings::GraphicsMode)const")]
-pub fn stub_141b0() -> ! {
-    todo!("0x141b0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToIndex(RBX::CRenderSettings::GraphicsMode)const")
+pub fn stub_141b0(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0x141b0 (decompiled): `EnumDesc<GraphicsMode>::convertToIndex` —
+    // same `ReleaseAssert(value >= 0)` + `value < table ? table[value] : -1`
+    // shape as 0x10604 over the value→index remap. The remap is identity
+    // over the registered pairs here, so the position search stands in.
+    debug_assert!(value >= 0, "0x141b0: value>=0");
+    desc.pairs.iter().position(|(v, _)| *v == value).map(|i| i as i32).unwrap_or(-1)
 }
 
 // 0x14220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_14220() -> ! {
-    todo!("0x14220 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_14220(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, index: i32) -> bool {
+    // IDA 0x14220 (decompiled): `setIntValue` — same `index >= 0` gate /
+    // bounds check / `-1`-hole check / `+44` slot `+12` set / return-1 shape
+    // as 0x10674 over the GraphicsMode value table.
+    if index >= 0 {
+        if let Some((value, _)) = graphics_mode_enum_desc().pairs.get(index as usize) {
+            if *value != -1 {
+                (desc.setter)(item, *value);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x14260 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isReadOnly(void)const")]
-pub fn stub_14260() -> ! {
-    todo!("0x14260 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isReadOnly(void)const")
+pub fn stub_14260() -> bool {
+    // IDA 0x14260..0x14262 (decompiled):
+    // `GetSetImpl<GraphicsMode (CRenderSettings::*)() const, void
+    // (CRenderSettingsItem::*)(GraphicsMode)>::isReadOnly` returns `0`.
+    // Same shape as 0x106b4.
+    false
 }
 
 // 0x14264 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isWriteOnly(void)const")]
-pub fn stub_14264() -> ! {
-    todo!("0x14264 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::isWriteOnly(void)const")
+pub fn stub_14264() -> bool {
+    // IDA 0x14264..0x14266 (decompiled): the GraphicsMode-member `GetSetImpl`
+    // `isWriteOnly` twin — returns `0`. Same shape as 0x106b8.
+    false
 }
 
 // 0x14268 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_14268() -> ! {
-    todo!("0x14268 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_14268(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x14268..0x14292 (decompiled): `GetSetImpl<...>::getValue` —
+    // resolves the bound `GraphicsMode (CRenderSettings::*)() const` member
+    // through the `+4` slot (0x1426c..0x14290) and invokes it. The
+    // member-pointer dance collapses into the stored getter fn; same shape
+    // as 0x106bc.
+    (desc.getter)(item)
 }
 
 // 0x14294 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::GraphicsMode const&)const")]
-pub fn stub_14294() -> ! {
-    todo!("0x14294 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::GetSetImpl<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::GraphicsMode const&)const")
+pub fn stub_14294(desc: &RenderGraphicsEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) {
+    // IDA 0x14294..0x142b4 (decompiled): `GetSetImpl<...>::setValue` —
+    // resolves the bound `void (CRenderSettingsItem::*)(GraphicsMode)`
+    // member through the `+12` slot (0x142a0..0x142b0) and invokes it with
+    // `*a3`. Collapses into the stored setter fn; same shape as 0x106e8.
+    (desc.setter)(item, value)
 }
 
 // 0x142b8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16ResolutionPresetESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<RBX::Name const*,RBX::CRenderSettings::ResolutionPreset,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_142b8() -> ! {
-    todo!("0x142b8 std::map<RBX::Name const*,RBX::CRenderSettings::ResolutionPreset,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::operator[](RBX::Name const* const&)")
+pub fn stub_142b8(map: &mut BTreeMap<*const (), i32>, key: *const ()) -> &mut i32 {
+    // IDA 0x142b8 (`map<Name const*, ResolutionPreset>::operator[]`): tree
+    // search down the right spine with a default-inserted zero on miss
+    // (decomp 0x142c2..0x142d0); `entry().or_insert(0)` is the same
+    // lookup-or-create. The `Name const*` key keeps address order, so the
+    // opaque pointer stands in. Same shape as `instance::stub_0x3dd564`.
+    map.entry(key).or_insert(0)
 }
 
 // 0x14310 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
-pub fn stub_14310() -> ! {
-    todo!("0x14310 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")
+pub fn stub_14310(map: &mut BTreeMap<*const (), i32>, key: *const (), value: i32) -> bool {
+    // IDA 0x14310 (`_Rb_tree::_M_insert_unique` with the position hint):
+    // the hint only seeds the search, so the hinted insert collapses into a
+    // plain unique insert; `true` on fresh placement. Same shape as
+    // `instance::stub_0x3dd5bc`.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x143c4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int __fastcall(int, int, _Rb_tree_node_base *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
-pub fn stub_143c4() -> ! {
-    todo!("0x143c4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")
+pub fn stub_143c4(map: &mut BTreeMap<*const (), i32>, key: *const (), value: i32) {
+    // IDA 0x143c4 (`_Rb_tree::_M_insert`): links the already-uniqueness-
+    // checked node into the tree (decomp 0x143f4 `operator new(0x18)`);
+    // after the uniqueness check the link is a plain insert. Same shape as
+    // `instance::stub_0x3dd670`.
+    map.insert(key, value);
 }
 
 // 0x1441c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")]
-pub fn stub_1441c() -> ! {
-    todo!("0x1441c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CRenderSettings::ResolutionPreset> const&)")
+pub fn stub_1441c(map: &mut BTreeMap<*const (), i32>, key: *const (), value: i32) -> bool {
+    // IDA 0x1441c (`_Rb_tree::_M_insert_unique` by value): search, then link
+    // on miss; same unique insert as 0x14310 without the hint. Same shape
+    // as `instance::stub_0x3dd6c8`.
+    use std::collections::btree_map::Entry;
+    match map.entry(key) {
+        Entry::Vacant(slot) => {
+            slot.insert(value);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
 }
 
 // 0x14484 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::resize(unsigned long,RBX::CRenderSettings::ResolutionPreset)")]
-pub fn stub_14484() -> ! {
-    todo!("0x14484 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::resize(unsigned long,RBX::CRenderSettings::ResolutionPreset)")
+pub fn stub_14484(vec: &mut Vec<i32>, len: usize, value: i32) {
+    // IDA 0x14484 (`vector<ResolutionPreset>::resize(n, value)`): grow
+    // through `_M_fill_insert` when below size (decomp 0x1449c..0x144ac),
+    // else truncate the finish pointer (decomp 0x144a2). `resize` is both;
+    // the enum payload is an `i32` word.
+    vec.resize(len, value);
 }
 
 // 0x144b8 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::push_back(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_144b8() -> ! {
-    todo!("0x144b8 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::push_back(RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_144b8(vec: &mut Vec<i32>, value: &i32) {
+    // IDA 0x144b8 (`vector<ResolutionPreset>::push_back`): fast-path store
+    // at finish + bump (decomp 0x144c8..0x144d0), slow path through
+    // `_M_insert_aux` (decomp 0x144da). `push` grows the same way.
+    vec.push(*value);
 }
 
 // 0x144e0 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_144e0() -> ! {
-    todo!("0x144e0 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_144e0(vec: &mut Vec<i32>, index: usize, value: &i32) {
+    // IDA 0x144e0 (`vector<ResolutionPreset>::_M_insert_aux`): the
+    // reallocation/shift tail behind `push_back`/`insert` (decomp through
+    // 0x144e0+2681); the element lands at the iterator position with the
+    // tail shifted up. `insert` is the same place-and-shift.
+    vec.insert(index, *value);
 }
 
 // 0x145c4 — __ZNSt12_Vector_baseIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_allocate(unsigned long)")]
-pub fn stub_145c4() -> ! {
-    todo!("0x145c4 std::_Vector_base<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_allocate(unsigned long)")
+pub fn stub_145c4(vec: &mut Vec<i32>, n: usize) {
+    // IDA 0x145c4 (`_Vector_base<ResolutionPreset>::_M_allocate(n)`): raw
+    // storage for `n` elements; the returned pointer is unmanaged in Rust,
+    // so only the capacity effect is modelled. `reserve` is the same
+    // allocation without the pointer.
+    vec.reserve(n);
 }
 
 // 0x145dc — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15CRenderSettings16ResolutionPresetES6_EET0_T_S8_S7_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::CRenderSettings::ResolutionPreset * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *>(RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *)")]
-pub fn stub_145dc() -> ! {
-    todo!("0x145dc RBX::CRenderSettings::ResolutionPreset * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *>(RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *,RBX::CRenderSettings::ResolutionPreset *)")
+pub fn stub_145dc(vec: &mut Vec<i32>, src_start: usize, src_end: usize, dst_end: usize) {
+    // IDA 0x145dc (`__copy_backward` over `ResolutionPreset*`): copies
+    // `[first, last)` to the range ending at `result`, back to front so
+    // overlap is safe. `copy_within` with the matching start is the same
+    // overlap-safe backward move.
+    let len = src_end - src_start;
+    vec.copy_within(src_start..src_end, dst_end - len);
 }
 
 // 0x14618 — __ZNSt6vectorIN3RBX15CRenderSettings16ResolutionPresetESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int(void)
 #[doc(alias = "std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,unsigned long,RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_14618() -> ! {
-    todo!("0x14618 std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CRenderSettings::ResolutionPreset*,std::vector<RBX::CRenderSettings::ResolutionPreset,std::allocator<RBX::CRenderSettings::ResolutionPreset>>>,unsigned long,RBX::CRenderSettings::ResolutionPreset const&)")
+pub fn stub_14618(vec: &mut Vec<i32>, index: usize, n: usize, value: &i32) {
+    // IDA 0x14618 (`vector<ResolutionPreset>::_M_fill_insert`): inserts `n`
+    // copies of the value at the iterator position, shifting the tail.
+    // `splice` with a repeat tail is the same insert-and-shift.
+    vec.splice(index..index, std::iter::repeat(*value).take(n));
 }
 
 // 0x147a8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings12QualityLevelESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
@@ -1105,5 +1280,91 @@ mod fr_enum_desc_tests {
         assert!(stub_13c10(&d) == false && stub_13c20(&d) == false);
         let mut desc = d;
         stub_13be4(&mut desc as *mut RenderGraphicsEnumPropDesc);
+    }
+}
+
+#[cfg(test)]
+mod gm_stl_tests {
+    use super::*;
+    use std::collections::BTreeMap;
+
+    fn get_gm(item: &CRenderSettingsItem) -> i32 {
+        item.graphics_mode
+    }
+
+    fn set_gm(item: &mut CRenderSettingsItem, value: i32) {
+        item.graphics_mode = value;
+    }
+
+    #[test]
+    fn sparse_graphics_full_suite() {
+        let table = graphics_mode_enum_desc();
+        assert_eq!(stub_141b0(table, 5), 3);
+        assert_eq!(stub_141b0(table, 4), 2);
+        assert_eq!(stub_141b0(table, 3), 1);
+        assert_eq!(stub_141b0(table, 1), 0);
+        assert_eq!(stub_141b0(table, 0), -1);
+        assert_eq!(stub_141b0(table, 2), -1);
+        let mut d = stub_13a30("GraphicsMode", "Rendering", get_gm, set_gm);
+        let mut item = CRenderSettingsItem::default();
+        assert!(stub_14110(&d, &mut item, 4));
+        assert_eq!(stub_14108(&d, &item), 4);
+        assert_eq!(stub_140b8(&d, &item), Some(2));
+        assert!(stub_140d4(&d, &mut item, 3));
+        assert_eq!(item.graphics_mode, 5);
+        assert!(!stub_14110(&d, &mut item, 2));
+        assert!(stub_14220(&d, &mut item, 0));
+        assert_eq!(item.graphics_mode, 1);
+        assert!(!stub_14220(&d, &mut item, 9));
+        assert_eq!(stub_14268(&d, &item), 1);
+        stub_14294(&d, &mut item, 3);
+        assert_eq!(item.graphics_mode, 3);
+        assert!(!stub_14260() && !stub_14264());
+        let mut out = String::new();
+        stub_13df4(&d, &mut item, &mut out);
+        assert_eq!(out, "Direct3D");
+        assert!(stub_13e18(&d, &mut item, "OpenGL"));
+        assert_eq!(item.graphics_mode, 4);
+        assert!(!stub_13e18(&d, &mut item, "Vulkan"));
+        stub_13c7c(&d, &mut item, &IntVariant { value: 5 });
+        assert_eq!(item.graphics_mode, 5);
+        assert_eq!(stub_13c58(&d, &item).value, 5);
+        assert_eq!(stub_13e58(&d, &item).int_value, 5);
+        stub_13e78(&d, &mut item, &RenderXmlInput::Int(1));
+        assert_eq!(item.graphics_mode, 1);
+        assert!(stub_13dcc(&d, &mut CRenderSettingsItem::default(), &item) == ());
+        let _ = stub_13df0();
+        stub_13be4(&mut d as *mut RenderGraphicsEnumPropDesc);
+    }
+
+    #[test]
+    fn name_map_and_preset_vec() {
+        let mut map: BTreeMap<*const (), i32> = BTreeMap::new();
+        let k1 = 0x1000 as *const ();
+        let k2 = 0x2000 as *const ();
+        assert!(stub_14310(&mut map, k1, 7));
+        assert!(!stub_14310(&mut map, k1, 9));
+        assert_eq!(*stub_142b8(&mut map, k1), 7);
+        assert_eq!(*stub_142b8(&mut map, k2), 0);
+        stub_143c4(&mut map, k2, 3);
+        assert_eq!(map[&k2], 3);
+        assert!(stub_1441c(&mut map, 0x3000 as *const (), 1));
+        assert_eq!(map.len(), 3);
+        let mut vec: Vec<i32> = Vec::new();
+        stub_144b8(&mut vec, &4);
+        stub_144b8(&mut vec, &8);
+        assert_eq!(vec, [4, 8]);
+        stub_14484(&mut vec, 4, 1);
+        assert_eq!(vec, [4, 8, 1, 1]);
+        stub_14484(&mut vec, 1, 9);
+        assert_eq!(vec, [4]);
+        stub_144e0(&mut vec, 1, &8);
+        assert_eq!(vec, [4, 8]);
+        stub_145dc(&mut vec, 0, 1, 2);
+        assert_eq!(vec, [4, 4]);
+        stub_14618(&mut vec, 1, 2, &8);
+        assert_eq!(vec, [4, 8, 8, 4]);
+        stub_145c4(&mut vec, 64);
+        assert!(vec.capacity() >= 4);
     }
 }
