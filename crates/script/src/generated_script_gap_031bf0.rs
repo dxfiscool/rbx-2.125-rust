@@ -8,107 +8,147 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use std::sync::LazyLock;
+/// `bind_t<childAdded,id,SEL,SharedPtr<Instance>>` typeinfo answer for the
+/// `functor_manager` glue (IDA 0x31cd0, cf. reflection bg_7).
+pub const BIND_CHILD_ADDED_TYPEINFO: &str = "bind_t<childAdded,id,SEL,SharedPtr<Instance>>";
+/// Opaque `signal<string>` static mutex handle (IDA 0x31ec8, cf. reflection bg_7).
+static SIGNAL_STR_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 
 // 0x31bf0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x31bf0]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x31bf0() -> ! {
-    todo!("0x31bf0 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x31bf0() {
+    // IDA 0x31bf0: D0 deleting dtor — storage release only (`B.W __ZdlPv`).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x31bf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x31bf4() -> ! {
-    todo!("0x31bf4 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x31bf4() {
+    // IDA 0x31bf4: `dispose` runs `predelete` then the deleter
+    // virtual-delete (cf. reflection bg_7 0x31bf4). `Arc` drop glue covers
+    // it; no explicit body.
 }
 
 // 0x31c14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x31c14() -> ! {
-    todo!("0x31c14 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x31c14(type_matches: bool) -> usize {
+    // IDA 0x31c14: `get_deleter` returns the deleter address on typeinfo
+    // match, else null (cf. reflection bg_7). The nonzero cookie stands in
+    // for the address.
+    if type_matches { 1 } else { 0 }
 }
 
 // 0x31c2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x31c2c() -> ! {
-    todo!("0x31c2c boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x31c2c() -> usize {
+    // IDA 0x31c2c: `get_untyped_deleter` answers null (`MOVS;BX`, cf.
+    // reflection bg_7). Returns 0.
+    0
 }
 
 // 0x31c30 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")]
-pub fn stub_0x31c30() -> ! {
-    todo!("0x31c30 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")
+pub fn stub_0x31c30() -> bool {
+    // IDA 0x31c30: `NonFactoryProduct<Instance,sLoginService>::
+    // isNullClassName` — `sLoginService` derefs to "LoginService" (0x11f55fc,
+    // non-null; cf. `rbx_datamodel::instance::stub_0x31c30`). Never null.
+    false
 }
 
 // 0x31cd0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x31cd0() -> ! {
-    todo!("0x31cd0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x31cd0(get_typeinfo: bool) -> &'static str {
+    // IDA 0x31cd0: `functor_manager<bind_t<childAdded...>>::manage` answers
+    // op 4 with the `bind_t` typeinfo (cf. reflection bg_7). Other ops are
+    // vtable glue.
+    if get_typeinfo {
+        BIND_CHILD_ADDED_TYPEINFO
+    } else {
+        ""
+    }
 }
 
 // 0x31d30 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_")]
-pub fn stub_0x31d30() -> ! {
-    todo!("0x31d30 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)")
+pub fn stub_0x31d30() {
+    // IDA 0x31d30: `void_function_obj_invoker1<bind_t<childAdded...>>::
+    // invoke` runs the bound `childAdded:` slot over `list3::operator()`
+    // (0x31d48, cf. reflection bg_7). Closure-call glue; no explicit body.
 }
 
 // 0x31d48 — __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0x31d48() -> ! {
-    todo!("0x31d48 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)")
+pub fn stub_0x31d48() {
+    // IDA 0x31d48: `list3<id,SEL,arg<1>>::operator()` unwraps target +
+    // selector + instance and invokes `childAdded:` (cf. reflection bg_7).
+    // Closure-call glue; no explicit body.
 }
 
 // 0x31e24 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSEPS6_
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSEPS6_")]
-pub fn stub_0x31e24() -> ! {
-    todo!("0x31e24 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)")
+pub fn stub_0x31e24() {
+    // IDA 0x31e24: `intrusive_ptr<signal<string>::slot>::operator=` swaps
+    // the slot with add_ref/release (cf. reflection bg_7). `Arc`
+    // assignment glue covers it; no explicit body.
 }
 
 // 0x31ec8 — __ZN3rbx7signals6signalIFvSsEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsEE24safe_static_do_get_mutexEv")]
-pub fn stub_0x31ec8() -> ! {
-    todo!("0x31ec8 rbx::signals::signal<void ()(std::string)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x31ec8() -> u32 {
+    // IDA 0x31ec8: `signal<string>::safe_static_do_get_mutex` one-shots the
+    // static signal mutex (cf. reflection bg_7). The opaque handle records
+    // once.
+    *SIGNAL_STR_MUTEX
 }
 
 // 0x31fc0 — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(boost::function<void ()(std::string)> const&,rbx::signals::signal<void ()(std::string)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_")]
-pub fn stub_0x31fc0() -> ! {
-    todo!("0x31fc0 rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(boost::function<void ()(std::string)> const&,rbx::signals::signal<void ()(std::string)>*)")
+pub fn stub_0x31fc0() {
+    // IDA 0x31fc0: `callable<signal<string>::slot,function,1>::callable`
+    // copies the function via `assign_to_own` (cf. reflection bg_7).
+    // Slot-construction glue; no explicit body.
 }
 
 // 0x320bc — __ZN3rbx7signals6signalIFvSsEE13callable_slotIN5boost8functionIS2_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
-pub fn stub_0x320bc() -> ! {
-    todo!("0x320bc rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()")
+pub fn stub_0x320bc() {
+    // IDA 0x320bc: D0 deleting dtor: reset vtables, destroy members,
+    // `operator delete` (cf. reflection bg_7). `Arc` Drop glue covers it;
+    // no explicit body.
 }
 
 // 0x32194 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs")]
-pub fn stub_0x32194() -> ! {
-    todo!("0x32194 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
+pub fn stub_0x32194() {
+    // IDA 0x32194: non-virtual thunk to `callable<...>::call(string)` —
+    // this/arg-adjust + tail-call (cf. reflection bg_7). Static dispatch
+    // needs no thunk; no explicit body.
 }
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev")]
-pub fn stub_0x3219c() -> ! {
-    todo!("0x3219c rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")
+pub fn stub_0x3219c() {
+    // IDA 0x3219c: D1 complete-object dtor: reset vtable, destroy owned
+    // member. Rust Drop glue covers it; no explicit body.
 }
 
 // 0x32270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
@@ -881,4 +921,33 @@ pub fn stub_0x459a4() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev")]
 pub fn stub_0x45aa0() -> ! {
     todo!("0x45aa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+}
+
+#[cfg(test)]
+mod login_service_tail_tests {
+    use super::*;
+
+    #[test]
+    fn refcount_and_class_name_shape() {
+        assert!(!stub_0x31c30());
+        assert_eq!(stub_0x31c14(true), 1);
+        assert_eq!(stub_0x31c14(false), 0);
+        assert_eq!(stub_0x31c2c(), 0);
+        stub_0x31bf0();
+        stub_0x31bf4();
+    }
+
+    #[test]
+    fn child_added_and_signal_glue_shape() {
+        assert_eq!(stub_0x31cd0(true), BIND_CHILD_ADDED_TYPEINFO);
+        assert_eq!(stub_0x31cd0(false), "");
+        assert_eq!(stub_0x31ec8(), *SIGNAL_STR_MUTEX);
+        stub_0x31d30();
+        stub_0x31d48();
+        stub_0x31e24();
+        stub_0x31fc0();
+        stub_0x320bc();
+        stub_0x32194();
+        stub_0x3219c();
+    }
 }

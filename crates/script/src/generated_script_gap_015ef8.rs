@@ -1234,97 +1234,160 @@ pub fn stub_0x31348() {
     // IDA 0x31348: invoker thunk; dispatches a stored closure — carrier no-op.
 }
 
+/// `RBX::LoginService` handle behind `ServiceProvider::find/create`
+/// (IDA 0x3151c/0x31358, decompiled).
+// DESIGN: script-local mirror of `rbx_datamodel::instance::LoginService`;
+// service-table ownership lives in datamodel, the script side keeps only the
+// observable find-or-create latch — same shape as `ScriptContextRegistry`
+// (IDA 0xf2c344/0xf2c364 in generated.rs).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct LoginServiceHandle {
+    pub name: String,
+}
+
+impl LoginServiceHandle {
+    pub const CLASS_NAME: &'static str = "LoginService";
+    pub fn new(name: &str) -> Self {
+        Self { name: name.to_owned() }
+    }
+}
+
+/// Service table slot holding the `LoginService` (IDA 0x3151c/0x31358).
+#[derive(Debug, Default)]
+pub struct LoginServiceRegistry {
+    pub service: Option<SharedPtr<LoginServiceHandle>>,
+}
+
+/// Opaque `LoginService` class index (IDA 0x31914 `doGetClassIndex`).
+static LOGIN_CLASS_INDEX: LazyLock<usize> = LazyLock::new(|| 1);
+
 // 0x31358 — __ZNK3RBX15ServiceProvider6createINS_12LoginServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_12LoginServiceEEEPT_v")]
-pub fn stub_0x31358() -> ! {
-    todo!("0x31358 RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")
+pub fn stub_0x31358(registry: &mut LoginServiceRegistry, name: &str) -> SharedPtr<LoginServiceHandle> {
+    // IDA 0x31358 (decompiled): `find<LoginService>` first; on miss
+    // `Creatable::create<LoginService>`, `setAndLockParent`, one-shot class
+    // index, slot store, and service-map insert. Find-or-create collapses to
+    // the cached-or-constructed handle.
+    if let Some(service) = registry.service.clone() {
+        return service;
+    }
+    let service = SharedPtr::new(LoginServiceHandle::new(name));
+    registry.service = Some(service.clone());
+    service
 }
 
 // 0x3151c — __ZNK3RBX15ServiceProvider4findINS_12LoginServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_12LoginServiceEEEPT_v")]
-pub fn stub_0x3151c() -> ! {
-    todo!("0x3151c RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")
+pub fn stub_0x3151c(registry: &LoginServiceRegistry) -> Option<SharedPtr<LoginServiceHandle>> {
+    // IDA 0x3151c (decompiled): one-shot class index, indexed slot load, else
+    // `findServiceByClassName` after the null-class-name gate. Null when the
+    // provider holds no LoginService yet.
+    registry.service.clone()
 }
 
 // 0x31678 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0x31678() -> ! {
-    todo!("0x31678 rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")
+pub fn stub_0x31678() -> SharedPtr<LoginServiceHandle> {
+    // IDA 0x31678: `operator new(0x70)` + `LoginService()` default ctor +
+    // adoption (cf. `rbx_datamodel::instance::stub_0x31678`). Fresh default
+    // handle here; the script side never observes the allocation size.
+    SharedPtr::new(LoginServiceHandle::default())
 }
 
 // 0x31728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE")]
-pub fn stub_0x31728() -> ! {
-    todo!("0x31728 rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")
+pub fn stub_0x31728(dst: &mut SharedPtr<LoginServiceHandle>, src: &SharedPtr<LoginServiceHandle>) -> SharedPtr<LoginServiceHandle> {
+    // IDA 0x31728: `shared_ptr<Instance>::operator=<LoginService>` — addref
+    // source, store adjusted px, release old (cf.
+    // `rbx_datamodel::generated_12::stub_31728`). Clone-assign + return is
+    // the addref/store/release/`return *this` path.
+    *dst = SharedPtr::clone(src);
+    SharedPtr::clone(dst)
 }
 
 // 0x317e4 — __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_0x317e4() -> ! {
-    todo!("0x317e4 __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_0x317e4() -> &'static str {
+    // IDA 0x317e4: `Name::declare<sLoginService>` one-shots the class-name
+    // declaration (cf. `stub_0x26a5e0` for sCoreScript). The canonical name.
+    LoginServiceHandle::CLASS_NAME
 }
 
 // 0x31828 — __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")]
-pub fn stub_0x31828() -> ! {
-    todo!("0x31828 __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")
+pub fn stub_0x31828() -> &'static str {
+    // IDA 0x31828: `Name::callDoDeclare<sLoginService>` forwards to
+    // `doDeclare` (0x3182c, cf. `stub_0x26a5dc`).
+    stub_0x3182c()
 }
 
 // 0x3182c — __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_0x3182c() -> ! {
-    todo!("0x3182c __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_0x3182c() -> &'static str {
+    // IDA 0x3182c: `Name::doDeclare<sLoginService>` interns the tag and
+    // returns the canonical name (cf. `stub_0x26a5e0`).
+    LoginServiceHandle::CLASS_NAME
 }
 
 // 0x31910 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12LoginServiceEEEvv
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12LoginServiceEEEvv")]
-pub fn stub_0x31910() -> ! {
-    todo!("0x31910 void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_0x31910() -> usize {
+    // IDA 0x31910: `ServiceProvider::callDoGetClassIndex<LoginService>`
+    // forwards to `doGetClassIndex` (0x31914).
+    stub_0x31914()
 }
 
 // 0x31914 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_12LoginServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_12LoginServiceEEEmv")]
-pub fn stub_0x31914() -> ! {
-    todo!("0x31914 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_0x31914() -> usize {
+    // IDA 0x31914 (decompiled): guarded one-shot `newIndex`; the opaque
+    // index records once (cf. `LOGIN_CLASS_INDEX` in reflection bg_7).
+    *LOGIN_CLASS_INDEX
 }
 
 // 0x319ec — __ZN5boost10shared_ptrIN3RBX12LoginServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX12LoginServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x319ec() -> ! {
-    todo!("0x319ec rbx_core::SharedPtr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x319ec(handle: LoginServiceHandle) -> SharedPtr<LoginServiceHandle> {
+    // IDA 0x319ec: store px + `shared_count` ctor + null-px skip of
+    // `accept_owner`. `Arc` adoption is the same single-owner take.
+    SharedPtr::new(handle)
 }
 
 // 0x31a10 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LoginService,RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const*,RBX::LoginService *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x31a10() -> ! {
-    todo!("0x31a10 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LoginService,RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const*,RBX::LoginService *)const")
+pub fn stub_0x31a10() {
+    // IDA 0x31a10: `enable_shared_from_this<DescribedBase>::
+    // _internal_accept_owner` — weak-owner install. `SharedPtr`/`Weak`
+    // covers it; no explicit body.
 }
 
 // 0x31aec — __ZN5boost6detail12shared_countC2IPN3RBX12LoginServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX12LoginServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x31aec() -> ! {
-    todo!("0x31aec boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x31aec() {
+    // IDA 0x31aec: `shared_count` ctor allocates the control block.
+    // Refcount owned by `SharedPtr` (`Arc`); no explicit body.
 }
 
 // 0x31bec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x31bec() -> ! {
-    todo!("0x31bec boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x31bec() {
+    // IDA 0x31bec: D1 complete-object dtor, empty (`BX LR`). `Arc` drop glue
+    // covers it; no explicit body.
 }
 
 #[cfg(test)]
@@ -1354,5 +1417,47 @@ mod bind_carrier_tests {
         stub_0x312cc();
         stub_0x312d0();
         stub_0x31348();
+    }
+}
+
+#[cfg(test)]
+mod login_service_tests {
+    use super::*;
+
+    #[test]
+    fn find_returns_none_until_created() {
+        let registry = LoginServiceRegistry::default();
+        assert!(stub_0x3151c(&registry).is_none());
+    }
+
+    #[test]
+    fn create_registers_and_returns_cached() {
+        let mut registry = LoginServiceRegistry::default();
+        let first = stub_0x31358(&mut registry, "LoginService");
+        assert_eq!(first.name, "LoginService");
+        let found = stub_0x3151c(&registry).expect("created service is findable");
+        assert_eq!(found.name, "LoginService");
+        let second = stub_0x31358(&mut registry, "LoginService");
+        assert_eq!(second.name, "LoginService");
+        assert!(stub_0x3151c(&registry).is_some());
+    }
+
+    #[test]
+    fn declare_and_class_index_shape() {
+        assert_eq!(stub_0x317e4(), "LoginService");
+        assert_eq!(stub_0x3182c(), "LoginService");
+        assert_eq!(stub_0x31828(), "LoginService");
+        assert_eq!(stub_0x31914(), stub_0x31910());
+        let fresh = stub_0x31678();
+        assert_eq!(fresh.name, "");
+        let adopted = stub_0x319ec(LoginServiceHandle::new("LoginService"));
+        assert_eq!(adopted.name, "LoginService");
+        let mut slot = stub_0x31678();
+        let back = stub_0x31728(&mut slot, &adopted);
+        assert_eq!(slot.name, "LoginService");
+        assert_eq!(back.name, "LoginService");
+        stub_0x31a10();
+        stub_0x31aec();
+        stub_0x31bec();
     }
 }
