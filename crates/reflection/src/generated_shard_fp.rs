@@ -53,6 +53,17 @@ pub struct KeyboardInit {
     pub width: f32,
     pub height: f32,
 }
+/// `textboxDidFinishEditing` calls (IDA 0x4cfdc/0x4d0a4): submitted
+/// text plus the return/dismiss flag. Service lookup lives out of
+/// slice.
+pub(crate) static TEXTBOX_FINISHES: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<(String, bool)>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+/// `GameView` bounds applied to the Ogre render window (IDA 0x4d5e4:
+/// window resize + camera aspect from the bounds).
+pub(crate) static GAMEVIEW_SIZE: std::sync::LazyLock<
+    parking_lot::Mutex<(u32, u32)>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, 0)));
 
 // 0x4bb44 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot24safe_static_do_get_mutexEv
 // type: void *()
@@ -338,179 +349,230 @@ pub fn stub_4ce44(box_present: bool, hidden: bool, text: &str) -> bool {
 // 0x4cfbc — -[GameKeyboard getText]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard getText]")]
-pub fn stub_4cfbc() -> ! {
-    todo!("0x4cfbc -[GameKeyboard getText]")
+pub fn stub_4cfbc() -> String {
+    // IDA 0x4cfbc: `getText` returns the field text (same shape as
+    // 0x4118c field reads).
+    KEYBOARD_TEXT.lock().clone()
 }
 
 // 0x4cfdc — -[GameKeyboard textFieldShouldReturn:]
 // type: char __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldShouldReturn:]")]
-pub fn stub_4cfdc() -> ! {
-    todo!("0x4cfdc -[GameKeyboard textFieldShouldReturn:]")
+pub fn stub_4cfdc(text: &str, service_present: bool) -> bool {
+    // IDA 0x4cfdc: `textFieldShouldReturn:` finishes editing with the
+    // field text when the service exists (0x4cff6-0x4d02e), dispatches
+    // the hide block (0x4d060-0x4d072) and returns 1 (0x4d07a). It
+    // sequences here.
+    if service_present {
+        TEXTBOX_FINISHES.lock().push((text.to_owned(), true));
+    }
+    stub_4d07c();
+    true
 }
 
 // 0x4d07c — ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")]
-pub fn stub_4d07c() -> ! {
-    todo!("0x4d07c ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")
+pub fn stub_4d07c() {
+    // IDA 0x4d07c: the return block hides the keyboard on main. It
+    // sequences the hide here.
+    stub_4ca64();
 }
 
 // 0x4d090 — ___copy_helper_block_82
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_82")]
-pub fn stub_4d090() -> ! {
-    todo!("0x4d090 ___copy_helper_block_82")
+pub fn stub_4d090() {
+    // IDA 0x4d090: `__copy_helper_block_82` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4d09c — ___destroy_helper_block_83
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_83")]
-pub fn stub_4d09c() -> ! {
-    todo!("0x4d09c ___destroy_helper_block_83")
+pub fn stub_4d09c() {
+    // IDA 0x4d09c: `__destroy_helper_block_83` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4d0a4 — -[GameKeyboard textFieldDidEndEditing:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldDidEndEditing:]")]
-pub fn stub_4d0a4() -> ! {
-    todo!("0x4d0a4 -[GameKeyboard textFieldDidEndEditing:]")
+pub fn stub_4d0a4(first_responder: bool, text: &str, service_present: bool) {
+    // IDA 0x4d0a4: `textFieldDidEndEditing:` finishes editing when
+    // first responder with the service (0x4d0ca-0x4d10e) and dispatches
+    // the hide block (0x4d140-0x4d152). It sequences here.
+    if first_responder {
+        if service_present {
+            TEXTBOX_FINISHES.lock().push((text.to_owned(), false));
+        }
+        stub_4d15c();
+    }
 }
 
 // 0x4d15c — ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")]
-pub fn stub_4d15c() -> ! {
-    todo!("0x4d15c ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")
+pub fn stub_4d15c() {
+    // IDA 0x4d15c: the end-editing block hides the keyboard on main
+    // (same shape as 0x4d07c). It sequences the hide here.
+    stub_4ca64();
 }
 
 // 0x4d170 — ___copy_helper_block_87
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_87")]
-pub fn stub_4d170() -> ! {
-    todo!("0x4d170 ___copy_helper_block_87")
+pub fn stub_4d170() {
+    // IDA 0x4d170: `__copy_helper_block_87` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4d17c — ___destroy_helper_block_88
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_88")]
-pub fn stub_4d17c() -> ! {
-    todo!("0x4d17c ___destroy_helper_block_88")
+pub fn stub_4d17c() {
+    // IDA 0x4d17c: `__destroy_helper_block_88` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4d184 — -[GameKeyboard .cxx_destruct]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_destruct]")]
-pub fn stub_4d184() -> ! {
-    todo!("0x4d184 -[GameKeyboard .cxx_destruct]")
+pub fn stub_4d184() {
+    // IDA 0x4d184: `.cxx_destruct` destroys members in place. Drop
+    // glue covers it; no explicit body.
 }
 
 // 0x4d220 — -[GameKeyboard .cxx_construct]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_construct]")]
-pub fn stub_4d220() -> ! {
-    todo!("0x4d220 -[GameKeyboard .cxx_construct]")
+pub fn stub_4d220() {
+    // IDA 0x4d220: `.cxx_construct` runs member constructors in place.
+    // Construction glue; no explicit body.
 }
 
 // 0x4d238 — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(_DWORD *, __int64 *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox>&&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_")]
-pub fn stub_4d238() -> ! {
-    todo!("0x4d238 boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)")
+pub fn stub_4d238() {
+    // IDA 0x4d238: `shared_ptr<TextBox>::operator=(&&)`
+    // move-assigns the box. `Arc` move glue covers it; no explicit
+    // body.
 }
 
 // 0x4d2dc — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_")]
-pub fn stub_4d2dc() -> ! {
-    todo!("0x4d2dc boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)")
+pub fn stub_4d2dc() {
+    // IDA 0x4d2dc: `shared_ptr<TextBox>::operator=(const&)`
+    // copy-assigns the box. `Arc` clone glue covers it; no explicit
+    // body.
 }
 
 // 0x4d398 — __GLOBAL__I_a_20
 #[doc(alias = "global constructor keyed to_a_20")]
 #[doc(alias = "__GLOBAL__I_a_20")]
-pub fn stub_4d398() -> ! {
-    todo!("0x4d398 global constructor keyed to_a_20")
+pub fn stub_4d398() {
+    // IDA 0x4d398: `__GLOBAL__I_a_20` runs the `a_20`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
 // type: GameView *__cdecl(GameView *self, SEL, CGRect)
 #[doc(alias = "-[GameView initWithFrame:]")]
-pub fn stub_4d5ac() -> ! {
-    todo!("0x4d5ac -[GameView initWithFrame:]")
+pub fn stub_4d5ac(x: f32, y: f32, width: f32, height: f32) {
+    // IDA 0x4d5ac: `GameView::initWithFrame:` supers on the frame
+    // (0x4d5c6-0x4d5e2). The frame records in the bounds store.
+    *GAMEVIEW_SIZE.lock() = (width as u32, height as u32);
+    let _ = (x, y);
 }
 
 // 0x4d5e4 — -[GameView layoutSubviews]
 // type: void __cdecl(GameView *self, SEL)
 #[doc(alias = "-[GameView layoutSubviews]")]
-pub fn stub_4d5e4() -> ! {
-    todo!("0x4d5e4 -[GameView layoutSubviews]")
+pub fn stub_4d5e4(width: u32, height: u32) {
+    // IDA 0x4d5e4: `GameView::layoutSubviews` resizes the Ogre render
+    // window to the bounds and refits the camera aspect (0x4d5f4-0x4d6c4).
+    // The bounds record here; Ogre calls are engine glue.
+    *GAMEVIEW_SIZE.lock() = (width, height);
 }
 
 // 0x4d6d4 — __GLOBAL__I_a_21
 // type: int()
 #[doc(alias = "global constructor keyed to_a_21")]
 #[doc(alias = "__GLOBAL__I_a_21")]
-pub fn stub_4d6d4() -> ! {
-    todo!("0x4d6d4 global constructor keyed to_a_21")
+pub fn stub_4d6d4() {
+    // IDA 0x4d6d4: `__GLOBAL__I_a_21` runs the `a_21`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]
 // type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
 #[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
-pub fn stub_4d70c() -> ! {
-    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
+pub fn stub_4d70c() {
+    // IDA 0x4d70c: `GameViewController::initWithNibName:bundle:`
+    // supers. Super-init glue; no explicit body.
 }
 
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController dealloc]")]
-pub fn stub_4d8cc() -> ! {
-    todo!("0x4d8cc -[GameViewController dealloc]")
+pub fn stub_4d8cc() {
+    // IDA 0x4d8cc: `dealloc` drops the game/input views. Release is
+    // drop glue; no explicit body.
 }
 
 // 0x4d978 — -[GameViewController viewWillAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewWillAppear:]")]
-pub fn stub_4d978() -> ! {
-    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+pub fn stub_4d978() {
+    // IDA 0x4d978: `viewWillAppear:` supers. Super glue; no explicit
+    // body.
 }
 
 // 0x4d9d4 — -[GameViewController viewDidAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewDidAppear:]")]
-pub fn stub_4d9d4() -> ! {
-    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+pub fn stub_4d9d4() {
+    // IDA 0x4d9d4: `viewDidAppear:` supers. Super glue; no explicit
+    // body.
 }
 
 // 0x4da00 — -[GameViewController viewDidLoad]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController viewDidLoad]")]
-pub fn stub_4da00() -> ! {
-    todo!("0x4da00 -[GameViewController viewDidLoad]")
+pub fn stub_4da00() {
+    // IDA 0x4da00: `viewDidLoad` supers. Super glue; no explicit body.
 }
 
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
-pub fn stub_4dab8() -> ! {
-    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+pub fn stub_4dab8() {
+    // IDA 0x4dab8: `didReceiveMemoryWarning` supers. Super glue; no
+    // explicit body.
 }
 
 // 0x4dae4 — -[GameViewController resizeGameView]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController resizeGameView]")]
-pub fn stub_4dae4() -> ! {
-    todo!("0x4dae4 -[GameViewController resizeGameView]")
+pub fn stub_4dae4() {
+    // IDA 0x4dae4: `resizeGameView` lays the game view out (0x4dafe).
+    // It sequences the layout with the stored bounds here.
+    let (w, h) = *GAMEVIEW_SIZE.lock();
+    stub_4d5e4(w, h);
 }
 
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+pub fn stub_4db04() -> bool {
+    // IDA 0x4db04: `shouldAutorotate` returns 1 (0x4db06).
+    true
 }
 
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
