@@ -3,9 +3,61 @@
 //! Range 0x666094..0x66b380 | existing 36902 -> 37022 distinct
 //! Batch: 120 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use crate::generated_audio_wd_watchdog18::TextBoxState;
+use crate::generated_audio_wd_watchdog19::stub_665da0;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
+
+/// Byte index of `text` floored to a char boundary (IDA `doKey`,
+/// 0x667698: the binary does raw byte indexing over the +608
+/// string; host `String` ops need boundary-snapped indices —
+/// identical for ASCII, safe for UTF-8).
+fn snap_idx(text: &str, idx: usize) -> usize {
+    let mut i = idx.min(text.len());
+    while !text.is_char_boundary(i) {
+        i -= 1;
+    }
+    i
+}
+/// Start of the char ending at boundary `end` (`end` itself must be
+/// a boundary): the byte `doKey` case 0/1 erases for ASCII input.
+fn char_start_at(text: &str, end: usize) -> usize {
+    (0..end).rev().find(|&i| text.is_char_boundary(i)).unwrap_or(0)
+}
+/// `doKey` whitespace test (IDA 0x66775a/0x667956/0x667868: `(c -
+/// 9) <= 0x17 && bit set in loc_800002`). The mask bits are not
+/// observable in the host; the standard C whitespace set in the
+/// 9..=32 window grounds the predicate (consistent with the
+/// newline-tolerant backward scans at 0x667762-0x667776).
+fn is_text_ws(byte: u8) -> bool {
+    matches!(byte, b'\t' | b'\n' | 0x0b | b'\x0c' | b'\r' | b' ')
+}
+/// Key-press kind carried by a `GuiEvent` for `processKeyEvent`
+/// (IDA 0x667b80): the `isEscapeKey`/`isCarriageReturnKey`/
+/// `isLeftArrowKey`/`isRightArrowKey`/`isClearKey`/`isDeleteKey`/
+/// `isBackspaceKey`/`isTextCharacterKey` predicates fold into the
+/// variant; `kind` is the event word (`*a3`: 10 press, 11 release),
+/// `keycode`/`modifiers`/`ch` are the +12/+16/+8 event cells.
+#[derive(Debug, Clone, Copy)]
+pub enum TextKeyPress {
+    Escape,
+    Return,
+    Left,
+    Right,
+    Clear,
+    Delete,
+    Backspace,
+    TextChar,
+    Other,
+}
+#[derive(Debug, Clone, Copy)]
+pub struct TextKeyEvent {
+    pub kind: u32,
+    pub press: TextKeyPress,
+    pub keycode: u32,
+    pub modifiers: u32,
+    pub ch: u8,
+}
 
 
 // 0x666094 — __ZN3RBX7TextBox11setTextWrapEb
@@ -13,8 +65,16 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, bool)
 #[doc(alias = "RBX::TextBox::setTextWrap(bool)")]
 #[doc(alias = "__ZN3RBX7TextBox11setTextWrapEb")]
-pub fn stub_666094() -> ! {
-    todo!("0x666094 __ZN3RBX7TextBox11setTextWrapEb")
+pub fn stub_666094(state: &mut TextBoxState, wrap: bool) -> bool {
+    // IDA 0x666094 (`RBX::TextBox::setTextWrap`): compares the +580
+    // byte (0x66609a); on change stores it (0x6660ae) and raises
+    // three descriptors (0x6660b8-0x6660d0), else returns unchanged
+    // (0x6660a2). The raises fold into the changed flag.
+    if state.text_wrap == wrap {
+        return false;
+    }
+    state.text_wrap = wrap;
+    true
 }
 
 
@@ -23,8 +83,21 @@ pub fn stub_666094() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, bool)
 #[doc(alias = "RBX::TextBox::setTextScale(bool)")]
 #[doc(alias = "__ZN3RBX7TextBox12setTextScaleEb")]
-pub fn stub_6660d4() -> ! {
-    todo!("0x6660d4 __ZN3RBX7TextBox12setTextScaleEb")
+pub fn stub_6660d4(state: &mut TextBoxState, scale: bool) -> bool {
+    // IDA 0x6660d4 (`RBX::TextBox::setTextScale`): compares the +581
+    // byte (0x6660da); on change stores it (0x6660f0), raises
+    // (0x6660fa) and — when enabling — delegates to
+    // `setTextWrap(this, 1)` (0x666100-0x66610a, host: the 0x666094
+    // twin); disabling raises twice more instead
+    // (0x666114-0x666122). All raises fold into the changed flag.
+    if state.text_scaled == scale {
+        return false;
+    }
+    state.text_scaled = scale;
+    if scale {
+        stub_666094(state, true);
+    }
+    true
 }
 
 
@@ -32,8 +105,18 @@ pub fn stub_6660d4() -> ! {
 // demangled: RBX::TextBox::setXAlignment(RBX::TextService::XAlignment)
 #[doc(alias = "RBX::TextBox::setXAlignment(RBX::TextService::XAlignment)")]
 #[doc(alias = "__ZN3RBX7TextBox13setXAlignmentENS_11TextService10XAlignmentE")]
-pub fn stub_666128() -> ! {
-    todo!("0x666128 __ZN3RBX7TextBox13setXAlignmentENS_11TextService10XAlignmentE")
+pub fn stub_666128(state: &mut TextBoxState, value: u32) -> bool {
+    // IDA 0x666128 (`RBX::TextBox::setXAlignment`): compares word
+    // 146 (+584, 0x66612e); on change stores it (0x666142) and
+    // raises three descriptors (0x66614c-0x666164), else returns
+    // unchanged (0x666136). The raises fold into the changed flag.
+    // Values ride the `XAlignment` table (`Left` 0, `Right` 1,
+    // `Center` 2 — IDA 0x7d8548).
+    if state.x_alignment == value {
+        return false;
+    }
+    state.x_alignment = value;
+    true
 }
 
 
@@ -41,8 +124,16 @@ pub fn stub_666128() -> ! {
 // demangled: RBX::TextBox::setYAlignment(RBX::TextService::YAlignment)
 #[doc(alias = "RBX::TextBox::setYAlignment(RBX::TextService::YAlignment)")]
 #[doc(alias = "__ZN3RBX7TextBox13setYAlignmentENS_11TextService10YAlignmentE")]
-pub fn stub_666168() -> ! {
-    todo!("0x666168 __ZN3RBX7TextBox13setYAlignmentENS_11TextService10YAlignmentE")
+pub fn stub_666168(state: &mut TextBoxState, value: u32) -> bool {
+    // IDA 0x666168 (`RBX::TextBox::setYAlignment`): compares word
+    // 147 (+588, 0x66616e); on change stores it (0x666182) and
+    // raises three descriptors (0x66618c-0x6661a4), else returns
+    // unchanged (0x666176). The raises fold into the changed flag.
+    if state.y_alignment == value {
+        return false;
+    }
+    state.y_alignment = value;
+    true
 }
 
 
@@ -51,8 +142,15 @@ pub fn stub_666168() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getTextBounds(void)const")]
 #[doc(alias = "__ZNK3RBX7TextBox13getTextBoundsEv")]
-pub fn stub_6661a8() -> ! {
-    todo!("0x6661a8 __ZNK3RBX7TextBox13getTextBoundsEv")
+pub fn stub_6661a8() -> [f32; 2] {
+    // IDA 0x6661a8 (`RBX::TextBox::getTextBounds`): the first param
+    // is the out `Vector2` — the no-frontend/no-`TextService`/
+    // no-typesetter path zeroes it (0x66628a-0x66629a, LABEL_8).
+    // The measurable path (0x66621a-0x6662ee: typesetter over the
+    // +540 text with `convertFontSize(+544)` and the +580 wrap
+    // rect) needs `TextService` rasterization: gap. Host: the
+    // exact no-service floor.
+    [0.0, 0.0]
 }
 
 
@@ -61,8 +159,15 @@ pub fn stub_6661a8() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getTextFits(void)const")]
 #[doc(alias = "__ZNK3RBX7TextBox11getTextFitsEv")]
-pub fn stub_666334() -> ! {
-    todo!("0x666334 __ZNK3RBX7TextBox11getTextFitsEv")
+pub fn stub_666334() -> bool {
+    // IDA 0x666334 (`RBX::TextBox::getTextFits`): every
+    // unmeasurable path yields 0 — the `!frontendProcessing` else
+    // branch (0x666408) and the no-typesetter `!v18` reset
+    // (0x666480-0x666482) — returned as `v16 & 1` (0x6664a2). The
+    // measurable path (0x6663a0-0x66646a: typeset the +540 text,
+    // compare against the rect width) needs `TextService`
+    // rasterization: gap. Host: the exact no-service floor.
+    false
 }
 
 
@@ -70,8 +175,16 @@ pub fn stub_666334() -> ! {
 // demangled: RBX::TextBox::setTextStrokeColor3(G3D::Color3)
 #[doc(alias = "RBX::TextBox::setTextStrokeColor3(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX7TextBox19setTextStrokeColor3EN3G3D6Color3E")]
-pub fn stub_6664e4() -> ! {
-    todo!("0x6664e4 __ZN3RBX7TextBox19setTextStrokeColor3EN3G3D6Color3E")
+pub fn stub_6664e4(state: &mut TextBoxState, color: [f32; 3]) -> bool {
+    // IDA 0x6664e4 (`RBX::TextBox::setTextStrokeColor3`): compares
+    // +564 (0x6664f4), then +568/+572 (0x666502-0x666526); on any
+    // difference stores all three (0x66652c-0x666540) and raises
+    // (0x666548). The raise folds into the changed flag.
+    if state.text_stroke_color3 == color {
+        return false;
+    }
+    state.text_stroke_color3 = color;
+    true
 }
 
 
@@ -80,8 +193,16 @@ pub fn stub_6664e4() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, float)
 #[doc(alias = "RBX::TextBox::setTextStrokeTransparency(float)")]
 #[doc(alias = "__ZN3RBX7TextBox25setTextStrokeTransparencyEf")]
-pub fn stub_66654c() -> ! {
-    todo!("0x66654c __ZN3RBX7TextBox25setTextStrokeTransparencyEf")
+pub fn stub_66654c(state: &mut TextBoxState, transparency: f32) -> bool {
+    // IDA 0x66654c (`RBX::TextBox::setTextStrokeTransparency`):
+    // compares word 144 (+576, 0x66655c); on change stores it
+    // (0x666568) and raises (0x666572), else returns unchanged
+    // (0x66655e). The raise folds into the changed flag.
+    if state.text_stroke_transparency == transparency {
+        return false;
+    }
+    state.text_stroke_transparency = transparency;
+    true
 }
 
 
@@ -90,8 +211,11 @@ pub fn stub_66654c() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::checkForResize(void)")]
 #[doc(alias = "__ZN3RBX7TextBox14checkForResizeEv")]
-pub fn stub_666578() -> ! {
-    todo!("0x666578 __ZN3RBX7TextBox14checkForResizeEv")
+pub fn stub_666578() {
+    // IDA 0x666578 (`RBX::TextBox::checkForResize`): the
+    // `GuiObject::checkForResize` body plus two
+    // `raisePropertyChanged` calls (0x66657e-0x666598) — no
+    // `TextBox`-member effect. Carrier no-op.
 }
 
 
@@ -100,8 +224,17 @@ pub fn stub_666578() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, float)
 #[doc(alias = "RBX::TextBox::setTransparencyLegacy(float)")]
 #[doc(alias = "__ZN3RBX7TextBox21setTransparencyLegacyEf")]
-pub fn stub_6665a4() -> ! {
-    todo!("0x6665a4 __ZN3RBX7TextBox21setTransparencyLegacyEf")
+pub fn stub_6665a4(state: &mut TextBoxState, transparency: f32) -> bool {
+    // IDA 0x6665a4 (`RBX::TextBox::setTransparencyLegacy`): on
+    // change of word 140 (+560, 0x6665be) stores it (0x6665c8) and
+    // raises (0x6665d4); the `GuiObject::setBackgroundTransparency`
+    // tail (0x6665da) owns the GuiObject layer and folds away.
+    // Host: the `TextTransparency`-member half as a changed flag.
+    if state.text_transparency == transparency {
+        return false;
+    }
+    state.text_transparency = transparency;
+    true
 }
 
 
@@ -109,8 +242,14 @@ pub fn stub_6665a4() -> ! {
 // demangled: RBX::TextBox::getPosInString(G3D::Vector2)const
 #[doc(alias = "RBX::TextBox::getPosInString(G3D::Vector2)const")]
 #[doc(alias = "__ZNK3RBX7TextBox14getPosInStringEN3G3D7Vector2E")]
-pub fn stub_6665ec() -> ! {
-    todo!("0x6665ec __ZNK3RBX7TextBox14getPosInStringEN3G3D7Vector2E")
+pub fn stub_6665ec() -> i32 {
+    // IDA 0x6665ec (`RBX::TextBox::getPosInString`): without
+    // frontend processing (0x666640) or without a `TextService`
+    // (0x66668e) it returns -1; the measurable path (0x66665a on:
+    // typesetter over the +592 font id, the rect and the +584
+    // `XAlignment`) needs `TextService` rasterization: gap. Host:
+    // the exact no-service floor.
+    -1
 }
 
 
@@ -119,8 +258,13 @@ pub fn stub_6665ec() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getPersistentDataCost(void)const")]
 #[doc(alias = "__ZNK3RBX7TextBox21getPersistentDataCostEv")]
-pub fn stub_6668b0() -> ! {
-    todo!("0x6668b0 __ZNK3RBX7TextBox21getPersistentDataCostEv")
+pub fn stub_6668b0(base: i32, text: &str) -> i32 {
+    // IDA 0x6668b0 (`RBX::TextBox::getPersistentDataCost`): the
+    // `Instance` base cost (0x6668c4, host: `base`) plus 1 — or the
+    // +540 text byte-length / 100 when that exceeds 1 (0x6668d6-
+    // 0x6668f4) — plus 6 (0x666908).
+    let chunks = (text.len() / 100) as i32;
+    base + if chunks > 1 { chunks } else { 1 } + 6
 }
 
 
@@ -129,8 +273,18 @@ pub fn stub_6668b0() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::TextBox(void)")]
 #[doc(alias = "__ZN3RBX7TextBoxC2Ev")]
-pub fn stub_666938() -> ! {
-    todo!("0x666938 __ZN3RBX7TextBoxC2Ev")
+pub fn stub_666938() -> TextBoxState {
+    // IDA 0x666938 (`RBX::TextBox::TextBox`): the `GuiObject` base,
+    // vtables, class descriptor and registrar fold away; the member
+    // stores ground `TextBoxState::default` — +540 `Text` =
+    // "TextBox", +548..+556 the palette-26 `BrickColor::color3`,
+    // +560/+564..+572 zero transparencies/colors, +576 the 1.0
+    // stroke transparency, +580/+581 cleared wrap/scale, +584 = 2 /
+    // +588 = 1 alignments, +604..+606 cleared focus cells, +607
+    // set clear-on-focus, +608 empty focus text, +612/+620 cleared
+    // time/cursor words, +648 cleared key phase, +652 cleared
+    // multi-line, +656/+660 cleared connection cells.
+    TextBoxState::default()
 }
 
 
@@ -139,8 +293,16 @@ pub fn stub_666938() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, RBX::ServiceProvider *, RBX::ServiceProvider *)
 #[doc(alias = "RBX::TextBox::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 #[doc(alias = "__ZN3RBX7TextBox17onServiceProviderEPNS_15ServiceProviderES2_")]
-pub fn stub_666d28() -> ! {
-    todo!("0x666d28 __ZN3RBX7TextBox17onServiceProviderEPNS_15ServiceProviderES2_")
+pub fn stub_666d28() {
+    // IDA 0x666d28 (`RBX::TextBox::onServiceProvider`): disconnects
+    // the +656 connection (0x666d84), zeroes the +624 `RunService`
+    // time source (0x666d96), forwards the +596 `HeartbeatInstance`
+    // cell (0x666d9e), connects `externalReleaseFocus` to the
+    // `UserInputService` signal into +656 (0x666dac-0x666e16) and
+    // re-resolves the +624 source via `find<RunService>`
+    // (0x666e26-0x666e2a). Connections and the service pointer
+    // fold into the host seams (`keyDown`'s `now: Option`,
+    // `capture/gainFocus`'s create gate). Carrier no-op.
 }
 
 
@@ -149,8 +311,30 @@ pub fn stub_666d28() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, const char *, bool)
 #[doc(alias = "RBX::TextBox::externalReleaseFocus(char const*,bool)")]
 #[doc(alias = "__ZN3RBX7TextBox20externalReleaseFocusEPKcb")]
-pub fn stub_666e84() -> ! {
-    todo!("0x666e84 __ZN3RBX7TextBox20externalReleaseFocusEPKcb")
+pub fn stub_666e84(
+    state: &mut TextBoxState,
+    text: &str,
+    submitted: bool,
+    filter_pass: bool,
+    fire_focused: impl Fn(bool),
+) {
+    // IDA 0x666e84 (`RBX::TextBox::externalReleaseFocus`): gated on
+    // +605 (0x666eae); the +608 focus text takes the input
+    // (0x666eee-0x666ef4) and is committed through `setText`
+    // (0x666f28, host: the 0x665da0 twin with its filter seam);
+    // +605/+606/+648 are cleared (0x666f58-0x666f60) and the
+    // `Focused(bool)` signal fires with the input flag (0x666f6c).
+    // The character/datamodel flag clears fold away.
+    if !state.focused {
+        return;
+    }
+    state.focus_text = text.to_owned();
+    let commit = state.focus_text.clone();
+    stub_665da0(state, &commit, filter_pass);
+    state.focused = false;
+    state.external_focus = false;
+    state.key_phase = 0;
+    fire_focused(submitted);
 }
 
 
@@ -158,8 +342,34 @@ pub fn stub_666e84() -> ! {
 // demangled: RBX::TextBox::processMouseEvent(RBX::GuiEvent const&)
 #[doc(alias = "RBX::TextBox::processMouseEvent(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZN3RBX7TextBox17processMouseEventERKNS_8GuiEventE")]
-pub fn stub_667088() -> ! {
-    todo!("0x667088 __ZN3RBX7TextBox17processMouseEventERKNS_8GuiEventE")
+pub fn stub_667088(
+    state: &mut TextBoxState,
+    pressed: bool,
+    inside: bool,
+    click_cursor: Option<usize>,
+    now: f64,
+    filter_pass: bool,
+    input_service_created: bool,
+    fire_box: impl Fn(),
+    fire_bool: impl Fn(bool),
+) -> bool {
+    // IDA 0x667088 (`RBX::TextBox::processMouseEvent`): the
+    // `GuiObject` base call and the `getRect2D` inside-test over
+    // the packed event coords (0x66709e-0x6670fc) fold into
+    // `pressed` (event kind 3) and `inside`. Press inside gains
+    // focus with the click event (0x66710c, host: the 0x667144 twin
+    // — kind 3 takes the setText-commit path); press outside
+    // releases with `submitted = false` (0x667116). Returns the
+    // +605 tuple fill (0x66711a-0x66712e, consumed) or the base
+    // result (folds): host returns the focused flag.
+    if pressed {
+        if inside {
+            stub_667144(state, 3, click_cursor, now, filter_pass, input_service_created, fire_box);
+        } else {
+            stub_667388(state, false, filter_pass, fire_bool);
+        }
+    }
+    state.focused
 }
 
 
@@ -167,8 +377,42 @@ pub fn stub_667088() -> ! {
 // demangled: RBX::TextBox::gainFocus(RBX::GuiEvent const&)
 #[doc(alias = "RBX::TextBox::gainFocus(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZN3RBX7TextBox9gainFocusERKNS_8GuiEventE")]
-pub fn stub_667144() -> ! {
-    todo!("0x667144 __ZN3RBX7TextBox9gainFocusERKNS_8GuiEventE")
+pub fn stub_667144(
+    state: &mut TextBoxState,
+    kind: u32,
+    click_cursor: Option<usize>,
+    now: f64,
+    filter_pass: bool,
+    input_service_created: bool,
+    fire_focused: impl Fn(),
+) {
+    // IDA 0x667144 (`RBX::TextBox::gainFocus`): cursor (+620) takes
+    // the +608 length and +605/+606 are set (0x66717a-0x66717e);
+    // clear-on-focus (+607) empties +608 and zeroes the cursor
+    // (0x667186-0x6671c4), otherwise a kind-3 event commits +608
+    // through `setText` (0x6671d0-0x6671ec, host: the 0x665da0 twin
+    // with its filter seam) and re-seats the cursor through
+    // `getCursorPos` over the event point (0x66720e-0x66723c —
+    // viewport folds into `click_cursor`); the focus time (+612),
+    // a zeroed key phase (+648) and the gated `UserInputService`
+    // `Focused` fire (0x667248-0x6672b8) close out. Character/
+    // datamodel flag sets fold away.
+    state.cursor = state.focus_text.len();
+    state.focused = true;
+    state.external_focus = true;
+    if state.clear_text_on_focus {
+        state.focus_text.clear();
+        state.cursor = 0;
+    } else if kind == 3 {
+        let commit = state.focus_text.clone();
+        stub_665da0(state, &commit, filter_pass);
+        state.cursor = click_cursor.unwrap_or(state.cursor).min(state.focus_text.len());
+    }
+    state.focus_time = now;
+    state.key_phase = 0;
+    if input_service_created {
+        fire_focused();
+    }
 }
 
 
@@ -177,8 +421,23 @@ pub fn stub_667144() -> ! {
 // type: int __fastcall(int, int, void *)
 #[doc(alias = "RBX::TextBox::releaseFocus(RBX::GuiEvent const&,bool)")]
 #[doc(alias = "__ZN3RBX7TextBox12releaseFocusERKNS_8GuiEventEb")]
-pub fn stub_667388() -> ! {
-    todo!("0x667388 __ZN3RBX7TextBox12releaseFocusERKNS_8GuiEventEb")
+pub fn stub_667388(state: &mut TextBoxState, submitted: bool, filter_pass: bool, fire_focused: impl Fn(bool)) {
+    // IDA 0x667388 (`RBX::TextBox::releaseFocus`): gated on +605
+    // (0x6673b4); the +608 focus text is committed through
+    // `setText` (0x667400-0x66740e, host: the 0x665da0 twin with
+    // its filter seam); +605/+606/+648 are cleared
+    // (0x667432-0x66743a) and the `Focused(bool)` signal fires
+    // with the submitted flag (0x667454). The character/datamodel
+    // flag clears fold away.
+    if !state.focused {
+        return;
+    }
+    let commit = state.focus_text.clone();
+    stub_665da0(state, &commit, filter_pass);
+    state.focused = false;
+    state.external_focus = false;
+    state.key_phase = 0;
+    fire_focused(submitted);
 }
 
 
@@ -186,8 +445,23 @@ pub fn stub_667388() -> ! {
 // demangled: RBX::TextBox::getCursorPos(G3D::Vector2)
 #[doc(alias = "RBX::TextBox::getCursorPos(G3D::Vector2)")]
 #[doc(alias = "__ZN3RBX7TextBox12getCursorPosEN3G3D7Vector2E")]
-pub fn stub_667500() -> ! {
-    todo!("0x667500 __ZN3RBX7TextBox12getCursorPosEN3G3D7Vector2E")
+pub fn stub_667500(state: &TextBoxState, pos: i32, past_midpoint: bool) -> usize {
+    // IDA 0x667500 (`RBX::TextBox::getCursorPos`): a valid
+    // `getPosInString` over the input point returns it (0x667556,
+    // host: `pos` — the 0x6665ec twin, viewport folds into the
+    // caller); -1 falls back to the rect-midpoint test
+    // (0x667520-0x66754a, viewport folds into `past_midpoint`):
+    // at/past the midpoint yields the +608 length (0x667550),
+    // else 0. The cursor>=0 assert (TextBox.cpp:444) rides the
+    // `usize` return.
+    if pos >= 0 {
+        return pos as usize;
+    }
+    if past_midpoint {
+        state.focus_text.len()
+    } else {
+        0
+    }
 }
 
 
@@ -196,8 +470,14 @@ pub fn stub_667500() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::TextBox::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX7TextBox17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_667558() -> ! {
-    todo!("0x667558 __ZN3RBX7TextBox17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+pub fn stub_667558(state: &mut TextBoxState, is_text_prop: bool) {
+    // IDA 0x667558 (`RBX::TextBox::onPropertyChanged`): when the
+    // changed descriptor is the `Text` one, the +608 focus text
+    // re-syncs from the +540 committed text; the `GuiObject` tail
+    // result folds away.
+    if is_text_prop {
+        state.focus_text = state.text.clone();
+    }
 }
 
 
@@ -205,8 +485,27 @@ pub fn stub_667558() -> ! {
 // demangled: RBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
 #[doc(alias = "RBX::TextBox::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZN3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_6675f8() -> ! {
-    todo!("0x6675f8 __ZN3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")
+pub fn stub_6675f8(state: &mut TextBoxState, now: f64) {
+    // IDA 0x6675f8 (`RBX::TextBox::onHeartbeat`): gated on +605
+    // (0x667604); phase 1 fires `doKey` with the held
+    // (+628 key, +636 char) once the +640 time is 0.5 past
+    // (0x667612-0x667646, host: the 0x667698 twin) and advances
+    // to phase 2; phase 2 repeats every 0.05 (0x66764e-0x667688).
+    if !state.focused {
+        return;
+    }
+    if state.key_phase == 1 {
+        if state.key_time + 0.5 < now {
+            stub_667698(state, state.key_type, state.key_char);
+            state.key_phase = 2;
+            state.key_time = now;
+        }
+    } else if state.key_phase == 2 {
+        while state.key_time + 0.05 < now {
+            stub_667698(state, state.key_type, state.key_char);
+            state.key_time += 0.05;
+        }
+    }
 }
 
 
@@ -214,8 +513,94 @@ pub fn stub_6675f8() -> ! {
 // demangled: RBX::TextBox::doKey(RBX::TextBox::RepeatKeyState::KeyType,char)
 #[doc(alias = "RBX::TextBox::doKey(RBX::TextBox::RepeatKeyState::KeyType,char)")]
 #[doc(alias = "__ZN3RBX7TextBox5doKeyENS0_14RepeatKeyState7KeyTypeEc")]
-pub fn stub_667698() -> ! {
-    todo!("0x667698 __ZN3RBX7TextBox5doKeyENS0_14RepeatKeyState7KeyTypeEc")
+pub fn stub_667698(state: &mut TextBoxState, key_type: u32, key_char: u8) {
+    // IDA 0x667698 (`RBX::TextBox::doKey(RepeatKeyState::KeyType,
+    // char)`): the switch over the key type (0x6676ee) edits the
+    // +608 focus text around the +620/word-155 cursor (byte
+    // indices — host snaps to char boundaries, ASCII-identical):
+    // 0 backspace — with a char (ctrl+backspace) erases the word
+    // back (0x667708-0x667984: trailing-whitespace skip, word
+    // skip, all-whitespace prefix truncate via LABEL_54 at
+    // 0x667986-0x6679c8), without erases one byte back
+    // (0x6678ee-0x667908); 1 delete erases one byte at the cursor
+    // (0x667788-0x6677ac); 2 inserts the empty string when the
+    // phase is 0 (0x6677ae-0x667842, total no-op — the guard
+    // folds); 3 inserts printable ASCII (33..=126 except 127) or
+    // mask-whitespace (0x667868) and advances (0x667870-0x6678c2);
+    // 4/5 step the cursor within 0..=len (0x6678c8-0x6678e6).
+    match key_type {
+        0 => {
+            if key_char != 0 {
+                let len = state.focus_text.len();
+                let start = (len as isize - 1).min(state.cursor as isize);
+                let bytes = state.focus_text.as_bytes();
+                let mut i = start;
+                while i >= 0 && is_text_ws(bytes[i as usize]) {
+                    i -= 1;
+                }
+                if i <= -1 {
+                    let at = snap_idx(&state.focus_text, state.cursor);
+                    state.focus_text = state.focus_text[at..].to_owned();
+                    state.cursor = 0;
+                    return;
+                }
+                let mut j = i;
+                loop {
+                    if j < 0 {
+                        let at = snap_idx(&state.focus_text, state.cursor);
+                        state.focus_text = state.focus_text[at..].to_owned();
+                        state.cursor = 0;
+                        return;
+                    }
+                    if is_text_ws(bytes[j as usize]) {
+                        break;
+                    }
+                    j -= 1;
+                }
+                let at = snap_idx(&state.focus_text, state.cursor);
+                let j = j as usize;
+                if at != j {
+                    state.focus_text.drain(j..at);
+                    state.cursor = j;
+                }
+            } else if !state.focus_text.is_empty() {
+                let at = snap_idx(&state.focus_text, state.cursor);
+                if at >= 1 {
+                    state.focus_text.remove(char_start_at(&state.focus_text, at));
+                    state.cursor = at - 1;
+                }
+            }
+        }
+        1 => {
+            let at = snap_idx(&state.focus_text, state.cursor);
+            if !state.focus_text.is_empty() && at < state.focus_text.len() {
+                state.focus_text.remove(at);
+            }
+        }
+        2 => {}
+        3 => {
+            if (key_char >= 33 && key_char != 127) || is_text_ws(key_char) {
+                let at = snap_idx(&state.focus_text, state.cursor);
+                // Binary inserts the raw byte; host `char` insert
+                // is byte-identical for ASCII.
+                state.focus_text.insert(at, key_char as char);
+                state.cursor = at + 1;
+            }
+        }
+        4 => {
+            let at = snap_idx(&state.focus_text, state.cursor);
+            if at >= 1 {
+                state.cursor = at - 1;
+            }
+        }
+        5 => {
+            let at = snap_idx(&state.focus_text, state.cursor);
+            if state.focus_text.len() >= at + 1 {
+                state.cursor = at + 1;
+            }
+        }
+        _ => {}
+    }
 }
 
 
@@ -232,8 +617,34 @@ pub fn stub_667b28() {
 // demangled: RBX::TextBox::keyDown(RBX::TextBox::RepeatKeyState::KeyType,RBX::KeyCode,char)
 #[doc(alias = "RBX::TextBox::keyDown(RBX::TextBox::RepeatKeyState::KeyType,RBX::KeyCode,char)")]
 #[doc(alias = "__ZN3RBX7TextBox7keyDownENS0_14RepeatKeyState7KeyTypeENS_7KeyCodeEc")]
-pub fn stub_667b30() -> ! {
-    todo!("0x667b30 __ZN3RBX7TextBox7keyDownENS0_14RepeatKeyState7KeyTypeENS_7KeyCodeEc")
+pub fn stub_667b30(
+    state: &mut TextBoxState,
+    key_type: u32,
+    key_code: u32,
+    key_char: u8,
+    now: Option<f64>,
+) {
+    // IDA 0x667b30 (`RBX::TextBox::keyDown(RepeatKeyState::KeyType,
+    // RBX::KeyCode, char)`): with the phase at 0/1 (0x667b46)
+    // `doKey`s the type/char pair (0x667b4e, host: the 0x667698
+    // twin), latches type/code/char into +628/+632/+636
+    // (0x667b52-0x667b5e), arms phase 1 for every type but 2
+    // (0x667b62-0x667b66) and refreshes the +640 key time from
+    // the +624 `RunService` cell's +140 double when present
+    // (0x667b6a-0x667b76, host: `now: Option` — `None` folds the
+    // null source). The returned cell is caller-ignored.
+    if state.key_phase <= 1 {
+        stub_667698(state, key_type, key_char);
+        state.key_type = key_type;
+        state.key_code = key_code;
+        state.key_char = key_char;
+        if key_type != 2 {
+            state.key_phase = 1;
+        }
+        if let Some(t) = now {
+            state.key_time = t;
+        }
+    }
 }
 
 
@@ -241,8 +652,94 @@ pub fn stub_667b30() -> ! {
 // demangled: RBX::TextBox::processKeyEvent(RBX::GuiEvent const&)
 #[doc(alias = "RBX::TextBox::processKeyEvent(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZN3RBX7TextBox15processKeyEventERKNS_8GuiEventE")]
-pub fn stub_667b80() -> ! {
-    todo!("0x667b80 __ZN3RBX7TextBox15processKeyEventERKNS_8GuiEventE")
+pub fn stub_667b80(
+    state: &mut TextBoxState,
+    event: &TextKeyEvent,
+    now: f64,
+    time_source: Option<f64>,
+    filter_pass: bool,
+    input_service_created: bool,
+    fire_box: impl Fn(),
+    fire_bool: impl Fn(bool),
+) -> bool {
+    // IDA 0x667b80 (`RBX::TextBox::processKeyEvent`): an armed
+    // +604 first gains focus with the key event and disarms
+    // (0x667b8e-0x667ba0 — the kind is 10/11, never 3, so the
+    // 0x667144 twin keeps the cursor). Kind-10 presses dispatch:
+    // escape releases unsubmitted (0x667bde-0x667bea); return
+    // types `\\n` through `keyDown(3, code, 10)` in multi-line
+    // (0x667c1c-0x667c2c) else releases submitted (0x667cc0);
+    // left/right arrow `keyDown(4/5, code, 108/114)`
+    // (0x667c52-0x667c98); clear empties the focus text; delete
+    // `keyDown(1, code, 0)`; backspace `keyDown(0, code, bit)`
+    // with the bit from the modifiers (`0x40` set: 1, else
+    // `(mods >> 7) & 1`); text char pastes through `keyDown(2,
+    // 118, 118)` for ctrl/cmd+v (0x667d6c-0x667dd2) else
+    // `keyDown(3, keycode, ch)`. Kind-11 releases only stop a
+    // matching repeat (0x667bbe-0x667d0e: phase 1/2 plus the
+    // stored +628 type 1/0/4/5/3 for delete/backspace/left/
+    // right/textchar — carriage, multi or not, falls through to
+    // LABEL_42 with no effect at 0x667bc2-0x667bd0); LABEL_40
+    // zeroes the phase on a keycode match (0x667d0a-0x667d0e).
+    // LABEL_42 zeroes the phase for keycodes 303/304
+    // (0x667d24-0x667d28). Returns consumed: the +605 tuple fill
+    // (0x667d2c-0x667d44) or the folded base result.
+    if state.focus_armed {
+        stub_667144(state, event.kind, None, now, filter_pass, input_service_created, fire_box);
+        state.focus_armed = false;
+    }
+    if event.kind == 10 {
+        match event.press {
+            TextKeyPress::Escape => stub_667388(state, false, filter_pass, fire_bool),
+            TextKeyPress::Return => {
+                if state.multi_line {
+                    stub_667b30(state, 3, event.keycode, 10, time_source);
+                } else {
+                    stub_667388(state, true, filter_pass, fire_bool);
+                }
+            }
+            TextKeyPress::Left => stub_667b30(state, 4, event.keycode, 108, time_source),
+            TextKeyPress::Right => stub_667b30(state, 5, event.keycode, 114, time_source),
+            TextKeyPress::Clear => state.focus_text.clear(),
+            TextKeyPress::Delete => stub_667b30(state, 1, event.keycode, 0, time_source),
+            TextKeyPress::Backspace => {
+                let bit = if event.modifiers & 0x40 != 0 {
+                    1
+                } else {
+                    ((event.modifiers >> 7) & 1) as u8
+                };
+                stub_667b30(state, 0, event.keycode, bit, time_source);
+            }
+            TextKeyPress::TextChar => {
+                if event.ch == 118 && (event.modifiers == 1024 || event.modifiers == 2048) {
+                    stub_667b30(state, 2, 118, 118, time_source);
+                } else {
+                    stub_667b30(state, 3, event.keycode, event.ch, time_source);
+                }
+            }
+            TextKeyPress::Other => {}
+        }
+    } else if event.kind == 11 {
+        let expected = match event.press {
+            TextKeyPress::Delete => Some(1),
+            TextKeyPress::Backspace => Some(0),
+            TextKeyPress::Left => Some(4),
+            TextKeyPress::Right => Some(5),
+            TextKeyPress::TextChar => Some(3),
+            _ => None,
+        };
+        if let Some(exp) = expected {
+            if (state.key_phase == 1 || state.key_phase == 2) && state.key_type == exp {
+                if state.key_code == event.keycode {
+                    state.key_phase = 0;
+                }
+            }
+        }
+    }
+    if (event.keycode == 303 || event.keycode == 304) && (state.key_phase == 1 || state.key_phase == 2) {
+        state.key_phase = 0;
+    }
+    state.focused
 }
 
 
@@ -251,8 +748,18 @@ pub fn stub_667b80() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getTextWithCursor(void)")]
 #[doc(alias = "__ZN3RBX7TextBox17getTextWithCursorEv")]
-pub fn stub_667dd8() -> ! {
-    todo!("0x667dd8 __ZN3RBX7TextBox17getTextWithCursorEv")
+pub fn stub_667dd8(state: &TextBoxState, new_fonts: bool) -> String {
+    // IDA 0x667dd8 (`RBX::TextBox::getTextWithCursor`): the
+    // cursor>=0 assert (TextBox.cpp:444) rides the `usize` cursor;
+    // the cursor clamps to the +608 length (0x667e86-0x667ea2)
+    // and the marker goes in at the cursor — `\x01` under the new
+    // fonts flag (0x667ec6-0x667eda), `|` otherwise (0x667ef2).
+    let at = snap_idx(&state.focus_text, state.cursor);
+    let marker = if new_fonts { "\x01" } else { "|" };
+    let mut out = state.focus_text[..at].to_owned();
+    out.push_str(marker);
+    out.push_str(&state.focus_text[at..]);
+    out
 }
 
 

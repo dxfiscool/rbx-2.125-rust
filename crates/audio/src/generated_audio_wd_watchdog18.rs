@@ -42,20 +42,32 @@ pub enum XAlignmentVariant {
     XAlignment(u32),
     Other,
 }
-/// `RBX::TextBox`/`GuiTextMixin` text state behind the Batch-Q/R
-/// descriptors: the `XAlignment` id (member `getXAlignment`, IDA
-/// 0x66871c), the two bool members (`TextWrap`/`TextScaled`; the
-/// deprecated `TextWrapped` alias shares the `TextWrap` member —
-/// grounded: no `setTextWrapped` exists and its descriptor carries
-/// the deprecated attributes, IDA 0x67282c-0x672856), the two float
-/// members (`TextTransparency`/`TextStrokeTransparency`, IDA
-/// 0x6727de/0x672ae4), the two `Color3` members (`TextColor3`/
-/// `TextStrokeColor3`, IDA 0x672782/0x672a94), the `TextColor`
-/// `BrickColor` (IDA 0x672728) and the `Font` id. Defaults ride the
-/// base init (host: cleared; `Left` = 0 is grounded).
-#[derive(Debug, Clone, Default)]
+/// `RBX::TextBox` cutover (IDA 0x666938/0x667144/0x667b30): the
+/// `XAlignment` id (member `getXAlignment`, IDA 0x66871c; word 146,
+/// +584 — C2 stores 2) and the `YAlignment` id (word 147, +588 —
+/// C2 stores 1), the two bool members (`TextWrap`/`TextScaled`
+/// bytes +580/+581; the deprecated `TextWrapped` alias shares the
+/// `TextWrap` member — grounded: no `setTextWrapped` exists and
+/// its descriptor carries the deprecated attributes, IDA
+/// 0x67282c-0x672856), the two float members
+/// (`TextTransparency` word 140, +560 / `TextStrokeTransparency`
+/// word 144, +576 — C2 stores 0.0/1.0, IDA 0x6727de/0x672ae4),
+/// the two `Color3` members (`TextColor3` words 137-139, +548 /
+/// `TextStrokeColor3` +564/+568/+572, IDA 0x672782/0x672a94), the
+/// `TextColor` `BrickColor` (IDA 0x672728; C2 selects palette
+/// index 26), the `Font` id (word 148, +592 — read by the
+/// typesetter calls at 0x66621a/0x6663a0/0x66665a) and the
+/// `FontSize` id (word 136, +544), the `Text` (+540, C2 seeds
+/// "TextBox") and focus-composition (+608) strings, the +620
+/// compose cursor, the +612 focus time, the +628/+632/+636/
+/// +640/+648 held-key (type, code, char, time, phase) repeat
+/// driver, the +604 armed / +605 focused / +606 external-focus /
+/// +607 clear-on-focus / +652 multi-line cells (C2: 0/0/0/1/0).
+/// `Default` replays the C2-grounded values (a fresh `TextBox`).
+#[derive(Debug, Clone)]
 pub struct TextBoxState {
     pub x_alignment: u32,
+    pub y_alignment: u32,
     pub text_wrap: bool,
     pub text_scaled: bool,
     pub text_transparency: f32,
@@ -67,9 +79,50 @@ pub struct TextBoxState {
     pub font_size: u32,
     pub multi_line: bool,
     pub clear_text_on_focus: bool,
+    pub focus_armed: bool,
     pub focused: bool,
+    pub external_focus: bool,
     pub focus_text: String,
     pub text: String,
+    pub cursor: usize,
+    pub key_type: u32,
+    pub key_code: u32,
+    pub key_char: u8,
+    pub key_phase: u32,
+    pub key_time: f64,
+    pub focus_time: f64,
+}
+
+impl Default for TextBoxState {
+    fn default() -> Self {
+        Self {
+            x_alignment: 2,
+            y_alignment: 1,
+            text_wrap: false,
+            text_scaled: false,
+            text_transparency: 0.0,
+            text_stroke_transparency: 1.0,
+            text_color3: [0.0, 0.0, 0.0],
+            text_stroke_color3: [0.0, 0.0, 0.0],
+            text_color: 26,
+            font: 0,
+            font_size: 0,
+            multi_line: false,
+            clear_text_on_focus: true,
+            focus_armed: false,
+            focused: false,
+            external_focus: false,
+            focus_text: String::new(),
+            text: "TextBox".to_owned(),
+            cursor: 0,
+            key_type: 0,
+            key_code: 0,
+            key_char: 0,
+            key_phase: 0,
+            key_time: 0.0,
+            focus_time: 0.0,
+        }
+    }
 }
 /// Bool member selected by a `PropDescriptor<TextBox, bool>`'s
 /// member-pointer pair (IDA 0x67283e-0x6728f6: three objects over

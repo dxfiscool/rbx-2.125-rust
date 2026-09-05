@@ -1371,15 +1371,20 @@ pub fn stub_665c78(state: &mut TextBoxState, clear_text_on_focus: bool) -> bool 
 #[doc(alias = "RBX::TextBox::captureFocus(void)")]
 #[doc(alias = "__ZN3RBX7TextBox12captureFocusEv")]
 pub fn stub_665c98(state: &mut TextBoxState, input_service_created: bool, fire_focused: impl Fn()) {
-    // IDA 0x665c98 (`RBX::TextBox::captureFocus`): the +155/+152
-    // cursor dance folds away (0x665cce); +605 is set (0x665cd8),
-    // the +608 string is cleared (0x665cdc), +155 is zeroed
-    // (0x665ce2) and the +604 focused flag is set (0x665ce6);
-    // `create<UserInputService>` (0x665cea) gates `shared_from`
-    // plus the `Focused` signal fire (0x665d28-0x665d44). Host:
-    // the flag, the cleared focus text and the gated closure call.
+    // IDA 0x665c98 (`RBX::TextBox::captureFocus`): the cursor
+    // (+155) first takes the +608 length (0x665cce), then +605 AND
+    // +606 are set by the word store (0x665cd8), the +608 string
+    // is cleared (0x665cdc), +155 is zeroed (0x665ce2) and +604 is
+    // armed (0x665ce6); `create<UserInputService>` (0x665cea)
+    // gates `shared_from` plus the `Focused` signal fire
+    // (0x665d28-0x665d44). Host: net cursor 0, both focus flags,
+    // the cleared focus text, the armed cell and the gated call.
+    state.cursor = state.focus_text.len();
     state.focused = true;
+    state.external_focus = true;
     state.focus_text.clear();
+    state.cursor = 0;
+    state.focus_armed = true;
     if input_service_created {
         fire_focused();
     }
