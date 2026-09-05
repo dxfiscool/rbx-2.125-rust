@@ -43,6 +43,22 @@ pub struct StoreMgr {
 /// `StoreManager` singleton handle (IDA 0x557dc: `dispatch_once`
 /// 0x55808..0x55832).
 static STOREMAN_SINGLETON: LazyLock<u32> = LazyLock::new(|| 1);
+/// `__GLOBAL__I_a_29` one-shot latch (IDA 0x57fec).
+static GLOBAL_A29_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `UIWebViewCacheManager` observable state (IDA 0x58184..0x58a08): the
+/// precache switch, cache readiness, preload URLs, preload/flush/home
+/// counts. The web-view dictionary folds into the host (handles index
+/// `pages`).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct WebCache {
+    pub precaching: bool,
+    pub initialized: bool,
+    pub pages: Vec<String>,
+    pub preloaded: u32,
+    pub flushed: u32,
+    pub homed: u32,
+}
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, int, int)
@@ -757,175 +773,269 @@ pub fn stub_0x57528() {
 // 0x57530 — -[StoreManager failedTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager failedTransaction:]")]
-pub fn stub_0x57530() -> ! {
-    todo!("0x57530 -[StoreManager failedTransaction:]")
+pub fn stub_0x57530(mgr: &mut StoreMgr) {
+    // IDA 0x57530: `failedTransaction:` finishes the transaction
+    // (0x57556..0x57568) and resets the manager (0x5757a); the
+    // error-log/alert glue folds into the host.
+    mgr.failed += 1;
+    stub_0x55c68(mgr);
 }
 
 // 0x5763c — -[StoreManager restoreTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager restoreTransaction:]")]
-pub fn stub_0x5763c() -> ! {
-    todo!("0x5763c -[StoreManager restoreTransaction:]")
+pub fn stub_0x5763c(mgr: &mut StoreMgr) {
+    // IDA 0x5763c: `restoreTransaction:` books a restored purchase
+    // (twin of the `completeTransaction:` booking in 0x56ad0); the
+    // receipt glue folds into the host.
+    mgr.completed += 1;
 }
 
 // 0x57740 — -[StoreManager paymentQueue:updatedTransactions:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager paymentQueue:updatedTransactions:]")]
-pub fn stub_0x57740() -> ! {
-    todo!("0x57740 -[StoreManager paymentQueue:updatedTransactions:]")
+pub fn stub_0x57740(mgr: &mut StoreMgr, states: &[u32]) {
+    // IDA 0x57740: `paymentQueue:updatedTransactions:` enumerates the
+    // transactions (0x5778e..) and dispatches purchased/failed/restored
+    // (1/2/3); the queue glue folds into the host.
+    for state in states {
+        match state {
+            1 | 3 => mgr.completed += 1,
+            2 => mgr.failed += 1,
+            _ => {}
+        }
+    }
 }
 
 // 0x5784c — -[StoreManager encode:length:]
 // type: id __cdecl(StoreManager *self, SEL, const char *, int)
 #[doc(alias = "-[StoreManager encode:length:]")]
-pub fn stub_0x5784c() -> ! {
-    todo!("0x5784c -[StoreManager encode:length:]")
+pub fn stub_0x5784c(data: &[u8]) -> String {
+    // IDA 0x5784c: `encode:length:` base64-encodes the bytes (output
+    // length 4*(n+2)/3 at 0x57888, 3-byte groups at 0x578a4..); the
+    // mutable-data glue folds into the host.
+    const ALPHA: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let mut out = String::new();
+    for chunk in data.chunks(3) {
+        let b0 = chunk[0] as u32;
+        let b1 = *chunk.get(1).unwrap_or(&0) as u32;
+        let b2 = *chunk.get(2).unwrap_or(&0) as u32;
+        let n = (b0 << 16) | (b1 << 8) | b2;
+        out.push(ALPHA[((n >> 18) & 63) as usize] as char);
+        out.push(ALPHA[((n >> 12) & 63) as usize] as char);
+        out.push(if chunk.len() > 1 { ALPHA[((n >> 6) & 63) as usize] as char } else { '=' });
+        out.push(if chunk.len() > 2 { ALPHA[(n & 63) as usize] as char } else { '=' });
+    }
+    out
 }
 
 // 0x5796c — -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]
 // type: void __cdecl(StoreManager *self, SEL, id, id, id, id)
 #[doc(alias = "-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")]
-pub fn stub_0x5796c() -> ! {
-    todo!("0x5796c -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")
+pub fn stub_0x5796c(mgr: &mut StoreMgr) {
+    // IDA 0x5796c: `verifyReceipt:...` posts the receipt to the server
+    // queue (0x57da0-shape flow runs on reply); the net glue folds into
+    // the host.
+    mgr.queued += 1;
 }
 
 // 0x57da0 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke
 // type: void __fastcall(int, void *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_0x57da0() -> ! {
-    todo!("0x57da0 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_0x57da0(mgr: &mut StoreMgr) {
+    // IDA 0x57da0: the verify-reply block books a verified purchase;
+    // the receipt-parse glue folds into the host.
+    mgr.completed += 1;
 }
 
 // 0x57f28 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")]
-pub fn stub_0x57f28() -> ! {
-    todo!("0x57f28 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")
+pub fn stub_0x57f28() {
+    // IDA 0x57f28: the success block shows the purchase alert (0x57f52..);
+    // folds into the host — no-op.
 }
 
 // 0x57f98 — ___copy_helper_block_319
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_319")]
-pub fn stub_0x57f98() -> ! {
-    todo!("0x57f98 ___copy_helper_block_319")
+pub fn stub_0x57f98() {
+    // IDA 0x57f98: `__copy_helper_block_319` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x57fc8 — ___destroy_helper_block_320
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_320")]
-pub fn stub_0x57fc8() -> ! {
-    todo!("0x57fc8 ___destroy_helper_block_320")
+pub fn stub_0x57fc8() {
+    // IDA 0x57fc8: `__destroy_helper_block_320` releases captures (pair
+    // of 0x57f98); `Arc` glue covers it — no-op.
 }
 
 // 0x57fec — __GLOBAL__I_a_29
 #[doc(alias = "global constructor keyed to_a_29")]
-pub fn stub_0x57fec() -> ! {
-    todo!("0x57fec global constructor keyed to_a_29")
+pub fn stub_0x57fec() -> u32 {
+    // IDA 0x57fec: `__GLOBAL__I_a_29` — see `GLOBAL_A29_INIT`.
+    *GLOBAL_A29_INIT
 }
 
 // 0x58184 — -[UIWebViewCacheManager init]
 // type: UIWebViewCacheManager *__cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager init]")]
-pub fn stub_0x58184() -> ! {
-    todo!("0x58184 -[UIWebViewCacheManager init]")
+pub fn stub_0x58184() -> WebCache {
+    // IDA 0x58184: `UIWebViewCacheManager init` chains to super
+    // (0x581a2..0x581ac) and clears the precache/readiness latches
+    // (0x581d2..0x581d8); the queue/observer glue folds into the host
+    // — see `stub_0x582f8`.
+    WebCache::default()
 }
 
 // 0x582f8 — ___29-[UIWebViewCacheManager init]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___29-[UIWebViewCacheManager init]_block_invoke")]
-pub fn stub_0x582f8() -> ! {
-    todo!("0x582f8 ___29-[UIWebViewCacheManager init]_block_invoke")
+pub fn stub_0x582f8(cache: &mut WebCache, precaching: bool) {
+    // IDA 0x582f8: the init block reads the precache switch from the
+    // settings service (0x58328..0x58330).
+    cache.precaching = precaching;
 }
 
 // 0x58334 — ___copy_helper_block__17
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__17")]
-pub fn stub_0x58334() -> ! {
-    todo!("0x58334 ___copy_helper_block__17")
+pub fn stub_0x58334() {
+    // IDA 0x58334: `__copy_helper_block__17` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x58340 — ___destroy_helper_block__17
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__17")]
-pub fn stub_0x58340() -> ! {
-    todo!("0x58340 ___destroy_helper_block__17")
+pub fn stub_0x58340() {
+    // IDA 0x58340: `__destroy_helper_block__17` releases captures (pair
+    // of 0x58334); `Arc` glue covers it — no-op.
 }
 
 // 0x58348 — -[UIWebViewCacheManager dealloc]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager dealloc]")]
-pub fn stub_0x58348() -> ! {
-    todo!("0x58348 -[UIWebViewCacheManager dealloc]")
+pub fn stub_0x58348(cache: &mut WebCache) {
+    // IDA 0x58348: `dealloc` flushes (0x5835e) and releases the page
+    // list (0x5837c); drop glue covers it and the record resets.
+    stub_0x58588(cache);
+    cache.pages.clear();
 }
 
 // 0x583a8 — -[UIWebViewCacheManager baseUrlDidChange:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager baseUrlDidChange:]")]
-pub fn stub_0x583a8() -> ! {
-    todo!("0x583a8 -[UIWebViewCacheManager baseUrlDidChange:]")
+pub fn stub_0x583a8(cache: &mut WebCache) {
+    // IDA 0x583a8: `baseUrlDidChange:` rebuilds the preload list
+    // (0x583b4); the stale cache is dropped and the rebuild folds into
+    // the host.
+    cache.initialized = false;
+    cache.pages.clear();
 }
 
 // 0x583b8 — -[UIWebViewCacheManager gotDidLeaveGameNotification:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager gotDidLeaveGameNotification:]")]
-pub fn stub_0x583b8() -> ! {
-    todo!("0x583b8 -[UIWebViewCacheManager gotDidLeaveGameNotification:]")
+pub fn stub_0x583b8(cache: &mut WebCache) -> bool {
+    // IDA 0x583b8: `gotDidLeaveGameNotification:` preloads when cold
+    // (0x583d0), else sends the cached views home (0x583ea).
+    if !stub_0x585dc(cache) {
+        stub_0x58858(cache);
+    }
+    cache.initialized
 }
 
 // 0x583f0 — -[UIWebViewCacheManager setPagesToPreload]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager setPagesToPreload]")]
-pub fn stub_0x583f0() -> ! {
-    todo!("0x583f0 -[UIWebViewCacheManager setPagesToPreload]")
+pub fn stub_0x583f0(cache: &mut WebCache, pages: &[&str]) {
+    // IDA 0x583f0: `setPagesToPreload` rebuilds the preload list from
+    // the base URL and home buttons (0x58414..); the URL glue folds into
+    // the host.
+    cache.pages = pages.iter().map(|s| s.to_string()).collect();
 }
 
 // 0x58574 — ___copy_helper_block_55
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_55")]
-pub fn stub_0x58574() -> ! {
-    todo!("0x58574 ___copy_helper_block_55")
+pub fn stub_0x58574() {
+    // IDA 0x58574: `__copy_helper_block_55` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x58588 — -[UIWebViewCacheManager flush]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager flush]")]
-pub fn stub_0x58588() -> ! {
-    todo!("0x58588 -[UIWebViewCacheManager flush]")
+pub fn stub_0x58588(cache: &mut WebCache) {
+    // IDA 0x58588: `flush` drops the cache when live (0x5859a..0x585c0)
+    // and counts the flush.
+    if cache.initialized {
+        cache.initialized = false;
+        cache.flushed += 1;
+    }
 }
 
 // 0x585dc — -[UIWebViewCacheManager preloadDesignatedWebViews]
 // type: char __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager preloadDesignatedWebViews]")]
-pub fn stub_0x585dc() -> ! {
-    todo!("0x585dc -[UIWebViewCacheManager preloadDesignatedWebViews]")
+pub fn stub_0x585dc(cache: &mut WebCache) -> bool {
+    // IDA 0x585dc: `preloadDesignatedWebViews` `dispatch_async`s the
+    // preload block when precaching and cold (0x585ee..0x58650); the
+    // queue hop folds into the caller — see `stub_0x58658`.
+    if cache.precaching && !cache.initialized {
+        stub_0x58658(cache);
+        cache.preloaded += 1;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x58658 — ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")]
-pub fn stub_0x58658() -> ! {
-    todo!("0x58658 ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")
+pub fn stub_0x58658(cache: &mut WebCache) {
+    // IDA 0x58658: the preload block builds the web-view dictionary and
+    // loads every page (0x58692..); the WebKit glue folds into the host.
+    cache.initialized = true;
 }
 
 // 0x58858 — -[UIWebViewCacheManager designatedWebviewsToHomePages]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager designatedWebviewsToHomePages]")]
-pub fn stub_0x58858() -> ! {
-    todo!("0x58858 -[UIWebViewCacheManager designatedWebviewsToHomePages]")
+pub fn stub_0x58858(cache: &mut WebCache) {
+    // IDA 0x58858: `designatedWebviewsToHomePages` `dispatch_async`s the
+    // home-navigation block while precaching (0x5886c..0x588b0); the
+    // queue hop folds into the caller — see `stub_0x588b8`.
+    if cache.precaching {
+        stub_0x588b8(cache);
+    }
 }
 
 // 0x588b8 — ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")]
-pub fn stub_0x588b8() -> ! {
-    todo!("0x588b8 ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")
+pub fn stub_0x588b8(cache: &mut WebCache) {
+    // IDA 0x588b8: the home-navigation block reloads every cached view
+    // at its home page (0x5890c..); the navigation folds into the host.
+    cache.homed += 1;
 }
 
 // 0x58a08 — -[UIWebViewCacheManager getPreloadedWebViewForUrl:]
 // type: id __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager getPreloadedWebViewForUrl:]")]
-pub fn stub_0x58a08() -> ! {
-    todo!("0x58a08 -[UIWebViewCacheManager getPreloadedWebViewForUrl:]")
+pub fn stub_0x58a08(cache: &WebCache, url: &str) -> Option<u32> {
+    // IDA 0x58a08: `getPreloadedWebViewForUrl:` answers the cached view
+    // for the URL when live and precaching (0x58a22..0x58a6e), else null;
+    // the dictionary folds into the host and handles index `pages`.
+    if cache.initialized && cache.precaching {
+        cache.pages.iter().position(|p| p == url).map(|i| i as u32)
+    } else {
+        None
+    }
 }
 
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
@@ -1465,5 +1575,71 @@ mod store_purchase_batch_tests {
         stub_0x57434();
         stub_0x5751c();
         stub_0x57528();
+    }
+}
+
+#[cfg(test)]
+mod store_cache_batch_tests {
+    use super::*;
+
+    #[test]
+    fn transaction_courts() {
+        let mut mgr = stub_0x55664();
+        stub_0x57530(&mut mgr);
+        assert_eq!(mgr.failed, 1);
+        assert_eq!(mgr.retries, 0);
+        stub_0x5763c(&mut mgr);
+        assert_eq!(mgr.completed, 1);
+        stub_0x57740(&mut mgr, &[0, 1, 2, 3, 4, 1]);
+        assert_eq!(mgr.completed, 4);
+        assert_eq!(mgr.failed, 2);
+        stub_0x5796c(&mut mgr);
+        stub_0x57da0(&mut mgr);
+        assert_eq!(mgr.completed, 5);
+        assert_eq!(mgr.queued, 1);
+        stub_0x57f28();
+        stub_0x57f98();
+        stub_0x57fc8();
+        assert_eq!(stub_0x57fec(), 1);
+    }
+
+    #[test]
+    fn receipt_codec() {
+        assert_eq!(stub_0x5784c(&[]), "");
+        assert_eq!(stub_0x5784c(b"f"), "Zg==");
+        assert_eq!(stub_0x5784c(b"fo"), "Zm8=");
+        assert_eq!(stub_0x5784c(b"foo"), "Zm9v");
+        assert_eq!(stub_0x5784c(b"foob"), "Zm9vYg==");
+    }
+
+    #[test]
+    fn web_cache() {
+        let mut cache = stub_0x58184();
+        assert!(!stub_0x585dc(&mut cache));
+        stub_0x582f8(&mut cache, true);
+        stub_0x583f0(&mut cache, &["https://a/", "https://b/"]);
+        assert!(stub_0x585dc(&mut cache));
+        assert_eq!(cache.preloaded, 1);
+        assert!(!stub_0x585dc(&mut cache));
+        assert_eq!(stub_0x58a08(&cache, "https://b/"), Some(1));
+        assert_eq!(stub_0x58a08(&cache, "https://z/"), None);
+        assert!(stub_0x583b8(&mut cache));
+        stub_0x58588(&mut cache);
+        assert!(!cache.initialized);
+        assert_eq!(cache.flushed, 1);
+        assert_eq!(stub_0x58a08(&cache, "https://a/"), None);
+        assert!(stub_0x583b8(&mut cache));
+        assert_eq!(cache.homed, 1);
+        stub_0x583a8(&mut cache);
+        assert!(cache.pages.is_empty());
+        stub_0x58348(&mut cache);
+        assert!(cache.pages.is_empty());
+        stub_0x58334();
+        stub_0x58340();
+        stub_0x58574();
+        stub_0x58658(&mut cache);
+        assert!(cache.initialized);
+        stub_0x58858(&mut cache);
+        assert_eq!(cache.homed, 2);
     }
 }
