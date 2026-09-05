@@ -138,36 +138,62 @@ pub unsafe fn destroy_block_capture_55098(block: *mut core::ffi::c_void) {
 
 // 0x554cc — __GLOBAL__I_a_28
 #[doc(alias = "global constructor keyed to_a_28")]
-pub fn stub_554cc() -> ! {
-    todo!("0x554cc global constructor keyed to_a_28")
+pub fn init_global_a28_554cc() {
+// IDA 0x554cc: global ctor keyed to _a_28 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x4f7bc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x557c8 — ___copy_helper_block__16
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__16")]
-pub fn stub_557c8() -> ! {
-    todo!("0x557c8 ___copy_helper_block__16")
+pub unsafe fn copy_block_capture_557c8(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x557c8: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the __15 pair.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x557d4 — ___destroy_helper_block__16
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__16")]
-pub fn stub_557d4() -> ! {
-    todo!("0x557d4 ___destroy_helper_block__16")
+pub unsafe fn destroy_block_capture_557d4(block: *mut core::ffi::c_void) {
+// IDA 0x557d4: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __15 pair.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5586c — ___copy_helper_block_23
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_23")]
-pub fn stub_5586c() -> ! {
-    todo!("0x5586c ___copy_helper_block_23")
+pub unsafe fn copy_block_capture_5586c(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5586c: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the __15 pair.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x55878 — ___destroy_helper_block_24
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_24")]
-pub fn stub_55878() -> ! {
-    todo!("0x55878 ___destroy_helper_block_24")
+pub unsafe fn destroy_block_capture_55878(block: *mut core::ffi::c_void) {
+// IDA 0x55878: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __15 pair.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x573b0 — ___copy_helper_block_212

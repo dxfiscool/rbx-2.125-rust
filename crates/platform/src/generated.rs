@@ -1745,6 +1745,7 @@ pub struct NavBarState {
     loading_label: parking_lot::Mutex<Option<ControlId>>,
     btn_home: parking_lot::Mutex<Option<ControlId>>,
     robux_image_view: parking_lot::Mutex<Option<ControlId>>,
+    tix_image_view: parking_lot::Mutex<Option<ControlId>>,
     web_view_id: parking_lot::Mutex<Option<ControlId>>,
     web_delegate_set: AtomicBool,
     web_last_request: parking_lot::Mutex<String>,
@@ -2201,6 +2202,341 @@ impl NavBarState {
 }
 static NAVBAR: std::sync::LazyLock<NavBarState> =
     std::sync::LazyLock::new(NavBarState::default);
+impl NavBarState {
+    /// `-setRobuxImageView:` (IDA 0x55474): retained assign (offset 212).
+    pub fn set_robux_image_view(&self, view: Option<ControlId>) {
+        *self.robux_image_view.lock() = view;
+    }
+    /// `-tixImageView` (IDA 0x55498).
+    pub fn tix_image_view(&self) -> Option<ControlId> {
+        *self.tix_image_view.lock()
+    }
+    /// `-setTixImageView:` (IDA 0x554a8): retained assign (offset 216).
+    pub fn set_tix_image_view(&self, view: Option<ControlId>) {
+        *self.tix_image_view.lock() = view;
+    }
+}
+/// Host id standing in for the `StoreManager` `self`.
+const STORE_ID: ControlId = 14;
+/// `LastPurchaseTime*` defaults key used by `recordPurchaseTime:` for
+/// non-Robux/non-BC products (IDA 0x55e7a..0x55e92: the product id itself).
+/// Minimal `StoreManager` counterpart (IDA 0x55664..0x572e4): purchase
+/// intervals, retry state, purchase-time defaults and observable counters
+/// for the StoreKit steps out of slice.
+#[derive(Debug, Default)]
+pub struct StoreState {
+    initialized: AtomicBool,
+    robux_interval: AtomicI32,
+    bc_interval: AtomicI32,
+    catalog_interval: AtomicI32,
+    retry_giveup_minutes: AtomicI32,
+    retries: AtomicU32,
+    observing_queue: AtomicBool,
+    pending_user: parking_lot::Mutex<String>,
+    last_times: parking_lot::Mutex<std::collections::BTreeMap<String, f64>>,
+    first_failure: parking_lot::Mutex<f64>,
+    stored_retries: AtomicU32,
+    last_product: parking_lot::Mutex<String>,
+    last_launched_product: parking_lot::Mutex<String>,
+    player_updates: AtomicU32,
+    requests: AtomicU32,
+    requests_done: AtomicU32,
+    warns: AtomicU32,
+    payments: AtomicU32,
+    finishes: AtomicU32,
+    alerts: AtomicU32,
+    alert_text: parking_lot::Mutex<String>,
+    analytics: AtomicU32,
+    delayed_alerts: AtomicU32,
+    retries_scheduled: AtomicU32,
+    resets: AtomicU32,
+    releases: AtomicU32,
+}
+impl StoreState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    fn alert(&self, text: &str) {
+        *self.alert_text.lock() = text.to_owned();
+        self.bump(&self.alerts);
+    }
+    /// `-init` (IDA 0x55664): super init; intervals 5/5/5 minutes and a
+    /// 20-minute give-up (0x556ac..0x556ce), the async settings block
+    /// (inline), retries 0, and the payment-queue observer.
+    pub fn init_store(&self) -> Option<ControlId> {
+        self.robux_interval.store(5, Ordering::SeqCst);
+        self.bc_interval.store(5, Ordering::SeqCst);
+        self.catalog_interval.store(5, Ordering::SeqCst);
+        self.retry_giveup_minutes.store(20, Ordering::SeqCst);
+        self.retries.store(0, Ordering::SeqCst);
+        self.observing_queue.store(true, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(STORE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `__20-init_block_invoke` (IDA 0x55754): the settings-service
+    /// intervals var21..var24 land in +8..+20.
+    pub fn apply_settings(&self, robux: i32, bc: i32, catalog: i32, retry: i32) {
+        self.robux_interval.store(robux, Ordering::SeqCst);
+        self.bc_interval.store(bc, Ordering::SeqCst);
+        self.catalog_interval.store(catalog, Ordering::SeqCst);
+        self.retry_giveup_minutes.store(retry, Ordering::SeqCst);
+    }
+    pub fn intervals(&self) -> (i32, i32, i32, i32) {
+        (
+            self.robux_interval.load(Ordering::SeqCst),
+            self.bc_interval.load(Ordering::SeqCst),
+            self.catalog_interval.load(Ordering::SeqCst),
+            self.retry_giveup_minutes.load(Ordering::SeqCst),
+        )
+    }
+    /// `canMakePurchase` (IDA 0x55880): refreshes player info, returns
+    /// `canMakePayments`.
+    pub fn can_make_purchase(&self, can_pay: bool) -> bool {
+        self.bump(&self.player_updates);
+        can_pay
+    }
+    /// `request:didFailWithError:` (IDA 0x558d0): logs the failure.
+    pub fn request_failed(&self) {
+        self.bump(&self.warns);
+    }
+    pub fn warn_count(&self) -> u32 {
+        self.warns.load(Ordering::SeqCst)
+    }
+    /// `requestDidFinish:` (IDA 0x559d0): logs "Request finished".
+    pub fn request_finished(&self) {
+        self.bump(&self.requests_done);
+    }
+    pub fn requests_done_count(&self) -> u32 {
+        self.requests_done.load(Ordering::SeqCst)
+    }
+    fn interval_for(&self, product: &str) -> (String, i32) {
+        if product.ends_with("Robux") {
+            (
+                "LastPurchaseTimeRobux".to_owned(),
+                self.robux_interval.load(Ordering::SeqCst),
+            )
+        } else if product.ends_with("monthBC")
+            || product.ends_with("monthOBC")
+            || product.ends_with("monthTBC")
+        {
+            (
+                "LastPurchaseTimeBC".to_owned(),
+                self.bc_interval.load(Ordering::SeqCst),
+            )
+        } else {
+            (
+                product.to_owned(),
+                self.catalog_interval.load(Ordering::SeqCst),
+            )
+        }
+    }
+    /// `restrictTimeBoundPurchase:` (IDA 0x55a9c): an unset last time
+    /// allows, else now must pass last + 60*interval.
+    pub fn restrict_purchase(&self, product: &str, now: f64, last: f64) -> bool {
+        if last == 0.0 {
+            return true;
+        }
+        let (_, minutes) = self.interval_for(product);
+        now >= last + 60.0 * minutes as f64
+    }
+    /// `-reset` (IDA 0x55c68): retries 0 plus the pending/retry/first-failure
+    /// removals and a sync.
+    pub fn reset_state(&self) {
+        self.retries.store(0, Ordering::SeqCst);
+        *self.pending_user.lock() = String::new();
+        *self.first_failure.lock() = 0.0;
+        self.stored_retries.store(0, Ordering::SeqCst);
+        self.bump(&self.resets);
+    }
+    pub fn reset_count(&self) -> u32 {
+        self.resets.load(Ordering::SeqCst)
+    }
+    pub fn retry_count(&self) -> u32 {
+        self.retries.load(Ordering::SeqCst)
+    }
+    /// `recordPurchaseTime:` (IDA 0x55d04): suffix picks the key.
+    pub fn record_purchase_time(&self, product: &str, now: f64) {
+        let (key, _) = self.interval_for(product);
+        self.last_times.lock().insert(key, now);
+    }
+    pub fn last_time_for(&self, key: &str) -> f64 {
+        self.last_times.lock().get(key).copied().unwrap_or(0.0)
+    }
+    /// `productsRequest:didReceiveResponse:` (IDA 0x55e94): unpayable
+    /// alerts parental-control; empty products alert CannotMakePurchase;
+    /// with no pending transactions an empty username alerts SessionExpired
+    /// and the time gate queues the payment; pending transactions need a
+    /// matching user or sign-in. Returns whether a payment queued.
+    pub fn products_response(
+        &self,
+        can_purchase: bool,
+        product: Option<String>,
+        pending_txns: usize,
+        username: &str,
+        pending_user: &str,
+        time_ok: bool,
+    ) -> bool {
+        if !can_purchase {
+            self.alert("CannotPurchaseBecauseParentalControl");
+            return false;
+        }
+        let Some(product) = product else {
+            self.bump(&self.analytics);
+            self.bump(&self.analytics);
+            self.alert("CannotMakePurchase");
+            return false;
+        };
+        if pending_txns < 1 {
+            self.bump(&self.analytics);
+            if username.is_empty() {
+                self.alert("SessionExpired");
+                self.bump(&self.analytics);
+                return false;
+            }
+            if time_ok {
+                *self.pending_user.lock() = username.to_owned();
+                *self.last_product.lock() = product;
+                self.bump(&self.payments);
+                return true;
+            }
+            self.alert("Cooldown");
+            return false;
+        }
+        if username == pending_user {
+            self.alert("HavePendingTransactionError");
+            return false;
+        }
+        self.alert("UserNeedsToSignIn");
+        false
+    }
+    pub fn payment_count(&self) -> u32 {
+        self.payments.load(Ordering::SeqCst)
+    }
+    pub fn alert_count(&self) -> u32 {
+        self.alerts.load(Ordering::SeqCst)
+    }
+    pub fn last_alert(&self) -> String {
+        self.alert_text.lock().clone()
+    }
+    /// `requestProductData:` (IDA 0x56894): single-identifier set, delegate
+    /// self, start.
+    pub fn request_product_data(&self, product: &str) {
+        *self.last_product.lock() = product.to_owned();
+        self.bump(&self.requests);
+    }
+    pub fn request_count(&self) -> u32 {
+        self.requests.load(Ordering::SeqCst)
+    }
+    /// `purchaseProduct:` (IDA 0x56914): payable requests product data;
+    /// parental control alerts instead.
+    pub fn purchase_product(&self, can_pay: bool, product: &str) {
+        if self.can_make_purchase(can_pay) {
+            self.request_product_data(product);
+        } else {
+            self.alert("CannotPurchaseBecauseParentalControl");
+        }
+    }
+    /// `verifyIfCorrectUser` (IDA 0x569b4): no (or empty) pending user
+    /// yields 2; otherwise 1 when the current name differs, 0 on match.
+    pub fn verify_user(&self, pending: Option<String>, current: &str, logged_in: bool) -> u32 {
+        let Some(name) = pending else { return 2 };
+        if name.is_empty() {
+            return 2;
+        }
+        let current = if logged_in { current } else { "" };
+        u32::from(current != name)
+    }
+    /// `completeTransaction:` (IDA 0x56ad0): offline alerts; a mismatch
+    /// retries within the window else verifies; no pending user needs
+    /// sign-in. Returns whether the receipt verifies.
+    pub fn complete_transaction(
+        &self,
+        reachable: bool,
+        verify: u32,
+        logged_in: bool,
+        within_window: bool,
+    ) -> bool {
+        if !reachable {
+            self.alert("ConnectionError");
+            return false;
+        }
+        if verify == 1 {
+            if within_window {
+                self.bump(&self.retries_scheduled);
+                return false;
+            }
+        } else if verify == 2 {
+            if !logged_in {
+                self.alert("AnyUserNeedsToSignIn");
+                return false;
+            }
+        } else if verify != 0 {
+            return false;
+        }
+        true
+    }
+    /// `endTransaction:...` (IDA 0x56d80): success finishes, resets,
+    /// records and tracks Success (with relaunch-retry accounting); failure
+    /// bumps retries, tracks the retry analytics, records the first-failure
+    /// time, and past the limit fires the delayed block. Returns whether
+    /// the transaction finished.
+    pub fn end_transaction(&self, success: bool, stored_retries: u32, within_window: bool) -> bool {
+        if success {
+            self.bump(&self.finishes);
+            self.reset_state();
+            self.bump(&self.analytics);
+            if stored_retries == 0 {
+                return true;
+            }
+            self.retries.store(1, Ordering::SeqCst);
+            self.bump(&self.analytics);
+            return true;
+        }
+        let old = self.retries.load(Ordering::SeqCst);
+        self.retries.store(old + 1, Ordering::SeqCst);
+        self.bump(&self.analytics);
+        if old == 0 {
+            *self.first_failure.lock() = 1.0;
+        }
+        if old + 1 >= 10 {
+            self.delayed_block();
+            return false;
+        }
+        if !within_window {
+            self.bump(&self.finishes);
+        }
+        false
+    }
+    pub fn finish_count(&self) -> u32 {
+        self.finishes.load(Ordering::SeqCst)
+    }
+    /// `__63-endTransaction_block_invoke` (IDA 0x572e4): the delayed
+    /// TransactionDelayedBody alert plus TooManyRetries analytics.
+    pub fn delayed_block(&self) {
+        self.alert("TransactionDelayedBody");
+        self.bump(&self.analytics);
+        self.bump(&self.delayed_alerts);
+    }
+    pub fn delayed_alert_count(&self) -> u32 {
+        self.delayed_alerts.load(Ordering::SeqCst)
+    }
+}
+static STORE: std::sync::LazyLock<StoreState> =
+    std::sync::LazyLock::new(StoreState::default);
+/// `+getStoreMgr` cell (IDA 0x557dc, `dword_130C600`): the `dispatch_once`
+/// initializer lives with the cell.
+static STORE_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        STORE.init_store();
+        STORE_ID
+    });
+/// Host `+getStoreMgr` (IDA 0x557dc).
+pub fn shared_store_id() -> Option<ControlId> {
+    Some(*STORE_SHARED)
+}
 /// Minimal `GameKeyboard` counterpart (`Client/iOS/GameKeyboard.*` ivars,
 /// IDA 0x4c6ac..0x4d220): the singleton, the hidden `UITextField` + its text
 /// / placeholder, the bound `shared_ptr<TextBox>`, and observable counters
@@ -8099,22 +8435,25 @@ pub fn stub_55464() -> Option<ControlId> {
 // 0x55474 — -[RobloxNavBarViewController setRobuxImageView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setRobuxImageView:]")]
-pub fn stub_55474() -> ! {
-    todo!("0x55474 -[RobloxNavBarViewController setRobuxImageView:]")
+pub fn stub_55474(view: Option<ControlId>) {
+    // IDA 0x55474 `-setRobuxImageView:`: retained assign (0x55490).
+    NAVBAR.set_robux_image_view(view);
 }
 
 // 0x55498 — -[RobloxNavBarViewController tixImageView]
 // type: UIImageView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController tixImageView]")]
-pub fn stub_55498() -> ! {
-    todo!("0x55498 -[RobloxNavBarViewController tixImageView]")
+pub fn stub_55498() -> Option<ControlId> {
+    // IDA 0x55498 `-tixImageView`: the tix image view (0x554a6).
+    NAVBAR.tix_image_view()
 }
 
 // 0x554a8 — -[RobloxNavBarViewController setTixImageView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setTixImageView:]")]
-pub fn stub_554a8() -> ! {
-    todo!("0x554a8 -[RobloxNavBarViewController setTixImageView:]")
+pub fn stub_554a8(view: Option<ControlId>) {
+    // IDA 0x554a8 `-setTixImageView:`: retained assign (0x554c4).
+    NAVBAR.set_tix_image_view(view);
 }
 
 // 0x5d3c8 — -[SignupViewController initWithCoder:]
@@ -13739,120 +14078,172 @@ pub fn stub_53b3c(view: Option<ControlId>) {
 // 0x55664 — -[StoreManager init]
 // type: StoreManager *__cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager init]")]
-pub fn stub_55664() -> ! {
-    todo!("0x55664 -[StoreManager init]")
+pub fn stub_55664() -> Option<ControlId> {
+    // IDA 0x55664 `-init`: super init (0x55688); purchase intervals 5/5/5
+    // minutes and a 20-minute give-up (0x556ac..0x556ce), the async
+    // settings block (0x556d6..0x5570e, inline), retries 0, and the payment
+    // queue observer (0x55734..0x5574a).
+    STORE.init_store()
 }
 
 // 0x55754 — ___20-[StoreManager init]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___20-[StoreManager init]_block_invoke")]
-pub fn stub_55754() -> ! {
-    todo!("0x55754 ___20-[StoreManager init]_block_invoke")
+pub fn stub_55754(robux: i32, bc: i32, catalog: i32, retry: i32) {
+    // IDA 0x55754 `__20-StoreManager_init_block_invoke` (via
+    // `dispatch_async`, inline): stores the settings-service intervals
+    // var21..var24 into +8..+20 (0x55774..0x557c4).
+    STORE.apply_settings(robux, bc, catalog, retry);
 }
 
 // 0x557dc — +[StoreManager getStoreMgr]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[StoreManager getStoreMgr]")]
-pub fn stub_557dc() -> ! {
-    todo!("0x557dc +[StoreManager getStoreMgr]")
+pub fn stub_557dc() -> Option<ControlId> {
+    // IDA 0x557dc `+getStoreMgr`: `dispatch_once` runs the `__27…` block
+    // (0x55808..0x55832); the cell holds the singleton after.
+    shared_store_id()
 }
 
 // 0x55838 — ___27+[StoreManager getStoreMgr]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___27+[StoreManager getStoreMgr]_block_invoke")]
-pub fn stub_55838() -> ! {
-    todo!("0x55838 ___27+[StoreManager getStoreMgr]_block_invoke")
+pub fn stub_55838() {
+    // IDA 0x55838 `__27-getStoreMgr_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x5584a..0x55868).
+    STORE.init_store();
 }
 
 // 0x55880 — -[StoreManager canMakePurchase]
 // type: char __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager canMakePurchase]")]
-pub fn stub_55880() -> ! {
-    todo!("0x55880 -[StoreManager canMakePurchase]")
+pub fn stub_55880(can_pay: bool) -> bool {
+    // IDA 0x55880 `canMakePurchase`: refreshes player info (0x5589c..0x558ac)
+    // and returns `canMakePayments` (0x558cc).
+    STORE.can_make_purchase(can_pay)
 }
 
 // 0x558d0 — -[StoreManager request:didFailWithError:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager request:didFailWithError:]")]
-pub fn stub_558d0() -> ! {
-    todo!("0x558d0 -[StoreManager request:didFailWithError:]")
+pub fn stub_558d0() {
+    // IDA 0x558d0 `request:didFailWithError:`: logs the localized failure
+    // (0x558f0..0x5596a).
+    STORE.request_failed();
 }
 
 // 0x559d0 — -[StoreManager requestDidFinish:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestDidFinish:]")]
-pub fn stub_559d0() -> ! {
-    todo!("0x559d0 -[StoreManager requestDidFinish:]")
+pub fn stub_559d0() {
+    // IDA 0x559d0 `requestDidFinish:`: logs "Request finished" (0x559ee).
+    STORE.request_finished();
 }
 
 // 0x55a9c — -[StoreManager restrictTimeBoundPurchase:]
 // type: char __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager restrictTimeBoundPurchase:]")]
-pub fn stub_55a9c() -> ! {
-    todo!("0x55a9c -[StoreManager restrictTimeBoundPurchase:]")
+pub fn stub_55a9c(product: &str, now: f64, last: f64) -> bool {
+    // IDA 0x55a9c `restrictTimeBoundPurchase:`: Robux/BC-month/catalog keys
+    // with their minute intervals (0x55afe..0x55c1c); an unset last time
+    // allows, else now must pass last + 60*interval.
+    STORE.restrict_purchase(product, now, last)
 }
 
 // 0x55c68 — -[StoreManager reset]
 // type: void __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager reset]")]
-pub fn stub_55c68() -> ! {
-    todo!("0x55c68 -[StoreManager reset]")
+pub fn stub_55c68() {
+    // IDA 0x55c68 `-reset`: retries 0 plus the pending/retry/first-failure
+    // defaults removals and a sync (0x55c8e..0x55cfe).
+    STORE.reset_state();
 }
 
 // 0x55d04 — -[StoreManager recordPurchaseTime:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager recordPurchaseTime:]")]
-pub fn stub_55d04() -> ! {
-    todo!("0x55d04 -[StoreManager recordPurchaseTime:]")
+pub fn stub_55d04(product: &str, now: f64) {
+    // IDA 0x55d04 `recordPurchaseTime:`: Robux suffix records
+    // LastPurchaseTimeRobux, BC-month suffixes LastPurchaseTimeBC, anything
+    // else its own key (0x55d2c..0x55e92).
+    STORE.record_purchase_time(product, now);
 }
 
 // 0x55e94 — -[StoreManager productsRequest:didReceiveResponse:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager productsRequest:didReceiveResponse:]")]
-pub fn stub_55e94() -> ! {
-    todo!("0x55e94 -[StoreManager productsRequest:didReceiveResponse:]")
+pub fn stub_55e94(can_purchase: bool, product: Option<String>, pending_txns: usize, username: &str, pending_user: &str, time_ok: bool) -> bool {
+    // IDA 0x55e94 `productsRequest:didReceiveResponse:`: unpayable alerts
+    // parental-control (0x55ef8..0x560c4); empty products alert
+    // CannotMakePurchase (0x55f12..0x561f8); with no pending transactions
+    // an empty username alerts SessionExpired, otherwise the time gate
+    // queues the payment (0x55f6c..0x5643a); pending transactions need a
+    // matching user (0x55fae..0x56228) or sign-in (0x56462..0x564c4).
+    // Returns whether a payment queued.
+    STORE.products_response(can_purchase, product, pending_txns, username, pending_user, time_ok)
 }
 
 // 0x56894 — -[StoreManager requestProductData:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestProductData:]")]
-pub fn stub_56894() -> ! {
-    todo!("0x56894 -[StoreManager requestProductData:]")
+pub fn stub_56894(product: &str) {
+    // IDA 0x56894 `requestProductData:`: single-identifier set, delegate
+    // self, start (0x568b6..0x5690e).
+    STORE.request_product_data(product);
 }
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager purchaseProduct:]")]
-pub fn stub_56914() -> ! {
-    todo!("0x56914 -[StoreManager purchaseProduct:]")
+pub fn stub_56914(can_pay: bool, product: &str) {
+    // IDA 0x56914 `purchaseProduct:`: payable requests product data
+    // (0x5692c..0x569ae); parental control alerts instead (0x5696c..0x569a6).
+    STORE.purchase_product(can_pay, product);
 }
 
 // 0x569b4 — -[StoreManager verifyIfCorrectUser]
 // type: int __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager verifyIfCorrectUser]")]
-pub fn stub_569b4() -> ! {
-    todo!("0x569b4 -[StoreManager verifyIfCorrectUser]")
+pub fn stub_569b4(pending: Option<String>, current: &str, logged_in: bool) -> u32 {
+    // IDA 0x569b4 `verifyIfCorrectUser`: no (or empty) pending user yields
+    // 2 (0x569fc..0x56a4a); otherwise 1 when the current name differs, 0
+    // when it matches (0x56a52..0x56ac8).
+    STORE.verify_user(pending, current, logged_in)
 }
 
 // 0x56ad0 — -[StoreManager completeTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager completeTransaction:]")]
-pub fn stub_56ad0() -> ! {
-    todo!("0x56ad0 -[StoreManager completeTransaction:]")
+pub fn stub_56ad0(reachable: bool, verify: u32, logged_in: bool, within_window: bool) -> bool {
+    // IDA 0x56ad0 `completeTransaction:`: offline alerts ConnectionError
+    // (0x56c3a..); a mismatched user retries within the window
+    // (0x56b46..0x56d12) else verifies the receipt (0x56d1a..0x56d72); no
+    // pending user needs sign-in (0x56caa..). Returns whether the receipt
+    // verifies.
+    STORE.complete_transaction(reachable, verify, logged_in, within_window)
 }
 
 // 0x56d80 — -[StoreManager endTransaction:paymentTransaction:paymentQueue:]
 // type: void __cdecl(StoreManager *self, SEL, char, id, id)
 #[doc(alias = "-[StoreManager endTransaction:paymentTransaction:paymentQueue:]")]
-pub fn stub_56d80() -> ! {
-    todo!("0x56d80 -[StoreManager endTransaction:paymentTransaction:paymentQueue:]")
+pub fn stub_56d80(success: bool, stored_retries: u32, within_window: bool) -> bool {
+    // IDA 0x56d80 `endTransaction:...`: success finishes the transaction,
+    // resets, records the time and tracks Success analytics (0x56d94..0x56f8e,
+    // with relaunch-retry accounting); failure bumps retries, tracks the
+    // retry analytics, records the first-failure time, and past the limit
+    // fires the delayed-failure block (0x56ea0..0x572d8). Returns whether
+    // the transaction finished.
+    STORE.end_transaction(success, stored_retries, within_window)
 }
 
 // 0x572e4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_572e4() -> ! {
-    todo!("0x572e4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_572e4() {
+    // IDA 0x572e4 `__63-endTransaction_block_invoke`: the
+    // "TransactionDelayedBody" alert plus the
+    // FailureBillingServiceTooManyRetries analytics (0x57310..0x573ae).
+    STORE.delayed_block();
 }
 
 // 0x573c4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215
