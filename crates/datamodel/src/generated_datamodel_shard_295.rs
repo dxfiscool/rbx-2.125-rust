@@ -165,16 +165,18 @@ pub fn stub_0x580740(svc: &mut crate::instance::InsertService, url: &str) {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, int)
 #[doc(alias = "RBX::InsertService::backendApproveAssetId(int)")]
 #[doc(alias = "__ZN3RBX13InsertService21backendApproveAssetIdEi")]
-pub fn stub_0x580748() -> ! {
-    todo!("0x580748 RBX::InsertService::backendApproveAssetId(int)")
+pub fn stub_0x580748(_svc: &crate::instance::InsertService, _asset_id: i32) {
+    // IDA 0x580748 (decompiled): `InsertService::backendApproveAssetId` —
+    // empty body; backend approval is unmodeled — no-op.
 }
 
 // 0x58074c — __ZN3RBX13InsertService28backendApproveAssetVersionIdEi
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, int)
 #[doc(alias = "RBX::InsertService::backendApproveAssetVersionId(int)")]
 #[doc(alias = "__ZN3RBX13InsertService28backendApproveAssetVersionIdEi")]
-pub fn stub_0x58074c() -> ! {
-    todo!("0x58074c RBX::InsertService::backendApproveAssetVersionId(int)")
+pub fn stub_0x58074c(_svc: &crate::instance::InsertService, _version_id: i32) {
+    // IDA 0x58074c (decompiled): `InsertService::backendApproveAssetVersionId`
+    // — empty body; backend approval is unmodeled — no-op.
 }
 
 // 0x5809a0 — __ZN3RBX13InsertService13getFreeDecalsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
@@ -182,6 +184,9 @@ pub fn stub_0x58074c() -> ! {
 #[doc(alias = "__ZN3RBX13InsertService13getFreeDecalsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE")]
 // was: RBX::InsertService::getFreeDecals(std::string,int,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 pub fn stub_0x5809a0() -> ! {
+    // BLOCKED: IDA 0x5809a0 formats `free_decal_url` and routes through
+    // `dispatchRequest` → `LuaWebService::asyncRequest` (0x581ac0/0x581b4c);
+    // needs async web-service + callback infra
     todo!("0x5809a0 RBX::InsertService::getFreeDecals(std::string,int,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
 }
 
@@ -190,6 +195,8 @@ pub fn stub_0x5809a0() -> ! {
 #[doc(alias = "__ZN3RBX13InsertService11getBaseSetsEN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE")]
 // was: RBX::InsertService::getBaseSets(boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 pub fn stub_0x580bf4() -> ! {
+    // BLOCKED: same `dispatchRequest` → `LuaWebService::asyncRequest` family as
+    // 0x5809a0; needs async web-service + callback infra
     todo!("0x580bf4 RBX::InsertService::getBaseSets(boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
 }
 
@@ -198,6 +205,8 @@ pub fn stub_0x580bf4() -> ! {
 #[doc(alias = "__ZN3RBX13InsertService11getUserSetsEiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE")]
 // was: RBX::InsertService::getUserSets(int,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 pub fn stub_0x580db4() -> ! {
+    // BLOCKED: same `dispatchRequest` → `LuaWebService::asyncRequest` family as
+    // 0x5809a0; needs async web-service + callback infra
     todo!("0x580db4 RBX::InsertService::getUserSets(int,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
 }
 
@@ -205,8 +214,9 @@ pub fn stub_0x580db4() -> ! {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, bool, bool)
 #[doc(alias = "RBX::InsertService::setAdvancedResults(bool,bool)")]
 #[doc(alias = "__ZN3RBX13InsertService18setAdvancedResultsEbb")]
-pub fn stub_0x581000() -> ! {
-    todo!("0x581000 RBX::InsertService::setAdvancedResults(bool,bool)")
+pub fn stub_0x581000(_svc: &crate::instance::InsertService, _a: bool, _b: bool) {
+    // IDA 0x581000 (decompiled): `InsertService::setAdvancedResults` — empty
+    // body; the advanced-results flags are unmodeled — no-op.
 }
 
 // 0x581004 — __ZN3RBX13InsertService13getCollectionEiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
@@ -214,6 +224,8 @@ pub fn stub_0x581000() -> ! {
 #[doc(alias = "__ZN3RBX13InsertService13getCollectionEiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE")]
 // was: RBX::InsertService::getCollection(int,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 pub fn stub_0x581004() -> ! {
+    // BLOCKED: same `dispatchRequest` → `LuaWebService::asyncRequest` family as
+    // 0x5809a0; needs async web-service + callback infra
     todo!("0x581004 RBX::InsertService::getCollection(int,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
 }
 
@@ -221,16 +233,25 @@ pub fn stub_0x581004() -> ! {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::InsertService(void)")]
 #[doc(alias = "__ZN3RBX13InsertServiceC1Ev")]
-pub fn stub_0x58162c() -> ! {
-    todo!("0x58162c RBX::InsertService::InsertService(void)")
+pub fn stub_0x58162c() -> crate::instance::InsertService {
+    // IDA 0x58162c (decompiled): `InsertService::C1` — thunk tail-calling the
+    // `C2` body (0x581630); delegate so the two ctors cannot drift.
+    stub_0x581630()
 }
 
 // 0x581630 — __ZN3RBX13InsertServiceC2Ev
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::InsertService(void)")]
 #[doc(alias = "__ZN3RBX13InsertServiceC2Ev")]
-pub fn stub_0x581630() -> ! {
-    todo!("0x581630 RBX::InsertService::InsertService(void)")
+pub fn stub_0x581630() -> crate::instance::InsertService {
+    // IDA 0x581630 (decompiled): `InsertService::C2` — runs the `Instance`
+    // base, wires the `remote_signal` event slots (0x581726-0x581766),
+    // empties the seven URL strings at `+136`..`+160`
+    // (0x58177c-0x5817c2), stores `0x3F000000` (`0.5`) at `+164`
+    // (0x5817ca), and names the instance `"InsertService"` (0x581898).
+    // Signals/base infra is out of domain; the modeled half is the member
+    // init. Note this differs from `Default` (`trust_level` is `0.5`).
+    crate::instance::InsertService { trust_level: 0.5, ..Default::default() }
 }
 
 // 0x581ac0 — __ZN3RBX13InsertService15dispatchRequestERKSsN5boost8functionIFvNS3_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS8_EEEEEEENS4_IFvSsEEE
@@ -238,6 +259,9 @@ pub fn stub_0x581630() -> ! {
 #[doc(alias = "__ZN3RBX13InsertService15dispatchRequestERKSsN5boost8functionIFvNS3_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS8_EEEEEEENS4_IFvSsEEE")]
 // was: RBX::InsertService::dispatchRequest(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 pub fn stub_0x581ac0() -> ! {
+    // BLOCKED: IDA 0x581ac0 creates a `LuaWebService` and calls
+    // `asyncRequest` (0x581aea-0x581b4c); needs async web-service + callback
+    // infra
     todo!("0x581ac0 RBX::InsertService::dispatchRequest(std::string const&,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
 }
 
@@ -246,6 +270,8 @@ pub fn stub_0x581ac0() -> ! {
 #[doc(alias = "RBX::InsertService::backendInsertRequested(std::string,RBX::ContentId)")]
 #[doc(alias = "__ZN3RBX13InsertService22backendInsertRequestedESsNS_9ContentIdE")]
 pub fn stub_0x581fd8() -> ! {
+    // BLOCKED: IDA 0x581fd8 binds a weak callback and routes through
+    // `safeInsert` (0x582078); needs backend-insert + weak-callback infra
     todo!("0x581fd8 RBX::InsertService::backendInsertRequested(std::string,RBX::ContentId)")
 }
 
@@ -253,6 +279,10 @@ pub fn stub_0x581fd8() -> ! {
 #[doc(alias = "RBX::InsertService::backendInsertAssetRequested(std::string,int,int)")]
 #[doc(alias = "__ZN3RBX13InsertService27backendInsertAssetRequestedESsii")]
 pub fn stub_0x5822a8() -> ! {
+    // BLOCKED: IDA 0x5822a8 formats `asset_url` and tail-calls
+    // `backendInsertRequested` (0x582364), else fires `insertResultsError`
+    // via `fireAndReplicateEvent` (0x5823ec); needs backend-insert +
+    // replication infra
     todo!("0x5822a8 RBX::InsertService::backendInsertAssetRequested(std::string,int,int)")
 }
 
@@ -261,6 +291,9 @@ pub fn stub_0x5822a8() -> ! {
 #[doc(alias = "RBX::InsertService::backendInsertAssetVersionRequested(std::string,int,int)")]
 #[doc(alias = "__ZN3RBX13InsertService34backendInsertAssetVersionRequestedESsii")]
 pub fn stub_0x5826b0() -> ! {
+    // BLOCKED: version twin of 0x5822a8 (`asset_version_url` +
+    // `backendInsertRequested`, else `insertResultsError` replication);
+    // needs backend-insert + replication infra
     todo!("0x5826b0 RBX::InsertService::backendInsertAssetVersionRequested(std::string,int,int)")
 }
 
@@ -268,6 +301,9 @@ pub fn stub_0x5826b0() -> ! {
 #[doc(alias = "RBX::InsertService::insertResultsError(std::string,std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService18insertResultsErrorESsSs")]
 pub fn stub_0x582c5c() -> ! {
+    // BLOCKED: fires the `insertResultsError` remote event via
+    // `fireAndReplicateEvent` (same family as 0x5823ec); needs replication
+    // infra
     todo!("0x582c5c RBX::InsertService::insertResultsError(std::string,std::string)")
 }
 
@@ -275,51 +311,44 @@ pub fn stub_0x582c5c() -> ! {
 #[doc(alias = "void RBX::Reflection::resume_adapter<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
 #[doc(alias = "__ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEEEvNS2_8functionIFvS5_EEET_")]
 // was: void RBX::Reflection::resume_adapter<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
-pub fn stub_0x584fa4() -> ! {
-    todo!("0x584fa4 void RBX::Reflection::resume_adapter<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x584fa4 as stub_0x584fa4;
 
 // 0x585adc — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED1Ev")]
-pub fn stub_0x585adc() -> ! {
-    todo!("0x585adc RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585adc as stub_0x585adc;
 
 // 0x585b00 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED1Ev")]
-pub fn stub_0x585b00() -> ! {
-    todo!("0x585b00 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585b00 as stub_0x585b00;
 
 // 0x585b48 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEED1Ev")]
-pub fn stub_0x585b48() -> ! {
-    todo!("0x585b48 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::~RemoteEventDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585b48 as stub_0x585b48;
 
 // 0x585b6c — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvSsELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvSsELi1EED1Ev")]
-pub fn stub_0x585b6c() -> ! {
-    todo!("0x585b6c RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(std::string),1>::~BoundFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585b6c as stub_0x585b6c;
 
 // 0x585bac — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvfELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(float),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvfELi1EED1Ev")]
-pub fn stub_0x585bac() -> ! {
-    todo!("0x585bac RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(float),1>::~BoundFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585bac as stub_0x585bac;
 
 // 0x585bec — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFviELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFviELi1EED1Ev")]
-pub fn stub_0x585bec() -> ! {
-    todo!("0x585bec RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(int),1>::~BoundFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585bec as stub_0x585bec;
 
 // 0x585c2c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEESsiESA_Li2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()")]
@@ -809,5 +838,38 @@ mod batch_a_tests {
         stub_0x57fee4();
         assert!(!stub_0x57ff10());
         assert!(!stub_0x57ff14());
+    }
+}
+
+#[cfg(test)]
+mod batch_b_tests {
+    use super::*;
+    use crate::instance::InsertService;
+
+    #[test]
+    fn ctors_init_trust_half() {
+        let svc = stub_0x581630();
+        assert_eq!(svc.trust_level, 0.5);
+        assert!(svc.base_sets_url.is_empty());
+        let svc2 = stub_0x58162c();
+        assert_eq!(svc2.trust_level, 0.5);
+    }
+
+    #[test]
+    fn empty_backends_are_noops() {
+        let svc = InsertService::default();
+        stub_0x580748(&svc, 7);
+        stub_0x58074c(&svc, 9);
+        stub_0x581000(&svc, true, false);
+    }
+
+    #[test]
+    fn desc_dtors_resolve() {
+        stub_0x585adc();
+        stub_0x585b00();
+        stub_0x585b48();
+        stub_0x585b6c();
+        stub_0x585bac();
+        stub_0x585bec();
     }
 }
