@@ -519,176 +519,849 @@ pub fn stub_19ce10(
 // 0x19d180 — _uv_decode
 // type: unknown
 #[doc(alias = "_uv_decode")]
-pub fn stub_19d180() -> ! {
-    todo!("0x19d180 _uv_decode")
+pub fn stub_19d180(code: u32, table: &[(f32, u16)], out_u: &mut f64, out_v: &mut f64) -> i32 {
+    // IDA 0x19d180: code > 0x3FA0 → -1; binary search over the 164-entry uv table; u interpolates from the row base, v from the row index.
+    if code > 0x3FA0 {
+        return -1;
+    }
+    assert_eq!(table.len(), 164, "uv_decode: 164-entry uv table (tif_luv.c)");
+    let (mut lo, mut hi) = (0usize, 163usize);
+    loop {
+        let mid = (hi + lo) >> 1;
+        let thr = table[mid].1 as u32;
+        if code <= thr {
+            if code == thr {
+                lo = mid;
+                break;
+            }
+            hi = mid;
+        } else {
+            lo = mid;
+        }
+        if hi - lo <= 1 {
+            break;
+        }
+    }
+    *out_u = table[lo].0 as f64 + ((code as i32 - table[lo].1 as i32) as f64 + 0.5) * 0.00350000011;
+    *out_v = (lo as f64 + 0.5) * 0.00350000011 + 0.0169399995;
+    0
 }
 
 // 0x19d260 — _Luv24toLuv48
 // type: unknown
 #[doc(alias = "_Luv24toLuv48")]
-pub fn stub_19d260() -> ! {
-    todo!("0x19d260 _Luv24toLuv48")
+pub fn stub_19d260(src: &[u32], dst: &mut [u16], uv_table: &[(f32, u16)]) -> i32 {
+    // IDA 0x19d260: L = ((w >> 12) & 0xFFD) + 13314; uv_decode(w & 0x3FFF) with (0.210526316, 0.473684211) fallback; u/v × 32768; odd head then 2-wide body folded to one loop; returns the last decode status.
+    let n = src.len().min(dst.len() / 3);
+    let mut status = 0;
+    for (i, &w) in src.iter().enumerate().take(n) {
+        let (mut u, mut v) = (0.0, 0.0);
+        status = stub_19d180(w & 0x3FFF, uv_table, &mut u, &mut v);
+        if status < 0 {
+            u = 0.210526316;
+            v = 0.473684211;
+        }
+        dst[3 * i] = (((w >> 12) & 0xFFD) + 13314) as u16;
+        dst[3 * i + 1] = (u * 32768.0) as u16;
+        dst[3 * i + 2] = (v * 32768.0) as u16;
+    }
+    status
 }
 
 // 0x19d478 — _Luv32toLuv48
 // type: unknown
 #[doc(alias = "_Luv32toLuv48")]
-pub fn stub_19d478() -> ! {
-    todo!("0x19d478 _Luv32toLuv48")
+pub fn stub_19d478(src: &[u32], dst: &mut [u16]) -> usize {
+    // IDA 0x19d478: 32-bit (L16, u8, u8) words → (L16 low half, byte1-scaled, byte0-scaled) triples, scale ((b + 0.5) * 0.00243902439 * 32768.0); odd head then 2-wide body folded to one loop; returns words consumed (IDA returns the advanced pointer).
+    let n = src.len().min(dst.len() / 3);
+    for (i, &w) in src.iter().enumerate().take(n) {
+        let b = w.to_le_bytes();
+        dst[3 * i] = (w & 0xFFFF) as u16;
+        dst[3 * i + 1] = ((b[1] as f64 + 0.5) * 0.00243902439 * 32768.0) as u16;
+        dst[3 * i + 2] = ((b[0] as f64 + 0.5) * 0.00243902439 * 32768.0) as u16;
+    }
+    n
 }
 
 // 0x19d5f8 — __logLuvNop
-// type: void()
+// type: unknown
 #[doc(alias = "__logLuvNop")]
-pub fn stub_19d5f8() -> ! {
-    todo!("0x19d5f8 __logLuvNop")
+pub fn stub_19d5f8() {
+    // IDA 0x19d5f8: nop converter placeholder.
 }
 
 // 0x19d5fc — _multiply
 // type: unknown
 #[doc(alias = "_multiply")]
-pub fn stub_19d5fc() -> ! {
-    todo!("0x19d5fc _multiply")
+pub fn stub_19d5fc(a: u32, b: u32) -> u32 {
+    // IDA 0x19d5fc: widening multiply with overflow → 0.
+    a.checked_mul(b).unwrap_or(0)
+}
+
+/// LogLuv close fields written by cleanup (IDA 0x19d62c: data format, width 16, extra-samples 2).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct LogLuvCloseFields {
+    pub data_format: i16,
+    pub width: i16,
+    pub extra: i16,
 }
 
 // 0x19d62c — _LogLuvClose
 // type: unknown
 #[doc(alias = "_LogLuvClose")]
-pub fn stub_19d62c() -> ! {
-    todo!("0x19d62c _LogLuvClose")
+pub fn stub_19d62c(photometric: u16) -> LogLuvCloseFields {
+    // IDA 0x19d62c: data format 1 when photometric == 32844 else 3; width 16; extra 2.
+    LogLuvCloseFields {
+        data_format: if photometric == 32844 { 1 } else { 3 },
+        width: 16,
+        extra: 2,
+    }
 }
 
 // 0x19d658 — _LogLuvVGetField
 // type: unknown
 #[doc(alias = "_LogLuvVGetField")]
-pub fn stub_19d658() -> ! {
-    todo!("0x19d658 _LogLuvVGetField")
+pub fn stub_19d658(tag: u32, stored: u32, out: &mut u32, passthrough: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x19d658: tag 65560 reads the stored data format; else the chained getter.
+    if tag != 65560 {
+        return passthrough();
+    }
+    *out = stored;
+    1
 }
 
 // 0x19d698 — _LogLuvDecode24
 // type: unknown
 #[doc(alias = "_LogLuvDecode24")]
-pub fn stub_19d698() -> ! {
-    todo!("0x19d698 _LogLuvDecode24")
+pub fn stub_19d698(
+    has_sp: bool,
+    sample: u16,
+    npixels: usize,
+    avail_bytes: usize,
+    src: &[u8],
+    direct: bool,
+    tbuf: &mut Vec<u32>,
+    out_direct: &mut [u32],
+    convert: &mut dyn FnMut(&mut [u32]) -> bool,
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19d698: sp/s asserts; direct target when state == 2 else tbuf (capacity asserted); 3-byte big-endian → u32 pack bounded by remaining input (IDA Duff-copies); convert hook on full fill else error + FALSE.
+    assert!(has_sp, "LogLuvDecode24: sp != NULL (tif_luv.c:249)");
+    assert_eq!(sample, 0, "LogLuvDecode24: s == 0 (tif_luv.c:248)");
+    let n = npixels.min(avail_bytes / 3).min(src.len() / 3);
+    let pack = |d: &mut [u32]| {
+        for (w, b) in d.iter_mut().zip(src.chunks_exact(3)).take(n) {
+            *w = ((b[0] as u32) << 16) | ((b[1] as u32) << 8) | b[2] as u32;
+        }
+    };
+    if direct {
+        let m = n.min(out_direct.len());
+        pack(&mut out_direct[..m]);
+        if n == npixels {
+            convert(&mut out_direct[..m])
+        } else {
+            on_error("LogLuvDecode24");
+            false
+        }
+    } else {
+        assert!(npixels <= tbuf.len(), "LogLuvDecode24: sp->tbuflen >= npixels (tif_luv.c:256)");
+        tbuf.resize(tbuf.len().max(n), 0);
+        pack(&mut tbuf[..n]);
+        if n == npixels {
+            convert(&mut tbuf[..n])
+        } else {
+            on_error("LogLuvDecode24");
+            false
+        }
+    }
+}
+
+/// LogLuv state-init outcome: selected format, user-data words, tbuf byte size (IDA 0x19d830/0x19da80).
+#[derive(Clone, Copy, Debug)]
+pub struct LogLuvStateInit {
+    pub format: i32,
+    pub user_data_words: u32,
+    pub tbuf_bytes: usize,
 }
 
 // 0x19d830 — _LogLuvInitState
-// type: int(void)
+// type: unknown
 #[doc(alias = "_LogLuvInitState")]
-pub fn stub_19d830() -> ! {
-    todo!("0x19d830 _LogLuvInitState")
+pub fn stub_19d830(
+    has_sp: bool,
+    photometric_ok: bool,
+    planar: u16,
+    config: u16,
+    spp: u16,
+    width: u32,
+    height: u32,
+    on_error: &mut dyn FnMut(&str),
+) -> Option<LogLuvStateInit> {
+    // IDA 0x19d830: sp/photometric asserts; planar != 1 → error; format from the (bps | 8·spp) config (129/130/132 → 1, 65/68 → 3, 259 → 0, 257/258/260 → 2) with spp compat (spp 1 keeps unless 2; spp 3 keeps only 2); user-data words 0→12, 1→6, 2→4, 3→3 else error; tbuf = checked w·h, 4 bytes per pixel; None on any failure.
+    assert!(has_sp, "LogLuvInitState: sp != NULL (tif_luv.c:1275)");
+    assert!(photometric_ok, "LogLuvInitState: td->td_photometric == PHOTOMETRIC_LOGLUV (tif_luv.c:1276)");
+    if planar != 1 {
+        on_error("LogLuvInitState");
+        return None;
+    }
+    let mut format = match config {
+        129 | 130 | 132 => 1,
+        65 | 68 => 3,
+        259 => 0,
+        257 | 258 | 260 => 2,
+        _ => -1,
+    };
+    if !(if spp == 1 { format != 2 } else { spp == 3 && format == 2 }) {
+        format = -1;
+    }
+    let user_data_words = match format {
+        0 => 12,
+        1 => 6,
+        2 => 4,
+        3 => 3,
+        _ => {
+            on_error("LogLuvInitState");
+            return None;
+        }
+    };
+    let pixels = stub_19d5fc(width, height);
+    let tbuf_bytes = (pixels as usize).checked_mul(4)?;
+    if pixels == 0 || tbuf_bytes == 0 {
+        on_error("LogLuvInitState");
+        return None;
+    }
+    Some(LogLuvStateInit { format, user_data_words, tbuf_bytes })
 }
 
 // 0x19da80 — _LogL16InitState
-// type: int(void)
+// type: unknown
 #[doc(alias = "_LogL16InitState")]
-pub fn stub_19da80() -> ! {
-    todo!("0x19da80 _LogL16InitState")
+pub fn stub_19da80(
+    has_sp: bool,
+    photometric_ok: bool,
+    config: u16,
+    width: u32,
+    height: u32,
+    on_error: &mut dyn FnMut(&str),
+) -> Option<LogLuvStateInit> {
+    // IDA 0x19da80: sp/photometric asserts; format from the packed config (1033/1034/1036 → 1, 521/524 → 3, 2059 → 0, else error); user-data words 1→2, 3→1, 0→4; tbuf = checked w·h, 2 bytes per pixel; None on any failure.
+    assert!(has_sp, "LogL16InitState: sp != NULL (tif_luv.c:1182)");
+    assert!(photometric_ok, "LogL16InitState: td->td_photometric == PHOTOMETRIC_LOGL (tif_luv.c:1183)");
+    let format = match config {
+        1033 | 1034 | 1036 => 1,
+        521 | 524 => 3,
+        2059 => 0,
+        _ => {
+            on_error("LogL16InitState");
+            return None;
+        }
+    };
+    let user_data_words = match format {
+        1 => 2,
+        3 => 1,
+        0 => 4,
+        _ => {
+            on_error("LogL16InitState");
+            return None;
+        }
+    };
+    let pixels = stub_19d5fc(width, height);
+    let tbuf_bytes = (pixels as usize).checked_mul(2)?;
+    if pixels == 0 || tbuf_bytes == 0 {
+        on_error("LogL16InitState");
+        return None;
+    }
+    Some(LogLuvStateInit { format, user_data_words, tbuf_bytes })
+}
+
+/// LogLuv encode hook selected by setup (IDA 0x19dc60).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LogLuvEncodeFn {
+    L16,
+    Luv24,
+    Luv32,
+}
+
+/// LogLuv encode converter selected by setup (IDA 0x19dc60).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LogLuvEncodeConv {
+    L16FromY,
+    Luv24FromXYZ,
+    Luv24FromLuv48,
+    Luv32FromXYZ,
+    Luv32FromLuv48,
 }
 
 // 0x19dc60 — _LogLuvSetupEncode
-// type: int __fastcall(int)
+// type: unknown
 #[doc(alias = "_LogLuvSetupEncode")]
-pub fn stub_19dc60() -> ! {
-    todo!("0x19dc60 _LogLuvSetupEncode")
+pub fn stub_19dc60(
+    photometric: u16,
+    is_sgilog24: bool,
+    state: i32,
+    init_ok: bool,
+    set_encode: &mut dyn FnMut(LogLuvEncodeFn),
+    set_convert: &mut dyn FnMut(LogLuvEncodeConv),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19dc60: 32844 → L16 path (state 0 → L16fromY; 1 → passthrough; else error + FALSE); 32845 → 24/32-bit dispatch (state 1 → fromLuv48; 2 → passthrough; 0 → fromXYZ; else error + FALSE); other photometric → error + TRUE; a failed init skips dispatch but still returns TRUE (literal IDA fallthrough).
+    if photometric != 32844 && photometric != 32845 {
+        on_error("LogLuvSetupEncode");
+        return true;
+    }
+    if !init_ok {
+        return true;
+    }
+    if photometric == 32844 {
+        set_encode(LogLuvEncodeFn::L16);
+        match state {
+            0 => set_convert(LogLuvEncodeConv::L16FromY),
+            1 => {}
+            _ => {
+                on_error("LogLuvSetupEncode");
+                return false;
+            }
+        }
+        return true;
+    }
+    set_encode(if is_sgilog24 { LogLuvEncodeFn::Luv24 } else { LogLuvEncodeFn::Luv32 });
+    match state {
+        1 => set_convert(if is_sgilog24 { LogLuvEncodeConv::Luv24FromLuv48 } else { LogLuvEncodeConv::Luv32FromLuv48 }),
+        2 => {}
+        0 => set_convert(if is_sgilog24 { LogLuvEncodeConv::Luv24FromXYZ } else { LogLuvEncodeConv::Luv32FromXYZ }),
+        _ => {
+            on_error("LogLuvSetupEncode");
+            return false;
+        }
+    }
+    true
+}
+
+/// LogLuv decode hook selected by setup (IDA 0x19de20).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LogLuvDecodeFn {
+    L16,
+    Luv24,
+    Luv32,
+}
+
+/// LogLuv decode converter selected by setup (IDA 0x19de20).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LogLuvDecodeConv {
+    L16ToY,
+    L16ToGry,
+    Luv24ToXYZ,
+    Luv24ToLuv48,
+    Luv24ToRGB,
+    Luv32ToXYZ,
+    Luv32ToLuv48,
+    Luv32ToRGB,
 }
 
 // 0x19de20 — _LogLuvSetupDecode
-// type: int __fastcall(int)
+// type: unknown
 #[doc(alias = "_LogLuvSetupDecode")]
-pub fn stub_19de20() -> ! {
-    todo!("0x19de20 _LogLuvSetupDecode")
+pub fn stub_19de20(
+    photometric: u16,
+    is_24: bool,
+    state: i32,
+    init_ok: bool,
+    set_decode: &mut dyn FnMut(LogLuvDecodeFn),
+    set_convert: &mut dyn FnMut(LogLuvDecodeConv),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19de20: post-decode forced to NoPostDecode (caller-side); 32844 → L16 (0 → toY, 3 → toGry, else unchanged TRUE); 32845 → 24/32-bit dispatch (1 → toLuv48, 3 → toRGB, 0 → toXYZ, else unchanged TRUE); other → error + FALSE; failed init → FALSE.
+    if photometric != 32844 && photometric != 32845 {
+        on_error("LogLuvSetupDecode");
+        return false;
+    }
+    if !init_ok {
+        return false;
+    }
+    if photometric == 32844 {
+        set_decode(LogLuvDecodeFn::L16);
+        match state {
+            0 => set_convert(LogLuvDecodeConv::L16ToY),
+            3 => set_convert(LogLuvDecodeConv::L16ToGry),
+            _ => {}
+        }
+        return true;
+    }
+    set_decode(if is_24 { LogLuvDecodeFn::Luv24 } else { LogLuvDecodeFn::Luv32 });
+    match state {
+        1 => set_convert(if is_24 { LogLuvDecodeConv::Luv24ToLuv48 } else { LogLuvDecodeConv::Luv32ToLuv48 }),
+        3 => set_convert(if is_24 { LogLuvDecodeConv::Luv24ToRGB } else { LogLuvDecodeConv::Luv32ToRGB }),
+        0 => set_convert(if is_24 { LogLuvDecodeConv::Luv24ToXYZ } else { LogLuvDecodeConv::Luv32ToXYZ }),
+        _ => {}
+    }
+    true
 }
 
 // 0x19dfd8 — _TIFFInitSGILog
 // type: unknown
 #[doc(alias = "_TIFFInitSGILog")]
-pub fn stub_19dfd8() -> ! {
-    todo!("0x19dfd8 _TIFFInitSGILog")
+pub fn stub_19dfd8(scheme: u32, merge_ok: bool, alloc_ok: bool, init_state: &mut dyn FnMut(bool), on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x19dfd8: scheme must be SGILOG24/SGILOG (assert); merge field info + state alloc (fail → error + FALSE); state = {-1 user data, sgi24 flag, Nop converter}; hook install caller-side; TRUE.
+    assert!(scheme == 34676 || scheme == 34677, "TIFFInitSGILog: scheme == COMPRESSION_SGILOG24 || scheme == COMPRESSION_SGILOG (tif_luv.c:1567)");
+    if !merge_ok || !alloc_ok {
+        on_error("TIFFInitSGILog");
+        return false;
+    }
+    init_state(scheme == 34677);
+    true
+}
+
+/// One byte-plane RLE pass shared by the LogLuv32/16 decoders (IDA 0x19e198/0x19e7a0: op & 0x80 → run of (op − 126) ORed at `shift`; else a literal of op bytes; IDA unrolls 8/4-wide with Duff prologues).
+fn logluv_rle_pass32(dst: &mut [u32], src: &[u8], shift: u32) -> (usize, usize) {
+    let mut i = 0;
+    let mut p = 0;
+    while i < dst.len() && p < src.len() {
+        let op = src[p];
+        p += 1;
+        if op & 0x80 != 0 {
+            if p >= src.len() {
+                break;
+            }
+            let val = (src[p] as u32) << shift;
+            p += 1;
+            let total = (op as usize).wrapping_sub(126);
+            for _ in 0..total {
+                if i >= dst.len() {
+                    break;
+                }
+                dst[i] |= val;
+                i += 1;
+            }
+        } else {
+            let n = (op as usize).min(dst.len() - i).min(src.len() - p);
+            for k in 0..n {
+                dst[i + k] |= (src[p + k] as u32) << shift;
+            }
+            i += n;
+            p += n;
+        }
+    }
+    (i, p)
+}
+
+/// 16-bit twin of the RLE pass (IDA 0x19e7a0).
+fn logluv_rle_pass16(dst: &mut [u16], src: &[u8], shift: u32) -> (usize, usize) {
+    let mut i = 0;
+    let mut p = 0;
+    while i < dst.len() && p < src.len() {
+        let op = src[p];
+        p += 1;
+        if op & 0x80 != 0 {
+            if p >= src.len() {
+                break;
+            }
+            let val = (src[p] as u16) << shift;
+            p += 1;
+            let total = (op as usize).wrapping_sub(126);
+            for _ in 0..total {
+                if i >= dst.len() {
+                    break;
+                }
+                dst[i] |= val;
+                i += 1;
+            }
+        } else {
+            let n = (op as usize).min(dst.len() - i).min(src.len() - p);
+            for k in 0..n {
+                dst[i + k] |= (src[p + k] as u16) << shift;
+            }
+            i += n;
+            p += n;
+        }
+    }
+    (i, p)
 }
 
 // 0x19e198 — _LogLuvDecode32
 // type: unknown
 #[doc(alias = "_LogLuvDecode32")]
-pub fn stub_19e198() -> ! {
-    todo!("0x19e198 _LogLuvDecode32")
+pub fn stub_19e198(
+    has_sp: bool,
+    sample: u16,
+    npixels: usize,
+    tbuf_cap: usize,
+    src: &[u8],
+    direct: bool,
+    tbuf: &mut Vec<u32>,
+    out_direct: &mut [u32],
+    convert: &mut dyn FnMut(&mut [u32]) -> bool,
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19e198: sp/s asserts; direct target when state == 2 else tbuf (capacity asserted, zeroed); four byte-plane passes (shifts 24/16/8/0); any short pass → error + FALSE; convert hook; TRUE.
+    assert!(has_sp, "LogLuvDecode32: sp != NULL (tif_luv.c:294)");
+    assert_eq!(sample, 0, "LogLuvDecode32: s == 0 (tif_luv.c:292)");
+    let mut cursor = 0;
+    if direct {
+        assert!(out_direct.len() >= npixels, "LogLuvDecode32: target fits npixels");
+        out_direct[..npixels].fill(0);
+        for shift in [24u32, 16, 8, 0] {
+            let (done, used) = logluv_rle_pass32(&mut out_direct[..npixels], &src[cursor..], shift);
+            cursor += used;
+            if done != npixels {
+                on_error("LogLuvDecode32");
+                return false;
+            }
+        }
+        convert(&mut out_direct[..npixels])
+    } else {
+        assert!(npixels <= tbuf_cap, "LogLuvDecode32: sp->tbuflen >= npixels (tif_luv.c:301)");
+        tbuf.resize(tbuf_cap.max(npixels), 0);
+        tbuf[..npixels].fill(0);
+        for shift in [24u32, 16, 8, 0] {
+            let (done, used) = logluv_rle_pass32(&mut tbuf[..npixels], &src[cursor..], shift);
+            cursor += used;
+            if done != npixels {
+                on_error("LogLuvDecode32");
+                return false;
+            }
+        }
+        convert(&mut tbuf[..npixels])
+    }
 }
 
 // 0x19e7a0 — _LogL16Decode
 // type: unknown
 #[doc(alias = "_LogL16Decode")]
-pub fn stub_19e7a0() -> ! {
-    todo!("0x19e7a0 _LogL16Decode")
+pub fn stub_19e7a0(
+    has_sp: bool,
+    sample: u16,
+    npixels: usize,
+    tbuf_cap: usize,
+    src: &[u8],
+    direct: bool,
+    tbuf: &mut Vec<u16>,
+    out_direct: &mut [u16],
+    convert: &mut dyn FnMut(&mut [u16], usize) -> bool,
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19e7a0: 16-bit twin of Decode32 over two byte-plane passes (shifts 8, 0); direct target when state == 1 else tbuf (capacity asserted, zeroed); convert hook takes the final count; TRUE.
+    assert!(has_sp, "LogL16Decode: sp != NULL (tif_luv.c:194)");
+    assert_eq!(sample, 0, "LogL16Decode: s == 0 (tif_luv.c:193)");
+    let mut cursor = 0;
+    if direct {
+        assert!(out_direct.len() >= npixels, "LogL16Decode: target fits npixels");
+        out_direct[..npixels].fill(0);
+        for shift in [8u32, 0] {
+            let (done, used) = logluv_rle_pass16(&mut out_direct[..npixels], &src[cursor..], shift);
+            cursor += used;
+            if done != npixels {
+                on_error("LogL16Decode");
+                return false;
+            }
+        }
+        convert(&mut out_direct[..npixels], npixels)
+    } else {
+        assert!(npixels <= tbuf_cap, "LogL16Decode: sp->tbuflen >= npixels (tif_luv.c:201)");
+        tbuf.resize(tbuf_cap.max(npixels), 0);
+        tbuf[..npixels].fill(0);
+        for shift in [8u32, 0] {
+            let (done, used) = logluv_rle_pass16(&mut tbuf[..npixels], &src[cursor..], shift);
+            cursor += used;
+            if done != npixels {
+                on_error("LogL16Decode");
+                return false;
+            }
+        }
+        let n = npixels;
+        convert(&mut tbuf[..n], n)
+    }
+}
+
+/// LogLuv format state owned by the VSet handler (IDA 0x19edbc: data format, predictor/stereo, rows, scanline size).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct LogLuvFmtState {
+    pub data_fmt: u32,
+    pub stereo: u32,
+    pub rows: i64,
+    pub scanline: u32,
 }
 
 // 0x19edbc — _LogLuvVSetField
 // type: unknown
 #[doc(alias = "_LogLuvVSetField")]
-pub fn stub_19edbc() -> ! {
-    todo!("0x19edbc _LogLuvVSetField")
+pub fn stub_19edbc(
+    tag: u32,
+    value: u32,
+    state: &mut LogLuvFmtState,
+    tiled: bool,
+    tile_size: u32,
+    scanline_size: u32,
+    set_field: &mut dyn FnMut(u32, u32),
+    passthrough: &mut dyn FnMut(u32, u32) -> bool,
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19edbc: tag 65560 stores the format and derives (bits, sample) — 0 → (32, 3), 1 → (16, 2), 2 → (32, 1) + setfield(277, 1), 3 → (8, 1), else error + FALSE — then setfield(258/339), rows (tile size when tiled else −1) + scanline size; 65561 stores stereo and validates ≤ 1; other → chained setter.
+    match tag {
+        65560 => {
+            state.data_fmt = value;
+            let (bits, sample) = match value {
+                0 => (32, 3),
+                1 => (16, 2),
+                2 => {
+                    set_field(277, 1);
+                    (32, 1)
+                }
+                3 => (8, 1),
+                _ => {
+                    on_error("LogLuvVSetField");
+                    return false;
+                }
+            };
+            set_field(258, bits);
+            set_field(339, sample);
+            state.rows = if tiled { tile_size as i64 } else { -1 };
+            state.scanline = scanline_size;
+            true
+        }
+        65561 => {
+            state.stereo = value;
+            if value > 1 {
+                on_error("LogLuvVSetField");
+                return false;
+            }
+            true
+        }
+        _ => passthrough(tag, value),
+    }
 }
 
 // 0x19eee8 — _LogLuvEncodeStrip
 // type: unknown
 #[doc(alias = "_LogLuvEncodeStrip")]
-pub fn stub_19eee8() -> ! {
-    todo!("0x19eee8 _LogLuvEncodeStrip")
+pub fn stub_19eee8(buf: &mut [u8], row_len: usize, encode_row: &mut dyn FnMut(&mut [u8]) -> bool) -> bool {
+    // IDA 0x19eee8: assert cc % rowlen == 0; pump rows through the encode hook (== 1 to continue); TRUE when fully consumed.
+    assert!(row_len > 0 && buf.len() % row_len == 0, "LogLuvEncodeStrip: cc%rowlen == 0 (tif_luv.c:600)");
+    for row in buf.chunks_mut(row_len) {
+        if !encode_row(row) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x19ef8c — _LogLuvDecodeStrip
 // type: unknown
 #[doc(alias = "_LogLuvDecodeStrip")]
-pub fn stub_19ef8c() -> ! {
-    todo!("0x19ef8c _LogLuvDecodeStrip")
+pub fn stub_19ef8c(buf: &mut [u8], row_len: usize, decode_row: &mut dyn FnMut(&mut [u8]) -> bool) -> bool {
+    // IDA 0x19ef8c: assert cc % rowlen == 0; pump rows through the decode hook (nonzero to continue); TRUE when fully consumed.
+    assert!(row_len > 0 && buf.len() % row_len == 0, "LogLuvDecodeStrip: cc%rowlen == 0 (tif_luv.c:347)");
+    for row in buf.chunks_mut(row_len) {
+        if !decode_row(row) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x19f030 — _LogLuvCleanup
 // type: unknown
 #[doc(alias = "_LogLuvCleanup")]
-pub fn stub_19f030() -> ! {
-    todo!("0x19f030 _LogLuvCleanup")
+pub fn stub_19f030(
+    has_sp: bool,
+    saved_get: u32,
+    saved_set: u32,
+    restore_hooks: &mut dyn FnMut(u32, u32),
+    free_all: &mut dyn FnMut(),
+    set_default_compression: &mut dyn FnMut() -> bool,
+) -> bool {
+    // IDA 0x19f030: sp != 0 assert; restore the chained get/set hooks; free tbuf + state; default compression state; its return value.
+    assert!(has_sp, "LogLuvCleanup: sp != 0 (tif_luv.c:1469)");
+    restore_hooks(saved_get, saved_set);
+    free_all();
+    set_default_compression()
 }
 
 // 0x19f0b0 — _LogLuvEncodeTile
 // type: unknown
 #[doc(alias = "_LogLuvEncodeTile")]
-pub fn stub_19f0b0() -> ! {
-    todo!("0x19f0b0 _LogLuvEncodeTile")
+pub fn stub_19f0b0(buf: &mut [u8], row_len: usize, encode_row: &mut dyn FnMut(&mut [u8]) -> bool) -> bool {
+    // IDA 0x19f0b0: tile twin of EncodeStrip over the tile row size (tif_luv.c:615).
+    assert!(row_len > 0 && buf.len() % row_len == 0, "LogLuvEncodeTile: cc%rowlen == 0 (tif_luv.c:615)");
+    for row in buf.chunks_mut(row_len) {
+        if !encode_row(row) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x19f154 — _LogLuvDecodeTile
 // type: unknown
 #[doc(alias = "_LogLuvDecodeTile")]
-pub fn stub_19f154() -> ! {
-    todo!("0x19f154 _LogLuvDecodeTile")
+pub fn stub_19f154(buf: &mut [u8], row_len: usize, decode_row: &mut dyn FnMut(&mut [u8]) -> bool) -> bool {
+    // IDA 0x19f154: tile twin of DecodeStrip over the tile row size (tif_luv.c:363).
+    assert!(row_len > 0 && buf.len() % row_len == 0, "LogLuvDecodeTile: cc%rowlen == 0 (tif_luv.c:363)");
+    for row in buf.chunks_mut(row_len) {
+        if !decode_row(row) {
+            return false;
+        }
+    }
+    true
+}
+
+/// Greedy RLE byte-plane pass shared by the LogLuv32/16 encoders (IDA 0x19f1f8/0x19fd88: masked runs → op 126 + len + value byte; else literals → op len ≤ 127 + value bytes; IDA scans 8-wide with its own short-run preference — same code format the RLE decoders accept).
+fn logluv_encode_pass32(words: &[u32], shift: u32, out: &mut Vec<u8>) {
+    let mut i = 0;
+    while i < words.len() {
+        let v = words[i] & (0xFF << shift);
+        let mut run = 1;
+        while i + run < words.len() && run < 129 && (words[i + run] & (0xFF << shift)) == v {
+            run += 1;
+        }
+        if run >= 2 {
+            out.push(126 + run as u8);
+            out.push((v >> shift) as u8);
+            i += run;
+        } else {
+            let mut lit = 1;
+            while i + lit < words.len() && lit < 127 {
+                let nv = words[i + lit] & (0xFF << shift);
+                if i + lit + 1 < words.len() && (words[i + lit + 1] & (0xFF << shift)) == nv {
+                    break;
+                }
+                lit += 1;
+            }
+            out.push(lit as u8);
+            for k in 0..lit {
+                out.push(((words[i + k] & (0xFF << shift)) >> shift) as u8);
+            }
+            i += lit;
+        }
+    }
+}
+
+/// 16-bit twin of the encode pass (IDA 0x19fd88).
+fn logluv_encode_pass16(words: &[u16], shift: u32, out: &mut Vec<u8>) {
+    let mut i = 0;
+    while i < words.len() {
+        let v = (words[i] as u32) & (0xFF << shift);
+        let mut run = 1;
+        while i + run < words.len() && run < 129 && ((words[i + run] as u32) & (0xFF << shift)) == v {
+            run += 1;
+        }
+        if run >= 2 {
+            out.push(126 + run as u8);
+            out.push((v >> shift) as u8);
+            i += run;
+        } else {
+            let mut lit = 1;
+            while i + lit < words.len() && lit < 127 {
+                let nv = (words[i + lit] as u32) & (0xFF << shift);
+                if i + lit + 1 < words.len() && ((words[i + lit + 1] as u32) & (0xFF << shift)) == nv {
+                    break;
+                }
+                lit += 1;
+            }
+            out.push(lit as u8);
+            for k in 0..lit {
+                out.push((((words[i + k] as u32) & (0xFF << shift)) >> shift) as u8);
+            }
+            i += lit;
+        }
+    }
 }
 
 // 0x19f1f8 — _LogLuvEncode32
 // type: unknown
 #[doc(alias = "_LogLuvEncode32")]
-pub fn stub_19f1f8() -> ! {
-    todo!("0x19f1f8 _LogLuvEncode32")
+pub fn stub_19f1f8(
+    has_sp: bool,
+    sample: u16,
+    words: &[u32],
+    convert_in: &mut dyn FnMut(&mut Vec<u32>),
+    emit: &mut dyn FnMut(&[u8]) -> bool,
+) -> i32 {
+    // IDA 0x19f1f8: sp/s asserts; convert hook fills the word buffer when state != 2 (caller passes input + nop when state == 2); four byte-plane passes (24/16/8/0) with one terminal flush (IDA flushes on full mid-stream); 1 on success, −1 on flush failure.
+    assert!(has_sp, "LogLuvEncode32: sp != NULL (tif_luv.c:516)");
+    assert_eq!(sample, 0, "LogLuvEncode32: s == 0 (tif_luv.c:515)");
+    let mut buf = words.to_vec();
+    convert_in(&mut buf);
+    let mut out = Vec::with_capacity(buf.len() + 16);
+    for shift in [24u32, 16, 8, 0] {
+        logluv_encode_pass32(&buf, shift, &mut out);
+    }
+    if emit(&out) { 1 } else { -1 }
 }
 
 // 0x19f958 — _LogLuvEncode24
 // type: unknown
 #[doc(alias = "_LogLuvEncode24")]
-pub fn stub_19f958() -> ! {
-    todo!("0x19f958 _LogLuvEncode24")
+pub fn stub_19f958(
+    has_sp: bool,
+    sample: u16,
+    words: &[u32],
+    convert_in: &mut dyn FnMut(&mut Vec<u32>),
+    emit: &mut dyn FnMut(&[u8]) -> bool,
+) -> i32 {
+    // IDA 0x19f958: sp/s asserts; convert hook fills words when state != 2; raw 3-byte big-endian pack (IDA 4-wide unrolled with a (count & 3) prologue); flush when ≤ 2 free (fail → −1, folded to one terminal emit); 1 on success.
+    assert!(has_sp, "LogLuvEncode24: sp != NULL (tif_luv.c:469)");
+    assert_eq!(sample, 0, "LogLuvEncode24: s == 0 (tif_luv.c:468)");
+    let mut buf = words.to_vec();
+    convert_in(&mut buf);
+    let mut out = Vec::with_capacity(buf.len() * 3);
+    for &w in &buf {
+        let b = w.to_be_bytes();
+        out.push(b[1]);
+        out.push(b[2]);
+        out.push(b[3]);
+    }
+    if emit(&out) { 1 } else { -1 }
 }
 
 // 0x19fd88 — _LogL16Encode
 // type: unknown
 #[doc(alias = "_LogL16Encode")]
-pub fn stub_19fd88() -> ! {
-    todo!("0x19fd88 _LogL16Encode")
+pub fn stub_19fd88(
+    has_sp: bool,
+    sample: u16,
+    words: &[u16],
+    convert_in: &mut dyn FnMut(&mut Vec<u16>),
+    emit: &mut dyn FnMut(&[u8]) -> bool,
+) -> i32 {
+    // IDA 0x19fd88: 16-bit twin of Encode32 over two byte-plane passes (shifts 8, 0); same code format the 0x19e7a0 decoder accepts.
+    assert!(has_sp, "LogL16Encode: sp != NULL (tif_luv.c:383)");
+    assert_eq!(sample, 0, "LogL16Encode: s == 0 (tif_luv.c:382)");
+    let mut buf = words.to_vec();
+    convert_in(&mut buf);
+    let mut out = Vec::with_capacity(buf.len() + 16);
+    for shift in [8u32, 0] {
+        logluv_encode_pass16(&buf, shift, &mut out);
+    }
+    if emit(&out) { 1 } else { -1 }
 }
 
 // 0x1a0514 — _Luv32fromLuv48
 // type: unknown
 #[doc(alias = "_Luv32fromLuv48")]
-pub fn stub_1a0514() -> ! {
-    todo!("0x1a0514 _Luv32fromLuv48")
+pub fn stub_1a0514(src: &[i16], dst: &mut [u32], dither: bool, noise: &mut dyn FnMut() -> f64) -> u32 {
+    // IDA 0x1a0514: Luv48 triples → packed LogLuv32; dither path scales by 0.012512207 with −0.5 + noise (caller scales libc rand() by 2⁻³¹ into [0, 1)); fixed path uses wrapping (410·u >> 7, 209920·v >> 24) integer math — IDA wraps 32-bit; IDA 4-wide unrolls with a (count & 3) prologue; returns the last low byte.
+    let n = (src.len() / 3).min(dst.len());
+    let mut last = 0u32;
+    if dither {
+        for i in 0..n {
+            let l = (src[3 * i] as u32) << 16;
+            let uq = (src[3 * i + 1] as f64 * 0.012512207 + noise() - 0.5) as i32;
+            let vq = (src[3 * i + 2] as f64 * 0.012512207 + noise() - 0.5) as i32;
+            last = (vq as u8) as u32;
+            dst[i] = l | (((uq << 8) & 0xFF00) as u32) | last;
+        }
+    } else {
+        for i in 0..n {
+            let l = (src[3 * i] as u32) << 16;
+            let u = src[3 * i + 1] as i32;
+            let v = src[3 * i + 2] as i32;
+            let hi = (410i32.wrapping_mul(u) >> 7) & 0xFF00;
+            let lo = (209920i32.wrapping_mul(v) >> 24) & 0xFF;
+            last = lo as u32;
+            dst[i] = l | (hi as u32) | last;
+        }
+    }
+    last
 }
 
 // 0x1a0a28 — _XYZtoRGB24
