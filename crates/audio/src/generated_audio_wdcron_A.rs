@@ -4,9 +4,12 @@
 //! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 use rbx_core::SharedPtr;
+use crate::generated::flog_asserts;
+use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    GuiButtonBoolSlot, GuiButtonYAlignProp, GuiTextButtonState, YAlignmentVariant, YALIGNMENT_ITEMS,
-    yalignment_index,
+    GuiButtonBoolSlot, GuiButtonXAlignProp, GuiButtonYAlignProp, GuiTextButtonState, XAlignmentVariant,
+    YAlignmentVariant, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, xalignment_index, xalignment_name,
+    yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -210,8 +213,11 @@ pub fn stub_675068(state: &mut GuiTextButtonState, variant: &YAlignmentVariant) 
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_6751b4() -> ! {
-    todo!("0x6751b4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_6751b4(first: &GuiTextButtonState, second: &mut GuiTextButtonState) {
+    // IDA 0x6751b4 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::copyValue`): inner `getValue` on the source then
+    // inner `setValue` on the target. Host: copy the alignment.
+    second.y_alignment = first.y_alignment;
 }
 
 // 0x6751d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14hasStringValueEv
@@ -219,8 +225,10 @@ pub fn stub_6751b4() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14hasStringValueEv")]
-pub fn stub_6751d8() -> ! {
-    todo!("0x6751d8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14hasStringValueEv")
+pub fn stub_6751d8() -> bool {
+    // IDA 0x6751d8 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x6751dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
@@ -228,8 +236,12 @@ pub fn stub_6751d8() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6751dc() -> ! {
-    todo!("0x6751dc __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_6751dc(state: &GuiTextButtonState) -> String {
+    // IDA 0x6751dc (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::getStringValue`): inner value via the +44
+    // `GetSet` plus `EnumDesc::convertToString`. Host: the grounded
+    // item name.
+    yalignment_name(state.y_alignment).to_owned()
 }
 
 // 0x675200 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -237,8 +249,18 @@ pub fn stub_6751dc() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_675200() -> ! {
-    todo!("0x675200 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_675200(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x675200 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::setStringValue`): `Name::lookup` +
+    // `EnumDesc::convertToValue`; on a hit the inner `setValue`
+    // runs and 1 returns, else 0. Host: table position decides.
+    match YALIGNMENT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.y_alignment = YALIGNMENT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x675240 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -246,8 +268,13 @@ pub fn stub_675200() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_675240() -> ! {
-    todo!("0x675240 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_675240(state: &GuiTextButtonState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x675240 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::writeValue`): inner `getValue`, `clearValue`,
+    // int tag `5` at +16, value at +20, returns 5.
+    out.value_type = 5;
+    out.int_value = state.y_alignment as i32;
+    5
 }
 
 // 0x675260 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -255,8 +282,42 @@ pub fn stub_675240() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_675260() -> ! {
-    todo!("0x675260 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_675260(state: &mut GuiTextButtonState, xml: &XmlReadValue) {
+    // IDA 0x675260 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, align)) = YALIGNMENT_ITEMS.get(*value as usize) {
+                    state.y_alignment = *align;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x675260)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_675200(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x675260)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x675260)");
+            }
+        }
+    }
 }
 
 // 0x6754a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -264,8 +325,12 @@ pub fn stub_675260() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6754a0() -> ! {
-    todo!("0x6754a0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_6754a0(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x6754a0 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    yalignment_index(state.y_alignment)
 }
 
 // 0x6754bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -273,8 +338,18 @@ pub fn stub_6754a0() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_6754bc() -> ! {
-    todo!("0x6754bc __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_6754bc(state: &mut GuiTextButtonState, index: u32) -> bool {
+    // IDA 0x6754bc (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::setIndexValue`): bounds-checks the index against
+    // the item count, stores `items[index]` through the inner
+    // `setValue` and returns 1, else 0.
+    match YALIGNMENT_ITEMS.get(index as usize) {
+        Some((_, align)) => {
+            state.y_alignment = *align;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x6754f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -282,8 +357,11 @@ pub fn stub_6754bc() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6754f0() -> ! {
-    todo!("0x6754f0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_6754f0(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x6754f0 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::getEnumValue`): the inner `getValue` straight
+    // through.
+    state.y_alignment
 }
 
 // 0x6754f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -291,8 +369,17 @@ pub fn stub_6754f0() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_6754f8() -> ! {
-    todo!("0x6754f8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_6754f8(state: &mut GuiTextButtonState, value: u32) -> bool {
+    // IDA 0x6754f8 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::setEnumValue`): `find_if` with `equalValue` over
+    // the items; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Host: membership decides.
+    if YALIGNMENT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.y_alignment = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x675544 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -300,8 +387,12 @@ pub fn stub_6754f8() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_675544() -> ! {
-    todo!("0x675544 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_675544(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x675544 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    yalignment_index(state.y_alignment)
 }
 
 // 0x675564 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -309,8 +400,13 @@ pub fn stub_675544() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_675564() -> ! {
-    todo!("0x675564 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_675564(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x675564 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::setStringValue` over `Name`): `convertToValue`
+    // on the name; on a hit the inner `setValue` runs and 1
+    // returns, else 0. Same string edge as 0x675200 — host forwards
+    // into that twin (`Name` folds into `&str`).
+    stub_675200(state, name)
 }
 
 // 0x675598 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
@@ -318,8 +414,20 @@ pub fn stub_675564() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_675598() -> ! {
-    todo!("0x675598 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_675598(state: &mut GuiTextButtonState, index: i32) -> bool {
+    // IDA 0x675598 (`EnumPropDescriptor<GuiTextButton,
+    // YAlignment>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, align)) = YALIGNMENT_ITEMS.get(index as usize) {
+            state.y_alignment = *align;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x6755d8 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -327,8 +435,10 @@ pub fn stub_675598() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::YAlignment)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_6755d8() -> ! {
-    todo!("0x6755d8 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_6755d8() -> bool {
+    // IDA 0x6755d8 (`GetSetImpl<GuiTextButton YAlignment>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x6755dc — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -336,8 +446,10 @@ pub fn stub_6755d8() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::YAlignment)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_6755dc() -> ! {
-    todo!("0x6755dc __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_6755dc() -> bool {
+    // IDA 0x6755dc (`GetSetImpl<GuiTextButton YAlignment>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x6755e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -345,8 +457,13 @@ pub fn stub_6755dc() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::YAlignment)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6755e0() -> ! {
-    todo!("0x6755e0 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_6755e0(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x6755e0 (`GetSetImpl<GuiTextButton YAlignment>::getValue`):
+    // the member-pointer resolve (null described reads at offset 0
+    // with the +800 `Instance`-to-mixin adjust, 0x6755e8-0x6755f0;
+    // virtual when the low bit is set) tail-calling the getter. The
+    // member is `getYAlignment`; the pointer folds into the field.
+    state.y_alignment
 }
 
 // 0x67560c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -354,8 +471,13 @@ pub fn stub_6755e0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::YAlignment)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::YAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_67560c() -> ! {
-    todo!("0x67560c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_67560c(state: &mut GuiTextButtonState, value: u32) {
+    // IDA 0x67560c (`GetSetImpl<GuiTextButton YAlignment>::setValue`):
+    // the member-pointer resolve over +12/+16 tail-calling the
+    // setter with the input word. The member is `setYAlignment`;
+    // the pointer folds into the field (its raises fold into the
+    // store).
+    state.y_alignment = value;
 }
 
 // 0x675630 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -363,8 +485,16 @@ pub fn stub_67560c() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::EnumPropDescriptor<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::XAlignment)>(char const*,char const*,RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::XAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_675630() -> ! {
-    todo!("0x675630 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_675630(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonXAlignProp {
+    // IDA 0x675630 (`EnumPropDescriptor<GuiTextButton, XAlignment>`
+    // ctor): the `GuiTextButton` `classDescriptor` call, the
+    // `EnumDesc<XAlignment>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `x_alignment` field. Same shape as the `TextBox` twin at
+    // 0x66da0c.
+    GuiButtonXAlignProp::new(name, category, attributes, permissions)
 }
 
 // 0x6757e4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED0Ev
@@ -381,8 +511,11 @@ pub fn stub_6757e4() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10isReadOnlyEv")]
-pub fn stub_675810() -> ! {
-    todo!("0x675810 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10isReadOnlyEv")
+pub fn stub_675810() -> bool {
+    // IDA 0x675810 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::isReadOnly`): delegates to the inner `GetSet` at
+    // +44 — always readable.
+    false
 }
 
 // 0x675820 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11isWriteOnlyEv
@@ -390,8 +523,11 @@ pub fn stub_675810() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11isWriteOnlyEv")]
-pub fn stub_675820() -> ! {
-    todo!("0x675820 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11isWriteOnlyEv")
+pub fn stub_675820() -> bool {
+    // IDA 0x675820 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::isWriteOnly`): delegates to the inner `GetSet`
+    // at +44 — always writable.
+    false
 }
 
 // 0x675830 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -399,8 +535,12 @@ pub fn stub_675820() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_675830() -> ! {
-    todo!("0x675830 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_675830(first: &GuiTextButtonState, second: &GuiTextButtonState) -> bool {
+    // IDA 0x675830 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the alignments.
+    first.x_alignment == second.x_alignment
 }
 
 // 0x675858 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -408,8 +548,12 @@ pub fn stub_675830() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_675858() -> ! {
-    todo!("0x675858 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_675858(state: &GuiTextButtonState) -> XAlignmentVariant {
+    // IDA 0x675858 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::getVariant`): reads the inner value, tags it
+    // with the plain-`int` singleton and placement-moves it in.
+    // Host: the `XAlignment` tag.
+    XAlignmentVariant::XAlignment(state.x_alignment)
 }
 
 // 0x67587c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -417,8 +561,17 @@ pub fn stub_675858() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_67587c() -> ! {
-    todo!("0x67587c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_67587c(state: &mut GuiTextButtonState, variant: &XAlignmentVariant) {
+    // IDA 0x67587c (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::setVariant`): an int-typed variant runs
+    // `any_cast<int>`; anything else runs `Variant::convert<int>`
+    // (throws on failure); then the +72 setter. Host:
+    // convert-or-throw, then store.
+    let value = match *variant {
+        XAlignmentVariant::XAlignment(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x67587c)"),
+    };
+    state.x_alignment = value;
 }
 
 // 0x6759c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -426,8 +579,11 @@ pub fn stub_67587c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_6759c8() -> ! {
-    todo!("0x6759c8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_6759c8(first: &GuiTextButtonState, second: &mut GuiTextButtonState) {
+    // IDA 0x6759c8 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::copyValue`): inner `getValue` on the source then
+    // inner `setValue` on the target. Host: copy the alignment.
+    second.x_alignment = first.x_alignment;
 }
 
 // 0x6759ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14hasStringValueEv
@@ -435,8 +591,10 @@ pub fn stub_6759c8() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14hasStringValueEv")]
-pub fn stub_6759ec() -> ! {
-    todo!("0x6759ec __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14hasStringValueEv")
+pub fn stub_6759ec() -> bool {
+    // IDA 0x6759ec (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x6759f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
@@ -444,8 +602,12 @@ pub fn stub_6759ec() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6759f0() -> ! {
-    todo!("0x6759f0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_6759f0(state: &GuiTextButtonState) -> String {
+    // IDA 0x6759f0 (`EnumPropDescriptor<GuiTextButton,
+    // XAlignment>::getStringValue`): inner value via the +44
+    // `GetSet` plus `EnumDesc::convertToString`. Host: the grounded
+    // item name.
+    xalignment_name(state.x_alignment).to_owned()
 }
 
 // 0x675a14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
