@@ -5,6 +5,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
 use rbx_core::SharedPtr;
+use parking_lot::Mutex;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use crate::instance::{CloneTool, GameTool, GrabTool, HammerTool, PartInstance, Vector3};
 use crate::workspace::Workspace;
@@ -32,11 +33,36 @@ pub fn stub_0x2b7698() -> usize {
     WORKSPACE_INDEX.load(Ordering::Relaxed)
 }
 
+/// Backing store behind
+/// `singleton_pool<OnDemandPartInstance, 200, ..., 32>` (IDA `0x2c02a8`): the
+/// pool mutex plus the chunk counters the once-init writes (`f = 1`, mutex
+/// init, `dword_123129C/A0/A4 = 0`, `A8 = 200`, `AC = B0 = 32`, `B4 = 0`) and
+/// the 32-byte-chunk freelist the malloc/free path draws from.
+pub struct OnDemandPool {
+    /// Total chunks (`A8 = 200`).
+    pub chunks_total: usize,
+    /// Chunk request size (`AC = B0 = 32`).
+    pub chunk_size: usize,
+    /// Live free chunks.
+    pub free: Mutex<Vec<Box<[u8; 32]>>>,
+}
+
+/// Pool storage behind `get_pool` (IDA `0x2c02a8`); the once-flag, mutex
+/// init, and counter writes collapse into static init.
+static ON_DEMAND_POOL: OnDemandPool = OnDemandPool {
+    chunks_total: 200,
+    chunk_size: 32,
+    free: Mutex::new(Vec::new()),
+};
+
 // 0x2c02a8 — __ZN5boost14singleton_poolIN3RBX12PartInstance20OnDemandPartInstanceELj200ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 #[doc(alias = "boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x2c02a8() -> ! {
-    todo!("0x2c02a8 boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_0x2c02a8() -> &'static OnDemandPool {
+    // IDA 0x2c02a8: once-flag test, mutex init, counter writes, then returns
+    // `&storage`. Static init is the same once-init; the freelist starts
+    // empty and fills as chunks release.
+    &ON_DEMAND_POOL
 }
 
 // 0x2ce2c4 — __ZN3RBX11AdvDragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE

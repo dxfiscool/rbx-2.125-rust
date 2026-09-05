@@ -6500,8 +6500,27 @@ pub fn stub_0x2ae778(block: *const ControlBlockPd<DebugSettings, CreatableInstan
 // 0x2aef18 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost10shared_ptrIN3RBX8InstanceEEES8_EET0_T_SA_S9_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance> * std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::SharedPtr<RBX::Instance> *,rbx_core::SharedPtr<RBX::Instance> *>(rbx_core::SharedPtr<RBX::Instance> *,rbx_core::SharedPtr<RBX::Instance> *,rbx_core::SharedPtr<RBX::Instance> *)")]
 // was: boost::shared_ptr<RBX::Instance> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *>(boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *)
-pub fn stub_0x2aef18() -> ! {
-    todo!("0x2aef18 boost::shared_ptr<RBX::Instance> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *>(boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *,boost::shared_ptr<RBX::Instance> *)")
+pub fn stub_0x2aef18(
+    first: *const SharedPtr<Instance>,
+    last: *const SharedPtr<Instance>,
+    dst: *mut SharedPtr<Instance>,
+) -> *mut SharedPtr<Instance> {
+    // IDA 0x2aef18: `std::copy` over `shared_ptr<Instance>` — per-element
+    // `operator=` (addref/store/release) advancing both cursors; returns the
+    // output end. Clone-assign through raw cursors is the same.
+    // SAFETY: `[first, last)` must be valid readable links and `dst` must
+    // point to writable link storage for the range length; ranges must not
+    // overlap.
+    unsafe {
+        let mut src = first;
+        let mut out = dst;
+        while src != last {
+            core::ptr::write(out, SharedPtr::clone(&*src));
+            src = src.add(1);
+            out = out.add(1);
+        }
+        out
+    }
 }
 
 // 0x2af428 — __ZN5boost10shared_ptrIN3RBX10CoreScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -7035,8 +7054,10 @@ pub fn stub_0x2b61f4() -> &'static Mutex<()> {
 // 0x2b61f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x2b61f8() -> ! {
-    todo!("0x2b61f8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0x2b61f8() -> &'static Mutex<()> {
+    // IDA 0x2b61f8: slot-level `safe_static_do_get_mutex` — same process-wide
+    // guard as 0x2b5a38/0x2b61f4; one static covers the family.
+    &TRIPLE_SLOT_STATIC_MUTEX
 }
 
 // 0x2b62e8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slotD1Ev
@@ -7495,8 +7516,12 @@ pub fn stub_0x2b9ca0(head: *mut Option<SharedPtr<Fn3SlotNode>>, slot: *mut Fn3Sl
 // 0x2b9eac — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
-pub fn stub_0x2b9eac() -> ! {
-    todo!("0x2b9eac boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)")
+pub fn stub_0x2b9eac(dst: &mut SharedPtr<StrSlot>, src: &SharedPtr<StrSlot>) {
+    // IDA 0x2b9eac: `operator=(slot*)` — `add_ref` the new, swap in,
+    // `release` the old. `clone` + `replace` + `drop` is the same order
+    // (same doctrine as 0x4b374).
+    let old = std::mem::replace(dst, SharedPtr::clone(src));
+    drop(old);
 }
 
 // 0x2b9ed0 — __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_EC2IPS9_EERKSC_T_
@@ -7898,8 +7923,17 @@ pub fn stub_0x2be73c(sig: *mut Signal<(SharedPtr<Instance>, String, SharedPtr<In
 // 0x2be8b4 — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EEclES6_SsS6_
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2be8b4() -> ! {
-    todo!("0x2be8b4 rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2be8b4(
+    sig: &rbx_core::signal::Signal<(SharedPtr<Instance>, String, SharedPtr<Instance>)>,
+    first: &SharedPtr<Instance>,
+    text: &str,
+    second: &SharedPtr<Instance>,
+) {
+    // IDA 0x2be8b4: `signal_with_args<3>::operator()` — `SignalPrints`
+    // fast-log, then the `next`/`fireItem` walk over live slots with retained
+    // args. `Signal::fire` is that walk (snapshot + per-slot call with
+    // clones); the arg retains collapse into the tuple clone.
+    sig.fire((SharedPtr::clone(first), text.to_owned(), SharedPtr::clone(second)));
 }
 
 // 0x2beb34 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4nextERNS2_13intrusive_ptrINS8_4slotEEE
@@ -44574,9 +44608,7 @@ pub use crate::data_model::stub_0x282f78 as stub_0x282f78;
 // 0x2c02a8 — __ZN5boost14singleton_poolIN3RBX12PartInstance20OnDemandPartInstanceELj200ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 #[doc(alias = "boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // was: boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x2c02a8() -> ! {
-    todo!("0x2c02a8 boost::singleton_pool<RBX::PartInstance::OnDemandPartInstance,200u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
-}
+pub use crate::part::stub_0x2c02a8 as stub_0x2c02a8;
 
 // 0x2ce2c4 — __ZN3RBX11AdvDragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE
 #[doc(alias = "RBX::AdvDragTool::onMouseDown(RBX::PartInstance *,G3D::Vector3 const&,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,RBX::UIEvent const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
@@ -44595,15 +44627,20 @@ pub fn stub_0x2ce4e8() -> ! {
 // 0x2ce618 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEC2ERKS6_
 #[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::vector(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // was: std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::vector(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
-pub fn stub_0x2ce618() -> ! {
-    todo!("0x2ce618 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::vector(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)")
+pub fn stub_0x2ce618(src: &[WeakPtr<PartInstance>]) -> Vec<WeakPtr<PartInstance>> {
+    // IDA 0x2ce618: `vector<weak_ptr<PartInstance>>` copy-ctor — sized base
+    // plus per-element weak-count copies. `to_vec` clones each link the same
+    // way (weak retains, no upgrades).
+    src.to_vec()
 }
 
 // 0x2ce7d4 — __ZNSt12_Vector_baseIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEC2EmRKS5_
 #[doc(alias = "std::_Vector_base<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>> const&)")]
 // was: std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<boost::weak_ptr<RBX::PartInstance>> const&)
-pub fn stub_0x2ce7d4() -> ! {
-    todo!("0x2ce7d4 std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<boost::weak_ptr<RBX::PartInstance>> const&)")
+pub fn stub_0x2ce7d4(n: usize) -> Vec<WeakPtr<PartInstance>> {
+    // IDA 0x2ce7d4: `_Vector_base` sized ctor — null init plus `_M_allocate`
+    // for `n` links. `with_capacity` reserves the same storage.
+    Vec::with_capacity(n)
 }
 
 // 0x2cf178 — __ZN3RBX13AdvLuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
@@ -44641,39 +44678,68 @@ pub fn stub_0x2d4d38() -> ! {
     todo!("0x2d4d38 RBX::AdvMoveTool::getGridXYUsingCamera(RBX::PartInstance *,G3D::Vector3 &,G3D::Vector3 &)")
 }
 
+/// Ordered `weak_ptr<PartInstance> -> float` map behind the drag-weight
+/// table (IDA `0x2d5218`): the `std::less` owner-order collapses into the
+/// control-block address (`Weak::as_ptr`), which is 1:1 with the owner while
+/// the link lives; expiry reuses like the original's owner-compare on a
+/// released block.
+#[derive(Default)]
+pub struct PartWeightMap {
+    inner: BTreeMap<usize, f32>,
+}
+
+impl PartWeightMap {
+    fn key(part: &WeakPtr<PartInstance>) -> usize {
+        WeakPtr::as_ptr(part) as usize
+    }
+}
+
 // 0x2d5218 — __ZNSt3mapIN5boost8weak_ptrIN3RBX12PartInstanceEEEfSt4lessIS4_ESaISt4pairIKS4_fEEEixERS8_
 #[doc(alias = "std::map<rbx_core::WeakPtr<RBX::PartInstance>,float,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::operator[](rbx_core::WeakPtr<RBX::PartInstance> const&)")]
 // was: std::map<boost::weak_ptr<RBX::PartInstance>,float,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::operator[](boost::weak_ptr<RBX::PartInstance> const&)
-pub fn stub_0x2d5218() -> ! {
-    todo!("0x2d5218 std::map<boost::weak_ptr<RBX::PartInstance>,float,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::operator[](boost::weak_ptr<RBX::PartInstance> const&)")
+pub fn stub_0x2d5218<'a>(map: &'a mut PartWeightMap, part: &WeakPtr<PartInstance>) -> &'a mut f32 {
+    // IDA 0x2d5218: `map<weak_ptr<PartInstance>, float>::operator[]` —
+    // lower-bound walk plus default-insert (`float()`) on miss; returns the
+    // mapped slot. `entry().or_insert(0.0)` is the same find-or-insert.
+    map.inner.entry(PartWeightMap::key(part)).or_insert(0.0)
 }
 
 // 0x2d5368 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float> const&)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)
-pub fn stub_0x2d5368() -> ! {
-    todo!("0x2d5368 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)")
+pub fn stub_0x2d5368(map: &mut PartWeightMap, part: &WeakPtr<PartInstance>, val: f32) -> bool {
+    // IDA 0x2d5368: hint-positioned `_M_insert_unique` — key compare walk,
+    // node create on miss, rebalance. `insert` is the same put-if-absent;
+    // true reports a fresh insert.
+    map.inner.insert(PartWeightMap::key(part), val).is_none()
 }
 
 // 0x2d541c — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float> const&)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)
-pub fn stub_0x2d541c() -> ! {
-    todo!("0x2d541c std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)")
+pub fn stub_0x2d541c(map: &mut PartWeightMap, part: &WeakPtr<PartInstance>, val: f32) -> bool {
+    // IDA 0x2d541c: raw-node `_M_insert` at the walked position — same put as
+    // 0x2d5368 once positioned; true reports a fresh insert.
+    map.inner.insert(PartWeightMap::key(part), val).is_none()
 }
 
 // 0x2d5468 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE16_M_insert_uniqueERKS7_
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float> const&)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)
-pub fn stub_0x2d5468() -> ! {
-    todo!("0x2d5468 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_insert_unique(std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)")
+pub fn stub_0x2d5468(map: &mut PartWeightMap, part: &WeakPtr<PartInstance>, val: f32) -> bool {
+    // IDA 0x2d5468: value `_M_insert_unique` — same put-if-absent as
+    // 0x2d5368; true reports a fresh insert.
+    map.inner.insert(PartWeightMap::key(part), val).is_none()
 }
 
 // 0x2d54d0 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE14_M_create_nodeERKS7_
 #[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_create_node(std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float> const&)")]
 // was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_create_node(std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)
-pub fn stub_0x2d54d0() -> ! {
-    todo!("0x2d54d0 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_create_node(std::pair<boost::weak_ptr<RBX::PartInstance> const,float> const&)")
+pub fn stub_0x2d54d0(part: &WeakPtr<PartInstance>, val: f32) -> (WeakPtr<PartInstance>, f32) {
+    // IDA 0x2d54d0: `_M_create_node` — `operator new(0x1C)` plus the pair
+    // copy with the weak-count addref (spinlock-pool locked incr). Cloning
+    // the pair is the same retain + copy; nodes collapse into the entry.
+    (WeakPtr::clone(part), val)
 }
 
 // 0x2d7074 — __ZN3RBX13AdvRunDragger9initLocalEPNS_9WorkspaceEN5boost8weak_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorIS6_SaIS6_EE
