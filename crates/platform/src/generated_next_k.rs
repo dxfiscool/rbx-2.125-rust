@@ -984,6 +984,9 @@ pub struct SoftwareChannel {
     closed: std::sync::atomic::AtomicBool,
     dsp_units: std::sync::atomic::AtomicBool,
     paused: std::sync::atomic::AtomicBool,
+    occlusion: parking_lot::Mutex<[f32; 2]>,
+    speaker_mix: parking_lot::Mutex<[f32; 8]>,
+    speaker_levels: parking_lot::Mutex<Vec<f32>>,
 }
 impl Default for SoftwareChannel {
     /// `ChannelSoftware::ChannelSoftware` (IDA 0x759c0): runs the manual
@@ -1013,6 +1016,9 @@ impl Default for SoftwareChannel {
             closed: std::sync::atomic::AtomicBool::new(false),
             dsp_units: std::sync::atomic::AtomicBool::new(false),
             paused: std::sync::atomic::AtomicBool::new(false),
+            occlusion: parking_lot::Mutex::new([0.0; 2]),
+            speaker_mix: parking_lot::Mutex::new([0.0; 8]),
+            speaker_levels: parking_lot::Mutex::new(Vec::new()),
         }
     }
 }
@@ -1182,6 +1188,103 @@ impl SoftwareChannel {
     }
     pub fn is_paused(&self) -> bool {
         self.paused.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelSoftware::start` (IDA 0x75b50): clears the pause bits when
+    /// unpausing (0x75b58..tail).
+    pub fn start(&self) -> i32 {
+        self.paused.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.playing.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.finished.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn start_playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelSoftware::alloc` (IDA 0x75be0): runs the manual alloc,
+    /// then rewires the DSP graph (0x75bf8..tail).
+    pub fn alloc(&self) -> i32 {
+        MANUAL_3D.alloc();
+        self.dsp_units.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::stop` (IDA 0x75f8c): unwires the units and marks
+    /// the resamplers finished (0x75f9c..tail).
+    pub fn stop(&self) -> i32 {
+        self.playing.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.finished.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::setSpeakerLevels` (IDA 0x762c4): no-op while
+    /// playing, else clamps plus stores the matrix (0x762e8..tail).
+    pub fn set_speaker_matrix(&self, levels: Vec<f32>) -> i32 {
+        if self.playing() {
+            return 0;
+        }
+        *self.speaker_levels.lock() = levels
+            .into_iter()
+            .map(|level| level.clamp(0.0, 1.0))
+            .collect();
+        0
+    }
+    /// `ChannelSoftware::setSpeakerMix` (IDA 0x76584): no-op while
+    /// playing, else stores the eight gains (0x76584..tail).
+    pub fn set_speaker_mix8(&self, mix: [f32; 8]) -> i32 {
+        if self.playing() {
+            return 0;
+        }
+        *self.speaker_mix.lock() = mix;
+        0
+    }
+    /// `ChannelSoftware::setVolume` (IDA 0x76988): no-op while playing,
+    /// else rebuilds the direct plus reverb mixes (0x769a4..tail).
+    pub fn set_volume(&self, volume: f32) -> i32 {
+        if self.playing() {
+            return 0;
+        }
+        self.update_direct_mix(volume);
+        self.update_reverb_mix(volume);
+        0
+    }
+    /// `ChannelSoftware::set3DOcclusion` (IDA 0x76a80): no-op while
+    /// playing, else latches occlusion and rebuilds the mixes (0x76a94..
+    /// tail).
+    pub fn set_occlusion(&self, direct: f32, reverb: f32) -> i32 {
+        if self.playing() {
+            return 0;
+        }
+        *self.occlusion.lock() = [direct, reverb];
+        let gain = *self.direct_mix.lock();
+        self.update_direct_mix(gain);
+        self.update_reverb_mix(gain);
+        0
+    }
+    /// `ChannelSoftware::setReverbProperties` (IDA 0x76b3c): 37 without
+    /// properties, else latches plus rewires (0x76b54..tail).
+    pub fn set_reverb_props(&self, props: ReverbProps) -> i32 {
+        *self.reverb.lock() = props;
+        0
+    }
+    /// `ChannelSoftware::getPaused` (IDA 0x7709c): walks the unit mute
+    /// bits down to the real flag (0x770ac..tail).
+    pub fn paused_state(&self, with_out: bool) -> (i32, bool) {
+        if with_out {
+            (0, self.is_paused())
+        } else {
+            (37, false)
+        }
+    }
+    /// `ChannelSoftware::alloc` DSP variant (IDA 0x77138): runs the real
+    /// alloc, then creates the resampler unit (0x77154..tail).
+    pub fn alloc_dsp(&self) -> i32 {
+        REAL_CHANNEL.alloc();
+        self.dsp_units.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::~ChannelSoftware` D1 (IDA 0x773c4): vtable
+    /// resets only; D0 above also deletes.
+    pub fn destroy(&self) {
+        self.closed.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.playing.store(false, std::sync::atomic::Ordering::SeqCst);
     }
 }
 static SOFTWARE_CHANNEL: std::sync::LazyLock<SoftwareChannel> =
@@ -1442,83 +1545,108 @@ pub fn stub_75a48(paused: bool) -> i32 {
 // 0x75b50 — __ZN4FMOD15ChannelSoftware5startEv
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::start(void)")]
-pub fn stub_75b50() -> ! {
-    todo!("0x75b50 FMOD::ChannelSoftware::start(void)")
+pub fn stub_75b50() -> i32 {
+    // IDA 0x75b50 `ChannelSoftware::start`: clears the pause bits when
+    // unpausing (0x75b58..tail).
+    SOFTWARE_CHANNEL.start()
 }
 
 // 0x75be0 — __ZN4FMOD15ChannelSoftware5allocEv
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::alloc(void)")]
-pub fn stub_75be0() -> ! {
-    todo!("0x75be0 FMOD::ChannelSoftware::alloc(void)")
+pub fn stub_75be0() -> i32 {
+    // IDA 0x75be0 `ChannelSoftware::alloc`: runs the manual alloc, then
+    // rewires the DSP graph (0x75bf8..tail).
+    SOFTWARE_CHANNEL.alloc()
 }
 
 // 0x75f8c — __ZN4FMOD15ChannelSoftware4stopEv
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::stop(void)")]
-pub fn stub_75f8c() -> ! {
-    todo!("0x75f8c FMOD::ChannelSoftware::stop(void)")
+pub fn stub_75f8c() -> i32 {
+    // IDA 0x75f8c `ChannelSoftware::stop`: unwires the units and marks
+    // the resamplers finished (0x75f9c..tail).
+    SOFTWARE_CHANNEL.stop()
 }
 
 // 0x762c4 — __ZN4FMOD15ChannelSoftware16setSpeakerLevelsEiPfi
 // type: int __fastcall(FMOD::ChannelSoftware *this, int, float *, int)
 #[doc(alias = "FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")]
-pub fn stub_762c4() -> ! {
-    todo!("0x762c4 FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")
+pub fn stub_762c4(levels: Vec<f32>) -> i32 {
+    // IDA 0x762c4 `ChannelSoftware::setSpeakerLevels`: no-op while
+    // playing, else clamps plus stores the matrix (0x762e8..tail).
+    SOFTWARE_CHANNEL.set_speaker_matrix(levels)
 }
 
 // 0x76584 — __ZN4FMOD15ChannelSoftware13setSpeakerMixEffffffff
 // type: int __fastcall(FMOD::ChannelSoftware *this, int, int, int, int, float, float, float, float)
 #[doc(alias = "FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_76584() -> ! {
-    todo!("0x76584 FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")
+pub fn stub_76584(mix: [f32; 8]) -> i32 {
+    // IDA 0x76584 `ChannelSoftware::setSpeakerMix`: no-op while playing,
+    // else stores the eight gains (0x76584..tail).
+    SOFTWARE_CHANNEL.set_speaker_mix8(mix)
 }
 
 // 0x76988 — __ZN4FMOD15ChannelSoftware9setVolumeEf
 // type: int __fastcall(FMOD::ChannelSoftware *this, float32_t)
 #[doc(alias = "FMOD::ChannelSoftware::setVolume(float)")]
-pub fn stub_76988() -> ! {
-    todo!("0x76988 FMOD::ChannelSoftware::setVolume(float)")
+pub fn stub_76988(volume: f32) -> i32 {
+    // IDA 0x76988 `ChannelSoftware::setVolume`: no-op while playing, else
+    // rebuilds the direct plus reverb mixes (0x769a4..tail).
+    SOFTWARE_CHANNEL.set_volume(volume)
 }
 
 // 0x76a80 — __ZN4FMOD15ChannelSoftware14set3DOcclusionEff
 // type: int __fastcall(FMOD::ChannelSoftware *this, float, float)
 #[doc(alias = "FMOD::ChannelSoftware::set3DOcclusion(float,float)")]
-pub fn stub_76a80() -> ! {
-    todo!("0x76a80 FMOD::ChannelSoftware::set3DOcclusion(float,float)")
+pub fn stub_76a80(direct: f32, reverb: f32) -> i32 {
+    // IDA 0x76a80 `ChannelSoftware::set3DOcclusion`: no-op while playing,
+    // else latches occlusion and rebuilds the mixes (0x76a94..tail).
+    SOFTWARE_CHANNEL.set_occlusion(direct, reverb)
 }
 
 // 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(FMOD::ChannelSoftware *this, int *)
 #[doc(alias = "FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_76b3c() -> ! {
-    todo!("0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub fn stub_76b3c(props: ReverbProps) -> i32 {
+    // IDA 0x76b3c `ChannelSoftware::setReverbProperties`: 37 without
+    // properties, else latches plus rewires (0x76b54..tail).
+    SOFTWARE_CHANNEL.set_reverb_props(props)
 }
 
 // 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb
 // type: int __fastcall(FMOD::ChannelSoftware *this, bool *)
 #[doc(alias = "FMOD::ChannelSoftware::getPaused(bool *)")]
-pub fn stub_7709c() -> ! {
-    todo!("0x7709c FMOD::ChannelSoftware::getPaused(bool *)")
+pub fn stub_7709c(with_out: bool) -> (i32, bool) {
+    // IDA 0x7709c `ChannelSoftware::getPaused`: walks the unit mute bits
+    // down to the real flag (0x770ac..tail).
+    SOFTWARE_CHANNEL.paused_state(with_out)
 }
 
 // 0x77138 — __ZN4FMOD15ChannelSoftware5allocEPNS_4DSPIE
 // type: int __fastcall(FMOD::DSPI **this, FMOD::DSPI *)
 #[doc(alias = "FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")]
-pub fn stub_77138() -> ! {
-    todo!("0x77138 FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")
+pub fn stub_77138() -> i32 {
+    // IDA 0x77138 `ChannelSoftware::alloc` DSP variant: runs the real
+    // alloc, then creates the resampler unit (0x77154..tail).
+    SOFTWARE_CHANNEL.alloc_dsp()
 }
 
 // 0x773c4 — __ZN4FMOD15ChannelSoftwareD1Ev
 // type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_773c4() -> ! {
-    todo!("0x773c4 FMOD::ChannelSoftware::~ChannelSoftware()")
+pub fn stub_773c4() {
+    // IDA 0x773c4 `ChannelSoftware::~ChannelSoftware` D1: vtable resets
+    // only (0x773d0..0x773e0).
+    SOFTWARE_CHANNEL.destroy();
 }
 
 // 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev
 // type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_773f0() -> ! {
-    todo!("0x773f0 FMOD::ChannelSoftware::~ChannelSoftware()")
+pub fn stub_773f0() {
+    // IDA 0x773f0 `ChannelSoftware::~ChannelSoftware` D0: vtable resets
+    // plus operator delete (0x77404..0x77418); the drop below is the
+    // delete.
+    SOFTWARE_CHANNEL.destroy();
 }

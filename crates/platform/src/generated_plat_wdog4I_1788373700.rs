@@ -16,8 +16,9 @@ const _: () = {
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "__ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv")]
 #[doc(alias = "FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")]
-pub fn stub_77428() -> ! {
-    todo!("0x77428 __ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv")
+pub fn stub_77428() -> i32 {
+    // Dupe of 0x77428 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77428()
 }
 
 // 0x77474 — __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b
@@ -25,8 +26,9 @@ pub fn stub_77428() -> ! {
 // type: int __fastcall(int, int, int, unsigned __int8)
 #[doc(alias = "__ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b")]
 #[doc(alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
-pub fn stub_77474() -> ! {
-    todo!("0x77474 __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b")
+pub fn stub_77474(group: u32) -> i32 {
+    // Dupe of 0x77474 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77474(group)
 }
 
 // 0x774e0 — __ZN4FMOD13ChannelStream5startEv
@@ -34,8 +36,9 @@ pub fn stub_77474() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "__ZN4FMOD13ChannelStream5startEv")]
 #[doc(alias = "FMOD::ChannelStream::start(void)")]
-pub fn stub_774e0() -> ! {
-    todo!("0x774e0 __ZN4FMOD13ChannelStream5startEv")
+pub fn stub_774e0(has_data: bool) -> i32 {
+    // Dupe of 0x774e0 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_774e0(has_data)
 }
 
 // 0x77574 — __ZN4FMOD13ChannelStream6updateEi
@@ -43,8 +46,9 @@ pub fn stub_774e0() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "__ZN4FMOD13ChannelStream6updateEi")]
 #[doc(alias = "FMOD::ChannelStream::update(int)")]
-pub fn stub_77574() -> ! {
-    todo!("0x77574 __ZN4FMOD13ChannelStream6updateEi")
+pub fn stub_77574() -> i32 {
+    // Dupe of 0x77574 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77574()
 }
 
 // 0x775d0 — __ZN4FMOD13ChannelStream9setVolumeEf
@@ -52,8 +56,9 @@ pub fn stub_77574() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream9setVolumeEf")]
 #[doc(alias = "FMOD::ChannelStream::setVolume(float)")]
-pub fn stub_775d0() -> ! {
-    todo!("0x775d0 __ZN4FMOD13ChannelStream9setVolumeEf")
+pub fn stub_775d0(volume: f32) -> i32 {
+    // Dupe of 0x775d0 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_775d0(volume)
 }
 
 // 0x77718 — __ZN4FMOD13ChannelStream12setFrequencyEf
@@ -61,8 +66,9 @@ pub fn stub_775d0() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream12setFrequencyEf")]
 #[doc(alias = "FMOD::ChannelStream::setFrequency(float)")]
-pub fn stub_77718() -> ! {
-    todo!("0x77718 __ZN4FMOD13ChannelStream12setFrequencyEf")
+pub fn stub_77718(frequency: f32) -> i32 {
+    // Dupe of 0x77718 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77718(frequency)
 }
 
 // 0x77774 — __ZN4FMOD13ChannelStream6setPanEff
@@ -70,8 +76,9 @@ pub fn stub_77718() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream6setPanEff")]
 #[doc(alias = "FMOD::ChannelStream::setPan(float,float)")]
-pub fn stub_77774() -> ! {
-    todo!("0x77774 __ZN4FMOD13ChannelStream6setPanEff")
+pub fn stub_77774(left: f32, right: f32) -> i32 {
+    // Dupe of 0x77774 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77774(left, right)
 }
 
 // 0x7781c — __ZN4FMOD13ChannelStream16setDSPClockDelayEv
@@ -79,8 +86,9 @@ pub fn stub_77774() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "__ZN4FMOD13ChannelStream16setDSPClockDelayEv")]
 #[doc(alias = "FMOD::ChannelStream::setDSPClockDelay(void)")]
-pub fn stub_7781c() -> ! {
-    todo!("0x7781c __ZN4FMOD13ChannelStream16setDSPClockDelayEv")
+pub fn stub_7781c() -> i32 {
+    // Dupe of 0x7781c (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7781c()
 }
 
 // 0x77868 — __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff
@@ -88,8 +96,9 @@ pub fn stub_7781c() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float, float, float, float, float, float, float, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream13setSpeakerMixEffffffff")]
 #[doc(alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_77868() -> ! {
-    todo!("0x77868 __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff")
+pub fn stub_77868(mix: [f32; 8]) -> i32 {
+    // Dupe of 0x77868 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77868(mix)
 }
 
 // 0x77904 — __ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi
@@ -97,8 +106,9 @@ pub fn stub_77868() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, int, float *, int)
 #[doc(alias = "__ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi")]
 #[doc(alias = "FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")]
-pub fn stub_77904() -> ! {
-    todo!("0x77904 __ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi")
+pub fn stub_77904(levels: Vec<f32>) -> i32 {
+    // Dupe of 0x77904 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77904(levels)
 }
 
 // 0x77970 — __ZN4FMOD13ChannelStream15set3DAttributesEv
@@ -106,8 +116,9 @@ pub fn stub_77904() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "__ZN4FMOD13ChannelStream15set3DAttributesEv")]
 #[doc(alias = "FMOD::ChannelStream::set3DAttributes(void)")]
-pub fn stub_77970() -> ! {
-    todo!("0x77970 __ZN4FMOD13ChannelStream15set3DAttributesEv")
+pub fn stub_77970() -> i32 {
+    // Dupe of 0x77970 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77970()
 }
 
 // 0x779bc — __ZN4FMOD13ChannelStream14setLowPassGainEf
@@ -115,8 +126,9 @@ pub fn stub_77970() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream14setLowPassGainEf")]
 #[doc(alias = "FMOD::ChannelStream::setLowPassGain(float)")]
-pub fn stub_779bc() -> ! {
-    todo!("0x779bc __ZN4FMOD13ChannelStream14setLowPassGainEf")
+pub fn stub_779bc(gain: f32) -> i32 {
+    // Dupe of 0x779bc (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_779bc(gain)
 }
 
 // 0x77a18 — __ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv
@@ -124,8 +136,9 @@ pub fn stub_779bc() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "__ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv")]
 #[doc(alias = "FMOD::ChannelStream::set3DMinMaxDistance(void)")]
-pub fn stub_77a18() -> ! {
-    todo!("0x77a18 __ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv")
+pub fn stub_77a18() -> i32 {
+    // Dupe of 0x77a18 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77a18()
 }
 
 // 0x77a64 — __ZN4FMOD13ChannelStream14set3DOcclusionEff
@@ -133,8 +146,9 @@ pub fn stub_77a18() -> ! {
 // type: int __fastcall(FMOD::ChannelStream *this, float, float)
 #[doc(alias = "__ZN4FMOD13ChannelStream14set3DOcclusionEff")]
 #[doc(alias = "FMOD::ChannelStream::set3DOcclusion(float,float)")]
-pub fn stub_77a64() -> ! {
-    todo!("0x77a64 __ZN4FMOD13ChannelStream14set3DOcclusionEff")
+pub fn stub_77a64(direct: f32, reverb: f32) -> i32 {
+    // Dupe of 0x77a64 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77a64(direct, reverb)
 }
 
 // 0x77ac8 — __ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
@@ -142,8 +156,9 @@ pub fn stub_77a64() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES")]
 #[doc(alias = "FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_77ac8() -> ! {
-    todo!("0x77ac8 __ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES")
+pub fn stub_77ac8(props: crate::generated_next_k::ReverbProps) -> i32 {
+    // Dupe of 0x77ac8 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_77ac8(props)
 }
 
 // 0x77b24 — __ZN4FMOD13ChannelStream19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
