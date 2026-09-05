@@ -11592,169 +11592,198 @@ pub fn stub_9b27fc(flag: bool) -> bool {
 
 // 0x9b280c — __ZN3RBX15NetworkSettings24setRenderStreamedRegionsEb
 #[doc(alias = "RBX::NetworkSettings::setRenderStreamedRegions(bool)")]
-pub fn stub_9b280c() -> ! {
-    todo!("0x9b280c RBX::NetworkSettings::setRenderStreamedRegions(bool)")
+pub fn stub_9b280c(flag: &mut bool, value: bool, notify: &mut dyn FnMut()) {
+ // IDA 0x9b280c: stores Workspace::showStreamedRegions; raisePropertyChanged on change.
+ if value != *flag {
+ *flag = value;
+ notify();
+ }
 }
 
 // 0x9b283c — __ZN3RBX15NetworkSettingsC1Ev
 #[doc(alias = "RBX::NetworkSettings::NetworkSettings(void)")]
-pub fn stub_9b283c() -> ! {
-    todo!("0x9b283c RBX::NetworkSettings::NetworkSettings(void)")
+pub fn stub_9b283c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b283c: ctor tail-calls the sibling overload.
+ init(slot);
+ slot
 }
 
 // 0x9b2848 — __ZN3RBX15NetworkSettingsC2Ev
 #[doc(alias = "RBX::NetworkSettings::NetworkSettings(void)")]
-pub fn stub_9b2848() -> ! {
-    todo!("0x9b2848 RBX::NetworkSettings::NetworkSettings(void)")
+pub fn stub_9b2848(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b2848: NetworkSettings ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b2bb8 — __ZN3RBX15NetworkSettings23heavyCompressionEnabledEv
 #[doc(alias = "RBX::NetworkSettings::heavyCompressionEnabled(void)")]
-pub fn stub_9b2bb8() -> ! {
-    todo!("0x9b2bb8 RBX::NetworkSettings::heavyCompressionEnabled(void)")
+pub fn stub_9b2bb8(allow: bool, flag: u8) -> bool {
+ // IDA 0x9b2bb8: false unless the flag allows and the byte at +140 is set.
+ allow && flag != 0
 }
 
 // 0x9b2bdc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::addPair(RBX::NetworkSettings::PhysicsSendMethod,char const*)")]
-pub fn stub_9b2bdc() -> ! {
-    todo!("0x9b2bdc RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::addPair(RBX::NetworkSettings::PhysicsSendMethod,char const*)")
+pub fn stub_9b2bdc(values: &mut Vec<(String, i32)>, value: i32, name: &str) {
+ // IDA 0x9b2bdc: EnumDesc::addPair appends the pair (below truncation).
+ values.push((name.to_string(), value));
 }
 
 // 0x9b3104 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::addPair(RBX::NetworkSettings::PhysicsReceiveMethod,char const*)")]
-pub fn stub_9b3104() -> ! {
-    todo!("0x9b3104 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::addPair(RBX::NetworkSettings::PhysicsReceiveMethod,char const*)")
+pub fn stub_9b3104(values: &mut Vec<(String, i32)>, value: i32, name: &str) {
+ // IDA 0x9b3104: EnumDesc::addPair appends the pair (below truncation).
+ values.push((name.to_string(), value));
 }
 
 // 0x9b407c — __ZNK3RBX15NetworkSettings15getDataSendRateEv
 #[doc(alias = "RBX::NetworkSettings::getDataSendRate(void)const")]
-pub fn stub_9b407c() -> ! {
-    todo!("0x9b407c RBX::NetworkSettings::getDataSendRate(void)const")
+pub fn stub_9b407c(value: f32) -> f32 {
+ // IDA 0x9b407c: returns the float at +50.
+ value
 }
 
 // 0x9b4084 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")]
-pub fn stub_9b4084() -> ! {
-    todo!("0x9b4084 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
+pub fn stub_9b4084(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4084: PropDescriptor dtor frees the name at +10 when present.
+ destroy(slot);
 }
 
 // 0x9b40a8 — __ZNK3RBX15NetworkSettings13getDataGCRateEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings13getDataGCRateEv")]
-pub fn stub_9b40a8() -> ! {
-    todo!("0x9b40a8 RBX::NetworkSettings::getDataGCRate(void)const")
+pub fn stub_9b40a8(value: f32) -> f32 {
+ // IDA 0x9b40a8: returns the float at +52.
+ value
 }
 
 // 0x9b40b0 — __ZNK3RBX15NetworkSettings18getPhysicsSendRateEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings18getPhysicsSendRateEv")]
-pub fn stub_9b40b0() -> ! {
-    todo!("0x9b40b0 RBX::NetworkSettings::getPhysicsSendRate(void)const")
+pub fn stub_9b40b0(value: f32) -> f32 {
+ // IDA 0x9b40b0: returns the float at +51.
+ value
 }
 
 // 0x9b40b8 — __ZNK3RBX15NetworkSettings14getReceiveRateEv
 // type: __int64 __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings14getReceiveRateEv")]
-pub fn stub_9b40b8() -> ! {
-    todo!("0x9b40b8 RBX::NetworkSettings::getReceiveRate(void)const")
+pub fn stub_9b40b8(value: f64) -> f64 {
+ // IDA 0x9b40b8: returns the double at +212.
+ value
 }
 
 // 0x9b40c4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev")]
-pub fn stub_9b40c4() -> ! {
-    todo!("0x9b40c4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")
+pub fn stub_9b40c4(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b40c4: PropDescriptor dtor frees the name at +10 when present.
+ destroy(slot);
 }
 
 // 0x9b40e8 — __ZNK3RBX15NetworkSettings16getReportStatURLEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings16getReportStatURLEv")]
-pub fn stub_9b40e8() -> ! {
-    todo!("0x9b40e8 RBX::NetworkSettings::getReportStatURL(void)const")
+pub fn stub_9b40e8() -> String {
+ // IDA 0x9b40e8: returns an empty string.
+ String::new()
 }
 
 // 0x9b4104 — __ZN3RBX15NetworkSettings16setReportStatURLERKSs
 // type: void()
 #[doc(alias = "__ZN3RBX15NetworkSettings16setReportStatURLERKSs")]
-pub fn stub_9b4104() -> ! {
-    todo!("0x9b4104 RBX::NetworkSettings::setReportStatURL(std::string const&)")
+pub fn stub_9b4104() {
+ // IDA 0x9b4104: empty setReportStatURL body.
 }
 
 // 0x9b4108 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev")]
-pub fn stub_9b4108() -> ! {
-    todo!("0x9b4108 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")
+pub fn stub_9b4108(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4108: PropDescriptor dtor frees the name at +10 when present.
+ destroy(slot);
 }
 
 // 0x9b412c — __ZNK3RBX15NetworkSettings20getPhysicsSendMethodEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings20getPhysicsSendMethodEv")]
-pub fn stub_9b412c() -> ! {
-    todo!("0x9b412c RBX::NetworkSettings::getPhysicsSendMethod(void)const")
+pub fn stub_9b412c(value: i32) -> i32 {
+ // IDA 0x9b412c: returns the int at +36.
+ value
 }
 
 // 0x9b4134 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev")]
-pub fn stub_9b4134() -> ! {
-    todo!("0x9b4134 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::~EnumPropDescriptor()")
+pub fn stub_9b4134(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4134: EnumPropDescriptor dtor frees the name at +11 when present.
+ destroy(slot);
 }
 
 // 0x9b4158 — __ZNK3RBX15NetworkSettings28dummyGetPhysicsReceiveMethodEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings28dummyGetPhysicsReceiveMethodEv")]
-pub fn stub_9b4158() -> ! {
-    todo!("0x9b4158 RBX::NetworkSettings::dummyGetPhysicsReceiveMethod(void)const")
+pub fn stub_9b4158(value: i32) -> i32 {
+ // IDA 0x9b4158: returns the int at +37.
+ value
 }
 
 // 0x9b4160 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev")]
-pub fn stub_9b4160() -> ! {
-    todo!("0x9b4160 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumPropDescriptor()")
+pub fn stub_9b4160(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b4160: EnumPropDescriptor dtor frees the name at +11 when present.
+ destroy(slot);
 }
 
 // 0x9b4184 — __ZNK3RBX15NetworkSettings22getPhysicsSendPriorityEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings22getPhysicsSendPriorityEv")]
-pub fn stub_9b4184() -> ! {
-    todo!("0x9b4184 RBX::NetworkSettings::getPhysicsSendPriority(void)const")
+pub fn stub_9b4184(value: i32) -> i32 {
+ // IDA 0x9b4184: returns the int at +38.
+ value
 }
 
 // 0x9b418c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev")]
-pub fn stub_9b418c() -> ! {
-    todo!("0x9b418c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+pub fn stub_9b418c(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b418c: EnumPropDescriptor dtor frees the name at +11 when present.
+ destroy(slot);
 }
 
 // 0x9b41b0 — __ZNK3RBX15NetworkSettings19getPhysicsMtuAdjustEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings19getPhysicsMtuAdjustEv")]
-pub fn stub_9b41b0() -> ! {
-    todo!("0x9b41b0 RBX::NetworkSettings::getPhysicsMtuAdjust(void)const")
+pub fn stub_9b41b0(value: i32) -> i32 {
+ // IDA 0x9b41b0: returns the int at +48.
+ value
 }
 
 // 0x9b41b8 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev")]
-pub fn stub_9b41b8() -> ! {
-    todo!("0x9b41b8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+pub fn stub_9b41b8(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9b41b8: PropDescriptor dtor frees the name at +10 when present.
+ destroy(slot);
 }
 
 // 0x9b41dc — __ZNK3RBX15NetworkSettings23getReplicationMtuAdjustEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings23getReplicationMtuAdjustEv")]
-pub fn stub_9b41dc() -> ! {
-    todo!("0x9b41dc RBX::NetworkSettings::getReplicationMtuAdjust(void)const")
+pub fn stub_9b41dc(value: i32) -> i32 {
+ // IDA 0x9b41dc: returns the int at +49.
+ value
 }
 
 // 0x9b41e4 — __ZNK3RBX15NetworkSettings19getDataSendPriorityEv
 // type: int __fastcall(RBX::NetworkSettings *this)
 #[doc(alias = "__ZNK3RBX15NetworkSettings19getDataSendPriorityEv")]
-pub fn stub_9b41e4() -> ! {
-    todo!("0x9b41e4 RBX::NetworkSettings::getDataSendPriority(void)const")
+pub fn stub_9b41e4(value: i32) -> i32 {
+ // IDA 0x9b41e4: returns the int at +39.
+ value
 }
 
 // 0x9b41ec — __ZNK3RBX15NetworkSettings22getExtraMemoryUsedInMBEv
