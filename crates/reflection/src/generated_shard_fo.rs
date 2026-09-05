@@ -28,96 +28,132 @@ pub fn stub_43c78() {
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")]
 #[doc(alias = "__ZNSt3mapIjPN3RBX18FunctionMarshallerESt4lessIjESaISt4pairIKjS2_EEEixERS6_")]
-pub fn stub_43d14() -> ! {
-    todo!("0x43d14 std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")
+pub fn stub_43d14() {
+    // IDA 0x43d14: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43d14`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43d14()
 }
 
 // 0x43d6c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_")]
-pub fn stub_43d6c() -> ! {
-    todo!("0x43d6c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43d6c() {
+    // IDA 0x43d6c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43d6c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43d6c()
 }
 
 // 0x43d94 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_")]
-pub fn stub_43d94() -> ! {
-    todo!("0x43d94 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43d94() {
+    // IDA 0x43d94: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43d94`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43d94()
 }
 
 // 0x43de0 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_")]
-pub fn stub_43de0() -> ! {
-    todo!("0x43de0 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43de0() {
+    // IDA 0x43de0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43de0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43de0()
 }
 
 // 0x43e40 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")]
-pub fn stub_43e40() -> ! {
-    todo!("0x43e40 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43e40() {
+    // IDA 0x43e40: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43e40`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43e40()
 }
 
 // 0x43e68 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_")]
-pub fn stub_43e68() -> ! {
-    todo!("0x43e68 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43e68() {
+    // IDA 0x43e68: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43e68`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43e68()
 }
 
 // 0x43f1c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_")]
-pub fn stub_43f1c() -> ! {
-    todo!("0x43f1c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43f1c() {
+    // IDA 0x43f1c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43f1c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43f1c()
 }
 
 // 0x43f74 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_")]
-pub fn stub_43f74() -> ! {
-    todo!("0x43f74 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>")
+pub fn stub_43f74() {
+    // IDA 0x43f74: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43f74`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43f74()
 }
 
 // 0x43fdc — __ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unique_lock<boost::recursive_mutex>::lock(void)")]
 #[doc(alias = "__ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv")]
-pub fn stub_43fdc() -> ! {
-    todo!("0x43fdc boost::unique_lock<boost::recursive_mutex>::lock(void)")
+pub fn stub_43fdc() {
+    // IDA 0x43fdc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43fdc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43fdc()
 }
 
 // 0x441a8 — __ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv
 // type: _DWORD __fastcall(RBX::FunctionMarshaller *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_init_staticData(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv")]
-pub fn stub_441a8() -> ! {
-    todo!("0x441a8 RBX::FunctionMarshaller::safe_static_init_staticData(void)")
+pub fn stub_441a8() {
+    // IDA 0x441a8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x441a8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x441a8()
 }
 
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
 // type: void *__fastcall(RBX::FunctionMarshaller *this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv")]
-pub fn stub_441ac() -> ! {
-    todo!("0x441ac RBX::FunctionMarshaller::safe_static_do_get_staticData(void)")
+pub fn stub_441ac() -> bool {
+    // IDA 0x441ac: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x441ac`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x441ac()
 }
 
 // 0x442bc — __ZN5boost15recursive_mutexC2Ev
 // type: _DWORD __fastcall(boost::recursive_mutex *__hidden this)
 #[doc(alias = "boost::recursive_mutex::recursive_mutex(void)")]
 #[doc(alias = "__ZN5boost15recursive_mutexC2Ev")]
-pub fn stub_442bc() -> ! {
-    todo!("0x442bc boost::recursive_mutex::recursive_mutex(void)")
+pub fn stub_442bc() {
+    // IDA 0x442bc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x442bc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x442bc()
 }
 
 // 0x44564 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
@@ -132,95 +168,134 @@ pub fn stub_44564() {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm")]
-pub fn stub_44590() -> ! {
-    todo!("0x44590 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")
+pub fn stub_44590() {
+    // IDA 0x44590: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44590`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44590()
 }
 
 // 0x446e8 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
 // type: int(void)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm")]
-pub fn stub_446e8() -> ! {
-    todo!("0x446e8 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")
+pub fn stub_446e8() {
+    // IDA 0x446e8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x446e8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x446e8()
 }
 
 // 0x44700 — __ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_")]
-pub fn stub_44700() -> ! {
-    todo!("0x44700 std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")
+pub fn stub_44700() {
+    // IDA 0x44700: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44700`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44700()
 }
 
 // 0x447f4 — __ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
 // type: int __fastcall(int)
 #[doc(alias = "std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
 #[doc(alias = "__ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_")]
-pub fn stub_447f4() -> ! {
-    todo!("0x447f4 std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")
+pub fn stub_447f4() {
+    // IDA 0x447f4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x447f4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x447f4()
 }
 
 // 0x44888 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
 #[doc(alias = "std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
 #[doc(alias = "__ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_")]
-pub fn stub_44888() -> ! {
-    todo!("0x44888 std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<")
+pub fn stub_44888() {
+    // IDA 0x44888: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44888`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44888()
 }
 
 // 0x44924 — __GLOBAL__I_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
 #[doc(alias = "__GLOBAL__I_a_14")]
-pub fn stub_44924() -> ! {
-    todo!("0x44924 global constructor keyed to_a_14")
+pub fn stub_44924() {
+    // IDA 0x44924: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44924`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44924()
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
 // type: id __cdecl(CameraControl *self, SEL, CGRect, id)
 #[doc(alias = "-[CameraControl init:delegate:]")]
-pub fn stub_44abc() -> ! {
-    todo!("0x44abc -[CameraControl init:delegate:]")
+pub fn stub_44abc(x: f32, y: f32, width: f32, height: f32) -> crate::generated_bg_11::CameraControlInit {
+    // IDA 0x44abc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44abc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44abc(x, y, width, height)
 }
 
 // 0x44b90 — -[CameraControl dealloc]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl dealloc]")]
-pub fn stub_44b90() -> ! {
-    todo!("0x44b90 -[CameraControl dealloc]")
+pub fn stub_44b90() {
+    // IDA 0x44b90: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44b90`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44b90()
 }
 
 // 0x44bbc — -[CameraControl setupPostMouseEventConnection]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl setupPostMouseEventConnection]")]
-pub fn stub_44bbc() -> ! {
-    todo!("0x44bbc -[CameraControl setupPostMouseEventConnection]")
+pub fn stub_44bbc() {
+    // IDA 0x44bbc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44bbc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44bbc()
 }
 
 // 0x44cd4 — -[CameraControl postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(CameraControl *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[CameraControl postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_44cd4() -> ! {
-    todo!("0x44cd4 -[CameraControl postMouseEventProcessed:inputObject:event:]")
+pub fn stub_44cd4(consumed: bool, is_camera_touch: bool) {
+    // IDA 0x44cd4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44cd4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44cd4(consumed, is_camera_touch)
 }
 
 // 0x44d04 — -[CameraControl doCameraPanTouchBegan]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchBegan]")]
-pub fn stub_44d04() -> ! {
-    todo!("0x44d04 -[CameraControl doCameraPanTouchBegan]")
+pub fn stub_44d04() {
+    // IDA 0x44d04: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44d04`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44d04()
 }
 
 // 0x44dec — -[CameraControl doCameraPanTouchEnded]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchEnded]")]
-pub fn stub_44dec() -> ! {
-    todo!("0x44dec -[CameraControl doCameraPanTouchEnded]")
+pub fn stub_44dec() {
+    // IDA 0x44dec: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44dec`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44dec()
 }
 
 // 0x44e58 — -[CameraControl doCameraPanTouchMove]
 // type: void __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl doCameraPanTouchMove]")]
-pub fn stub_44e58() -> ! {
-    todo!("0x44e58 -[CameraControl doCameraPanTouchMove]")
+pub fn stub_44e58() {
+    // IDA 0x44e58: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x44e58`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x44e58()
 }
 
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
