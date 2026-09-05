@@ -6,6 +6,18 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `UserInfo` login state (IDA 0x409b0 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct UserLogin {
+ pub logged_in: bool,
+}
+
+/// Static-init state for `__GLOBAL__I_a_10` (IDA 0x4070c).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA10 {
+ pub done: bool,
+}
 // 0x3e8b8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
@@ -481,181 +493,240 @@ pub fn stub_40270(obj: usize, is_virtual: bool, metric: usize, dt: f64, call: &m
 // demangled: void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
-pub fn stub_4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+pub fn stub_4027c(obj: usize, is_virtual: bool, metric: usize, dt: f64, call: &mut dyn FnMut(usize, bool, usize, f64)) {
+    // IDA 0x4027c: list3 mf2 dispatch (virtual adjust); obj->method(metric, dt).
+    call(obj, is_virtual, metric, dt);
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_402a8(op: u32, manage: &mut dyn FnMut(u32) -> usize) -> usize {
+    // IDA 0x402a8: functor_manager::manage — clone/move/destroy by op (below truncation).
+    manage(op)
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 // demangled: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_40308(f: usize, a: usize, b: usize, invoke: &mut dyn FnMut(usize, usize, usize)) {
+    // IDA 0x40308: invoker calls fn(job, view).
+    invoke(f, a, b);
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // demangled: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
-pub fn stub_40318() -> ! {
-    todo!("0x40318 boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+pub fn stub_40318(dst: &mut (usize, u32), src: (usize, u32)) {
+    // IDA 0x40318: weak_ptr copy — copy pair; weak++ under spinlock.
+    dst.0 = src.0;
+    dst.1 = src.1 + 1;
 }
 
 // 0x403f0 — __ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE
 // demangled: RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
-pub fn stub_403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_403f0(job: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x403f0: ViewUpdateJob::ViewUpdateJob (below truncation).
+    init(job);
+    job
 }
 
 // 0x404f0 — __ZN10RobloxView13ViewUpdateJobD1Ev
 // demangled: RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
-pub fn stub_404f0() -> ! {
-    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_404f0(destroy: &mut dyn FnMut()) {
+    // IDA 0x404f0: ViewUpdateJob D2 — release + Job dtor (below truncation).
+    destroy();
 }
 
 // 0x4059c — __ZN10RobloxView13ViewUpdateJobD0Ev
 // demangled: RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
-pub fn stub_4059c() -> ! {
-    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_4059c(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x4059c: ViewUpdateJob D0 — destroys + operator delete.
+    destroy();
+    free();
 }
 
 // 0x40650 — __ZN10RobloxView13ViewUpdateJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40650(sleep: &mut dyn FnMut(f64) -> f64) -> f64 {
+    // IDA 0x40650: computeStandardSleepTime(stats, 60.0).
+    sleep(60.0)
 }
 
 // 0x40680 — __ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40680(error: &mut dyn FnMut(f64) -> f64) -> f64 {
+    // IDA 0x40680: computeStandardError(stats, 30.0).
+    error(30.0)
 }
 
 // 0x406a8 — __ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv
 // demangled: RobloxView::ViewUpdateJob::getPriorityFactor(void)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
-pub fn stub_406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+pub fn stub_406a8() -> f64 {
+    // IDA 0x406a8: getPriorityFactor returns 1.0.
+    1.0
 }
 
 // 0x406b4 — __ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_406b4(poll: &mut dyn FnMut() -> bool, advance: &mut dyn FnMut(), finish: &mut dyn FnMut()) -> i32 {
+    // IDA 0x406b4: ViewUpdateJob::step — poll/advance/finish; return 1.
+    if poll() {
+        advance();
+    }
+    finish();
+    1
 }
 
 // 0x406e0 — __ZN5boost9function0IvE5clearEv
 // demangled: boost::function0<void>::clear(void)
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function0<void>::clear(void)")]
-pub fn stub_406e0() -> ! {
-    todo!("0x406e0 boost::function0<void>::clear(void)")
+pub fn stub_406e0(slot: &mut usize, destroy: &mut dyn FnMut()) -> i32 {
+    // IDA 0x406e0: function0::clear — heap destroy unless small-bit; clear; 0.
+    let v = *slot;
+    if v != 0 {
+        if v & 1 == 0 {
+            destroy();
+        }
+        *slot = 0;
+    }
+    0
 }
 
 // 0x4070c — __GLOBAL__I_a_10
 // demangled: global constructor keyed to_a_10
 #[doc(alias = "global constructor keyed to_a_10")]
-pub fn stub_4070c() -> ! {
-    todo!("0x4070c global constructor keyed to_a_10")
+pub fn stub_4070c(state: &mut GlobalInitA10, init: &mut dyn FnMut()) {
+    // IDA 0x4070c: boost error categories + ios_base::Init + FFlag::RenderCleanupInBackground registration.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x40984 — -[UserInfo init]
 // type: UserInfo *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo init]")]
-pub fn stub_40984() -> ! {
-    todo!("0x40984 -[UserInfo init]")
+pub fn stub_40984(obj: usize, init_super: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x40984: [UserInfo init] — super init.
+    init_super(obj)
 }
 
 // 0x409b0 — -[UserInfo setUserLoggedIn:]
 // type: void __cdecl(UserInfo *self, SEL, char)
 #[doc(alias = "-[UserInfo setUserLoggedIn:]")]
-pub fn stub_409b0() -> ! {
-    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+pub fn stub_409b0(state: &mut UserLogin, logged_in: bool, save: &mut dyn FnMut(), clear: &mut dyn FnMut()) {
+    // IDA 0x409b0: store flag; login -> persist LastUserLoggedIn else clear credentials.
+    state.logged_in = logged_in;
+    if logged_in {
+        save();
+    } else {
+        clear();
+    }
 }
 
 // 0x40ab4 — -[UserInfo userLoggedIn]
 // type: char __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userLoggedIn]")]
-pub fn stub_40ab4() -> ! {
-    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+pub fn stub_40ab4(state: &UserLogin) -> bool {
+    // IDA 0x40ab4: return _userLoggedIn.
+    state.logged_in
 }
 
 // 0x40ac4 — -[UserInfo UpdatePlayerInfo]
 // type: void __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
-pub fn stub_40ac4() -> ! {
-    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+pub fn stub_40ac4(base_url: &str, fetch: &mut dyn FnMut(&str)) {
+    // IDA 0x40ac4: GET baseUrl + "mobileapi/userinfo" (https) on a queue (below truncation).
+    let url = format!("{}mobileapi/userinfo", base_url).replace("http:", "https:");
+    fetch(&url);
 }
 
 // 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
 #[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
-pub fn stub_40c58() -> ! {
-    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+pub fn stub_40c58(parse: &mut dyn FnMut()) {
+    // IDA 0x40c58: UpdatePlayerInfo response — dictionary parse (below truncation).
+    parse();
 }
 
 // 0x41104 — ___copy_helper_block__6
 #[doc(alias = "___copy_helper_block__6")]
-pub fn stub_41104() -> ! {
-    todo!("0x41104 ___copy_helper_block__6")
+pub fn stub_41104(dst20: &mut usize, dst24: &mut usize, src20: usize, src24: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x41104: _Block_object_assign(dst+20, src+20, 3); _Block_object_assign(dst+24, src+24, 3).
+    *dst20 = retain(src20);
+    *dst24 = retain(src24);
 }
 
 // 0x41128 — ___destroy_helper_block__6
 #[doc(alias = "___destroy_helper_block__6")]
-pub fn stub_41128() -> ! {
-    todo!("0x41128 ___destroy_helper_block__6")
+pub fn stub_41128(slot20: &mut usize, slot24: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x41128: _Block_object_dispose(slot+20, 3); _Block_object_dispose(slot+24, 3).
+    release(*slot20);
+    release(*slot24);
 }
 
 // 0x41144 — +[UserInfo CurrentPlayer]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo CurrentPlayer]")]
-pub fn stub_41144() -> ! {
-    todo!("0x41144 +[UserInfo CurrentPlayer]")
+pub fn stub_41144(slot: &mut Option<usize>, alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x41144: CurrentPlayer singleton alloc+init.
+    if let Some(v) = *slot {
+        return v;
+    }
+    let v = alloc();
+    *slot = Some(v);
+    v
 }
 
 // 0x4118c — -[UserInfo Robux]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Robux]")]
-pub fn stub_4118c() -> ! {
-    todo!("0x4118c -[UserInfo Robux]")
+pub fn stub_4118c(balance: i32, format: &mut dyn FnMut(i32) -> String) -> String {
+    // IDA 0x4118c: Robux -> convertToFriendlyString(rbxBal).
+    format(balance)
 }
 
 // 0x411a0 — __Z23convertToFriendlyStringP8NSNumber
 // demangled: convertToFriendlyString(NSNumber *)
 // type: _DWORD __fastcall(id)
 #[doc(alias = "convertToFriendlyString(NSNumber *)")]
-pub fn stub_411a0() -> ! {
-    todo!("0x411a0 convertToFriendlyString(NSNumber *)")
+pub fn stub_411a0(value: Option<i32>) -> String {
+    // IDA 0x411a0: nil -> "unknown"; <1000 -> "%d"; larger abbreviated (tail below truncation).
+    match value {
+        None => "unknown".to_string(),
+        Some(v) if v < 1000 => v.to_string(),
+        Some(v) => format!("{}k", v / 1000),
+    }
 }
 
 // 0x41288 — -[UserInfo Tix]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Tix]")]
-pub fn stub_41288() -> ! {
-    todo!("0x41288 -[UserInfo Tix]")
+pub fn stub_41288(balance: i32, format: &mut dyn FnMut(i32) -> String) -> String {
+    // IDA 0x41288: Tix -> convertToFriendlyString(tikBal).
+    format(balance)
 }
 
 // 0x4129c — +[UserInfo clearAllRobloxCookie]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
-pub fn stub_4129c() -> ! {
-    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+pub fn stub_4129c(clear: &mut dyn FnMut()) {
+    // IDA 0x4129c: clearAllRobloxCookie — cookie jar sweep (below truncation).
+    clear();
 }
 
 // 0x41580 — +[UserInfo printCookies]
