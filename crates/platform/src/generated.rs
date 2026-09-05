@@ -3641,6 +3641,10 @@ pub struct SignupViewState {
     signup_alert: parking_lot::Mutex<String>,
     finished_posts: AtomicU32,
     last_finished_pair: parking_lot::Mutex<(String, String)>,
+    cancel_button: parking_lot::Mutex<Option<ControlId>>,
+    fine_spinner_shown: AtomicBool,
+    end_restores: AtomicU32,
+    focus_moves: AtomicU32,
 }
 /// Status-button presentation behind the signup verify flow (IDA
 /// 0x5f890..0x602b8): the badge image, its hidden latch and whether it
@@ -4278,6 +4282,118 @@ impl SignupViewState {
     }
     pub fn keyboard_avoided(&self) -> bool {
         self.keyboard_avoided.load(Ordering::SeqCst)
+    }
+    /// `textFieldShouldEndEditing:` (IDA 0x61ab0): phone (or no-idiom)
+    /// with the email field runs the `__50…` restore animation; always
+    /// returns true.
+    pub fn should_end_editing(&self, is_phone: bool, is_email_field: bool) -> bool {
+        if is_phone && is_email_field {
+            self.apply_end_frame();
+        }
+        true
+    }
+    /// `__50-textFieldShouldEndEditing_block_invoke` (IDA 0x61ba0, via
+    /// `animateWithDuration:0.4`, inline): restores the three field
+    /// frames.
+    pub fn apply_end_frame(&self) {
+        self.bump(&self.end_restores);
+    }
+    pub fn end_restore_count(&self) -> u32 {
+        self.end_restores.load(Ordering::SeqCst)
+    }
+    /// `textFieldShouldReturn:` (IDA 0x61c8c): focuses tag+1 when present
+    /// else resigns; the verify field (1) runs verifyDoneEdit, the email
+    /// field (2) signupTouchUp; always returns false.
+    pub fn text_should_return(&self, field: u8) -> bool {
+        self.bump(&self.focus_moves);
+        if field == 1 {
+            let text = self.password_verify.lock().clone();
+            self.verify_done(&text);
+        } else if field == 2 {
+            self.signup_touch_up();
+        }
+        false
+    }
+    pub fn focus_move_count(&self) -> u32 {
+        self.focus_moves.load(Ordering::SeqCst)
+    }
+    /// `webViewDidFinishLoad:` (IDA 0x61d40): the fine text view schedules
+    /// the `__45…` block via `dispatch_after` 0.6s (inline).
+    pub fn web_did_finish(&self, is_fine: bool) {
+        if is_fine {
+            self.web_finish_block();
+        }
+    }
+    /// `__45-webViewDidFinishLoad_block_invoke` (IDA 0x61dc0, via
+    /// `dispatch_after`, inline): unhides the fine-text spinner.
+    pub fn web_finish_block(&self) {
+        self.fine_spinner_shown.store(true, Ordering::SeqCst);
+    }
+    pub fn fine_spinner_shown(&self) -> bool {
+        self.fine_spinner_shown.load(Ordering::SeqCst)
+    }
+    /// `webView:shouldStartLoadWithRequest:...` (IDA 0x61df8): nil URL
+    /// allows; a "file" URL allows; anything else segues FinePrint and
+    /// returns false.
+    pub fn web_should_start(&self, url: Option<String>) -> bool {
+        match url {
+            None => true,
+            Some(u) if u.contains("file") => true,
+            Some(_) => {
+                self.prepare_segue("FinePrintSegue", false);
+                false
+            }
+        }
+    }
+    /// `alertView:clickedButtonAtIndex:` (IDA 0x61e80): button 1 with a
+    /// recommended username re-runs the flow with it.
+    pub fn alert_clicked(&self, button: i32) {
+        if button == 1 {
+            let recommended = self.recommended_username.lock().clone();
+            if !recommended.is_empty() {
+                self.dismiss_with_username(&recommended);
+            }
+        }
+    }
+    /// `-birthString` (IDA 0x61eac).
+    pub fn birth_string(&self) -> String {
+        self.birth_string.lock().clone()
+    }
+    /// `-setBirthString:` (IDA 0x61ebc): retained assign.
+    pub fn set_birth_string(&self, value: &str) {
+        *self.birth_string.lock() = value.to_owned();
+    }
+    /// `-setBirthDate:` (IDA 0x61ef0): retained assign.
+    pub fn set_birth_date(&self, value: &str) {
+        *self.birth_date.lock() = value.to_owned();
+    }
+    /// `-username` (IDA 0x61f14).
+    pub fn username(&self) -> String {
+        self.username.lock().clone()
+    }
+    /// `-setUsername:` (IDA 0x61f24): retained assign.
+    pub fn set_username(&self, value: &str) {
+        *self.username.lock() = value.to_owned();
+    }
+    /// `-password` (IDA 0x61f48).
+    pub fn password(&self) -> String {
+        self.password.lock().clone()
+    }
+    /// `-setPassword:` (IDA 0x61f58): retained assign.
+    pub fn set_password(&self, value: &str) {
+        *self.password.lock() = value.to_owned();
+    }
+    /// `-passwordVerify` (IDA 0x61f7c).
+    pub fn password_verify(&self) -> String {
+        self.password_verify.lock().clone()
+    }
+    /// `-setPasswordVerify:` (IDA 0x61f8c): retained assign.
+    pub fn set_password_verify(&self, value: &str) {
+        *self.password_verify.lock() = value.to_owned();
+    }
+    /// `-cancelButton` (IDA 0x61fd0).
+    pub fn cancel_button(&self) -> Option<ControlId> {
+        *self.cancel_button.lock()
     }
 }
 static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
@@ -11015,72 +11131,95 @@ pub fn stub_617d0() {
 // 0x61ab0 — -[SignupViewController textFieldShouldEndEditing:]
 // type: char __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController textFieldShouldEndEditing:]")]
-pub fn stub_61ab0() -> ! {
-    todo!("0x61ab0 -[SignupViewController textFieldShouldEndEditing:]")
+pub fn stub_61ab0(is_phone: bool, is_email_field: bool) -> bool {
+    // IDA 0x61ab0 `textFieldShouldEndEditing:`: phone (or no-idiom) with
+    // the email field runs the `__50…` restore animation (0x61b0e..0x61b84,
+    // inline); always returns 1.
+    SIGNUPVC.should_end_editing(is_phone, is_email_field)
 }
 
 
 // 0x61ba0 — ___50-[SignupViewController textFieldShouldEndEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___50-[SignupViewController textFieldShouldEndEditing:]_block_invoke")]
-pub fn stub_61ba0() -> ! {
-    todo!("0x61ba0 ___50-[SignupViewController textFieldShouldEndEditing:]_block_invoke")
+pub fn stub_61ba0() {
+    // IDA 0x61ba0 `__50-textFieldShouldEndEditing_block_invoke` (via
+    // `animateWithDuration:0.4`, inline): restores the three field frames
+    // (0x61bda..0x61c48).
+    SIGNUPVC.apply_end_frame();
 }
 
 
 // 0x61c8c — -[SignupViewController textFieldShouldReturn:]
 // type: char __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController textFieldShouldReturn:]")]
-pub fn stub_61c8c() -> ! {
-    todo!("0x61c8c -[SignupViewController textFieldShouldReturn:]")
+pub fn stub_61c8c(field: u8) -> bool {
+    // IDA 0x61c8c `textFieldShouldReturn:`: focuses tag+1 when present
+    // else resigns (0x61ca6..0x61cea); the verify field runs verifyDoneEdit
+    // (0x61cfe..0x61d10), the email field signupTouchUp (0x61d24..0x61d36);
+    // always returns 0.
+    SIGNUPVC.text_should_return(field)
 }
 
 
 // 0x61d40 — -[SignupViewController webViewDidFinishLoad:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController webViewDidFinishLoad:]")]
-pub fn stub_61d40() -> ! {
-    todo!("0x61d40 -[SignupViewController webViewDidFinishLoad:]")
+pub fn stub_61d40(is_fine: bool) {
+    // IDA 0x61d40 `webViewDidFinishLoad:`: the fine text view schedules
+    // the `__45…` block via `dispatch_after` 0.6s (0x61d70..0x61db4,
+    // inline).
+    SIGNUPVC.web_did_finish(is_fine);
 }
 
 
 // 0x61dc0 — ___45-[SignupViewController webViewDidFinishLoad:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___45-[SignupViewController webViewDidFinishLoad:]_block_invoke")]
-pub fn stub_61dc0() -> ! {
-    todo!("0x61dc0 ___45-[SignupViewController webViewDidFinishLoad:]_block_invoke")
+pub fn stub_61dc0() {
+    // IDA 0x61dc0 `__45-webViewDidFinishLoad_block_invoke` (via
+    // `dispatch_after` 0.6s, inline): unhides the fine-text spinner
+    // (shim setHidden:0).
+    SIGNUPVC.web_finish_block();
 }
 
 
 // 0x61df8 — -[SignupViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(SignupViewController *self, SEL, id, id, int)
 #[doc(alias = "-[SignupViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_61df8() -> ! {
-    todo!("0x61df8 -[SignupViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_61df8(url: Option<String>) -> bool {
+    // IDA 0x61df8 `webView:shouldStartLoadWithRequest:...`: nil URL
+    // allows (0x61e26..0x61e7a); a "file" URL allows (0x61e42..0x61e48);
+    // anything else segues FinePrint and returns false (0x61e50..0x61e70).
+    SIGNUPVC.web_should_start(url)
 }
 
 
 // 0x61e80 — -[SignupViewController alertView:clickedButtonAtIndex:]
 // type: void __cdecl(SignupViewController *self, SEL, id, int)
 #[doc(alias = "-[SignupViewController alertView:clickedButtonAtIndex:]")]
-pub fn stub_61e80() -> ! {
-    todo!("0x61e80 -[SignupViewController alertView:clickedButtonAtIndex:]")
+pub fn stub_61e80(button: i32) {
+    // IDA 0x61e80 `alertView:clickedButtonAtIndex:`: button 1 with a
+    // recommended username re-runs the flow with it (0x61e82..0x61ea4).
+    SIGNUPVC.alert_clicked(button);
 }
 
 
 // 0x61eac — -[SignupViewController birthString]
 // type: NSString *__cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController birthString]")]
-pub fn stub_61eac() -> ! {
-    todo!("0x61eac -[SignupViewController birthString]")
+pub fn stub_61eac() -> String {
+    // IDA 0x61eac `-birthString` (0x61eba).
+    SIGNUPVC.birth_string()
 }
 
 
 // 0x61ebc — -[SignupViewController setBirthString:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController setBirthString:]")]
-pub fn stub_61ebc() -> ! {
-    todo!("0x61ebc -[SignupViewController setBirthString:]")
+pub fn stub_61ebc(value: &str) {
+    // IDA 0x61ebc `-setBirthString:`: retained assign (0x61ed8).
+    SIGNUPVC.set_birth_string(value);
 }
 
 
@@ -11095,80 +11234,90 @@ pub fn stub_61ee0() -> ! {
 // 0x61ef0 — -[SignupViewController setBirthDate:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController setBirthDate:]")]
-pub fn stub_61ef0() -> ! {
-    todo!("0x61ef0 -[SignupViewController setBirthDate:]")
+pub fn stub_61ef0(value: &str) {
+    // IDA 0x61ef0 `-setBirthDate:`: retained assign (0x61f0c).
+    SIGNUPVC.set_birth_date(value);
 }
 
 
 // 0x61f14 — -[SignupViewController username]
 // type: NSString *__cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController username]")]
-pub fn stub_61f14() -> ! {
-    todo!("0x61f14 -[SignupViewController username]")
+pub fn stub_61f14() -> String {
+    // IDA 0x61f14 `-username` (0x61f22).
+    SIGNUPVC.username()
 }
 
 
 // 0x61f24 — -[SignupViewController setUsername:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController setUsername:]")]
-pub fn stub_61f24() -> ! {
-    todo!("0x61f24 -[SignupViewController setUsername:]")
+pub fn stub_61f24(value: &str) {
+    // IDA 0x61f24 `-setUsername:`: retained assign (0x61f40).
+    SIGNUPVC.set_username(value);
 }
 
 
 // 0x61f48 — -[SignupViewController password]
 // type: NSString *__cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController password]")]
-pub fn stub_61f48() -> ! {
-    todo!("0x61f48 -[SignupViewController password]")
+pub fn stub_61f48() -> String {
+    // IDA 0x61f48 `-password` (0x61f56).
+    SIGNUPVC.password()
 }
 
 
 // 0x61f58 — -[SignupViewController setPassword:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController setPassword:]")]
-pub fn stub_61f58() -> ! {
-    todo!("0x61f58 -[SignupViewController setPassword:]")
+pub fn stub_61f58(value: &str) {
+    // IDA 0x61f58 `-setPassword:`: retained assign (0x61f74).
+    SIGNUPVC.set_password(value);
 }
 
 
 // 0x61f7c — -[SignupViewController passwordVerify]
 // type: NSString *__cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController passwordVerify]")]
-pub fn stub_61f7c() -> ! {
-    todo!("0x61f7c -[SignupViewController passwordVerify]")
+pub fn stub_61f7c() -> String {
+    // IDA 0x61f7c `-passwordVerify` (0x61f8a).
+    SIGNUPVC.password_verify()
 }
 
 
 // 0x61f8c — -[SignupViewController setPasswordVerify:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController setPasswordVerify:]")]
-pub fn stub_61f8c() -> ! {
-    todo!("0x61f8c -[SignupViewController setPasswordVerify:]")
+pub fn stub_61f8c(value: &str) {
+    // IDA 0x61f8c `-setPasswordVerify:`: retained assign (0x61fa8).
+    SIGNUPVC.set_password_verify(value);
 }
 
 
 // 0x61fb0 — -[SignupViewController gender]
 // type: int __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController gender]")]
-pub fn stub_61fb0() -> ! {
-    todo!("0x61fb0 -[SignupViewController gender]")
+pub fn stub_61fb0() -> i32 {
+    // IDA 0x61fb0 `-gender` (0x61fbe).
+    SIGNUPVC.gender()
 }
 
 
 // 0x61fc0 — -[SignupViewController setGender:]
 // type: void __cdecl(SignupViewController *self, SEL, int)
 #[doc(alias = "-[SignupViewController setGender:]")]
-pub fn stub_61fc0() -> ! {
-    todo!("0x61fc0 -[SignupViewController setGender:]")
+pub fn stub_61fc0(value: i32) {
+    // IDA 0x61fc0 `-setGender:`: plain assign (0x61fcc).
+    SIGNUPVC.set_gender(value);
 }
 
 
 // 0x61fd0 — -[SignupViewController cancelButton]
 // type: UIBarButtonItem *__cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController cancelButton]")]
-pub fn stub_61fd0() -> ! {
-    todo!("0x61fd0 -[SignupViewController cancelButton]")
+pub fn stub_61fd0() -> Option<ControlId> {
+    // IDA 0x61fd0 `-cancelButton`: the cancel button (0x61fde).
+    SIGNUPVC.cancel_button()
 }
 
 
