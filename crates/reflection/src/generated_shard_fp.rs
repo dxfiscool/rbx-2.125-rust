@@ -64,6 +64,32 @@ pub(crate) static TEXTBOX_FINISHES: std::sync::LazyLock<
 pub(crate) static GAMEVIEW_SIZE: std::sync::LazyLock<
     parking_lot::Mutex<(u32, u32)>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, 0)));
+/// `ThumbStickControl` touch state (IDA 0x4fe88-0x508b0): capture +
+/// touched flags plus stationary/follow/move/cancel counts. Knob
+/// geometry lives out of slice.
+pub(crate) static THUMBSTICK_TOUCH: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static THUMBSTICK_BEEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static STICK_STATIONARY: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static STICK_FOLLOWS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static STICK_MOVES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static STICK_CANCELS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `GameMenu` state (IDA 0x50eb0-0x513f8): shown flag, show count,
+/// leave requests and init count. Geometry and buttons live out of
+/// slice.
+pub(crate) static MENU_SHOWN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MENU_SHOWS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static MENU_LEAVES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static MENU_INITS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 /// Login attempts + results (IDA 0x4e9a0/0x4ea30): submitted
 /// (username, password) pairs and reported success flags. `LoginManager`
 /// lives out of slice.
@@ -1107,176 +1133,239 @@ pub fn stub_4fcf4() {
 // 0x4fd40 — ___copy_helper_block__11
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__11")]
-pub fn stub_4fd40() -> ! {
-    todo!("0x4fd40 ___copy_helper_block__11")
+pub fn stub_4fd40() {
+    // IDA 0x4fd40: `__copy_helper_block__11` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4fd4c — ___destroy_helper_block__11
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__11")]
-pub fn stub_4fd4c() -> ! {
-    todo!("0x4fd4c ___destroy_helper_block__11")
+pub fn stub_4fd4c() {
+    // IDA 0x4fd4c: `__destroy_helper_block__11` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4fd54 — -[ThumbStickControl dealloc]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl dealloc]")]
-pub fn stub_4fd54() -> ! {
-    todo!("0x4fd54 -[ThumbStickControl dealloc]")
+pub fn stub_4fd54() {
+    // IDA 0x4fd54: `dealloc` drops the stick views. Release is drop
+    // glue; the capture flags reset here.
+    THUMBSTICK_TOUCH.store(false, std::sync::atomic::Ordering::SeqCst);
+    THUMBSTICK_BEEN.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4fdb8 — -[ThumbStickControl intToThumbstickStyle:]
 // type: int __cdecl(ThumbStickControl *self, SEL, int)
 #[doc(alias = "-[ThumbStickControl intToThumbstickStyle:]")]
-pub fn stub_4fdb8() -> ! {
-    todo!("0x4fdb8 -[ThumbStickControl intToThumbstickStyle:]")
+pub fn stub_4fdb8(value: i32) -> i32 {
+    // IDA 0x4fdb8: `intToThumbstickStyle:` clamps out-of-range styles
+    // to 0 (0x4fdba-0x4fdc0).
+    if value >= 2 { 0 } else { value }
 }
 
 // 0x4fdc4 — -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]
 // type: float __cdecl(ThumbStickControl *self, SEL, CGPoint, CGPoint)
 #[doc(alias = "-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")]
-pub fn stub_4fdc4() -> ! {
-    todo!("0x4fdc4 -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")
+pub fn stub_4fdc4(x1: f32, y1: f32, x2: f32, y2: f32) -> f32 {
+    // IDA 0x4fdc4: `DistanceBetweenTwoPoints:` returns the Euclidean
+    // distance (0x4fdd4-0x4fdf0).
+    ((x2 - x1).powi(2) + (y2 - y1).powi(2)).sqrt()
 }
 
 // 0x4fdf4 — -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]
 // type: CGPoint *__cdecl(CGPoint *__return_ptr __struct_ptr retstr, ThumbStickControl *self, SEL, CGPoint, CGPoint, float)
 #[doc(alias = "-[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")]
-pub fn stub_4fdf4() -> ! {
-    todo!("0x4fdf4 -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")
+pub fn stub_4fdf4(px: f32, py: f32, cx: f32, cy: f32, radians: f32) -> (f32, f32) {
+    // IDA 0x4fdf4: `rotatePointAboutLocation:` rotates the point about
+    // the center (0x4fe0c-0x4fe66).
+    let (dx, dy) = (px - cx, py - cy);
+    let (s, c) = radians.sin_cos();
+    (cx + c * dx - s * dy, cy + s * dx + c * dy)
 }
 
 // 0x4fe88 — -[ThumbStickControl touchesBegan:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesBegan:withEvent:]")]
-pub fn stub_4fe88() -> ! {
-    todo!("0x4fe88 -[ThumbStickControl touchesBegan:withEvent:]")
+pub fn stub_4fe88(single: bool, inside: bool) {
+    // IDA 0x4fe88: `touchesBegan:` captures a lone touch inside the
+    // outer frame, marks touched and centers the knobs (0x4fecc-0x500ee).
+    // The capture records here.
+    if single && !THUMBSTICK_TOUCH.load(std::sync::atomic::Ordering::SeqCst) && inside {
+        THUMBSTICK_TOUCH.store(true, std::sync::atomic::Ordering::SeqCst);
+        THUMBSTICK_BEEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x50108 — -[ThumbStickControl stationaryThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl stationaryThumbstickTouchMove]")]
-pub fn stub_50108() -> ! {
-    todo!("0x50108 -[ThumbStickControl stationaryThumbstickTouchMove]")
+pub fn stub_50108(touch_present: bool) {
+    // IDA 0x50108: `stationaryThumbstickTouchMove` clamps the inner
+    // knob within half size of the touch point (0x50166-0x5031c).
+    // The clamp records here.
+    if touch_present {
+        STICK_STATIONARY.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x50338 — -[ThumbStickControl followThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl followThumbstickTouchMove]")]
-pub fn stub_50338() -> ! {
-    todo!("0x50338 -[ThumbStickControl followThumbstickTouchMove]")
+pub fn stub_50338(touch_present: bool) {
+    // IDA 0x50338: `followThumbstickTouchMove` repositions the knob
+    // centers along the touch vector (0x50368-0x506a8). The move
+    // records here.
+    if touch_present {
+        STICK_FOLLOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
-pub fn stub_506cc() -> ! {
-    todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
+pub fn stub_506cc(touch_match: bool, style: u32) {
+    // IDA 0x506cc: `touchesMoved:` follows for style 1, stays
+    // stationary for style 0 (0x507d0-0x507e2), then resets subview
+    // alphas (0x507fe-0x50864). The branch records here.
+    if touch_match {
+        if style == 1 {
+            stub_50338(true);
+        } else if style == 0 {
+            stub_50108(true);
+        }
+        STICK_MOVES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x508b0 — -[ThumbStickControl cancelMovement]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl cancelMovement]")]
-pub fn stub_508b0() -> ! {
-    todo!("0x508b0 -[ThumbStickControl cancelMovement]")
+pub fn stub_508b0() {
+    // IDA 0x508b0: `cancelMovement` clears the touch and animates the
+    // knobs home (0x508f0-0x5094a). The clear records here.
+    THUMBSTICK_TOUCH.store(false, std::sync::atomic::Ordering::SeqCst);
+    STICK_CANCELS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x50960 — ___35-[ThumbStickControl cancelMovement]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke")]
-pub fn stub_50960() -> ! {
-    todo!("0x50960 ___35-[ThumbStickControl cancelMovement]_block_invoke")
+pub fn stub_50960() {
+    // IDA 0x50960: the cancel animation block (continuation of
+    // 0x508b0). Animation glue; no explicit body.
 }
 
 // 0x509a8 — ___copy_helper_block_77
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_77")]
-pub fn stub_509a8() -> ! {
-    todo!("0x509a8 ___copy_helper_block_77")
+pub fn stub_509a8() {
+    // IDA 0x509a8: `__copy_helper_block_77` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x509b4 — ___destroy_helper_block_78
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_78")]
-pub fn stub_509b4() -> ! {
-    todo!("0x509b4 ___destroy_helper_block_78")
+pub fn stub_509b4() {
+    // IDA 0x509b4: `__destroy_helper_block_78` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x50c18 — ___35-[ThumbStickControl cancelMovement]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke_2")]
-pub fn stub_50c18() -> ! {
-    todo!("0x50c18 ___35-[ThumbStickControl cancelMovement]_block_invoke_2")
+pub fn stub_50c18() {
+    // IDA 0x50c18: the cancel animation block variant 2 (same shape
+    // as 0x50960). Animation glue; no explicit body.
 }
 
 // 0x50c6c — ___copy_helper_block_81
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_81")]
-pub fn stub_50c6c() -> ! {
-    todo!("0x50c6c ___copy_helper_block_81")
+pub fn stub_50c6c() {
+    // IDA 0x50c6c: `__copy_helper_block_81` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x50c78 — ___destroy_helper_block_82
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_82")]
-pub fn stub_50c78() -> ! {
-    todo!("0x50c78 ___destroy_helper_block_82")
+pub fn stub_50c78() {
+    // IDA 0x50c78: `__destroy_helper_block_82` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
 // type: void __cdecl(id, char)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
-pub fn stub_50c80() -> ! {
-    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+pub fn stub_50c80() {
+    // IDA 0x50c80: the cancel animation block variant 84 (same shape
+    // as 0x50960). Animation glue; no explicit body.
 }
 
 // 0x50c84 — ___copy_helper_block_89
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_89")]
-pub fn stub_50c84() -> ! {
-    todo!("0x50c84 ___copy_helper_block_89")
+pub fn stub_50c84() {
+    // IDA 0x50c84: `__copy_helper_block_89` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x50c90 — ___destroy_helper_block_90
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_90")]
-pub fn stub_50c90() -> ! {
-    todo!("0x50c90 ___destroy_helper_block_90")
+pub fn stub_50c90() {
+    // IDA 0x50c90: `__destroy_helper_block_90` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x50c98 — __GLOBAL__I_a_24
 #[doc(alias = "global constructor keyed to_a_24")]
 #[doc(alias = "__GLOBAL__I_a_24")]
-pub fn stub_50c98() -> ! {
-    todo!("0x50c98 global constructor keyed to_a_24")
+pub fn stub_50c98() {
+    // IDA 0x50c98: `__GLOBAL__I_a_24` runs the `a_24`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x50eb0 — -[GameMenu init:]
 // type: id __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu init:]")]
-pub fn stub_50eb0() -> ! {
-    todo!("0x50eb0 -[GameMenu init:]")
+pub fn stub_50eb0(menu_button_present: bool) {
+    // IDA 0x50eb0: `GameMenu::init:` fixes the 400x256 window, stores
+    // the menu button, hides with shown=0 (0x50f1a-0x50f6c) and builds
+    // the leave label + accept/decline buttons (0x50fc2-0x512d6).
+    // Presence records here; the menu starts hidden.
+    let _ = menu_button_present;
+    MENU_INITS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    MENU_SHOWN.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x512f8 — -[GameMenu dealloc]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu dealloc]")]
-pub fn stub_512f8() -> ! {
-    todo!("0x512f8 -[GameMenu dealloc]")
+pub fn stub_512f8() {
+    // IDA 0x512f8: `dealloc` drops the menu views. Release is drop
+    // glue; no explicit body.
 }
 
 // 0x51370 — -[GameMenu isShown]
 // type: char __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu isShown]")]
-pub fn stub_51370() -> ! {
-    todo!("0x51370 -[GameMenu isShown]")
+pub fn stub_51370() -> bool {
+    // IDA 0x51370: `isShown` returns the flag (0x5137e).
+    MENU_SHOWN.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51380 — -[GameMenu acceptButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu acceptButtonPressed:]")]
-pub fn stub_51380() -> ! {
-    todo!("0x51380 -[GameMenu acceptButtonPressed:]")
+pub fn stub_51380() {
+    // IDA 0x51380: `acceptButtonPressed:` leaves the game via the
+    // launcher (0x5139c-0x513b0). The leave records here.
+    MENU_LEAVES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x513b4 — -[GameMenu declineButtonPressed:]
