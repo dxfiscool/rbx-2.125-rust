@@ -4,7 +4,7 @@
 //! Generated: 2026-09-01
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
-use crate::generated_audio_wd_watchdog18::{GuiTextButtonState, TextBoxState};
+use crate::generated_audio_wd_watchdog18::{GuiTextButtonState, TextBoxState, TextLabelState};
 use rbx_core::SharedPtr;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
@@ -614,8 +614,11 @@ pub fn stub_677b94() {
 // 0x679360 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_679360() -> ! {
-    todo!("0x679360 __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv")
+pub fn stub_679360() -> &'static str {
+    // IDA 0x679360 (`FactoryProduct<TextLabel, ...>::getClassName`):
+    // resolves the static creator and returns its class name —
+    // "TextLabel".
+    "TextLabel"
 }
 
 // 0x679438 — __ZThn32_NK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv
@@ -641,42 +644,60 @@ pub fn stub_679514() {
 
 // 0x6795b0 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_6795b0() -> ! {
-    todo!("0x6795b0 __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_6795b0() -> &'static str {
+    // IDA 0x6795b0 (`FactoryProduct<TextLabel, ...>::Creator::
+    // getClassName`): asserts construction, runs the
+    // `callDoDeclare<sTextLabel>` once-guard and tail-calls
+    // `doDeclare<sTextLabel>` (per disasm) — the declared name:
+    // "TextLabel".
+    "TextLabel"
 }
 
 // 0x679638 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator6createEv
 // type: void __fastcall(_DWORD *, int, int, int (*)(const char *, ...))
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_679638() -> ! {
-    todo!("0x679638 __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator6createEv")
+pub fn stub_679638() -> TextLabelState {
+    // IDA 0x679638 (`FactoryProduct<TextLabel, ...>::Creator::
+    // create`): asserts construction then builds through
+    // `Creatable::create<TextLabel>` into the out `shared_ptr`.
+    // Host: the fresh state.
+    TextLabelState::default()
 }
 
 // 0x67977c — __ZN3RBX4Name13callDoDeclareILZNS_10sTextLabelEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sTextLabelEEEEvv")]
-pub fn stub_67977c() -> ! {
-    todo!("0x67977c __ZN3RBX4Name13callDoDeclareILZNS_10sTextLabelEEEEvv")
+pub fn stub_67977c() {
+    // IDA 0x67977c (`RBX::Name::callDoDeclare<sTextLabel>`): thunk
+    // forwarding to `doDeclare` (host: the 0x679780 twin). The name
+    // registry folds away.
+    stub_679780();
 }
 
 // 0x679780 — __ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v")]
-pub fn stub_679780() -> ! {
-    todo!("0x679780 __ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v")
+pub fn stub_679780() {
+    // IDA 0x679780 (`RBX::Name::doDeclare<sTextLabel>`):
+    // once-guarded `Name::declare(sTextLabel)`. The name registry
+    // folds away. Carrier no-op.
 }
 
 // 0x679860 — __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_679860() -> ! {
-    todo!("0x679860 __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_679860() {
+    // IDA 0x679860 (`FactoryProduct<TextLabel, ...>::Creator` C2):
+    // declares the `sTextLabel` name once and inserts the creator
+    // into the class registry. Registries fold away. Carrier no-op.
 }
 
 // 0x679aa4 — __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_679aa4() -> ! {
-    todo!("0x679aa4 __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_679aa4() {
+    // IDA 0x679aa4 (`FactoryProduct<TextLabel, ...>::static_getCreator`):
+    // asserts construction and returns the creator singleton.
+    // Singletons fold away. Carrier no-op.
 }
 
 // 0x67c9a4 — __ZN3RBX18DescribedCreatableINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

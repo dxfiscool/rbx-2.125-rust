@@ -8,8 +8,9 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    FontSizeVariant, GuiButtonFontSizeProp, GuiButtonStringProp, GuiTextButtonState, TextLabelState,
-    FONTSIZE_ITEMS, fontsize_index, fontsize_name,
+    FontSizeVariant, GuiButtonFontSizeProp, GuiButtonStringProp, GuiTextButtonState, TextLabelBoolProp,
+    TextLabelBoolSlot, TextLabelState, TextLabelYAlignProp, YAlignmentVariant, FONTSIZE_ITEMS,
+    YALIGNMENT_ITEMS, fontsize_index, fontsize_name, yalignment_name,
 };
 
 const _: () = {
@@ -684,15 +685,22 @@ pub fn stub_0x678dcc(state: &mut TextLabelState, transparency: f32) -> bool {
 // 0x678e14 — __ZNK3RBX9TextLabel21getPersistentDataCostEv
 #[doc(alias = "RBX::TextLabel::getPersistentDataCost(void)const")]
 #[doc(alias = "__ZNK3RBX9TextLabel21getPersistentDataCostEv")]
-pub fn stub_0x678e14() -> ! {
-    todo!("0x678e14 __ZNK3RBX9TextLabel21getPersistentDataCostEv")
+pub fn stub_0x678e14(base: i32, text: &str) -> i32 {
+    // IDA 0x678e14 (`RBX::TextLabel::getPersistentDataCost`): the
+    // `Instance` base cost plus 1 — or the +540 text byte-length /
+    // 100 when that exceeds 1 — plus 6. Same shape as the `TextBox`
+    // twin at 0x6668b0.
+    let chunks = (text.len() / 100) as i32;
+    base + if chunks > 1 { chunks } else { 1 } + 6
 }
 
 // 0x678e98 — __ZN3RBX9TextLabel8render2dEPNS_5AdornE
 #[doc(alias = "RBX::TextLabel::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX9TextLabel8render2dEPNS_5AdornE")]
-pub fn stub_0x678e98() -> ! {
-    todo!("0x678e98 __ZN3RBX9TextLabel8render2dEPNS_5AdornE")
+pub fn stub_0x678e98() {
+    // IDA 0x678e98 (`RBX::TextLabel::render2d`): forwards to the
+    // virtual at +196 — `Adorn` rasterization with no modeled-cell
+    // effect. Carrier no-op.
 }
 
 // 0x678ea4 — __ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE
@@ -705,8 +713,13 @@ pub fn stub_0x678ea4() {
 // 0x678eb0 — __ZN3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
 #[doc(alias = "RBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
-pub fn stub_0x678eb0() -> ! {
-    todo!("0x678eb0 __ZN3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")
+pub fn stub_0x678eb0() {
+    // IDA 0x678eb0 (`RBX::TextLabel::render2dContext`): reads the
+    // +540 text through the cached +536 `ContentFilter::StringState`
+    // cell (recomputed via `getStringState` when 0, 0x678edc-0x678f22)
+    // and draws via `render2dTextImpl` — `Adorn` rasterization with
+    // no modeled-cell effect (the filter cache and draws fold away).
+    // Carrier no-op.
 }
 
 // 0x67912c — __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -831,8 +844,14 @@ pub fn stub_0x679464() {
 // 0x679b18 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::PropDescriptor<bool (RBX::TextLabel::*)(void)const,int>(char const*,char const*,bool (RBX::TextLabel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x679b18() -> ! {
-    todo!("0x679b18 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x679b18(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelBoolProp {
+    // IDA 0x679b18 (`PropDescriptor<TextLabel,
+    // bool>::PropDescriptor`): builds the `GetImpl` member-pair
+    // cell plus the typed descriptor identity with name/category/
+    // attributes/permissions. The pair folds into the caller's
+    // `TextLabelBoolSlot`. Host: the identity half (same shape as
+    // the `TextBox` twin at 0x66c194).
+    TextLabelBoolProp::new(name, category, attributes, permissions)
 }
 
 // 0x679c24 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED0Ev
@@ -845,36 +864,53 @@ pub fn stub_0x679c24() {
 // 0x679c50 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")]
-pub fn stub_0x679c50() -> ! {
-    todo!("0x679c50 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")
+pub fn stub_0x679c50() -> bool {
+    // IDA 0x679c50 (`PropDescriptor<TextLabel,
+    // bool>::GetImpl::isReadOnly`): returns constant 1 — the
+    // getter-only impl throws in `setValue`.
+    true
 }
 
 // 0x679c54 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")]
-pub fn stub_0x679c54() -> ! {
-    todo!("0x679c54 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")
+pub fn stub_0x679c54() -> bool {
+    // IDA 0x679c54 (`PropDescriptor<TextLabel,
+    // bool>::GetImpl::isWriteOnly`): returns constant 0.
+    false
 }
 
 // 0x679c58 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x679c58() -> ! {
-    todo!("0x679c58 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x679c58(state: &TextLabelState, slot: TextLabelBoolSlot) -> bool {
+    // IDA 0x679c58 (`PropDescriptor<TextLabel,
+    // bool>::GetImpl::getValue`): dispatches the stored getter
+    // member-pointer over the object (host: the `slot` selects the
+    // `TextLabelState` bool).
+    state.bool_slot(slot)
 }
 
 // 0x679c7c — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb")]
 pub fn stub_0x679c7c() -> ! {
-    todo!("0x679c7c __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb")
+    // IDA 0x679c7c (`PropDescriptor<TextLabel,
+    // bool>::GetImpl::setValue`): `__noreturn`, unconditionally
+    // throws `std::runtime_error("can't set value")` — the impl is
+    // getter-only. Host: panic.
+    panic!("can't set value")
 }
 
 // 0x679d9c — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::PropDescriptor<G3D::Vector2 (RBX::TextLabel::*)(void)const,int>(char const*,char const*,G3D::Vector2 (RBX::TextLabel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x679d9c() -> ! {
-    todo!("0x679d9c __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x679d9c() {
+    // IDA 0x679d9c (`PropDescriptor<TextLabel,
+    // Vector2>::PropDescriptor`): same generic shape as the `TextBox`
+    // Vector2 C2 at 0x66c418 (member pair + typed identity). No
+    // `Vector2`-returning `TextLabel` member is identified in this
+    // range, so only the registry half exists: carrier no-op.
 }
 
 // 0x679ea8 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED0Ev
@@ -887,36 +923,56 @@ pub fn stub_0x679ea8() {
 // 0x679ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_0x679ed4() -> ! {
-    todo!("0x679ed4 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")
+pub fn stub_0x679ed4() -> bool {
+    // IDA 0x679ed4 (`PropDescriptor<TextLabel,
+    // Vector2>::GetImpl::isReadOnly`): returns constant 1 — the impl
+    // throws in `setValue`.
+    true
 }
 
 // 0x679ed8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_0x679ed8() -> ! {
-    todo!("0x679ed8 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")
+pub fn stub_0x679ed8() -> bool {
+    // IDA 0x679ed8 (`PropDescriptor<TextLabel,
+    // Vector2>::GetImpl::isWriteOnly`): returns constant 0.
+    false
 }
 
 // 0x679edc — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x679edc() -> ! {
-    todo!("0x679edc __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x679edc(value: [f32; 2]) -> [f32; 2] {
+    // IDA 0x679edc (`PropDescriptor<TextLabel,
+    // Vector2>::GetImpl::getValue`): dispatches the stored getter
+    // member-pointer. No `Vector2`-returning `TextLabel` member is
+    // identified in this range: host passes the read edge through.
+    value
 }
 
 // 0x679f04 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")]
 pub fn stub_0x679f04() -> ! {
-    todo!("0x679f04 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")
+    // IDA 0x679f04 (`PropDescriptor<TextLabel,
+    // Vector2>::GetImpl::setValue`): `__noreturn`, unconditionally
+    // throws — the impl is getter-only. Host: panic.
+    panic!("can't set value")
 }
 
 // 0x67a024 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::EnumPropDescriptor<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment)>(char const*,char const*,RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x67a024() -> ! {
-    todo!("0x67a024 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x67a024(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelYAlignProp {
+    // IDA 0x67a024 (`EnumPropDescriptor<TextLabel, YAlignment>`
+    // ctor): the `TextLabel` `classDescriptor` call, the
+    // `EnumDesc<YAlignment>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `y_alignment` field. Same shape as the `TextBox` twin at
+    // 0x66c788.
+    TextLabelYAlignProp::new(name, category, attributes, permissions)
 }
 
 // 0x67a1d8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED0Ev
@@ -929,36 +985,59 @@ pub fn stub_0x67a1d8() {
 // 0x67a204 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv")]
-pub fn stub_0x67a204() -> ! {
-    todo!("0x67a204 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv")
+pub fn stub_0x67a204() -> bool {
+    // IDA 0x67a204 (`EnumPropDescriptor<TextLabel,
+    // YAlignment>::isReadOnly`): delegates to the inner `GetSet` at
+    // +44 — always readable.
+    false
 }
 
 // 0x67a214 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11isWriteOnlyEv")]
-pub fn stub_0x67a214() -> ! {
-    todo!("0x67a214 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11isWriteOnlyEv")
+pub fn stub_0x67a214() -> bool {
+    // IDA 0x67a214 (`EnumPropDescriptor<TextLabel,
+    // YAlignment>::isWriteOnly`): delegates to the inner `GetSet`
+    // at +44 — always writable.
+    false
 }
 
 // 0x67a224 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_0x67a224() -> ! {
-    todo!("0x67a224 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_0x67a224(first: &TextLabelState, second: &TextLabelState) -> bool {
+    // IDA 0x67a224 (`EnumPropDescriptor<TextLabel,
+    // YAlignment>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the alignments.
+    first.y_alignment == second.y_alignment
 }
 
 // 0x67a24c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x67a24c() -> ! {
-    todo!("0x67a24c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_0x67a24c(state: &TextLabelState) -> YAlignmentVariant {
+    // IDA 0x67a24c (`EnumPropDescriptor<TextLabel,
+    // YAlignment>::getVariant`): reads the inner value, tags it
+    // with the plain-`int` singleton and placement-moves it in.
+    // Host: the `YAlignment` tag.
+    YAlignmentVariant::YAlignment(state.y_alignment)
 }
 
 // 0x67a270 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x67a270() -> ! {
-    todo!("0x67a270 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_0x67a270(state: &mut TextLabelState, variant: &YAlignmentVariant) {
+    // IDA 0x67a270 (`EnumPropDescriptor<TextLabel,
+    // YAlignment>::setVariant`): an int-typed variant runs
+    // `any_cast<int>`; anything else runs `Variant::convert<int>`
+    // (throws on failure); then the +72 setter. Host:
+    // convert-or-throw, then store.
+    let value = match *variant {
+        YAlignmentVariant::YAlignment(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x67a270)"),
+    };
+    state.y_alignment = value;
 }
 
 // 0x67a3bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_

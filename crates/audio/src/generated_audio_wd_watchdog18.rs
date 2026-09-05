@@ -694,6 +694,62 @@ impl GuiButtonFontSizeProp {
         }
     }
 }
+/// Bool member selected by a `PropDescriptor<TextLabel, bool>`'s
+/// member-pointer pair (same two-member layout: `TextWrap`/
+/// `TextScaled`).
+#[derive(Debug, Clone, Copy)]
+pub enum TextLabelBoolSlot {
+    TextWrap,
+    TextScaled,
+}
+impl TextLabelState {
+    pub fn bool_slot(&self, slot: TextLabelBoolSlot) -> bool {
+        match slot {
+            TextLabelBoolSlot::TextWrap => self.text_wrap,
+            TextLabelBoolSlot::TextScaled => self.text_scaled,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<TextLabel, bool>` cutover (IDA
+/// 0x679b18): name/category/attributes/permissions. The getter
+/// member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct TextLabelBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelBoolProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EnumPropDescriptor<TextLabel, YAlignment>`
+/// cutover (IDA 0x67a024): name/category/attributes/permissions.
+/// The member pair folds into the `y_alignment` field.
+#[derive(Debug, Clone)]
+pub struct TextLabelYAlignProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelYAlignProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
