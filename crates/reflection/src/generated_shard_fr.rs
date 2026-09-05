@@ -101,6 +101,72 @@ pub struct LoginUserInfo {
 }
 pub(crate) static CURRENT_USER: std::sync::LazyLock<parking_lot::Mutex<LoginUserInfo>> =
  std::sync::LazyLock::new(|| parking_lot::Mutex::new(LoginUserInfo::default()));
+/// Login/logout response routing (IDA 0x5a0e4-0x5b150): bad casts,
+/// transport errors, 200 delegates and http-failure strings.
+/// `UserInfo` + keychain live out of slice.
+pub(crate) static LOGGED_IN: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_PAGE_VIEWS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static COOKIES_CLEARED: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+/// `processLoginResponse:` routing (IDA 0x5a0e4): improper cast
+/// (501), transport error (502), 200 success delegate, else http
+/// failure delegate.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LoginRoute {
+ ImproperCast,
+ NetError,
+ Success,
+ HttpFailure,
+}
+/// `processLogOutResponse:` routing (IDA 0x5a42c): improper cast,
+/// transport error, 200 success delegate, else http failure delegate.
+/// Every non-success path clears the cookies first.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LogoutRoute {
+ ImproperCast,
+ NetError,
+ Success,
+ HttpFailure,
+}
+/// `AgreementController` webview state (IDA 0x5b4a0-0x5ba90): load
+/// count + pending url, toolbar/close-button presence. Views live out
+/// of slice.
+pub(crate) static AGREEMENT_LOADS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static AGREEMENT_URL: std::sync::LazyLock<parking_lot::Mutex<String>> =
+ std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static AGREEMENT_TOOLBAR: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static AGREEMENT_CLOSEBTN: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+/// `SignUpErrorViewController` field state (IDA 0x5baf8-0x5bf78):
+/// loads, suggested user + message text, controller/textview
+/// presence. Views live out of slice.
+pub(crate) static SIGNUP_ERROR_LOADS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static SIGNUP_SUGGESTED_USER: std::sync::LazyLock<parking_lot::Mutex<String>> =
+ std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static SIGNUP_MESSAGE: std::sync::LazyLock<parking_lot::Mutex<String>> =
+ std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static SIGNUP_HAS_CONTROLLER: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static SIGNUP_HAS_TEXTVIEW: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+/// `SignupVerifier` request state (IDA 0x5bf9c-0x5c888): inits, POST /
+/// GET verifications and alternate-username requests. The connection
+/// queue lives out of slice.
+pub(crate) static VERIFIER_INITS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static SIGNUP_POSTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static SIGNUP_GETS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ALT_USERNAME_REQUESTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static USERNAME_IMMEDIATE_OK: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
@@ -950,314 +1016,474 @@ pub fn stub_5a068() {
 // 0x5a0b0 — ___destroy_helper_block_193
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_193")]
-pub fn stub_5a0b0() -> ! {
-    todo!("0x5a0b0 ___destroy_helper_block_193")
+pub fn stub_5a0b0() {
+    // IDA 0x5a0b0: `__destroy_helper_block_193` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x5a0e4 — -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id, id)
 #[doc(alias = "-[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")]
-pub fn stub_5a0e4() -> ! {
-    todo!("0x5a0e4 -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")
+pub fn stub_5a0e4(
+    response_present: bool,
+    net_error: bool,
+    status: u16,
+) -> (LoginRoute, &'static str) {
+    // IDA 0x5a0e4: `processLoginResponse:` reports improper cast
+    // without a response (0x5a24c-0x5a2f4, 501), the transport error
+    // (0x5a170-0x5a31e, 502), delegates 200 to success (0x5a342-0x5a384)
+    // and the rest to failure (0x5a398-0x5a3ae). The route reports
+    // here.
+    LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+    if !response_present {
+        (LoginRoute::ImproperCast, "LoginFailedTitle:501")
+    } else if net_error {
+        (LoginRoute::NetError, "LoginFailedTitle:502")
+    } else if status == 200 {
+        LOGGED_IN.store(true, std::sync::atomic::Ordering::SeqCst);
+        (LoginRoute::Success, "200")
+    } else {
+        (LoginRoute::HttpFailure, "LoginFailedTitle:504")
+    }
 }
 
 // 0x5a42c — -[LoginManager processLogOutResponse:logoutData:logoutError:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processLogOutResponse:logoutData:logoutError:]")]
-pub fn stub_5a42c() -> ! {
-    todo!("0x5a42c -[LoginManager processLogOutResponse:logoutData:logoutError:]")
+pub fn stub_5a42c(
+    response_present: bool,
+    net_error: bool,
+    status_200: bool,
+    json_error: bool,
+) -> (LogoutRoute, &'static str) {
+    // IDA 0x5a42c: `processLogOutResponse:` clears cookies + reports
+    // improper cast without a response (0x5a522-0x5a572), clears +
+    // reports the transport error (0x5a4a0-0x5a516), delegates 200 to
+    // success (0x5a598-0x5a5d6) and the rest to failure (0x5a5f6-0x5a60c).
+    // The route records here.
+    if !response_present {
+        COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        (LogoutRoute::ImproperCast, "Logout failed")
+    } else if net_error {
+        COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        (LogoutRoute::NetError, "Logout failed")
+    } else if status_200 {
+        (LogoutRoute::Success, stub_5ac78(json_error))
+    } else {
+        COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        (LogoutRoute::HttpFailure, stub_5b150())
+    }
 }
 
 // 0x5a6a8 — -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")]
-pub fn stub_5a6a8() -> ! {
-    todo!("0x5a6a8 -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")
+pub fn stub_5a6a8(
+    json_error: bool,
+    status: &str,
+    info: Option<(&LoginUserInfo, &str)>,
+) -> &'static str {
+    // IDA 0x5a6a8: `processSuccessfulLoginResponse:` reports the JSON
+    // error (0x5a7be-0x5a80c), tracks + fills the player + logs in on
+    // `OK` (0x5a832-0x5a92c), else maps invalid credentials
+    // (0x5a9d2), floodchecks (0x5ab62), unapproved accounts (0x5ac0a)
+    // and unknown states to their titles. The title records here.
+    if json_error {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        return "UnknownLoginError";
+    }
+    if status == "OK" {
+        LOGIN_PAGE_VIEWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if let Some((user, password)) = info {
+            stub_59504(user, password);
+        }
+        LOGGED_IN.store(true, std::sync::atomic::Ordering::SeqCst);
+        ""
+    } else if status == "InvalidUsername"
+        || status == "InvalidPassword"
+        || status == "MissingRequiredField"
+    {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        "InvalidUsernameOrPw"
+    } else if status == "SuccessfulLoginFloodcheck"
+        || status == "FailedLoginFloodcheck"
+        || status == "FailedLoginPerUserFloodcheck "
+    {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        "TooManyAttempts"
+    } else if status == "AccountNotApproved " {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        "NeedsExternalLogin"
+    } else {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        "UnknownLoginError"
+    }
 }
 
 // 0x5ac78 — -[LoginManager processSuccessfulLogoutResponse:httpResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLogoutResponse:httpResponse:]")]
-pub fn stub_5ac78() -> ! {
-    todo!("0x5ac78 -[LoginManager processSuccessfulLogoutResponse:httpResponse:]")
+pub fn stub_5ac78(json_error: bool) -> &'static str {
+    // IDA 0x5ac78: `processSuccessfulLogoutResponse:` clears cookies +
+    // reports the JSON error (0x5ad68-0x5adce), else logs out
+    // (0x5ade4). The message records here.
+    if json_error {
+        COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        "UnknownLogoutError"
+    } else {
+        LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+        ""
+    }
 }
 
 // 0x5ae50 — -[LoginManager processFailureLoginResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLoginResponse:]")]
-pub fn stub_5ae50() -> ! {
-    todo!("0x5ae50 -[LoginManager processFailureLoginResponse:]")
+pub fn stub_5ae50(status: u16) -> &'static str {
+    // IDA 0x5ae50: `processFailureLoginResponse:` logs the http code +
+    // headers (0x5ae84-0x5b00e), logs out (0x5b048) and formats the
+    // failure title (504). The title reports here.
+    let _ = status;
+    LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+    "LoginFailedTitle:504"
 }
 
 // 0x5b150 — -[LoginManager processFailureLogoutResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLogoutResponse:]")]
-pub fn stub_5b150() -> ! {
-    todo!("0x5b150 -[LoginManager processFailureLogoutResponse:]")
+pub fn stub_5b150() -> &'static str {
+    // IDA 0x5b150: `processFailureLogoutResponse:` logs the http code +
+    // headers (0x5b184-0x5b30e), logs out (0x5b342) and reports
+    // failure (0x5b374). The message reports here.
+    LOGGED_IN.store(false, std::sync::atomic::Ordering::SeqCst);
+    "Logout Failed"
 }
 
 // 0x5b3d8 — __GLOBAL__I_a_31
 #[doc(alias = "global constructor keyed to_a_31")]
 #[doc(alias = "__GLOBAL__I_a_31")]
-pub fn stub_5b3d8() -> ! {
-    todo!("0x5b3d8 global constructor keyed to_a_31")
+pub fn stub_5b3d8() {
+    // IDA 0x5b3d8: `__GLOBAL__I_a_31` runs the `a_31`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x5b4a0 — -[AgreementController initWithCoder:]
 // type: AgreementController *__cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController initWithCoder:]")]
-pub fn stub_5b4a0() -> ! {
-    todo!("0x5b4a0 -[AgreementController initWithCoder:]")
+pub fn stub_5b4a0() {
+    // IDA 0x5b4a0: `AgreementController::initWithCoder:` forwards to
+    // super (same shape as 0x58d50). Super-init glue; no explicit
+    // body.
 }
 
 // 0x5b4e0 — -[AgreementController init:]
 // type: id __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController init:]")]
-pub fn stub_5b4e0() -> ! {
-    todo!("0x5b4e0 -[AgreementController init:]")
+pub fn stub_5b4e0() {
+    // IDA 0x5b4e0: `AgreementController::init` forwards to super.
+    // Super-init glue; no explicit body.
 }
 
 // 0x5b550 — -[AgreementController init:newFrame:]
 // type: id __cdecl(AgreementController *self, SEL, id, CGRect)
 #[doc(alias = "-[AgreementController init:newFrame:]")]
-pub fn stub_5b550() -> ! {
-    todo!("0x5b550 -[AgreementController init:newFrame:]")
+pub fn stub_5b550(frame: [f32; 4]) {
+    // IDA 0x5b550: `AgreementController::init:newFrame:` inits with
+    // the frame. Frame is view glue; no explicit body.
+    let _ = frame;
 }
 
 // 0x5b5fc — -[AgreementController dealloc]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController dealloc]")]
-pub fn stub_5b5fc() -> ! {
-    todo!("0x5b5fc -[AgreementController dealloc]")
+pub fn stub_5b5fc() {
+    // IDA 0x5b5fc: `AgreementController::dealloc` releases the webview
+    // + url. Release is drop glue; no explicit body.
 }
 
 // 0x5b680 — -[AgreementController setUrl:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setUrl:]")]
-pub fn stub_5b680() -> ! {
-    todo!("0x5b680 -[AgreementController setUrl:]")
+pub fn stub_5b680(url: &str) {
+    // IDA 0x5b680: `AgreementController::setUrl:` stores the url to
+    // load. It records here.
+    *AGREEMENT_URL.lock() = url.to_owned();
 }
 
 // 0x5b690 — -[AgreementController cancelTouch:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController cancelTouch:]")]
-pub fn stub_5b690() -> ! {
-    todo!("0x5b690 -[AgreementController cancelTouch:]")
+pub fn stub_5b690() {
+    // IDA 0x5b690: `AgreementController::cancelTouch:` swallows the
+    // cancel tap. Touch glue; no explicit body.
 }
 
 // 0x5b6a4 — -[AgreementController viewDidLoad]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController viewDidLoad]")]
-pub fn stub_5b6a4() -> ! {
-    todo!("0x5b6a4 -[AgreementController viewDidLoad]")
+pub fn stub_5b6a4(url: &str, toolbar_present: bool) {
+    // IDA 0x5b6a4: `AgreementController::viewDidLoad` supers, titles
+    // the close button (0x5b70c-0x5b74e), sizes the agreement webview
+    // off the view/toolbar frames (0x5b768-0x5b964) and loads the url
+    // (0x5ba2a-0x5ba76). The load records here.
+    let _ = toolbar_present;
+    *AGREEMENT_URL.lock() = url.to_owned();
+    AGREEMENT_LOADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5ba90 — -[AgreementController toolBar]
 // type: UIToolbar *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController toolBar]")]
-pub fn stub_5ba90() -> ! {
-    todo!("0x5ba90 -[AgreementController toolBar]")
+pub fn stub_5ba90() -> bool {
+    // IDA 0x5ba90: `AgreementController::toolBar` returns the ivar.
+    // Presence reports here.
+    AGREEMENT_TOOLBAR.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5baa0 — -[AgreementController setToolBar:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setToolBar:]")]
-pub fn stub_5baa0() -> ! {
-    todo!("0x5baa0 -[AgreementController setToolBar:]")
+pub fn stub_5baa0(present: bool) {
+    // IDA 0x5baa0: `AgreementController::setToolBar:` stores the ivar.
+    // It records here.
+    AGREEMENT_TOOLBAR.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5bac4 — -[AgreementController closeButton]
 // type: UIBarButtonItem *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController closeButton]")]
-pub fn stub_5bac4() -> ! {
-    todo!("0x5bac4 -[AgreementController closeButton]")
+pub fn stub_5bac4() -> bool {
+    // IDA 0x5bac4: `AgreementController::closeButton` returns the ivar.
+    // Presence reports here.
+    AGREEMENT_CLOSEBTN.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5bad4 — -[AgreementController setCloseButton:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setCloseButton:]")]
-pub fn stub_5bad4() -> ! {
-    todo!("0x5bad4 -[AgreementController setCloseButton:]")
+pub fn stub_5bad4(present: bool) {
+    // IDA 0x5bad4: `AgreementController::setCloseButton:` stores the
+    // ivar. It records here.
+    AGREEMENT_CLOSEBTN.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5baf8 — -[SignUpErrorViewController initWithCoder:]
-// type: SignUpErrorViewController *__cdecl(SignUpErrorViewController *self, SEL, id)
-#[doc(alias = "-[SignUpErrorViewController initWithCoder:]")]
-pub fn stub_5baf8() -> ! {
-    todo!("0x5baf8 -[SignUpErrorViewController initWithCoder:]")
+pub fn stub_5baf8() {
+    // IDA 0x5baf8: `SignUpErrorViewController::initWithCoder:`
+    // forwards to super (same shape as 0x58d50). Super-init glue; no
+    // explicit body.
 }
 
 // 0x5bb44 — -[SignUpErrorViewController dealloc]
-// type: void __cdecl(SignUpErrorViewController *self, SEL)
-#[doc(alias = "-[SignUpErrorViewController dealloc]")]
-pub fn stub_5bb44() -> ! {
-    todo!("0x5bb44 -[SignUpErrorViewController dealloc]")
+pub fn stub_5bb44() {
+    // IDA 0x5bb44: `SignUpErrorViewController::dealloc` releases the
+    // fields. Release is drop glue; no explicit body.
 }
 
 // 0x5bc00 — -[SignUpErrorViewController viewDidLoad]
-// type: void __cdecl(SignUpErrorViewController *self, SEL)
-#[doc(alias = "-[SignUpErrorViewController viewDidLoad]")]
-pub fn stub_5bc00() -> ! {
-    todo!("0x5bc00 -[SignUpErrorViewController viewDidLoad]")
+pub fn stub_5bc00() {
+    // IDA 0x5bc00: `SignUpErrorViewController::viewDidLoad` supers and
+    // wires the message view. The load records here.
+    SIGNUP_ERROR_LOADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5bcb8 — -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id, id, void *)
-#[doc(alias = "-[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")]
-pub fn stub_5bcb8() -> ! {
-    todo!("0x5bcb8 -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")
+pub fn stub_5bcb8(has_object: bool) {
+    // IDA 0x5bcb8: `observeValueForKeyPath:...` recenters the content
+    // from the observed scroll bounds/zoom (0x5bcce-0x5bd60). Pure
+    // layout glue; no explicit body.
+    let _ = has_object;
 }
 
 // 0x5bd70 — -[SignUpErrorViewController didReceiveMemoryWarning]
-// type: void __cdecl(SignUpErrorViewController *self, SEL)
-#[doc(alias = "-[SignUpErrorViewController didReceiveMemoryWarning]")]
-pub fn stub_5bd70() -> ! {
-    todo!("0x5bd70 -[SignUpErrorViewController didReceiveMemoryWarning]")
+pub fn stub_5bd70() {
+    // IDA 0x5bd70: `didReceiveMemoryWarning` forwards to super. Super
+    // glue; no explicit body.
 }
 
 // 0x5bd9c — -[SignUpErrorViewController setSuggestedUsername:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
-#[doc(alias = "-[SignUpErrorViewController setSuggestedUsername:]")]
-pub fn stub_5bd9c() -> ! {
-    todo!("0x5bd9c -[SignUpErrorViewController setSuggestedUsername:]")
+pub fn stub_5bd9c(username: &str) {
+    // IDA 0x5bd9c: `setSuggestedUsername:` stores the ivar. It records
+    // here.
+    *SIGNUP_SUGGESTED_USER.lock() = username.to_owned();
 }
 
 // 0x5bdbc — -[SignUpErrorViewController setMessage:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
-#[doc(alias = "-[SignUpErrorViewController setMessage:]")]
-pub fn stub_5bdbc() -> ! {
-    todo!("0x5bdbc -[SignUpErrorViewController setMessage:]")
+pub fn stub_5bdbc(message: &str) {
+    // IDA 0x5bdbc: `setMessage:` stores the ivar. It records here.
+    *SIGNUP_MESSAGE.lock() = message.to_owned();
 }
 
 // 0x5be1c — -[SignUpErrorViewController setSignupController:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
-#[doc(alias = "-[SignUpErrorViewController setSignupController:]")]
-pub fn stub_5be1c() -> ! {
-    todo!("0x5be1c -[SignUpErrorViewController setSignupController:]")
+pub fn stub_5be1c(present: bool) {
+    // IDA 0x5be1c: `setSignupController:` stores the ivar. It records
+    // here.
+    SIGNUP_HAS_CONTROLLER.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5be2c — -[SignUpErrorViewController touchesBegan:withEvent:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
-#[doc(alias = "-[SignUpErrorViewController touchesBegan:withEvent:]")]
-pub fn stub_5be2c() -> ! {
-    todo!("0x5be2c -[SignUpErrorViewController touchesBegan:withEvent:]")
+pub fn stub_5be2c() {
+    // IDA 0x5be2c: `touchesBegan:withEvent:` forwards the touch. Touch
+    // glue; no explicit body.
 }
 
 // 0x5be5c — -[SignUpErrorViewController touchesEnded:withEvent:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
-#[doc(alias = "-[SignUpErrorViewController touchesEnded:withEvent:]")]
-pub fn stub_5be5c() -> ! {
-    todo!("0x5be5c -[SignUpErrorViewController touchesEnded:withEvent:]")
+pub fn stub_5be5c() {
+    // IDA 0x5be5c: `touchesEnded:withEvent:` forwards the touch. Touch
+    // glue; no explicit body.
 }
 
 // 0x5bf68 — -[SignUpErrorViewController messageTextView]
-// type: UITextView *__cdecl(SignUpErrorViewController *self, SEL)
-#[doc(alias = "-[SignUpErrorViewController messageTextView]")]
-pub fn stub_5bf68() -> ! {
-    todo!("0x5bf68 -[SignUpErrorViewController messageTextView]")
+pub fn stub_5bf68() -> bool {
+    // IDA 0x5bf68: `messageTextView` returns the ivar. Presence reports
+    // here.
+    SIGNUP_HAS_TEXTVIEW.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5bf78 — -[SignUpErrorViewController setMessageTextView:]
-// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
-#[doc(alias = "-[SignUpErrorViewController setMessageTextView:]")]
-pub fn stub_5bf78() -> ! {
-    todo!("0x5bf78 -[SignUpErrorViewController setMessageTextView:]")
+pub fn stub_5bf78(present: bool) {
+    // IDA 0x5bf78: `setMessageTextView:` stores the ivar. It records
+    // here.
+    SIGNUP_HAS_TEXTVIEW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5bf9c — -[SignupVerifier init]
-// type: SignupVerifier *__cdecl(SignupVerifier *self, SEL)
-#[doc(alias = "-[SignupVerifier init]")]
-pub fn stub_5bf9c() -> ! {
-    todo!("0x5bf9c -[SignupVerifier init]")
+pub fn stub_5bf9c() -> bool {
+    // IDA 0x5bf9c: `SignupVerifier::init` supers and names the verify
+    // notifications. The init records here.
+    VERIFIER_INITS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x5c17c — -[SignupVerifier dealloc]
-// type: void __cdecl(SignupVerifier *self, SEL)
-#[doc(alias = "-[SignupVerifier dealloc]")]
-pub fn stub_5c17c() -> ! {
-    todo!("0x5c17c -[SignupVerifier dealloc]")
+pub fn stub_5c17c() {
+    // IDA 0x5c17c: `SignupVerifier::dealloc` releases the urls + names.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x5c26c — -[SignupVerifier isValidEmail:]
-// type: bool __cdecl(SignupVerifier *self, SEL, id)
-#[doc(alias = "-[SignupVerifier isValidEmail:]")]
-pub fn stub_5c26c() -> ! {
-    todo!("0x5c26c -[SignupVerifier isValidEmail:]")
+pub fn stub_5c26c(email: &str) -> bool {
+    // IDA 0x5c26c: `isValidEmail:` matches
+    // `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}` case-insensitive
+    // (0x5c2a4-0x5c2dc). The verdict reports here.
+    let Some(at) = email.find('@') else {
+        return false;
+    };
+    let (local, domain) = email.split_at(at);
+    let domain = &domain[1..];
+    if local.is_empty() || domain.is_empty() {
+        return false;
+    }
+    if !local
+        .bytes()
+        .all(|b| b.is_ascii_alphanumeric() || b"._%+-".contains(&b))
+    {
+        return false;
+    }
+    let Some(dot) = domain.rfind('.') else {
+        return false;
+    };
+    let (host, tld) = domain.split_at(dot);
+    let tld = &tld[1..];
+    if host.is_empty()
+        || !(2..=4).contains(&tld.len())
+        || !tld.bytes().all(|b| b.is_ascii_alphabetic())
+    {
+        return false;
+    }
+    host.bytes()
+        .all(|b| b.is_ascii_alphanumeric() || b".-".contains(&b))
 }
 
 // 0x5c2e8 — -[SignupVerifier doPostResponseFromUrl:args:notificationName:]
-// type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
-#[doc(alias = "-[SignupVerifier doPostResponseFromUrl:args:notificationName:]")]
-pub fn stub_5c2e8() -> ! {
-    todo!("0x5c2e8 -[SignupVerifier doPostResponseFromUrl:args:notificationName:]")
+pub fn stub_5c2e8(url: &str, args: &str, notification: &str) {
+    // IDA 0x5c2e8: `doPostResponseFromUrl:args:notificationName:`
+    // posts the args to the url async and notifies the reply block
+    // (0x5c31a-0x5c438). The post records here.
+    let _ = (url, args, notification);
+    SIGNUP_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5c444 — ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke
-// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
-#[doc(alias = "___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")]
-pub fn stub_5c444() -> ! {
-    todo!("0x5c444 ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")
+pub fn stub_5c444() {
+    // IDA 0x5c444: the POST-reply block notifies the reply
+    // (registered at 0x5c438). Completion glue; no explicit body.
 }
 
 // 0x5c4f4 — ___copy_helper_block__19
-// type: void __fastcall(int, int)
-#[doc(alias = "___copy_helper_block__19")]
-pub fn stub_5c4f4() -> ! {
-    todo!("0x5c4f4 ___copy_helper_block__19")
+pub fn stub_5c4f4() {
+    // IDA 0x5c4f4: `__copy_helper_block__19` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x5c518 — ___destroy_helper_block__19
-// type: void __fastcall(int)
-#[doc(alias = "___destroy_helper_block__19")]
-pub fn stub_5c518() -> ! {
-    todo!("0x5c518 ___destroy_helper_block__19")
+pub fn stub_5c518() {
+    // IDA 0x5c518: `__destroy_helper_block__19` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x5c534 — -[SignupVerifier doGetResponseFromUrl:notificationName:]
-// type: void __cdecl(SignupVerifier *self, SEL, id, id)
-#[doc(alias = "-[SignupVerifier doGetResponseFromUrl:notificationName:]")]
-pub fn stub_5c534() -> ! {
-    todo!("0x5c534 -[SignupVerifier doGetResponseFromUrl:notificationName:]")
+pub fn stub_5c534(url: &str, notification: &str) {
+    // IDA 0x5c534: `doGetResponseFromUrl:notificationName:` GETs the
+    // url async and notifies the reply block (0x5c566-0x5c64a). The
+    // request records here.
+    let _ = (url, notification);
+    SIGNUP_GETS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5c658 — ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke
-// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
-#[doc(alias = "___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")]
-pub fn stub_5c658() -> ! {
-    todo!("0x5c658 ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")
+pub fn stub_5c658() {
+    // IDA 0x5c658: the GET-reply block notifies the reply (registered
+    // at 0x5c64a). Completion glue; no explicit body.
 }
 
 // 0x5c6c8 — ___copy_helper_block_104
-// type: void __fastcall(int, int)
-#[doc(alias = "___copy_helper_block_104")]
-pub fn stub_5c6c8() -> ! {
-    todo!("0x5c6c8 ___copy_helper_block_104")
+pub fn stub_5c6c8() {
+    // IDA 0x5c6c8: `__copy_helper_block_104` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x5c6ec — ___destroy_helper_block_105
-// type: void __fastcall(int)
-#[doc(alias = "___destroy_helper_block_105")]
-pub fn stub_5c6ec() -> ! {
-    todo!("0x5c6ec ___destroy_helper_block_105")
+pub fn stub_5c6ec() {
+    // IDA 0x5c6ec: `__destroy_helper_block_105` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x5c708 — -[SignupVerifier checkPassword:username:]
-// type: void __cdecl(SignupVerifier *self, SEL, id, id)
-#[doc(alias = "-[SignupVerifier checkPassword:username:]")]
-pub fn stub_5c708() -> ! {
-    todo!("0x5c708 -[SignupVerifier checkPassword:username:]")
+pub fn stub_5c708(args_format: &str, password: &str, username: &str, url: &str, notification: &str) -> String {
+    // IDA 0x5c708: `checkPassword:username:` formats the check args
+    // with password + username (0x5c742) and POSTs them (0x5c772). The
+    // posted args report here.
+    let args = args_format
+        .replacen("{}", password, 1)
+        .replacen("{}", username, 1);
+    stub_5c2e8(url, &args, notification);
+    args
 }
 
 // 0x5c77c — -[SignupVerifier checkUsername:]
-// type: void __cdecl(SignupVerifier *self, SEL, id)
-#[doc(alias = "-[SignupVerifier checkUsername:]")]
-pub fn stub_5c77c() -> ! {
-    todo!("0x5c77c -[SignupVerifier checkUsername:]")
+pub fn stub_5c77c(username: &str, url_template: &str, notification: &str) -> Option<String> {
+    // IDA 0x5c77c: `checkUsername:` posts immediate success for names
+    // of length <= 2 (0x5c7b4-0x5c82c), else GETs the formatted check
+    // url (0x5c860-0x5c884). The requested url reports here.
+    if username.len() <= 2 {
+        USERNAME_IMMEDIATE_OK.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        None
+    } else {
+        let url = url_template.replacen("{}", username, 1);
+        stub_5c534(&url, notification);
+        Some(url)
+    }
 }
 
 // 0x5c888 — -[SignupVerifier getAlternateUsername:]
-// type: void __cdecl(SignupVerifier *self, SEL, id)
-#[doc(alias = "-[SignupVerifier getAlternateUsername:]")]
-pub fn stub_5c888() -> ! {
-    todo!("0x5c888 -[SignupVerifier getAlternateUsername:]")
+pub fn stub_5c888(username: &str, url_template: &str) -> String {
+    // IDA 0x5c888: `getAlternateUsername:` GETs the formatted
+    // recommend url async (0x5c8be-0x5c9cc). The requested url records
+    // here.
+    let url = url_template.replacen("{}", username, 1);
+    ALT_USERNAME_REQUESTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    SIGNUP_GETS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    url
 }
