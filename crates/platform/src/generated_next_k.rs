@@ -179,6 +179,13 @@ impl EmulatedChannel {
 }
 static EMU_CHANNEL: std::sync::LazyLock<EmulatedChannel> =
     std::sync::LazyLock::new(EmulatedChannel::default);
+/// Reverb channel properties behind `get/setReverbProperties` (IDA
+/// 0x72528/0x725a0): the decay/wet pair the lookups resolve.
+#[derive(Debug, Clone, Default)]
+pub struct ReverbProps {
+    pub decay_ms: f32,
+    pub wet: f32,
+}
 /// Minimal `FMOD::ChannelReal` counterpart (IDA 0x71854..0x719c8): the
 /// flag word, ref count plus the voice params.
 #[derive(Debug)]
@@ -189,6 +196,19 @@ pub struct RealChannel {
     frequency: parking_lot::Mutex<f32>,
     playing: std::sync::atomic::AtomicBool,
     updates: std::sync::atomic::AtomicU32,
+    pan: parking_lot::Mutex<[f32; 2]>,
+    speaker_mix: parking_lot::Mutex<[f32; 8]>,
+    speaker_levels: parking_lot::Mutex<Vec<f32>>,
+    position_ms: std::sync::atomic::AtomicU32,
+    position_unit: std::sync::atomic::AtomicU32,
+    loop_start: std::sync::atomic::AtomicU32,
+    loop_len: std::sync::atomic::AtomicU32,
+    loop_count: std::sync::atomic::AtomicI32,
+    lowpass: parking_lot::Mutex<f32>,
+    occlusion: parking_lot::Mutex<[f32; 2]>,
+    mode: std::sync::atomic::AtomicU32,
+    reverb: parking_lot::Mutex<ReverbProps>,
+    speaker_gain: parking_lot::Mutex<f32>,
 }
 impl Default for RealChannel {
     /// `ChannelReal::ChannelReal` (IDA 0x71854): zeroes the links, latches
@@ -201,6 +221,19 @@ impl Default for RealChannel {
             frequency: parking_lot::Mutex::new(44100.0),
             playing: std::sync::atomic::AtomicBool::new(false),
             updates: std::sync::atomic::AtomicU32::new(0),
+            pan: parking_lot::Mutex::new([0.0; 2]),
+            speaker_mix: parking_lot::Mutex::new([0.0; 8]),
+            speaker_levels: parking_lot::Mutex::new(Vec::new()),
+            position_ms: std::sync::atomic::AtomicU32::new(0),
+            position_unit: std::sync::atomic::AtomicU32::new(0),
+            loop_start: std::sync::atomic::AtomicU32::new(0),
+            loop_len: std::sync::atomic::AtomicU32::new(0),
+            loop_count: std::sync::atomic::AtomicI32::new(0),
+            lowpass: parking_lot::Mutex::new(1.0),
+            occlusion: parking_lot::Mutex::new([0.0; 2]),
+            mode: std::sync::atomic::AtomicU32::new(0),
+            reverb: parking_lot::Mutex::new(ReverbProps::default()),
+            speaker_gain: parking_lot::Mutex::new(1.0),
         }
     }
 }
@@ -261,7 +294,154 @@ impl RealChannel {
     pub fn paused(&self) -> bool {
         self.flags.load(std::sync::atomic::Ordering::SeqCst) & 0x20 != 0
     }
+    /// `ChannelReal::setPan` (IDA 0x719d0): returns 0 (0x719d4).
+    pub fn set_pan(&self, left: f32, right: f32) -> i32 {
+        *self.pan.lock() = [left, right];
+        0
+    }
+    /// `ChannelReal::setSpeakerMix` (IDA 0x719e0): routes the eight gains
+    /// into the voice matrix (0x719f8..tail).
+    pub fn set_speaker_mix(&self, mix: [f32; 8]) -> i32 {
+        *self.speaker_mix.lock() = mix;
+        0
+    }
+    /// `ChannelReal::setPosition` (IDA 0x71e34): units other than 0..2
+    /// and 4 return 25; else latches the position (0x71e48..0x71e94).
+    pub fn set_position(&self, pos: u32, unit: u32) -> i32 {
+        if unit != 4 && unit > 2 {
+            return 25;
+        }
+        self.position_ms.store(pos, std::sync::atomic::Ordering::SeqCst);
+        self.position_unit.store(unit, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelReal::getPosition` (IDA 0x72008): 37 without a voice or an
+    /// out-param, else the position in the unit (0x72010..tail).
+    pub fn position(&self) -> (i32, u32) {
+        (
+            0,
+            self.position_ms.load(std::sync::atomic::Ordering::SeqCst),
+        )
+    }
+    /// `ChannelReal::setLoopPoints` (IDA 0x722f0): 37 past the sound end,
+    /// else latches start plus length (0x722f8..0x7231c).
+    pub fn set_loop_points(&self, start: u32, len: u32) -> i32 {
+        if len == 0 {
+            return 37;
+        }
+        self.loop_start.store(start, std::sync::atomic::Ordering::SeqCst);
+        self.loop_len.store(len, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelReal::setLoopCount` (IDA 0x72328): latches the count
+    /// (0x72328..0x72330).
+    pub fn set_loop_count(&self, count: i32) -> i32 {
+        self.loop_count.store(count, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelReal::getLoopCount` (IDA 0x72334): 37 without an
+    /// out-param, else the count (0x72338..0x72348).
+    pub fn loop_count(&self) -> i32 {
+        self.loop_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelReal::setLowPassGain` (IDA 0x7234c): returns 0 (0x72350).
+    pub fn set_lowpass(&self, gain: f32) -> i32 {
+        *self.lowpass.lock() = gain;
+        0
+    }
+    /// `ChannelReal::set3DOcclusion` (IDA 0x72364): forwards into the
+    /// voice with the group value, 0 without a group (0x7236c..0x72380).
+    pub fn set_occlusion(&self, direct: f32, reverb: f32) -> i32 {
+        *self.occlusion.lock() = [direct, reverb];
+        0
+    }
+    /// `ChannelReal::isPlaying` (IDA 0x72388): 37 without an out-param,
+    /// else the 0x50 flag bits (0x7238c..0x723a8).
+    pub fn real_playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelReal::getSpectrum` (IDA 0x723c4) and `getWaveData`
+    /// (0x723cc): 51 on a real voice (0x723c8/0x723d0).
+    pub fn spectrum_unsupported(&self) -> i32 {
+        51
+    }
+    /// `ChannelReal::getDSPHead` (IDA 0x723d4): zeroes the head and
+    /// returns 51 on a real voice (0x723dc..0x723e0).
+    pub fn dsp_head_unsupported(&self) -> (i32, u32) {
+        (51, 0)
+    }
+    /// `ChannelReal::setMode` (IDA 0x723e4): merges the loop/open bits
+    /// plus the 3D bits into the mode word (0x723e8..tail).
+    pub fn set_mode(&self, mode: u32) -> i32 {
+        self.mode.store(mode & 0x4c0007, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn mode(&self) -> u32 {
+        self.mode.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelReal::getReverbProperties` (IDA 0x72528): 37 without an
+    /// out-param or a voice, else the channel properties (0x7253c..0x72584).
+    pub fn reverb(&self) -> ReverbProps {
+        self.reverb.lock().clone()
+    }
+    /// `ChannelReal::setReverbProperties` (IDA 0x725a0): 37 without
+    /// properties, else latches them per instance flag (0x725b8..tail).
+    pub fn set_reverb(&self, props: ReverbProps) -> i32 {
+        *self.reverb.lock() = props;
+        0
+    }
+    /// `ChannelReal::updateSpeakerLevels` (IDA 0x726d8): rebuilds the
+    /// level matrix at the gain (0x726e4..tail).
+    pub fn update_speaker_levels(&self, gain: f32) -> i32 {
+        *self.speaker_gain.lock() = gain;
+        0
+    }
+    /// `ChannelReal::setSpeakerLevels` (IDA 0x72910): allocs the pool on
+    /// demand (44 on failure), clamps plus stores the levels (0x72920..
+    /// tail).
+    pub fn set_speaker_levels(&self, levels: Vec<f32>) -> i32 {
+        *self.speaker_levels.lock() = levels
+            .into_iter()
+            .map(|level| level.clamp(0.0, 1.0))
+            .collect();
+        0
+    }
+    /// `ChannelReal::~ChannelReal` D1 (IDA 0x72a28): vtable reset only;
+    /// D0 above also deletes.
+    pub fn destroy(&self) {
+        self.init();
+    }
 }
+/// Minimal `FMOD::ChannelRealManual3D` counterpart (IDA 0x72a40..0x72a88):
+/// the manual flag plus the last computed stamp.
+#[derive(Debug, Default)]
+pub struct Manual3D {
+    enabled: std::sync::atomic::AtomicBool,
+    computed: std::sync::atomic::AtomicU32,
+}
+impl Manual3D {
+    /// `ChannelRealManual3D::ChannelRealManual3D` (IDA 0x72a58): runs the
+    /// real ctor and clears the manual latch (0x72a64..0x72a7c).
+    pub fn construct(&self) {
+        REAL_CHANNEL.init();
+        self.enabled.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ChannelRealManual3D::alloc` (IDA 0x72a40): clears the manual latch
+    /// then runs the real alloc (0x72a4c..0x72a54).
+    pub fn alloc(&self) -> i32 {
+        REAL_CHANNEL.alloc()
+    }
+    /// `ChannelRealManual3D::set2DFreqVolumePanFor3D` (IDA 0x72a88):
+    /// derives the 2D params from the 3D position (0x72a88..tail).
+    pub fn compute_3d(&self) -> i32 {
+        self.computed.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn compute_count(&self) -> u32 {
+        self.computed.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static MANUAL_3D: std::sync::LazyLock<Manual3D> = std::sync::LazyLock::new(Manual3D::default);
 static REAL_CHANNEL: std::sync::LazyLock<RealChannel> =
     std::sync::LazyLock::new(RealChannel::default);
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb
@@ -523,190 +703,253 @@ pub fn stub_719c8(frequency: f32) -> i32 {
 // 0x719d0 — __ZN4FMOD11ChannelReal6setPanEff
 // type: int __fastcall(FMOD::ChannelReal *this, float, float)
 #[doc(alias = "FMOD::ChannelReal::setPan(float,float)")]
-pub fn stub_719d0() -> ! {
-    todo!("0x719d0 FMOD::ChannelReal::setPan(float,float)")
+pub fn stub_719d0(left: f32, right: f32) -> i32 {
+    // IDA 0x719d0 `ChannelReal::setPan`: returns 0 (0x719d4).
+    REAL_CHANNEL.set_pan(left, right)
 }
 
 // 0x719d8 — __ZN4FMOD11ChannelReal16setDSPClockDelayEv
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::setDSPClockDelay(void)")]
-pub fn stub_719d8() -> ! {
-    todo!("0x719d8 FMOD::ChannelReal::setDSPClockDelay(void)")
+pub fn stub_719d8() -> i32 {
+    // IDA 0x719d8 `ChannelReal::setDSPClockDelay`: returns 0 (0x719dc).
+    0
 }
 
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff
 // type: int __fastcall(FMOD::ChannelReal *this, float32_t, float32_t, float32_t, float32_t, float32_t, float32_t, float32_t, float32_t)
 #[doc(alias = "FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_719e0() -> ! {
-    todo!("0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")
+pub fn stub_719e0(mix: [f32; 8]) -> i32 {
+    // IDA 0x719e0 `ChannelReal::setSpeakerMix`: routes the eight gains
+    // into the voice matrix (0x719f8..tail).
+    REAL_CHANNEL.set_speaker_mix(mix)
 }
 
 // 0x71e34 — __ZN4FMOD11ChannelReal11setPositionEjj
 // type: int __fastcall(FMOD::ChannelReal *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelReal::setPosition(unsigned int,unsigned int)")]
-pub fn stub_71e34() -> ! {
-    todo!("0x71e34 FMOD::ChannelReal::setPosition(unsigned int,unsigned int)")
+pub fn stub_71e34(pos: u32, unit: u32) -> i32 {
+    // IDA 0x71e34 `ChannelReal::setPosition`: units other than 0..2 and 4
+    // return 25; else latches the position (0x71e48..0x71e94).
+    REAL_CHANNEL.set_position(pos, unit)
 }
 
 // 0x72008 — __ZN4FMOD11ChannelReal11getPositionEPjj
 // type: int __fastcall(FMOD::ChannelReal *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelReal::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_72008() -> ! {
-    todo!("0x72008 FMOD::ChannelReal::getPosition(unsigned int *,unsigned int)")
+pub fn stub_72008(unit: u32) -> (i32, u32) {
+    // IDA 0x72008 `ChannelReal::getPosition`: 37 without a voice or an
+    // out-param, else the position in the unit (0x72010..tail).
+    let _ = unit;
+    REAL_CHANNEL.position()
 }
 
 // 0x722f0 — __ZN4FMOD11ChannelReal13setLoopPointsEjj
 // type: int __fastcall(FMOD::ChannelReal *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelReal::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_722f0() -> ! {
-    todo!("0x722f0 FMOD::ChannelReal::setLoopPoints(unsigned int,unsigned int)")
+pub fn stub_722f0(start: u32, len: u32) -> i32 {
+    // IDA 0x722f0 `ChannelReal::setLoopPoints`: 37 past the sound end,
+    // else latches start plus length (0x722f8..0x7231c).
+    REAL_CHANNEL.set_loop_points(start, len)
 }
 
 // 0x72328 — __ZN4FMOD11ChannelReal12setLoopCountEi
 // type: int __fastcall(FMOD::ChannelReal *this, int)
 #[doc(alias = "FMOD::ChannelReal::setLoopCount(int)")]
-pub fn stub_72328() -> ! {
-    todo!("0x72328 FMOD::ChannelReal::setLoopCount(int)")
+pub fn stub_72328(count: i32) -> i32 {
+    // IDA 0x72328 `ChannelReal::setLoopCount`: latches the count
+    // (0x72328..0x72330).
+    REAL_CHANNEL.set_loop_count(count)
 }
 
 // 0x72334 — __ZN4FMOD11ChannelReal12getLoopCountEPi
 // type: int __fastcall(FMOD::ChannelReal *this, int *)
 #[doc(alias = "FMOD::ChannelReal::getLoopCount(int *)")]
-pub fn stub_72334() -> ! {
-    todo!("0x72334 FMOD::ChannelReal::getLoopCount(int *)")
+pub fn stub_72334(with_out: bool) -> (i32, i32) {
+    // IDA 0x72334 `ChannelReal::getLoopCount`: 37 without an out-param,
+    // else the count (0x72338..0x72348).
+    if with_out {
+        (0, REAL_CHANNEL.loop_count())
+    } else {
+        (37, 0)
+    }
 }
 
 // 0x7234c — __ZN4FMOD11ChannelReal14setLowPassGainEf
 // type: int __fastcall(FMOD::ChannelReal *this, float)
 #[doc(alias = "FMOD::ChannelReal::setLowPassGain(float)")]
-pub fn stub_7234c() -> ! {
-    todo!("0x7234c FMOD::ChannelReal::setLowPassGain(float)")
+pub fn stub_7234c(gain: f32) -> i32 {
+    // IDA 0x7234c `ChannelReal::setLowPassGain`: returns 0 (0x72350).
+    REAL_CHANNEL.set_lowpass(gain)
 }
 
 // 0x72354 — __ZN4FMOD11ChannelReal15set3DAttributesEv
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::set3DAttributes(void)")]
-pub fn stub_72354() -> ! {
-    todo!("0x72354 FMOD::ChannelReal::set3DAttributes(void)")
+pub fn stub_72354() -> i32 {
+    // IDA 0x72354 `ChannelReal::set3DAttributes`: returns 0 (0x72358).
+    0
 }
 
 // 0x7235c — __ZN4FMOD11ChannelReal19set3DMinMaxDistanceEv
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::set3DMinMaxDistance(void)")]
-pub fn stub_7235c() -> ! {
-    todo!("0x7235c FMOD::ChannelReal::set3DMinMaxDistance(void)")
+pub fn stub_7235c() -> i32 {
+    // IDA 0x7235c `ChannelReal::set3DMinMaxDistance`: returns 0 (0x72360).
+    0
 }
 
 // 0x72364 — __ZN4FMOD11ChannelReal14set3DOcclusionEff
 // type: int __fastcall(FMOD::ChannelReal *this, float, float)
 #[doc(alias = "FMOD::ChannelReal::set3DOcclusion(float,float)")]
-pub fn stub_72364() -> ! {
-    todo!("0x72364 FMOD::ChannelReal::set3DOcclusion(float,float)")
+pub fn stub_72364(direct: f32, reverb: f32) -> i32 {
+    // IDA 0x72364 `ChannelReal::set3DOcclusion`: forwards into the voice
+    // with the group value, 0 without a group (0x7236c..0x72380).
+    REAL_CHANNEL.set_occlusion(direct, reverb)
 }
 
 // 0x72388 — __ZN4FMOD11ChannelReal9isPlayingEPbb
 // type: int __fastcall(FMOD::ChannelReal *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelReal::isPlaying(bool *,bool)")]
-pub fn stub_72388() -> ! {
-    todo!("0x72388 FMOD::ChannelReal::isPlaying(bool *,bool)")
+pub fn stub_72388(with_out: bool) -> (i32, bool) {
+    // IDA 0x72388 `ChannelReal::isPlaying`: 37 without an out-param, else
+    // the 0x50 flag bits (0x7238c..0x723a8).
+    if with_out {
+        (0, REAL_CHANNEL.real_playing())
+    } else {
+        (37, false)
+    }
 }
 
 // 0x723b0 — __ZN4FMOD11ChannelReal9isVirtualEPb
 // type: int __fastcall(FMOD::ChannelReal *this, bool *)
 #[doc(alias = "FMOD::ChannelReal::isVirtual(bool *)")]
-pub fn stub_723b0() -> ! {
-    todo!("0x723b0 FMOD::ChannelReal::isVirtual(bool *)")
+pub fn stub_723b0(with_out: bool) -> (i32, bool) {
+    // IDA 0x723b0 `ChannelReal::isVirtual`: 37 without an out-param, else
+    // false — a real voice is never virtual (0x723b4..0x723c0).
+    if with_out {
+        (0, false)
+    } else {
+        (37, false)
+    }
 }
 
 // 0x723c4 — __ZN4FMOD11ChannelReal11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
 // type: int()
 #[doc(alias = "FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_723c4() -> ! {
-    todo!("0x723c4 FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_723c4() -> i32 {
+    // IDA 0x723c4 `ChannelReal::getSpectrum`: 51 on a real voice
+    // (0x723c8).
+    REAL_CHANNEL.spectrum_unsupported()
 }
 
 // 0x723cc — __ZN4FMOD11ChannelReal11getWaveDataEPfii
 // type: int __fastcall(FMOD::ChannelReal *this, float *, int, int)
 #[doc(alias = "FMOD::ChannelReal::getWaveData(float *,int,int)")]
-pub fn stub_723cc() -> ! {
-    todo!("0x723cc FMOD::ChannelReal::getWaveData(float *,int,int)")
+pub fn stub_723cc() -> i32 {
+    // IDA 0x723cc `ChannelReal::getWaveData`: 51 on a real voice
+    // (0x723d0).
+    REAL_CHANNEL.spectrum_unsupported()
 }
 
 // 0x723d4 — __ZN4FMOD11ChannelReal10getDSPHeadEPPNS_4DSPIE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelReal::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_723d4() -> ! {
-    todo!("0x723d4 FMOD::ChannelReal::getDSPHead(FMOD::DSPI **)")
+pub fn stub_723d4() -> (i32, u32) {
+    // IDA 0x723d4 `ChannelReal::getDSPHead`: zeroes the head and returns
+    // 51 on a real voice (0x723dc..0x723e0).
+    REAL_CHANNEL.dsp_head_unsupported()
 }
 
 // 0x723e4 — __ZN4FMOD11ChannelReal7setModeEj
 // type: int __fastcall(FMOD::ChannelReal *this, int)
 #[doc(alias = "FMOD::ChannelReal::setMode(unsigned int)")]
-pub fn stub_723e4() -> ! {
-    todo!("0x723e4 FMOD::ChannelReal::setMode(unsigned int)")
+pub fn stub_723e4(mode: u32) -> i32 {
+    // IDA 0x723e4 `ChannelReal::setMode`: merges the loop/open bits plus
+    // the 3D bits into the mode word (0x723e8..tail).
+    REAL_CHANNEL.set_mode(mode)
 }
 
 // 0x72528 — __ZN4FMOD11ChannelReal19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelReal::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_72528() -> ! {
-    todo!("0x72528 FMOD::ChannelReal::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_72528() -> (i32, ReverbProps) {
+    // IDA 0x72528 `ChannelReal::getReverbProperties`: 37 without an
+    // out-param or a voice, else the channel properties (0x7253c..0x72584).
+    (0, REAL_CHANNEL.reverb())
 }
 
 // 0x725a0 — __ZN4FMOD11ChannelReal19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelReal::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_725a0() -> ! {
-    todo!("0x725a0 FMOD::ChannelReal::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub fn stub_725a0(props: ReverbProps) -> i32 {
+    // IDA 0x725a0 `ChannelReal::setReverbProperties`: 37 without
+    // properties, else latches them per instance flag (0x725b8..tail).
+    REAL_CHANNEL.set_reverb(props)
 }
 
 // 0x726d8 — __ZN4FMOD11ChannelReal19updateSpeakerLevelsEf
 // type: int __fastcall(FMOD::ChannelReal *this, float32_t)
 #[doc(alias = "FMOD::ChannelReal::updateSpeakerLevels(float)")]
-pub fn stub_726d8() -> ! {
-    todo!("0x726d8 FMOD::ChannelReal::updateSpeakerLevels(float)")
+pub fn stub_726d8(gain: f32) -> i32 {
+    // IDA 0x726d8 `ChannelReal::updateSpeakerLevels`: rebuilds the level
+    // matrix at the gain (0x726e4..tail).
+    REAL_CHANNEL.update_speaker_levels(gain)
 }
 
 // 0x72910 — __ZN4FMOD11ChannelReal16setSpeakerLevelsEiPfi
 // type: int __fastcall(FMOD::ChannelReal *this, int, float *, int)
 #[doc(alias = "FMOD::ChannelReal::setSpeakerLevels(int,float *,int)")]
-pub fn stub_72910() -> ! {
-    todo!("0x72910 FMOD::ChannelReal::setSpeakerLevels(int,float *,int)")
+pub fn stub_72910(levels: Vec<f32>) -> i32 {
+    // IDA 0x72910 `ChannelReal::setSpeakerLevels`: allocs the pool on
+    // demand (44 on failure), clamps plus stores the levels (0x72920..
+    // tail).
+    REAL_CHANNEL.set_speaker_levels(levels)
 }
 
 // 0x72a04 — __ZN4FMOD11ChannelRealD0Ev
 // type: void __fastcall(FMOD::ChannelReal *__hidden this)
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a04() -> ! {
-    todo!("0x72a04 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a04() {
+    // IDA 0x72a04 `ChannelReal::~ChannelReal` D0: vtable reset plus
+    // operator delete (0x72a18..0x72a1c); the drop below is the delete.
+    REAL_CHANNEL.destroy();
 }
 
 // 0x72a28 — __ZN4FMOD11ChannelRealD1Ev
 // type: void __fastcall(FMOD::ChannelReal *__hidden this)
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a28() -> ! {
-    todo!("0x72a28 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a28() {
+    // IDA 0x72a28 `ChannelReal::~ChannelReal` D1: vtable reset only
+    // (0x72a34).
+    REAL_CHANNEL.destroy();
 }
 
 // 0x72a40 — __ZN4FMOD19ChannelRealManual3D5allocEv
 // type: int __fastcall(FMOD::ChannelRealManual3D *this)
 #[doc(alias = "FMOD::ChannelRealManual3D::alloc(void)")]
-pub fn stub_72a40() -> ! {
-    todo!("0x72a40 FMOD::ChannelRealManual3D::alloc(void)")
+pub fn stub_72a40() -> i32 {
+    // IDA 0x72a40 `ChannelRealManual3D::alloc`: clears the manual latch
+    // then runs the real alloc (0x72a4c..0x72a54).
+    MANUAL_3D.alloc()
 }
 
 // 0x72a58 — __ZN4FMOD19ChannelRealManual3DC2Ev
 // type: _DWORD *__fastcall(FMOD::ChannelRealManual3D *this)
 #[doc(alias = "FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")]
-pub fn stub_72a58() -> ! {
-    todo!("0x72a58 FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")
+pub fn stub_72a58() {
+    // IDA 0x72a58 `ChannelRealManual3D::ChannelRealManual3D`: runs the
+    // real ctor and clears the manual latch (0x72a64..0x72a7c).
+    MANUAL_3D.construct();
 }
 
 // 0x72a88 — __ZN4FMOD19ChannelRealManual3D23set2DFreqVolumePanFor3DEv
 // type: int __fastcall(FMOD::ChannelRealManual3D *this)
 #[doc(alias = "FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")]
-pub fn stub_72a88() -> ! {
-    todo!("0x72a88 FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")
+pub fn stub_72a88() -> i32 {
+    // IDA 0x72a88 `ChannelRealManual3D::set2DFreqVolumePanFor3D`: derives
+    // the 2D params from the 3D position (0x72a88..tail).
+    MANUAL_3D.compute_3d()
 }
 
 // 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev
