@@ -57,6 +57,72 @@ pub(crate) static REACHABILITY_NEXT_HANDLE: std::sync::atomic::AtomicUsize =
 pub(crate) static ROBLOX_ALERT_MESSAGE: std::sync::LazyLock<
     parking_lot::Mutex<String>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+/// `RobloxInfo` URL state (IDA 0x36918-0x36e04): cached base/API/domain
+/// URLs plus set/post/refresh counters. Mirrors the canonical
+/// `rbx_platform::RobloxInfo` shapes (which owns the plist/settings
+/// reads); the caches record here with matching normalization.
+pub(crate) static INFO_BASE_URL: std::sync::LazyLock<
+    parking_lot::Mutex<Option<String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+pub(crate) static INFO_API_BASE_URL: std::sync::LazyLock<
+    parking_lot::Mutex<Option<String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+pub(crate) static INFO_DOMAIN: std::sync::LazyLock<
+    parking_lot::Mutex<Option<String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+pub(crate) static INFO_BASE_URL_SETS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static INFO_BASE_URL_POSTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static INFO_SETTINGS_REFRESHES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `https://api` + first-dot suffix of `base` (IDA 0x36a18-0x36a9e);
+/// empty base stays nil (IDA 0x36a10).
+fn info_api_base_url_for(base: &str) -> Option<String> {
+    if base.is_empty() {
+        return None;
+    }
+    let trimmed = base.trim_end_matches('/');
+    let dot = trimmed.find('.')?;
+    Some(format!("https://api{}", &trimmed[dot..]))
+}
+/// First-dot suffix of `base` minus scheme and `/` (IDA 0x36b30-0x36bb0);
+/// empty base stays nil (IDA 0x36b06).
+fn info_domain_string_for(base: &str) -> Option<String> {
+    if base.is_empty() {
+        return None;
+    }
+    let no_scheme = base.strip_prefix("http://").unwrap_or(base);
+    let dot = no_scheme.find('.')?;
+    Some(no_scheme[dot..].replace('/', ""))
+}
+/// Digit right after `token` (`characterAtIndex:loc+len`, non-digit
+/// reads as 0, IDA 0x361fa-0x36228); no token reads 0.
+fn info_digit_after(haystack: &str, token: &str) -> i32 {
+    let pos = match haystack.find(token) {
+        Some(pos) => pos + token.len(),
+        None => return 0,
+    };
+    haystack[pos..].chars().next().and_then(|c| c.to_digit(10)).unwrap_or(0) as i32
+}
+/// `RobloxView` render state (IDA 0x37068/0x37378/0x37b3c): whether the
+/// render + view-update jobs are currently scheduled, plus completed
+/// view-prep count. Job add/remove traffic is scheduler glue.
+pub(crate) static ROBLOXVIEW_RENDERING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(true);
+pub(crate) static ROBLOXVIEW_PREPS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `RobloxView` constructor args (IDA 0x37628): dimensions plus the
+/// three copied strings (place/auth/script); one-shot log/plugin init,
+/// Ogre view creation and the update-job install are engine glue.
+#[derive(Debug, Clone, Default)]
+pub struct RobloxViewCreate {
+    pub width: u32,
+    pub height: u32,
+    pub first: String,
+    pub second: String,
+    pub third: String,
+}
 
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
@@ -869,145 +935,296 @@ pub fn stub_0x36058(device_type: Option<&str>) -> &'static str {
 // 0x36114 — +[RobloxInfo getDeviceModelNumber]
 // type: int __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceModelNumber]")]
-pub fn stub_0x36114() -> ! {
-    todo!("0x36114 +[RobloxInfo getDeviceModelNumber]")
+pub fn stub_0x36114(device_type: Option<&str>, tablet: bool) -> i32 {
+    // IDA 0x36114: tablet reads `atoi` past `iPad` (-1 without it,
+    // 0x3615e-0x36180); phone tries `iPod` first (0x36198-0x361a4),
+    // else past `iPhone` (-1 without it, 0x361b6-0x361c2). A nil
+    // `deviceType` reads 0 through the nil receiver (0x361e0-0x36208).
+    let Some(device) = device_type else {
+        return 0;
+    };
+    if tablet {
+        if !device.contains("iPad") {
+            return -1;
+        }
+        return info_digit_after(device, "iPad");
+    }
+    if device.contains("iPod") {
+        return info_digit_after(device, "iPod");
+    }
+    if !device.contains("iPhone") {
+        return -1;
+    }
+    info_digit_after(device, "iPhone")
 }
 
 // 0x3622c — +[RobloxInfo thisDeviceIsATablet]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo thisDeviceIsATablet]")]
-pub fn stub_0x3622c() -> ! {
-    todo!("0x3622c +[RobloxInfo thisDeviceIsATablet]")
+pub fn stub_0x3622c(supports_idiom: bool, idiom: i32) -> bool {
+    // IDA 0x3622c: `thisDeviceIsATablet` gates on
+    // `respondsToSelector:userInterfaceIdiom` (0x3626c-0x36274); the Pad
+    // idiom (1) survives the `!= 1 -> 0` fold (0x36282-0x3628a).
+    supports_idiom && idiom == 1
 }
 
 // 0x36290 — +[RobloxInfo deviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceType]")]
-pub fn stub_0x36290() -> ! {
-    todo!("0x36290 +[RobloxInfo deviceType]")
+pub fn stub_0x36290(machine: &str) -> String {
+    // IDA 0x36290: `deviceType` wraps `sysctlbyname("hw.machine")` in a
+    // string (0x362b2-0x362fa); the sysctl itself lives out of slice.
+    machine.to_owned()
 }
 
 // 0x362fc — +[RobloxInfo deviceOSVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceOSVersion]")]
-pub fn stub_0x362fc() -> ! {
-    todo!("0x362fc +[RobloxInfo deviceOSVersion]")
+pub fn stub_0x362fc(version: &str) -> String {
+    // IDA 0x362fc: `deviceOSVersion` returns `UIDevice.systemVersion`
+    // (0x36318-0x36322).
+    version.to_owned()
 }
 
 // 0x36330 — +[RobloxInfo appVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo appVersion]")]
-pub fn stub_0x36330() -> ! {
-    todo!("0x36330 +[RobloxInfo appVersion]")
+pub fn stub_0x36330(version: &str) -> String {
+    // IDA 0x36330: `appVersion` returns
+    // `objectForInfoDictionaryKey:CFBundleShortVersionString`
+    // (0x3634c-0x36356).
+    version.to_owned()
 }
 
 // 0x36370 — +[RobloxInfo friendlyDeviceName]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo friendlyDeviceName]")]
-pub fn stub_0x36370() -> ! {
-    todo!("0x36370 +[RobloxInfo friendlyDeviceName]")
+pub fn stub_0x36370(machine: &str) -> &'static str {
+    // IDA 0x36370: `friendlyDeviceName` ladders `isEqualToString:` over
+    // `hw.machine` (0x36390-0x36836).
+    match machine {
+        "iPhone1,1" => "iPhone 2G",
+        "iPhone1,2" => "iPhone 3G",
+        "iPhone2,1" => "iPhone 3GS",
+        "iPhone3,1" | "iPhone3,2" => "iPhone 4",
+        "iPhone3,3" => "iPhone 4 (CDMA)",
+        "iPhone4,1" => "iPhone 4S",
+        "iPhone5,1" => "iPhone 5",
+        "iPhone5,2" => "iPhone 5 (GSM+CDMA)",
+        "iPod1,1" => "iPod Touch (1 Gen)",
+        "iPod2,1" => "iPod Touch (2 Gen)",
+        "iPod3,1" => "iPod Touch (3 Gen)",
+        "iPod4,1" => "iPod Touch (4 Gen)",
+        "iPod5,1" => "iPod Touch (5 Gen)",
+        "iPad1,1" => "iPad",
+        "iPad1,2" => "iPad 3G",
+        "iPad2,1" => "iPad 2 (WiFi)",
+        "iPad2,2" | "iPad2,4" => "iPad 2",
+        "iPad2,3" => "iPad 2 (CDMA)",
+        "iPad2,5" => "iPad Mini (WiFi)",
+        "iPad2,6" => "iPad Mini",
+        "iPad2,7" => "iPad Mini (GSM+CDMA)",
+        "iPad3,1" => "iPad 3 (WiFi)",
+        "iPad3,2" => "iPad 3 (GSM+CDMA)",
+        "iPad3,3" => "iPad 3",
+        "iPad3,4" => "iPad 4 (WiFi)",
+        "iPad3,5" => "iPad 4",
+        "iPad3,6" => "iPad 4 (GSM+CDMA)",
+        "i386" => "Simulator 32 bit intel",
+        "x86_64" => "Simulator 64 bit intel",
+        _ => "Unknown",
+    }
 }
 
 // 0x3683c — +[RobloxInfo getUserAgentString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getUserAgentString]")]
-pub fn stub_0x3683c() -> ! {
-    todo!("0x3683c +[RobloxInfo getUserAgentString]")
+pub fn stub_0x3683c(model: &str, device_type: &str, os_version: &str, app_version: &str) -> String {
+    // IDA 0x3683c: `getUserAgentString` formats `model`, `deviceType`,
+    // `systemVersion` and `CFBundleShortVersionString` into the
+    // Mozilla/5.0 template (0x36870-0x36914).
+    format!(
+        "Mozilla/5.0 ({model}; {device_type}; CPU iPhone OS {os_version} like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B176 ROBLOX iOS App {app_version}"
+    )
 }
 
 // 0x36918 — +[RobloxInfo getBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrl]")]
-pub fn stub_0x36918() -> ! {
-    todo!("0x36918 +[RobloxInfo getBaseUrl]")
+pub fn stub_0x36918(plist_url: &str) -> String {
+    // IDA 0x36918: `getBaseUrl` returns the cached base URL
+    // (`dword_130C460`, 0x36926-0x3692c); on a miss it stores the
+    // `RbxBaseUrl`/`RbxBaseMobileUrl` plist value via `setBaseUrl:`
+    // (0x36988-0x369b6). The plist value crosses as a parameter here.
+    if let Some(cached) = INFO_BASE_URL.lock().clone() {
+        return cached;
+    }
+    stub_0x36bd4(plist_url)
 }
 
 // 0x369c0 — +[RobloxInfo getApiBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getApiBaseUrl]")]
-pub fn stub_0x369c0() -> ! {
-    todo!("0x369c0 +[RobloxInfo getApiBaseUrl]")
+pub fn stub_0x369c0(base: &str) -> Option<String> {
+    // IDA 0x369c0: `getApiBaseUrl` returns the cached API URL
+    // (`dword_130C464`, 0x369d4-0x36aac), derived as `https://api` +
+    // first-dot suffix on a miss.
+    if let Some(cached) = INFO_API_BASE_URL.lock().clone() {
+        return Some(cached);
+    }
+    let url = info_api_base_url_for(base)?;
+    *INFO_API_BASE_URL.lock() = Some(url.clone());
+    Some(url)
 }
 
 // 0x36ab0 — +[RobloxInfo getDomainString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDomainString]")]
-pub fn stub_0x36ab0() -> ! {
-    todo!("0x36ab0 +[RobloxInfo getDomainString]")
+pub fn stub_0x36ab0(base: &str) -> Option<String> {
+    // IDA 0x36ab0: `getDomainString` returns the cached domain
+    // (`dword_130C468`, 0x36aca-0x36bc6), derived as the first-dot
+    // suffix on a miss.
+    if let Some(cached) = INFO_DOMAIN.lock().clone() {
+        return Some(cached);
+    }
+    let domain = info_domain_string_for(base)?;
+    *INFO_DOMAIN.lock() = Some(domain.clone());
+    Some(domain)
 }
 
 // 0x36bc8 — +[RobloxInfo getBaseUrlChangedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrlChangedNotification]")]
-pub fn stub_0x36bc8() -> ! {
-    todo!("0x36bc8 +[RobloxInfo getBaseUrlChangedNotification]")
+pub fn stub_0x36bc8() -> &'static str {
+    // IDA 0x36bc8: `getBaseUrlChangedNotification` returns the
+    // `RBXBaseUrlChangedNotifier` name (0x36bd2).
+    "RBXBaseUrlChangedNotifier"
 }
 
 // 0x36bd4 — +[RobloxInfo setBaseUrl:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxInfo setBaseUrl:]")]
-pub fn stub_0x36bd4() -> ! {
-    todo!("0x36bd4 +[RobloxInfo setBaseUrl:]")
+pub fn stub_0x36bd4(url: &str) -> String {
+    // IDA 0x36bd4: `setBaseUrl:` stores the base URL (0x36c08),
+    // normalizing a trailing `/` (0x36c48-0x36c70), pushes it through
+    // `SetBaseURL` (0x36c86-0x36c9e), dispatches the settings refresh
+    // (0x36cce), posts `RBXBaseUrlChangedNotifier` (0x36cf0-0x36d12)
+    // and initializes analytics (0x36d30). The store + counters record
+    // here; the UTF-8 rep dance is drop glue.
+    let normalized = if url.ends_with('/') {
+        url.to_owned()
+    } else {
+        format!("{url}/")
+    };
+    *INFO_BASE_URL.lock() = Some(normalized.clone());
+    INFO_BASE_URL_SETS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x36de4();
+    INFO_BASE_URL_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    normalized
 }
 
 // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___25+[RobloxInfo setBaseUrl:]_block_invoke")]
-pub fn stub_0x36de4() -> ! {
-    todo!("0x36de4 ___25+[RobloxInfo setBaseUrl:]_block_invoke")
+pub fn stub_0x36de4() {
+    // IDA 0x36de4: the `setBaseUrl:` block refreshes the iOS settings
+    // service without a forced web read
+    // (`getiOSSettingsServiceWithForcedReadFromWeb:NO`, 0x36dfe). The
+    // refresh records here; the service read lives out of slice.
+    INFO_SETTINGS_REFRESHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x36e04 — +[RobloxInfo searchUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo searchUrl]")]
-pub fn stub_0x36e04() -> ! {
-    todo!("0x36e04 +[RobloxInfo searchUrl]")
+pub fn stub_0x36e04(tablet: bool, phone_url: &str, pad_url: &str) -> String {
+    // IDA 0x36e04: `searchUrl` refreshes the settings service without a
+    // forced web read (0x36e2a-0x36e58); the tablet flag picks the pad
+    // URL over the phone URL (0x36e68-0x36e6a).
+    stub_0x36de4();
+    if tablet { pad_url.to_owned() } else { phone_url.to_owned() }
 }
 
 // 0x36e80 — __GLOBAL__I_a_9
 #[doc(alias = "global constructor keyed to_a_9")]
 #[doc(alias = "__GLOBAL__I_a_9")]
-pub fn stub_0x36e80() -> ! {
-    todo!("0x36e80 global constructor keyed to_a_9")
+pub fn stub_0x36e80() {
+    // IDA 0x36e80: `__GLOBAL__I_a_9` runs the `a_9` translation-unit static
+    // initializers. Static-init glue; no explicit body.
 }
 
 // 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
 #[doc(alias = "__ZN10RobloxView37requestStopRenderingForBackgroundModeEv")]
-pub fn stub_0x37068() -> ! {
-    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+pub fn stub_0x37068(cleanup_in_background: bool) {
+    // IDA 0x37068: `requestStopRenderingForBackgroundMode` signals the
+    // render event and removes + resets the render job (0x370d8-0x37220),
+    // then removes the view-update job (0x37164-0x37266); with
+    // `RenderCleanupInBackground` both removals go through
+    // `removeBlocking` + `ProcessMessages` (0x370f6-0x37204). Either way
+    // both jobs end unscheduled, which records here.
+    let _ = cleanup_in_background;
+    ROBLOXVIEW_RENDERING.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x37378 — __ZN10RobloxView22requestResumeRenderingEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestResumeRendering(void)")]
 #[doc(alias = "__ZN10RobloxView22requestResumeRenderingEv")]
-pub fn stub_0x37378() -> ! {
-    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+pub fn stub_0x37378() {
+    // IDA 0x37378: `requestResumeRendering` creates the view-update job
+    // (0x373aa-0x373fc) and the render job (0x3741a-0x37468) and adds
+    // both to the scheduler (0x37490-0x374f0). Both jobs end scheduled,
+    // which records here.
+    ROBLOXVIEW_RENDERING.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x375b4 — __Z13macBundlePathv
 // type: _DWORD __fastcall()
 #[doc(alias = "macBundlePath(void)")]
 #[doc(alias = "__Z13macBundlePathv")]
-pub fn stub_0x375b4() -> ! {
-    todo!("0x375b4 macBundlePath(void)")
+pub fn stub_0x375b4(bundle_path: &str) -> String {
+    // IDA 0x375b4: `macBundlePath` copies the main bundle's POSIX path
+    // (`CFBundleGetMainBundle`/`CFBundleCopyBundleURL`/
+    // `CFURLCopyFileSystemPath`, 0x375d4-0x375f4) into the out string
+    // (0x3760a). The CoreFoundation traffic is drop glue.
+    bundle_path.to_owned()
 }
 
 // 0x37628 — __ZN10RobloxViewC2EjjSsSsSs
 #[doc(alias = "RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")]
 #[doc(alias = "__ZN10RobloxViewC2EjjSsSsSs")]
-pub fn stub_0x37628() -> ! {
-    todo!("0x37628 RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_0x37628(width: u32, height: u32, first: &str, second: &str, third: &str) -> RobloxViewCreate {
+    // IDA 0x37628: `RobloxView::RobloxView` copies the three strings
+    // (0x3764e-0x37694), one-shots the log manager + plugin modules
+    // (0x376b4-0x376d4), creates the Ogre view (0x3770c-0x37758) and
+    // installs the view-update job (0x37800-0x37822). The args record
+    // here; init + view creation are engine glue.
+    RobloxViewCreate {
+        width,
+        height,
+        first: first.to_owned(),
+        second: second.to_owned(),
+        third: third.to_owned(),
+    }
 }
 
 // 0x37b3c — __ZN10RobloxView16completeViewPrepEN5boost10shared_ptrIN3RBX4GameEEE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, void *, char, int, int, int, int)
 #[doc(alias = "RobloxView::completeViewPrep(rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZN10RobloxView16completeViewPrepEN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x37b3c() -> ! {
-    todo!("0x37b3c RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x37b3c(game_present: bool) -> bool {
+    // IDA 0x37b3c: `completeViewPrep` stores the game, connects
+    // `onPlaceIDChanged` (0x37b60-0x37c00), binds the workspace
+    // (0x37cc4), creates the render job + concurrency rules and adds
+    // both jobs (0x37cf8-0x37dd6), then wires `restartDataModel` /
+    // `newGameDidStart` when watched (0x37e04-0x37eaa). Completion
+    // records here; signal/job traffic is scheduler glue.
+    if game_present {
+        ROBLOXVIEW_PREPS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    game_present
 }
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
