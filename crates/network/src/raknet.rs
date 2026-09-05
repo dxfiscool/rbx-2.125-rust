@@ -18090,50 +18090,66 @@ pub fn stub_a292a8(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u6
 // 0xa29304 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS6_5list2INS6_5valueIPSC_EENSF_IiEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>>::~callable_slot()")]
-pub fn stub_a29304() -> ! {
-    todo!("0xa29304 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>>::~callable_slot()")
+pub fn stub_a29304(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xa29304: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0xa29410 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS7_5list2INS7_5valueIPSD_EENSG_IiEEEEEELi0ES3_E4callEv
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")]
-pub fn stub_a29410() -> ! {
-    todo!("0xa29410 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")
+pub fn stub_a29410(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> i32) -> i32 {
+ // IDA 0xa29410: mf1 inline dispatch (virtual adjust); obj->method() result (below truncation).
+ call(obj, arg)
 }
 
 // 0xa29430 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS7_5list2INS7_5valueIPSD_EENSG_IiEEEEEELi0ES3_E4callEv
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")]
-pub fn stub_a29430() -> ! {
-    todo!("0xa29430 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")
+pub fn stub_a29430(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> i32) -> i32 {
+ // IDA 0xa29430: non-virtual thunk adjusts inward then tail-calls the operator().
+ call(obj, arg)
 }
 
 // 0xa29a78 — __ZN3rbx7signals6signalIFvSsN3G3D7Vector3EEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS3_EENS8_5list4INS8_5valueIPSE_EENSH_IiEENS7_3argILi1EEENSL_ILi2EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,G3D::Vector3)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_a29a78() -> ! {
-    todo!("0xa29a78 rbx::signals::signal<void ()(std::string,G3D::Vector3)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_a29a78(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xa29a78: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0xa29ad4 — __ZN3rbx7signals6signalIFvSsN3G3D7Vector3EEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS3_EENS8_5list4INS8_5valueIPSE_EENSH_IiEENS7_3argILi1EEENSL_ILi2EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,G3D::Vector3)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_a29ad4() -> ! {
-    todo!("0xa29ad4 rbx::signals::signal<void ()(std::string,G3D::Vector3)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_a29ad4(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xa29ad4: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0xa29d68 — __ZN3rbx8callableINS_7signals6signalIFvSsN3G3D7Vector3EEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS4_EENS9_5list4INS9_5valueIPSF_EENSI_IiEENS8_3argILi1EEENSM_ILi2EEEEEEELi2ES5_E4callESsS4_
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
-pub fn stub_a29d68() -> ! {
-    todo!("0xa29d68 rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
+pub fn stub_a29d68(text: String, pos: [f32; 3], call: &mut dyn FnMut(String, [f32; 3])) {
+ // IDA 0xa29d68: callable::call packs args for list4::operator() (below truncation).
+ call(text, pos);
 }
 
 // 0xa29d90 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3G3D7Vector3EEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS4_EENS9_5list4INS9_5valueIPSF_EENSI_IiEENS8_3argILi1EEENSM_ILi2EEEEEEELi2ES5_E4callESsS4_
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
-pub fn stub_a29d90() -> ! {
-    todo!("0xa29d90 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
+pub fn stub_a29d90(text: String, pos: [f32; 3], call: &mut dyn FnMut(String, [f32; 3])) {
+ // IDA 0xa29d90: non-virtual thunk tail-calls the operator() (below truncation).
+ call(text, pos);
 }
 
 // 0xa29db8 — __ZN5boost3_bi5list4INS0_5valueIPN3RBX7Network7PlayersEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEclINS_4_mfi3mf3IvS5_iSsN3G3D7Vector3EEENS0_5list2IRSsRSH_EEEEvNS0_4typeIvEERT_RT0_i
@@ -18147,29 +18163,39 @@ pub fn stub_a29db8<A, B>(slot: &mut dyn FnMut(A, B), a: A, b: B) {
 // 0xa2a8e8 — __ZN3rbx7signals6signalIFvSsSsSsEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS6_5list5INS6_5valueIPSC_EENSF_IiEENS5_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
-pub fn stub_a2a8e8() -> ! {
-    todo!("0xa2a8e8 rbx::signals::signal<void ()(std::string,std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
+pub fn stub_a2a8e8(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xa2a8e8: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0xa2a944 — __ZN3rbx7signals6signalIFvSsSsSsEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS6_5list5INS6_5valueIPSC_EENSF_IiEENS5_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
-pub fn stub_a2a944() -> ! {
-    todo!("0xa2a944 rbx::signals::signal<void ()(std::string,std::string,std::string)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
+pub fn stub_a2a944(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xa2a944: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0xa2abd8 — __ZN3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS7_5list5INS7_5valueIPSD_EENSG_IiEENS6_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEELi3ES3_E4callESsSsSs
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")]
-pub fn stub_a2abd8() -> ! {
-    todo!("0xa2abd8 rbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")
+pub fn stub_a2abd8(args: [String; 3], call: &mut dyn FnMut([String; 3])) {
+ // IDA 0xa2abd8: callable::call packs 3 strings for list5::operator() (below truncation).
+ call(args);
 }
 
 // 0xa2abf4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS7_5list5INS7_5valueIPSD_EENSG_IiEENS6_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEELi3ES3_E4callESsSsSs
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")]
-pub fn stub_a2abf4() -> ! {
-    todo!("0xa2abf4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")
+pub fn stub_a2abf4(args: [String; 3], call: &mut dyn FnMut([String; 3])) {
+ // IDA 0xa2abf4: non-virtual thunk tail-calls the operator() (below truncation).
+ call(args);
 }
 
 // 0xa2ac10 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX7Network7PlayersEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEclINS_4_mfi3mf4IvS5_iSsSsSsEENS0_5list3IRSsSJ_SJ_EEEEvNS0_4typeIvEERT_RT0_i
@@ -18191,85 +18217,117 @@ pub fn stub_a2ae4c<A, B, C, D>(slot: &mut dyn FnMut(A, B, C, D), a: A, b: B, c: 
 // 0xa2ccc8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_a2ccc8() -> ! {
-    todo!("0xa2ccc8 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a2ccc8() {
+ // IDA 0xa2ccc8: empty sp_counted_impl_pd<Client> D2 body.
 }
 
 // 0xa2ccd0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_a2ccd0() -> ! {
-    todo!("0xa2ccd0 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_a2ccd0(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0xa2ccd0: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0xa2d2d0 — __ZNK3RBX15ServiceProvider4findINS_7Network6ClientEEEPT_v
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Client * RBX::ServiceProvider::find<RBX::Network::Client>(void)const")]
-pub fn stub_a2d2d0() -> ! {
-    todo!("0xa2d2d0 RBX::Network::Client * RBX::ServiceProvider::find<RBX::Network::Client>(void)const")
+pub fn stub_a2d2d0(services: &[usize], is_match: &mut dyn FnMut(usize) -> bool) -> Option<usize> {
+ // IDA 0xa2d2d0: ServiceProvider::find<Client> (below truncation).
+ services.iter().copied().find(|&s| is_match(s))
 }
 
 // 0xa2d8a8 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_7Network6ClientEEEvv
 // type: void()
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::Client>(void)")]
-pub fn stub_a2d8a8() -> ! {
-    todo!("0xa2d8a8 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::Client>(void)")
+pub fn stub_a2d8a8(index: &mut u64, alloc: &mut dyn FnMut() -> u64) {
+ // IDA 0xa2d8a8: guard-gated newIndex assignment.
+ if *index == 0 {
+ *index = alloc();
+ }
 }
 
 // 0xa2e028 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ServerES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Server,RBX::Network::Server>(rbx_core::SharedPtr<RBX::Network::Server> const*,RBX::Network::Server *)const")]
-pub fn stub_a2e028() -> ! {
-    todo!("0xa2e028 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Server,RBX::Network::Server>(boost::shared_ptr<RBX::Network::Server> const*,RBX::Network::Server *)const")
+pub fn stub_a2e028(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0xa2e028: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0xa2e2e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ServerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_a2e2e4() -> ! {
-    todo!("0xa2e2e4 boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a2e2e4() {
+ // IDA 0xa2e2e4: empty sp_counted_impl_pd<Server> D2 body.
 }
 
 // 0xa2e2e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ServerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_a2e2e8() -> ! {
-    todo!("0xa2e2e8 boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a2e2e8(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0xa2e2e8: D0: operator delete.
+ free(block);
 }
 
 // 0xa2e2f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ServerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_a2e2f4() -> ! {
-    todo!("0xa2e2f4 boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_a2e2f4(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0xa2e2f4: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0xa2e310 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ServerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_a2e310() -> ! {
-    todo!("0xa2e310 boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_a2e310(block: usize, type_name: &str) -> usize {
+ // IDA 0xa2e310: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0xa2e328 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ServerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_a2e328() -> ! {
-    todo!("0xa2e328 boost::detail::sp_counted_impl_pd<RBX::Network::Server *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_a2e328(block: usize) -> usize {
+ // IDA 0xa2e328: return block + 16.
+ block + 16
 }
 
 // 0xa2e90c — __ZNK3RBX15ServiceProvider4findINS_7Network6ServerEEEPT_v
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Server * RBX::ServiceProvider::find<RBX::Network::Server>(void)const")]
-pub fn stub_a2e90c() -> ! {
-    todo!("0xa2e90c RBX::Network::Server * RBX::ServiceProvider::find<RBX::Network::Server>(void)const")
+pub fn stub_a2e90c(services: &[usize], is_match: &mut dyn FnMut(usize) -> bool) -> Option<usize> {
+ // IDA 0xa2e90c: ServiceProvider::find<Server> (below truncation).
+ services.iter().copied().find(|&s| is_match(s))
 }
 
 // 0xa2eee4 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_7Network6ServerEEEvv
 // type: void()
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::Server>(void)")]
-pub fn stub_a2eee4() -> ! {
-    todo!("0xa2eee4 void RBX::ServiceProvider::callDoGetClassIndex<RBX::Network::Server>(void)")
+pub fn stub_a2eee4(index: &mut u64, alloc: &mut dyn FnMut() -> u64) {
+ // IDA 0xa2eee4: guard-gated newIndex assignment.
+ if *index == 0 {
+ *index = alloc();
+ }
 }
 
 // 0xa2f6ec — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEEvT_
@@ -18306,8 +18364,9 @@ pub fn stub_a2f918<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 // 0xa2faf4 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_7Network7PlayersEEES6_N3G3D7Vector3EENS9_5list3INS9_5valueISE_EENS_3argILi1EEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int *, _DWORD *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_a2faf4() -> ! {
-    todo!("0xa2faf4 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_a2faf4(dst: &mut Option<u64>, src: Option<u64>) {
+ // IDA 0xa2faf4: basic_vtable1::assign_to copies the bind (below truncation).
+ *dst = src;
 }
 
 // 0xa2fd44 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEclIPFvS7_NS_10shared_ptrINS4_8InstanceEEESC_ENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i
@@ -18329,8 +18388,10 @@ pub fn stub_a300f8(op: crate::functor::FunctorOp) -> crate::functor::ManageOutco
 // 0xa302f8 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEC2ES8_SA_SD_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")]
-pub fn stub_a302f8() -> ! {
-    todo!("0xa302f8 boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::list3(boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")
+pub fn stub_a302f8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa302f8: list3 ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa304c0 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEC2ES8_SA_SD_
