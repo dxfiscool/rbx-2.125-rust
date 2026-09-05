@@ -7,8 +7,9 @@
 use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_audio_wd_watchdog18::{
-    stub_0670964, FontSizeVariant, GuiTextButtonState, TextBoxBoolProp, TextBoxBoolSlot, TextBoxEventDesc,
-    TextBoxState, TextBoxStringProp, TextBoxVoidFunc, FONTSIZE_ITEMS, fontsize_index, fontsize_name,
+    stub_0670964, FontSizeVariant, GuiButtonBoolProp, GuiTextButtonState, TextBoxBoolProp, TextBoxBoolSlot,
+    TextBoxEventDesc, TextBoxState, TextBoxStringProp, TextBoxVoidFunc, FONTSIZE_ITEMS, fontsize_index,
+    fontsize_name,
 };
 use crate::generated_audio_wd_watchdog19::stub_665da0;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
@@ -928,8 +929,13 @@ pub fn stub_673918() {
 // demangled: RBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)
 #[doc(alias = "RBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
-pub fn stub_673924() -> ! {
-    todo!("0x673924 __ZN3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")
+pub fn stub_673924() {
+    // IDA 0x673924 (`RBX::GuiTextButton::render2dContext`): reads
+    // the text members (+200..214, +804, +844/845) through
+    // `ContentFilter::getStringState` and draws via
+    // `render2dButtonImpl`/`render2dTextImpl` plus the virtual at
+    // +176 — `Adorn` rasterization with no modeled-cell effect.
+    // Carrier no-op.
 }
 
 // 0x673b74 -- __ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -1072,16 +1078,24 @@ pub fn stub_673eac() {
 // demangled: boost::shared_ptr<RBX::GuiTextButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiTextButton>(void)
 #[doc(alias = "boost::shared_ptr<RBX::GuiTextButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiTextButton>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_6741c4() -> ! {
-    todo!("0x6741c4 __ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_6741c4() -> GuiTextButtonState {
+    // IDA 0x6741c4 (`RBX::Creatable<Instance>::create<GuiTextButton>`):
+    // heap-allocates (0x6741fa), runs the `GuiTextButton` C2
+    // (0x67421e, host: the 0x672d68 twin) and wraps it in the
+    // `shared_ptr`+`Deleter` (0x67422c). Host: the fresh state
+    // (`SharedPtr` is `Arc` — ownership folds).
+    GuiTextButtonState::default()
 }
 
 // 0x674278 -- __ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::GuiTextButton>::shared_ptr<RBX::GuiTextButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::shared_ptr<RBX::GuiTextButton>::shared_ptr<RBX::GuiTextButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_674278() -> ! {
-    todo!("0x674278 __ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_674278() {
+    // IDA 0x674278 (`boost::shared_ptr<GuiTextButton>::shared_ptr`
+    // with the `Creatable::Deleter`): installs the count and accepts
+    // the `enable_shared_from_this` owner (0x674298-0x6742de).
+    // `SharedPtr` is `Arc` in the host. Carrier no-op.
 }
 
 // 0x674340 -- __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -1144,8 +1158,14 @@ pub fn stub_674570() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::PropDescriptor<bool (RBX::GuiTextButton::*)(void)const,int>(char const*,char const*,bool (RBX::GuiTextButton::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::PropDescriptor<bool (RBX::GuiTextButton::*)(void)const,int>(char const*,char const*,bool (RBX::GuiTextButton::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_674910() -> ! {
-    todo!("0x674910 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_674910(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonBoolProp {
+    // IDA 0x674910 (`PropDescriptor<GuiTextButton,
+    // bool>::PropDescriptor`): builds the `GetImpl` member-pair
+    // cell plus the typed descriptor identity with name/category/
+    // attributes/permissions. The pair folds into the caller's
+    // `GuiButtonBoolSlot`. Host: the identity half (same shape as
+    // the `TextBox` twin at 0x66c194).
+    GuiButtonBoolProp::new(name, category, attributes, permissions)
 }
 
 // 0x674a1c -- __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED0Ev
@@ -1160,14 +1180,19 @@ pub fn stub_674a1c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::GetImpl<bool (RBX::GuiTextButton::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::GetImpl<bool (RBX::GuiTextButton::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")]
-pub fn stub_674a48() -> ! {
-    todo!("0x674a48 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")
+pub fn stub_674a48() -> bool {
+    // IDA 0x674a48 (`PropDescriptor<GuiTextButton,
+    // bool>::GetImpl::isReadOnly`): returns constant 1 (0x674a4a —
+    // the getter-only impl throws in `setValue`).
+    true
 }
 
 // 0x674a4c -- __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::GetImpl<bool (RBX::GuiTextButton::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::GetImpl<bool (RBX::GuiTextButton::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")]
-pub fn stub_674a4c() -> ! {
-    todo!("0x674a4c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")
+pub fn stub_674a4c() -> bool {
+    // IDA 0x674a4c (`PropDescriptor<GuiTextButton,
+    // bool>::GetImpl::isWriteOnly`): returns constant 0 (0x674a4e).
+    false
 }

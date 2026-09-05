@@ -4,7 +4,7 @@
 //! Generated: 2026-09-01
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
-use crate::generated_audio_wd_watchdog18::TextBoxState;
+use crate::generated_audio_wd_watchdog18::{GuiTextButtonState, TextBoxState};
 use rbx_core::SharedPtr;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
@@ -429,8 +429,11 @@ pub fn stub_672440() {
 // 0x673da8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_673da8() -> ! {
-    todo!("0x673da8 __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv")
+pub fn stub_673da8() -> &'static str {
+    // IDA 0x673da8 (`FactoryProduct<GuiTextButton, ...>::getClassName`):
+    // resolves the static creator (0x673dac) and returns its class
+    // name — "GuiTextButton".
+    "GuiTextButton"
 }
 
 // 0x673e80 — __ZThn32_NK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv
@@ -456,42 +459,61 @@ pub fn stub_673f5c() {
 
 // 0x673ff8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_673ff8() -> ! {
-    todo!("0x673ff8 __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_673ff8() -> &'static str {
+    // IDA 0x673ff8 (`FactoryProduct<GuiTextButton, ...>::Creator::
+    // getClassName`): asserts construction, runs the
+    // `callDoDeclare<sGuiTextButton>` once-guard and tail-calls
+    // `doDeclare<sGuiTextButton>` (per disasm) — the declared name:
+    // "GuiTextButton".
+    "GuiTextButton"
 }
 
 // 0x674080 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator6createEv
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_674080() -> ! {
-    todo!("0x674080 __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator6createEv")
+pub fn stub_674080() -> GuiTextButtonState {
+    // IDA 0x674080 (`FactoryProduct<GuiTextButton, ...>::Creator::
+    // create`): asserts construction then builds through
+    // `Creatable::create<GuiTextButton>` into the out `shared_ptr`.
+    // Host: the fresh state.
+    GuiTextButtonState::default()
 }
 
 // 0x674574 — __ZN3RBX4Name13callDoDeclareILZNS_14sGuiTextButtonEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sGuiTextButtonEEEEvv")]
-pub fn stub_674574() -> ! {
-    todo!("0x674574 __ZN3RBX4Name13callDoDeclareILZNS_14sGuiTextButtonEEEEvv")
+pub fn stub_674574() {
+    // IDA 0x674574 (`RBX::Name::callDoDeclare<sGuiTextButton>`):
+    // thunk forwarding to `doDeclare` (host: the 0x674578 twin).
+    // The name registry folds away.
+    stub_674578();
 }
 
 // 0x674578 — __ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v")]
-pub fn stub_674578() -> ! {
-    todo!("0x674578 __ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v")
+pub fn stub_674578() {
+    // IDA 0x674578 (`RBX::Name::doDeclare<sGuiTextButton>`):
+    // once-guarded `Name::declare(sGuiTextButton)`. The name
+    // registry folds away. Carrier no-op.
 }
 
 // 0x674658 — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorC2Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_674658() -> ! {
-    todo!("0x674658 __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_674658() {
+    // IDA 0x674658 (`FactoryProduct<GuiTextButton, ...>::Creator`
+    // C2): declares the `sGuiTextButton` name once and inserts the
+    // creator into the class registry. Registries fold away.
+    // Carrier no-op.
 }
 
 // 0x67489c — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE17static_getCreatorEv
 // type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_67489c() -> ! {
-    todo!("0x67489c __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_67489c() {
+    // IDA 0x67489c (`FactoryProduct<GuiTextButton, ...>::
+    // static_getCreator`): asserts construction and returns the
+    // creator singleton. Singletons fold away. Carrier no-op.
 }
 
 // 0x67779c — __ZN3RBX18DescribedCreatableINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

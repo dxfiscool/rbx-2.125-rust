@@ -488,6 +488,63 @@ impl Default for GuiTextButtonState {
         }
     }
 }
+/// Bool member selected by a `PropDescriptor<GuiTextButton, bool>`'s
+/// member-pointer pair (same two-member layout as `TextBox`: IDA
+/// 0x674a50+ dispatches the stored getter over `TextWrap`/
+/// `TextScaled`).
+#[derive(Debug, Clone, Copy)]
+pub enum GuiButtonBoolSlot {
+    TextWrap,
+    TextScaled,
+}
+impl GuiTextButtonState {
+    pub fn bool_slot(&self, slot: GuiButtonBoolSlot) -> bool {
+        match slot {
+            GuiButtonBoolSlot::TextWrap => self.text_wrap,
+            GuiButtonBoolSlot::TextScaled => self.text_scaled,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<GuiTextButton, bool>` cutover
+/// (IDA 0x674910): name/category/attributes/permissions. The
+/// getter member-pointer pair folds into the slot selector.
+#[derive(Debug, Clone)]
+pub struct GuiButtonBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonBoolProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EnumPropDescriptor<GuiTextButton, YAlignment>`
+/// cutover (IDA 0x674e1c): name/category/attributes/permissions.
+/// The member pair folds into the `y_alignment` field.
+#[derive(Debug, Clone)]
+pub struct GuiButtonYAlignProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonYAlignProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
