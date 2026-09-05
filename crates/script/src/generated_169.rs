@@ -13,6 +13,50 @@ use std::sync::LazyLock;
 /// Ogre `LogManager` singleton latch (IDA 0x39920: guarded once-alloc at
 /// 0x3998c..0x399d2; the manager peers fold into the host).
 static LOG_MANAGER_READY: LazyLock<bool> = LazyLock::new(|| true);
+use std::collections::BTreeMap;
+
+/// `signal<void()>` connection state for view callbacks (IDA 0x3a390: slot
+/// alloc at 0x3a3a8..0x3a3e6 plus insert at 0x3a3ea).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ViewSignal {
+    pub slots: u32,
+    pub next_id: u32,
+}
+
+impl ViewSignal {
+    /// `connect` (IDA 0x3a390): allocates the slot and answers the
+    /// connection id.
+    pub fn connect(&mut self) -> u32 {
+        self.slots += 1;
+        self.next_id += 1;
+        self.next_id
+    }
+}
+
+/// Opaque render-settings singleton handle (IDA 0x3a408: once-init folds
+/// into the host).
+static RENDER_SETTINGS_SINGLETON: LazyLock<u32> = LazyLock::new(|| 1);
+/// `Name::doDeclare<sRunService>` singleton (IDA 0x3ae20: guarded once-init
+/// at 0x3ae7c..0x3aea8 answering the static at 0x3aed6).
+static RUN_SERVICE_NAME: LazyLock<&'static str> = LazyLock::new(|| "RunService");
+/// `ServiceProvider::doGetClassIndex<RunService>` once-index (IDA 0x3af08:
+/// guarded counter at 0x3af64..0x3afb2 folds into the host).
+static RUNSERVICE_CLASS_INDEX: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// Created service instance record (IDA 0x3a798/0x3b674: sized operator new
+/// plus ctor plus shared_ptr wrap fold into the host; liveness observed).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CreatedInstance {
+    pub class: &'static str,
+    pub live: bool,
+}
+
+/// `enable_shared_from_this` owner slot (IDA 0x3a930: accepts the owner
+/// when no owner is held, 0x3a986; weak mechanics fold into `Arc`).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct OwnerSlot {
+    pub has_owner: bool,
+}
 
 // 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
@@ -235,163 +279,206 @@ pub fn stub_0x3a2ec() {
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
-pub fn stub_0x3a390() -> ! {
-    todo!("0x3a390 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")
+pub fn stub_0x3a390(sig: &mut ViewSignal) -> u32 {
+    // IDA 0x3a390: `connect` for the `RobloxView` member bind — see
+    // `ViewSignal::connect`.
+    sig.connect()
 }
 
 // 0x3a408 — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")]
-pub fn stub_0x3a408() -> ! {
-    todo!("0x3a408 __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")
+pub fn stub_0x3a408() -> u32 {
+    // IDA 0x3a408: settings-item singleton — see
+    // `RENDER_SETTINGS_SINGLETON`.
+    *RENDER_SETTINGS_SINGLETON
 }
 
 // 0x3a790 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")]
-pub fn stub_0x3a790() -> ! {
-    todo!("0x3a790 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")
+pub fn stub_0x3a790() {
+    // IDA 0x3a790: `Creator` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x3a798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6CameraEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")]
-pub fn stub_0x3a798() -> ! {
-    todo!("0x3a798 rbx_core::SharedPtr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")
+pub fn stub_0x3a798() -> CreatedInstance {
+    // IDA 0x3a798: `create<Camera>` news 0x1DC bytes (0x3a7ce), runs the
+    // ctor (0x3a7f2), and wraps (0x3a800).
+    CreatedInstance { class: "Camera", live: true }
 }
 
 // 0x3a930 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6CameraES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(rbx_core::SharedPtr<RBX::Camera> const*,RBX::Camera *)const")]
-pub fn stub_0x3a930() -> ! {
-    todo!("0x3a930 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(rbx_core::SharedPtr<RBX::Camera> const*,RBX::Camera *)const")
+pub fn stub_0x3a930(slot: &mut OwnerSlot) {
+    // IDA 0x3a930: `_internal_accept_owner` — see `OwnerSlot` (the
+    // use-count gate at 0x3a986 folds into the latch).
+    slot.has_owner = true;
 }
 
 // 0x3aa10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x3aa10() -> ! {
-    todo!("0x3aa10 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3aa10() {
+    // IDA 0x3aa10: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3aa18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3aa18() -> ! {
-    todo!("0x3aa18 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3aa18() -> u32 {
+    // IDA 0x3aa18: `get_deleter` answers non-null only on exact deleter
+    // typeinfo match (0x3a2a..0x3aa2e); the host holds no deleters.
+    0
 }
 
 // 0x3aa30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_ESH_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>)")]
-pub fn stub_0x3aa30() -> ! {
-    todo!("0x3aa30 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>)")
+pub fn stub_0x3aa30(map: &mut BTreeMap<u32, u32>) {
+    // IDA 0x3aa30 `_Rb_tree<Name, ICreator>::erase(first,last)`: full-range
+    // erase clears (0x3aa4a..0x3aa88). Host has no tree nodes; granularity
+    // collapses to the owning map.
+    map.clear();
 }
 
 // 0x3aa90 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEED1Ev
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")]
-pub fn stub_0x3aa90() -> ! {
-    todo!("0x3aa90 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")
+pub fn stub_0x3aa90(map: &mut BTreeMap<u32, u32>) {
+    // IDA 0x3aa90 `map<Name, ICreator>::~map()`: erases all (0x3aa98);
+    // drop glue covers the nodes.
+    map.clear();
 }
 
 // 0x3aaa0 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")]
-pub fn stub_0x3aaa0() -> ! {
-    todo!("0x3aaa0 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")
+pub fn stub_0x3aaa0() {
+    // IDA 0x3aaa0: `Creator` C2 ctor; construction plumbing folds into the
+    // host — no-op.
 }
 
 // 0x3acc8 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEEixERSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x3acc8() -> ! {
-    todo!("0x3acc8 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x3acc8(map: &mut BTreeMap<u32, u32>, key: u32) -> u32 {
+    // IDA 0x3acc8 `map::operator[]`: lower-bound probe with insert-default
+    // on miss (0x3acd2..0x3ad14, cf. 0x23a04 in generated_110.rs). Host has
+    // no nodes; the default creator id is 0.
+    *map.entry(key).or_insert(0)
 }
 
 // 0x3ad20 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreator const*> const&)")]
-pub fn stub_0x3ad20() -> ! {
-    todo!("0x3ad20 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreator const*> const&)")
+pub fn stub_0x3ad20(map: &mut BTreeMap<u32, u32>, key: u32, value: u32) -> bool {
+    // IDA 0x3ad20 `_M_insert_unique`: inserts on miss (cf. 0x243b0 in
+    // generated_110.rs). Answers inserted (true) vs already present.
+    if map.contains_key(&key) {
+        false
+    } else {
+        map.insert(key, value);
+        true
+    }
 }
 
 // 0x3add8 — __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_0x3add8() -> ! {
-    todo!("0x3add8 __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_0x3add8() -> &'static str {
+    // IDA 0x3add8: `Name::declare<sRunService>` thunk forwarding to the
+    // `doDeclare` shim (same shape as 0x26a4f8).
+    stub_0x3ae20()
 }
 
 // 0x3ae20 — __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_0x3ae20() -> ! {
-    todo!("0x3ae20 __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_0x3ae20() -> &'static str {
+    // IDA 0x3ae20: `doDeclare<sRunService>` — see `RUN_SERVICE_NAME`.
+    *RUN_SERVICE_NAME
 }
 
 // 0x3af08 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")]
-pub fn stub_0x3af08() -> ! {
-    todo!("0x3af08 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")
+pub fn stub_0x3af08() -> u32 {
+    // IDA 0x3af08: `doGetClassIndex<RunService>` — see
+    // `RUNSERVICE_CLASS_INDEX`.
+    *RUNSERVICE_CLASS_INDEX
 }
 
 // 0x3afe0 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x3afe0() -> ! {
-    todo!("0x3afe0 rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3afe0() {
+    // IDA 0x3afe0: `shared_ptr` ctor installs the pointer (0x3afe6),
+    // builds the count (0x3afec), and accepts the owner (0x3affc); `Arc`
+    // construction glue covers it — no-op.
 }
 
 // 0x3b008 — __ZN5boost6detail12shared_countC2IPN3RBX10RunServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x3b008() -> ! {
-    todo!("0x3b008 boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b008() {
+    // IDA 0x3b008: `shared_count` ctor — same control block shape as
+    // 0x3b14c; `Arc` glue covers it — no-op.
 }
 
 // 0x3b108 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3b108]")]
-pub fn stub_0x3b108() -> ! {
-    todo!("0x3b108 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3b108() {
+    // IDA 0x3b108: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3b110 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0x3b110() -> ! {
-    todo!("0x3b110 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3b110() {
+    // IDA 0x3b110: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3b130 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3b130() -> ! {
-    todo!("0x3b130 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3b130() -> u32 {
+    // IDA 0x3b130: `get_deleter` answers null without an exact deleter
+    // match (same shape as 0x3aa18).
+    0
 }
 
 // 0x3b148 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x3b148() -> ! {
-    todo!("0x3b148 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3b148() -> u32 {
+    // IDA 0x3b148: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3b268 — __ZN3RBX5Tasks11Coordinator9onPreStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_0x3b268() -> ! {
-    todo!("0x3b268 RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3b268() {
+    // IDA 0x3b268: `Coordinator::onPreStep` has an empty body — no-op.
 }
 
 // 0x3b26c — __ZN3RBX5Tasks11Coordinator10onPostStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_0x3b26c() -> ! {
-    todo!("0x3b26c RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3b26c() {
+    // IDA 0x3b26c: `Coordinator::onPostStep` has an empty body — no-op.
 }
 
 // 0x3b518 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")]
-pub fn stub_0x3b518() -> ! {
-    todo!("0x3b518 RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")
+pub fn stub_0x3b518(present: bool) -> Option<u32> {
+    // IDA 0x3b518: `find<ControllerService>` walks the provider tables
+    // (folds into the host) and answers the service or null.
+    present.then_some(1)
 }
 
 // 0x3b674 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17ControllerServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")]
-pub fn stub_0x3b674() -> ! {
-    todo!("0x3b674 rbx_core::SharedPtr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")
+pub fn stub_0x3b674() -> CreatedInstance {
+    // IDA 0x3b674: `create<ControllerService>` news 0x64 bytes (0x3b6a8),
+    // runs the ctor (0x3b6cc), and wraps (0x3b6da).
+    CreatedInstance { class: "ControllerService", live: true }
 }
 
 // 0x3b724 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17ControllerServiceEEERS3_RKNS0_IT_EE
@@ -1103,5 +1190,63 @@ mod roblox_view_batch_tests {
         stub_0x3a0d4();
         stub_0x3a1b8();
         stub_0x3a2ec();
+    }
+}
+
+#[cfg(test)]
+mod factory_batch_tests {
+    use super::*;
+
+    #[test]
+    fn signal_and_singletons() {
+        let mut sig = ViewSignal::default();
+        assert_eq!(stub_0x3a390(&mut sig), 1);
+        assert_eq!(stub_0x3a390(&mut sig), 2);
+        assert_eq!(stub_0x3a408(), 1);
+        assert_eq!(stub_0x3ae20(), "RunService");
+        assert_eq!(stub_0x3add8(), "RunService");
+        assert_eq!(stub_0x3af08(), 1);
+    }
+
+    #[test]
+    fn create_and_own() {
+        assert_eq!(stub_0x3a798(), CreatedInstance { class: "Camera", live: true });
+        assert_eq!(stub_0x3b674(), CreatedInstance { class: "ControllerService", live: true });
+        let mut slot = OwnerSlot::default();
+        stub_0x3a930(&mut slot);
+        assert!(slot.has_owner);
+        assert_eq!(stub_0x3b518(true), Some(1));
+        assert_eq!(stub_0x3b518(false), None);
+    }
+
+    #[test]
+    fn creator_maps() {
+        let mut map = BTreeMap::new();
+        assert!(stub_0x3ad20(&mut map, 7, 70));
+        assert!(!stub_0x3ad20(&mut map, 7, 71));
+        assert_eq!(map[&7], 70);
+        assert_eq!(stub_0x3acc8(&mut map, 7), 70);
+        assert_eq!(stub_0x3acc8(&mut map, 9), 0);
+        stub_0x3aa30(&mut map);
+        assert!(map.is_empty());
+        map.insert(1, 10);
+        stub_0x3aa90(&mut map);
+        assert!(map.is_empty());
+        stub_0x3aaa0();
+        assert_eq!(stub_0x3aa18(), 0);
+        assert_eq!(stub_0x3b130(), 0);
+        assert_eq!(stub_0x3b148(), 0);
+    }
+
+    #[test]
+    fn glue_noops() {
+        stub_0x3a790();
+        stub_0x3aa10();
+        stub_0x3afe0();
+        stub_0x3b008();
+        stub_0x3b108();
+        stub_0x3b110();
+        stub_0x3b268();
+        stub_0x3b26c();
     }
 }
