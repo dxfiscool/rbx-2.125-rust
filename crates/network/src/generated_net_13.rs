@@ -2629,7 +2629,7 @@ pub fn stub_136fcc(st: &mut HuffBitState, tbl: &HuffDecodeTable, mut nb: i32, fi
         error121();
         return 0;
     }
-    tbl.symbols[(code + tbl.valoffset[mi as usize] + 17) as usize] as i32
+    tbl.symbols[(code + tbl.valoffset[mi as usize]) as usize] as i32
 }
 
 // 0x1370e4 — _process_restart_0
@@ -2887,82 +2887,553 @@ pub fn stub_138bc0(arith_code: bool, num_comps: u32) -> HuffDecoderInit { // IDA
     }
 }
 
+/// Marker-reader source cursor (IDA get_sof/skip_variable/next_marker: input bytes + position).
+#[derive(Clone, Debug, Default)]
+pub struct MarkerSrc {
+    pub data: Vec<u8>,
+    pub pos: usize,
+}
+
+impl MarkerSrc {
+    /// Next source byte with refill (None when dry) — IDA's fill_input_buffer pattern.
+    pub fn next(&mut self, refill: &mut dyn FnMut(&mut MarkerSrc) -> bool) -> Option<u8> {
+        if self.pos >= self.data.len() && !refill(self) {
+            return None;
+        }
+        let b = self.data[self.pos];
+        self.pos += 1;
+        Some(b)
+    }
+}
+
+/// Marker-consume dispatch (IDA 0x13a278: 0 suspend, 1 SOS reached, 2 EOI reached).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ConsumeMarkers {
+    Suspended,
+    NeedMore,
+    Done,
+}
+
+/// Huff decode method selected by `start_pass_huff_decoder` (IDA 0x139938).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum HuffDecodeMethod {
+    Baseline,
+    DcFirst,
+    AcFirst,
+    DcRefine,
+    AcRefine,
+}
+
+/// Huff-decoder pass setup (IDA 0x139938: method + per-component decode tables).
+#[derive(Clone, Debug)]
+pub struct HuffDecoderPass {
+    pub method: HuffDecodeMethod,
+    pub dc: Vec<HuffDecodeTable>,
+    pub ac: Vec<HuffDecodeTable>,
+}
+
+/// Input-controller operations installed by `jinit_input_controller` (IDA 0x139df4).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum InputOp {
+    ConsumeMarkers,
+    Reset,
+    Start,
+    Finish,
+}
+
+/// Decompress-side main-controller method (IDA 0x13a5a8).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DMainMethod {
+    Simple,
+    Context,
+    CrankPost,
+}
+
+/// Decompress-side main controller (IDA 0x13b1c8: context row buffers).
+#[derive(Clone, Debug)]
+pub struct DMainController {
+    pub context: bool,
+    pub bufs: Vec<Vec<i16>>,
+}
+
+/// Parsed SOF segment (IDA 0x13b3b8: precision, dims, components + arith flags).
+#[derive(Clone, Debug)]
+pub struct SofData {
+    pub precision: u8,
+    pub height: u32,
+    pub width: u32,
+    pub comps: Vec<SofComp>,
+    pub arith0: u8,
+    pub arith1: u8,
+}
+
+/// APP0 payload class (IDA 0x13b7a0: JFIF header, JFXX extension code, or generic APP).
+#[derive(Clone, Copy, Debug)]
+pub enum App0Kind {
+    Jfif { units: u8, x: u16, y: u16, thumb: u32 },
+    Jfxx(u8),
+    Generic,
+}
+
+/// Adobe APP14 fields (IDA 0x13ba30: version, flags, transform + saw-Adobe latch by caller).
+#[derive(Clone, Copy, Debug)]
+pub struct AdobeApp14 {
+    pub version: u16,
+    pub flags0: u16,
+    pub flags1: u16,
+    pub transform: u8,
+}
+
 // 0x138ccc — _jpeg_make_d_derived_tbl
 #[doc(alias = "_jpeg_make_d_derived_tbl")]
-pub fn stub_138ccc() -> ! { todo!("0x138ccc _jpeg_make_d_derived_tbl") }
+pub fn stub_138ccc(is_dc: bool, tbl_no: u32, bits: &[u8; 17], vals: &[u8]) -> HuffDecodeTable { // IDA 0x138ccc: tbl_no > 3 → error 52; oversubscribed/invalid codes → error 9; canonical codes; maxcode/valoffset (+0xFFFFF sentinel) + owned symbols; DC symbols over 15 → error 9. IDA unrolls the fills Duff-style. (The +17 in the fetch addresses the source huffval through the derived table; owned symbols index without it.)
+    if tbl_no > 3 {
+        panic!("jpeg_make_d_derived_tbl: bad table number (52)");
+    }
+    let mut huffsize = [0u8; 257];
+    let mut p = 0usize;
+    for len in 1..=16u8 {
+        for _ in 0..bits[len as usize] {
+            if p >= 256 {
+                panic!("jpeg_make_d_derived_tbl: bad Huffman table (9)");
+            }
+            huffsize[p] = len;
+            p += 1;
+        }
+    }
+    let mut huffcode = [0u32; 257];
+    let mut code = 0u32;
+    let mut size = huffsize[0];
+    let mut k = 0usize;
+    while huffsize[k] != 0 {
+        while k < 257 && huffsize[k] == size {
+            huffcode[k] = code;
+            code += 1;
+            k += 1;
+        }
+        if code >= (1 << size) {
+            panic!("jpeg_make_d_derived_tbl: bad Huffman table (9)");
+        }
+        code <<= 1;
+        size += 1;
+    }
+    let mut t = HuffDecodeTable { maxcode: [-1; 18], valoffset: [0; 18], symbols: vec![0; p] };
+    let mut sym = 0usize;
+    let mut cd = 0u32;
+    for l in 1..=16 {
+        let n = bits[l] as usize;
+        if n > 0 {
+            t.valoffset[l] = sym as i32 - cd as i32;
+            sym += n;
+            t.maxcode[l] = (cd + n as u32 - 1) as i32;
+            cd += n as u32;
+        }
+    }
+    t.maxcode[17] = 0xFFFFF;
+    for (i, s) in vals.iter().take(p).enumerate() {
+        if is_dc && *s > 0xF {
+            panic!("jpeg_make_d_derived_tbl: bad Huffman table (9)");
+        }
+        t.symbols[i] = *s;
+    }
+    t
+}
 
 // 0x139938 — _start_pass_huff_decoder
 #[doc(alias = "_start_pass_huff_decoder")]
-pub fn stub_139938() -> ! { todo!("0x139938 _start_pass_huff_decoder") }
+pub fn stub_139938(arith_code: bool, ss: u32, se: u32, ah: u32, al: u32, comps: &[(u32, u32)], dac: &mut [Vec<i32>], build: &mut dyn FnMut(bool, u32) -> HuffDecodeTable) -> HuffDecoderPass { // IDA 0x139938: baseline → full-band check (else error 125) + per-comp DC/AC d-tables; arith → band validation (error 17), DAC overlap (error 118, entries take Al); method by (Ss, Ah); per-comp table builds (AC-first → AC, DC-first → DC, refine → reuse).
+    use HuffDecodeMethod::*;
+    if !arith_code {
+        if ss != 0 || se != 63 || ah != 0 {
+            panic!("start_pass_huff_decoder: bad baseline band (125)");
+        }
+        let mut dc = Vec::with_capacity(comps.len());
+        let mut ac = Vec::with_capacity(comps.len());
+        for &(dt, at) in comps {
+            dc.push(build(true, dt));
+            ac.push(build(false, at));
+        }
+        return HuffDecoderPass { method: Baseline, dc, ac };
+    }
+    if ss == 0 {
+        if se != 0 {
+            panic!("start_pass_huff_decoder: bad spectral band (17)");
+        }
+        if ah != 0 && ah - 1 != al {
+            panic!("start_pass_huff_decoder: bad successive approximation (17)");
+        }
+        if al > 13 {
+            panic!("start_pass_huff_decoder: bad successive approximation (17)");
+        }
+    } else if ss > se || se > 63 || ah > 13 {
+        panic!("start_pass_huff_decoder: bad spectral band (17)");
+    }
+    let mut dc = Vec::with_capacity(comps.len());
+    let mut ac = Vec::with_capacity(comps.len());
+    for &(dt, at) in comps {
+        if ss != 0 && dac[at as usize][ss as usize] < 0 {
+            panic!("start_pass_huff_decoder: overlapping scans (118)");
+        }
+        for k in ss..=se {
+            let v = dac[dt as usize][k as usize];
+            if v.max(0) != ah as i32 {
+                panic!("start_pass_huff_decoder: overlapping scans (118)");
+            }
+            dac[dt as usize][k as usize] = al as i32;
+        }
+        if ss != 0 {
+            dc.push(HuffDecodeTable::default());
+            ac.push(build(false, at));
+        } else if ah == 0 {
+            dc.push(build(true, dt));
+            ac.push(HuffDecodeTable::default());
+        } else {
+            dc.push(HuffDecodeTable::default());
+            ac.push(HuffDecodeTable::default());
+        }
+    }
+    let method = if ah != 0 {
+        if ss != 0 {
+            AcRefine
+        } else {
+            DcRefine
+        }
+    } else if ss != 0 {
+        AcFirst
+    } else {
+        DcFirst
+    };
+    HuffDecoderPass { method, dc, ac }
+}
 
 // 0x139d84 — _finish_input_pass
 #[doc(alias = "_finish_input_pass")]
-pub fn stub_139d84() -> ! { todo!("0x139d84 _finish_input_pass") }
+pub fn stub_139d84() -> u32 { // IDA 0x139d84: install consume_markers; returns 0x4E4.
+    0x4E4
+}
 
 // 0x139d9c — _reset_input_controller
 #[doc(alias = "_reset_input_controller")]
-pub fn stub_139d9c() -> ! { todo!("0x139d9c _reset_input_controller") }
+pub fn stub_139d9c(progress: &mut dyn FnMut(), init_input: &mut dyn FnMut() -> i32, clear_tables: &mut dyn FnMut()) -> i32 { // IDA 0x139d9c: reset marker flags (caller), progress hook, re-init input, clear DAC tables; returns the input-init result.
+    progress();
+    let r = init_input();
+    clear_tables();
+    r
+}
 
 // 0x139df4 — _jinit_input_controller
 #[doc(alias = "_jinit_input_controller")]
-pub fn stub_139df4() -> ! { todo!("0x139df4 _jinit_input_controller") }
+pub fn stub_139df4() -> [InputOp; 4] { // IDA 0x139df4: install the 4 input-controller operations (flags set by caller).
+    [InputOp::ConsumeMarkers, InputOp::Reset, InputOp::Start, InputOp::Finish]
+}
 
 // 0x139e70 — _start_input_pass_0
 #[doc(alias = "_start_input_pass_0")]
-pub fn stub_139e70() -> ! { todo!("0x139e70 _start_input_pass_0") }
+pub fn stub_139e70(image_w: u32, image_h: u32, max_h: u32, max_v: u32, comps: &[(u32, u32, u32, u32)], quants: &mut [(u32, bool)], alloc_quant: &mut dyn FnMut(), init_huff: &mut dyn FnMut(), init_coef: &mut dyn FnMut()) -> (u32, u32, Vec<usize>) { // IDA 0x139e70: single-comp fast path else MCU geometry with block interleave (comps>4 → error 27, blocks>10 → error 14); missing quant tables (q>3 → error 54) allocated; chain huff/coef inits.
+    let (cols, rows, order) = if comps.len() == 1 {
+        (comps[0].2, comps[0].3, vec![0])
+    } else {
+        if comps.len() > 4 {
+            panic!("start_input_pass: too many components (27)");
+        }
+        let cols = jdiv_round_up(image_w, 8 * max_h);
+        let rows = jdiv_round_up(image_h, 8 * max_v);
+        let mut order = Vec::new();
+        let mut total = 0u32;
+        for (i, &(h, v, _, _)) in comps.iter().enumerate() {
+            let n = h * v;
+            total += n;
+            if total > 10 {
+                panic!("start_input_pass: too many blocks (14)");
+            }
+            for _ in 0..n {
+                order.push(i);
+            }
+        }
+        (cols, rows, order)
+    };
+    for (q, ready) in quants.iter_mut() {
+        if !*ready {
+            if *q > 3 {
+                panic!("start_input_pass: bad quant table (54)");
+            }
+            alloc_quant();
+            *ready = true;
+        }
+    }
+    init_huff();
+    init_coef();
+    (cols, rows, order)
+}
 
 // 0x13a278 — _consume_markers
 #[doc(alias = "_consume_markers")]
-pub fn stub_13a278() -> ! { todo!("0x13a278 _consume_markers") }
+pub fn stub_13a278(saw_eoi: bool, first_marker: bool, image_w: u32, image_h: u32, precision: u8, sampling: &[(u32, u32)], dispatch: &mut dyn FnMut() -> ConsumeMarkers) -> ConsumeMarkers { // IDA 0x13a278: EOI already seen → Done(2); first SOF → validate dims/precision/sampling (errors 42/16/27/19); marker dispatch (byte pumping folded into the closure); SOS → NeedMore(1), EOI → Done(2), dry → Suspended(0).
+    if saw_eoi {
+        return ConsumeMarkers::Done;
+    }
+    if first_marker {
+        if image_w > 65500 || image_h > 65500 {
+            panic!("consume_markers: image too large (42)");
+        }
+        if precision != 8 {
+            panic!("consume_markers: bad precision (16)");
+        }
+        if sampling.len() > 10 {
+            panic!("consume_markers: too many components (27)");
+        }
+        for &(h, v) in sampling {
+            if !(1..=4).contains(&h) || !(1..=4).contains(&v) {
+                panic!("consume_markers: bad sampling (19)");
+            }
+        }
+    }
+    dispatch()
+}
 
 // 0x13a5a8 — _start_pass_main_0
 #[doc(alias = "_start_pass_main_0")]
-pub fn stub_13a5a8() -> ! { todo!("0x13a5a8 _start_pass_main_0") }
+pub fn stub_13a5a8(mode: u8, need_context: bool) -> DMainMethod { // IDA 0x13a5a8: mode 2 → crank-post; nonzero → error 3; context → context-main (buffer wiring by caller); else simple-main.
+    match mode {
+        2 => DMainMethod::CrankPost,
+        0 => {
+            if need_context {
+                DMainMethod::Context
+            } else {
+                DMainMethod::Simple
+            }
+        }
+        _ => panic!("start_pass_main: bad buffer mode (3)"),
+    }
+}
 
 // 0x13aae0 — _process_data_simple_main_0
 #[doc(alias = "_process_data_simple_main_0")]
-pub fn stub_13aae0() -> ! { todo!("0x13aae0 _process_data_simple_main_0") }
+pub fn stub_13aae0(buffered: &mut bool, rows_done: &mut u32, rows_max: u32, decode: &mut dyn FnMut() -> bool, upsample: &mut dyn FnMut()) -> u32 { // IDA 0x13aae0: unbuffered → decode one coef row (FALSE → 0); color-convert/upsample (advances rows_done); wrap at max; returns rows done.
+    if !*buffered {
+        if !decode() {
+            return 0;
+        }
+        *buffered = true;
+    }
+    upsample();
+    let r = *rows_done;
+    if r >= rows_max {
+        *buffered = false;
+        *rows_done = 0;
+    }
+    r
+}
 
 // 0x13ab84 — _process_data_context_main
 #[doc(alias = "_process_data_context_main")]
-pub fn stub_13ab84() -> ! { todo!("0x13ab84 _process_data_context_main") }
+pub fn stub_13ab84(state: &mut u32, buffered: &mut bool, rows_done: &mut u32, rows_max: u32, slide: &mut dyn FnMut(), prime: &mut dyn FnMut() -> bool, upsample: &mut dyn FnMut()) -> u32 { // IDA 0x13ab84: unbuffered → prime a row group (FALSE → 0); state 0 slides the window once; upsample a row; wrap at max (window advance folded into slide); returns rows done.
+    if !*buffered {
+        if !prime() {
+            return 0;
+        }
+        *buffered = true;
+    }
+    if *state == 0 {
+        slide();
+        *state = 1;
+    }
+    upsample();
+    let r = *rows_done;
+    if r >= rows_max {
+        *buffered = false;
+        *rows_done = 0;
+        *state = 2;
+    }
+    r
+}
 
 // 0x13b194 — _process_data_crank_post
 #[doc(alias = "_process_data_crank_post")]
-pub fn stub_13b194() -> ! { todo!("0x13b194 _process_data_crank_post") }
+pub fn stub_13b194(post: &mut dyn FnMut(u32, u32) -> i32) -> i32 { // IDA 0x13b194: tail-call the post-processor with (0, 0).
+    post(0, 0)
+}
 
 // 0x13b1c8 — _jinit_d_main_controller
 #[doc(alias = "_jinit_d_main_controller")]
-pub fn stub_13b1c8() -> ! { todo!("0x13b1c8 _jinit_d_main_controller") }
+pub fn stub_13b1c8(full_buffer: bool, need_context: bool, max_samp: u32, comp_factors: &[(u32, u32)], alloc: &mut dyn FnMut(usize) -> Vec<i16>) -> DMainController { // IDA 0x13b1c8: full-buffer → error 3; context with downsampling ≤ 1 → error 48; context row buffers + per-component sample buffers (sizes folded into comp_factors).
+    if full_buffer {
+        panic!("jinit_d_main_controller: bad buffer mode (3)");
+    }
+    if need_context {
+        if max_samp <= 1 {
+            panic!("jinit_d_main_controller: bad sampling (48)");
+        }
+        let bufs = comp_factors.iter().map(|&(w, h)| alloc(w as usize * h as usize)).collect();
+        DMainController { context: true, bufs }
+    } else {
+        DMainController { context: false, bufs: Vec::new() }
+    }
+}
 
 // 0x13b3b8 — _get_sof
 #[doc(alias = "_get_sof")]
-pub fn stub_13b3b8() -> ! { todo!("0x13b3b8 _get_sof") }
+pub fn stub_13b3b8(next: &mut dyn FnMut() -> Option<u8>, len: usize, arith0: u8, arith1: u8) -> Option<SofData> { // IDA 0x13b3b8: SOF segment parse (dry → None); 3n != length remainder → error 12; zero dims/count → error 33; arith coder flags threaded from the two marker bytes.
+    let precision = next()?;
+    let h = ((next()? as u32) << 8) | next()? as u32;
+    let w = ((next()? as u32) << 8) | next()? as u32;
+    let n = next()? as usize;
+    if 3 * n != len {
+        panic!("get_sof: bad SOF length (12)");
+    }
+    if h == 0 || w == 0 || n == 0 {
+        panic!("get_sof: bad dimensions (33)");
+    }
+    let mut comps = Vec::with_capacity(n);
+    for _ in 0..n {
+        let id = next()?;
+        let hv = next()?;
+        let q = next()?;
+        comps.push(SofComp { id, h: hv >> 4, v: hv & 0xF, q });
+    }
+    Some(SofData { precision, height: h, width: w, comps, arith0, arith1 })
+}
 
 // 0x13b7a0 — _examine_app0
 #[doc(alias = "_examine_app0")]
-pub fn stub_13b7a0() -> ! { todo!("0x13b7a0 _examine_app0") }
+pub fn stub_13b7a0(data: &[u8]) -> App0Kind { // IDA 0x13b7a0: JFIF header parse (short → fallthrough); JFXX extension codes 16/17/19 (unknown → Generic with warning 91); else generic APP (warning 79; caller emits).
+    if data.len() > 13 && &data[..5] == b"JFIF\0" {
+        let units = data[7];
+        let x = (data[8] as u16) << 8 | data[9] as u16;
+        let y = (data[10] as u16) << 8 | data[11] as u16;
+        let (tw, th) = (data[12], data[13]);
+        return App0Kind::Jfif { units, x, y, thumb: 3 * tw as u32 * th as u32 };
+    }
+    if data.len() > 5 && &data[..5] == b"JFXX\0" {
+        match data[5] {
+            16 | 17 | 19 => return App0Kind::Jfxx(data[5]),
+            _ => return App0Kind::Generic,
+        }
+    }
+    App0Kind::Generic
+}
 
 // 0x13ba30 — _examine_app14
 #[doc(alias = "_examine_app14")]
-pub fn stub_13ba30() -> ! { todo!("0x13ba30 _examine_app14") }
+pub fn stub_13ba30(data: &[u8]) -> Option<AdobeApp14> { // IDA 0x13ba30: Adobe header (short/mismatch → None with warning 80; caller emits); else version/flags/transform + saw-Adobe latch (caller).
+    if data.len() <= 11 || &data[..5] != b"Adobe" {
+        return None;
+    }
+    Some(AdobeApp14 {
+        version: (data[5] as u16) << 8 | data[6] as u16,
+        flags0: (data[9] as u16) << 8 | data[10] as u16,
+        flags1: (data[7] as u16) << 8 | data[8] as u16,
+        transform: data[11],
+    })
+}
 
 // 0x13bb18 — _get_interesting_appn
 #[doc(alias = "_get_interesting_appn")]
-pub fn stub_13bb18() -> ! { todo!("0x13bb18 _get_interesting_appn") }
+pub fn stub_13bb18(src: &mut MarkerSrc, marker: u8, refill: &mut dyn FnMut(&mut MarkerSrc) -> bool, skip: &mut dyn FnMut(usize), examine: &mut dyn FnMut(u8, &[u8], usize)) -> bool { // IDA 0x13bb18: length + first-14-bytes pump (dry → FALSE); APP examine by marker (caller warns 70 otherwise); skip the remainder; TRUE. IDA Duff-unrolls the pump.
+    let hi = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let lo = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let total = ((hi as usize) << 8 | lo as usize).saturating_sub(2);
+    let take = total.min(14);
+    let mut buf = [0u8; 14];
+    for b in buf[..take].iter_mut() {
+        match src.next(refill) {
+            Some(v) => *b = v,
+            None => return false,
+        }
+    }
+    examine(marker, &buf[..take], total - take);
+    skip(total - take);
+    true
+}
 
 // 0x13be18 — _save_marker
 #[doc(alias = "_save_marker")]
-pub fn stub_13be18() -> ! { todo!("0x13be18 _save_marker") }
+pub fn stub_13be18(src: &mut MarkerSrc, marker: u8, slot: &mut Vec<u8>, limit: usize, refill: &mut dyn FnMut(&mut MarkerSrc) -> bool, examine: &mut dyn FnMut(u8, &[u8]), skip: &mut dyn FnMut(usize)) -> bool { // IDA 0x13be18: marker length read (dry → FALSE); pump capped-length bytes into the slot; APP0/APP14 examine else warning 93 (caller); skip rest; TRUE.
+    let hi = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let lo = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let total = ((hi as usize) << 8 | lo as usize).saturating_sub(2);
+    let take = total.min(limit);
+    slot.clear();
+    for _ in 0..take {
+        match src.next(refill) {
+            Some(b) => slot.push(b),
+            None => return false,
+        }
+    }
+    examine(marker, slot);
+    skip(total - take);
+    true
+}
 
 // 0x13c120 — _skip_variable
 #[doc(alias = "_skip_variable")]
-pub fn stub_13c120() -> ! { todo!("0x13c120 _skip_variable") }
+pub fn stub_13c120(src: &mut MarkerSrc, marker: u8, refill: &mut dyn FnMut(&mut MarkerSrc) -> bool, skip: &mut dyn FnMut(usize)) -> bool { // IDA 0x13c120: length read (dry → FALSE); warning 93 (caller); length remainder skipped; TRUE.
+    let hi = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let lo = match src.next(refill) {
+        Some(b) => b,
+        None => return false,
+    };
+    let total = ((hi as usize) << 8 | lo as usize).saturating_sub(2);
+    let _ = marker;
+    skip(total);
+    true
+}
 
 // 0x13c1f8 — _next_marker
 #[doc(alias = "_next_marker")]
-pub fn stub_13c1f8() -> ! { todo!("0x13c1f8 _next_marker") }
+pub fn stub_13c1f8(src: &mut MarkerSrc, discarded: &mut u32, refill: &mut dyn FnMut(&mut MarkerSrc) -> bool) -> Option<u8> { // IDA 0x13c1f8: scan for 0xFF + nonzero byte (fill/stuffed bytes counted as discarded); nonzero discards → warning 119 (caller); returns the marker (None when dry).
+    loop {
+        let b = src.next(refill)?;
+        if b != 0xFF {
+            *discarded += 1;
+            continue;
+        }
+        loop {
+            let m = src.next(refill)?;
+            if m == 0xFF {
+                continue;
+            }
+            if m == 0 {
+                *discarded += 2;
+                break;
+            }
+            return Some(m);
+        }
+    }
+}
 
 // 0x13c320 — _read_restart_marker
 #[doc(alias = "_read_restart_marker")]
-pub fn stub_13c320() -> ! { todo!("0x13c320 _read_restart_marker") }
+pub fn stub_13c320(unread: &mut u32, expected: &mut u32, next_marker: &mut dyn FnMut() -> Option<u8>, skip_source: &mut dyn FnMut() -> bool) -> bool { // IDA 0x13c320: fetch pending marker (dry → FALSE); expected RSTn → consume + advance (& 7); else skip-source then advance; FALSE when dry.
+    if *unread == 0 {
+        match next_marker() {
+            Some(m) => *unread = m as u32,
+            None => return false,
+        }
+    }
+    if *unread == *expected + 208 {
+        *unread = 0;
+        *expected = (*expected + 1) & 7;
+        return true;
+    }
+    if skip_source() {
+        *expected = (*expected + 1) & 7;
+        return true;
+    }
+    false
+}
