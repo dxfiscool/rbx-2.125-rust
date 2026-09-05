@@ -97,6 +97,49 @@ pub(crate) static WEB_LOAD_STARTS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
 pub(crate) static WEB_LOAD_FINISHES: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+/// Menu-block presentations from `MenuClick:` (IDA 0x55074).
+pub(crate) static NAV_MENU_SHOWS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+
+/// Menu-click + jump-to-place state (IDA 0x54ff0-0x5524c): click
+/// count, navigate/progress place ids and back navigations.
+pub(crate) static MENU_CLICKS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static JUMP_PLACE_NAVIGATE: std::sync::LazyLock<
+    parking_lot::Mutex<i32>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(0));
+pub(crate) static JUMP_PLACE_PROGRESS: std::sync::LazyLock<
+    parking_lot::Mutex<i32>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(0));
+pub(crate) static WEB_BACK_NAVS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `RobloxNavBarViewController` outlet presence (IDA 0x550a0-0x55464):
+/// web view, indicators, buttons, toolbar, labels and overlay. Views
+/// live out of slice.
+pub(crate) static NAV_MAIN_WEBVIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_ACTIVITY_INDICATOR: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_BTN_BACK: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_BAR_TOP_TOOLBAR: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_LBL_ROBUX: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_LBL_TIX: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_TOOLBAR: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_PAGE_INDICATOR: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_LOADING_OVERLAY: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_LOADING_LABEL: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_BTN_HOME: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_ROBUX_IMAGE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
@@ -1026,176 +1069,222 @@ pub fn stub_54e40(update: bool, logged_in: bool) -> bool {
 // 0x54ff0 — -[RobloxNavBarViewController MenuClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController MenuClick:]")]
-pub fn stub_54ff0() -> ! {
-    todo!("0x54ff0 -[RobloxNavBarViewController MenuClick:]")
+pub fn stub_54ff0(playing: bool) {
+    // IDA 0x54ff0: `MenuClick:` dispatches the menu block when no game
+    // is playing (0x55010-0x5506c). The click records here.
+    if !playing {
+        MENU_CLICKS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        stub_55074();
+    }
 }
 
 // 0x55074 — ___40-[RobloxNavBarViewController MenuClick:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[RobloxNavBarViewController MenuClick:]_block_invoke")]
-pub fn stub_55074() -> ! {
-    todo!("0x55074 ___40-[RobloxNavBarViewController MenuClick:]_block_invoke")
+pub fn stub_55074() {
+    // IDA 0x55074: the menu block presents the menu on main
+    // (continuation of 0x54ff0). It records here.
+    NAV_MENU_SHOWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5508c — ___copy_helper_block_240
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_240")]
-pub fn stub_5508c() -> ! {
-    todo!("0x5508c ___copy_helper_block_240")
+pub fn stub_5508c() {
+    // IDA 0x5508c: `__copy_helper_block_240` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x55098 — ___destroy_helper_block_241
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_241")]
-pub fn stub_55098() -> ! {
-    todo!("0x55098 ___destroy_helper_block_241")
+pub fn stub_55098() {
+    // IDA 0x55098: `__destroy_helper_block_241` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x550a0 — +[RobloxNavBarViewController mostRecentViewController]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxNavBarViewController mostRecentViewController]")]
-pub fn stub_550a0() -> ! {
-    todo!("0x550a0 +[RobloxNavBarViewController mostRecentViewController]")
+pub fn stub_550a0() -> usize {
+    // IDA 0x550a0: `mostRecentViewController` returns the top
+    // controller. The handle records here as nonzero.
+    1
 }
 
 // 0x550b0 — -[RobloxNavBarViewController setMainWebView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setMainWebView:]")]
-pub fn stub_550b0() -> ! {
-    todo!("0x550b0 -[RobloxNavBarViewController setMainWebView:]")
+pub fn stub_550b0(present: bool) {
+    // IDA 0x550b0: `setMainWebView:` stores the ivar. It records here.
+    NAV_MAIN_WEBVIEW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x551d8 — -[RobloxNavBarViewController backButtonClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController backButtonClick:]")]
-pub fn stub_551d8() -> ! {
-    todo!("0x551d8 -[RobloxNavBarViewController backButtonClick:]")
+pub fn stub_551d8(can_go_back: bool) {
+    // IDA 0x551d8: `backButtonClick:` goes back when possible
+    // (0x551fa-0x55212) and hides the button when not (0x5521e-0x55238).
+    if can_go_back {
+        WEB_BACK_NAVS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    } else {
+        NAV_BACK_VISIBLE.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x5523c — -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")]
-pub fn stub_5523c() -> ! {
-    todo!("0x5523c -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")
+pub fn stub_5523c(place_id: i32) {
+    // IDA 0x5523c: `setJumpToPlacePageAndLaunchGameWithID:` stores the
+    // navigate id (0x55246). It records here.
+    *JUMP_PLACE_NAVIGATE.lock() = place_id;
 }
 
 // 0x5524c — -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")]
-pub fn stub_5524c() -> ! {
-    todo!("0x5524c -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")
+pub fn stub_5524c(place_id: i32) {
+    // IDA 0x5524c: `setJumpToPlaceIDGameInProgress:` stores the
+    // in-progress id (0x55256). It records here.
+    *JUMP_PLACE_PROGRESS.lock() = place_id;
 }
 
 // 0x5525c — -[RobloxNavBarViewController activityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController activityIndicator]")]
-pub fn stub_5525c() -> ! {
-    todo!("0x5525c -[RobloxNavBarViewController activityIndicator]")
+pub fn stub_5525c() -> bool {
+    // IDA 0x5525c: `activityIndicator` returns the ivar. Presence
+    // reports here.
+    NAV_ACTIVITY_INDICATOR.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5526c — -[RobloxNavBarViewController setActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setActivityIndicator:]")]
-pub fn stub_5526c() -> ! {
-    todo!("0x5526c -[RobloxNavBarViewController setActivityIndicator:]")
+pub fn stub_5526c(present: bool) {
+    // IDA 0x5526c: `setActivityIndicator:` stores the ivar. It records
+    // here.
+    NAV_ACTIVITY_INDICATOR.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55290 — -[RobloxNavBarViewController btnBack]
 // type: UIBarButtonItem *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController btnBack]")]
-pub fn stub_55290() -> ! {
-    todo!("0x55290 -[RobloxNavBarViewController btnBack]")
+pub fn stub_55290() -> bool {
+    // IDA 0x55290: `btnBack` returns the ivar. Presence reports here.
+    NAV_BTN_BACK.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x552a0 — -[RobloxNavBarViewController setBtnBack:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBtnBack:]")]
-pub fn stub_552a0() -> ! {
-    todo!("0x552a0 -[RobloxNavBarViewController setBtnBack:]")
+pub fn stub_552a0(present: bool) {
+    // IDA 0x552a0: `setBtnBack:` stores the ivar. It records here.
+    NAV_BTN_BACK.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x552c4 — -[RobloxNavBarViewController barTopToolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController barTopToolbar]")]
-pub fn stub_552c4() -> ! {
-    todo!("0x552c4 -[RobloxNavBarViewController barTopToolbar]")
+pub fn stub_552c4() -> bool {
+    // IDA 0x552c4: `barTopToolbar` returns the ivar. Presence reports
+    // here.
+    NAV_BAR_TOP_TOOLBAR.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x552d4 — -[RobloxNavBarViewController setBarTopToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBarTopToolbar:]")]
-pub fn stub_552d4() -> ! {
-    todo!("0x552d4 -[RobloxNavBarViewController setBarTopToolbar:]")
+pub fn stub_552d4(present: bool) {
+    // IDA 0x552d4: `setBarTopToolbar:` stores the ivar. It records
+    // here.
+    NAV_BAR_TOP_TOOLBAR.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x552f8 — -[RobloxNavBarViewController lblRobux]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblRobux]")]
-pub fn stub_552f8() -> ! {
-    todo!("0x552f8 -[RobloxNavBarViewController lblRobux]")
+pub fn stub_552f8() -> bool {
+    // IDA 0x552f8: `lblRobux` returns the ivar. Presence reports here.
+    NAV_LBL_ROBUX.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x55308 — -[RobloxNavBarViewController setLblRobux:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblRobux:]")]
-pub fn stub_55308() -> ! {
-    todo!("0x55308 -[RobloxNavBarViewController setLblRobux:]")
+pub fn stub_55308(present: bool) {
+    // IDA 0x55308: `setLblRobux:` stores the ivar. It records here.
+    NAV_LBL_ROBUX.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5532c — -[RobloxNavBarViewController lblTix]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblTix]")]
-pub fn stub_5532c() -> ! {
-    todo!("0x5532c -[RobloxNavBarViewController lblTix]")
+pub fn stub_5532c() -> bool {
+    // IDA 0x5532c: `lblTix` returns the ivar. Presence reports here.
+    NAV_LBL_TIX.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5533c — -[RobloxNavBarViewController setLblTix:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblTix:]")]
-pub fn stub_5533c() -> ! {
-    todo!("0x5533c -[RobloxNavBarViewController setLblTix:]")
+pub fn stub_5533c(present: bool) {
+    // IDA 0x5533c: `setLblTix:` stores the ivar. It records here.
+    NAV_LBL_TIX.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55360 — -[RobloxNavBarViewController toolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController toolbar]")]
-pub fn stub_55360() -> ! {
-    todo!("0x55360 -[RobloxNavBarViewController toolbar]")
+pub fn stub_55360() -> bool {
+    // IDA 0x55360: `toolbar` returns the ivar. Presence reports here.
+    NAV_TOOLBAR.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x55370 — -[RobloxNavBarViewController setToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setToolbar:]")]
-pub fn stub_55370() -> ! {
-    todo!("0x55370 -[RobloxNavBarViewController setToolbar:]")
+pub fn stub_55370(present: bool) {
+    // IDA 0x55370: `setToolbar:` stores the ivar. It records here.
+    NAV_TOOLBAR.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55394 — -[RobloxNavBarViewController pageLoadActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController pageLoadActivityIndicator]")]
-pub fn stub_55394() -> ! {
-    todo!("0x55394 -[RobloxNavBarViewController pageLoadActivityIndicator]")
+pub fn stub_55394() -> bool {
+    // IDA 0x55394: `pageLoadActivityIndicator` returns the ivar.
+    // Presence reports here.
+    NAV_PAGE_INDICATOR.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x553a4 — -[RobloxNavBarViewController setPageLoadActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setPageLoadActivityIndicator:]")]
-pub fn stub_553a4() -> ! {
-    todo!("0x553a4 -[RobloxNavBarViewController setPageLoadActivityIndicator:]")
+pub fn stub_553a4(present: bool) {
+    // IDA 0x553a4: `setPageLoadActivityIndicator:` stores the ivar.
+    // It records here.
+    NAV_PAGE_INDICATOR.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x553c8 — -[RobloxNavBarViewController loadingOverlay]
 // type: UIView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController loadingOverlay]")]
-pub fn stub_553c8() -> ! {
-    todo!("0x553c8 -[RobloxNavBarViewController loadingOverlay]")
+pub fn stub_553c8() -> bool {
+    // IDA 0x553c8: `loadingOverlay` returns the ivar. Presence reports
+    // here.
+    NAV_LOADING_OVERLAY.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x553d8 — -[RobloxNavBarViewController setLoadingOverlay:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLoadingOverlay:]")]
-pub fn stub_553d8() -> ! {
-    todo!("0x553d8 -[RobloxNavBarViewController setLoadingOverlay:]")
+pub fn stub_553d8(present: bool) {
+    // IDA 0x553d8: `setLoadingOverlay:` stores the ivar. It records
+    // here.
+    NAV_LOADING_OVERLAY.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x553fc — -[RobloxNavBarViewController loadingLabel]
