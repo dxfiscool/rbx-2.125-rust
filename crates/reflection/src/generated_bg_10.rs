@@ -29,6 +29,11 @@ pub struct UserInfoState {
     pub tickets: String,
     pub thumb_url: String,
     pub bc_member: bool,
+    pub user_info_dict: String,
+    pub userinfo: String,
+    pub password: String,
+    pub encoded_username: String,
+    pub encoded_password: String,
 }
 pub(crate) static USERINFO_STATE: std::sync::LazyLock<
     parking_lot::Mutex<UserInfoState>,
