@@ -16,24 +16,27 @@ const _: () = {
 // type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::isEnabled(void)")]
 #[doc(alias = "__ZN3RBX19ButtonBindingWidget9isEnabledEv")]
-pub fn stub_6941bc() -> ! {
-    todo!("0x6941bc __ZN3RBX19ButtonBindingWidget9isEnabledEv")
+pub fn stub_6941bc() -> u32 {
+    // IDA 0x6941bc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6941c0 — __ZNK3RBX19ButtonBindingWidget11drawEnabledEv
 // type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::drawEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX19ButtonBindingWidget11drawEnabledEv")]
-pub fn stub_6941c0() -> ! {
-    todo!("0x6941c0 __ZNK3RBX19ButtonBindingWidget11drawEnabledEv")
+pub fn stub_6941c0() -> u32 {
+    // IDA 0x6941c0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6941c4 — __ZNK3RBX19ButtonBindingWidget12drawSelectedEv
 // type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::drawSelected(void)const")]
 #[doc(alias = "__ZNK3RBX19ButtonBindingWidget12drawSelectedEv")]
-pub fn stub_6941c4() -> ! {
-    todo!("0x6941c4 __ZNK3RBX19ButtonBindingWidget12drawSelectedEv")
+pub fn stub_6941c4() -> u32 {
+    // IDA 0x6941c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6941c8 — __ZThn32_N3RBX19ButtonBindingWidgetD1Ev
@@ -311,8 +314,8 @@ pub fn stub_695710() -> ! {
 // 0x69571c — __ZN3rbx14implementation12typed_holderIN3RBX10Controller6ButtonEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Controller::Button>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10Controller6ButtonEE13destruct_funcEPc")]
-pub fn stub_69571c() -> ! {
-    todo!("0x69571c __ZN3rbx14implementation12typed_holderIN3RBX10Controller6ButtonEE13destruct_funcEPc")
+pub fn stub_69571c() {
+    // IDA 0x69571c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x695720 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE13convertToItemERKS3_
@@ -626,8 +629,9 @@ pub fn stub_6a728c() {
 
 // 0x6a73b4 — __ZNK3RBX5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a73b4() -> ! {
-    todo!("0x6a73b4 __ZNK3RBX5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a73b4() -> u32 {
+    // IDA 0x6a73b4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a73b8 — __ZNK3RBX14FactoryProductINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEENS_8InstanceELZNS_13sVector3ValueEES5_E12getClassNameEv
@@ -841,6 +845,7 @@ pub fn stub_6a8980() {
 
 // 0x6a8aa8 — __ZNK3RBX5ValueIbLZNS_10sBoolValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIbLZNS_10sBoolValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a8aa8() -> ! {
-    todo!("0x6a8aa8 __ZNK3RBX5ValueIbLZNS_10sBoolValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a8aa8() -> u32 {
+    // IDA 0x6a8aa8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }

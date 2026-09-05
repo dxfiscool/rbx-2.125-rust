@@ -246,8 +246,9 @@ pub fn stub_67b04c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_67b160() -> ! {
-    todo!("0x67b160 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_67b160() -> u32 {
+    // IDA 0x67b160: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x67b164 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE11isWriteOnlyEv
@@ -255,8 +256,9 @@ pub fn stub_67b160() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_67b164() -> ! {
-    todo!("0x67b164 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_67b164() -> u32 {
+    // IDA 0x67b164: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x67b168 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -300,8 +302,9 @@ pub fn stub_67b2d4() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_67b300() -> ! {
-    todo!("0x67b300 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_67b300() -> u32 {
+    // IDA 0x67b300: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x67b304 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE11isWriteOnlyEv
@@ -309,8 +312,9 @@ pub fn stub_67b300() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_67b304() -> ! {
-    todo!("0x67b304 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_67b304() -> u32 {
+    // IDA 0x67b304: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x67b308 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -354,8 +358,9 @@ pub fn stub_67b46c() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(G3D::Color3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_67b498() -> ! {
-    todo!("0x67b498 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_67b498() -> u32 {
+    // IDA 0x67b498: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x67b49c — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv

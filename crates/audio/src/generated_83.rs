@@ -416,14 +416,16 @@ pub fn stub_893f9c() {
 
 // 0x893fc8 — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isReadOnly(void)const")]
-pub fn stub_893fc8() -> ! {
-    todo!("0x893fc8 RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isReadOnly(void)const")
+pub fn stub_893fc8() -> u32 {
+    // IDA 0x893fc8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x893fcc — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isWriteOnly(void)const")]
-pub fn stub_893fcc() -> ! {
-    todo!("0x893fcc RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isWriteOnly(void)const")
+pub fn stub_893fcc() -> u32 {
+    // IDA 0x893fcc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x893fd0 — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE

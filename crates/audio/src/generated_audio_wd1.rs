@@ -611,16 +611,18 @@ pub fn stub_614670() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_61469c() -> ! {
-    todo!("0x61469c __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_61469c() -> u32 {
+    // IDA 0x61469c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6146a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ScreenGui,G3D::Vector2int16>::GetSetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const,void (RBX::ScreenGui::*)(G3D::Vector2int16)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_6146a0() -> ! {
-    todo!("0x6146a0 __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_6146a0() -> u32 {
+    // IDA 0x6146a0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6146a4 — __ZNK3RBX10Reflection14PropDescriptorINS_9ScreenGuiEN3G3D12Vector2int16EE10GetSetImplIMNS_9GuiBase2dEKFRKNS3_7Vector2EvEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

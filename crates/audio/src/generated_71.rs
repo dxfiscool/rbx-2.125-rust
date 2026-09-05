@@ -140,8 +140,9 @@ pub fn stub_6a2d2c() {
 
 // 0x6a2e54 — __ZNK3RBX5ValueINS_10BrickColorELZNS_16sBrickColorValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueINS_10BrickColorELZNS_16sBrickColorValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a2e54() -> ! {
-    todo!("0x6a2e54 __ZNK3RBX5ValueINS_10BrickColorELZNS_16sBrickColorValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a2e54() -> u32 {
+    // IDA 0x6a2e54: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a2e58 — __ZNK3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E12getClassNameEv
@@ -358,8 +359,9 @@ pub fn stub_6a4448() {
 
 // 0x6a4570 — __ZNK3RBX5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a4570() -> ! {
-    todo!("0x6a4570 __ZNK3RBX5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a4570() -> u32 {
+    // IDA 0x6a4570: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a4574 — __ZNK3RBX14FactoryProductINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEENS_8InstanceELZNS_12sColor3ValueEES5_E12getClassNameEv
@@ -577,8 +579,9 @@ pub fn stub_6a5b74() {
 
 // 0x6a5c9c — __ZNK3RBX5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a5c9c() -> ! {
-    todo!("0x6a5c9c __ZNK3RBX5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a5c9c() -> u32 {
+    // IDA 0x6a5c9c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a5ca0 — __ZNK3RBX14FactoryProductINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEENS_8InstanceELZNS_12sCFrameValueEES5_E12getClassNameEv

@@ -11,6 +11,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // 0xf54844 — j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_
 #[doc(alias = "boost::shared_ptr<RBX::Soundscape::CollisionSound>::operator=(boost::shared_ptr<RBX::Soundscape::CollisionSound> const&)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_")]
-pub fn stub_f54844() -> ! {
-    todo!("0xf54844 j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_")
+pub fn stub_f54844() {
+    // IDA 0xf54844: Thumb import jump veneer for `j___ZN5boost10shared_ptrIN3RBX10Soundscape14CollisionSoundEEaSERKS4_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: boost::shared_ptr<RBX::Soundscape::CollisionSound>::operator=(boost::shared_ptr<RBX::Soundscape::CollisionSound> const&).
 }

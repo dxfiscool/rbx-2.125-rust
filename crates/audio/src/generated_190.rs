@@ -148,16 +148,18 @@ pub fn stub_475ee4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")]
-pub fn stub_475f10() -> ! {
-    todo!("0x475f10 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_475f10() -> u32 {
+    // IDA 0x475f10: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x475f14 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")]
-pub fn stub_475f14() -> ! {
-    todo!("0x475f14 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_475f14() -> u32 {
+    // IDA 0x475f14: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x475f18 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -245,8 +247,9 @@ pub fn stub_476308() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14hasStringValueEv")]
-pub fn stub_47632c() -> ! {
-    todo!("0x47632c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::hasStringValue(void)const")
+pub fn stub_47632c() -> u32 {
+    // IDA 0x47632c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x476330 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -352,16 +355,18 @@ pub fn stub_47675c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_47679c() -> ! {
-    todo!("0x47679c RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const")
+pub fn stub_47679c() -> u32 {
+    // IDA 0x47679c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4767a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_4767a0() -> ! {
-    todo!("0x4767a0 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const")
+pub fn stub_4767a0() -> u32 {
+    // IDA 0x4767a0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4767a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -976,16 +981,18 @@ pub fn stub_47a4d4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_47a500() -> ! {
-    todo!("0x47a500 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const")
+pub fn stub_47a500() -> u32 {
+    // IDA 0x47a500: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x47a504 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_47a504() -> ! {
-    todo!("0x47a504 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const")
+pub fn stub_47a504() -> u32 {
+    // IDA 0x47a504: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x47a508 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -1118,8 +1125,9 @@ pub fn stub_47b5f4() -> ! {
 // type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::osPlatformId(void)const")]
 #[doc(alias = "__ZNK3RBX13DebugSettings12osPlatformIdEv")]
-pub fn stub_47b684() -> ! {
-    todo!("0x47b684 RBX::DebugSettings::osPlatformId(void)const")
+pub fn stub_47b684() -> u32 {
+    // IDA 0x47b684: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x47b688 — __ZNK3RBX13DebugSettings10osPlatformEv

@@ -40,8 +40,8 @@ pub fn stub_64e418() {
 
 // 0x64e444 — __ZN3RBX5Stats14TypedStatsItemImE5derefEPKm
 #[doc(alias = "RBX::Stats::TypedStatsItem<unsigned long>::deref(unsigned long const*)")]
-pub fn stub_64e444() -> ! {
-    todo!("0x64e444 RBX::Stats::TypedStatsItem<unsigned long>::deref(unsigned long const*)")
+pub fn stub_64e444() {
+    // IDA 0x64e444: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x64e448 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIRKmPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE

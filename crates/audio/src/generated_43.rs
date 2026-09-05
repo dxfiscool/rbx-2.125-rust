@@ -268,8 +268,8 @@ pub fn stub_439668() -> ! {
 // 0x439674 — __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::destruct_func(char *)")]
-pub fn stub_439674() -> ! {
-    todo!("0x439674 rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::destruct_func(char *)")
+pub fn stub_439674() {
+    // IDA 0x439674: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x439678 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE13convertToItemERKS3_
@@ -331,8 +331,8 @@ pub fn stub_439ce0() -> ! {
 // 0x439cec — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearType>::destruct_func(char *)")]
-pub fn stub_439cec() -> ! {
-    todo!("0x439cec rbx::implementation::typed_holder<RBX::DataModel::GearType>::destruct_func(char *)")
+pub fn stub_439cec() {
+    // IDA 0x439cec: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
@@ -394,8 +394,8 @@ pub fn stub_43a358() -> ! {
 // 0x43a364 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::destruct_func(char *)")]
-pub fn stub_43a364() -> ! {
-    todo!("0x43a364 rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::destruct_func(char *)")
+pub fn stub_43a364() {
+    // IDA 0x43a364: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x43a368 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_
@@ -457,8 +457,8 @@ pub fn stub_43a9d0() -> ! {
 // 0x43a9dc — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::destruct_func(char *)")]
-pub fn stub_43a9dc() -> ! {
-    todo!("0x43a9dc rbx::implementation::typed_holder<RBX::DataModel::Genre>::destruct_func(char *)")
+pub fn stub_43a9dc() {
+    // IDA 0x43a9dc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x43a9e0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_

@@ -657,8 +657,8 @@ pub fn stub_6d1250() {
 // 0x6d127c — __ZN3RBX9Workspace9doNothingEb
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this, bool)
 #[doc(alias = "RBX::Workspace::doNothing(bool)")]
-pub fn stub_6d127c() -> ! {
-    todo!("0x6d127c RBX::Workspace::doNothing(bool)")
+pub fn stub_6d127c() {
+    // IDA 0x6d127c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d1280 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvbELi1EED1Ev

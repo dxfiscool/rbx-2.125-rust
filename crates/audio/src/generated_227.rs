@@ -11,15 +11,15 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // 0xf20038 — __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")]
-pub fn stub_f20038() -> ! {
-    todo!("0xf20038 __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")
+pub fn stub_f20038() {
+    // IDA 0xf20038: Thumb import jump veneer for `__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim` (12B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim.
 }
 
 // 0xf20068 — __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
-pub fn stub_f20068() -> ! {
-    todo!("0xf20068 __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+pub fn stub_f20068() {
+    // IDA 0xf20068: Thumb import jump veneer for `__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim` (12B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim.
 }
 
 // 0xf28304 — _AudioUnitSetProperty
@@ -38,8 +38,8 @@ pub fn stub_f28314() -> ! {
 
 // 0xf30504 — j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")]
-pub fn stub_f30504() -> ! {
-    todo!("0xf30504 j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")
+pub fn stub_f30504() {
+    // IDA 0xf30504: Thumb import jump veneer for `j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v.
 }
 
 // 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj

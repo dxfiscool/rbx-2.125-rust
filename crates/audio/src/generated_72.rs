@@ -57,14 +57,16 @@ pub fn stub_6b9bc4() -> ! {
 
 // 0x6b9d58 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11StringValueEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::StringValue>::isReadOnly(void)const")]
-pub fn stub_6b9d58() -> ! {
-    todo!("0x6b9d58 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::StringValue>::isReadOnly(void)const")
+pub fn stub_6b9d58() -> u32 {
+    // IDA 0x6b9d58: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6b9d5c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11StringValueEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::StringValue>::isWriteOnly(void)const")]
-pub fn stub_6b9d5c() -> ! {
-    todo!("0x6b9d5c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::StringValue>::isWriteOnly(void)const")
+pub fn stub_6b9d5c() -> u32 {
+    // IDA 0x6b9d5c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6b9d60 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_11StringValueEE8getValueEPKNS0_13DescribedBaseE
@@ -325,14 +327,16 @@ pub fn stub_6c2430() {
 
 // 0x6c245c — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetImpl<int (RBX::VehicleSeat::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_6c245c() -> ! {
-    todo!("0x6c245c RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetImpl<int (RBX::VehicleSeat::*)(void)const>::isReadOnly(void)const")
+pub fn stub_6c245c() -> u32 {
+    // IDA 0x6c245c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6c2460 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetImpl<int (RBX::VehicleSeat::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_6c2460() -> ! {
-    todo!("0x6c2460 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetImpl<int (RBX::VehicleSeat::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_6c2460() -> u32 {
+    // IDA 0x6c2460: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2464 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -362,14 +366,16 @@ pub fn stub_6c26b8() {
 
 // 0x6c26e4 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_6c26e4() -> ! {
-    todo!("0x6c26e4 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(bool)>::isReadOnly(void)const")
+pub fn stub_6c26e4() -> u32 {
+    // IDA 0x6c26e4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c26e8 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_6c26e8() -> ! {
-    todo!("0x6c26e8 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_6c26e8() -> u32 {
+    // IDA 0x6c26e8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c26ec — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -399,14 +405,16 @@ pub fn stub_6c2848() {
 
 // 0x6c2874 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,float>::GetSetImpl<float (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(float)>::isReadOnly(void)const")]
-pub fn stub_6c2874() -> ! {
-    todo!("0x6c2874 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,float>::GetSetImpl<float (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(float)>::isReadOnly(void)const")
+pub fn stub_6c2874() -> u32 {
+    // IDA 0x6c2874: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2878 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,float>::GetSetImpl<float (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_6c2878() -> ! {
-    todo!("0x6c2878 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,float>::GetSetImpl<float (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(float)>::isWriteOnly(void)const")
+pub fn stub_6c2878() -> u32 {
+    // IDA 0x6c2878: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c287c — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -430,14 +438,16 @@ pub fn stub_6c28c0() -> ! {
 
 // 0x6c29d4 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetSetImpl<int (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(int)>::isReadOnly(void)const")]
-pub fn stub_6c29d4() -> ! {
-    todo!("0x6c29d4 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetSetImpl<int (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(int)>::isReadOnly(void)const")
+pub fn stub_6c29d4() -> u32 {
+    // IDA 0x6c29d4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c29d8 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetSetImpl<int (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(int)>::isWriteOnly(void)const")]
-pub fn stub_6c29d8() -> ! {
-    todo!("0x6c29d8 RBX::Reflection::PropDescriptor<RBX::VehicleSeat,int>::GetSetImpl<int (RBX::VehicleSeat::*)(void)const,void (RBX::VehicleSeat::*)(int)>::isWriteOnly(void)const")
+pub fn stub_6c29d8() -> u32 {
+    // IDA 0x6c29d8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c29dc — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE

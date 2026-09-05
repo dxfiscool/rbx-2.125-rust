@@ -847,8 +847,9 @@ pub fn stub_0x35b0dc() -> ! {
 // 0x35b138 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE14hasStringValueEv")]
-pub fn stub_0x35b138() -> ! {
-    todo!("0x35b138 RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::hasStringValue(void)const")
+pub fn stub_0x35b138() -> u32 {
+    // IDA 0x35b138: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x35b13c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE14getStringValueEPKNS0_13DescribedBaseE

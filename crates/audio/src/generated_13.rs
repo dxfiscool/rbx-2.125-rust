@@ -548,8 +548,9 @@ pub fn stub_1a957c() -> ! {
 
 // 0x1a95b8 — __tiffDummyMapProc
 #[doc(alias = "__tiffDummyMapProc")]
-pub fn stub_1a95b8() -> ! {
-    todo!("0x1a95b8 __tiffDummyMapProc")
+pub fn stub_1a95b8() -> u32 {
+    // IDA 0x1a95b8: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x1a95c0 — __tiffDummyUnmapProc

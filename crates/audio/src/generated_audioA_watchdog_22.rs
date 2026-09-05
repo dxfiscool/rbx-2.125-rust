@@ -11,6 +11,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // 0xf36404 — j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")]
-pub fn stub_f36404() -> ! {
-    todo!("0xf36404 j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")
+pub fn stub_f36404() {
+    // IDA 0xf36404: Thumb import jump veneer for `j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v.
 }

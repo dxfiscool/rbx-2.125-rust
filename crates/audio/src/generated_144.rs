@@ -204,8 +204,9 @@ pub fn stub_a0564() -> ! {
 // 0xa0614 — __GLOBAL__I_FMOD_OggVorbis_Malloc
 // type: int()
 #[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
-pub fn stub_a0614() -> ! {
-    todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
+pub fn stub_a0614() {
+    // IDA 0xa0614 ``global constructor keyed to'_FMOD_OggVorbis_Malloc`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa0620 — __ZN4FMOD13CodecPlaylist12getQuoteDataEPKcPcPi
@@ -218,8 +219,9 @@ pub fn stub_a0620() -> ! {
 // 0xa0684 — __ZN4FMOD13CodecPlaylist13closeInternalEv
 // type: int __fastcall(FMOD::CodecPlaylist *this)
 #[doc(alias = "FMOD::CodecPlaylist::closeInternal(void)")]
-pub fn stub_a0684() -> ! {
-    todo!("0xa0684 FMOD::CodecPlaylist::closeInternal(void)")
+pub fn stub_a0684() -> u32 {
+    // IDA 0xa0684: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa068c — __ZN4FMOD13CodecPlaylist13closeCallbackEP16FMOD_CODEC_STATE
@@ -232,15 +234,17 @@ pub fn stub_a068c() -> ! {
 // 0xa0698 — __ZN4FMOD13CodecPlaylist12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int()
 #[doc(alias = "FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_a0698() -> ! {
-    todo!("0xa0698 FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_a0698() -> u32 {
+    // IDA 0xa0698: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa06a0 — __ZN4FMOD13CodecPlaylist19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int()
 #[doc(alias = "FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_a06a0() -> ! {
-    todo!("0xa06a0 FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_a06a0() -> u32 {
+    // IDA 0xa06a0: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa06a8 — __ZN4FMOD13CodecPlaylist9isNewLineEc
@@ -351,22 +355,25 @@ pub fn stub_a1df4() -> ! {
 // 0xa1e4c — __GLOBAL__I__ZN4FMOD13playlistcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::playlistcodec")]
-pub fn stub_a1e4c() -> ! {
-    todo!("0xa1e4c global constructor keyed toFMOD::playlistcodec")
+pub fn stub_a1e4c() {
+    // IDA 0xa1e4c ``global constructor keyed to'FMOD::playlistcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa1e58 — __ZN4FMOD8CodecRaw13closeInternalEv
 // type: int __fastcall(FMOD::CodecRaw *this)
 #[doc(alias = "FMOD::CodecRaw::closeInternal(void)")]
-pub fn stub_a1e58() -> ! {
-    todo!("0xa1e58 FMOD::CodecRaw::closeInternal(void)")
+pub fn stub_a1e58() -> u32 {
+    // IDA 0xa1e58: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa1e60 — __ZN4FMOD8CodecRaw16canPointInternalEv
 // type: int __fastcall(FMOD::CodecRaw *this)
 #[doc(alias = "FMOD::CodecRaw::canPointInternal(void)")]
-pub fn stub_a1e60() -> ! {
-    todo!("0xa1e60 FMOD::CodecRaw::canPointInternal(void)")
+pub fn stub_a1e60() -> u32 {
+    // IDA 0xa1e60: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa1e68 — __ZN4FMOD8CodecRaw13closeCallbackEP16FMOD_CODEC_STATE
@@ -435,8 +442,9 @@ pub fn stub_a2278() -> ! {
 // 0xa2374 — __GLOBAL__I__ZN4FMOD8rawcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::rawcodec")]
-pub fn stub_a2374() -> ! {
-    todo!("0xa2374 global constructor keyed toFMOD::rawcodec")
+pub fn stub_a2374() {
+    // IDA 0xa2374 ``global constructor keyed to'FMOD::rawcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa2380 — __ZN4FMOD15MusicChannelS3M11volumeSlideEv
@@ -568,15 +576,17 @@ pub fn stub_a5c8c() -> ! {
 // 0xa5ce4 — __GLOBAL__I__ZN4FMOD8s3mcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::s3mcodec")]
-pub fn stub_a5ce4() -> ! {
-    todo!("0xa5ce4 global constructor keyed toFMOD::s3mcodec")
+pub fn stub_a5ce4() {
+    // IDA 0xa5ce4 ``global constructor keyed to'FMOD::s3mcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa5cf0 — __ZN4FMOD8CodecTag13closeInternalEv
 // type: int __fastcall(FMOD::CodecTag *this)
 #[doc(alias = "FMOD::CodecTag::closeInternal(void)")]
-pub fn stub_a5cf0() -> ! {
-    todo!("0xa5cf0 FMOD::CodecTag::closeInternal(void)")
+pub fn stub_a5cf0() -> u32 {
+    // IDA 0xa5cf0: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa5cf8 — __ZN4FMOD8CodecTag13closeCallbackEP16FMOD_CODEC_STATE
@@ -589,15 +599,17 @@ pub fn stub_a5cf8() -> ! {
 // 0xa5d04 — __ZN4FMOD8CodecTag12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int()
 #[doc(alias = "FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_a5d04() -> ! {
-    todo!("0xa5d04 FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_a5d04() -> u32 {
+    // IDA 0xa5d04: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa5d0c — __ZN4FMOD8CodecTag19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int()
 #[doc(alias = "FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_a5d0c() -> ! {
-    todo!("0xa5d0c FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_a5d0c() -> u32 {
+    // IDA 0xa5d0c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa5d14 — __ZN4FMOD8CodecTag9readID3v2Ev
@@ -652,15 +664,17 @@ pub fn stub_a6aa0() -> ! {
 // 0xa6af8 — __GLOBAL__I__ZN4FMOD8tagcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::tagcodec")]
-pub fn stub_a6af8() -> ! {
-    todo!("0xa6af8 global constructor keyed toFMOD::tagcodec")
+pub fn stub_a6af8() {
+    // IDA 0xa6af8 ``global constructor keyed to'FMOD::tagcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa6b04 — __ZN4FMOD9CodecUser13closeInternalEv
 // type: int __fastcall(FMOD::CodecUser *this)
 #[doc(alias = "FMOD::CodecUser::closeInternal(void)")]
-pub fn stub_a6b04() -> ! {
-    todo!("0xa6b04 FMOD::CodecUser::closeInternal(void)")
+pub fn stub_a6b04() -> u32 {
+    // IDA 0xa6b04: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa6b0c — __ZN4FMOD9CodecUser12readInternalEPvjPj
@@ -673,8 +687,9 @@ pub fn stub_a6b0c() -> ! {
 // 0xa6b18 — __ZN4FMOD9CodecUser19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecUser *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecUser::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_a6b18() -> ! {
-    todo!("0xa6b18 FMOD::CodecUser::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_a6b18() -> u32 {
+    // IDA 0xa6b18: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xa6b20 — __ZN4FMOD9CodecUser13closeCallbackEP16FMOD_CODEC_STATE

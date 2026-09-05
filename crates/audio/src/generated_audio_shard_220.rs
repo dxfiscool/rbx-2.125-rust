@@ -208,14 +208,16 @@ pub fn stub_4f7524() {
 
 // 0x4f7550 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isReadOnly(void)const")]
-pub fn stub_4f7550() -> ! {
-    todo!("0x4f7550 __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_4f7550() -> u32 {
+    // IDA 0x4f7550: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f7554 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
-pub fn stub_4f7554() -> ! {
-    todo!("0x4f7554 __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_4f7554() -> u32 {
+    // IDA 0x4f7554: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f7558 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -329,8 +331,9 @@ pub fn stub_4f8824() -> ! {
 // 0x4f8834 — __ZNK3RBX10ForceField19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "RBX::ForceField::shouldRender3dAdorn(void)const")]
-pub fn stub_4f8834() -> ! {
-    todo!("0x4f8834 __ZNK3RBX10ForceField19shouldRender3dAdornEv")
+pub fn stub_4f8834() -> u32 {
+    // IDA 0x4f8834: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4f8838 — __ZThn32_N3RBX10ForceFieldD1Ev

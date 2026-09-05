@@ -110,8 +110,9 @@ pub fn stub_3fcddc() {
 // type: int __fastcall(RBX::Verb *this)
 #[doc(alias = "RBX::Verb::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX4Verb9isEnabledEv")]
-pub fn stub_3fce7c() -> ! {
-    todo!("0x3fce7c RBX::Verb::isEnabled(void)const")
+pub fn stub_3fce7c() -> u32 {
+    // IDA 0x3fce7c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fce80 — __ZN3RBX16SelectAllCommandD1Ev
@@ -173,8 +174,9 @@ pub fn stub_3fd094() {
 // type: int __fastcall(RBX::CameraVerb *this)
 #[doc(alias = "RBX::CameraVerb::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX10CameraVerb9isEnabledEv")]
-pub fn stub_3fd174() -> ! {
-    todo!("0x3fd174 RBX::CameraVerb::isEnabled(void)const")
+pub fn stub_3fd174() -> u32 {
+    // IDA 0x3fd174: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fd178 — __ZN3RBX19CameraTiltUpCommandD1Ev
@@ -470,8 +472,8 @@ pub fn stub_3fe250() {
 // type: void()
 #[doc(alias = "RBX::FirstPersonCommand::doIt(RBX::IDataState *)")]
 #[doc(alias = "__ZN3RBX18FirstPersonCommand4doItEPNS_10IDataStateE")]
-pub fn stub_3fe2f0() -> ! {
-    todo!("0x3fe2f0 RBX::FirstPersonCommand::doIt(RBX::IDataState *)")
+pub fn stub_3fe2f0() {
+    // IDA 0x3fe2f0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3fe2f4 — __ZN3RBX14ToggleViewModeD1Ev
@@ -623,8 +625,9 @@ pub fn stub_3fe774() {
 // type: int __fastcall(RBX::EngineStatsCommand *this)
 #[doc(alias = "RBX::EngineStatsCommand::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX18EngineStatsCommand9isEnabledEv")]
-pub fn stub_3fe814() -> ! {
-    todo!("0x3fe814 RBX::EngineStatsCommand::isEnabled(void)const")
+pub fn stub_3fe814() -> u32 {
+    // IDA 0x3fe814: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fe818 — __ZN3RBX11JoinCommandD1Ev
@@ -812,8 +815,9 @@ pub fn stub_3feee8() {
 // type: int __fastcall(RBX::TurnOnManualJointCreation *this)
 #[doc(alias = "RBX::TurnOnManualJointCreation::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX25TurnOnManualJointCreation9isEnabledEv")]
-pub fn stub_3fef88() -> ! {
-    todo!("0x3fef88 RBX::TurnOnManualJointCreation::isEnabled(void)const")
+pub fn stub_3fef88() -> u32 {
+    // IDA 0x3fef88: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fef8c — __ZNK3RBX25TurnOnManualJointCreation9isCheckedEv
@@ -848,8 +852,9 @@ pub fn stub_3fefa0() {
 // type: int __fastcall(RBX::SetGridToOne *this)
 #[doc(alias = "RBX::SetGridToOne::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX12SetGridToOne9isEnabledEv")]
-pub fn stub_3ff040() -> ! {
-    todo!("0x3ff040 RBX::SetGridToOne::isEnabled(void)const")
+pub fn stub_3ff040() -> u32 {
+    // IDA 0x3ff040: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3ff044 — __ZNK3RBX12SetGridToOne9isCheckedEv
@@ -893,8 +898,9 @@ pub fn stub_3ff074() {
 // type: int __fastcall(RBX::SetGridToOneFifth *this)
 #[doc(alias = "RBX::SetGridToOneFifth::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX17SetGridToOneFifth9isEnabledEv")]
-pub fn stub_3ff114() -> ! {
-    todo!("0x3ff114 RBX::SetGridToOneFifth::isEnabled(void)const")
+pub fn stub_3ff114() -> u32 {
+    // IDA 0x3ff114: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3ff118 — __ZNK3RBX17SetGridToOneFifth9isCheckedEv
@@ -938,8 +944,9 @@ pub fn stub_3ff148() {
 // type: int __fastcall(RBX::SetGridToOff *this)
 #[doc(alias = "RBX::SetGridToOff::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX12SetGridToOff9isEnabledEv")]
-pub fn stub_3ff1e8() -> ! {
-    todo!("0x3ff1e8 RBX::SetGridToOff::isEnabled(void)const")
+pub fn stub_3ff1e8() -> u32 {
+    // IDA 0x3ff1e8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3ff1ec — __ZNK3RBX12SetGridToOff9isCheckedEv
@@ -983,8 +990,9 @@ pub fn stub_3ff21c() {
 // type: int __fastcall(RBX::SetManualJointToWeak *this)
 #[doc(alias = "RBX::SetManualJointToWeak::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX20SetManualJointToWeak9isEnabledEv")]
-pub fn stub_3ff2bc() -> ! {
-    todo!("0x3ff2bc RBX::SetManualJointToWeak::isEnabled(void)const")
+pub fn stub_3ff2bc() -> u32 {
+    // IDA 0x3ff2bc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3ff2c0 — __ZNK3RBX20SetManualJointToWeak9isCheckedEv
@@ -992,8 +1000,9 @@ pub fn stub_3ff2bc() -> ! {
 // type: int __fastcall(RBX::SetManualJointToWeak *this)
 #[doc(alias = "RBX::SetManualJointToWeak::isChecked(void)const")]
 #[doc(alias = "__ZNK3RBX20SetManualJointToWeak9isCheckedEv")]
-pub fn stub_3ff2c0() -> ! {
-    todo!("0x3ff2c0 RBX::SetManualJointToWeak::isChecked(void)const")
+pub fn stub_3ff2c0() -> u32 {
+    // IDA 0x3ff2c0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3ff2c4 — __ZN3RBX20SetManualJointToWeak4doItEPNS_10IDataStateE
@@ -1073,8 +1082,9 @@ pub fn stub_3ff3bc() {
 // type: int __fastcall(RBX::SetManualJointToInfinite *this)
 #[doc(alias = "RBX::SetManualJointToInfinite::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX24SetManualJointToInfinite9isEnabledEv")]
-pub fn stub_3ff45c() -> ! {
-    todo!("0x3ff45c RBX::SetManualJointToInfinite::isEnabled(void)const")
+pub fn stub_3ff45c() -> u32 {
+    // IDA 0x3ff45c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3ff460 — __ZNK3RBX24SetManualJointToInfinite9isCheckedEv
@@ -1082,8 +1092,9 @@ pub fn stub_3ff45c() -> ! {
 // type: int __fastcall(RBX::SetManualJointToInfinite *this)
 #[doc(alias = "RBX::SetManualJointToInfinite::isChecked(void)const")]
 #[doc(alias = "__ZNK3RBX24SetManualJointToInfinite9isCheckedEv")]
-pub fn stub_3ff460() -> ! {
-    todo!("0x3ff460 RBX::SetManualJointToInfinite::isChecked(void)const")
+pub fn stub_3ff460() -> u32 {
+    // IDA 0x3ff460: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3ff464 — __ZN3RBX24SetManualJointToInfinite4doItEPNS_10IDataStateE

@@ -673,16 +673,18 @@ pub fn stub_54cef8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetSetImpl<bool (RBX::GuiService::*)(void)const,void (RBX::GuiService::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetSetImpl<bool (RBX::GuiService::*)(void)const,void (RBX::GuiService::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_54cf24() -> ! {
-    todo!("0x54cf24 __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_54cf24() -> u32 {
+    // IDA 0x54cf24: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x54cf28 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetSetImpl<bool (RBX::GuiService::*)(void)const,void (RBX::GuiService::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetSetImpl<bool (RBX::GuiService::*)(void)const,void (RBX::GuiService::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_54cf28() -> ! {
-    todo!("0x54cf28 __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_54cf28() -> u32 {
+    // IDA 0x54cf28: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x54cf2c — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE

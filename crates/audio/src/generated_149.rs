@@ -42,8 +42,9 @@ pub fn stub_33550() -> ! {
 // 0x33920 — __ZNK10Teleporter17isTeleportEnabledEv
 // type: _DWORD __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::isTeleportEnabled(void)const")]
-pub fn stub_33920() -> ! {
-    todo!("0x33920 Teleporter::isTeleportEnabled(void)const")
+pub fn stub_33920() -> u32 {
+    // IDA 0x33920: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
@@ -449,8 +450,8 @@ pub fn stub_37b3c() -> ! {
 // 0x380a0 — __ZN10RobloxView16onPlaceIDChangedEPKN3RBX10Reflection18PropertyDescriptorE
 // type: _DWORD __fastcall(RobloxView *__hidden this, const PropertyDescriptor *)
 #[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_380a0() -> ! {
-    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_380a0() {
+    // IDA 0x380a0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE

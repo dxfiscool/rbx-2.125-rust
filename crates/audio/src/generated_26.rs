@@ -96,8 +96,9 @@ pub fn stub_2e7428() -> ! {
 
 // 0x2e74dc — __ZNK3RBX10LuaDragger12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::LuaDragger::askSetParent(RBX::Instance const*)const")]
-pub fn stub_2e74dc() -> ! {
-    todo!("0x2e74dc RBX::LuaDragger::askSetParent(RBX::Instance const*)const")
+pub fn stub_2e74dc() -> u32 {
+    // IDA 0x2e74dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2e74e0 — __ZNK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E12getClassNameEv
@@ -945,6 +946,6 @@ pub fn stub_2efd44() -> ! {
 
 // 0x2efef0 — __ZN3RBX11NewNullTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "RBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_2efef0() -> ! {
-    todo!("0x2efef0 RBX::NewNullTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2efef0() {
+    // IDA 0x2efef0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }

@@ -160,8 +160,9 @@ pub fn stub_5b61a4() -> ! {
 // 0x5b61e0 — __ZNK3RBX16KeyframeSequence12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::KeyframeSequence::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX16KeyframeSequence12askSetParentEPKNS_8InstanceE")]
-pub fn stub_5b61e0() -> ! {
-    todo!("0x5b61e0 __ZNK3RBX16KeyframeSequence12askSetParentEPKNS_8InstanceE")
+pub fn stub_5b61e0() -> u32 {
+    // IDA 0x5b61e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b61e4 — __ZNK3RBX14FactoryProductINS_16KeyframeSequenceENS_8InstanceELZNS_17sKeyframeSequenceEES2_E12getClassNameEv
@@ -643,8 +644,9 @@ pub fn stub_5b8a1c() -> ! {
 // 0x5b8a40 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::KeyframeSequence,RBX::KeyframeSequence::Priority>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE14hasStringValueEv")]
-pub fn stub_5b8a40() -> ! {
-    todo!("0x5b8a40 __ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE14hasStringValueEv")
+pub fn stub_5b8a40() -> u32 {
+    // IDA 0x5b8a40: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5b8a44 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE14getStringValueEPKNS0_13DescribedBaseE

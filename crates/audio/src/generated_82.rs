@@ -350,8 +350,8 @@ pub fn stub_88f4b8() -> ! {
 
 // 0x88f4e0 — __ZNK3RBX11PluginMouse11checkActiveEv
 #[doc(alias = "RBX::PluginMouse::checkActive(void)const")]
-pub fn stub_88f4e0() -> ! {
-    todo!("0x88f4e0 RBX::PluginMouse::checkActive(void)const")
+pub fn stub_88f4e0() {
+    // IDA 0x88f4e0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x88f4e4 — __ZThn32_NK3RBX17NonFactoryProductINS_5MouseELZNS_12sPluginMouseEEE12getClassNameEv

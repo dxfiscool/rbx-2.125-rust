@@ -243,14 +243,14 @@ pub fn stub_e9e59c() -> ! {
 
 // 0xe9f88c — ___cxx_global_array_dtor_5
 #[doc(alias = "___cxx_global_array_dtor_5")]
-pub fn stub_e9f88c() -> ! {
-    todo!("0xe9f88c ___cxx_global_array_dtor_5")
+pub fn stub_e9f88c() {
+    // IDA 0xe9f88c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xe9f890 — ___cxx_global_array_dtor3
 #[doc(alias = "___cxx_global_array_dtor3")]
-pub fn stub_e9f890() -> ! {
-    todo!("0xe9f890 ___cxx_global_array_dtor3")
+pub fn stub_e9f890() {
+    // IDA 0xe9f890: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xe9f894 — __GLOBAL__I_a_869

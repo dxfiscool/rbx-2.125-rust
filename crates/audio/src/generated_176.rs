@@ -323,40 +323,41 @@ pub fn stub_0x381308() -> ! {
 // type: void __fastcall(RBX::SpanningTree *this, RBX::SpanningEdge *, RBX::SpanningNode *)
 #[doc(alias = "RBX::SpanningTree::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZN3RBX12SpanningTree20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
-pub fn stub_0x381328() -> ! {
-    todo!("0x381328 RBX::SpanningTree::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")
+pub fn stub_0x381328() {
+    // IDA 0x381328: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x38132c — __ZN3RBX12SpanningTree19onSpanningEdgeAddedEPNS_12SpanningEdgeE
 // type: void __fastcall(RBX::SpanningTree *this, RBX::SpanningEdge *)
 #[doc(alias = "RBX::SpanningTree::onSpanningEdgeAdded(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZN3RBX12SpanningTree19onSpanningEdgeAddedEPNS_12SpanningEdgeE")]
-pub fn stub_0x38132c() -> ! {
-    todo!("0x38132c RBX::SpanningTree::onSpanningEdgeAdded(RBX::SpanningEdge *)")
+pub fn stub_0x38132c() {
+    // IDA 0x38132c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x381330 — __ZN3RBX12SpanningTree22onSpanningEdgeRemovingEPNS_12SpanningEdgeE
 // type: void __fastcall(RBX::SpanningTree *this, RBX::SpanningEdge *)
 #[doc(alias = "RBX::SpanningTree::onSpanningEdgeRemoving(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZN3RBX12SpanningTree22onSpanningEdgeRemovingEPNS_12SpanningEdgeE")]
-pub fn stub_0x381330() -> ! {
-    todo!("0x381330 RBX::SpanningTree::onSpanningEdgeRemoving(RBX::SpanningEdge *)")
+pub fn stub_0x381330() {
+    // IDA 0x381330: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x381334 — __ZN3RBX12SpanningTree21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE
 // type: void __fastcall(RBX::SpanningTree *this, RBX::SpanningEdge *, RBX::SpanningNode *)
 #[doc(alias = "RBX::SpanningTree::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZN3RBX12SpanningTree21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
-pub fn stub_0x381334() -> ! {
-    todo!("0x381334 RBX::SpanningTree::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")
+pub fn stub_0x381334() {
+    // IDA 0x381334: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x381338 — __ZN3RBX12SpanningTree12validateTreeEPNS_12SpanningNodeE
 // type: int __fastcall(RBX::SpanningTree *this, RBX::SpanningNode *)
 #[doc(alias = "RBX::SpanningTree::validateTree(RBX::SpanningNode *)")]
 #[doc(alias = "__ZN3RBX12SpanningTree12validateTreeEPNS_12SpanningNodeE")]
-pub fn stub_0x381338() -> ! {
-    todo!("0x381338 RBX::SpanningTree::validateTree(RBX::SpanningNode *)")
+pub fn stub_0x381338() -> u32 {
+    // IDA 0x381338: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x38133c — __ZN3RBX12FindHeaviestclEPNS_12SpanningNodeEPNS_12SpanningEdgeE
@@ -689,8 +690,8 @@ pub fn stub_0x384ae0() -> ! {
 // type: void()
 #[doc(alias = "DontCareResponse(std::string *,std::exception *)")]
 #[doc(alias = "__Z16DontCareResponsePSsPSt9exception")]
-pub fn stub_0x384c38() -> ! {
-    todo!("0x384c38 DontCareResponse(std::string *,std::exception *)")
+pub fn stub_0x384c38() {
+    // IDA 0x384c38: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x384c3c — __ZN5boost6detail8function22void_function_invoker2IPFvPSsPSt9exceptionEvS3_S5_E6invokeERNS1_15function_bufferES3_S5_

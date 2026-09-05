@@ -515,8 +515,9 @@ pub fn stub_61d204() {
 // demangled: RBX::SelectionBox::askSetParent(RBX::Instance const*)const
 #[doc(alias = "RBX::SelectionBox::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX12SelectionBox12askSetParentEPKNS_8InstanceE")]
-pub fn stub_61d2a4() -> ! {
-    todo!("0x61d2a4 __ZNK3RBX12SelectionBox12askSetParentEPKNS_8InstanceE")
+pub fn stub_61d2a4() -> u32 {
+    // IDA 0x61d2a4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x61d2a8 — __ZNK3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE12getClassNameEv

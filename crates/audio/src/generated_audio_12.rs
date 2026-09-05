@@ -34,8 +34,9 @@ pub fn stub_3f61d0() -> ! {
 // type: int __fastcall(RBX::ToggleViewMode *this)
 #[doc(alias = "RBX::ToggleViewMode::isChecked(void)const")]
 #[doc(alias = "__ZNK3RBX14ToggleViewMode9isCheckedEv")]
-pub fn stub_3f6328() -> ! {
-    todo!("0x3f6328 RBX::ToggleViewMode::isChecked(void)const")
+pub fn stub_3f6328() -> u32 {
+    // IDA 0x3f6328: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3f632c — __ZNK3RBX14ToggleViewMode9isEnabledEv
@@ -52,8 +53,9 @@ pub fn stub_3f632c() -> ! {
 // type: int __fastcall(RBX::ToggleViewMode *this)
 #[doc(alias = "RBX::ToggleViewMode::isSelected(void)const")]
 #[doc(alias = "__ZNK3RBX14ToggleViewMode10isSelectedEv")]
-pub fn stub_3f6348() -> ! {
-    todo!("0x3f6348 RBX::ToggleViewMode::isSelected(void)const")
+pub fn stub_3f6348() -> u32 {
+    // IDA 0x3f6348: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3f634c — __ZN3RBX14ToggleViewMode4doItEPNS_10IDataStateE
@@ -807,8 +809,9 @@ pub fn stub_3fb1e8() -> ! {
 // type: int __fastcall(RBX::CameraPanLeftCommand *this)
 #[doc(alias = "RBX::CameraPanLeftCommand::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX20CameraPanLeftCommand9isEnabledEv")]
-pub fn stub_3fb378() -> ! {
-    todo!("0x3fb378 RBX::CameraPanLeftCommand::isEnabled(void)const")
+pub fn stub_3fb378() -> u32 {
+    // IDA 0x3fb378: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fb37c — __ZN3RBX20CameraPanLeftCommand4doItEPNS_10IDataStateE
@@ -825,8 +828,9 @@ pub fn stub_3fb37c() -> ! {
 // type: int __fastcall(RBX::CameraPanRightCommand *this)
 #[doc(alias = "RBX::CameraPanRightCommand::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX21CameraPanRightCommand9isEnabledEv")]
-pub fn stub_3fb3c0() -> ! {
-    todo!("0x3fb3c0 RBX::CameraPanRightCommand::isEnabled(void)const")
+pub fn stub_3fb3c0() -> u32 {
+    // IDA 0x3fb3c0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3fb3c4 — __ZN3RBX21CameraPanRightCommand4doItEPNS_10IDataStateE

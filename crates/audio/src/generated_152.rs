@@ -210,8 +210,9 @@ pub fn stub_43338() {
 
 // 0x43360 — __ZN10SimpleJSON14DefaultHandlerERKSsS1_
 #[doc(alias = "SimpleJSON::DefaultHandler(std::string const&,std::string const&)")]
-pub fn stub_43360() -> ! {
-    todo!("0x43360 SimpleJSON::DefaultHandler(std::string const&,std::string const&)")
+pub fn stub_43360() -> u32 {
+    // IDA 0x43360: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x43364 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
@@ -680,8 +681,8 @@ pub fn stub_46704() -> ! {
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
 // type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
-pub fn stub_467e8() -> ! {
-    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+pub fn stub_467e8() {
+    // IDA 0x467e8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x467ec — -[CharacterMove touchesEnded:withEvent:]

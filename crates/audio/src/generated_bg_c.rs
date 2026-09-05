@@ -263,8 +263,9 @@ pub fn stub_25bc38() -> ! {
 // type: int __fastcall(RBX::Light *this, const Instance *)
 #[doc(alias = "RBX::Light::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX5Light11askAddChildEPKNS_8InstanceE")]
-pub fn stub_25bc60() -> ! {
-    todo!("0x25bc60 RBX::Light::askAddChild(RBX::Instance const*)const")
+pub fn stub_25bc60() -> u32 {
+    // IDA 0x25bc60: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x25bc64 — __ZN3RBX10PointLightC2Ev

@@ -343,15 +343,15 @@ pub fn stub_237354() {
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::run(void)")]
-pub fn stub_237368() -> ! {
-    todo!("0x237368 boost::anonymous namespace::externally_launched_thread::run(void)")
+pub fn stub_237368() {
+    // IDA 0x237368: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
 // type: void()
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
-pub fn stub_23736c() -> ! {
-    todo!("0x23736c boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
+pub fn stub_23736c() {
+    // IDA 0x23736c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x237370 — _tls_destructor

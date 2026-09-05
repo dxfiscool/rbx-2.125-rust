@@ -14,8 +14,9 @@ const _: () = {
 
 // 0x211918 — _tt_cmap14_char_index
 #[doc(alias = "_tt_cmap14_char_index")]
-pub fn stub_211918() -> ! {
-    todo!("0x211918 _tt_cmap14_char_index")
+pub fn stub_211918() -> u32 {
+    // IDA 0x211918: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x211920 — _tt_cmap14_char_next

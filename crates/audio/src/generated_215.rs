@@ -386,8 +386,9 @@ pub fn stub_4ea108() -> ! {
 
 // 0x4ea12c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::hasStringValue(void)const")]
-pub fn stub_4ea12c() -> ! {
-    todo!("0x4ea12c __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14hasStringValueEv")
+pub fn stub_4ea12c() -> u32 {
+    // IDA 0x4ea12c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4ea130 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14getStringValueEPKNS0_13DescribedBaseE
@@ -465,14 +466,16 @@ pub fn stub_4ea55c() -> ! {
 
 // 0x4ea59c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isReadOnly(void)const")]
-pub fn stub_4ea59c() -> ! {
-    todo!("0x4ea59c __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_4ea59c() -> u32 {
+    // IDA 0x4ea59c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ea5a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isWriteOnly(void)const")]
-pub fn stub_4ea5a0() -> ! {
-    todo!("0x4ea5a0 __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_4ea5a0() -> u32 {
+    // IDA 0x4ea5a0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ea5a4 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -538,8 +541,9 @@ pub fn stub_4ea980() -> ! {
 
 // 0x4ea9a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::hasStringValue(void)const")]
-pub fn stub_4ea9a4() -> ! {
-    todo!("0x4ea9a4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14hasStringValueEv")
+pub fn stub_4ea9a4() -> u32 {
+    // IDA 0x4ea9a4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4ea9a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14getStringValueEPKNS0_13DescribedBaseE
@@ -617,6 +621,7 @@ pub fn stub_4eadd4() -> ! {
 
 // 0x4eae14 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::isReadOnly(void)const")]
-pub fn stub_4eae14() -> ! {
-    todo!("0x4eae14 __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_4eae14() -> u32 {
+    // IDA 0x4eae14: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }

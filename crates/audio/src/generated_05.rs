@@ -14,8 +14,9 @@ const _: () = {
 
 // 0x6404b0 — __ZNK3RBX10Reflection14PropDescriptorINS_13SpawnLocationENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpawnLocation,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::SpawnLocation::*)(void)const,void (RBX::SpawnLocation::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
-pub fn stub_6404b0() -> ! {
-    todo!("0x6404b0 RBX::Reflection::PropDescriptor<RBX::SpawnLocation,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::SpawnLocation::*)(void)const,void (RBX::SpawnLocation::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+pub fn stub_6404b0() -> u32 {
+    // IDA 0x6404b0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6404b4 — __ZNK3RBX10Reflection14PropDescriptorINS_13SpawnLocationENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -38,14 +39,16 @@ pub fn stub_640500() -> ! {
 
 // 0x640694 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isReadOnly(void)const")]
-pub fn stub_640694() -> ! {
-    todo!("0x640694 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isReadOnly(void)const")
+pub fn stub_640694() -> u32 {
+    // IDA 0x640694: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x640698 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isWriteOnly(void)const")]
-pub fn stub_640698() -> ! {
-    todo!("0x640698 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isWriteOnly(void)const")
+pub fn stub_640698() -> u32 {
+    // IDA 0x640698: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x64069c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE8getValueEPKNS0_13DescribedBaseE
@@ -74,14 +77,16 @@ pub fn stub_640888() -> ! {
 
 // 0x640a18 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isReadOnly(void)const")]
-pub fn stub_640a18() -> ! {
-    todo!("0x640a18 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isReadOnly(void)const")
+pub fn stub_640a18() -> u32 {
+    // IDA 0x640a18: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x640a1c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isWriteOnly(void)const")]
-pub fn stub_640a1c() -> ! {
-    todo!("0x640a1c RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::SpawnLocation>::isWriteOnly(void)const")
+pub fn stub_640a1c() -> u32 {
+    // IDA 0x640a1c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x640a20 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13SpawnLocationEE8getValueEPKNS0_13DescribedBaseE
@@ -184,8 +189,9 @@ pub fn stub_644360() -> ! {
 
 // 0x644384 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::hasStringValue(void)const")]
-pub fn stub_644384() -> ! {
-    todo!("0x644384 RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::hasStringValue(void)const")
+pub fn stub_644384() -> u32 {
+    // IDA 0x644384: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x644388 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -265,14 +271,16 @@ pub fn stub_6447b4() -> ! {
 
 // 0x6447f4 — __ZNK3RBX10Reflection14PropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::GetSetImpl<RBX::SpecialShape::MeshType (RBX::SpecialShape::*)(void)const,void (RBX::SpecialShape::*)(RBX::SpecialShape::MeshType)>::isReadOnly(void)const")]
-pub fn stub_6447f4() -> ! {
-    todo!("0x6447f4 RBX::Reflection::PropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::GetSetImpl<RBX::SpecialShape::MeshType (RBX::SpecialShape::*)(void)const,void (RBX::SpecialShape::*)(RBX::SpecialShape::MeshType)>::isReadOnly(void)const")
+pub fn stub_6447f4() -> u32 {
+    // IDA 0x6447f4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6447f8 — __ZNK3RBX10Reflection14PropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::GetSetImpl<RBX::SpecialShape::MeshType (RBX::SpecialShape::*)(void)const,void (RBX::SpecialShape::*)(RBX::SpecialShape::MeshType)>::isWriteOnly(void)const")]
-pub fn stub_6447f8() -> ! {
-    todo!("0x6447f8 RBX::Reflection::PropDescriptor<RBX::SpecialShape,RBX::SpecialShape::MeshType>::GetSetImpl<RBX::SpecialShape::MeshType (RBX::SpecialShape::*)(void)const,void (RBX::SpecialShape::*)(RBX::SpecialShape::MeshType)>::isWriteOnly(void)const")
+pub fn stub_6447f8() -> u32 {
+    // IDA 0x6447f8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6447fc — __ZNK3RBX10Reflection14PropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

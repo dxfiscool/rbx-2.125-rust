@@ -654,8 +654,9 @@ pub fn stub_ef28ac() -> ! {
 
 // 0xef2904 — _plframe_get_freg
 #[doc(alias = "_plframe_get_freg")]
-pub fn stub_ef2904() -> ! {
-    todo!("0xef2904 _plframe_get_freg")
+pub fn stub_ef2904() -> u32 {
+    // IDA 0xef2904: `Thumb movs r0,#4; bx lr` (bytes 04207047) - returns 4 in r0 on the host.
+    4u32
 }
 
 // 0xef2908 — _plframe_get_regname

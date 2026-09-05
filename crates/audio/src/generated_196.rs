@@ -39,16 +39,18 @@ pub fn stub_492f0c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Decal,float>::GetSetImpl<float (RBX::Decal::*)(void)const,void (RBX::Decal::*)(float)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Decal,float>::GetSetImpl<float (RBX::Decal::*)(void)const,void (RBX::Decal::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_492f38() -> ! {
-    todo!("0x492f38 __ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_492f38() -> u32 {
+    // IDA 0x492f38: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x492f3c — __ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Decal,float>::GetSetImpl<float (RBX::Decal::*)(void)const,void (RBX::Decal::*)(float)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Decal,float>::GetSetImpl<float (RBX::Decal::*)(void)const,void (RBX::Decal::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_492f3c() -> ! {
-    todo!("0x492f3c __ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_492f3c() -> u32 {
+    // IDA 0x492f3c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x492f40 — __ZNK3RBX10Reflection14PropDescriptorINS_5DecalEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -87,16 +89,18 @@ pub fn stub_493098() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Decal,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::Decal::*)(void)const,void (RBX::Decal::*)(RBX::TextureId)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Decal,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::Decal::*)(void)const,void (RBX::Decal::*)(RBX::TextureId)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_4930c4() -> ! {
-    todo!("0x4930c4 __ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_4930c4() -> u32 {
+    // IDA 0x4930c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4930c8 — __ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Decal,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::Decal::*)(void)const,void (RBX::Decal::*)(RBX::TextureId)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Decal,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::Decal::*)(void)const,void (RBX::Decal::*)(RBX::TextureId)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_4930c8() -> ! {
-    todo!("0x4930c8 __ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_4930c8() -> u32 {
+    // IDA 0x4930c8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4930cc — __ZNK3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -426,16 +430,18 @@ pub fn stub_494ffc() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DialogChoice,std::string>::GetSetImpl<std::string (RBX::DialogChoice::*)(void)const,void (RBX::DialogChoice::*)(std::string)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogChoice,std::string>::GetSetImpl<std::string (RBX::DialogChoice::*)(void)const,void (RBX::DialogChoice::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_495028() -> ! {
-    todo!("0x495028 __ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_495028() -> u32 {
+    // IDA 0x495028: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x49502c — __ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DialogChoice,std::string>::GetSetImpl<std::string (RBX::DialogChoice::*)(void)const,void (RBX::DialogChoice::*)(std::string)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogChoice,std::string>::GetSetImpl<std::string (RBX::DialogChoice::*)(void)const,void (RBX::DialogChoice::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_49502c() -> ! {
-    todo!("0x49502c __ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_49502c() -> u32 {
+    // IDA 0x49502c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x495030 — __ZNK3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE

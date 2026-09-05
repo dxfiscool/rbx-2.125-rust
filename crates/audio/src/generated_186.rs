@@ -98,8 +98,9 @@ pub fn stub_45fd44() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14hasStringValueEv")]
-pub fn stub_45fd68() -> ! {
-    todo!("0x45fd68 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::hasStringValue(void)const")
+pub fn stub_45fd68() -> u32 {
+    // IDA 0x45fd68: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x45fd6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -205,16 +206,18 @@ pub fn stub_460198() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")]
-pub fn stub_4601d8() -> ! {
-    todo!("0x4601d8 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_4601d8() -> u32 {
+    // IDA 0x4601d8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4601dc — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")]
-pub fn stub_4601dc() -> ! {
-    todo!("0x4601dc RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::GetImpl<RBX::DataModel::CreatorType (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_4601dc() -> u32 {
+    // IDA 0x4601dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4601e0 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_11CreatorTypeEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
@@ -254,16 +257,18 @@ pub fn stub_460430() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_460460() -> ! {
-    todo!("0x460460 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_460460() -> u32 {
+    // IDA 0x460460: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x460464 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")]
-pub fn stub_460464() -> ! {
-    todo!("0x460464 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::GetImpl<int (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_460464() -> u32 {
+    // IDA 0x460464: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x460468 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -409,16 +414,18 @@ pub fn stub_460b90() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_460b98() -> ! {
-    todo!("0x460b98 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_460b98() -> u32 {
+    // IDA 0x460b98: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x460b9c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_460b9c() -> ! {
-    todo!("0x460b9c RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_460b9c() -> u32 {
+    // IDA 0x460b9c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x460ba0 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -588,16 +595,18 @@ pub fn stub_46138c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_461394() -> ! {
-    todo!("0x461394 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_461394() -> u32 {
+    // IDA 0x461394: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x461398 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_461398() -> ! {
-    todo!("0x461398 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::Workspace *>::GetImpl<RBX::Workspace * (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_461398() -> u32 {
+    // IDA 0x461398: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x46139c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -1237,14 +1246,16 @@ pub fn stub_465584() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")]
-pub fn stub_4655b4() -> ! {
-    todo!("0x4655b4 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_4655b4() -> u32 {
+    // IDA 0x4655b4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4655b8 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")]
-pub fn stub_4655b8() -> ! {
-    todo!("0x4655b8 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::GetImpl<bool (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_4655b8() -> u32 {
+    // IDA 0x4655b8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }

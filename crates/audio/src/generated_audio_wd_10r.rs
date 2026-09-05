@@ -129,8 +129,8 @@ pub fn stub_5ede00() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::NormalId>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::NormalId>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX8NormalIdEE13destruct_funcEPc")]
-pub fn stub_5ede70() -> ! {
-    todo!("0x5ede70 __ZN3rbx14implementation12typed_holderIN3RBX8NormalIdEE13destruct_funcEPc")
+pub fn stub_5ede70() {
+    // IDA 0x5ede70: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5ede78 — __ZN3rbx8any_castIRKN3RBX8NormalIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -164,8 +164,8 @@ pub fn stub_5edfe8() -> ! {
 // demangled: rbx::implementation::typed_holder<bool>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<bool>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIbE13destruct_funcEPc")]
-pub fn stub_5ee058() -> ! {
-    todo!("0x5ee058 __ZN3rbx14implementation12typed_holderIbE13destruct_funcEPc")
+pub fn stub_5ee058() {
+    // IDA 0x5ee058: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5ee060 — __ZN3RBX10Reflection18FunctionDescriptorD0Ev
@@ -270,16 +270,18 @@ pub fn stub_5ee568() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::GetImpl<int (RBX::PartInstance::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::GetImpl<int (RBX::PartInstance::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_5ee590() -> ! {
-    todo!("0x5ee590 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE10isReadOnlyEv")
+pub fn stub_5ee590() -> u32 {
+    // IDA 0x5ee590: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5ee594 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::GetImpl<int (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,int>::GetImpl<int (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")]
-pub fn stub_5ee594() -> ! {
-    todo!("0x5ee594 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")
+pub fn stub_5ee594() -> u32 {
+    // IDA 0x5ee594: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5ee598 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -402,8 +404,8 @@ pub fn stub_5eec60() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Faces>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Faces>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5FacesEE13destruct_funcEPc")]
-pub fn stub_5eecd0() -> ! {
-    todo!("0x5eecd0 __ZN3rbx14implementation12typed_holderIN3RBX5FacesEE13destruct_funcEPc")
+pub fn stub_5eecd0() {
+    // IDA 0x5eecd0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5eecd4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEED1Ev
@@ -426,16 +428,18 @@ pub fn stub_5eecf8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::GetImpl<RBX::Faces (RBX::PartInstance::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::GetImpl<RBX::Faces (RBX::PartInstance::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")]
-pub fn stub_5eed24() -> ! {
-    todo!("0x5eed24 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")
+pub fn stub_5eed24() -> u32 {
+    // IDA 0x5eed24: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5eed28 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::GetImpl<RBX::Faces (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Faces>::GetImpl<RBX::Faces (RBX::PartInstance::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")]
-pub fn stub_5eed28() -> ! {
-    todo!("0x5eed28 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")
+pub fn stub_5eed28() -> u32 {
+    // IDA 0x5eed28: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5eed2c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_5FacesEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
@@ -515,16 +519,18 @@ pub fn stub_5ef118() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::GetSetImpl<bool (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::GetSetImpl<bool (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_5ef144() -> ! {
-    todo!("0x5ef144 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_5ef144() -> u32 {
+    // IDA 0x5ef144: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5ef148 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::GetSetImpl<bool (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,bool>::GetSetImpl<bool (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_5ef148() -> ! {
-    todo!("0x5ef148 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_5ef148() -> u32 {
+    // IDA 0x5ef148: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5ef14c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -613,16 +619,18 @@ pub fn stub_5ef52c() -> ! {
 // type: _DWORD __fastcall(RBX::Reflection::EnumPropertyDescriptor *__hidden this, const DescribedBase *)
 #[doc(alias = "RBX::Reflection::EnumPropertyDescriptor::getDataSize(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection22EnumPropertyDescriptor11getDataSizeEPKNS0_13DescribedBaseE")]
-pub fn stub_5ef550() -> ! {
-    todo!("0x5ef550 __ZNK3RBX10Reflection22EnumPropertyDescriptor11getDataSizeEPKNS0_13DescribedBaseE")
+pub fn stub_5ef550() -> u32 {
+    // IDA 0x5ef550: `Thumb movs r0,#4; bx lr` (bytes 04207047) - returns 4 in r0 on the host.
+    4u32
 }
 
 // 0x5ef554 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14hasStringValueEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PartInstance,RBX::Material>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14hasStringValueEv")]
-pub fn stub_5ef554() -> ! {
-    todo!("0x5ef554 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14hasStringValueEv")
+pub fn stub_5ef554() -> u32 {
+    // IDA 0x5ef554: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5ef558 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12PartInstanceENS_8MaterialEE14getStringValueEPKNS0_13DescribedBaseE
@@ -737,16 +745,18 @@ pub fn stub_5efa28() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_5efa68() -> ! {
-    todo!("0x5efa68 __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_5efa68() -> u32 {
+    // IDA 0x5efa68: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5efa6c — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,RBX::Material>::GetSetImpl<RBX::Material (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(RBX::Material)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_5efa6c() -> ! {
-    todo!("0x5efa6c __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_5efa6c() -> u32 {
+    // IDA 0x5efa6c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5efa70 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_8MaterialEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

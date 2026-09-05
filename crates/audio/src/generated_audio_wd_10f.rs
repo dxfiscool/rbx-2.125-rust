@@ -21,8 +21,8 @@ pub fn stub_5d642c() -> ! {
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::MouseCommand::onMouseHover(RBX::UIEvent const&)")]
 #[doc(alias = "__ZN3RBX12MouseCommand12onMouseHoverERKNS_7UIEventE")]
-pub fn stub_5d6438() -> ! {
-    todo!("0x5d6438 __ZN3RBX12MouseCommand12onMouseHoverERKNS_7UIEventE")
+pub fn stub_5d6438() {
+    // IDA 0x5d6438: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5d643c — __ZNK3RBX12MouseCommand13getCursorNameEv
@@ -233,8 +233,9 @@ pub fn stub_5d70b0() -> ! {
 // type: _DWORD __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "RBX::PART::Wedge::getPartType(void)const")]
 #[doc(alias = "__ZNK3RBX4PART5Wedge11getPartTypeEv")]
-pub fn stub_5d70c0() -> ! {
-    todo!("0x5d70c0 __ZNK3RBX4PART5Wedge11getPartTypeEv")
+pub fn stub_5d70c0() -> u32 {
+    // IDA 0x5d70c0: `Thumb movs r0,#4; bx lr` (bytes 04207047) - returns 4 in r0 on the host.
+    4u32
 }
 
 // 0x5d70c4 — __ZThn32_NK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv

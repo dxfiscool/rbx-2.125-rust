@@ -188,8 +188,9 @@ pub fn stub_640480() {
 
 // 0x6404ac — __ZNK3RBX10Reflection14PropDescriptorINS_13SpawnLocationENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpawnLocation,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::SpawnLocation::*)(void)const,void (RBX::SpawnLocation::*)(RBX::BrickColor)>::isReadOnly(void)const")]
-pub fn stub_6404ac() -> ! {
-    todo!("0x6404ac RBX::Reflection::PropDescriptor<RBX::SpawnLocation,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::SpawnLocation::*)(void)const,void (RBX::SpawnLocation::*)(RBX::BrickColor)>::isReadOnly(void)const")
+pub fn stub_6404ac() -> u32 {
+    // IDA 0x6404ac: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x640a7c — __GLOBAL__I_a_261

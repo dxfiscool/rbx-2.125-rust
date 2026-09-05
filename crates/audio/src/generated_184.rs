@@ -1148,8 +1148,8 @@ pub fn stub_43b048() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE13destruct_funcEPc")]
-pub fn stub_43b054() -> ! {
-    todo!("0x43b054 rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::destruct_func(char *)")
+pub fn stub_43b054() {
+    // IDA 0x43b054: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x43b058 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE13convertToItemERKS3_

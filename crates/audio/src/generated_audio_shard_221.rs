@@ -68,8 +68,9 @@ pub fn stub_4fa790() -> ! {
 
 // 0x4fa7b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::hasStringValue(void)const")]
-pub fn stub_4fa7b4() -> ! {
-    todo!("0x4fa7b4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14hasStringValueEv")
+pub fn stub_4fa7b4() -> u32 {
+    // IDA 0x4fa7b4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4fa7b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14getStringValueEPKNS0_13DescribedBaseE
@@ -147,14 +148,16 @@ pub fn stub_4fabe4() -> ! {
 
 // 0x4fac24 — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isReadOnly(void)const")]
-pub fn stub_4fac24() -> ! {
-    todo!("0x4fac24 __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_4fac24() -> u32 {
+    // IDA 0x4fac24: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4fac28 — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isWriteOnly(void)const")]
-pub fn stub_4fac28() -> ! {
-    todo!("0x4fac28 __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_4fac28() -> u32 {
+    // IDA 0x4fac28: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4fac2c — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

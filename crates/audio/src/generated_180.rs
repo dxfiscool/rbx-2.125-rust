@@ -310,16 +310,18 @@ pub fn stub_3b0078() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ArcHandles,RBX::Axes>::GetSetImpl<RBX::Axes (RBX::ArcHandles::*)(void)const,void (RBX::ArcHandles::*)(RBX::Axes)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ArcHandlesENS_4AxesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_3b00a4() -> ! {
-    todo!("0x3b00a4 RBX::Reflection::PropDescriptor<RBX::ArcHandles,RBX::Axes>::GetSetImpl<RBX::Axes (RBX::ArcHandles::*)(void)const,void (RBX::ArcHandles::*)(RBX::Axes)>::isReadOnly(void)const")
+pub fn stub_3b00a4() -> u32 {
+    // IDA 0x3b00a4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3b00a8 — __ZNK3RBX10Reflection14PropDescriptorINS_10ArcHandlesENS_4AxesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ArcHandles,RBX::Axes>::GetSetImpl<RBX::Axes (RBX::ArcHandles::*)(void)const,void (RBX::ArcHandles::*)(RBX::Axes)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ArcHandlesENS_4AxesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_3b00a8() -> ! {
-    todo!("0x3b00a8 RBX::Reflection::PropDescriptor<RBX::ArcHandles,RBX::Axes>::GetSetImpl<RBX::Axes (RBX::ArcHandles::*)(void)const,void (RBX::ArcHandles::*)(RBX::Axes)>::isWriteOnly(void)const")
+pub fn stub_3b00a8() -> u32 {
+    // IDA 0x3b00a8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3b00ac — __ZNK3RBX10Reflection14PropDescriptorINS_10ArcHandlesENS_4AxesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

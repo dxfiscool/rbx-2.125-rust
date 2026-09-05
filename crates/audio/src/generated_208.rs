@@ -87,8 +87,8 @@ pub fn stub_4c7a5c() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::PersonalServerService::PrivilegeType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX21PersonalServerService13PrivilegeTypeEE13destruct_funcEPc")]
-pub fn stub_4c7a68() -> ! {
-    todo!("0x4c7a68 __ZN3rbx14implementation12typed_holderIN3RBX21PersonalServerService13PrivilegeTypeEE13destruct_funcEPc")
+pub fn stub_4c7a68() {
+    // IDA 0x4c7a68: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c7a6c — __ZNK3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE13convertToItemERKS3_
@@ -247,8 +247,8 @@ pub fn stub_4c8484() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SocialService::StuffType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13SocialService9StuffTypeEE13destruct_funcEPc")]
-pub fn stub_4c8490() -> ! {
-    todo!("0x4c8490 __ZN3rbx14implementation12typed_holderIN3RBX13SocialService9StuffTypeEE13destruct_funcEPc")
+pub fn stub_4c8490() {
+    // IDA 0x4c8490: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c8494 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE13convertToItemERKS3_
@@ -407,8 +407,8 @@ pub fn stub_4c8eac() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::KeyframeSequence::Priority>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX16KeyframeSequence8PriorityEE13destruct_funcEPc")]
-pub fn stub_4c8eb8() -> ! {
-    todo!("0x4c8eb8 __ZN3rbx14implementation12typed_holderIN3RBX16KeyframeSequence8PriorityEE13destruct_funcEPc")
+pub fn stub_4c8eb8() {
+    // IDA 0x4c8eb8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c8ebc — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE13convertToItemERKS3_
@@ -566,8 +566,8 @@ pub fn stub_4c98d4() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::BasicPartInstance::LegacyPartType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX17BasicPartInstance14LegacyPartTypeEE13destruct_funcEPc")]
-pub fn stub_4c98e0() -> ! {
-    todo!("0x4c98e0 __ZN3rbx14implementation12typed_holderIN3RBX17BasicPartInstance14LegacyPartTypeEE13destruct_funcEPc")
+pub fn stub_4c98e0() {
+    // IDA 0x4c98e0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c98e4 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE13convertToItemERKS3_
@@ -726,8 +726,8 @@ pub fn stub_4ca2fc() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Humanoid::NameOcclusion>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX8Humanoid13NameOcclusionEE13destruct_funcEPc")]
-pub fn stub_4ca308() -> ! {
-    todo!("0x4ca308 __ZN3rbx14implementation12typed_holderIN3RBX8Humanoid13NameOcclusionEE13destruct_funcEPc")
+pub fn stub_4ca308() {
+    // IDA 0x4ca308: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4ca30c — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE13convertToItemERKS3_
@@ -886,8 +886,8 @@ pub fn stub_4cad24() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Humanoid::Status>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX8Humanoid6StatusEE13destruct_funcEPc")]
-pub fn stub_4cad30() -> ! {
-    todo!("0x4cad30 __ZN3rbx14implementation12typed_holderIN3RBX8Humanoid6StatusEE13destruct_funcEPc")
+pub fn stub_4cad30() {
+    // IDA 0x4cad30: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4cad34 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE13convertToItemERKS3_

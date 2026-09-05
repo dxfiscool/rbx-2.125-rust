@@ -772,8 +772,9 @@ pub fn stub_2d05bc() -> ! {
 // type: _DWORD __fastcall(RBX::AdvLuaDragger *__hidden this, const Instance *)
 #[doc(alias = "RBX::AdvLuaDragger::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX13AdvLuaDragger12askSetParentEPKNS_8InstanceE")]
-pub fn stub_2d07e0() -> ! {
-    todo!("0x2d07e0 RBX::AdvLuaDragger::askSetParent(RBX::Instance const*)const")
+pub fn stub_2d07e0() -> u32 {
+    // IDA 0x2d07e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2d07e4 — __ZNK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv

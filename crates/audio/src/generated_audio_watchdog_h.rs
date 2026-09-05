@@ -14,15 +14,17 @@ const _: () = {
 // 0x5315a8 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiButton,RBX::GuiButton::Style>::GetSetImpl<RBX::GuiButton::Style (RBX::GuiButton::*)(void)const,void (RBX::GuiButton::*)(RBX::GuiButton::Style)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_5315a8() -> ! {
-    todo!("0x5315a8 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_5315a8() -> u32 {
+    // IDA 0x5315a8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5315ac — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiButton,RBX::GuiButton::Style>::GetSetImpl<RBX::GuiButton::Style (RBX::GuiButton::*)(void)const,void (RBX::GuiButton::*)(RBX::GuiButton::Style)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_5315ac() -> ! {
-    todo!("0x5315ac __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_5315ac() -> u32 {
+    // IDA 0x5315ac: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5315b0 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -56,15 +58,17 @@ pub fn stub_531708() {
 // 0x531734 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiButton,bool>::GetSetImpl<bool (RBX::GuiButton::*)(void)const,void (RBX::GuiButton::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_531734() -> ! {
-    todo!("0x531734 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_531734() -> u32 {
+    // IDA 0x531734: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x531738 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiButton,bool>::GetSetImpl<bool (RBX::GuiButton::*)(void)const,void (RBX::GuiButton::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_531738() -> ! {
-    todo!("0x531738 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_531738() -> u32 {
+    // IDA 0x531738: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x53173c — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiButtonEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -91,15 +95,17 @@ pub fn stub_531784() -> ! {
 // 0x531914 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GuiButton>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE10isReadOnlyEv")]
-pub fn stub_531914() -> ! {
-    todo!("0x531914 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE10isReadOnlyEv")
+pub fn stub_531914() -> u32 {
+    // IDA 0x531914: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x531918 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GuiButton>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE11isWriteOnlyEv")]
-pub fn stub_531918() -> ! {
-    todo!("0x531918 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE11isWriteOnlyEv")
+pub fn stub_531918() -> u32 {
+    // IDA 0x531918: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x53191c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9GuiButtonEE8getValueEPKNS0_13DescribedBaseE

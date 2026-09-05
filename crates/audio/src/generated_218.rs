@@ -146,8 +146,9 @@ pub fn stub_5fd7e8() {
 // 0x5fd888 — __ZN3RBX17StarterGuiService15canClientCreateEv
 // type: _DWORD __fastcall(RBX::StarterGuiService *__hidden this)
 #[doc(alias = "RBX::StarterGuiService::canClientCreate(void)")]
-pub fn stub_5fd888() -> ! {
-    todo!("0x5fd888 __ZN3RBX17StarterGuiService15canClientCreateEv")
+pub fn stub_5fd888() -> u32 {
+    // IDA 0x5fd888: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5fd88c — __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_18sStarterGuiServiceEEE12getClassNameEv
@@ -159,8 +160,9 @@ pub fn stub_5fd88c() -> ! {
 // 0x5fd8b4 — __ZN3RBX17StarterGuiService15scriptShouldRunEPNS_10BaseScriptE
 // type: _DWORD __fastcall(RBX::StarterGuiService *__hidden this, RBX::BaseScript *)
 #[doc(alias = "RBX::StarterGuiService::scriptShouldRun(RBX::BaseScript *)")]
-pub fn stub_5fd8b4() -> ! {
-    todo!("0x5fd8b4 __ZN3RBX17StarterGuiService15scriptShouldRunEPNS_10BaseScriptE")
+pub fn stub_5fd8b4() -> u32 {
+    // IDA 0x5fd8b4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fd8b8 — __ZThn32_N3RBX17StarterGuiServiceD1Ev
@@ -221,8 +223,9 @@ pub fn stub_5fdb58() {
 // 0x5fdc88 — __ZN3RBX14CoreGuiService15canClientCreateEv
 // type: _DWORD __fastcall(RBX::CoreGuiService *__hidden this)
 #[doc(alias = "RBX::CoreGuiService::canClientCreate(void)")]
-pub fn stub_5fdc88() -> ! {
-    todo!("0x5fdc88 __ZN3RBX14CoreGuiService15canClientCreateEv")
+pub fn stub_5fdc88() -> u32 {
+    // IDA 0x5fdc88: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fdc8c — __ZNK3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE12getClassNameEv
@@ -234,8 +237,9 @@ pub fn stub_5fdc8c() -> ! {
 // 0x5fdcb4 — __ZN3RBX14CoreGuiService15scriptShouldRunEPNS_10BaseScriptE
 // type: _DWORD __fastcall(RBX::CoreGuiService *__hidden this, RBX::BaseScript *)
 #[doc(alias = "RBX::CoreGuiService::scriptShouldRun(RBX::BaseScript *)")]
-pub fn stub_5fdcb4() -> ! {
-    todo!("0x5fdcb4 __ZN3RBX14CoreGuiService15scriptShouldRunEPNS_10BaseScriptE")
+pub fn stub_5fdcb4() -> u32 {
+    // IDA 0x5fdcb4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fdcb8 — __ZThn32_N3RBX14CoreGuiServiceD1Ev
@@ -333,8 +337,8 @@ pub fn stub_5fe498() -> ! {
 
 // 0x5fe508 — __ZN3rbx14implementation12typed_holderIN3RBX17StarterGuiService11CoreGuiTypeEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::StarterGuiService::CoreGuiType>::destruct_func(char *)")]
-pub fn stub_5fe508() -> ! {
-    todo!("0x5fe508 __ZN3rbx14implementation12typed_holderIN3RBX17StarterGuiService11CoreGuiTypeEE13destruct_funcEPc")
+pub fn stub_5fe508() {
+    // IDA 0x5fe508: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5fe510 — __ZN3rbx8any_castIRKN3RBX17StarterGuiService11CoreGuiTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -634,14 +638,16 @@ pub fn stub_5ffd88() {
 
 // 0x5ffdb4 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_5ffdb4() -> ! {
-    todo!("0x5ffdb4 __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE10isReadOnlyEv")
+pub fn stub_5ffdb4() -> u32 {
+    // IDA 0x5ffdb4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5ffdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_5ffdb8() -> ! {
-    todo!("0x5ffdb8 __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")
+pub fn stub_5ffdb8() -> u32 {
+    // IDA 0x5ffdb8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5ffdbc — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE

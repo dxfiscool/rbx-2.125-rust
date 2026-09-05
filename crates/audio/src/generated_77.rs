@@ -266,14 +266,16 @@ pub fn stub_6d8394() {
 
 // 0x6d83a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_6d83a0() -> ! {
-    todo!("0x6d83a0 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isReadOnly(void)const")
+pub fn stub_6d83a0() -> u32 {
+    // IDA 0x6d83a0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d83a4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_6d83a4() -> ! {
-    todo!("0x6d83a4 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isWriteOnly(void)const")
+pub fn stub_6d83a4() -> u32 {
+    // IDA 0x6d83a4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d83a8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -440,14 +442,16 @@ pub fn stub_6d8ed8() {
 
 // 0x6d8ee0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_6d8ee0() -> ! {
-    todo!("0x6d8ee0 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isReadOnly(void)const")
+pub fn stub_6d8ee0() -> u32 {
+    // IDA 0x6d8ee0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6d8ee4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_6d8ee4() -> ! {
-    todo!("0x6d8ee4 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_6d8ee4() -> u32 {
+    // IDA 0x6d8ee4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d8ee8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE

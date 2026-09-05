@@ -945,10 +945,19 @@ pub struct TimerServiceState {
 /// the +344 grip frame (see `ToolGrip`), the mouse/workspace/joint
 /// cells and the vtables/class descriptor fold away (the grip lives
 /// in its own twin set).
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone)]
 pub struct ToolState {
     pub backend_state: u32,
     pub tooltip: String,
+    pub droppable: bool,
+}
+
+impl Default for ToolState {
+    fn default() -> Self {
+        // IDA 0x67f188: backend cleared, tooltip empty, +393 set
+        // (droppable).
+        Self { backend_state: 0, tooltip: String::new(), droppable: true }
+    }
 }
 /// `G3D::CoordinateFrame` rotation behind `RBX::Tool::grip` (IDA
 /// 0x67e7a0+): row-major rows; column `j` is

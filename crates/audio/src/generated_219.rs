@@ -428,15 +428,17 @@ pub fn stub_603658() {
 // 0x603680 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_603680() -> ! {
-    todo!("0x603680 __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_603680() -> u32 {
+    // IDA 0x603680: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x603684 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_603684() -> ! {
-    todo!("0x603684 __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_603684() -> u32 {
+    // IDA 0x603684: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x603688 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -644,8 +646,9 @@ pub fn stub_604698() -> ! {
 // type: _DWORD __fastcall(RBX::PlayerHUD *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::PlayerHUD::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX9PlayerHUD12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6047e0() -> ! {
-    todo!("0x6047e0 __ZNK3RBX9PlayerHUD12askSetParentEPKNS_8InstanceE")
+pub fn stub_6047e0() -> u32 {
+    // IDA 0x6047e0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6047e4 — __ZNK3RBX9PlayerHUD11askAddChildEPKNS_8InstanceE

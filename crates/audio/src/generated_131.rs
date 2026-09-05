@@ -99,8 +99,9 @@ pub fn stub_22d940() -> ! {
 // 0x22d950 — _T1_Driver_Init
 // type: int()
 #[doc(alias = "_T1_Driver_Init")]
-pub fn stub_22d950() -> ! {
-    todo!("0x22d950 _T1_Driver_Init")
+pub fn stub_22d950() -> u32 {
+    // IDA 0x22d950: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x22d958 — _T1_Driver_Done
@@ -218,8 +219,9 @@ pub fn stub_22eda0() -> ! {
 // 0x22edb0 — _t42_ps_has_glyph_names
 // type: int()
 #[doc(alias = "_t42_ps_has_glyph_names")]
-pub fn stub_22edb0() -> ! {
-    todo!("0x22edb0 _t42_ps_has_glyph_names")
+pub fn stub_22edb0() -> u32 {
+    // IDA 0x22edb0: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x22edb8 — _t42_ps_get_font_private
@@ -484,8 +486,9 @@ pub fn stub_232110() -> ! {
 // 0x23212c — -[InputDelegate canBecomeFirstResponder]
 // type: char __cdecl(InputDelegate *self, SEL)
 #[doc(alias = "-[InputDelegate canBecomeFirstResponder]")]
-pub fn stub_23212c() -> ! {
-    todo!("0x23212c -[InputDelegate canBecomeFirstResponder]")
+pub fn stub_23212c() -> u32 {
+    // IDA 0x23212c: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x232134 — -[InputDelegate accelerometerObject]

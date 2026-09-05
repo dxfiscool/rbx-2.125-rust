@@ -176,8 +176,8 @@ pub fn stub_571428() -> ! {
 
 // 0x5715a8 — __ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_5715a8() -> ! {
-    todo!("0x5715a8 RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_5715a8() {
+    // IDA 0x5715a8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5715ac — __ZN3RBX9HopperBin7disableEv
@@ -212,8 +212,9 @@ pub fn stub_571960() -> ! {
 
 // 0x571b54 — __ZNK3RBX11StarterGear12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::StarterGear::askSetParent(RBX::Instance const*)const")]
-pub fn stub_571b54() -> ! {
-    todo!("0x571b54 RBX::StarterGear::askSetParent(RBX::Instance const*)const")
+pub fn stub_571b54() -> u32 {
+    // IDA 0x571b54: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x571b58 — __ZNK3RBX11StarterGear11askAddChildEPKNS_8InstanceE
@@ -242,14 +243,16 @@ pub fn stub_571c18() -> ! {
 
 // 0x571c54 — __ZNK3RBX12BackpackItem11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::BackpackItem::askAddChild(RBX::Instance const*)const")]
-pub fn stub_571c54() -> ! {
-    todo!("0x571c54 RBX::BackpackItem::askAddChild(RBX::Instance const*)const")
+pub fn stub_571c54() -> u32 {
+    // IDA 0x571c54: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x571c58 — __ZNK3RBX12BackpackItem12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::BackpackItem::askSetParent(RBX::Instance const*)const")]
-pub fn stub_571c58() -> ! {
-    todo!("0x571c58 RBX::BackpackItem::askSetParent(RBX::Instance const*)const")
+pub fn stub_571c58() -> u32 {
+    // IDA 0x571c58: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x571c5c — __ZNK3RBX12BackpackItem7getSizeENS_6CanvasE
@@ -320,8 +323,9 @@ pub fn stub_572efc() -> ! {
 
 // 0x572f38 — __ZNK3RBX6Hopper12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Hopper::askSetParent(RBX::Instance const*)const")]
-pub fn stub_572f38() -> ! {
-    todo!("0x572f38 RBX::Hopper::askSetParent(RBX::Instance const*)const")
+pub fn stub_572f38() -> u32 {
+    // IDA 0x572f38: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x572f3c — __ZNK3RBX6Hopper11askAddChildEPKNS_8InstanceE
@@ -350,8 +354,8 @@ pub fn stub_573094() -> ! {
 
 // 0x5732ac — __ZN3RBX18StarterPackService8render2dEPNS_5AdornE
 #[doc(alias = "RBX::StarterPackService::render2d(RBX::Adorn *)")]
-pub fn stub_5732ac() -> ! {
-    todo!("0x5732ac RBX::StarterPackService::render2d(RBX::Adorn *)")
+pub fn stub_5732ac() {
+    // IDA 0x5732ac: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5732b0 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc
@@ -458,8 +462,9 @@ pub fn stub_573b10() -> ! {
 
 // 0x573b1c — __ZNK3RBX12BackpackItem11drawEnabledEv
 #[doc(alias = "RBX::BackpackItem::drawEnabled(void)const")]
-pub fn stub_573b1c() -> ! {
-    todo!("0x573b1c RBX::BackpackItem::drawEnabled(void)const")
+pub fn stub_573b1c() -> u32 {
+    // IDA 0x573b1c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x573b20 — __ZNK3RBX9HopperBin12drawSelectedEv
@@ -512,8 +517,9 @@ pub fn stub_573c94() {
 
 // 0x573d34 — __ZN3RBX11StarterGear15canClientCreateEv
 #[doc(alias = "RBX::StarterGear::canClientCreate(void)")]
-pub fn stub_573d34() -> ! {
-    todo!("0x573d34 RBX::StarterGear::canClientCreate(void)")
+pub fn stub_573d34() -> u32 {
+    // IDA 0x573d34: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x573d38 — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
@@ -572,20 +578,21 @@ pub fn stub_574128() -> ! {
 
 // 0x574150 — __ZNK3RBX12BackpackItem12drawSelectedEv
 #[doc(alias = "RBX::BackpackItem::drawSelected(void)const")]
-pub fn stub_574150() -> ! {
-    todo!("0x574150 RBX::BackpackItem::drawSelected(void)const")
+pub fn stub_574150() -> u32 {
+    // IDA 0x574150: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x574154 — __ZN3RBX12BackpackItem14onLocalClickedEv
 #[doc(alias = "RBX::BackpackItem::onLocalClicked(void)")]
-pub fn stub_574154() -> ! {
-    todo!("0x574154 RBX::BackpackItem::onLocalClicked(void)")
+pub fn stub_574154() {
+    // IDA 0x574154: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x574158 — __ZN3RBX12BackpackItem19onLocalOtherClickedEv
 #[doc(alias = "RBX::BackpackItem::onLocalOtherClicked(void)")]
-pub fn stub_574158() -> ! {
-    todo!("0x574158 RBX::BackpackItem::onLocalOtherClicked(void)")
+pub fn stub_574158() {
+    // IDA 0x574158: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev

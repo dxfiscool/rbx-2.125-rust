@@ -34,15 +34,17 @@ pub fn stub_5b8e70() -> ! {
 // 0x5b8eb0 — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,RBX::KeyframeSequence::Priority>::GetSetImpl<RBX::KeyframeSequence::Priority (RBX::KeyframeSequence::*)(void)const,void (RBX::KeyframeSequence::*)(RBX::KeyframeSequence::Priority)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_5b8eb0() -> ! {
-    todo!("0x5b8eb0 __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_5b8eb0() -> u32 {
+    // IDA 0x5b8eb0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b8eb4 — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,RBX::KeyframeSequence::Priority>::GetSetImpl<RBX::KeyframeSequence::Priority (RBX::KeyframeSequence::*)(void)const,void (RBX::KeyframeSequence::*)(RBX::KeyframeSequence::Priority)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_5b8eb4() -> ! {
-    todo!("0x5b8eb4 __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_5b8eb4() -> u32 {
+    // IDA 0x5b8eb4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b8eb8 — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -76,15 +78,17 @@ pub fn stub_5b9010() {
 // 0x5b903c — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,bool>::GetSetImpl<bool (RBX::KeyframeSequence::*)(void)const,void (RBX::KeyframeSequence::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_5b903c() -> ! {
-    todo!("0x5b903c __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_5b903c() -> u32 {
+    // IDA 0x5b903c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b9040 — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,bool>::GetSetImpl<bool (RBX::KeyframeSequence::*)(void)const,void (RBX::KeyframeSequence::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_5b9040() -> ! {
-    todo!("0x5b9040 __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_5b9040() -> u32 {
+    // IDA 0x5b9040: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b9044 — __ZNK3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -216,8 +220,9 @@ pub fn stub_5ba450() -> ! {
 // 0x5ba624 — __ZN3RBXL11itIsInScopeEPNS_8InstanceE
 #[doc(alias = "RBX::itIsInScope(RBX::Instance *)")]
 #[doc(alias = "__ZN3RBXL11itIsInScopeEPNS_8InstanceE")]
-pub fn stub_5ba624() -> ! {
-    todo!("0x5ba624 __ZN3RBXL11itIsInScopeEPNS_8InstanceE")
+pub fn stub_5ba624() -> u32 {
+    // IDA 0x5ba624: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5ba628 — __ZN3RBX24KeyframeSequenceProvider26privateGetKeyframeSequenceENS_9ContentIdEb

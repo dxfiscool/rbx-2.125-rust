@@ -140,8 +140,9 @@ pub fn stub_1f0220() -> ! {
 
 // 0x1f0230 — _cid_driver_init
 #[doc(alias = "_cid_driver_init")]
-pub fn stub_1f0230() -> ! {
-    todo!("0x1f0230 _cid_driver_init")
+pub fn stub_1f0230() -> u32 {
+    // IDA 0x1f0230: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x1f0238 — _cid_driver_done

@@ -584,8 +584,8 @@ pub fn stub_84acc0() -> ! {
 
 // 0x84acd0 — __ZN3RBX23GlobalBasicSettingsItemINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEEE13resetSettingsEv
 #[doc(alias = "__ZN3RBX23GlobalBasicSettingsItemINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEEE13resetSettingsEv")]
-pub fn stub_84acd0() -> ! {
-    todo!("0x84acd0 __ZN3RBX23GlobalBasicSettingsItemINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEEE13resetSettingsEv")
+pub fn stub_84acd0() {
+    // IDA 0x84acd0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x84ad80 — __ZThn32_NK3RBX14FactoryProductINS_17GameBasicSettingsENS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEE12getClassNameEv

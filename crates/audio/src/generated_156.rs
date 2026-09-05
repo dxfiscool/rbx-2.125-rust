@@ -543,15 +543,15 @@ pub fn stub_58bb0() -> ! {
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameFailure]")]
-pub fn stub_58d48() -> ! {
-    todo!("0x58d48 -[RobloxPageViewController handleStartGameFailure]")
+pub fn stub_58d48() {
+    // IDA 0x58d48: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x58d4c — -[RobloxPageViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameSuccess]")]
-pub fn stub_58d4c() -> ! {
-    todo!("0x58d4c -[RobloxPageViewController handleStartGameSuccess]")
+pub fn stub_58d4c() {
+    // IDA 0x58d4c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x58d50 — -[RobloxPageViewController initWithCoder:]
@@ -578,8 +578,9 @@ pub fn stub_58e20() -> ! {
 // 0x58e4c — -[RobloxPageViewController shouldAutorotate]
 // type: char __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotate]")]
-pub fn stub_58e4c() -> ! {
-    todo!("0x58e4c -[RobloxPageViewController shouldAutorotate]")
+pub fn stub_58e4c() -> u32 {
+    // IDA 0x58e4c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x58e50 — -[RobloxPageViewController supportedInterfaceOrientations]

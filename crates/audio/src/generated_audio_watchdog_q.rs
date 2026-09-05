@@ -20,8 +20,8 @@ pub fn stub_580740() -> ! {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, int)
 #[doc(alias = "RBX::InsertService::backendApproveAssetId(int)")]
 #[doc(alias = "__ZN3RBX13InsertService21backendApproveAssetIdEi")]
-pub fn stub_580748() -> ! {
-    todo!("0x580748 __ZN3RBX13InsertService21backendApproveAssetIdEi")
+pub fn stub_580748() {
+    // IDA 0x580748: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x58074c — __ZN3RBX13InsertService28backendApproveAssetVersionIdEi
@@ -29,8 +29,8 @@ pub fn stub_580748() -> ! {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, int)
 #[doc(alias = "RBX::InsertService::backendApproveAssetVersionId(int)")]
 #[doc(alias = "__ZN3RBX13InsertService28backendApproveAssetVersionIdEi")]
-pub fn stub_58074c() -> ! {
-    todo!("0x58074c __ZN3RBX13InsertService28backendApproveAssetVersionIdEi")
+pub fn stub_58074c() {
+    // IDA 0x58074c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x580750 — __ZN3RBX13InsertService13getFreeModelsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
@@ -70,8 +70,8 @@ pub fn stub_580db4() -> ! {
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, bool, bool)
 #[doc(alias = "RBX::InsertService::setAdvancedResults(bool,bool)")]
 #[doc(alias = "__ZN3RBX13InsertService18setAdvancedResultsEbb")]
-pub fn stub_581000() -> ! {
-    todo!("0x581000 __ZN3RBX13InsertService18setAdvancedResultsEbb")
+pub fn stub_581000() {
+    // IDA 0x581000: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x581004 — __ZN3RBX13InsertService13getCollectionEiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE

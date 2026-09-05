@@ -859,8 +859,8 @@ pub fn stub_2676c4() -> ! {
 // type: void()
 #[doc(alias = "RBX::Reflection::Variant & RBX::Reflection::Variant::convert<RBX::Reflection::Variant>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant7convertIS1_EERT_v")]
-pub fn stub_2677a8() -> ! {
-    todo!("0x2677a8 RBX::Reflection::Variant & RBX::Reflection::Variant::convert<RBX::Reflection::Variant>(void)")
+pub fn stub_2677a8() {
+    // IDA 0x2677a8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x2677ac — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEERT_v

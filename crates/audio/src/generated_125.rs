@@ -141,8 +141,9 @@ pub fn stub_133dac() -> ! {
 // 0x133db8 — _dummy_consume_data
 // type: void()
 #[doc(alias = "_dummy_consume_data")]
-pub fn stub_133db8() -> ! {
-    todo!("0x133db8 _dummy_consume_data")
+pub fn stub_133db8() -> u32 {
+    // IDA 0x133db8: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x133dc0 — _consume_data

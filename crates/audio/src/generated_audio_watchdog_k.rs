@@ -447,8 +447,8 @@ pub fn stub_547708() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GuiService::CenterDialogType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiService::CenterDialogType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10GuiService16CenterDialogTypeEE13destruct_funcEPc")]
-pub fn stub_547714() -> ! {
-    todo!("0x547714 __ZN3rbx14implementation12typed_holderIN3RBX10GuiService16CenterDialogTypeEE13destruct_funcEPc")
+pub fn stub_547714() {
+    // IDA 0x547714: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x547718 — __ZNK3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE13convertToItemERKS3_
@@ -521,8 +521,8 @@ pub fn stub_547d80() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GuiService::SpecialKey>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiService::SpecialKey>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10GuiService10SpecialKeyEE13destruct_funcEPc")]
-pub fn stub_547d8c() -> ! {
-    todo!("0x547d8c __ZN3rbx14implementation12typed_holderIN3RBX10GuiService10SpecialKeyEE13destruct_funcEPc")
+pub fn stub_547d8c() {
+    // IDA 0x547d8c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x547d90 — __ZNK3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE13convertToItemERKS3_

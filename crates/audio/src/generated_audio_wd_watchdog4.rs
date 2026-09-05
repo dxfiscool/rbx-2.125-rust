@@ -131,16 +131,18 @@ pub fn stub_6240b8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_6240c0() -> ! {
-    todo!("0x6240c0 __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_6240c0() -> u32 {
+    // IDA 0x6240c0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6240c4 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_6240c4() -> ! {
-    todo!("0x6240c4 __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_6240c4() -> u32 {
+    // IDA 0x6240c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6240c8 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -527,16 +529,18 @@ pub fn stub_626b88() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE10isReadOnlyEv")]
-pub fn stub_626bb4() -> ! {
-    todo!("0x626bb4 __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE10isReadOnlyEv")
+pub fn stub_626bb4() -> u32 {
+    // IDA 0x626bb4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x626bb8 — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv")]
-pub fn stub_626bb8() -> ! {
-    todo!("0x626bb8 __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv")
+pub fn stub_626bb8() -> u32 {
+    // IDA 0x626bb8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x626bbc — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
@@ -895,8 +899,9 @@ pub fn stub_629090() -> ! {
 // demangled: RBX::SkateboardPlatform::shouldRender2d(void)const
 #[doc(alias = "RBX::SkateboardPlatform::shouldRender2d(void)const")]
 #[doc(alias = "__ZNK3RBX18SkateboardPlatform14shouldRender2dEv")]
-pub fn stub_6290fc() -> ! {
-    todo!("0x6290fc __ZNK3RBX18SkateboardPlatform14shouldRender2dEv")
+pub fn stub_6290fc() -> u32 {
+    // IDA 0x6290fc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x629100 — __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv
@@ -911,8 +916,8 @@ pub fn stub_629100() {
 // demangled: RBX::SkateboardPlatform::render2d(RBX::Adorn *)
 #[doc(alias = "RBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE")]
-pub fn stub_629104() -> ! {
-    todo!("0x629104 __ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
+pub fn stub_629104() {
+    // IDA 0x629104: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x629108 — __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE

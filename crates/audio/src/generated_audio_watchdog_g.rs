@@ -348,8 +348,8 @@ pub fn stub_530084() {
 // 0x530158 — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE21connectSignalListenerEv
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::connectSignalListener(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE21connectSignalListenerEv")]
-pub fn stub_530158() -> ! {
-    todo!("0x530158 __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEE21connectSignalListenerEv")
+pub fn stub_530158() {
+    // IDA 0x530158: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x53015c — __ZN3RBX19EventReplicatorImplILi0ENS_9GuiButtonEFvvEE21connectSignalListenerEv
@@ -439,8 +439,8 @@ pub fn stub_5305b8() {
 // 0x53068c — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE21connectSignalListenerEv
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::connectSignalListener(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE21connectSignalListenerEv")]
-pub fn stub_53068c() -> ! {
-    todo!("0x53068c __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEE21connectSignalListenerEv")
+pub fn stub_53068c() {
+    // IDA 0x53068c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x530690 — __ZN3RBX10Reflection9DescribedINS_9GuiButtonELZNS_10sGuiButtonEENS_17NonFactoryProductINS_9GuiObjectELZNS_10sGuiButtonEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -608,8 +608,9 @@ pub fn stub_531114() -> ! {
 // 0x531138 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9GuiButtonENS2_5StyleEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiButton,RBX::GuiButton::Style>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9GuiButtonENS2_5StyleEE14hasStringValueEv")]
-pub fn stub_531138() -> ! {
-    todo!("0x531138 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9GuiButtonENS2_5StyleEE14hasStringValueEv")
+pub fn stub_531138() -> u32 {
+    // IDA 0x531138: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x53113c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9GuiButtonENS2_5StyleEE14getStringValueEPKNS0_13DescribedBaseE

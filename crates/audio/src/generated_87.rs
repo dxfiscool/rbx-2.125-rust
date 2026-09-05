@@ -138,8 +138,8 @@ pub fn stub_b9a3e4() -> ! {
 // 0xb9a3e8 — __ZN3RBX7MeshGen13releaseVertexEi
 // type: void __fastcall(RBX::MeshGen *this, int)
 #[doc(alias = "RBX::MeshGen::releaseVertex(int)")]
-pub fn stub_b9a3e8() -> ! {
-    todo!("0xb9a3e8 RBX::MeshGen::releaseVertex(int)")
+pub fn stub_b9a3e8() {
+    // IDA 0xb9a3e8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xb9a3ec — __ZN3RBX26ManualObjectMeshGenAdapter9getVertexEi
@@ -215,8 +215,8 @@ pub fn stub_b9a7f4() -> ! {
 // 0xb9a918 — __ZN3RBX7MeshGen20popVerticesTransformEv
 // type: void __fastcall(RBX::MeshGen *this)
 #[doc(alias = "RBX::MeshGen::popVerticesTransform(void)")]
-pub fn stub_b9a918() -> ! {
-    todo!("0xb9a918 RBX::MeshGen::popVerticesTransform(void)")
+pub fn stub_b9a918() {
+    // IDA 0xb9a918: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xb9aa18 — __ZN3RBX5AdornD1Ev
@@ -229,8 +229,8 @@ pub fn stub_b9aa18() {
 // 0xb9aa28 — __ZN3RBX5Adorn14postSubmitPassEv
 // type: void __fastcall(RBX::Adorn *this)
 #[doc(alias = "RBX::Adorn::postSubmitPass(void)")]
-pub fn stub_b9aa28() -> ! {
-    todo!("0xb9aa28 RBX::Adorn::postSubmitPass(void)")
+pub fn stub_b9aa28() {
+    // IDA 0xb9aa28: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xb9aa74 — ___cxx_global_array_dtor_0

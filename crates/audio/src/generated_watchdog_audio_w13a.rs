@@ -282,8 +282,9 @@ pub fn stub_ce1068() -> ! {
 // type: _DWORD __fastcall(Ogre::Material *__hidden this)
 #[doc(alias = "Ogre::Material::calculateSize(void)const")]
 #[doc(alias = "__ZNK4Ogre8Material13calculateSizeEv")]
-pub fn stub_ce10c0() -> ! {
-    todo!("0xce10c0 __ZNK4Ogre8Material13calculateSizeEv")
+pub fn stub_ce10c0() -> u32 {
+    // IDA 0xce10c0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xce10e0 — __ZNSt8_Rb_treeItSt4pairIKtPSt3mapItPN4Ogre9TechniqueESt4lessItENS3_12STLAllocatorIS0_IS1_S5_ENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISG_ES7_NS8_ISG_SC_EEE8_M_eraseEPSt13_Rb_tree_nodeISG_E

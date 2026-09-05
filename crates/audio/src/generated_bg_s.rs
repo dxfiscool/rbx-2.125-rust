@@ -440,15 +440,17 @@ pub fn stub_5b2fb0() {
 // 0x5b2fdc — __ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Keyframe,float>::GetSetImpl<float (RBX::Keyframe::*)(void)const,void (RBX::Keyframe::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_5b2fdc() -> ! {
-    todo!("0x5b2fdc __ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_5b2fdc() -> u32 {
+    // IDA 0x5b2fdc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b2fe0 — __ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Keyframe,float>::GetSetImpl<float (RBX::Keyframe::*)(void)const,void (RBX::Keyframe::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_5b2fe0() -> ! {
-    todo!("0x5b2fe0 __ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_5b2fe0() -> u32 {
+    // IDA 0x5b2fe0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5b2fe4 — __ZNK3RBX10Reflection14PropDescriptorINS_8KeyframeEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE

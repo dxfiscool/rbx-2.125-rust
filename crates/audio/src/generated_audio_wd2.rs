@@ -41,8 +41,8 @@ pub fn stub_615fb0() -> ! {
 // demangled: RBX::SeatImpl<RBX::BasicPartInstance>::onSeatedChanged(bool,RBX::Humanoid *)
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::onSeatedChanged(bool,RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_17BasicPartInstanceEE15onSeatedChangedEbPNS_8HumanoidE")]
-pub fn stub_615fc0() -> ! {
-    todo!("0x615fc0 __ZN3RBX8SeatImplINS_17BasicPartInstanceEE15onSeatedChangedEbPNS_8HumanoidE")
+pub fn stub_615fc0() {
+    // IDA 0x615fc0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x615fc4 — __ZThn32_NK3RBX14FactoryProductINS_4SeatENS_8SeatImplINS_17BasicPartInstanceEEELZNS_5sSeatEENS_8InstanceEE12getClassNameEv
@@ -621,16 +621,18 @@ pub fn stub_618890() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv")]
-pub fn stub_6188bc() -> ! {
-    todo!("0x6188bc __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv")
+pub fn stub_6188bc() -> u32 {
+    // IDA 0x6188bc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6188c0 — __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Seat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::BasicPartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::BasicPartInstance>::*)(bool const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv")]
-pub fn stub_6188c0() -> ! {
-    todo!("0x6188c0 __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv")
+pub fn stub_6188c0() -> u32 {
+    // IDA 0x6188c0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6188c4 — __ZNK3RBX10Reflection14PropDescriptorINS_4SeatEbE10GetSetImplIMNS_8SeatImplINS_17BasicPartInstanceEEEKFRKbvEMS7_FvS9_EE8getValueEPKNS0_13DescribedBaseE

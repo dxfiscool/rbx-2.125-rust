@@ -516,15 +516,17 @@ pub fn stub_60fad0() {
 // 0x60fafc — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_60fafc() -> ! {
-    todo!("0x60fafc __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_60fafc() -> u32 {
+    // IDA 0x60fafc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x60fb00 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,std::string>::GetSetImpl<std::string (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_60fb00() -> ! {
-    todo!("0x60fb00 __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_60fb00() -> u32 {
+    // IDA 0x60fb00: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x60fb04 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
@@ -558,15 +560,17 @@ pub fn stub_60fd84() {
 // 0x60fdb0 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_60fdb0() -> ! {
-    todo!("0x60fdb0 __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_60fdb0() -> u32 {
+    // IDA 0x60fdb0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x60fdb4 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scale9Frame,G3D::Vector2int16>::GetSetImpl<G3D::Vector2int16 (RBX::Scale9Frame::*)(void)const,void (RBX::Scale9Frame::*)(G3D::Vector2int16)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_60fdb4() -> ! {
-    todo!("0x60fdb4 __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_60fdb4() -> u32 {
+    // IDA 0x60fdb4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x60fdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_11Scale9FrameEN3G3D12Vector2int16EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -663,8 +667,9 @@ pub fn stub_61054c() -> ! {
 // 0x610588 — __ZNK3RBX9ScreenGui26canProcessMeAndDescendantsEv
 #[doc(alias = "RBX::ScreenGui::canProcessMeAndDescendants(void)const")]
 #[doc(alias = "__ZNK3RBX9ScreenGui26canProcessMeAndDescendantsEv")]
-pub fn stub_610588() -> ! {
-    todo!("0x610588 __ZNK3RBX9ScreenGui26canProcessMeAndDescendantsEv")
+pub fn stub_610588() -> u32 {
+    // IDA 0x610588: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x61058c — __ZN3RBX9ScreenGui17onAncestorChangedERKNS_15AncestorChangedE

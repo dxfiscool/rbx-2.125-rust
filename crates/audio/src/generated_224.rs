@@ -66,14 +66,16 @@ pub fn stub_6dccc4() {
 // 0x6dccf4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_6dccf4() -> ! {
-    todo!("0x6dccf4 __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_6dccf4() -> u32 {
+    // IDA 0x6dccf4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x6dccf8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_6dccf8() -> ! {
-    todo!("0x6dccf8 __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_6dccf8() -> u32 {
+    // IDA 0x6dccf8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x6dccfc — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -102,14 +104,16 @@ pub fn stub_6dce5c() {
 // 0x6dce8c — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_6dce8c() -> ! {
-    todo!("0x6dce8c __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")
+pub fn stub_6dce8c() -> u32 {
+    // IDA 0x6dce8c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x6dce90 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_6dce90() -> ! {
-    todo!("0x6dce90 __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")
+pub fn stub_6dce90() -> u32 {
+    // IDA 0x6dce90: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x6dce94 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -150,14 +154,14 @@ pub fn stub_6dcf84() -> ! {
 // 0x6dd04c — __ZN3RBX16AdvArrowToolBase27getSelectedTargetPrimitivesERSt6vectorIPNS_9PrimitiveESaIS3_EE
 #[doc(alias = "RBX::AdvArrowToolBase::getSelectedTargetPrimitives(std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *>> &)")]
 #[doc(alias = "__ZN3RBX16AdvArrowToolBase27getSelectedTargetPrimitivesERSt6vectorIPNS_9PrimitiveESaIS3_EE")]
-pub fn stub_6dd04c() -> ! {
-    todo!("0x6dd04c __ZN3RBX16AdvArrowToolBase27getSelectedTargetPrimitivesERSt6vectorIPNS_9PrimitiveESaIS3_EE")
+pub fn stub_6dd04c() {
+    // IDA 0x6dd04c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 // 0x6dd050 — __ZN3RBX12AdvArrowTool9setCursorESs
 #[doc(alias = "RBX::AdvArrowTool::setCursor(std::string)")]
 #[doc(alias = "__ZN3RBX12AdvArrowTool9setCursorESs")]
-pub fn stub_6dd050() -> ! {
-    todo!("0x6dd050 __ZN3RBX12AdvArrowTool9setCursorESs")
+pub fn stub_6dd050() {
+    // IDA 0x6dd050: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 // 0x6dd054 — __ZThn36_N3RBX12AdvArrowToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
@@ -198,8 +202,8 @@ pub fn stub_6dd2d4() {
 // 0x6dd374 — __ZN3RBX16AdvArrowToolBase9setCursorESs
 #[doc(alias = "RBX::AdvArrowToolBase::setCursor(std::string)")]
 #[doc(alias = "__ZN3RBX16AdvArrowToolBase9setCursorESs")]
-pub fn stub_6dd374() -> ! {
-    todo!("0x6dd374 __ZN3RBX16AdvArrowToolBase9setCursorESs")
+pub fn stub_6dd374() {
+    // IDA 0x6dd374: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 // 0x6dd378 — __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]

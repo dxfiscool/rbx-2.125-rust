@@ -114,22 +114,25 @@ pub fn stub_4ff9e0() {
 // 0x4ffa80 — __ZNK3RBX8NullVerb9isEnabledEv
 // type: _DWORD __fastcall(RBX::NullVerb *__hidden this)
 #[doc(alias = "RBX::NullVerb::isEnabled(void)const")]
-pub fn stub_4ffa80() -> ! {
-    todo!("0x4ffa80 __ZNK3RBX8NullVerb9isEnabledEv")
+pub fn stub_4ffa80() -> u32 {
+    // IDA 0x4ffa80: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ffa84 — __ZNK3RBX4Verb9isCheckedEv
 // type: _DWORD __fastcall(RBX::Verb *__hidden this)
 #[doc(alias = "RBX::Verb::isChecked(void)const")]
-pub fn stub_4ffa84() -> ! {
-    todo!("0x4ffa84 __ZNK3RBX4Verb9isCheckedEv")
+pub fn stub_4ffa84() -> u32 {
+    // IDA 0x4ffa84: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ffa88 — __ZNK3RBX4Verb10isSelectedEv
 // type: _DWORD __fastcall(RBX::Verb *__hidden this)
 #[doc(alias = "RBX::Verb::isSelected(void)const")]
-pub fn stub_4ffa88() -> ! {
-    todo!("0x4ffa88 __ZNK3RBX4Verb10isSelectedEv")
+pub fn stub_4ffa88() -> u32 {
+    // IDA 0x4ffa88: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ffa8c — __ZNK3RBX4Verb7getTextEv
@@ -141,8 +144,8 @@ pub fn stub_4ffa8c() -> ! {
 
 // 0x4ffaa0 — __ZN3RBX8NullVerb4doItEPNS_10IDataStateE
 #[doc(alias = "RBX::NullVerb::doIt(RBX::IDataState *)")]
-pub fn stub_4ffaa0() -> ! {
-    todo!("0x4ffaa0 __ZN3RBX8NullVerb4doItEPNS_10IDataStateE")
+pub fn stub_4ffaa0() {
+    // IDA 0x4ffaa0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4ffaa4 — __ZN3RBX20CameraZoomOutCommandC2EPNS_9WorkspaceE
@@ -507,8 +510,9 @@ pub fn stub_502cec() -> ! {
 
 // 0x502d10 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")]
-pub fn stub_502d10() -> ! {
-    todo!("0x502d10 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14hasStringValueEv")
+pub fn stub_502d10() -> u32 {
+    // IDA 0x502d10: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x502d14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14getStringValueEPKNS0_13DescribedBaseE
@@ -586,14 +590,16 @@ pub fn stub_503140() -> ! {
 
 // 0x503180 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")]
-pub fn stub_503180() -> ! {
-    todo!("0x503180 __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_503180() -> u32 {
+    // IDA 0x503180: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503184 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")]
-pub fn stub_503184() -> ! {
-    todo!("0x503184 __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_503184() -> u32 {
+    // IDA 0x503184: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503188 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

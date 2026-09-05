@@ -34,8 +34,8 @@ pub fn stub_4b6e68() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Explosion::ExplosionType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Explosion::ExplosionType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9Explosion13ExplosionTypeEE13destruct_funcEPc")]
-pub fn stub_4b6ed4() -> ! {
-    todo!("0x4b6ed4 __ZN3rbx14implementation12typed_holderIN3RBX9Explosion13ExplosionTypeEE13destruct_funcEPc")
+pub fn stub_4b6ed4() {
+    // IDA 0x4b6ed4: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -180,8 +180,8 @@ pub fn stub_4b77fc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Voxel::WaterCellDirection>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Voxel::WaterCellDirection>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Voxel18WaterCellDirectionEE13destruct_funcEPc")]
-pub fn stub_4b7808() -> ! {
-    todo!("0x4b7808 __ZN3rbx14implementation12typed_holderIN3RBX5Voxel18WaterCellDirectionEE13destruct_funcEPc")
+pub fn stub_4b7808() {
+    // IDA 0x4b7808: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -346,8 +346,8 @@ pub fn stub_4b8224() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Voxel::WaterCellForce>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Voxel14WaterCellForceEE13destruct_funcEPc")]
-pub fn stub_4b8230() -> ! {
-    todo!("0x4b8230 __ZN3rbx14implementation12typed_holderIN3RBX5Voxel14WaterCellForceEE13destruct_funcEPc")
+pub fn stub_4b8230() {
+    // IDA 0x4b8230: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -511,8 +511,8 @@ pub fn stub_4b8c4c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Voxel::CellOrientation>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Voxel::CellOrientation>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Voxel15CellOrientationEE13destruct_funcEPc")]
-pub fn stub_4b8c58() -> ! {
-    todo!("0x4b8c58 __ZN3rbx14implementation12typed_holderIN3RBX5Voxel15CellOrientationEE13destruct_funcEPc")
+pub fn stub_4b8c58() {
+    // IDA 0x4b8c58: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -675,8 +675,8 @@ pub fn stub_4b9674() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Voxel::CellBlock>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Voxel::CellBlock>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Voxel9CellBlockEE13destruct_funcEPc")]
-pub fn stub_4b9680() -> ! {
-    todo!("0x4b9680 __ZN3rbx14implementation12typed_holderIN3RBX5Voxel9CellBlockEE13destruct_funcEPc")
+pub fn stub_4b9680() {
+    // IDA 0x4b9680: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -840,8 +840,8 @@ pub fn stub_4ba09c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Voxel::CellMaterial>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Voxel::CellMaterial>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Voxel12CellMaterialEE13destruct_funcEPc")]
-pub fn stub_4ba0a8() -> ! {
-    todo!("0x4ba0a8 __ZN3rbx14implementation12typed_holderIN3RBX5Voxel12CellMaterialEE13destruct_funcEPc")
+pub fn stub_4ba0a8() {
+    // IDA 0x4ba0a8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -1004,8 +1004,8 @@ pub fn stub_4baac4() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::DialogRoot::DialogTone>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DialogRoot::DialogTone>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10DialogRoot10DialogToneEE13destruct_funcEPc")]
-pub fn stub_4baad0() -> ! {
-    todo!("0x4baad0 __ZN3rbx14implementation12typed_holderIN3RBX10DialogRoot10DialogToneEE13destruct_funcEPc")
+pub fn stub_4baad0() {
+    // IDA 0x4baad0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -1168,8 +1168,8 @@ pub fn stub_4bb4ec() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::DialogRoot::DialogPurpose>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DialogRoot::DialogPurpose>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX10DialogRoot13DialogPurposeEE13destruct_funcEPc")]
-pub fn stub_4bb4f8() -> ! {
-    todo!("0x4bb4f8 __ZN3rbx14implementation12typed_holderIN3RBX10DialogRoot13DialogPurposeEE13destruct_funcEPc")
+pub fn stub_4bb4f8() {
+    // IDA 0x4bb4f8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -1332,8 +1332,8 @@ pub fn stub_4bbf14() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GuiButton::Style>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiButton::Style>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9GuiButton5StyleEE13destruct_funcEPc")]
-pub fn stub_4bbf20() -> ! {
-    todo!("0x4bbf20 __ZN3rbx14implementation12typed_holderIN3RBX9GuiButton5StyleEE13destruct_funcEPc")
+pub fn stub_4bbf20() {
+    // IDA 0x4bbf20: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 

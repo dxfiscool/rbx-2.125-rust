@@ -224,8 +224,8 @@ pub fn stub_66b08() -> ! {
 // 0x66b18 — -[AppController authenticateUserWithUrl:ticket:]
 // type: void __cdecl(AppController *self, SEL, id, id)
 #[doc(alias = "-[AppController authenticateUserWithUrl:ticket:]")]
-pub fn stub_66b18() -> ! {
-    todo!("0x66b18 -[AppController authenticateUserWithUrl:ticket:]")
+pub fn stub_66b18() {
+    // IDA 0x66b18: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x66b1c — -[AppController runJoinScriptWithUrl:]

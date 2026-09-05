@@ -161,8 +161,9 @@ pub fn stub_efe800() -> ! {
 // 0xefe870 — +[Flurry sendUsageInfo]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[Flurry sendUsageInfo]")]
-pub fn stub_efe870() -> ! {
-    todo!("0xefe870 +[Flurry sendUsageInfo]")
+pub fn stub_efe870() -> u32 {
+    // IDA 0xefe870: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0xefe874 — -[FlurryEvent initWithName:]
@@ -483,8 +484,9 @@ pub fn stub_effb7c() -> ! {
 // 0xeffbe4 — +[FlurryReachability accessInstanceVariablesDirectly]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[FlurryReachability accessInstanceVariablesDirectly]")]
-pub fn stub_effbe4() -> ! {
-    todo!("0xeffbe4 +[FlurryReachability accessInstanceVariablesDirectly]")
+pub fn stub_effbe4() -> u32 {
+    // IDA 0xeffbe4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xeffbe8 — -[FlurryReachability dealloc]

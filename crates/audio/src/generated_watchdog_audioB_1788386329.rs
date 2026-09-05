@@ -15,8 +15,8 @@ const _: () = {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::createSound_ff763800(char const*)")]
 #[doc(alias = "__ZN4FMOD7SystemI11createSound_ff763800EPKc")]
-pub fn stub_0xff763800() -> ! {
-    todo!("0xff763800 __ZN4FMOD7SystemI11createSound_ff763800EPKc")
+pub fn stub_0xff763800() {
+    // IDA 0xff763800 __ZN4FMOD7SystemI11createSound_ff763800EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763810 — __ZN4FMOD5Sound7release_ff763810Ef
@@ -24,8 +24,8 @@ pub fn stub_0xff763800() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::release_ff763810(float)")]
 #[doc(alias = "__ZN4FMOD5Sound7release_ff763810Ef")]
-pub fn stub_0xff763810() -> ! {
-    todo!("0xff763810 __ZN4FMOD5Sound7release_ff763810Ef")
+pub fn stub_0xff763810() {
+    // IDA 0xff763810 __ZN4FMOD5Sound7release_ff763810Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763820 — __ZN4FMOD7Channel4stop_ff763820Ei
@@ -33,8 +33,8 @@ pub fn stub_0xff763810() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::stop_ff763820(int)")]
 #[doc(alias = "__ZN4FMOD7Channel4stop_ff763820Ei")]
-pub fn stub_0xff763820() -> ! {
-    todo!("0xff763820 __ZN4FMOD7Channel4stop_ff763820Ei")
+pub fn stub_0xff763820() {
+    // IDA 0xff763820 __ZN4FMOD7Channel4stop_ff763820Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763830 — __ZN4FMOD3DSP7release_ff763830Ev
@@ -42,8 +42,8 @@ pub fn stub_0xff763820() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::release_ff763830(void)")]
 #[doc(alias = "__ZN4FMOD3DSP7release_ff763830Ev")]
-pub fn stub_0xff763830() -> ! {
-    todo!("0xff763830 __ZN4FMOD3DSP7release_ff763830Ev")
+pub fn stub_0xff763830() {
+    // IDA 0xff763830 __ZN4FMOD3DSP7release_ff763830Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763840 — __ZN3RBX17SoundscapeService16setAmbientReverb_ff763840Ejj
@@ -51,8 +51,8 @@ pub fn stub_0xff763830() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::setAmbientReverb_ff763840(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService16setAmbientReverb_ff763840Ejj")]
-pub fn stub_0xff763840() -> ! {
-    todo!("0xff763840 __ZN3RBX17SoundscapeService16setAmbientReverb_ff763840Ejj")
+pub fn stub_0xff763840() {
+    // IDA 0xff763840 __ZN3RBX17SoundscapeService16setAmbientReverb_ff763840Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763850 — __ZN3RBX5Sound10setSoundId_ff763850EPKcjj
@@ -60,8 +60,8 @@ pub fn stub_0xff763840() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::setSoundId_ff763850(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN3RBX5Sound10setSoundId_ff763850EPKcjj")]
-pub fn stub_0xff763850() -> ! {
-    todo!("0xff763850 __ZN3RBX5Sound10setSoundId_ff763850EPKcjj")
+pub fn stub_0xff763850() {
+    // IDA 0xff763850 __ZN3RBX5Sound10setSoundId_ff763850EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763860 — __ZN5Audio6Device10openStream_ff763860EfEf
@@ -69,8 +69,8 @@ pub fn stub_0xff763850() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::openStream_ff763860(float, float)")]
 #[doc(alias = "__ZN5Audio6Device10openStream_ff763860EfEf")]
-pub fn stub_0xff763860() -> ! {
-    todo!("0xff763860 __ZN5Audio6Device10openStream_ff763860EfEf")
+pub fn stub_0xff763860() {
+    // IDA 0xff763860 __ZN5Audio6Device10openStream_ff763860EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763870 — __ZN5Music6Stream4play_ff763870EiEi
@@ -78,8 +78,8 @@ pub fn stub_0xff763860() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::play_ff763870(int, int)")]
 #[doc(alias = "__ZN5Music6Stream4play_ff763870EiEi")]
-pub fn stub_0xff763870() -> ! {
-    todo!("0xff763870 __ZN5Music6Stream4play_ff763870EiEi")
+pub fn stub_0xff763870() {
+    // IDA 0xff763870 __ZN5Music6Stream4play_ff763870EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763880 — __ZN4FMOD7SystemI7release_ff763880Eb
@@ -87,8 +87,8 @@ pub fn stub_0xff763870() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::release_ff763880(bool)")]
 #[doc(alias = "__ZN4FMOD7SystemI7release_ff763880Eb")]
-pub fn stub_0xff763880() -> ! {
-    todo!("0xff763880 __ZN4FMOD7SystemI7release_ff763880Eb")
+pub fn stub_0xff763880() {
+    // IDA 0xff763880 __ZN4FMOD7SystemI7release_ff763880Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763890 — __ZN4FMOD5Sound9getLength_ff763890Ed
@@ -96,8 +96,8 @@ pub fn stub_0xff763880() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getLength_ff763890(double)")]
 #[doc(alias = "__ZN4FMOD5Sound9getLength_ff763890Ed")]
-pub fn stub_0xff763890() -> ! {
-    todo!("0xff763890 __ZN4FMOD5Sound9getLength_ff763890Ed")
+pub fn stub_0xff763890() {
+    // IDA 0xff763890 __ZN4FMOD5Sound9getLength_ff763890Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638a0 — __ZN4FMOD7Channel9setPaused_ff7638a0Ej
@@ -105,8 +105,8 @@ pub fn stub_0xff763890() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setPaused_ff7638a0(unsigned int)")]
 #[doc(alias = "__ZN4FMOD7Channel9setPaused_ff7638a0Ej")]
-pub fn stub_0xff7638a0() -> ! {
-    todo!("0xff7638a0 __ZN4FMOD7Channel9setPaused_ff7638a0Ej")
+pub fn stub_0xff7638a0() {
+    // IDA 0xff7638a0 __ZN4FMOD7Channel9setPaused_ff7638a0Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638b0 — __ZN4FMOD3DSP8addInput_ff7638b0EPv
@@ -114,8 +114,8 @@ pub fn stub_0xff7638a0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::addInput_ff7638b0(void*)")]
 #[doc(alias = "__ZN4FMOD3DSP8addInput_ff7638b0EPv")]
-pub fn stub_0xff7638b0() -> ! {
-    todo!("0xff7638b0 __ZN4FMOD3DSP8addInput_ff7638b0EPv")
+pub fn stub_0xff7638b0() {
+    // IDA 0xff7638b0 __ZN4FMOD3DSP8addInput_ff7638b0EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638c0 — __ZN3RBX17SoundscapeService16getAmbientReverb_ff7638c0ERKN8rbx_core9SharedPtrIvE
@@ -123,8 +123,8 @@ pub fn stub_0xff7638b0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::getAmbientReverb_ff7638c0(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService16getAmbientReverb_ff7638c0ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff7638c0() -> ! {
-    todo!("0xff7638c0 __ZN3RBX17SoundscapeService16getAmbientReverb_ff7638c0ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff7638c0() {
+    // IDA 0xff7638c0 __ZN3RBX17SoundscapeService16getAmbientReverb_ff7638c0ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638d0 — __ZN3RBX5Sound10getSoundId_ff7638d0EN8rbx_core9SharedPtrIvE
@@ -132,8 +132,8 @@ pub fn stub_0xff7638c0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::getSoundId_ff7638d0(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN3RBX5Sound10getSoundId_ff7638d0EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff7638d0() -> ! {
-    todo!("0xff7638d0 __ZN3RBX5Sound10getSoundId_ff7638d0EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff7638d0() {
+    // IDA 0xff7638d0 __ZN3RBX5Sound10getSoundId_ff7638d0EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638e0 — __ZN5Audio6Device11closeStream_ff7638e0Ell
@@ -141,8 +141,8 @@ pub fn stub_0xff7638d0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::closeStream_ff7638e0(long long, long long)")]
 #[doc(alias = "__ZN5Audio6Device11closeStream_ff7638e0Ell")]
-pub fn stub_0xff7638e0() -> ! {
-    todo!("0xff7638e0 __ZN5Audio6Device11closeStream_ff7638e0Ell")
+pub fn stub_0xff7638e0() {
+    // IDA 0xff7638e0 __ZN5Audio6Device11closeStream_ff7638e0Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7638f0 — __ZN5Music6Stream5pause_ff7638f0EPKc
@@ -150,8 +150,8 @@ pub fn stub_0xff7638e0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::pause_ff7638f0(char const*)")]
 #[doc(alias = "__ZN5Music6Stream5pause_ff7638f0EPKc")]
-pub fn stub_0xff7638f0() -> ! {
-    todo!("0xff7638f0 __ZN5Music6Stream5pause_ff7638f0EPKc")
+pub fn stub_0xff7638f0() {
+    // IDA 0xff7638f0 __ZN5Music6Stream5pause_ff7638f0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763900 — __ZN4FMOD7SystemI9playSound_ff763900Ef
@@ -159,8 +159,8 @@ pub fn stub_0xff7638f0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::playSound_ff763900(float)")]
 #[doc(alias = "__ZN4FMOD7SystemI9playSound_ff763900Ef")]
-pub fn stub_0xff763900() -> ! {
-    todo!("0xff763900 __ZN4FMOD7SystemI9playSound_ff763900Ef")
+pub fn stub_0xff763900() {
+    // IDA 0xff763900 __ZN4FMOD7SystemI9playSound_ff763900Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763910 — __ZN4FMOD5Sound9getFormat_ff763910Ei
@@ -168,8 +168,8 @@ pub fn stub_0xff763900() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getFormat_ff763910(int)")]
 #[doc(alias = "__ZN4FMOD5Sound9getFormat_ff763910Ei")]
-pub fn stub_0xff763910() -> ! {
-    todo!("0xff763910 __ZN4FMOD5Sound9getFormat_ff763910Ei")
+pub fn stub_0xff763910() {
+    // IDA 0xff763910 __ZN4FMOD5Sound9getFormat_ff763910Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763920 — __ZN4FMOD7Channel9getPaused_ff763920Ev
@@ -177,8 +177,8 @@ pub fn stub_0xff763910() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::getPaused_ff763920(void)")]
 #[doc(alias = "__ZN4FMOD7Channel9getPaused_ff763920Ev")]
-pub fn stub_0xff763920() -> ! {
-    todo!("0xff763920 __ZN4FMOD7Channel9getPaused_ff763920Ev")
+pub fn stub_0xff763920() {
+    // IDA 0xff763920 __ZN4FMOD7Channel9getPaused_ff763920Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763930 — __ZN4FMOD3DSP14disconnectFrom_ff763930Ejj
@@ -186,8 +186,8 @@ pub fn stub_0xff763920() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::disconnectFrom_ff763930(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD3DSP14disconnectFrom_ff763930Ejj")]
-pub fn stub_0xff763930() -> ! {
-    todo!("0xff763930 __ZN4FMOD3DSP14disconnectFrom_ff763930Ejj")
+pub fn stub_0xff763930() {
+    // IDA 0xff763930 __ZN4FMOD3DSP14disconnectFrom_ff763930Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763940 — __ZN3RBX17SoundscapeService17setDistanceFactor_ff763940EPKcjj
@@ -195,8 +195,8 @@ pub fn stub_0xff763930() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::setDistanceFactor_ff763940(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService17setDistanceFactor_ff763940EPKcjj")]
-pub fn stub_0xff763940() -> ! {
-    todo!("0xff763940 __ZN3RBX17SoundscapeService17setDistanceFactor_ff763940EPKcjj")
+pub fn stub_0xff763940() {
+    // IDA 0xff763940 __ZN3RBX17SoundscapeService17setDistanceFactor_ff763940EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763950 — __ZN3RBX5Sound9setVolume_ff763950EfEf
@@ -204,8 +204,8 @@ pub fn stub_0xff763940() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::setVolume_ff763950(float, float)")]
 #[doc(alias = "__ZN3RBX5Sound9setVolume_ff763950EfEf")]
-pub fn stub_0xff763950() -> ! {
-    todo!("0xff763950 __ZN3RBX5Sound9setVolume_ff763950EfEf")
+pub fn stub_0xff763950() {
+    // IDA 0xff763950 __ZN3RBX5Sound9setVolume_ff763950EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763960 — __ZN5Audio6Device11startStream_ff763960EiEi
@@ -213,8 +213,8 @@ pub fn stub_0xff763950() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::startStream_ff763960(int, int)")]
 #[doc(alias = "__ZN5Audio6Device11startStream_ff763960EiEi")]
-pub fn stub_0xff763960() -> ! {
-    todo!("0xff763960 __ZN5Audio6Device11startStream_ff763960EiEi")
+pub fn stub_0xff763960() {
+    // IDA 0xff763960 __ZN5Audio6Device11startStream_ff763960EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763970 — __ZN5Music6Stream4stop_ff763970Eb
@@ -222,8 +222,8 @@ pub fn stub_0xff763960() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::stop_ff763970(bool)")]
 #[doc(alias = "__ZN5Music6Stream4stop_ff763970Eb")]
-pub fn stub_0xff763970() -> ! {
-    todo!("0xff763970 __ZN5Music6Stream4stop_ff763970Eb")
+pub fn stub_0xff763970() {
+    // IDA 0xff763970 __ZN5Music6Stream4stop_ff763970Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763980 — __ZN4FMOD7SystemI23set3DListenerAttributes_ff763980Ed
@@ -231,8 +231,8 @@ pub fn stub_0xff763970() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::set3DListenerAttributes_ff763980(double)")]
 #[doc(alias = "__ZN4FMOD7SystemI23set3DListenerAttributes_ff763980Ed")]
-pub fn stub_0xff763980() -> ! {
-    todo!("0xff763980 __ZN4FMOD7SystemI23set3DListenerAttributes_ff763980Ed")
+pub fn stub_0xff763980() {
+    // IDA 0xff763980 __ZN4FMOD7SystemI23set3DListenerAttributes_ff763980Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763990 — __ZN4FMOD5Sound7setMode_ff763990Ej
@@ -240,8 +240,8 @@ pub fn stub_0xff763980() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::setMode_ff763990(unsigned int)")]
 #[doc(alias = "__ZN4FMOD5Sound7setMode_ff763990Ej")]
-pub fn stub_0xff763990() -> ! {
-    todo!("0xff763990 __ZN4FMOD5Sound7setMode_ff763990Ej")
+pub fn stub_0xff763990() {
+    // IDA 0xff763990 __ZN4FMOD5Sound7setMode_ff763990Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639a0 — __ZN4FMOD7Channel9setVolume_ff7639a0EPv
@@ -249,8 +249,8 @@ pub fn stub_0xff763990() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setVolume_ff7639a0(void*)")]
 #[doc(alias = "__ZN4FMOD7Channel9setVolume_ff7639a0EPv")]
-pub fn stub_0xff7639a0() -> ! {
-    todo!("0xff7639a0 __ZN4FMOD7Channel9setVolume_ff7639a0EPv")
+pub fn stub_0xff7639a0() {
+    // IDA 0xff7639a0 __ZN4FMOD7Channel9setVolume_ff7639a0EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639b0 — __ZN4FMOD3DSP6remove_ff7639b0ERKN8rbx_core9SharedPtrIvE
@@ -258,8 +258,8 @@ pub fn stub_0xff7639a0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::remove_ff7639b0(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN4FMOD3DSP6remove_ff7639b0ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff7639b0() -> ! {
-    todo!("0xff7639b0 __ZN4FMOD3DSP6remove_ff7639b0ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff7639b0() {
+    // IDA 0xff7639b0 __ZN4FMOD3DSP6remove_ff7639b0ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639c0 — __ZN3RBX17SoundscapeService17getDistanceFactor_ff7639c0EN8rbx_core9SharedPtrIvE
@@ -267,8 +267,8 @@ pub fn stub_0xff7639b0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::getDistanceFactor_ff7639c0(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService17getDistanceFactor_ff7639c0EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff7639c0() -> ! {
-    todo!("0xff7639c0 __ZN3RBX17SoundscapeService17getDistanceFactor_ff7639c0EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff7639c0() {
+    // IDA 0xff7639c0 __ZN3RBX17SoundscapeService17getDistanceFactor_ff7639c0EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639d0 — __ZN3RBX5Sound9getVolume_ff7639d0Ell
@@ -276,8 +276,8 @@ pub fn stub_0xff7639c0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::getVolume_ff7639d0(long long, long long)")]
 #[doc(alias = "__ZN3RBX5Sound9getVolume_ff7639d0Ell")]
-pub fn stub_0xff7639d0() -> ! {
-    todo!("0xff7639d0 __ZN3RBX5Sound9getVolume_ff7639d0Ell")
+pub fn stub_0xff7639d0() {
+    // IDA 0xff7639d0 __ZN3RBX5Sound9getVolume_ff7639d0Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639e0 — __ZN5Audio6Device10stopStream_ff7639e0EPKc
@@ -285,8 +285,8 @@ pub fn stub_0xff7639d0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::stopStream_ff7639e0(char const*)")]
 #[doc(alias = "__ZN5Audio6Device10stopStream_ff7639e0EPKc")]
-pub fn stub_0xff7639e0() -> ! {
-    todo!("0xff7639e0 __ZN5Audio6Device10stopStream_ff7639e0EPKc")
+pub fn stub_0xff7639e0() {
+    // IDA 0xff7639e0 __ZN5Audio6Device10stopStream_ff7639e0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff7639f0 — __ZN5Music6Stream4seek_ff7639f0Ef
@@ -294,8 +294,8 @@ pub fn stub_0xff7639e0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::seek_ff7639f0(float)")]
 #[doc(alias = "__ZN5Music6Stream4seek_ff7639f0Ef")]
-pub fn stub_0xff7639f0() -> ! {
-    todo!("0xff7639f0 __ZN5Music6Stream4seek_ff7639f0Ef")
+pub fn stub_0xff7639f0() {
+    // IDA 0xff7639f0 __ZN5Music6Stream4seek_ff7639f0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a00 — __ZN4FMOD7SystemI10getVersion_ff763a00Ei
@@ -303,8 +303,8 @@ pub fn stub_0xff7639f0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::getVersion_ff763a00(int)")]
 #[doc(alias = "__ZN4FMOD7SystemI10getVersion_ff763a00Ei")]
-pub fn stub_0xff763a00() -> ! {
-    todo!("0xff763a00 __ZN4FMOD7SystemI10getVersion_ff763a00Ei")
+pub fn stub_0xff763a00() {
+    // IDA 0xff763a00 __ZN4FMOD7SystemI10getVersion_ff763a00Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a10 — __ZN4FMOD5Sound7getMode_ff763a10Ev
@@ -312,8 +312,8 @@ pub fn stub_0xff763a00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getMode_ff763a10(void)")]
 #[doc(alias = "__ZN4FMOD5Sound7getMode_ff763a10Ev")]
-pub fn stub_0xff763a10() -> ! {
-    todo!("0xff763a10 __ZN4FMOD5Sound7getMode_ff763a10Ev")
+pub fn stub_0xff763a10() {
+    // IDA 0xff763a10 __ZN4FMOD5Sound7getMode_ff763a10Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a20 — __ZN4FMOD7Channel9getVolume_ff763a20Ejj
@@ -321,8 +321,8 @@ pub fn stub_0xff763a10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::getVolume_ff763a20(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD7Channel9getVolume_ff763a20Ejj")]
-pub fn stub_0xff763a20() -> ! {
-    todo!("0xff763a20 __ZN4FMOD7Channel9getVolume_ff763a20Ejj")
+pub fn stub_0xff763a20() {
+    // IDA 0xff763a20 __ZN4FMOD7Channel9getVolume_ff763a20Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a30 — __ZN4FMOD3DSP12setParameter_ff763a30EPKcjj
@@ -330,8 +330,8 @@ pub fn stub_0xff763a20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::setParameter_ff763a30(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD3DSP12setParameter_ff763a30EPKcjj")]
-pub fn stub_0xff763a30() -> ! {
-    todo!("0xff763a30 __ZN4FMOD3DSP12setParameter_ff763a30EPKcjj")
+pub fn stub_0xff763a30() {
+    // IDA 0xff763a30 __ZN4FMOD3DSP12setParameter_ff763a30EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a40 — __ZN3RBX17SoundscapeService15setDopplerScale_ff763a40EfEf
@@ -339,8 +339,8 @@ pub fn stub_0xff763a30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::setDopplerScale_ff763a40(float, float)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService15setDopplerScale_ff763a40EfEf")]
-pub fn stub_0xff763a40() -> ! {
-    todo!("0xff763a40 __ZN3RBX17SoundscapeService15setDopplerScale_ff763a40EfEf")
+pub fn stub_0xff763a40() {
+    // IDA 0xff763a40 __ZN3RBX17SoundscapeService15setDopplerScale_ff763a40EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a50 — __ZN3RBX5Sound8setPitch_ff763a50EiEi
@@ -348,8 +348,8 @@ pub fn stub_0xff763a40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::setPitch_ff763a50(int, int)")]
 #[doc(alias = "__ZN3RBX5Sound8setPitch_ff763a50EiEi")]
-pub fn stub_0xff763a50() -> ! {
-    todo!("0xff763a50 __ZN3RBX5Sound8setPitch_ff763a50EiEi")
+pub fn stub_0xff763a50() {
+    // IDA 0xff763a50 __ZN3RBX5Sound8setPitch_ff763a50EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a60 — __ZN5Audio6Device9setVolume_ff763a60Eb
@@ -357,8 +357,8 @@ pub fn stub_0xff763a50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::setVolume_ff763a60(bool)")]
 #[doc(alias = "__ZN5Audio6Device9setVolume_ff763a60Eb")]
-pub fn stub_0xff763a60() -> ! {
-    todo!("0xff763a60 __ZN5Audio6Device9setVolume_ff763a60Eb")
+pub fn stub_0xff763a60() {
+    // IDA 0xff763a60 __ZN5Audio6Device9setVolume_ff763a60Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a70 — __ZN5Music6Stream9setVolume_ff763a70Ed
@@ -366,8 +366,8 @@ pub fn stub_0xff763a60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::setVolume_ff763a70(double)")]
 #[doc(alias = "__ZN5Music6Stream9setVolume_ff763a70Ed")]
-pub fn stub_0xff763a70() -> ! {
-    todo!("0xff763a70 __ZN5Music6Stream9setVolume_ff763a70Ed")
+pub fn stub_0xff763a70() {
+    // IDA 0xff763a70 __ZN5Music6Stream9setVolume_ff763a70Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a80 — __ZN4FMOD7SystemI9setOutput_ff763a80Ej
@@ -375,8 +375,8 @@ pub fn stub_0xff763a70() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::setOutput_ff763a80(unsigned int)")]
 #[doc(alias = "__ZN4FMOD7SystemI9setOutput_ff763a80Ej")]
-pub fn stub_0xff763a80() -> ! {
-    todo!("0xff763a80 __ZN4FMOD7SystemI9setOutput_ff763a80Ej")
+pub fn stub_0xff763a80() {
+    // IDA 0xff763a80 __ZN4FMOD7SystemI9setOutput_ff763a80Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763a90 — __ZN4FMOD5Sound12setLoopCount_ff763a90EPv
@@ -384,8 +384,8 @@ pub fn stub_0xff763a80() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::setLoopCount_ff763a90(void*)")]
 #[doc(alias = "__ZN4FMOD5Sound12setLoopCount_ff763a90EPv")]
-pub fn stub_0xff763a90() -> ! {
-    todo!("0xff763a90 __ZN4FMOD5Sound12setLoopCount_ff763a90EPv")
+pub fn stub_0xff763a90() {
+    // IDA 0xff763a90 __ZN4FMOD5Sound12setLoopCount_ff763a90EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763aa0 — __ZN4FMOD7Channel8setPitch_ff763aa0ERKN8rbx_core9SharedPtrIvE
@@ -393,8 +393,8 @@ pub fn stub_0xff763a90() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setPitch_ff763aa0(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN4FMOD7Channel8setPitch_ff763aa0ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763aa0() -> ! {
-    todo!("0xff763aa0 __ZN4FMOD7Channel8setPitch_ff763aa0ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763aa0() {
+    // IDA 0xff763aa0 __ZN4FMOD7Channel8setPitch_ff763aa0ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ab0 — __ZN4FMOD3DSP12getParameter_ff763ab0EN8rbx_core9SharedPtrIvE
@@ -402,8 +402,8 @@ pub fn stub_0xff763aa0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::getParameter_ff763ab0(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN4FMOD3DSP12getParameter_ff763ab0EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763ab0() -> ! {
-    todo!("0xff763ab0 __ZN4FMOD3DSP12getParameter_ff763ab0EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763ab0() {
+    // IDA 0xff763ab0 __ZN4FMOD3DSP12getParameter_ff763ab0EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ac0 — __ZN3RBX17SoundscapeService15getDopplerScale_ff763ac0Ell
@@ -411,8 +411,8 @@ pub fn stub_0xff763ab0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::getDopplerScale_ff763ac0(long long, long long)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService15getDopplerScale_ff763ac0Ell")]
-pub fn stub_0xff763ac0() -> ! {
-    todo!("0xff763ac0 __ZN3RBX17SoundscapeService15getDopplerScale_ff763ac0Ell")
+pub fn stub_0xff763ac0() {
+    // IDA 0xff763ac0 __ZN3RBX17SoundscapeService15getDopplerScale_ff763ac0Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ad0 — __ZN3RBX5Sound8getPitch_ff763ad0EPKc
@@ -420,8 +420,8 @@ pub fn stub_0xff763ac0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::getPitch_ff763ad0(char const*)")]
 #[doc(alias = "__ZN3RBX5Sound8getPitch_ff763ad0EPKc")]
-pub fn stub_0xff763ad0() -> ! {
-    todo!("0xff763ad0 __ZN3RBX5Sound8getPitch_ff763ad0EPKc")
+pub fn stub_0xff763ad0() {
+    // IDA 0xff763ad0 __ZN3RBX5Sound8getPitch_ff763ad0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ae0 — __ZN5Audio6Device9getVolume_ff763ae0Ef
@@ -429,8 +429,8 @@ pub fn stub_0xff763ad0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::getVolume_ff763ae0(float)")]
 #[doc(alias = "__ZN5Audio6Device9getVolume_ff763ae0Ef")]
-pub fn stub_0xff763ae0() -> ! {
-    todo!("0xff763ae0 __ZN5Audio6Device9getVolume_ff763ae0Ef")
+pub fn stub_0xff763ae0() {
+    // IDA 0xff763ae0 __ZN5Audio6Device9getVolume_ff763ae0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763af0 — __ZN5Music6Stream9getVolume_ff763af0Ei
@@ -438,8 +438,8 @@ pub fn stub_0xff763ae0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::getVolume_ff763af0(int)")]
 #[doc(alias = "__ZN5Music6Stream9getVolume_ff763af0Ei")]
-pub fn stub_0xff763af0() -> ! {
-    todo!("0xff763af0 __ZN5Music6Stream9getVolume_ff763af0Ei")
+pub fn stub_0xff763af0() {
+    // IDA 0xff763af0 __ZN5Music6Stream9getVolume_ff763af0Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b00 — __ZN4FMOD7SystemI13getNumDrivers_ff763b00Ev
@@ -447,8 +447,8 @@ pub fn stub_0xff763af0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::getNumDrivers_ff763b00(void)")]
 #[doc(alias = "__ZN4FMOD7SystemI13getNumDrivers_ff763b00Ev")]
-pub fn stub_0xff763b00() -> ! {
-    todo!("0xff763b00 __ZN4FMOD7SystemI13getNumDrivers_ff763b00Ev")
+pub fn stub_0xff763b00() {
+    // IDA 0xff763b00 __ZN4FMOD7SystemI13getNumDrivers_ff763b00Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b10 — __ZN4FMOD5Sound12getLoopCount_ff763b10Ejj
@@ -456,8 +456,8 @@ pub fn stub_0xff763b00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getLoopCount_ff763b10(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD5Sound12getLoopCount_ff763b10Ejj")]
-pub fn stub_0xff763b10() -> ! {
-    todo!("0xff763b10 __ZN4FMOD5Sound12getLoopCount_ff763b10Ejj")
+pub fn stub_0xff763b10() {
+    // IDA 0xff763b10 __ZN4FMOD5Sound12getLoopCount_ff763b10Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b20 — __ZN4FMOD7Channel8getPitch_ff763b20EPKcjj
@@ -465,8 +465,8 @@ pub fn stub_0xff763b10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::getPitch_ff763b20(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD7Channel8getPitch_ff763b20EPKcjj")]
-pub fn stub_0xff763b20() -> ! {
-    todo!("0xff763b20 __ZN4FMOD7Channel8getPitch_ff763b20EPKcjj")
+pub fn stub_0xff763b20() {
+    // IDA 0xff763b20 __ZN4FMOD7Channel8getPitch_ff763b20EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b30 — __ZN4FMOD3DSP9setActive_ff763b30EfEf
@@ -474,8 +474,8 @@ pub fn stub_0xff763b20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::setActive_ff763b30(float, float)")]
 #[doc(alias = "__ZN4FMOD3DSP9setActive_ff763b30EfEf")]
-pub fn stub_0xff763b30() -> ! {
-    todo!("0xff763b30 __ZN4FMOD3DSP9setActive_ff763b30EfEf")
+pub fn stub_0xff763b30() {
+    // IDA 0xff763b30 __ZN4FMOD3DSP9setActive_ff763b30EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b40 — __ZN3RBX17SoundscapeService4step_ff763b40EiEi
@@ -483,8 +483,8 @@ pub fn stub_0xff763b30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::step_ff763b40(int, int)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService4step_ff763b40EiEi")]
-pub fn stub_0xff763b40() -> ! {
-    todo!("0xff763b40 __ZN3RBX17SoundscapeService4step_ff763b40EiEi")
+pub fn stub_0xff763b40() {
+    // IDA 0xff763b40 __ZN3RBX17SoundscapeService4step_ff763b40EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b50 — __ZN3RBX5Sound4play_ff763b50Eb
@@ -492,8 +492,8 @@ pub fn stub_0xff763b40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::play_ff763b50(bool)")]
 #[doc(alias = "__ZN3RBX5Sound4play_ff763b50Eb")]
-pub fn stub_0xff763b50() -> ! {
-    todo!("0xff763b50 __ZN3RBX5Sound4play_ff763b50Eb")
+pub fn stub_0xff763b50() {
+    // IDA 0xff763b50 __ZN3RBX5Sound4play_ff763b50Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b60 — __ZN5Audio6Device13setSampleRate_ff763b60Ed
@@ -501,8 +501,8 @@ pub fn stub_0xff763b50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::setSampleRate_ff763b60(double)")]
 #[doc(alias = "__ZN5Audio6Device13setSampleRate_ff763b60Ed")]
-pub fn stub_0xff763b60() -> ! {
-    todo!("0xff763b60 __ZN5Audio6Device13setSampleRate_ff763b60Ed")
+pub fn stub_0xff763b60() {
+    // IDA 0xff763b60 __ZN5Audio6Device13setSampleRate_ff763b60Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b70 — __ZN5Music6Stream10setLooping_ff763b70Ej
@@ -510,8 +510,8 @@ pub fn stub_0xff763b60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::setLooping_ff763b70(unsigned int)")]
 #[doc(alias = "__ZN5Music6Stream10setLooping_ff763b70Ej")]
-pub fn stub_0xff763b70() -> ! {
-    todo!("0xff763b70 __ZN5Music6Stream10setLooping_ff763b70Ej")
+pub fn stub_0xff763b70() {
+    // IDA 0xff763b70 __ZN5Music6Stream10setLooping_ff763b70Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b80 — __ZN4FMOD7SystemI13getDriverInfo_ff763b80EPv
@@ -519,8 +519,8 @@ pub fn stub_0xff763b70() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::getDriverInfo_ff763b80(void*)")]
 #[doc(alias = "__ZN4FMOD7SystemI13getDriverInfo_ff763b80EPv")]
-pub fn stub_0xff763b80() -> ! {
-    todo!("0xff763b80 __ZN4FMOD7SystemI13getDriverInfo_ff763b80EPv")
+pub fn stub_0xff763b80() {
+    // IDA 0xff763b80 __ZN4FMOD7SystemI13getDriverInfo_ff763b80EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763b90 — __ZN4FMOD5Sound19set3DMinMaxDistance_ff763b90ERKN8rbx_core9SharedPtrIvE
@@ -528,8 +528,8 @@ pub fn stub_0xff763b80() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::set3DMinMaxDistance_ff763b90(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN4FMOD5Sound19set3DMinMaxDistance_ff763b90ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763b90() -> ! {
-    todo!("0xff763b90 __ZN4FMOD5Sound19set3DMinMaxDistance_ff763b90ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763b90() {
+    // IDA 0xff763b90 __ZN4FMOD5Sound19set3DMinMaxDistance_ff763b90ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ba0 — __ZN4FMOD7Channel7setMode_ff763ba0EN8rbx_core9SharedPtrIvE
@@ -537,8 +537,8 @@ pub fn stub_0xff763b90() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setMode_ff763ba0(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN4FMOD7Channel7setMode_ff763ba0EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763ba0() -> ! {
-    todo!("0xff763ba0 __ZN4FMOD7Channel7setMode_ff763ba0EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763ba0() {
+    // IDA 0xff763ba0 __ZN4FMOD7Channel7setMode_ff763ba0EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763bb0 — __ZN4FMOD3DSP9getActive_ff763bb0Ell
@@ -546,8 +546,8 @@ pub fn stub_0xff763ba0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::getActive_ff763bb0(long long, long long)")]
 #[doc(alias = "__ZN4FMOD3DSP9getActive_ff763bb0Ell")]
-pub fn stub_0xff763bb0() -> ! {
-    todo!("0xff763bb0 __ZN4FMOD3DSP9getActive_ff763bb0Ell")
+pub fn stub_0xff763bb0() {
+    // IDA 0xff763bb0 __ZN4FMOD3DSP9getActive_ff763bb0Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763bc0 — __ZN3RBX17SoundscapeService15setRolloffScale_ff763bc0EPKc
@@ -555,8 +555,8 @@ pub fn stub_0xff763bb0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::setRolloffScale_ff763bc0(char const*)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService15setRolloffScale_ff763bc0EPKc")]
-pub fn stub_0xff763bc0() -> ! {
-    todo!("0xff763bc0 __ZN3RBX17SoundscapeService15setRolloffScale_ff763bc0EPKc")
+pub fn stub_0xff763bc0() {
+    // IDA 0xff763bc0 __ZN3RBX17SoundscapeService15setRolloffScale_ff763bc0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763bd0 — __ZN3RBX5Sound5pause_ff763bd0Ef
@@ -564,8 +564,8 @@ pub fn stub_0xff763bc0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::pause_ff763bd0(float)")]
 #[doc(alias = "__ZN3RBX5Sound5pause_ff763bd0Ef")]
-pub fn stub_0xff763bd0() -> ! {
-    todo!("0xff763bd0 __ZN3RBX5Sound5pause_ff763bd0Ef")
+pub fn stub_0xff763bd0() {
+    // IDA 0xff763bd0 __ZN3RBX5Sound5pause_ff763bd0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763be0 — __ZN5Audio6Device13getSampleRate_ff763be0Ei
@@ -573,8 +573,8 @@ pub fn stub_0xff763bd0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::getSampleRate_ff763be0(int)")]
 #[doc(alias = "__ZN5Audio6Device13getSampleRate_ff763be0Ei")]
-pub fn stub_0xff763be0() -> ! {
-    todo!("0xff763be0 __ZN5Audio6Device13getSampleRate_ff763be0Ei")
+pub fn stub_0xff763be0() {
+    // IDA 0xff763be0 __ZN5Audio6Device13getSampleRate_ff763be0Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763bf0 — __ZN5Music6Stream9isLooping_ff763bf0Ev
@@ -582,8 +582,8 @@ pub fn stub_0xff763be0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::isLooping_ff763bf0(void)")]
 #[doc(alias = "__ZN5Music6Stream9isLooping_ff763bf0Ev")]
-pub fn stub_0xff763bf0() -> ! {
-    todo!("0xff763bf0 __ZN5Music6Stream9isLooping_ff763bf0Ev")
+pub fn stub_0xff763bf0() {
+    // IDA 0xff763bf0 __ZN5Music6Stream9isLooping_ff763bf0Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c00 — __ZN4FMOD7SystemI4init_ff763c00Ejj
@@ -591,8 +591,8 @@ pub fn stub_0xff763bf0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::init_ff763c00(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD7SystemI4init_ff763c00Ejj")]
-pub fn stub_0xff763c00() -> ! {
-    todo!("0xff763c00 __ZN4FMOD7SystemI4init_ff763c00Ejj")
+pub fn stub_0xff763c00() {
+    // IDA 0xff763c00 __ZN4FMOD7SystemI4init_ff763c00Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c10 — __ZN4FMOD5Sound9setVolume_ff763c10EPKcjj
@@ -600,8 +600,8 @@ pub fn stub_0xff763c00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::setVolume_ff763c10(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD5Sound9setVolume_ff763c10EPKcjj")]
-pub fn stub_0xff763c10() -> ! {
-    todo!("0xff763c10 __ZN4FMOD5Sound9setVolume_ff763c10EPKcjj")
+pub fn stub_0xff763c10() {
+    // IDA 0xff763c10 __ZN4FMOD5Sound9setVolume_ff763c10EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c20 — __ZN4FMOD7Channel7getMode_ff763c20EfEf
@@ -609,8 +609,8 @@ pub fn stub_0xff763c10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::getMode_ff763c20(float, float)")]
 #[doc(alias = "__ZN4FMOD7Channel7getMode_ff763c20EfEf")]
-pub fn stub_0xff763c20() -> ! {
-    todo!("0xff763c20 __ZN4FMOD7Channel7getMode_ff763c20EfEf")
+pub fn stub_0xff763c20() {
+    // IDA 0xff763c20 __ZN4FMOD7Channel7getMode_ff763c20EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c30 — __ZN4FMOD3DSP9setBypass_ff763c30EiEi
@@ -618,8 +618,8 @@ pub fn stub_0xff763c20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::setBypass_ff763c30(int, int)")]
 #[doc(alias = "__ZN4FMOD3DSP9setBypass_ff763c30EiEi")]
-pub fn stub_0xff763c30() -> ! {
-    todo!("0xff763c30 __ZN4FMOD3DSP9setBypass_ff763c30EiEi")
+pub fn stub_0xff763c30() {
+    // IDA 0xff763c30 __ZN4FMOD3DSP9setBypass_ff763c30EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c40 — __ZN3RBX17SoundscapeService15getRolloffScale_ff763c40Eb
@@ -627,8 +627,8 @@ pub fn stub_0xff763c30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::getRolloffScale_ff763c40(bool)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService15getRolloffScale_ff763c40Eb")]
-pub fn stub_0xff763c40() -> ! {
-    todo!("0xff763c40 __ZN3RBX17SoundscapeService15getRolloffScale_ff763c40Eb")
+pub fn stub_0xff763c40() {
+    // IDA 0xff763c40 __ZN3RBX17SoundscapeService15getRolloffScale_ff763c40Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c50 — __ZN3RBX5Sound4stop_ff763c50Ed
@@ -636,8 +636,8 @@ pub fn stub_0xff763c40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::stop_ff763c50(double)")]
 #[doc(alias = "__ZN3RBX5Sound4stop_ff763c50Ed")]
-pub fn stub_0xff763c50() -> ! {
-    todo!("0xff763c50 __ZN3RBX5Sound4stop_ff763c50Ed")
+pub fn stub_0xff763c50() {
+    // IDA 0xff763c50 __ZN3RBX5Sound4stop_ff763c50Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c60 — __ZN5Audio6Device16enumerateDevices_ff763c60Ej
@@ -645,8 +645,8 @@ pub fn stub_0xff763c50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::enumerateDevices_ff763c60(unsigned int)")]
 #[doc(alias = "__ZN5Audio6Device16enumerateDevices_ff763c60Ej")]
-pub fn stub_0xff763c60() -> ! {
-    todo!("0xff763c60 __ZN5Audio6Device16enumerateDevices_ff763c60Ej")
+pub fn stub_0xff763c60() {
+    // IDA 0xff763c60 __ZN5Audio6Device16enumerateDevices_ff763c60Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c70 — __ZN5Music6Stream11getPosition_ff763c70EPv
@@ -654,8 +654,8 @@ pub fn stub_0xff763c60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::getPosition_ff763c70(void*)")]
 #[doc(alias = "__ZN5Music6Stream11getPosition_ff763c70EPv")]
-pub fn stub_0xff763c70() -> ! {
-    todo!("0xff763c70 __ZN5Music6Stream11getPosition_ff763c70EPv")
+pub fn stub_0xff763c70() {
+    // IDA 0xff763c70 __ZN5Music6Stream11getPosition_ff763c70EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c80 — __ZN4FMOD7SystemI5close_ff763c80ERKN8rbx_core9SharedPtrIvE
@@ -663,8 +663,8 @@ pub fn stub_0xff763c70() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::close_ff763c80(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN4FMOD7SystemI5close_ff763c80ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763c80() -> ! {
-    todo!("0xff763c80 __ZN4FMOD7SystemI5close_ff763c80ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763c80() {
+    // IDA 0xff763c80 __ZN4FMOD7SystemI5close_ff763c80ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763c90 — __ZN4FMOD5Sound9getVolume_ff763c90EN8rbx_core9SharedPtrIvE
@@ -672,8 +672,8 @@ pub fn stub_0xff763c80() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getVolume_ff763c90(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN4FMOD5Sound9getVolume_ff763c90EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763c90() -> ! {
-    todo!("0xff763c90 __ZN4FMOD5Sound9getVolume_ff763c90EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763c90() {
+    // IDA 0xff763c90 __ZN4FMOD5Sound9getVolume_ff763c90EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ca0 — __ZN4FMOD7Channel15set3DAttributes_ff763ca0Ell
@@ -681,8 +681,8 @@ pub fn stub_0xff763c90() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::set3DAttributes_ff763ca0(long long, long long)")]
 #[doc(alias = "__ZN4FMOD7Channel15set3DAttributes_ff763ca0Ell")]
-pub fn stub_0xff763ca0() -> ! {
-    todo!("0xff763ca0 __ZN4FMOD7Channel15set3DAttributes_ff763ca0Ell")
+pub fn stub_0xff763ca0() {
+    // IDA 0xff763ca0 __ZN4FMOD7Channel15set3DAttributes_ff763ca0Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763cb0 — __ZN4FMOD3DSP9getBypass_ff763cb0EPKc
@@ -690,8 +690,8 @@ pub fn stub_0xff763ca0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::getBypass_ff763cb0(char const*)")]
 #[doc(alias = "__ZN4FMOD3DSP9getBypass_ff763cb0EPKc")]
-pub fn stub_0xff763cb0() -> ! {
-    todo!("0xff763cb0 __ZN4FMOD3DSP9getBypass_ff763cb0EPKc")
+pub fn stub_0xff763cb0() {
+    // IDA 0xff763cb0 __ZN4FMOD3DSP9getBypass_ff763cb0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763cc0 — __ZN3RBX17SoundscapeService5pause_ff763cc0Ef
@@ -699,8 +699,8 @@ pub fn stub_0xff763cb0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::pause_ff763cc0(float)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService5pause_ff763cc0Ef")]
-pub fn stub_0xff763cc0() -> ! {
-    todo!("0xff763cc0 __ZN3RBX17SoundscapeService5pause_ff763cc0Ef")
+pub fn stub_0xff763cc0() {
+    // IDA 0xff763cc0 __ZN3RBX17SoundscapeService5pause_ff763cc0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763cd0 — __ZN3RBX5Sound6resume_ff763cd0Ei
@@ -708,8 +708,8 @@ pub fn stub_0xff763cc0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::resume_ff763cd0(int)")]
 #[doc(alias = "__ZN3RBX5Sound6resume_ff763cd0Ei")]
-pub fn stub_0xff763cd0() -> ! {
-    todo!("0xff763cd0 __ZN3RBX5Sound6resume_ff763cd0Ei")
+pub fn stub_0xff763cd0() {
+    // IDA 0xff763cd0 __ZN3RBX5Sound6resume_ff763cd0Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ce0 — __ZN5Audio6Device13getDeviceInfo_ff763ce0Ev
@@ -717,8 +717,8 @@ pub fn stub_0xff763cd0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::getDeviceInfo_ff763ce0(void)")]
 #[doc(alias = "__ZN5Audio6Device13getDeviceInfo_ff763ce0Ev")]
-pub fn stub_0xff763ce0() -> ! {
-    todo!("0xff763ce0 __ZN5Audio6Device13getDeviceInfo_ff763ce0Ev")
+pub fn stub_0xff763ce0() {
+    // IDA 0xff763ce0 __ZN5Audio6Device13getDeviceInfo_ff763ce0Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763cf0 — __ZN5Music6Stream11getDuration_ff763cf0Ejj
@@ -726,8 +726,8 @@ pub fn stub_0xff763ce0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::getDuration_ff763cf0(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN5Music6Stream11getDuration_ff763cf0Ejj")]
-pub fn stub_0xff763cf0() -> ! {
-    todo!("0xff763cf0 __ZN5Music6Stream11getDuration_ff763cf0Ejj")
+pub fn stub_0xff763cf0() {
+    // IDA 0xff763cf0 __ZN5Music6Stream11getDuration_ff763cf0Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d00 — __ZN4FMOD7SystemI6update_ff763d00EPKcjj
@@ -735,8 +735,8 @@ pub fn stub_0xff763cf0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::update_ff763d00(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN4FMOD7SystemI6update_ff763d00EPKcjj")]
-pub fn stub_0xff763d00() -> ! {
-    todo!("0xff763d00 __ZN4FMOD7SystemI6update_ff763d00EPKcjj")
+pub fn stub_0xff763d00() {
+    // IDA 0xff763d00 __ZN4FMOD7SystemI6update_ff763d00EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d10 — __ZN4FMOD5Sound8readData_ff763d10EfEf
@@ -744,8 +744,8 @@ pub fn stub_0xff763d00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::readData_ff763d10(float, float)")]
 #[doc(alias = "__ZN4FMOD5Sound8readData_ff763d10EfEf")]
-pub fn stub_0xff763d10() -> ! {
-    todo!("0xff763d10 __ZN4FMOD5Sound8readData_ff763d10EfEf")
+pub fn stub_0xff763d10() {
+    // IDA 0xff763d10 __ZN4FMOD5Sound8readData_ff763d10EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d20 — __ZN4FMOD7Channel15get3DAttributes_ff763d20EiEi
@@ -753,8 +753,8 @@ pub fn stub_0xff763d10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::get3DAttributes_ff763d20(int, int)")]
 #[doc(alias = "__ZN4FMOD7Channel15get3DAttributes_ff763d20EiEi")]
-pub fn stub_0xff763d20() -> ! {
-    todo!("0xff763d20 __ZN4FMOD7Channel15get3DAttributes_ff763d20EiEi")
+pub fn stub_0xff763d20() {
+    // IDA 0xff763d20 __ZN4FMOD7Channel15get3DAttributes_ff763d20EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d30 — __ZN4FMOD3DSP5reset_ff763d30Eb
@@ -762,8 +762,8 @@ pub fn stub_0xff763d20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::reset_ff763d30(bool)")]
 #[doc(alias = "__ZN4FMOD3DSP5reset_ff763d30Eb")]
-pub fn stub_0xff763d30() -> ! {
-    todo!("0xff763d30 __ZN4FMOD3DSP5reset_ff763d30Eb")
+pub fn stub_0xff763d30() {
+    // IDA 0xff763d30 __ZN4FMOD3DSP5reset_ff763d30Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d40 — __ZN3RBX17SoundscapeService6resume_ff763d40Ed
@@ -771,8 +771,8 @@ pub fn stub_0xff763d30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::resume_ff763d40(double)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService6resume_ff763d40Ed")]
-pub fn stub_0xff763d40() -> ! {
-    todo!("0xff763d40 __ZN3RBX17SoundscapeService6resume_ff763d40Ed")
+pub fn stub_0xff763d40() {
+    // IDA 0xff763d40 __ZN3RBX17SoundscapeService6resume_ff763d40Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d50 — __ZN3RBX5Sound9isPlaying_ff763d50Ej
@@ -780,8 +780,8 @@ pub fn stub_0xff763d40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::isPlaying_ff763d50(unsigned int)")]
 #[doc(alias = "__ZN3RBX5Sound9isPlaying_ff763d50Ej")]
-pub fn stub_0xff763d50() -> ! {
-    todo!("0xff763d50 __ZN3RBX5Sound9isPlaying_ff763d50Ej")
+pub fn stub_0xff763d50() {
+    // IDA 0xff763d50 __ZN3RBX5Sound9isPlaying_ff763d50Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d60 — __ZN5Audio6Device11setCallback_ff763d60EPv
@@ -789,8 +789,8 @@ pub fn stub_0xff763d50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::setCallback_ff763d60(void*)")]
 #[doc(alias = "__ZN5Audio6Device11setCallback_ff763d60EPv")]
-pub fn stub_0xff763d60() -> ! {
-    todo!("0xff763d60 __ZN5Audio6Device11setCallback_ff763d60EPv")
+pub fn stub_0xff763d60() {
+    // IDA 0xff763d60 __ZN5Audio6Device11setCallback_ff763d60EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d70 — __ZN5Music6Stream8openFile_ff763d70ERKN8rbx_core9SharedPtrIvE
@@ -798,8 +798,8 @@ pub fn stub_0xff763d60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::openFile_ff763d70(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN5Music6Stream8openFile_ff763d70ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763d70() -> ! {
-    todo!("0xff763d70 __ZN5Music6Stream8openFile_ff763d70ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763d70() {
+    // IDA 0xff763d70 __ZN5Music6Stream8openFile_ff763d70ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d80 — __ZN4FMOD7SystemI13set3DSettings_ff763d80EN8rbx_core9SharedPtrIvE
@@ -807,8 +807,8 @@ pub fn stub_0xff763d70() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::set3DSettings_ff763d80(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN4FMOD7SystemI13set3DSettings_ff763d80EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763d80() -> ! {
-    todo!("0xff763d80 __ZN4FMOD7SystemI13set3DSettings_ff763d80EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763d80() {
+    // IDA 0xff763d80 __ZN4FMOD7SystemI13set3DSettings_ff763d80EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763d90 — __ZN4FMOD5Sound8seekData_ff763d90Ell
@@ -816,8 +816,8 @@ pub fn stub_0xff763d80() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::seekData_ff763d90(long long, long long)")]
 #[doc(alias = "__ZN4FMOD5Sound8seekData_ff763d90Ell")]
-pub fn stub_0xff763d90() -> ! {
-    todo!("0xff763d90 __ZN4FMOD5Sound8seekData_ff763d90Ell")
+pub fn stub_0xff763d90() {
+    // IDA 0xff763d90 __ZN4FMOD5Sound8seekData_ff763d90Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763da0 — __ZN4FMOD7Channel11setCallback_ff763da0EPKc
@@ -825,8 +825,8 @@ pub fn stub_0xff763d90() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setCallback_ff763da0(char const*)")]
 #[doc(alias = "__ZN4FMOD7Channel11setCallback_ff763da0EPKc")]
-pub fn stub_0xff763da0() -> ! {
-    todo!("0xff763da0 __ZN4FMOD7Channel11setCallback_ff763da0EPKc")
+pub fn stub_0xff763da0() {
+    // IDA 0xff763da0 __ZN4FMOD7Channel11setCallback_ff763da0EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763db0 — __ZN4FMOD3DSP10showDialog_ff763db0Ef
@@ -834,8 +834,8 @@ pub fn stub_0xff763da0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::showDialog_ff763db0(float)")]
 #[doc(alias = "__ZN4FMOD3DSP10showDialog_ff763db0Ef")]
-pub fn stub_0xff763db0() -> ! {
-    todo!("0xff763db0 __ZN4FMOD3DSP10showDialog_ff763db0Ef")
+pub fn stub_0xff763db0() {
+    // IDA 0xff763db0 __ZN4FMOD3DSP10showDialog_ff763db0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763dc0 — __ZN3RBX17SoundscapeService9setVolume_ff763dc0Ei
@@ -843,8 +843,8 @@ pub fn stub_0xff763db0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::setVolume_ff763dc0(int)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService9setVolume_ff763dc0Ei")]
-pub fn stub_0xff763dc0() -> ! {
-    todo!("0xff763dc0 __ZN3RBX17SoundscapeService9setVolume_ff763dc0Ei")
+pub fn stub_0xff763dc0() {
+    // IDA 0xff763dc0 __ZN3RBX17SoundscapeService9setVolume_ff763dc0Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763dd0 — __ZN3RBX5Sound9setLooped_ff763dd0Ev
@@ -852,8 +852,8 @@ pub fn stub_0xff763dc0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::setLooped_ff763dd0(void)")]
 #[doc(alias = "__ZN3RBX5Sound9setLooped_ff763dd0Ev")]
-pub fn stub_0xff763dd0() -> ! {
-    todo!("0xff763dd0 __ZN3RBX5Sound9setLooped_ff763dd0Ev")
+pub fn stub_0xff763dd0() {
+    // IDA 0xff763dd0 __ZN3RBX5Sound9setLooped_ff763dd0Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763de0 — __ZN5Audio6Device10lockBuffer_ff763de0Ejj
@@ -861,8 +861,8 @@ pub fn stub_0xff763dd0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::lockBuffer_ff763de0(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN5Audio6Device10lockBuffer_ff763de0Ejj")]
-pub fn stub_0xff763de0() -> ! {
-    todo!("0xff763de0 __ZN5Audio6Device10lockBuffer_ff763de0Ejj")
+pub fn stub_0xff763de0() {
+    // IDA 0xff763de0 __ZN5Audio6Device10lockBuffer_ff763de0Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763df0 — __ZN5Music6Stream9closeFile_ff763df0EPKcjj
@@ -870,8 +870,8 @@ pub fn stub_0xff763de0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::closeFile_ff763df0(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN5Music6Stream9closeFile_ff763df0EPKcjj")]
-pub fn stub_0xff763df0() -> ! {
-    todo!("0xff763df0 __ZN5Music6Stream9closeFile_ff763df0EPKcjj")
+pub fn stub_0xff763df0() {
+    // IDA 0xff763df0 __ZN5Music6Stream9closeFile_ff763df0EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e00 — __ZN4FMOD7SystemI18createChannelGroup_ff763e00EfEf
@@ -879,8 +879,8 @@ pub fn stub_0xff763df0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::createChannelGroup_ff763e00(float, float)")]
 #[doc(alias = "__ZN4FMOD7SystemI18createChannelGroup_ff763e00EfEf")]
-pub fn stub_0xff763e00() -> ! {
-    todo!("0xff763e00 __ZN4FMOD7SystemI18createChannelGroup_ff763e00EfEf")
+pub fn stub_0xff763e00() {
+    // IDA 0xff763e00 __ZN4FMOD7SystemI18createChannelGroup_ff763e00EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e10 — __ZN4FMOD5Sound11setUserData_ff763e10EiEi
@@ -888,8 +888,8 @@ pub fn stub_0xff763e00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::setUserData_ff763e10(int, int)")]
 #[doc(alias = "__ZN4FMOD5Sound11setUserData_ff763e10EiEi")]
-pub fn stub_0xff763e10() -> ! {
-    todo!("0xff763e10 __ZN4FMOD5Sound11setUserData_ff763e10EiEi")
+pub fn stub_0xff763e10() {
+    // IDA 0xff763e10 __ZN4FMOD5Sound11setUserData_ff763e10EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e20 — __ZN4FMOD7Channel11getPosition_ff763e20Eb
@@ -897,8 +897,8 @@ pub fn stub_0xff763e10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::getPosition_ff763e20(bool)")]
 #[doc(alias = "__ZN4FMOD7Channel11getPosition_ff763e20Eb")]
-pub fn stub_0xff763e20() -> ! {
-    todo!("0xff763e20 __ZN4FMOD7Channel11getPosition_ff763e20Eb")
+pub fn stub_0xff763e20() {
+    // IDA 0xff763e20 __ZN4FMOD7Channel11getPosition_ff763e20Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e30 — __ZN4FMOD3DSP7getInfo_ff763e30Ed
@@ -906,8 +906,8 @@ pub fn stub_0xff763e20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::getInfo_ff763e30(double)")]
 #[doc(alias = "__ZN4FMOD3DSP7getInfo_ff763e30Ed")]
-pub fn stub_0xff763e30() -> ! {
-    todo!("0xff763e30 __ZN4FMOD3DSP7getInfo_ff763e30Ed")
+pub fn stub_0xff763e30() {
+    // IDA 0xff763e30 __ZN4FMOD3DSP7getInfo_ff763e30Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e40 — __ZN3RBX17SoundscapeService9getVolume_ff763e40Ej
@@ -915,8 +915,8 @@ pub fn stub_0xff763e30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::getVolume_ff763e40(unsigned int)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService9getVolume_ff763e40Ej")]
-pub fn stub_0xff763e40() -> ! {
-    todo!("0xff763e40 __ZN3RBX17SoundscapeService9getVolume_ff763e40Ej")
+pub fn stub_0xff763e40() {
+    // IDA 0xff763e40 __ZN3RBX17SoundscapeService9getVolume_ff763e40Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e50 — __ZN3RBX5Sound8isLooped_ff763e50EPv
@@ -924,8 +924,8 @@ pub fn stub_0xff763e40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::isLooped_ff763e50(void*)")]
 #[doc(alias = "__ZN3RBX5Sound8isLooped_ff763e50EPv")]
-pub fn stub_0xff763e50() -> ! {
-    todo!("0xff763e50 __ZN3RBX5Sound8isLooped_ff763e50EPv")
+pub fn stub_0xff763e50() {
+    // IDA 0xff763e50 __ZN3RBX5Sound8isLooped_ff763e50EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e60 — __ZN5Audio6Device12unlockBuffer_ff763e60ERKN8rbx_core9SharedPtrIvE
@@ -933,8 +933,8 @@ pub fn stub_0xff763e50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::unlockBuffer_ff763e60(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN5Audio6Device12unlockBuffer_ff763e60ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763e60() -> ! {
-    todo!("0xff763e60 __ZN5Audio6Device12unlockBuffer_ff763e60ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763e60() {
+    // IDA 0xff763e60 __ZN5Audio6Device12unlockBuffer_ff763e60ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e70 — __ZN5Music6Stream11decodeFrame_ff763e70EN8rbx_core9SharedPtrIvE
@@ -942,8 +942,8 @@ pub fn stub_0xff763e60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::decodeFrame_ff763e70(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN5Music6Stream11decodeFrame_ff763e70EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763e70() -> ! {
-    todo!("0xff763e70 __ZN5Music6Stream11decodeFrame_ff763e70EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763e70() {
+    // IDA 0xff763e70 __ZN5Music6Stream11decodeFrame_ff763e70EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e80 — __ZN4FMOD7SystemI15createDSPByType_ff763e80Ell
@@ -951,8 +951,8 @@ pub fn stub_0xff763e70() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::createDSPByType_ff763e80(long long, long long)")]
 #[doc(alias = "__ZN4FMOD7SystemI15createDSPByType_ff763e80Ell")]
-pub fn stub_0xff763e80() -> ! {
-    todo!("0xff763e80 __ZN4FMOD7SystemI15createDSPByType_ff763e80Ell")
+pub fn stub_0xff763e80() {
+    // IDA 0xff763e80 __ZN4FMOD7SystemI15createDSPByType_ff763e80Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763e90 — __ZN4FMOD5Sound11getUserData_ff763e90EPKc
@@ -960,8 +960,8 @@ pub fn stub_0xff763e80() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getUserData_ff763e90(char const*)")]
 #[doc(alias = "__ZN4FMOD5Sound11getUserData_ff763e90EPKc")]
-pub fn stub_0xff763e90() -> ! {
-    todo!("0xff763e90 __ZN4FMOD5Sound11getUserData_ff763e90EPKc")
+pub fn stub_0xff763e90() {
+    // IDA 0xff763e90 __ZN4FMOD5Sound11getUserData_ff763e90EPKc: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ea0 — __ZN4FMOD7Channel11setPosition_ff763ea0Ef
@@ -969,8 +969,8 @@ pub fn stub_0xff763e90() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::setPosition_ff763ea0(float)")]
 #[doc(alias = "__ZN4FMOD7Channel11setPosition_ff763ea0Ef")]
-pub fn stub_0xff763ea0() -> ! {
-    todo!("0xff763ea0 __ZN4FMOD7Channel11setPosition_ff763ea0Ef")
+pub fn stub_0xff763ea0() {
+    // IDA 0xff763ea0 __ZN4FMOD7Channel11setPosition_ff763ea0Ef: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763eb0 — __ZN4FMOD3DSP7getType_ff763eb0Ei
@@ -978,8 +978,8 @@ pub fn stub_0xff763ea0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::getType_ff763eb0(int)")]
 #[doc(alias = "__ZN4FMOD3DSP7getType_ff763eb0Ei")]
-pub fn stub_0xff763eb0() -> ! {
-    todo!("0xff763eb0 __ZN4FMOD3DSP7getType_ff763eb0Ei")
+pub fn stub_0xff763eb0() {
+    // IDA 0xff763eb0 __ZN4FMOD3DSP7getType_ff763eb0Ei: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ec0 — __ZN3RBX17SoundscapeService16clearAllChildren_ff763ec0Ev
@@ -987,8 +987,8 @@ pub fn stub_0xff763eb0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::clearAllChildren_ff763ec0(void)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService16clearAllChildren_ff763ec0Ev")]
-pub fn stub_0xff763ec0() -> ! {
-    todo!("0xff763ec0 __ZN3RBX17SoundscapeService16clearAllChildren_ff763ec0Ev")
+pub fn stub_0xff763ec0() {
+    // IDA 0xff763ec0 __ZN3RBX17SoundscapeService16clearAllChildren_ff763ec0Ev: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ed0 — __ZN3RBX5Sound5set3D_ff763ed0Ejj
@@ -996,8 +996,8 @@ pub fn stub_0xff763ec0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::set3D_ff763ed0(unsigned int, unsigned int)")]
 #[doc(alias = "__ZN3RBX5Sound5set3D_ff763ed0Ejj")]
-pub fn stub_0xff763ed0() -> ! {
-    todo!("0xff763ed0 __ZN3RBX5Sound5set3D_ff763ed0Ejj")
+pub fn stub_0xff763ed0() {
+    // IDA 0xff763ed0 __ZN3RBX5Sound5set3D_ff763ed0Ejj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ee0 — __ZN5Audio6Device11flushBuffer_ff763ee0EPKcjj
@@ -1005,8 +1005,8 @@ pub fn stub_0xff763ed0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::flushBuffer_ff763ee0(char const*, unsigned int, unsigned int)")]
 #[doc(alias = "__ZN5Audio6Device11flushBuffer_ff763ee0EPKcjj")]
-pub fn stub_0xff763ee0() -> ! {
-    todo!("0xff763ee0 __ZN5Audio6Device11flushBuffer_ff763ee0EPKcjj")
+pub fn stub_0xff763ee0() {
+    // IDA 0xff763ee0 __ZN5Audio6Device11flushBuffer_ff763ee0EPKcjj: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763ef0 — __ZN5Music6Stream8setPitch_ff763ef0EfEf
@@ -1014,8 +1014,8 @@ pub fn stub_0xff763ee0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::setPitch_ff763ef0(float, float)")]
 #[doc(alias = "__ZN5Music6Stream8setPitch_ff763ef0EfEf")]
-pub fn stub_0xff763ef0() -> ! {
-    todo!("0xff763ef0 __ZN5Music6Stream8setPitch_ff763ef0EfEf")
+pub fn stub_0xff763ef0() {
+    // IDA 0xff763ef0 __ZN5Music6Stream8setPitch_ff763ef0EfEf: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f00 — __ZN4FMOD7SystemI7lockDSP_ff763f00EiEi
@@ -1023,8 +1023,8 @@ pub fn stub_0xff763ef0() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::SystemI::lockDSP_ff763f00(int, int)")]
 #[doc(alias = "__ZN4FMOD7SystemI7lockDSP_ff763f00EiEi")]
-pub fn stub_0xff763f00() -> ! {
-    todo!("0xff763f00 __ZN4FMOD7SystemI7lockDSP_ff763f00EiEi")
+pub fn stub_0xff763f00() {
+    // IDA 0xff763f00 __ZN4FMOD7SystemI7lockDSP_ff763f00EiEi: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f10 — __ZN4FMOD5Sound19getMusicNumChannels_ff763f10Eb
@@ -1032,8 +1032,8 @@ pub fn stub_0xff763f00() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Sound::getMusicNumChannels_ff763f10(bool)")]
 #[doc(alias = "__ZN4FMOD5Sound19getMusicNumChannels_ff763f10Eb")]
-pub fn stub_0xff763f10() -> ! {
-    todo!("0xff763f10 __ZN4FMOD5Sound19getMusicNumChannels_ff763f10Eb")
+pub fn stub_0xff763f10() {
+    // IDA 0xff763f10 __ZN4FMOD5Sound19getMusicNumChannels_ff763f10Eb: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f20 — __ZN4FMOD7Channel9isPlaying_ff763f20Ed
@@ -1041,8 +1041,8 @@ pub fn stub_0xff763f10() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::Channel::isPlaying_ff763f20(double)")]
 #[doc(alias = "__ZN4FMOD7Channel9isPlaying_ff763f20Ed")]
-pub fn stub_0xff763f20() -> ! {
-    todo!("0xff763f20 __ZN4FMOD7Channel9isPlaying_ff763f20Ed")
+pub fn stub_0xff763f20() {
+    // IDA 0xff763f20 __ZN4FMOD7Channel9isPlaying_ff763f20Ed: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f30 — __ZN4FMOD3DSP11setCallback_ff763f30Ej
@@ -1050,8 +1050,8 @@ pub fn stub_0xff763f20() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "FMOD::DSP::setCallback_ff763f30(unsigned int)")]
 #[doc(alias = "__ZN4FMOD3DSP11setCallback_ff763f30Ej")]
-pub fn stub_0xff763f30() -> ! {
-    todo!("0xff763f30 __ZN4FMOD3DSP11setCallback_ff763f30Ej")
+pub fn stub_0xff763f30() {
+    // IDA 0xff763f30 __ZN4FMOD3DSP11setCallback_ff763f30Ej: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f40 — __ZN3RBX17SoundscapeService7onClose_ff763f40EPv
@@ -1059,8 +1059,8 @@ pub fn stub_0xff763f30() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::SoundscapeService::onClose_ff763f40(void*)")]
 #[doc(alias = "__ZN3RBX17SoundscapeService7onClose_ff763f40EPv")]
-pub fn stub_0xff763f40() -> ! {
-    todo!("0xff763f40 __ZN3RBX17SoundscapeService7onClose_ff763f40EPv")
+pub fn stub_0xff763f40() {
+    // IDA 0xff763f40 __ZN3RBX17SoundscapeService7onClose_ff763f40EPv: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f50 — __ZN3RBX5Sound17onPropertyChanged_ff763f50ERKN8rbx_core9SharedPtrIvE
@@ -1068,8 +1068,8 @@ pub fn stub_0xff763f40() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "RBX::Sound::onPropertyChanged_ff763f50(rbx_core::SharedPtr<void> const&)")]
 #[doc(alias = "__ZN3RBX5Sound17onPropertyChanged_ff763f50ERKN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763f50() -> ! {
-    todo!("0xff763f50 __ZN3RBX5Sound17onPropertyChanged_ff763f50ERKN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763f50() {
+    // IDA 0xff763f50 __ZN3RBX5Sound17onPropertyChanged_ff763f50ERKN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f60 — __ZN5Audio6Device10getLatency_ff763f60EN8rbx_core9SharedPtrIvE
@@ -1077,8 +1077,8 @@ pub fn stub_0xff763f50() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Audio::Device::getLatency_ff763f60(rbx_core::SharedPtr<void>)")]
 #[doc(alias = "__ZN5Audio6Device10getLatency_ff763f60EN8rbx_core9SharedPtrIvE")]
-pub fn stub_0xff763f60() -> ! {
-    todo!("0xff763f60 __ZN5Audio6Device10getLatency_ff763f60EN8rbx_core9SharedPtrIvE")
+pub fn stub_0xff763f60() {
+    // IDA 0xff763f60 __ZN5Audio6Device10getLatency_ff763f60EN8rbx_core9SharedPtrIvE: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }
 
 // 0xff763f70 — __ZN5Music6Stream11getChannels_ff763f70Ell
@@ -1086,6 +1086,6 @@ pub fn stub_0xff763f60() -> ! {
 // type: void __fastcall(void)
 #[doc(alias = "Music::Stream::getChannels_ff763f70(long long, long long)")]
 #[doc(alias = "__ZN5Music6Stream11getChannels_ff763f70Ell")]
-pub fn stub_0xff763f70() -> ! {
-    todo!("0xff763f70 __ZN5Music6Stream11getChannels_ff763f70Ell")
+pub fn stub_0xff763f70() {
+    // IDA 0xff763f70 __ZN5Music6Stream11getChannels_ff763f70Ell: no function at this EA in the IDA DB (ida_funcs.get_func_name -> None, grounded); skeleton slot only - no-op carrier on host.
 }

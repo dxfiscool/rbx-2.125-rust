@@ -182,8 +182,9 @@ pub fn stub_2d9ae0() -> ! {
 
 // 0x2d9d4c — __ZNK3RBX13AdvRunDragger19shouldRender3dAdornEv
 #[doc(alias = "RBX::AdvRunDragger::shouldRender3dAdorn(void)const")]
-pub fn stub_2d9d4c() -> ! {
-    todo!("0x2d9d4c RBX::AdvRunDragger::shouldRender3dAdorn(void)const")
+pub fn stub_2d9d4c() -> u32 {
+    // IDA 0x2d9d4c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2d9d50 — __GLOBAL__I_a_82
@@ -380,8 +381,9 @@ pub fn stub_2dbfb0() -> ! {
 
 // 0x2dc078 — __ZNK3RBX9CloneTool14drawConnectorsEv
 #[doc(alias = "RBX::CloneTool::drawConnectors(void)const")]
-pub fn stub_2dc078() -> ! {
-    todo!("0x2dc078 RBX::CloneTool::drawConnectors(void)const")
+pub fn stub_2dc078() -> u32 {
+    // IDA 0x2dc078: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2dc07c — __ZN5boost10shared_ptrIN3RBX12PartDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_

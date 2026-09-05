@@ -679,8 +679,9 @@ pub fn stub_5a3adc() -> ! {
 // 0x5a3aec — __ZNK3RBX10ManualWeld19shouldRender3dAdornEv
 #[doc(alias = "RBX::ManualWeld::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX10ManualWeld19shouldRender3dAdornEv")]
-pub fn stub_5a3aec() -> ! {
-    todo!("0x5a3aec __ZNK3RBX10ManualWeld19shouldRender3dAdornEv")
+pub fn stub_5a3aec() -> u32 {
+    // IDA 0x5a3aec: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5a3af0 — __ZThn32_N3RBX10ManualWeldD1Ev

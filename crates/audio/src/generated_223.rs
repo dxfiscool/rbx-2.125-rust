@@ -390,15 +390,17 @@ pub fn stub_6c2a20() -> ! {
 // 0x6c2b34 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::PartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::PartInstance>::*)(bool const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv")]
-pub fn stub_6c2b34() -> ! {
-    todo!("0x6c2b34 __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE10isReadOnlyEv")
+pub fn stub_6c2b34() -> u32 {
+    // IDA 0x6c2b34: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2b38 — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VehicleSeat,bool>::GetSetImpl<bool const& (RBX::SeatImpl<RBX::PartInstance>::*)(void)const,void (RBX::SeatImpl<RBX::PartInstance>::*)(bool const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv")]
-pub fn stub_6c2b38() -> ! {
-    todo!("0x6c2b38 __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE11isWriteOnlyEv")
+pub fn stub_6c2b38() -> u32 {
+    // IDA 0x6c2b38: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2b3c — __ZNK3RBX10Reflection14PropDescriptorINS_11VehicleSeatEbE10GetSetImplIMNS_8SeatImplINS_12PartInstanceEEEKFRKbvEMS7_FvS9_EE8getValueEPKNS0_13DescribedBaseE
@@ -439,15 +441,17 @@ pub fn stub_6c2bf8() {
 // 0x6c2c98 — __ZNK3RBX5Joint9canStepUiEv
 #[doc(alias = "RBX::Joint::canStepUi(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint9canStepUiEv")]
-pub fn stub_6c2c98() -> ! {
-    todo!("0x6c2c98 __ZNK3RBX5Joint9canStepUiEv")
+pub fn stub_6c2c98() -> u32 {
+    // IDA 0x6c2c98: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2c9c — __ZN3RBX5Joint6stepUiEd
 #[doc(alias = "RBX::Joint::stepUi(double)")]
 #[doc(alias = "__ZN3RBX5Joint6stepUiEd")]
-pub fn stub_6c2c9c() -> ! {
-    todo!("0x6c2c9c __ZN3RBX5Joint6stepUiEd")
+pub fn stub_6c2c9c() -> u32 {
+    // IDA 0x6c2c9c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6c2ca0 — __ZThn32_N3RBX11KernelJointD1Ev

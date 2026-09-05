@@ -643,8 +643,9 @@ pub fn stub_4b0c3c() -> ! {
 // type: _DWORD __fastcall(RBX::CustomEvent *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::CustomEvent::askForbidChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX11CustomEvent14askForbidChildEPKNS_8InstanceE")]
-pub fn stub_4b0e54() -> ! {
-    todo!("0x4b0e54 RBX::CustomEvent::askForbidChild(RBX::Instance const*)const")
+pub fn stub_4b0e54() -> u32 {
+    // IDA 0x4b0e54: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4b0e58 — __ZNK3RBX11CustomEvent12askSetParentEPKNS_8InstanceE

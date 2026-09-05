@@ -110,14 +110,16 @@ pub fn stub_180c58() -> ! {
 
 // 0x1812f8 — __TIFFNoPreCode
 #[doc(alias = "__TIFFNoPreCode")]
-pub fn stub_1812f8() -> ! {
-    todo!("0x1812f8 __TIFFNoPreCode")
+pub fn stub_1812f8() -> u32 {
+    // IDA 0x1812f8: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x181300 — __TIFFtrue
 #[doc(alias = "__TIFFtrue")]
-pub fn stub_181300() -> ! {
-    todo!("0x181300 __TIFFtrue")
+pub fn stub_181300() -> u32 {
+    // IDA 0x181300: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x181308 — __TIFFvoid

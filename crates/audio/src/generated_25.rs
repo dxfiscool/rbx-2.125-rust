@@ -398,8 +398,9 @@ pub fn stub_2e3414() -> ! {
 
 // 0x2e34dc — __ZNK3RBX8GameTool14drawConnectorsEv
 #[doc(alias = "RBX::GameTool::drawConnectors(void)const")]
-pub fn stub_2e34dc() -> ! {
-    todo!("0x2e34dc RBX::GameTool::drawConnectors(void)const")
+pub fn stub_2e34dc() -> u32 {
+    // IDA 0x2e34dc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2e34e0 — __ZNK3RBX8GameTool13getCursorNameEv
@@ -488,8 +489,9 @@ pub fn stub_2e3c88() -> ! {
 
 // 0x2e3d50 — __ZNK3RBX8GrabTool14drawConnectorsEv
 #[doc(alias = "RBX::GrabTool::drawConnectors(void)const")]
-pub fn stub_2e3d50() -> ! {
-    todo!("0x2e3d50 RBX::GrabTool::drawConnectors(void)const")
+pub fn stub_2e3d50() -> u32 {
+    // IDA 0x2e3d50: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2e3d54 — __ZNK3RBX8GrabTool13getCursorNameEv

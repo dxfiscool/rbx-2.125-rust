@@ -228,8 +228,8 @@ pub fn stub_6c78a8() -> ! {
 // 0x6c78c0 — __ZN3RBX21VirtualHardwareDevice16renderGameCursorEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::VirtualHardwareDevice *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::VirtualHardwareDevice::renderGameCursor(RBX::Adorn *)")]
-pub fn stub_6c78c0() -> ! {
-    todo!("0x6c78c0 RBX::VirtualHardwareDevice::renderGameCursor(RBX::Adorn *)")
+pub fn stub_6c78c0() {
+    // IDA 0x6c78c0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6c78c4 — __GLOBAL__I_a_283

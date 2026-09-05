@@ -48,8 +48,8 @@ pub fn stub_4d582c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::ChangeHistoryService::RuntimeUndoBehavior>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::ChangeHistoryService::RuntimeUndoBehavior>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX20ChangeHistoryService19RuntimeUndoBehaviorEE13destruct_funcEPc")]
-pub fn stub_4d5898() -> ! {
-    todo!("0x4d5898 __ZN3rbx14implementation12typed_holderIN3RBX20ChangeHistoryService19RuntimeUndoBehaviorEE13destruct_funcEPc")
+pub fn stub_4d5898() {
+    // IDA 0x4d5898: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d589c — __ZN3rbx8any_castIRKN3RBX20ChangeHistoryService19RuntimeUndoBehaviorENS1_7Region3EEET_RNS_13placement_anyIT0_EE

@@ -11,6 +11,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // 0xf3ca94 — j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SoundType>::singleton(void)")]
 #[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv")]
-pub fn stub_f3ca94() -> ! {
-    todo!("0xf3ca94 j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv")
+pub fn stub_f3ca94() {
+    // IDA 0xf3ca94: Thumb import jump veneer for `j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: rbx::implementation::typed_holder<RBX::SoundType>::singleton(void).
 }

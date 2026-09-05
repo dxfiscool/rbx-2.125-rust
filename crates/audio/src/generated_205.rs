@@ -124,8 +124,8 @@ pub fn stub_4bc93c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Frame::Style>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Frame::Style>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX5Frame5StyleEE13destruct_funcEPc")]
-pub fn stub_4bc948() -> ! {
-    todo!("0x4bc948 __ZN3rbx14implementation12typed_holderIN3RBX5Frame5StyleEE13destruct_funcEPc")
+pub fn stub_4bc948() {
+    // IDA 0x4bc948: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -289,8 +289,8 @@ pub fn stub_4bd364() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GameBasicSettings::RenderQualitySetting>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GameBasicSettings::RenderQualitySetting>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE13destruct_funcEPc")]
-pub fn stub_4bd370() -> ! {
-    todo!("0x4bd370 __ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE13destruct_funcEPc")
+pub fn stub_4bd370() {
+    // IDA 0x4bd370: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -453,8 +453,8 @@ pub fn stub_4bdd8c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GameBasicSettings::ControlMode>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GameBasicSettings::ControlMode>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE13destruct_funcEPc")]
-pub fn stub_4bdd98() -> ! {
-    todo!("0x4bdd98 __ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE13destruct_funcEPc")
+pub fn stub_4bdd98() {
+    // IDA 0x4bdd98: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -618,8 +618,8 @@ pub fn stub_4be7b4() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GameSettings::UploadSetting>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GameSettings::UploadSetting>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE13destruct_funcEPc")]
-pub fn stub_4be7c0() -> ! {
-    todo!("0x4be7c0 __ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE13destruct_funcEPc")
+pub fn stub_4be7c0() {
+    // IDA 0x4be7c0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -783,8 +783,8 @@ pub fn stub_4bf1dc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GameSettings::VideoQuality>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GameSettings::VideoQuality>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE13destruct_funcEPc")]
-pub fn stub_4bf1e8() -> ! {
-    todo!("0x4bf1e8 __ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE13destruct_funcEPc")
+pub fn stub_4bf1e8() {
+    // IDA 0x4bf1e8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 

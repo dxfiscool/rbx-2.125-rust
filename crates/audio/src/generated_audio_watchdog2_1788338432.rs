@@ -95,16 +95,18 @@ pub fn stub_5d2a20() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")]
-pub fn stub_5d2a60() -> ! {
-    todo!("0x5d2a60 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")
+pub fn stub_5d2a60() -> u32 {
+    // IDA 0x5d2a60: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d2a64 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")]
-pub fn stub_5d2a64() -> ! {
-    todo!("0x5d2a64 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")
+pub fn stub_5d2a64() -> u32 {
+    // IDA 0x5d2a64: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d2a68 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
@@ -246,16 +248,18 @@ pub fn stub_5d3150() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PartInstance *>::GetImpl<RBX::PartInstance * (RBX::Mouse::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PartInstance *>::GetImpl<RBX::PartInstance * (RBX::Mouse::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_5d3158() -> ! {
-    todo!("0x5d3158 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")
+pub fn stub_5d3158() -> u32 {
+    // IDA 0x5d3158: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d315c — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PartInstance *>::GetImpl<RBX::PartInstance * (RBX::Mouse::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PartInstance *>::GetImpl<RBX::PartInstance * (RBX::Mouse::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_5d315c() -> ! {
-    todo!("0x5d315c __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")
+pub fn stub_5d315c() -> u32 {
+    // IDA 0x5d315c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d3160 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -397,16 +401,18 @@ pub fn stub_5d3848() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_5d3850() -> ! {
-    todo!("0x5d3850 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_5d3850() -> u32 {
+    // IDA 0x5d3850: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d3854 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_5d3854() -> ! {
-    todo!("0x5d3854 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_5d3854() -> u32 {
+    // IDA 0x5d3854: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d3858 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -445,16 +451,18 @@ pub fn stub_5d39a8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::GetImpl<RBX::RbxRay (RBX::Mouse::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::GetImpl<RBX::RbxRay (RBX::Mouse::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")]
-pub fn stub_5d39d4() -> ! {
-    todo!("0x5d39d4 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv")
+pub fn stub_5d39d4() -> u32 {
+    // IDA 0x5d39d4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d39d8 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::GetImpl<RBX::RbxRay (RBX::Mouse::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::RbxRay>::GetImpl<RBX::RbxRay (RBX::Mouse::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")]
-pub fn stub_5d39d8() -> ! {
-    todo!("0x5d39d8 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv")
+pub fn stub_5d39d8() -> u32 {
+    // IDA 0x5d39d8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d39dc — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_6RbxRayEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
@@ -493,16 +501,18 @@ pub fn stub_5d3c30() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::GetImpl<G3D::CoordinateFrame (RBX::Mouse::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::GetImpl<G3D::CoordinateFrame (RBX::Mouse::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_5d3c5c() -> ! {
-    todo!("0x5d3c5c __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")
+pub fn stub_5d3c5c() -> u32 {
+    // IDA 0x5d3c5c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d3c60 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::GetImpl<G3D::CoordinateFrame (RBX::Mouse::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,G3D::CoordinateFrame>::GetImpl<G3D::CoordinateFrame (RBX::Mouse::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_5d3c60() -> ! {
-    todo!("0x5d3c60 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")
+pub fn stub_5d3c60() -> u32 {
+    // IDA 0x5d3c60: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d3c64 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEN3G3D15CoordinateFrameEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE

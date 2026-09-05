@@ -21,8 +21,9 @@ pub fn stub_4efd30() -> ! {
 // 0x4efd38 — __ZNK3RBX4Fire11askAddChildEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Fire *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Fire::askAddChild(RBX::Instance const*)const")]
-pub fn stub_4efd38() -> ! {
-    todo!("0x4efd38 __ZNK3RBX4Fire11askAddChildEPKNS_8InstanceE")
+pub fn stub_4efd38() -> u32 {
+    // IDA 0x4efd38: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4efd3c — __ZNK3RBX4Fire12askSetParentEPKNS_8InstanceE
@@ -236,14 +237,16 @@ pub fn stub_4f0c58() {
 
 // 0x4f0c84 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::isReadOnly(void)const")]
-pub fn stub_4f0c84() -> ! {
-    todo!("0x4f0c84 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_4f0c84() -> u32 {
+    // IDA 0x4f0c84: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f0c88 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_4f0c88() -> ! {
-    todo!("0x4f0c88 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_4f0c88() -> u32 {
+    // IDA 0x4f0c88: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f0c8c — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -273,14 +276,16 @@ pub fn stub_4f0de4() {
 
 // 0x4f0e10 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::isReadOnly(void)const")]
-pub fn stub_4f0e10() -> ! {
-    todo!("0x4f0e10 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_4f0e10() -> u32 {
+    // IDA 0x4f0e10: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f0e14 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::isWriteOnly(void)const")]
-pub fn stub_4f0e14() -> ! {
-    todo!("0x4f0e14 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_4f0e14() -> u32 {
+    // IDA 0x4f0e14: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f0e18 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -303,14 +308,16 @@ pub fn stub_4f0e7c() -> ! {
 
 // 0x4f100c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::isReadOnly(void)const")]
-pub fn stub_4f100c() -> ! {
-    todo!("0x4f100c __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE10isReadOnlyEv")
+pub fn stub_4f100c() -> u32 {
+    // IDA 0x4f100c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f1010 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::isWriteOnly(void)const")]
-pub fn stub_4f1010() -> ! {
-    todo!("0x4f1010 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE11isWriteOnlyEv")
+pub fn stub_4f1010() -> u32 {
+    // IDA 0x4f1010: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f1014 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE8getValueEPKNS0_13DescribedBaseE
@@ -461,8 +468,9 @@ pub fn stub_4f202c() -> ! {
 // 0x4f203c — __ZN3RBX4Flag10canUnequipEv
 // type: _DWORD __fastcall(RBX::Flag *__hidden this)
 #[doc(alias = "RBX::Flag::canUnequip(void)")]
-pub fn stub_4f203c() -> ! {
-    todo!("0x4f203c __ZN3RBX4Flag10canUnequipEv")
+pub fn stub_4f203c() -> u32 {
+    // IDA 0x4f203c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4f2040 — __ZThn32_NK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE12getClassNameEv

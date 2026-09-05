@@ -469,8 +469,8 @@ pub fn stub_3ca76c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Camera::CameraPanMode>::destruct_func(char *)
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Camera::CameraPanMode>::destruct_func(char *)")]
-pub fn stub_3ca778() -> ! {
-    todo!("0x3ca778 rbx::implementation::typed_holder<RBX::Camera::CameraPanMode>::destruct_func(char *)")
+pub fn stub_3ca778() {
+    // IDA 0x3ca778: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3ca77c — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE13convertToItemERKS3_
@@ -573,8 +573,8 @@ pub fn stub_3cb45c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Camera::CameraType>::destruct_func(char *)
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Camera::CameraType>::destruct_func(char *)")]
-pub fn stub_3cb468() -> ! {
-    todo!("0x3cb468 rbx::implementation::typed_holder<RBX::Camera::CameraType>::destruct_func(char *)")
+pub fn stub_3cb468() {
+    // IDA 0x3cb468: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3cb46c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE13convertToItemERKS3_

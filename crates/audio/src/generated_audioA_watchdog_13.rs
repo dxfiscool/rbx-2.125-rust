@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::resize(unsigned long,RBX::SoundType)")]
 #[doc(alias = "j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE6resizeEmS1_")]
-pub fn stub_f30a24() -> ! {
-    todo!("0xf30a24 j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE6resizeEmS1_")
+pub fn stub_f30a24() {
+    // IDA 0xf30a24: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE6resizeEmS1_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::resize(unsigned long,RBX::SoundType).
 }

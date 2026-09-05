@@ -20,14 +20,16 @@ pub fn stub_5606ec() -> ! {
 
 // 0x56087c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv")]
-pub fn stub_56087c() -> ! {
-    todo!("0x56087c __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv")
+pub fn stub_56087c() -> u32 {
+    // IDA 0x56087c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x560880 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv")]
-pub fn stub_560880() -> ! {
-    todo!("0x560880 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv")
+pub fn stub_560880() -> u32 {
+    // IDA 0x560880: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x560884 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
@@ -50,14 +52,16 @@ pub fn stub_560934() -> ! {
 
 // 0x560ac4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv")]
-pub fn stub_560ac4() -> ! {
-    todo!("0x560ac4 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv")
+pub fn stub_560ac4() -> u32 {
+    // IDA 0x560ac4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x560ac8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv")]
-pub fn stub_560ac8() -> ! {
-    todo!("0x560ac8 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv")
+pub fn stub_560ac8() -> u32 {
+    // IDA 0x560ac8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x560acc — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
@@ -231,15 +235,17 @@ pub fn stub_561598() -> ! {
 // 0x561728 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")]
-pub fn stub_561728() -> ! {
-    todo!("0x561728 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")
+pub fn stub_561728() -> u32 {
+    // IDA 0x561728: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x56172c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")]
-pub fn stub_56172c() -> ! {
-    todo!("0x56172c __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")
+pub fn stub_56172c() -> u32 {
+    // IDA 0x56172c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x561730 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
@@ -266,15 +272,17 @@ pub fn stub_56178c() -> ! {
 // 0x56191c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")]
-pub fn stub_56191c() -> ! {
-    todo!("0x56191c __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")
+pub fn stub_56191c() -> u32 {
+    // IDA 0x56191c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x561920 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")]
-pub fn stub_561920() -> ! {
-    todo!("0x561920 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")
+pub fn stub_561920() -> u32 {
+    // IDA 0x561920: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x561924 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
@@ -301,15 +309,17 @@ pub fn stub_5619d4() -> ! {
 // 0x561b64 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")]
-pub fn stub_561b64() -> ! {
-    todo!("0x561b64 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv")
+pub fn stub_561b64() -> u32 {
+    // IDA 0x561b64: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x561b68 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")]
-pub fn stub_561b68() -> ! {
-    todo!("0x561b68 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv")
+pub fn stub_561b68() -> u32 {
+    // IDA 0x561b68: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x561b6c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
@@ -448,15 +458,17 @@ pub fn stub_5624a4() {
 // 0x5624ac — __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_5624ac() -> ! {
-    todo!("0x5624ac __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_5624ac() -> u32 {
+    // IDA 0x5624ac: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5624b0 — __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_5624b0() -> ! {
-    todo!("0x5624b0 __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_5624b0() -> u32 {
+    // IDA 0x5624b0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5624b4 — __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

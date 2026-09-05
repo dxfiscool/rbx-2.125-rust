@@ -64,8 +64,9 @@ pub fn stub_0x345bb4() -> ! {
 // 0x345c20 — __ZN3RBX13findLocalFileERKSsPSs
 #[doc(alias = "RBX::findLocalFile(std::string const&,std::string *)")]
 #[doc(alias = "__ZN3RBX13findLocalFileERKSsPSs")]
-pub fn stub_0x345c20() -> ! {
-    todo!("0x345c20 RBX::findLocalFile(std::string const&,std::string *)")
+pub fn stub_0x345c20() -> u32 {
+    // IDA 0x345c20: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x345c24 — __ZN3RBX13LuaWebService26CachedRawLuaWebServiceInfoC2EN5boost10shared_ptrIKSsEES5_

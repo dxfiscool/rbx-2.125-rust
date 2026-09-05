@@ -259,15 +259,17 @@ pub fn stub_0x810ce0() {
 // 0x810d0c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x810d0c() -> ! {
-    todo!("0x810d0c __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")
+pub fn stub_0x810d0c() -> u32 {
+    // IDA 0x810d0c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x810d10 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x810d10() -> ! {
-    todo!("0x810d10 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")
+pub fn stub_0x810d10() -> u32 {
+    // IDA 0x810d10: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x810d14 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -294,15 +296,17 @@ pub fn stub_0x810e40() -> ! {
 // 0x810fd0 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x810fd0() -> ! {
-    todo!("0x810fd0 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")
+pub fn stub_0x810fd0() -> u32 {
+    // IDA 0x810fd0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x810fd4 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x810fd4() -> ! {
-    todo!("0x810fd4 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")
+pub fn stub_0x810fd4() -> u32 {
+    // IDA 0x810fd4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x810fd8 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -329,15 +333,17 @@ pub fn stub_0x811034() -> ! {
 // 0x8111c4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x8111c4() -> ! {
-    todo!("0x8111c4 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")
+pub fn stub_0x8111c4() -> u32 {
+    // IDA 0x8111c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x8111c8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x8111c8() -> ! {
-    todo!("0x8111c8 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")
+pub fn stub_0x8111c8() -> u32 {
+    // IDA 0x8111c8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x8111cc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -364,15 +370,17 @@ pub fn stub_0x811228() -> ! {
 // 0x8113b8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x8113b8() -> ! {
-    todo!("0x8113b8 __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")
+pub fn stub_0x8113b8() -> u32 {
+    // IDA 0x8113b8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x8113bc — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x8113bc() -> ! {
-    todo!("0x8113bc __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")
+pub fn stub_0x8113bc() -> u32 {
+    // IDA 0x8113bc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x8113c0 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE

@@ -65,8 +65,9 @@ pub fn stub_559920() -> ! {
 // type: _DWORD __fastcall(RBX::BodyMover *__hidden this)
 #[doc(alias = "RBX::BodyMover::canStepWorld(void)const")]
 #[doc(alias = "__ZNK3RBX9BodyMover12canStepWorldEv")]
-pub fn stub_559938() -> ! {
-    todo!("0x559938 __ZNK3RBX9BodyMover12canStepWorldEv")
+pub fn stub_559938() -> u32 {
+    // IDA 0x559938: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x55993c — __ZThn32_N3RBX12BodyPositionD1Ev
@@ -541,8 +542,9 @@ pub fn stub_55b4c4() {
 // demangled: RBX::BodyForce::duplicateBodyMoverExists(RBX::Primitive *,RBX::Primitive *)
 #[doc(alias = "RBX::BodyForce::duplicateBodyMoverExists(RBX::Primitive *,RBX::Primitive *)")]
 #[doc(alias = "__ZN3RBX9BodyForce24duplicateBodyMoverExistsEPNS_9PrimitiveES2_")]
-pub fn stub_55b574() -> ! {
-    todo!("0x55b574 __ZN3RBX9BodyForce24duplicateBodyMoverExistsEPNS_9PrimitiveES2_")
+pub fn stub_55b574() -> u32 {
+    // IDA 0x55b574: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55b578 — __ZThn32_N3RBX9BodyForceD1Ev
@@ -657,8 +659,9 @@ pub fn stub_55b8e8() {
 // demangled: RBX::BodyThrust::duplicateBodyMoverExists(RBX::Primitive *,RBX::Primitive *)
 #[doc(alias = "RBX::BodyThrust::duplicateBodyMoverExists(RBX::Primitive *,RBX::Primitive *)")]
 #[doc(alias = "__ZN3RBX10BodyThrust24duplicateBodyMoverExistsEPNS_9PrimitiveES2_")]
-pub fn stub_55b998() -> ! {
-    todo!("0x55b998 __ZN3RBX10BodyThrust24duplicateBodyMoverExistsEPNS_9PrimitiveES2_")
+pub fn stub_55b998() -> u32 {
+    // IDA 0x55b998: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55b99c — __ZThn32_N3RBX10BodyThrustD1Ev
@@ -763,16 +766,18 @@ pub fn stub_55d044() -> ! {
 // demangled: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE10isReadOnlyEv")]
-pub fn stub_55d1d4() -> ! {
-    todo!("0x55d1d4 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE10isReadOnlyEv")
+pub fn stub_55d1d4() -> u32 {
+    // IDA 0x55d1d4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55d1d8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE11isWriteOnlyEv")]
-pub fn stub_55d1d8() -> ! {
-    todo!("0x55d1d8 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE11isWriteOnlyEv")
+pub fn stub_55d1d8() -> u32 {
+    // IDA 0x55d1d8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55d1dc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE8getValueEPKNS0_13DescribedBaseE
@@ -803,16 +808,18 @@ pub fn stub_55d7a8() -> ! {
 // demangled: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE10isReadOnlyEv")]
-pub fn stub_55d938() -> ! {
-    todo!("0x55d938 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE10isReadOnlyEv")
+pub fn stub_55d938() -> u32 {
+    // IDA 0x55d938: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55d93c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE11isWriteOnlyEv")]
-pub fn stub_55d93c() -> ! {
-    todo!("0x55d93c __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE11isWriteOnlyEv")
+pub fn stub_55d93c() -> u32 {
+    // IDA 0x55d93c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x55d940 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE8getValueEPKNS0_13DescribedBaseE

@@ -104,8 +104,8 @@ pub fn stub_a5a2dc() -> ! {
 // 0xa5a8fc — __Z25DefaultOutOfMemoryHandlerPKcl
 // type: void __fastcall(const char *, int)
 #[doc(alias = "DefaultOutOfMemoryHandler(char const*,long)")]
-pub fn stub_a5a8fc() -> ! {
-    todo!("0xa5a8fc DefaultOutOfMemoryHandler(char const*,long)")
+pub fn stub_a5a8fc() {
+    // IDA 0xa5a8fc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xa5a924 — __GLOBAL__I_a_520
@@ -282,15 +282,15 @@ pub fn stub_a7d4ac() -> ! {
 // 0xa7dacc — __ZN19WSAStartupSingleton6AddRefEv
 // type: void __fastcall(WSAStartupSingleton *this)
 #[doc(alias = "WSAStartupSingleton::AddRef(void)")]
-pub fn stub_a7dacc() -> ! {
-    todo!("0xa7dacc WSAStartupSingleton::AddRef(void)")
+pub fn stub_a7dacc() {
+    // IDA 0xa7dacc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xa7dad0 — __ZN19WSAStartupSingleton5DerefEv
 // type: void __fastcall(WSAStartupSingleton *this)
 #[doc(alias = "WSAStartupSingleton::Deref(void)")]
-pub fn stub_a7dad0() -> ! {
-    todo!("0xa7dad0 WSAStartupSingleton::Deref(void)")
+pub fn stub_a7dad0() {
+    // IDA 0xa7dad0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xa7dad4 — __GLOBAL__I_a_538

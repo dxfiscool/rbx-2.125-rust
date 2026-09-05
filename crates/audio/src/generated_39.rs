@@ -64,8 +64,9 @@ pub fn stub_413e88() -> ! {
 // 0x413f50 — __ZNK3RBX12AxisToolBase14drawConnectorsEv
 // type: int __fastcall(RBX::AxisToolBase *this)
 #[doc(alias = "RBX::AxisToolBase::drawConnectors(void)const")]
-pub fn stub_413f50() -> ! {
-    todo!("0x413f50 RBX::AxisToolBase::drawConnectors(void)const")
+pub fn stub_413f50() -> u32 {
+    // IDA 0x413f50: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x413f54 — __ZNK3RBX12AxisToolBase13getCursorNameEv
@@ -85,8 +86,9 @@ pub fn stub_413f60() -> ! {
 // 0x413f78 — __ZNK3RBX14AxisRotateTool11getDragTypeEv
 // type: int __fastcall(RBX::AxisRotateTool *this)
 #[doc(alias = "RBX::AxisRotateTool::getDragType(void)const")]
-pub fn stub_413f78() -> ! {
-    todo!("0x413f78 RBX::AxisRotateTool::getDragType(void)const")
+pub fn stub_413f78() -> u32 {
+    // IDA 0x413f78: `Thumb movs r0,#2; bx lr` (bytes 02207047) - returns 2 in r0 on the host.
+    2u32
 }
 
 // 0x413f7c — __ZThn36_N3RBX14AxisRotateToolD1Ev

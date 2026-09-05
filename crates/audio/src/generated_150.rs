@@ -326,22 +326,23 @@ pub fn stub_3eccc() {
 // 0x3ecd0 — __ZN4Ogre19WindowEventListener11windowMovedEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")]
-pub fn stub_3ecd0() -> ! {
-    todo!("0x3ecd0 Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")
+pub fn stub_3ecd0() {
+    // IDA 0x3ecd0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3ecd4 — __ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")]
-pub fn stub_3ecd4() -> ! {
-    todo!("0x3ecd4 Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")
+pub fn stub_3ecd4() {
+    // IDA 0x3ecd4: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3ecd8 — __ZN4Ogre19WindowEventListener13windowClosingEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")]
-pub fn stub_3ecd8() -> ! {
-    todo!("0x3ecd8 Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")
+pub fn stub_3ecd8() -> u32 {
+    // IDA 0x3ecd8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3ecdc — __ZN17QuitEventListener12windowClosedEPN4Ogre12RenderWindowE
@@ -354,8 +355,8 @@ pub fn stub_3ecdc() -> ! {
 // 0x3ecec — __ZN4Ogre19WindowEventListener17windowFocusChangeEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")]
-pub fn stub_3ecec() -> ! {
-    todo!("0x3ecec Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")
+pub fn stub_3ecec() {
+    // IDA 0x3ecec: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
@@ -396,8 +397,9 @@ pub fn stub_3f058() -> ! {
 // 0x3f090 — __ZNK3RBX13TaskScheduler3Job26getDesiredConcurrencyCountEv
 // type: int __fastcall(RBX::TaskScheduler::Job *this)
 #[doc(alias = "RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")]
-pub fn stub_3f090() -> ! {
-    todo!("0x3f090 RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")
+pub fn stub_3f090() -> u32 {
+    // IDA 0x3f090: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE

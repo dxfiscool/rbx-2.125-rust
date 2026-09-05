@@ -127,14 +127,16 @@ pub fn stub_5cf67c() {
 
 // 0x5cf684 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_5cf684() -> ! {
-    todo!("0x5cf684 __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_5cf684() -> u32 {
+    // IDA 0x5cf684: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cf688 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_5cf688() -> ! {
-    todo!("0x5cf688 __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_5cf688() -> u32 {
+    // IDA 0x5cf688: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cf68c — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -181,14 +183,16 @@ pub fn stub_5cf898() {
 
 // 0x5cf8c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")]
-pub fn stub_5cf8c4() -> ! {
-    todo!("0x5cf8c4 __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")
+pub fn stub_5cf8c4() -> u32 {
+    // IDA 0x5cf8c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cf8c8 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")]
-pub fn stub_5cf8c8() -> ! {
-    todo!("0x5cf8c8 __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")
+pub fn stub_5cf8c8() -> u32 {
+    // IDA 0x5cf8c8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cf8cc — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -493,14 +497,16 @@ pub fn stub_5d1fac() {
 
 // 0x5d1fd8 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv")]
-pub fn stub_5d1fd8() -> ! {
-    todo!("0x5d1fd8 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv")
+pub fn stub_5d1fd8() -> u32 {
+    // IDA 0x5d1fd8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d1fdc — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv")]
-pub fn stub_5d1fdc() -> ! {
-    todo!("0x5d1fdc __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv")
+pub fn stub_5d1fdc() -> u32 {
+    // IDA 0x5d1fdc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d1fe0 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -529,14 +535,16 @@ pub fn stub_5d2138() {
 
 // 0x5d2164 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_5d2164() -> ! {
-    todo!("0x5d2164 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE10isReadOnlyEv")
+pub fn stub_5d2164() -> u32 {
+    // IDA 0x5d2164: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d2168 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")]
-pub fn stub_5d2168() -> ! {
-    todo!("0x5d2168 __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")
+pub fn stub_5d2168() -> u32 {
+    // IDA 0x5d2168: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5d216c — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -601,8 +609,9 @@ pub fn stub_5d263c() -> ! {
 
 // 0x5d2660 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14hasStringValueEv
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14hasStringValueEv")]
-pub fn stub_5d2660() -> ! {
-    todo!("0x5d2660 __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14hasStringValueEv")
+pub fn stub_5d2660() -> u32 {
+    // IDA 0x5d2660: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5d2664 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE

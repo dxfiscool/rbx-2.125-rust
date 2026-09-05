@@ -484,8 +484,9 @@ pub fn stub_29c798() -> ! {
 // 0x29cad4 — __ZL15pushNoArgumentsP9lua_State
 // demangled: pushNoArguments(lua_State *)
 #[doc(alias = "pushNoArguments(lua_State *)")]
-pub fn stub_29cad4() -> ! {
-    todo!("0x29cad4 pushNoArguments(lua_State *)")
+pub fn stub_29cad4() -> u32 {
+    // IDA 0x29cad4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x29cad8 — __ZN3RBX13ScriptContext18executeInNewThreadENS_8Security10IdentitiesERKNS_15ProtectedStringEPKc

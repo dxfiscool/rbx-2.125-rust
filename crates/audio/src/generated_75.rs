@@ -228,8 +228,9 @@ pub fn stub_6d2c50() -> ! {
 // 0x6d2cc8 — __ZNK3RBX10PVInstance11topHashCodeEv
 // type: _DWORD __fastcall(RBX::PVInstance *__hidden this)
 #[doc(alias = "RBX::PVInstance::topHashCode(void)const")]
-pub fn stub_6d2cc8() -> ! {
-    todo!("0x6d2cc8 RBX::PVInstance::topHashCode(void)const")
+pub fn stub_6d2cc8() -> u32 {
+    // IDA 0x6d2cc8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d2cd0 — __ZNK3RBX17NonFactoryProductINS_12RootInstanceELZNS_10sWorkspaceEEE12getClassNameEv
@@ -240,8 +241,8 @@ pub fn stub_6d2cd0() -> ! {
 
 // 0x6d2cf8 — __ZN3RBX9Workspace14render3dSelectEPNS_5AdornENS_11SelectStateE
 #[doc(alias = "RBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-pub fn stub_6d2cf8() -> ! {
-    todo!("0x6d2cf8 RBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+pub fn stub_6d2cf8() {
+    // IDA 0x6d2cf8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d2cfc — __ZN3RBX13ModelInstance17getRenderLocationEv
@@ -261,8 +262,8 @@ pub fn stub_6d2d0c() -> ! {
 // 0x6d2d18 — __ZNK3RBX9Workspace19getCameraOwnerModelEv
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this)
 #[doc(alias = "RBX::Workspace::getCameraOwnerModel(void)const")]
-pub fn stub_6d2d18() -> ! {
-    todo!("0x6d2d18 RBX::Workspace::getCameraOwnerModel(void)const")
+pub fn stub_6d2d18() {
+    // IDA 0x6d2d18: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d2d20 — __ZThn32_NK3RBX17NonFactoryProductINS_12RootInstanceELZNS_10sWorkspaceEEE12getClassNameEv
@@ -274,15 +275,16 @@ pub fn stub_6d2d20() {
 // 0x6d2d48 — __ZNK3RBX10IAdornable25shouldRender3dSortedAdornEv
 // type: _DWORD __fastcall(RBX::IAdornable *__hidden this)
 #[doc(alias = "RBX::IAdornable::shouldRender3dSortedAdorn(void)const")]
-pub fn stub_6d2d48() -> ! {
-    todo!("0x6d2d48 RBX::IAdornable::shouldRender3dSortedAdorn(void)const")
+pub fn stub_6d2d48() -> u32 {
+    // IDA 0x6d2d48: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d2d50 — __ZN3RBX10IAdornable18renderBackground2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::IAdornable *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::IAdornable::renderBackground2d(RBX::Adorn *)")]
-pub fn stub_6d2d50() -> ! {
-    todo!("0x6d2d50 RBX::IAdornable::renderBackground2d(RBX::Adorn *)")
+pub fn stub_6d2d50() {
+    // IDA 0x6d2d50: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d2d58 — __ZThn96_N3RBX9Workspace14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -294,8 +296,8 @@ pub fn stub_6d2d58() {
 // 0x6d2d60 — __ZN3RBX13CameraSubject17onCameraHeartbeatERKN3G3D7Vector3ES4_
 // type: _DWORD __fastcall(RBX::CameraSubject *__hidden this, const Vector3 *, const Vector3 *)
 #[doc(alias = "RBX::CameraSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")]
-pub fn stub_6d2d60() -> ! {
-    todo!("0x6d2d60 RBX::CameraSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")
+pub fn stub_6d2d60() {
+    // IDA 0x6d2d60: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d2d64 — __ZThn120_N3RBX13ModelInstance17getRenderLocationEv

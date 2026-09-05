@@ -55,8 +55,9 @@ pub fn stub_0x5a3d00() -> ! {
 // type: _DWORD __fastcall(RBX::ManualGlue *__hidden this)
 #[doc(alias = "RBX::ManualGlue::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX10ManualGlue19shouldRender3dAdornEv")]
-pub fn stub_0x5a3d10() -> ! {
-    todo!("0x5a3d10 RBX::ManualGlue::shouldRender3dAdorn(void)const")
+pub fn stub_0x5a3d10() -> u32 {
+    // IDA 0x5a3d10: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5a3d14 — __ZThn32_N3RBX10ManualGlueD1Ev

@@ -56,15 +56,17 @@ pub fn stub_0x84cc44() {
 // 0x84cc70 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,bool>::GetSetImpl<bool (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_0x84cc70() -> ! {
-    todo!("0x84cc70 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_0x84cc70() -> u32 {
+    // IDA 0x84cc70: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84cc74 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,bool>::GetSetImpl<bool (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_0x84cc74() -> ! {
-    todo!("0x84cc74 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_0x84cc74() -> u32 {
+    // IDA 0x84cc74: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84cc78 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -98,15 +100,17 @@ pub fn stub_0x84cdd4() {
 // 0x84ce00 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,std::string>::GetSetImpl<std::string (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_0x84ce00() -> ! {
-    todo!("0x84ce00 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_0x84ce00() -> u32 {
+    // IDA 0x84ce00: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84ce04 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,std::string>::GetSetImpl<std::string (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_0x84ce04() -> ! {
-    todo!("0x84ce04 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_0x84ce04() -> u32 {
+    // IDA 0x84ce04: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84ce08 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
@@ -252,8 +256,9 @@ pub fn stub_0x84dd94() -> ! {
 // 0x84ddb8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE14hasStringValueEv")]
-pub fn stub_0x84ddb8() -> ! {
-    todo!("0x84ddb8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE14hasStringValueEv")
+pub fn stub_0x84ddb8() -> u32 {
+    // IDA 0x84ddb8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x84ddbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE14getStringValueEPKNS0_13DescribedBaseE
@@ -343,15 +348,17 @@ pub fn stub_0x84e1e8() -> ! {
 // 0x84e228 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_0x84e228() -> ! {
-    todo!("0x84e228 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_0x84e228() -> u32 {
+    // IDA 0x84e228: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84e22c — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_0x84e22c() -> ! {
-    todo!("0x84e22c __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_0x84e22c() -> u32 {
+    // IDA 0x84e22c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84e230 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -427,8 +434,9 @@ pub fn stub_0x84e60c() -> ! {
 // 0x84e630 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14hasStringValueEv")]
-pub fn stub_0x84e630() -> ! {
-    todo!("0x84e630 __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14hasStringValueEv")
+pub fn stub_0x84e630() -> u32 {
+    // IDA 0x84e630: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x84e634 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14getStringValueEPKNS0_13DescribedBaseE
@@ -511,15 +519,17 @@ pub fn stub_0x84e9f0() -> ! {
 // 0x84ea30 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x84ea30() -> ! {
-    todo!("0x84ea30 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x84ea30() -> u32 {
+    // IDA 0x84ea30: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84ea34 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x84ea34() -> ! {
-    todo!("0x84ea34 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x84ea34() -> u32 {
+    // IDA 0x84ea34: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84ea38 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -595,8 +605,9 @@ pub fn stub_0x84ee14() -> ! {
 // 0x84ee38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14hasStringValueEv")]
-pub fn stub_0x84ee38() -> ! {
-    todo!("0x84ee38 __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14hasStringValueEv")
+pub fn stub_0x84ee38() -> u32 {
+    // IDA 0x84ee38: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x84ee3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -686,15 +697,17 @@ pub fn stub_0x84f268() -> ! {
 // 0x84f2a8 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_0x84f2a8() -> ! {
-    todo!("0x84f2a8 __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_0x84f2a8() -> u32 {
+    // IDA 0x84f2a8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84f2ac — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_0x84f2ac() -> ! {
-    todo!("0x84f2ac __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_0x84f2ac() -> u32 {
+    // IDA 0x84f2ac: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x84f2b0 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

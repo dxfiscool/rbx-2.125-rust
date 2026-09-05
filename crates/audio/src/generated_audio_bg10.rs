@@ -63,14 +63,16 @@ pub fn stub_6bb2f4() -> ! {
 
 // 0x6bb488 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv")]
-pub fn stub_6bb488() -> ! {
-    todo!("0x6bb488 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv")
+pub fn stub_6bb488() -> u32 {
+    // IDA 0x6bb488: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6bb48c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv")]
-pub fn stub_6bb48c() -> ! {
-    todo!("0x6bb48c __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv")
+pub fn stub_6bb48c() -> u32 {
+    // IDA 0x6bb48c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6bb490 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE8getValueEPKNS0_13DescribedBaseE
@@ -639,8 +641,9 @@ pub fn stub_6beaa4() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "RBX::VehicleSeat::canStepUi(void)const")]
 #[doc(alias = "__ZNK3RBX11VehicleSeat9canStepUiEv")]
-pub fn stub_6beab4() -> ! {
-    todo!("0x6beab4 __ZNK3RBX11VehicleSeat9canStepUiEv")
+pub fn stub_6beab4() -> u32 {
+    // IDA 0x6beab4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6beab8 — __ZThn32_NK3RBX14FactoryProductINS_11VehicleSeatENS_8SeatImplINS_12PartInstanceEEELZNS_12sVehicleSeatEENS_8InstanceEE12getClassNameEv
@@ -653,16 +656,17 @@ pub fn stub_6beab8() {
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::getEdgeType(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint11getEdgeTypeEv")]
-pub fn stub_6beac8() -> ! {
-    todo!("0x6beac8 __ZNK3RBX5Joint11getEdgeTypeEv")
+pub fn stub_6beac8() -> u32 {
+    // IDA 0x6beac8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6beacc — __ZN3RBX4Edge34generateDataForMovingAssemblyStageEv
 // type: _DWORD __fastcall(RBX::Edge *__hidden this)
 #[doc(alias = "RBX::Edge::generateDataForMovingAssemblyStage(void)")]
 #[doc(alias = "__ZN3RBX4Edge34generateDataForMovingAssemblyStageEv")]
-pub fn stub_6beacc() -> ! {
-    todo!("0x6beacc __ZN3RBX4Edge34generateDataForMovingAssemblyStageEv")
+pub fn stub_6beacc() {
+    // IDA 0x6beacc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6bead0 — __ZNK3RBX11KernelJoint12getJointTypeEv
@@ -677,31 +681,35 @@ pub fn stub_6bead0() -> ! {
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isBreakable(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint11isBreakableEv")]
-pub fn stub_6bead4() -> ! {
-    todo!("0x6bead4 __ZNK3RBX5Joint11isBreakableEv")
+pub fn stub_6bead4() -> u32 {
+    // IDA 0x6bead4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6bead8 — __ZNK3RBX5Joint8isBrokenEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isBroken(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint8isBrokenEv")]
-pub fn stub_6bead8() -> ! {
-    todo!("0x6bead8 __ZNK3RBX5Joint8isBrokenEv")
+pub fn stub_6bead8() -> u32 {
+    // IDA 0x6bead8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6beadc — __ZNK3RBX5Joint9joinsFaceEPNS_9PrimitiveENS_8NormalIdE
 #[doc(alias = "RBX::Joint::joinsFace(RBX::Primitive *,RBX::NormalId)const")]
 #[doc(alias = "__ZNK3RBX5Joint9joinsFaceEPNS_9PrimitiveENS_8NormalIdE")]
-pub fn stub_6beadc() -> ! {
-    todo!("0x6beadc __ZNK3RBX5Joint9joinsFaceEPNS_9PrimitiveENS_8NormalIdE")
+pub fn stub_6beadc() -> u32 {
+    // IDA 0x6beadc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6beae0 — __ZN3RBX5Joint9isAlignedEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::isAligned(void)")]
 #[doc(alias = "__ZN3RBX5Joint9isAlignedEv")]
-pub fn stub_6beae0() -> ! {
-    todo!("0x6beae0 __ZN3RBX5Joint9isAlignedEv")
+pub fn stub_6beae0() -> u32 {
+    // IDA 0x6beae0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6beae4 — __ZN3RBX5Joint5alignEPNS_9PrimitiveES2_
@@ -716,16 +724,17 @@ pub fn stub_6beae4() -> ! {
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::setPhysics(void)")]
 #[doc(alias = "__ZN3RBX5Joint10setPhysicsEv")]
-pub fn stub_6beb3c() -> ! {
-    todo!("0x6beb3c __ZN3RBX5Joint10setPhysicsEv")
+pub fn stub_6beb3c() {
+    // IDA 0x6beb3c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6beb40 — __ZNK3RBX5Joint12canStepWorldEv
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::canStepWorld(void)const")]
 #[doc(alias = "__ZNK3RBX5Joint12canStepWorldEv")]
-pub fn stub_6beb40() -> ! {
-    todo!("0x6beb40 __ZNK3RBX5Joint12canStepWorldEv")
+pub fn stub_6beb40() -> u32 {
+    // IDA 0x6beb40: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6beb44 — __ZThn348_NK3RBX11VehicleSeat9canStepUiEv
@@ -740,8 +749,8 @@ pub fn stub_6beb44() {
 // type: _DWORD __fastcall(RBX::Joint *__hidden this)
 #[doc(alias = "RBX::Joint::stepWorld(void)")]
 #[doc(alias = "__ZN3RBX5Joint9stepWorldEv")]
-pub fn stub_6beb48() -> ! {
-    todo!("0x6beb48 __ZN3RBX5Joint9stepWorldEv")
+pub fn stub_6beb48() {
+    // IDA 0x6beb48: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6beb4c — __ZN3RBX5Joint9resetLinkEv
@@ -779,16 +788,18 @@ pub fn stub_6bec14() {
 // type: _DWORD __fastcall(RBX::Connector *__hidden this, float *)
 #[doc(alias = "RBX::Connector::computeImpulse(float &)")]
 #[doc(alias = "__ZN3RBX9Connector14computeImpulseERf")]
-pub fn stub_6bec18() -> ! {
-    todo!("0x6bec18 __ZN3RBX9Connector14computeImpulseERf")
+pub fn stub_6bec18() -> u32 {
+    // IDA 0x6bec18: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6bec1c — __ZN3RBX9Connector9getBrokenEv
 // type: _DWORD __fastcall(RBX::Connector *__hidden this)
 #[doc(alias = "RBX::Connector::getBroken(void)")]
 #[doc(alias = "__ZN3RBX9Connector9getBrokenEv")]
-pub fn stub_6bec1c() -> ! {
-    todo!("0x6bec1c __ZN3RBX9Connector9getBrokenEv")
+pub fn stub_6bec1c() -> u32 {
+    // IDA 0x6bec1c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6bec20 — __ZThn152_N3RBX11KernelJoint7getBodyENS_9Connector9BodyIndexE
@@ -802,15 +813,16 @@ pub fn stub_6bec20() {
 // type: _DWORD __fastcall(RBX::Connector *__hidden this)
 #[doc(alias = "RBX::Connector::potentialEnergy(void)")]
 #[doc(alias = "__ZN3RBX9Connector15potentialEnergyEv")]
-pub fn stub_6bec28() -> ! {
-    todo!("0x6bec28 __ZN3RBX9Connector15potentialEnergyEv")
+pub fn stub_6bec28() -> u32 {
+    // IDA 0x6bec28: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6becf0 — __ZN3RBX8SeatImplINS_12PartInstanceEE15onSeatedChangedEbPNS_8HumanoidE
 #[doc(alias = "RBX::SeatImpl<RBX::PartInstance>::onSeatedChanged(bool,RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX8SeatImplINS_12PartInstanceEE15onSeatedChangedEbPNS_8HumanoidE")]
-pub fn stub_6becf0() -> ! {
-    todo!("0x6becf0 __ZN3RBX8SeatImplINS_12PartInstanceEE15onSeatedChangedEbPNS_8HumanoidE")
+pub fn stub_6becf0() {
+    // IDA 0x6becf0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6bf028 — __ZN3RBX8SeatImplINS_12PartInstanceEED1Ev

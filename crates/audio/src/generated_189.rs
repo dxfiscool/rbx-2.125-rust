@@ -465,16 +465,18 @@ pub fn stub_46fb34() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_46fb60() -> ! {
-    todo!("0x46fb60 RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isReadOnly(void)const")
+pub fn stub_46fb60() -> u32 {
+    // IDA 0x46fb60: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x46fb64 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_46fb64() -> ! {
-    todo!("0x46fb64 RBX::Reflection::PropDescriptor<RBX::ImageLabel,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(G3D::Vector2)>::isWriteOnly(void)const")
+pub fn stub_46fb64() -> u32 {
+    // IDA 0x46fb64: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x46fb68 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -514,16 +516,18 @@ pub fn stub_46fce8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_46fd14() -> ! {
-    todo!("0x46fd14 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isReadOnly(void)const")
+pub fn stub_46fd14() -> u32 {
+    // IDA 0x46fd14: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x46fd18 — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_46fd18() -> ! {
-    todo!("0x46fd18 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,G3D::Vector2>::GetSetImpl<G3D::Vector2 (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(G3D::Vector2)>::isWriteOnly(void)const")
+pub fn stub_46fd18() -> u32 {
+    // IDA 0x46fd18: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x46fd1c — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonEN3G3D7Vector2EE10GetSetImplIMNS_13GuiImageMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -872,8 +876,8 @@ pub fn stub_473790() -> ! {
 // type: _DWORD __fastcall(RBX::TaskScheduler::Arbiter *__hidden this)
 #[doc(alias = "RBX::TaskScheduler::Arbiter::getSyncronizationArbiter(void)")]
 #[doc(alias = "__ZN3RBX13TaskScheduler7Arbiter24getSyncronizationArbiterEv")]
-pub fn stub_473858() -> ! {
-    todo!("0x473858 RBX::TaskScheduler::Arbiter::getSyncronizationArbiter(void)")
+pub fn stub_473858() {
+    // IDA 0x473858: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x473860 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED1Ev

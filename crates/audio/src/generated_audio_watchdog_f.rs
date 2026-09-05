@@ -608,8 +608,9 @@ pub fn stub_52e684() -> ! {
 // 0x52e6ac — __ZNK3RBX9GuiButton9isGuiLeafEv
 #[doc(alias = "RBX::GuiButton::isGuiLeaf(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiButton9isGuiLeafEv")]
-pub fn stub_52e6ac() -> ! {
-    todo!("0x52e6ac __ZNK3RBX9GuiButton9isGuiLeafEv")
+pub fn stub_52e6ac() -> u32 {
+    // IDA 0x52e6ac: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x52e6b0 — __ZThn32_N3RBX9GuiButtonD1Ev

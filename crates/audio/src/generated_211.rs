@@ -15,8 +15,8 @@ const _: () = {
 // demangled: rbx::implementation::typed_holder<RBX::GuiObject::TweenStatus>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiObject::TweenStatus>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9GuiObject11TweenStatusEE13destruct_funcEPc")]
-pub fn stub_4d1ed0() -> ! {
-    todo!("0x4d1ed0 __ZN3rbx14implementation12typed_holderIN3RBX9GuiObject11TweenStatusEE13destruct_funcEPc")
+pub fn stub_4d1ed0() {
+    // IDA 0x4d1ed0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d1ed4 — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEE13convertToItemERKS3_
@@ -160,8 +160,8 @@ pub fn stub_4d28ec() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GuiObject::TweenEasingStyle>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiObject::TweenEasingStyle>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9GuiObject16TweenEasingStyleEE13destruct_funcEPc")]
-pub fn stub_4d28f8() -> ! {
-    todo!("0x4d28f8 __ZN3rbx14implementation12typed_holderIN3RBX9GuiObject16TweenEasingStyleEE13destruct_funcEPc")
+pub fn stub_4d28f8() {
+    // IDA 0x4d28f8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d28fc — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEE13convertToItemERKS3_
@@ -305,8 +305,8 @@ pub fn stub_4d3314() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::GuiObject::SizeConstraint>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::GuiObject::SizeConstraint>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9GuiObject14SizeConstraintEE13destruct_funcEPc")]
-pub fn stub_4d3320() -> ! {
-    todo!("0x4d3320 __ZN3rbx14implementation12typed_holderIN3RBX9GuiObject14SizeConstraintEE13destruct_funcEPc")
+pub fn stub_4d3320() {
+    // IDA 0x4d3320: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d3324 — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE13convertToItemERKS3_
@@ -450,8 +450,8 @@ pub fn stub_4d3d3c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::HopperBin::BinType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::HopperBin::BinType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9HopperBin7BinTypeEE13destruct_funcEPc")]
-pub fn stub_4d3d48() -> ! {
-    todo!("0x4d3d48 __ZN3rbx14implementation12typed_holderIN3RBX9HopperBin7BinTypeEE13destruct_funcEPc")
+pub fn stub_4d3d48() {
+    // IDA 0x4d3d48: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d3d4c — __ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE13convertToItemERKS3_
@@ -595,8 +595,8 @@ pub fn stub_4d4764() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Action::ActionType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Action::ActionType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX6Action10ActionTypeEE13destruct_funcEPc")]
-pub fn stub_4d4770() -> ! {
-    todo!("0x4d4770 __ZN3rbx14implementation12typed_holderIN3RBX6Action10ActionTypeEE13destruct_funcEPc")
+pub fn stub_4d4770() {
+    // IDA 0x4d4770: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d4774 — __ZNK3RBX10Reflection8EnumDescINS_6Action10ActionTypeEE13convertToItemERKS3_
@@ -740,8 +740,8 @@ pub fn stub_4d518c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::FunctionalTest::Result>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::FunctionalTest::Result>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX14FunctionalTest6ResultEE13destruct_funcEPc")]
-pub fn stub_4d5198() -> ! {
-    todo!("0x4d5198 __ZN3rbx14implementation12typed_holderIN3RBX14FunctionalTest6ResultEE13destruct_funcEPc")
+pub fn stub_4d5198() {
+    // IDA 0x4d5198: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4d519c — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE13convertToItemERKS3_

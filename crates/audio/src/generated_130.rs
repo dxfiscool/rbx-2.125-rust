@@ -527,8 +527,9 @@ pub fn stub_2291e8() -> ! {
 // 0x2291f8 — _t1_ps_has_glyph_names
 // type: int()
 #[doc(alias = "_t1_ps_has_glyph_names")]
-pub fn stub_2291f8() -> ! {
-    todo!("0x2291f8 _t1_ps_has_glyph_names")
+pub fn stub_2291f8() -> u32 {
+    // IDA 0x2291f8: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x229200 — _t1_ps_get_font_private

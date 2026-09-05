@@ -232,8 +232,9 @@ pub fn stub_0x6a9de0() {
 // 0x6a9f08 — __ZNK3RBX5ValueIdLZNS_12sDoubleValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIdLZNS_12sDoubleValueEEE12askSetParentEPKNS_8InstanceE")]
 #[doc(alias = "__ZNK3RBX5ValueIdLZNS_12sDoubleValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x6a9f08() -> ! {
-    todo!("0x6a9f08 __ZNK3RBX5ValueIdLZNS_12sDoubleValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_0x6a9f08() -> u32 {
+    // IDA 0x6a9f08: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a9f0c — __ZNK3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E12getClassNameEv
@@ -455,8 +456,9 @@ pub fn stub_0x6ab23c() {
 // 0x6ab364 — __ZNK3RBX5ValueIiLZNS_9sIntValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueIiLZNS_9sIntValueEEE12askSetParentEPKNS_8InstanceE")]
 #[doc(alias = "__ZNK3RBX5ValueIiLZNS_9sIntValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x6ab364() -> ! {
-    todo!("0x6ab364 __ZNK3RBX5ValueIiLZNS_9sIntValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_0x6ab364() -> u32 {
+    // IDA 0x6ab364: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6ab368 — __ZNK3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E12getClassNameEv
@@ -687,16 +689,18 @@ pub fn stub_0x6ac990() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ObjectValue,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::ObjectValue::*)(void)const,void (RBX::ObjectValue::*)(RBX::Instance *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x6ac998() -> ! {
-    todo!("0x6ac998 __ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_0x6ac998() -> u32 {
+    // IDA 0x6ac998: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ac99c — __ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ObjectValue,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::ObjectValue::*)(void)const,void (RBX::ObjectValue::*)(RBX::Instance *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x6ac99c() -> ! {
-    todo!("0x6ac99c __ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_0x6ac99c() -> u32 {
+    // IDA 0x6ac99c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ac9a0 — __ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

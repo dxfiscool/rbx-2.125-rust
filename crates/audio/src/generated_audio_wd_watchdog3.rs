@@ -473,16 +473,18 @@ pub fn stub_6228d0() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_6228fc() -> ! {
-    todo!("0x6228fc __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_6228fc() -> u32 {
+    // IDA 0x6228fc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x622900 — __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPointLasso,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::SelectionPointLasso::*)(void)const,void (RBX::SelectionPointLasso::*)(G3D::Vector3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_622900() -> ! {
-    todo!("0x622900 __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_622900() -> u32 {
+    // IDA 0x622900: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x622904 — __ZNK3RBX10Reflection14PropDescriptorINS_19SelectionPointLassoEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -661,16 +663,18 @@ pub fn stub_623624() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_62362c() -> ! {
-    todo!("0x62362c __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_62362c() -> u32 {
+    // IDA 0x62362c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x623630 — __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::SelectionPartLasso::*)(void)const,void (RBX::SelectionPartLasso::*)(RBX::PartInstance *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_623630() -> ! {
-    todo!("0x623630 __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_623630() -> u32 {
+    // IDA 0x623630: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x623634 — __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

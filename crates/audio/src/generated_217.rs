@@ -39,14 +39,16 @@ pub fn stub_4ed5d8() {
 
 // 0x4ed5e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::isReadOnly(void)const")]
-pub fn stub_4ed5e0() -> ! {
-    todo!("0x4ed5e0 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_4ed5e0() -> u32 {
+    // IDA 0x4ed5e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ed5e4 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::isWriteOnly(void)const")]
-pub fn stub_4ed5e4() -> ! {
-    todo!("0x4ed5e4 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_4ed5e4() -> u32 {
+    // IDA 0x4ed5e4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ed5e8 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -190,14 +192,16 @@ pub fn stub_4ee20c() {
 
 // 0x4ee238 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::isReadOnly(void)const")]
-pub fn stub_4ee238() -> ! {
-    todo!("0x4ee238 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")
+pub fn stub_4ee238() -> u32 {
+    // IDA 0x4ee238: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ee23c — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::isWriteOnly(void)const")]
-pub fn stub_4ee23c() -> ! {
-    todo!("0x4ee23c __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")
+pub fn stub_4ee23c() -> u32 {
+    // IDA 0x4ee23c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4ee240 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
@@ -287,14 +291,16 @@ pub fn stub_4eec2c() {
 
 // 0x4eec58 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::isReadOnly(void)const")]
-pub fn stub_4eec58() -> ! {
-    todo!("0x4eec58 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")
+pub fn stub_4eec58() -> u32 {
+    // IDA 0x4eec58: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4eec5c — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::isWriteOnly(void)const")]
-pub fn stub_4eec5c() -> ! {
-    todo!("0x4eec5c __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")
+pub fn stub_4eec5c() -> u32 {
+    // IDA 0x4eec5c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4eec60 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE

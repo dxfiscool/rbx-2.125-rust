@@ -889,8 +889,8 @@ pub fn stub_3f0e10() -> ! {
 // type: void()
 #[doc(alias = "RBX::ClickDetector::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector13render3dAdornEPNS_5AdornE")]
-pub fn stub_3f110c() -> ! {
-    todo!("0x3f110c RBX::ClickDetector::render3dAdorn(RBX::Adorn *)")
+pub fn stub_3f110c() {
+    // IDA 0x3f110c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3f1110 — __ZThn92_N3RBX13ClickDetector13render3dAdornEPNS_5AdornE
@@ -1024,8 +1024,9 @@ pub fn stub_3f1af8() {
 // type: int __fastcall(RBX::ClickDetector *this, const RBX::Instance *)
 #[doc(alias = "RBX::ClickDetector::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX13ClickDetector11askAddChildEPKNS_8InstanceE")]
-pub fn stub_3f1b98() -> ! {
-    todo!("0x3f1b98 RBX::ClickDetector::askAddChild(RBX::Instance const*)const")
+pub fn stub_3f1b98() -> u32 {
+    // IDA 0x3f1b98: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3f1b9c — __ZNK3RBX13ClickDetector12askSetParentEPKNS_8InstanceE
@@ -1051,8 +1052,9 @@ pub fn stub_3f1bf0() -> ! {
 // type: int __fastcall(RBX::ClickDetector *this)
 #[doc(alias = "RBX::ClickDetector::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX13ClickDetector19shouldRender3dAdornEv")]
-pub fn stub_3f1c00() -> ! {
-    todo!("0x3f1c00 RBX::ClickDetector::shouldRender3dAdorn(void)const")
+pub fn stub_3f1c00() -> u32 {
+    // IDA 0x3f1c00: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3f1c04 — __ZThn32_N3RBX13ClickDetectorD1Ev

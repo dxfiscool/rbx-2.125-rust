@@ -504,15 +504,17 @@ pub fn stub_7f7438() {
 // 0x7f7464 — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,int>::GetImpl<int (RBX::ContentProvider::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_7f7464() -> ! {
-    todo!("0x7f7464 __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE10isReadOnlyEv")
+pub fn stub_7f7464() -> u32 {
+    // IDA 0x7f7464: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x7f7468 — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,int>::GetImpl<int (RBX::ContentProvider::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")]
-pub fn stub_7f7468() -> ! {
-    todo!("0x7f7468 __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")
+pub fn stub_7f7468() -> u32 {
+    // IDA 0x7f7468: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x7f746c — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -637,15 +639,17 @@ pub fn stub_7f82c0() {
 // 0x7f82ec — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,std::string>::GetImpl<std::string const& (RBX::ContentProvider::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE10isReadOnlyEv")]
-pub fn stub_7f82ec() -> ! {
-    todo!("0x7f82ec __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE10isReadOnlyEv")
+pub fn stub_7f82ec() -> u32 {
+    // IDA 0x7f82ec: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x7f82f0 — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContentProvider,std::string>::GetImpl<std::string const& (RBX::ContentProvider::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE11isWriteOnlyEv")]
-pub fn stub_7f82f0() -> ! {
-    todo!("0x7f82f0 __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE11isWriteOnlyEv")
+pub fn stub_7f82f0() -> u32 {
+    // IDA 0x7f82f0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x7f82f4 — __ZNK3RBX10Reflection14PropDescriptorINS_15ContentProviderESsE7GetImplIMS2_KFRKSsvEE8getValueEPKNS0_13DescribedBaseE

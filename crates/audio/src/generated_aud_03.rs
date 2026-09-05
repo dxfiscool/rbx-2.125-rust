@@ -16,16 +16,18 @@ const _: () = {
 // type: int __fastcall(RBX::Accoutrement *this, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX12Accoutrement11askAddChildEPKNS_8InstanceE")]
-pub fn stub_0x390654() -> ! {
-    todo!("0x390654 RBX::Accoutrement::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x390654() -> u32 {
+    // IDA 0x390654: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x390658 — __ZNK3RBX12Accoutrement12askSetParentEPKNS_8InstanceE
 // type: int __fastcall(RBX::Accoutrement *this, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX12Accoutrement12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x390658() -> ! {
-    todo!("0x390658 RBX::Accoutrement::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x390658() -> u32 {
+    // IDA 0x390658: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x39065c — __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv
@@ -834,16 +836,18 @@ pub fn stub_0x3931ec() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_0x393218() -> ! {
-    todo!("0x393218 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isReadOnly(void)const")
+pub fn stub_0x393218() -> u32 {
+    // IDA 0x393218: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x39321c — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_0x39321c() -> ! {
-    todo!("0x39321c RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0x39321c() -> u32 {
+    // IDA 0x39321c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x393220 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -882,16 +886,18 @@ pub fn stub_0x393378() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE10isReadOnlyEv")]
-pub fn stub_0x3933a4() -> ! {
-    todo!("0x3933a4 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_0x3933a4() -> u32 {
+    // IDA 0x3933a4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3933a8 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE11isWriteOnlyEv")]
-pub fn stub_0x3933a8() -> ! {
-    todo!("0x3933a8 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_0x3933a8() -> u32 {
+    // IDA 0x3933a8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3933ac — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE8getValueEPKNS0_13DescribedBaseE

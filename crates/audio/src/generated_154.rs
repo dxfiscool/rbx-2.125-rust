@@ -125,8 +125,9 @@ pub fn stub_4dae4() -> ! {
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+pub fn stub_4db04() -> u32 {
+    // IDA 0x4db04: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
@@ -439,8 +440,8 @@ pub fn stub_4f2fc() -> ! {
 // 0x4f404 — -[JumpButton jumpEnabledChanged:]
 // type: void __cdecl(JumpButton *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[JumpButton jumpEnabledChanged:]")]
-pub fn stub_4f404() -> ! {
-    todo!("0x4f404 -[JumpButton jumpEnabledChanged:]")
+pub fn stub_4f404() {
+    // IDA 0x4f404: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4f408 — -[JumpButton touchDown]
@@ -648,8 +649,8 @@ pub fn stub_50c78() -> ! {
 // 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
 // type: void __cdecl(id, char)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
-pub fn stub_50c80() -> ! {
-    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+pub fn stub_50c80() {
+    // IDA 0x50c80: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x50c84 — ___copy_helper_block_89
@@ -794,8 +795,8 @@ pub fn stub_517e4() -> ! {
 // 0x517ec — -[GameMenu .cxx_construct]
 // type: id __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu .cxx_construct]")]
-pub fn stub_517ec() -> ! {
-    todo!("0x517ec -[GameMenu .cxx_construct]")
+pub fn stub_517ec() {
+    // IDA 0x517ec: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x517f0 — __GLOBAL__I_a_25

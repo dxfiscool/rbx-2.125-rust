@@ -325,8 +325,8 @@ pub fn stub_26afd0() -> ! {
 // type: void()
 #[doc(alias = "RBX::BaseScript::extraErrorReporting(lua_State *)")]
 #[doc(alias = "__ZN3RBX10BaseScript19extraErrorReportingEP9lua_State")]
-pub fn stub_26aff4() -> ! {
-    todo!("0x26aff4 RBX::BaseScript::extraErrorReporting(lua_State *)")
+pub fn stub_26aff4() {
+    // IDA 0x26aff4: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x26aff8 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev

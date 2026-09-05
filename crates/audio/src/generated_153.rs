@@ -81,8 +81,8 @@ pub fn stub_47d48() -> ! {
 // 0x47d78 — -[ControlView setupLocalPlayerConnections]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
-pub fn stub_47d78() -> ! {
-    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+pub fn stub_47d78() {
+    // IDA 0x47d78: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x47d7c — -[ControlView textBoxFocusGained:]
@@ -716,8 +716,8 @@ pub fn stub_4cb80() -> ! {
 // 0x4cbbc — -[GameKeyboard keyboardWillChangeFrame:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillChangeFrame:]")]
-pub fn stub_4cbbc() -> ! {
-    todo!("0x4cbbc -[GameKeyboard keyboardWillChangeFrame:]")
+pub fn stub_4cbbc() {
+    // IDA 0x4cbbc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4cbc0 — -[GameKeyboard setDefaultString:]

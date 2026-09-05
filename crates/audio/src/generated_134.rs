@@ -198,327 +198,327 @@ pub enum XmlReadValue {
 
 // 0xf6f8d0 — sub_F6F8D0
 #[doc(alias = "sub_F6F8D0")]
-pub fn stub_f6f8d0() -> ! {
-    todo!("0xf6f8d0 sub_F6F8D0")
+pub fn stub_f6f8d0() {
+    // IDA 0xf6f8d0 sub_F6F8D0: 8-byte ARM __stub_helper (bytes 00c09fe512f7ffea5d540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f8dc — sub_F6F8DC
 #[doc(alias = "sub_F6F8DC")]
-pub fn stub_f6f8dc() -> ! {
-    todo!("0xf6f8dc sub_F6F8DC")
+pub fn stub_f6f8dc() {
+    // IDA 0xf6f8dc sub_F6F8DC: 8-byte ARM __stub_helper (bytes 00c09fe50ff7ffea77540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f8e8 — sub_F6F8E8
 #[doc(alias = "sub_F6F8E8")]
-pub fn stub_f6f8e8() -> ! {
-    todo!("0xf6f8e8 sub_F6F8E8")
+pub fn stub_f6f8e8() {
+    // IDA 0xf6f8e8 sub_F6F8E8: 8-byte ARM __stub_helper (bytes 00c09fe50cf7ffea92540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f8f4 — sub_F6F8F4
 #[doc(alias = "sub_F6F8F4")]
-pub fn stub_f6f8f4() -> ! {
-    todo!("0xf6f8f4 sub_F6F8F4")
+pub fn stub_f6f8f4() {
+    // IDA 0xf6f8f4 sub_F6F8F4: 8-byte ARM __stub_helper (bytes 00c09fe509f7ffeaae540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f900 — sub_F6F900
 #[doc(alias = "sub_F6F900")]
-pub fn stub_f6f900() -> ! {
-    todo!("0xf6f900 sub_F6F900")
+pub fn stub_f6f900() {
+    // IDA 0xf6f900 sub_F6F900: 8-byte ARM __stub_helper (bytes 00c09fe506f7ffead5540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f90c — sub_F6F90C
 #[doc(alias = "sub_F6F90C")]
-pub fn stub_f6f90c() -> ! {
-    todo!("0xf6f90c sub_F6F90C")
+pub fn stub_f6f90c() {
+    // IDA 0xf6f90c sub_F6F90C: 8-byte ARM __stub_helper (bytes 00c09fe503f7ffeaf8540000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f918 — sub_F6F918
 #[doc(alias = "sub_F6F918")]
-pub fn stub_f6f918() -> ! {
-    todo!("0xf6f918 sub_F6F918")
+pub fn stub_f6f918() {
+    // IDA 0xf6f918 sub_F6F918: 8-byte ARM __stub_helper (bytes 00c09fe500f7ffea1b550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f924 — sub_F6F924
 #[doc(alias = "sub_F6F924")]
-pub fn stub_f6f924() -> ! {
-    todo!("0xf6f924 sub_F6F924")
+pub fn stub_f6f924() {
+    // IDA 0xf6f924 sub_F6F924: 8-byte ARM __stub_helper (bytes 00c09fe5fdf6ffea38550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f930 — sub_F6F930
 #[doc(alias = "sub_F6F930")]
-pub fn stub_f6f930() -> ! {
-    todo!("0xf6f930 sub_F6F930")
+pub fn stub_f6f930() {
+    // IDA 0xf6f930 sub_F6F930: 8-byte ARM __stub_helper (bytes 00c09fe5faf6ffea58550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f93c — sub_F6F93C
 #[doc(alias = "sub_F6F93C")]
-pub fn stub_f6f93c() -> ! {
-    todo!("0xf6f93c sub_F6F93C")
+pub fn stub_f6f93c() {
+    // IDA 0xf6f93c sub_F6F93C: 8-byte ARM __stub_helper (bytes 00c09fe5f7f6ffea82550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f948 — sub_F6F948
 #[doc(alias = "sub_F6F948")]
-pub fn stub_f6f948() -> ! {
-    todo!("0xf6f948 sub_F6F948")
+pub fn stub_f6f948() {
+    // IDA 0xf6f948 sub_F6F948: 8-byte ARM __stub_helper (bytes 00c09fe5f4f6ffeaa6550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f954 — sub_F6F954
 #[doc(alias = "sub_F6F954")]
-pub fn stub_f6f954() -> ! {
-    todo!("0xf6f954 sub_F6F954")
+pub fn stub_f6f954() {
+    // IDA 0xf6f954 sub_F6F954: 8-byte ARM __stub_helper (bytes 00c09fe5f1f6ffeac6550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f960 — sub_F6F960
 #[doc(alias = "sub_F6F960")]
-pub fn stub_f6f960() -> ! {
-    todo!("0xf6f960 sub_F6F960")
+pub fn stub_f6f960() {
+    // IDA 0xf6f960 sub_F6F960: 8-byte ARM __stub_helper (bytes 00c09fe5eef6ffeadd550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f96c — sub_F6F96C
 #[doc(alias = "sub_F6F96C")]
-pub fn stub_f6f96c() -> ! {
-    todo!("0xf6f96c sub_F6F96C")
+pub fn stub_f6f96c() {
+    // IDA 0xf6f96c sub_F6F96C: 8-byte ARM __stub_helper (bytes 00c09fe5ebf6ffeafb550000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f978 — sub_F6F978
 #[doc(alias = "sub_F6F978")]
-pub fn stub_f6f978() -> ! {
-    todo!("0xf6f978 sub_F6F978")
+pub fn stub_f6f978() {
+    // IDA 0xf6f978 sub_F6F978: 8-byte ARM __stub_helper (bytes 00c09fe5e8f6ffea21560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f984 — sub_F6F984
 #[doc(alias = "sub_F6F984")]
-pub fn stub_f6f984() -> ! {
-    todo!("0xf6f984 sub_F6F984")
+pub fn stub_f6f984() {
+    // IDA 0xf6f984 sub_F6F984: 8-byte ARM __stub_helper (bytes 00c09fe5e5f6ffea43560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f990 — sub_F6F990
 #[doc(alias = "sub_F6F990")]
-pub fn stub_f6f990() -> ! {
-    todo!("0xf6f990 sub_F6F990")
+pub fn stub_f6f990() {
+    // IDA 0xf6f990 sub_F6F990: 8-byte ARM __stub_helper (bytes 00c09fe5e2f6ffea5d560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f99c — sub_F6F99C
 #[doc(alias = "sub_F6F99C")]
-pub fn stub_f6f99c() -> ! {
-    todo!("0xf6f99c sub_F6F99C")
+pub fn stub_f6f99c() {
+    // IDA 0xf6f99c sub_F6F99C: 8-byte ARM __stub_helper (bytes 00c09fe5dff6ffea7c560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9a8 — sub_F6F9A8
 #[doc(alias = "sub_F6F9A8")]
-pub fn stub_f6f9a8() -> ! {
-    todo!("0xf6f9a8 sub_F6F9A8")
+pub fn stub_f6f9a8() {
+    // IDA 0xf6f9a8 sub_F6F9A8: 8-byte ARM __stub_helper (bytes 00c09fe5dcf6ffeaa3560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9b4 — sub_F6F9B4
 #[doc(alias = "sub_F6F9B4")]
-pub fn stub_f6f9b4() -> ! {
-    todo!("0xf6f9b4 sub_F6F9B4")
+pub fn stub_f6f9b4() {
+    // IDA 0xf6f9b4 sub_F6F9B4: 8-byte ARM __stub_helper (bytes 00c09fe5d9f6ffeac2560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9c0 — sub_F6F9C0
 #[doc(alias = "sub_F6F9C0")]
-pub fn stub_f6f9c0() -> ! {
-    todo!("0xf6f9c0 sub_F6F9C0")
+pub fn stub_f6f9c0() {
+    // IDA 0xf6f9c0 sub_F6F9C0: 8-byte ARM __stub_helper (bytes 00c09fe5d6f6ffeae1560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9cc — sub_F6F9CC
 #[doc(alias = "sub_F6F9CC")]
-pub fn stub_f6f9cc() -> ! {
-    todo!("0xf6f9cc sub_F6F9CC")
+pub fn stub_f6f9cc() {
+    // IDA 0xf6f9cc sub_F6F9CC: 8-byte ARM __stub_helper (bytes 00c09fe5d3f6ffeaf3560000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9d8 — sub_F6F9D8
 #[doc(alias = "sub_F6F9D8")]
-pub fn stub_f6f9d8() -> ! {
-    todo!("0xf6f9d8 sub_F6F9D8")
+pub fn stub_f6f9d8() {
+    // IDA 0xf6f9d8 sub_F6F9D8: 8-byte ARM __stub_helper (bytes 00c09fe5d0f6ffea09570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9e4 — sub_F6F9E4
 #[doc(alias = "sub_F6F9E4")]
-pub fn stub_f6f9e4() -> ! {
-    todo!("0xf6f9e4 sub_F6F9E4")
+pub fn stub_f6f9e4() {
+    // IDA 0xf6f9e4 sub_F6F9E4: 8-byte ARM __stub_helper (bytes 00c09fe5cdf6ffea1a570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9f0 — sub_F6F9F0
 #[doc(alias = "sub_F6F9F0")]
-pub fn stub_f6f9f0() -> ! {
-    todo!("0xf6f9f0 sub_F6F9F0")
+pub fn stub_f6f9f0() {
+    // IDA 0xf6f9f0 sub_F6F9F0: 8-byte ARM __stub_helper (bytes 00c09fe5caf6ffea33570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6f9fc — sub_F6F9FC
 #[doc(alias = "sub_F6F9FC")]
-pub fn stub_f6f9fc() -> ! {
-    todo!("0xf6f9fc sub_F6F9FC")
+pub fn stub_f6f9fc() {
+    // IDA 0xf6f9fc sub_F6F9FC: 8-byte ARM __stub_helper (bytes 00c09fe5c7f6ffea4e570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa08 — sub_F6FA08
 #[doc(alias = "sub_F6FA08")]
-pub fn stub_f6fa08() -> ! {
-    todo!("0xf6fa08 sub_F6FA08")
+pub fn stub_f6fa08() {
+    // IDA 0xf6fa08 sub_F6FA08: 8-byte ARM __stub_helper (bytes 00c09fe5c4f6ffea74570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa14 — sub_F6FA14
 #[doc(alias = "sub_F6FA14")]
-pub fn stub_f6fa14() -> ! {
-    todo!("0xf6fa14 sub_F6FA14")
+pub fn stub_f6fa14() {
+    // IDA 0xf6fa14 sub_F6FA14: 8-byte ARM __stub_helper (bytes 00c09fe5c1f6ffea98570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa20 — sub_F6FA20
 #[doc(alias = "sub_F6FA20")]
-pub fn stub_f6fa20() -> ! {
-    todo!("0xf6fa20 sub_F6FA20")
+pub fn stub_f6fa20() {
+    // IDA 0xf6fa20 sub_F6FA20: 8-byte ARM __stub_helper (bytes 00c09fe5bef6ffeabb570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa2c — sub_F6FA2C
 #[doc(alias = "sub_F6FA2C")]
-pub fn stub_f6fa2c() -> ! {
-    todo!("0xf6fa2c sub_F6FA2C")
+pub fn stub_f6fa2c() {
+    // IDA 0xf6fa2c sub_F6FA2C: 8-byte ARM __stub_helper (bytes 00c09fe5bbf6ffeae2570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa38 — sub_F6FA38
 #[doc(alias = "sub_F6FA38")]
-pub fn stub_f6fa38() -> ! {
-    todo!("0xf6fa38 sub_F6FA38")
+pub fn stub_f6fa38() {
+    // IDA 0xf6fa38 sub_F6FA38: 8-byte ARM __stub_helper (bytes 00c09fe5b8f6ffeaf6570000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa44 — sub_F6FA44
 #[doc(alias = "sub_F6FA44")]
-pub fn stub_f6fa44() -> ! {
-    todo!("0xf6fa44 sub_F6FA44")
+pub fn stub_f6fa44() {
+    // IDA 0xf6fa44 sub_F6FA44: 8-byte ARM __stub_helper (bytes 00c09fe5b5f6ffea09580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa50 — sub_F6FA50
 #[doc(alias = "sub_F6FA50")]
-pub fn stub_f6fa50() -> ! {
-    todo!("0xf6fa50 sub_F6FA50")
+pub fn stub_f6fa50() {
+    // IDA 0xf6fa50 sub_F6FA50: 8-byte ARM __stub_helper (bytes 00c09fe5b2f6ffea29580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa5c — sub_F6FA5C
 #[doc(alias = "sub_F6FA5C")]
-pub fn stub_f6fa5c() -> ! {
-    todo!("0xf6fa5c sub_F6FA5C")
+pub fn stub_f6fa5c() {
+    // IDA 0xf6fa5c sub_F6FA5C: 8-byte ARM __stub_helper (bytes 00c09fe5aff6ffea47580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa68 — sub_F6FA68
 #[doc(alias = "sub_F6FA68")]
-pub fn stub_f6fa68() -> ! {
-    todo!("0xf6fa68 sub_F6FA68")
+pub fn stub_f6fa68() {
+    // IDA 0xf6fa68 sub_F6FA68: 8-byte ARM __stub_helper (bytes 00c09fe5acf6ffea62580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa74 — sub_F6FA74
 #[doc(alias = "sub_F6FA74")]
-pub fn stub_f6fa74() -> ! {
-    todo!("0xf6fa74 sub_F6FA74")
+pub fn stub_f6fa74() {
+    // IDA 0xf6fa74 sub_F6FA74: 8-byte ARM __stub_helper (bytes 00c09fe5a9f6ffea7f580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa80 — sub_F6FA80
 #[doc(alias = "sub_F6FA80")]
-pub fn stub_f6fa80() -> ! {
-    todo!("0xf6fa80 sub_F6FA80")
+pub fn stub_f6fa80() {
+    // IDA 0xf6fa80 sub_F6FA80: 8-byte ARM __stub_helper (bytes 00c09fe5a6f6ffea9c580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa8c — sub_F6FA8C
 #[doc(alias = "sub_F6FA8C")]
-pub fn stub_f6fa8c() -> ! {
-    todo!("0xf6fa8c sub_F6FA8C")
+pub fn stub_f6fa8c() {
+    // IDA 0xf6fa8c sub_F6FA8C: 8-byte ARM __stub_helper (bytes 00c09fe5a3f6ffeacf580000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fa98 — sub_F6FA98
 #[doc(alias = "sub_F6FA98")]
-pub fn stub_f6fa98() -> ! {
-    todo!("0xf6fa98 sub_F6FA98")
+pub fn stub_f6fa98() {
+    // IDA 0xf6fa98 sub_F6FA98: 8-byte ARM __stub_helper (bytes 00c09fe5a0f6ffea03590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6faa4 — sub_F6FAA4
 #[doc(alias = "sub_F6FAA4")]
-pub fn stub_f6faa4() -> ! {
-    todo!("0xf6faa4 sub_F6FAA4")
+pub fn stub_f6faa4() {
+    // IDA 0xf6faa4 sub_F6FAA4: 8-byte ARM __stub_helper (bytes 00c09fe59df6ffea25590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fab0 — sub_F6FAB0
 #[doc(alias = "sub_F6FAB0")]
-pub fn stub_f6fab0() -> ! {
-    todo!("0xf6fab0 sub_F6FAB0")
+pub fn stub_f6fab0() {
+    // IDA 0xf6fab0 sub_F6FAB0: 8-byte ARM __stub_helper (bytes 00c09fe59af6ffea4d590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fabc — sub_F6FABC
 #[doc(alias = "sub_F6FABC")]
-pub fn stub_f6fabc() -> ! {
-    todo!("0xf6fabc sub_F6FABC")
+pub fn stub_f6fabc() {
+    // IDA 0xf6fabc sub_F6FABC: 8-byte ARM __stub_helper (bytes 00c09fe597f6ffea77590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fac8 — sub_F6FAC8
 #[doc(alias = "sub_F6FAC8")]
-pub fn stub_f6fac8() -> ! {
-    todo!("0xf6fac8 sub_F6FAC8")
+pub fn stub_f6fac8() {
+    // IDA 0xf6fac8 sub_F6FAC8: 8-byte ARM __stub_helper (bytes 00c09fe594f6ffea9e590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fad4 — sub_F6FAD4
 #[doc(alias = "sub_F6FAD4")]
-pub fn stub_f6fad4() -> ! {
-    todo!("0xf6fad4 sub_F6FAD4")
+pub fn stub_f6fad4() {
+    // IDA 0xf6fad4 sub_F6FAD4: 8-byte ARM __stub_helper (bytes 00c09fe591f6ffeab9590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fae0 — sub_F6FAE0
 #[doc(alias = "sub_F6FAE0")]
-pub fn stub_f6fae0() -> ! {
-    todo!("0xf6fae0 sub_F6FAE0")
+pub fn stub_f6fae0() {
+    // IDA 0xf6fae0 sub_F6FAE0: 8-byte ARM __stub_helper (bytes 00c09fe58ef6ffead6590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6faec — sub_F6FAEC
 #[doc(alias = "sub_F6FAEC")]
-pub fn stub_f6faec() -> ! {
-    todo!("0xf6faec sub_F6FAEC")
+pub fn stub_f6faec() {
+    // IDA 0xf6faec sub_F6FAEC: 8-byte ARM __stub_helper (bytes 00c09fe58bf6ffeaf6590000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6faf8 — sub_F6FAF8
 #[doc(alias = "sub_F6FAF8")]
-pub fn stub_f6faf8() -> ! {
-    todo!("0xf6faf8 sub_F6FAF8")
+pub fn stub_f6faf8() {
+    // IDA 0xf6faf8 sub_F6FAF8: 8-byte ARM __stub_helper (bytes 00c09fe588f6ffea1b5a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb04 — sub_F6FB04
 #[doc(alias = "sub_F6FB04")]
-pub fn stub_f6fb04() -> ! {
-    todo!("0xf6fb04 sub_F6FB04")
+pub fn stub_f6fb04() {
+    // IDA 0xf6fb04 sub_F6FB04: 8-byte ARM __stub_helper (bytes 00c09fe585f6ffea375a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb10 — sub_F6FB10
 #[doc(alias = "sub_F6FB10")]
-pub fn stub_f6fb10() -> ! {
-    todo!("0xf6fb10 sub_F6FB10")
+pub fn stub_f6fb10() {
+    // IDA 0xf6fb10 sub_F6FB10: 8-byte ARM __stub_helper (bytes 00c09fe582f6ffea635a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb1c — sub_F6FB1C
 #[doc(alias = "sub_F6FB1C")]
-pub fn stub_f6fb1c() -> ! {
-    todo!("0xf6fb1c sub_F6FB1C")
+pub fn stub_f6fb1c() {
+    // IDA 0xf6fb1c sub_F6FB1C: 8-byte ARM __stub_helper (bytes 00c09fe57ff6ffea855a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb28 — sub_F6FB28
 #[doc(alias = "sub_F6FB28")]
-pub fn stub_f6fb28() -> ! {
-    todo!("0xf6fb28 sub_F6FB28")
+pub fn stub_f6fb28() {
+    // IDA 0xf6fb28 sub_F6FB28: 8-byte ARM __stub_helper (bytes 00c09fe57cf6ffeab75a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb34 — sub_F6FB34
 #[doc(alias = "sub_F6FB34")]
-pub fn stub_f6fb34() -> ! {
-    todo!("0xf6fb34 sub_F6FB34")
+pub fn stub_f6fb34() {
+    // IDA 0xf6fb34 sub_F6FB34: 8-byte ARM __stub_helper (bytes 00c09fe579f6ffeaf95a0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb40 — sub_F6FB40
 #[doc(alias = "sub_F6FB40")]
-pub fn stub_f6fb40() -> ! {
-    todo!("0xf6fb40 sub_F6FB40")
+pub fn stub_f6fb40() {
+    // IDA 0xf6fb40 sub_F6FB40: 8-byte ARM __stub_helper (bytes 00c09fe576f6ffea105b0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf6fb4c — sub_F6FB4C
 // type: int()
 #[doc(alias = "sub_F6FB4C")]
-pub fn stub_f6fb4c() -> ! {
-    todo!("0xf6fb4c sub_F6FB4C")
+pub fn stub_f6fb4c() {
+    // IDA 0xf6fb4c sub_F6FB4C: 8-byte ARM __stub_helper (bytes 00c09fe573f6ffea345b0000; decompile `return _stub_helpers()`); dyld lazy-bind resolver - no-op carrier on host (no dyld).
 }
 
 // 0xf83c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev

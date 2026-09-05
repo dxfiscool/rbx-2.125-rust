@@ -586,15 +586,17 @@ pub fn stub_607054() {
 // 0x607080 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_607080() -> ! {
-    todo!("0x607080 __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_607080() -> u32 {
+    // IDA 0x607080: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x607084 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_607084() -> ! {
-    todo!("0x607084 __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_607084() -> u32 {
+    // IDA 0x607084: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x607088 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -629,15 +631,17 @@ pub fn stub_6071e0() {
 // 0x60720c — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")]
-pub fn stub_60720c() -> ! {
-    todo!("0x60720c __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")
+pub fn stub_60720c() -> u32 {
+    // IDA 0x60720c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x607210 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")]
-pub fn stub_607210() -> ! {
-    todo!("0x607210 __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")
+pub fn stub_607210() -> u32 {
+    // IDA 0x607210: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x607214 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -809,8 +813,9 @@ pub fn stub_608508() -> ! {
 // 0x60852c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14hasStringValueEv")]
-pub fn stub_60852c() -> ! {
-    todo!("0x60852c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14hasStringValueEv")
+pub fn stub_60852c() -> u32 {
+    // IDA 0x60852c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x608530 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14getStringValueEPKNS0_13DescribedBaseE

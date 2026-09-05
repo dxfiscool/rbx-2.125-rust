@@ -360,8 +360,8 @@ pub fn stub_0x38c974() -> ! {
 // type: void __fastcall(RBX::UserInputBase *this)
 #[doc(alias = "RBX::UserInputBase::removeJobs(void)")]
 #[doc(alias = "__ZN3RBX13UserInputBase10removeJobsEv")]
-pub fn stub_0x38cb9c() -> ! {
-    todo!("0x38cb9c RBX::UserInputBase::removeJobs(void)")
+pub fn stub_0x38cb9c() {
+    // IDA 0x38cb9c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x38cba0 — __GLOBAL__I_a_150

@@ -458,8 +458,9 @@ pub fn stub_3a7ee4() {
 // 0x3a7ef0 — __ZNK3RBX10ArcHandles13getHandleTypeEv
 // type: int __fastcall(RBX::ArcHandles *this)
 #[doc(alias = "RBX::ArcHandles::getHandleType(void)const")]
-pub fn stub_3a7ef0() -> ! {
-    todo!("0x3a7ef0 RBX::ArcHandles::getHandleType(void)const")
+pub fn stub_3a7ef0() -> u32 {
+    // IDA 0x3a7ef0: `Thumb movs r0,#2; bx lr` (bytes 02207047) - returns 2 in r0 on the host.
+    2u32
 }
 
 // 0x3a7ef4 — __ZNK3RBX10ArcHandles7getAxesEv
@@ -582,15 +583,17 @@ pub fn stub_3a9130() -> ! {
 // 0x3abc48 — __ZNK3RBX11HandlesBase13getHandleTypeEv
 // type: int __fastcall(RBX::HandlesBase *this)
 #[doc(alias = "RBX::HandlesBase::getHandleType(void)const")]
-pub fn stub_3abc48() -> ! {
-    todo!("0x3abc48 RBX::HandlesBase::getHandleType(void)const")
+pub fn stub_3abc48() -> u32 {
+    // IDA 0x3abc48: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3abc4c — __ZNK3RBX11HandlesBase22getHandlesNormalIdMaskEv
 // type: int __fastcall(RBX::HandlesBase *this)
 #[doc(alias = "RBX::HandlesBase::getHandlesNormalIdMask(void)const")]
-pub fn stub_3abc4c() -> ! {
-    todo!("0x3abc4c RBX::HandlesBase::getHandlesNormalIdMask(void)const")
+pub fn stub_3abc4c() -> u32 {
+    // IDA 0x3abc4c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3abe4c — __ZN3RBX11HandlesBaseD2Ev

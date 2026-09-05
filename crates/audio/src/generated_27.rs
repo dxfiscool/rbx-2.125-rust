@@ -74,8 +74,9 @@ pub fn stub_2f0404() -> ! {
 
 // 0x2f0410 — __ZNK3RBX11NewNullTool19shouldRender3dAdornEv
 #[doc(alias = "RBX::NewNullTool::shouldRender3dAdorn(void)const")]
-pub fn stub_2f0410() -> ! {
-    todo!("0x2f0410 RBX::NewNullTool::shouldRender3dAdorn(void)const")
+pub fn stub_2f0410() -> u32 {
+    // IDA 0x2f0410: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2f0414 — __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv
@@ -218,8 +219,9 @@ pub fn stub_2f1808() -> ! {
 
 // 0x2f1830 — __ZNK3RBX12PartDragTool14drawConnectorsEv
 #[doc(alias = "RBX::PartDragTool::drawConnectors(void)const")]
-pub fn stub_2f1830() -> ! {
-    todo!("0x2f1830 RBX::PartDragTool::drawConnectors(void)const")
+pub fn stub_2f1830() -> u32 {
+    // IDA 0x2f1830: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2f1834 — __ZNK3RBX12PartDragTool13getCursorNameEv

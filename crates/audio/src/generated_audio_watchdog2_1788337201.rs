@@ -50,16 +50,18 @@ pub fn stub_5cb25c() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Message,std::string>::GetSetImpl<std::string const& (RBX::Message::*)(void)const,void (RBX::Message::*)(std::string const&)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Message,std::string>::GetSetImpl<std::string const& (RBX::Message::*)(void)const,void (RBX::Message::*)(std::string const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE10isReadOnlyEv")]
-pub fn stub_5cb288() -> ! {
-    todo!("0x5cb288 __ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE10isReadOnlyEv")
+pub fn stub_5cb288() -> u32 {
+    // IDA 0x5cb288: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cb28c — __ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Message,std::string>::GetSetImpl<std::string const& (RBX::Message::*)(void)const,void (RBX::Message::*)(std::string const&)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Message,std::string>::GetSetImpl<std::string const& (RBX::Message::*)(void)const,void (RBX::Message::*)(std::string const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE11isWriteOnlyEv")]
-pub fn stub_5cb28c() -> ! {
-    todo!("0x5cb28c __ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE11isWriteOnlyEv")
+pub fn stub_5cb28c() -> u32 {
+    // IDA 0x5cb28c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5cb290 — __ZNK3RBX10Reflection14PropDescriptorINS_7MessageESsE10GetSetImplIMS2_KFRKSsvEMS2_FvS6_EE8getValueEPKNS0_13DescribedBaseE

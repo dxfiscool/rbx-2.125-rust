@@ -485,8 +485,8 @@ pub fn stub_c33680() {
 // 0xc3368c — __ZN3RBX11LightObject13_updateBoundsEv
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this)
 #[doc(alias = "RBX::LightObject::_updateBounds(void)")]
-pub fn stub_c3368c() -> ! {
-    todo!("0xc3368c RBX::LightObject::_updateBounds(void)")
+pub fn stub_c3368c() {
+    // IDA 0xc3368c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xc33690 — __ZNK3RBX11LightObject15getLightExtentsEv

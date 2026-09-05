@@ -140,8 +140,8 @@ pub fn stub_2b55e8() -> ! {
 
 // 0x2b55f8 — __ZN3rbx14implementation12typed_holderIdE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<double>::destruct_func(char *)")]
-pub fn stub_2b55f8() -> ! {
-    todo!("0x2b55f8 rbx::implementation::typed_holder<double>::destruct_func(char *)")
+pub fn stub_2b55f8() {
+    // IDA 0x2b55f8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x2b5650 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSISsEERS3_RKT_

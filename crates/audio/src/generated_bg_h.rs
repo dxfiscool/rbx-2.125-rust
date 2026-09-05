@@ -305,8 +305,8 @@ pub fn stub_26f720() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::UDim>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4UDimEE13destruct_funcEPc")]
-pub fn stub_26f730() -> ! {
-    todo!("0x26f730 rbx::implementation::typed_holder<RBX::UDim>::destruct_func(char *)")
+pub fn stub_26f730() {
+    // IDA 0x26f730: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x26f738 — __ZN3rbx14implementation12typed_holderIN3RBX6RbxRayEE9singletonEv
@@ -395,8 +395,8 @@ pub fn stub_26fa00() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Region3int16>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12Region3int16EE13destruct_funcEPc")]
-pub fn stub_26fa70() -> ! {
-    todo!("0x26fa70 rbx::implementation::typed_holder<RBX::Region3int16>::destruct_func(char *)")
+pub fn stub_26fa70() {
+    // IDA 0x26fa70: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x26fa78 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_

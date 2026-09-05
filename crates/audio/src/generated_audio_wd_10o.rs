@@ -21,8 +21,9 @@ pub fn stub_5e29dc() -> ! {
 // type: _DWORD __fastcall(RBX::Instance *__hidden this)
 #[doc(alias = "RBX::Instance::canClientCreate(void)")]
 #[doc(alias = "__ZN3RBX8Instance15canClientCreateEv")]
-pub fn stub_5e29e8() -> ! {
-    todo!("0x5e29e8 __ZN3RBX8Instance15canClientCreateEv")
+pub fn stub_5e29e8() -> u32 {
+    // IDA 0x5e29e8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e29f0 — __ZN3RBX8Instance12onChildAddedEPS0_
@@ -30,8 +31,8 @@ pub fn stub_5e29e8() -> ! {
 // type: _DWORD __fastcall(RBX::Instance *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Instance::onChildAdded(RBX::Instance*)")]
 #[doc(alias = "__ZN3RBX8Instance12onChildAddedEPS0_")]
-pub fn stub_5e29f0() -> ! {
-    todo!("0x5e29f0 __ZN3RBX8Instance12onChildAddedEPS0_")
+pub fn stub_5e29f0() {
+    // IDA 0x5e29f0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e29f8 — __ZNK3RBX10PVInstance13childHashCodeEv
@@ -39,8 +40,9 @@ pub fn stub_5e29f0() -> ! {
 // type: _DWORD __fastcall(RBX::PVInstance *__hidden this)
 #[doc(alias = "RBX::PVInstance::childHashCode(void)const")]
 #[doc(alias = "__ZNK3RBX10PVInstance13childHashCodeEv")]
-pub fn stub_5e29f8() -> ! {
-    todo!("0x5e29f8 __ZNK3RBX10PVInstance13childHashCodeEv")
+pub fn stub_5e29f8() -> u32 {
+    // IDA 0x5e29f8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e29fc — __ZNK3RBX17NonFactoryProductINS_10PVInstanceELZNS_5sPartEEE12getClassNameEv
@@ -56,8 +58,9 @@ pub fn stub_5e29fc() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::hasThreeDimensionalSize(void)")]
 #[doc(alias = "__ZN3RBX12PartInstance23hasThreeDimensionalSizeEv")]
-pub fn stub_5e2a24() -> ! {
-    todo!("0x5e2a24 __ZN3RBX12PartInstance23hasThreeDimensionalSizeEv")
+pub fn stub_5e2a24() -> u32 {
+    // IDA 0x5e2a24: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2a28 — __ZNK3RBX12PartInstance11getPartTypeEv
@@ -65,8 +68,9 @@ pub fn stub_5e2a24() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::getPartType(void)const")]
 #[doc(alias = "__ZNK3RBX12PartInstance11getPartTypeEv")]
-pub fn stub_5e2a28() -> ! {
-    todo!("0x5e2a28 __ZNK3RBX12PartInstance11getPartTypeEv")
+pub fn stub_5e2a28() -> u32 {
+    // IDA 0x5e2a28: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2a2c — __ZNK3RBX12PartInstance16getMinimumUiSizeEv
@@ -101,8 +105,9 @@ pub fn stub_5e2ac8() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::getDragUtilitiesSupport(void)const")]
 #[doc(alias = "__ZNK3RBX12PartInstance23getDragUtilitiesSupportEv")]
-pub fn stub_5e2adc() -> ! {
-    todo!("0x5e2adc __ZNK3RBX12PartInstance23getDragUtilitiesSupportEv")
+pub fn stub_5e2adc() -> u32 {
+    // IDA 0x5e2adc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2ae0 — __ZNK3RBX12PartInstance18getResizeIncrementEv
@@ -110,8 +115,9 @@ pub fn stub_5e2adc() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::getResizeIncrement(void)const")]
 #[doc(alias = "__ZNK3RBX12PartInstance18getResizeIncrementEv")]
-pub fn stub_5e2ae0() -> ! {
-    todo!("0x5e2ae0 __ZNK3RBX12PartInstance18getResizeIncrementEv")
+pub fn stub_5e2ae0() -> u32 {
+    // IDA 0x5e2ae0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2ae4 — __ZNK3RBX12PartInstance25getMinimumResizeIncrementEv
@@ -128,8 +134,9 @@ pub fn stub_5e2ae4() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::getFormFactor(void)const")]
 #[doc(alias = "__ZNK3RBX12PartInstance13getFormFactorEv")]
-pub fn stub_5e2af0() -> ! {
-    todo!("0x5e2af0 __ZNK3RBX12PartInstance13getFormFactorEv")
+pub fn stub_5e2af0() -> u32 {
+    // IDA 0x5e2af0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e2af4 — __ZN3RBX12PartInstance11getLocationEv
@@ -172,8 +179,8 @@ pub fn stub_5e2b44() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::getPrimaryPart(void)")]
 #[doc(alias = "__ZN3RBX12PartInstance14getPrimaryPartEv")]
-pub fn stub_5e2b60() -> ! {
-    todo!("0x5e2b60 __ZN3RBX12PartInstance14getPrimaryPartEv")
+pub fn stub_5e2b60() {
+    // IDA 0x5e2b60: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2b64 — __ZNK3RBX12PartInstance16partNeeds3dAdornEv
@@ -181,8 +188,9 @@ pub fn stub_5e2b60() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "RBX::PartInstance::partNeeds3dAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX12PartInstance16partNeeds3dAdornEv")]
-pub fn stub_5e2b64() -> ! {
-    todo!("0x5e2b64 __ZNK3RBX12PartInstance16partNeeds3dAdornEv")
+pub fn stub_5e2b64() -> u32 {
+    // IDA 0x5e2b64: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e2b68 — __ZThn32_NK3RBX17NonFactoryProductINS_10PVInstanceELZNS_5sPartEEE12getClassNameEv
@@ -207,16 +215,18 @@ pub fn stub_5e2b94() {
 // type: _DWORD __fastcall(RBX::IAdornable *__hidden this)
 #[doc(alias = "RBX::IAdornable::shouldRender2d(void)const")]
 #[doc(alias = "__ZNK3RBX10IAdornable14shouldRender2dEv")]
-pub fn stub_5e2b98() -> ! {
-    todo!("0x5e2b98 __ZNK3RBX10IAdornable14shouldRender2dEv")
+pub fn stub_5e2b98() -> u32 {
+    // IDA 0x5e2b98: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e2ba0 — __ZNK3RBX10IAdornable9isVisibleERKN3G3D6Rect2DE
 // demangled: RBX::IAdornable::isVisible(G3D::Rect2D const&)const
 #[doc(alias = "RBX::IAdornable::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZNK3RBX10IAdornable9isVisibleERKN3G3D6Rect2DE")]
-pub fn stub_5e2ba0() -> ! {
-    todo!("0x5e2ba0 __ZNK3RBX10IAdornable9isVisibleERKN3G3D6Rect2DE")
+pub fn stub_5e2ba0() -> u32 {
+    // IDA 0x5e2ba0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2ba8 — __ZN3RBX10IAdornable25renderBackground2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -231,8 +241,8 @@ pub fn stub_5e2ba8() -> ! {
 // demangled: RBX::IAdornable::render2d(RBX::Adorn *)
 #[doc(alias = "RBX::IAdornable::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX10IAdornable8render2dEPNS_5AdornE")]
-pub fn stub_5e2bb0() -> ! {
-    todo!("0x5e2bb0 __ZN3RBX10IAdornable8render2dEPNS_5AdornE")
+pub fn stub_5e2bb0() {
+    // IDA 0x5e2bb0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2bb4 — __ZN3RBX10IAdornable15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -247,8 +257,8 @@ pub fn stub_5e2bb4() -> ! {
 // demangled: RBX::IAdornable::render3dSortedAdorn(RBX::Adorn *)
 #[doc(alias = "RBX::IAdornable::render3dSortedAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX10IAdornable19render3dSortedAdornEPNS_5AdornE")]
-pub fn stub_5e2bbc() -> ! {
-    todo!("0x5e2bbc __ZN3RBX10IAdornable19render3dSortedAdornEPNS_5AdornE")
+pub fn stub_5e2bbc() {
+    // IDA 0x5e2bbc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2bc0 — __ZNK3RBX10IAdornable22render3dSortedPositionEv
@@ -274,8 +284,8 @@ pub fn stub_5e2bd0() -> ! {
 // type: _DWORD __fastcall(RBX::CameraSubject *__hidden this)
 #[doc(alias = "RBX::CameraSubject::onCameraWrapMouse(void)")]
 #[doc(alias = "__ZN3RBX13CameraSubject17onCameraWrapMouseEv")]
-pub fn stub_5e2c00() -> ! {
-    todo!("0x5e2c00 __ZN3RBX13CameraSubject17onCameraWrapMouseEv")
+pub fn stub_5e2c00() {
+    // IDA 0x5e2c00: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2c08 — __ZThn132_N3RBX12PartInstance17getRenderLocationEv
@@ -308,16 +318,17 @@ pub fn stub_5e2c30() {
 // demangled: RBX::CameraSubject::getSelectionIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 #[doc(alias = "RBX::CameraSubject::getSelectionIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZN3RBX13CameraSubject28getSelectionIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
-pub fn stub_5e2c48() -> ! {
-    todo!("0x5e2c48 __ZN3RBX13CameraSubject28getSelectionIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")
+pub fn stub_5e2c48() {
+    // IDA 0x5e2c48: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2c4c — __ZN3RBX13CameraSubject4zoomEfRN3G3D15CoordinateFrameES3_
 // demangled: RBX::CameraSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 #[doc(alias = "RBX::CameraSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZN3RBX13CameraSubject4zoomEfRN3G3D15CoordinateFrameES3_")]
-pub fn stub_5e2c4c() -> ! {
-    todo!("0x5e2c4c __ZN3RBX13CameraSubject4zoomEfRN3G3D15CoordinateFrameES3_")
+pub fn stub_5e2c4c() -> u32 {
+    // IDA 0x5e2c4c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e2c50 — __ZN3RBX13CameraSubject20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -333,8 +344,9 @@ pub fn stub_5e2c50() -> ! {
 // type: _DWORD __fastcall(RBX::Selectable *__hidden this)
 #[doc(alias = "RBX::Selectable::isSelectable3d(void)")]
 #[doc(alias = "__ZN3RBX10Selectable14isSelectable3dEv")]
-pub fn stub_5e2c90() -> ! {
-    todo!("0x5e2c90 __ZN3RBX10Selectable14isSelectable3dEv")
+pub fn stub_5e2c90() -> u32 {
+    // IDA 0x5e2c90: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5e2c94 — __ZN3RBX21DescribedNonCreatableINS_12PartInstanceENS_10PVInstanceELZNS_5sPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -426,16 +438,16 @@ pub fn stub_5e2fa4() {
 // type: _DWORD __fastcall(RBX::CameraSubject *__hidden this, float)
 #[doc(alias = "RBX::CameraSubject::onCameraNear(float)")]
 #[doc(alias = "__ZN3RBX13CameraSubject12onCameraNearEf")]
-pub fn stub_5e2fa8() -> ! {
-    todo!("0x5e2fa8 __ZN3RBX13CameraSubject12onCameraNearEf")
+pub fn stub_5e2fa8() {
+    // IDA 0x5e2fa8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2fac — __ZN3RBX13CameraSubject25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 // demangled: RBX::CameraSubject::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 #[doc(alias = "RBX::CameraSubject::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZN3RBX13CameraSubject25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
-pub fn stub_5e2fac() -> ! {
-    todo!("0x5e2fac __ZN3RBX13CameraSubject25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")
+pub fn stub_5e2fac() {
+    // IDA 0x5e2fac: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e2fb0 — __ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEED1Ev
@@ -627,8 +639,8 @@ pub fn stub_5e3e04() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Material>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Material>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX8MaterialEE13destruct_funcEPc")]
-pub fn stub_5e3e10() -> ! {
-    todo!("0x5e3e10 __ZN3rbx14implementation12typed_holderIN3RBX8MaterialEE13destruct_funcEPc")
+pub fn stub_5e3e10() {
+    // IDA 0x5e3e10: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e3e14 — __ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_
@@ -780,8 +792,8 @@ pub fn stub_5e4710() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::PartInstance::FormFactor>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::PartInstance::FormFactor>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12PartInstance10FormFactorEE13destruct_funcEPc")]
-pub fn stub_5e471c() -> ! {
-    todo!("0x5e471c __ZN3rbx14implementation12typed_holderIN3RBX12PartInstance10FormFactorEE13destruct_funcEPc")
+pub fn stub_5e471c() {
+    // IDA 0x5e471c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e4720 — __ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE13convertToItemERKS3_

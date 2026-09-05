@@ -307,14 +307,14 @@ pub fn stub_ed8f9c() -> ! {
 
 // 0xed8fb8 — ___copy_helper_block_8
 #[doc(alias = "___copy_helper_block_8")]
-pub fn stub_ed8fb8() -> ! {
-    todo!("0xed8fb8 ___copy_helper_block_8")
+pub fn stub_ed8fb8() {
+    // IDA 0xed8fb8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed8fbc — ___destroy_helper_block_9
 #[doc(alias = "___destroy_helper_block_9")]
-pub fn stub_ed8fbc() -> ! {
-    todo!("0xed8fbc ___destroy_helper_block_9")
+pub fn stub_ed8fbc() {
+    // IDA 0xed8fbc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed8fc0 — +[TFAppUpdater _setInAppUpdatesDisabledInternal:]

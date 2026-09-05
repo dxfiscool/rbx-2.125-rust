@@ -209,16 +209,18 @@ pub fn stub_286f4c() -> ! {
 // demangled: RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE10isReadOnlyEv")]
-pub fn stub_2870dc() -> ! {
-    todo!("0x2870dc RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")
+pub fn stub_2870dc() -> u32 {
+    // IDA 0x2870dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2870e0 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv")]
-pub fn stub_2870e0() -> ! {
-    todo!("0x2870e0 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")
+pub fn stub_2870e0() -> u32 {
+    // IDA 0x2870e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2870e4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -249,16 +251,18 @@ pub fn stub_28714c() -> ! {
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE10isReadOnlyEv")]
-pub fn stub_2872dc() -> ! {
-    todo!("0x2872dc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")
+pub fn stub_2872dc() -> u32 {
+    // IDA 0x2872dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2872e0 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv")]
-pub fn stub_2872e0() -> ! {
-    todo!("0x2872e0 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")
+pub fn stub_2872e0() -> u32 {
+    // IDA 0x2872e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2872e4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -289,16 +293,18 @@ pub fn stub_287340() -> ! {
 // demangled: RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE10isReadOnlyEv")]
-pub fn stub_2874d0() -> ! {
-    todo!("0x2874d0 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")
+pub fn stub_2874d0() -> u32 {
+    // IDA 0x2874d0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2874d4 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv")]
-pub fn stub_2874d4() -> ! {
-    todo!("0x2874d4 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")
+pub fn stub_2874d4() -> u32 {
+    // IDA 0x2874d4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2874d8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -329,16 +335,18 @@ pub fn stub_287544() -> ! {
 // demangled: RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE10isReadOnlyEv")]
-pub fn stub_2876d4() -> ! {
-    todo!("0x2876d4 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isReadOnly(void)const")
+pub fn stub_2876d4() -> u32 {
+    // IDA 0x2876d4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2876d8 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE11isWriteOnlyEv")]
-pub fn stub_2876d8() -> ! {
-    todo!("0x2876d8 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::LuaSettings>::isWriteOnly(void)const")
+pub fn stub_2876d8() -> u32 {
+    // IDA 0x2876d8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x2876dc — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -1080,8 +1088,9 @@ pub fn stub_28d4bc() -> ! {
 // type: _DWORD __fastcall(RBX::BaseScript *__hidden this)
 #[doc(alias = "RBX::BaseScript::isRobloxScript(void)const")]
 #[doc(alias = "__ZNK3RBX10BaseScript14isRobloxScriptEv")]
-pub fn stub_28d544() -> ! {
-    todo!("0x28d544 RBX::BaseScript::isRobloxScript(void)const")
+pub fn stub_28d544() -> u32 {
+    // IDA 0x28d544: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x28d548 — __ZNK3RBX6Script14isRobloxScriptEv
@@ -1258,6 +1267,7 @@ pub fn stub_28e0f8() -> ! {
 // type: _DWORD __fastcall(RBX::Script *__hidden this, const Instance *)
 #[doc(alias = "RBX::Script::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX6Script12askSetParentEPKNS_8InstanceE")]
-pub fn stub_28e114() -> ! {
-    todo!("0x28e114 RBX::Script::askSetParent(RBX::Instance const*)const")
+pub fn stub_28e114() -> u32 {
+    // IDA 0x28e114: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }

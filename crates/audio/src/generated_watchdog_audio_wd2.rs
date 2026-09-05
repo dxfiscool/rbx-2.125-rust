@@ -236,8 +236,8 @@ pub fn stub_e4773c() -> ! {
 // 0xe47744 — __ZN4Ogre7Texture18getCustomAttributeERKSsPv
 #[doc(alias = "Ogre::Texture::getCustomAttribute(std::string const&,void *)")]
 #[doc(alias = "__ZN4Ogre7Texture18getCustomAttributeERKSsPv")]
-pub fn stub_e47744() -> ! {
-    todo!("0xe47744 __ZN4Ogre7Texture18getCustomAttributeERKSsPv")
+pub fn stub_e47744() {
+    // IDA 0xe47744: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xe4777c — __ZN4Ogre14TextureManager15getSingletonPtrEv

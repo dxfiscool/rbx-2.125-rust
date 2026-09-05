@@ -249,15 +249,17 @@ pub fn stub_510bf8() {
 // 0x510c24 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,bool>::GetSetImpl<bool (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_510c24() -> ! {
-    todo!("0x510c24 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_510c24() -> u32 {
+    // IDA 0x510c24: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510c28 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,bool>::GetSetImpl<bool (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_510c28() -> ! {
-    todo!("0x510c28 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_510c28() -> u32 {
+    // IDA 0x510c28: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510c2c — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -291,15 +293,17 @@ pub fn stub_510d88() {
 // 0x510db4 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,float>::GetSetImpl<float (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_510db4() -> ! {
-    todo!("0x510db4 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+pub fn stub_510db4() -> u32 {
+    // IDA 0x510db4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510db8 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,float>::GetSetImpl<float (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_510db8() -> ! {
-    todo!("0x510db8 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+pub fn stub_510db8() -> u32 {
+    // IDA 0x510db8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510dbc — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -333,15 +337,17 @@ pub fn stub_510f14() {
 // 0x510f40 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_510f40() -> ! {
-    todo!("0x510f40 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_510f40() -> u32 {
+    // IDA 0x510f40: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510f44 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase3d,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiBase3d::*)(void)const,void (RBX::GuiBase3d::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_510f44() -> ! {
-    todo!("0x510f44 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_510f44() -> u32 {
+    // IDA 0x510f44: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x510f48 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

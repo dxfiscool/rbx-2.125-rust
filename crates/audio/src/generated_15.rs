@@ -410,8 +410,9 @@ pub fn stub_1cc6a4() -> ! {
 // 0x1cc6b4 — __ZL7RegExprv_2
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL7RegExprv_2")]
-pub fn stub_1cc6b4() -> ! {
-    todo!("0x1cc6b4 __ZL7RegExprv_2")
+pub fn stub_1cc6b4() -> u32 {
+    // IDA 0x1cc6b4: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x1cc6bc — __ZL8MimeTypev_2
@@ -540,8 +541,9 @@ pub fn stub_1d24b0() -> ! {
 
 // 0x1d251c — _af_dummy_hints_apply
 #[doc(alias = "_af_dummy_hints_apply")]
-pub fn stub_1d251c() -> ! {
-    todo!("0x1d251c _af_dummy_hints_apply")
+pub fn stub_1d251c() -> u32 {
+    // IDA 0x1d251c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x1d2524 — _af_dummy_hints_init

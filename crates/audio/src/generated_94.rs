@@ -109,14 +109,14 @@ pub fn stub_ece3f0() -> ! {
 
 // 0xece710 — ___copy_helper_block_107
 #[doc(alias = "___copy_helper_block_107")]
-pub fn stub_ece710() -> ! {
-    todo!("0xece710 ___copy_helper_block_107")
+pub fn stub_ece710() {
+    // IDA 0xece710: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xece714 — ___destroy_helper_block_108
 #[doc(alias = "___destroy_helper_block_108")]
-pub fn stub_ece714() -> ! {
-    todo!("0xece714 ___destroy_helper_block_108")
+pub fn stub_ece714() {
+    // IDA 0xece714: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xecec84 — __tf_setFlushSecondsInterval
@@ -475,14 +475,14 @@ pub fn stub_ed3da0() -> ! {
 
 // 0xed3f78 — ___copy_helper_block__32
 #[doc(alias = "___copy_helper_block__32")]
-pub fn stub_ed3f78() -> ! {
-    todo!("0xed3f78 ___copy_helper_block__32")
+pub fn stub_ed3f78() {
+    // IDA 0xed3f78: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed3f7c — ___destroy_helper_block__32
 #[doc(alias = "___destroy_helper_block__32")]
-pub fn stub_ed3f7c() -> ! {
-    todo!("0xed3f7c ___destroy_helper_block__32")
+pub fn stub_ed3f7c() {
+    // IDA 0xed3f7c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed4d54 — ___copy_helper_block_92
@@ -595,14 +595,14 @@ pub fn stub_ed6b38() -> ! {
 
 // 0xed6e40 — ___copy_helper_block__34
 #[doc(alias = "___copy_helper_block__34")]
-pub fn stub_ed6e40() -> ! {
-    todo!("0xed6e40 ___copy_helper_block__34")
+pub fn stub_ed6e40() {
+    // IDA 0xed6e40: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed6e44 — ___destroy_helper_block__34
 #[doc(alias = "___destroy_helper_block__34")]
-pub fn stub_ed6e44() -> ! {
-    todo!("0xed6e44 ___destroy_helper_block__34")
+pub fn stub_ed6e44() {
+    // IDA 0xed6e44: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xed74c4 — ___copy_helper_block_62

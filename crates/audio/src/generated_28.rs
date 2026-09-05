@@ -236,8 +236,9 @@ pub fn stub_2fa0c8() -> ! {
 
 // 0x2fa124 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::hasStringValue(void)const")]
-pub fn stub_2fa124() -> ! {
-    todo!("0x2fa124 RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::hasStringValue(void)const")
+pub fn stub_2fa124() -> u32 {
+    // IDA 0x2fa124: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x2fa128 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEE14getStringValueEPKNS0_13DescribedBaseE
@@ -494,8 +495,8 @@ pub fn stub_2fea58() -> ! {
 
 // 0x2feaa8 — __ZN3RBX14AsyncHttpQueue15registerContentERKSsN5boost10shared_ptrIS1_EES5_
 #[doc(alias = "RBX::AsyncHttpQueue::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
-pub fn stub_2feaa8() -> ! {
-    todo!("0x2feaa8 RBX::AsyncHttpQueue::registerContent(std::string const&,boost::shared_ptr<std::string const>,boost::shared_ptr<std::string const>)")
+pub fn stub_2feaa8() {
+    // IDA 0x2feaa8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x2feab0 — __ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_

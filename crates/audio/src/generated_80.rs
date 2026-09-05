@@ -140,14 +140,16 @@ pub fn stub_6ad0ac() {
 
 // 0x6ad0d8 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE10isReadOnlyEv")]
-pub fn stub_6ad0d8() -> ! {
-    todo!("0x6ad0d8 __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE10isReadOnlyEv")
+pub fn stub_6ad0d8() -> u32 {
+    // IDA 0x6ad0d8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ad0dc — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE11isWriteOnlyEv")]
-pub fn stub_6ad0dc() -> ! {
-    todo!("0x6ad0dc __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE11isWriteOnlyEv")
+pub fn stub_6ad0dc() -> u32 {
+    // IDA 0x6ad0dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ad0e0 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -170,14 +172,16 @@ pub fn stub_6ad128() -> ! {
 
 // 0x6ad2b8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE10isReadOnlyEv")]
-pub fn stub_6ad2b8() -> ! {
-    todo!("0x6ad2b8 __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE10isReadOnlyEv")
+pub fn stub_6ad2b8() -> u32 {
+    // IDA 0x6ad2b8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ad2bc — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE11isWriteOnlyEv")]
-pub fn stub_6ad2bc() -> ! {
-    todo!("0x6ad2bc __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE11isWriteOnlyEv")
+pub fn stub_6ad2bc() -> u32 {
+    // IDA 0x6ad2bc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ad2c0 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEE8getValueEPKNS0_13DescribedBaseE
@@ -248,14 +252,16 @@ pub fn stub_6ae318() {
 
 // 0x6ae344 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv")]
-pub fn stub_6ae344() -> ! {
-    todo!("0x6ae344 __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv")
+pub fn stub_6ae344() -> u32 {
+    // IDA 0x6ae344: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ae348 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv")]
-pub fn stub_6ae348() -> ! {
-    todo!("0x6ae348 __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv")
+pub fn stub_6ae348() -> u32 {
+    // IDA 0x6ae348: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ae34c — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -278,14 +284,16 @@ pub fn stub_6ae390() -> ! {
 
 // 0x6ae520 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE10isReadOnlyEv")]
-pub fn stub_6ae520() -> ! {
-    todo!("0x6ae520 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE10isReadOnlyEv")
+pub fn stub_6ae520() -> u32 {
+    // IDA 0x6ae520: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ae524 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE11isWriteOnlyEv")]
-pub fn stub_6ae524() -> ! {
-    todo!("0x6ae524 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE11isWriteOnlyEv")
+pub fn stub_6ae524() -> u32 {
+    // IDA 0x6ae524: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6ae528 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEE8getValueEPKNS0_13DescribedBaseE

@@ -327,8 +327,9 @@ pub fn stub_62a710() -> ! {
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this)
 #[doc(alias = "RBX::SkateboardPlatform::canStepUi(void)const")]
 #[doc(alias = "__ZNK3RBX18SkateboardPlatform9canStepUiEv")]
-pub fn stub_62a720() -> ! {
-    todo!("0x62a720 __ZNK3RBX18SkateboardPlatform9canStepUiEv")
+pub fn stub_62a720() -> u32 {
+    // IDA 0x62a720: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x62a724 — __ZThn32_NK3RBX14FactoryProductINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEENS_8InstanceEE12getClassNameEv
@@ -362,16 +363,16 @@ pub fn stub_62a74c() {
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE25onPlatformStandingChangedEbPNS_8HumanoidE")]
-pub fn stub_62a7fc() -> ! {
-    todo!("0x62a7fc __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE25onPlatformStandingChangedEbPNS_8HumanoidE")
+pub fn stub_62a7fc() {
+    // IDA 0x62a7fc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x62a800 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_
 // demangled: RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)")]
 #[doc(alias = "__ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_")]
-pub fn stub_62a800() -> ! {
-    todo!("0x62a800 __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_")
+pub fn stub_62a800() {
+    // IDA 0x62a800: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x62a804 — __ZThn132_N3RBX18DescribedCreatableINS_18SkateboardPlatformENS_12PlatformImplINS_17BasicPartInstanceEEELZNS_19sSkateboardPlatformEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

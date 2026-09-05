@@ -135,15 +135,17 @@ pub fn stub_3ea9f4() -> ! {
 // 0x3eab84 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::CharacterMesh>::isReadOnly(void)const")]
-pub fn stub_3eab84() -> ! {
-    todo!("0x3eab84 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE10isReadOnlyEv")
+pub fn stub_3eab84() -> u32 {
+    // IDA 0x3eab84: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3eab88 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::CharacterMesh>::isWriteOnly(void)const")]
-pub fn stub_3eab88() -> ! {
-    todo!("0x3eab88 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE11isWriteOnlyEv")
+pub fn stub_3eab88() -> u32 {
+    // IDA 0x3eab88: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3eab8c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE8getValueEPKNS0_13DescribedBaseE
@@ -219,8 +221,9 @@ pub fn stub_3eaf80() -> ! {
 // 0x3eafa4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::hasStringValue(void)const")]
-pub fn stub_3eafa4() -> ! {
-    todo!("0x3eafa4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14hasStringValueEv")
+pub fn stub_3eafa4() -> u32 {
+    // IDA 0x3eafa4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3eafa8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14getStringValueEPKNS0_13DescribedBaseE
@@ -310,15 +313,17 @@ pub fn stub_3eb3d4() -> ! {
 // 0x3eb414 — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::GetSetImpl<RBX::CharacterMesh::BodyPart (RBX::CharacterMesh::*)(void)const,void (RBX::CharacterMesh::*)(RBX::CharacterMesh::BodyPart)>::isReadOnly(void)const")]
-pub fn stub_3eb414() -> ! {
-    todo!("0x3eb414 __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_3eb414() -> u32 {
+    // IDA 0x3eb414: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3eb418 — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::GetSetImpl<RBX::CharacterMesh::BodyPart (RBX::CharacterMesh::*)(void)const,void (RBX::CharacterMesh::*)(RBX::CharacterMesh::BodyPart)>::isWriteOnly(void)const")]
-pub fn stub_3eb418() -> ! {
-    todo!("0x3eb418 __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_3eb418() -> u32 {
+    // IDA 0x3eb418: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3eb41c — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

@@ -299,8 +299,9 @@ pub fn stub_4e70c0() -> ! {
 // 0x4e7134 — __ZNK3RBX7Feature12askSetParentEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::Feature *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Feature::askSetParent(RBX::Instance const*)const")]
-pub fn stub_4e7134() -> ! {
-    todo!("0x4e7134 __ZNK3RBX7Feature12askSetParentEPKNS_8InstanceE")
+pub fn stub_4e7134() -> u32 {
+    // IDA 0x4e7134: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4e7138 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEE12getClassNameEv
@@ -312,15 +313,17 @@ pub fn stub_4e7138() -> ! {
 // 0x4e7160 — __ZNK3RBX7Feature19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "RBX::Feature::shouldRender3dAdorn(void)const")]
-pub fn stub_4e7160() -> ! {
-    todo!("0x4e7160 __ZNK3RBX7Feature19shouldRender3dAdornEv")
+pub fn stub_4e7160() -> u32 {
+    // IDA 0x4e7160: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4e7164 — __ZNK3RBX7Feature19getCoordOrientationEv
 // type: _DWORD __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "RBX::Feature::getCoordOrientation(void)const")]
-pub fn stub_4e7164() -> ! {
-    todo!("0x4e7164 __ZNK3RBX7Feature19getCoordOrientationEv")
+pub fn stub_4e7164() -> u32 {
+    // IDA 0x4e7164: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4e7168 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_8sFeatureEEE12getClassNameEv
@@ -359,8 +362,9 @@ pub fn stub_4e7238() -> ! {
 // 0x4e7248 — __ZNK3RBX4Hole19getCoordOrientationEv
 // type: _DWORD __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "RBX::Hole::getCoordOrientation(void)const")]
-pub fn stub_4e7248() -> ! {
-    todo!("0x4e7248 __ZNK3RBX4Hole19getCoordOrientationEv")
+pub fn stub_4e7248() -> u32 {
+    // IDA 0x4e7248: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4e724c — __ZThn32_N3RBX4HoleD1Ev
@@ -461,8 +465,9 @@ pub fn stub_4e75d0() -> ! {
 // 0x4e75dc — __ZNK3RBX13VelocityMotor12askSetParentEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::VelocityMotor *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::VelocityMotor::askSetParent(RBX::Instance const*)const")]
-pub fn stub_4e75dc() -> ! {
-    todo!("0x4e75dc __ZNK3RBX13VelocityMotor12askSetParentEPKNS_8InstanceE")
+pub fn stub_4e75dc() -> u32 {
+    // IDA 0x4e75dc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4e75e0 — __ZNK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE12getClassNameEv

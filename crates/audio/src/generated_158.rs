@@ -189,8 +189,9 @@ pub fn stub_60a0c() -> ! {
 // 0x60af4 — -[SignupViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController numberOfComponentsInPickerView:]")]
-pub fn stub_60af4() -> ! {
-    todo!("0x60af4 -[SignupViewController numberOfComponentsInPickerView:]")
+pub fn stub_60af4() -> u32 {
+    // IDA 0x60af4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x60af8 — -[SignupViewController pickerView:numberOfRowsInComponent:]
@@ -217,8 +218,9 @@ pub fn stub_60b38() -> ! {
 // 0x60c80 — -[SignupViewController disablesAutomaticKeyboardDismissal]
 // type: char __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_60c80() -> ! {
-    todo!("0x60c80 -[SignupViewController disablesAutomaticKeyboardDismissal]")
+pub fn stub_60c80() -> u32 {
+    // IDA 0x60c80: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x60c84 — -[SignupViewController prepareForSegue:sender:]

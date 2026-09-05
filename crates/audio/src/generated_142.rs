@@ -38,8 +38,8 @@ pub fn stub_3cade4() -> ! {
 
 // 0x3cadf0 — __ZN3rbx14implementation12typed_holderIN3RBX6Camera10CameraModeEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Camera::CameraMode>::destruct_func(char *)")]
-pub fn stub_3cadf0() -> ! {
-    todo!("0x3cadf0 rbx::implementation::typed_holder<RBX::Camera::CameraMode>::destruct_func(char *)")
+pub fn stub_3cadf0() {
+    // IDA 0x3cadf0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3cb538 — __ZN3rbx8any_castIRKN3RBX6Camera10CameraTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -788,8 +788,9 @@ pub fn stub_40e100() -> ! {
 
 // 0x4608c8 — __ZNK3RBX10Reflection21RefPropertyDescriptor11getDataSizeEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropertyDescriptor::getDataSize(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_4608c8() -> ! {
-    todo!("0x4608c8 RBX::Reflection::RefPropertyDescriptor::getDataSize(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_4608c8() -> u32 {
+    // IDA 0x4608c8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4608d0 — __ZNK3RBX10Reflection21RefPropertyDescriptor14getStringValueEPKNS0_13DescribedBaseE

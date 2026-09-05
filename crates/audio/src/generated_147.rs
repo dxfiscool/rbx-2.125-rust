@@ -18,8 +18,9 @@ pub fn stub_a6e2c() -> ! {
 
 // 0xa6f18 — __GLOBAL__I__ZN4FMOD9usercodecE
 #[doc(alias = "global constructor keyed to FMOD::usercodec")]
-pub fn stub_a6f18() -> ! {
-    todo!("0xa6f18 global constructor keyed to FMOD::usercodec")
+pub fn stub_a6f18() {
+    // IDA 0xa6f18 ``global constructor keyed to'FMOD::usercodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa6f24 — __ZN4FMOD8CodecWav16canPointInternalEv
@@ -102,8 +103,9 @@ pub fn stub_a83f4() -> ! {
 
 // 0xa844c — __GLOBAL__I__ZN4FMOD8wavcodecE
 #[doc(alias = "global constructor keyed to FMOD::wavcodec")]
-pub fn stub_a844c() -> ! {
-    todo!("0xa844c global constructor keyed to FMOD::wavcodec")
+pub fn stub_a844c() {
+    // IDA 0xa844c ``global constructor keyed to'FMOD::wavcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xa8458 — __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj
@@ -270,8 +272,9 @@ pub fn stub_ad880() -> ! {
 
 // 0xad8d8 — __GLOBAL__I__ZN4FMOD7xmcodecE
 #[doc(alias = "global constructor keyed to FMOD::xmcodec")]
-pub fn stub_ad8d8() -> ! {
-    todo!("0xad8d8 global constructor keyed to FMOD::xmcodec")
+pub fn stub_ad8d8() {
+    // IDA 0xad8d8 ``global constructor keyed to'FMOD::xmcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xad8e4 — __ZN4FMOD9DSPChorus17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -306,8 +309,14 @@ pub fn stub_adb30() -> ! {
 
 // 0xae24c — __ZN4FMOD9DSPChorus12readCallbackEP14FMOD_DSP_STATEPfS3_jii
 #[doc(alias = "FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_ae24c() -> ! {
-    todo!("0xae24c FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
+pub fn stub_ae24c() -> i32 {
+    // IDA 0xae24c FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int):
+    //   if (a1) a1 = (DSPChorus *)((char *)a1 - 28);
+    //   return FMOD::DSPChorus::readInternal(a1, a2, a3, a4, a5, a6);  (IDA 0xadb30)
+    // Host: the FMOD_DSP_STATE opens the 28-byte DSP header, so the object base rewinds
+    // 28 bytes (7 words); a null state forwards unchanged. The readInternal target
+    // (IDA 0xadb30, crate::stub_adb30) is not yet implemented on the host.
+    crate::stub_adb30()
 }
 
 // 0xae274 — __ZN4FMOD9DSPChorus13resetInternalEv
@@ -366,8 +375,9 @@ pub fn stub_ae5b8() -> ! {
 
 // 0xae6e8 — __GLOBAL__I__ZN4FMOD9dspchorusE
 #[doc(alias = "global constructor keyed to FMOD::dspchorus")]
-pub fn stub_ae6e8() -> ! {
-    todo!("0xae6e8 global constructor keyed to FMOD::dspchorus")
+pub fn stub_ae6e8() {
+    // IDA 0xae6e8 ``global constructor keyed to'FMOD::dspchorus`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xae6f4 — __ZN4FMOD8DSPCodec14createInternalEv
@@ -378,14 +388,16 @@ pub fn stub_ae6f4() -> ! {
 
 // 0xae73c — __ZN4FMOD8DSPCodec15releaseInternalEv
 #[doc(alias = "FMOD::DSPCodec::releaseInternal(void)")]
-pub fn stub_ae73c() -> ! {
-    todo!("0xae73c FMOD::DSPCodec::releaseInternal(void)")
+pub fn stub_ae73c() -> u32 {
+    // IDA 0xae73c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xae744 — __ZN4FMOD8DSPCodec13resetInternalEv
 #[doc(alias = "FMOD::DSPCodec::resetInternal(void)")]
-pub fn stub_ae744() -> ! {
-    todo!("0xae744 FMOD::DSPCodec::resetInternal(void)")
+pub fn stub_ae744() -> u32 {
+    // IDA 0xae744: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xae74c — __ZN4FMOD8DSPCodec19setPositionInternalEjb
@@ -396,14 +408,16 @@ pub fn stub_ae74c() -> ! {
 
 // 0xae76c — __ZN4FMOD8DSPCodec20setParameterInternalEif
 #[doc(alias = "FMOD::DSPCodec::setParameterInternal(int,float)")]
-pub fn stub_ae76c() -> ! {
-    todo!("0xae76c FMOD::DSPCodec::setParameterInternal(int,float)")
+pub fn stub_ae76c() -> u32 {
+    // IDA 0xae76c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xae774 — __ZN4FMOD8DSPCodec20getParameterInternalEiPfPc
 #[doc(alias = "FMOD::DSPCodec::getParameterInternal(int,float *,char *)")]
-pub fn stub_ae774() -> ! {
-    todo!("0xae774 FMOD::DSPCodec::getParameterInternal(int,float *,char *)")
+pub fn stub_ae774() -> u32 {
+    // IDA 0xae774: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xae77c — __ZN4FMOD8DSPCodec14createCallbackEP14FMOD_DSP_STATE
@@ -456,8 +470,14 @@ pub fn stub_ae858() -> ! {
 
 // 0xaed98 — __ZN4FMOD8DSPCodec12readCallbackEP14FMOD_DSP_STATEPfS3_jii
 #[doc(alias = "FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_aed98() -> ! {
-    todo!("0xaed98 FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
+pub fn stub_aed98() -> i32 {
+    // IDA 0xaed98 FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int):
+    //   if (a1) a1 = (DSPCodec *)((char *)a1 - 28);
+    //   return FMOD::DSPCodec::readInternal(a1, a2, a3, a4, a5, a6);  (IDA 0xae858)
+    // Host: the FMOD_DSP_STATE opens the 28-byte DSP header, so the object base rewinds
+    // 28 bytes (7 words); a null state forwards unchanged. The readInternal target
+    // (IDA 0xae858, crate::stub_ae858) is not yet implemented on the host.
+    crate::stub_ae858()
 }
 
 // 0xaedc0 — __ZN4FMOD8DSPCodec7releaseEb
@@ -474,8 +494,9 @@ pub fn stub_aee3c() -> ! {
 
 // 0xaef58 — __GLOBAL__I__ZN4FMOD8dspcodecE
 #[doc(alias = "global constructor keyed to FMOD::dspcodec")]
-pub fn stub_aef58() -> ! {
-    todo!("0xaef58 global constructor keyed to FMOD::dspcodec")
+pub fn stub_aef58() {
+    // IDA 0xaef58 ``global constructor keyed to'FMOD::dspcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xaef64 — __ZN4FMOD12DSPCodecPool10areAnyFreeEv
@@ -510,8 +531,9 @@ pub fn stub_af5ac() -> ! {
 
 // 0xaf648 — __ZN4FMOD13DSPCompressor17getMemoryUsedImplEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPCompressor::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_af648() -> ! {
-    todo!("0xaf648 FMOD::DSPCompressor::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_af648() -> u32 {
+    // IDA 0xaf648: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xaf650 — __ZN4FMOD13DSPCompressor14createCallbackEP14FMOD_DSP_STATE
@@ -558,8 +580,14 @@ pub fn stub_af8b0() -> ! {
 
 // 0xafc5c — __ZN4FMOD13DSPCompressor12readCallbackEP14FMOD_DSP_STATEPfS3_jii
 #[doc(alias = "FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_afc5c() -> ! {
-    todo!("0xafc5c FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
+pub fn stub_afc5c() -> i32 {
+    // IDA 0xafc5c FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int):
+    //   if (a1) a1 = (DSPCompressor *)((char *)a1 - 28);
+    //   return FMOD::DSPCompressor::readInternal(a1, a2, a3, a4, a5, a6);  (IDA 0xaf8b0)
+    // Host: the FMOD_DSP_STATE opens the 28-byte DSP header, so the object base rewinds
+    // 28 bytes (7 words); a null state forwards unchanged. The readInternal target
+    // (IDA 0xaf8b0, crate::stub_af8b0) is not yet implemented on the host.
+    crate::stub_af8b0()
 }
 
 // 0xafc84 — __ZN4FMOD13DSPCompressor16getDescriptionExEv
@@ -570,8 +598,9 @@ pub fn stub_afc84() -> ! {
 
 // 0xafd94 — __GLOBAL__I__ZN4FMOD13dspcompressorE
 #[doc(alias = "global constructor keyed to FMOD::dspcompressor")]
-pub fn stub_afd94() -> ! {
-    todo!("0xafd94 global constructor keyed to FMOD::dspcompressor")
+pub fn stub_afd94() {
+    // IDA 0xafd94 ``global constructor keyed to'FMOD::dspcompressor`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0xafda0 — __ZN4FMOD17DSPConnectionPool17getMemoryUsedImplEPNS_13MemoryTrackerE

@@ -139,8 +139,8 @@ pub fn stub_24551c() {
 // 0x245544 — __ZN4Init14initStaticDataEv
 // type: void __fastcall(Init *this)
 #[doc(alias = "Init::initStaticData(void)")]
-pub fn stub_245544() -> ! {
-    todo!("0x245544 Init::initStaticData(void)")
+pub fn stub_245544() {
+    // IDA 0x245544: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x245548 — __GLOBAL__I_a_48
@@ -346,8 +346,9 @@ pub fn stub_247e74() -> ! {
 // 0x247e90 — __ZN3RBX16ExclusiveArbiter11isThrottledEv
 // type: int __fastcall(RBX::ExclusiveArbiter *this)
 #[doc(alias = "RBX::ExclusiveArbiter::isThrottled(void)")]
-pub fn stub_247e90() -> ! {
-    todo!("0x247e90 RBX::ExclusiveArbiter::isThrottled(void)")
+pub fn stub_247e90() -> u32 {
+    // IDA 0x247e90: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x247e94 — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2IS3_EERKNS_8weak_ptrIT_EE

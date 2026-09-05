@@ -127,8 +127,8 @@ pub fn stub_2549ec() -> ! {
 // type: void __fastcall(RBX::Crypt *this)
 #[doc(alias = "RBX::Crypt::Crypt(void)")]
 #[doc(alias = "__ZN3RBX5CryptC1Ev")]
-pub fn stub_254bb4() -> ! {
-    todo!("0x254bb4 RBX::Crypt::Crypt(void)")
+pub fn stub_254bb4() {
+    // IDA 0x254bb4: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x254bb8 — __ZN3RBX5CryptD1Ev
@@ -143,8 +143,8 @@ pub fn stub_254bb8() {
 // type: void()
 #[doc(alias = "RBX::Crypt::verifySignatureBase64(std::string,std::string)")]
 #[doc(alias = "__ZN3RBX5Crypt21verifySignatureBase64ESsSs")]
-pub fn stub_254bbc() -> ! {
-    todo!("0x254bbc RBX::Crypt::verifySignatureBase64(std::string,std::string)")
+pub fn stub_254bbc() {
+    // IDA 0x254bbc: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x254bc0 — __GLOBAL__I_a_53
@@ -687,16 +687,18 @@ pub fn stub_2594ac() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE10isReadOnlyEv")]
-pub fn stub_25963c() -> ! {
-    todo!("0x25963c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::isReadOnly(void)const")
+pub fn stub_25963c() -> u32 {
+    // IDA 0x25963c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x259640 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE11isWriteOnlyEv")]
-pub fn stub_259640() -> ! {
-    todo!("0x259640 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::isWriteOnly(void)const")
+pub fn stub_259640() -> u32 {
+    // IDA 0x259640: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x259644 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8getValueEPKNS0_13DescribedBaseE

@@ -5631,15 +5631,15 @@ pub fn stub_f30754(value: ReverbType, out: &mut String) {
 // 0xf30764 — j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv")]
-pub fn stub_f30764() -> ! {
-    todo!("0xf30764 j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv")
+pub fn stub_f30764() {
+    // IDA 0xf30764: Thumb import jump veneer for `j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv.
 }
 
 // 0xf30774 — j___ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_f30774() -> ! {
-    todo!("0xf30774 j___ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_f30774() {
+    // IDA 0xf30774: Thumb import jump veneer for `j___ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv.
 }
 
 // 0xf30784 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -5673,76 +5673,76 @@ pub fn stub_f307b4() {
 // 0xf307c4 — j___ZNSt12_Vector_baseIN3RBX10Soundscape10ReverbTypeESaIS2_EE11_M_allocateEm
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Vector_base<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_allocate(unsigned long)")]
-pub fn stub_f307c4() -> ! {
-    todo!("0xf307c4 std::_Vector_base<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_allocate(unsigned long)")
+pub fn stub_f307c4() {
+    // IDA 0xf307c4: Thumb import jump veneer for `j___ZNSt12_Vector_baseIN3RBX10Soundscape10ReverbTypeESaIS2_EE11_M_allocateEm` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Vector_base<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_allocate(unsigned long).
 }
 
 // 0xf307d4 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10Soundscape10ReverbTypeES6_EET0_T_S8_S7_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Soundscape::ReverbType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *>(RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *)")]
-pub fn stub_f307d4() -> ! {
-    todo!("0xf307d4 RBX::Soundscape::ReverbType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *>(RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *)")
+pub fn stub_f307d4() {
+    // IDA 0xf307d4: Thumb import jump veneer for `j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10Soundscape10ReverbTypeES6_EET0_T_S8_S7_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Soundscape::ReverbType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *>(RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *,RBX::Soundscape::ReverbType *).
 }
 
 // 0xf307e4 — j___ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")]
-pub fn stub_f307e4() -> ! {
-    todo!("0xf307e4 j___ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_")
+pub fn stub_f307e4() {
+    // IDA 0xf307e4: Thumb import jump veneer for `j___ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&).
 }
 
 // 0xf307f4 — j___ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::SoundType,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")]
-pub fn stub_f307f4() -> ! {
-    todo!("0xf307f4 j___ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_")
+pub fn stub_f307f4() {
+    // IDA 0xf307f4: Thumb import jump veneer for `j___ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&).
 }
 
 // 0xf30804 — j___ZNSt3mapIPKN3RBX4NameENS0_10Soundscape10ReverbTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::Soundscape::ReverbType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_f30804() -> ! {
-    todo!("0xf30804 std::map<RBX::Name const*,RBX::Soundscape::ReverbType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_f30804() {
+    // IDA 0xf30804: Thumb import jump veneer for `j___ZNSt3mapIPKN3RBX4NameENS0_10Soundscape10ReverbTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::map<RBX::Name const*,RBX::Soundscape::ReverbType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::operator[](RBX::Name const* const&).
 }
 
 // 0xf30814 — j___ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
-pub fn stub_f30814() -> ! {
-    todo!("0xf30814 j___ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_")
+pub fn stub_f30814() {
+    // IDA 0xf30814: Thumb import jump veneer for `j___ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&).
 }
 
 // 0xf30824 — j___ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::pair<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)")]
-pub fn stub_f30824() -> ! {
-    todo!("0xf30824 j___ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E")
+pub fn stub_f30824() {
+    // IDA 0xf30824: Thumb import jump veneer for `j___ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>).
 }
 
 // 0xf30834 — j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,RBX::Soundscape::ReverbType const&)")]
-pub fn stub_f30834() -> ! {
-    todo!("0xf30834 std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,RBX::Soundscape::ReverbType const&)")
+pub fn stub_f30834() {
+    // IDA 0xf30834: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,RBX::Soundscape::ReverbType const&).
 }
 
 // 0xf30844 — j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: int __fastcall(_DWORD)
 #[doc(alias = "std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,unsigned long,RBX::Soundscape::ReverbType const&)")]
-pub fn stub_f30844() -> ! {
-    todo!("0xf30844 std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,unsigned long,RBX::Soundscape::ReverbType const&)")
+pub fn stub_f30844() {
+    // IDA 0xf30844: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Soundscape::ReverbType*,std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>>,unsigned long,RBX::Soundscape::ReverbType const&).
 }
 
 // 0xf30854 — j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE6resizeEmS2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::resize(unsigned long,RBX::Soundscape::ReverbType)")]
-pub fn stub_f30854() -> ! {
-    todo!("0xf30854 std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::resize(unsigned long,RBX::Soundscape::ReverbType)")
+pub fn stub_f30854() {
+    // IDA 0xf30854: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE6resizeEmS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::resize(unsigned long,RBX::Soundscape::ReverbType).
 }
 
 // 0xf30864 — j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE9push_backERKS2_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::push_back(RBX::Soundscape::ReverbType const&)")]
-pub fn stub_f30864() -> ! {
-    todo!("0xf30864 std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::push_back(RBX::Soundscape::ReverbType const&)")
+pub fn stub_f30864() {
+    // IDA 0xf30864: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE9push_backERKS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::Soundscape::ReverbType,std::allocator<RBX::Soundscape::ReverbType>>::push_back(RBX::Soundscape::ReverbType const&).
 }
 
 // 0xf30874 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
@@ -5755,29 +5755,29 @@ pub fn stub_f30874() {
 // 0xf30884 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f30884() -> ! {
-    todo!("0xf30884 j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_")
+pub fn stub_f30884() {
+    // IDA 0xf30884: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&).
 }
 
 // 0xf30894 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f30894() -> ! {
-    todo!("0xf30894 j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+pub fn stub_f30894() {
+    // IDA 0xf30894: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&).
 }
 
 // 0xf308a4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")]
-pub fn stub_f308a4() -> ! {
-    todo!("0xf308a4 j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_")
+pub fn stub_f308a4() {
+    // IDA 0xf308a4: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&).
 }
 
 // 0xf308b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>)")]
-pub fn stub_f308b4() -> ! {
-    todo!("0xf308b4 j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E")
+pub fn stub_f308b4() {
+    // IDA 0xf308b4: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>).
 }
 
 // 0xf308c4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
@@ -5790,8 +5790,8 @@ pub fn stub_f308c4() {
 // 0xf308d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
-pub fn stub_f308d4() -> ! {
-    todo!("0xf308d4 j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_")
+pub fn stub_f308d4() {
+    // IDA 0xf308d4: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&).
 }
 
 // 0xf308e4 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE14_M_create_nodeERKS9_
@@ -5811,15 +5811,15 @@ pub fn stub_f308f4() {
 // 0xf30904 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30904() -> ! {
-    todo!("0xf30904 j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_")
+pub fn stub_f30904() {
+    // IDA 0xf30904: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&).
 }
 
 // 0xf30914 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30914() -> ! {
-    todo!("0xf30914 j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+pub fn stub_f30914() {
+    // IDA 0xf30914: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&).
 }
 
 // 0xf30924 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
@@ -5832,22 +5832,22 @@ pub fn stub_f30924() {
 // 0xf30934 — j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>> const&)")]
-pub fn stub_f30934() -> ! {
-    todo!("0xf30934 j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_")
+pub fn stub_f30934() {
+    // IDA 0xf30934: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&).
 }
 
 // 0xf30944 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")]
-pub fn stub_f30944() -> ! {
-    todo!("0xf30944 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")
+pub fn stub_f30944() {
+    // IDA 0xf30944: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&).
 }
 
 // 0xf30954 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")]
-pub fn stub_f30954() -> ! {
-    todo!("0xf30954 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")
+pub fn stub_f30954() {
+    // IDA 0xf30954: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&).
 }
 
 // 0xf30964 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -5860,132 +5860,132 @@ pub fn stub_f30964() {
 // 0xf30974 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")]
-pub fn stub_f30974() -> ! {
-    todo!("0xf30974 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&)")
+pub fn stub_f30974() {
+    // IDA 0xf30974: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10Soundscape10ReverbTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Soundscape::ReverbType> const&).
 }
 
 // 0xf30984 — j___ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 #[doc(alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>))")]
-pub fn stub_f30984() -> ! {
-    todo!("0xf30984 j___ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_")
+pub fn stub_f30984() {
+    // IDA 0xf30984: Thumb import jump veneer for `j___ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)).
 }
 
 // 0xf30994 — j___ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v
 #[doc(alias = "RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")]
-pub fn stub_f30994() -> ! {
-    todo!("0xf30994 RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")
+pub fn stub_f30994() {
+    // IDA 0xf30994: Thumb import jump veneer for `j___ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void).
 }
 
 // 0xf309a4 — j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEE7addPairES2_PKc
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::addPair(RBX::SoundType,char const*)")]
-pub fn stub_f309a4() -> ! {
-    todo!("0xf309a4 RBX::Reflection::EnumDesc<RBX::SoundType>::addPair(RBX::SoundType,char const*)")
+pub fn stub_f309a4() {
+    // IDA 0xf309a4: Thumb import jump veneer for `j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEE7addPairES2_PKc` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Reflection::EnumDesc<RBX::SoundType>::addPair(RBX::SoundType,char const*).
 }
 
 // 0xf309b4 — j___ZN3rbx8any_castIN3RBX9SoundTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::SoundType * rbx::any_cast<RBX::SoundType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_f309b4() -> ! {
-    todo!("0xf309b4 RBX::SoundType * rbx::any_cast<RBX::SoundType,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+pub fn stub_f309b4() {
+    // IDA 0xf309b4: Thumb import jump veneer for `j___ZN3rbx8any_castIN3RBX9SoundTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType * rbx::any_cast<RBX::SoundType,RBX::Region3>(rbx::placement_any<RBX::Region3> *).
 }
 
 // 0xf309c4 — j___ZN3rbx8any_castIRN3RBX9SoundTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::SoundType & rbx::any_cast<RBX::SoundType &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_f309c4() -> ! {
-    todo!("0xf309c4 RBX::SoundType & rbx::any_cast<RBX::SoundType &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_f309c4() {
+    // IDA 0xf309c4: Thumb import jump veneer for `j___ZN3rbx8any_castIRN3RBX9SoundTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType & rbx::any_cast<RBX::SoundType &,RBX::Region3>(rbx::placement_any<RBX::Region3> &).
 }
 
 // 0xf309d4 — j___ZNSt12_Vector_baseIN3RBX9SoundTypeESaIS1_EE11_M_allocateEm
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Vector_base<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_allocate(unsigned long)")]
-pub fn stub_f309d4() -> ! {
-    todo!("0xf309d4 std::_Vector_base<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_allocate(unsigned long)")
+pub fn stub_f309d4() {
+    // IDA 0xf309d4: Thumb import jump veneer for `j___ZNSt12_Vector_baseIN3RBX9SoundTypeESaIS1_EE11_M_allocateEm` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Vector_base<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_allocate(unsigned long).
 }
 
 // 0xf309e4 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9SoundTypeES5_EET0_T_S7_S6_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::SoundType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::SoundType *,RBX::SoundType *>(RBX::SoundType *,RBX::SoundType *,RBX::SoundType *)")]
-pub fn stub_f309e4() -> ! {
-    todo!("0xf309e4 RBX::SoundType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::SoundType *,RBX::SoundType *>(RBX::SoundType *,RBX::SoundType *,RBX::SoundType *)")
+pub fn stub_f309e4() {
+    // IDA 0xf309e4: Thumb import jump veneer for `j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9SoundTypeES5_EET0_T_S7_S6_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::SoundType *,RBX::SoundType *>(RBX::SoundType *,RBX::SoundType *,RBX::SoundType *).
 }
 
 // 0xf309f4 — j___ZNSt3mapIPKN3RBX4NameENS0_9SoundTypeESt4lessIS3_ESaISt4pairIKS3_S4_EEEixERS8_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::SoundType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_f309f4() -> ! {
-    todo!("0xf309f4 std::map<RBX::Name const*,RBX::SoundType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::operator[](RBX::Name const* const&)")
+pub fn stub_f309f4() {
+    // IDA 0xf309f4: Thumb import jump veneer for `j___ZNSt3mapIPKN3RBX4NameENS0_9SoundTypeESt4lessIS3_ESaISt4pairIKS3_S4_EEEixERS8_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::map<RBX::Name const*,RBX::SoundType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::operator[](RBX::Name const* const&).
 }
 
 // 0xf30a04 — j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
 #[doc(alias = "std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,RBX::SoundType const&)")]
-pub fn stub_f30a04() -> ! {
-    todo!("0xf30a04 std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,RBX::SoundType const&)")
+pub fn stub_f30a04() {
+    // IDA 0xf30a04: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,RBX::SoundType const&).
 }
 
 // 0xf30a14 — j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_
 // type: int __fastcall(_DWORD)
 #[doc(alias = "std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,unsigned long,RBX::SoundType const&)")]
-pub fn stub_f30a14() -> ! {
-    todo!("0xf30a14 std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,unsigned long,RBX::SoundType const&)")
+pub fn stub_f30a14() {
+    // IDA 0xf30a14: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SoundType*,std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>>,unsigned long,RBX::SoundType const&).
 }
 
 // 0xf30a24 — j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE6resizeEmS1_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::resize(unsigned long,RBX::SoundType)")]
-pub fn stub_f30a24() -> ! {
-    todo!("0xf30a24 std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::resize(unsigned long,RBX::SoundType)")
+pub fn stub_f30a24() {
+    // IDA 0xf30a24: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE6resizeEmS1_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::resize(unsigned long,RBX::SoundType).
 }
 
 // 0xf30a34 — j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE9push_backERKS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::push_back(RBX::SoundType const&)")]
-pub fn stub_f30a34() -> ! {
-    todo!("0xf30a34 std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::push_back(RBX::SoundType const&)")
+pub fn stub_f30a34() {
+    // IDA 0xf30a34: Thumb import jump veneer for `j___ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE9push_backERKS1_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::vector<RBX::SoundType,std::allocator<RBX::SoundType>>::push_back(RBX::SoundType const&).
 }
 
 // 0xf30a44 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueERKS7_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::SoundType> const&)")]
-pub fn stub_f30a44() -> ! {
-    todo!("0xf30a44 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::SoundType> const&)")
+pub fn stub_f30a44() {
+    // IDA 0xf30a44: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueERKS7_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::SoundType> const&).
 }
 
 // 0xf30a54 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::SoundType>>,std::pair<RBX::Name const* const,RBX::SoundType> const&)")]
-pub fn stub_f30a54() -> ! {
-    todo!("0xf30a54 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::SoundType>>,std::pair<RBX::Name const* const,RBX::SoundType> const&)")
+pub fn stub_f30a54() {
+    // IDA 0xf30a54: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::SoundType>>,std::pair<RBX::Name const* const,RBX::SoundType> const&).
 }
 
 // 0xf30a64 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::SoundType> const&)")]
-pub fn stub_f30a64() -> ! {
-    todo!("0xf30a64 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::SoundType> const&)")
+pub fn stub_f30a64() {
+    // IDA 0xf30a64: Thumb import jump veneer for `j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::SoundType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::SoundType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::SoundType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::SoundType> const&).
 }
 
 // 0xf35dc4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E15isNullClassNameEv")]
-pub fn stub_f35dc4() -> ! {
-    todo!("0xf35dc4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E15isNullClassNameEv")
+pub fn stub_f35dc4() {
+    // IDA 0xf35dc4: Thumb import jump veneer for `j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E15isNullClassNameEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E15isNullClassNameEv.
 }
 
 // 0xf35dd4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E17static_getCreatorEv
 // type: void *__fastcall(int)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E17static_getCreatorEv")]
-pub fn stub_f35dd4() -> ! {
-    todo!("0xf35dd4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E17static_getCreatorEv")
+pub fn stub_f35dd4() {
+    // IDA 0xf35dd4: Thumb import jump veneer for `j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E17static_getCreatorEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E17static_getCreatorEv.
 }
 
 // 0xf35de4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev
 // type: int()
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev")]
-pub fn stub_f35de4() -> ! {
-    todo!("0xf35de4 j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev")
+pub fn stub_f35de4() {
+    // IDA 0xf35de4: Thumb import jump veneer for `j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorC2Ev.
 }
 
 // 0xf35df4 — j___ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev
@@ -5998,42 +5998,42 @@ pub fn stub_f35df4() {
 // 0xf360a4 — j___ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv
 // type: int(void)
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Soundscape::SoundService>(void)")]
-pub fn stub_f360a4() -> ! {
-    todo!("0xf360a4 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Soundscape::SoundService>(void)")
+pub fn stub_f360a4() {
+    // IDA 0xf360a4: Thumb import jump veneer for `j___ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Soundscape::SoundService>(void).
 }
 
 // 0xf36404 — j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")]
-pub fn stub_f36404() -> ! {
-    todo!("0xf36404 j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")
+pub fn stub_f36404() {
+    // IDA 0xf36404: Thumb import jump veneer for `j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v.
 }
 
 // 0xf36614 — j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")]
-pub fn stub_f36614() -> ! {
-    todo!("0xf36614 j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v")
+pub fn stub_f36614() {
+    // IDA 0xf36614: Thumb import jump veneer for `j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v.
 }
 
 // 0xf36824 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void)")]
-pub fn stub_f36824() -> ! {
-    todo!("0xf36824 j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_f36824() {
+    // IDA 0xf36824: Thumb import jump veneer for `j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: boost::shared_ptr<RBX::Soundscape::SoundService> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>(void).
 }
 
 // 0xf36ee4 — j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_f36ee4() -> ! {
-    todo!("0xf36ee4 j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_f36ee4() {
+    // IDA 0xf36ee4: Thumb import jump veneer for `j___ZN5boost10shared_ptrIN3RBX10Soundscape12SoundServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: boost::shared_ptr<RBX::Soundscape::SoundService>::shared_ptr<RBX::Soundscape::SoundService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter).
 }
 
 // 0xf37154 — j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(rbx_core::SharedPtr<RBX::Soundscape::SoundService> const&)")]
-pub fn stub_f37154() -> ! {
-    todo!("0xf37154 j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE")
+pub fn stub_f37154() {
+    // IDA 0xf37154: Thumb import jump veneer for `j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_10Soundscape12SoundServiceEEERS3_RKNS0_IT_EE` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const&).
 }
 
 // 0xf37844 — j___ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -6046,22 +6046,22 @@ pub fn stub_f37844() {
 // 0xf37ef4 — j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv
 // type: int __fastcall(int)
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv")]
-pub fn stub_f37ef4() -> ! {
-    todo!("0xf37ef4 j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv")
+pub fn stub_f37ef4() {
+    // IDA 0xf37ef4: Thumb import jump veneer for `j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv.
 }
 
 // 0xf37f84 — j___ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v
 // type: RBX::Name *__fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(void)const")]
-pub fn stub_f37f84() -> ! {
-    todo!("0xf37f84 RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(void)const")
+pub fn stub_f37f84() {
+    // IDA 0xf37f84: Thumb import jump veneer for `j___ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(void)const.
 }
 
 // 0xf38154 — j___ZNK3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_v
 // type: int __fastcall(RBX::Instance *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(void)const")]
-pub fn stub_f38154() -> ! {
-    todo!("0xf38154 RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(void)const")
+pub fn stub_f38154() {
+    // IDA 0xf38154: Thumb import jump veneer for `j___ZNK3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(void)const.
 }
 
 // 0xf38404 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -6081,46 +6081,46 @@ pub fn stub_f3b284() {
 // 0xf3c0e4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::doGetSingleton(void)")]
-pub fn stub_f3c0e4() -> ! {
-    todo!("0xf3c0e4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::doGetSingleton(void)")
+pub fn stub_f3c0e4() {
+    // IDA 0xf3c0e4: Thumb import jump veneer for `j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SoundType> const>::doGetSingleton(void).
 }
 
 // 0xf3c744 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9SoundTypeEEERS3_RKT_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::SoundType>(RBX::SoundType const&)")]
-pub fn stub_f3c744() -> ! {
-    todo!("0xf3c744 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::SoundType>(RBX::SoundType const&)")
+pub fn stub_f3c744() {
+    // IDA 0xf3c744: Thumb import jump veneer for `j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9SoundTypeEEERS3_RKT_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::SoundType>(RBX::SoundType const&).
 }
 
 // 0xf3ca94 — j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SoundType>::singleton(void)")]
-pub fn stub_f3ca94() -> ! {
-    todo!("0xf3ca94 rbx::implementation::typed_holder<RBX::SoundType>::singleton(void)")
+pub fn stub_f3ca94() {
+    // IDA 0xf3ca94: Thumb import jump veneer for `j___ZN3rbx14implementation12typed_holderIN3RBX9SoundTypeEE9singletonEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: rbx::implementation::typed_holder<RBX::SoundType>::singleton(void).
 }
 
 // 0xf3ce54 — j___ZN3rbx8any_castIRKN3RBX9SoundTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::SoundType const& rbx::any_cast<RBX::SoundType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_f3ce54() -> ! {
-    todo!("0xf3ce54 RBX::SoundType const& rbx::any_cast<RBX::SoundType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_f3ce54() {
+    // IDA 0xf3ce54: Thumb import jump veneer for `j___ZN3rbx8any_castIRKN3RBX9SoundTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType const& rbx::any_cast<RBX::SoundType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &).
 }
 
 // 0xf3d9f4 — j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToItem(RBX::SoundType const&)const")]
-pub fn stub_f3d9f4() -> ! {
-    todo!("0xf3d9f4 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToItem(RBX::SoundType const&)const")
+pub fn stub_f3d9f4() {
+    // IDA 0xf3d9f4: Thumb import jump veneer for `j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE13convertToItemERKS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Reflection::EnumDesc<RBX::SoundType>::convertToItem(RBX::SoundType const&)const.
 }
 
 // 0xf3da04 — j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(RBX::Name const&,RBX::SoundType&)const")]
-pub fn stub_f3da04() -> ! {
-    todo!("0xf3da04 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(RBX::Name const&,RBX::SoundType&)const")
+pub fn stub_f3da04() {
+    // IDA 0xf3da04: Thumb import jump veneer for `j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE14convertToValueERKNS_4NameERS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Reflection::EnumDesc<RBX::SoundType>::convertToValue(RBX::Name const&,RBX::SoundType&)const.
 }
 
 // 0xf3da14 — j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE15convertToStringERKS2_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(RBX::SoundType const&)const")]
-pub fn stub_f3da14() -> ! {
-    todo!("0xf3da14 RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(RBX::SoundType const&)const")
+pub fn stub_f3da14() {
+    // IDA 0xf3da14: Thumb import jump veneer for `j___ZNK3RBX10Reflection8EnumDescINS_9SoundTypeEE15convertToStringERKS2_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Reflection::EnumDesc<RBX::SoundType>::convertToString(RBX::SoundType const&)const.
 }
 
 // 0xf3dee4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9SoundTypeEESt10_Select1stIS7_ESt4lessIS3_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
@@ -6132,15 +6132,15 @@ pub fn stub_f3dee4() {
 // 0xf4cfe4 — j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_f4cfe4() -> ! {
-    todo!("0xf4cfe4 j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_f4cfe4() {
+    // IDA 0xf4cfe4: Thumb import jump veneer for `j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EE15classDescriptorEv.
 }
 
 // 0xf526a4 — j___ZN3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(RBX::Instance const*)")]
-pub fn stub_f526a4() -> ! {
-    todo!("0xf526a4 RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(RBX::Instance const*)")
+pub fn stub_f526a4() {
+    // IDA 0xf526a4: Thumb import jump veneer for `j___ZN3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::Soundscape::SoundService * RBX::ServiceProvider::create<RBX::Soundscape::SoundService>(RBX::Instance const*).
 }
 
 // 0xf547e4 — j___ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE7connectIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_10Soundscape21CollisionSoundManagerES4_EENS9_5list2INS9_5valueIPSE_EENS8_3argILi1EEEEEEEEENS0_10connectionERKT_
@@ -6232,8 +6232,8 @@ pub fn stub_f54894() {
 // 0xf548a4 — j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "std::map<RBX::Soundscape::CollisionSoundType,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&)")]
-pub fn stub_f548a4() -> ! {
-    todo!("0xf548a4 j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_")
+pub fn stub_f548a4() {
+    // IDA 0xf548a4: Thumb import jump veneer for `j___ZNSt3mapIN3RBX10Soundscape18CollisionSoundTypeEN5boost10shared_ptrINS1_14CollisionSoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::map<RBX::Soundscape::CollisionSoundType,boost::shared_ptr<RBX::Soundscape::CollisionSound>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::operator[](RBX::Soundscape::CollisionSoundType const&).
 }
 
 // 0xf548b4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
@@ -6252,15 +6252,15 @@ pub fn stub_f548c4() {
 // 0xf548d4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548d4() -> ! {
-    todo!("0xf548d4 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_")
+pub fn stub_f548d4() {
+    // IDA 0xf548d4: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&).
 }
 
 // 0xf548e4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f548e4() -> ! {
-    todo!("0xf548e4 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+pub fn stub_f548e4() {
+    // IDA 0xf548e4: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&).
 }
 
 // 0xf548f4 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
@@ -6272,8 +6272,8 @@ pub fn stub_f548f4() {
 // 0xf54904 — j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,rbx_core::SharedPtr<RBX::Soundscape::CollisionSound>> const&)")]
-pub fn stub_f54904() -> ! {
-    todo!("0xf54904 j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_")
+pub fn stub_f54904() {
+    // IDA 0xf54904: Thumb import jump veneer for `j___ZNSt8_Rb_treeIN3RBX10Soundscape18CollisionSoundTypeESt4pairIKS2_N5boost10shared_ptrINS1_14CollisionSoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: std::_Rb_tree<RBX::Soundscape::CollisionSoundType,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>,std::_Select1st<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>,std::less<RBX::Soundscape::CollisionSoundType>,std::allocator<std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::CollisionSoundType const,boost::shared_ptr<RBX::Soundscape::CollisionSound>> const&).
 }
 
 // watchdog audio — 150 duplicate stubs for FMOD/Sound/Audio (EA-sorted 0x686a4..0x72a28) using rbx_core::SharedPtr
@@ -6947,8 +6947,10 @@ pub fn stub_706b4_wdog072() -> ! {
 // 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv [watchdog]
 // type: int __fastcall(FMOD::AsyncThread *this, void *)
 #[doc(alias = "FMOD::asyncThreadFunc(void *)")]
-pub fn stub_70ab0_wdog073() -> ! {
-    todo!("0x70ab0 FMOD::asyncThreadFunc(void *)")
+pub fn stub_70ab0_wdog073() -> i32 {
+    // IDA 0x70ab0 `FMOD::asyncThreadFunc(void *)` (thunk): tail-calls `FMOD::AsyncThread::threadFunc` (IDA 0x706b4).
+    // Host: direct delegation; the target keeps its own (not yet implemented) body.
+    crate::generated::stub_706b4_wdog072()
 }
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv [watchdog]
@@ -7020,127 +7022,274 @@ pub fn stub_70e5c_wdog080() -> ! {
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE [watchdog]
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::AsyncThread::gAsyncHead")]
-pub fn stub_70f2c_wdog081() -> ! {
-    todo!("0x70f2c global constructor keyed to FMOD::AsyncThread::gAsyncHead")
+pub fn stub_70f2c_wdog081() {
+    // IDA 0x70f2c ``global constructor keyed to'FMOD::AsyncThread::gAsyncHead`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv [watchdog]
 // type: int __fastcall(FMOD::Channel *this, void **, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getUserData(void **)")]
-pub fn stub_70f38_wdog082() -> ! {
-    todo!("0x70f38 FMOD::Channel::getUserData(void **)")
+pub fn stub_70f38_wdog082(handle: u32, out: &mut u32, validate: impl FnOnce(u32) -> (i32, u32), get_data: impl FnOnce(u32, &mut u32) -> i32) -> i32 {
+    // IDA 0x70f38 `FMOD::Channel::getUserData(void **)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::get_data(internal, out);
+    //   else zero the out slot and return result.
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return get_data(internal, out);
+    }
+    *out = 0;
+    code
 }
 
 // 0x70f7c — __ZN4FMOD7Channel11setUserDataEPv [watchdog]
 // type: int __fastcall(FMOD::Channel *this, void *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setUserData(void *)")]
-pub fn stub_70f7c_wdog083() -> ! {
-    todo!("0x70f7c FMOD::Channel::setUserData(void *)")
+pub fn stub_70f7c_wdog083(handle: u32, data: u32, validate: impl FnOnce(u32) -> (i32, u32), set_data: impl FnOnce(u32, u32) -> i32) -> i32 {
+    // IDA 0x70f7c `FMOD::Channel::setUserData(void *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_data(internal, data);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_data(internal, data);
+    }
+    code
 }
 
 // 0x70fb0 — __ZN4FMOD7Channel12setLoopCountEi [watchdog]
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setLoopCount(int)")]
-pub fn stub_70fb0_wdog084() -> ! {
-    todo!("0x70fb0 FMOD::Channel::setLoopCount(int)")
+pub fn stub_70fb0_wdog084(handle: u32, loop_count: i32, validate: impl FnOnce(u32) -> (i32, u32), set_count: impl FnOnce(u32, i32) -> i32) -> i32 {
+    // IDA 0x70fb0 `FMOD::Channel::setLoopCount(int)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_count(internal, loop_count);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_count(internal, loop_count);
+    }
+    code
 }
 
 // 0x70fe4 — __ZN4FMOD7Channel7getModeEPj [watchdog]
 // type: int __fastcall(FMOD::Channel *this, unsigned int *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getMode(unsigned int *)")]
-pub fn stub_70fe4_wdog085() -> ! {
-    todo!("0x70fe4 FMOD::Channel::getMode(unsigned int *)")
+pub fn stub_70fe4_wdog085(handle: u32, out: &mut u32, validate: impl FnOnce(u32) -> (i32, u32), get_mode: impl FnOnce(u32, &mut u32) -> i32) -> i32 {
+    // IDA 0x70fe4 `FMOD::Channel::getMode(unsigned int *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::get_mode(internal, out);
+    //   else zero the out slot and return result.
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return get_mode(internal, out);
+    }
+    *out = 0;
+    code
 }
 
 // 0x71028 — __ZN4FMOD7Channel7setModeEj [watchdog]
 // type: int __fastcall(FMOD::Channel *this, unsigned int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setMode(unsigned int)")]
-pub fn stub_71028_wdog086() -> ! {
-    todo!("0x71028 FMOD::Channel::setMode(unsigned int)")
+pub fn stub_71028_wdog086(handle: u32, mode: u32, validate: impl FnOnce(u32) -> (i32, u32), set_mode: impl FnOnce(u32, u32) -> i32) -> i32 {
+    // IDA 0x71028 `FMOD::Channel::setMode(unsigned int)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_mode(internal, mode);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_mode(internal, mode);
+    }
+    code
 }
 
 // 0x7105c — __ZN4FMOD7Channel9isPlayingEPb [watchdog]
 // type: int __fastcall(FMOD::Channel *this, bool *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::isPlaying(bool *)")]
-pub fn stub_7105c_wdog087() -> ! {
-    todo!("0x7105c FMOD::Channel::isPlaying(bool *)")
+pub fn stub_7105c_wdog087(handle: u32, out: &mut bool, validate: impl FnOnce(u32) -> (i32, u32), is_playing: impl FnOnce(u32, &mut bool) -> i32) -> i32 {
+    // IDA 0x7105c `FMOD::Channel::isPlaying(bool *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::is_playing(internal, out);
+    //   else zero the out slot and return result.
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return is_playing(internal, out);
+    }
+    *out = false;
+    code
 }
 
 // 0x710a0 — __ZN4FMOD7Channel15set3DAttributesEPK11FMOD_VECTORS3_ [watchdog]
 // type: int __fastcall(FMOD::ChannelI *, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
-pub fn stub_710a0_wdog088() -> ! {
-    todo!("0x710a0 FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+pub fn stub_710a0_wdog088(handle: u32, pos: u32, vel: u32, validate: impl FnOnce(u32) -> (i32, u32), set_attr: impl FnOnce(u32, u32, u32) -> i32) -> i32 {
+    // IDA 0x710a0 `FMOD::Channel::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_attr(internal, pos, vel);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_attr(internal, pos, vel);
+    }
+    code
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E [watchdog]
 // type: int __fastcall(FMOD::ChannelI *, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
-pub fn stub_710dc_wdog089() -> ! {
-    todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub fn stub_710dc_wdog089(handle: u32, callback: u32, validate: impl FnOnce(u32) -> (i32, u32), set_callback: impl FnOnce(u32, u32) -> i32) -> i32 {
+    // IDA 0x710dc `FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_callback(internal, callback);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_callback(internal, callback);
+    }
+    code
 }
 
 // 0x71110 — __ZN4FMOD7Channel15setChannelGroupEPNS_12ChannelGroupE [watchdog]
 // type: int __fastcall(FMOD::ChannelI *, FMOD::ChannelGroupI *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")]
-pub fn stub_71110_wdog090() -> ! {
-    todo!("0x71110 FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)")
+pub fn stub_71110_wdog090(handle: u32, group: u32, validate: impl FnOnce(u32) -> (i32, u32), set_group: impl FnOnce(u32, u32) -> i32) -> i32 {
+    // IDA 0x71110 `FMOD::Channel::setChannelGroup(FMOD::ChannelGroup *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_group(internal, group);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_group(internal, group);
+    }
+    code
 }
 
 // 0x71144 — __ZN4FMOD7Channel11setPriorityEi [watchdog]
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setPriority(int)")]
-pub fn stub_71144_wdog091() -> ! {
-    todo!("0x71144 FMOD::Channel::setPriority(int)")
+pub fn stub_71144_wdog091(handle: u32, priority: i32, validate: impl FnOnce(u32) -> (i32, u32), set_priority: impl FnOnce(u32, i32) -> i32) -> i32 {
+    // IDA 0x71144 `FMOD::Channel::setPriority(int)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_priority(internal, priority);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_priority(internal, priority);
+    }
+    code
 }
 
 // 0x71178 — __ZN4FMOD7Channel7setMuteEb [watchdog]
 // type: int __fastcall(FMOD::Channel *this, bool, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setMute(bool)")]
-pub fn stub_71178_wdog092() -> ! {
-    todo!("0x71178 FMOD::Channel::setMute(bool)")
+pub fn stub_71178_wdog092(handle: u32, mute: bool, validate: impl FnOnce(u32) -> (i32, u32), set_mute: impl FnOnce(u32, bool) -> i32) -> i32 {
+    // IDA 0x71178 `FMOD::Channel::setMute(bool)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_mute(internal, mute);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_mute(internal, mute);
+    }
+    code
 }
 
 // 0x711ac — __ZN4FMOD7Channel12getFrequencyEPf [watchdog]
 // type: int __fastcall(FMOD::Channel *this, float *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getFrequency(float *)")]
-pub fn stub_711ac_wdog093() -> ! {
-    todo!("0x711ac FMOD::Channel::getFrequency(float *)")
+pub fn stub_711ac_wdog093(handle: u32, out: &mut f32, validate: impl FnOnce(u32) -> (i32, u32), get_freq: impl FnOnce(u32, &mut f32) -> i32) -> i32 {
+    // IDA 0x711ac `FMOD::Channel::getFrequency(float *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::get_freq(internal, out);
+    //   else zero the out slot and return result.
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return get_freq(internal, out);
+    }
+    *out = 0.0;
+    code
 }
 
 // 0x711f0 — __ZN4FMOD7Channel12setFrequencyEf [watchdog]
 // type: int __fastcall(FMOD::Channel *this, float, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setFrequency(float)")]
-pub fn stub_711f0_wdog094() -> ! {
-    todo!("0x711f0 FMOD::Channel::setFrequency(float)")
+pub fn stub_711f0_wdog094(handle: u32, frequency: f32, validate: impl FnOnce(u32) -> (i32, u32), set_freq: impl FnOnce(u32, f32) -> i32) -> i32 {
+    // IDA 0x711f0 `FMOD::Channel::setFrequency(float)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_freq(internal, frequency);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_freq(internal, frequency);
+    }
+    code
 }
 
 // 0x71224 — __ZN4FMOD7Channel9setVolumeEf [watchdog]
 // type: int __fastcall(FMOD::Channel *this, float, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setVolume(float)")]
-pub fn stub_71224_wdog095() -> ! {
-    todo!("0x71224 FMOD::Channel::setVolume(float)")
+pub fn stub_71224_wdog095(handle: u32, volume: f32, validate: impl FnOnce(u32) -> (i32, u32), set_volume: impl FnOnce(u32, f32, u32) -> i32) -> i32 {
+    // IDA 0x71224 FMOD::Channel::setVolume:
+    //   v4 = ChannelI::validate(this, &internal, sys);
+    //   if (!v4) return ChannelI::setVolume(internal, a2, 0); return v4.
+    // Host: the trailing 0 arg is preserved verbatim; both seams are caller-bound.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_volume(internal, volume, 0);
+    }
+    code
 }
 
 // 0x71260 — __ZN4FMOD7Channel9getPausedEPb [watchdog]
 // type: int __fastcall(FMOD::Channel *this, bool *, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::getPaused(bool *)")]
-pub fn stub_71260_wdog096() -> ! {
-    todo!("0x71260 FMOD::Channel::getPaused(bool *)")
+pub fn stub_71260_wdog096(handle: u32, out: &mut bool, validate: impl FnOnce(u32) -> (i32, u32), get_paused: impl FnOnce(u32, &mut bool) -> i32) -> i32 {
+    // IDA 0x71260 `FMOD::Channel::getPaused(bool *)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::get_paused(internal, out);
+    //   else zero the out slot and return result.
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return get_paused(internal, out);
+    }
+    *out = false;
+    code
 }
 
 // 0x712a4 — __ZN4FMOD7Channel9setPausedEb [watchdog]
 // type: int __fastcall(FMOD::Channel *this, bool, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::setPaused(bool)")]
-pub fn stub_712a4_wdog097() -> ! {
-    todo!("0x712a4 FMOD::Channel::setPaused(bool)")
+pub fn stub_712a4_wdog097(handle: u32, paused: bool, validate: impl FnOnce(u32) -> (i32, u32), set_paused: impl FnOnce(u32, bool) -> i32) -> i32 {
+    // IDA 0x712a4 `FMOD::Channel::setPaused(bool)`:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::set_paused(internal, paused);
+    // Host: validation and the internal call arrive as caller seams.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return set_paused(internal, paused);
+    }
+    code
 }
 
 // 0x712d8 — __ZN4FMOD7Channel4stopEv [watchdog]
 // type: int __fastcall(FMOD::Channel *this, int, FMOD::ChannelI **)
 #[doc(alias = "FMOD::Channel::stop(void)")]
-pub fn stub_712d8_wdog098() -> ! {
-    todo!("0x712d8 FMOD::Channel::stop(void)")
+pub fn stub_712d8_wdog098(handle: u32, validate: impl FnOnce(u32) -> (i32, u32), stop: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x712d8 FMOD::Channel::stop:
+    //   result = ChannelI::validate(this, &internal, sys);
+    //   if (!result) return ChannelI::stop(internal); return result.
+    // Host: the unused middle arg (a2) is dropped; seams are caller-bound.
+    let (code, internal) = validate(handle);
+    if code == 0 {
+        return stop(internal);
+    }
+    code
 }
 
 // 0x71304 — __ZN4FMOD15ChannelEmulated9isVirtualEPb [watchdog]
@@ -7160,15 +7309,17 @@ pub fn stub_7131c_wdog100() -> ! {
 // 0x71334 — __ZN4FMOD15ChannelEmulated16setSpeakerLevelsEiPfi [watchdog]
 // type: int __fastcall(FMOD::ChannelEmulated *this, int, float *, int)
 #[doc(alias = "FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")]
-pub fn stub_71334_wdog101() -> ! {
-    todo!("0x71334 FMOD::ChannelEmulated::setSpeakerLevels(int,float *,int)")
+pub fn stub_71334_wdog101() -> u32 {
+    // IDA 0x71334: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x7133c — __ZN4FMOD15ChannelEmulated13setSpeakerMixEffffffff [watchdog]
 // type: int __fastcall(FMOD::ChannelEmulated *this, float, float, float, float, float, float, float, float)
 #[doc(alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_7133c_wdog102() -> ! {
-    todo!("0x7133c FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")
+pub fn stub_7133c_wdog102() -> u32 {
+    // IDA 0x7133c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x71344 — __ZN4FMOD15ChannelEmulated6updateEi [watchdog]
@@ -7209,8 +7360,10 @@ pub fn stub_71698_wdog107() -> ! {
 // 0x716e4 — __ZN4FMOD15ChannelEmulatedC1Ev [watchdog]
 // type: int __fastcall(FMOD::ChannelEmulated *this)
 #[doc(alias = "FMOD::ChannelEmulated::ChannelEmulated(void)")]
-pub fn stub_716e4_wdog108() -> ! {
-    todo!("0x716e4 FMOD::ChannelEmulated::ChannelEmulated(void)")
+pub fn stub_716e4_wdog108() -> i32 {
+    // IDA 0x716e4 `FMOD::ChannelEmulated::ChannelEmulated(void)` (thunk): tail-calls `__ZN4FMOD15ChannelEmulatedC2Ev` (IDA 0x71698).
+    // Host: direct delegation; the target keeps its own (not yet implemented) body.
+    crate::generated::stub_71698_wdog107()
 }
 
 // 0x716e8 — __ZN4FMOD15ChannelEmulated4stopEv [watchdog]
@@ -7223,15 +7376,17 @@ pub fn stub_716e8_wdog109() -> ! {
 // 0x71818 — __ZN4FMOD15ChannelEmulatedD0Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelEmulated *__hidden this)
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_71818_wdog110() -> ! {
-    todo!("0x71818 FMOD::ChannelEmulated::~ChannelEmulated()")
+pub fn stub_71818_wdog110() {
+    // IDA 0x71818 `FMOD::ChannelEmulated::~ChannelEmulated()`: vtable reset (off_11CD478) plus `operator delete(this)`. The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x7183c — __ZN4FMOD15ChannelEmulatedD1Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelEmulated *__hidden this)
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_7183c_wdog111() -> ! {
-    todo!("0x7183c FMOD::ChannelEmulated::~ChannelEmulated()")
+pub fn stub_7183c_wdog111() {
+    // IDA 0x7183c `FMOD::ChannelEmulated::~ChannelEmulated()`: vtable reset (off_11CD478). The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x71854 — __ZN4FMOD11ChannelRealC2Ev [watchdog]
@@ -7272,29 +7427,33 @@ pub fn stub_7190c_wdog116() -> ! {
 // 0x71930 — __ZN4FMOD11ChannelReal23set2DFreqVolumePanFor3DEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::set2DFreqVolumePanFor3D(void)")]
-pub fn stub_71930_wdog117() -> ! {
-    todo!("0x71930 FMOD::ChannelReal::set2DFreqVolumePanFor3D(void)")
+pub fn stub_71930_wdog117() -> u32 {
+    // IDA 0x71930: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x71938 — __ZN4FMOD11ChannelReal6updateEi [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, int)
 #[doc(alias = "FMOD::ChannelReal::update(int)")]
-pub fn stub_71938_wdog118() -> ! {
-    todo!("0x71938 FMOD::ChannelReal::update(int)")
+pub fn stub_71938_wdog118() -> u32 {
+    // IDA 0x71938: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x71940 — __ZN4FMOD11ChannelReal12updateStreamEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::updateStream(void)")]
-pub fn stub_71940_wdog119() -> ! {
-    todo!("0x71940 FMOD::ChannelReal::updateStream(void)")
+pub fn stub_71940_wdog119() -> u32 {
+    // IDA 0x71940: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x71948 — __ZN4FMOD11ChannelReal5startEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::start(void)")]
-pub fn stub_71948_wdog120() -> ! {
-    todo!("0x71948 FMOD::ChannelReal::start(void)")
+pub fn stub_71948_wdog120() -> u32 {
+    // IDA 0x71948: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x71950 — __ZN4FMOD11ChannelReal4stopEv [watchdog]
@@ -7321,29 +7480,33 @@ pub fn stub_719a0_wdog123() -> ! {
 // 0x719c0 — __ZN4FMOD11ChannelReal9setVolumeEf [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, float)
 #[doc(alias = "FMOD::ChannelReal::setVolume(float)")]
-pub fn stub_719c0_wdog124() -> ! {
-    todo!("0x719c0 FMOD::ChannelReal::setVolume(float)")
+pub fn stub_719c0_wdog124() -> u32 {
+    // IDA 0x719c0: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x719c8 — __ZN4FMOD11ChannelReal12setFrequencyEf [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, float)
 #[doc(alias = "FMOD::ChannelReal::setFrequency(float)")]
-pub fn stub_719c8_wdog125() -> ! {
-    todo!("0x719c8 FMOD::ChannelReal::setFrequency(float)")
+pub fn stub_719c8_wdog125() -> u32 {
+    // IDA 0x719c8: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x719d0 — __ZN4FMOD11ChannelReal6setPanEff [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, float, float)
 #[doc(alias = "FMOD::ChannelReal::setPan(float,float)")]
-pub fn stub_719d0_wdog126() -> ! {
-    todo!("0x719d0 FMOD::ChannelReal::setPan(float,float)")
+pub fn stub_719d0_wdog126() -> u32 {
+    // IDA 0x719d0: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x719d8 — __ZN4FMOD11ChannelReal16setDSPClockDelayEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::setDSPClockDelay(void)")]
-pub fn stub_719d8_wdog127() -> ! {
-    todo!("0x719d8 FMOD::ChannelReal::setDSPClockDelay(void)")
+pub fn stub_719d8_wdog127() -> u32 {
+    // IDA 0x719d8: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff [watchdog]
@@ -7377,8 +7540,12 @@ pub fn stub_722f0_wdog131() -> ! {
 // 0x72328 — __ZN4FMOD11ChannelReal12setLoopCountEi [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, int)
 #[doc(alias = "FMOD::ChannelReal::setLoopCount(int)")]
-pub fn stub_72328_wdog132() -> ! {
-    todo!("0x72328 FMOD::ChannelReal::setLoopCount(int)")
+pub fn stub_72328_wdog132(channel: &mut [u32; 64], loop_count: i32) -> i32 {
+    // IDA 0x72328 FMOD::ChannelReal::setLoopCount:
+    //   this[13] (offset +52) = a2; return 0.
+    // Host: the loop-count word is stored; always FMOD_OK.
+    channel[13] = loop_count as u32;
+    crate::FMOD_OK
 }
 
 // 0x72334 — __ZN4FMOD11ChannelReal12getLoopCountEPi [watchdog]
@@ -7391,22 +7558,25 @@ pub fn stub_72334_wdog133() -> ! {
 // 0x7234c — __ZN4FMOD11ChannelReal14setLowPassGainEf [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, float)
 #[doc(alias = "FMOD::ChannelReal::setLowPassGain(float)")]
-pub fn stub_7234c_wdog134() -> ! {
-    todo!("0x7234c FMOD::ChannelReal::setLowPassGain(float)")
+pub fn stub_7234c_wdog134() -> u32 {
+    // IDA 0x7234c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x72354 — __ZN4FMOD11ChannelReal15set3DAttributesEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::set3DAttributes(void)")]
-pub fn stub_72354_wdog135() -> ! {
-    todo!("0x72354 FMOD::ChannelReal::set3DAttributes(void)")
+pub fn stub_72354_wdog135() -> u32 {
+    // IDA 0x72354: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x7235c — __ZN4FMOD11ChannelReal19set3DMinMaxDistanceEv [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this)
 #[doc(alias = "FMOD::ChannelReal::set3DMinMaxDistance(void)")]
-pub fn stub_7235c_wdog136() -> ! {
-    todo!("0x7235c FMOD::ChannelReal::set3DMinMaxDistance(void)")
+pub fn stub_7235c_wdog136() -> u32 {
+    // IDA 0x7235c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x72364 — __ZN4FMOD11ChannelReal14set3DOcclusionEff [watchdog]
@@ -7419,8 +7589,18 @@ pub fn stub_72364_wdog137() -> ! {
 // 0x72388 — __ZN4FMOD11ChannelReal9isPlayingEPbb [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelReal::isPlaying(bool *,bool)")]
-pub fn stub_72388_wdog138() -> ! {
-    todo!("0x72388 FMOD::ChannelReal::isPlaying(bool *,bool)")
+pub fn stub_72388_wdog138(channel: &[u32; 64], out: &mut bool) -> i32 {
+    // IDA 0x72388 FMOD::ChannelReal::isPlaying: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   result = this[9] & 0x50; if (result) { *a2 = 1; return 0; } *a2 = 0; return result.
+    // Host: word 9 carries the playing-state bits. Both arms return FMOD_OK-valued 0, as in the original.
+    // Trailing bool arg (a3) is unread in the original; omitted on the host.
+    let result = channel[9] & 0x50;
+    if result != 0 {
+        *out = true;
+        return crate::FMOD_OK;
+    }
+    *out = false;
+    result as i32
 }
 
 // 0x723b0 — __ZN4FMOD11ChannelReal9isVirtualEPb [watchdog]
@@ -7433,15 +7613,17 @@ pub fn stub_723b0_wdog139() -> ! {
 // 0x723c4 — __ZN4FMOD11ChannelReal11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW [watchdog]
 // type: int()
 #[doc(alias = "FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_723c4_wdog140() -> ! {
-    todo!("0x723c4 FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_723c4_wdog140() -> i32 {
+    // IDA 0x723c4 `FMOD::ChannelReal::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)`: constant FMOD_RESULT `51` on every path (host: literal).
+    51
 }
 
 // 0x723cc — __ZN4FMOD11ChannelReal11getWaveDataEPfii [watchdog]
 // type: int __fastcall(FMOD::ChannelReal *this, float *, int, int)
 #[doc(alias = "FMOD::ChannelReal::getWaveData(float *,int,int)")]
-pub fn stub_723cc_wdog141() -> ! {
-    todo!("0x723cc FMOD::ChannelReal::getWaveData(float *,int,int)")
+pub fn stub_723cc_wdog141() -> i32 {
+    // IDA 0x723cc `FMOD::ChannelReal::getWaveData(float *,int,int)`: constant FMOD_RESULT `51` on every path (host: literal).
+    51
 }
 
 // 0x723d4 — __ZN4FMOD11ChannelReal10getDSPHeadEPPNS_4DSPIE [watchdog]
@@ -7489,15 +7671,17 @@ pub fn stub_72910_wdog147() -> ! {
 // 0x72a04 — __ZN4FMOD11ChannelRealD0Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelReal *__hidden this)
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a04_wdog148() -> ! {
-    todo!("0x72a04 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a04_wdog148() {
+    // IDA 0x72a04 `FMOD::ChannelReal::~ChannelReal()`: vtable reset (off_11CD520) plus `operator delete(this)`. The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x72a28 — __ZN4FMOD11ChannelRealD1Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelReal *__hidden this)
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_72a28_wdog149() -> ! {
-    todo!("0x72a28 FMOD::ChannelReal::~ChannelReal()")
+pub fn stub_72a28_wdog149() {
+    // IDA 0x72a28 `FMOD::ChannelReal::~ChannelReal()`: vtable reset (off_11CD520). The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 
@@ -7526,22 +7710,28 @@ pub fn stub_72a88_wdog152() -> ! {
 // 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73de4_wdog153() -> ! {
-    todo!("0x73de4 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73de4_wdog153() {
+    // IDA 0x73de4 `FMOD::ChannelRealManual3D::~ChannelRealManual3D()`: vtable reset (off_11CD5C8) plus `operator delete(this)`. The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73e08_wdog154() -> ! {
-    todo!("0x73e08 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73e08_wdog154() {
+    // IDA 0x73e08 `FMOD::ChannelRealManual3D::~ChannelRealManual3D()`: vtable reset (off_11CD5C8). The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, float)
 #[doc(alias = "FMOD::ChannelSoftware::setLowPassGain(float)")]
-pub fn stub_73e20_wdog155() -> ! {
-    todo!("0x73e20 FMOD::ChannelSoftware::setLowPassGain(float)")
+pub fn stub_73e20_wdog155(link: u32, filter_word58: u32, set_gain: impl FnOnce(u32, u32) -> i32) -> i32 {
+    // IDA 0x73e20 FMOD::ChannelSoftware::setLowPassGain:
+    //   return (*(this+60))(this, *(this[4] + 232)).
+    // Host: the vtable slot-60 call arrives as a seam over the object link and
+    // the filter word at +232 (word 58 of the word-4 object).
+    set_gain(link, filter_word58)
 }
 
 // 0x73e34 — __ZN4FMOD15ChannelSoftware16setDSPClockDelayEv [watchdog]
@@ -7568,22 +7758,63 @@ pub fn stub_741f4_wdog158() -> ! {
 // 0x74554 — __ZN4FMOD15ChannelSoftware10getDSPHeadEPPNS_4DSPIE [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_74554_wdog159() -> ! {
-    todo!("0x74554 FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")
+pub fn stub_74554_wdog159(soft: &[u32; 200], out: &mut u32) -> i32 {
+    // IDA 0x74554 FMOD::ChannelSoftware::getDSPHead: v2 = a1[21] (+84);
+    //   *a2 = v2; return 0.
+    *out = soft[21];
+    crate::FMOD_OK
 }
 
 // 0x74564 — __ZN4FMOD15ChannelSoftware16moveChannelGroupEPNS_13ChannelGroupIES2_b [watchdog]
 // type: FMOD::DSPI *__fastcall(FMOD::DSPI **this, FMOD::DSPI **, FMOD::DSPI **, bool)
 #[doc(alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
-pub fn stub_74564_wdog160() -> ! {
-    todo!("0x74564 FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+pub fn stub_74564_wdog160(this21: u32, this187: u32, from: u32, from_w8: u32, to_w8: u32, flag: bool, out_conn: &mut u32, queue: impl FnMut(u32, u32, u32, u32, &mut u32) -> i32, disconnect: impl FnMut(u32, u32, u32) -> i32) -> u32 {
+    // IDA 0x74564 FMOD::ChannelSoftware::moveChannelGroup:
+    //   result = a4; if (a2 != a3 || a4) {
+    //     target = a2 ? a2[8] : 0;
+    //     target == 0 ? return addInputQueued(a3[8], this[21], 0, this[187], &conn)
+    //     : (result = disconnectFrom(target, this[21], 0);
+    //        !result ? return addInputQueued(a3[8], this[21], 0, this[187], &conn) : nop); }
+    //   return result (u32: bool-as-pointer on the no-op path, code otherwise).
+    // Host: DSP links arrive by value; both graph edges arrive as seams.
+    let mut result = flag as u32;
+    if from != 0 || flag {
+        let mut queue = queue;
+        let mut disconnect = disconnect;
+        if (from_w8 == 0 && from != 0) || from == 0 {
+            let code = queue(to_w8, this21, 0, this187, out_conn);
+            return code as u32;
+        }
+        result = disconnect(from_w8, this21, 0) as u32;
+        if result == 0 {
+            let code = queue(to_w8, this21, 0, this187, out_conn);
+            return code as u32;
+        }
+    }
+    result
 }
 
 // 0x745d4 — __ZN4FMOD15ChannelSoftware19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_745d4_wdog161() -> ! {
-    todo!("0x745d4 FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_745d4_wdog161(sys_props: u32, sys_state: u32, props: &[u32; 32], get_props: impl FnOnce(u32, u32, u32, &[u32; 32]) -> i32) -> i32 {
+    // IDA 0x745d4 FMOD::ChannelSoftware::getReverbProperties:
+    //   !a2 -> 37 (borrow-enforced); decode v5 from a2[17] bits
+    //   (0x10 -> 0, 0x20 -> 1, 0x40 -> 2, 0x80 -> 3, else (a2[17] & 0x80) != 0);
+    //   return ReverbI::getChanProperties(sys + 22600, v5, sys[13], a2, 0) (seam).
+    let flags = props[17];
+    let index = if flags & 0x10 != 0 {
+        0
+    } else if flags & 0x20 != 0 {
+        1
+    } else if flags & 0x40 != 0 {
+        2
+    } else if flags & 0x80 != 0 {
+        3
+    } else {
+        0
+    };
+    get_props(sys_props, index, sys_state, props)
 }
 
 // 0x7464c — __ZN4FMOD15ChannelSoftware12addToReverbsEPNS_4DSPIE [watchdog]
@@ -7610,36 +7841,89 @@ pub fn stub_749c4_wdog164() -> ! {
 // 0x74b20 — __ZN4FMOD15ChannelSoftware9isPlayingEPbb [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelSoftware::isPlaying(bool *,bool)")]
-pub fn stub_74b20_wdog165() -> ! {
-    todo!("0x74b20 FMOD::ChannelSoftware::isPlaying(bool *,bool)")
+pub fn stub_74b20_wdog165(soft: &mut [u32; 200], out: &mut bool, resamp_finished: Option<impl FnOnce() -> bool>, wave_finished: Option<impl FnOnce() -> bool>) -> i32 {
+    // IDA 0x74b20 FMOD::ChannelSoftware::isPlaying: !a2 -> 37 (borrow-enforced);
+    //   word 9 & 0x10 -> (*a2 = 1, 0); else finished = resampler(186/183) or
+    //   wavetable(95, needs word 6) getFinished seam; *a2 = !finished;
+    //   stopped -> word 9 &= ~0x50; return 0.
+    // Host: at most one finished-seam is bound (resampler preferred, as original).
+    if soft[9] & 0x10 != 0 {
+        *out = true;
+        return crate::FMOD_OK;
+    }
+    let playing = if let Some(finished) = resamp_finished {
+        !finished()
+    } else if soft[6] != 0 {
+        if let Some(finished) = wave_finished {
+            !finished()
+        } else {
+            false
+        }
+    } else {
+        false
+    };
+    *out = playing;
+    if !playing {
+        soft[9] &= 0xFFFF_FFAF;
+    }
+    crate::FMOD_OK
 }
 
 // 0x74bd0 — __ZN4FMOD15ChannelSoftware7setModeEj [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, int)
 #[doc(alias = "FMOD::ChannelSoftware::setMode(unsigned int)")]
-pub fn stub_74bd0_wdog166() -> ! {
-    todo!("0x74bd0 FMOD::ChannelSoftware::setMode(unsigned int)")
+pub fn stub_74bd0_wdog166(soft: &[u32; 200], mode: u32, set_base: impl FnOnce(u32) -> i32, propagate: impl FnOnce(u32)) -> i32 {
+    // IDA 0x74bd0 FMOD::ChannelSoftware::setMode:
+    //   v3 = ChannelReal::setMode(this, a2) (seam); !v3 && word 186 ->
+    //   propagate word 8 into the resampler object (+384/+24) via seam.
+    let code = set_base(mode);
+    if code == 0 && soft[186] != 0 {
+        propagate(soft[8]);
+    }
+    code
 }
 
 // 0x74c04 — __ZN4FMOD15ChannelSoftware12getLoopCountEPi [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, int *)
 #[doc(alias = "FMOD::ChannelSoftware::getLoopCount(int *)")]
-pub fn stub_74c04_wdog167() -> ! {
-    todo!("0x74c04 FMOD::ChannelSoftware::getLoopCount(int *)")
+pub fn stub_74c04_wdog167(soft: &[u32; 200], out: &mut i32, resamp_loop: Option<u32>, get_base: impl FnOnce(&mut i32) -> i32) -> i32 {
+    // IDA 0x74c04 FMOD::ChannelSoftware::getLoopCount: !a2 -> 37 (borrow-enforced);
+    //   word 186 null -> base getLoopCount seam; else *a2 = resampler[40] (+384/+40).
+    match resamp_loop {
+        Some(count) => {
+            *out = count as i32;
+            crate::FMOD_OK
+        }
+        None => get_base(out),
+    }
 }
 
 // 0x74c44 — __ZN4FMOD15ChannelSoftware12setLoopCountEi [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, int)
 #[doc(alias = "FMOD::ChannelSoftware::setLoopCount(int)")]
-pub fn stub_74c44_wdog168() -> ! {
-    todo!("0x74c44 FMOD::ChannelSoftware::setLoopCount(int)")
+pub fn stub_74c44_wdog168(soft: &[u32; 200], loop_count: i32, set_base: impl FnOnce(i32) -> i32, propagate: impl FnOnce(u32)) -> i32 {
+    // IDA 0x74c44 FMOD::ChannelSoftware::setLoopCount:
+    //   v3 = ChannelReal::setLoopCount(this, a2) (seam); !v3 && word 186 ->
+    //   resampler[40] (+384/+40) = word 13, resampler[44]++ (caller seam).
+    let code = set_base(loop_count);
+    if code == 0 && soft[186] != 0 {
+        propagate(soft[13]);
+    }
+    code
 }
 
 // 0x74c90 — __ZN4FMOD15ChannelSoftware13setLoopPointsEjj [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_74c90_wdog169() -> ! {
-    todo!("0x74c90 FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")
+pub fn stub_74c90_wdog169(soft: &[u32; 200], loop_start: u32, loop_end: u32, set_base: impl FnOnce(u32, u32) -> i32, propagate: impl FnOnce(u32, u32)) -> i32 {
+    // IDA 0x74c90 FMOD::ChannelSoftware::setLoopPoints:
+    //   v4 = ChannelReal::setLoopPoints(this, a2, a3) (seam); !v4 && word 186 ->
+    //   resampler[28/32] (+384/+28/+32) = words 14/15 (caller seam).
+    let code = set_base(loop_start, loop_end);
+    if code == 0 && soft[186] != 0 {
+        propagate(soft[14], soft[15]);
+    }
+    code
 }
 
 // 0x74cd8 — __ZN4FMOD15ChannelSoftware6setPanEff [watchdog]
@@ -7680,8 +7964,30 @@ pub fn stub_75408_wdog174() -> ! {
 // 0x75738 — __ZN4FMOD15ChannelSoftware5closeEv [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::close(void)")]
-pub fn stub_75738_wdog175() -> ! {
-    todo!("0x75738 FMOD::ChannelSoftware::close(void)")
+pub fn stub_75738_wdog175(soft: &mut [u32; 200], base_close: impl FnOnce() -> i32, pre: impl FnOnce(bool, bool), post: impl FnOnce(bool, bool, bool, bool)) -> i32 {
+    // IDA 0x75738 FMOD::ChannelSoftware::close:
+    //   detach sample buffers behind words 95/183 (seam `pre` with presence);
+    //   v4 = ChannelReal::close (seam); !v4 -> release objects behind words
+    //   95/21/183/184 (seam `post` with presence), zero 95/21/183/184/186.
+    pre(soft[95] != 0, soft[183] != 0);
+    let code = base_close();
+    if code == 0 {
+        post(soft[95] != 0, soft[21] != 0, soft[183] != 0, soft[184] != 0);
+        if soft[95] != 0 {
+            soft[95] = 0;
+        }
+        if soft[21] != 0 {
+            soft[21] = 0;
+        }
+        if soft[183] != 0 {
+            soft[183] = 0;
+        }
+        if soft[184] != 0 {
+            soft[184] = 0;
+        }
+        soft[186] = 0;
+    }
+    code
 }
 
 // 0x757fc — __ZN4FMOD15ChannelSoftware4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE [watchdog]
@@ -7694,15 +8000,32 @@ pub fn stub_757fc_wdog176() -> ! {
 // 0x759c0 — __ZN4FMOD15ChannelSoftwareC2Ev [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
-pub fn stub_759c0_wdog177() -> ! {
-    todo!("0x759c0 FMOD::ChannelSoftware::ChannelSoftware(void)")
+pub fn stub_759c0_wdog177(soft: &mut [u32; 200], base: impl FnOnce(&mut [u32; 200]) -> i32, init_dspi22: impl FnOnce(&mut [u32]) -> i32, init_dspi96: impl FnOnce(&mut [u32]) -> i32) -> i32 {
+    // IDA 0x759c0 FMOD::ChannelSoftware::ChannelSoftware:
+    //   Manual3D base ctor seam; vtable off_11CD670 (no host effect);
+    //   DSPI ctors over words 22.. (+88) and 96.. (+384) via seams (their vtable
+    //   words 22/96 have no host effect); scalars 95/21/183/186/184/7/187/185 = 0.
+    let _ = base(soft);
+    let _ = init_dspi22(&mut soft[22..]);
+    let code = init_dspi96(&mut soft[96..]);
+    soft[95] = 0;
+    soft[21] = 0;
+    soft[183] = 0;
+    soft[186] = 0;
+    soft[184] = 0;
+    soft[7] = 0;
+    soft[187] = 0;
+    soft[185] = 0;
+    code
 }
 
 // 0x75a44 — __ZN4FMOD15ChannelSoftwareC1Ev [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
-pub fn stub_75a44_wdog178() -> ! {
-    todo!("0x75a44 FMOD::ChannelSoftware::ChannelSoftware(void)")
+pub fn stub_75a44_wdog178(soft: &mut [u32; 200], base: impl FnOnce(&mut [u32; 200]) -> i32, init_dspi22: impl FnOnce(&mut [u32]) -> i32, init_dspi96: impl FnOnce(&mut [u32]) -> i32) -> i32 {
+    // IDA 0x75a44 `FMOD::ChannelSoftware::ChannelSoftware(void)` (thunk): tail-calls C2 (IDA 0x759c0).
+    // Host: arguments forward unchanged.
+    crate::generated::stub_759c0_wdog177(soft, base, init_dspi22, init_dspi96)
 }
 
 // 0x75a48 — __ZN4FMOD15ChannelSoftware9setPausedEb [watchdog]
@@ -7715,8 +8038,31 @@ pub fn stub_75a48_wdog179() -> ! {
 // 0x75b50 — __ZN4FMOD15ChannelSoftware5startEv [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::start(void)")]
-pub fn stub_75b50_wdog180() -> ! {
-    todo!("0x75b50 FMOD::ChannelSoftware::start(void)")
+pub fn stub_75b50_wdog180(soft: &[u32; 200], present: [bool; 6], flags: &mut [u32; 6]) -> i32 {
+    // IDA 0x75b50 FMOD::ChannelSoftware::start:
+    //   word 9 & 0x20 set -> nothing; else set bit 2 (+272) on the linked DSP
+    //   flag words: word 21 unconditionally; word 95 only with word 6 set;
+    //   words 183/184/186/7 when present. Host: flag words arrive as a caller
+    //   array parallel to [21, 95, 183, 184, 186, 7].
+    if soft[9] & 0x20 == 0 {
+        flags[0] |= 2;
+        if soft[6] != 0 && present[1] {
+            flags[1] |= 2;
+        }
+        if present[2] {
+            flags[2] |= 2;
+        }
+        if present[3] {
+            flags[3] |= 2;
+        }
+        if present[4] {
+            flags[4] |= 2;
+        }
+        if present[5] {
+            flags[5] |= 2;
+        }
+    }
+    crate::FMOD_OK
 }
 
 // 0x75be0 — __ZN4FMOD15ChannelSoftware5allocEv [watchdog]
@@ -7757,8 +8103,27 @@ pub fn stub_76988_wdog185() -> ! {
 // 0x76a80 — __ZN4FMOD15ChannelSoftware14set3DOcclusionEff [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, float, float)
 #[doc(alias = "FMOD::ChannelSoftware::set3DOcclusion(float,float)")]
-pub fn stub_76a80_wdog186() -> ! {
-    todo!("0x76a80 FMOD::ChannelSoftware::set3DOcclusion(float,float)")
+pub fn stub_76a80_wdog186(soft: &[u32; 200], occlusion_l: f32, occlusion_r: f32, mix_level: f32, update_direct: impl FnOnce() -> i32, reverbs: &[(u32, u32)], update_reverb: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x76a80 FMOD::ChannelSoftware::set3DOcclusion:
+    //   word 2 > 0 -> return 0; updateDirectMix(this, mix) seam;
+    //   nonzero -> return it; else walk the reverb list (flag word 141 == 1)
+    //   calling updateReverbMix per entry (seam), propagating its first error.
+    // Host: occlusion stores and the reverb walk arrive flattened/caller-bound.
+    let _ = (occlusion_l, occlusion_r, mix_level);
+    let code = update_direct();
+    if code != 0 {
+        return code;
+    }
+    let mut update_reverb = update_reverb;
+    for &(flag, link) in reverbs {
+        if flag == 1 {
+            let edge = update_reverb(link);
+            if edge != 0 {
+                return edge;
+            }
+        }
+    }
+    crate::FMOD_OK
 }
 
 // 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
@@ -7771,8 +8136,27 @@ pub fn stub_76b3c_wdog187() -> ! {
 // 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb [watchdog]
 // type: int __fastcall(FMOD::ChannelSoftware *this, bool *)
 #[doc(alias = "FMOD::ChannelSoftware::getPaused(bool *)")]
-pub fn stub_7709c_wdog188() -> ! {
-    todo!("0x7709c FMOD::ChannelSoftware::getPaused(bool *)")
+pub fn stub_7709c_wdog188(soft: &[u32; 200], out: &mut bool, flags: [u32; 5], get_base: impl FnOnce(&mut bool) -> i32) -> i32 {
+    // IDA 0x7709c FMOD::ChannelSoftware::getPaused: DSP +272 flag chain over
+    // links 21/95/183/186/7 (flag value 2 continues the chain); any break writes
+    // *a2 = 1 and returns the passing flag (2); exhausting the chain delegates
+    // to ChannelReal::getPaused (seam).
+    // Host: link presence comes from the object words, flag values from `flags`
+    // parallel to [21, 95, 183, 186, 7].
+    if flags[0] & 2 != 0
+        && (soft[6] == 0 || soft[95] == 0 || flags[1] & 2 != 0)
+        && (soft[183] == 0 || flags[2] & 2 != 0)
+        && (soft[186] == 0 || flags[3] & 2 != 0)
+    {
+        if soft[7] == 0 {
+            return get_base(out);
+        }
+        if flags[4] & 2 != 0 {
+            return get_base(out);
+        }
+    }
+    *out = true;
+    2
 }
 
 // 0x77138 — __ZN4FMOD15ChannelSoftware5allocEPNS_4DSPIE [watchdog]
@@ -7785,43 +8169,108 @@ pub fn stub_77138_wdog189() -> ! {
 // 0x773c4 — __ZN4FMOD15ChannelSoftwareD1Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_773c4_wdog190() -> ! {
-    todo!("0x773c4 FMOD::ChannelSoftware::~ChannelSoftware()")
+pub fn stub_773c4_wdog190() {
+    // IDA 0x773c4 `FMOD::ChannelSoftware::~ChannelSoftware()`: vtable reset (off_11CD670, off_11CD5C8). The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_773f0_wdog191() -> ! {
-    todo!("0x773f0 FMOD::ChannelSoftware::~ChannelSoftware()")
+pub fn stub_773f0_wdog191() {
+    // IDA 0x773f0 `FMOD::ChannelSoftware::~ChannelSoftware()`: vtable reset (off_11CD670, off_11CD5C8) plus `operator delete(this)`. The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x77428 — __ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")]
-pub fn stub_77428_wdog192() -> ! {
-    todo!("0x77428 FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")
+pub fn stub_77428_wdog192(stream: &[u32], each: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x77428 FMOD::ChannelStream::set2DFreqVolumePanFor3D:
+    //   if (this[31] <= 0) return 0;
+    //   do { sub = this[32+i]; result = (**sub)(sub); } while (this[31] > ++i); return result.
+    // Host: word 31 is the subchannel count, words 32.. are the sub links; the
+    // vtable head call (slot 0) arrives as a caller seam.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut each = each;
+    for i in 0..count as usize {
+        result = each(stream[32 + i]);
+    }
+    result
 }
 
 // 0x77474 — __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b [watchdog]
 // type: int __fastcall(int, int, int, unsigned __int8)
 #[doc(alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
-pub fn stub_77474_wdog193() -> ! {
-    todo!("0x77474 FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+pub fn stub_77474_wdog193(stream: &[u32], group_from: u32, group_to: u32, flag: u8, each: impl FnMut(u32, u32, u32, u8) -> i32) -> i32 {
+    // IDA 0x77474 FMOD::ChannelStream::moveChannelGroup: count = a1[31] (a1+124);
+    //   if (count <= 0) return 0;
+    //   do { sub = a1[32+i]; result = (*(sub+8))(sub, a2, a3, a4); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut each = each;
+    for i in 0..count as usize {
+        result = each(stream[32 + i], group_from, group_to, flag);
+    }
+    result
 }
 
 // 0x774e0 — __ZN4FMOD13ChannelStream5startEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::start(void)")]
-pub fn stub_774e0_wdog194() -> ! {
-    todo!("0x774e0 FMOD::ChannelStream::start(void)")
+pub fn stub_774e0_wdog194(stream: &[u32], sub_flags: &mut [u32], start: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x774e0 FMOD::ChannelStream::start:
+    //   if (!this[32]) return 36; if (this[31] <= 0) return 0;
+    //   do { sub = this[32+i]; result = (*(sub+36))(sub); if (result) break;
+    //        *(sub+36) &= ~0x80; *(sub+36) &= ~0x10; *(sub+36) |= 0x40; } while (...).
+    // Host: sub_flags[i] stands in for the sub object +36 flag word, which the
+    // host cannot address (image-owned objects); the vtable slot-36 call is a seam.
+    if stream[32] == 0 {
+        return 36;
+    }
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut start = start;
+    for i in 0..count as usize {
+        result = start(stream[32 + i]);
+        if result != 0 {
+            break;
+        }
+        if let Some(flags) = sub_flags.get_mut(i) {
+            *flags &= !0x80;
+            *flags &= !0x10;
+            *flags |= 0x40;
+        }
+    }
+    result
 }
 
 // 0x77574 — __ZN4FMOD13ChannelStream6updateEi [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "FMOD::ChannelStream::update(int)")]
-pub fn stub_77574_wdog195() -> ! {
-    todo!("0x77574 FMOD::ChannelStream::update(int)")
+pub fn stub_77574_wdog195(stream: &[u32], mode: i32, update: impl FnMut(u32, i32) -> i32) -> i32 {
+    // IDA 0x77574 FMOD::ChannelStream::update: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+40))(sub, a2); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut update = update;
+    for i in 0..count as usize {
+        result = update(stream[32 + i], mode);
+    }
+    result
 }
 
 // 0x775d0 — __ZN4FMOD13ChannelStream9setVolumeEf [watchdog]
@@ -7834,120 +8283,288 @@ pub fn stub_775d0_wdog196() -> ! {
 // 0x77718 — __ZN4FMOD13ChannelStream12setFrequencyEf [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float)
 #[doc(alias = "FMOD::ChannelStream::setFrequency(float)")]
-pub fn stub_77718_wdog197() -> ! {
-    todo!("0x77718 FMOD::ChannelStream::setFrequency(float)")
+pub fn stub_77718_wdog197(stream: &[u32], frequency: f32, set_freq: impl FnMut(u32, f32) -> i32) -> i32 {
+    // IDA 0x77718 FMOD::ChannelStream::setFrequency: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+64))(sub, a2); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_freq = set_freq;
+    for i in 0..count as usize {
+        result = set_freq(stream[32 + i], frequency);
+    }
+    result
 }
 
 // 0x77774 — __ZN4FMOD13ChannelStream6setPanEff [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float, float)
 #[doc(alias = "FMOD::ChannelStream::setPan(float,float)")]
-pub fn stub_77774_wdog198() -> ! {
-    todo!("0x77774 FMOD::ChannelStream::setPan(float,float)")
+pub fn stub_77774_wdog198(stream: &[u32], mode_link: Option<&[u32]>, pan: f32, height: f32, set_pan: impl FnMut(u32, f32, f32) -> i32) -> i32 {
+    // IDA 0x77774 FMOD::ChannelStream::setPan: stereo special-case, then fan-out
+    // vtable slot 68 over subs. When count > 1 and (count == 2 or (this[6] links
+    // an object whose +88 word is 0x20000000)), odd subs pan hard right (1.0)
+    // and even subs hard left (-1.0).
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let stereo = count > 1
+        && (count == 2
+            || (stream[6] != 0 && mode_link.map_or(false, |w| w.get(22) == Some(&0x20000000))));
+    let mut result = 0;
+    let mut set_pan = set_pan;
+    for i in 0..count as usize {
+        let p = if stereo {
+            if i & 1 != 0 { 1.0 } else { -1.0 }
+        } else {
+            pan
+        };
+        result = set_pan(stream[32 + i], p, height);
+    }
+    result
 }
 
 // 0x7781c — __ZN4FMOD13ChannelStream16setDSPClockDelayEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::setDSPClockDelay(void)")]
-pub fn stub_7781c_wdog199() -> ! {
-    todo!("0x7781c FMOD::ChannelStream::setDSPClockDelay(void)")
+pub fn stub_7781c_wdog199(stream: &[u32], set_delay: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x7781c FMOD::ChannelStream::setDSPClockDelay: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+72))(sub); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_delay = set_delay;
+    for i in 0..count as usize {
+        result = set_delay(stream[32 + i]);
+    }
+    result
 }
 
 // 0x77868 — __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float, float, float, float, float, float, float, float)
 #[doc(alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")]
-pub fn stub_77868_wdog200() -> ! {
-    todo!("0x77868 FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")
+pub fn stub_77868_wdog200(stream: &[u32], mix: [f32; 8], set_mix: impl FnMut(u32, [f32; 8]) -> i32) -> i32 {
+    // IDA 0x77868 FMOD::ChannelStream::setSpeakerMix: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+76))(sub, a2..a9); } while (...).
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_mix = set_mix;
+    for i in 0..count as usize {
+        result = set_mix(stream[32 + i], mix);
+    }
+    result
 }
 
 // 0x77904 — __ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, int, float *, int)
 #[doc(alias = "FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")]
-pub fn stub_77904_wdog201() -> ! {
-    todo!("0x77904 FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")
+pub fn stub_77904_wdog201(stream: &[u32], speaker: i32, levels: &[f32], count_levels: i32, set_levels: impl FnMut(u32, i32, &[f32], i32) -> i32) -> i32 {
+    // IDA 0x77904 FMOD::ChannelStream::setSpeakerLevels: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+80))(sub, a2, a3, a4); } while (...).
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_levels = set_levels;
+    for i in 0..count as usize {
+        result = set_levels(stream[32 + i], speaker, levels, count_levels);
+    }
+    result
 }
 
 // 0x77970 — __ZN4FMOD13ChannelStream15set3DAttributesEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::set3DAttributes(void)")]
-pub fn stub_77970_wdog202() -> ! {
-    todo!("0x77970 FMOD::ChannelStream::set3DAttributes(void)")
+pub fn stub_77970_wdog202(stream: &[u32], set_attr: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x77970 FMOD::ChannelStream::set3DAttributes: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+116))(sub); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_attr = set_attr;
+    for i in 0..count as usize {
+        result = set_attr(stream[32 + i]);
+    }
+    result
 }
 
 // 0x779bc — __ZN4FMOD13ChannelStream14setLowPassGainEf [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float)
 #[doc(alias = "FMOD::ChannelStream::setLowPassGain(float)")]
-pub fn stub_779bc_wdog203() -> ! {
-    todo!("0x779bc FMOD::ChannelStream::setLowPassGain(float)")
+pub fn stub_779bc_wdog203(stream: &[u32], gain: f32, set_gain: impl FnMut(u32, f32) -> i32) -> i32 {
+    // IDA 0x779bc FMOD::ChannelStream::setLowPassGain: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+112))(sub, a2); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_gain = set_gain;
+    for i in 0..count as usize {
+        result = set_gain(stream[32 + i], gain);
+    }
+    result
 }
 
 // 0x77a18 — __ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::set3DMinMaxDistance(void)")]
-pub fn stub_77a18_wdog204() -> ! {
-    todo!("0x77a18 FMOD::ChannelStream::set3DMinMaxDistance(void)")
+pub fn stub_77a18_wdog204(stream: &[u32], set_minmax: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x77a18 FMOD::ChannelStream::set3DMinMaxDistance: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+120))(sub); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_minmax = set_minmax;
+    for i in 0..count as usize {
+        result = set_minmax(stream[32 + i]);
+    }
+    result
 }
 
 // 0x77a64 — __ZN4FMOD13ChannelStream14set3DOcclusionEff [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float, float)
 #[doc(alias = "FMOD::ChannelStream::set3DOcclusion(float,float)")]
-pub fn stub_77a64_wdog205() -> ! {
-    todo!("0x77a64 FMOD::ChannelStream::set3DOcclusion(float,float)")
+pub fn stub_77a64_wdog205(stream: &[u32], direct: f32, reverb: f32, set_occlusion: impl FnMut(u32, f32, f32) -> i32) -> i32 {
+    // IDA 0x77a64 FMOD::ChannelStream::set3DOcclusion: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = (*(sub+124))(sub, a2, a3); } while (...); return result.
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_occlusion = set_occlusion;
+    for i in 0..count as usize {
+        result = set_occlusion(stream[32 + i], direct, reverb);
+    }
+    result
 }
 
 // 0x77ac8 — __ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_77ac8_wdog206() -> ! {
-    todo!("0x77ac8 FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub fn stub_77ac8_wdog206(stream: &[u32], props: u32, set_reverb: impl FnMut(u32, u32) -> i32) -> i32 {
+    // IDA 0x77ac8 FMOD::ChannelStream::setReverbProperties: count = a1[31] (a1+124);
+    //   <= 0 -> 0; do { sub = a1[32+i]; result = (*(sub+128))(sub, a2); } while (...).
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_reverb = set_reverb;
+    for i in 0..count as usize {
+        result = set_reverb(stream[32 + i], props);
+    }
+    result
 }
 
 // 0x77b24 — __ZN4FMOD13ChannelStream19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_77b24_wdog207() -> ! {
-    todo!("0x77b24 FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_77b24_wdog207(stream: &[u32], get_reverb: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x77b24 FMOD::ChannelStream::getReverbProperties:
+    //   if (this[31] <= 0) return 0; else return (*(this[32]+132))(this[32]).
+    // Host: a null head link reports 36 (host guard; the original would fault).
+    if (stream[31] as i32) <= 0 {
+        return 0;
+    }
+    let head = stream[32];
+    if head == 0 {
+        return 36;
+    }
+    get_reverb(head)
 }
 
 // 0x77b48 — __ZN4FMOD13ChannelStream9isPlayingEPbb [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelStream::isPlaying(bool *,bool)")]
-pub fn stub_77b48_wdog208() -> ! {
-    todo!("0x77b48 FMOD::ChannelStream::isPlaying(bool *,bool)")
+pub fn stub_77b48_wdog208(channel: &[u32; 64], out: &mut bool) -> i32 {
+    // IDA 0x77b48 FMOD::ChannelStream::isPlaying:
+    //   v3 = *(u8 *)(this + 92); *a2 = v3 ^ 1; return 0.
+    // Host: byte 92 is the low byte of word 23; playing inverts it.
+    // A null out-pointer cannot occur through &mut (that 37 path is borrow-enforced).
+    *out = channel[23] & 1 == 0;
+    crate::FMOD_OK
 }
 
 // 0x77b5c — __ZN4FMOD13ChannelStream11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW [watchdog]
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_77b5c_wdog209() -> ! {
-    todo!("0x77b5c FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_77b5c_wdog209(stream: &[u32], get_spectrum: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x77b5c FMOD::ChannelStream::getSpectrum:
+    //   return (*(this[32]+144))(this[32]).
+    // Host: a null head link reports 36 (host guard; the original would fault).
+    let head = stream[32];
+    if head == 0 {
+        return 36;
+    }
+    get_spectrum(head)
 }
 
 // 0x77b6c — __ZN4FMOD13ChannelStream11getWaveDataEPfii [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, float *, int, int)
 #[doc(alias = "FMOD::ChannelStream::getWaveData(float *,int,int)")]
-pub fn stub_77b6c_wdog210() -> ! {
-    todo!("0x77b6c FMOD::ChannelStream::getWaveData(float *,int,int)")
+pub fn stub_77b6c_wdog210(stream: &[u32], buffer: &mut [f32], offset: i32, length: i32, get_wave: impl FnOnce(u32, &mut [f32], i32, i32) -> i32) -> i32 {
+    // IDA 0x77b6c FMOD::ChannelStream::getWaveData:
+    //   return (*(this[32]+148))(this[32], a2, a3, a4).
+    // Host: a null head link reports 36 (host guard; the original would fault).
+    let head = stream[32];
+    if head == 0 {
+        return 36;
+    }
+    get_wave(head, buffer, offset, length)
 }
 
 // 0x77b7c — __ZN4FMOD13ChannelStream10getDSPHeadEPPNS_4DSPIE [watchdog]
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_77b7c_wdog211() -> ! {
-    todo!("0x77b7c FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")
+pub fn stub_77b7c_wdog211(stream: &[u32], get_head: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x77b7c FMOD::ChannelStream::getDSPHead:
+    //   return (*(this[32]+152))(this[32]).
+    // Host: a null head link reports 36 (host guard; the original would fault).
+    let head = stream[32];
+    if head == 0 {
+        return 36;
+    }
+    get_head(head)
 }
 
 // 0x77b8c — __ZN4FMOD13ChannelStream12setLoopCountEi [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "FMOD::ChannelStream::setLoopCount(int)")]
-pub fn stub_77b8c_wdog212() -> ! {
-    todo!("0x77b8c FMOD::ChannelStream::setLoopCount(int)")
+pub fn stub_77b8c_wdog212(stream: &[u32; 64], loop_count: i32, set_base: impl FnOnce(i32) -> i32, set_group: impl FnOnce(u32, i32)) -> i32 {
+    // IDA 0x77b8c FMOD::ChannelStream::setLoopCount:
+    //   if (!ChannelReal::setLoopCount(this, a2)) (*(this[6]+164))(this[6], a2); return 0.
+    // Host: the base call and the group vtable slot-164 call arrive as seams.
+    if set_base(loop_count) == 0 {
+        set_group(stream[6], loop_count);
+    }
+    crate::FMOD_OK
 }
 
 // 0x77bc0 — __ZN4FMOD13ChannelStream13setLoopPointsEjj [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_77bc0_wdog213() -> ! {
-    todo!("0x77bc0 FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")
+pub fn stub_77bc0_wdog213(stream: &[u32; 64], loop_start: u32, loop_end: u32, set_base: impl FnOnce(u32, u32) -> i32, set_group: impl FnOnce(u32, u32)) -> i32 {
+    // IDA 0x77bc0 FMOD::ChannelStream::setLoopPoints:
+    //   if (!ChannelReal::setLoopPoints(this, a2, a3)) (*(this[6]+172))(this[6], a2); return 0.
+    // Host: the base call and the group vtable slot-172 call arrive as seams.
+    if set_base(loop_start, loop_end) == 0 {
+        set_group(stream[6], loop_start);
+    }
+    crate::FMOD_OK
 }
 
 // 0x77c14 — __ZN4FMOD13ChannelStream11getPositionEPjj [watchdog]
@@ -7967,22 +8584,63 @@ pub fn stub_77f74_wdog215() -> ! {
 // 0x78168 — __ZN4FMOD13ChannelStream7setModeEj [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, int)
 #[doc(alias = "FMOD::ChannelStream::setMode(unsigned int)")]
-pub fn stub_78168_wdog216() -> ! {
-    todo!("0x78168 FMOD::ChannelStream::setMode(unsigned int)")
+pub fn stub_78168_wdog216(stream: &[u32], mode: u32, set_base: impl FnOnce(u32) -> i32, set_group: impl FnOnce(u32, u32) -> i32, each: impl FnMut(u32, u32) -> i32) -> i32 {
+    // IDA 0x78168 FMOD::ChannelStream::setMode:
+    //   result = ChannelReal::setMode(this, a2); if (!result) {
+    //     result = (*(this[6]+156))(this[6], a2);
+    //     if (!result && this[31] > 0) { v5 = a2 & 0xFFFFFFF8;
+    //       do { sub = this[32+i]; result = (*(sub+156))(sub, v5); } while (...); } }
+    //   return result.
+    let mut result = set_base(mode);
+    if result == 0 {
+        result = set_group(stream[6], mode);
+        let count = stream[31] as i32;
+        if result == 0 && count > 0 {
+            let masked = mode & 0xFFFFFFF8;
+            let mut each = each;
+            for i in 0..count as usize {
+                result = each(stream[32 + i], masked);
+            }
+        }
+    }
+    result
 }
 
 // 0x781f0 — __ZN4FMOD13ChannelStreamC2Ev [watchdog]
 // type: _DWORD *__fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
-pub fn stub_781f0_wdog217() -> ! {
-    todo!("0x781f0 FMOD::ChannelStream::ChannelStream(void)")
+pub fn stub_781f0_wdog217(stream: &mut [u32; 64], base: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x781f0 FMOD::ChannelStream::ChannelStream:
+    //   result = ChannelReal::ChannelReal(this) (base ctor seam);
+    //   words 20/21 = self+80, word 22 = 0, word 30 = 0, word 32 = 0,
+    //   vtable off_11CD718, words 28/29 = self+112, words 33..47 (15 sub links) = 0,
+    //   words 27/26 = 0, word 31 (sub count) = 1; return result.
+    // Host: image-relative self links (self+80/self+112) are 0 (host guard: the
+    // intrusive lists need image addresses); the vtable install has no host effect.
+    let result = base(stream);
+    stream[20] = 0;
+    stream[21] = 0;
+    stream[22] = 0;
+    stream[30] = 0;
+    stream[32] = 0;
+    stream[28] = 0;
+    stream[29] = 0;
+    for word in stream.iter_mut().take(48).skip(33) {
+        *word = 0;
+    }
+    stream[27] = 0;
+    stream[26] = 0;
+    stream[31] = 1;
+    result
 }
 
 // 0x7826c — __ZN4FMOD13ChannelStreamC1Ev [watchdog]
 // type: _DWORD *__fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
-pub fn stub_7826c_wdog218() -> ! {
-    todo!("0x7826c FMOD::ChannelStream::ChannelStream(void)")
+pub fn stub_7826c_wdog218(channel: &mut [u32; 64], base: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x7826c `FMOD::ChannelStream::ChannelStream(void)` (thunk): tail-calls ChannelReal::ChannelReal (IDA 0x71854) base ctor.
+    // Host: arguments forward unchanged.
+    crate::generated::stub_781f0_wdog217(channel, base)
 }
 
 // 0x78270 — __ZN4FMOD13ChannelStream5allocEv [watchdog]
@@ -8002,8 +8660,26 @@ pub fn stub_78540_wdog220() -> ! {
 // 0x78af0 — __ZN4FMOD13ChannelStream9setPausedEb [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, bool)
 #[doc(alias = "FMOD::ChannelStream::setPaused(bool)")]
-pub fn stub_78af0_wdog221() -> ! {
-    todo!("0x78af0 FMOD::ChannelStream::setPaused(bool)")
+pub fn stub_78af0_wdog221(stream: &[u32], paused: bool, set_paused: impl FnMut(u32, bool) -> i32) -> i32 {
+    // IDA 0x78af0 FMOD::ChannelStream::setPaused:
+    //   v5 = this[9] & 0x4000; if (v5) return 0;
+    //   CriticalSection_Enter/Leave around: if (this[31] > 0)
+    //     do { sub = this[32+i]; v6 = (*(sub+52))(sub, a2); } while (...); else v6 = 0.
+    // Host: the 0x4000 stream flag short-circuits; the OS critical section has
+    // no host effect (single-threaded host model); slot-52 fan-out is a seam.
+    if stream[9] & 0x4000 != 0 {
+        return 0;
+    }
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_paused = set_paused;
+    for i in 0..count as usize {
+        result = set_paused(stream[32 + i], paused);
+    }
+    result
 }
 
 // 0x78b80 — __ZN4FMOD13ChannelStream12updateStreamEv [watchdog]
@@ -8016,29 +8692,35 @@ pub fn stub_78b80_wdog222() -> ! {
 // 0x78fac — __ZN4FMOD13ChannelStream8isStreamEv [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this)
 #[doc(alias = "FMOD::ChannelStream::isStream(void)")]
-pub fn stub_78fac_wdog223() -> ! {
-    todo!("0x78fac FMOD::ChannelStream::isStream(void)")
+pub fn stub_78fac_wdog223() -> u32 {
+    // IDA 0x78fac: `ARM mov r0,#1; bx lr` (bytes 0100a0e31eff2fe1) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x78fb4 — __ZN4FMOD13ChannelStream11setPositionEjj [watchdog]
 // type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")]
-pub fn stub_78fb4_wdog224() -> ! {
-    todo!("0x78fb4 FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")
+pub fn stub_78fb4_wdog224(channel_link: u32, position: u32, mode: u32, set_position: impl FnOnce(u32, u32, u32, u32) -> i32) -> i32 {
+    // IDA 0x78fb4 FMOD::ChannelStream::setPosition:
+    //   return (*(this+92))(this, a2, a3, 0).
+    // Host: the vtable slot-92 call arrives as a seam (trailing 0 preserved).
+    set_position(channel_link, position, mode, 0)
 }
 
 // 0x78fc4 — __ZN4FMOD13ChannelStreamD0Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelStream *__hidden this)
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_78fc4_wdog225() -> ! {
-    todo!("0x78fc4 FMOD::ChannelStream::~ChannelStream()")
+pub fn stub_78fc4_wdog225() {
+    // IDA 0x78fc4 `FMOD::ChannelStream::~ChannelStream()`: vtable reset (off_11CD718) plus `operator delete(this)`. The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x78fe8 — __ZN4FMOD13ChannelStreamD1Ev [watchdog]
 // type: void __fastcall(FMOD::ChannelStream *__hidden this)
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_78fe8_wdog226() -> ! {
-    todo!("0x78fe8 FMOD::ChannelStream::~ChannelStream()")
+pub fn stub_78fe8_wdog226() {
+    // IDA 0x78fe8 `FMOD::ChannelStream::~ChannelStream()`: vtable reset (off_11CD718). The host word-model has no
+    // vtable and no image ownership, so destruction is a no-op carrier.
 }
 
 // 0x79000 — __ZN4FMOD12ChannelGroup9setVolumeEf [watchdog]
@@ -8163,8 +8845,28 @@ pub fn stub_79ae8_wdog243() -> ! {
 // 0x79b98 — __ZN4FMOD8ChannelI14referenceStampEb [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, bool)
 #[doc(alias = "FMOD::ChannelI::referenceStamp(bool)")]
-pub fn stub_79b98_wdog244() -> ! {
-    todo!("0x79b98 FMOD::ChannelI::referenceStamp(bool)")
+pub fn stub_79b98_wdog244(channel: &mut [u32; 64], update: bool) -> i32 {
+    // IDA 0x79b98 FMOD::ChannelI::referenceStamp:
+    //   v2 = this[34]; v3 = a2 ? (u16)v2 : *(u16 *)(this+60);
+    //   v4 = v3 + 1; if (v4 == 0x10000) v4 = 1;
+    //   v5 = (v2 & 0xFFFF0000) | v4; this[34] = v5; if (a2) this[15] = v5; return 0.
+    // Host: the u16 half at this+60 is the low half of word 15; wrap is exact.
+    let v2 = channel[34];
+    let half = if update {
+        (v2 & 0xFFFF) as u32
+    } else {
+        (channel[15] & 0xFFFF) as u32
+    };
+    let mut v4 = half + 1;
+    if v4 == 0x10000 {
+        v4 = 1;
+    }
+    let stamped = (v2 & 0xFFFF0000) | v4;
+    channel[34] = stamped;
+    if update {
+        channel[15] = stamped;
+    }
+    crate::FMOD_OK
 }
 
 // 0x79bdc — __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi [watchdog]
@@ -8184,29 +8886,80 @@ pub fn stub_79ca8_wdog246() -> ! {
 // 0x79dd4 — __ZN4FMOD8ChannelIC2EiPNS_7SystemIE [watchdog]
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79dd4_wdog247() -> ! {
-    todo!("0x79dd4 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+pub fn stub_79dd4_wdog247(channel: &mut [u32; 64], index: i32, system: Option<&[u32]>, init: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x79dd4 FMOD::ChannelI::ChannelI(int, SystemI *):
+    //   intrusive-list self links (words 1/2 = self+4, 5/6 = self+20, 9/10 = self+36,
+    //   43/44 = self+172), scalars (3 = 0, 8 = -1, 7 = 0, 12 = -1, 11 = 0, 45 = 0),
+    //   vtable off_11CD7E0, result = init(a1); words 13 = a2, 16 = a3;
+    //   v7 = (sys[5483] << 28) | 1 | ((a2 << 16) & 0xFFF0000); words 34/15 = v7.
+    // Host: self links and the SystemI link (word 16) are 0 (host guard: intrusive
+    // lists need image addresses); the stamp word reads SystemI word 5483 through
+    // the caller-supplied system view (0 when absent); shifts are wrapping-exact.
+    let result = init(channel);
+    channel[3] = 0;
+    channel[8] = 0xFFFF_FFFF;
+    channel[7] = 0;
+    channel[12] = 0xFFFF_FFFF;
+    channel[5] = 0;
+    channel[6] = 0;
+    channel[11] = 0;
+    channel[45] = 0;
+    channel[1] = 0;
+    channel[2] = 0;
+    channel[9] = 0;
+    channel[10] = 0;
+    channel[43] = 0;
+    channel[44] = 0;
+    channel[13] = index as u32;
+    channel[16] = 0;
+    let sys_word = system.and_then(|words| words.get(5483)).copied().unwrap_or(0);
+    let stamp = sys_word.wrapping_shl(28) | 1 | (index as u32).wrapping_shl(16) & 0xFFF0000;
+    channel[34] = stamp;
+    channel[15] = stamp;
+    result
 }
 
 // 0x79e84 — __ZN4FMOD8ChannelIC1EiPNS_7SystemIE [watchdog]
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79e84_wdog248() -> ! {
-    todo!("0x79e84 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+pub fn stub_79e84_wdog248(channel: &mut [u32; 64], index: i32, system: Option<&[u32]>, init: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x79e84 `FMOD::ChannelI::ChannelI(int, SystemI *)` (thunk): tail-calls C2 (IDA 0x79dd4).
+    // Host: arguments forward unchanged.
+    crate::generated::stub_79dd4_wdog247(channel, index, system, init)
 }
 
 // 0x79e88 — __ZN4FMOD8ChannelIC2Ev [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79e88_wdog249() -> ! {
-    todo!("0x79e88 FMOD::ChannelI::ChannelI(void)")
+pub fn stub_79e88_wdog249(channel: &mut [u32; 64], init: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x79e88 FMOD::ChannelI::ChannelI(void): same word image as 0x79dd4
+    // minus the index/system stamp (words 13/16/34/15 stay 0); result = init(this).
+    // Host: self links are 0 (host guard: intrusive lists need image addresses).
+    let result = init(channel);
+    channel[3] = 0;
+    channel[8] = 0xFFFF_FFFF;
+    channel[7] = 0;
+    channel[12] = 0xFFFF_FFFF;
+    channel[5] = 0;
+    channel[6] = 0;
+    channel[11] = 0;
+    channel[45] = 0;
+    channel[1] = 0;
+    channel[2] = 0;
+    channel[9] = 0;
+    channel[10] = 0;
+    channel[43] = 0;
+    channel[44] = 0;
+    result
 }
 
 // 0x79ef0 — __ZN4FMOD8ChannelIC1Ev [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79ef0_wdog250() -> ! {
-    todo!("0x79ef0 FMOD::ChannelI::ChannelI(void)")
+pub fn stub_79ef0_wdog250(channel: &mut [u32; 64], init: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x79ef0 `FMOD::ChannelI::ChannelI(void)` (thunk): tail-calls C2 (IDA 0x79e88).
+    // Host: arguments forward unchanged.
+    crate::generated::stub_79e88_wdog249(channel, init)
 }
 
 // 0x79ef4 — __ZN4FMOD8ChannelI5allocEPNS_4DSPIEb [watchdog]
@@ -8219,29 +8972,90 @@ pub fn stub_79ef4_wdog251() -> ! {
 // 0x7a0f8 — __ZN4FMOD8ChannelI5startEv [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::start(void)")]
-pub fn stub_7a0f8_wdog252() -> ! {
-    todo!("0x7a0f8 FMOD::ChannelI::start(void)")
+pub fn stub_7a0f8_wdog252(channel: &mut [u32], sub_flags: &mut [u32], start: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x7a0f8 FMOD::ChannelI::start:
+    //   if (!this[18]) return 36; if (this[17] <= 0) goto clear;
+    //   i = 0; while (1) { result = (*(this[18+i]+36))(this[18+i]); if (result) break;
+    //     ++i; *(sub+36) &= ~0x80; *(sub+36) &= ~0x10; *(sub+36) |= 0x40;
+    //     if (this[17] <= i) goto clear; } return result;
+    //   clear: this[35] &= ~0x400; return 0.
+    // Host: links live at words 18.., count at word 17; sub_flags[i] stands in
+    // for the sub object +36 flag word (image-owned); slot-36 call is a seam.
+    if channel[18] == 0 {
+        return 36;
+    }
+    let count = channel[17] as i32;
+    if count > 0 {
+        let mut start = start;
+        for i in 0..count as usize {
+            let sub = channel[18 + i];
+            let result = start(sub);
+            if result != 0 {
+                return result;
+            }
+            if let Some(flags) = sub_flags.get_mut(i) {
+                *flags &= !0x80;
+                *flags &= !0x10;
+                *flags |= 0x40;
+            }
+        }
+    }
+    channel[35] &= !0x400;
+    crate::FMOD_OK
 }
 
 // 0x7a198 — __ZN4FMOD8ChannelI9getPausedEPb [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::getPaused(bool *)")]
-pub fn stub_7a198_wdog253() -> ! {
-    todo!("0x7a198 FMOD::ChannelI::getPaused(bool *)")
+pub fn stub_7a198_wdog253(channel: &[u32; 64], out: &mut bool, refresh: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x7a198 FMOD::ChannelI::getPaused: if (!a2) return 37 (INVALID_PARAM);
+    //   if (!this[18]) return 36; v3 = this[35] & 1; *a2 = v3;
+    //   if (!v3 && (this[35] & 0x200)) return (*(this[18]+56))(this[18]); return 0.
+    if channel[18] == 0 {
+        return 36;
+    }
+    let paused = channel[35] & 1 != 0;
+    *out = paused;
+    if !paused && channel[35] & 0x200 != 0 {
+        return refresh(channel[18]);
+    }
+    crate::FMOD_OK
 }
 
 // 0x7a1ec — __ZN4FMOD8ChannelI9getVolumeEPf [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getVolume(float *)")]
-pub fn stub_7a1ec_wdog254() -> ! {
-    todo!("0x7a1ec FMOD::ChannelI::getVolume(float *)")
+pub fn stub_7a1ec_wdog254(channel: &[u32; 64], out: &mut u32) -> i32 {
+    // IDA 0x7a1ec FMOD::ChannelI::getVolume: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v3 = this[18]; result = v3 ? this[58] : 36;
+    //   if (v3) { *a2 = result; return 0; } return result.
+    // Host: channel is the ChannelI word view; the float value travels as raw bits.
+    // A null out-pointer cannot occur through &mut (that 37 path is enforced by the borrow).
+    let live = channel[18];
+    let result: i32 = if live != 0 { channel[58] as i32 } else { 36 };
+    if live != 0 {
+        *out = result as u32;
+        return crate::FMOD_OK;
+    }
+    result
 }
 
 // 0x7a214 — __ZN4FMOD8ChannelI12getFrequencyEPf [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getFrequency(float *)")]
-pub fn stub_7a214_wdog255() -> ! {
-    todo!("0x7a214 FMOD::ChannelI::getFrequency(float *)")
+pub fn stub_7a214_wdog255(channel: &[u32; 64], out: &mut u32) -> i32 {
+    // IDA 0x7a214 FMOD::ChannelI::getFrequency: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v3 = this[18]; result = v3 ? this[59] : 36;
+    //   if (v3) { *a2 = result; return 0; } return result.
+    // Host: channel is the ChannelI word view; the float value travels as raw bits.
+    // A null out-pointer cannot occur through &mut (that 37 path is enforced by the borrow).
+    let live = channel[18];
+    let result: i32 = if live != 0 { channel[59] as i32 } else { 36 };
+    if live != 0 {
+        *out = result as u32;
+        return crate::FMOD_OK;
+    }
+    result
 }
 
 // 0x7a23c — __ZN4FMOD8ChannelI6setPanEfb [watchdog]
@@ -8275,8 +9089,18 @@ pub fn stub_7a7dc_wdog259() -> ! {
 // 0x7a8b0 — __ZN4FMOD8ChannelI7getMuteEPb [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::getMute(bool *)")]
-pub fn stub_7a8b0_wdog260() -> ! {
-    todo!("0x7a8b0 FMOD::ChannelI::getMute(bool *)")
+pub fn stub_7a8b0_wdog260(channel: &[u32; 64], out: &mut bool) -> i32 {
+    // IDA 0x7a8b0 FMOD::ChannelI::getMute: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   result = this[35] & 0x2; if (result) { *a2 = 1; return 0; } *a2 = 0; return result.
+    // Host: word 35 carries the mute flag bit. Both arms return FMOD_OK-valued 0, as in the original.
+    // Trailing bool arg (a3) is unread in the original; omitted on the host.
+    let result = channel[35] & 0x2;
+    if result != 0 {
+        *out = true;
+        return crate::FMOD_OK;
+    }
+    *out = false;
+    result as i32
 }
 
 // 0x7a8d8 — __ZN4FMOD8ChannelI15set3DAttributesEPK11FMOD_VECTORS3_ [watchdog]
@@ -8289,22 +9113,69 @@ pub fn stub_7a8d8_wdog261() -> ! {
 // 0x7aa4c — __ZN4FMOD8ChannelI19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_7aa4c_wdog262() -> ! {
-    todo!("0x7aa4c FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+pub fn stub_7aa4c_wdog262(channel: &[u32], props: u32, first: impl FnOnce(u32) -> i32, each: impl FnMut(u32, u32) -> i32) -> i32 {
+    // IDA 0x7aa4c FMOD::ChannelI::setReverbProperties: v3 = this[18] (word 72);
+    //   !v3 -> 36; count = this[17] (word 68); <= 0 -> 0;
+    //   v7 = (*(v3+128))(v3); then for each further link word: v10 = (*(link+128))(link, a2);
+    //   adopt v10 while no nonzero result yet (side-effect calls always run); return v7.
+    let live = channel[18];
+    if live == 0 {
+        return 36;
+    }
+    let count = channel[17] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut acc = first(live);
+    let mut each = each;
+    for i in 1..count as usize {
+        let r = each(channel[18 + i], props);
+        if acc == 0 {
+            acc = r;
+        }
+    }
+    acc
 }
 
 // 0x7aae0 — __ZN4FMOD8ChannelI19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_7aae0_wdog263() -> ! {
-    todo!("0x7aae0 FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_7aae0_wdog263(channel: &[u32], props: u32, first: impl FnOnce(u32) -> i32, each: impl FnMut(u32, u32) -> i32) -> i32 {
+    // IDA 0x7aae0 FMOD::ChannelI::getReverbProperties: same fan-out shape as
+    // 0x7aa4c through vtable slot 132; first-nonzero accumulation preserved.
+    let live = channel[18];
+    if live == 0 {
+        return 36;
+    }
+    let count = channel[17] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut acc = first(live);
+    let mut each = each;
+    for i in 1..count as usize {
+        let r = each(channel[18 + i], props);
+        if acc == 0 {
+            acc = r;
+        }
+    }
+    acc
 }
 
 // 0x7ab74 — __ZN4FMOD8ChannelI9isVirtualEPb [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::isVirtual(bool *)")]
-pub fn stub_7ab74_wdog264() -> ! {
-    todo!("0x7ab74 FMOD::ChannelI::isVirtual(bool *)")
+pub fn stub_7ab74_wdog264(channel: &[u32; 64], out: &mut bool, check_virtual: impl FnOnce(u32) -> i32) -> i32 {
+    // IDA 0x7ab74 FMOD::ChannelI::isVirtual: if (!a2) return 37;
+    //   v3 = this[18]; if (v3) return (*(v3+140))(v3); *a2 = 0; return 36.
+    // BUG: original at 0x7ab74 never writes *a2 on the live path (returns the
+    // virtual's code with the out-pointer untouched); preserved on the host.
+    let live = channel[18];
+    if live != 0 {
+        return check_virtual(live);
+    }
+    *out = false;
+    36
 }
 
 // 0x7aba0 — __ZN4FMOD8ChannelI21getAudibilityInternalEPfb [watchdog]
@@ -8317,36 +9188,89 @@ pub fn stub_7aba0_wdog265() -> ! {
 // 0x7ad00 — __ZN4FMOD8ChannelI13getAudibilityEPf [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getAudibility(float *)")]
-pub fn stub_7ad00_wdog266() -> ! {
-    todo!("0x7ad00 FMOD::ChannelI::getAudibility(float *)")
+pub fn stub_7ad00_wdog266() {
+    // IDA 0x7ad00 FMOD::ChannelI::getAudibility:
+    //   return ChannelI::getAudibilityInternal(this, a2, 1) (IDA 0x7aba0).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::stub_7aba0()
 }
 
 // 0x7ad08 — __ZN4FMOD8ChannelI15getCurrentSoundEPPNS_6SoundIE [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")]
-pub fn stub_7ad08_wdog267() -> ! {
-    todo!("0x7ad08 FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")
+pub fn stub_7ad08_wdog267(channel: &[u32; 64], out: &mut u32, sound_link: Option<&[u32]>, sound_word41: u32) -> i32 {
+    // IDA 0x7ad08 FMOD::ChannelI::getCurrentSound: if (!a2) return 37;
+    //   v3 = this[18]; if (!v3) { *a2 = 0; return 36; }
+    //   result = v3[6]; if (result) { *a2 = result[41]; return 0; } *a2 = 0; return result (= 0).
+    // Host: the linked channel words and the sound object's word 41 arrive via
+    // the caller (image-owned objects are not addressable on the host).
+    if channel[18] == 0 {
+        *out = 0;
+        return 36;
+    }
+    let link = sound_link.unwrap_or(&[]);
+    if link.len() > 6 && link[6] != 0 {
+        *out = sound_word41;
+        return crate::FMOD_OK;
+    }
+    *out = 0;
+    crate::FMOD_OK
 }
 
 // 0x7ad44 — __ZN4FMOD8ChannelI13getCurrentDSPEPPNS_4DSPIE [watchdog]
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")]
-pub fn stub_7ad44_wdog268() -> ! {
-    todo!("0x7ad44 FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")
+pub fn stub_7ad44_wdog268(channel: &[u32; 64], out: &mut u32, linked: Option<&[u32]>) -> i32 {
+    // IDA 0x7ad44 FMOD::ChannelI::getCurrentDSP: if (!a2) return 37;
+    //   v3 = this[18]; if (!v3) { *a2 = 0; return 36 (v3 + 36 with v3 = 0); }
+    //   *a2 = v3[7] (offset +28); return 0.
+    // Host: the linked object words arrive via the caller (image-owned).
+    if channel[18] == 0 {
+        *out = 0;
+        return 36;
+    }
+    match linked {
+        Some(words) if words.len() > 7 => {
+            *out = words[7];
+            crate::FMOD_OK
+        }
+        // Host guard: without the linked object words there is nothing to read.
+        _ => {
+            *out = 0;
+            36
+        }
+    }
 }
 
 // 0x7ad70 — __ZN4FMOD8ChannelI11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E [watchdog]
 // type: int __fastcall(int result, int)
 #[doc(alias = "FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
-pub fn stub_7ad70_wdog269() -> ! {
-    todo!("0x7ad70 FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+pub fn stub_7ad70_wdog269(channel: &mut [u32; 128], callback: u32) -> i32 {
+    // IDA 0x7ad70 FMOD::ChannelI::setCallback: v2 = this[18] (word 72);
+    //   if (v2) this[118] (word 472) = a2; else result = 36; if (v2) return 0; return result.
+    // Host: the callback pointer is kept as a target word.
+    let live = channel[18];
+    if live != 0 {
+        channel[118] = callback;
+        return crate::FMOD_OK;
+    }
+    36
 }
 
 // 0x7ad88 — __ZN4FMOD8ChannelI11getPositionEPjj [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_7ad88_wdog270() -> ! {
-    todo!("0x7ad88 FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")
+pub fn stub_7ad88_wdog270(channel: &[u32; 64], out: &mut u32, read_getposition: impl FnOnce(u32, &mut u32) -> i32) -> i32 {
+    // IDA 0x7ad88 FMOD::ChannelI::getPosition: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v4 = this[18]; v4 ? (*(v4+96))(v4) : 36.
+    // Host: word 18 links the live channel object (0 = dead); the virtual at vtable slot 96 reads the position through it, so it
+    // arrives as a caller seam that also fills the out-word (the original
+    // forwards its out-pointer into the virtual).
+    let live = channel[18];
+    if live != 0 {
+        return read_getposition(live, out);
+    }
+    36
 }
 
 // 0x7adb0 — __ZN4FMOD8ChannelI16updateSyncPointsEb [watchdog]
@@ -8366,29 +9290,84 @@ pub fn stub_7b1f8_wdog272() -> ! {
 // 0x7b31c — __ZN4FMOD8ChannelI10getDSPHeadEPPNS_4DSPIE [watchdog]
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_7b31c_wdog273() -> ! {
-    todo!("0x7b31c FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")
+pub fn stub_7b31c_wdog273(channel: &[u32; 64], out: &mut u32, read_getdsphead: impl FnOnce(u32, &mut u32) -> i32) -> i32 {
+    // IDA 0x7b31c FMOD::ChannelI::getDSPHead: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v4 = this[18]; v4 ? (*(v4+152))(v4) : 36.
+    // Host: word 18 links the live channel object (0 = dead); the virtual at vtable slot 152 reads the DSP head through it, so it
+    // arrives as a caller seam that also fills the out-word (the original
+    // forwards its out-pointer into the virtual).
+    let live = channel[18];
+    if live != 0 {
+        return read_getdsphead(live, out);
+    }
+    36
 }
 
 // 0x7b344 — __ZN4FMOD8ChannelI7getModeEPj [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int *)
 #[doc(alias = "FMOD::ChannelI::getMode(unsigned int *)")]
-pub fn stub_7b344_wdog274() -> ! {
-    todo!("0x7b344 FMOD::ChannelI::getMode(unsigned int *)")
+pub fn stub_7b344_wdog274(channel: &[u32; 64], linked: Option<&[u32]>, out: &mut u32) -> i32 {
+    // IDA 0x7b344 FMOD::ChannelI::getMode: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v3 = this[18]; if (!v3) return 36; *a2 = *(v3 + 32); return 0.
+    // Host: word 18 links the live object (0 = dead); the mode word sits at +32
+    // (word 8) of the linked object. A short host view also reports 36 (host guard:
+    // the original would fault reading past the object).
+    if channel[18] == 0 {
+        return 36;
+    }
+    match linked {
+        Some(words) if words.len() > 8 => {
+            *out = words[8];
+            crate::FMOD_OK
+        }
+        _ => 36,
+    }
 }
 
 // 0x7b36c — __ZN4FMOD8ChannelI12setLoopCountEi [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, int)
 #[doc(alias = "FMOD::ChannelI::setLoopCount(int)")]
-pub fn stub_7b36c_wdog275() -> ! {
-    todo!("0x7b36c FMOD::ChannelI::setLoopCount(int)")
+pub fn stub_7b36c_wdog275(channel: &[u32], loop_count: i32, first: impl FnOnce(u32) -> i32, each: impl FnMut(u32, i32) -> i32) -> i32 {
+    // IDA 0x7b36c FMOD::ChannelI::setLoopCount: v3 = this[18]; !v3 -> 36;
+    //   a2 < -1 -> 37 (INVALID_PARAM); count = this[17]; <= 0 -> 0;
+    //   v7 = (*(v3+104))(v3); then per further link: v10 = (*(link+104))(link, a2),
+    //   adopting while no nonzero result yet; return v7.
+    let live = channel[18];
+    if live == 0 {
+        return 36;
+    }
+    if loop_count < -1 {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    let count = channel[17] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut acc = first(live);
+    let mut each = each;
+    for i in 1..count as usize {
+        let r = each(channel[18 + i], loop_count);
+        if acc == 0 {
+            acc = r;
+        }
+    }
+    acc
 }
 
 // 0x7b40c — __ZN4FMOD8ChannelI12getLoopCountEPi [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, int *)
 #[doc(alias = "FMOD::ChannelI::getLoopCount(int *)")]
-pub fn stub_7b40c_wdog276() -> ! {
-    todo!("0x7b40c FMOD::ChannelI::getLoopCount(int *)")
+pub fn stub_7b40c_wdog276(channel: &[u32; 64], out: &mut u32, read_getloopcount: impl FnOnce(u32, &mut u32) -> i32) -> i32 {
+    // IDA 0x7b40c FMOD::ChannelI::getLoopCount: if (!a2) return 37 (FMOD_ERR_INVALID_PARAM);
+    //   v4 = this[18]; v4 ? (*(v4+108))(v4) : 36.
+    // Host: word 18 links the live channel object (0 = dead); the virtual at vtable slot 108 reads the loop count through it, so it
+    // arrives as a caller seam that also fills the out-word (the original
+    // forwards its out-pointer into the virtual).
+    let live = channel[18];
+    if live != 0 {
+        return read_getloopcount(live, out);
+    }
+    36
 }
 
 // 0x7b434 — __ZN4FMOD8ChannelI11setUserDataEPv [watchdog]
@@ -8401,8 +9380,13 @@ pub fn stub_7b434_wdog277() -> ! {
 // 0x7b440 — __ZN4FMOD8ChannelI11getUserDataEPPv [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, void **)
 #[doc(alias = "FMOD::ChannelI::getUserData(void **)")]
-pub fn stub_7b440_wdog278() -> ! {
-    todo!("0x7b440 FMOD::ChannelI::getUserData(void **)")
+pub fn stub_7b440_wdog278(channel: &[u32; 64], out: &mut u32) -> i32 {
+    // IDA 0x7b440 FMOD::ChannelI::getUserData: a2 ? (result = this[14]) : (result = 37);
+    //   if (a2) { *a2 = result; return 0; } return result.
+    // Host: the user-data pointer travels as a target word; a null out-pointer
+    // cannot occur through &mut (that 37 path is borrow-enforced).
+    *out = channel[14];
+    crate::FMOD_OK
 }
 
 // 0x7b458 — __ZN4FMOD8ChannelI17getMemoryUsedImplEPNS_13MemoryTrackerE [watchdog]
@@ -8415,8 +9399,30 @@ pub fn stub_7b458_wdog279() -> ! {
 // 0x7b47c — __ZN4FMOD8ChannelI6addDSPEPNS_4DSPIEPPNS_14DSPConnectionIE [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::DSPI *, FMOD::DSPConnectionI **)
 #[doc(alias = "FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")]
-pub fn stub_7b47c_wdog280() -> ! {
-    todo!("0x7b47c FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")
+pub fn stub_7b47c_wdog280(channel: &mut [u32; 64], dsp: u32, out_connection: &mut u32, read_head: impl FnOnce(u32, &mut u32) -> i32, insert: impl FnOnce(u32, u32) -> (i32, u32)) -> i32 {
+    // IDA 0x7b47c FMOD::ChannelI::addDSP:
+    //   if (!a2) return 37; if (!this[18]) return 36;
+    //   head_code = getDSPHead(this, &head) (IDA 0x7b31c, inlined here);
+    //   if (!head_code) { head_code = DSPI::insertInputBetween(head, a2, 0, 0, a3);
+    //     if (!head_code) this[56] = a2; } return head_code.
+    // Host: the head read and the DSP-graph insert arrive as seams.
+    if dsp == 0 {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    if channel[18] == 0 {
+        return 36;
+    }
+    let mut head = 0u32;
+    let mut code = read_head(channel[18], &mut head);
+    if code == 0 {
+        let (insert_code, connection) = insert(head, dsp);
+        code = insert_code;
+        if code == 0 {
+            channel[56] = dsp;
+            *out_connection = connection;
+        }
+    }
+    code
 }
 
 // 0x7b4e8 — __ZN4FMOD8ChannelI16setSpeakerLevelsE12FMOD_SPEAKERPfib [watchdog]
@@ -8520,8 +9526,14 @@ pub fn stub_7d8c4_wdog294() -> ! {
 // 0x7d9b8 — __ZN4FMOD8ChannelI11setPriorityEi [watchdog]
 // type: int __fastcall(FMOD::ChannelI *this, unsigned int)
 #[doc(alias = "FMOD::ChannelI::setPriority(int)")]
-pub fn stub_7d9b8_wdog295() -> ! {
-    todo!("0x7d9b8 FMOD::ChannelI::setPriority(int)")
+pub fn stub_7d9b8_wdog295(channel: &mut [u32; 64], priority: u32, update: impl FnOnce(&mut [u32; 64]) -> i32) -> i32 {
+    // IDA 0x7d9b8 FMOD::ChannelI::setPriority:
+    //   if (a2 > 0x100) return 37; this[37] = a2; return updatePosition(this) (seam).
+    if priority > 0x100 {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    channel[37] = priority;
+    update(channel)
 }
 
 // 0x7d9d0 — __ZN4FMOD8ChannelI9setVolumeEfb [watchdog]
@@ -8576,8 +9588,11 @@ pub fn stub_7ea20() -> ! {
 // 0x7ecf8 — __ZN4FMOD8ChannelI15setChannelGroupEPNS_13ChannelGroupIE
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::ChannelGroupI *)
 #[doc(alias = "FMOD::ChannelI::setChannelGroup(FMOD::ChannelGroupI *)")]
-pub fn stub_7ecf8() -> ! {
-    todo!("0x7ecf8 FMOD::ChannelI::setChannelGroup(FMOD::ChannelGroupI *)")
+pub fn stub_7ecf8() {
+    // IDA 0x7ecf8 FMOD::ChannelI::setChannelGroup:
+    //   return setChannelGroupInternal(this, a2, 1, 0) (IDA 0x7ea20).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::stub_7ea20()
 }
 
 // 0x7ed04 — __ZN4FMOD8ChannelI6stopExEj
@@ -8590,8 +9605,11 @@ pub fn stub_7ed04() -> ! {
 // 0x7f0f4 — __ZN4FMOD8ChannelI4stopEv
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::stop(void)")]
-pub fn stub_7f0f4() -> ! {
-    todo!("0x7f0f4 FMOD::ChannelI::stop(void)")
+pub fn stub_7f0f4() {
+    // IDA 0x7f0f4 FMOD::ChannelI::stop:
+    //   return ChannelI::stopEx(this, 95) (IDA 0x7ed04).
+    // Host: direct delegation; stopEx keeps its own (not yet implemented) body.
+    crate::stub_7ed04()
 }
 
 // 0x7f0fc — __ZN4FMOD8ChannelI4playEPNS_4DSPIEbbb
@@ -8611,8 +9629,29 @@ pub fn stub_7f23c() -> ! {
 // 0x7f4a0 — __ZN4FMOD8ChannelI13getMemoryUsedEPNS_13MemoryTrackerE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelI::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_7f4a0() -> ! {
-    todo!("0x7f4a0 FMOD::ChannelI::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_7f4a0(track: bool, flag_word4: &mut u32, get_impl: impl FnMut() -> i32) -> i32 {
+    // IDA 0x7f4a0 FMOD::ChannelI::getMemoryUsed:
+    //   if (a2) { if (*(u8 *)(a1+16)) return 0; result = (*a1)(a1); if (!result) byte16 = 1; }
+    //   else { result = (*a1)(a1); if (!result) byte16 = 0; } return result.
+    // Host: byte 16 is the low byte of the object word 4 (kept by the caller);
+    // the virtual getMemoryUsedImpl arrives as a seam.
+    let mut get_impl = get_impl;
+    if track {
+        if *flag_word4 & 0xFF != 0 {
+            return 0;
+        }
+        let result = get_impl();
+        if result == 0 {
+            *flag_word4 |= 1;
+        }
+        result
+    } else {
+        let result = get_impl();
+        if result == 0 {
+            *flag_word4 &= !1;
+        }
+        result
+    }
 }
 
 // 0x7f4f8 — __ZN4FMOD11ChannelPoolC2Ev
@@ -8625,8 +9664,10 @@ pub fn stub_7f4f8() -> ! {
 // 0x7f514 — __ZN4FMOD11ChannelPoolC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::ChannelPool::ChannelPool(void)")]
-pub fn stub_7f514() -> ! {
-    todo!("0x7f514 FMOD::ChannelPool::ChannelPool(void)")
+pub fn stub_7f514() -> i32 {
+    // IDA 0x7f514 `FMOD::ChannelPool::ChannelPool(void)` (thunk): tail-calls `__ZN4FMOD11ChannelPoolC2Ev` (IDA 0x7f4f8).
+    // Host: direct delegation; the target keeps its own (not yet implemented) body.
+    crate::generated::stub_7f4f8()
 }
 
 // 0x7f518 — __ZN4FMOD11ChannelPool15allocateChannelEPPNS_11ChannelRealEiiPib
@@ -8800,8 +9841,9 @@ pub fn stub_81074() -> ! {
 // 0x8115c — __GLOBAL__I__ZN4FMOD9aiffcodecE
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::aiffcodec")]
-pub fn stub_8115c() -> ! {
-    todo!("0x8115c global constructor keyed toFMOD::aiffcodec")
+pub fn stub_8115c() {
+    // IDA 0x8115c ``global constructor keyed to'FMOD::aiffcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x81168 — __ZN4FMOD8CodecDLS19setPositionInternalEijj
@@ -8877,8 +9919,9 @@ pub fn stub_82970() -> ! {
 // 0x829c8 — __GLOBAL__I__ZN4FMOD8dlscodecE
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::dlscodec")]
-pub fn stub_829c8() -> ! {
-    todo!("0x829c8 global constructor keyed toFMOD::dlscodec")
+pub fn stub_829c8() {
+    // IDA 0x829c8 ``global constructor keyed to'FMOD::dlscodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x829d4 — __ZN4FMODL24FMOD_FLAC_LengthCallbackEPK19FLAC__StreamDecoderPyPv
@@ -9003,36 +10046,65 @@ pub fn stub_83320() -> ! {
 // 0x8340c — __GLOBAL__I__ZN4FMOD9flaccodecE
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::flaccodec")]
-pub fn stub_8340c() -> ! {
-    todo!("0x8340c global constructor keyed toFMOD::flaccodec")
+pub fn stub_8340c() {
+    // IDA 0x8340c ``global constructor keyed to'FMOD::flaccodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x83418 — __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
 // type: int __fastcall(FMOD::CodecFSB *this, int, int *)
 #[doc(alias = "FMOD::CodecFSB::getNumSyncPoints(int,int *)")]
-pub fn stub_83418() -> ! {
-    todo!("0x83418 FMOD::CodecFSB::getNumSyncPoints(int,int *)")
+pub fn stub_83418(has_entry: bool, entry_next_word1: u32, out: &mut u32) -> i32 {
+    // IDA 0x83418 FMOD::CodecFSB::getNumSyncPoints: v3 = this[86] (link);
+    //   v5 = v3[a2]; v5 ? v5 = v5[1]; *a3 = v5 (unconditional); return 0.
+    // Host: the two-level table read arrives flattened (entry presence + its
+    // word-1 value); the out slot always fills (borrow-enforced).
+    *out = if has_entry { entry_next_word1 } else { 0 };
+    crate::FMOD_OK
 }
 
 // 0x83434 — __ZN4FMOD8CodecFSB16getSyncPointDataEiiPPcPi
 // type: int __fastcall(FMOD::CodecFSB *this, int, int, char **, int *)
 #[doc(alias = "FMOD::CodecFSB::getSyncPointData(int,int,char **,int *)")]
-pub fn stub_83434() -> ! {
-    todo!("0x83434 FMOD::CodecFSB::getSyncPointData(int,int,char **,int *)")
+pub fn stub_83434(sample_flag: bool, indexed_value: u32, entry_offset: u32, entry_head: u32, out_ptr: &mut u32, out_val: &mut u32) -> i32 {
+    // IDA 0x83434 FMOD::CodecFSB::getSyncPointData:
+    //   v5 = this[86][a2] + 8; sample bit (this[80][a2][48] & 0x4000) ?
+    //     (*a4 = 0, *a5 = v5[4 * a3]) : (*a4 = 260 * a3 + v5 + 4, *a5 = *(260 * a3 + v5)).
+    // Host: table values arrive flattened; offsets stay target words.
+    if sample_flag {
+        *out_ptr = 0;
+        *out_val = indexed_value;
+    } else {
+        *out_ptr = entry_offset;
+        *out_val = entry_head;
+    }
+    crate::FMOD_OK
 }
 
 // 0x834a0 — __ZN4FMOD8CodecFSB16canPointInternalEv
 // type: int __fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::canPointInternal(void)")]
-pub fn stub_834a0() -> ! {
-    todo!("0x834a0 FMOD::CodecFSB::canPointInternal(void)")
+pub fn stub_834a0(codec: &[u32; 96]) -> i32 {
+    // IDA 0x834a0 FMOD::CodecFSB::canPointInternal:
+    //   if (this[87]) return 45; result = this[89]; if (result) return 45; return result.
+    // Host: codec is the CodecFSB word view (words 87/89 are the point-ability flags).
+    if codec[87] != 0 {
+        return 45;
+    }
+    let result = codec[89];
+    if result != 0 {
+        return 45;
+    }
+    result as i32
 }
 
 // 0x834c8 — __ZN4FMOD8CodecFSB16canPointCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::canPointCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_834c8() -> ! {
-    todo!("0x834c8 FMOD::CodecFSB::canPointCallback(FMOD_CODEC_STATE *)")
+pub fn stub_834c8(codec: &[u32; 96]) -> i32 {
+    // IDA 0x834c8 FMOD::CodecFSB::canPointCallback:
+    //   if (a1) a1 -= 28; return canPointInternal(a1) (IDA 0x834a0, same file family).
+    crate::stub_834a0(codec)
 }
 
 // 0x834d4 — __ZN4FMOD8CodecFSB16getDescriptionExEv
@@ -9052,8 +10124,25 @@ pub fn stub_835d4() -> ! {
 // 0x83858 — __ZN4FMOD8CodecFSB21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::CodecFSB *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::CodecFSB::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_83858() -> ! {
-    todo!("0x83858 FMOD::CodecFSB::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
+pub fn stub_83858(codec: &mut [u32; 128], tracker_present: bool, get_impl: impl FnOnce(bool) -> i32) -> i32 {
+    // IDA 0x83858 FMOD::CodecFSB::getMemoryUsedCallback: same cached-flag shape
+    // as DSPSfxReverb 0xc1c2c with flag byte 269 (high byte of word 67).
+    if tracker_present {
+        if codec[67] & 0x100 != 0 {
+            return 0;
+        }
+        let result = get_impl(true);
+        if result == 0 {
+            codec[67] |= 0x100;
+        }
+        result
+    } else {
+        let result = get_impl(false);
+        if result == 0 {
+            codec[67] &= !0x100;
+        }
+        result
+    }
 }
 
 // 0x838b0 — __ZN4FMOD8CodecFSB13closeInternalEv
@@ -9066,22 +10155,53 @@ pub fn stub_838b0() -> ! {
 // 0x83c50 — __ZN4FMOD8CodecFSB13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_83c50() -> ! {
-    todo!("0x83c50 FMOD::CodecFSB::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_83c50() -> i32 {
+    // IDA 0x83c50 FMOD::CodecFSB::closeCallback:
+    //   if (a1) a1 -= 28; return closeInternal(a1) (IDA 0x838b0).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_838b0()
 }
 
 // 0x83c5c — __ZN4FMOD8CodecFSB13resetInternalEv
 // type: int __fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::resetInternal(void)")]
-pub fn stub_83c5c() -> ! {
-    todo!("0x83c5c FMOD::CodecFSB::resetInternal(void)")
+pub fn stub_83c5c(link87: Option<&mut [u32; 64]>, link89: Option<&mut [u32; 64]>, clear_buf: impl FnMut(u32), notify: impl FnMut()) -> i32 {
+    // IDA 0x83c5c FMOD::CodecFSB::resetInternal: per codec link (words 87/89):
+    //   v5 = v[57]; v[61] = 0; v5 ? memset(v5, 0, v[60]); cb = v[39];
+    //   cb ? cb(v + 7); return 0. Host: buffer clear + slot-39 notify are seams;
+    // the v+7 object tail is caller-bound inside the notify seam.
+    let mut clear_buf = clear_buf;
+    let mut notify = notify;
+    for link in [link87, link89].into_iter().flatten() {
+        if link[57] != 0 {
+            clear_buf(link[60]);
+        }
+        link[61] = 0;
+        if link[39] != 0 {
+            notify();
+        }
+    }
+    crate::FMOD_OK
 }
 
 // 0x83ce0 — __ZN4FMOD8CodecFSB13resetCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::resetCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_83ce0() -> ! {
-    todo!("0x83ce0 FMOD::CodecFSB::resetCallback(FMOD_CODEC_STATE *)")
+pub fn stub_83ce0(link87: Option<&mut [u32; 64]>, link89: Option<&mut [u32; 64]>, clear_buf: impl FnMut(u32), notify: impl FnMut()) -> i32 {
+    // IDA 0x83ce0 FMOD::CodecFSB::resetCallback:
+    //   if (a1) a1 -= 28; return resetInternal(a1) (IDA 0x83c5c, same body/seams).
+    let mut clear_buf = clear_buf;
+    let mut notify = notify;
+    for link in [link87, link89].into_iter().flatten() {
+        if link[57] != 0 {
+            clear_buf(link[60]);
+        }
+        link[61] = 0;
+        if link[39] != 0 {
+            notify();
+        }
+    }
+    crate::FMOD_OK
 }
 
 // 0x83cec — __ZN4FMOD8CodecFSB21getWaveFormatInternalEiP21FMOD_CODEC_WAVEFORMAT
@@ -9094,8 +10214,11 @@ pub fn stub_83cec() -> ! {
 // 0x842c4 — __ZN4FMOD8CodecFSB21getWaveFormatCallbackEP16FMOD_CODEC_STATEiP21FMOD_CODEC_WAVEFORMAT
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")]
-pub fn stub_842c4() -> ! {
-    todo!("0x842c4 FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")
+pub fn stub_842c4() -> i32 {
+    // IDA 0x842c4 FMOD::CodecFSB::getWaveFormatCallback:
+    //   if (a1) a1 -= 28; return getWaveFormatInternal(a1, a2, a3) (IDA 0x83cec).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_83cec()
 }
 
 // 0x842d0 — __ZN4FMOD8CodecFSB19soundcreateInternalEiP10FMOD_SOUND
@@ -9108,22 +10231,43 @@ pub fn stub_842d0() -> ! {
 // 0x84494 — __ZN4FMOD8CodecFSB19soundcreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND
 // type: int __fastcall(FMOD::CodecFSB *, int, FMOD::SoundI *)
 #[doc(alias = "FMOD::CodecFSB::soundcreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")]
-pub fn stub_84494() -> ! {
-    todo!("0x84494 FMOD::CodecFSB::soundcreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")
+pub fn stub_84494() -> i32 {
+    // IDA 0x84494 FMOD::CodecFSB::soundcreateCallback:
+    //   if (a1) a1 -= 28; return soundcreateInternal(a1, a2, a3) (IDA 0x842d0).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_842d0()
 }
 
 // 0x844a0 — __ZN4FMOD8CodecFSB19getPositionInternalEPjj
 // type: int __fastcall(FMOD::CodecFSB *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::getPositionInternal(unsigned int *,unsigned int)")]
-pub fn stub_844a0() -> ! {
-    todo!("0x844a0 FMOD::CodecFSB::getPositionInternal(unsigned int *,unsigned int)")
+pub fn stub_844a0(codec: &[u32; 128], out: &mut u32, unit: u32, wave_is_ima: bool, wave_frame_bytes: u32, tell: impl FnOnce() -> (i32, u32), entry_val: u32) -> i32 {
+    // IDA 0x844a0 FMOD::CodecFSB::getPositionInternal:
+    //   getWaveFormatInternal + File::tell (seam) -> (code, pos); code ? return it;
+    //   unit == 2 && wave format word == 6 required else 37;
+    //   frame bytes nonzero -> *a2 = ((14 * (pos - entry)) >> 3) / frame_bytes.
+    // Host: 32-bit arithmetic is wrapping-exact; the wave/entry reads are caller
+    // values (image-owned codec tables).
+    let (code, pos) = tell();
+    if code != 0 {
+        return code;
+    }
+    if unit != 2 || !wave_is_ima {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    if wave_frame_bytes != 0 {
+        *out = (14u32.wrapping_mul(pos.wrapping_sub(entry_val)) >> 3) / wave_frame_bytes;
+    }
+    crate::FMOD_OK
 }
 
 // 0x84540 — __ZN4FMOD8CodecFSB19getPositionCallbackEP16FMOD_CODEC_STATEPjj
 // type: int __fastcall(FMOD::CodecFSB *, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")]
-pub fn stub_84540() -> ! {
-    todo!("0x84540 FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")
+pub fn stub_84540(codec: &[u32; 128], out: &mut u32, unit: u32, wave_is_ima: bool, wave_frame_bytes: u32, tell: impl FnOnce() -> (i32, u32), entry_val: u32) -> i32 {
+    // IDA 0x84540 FMOD::CodecFSB::getPositionCallback:
+    //   if (a1) a1 -= 28; return getPositionInternal(a1, a2, a3) (IDA 0x844a0).
+    crate::stub_844a0(codec, out, unit, wave_is_ima, wave_frame_bytes, tell, entry_val)
 }
 
 // 0x8454c — __ZN4FMOD8CodecFSB12readInternalEPvjPj
@@ -9136,8 +10280,11 @@ pub fn stub_8454c() -> ! {
 // 0x84ef4 — __ZN4FMOD8CodecFSB12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecFSB *, int, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_84ef4() -> ! {
-    todo!("0x84ef4 FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_84ef4() -> i32 {
+    // IDA 0x84ef4 FMOD::CodecFSB::readCallback:
+    //   if (a1) a1 -= 28; return readInternal(a1, a2, a3, a4) (IDA 0x8454c).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_8454c()
 }
 
 // 0x84f00 — __ZN4FMOD8CodecFSB12openInternalEjP22FMOD_CREATESOUNDEXINFO
@@ -9150,8 +10297,11 @@ pub fn stub_84f00() -> ! {
 // 0x86654 — __ZN4FMOD8CodecFSB12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_86654() -> ! {
-    todo!("0x86654 FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_86654() -> i32 {
+    // IDA 0x86654 FMOD::CodecFSB::openCallback:
+    //   if (a1) a1 -= 28; return openInternal(a1, a2, a3) (IDA 0x84f00).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_84f00()
 }
 
 // 0x86660 — __ZN4FMOD8CodecFSB19setPositionInternalEijj
@@ -9164,15 +10314,19 @@ pub fn stub_86660() -> ! {
 // 0x86aa0 — __ZN4FMOD8CodecFSB19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecFSB *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_86aa0() -> ! {
-    todo!("0x86aa0 FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_86aa0() -> i32 {
+    // IDA 0x86aa0 FMOD::CodecFSB::setPositionCallback:
+    //   if (a1) a1 -= 28; return setPositionInternal(a1, a2, a3, a4) (IDA 0x86660).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_86660()
 }
 
 // 0x86b10 — __GLOBAL__I__ZN4FMOD8fsbcodecE
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::fsbcodec")]
-pub fn stub_86b10() -> ! {
-    todo!("0x86b10 global constructor keyed toFMOD::fsbcodec")
+pub fn stub_86b10() {
+    // IDA 0x86b10 ``global constructor keyed to'FMOD::fsbcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x86b1c — __ZN4FMOD7CodecIT8readBitsEhPj
@@ -9388,8 +10542,9 @@ pub fn stub_8ebc0() -> ! {
 // 0x8ec18 — __GLOBAL__I__ZN4FMOD7itcodecE
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::itcodec")]
-pub fn stub_8ec18() -> ! {
-    todo!("0x8ec18 global constructor keyed toFMOD::itcodec")
+pub fn stub_8ec18() {
+    // IDA 0x8ec18 ``global constructor keyed to'FMOD::itcodec`: `__static_initialization_and_destruction_0` keyed global
+    // constructor. Host statics initialize themselves; no host effect - no-op carrier.
 }
 
 // 0x8ec24 — __ZN4FMOD19CodecMIDISubChannel15findArticulatorEii
@@ -9437,78 +10592,207 @@ pub fn stub_8f2ec() -> ! {
 // 0x8f320 — __ZN4FMOD9CodecMIDI27getMusicNumChannelsInternalEPi
 // type: int __fastcall(FMOD::CodecMIDI *this, int *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicNumChannelsInternal(int *)")]
-pub fn stub_8f320() -> ! {
-    todo!("0x8f320 FMOD::CodecMIDI::getMusicNumChannelsInternal(int *)")
+pub fn stub_8f320(midi: &[u32; 3136], out: &mut u32) -> i32 {
+    // IDA 0x8f320 FMOD::CodecMIDI::getMusicNumChannelsInternal:
+    //   if (!a2) return 37 (borrow-enforced); v3 = 0;
+    //   for (i = 0; i != 12032; i += 752) { if (this[i + 101w]) ++v3; }
+    //   *a2 = v3; return 0.
+    // Host: 16 MIDI channels stride 188 words (752 bytes); word 101 is live flag.
+    let mut count = 0u32;
+    for slot in 0..16usize {
+        if midi[slot * 188 + 101] != 0 {
+            count += 1;
+        }
+    }
+    *out = count;
+    crate::FMOD_OK
 }
 
 // 0x8f35c — __ZN4FMOD9CodecMIDI29setMusicChannelVolumeInternalEif
 // type: int __fastcall(FMOD::CodecMIDI *this, unsigned int, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicChannelVolumeInternal(int,float)")]
-pub fn stub_8f35c() -> ! {
-    todo!("0x8f35c FMOD::CodecMIDI::setMusicChannelVolumeInternal(int,float)")
+pub fn stub_8f35c(midi: &mut [u32; 3136], channel: u32, volume: f32) -> i32 {
+    // IDA 0x8f35c FMOD::CodecMIDI::setMusicChannelVolumeInternal:
+    //   a2 > 0xF || a3 ∉ [0,1] -> 37; scan the 16 slots (stride 752) for the
+    //   a2-th live one (word 101 set); store a3 at float word 278 + 188 * slot.
+    //   No live match -> return 0 unchanged.
+    if channel > 0xF || volume < 0.0 || volume > 1.0 {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    // NOTE: mirrors the original's LABEL_9 flow exactly: each slot is tested
+    // live first; live non-matching slots bump `found`; slot 16 exits unchanged.
+    let mut slot = 0usize;
+    let mut found = 0u32;
+    loop {
+        if midi[slot * 188 + 101] != 0 {
+            if channel == found {
+                break;
+            }
+            found += 1;
+        }
+        slot += 1;
+        if slot == 16 {
+            return crate::FMOD_OK;
+        }
+    }
+    midi[278 + slot * 188] = volume.to_bits();
+    crate::FMOD_OK
 }
 
 // 0x8f3fc — __ZN4FMOD9CodecMIDI29getMusicChannelVolumeInternalEiPf
 // type: int __fastcall(FMOD::CodecMIDI *this, unsigned int, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicChannelVolumeInternal(int,float *)")]
-pub fn stub_8f3fc() -> ! {
-    todo!("0x8f3fc FMOD::CodecMIDI::getMusicChannelVolumeInternal(int,float *)")
+pub fn stub_8f3fc(midi: &[u32; 3136], channel: u32, out: &mut f32) -> i32 {
+    // IDA 0x8f3fc FMOD::CodecMIDI::getMusicChannelVolumeInternal:
+    //   a3 null or a2 > 0xF -> 37; same LABEL_9 slot scan as 0x8f35c;
+    //   *a3 = float word 278 + 188 * slot; return 0.
+    if channel > 0xF {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    // NOTE: same LABEL_9 slot scan as 0x8f35c (live-test first, then compare).
+    let mut slot = 0usize;
+    let mut found = 0u32;
+    loop {
+        if midi[slot * 188 + 101] != 0 {
+            if channel == found {
+                break;
+            }
+            found += 1;
+        }
+        slot += 1;
+        if slot == 16 {
+            return crate::FMOD_OK;
+        }
+    }
+    *out = f32::from_bits(midi[278 + slot * 188]);
+    crate::FMOD_OK
 }
 
 // 0x8f488 — __ZN4FMOD9CodecMIDI21setMusicSpeedInternalEf
 // type: int __fastcall(FMOD::CodecMIDI *this, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicSpeedInternal(float)")]
-pub fn stub_8f488() -> ! {
-    todo!("0x8f488 FMOD::CodecMIDI::setMusicSpeedInternal(float)")
+pub fn stub_8f488(midi: &mut [u32; 3136], speed: f32, sys_word264: u32) -> i32 {
+    // IDA 0x8f488 FMOD::CodecMIDI::setMusicSpeedInternal:
+    //   this[3125] = a2; rate = (this[3123] / a2) / 1000 * *(this[8] + 264);
+    //   this[3109] = (int)(rate + 0.5); if (this[3109] < 0x200) {
+    //     this[3109] = 512; w = 512 / rate; this[3110] = w;
+    //     this[3122] = this[3122] * w; } return 0.
+    // Host: the system tick word (*(this[8] + 264)) arrives by value; float/int
+    // conversions are Rust `as` (saturating) where the ARM original is UB on
+    // overflow — identical for in-range song rates.
+    midi[3125] = speed.to_bits();
+    let base = f32::from_bits(midi[3123]);
+    let rate = base / speed / 1000.0 * sys_word264 as f32;
+    let stepped = (rate + 0.5) as i32;
+    midi[3109] = stepped as u32;
+    if (stepped as u32) < 0x200 {
+        midi[3109] = 512;
+        let w = 512.0 / rate;
+        midi[3110] = w.to_bits();
+        let cur = f32::from_bits(midi[3122]);
+        midi[3122] = (cur * w).to_bits();
+    }
+    crate::FMOD_OK
 }
 
 // 0x8f528 — __ZN4FMOD9CodecMIDI21getMusicSpeedInternalEPf
 // type: int __fastcall(FMOD::CodecMIDI *this, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicSpeedInternal(float *)")]
-pub fn stub_8f528() -> ! {
-    todo!("0x8f528 FMOD::CodecMIDI::getMusicSpeedInternal(float *)")
+pub fn stub_8f528(midi: &[u32; 3136], out: &mut f32) -> i32 {
+    // IDA 0x8f528 FMOD::CodecMIDI::getMusicSpeedInternal:
+    //   *a2 = this[3125] (float); return 0.
+    *out = f32::from_bits(midi[3125]);
+    crate::FMOD_OK
 }
 
 // 0x8f540 — __ZN4FMOD9CodecMIDI27getMusicNumChannelsCallbackEP16FMOD_CODEC_STATEPi
 // type: int __fastcall(FMOD::CodecMIDI *, int *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicNumChannelsCallback(FMOD_CODEC_STATE *,int *)")]
-pub fn stub_8f540() -> ! {
-    todo!("0x8f540 FMOD::CodecMIDI::getMusicNumChannelsCallback(FMOD_CODEC_STATE *,int *)")
+pub fn stub_8f540(midi: &[u32; 3136], out: &mut u32) -> i32 {
+    // IDA 0x8f540 FMOD::CodecMIDI::getMusicNumChannelsCallback:
+    //   if (a1) a1 -= 28; return getMusicNumChannelsInternal(a1, a2) (IDA 0x8f320).
+    // Host: the -28 state rewind is subsumed (caller passes the object words).
+    crate::stub_8f320(midi, out)
 }
 
 // 0x8f54c — __ZN4FMOD9CodecMIDI29setMusicChannelVolumeCallbackEP16FMOD_CODEC_STATEif
 // type: int __fastcall(FMOD::CodecMIDI *, unsigned int, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float)")]
-pub fn stub_8f54c() -> ! {
-    todo!("0x8f54c FMOD::CodecMIDI::setMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float)")
+pub fn stub_8f54c(midi: &mut [u32; 3136], channel: u32, volume: f32) -> i32 {
+    // IDA 0x8f54c FMOD::CodecMIDI::setMusicChannelVolumeCallback:
+    //   if (a1) a1 -= 28; return setMusicChannelVolumeInternal(a1, a2, a3) (0x8f35c).
+    crate::stub_8f35c(midi, channel, volume)
 }
 
 // 0x8f558 — __ZN4FMOD9CodecMIDI29getMusicChannelVolumeCallbackEP16FMOD_CODEC_STATEiPf
 // type: int __fastcall(FMOD::CodecMIDI *, unsigned int, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float *)")]
-pub fn stub_8f558() -> ! {
-    todo!("0x8f558 FMOD::CodecMIDI::getMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float *)")
+pub fn stub_8f558(midi: &[u32; 3136], channel: u32, out: &mut f32) -> i32 {
+    // IDA 0x8f558 FMOD::CodecMIDI::getMusicChannelVolumeCallback:
+    //   if (a1) a1 -= 28; return getMusicChannelVolumeInternal(a1, a2, a3) (0x8f3fc).
+    crate::stub_8f3fc(midi, channel, out)
 }
 
 // 0x8f564 — __ZN4FMOD9CodecMIDI21setMusicSpeedCallbackEP16FMOD_CODEC_STATEf
 // type: int __fastcall(FMOD::CodecMIDI *, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicSpeedCallback(FMOD_CODEC_STATE *,float)")]
-pub fn stub_8f564() -> ! {
-    todo!("0x8f564 FMOD::CodecMIDI::setMusicSpeedCallback(FMOD_CODEC_STATE *,float)")
+pub fn stub_8f564(midi: &mut [u32; 3136], speed: f32, sys_word264: u32) -> i32 {
+    // IDA 0x8f564 FMOD::CodecMIDI::setMusicSpeedCallback:
+    //   if (a1) a1 -= 28; return setMusicSpeedInternal(a1, a2) (IDA 0x8f488).
+    crate::stub_8f488(midi, speed, sys_word264)
 }
 
 // 0x8f570 — __ZN4FMOD9CodecMIDI21getMusicSpeedCallbackEP16FMOD_CODEC_STATEPf
 // type: int __fastcall(FMOD::CodecMIDI *, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicSpeedCallback(FMOD_CODEC_STATE *,float *)")]
-pub fn stub_8f570() -> ! {
-    todo!("0x8f570 FMOD::CodecMIDI::getMusicSpeedCallback(FMOD_CODEC_STATE *,float *)")
+pub fn stub_8f570(midi: &[u32; 3136], out: &mut f32) -> i32 {
+    // IDA 0x8f570 FMOD::CodecMIDI::getMusicSpeedCallback:
+    //   if (a1) a1 -= 28; return getMusicSpeedInternal(a1, a2) (IDA 0x8f528).
+    crate::stub_8f528(midi, out)
+}
+
+/// IDA 0x8f57c FMOD_CODEC_DESCRIPTION `midicodec` host view: description name
+/// plus callback EAs kept as target words (the image description is not
+/// addressable on the host).
+pub struct MidiCodecDescription {
+    pub name: &'static str,
+    pub version: u32,
+    pub kind: u32,
+    pub open_ea: u32,
+    pub close_ea: u32,
+    pub read_ea: u32,
+    pub set_position_ea: u32,
+    pub get_num_channels_ea: u32,
+    pub set_channel_volume_ea: u32,
+    pub get_channel_volume_ea: u32,
+    pub set_speed_ea: u32,
+    pub get_speed_ea: u32,
 }
 
 // 0x8f57c — __ZN4FMOD9CodecMIDI16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMIDI *this)
 #[doc(alias = "FMOD::CodecMIDI::getDescriptionEx(void)")]
-pub fn stub_8f57c() -> ! {
-    todo!("0x8f57c FMOD::CodecMIDI::getDescriptionEx(void)")
+pub fn stub_8f57c() -> &'static MidiCodecDescription {
+    // IDA 0x8f57c FMOD::CodecMIDI::getDescriptionEx: fills the 0x7C-byte
+    // FMOD_CODEC_DESCRIPTION `midicodec` (name "FMOD MIDI Codec", version 65792,
+    // kind 2, wav-format tag 1, open/close/read/set-position/music/param callback
+    // EAs, tail 11/13200) and returns its address. Host: the description is a
+    // static with the callback EAs kept as target words (no host effect).
+    static MIDICODEC: MidiCodecDescription = MidiCodecDescription {
+        name: "FMOD MIDI Codec",
+        version: 65792,
+        kind: 2,
+        open_ea: 0x92a68,
+        close_ea: 0x8f8d0,
+        read_ea: 0x92fac,
+        set_position_ea: 0x92b94,
+        get_num_channels_ea: 0x8f540,
+        set_channel_volume_ea: 0x8f54c,
+        get_channel_volume_ea: 0x8f558,
+        set_speed_ea: 0x8f564,
+        get_speed_ea: 0x8f570,
+    };
+    &MIDICODEC
 }
 
 // 0x8f674 — __ZN4FMOD9CodecMIDI13closeInternalEv
@@ -9521,8 +10805,11 @@ pub fn stub_8f674() -> ! {
 // 0x8f8d0 — __ZN4FMOD9CodecMIDI13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecMIDI *)
 #[doc(alias = "FMOD::CodecMIDI::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_8f8d0() -> ! {
-    todo!("0x8f8d0 FMOD::CodecMIDI::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_8f8d0() -> i32 {
+    // IDA 0x8f8d0 FMOD::CodecMIDI::closeCallback:
+    //   if (a1) a1 -= 28; return closeInternal(a1) (IDA 0x8f674).
+    // Host: direct delegation; the internal keeps its own (not yet implemented) body.
+    crate::generated::stub_8f674()
 }
 
 // 0x8f8dc — __ZN4FMOD14CodecMIDITrack4readEPvi

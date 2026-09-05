@@ -133,8 +133,9 @@ pub fn stub_3f2130() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE10isReadOnlyEv")]
-pub fn stub_3f22c0() -> ! {
-    todo!("0x3f22c0 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isReadOnly(void)const")
+pub fn stub_3f22c0() -> u32 {
+    // IDA 0x3f22c0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3f22c4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE11isWriteOnlyEv
@@ -142,8 +143,9 @@ pub fn stub_3f22c0() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE11isWriteOnlyEv")]
-pub fn stub_3f22c4() -> ! {
-    todo!("0x3f22c4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isWriteOnly(void)const")
+pub fn stub_3f22c4() -> u32 {
+    // IDA 0x3f22c4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3f22c8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE8getValueEPKNS0_13DescribedBaseE

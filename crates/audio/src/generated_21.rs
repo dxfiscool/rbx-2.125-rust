@@ -254,20 +254,23 @@ pub fn stub_20c7b4() -> ! {
 
 // 0x20c82c — _tt_face_load_sfnt_header_stub
 #[doc(alias = "_tt_face_load_sfnt_header_stub")]
-pub fn stub_20c82c() -> ! {
-    todo!("0x20c82c _tt_face_load_sfnt_header_stub")
+pub fn stub_20c82c() -> u32 {
+    // IDA 0x20c82c: `ARM mov r0,#7; bx lr` (bytes 0700a0e31eff2fe1) - returns 7 in r0 on the host.
+    7u32
 }
 
 // 0x20c834 — _tt_face_load_directory_stub
 #[doc(alias = "_tt_face_load_directory_stub")]
-pub fn stub_20c834() -> ! {
-    todo!("0x20c834 _tt_face_load_directory_stub")
+pub fn stub_20c834() -> u32 {
+    // IDA 0x20c834: `ARM mov r0,#7; bx lr` (bytes 0700a0e31eff2fe1) - returns 7 in r0 on the host.
+    7u32
 }
 
 // 0x20c83c — _tt_face_load_hdmx_stub
 #[doc(alias = "_tt_face_load_hdmx_stub")]
-pub fn stub_20c83c() -> ! {
-    todo!("0x20c83c _tt_face_load_hdmx_stub")
+pub fn stub_20c83c() -> u32 {
+    // IDA 0x20c83c: `ARM mov r0,#7; bx lr` (bytes 0700a0e31eff2fe1) - returns 7 in r0 on the host.
+    7u32
 }
 
 // 0x20c844 — _tt_face_free_hdmx_stub
@@ -278,8 +281,9 @@ pub fn stub_20c844() -> ! {
 
 // 0x20c848 — _tt_face_load_sbit_stub
 #[doc(alias = "_tt_face_load_sbit_stub")]
-pub fn stub_20c848() -> ! {
-    todo!("0x20c848 _tt_face_load_sbit_stub")
+pub fn stub_20c848() -> u32 {
+    // IDA 0x20c848: `ARM mov r0,#7; bx lr` (bytes 0700a0e31eff2fe1) - returns 7 in r0 on the host.
+    7u32
 }
 
 // 0x20c850 — _tt_face_free_sbit_stub
@@ -290,14 +294,16 @@ pub fn stub_20c850() -> ! {
 
 // 0x20c854 — _tt_face_load_charmap_stub
 #[doc(alias = "_tt_face_load_charmap_stub")]
-pub fn stub_20c854() -> ! {
-    todo!("0x20c854 _tt_face_load_charmap_stub")
+pub fn stub_20c854() -> u32 {
+    // IDA 0x20c854: `ARM mov r0,#7; bx lr` (bytes 0700a0e31eff2fe1) - returns 7 in r0 on the host.
+    7u32
 }
 
 // 0x20c85c — _tt_face_free_charmap_stub
 #[doc(alias = "_tt_face_free_charmap_stub")]
-pub fn stub_20c85c() -> ! {
-    todo!("0x20c85c _tt_face_free_charmap_stub")
+pub fn stub_20c85c() -> u32 {
+    // IDA 0x20c85c: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x20c864 — _tt_face_set_sbit_strike_stub

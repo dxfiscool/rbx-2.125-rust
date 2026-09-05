@@ -89,8 +89,9 @@ pub fn stub_ee1824() -> ! {
 // 0xee1864 — -[BSAFHTTPRequestOperation isConcurrent]
 // type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
 #[doc(alias = "-[BSAFHTTPRequestOperation isConcurrent]")]
-pub fn stub_ee1864() -> ! {
-    todo!("0xee1864 -[BSAFHTTPRequestOperation isConcurrent]")
+pub fn stub_ee1864() -> u32 {
+    // IDA 0xee1864: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0xee1868 — -[BSAFHTTPRequestOperation start]

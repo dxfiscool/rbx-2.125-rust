@@ -118,16 +118,18 @@ pub fn stub_5f9cb4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_5f9ce0() -> ! {
-    todo!("0x5f9ce0 __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")
+pub fn stub_5f9ce0() -> u32 {
+    // IDA 0x5f9ce0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5f9ce4 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_5f9ce4() -> ! {
-    todo!("0x5f9ce4 __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")
+pub fn stub_5f9ce4() -> u32 {
+    // IDA 0x5f9ce4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5f9ce8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -214,8 +216,9 @@ pub fn stub_5fa0c8() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14hasStringValueEv")]
-pub fn stub_5fa0ec() -> ! {
-    todo!("0x5fa0ec __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14hasStringValueEv")
+pub fn stub_5fa0ec() -> u32 {
+    // IDA 0x5fa0ec: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5fa0f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -318,16 +321,18 @@ pub fn stub_5fa51c() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_5fa55c() -> ! {
-    todo!("0x5fa55c __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_5fa55c() -> u32 {
+    // IDA 0x5fa55c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fa560 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_5fa560() -> ! {
-    todo!("0x5fa560 __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_5fa560() -> u32 {
+    // IDA 0x5fa560: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fa564 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -366,16 +371,18 @@ pub fn stub_5fa6bc() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_5fa6e8() -> ! {
-    todo!("0x5fa6e8 __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_5fa6e8() -> u32 {
+    // IDA 0x5fa6e8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fa6ec — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_5fa6ec() -> ! {
-    todo!("0x5fa6ec __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_5fa6ec() -> u32 {
+    // IDA 0x5fa6ec: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5fa6f0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -502,8 +509,9 @@ pub fn stub_5fba7c() {
 // demangled: RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const
 #[doc(alias = "RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX13BasePlayerGui11askAddChildEPKNS_8InstanceE")]
-pub fn stub_5fba88() -> ! {
-    todo!("0x5fba88 __ZNK3RBX13BasePlayerGui11askAddChildEPKNS_8InstanceE")
+pub fn stub_5fba88() -> u32 {
+    // IDA 0x5fba88: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5fba8c — __ZN3RBX13BasePlayerGui17onDescendantAddedEPNS_8InstanceE

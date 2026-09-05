@@ -240,8 +240,9 @@ pub fn stub_0x3a5704() -> ! {
 // type: int __fastcall(RBX::Animator *this, const RBX::Instance *)
 #[doc(alias = "RBX::Animator::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX8Animator12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x3a5880() -> ! {
-    todo!("0x3a5880 RBX::Animator::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x3a5880() -> u32 {
+    // IDA 0x3a5880: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3a5acc — __ZN5boost3_bi5list5INS0_5valueIPN3RBX8AnimatorEEENS_3argILi1EEENS2_IdEENS2_INS3_16KeyframeSequence8PriorityEEENS2_IPSt6vectorINS3_15PoseAccumulatorESaISE_EEEEEclINS_4_mfi3mf4IvS4_NS_10shared_ptrINS3_19AnimationTrackStateEEEdSB_SH_EENS0_5list1IRSP_EEEEvNS0_4typeIvEERT_RT0_i

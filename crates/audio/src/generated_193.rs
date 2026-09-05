@@ -90,16 +90,18 @@ pub fn stub_484efc() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_484f3c() -> ! {
-    todo!("0x484f3c RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isReadOnly(void)const")
+pub fn stub_484f3c() -> u32 {
+    // IDA 0x484f3c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x484f40 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_484f40() -> ! {
-    todo!("0x484f40 RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isWriteOnly(void)const")
+pub fn stub_484f40() -> u32 {
+    // IDA 0x484f40: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x484f44 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -211,16 +213,18 @@ pub fn stub_4853b0() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_4853dc() -> ! {
-    todo!("0x4853dc RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isReadOnly(void)const")
+pub fn stub_4853dc() -> u32 {
+    // IDA 0x4853dc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4853e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_4853e0() -> ! {
-    todo!("0x4853e0 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isWriteOnly(void)const")
+pub fn stub_4853e0() -> u32 {
+    // IDA 0x4853e0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4853e4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -260,16 +264,18 @@ pub fn stub_485544() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_485574() -> ! {
-    todo!("0x485574 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isReadOnly(void)const")
+pub fn stub_485574() -> u32 {
+    // IDA 0x485574: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x485578 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_485578() -> ! {
-    todo!("0x485578 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_485578() -> u32 {
+    // IDA 0x485578: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x48557c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -309,16 +315,18 @@ pub fn stub_4856d8() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_485704() -> ! {
-    todo!("0x485704 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isReadOnly(void)const")
+pub fn stub_485704() -> u32 {
+    // IDA 0x485704: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x485708 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_485708() -> ! {
-    todo!("0x485708 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isWriteOnly(void)const")
+pub fn stub_485708() -> u32 {
+    // IDA 0x485708: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x48570c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -358,16 +366,18 @@ pub fn stub_485868() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_485894() -> ! {
-    todo!("0x485894 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isReadOnly(void)const")
+pub fn stub_485894() -> u32 {
+    // IDA 0x485894: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x485898 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_485898() -> ! {
-    todo!("0x485898 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_485898() -> u32 {
+    // IDA 0x485898: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x48589c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -455,8 +465,9 @@ pub fn stub_485c7c() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14hasStringValueEv")]
-pub fn stub_485ca0() -> ! {
-    todo!("0x485ca0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const")
+pub fn stub_485ca0() -> u32 {
+    // IDA 0x485ca0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x485ca4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14getStringValueEPKNS0_13DescribedBaseE
@@ -580,16 +591,18 @@ pub fn stub_486190() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_486330() -> ! {
-    todo!("0x486330 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isReadOnly(void)const")
+pub fn stub_486330() -> u32 {
+    // IDA 0x486330: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x486334 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_486334() -> ! {
-    todo!("0x486334 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::GetSetImpl<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>::isWriteOnly(void)const")
+pub fn stub_486334() -> u32 {
+    // IDA 0x486334: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x486338 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -678,8 +691,8 @@ pub fn stub_4865e8() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX16DataModelArbiter16ConcurrencyModelEE13destruct_funcEPc")]
-pub fn stub_486658() -> ! {
-    todo!("0x486658 rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::destruct_func(char *)")
+pub fn stub_486658() {
+    // IDA 0x486658: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x48665c — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEEC2IMS2_KFS5_vEMS2_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -751,8 +764,9 @@ pub fn stub_4869f4() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE14hasStringValueEv")]
-pub fn stub_486a18() -> ! {
-    todo!("0x486a18 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::hasStringValue(void)const")
+pub fn stub_486a18() -> u32 {
+    // IDA 0x486a18: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x486a1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE14getStringValueEPKNS0_13DescribedBaseE
@@ -858,16 +872,18 @@ pub fn stub_486e48() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE10GetSetImplIMS2_KFS5_vEMS2_FvS5_EE10isReadOnlyEv")]
-pub fn stub_486e88() -> ! {
-    todo!("0x486e88 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isReadOnly(void)const")
+pub fn stub_486e88() -> u32 {
+    // IDA 0x486e88: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x486e8c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE10GetSetImplIMS2_KFS5_vEMS2_FvS5_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE10GetSetImplIMS2_KFS5_vEMS2_FvS5_EE11isWriteOnlyEv")]
-pub fn stub_486e8c() -> ! {
-    todo!("0x486e8c RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::GetSetImpl<RBX::TaskScheduler::Job::SleepAdjustMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::Job::SleepAdjustMethod)>::isWriteOnly(void)const")
+pub fn stub_486e8c() -> u32 {
+    // IDA 0x486e8c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x486e90 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEE10GetSetImplIMS2_KFS5_vEMS2_FvS5_EE8getValueEPKNS0_13DescribedBaseE
@@ -971,8 +987,9 @@ pub fn stub_487360() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE14hasStringValueEv")]
-pub fn stub_487384() -> ! {
-    todo!("0x487384 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::hasStringValue(void)const")
+pub fn stub_487384() -> u32 {
+    // IDA 0x487384: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x487388 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE14getStringValueEPKNS0_13DescribedBaseE
@@ -1078,16 +1095,18 @@ pub fn stub_4877b4() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_4877f4() -> ! {
-    todo!("0x4877f4 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isReadOnly(void)const")
+pub fn stub_4877f4() -> u32 {
+    // IDA 0x4877f4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4877f8 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_4877f8() -> ! {
-    todo!("0x4877f8 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::GetSetImpl<RBX::TaskScheduler::PriorityMethod (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::TaskScheduler::PriorityMethod)>::isWriteOnly(void)const")
+pub fn stub_4877f8() -> u32 {
+    // IDA 0x4877f8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4877fc — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -1232,6 +1251,7 @@ pub fn stub_4881c0() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler16ThreadPoolConfigEE14hasStringValueEv")]
-pub fn stub_4881e4() -> ! {
-    todo!("0x4881e4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::hasStringValue(void)const")
+pub fn stub_4881e4() -> u32 {
+    // IDA 0x4881e4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }

@@ -14,36 +14,38 @@ const _: () = {
 // 0xf20038 — __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")]
-pub fn stub_0xf20038() -> ! {
-    todo!("0xf20038 __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")
+pub fn stub_0xf20038() {
+    // IDA 0xf20038: Thumb import jump veneer for `__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim` (12B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim.
 }
 
 // 0xf20068 — __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
 #[doc(alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
-pub fn stub_0xf20068() -> ! {
-    todo!("0xf20068 __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+pub fn stub_0xf20068() {
+    // IDA 0xf20068: Thumb import jump veneer for `__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim` (12B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim.
 }
 
 // 0xf30504 — j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")]
 #[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")]
-pub fn stub_0xf30504() -> ! {
-    todo!("0xf30504 j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v")
+pub fn stub_0xf30504() {
+    // IDA 0xf30504: Thumb import jump veneer for `j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: j___ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v.
 }
 
 // 0xb71000 — __ZNK4Ogre16ShadowRenderable19getSquaredViewDepthEPKNS_6CameraE
 #[doc(alias = "Ogre::ShadowRenderable::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZNK4Ogre16ShadowRenderable19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_0xb71000() -> ! {
-    todo!("0xb71000 __ZNK4Ogre16ShadowRenderable19getSquaredViewDepthEPKNS_6CameraE")
+pub fn stub_0xb71000() -> u32 {
+    // IDA 0xb71000: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xb71008 — __ZNK4Ogre16ShadowRenderable9isVisibleEv
 #[doc(alias = "Ogre::ShadowRenderable::isVisible(void)const")]
 #[doc(alias = "__ZNK4Ogre16ShadowRenderable9isVisibleEv")]
-pub fn stub_0xb71008() -> ! {
-    todo!("0xb71008 __ZNK4Ogre16ShadowRenderable9isVisibleEv")
+pub fn stub_0xb71008() -> u32 {
+    // IDA 0xb71008: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0xb720f0 — __ZNSt12_Vector_baseIPN4Ogre16ShadowRenderableENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
@@ -343,8 +345,9 @@ pub fn stub_0xba3c7c() -> ! {
 // 0xba4494 — __ZNK4Ogre10RbxArchive15isCaseSensitiveEv
 #[doc(alias = "Ogre::RbxArchive::isCaseSensitive(void)const")]
 #[doc(alias = "__ZNK4Ogre10RbxArchive15isCaseSensitiveEv")]
-pub fn stub_0xba4494() -> ! {
-    todo!("0xba4494 __ZNK4Ogre10RbxArchive15isCaseSensitiveEv")
+pub fn stub_0xba4494() -> u32 {
+    // IDA 0xba4494: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0xba4498 — __ZNK4Ogre10RbxArchive17doStaticFindFilesERKSsbbPSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEPS3_INS_8FileInfoENS4_ISB_S7_EEE
@@ -385,15 +388,15 @@ pub fn stub_0xba5af0() {
 // 0xba5b88 — __ZN4Ogre10RbxArchive4loadEv
 #[doc(alias = "Ogre::RbxArchive::load(void)")]
 #[doc(alias = "__ZN4Ogre10RbxArchive4loadEv")]
-pub fn stub_0xba5b88() -> ! {
-    todo!("0xba5b88 __ZN4Ogre10RbxArchive4loadEv")
+pub fn stub_0xba5b88() {
+    // IDA 0xba5b88: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xba5b8c — __ZN4Ogre10RbxArchive6unloadEv
 #[doc(alias = "Ogre::RbxArchive::unload(void)")]
 #[doc(alias = "__ZN4Ogre10RbxArchive6unloadEv")]
-pub fn stub_0xba5b8c() -> ! {
-    todo!("0xba5b8c __ZN4Ogre10RbxArchive6unloadEv")
+pub fn stub_0xba5b8c() {
+    // IDA 0xba5b8c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xba5b90 — __ZNK4Ogre10RbxArchive4openERKSsb

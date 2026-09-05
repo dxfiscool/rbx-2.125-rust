@@ -436,8 +436,8 @@ pub fn stub_699320() -> ! {
 
 // 0x699360 — __ZN3RBX6Widget7onClickERKNS_8GuiEventE
 #[doc(alias = "RBX::Widget::onClick(RBX::GuiEvent const&)")]
-pub fn stub_699360() -> ! {
-    todo!("0x699360 RBX::Widget::onClick(RBX::GuiEvent const&)")
+pub fn stub_699360() {
+    // IDA 0x699360: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x699364 — __ZN3RBX6Widget9isEnabledEv

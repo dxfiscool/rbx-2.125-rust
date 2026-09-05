@@ -69,8 +69,29 @@ pub fn stub_b982c() -> ! {
 // 0xc1c2c — __ZN4FMOD12DSPSfxReverb21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::DSPSfxReverb *this)
 #[doc(alias = "FMOD::DSPSfxReverb::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_c1c2c() -> ! {
-    todo!("0xc1c2c FMOD::DSPSfxReverb::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+pub fn stub_c1c2c(reverb: &mut [u32; 480], tracker_present: bool, get_impl: impl FnOnce(bool) -> i32) -> i32 {
+    // IDA 0xc1c2c FMOD::DSPSfxReverb::getMemoryUsedCallback:
+    //   null this -> v2 = 0 (host guard: caller always passes the object);
+    //   tracker set ? (cached byte292 ? return 0 : (r = impl(v2, a2); r == 0 -> byte292 = 1))
+    //              : (r = impl(v2, 0); r == 0 -> byte292 = 0); return r.
+    // Host: byte 292 is the low byte of word 73; the impl arrives as a seam taking
+    // tracker presence (image objects are not addressable).
+    if tracker_present {
+        if reverb[73] & 1 != 0 {
+            return 0;
+        }
+        let result = get_impl(true);
+        if result == 0 {
+            reverb[73] |= 1;
+        }
+        result
+    } else {
+        let result = get_impl(false);
+        if result == 0 {
+            reverb[73] &= !1;
+        }
+        result
+    }
 }
 
 // 0xc3750 — __ZN4FMOD12DSPSoundCard4readEPvPj16FMOD_SPEAKERMODEij
@@ -81,8 +102,9 @@ pub fn stub_c3750() -> ! {
 
 // 0xc4788 — __ZN4FMOD4DSPI4readEPPfPiPj16FMOD_SPEAKERMODEij
 #[doc(alias = "FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
-pub fn stub_c4788() -> ! {
-    todo!("0xc4788 FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+pub fn stub_c4788() -> i32 {
+    // IDA 0xc4788 `FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)`: constant FMOD_RESULT `33` on every path (host: literal).
+    33
 }
 
 // 0xd3978 — __ZN4FMOD15OutputCoreAudio19prepareAudioSessionE27FMOD_IPHONE_SESSIONCATEGORYbb
@@ -93,8 +115,10 @@ pub fn stub_d3978() -> ! {
 
 // 0xd5c8c — __ZN4FMOD15OutputWavWriter21getDriverNameCallbackEP17FMOD_OUTPUT_STATEiPci
 #[doc(alias = "FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")]
-pub fn stub_d5c8c() -> ! {
-    todo!("0xd5c8c FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
+pub fn stub_d5c8c(driver: i32, out: &mut [u8], cap: usize) -> i32 {
+    // IDA 0xd5c8c FMOD::OutputWavWriter::getDriverNameCallback:
+    //   if (a1) a1 -= 28; return getDriverName(a1, a2, a3, a4) (IDA 0xd5c64).
+    crate::stub_d5c64(driver, out, cap)
 }
 
 // 0xd6cb8 — __ZN4FMOD13PluginFactory9getOutputEjPPNS_26FMOD_OUTPUT_DESCRIPTION_EXE
@@ -186,14 +210,14 @@ pub fn stub_7fd648() {
 // 0xf30584 — j___ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE9singletonEv
 // type: int(void)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")]
-pub fn stub_f30584() -> ! {
-    todo!("0xf30584 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")
+pub fn stub_f30584() {
+    // IDA 0xf30584: Thumb import jump veneer for `j___ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE9singletonEv` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void).
 }
 
 // 0xf30994 — j___ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v
 #[doc(alias = "RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")]
-pub fn stub_f30994() -> ! {
-    todo!("0xf30994 RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")
+pub fn stub_f30994() {
+    // IDA 0xf30994: Thumb import jump veneer for `j___ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void).
 }
 
 // 0x1dcee8 — _FT_List_Finalize

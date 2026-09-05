@@ -139,16 +139,18 @@ pub fn stub_3bf7f0() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::GetSetImpl<float const (RBX::BevelMesh::*)(void)const,void (RBX::BevelMesh::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9BevelMeshEfE10GetSetImplIMS2_KFKfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_3bf81c() -> ! {
-    todo!("0x3bf81c RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::GetSetImpl<float const (RBX::BevelMesh::*)(void)const,void (RBX::BevelMesh::*)(float)>::isReadOnly(void)const")
+pub fn stub_3bf81c() -> u32 {
+    // IDA 0x3bf81c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3bf820 — __ZNK3RBX10Reflection14PropDescriptorINS_9BevelMeshEfE10GetSetImplIMS2_KFKfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::GetSetImpl<float const (RBX::BevelMesh::*)(void)const,void (RBX::BevelMesh::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9BevelMeshEfE10GetSetImplIMS2_KFKfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_3bf820() -> ! {
-    todo!("0x3bf820 RBX::Reflection::PropDescriptor<RBX::BevelMesh,float>::GetSetImpl<float const (RBX::BevelMesh::*)(void)const,void (RBX::BevelMesh::*)(float)>::isWriteOnly(void)const")
+pub fn stub_3bf820() -> u32 {
+    // IDA 0x3bf820: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3bf824 — __ZNK3RBX10Reflection14PropDescriptorINS_9BevelMeshEfE10GetSetImplIMS2_KFKfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -552,16 +554,18 @@ pub fn stub_3c12a4() -> ! {
 // type: int __fastcall(RBX::BillboardGui *this)
 #[doc(alias = "RBX::BillboardGui::canProcessMeAndDescendants(void)const")]
 #[doc(alias = "__ZNK3RBX12BillboardGui26canProcessMeAndDescendantsEv")]
-pub fn stub_3c12b4() -> ! {
-    todo!("0x3c12b4 RBX::BillboardGui::canProcessMeAndDescendants(void)const")
+pub fn stub_3c12b4() -> u32 {
+    // IDA 0x3c12b4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3c12b8 — __ZNK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE
 // type: int()
 #[doc(alias = "RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZNK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE")]
-pub fn stub_3c12b8() -> ! {
-    todo!("0x3c12b8 RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
+pub fn stub_3c12b8() -> u32 {
+    // IDA 0x3c12b8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3c12bc — __ZThn32_N3RBX12BillboardGuiD1Ev
@@ -775,6 +779,7 @@ pub fn stub_3c2000() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_3c202c() -> ! {
-    todo!("0x3c202c RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isReadOnly(void)const")
+pub fn stub_3c202c() -> u32 {
+    // IDA 0x3c202c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }

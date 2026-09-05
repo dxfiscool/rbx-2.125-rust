@@ -409,8 +409,9 @@ pub fn stub_411a00() -> ! {
 // 0x411ac8 — __ZNK3RBX15AdvMoveToolBase14drawConnectorsEv
 // type: int __fastcall(RBX::AdvMoveToolBase *this)
 #[doc(alias = "__ZNK3RBX15AdvMoveToolBase14drawConnectorsEv")]
-pub fn stub_411ac8() -> ! {
-    todo!("0x411ac8 __ZNK3RBX15AdvMoveToolBase14drawConnectorsEv")
+pub fn stub_411ac8() -> u32 {
+    // IDA 0x411ac8: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x411acc — __ZNK3RBX15AdvMoveToolBase13getCursorNameEv
@@ -437,8 +438,9 @@ pub fn stub_411ae0() -> ! {
 // 0x411af8 — __ZNK3RBX13AdvRotateTool11getDragTypeEv
 // type: int __fastcall(RBX::AdvRotateTool *this)
 #[doc(alias = "__ZNK3RBX13AdvRotateTool11getDragTypeEv")]
-pub fn stub_411af8() -> ! {
-    todo!("0x411af8 __ZNK3RBX13AdvRotateTool11getDragTypeEv")
+pub fn stub_411af8() -> u32 {
+    // IDA 0x411af8: `Thumb movs r0,#2; bx lr` (bytes 02207047) - returns 2 in r0 on the host.
+    2u32
 }
 
 // 0x411afc — __ZN3RBX15AdvMoveToolBaseD2Ev
@@ -569,8 +571,9 @@ pub fn stub_412854() -> ! {
 // 0x41286c — __ZNK3RBX11AdvMoveTool11getDragTypeEv
 // type: int __fastcall(RBX::AdvMoveTool *this)
 #[doc(alias = "__ZNK3RBX11AdvMoveTool11getDragTypeEv")]
-pub fn stub_41286c() -> ! {
-    todo!("0x41286c __ZNK3RBX11AdvMoveTool11getDragTypeEv")
+pub fn stub_41286c() -> u32 {
+    // IDA 0x41286c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x412870 — __ZThn36_N3RBX11AdvMoveToolD1Ev
@@ -652,8 +655,9 @@ pub fn stub_4132b4() -> ! {
 // 0x41337c — __ZNK3RBX18MoveResizeJoinTool14drawConnectorsEv
 // type: int __fastcall(RBX::MoveResizeJoinTool *this)
 #[doc(alias = "__ZNK3RBX18MoveResizeJoinTool14drawConnectorsEv")]
-pub fn stub_41337c() -> ! {
-    todo!("0x41337c __ZNK3RBX18MoveResizeJoinTool14drawConnectorsEv")
+pub fn stub_41337c() -> u32 {
+    // IDA 0x41337c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x413380 — __ZNK3RBX18MoveResizeJoinTool13getCursorNameEv

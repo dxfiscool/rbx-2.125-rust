@@ -42,8 +42,9 @@ pub fn stub_5c729c() {
 // type: _DWORD __fastcall(RBX::LocalBackpack *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::LocalBackpack::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX13LocalBackpack12askSetParentEPKNS_8InstanceE")]
-pub fn stub_5c733c() -> ! {
-    todo!("0x5c733c __ZNK3RBX13LocalBackpack12askSetParentEPKNS_8InstanceE")
+pub fn stub_5c733c() -> u32 {
+    // IDA 0x5c733c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5c7340 — __ZNK3RBX17NonFactoryProductINS_13RelativePanelELZNS_14sLocalBackpackEEE12getClassNameEv
@@ -334,8 +335,9 @@ pub fn stub_5c8a3c() -> ! {
 // type: _DWORD __fastcall(RBX::Message *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Message::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX7Message12askSetParentEPKNS_8InstanceE")]
-pub fn stub_5c8a68() -> ! {
-    todo!("0x5c8a68 __ZNK3RBX7Message12askSetParentEPKNS_8InstanceE")
+pub fn stub_5c8a68() -> u32 {
+    // IDA 0x5c8a68: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5c8a6c — __ZNK3RBX14FactoryProductINS_7MessageENS_8InstanceELZNS_8sMessageEES2_E12getClassNameEv
@@ -349,8 +351,9 @@ pub fn stub_5c8a6c() -> ! {
 // type: _DWORD __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "RBX::Message::shouldRender2d(void)const")]
 #[doc(alias = "__ZNK3RBX7Message14shouldRender2dEv")]
-pub fn stub_5c8a7c() -> ! {
-    todo!("0x5c8a7c __ZNK3RBX7Message14shouldRender2dEv")
+pub fn stub_5c8a7c() -> u32 {
+    // IDA 0x5c8a7c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5c8a80 — __ZThn32_N3RBX7MessageD1Ev
@@ -427,8 +430,9 @@ pub fn stub_5c8f7c() {
 // type: _DWORD __fastcall(RBX::Hint *__hidden this)
 #[doc(alias = "RBX::Hint::canClientCreate(void)")]
 #[doc(alias = "__ZN3RBX4Hint15canClientCreateEv")]
-pub fn stub_5c9080() -> ! {
-    todo!("0x5c9080 __ZN3RBX4Hint15canClientCreateEv")
+pub fn stub_5c9080() -> u32 {
+    // IDA 0x5c9080: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5c9084 — __ZNK3RBX14FactoryProductINS_4HintENS_7MessageELZNS_5sHintEENS_8InstanceEE12getClassNameEv

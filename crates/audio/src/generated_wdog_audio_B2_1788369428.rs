@@ -506,16 +506,18 @@ pub fn stub_690db4() -> ! {
 // type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::ButtonBindingWidget::askAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX19ButtonBindingWidget11askAddChildEPKNS_8InstanceE")]
-pub fn stub_690de0() -> ! {
-    todo!("0x690de0 __ZNK3RBX19ButtonBindingWidget11askAddChildEPKNS_8InstanceE")
+pub fn stub_690de0() -> u32 {
+    // IDA 0x690de0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x690de4 — __ZNK3RBX19ButtonBindingWidget12askSetParentEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::ButtonBindingWidget::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX19ButtonBindingWidget12askSetParentEPKNS_8InstanceE")]
-pub fn stub_690de4() -> ! {
-    todo!("0x690de4 __ZNK3RBX19ButtonBindingWidget12askSetParentEPKNS_8InstanceE")
+pub fn stub_690de4() -> u32 {
+    // IDA 0x690de4: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x690de8 — __ZNK3RBX19ButtonBindingWidget7getSizeENS_6CanvasE
@@ -902,8 +904,9 @@ pub fn stub_694128() -> ! {
 // type: _DWORD __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "RBX::GuiItem::canLoseFocus(void)")]
 #[doc(alias = "__ZN3RBX7GuiItem12canLoseFocusEv")]
-pub fn stub_694130() -> ! {
-    todo!("0x694130 __ZN3RBX7GuiItem12canLoseFocusEv")
+pub fn stub_694130() -> u32 {
+    // IDA 0x694130: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x694134 — __ZNK3RBX7GuiItem16getChildPositionEPKS0_NS_6CanvasE
@@ -925,8 +928,9 @@ pub fn stub_694194() -> ! {
 // type: _DWORD __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "RBX::GuiItem::isVisible(void)const")]
 #[doc(alias = "__ZNK3RBX7GuiItem9isVisibleEv")]
-pub fn stub_694198() -> ! {
-    todo!("0x694198 __ZNK3RBX7GuiItem9isVisibleEv")
+pub fn stub_694198() -> u32 {
+    // IDA 0x694198: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x69419c — __ZN3RBX6Widget12getFontColorEv

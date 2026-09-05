@@ -278,8 +278,8 @@ pub fn stub_3aafcc() {
 // type: void()
 #[doc(alias = "RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>::connectSignalListener(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEffEE21connectSignalListenerEv")]
-pub fn stub_3ab0a0() -> ! {
-    todo!("0x3ab0a0 RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>::connectSignalListener(void)")
+pub fn stub_3ab0a0() {
+    // IDA 0x3ab0a0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3ab0a4 — __ZN3RBX19EventReplicatorImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEE21connectSignalListenerEv
@@ -453,8 +453,8 @@ pub fn stub_3abb70() {
 // type: void()
 #[doc(alias = "RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>::connectSignalListener(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEE21connectSignalListenerEv")]
-pub fn stub_3abc44() -> ! {
-    todo!("0x3abc44 RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>::connectSignalListener(void)")
+pub fn stub_3abc44() {
+    // IDA 0x3abc44: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3abc50 — __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -619,16 +619,18 @@ pub fn stub_3acc2c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ArcHandles>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_10ArcHandlesEE10isReadOnlyEv")]
-pub fn stub_3acdbc() -> ! {
-    todo!("0x3acdbc RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ArcHandles>::isReadOnly(void)const")
+pub fn stub_3acdbc() -> u32 {
+    // IDA 0x3acdbc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3acdc0 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_10ArcHandlesEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ArcHandles>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_10ArcHandlesEE11isWriteOnlyEv")]
-pub fn stub_3acdc0() -> ! {
-    todo!("0x3acdc0 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ArcHandles>::isWriteOnly(void)const")
+pub fn stub_3acdc0() -> u32 {
+    // IDA 0x3acdc0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3acdc4 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_10ArcHandlesEE8getValueEPKNS0_13DescribedBaseE

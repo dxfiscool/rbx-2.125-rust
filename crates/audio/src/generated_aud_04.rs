@@ -31,16 +31,18 @@ pub fn stub_0x39350c() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv")]
-pub fn stub_0x393538() -> ! {
-    todo!("0x393538 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x393538() -> u32 {
+    // IDA 0x393538: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x39353c — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv")]
-pub fn stub_0x39353c() -> ! {
-    todo!("0x39353c RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x39353c() -> u32 {
+    // IDA 0x39353c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x393540 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -385,16 +387,18 @@ pub fn stub_0x395618() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x395620() -> ! {
-    todo!("0x395620 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")
+pub fn stub_0x395620() -> u32 {
+    // IDA 0x395620: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x395624 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x395624() -> ! {
-    todo!("0x395624 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")
+pub fn stub_0x395624() -> u32 {
+    // IDA 0x395624: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x395628 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -603,16 +607,18 @@ pub fn stub_0x396160() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x396168() -> ! {
-    todo!("0x396168 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")
+pub fn stub_0x396168() -> u32 {
+    // IDA 0x396168: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x39616c — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x39616c() -> ! {
-    todo!("0x39616c RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")
+pub fn stub_0x39616c() -> u32 {
+    // IDA 0x39616c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x396170 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -769,8 +775,9 @@ pub fn stub_0x397038() -> ! {
 // type: int __fastcall(RBX::Animation *this, const RBX::Instance *)
 #[doc(alias = "RBX::Animation::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX9Animation12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x3970bc() -> ! {
-    todo!("0x3970bc RBX::Animation::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x3970bc() -> u32 {
+    // IDA 0x3970bc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x3970c0 — __ZNK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv

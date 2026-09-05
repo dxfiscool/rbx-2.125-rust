@@ -31,8 +31,8 @@ pub fn stub_4c3d7c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Handles::VisualStyle>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Handles::VisualStyle>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX7Handles11VisualStyleEE13destruct_funcEPc")]
-pub fn stub_4c3d88() -> ! {
-    todo!("0x4c3d88 __ZN3rbx14implementation12typed_holderIN3RBX7Handles11VisualStyleEE13destruct_funcEPc")
+pub fn stub_4c3d88() {
+    // IDA 0x4c3d88: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c3d8c — __ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE13convertToItemERKS3_
@@ -305,8 +305,8 @@ pub fn stub_4c51bc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::FriendService::FriendStatus>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::FriendService::FriendStatus>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13FriendService12FriendStatusEE13destruct_funcEPc")]
-pub fn stub_4c51c8() -> ! {
-    todo!("0x4c51c8 __ZN3rbx14implementation12typed_holderIN3RBX13FriendService12FriendStatusEE13destruct_funcEPc")
+pub fn stub_4c51c8() {
+    // IDA 0x4c51c8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c51cc — __ZNK3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE13convertToItemERKS3_
@@ -450,8 +450,8 @@ pub fn stub_4c5be4() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::PyramidInstance::NumSidesEnum>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::PyramidInstance::NumSidesEnum>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX15PyramidInstance12NumSidesEnumEE13destruct_funcEPc")]
-pub fn stub_4c5bf0() -> ! {
-    todo!("0x4c5bf0 __ZN3rbx14implementation12typed_holderIN3RBX15PyramidInstance12NumSidesEnumEE13destruct_funcEPc")
+pub fn stub_4c5bf0() {
+    // IDA 0x4c5bf0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c5bf4 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE13convertToItemERKS3_
@@ -595,8 +595,8 @@ pub fn stub_4c660c() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::PrismInstance::NumSidesEnum>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::PrismInstance::NumSidesEnum>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13PrismInstance12NumSidesEnumEE13destruct_funcEPc")]
-pub fn stub_4c6618() -> ! {
-    todo!("0x4c6618 __ZN3rbx14implementation12typed_holderIN3RBX13PrismInstance12NumSidesEnumEE13destruct_funcEPc")
+pub fn stub_4c6618() {
+    // IDA 0x4c6618: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c661c — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE13convertToItemERKS3_
@@ -740,8 +740,8 @@ pub fn stub_4c7034() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::ExtrudedPartInstance::VisualTrussStyle>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::ExtrudedPartInstance::VisualTrussStyle>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX20ExtrudedPartInstance16VisualTrussStyleEE13destruct_funcEPc")]
-pub fn stub_4c7040() -> ! {
-    todo!("0x4c7040 __ZN3rbx14implementation12typed_holderIN3RBX20ExtrudedPartInstance16VisualTrussStyleEE13destruct_funcEPc")
+pub fn stub_4c7040() {
+    // IDA 0x4c7040: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4c7044 — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE13convertToItemERKS3_

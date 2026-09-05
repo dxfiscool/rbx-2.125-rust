@@ -319,13 +319,15 @@ pub fn stub_654440() -> ! {
 }
 // 0x654550 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")]
-pub fn stub_654550() -> ! {
-    todo!("0x654550 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")
+pub fn stub_654550() -> u32 {
+    // IDA 0x654550: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x654554 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")]
-pub fn stub_654554() -> ! {
-    todo!("0x654554 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")
+pub fn stub_654554() -> u32 {
+    // IDA 0x654554: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x654558 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -349,13 +351,15 @@ pub fn stub_654758() {
 }
 // 0x654788 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")]
-pub fn stub_654788() -> ! {
-    todo!("0x654788 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")
+pub fn stub_654788() -> u32 {
+    // IDA 0x654788: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x65478c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")]
-pub fn stub_65478c() -> ! {
-    todo!("0x65478c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")
+pub fn stub_65478c() -> u32 {
+    // IDA 0x65478c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 // 0x654790 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::getValue(RBX::Reflection::DescribedBase const*)const")]

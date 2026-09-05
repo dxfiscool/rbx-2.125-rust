@@ -35,8 +35,9 @@ pub fn stub_503564() -> ! {
 // 0x503588 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14hasStringValueEv")]
-pub fn stub_503588() -> ! {
-    todo!("0x503588 __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14hasStringValueEv")
+pub fn stub_503588() -> u32 {
+    // IDA 0x503588: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x50358c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14getStringValueEPKNS0_13DescribedBaseE
@@ -126,15 +127,17 @@ pub fn stub_5039b8() -> ! {
 // 0x5039f8 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_5039f8() -> ! {
-    todo!("0x5039f8 __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_5039f8() -> u32 {
+    // IDA 0x5039f8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5039fc — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_5039fc() -> ! {
-    todo!("0x5039fc __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_5039fc() -> u32 {
+    // IDA 0x5039fc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503a00 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -161,15 +164,17 @@ pub fn stub_503a44() -> ! {
 // 0x503bd4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")]
-pub fn stub_503bd4() -> ! {
-    todo!("0x503bd4 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")
+pub fn stub_503bd4() -> u32 {
+    // IDA 0x503bd4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503bd8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")]
-pub fn stub_503bd8() -> ! {
-    todo!("0x503bd8 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")
+pub fn stub_503bd8() -> u32 {
+    // IDA 0x503bd8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503bdc — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -196,15 +201,17 @@ pub fn stub_503c44() -> ! {
 // 0x503dd4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")]
-pub fn stub_503dd4() -> ! {
-    todo!("0x503dd4 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")
+pub fn stub_503dd4() -> u32 {
+    // IDA 0x503dd4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503dd8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")]
-pub fn stub_503dd8() -> ! {
-    todo!("0x503dd8 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")
+pub fn stub_503dd8() -> u32 {
+    // IDA 0x503dd8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503ddc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -231,15 +238,17 @@ pub fn stub_503e38() -> ! {
 // 0x503fc8 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")]
-pub fn stub_503fc8() -> ! {
-    todo!("0x503fc8 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv")
+pub fn stub_503fc8() -> u32 {
+    // IDA 0x503fc8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503fcc — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")]
-pub fn stub_503fcc() -> ! {
-    todo!("0x503fcc __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv")
+pub fn stub_503fcc() -> u32 {
+    // IDA 0x503fcc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x503fd0 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE

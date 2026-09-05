@@ -176,8 +176,9 @@ pub fn stub_4b26f4() -> ! {
 // type: _DWORD __fastcall(RBX::CustomEventReceiver *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::CustomEventReceiver::askForbidChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX19CustomEventReceiver14askForbidChildEPKNS_8InstanceE")]
-pub fn stub_4b2768() -> ! {
-    todo!("0x4b2768 __ZNK3RBX19CustomEventReceiver14askForbidChildEPKNS_8InstanceE")
+pub fn stub_4b2768() -> u32 {
+    // IDA 0x4b2768: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4b276c — __ZNK3RBX19CustomEventReceiver12askSetParentEPKNS_8InstanceE
@@ -662,8 +663,8 @@ pub fn stub_4b4954() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::HttpService::HttpContentType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::HttpService::HttpContentType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11HttpService15HttpContentTypeEE13destruct_funcEPc")]
-pub fn stub_4b4960() -> ! {
-    todo!("0x4b4960 __ZN3rbx14implementation12typed_holderIN3RBX11HttpService15HttpContentTypeEE13destruct_funcEPc")
+pub fn stub_4b4960() {
+    // IDA 0x4b4960: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4b4964 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE13convertToItemERKS3_
@@ -809,8 +810,8 @@ pub fn stub_4b537c() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::AssetService::AccessType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12AssetService10AccessTypeEE13destruct_funcEPc")]
-pub fn stub_4b5388() -> ! {
-    todo!("0x4b5388 __ZN3rbx14implementation12typed_holderIN3RBX12AssetService10AccessTypeEE13destruct_funcEPc")
+pub fn stub_4b5388() {
+    // IDA 0x4b5388: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4b538c — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE13convertToItemERKS3_
@@ -955,8 +956,8 @@ pub fn stub_4b5da4() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::InputObject::UserInputState>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::InputObject::UserInputState>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11InputObject14UserInputStateEE13destruct_funcEPc")]
-pub fn stub_4b5db0() -> ! {
-    todo!("0x4b5db0 __ZN3rbx14implementation12typed_holderIN3RBX11InputObject14UserInputStateEE13destruct_funcEPc")
+pub fn stub_4b5db0() {
+    // IDA 0x4b5db0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4b5db4 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE13convertToItemERKS3_
@@ -1101,8 +1102,8 @@ pub fn stub_4b67cc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::InputObject::UserInputType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::InputObject::UserInputType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11InputObject13UserInputTypeEE13destruct_funcEPc")]
-pub fn stub_4b67d8() -> ! {
-    todo!("0x4b67d8 __ZN3rbx14implementation12typed_holderIN3RBX11InputObject13UserInputTypeEE13destruct_funcEPc")
+pub fn stub_4b67d8() {
+    // IDA 0x4b67d8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4b67dc — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE13convertToItemERKS3_

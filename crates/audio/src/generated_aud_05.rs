@@ -191,16 +191,18 @@ pub fn stub_39809c() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::GetSetImpl<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_3980c8() -> ! {
-    todo!("0x3980c8 RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::GetSetImpl<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>::isReadOnly(void)const")
+pub fn stub_3980c8() -> u32 {
+    // IDA 0x3980c8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3980cc — __ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::GetSetImpl<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_3980cc() -> ! {
-    todo!("0x3980cc RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::GetSetImpl<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>::isWriteOnly(void)const")
+pub fn stub_3980cc() -> u32 {
+    // IDA 0x3980cc: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x3980d0 — __ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

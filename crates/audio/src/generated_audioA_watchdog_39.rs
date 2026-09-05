@@ -11,6 +11,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // 0xf54854 — j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_
 #[doc(alias = "void boost::shared_ptr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_")]
-pub fn stub_f54854() -> ! {
-    todo!("0xf54854 j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_")
+pub fn stub_f54854() {
+    // IDA 0xf54854: Thumb import jump veneer for `j___ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEE5resetIS3_EEvPT_` (16B, LDR.W PC trampoline); host has no import table - no-op carrier. Aliased: void boost::shared_ptr<RBX::Soundscape::Sound>::reset<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *).
 }

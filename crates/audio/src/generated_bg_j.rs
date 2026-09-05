@@ -472,8 +472,9 @@ pub fn stub_27c244() -> ! {
 // type: int()
 #[doc(alias = "RBX::Lua::ObjectBridge::unlockInstance(lua_State *)")]
 #[doc(alias = "__ZN3RBX3Lua12ObjectBridge14unlockInstanceEP9lua_State")]
-pub fn stub_27c254() -> ! {
-    todo!("0x27c254 RBX::Lua::ObjectBridge::unlockInstance(lua_State *)")
+pub fn stub_27c254() -> u32 {
+    // IDA 0x27c254: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x27c258 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State

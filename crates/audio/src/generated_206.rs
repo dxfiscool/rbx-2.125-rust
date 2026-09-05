@@ -33,8 +33,8 @@ pub fn stub_4bfc04() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::CharacterMesh::BodyPart>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::CharacterMesh::BodyPart>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13CharacterMesh8BodyPartEE13destruct_funcEPc")]
-pub fn stub_4bfc10() -> ! {
-    todo!("0x4bfc10 __ZN3rbx14implementation12typed_holderIN3RBX13CharacterMesh8BodyPartEE13destruct_funcEPc")
+pub fn stub_4bfc10() {
+    // IDA 0x4bfc10: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -253,8 +253,8 @@ pub fn stub_4c08cc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::ChatService::ChatColor>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::ChatService::ChatColor>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11ChatService9ChatColorEE13destruct_funcEPc")]
-pub fn stub_4c08d8() -> ! {
-    todo!("0x4c08d8 __ZN3rbx14implementation12typed_holderIN3RBX11ChatService9ChatColorEE13destruct_funcEPc")
+pub fn stub_4c08d8() {
+    // IDA 0x4c08d8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -453,8 +453,8 @@ pub fn stub_4c14dc() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SurfaceType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11SurfaceTypeEE13destruct_funcEPc")]
-pub fn stub_4c14e8() -> ! {
-    todo!("0x4c14e8 __ZN3rbx14implementation12typed_holderIN3RBX11SurfaceTypeEE13destruct_funcEPc")
+pub fn stub_4c14e8() {
+    // IDA 0x4c14e8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -617,8 +617,8 @@ pub fn stub_4c1f04() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::SpecialShape::MeshType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SpecialShape::MeshType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX12SpecialShape8MeshTypeEE13destruct_funcEPc")]
-pub fn stub_4c1f10() -> ! {
-    todo!("0x4c1f10 __ZN3rbx14implementation12typed_holderIN3RBX12SpecialShape8MeshTypeEE13destruct_funcEPc")
+pub fn stub_4c1f10() {
+    // IDA 0x4c1f10: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 
@@ -781,8 +781,8 @@ pub fn stub_4c3354() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::SkateboardPlatform::MoveState>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::SkateboardPlatform::MoveState>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX18SkateboardPlatform9MoveStateEE13destruct_funcEPc")]
-pub fn stub_4c3360() -> ! {
-    todo!("0x4c3360 __ZN3rbx14implementation12typed_holderIN3RBX18SkateboardPlatform9MoveStateEE13destruct_funcEPc")
+pub fn stub_4c3360() {
+    // IDA 0x4c3360: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 

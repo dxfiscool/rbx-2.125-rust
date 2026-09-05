@@ -665,8 +665,9 @@ pub fn stub_6a1624() {
 
 // 0x6a174c — __ZNK3RBX5ValueINS_6RbxRayELZNS_9sRayValueEEE12askSetParentEPKNS_8InstanceE
 #[doc(alias = "__ZNK3RBX5ValueINS_6RbxRayELZNS_9sRayValueEEE12askSetParentEPKNS_8InstanceE")]
-pub fn stub_6a174c() -> ! {
-    todo!("0x6a174c __ZNK3RBX5ValueINS_6RbxRayELZNS_9sRayValueEEE12askSetParentEPKNS_8InstanceE")
+pub fn stub_6a174c() -> u32 {
+    // IDA 0x6a174c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6a1750 — __ZNK3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E12getClassNameEv

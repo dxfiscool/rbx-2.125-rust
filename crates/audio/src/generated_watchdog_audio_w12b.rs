@@ -761,40 +761,42 @@ pub fn stub_cbeda0() {
 // 0xcbee30 — __ZN4Ogre11NullProgram12setParameterERKSsS2_
 #[doc(alias = "Ogre::NullProgram::setParameter(std::string const&,std::string const&)")]
 #[doc(alias = "__ZN4Ogre11NullProgram12setParameterERKSsS2_")]
-pub fn stub_cbee30() -> ! {
-    todo!("0xcbee30 __ZN4Ogre11NullProgram12setParameterERKSsS2_")
+pub fn stub_cbee30() -> u32 {
+    // IDA 0xcbee30: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0xcbee34 — __ZN4Ogre8Resource12postLoadImplEv
 // type: _DWORD __fastcall(Ogre::Resource *__hidden this)
 #[doc(alias = "Ogre::Resource::postLoadImpl(void)")]
 #[doc(alias = "__ZN4Ogre8Resource12postLoadImplEv")]
-pub fn stub_cbee34() -> ! {
-    todo!("0xcbee34 __ZN4Ogre8Resource12postLoadImplEv")
+pub fn stub_cbee34() {
+    // IDA 0xcbee34: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xcbee38 — __ZN4Ogre8Resource14postUnloadImplEv
 // type: _DWORD __fastcall(Ogre::Resource *__hidden this)
 #[doc(alias = "Ogre::Resource::postUnloadImpl(void)")]
 #[doc(alias = "__ZN4Ogre8Resource14postUnloadImplEv")]
-pub fn stub_cbee38() -> ! {
-    todo!("0xcbee38 __ZN4Ogre8Resource14postUnloadImplEv")
+pub fn stub_cbee38() {
+    // IDA 0xcbee38: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xcbee3c — __ZN4Ogre8Resource13unprepareImplEv
 // type: _DWORD __fastcall(Ogre::Resource *__hidden this)
 #[doc(alias = "Ogre::Resource::unprepareImpl(void)")]
 #[doc(alias = "__ZN4Ogre8Resource13unprepareImplEv")]
-pub fn stub_cbee3c() -> ! {
-    todo!("0xcbee3c __ZN4Ogre8Resource13unprepareImplEv")
+pub fn stub_cbee3c() {
+    // IDA 0xcbee3c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xcbee40 — __ZNK4Ogre10GpuProgram13calculateSizeEv
 // type: _DWORD __fastcall(Ogre::GpuProgram *__hidden this)
 #[doc(alias = "Ogre::GpuProgram::calculateSize(void)const")]
 #[doc(alias = "__ZNK4Ogre10GpuProgram13calculateSizeEv")]
-pub fn stub_cbee40() -> ! {
-    todo!("0xcbee40 __ZNK4Ogre10GpuProgram13calculateSizeEv")
+pub fn stub_cbee40() -> u32 {
+    // IDA 0xcbee40: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xcbee44 — __ZNK4Ogre10GpuProgram13getSyntaxCodeEv
@@ -841,8 +843,9 @@ pub fn stub_cbee54() -> ! {
 // type: _DWORD __fastcall(Ogre::NullProgram *__hidden this)
 #[doc(alias = "Ogre::NullProgram::isSupported(void)const")]
 #[doc(alias = "__ZNK4Ogre11NullProgram11isSupportedEv")]
-pub fn stub_cbee5c() -> ! {
-    todo!("0xcbee5c __ZNK4Ogre11NullProgram11isSupportedEv")
+pub fn stub_cbee5c() -> u32 {
+    // IDA 0xcbee5c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xcbee60 — __ZN4Ogre10GpuProgram28setSkeletalAnimationIncludedEb
@@ -945,14 +948,16 @@ pub fn stub_cbeebc() -> ! {
 // type: _DWORD __fastcall(Ogre::GpuProgram *__hidden this)
 #[doc(alias = "Ogre::GpuProgram::getPassSurfaceAndLightStates(void)const")]
 #[doc(alias = "__ZNK4Ogre10GpuProgram28getPassSurfaceAndLightStatesEv")]
-pub fn stub_cbeec8() -> ! {
-    todo!("0xcbeec8 __ZNK4Ogre10GpuProgram28getPassSurfaceAndLightStatesEv")
+pub fn stub_cbeec8() -> u32 {
+    // IDA 0xcbeec8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xcbeecc — __ZNK4Ogre10GpuProgram16getPassFogStatesEv
 // type: _DWORD __fastcall(Ogre::GpuProgram *__hidden this)
 #[doc(alias = "Ogre::GpuProgram::getPassFogStates(void)const")]
 #[doc(alias = "__ZNK4Ogre10GpuProgram16getPassFogStatesEv")]
-pub fn stub_cbeecc() -> ! {
-    todo!("0xcbeecc __ZNK4Ogre10GpuProgram16getPassFogStatesEv")
+pub fn stub_cbeecc() -> u32 {
+    // IDA 0xcbeecc: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }

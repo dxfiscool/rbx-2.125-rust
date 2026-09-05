@@ -28,16 +28,18 @@ pub fn stub_554210() -> ! {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")]
-pub fn stub_55431c() -> ! {
-    todo!("0x55431c __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")
+pub fn stub_55431c() -> u32 {
+    // IDA 0x55431c: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x554320 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")]
-pub fn stub_554320() -> ! {
-    todo!("0x554320 __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")
+pub fn stub_554320() -> u32 {
+    // IDA 0x554320: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x554324 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
@@ -77,16 +79,18 @@ pub fn stub_554574() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE10isReadOnlyEv")]
-pub fn stub_5545a0() -> ! {
-    todo!("0x5545a0 __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE10isReadOnlyEv")
+pub fn stub_5545a0() -> u32 {
+    // IDA 0x5545a0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x5545a4 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE11isWriteOnlyEv")]
-pub fn stub_5545a4() -> ! {
-    todo!("0x5545a4 __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE11isWriteOnlyEv")
+pub fn stub_5545a4() -> u32 {
+    // IDA 0x5545a4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5545a8 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE8getValueEPKNS0_13DescribedBaseE

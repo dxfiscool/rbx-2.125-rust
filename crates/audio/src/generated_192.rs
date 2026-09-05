@@ -91,8 +91,8 @@ pub fn stub_4803c8() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::Time::SampleMethod>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Time::SampleMethod>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE13destruct_funcEPc")]
-pub fn stub_4803d4() -> ! {
-    todo!("0x4803d4 rbx::implementation::typed_holder<RBX::Time::SampleMethod>::destruct_func(char *)")
+pub fn stub_4803d4() {
+    // IDA 0x4803d4: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4803d8 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE13convertToItemERKS3_
@@ -169,8 +169,8 @@ pub fn stub_480a44() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::EThrottle::EThrottleType>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::EThrottle::EThrottleType>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE13destruct_funcEPc")]
-pub fn stub_480a50() -> ! {
-    todo!("0x480a50 rbx::implementation::typed_holder<RBX::EThrottle::EThrottleType>::destruct_func(char *)")
+pub fn stub_480a50() {
+    // IDA 0x480a50: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x480a54 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE13convertToItemERKS3_
@@ -247,8 +247,8 @@ pub fn stub_4810bc() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13DebugSettings14ErrorReportingEE13destruct_funcEPc")]
-pub fn stub_4810c8() -> ! {
-    todo!("0x4810c8 rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)")
+pub fn stub_4810c8() {
+    // IDA 0x4810c8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4810cc — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE13convertToItemERKS3_
@@ -325,8 +325,8 @@ pub fn stub_481734() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE13destruct_funcEPc")]
-pub fn stub_481740() -> ! {
-    todo!("0x481740 rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::destruct_func(char *)")
+pub fn stub_481740() {
+    // IDA 0x481740: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x481744 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE13convertToItemERKS4_
@@ -403,8 +403,8 @@ pub fn stub_481dac() -> ! {
 // demangled: rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE13destruct_funcEPc")]
-pub fn stub_481db8() -> ! {
-    todo!("0x481db8 rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::destruct_func(char *)")
+pub fn stub_481db8() {
+    // IDA 0x481db8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x481dbc — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE13convertToItemERKS3_
@@ -482,8 +482,8 @@ pub fn stub_482424() -> ! {
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TaskScheduler::ThreadPoolConfig>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE13destruct_funcEPc")]
-pub fn stub_482430() -> ! {
-    todo!("0x482430 rbx::implementation::typed_holder<RBX::TaskScheduler::ThreadPoolConfig>::destruct_func(char *)")
+pub fn stub_482430() {
+    // IDA 0x482430: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x482434 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE13convertToItemERKS3_
@@ -1097,16 +1097,18 @@ pub fn stub_484684() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
-pub fn stub_4846b4() -> ! {
-    todo!("0x4846b4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isReadOnly(void)const")
+pub fn stub_4846b4() -> u32 {
+    // IDA 0x4846b4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4846b8 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
-pub fn stub_4846b8() -> ! {
-    todo!("0x4846b8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isWriteOnly(void)const")
+pub fn stub_4846b8() -> u32 {
+    // IDA 0x4846b8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x4846bc — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -1194,8 +1196,9 @@ pub fn stub_484a98() -> ! {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14hasStringValueEv")]
-pub fn stub_484ac0() -> ! {
-    todo!("0x484ac0 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::hasStringValue(void)const")
+pub fn stub_484ac0() -> u32 {
+    // IDA 0x484ac0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x484ac4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14getStringValueEPKNS0_13DescribedBaseE

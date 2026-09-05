@@ -181,26 +181,26 @@ pub fn stub_edb35c() -> ! {
 
 // 0xedb444 — -[BugSenseController copyWithZone:]
 #[doc(alias = "-[BugSenseController copyWithZone:]")]
-pub fn stub_edb444() -> ! {
-    todo!("0xedb444 -[BugSenseController copyWithZone:]")
+pub fn stub_edb444() {
+    // IDA 0xedb444: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xedb448 — -[BugSenseController retain]
 #[doc(alias = "-[BugSenseController retain]")]
-pub fn stub_edb448() -> ! {
-    todo!("0xedb448 -[BugSenseController retain]")
+pub fn stub_edb448() {
+    // IDA 0xedb448: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xedb44c — -[BugSenseController release]
 #[doc(alias = "-[BugSenseController release]")]
-pub fn stub_edb44c() -> ! {
-    todo!("0xedb44c -[BugSenseController release]")
+pub fn stub_edb44c() {
+    // IDA 0xedb44c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xedb450 — -[BugSenseController autorelease]
 #[doc(alias = "-[BugSenseController autorelease]")]
-pub fn stub_edb450() -> ! {
-    todo!("0xedb450 -[BugSenseController autorelease]")
+pub fn stub_edb450() {
+    // IDA 0xedb450: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0xedb454 — -[BugSenseController retainCount]

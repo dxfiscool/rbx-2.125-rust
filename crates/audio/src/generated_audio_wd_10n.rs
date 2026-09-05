@@ -194,8 +194,9 @@ pub fn stub_5e0160() -> ! {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE14hasStringValueEv")]
-pub fn stub_5e0164() -> ! {
-    todo!("0x5e0164 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE14hasStringValueEv")
+pub fn stub_5e0164() -> u32 {
+    // IDA 0x5e0164: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x5e0168 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D15CoordinateFrameEE14getStringValueEPKNS0_13DescribedBaseE
@@ -720,8 +721,8 @@ pub fn stub_5e1830() -> ! {
 // demangled: RBX::Instance::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)
 #[doc(alias = "RBX::Instance::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 #[doc(alias = "__ZN3RBX8Instance17onServiceProviderEPNS_15ServiceProviderES2_")]
-pub fn stub_5e1978() -> ! {
-    todo!("0x5e1978 __ZN3RBX8Instance17onServiceProviderEPNS_15ServiceProviderES2_")
+pub fn stub_5e1978() {
+    // IDA 0x5e1978: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x5e197c — __ZN3RBX13FWDictionnaryINS_14FWPartInstanceEE17registerFlyweightEPNS_5FWRefE

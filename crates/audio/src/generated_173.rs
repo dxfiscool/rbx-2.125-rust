@@ -61,8 +61,8 @@ pub fn stub_0x35cef8() -> ! {
 // type: _DWORD __fastcall(RBX *__hidden this, int)
 #[doc(alias = "RBX::intToNormalId(int)")]
 #[doc(alias = "__ZN3RBX13intToNormalIdEi")]
-pub fn stub_0x35cf04() -> ! {
-    todo!("0x35cf04 RBX::intToNormalId(int)")
+pub fn stub_0x35cf04() {
+    // IDA 0x35cf04: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x35cf08 — __ZN3RBX16normalIdOppositeENS_8NormalIdE
@@ -358,8 +358,8 @@ pub fn stub_0x35e628() -> ! {
 // type: _DWORD __fastcall(RBX::ProtectedString *__hidden this)
 #[doc(alias = "RBX::ProtectedString::getStringForImmediateUse(void)const")]
 #[doc(alias = "__ZNK3RBX15ProtectedString24getStringForImmediateUseEv")]
-pub fn stub_0x35e8f8() -> ! {
-    todo!("0x35e8f8 RBX::ProtectedString::getStringForImmediateUse(void)const")
+pub fn stub_0x35e8f8() {
+    // IDA 0x35e8f8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x35e8fc — __ZNK3RBX15ProtectedString15getOriginalHashEv
@@ -457,8 +457,9 @@ pub fn stub_0x35f3f4() -> ! {
 // 0x35f654 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE14hasStringValueEv")]
-pub fn stub_0x35f654() -> ! {
-    todo!("0x35f654 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::hasStringValue(void)const")
+pub fn stub_0x35f654() -> u32 {
+    // IDA 0x35f654: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x35f658 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE14getStringValueEPKNS0_13DescribedBaseE
@@ -919,24 +920,24 @@ pub fn stub_0x3622c8() -> ! {
 // type: _DWORD __fastcall(RBX::Instance *__hidden this, const Instance *)
 #[doc(alias = "RBX::Instance::verifyAddChild(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX8Instance14verifyAddChildEPKS0_")]
-pub fn stub_0x362300() -> ! {
-    todo!("0x362300 RBX::Instance::verifyAddChild(RBX::Instance const*)const")
+pub fn stub_0x362300() {
+    // IDA 0x362300: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x362308 — __ZN3RBX8Instance15onChildRemovingEPS0_
 // type: _DWORD __fastcall(RBX::Instance *__hidden this, RBX::Instance *)
 #[doc(alias = "RBX::Instance::onChildRemoving(RBX::Instance*)")]
 #[doc(alias = "__ZN3RBX8Instance15onChildRemovingEPS0_")]
-pub fn stub_0x362308() -> ! {
-    todo!("0x362308 RBX::Instance::onChildRemoving(RBX::Instance*)")
+pub fn stub_0x362308() {
+    // IDA 0x362308: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x362310 — __ZN3RBX8Instance17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE
 // type: _DWORD __fastcall(RBX::Instance *__hidden this, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::Instance::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX8Instance17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_0x362310() -> ! {
-    todo!("0x362310 RBX::Instance::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x362310() {
+    // IDA 0x362310: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x362314 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv

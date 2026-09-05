@@ -408,8 +408,8 @@ pub fn stub_6d6820() -> ! {
 // 0x6d682c — __ZN3RBX12MouseCommand11onMouseIdleERKNS_7UIEventE
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::MouseCommand::onMouseIdle(RBX::UIEvent const&)")]
-pub fn stub_6d682c() -> ! {
-    todo!("0x6d682c RBX::MouseCommand::onMouseIdle(RBX::UIEvent const&)")
+pub fn stub_6d682c() {
+    // IDA 0x6d682c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d6830 — __ZN3RBX12MouseCommand7onKeyUpERKNS_7UIEventE
@@ -436,8 +436,8 @@ pub fn stub_6d6848() -> ! {
 // 0x6d6854 — __ZN3RBX12MouseCommand12onMouseDeltaERKNS_7UIEventE
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::MouseCommand::onMouseDelta(RBX::UIEvent const&)")]
-pub fn stub_6d6854() -> ! {
-    todo!("0x6d6854 RBX::MouseCommand::onMouseDelta(RBX::UIEvent const&)")
+pub fn stub_6d6854() {
+    // IDA 0x6d6854: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d6858 — __ZN3RBX12MouseCommand14onRightMouseUpERKNS_7UIEventE
@@ -485,8 +485,9 @@ pub fn stub_6d6894() -> ! {
 // 0x6d68a0 — __ZNK3RBX12MouseCommand14drawConnectorsEv
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this)
 #[doc(alias = "RBX::MouseCommand::drawConnectors(void)const")]
-pub fn stub_6d68a0() -> ! {
-    todo!("0x6d68a0 RBX::MouseCommand::drawConnectors(void)const")
+pub fn stub_6d68a0() -> u32 {
+    // IDA 0x6d68a0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6d68a4 — __ZNK3RBX9DecalTool13getCursorNameEv
@@ -499,8 +500,8 @@ pub fn stub_6d68a4() -> ! {
 // 0x6d68c0 — __ZN3RBX9DecalTool8doActionEPNS_7SurfaceE
 // type: _DWORD __fastcall(RBX::DecalTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::DecalTool::doAction(RBX::Surface *)")]
-pub fn stub_6d68c0() -> ! {
-    todo!("0x6d68c0 RBX::DecalTool::doAction(RBX::Surface *)")
+pub fn stub_6d68c0() {
+    // IDA 0x6d68c0: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d68c8 — __ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_
@@ -538,8 +539,8 @@ pub fn stub_6d6b5c() -> ! {
 // 0x6d6b68 — __ZN3RBX12MouseCommand11onMouseMoveERKNS_7UIEventE
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::MouseCommand::onMouseMove(RBX::UIEvent const&)")]
-pub fn stub_6d6b68() -> ! {
-    todo!("0x6d6b68 RBX::MouseCommand::onMouseMove(RBX::UIEvent const&)")
+pub fn stub_6d6b68() {
+    // IDA 0x6d6b68: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x6d6b6c — __ZN3RBX12MouseCommand9onMouseUpERKNS_7UIEventE

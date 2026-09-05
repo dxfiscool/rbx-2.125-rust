@@ -186,8 +186,8 @@ pub fn stub_47c418() -> ! {
 // type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this, double, int)
 #[doc(alias = "RBX::TaskSchedulerSettings::setThreadShare(double,int)")]
 #[doc(alias = "__ZN3RBX21TaskSchedulerSettings14setThreadShareEdi")]
-pub fn stub_47c460() -> ! {
-    todo!("0x47c460 RBX::TaskSchedulerSettings::setThreadShare(double,int)")
+pub fn stub_47c460() {
+    // IDA 0x47c460: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x47c464 — __ZN3RBX21TaskSchedulerSettings17setPriorityMethodENS_13TaskScheduler14PriorityMethodE
@@ -632,8 +632,8 @@ pub fn stub_47e15c() {
 // type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::noOpt(void)")]
 #[doc(alias = "__ZN3RBX13DebugSettings5noOptEv")]
-pub fn stub_47e180() -> ! {
-    todo!("0x47e180 RBX::DebugSettings::noOpt(void)")
+pub fn stub_47e180() {
+    // IDA 0x47e180: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x47e184 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvvELi0EED1Ev
@@ -826,8 +826,9 @@ pub fn stub_47e8c8() -> ! {
 // type: _DWORD __fastcall(DummyArbiter *__hidden this)
 #[doc(alias = "DummyArbiter::isThrottled(void)")]
 #[doc(alias = "__ZN12DummyArbiter11isThrottledEv")]
-pub fn stub_47e8e4() -> ! {
-    todo!("0x47e8e4 DummyArbiter::isThrottled(void)")
+pub fn stub_47e8e4() -> u32 {
+    // IDA 0x47e8e4: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x47e8e8 — __ZN3RBX13TaskScheduler7Arbiter7preStepEPNS0_3JobE

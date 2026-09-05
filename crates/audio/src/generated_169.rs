@@ -457,8 +457,8 @@ pub fn stub_0x324c14() -> ! {
 // 0x324ce8 — __ZN3RBX11IndexedTree15onParentChangedEPS0_
 #[doc(alias = "RBX::IndexedTree::onParentChanged(RBX::IndexedTree*)")]
 #[doc(alias = "__ZN3RBX11IndexedTree15onParentChangedEPS0_")]
-pub fn stub_0x324ce8() -> ! {
-    todo!("0x324ce8 RBX::IndexedTree::onParentChanged(RBX::IndexedTree*)")
+pub fn stub_0x324ce8() {
+    // IDA 0x324ce8: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x324cec — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE6appendERKS3_

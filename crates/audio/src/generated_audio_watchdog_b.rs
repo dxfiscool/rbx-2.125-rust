@@ -21,8 +21,9 @@ pub fn stub_6f6bbc() -> ! {
 // 0x6f6bc0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::RbxRay>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14hasStringValueEv")]
-pub fn stub_6f6bc0() -> ! {
-    todo!("0x6f6bc0 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14hasStringValueEv")
+pub fn stub_6f6bc0() -> u32 {
+    // IDA 0x6f6bc0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6f6bc4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14getStringValueEPKNS0_13DescribedBaseE
@@ -70,15 +71,17 @@ pub fn stub_6f6d54() -> ! {
 // 0x6f6e44 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE11getDataSizeEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::getDataSize(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE11getDataSizeEPKNS0_13DescribedBaseE")]
-pub fn stub_6f6e44() -> ! {
-    todo!("0x6f6e44 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE11getDataSizeEPKNS0_13DescribedBaseE")
+pub fn stub_6f6e44() -> u32 {
+    // IDA 0x6f6e44: `Thumb movs r0,#4; bx lr` (bytes 04207047) - returns 4 in r0 on the host.
+    4u32
 }
 
 // 0x6f6e48 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14hasStringValueEv")]
-pub fn stub_6f6e48() -> ! {
-    todo!("0x6f6e48 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14hasStringValueEv")
+pub fn stub_6f6e48() -> u32 {
+    // IDA 0x6f6e48: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6f6e4c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14getStringValueEPKNS0_13DescribedBaseE
@@ -133,8 +136,9 @@ pub fn stub_6f6fd4() -> ! {
 // 0x6f6fd8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::SystemAddress>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14hasStringValueEv")]
-pub fn stub_6f6fd8() -> ! {
-    todo!("0x6f6fd8 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14hasStringValueEv")
+pub fn stub_6f6fd8() -> u32 {
+    // IDA 0x6f6fd8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x6f6fdc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14getStringValueEPKNS0_13DescribedBaseE
@@ -189,8 +193,9 @@ pub fn stub_6f7354() -> ! {
 // 0x6f73b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14hasStringValueEv")]
-pub fn stub_6f73b0() -> ! {
-    todo!("0x6f73b0 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14hasStringValueEv")
+pub fn stub_6f73b0() -> u32 {
+    // IDA 0x6f73b0: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x6f73b4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14getStringValueEPKNS0_13DescribedBaseE

@@ -149,15 +149,15 @@ pub fn stub_3b14c() {
 // 0x3b268 — __ZN3RBX5Tasks11Coordinator9onPreStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3b268() -> ! {
-    todo!("0x3b268 RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3b268() {
+    // IDA 0x3b268: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3b26c — __ZN3RBX5Tasks11Coordinator10onPostStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3b26c() -> ! {
-    todo!("0x3b26c RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3b26c() {
+    // IDA 0x3b26c: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3b270 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED1Ev
@@ -763,8 +763,8 @@ pub fn stub_41cf0() -> ! {
 // 0x41f28 — +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
-pub fn stub_41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+pub fn stub_41f28() {
+    // IDA 0x41f28: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]

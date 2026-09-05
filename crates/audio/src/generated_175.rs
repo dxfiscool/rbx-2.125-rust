@@ -141,8 +141,9 @@ pub fn stub_0x36a450() -> ! {
 // type: int()
 #[doc(alias = "RBX::findLocalFile(std::string const&,std::string *)")]
 #[doc(alias = "__ZN3RBXL13findLocalFileERKSsPSs")]
-pub fn stub_0x36a710() -> ! {
-    todo!("0x36a710 RBX::findLocalFile(std::string const&,std::string *)")
+pub fn stub_0x36a710() -> u32 {
+    // IDA 0x36a710: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x36a714 — __ZN3RBX25ScriptInformationProvider11onHeartbeatERKNS_9HeartbeatE

@@ -36,15 +36,17 @@ pub fn stub_23af94() -> ! {
 // 0x23af9c — __ZNK5boost10filesystem6detail18utf8_codecvt_facet11do_encodingEv
 // type: int __fastcall(boost::filesystem::detail::utf8_codecvt_facet *this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::do_encoding(void)const")]
-pub fn stub_23af9c() -> ! {
-    todo!("0x23af9c boost::filesystem::detail::utf8_codecvt_facet::do_encoding(void)const")
+pub fn stub_23af9c() -> u32 {
+    // IDA 0x23af9c: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x23afa0 — __ZNK5boost10filesystem6detail18utf8_codecvt_facet16do_always_noconvEv
 // type: int __fastcall(boost::filesystem::detail::utf8_codecvt_facet *this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::do_always_noconv(void)const")]
-pub fn stub_23afa0() -> ! {
-    todo!("0x23afa0 boost::filesystem::detail::utf8_codecvt_facet::do_always_noconv(void)const")
+pub fn stub_23afa0() -> u32 {
+    // IDA 0x23afa0: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x23afa4 — __ZNK5boost10filesystem6detail18utf8_codecvt_facet13do_max_lengthEv
@@ -561,8 +563,8 @@ pub fn stub_23eb48() -> ! {
 // 0x23ec00 — __Z11initBaseLogv
 // type: void __fastcall()
 #[doc(alias = "initBaseLog(void)")]
-pub fn stub_23ec00() -> ! {
-    todo!("0x23ec00 initBaseLog(void)")
+pub fn stub_23ec00() {
+    // IDA 0x23ec00: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x23ec04 — __ZN5boost9date_time23gregorian_calendar_baseINS0_19year_month_day_baseINS_9gregorian9greg_yearENS3_10greg_monthENS3_8greg_dayEEEjE15from_day_numberEj

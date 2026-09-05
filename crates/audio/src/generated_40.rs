@@ -320,8 +320,8 @@ pub fn stub_419344() -> ! {
 // 0x419518 — __ZN3RBXL11dummyLoaderEPNS_9DataModelE
 // type: void __fastcall(RBX *this, RBX::DataModel *)
 #[doc(alias = "RBX::dummyLoader(RBX::DataModel *)")]
-pub fn stub_419518() -> ! {
-    todo!("0x419518 RBX::dummyLoader(RBX::DataModel *)")
+pub fn stub_419518() {
+    // IDA 0x419518: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x41951c — __ZN3RBX9DataModel3getENS_9ContentIdE
@@ -446,8 +446,9 @@ pub fn stub_41bcbc() -> ! {
 // 0x41be10 — __ZNK3RBX9DataModel12canSaveLocalEv
 // type: int __fastcall(RBX::DataModel *this)
 #[doc(alias = "RBX::DataModel::canSaveLocal(void)const")]
-pub fn stub_41be10() -> ! {
-    todo!("0x41be10 RBX::DataModel::canSaveLocal(void)const")
+pub fn stub_41be10() -> u32 {
+    // IDA 0x41be10: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x41be14 — __ZN3RBX9DataModel12saveToRobloxEN5boost8functionIFvbEEENS2_IFvSsEEE

@@ -306,8 +306,8 @@ pub fn stub_3180dc() -> ! {
 // type: void __fastcall(RBX *this)
 #[doc(alias = "RBX::initTrustCheck(void)")]
 #[doc(alias = "__ZN3RBXL14initTrustCheckEv")]
-pub fn stub_3180ec() -> ! {
-    todo!("0x3180ec RBX::initTrustCheck(void)")
+pub fn stub_3180ec() {
+    // IDA 0x3180ec: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x3180f0 — __ZN3RBX13WindowAverageIddED1Ev

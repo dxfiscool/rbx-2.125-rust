@@ -422,8 +422,9 @@ pub fn stub_1e65c8() -> ! {
 
 // 0x1e65d8 — _cff_driver_init
 #[doc(alias = "_cff_driver_init")]
-pub fn stub_1e65d8() -> ! {
-    todo!("0x1e65d8 _cff_driver_init")
+pub fn stub_1e65d8() -> u32 {
+    // IDA 0x1e65d8: `ARM mov r0,#0; bx lr` (bytes 0000a0e31eff2fe1) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x1e65e0 — _cff_driver_done

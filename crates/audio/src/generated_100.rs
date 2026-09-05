@@ -13,8 +13,9 @@ const _: () = {
 
 // 0xef2dc8 — _plcrash_log_writer_close
 #[doc(alias = "_plcrash_log_writer_close")]
-pub fn stub_ef2dc8() -> ! {
-    todo!("0xef2dc8 _plcrash_log_writer_close")
+pub fn stub_ef2dc8() -> u32 {
+    // IDA 0xef2dc8: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0xef2dcc — _plcrash_log_writer_free

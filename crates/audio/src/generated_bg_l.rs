@@ -867,16 +867,18 @@ pub fn stub_293404() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_293430() -> ! {
-    todo!("0x293430 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isReadOnly(void)const")
+pub fn stub_293430() -> u32 {
+    // IDA 0x293430: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x293434 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_293434() -> ! {
-    todo!("0x293434 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_293434() -> u32 {
+    // IDA 0x293434: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x293438 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -988,16 +990,18 @@ pub fn stub_293d24() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")]
-pub fn stub_293d50() -> ! {
-    todo!("0x293d50 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isReadOnly(void)const")
+pub fn stub_293d50() -> u32 {
+    // IDA 0x293d50: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x293d54 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")]
-pub fn stub_293d54() -> ! {
-    todo!("0x293d54 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isWriteOnly(void)const")
+pub fn stub_293d54() -> u32 {
+    // IDA 0x293d54: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x293d58 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
@@ -1109,16 +1113,18 @@ pub fn stub_294954() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")]
-pub fn stub_294980() -> ! {
-    todo!("0x294980 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const")
+pub fn stub_294980() -> u32 {
+    // IDA 0x294980: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x294984 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")]
-pub fn stub_294984() -> ! {
-    todo!("0x294984 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const")
+pub fn stub_294984() -> u32 {
+    // IDA 0x294984: `Thumb movs r0,#0; bx lr` (bytes 00207047) - returns 0 in r0 on the host.
+    0u32
 }
 
 // 0x294988 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE

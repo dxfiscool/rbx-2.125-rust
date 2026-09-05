@@ -257,8 +257,9 @@ pub fn stub_49ff08() -> ! {
 // demangled: RBX::Explosion::askSetParent(RBX::Instance const*)const
 #[doc(alias = "RBX::Explosion::askSetParent(RBX::Instance const*)const")]
 #[doc(alias = "__ZNK3RBX9Explosion12askSetParentEPKNS_8InstanceE")]
-pub fn stub_4a0094() -> ! {
-    todo!("0x4a0094 RBX::Explosion::askSetParent(RBX::Instance const*)const")
+pub fn stub_4a0094() -> u32 {
+    // IDA 0x4a0094: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4a0098 — __ZN3RBX9Explosion9onSteppedERKNS_7SteppedE
@@ -412,8 +413,9 @@ pub fn stub_4a1340() -> ! {
 // demangled: RBX::Explosion::shouldRender3dAdorn(void)const
 #[doc(alias = "RBX::Explosion::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZNK3RBX9Explosion19shouldRender3dAdornEv")]
-pub fn stub_4a1350() -> ! {
-    todo!("0x4a1350 RBX::Explosion::shouldRender3dAdorn(void)const")
+pub fn stub_4a1350() -> u32 {
+    // IDA 0x4a1350: `Thumb movs r0,#1; bx lr` (bytes 01207047) - returns 1 in r0 on the host.
+    1u32
 }
 
 // 0x4a1358 — __ZThn32_NK3RBX14FactoryProductINS_9ExplosionENS_8InstanceELZNS_10sExplosionEES2_E12getClassNameEv
@@ -434,8 +436,8 @@ pub fn stub_4a1368() {
 // demangled: RBX::IAdornable::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "RBX::IAdornable::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZN3RBX10IAdornable14render3dSelectEPNS_5AdornENS_11SelectStateE")]
-pub fn stub_4a1370() -> ! {
-    todo!("0x4a1370 RBX::IAdornable::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+pub fn stub_4a1370() {
+    // IDA 0x4a1370: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x4a1378 — __ZN3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7CreatorD1Ev

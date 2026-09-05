@@ -494,8 +494,8 @@ pub fn stub_64d020() {
 
 // 0x64d050 — __ZN3RBX5Stats14TypedStatsItemIfE5derefEPKf
 #[doc(alias = "RBX::Stats::TypedStatsItem<float>::deref(float const*)")]
-pub fn stub_64d050() -> ! {
-    todo!("0x64d050 RBX::Stats::TypedStatsItem<float>::deref(float const*)")
+pub fn stub_64d050() {
+    // IDA 0x64d050: 2-byte Thumb `bx lr` (bytes 7047) - void return, no-op carrier on host.
 }
 
 // 0x64d058 — __ZN5boost10shared_ptrIN3RBX5Stats16TypedPercentItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
