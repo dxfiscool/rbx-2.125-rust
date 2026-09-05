@@ -567,144 +567,199 @@ pub fn stub_3d2f4(slots: &mut Vec<VoidSlot>, target: usize) -> u64 {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
-pub fn stub_3d508() -> ! {
-    todo!("0x3d508 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")
+pub fn stub_3d508(slot: &mut Option<usize>, value: Option<usize>, add_ref: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) -> Option<usize> {
+    // IDA 0x3d508: add_ref(new); store; release(old).
+    if let Some(v) = value {
+        add_ref(v);
+    }
+    let old = std::mem::replace(slot, value);
+    if let Some(o) = old {
+        release(o);
+    }
+    *slot
 }
 
 // 0x3d5b0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")]
-pub fn stub_3d5b0() -> ! {
-    todo!("0x3d5b0 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")
+pub fn stub_3d5b0(guard: &mut bool, slot: &mut Option<usize>, alloc: &mut dyn FnMut(usize) -> usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3d5b0: guarded one-time mutex alloc (0x2C) + construct.
+    if !*guard {
+        let m = alloc(0x2C);
+        init(m);
+        *slot = Some(m);
+        *guard = true;
+    }
+    slot.unwrap_or(0)
 }
 
 // 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_3d6a8() -> ! {
-    todo!("0x3d6a8 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_3d6a8(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d6a8: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x3d754 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_3d754() -> ! {
-    todo!("0x3d754 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_3d754(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d754: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // demangled: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_3d808() -> ! {
-    todo!("0x3d808 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_3d808(target: usize, desc: usize, invoke: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x3d808: callable::call forwards to bind_t::operator()<desc>.
+    invoke(target, desc);
 }
 
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 // type: 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_3d81c() -> ! {
-    todo!("0x3d81c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_3d81c(target: usize, desc: usize, invoke: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x3d81c: non-virtual thunk adjusts inward then tail-calls the operator().
+    invoke(target, desc);
 }
 
 // 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
 // demangled: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)
 // type: int(void)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
-pub fn stub_3d830() -> ! {
-    todo!("0x3d830 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+pub fn stub_3d830(obj: usize, is_virtual: bool, desc: usize, call: &mut dyn FnMut(usize, bool, usize)) {
+    // IDA 0x3d830: mf1 dispatch (virtual adjust); obj->method(desc).
+    call(obj, is_virtual, desc);
 }
 
 // 0x3d848 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6removeEPNS8_4slotE
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_3d848() -> ! {
-    todo!("0x3d848 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_3d848(slots: &mut Vec<VoidSlot>, id: u64, expired: bool, remove: &mut dyn FnMut(u64)) {
+    // IDA 0x3d848: ReleaseAssert(!expired); remove slot.
+    assert!(!expired, "!boost::intrusive_ptr_expired(item)");
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        remove(s.id);
+    }
 }
 
 // 0x3d938 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_3d938() -> ! {
-    todo!("0x3d938 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")
+pub fn stub_3d938(get: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3d938: thunk tail-calls safe_static_do_get_mutex.
+    get()
 }
 
 // 0x3d940 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotD0Ev
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")]
-pub fn stub_3d940() -> ! {
-    todo!("0x3d940 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")
+pub fn stub_3d940(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d940: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_3d9f0() -> ! {
-    todo!("0x3d9f0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_3d9f0(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d9f0: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x3da9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_3da9c() -> ! {
-    todo!("0x3da9c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_3da9c(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3da9c: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x3db4c — __ZN5boost6detail12shared_countC2IN3RBX8ViewBaseEEEPT_
 // demangled: boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)")]
-pub fn stub_3db4c() -> ! {
-    todo!("0x3db4c boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)")
+pub fn stub_3db4c(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3db4c: operator new(0x10); use=weak=1; store px.
+    let block = alloc(0x10);
+    init(block, px);
+    block
 }
 
 // 0x3dc40 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED1Ev
 // demangled: boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()")]
-pub fn stub_3dc40() -> ! {
-    todo!("0x3dc40 boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()")
+pub fn stub_3dc40() {
+    // IDA 0x3dc40: empty sp_counted_impl_p<ViewBase> D2 body.
 }
 
 // 0x3dc44 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED0Ev
 // demangled: boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()")]
-pub fn stub_3dc44() -> ! {
-    todo!("0x3dc44 boost::detail::sp_counted_impl_p<RBX::ViewBase>::~sp_counted_impl_p()")
+pub fn stub_3dc44(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3dc44: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3dc48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)")]
-pub fn stub_3dc48() -> ! {
-    todo!("0x3dc48 boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)")
+pub fn stub_3dc48(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3dc48: null px -> 0 else virtual destroy (+120).
+    if px != 0 {
+        destroy(px)
+    } else {
+        0
+    }
 }
 
 // 0x3dc58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")]
-pub fn stub_3dc58() -> ! {
-    todo!("0x3dc58 boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")
+pub fn stub_3dc58() -> usize {
+    // IDA 0x3dc58: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3dc5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)")]
-pub fn stub_3dc5c() -> ! {
-    todo!("0x3dc5c boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)")
+pub fn stub_3dc5c() -> usize {
+    // IDA 0x3dc5c: plain impl_p has no untyped deleter -> 0.
+    0
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -712,56 +767,72 @@ pub fn stub_3dc5c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
-pub fn stub_3dc60() -> ! {
-    todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
+pub fn stub_3dc60(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x3dc60: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x3dd34 — __ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
 // demangled: boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_3dd34() -> ! {
-    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_3dd34(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3dd34: operator new(0x10); use=weak=1; store px.
+    let block = alloc(0x10);
+    init(block, px);
+    block
 }
 
 // 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
-pub fn stub_3de28() -> ! {
-    todo!("0x3de28 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_3de28() {
+    // IDA 0x3de28: empty sp_counted_impl_p<RenderJob> D2 body.
 }
 
 // 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
-pub fn stub_3de2c() -> ! {
-    todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_3de2c(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3de2c: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
-pub fn stub_3de30() -> ! {
-    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+pub fn stub_3de30(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3de30: null px -> 0 else virtual destroy (+4).
+    if px != 0 {
+        destroy(px)
+    } else {
+        0
+    }
 }
 
 // 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
-pub fn stub_3de40() -> ! {
-    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+pub fn stub_3de40() -> usize {
+    // IDA 0x3de40: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
-pub fn stub_3de44() -> ! {
-    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+pub fn stub_3de44() -> usize {
+    // IDA 0x3de44: plain impl_p has no untyped deleter -> 0.
+    0
 }
 
 // 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
