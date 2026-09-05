@@ -796,84 +796,147 @@ pub fn stub_0x3fd10() {
 
 // 0x3fd38 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_0x3fd38() -> ! {
-    todo!("0x3fd38 __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")
+pub fn stub_0x3fd38() {
+    // IDA 0x3fd38: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_0x3fd60() -> ! {
-    todo!("0x3fd60 __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")
+pub fn stub_0x3fd60() {
+    // IDA 0x3fd60: thn4 D1 (adjust plus base dtor); drop glue covers it —
+    // no-op.
 }
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_0x3fd88() -> ! {
-    todo!("0x3fd88 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")
+pub fn stub_0x3fd88() {
+    // IDA 0x3fd88: thn4 D1 (adjust plus base dtor); drop glue covers it —
+    // no-op.
 }
 
 // 0x3fdb8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 pub fn stub_0x3fdb8() -> ! {
-    todo!("0x3fdb8 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")
+    // IDA 0x3fdb8: `rethrow` allocates and throws the bad_weak_ptr
+    // (0x3fdf0..0x3feb2, noreturn).
+    panic!("boost::bad_weak_ptr")
 }
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl() [0x3fee0]")]
-pub fn stub_0x3fee0() -> ! {
-    todo!("0x3fee0 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")
+pub fn stub_0x3fee0() {
+    // IDA 0x3fee0: thn4 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 pub fn stub_0x3ff18() -> ! {
-    todo!("0x3ff18 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")
+    // IDA 0x3ff18: virtual-thunk `rethrow` (adjust plus throw, same shape
+    // as 0x3fdb8).
+    panic!("boost::bad_weak_ptr")
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_0x3ff28() -> ! {
-    todo!("0x3ff28 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")
+pub fn stub_0x3ff28() {
+    // IDA 0x3ff28: virtual-thunk D0 (adjust, teardown, delete); drop glue
+    // covers it — no-op.
 }
 
 // 0x3ff60 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector() [0x3ff60]")]
-pub fn stub_0x3ff60() -> ! {
-    todo!("0x3ff60 __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")
+pub fn stub_0x3ff60() {
+    // IDA 0x3ff60: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector() [0x3ff90]")]
-pub fn stub_0x3ff90() -> ! {
-    todo!("0x3ff90 __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")
+pub fn stub_0x3ff90() {
+    // IDA 0x3ff90: thn4 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x3ffc0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE
 // type: int __fastcall(int, int, int, int, char, std::exception *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
-pub fn stub_0x3ffc0() -> ! {
-    todo!("0x3ffc0 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE")
+pub fn stub_0x3ffc0(src: &BoostSyncError) -> BoostSyncError {
+    // IDA 0x3ffc0: C1 copy ctor with clone tag for the bad-weak-ptr flavor
+    // — same shape as 0x3c6c8.
+    src.clone()
 }
 
 // 0x406e0 — __ZN5boost9function0IvE5clearEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::function0<void>::clear(void)")]
-pub fn stub_0x406e0() -> ! {
-    todo!("0x406e0 __ZN5boost9function0IvE5clearEv")
+pub fn stub_0x406e0(cb: &mut Option<JoinGameCallback>) -> u32 {
+    // IDA 0x406e0: `function0::clear` destroys the functor through the
+    // manager (0x406f8..0x406f8..0x40704) when set, nulls it (0x40708),
+    // and answers 0 (0x40706/0x406ec).
+    *cb = None;
+    0
 }
 
 // 0x43360 — __ZN10SimpleJSON14DefaultHandlerERKSsS1_
 #[doc(alias = "SimpleJSON::DefaultHandler(std::string const&,std::string const&)")]
-pub fn stub_0x43360() -> ! {
-    todo!("0x43360 __ZN10SimpleJSON14DefaultHandlerERKSsS1_")
+pub fn stub_0x43360() -> u32 {
+    // IDA 0x43360: `SimpleJSON::DefaultHandler` answers 0 (0x43362).
+    0
 }
 
 // 0x43364 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")]
-pub fn stub_0x43364() -> ! {
-    todo!("0x43364 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")
+pub fn stub_0x43364(map: &mut BTreeMap<u32, i32>) {
+    // IDA 0x43364 `_Rb_tree<string, fn>::_M_erase(node)`: recursive
+    // left-subtree erase, node delete, right walk (same shape as 0x16d84).
+    // Host has no tree nodes; granularity collapses to the owning map.
+    map.clear();
+}
+
+#[cfg(test)]
+mod weak_clear_batch_tests {
+    use super::*;
+
+    #[test]
+    #[should_panic(expected = "boost::bad_weak_ptr")]
+    fn rethrow_throws() {
+        stub_0x3fdb8();
+    }
+
+    #[test]
+    #[should_panic(expected = "boost::bad_weak_ptr")]
+    fn virtual_rethrow_throws() {
+        stub_0x3ff18();
+    }
+
+    #[test]
+    fn weak_lifecycle() {
+        stub_0x3fd38();
+        stub_0x3fd60();
+        stub_0x3fd88();
+        stub_0x3fee0();
+        stub_0x3ff28();
+        stub_0x3ff60();
+        stub_0x3ff90();
+        let err = BoostSyncError { kind: SyncErrorKind::Lock, message: "w".to_owned() };
+        assert_eq!(stub_0x3ffc0(&err), err);
+    }
+
+    #[test]
+    fn clear_and_handlers() {
+        let mut cb = Some(stub_0x2f0f0(7, true));
+        assert_eq!(stub_0x406e0(&mut cb), 0);
+        assert_eq!(cb, None);
+        let mut empty: Option<JoinGameCallback> = None;
+        assert_eq!(stub_0x406e0(&mut empty), 0);
+        assert_eq!(stub_0x43360(), 0);
+        let mut map = BTreeMap::from([(1u32, 2i32)]);
+        stub_0x43364(&mut map);
+        assert!(map.is_empty());
+    }
 }
 
 #[cfg(test)]
