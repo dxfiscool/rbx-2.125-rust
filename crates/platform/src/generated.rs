@@ -1302,6 +1302,8 @@ pub struct RapvcState {
     anim_runs: AtomicU32,
     anim_removes: AtomicU32,
     last_tween: parking_lot::Mutex<f32>,
+    layer_frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    copy_frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
     releases: AtomicU32,
 }
 impl RapvcState {
@@ -1339,16 +1341,14 @@ impl RapvcState {
     }
     /// `appInBackground:` (IDA 0x5233c): stops the background pan.
     pub fn backgrounded(&self) {
-        self.panning.store(false, Ordering::SeqCst);
-        self.bump(&self.pan_stops);
+        self.stop_pan();
     }
     /// `appInForeground:` (IDA 0x5234c): a loaded view restarts the pan.
     pub fn foregrounded(&self, view_loaded: bool) {
         if !view_loaded {
             return;
         }
-        self.panning.store(true, Ordering::SeqCst);
-        self.bump(&self.pan_runs);
+        self.start_pan();
     }
     pub fn is_panning(&self) -> bool {
         self.panning.load(Ordering::SeqCst)
@@ -1405,6 +1405,8 @@ impl RapvcState {
     /// and the initials zero out, then the copies reposition.
     pub fn appeared(&self, fg_init: f32, bg_init: f32) {
         self.bump(&self.appears);
+        *self.fg_init_x.lock() = fg_init;
+        *self.bg_init_x.lock() = bg_init;
         if self.mem_warning.load(Ordering::SeqCst) {
             return;
         }
@@ -1421,10 +1423,7 @@ impl RapvcState {
     /// stops the background pan.
     pub fn disappeared(&self) {
         self.bump(&self.disappears);
-        if !self.mem_warning.load(Ordering::SeqCst) {
-            self.panning.store(false, Ordering::SeqCst);
-            self.bump(&self.pan_stops);
-        }
+        self.stop_pan();
     }
     pub fn disappear_count(&self) -> u32 {
         self.disappears.load(Ordering::SeqCst)
@@ -1450,7 +1449,140 @@ impl RapvcState {
     pub fn last_tween(&self) -> f32 {
         *self.last_tween.lock()
     }
+    /// `startBackgroundPan` (IDA 0x53688): without a warning and while not
+    /// looping, latches looping and runs the foreground + background
+    /// animations (0x536ae..0x536dc).
+    pub fn start_pan(&self) {
+        if self.mem_warning.load(Ordering::SeqCst)
+            || self.anim_looping.load(Ordering::SeqCst)
+        {
+            return;
+        }
+        self.anim_looping.store(true, Ordering::SeqCst);
+        self.panning.store(true, Ordering::SeqCst);
+        self.bump(&self.pan_runs);
+        self.animate_foreground(true);
+        self.animate_background(true);
+    }
+    /// `stopBackgroundPan` (IDA 0x536e0): without a warning and while
+    /// looping, the `__54…` block runs via `dispatch_async` on main
+    /// (0x53736..0x53748, inline on the host).
+    pub fn stop_pan(&self) {
+        if self.mem_warning.load(Ordering::SeqCst) {
+            return;
+        }
+        if !self.anim_looping.load(Ordering::SeqCst) {
+            return;
+        }
+        self.apply_stop_block();
+        self.panning.store(false, Ordering::SeqCst);
+        self.bump(&self.pan_stops);
+    }
+    /// `__54-stopBackgroundPan_block_invoke` (IDA 0x53750): clears the
+    /// looping flag (0x5377a) after snapshotting the presentation frames
+    /// (0x53780..tail).
+    pub fn apply_stop_block(&self) {
+        self.anim_looping.store(false, Ordering::SeqCst);
+    }
+    pub fn is_looping(&self) -> bool {
+        self.anim_looping.load(Ordering::SeqCst)
+    }
+    /// `animateBackground` (IDA 0x52f98): a nonzero frame x runs
+    /// `animateToZeroPosition:` (tween 120.0), else `animateLayer:` with the
+    /// same tween (0x52fb4..0x5302c).
+    pub fn animate_background(&self, nonzero_x: bool) -> bool {
+        if nonzero_x {
+            self.animate_to_zero(true, true, 120.0)
+        } else {
+            self.animate_layer(true, true, 120.0)
+        }
+    }
+    /// `animateForeground` (IDA 0x53034): a nonzero frame x runs
+    /// `animateToZeroPosition:` (tween 60.0), else `animateLayer:` with the
+    /// same tween (0x53050..0x530c8).
+    pub fn animate_foreground(&self, nonzero_x: bool) -> bool {
+        if nonzero_x {
+            self.animate_to_zero(true, true, 60.0)
+        } else {
+            self.animate_layer(true, true, 60.0)
+        }
+    }
+    /// `animateLayer:copyLayer:animationDuration:` (IDA 0x530d0): needs the
+    /// loop latched (0x530f4); NaN guards always pass here, offscreen frames
+    /// reposition (0x531f8..0x5331a), and the `__78…` pair runs via
+    /// `animateWithDuration:` (0x52cea..0x52d8e shape, inline).
+    pub fn animate_layer(&self, has_layer: bool, has_copy: bool, duration: f32) -> bool {
+        if !self.anim_looping.load(Ordering::SeqCst) {
+            return false;
+        }
+        if !has_layer || !has_copy {
+            return false;
+        }
+        *self.last_tween.lock() = duration;
+        self.bump(&self.anim_runs);
+        true
+    }
+    /// `__86-animateToZeroPosition_block_invoke` (IDA 0x52dac, animations):
+    /// both the layer and the copy snap to the captured x with their own
+    /// sizes (0x52dbc..0x52e8c).
+    pub fn apply_zero_frames(
+        &self,
+        x: f32,
+        layer: (f32, f32, f32, f32),
+        copy: (f32, f32, f32, f32),
+    ) {
+        *self.layer_frame.lock() = (x, layer.1, layer.2, layer.3);
+        *self.copy_frame.lock() = (x, copy.1, copy.2, copy.3);
+    }
+    pub fn layer_frame(&self) -> (f32, f32, f32, f32) {
+        *self.layer_frame.lock()
+    }
+    pub fn copy_frame(&self) -> (f32, f32, f32, f32) {
+        *self.copy_frame.lock()
+    }
+    /// `__78-animateLayer_block_invoke` (IDA 0x5340c, animations): both
+    /// frames shift left by their widths toward zero (0x53486..0x53570).
+    pub fn apply_anim_frames(&self) {
+        let layer = *self.layer_frame.lock();
+        let copy = *self.copy_frame.lock();
+        *self.layer_frame.lock() = (layer.0 - layer.2, layer.1, layer.2, layer.3);
+        *self.copy_frame.lock() = (copy.0 - copy.2, copy.1, copy.2, copy.3);
+    }
+    /// `__78-animateLayer_block_invoke87` (IDA 0x535ec, completion): while
+    /// looping and finished, the layer animation re-arms (0x535fc..0x5362c).
+    pub fn animate_completion(&self, finished: bool) -> bool {
+        if !finished || !self.anim_looping.load(Ordering::SeqCst) {
+            return false;
+        }
+        let tween = *self.last_tween.lock();
+        self.animate_layer(true, true, tween)
+    }
+    /// `-foregroundCopy` (IDA 0x53a04): the foreground copy view, nil until
+    /// `-viewDidLoad` builds the copies.
+    pub fn foreground_copy(&self) -> Option<ControlId> {
+        self.has_copies.load(Ordering::SeqCst).then_some(FOREGROUND_COPY_ID)
+    }
+    /// `-setForegroundCopy:` (IDA 0x53a14): retained assign (objc_setProperty,
+    /// offset 160); nil clears the copies flag.
+    pub fn set_foreground_copy(&self, view: Option<ControlId>) {
+        self.has_copies.store(view.is_some(), Ordering::SeqCst);
+    }
+    /// `-backgroundCopy` (IDA 0x53a38).
+    pub fn background_copy(&self) -> Option<ControlId> {
+        self.has_copies.load(Ordering::SeqCst).then_some(BACKGROUND_COPY_ID)
+    }
+    /// `-setBackgroundCopy:` (IDA 0x53a48): retained assign (offset 164).
+    pub fn set_background_copy(&self, view: Option<ControlId>) {
+        self.has_copies.store(view.is_some(), Ordering::SeqCst);
+    }
+    /// `-foregroundImageInitialX` (IDA 0x53a6c): atomic load with barrier.
+    pub fn foreground_initial_x(&self) -> f32 {
+        *self.fg_init_x.lock()
+    }
 }
+/// Host ids for the foreground/background copy views (IDA 0x53a04/0x53a38).
+const FOREGROUND_COPY_ID: ControlId = 11;
+const BACKGROUND_COPY_ID: ControlId = 12;
 static RAPVC: std::sync::LazyLock<RapvcState> =
     std::sync::LazyLock::new(RapvcState::default);
 static THUMB_STICK: std::sync::LazyLock<ThumbStickState> =
@@ -12736,106 +12868,139 @@ pub fn stub_52aec(has_view: bool, has_copy: bool, tween: f32) -> bool {
 // 0x52dac — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")]
-pub fn stub_52dac() -> ! {
-    todo!("0x52dac ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")
+pub fn stub_52dac(x: f32, layer: (f32, f32, f32, f32), copy: (f32, f32, f32, f32)) {
+    // IDA 0x52dac `__86…_block_invoke` (animations): both the layer and the
+    // copy snap to the captured x with their own sizes (0x52dbc..0x52e8c).
+    RAPVC.apply_zero_frames(x, layer, copy);
 }
 
 // 0x52f14 — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73
 // type: id __fastcall(int)
 #[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")]
-pub fn stub_52f14() -> ! {
-    todo!("0x52f14 ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")
+pub fn stub_52f14(has_layer: bool, has_copy: bool, duration: f32) -> bool {
+    // IDA 0x52f14 `__86…_block_invoke73` (completion): forwards the captured
+    // layer, copy and tween to `animateLayer:copyLayer:animationDuration:`
+    // (0x52f42).
+    RAPVC.animate_layer(has_layer, has_copy, duration)
 }
 
 // 0x52f98 — -[RobloxAnimatingPageViewController animateBackground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateBackground]")]
-pub fn stub_52f98() -> ! {
-    todo!("0x52f98 -[RobloxAnimatingPageViewController animateBackground]")
+pub fn stub_52f98(nonzero_x: bool) -> bool {
+    // IDA 0x52f98 `animateBackground`: nonzero frame x runs
+    // `animateToZeroPosition:` (tween 120.0), else `animateLayer:`.
+    RAPVC.animate_background(nonzero_x)
 }
 
 // 0x53034 — -[RobloxAnimatingPageViewController animateForeground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateForeground]")]
-pub fn stub_53034() -> ! {
-    todo!("0x53034 -[RobloxAnimatingPageViewController animateForeground]")
+pub fn stub_53034(nonzero_x: bool) -> bool {
+    // IDA 0x53034 `animateForeground`: nonzero frame x runs
+    // `animateToZeroPosition:` (tween 60.0), else `animateLayer:`.
+    RAPVC.animate_foreground(nonzero_x)
 }
 
 // 0x530d0 — -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")]
-pub fn stub_530d0() -> ! {
-    todo!("0x530d0 -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")
+pub fn stub_530d0(has_layer: bool, has_copy: bool, duration: f32) -> bool {
+    // IDA 0x530d0 `animateLayer:copyLayer:animationDuration:`: needs the
+    // loop latched; NaN guards pass, offscreen frames reposition, and the
+    // `__78…` pair animates inline.
+    RAPVC.animate_layer(has_layer, has_copy, duration)
 }
 
 // 0x5340c — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")]
-pub fn stub_5340c() -> ! {
-    todo!("0x5340c ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")
+pub fn stub_5340c() {
+    // IDA 0x5340c `__78…_block_invoke` (animations): both frames shift left
+    // by their widths toward zero (0x53486..0x53570).
+    RAPVC.apply_anim_frames();
 }
 
 // 0x535ec — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87
 // type: _BYTE *__fastcall(_DWORD *, char)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")]
-pub fn stub_535ec() -> ! {
-    todo!("0x535ec ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")
+pub fn stub_535ec(finished: bool) -> bool {
+    // IDA 0x535ec `__78…_block_invoke87` (completion): while looping and
+    // finished, the layer animation re-arms (0x535fc..0x5362c).
+    RAPVC.animate_completion(finished)
 }
 
 // 0x53688 — -[RobloxAnimatingPageViewController startBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController startBackgroundPan]")]
-pub fn stub_53688() -> ! {
-    todo!("0x53688 -[RobloxAnimatingPageViewController startBackgroundPan]")
+pub fn stub_53688() {
+    // IDA 0x53688 `startBackgroundPan`: latches looping and runs the
+    // foreground + background animations (0x536ae..0x536dc).
+    RAPVC.start_pan();
 }
 
 // 0x536e0 — -[RobloxAnimatingPageViewController stopBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController stopBackgroundPan]")]
-pub fn stub_536e0() -> ! {
-    todo!("0x536e0 -[RobloxAnimatingPageViewController stopBackgroundPan]")
+pub fn stub_536e0() {
+    // IDA 0x536e0 `stopBackgroundPan`: without a warning and while looping,
+    // the `__54…` block runs via `dispatch_async` (0x53736..0x53748, inline).
+    RAPVC.stop_pan();
 }
 
 // 0x53750 — ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")]
-pub fn stub_53750() -> ! {
-    todo!("0x53750 ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")
+pub fn stub_53750() {
+    // IDA 0x53750 `__54-stopBackgroundPan_block_invoke` (via
+    // `dispatch_async` on main, inline): clears the looping flag after
+    // snapshotting the presentation frames (0x5377a..tail).
+    RAPVC.apply_stop_block();
 }
 
 // 0x53a04 — -[RobloxAnimatingPageViewController foregroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundCopy]")]
-pub fn stub_53a04() -> ! {
-    todo!("0x53a04 -[RobloxAnimatingPageViewController foregroundCopy]")
+pub fn stub_53a04() -> Option<ControlId> {
+    // IDA 0x53a04 `-foregroundCopy`: the foreground copy view, nil until
+    // `-viewDidLoad` builds the copies.
+    RAPVC.foreground_copy()
 }
 
 // 0x53a14 — -[RobloxAnimatingPageViewController setForegroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundCopy:]")]
-pub fn stub_53a14() -> ! {
-    todo!("0x53a14 -[RobloxAnimatingPageViewController setForegroundCopy:]")
+pub fn stub_53a14(view: Option<ControlId>) {
+    // IDA 0x53a14 `-setForegroundCopy:`: retained assign via
+    // `objc_setProperty` (offset 160, 0x53a30); nil clears the copies flag.
+    RAPVC.set_foreground_copy(view);
 }
 
 // 0x53a38 — -[RobloxAnimatingPageViewController backgroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundCopy]")]
-pub fn stub_53a38() -> ! {
-    todo!("0x53a38 -[RobloxAnimatingPageViewController backgroundCopy]")
+pub fn stub_53a38() -> Option<ControlId> {
+    // IDA 0x53a38 `-backgroundCopy`: the background copy view, nil until
+    // `-viewDidLoad` builds the copies.
+    RAPVC.background_copy()
 }
 
 // 0x53a48 — -[RobloxAnimatingPageViewController setBackgroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundCopy:]")]
-pub fn stub_53a48() -> ! {
-    todo!("0x53a48 -[RobloxAnimatingPageViewController setBackgroundCopy:]")
+pub fn stub_53a48(view: Option<ControlId>) {
+    // IDA 0x53a48 `-setBackgroundCopy:`: retained assign (0x53a64); nil
+    // clears the copies flag.
+    RAPVC.set_background_copy(view);
 }
 
 // 0x53a6c — -[RobloxAnimatingPageViewController foregroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundImageInitialX]")]
-pub fn stub_53a6c() -> ! {
-    todo!("0x53a6c -[RobloxAnimatingPageViewController foregroundImageInitialX]")
+pub fn stub_53a6c() -> f32 {
+    // IDA 0x53a6c `-foregroundImageInitialX`: atomic load with barrier
+    // (0x53a78..0x53a7e).
+    RAPVC.foreground_initial_x()
 }
 
 // 0x53a80 — -[RobloxAnimatingPageViewController setForegroundImageInitialX:]

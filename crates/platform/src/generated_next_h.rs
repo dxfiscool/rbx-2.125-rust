@@ -1985,69 +1985,154 @@ pub fn init_global_a27_51fe0() {
 // 0x52ed4 — ___copy_helper_block__14
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__14")]
-pub fn stub_52ed4() -> ! {
-    todo!("0x52ed4 ___copy_helper_block__14")
+pub unsafe fn copy_block_captures_52ed4(dst: *mut c_void, src: *const c_void) {
+// IDA 0x52ed4: _Block_object_assign(dst+20, src+20, 3) then the +24 shim
+// assign (decompile) — same two-capture shape as IDA 0x4e030.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+    }
 }
 
 // 0x52ef8 — ___destroy_helper_block__14
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__14")]
-pub fn stub_52ef8() -> ! {
-    todo!("0x52ef8 ___destroy_helper_block__14")
+pub unsafe fn destroy_block_captures_52ef8(block: *mut c_void) {
+// IDA 0x52ef8: _Block_object_dispose(block+20, 3) then the +24 shim dispose
+// (decompile) — same two-capture shape as IDA 0x4e054.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x52f44 — ___copy_helper_block_76
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_76")]
-pub fn stub_52f44() -> ! {
-    todo!("0x52f44 ___copy_helper_block_76")
+pub unsafe fn copy_block_captures3_52f44(dst: *mut c_void, src: *const c_void) {
+// IDA 0x52f44: three captures — slots +20/+24 then the +28 shim (decompile).
+// All flags are BLOCK_FIELD_IS_OBJECT; only the three words move here.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+        *(dst as *mut *const c_void).byte_add(28) =
+            *(src as *const *const c_void).byte_add(28);
+    }
 }
 
 // 0x52f74 — ___destroy_helper_block_77
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_77")]
-pub fn stub_52f74() -> ! {
-    todo!("0x52f74 ___destroy_helper_block_77")
+pub unsafe fn destroy_block_captures3_52f74(block: *mut c_void) {
+// IDA 0x52f74: three disposes — slots +20/+24 then the +28 shim (decompile);
+// the runtime releases all three captured objects and the words clear below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(28)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x535ac — ___copy_helper_block_84
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_84")]
-pub fn stub_535ac() -> ! {
-    todo!("0x535ac ___copy_helper_block_84")
+pub unsafe fn copy_block_captures_535ac(dst: *mut c_void, src: *const c_void) {
+// IDA 0x535ac: _Block_object_assign(dst+20, src+20, 3) then the +24 shim
+// assign (decompile) — same two-capture shape as IDA 0x4e030.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+    }
 }
 
 // 0x535d0 — ___destroy_helper_block_85
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_85")]
-pub fn stub_535d0() -> ! {
-    todo!("0x535d0 ___destroy_helper_block_85")
+pub unsafe fn destroy_block_captures_535d0(block: *mut c_void) {
+// IDA 0x535d0: _Block_object_dispose(block+20, 3) then the +24 shim dispose
+// (decompile); both words clear below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x53634 — ___copy_helper_block_88
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_88")]
-pub fn stub_53634() -> ! {
-    todo!("0x53634 ___copy_helper_block_88")
+pub unsafe fn copy_block_captures3_53634(dst: *mut c_void, src: *const c_void) {
+// IDA 0x53634: three captures — slots +20/+24 then the +28 shim (decompile).
+// All flags are BLOCK_FIELD_IS_OBJECT; only the three words move here.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+        *(dst as *mut *const c_void).byte_add(28) =
+            *(src as *const *const c_void).byte_add(28);
+    }
 }
 
 // 0x53664 — ___destroy_helper_block_89
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_89")]
-pub fn stub_53664() -> ! {
-    todo!("0x53664 ___destroy_helper_block_89")
+pub unsafe fn destroy_block_captures3_53664(block: *mut c_void) {
+// IDA 0x53664: three disposes — slots +20/+24 then the +28 shim (decompile);
+// the runtime releases all three captured objects and the words clear below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(28)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x539f0 — ___copy_helper_block_97
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_97")]
-pub fn stub_539f0() -> ! {
-    todo!("0x539f0 ___copy_helper_block_97")
+pub unsafe fn copy_block_capture_539f0(dst: *mut c_void, src: *const c_void) {
+// IDA 0x539f0: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x539fc — ___destroy_helper_block_98
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_98")]
-pub fn stub_539fc() -> ! {
-    todo!("0x539fc ___destroy_helper_block_98")
+pub unsafe fn destroy_block_capture_539fc(block: *mut c_void) {
+// IDA 0x539fc: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
