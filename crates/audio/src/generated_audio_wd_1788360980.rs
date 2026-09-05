@@ -1811,8 +1811,11 @@ pub fn stub_66b094() {
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::disconnectAll(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE13disconnectAllEv")]
-pub fn stub_66b1e0() -> ! {
-    todo!("0x66b1e0 __ZN3rbx7signals6signalIFviiEE13disconnectAllEv")
+pub fn stub_66b1e0() {
+    // IDA 0x66b1e0 (`rbx::signals::signal<void (int,int)>::
+    // disconnectAll`): locked slot-list teardown (0x66b1e0+).
+    // Connections fold into the host fire-closure seams. Carrier
+    // no-op.
 }
 
 
@@ -1821,8 +1824,10 @@ pub fn stub_66b1e0() -> ! {
 // type: int(void)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviiEE4slotEEaSERKS7_")]
-pub fn stub_66b358() -> ! {
-    todo!("0x66b358 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviiEE4slotEEaSERKS7_")
+pub fn stub_66b358() {
+    // IDA 0x66b358 (`boost::intrusive_ptr<signal<void
+    // (int,int)>::slot>::operator=`): addref-new/release-old
+    // (0x66b35a-0x66b372). `Arc` move — carrier no-op.
 }
 
 
@@ -1830,8 +1835,10 @@ pub fn stub_66b358() -> ! {
 // demangled: rbx::signals::signal<void ()(int,int)>::safe_static_init_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE22safe_static_init_mutexEv")]
-pub fn stub_66b37c() -> ! {
-    todo!("0x66b37c __ZN3rbx7signals6signalIFviiEE22safe_static_init_mutexEv")
+pub fn stub_66b37c() {
+    // IDA 0x66b37c (`rbx::signals::signal<void (int,int)>::
+    // safe_static_init_mutex`): forwards to the once-mutex getter
+    // (host: the 0x66b380 twin folds). Carrier no-op.
 }
 
 
@@ -1839,6 +1846,8 @@ pub fn stub_66b37c() -> ! {
 // demangled: rbx::signals::signal<void ()(int,int)>::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv")]
-pub fn stub_66b380() -> ! {
-    todo!("0x66b380 __ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv")
+pub fn stub_66b380() {
+    // IDA 0x66b380 (`rbx::signals::signal<void (int,int)>::
+    // safe_static_do_get_mutex`): once-guarded static mutex init
+    // (0x66b3dc-0x66b40c). Host mutexes fold. Carrier no-op.
 }

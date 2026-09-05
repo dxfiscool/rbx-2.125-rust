@@ -332,8 +332,12 @@ pub fn stub_66a810() {
 
 // 0x66ad30 — __ZNK3RBX17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEE12getClassNameEv")]
-pub fn stub_66ad30() -> ! {
-    todo!("0x66ad30 __ZNK3RBX17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEE12getClassNameEv")
+pub fn stub_66ad30() -> &'static str {
+    // IDA 0x66ad30 (`RBX::NonFactoryProduct<GuiBase2d,
+    // sGuiObject>::getClassName`, thunk): forwards to
+    // `declare<sGuiObject>` (host: the 0x66ae90 twin) — the
+    // declared name: "GuiObject".
+    "GuiObject"
 }
 
 // 0x66ade0 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEE12getClassNameEv
@@ -345,46 +349,68 @@ pub fn stub_66ade0() {
 // 0x66ae90 — __ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v")]
-pub fn stub_66ae90() -> ! {
-    todo!("0x66ae90 __ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v")
+pub fn stub_66ae90() {
+    // IDA 0x66ae90 (`RBX::Name::declare<sGuiObject>`):
+    // once-guarded declare of the `sGuiObject` static
+    // (0x66ae90-0x66aeca per disasm). The name registry folds
+    // away. Carrier no-op.
 }
 
 // 0x66aed4 — __ZN3RBX4Name13callDoDeclareILZNS_10sGuiObjectEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sGuiObjectEEEEvv")]
-pub fn stub_66aed4() -> ! {
-    todo!("0x66aed4 __ZN3RBX4Name13callDoDeclareILZNS_10sGuiObjectEEEEvv")
+pub fn stub_66aed4() {
+    // IDA 0x66aed4 (`RBX::Name::callDoDeclare<sGuiObject>`):
+    // thunk forwarding to `doDeclare` (host: the 0x66aed8 twin).
+    // The name registry folds away.
+    stub_66aed8();
 }
 
 // 0x66aed8 — __ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v")]
-pub fn stub_66aed8() -> ! {
-    todo!("0x66aed8 __ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v")
+pub fn stub_66aed8() {
+    // IDA 0x66aed8 (`RBX::Name::doDeclare<sGuiObject>`):
+    // once-guarded `Name::declare(sGuiObject)` (0x66af34-0x66af8e).
+    // The name registry folds away. Carrier no-op.
 }
 
 // 0x66bce0 — __ZN3RBX4Name7declareILZNS_12sTextServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sTextServiceEEEERKS0_v")]
-pub fn stub_66bce0() -> ! {
-    todo!("0x66bce0 __ZN3RBX4Name7declareILZNS_12sTextServiceEEEERKS0_v")
+pub fn stub_66bce0() {
+    // IDA 0x66bce0 (`RBX::Name::declare<sTextService>`):
+    // once-guarded declare of the `sTextService` static
+    // (0x66bce0+ per disasm, same shape as 0x66ae90). The name
+    // registry folds away. Carrier no-op.
 }
 
 // 0x66bd24 — __ZN3RBX4Name13callDoDeclareILZNS_12sTextServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sTextServiceEEEEvv")]
-pub fn stub_66bd24() -> ! {
-    todo!("0x66bd24 __ZN3RBX4Name13callDoDeclareILZNS_12sTextServiceEEEEvv")
+pub fn stub_66bd24() {
+    // IDA 0x66bd24 (`RBX::Name::callDoDeclare<sTextService>`):
+    // thunk forwarding to `doDeclare` (host: the 0x66bd28 twin).
+    // The name registry folds away.
+    stub_66bd28();
 }
 
 // 0x66bd28 — __ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v")]
-pub fn stub_66bd28() -> ! {
-    todo!("0x66bd28 __ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v")
+pub fn stub_66bd28() {
+    // IDA 0x66bd28 (`RBX::Name::doDeclare<sTextService>`):
+    // once-guarded `Name::declare(sTextService)`
+    // (0x66bd84-0x66bdde). The name registry folds away. Carrier
+    // no-op.
 }
 
 // 0x66c0f4 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE15isNullClassNameEv")]
-pub fn stub_66c0f4() -> ! {
-    todo!("0x66c0f4 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE15isNullClassNameEv")
+pub fn stub_66c0f4() -> bool {
+    // IDA 0x66c0f4 (`RBX::NonFactoryProduct<Instance,
+    // sTextService>::isNullClassName`): returns whether the
+    // `sTextService` static is null (0x66c186-0x66c190). The
+    // class name is always declared in the host: the exact
+    // non-null floor.
+    false
 }
 
 // 0x672440 — __GLOBAL__I_a_270

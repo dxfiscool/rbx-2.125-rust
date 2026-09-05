@@ -5,6 +5,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use crate::generated_audio_wd_watchdog18::{TextBoxBoolProp, TextBoxBoolSlot, TextBoxState};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x66b478 — __ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev
@@ -19,32 +20,41 @@ pub fn stub_66b478() {
 // demangled: rbx::signals::signal<void ()(RBX::UDim2)>::disconnectAll(void)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::disconnectAll(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13disconnectAllEv")]
-pub fn stub_66b5c4() -> ! {
-    todo!("0x66b5c4 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13disconnectAllEv")
+pub fn stub_66b5c4() {
+    // IDA 0x66b5c4 (`rbx::signals::signal<void (RBX::UDim2)>::
+    // disconnectAll`): locked slot-list teardown (0x66b5c4+).
+    // Connections fold into the host fire-closure seams. Carrier
+    // no-op.
 }
 
 // 0x66b73c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX5UDim2EEE4slotEEaSERKS9_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> const&)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX5UDim2EEE4slotEEaSERKS9_")]
-pub fn stub_66b73c() -> ! {
-    todo!("0x66b73c __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX5UDim2EEE4slotEEaSERKS9_")
+pub fn stub_66b73c() {
+    // IDA 0x66b73c (`boost::intrusive_ptr<signal<void
+    // (RBX::UDim2)>::slot>::operator=`): addref-new/release-old
+    // (0x66b73e-0x66b756). `Arc` move — carrier no-op.
 }
 
 // 0x66b760 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_init_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE22safe_static_init_mutexEv")]
-pub fn stub_66b760() -> ! {
-    todo!("0x66b760 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE22safe_static_init_mutexEv")
+pub fn stub_66b760() {
+    // IDA 0x66b760 (`rbx::signals::signal<void (RBX::UDim2)>::
+    // safe_static_init_mutex`): forwards to the once-mutex getter
+    // (host: the 0x66b764 twin folds). Carrier no-op.
 }
 
 // 0x66b764 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv
 // demangled: rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv")]
-pub fn stub_66b764() -> ! {
-    todo!("0x66b764 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv")
+pub fn stub_66b764() {
+    // IDA 0x66b764 (`rbx::signals::signal<void (RBX::UDim2)>::
+    // safe_static_do_get_mutex`): once-guarded static mutex init
+    // (0x66b7c0-0x66b7f0). Host mutexes fold. Carrier no-op.
 }
 
 // 0x66b85c — __ZN3RBX19EventReplicatorBaseINS_9GuiObjectEFviiEED2Ev
@@ -67,32 +77,45 @@ pub fn stub_66b98c() {
 // demangled: RBX::TextService * RBX::ServiceProvider::find<RBX::TextService>(void)const
 #[doc(alias = "RBX::TextService * RBX::ServiceProvider::find<RBX::TextService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_11TextServiceEEEPT_v")]
-pub fn stub_66babc() -> ! {
-    todo!("0x66babc __ZNK3RBX15ServiceProvider4findINS_11TextServiceEEEPT_v")
+pub fn stub_66babc() -> bool {
+    // IDA 0x66babc (`RBX::ServiceProvider::find<TextService>`):
+    // provider lookup returning the service or null (0x66babc+).
+    // No provider exists in the host: the exact miss floor.
+    false
 }
 
 // 0x66bc30 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::TextService> RBX::Creatable<RBX::Instance>::create<RBX::TextService>(void)
 #[doc(alias = "boost::shared_ptr<RBX::TextService> RBX::Creatable<RBX::Instance>::create<RBX::TextService>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_66bc30() -> ! {
-    todo!("0x66bc30 __ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_66bc30() {
+    // IDA 0x66bc30 (`RBX::Creatable<Instance>::create<TextService>`):
+    // heap-allocates the 0x64-byte service (0x66bc64), runs its C2
+    // (0x66bc88) and wraps it in the `shared_ptr`+`Deleter`
+    // (0x66bc96). No `TextService` state is modeled in the host.
+    // Carrier no-op.
 }
 
 // 0x66be0c — __ZN3RBX15ServiceProvider15doGetClassIndexINS_11TextServiceEEEmv
 // demangled: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::TextService>(void)
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::TextService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_11TextServiceEEEmv")]
-pub fn stub_66be0c() -> ! {
-    todo!("0x66be0c __ZN3RBX15ServiceProvider15doGetClassIndexINS_11TextServiceEEEmv")
+pub fn stub_66be0c() {
+    // IDA 0x66be0c (`RBX::ServiceProvider::doGetClassIndex<TextService>`):
+    // once-guarded provider-slot allocation (0x66be68-0x66beb6).
+    // The provider registry folds away. Carrier no-op.
 }
 
 // 0x66bee4 — __ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::TextService>::shared_ptr<RBX::TextService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::shared_ptr<RBX::TextService>::shared_ptr<RBX::TextService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_66bee4() -> ! {
-    todo!("0x66bee4 __ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_66bee4() {
+    // IDA 0x66bee4 (`boost::shared_ptr<TextService>::shared_ptr`
+    // with the `Creatable::Deleter`): installs the count and
+    // accepts the `enable_shared_from_this` owner
+    // (0x66bf04-0x66bf6c). `SharedPtr` is `Arc` in the host.
+    // Carrier no-op.
 }
 
 // 0x66bfac — __ZN5boost6detail12shared_countC2IPN3RBX11TextServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -139,8 +162,13 @@ pub fn stub_66c0f0() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,int>(char const*,char const*,bool (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,int>(char const*,char const*,bool (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_66c194() -> ! {
-    todo!("0x66c194 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_66c194(name: &str, category: &str, attributes: u32, permissions: u32) -> TextBoxBoolProp {
+    // IDA 0x66c194 (`RBX::Reflection::PropDescriptor<TextBox,
+    // bool>::PropDescriptor`): builds the `GetImpl` member-pair
+    // cell (getter/setter at 0x66c1e4-0x66c1e8, host: folds into
+    // the caller's `TextBoxBoolSlot`) plus the typed descriptor
+    // identity (0x66c232). Host: the identity half.
+    TextBoxBoolProp::new(name, category, attributes, permissions)
 }
 
 // 0x66c2a0 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbED0Ev
@@ -155,24 +183,34 @@ pub fn stub_66c2a0() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")]
-pub fn stub_66c2cc() -> ! {
-    todo!("0x66c2cc __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE10isReadOnlyEv")
+pub fn stub_66c2cc() -> bool {
+    // IDA 0x66c2cc (`RBX::Reflection::PropDescriptor<TextBox,
+    // bool>::GetImpl::isReadOnly`): returns constant 1
+    // (0x66c2ce — the getter-only impl throws in `setValue`).
+    true
 }
 
 // 0x66c2d0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")]
-pub fn stub_66c2d0() -> ! {
-    todo!("0x66c2d0 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv")
+pub fn stub_66c2d0() -> bool {
+    // IDA 0x66c2d0 (`RBX::Reflection::PropDescriptor<TextBox,
+    // bool>::GetImpl::isWriteOnly`): returns constant 0
+    // (0x66c2d2).
+    false
 }
 
 // 0x66c2d4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66c2d4() -> ! {
-    todo!("0x66c2d4 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_66c2d4(state: &TextBoxState, slot: TextBoxBoolSlot) -> bool {
+    // IDA 0x66c2d4 (`RBX::Reflection::PropDescriptor<TextBox,
+    // bool>::GetImpl::getValue`): dispatches the stored getter
+    // member-pointer over the object (0x66c2d6-0x66c2f6, host:
+    // the `slot` selects the `TextBoxState` bool).
+    state.bool_slot(slot)
 }
 
 // 0x66c2f8 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb
@@ -180,15 +218,24 @@ pub fn stub_66c2d4() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetImpl<bool (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb")]
 pub fn stub_66c2f8() -> ! {
-    todo!("0x66c2f8 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb")
+    // IDA 0x66c2f8 (`RBX::Reflection::PropDescriptor<TextBox,
+    // bool>::GetImpl::setValue`): unconditionally throws
+    // `std::runtime_error("can't set value")` (0x66c324-0x66c408)
+    // — the impl is getter-only. Host: panic.
+    panic!("can't set value")
 }
 
 // 0x66c418 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::PropDescriptor<G3D::Vector2 (RBX::TextBox::*)(void)const,int>(char const*,char const*,G3D::Vector2 (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::PropDescriptor<G3D::Vector2 (RBX::TextBox::*)(void)const,int>(char const*,char const*,G3D::Vector2 (RBX::TextBox::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_66c418() -> ! {
-    todo!("0x66c418 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_66c418() {
+    // IDA 0x66c418 (`RBX::Reflection::PropDescriptor<TextBox,
+    // Vector2>::PropDescriptor`): same generic shape as the bool
+    // C2 at 0x66c194 (member pair + typed identity,
+    // 0x66c43e-0x66c4d4). No `Vector2` member is identified in
+    // this range, so only the registry half exists: carrier
+    // no-op.
 }
 
 // 0x66c524 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EED0Ev
