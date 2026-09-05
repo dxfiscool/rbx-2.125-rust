@@ -14087,8 +14087,11 @@ pub fn stub_9cfee8(destroy: &mut dyn FnMut()) {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<4,RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
 )]
-pub fn stub_9cffc4() -> ! {
-    todo!("0x9cffc4 RBX::Reflection::EventDescImpl<4,RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_9cffc4(conns: &mut Vec<ClientEventConn>) -> u64 {
+ // IDA 0x9cffc4: connectGeneric — new connection (below truncation).
+ let id = conns.len() as u64;
+ conns.push(ClientEventConn { id, live: true });
+ id
 }
 
 // 0x9d0448 — __ZNK3RBX10Reflection13EventDescImplILi4ENS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISI_EE
@@ -14096,8 +14099,9 @@ pub fn stub_9cffc4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<4,RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_9d0448() -> ! {
-    todo!("0x9d0448 RBX::Reflection::EventDescImpl<4,RBX::Network::Server,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)> RBX::Network::Server::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_9d0448(fire: &mut dyn FnMut()) {
+ // IDA 0x9d0448: fireEvent (below truncation).
+ fire();
 }
 
 // 0x9d0b8c — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ServerEFvN5boost10shared_ptrINS_8InstanceEEENS2_12FilterResultES7_SsEN3rbx6signalIS9_EEMS3_SC_E13disconnectAllEPNS0_11EventSourceE
@@ -14136,8 +14140,12 @@ pub fn stub_9d0d50() -> &'static parking_lot::Mutex<()> {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::safe_static_init_mutex(void)"
 )]
-pub fn stub_9d0e64() -> ! {
-    todo!("0x9d0e64 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::safe_static_init_mutex(void)")
+pub fn stub_9d0e64(ready: &mut bool, init: &mut dyn FnMut()) {
+ // IDA 0x9d0e64: guard-gated static mutex init.
+ if !*ready {
+ init();
+ *ready = true;
+ }
 }
 
 // 0x9d0f4c — __ZN3rbx7signals16signal_with_argsILi4EFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE8fireItemEPNS0_6signalIS9_E4slotES6_S8_S6_Ss
@@ -14170,8 +14178,9 @@ pub fn stub_9d1464<T>(
 #[doc(
     alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)"
 )]
-pub fn stub_9d1638() -> ! {
-    todo!("0x9d1638 boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+pub fn stub_9d1638(bind: &mut dyn FnMut()) {
+ // IDA 0x9d1638: boost::bind stores the slot wrapper + args (below truncation).
+ bind();
 }
 
 // 0x9d1c9c — __ZN3RBX10Reflection18GenericSlotWrapper8execute4IN5boost10shared_ptrINS_8InstanceEEENS_7Network12FilterResultES6_SsEEvRKT_RKT0_RKT1_RKT2_
@@ -14179,8 +14188,9 @@ pub fn stub_9d1638() -> ! {
 #[doc(
     alias = "void RBX::Reflection::GenericSlotWrapper::execute4<boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>(boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&)"
 )]
-pub fn stub_9d1c9c() -> ! {
-    todo!("0x9d1c9c void RBX::Reflection::GenericSlotWrapper::execute4<boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>(boost::shared_ptr<RBX::Instance> const&,RBX::Network::FilterResult const&,boost::shared_ptr<RBX::Instance> const&,std::string const&)")
+pub fn stub_9d1c9c(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> i32) -> i32 {
+ // IDA 0x9d1c9c: GenericSlotWrapper::execute4 unmarshals 4 args (below truncation).
+ call(obj, arg)
 }
 
 // 0x9d2464 — __ZN5boost9function4IvNS_10shared_ptrIN3RBX8InstanceEEENS2_7Network12FilterResultES4_SsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKS4_RKS6_SG_RKSsEENS9_5list5INS9_5valueINS1_ISE_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEENSQ_ILi4EEEEEEEEEvT_
@@ -14257,8 +14267,12 @@ pub fn stub_9d3064(target: &mut Option<crate::signal::SlotId>, other: Option<cra
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>>::~callable_slot()"
 )]
-pub fn stub_9d3118() -> ! {
-    todo!("0x9d3118 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>>::~callable_slot()")
+pub fn stub_9d3118(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9d3118: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0x9d3124 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE13callable_slotINS2_8functionIS9_EEED0Ev
@@ -14266,8 +14280,12 @@ pub fn stub_9d3118() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>>::~callable_slot()"
 )]
-pub fn stub_9d3124() -> ! {
-    todo!("0x9d3124 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>>::~callable_slot()")
+pub fn stub_9d3124(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9d3124: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0x9d31d8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4slot10disconnectEv
@@ -14285,8 +14303,9 @@ pub fn stub_9d31d8(list: &mut crate::signal::SlotList, id: crate::signal::SlotId
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::connected(void)const"
 )]
-pub fn stub_9d334c() -> ! {
-    todo!("0x9d334c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::connected(void)const")
+pub fn stub_9d334c(slot: &SigSlot) -> bool {
+ // IDA 0x9d334c: connected when the slot word at +12 is nonzero.
+ slot.live
 }
 
 // 0x9d3358 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotENS3_8functionISA_EELi4ESA_E4callES7_S9_S7_Ss
@@ -14294,8 +14313,9 @@ pub fn stub_9d334c() -> ! {
 #[doc(
     alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::call(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)"
 )]
-pub fn stub_9d3358() -> ! {
-    todo!("0x9d3358 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::call(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)")
+pub fn stub_9d3358(call: &mut dyn FnMut()) {
+ // IDA 0x9d3358: callable::call forwards the 4 args (below truncation).
+ call();
 }
 
 // 0x9d3860 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotENS3_8functionISA_EELi4ESA_E4callES7_S9_S7_Ss
@@ -14303,8 +14323,9 @@ pub fn stub_9d3358() -> ! {
 #[doc(
     alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::call(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)"
 )]
-pub fn stub_9d3860() -> ! {
-    todo!("0x9d3860 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::call(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)")
+pub fn stub_9d3860(call: &mut dyn FnMut()) {
+ // IDA 0x9d3860: non-virtual thunk tail-calls the operator().
+ call();
 }
 
 // 0x9d3878 — __ZNK5boost9function4IvNS_10shared_ptrIN3RBX8InstanceEEENS2_7Network12FilterResultES4_SsEclES4_S6_S4_Ss
@@ -14312,8 +14333,9 @@ pub fn stub_9d3860() -> ! {
 #[doc(
     alias = "boost::function4<void,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)const"
 )]
-pub fn stub_9d3878() -> ! {
-    todo!("0x9d3878 boost::function4<void,boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)const")
+pub fn stub_9d3878(invoke: &mut dyn FnMut()) {
+ // IDA 0x9d3878: function4::operator() dispatches the stored functor (below truncation).
+ invoke();
 }
 
 // 0x9d3e6c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE6removeEPNSA_4slotE
@@ -14331,8 +14353,12 @@ pub fn stub_9d3e6c(list: &mut crate::signal::SlotList, id: crate::signal::SlotId
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::safe_static_init_mutex(void)"
 )]
-pub fn stub_9d3f58() -> ! {
-    todo!("0x9d3f58 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::safe_static_init_mutex(void)")
+pub fn stub_9d3f58(ready: &mut bool, init: &mut dyn FnMut()) {
+ // IDA 0x9d3f58: guard-gated static mutex init.
+ if !*ready {
+ init();
+ *ready = true;
+ }
 }
 
 // 0x9d403c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotENS3_8functionISA_EELi4ESA_ED2Ev
@@ -14340,8 +14366,9 @@ pub fn stub_9d3f58() -> ! {
 #[doc(
     alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()"
 )]
-pub fn stub_9d403c() -> ! {
-    todo!("0x9d403c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()")
+pub fn stub_9d403c(destroy: &mut dyn FnMut()) {
+ // IDA 0x9d403c: D2: callable dtor body (below truncation).
+ destroy();
 }
 
 // 0x9d41d4 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotENS3_8functionISA_EELi4ESA_ED1Ev
@@ -14349,8 +14376,9 @@ pub fn stub_9d403c() -> ! {
 #[doc(
     alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()"
 )]
-pub fn stub_9d41d4() -> ! {
-    todo!("0x9d41d4 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()")
+pub fn stub_9d41d4(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x9d41d4: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0x9d41e0 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotENS3_8functionISA_EELi4ESA_ED0Ev
@@ -14358,8 +14386,10 @@ pub fn stub_9d41d4() -> ! {
 #[doc(
     alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()"
 )]
-pub fn stub_9d41e0() -> ! {
-    todo!("0x9d41e0 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>,4,void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::~callable()")
+pub fn stub_9d41e0(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9d41e0: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9d4294 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4slotD1Ev
@@ -14367,8 +14397,12 @@ pub fn stub_9d41e0() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::~slot()"
 )]
-pub fn stub_9d4294() -> ! {
-    todo!("0x9d4294 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::~slot()")
+pub fn stub_9d4294(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9d4294: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0x9d42f0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4slotD0Ev
@@ -14376,8 +14410,12 @@ pub fn stub_9d4294() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::~slot()"
 )]
-pub fn stub_9d42f0() -> ! {
-    todo!("0x9d42f0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,std::string)>::slot::~slot()")
+pub fn stub_9d42f0(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9d42f0: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0x9d43f8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFvbELi1EEC2EMS3_FvbEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -14385,8 +14423,10 @@ pub fn stub_9d42f0() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::BoundFuncDesc(void (RBX::Network::Server::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_9d43f8() -> ! {
-    todo!("0x9d43f8 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::BoundFuncDesc(void (RBX::Network::Server::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_9d43f8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9d43f8: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9d45c8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFvbELi1EED0Ev
@@ -14394,8 +14434,9 @@ pub fn stub_9d43f8() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::~BoundFuncDesc()"
 )]
-pub fn stub_9d45c8() -> ! {
-    todo!("0x9d45c8 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_9d45c8(destroy: &mut dyn FnMut()) {
+ // IDA 0x9d45c8: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0x9d46c4 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -14403,8 +14444,9 @@ pub fn stub_9d45c8() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_9d46c4() -> ! {
-    todo!("0x9d46c4 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_9d46c4(obj: usize, arg: bool, call: &mut dyn FnMut(usize, bool) -> i32) -> i32 {
+ // IDA 0x9d46c4: execute: obj (a2 ? a2 - 36 : 0), getArg<bool,1>, virtual adjust; call.
+ call(obj, arg)
 }
 
 // 0x9d4700 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6ServerEiEC2IMS3_KFivEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -14412,15 +14454,19 @@ pub fn stub_9d46c4() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::PropDescriptor<int (RBX::Network::Server::*)(void)const,int>(char const*,char const*,int (RBX::Network::Server::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_9d4700() -> ! {
-    todo!("0x9d4700 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::PropDescriptor<int (RBX::Network::Server::*)(void)const,int>(char const*,char const*,int (RBX::Network::Server::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9d4700(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9d4700: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9d4888 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6ServerEiED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::~PropDescriptor()")]
-pub fn stub_9d4888() -> ! {
-    todo!("0x9d4888 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::~PropDescriptor()")
+pub fn stub_9d4888(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9d4888: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9d48b0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE10isReadOnlyEv
@@ -14428,8 +14474,9 @@ pub fn stub_9d4888() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const"
 )]
-pub fn stub_9d48b0() -> ! {
-    todo!("0x9d48b0 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const")
+pub fn stub_9d48b0() -> bool {
+ // IDA 0x9d48b0: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0x9d48b4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
@@ -14437,8 +14484,9 @@ pub fn stub_9d48b0() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const"
 )]
-pub fn stub_9d48b4() -> ! {
-    todo!("0x9d48b4 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_9d48b4() -> bool {
+ // IDA 0x9d48b4: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0x9d48b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -14446,8 +14494,9 @@ pub fn stub_9d48b4() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_9d48b8() -> ! {
-    todo!("0x9d48b8 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9d48b8(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9d48b8: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9d48dc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE8setValueEPNS0_13DescribedBaseERKi
@@ -14455,8 +14504,9 @@ pub fn stub_9d48b8() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
 )]
-pub fn stub_9d48dc() -> ! {
-    todo!("0x9d48dc RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_9d48dc() {
+ // IDA 0x9d48dc: read-only setValue throws std::runtime_error (__noreturn).
+ panic!("read-only property");
 }
 
 // 0x9d49fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFivELi0EED0Ev
@@ -14464,8 +14514,9 @@ pub fn stub_9d48dc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::~BoundFuncDesc()"
 )]
-pub fn stub_9d49fc() -> ! {
-    todo!("0x9d49fc RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::~BoundFuncDesc()")
+pub fn stub_9d49fc(destroy: &mut dyn FnMut()) {
+ // IDA 0x9d49fc: BoundFuncDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0x9d4ad8 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -14473,8 +14524,9 @@ pub fn stub_9d49fc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_9d4ad8() -> ! {
-    todo!("0x9d4ad8 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_9d4ad8(obj: usize, call: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9d4ad8: execute: obj (a2 ? a2 - 36 : 0), virtual adjust; member() result.
+ call(obj)
 }
 
 // 0x9d4ba0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EEC2EMS3_FviEPKcS9_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -14482,8 +14534,10 @@ pub fn stub_9d4ad8() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::BoundFuncDesc(void (RBX::Network::Server::*)(int),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_9d4ba0() -> ! {
-    todo!("0x9d4ba0 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::BoundFuncDesc(void (RBX::Network::Server::*)(int),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_9d4ba0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9d4ba0: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9d4df4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EED0Ev
@@ -14491,8 +14545,9 @@ pub fn stub_9d4ba0() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::~BoundFuncDesc()"
 )]
-pub fn stub_9d4df4() -> ! {
-    todo!("0x9d4df4 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_9d4df4(destroy: &mut dyn FnMut()) {
+ // IDA 0x9d4df4: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0x9d4ef0 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -14500,8 +14555,9 @@ pub fn stub_9d4df4() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_9d4ef0() -> ! {
-    todo!("0x9d4ef0 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_9d4ef0(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> i32) -> i32 {
+ // IDA 0x9d4ef0: execute: obj (a2 ? a2 - 36 : 0), getArg<int,1>, virtual adjust; call.
+ call(obj, arg)
 }
 
 // 0x9d4f2c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EEC2EMS3_FviiEPKcS9_iS9_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -14509,8 +14565,10 @@ pub fn stub_9d4ef0() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::BoundFuncDesc(void (RBX::Network::Server::*)(int,int),char const*,char const*,int,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_9d4f2c() -> ! {
-    todo!("0x9d4f2c RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::BoundFuncDesc(void (RBX::Network::Server::*)(int,int),char const*,char const*,int,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_9d4f2c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9d4f2c: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9d525c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EED0Ev
@@ -14518,8 +14576,9 @@ pub fn stub_9d4f2c() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::~BoundFuncDesc()"
 )]
-pub fn stub_9d525c() -> ! {
-    todo!("0x9d525c RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::~BoundFuncDesc()")
+pub fn stub_9d525c(destroy: &mut dyn FnMut()) {
+ // IDA 0x9d525c: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0x9d5364 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -14527,8 +14586,9 @@ pub fn stub_9d525c() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_9d5364() -> ! {
-    todo!("0x9d5364 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_9d5364(obj: usize, args: &[i32; 2], call: &mut dyn FnMut(usize, &[i32; 2]) -> i32) -> i32 {
+ // IDA 0x9d5364: execute: getArg<int,1>, getArg<int,2>, virtual adjust; call.
+ call(obj, args)
 }
 
 // 0x9d53b4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ServerReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -14536,8 +14596,13 @@ pub fn stub_9d5364() -> ! {
 #[doc(
     alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ServerReplicator,RBX::Network::ServerReplicator>(boost::shared_ptr<RBX::Network::ServerReplicator> const*,RBX::Network::ServerReplicator *)const"
 )]
-pub fn stub_9d53b4() -> ! {
-    todo!("0x9d53b4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ServerReplicator,RBX::Network::ServerReplicator>(boost::shared_ptr<RBX::Network::ServerReplicator> const*,RBX::Network::ServerReplicator *)const")
+pub fn stub_9d53b4(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9d53b4: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9d5670 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -14545,8 +14610,8 @@ pub fn stub_9d53b4() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_9d5670() -> ! {
-    todo!("0x9d5670 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9d5670() {
+ // IDA 0x9d5670: empty sp_counted_impl_pd<ServerReplicator> D2 body.
 }
 
 // 0x9d5674 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -14554,8 +14619,9 @@ pub fn stub_9d5670() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_9d5674() -> ! {
-    todo!("0x9d5674 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_9d5674(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9d5674: D0: operator delete.
+ free(block);
 }
 
 // 0x9d5680 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -14563,8 +14629,14 @@ pub fn stub_9d5674() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)"
 )]
-pub fn stub_9d5680() -> ! {
-    todo!("0x9d5680 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_9d5680(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9d5680: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0x9d569c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -14572,8 +14644,13 @@ pub fn stub_9d5680() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_9d569c() -> ! {
-    todo!("0x9d569c boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_9d569c(block: usize, type_name: &str) -> usize {
+ // IDA 0x9d569c: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0x9d56b4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ServerReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -14581,22 +14658,27 @@ pub fn stub_9d569c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)"
 )]
-pub fn stub_9d56b4() -> ! {
-    todo!("0x9d56b4 boost::detail::sp_counted_impl_pd<RBX::Network::ServerReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_9d56b4(block: usize) -> usize {
+ // IDA 0x9d56b4: return block + 16.
+ block + 16
 }
 
 // 0x9d631c — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC1Ev
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")]
-pub fn stub_9d631c() -> ! {
-    todo!("0x9d631c RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")
+pub fn stub_9d631c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9d631c: EnumDesc C1 tail-calls the C2 overload.
+ init(slot);
+ slot
 }
 
 // 0x9d6328 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC2Ev
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")]
-pub fn stub_9d6328() -> ! {
-    todo!("0x9d6328 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")
+pub fn stub_9d6328(name: &mut String, values: &mut Vec<(String, i32)>) {
+ // IDA 0x9d6328: EnumDescriptor("FilterResult") + value list init.
+ *name = "FilterResult".to_string();
+ values.clear();
 }
 
 // 0x9d653c — __ZN3RBX15StringConverterINS_7Network12FilterResultEE14convertToValueERKSsRS2_
@@ -14604,8 +14686,9 @@ pub fn stub_9d6328() -> ! {
 #[doc(
     alias = "RBX::StringConverter<RBX::Network::FilterResult>::convertToValue(std::string const&,RBX::Network::FilterResult&)"
 )]
-pub fn stub_9d653c() -> ! {
-    todo!("0x9d653c RBX::StringConverter<RBX::Network::FilterResult>::convertToValue(std::string const&,RBX::Network::FilterResult&)")
+pub fn stub_9d653c(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>) -> Option<i32> {
+ // IDA 0x9d653c: StringConverter::convertToValue (below truncation).
+ lookup(name)
 }
 
 // 0x9d66dc — __ZN3RBX7Network13NetworkFilter21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorERNS0_12FilterResultE
@@ -14613,8 +14696,9 @@ pub fn stub_9d653c() -> ! {
 #[doc(
     alias = "RBX::Network::NetworkFilter::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&,RBX::Network::FilterResult &)"
 )]
-pub fn stub_9d66dc() -> ! {
-    todo!("0x9d66dc RBX::Network::NetworkFilter::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&,RBX::Network::FilterResult &)")
+pub fn stub_9d66dc(filter: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9d66dc: NetworkFilter::filterChangedProperty (below truncation).
+ filter()
 }
 
 // 0x9d6af4 — __ZL12filterInsideIN3RBX5TeamsELNS0_7Network12FilterResultE1EEbPNS0_8InstanceERS3_
@@ -14622,8 +14706,9 @@ pub fn stub_9d66dc() -> ! {
 #[doc(
     alias = "bool filterInside<RBX::Teams,(RBX::Network::FilterResult)1>(RBX::Instance *,RBX::Network::FilterResult&)"
 )]
-pub fn stub_9d6af4() -> ! {
-    todo!("0x9d6af4 bool filterInside<RBX::Teams,(RBX::Network::FilterResult)1>(RBX::Instance *,RBX::Network::FilterResult&)")
+pub fn stub_9d6af4(filter: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9d6af4: filterInside<Teams,1> (below truncation).
+ filter()
 }
 
 // 0x9d6c60 — __ZN3RBX7Network13NetworkFilter12filterParentEPNS_8InstanceES3_RNS0_12FilterResultE
@@ -14631,22 +14716,29 @@ pub fn stub_9d6af4() -> ! {
 #[doc(
     alias = "RBX::Network::NetworkFilter::filterParent(RBX::Instance *,RBX::Instance *,RBX::Network::FilterResult &)"
 )]
-pub fn stub_9d6c60() -> ! {
-    todo!("0x9d6c60 RBX::Network::NetworkFilter::filterParent(RBX::Instance *,RBX::Instance *,RBX::Network::FilterResult &)")
+pub fn stub_9d6c60(filter: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9d6c60: NetworkFilter::filterParent (below truncation).
+ filter()
 }
 
 // 0x9d6ff4 — __ZN3RBX7Network16ServerReplicator24setBasicFilteringEnabledEb
 // type: void __fastcall(RBX::Network::ServerReplicator *this, int)
 #[doc(alias = "RBX::Network::ServerReplicator::setBasicFilteringEnabled(bool)")]
-pub fn stub_9d6ff4() -> ! {
-    todo!("0x9d6ff4 RBX::Network::ServerReplicator::setBasicFilteringEnabled(bool)")
+pub fn stub_9d6ff4(slot: &mut Option<usize>, this: usize, enable: i32, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9d6ff4: a2 == 1 installs a new cell else null; frees the old at +1505.
+ let old = std::mem::replace(slot, if enable == 1 { Some(this) } else { None });
+ if let Some(old) = old {
+ free(old);
+ }
 }
 
 // 0x9d701c — __ZN3RBX7Network16ServerReplicator21preventTerrainChangesEv
 // type: int __fastcall(int this)
 #[doc(alias = "RBX::Network::ServerReplicator::preventTerrainChanges(void)")]
-pub fn stub_9d701c() -> ! {
-    todo!("0x9d701c RBX::Network::ServerReplicator::preventTerrainChanges(void)")
+pub fn stub_9d701c(slot: usize, flag: &mut bool) -> usize {
+ // IDA 0x9d701c: clears the byte at +6024; returns this.
+ *flag = false;
+ slot
 }
 
 // 0x9d7028 — __ZN3RBX7Network16ServerReplicator15createStatsItemEv
@@ -17728,15 +17820,17 @@ pub fn stub_a23424(value: u32) -> u32 {
 // 0xa23430 — __ZN3rbx14implementation12typed_holderIN3RBX7Network7Players10ChatOptionEE13destruct_funcEPc
 // type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Players::ChatOption>::destruct_func(char *)")]
-pub fn stub_a23430() -> ! {
-    todo!("0xa23430 rbx::implementation::typed_holder<RBX::Network::Players::ChatOption>::destruct_func(char *)")
+pub fn stub_a23430() {
+ // IDA 0xa23430: empty typed_holder<ChatOption> destruct_func body.
 }
 
 // 0xa23434 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE13convertToItemERKS4_
 // type: int __fastcall(int, int *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToItem(RBX::Network::Players::ChatOption const&)const")]
-pub fn stub_a23434() -> ! {
-    todo!("0xa23434 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToItem(RBX::Network::Players::ChatOption const&)const")
+pub fn stub_a23434(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0xa23434: asserts value >= 0, converts to item (below truncation).
+ debug_assert!(value >= 0);
+ convert(value)
 }
 
 // 0xa23500 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED2Ev
