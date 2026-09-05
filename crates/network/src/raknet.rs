@@ -22780,12 +22780,21 @@ pub fn stub_aaae28(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
 #[doc(
     alias = "void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)"
 )]
-pub fn stub_aab194() {
- // IDA 0xaab194: empty sp_counted_impl_p<PersistentDataStore> D2 body.
+pub fn stub_aaafe8() -> ! {
+    todo!("0xaaafe8 void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)")
 }
 
 // 0xaab194 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED1Ev
 // type: void()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()"
+)]
+pub fn stub_aab194() {
+ // IDA 0xaab194: empty sp_counted_impl_p<PersistentDataStore> D2 body.
+}
+
+// 0xaab198 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED0Ev
+// type: void __fastcall(void *)
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()"
 )]
@@ -22794,24 +22803,14 @@ pub fn stub_aab198(block: usize, free: &mut dyn FnMut(usize)) {
  free(block);
 }
 
-// 0xaab198 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED0Ev
-// type: void __fastcall(void *)
-#[doc(
-    alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()"
-)]
-pub fn stub_aab1a4(clear: &mut dyn FnMut()) {
- // IDA 0xaab1a4: dispose erases the data map (below truncation).
- clear();
-}
-
 // 0xaab1a4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEE7disposeEv
 // type: void __fastcall(int, int, int, int)
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::dispose(void)"
 )]
-pub fn stub_aab24c() -> usize {
- // IDA 0xaab24c: get_deleter returns 0.
- 0
+pub fn stub_aab1a4(clear: &mut dyn FnMut()) {
+ // IDA 0xaab1a4: dispose erases the data map (below truncation).
+ clear();
 }
 
 // 0xaab24c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEE11get_deleterERKSt9type_info
@@ -22819,8 +22818,8 @@ pub fn stub_aab24c() -> usize {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_aab250() -> usize {
- // IDA 0xaab250: get_untyped_deleter returns 0.
+pub fn stub_aab24c() -> usize {
+ // IDA 0xaab24c: get_deleter returns 0.
  0
 }
 
@@ -22829,9 +22828,9 @@ pub fn stub_aab250() -> usize {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_untyped_deleter(void)"
 )]
-pub fn stub_aab35c(text: String, replicate: &mut dyn FnMut(String)) {
- // IDA 0xaab35c: replicateEvent (below truncation).
- replicate(text);
+pub fn stub_aab250() -> usize {
+ // IDA 0xaab250: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0xaab35c — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceESs
@@ -22839,10 +22838,9 @@ pub fn stub_aab35c(text: String, replicate: &mut dyn FnMut(String)) {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::replicateEvent(RBX::Reflection::EventSource *,std::string)"
 )]
-pub fn stub_aad1dc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
- // IDA 0xaad1dc: EnumPropDescriptor ctor (below truncation).
- init(slot);
- slot
+pub fn stub_aab35c(text: String, replicate: &mut dyn FnMut(String)) {
+ // IDA 0xaab35c: replicateEvent (below truncation).
+ replicate(text);
 }
 
 // 0xaad1dc — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEEC2IMS3_KFS5_vEMS3_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -22850,10 +22848,10 @@ pub fn stub_aad1dc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::EnumPropDescriptor<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>(char const*,char const*,RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_aad4dc(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
- // IDA 0xaad4dc: D0: dtor then operator delete.
- destroy(slot);
- free(slot);
+pub fn stub_aad1dc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xaad1dc: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xaad4dc — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEED0Ev
@@ -22861,9 +22859,10 @@ pub fn stub_aad4dc(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn F
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()"
 )]
-pub fn stub_aad504(inner: &mut dyn FnMut() -> bool) -> bool {
- // IDA 0xaad504: forwards to the impl at +44.
- inner()
+pub fn stub_aad4dc(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xaad4dc: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xaad504 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv
@@ -22871,8 +22870,8 @@ pub fn stub_aad504(inner: &mut dyn FnMut() -> bool) -> bool {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const"
 )]
-pub fn stub_aad514(inner: &mut dyn FnMut() -> bool) -> bool {
- // IDA 0xaad514: forwards to the impl at +44.
+pub fn stub_aad504(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xaad504: forwards to the impl at +44.
  inner()
 }
 
@@ -22881,9 +22880,9 @@ pub fn stub_aad514(inner: &mut dyn FnMut() -> bool) -> bool {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const"
 )]
-pub fn stub_aad524(current: i32, candidate: i32) -> bool {
- // IDA 0xaad524: compares the impl value against the candidate.
- current == candidate
+pub fn stub_aad514(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xaad514: forwards to the impl at +44.
+ inner()
 }
 
 // 0xaad524 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11equalValuesEPKNS0_13DescribedBaseES9_
@@ -22891,9 +22890,9 @@ pub fn stub_aad524(current: i32, candidate: i32) -> bool {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aad54c(value: i32) -> (String, i32) {
- // IDA 0xaad54c: getVariant wraps the int with the int type singleton.
- ("int".to_string(), value)
+pub fn stub_aad524(current: i32, candidate: i32) -> bool {
+ // IDA 0xaad524: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0xaad54c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -22901,9 +22900,9 @@ pub fn stub_aad54c(value: i32) -> (String, i32) {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
 )]
-pub fn stub_aad5fc(value: i32, set: &mut dyn FnMut(i32)) {
- // IDA 0xaad5fc: Variant::get<int> then setValue.
- set(value);
+pub fn stub_aad54c(value: i32) -> (String, i32) {
+ // IDA 0xaad54c: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0xaad5fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -22911,8 +22910,8 @@ pub fn stub_aad5fc(value: i32, set: &mut dyn FnMut(i32)) {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
 )]
-pub fn stub_aad618(value: i32, set: &mut dyn FnMut(i32)) {
- // IDA 0xaad618: reads the impl value then writes it via the +12 slot.
+pub fn stub_aad5fc(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaad5fc: Variant::get<int> then setValue.
  set(value);
 }
 
@@ -22921,9 +22920,9 @@ pub fn stub_aad618(value: i32, set: &mut dyn FnMut(i32)) {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
 )]
-pub fn stub_aad63c() -> bool {
- // IDA 0xaad63c: hasStringValue returns 1.
- true
+pub fn stub_aad618(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaad618: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0xaad63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv
@@ -22931,15 +22930,25 @@ pub fn stub_aad63c() -> bool {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const"
 )]
-pub fn stub_aad640(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
- // IDA 0xaad640: converts the enum value to its name (below truncation).
- to_string(value)
+pub fn stub_aad63c() -> bool {
+ // IDA 0xaad63c: hasStringValue returns 1.
+ true
 }
 
 // 0xaad640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getStringValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_aad640(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
+ // IDA 0xaad640: converts the enum value to its name (below truncation).
+ to_string(value)
+}
+
+// 0xaad664 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14setStringValueEPNS0_13DescribedBaseERKSs
+// type: int __fastcall(int, const char *const *, int *)
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
 )]
 pub fn stub_aad664(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
  // IDA 0xaad664: Name::lookup then setValue (below truncation).
@@ -22948,10 +22957,10 @@ pub fn stub_aad664(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set:
  }
 }
 
-// 0xaad664 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14setStringValueEPNS0_13DescribedBaseERKSs
-// type: int __fastcall(int, const char *const *, int *)
+// 0xaad708 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+// type: int __fastcall(int, int, int)
 #[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
 )]
 pub fn stub_aad708(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
  // IDA 0xaad708: clears the pair, writes type 5 + value; returns 5.
@@ -22959,20 +22968,20 @@ pub fn stub_aad708(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
  5
 }
 
-// 0xaad708 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
-// type: int __fastcall(int, int, int)
+// 0xaad728 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+// type: void __fastcall(int, int, XmlElement *this)
 #[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
 )]
 pub fn stub_aad728(parse: &mut dyn FnMut()) {
  // IDA 0xaad728: readValue parses the pair (below truncation).
  parse();
 }
 
-// 0xaad728 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
-// type: void __fastcall(int, int, XmlElement *this)
+// 0xaad9ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13getIndexValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int)
 #[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
 )]
 pub fn stub_aad9ec(value: i32) -> i32 {
  // IDA 0xaad9ec: asserts the enum value > -1, returns it.
@@ -22980,10 +22989,11 @@ pub fn stub_aad9ec(value: i32) -> i32 {
  value
 }
 
-// 0xaad9ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13getIndexValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int)
+
+// 0xaada68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13setIndexValueEPNS0_13DescribedBaseEm
+// type: int __fastcall(int, int, unsigned int)
 #[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
 )]
 pub fn stub_aada68(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32 {
  // IDA 0xaada68: in-range index -> set + return 1 else 0.
@@ -22995,10 +23005,10 @@ pub fn stub_aada68(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32
  }
 }
 
-// 0xaada68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13setIndexValueEPNS0_13DescribedBaseEm
-// type: int __fastcall(int, int, unsigned int)
+// 0xaada9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE12getEnumValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int)
 #[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const"
 )]
 pub fn stub_aada9c(get: &mut dyn FnMut() -> i32) -> i32 {
  // IDA 0xaada9c: getEnumValue forwards to the impl.
