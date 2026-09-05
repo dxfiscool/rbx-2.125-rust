@@ -6,13 +6,55 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `boost::shared_ptr` value slot for `LoginService` (IDA 0x319ec shape).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct LoginShared {
+    pub ptr: usize,
+    pub counted: usize,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(RobloxView, flag, FunctionMarshaller)`
+/// (IDA 0x312d0).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct BindViewFlagMarshaller {
+    pub target: usize,
+    pub view: usize,
+    pub flag: i8,
+    pub marshaller: usize,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(objc, sel)` (IDA 0x31cd0).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct BindObjc {
+    pub target: usize,
+    pub obj: usize,
+    pub sel: usize,
+}
 // 0x312d0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operat")]
-pub fn stub_312d0() -> ! {
-    todo!("0x312d0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boos")
+pub fn stub_312d0(op: i32, src: &mut Option<BindViewFlagMarshaller>, dst: &mut Option<BindViewFlagMarshaller>) -> bool {
+    // IDA 0x312d0: 0 clone (new 0x10, field copy); 1 move; 2 destroy; 3 check type (tail follows
+    // the 0x2d964 shape).
+    match op {
+        0 => {
+            *dst = *src;
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            *dst = None;
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x31348 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
@@ -20,8 +62,9 @@ pub fn stub_312d0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_31348() -> ! {
-    todo!("0x31348 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxV")
+pub fn stub_31348(bound: &BindViewFlagMarshaller, invoke: &mut dyn FnMut(usize, i8, usize)) {
+    // IDA 0x31348: invoker1: F from the buffer; F(view, flag, marshaller).
+    invoke(bound.view, bound.flag, bound.marshaller);
 }
 
 // 0x31358 — __ZNK3RBX15ServiceProvider6createINS_12LoginServiceEEEPT_v
@@ -29,8 +72,16 @@ pub fn stub_31348() -> ! {
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")]
-pub fn stub_31358() -> ! {
-    todo!("0x31358 RBX::LoginService * RBX::ServiceProvider::create<RBX::LoginService>(void)const")
+pub fn stub_31358(cell: &mut Option<usize>, create: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x31358: locked create-or-find of the LoginService singleton (asserts below truncation).
+    if let Some(v) = *cell {
+        return v;
+    }
+    let v = create();
+    if cell.is_none() {
+        *cell = Some(v);
+    }
+    v
 }
 
 // 0x3151c — __ZNK3RBX15ServiceProvider4findINS_12LoginServiceEEEPT_v
@@ -38,8 +89,23 @@ pub fn stub_31358() -> ! {
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")]
-pub fn stub_3151c() -> ! {
-    todo!("0x3151c RBX::LoginService * RBX::ServiceProvider::find<RBX::LoginService>(void)const")
+pub fn stub_3151c(cache: &mut Vec<usize>, class_index: &mut dyn FnMut() -> usize, find_service_by_class_name: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3151c: call_once(doGetClassIndex<LoginService>); cached slot hit; else
+    // findServiceByClassName, store, return.
+    let idx = class_index();
+    if idx + 1 <= cache.len() {
+        let hit = cache[idx];
+        if hit != 0 {
+            return hit;
+        }
+    } else {
+        cache.resize(idx + 1, 0);
+    }
+    let found = find_service_by_class_name();
+    if found != 0 {
+        cache[idx] = found;
+    }
+    found
 }
 
 // 0x31678 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12LoginServiceEEEN5boost10shared_ptrIT_EEv
@@ -47,8 +113,11 @@ pub fn stub_3151c() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")]
-pub fn stub_31678() -> ! {
-    todo!("0x31678 boost::shared_ptr<RBX::LoginService> RBX::Creatable<RBX::Instance>::create<RBX::LoginService>(void)")
+pub fn stub_31678(alloc: &mut dyn FnMut() -> usize, construct: &mut dyn FnMut(usize), share: &mut dyn FnMut(usize) -> LoginShared) -> LoginShared {
+    // IDA 0x31678: new LoginService (0x70); ctor; shared_ptr with Creatable deleter.
+    let raw = alloc();
+    construct(raw);
+    share(raw)
 }
 
 // 0x31728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12LoginServiceEEERS3_RKNS0_IT_EE
@@ -56,48 +125,58 @@ pub fn stub_31678() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const&)")]
-pub fn stub_31728() -> ! {
-    todo!("0x31728 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LoginService>(boost::shared_ptr<RBX::LoginService> const&)")
+pub fn stub_31728(dst: &mut LoginShared, src: &LoginShared, release: &mut dyn FnMut(usize)) {
+    // IDA 0x31728: shared_count copy; swap into dst; release the old count.
+    let old = *dst;
+    *dst = *src;
+    if old.counted != 0 {
+        release(old.counted);
+    }
 }
 
 // 0x317e4 — __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v
 // demangled: __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_317e4() -> ! {
-    todo!("0x317e4 __ZN3RBX4Name7declareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_317e4(cell: &mut Option<usize>, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x317e4: sLoginService name declare (guarded once) with null-name check.
+    *cell.get_or_insert_with(|| declare())
 }
 
 // 0x31828 — __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv
 // demangled: __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")]
-pub fn stub_31828() -> ! {
-    todo!("0x31828 __ZN3RBX4Name13callDoDeclareILZNS_13sLoginServiceEEEEvv")
+pub fn stub_31828(declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x31828: thunk tail-calls doDeclare<LoginService> shim.
+    declare()
 }
 
 // 0x3182c — __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v
 // demangled: __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v
 // type: 
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")]
-pub fn stub_3182c() -> ! {
-    todo!("0x3182c __ZN3RBX4Name9doDeclareILZNS_13sLoginServiceEEEERKS0_v")
+pub fn stub_3182c(cell: &mut Option<usize>, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3182c: guard-checked once Name::declare(sLoginService).
+    *cell.get_or_insert_with(|| declare())
 }
 
 // 0x31910 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_12LoginServiceEEEvv
 // demangled: void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)
 // type: 
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")]
-pub fn stub_31910() -> ! {
-    todo!("0x31910 void RBX::ServiceProvider::callDoGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_31910(index: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x31910: thunk tail-calls doGetClassIndex<LoginService>.
+    index()
 }
 
 // 0x31914 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_12LoginServiceEEEmv
 // demangled: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)
 // type: 
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")]
-pub fn stub_31914() -> ! {
-    todo!("0x31914 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::LoginService>(void)")
+pub fn stub_31914(cell: &mut Option<usize>, new_index: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x31914: guard-checked once ServiceProvider::newIndex.
+    *cell.get_or_insert_with(|| new_index())
 }
 
 // 0x319ec — __ZN5boost10shared_ptrIN3RBX12LoginServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -105,8 +184,14 @@ pub fn stub_31914() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_319ec() -> ! {
-    todo!("0x319ec boost::shared_ptr<RBX::LoginService>::shared_ptr<RBX::LoginService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_319ec(slot: &mut LoginShared, raw: usize, counted: usize, accept_owner: &mut dyn FnMut(usize)) {
+    // IDA 0x319ec: shared_ptr<LoginService> ctor: px stored, shared_count ctor; nonzero px →
+    // accept_owner.
+    slot.ptr = raw;
+    slot.counted = counted;
+    if raw != 0 {
+        accept_owner(raw);
+    }
 }
 
 // 0x31a10 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LoginServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -114,8 +199,12 @@ pub fn stub_319ec() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LoginService,RBX::LoginService>(rbx_core::SharedPtr<RBX::LoginService> const*,RBX::LoginService *)const")]
-pub fn stub_31a10() -> ! {
-    todo!("0x31a10 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LoginService,RBX::LoginService>(boost::shared_ptr<RBX::LoginService> const*,RBX::Lo")
+pub fn stub_31a10(owner: &mut usize, weak: &mut usize, candidate_owner: usize, candidate_weak: usize, use_count: usize) {
+    // IDA 0x31a10: if !weak || !use_count(weak): owner = candidate; weak = candidate copy.
+    if *weak == 0 || use_count == 0 {
+        *owner = candidate_owner;
+        *weak = candidate_weak;
+    }
 }
 
 // 0x31aec — __ZN5boost6detail12shared_countC2IPN3RBX12LoginServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -123,8 +212,10 @@ pub fn stub_31a10() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_31aec() -> ! {
-    todo!("0x31aec boost::detail::shared_count::shared_count<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_31aec(slot: &mut LoginShared, raw: usize, control: usize) {
+    // IDA 0x31aec: *a1 = 0; new sp_counted_impl_pd<LoginService>(px) uses/weaks 1; *a1 = it.
+    slot.ptr = raw;
+    slot.counted = control;
 }
 
 // 0x31bec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -132,8 +223,8 @@ pub fn stub_31aec() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_31bec() -> ! {
-    todo!("0x31bec boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_31bec() {
+    // IDA 0x31bec: empty dtor body (single BX LR).
 }
 
 // 0x31bf0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -141,8 +232,9 @@ pub fn stub_31bec() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_31bf0() -> ! {
-    todo!("0x31bf0 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_31bf0(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x31bf0: deleting-dtor thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x31bf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -150,8 +242,14 @@ pub fn stub_31bf0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_31bf4() -> ! {
-    todo!("0x31bf4 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_31bf4(payload: usize, predelete: &mut dyn FnMut(usize) -> usize, destroy: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x31bf4: px = block[12]; predelete(px); px ? px->deleter(px) (vtable + 8) : predelete result.
+    let r = predelete(payload);
+    if payload != 0 {
+        destroy(payload)
+    } else {
+        r
+    }
 }
 
 // 0x31c14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -159,8 +257,13 @@ pub fn stub_31bf4() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_31c14() -> ! {
-    todo!("0x31c14 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_31c14(block: usize, type_name: &str) -> usize {
+    // IDA 0x31c14: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" → block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x31c2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -168,16 +271,22 @@ pub fn stub_31c14() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_31c2c() -> ! {
-    todo!("0x31c2c boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_31c2c(block: usize) -> usize {
+    // IDA 0x31c2c: return block + 16.
+    block + 16
 }
 
 // 0x31c30 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv
 // demangled: __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")]
-pub fn stub_31c30() -> ! {
-    todo!("0x31c30 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")
+pub fn stub_31c30(class_name_empty: bool, s_class_name_null: bool, release_assert: &mut dyn FnMut()) -> bool {
+    // IDA 0x31c30: ReleaseAssert(className().empty() == (sClassName == NULL), Object.h:360); return it.
+    let ok = class_name_empty == s_class_name_null;
+    if !ok {
+        release_assert();
+    }
+    ok
 }
 
 // 0x31cd0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
@@ -185,8 +294,26 @@ pub fn stub_31c30() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,b")]
-pub fn stub_31cd0() -> ! {
-    todo!("0x31cd0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_o")
+pub fn stub_31cd0(op: i32, src: &mut Option<BindObjc>, dst: &mut Option<BindObjc>) -> bool {
+    // IDA 0x31cd0: 4 → typeinfo; ≤1 → copy-or-move words; 2 → destroy; 3 → check type (tail follows
+    // the 0x2d964 shape).
+    match op {
+        4 => true,
+        0 => {
+            *dst = *src;
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            *dst = None;
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x31d30 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
@@ -194,8 +321,10 @@ pub fn stub_31cd0() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)")]
-pub fn stub_31d30() -> ! {
-    todo!("0x31d30 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::v")
+pub fn stub_31d30(bound: &BindObjc, instance: usize, invoke: &mut dyn FnMut(usize, usize, usize)) {
+    // IDA 0x31d30: invoker: functor f from the buffer; list3::operator()<F, list1<Instance&>> calls
+    // f(obj, sel, instance).
+    invoke(bound.obj, bound.sel, instance);
 }
 
 // 0x31d48 — __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
@@ -203,8 +332,9 @@ pub fn stub_31d30() -> ! {
 // type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)")]
-pub fn stub_31d48() -> ! {
-    todo!("0x31d48 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::In")
+pub fn stub_31d48(bound: &BindObjc, instance: usize, invoke: &mut dyn FnMut(usize, usize, usize)) {
+    // IDA 0x31d48: F = stored target; shared_count copied for the call; F(obj, sel, instance); released.
+    invoke(bound.obj, bound.sel, instance);
 }
 
 // 0x31e24 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSEPS6_
@@ -212,16 +342,25 @@ pub fn stub_31d48() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)")]
-pub fn stub_31e24() -> ! {
-    todo!("0x31e24 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)")
+pub fn stub_31e24(slot: &mut usize, new: usize, add_ref: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) {
+    // IDA 0x31e24: add_ref(new); swap in; release(old).
+    if new != 0 {
+        add_ref(new);
+    }
+    let old = *slot;
+    *slot = new;
+    if old != 0 {
+        release(old);
+    }
 }
 
 // 0x31ec8 — __ZN3rbx7signals6signalIFvSsEE24safe_static_do_get_mutexEv
 // demangled: rbx::signals::signal<void ()(std::string)>::safe_static_do_get_mutex(void)
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::safe_static_do_get_mutex(void)")]
-pub fn stub_31ec8() -> ! {
-    todo!("0x31ec8 rbx::signals::signal<void ()(std::string)>::safe_static_do_get_mutex(void)")
+pub fn stub_31ec8(cell: &mut Option<usize>, alloc_mutex: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x31ec8: guard-checked once mutex alloc for the string-signal slot static.
+    *cell.get_or_insert_with(|| alloc_mutex())
 }
 
 // 0x31fc0 — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_
