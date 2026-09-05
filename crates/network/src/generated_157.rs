@@ -7,6 +7,35 @@
 
 use rbx_core::SharedPtr;
 
+/// `rbx::signals` callable slot for `signal<void(std::string)>` (IDA 0x31fc0).
+#[derive(Clone, Debug, Default)]
+pub struct CallableSlot {
+    pub id: u64,
+    pub conn: u64,
+    pub has_fn: bool,
+}
+
+/// `boost::shared_ptr` value slot for `Game` (IDA 0x327d4 shape).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct GameSlot {
+    pub ptr: usize,
+    pub counted: usize,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(RobloxView, game)` (IDA 0x327d4).
+#[derive(Clone, Debug, Default)]
+pub struct BindViewGame {
+    pub target: usize,
+    pub view: usize,
+    pub game: GameSlot,
+}
+
+/// `boost::function0<void>` holding one `(view, game)` functor (IDA 0x32984).
+#[derive(Clone, Debug, Default)]
+pub struct VoidViewCallback {
+    pub bound: Option<BindViewGame>,
+}
+
 /// `boost::shared_ptr` value slot for `LoginService` (IDA 0x319ec shape).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct LoginShared {
@@ -368,8 +397,11 @@ pub fn stub_31ec8(cell: &mut Option<usize>, alloc_mutex: &mut dyn FnMut() -> usi
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(boost::function<void ()(std::string)> const&,rbx::signals::signal<void ()(std::string)>*)")]
-pub fn stub_31fc0() -> ! {
-    todo!("0x31fc0 rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(")
+pub fn stub_31fc0(slots: &mut Vec<CallableSlot>, conn: u64) -> u64 {
+    // IDA 0x31fc0: vtable install; function1::assign_to_own into +4; return the slot.
+    let id = slots.len() as u64;
+    slots.push(CallableSlot { id, conn, has_fn: true });
+    id
 }
 
 // 0x320bc — __ZN3rbx7signals6signalIFvSsEE13callable_slotIN5boost8functionIS2_EEED0Ev
@@ -377,8 +409,12 @@ pub fn stub_31fc0() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()")]
-pub fn stub_320bc() -> ! {
-    todo!("0x320bc rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()")
+pub fn stub_320bc(slots: &mut Vec<CallableSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x320bc: callable_slot dtor: vtable resets; function clear; intrusive release; delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.conn);
+    }
 }
 
 // 0x32194 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
@@ -386,8 +422,9 @@ pub fn stub_320bc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
-pub fn stub_32194() -> ! {
-    todo!("0x32194 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
+pub fn stub_32194(this: usize, call: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x32194: non-virtual thunk adjusts this-4 then tail-calls.
+    call(this.wrapping_sub(4))
 }
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
@@ -395,8 +432,12 @@ pub fn stub_32194() -> ! {
 // type: int __fastcall(int)
 // was: boost::shared_ptr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")]
-pub fn stub_3219c() -> ! {
-    todo!("0x3219c rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")
+pub fn stub_3219c(slots: &mut Vec<CallableSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3219c: D1: vtable resets; function clear; intrusive release (no delete).
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.conn);
+    }
 }
 
 // 0x32270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
@@ -404,8 +445,25 @@ pub fn stub_3219c() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_b")]
-pub fn stub_32270() -> ! {
-    todo!("0x32270 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::")
+pub fn stub_32270(op: i32, src: &mut Option<BindObjc>, dst: &mut Option<BindObjc>) -> bool {
+    // IDA 0x32270: 4 → typeinfo; ≤1 → copy-or-move words; 2 → destroy; 3 → check type.
+    match op {
+        4 => true,
+        0 => {
+            *dst = *src;
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            *dst = None;
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x322d0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs
@@ -413,8 +471,9 @@ pub fn stub_32270() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")]
-pub fn stub_322d0() -> ! {
-    todo!("0x322d0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,b")
+pub fn stub_322d0(bound: &BindObjc, arg: &str, invoke: &mut dyn FnMut(usize, usize, &str)) {
+    // IDA 0x322d0: invoker1: list3::operator()<F, list1<string&>> calls F(obj, sel, arg).
+    invoke(bound.obj, bound.sel, arg);
 }
 
 // 0x322e8 — __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_SsENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
@@ -422,40 +481,51 @@ pub fn stub_322d0() -> ! {
 // type: void __fastcall(int *, void (__fastcall **)(int, int, int *), const std::string **)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,std::string),boost::_bi::list1<std::string &>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,std::string) &,boost::_bi::list1<std::string &> &,int)")]
-pub fn stub_322e8() -> ! {
-    todo!("0x322e8 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,std::string),boost::_bi::")
+pub fn stub_322e8(bound: &BindObjc, arg: String, invoke: &mut dyn FnMut(usize, usize, String)) {
+    // IDA 0x322e8: F = stored target; F(obj, sel, string copy).
+    invoke(bound.obj, bound.sel, arg);
 }
 
 // 0x32408 — __ZN3RBX4Name13callDoDeclareILZNS_11sGuiServiceEEEEvv
 // demangled: __ZN3RBX4Name13callDoDeclareILZNS_11sGuiServiceEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sGuiServiceEEEEvv")]
-pub fn stub_32408() -> ! {
-    todo!("0x32408 __ZN3RBX4Name13callDoDeclareILZNS_11sGuiServiceEEEEvv")
+pub fn stub_32408(declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x32408: thunk tail-calls doDeclare<GuiService> shim.
+    declare()
 }
 
 // 0x3240c — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_10GuiServiceEEEvv
 // demangled: void RBX::ServiceProvider::callDoGetClassIndex<RBX::GuiService>(void)
 // type: 
 #[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::GuiService>(void)")]
-pub fn stub_3240c() -> ! {
-    todo!("0x3240c void RBX::ServiceProvider::callDoGetClassIndex<RBX::GuiService>(void)")
+pub fn stub_3240c(index: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3240c: thunk tail-calls doGetClassIndex<GuiService>.
+    index()
 }
 
 // 0x32410 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv
 // demangled: __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_32410() -> ! {
-    todo!("0x32410 __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_32410(constructed: bool, declare: &mut dyn FnMut() -> usize, release_assert: &mut dyn FnMut()) -> usize {
+    // IDA 0x32410: ReleaseAssert(wasConstructed(), Object.h:236); return Name::declare.
+    if !constructed {
+        release_assert();
+    }
+    declare()
 }
 
 // 0x3247c — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv
 // demangled: __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv
 // type: 
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_3247c() -> ! {
-    todo!("0x3247c __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv")
+pub fn stub_3247c(constructed: bool, create: &mut dyn FnMut() -> usize, release_assert: &mut dyn FnMut()) -> usize {
+    // IDA 0x3247c: ReleaseAssert(wasConstructed()); create the instance (below truncation).
+    if !constructed {
+        release_assert();
+    }
+    create()
 }
 
 // 0x324fc — __ZN5boost10shared_ptrIN3RBX21TaskSchedulerSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -463,8 +533,14 @@ pub fn stub_3247c() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::TaskSchedulerSettings>::shared_ptr<RBX::TaskSchedulerSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_324fc() -> ! {
-    todo!("0x324fc boost::shared_ptr<RBX::TaskSchedulerSettings>::shared_ptr<RBX::TaskSchedulerSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instan")
+pub fn stub_324fc(slot: &mut LoginShared, raw: usize, counted: usize, accept_owner: &mut dyn FnMut(usize)) {
+    // IDA 0x324fc: shared_ptr<TaskSchedulerSettings> ctor: px stored, shared_count ctor; nonzero px
+    // → accept_owner.
+    slot.ptr = raw;
+    slot.counted = counted;
+    if raw != 0 {
+        accept_owner(raw);
+    }
 }
 
 // 0x32520 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_21TaskSchedulerSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -472,8 +548,12 @@ pub fn stub_324fc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TaskSchedulerSettings,RBX::TaskSchedulerSettings>(rbx_core::SharedPtr<RBX::TaskSchedulerSettings> const*,RBX::TaskSchedulerSettings *)const")]
-pub fn stub_32520() -> ! {
-    todo!("0x32520 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TaskSchedulerSettings,RBX::TaskSchedulerSettings>(boost::shared_ptr<RBX::TaskSchedu")
+pub fn stub_32520(owner: &mut usize, weak: &mut usize, candidate_owner: usize, candidate_weak: usize, use_count: usize) {
+    // IDA 0x32520: if !weak || !use_count(weak): owner = candidate; weak = candidate copy.
+    if *weak == 0 || use_count == 0 {
+        *owner = candidate_owner;
+        *weak = candidate_weak;
+    }
 }
 
 // 0x325fc — __ZN5boost6detail12shared_countC2IPN3RBX21TaskSchedulerSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
@@ -481,8 +561,10 @@ pub fn stub_32520() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_325fc() -> ! {
-    todo!("0x325fc boost::detail::shared_count::shared_count<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_325fc(slot: &mut LoginShared, raw: usize, control: usize) {
+    // IDA 0x325fc: *a1 = 0; new sp_counted_impl_pd<TaskSchedulerSettings>(px) uses/weaks 1; *a1 = it.
+    slot.ptr = raw;
+    slot.counted = control;
 }
 
 // 0x326fc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -490,8 +572,8 @@ pub fn stub_325fc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_326fc() -> ! {
-    todo!("0x326fc boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_326fc() {
+    // IDA 0x326fc: empty dtor body.
 }
 
 // 0x32700 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -499,32 +581,51 @@ pub fn stub_326fc() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_32700() -> ! {
-    todo!("0x32700 boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_32700(payload: usize, predelete: &mut dyn FnMut(usize) -> usize, destroy: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x32700: px = block[12]; predelete(px); px ? px->deleter(px) (vtable + 8) : predelete result.
+    let r = predelete(payload);
+    if payload != 0 {
+        destroy(payload)
+    } else {
+        r
+    }
 }
 
 // 0x32720 — __ZN3RBX4Name7declareILZNS_22sTaskSchedulerSettingsEEEERKS0_v
 // demangled: __ZN3RBX4Name7declareILZNS_22sTaskSchedulerSettingsEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")]
-pub fn stub_32720() -> ! {
-    todo!("0x32720 __ZN3RBX4Name7declareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")
+pub fn stub_32720(has_name: bool, cell: &mut Option<usize>, call_once: &mut dyn FnMut(), declare: &mut dyn FnMut() -> usize, null_name: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x32720: null sClassName → getNullName; else call_once(callDoDeclare) + doDeclare.
+    if !has_name {
+        return null_name();
+    }
+    if cell.is_none() {
+        call_once();
+        *cell = Some(declare());
+    }
+    cell.unwrap()
 }
 
 // 0x32764 — __ZN3RBX4Name13callDoDeclareILZNS_22sTaskSchedulerSettingsEEEEvv
 // demangled: __ZN3RBX4Name13callDoDeclareILZNS_22sTaskSchedulerSettingsEEEEvv
 // type: 
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_22sTaskSchedulerSettingsEEEEvv")]
-pub fn stub_32764() -> ! {
-    todo!("0x32764 __ZN3RBX4Name13callDoDeclareILZNS_22sTaskSchedulerSettingsEEEEvv")
+pub fn stub_32764(declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x32764: thunk tail-calls doDeclare<TaskSchedulerSettings> shim.
+    declare()
 }
 
 // 0x32768 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 // demangled: __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
-pub fn stub_32768() -> ! {
-    todo!("0x32768 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
+pub fn stub_32768(constructed: bool, declare: &mut dyn FnMut() -> usize, release_assert: &mut dyn FnMut()) -> usize {
+    // IDA 0x32768: ReleaseAssert(wasConstructed(), Object.h:236); return Name::declare.
+    if !constructed {
+        release_assert();
+    }
+    declare()
 }
 
 // 0x327d4 — __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEES2_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
@@ -532,8 +633,9 @@ pub fn stub_32768() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RobloxView *,rbx_core::SharedPtr<RBX::Game>>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_327d4() -> ! {
-    todo!("0x327d4 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,bo")
+pub fn stub_327d4(target: usize, view: usize, game: GameSlot) -> BindViewGame {
+    // IDA 0x327d4: list2<value<RobloxView*>, value<shared_ptr<Game>>> ctor; bind_t pack.
+    BindViewGame { target, view, game }
 }
 
 // 0x328bc — __ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
@@ -541,8 +643,9 @@ pub fn stub_327d4() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_328bc() -> ! {
-    todo!("0x328bc boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::G")
+pub fn stub_328bc(view: usize, game: GameSlot) -> BindViewGame {
+    // IDA 0x328bc: list2 ctor: view stored, game ptr + shared_count copied in.
+    BindViewGame { target: 0, view, game }
 }
 
 // 0x32984 — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
@@ -550,8 +653,9 @@ pub fn stub_328bc() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_32984() -> ! {
-    todo!("0x32984 __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_n")
+pub fn stub_32984(bound: BindViewGame) -> VoidViewCallback {
+    // IDA 0x32984: function<void()> ctor: bind_t copied to temp, forwarded to function0 ctor.
+    VoidViewCallback { bound: Some(bound) }
 }
 
 // 0x32a68 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
@@ -559,8 +663,11 @@ pub fn stub_32984() -> ! {
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_32a68() -> ! {
-    todo!("0x32a68 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_not")
+pub fn stub_32a68(bound: BindViewGame) -> VoidViewCallback {
+    // IDA 0x32a68: function0 ctor: *a1 = 0, then assign_to; temp released.
+    let mut cb = VoidViewCallback::default();
+    stub_32b50(&mut cb, bound);
+    cb
 }
 
 // 0x32b50 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEEvT_
@@ -568,8 +675,9 @@ pub fn stub_32a68() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>)")]
-pub fn stub_32b50() -> ! {
-    todo!("0x32b50 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::val")
+pub fn stub_32b50(cb: &mut VoidViewCallback, bound: BindViewGame) {
+    // IDA 0x32b50: function0::assign_to: functor + shared_count copied, stored vtable.
+    cb.bound = Some(bound);
 }
 
 // 0x32c48 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
@@ -577,8 +685,17 @@ pub fn stub_32b50() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_32c48() -> ! {
-    todo!("0x32c48 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::v")
+pub fn stub_32c48(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x32c48: op != 4: tail-call functor_manager::manager table; else store the
+    // bind_t<view, game> typeinfo, clear flags, return it.
+    const MANAGER_TABLE: usize = 0x32c4c;
+    const BIND_T_TYPEINFO: usize = 0x32c5e;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x32c64 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
