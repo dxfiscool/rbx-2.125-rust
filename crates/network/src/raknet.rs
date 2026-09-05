@@ -21722,8 +21722,9 @@ pub fn stub_a96cd0(destroy: &mut dyn FnMut()) {
 #[doc(
     alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()"
 )]
-pub fn stub_a96d38() -> ! {
-    todo!("0xa96d38 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")
+pub fn stub_a96d38(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96d38: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96da0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EED1Ev
@@ -21731,29 +21732,32 @@ pub fn stub_a96d38() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()"
 )]
-pub fn stub_a96da0() -> ! {
-    todo!("0xa96da0 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_a96da0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96da0: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96e08 — __ZNK3RBX7Network6Player32getDeprecatedMaxSimulationRadiusEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getDeprecatedMaxSimulationRadius(void)const")]
-pub fn stub_a96e08() -> ! {
-    todo!("0xa96e08 RBX::Network::Player::getDeprecatedMaxSimulationRadius(void)const")
+pub fn stub_a96e08() -> i32 {
+ // IDA 0xa96e08: deprecated getter returns 0.
+ 0
 }
 
 // 0xa96e0c — __ZN3RBX7Network6Player32setDeprecatedMaxSimulationRadiusEf
 // type: void __fastcall(RBX::Network::Player *this, float)
 #[doc(alias = "RBX::Network::Player::setDeprecatedMaxSimulationRadius(float)")]
-pub fn stub_a96e0c() -> ! {
-    todo!("0xa96e0c RBX::Network::Player::setDeprecatedMaxSimulationRadius(float)")
+pub fn stub_a96e0c() {
+ // IDA 0xa96e0c: deprecated setter is a no-op.
 }
 
 // 0xa96e10 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")]
-pub fn stub_a96e10() -> ! {
-    todo!("0xa96e10 RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")
+pub fn stub_a96e10(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96e10: PropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96e34 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEED1Ev
@@ -21761,15 +21765,17 @@ pub fn stub_a96e10() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()"
 )]
-pub fn stub_a96e34() -> ! {
-    todo!("0xa96e34 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()")
+pub fn stub_a96e34(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96e34: EnumPropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96e58 — __ZNK3RBX7Network6Player12getTeamColorEv
 // type: _DWORD *__fastcall(_DWORD *this, int)
 #[doc(alias = "RBX::Network::Player::getTeamColor(void)const")]
-pub fn stub_a96e58() -> ! {
-    todo!("0xa96e58 RBX::Network::Player::getTeamColor(void)const")
+pub fn stub_a96e58(slot: &mut i32, value: i32) {
+ // IDA 0xa96e58: copies the int at +100.
+ *slot = value;
 }
 
 // 0xa96e60 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEED1Ev
@@ -21777,29 +21783,33 @@ pub fn stub_a96e58() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()"
 )]
-pub fn stub_a96e60() -> ! {
-    todo!("0xa96e60 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_a96e60(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96e60: PropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96e84 — __ZNK3RBX7Network6Player10getNeutralEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getNeutral(void)const")]
-pub fn stub_a96e84() -> ! {
-    todo!("0xa96e84 RBX::Network::Player::getNeutral(void)const")
+pub fn stub_a96e84(flag: u8) -> bool {
+ // IDA 0xa96e84: returns the byte at +104.
+ flag != 0
 }
 
 // 0xa96e8c — __ZNK3RBX7Network6Player7isGuestEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::isGuest(void)const")]
-pub fn stub_a96e8c() -> ! {
-    todo!("0xa96e8c RBX::Network::Player::isGuest(void)const")
+pub fn stub_a96e8c(user_id: i32) -> bool {
+ // IDA 0xa96e8c: guest when the userId sign bit is set.
+ user_id < 0
 }
 
 // 0xa96e94 — __ZNK3RBX7Network6Player17getMembershipTypeEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getMembershipType(void)const")]
-pub fn stub_a96e94() -> ! {
-    todo!("0xa96e94 RBX::Network::Player::getMembershipType(void)const")
+pub fn stub_a96e94(value: i32) -> i32 {
+ // IDA 0xa96e94: returns the int at +79.
+ value
 }
 
 // 0xa96e9c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEED1Ev
@@ -21807,15 +21817,17 @@ pub fn stub_a96e94() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()"
 )]
-pub fn stub_a96e9c() -> ! {
-    todo!("0xa96e9c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()")
+pub fn stub_a96e9c(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96e9c: EnumPropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96ec0 — __ZNK3RBX7Network6Player13getAccountAgeEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getAccountAge(void)const")]
-pub fn stub_a96ec0() -> ! {
-    todo!("0xa96ec0 RBX::Network::Player::getAccountAge(void)const")
+pub fn stub_a96ec0(value: i32) -> i32 {
+ // IDA 0xa96ec0: returns the int at +80.
+ value
 }
 
 // 0xa96ec8 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
@@ -21823,8 +21835,9 @@ pub fn stub_a96ec0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_a96ec8() -> ! {
-    todo!("0xa96ec8 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_a96ec8(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96ec8: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa96f10 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
@@ -21832,8 +21845,9 @@ pub fn stub_a96ec8() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_a96f10() -> ! {
-    todo!("0xa96f10 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_a96f10(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96f10: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa96f58 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev
@@ -21841,8 +21855,9 @@ pub fn stub_a96f10() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_a96f58() -> ! {
-    todo!("0xa96f58 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_a96f58(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96f58: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa96fa0 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_ED1Ev
@@ -21850,8 +21865,9 @@ pub fn stub_a96f58() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_a96fa0() -> ! {
-    todo!("0xa96fa0 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_a96fa0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96fa0: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa96fe8 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEED1Ev
@@ -21859,8 +21875,9 @@ pub fn stub_a96fa0() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()"
 )]
-pub fn stub_a96fe8() -> ! {
-    todo!("0xa96fe8 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+pub fn stub_a96fe8(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96fe8: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa97030 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEED1Ev
@@ -21868,8 +21885,9 @@ pub fn stub_a96fe8() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::~RemoteEventDesc()"
 )]
-pub fn stub_a97030() -> ! {
-    todo!("0xa97030 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::~RemoteEventDesc()")
+pub fn stub_a97030(destroy: &mut dyn FnMut()) {
+ // IDA 0xa97030: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa97078 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEED1Ev
@@ -21877,8 +21895,9 @@ pub fn stub_a97030() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()"
 )]
-pub fn stub_a97078() -> ! {
-    todo!("0xa97078 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()")
+pub fn stub_a97078(destroy: &mut dyn FnMut()) {
+ // IDA 0xa97078: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa970c0 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEED1Ev
@@ -21886,22 +21905,25 @@ pub fn stub_a97078() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()"
 )]
-pub fn stub_a970c0() -> ! {
-    todo!("0xa970c0 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()")
+pub fn stub_a970c0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa970c0: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa97108 — __ZNK3RBX7Network6Player20getAppearanceDidLoadEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getAppearanceDidLoad(void)const")]
-pub fn stub_a97108() -> ! {
-    todo!("0xa97108 RBX::Network::Player::getAppearanceDidLoad(void)const")
+pub fn stub_a97108(flag: bool) -> bool {
+ // IDA 0xa97108: returns the byte at +184.
+ flag
 }
 
 // 0xa97110 — __ZNK3RBX7Network6Player13getCameraModeEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getCameraMode(void)const")]
-pub fn stub_a97110() -> ! {
-    todo!("0xa97110 RBX::Network::Player::getCameraMode(void)const")
+pub fn stub_a97110(value: i32) -> i32 {
+ // IDA 0xa97110: returns the int at +86.
+ value
 }
 
 // 0xa97118 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEED1Ev
@@ -21909,8 +21931,9 @@ pub fn stub_a97110() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()"
 )]
-pub fn stub_a97118() -> ! {
-    todo!("0xa97118 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()")
+pub fn stub_a97118(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa97118: EnumPropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa97e48 — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE21fireAndReplicateEventEPS3_Ss
@@ -21918,8 +21941,10 @@ pub fn stub_a97118() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::fireAndReplicateEvent(RBX::Network::Player*,std::string)"
 )]
-pub fn stub_a97e48() -> ! {
-    todo!("0xa97e48 RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::fireAndReplicateEvent(RBX::Network::Player*,std::string)")
+pub fn stub_a97e48(text: String, fire: &mut dyn FnMut(String), replicate: &mut dyn FnMut(String)) {
+ // IDA 0xa97e48: fireAndReplicateEvent fires locally then replicates (below truncation).
+ fire(text.clone());
+ replicate(text);
 }
 
 // 0xa981c8 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS2_10Reflection7VariantESt4lessISsESaISt4pairIKSsS9_EEEEES5_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSN_T0_T1_ENSL_9list_av_2IT2_T3_E4typeEEESR_ST_SU_
