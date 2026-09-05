@@ -70,6 +70,49 @@ static SIGNAL_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 /// Opaque void-signal slot static mutex handle (IDA 0x3d030: same shape as
 /// 0x3d938).
 static SLOT_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// `RobloxView::ViewUpdateJob` observable state (IDA 0x403f0..0x406b4):
+/// the ctor names the job "UpdateRbxView" (0x4045a, folds into the host);
+/// liveness, steps, and the last error are observed.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct UpdateJobState {
+    pub live: bool,
+    pub steps: u32,
+    pub last_error: f64,
+}
+
+/// RenderJob bind typeinfo (IDA 0x402a8, same manage shape as 0x3e030).
+pub const RENDER_JOB_BIND_TYPEINFO: &str = "bind_t<RenderJob,ViewBase>";
+/// `__GLOBAL__I_a_10` one-shot latch (IDA 0x4070c, same static-init shape
+/// as `GLOBAL_A9_INIT`).
+static GLOBAL_A10_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `UserInfo` observable state (IDA 0x40984..0x419c8): credentials, login
+/// persistence (`LastUserLoggedIn`), balances, and request latches. ObjC
+/// peers and the cookie store fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct UserInfo {
+    pub username: String,
+    pub password: String,
+    pub logged_in: bool,
+    pub last_user: Option<String>,
+    pub robux: i64,
+    pub tix: i64,
+    pub player_info_requested: bool,
+    pub request_url: String,
+    pub cookies_cleared: bool,
+}
+
+/// `convertToFriendlyString` (IDA 0x411a0): null answers "unknown"
+/// (0x411b2..0x411b4); below 1000 plain "%d" (0x41214/0x41280); below
+/// 1000000 (0xF4240) "%d,%03d" (0x4125a); otherwise "%d mil" (0x4120e).
+pub fn friendly_string(value: Option<i64>) -> String {
+    match value {
+        None => "unknown".to_owned(),
+        Some(v) if v < 1000 => format!("{v}"),
+        Some(v) if v < 1_000_000 => format!("{},{:03}", v / 1000, v % 1000),
+        Some(v) => format!("{} mil", v / 1_000_000),
+    }
+}
 /// `RobloxView::RenderJob` observable state (IDA 0x3ecf0..0x3fb9c): the
 /// ctor wires view/marshaller/datamodel peers (folds into the host);
 /// wake/prepare/perform latches, the step count, the last error, metric
@@ -1178,169 +1221,230 @@ pub fn stub_0x4027c(cb: &mut RenderCallback) {
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x402a8(_op: crate::generated_110::FunctorOp) -> &'static str {
+    // IDA 0x402a8: `functor_manager::manage` for the RenderJob bind — same
+    // op dispatch as 0x3e030.
+    RENDER_JOB_BIND_TYPEINFO
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_0x40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x40308(cb: &mut RenderCallback) {
+    // IDA 0x40308: invoker thunk forwarding to the bind call (same shape
+    // as 0x3e090).
+    cb.calls += 1;
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::Weak<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
-pub fn stub_0x40318() -> ! {
-    todo!("0x40318 rbx_core::Weak<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")
+pub fn stub_0x40318() {
+    // IDA 0x40318: `weak_ptr` ctor from shared (convertible) — `Weak`
+    // construction glue covers it — no-op.
 }
 
 // 0x403f0 — __ZN10RobloxView13ViewUpdateJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
-pub fn stub_0x403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_0x403f0() -> UpdateJobState {
+    // IDA 0x403f0: `ViewUpdateJob` ctor names the job and wires peers;
+    // construction folds into host ownership; the job starts live.
+    UpdateJobState { live: true, ..UpdateJobState::default() }
 }
 
 // 0x404f0 — __ZN10RobloxView13ViewUpdateJobD1Ev
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
-pub fn stub_0x404f0() -> ! {
-    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_0x404f0(job: &mut UpdateJobState) {
+    // IDA 0x404f0: D1 dtor tears down; drop glue covers it and the job is
+    // marked dead.
+    job.live = false;
 }
 
 // 0x4059c — __ZN10RobloxView13ViewUpdateJobD0Ev
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob() [0x4059c]")]
-pub fn stub_0x4059c() -> ! {
-    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_0x4059c(job: &mut UpdateJobState) {
+    // IDA 0x4059c: D0 dtor (teardown plus delete); drop glue covers it and
+    // the job is marked dead.
+    job.live = false;
 }
 
 // 0x40650 — __ZN10RobloxView13ViewUpdateJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x40650(enabled: bool, standard: f64) -> f64 {
+    // IDA 0x40650: `sleepTime` — same settings-gated standard shape as
+    // 0x3f008.
+    if enabled {
+        standard
+    } else {
+        f64::INFINITY
+    }
 }
 
 // 0x40680 — __ZN10RobloxView13ViewUpdateJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x40680(job: &mut UpdateJobState, enabled: bool, standard: f64) {
+    // IDA 0x40680: `error` — same gated-error shape as 0x3f058.
+    job.last_error = if enabled { standard } else { 0.0 };
 }
 
 // 0x406a8 — __ZN10RobloxView13ViewUpdateJob17getPriorityFactorEv
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
-pub fn stub_0x406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+pub fn stub_0x406a8() -> f64 {
+    // IDA 0x406a8: `getPriorityFactor` answers 1.0 (0x406b0).
+    1.0
 }
 
 // 0x406b4 — __ZN10RobloxView13ViewUpdateJob4stepERKN3RBX13TaskScheduler3Job5StatsE
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_0x406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x406b4(job: &mut UpdateJobState) -> u32 {
+    // IDA 0x406b4: `step` updates and presents the view (0x406c6..0x406da,
+    // folds into the host) and answers 1 (0x406de).
+    job.steps += 1;
+    1
 }
 
 // 0x4070c — __GLOBAL__I_a_10
 #[doc(alias = "global constructor keyed to_a_10")]
-pub fn stub_0x4070c() -> ! {
-    todo!("0x4070c global constructor keyed to_a_10")
+pub fn stub_0x4070c() -> u32 {
+    // IDA 0x4070c: `__GLOBAL__I_a_10` — see `GLOBAL_A10_INIT`.
+    *GLOBAL_A10_INIT
 }
 
 // 0x40984 — -[UserInfo init]
 // type: UserInfo *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo init]")]
-pub fn stub_0x40984() -> ! {
-    todo!("0x40984 -[UserInfo init]")
+pub fn stub_0x40984() -> UserInfo {
+    // IDA 0x40984: `init` chains to super (0x4099e..0x409ae, folds into
+    // the host); the record starts default.
+    UserInfo::default()
 }
 
 // 0x409b0 — -[UserInfo setUserLoggedIn:]
 // type: void __cdecl(UserInfo *self, SEL, char)
 #[doc(alias = "-[UserInfo setUserLoggedIn:]")]
-pub fn stub_0x409b0() -> ! {
-    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+pub fn stub_0x409b0(user: &mut UserInfo, logged_in: bool) {
+    // IDA 0x409b0: stores the flag (0x409c6); when set, persists the
+    // username as LastUserLoggedIn (0x409e6..0x40a14); otherwise clears
+    // credentials (0x40a34..0x40a48) and the key (0x40a64..0x40a7e); always
+    // synchronizes (0x40a9a..0x40aae, folds into the host).
+    user.logged_in = logged_in;
+    if logged_in {
+        user.last_user = Some(user.username.clone());
+    } else {
+        user.username.clear();
+        user.password.clear();
+        user.last_user = None;
+    }
 }
 
 // 0x40ab4 — -[UserInfo userLoggedIn]
 // type: char __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userLoggedIn]")]
-pub fn stub_0x40ab4() -> ! {
-    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+pub fn stub_0x40ab4(user: &UserInfo) -> bool {
+    // IDA 0x40ab4: `userLoggedIn` answers the flag (0x40ac2).
+    user.logged_in
 }
 
 // 0x40ac4 — -[UserInfo UpdatePlayerInfo]
 // type: void __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
-pub fn stub_0x40ac4() -> ! {
-    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+pub fn stub_0x40ac4(user: &mut UserInfo, base_url: &str) {
+    // IDA 0x40ac4: `UpdatePlayerInfo` GETs `{base}mobileapi/userinfo` over
+    // https (0x40ae8..0x40b2a) with the User-Agent header (0x40b8a..
+    // 0x40bc4) and queues the op. Request plumbing folds into the host;
+    // the queued fetch is observed.
+    let url = format!("{base_url}mobileapi/userinfo").replacen("http:", "https:", 1);
+    user.request_url = url;
+    user.player_info_requested = true;
 }
 
 // 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
 #[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
-pub fn stub_0x40c58() -> ! {
-    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+pub fn stub_0x40c58(user: &mut UserInfo, robux: i64, tix: i64, username: &str) {
+    // IDA 0x40c58: the fetch block parses the info dictionary into the
+    // balances and identity (JSON parsing folds into the inputs).
+    user.robux = robux;
+    user.tix = tix;
+    user.username = username.to_owned();
 }
 
 // 0x41104 — ___copy_helper_block__6
 #[doc(alias = "___copy_helper_block__6")]
-pub fn stub_0x41104() -> ! {
-    todo!("0x41104 ___copy_helper_block__6")
+pub fn stub_0x41104() {
+    // IDA 0x41104: block copy helper retains the two captures (0x41114..
+    // 0x41124, folds into `Clone`) — no-op.
 }
 
 // 0x41128 — ___destroy_helper_block__6
 #[doc(alias = "___destroy_helper_block__6")]
-pub fn stub_0x41128() -> ! {
-    todo!("0x41128 ___destroy_helper_block__6")
+pub fn stub_0x41128() {
+    // IDA 0x41128: block destroy helper releases the captures (0x41132..
+    // 0x4113e, folds into drop) — no-op.
 }
 
 // 0x41144 — +[UserInfo CurrentPlayer]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo CurrentPlayer]")]
-pub fn stub_0x41144() -> ! {
-    todo!("0x41144 +[UserInfo CurrentPlayer]")
+pub fn stub_0x41144() -> UserInfo {
+    // IDA 0x41144: `CurrentPlayer` lazily allocs and inits the singleton
+    // (0x41152..0x41186); singleton storage folds into the host.
+    UserInfo::default()
 }
 
 // 0x4118c — -[UserInfo Robux]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Robux]")]
-pub fn stub_0x4118c() -> ! {
-    todo!("0x4118c -[UserInfo Robux]")
+pub fn stub_0x4118c(user: &UserInfo) -> String {
+    // IDA 0x4118c: `Robux` formats the balance (folds into
+    // `convertToFriendlyString`).
+    friendly_string(Some(user.robux))
 }
 
 // 0x411a0 — __Z23convertToFriendlyStringP8NSNumber
 // type: _DWORD __fastcall(id)
 #[doc(alias = "convertToFriendlyString(NSNumber *)")]
-pub fn stub_0x411a0() -> ! {
-    todo!("0x411a0 convertToFriendlyString(NSNumber *)")
+pub fn stub_0x411a0(value: Option<i64>) -> String {
+    // IDA 0x411a0: `convertToFriendlyString` — see `friendly_string`.
+    friendly_string(value)
 }
 
 // 0x41288 — -[UserInfo Tix]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Tix]")]
-pub fn stub_0x41288() -> ! {
-    todo!("0x41288 -[UserInfo Tix]")
+pub fn stub_0x41288(user: &UserInfo) -> String {
+    // IDA 0x41288: `Tix` formats the balance (same shape as 0x4118c).
+    friendly_string(Some(user.tix))
 }
 
 // 0x4129c — +[UserInfo clearAllRobloxCookie]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
-pub fn stub_0x4129c() -> ! {
-    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+pub fn stub_0x4129c(user: &mut UserInfo) {
+    // IDA 0x4129c: `clearAllRobloxCookie` drains the shared cookie storage
+    // (folds into the host); the clear is observed.
+    user.cookies_cleared = true;
 }
 
 // 0x41580 — +[UserInfo printCookies]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo printCookies]")]
-pub fn stub_0x41580() -> ! {
-    todo!("0x41580 +[UserInfo printCookies]")
+pub fn stub_0x41580(cookies: &[String]) -> Vec<String> {
+    // IDA 0x41580: `printCookies` logs each stored cookie; the walk folds
+    // into an echo of the logged set.
+    cookies.to_vec()
 }
 
 // 0x419c8 — +[UserInfo logout]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo logout]")]
-pub fn stub_0x419c8() -> ! {
-    todo!("0x419c8 +[UserInfo logout]")
+pub fn stub_0x419c8(current: &mut Option<UserInfo>) {
+    // IDA 0x419c8: `logout` releases the current player (0x419ea) and
+    // zeroes it (0x419f0).
+    *current = None;
 }
 
 #[cfg(test)]
@@ -1650,5 +1754,83 @@ mod render_job_batch_tests {
         stub_0x40270(&mut cb);
         stub_0x4027c(&mut cb);
         assert_eq!(cb.calls, 3);
+    }
+}
+
+#[cfg(test)]
+mod update_user_batch_tests {
+    use super::*;
+    use crate::generated_110::FunctorOp;
+
+    #[test]
+    fn update_job_lifecycle() {
+        let mut job = stub_0x403f0();
+        assert!(job.live);
+        assert_eq!(stub_0x40650(false, 0.1), f64::INFINITY);
+        assert_eq!(stub_0x40650(true, 0.1), 0.1);
+        stub_0x40680(&mut job, false, 0.5);
+        assert_eq!(job.last_error, 0.0);
+        stub_0x40680(&mut job, true, 0.5);
+        assert_eq!(job.last_error, 0.5);
+        assert_eq!(stub_0x406a8(), 1.0);
+        assert_eq!(stub_0x406b4(&mut job), 1);
+        assert_eq!(job.steps, 1);
+        stub_0x404f0(&mut job);
+        assert!(!job.live);
+        let mut job = stub_0x403f0();
+        stub_0x4059c(&mut job);
+        assert!(!job.live);
+        assert_eq!(stub_0x402a8(FunctorOp::GetType), RENDER_JOB_BIND_TYPEINFO);
+        let mut cb = RenderCallback::default();
+        stub_0x40308(&mut cb);
+        assert_eq!(cb.calls, 1);
+    }
+
+    #[test]
+    fn user_login_flow() {
+        let mut user = stub_0x40984();
+        assert!(!stub_0x40ab4(&user));
+        user.username = "builder".to_owned();
+        stub_0x409b0(&mut user, true);
+        assert!(stub_0x40ab4(&user));
+        assert_eq!(user.last_user, Some("builder".to_owned()));
+        stub_0x409b0(&mut user, false);
+        assert!(!stub_0x40ab4(&user));
+        assert_eq!(user.username, "");
+        assert_eq!(user.last_user, None);
+    }
+
+    #[test]
+    fn player_info_and_balances() {
+        let mut user = stub_0x40984();
+        stub_0x40ac4(&mut user, "http://www.roblox.com/");
+        assert!(user.player_info_requested);
+        assert_eq!(user.request_url, "https://www.roblox.com/mobileapi/userinfo");
+        stub_0x40c58(&mut user, 1500, 2200, "builder");
+        assert_eq!(user.robux, 1500);
+        assert_eq!(user.tix, 2200);
+        assert_eq!(stub_0x4118c(&user), "1,500");
+        assert_eq!(stub_0x41288(&user), "2,200");
+        assert_eq!(stub_0x411a0(None), "unknown");
+        assert_eq!(stub_0x411a0(Some(999)), "999");
+        assert_eq!(stub_0x411a0(Some(1_500_000)), "1 mil");
+        let current = stub_0x41144();
+        assert_eq!(current, UserInfo::default());
+    }
+
+    #[test]
+    fn cookies_and_logout() {
+        let mut user = stub_0x40984();
+        stub_0x4129c(&mut user);
+        assert!(user.cookies_cleared);
+        assert_eq!(
+            stub_0x41580(&["a=1".to_owned()]),
+            vec!["a=1".to_owned()]
+        );
+        let mut current = Some(user);
+        stub_0x419c8(&mut current);
+        assert_eq!(current, None);
+        stub_0x41104();
+        stub_0x41128();
     }
 }
