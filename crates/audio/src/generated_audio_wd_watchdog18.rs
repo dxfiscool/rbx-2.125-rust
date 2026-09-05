@@ -65,6 +65,11 @@ pub struct TextBoxState {
     pub text_color: u32,
     pub font: u32,
     pub font_size: u32,
+    pub multi_line: bool,
+    pub clear_text_on_focus: bool,
+    pub focused: bool,
+    pub focus_text: String,
+    pub text: String,
 }
 /// Bool member selected by a `PropDescriptor<TextBox, bool>`'s
 /// member-pointer pair (IDA 0x67283e-0x6728f6: three objects over
