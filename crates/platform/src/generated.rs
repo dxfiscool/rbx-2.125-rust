@@ -1292,6 +1292,9 @@ pub struct RapvcState {
     fg_init_x: parking_lot::Mutex<f32>,
     observer_regs: AtomicU32,
     has_copies: AtomicBool,
+    anim_view: parking_lot::Mutex<Option<ControlId>>,
+    bg_image: parking_lot::Mutex<Option<ControlId>>,
+    fg_image: parking_lot::Mutex<Option<ControlId>>,
     panning: AtomicBool,
     loads: AtomicU32,
     appears: AtomicU32,
@@ -1579,6 +1582,42 @@ impl RapvcState {
     pub fn foreground_initial_x(&self) -> f32 {
         *self.fg_init_x.lock()
     }
+    /// `-setForegroundImageInitialX:` (IDA 0x53a80): barriered store.
+    pub fn set_fg_init_x(&self, value: f32) {
+        *self.fg_init_x.lock() = value;
+    }
+    /// `-backgroundImageInitialX` (IDA 0x53a98): barriered load.
+    pub fn bg_initial_x(&self) -> f32 {
+        *self.bg_init_x.lock()
+    }
+    /// `-setBackgroundImageInitialX:` (IDA 0x53aac): barriered store.
+    pub fn set_bg_init_x(&self, value: f32) {
+        *self.bg_init_x.lock() = value;
+    }
+    /// `-animationView` (IDA 0x53ac4): the animation container view.
+    pub fn animation_view(&self) -> Option<ControlId> {
+        *self.anim_view.lock()
+    }
+    /// `-setAnimationView:` (IDA 0x53ad4): retained assign (offset 180).
+    pub fn set_animation_view(&self, view: Option<ControlId>) {
+        *self.anim_view.lock() = view;
+    }
+    /// `-imgBackground` (IDA 0x53af8).
+    pub fn bg_image(&self) -> Option<ControlId> {
+        *self.bg_image.lock()
+    }
+    /// `-setImgBackground:` (IDA 0x53b08): retained assign (offset 184).
+    pub fn set_bg_image(&self, view: Option<ControlId>) {
+        *self.bg_image.lock() = view;
+    }
+    /// `-imgForeground` (IDA 0x53b2c).
+    pub fn fg_image(&self) -> Option<ControlId> {
+        *self.fg_image.lock()
+    }
+    /// `-setImgForeground:` (IDA 0x53b3c): retained assign (offset 188).
+    pub fn set_fg_image(&self, view: Option<ControlId>) {
+        *self.fg_image.lock() = view;
+    }
 }
 /// Host ids for the foreground/background copy views (IDA 0x53a04/0x53a38).
 const FOREGROUND_COPY_ID: ControlId = 11;
@@ -1654,6 +1693,185 @@ impl GameInputViewState {
 }
 static GAME_INPUT: std::sync::LazyLock<GameInputViewState> =
     std::sync::LazyLock::new(GameInputViewState::default);
+/// Host id standing in for the `RobloxNavBarViewController` `self`.
+const NAVBAR_ID: ControlId = 13;
+/// Minimal `RobloxNavBarViewController` counterpart (IDA 0x53b60..0x5449c):
+/// the URL string, web/back-button state, fullscreen text and observable
+/// counters for the notification/launch steps out of slice.
+#[derive(Debug, Default)]
+pub struct NavBarState {
+    initialized: AtomicBool,
+    url: parking_lot::Mutex<String>,
+    web_view_present: AtomicBool,
+    web_sized: AtomicBool,
+    back_enabled: AtomicBool,
+    home_enabled: AtomicBool,
+    overlay_hidden: AtomicBool,
+    loading_text: parking_lot::Mutex<String>,
+    observer_regs: AtomicU32,
+    user_info_updates: AtomicU32,
+    loads: AtomicU32,
+    wills: AtomicU32,
+    appears: AtomicU32,
+    unloads: AtomicU32,
+    fullscreen_text: parking_lot::Mutex<String>,
+    fullscreen_visible: AtomicBool,
+    launch_calls: AtomicU32,
+    pending_navigate: parking_lot::Mutex<Option<i32>>,
+    pending_launch: parking_lot::Mutex<Option<i32>>,
+    releases: AtomicU32,
+}
+impl NavBarState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x53b60): super init; a fresh `urlString`,
+    /// nil web view, and the start/did-leave observers.
+    pub fn init_coder(&self) -> Option<ControlId> {
+        *self.url.lock() = String::new();
+        self.web_view_present.store(false, Ordering::SeqCst);
+        self.observer_regs.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(NAVBAR_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn observer_count(&self) -> u32 {
+        self.observer_regs.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x53cbc): observer removal, last-non-game reset,
+    /// thirteen subview releases and the web view drop.
+    pub fn dealloc(&self) {
+        self.observer_regs.store(0, Ordering::SeqCst);
+        self.web_view_present.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-setUrl:` (IDA 0x53e6c): `urlString setString:`.
+    pub fn set_url(&self, value: &str) {
+        *self.url.lock() = value.to_owned();
+    }
+    /// `-getUrl` (IDA 0x53e8c).
+    pub fn url(&self) -> String {
+        self.url.lock().clone()
+    }
+    /// `gotStartLeaveGameNotification:` (IDA 0x53e9c): the last non-game
+    /// controller shows the "EndingGame" fullscreen text.
+    pub fn start_leave(&self, is_last: bool) {
+        if is_last {
+            self.show_fullscreen("EndingGame");
+        }
+    }
+    /// `gotDidLeaveGameNotification:` (IDA 0x53f38): the last non-game
+    /// controller hides the fullscreen text; a pending place id launches.
+    pub fn did_leave(&self, is_last: bool, jump_place: Option<i32>) {
+        if is_last {
+            self.hide_fullscreen();
+        }
+        if let Some(place) = jump_place {
+            *self.pending_launch.lock() = None;
+            *self.pending_navigate.lock() = Some(place);
+            self.bump(&self.launch_calls);
+        }
+    }
+    pub fn launch_call_count(&self) -> u32 {
+        self.launch_calls.load(Ordering::SeqCst)
+    }
+    /// `-viewWillAppear:` (IDA 0x53fac): super, self recorded current,
+    /// user info display updated.
+    pub fn will_appear(&self) {
+        self.bump(&self.wills);
+        self.bump(&self.user_info_updates);
+    }
+    pub fn will_appear_count(&self) -> u32 {
+        self.wills.load(Ordering::SeqCst)
+    }
+    pub fn user_info_update_count(&self) -> u32 {
+        self.user_info_updates.load(Ordering::SeqCst)
+    }
+    /// `-viewDidAppear:` (IDA 0x53ffc): a pending navigate id starts the
+    /// game and clears; the `__44…` block enables btnHome (inline).
+    pub fn did_appear(&self, navigate_place: Option<i32>) {
+        self.bump(&self.appears);
+        if let Some(place) = navigate_place {
+            *self.pending_navigate.lock() = None;
+            *self.pending_launch.lock() = Some(place);
+            self.bump(&self.launch_calls);
+        }
+        self.appear_block();
+    }
+    pub fn appear_count(&self) -> u32 {
+        self.appears.load(Ordering::SeqCst)
+    }
+    /// `__44-viewDidAppear_block_invoke` (IDA 0x540c4): `setEnabled:1` on
+    /// btnHome.
+    pub fn appear_block(&self) {
+        self.home_enabled.store(true, Ordering::SeqCst);
+    }
+    pub fn is_home_enabled(&self) -> bool {
+        self.home_enabled.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x54104): back button hidden, overlay hidden,
+    /// "LaunchGame" label, UserAgent defaults, user info update, and the web
+    /// view docked sized from bounds/status-bar/orientation.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+        self.back_enabled.store(false, Ordering::SeqCst);
+        self.overlay_hidden.store(true, Ordering::SeqCst);
+        *self.loading_text.lock() = "LaunchGame".to_owned();
+        self.bump(&self.user_info_updates);
+        self.web_view_present.store(true, Ordering::SeqCst);
+        self.web_sized.store(true, Ordering::SeqCst);
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    pub fn loading_text(&self) -> String {
+        self.loading_text.lock().clone()
+    }
+    pub fn is_overlay_hidden(&self) -> bool {
+        self.overlay_hidden.load(Ordering::SeqCst)
+    }
+    /// `hideBackButton` (IDA 0x543dc) / `showBackButton` (IDA 0x543fc).
+    pub fn hide_back_button(&self) {
+        self.back_enabled.store(false, Ordering::SeqCst);
+    }
+    pub fn show_back_button(&self) {
+        self.back_enabled.store(true, Ordering::SeqCst);
+    }
+    pub fn is_back_enabled(&self) -> bool {
+        self.back_enabled.load(Ordering::SeqCst)
+    }
+    /// `-viewDidUnload` (IDA 0x5441c): the image views, btnBack and toolbar
+    /// nil out around super.
+    pub fn view_did_unload(&self) {
+        self.web_view_present.store(false, Ordering::SeqCst);
+        self.bump(&self.unloads);
+    }
+    pub fn unload_count(&self) -> u32 {
+        self.unloads.load(Ordering::SeqCst)
+    }
+    /// `showFullscreenText:` (IDA 0x5449c): the loading label takes the text
+    /// and the show block runs inline.
+    pub fn show_fullscreen(&self, text: &str) {
+        *self.fullscreen_text.lock() = text.to_owned();
+        self.fullscreen_visible.store(true, Ordering::SeqCst);
+    }
+    pub fn hide_fullscreen(&self) {
+        self.fullscreen_visible.store(false, Ordering::SeqCst);
+    }
+    pub fn is_fullscreen_visible(&self) -> bool {
+        self.fullscreen_visible.load(Ordering::SeqCst)
+    }
+    pub fn fullscreen_text(&self) -> String {
+        self.fullscreen_text.lock().clone()
+    }
+}
+static NAVBAR: std::sync::LazyLock<NavBarState> =
+    std::sync::LazyLock::new(NavBarState::default);
 /// Minimal `GameKeyboard` counterpart (`Client/iOS/GameKeyboard.*` ivars,
 /// IDA 0x4c6ac..0x4d220): the singleton, the hidden `UITextField` + its text
 /// / placeholder, the bound `shared_ptr<TextBox>`, and observable counters
@@ -7048,99 +7266,133 @@ pub fn stub_51fd0() -> crate::roblox_view::ObjCId {
 // 0x53b60 — -[RobloxNavBarViewController initWithCoder:]
 // type: RobloxNavBarViewController *__cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController initWithCoder:]")]
-pub fn stub_53b60() -> ! {
-    todo!("0x53b60 -[RobloxNavBarViewController initWithCoder:]")
+pub fn stub_53b60() -> Option<ControlId> {
+    // IDA 0x53b60 `-initWithCoder:`: super init (0x53b8c); on success a fresh
+    // `urlString`, nil web view (0x53bac..0x53bf0), and the start/did-leave
+    // game notification observers (0x53c02..tail).
+    NAVBAR.init_coder()
 }
 
 // 0x53cbc — -[RobloxNavBarViewController dealloc]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController dealloc]")]
-pub fn stub_53cbc() -> ! {
-    todo!("0x53cbc -[RobloxNavBarViewController dealloc]")
+pub fn stub_53cbc() {
+    // IDA 0x53cbc `-dealloc`: removes the observer (0x53cdc..0x53cee),
+    // clears the last-non-game controller (0x53d0a..0x53d1c), releases the
+    // thirteen subviews (0x53d3c..0x53df0+), drops the web view
+    // (0x53e10..0x53e18) and siblings, then super.
+    NAVBAR.dealloc();
 }
 
 // 0x53e6c — -[RobloxNavBarViewController setUrl:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setUrl:]")]
-pub fn stub_53e6c() -> ! {
-    todo!("0x53e6c -[RobloxNavBarViewController setUrl:]")
+pub fn stub_53e6c(value: &str) {
+    // IDA 0x53e6c `-setUrl:`: `urlString setString:` (0x53e86).
+    NAVBAR.set_url(value);
 }
 
 // 0x53e8c — -[RobloxNavBarViewController getUrl]
 // type: id __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController getUrl]")]
-pub fn stub_53e8c() -> ! {
-    todo!("0x53e8c -[RobloxNavBarViewController getUrl]")
+pub fn stub_53e8c() -> String {
+    // IDA 0x53e8c `-getUrl`: the `urlString` (0x53e9a).
+    NAVBAR.url()
 }
 
 // 0x53e9c — -[RobloxNavBarViewController gotStartLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotStartLeaveGameNotification:]")]
-pub fn stub_53e9c() -> ! {
-    todo!("0x53e9c -[RobloxNavBarViewController gotStartLeaveGameNotification:]")
+pub fn stub_53e9c(is_last: bool) {
+    // IDA 0x53e9c `gotStartLeaveGameNotification:`: the last non-game
+    // controller shows the "EndingGame" fullscreen text (0x53ebc..0x53f32).
+    NAVBAR.start_leave(is_last);
 }
 
 // 0x53f38 — -[RobloxNavBarViewController gotDidLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotDidLeaveGameNotification:]")]
-pub fn stub_53f38() -> ! {
-    todo!("0x53f38 -[RobloxNavBarViewController gotDidLeaveGameNotification:]")
+pub fn stub_53f38(is_last: bool, jump_place: Option<i32>) {
+    // IDA 0x53f38 `gotDidLeaveGameNotification:`: the last non-game
+    // controller hides the fullscreen text (0x53f56..0x53f7c); a pending
+    // `jumpToPlaceIDGameInProgress` launches and clears (0x53f8e..0x53fa8).
+    NAVBAR.did_leave(is_last, jump_place);
 }
 
 // 0x53fac — -[RobloxNavBarViewController viewWillAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewWillAppear:]")]
-pub fn stub_53fac() -> ! {
-    todo!("0x53fac -[RobloxNavBarViewController viewWillAppear:]")
+pub fn stub_53fac() {
+    // IDA 0x53fac `-viewWillAppear:`: super (0x53fd2), records self as
+    // current (0x53fec), updates the user info display (0x53ff2).
+    NAVBAR.will_appear();
 }
 
 // 0x53ffc — -[RobloxNavBarViewController viewDidAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewDidAppear:]")]
-pub fn stub_53ffc() -> ! {
-    todo!("0x53ffc -[RobloxNavBarViewController viewDidAppear:]")
+pub fn stub_53ffc(navigate_place: Option<i32>) {
+    // IDA 0x53ffc `-viewDidAppear:`: super (0x54026); a pending
+    // `jumpToPlaceIDNavigate` starts the game and clears (0x54036..0x54074),
+    // then the `__44…` block runs via `dispatch_async` (0x540a2..0x540b8,
+    // inline).
+    NAVBAR.did_appear(navigate_place);
 }
 
 // 0x540c4 — ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")]
-pub fn stub_540c4() -> ! {
-    todo!("0x540c4 ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke")
+pub fn stub_540c4() {
+    // IDA 0x540c4 `__44-viewDidAppear_block_invoke` (via `dispatch_async`,
+    // inline): `setEnabled:1` on btnHome (0x540d6..0x540d6+shim).
+    NAVBAR.appear_block();
 }
 
 // 0x54104 — -[RobloxNavBarViewController viewDidLoad]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidLoad]")]
-pub fn stub_54104() -> ! {
-    todo!("0x54104 -[RobloxNavBarViewController viewDidLoad]")
+pub fn stub_54104() {
+    // IDA 0x54104 `-viewDidLoad`: super (0x5412e); hides the back button,
+    // hides the loading overlay, sets the "LaunchGame" label, registers the
+    // UserAgent defaults, updates user info, and docks the web view sized
+    // from the bounds/status-bar/orientation (0x54140..0x543ca).
+    NAVBAR.view_did_load();
 }
 
 // 0x543dc — -[RobloxNavBarViewController hideBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideBackButton]")]
-pub fn stub_543dc() -> ! {
-    todo!("0x543dc -[RobloxNavBarViewController hideBackButton]")
+pub fn stub_543dc() {
+    // IDA 0x543dc `hideBackButton`: `setEnabled:0` on btnBack (0x543f8).
+    NAVBAR.hide_back_button();
 }
 
 // 0x543fc — -[RobloxNavBarViewController showBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController showBackButton]")]
-pub fn stub_543fc() -> ! {
-    todo!("0x543fc -[RobloxNavBarViewController showBackButton]")
+pub fn stub_543fc() {
+    // IDA 0x543fc `showBackButton`: `setEnabled:1` on btnBack (0x54418).
+    NAVBAR.show_back_button();
 }
 
 // 0x5441c — -[RobloxNavBarViewController viewDidUnload]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidUnload]")]
-pub fn stub_5441c() -> ! {
-    todo!("0x5441c -[RobloxNavBarViewController viewDidUnload]")
+pub fn stub_5441c() {
+    // IDA 0x5441c `-viewDidUnload`: nils the robux/tix image views
+    // (0x54434..0x54448), super (0x54464..0x5446a), then nils btnBack and
+    // the top toolbar (0x5447e..0x54492).
+    NAVBAR.view_did_unload();
 }
 
 // 0x5449c — -[RobloxNavBarViewController showFullscreenText:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController showFullscreenText:]")]
-pub fn stub_5449c() -> ! {
-    todo!("0x5449c -[RobloxNavBarViewController showFullscreenText:]")
+pub fn stub_5449c(text: &str) {
+    // IDA 0x5449c `showFullscreenText:`: the loading label takes the text
+    // (0x544b4..0x544c6), then the show block runs via `dispatch_async`
+    // (0x544f8..0x5450a, inline on the host).
+    NAVBAR.show_fullscreen(text);
 }
 
 // 0x54514 — ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke
@@ -13006,64 +13258,75 @@ pub fn stub_53a6c() -> f32 {
 // 0x53a80 — -[RobloxAnimatingPageViewController setForegroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundImageInitialX:]")]
-pub fn stub_53a80() -> ! {
-    todo!("0x53a80 -[RobloxAnimatingPageViewController setForegroundImageInitialX:]")
+pub fn stub_53a80(value: f32) {
+    // IDA 0x53a80 `-setForegroundImageInitialX:`: barriered store
+    // (0x53a88..0x53a92).
+    RAPVC.set_fg_init_x(value);
 }
 
 // 0x53a98 — -[RobloxAnimatingPageViewController backgroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundImageInitialX]")]
-pub fn stub_53a98() -> ! {
-    todo!("0x53a98 -[RobloxAnimatingPageViewController backgroundImageInitialX]")
+pub fn stub_53a98() -> f32 {
+    // IDA 0x53a98 `-backgroundImageInitialX`: barriered load (0x53aa4..0x53aaa).
+    RAPVC.bg_initial_x()
 }
 
 // 0x53aac — -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")]
-pub fn stub_53aac() -> ! {
-    todo!("0x53aac -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")
+pub fn stub_53aac(value: f32) {
+    // IDA 0x53aac `-setBackgroundImageInitialX:`: barriered store
+    // (0x53ab4..0x53abe).
+    RAPVC.set_bg_init_x(value);
 }
 
 // 0x53ac4 — -[RobloxAnimatingPageViewController animationView]
 // type: UIView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animationView]")]
-pub fn stub_53ac4() -> ! {
-    todo!("0x53ac4 -[RobloxAnimatingPageViewController animationView]")
+pub fn stub_53ac4() -> Option<ControlId> {
+    // IDA 0x53ac4 `-animationView`: the animation container view (0x53ad2).
+    RAPVC.animation_view()
 }
 
 // 0x53ad4 — -[RobloxAnimatingPageViewController setAnimationView:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setAnimationView:]")]
-pub fn stub_53ad4() -> ! {
-    todo!("0x53ad4 -[RobloxAnimatingPageViewController setAnimationView:]")
+pub fn stub_53ad4(view: Option<ControlId>) {
+    // IDA 0x53ad4 `-setAnimationView:`: retained assign (0x53af0).
+    RAPVC.set_animation_view(view);
 }
 
 // 0x53af8 — -[RobloxAnimatingPageViewController imgBackground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgBackground]")]
-pub fn stub_53af8() -> ! {
-    todo!("0x53af8 -[RobloxAnimatingPageViewController imgBackground]")
+pub fn stub_53af8() -> Option<ControlId> {
+    // IDA 0x53af8 `-imgBackground`: the background image view (0x53b06).
+    RAPVC.bg_image()
 }
 
 // 0x53b08 — -[RobloxAnimatingPageViewController setImgBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgBackground:]")]
-pub fn stub_53b08() -> ! {
-    todo!("0x53b08 -[RobloxAnimatingPageViewController setImgBackground:]")
+pub fn stub_53b08(view: Option<ControlId>) {
+    // IDA 0x53b08 `-setImgBackground:`: retained assign (0x53b24).
+    RAPVC.set_bg_image(view);
 }
 
 // 0x53b2c — -[RobloxAnimatingPageViewController imgForeground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgForeground]")]
-pub fn stub_53b2c() -> ! {
-    todo!("0x53b2c -[RobloxAnimatingPageViewController imgForeground]")
+pub fn stub_53b2c() -> Option<ControlId> {
+    // IDA 0x53b2c `-imgForeground`: the foreground image view (0x53b3a).
+    RAPVC.fg_image()
 }
 
 // 0x53b3c — -[RobloxAnimatingPageViewController setImgForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgForeground:]")]
-pub fn stub_53b3c() -> ! {
-    todo!("0x53b3c -[RobloxAnimatingPageViewController setImgForeground:]")
+pub fn stub_53b3c(view: Option<ControlId>) {
+    // IDA 0x53b3c `-setImgForeground:`: retained assign (0x53b58).
+    RAPVC.set_fg_image(view);
 }
 
 // 0x55664 — -[StoreManager init]

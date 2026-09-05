@@ -14,15 +14,26 @@ const _: () = {
 // 0x540f0 — ___copy_helper_block__15
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__15")]
-pub fn stub_540f0() -> ! {
-    todo!("0x540f0 ___copy_helper_block__15")
+pub unsafe fn copy_block_capture_540f0(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x540f0: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the next_h single-capture copies.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x540fc — ___destroy_helper_block__15
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__15")]
-pub fn stub_540fc() -> ! {
-    todo!("0x540fc ___destroy_helper_block__15")
+pub unsafe fn destroy_block_capture_540fc(block: *mut core::ffi::c_void) {
+// IDA 0x540fc: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the next_h single-capture destroys.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x54594 — ___copy_helper_block_134
