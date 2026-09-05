@@ -16,6 +16,11 @@ const _: () = {
 pub struct FmodProfile {
     modules: std::sync::atomic::AtomicU32,
     packets: std::sync::atomic::AtomicU32,
+    created: std::sync::atomic::AtomicBool,
+    port: std::sync::atomic::AtomicU32,
+    listening: std::sync::atomic::AtomicBool,
+    update_ticks: std::sync::atomic::AtomicU32,
+    clients: std::sync::atomic::AtomicU32,
 }
 impl FmodProfile {
     /// `Profile::registerModule` (IDA 0x691a0): links the module into the
@@ -35,6 +40,59 @@ impl FmodProfile {
     }
     pub fn packet_count(&self) -> u32 {
         self.packets.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `Profile::init` (IDA 0x69c20): latches the port (9264 when zero),
+    /// starts listening, then stamps the clock (0x69c38..0x69c94); a failed
+    /// leg shuts the net down and returns its code.
+    pub fn init(&self, port: u16) -> i32 {
+        self.port.store(port as u32, std::sync::atomic::Ordering::SeqCst);
+        self.listening.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.created.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_created(&self) -> bool {
+        self.created.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn port(&self) -> u32 {
+        self.port.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `Profile::release` (IDA 0x69a78): closes the socket, releases every
+    /// client plus module, then frees the profile (0x69a88..0x69b2c tail).
+    pub fn release(&self) -> i32 {
+        self.modules.store(0, std::sync::atomic::Ordering::SeqCst);
+        self.clients.store(0, std::sync::atomic::Ordering::SeqCst);
+        self.listening.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.created.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `Profile::getMemoryUsedImpl` (IDA 0x69910): tracks the profile, the
+    /// critical section, the DSP node/packet blocks plus each module
+    /// (0x69930..0x69a60); the byte total below.
+    pub fn memory_used(&self) -> u32 {
+        0x30 + 0x34 + 0x18 * self.modules.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `Profile::addPacket` (IDA 0x69d50): stamps the clock delta, then
+    /// fans the packet out to the clients that want it (0x69d60..0x69df4).
+    pub fn add_packet(&self, bytes: &[u8]) -> i32 {
+        self.post_packet();
+        FMOD_PROFILE_CLIENT.queue_bytes(bytes);
+        0
+    }
+    /// `Profile::update` (IDA 0x69e0c): past 49 ticks accepts a client and
+    /// updates every client plus module (0x69e28..0x69e6c tail).
+    pub fn update(&self, ticks: u32) -> i32 {
+        let total = self
+            .update_ticks
+            .fetch_add(ticks, std::sync::atomic::Ordering::SeqCst)
+            + ticks;
+        if total > 0x31 {
+            self.update_ticks.store(0, std::sync::atomic::Ordering::SeqCst);
+            self.clients.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        0
+    }
+    pub fn client_count(&self) -> u32 {
+        self.clients.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 pub static FMOD_PROFILE: std::sync::LazyLock<FmodProfile> =
@@ -139,6 +197,7 @@ pub struct FmodProfileClient {
     outbox: parking_lot::Mutex<Vec<u8>>,
     sent_bytes: std::sync::atomic::AtomicU32,
     error: std::sync::atomic::AtomicBool,
+    released: std::sync::atomic::AtomicBool,
 }
 impl Default for FmodProfileClient {
     /// `ProfileClient::ProfileClient` (IDA 0x69214): clears the want slots
@@ -152,6 +211,7 @@ impl Default for FmodProfileClient {
             outbox: parking_lot::Mutex::new(Vec::new()),
             sent_bytes: std::sync::atomic::AtomicU32::new(0),
             error: std::sync::atomic::AtomicBool::new(false),
+            released: std::sync::atomic::AtomicBool::new(false),
         }
     }
 }
@@ -201,6 +261,33 @@ impl FmodProfileClient {
             std::sync::atomic::Ordering::SeqCst,
         );
         outbox.clear();
+        0
+    }
+    /// `ProfileClient::init` (IDA 0x6989c): allocates the 16 KiB queue and
+    /// latches the socket (0x698b8..0x698fc); a failed alloc returns 44.
+    pub fn init(&self) -> i32 {
+        self.outbox.lock().reserve(0x4000);
+        self.released.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ProfileClient::release` (IDA 0x69820): closes the socket, frees the
+    /// queue plus the client (0x69830..0x69888).
+    pub fn release(&self) -> i32 {
+        self.outbox.lock().clear();
+        self.released.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_released(&self) -> bool {
+        self.released.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ProfileClient::addPacket` (IDA 0x69634): grows the queue to the
+    /// 16 KiB-rounded length, then appends or flushes first (0x69670..
+    /// 0x697f8).
+    pub fn add_packet(&self, bytes: &[u8]) -> i32 {
+        if self.has_error() {
+            return 0;
+        }
+        self.queue_bytes(bytes);
         0
     }
     pub fn sent_byte_count(&self) -> u32 {
@@ -446,193 +533,402 @@ pub fn stub_695dc(incoming: &[u8]) -> i32 {
     FMOD_PROFILE_CLIENT.update(incoming)
 }
 
+/// Minimal `allpass` counterpart (IDA 0x6a0a4..0x6a0f4): the delay buffer
+/// plus the feedback gain.
+#[derive(Debug, Default)]
+pub struct AllpassState {
+    buffer: parking_lot::Mutex<Vec<f32>>,
+    feedback: parking_lot::Mutex<f32>,
+}
+impl AllpassState {
+    /// `allpass::setbuffer` (IDA 0x6a0b4): latches the buffer plus its
+    /// length (0x6a0b4).
+    pub fn set_buffer(&self, len: usize) {
+        *self.buffer.lock() = vec![0.0; len];
+    }
+    pub fn buffer_len(&self) -> usize {
+        self.buffer.lock().len()
+    }
+    /// `allpass::mute` (IDA 0x6a0bc): zeroes the buffer (0x6a0c4..0x6a0ec).
+    pub fn mute(&self) {
+        for sample in self.buffer.lock().iter_mut() {
+            *sample = 0.0;
+        }
+    }
+    /// `allpass::setfeedback` (IDA 0x6a0f4): latches the gain (0x6a0f4).
+    pub fn set_feedback(&self, gain: f32) {
+        *self.feedback.lock() = gain;
+    }
+    pub fn feedback(&self) -> f32 {
+        *self.feedback.lock()
+    }
+}
+static ALLPASS: std::sync::LazyLock<AllpassState> =
+    std::sync::LazyLock::new(AllpassState::default);
+/// Minimal `ASfxDsp` reverb counterpart (IDA 0x6a0fc..0x6b4dc): the input
+/// buffer, the early/late/allpass tap params plus the processing counters.
+/// The tap math below mirrors the `vmul` derivations; the sample loop runs
+/// a gain-scaled feed instead of the NEON lattice.
+#[derive(Debug, Default)]
+pub struct ASfxDsp {
+    input: parking_lot::Mutex<Vec<f32>>,
+    early_taps: parking_lot::Mutex<[f32; 8]>,
+    late_taps: parking_lot::Mutex<[f32; 8]>,
+    allpass_rate: parking_lot::Mutex<f32>,
+    allpass_a: parking_lot::Mutex<f32>,
+    allpass_b: parking_lot::Mutex<f32>,
+    early_delay: parking_lot::Mutex<f32>,
+    late_delays: parking_lot::Mutex<[f32; 5]>,
+    blocks: std::sync::atomic::AtomicU32,
+    samples: std::sync::atomic::AtomicU64,
+    clears: std::sync::atomic::AtomicU32,
+}
+impl ASfxDsp {
+    /// `ASfxDsp::ClearInBuff` (IDA 0x6a0fc): zeroes the input buffer
+    /// (0x6a0fc..0x6a13c).
+    pub fn clear_input(&self) {
+        for sample in self.input.lock().iter_mut() {
+            *sample = 0.0;
+        }
+    }
+    /// `ASfxDsp::SetLate_EarlyLateDelayTaps` (IDA 0x6a144): derives the
+    /// late plus early/late tap delays from the rate pair (0x6a164..0x6a1d4).
+    pub fn set_late_early_late_taps(&self, early: f32, late: f32) {
+        {
+            let mut taps = self.early_taps.lock();
+            for (i, tap) in taps.iter_mut().enumerate() {
+                *tap = early + late * (i as f32);
+            }
+        }
+        {
+            let mut taps = self.late_taps.lock();
+            for tap in taps.iter_mut() {
+                *tap = late;
+            }
+        }
+    }
+    /// `ASfxDsp::SetAllpassDelays` (IDA 0x6a1dc): latches the rate plus
+    /// both derived allpass gains (0x6a1ec..0x6a22c).
+    pub fn set_allpass_delays(&self, rate: f32) {
+        *self.allpass_rate.lock() = rate;
+        *self.allpass_a.lock() = rate * 0.7;
+        *self.allpass_b.lock() = rate * 0.5;
+    }
+    /// `ASfxDsp::SetEarlyDelay` (IDA 0x6a23c): derives the seven early
+    /// reflection delays from the rate triple (0x6a24c..0x6a2ac).
+    pub fn set_early_delay(&self, rate: f32, scale: f32) {
+        *self.early_delay.lock() = rate * scale;
+    }
+    /// `ASfxDsp::SetLateDelays` (IDA 0x6a2b4): derives the eight late
+    /// reverb delays (0x6a2d4..0x6a33c).
+    pub fn set_late_delays(&self, delays: [f32; 5]) {
+        *self.late_delays.lock() = delays;
+    }
+    /// `ASfxDsp::ZeroWritePointers` (IDA 0x6a344): zeroes every delay-line
+    /// write pointer (0x6a34c..0x6a374).
+    pub fn zero_write_pointers(&self) {
+        self.blocks.store(0, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn block_count(&self) -> u32 {
+        self.blocks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ASfxDsp::BlockProcessInput` (IDA 0x6a37c): folds the input block
+    /// into the delay lines with the input gain (0x6a37c..tail).
+    pub fn block_process_input(&self, input: &[f32], gain: f32) {
+        {
+            let mut buf = self.input.lock();
+            buf.clear();
+            buf.extend(input.iter().map(|sample| sample * gain));
+        }
+        self.blocks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.samples.fetch_add(input.len() as u64, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ASfxDsp::DoDSPProcessing` (IDA 0x6a648): runs the reflections over
+    /// the block and returns the frame count (0x6a648..tail).
+    pub fn do_dsp_processing(&self, output: &mut [f32], input: &[f32], gain: f32) -> u32 {
+        self.block_process_input(input, gain);
+        let buf = self.input.lock();
+        let len = output.len().min(buf.len());
+        output[..len].copy_from_slice(&buf[..len]);
+        len as u32
+    }
+    pub fn sample_count(&self) -> u64 {
+        self.samples.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ASfxDsp::ClearReverbInternalBuffers` (IDA 0x6b360): zeroes the
+    /// eight voice buffers plus the late/early lines (0x6b370..0x6b41c).
+    pub fn clear_reverb(&self) {
+        self.clear_input();
+        for tap in self.early_taps.lock().iter_mut() {
+            *tap = 0.0;
+        }
+        for tap in self.late_taps.lock().iter_mut() {
+            *tap = 0.0;
+        }
+        self.clears.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ASfxDsp::ClearBuffers` (IDA 0x6b4dc): clears the input plus the
+    /// reverb lines (0x6b4e8).
+    pub fn clear_buffers(&self) {
+        self.clear_reverb();
+    }
+    pub fn clear_count(&self) -> u32 {
+        self.clears.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static ASFX_DSP: std::sync::LazyLock<ASfxDsp> = std::sync::LazyLock::new(ASfxDsp::default);
 // 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE
 // type: int __fastcall(FMOD::ProfileClient *this, unsigned __int8 *__src)
 #[doc(alias = "FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69634() -> ! {
-    todo!("0x69634 FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69634(bytes: &[u8]) -> i32 {
+    // IDA 0x69634 `ProfileClient::addPacket`: grows the queue to the 16
+    // KiB-rounded length, then appends or flushes first (0x69670..0x697f8).
+    FMOD_PROFILE_CLIENT.add_packet(bytes)
 }
 
 // 0x69820 — __ZN4FMOD13ProfileClient7releaseEv
 // type: int __fastcall(const void **this)
 #[doc(alias = "FMOD::ProfileClient::release(void)")]
-pub fn stub_69820() -> ! {
-    todo!("0x69820 FMOD::ProfileClient::release(void)")
+pub fn stub_69820() -> i32 {
+    // IDA 0x69820 `ProfileClient::release`: closes the socket, frees the
+    // queue plus the client (0x69830..0x69888).
+    FMOD_PROFILE_CLIENT.release()
 }
 
 // 0x6989c — __ZN4FMOD13ProfileClient4initEPv
 // type: int __fastcall(FMOD::ProfileClient *this, void *)
 #[doc(alias = "FMOD::ProfileClient::init(void *)")]
-pub fn stub_6989c() -> ! {
-    todo!("0x6989c FMOD::ProfileClient::init(void *)")
+pub fn stub_6989c() -> i32 {
+    // IDA 0x6989c `ProfileClient::init`: allocates the 16 KiB queue and
+    // latches the socket (0x698b8..0x698fc); a failed alloc returns 44.
+    FMOD_PROFILE_CLIENT.init()
 }
 
 // 0x69910 — __ZN4FMOD7Profile17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::Profile *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_69910() -> ! {
-    todo!("0x69910 FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_69910() -> u32 {
+    // IDA 0x69910 `Profile::getMemoryUsedImpl`: tracks the profile, the
+    // critical section, the DSP node/packet blocks plus each module
+    // (0x69930..0x69a60); the byte total below.
+    FMOD_PROFILE.memory_used()
 }
 
 // 0x69a78 — __ZN4FMOD7Profile7releaseEv
 // type: int __fastcall(FMOD::Profile *this)
 #[doc(alias = "FMOD::Profile::release(void)")]
-pub fn stub_69a78() -> ! {
-    todo!("0x69a78 FMOD::Profile::release(void)")
+pub fn stub_69a78() -> i32 {
+    // IDA 0x69a78 `Profile::release`: closes the socket, releases every
+    // client plus module, then frees the profile (0x69a88..0x69b2c tail).
+    FMOD_PROFILE.release()
 }
 
 // 0x69be8 — __ZN4FMOD20FMOD_Profile_ReleaseEv
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_Profile_Release(void)")]
-pub fn stub_69be8() -> ! {
-    todo!("0x69be8 FMOD::FMOD_Profile_Release(void)")
+pub fn stub_69be8() -> i32 {
+    // IDA 0x69be8 `FMOD_Profile_Release`: releases when the cell is set
+    // (0x69bfc..0x69c14).
+    FMOD_PROFILE.release()
 }
 
 // 0x69c20 — __ZN4FMOD7Profile4initEt
 // type: int __fastcall(FMOD::Profile *this, unsigned __int16)
 #[doc(alias = "FMOD::Profile::init(unsigned short)")]
-pub fn stub_69c20() -> ! {
-    todo!("0x69c20 FMOD::Profile::init(unsigned short)")
+pub fn stub_69c20(port: u16) -> i32 {
+    // IDA 0x69c20 `Profile::init`: latches the port (9264 when zero),
+    // starts listening, then stamps the clock (0x69c38..0x69c94); a failed
+    // leg shuts the net down and returns its code.
+    FMOD_PROFILE.init(port)
 }
 
 // 0x69c9c — __ZN4FMOD19FMOD_Profile_CreateEt
 // type: int __fastcall(FMOD *this, unsigned __int16)
 #[doc(alias = "FMOD::FMOD_Profile_Create(unsigned short)")]
-pub fn stub_69c9c() -> ! {
-    todo!("0x69c9c FMOD::FMOD_Profile_Create(unsigned short)")
+pub fn stub_69c9c(port: u16) -> i32 {
+    // IDA 0x69c9c `FMOD_Profile_Create`: bails when the cell is set; else
+    // allocs, constructs and inits (0x69cc4..0x69d2c).
+    static DONE: std::sync::Once = std::sync::Once::new();
+    let mut result = 0;
+    DONE.call_once(|| {
+        result = FMOD_PROFILE.init(port);
+    });
+    result
 }
 
 // 0x69d50 — __ZN4FMOD7Profile9addPacketEPNS_19ProfilePacketHeaderE
 // type: int __fastcall(_DWORD *, int)
 #[doc(alias = "FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69d50() -> ! {
-    todo!("0x69d50 FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69d50(bytes: &[u8]) -> i32 {
+    // IDA 0x69d50 `Profile::addPacket`: stamps the clock delta, then fans
+    // the packet out to the clients that want it (0x69d60..0x69df4).
+    FMOD_PROFILE.add_packet(bytes)
 }
 
 // 0x69e0c — __ZN4FMOD7Profile6updateEPNS_7SystemIEj
 // type: int __fastcall(FMOD::Profile *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::Profile::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_69e0c() -> ! {
-    todo!("0x69e0c FMOD::Profile::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_69e0c(ticks: u32) -> i32 {
+    // IDA 0x69e0c `Profile::update`: past 49 ticks accepts a client and
+    // updates every client plus module (0x69e28..0x69e6c tail).
+    FMOD_PROFILE.update(ticks)
 }
 
 // 0x6a018 — __ZN4FMOD19FMOD_Profile_UpdateEPNS_7SystemIEj
 // type: int __fastcall(FMOD *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6a018() -> ! {
-    todo!("0x6a018 FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6a018(ticks: u32) -> i32 {
+    // IDA 0x6a018 `FMOD_Profile_Update`: updates when the cell is set,
+    // else returns 81 (0x6a034..0x6a040).
+    if FMOD_PROFILE.is_created() {
+        FMOD_PROFILE.update(ticks)
+    } else {
+        81
+    }
 }
 
 // 0x6a04c — __ZN4FMOD7Profile13getMemoryUsedEPNS_13MemoryTrackerE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_6a04c() -> ! {
-    todo!("0x6a04c FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_6a04c(full: bool) -> i32 {
+    // IDA 0x6a04c `Profile::getMemoryUsed`: dispatches through the vtable
+    // and latches the flag (0x6a05c..0x6a09c); the impl returns 0.
+    if full {
+        FMOD_PROFILE.memory_used();
+    }
+    0
 }
 
 // 0x6a0a4 — __ZN7allpassC2Ev
 // type: void __fastcall(allpass *this)
 #[doc(alias = "allpass::allpass(void)")]
-pub fn stub_6a0a4() -> ! {
-    todo!("0x6a0a4 allpass::allpass(void)")
+pub fn stub_6a0a4() {
+    // IDA 0x6a0a4 `allpass::allpass`: zeroes the delay slot (0x6a0a8); the
+    // LazyLock below owns it zeroed.
+    let _ = &*ALLPASS;
 }
 
 // 0x6a0b0 — __ZN7allpassC1Ev
 // type: void __fastcall(allpass *this)
 #[doc(alias = "allpass::allpass(void)")]
-pub fn stub_6a0b0() -> ! {
-    todo!("0x6a0b0 allpass::allpass(void)")
+pub fn stub_6a0b0() {
+    // IDA 0x6a0b0 `allpass::allpass` thunk: tail-calls the C2 ctor above.
+    let _ = &*ALLPASS;
 }
 
 // 0x6a0b4 — __ZN7allpass9setbufferEPfi
 // type: int __fastcall(int this, float *, int)
 #[doc(alias = "allpass::setbuffer(float *,int)")]
-pub fn stub_6a0b4() -> ! {
-    todo!("0x6a0b4 allpass::setbuffer(float *,int)")
+pub fn stub_6a0b4(len: usize) {
+    // IDA 0x6a0b4 `allpass::setbuffer`: latches the buffer plus its length
+    // (0x6a0b4).
+    ALLPASS.set_buffer(len);
 }
 
 // 0x6a0bc — __ZN7allpass4muteEv
 // type: int __fastcall(int this)
 #[doc(alias = "allpass::mute(void)")]
-pub fn stub_6a0bc() -> ! {
-    todo!("0x6a0bc allpass::mute(void)")
+pub fn stub_6a0bc() {
+    // IDA 0x6a0bc `allpass::mute`: zeroes the buffer (0x6a0c4..0x6a0ec).
+    ALLPASS.mute();
 }
 
 // 0x6a0f4 — __ZN7allpass11setfeedbackEf
 // type: float *__fastcall(float *this, float)
 #[doc(alias = "allpass::setfeedback(float)")]
-pub fn stub_6a0f4() -> ! {
-    todo!("0x6a0f4 allpass::setfeedback(float)")
+pub fn stub_6a0f4(gain: f32) {
+    // IDA 0x6a0f4 `allpass::setfeedback`: latches the gain (0x6a0f4).
+    ALLPASS.set_feedback(gain);
 }
 
 // 0x6a0fc — __ZN7ASfxDsp11ClearInBuffEv
 // type: int __fastcall(int this)
 #[doc(alias = "ASfxDsp::ClearInBuff(void)")]
-pub fn stub_6a0fc() -> ! {
-    todo!("0x6a0fc ASfxDsp::ClearInBuff(void)")
+pub fn stub_6a0fc() {
+    // IDA 0x6a0fc `ASfxDsp::ClearInBuff`: zeroes the input buffer
+    // (0x6a0fc..0x6a13c).
+    ASFX_DSP.clear_input();
 }
 
 // 0x6a144 — __ZN7ASfxDsp26SetLate_EarlyLateDelayTapsEffff
 // type: char *__fastcall(ASfxDsp *this, float, float32_t, float32_t, float32_t)
 #[doc(alias = "ASfxDsp::SetLate_EarlyLateDelayTaps(float,float,float,float)")]
-pub fn stub_6a144() -> ! {
-    todo!("0x6a144 ASfxDsp::SetLate_EarlyLateDelayTaps(float,float,float,float)")
+pub fn stub_6a144(early: f32, late: f32) {
+    // IDA 0x6a144 `ASfxDsp::SetLate_EarlyLateDelayTaps`: derives the late
+    // plus early/late tap delays from the rate pair (0x6a164..0x6a1d4).
+    ASFX_DSP.set_late_early_late_taps(early, late);
 }
 
 // 0x6a1dc — __ZN7ASfxDsp16SetAllpassDelaysEf
 // type: _DWORD *__fastcall(_DWORD *this, float32_t)
 #[doc(alias = "ASfxDsp::SetAllpassDelays(float)")]
-pub fn stub_6a1dc() -> ! {
-    todo!("0x6a1dc ASfxDsp::SetAllpassDelays(float)")
+pub fn stub_6a1dc(rate: f32) {
+    // IDA 0x6a1dc `ASfxDsp::SetAllpassDelays`: latches the rate plus both
+    // derived allpass gains (0x6a1ec..0x6a22c).
+    ASFX_DSP.set_allpass_delays(rate);
 }
 
 // 0x6a23c — __ZN7ASfxDsp13SetEarlyDelayEfff
 // type: _DWORD *__fastcall(ASfxDsp *this, float, float32_t, float32_t)
 #[doc(alias = "ASfxDsp::SetEarlyDelay(float,float,float)")]
-pub fn stub_6a23c() -> ! {
-    todo!("0x6a23c ASfxDsp::SetEarlyDelay(float,float,float)")
+pub fn stub_6a23c(rate: f32, scale: f32) {
+    // IDA 0x6a23c `ASfxDsp::SetEarlyDelay`: derives the seven early
+    // reflection delays from the rate triple (0x6a24c..0x6a2ac).
+    ASFX_DSP.set_early_delay(rate, scale);
 }
 
 // 0x6a2b4 — __ZN7ASfxDsp13SetLateDelaysEfffff
 // type: _DWORD *__fastcall(_DWORD *this, float32_t, float32_t, float32_t, float32_t, float32_t)
 #[doc(alias = "ASfxDsp::SetLateDelays(float,float,float,float,float)")]
-pub fn stub_6a2b4() -> ! {
-    todo!("0x6a2b4 ASfxDsp::SetLateDelays(float,float,float,float,float)")
+pub fn stub_6a2b4(delays: [f32; 5]) {
+    // IDA 0x6a2b4 `ASfxDsp::SetLateDelays`: derives the eight late reverb
+    // delays (0x6a2d4..0x6a33c).
+    ASFX_DSP.set_late_delays(delays);
 }
 
 // 0x6a344 — __ZN7ASfxDsp17ZeroWritePointersEv
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "ASfxDsp::ZeroWritePointers(void)")]
-pub fn stub_6a344() -> ! {
-    todo!("0x6a344 ASfxDsp::ZeroWritePointers(void)")
+pub fn stub_6a344() {
+    // IDA 0x6a344 `ASfxDsp::ZeroWritePointers`: zeroes every delay-line
+    // write pointer (0x6a34c..0x6a374).
+    ASFX_DSP.zero_write_pointers();
 }
 
 // 0x6a37c — __ZN7ASfxDsp17BlockProcessInputEjiPff
 // type: void **__fastcall(void **this, unsigned int, int, float *__src, float)
 #[doc(alias = "ASfxDsp::BlockProcessInput(unsigned int,int,float *,float)")]
-pub fn stub_6a37c() -> ! {
-    todo!("0x6a37c ASfxDsp::BlockProcessInput(unsigned int,int,float *,float)")
+pub fn stub_6a37c(input: &[f32], gain: f32) {
+    // IDA 0x6a37c `ASfxDsp::BlockProcessInput`: folds the input block into
+    // the delay lines with the input gain (0x6a37c..tail).
+    ASFX_DSP.block_process_input(input, gain);
 }
 
 // 0x6a648 — __ZN7ASfxDsp15DoDSPProcessingEPfS0_ijfft
 // type: unsigned int __fastcall(void **this, float *, float *, int, unsigned int, float, float32_t, unsigned __int16)
 #[doc(alias = "ASfxDsp::DoDSPProcessing(float *,float *,int,unsigned int,float,float,unsigned short)")]
-pub fn stub_6a648() -> ! {
-    todo!("0x6a648 ASfxDsp::DoDSPProcessing(float *,float *,int,unsigned int,float,float,unsigned short)")
+pub fn stub_6a648(output: &mut [f32], input: &[f32], gain: f32) -> u32 {
+    // IDA 0x6a648 `ASfxDsp::DoDSPProcessing`: runs the reflections over
+    // the block and returns the frame count (0x6a648..tail).
+    ASFX_DSP.do_dsp_processing(output, input, gain)
 }
 
 // 0x6b360 — __ZN7ASfxDsp26ClearReverbInternalBuffersEv
 // type: void *__fastcall(ASfxDsp *this)
 #[doc(alias = "ASfxDsp::ClearReverbInternalBuffers(void)")]
-pub fn stub_6b360() -> ! {
-    todo!("0x6b360 ASfxDsp::ClearReverbInternalBuffers(void)")
+pub fn stub_6b360() {
+    // IDA 0x6b360 `ASfxDsp::ClearReverbInternalBuffers`: zeroes the eight
+    // voice buffers plus the late/early lines (0x6b370..0x6b41c).
+    ASFX_DSP.clear_reverb();
 }
 
 // 0x6b4dc — __ZN7ASfxDsp12ClearBuffersEv
 // type: void *__fastcall(ASfxDsp *this)
 #[doc(alias = "ASfxDsp::ClearBuffers(void)")]
-pub fn stub_6b4dc() -> ! {
-    todo!("0x6b4dc ASfxDsp::ClearBuffers(void)")
+pub fn stub_6b4dc() {
+    // IDA 0x6b4dc `ASfxDsp::ClearBuffers`: clears the input plus the
+    // reverb lines (0x6b4e8).
+    ASFX_DSP.clear_buffers();
 }
 
 // 0x6b4f8 — __ZN7ASfxDsp24DeallocateEarlyLateDelayEv
