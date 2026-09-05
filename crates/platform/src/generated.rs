@@ -1205,6 +1205,254 @@ impl GameMenuState {
 }
 static GAME_MENU: std::sync::LazyLock<GameMenuState> =
     std::sync::LazyLock::new(GameMenuState::default);
+impl GameMenuState {
+    /// `__20-[GameMenu hideMenu:]_block_invoke99` (IDA 0x517a8, completion):
+    /// `setHidden:1` (0x517be) then `removeFromSuperview` (shim).
+    pub fn hide_completion(&self) {
+        self.hidden.store(true, Ordering::SeqCst);
+        *self.parent.lock() = None;
+    }
+    /// `-[GameMenu .cxx_construct]` (IDA 0x517ec): returns self.
+    pub fn construct(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(GAME_MENU_ID)
+    }
+}
+/// Host id standing in for the `MenuButton` `self`.
+const MENU_BUTTON_ID: ControlId = 9;
+/// Host id standing in for the `RobloxAnimatingPageViewController` `self`.
+const RAPVC_ID: ControlId = 10;
+/// Minimal `MenuButton` counterpart (IDA 0x51a04..0x51b44): frame, the owned
+/// `GameMenu`, the doMenuSwitch: target and the enabled latch.
+#[derive(Debug, Default)]
+pub struct MenuButtonState {
+    initialized: AtomicBool,
+    frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    has_menu: AtomicBool,
+    targets: AtomicU32,
+    enabled: AtomicBool,
+    releases: AtomicU32,
+}
+impl MenuButtonState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[MenuButton init:]` (IDA 0x51a04): super init (0x51a2c); on success
+    /// `setFrame:` (0x51a50), the leave-button image (0x51a76..0x51a8c), a
+    /// fresh `GameMenu` via `init:` with self as button (0x51aa8..0x51ade),
+    /// and the doMenuSwitch: target for event 64 (0x51aec).
+    pub fn init_button(&self, frame: (f32, f32, f32, f32)) -> Option<ControlId> {
+        *self.frame.lock() = frame;
+        GAME_MENU.init_menu(Some(MENU_BUTTON_ID));
+        self.has_menu.store(true, Ordering::SeqCst);
+        self.targets.store(1, Ordering::SeqCst);
+        self.enabled.store(true, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(MENU_BUTTON_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn frame(&self) -> (f32, f32, f32, f32) {
+        *self.frame.lock()
+    }
+    /// `-[MenuButton dealloc]` (IDA 0x51af8): `menu` release (0x51b1a), then
+    /// super `dealloc` (0x51b3c).
+    pub fn dealloc(&self) {
+        self.has_menu.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-[MenuButton doMenuSwitch:]` (IDA 0x51b44): `inverseMenuState:` over
+    /// the superview (0x51b66..0x51b7a), then `setEnabled:` to NOT `isShown`
+    /// (0x51ba2..0x51bac).
+    pub fn do_menu_switch(&self, superview: Option<ControlId>) {
+        GAME_MENU.inverse();
+        let _ = superview;
+        self.enabled.store(!GAME_MENU.is_shown(), Ordering::SeqCst);
+    }
+    pub fn is_enabled(&self) -> bool {
+        self.enabled.load(Ordering::SeqCst)
+    }
+}
+static MENU_BUTTON: std::sync::LazyLock<MenuButtonState> =
+    std::sync::LazyLock::new(MenuButtonState::default);
+/// Minimal `RobloxAnimatingPageViewController` counterpart (IDA
+/// 0x52178..0x52aec): warning/looping flags, stored initial X values, the
+/// pan state and observable counters for the image-view steps out of slice.
+/// `animateWithDuration:` blocks run inline on the host.
+#[derive(Debug, Default)]
+pub struct RapvcState {
+    initialized: AtomicBool,
+    mem_warning: AtomicBool,
+    anim_looping: AtomicBool,
+    bg_init_x: parking_lot::Mutex<f32>,
+    fg_init_x: parking_lot::Mutex<f32>,
+    observer_regs: AtomicU32,
+    has_copies: AtomicBool,
+    panning: AtomicBool,
+    loads: AtomicU32,
+    appears: AtomicU32,
+    disappears: AtomicU32,
+    warnings: AtomicU32,
+    pan_runs: AtomicU32,
+    pan_stops: AtomicU32,
+    anim_runs: AtomicU32,
+    anim_removes: AtomicU32,
+    last_tween: parking_lot::Mutex<f32>,
+    releases: AtomicU32,
+}
+impl RapvcState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x52178): super init; zeroes the
+    /// warning/looping flags and initial X values (0x521c4..0x521fe) and
+    /// registers the background/foreground observers (0x5220a..0x52270).
+    pub fn init_coder(&self) -> Option<ControlId> {
+        self.mem_warning.store(false, Ordering::SeqCst);
+        self.anim_looping.store(false, Ordering::SeqCst);
+        *self.bg_init_x.lock() = 0.0;
+        *self.fg_init_x.lock() = 0.0;
+        self.observer_regs.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(RAPVC_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn observer_count(&self) -> u32 {
+        self.observer_regs.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x52280): without a memory warning releases the
+    /// animation view, both images and both copies (0x52294..0x52310).
+    pub fn dealloc(&self) {
+        if !self.mem_warning.load(Ordering::SeqCst) {
+            self.has_copies.store(false, Ordering::SeqCst);
+        }
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `appInBackground:` (IDA 0x5233c): stops the background pan.
+    pub fn backgrounded(&self) {
+        self.panning.store(false, Ordering::SeqCst);
+        self.bump(&self.pan_stops);
+    }
+    /// `appInForeground:` (IDA 0x5234c): a loaded view restarts the pan.
+    pub fn foregrounded(&self, view_loaded: bool) {
+        if !view_loaded {
+            return;
+        }
+        self.panning.store(true, Ordering::SeqCst);
+        self.bump(&self.pan_runs);
+    }
+    pub fn is_panning(&self) -> bool {
+        self.panning.load(Ordering::SeqCst)
+    }
+    pub fn pan_run_count(&self) -> u32 {
+        self.pan_runs.load(Ordering::SeqCst)
+    }
+    pub fn pan_stop_count(&self) -> u32 {
+        self.pan_stops.load(Ordering::SeqCst)
+    }
+    /// `removeViewAndAnimation:` (IDA 0x52384): animation strip +
+    /// `removeFromSuperview` + `release`.
+    pub fn remove_view(&self) {
+        self.bump(&self.anim_removes);
+    }
+    pub fn anim_remove_count(&self) -> u32 {
+        self.anim_removes.load(Ordering::SeqCst)
+    }
+    /// `-didReceiveMemoryWarning` (IDA 0x523d4): super only; latches the flag
+    /// the other leaves test.
+    pub fn memory_warning(&self) {
+        self.mem_warning.store(true, Ordering::SeqCst);
+        self.bump(&self.warnings);
+    }
+    pub fn has_memory_warning(&self) -> bool {
+        self.mem_warning.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x52400): super; without a memory warning builds
+    /// the foreground/background copies above the originals.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+        if !self.mem_warning.load(Ordering::SeqCst) {
+            self.has_copies.store(true, Ordering::SeqCst);
+        }
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    pub fn has_copies(&self) -> bool {
+        self.has_copies.load(Ordering::SeqCst)
+    }
+    /// `getInitialXPosition:` (IDA 0x52580): nil view yields 0; positive
+    /// width yields x − width, otherwise the frame height.
+    pub fn initial_x(&self, frame: Option<(f32, f32, f32, f32)>) -> f32 {
+        let Some((x, _, w, h)) = frame else { return 0.0 };
+        if w > 0.0 {
+            x - w
+        } else {
+            h
+        }
+    }
+    /// `-viewDidAppear:` (IDA 0x52614): super; without a memory warning and
+    /// with both stored initial X values nonzero, the frames reset to them
+    /// and the initials zero out, then the copies reposition.
+    pub fn appeared(&self, fg_init: f32, bg_init: f32) {
+        self.bump(&self.appears);
+        if self.mem_warning.load(Ordering::SeqCst) {
+            return;
+        }
+        if fg_init != 0.0 && bg_init != 0.0 {
+            *self.fg_init_x.lock() = 0.0;
+            *self.bg_init_x.lock() = 0.0;
+            self.bump(&self.anim_runs);
+        }
+    }
+    pub fn appear_count(&self) -> u32 {
+        self.appears.load(Ordering::SeqCst)
+    }
+    /// `-viewDidDisappear:` (IDA 0x52a50): super; without a prior warning
+    /// stops the background pan.
+    pub fn disappeared(&self) {
+        self.bump(&self.disappears);
+        if !self.mem_warning.load(Ordering::SeqCst) {
+            self.panning.store(false, Ordering::SeqCst);
+            self.bump(&self.pan_stops);
+        }
+    }
+    pub fn disappear_count(&self) -> u32 {
+        self.disappears.load(Ordering::SeqCst)
+    }
+    /// `hasNaNValue:` (IDA 0x52aa0): always 0.
+    pub fn has_nan_value(&self) -> bool {
+        false
+    }
+    /// `animateToZeroPosition:copyLayer:defaultTweenTime:` (IDA 0x52aec):
+    /// the NaN guards always pass (see `has_nan_value`); with both views
+    /// live the tween animation runs inline. A nil view skips.
+    pub fn animate_to_zero(&self, has_view: bool, has_copy: bool, tween: f32) -> bool {
+        if !has_view || !has_copy {
+            return false;
+        }
+        *self.last_tween.lock() = tween;
+        self.bump(&self.anim_runs);
+        true
+    }
+    pub fn anim_run_count(&self) -> u32 {
+        self.anim_runs.load(Ordering::SeqCst)
+    }
+    pub fn last_tween(&self) -> f32 {
+        *self.last_tween.lock()
+    }
+}
+static RAPVC: std::sync::LazyLock<RapvcState> =
+    std::sync::LazyLock::new(RapvcState::default);
 static THUMB_STICK: std::sync::LazyLock<ThumbStickState> =
     std::sync::LazyLock::new(ThumbStickState::default);
 /// Host id standing in for the `GameInputViewController` `self`.
@@ -12323,120 +12571,166 @@ pub fn stub_51738(screen: (f32, f32)) {
 // 0x517a8 — ___20-[GameMenu hideMenu]_block_invoke99
 // type: id __fastcall(int)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke99")]
-pub fn stub_517a8() -> ! {
-    todo!("0x517a8 ___20-[GameMenu hideMenu]_block_invoke99")
+pub fn stub_517a8() {
+    // IDA 0x517a8 `__20-[GameMenu hideMenu:]_block_invoke99` (completion):
+    // `setHidden:1` (0x517be) then `removeFromSuperview` (shim).
+    GAME_MENU.hide_completion();
 }
 
 // 0x517ec — -[GameMenu .cxx_construct]
 // type: id __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu .cxx_construct]")]
-pub fn stub_517ec() -> ! {
-    todo!("0x517ec -[GameMenu .cxx_construct]")
+pub fn stub_517ec() -> Option<ControlId> {
+    // IDA 0x517ec `-[GameMenu .cxx_construct]`: returns self (0x517ec).
+    GAME_MENU.construct()
 }
 
 // 0x51a04 — -[MenuButton init:]
 // type: id __cdecl(MenuButton *self, SEL, CGRect)
 #[doc(alias = "-[MenuButton init:]")]
-pub fn stub_51a04() -> ! {
-    todo!("0x51a04 -[MenuButton init:]")
+pub fn stub_51a04(frame: (f32, f32, f32, f32)) -> Option<ControlId> {
+    // IDA 0x51a04 `-[MenuButton init:]`: super init (0x51a2c); on success
+    // `setFrame:` (0x51a50), the leave-button image (0x51a76..0x51a8c), a
+    // fresh `GameMenu` via `init:` with self as button (0x51aa8..0x51ade),
+    // and the doMenuSwitch: target for event 64 (0x51aec).
+    MENU_BUTTON.init_button(frame)
 }
 
 // 0x51af8 — -[MenuButton dealloc]
 // type: void __cdecl(MenuButton *self, SEL)
 #[doc(alias = "-[MenuButton dealloc]")]
-pub fn stub_51af8() -> ! {
-    todo!("0x51af8 -[MenuButton dealloc]")
+pub fn stub_51af8() {
+    // IDA 0x51af8 `-[MenuButton dealloc]`: `menu` release (0x51b1a), then
+    // super `dealloc` (0x51b3c).
+    MENU_BUTTON.dealloc();
 }
 
 // 0x51b44 — -[MenuButton doMenuSwitch:]
 // type: void __cdecl(MenuButton *self, SEL, id)
 #[doc(alias = "-[MenuButton doMenuSwitch:]")]
-pub fn stub_51b44() -> ! {
-    todo!("0x51b44 -[MenuButton doMenuSwitch:]")
+pub fn stub_51b44(superview: Option<ControlId>) {
+    // IDA 0x51b44 `-[MenuButton doMenuSwitch:]`: `inverseMenuState:` over
+    // the superview (0x51b66..0x51b7a), then `setEnabled:` to NOT `isShown`
+    // (0x51ba2..0x51bac).
+    MENU_BUTTON.do_menu_switch(superview);
 }
 
 // 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]
 // type: RobloxAnimatingPageViewController *__cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController initWithCoder:]")]
-pub fn stub_52178() -> ! {
-    todo!("0x52178 -[RobloxAnimatingPageViewController initWithCoder:]")
+pub fn stub_52178() -> Option<ControlId> {
+    // IDA 0x52178 `-initWithCoder:`: super init (0x521a0); on success zeroes
+    // the warning/looping flags and initial X values (0x521c4..0x521fe) and
+    // registers the background/foreground notification observers
+    // (0x5220a..0x52270).
+    RAPVC.init_coder()
 }
 
 // 0x52280 — -[RobloxAnimatingPageViewController dealloc]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController dealloc]")]
-pub fn stub_52280() -> ! {
-    todo!("0x52280 -[RobloxAnimatingPageViewController dealloc]")
+pub fn stub_52280() {
+    // IDA 0x52280 `-dealloc`: without a memory warning releases the
+    // animation view, both images and both copies (0x52294..0x52310), then
+    // super `dealloc` (0x52332).
+    RAPVC.dealloc();
 }
 
 // 0x5233c — -[RobloxAnimatingPageViewController appInBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController appInBackground:]")]
-pub fn stub_5233c() -> ! {
-    todo!("0x5233c -[RobloxAnimatingPageViewController appInBackground:]")
+pub fn stub_5233c() {
+    // IDA 0x5233c `appInBackground:`: tail-calls `stopBackgroundPan`
+    // (0x52348).
+    RAPVC.backgrounded();
 }
 
 // 0x5234c — -[RobloxAnimatingPageViewController appInForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController appInForeground:]")]
-pub fn stub_5234c() -> ! {
-    todo!("0x5234c -[RobloxAnimatingPageViewController appInForeground:]")
+pub fn stub_5234c(view_loaded: bool) {
+    // IDA 0x5234c `appInForeground:`: when the view is loaded restarts the
+    // background pan (0x52364..0x5237e).
+    RAPVC.foregrounded(view_loaded);
 }
 
 // 0x52384 — -[RobloxAnimatingPageViewController removeViewAndAnimation:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController removeViewAndAnimation:]")]
-pub fn stub_52384() -> ! {
-    todo!("0x52384 -[RobloxAnimatingPageViewController removeViewAndAnimation:]")
+pub fn stub_52384() {
+    // IDA 0x52384 `removeViewAndAnimation:`: layer `removeAllAnimations`
+    // (0x523a8), `removeFromSuperview` (0x523ba), `release` (0x523d0).
+    RAPVC.remove_view();
 }
 
 // 0x523d4 — -[RobloxAnimatingPageViewController didReceiveMemoryWarning]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController didReceiveMemoryWarning]")]
-pub fn stub_523d4() -> ! {
-    todo!("0x523d4 -[RobloxAnimatingPageViewController didReceiveMemoryWarning]")
+pub fn stub_523d4() {
+    // IDA 0x523d4 `-didReceiveMemoryWarning`: super only (0x523f8).
+    RAPVC.memory_warning();
 }
 
 // 0x52400 — -[RobloxAnimatingPageViewController viewDidLoad]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidLoad]")]
-pub fn stub_52400() -> ! {
-    todo!("0x52400 -[RobloxAnimatingPageViewController viewDidLoad]")
+pub fn stub_52400() {
+    // IDA 0x52400 `-viewDidLoad`: super (0x5242a); without a memory warning
+    // builds the foreground/background copies and inserts them above the
+    // originals (0x5243a..0x52574).
+    RAPVC.view_did_load();
 }
 
 // 0x52580 — -[RobloxAnimatingPageViewController getInitialXPosition:]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController getInitialXPosition:]")]
-pub fn stub_52580() -> ! {
-    todo!("0x52580 -[RobloxAnimatingPageViewController getInitialXPosition:]")
+pub fn stub_52580(frame: Option<(f32, f32, f32, f32)>) -> f32 {
+    // IDA 0x52580 `getInitialXPosition:`: nil view yields 0 (0x5258c); with
+    // positive width the result is x − width (0x525be..0x525ce), otherwise
+    // the frame height (0x525fa..0x525fe).
+    RAPVC.initial_x(frame)
 }
 
 // 0x52614 — -[RobloxAnimatingPageViewController viewDidAppear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidAppear:]")]
-pub fn stub_52614() -> ! {
-    todo!("0x52614 -[RobloxAnimatingPageViewController viewDidAppear:]")
+pub fn stub_52614(fg_init: f32, bg_init: f32) {
+    // IDA 0x52614 `-viewDidAppear:`: super (0x52642); without a memory
+    // warning and with both stored initial X values nonzero, the
+    // background/foreground frames reset to them and the initials zero out
+    // (0x5269a..0x52860), then the copies reposition via
+    // `getInitialXPosition:` (0x52876..tail).
+    RAPVC.appeared(fg_init, bg_init);
 }
 
 // 0x52a50 — -[RobloxAnimatingPageViewController viewDidDisappear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidDisappear:]")]
-pub fn stub_52a50() -> ! {
-    todo!("0x52a50 -[RobloxAnimatingPageViewController viewDidDisappear:]")
+pub fn stub_52a50() {
+    // IDA 0x52a50 `-viewDidDisappear:`: super (0x52a76); without a prior
+    // memory warning stops the background pan (0x52a86..0x52a98).
+    RAPVC.disappeared();
 }
 
 // 0x52aa0 — -[RobloxAnimatingPageViewController hasNaNValue:]
 // type: char __cdecl(RobloxAnimatingPageViewController *self, SEL, CGRect)
 #[doc(alias = "-[RobloxAnimatingPageViewController hasNaNValue:]")]
-pub fn stub_52aa0() -> ! {
-    todo!("0x52aa0 -[RobloxAnimatingPageViewController hasNaNValue:]")
+pub fn stub_52aa0() -> bool {
+    // IDA 0x52aa0 `-[RobloxAnimatingPageViewController hasNaNValue:]`:
+    // always returns 0 (0x52ad2).
+    RAPVC.has_nan_value()
 }
 
 // 0x52aec — -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")]
-pub fn stub_52aec() -> ! {
-    todo!("0x52aec -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")
+pub fn stub_52aec(has_view: bool, has_copy: bool, tween: f32) -> bool {
+    // IDA 0x52aec `animateToZeroPosition:copyLayer:defaultTweenTime:`: NaN
+    // guards over both frames (via `hasNaNValue:`, always false here);
+    // with valid frames the duration scales by the tween (0x52bb0..0x52c64)
+    // and the `__86…` pair runs via `animateWithDuration:delay:options:`
+    // (0x52cea..0x52d8e, inline on the host). A nil view skips.
+    RAPVC.animate_to_zero(has_view, has_copy, tween)
 }
 
 // 0x52dac — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke

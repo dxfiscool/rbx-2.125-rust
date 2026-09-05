@@ -1892,54 +1892,94 @@ pub unsafe fn copy_block_capture_51794(dst: *mut c_void, src: *const c_void) {
 // 0x517a0 — ___destroy_helper_block_97
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_97")]
-pub fn stub_517a0() -> ! {
-    todo!("0x517a0 ___destroy_helper_block_97")
+pub unsafe fn destroy_block_capture_517a0(block: *mut c_void) {
+// IDA 0x517a0: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x517d8 — ___copy_helper_block_102
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_102")]
-pub fn stub_517d8() -> ! {
-    todo!("0x517d8 ___copy_helper_block_102")
+pub unsafe fn copy_block_capture_517d8(dst: *mut c_void, src: *const c_void) {
+// IDA 0x517d8: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x517e4 — ___destroy_helper_block_103
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_103")]
-pub fn stub_517e4() -> ! {
-    todo!("0x517e4 ___destroy_helper_block_103")
+pub unsafe fn destroy_block_capture_517e4(block: *mut c_void) {
+// IDA 0x517e4: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x517f0 — __GLOBAL__I_a_25
 #[doc(alias = "global constructor keyed to_a_25")]
-pub fn stub_517f0() -> ! {
-    todo!("0x517f0 global constructor keyed to_a_25")
+pub fn init_global_a25_517f0() {
+// IDA 0x517f0: global ctor keyed to _a_25 — ios_base::Init on __ioinit plus
+// __cxa_atexit of the dtor (disasm: InitC1 + atexit). Same once-only shape
+// as 0x4d6d4; the runtime owns iostream state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x51bb0 — __GLOBAL__I_a_26
 #[doc(alias = "global constructor keyed to_a_26")]
-pub fn stub_51bb0() -> ! {
-    todo!("0x51bb0 global constructor keyed to_a_26")
+pub fn init_global_a26_51bb0() {
+// IDA 0x51bb0: global ctor keyed to _a_26 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x4f7bc; the runtime owns category state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__13")]
-pub fn stub_51e54() -> ! {
-    todo!("0x51e54 ___copy_helper_block__13")
+pub unsafe fn copy_block_capture_51e54(dst: *mut c_void, src: *const c_void) {
+// IDA 0x51e54: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x51e60 — ___destroy_helper_block__13
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__13")]
-pub fn stub_51e60() -> ! {
-    todo!("0x51e60 ___destroy_helper_block__13")
+pub unsafe fn destroy_block_capture_51e60(block: *mut c_void) {
+// IDA 0x51e60: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x51fe0 — __GLOBAL__I_a_27
 #[doc(alias = "global constructor keyed to_a_27")]
-pub fn stub_51fe0() -> ! {
-    todo!("0x51fe0 global constructor keyed to_a_27")
+pub fn init_global_a27_51fe0() {
+// IDA 0x51fe0: global ctor keyed to _a_27 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x4f7bc; the runtime owns category state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x52ed4 — ___copy_helper_block__14
