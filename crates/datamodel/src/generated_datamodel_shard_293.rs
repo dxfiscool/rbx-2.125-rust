@@ -7,173 +7,254 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use super::generated_datamodel_shard_291::{
+    BackpackTextureId, BackpackTextureProp, HOPPER_BIN_TYPE_ITEMS, stub_0x5713d0, stub_0x5713e8,
+    stub_0x571428, stub_0x573688,
+};
 
 // 0x578d50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x578d50() -> ! {
-    todo!("0x578d50 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x578d50(bin: &mut crate::instance::HopperBin, index: usize) -> bool {
+    // IDA 0x578d50 `EnumPropDescriptor<BinType>::setIndexValue`:
+    // bounds-checks the index, reads the value, and sets; out-of-range
+    // sets nothing. Same shape as 0x56eaec over `HOPPER_BIN_TYPE_ITEMS`.
+    if let Some((value, _)) = HOPPER_BIN_TYPE_ITEMS.get(index) {
+        stub_0x571428(bin, *value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x578d84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x578d84() -> ! {
-    todo!("0x578d84 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578d84(bin: &crate::instance::HopperBin) -> i32 {
+    // IDA 0x578d84 `EnumPropDescriptor<BinType>::getEnumValue`: reads the
+    // value through the member getter. Same shape as 0x56eb20; delegates
+    // to `getBinType` (0x573688).
+    stub_0x573688(bin)
 }
 
 // 0x578d8c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x578d8c() -> ! {
-    todo!("0x578d8c RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x578d8c(bin: &mut crate::instance::HopperBin, value: i32) -> bool {
+    // IDA 0x578d8c `EnumPropDescriptor<BinType>::setEnumValue`: validates
+    // the value against the table, sets on hit and returns true, false on
+    // miss. Same shape as 0x56eb28; the store routes through `setBinType`
+    // (0x571428, with its legacy-texture refresh).
+    if HOPPER_BIN_TYPE_ITEMS.iter().any(|(v, _)| *v == value) {
+        stub_0x571428(bin, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x578dd8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x578dd8() -> ! {
-    todo!("0x578dd8 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578dd8(bin: &crate::instance::HopperBin) -> Option<(i32, &'static str)> {
+    // IDA 0x578dd8 `EnumPropDescriptor<BinType>::getEnumItem`: reads the
+    // value through the member getter, then the item search. Same shape as
+    // 0x56eb74.
+    let current = stub_0x573688(bin);
+    HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == current)
+        .copied()
 }
 
 // 0x578df8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x578df8() -> ! {
-    todo!("0x578df8 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x578df8(bin: &mut crate::instance::HopperBin, name: &str) -> bool {
+    // IDA 0x578df8 `EnumPropDescriptor<BinType>::setStringValue(Name)`:
+    // converts via the desc table and sets on hit, false on miss. `Name`
+    // collapses to the stored bytes. Same shape as 0x56eb94.
+    if let Some(value) = HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        stub_0x571428(bin, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x578e2c — __ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::convertToIndex(RBX::HopperBin::BinType)const")]
-pub fn stub_0x578e2c() -> ! {
-    todo!("0x578e2c RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::convertToIndex(RBX::HopperBin::BinType)const")
-}
+pub use rbx_reflection::generated::stub_0x578e2c as stub_0x578e2c;
 
 // 0x578e9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x578e9c() -> ! {
-    todo!("0x578e9c RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x578e9c(bin: &mut crate::instance::HopperBin, value: i32) -> bool {
+    // IDA 0x578e9c `EnumPropDescriptor<BinType>::setIntValue`: negative
+    // values return false at once; values past the table size return false;
+    // table entries holding the `-1` sentinel return false; else the member
+    // setter runs and the result is true. The `BinType` table holds no
+    // sentinels, so the bounds check covers all three rejections. Same
+    // shape as 0x56ec38.
+    if value < 0 || (value as usize) >= HOPPER_BIN_TYPE_ITEMS.len() {
+        return false;
+    }
+    stub_0x571428(bin, value);
+    true
 }
 
 // 0x578edc — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinENS2_7BinTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::isReadOnly(void)const")]
-pub fn stub_0x578edc() -> ! {
-    todo!("0x578edc RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::isReadOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x578edc as stub_0x578edc;
 
 // 0x578ee0 — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinENS2_7BinTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::isWriteOnly(void)const")]
-pub fn stub_0x578ee0() -> ! {
-    todo!("0x578ee0 RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::isWriteOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x578ee0 as stub_0x578ee0;
 
 // 0x578ee4 — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinENS2_7BinTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x578ee4() -> ! {
-    todo!("0x578ee4 RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x578ee4(bin: &crate::instance::HopperBin) -> i32 {
+    // IDA 0x578ee4 `GetSetImpl<getBinType, setBinType>::getValue`: invokes
+    // the member getter (`getBinType`, 0x573688) through the bound
+    // member-function pointer. Same shape as 0x56ec80.
+    stub_0x573688(bin)
 }
 
 // 0x578f04 — __ZNK3RBX10Reflection14PropDescriptorINS_9HopperBinENS2_7BinTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::setValue(RBX::Reflection::DescribedBase *,RBX::HopperBin::BinType const&)const")]
-pub fn stub_0x578f04() -> ! {
-    todo!("0x578f04 RBX::Reflection::PropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::GetSetImpl<RBX::HopperBin::BinType (RBX::HopperBin::*)(void)const,void (RBX::HopperBin::*)(RBX::HopperBin::BinType)>::setValue(RBX::Reflection::DescribedBase *,RBX::HopperBin::BinType const&)const")
+pub fn stub_0x578f04(bin: &mut crate::instance::HopperBin, value: i32) {
+    // IDA 0x578f04 `GetSetImpl<getBinType, setBinType>::setValue`: invokes
+    // the member setter (`setBinType`, 0x571428) through the bound
+    // member-function pointer. Same shape as 0x56eca0.
+    stub_0x571428(bin, value);
 }
 
 // 0x578f28 — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEEC2IMS2_KFKS3_vEMS2_FvRS6_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::PropDescriptor<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>(char const*,char const*,RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x578f28() -> ! {
-    todo!("0x578f28 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::PropDescriptor<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>(char const*,char const*,RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x578f28(name: &str, category: &str) -> BackpackTextureProp {
+    // IDA 0x578f28 `PropDescriptor<BackpackItem, TextureId>::C2`: stores the
+    // name/category words with the `getTextureId`/`setTextureId` member
+    // pair; the pair collapses into direct `BackpackItem` texture access,
+    // as in 0x573664.
+    BackpackTextureProp {
+        name: name.to_string(),
+        category: category.to_string(),
+    }
 }
 
 // 0x57903c — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_0x57903c() -> ! {
-    todo!("0x57903c RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")
-}
+pub use rbx_reflection::generated::stub_0x57903c as stub_0x57903c;
 
 // 0x579068 — __ZNK3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEE10GetSetImplIMS2_KFKS3_vEMS2_FvRS6_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::isReadOnly(void)const")]
-pub fn stub_0x579068() -> ! {
-    todo!("0x579068 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::isReadOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x579068 as stub_0x579068;
 
 // 0x57906c — __ZNK3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEE10GetSetImplIMS2_KFKS3_vEMS2_FvRS6_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::isWriteOnly(void)const")]
-pub fn stub_0x57906c() -> ! {
-    todo!("0x57906c RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::isWriteOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x57906c as stub_0x57906c;
 
 // 0x579070 — __ZNK3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEE10GetSetImplIMS2_KFKS3_vEMS2_FvRS6_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x579070() -> ! {
-    todo!("0x579070 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x579070(item: &crate::instance::BackpackItem) -> BackpackTextureId {
+    // IDA 0x579070 `GetSetImpl<getTextureId, setTextureId>::getValue`:
+    // invokes the member getter (`getTextureId`, 0x5713d0) through the
+    // bound member-function pointer; delegates to it.
+    stub_0x5713d0(item)
 }
 
 // 0x579098 — __ZNK3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEE10GetSetImplIMS2_KFKS3_vEMS2_FvRS6_EE8setValueEPNS0_13DescribedBaseES9_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
-pub fn stub_0x579098() -> ! {
-    todo!("0x579098 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::GetSetImpl<RBX::TextureId const (RBX::BackpackItem::*)(void)const,void (RBX::BackpackItem::*)(RBX::TextureId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
+pub fn stub_0x579098(item: &mut crate::instance::BackpackItem, texture: &BackpackTextureId) -> bool {
+    // IDA 0x579098 `GetSetImpl<getTextureId, setTextureId>::setValue`:
+    // invokes the member setter (`setTextureId`, 0x5713e8) through the
+    // bound member-function pointer; delegates to it.
+    stub_0x5713e8(item, texture)
 }
 
 // 0x5790bc — __ZNSt6vectorIN3RBX9HopperBin7BinTypeESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::resize(unsigned long,RBX::HopperBin::BinType)")]
 pub fn stub_0x5790bc() -> ! {
+    // POOL-CORE: `std::vector<BinType>` resize machinery backing
+    // reflection's `EnumDesc<BinType>` runtime table; collapses into `Vec`
+    // in the owning crate.
     todo!("0x5790bc std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::resize(unsigned long,RBX::HopperBin::BinType)")
 }
 
 // 0x5790f0 — __ZNSt3mapIPKN3RBX4NameENS0_9HopperBin7BinTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::HopperBin::BinType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::operator[](RBX::Name const* const&)")]
 pub fn stub_0x5790f0() -> ! {
+    // POOL-CORE: `std::map<Name const*, BinType>` subscript backing
+    // reflection's `EnumDesc<BinType>` name table; collapses into map ops
+    // in the owning crate.
     todo!("0x5790f0 std::map<RBX::Name const*,RBX::HopperBin::BinType,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::operator[](RBX::Name const* const&)")
 }
 
 // 0x579148 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9HopperBin7BinTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")]
 pub fn stub_0x579148() -> ! {
+    // POOL-CORE: `std::_Rb_tree` node insert backing the `BinType` name
+    // map; tree machinery lives in the owning crate.
     todo!("0x579148 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")
 }
 
 // 0x5791fc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9HopperBin7BinTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")]
 pub fn stub_0x5791fc() -> ! {
+    // POOL-CORE: `std::_Rb_tree` positional insert; see 0x579148.
     todo!("0x5791fc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")
 }
 
 // 0x579254 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9HopperBin7BinTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")]
 pub fn stub_0x579254() -> ! {
-    todo!("0x579254 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")
+    // POOL-CORE: `std::_Rb_tree` value insert; see 0x579148.
+    todo!("0x579254 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>,std::pair<RBX::Name const* const,RBX::HopperBin::BinType>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::HopperBin::BinType> const&)")
 }
 
 // 0x5792bc — __ZNSt6vectorIN3RBX9HopperBin7BinTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::HopperBin::BinType*,std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>>,unsigned long,RBX::HopperBin::BinType const&)")]
 pub fn stub_0x5792bc() -> ! {
+    // POOL-CORE: `std::vector<BinType>` fill-insert; see 0x5790bc.
     todo!("0x5792bc std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::HopperBin::BinType*,std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>>,unsigned long,RBX::HopperBin::BinType const&)")
 }
 
 // 0x57944c — __ZNSt12_Vector_baseIN3RBX9HopperBin7BinTypeESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_allocate(unsigned long)")]
 pub fn stub_0x57944c() -> ! {
+    // POOL-CORE: `std::_Vector_base<BinType>` allocate; see 0x5790bc.
     todo!("0x57944c std::_Vector_base<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_allocate(unsigned long)")
 }
 
 // 0x579464 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX9HopperBin7BinTypeES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::HopperBin::BinType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::HopperBin::BinType *,RBX::HopperBin::BinType *>(RBX::HopperBin::BinType *,RBX::HopperBin::BinType *,RBX::HopperBin::BinType *)")]
 pub fn stub_0x579464() -> ! {
-    todo!("0x579464 RBX::HopperBin::BinType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::HopperBin::BinType *,RBX::HopperBin::BinType *>(RBX::HopperBin::BinType *,RBX::HopperBin::BinType *,RBX::HopperBin::BinType *)")
+    // POOL-CORE: `std::__copy_backward` over `BinType`; see 0x5790bc.
+    todo!("0x579464 RBX::HopperBin::BinType * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::HopperBin::BinType *,RBX::HopperBin::BinType *,RBX::HopperBin::BinType *>(RBX::HopperBin::BinType *,RBX::HopperBin::BinType *,RBX::HopperBin::BinType *)")
 }
 
 // 0x5794a0 — __ZNSt6vectorIN3RBX9HopperBin7BinTypeESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::push_back(RBX::HopperBin::BinType const&)")]
 pub fn stub_0x5794a0() -> ! {
+    // POOL-CORE: `std::vector<BinType>` push-back; see 0x5790bc.
     todo!("0x5794a0 std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::push_back(RBX::HopperBin::BinType const&)")
 }
 
 // 0x5794c8 — __ZNSt6vectorIN3RBX9HopperBin7BinTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::HopperBin::BinType*,std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>>,RBX::HopperBin::BinType const&)")]
 pub fn stub_0x5794c8() -> ! {
+    // POOL-CORE: `std::vector<BinType>` insert-aux; see 0x5790bc.
     todo!("0x5794c8 std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::HopperBin::BinType*,std::vector<RBX::HopperBin::BinType,std::allocator<RBX::HopperBin::BinType>>>,RBX::HopperBin::BinType const&)")
 }
 
 // 0x5795ac — __ZN3RBX9HopperBinD2Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
-pub fn stub_0x5795ac() -> ! {
-    todo!("0x5795ac RBX::HopperBin::~HopperBin()")
+pub fn stub_0x5795ac(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x5795ac (decompiled): `HopperBin::D2` — vtable resets
+    // (0x5795da-0x579604), `signal<void()>::disconnectAll` + release
+    // (0x579636-0x579644), the two `remote_signal` member dtors
+    // (0x579652-0x579660), weak release (0x579666-0x579670), then the
+    // `BackpackItem`/`GuiItem` teardown (0x579684-0x5796d2). The modeled
+    // members are plain words; the replicator connections live in core.
+    // Drop glue — no-op. The `D1` (0x573a5c) forwards here.
 }
 
 // 0x579f70 — __ZN3RBX17ICharacterSubjectC2Ev
@@ -609,4 +690,61 @@ pub fn stub_0x57f6e8() -> ! {
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 pub fn stub_0x57f894() -> ! {
     todo!("0x57f894 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+#[cfg(test)]
+mod batch_a_tests {
+    use super::*;
+    use crate::instance::{BackpackItem, HopperBin};
+
+    #[test]
+    fn bintype_tail_round_trip() {
+        let mut bin = HopperBin::default();
+        assert_eq!(stub_0x578d84(&bin), 0);
+        assert_eq!(stub_0x578ee4(&bin), 0);
+        assert!(stub_0x578d8c(&mut bin, 2));
+        assert_eq!(bin.bin_type, 2);
+        assert!(!stub_0x578d8c(&mut bin, 42));
+        assert_eq!(bin.bin_type, 2);
+        assert!(stub_0x578d50(&mut bin, 4));
+        assert_eq!(bin.bin_type, 4);
+        assert!(!stub_0x578d50(&mut bin, 9));
+        assert_eq!(stub_0x578dd8(&bin), Some((4, "Hammer")));
+        assert!(stub_0x578df8(&mut bin, "Grab"));
+        assert_eq!(bin.bin_type, 2);
+        assert!(!stub_0x578df8(&mut bin, "Nope"));
+        assert!(stub_0x578e9c(&mut bin, 1));
+        assert!(!stub_0x578e9c(&mut bin, -1));
+        assert!(!stub_0x578e9c(&mut bin, 5));
+        stub_0x578f04(&mut bin, 3);
+        assert_eq!(bin.bin_type, 3);
+        assert!(!stub_0x578edc());
+        assert!(!stub_0x578ee0());
+    }
+
+    #[test]
+    fn texture_getset_delegates() {
+        let prop = stub_0x578f28("TextureId", "Appearance");
+        assert_eq!(prop.name, "TextureId");
+        let mut item = BackpackItem::default();
+        let tex = BackpackTextureId {
+            id: "rbxasset://Textures/sword.png".to_string(),
+            tag: 7,
+        };
+        assert!(stub_0x579098(&mut item, &tex));
+        assert_eq!(stub_0x579070(&item), tex);
+        assert!(!stub_0x579068());
+        assert!(!stub_0x57906c());
+        stub_0x57903c();
+        drop(prop);
+    }
+
+    #[test]
+    fn hopperbin_d2_is_drop_glue() {
+        let mut bin = HopperBin::default();
+        bin.active = true;
+        bin.bin_type = 2;
+        stub_0x5795ac(&mut bin);
+        assert!(bin.active);
+    }
 }
