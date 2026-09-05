@@ -1719,6 +1719,21 @@ pub struct NavBarState {
     launch_calls: AtomicU32,
     pending_navigate: parking_lot::Mutex<Option<i32>>,
     pending_launch: parking_lot::Mutex<Option<i32>>,
+    spinner_animating: AtomicBool,
+    overlay_added: AtomicBool,
+    need_robux_refresh: AtomicBool,
+    last_purchase: parking_lot::Mutex<String>,
+    purchase_calls: AtomicU32,
+    presented: AtomicBool,
+    dismiss_calls: AtomicU32,
+    current_controller: parking_lot::Mutex<Option<ControlId>>,
+    user_info_visible: AtomicBool,
+    robux_text: parking_lot::Mutex<String>,
+    tix_text: parking_lot::Mutex<String>,
+    page_indicator_hidden: AtomicBool,
+    last_launched: parking_lot::Mutex<Option<i32>>,
+    last_request_kind: parking_lot::Mutex<Option<i32>>,
+    warn_calls: AtomicU32,
     releases: AtomicU32,
 }
 impl NavBarState {
@@ -1785,6 +1800,7 @@ impl NavBarState {
     pub fn will_appear(&self) {
         self.bump(&self.wills);
         self.bump(&self.user_info_updates);
+        *self.current_controller.lock() = Some(NAVBAR_ID);
     }
     pub fn will_appear_count(&self) -> u32 {
         self.wills.load(Ordering::SeqCst)
@@ -1868,6 +1884,179 @@ impl NavBarState {
     }
     pub fn fullscreen_text(&self) -> String {
         self.fullscreen_text.lock().clone()
+    }
+    /// `__49-showFullscreenText_block_invoke` (IDA 0x54514, via
+    /// `dispatch_async`, inline): spinner starts, the overlay docks and
+    /// unhides.
+    pub fn show_block(&self) {
+        self.spinner_animating.store(true, Ordering::SeqCst);
+        self.overlay_added.store(true, Ordering::SeqCst);
+        self.overlay_hidden.store(false, Ordering::SeqCst);
+    }
+    pub fn is_spinner_animating(&self) -> bool {
+        self.spinner_animating.load(Ordering::SeqCst)
+    }
+    /// `__48-hideFullscreenText_block_invoke` (IDA 0x545f8, via
+    /// `dispatch_async`, inline): overlay hidden, spinner stopped.
+    pub fn hide_block(&self) {
+        self.overlay_hidden.store(true, Ordering::SeqCst);
+        self.spinner_animating.store(false, Ordering::SeqCst);
+    }
+    /// `+checkForInAppPurchases:navigationType:` (IDA 0x5465c): form posts
+    /// (type 1) only flag a robux refresh and return false; URLs under
+    /// `mobile-app-upgrades/buy` purchase the `=`-suffix product and return
+    /// true; anything else returns false.
+    pub fn check_in_app_purchases(&self, nav_type: i32, url: &str) -> bool {
+        if nav_type == 1 {
+            self.need_robux_refresh.store(true, Ordering::SeqCst);
+            return false;
+        }
+        let Some((_, buy)) = url.split_once("mobile-app-upgrades/buy") else { return false };
+        let parts: Vec<&str> = buy.split('=').collect();
+        if parts.len() == 2 && !parts[1].is_empty() {
+            *self.last_purchase.lock() = parts[1].to_owned();
+            self.bump(&self.purchase_calls);
+        }
+        true
+    }
+    pub fn needs_robux_refresh(&self) -> bool {
+        self.need_robux_refresh.load(Ordering::SeqCst)
+    }
+    pub fn last_purchase(&self) -> String {
+        self.last_purchase.lock().clone()
+    }
+    pub fn purchase_call_count(&self) -> u32 {
+        self.purchase_calls.load(Ordering::SeqCst)
+    }
+    /// `doPlaceLaunch:request:` (IDA 0x5479c): id <= 0 warns and returns
+    /// false; else the tryGameJoin default syncs, the "LaunchGame"
+    /// fullscreen shows, the `__52…` start block fires inline, analytics
+    /// tracks and the web cache flushes.
+    pub fn do_place_launch(&self, place_id: i32, kind: i32) -> bool {
+        if place_id <= 0 {
+            self.bump(&self.warn_calls);
+            return false;
+        }
+        *self.last_request_kind.lock() = Some(kind);
+        self.show_fullscreen("LaunchGame");
+        self.launch_block(place_id);
+        true
+    }
+    pub fn warn_call_count(&self) -> u32 {
+        self.warn_calls.load(Ordering::SeqCst)
+    }
+    /// `__52-doPlaceLaunch_block_invoke` (IDA 0x549e4, via `dispatch_async`,
+    /// inline): `startGame:...` on the shared launcher; counted as a launch.
+    pub fn launch_block(&self, place_id: i32) {
+        *self.pending_launch.lock() = None;
+        *self.last_launched.lock() = Some(place_id);
+        self.bump(&self.launch_calls);
+    }
+    pub fn last_launched(&self) -> Option<i32> {
+        *self.last_launched.lock()
+    }
+    /// URL scan behind `checkForGameLaunch:` (IDA 0x54a9e..0x54c56):
+    /// placeid/userid/appid map to `doPlaceLaunch:request:` kinds 0/1/2.
+    pub fn game_launch_place(&self, url: &str) -> Option<(i32, i32)> {
+        for (key, kind) in [("placeid", 0), ("userid", 1), ("appid", 2)] {
+            if let Some(idx) = url.find(key) {
+                let rest = &url[idx + key.len()..];
+                let digits: String = rest.chars().filter(|c| c.is_ascii_digit()).collect();
+                if let Ok(place) = digits.parse::<i32>() {
+                    return Some((place, kind));
+                }
+            }
+        }
+        None
+    }
+    /// `checkForGameLaunch:` (IDA 0x54a3c): idle shows the back button and
+    /// launches from the URL; playing returns false.
+    pub fn check_for_game_launch(&self, is_playing: bool, url: &str) -> bool {
+        if is_playing {
+            return false;
+        }
+        self.show_back_button();
+        match self.game_launch_place(url) {
+            Some((place, kind)) => self.do_place_launch(place, kind),
+            None => false,
+        }
+    }
+    /// `webView:shouldStartLoadWithRequest:navigationType:` (IDA 0x54c64).
+    pub fn should_start_load(&self, nav_type: i32, url: &str, is_playing: bool) -> bool {
+        self.home_enabled.store(false, Ordering::SeqCst);
+        if self.check_in_app_purchases(nav_type, url) {
+            self.home_enabled.store(true, Ordering::SeqCst);
+            return false;
+        }
+        if !self.check_for_game_launch(is_playing, url) {
+            self.home_enabled.store(true, Ordering::SeqCst);
+            return true;
+        }
+        false
+    }
+    /// `webView:didFailLoadWithError:` (IDA 0x54d2c): the page indicator
+    /// hides.
+    pub fn fail_load(&self) {
+        self.page_indicator_hidden.store(true, Ordering::SeqCst);
+    }
+    /// `webViewDidStartLoad:` (IDA 0x54d58): the main web view, while
+    /// loading, unhides the page indicator.
+    pub fn start_load(&self, is_self: bool, loading: bool) {
+        if is_self && loading {
+            self.page_indicator_hidden.store(false, Ordering::SeqCst);
+        }
+    }
+    pub fn is_page_indicator_hidden(&self) -> bool {
+        self.page_indicator_hidden.load(Ordering::SeqCst)
+    }
+    /// `webViewDidFinishLoad:` (IDA 0x54db4): a set robux-refresh flag
+    /// updates user info and clears; without back history the back button
+    /// hides; the indicator hides.
+    pub fn finish_load(&self, can_go_back: bool) {
+        if self.need_robux_refresh.load(Ordering::SeqCst) {
+            self.bump(&self.user_info_updates);
+            self.need_robux_refresh.store(false, Ordering::SeqCst);
+        }
+        if !can_go_back {
+            self.hide_back_button();
+        }
+        self.page_indicator_hidden.store(true, Ordering::SeqCst);
+    }
+    /// `updateUserInfoDisplay:` (IDA 0x54e40): with refresh pulls
+    /// `UpdatePlayerInfo`; logged in shows the counts, else hides them all.
+    pub fn update_user_info(&self, refresh: bool, logged_in: bool, robux: &str, tix: &str) {
+        if refresh {
+            self.bump(&self.user_info_updates);
+        }
+        self.user_info_visible.store(logged_in, Ordering::SeqCst);
+        if logged_in {
+            *self.robux_text.lock() = robux.to_owned();
+            *self.tix_text.lock() = tix.to_owned();
+        }
+    }
+    pub fn is_user_info_visible(&self) -> bool {
+        self.user_info_visible.load(Ordering::SeqCst)
+    }
+    /// `MenuClick:` (IDA 0x54ff0): outside a game the dismiss block runs
+    /// inline.
+    pub fn menu_click(&self, is_playing: bool) {
+        if !is_playing {
+            self.dismiss_block();
+        }
+    }
+    /// `__40-MenuClick_block_invoke` (IDA 0x55074):
+    /// `dismissViewControllerAnimated:1` (nil completion).
+    pub fn dismiss_block(&self) {
+        self.presented.store(false, Ordering::SeqCst);
+        self.bump(&self.dismiss_calls);
+    }
+    pub fn dismiss_call_count(&self) -> u32 {
+        self.dismiss_calls.load(Ordering::SeqCst)
+    }
+    /// `+mostRecentViewController` (IDA 0x550a0): the slot written by
+    /// `-viewWillAppear:`.
+    pub fn most_recent(&self) -> Option<ControlId> {
+        *self.current_controller.lock()
     }
 }
 static NAVBAR: std::sync::LazyLock<NavBarState> =
@@ -7398,120 +7587,165 @@ pub fn stub_5449c(text: &str) {
 // 0x54514 — ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")]
-pub fn stub_54514() -> ! {
-    todo!("0x54514 ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")
+pub fn stub_54514() {
+    // IDA 0x54514 `__49-showFullscreenText_block_invoke` (via
+    // `dispatch_async`, inline): spinner starts, the overlay docks and
+    // unhides (0x54536..0x5457a+shim).
+    NAVBAR.show_block();
 }
 
 // 0x545a8 — -[RobloxNavBarViewController hideFullscreenText]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideFullscreenText]")]
-pub fn stub_545a8() -> ! {
-    todo!("0x545a8 -[RobloxNavBarViewController hideFullscreenText]")
+pub fn stub_545a8() {
+    // IDA 0x545a8 `hideFullscreenText`: the `__48…` block runs via
+    // `dispatch_async` (0x545de..0x545f0, inline on the host).
+    NAVBAR.hide_block();
 }
 
 // 0x545f8 — ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")]
-pub fn stub_545f8() -> ! {
-    todo!("0x545f8 ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")
+pub fn stub_545f8() {
+    // IDA 0x545f8 `__48-hideFullscreenText_block_invoke` (via
+    // `dispatch_async`, inline): overlay hidden + spinner stopped
+    // (0x5460c..0x5461e+shim).
+    NAVBAR.hide_block();
 }
 
 // 0x5465c — +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]
 // type: char __cdecl(id, SEL, id, int)
 #[doc(alias = "+[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")]
-pub fn stub_5465c() -> ! {
-    todo!("0x5465c +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")
+pub fn stub_5465c(nav_type: i32, url: &str) -> bool {
+    // IDA 0x5465c `+checkForInAppPurchases:navigationType:`: form posts
+    // (type 1) only flag a robux refresh (0x54664..0x54684, returns 0);
+    // `mobile-app-upgrades/buy` URLs purchase the `=`-suffix product
+    // (0x54694..0x54792, returns 1); anything else returns 0.
+    NAVBAR.check_in_app_purchases(nav_type, url)
 }
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, int, int)
 #[doc(alias = "-[RobloxNavBarViewController doPlaceLaunch:request:]")]
-pub fn stub_5479c() -> ! {
-    todo!("0x5479c -[RobloxNavBarViewController doPlaceLaunch:request:]")
+pub fn stub_5479c(place_id: i32, kind: i32) -> bool {
+    // IDA 0x5479c `doPlaceLaunch:request:`: id <= 0 warns and returns 0
+    // (0x5495e..0x54986); else records tryGameJoin, syncs, shows the
+    // "LaunchGame" fullscreen, fires the `__52…` start block (0x54836..0x548f6),
+    // tracks analytics and flushes the web cache (0x5491e..0x54952).
+    NAVBAR.do_place_launch(place_id, kind)
 }
 
 // 0x549e4 — ___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke")]
-pub fn stub_549e4() -> ! {
-    todo!("0x549e4 ___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke")
+pub fn stub_549e4(place_id: i32) {
+    // IDA 0x549e4 `__52-doPlaceLaunch_block_invoke` (via `dispatch_async`,
+    // inline): `startGame:controller:request:presentGameAutomatically:`
+    // on the shared launcher (0x54a04..0x54a26).
+    NAVBAR.launch_block(place_id);
 }
 
 // 0x54a3c — -[RobloxNavBarViewController checkForGameLaunch:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController checkForGameLaunch:]")]
-pub fn stub_54a3c() -> ! {
-    todo!("0x54a3c -[RobloxNavBarViewController checkForGameLaunch:]")
+pub fn stub_54a3c(is_playing: bool, url: &str) -> bool {
+    // IDA 0x54a3c `checkForGameLaunch:`: idle (not playing) shows the back
+    // button (0x54a90) and scans the URL for placeid/userid/appid to
+    // `doPlaceLaunch:request:` (0x54a9e..0x54c56); playing returns 0.
+    NAVBAR.check_for_game_launch(is_playing, url)
 }
 
 // 0x54c64 — -[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, id, id, int)
 #[doc(alias = "-[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_54c64() -> ! {
-    todo!("0x54c64 -[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_54c64(nav_type: i32, url: &str, is_playing: bool) -> bool {
+    // IDA 0x54c64 `webView:shouldStartLoadWithRequest:navigationType:`:
+    // home starts disabled (0x54c96); an in-app purchase consumes the load
+    // (0x54cb6..0x54cd0, returns 0); else without a game launch the load
+    // proceeds (0x54cea..0x54cfc, returns 1); a launch consumes it.
+    NAVBAR.should_start_load(nav_type, url, is_playing)
 }
 
 // 0x54d0c — -[RobloxNavBarViewController handleStartGameFailure]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController handleStartGameFailure]")]
-pub fn stub_54d0c() -> ! {
-    todo!("0x54d0c -[RobloxNavBarViewController handleStartGameFailure]")
+pub fn stub_54d0c() {
+    // IDA 0x54d0c `handleStartGameFailure`: `hideFullscreenText` (0x54d18).
+    NAVBAR.hide_fullscreen();
 }
 
 // 0x54d1c — -[RobloxNavBarViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController handleStartGameSuccess]")]
-pub fn stub_54d1c() -> ! {
-    todo!("0x54d1c -[RobloxNavBarViewController handleStartGameSuccess]")
+pub fn stub_54d1c() {
+    // IDA 0x54d1c `handleStartGameSuccess`: `hideFullscreenText` (0x54d28).
+    NAVBAR.hide_fullscreen();
 }
 
 // 0x54d2c — -[RobloxNavBarViewController webView:didFailLoadWithError:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id, id)
 #[doc(alias = "-[RobloxNavBarViewController webView:didFailLoadWithError:]")]
-pub fn stub_54d2c() -> ! {
-    todo!("0x54d2c -[RobloxNavBarViewController webView:didFailLoadWithError:]")
+pub fn stub_54d2c() {
+    // IDA 0x54d2c `webView:didFailLoadWithError:`: the page indicator hides
+    // (0x54d3c..0x54d52).
+    NAVBAR.fail_load();
 }
 
 // 0x54d58 — -[RobloxNavBarViewController webViewDidStartLoad:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController webViewDidStartLoad:]")]
-pub fn stub_54d58() -> ! {
-    todo!("0x54d58 -[RobloxNavBarViewController webViewDidStartLoad:]")
+pub fn stub_54d58(is_self: bool, loading: bool) {
+    // IDA 0x54d58 `webViewDidStartLoad:`: the main web view, while loading,
+    // unhides the page indicator (0x54d6e..0x54dae).
+    NAVBAR.start_load(is_self, loading);
 }
 
 // 0x54db4 — -[RobloxNavBarViewController webViewDidFinishLoad:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController webViewDidFinishLoad:]")]
-pub fn stub_54db4() -> ! {
-    todo!("0x54db4 -[RobloxNavBarViewController webViewDidFinishLoad:]")
+pub fn stub_54db4(can_go_back: bool) {
+    // IDA 0x54db4 `webViewDidFinishLoad:`: a set robux-refresh flag updates
+    // user info and clears (0x54dc6..0x54de0); without back history hides
+    // the back button (0x54e00..0x54e14); the indicator hides (0x54e26..0x54e3c).
+    NAVBAR.finish_load(can_go_back);
 }
 
 // 0x54e40 — -[RobloxNavBarViewController updateUserInfoDisplay:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, bool)
 #[doc(alias = "-[RobloxNavBarViewController updateUserInfoDisplay:]")]
-pub fn stub_54e40() -> ! {
-    todo!("0x54e40 -[RobloxNavBarViewController updateUserInfoDisplay:]")
+pub fn stub_54e40(refresh: bool, logged_in: bool, robux: &str, tix: &str) {
+    // IDA 0x54e40 `updateUserInfoDisplay:`: with refresh pulls
+    // `UpdatePlayerInfo` (0x54e7c..0x54e8c); logged in shows the
+    // robux/tix labels with counts (0x54ec8..0x54f98), else hides them all
+    // (0x54fa0..0x54fec).
+    NAVBAR.update_user_info(refresh, logged_in, robux, tix);
 }
 
 // 0x54ff0 — -[RobloxNavBarViewController MenuClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController MenuClick:]")]
-pub fn stub_54ff0() -> ! {
-    todo!("0x54ff0 -[RobloxNavBarViewController MenuClick:]")
+pub fn stub_54ff0(is_playing: bool) {
+    // IDA 0x54ff0 `MenuClick:`: outside a game the `__40…` dismiss block
+    // runs via `dispatch_async` (0x55058..0x5506c, inline).
+    NAVBAR.menu_click(is_playing);
 }
 
 // 0x55074 — ___40-[RobloxNavBarViewController MenuClick:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[RobloxNavBarViewController MenuClick:]_block_invoke")]
-pub fn stub_55074() -> ! {
-    todo!("0x55074 ___40-[RobloxNavBarViewController MenuClick:]_block_invoke")
+pub fn stub_55074() {
+    // IDA 0x55074 `__40-MenuClick_block_invoke` (via `dispatch_async`,
+    // inline): `dismissViewControllerAnimated:1` (completion nil).
+    NAVBAR.dismiss_block();
 }
 
 // 0x550a0 — +[RobloxNavBarViewController mostRecentViewController]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxNavBarViewController mostRecentViewController]")]
-pub fn stub_550a0() -> ! {
-    todo!("0x550a0 +[RobloxNavBarViewController mostRecentViewController]")
+pub fn stub_550a0() -> Option<ControlId> {
+    // IDA 0x550a0 `+mostRecentViewController`: the `dword_130C5E0` slot
+    // written by `-viewWillAppear:` (0x53fec).
+    NAVBAR.most_recent()
 }
 
 // 0x550b0 — -[RobloxNavBarViewController setMainWebView:]
