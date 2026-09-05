@@ -1,6 +1,230 @@
 // Auto-generated next 100 RBX::Reflection stubs — EA-sorted after 0x5c001c
 // Source: ida/export.json filtered demangled contains RBX::Reflection
 // Format: // 0xADDR — mangled, #[doc(alias = "RBX::...")] with rbx_core::SharedPtr, todo!("0xADDR")
+#![allow(clippy::type_complexity)]
+use crate::descriptor::{Color3, GenericSlotWrapper, Variant, Vector3};
+use parking_lot::Mutex;
+use rbx_core::SharedPtr;
+use rbx_core::signal::Signal;
+
+/// Minimal `RBX::Lighting` state visible to its reflection bindings. Each field
+/// stands in for one bound data member (BoundProp) or getter/setter pair
+/// (PropDescriptor); the member offsets/adjusts (`obj - 36`, `*(this + 8)`) are
+/// member-pointer mechanics with no Rust equivalent.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct LightingState {
+    pub bound_bool: bool,
+    pub bound_color: Color3,
+    pub bound_float: f32,
+    pub prop_bool: bool,
+    pub prop_color: Color3,
+    pub prop_float: f32,
+    pub prop_text: String,
+}
+
+/// Get/set pair behind `BoundProp<bool, Lighting>` (IDA 0x5c34dc ctor).
+pub struct LightingBoundBoolAccess {
+    pub get: Box<dyn Fn(&LightingState) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, bool) + Send + Sync>,
+}
+
+/// Get/set pair behind `BoundProp<Color3, Lighting>` (IDA 0x5c36d4 ctor).
+pub struct LightingBoundColorAccess {
+    pub get: Box<dyn Fn(&LightingState) -> Color3 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, Color3) + Send + Sync>,
+}
+
+/// Get/set pair behind `BoundProp<float, Lighting>` (IDA 0x5c3928 ctor).
+pub struct LightingBoundFloatAccess {
+    pub get: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, f32) + Send + Sync>,
+}
+
+/// Get/set pair behind `PropDescriptor<Lighting, bool>` (IDA 0x5c3b2c ctor).
+pub struct LightingBoolAccess {
+    pub get: Box<dyn Fn(&LightingState) -> bool + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, bool) + Send + Sync>,
+}
+
+/// Get/set pair behind `PropDescriptor<Lighting, Color3>` (IDA 0x5c3cbc ctor).
+pub struct LightingColorAccess {
+    pub get: Box<dyn Fn(&LightingState) -> Color3 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, Color3) + Send + Sync>,
+}
+
+/// Get/set pair behind `PropDescriptor<Lighting, float>` (IDA 0x5c4754 ctor).
+pub struct LightingFloatAccess {
+    pub get: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, f32) + Send + Sync>,
+}
+
+/// Get/set pair behind `PropDescriptor<Lighting, string>` (IDA 0x5c48e0 ctor).
+pub struct LightingTextAccess {
+    pub get: Box<dyn Fn(&LightingState) -> String + Send + Sync>,
+    pub set: Box<dyn Fn(&mut LightingState, String) + Send + Sync>,
+}
+
+/// `RBX::Reflection::BoundProp<bool, Mutable>` bound to `Lighting` (IDA 0x5c34dc):
+/// base `TypedPropertyDescriptor<bool>` init plus the member offset. The
+/// `onPropChanged` member-function pointer folds into the `stub_0x5c2ea8` call
+/// in `stub_0x5c3684`/`stub_0x5c3894`/`stub_0x5c3ad0`.
+pub struct LightingBoundBoolProp {
+    pub name: String,
+    pub category: String,
+    pub access: LightingBoundBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::BoundProp<Color3, Mutable>` bound to `Lighting` (IDA 0x5c36d4).
+pub struct LightingBoundColorProp {
+    pub name: String,
+    pub category: String,
+    pub access: LightingBoundColorAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::BoundProp<float, Mutable>` bound to `Lighting` (IDA 0x5c3928).
+pub struct LightingBoundFloatProp {
+    pub name: String,
+    pub category: String,
+    pub access: LightingBoundFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<Lighting, bool>` (IDA 0x5c3b2c).
+pub struct LightingBoolPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightingBoolAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<Lighting, Color3>` (IDA 0x5c3cbc).
+pub struct LightingColorPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightingColorAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<Lighting, float>` (IDA 0x5c4754).
+pub struct LightingFloatPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightingFloatAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::PropDescriptor<Lighting, string>` (IDA 0x5c48e0).
+pub struct LightingTextPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: LightingTextAccess,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Lighting, double(), 0>` (IDA 0x5c4120): base
+/// `FunctionDescriptor` init, member pair, `Type::getSingleton<double>` return
+/// type (cf. the int twin at 0xfd0c recording its return type at +0x1C).
+pub struct LightingDoubleFuncDesc {
+    pub name: String,
+    pub call: Box<dyn Fn(&LightingState) -> f64 + Send + Sync>,
+    pub return_type: &'static str,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Lighting, Vector3(), 0>` (IDA 0x5c4338).
+pub struct LightingVector3FuncDesc {
+    pub name: String,
+    pub call: Box<dyn Fn(&LightingState) -> Vector3 + Send + Sync>,
+    pub return_type: &'static str,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Lighting, float(), 0>` (IDA 0x5c4548).
+pub struct LightingFloatFuncDesc {
+    pub name: String,
+    pub call: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    pub return_type: &'static str,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<Lighting, void(double), 1>` (IDA 0x5c3e68):
+/// base init plus the member pair; `declareSignature` (0x5c3fe0) appends the one
+/// double argument (cf. the string twin at 0x259838).
+pub struct LightingVoidDoubleFuncDesc {
+    pub name: String,
+    pub category: String,
+    pub call: Box<dyn Fn(&mut LightingState, f64) + Send + Sync>,
+    pub return_type: &'static str,
+    pub args: Vec<(String, &'static str)>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// Signature argument kinds of `EventDesc<Lighting, void(bool)>`
+/// (IDA 0x5c4a74 `Type::getSingleton<bool>`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LightingEventArg {
+    Bool,
+}
+
+/// `RBX::Reflection::EventDesc<Lighting, void(bool), ...>` (IDA 0x5c4a74): base
+/// `EventDescriptor` init, member-signal pointer stored at +40, one-item
+/// signature list appended (cf. the two-item Explosion twin at 0x4a38b8).
+#[derive(Debug, Clone)]
+pub struct LightingEventDesc {
+    pub name: String,
+    pub category: String,
+    pub member: usize,
+    pub signature: Vec<(String, LightingEventArg)>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
+
+/// Connected slot for the Lighting bool signal: the original signal owns its
+/// slots until `disconnectAll`; the strong refs live in `holders` because
+/// `Signal::connect` keeps only weak refs (cf. 0x4a3b5c/0x4a3e20).
+type LightingBoolSlot = SharedPtr<dyn Fn(bool) + Send + Sync>;
+
+/// `RBX::Reflection::EventSource` for the Lighting signal: owns the connected slots.
+/// Backed by `rbx_core::signal::Signal` (IDA 0x5c4cac/0x5c4e8c).
+#[derive(Default)]
+pub struct LightingEventSource {
+    signal: Signal<bool>,
+    holders: Mutex<Vec<(SharedPtr<GenericSlotWrapper>, LightingBoolSlot)>>,
+}
+
+impl LightingEventSource {
+    pub fn connect_slot(&self, wrapper: SharedPtr<GenericSlotWrapper>) {
+        let w = SharedPtr::clone(&wrapper);
+        let slot = std::sync::Arc::new(move |value: bool| w.execute1(value));
+        // `Signal::connect` takes `Arc<F>` with a sized `F`: connect the
+        // concrete closure Arc, then erase to the trait object for `holders`.
+        self.signal.connect(std::sync::Arc::clone(&slot));
+        let slot: LightingBoolSlot = slot;
+        self.holders.lock().push((wrapper, slot));
+    }
+
+    pub fn fire(&self, value: bool) {
+        self.signal.fire(value);
+    }
+
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
 
 // 0x5c16f0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::EnumDesc(void)")]
@@ -79,14 +303,36 @@ pub fn stub_0x5c2e84() {
 
 // 0x5c2ea8 — __ZN3RBX8Lighting13onPropChangedERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Lighting::onPropChanged(RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_0x5c2ea8() -> ! {
-    todo!("0x5c2ea8 RBX::Lighting::onPropChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x5c2ea8(prop_name: &str) {
+    // IDA 0x5c2ea8: `RBX::Lighting::onPropChanged` — reacts to a changed
+    // property by pushing the update to the render backend (rendering crate
+    // side). Reflection-side cutover no-op; the descriptor argument folds to
+    // the changed property name.
+    let _ = prop_name;
 }
 
 // 0x5c34dc — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_8LightingEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,bool RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c34dc() -> ! {
-    todo!("0x5c34dc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,bool RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c34dc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingBoundBoolProp {
+    // IDA 0x5c34dc: base `TypedPropertyDescriptor<bool>` init, vtable installs,
+    // member-offset store plus name/category/attribute wiring (same ctor shape
+    // as the Explosion bool twin pattern at 0x4a64ac). The `onPropChanged`
+    // member-function pointer folds into the `stub_0x5c2ea8` call in
+    // `stub_0x5c3684`.
+    LightingBoundBoolProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingBoundBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c3670 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE10isReadOnlyEv
@@ -105,20 +351,50 @@ pub fn stub_0x5c3674() -> bool {
 
 // 0x5c3678 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c3678() -> ! {
-    todo!("0x5c3678 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c3678(prop: &LightingBoundBoolProp, obj: &LightingState) -> bool {
+    // IDA 0x5c3678 (decompiled): `return *(u8 *)(*(a1 + 8) + a2 - 36)` — the
+    // member offset at +8 added to the `obj - 36` base adjust. The adjust and
+    // offset are member-pointer mechanics; the observable effect is the field
+    // load through the bound access pair.
+    (prop.access.get)(obj)
 }
 
 // 0x5c3684 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x5c3684() -> ! {
-    todo!("0x5c3684 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x5c3684(prop: &LightingBoundBoolProp, obj: &mut LightingState, value: bool) {
+    // IDA 0x5c3684 (decompiled): null→`obj - 36` adjust (0x5c3688-0x5c368e),
+    // compare the member at +8 against the incoming byte (0x5c369c), early-out
+    // when equal, else store (0x5c36a0) and run the `onPropChanged` member-fn
+    // notify (0x5c36a2-0x5c36b0). Same compare-store-notify shape as the
+    // Explosion twin at 0x4a6680.
+    if (prop.access.get)(obj) != value {
+        (prop.access.set)(obj, value);
+        stub_0x5c2ea8(&prop.name);
+    }
 }
 
 // 0x5c36d4 — __ZN3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EEC2INS_8LightingEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,G3D::Color3 RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c36d4() -> ! {
-    todo!("0x5c36d4 RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,G3D::Color3 RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c36d4(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> Color3 + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, Color3) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingBoundColorProp {
+    // IDA 0x5c36d4: base `TypedPropertyDescriptor<Color3>` init, vtable
+    // installs, member-offset store plus name/category/attribute wiring (same
+    // ctor shape as the Vector3 twin at 0x4a60bc). The `onPropChanged`
+    // member-function pointer folds into the `stub_0x5c2ea8` call in
+    // `stub_0x5c3894`.
+    LightingBoundColorProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingBoundColorAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c3868 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE10isReadOnlyEv
@@ -137,20 +413,49 @@ pub fn stub_0x5c386c() -> bool {
 
 // 0x5c3870 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c3870() -> ! {
-    todo!("0x5c3870 RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c3870(prop: &LightingBoundColorProp, obj: &LightingState) -> Color3 {
+    // IDA 0x5c3870 (decompiled): null→`obj - 36` adjust (0x5c3874-0x5c3876),
+    // add the member offset at +8 (0x5c387c), copy 12 bytes out
+    // (0x5c3882-0x5c388c). Same 3-word copy as the Explosion Vector3 twin at
+    // 0x4a63fc; the adjust/offset is member-pointer mechanics.
+    (prop.access.get)(obj)
 }
 
 // 0x5c3894 — __ZNK3RBX10Reflection9BoundPropIN3G3D6Color3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
-pub fn stub_0x5c3894() -> ! {
-    todo!("0x5c3894 RBX::Reflection::BoundProp<G3D::Color3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_0x5c3894(prop: &LightingBoundColorProp, obj: &mut LightingState, value: &Color3) {
+    // IDA 0x5c3894 (decompiled): member adjust + offset (0x5c3898-0x5c38aa),
+    // component-wise compare with early-out when all three match
+    // (0x5c38b8-0x5c38e6), else store and run the `onPropChanged` notify.
+    // Same compare-store-notify shape as the Vector3 twin at 0x4a6418.
+    if (prop.access.get)(obj) != *value {
+        (prop.access.set)(obj, *value);
+        stub_0x5c2ea8(&prop.name);
+    }
 }
 
 // 0x5c3928 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_8LightingEEEPKcS7_MT_fMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,float RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c3928() -> ! {
-    todo!("0x5c3928 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Lighting>(char const*,char const*,float RBX::Lighting::*,void (RBX::Lighting::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c3928(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingBoundFloatProp {
+    // IDA 0x5c3928: base `TypedPropertyDescriptor<float>` init, vtable
+    // installs, member-offset store plus name/category/attribute wiring (same
+    // ctor shape as the float twin at 0x4a64ac). The `onPropChanged`
+    // member-function pointer folds into the `stub_0x5c2ea8` call in
+    // `stub_0x5c3ad0`.
+    LightingBoundFloatProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingBoundFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c3abc — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE10isReadOnlyEv
@@ -169,20 +474,48 @@ pub fn stub_0x5c3ac0() -> bool {
 
 // 0x5c3ac4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c3ac4() -> ! {
-    todo!("0x5c3ac4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c3ac4(prop: &LightingBoundFloatProp, obj: &LightingState) -> f32 {
+    // IDA 0x5c3ac4 (decompiled): single load `*(member_offset(a1 + 8) + obj -
+    // 36)` (0x5c3acc) — a direct data-member binding with no virtual adjust
+    // (same shape as the float twin at 0x4a6674).
+    (prop.access.get)(obj)
 }
 
 // 0x5c3ad0 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8LightingEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x5c3ad0() -> ! {
-    todo!("0x5c3ad0 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Lighting>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x5c3ad0(prop: &LightingBoundFloatProp, obj: &mut LightingState, value: f32) {
+    // IDA 0x5c3ad0 (decompiled): member adjust + offset (0x5c3ad4-0x5c3ae6),
+    // early-out when equal (0x5c3af4), else store (0x5c3af8) and
+    // `raisePropertyChanged`/`onPropChanged` when the notify member at
+    // +12/+16 is set (0x5c3afc-0x5c3b04). Same compare-store-notify shape as
+    // the float twin at 0x4a6680.
+    if (prop.access.get)(obj) != value {
+        (prop.access.set)(obj, value);
+        stub_0x5c2ea8(&prop.name);
+    }
 }
 
 // 0x5c3b2c — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::PropDescriptor<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>(char const*,char const*,bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c3b2c() -> ! {
-    todo!("0x5c3b2c RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::PropDescriptor<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>(char const*,char const*,bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c3b2c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> bool + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, bool) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingBoolPropDesc {
+    // IDA 0x5c3b2c: base `PropertyDescriptor` init, vtable installs,
+    // getter/setter member-pointer pair stored into the `GetSetImpl` (same
+    // shape as the float twin at 0x4a66dc, whose `new(0x14)` member desc
+    // holding (getter, setter) is described at 0x4a5834).
+    LightingBoolPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingBoolAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c3c40 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEbED0Ev
@@ -207,20 +540,43 @@ pub fn stub_0x5c3c70() -> bool {
 
 // 0x5c3c74 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::GetSetImpl<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c3c74() -> ! {
-    todo!("0x5c3c74 RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::GetSetImpl<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c3c74(access: &LightingBoolAccess, obj: &LightingState) -> bool {
+    // IDA 0x5c3c74: member-pointer dispatch out of the +4/+8 pair with the
+    // `a2 ? a2-36 : 0` base adjust and the virtual/low-bit branches (same
+    // dispatch shape as the twin at 0xfcbc). Rust folds the pair into the
+    // access closure; the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x5c3c98 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::GetSetImpl<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x5c3c98() -> ! {
-    todo!("0x5c3c98 RBX::Reflection::PropDescriptor<RBX::Lighting,bool>::GetSetImpl<bool (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x5c3c98(access: &LightingBoolAccess, obj: &mut LightingState, value: bool) {
+    // IDA 0x5c3c98: same member-pointer dispatch as the getValue twin at
+    // 0x5c3c74, forwarding the bool payload through the setter at +12/+16
+    // (same shape as the twin at 0xfce8).
+    (access.set)(obj, value);
 }
 
 // 0x5c3cbc — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c3cbc() -> ! {
-    todo!("0x5c3cbc RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c3cbc(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> Color3 + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, Color3) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingColorPropDesc {
+    // IDA 0x5c3cbc: base `PropertyDescriptor` init, vtable installs,
+    // getter/setter member-pointer pair stored into the `GetSetImpl` (same
+    // shape as the float twin at 0x4a66dc).
+    LightingColorPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingColorAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c3dd0 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EED0Ev
@@ -245,26 +601,53 @@ pub fn stub_0x5c3e00() -> bool {
 
 // 0x5c3e04 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c3e04() -> ! {
-    todo!("0x5c3e04 RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c3e04(access: &LightingColorAccess, obj: &LightingState) -> Color3 {
+    // IDA 0x5c3e04: member-pointer dispatch out of the +4/+8 pair with the
+    // `a2 ? a2-36 : 0` base adjust (same dispatch shape as the twin at
+    // 0xfcbc); the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x5c3e2c — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
-pub fn stub_0x5c3e2c() -> ! {
-    todo!("0x5c3e2c RBX::Reflection::PropDescriptor<RBX::Lighting,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_0x5c3e2c(access: &LightingColorAccess, obj: &mut LightingState, value: &Color3) {
+    // IDA 0x5c3e2c: same member-pointer dispatch as the getValue twin at
+    // 0x5c3e04, forwarding the Color3 payload through the setter at +12/+16.
+    (access.set)(obj, *value);
 }
 
 // 0x5c3e68 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EEC2EMS2_FvdEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::BoundFuncDesc(void (RBX::Lighting::*)(double),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5c3e68() -> ! {
-    todo!("0x5c3e68 RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::BoundFuncDesc(void (RBX::Lighting::*)(double),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5c3e68(
+    name: &str,
+    category: &str,
+    call: Box<dyn Fn(&mut LightingState, f64) + Send + Sync>,
+    permissions: u32,
+    attributes: u32,
+) -> LightingVoidDoubleFuncDesc {
+    // IDA 0x5c3e68: `Described<Lighting>::classDescriptor()` + base
+    // `FunctionDescriptor` init, member pair at +40, void return with one
+    // double argument (same inline shape as the string twin at 0x2596a0),
+    // vtable install. The return/argument types are fixed by
+    // `declareSignature` (0x5c3fe0).
+    LightingVoidDoubleFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        call,
+        return_type: "void",
+        args: Vec::new(),
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5c3fe0 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x5c3fe0() -> ! {
-    todo!("0x5c3fe0 RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x5c3fe0(desc: &mut LightingVoidDoubleFuncDesc, arg_name: &str) {
+    // IDA 0x5c3fe0: return type fixed to void, `Name::declare(arg name)`,
+    // argument type `Type::getSingleton<double>` appended (same declare shape
+    // as the string twin at 0x259838).
+    desc.args.push((arg_name.to_owned(), "double"));
 }
 
 // 0x5c4010 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EED0Ev
@@ -275,14 +658,39 @@ pub fn stub_0x5c4010() {
 
 // 0x5c40e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFvdELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5c40e4() -> ! {
-    todo!("0x5c40e4 RBX::Reflection::BoundFuncDesc<RBX::Lighting,void ()(double),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5c40e4(func: &LightingVoidDoubleFuncDesc, obj: &mut LightingState, args: &[Variant]) {
+    // IDA 0x5c40e4: member-offset adjust (`a2 ? a2-36 : 0`), then
+    // `Call1Helper::call(member-fn@+40/+44, args)` — `any_cast<double>` of the
+    // single argument, then the member call. The adjust is member-pointer
+    // mechanics; the observable effect is decoding the argument and invoking
+    // the bound callable (cf. the 0-arity twin at 0xfe30).
+    assert!(args.len() == 1, "BoundFuncDesc<void(double),1>::execute needs 1 argument");
+    let Variant::Double(arg) = args[0] else {
+        panic!("any_cast<double> failed (IDA 0x5c40e4)");
+    };
+    (func.call)(obj, arg);
 }
 
 // 0x5c4120 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EEC2EMS2_FdvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::BoundFuncDesc(double (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5c4120() -> ! {
-    todo!("0x5c4120 RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::BoundFuncDesc(double (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5c4120(
+    name: &str,
+    call: Box<dyn Fn(&LightingState) -> f64 + Send + Sync>,
+    permissions: u32,
+    attributes: u32,
+) -> LightingDoubleFuncDesc {
+    // IDA 0x5c4120: base `FunctionDescriptor` init against
+    // `describedClassDescriptor`, vtable install, the member-function pair
+    // stored at +0x28, return-type `Type::getSingleton<double>` recorded at
+    // +0x1C (same ctor shape as the int twin at 0xfd0c). The member function
+    // is fixed (arity 0, double return), so the pair folds into `call`.
+    LightingDoubleFuncDesc {
+        name: name.to_owned(),
+        call,
+        return_type: "double",
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5c4224 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EED0Ev
@@ -293,20 +701,46 @@ pub fn stub_0x5c4224() {
 
 // 0x5c42d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFdvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5c42d8() -> ! {
-    todo!("0x5c42d8 RBX::Reflection::BoundFuncDesc<RBX::Lighting,double ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5c42d8(func: &LightingDoubleFuncDesc, obj: &LightingState) -> f64 {
+    // IDA 0x5c42d8: member-offset adjust (`a2 ? a2-36 : 0`), then
+    // `Call0Helper::call(member-fn@+40/+44, args@+4)` (cf. the int twin at
+    // 0xfe30). The adjust is member-pointer mechanics; the observable effect
+    // is invoking the bound callable (see stub_0x5c42fc).
+    (func.call)(obj)
 }
 
 // 0x5c42fc — __ZN3RBX10Reflection11Call0HelperINS_8LightingEMS2_FdvEdE4callEPS2_S4_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Lighting,double (RBX::Lighting::*)(void),double>::call(RBX::Lighting*,double (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x5c42fc() -> ! {
-    todo!("0x5c42fc RBX::Reflection::Call0Helper<RBX::Lighting,double (RBX::Lighting::*)(void),double>::call(RBX::Lighting*,double (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x5c42fc(
+    func: &dyn Fn(&LightingState) -> f64,
+    obj: &LightingState,
+) -> Variant {
+    // IDA 0x5c42fc: member-pointer adjust (`a1 + (a3 >> 1)`, virtual via
+    // `a3 & 1`), `v = mf(obj)`, out = `Variant(double, v)` (same shape as the
+    // int twin at 0xfe54). Rust folds the member-pointer pair into `func`.
+    Variant::Double(func(obj))
 }
 
 // 0x5c4338 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5c4338() -> ! {
-    todo!("0x5c4338 RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5c4338(
+    name: &str,
+    call: Box<dyn Fn(&LightingState) -> Vector3 + Send + Sync>,
+    permissions: u32,
+    attributes: u32,
+) -> LightingVector3FuncDesc {
+    // IDA 0x5c4338: base `FunctionDescriptor` init against
+    // `describedClassDescriptor`, vtable install, the member-function pair
+    // stored at +0x28, return-type `Type::getSingleton<Vector3>` recorded at
+    // +0x1C (same ctor shape as the int twin at 0xfd0c). The member function
+    // is fixed (arity 0, Vector3 return), so the pair folds into `call`.
+    LightingVector3FuncDesc {
+        name: name.to_owned(),
+        call,
+        return_type: "Vector3",
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5c443c — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EED0Ev
@@ -317,20 +751,46 @@ pub fn stub_0x5c443c() {
 
 // 0x5c44f0 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5c44f0() -> ! {
-    todo!("0x5c44f0 RBX::Reflection::BoundFuncDesc<RBX::Lighting,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5c44f0(func: &LightingVector3FuncDesc, obj: &LightingState) -> Vector3 {
+    // IDA 0x5c44f0: member-offset adjust (`a2 ? a2-36 : 0`), then
+    // `Call0Helper::call(member-fn@+40/+44, args@+4)` (cf. the int twin at
+    // 0xfe30). The adjust is member-pointer mechanics; the observable effect
+    // is invoking the bound callable (see stub_0x5c4514).
+    (func.call)(obj)
 }
 
 // 0x5c4514 — __ZN3RBX10Reflection11Call0HelperINS_8LightingEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Lighting,G3D::Vector3 (RBX::Lighting::*)(void),G3D::Vector3>::call(RBX::Lighting*,G3D::Vector3 (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x5c4514() -> ! {
-    todo!("0x5c4514 RBX::Reflection::Call0Helper<RBX::Lighting,G3D::Vector3 (RBX::Lighting::*)(void),G3D::Vector3>::call(RBX::Lighting*,G3D::Vector3 (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x5c4514(
+    func: &dyn Fn(&LightingState) -> Vector3,
+    obj: &LightingState,
+) -> Variant {
+    // IDA 0x5c4514: member-pointer adjust (`a1 + (a3 >> 1)`, virtual via
+    // `a3 & 1`), `v = mf(obj)`, out = `Variant(Vector3, v)` (same shape as
+    // the int twin at 0xfe54). Rust folds the member-pointer pair into `func`.
+    Variant::Vector3(func(obj))
 }
 
 // 0x5c4548 — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::BoundFuncDesc(float (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5c4548() -> ! {
-    todo!("0x5c4548 RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::BoundFuncDesc(float (RBX::Lighting::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5c4548(
+    name: &str,
+    call: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    permissions: u32,
+    attributes: u32,
+) -> LightingFloatFuncDesc {
+    // IDA 0x5c4548: base `FunctionDescriptor` init against
+    // `describedClassDescriptor`, vtable install, the member-function pair
+    // stored at +0x28, return-type `Type::getSingleton<float>` recorded at
+    // +0x1C (same ctor shape as the int twin at 0xfd0c). The member function
+    // is fixed (arity 0, float return), so the pair folds into `call`.
+    LightingFloatFuncDesc {
+        name: name.to_owned(),
+        call,
+        return_type: "float",
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5c464c — __ZN3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EED0Ev
@@ -341,20 +801,46 @@ pub fn stub_0x5c464c() {
 
 // 0x5c4700 — __ZNK3RBX10Reflection13BoundFuncDescINS_8LightingEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5c4700() -> ! {
-    todo!("0x5c4700 RBX::Reflection::BoundFuncDesc<RBX::Lighting,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5c4700(func: &LightingFloatFuncDesc, obj: &LightingState) -> f32 {
+    // IDA 0x5c4700: member-offset adjust (`a2 ? a2-36 : 0`), then
+    // `Call0Helper::call(member-fn@+40/+44, args@+4)` (cf. the int twin at
+    // 0xfe30). The adjust is member-pointer mechanics; the observable effect
+    // is invoking the bound callable (see stub_0x5c4724).
+    (func.call)(obj)
 }
 
 // 0x5c4724 — __ZN3RBX10Reflection11Call0HelperINS_8LightingEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::Lighting,float (RBX::Lighting::*)(void),float>::call(RBX::Lighting*,float (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x5c4724() -> ! {
-    todo!("0x5c4724 RBX::Reflection::Call0Helper<RBX::Lighting,float (RBX::Lighting::*)(void),float>::call(RBX::Lighting*,float (RBX::Lighting::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x5c4724(
+    func: &dyn Fn(&LightingState) -> f32,
+    obj: &LightingState,
+) -> Variant {
+    // IDA 0x5c4724: member-pointer adjust (`a1 + (a3 >> 1)`, virtual via
+    // `a3 & 1`), `v = mf(obj)`, out = `Variant(float, v)` (same shape as the
+    // int twin at 0xfe54). Rust folds the member-pointer pair into `func`.
+    Variant::Float(func(obj))
 }
 
 // 0x5c4754 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,float>::PropDescriptor<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>(char const*,char const*,float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c4754() -> ! {
-    todo!("0x5c4754 RBX::Reflection::PropDescriptor<RBX::Lighting,float>::PropDescriptor<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>(char const*,char const*,float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c4754(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> f32 + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, f32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingFloatPropDesc {
+    // IDA 0x5c4754: base `PropertyDescriptor` init, vtable installs,
+    // getter/setter member-pointer pair stored into the `GetSetImpl` (same
+    // shape as the float twin at 0x4a66dc).
+    LightingFloatPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingFloatAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c4868 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingEfED0Ev
@@ -379,20 +865,42 @@ pub fn stub_0x5c4898() -> bool {
 
 // 0x5c489c — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,float>::GetSetImpl<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c489c() -> ! {
-    todo!("0x5c489c RBX::Reflection::PropDescriptor<RBX::Lighting,float>::GetSetImpl<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c489c(access: &LightingFloatAccess, obj: &LightingState) -> f32 {
+    // IDA 0x5c489c: member-pointer dispatch out of the +4/+8 pair with the
+    // `a2 ? a2-36 : 0` base adjust (same dispatch shape as the float twin at
+    // 0x4a6824); the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x5c48bc — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,float>::GetSetImpl<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x5c48bc() -> ! {
-    todo!("0x5c48bc RBX::Reflection::PropDescriptor<RBX::Lighting,float>::GetSetImpl<float (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x5c48bc(access: &LightingFloatAccess, obj: &mut LightingState, value: f32) {
+    // IDA 0x5c48bc: same member-pointer dispatch as the getValue twin at
+    // 0x5c489c, forwarding the float payload through the setter at +12/+16
+    // (same shape as the twin at 0x4a6844).
+    (access.set)(obj, value);
 }
 
 // 0x5c48e0 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsEC2IMS2_KFSsvEMS2_FvRKSsEEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::PropDescriptor<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>(char const*,char const*,std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5c48e0() -> ! {
-    todo!("0x5c48e0 RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::PropDescriptor<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>(char const*,char const*,std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5c48e0(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&LightingState) -> String + Send + Sync>,
+    set: Box<dyn Fn(&mut LightingState, String) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> LightingTextPropDesc {
+    // IDA 0x5c48e0: base `PropertyDescriptor` init, vtable installs,
+    // getter/setter member-pointer pair stored into the `GetSetImpl` (same
+    // shape as the float twin at 0x4a66dc).
+    LightingTextPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: LightingTextAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5c49f4 — __ZN3RBX10Reflection14PropDescriptorINS_8LightingESsED0Ev
@@ -417,20 +925,44 @@ pub fn stub_0x5c4a24() -> bool {
 
 // 0x5c4a28 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::GetSetImpl<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5c4a28() -> ! {
-    todo!("0x5c4a28 RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::GetSetImpl<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5c4a28(access: &LightingTextAccess, obj: &LightingState) -> String {
+    // IDA 0x5c4a28: member-pointer dispatch out of the +4/+8 pair with the
+    // `a2 ? a2-36 : 0` base adjust (same dispatch shape as the twin at
+    // 0xfcbc); the observable effect is the get.
+    (access.get)(obj)
 }
 
 // 0x5c4a50 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::GetSetImpl<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x5c4a50() -> ! {
-    todo!("0x5c4a50 RBX::Reflection::PropDescriptor<RBX::Lighting,std::string>::GetSetImpl<std::string (RBX::Lighting::*)(void)const,void (RBX::Lighting::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x5c4a50(access: &LightingTextAccess, obj: &mut LightingState, value: &str) {
+    // IDA 0x5c4a50: same member-pointer dispatch as the getValue twin at
+    // 0x5c4a28, forwarding the string payload through the setter at +12/+16.
+    // `&str` folds the `std::string const&` parameter.
+    (access.set)(obj, value.to_owned());
 }
 
 // 0x5c4a74 — __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::EventDesc(rbx::signal<void ()(bool)> RBX::Lighting::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5c4a74() -> ! {
-    todo!("0x5c4a74 RBX::Reflection::EventDesc<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::EventDesc(rbx::signal<void ()(bool)> RBX::Lighting::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5c4a74(
+    member: usize,
+    name: &str,
+    category: &str,
+    permissions: u32,
+    attributes: u32,
+) -> LightingEventDesc {
+    // IDA 0x5c4a74: base `EventDescriptor` init, member-signal pointer stored
+    // at +40, vtable install, then one signature item appended: `(arg0_name,
+    // bool)` via `Type::getSingleton<bool>` (cf. the two-item Explosion twin
+    // at 0x4a38b8, whose `0x4a3966`/`0x4a39a2` appends are mirrored here by
+    // the single bool).
+    LightingEventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        signature: vec![(category.to_owned(), LightingEventArg::Bool)],
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5c4bf8 — __ZN3RBX10Reflection9EventDescINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
@@ -441,20 +973,38 @@ pub fn stub_0x5c4bf8() {
 
 // 0x5c4cac — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x5c4cac() -> ! {
-    todo!("0x5c4cac RBX::Reflection::EventDescImpl<1,RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5c4cac(source: Option<&LightingEventSource>, wrapper: SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x5c4cac: builds `bind(execute1, wrapper, _1)`, wraps it in a
+    // `boost::function`, then `signal::connect(member-signal-of-source, fn)`
+    // (same connect shape as the Explosion twin at 0x4a3b5c). Null source
+    // stores an empty connection.
+    if let Some(source) = source {
+        source.connect_slot(wrapper);
+    }
+    // `function1::clear()` drops the temp; `Arc` drop glue covers it.
 }
 
 // 0x5c4e00 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x5c4e00() -> ! {
-    todo!("0x5c4e00 RBX::Reflection::EventDescImpl<1,RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x5c4e00(source: &LightingEventSource, args: &[Variant]) {
+    // IDA 0x5c4e00: `ReleaseAssert(args.size() == 1)` (Event.h, cf. the
+    // 2-arity assert at 0x4a3d14), then `any_cast<bool>(args[0])` and the
+    // 1-arg `signal_with_args<1>::operator()`.
+    assert!(args.len() == 1, "args.size() == 1 include/Reflection/Event.h");
+    let Variant::Bool(value) = &args[0] else {
+        panic!("any_cast<bool> failed (IDA 0x5c4e00)");
+    };
+    source.fire(*value);
 }
 
 // 0x5c4e8c — __ZNK3RBX10Reflection13EventDescBaseINS_8LightingEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x5c4e8c() -> ! {
-    todo!("0x5c4e8c RBX::Reflection::EventDescBase<RBX::Lighting,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Lighting::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x5c4e8c(source: &LightingEventSource) {
+    // IDA 0x5c4e8c: member-offset adjust (`a2 ? a2 - 36 : 0`), then
+    // `signal::disconnectAll(member)` (same shape as the Explosion twin at
+    // 0x4a3e20). The adjust is member-pointer mechanics; the observable
+    // effect is dropping every slot.
+    source.disconnect_all();
 }
 
 // 0x5c7230 — __ZN3RBX10Reflection13BoundFuncDescINS_13LocalBackpackEFvbELi1EED1Ev
@@ -4974,4 +5524,125 @@ pub fn stub_0x77a0b8() -> ! {
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable2IvP9lua_StateP9lua_DebugE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerES4_S6_NS_8functionIFNS_10shared_ptrIKSt3mapISsNSD_10Reflection7VariantESt4lessISsESaISt4pairIKSsSK_EEEEES4_S6_EEERST_RNSH_ISsEEEENS9_5list6INS9_5valueIPSF_EENS_3argILi1EEENS14_ILi2EEENS11_ISV_EENS_17reference_wrapperIST_EENS18_ISX_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 pub fn stub_0x77a1a0() -> ! {
     todo!("0x77a1a0 void boost::detail::function::basic_vtable2<void,lua_State *,lua_Debug *>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf5<void,RBX::Scripting::ScriptDebugger,lua_State *,lua_Debug *,boost::function<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(lua_State *,lua_Debug *)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&,boost::shared_ptr<std::string> &>,boost::_bi::list6<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(lua_State *,lua_Debug *)>>,boost::reference_wrapper<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>,boost::reference_wrapper<boost::shared_ptr<std::string>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf5<void,RBX::Scripting::ScriptDebugger,lua_State *,lua_Debug *,boost::function<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(lua_State *,lua_Debug *)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>&,boost::shared_ptr<std::string> &>,boost::_bi::list6<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(lua_State *,lua_Debug *)>>,boost::reference_wrapper<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>,boost::reference_wrapper<boost::shared_ptr<std::string>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+#[cfg(test)]
+mod lighting_batch_tests {
+    use super::*;
+    use crate::descriptor::GenericSlotWrapper;
+
+    fn bool_prop(name: &str) -> LightingBoundBoolProp {
+        stub_0x5c34dc(
+            name,
+            "Data",
+            Box::new(|s: &LightingState| s.bound_bool),
+            Box::new(|s: &mut LightingState, v: bool| s.bound_bool = v),
+            0,
+            0,
+        )
+    }
+
+    #[test]
+    fn bound_bool_compare_store_and_notify() {
+        let prop = bool_prop("GlobalShadows");
+        let mut state = LightingState::default();
+        assert!(!stub_0x5c3678(&prop, &state));
+        stub_0x5c3684(&prop, &mut state, true);
+        assert!(stub_0x5c3678(&prop, &state));
+        // Equal store keeps the value (early-out path at 0x5c369c).
+        stub_0x5c3684(&prop, &mut state, true);
+        assert!(state.bound_bool);
+    }
+
+    #[test]
+    fn bound_color_roundtrip() {
+        let prop = stub_0x5c36d4(
+            "Ambient",
+            "Data",
+            Box::new(|s: &LightingState| s.bound_color),
+            Box::new(|s: &mut LightingState, v: Color3| s.bound_color = v),
+            0,
+            0,
+        );
+        let mut state = LightingState::default();
+        let gray = [0.5, 0.5, 0.5];
+        stub_0x5c3894(&prop, &mut state, &gray);
+        assert_eq!(stub_0x5c3870(&prop, &state), gray);
+    }
+
+    #[test]
+    fn getset_float_and_text_dispatch() {
+        let fprop = stub_0x5c4754(
+            "Brightness",
+            "Data",
+            Box::new(|s: &LightingState| s.prop_float),
+            Box::new(|s: &mut LightingState, v: f32| s.prop_float = v),
+            0,
+            0,
+        );
+        let tprop = stub_0x5c48e0(
+            "TimeOfDay",
+            "Data",
+            Box::new(|s: &LightingState| s.prop_text.clone()),
+            Box::new(|s: &mut LightingState, v: String| s.prop_text = v),
+            0,
+            0,
+        );
+        let mut state = LightingState::default();
+        stub_0x5c48bc(&fprop.access, &mut state, 2.0);
+        assert_eq!(stub_0x5c489c(&fprop.access, &state), 2.0);
+        stub_0x5c4a50(&tprop.access, &mut state, "14:00:00");
+        assert_eq!(stub_0x5c4a28(&tprop.access, &state), "14:00:00");
+    }
+
+    #[test]
+    fn call0_wraps_double_and_vector3() {
+        let state = LightingState::default();
+        let d = stub_0x5c42fc(&|s: &LightingState| s.bound_float as f64, &state);
+        assert!(matches!(d, Variant::Double(v) if v == 0.0));
+        let v = stub_0x5c4514(&|_: &LightingState| [1.0, 2.0, 3.0], &state);
+        assert!(matches!(v, Variant::Vector3(v) if v == [1.0, 2.0, 3.0]));
+    }
+
+    #[test]
+    fn void_double_execute_decodes_variant() {
+        let func = stub_0x5c3e68(
+            "SetMinutes",
+            "Data",
+            Box::new(|s: &mut LightingState, v: f64| s.prop_float = v as f32),
+            0,
+            0,
+        );
+        assert_eq!(func.return_type, "void");
+        let mut desc = func;
+        stub_0x5c3fe0(&mut desc, "minutes");
+        assert_eq!(desc.args, vec![("minutes".to_owned(), "double")]);
+        let mut state = LightingState::default();
+        stub_0x5c40e4(&desc, &mut state, &[Variant::Double(30.0)]);
+        assert_eq!(state.prop_float, 30.0);
+    }
+
+    #[test]
+    fn bool_event_connect_fire_disconnect() {
+        let desc = stub_0x5c4a74(0x28, "Changed", "Data", 0, 0);
+        assert_eq!(desc.signature.len(), 1);
+        assert_eq!(desc.signature[0].1, LightingEventArg::Bool);
+        let source = LightingEventSource::default();
+        let seen = SharedPtr::new(Mutex::new(Vec::<bool>::new()));
+        let seen_in = SharedPtr::clone(&seen);
+        let wrapper = SharedPtr::new(GenericSlotWrapper {
+            invoke: Box::new(move |args: &[Variant]| {
+                if let Variant::Bool(v) = args[0] {
+                    seen_in.lock().push(v);
+                }
+            }),
+        });
+        stub_0x5c4cac(Some(&source), wrapper);
+        stub_0x5c4e00(&source, &[Variant::Bool(true)]);
+        assert_eq!(*seen.lock(), vec![true]);
+        stub_0x5c4e8c(&source);
+        stub_0x5c4e00(&source, &[Variant::Bool(false)]);
+        // Disconnected: no further delivery.
+        assert_eq!(*seen.lock(), vec![true]);
+    }
 }

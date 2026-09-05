@@ -17,8 +17,11 @@ pub struct InstanceHandle {
 pub enum Variant {
     Int(i32),
     Float(f32),
+    Double(f64),
     Bool(bool),
     Text(String),
+    Vector3(Vector3),
+    Color3(Color3),
     Instance(SharedPtr<InstanceHandle>),
 }
 
@@ -29,8 +32,11 @@ impl Variant {
         match self {
             Variant::Int(v) => *v,
             Variant::Float(v) => *v as i32,
+            Variant::Double(_) => panic!("Variant::convert<int> on double payload (IDA 0x4a5a80)"),
             Variant::Bool(_) => panic!("Variant::convert<int> on bool payload (IDA 0x4a5a80)"),
             Variant::Text(_) => panic!("Variant::convert<int> on string payload (IDA 0x4a5a80)"),
+            Variant::Vector3(_) => panic!("Variant::convert<int> on Vector3 payload (IDA 0x4a5a80)"),
+            Variant::Color3(_) => panic!("Variant::convert<int> on Color3 payload (IDA 0x4a5a80)"),
             Variant::Instance(_) => panic!("Variant::convert<int> on non-numeric payload (IDA 0x4a5a80)"),
         }
     }
@@ -51,6 +57,13 @@ impl GenericSlotWrapper {
             Variant::Instance(SharedPtr::clone(instance)),
             Variant::Float(value),
         ]);
+    }
+
+    /// Single-bool-argument twin of `execute2` for 1-arity events such as
+    /// `EventDesc<Lighting, void(bool)>` (IDA 0x5c4e00: `any_cast<bool>(args[0])`,
+    /// then the 1-arg signal emit; same vector pack/unpack shape as 0x4a40c8).
+    pub fn execute1(&self, value: bool) {
+        (self.invoke)(&[Variant::Bool(value)]);
     }
 }
 
@@ -97,7 +110,9 @@ impl EventSource {
                 w.execute2(&payload.0, payload.1);
             },
         );
-        self.signal.connect(SharedPtr::clone(&slot));
+        // `Signal::connect` takes `Arc<F>` with a sized `F`: connect the
+        // concrete closure Arc, then erase to the trait object for `holders`.
+        self.signal.connect(std::sync::Arc::clone(&slot));
         let slot: ExplosionSlot = slot;
         self.holders.lock().push((wrapper, slot));
     }
@@ -512,6 +527,8 @@ pub fn stub_0x4a5bf8(desc: &ExplosionEnumPropDesc, obj: &ExplosionState) -> Stri
 
 /// `G3D::Vector3` as stored on `Explosion` (12 bytes; IDA 0x4a640a copies `*v4` + `*(v4+8)`).
 pub type Vector3 = [f32; 3];
+/// `G3D::Color3` payload (12 bytes; 3-word copy at IDA 0x5c3882-0x5c388c).
+pub type Color3 = [f32; 3];
 
 /// Get/set pair behind `BoundProp<Vector3, Explosion>` (IDA 0x4a60bc ctor stores the member
 /// offset; `BoundPropGetSet` dispatches through it at 0x4a63fc/0x4a6418).
