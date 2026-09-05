@@ -1034,107 +1034,274 @@ pub fn stub_0x35ffc() {
 
 // 0x36020 — ___destroy_helper_block_20
 #[doc(alias = "___destroy_helper_block_20")]
-pub fn stub_0x36020() -> ! {
-    todo!("0x36020 ___destroy_helper_block_20")
+pub fn stub_0x36020() {
+    // IDA 0x36020: `__destroy_helper_block_20` releases both captures
+    // (message at 0x3602a, delegate at 0x36036). Block release glue; no
+    // explicit body.
 }
 
 // 0x3603c — __Z18getUserAgentStringv
 // type: id __fastcall()
 #[doc(alias = "getUserAgentString(void)")]
 #[doc(alias = "__Z18getUserAgentStringv")]
-pub fn stub_0x3603c() -> ! {
-    todo!("0x3603c getUserAgentString(void)")
+pub fn stub_0x3603c(model: &str, device_type: &str, os_version: &str, app_version: &str) -> String {
+    // IDA 0x3603c: `getUserAgentString()` forwards to
+    // `+[RobloxInfo getUserAgentString]` (0x3683c).
+    stub_0x3683c(model, device_type, os_version, app_version)
 }
 
 // 0x36058 — +[RobloxInfo getDeviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceType]")]
-pub fn stub_0x36058() -> ! {
-    todo!("0x36058 +[RobloxInfo getDeviceType]")
+pub fn stub_0x36058(device_type: Option<&str>) -> &'static str {
+    // IDA 0x36058: `getDeviceType` maps the `hw.machine` string by
+    // substring: contains `iPad` (0x360a2) → `iPad`; else contains
+    // `iPhone` (0x360c2) → `iPhone`; else contains `iPod` (0x360de) →
+    // `iPod`, else `Unknown` (0x360f0); a null string answers `iPad`
+    // (0x36104..0x36108).
+    match device_type {
+        None => "iPad",
+        Some(t) if t.contains("iPad") => "iPad",
+        Some(t) if t.contains("iPhone") => "iPhone",
+        Some(t) if t.contains("iPod") => "iPod",
+        Some(_) => "Unknown",
+    }
 }
 
 // 0x36114 — +[RobloxInfo getDeviceModelNumber]
 // type: int __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceModelNumber]")]
-pub fn stub_0x36114() -> ! {
-    todo!("0x36114 +[RobloxInfo getDeviceModelNumber]")
+pub fn stub_0x36114(is_tablet: bool, device_type: Option<&str>) -> i32 {
+    // IDA 0x36114: `getDeviceModelNumber` parses the generation digit out
+    // of the `hw.machine` string: tablets read past `iPad` (index + 4,
+    // 0x361fa, -1 when absent at 0x36180); phones read past `iPod`
+    // (index + 4, 0x36208) or `iPhone` (index + 6, 0x361d8, -1 when
+    // neither matches at 0x361bc); a null string answers 0 via the
+    // nil-receiver path (0x361e0/0x36202). `atoi` parses the leading
+    // digit run.
+    fn leading_number(s: &str) -> i32 {
+        s.bytes()
+            .take_while(u8::is_ascii_digit)
+            .fold(0i32, |acc, b| acc * 10 + i32::from(b - b'0'))
+    }
+    match (is_tablet, device_type) {
+        (true, None) | (false, None) => 0,
+        (true, Some(t)) => match t.find("iPad") {
+            None => -1,
+            Some(i) => leading_number(&t[i + 4..]),
+        },
+        (false, Some(t)) => match t.find("iPod") {
+            Some(i) => leading_number(&t[i + 4..]),
+            None => match t.find("iPhone") {
+                None => -1,
+                Some(i) => leading_number(&t[i + 6..]),
+            },
+        },
+    }
 }
 
 // 0x3622c — +[RobloxInfo thisDeviceIsATablet]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo thisDeviceIsATablet]")]
-pub fn stub_0x3622c() -> ! {
-    todo!("0x3622c +[RobloxInfo thisDeviceIsATablet]")
+pub fn stub_0x3622c(has_idiom: bool, idiom_is_pad: bool) -> bool {
+    // IDA 0x3622c: `thisDeviceIsATablet` answers 0 when the device lacks
+    // `userInterfaceIdiom` (0x3626c..0x36274), else whether the idiom is
+    // pad (`== 1`, 0x36282..0x3628a).
+    has_idiom && idiom_is_pad
 }
 
 // 0x36290 — +[RobloxInfo deviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceType]")]
-pub fn stub_0x36290() -> ! {
-    todo!("0x36290 +[RobloxInfo deviceType]")
+pub fn stub_0x36290(machine: &str) -> String {
+    // IDA 0x36290: `deviceType` sizes `hw.machine` via `sysctlbyname`
+    // (0x362b2), `malloc`s (0x362bc), reads it (0x362c8), wraps it in an
+    // `NSString` (0x362ea), and `free`s (0x362ee). MODEL: allocation
+    // folds into the owned return; the probed string is the input.
+    machine.to_owned()
 }
 
 // 0x362fc — +[RobloxInfo deviceOSVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceOSVersion]")]
-pub fn stub_0x362fc() -> ! {
-    todo!("0x362fc +[RobloxInfo deviceOSVersion]")
+pub fn stub_0x362fc(system_version: &str) -> String {
+    // IDA 0x362fc: `deviceOSVersion` answers the current device's
+    // `systemVersion` (0x36318). MODEL: the host probe is the input.
+    system_version.to_owned()
 }
 
 // 0x36330 — +[RobloxInfo appVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo appVersion]")]
-pub fn stub_0x36330() -> ! {
-    todo!("0x36330 +[RobloxInfo appVersion]")
+pub fn stub_0x36330(short_version: &str) -> String {
+    // IDA 0x36330: `appVersion` answers the main bundle's
+    // `CFBundleShortVersionString` (0x3634c). MODEL: the bundle probe is
+    // the input.
+    short_version.to_owned()
 }
 
 // 0x36370 — +[RobloxInfo friendlyDeviceName]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo friendlyDeviceName]")]
-pub fn stub_0x36370() -> ! {
-    todo!("0x36370 +[RobloxInfo friendlyDeviceName]")
+pub fn stub_0x36370(device_type: &str) -> &'static str {
+    // IDA 0x36370: `friendlyDeviceName` chains `isEqualToString:` over the
+    // `hw.machine` string (0x36390..0x3682e), falling back to `Unknown`
+    // (0x36836).
+    match device_type {
+        "iPhone1,1" => "iPhone 2G",
+        "iPhone1,2" => "iPhone 3G",
+        "iPhone2,1" => "iPhone 3GS",
+        "iPhone3,1" | "iPhone3,2" => "iPhone 4",
+        "iPhone3,3" => "iPhone 4 (CDMA)",
+        "iPhone4,1" => "iPhone 4S",
+        "iPhone5,1" => "iPhone 5",
+        "iPhone5,2" => "iPhone 5 (GSM+CDMA)",
+        "iPod1,1" => "iPod Touch (1 Gen)",
+        "iPod2,1" => "iPod Touch (2 Gen)",
+        "iPod3,1" => "iPod Touch (3 Gen)",
+        "iPod4,1" => "iPod Touch (4 Gen)",
+        "iPod5,1" => "iPod Touch (5 Gen)",
+        "iPad1,1" => "iPad",
+        "iPad1,2" => "iPad 3G",
+        "iPad2,1" => "iPad 2 (WiFi)",
+        "iPad2,2" | "iPad2,4" => "iPad 2",
+        "iPad2,3" => "iPad 2 (CDMA)",
+        "iPad2,5" => "iPad Mini (WiFi)",
+        "iPad2,6" => "iPad Mini",
+        "iPad2,7" => "iPad Mini (GSM+CDMA)",
+        "iPad3,1" => "iPad 3 (WiFi)",
+        "iPad3,2" => "iPad 3 (GSM+CDMA)",
+        "iPad3,3" => "iPad 3",
+        "iPad3,4" => "iPad 4 (WiFi)",
+        "iPad3,5" => "iPad 4",
+        "iPad3,6" => "iPad 4 (GSM+CDMA)",
+        "i386" => "Simulator 32 bit intel",
+        "x86_64" => "Simulator 64 bit intel",
+        _ => "Unknown",
+    }
 }
 
 // 0x3683c — +[RobloxInfo getUserAgentString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getUserAgentString]")]
-pub fn stub_0x3683c() -> ! {
-    todo!("0x3683c +[RobloxInfo getUserAgentString]")
+pub fn stub_0x3683c(model: &str, device_type: &str, os_version: &str, app_version: &str) -> String {
+    // IDA 0x3683c: `getUserAgentString` formats the device model (0x36884),
+    // `deviceType` (0x36898), system version (0x368b2), and bundle version
+    // (0x368e6) into the Mozilla/ROBLOX template (0x36914).
+    format!(
+        "Mozilla/5.0 ({model}; {device_type}; CPU iPhone OS {os_version} like Mac OS X) \
+         AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B176 ROBLOX iOS App {app_version}",
+    )
 }
 
+/// `RobloxInfo` cached URL state (IDA 0x36918..0x36bd4, RobloxInfo.m).
+/// The statics (`dword_130C460/464/468`) and `SetBaseUrl` C++ bridge live
+/// on the host; the cached strings and normalization are modeled here.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct BaseUrlState {
+    /// Normalized base URL (`dword_130C460`, trailing `/` ensured).
+    pub base: Option<String>,
+    /// `https://api…` derivation (`dword_130C464`).
+    pub api: Option<String>,
+    /// Host derivation (`dword_130C468`).
+    pub domain: Option<String>,
+}
 // 0x36918 — +[RobloxInfo getBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrl]")]
-pub fn stub_0x36918() -> ! {
-    todo!("0x36918 +[RobloxInfo getBaseUrl]")
+pub fn stub_0x36918(
+    state: &mut BaseUrlState,
+    is_tablet: bool,
+    base_url: Option<&str>,
+    mobile_url: Option<&str>,
+) -> String {
+    // IDA 0x36918: `getBaseUrl` answers the cache (0x36926..0x3692c); on
+    // first call it reads `RbxBaseUrl` (tablet, 0x36994) or
+    // `RbxBaseMobileUrl` (0x369a0) from the info dictionary, normalizes
+    // via `setBaseUrl:` (0x369b6), and caches (0x369ae). MODEL: the bundle
+    // probe values are inputs.
+    if let Some(cached) = state.base.clone() {
+        return cached;
+    }
+    let raw = if is_tablet { base_url } else { mobile_url }.unwrap_or("");
+    stub_0x36bd4(state, raw)
 }
 
 // 0x369c0 — +[RobloxInfo getApiBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getApiBaseUrl]")]
-pub fn stub_0x369c0() -> ! {
-    todo!("0x369c0 +[RobloxInfo getApiBaseUrl]")
+pub fn stub_0x369c0(state: &mut BaseUrlState, base_url: &str) -> String {
+    // IDA 0x369c0: `getApiBaseUrl` answers the cache (0x369d4..0x36aac);
+    // on first call with a non-empty base URL (0x36a10) it takes the
+    // suffix from the first `.` (dropping the trailing `/`, 0x36a34..
+    // 0x36a6a) and formats `https://api{suffix}` (0x36a9e).
+    if let Some(cached) = state.api.clone() {
+        return cached;
+    }
+    let derived = if base_url.is_empty() {
+        String::new()
+    } else {
+        match base_url.find('.') {
+            None => "https://api".to_string(),
+            Some(i) => format!("https://api{}", base_url[i..].trim_end_matches('/')),
+        }
+    };
+    state.api = Some(derived.clone());
+    derived
 }
 
 // 0x36ab0 — +[RobloxInfo getDomainString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDomainString]")]
-pub fn stub_0x36ab0() -> ! {
-    todo!("0x36ab0 +[RobloxInfo getDomainString]")
+pub fn stub_0x36ab0(state: &mut BaseUrlState, base_url: &str) -> String {
+    // IDA 0x36ab0: `getDomainString` answers the cache (0x36aca..0x36bc6);
+    // on first call with a non-empty base URL (0x36b06) it strips
+    // `http://` (0x36b30), takes the suffix from the first `.` (dropping
+    // the trailing `/`, 0x36b54..0x36b8a), and strips `/` (0x36bb0).
+    if let Some(cached) = state.domain.clone() {
+        return cached;
+    }
+    let derived = if base_url.is_empty() {
+        String::new()
+    } else {
+        let no_scheme = base_url.replace("http://", "");
+        match no_scheme.find('.') {
+            None => no_scheme.replace('/', ""),
+            Some(i) => no_scheme[i..].trim_end_matches('/').replace('/', ""),
+        }
+    };
+    state.domain = Some(derived.clone());
+    derived
 }
 
+/// `RBXBaseUrlChangedNotifier` name (IDA 0x36bc8).
+pub const BASE_URL_CHANGED_NOTIFICATION: &str = "RBXBaseUrlChangedNotifier";
 // 0x36bc8 — +[RobloxInfo getBaseUrlChangedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrlChangedNotification]")]
-pub fn stub_0x36bc8() -> ! {
-    todo!("0x36bc8 +[RobloxInfo getBaseUrlChangedNotification]")
+pub fn stub_0x36bc8() -> &'static str {
+    // IDA 0x36bc8: `getBaseUrlChangedNotification` answers the constant
+    // (0x36bd2).
+    BASE_URL_CHANGED_NOTIFICATION
 }
 
 // 0x36bd4 — +[RobloxInfo setBaseUrl:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxInfo setBaseUrl:]")]
-pub fn stub_0x36bd4() -> ! {
-    todo!("0x36bd4 +[RobloxInfo setBaseUrl:]")
+pub fn stub_0x36bd4(state: &mut BaseUrlState, url: &str) -> String {
+    // IDA 0x36bd4: `setBaseUrl:` stores the URL (0x36c08), appends `/`
+    // when the suffix is missing (0x36c48..0x36c70), bridges it into
+    // `std::string` for `SetBaseUrl` (0x36c86..0x36c94), and posts the
+    // change notification (block at 0x36de4). MODEL: the C++ bridge and
+    // post fold into the caller; normalization and the cache are
+    // observed.
+    let normalized = if url.ends_with('/') {
+        url.to_owned()
+    } else {
+        format!("{url}/")
+    };
+    state.base = Some(normalized.clone());
+    normalized
 }
 
 // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
