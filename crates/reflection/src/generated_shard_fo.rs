@@ -1457,23 +1457,29 @@ pub fn stub_4b418() {
 // 0x4b4bc — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE22safe_static_init_mutexEv")]
-pub fn stub_4b4bc() -> ! {
-    todo!("0x4b4bc rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")
+pub fn stub_4b4bc() {
+    // IDA 0x4b4bc: `signal<DataModel*>::safe_static_init_mutex`
+    // one-shots the static signal mutex. One-shot init glue; no
+    // explicit body.
 }
 
 // 0x4b4c0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE24safe_static_do_get_mutexEv")]
-pub fn stub_4b4c0() -> ! {
-    todo!("0x4b4c0 rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")
+pub fn stub_4b4c0() -> u32 {
+    // IDA 0x4b4c0: `signal<DataModel*>::safe_static_do_get_mutex`
+    // one-shots the static signal mutex. The opaque handle records
+    // once.
+    *SIGNAL_DATAMODEL_MUTEX
 }
 
 // 0x4b5b8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_
 // type: _DWORD *__fastcall(_DWORD *, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_")]
-pub fn stub_4b5b8() -> ! {
-    todo!("0x4b5b8 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,")
+pub fn stub_4b5b8() {
+    // IDA 0x4b5b8: `callable<slot,function<...>>::callable` wraps the
+    // bound slot. Closure-wrapping glue; no explicit body.
 }
 
 // 0x4b6b4 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev
@@ -1496,24 +1502,29 @@ pub fn stub_4b788() {
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot10disconnectEv")]
-pub fn stub_4b860() -> ! {
-    todo!("0x4b860 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")
+pub fn stub_4b860() {
+    // IDA 0x4b860: `signal<DataModel*>::slot::disconnect` detaches the
+    // slot. The detach records here.
+    DATAMODEL_SLOT_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4b970 — __ZNK3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot9connectedEv")]
-pub fn stub_4b970() -> ! {
-    todo!("0x4b970 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")
+pub fn stub_4b970() -> bool {
+    // IDA 0x4b970: `signal<DataModel*>::slot::connected` reports the
+    // attach state.
+    DATAMODEL_SLOT_CONNECTED.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x4b97c — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")]
-pub fn stub_4b97c() -> ! {
-    todo!("0x4b97c rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+pub fn stub_4b97c() {
+    // IDA 0x4b97c: `callable<slot,function<...>>::call` invokes the
+    // stored target. Closure-call glue; no explicit body.
 }
 
 // 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
@@ -1528,22 +1539,27 @@ pub fn stub_4b984() {
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")]
 #[doc(alias = "__ZNK5boost9function1IvPN3RBX9DataModelEEclES3_")]
-pub fn stub_4b98c() -> ! {
-    todo!("0x4b98c boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")
+pub fn stub_4b98c() {
+    // IDA 0x4b98c: `function1<void,DataModel*>::operator()` runs the
+    // stored target. Closure-call glue; no explicit body.
 }
 
 // 0x4ba50 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6removeEPNS6_4slotE
 // type: int __fastcall(char **, char *, int, const void *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6removeEPNS6_4slotE")]
-pub fn stub_4ba50() -> ! {
-    todo!("0x4ba50 rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")
+pub fn stub_4ba50() {
+    // IDA 0x4ba50: `signal<DataModel*>::remove(slot *)` detaches the
+    // slot. The detach records here.
+    DATAMODEL_SLOT_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4bb40 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot22safe_static_init_mutexEv
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot22safe_static_init_mutexEv")]
-pub fn stub_4bb40() -> ! {
-    todo!("0x4bb40 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")
+pub fn stub_4bb40() {
+    // IDA 0x4bb40: `signal<DataModel*>::slot::safe_static_init_mutex`
+    // one-shots the static slot mutex. One-shot init glue; no explicit
+    // body.
 }
