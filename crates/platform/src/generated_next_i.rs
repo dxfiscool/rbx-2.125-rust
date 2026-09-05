@@ -534,8 +534,12 @@ pub unsafe fn destroy_block_captures5_5a0b0(block: *mut core::ffi::c_void) {
 
 // 0x5b3d8 — __GLOBAL__I_a_31
 #[doc(alias = "global constructor keyed to_a_31")]
-pub fn stub_5b3d8() -> ! {
-    todo!("0x5b3d8 global constructor keyed to_a_31")
+pub fn init_global_a31_5b3d8() {
+// IDA 0x5b3d8: global ctor keyed to _a_31 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x5c4f4 — ___copy_helper_block__19

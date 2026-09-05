@@ -2981,6 +2981,23 @@ impl LoginState {
         "OK".to_owned()
     }
 }
+impl LoginState {
+    /// `processFailureLoginResponse:` (IDA 0x5ae50): logs the http code,
+    /// enumerates headers, clears login and formats "LoginFailedTitle:
+    /// Status Code : 504".
+    pub fn failure_login(&self, code: u16) -> String {
+        self.logged_in.store(false, Ordering::SeqCst);
+        self.bump(&self.login_failures);
+        format!("LoginFailedTitle: Status Code : {code}")
+    }
+    /// `processFailureLogoutResponse:` (IDA 0x5b150): logs the code,
+    /// enumerates headers, clears login and returns "Logout Failed".
+    pub fn failure_logout(&self) -> String {
+        self.logged_in.store(false, Ordering::SeqCst);
+        self.bump(&self.login_failures);
+        "Logout Failed".to_owned()
+    }
+}
 static LOGIN: std::sync::LazyLock<LoginState> =
     std::sync::LazyLock::new(LoginState::default);
 /// `+sharedInstance` cell (IDA 0x58f94, `dword_130C640`): the
@@ -2994,6 +3011,249 @@ static LOGIN_SHARED: std::sync::LazyLock<ControlId> =
 pub fn shared_login_id() -> Option<ControlId> {
     Some(*LOGIN_SHARED)
 }
+/// Host id standing in for the `AgreementController` `self`.
+const AGREE_ID: ControlId = 20;
+/// Minimal `AgreementController` counterpart (IDA 0x5b4a0..0x5bad4): the
+/// URL to load, the webview/toolbar/close outlets and the presented latch.
+#[derive(Debug, Default)]
+pub struct AgreementState {
+    initialized: AtomicBool,
+    url: parking_lot::Mutex<String>,
+    frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    popover: parking_lot::Mutex<(f32, f32)>,
+    webview: parking_lot::Mutex<Option<ControlId>>,
+    tool_bar: parking_lot::Mutex<Option<ControlId>>,
+    close_button: parking_lot::Mutex<Option<ControlId>>,
+    presented: AtomicBool,
+    loads: AtomicU32,
+    dismisses: AtomicU32,
+    releases: AtomicU32,
+}
+impl AgreementState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x5b4a0): super init; clears the webview on
+    /// success.
+    pub fn init_coder(&self) -> Option<ControlId> {
+        *self.webview.lock() = None;
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(AGREE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-init:` (IDA 0x5b4e0): super init==self guard; clears the webview,
+    /// takes the URL and sets the 500x500 popover size.
+    pub fn init_with_url(&self, url: &str) -> Option<ControlId> {
+        *self.webview.lock() = None;
+        *self.url.lock() = url.to_owned();
+        *self.popover.lock() = (500.0, 500.0);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(AGREE_ID)
+    }
+    /// `-init:newFrame:` (IDA 0x5b550): like `init:` plus the view frame.
+    pub fn init_with_frame(&self, url: &str, frame: (f32, f32, f32, f32)) -> Option<ControlId> {
+        *self.frame.lock() = frame;
+        self.init_with_url(url)
+    }
+    pub fn frame(&self) -> (f32, f32, f32, f32) {
+        *self.frame.lock()
+    }
+    pub fn url(&self) -> String {
+        self.url.lock().clone()
+    }
+    /// `-dealloc` (IDA 0x5b5fc): releases webview/toolbar/close, then
+    /// super.
+    pub fn dealloc(&self) {
+        *self.webview.lock() = None;
+        *self.tool_bar.lock() = None;
+        *self.close_button.lock() = None;
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-setUrl:` (IDA 0x5b680): plain assign.
+    pub fn set_url(&self, url: &str) {
+        *self.url.lock() = url.to_owned();
+    }
+    /// `cancelTouch:` (IDA 0x5b690): animated dismiss, nil completion.
+    pub fn cancel(&self) {
+        self.presented.store(false, Ordering::SeqCst);
+        self.bump(&self.dismisses);
+    }
+    pub fn dismiss_count(&self) -> u32 {
+        self.dismisses.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x5b6a4): titles the close button, builds the
+    /// web view (self delegate, no page scaling), loads `urlToLoad` and
+    /// docks it.
+    pub fn view_did_load(&self, url: &str) {
+        self.set_url(url);
+        *self.webview.lock() = Some(AGREE_ID);
+        self.presented.store(true, Ordering::SeqCst);
+        self.bump(&self.loads);
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    pub fn has_webview(&self) -> bool {
+        self.webview.lock().is_some()
+    }
+    /// `-toolBar` (IDA 0x5ba90) / `-setToolBar:` (IDA 0x5baa0, offset
+    /// 168).
+    pub fn tool_bar(&self) -> Option<ControlId> {
+        *self.tool_bar.lock()
+    }
+    pub fn set_tool_bar(&self, view: Option<ControlId>) {
+        *self.tool_bar.lock() = view;
+    }
+    /// `-closeButton` (IDA 0x5bac4) / `-setCloseButton:` (IDA 0x5bad4,
+    /// offset 172).
+    pub fn close_button(&self) -> Option<ControlId> {
+        *self.close_button.lock()
+    }
+    pub fn set_close_button(&self, view: Option<ControlId>) {
+        *self.close_button.lock() = view;
+    }
+}
+static AGREE: std::sync::LazyLock<AgreementState> =
+    std::sync::LazyLock::new(AgreementState::default);
+/// Host id standing in for the `SignUpErrorViewController` `self`.
+const SIGNUPERR_ID: ControlId = 21;
+/// Minimal `SignUpErrorViewController` counterpart (IDA 0x5baf8..0x5bf68):
+/// the pending message/username, the text view and the dismiss touch.
+#[derive(Debug, Default)]
+pub struct SignupErrState {
+    initialized: AtomicBool,
+    message_to_set: parking_lot::Mutex<String>,
+    suggested_username: parking_lot::Mutex<String>,
+    text: parking_lot::Mutex<String>,
+    text_view: parking_lot::Mutex<Option<ControlId>>,
+    signup_controller: parking_lot::Mutex<Option<ControlId>>,
+    dismiss_touch: parking_lot::Mutex<Option<ControlId>>,
+    observing: AtomicBool,
+    loads: AtomicU32,
+    warnings: AtomicU32,
+    dismisses: AtomicU32,
+    releases: AtomicU32,
+}
+impl SignupErrState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x5baf8): super init; clears the pending
+    /// message and suggested username.
+    pub fn init_coder(&self) -> Option<ControlId> {
+        *self.message_to_set.lock() = String::new();
+        *self.suggested_username.lock() = String::new();
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(SIGNUPERR_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x5bb44): removes the contentSize observer,
+    /// releases message/suggested/textview, then super.
+    pub fn dealloc(&self) {
+        self.observing.store(false, Ordering::SeqCst);
+        *self.message_to_set.lock() = String::new();
+        *self.suggested_username.lock() = String::new();
+        *self.text_view.lock() = None;
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x5bc00): super; clears the text, observes
+    /// contentSize, then shows a pending message.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+        *self.text.lock() = String::new();
+        self.observing.store(true, Ordering::SeqCst);
+        let pending = self.message_to_set.lock().clone();
+        if !pending.is_empty() {
+            *self.text.lock() = pending;
+        }
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    pub fn is_observing(&self) -> bool {
+        self.observing.load(Ordering::SeqCst)
+    }
+    pub fn text(&self) -> String {
+        self.text.lock().clone()
+    }
+    /// `observeValueForKeyPath:...` (IDA 0x5bcb8): pins the content offset
+    /// to -max(0, (boundsH − contentH*zoom)/2).
+    pub fn content_offset_y(&self, bounds_h: f32, content_h: f32, zoom: f32) -> f32 {
+        -(0.0f32.max((bounds_h - content_h * zoom) / 2.0))
+    }
+    /// `-didReceiveMemoryWarning` (IDA 0x5bd70): super only.
+    pub fn memory_warning(&self) {
+        self.bump(&self.warnings);
+    }
+    pub fn warning_count(&self) -> u32 {
+        self.warnings.load(Ordering::SeqCst)
+    }
+    /// `-setSuggestedUsername:` (IDA 0x5bd9c): retained assign.
+    pub fn set_suggested(&self, name: &str) {
+        *self.suggested_username.lock() = name.to_owned();
+    }
+    pub fn suggested_username(&self) -> String {
+        self.suggested_username.lock().clone()
+    }
+    /// `-setMessage:` (IDA 0x5bdbc): retained assign; a live text view
+    /// takes the text immediately.
+    pub fn set_message(&self, message: &str) {
+        *self.message_to_set.lock() = message.to_owned();
+        if self.text_view.lock().is_some() {
+            *self.text.lock() = message.to_owned();
+        }
+    }
+    /// `-setSignupController:` (IDA 0x5be1c): plain assign.
+    pub fn set_signup_controller(&self, controller: Option<ControlId>) {
+        *self.signup_controller.lock() = controller;
+    }
+    /// `touchesBegan:withEvent:` (IDA 0x5be2c): no tracked touch latches
+    /// the touch as the dismiss touch.
+    pub fn touches_began(&self, touch: ControlTouch) {
+        if self.dismiss_touch.lock().is_none() {
+            *self.dismiss_touch.lock() = Some(touch.id);
+        }
+    }
+    pub fn dismiss_touch(&self) -> Option<ControlId> {
+        *self.dismiss_touch.lock()
+    }
+    /// `touchesEnded:withEvent:` (IDA 0x5be5c): the tracked dismiss touch
+    /// lifting clears it and notifies the signup controller — with the
+    /// suggested username when set, plain dismiss otherwise. Returns
+    /// whether a controller was notified.
+    pub fn touches_ended(&self, touches: &[ControlTouch], has_controller: bool) -> bool {
+        let tracked = *self.dismiss_touch.lock();
+        let Some(id) = tracked else { return false };
+        if touches.iter().all(|t| Some(t.id) != Some(id)) {
+            return false;
+        }
+        *self.dismiss_touch.lock() = None;
+        self.bump(&self.dismisses);
+        has_controller
+    }
+    pub fn dismiss_count(&self) -> u32 {
+        self.dismisses.load(Ordering::SeqCst)
+    }
+    /// `-messageTextView` (IDA 0x5bf68).
+    pub fn message_text_view(&self) -> Option<ControlId> {
+        *self.text_view.lock()
+    }
+    pub fn set_message_text_view(&self, view: Option<ControlId>) {
+        *self.text_view.lock() = view;
+    }
+}
+static SIGNUPERR: std::sync::LazyLock<SignupErrState> =
+    std::sync::LazyLock::new(SignupErrState::default);
 impl CacheState {
     /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
     /// (tags 13/11/10/12/15) rebuilds the preload list.
@@ -15397,169 +15657,217 @@ pub fn stub_5ac78() -> String {
 // 0x5ae50 — -[LoginManager processFailureLoginResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLoginResponse:]")]
-pub fn stub_5ae50() -> ! {
-    todo!("0x5ae50 -[LoginManager processFailureLoginResponse:]")
+pub fn stub_5ae50(code: u16) -> String {
+    // IDA 0x5ae50 `processFailureLoginResponse:`: logs the http code,
+    // enumerates headers, clears login and formats "LoginFailedTitle:
+    // Status Code : 504" (0x5aee8..0x5b09a+).
+    LOGIN.failure_login(code)
 }
 
 // 0x5b150 — -[LoginManager processFailureLogoutResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLogoutResponse:]")]
-pub fn stub_5b150() -> ! {
-    todo!("0x5b150 -[LoginManager processFailureLogoutResponse:]")
+pub fn stub_5b150() -> String {
+    // IDA 0x5b150 `processFailureLogoutResponse:`: logs the code,
+    // enumerates headers, clears login and returns "Logout Failed"
+    // (0x5b1e8..0x5b374).
+    LOGIN.failure_logout()
 }
 
 // 0x5b4a0 — -[AgreementController initWithCoder:]
 // type: AgreementController *__cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController initWithCoder:]")]
-pub fn stub_5b4a0() -> ! {
-    todo!("0x5b4a0 -[AgreementController initWithCoder:]")
+pub fn stub_5b4a0() -> Option<ControlId> {
+    // IDA 0x5b4a0 `-initWithCoder:`: super init (0x5b4c4); clears the
+    // agreement webview on success (0x5b4c8..0x5b4d8).
+    AGREE.init_coder()
 }
 
 // 0x5b4e0 — -[AgreementController init:]
 // type: id __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController init:]")]
-pub fn stub_5b4e0() -> ! {
-    todo!("0x5b4e0 -[AgreementController init:]")
+pub fn stub_5b4e0(url: &str) -> Option<ControlId> {
+    // IDA 0x5b4e0 `-init:`: super init==self guard (0x5b50e); clears the
+    // webview, takes the URL and sets the 500x500 popover size
+    // (0x5b528..0x5b544).
+    AGREE.init_with_url(url)
 }
 
 // 0x5b550 — -[AgreementController init:newFrame:]
 // type: id __cdecl(AgreementController *self, SEL, id, CGRect)
 #[doc(alias = "-[AgreementController init:newFrame:]")]
-pub fn stub_5b550() -> ! {
-    todo!("0x5b550 -[AgreementController init:newFrame:]")
+pub fn stub_5b550(url: &str, frame: (f32, f32, f32, f32)) -> Option<ControlId> {
+    // IDA 0x5b550 `-init:newFrame:`: super init==self guard (0x5b584);
+    // clears the webview, takes the URL, sets the view frame and the
+    // 500x500 popover size (0x5b5a6..0x5b5ec).
+    AGREE.init_with_frame(url, frame)
 }
 
 // 0x5b5fc — -[AgreementController dealloc]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController dealloc]")]
-pub fn stub_5b5fc() -> ! {
-    todo!("0x5b5fc -[AgreementController dealloc]")
+pub fn stub_5b5fc() {
+    // IDA 0x5b5fc `-dealloc`: releases the webview/toolbar/close button
+    // (0x5b610..0x5b654), then super (0x5b676).
+    AGREE.dealloc();
 }
 
 // 0x5b680 — -[AgreementController setUrl:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setUrl:]")]
-pub fn stub_5b680() -> ! {
-    todo!("0x5b680 -[AgreementController setUrl:]")
+pub fn stub_5b680(url: &str) {
+    // IDA 0x5b680 `-setUrl:`: plain assign (0x5b68c).
+    AGREE.set_url(url);
 }
 
 // 0x5b690 — -[AgreementController cancelTouch:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController cancelTouch:]")]
-pub fn stub_5b690() -> ! {
-    todo!("0x5b690 -[AgreementController cancelTouch:]")
+pub fn stub_5b690() {
+    // IDA 0x5b690 `cancelTouch:`: animated dismiss, nil completion
+    // (0x5b6a0).
+    AGREE.cancel();
 }
 
 // 0x5b6a4 — -[AgreementController viewDidLoad]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController viewDidLoad]")]
-pub fn stub_5b6a4() -> ! {
-    todo!("0x5b6a4 -[AgreementController viewDidLoad]")
+pub fn stub_5b6a4(url: &str) {
+    // IDA 0x5b6a4 `-viewDidLoad`: titles the close button, builds the
+    // web view under the toolbar frame with self as delegate and no page
+    // scaling (0x5b70c..0x5b9c2), then loads `urlToLoad` and docks it
+    // (0x5ba2a..0x5ba76).
+    AGREE.view_did_load(url);
 }
 
 // 0x5ba90 — -[AgreementController toolBar]
 // type: UIToolbar *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController toolBar]")]
-pub fn stub_5ba90() -> ! {
-    todo!("0x5ba90 -[AgreementController toolBar]")
+pub fn stub_5ba90() -> Option<ControlId> {
+    // IDA 0x5ba90 `-toolBar`: the toolbar (0x5ba9e).
+    AGREE.tool_bar()
 }
 
 // 0x5baa0 — -[AgreementController setToolBar:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setToolBar:]")]
-pub fn stub_5baa0() -> ! {
-    todo!("0x5baa0 -[AgreementController setToolBar:]")
+pub fn stub_5baa0(view: Option<ControlId>) {
+    // IDA 0x5baa0 `-setToolBar:`: retained assign (0x5babc).
+    AGREE.set_tool_bar(view);
 }
 
 // 0x5bac4 — -[AgreementController closeButton]
 // type: UIBarButtonItem *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController closeButton]")]
-pub fn stub_5bac4() -> ! {
-    todo!("0x5bac4 -[AgreementController closeButton]")
+pub fn stub_5bac4() -> Option<ControlId> {
+    // IDA 0x5bac4 `-closeButton`: the close button (0x5bad2).
+    AGREE.close_button()
 }
 
 // 0x5bad4 — -[AgreementController setCloseButton:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setCloseButton:]")]
-pub fn stub_5bad4() -> ! {
-    todo!("0x5bad4 -[AgreementController setCloseButton:]")
+pub fn stub_5bad4(view: Option<ControlId>) {
+    // IDA 0x5bad4 `-setCloseButton:`: retained assign (0x5baf0).
+    AGREE.set_close_button(view);
 }
 
 // 0x5baf8 — -[SignUpErrorViewController initWithCoder:]
 // type: SignUpErrorViewController *__cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController initWithCoder:]")]
-pub fn stub_5baf8() -> ! {
-    todo!("0x5baf8 -[SignUpErrorViewController initWithCoder:]")
+pub fn stub_5baf8() -> Option<ControlId> {
+    // IDA 0x5baf8 `-initWithCoder:`: super init (0x5bb1c); clears the
+    // pending message and suggested username (0x5bb3a..0x5bb3e).
+    SIGNUPERR.init_coder()
 }
 
 // 0x5bb44 — -[SignUpErrorViewController dealloc]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController dealloc]")]
-pub fn stub_5bb44() -> ! {
-    todo!("0x5bb44 -[SignUpErrorViewController dealloc]")
+pub fn stub_5bb44() {
+    // IDA 0x5bb44 `-dealloc`: removes the contentSize observer, releases
+    // message/suggested/textview (0x5bb5c..0x5bbd4), then super (0x5bbf6).
+    SIGNUPERR.dealloc();
 }
 
 // 0x5bc00 — -[SignUpErrorViewController viewDidLoad]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController viewDidLoad]")]
-pub fn stub_5bc00() -> ! {
-    todo!("0x5bc00 -[SignUpErrorViewController viewDidLoad]")
+pub fn stub_5bc00() {
+    // IDA 0x5bc00 `-viewDidLoad`: super (0x5bc2a); clears the text,
+    // observes contentSize (0x5bc3e..0x5bc8a), then shows a pending message
+    // (0x5bc9a..0x5bcaa).
+    SIGNUPERR.view_did_load();
 }
 
 // 0x5bcb8 — -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id, id, void *)
 #[doc(alias = "-[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")]
-pub fn stub_5bcb8() -> ! {
-    todo!("0x5bcb8 -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")
+pub fn stub_5bcb8(bounds_h: f32, content_h: f32, zoom: f32) -> f32 {
+    // IDA 0x5bcb8 `observeValueForKeyPath:...`: pins the content offset to
+    // -max(0, (boundsH − contentH*zoom)/2) (0x5bd2c..0x5bd60); nil object
+    // zeroes first.
+    SIGNUPERR.content_offset_y(bounds_h, content_h, zoom)
 }
 
 // 0x5bd70 — -[SignUpErrorViewController didReceiveMemoryWarning]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController didReceiveMemoryWarning]")]
-pub fn stub_5bd70() -> ! {
-    todo!("0x5bd70 -[SignUpErrorViewController didReceiveMemoryWarning]")
+pub fn stub_5bd70() {
+    // IDA 0x5bd70 `-didReceiveMemoryWarning`: super only (0x5bd94).
+    SIGNUPERR.memory_warning();
 }
 
 // 0x5bd9c — -[SignUpErrorViewController setSuggestedUsername:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setSuggestedUsername:]")]
-pub fn stub_5bd9c() -> ! {
-    todo!("0x5bd9c -[SignUpErrorViewController setSuggestedUsername:]")
+pub fn stub_5bd9c(name: &str) {
+    // IDA 0x5bd9c `-setSuggestedUsername:`: retained assign (0x5bdb2..0x5bdb8).
+    SIGNUPERR.set_suggested(name);
 }
 
 // 0x5bdbc — -[SignUpErrorViewController setMessage:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setMessage:]")]
-pub fn stub_5bdbc() -> ! {
-    todo!("0x5bdbc -[SignUpErrorViewController setMessage:]")
+pub fn stub_5bdbc(message: &str) {
+    // IDA 0x5bdbc `-setMessage:`: retained assign (0x5bdd8..0x5bdde); a
+    // live text view takes the text immediately (0x5bdf2..0x5be18).
+    SIGNUPERR.set_message(message);
 }
 
 // 0x5be1c — -[SignUpErrorViewController setSignupController:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setSignupController:]")]
-pub fn stub_5be1c() -> ! {
-    todo!("0x5be1c -[SignUpErrorViewController setSignupController:]")
+pub fn stub_5be1c(controller: Option<ControlId>) {
+    // IDA 0x5be1c `-setSignupController:`: plain assign (0x5be28).
+    SIGNUPERR.set_signup_controller(controller);
 }
 
 // 0x5be2c — -[SignUpErrorViewController touchesBegan:withEvent:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
 #[doc(alias = "-[SignUpErrorViewController touchesBegan:withEvent:]")]
-pub fn stub_5be2c() -> ! {
-    todo!("0x5be2c -[SignUpErrorViewController touchesBegan:withEvent:]")
+pub fn stub_5be2c(touch: ControlTouch) {
+    // IDA 0x5be2c `touchesBegan:withEvent:`: no tracked touch latches
+    // `anyObject` as the dismiss touch (0x5be3e..0x5be58).
+    SIGNUPERR.touches_began(touch);
 }
 
 // 0x5be5c — -[SignUpErrorViewController touchesEnded:withEvent:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
 #[doc(alias = "-[SignUpErrorViewController touchesEnded:withEvent:]")]
-pub fn stub_5be5c() -> ! {
-    todo!("0x5be5c -[SignUpErrorViewController touchesEnded:withEvent:]")
+pub fn stub_5be5c(touches: &[ControlTouch], has_controller: bool) -> bool {
+    // IDA 0x5be5c `touchesEnded:withEvent:`: the tracked dismiss touch
+    // lifting clears it and notifies the signup controller — with the
+    // suggested username when set, plain dismiss otherwise (0x5be8a..0x5bf40).
+    SIGNUPERR.touches_ended(touches, has_controller)
 }
 
 // 0x5bf68 — -[SignUpErrorViewController messageTextView]
 // type: UITextView *__cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController messageTextView]")]
-pub fn stub_5bf68() -> ! {
-    todo!("0x5bf68 -[SignUpErrorViewController messageTextView]")
+pub fn stub_5bf68() -> Option<ControlId> {
+    // IDA 0x5bf68 `-messageTextView`: the message text view (0x5bf76).
+    SIGNUPERR.message_text_view()
 }
 
 // 0x5bf78 — -[SignUpErrorViewController setMessageTextView:]
