@@ -98,6 +98,152 @@ fn huff_emit_bits(st: &mut HuffBits, code: u32, size: i32, emit: &mut dyn FnMut(
         st.bits -= 8;
     }
 }
+/// Huffman working bit-buffer state (IDA 0x1287fc: next_output_byte/free plus the put buffer).
+#[derive(Clone, Debug, Default)]
+pub struct HuffOut {
+    pub bits: HuffBits,
+    pub out: Vec<u8>,
+    pub free: usize,
+}
+
+/// Huffman entropy-encoder working state (IDA 0x128a24: bit buffer +12/+16, gather flag +108,
+/// output dest +112/+116, DC predictions, restart rows +36/+40, EOB run +128, correction bits +132/+136).
+#[derive(Clone, Debug, Default)]
+pub struct HuffState {
+    pub bits: HuffBits,
+    pub gather: bool,
+    pub out: Vec<u8>,
+    pub free: usize,
+    pub dc_pred: [i32; 4],
+    pub restart_left: u32,
+    pub restart_index: u32,
+    pub eobrun: u32,
+    pub buf_count: u32,
+    pub buf: Vec<u8>,
+}
+
+/// Canonical Huffman derived table built by `jpeg_make_c_derived_tbl` (IDA 0x12a418).
+#[derive(Clone, Debug)]
+pub struct HuffDerived {
+    pub codes: [u32; 256],
+    pub sizes: [u8; 256],
+}
+
+impl Default for HuffDerived {
+    fn default() -> Self {
+        HuffDerived { codes: [0; 256], sizes: [0; 256] }
+    }
+}
+/// Accumulate code bits into the 24-bit window (shared core of `emit_bits_s`/`emit_bits_e`).
+fn huff_accum(bits: &mut HuffBits, code: u32, size: i32) {
+    bits.buffer |= (((1u32 << size) - 1) & code) << (24 - (bits.bits + size));
+    bits.bits += size;
+}
+
+impl HuffOut {
+    /// Store one byte with 0xFF stuffing; refill when the buffer runs dry (IDA 0x128890 inner step).
+    fn put(&mut self, byte: u8, refill: &mut dyn FnMut(&mut HuffOut) -> bool) -> bool {
+        self.out.push(byte);
+        if self.free <= 1 {
+            self.free = 0;
+            if !refill(self) {
+                return false;
+            }
+        } else {
+            self.free -= 1;
+        }
+        if byte == 0xFF {
+            self.out.push(0);
+            if self.free <= 1 {
+                self.free = 0;
+                if !refill(self) {
+                    return false;
+                }
+            } else {
+                self.free -= 1;
+            }
+        }
+        true
+    }
+}
+
+impl HuffState {
+    /// Store one byte with 0xFF stuffing on the entropy dest (IDA 0x128a24 inner step).
+    fn put(&mut self, byte: u8, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool {
+        self.out.push(byte);
+        if self.free <= 1 {
+            self.free = 0;
+            if !refill(self) {
+                return false;
+            }
+        } else {
+            self.free -= 1;
+        }
+        if byte == 0xFF {
+            self.out.push(0);
+            if self.free <= 1 {
+                self.free = 0;
+                if !refill(self) {
+                    return false;
+                }
+            } else {
+                self.free -= 1;
+            }
+        }
+        true
+    }
+}
+
+/// Forward-DCT method selected by `start_pass_fdctmgr` (IDA 0x127e40).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FdctMethod {
+    Islow,
+    Ifast,
+    Float,
+    Small(u8, u8),
+}
+
+/// Quantizer divisor table selected by `start_pass_fdctmgr` (IDA 0x127e40).
+#[derive(Clone, Debug)]
+pub enum FdctTable {
+    Islow([i32; 64]),
+    Ifast([i32; 64]),
+    Float([f32; 64]),
+}
+
+/// AAN scale factors (jfdctint.c `aanscales`, IDA `aanscales_5040`).
+pub const AAN_SCALES: [i32; 64] = [
+    16384, 22725, 21407, 19266, 16384, 12873, 8867, 4520,
+    22725, 31521, 29692, 26722, 22725, 17855, 12299, 6270,
+    21407, 29692, 27969, 25172, 21407, 16819, 11585, 5906,
+    19266, 26722, 25172, 22654, 19266, 15137, 10426, 5315,
+    16384, 22725, 21407, 19266, 16384, 12873, 8867, 4520,
+    12873, 17855, 16819, 15137, 12873, 10114, 6967, 3552,
+    8867, 12299, 11585, 10426, 8867, 6967, 4799, 2446,
+    4520, 6270, 5906, 5315, 4520, 3552, 2446, 1247,
+];
+
+/// AAN row/column scale factors (jfdctflt.c `aanscalefactor`, IDA `aanscalefactor_5048`).
+pub const AAN_ROW_SCALE: [f64; 8] = [1.0, 1.387039845, 1.306562965, 1.175875602, 1.0, 0.785694958, 0.541196100, 0.275899379];
+
+/// libjpeg integer-DCT rounding quantizer (IDA 0x127840 inner step).
+fn jpeg_quantize(val: i32, q: i32) -> i16 {
+    if val >= 0 {
+        let t = val + (q >> 1);
+        if q <= t {
+            (t / q) as i16
+        } else {
+            0
+        }
+    } else {
+        let t = (q >> 1) - val;
+        if q <= t {
+            -((t / q) as i16)
+        } else {
+            0
+        }
+    }
+}
 
 /// Pixel lane for the SkewT resamplers (IDA 0x11f678 et al.).
 trait SkewPixel: Copy + Default {
@@ -1239,83 +1385,348 @@ pub fn stub_12632c(tables: &RgbYccTables, r: u8, g: u8, b: u8) -> (u8, u8, u8) {
 
 // 0x12681c — _rgb_gray_convert
 #[doc(alias = "_rgb_gray_convert")]
-pub fn stub_12681c() -> ! { todo!("0x12681c _rgb_gray_convert") }
+pub fn stub_12681c(tables: &RgbYccTables, row: &[u8], out: &mut [u8]) { // IDA 0x12681c: per-pixel gray = (y_r[r] + y_g[g] + y_b[b]) >> 16; IDA unrolls 8-wide with a (w&7) prologue.
+    for (i, o) in out.iter_mut().enumerate() {
+        let r = row[3 * i] as usize;
+        let g = row[3 * i + 1] as usize;
+        let b = row[3 * i + 2] as usize;
+        *o = ((tables.y_r[r] + tables.y_g[g] + tables.y_b[b]) >> 16) as u8;
+    }
+}
 
 // 0x126c5c — _cmyk_ycck_convert
 #[doc(alias = "_cmyk_ycck_convert")]
-pub fn stub_126c5c() -> ! { todo!("0x126c5c _cmyk_ycck_convert") }
+pub fn stub_126c5c(tables: &RgbYccTables, row: &[u8], y: &mut [u8], cb: &mut [u8], cr: &mut [u8], k: &mut [u8]) { // IDA 0x126c5c: inverted-CMYK→YCCK with K passthrough; IDA unrolls 4-wide with a (w&3) prologue.
+    for i in 0..k.len() {
+        let ci = (255 - row[4 * i]) as usize;
+        let mi = (255 - row[4 * i + 1]) as usize;
+        let yi = (255 - row[4 * i + 2]) as usize;
+        y[i] = ((tables.y_r[ci] + tables.y_g[mi] + tables.y_b[yi]) >> 16) as u8;
+        cb[i] = ((tables.cb_r[ci] + tables.cb_g[mi] + tables.cb_b[yi]) >> 16) as u8;
+        cr[i] = ((tables.cr_r[ci] + tables.cr_g[mi] + tables.cr_b[yi]) >> 16) as u8;
+        k[i] = row[4 * i + 3];
+    }
+}
 
 // 0x1271fc — _grayscale_convert
 #[doc(alias = "_grayscale_convert")]
-pub fn stub_1271fc() -> ! { todo!("0x1271fc _grayscale_convert") }
+pub fn stub_1271fc(input: &[u8], stride: usize, out: &mut [u8]) { // IDA 0x1271fc: strided single-component copy; IDA unrolls 8-wide with a (w&7) prologue.
+    for (i, o) in out.iter_mut().enumerate() {
+        *o = input[i * stride];
+    }
+}
 
 // 0x127360 — _null_convert
 #[doc(alias = "_null_convert")]
-pub fn stub_127360() -> ! { todo!("0x127360 _null_convert") }
+pub fn stub_127360(input: &[u8], num_comps: usize, outputs: &mut [&mut [u8]]) { // IDA 0x127360: planar deinterleave; IDA unrolls 8-wide with a (w&7) prologue per component.
+    for (j, out) in outputs.iter_mut().enumerate() {
+        for (i, o) in out.iter_mut().enumerate() {
+            *o = input[j + i * num_comps];
+        }
+    }
+}
 
 // 0x127514 — _null_method
 #[doc(alias = "_null_method")]
-pub fn stub_127514() -> ! { todo!("0x127514 _null_method") }
+pub fn stub_127514() { // IDA 0x127514: empty start-pass body.
+}
 
 // 0x127518 — _jinit_color_converter
 #[doc(alias = "_jinit_color_converter")]
-pub fn stub_127518() -> ! { todo!("0x127518 _jinit_color_converter") }
+pub fn stub_127518(in_space: i32, in_comps: i32, out_space: i32, out_comps: i32) -> (ColorConverter, bool) { // IDA 0x127518: colorspace-pair dispatch; error 10 on bad counts, 11 on mismatches, 28 on unsupported pairs; bool = rgb_ycc table pass needed.
+    match in_space {
+        1 => assert!(in_comps == 1, "jinit_color_converter: bad components (10)"),
+        2 | 3 => assert!(in_comps == 3, "jinit_color_converter: bad components (10)"),
+        4 | 5 => assert!(in_comps == 4, "jinit_color_converter: bad components (10)"),
+        _ => assert!(in_comps > 0, "jinit_color_converter: bad components (10)"),
+    }
+    match out_space {
+        1 => {
+            assert!(out_comps == 1, "jinit_color_converter: component mismatch (11)");
+            match in_space {
+                1 => (ColorConverter::Grayscale, false),
+                2 => (ColorConverter::RgbGray, true),
+                3 => (ColorConverter::Grayscale, false),
+                _ => panic!("jinit_color_converter: unsupported conversion (28)"),
+            }
+        }
+        2 => {
+            assert!(out_comps == 3, "jinit_color_converter: component mismatch (11)");
+            assert!(in_space == 2, "jinit_color_converter: unsupported conversion (28)");
+            (ColorConverter::Null, false)
+        }
+        3 => {
+            assert!(out_comps == 3, "jinit_color_converter: component mismatch (11)");
+            match in_space {
+                2 => (ColorConverter::RgbYcc, true),
+                3 => (ColorConverter::Null, false),
+                _ => panic!("jinit_color_converter: unsupported conversion (28)"),
+            }
+        }
+        4 => {
+            assert!(out_comps == 4, "jinit_color_converter: component mismatch (11)");
+            assert!(in_space == 4, "jinit_color_converter: unsupported conversion (28)");
+            (ColorConverter::Null, false)
+        }
+        5 => {
+            assert!(out_comps == 4, "jinit_color_converter: component mismatch (11)");
+            match in_space {
+                4 => (ColorConverter::CmykYcck, true),
+                5 => (ColorConverter::Null, false),
+                _ => panic!("jinit_color_converter: unsupported conversion (28)"),
+            }
+        }
+        _ => {
+            assert!(out_space == in_space && out_comps == in_comps, "jinit_color_converter: unsupported conversion (28)");
+            (ColorConverter::Null, false)
+        }
+    }
+}
 
 // 0x127840 — _forward_DCT
 #[doc(alias = "_forward_DCT")]
-pub fn stub_127840() -> ! { todo!("0x127840 _forward_DCT") }
+pub fn stub_127840(quant: &[i32; 64], blocks: &[Vec<i16>], out: &mut [i16], dct: &mut dyn FnMut(&mut [i32; 64], &[i16])) -> i32 { // IDA 0x127840: forward DCT per block then rounding quantize; returns the block count.
+    let mut ws = [0i32; 64];
+    for (n, b) in blocks.iter().enumerate() {
+        dct(&mut ws, b);
+        for k in 0..64 {
+            out[n * 64 + k] = jpeg_quantize(ws[k], quant[k]);
+        }
+    }
+    blocks.len() as i32
+}
 
 // 0x127c08 — _forward_DCT_float
 #[doc(alias = "_forward_DCT_float")]
-pub fn stub_127c08() -> ! { todo!("0x127c08 _forward_DCT_float") }
+pub fn stub_127c08(quant: &[f32; 64], blocks: &[Vec<i16>], out: &mut [i16], dct: &mut dyn FnMut(&mut [f32; 64], &[i16])) -> i32 { // IDA 0x127c08: float forward DCT; out = (ws * q + 16384.0/1182793984) as i32 - 16384; returns the block count.
+    let mut ws = [0f32; 64];
+    for (n, b) in blocks.iter().enumerate() {
+        dct(&mut ws, b);
+        for k in 0..64 {
+            out[n * 64 + k] = ((ws[k] * quant[k] + 16384.0) as i32 - 0x4000) as i16;
+        }
+    }
+    blocks.len() as i32
+}
 
 // 0x127e40 — _start_pass_fdctmgr
 #[doc(alias = "_start_pass_fdctmgr")]
-pub fn stub_127e40() -> ! { todo!("0x127e40 _start_pass_fdctmgr") }
+pub fn stub_127e40(h: u32, v: u32, method: i32, quant_ok: bool, quant: &[u16; 64]) -> (FdctMethod, FdctTable) { // IDA 0x127e40: (h<<8)|v → jpeg_fdct_HxV (unknown → error 7; 8x8 via dct_method, bad → error 49); missing quant → error 54; per-method divisor scaling.
+    let kind = match (h << 8) | v {
+        0x101 => FdctMethod::Small(1, 1),
+        0x102 => FdctMethod::Small(1, 2),
+        0x201 => FdctMethod::Small(2, 1),
+        0x202 => FdctMethod::Small(2, 2),
+        0x204 => FdctMethod::Small(2, 4),
+        0x402 => FdctMethod::Small(4, 2),
+        0x404 => FdctMethod::Small(4, 4),
+        0x408 => FdctMethod::Small(4, 8),
+        0x303 => FdctMethod::Small(3, 3),
+        0x306 => FdctMethod::Small(3, 6),
+        0x505 => FdctMethod::Small(5, 5),
+        0x50a => FdctMethod::Small(5, 10),
+        0x606 => FdctMethod::Small(6, 6),
+        0x603 => FdctMethod::Small(6, 3),
+        0x60c => FdctMethod::Small(6, 12),
+        0x707 => FdctMethod::Small(7, 7),
+        0x70e => FdctMethod::Small(7, 14),
+        0x804 => FdctMethod::Small(8, 4),
+        0x810 => FdctMethod::Small(8, 16),
+        0x909 => FdctMethod::Small(9, 9),
+        0xa05 => FdctMethod::Small(10, 5),
+        0xa0a => FdctMethod::Small(10, 10),
+        0xb0b => FdctMethod::Small(11, 11),
+        0xc0c => FdctMethod::Small(12, 12),
+        0xc06 => FdctMethod::Small(12, 6),
+        0xd0d => FdctMethod::Small(13, 13),
+        0xe07 => FdctMethod::Small(14, 7),
+        0xe0e => FdctMethod::Small(14, 14),
+        0xf0f => FdctMethod::Small(15, 15),
+        0x1008 => FdctMethod::Small(16, 8),
+        0x1010 => FdctMethod::Small(16, 16),
+        0x808 => match method {
+            0 => FdctMethod::Islow,
+            1 => FdctMethod::Ifast,
+            2 => FdctMethod::Float,
+            _ => panic!("start_pass_fdctmgr: bad DCT method (49)"),
+        },
+        _ => panic!("start_pass_fdctmgr: unsupported DCT scaling ({}, {}) (7)", h, v),
+    };
+    assert!(quant_ok, "start_pass_fdctmgr: missing quantization table (54)");
+    let table = match kind {
+        FdctMethod::Ifast => {
+            let mut t = [0i32; 64];
+            for i in 0..64 {
+                t[i] = (quant[i] as i32 * AAN_SCALES[i] + 1024) >> 11;
+            }
+            FdctTable::Ifast(t)
+        }
+        FdctMethod::Float => {
+            let mut t = [0f32; 64];
+            for i in 0..64 {
+                t[i] = (1.0 / (quant[i] as f64 * AAN_ROW_SCALE[i / 8] * AAN_ROW_SCALE[i % 8] * 8.0)) as f32;
+            }
+            FdctTable::Float(t)
+        }
+        _ => {
+            let mut t = [0i32; 64];
+            for i in 0..64 {
+                t[i] = 8 * quant[i] as i32;
+            }
+            FdctTable::Islow(t)
+        }
+    };
+    (kind, table)
+}
 
 // 0x1287a0 — _jinit_forward_dct
 #[doc(alias = "_jinit_forward_dct")]
-pub fn stub_1287a0() -> ! { todo!("0x1287a0 _jinit_forward_dct") }
+pub fn stub_1287a0() -> ForwardDct { // IDA 0x1287a0: alloc the fdct manager; install start_pass_fdctmgr; zero the per-component divisor slots.
+    ForwardDct::default()
+}
 
 // 0x1287fc — _dump_buffer_s
 #[doc(alias = "_dump_buffer_s")]
-pub fn stub_1287fc() -> ! { todo!("0x1287fc _dump_buffer_s") }
+pub fn stub_1287fc(st: &mut HuffOut, refill: &mut dyn FnMut(&mut HuffOut) -> bool) -> bool { // IDA 0x1287fc: empty_output_buffer reload; FALSE when dry (no error exit, unlike _e).
+    refill(st)
+}
 
 // 0x128838 — _dump_buffer_e
 #[doc(alias = "_dump_buffer_e")]
-pub fn stub_128838() -> ! { todo!("0x128838 _dump_buffer_e") }
+pub fn stub_128838(st: &mut HuffState, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128838: reload the entropy output cursor; dry → error 25.
+    if !refill(st) {
+        panic!("dump_buffer_e: error 25");
+    }
+    true
+}
 
 // 0x128890 — _emit_bits_s
 #[doc(alias = "_emit_bits_s")]
-pub fn stub_128890() -> ! { todo!("0x128890 _emit_bits_s") }
+pub fn stub_128890(st: &mut HuffOut, code: u32, size: i32, refill: &mut dyn FnMut(&mut HuffOut) -> bool) -> bool { // IDA 0x128890: size 0 → error 41; accumulate into the 24-bit window; flush whole bytes with 0xFF stuffing; FALSE when the dest refill fails.
+    assert!(size != 0, "emit_bits_s: error 41");
+    huff_accum(&mut st.bits, code, size);
+    while st.bits.bits >= 8 {
+        let byte = (st.bits.buffer >> 24) as u8;
+        st.bits.buffer <<= 8;
+        st.bits.bits -= 8;
+        if !st.put(byte, refill) {
+            return false;
+        }
+    }
+    true
+}
 
 // 0x128a24 — _emit_bits_e
 #[doc(alias = "_emit_bits_e")]
-pub fn stub_128a24() -> ! { todo!("0x128a24 _emit_bits_e") }
+pub fn stub_128a24(st: &mut HuffState, code: u32, size: i32, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128a24: size 0 → error 41; gather mode → no output (TRUE); else the emit_bits_s core on the entropy bit buffer (IDA unrolls the whole-byte loop 4-wide).
+    assert!(size != 0, "emit_bits_e: error 41");
+    if st.gather {
+        return true;
+    }
+    huff_accum(&mut st.bits, code, size);
+    while st.bits.bits >= 8 {
+        let byte = (st.bits.buffer >> 24) as u8;
+        st.bits.buffer <<= 8;
+        st.bits.bits -= 8;
+        if !st.put(byte, refill) {
+            return false;
+        }
+    }
+    true
+}
 
 // 0x128dc4 — _flush_bits_s
 #[doc(alias = "_flush_bits_s")]
-pub fn stub_128dc4() -> ! { todo!("0x128dc4 _flush_bits_s") }
+pub fn stub_128dc4(st: &mut HuffOut, refill: &mut dyn FnMut(&mut HuffOut) -> bool) -> bool { // IDA 0x128dc4: emit the 0x7F pad; the window resets only on success.
+    if !stub_128890(st, 127, 7, refill) {
+        return false;
+    }
+    st.bits.buffer = 0;
+    st.bits.bits = 0;
+    true
+}
 
 // 0x128df4 — _flush_bits_e
 #[doc(alias = "_flush_bits_e")]
-pub fn stub_128df4() -> ! { todo!("0x128df4 _flush_bits_e") }
+pub fn stub_128df4(st: &mut HuffState, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128df4: emit the 0x7F pad; the window resets even on failure (unlike _s).
+    let ok = stub_128a24(st, 127, 7, refill);
+    st.bits.buffer = 0;
+    st.bits.bits = 0;
+    ok
+}
 
 // 0x128e1c — _emit_symbol
 #[doc(alias = "_emit_symbol")]
-pub fn stub_128e1c() -> ! { todo!("0x128e1c _emit_symbol") }
+pub fn stub_128e1c(st: &mut HuffState, tbl: &HuffDerived, symbol: usize, stats: &mut [u32], refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128e1c: gather mode → bump the stats counter; else emit code/size from the derived table.
+    if !st.gather {
+        return stub_128a24(st, tbl.codes[symbol], tbl.sizes[symbol] as i32, refill);
+    }
+    stats[symbol] = stats[symbol].wrapping_add(1);
+    true
+}
 
 // 0x128e68 — _emit_buffered_bits
 #[doc(alias = "_emit_buffered_bits")]
-pub fn stub_128e68() -> ! { todo!("0x128e68 _emit_buffered_bits") }
+pub fn stub_128e68(st: &mut HuffState, bits: &[u8], refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128e68: gather mode → no output; else emit each correction bit; IDA unrolls the tail ((n&7) prologue) and body 8-wide.
+    if st.gather {
+        return true;
+    }
+    for &b in bits {
+        if !stub_128a24(st, b as u32, 1, refill) {
+            return false;
+        }
+    }
+    true
+}
 
 // 0x128ff0 — _emit_eobrun
 #[doc(alias = "_emit_eobrun")]
-pub fn stub_128ff0() -> ! { todo!("0x128ff0 _emit_eobrun") }
+pub fn stub_128ff0(st: &mut HuffState, ac: &HuffDerived, ac_stats: &mut [u32], refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x128ff0: fold the EOB run into size bits (run > 14 → error 41); emit the EOBn symbol + run bits + buffered corrections.
+    if st.eobrun == 0 {
+        return true;
+    }
+    let run = st.eobrun;
+    let mut n = run;
+    let mut i = 0u32;
+    loop {
+        n >>= 1;
+        if n == 0 {
+            break;
+        }
+        i += 1;
+    }
+    if i > 14 {
+        panic!("emit_eobrun: error 41");
+    }
+    if !stub_128e1c(st, ac, (16 * i) as usize, ac_stats, refill) {
+        return false;
+    }
+    if i != 0 && !stub_128a24(st, run, i as i32, refill) {
+        return false;
+    }
+    st.eobrun = 0;
+    let buf = std::mem::take(&mut st.buf);
+    let ok = stub_128e68(st, &buf[..st.buf_count as usize], refill);
+    st.buf_count = 0;
+    ok
+}
 
 // 0x129088 — _emit_restart_e
 #[doc(alias = "_emit_restart_e")]
-pub fn stub_129088() -> ! { todo!("0x129088 _emit_restart_e") }
+pub fn stub_129088(st: &mut HuffState, marker: u8, ac: &HuffDerived, ac_stats: &mut [u32], refine_ac: bool, refill: &mut dyn FnMut(&mut HuffState) -> bool) { // IDA 0x129088: EOB flush; marker 0xFF/(index - 48); refine pass → clear EOB state, else clear per-component DC predictions (IDA returns the cinfo pointer).
+    let _ = stub_128ff0(st, ac, ac_stats, refill);
+    if !st.gather {
+        let _ = stub_128df4(st, refill);
+        let _ = st.put(0xFF, refill);
+        let _ = st.put(marker.wrapping_sub(48), refill);
+    }
+    if refine_ac {
+        st.eobrun = 0;
+        st.buf_count = 0;
+    } else {
+        st.dc_pred = [0; 4];
+    }
+}
 
 // 0x12914c — _encode_mcu_DC_first_0
 #[doc(alias = "_encode_mcu_DC_first_0")]
