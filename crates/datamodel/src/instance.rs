@@ -1148,9 +1148,12 @@ pub struct StarterGuiService {
 }
 
 /// Rust model of `RBX::StarterPackService` (IDA `0x453d60`): the starter pack
-/// service; members land with the service batch.
+/// `name` is the `Instance` name set to `"StarterPack"` by the ctor (IDA
+/// `0x5731a2`-`0x5731ae`); the `RelativePanel` base, layout words, and
+/// registry collapse.
 #[derive(Default)]
 pub struct StarterPackService {
+    pub name: String,
     _opaque: (),
 }
 
@@ -2356,6 +2359,15 @@ pub struct HopperBin {
     pub item: BackpackItem,
     pub bin_type: i32,
     pub active: bool,
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Hopper` (IDA `0x572efc`): the hopper panel over
+/// `RelativePanel`; `pair68` is the raw word pair at `+68` initialized to
+/// `[4, 1]` (`0x100000004`, 0x572f30) — readers land with the render batch.
+#[derive(Default)]
+pub struct Hopper {
+    pub pair68: [u32; 2],
     _opaque: (),
 }
 

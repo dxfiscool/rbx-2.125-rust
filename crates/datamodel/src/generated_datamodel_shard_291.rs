@@ -1391,16 +1391,24 @@ pub fn stub_0x572e98() -> ! {
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "RBX::HopperBin::onLocalOtherClicked(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin19onLocalOtherClickedEv")]
-pub fn stub_0x572ef8() -> ! {
-    todo!("0x572ef8 RBX::HopperBin::onLocalOtherClicked(void)")
+pub fn stub_0x572ef8(bin: &mut crate::instance::HopperBin) {
+    // IDA 0x572ef8 (decompiled): thunk tail-calling `disable` (0x5715ac).
+    stub_0x5715ac(bin);
 }
 
 // 0x572efc — __ZN3RBX6HopperC2Ev
 // type: _DWORD __fastcall(RBX::Hopper *__hidden this)
 #[doc(alias = "RBX::Hopper::Hopper(void)")]
 #[doc(alias = "__ZN3RBX6HopperC2Ev")]
-pub fn stub_0x572efc() -> ! {
-    todo!("0x572efc RBX::Hopper::Hopper(void)")
+pub fn stub_0x572efc() -> crate::instance::Hopper {
+    // IDA 0x572efc (decompiled): `Hopper::C2` — runs the `RelativePanel`
+    // base (0x572f02), installs the vtable words (0x572f14-0x572f2c), and
+    // initializes the word pair at `+68` to `[4, 1]` (`0x100000004`,
+    // 0x572f30). The base/vtables collapse; the observable state is the
+    // pair.
+    let mut hopper = crate::instance::Hopper::default();
+    hopper.pair68 = [4, 1];
+    hopper
 }
 
 // 0x572f78 — __ZN3RBX6Hopper8render2dEPNS_5AdornE
@@ -1415,16 +1423,27 @@ pub fn stub_0x572f78() -> ! {
 // type: _DWORD __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "RBX::StarterPackService::StarterPackService(void)")]
 #[doc(alias = "__ZN3RBX18StarterPackServiceC1Ev")]
-pub fn stub_0x573090() -> ! {
-    todo!("0x573090 RBX::StarterPackService::StarterPackService(void)")
+pub fn stub_0x573090() -> crate::instance::StarterPackService {
+    // IDA 0x573090 `StarterPackService::C1`: the complete ctor runs the
+    // `C2` body (0x573094); the vtable/base collapse is shared.
+    stub_0x573094()
 }
 
 // 0x573094 — __ZN3RBX18StarterPackServiceC2Ev
 // type: _DWORD __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "RBX::StarterPackService::StarterPackService(void)")]
 #[doc(alias = "__ZN3RBX18StarterPackServiceC2Ev")]
-pub fn stub_0x573094() -> ! {
-    todo!("0x573094 RBX::StarterPackService::StarterPackService(void)")
+pub fn stub_0x573094() -> crate::instance::StarterPackService {
+    // IDA 0x573094 (decompiled): `StarterPackService::C2` — runs the
+    // `RelativePanel` base (0x5730b4), stores the layout words (`+35 = 1`,
+    // `+34 = 4`, 0x5730da-0x5730e0), installs the vtable words
+    // (0x5730f4-0x573198), bumps the class registrar (0x57315a), sets byte
+    // `+148` (0x573168), and names the instance `"StarterPack"`
+    // (0x5731a2-0x5731ae). The base/words/registry collapse; the observable
+    // state is the name.
+    let mut service = crate::instance::StarterPackService::default();
+    service.name = "StarterPack".to_string();
+    service
 }
 
 // 0x5732ac — __ZN3RBX18StarterPackService8render2dEPNS_5AdornE
@@ -2013,5 +2032,31 @@ mod hopper_bin_ctor_dtor_tests {
             category: "Behavior".to_string(),
         })));
         stub_0x573768(std::ptr::null());
+    }
+}
+
+#[cfg(test)]
+mod hopper_panel_tests {
+    use super::*;
+    use crate::instance::HopperBin;
+
+    #[test]
+    fn local_other_clicked_disables() {
+        let mut bin = HopperBin::default();
+        bin.active = true;
+        stub_0x572ef8(&mut bin);
+        assert!(!bin.active);
+    }
+
+    #[test]
+    fn hopper_ctor_pair() {
+        let hopper = stub_0x572efc();
+        assert_eq!(hopper.pair68, [4, 1]);
+    }
+
+    #[test]
+    fn starter_pack_service_names() {
+        assert_eq!(stub_0x573090().name, "StarterPack");
+        assert_eq!(stub_0x573094().name, "StarterPack");
     }
 }
