@@ -772,10 +772,114 @@ pub fn stub_0x276b0(
     start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
+/// `joinScriptUrl` extraction (IDA 0x27e24..0x27ef6): the value after
+/// `"joinScriptUrl"` (+ key length + 3) up to the next comma (closing
+/// quote stripped), with `\/` escapes collapsed (the discarded
+/// comma-find result + single-pos `substr` in the decompile imply
+/// comma truncation).
+fn join_script_url(response: &str) -> String {
+    let key = "joinScriptUrl";
+    let Some(pos) = response.find(key) else {
+        return String::new();
+    };
+    let start = pos + key.len() + 3;
+    if start >= response.len() {
+        return String::new();
+    }
+    let end = response[start..].find(',').map(|i| start + i).unwrap_or(response.len());
+    let raw = &response[start..end];
+    raw.strip_suffix('"').unwrap_or(raw).replace("\\/", "/")
+}
+
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
 #[doc(alias = "joinGamePlaceId(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")]
-pub fn stub_0x278a8() -> ! {
-    todo!("0x278a8 joinGamePlaceId(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")
+pub fn stub_0x278a8(
+    state: &mut PlaceLauncherState,
+    place_id: i32,
+    game: &GameToken,
+    request: i32,
+    overlay_enabled: bool,
+    base_url: &str,
+    register_user_agent: &mut dyn FnMut(),
+    http_get: &mut dyn FnMut(&str) -> String,
+    sleep_us: &mut dyn FnMut(u32),
+    execute_signed_script: &mut dyn FnMut(&GameToken, &str),
+    execute_url_script: &mut dyn FnMut(&GameToken, &str),
+    report_session: &mut dyn FnMut(i32, i32),
+    track_page_view: &mut dyn FnMut(&str),
+    leave_game: &mut dyn FnMut(&mut PlaceLauncherState),
+    handle_failure: &mut dyn FnMut(&mut PlaceLauncherState),
+) {
+    // IDA 0x278a8: logs the join, registers the `UserAgent` default, then
+    // with `OverlayDataModelEnabled` + `request == 2` fetches
+    // `Game/AppStart.ashx?appid=` and runs the signed script; otherwise
+    // polls `Game/PlaceLauncher.ashx` (`placeId/RequestGame` for request
+    // 0, `userId/RequestFollowUser` for 1) until `"status":2` — transient
+    // 0/1 statuses sleep 0x3D090us without consuming retries, other
+    // statuses sleep 0xF3E58us and consume one of 5 retries (disasm
+    // 0x27d18/0x27d22 `MOV R0` immediates) — then runs the `joinScriptUrl`
+    // (`\/` unescaped) and records the join. Exhaustion alerts
+    // `ConnectionErrorGameEnded` (status 5), `ConnectionErrorGameFull`
+    // (status 6), else `ConnectionError`, then leaves and forwards the
+    // failure. String retains/releases fold into host ownership.
+    state.last_log = Some(format!("PlaceLauncher::joinGamePlaceId {place_id}"));
+    register_user_agent();
+    let (key, req) = match request {
+        0 => ("placeId", "RequestGame"),
+        1 => ("userId", "RequestFollowUser"),
+        _ => ("", ""),
+    };
+    if overlay_enabled && request == 2 {
+        let response = http_get(&format!("{base_url}Game/AppStart.ashx?appid={place_id}"));
+        execute_signed_script(game, &response);
+    } else {
+        let url = format!(
+            "{base_url}Game/PlaceLauncher.ashx?request={req}&{key}={place_id}&isPartyLeader=false&gender=&isTeleport=false"
+        );
+        let mut retries = 5;
+        let mut response = String::new();
+        loop {
+            if retries < 0 {
+                state.last_log = Some(if request != 0 {
+                    format!("PlaceLauncher: Cannot follow user {place_id}, return = {response}")
+                } else {
+                    format!("PlaceLauncher: Cannot connect to place {place_id}, return = {response}")
+                });
+                state.last_alert = Some(
+                    if response.contains("\"status\":5") {
+                        "ConnectionErrorGameEnded"
+                    } else if response.contains("\"status\":6") {
+                        "ConnectionErrorGameFull"
+                    } else {
+                        "ConnectionError"
+                    }
+                    .to_string(),
+                );
+                leave_game(state);
+                handle_failure(state);
+                return;
+            }
+            response = http_get(&url);
+            if response.contains("\"status\":2") {
+                break;
+            }
+            let transient = response.contains("\"status\":0") || response.contains("\"status\":1");
+            if transient {
+                sleep_us(0x3d090);
+            } else {
+                retries -= 1;
+                sleep_us(0xf3e58);
+            }
+        }
+        if request == 2 {
+            execute_signed_script(game, &response);
+        } else {
+            execute_url_script(game, &join_script_url(&response));
+        }
+    }
+    stub_0x25080(state, place_id);
+    report_session(3, place_id);
+    track_page_view("Visit/Success/Join");
 }
 
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
@@ -1197,7 +1301,7 @@ mod launcher_leave_tests {
         let bg_end: RefCell<Vec<u32>> = RefCell::new(vec![]);
         let dispatched = Cell::new(0);
         let shutdowns = Cell::new(0);
-        let mut run = |present: bool, version: f32| {
+        let run = |present: bool, version: f32| {
             let mut state = armed();
             if !present {
                 state.currently_playing = false;
@@ -1371,7 +1475,7 @@ mod launcher_leave_tests {
         let mut marshal = |v: u32, _: &GameToken| marshalled.borrow_mut().push(v);
         stub_0x2aba4(3, &game, &mut marshal);
         assert_eq!(*marshalled.borrow(), [3]);
-        let mut cap = FinishTeleportCapture {
+        let cap = FinishTeleportCapture {
             first: Some(1),
             second: Some(2),
             raw: 5,
@@ -1435,6 +1539,182 @@ mod launcher_leave_tests {
         let mut shutdown = |_: &mut PlaceLauncherState| shutdowns += 1;
         stub_0x29c74(&mut state, &mut shutdown);
         assert_eq!(shutdowns, 1);
+    }
+
+    #[test]
+    fn join_game_place_id_app_start_path() {
+        let mut state = PlaceLauncherState::default();
+        let game = GameToken { unsecured: false, is_app: true };
+        let fetched = RefCell::new(vec![]);
+        let mut http = |url: &str| {
+            fetched.borrow_mut().push(url.to_owned());
+            "signed-blob".to_string()
+        };
+        let ran = RefCell::new(vec![]);
+        let mut signed = |_: &GameToken, body: &str| ran.borrow_mut().push(body.to_owned());
+        let mut url_script = |_: &GameToken, _: &str| panic!("must not run url script");
+        let mut sleeps = 0;
+        let mut sleep = |_: u32| sleeps += 1;
+        let mut ua = 0;
+        let mut register = || ua += 1;
+        let mut reported = vec![];
+        let mut report = |kind: i32, place: i32| reported.push((kind, place));
+        let mut pages = vec![];
+        let mut track = |p: &str| pages.push(p.to_owned());
+        let mut leave = |_: &mut PlaceLauncherState| panic!("must not leave");
+        let mut fail = |_: &mut PlaceLauncherState| panic!("must not fail");
+        stub_0x278a8(
+            &mut state, 7, &game, 2, true, "http://base/", &mut register, &mut http,
+            &mut sleep, &mut signed, &mut url_script, &mut report, &mut track,
+            &mut leave, &mut fail,
+        );
+        assert_eq!(*fetched.borrow(), ["http://base/Game/AppStart.ashx?appid=7"]);
+        assert_eq!(*ran.borrow(), ["signed-blob"]);
+        assert_eq!((ua, sleeps), (1, 0));
+        assert_eq!(state.last_place_id, 7);
+        assert_eq!((reported, pages), (vec![(3, 7)], vec!["Visit/Success/Join".to_string()]));
+        assert!(state.last_log.as_deref().unwrap().contains("joinGamePlaceId 7"));
+    }
+    #[test]
+    fn join_game_place_id_poll_success_and_exhaustion() {
+        let game = GameToken { unsecured: false, is_app: false };
+        let scripted = RefCell::new(vec![]);
+        let mut url_script = |_: &GameToken, url: &str| scripted.borrow_mut().push(url.to_owned());
+        let mut signed = |_: &GameToken, _: &str| panic!("must not run signed script");
+        let sleeps: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let mut sleep = |us: u32| sleeps.borrow_mut().push(us);
+        let mut register = || {};
+        let mut report = |_: i32, _: i32| {};
+        let mut track = |_: &str| {};
+        let mut leave = |_: &mut PlaceLauncherState| {};
+        let mut fail = |_: &mut PlaceLauncherState| {};
+        let bodies = RefCell::new(vec![
+            "{\"status\":0}".to_string(),
+            "{\"status\":2,\"joinScriptUrl\":\"http:\\/\\/h\\/v\",\"x\":1}".to_string(),
+        ]);
+        let mut http = |_: &str| bodies.borrow_mut().remove(0);
+        let mut state = PlaceLauncherState::default();
+        stub_0x278a8(
+            &mut state, 9, &game, 0, false, "http://base/", &mut register, &mut http,
+            &mut sleep, &mut signed, &mut url_script, &mut report, &mut track,
+            &mut leave, &mut fail,
+        );
+        assert_eq!(*sleeps.borrow(), [0x3d090]);
+        assert_eq!(*scripted.borrow(), ["http://h/v"]);
+        assert_eq!(state.last_place_id, 9);
+        assert_eq!(state.last_alert, None);
+        let bodies = RefCell::new(vec!["{\"status\":9}".to_string()]);
+        let mut http = |_: &str| bodies.borrow().last().unwrap().clone();
+        let mut left = 0;
+        let mut leave = |_: &mut PlaceLauncherState| left += 1;
+        let mut failed = 0;
+        let mut fail = |_: &mut PlaceLauncherState| failed += 1;
+        let mut state = PlaceLauncherState::default();
+        stub_0x278a8(
+            &mut state, 3, &game, 1, false, "http://base/", &mut register, &mut http,
+            &mut sleep, &mut signed, &mut url_script, &mut report, &mut track,
+            &mut leave, &mut fail,
+        );
+        assert_eq!((left, failed), (1, 1));
+        assert_eq!(sleeps.borrow().iter().filter(|s| **s == 0xf3e58).count(), 6);
+        assert_eq!(state.last_alert.as_deref(), Some("ConnectionError"));
+        assert!(state.last_log.as_deref().unwrap().contains("Cannot follow user 3"));
+        assert_eq!(state.last_place_id, 0);
+    }
+    #[test]
+    fn join_script_url_parsing() {
+        assert_eq!(join_script_url("{\"joinScriptUrl\":\"a\\/b\",}"), "a/b");
+        assert_eq!(join_script_url("no key here"), "");
+        assert_eq!(join_script_url("\"joinScriptUrl\""), "");
+    }
+    #[test]
+    fn present_game_view_gates_and_presents() {
+        let presented: RefCell<Vec<(u32, u32)>> = RefCell::new(vec![]);
+        let completed = Cell::new(0);
+        let mut handle = || completed.set(completed.get() + 1);
+        let mut present = |non_game: u32, ogre: u32, done: &mut dyn FnMut()| {
+            presented.borrow_mut().push((non_game, ogre));
+            done();
+        };
+        stub_0x2c138(true, Some(5), Some(6), false, &mut present, &mut handle);
+        assert_eq!(*presented.borrow(), [(6, 5)]);
+        assert_eq!(completed.get(), 1);
+        stub_0x2c138(true, Some(5), Some(6), true, &mut present, &mut handle);
+        stub_0x2c138(false, Some(5), Some(6), false, &mut present, &mut handle);
+        stub_0x2c138(true, None, Some(6), false, &mut present, &mut handle);
+        stub_0x2c138(true, Some(5), None, false, &mut present, &mut handle);
+        assert_eq!((presented.borrow().len(), completed.get()), (1, 1));
+        stub_0x2c1f8(false, &mut handle);
+        assert_eq!(completed.get(), 1);
+    }
+    #[test]
+    fn control_view_helper_flow() {
+        let game = GameToken { unsecured: false, is_app: true };
+        let resolved = RefCell::new(vec![]);
+        let mut resolve = |name: &str| {
+            resolved.borrow_mut().push(name.to_owned());
+            name.len() as u32
+        };
+        let views = RefCell::new(vec![]);
+        let mut set_view = |v: u32| views.borrow_mut().push(v);
+        let built = RefCell::new(vec![]);
+        let mut create = |parent: u32, bounds: Option<[i32; 4]>, _: &GameToken| {
+            built.borrow_mut().push((parent, bounds));
+            50u32
+        };
+        let subs = RefCell::new(vec![]);
+        let mut add = |parent: u32, child: u32| subs.borrow_mut().push((parent, child));
+        let wins = RefCell::new(vec![]);
+        let mut set_win = |v: u32| wins.borrow_mut().push(v);
+        let mains = Cell::new(0);
+        let mut dispatch = || mains.set(mains.get() + 1);
+        stub_0x2c224(
+            9, &game, true, true, true, Some([1, 2, 3, 4]), &mut resolve, &mut set_view,
+            &mut create, &mut add, &mut set_win, &mut dispatch,
+        );
+        assert_eq!(*resolved.borrow(), ["VIEW", "WINDOW"]);
+        assert_eq!(*views.borrow(), [4]);
+        assert_eq!(*built.borrow(), [(4, Some([1, 2, 3, 4]))]);
+        assert_eq!(*subs.borrow(), [(4, 50), (4, 50)]);
+        assert_eq!(*wins.borrow(), [6]);
+        assert_eq!(mains.get(), 1);
+        stub_0x2c224(
+            9, &game, true, false, true, None, &mut resolve, &mut set_view,
+            &mut create, &mut add, &mut set_win, &mut dispatch,
+        );
+        stub_0x2c224(
+            9, &game, false, true, false, None, &mut resolve, &mut set_view,
+            &mut create, &mut add, &mut set_win, &mut dispatch,
+        );
+        assert_eq!((built.borrow().len(), mains.get()), (1, 1));
+    }
+    #[test]
+    fn service_singleton_and_wrappers() {
+        let mut cell = TaskSchedulerSettingsCell::default();
+        let mut creates = 0;
+        let mut create = || creates += 1;
+        assert!(stub_0x2c5b0(&mut cell, &mut create));
+        assert!(stub_0x2c5b0(&mut cell, &mut create));
+        assert_eq!(creates, 1);
+        let stored: RefCell<Vec<u32>> = RefCell::new(vec![]);
+        let mut store = |v: u32| stored.borrow_mut().push(v);
+        let mut find = || Some(12u32);
+        assert_eq!(stub_0x2c764(Some(7), &mut find, &mut store), Some(7));
+        assert_eq!(stored.borrow().len(), 0);
+        assert_eq!(stub_0x2c764(None, &mut find, &mut store), Some(12));
+        assert_eq!(*stored.borrow(), [12]);
+        let mut linked = 0;
+        let mut link = || linked += 1;
+        stub_0x2c8c0(&mut link);
+        assert_eq!(linked, 1);
+        let game = GameToken { unsecured: true, is_app: false };
+        assert_eq!(stub_0x2c9a8(&game), game);
+        let src = BlockCapture { target: Some(3) };
+        let mut dst = BlockCapture::default();
+        stub_0x2c210(&mut dst, &src);
+        assert_eq!(dst.target, Some(3));
+        stub_0x2c21c(&mut dst);
+        assert_eq!(dst.target, None);
     }
 }
 
@@ -1882,61 +2162,152 @@ pub fn stub_0x2ba4c(slot: &mut BlockCapture) {
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke")]
-pub fn stub_0x2c138() -> ! {
-    todo!("0x2c138 ____ZL15presentGameViewv_block_invoke")
+pub fn stub_0x2c138(
+    main_controller_present: bool,
+    ogre_controller: Option<u32>,
+    last_non_game_controller: Option<u32>,
+    presented_is_ogre: bool,
+    present: &mut dyn FnMut(u32, u32, &mut dyn FnMut()),
+    handle_success: &mut dyn FnMut(),
+) {
+    // IDA 0x2c138: with a shared `MainViewController`, an ogre
+    // controller, and a last non-game controller not already presenting
+    // the ogre controller (0x2c15e/0x2c176/0x2c18c/0x2c1a2), presents it
+    // unanimated with the success completion (0x2c1f8).
+    let (Some(ogre), Some(non_game)) = (ogre_controller, last_non_game_controller) else {
+        return;
+    };
+    if !main_controller_present || presented_is_ogre {
+        return;
+    }
+    let mut completion = || stub_0x2c1f8(true, handle_success);
+    present(non_game, ogre, &mut completion);
 }
 
 // 0x2c1f8 — ____ZL15presentGameViewv_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "____ZL15presentGameViewv_block_invoke_2")]
-pub fn stub_0x2c1f8() -> ! {
-    todo!("0x2c1f8 ____ZL15presentGameViewv_block_invoke_2")
+pub fn stub_0x2c1f8(controller_present: bool, handle_success: &mut dyn FnMut()) {
+    // IDA 0x2c1f8: completion block — `handleStartGameSuccess` unless
+    // the captured controller is nil.
+    if controller_present {
+        handle_success();
+    }
 }
 
 // 0x2c210 — ___copy_helper_block_499
 #[doc(alias = "___copy_helper_block_499")]
-pub fn stub_0x2c210() -> ! {
-    todo!("0x2c210 ___copy_helper_block_499")
+pub fn stub_0x2c210(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x2c210 `__copy_helper_block_499`: single
+    // `_Block_object_assign` retain (+20, cf. 0x1f660).
+    *dst = src.clone();
 }
 
 // 0x2c21c — ___destroy_helper_block_500
 #[doc(alias = "___destroy_helper_block_500")]
-pub fn stub_0x2c21c() -> ! {
-    todo!("0x2c21c ___destroy_helper_block_500")
+pub fn stub_0x2c21c(slot: &mut BlockCapture) {
+    // IDA 0x2c21c `__destroy_helper_block_500`: single
+    // `_Block_object_dispose` release (+20, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
 }
-
 // 0x2c224 — __ZL21initControlViewHelperP10RobloxViewa
 // type: _DWORD __fastcall(RobloxView *, signed __int8)
 #[doc(alias = "initControlViewHelper(RobloxView *,signed char)")]
-pub fn stub_0x2c224() -> ! {
-    todo!("0x2c224 initControlViewHelper(RobloxView *,signed char)")
+pub fn stub_0x2c224(
+    view: u32,
+    game: &GameToken,
+    flag: bool,
+    main_controller_present: bool,
+    render_window_present: bool,
+    screen_bounds: Option<[i32; 4]>,
+    resolve_target: &mut dyn FnMut(&str) -> u32,
+    set_ogre_view: &mut dyn FnMut(u32),
+    create_control_view: &mut dyn FnMut(u32, Option<[i32; 4]>, &GameToken) -> u32,
+    add_subview: &mut dyn FnMut(u32, u32),
+    set_ogre_window: &mut dyn FnMut(u32),
+    dispatch_main: &mut dyn FnMut(),
+) {
+    // IDA 0x2c224: no-ops without the shared `MainViewController` or the
+    // render window (0x2c290/0x2c296); otherwise resolves the `VIEW`
+    // target, installs the ogre view, builds the `ControlView` (screen
+    // bounds, zeroed when headless, cf. 0x25498), adds it as a subview
+    // twice (0x2c3de/0x2c43c), installs the `WINDOW` target, and with the
+    // flag dispatches the global control-view block on the main queue.
+    // The view rides the resolve cookies; the host keeps it explicit.
+    let _ = view;
+    if !main_controller_present || !render_window_present {
+        return;
+    }
+    let ogre_view = resolve_target("VIEW");
+    set_ogre_view(ogre_view);
+    let control = create_control_view(ogre_view, screen_bounds, game);
+    add_subview(ogre_view, control);
+    set_ogre_window(resolve_target("WINDOW"));
+    add_subview(ogre_view, control);
+    if flag {
+        dispatch_main();
+    }
+}
+
+/// `TaskSchedulerSettings` singleton cell (IDA 0x2c5b0): the cached
+/// `sing` instance, created once under the `GlobalAdvancedSettings`
+/// lock.
+#[derive(Debug, Clone, Default)]
+pub struct TaskSchedulerSettingsCell {
+    pub live: bool,
 }
 
 // 0x2c5b0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv")]
-pub fn stub_0x2c5b0() -> ! {
-    todo!("0x2c5b0 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEE9singletonEv")
+pub fn stub_0x2c5b0(cell: &mut TaskSchedulerSettingsCell, create: &mut dyn FnMut()) -> bool {
+    // IDA 0x2c5b0: returns the cached `sing`; otherwise creates the
+    // `TaskSchedulerSettings` under `GlobalAdvancedSettings` and caches
+    // it (double-checked lock + assert fold into the live latch).
+    if !cell.live {
+        create();
+        cell.live = true;
+    }
+    cell.live
 }
 
 // 0x2c764 — __ZNK3RBX15ServiceProvider4findINS_10GuiServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::GuiService * RBX::ServiceProvider::find<RBX::GuiService>(void)const")]
-pub fn stub_0x2c764() -> ! {
-    todo!("0x2c764 RBX::GuiService * RBX::ServiceProvider::find<RBX::GuiService>(void)const")
+pub fn stub_0x2c764(
+    cached: Option<u32>,
+    find_by_name: &mut dyn FnMut() -> Option<u32>,
+    store: &mut dyn FnMut(u32),
+) -> Option<u32> {
+    // IDA 0x2c764: the `call_once` class-index init folds into the host;
+    // returns the cached service slot, else finds `GuiService` by class
+    // name, caches it in the slot, and returns it (null class name →
+    // `None`).
+    if let Some(service) = cached {
+        return Some(service);
+    }
+    let found = find_by_name();
+    if let Some(service) = found {
+        store(service);
+    }
+    found
 }
 
 // 0x2c8c0 — __ZN3rbx7signals6signalIFvSsEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)")]
-pub fn stub_0x2c8c0() -> ! {
-    todo!("0x2c8c0 rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)")
+pub fn stub_0x2c8c0(connect: &mut dyn FnMut()) {
+    // IDA 0x2c8c0: allocates the string-signal slot and inserts it
+    // (`rbx_core::Signal::connect` on the host).
+    connect();
 }
 
 // 0x2c9a8 — __ZN5boost10shared_ptrIN3RBX4GameEEC1INS1_16SecurePlayerGameEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Game>::shared_ptr<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")]
-pub fn stub_0x2c9a8() -> ! {
-    todo!("0x2c9a8 rbx_core::SharedPtr<RBX::Game>::shared_ptr<RBX::SecurePlayerGame>(RBX::SecurePlayerGame *)")
+pub fn stub_0x2c9a8(game: &GameToken) -> GameToken {
+    // IDA 0x2c9a8: `shared_ptr<Game>` adopt of a `SecurePlayerGame`
+    // (refcount init folds into `Arc`); the token carries over.
+    *game
 }
 
 // 0x2ca7c — __ZN5boost4bindIvRKSsNS_10shared_ptrIN3RBX4GameEEEPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_
