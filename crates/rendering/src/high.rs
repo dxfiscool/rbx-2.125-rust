@@ -1,6 +1,10 @@
 //! rendering high — shard 2 (high EA >= 0xC00000)
 //! Filter: Ogre|Gfx|Render|G3D (11144 total, 4927 prior, 100 this batch) — 0xc03acc..0xc8af30
 //! Each stub preserves IDA ea + mangled + demangled for rg.
+//!
+//! IDA-grounded mirror types live below the imports; the small-EA stubs
+//! further down delegate to them. Offsets and control flow mirror the ARMv7
+//! disassembly/decompilation noted per item.
 
 #![allow(
     non_snake_case,
@@ -10,7 +14,377 @@
     clippy::all
 )]
 
+use std::cell::Cell;
+use std::sync::atomic::{AtomicU32, Ordering};
+use std::sync::OnceLock;
+
 use rbx_core::SharedPtr;
+
+use crate::movable::{AxisAlignedBox, Entity as OgreEntity, MovableObject};
+
+/// Ogre 4x4 matrix row-major (`Ogre::Matrix4`, 64 bytes).
+pub type Matrix4 = [[f32; 4]; 4];
+
+/// Ogre::StringConverter::parseReal with default 0.0 (0xc6a064).
+#[inline]
+fn parse_real(text: &str) -> f32 {
+    text.parse::<f32>().unwrap_or(0.0)
+}
+
+/// RBX::GfxPart — renderable part binding (`GfxBase/GfxPart.h`).
+#[derive(Clone, Debug, Default)]
+pub struct GfxPart {
+    pub fuzzy_min: [f32; 3],
+    pub fuzzy_max: [f32; 3],
+}
+
+impl GfxPart {
+    /// IDA 0xc0b4cc: `MOVS R0,#1; BX LR` — decompile `return 1;`.
+    #[inline]
+    pub fn part_count(&self) -> u32 {
+        1
+    }
+
+    /// IDA 0xc0b43c: `ReleaseAssert(false, "false", GfxPart.h:109)` while
+    /// `FLog::Asserts`, then min=+maxFinite, max=-maxFinite. No `FLog` in
+    /// this crate, so the assert is a `debug_assert`.
+    pub fn fast_fuzzy_extents(&mut self) -> [[f32; 3]; 2] {
+        debug_assert!(
+            false,
+            "false file: ../GfxBase/include/GfxBase/GfxPart.h line: 109"
+        );
+        self.fuzzy_min = [f32::MAX; 3];
+        self.fuzzy_max = [-f32::MAX; 3];
+        [self.fuzzy_min, self.fuzzy_max]
+    }
+}
+
+/// Ogre::MaterialPtr — shared material handle (`boost::shared_ptr` →
+/// [`SharedPtr`], no boost shims).
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct MaterialHandle {
+    pub name: String,
+    pub group: String,
+}
+
+/// RBX::RenderEntity — Ogre-mapped renderable (`RbxOgre/RbxRenderNode.cpp`).
+///
+/// Layout mirrors the ARMv7 original: material slot at `+52`
+/// (0xc35838/0xc359ec: `return this + 52`), scene link at `+48` (0xc35aa8).
+#[derive(Clone, Debug, Default)]
+pub struct RenderEntity {
+    pub material: MaterialHandle,
+    pub lights: Vec<u32>,
+}
+
+impl RenderEntity {
+    /// IDA 0xc35838: `return this + 52` — the live material slot.
+    #[inline]
+    pub fn actual_material(&self) -> &MaterialHandle {
+        &self.material
+    }
+
+    /// IDA 0xc359ec: `return this + 52` — same slot as the live material.
+    #[inline]
+    pub fn debug_material(&self) -> &MaterialHandle {
+        &self.material
+    }
+
+    /// IDA 0xc359e8: `MOVS R0,#0; BX LR` — hardcoded null technique.
+    #[inline]
+    pub fn technique(&self) -> u32 {
+        0
+    }
+
+    /// IDA 0xc35aa8: light list reached through the scene link at `+48`.
+    #[inline]
+    pub fn lights(&self) -> &[u32] {
+        &self.lights
+    }
+}
+
+/// IDA 0xc35980: function-static default `Ogre::MaterialPtr` (guarded init
+/// plus `__cxa_atexit` dtor). `OnceLock` runs the init once; Rust statics
+/// never run destructors, so there is no manual state to tear down.
+static DEFAULT_MATERIAL: OnceLock<MaterialHandle> = OnceLock::new();
+
+/// IDA 0xc35980: returns the process-wide default material.
+#[inline]
+pub fn default_material() -> &'static MaterialHandle {
+    DEFAULT_MATERIAL.get_or_init(MaterialHandle::default)
+}
+
+/// RBX::RenderNode — entity container (`RbxOgre/RbxRenderNode.cpp:113,120`).
+/// Entity vector at `+464` (`std::vector<RBX::RenderEntity *>`).
+#[derive(Clone, Debug, Default)]
+pub struct RenderNode {
+    pub entities: Vec<SharedPtr<RenderEntity>>,
+    pub bounds: AxisAlignedBox,
+}
+
+impl RenderNode {
+    /// IDA 0xc35d9c: `ReleaseAssert(entity != 0)` (line 113), then
+    /// `push_back` (`_M_insert_aux` on the `+464` vector). Non-null is
+    /// carried by the type here, so the assert holds by construction.
+    pub fn add_entity(&mut self, entity: SharedPtr<RenderEntity>) {
+        self.entities.push(entity);
+    }
+
+    /// IDA 0xc35e2c: unrolled linear find plus `memmove` tail shift and a
+    /// `ReleaseAssert(it != mEntities.end())` (line 120).
+    /// // BUG: original at 0xc35e2c — with asserts off and a missing entity
+    /// the original shifts nothing yet still shrinks the vector by one;
+    /// this port panics instead of corrupting the list.
+    pub fn remove_entity(&mut self, entity: &SharedPtr<RenderEntity>) {
+        let pos = self
+            .entities
+            .iter()
+            .position(|slot| SharedPtr::ptr_eq(slot, entity))
+            .expect("it != mEntities.end() RbxRenderNode.cpp:120");
+        self.entities.remove(pos);
+    }
+
+    /// IDA 0xc35f64: `Ogre::ToExtents(box at +312)`. The mirror box uses the
+    /// same min/max layout, so the conversion is the identity.
+    #[inline]
+    pub fn fast_fuzzy_extents(&self) -> AxisAlignedBox {
+        self.bounds
+    }
+}
+
+/// Ogre::Animation::InterpolationMode (`OgreAnimation.h`: linear then
+/// spline) [INFERENCE: Ogre 1.6 header — IDA shows only store+return].
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+#[repr(u32)]
+pub enum InterpolationMode {
+    #[default]
+    Linear = 0,
+    Spline = 1,
+}
+
+/// Ogre::Animation::msDefaultInterpolationMode (0xc50e64).
+static DEFAULT_INTERPOLATION_MODE: AtomicU32 = AtomicU32::new(0);
+
+/// IDA 0xc50e64: stores the mode and returns it.
+#[inline]
+pub fn set_default_interpolation_mode(mode: InterpolationMode) -> InterpolationMode {
+    DEFAULT_INTERPOLATION_MODE.store(mode as u32, Ordering::Relaxed);
+    mode
+}
+
+/// Ogre::AutoParamDataSource world-matrix view (0xc5738c: pointer at
+/// `+16392`, count at `+16388`, dirty byte at `+19280` cleared).
+#[derive(Clone, Debug, Default)]
+pub struct AutoParamDataSource {
+    pub world_matrix_ptr: usize,
+    pub world_matrix_count: usize,
+    pub world_matrices_dirty: bool,
+}
+
+impl AutoParamDataSource {
+    /// IDA 0xc5738c: latches the matrix range and clears the dirty flag.
+    #[inline]
+    pub fn set_world_matrices(&mut self, matrices: &[Matrix4]) {
+        self.world_matrix_ptr = matrices.as_ptr() as usize;
+        self.world_matrix_count = matrices.len();
+        self.world_matrices_dirty = false;
+    }
+}
+
+/// Ogre::Renderable render-system slot (0xc6eb18: `STR R1,[R0,#44]` from a
+/// `const` method — hence the `Cell`).
+#[derive(Clone, Debug, Default)]
+pub struct RenderableData {
+    render_system_data: Cell<usize>,
+}
+
+impl RenderableData {
+    /// IDA 0xc6eb18: stores the render-system cookie at `+44`.
+    #[inline]
+    pub fn set_render_system_data(&self, data: usize) {
+        self.render_system_data.set(data);
+    }
+
+    #[inline]
+    pub fn render_system_data(&self) -> usize {
+        self.render_system_data.get()
+    }
+}
+
+/// Ogre::SceneManager::ENTITY_TYPE_MASK (0xc8a67c: double-LDR of the
+/// static). Value [INFERENCE: Ogre 1.6 `OgreSceneManager.h`] — IDA bridge
+/// read of the static was unavailable when this was written.
+pub const ENTITY_TYPE_MASK: u32 = 0x8000_0000;
+
+/// IDA 0xc0dbe0: `sp_counted_impl_p<RenderNode>::dispose` — destroys the
+/// owned node when non-null; maps to `Arc` drop (no boost shims).
+#[inline]
+pub fn dispose_render_node(node: Option<SharedPtr<RenderNode>>) {
+    drop(node);
+}
+
+/// IDA 0xc8ad84: null-checked scalar-deleting destructor on the movable;
+/// maps to `Arc` drop, where `None` is the null case.
+#[inline]
+pub fn destroy_instance(object: Option<SharedPtr<MovableObject>>) {
+    drop(object);
+}
+
+/// Ogre::CompositionPass input slot (0xc708cc: `inputs[slot] = (name, index)`
+/// with a string copy).
+#[derive(Clone, Debug, Default)]
+pub struct CompositionPass {
+    pub inputs: Vec<(String, u32)>,
+}
+
+impl CompositionPass {
+    /// IDA 0xc708cc: stores the copied name and index at the slot.
+    pub fn set_input(&mut self, slot: usize, name: &str, index: u32) {
+        if self.inputs.len() <= slot {
+            self.inputs.resize(slot + 1, (String::new(), 0));
+        }
+        self.inputs[slot] = (name.to_string(), index);
+    }
+}
+
+/// Ogre::CompositionTargetPass (0xc70ae4: C2 constructor; 0xc70ad8: C1
+/// forwards to C2).
+#[derive(Clone, Debug, Default)]
+pub struct CompositionTargetPass {
+    pub technique: usize,
+    pub input: u32,
+    pub output_name: String,
+    pub visibility_mask: u32,
+    pub lod_bias: f32,
+    pub material_scheme: String,
+    pub shadows_enabled: bool,
+}
+
+impl CompositionTargetPass {
+    /// IDA 0xc70ae4: links the parent technique, zeroes the pass lists,
+    /// `visibilityMask = -1`, `lodBias = 1.0`, scheme from the render-system
+    /// capabilities when present else `MaterialManager::DEFAULT_SCHEME_NAME`
+    /// ("Default" [INFERENCE: Ogre 1.6 header]), byte `+44 = 1`.
+    pub fn new(technique: usize, default_scheme: &str) -> Self {
+        Self {
+            technique,
+            input: 0,
+            output_name: String::new(),
+            visibility_mask: u32::MAX,
+            lod_bias: 1.0,
+            material_scheme: default_scheme.to_string(),
+            shadows_enabled: true,
+        }
+    }
+}
+
+/// Ogre::BorderPanelOverlayElement UV cell rect. Exact getter text follows
+/// 0xc68818 (`getCellUVString`, 670 insns); the observed call sites pass
+/// cell 5 (bottom-left, 0xc6a554) and cell 7 (bottom-right, 0xc6a7e8).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct BorderUvCell {
+    pub left: f32,
+    pub top: f32,
+    pub right: f32,
+    pub bottom: f32,
+}
+
+impl BorderUvCell {
+    #[inline]
+    pub fn uv_string(&self) -> String {
+        format!("{} {} {} {}", self.left, self.top, self.right, self.bottom)
+    }
+}
+
+/// Ogre::BorderPanelOverlayElement sizing state (0xc6a064).
+#[derive(Clone, Debug, Default)]
+pub struct BorderPanelOverlayElement {
+    pub cells: [BorderUvCell; 8],
+    pub border_size: [f32; 4],
+    pub pixel_mode: bool,
+    pub geometry_dirty: bool,
+}
+
+impl BorderPanelOverlayElement {
+    /// IDA 0xc6a064: `split(value, "\t\n ")` then four
+    /// `StringConverter::parseReal(part, 0.0)`; pixel mode (`+38` set)
+    /// truncates through ushorts (`vcvt_s32_f32`), float mode stores at
+    /// `+130..133`; always sets the geometry-dirty byte (`+205 = 1`).
+    pub fn set_border_size(&mut self, value: &str) {
+        let mut parts = value.split_whitespace().map(parse_real);
+        for slot in &mut self.border_size {
+            *slot = parts.next().unwrap_or(0.0);
+        }
+        if self.pixel_mode {
+            for slot in &mut self.border_size {
+                *slot = (*slot as i32) as f32;
+            }
+        }
+        self.geometry_dirty = true;
+    }
+
+    /// IDA 0xc6a554: `getCellUVString(cell 5)` (bottom-left).
+    #[inline]
+    pub fn border_bottom_left_uv(&self) -> String {
+        self.cells[5].uv_string()
+    }
+
+    /// IDA 0xc6a7e8: `getCellUVString(cell 7)` (bottom-right).
+    #[inline]
+    pub fn border_bottom_right_uv(&self) -> String {
+        self.cells[7].uv_string()
+    }
+}
+
+/// Ogre::DefaultHardwareVertexBuffer CPU-side store
+/// (0xc7f2cc: `memcpy(dst, base + offset, len)`).
+#[derive(Clone, Debug, Default)]
+pub struct DefaultHardwareVertexBuffer {
+    pub data: Vec<u8>,
+}
+
+impl DefaultHardwareVertexBuffer {
+    /// IDA 0xc7f2cc: copies `[offset, offset + dst.len())` into `dst`.
+    #[inline]
+    pub fn read_data(&self, offset: usize, dst: &mut [u8]) {
+        dst.copy_from_slice(&self.data[offset..offset + dst.len()]);
+    }
+}
+
+/// Ogre::HardwareIndexBufferSharedPtr payload (0xc8a5e0 target).
+#[derive(Clone, Debug, Default)]
+pub struct HardwareIndexBuffer {
+    pub indices: Vec<u16>,
+}
+
+/// Ogre::Entity::EntityShadowRenderable (0xc8a580/0xc8a5c8/0xc8a5e0).
+#[derive(Clone, Debug, Default)]
+pub struct EntityShadowRenderable {
+    pub parent_world: Matrix4,
+    pub parent_visible: Option<bool>,
+    pub index_buffer: Option<SharedPtr<HardwareIndexBuffer>>,
+}
+
+impl EntityShadowRenderable {
+    /// IDA 0xc8a580: copies the parent world matrix (64 bytes) to the caller.
+    #[inline]
+    pub fn world_transform(&self) -> Matrix4 {
+        self.parent_world
+    }
+
+    /// IDA 0xc8a5c8: parent `isVisible` (`+35` vtable call), default true
+    /// when unbound.
+    #[inline]
+    pub fn is_visible(&self) -> bool {
+        self.parent_visible.unwrap_or(true)
+    }
+
+    /// IDA 0xc8a5e0: rebinds the shared index buffer.
+    #[inline]
+    pub fn rebind_index_buffer(&mut self, buffer: Option<SharedPtr<HardwareIndexBuffer>>) {
+        self.index_buffer = buffer;
+    }
+}
 
 // 0xc03acc — __ZN19ResourceGroupHelper23updateOnEveryRenderableEv
 #[doc(alias = "ResourceGroupHelper::updateOnEveryRenderable(void)")]
@@ -97,15 +471,17 @@ pub fn stub_c0b438() {
 // 0xc0b43c — __ZN3RBX7GfxPart19getFastFuzzyExtentsEv
 #[doc(alias = "RBX::GfxPart::getFastFuzzyExtents(void)")]
 // was: RBX::GfxPart::getFastFuzzyExtents(void)
-// IDA 0xc0b43c: 42 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c0b43c() {
+// IDA 0xc0b43c: decompile asserts `false` (GfxPart.h:109) under FLog::Asserts, then min=+maxFinite, max=-maxFinite.
+pub fn stub_c0b43c(part: &mut GfxPart) -> [[f32; 3]; 2] {
+    part.fast_fuzzy_extents()
 }
 
 // 0xc0b4cc — __ZN3RBX7GfxPart12getPartCountEv
 #[doc(alias = "RBX::GfxPart::getPartCount(void)")]
 // was: RBX::GfxPart::getPartCount(void)
-// IDA 0xc0b4cc: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c0b4cc() {
+// IDA 0xc0b4cc: `MOVS R0,#1; BX LR` — decompile `return 1;`.
+pub fn stub_c0b4cc(part: &GfxPart) -> u32 {
+    part.part_count()
 }
 
 // 0xc0b4d0 — __ZN3RBX7GfxPart17onSleepingChangedEbPNS_12PartInstanceE
@@ -220,8 +596,9 @@ pub fn stub_c0dbdc() {
 // 0xc0dbe0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10RenderNodeEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RenderNode>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::RenderNode>::dispose(void)
-// IDA 0xc0dbe0: 7 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c0dbe0() {
+// IDA 0xc0dbe0: `dispose` destroys `*(a1 + 12)` via vtable `+24` when non-null; maps to `Arc` drop.
+pub fn stub_c0dbe0(node: Option<SharedPtr<RenderNode>>) {
+    dispose_render_node(node);
 }
 
 // 0xc0dbf0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10RenderNodeEE11get_deleterERKSt9type_info
@@ -229,15 +606,17 @@ pub fn stub_c0dbe0() {
     alias = "boost::detail::sp_counted_impl_p<RBX::RenderNode>::get_deleter(std::type_info const&)"
 )]
 // was: boost::detail::sp_counted_impl_p<RBX::RenderNode>::get_deleter(std::type_info const&)
-// IDA 0xc0dbf0: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c0dbf0() {
+// IDA 0xc0dbf0: `get_deleter` returns 0 — `Arc` carries no user deleter.
+pub fn stub_c0dbf0() -> Option<usize> {
+    None
 }
 
 // 0xc0dbf4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10RenderNodeEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::RenderNode>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::RenderNode>::get_untyped_deleter(void)
-// IDA 0xc0dbf4: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c0dbf4() {
+// IDA 0xc0dbf4: `get_untyped_deleter` returns 0 — `Arc` carries no user deleter.
+pub fn stub_c0dbf4() -> Option<usize> {
+    None
 }
 
 // 0xc10528 — __ZN3RBX10EdgeSpewV2INS_27SolidTerrainRenderPredicateINS_19MegaClusterInstanceEEENS_20SolidTerrainRendererIS2_EES2_E11handleCellsERKNS_13SpatialRegion2IdE
@@ -469,36 +848,41 @@ pub fn stub_c354bc() {
 // 0xc35838 — __ZNK3RBX12RenderEntity17getActualMaterialEv
 #[doc(alias = "RBX::RenderEntity::getActualMaterial(void)const")]
 // was: RBX::RenderEntity::getActualMaterial(void)const
-// IDA 0xc35838: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35838() {
+// IDA 0xc35838: `return (char *)this + 52` — the live material slot.
+pub fn stub_c35838(entity: &RenderEntity) -> &MaterialHandle {
+    entity.actual_material()
 }
 
 // 0xc35980 — __ZNK3RBX12RenderEntity11getMaterialEv
 #[doc(alias = "RBX::RenderEntity::getMaterial(void)const")]
 // was: RBX::RenderEntity::getMaterial(void)const
-// IDA 0xc35980: 33 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35980() {
+// IDA 0xc35980: guarded function-static default `Ogre::MaterialPtr` (`__cxa_atexit` dtor); `OnceLock` init-once map.
+pub fn stub_c35980() -> &'static MaterialHandle {
+    default_material()
 }
 
 // 0xc359e8 — __ZNK3RBX12RenderEntity12getTechniqueEv
 #[doc(alias = "RBX::RenderEntity::getTechnique(void)const")]
 // was: RBX::RenderEntity::getTechnique(void)const
-// IDA 0xc359e8: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c359e8() {
+// IDA 0xc359e8: `MOVS R0,#0; BX LR` — hardcoded null technique.
+pub fn stub_c359e8(entity: &RenderEntity) -> u32 {
+    entity.technique()
 }
 
 // 0xc359ec — __ZNK3RBX12RenderEntity16getDebugMaterialEv
 #[doc(alias = "RBX::RenderEntity::getDebugMaterial(void)const")]
 // was: RBX::RenderEntity::getDebugMaterial(void)const
-// IDA 0xc359ec: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c359ec() {
+// IDA 0xc359ec: `return (char *)this + 52` — same slot as the live material.
+pub fn stub_c359ec(entity: &RenderEntity) -> &MaterialHandle {
+    entity.debug_material()
 }
 
 // 0xc35aa8 — __ZNK3RBX12RenderEntity9getLightsEv
 #[doc(alias = "RBX::RenderEntity::getLights(void)const")]
 // was: RBX::RenderEntity::getLights(void)const
-// IDA 0xc35aa8: 5 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35aa8() {
+// IDA 0xc35aa8: light list via the scene link (`*(this + 12) + 308`, vtable `+328`).
+pub fn stub_c35aa8(entity: &RenderEntity) -> &[u32] {
+    entity.lights()
 }
 
 // 0xc35b20 — __ZN3RBX10RenderNodeD0Ev
@@ -525,22 +909,25 @@ pub fn stub_c35bd8() {
 // 0xc35d9c — __ZN3RBX10RenderNode9addEntityEPNS_12RenderEntityE
 #[doc(alias = "RBX::RenderNode::addEntity(RBX::RenderEntity *)")]
 // was: RBX::RenderNode::addEntity(RBX::RenderEntity *)
-// IDA 0xc35d9c: 48 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35d9c() {
+// IDA 0xc35d9c: `ReleaseAssert(entity)` (RbxRenderNode.cpp:113) then `push_back` on the `+464` vector.
+pub fn stub_c35d9c(node: &mut RenderNode, entity: SharedPtr<RenderEntity>) {
+    node.add_entity(entity);
 }
 
 // 0xc35e2c — __ZN3RBX10RenderNode12removeEntityEPNS_12RenderEntityE
 #[doc(alias = "RBX::RenderNode::removeEntity(RBX::RenderEntity *)")]
 // was: RBX::RenderNode::removeEntity(RBX::RenderEntity *)
-// IDA 0xc35e2c: 94 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35e2c() {
+// IDA 0xc35e2c: unrolled find plus `memmove` shift; `ReleaseAssert(it != end)` (RbxRenderNode.cpp:120).
+pub fn stub_c35e2c(node: &mut RenderNode, entity: &SharedPtr<RenderEntity>) {
+    node.remove_entity(entity);
 }
 
 // 0xc35f64 — __ZN3RBX10RenderNode19getFastFuzzyExtentsEv
 #[doc(alias = "RBX::RenderNode::getFastFuzzyExtents(void)")]
 // was: RBX::RenderNode::getFastFuzzyExtents(void)
-// IDA 0xc35f64: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c35f64() {
+// IDA 0xc35f64: `Ogre::ToExtents(box at +312)`; mirror layout makes it the identity.
+pub fn stub_c35f64(node: &RenderNode) -> AxisAlignedBox {
+    node.fast_fuzzy_extents()
 }
 
 // 0xc35f74 — __ZThn392_N3RBX10RenderNode19getFastFuzzyExtentsEv
@@ -569,36 +956,41 @@ pub fn stub_c3602c() {
 // 0xc50e64 — __ZN4Ogre9Animation27setDefaultInterpolationModeENS0_17InterpolationModeE
 #[doc(alias = "Ogre::Animation::setDefaultInterpolationMode(Ogre::Animation::InterpolationMode)")]
 // was: Ogre::Animation::setDefaultInterpolationMode(Ogre::Animation::InterpolationMode)
-// IDA 0xc50e64: 4 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c50e64() {
+// IDA 0xc50e64: `msDefaultInterpolationMode = arg; return arg;`.
+pub fn stub_c50e64(mode: InterpolationMode) -> InterpolationMode {
+    set_default_interpolation_mode(mode)
 }
 
 // 0xc5738c — __ZN4Ogre19AutoParamDataSource16setWorldMatricesEPKNS_7Matrix4Em
 #[doc(alias = "Ogre::AutoParamDataSource::setWorldMatrices(Ogre::Matrix4 const*,unsigned long)")]
 // was: Ogre::AutoParamDataSource::setWorldMatrices(Ogre::Matrix4 const*,unsigned long)
-// IDA 0xc5738c: 8 insns (MOVW..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c5738c() {
+// IDA 0xc5738c: pointer at `+16392`, count at `+16388`, dirty byte at `+19280` cleared.
+pub fn stub_c5738c(source: &mut AutoParamDataSource, matrices: &[Matrix4]) {
+    source.set_world_matrices(matrices);
 }
 
 // 0xc6a064 — __ZN4Ogre25BorderPanelOverlayElement13CmdBorderSize5doSetEPvRKSs
 #[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderSize::doSet(void *,std::string const&)")]
 // was: Ogre::BorderPanelOverlayElement::CmdBorderSize::doSet(void *,std::string const&)
-// IDA 0xc6a064: 245 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6a064() {
+// IDA 0xc6a064: whitespace split, four `parseReal` (default 0.0), ushort/float branch, dirty byte `+205 = 1`.
+pub fn stub_c6a064(element: &mut BorderPanelOverlayElement, value: &str) {
+    element.set_border_size(value);
 }
 
 // 0xc6a554 — __ZNK4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUV5doGetEPKv
 #[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doGet(void const*)const")]
 // was: Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doGet(void const*)const
-// IDA 0xc6a554: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6a554() {
+// IDA 0xc6a554: `getCellUVString(cell 5)` (bottom-left).
+pub fn stub_c6a554(element: &BorderPanelOverlayElement) -> String {
+    element.border_bottom_left_uv()
 }
 
 // 0xc6a7e8 — __ZNK4Ogre25BorderPanelOverlayElement22CmdBorderBottomRightUV5doGetEPKv
 #[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doGet(void const*)const")]
 // was: Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doGet(void const*)const
-// IDA 0xc6a7e8: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6a7e8() {
+// IDA 0xc6a7e8: `getCellUVString(cell 7)` (bottom-right).
+pub fn stub_c6a7e8(element: &BorderPanelOverlayElement) -> String {
+    element.border_bottom_right_uv()
 }
 
 // 0xc6ba1c — __ZN4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUVD1Ev
@@ -618,29 +1010,33 @@ pub fn stub_c6ba7c() {
 // 0xc6eb18 — __ZNK4Ogre10Renderable19setRenderSystemDataEPNS0_16RenderSystemDataE
 #[doc(alias = "Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const")]
 // was: Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const
-// IDA 0xc6eb18: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6eb18() {
+// IDA 0xc6eb18: `STR R1,[R0,#44]` — const setter over the `Cell` slot.
+pub fn stub_c6eb18(renderable: &RenderableData, data: usize) {
+    renderable.set_render_system_data(data);
 }
 
 // 0xc708cc — __ZN4Ogre15CompositionPass8setInputEmRKSsm
 #[doc(alias = "Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")]
 // was: Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)
-// IDA 0xc708cc: 103 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c708cc() {
+// IDA 0xc708cc: `inputs[slot] = (copied name, index)`.
+pub fn stub_c708cc(pass: &mut CompositionPass, slot: usize, name: &str, index: u32) {
+    pass.set_input(slot, name, index);
 }
 
 // 0xc70ad8 — __ZN4Ogre21CompositionTargetPassC1EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
-// IDA 0xc70ad8: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70ad8() {
+// IDA 0xc70ad8: C1 delegates to the C2 constructor below.
+pub fn stub_c70ad8(technique: usize, default_scheme: &str) -> CompositionTargetPass {
+    stub_c70ae4(technique, default_scheme)
 }
 
 // 0xc70ae4 — __ZN4Ogre21CompositionTargetPassC2EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
-// IDA 0xc70ae4: 168 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c70ae4() {
+// IDA 0xc70ae4: C2 links the technique, zeroes lists, mask -1, lodBias 1.0, render-system scheme or default.
+pub fn stub_c70ae4(technique: usize, default_scheme: &str) -> CompositionTargetPass {
+    CompositionTargetPass::new(technique, default_scheme)
 }
 
 // 0xc7967c — __ZN4Ogre17ControllerManager23createTextureUVScrollerEPNS_16TextureUnitStateEf
@@ -667,15 +1063,17 @@ pub fn stub_c79c9c() {
 // 0xc7f2cc — __ZN4Ogre27DefaultHardwareVertexBuffer8readDataEmmPv
 #[doc(alias = "Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)")]
 // was: Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)
-// IDA 0xc7f2cc: 7 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c7f2cc() {
+// IDA 0xc7f2cc: `memcpy(dst, base + offset, len)` over the CPU store.
+pub fn stub_c7f2cc(buffer: &DefaultHardwareVertexBuffer, offset: usize, dst: &mut [u8]) {
+    buffer.read_data(offset, dst);
 }
 
 // 0xc85874 — __ZThn188_N4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: non-virtual thunk to Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
-// IDA 0xc85874: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c85874() {
+// IDA 0xc85874: non-virtual thunk — `this - 188` to `Entity`; `_initialise` when the finished resource matches.
+pub fn stub_c85874(entity: &mut OgreEntity, resource_mesh: &str) -> bool {
+    entity.background_loading_complete(resource_mesh)
 }
 
 // 0xc8a3e0 — __ZN4Ogre6Entity22EntityShadowRenderableD2Ev
@@ -688,15 +1086,17 @@ pub fn stub_c8a3e0() {
 // 0xc8a580 — __ZNK4Ogre6Entity22EntityShadowRenderable18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "Ogre::Entity::EntityShadowRenderable::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: Ogre::Entity::EntityShadowRenderable::getWorldTransforms(Ogre::Matrix4 *)const
-// IDA 0xc8a580: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8a580() {
+// IDA 0xc8a580: copies the 64-byte parent world matrix to the caller (original returns the out pointer + 2).
+pub fn stub_c8a580(shadow: &EntityShadowRenderable, out: &mut Matrix4) {
+    *out = shadow.world_transform();
 }
 
 // 0xc8a5c8 — __ZNK4Ogre6Entity22EntityShadowRenderable9isVisibleEv
 #[doc(alias = "Ogre::Entity::EntityShadowRenderable::isVisible(void)const")]
 // was: Ogre::Entity::EntityShadowRenderable::isVisible(void)const
-// IDA 0xc8a5c8: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8a5c8() {
+// IDA 0xc8a5c8: parent `isVisible` at `+35`, default true when unbound.
+pub fn stub_c8a5c8(shadow: &EntityShadowRenderable) -> bool {
+    shadow.is_visible()
 }
 
 // 0xc8a5e0 — __ZN4Ogre6Entity22EntityShadowRenderable17rebindIndexBufferERKNS_28HardwareIndexBufferSharedPtrE
@@ -704,8 +1104,12 @@ pub fn stub_c8a5c8() {
     alias = "Ogre::Entity::EntityShadowRenderable::rebindIndexBuffer(Ogre::HardwareIndexBufferSharedPtr const&)"
 )]
 // was: Ogre::Entity::EntityShadowRenderable::rebindIndexBuffer(Ogre::HardwareIndexBufferSharedPtr const&)
-// IDA 0xc8a5e0: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8a5e0() {
+// IDA 0xc8a5e0: rebinds the `HardwareIndexBufferSharedPtr`.
+pub fn stub_c8a5e0(
+    shadow: &mut EntityShadowRenderable,
+    buffer: Option<SharedPtr<HardwareIndexBuffer>>,
+) {
+    shadow.rebind_index_buffer(buffer);
 }
 
 // 0xc8a600 — __ZN4Ogre6Entity19setRenderQueueGroupEh
@@ -725,8 +1129,9 @@ pub fn stub_c8a638() {
 // 0xc8a67c — __ZNK4Ogre6Entity12getTypeFlagsEv
 #[doc(alias = "Ogre::Entity::getTypeFlags(void)const")]
 // was: Ogre::Entity::getTypeFlags(void)const
-// IDA 0xc8a67c: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8a67c() {
+// IDA 0xc8a67c: double-LDR of `Ogre::SceneManager::ENTITY_TYPE_MASK` (disasm confirms the static load).
+pub fn stub_c8a67c(_entity: &OgreEntity) -> u32 {
+    ENTITY_TYPE_MASK
 }
 
 // 0xc8a68c — __ZN4Ogre6Entity23getVertexDataForBindingEv
@@ -753,8 +1158,9 @@ pub fn stub_c8a738() {
 // 0xc8a7d4 — __ZNK4Ogre13EntityFactory7getTypeEv
 #[doc(alias = "Ogre::EntityFactory::getType(void)const")]
 // was: Ogre::EntityFactory::getType(void)const
-// IDA 0xc8a7d4: 3 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8a7d4() {
+// IDA 0xc8a7d4: PC-relative lea of `EntityFactory::FACTORY_TYPE_NAME` (disasm confirms; same shape as 0xc87914).
+pub fn stub_c8a7d4() -> &'static str {
+    OgreEntity::movable_type()
 }
 
 // 0xc8a7e0 — __ZN4Ogre13EntityFactory18createInstanceImplERKSsPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -769,8 +1175,9 @@ pub fn stub_c8a7e0() {
 // 0xc8ad84 — __ZN4Ogre13EntityFactory15destroyInstanceEPNS_13MovableObjectE
 #[doc(alias = "Ogre::EntityFactory::destroyInstance(Ogre::MovableObject *)")]
 // was: Ogre::EntityFactory::destroyInstance(Ogre::MovableObject *)
-// IDA 0xc8ad84: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c8ad84() {
+// IDA 0xc8ad84: null-checked scalar-deleting destructor; maps to `Arc` drop.
+pub fn stub_c8ad84(object: Option<SharedPtr<MovableObject>>) {
+    destroy_instance(object);
 }
 
 // 0xc8ad98 — __ZN4Ogre14AxisAlignedBox15transformAffineERKNS_7Matrix4E
