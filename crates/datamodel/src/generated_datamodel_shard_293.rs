@@ -11,6 +11,7 @@ use super::generated_datamodel_shard_291::{
     BackpackTextureId, BackpackTextureProp, HOPPER_BIN_TYPE_ITEMS, stub_0x5713d0, stub_0x5713e8,
     stub_0x571428, stub_0x573688,
 };
+use crate::generated_05::Variant;
 use crate::instance::Weld;
 
 /// Rust model of `RBX::IEquipable` (IDA `0x57bf9c`): the equipable mixin
@@ -401,172 +402,285 @@ pub fn stub_0x57c39c(dst: &mut SharedPtr<Weld>, src: &SharedPtr<Weld>) {
     *dst = SharedPtr::clone(src);
 }
 
+/// Rust model of `RBX::TextureId` behind `GuiImageButton::getImage` (IDA
+/// `0x57e7f8`): the id string at `+201` with its tag word at `+202`
+/// (copied through `setImage`, IDA `0x57cb20`, and back, 0x57e806-0x57e808);
+/// same layout as `BackpackTextureId`, kept separate so the GUI-image member
+/// offsets stay with this batch.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct GuiImageTextureId {
+    pub id: String,
+    pub tag: u32,
+}
+
+/// Rust model of `RBX::ImageLabel` (IDA `0x57e380`): the image-label leaf over
+/// `GuiLabel`; `image_id` is the `ContentId`/`TextureId` string at `+135`
+/// with its tag word at `+136` behind `setImage` (IDA `0x57e5c8`);
+/// `image_rect_offset` and `image_rect_size` are the `Vector2` pairs at
+/// `+137`/`+138` and `+139`/`+140` behind `setImageRectOffset`/
+/// `setImageRectSize` (IDA `0x57e610`/`0x57e664`). The `GuiLabel` base and
+/// the `GuiDrawImage` member at `+141` are unmodeled.
+#[derive(Default)]
+pub struct ImageLabel {
+    pub image_id: String,
+    pub image_tag: u32,
+    pub image_rect_offset: [f32; 2],
+    pub image_rect_size: [f32; 2],
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<RBX::GuiImageButton,
+/// RBX::TextureId>` (IDA `0x57da48`): the name/category words; the bound
+/// getter/setter member pointers collapse into direct `GuiImageButton`
+/// image access, as in `BackpackTextureProp`.
+pub struct GuiImageButtonTextureProp {
+    pub name: String,
+    pub category: String,
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<RBX::ImageLabel,
+/// RBX::TextureId>` (IDA `0x57f464`): the name/category words; the bound
+/// getter/setter member pointers collapse into direct `ImageLabel` image
+/// access, as in `BackpackTextureProp`.
+pub struct ImageLabelTextureProp {
+    pub name: String,
+    pub category: String,
+}
+
 // 0x57c644 — __ZN3RBX14GuiImageButtonC2Ev
 #[doc(alias = "RBX::GuiImageButton::GuiImageButton(void)")]
-pub fn stub_0x57c644() -> ! {
-    todo!("0x57c644 RBX::GuiImageButton::GuiImageButton(void)")
+pub fn stub_0x57c644() -> crate::instance::GuiImageButton {
+    // IDA 0x57c644 (decompiled): `GuiImageButton::C2` — runs the `GuiButton`
+    // base ctor (`"ImageButton"`, 0x57c66e), installs the descriptor vtables,
+    // constructs the empty `ContentId` at `+201` (0x57c7a8), zeroes the rect
+    // pairs at `+203`/`+205` (0x57c7b4), constructs the `GuiDrawImage` at
+    // `+207` (0x57c7c0) and sets the word at `+228` to `127` (0x57c80c).
+    // The base/draw members and the `+228` word are unmodeled; the verb stays
+    // null, the image empty and the rect zeroed.
+    crate::instance::GuiImageButton::default()
 }
 
 // 0x57c894 — __ZN3RBX14GuiImageButtonC1EPNS_4VerbE
 #[doc(alias = "RBX::GuiImageButton::GuiImageButton(RBX::Verb *)")]
-pub fn stub_0x57c894() -> ! {
-    todo!("0x57c894 RBX::GuiImageButton::GuiImageButton(RBX::Verb *)")
+pub fn stub_0x57c894(verb: *const ()) -> crate::instance::GuiImageButton {
+    // IDA 0x57c894, disasm `B.W __ZN3RBX14GuiImageButtonC2EPNS_4VerbE`: C1
+    // tail-jumps to C2.
+    stub_0x57c898(verb)
 }
 
 // 0x57c898 — __ZN3RBX14GuiImageButtonC2EPNS_4VerbE
 #[doc(alias = "RBX::GuiImageButton::GuiImageButton(RBX::Verb *)")]
-pub fn stub_0x57c898() -> ! {
-    todo!("0x57c898 RBX::GuiImageButton::GuiImageButton(RBX::Verb *)")
+pub fn stub_0x57c898(verb: *const ()) -> crate::instance::GuiImageButton {
+    // IDA 0x57c898 (decompiled): same body as the default `C2` (0x57c644),
+    // plus storing the `Verb` at `+197` (0x57ca6a).
+    // SAFETY: `verb` must be null or point to a live `Verb` kept alive by
+    // the caller, as in 0x52105c.
+    crate::instance::GuiImageButton { verb, ..crate::instance::GuiImageButton::default() }
 }
 
 // 0x57caf4 — __ZN3RBX14GuiImageButton8setImageENS_9TextureIdE
 #[doc(alias = "RBX::GuiImageButton::setImage(RBX::TextureId)")]
-pub fn stub_0x57caf4() -> ! {
-    todo!("0x57caf4 RBX::GuiImageButton::setImage(RBX::TextureId)")
+pub fn stub_0x57caf4(btn: &mut crate::instance::GuiImageButton, texture: &GuiImageTextureId) -> bool {
+    // IDA 0x57caf4 (decompiled): no-op when the id at `+201` already matches
+    // (`operator!=` at 0x57cb02-0x57cb08); else assigns the string (0x57cb10)
+    // plus the tag word at `+202` (0x57cb20) and raises the property change
+    // (0x57cb2e, collapsed here). The store is the observable state change,
+    // as in `BackpackItem::setTextureId` (0x5713e8).
+    if btn.image_id == texture.id {
+        return false;
+    }
+    btn.image_id = texture.id.clone();
+    btn.image_tag = texture.tag;
+    true
 }
 
 // 0x57cb34 — __ZThn800_N3RBX14GuiImageButton8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")]
-pub fn stub_0x57cb34() -> ! {
-    todo!("0x57cb34 non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")
+pub fn stub_0x57cb34(btn: &mut crate::instance::GuiImageButton, texture: &GuiImageTextureId) -> bool {
+    // IDA 0x57cb34, disasm `SUB.W R0,#0x320; B.W setImage`: adjusts
+    // `this - 0x320` (the `GuiImageMixin` subobject at `+200`) then
+    // tail-calls `setImage`. The mixin offset collapses (single struct).
+    stub_0x57caf4(btn, texture)
 }
 
 // 0x57cb3c — __ZN3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
-pub fn stub_0x57cb3c() -> ! {
-    todo!("0x57cb3c RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+pub fn stub_0x57cb3c(btn: &mut crate::instance::GuiImageButton, offset: &[f32; 2]) {
+    // IDA 0x57cb3c (decompiled): no-op when both words at `+203`/`+204`
+    // already match (0x57cb4c-0x57cb64); else stores them (0x57cb70-0x57cb78)
+    // and raises the property change when `prop_ImageRectOffset` is set
+    // (0x57cb80-0x57cb82, collapsed here).
+    if btn.image_rect_offset != *offset {
+        btn.image_rect_offset = *offset;
+    }
 }
 
 // 0x57cb88 — __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
-pub fn stub_0x57cb88() -> ! {
-    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+pub fn stub_0x57cb88(btn: &mut crate::instance::GuiImageButton, offset: &[f32; 2]) {
+    // IDA 0x57cb88: `Thn800` to `setImageRectOffset` — same `this - 0x320`
+    // adjust + tail-call shape as 0x57cb34.
+    stub_0x57cb3c(btn, offset)
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
-pub fn stub_0x57cb90() -> ! {
-    todo!("0x57cb90 RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+pub fn stub_0x57cb90(btn: &mut crate::instance::GuiImageButton, size: &[f32; 2]) {
+    // IDA 0x57cb90 (decompiled): same match/no-op/store shape as
+    // `setImageRectOffset`, over the words at `+205`/`+206`
+    // (0x57cba0-0x57cbcc) with `prop_ImageRectSize` (0x57cbd4-0x57cbd6).
+    if btn.image_rect_size != *size {
+        btn.image_rect_size = *size;
+    }
 }
 
 // 0x57cbdc — __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
-pub fn stub_0x57cbdc() -> ! {
-    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+pub fn stub_0x57cbdc(btn: &mut crate::instance::GuiImageButton, size: &[f32; 2]) {
+    // IDA 0x57cbdc: `Thn800` to `setImageRectSize` — same `this - 0x320`
+    // adjust + tail-call shape as 0x57cb34.
+    stub_0x57cb90(btn, size)
 }
-
 // 0x57cbe4 — __ZN3RBX14GuiImageButton8render2dEPNS_5AdornE
 #[doc(alias = "RBX::GuiImageButton::render2d(RBX::Adorn *)")]
 pub fn stub_0x57cbe4() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x57cbe4 RBX::GuiImageButton::render2d(RBX::Adorn *)")
 }
-
 // 0x57cd38 — __ZThn96_N3RBX14GuiImageButton8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")]
 pub fn stub_0x57cd38() -> ! {
+    // BLOCKED: needs Adorn render infra (thunk to render2d)
     todo!("0x57cd38 non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")
 }
 
 // 0x57cd40 — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_0x57cd40() -> ! {
-    todo!("0x57cd40 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")
-}
+pub use rbx_reflection::generated::stub_0x57cd40 as stub_0x57cd40;
 
 // 0x57cd64 — __ZN3RBX14GuiImageButtonD1Ev
 #[doc(alias = "RBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57cd64() -> ! {
-    todo!("0x57cd64 RBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57cd64(_btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57cd64 (disassembled): `GuiImageButton::D1` — resets the
+    // `GuiImageMixin` vtable at `+0x320` (0x57cd9a-0x57cda2), destroys the
+    // `GuiDrawImage` at `+0x33c` (0x57cdc6-0x57cdca), the image string at
+    // `+0x324` (0x57cdd4-0x57cdd8), then runs `GuiButton::D2` (0x57cde4).
+    // Member drops collapse into field drops. Drop glue — no-op.
 }
 
 // 0x57ce5c — __ZN3RBX14GuiImageButtonD0Ev
 #[doc(alias = "RBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57ce5c() -> ! {
-    todo!("0x57ce5c RBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57ce5c(_btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57ce5c (disassembled): `GuiImageButton::D0` — same member
+    // teardown as `D1` (0x57cd64), plus `operator delete` (0x57cede).
+    // The delete collapses into box free. Drop glue — no-op.
 }
 
 // 0x57cf74 — __ZThn32_N3RBX14GuiImageButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57cf74() -> ! {
-    todo!("0x57cf74 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57cf74(btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57cf74 (disassembled): `SUBS R0,#0x20` then the same `D1` body
+    // as 0x57cd64 (vtable reset at `+0x320`, `GuiDrawImage`/`+0x324` string
+    // teardown, `GuiButton::D2`). The secondary-base adjust collapses
+    // (single struct); drop glue delegates to `D1`.
+    stub_0x57cd64(btn)
 }
 
 // 0x57d06c — __ZThn32_N3RBX14GuiImageButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57d06c() -> ! {
-    todo!("0x57d06c non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57d06c(btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57d06c: `Thn32` to `D0` — same `this - 32` adjust + `D0`-body
+    // shape as 0x57cf74; drop glue delegates to `D0`.
+    stub_0x57ce5c(btn)
 }
 
 // 0x57d188 — __ZThn36_N3RBX14GuiImageButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57d188() -> ! {
-    todo!("0x57d188 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57d188(btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57d188 (disassembled): `SUBS R0,#0x24` then the same `D1` body
+    // as 0x57cd64. The secondary-base adjust collapses (single struct);
+    // drop glue delegates to `D1`.
+    stub_0x57cd64(btn)
 }
 
 // 0x57d280 — __ZThn36_N3RBX14GuiImageButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
-pub fn stub_0x57d280() -> ! {
-    todo!("0x57d280 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
+pub fn stub_0x57d280(btn: &mut crate::instance::GuiImageButton) {
+    // IDA 0x57d280: `Thn36` to `D0` — same `this - 36` adjust + `D0`-body
+    // shape as 0x57d188; drop glue delegates to `D0`.
+    stub_0x57ce5c(btn)
 }
 
 // 0x57d6ac — __ZN3RBX4Name13callDoDeclareILZNS_15sGuiImageButtonEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_15sGuiImageButtonEEEEvv")]
-pub fn stub_0x57d6ac() -> ! {
-    todo!("0x57d6ac __ZN3RBX4Name13callDoDeclareILZNS_15sGuiImageButtonEEEEvv")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x57d6ac as stub_0x57d6ac;
 
 // 0x57d6b0 — __ZN3RBX4Name9doDeclareILZNS_15sGuiImageButtonEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sGuiImageButtonEEEERKS0_v")]
-pub fn stub_0x57d6b0() -> ! {
-    todo!("0x57d6b0 __ZN3RBX4Name9doDeclareILZNS_15sGuiImageButtonEEEERKS0_v")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x57d6b0 as stub_0x57d6b0;
 
 // 0x57da48 — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEEC2IMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>(char const*,char const*,RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x57da48() -> ! {
-    todo!("0x57da48 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>(char const*,char const*,RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x57da48(name: &str, category: &str) -> GuiImageButtonTextureProp {
+    // IDA 0x57da48 `PropDescriptor<GuiImageButton, TextureId>::C2`: stores
+    // the name/category words with the `getImage`/`setImage` member
+    // pointers, as in `BackpackItem` 0x578f28. The member pointers collapse
+    // into direct image access.
+    GuiImageButtonTextureProp { name: name.to_owned(), category: category.to_owned() }
 }
 
 // 0x57db5c — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_0x57db5c() -> ! {
-    todo!("0x57db5c RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")
-}
+pub use rbx_reflection::generated::stub_0x57db5c as stub_0x57db5c;
 
 // 0x57db88 — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::isReadOnly(void)const")]
-pub fn stub_0x57db88() -> ! {
-    todo!("0x57db88 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::isReadOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x57db88 as stub_0x57db88;
 
 // 0x57db8c — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::isWriteOnly(void)const")]
-pub fn stub_0x57db8c() -> ! {
-    todo!("0x57db8c RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::isWriteOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x57db8c as stub_0x57db8c;
 
 // 0x57db90 — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x57db90() -> ! {
-    todo!("0x57db90 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x57db90(btn: &crate::instance::GuiImageButton) -> GuiImageTextureId {
+    // IDA 0x57db90 (decompiled): `GetSetImpl<getImage, setImage>::getValue`
+    // — resolves the bound `GuiImageMixin::getImage` member pointer through
+    // the descriptor (0x57db98-0x57dbc0) and invokes it (0x57dbc6). The
+    // dispatch collapses into the member getter, as in 0x579070.
+    stub_0x57e7f8(btn)
 }
 
 // 0x57dbc8 — __ZNK3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
-pub fn stub_0x57dbc8() -> ! {
-    todo!("0x57dbc8 RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::GuiImageButton::*)(RBX::TextureId)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
+pub fn stub_0x57dbc8(btn: &mut crate::instance::GuiImageButton, texture: &GuiImageTextureId) -> bool {
+    // IDA 0x57dbc8 (decompiled): `GetSetImpl<getImage, setImage>::setValue`
+    // — copies the `TextureId` into a transient (0x57dc40-0x57dc48),
+    // resolves the bound `GuiImageButton::setImage` member pointer
+    // (0x57dc18-0x57dc36) and invokes it (0x57dc52). The dispatch collapses
+    // into the member setter, as in 0x579098. The native returns void; the
+    // `setImage` change bit is the observable result.
+    stub_0x57caf4(btn, texture)
 }
 
 // 0x57e37c — __ZN3RBX10ImageLabelC1Ev
 #[doc(alias = "RBX::ImageLabel::ImageLabel(void)")]
-pub fn stub_0x57e37c() -> ! {
-    todo!("0x57e37c RBX::ImageLabel::ImageLabel(void)")
+pub fn stub_0x57e37c() -> ImageLabel {
+    // IDA 0x57e37c, disasm `B.W __ZN3RBX10ImageLabelC2Ev`: C1 tail-jumps to
+    // C2.
+    stub_0x57e380()
 }
 
 // 0x57e380 — __ZN3RBX10ImageLabelC2Ev
 #[doc(alias = "RBX::ImageLabel::ImageLabel(void)")]
-pub fn stub_0x57e380() -> ! {
-    todo!("0x57e380 RBX::ImageLabel::ImageLabel(void)")
+pub fn stub_0x57e380() -> ImageLabel {
+    // IDA 0x57e380 (decompiled): `ImageLabel::C2` — runs the `GuiLabel`
+    // base ctor (`"ImageLabel"`, 0x57e3aa), installs the descriptor vtables,
+    // constructs the empty `ContentId` at `+135` (0x57e4e4), zeroes the rect
+    // pairs at `+137`/`+139` (0x57e4f0) and constructs the `GuiDrawImage` at
+    // `+141` (0x57e4fc). Same shape as `GuiImageButton::C2` (0x57c644) over
+    // the smaller `GuiLabel` base. The base/draw members are unmodeled; the
+    // image starts empty and the rect zeroed.
+    ImageLabel::default()
 }
 
 // 0x57e5c8 — __ZN3RBX10ImageLabel8setImageENS_9TextureIdE
@@ -631,8 +745,12 @@ pub fn stub_0x57e7f0() -> ! {
 
 // 0x57e7f8 — __ZNK3RBX13GuiImageMixin8getImageEv
 #[doc(alias = "RBX::GuiImageMixin::getImage(void)const")]
-pub fn stub_0x57e7f8() -> ! {
-    todo!("0x57e7f8 RBX::GuiImageMixin::getImage(void)const")
+pub fn stub_0x57e7f8(btn: &crate::instance::GuiImageButton) -> GuiImageTextureId {
+    // IDA 0x57e7f8 (decompiled): `GuiImageMixin::getImage` — copies the
+    // image string and the tag word behind the mixin into the out
+    // `TextureId` (0x57e802-0x57e808). The member-offset addressing
+    // collapses into direct field access, as in `getTextureId` (0x5713d0).
+    GuiImageTextureId { id: btn.image_id.clone(), tag: btn.image_tag }
 }
 
 // 0x57e80c — __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED1Ev
@@ -808,5 +926,94 @@ mod batch_b_tests {
         stub_0x57c058(&mut equip);
         assert!(equip.weld.is_none());
         stub_0x57bfb4(&mut equip);
+    }
+}
+
+#[cfg(test)]
+mod batch_c_tests {
+    use super::*;
+
+    #[test]
+    fn image_button_ctor_stores_verb() {
+        let plain = stub_0x57c644();
+        assert!(plain.verb.is_null());
+        assert!(plain.image_id.is_empty());
+        assert_eq!(plain.image_rect_offset, [0.0, 0.0]);
+        assert_eq!(plain.image_rect_size, [0.0, 0.0]);
+        let verb = 0x1234 as *const ();
+        let with_verb = stub_0x57c898(verb);
+        assert_eq!(with_verb.verb, verb);
+        assert_eq!(stub_0x57c894(verb).verb, verb);
+    }
+
+    #[test]
+    fn set_image_change_check_and_thunk() {
+        let mut btn = stub_0x57c644();
+        let tex = GuiImageTextureId { id: "rbxasset://Textures/btn.png".to_string(), tag: 9 };
+        assert!(stub_0x57caf4(&mut btn, &tex));
+        assert_eq!(btn.image_id, tex.id);
+        assert_eq!(btn.image_tag, 9);
+        assert!(!stub_0x57caf4(&mut btn, &tex));
+        let tex2 = GuiImageTextureId { id: "rbxasset://Textures/other.png".to_string(), tag: 3 };
+        assert!(stub_0x57cb34(&mut btn, &tex2));
+        assert_eq!(btn.image_id, tex2.id);
+        assert_eq!(btn.image_tag, 3);
+    }
+
+    #[test]
+    fn rect_offset_size_match_is_noop() {
+        let mut btn = stub_0x57c644();
+        stub_0x57cb3c(&mut btn, &[4.0, 8.0]);
+        assert_eq!(btn.image_rect_offset, [4.0, 8.0]);
+        stub_0x57cb3c(&mut btn, &[4.0, 8.0]);
+        assert_eq!(btn.image_rect_offset, [4.0, 8.0]);
+        stub_0x57cb88(&mut btn, &[1.0, 2.0]);
+        assert_eq!(btn.image_rect_offset, [1.0, 2.0]);
+        stub_0x57cb90(&mut btn, &[16.0, 32.0]);
+        assert_eq!(btn.image_rect_size, [16.0, 32.0]);
+        stub_0x57cbdc(&mut btn, &[16.0, 32.0]);
+        assert_eq!(btn.image_rect_size, [16.0, 32.0]);
+    }
+
+    #[test]
+    fn image_button_texture_getset_round_trip() {
+        let prop = stub_0x57da48("Image", "Appearance");
+        assert_eq!(prop.name, "Image");
+        let mut btn = stub_0x57c644();
+        let tex = GuiImageTextureId { id: "rbxasset://Textures/icon.png".to_string(), tag: 5 };
+        assert!(stub_0x57dbc8(&mut btn, &tex));
+        assert_eq!(stub_0x57db90(&btn), tex);
+        assert!(!stub_0x57db88());
+        assert!(!stub_0x57db8c());
+        stub_0x57cd40();
+        stub_0x57db5c();
+        stub_0x57d6ac();
+        stub_0x57d6b0();
+        drop(prop);
+    }
+
+    #[test]
+    fn image_button_dtors_are_drop_glue() {
+        let mut btn = stub_0x57c644();
+        btn.image_id = "x".to_string();
+        stub_0x57cf74(&mut btn);
+        stub_0x57d188(&mut btn);
+        assert_eq!(btn.image_id, "x");
+        stub_0x57cd64(&mut btn);
+        stub_0x57ce5c(&mut btn);
+        stub_0x57d06c(&mut btn);
+        stub_0x57d280(&mut btn);
+        assert_eq!(btn.image_id, "x");
+    }
+
+    #[test]
+    fn image_label_ctor_starts_empty() {
+        let label = stub_0x57e380();
+        assert!(label.image_id.is_empty());
+        assert_eq!(label.image_tag, 0);
+        assert_eq!(label.image_rect_offset, [0.0, 0.0]);
+        assert_eq!(label.image_rect_size, [0.0, 0.0]);
+        let again = stub_0x57e37c();
+        assert!(again.image_id.is_empty());
     }
 }

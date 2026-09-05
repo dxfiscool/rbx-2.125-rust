@@ -1872,10 +1872,21 @@ pub struct GameBasicSettings {
 }
 
 /// Rust model of `RBX::GuiImageButton` (IDA `0x52105c`): the GUI image-button
-/// leaf; members land with the GUI batch.
+/// leaf over `GuiButton`; `verb` is the `Verb` word at `+197` stored by the
+/// `C2(Verb)` (IDA `0x57c898`, null from the default `C2`, IDA `0x57c644`).
+/// `image_id` is the `ContentId`/`TextureId` string at `+201` with its tag
+/// word at `+202` behind `setImage` (IDA `0x57caf4`); `image_rect_offset` and
+/// `image_rect_size` are the `Vector2` pairs at `+203`/`+204` and `+205`/`+206`
+/// behind `setImageRectOffset`/`setImageRectSize` (IDA `0x57cb3c`/`0x57cb90`).
+/// The `GuiButton` base, the `GuiDrawImage` member at `+207` and the word at
+/// `+228` (`127`, IDA `0x57c80c`) are unmodeled.
 #[derive(Default)]
 pub struct GuiImageButton {
-    _opaque: (),
+    pub verb: *const (),
+    pub image_id: String,
+    pub image_tag: u32,
+    pub image_rect_offset: [f32; 2],
+    pub image_rect_size: [f32; 2],
 }
 
 /// Rust model of `RBX::NotificationBox` (IDA `0x520fa8`): the notification-box
