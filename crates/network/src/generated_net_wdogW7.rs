@@ -54,6 +54,13 @@ pub struct VoidSlotConn {
     pub live: bool,
 }
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
+
+/// `Ogre` data-stream archive map (`std::map<string, SharedPtr<MemoryDataStream>>`, IDA 0xf672f4 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct OgreStreamMap {
+ pub entries: HashMap<String, usize>,
+}
 
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
@@ -1142,138 +1149,181 @@ pub fn stub_52f2e8(invoke: &mut dyn FnMut()) {
 // 0x52f2f0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
-pub fn stub_52f2f0() -> ! {
-    todo!("0x52f2f0 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")
+pub fn stub_52f2f0(invoke: &mut dyn FnMut()) {
+    // IDA 0x52f2f0: non-virtual thunk tail-calls the operator().
+    invoke();
 }
 
 // 0x52f2f8 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv")]
-pub fn stub_52f2f8() -> ! {
-    todo!("0x52f2f8 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv")
+pub fn stub_52f2f8(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x52f2f8: mf0 dispatch (virtual adjust); obj->method().
+    call(obj, is_virtual);
 }
 
 // 0x52f310 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev")]
-pub fn stub_52f310() -> ! {
-    todo!("0x52f310 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev")
+pub fn stub_52f310(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f310: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x52f33c — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev")]
-pub fn stub_52f33c() -> ! {
-    todo!("0x52f33c __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev")
+pub fn stub_52f33c(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52f33c: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x52f55c — __ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE21connectSignalListenerEv
 #[doc(alias = "RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>::connectSignalListener(void)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE21connectSignalListenerEv")]
-pub fn stub_52f55c() -> ! {
-    todo!("0x52f55c __ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE21connectSignalListenerEv")
+pub fn stub_52f55c(rep: &mut EventReplicator, connect: &mut dyn FnMut() -> u64) -> u64 {
+    // IDA 0x52f55c: build the mf2 bind_t listener; connect; return the connection.
+    let id = connect();
+    rep.connected = true;
+    id
 }
 
 // 0x52f6b8 — __ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE25signalProducedIncrementedEii
 #[doc(alias = "RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>::signalProducedIncremented(int,int)")]
 #[doc(alias = "__ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE25signalProducedIncrementedEii")]
-pub fn stub_52f6b8() -> ! {
-    todo!("0x52f6b8 __ZN3RBX19EventReplicatorImplILi2ENS_9GuiButtonEFviiEE25signalProducedIncrementedEii")
+pub fn stub_52f6b8(replicate: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x52f6b8: signalProducedIncremented tail-calls replicateEvent().
+    replicate()
 }
 
 // 0x52f83c — __ZN3rbx7signals6signalIFviiEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(int,int)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_")]
-pub fn stub_52f83c() -> ! {
-    todo!("0x52f83c __ZN3rbx7signals6signalIFviiEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_52f83c(slots: &mut Vec<VoidSlotConn>, target: usize) -> u64 {
+    // IDA 0x52f83c: operator new islot; callable ctor; signal::insert; connection (mf2 flavor).
+    let id = slots.len() as u64;
+    slots.push(VoidSlotConn { id, target, live: true });
+    id
 }
 
 // 0x52fae0 — __ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED1Ev")]
-pub fn stub_52fae0() -> ! {
-    todo!("0x52fae0 __ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED1Ev")
+pub fn stub_52fae0(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52fae0: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x52fb0c — __ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED0Ev")]
-pub fn stub_52fb0c() -> ! {
-    todo!("0x52fb0c __ZN3rbx7signals6signalIFviiEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEED0Ev")
+pub fn stub_52fb0c(slots: &mut Vec<VoidSlotConn>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x52fb0c: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0xf672c4 — j___ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_16MemoryDataStreamEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
 #[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)")]
 #[doc(alias = "j___ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_16MemoryDataStreamEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_")]
-pub fn stub_f672c4() -> ! {
-    todo!("0xf672c4 j___ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_16MemoryDataStreamEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_")
+pub fn stub_f672c4(map: &mut OgreStreamMap, key: &str) {
+    // IDA 0xf672c4: allocator destroy of the pair slot.
+    map.entries.remove(key);
 }
 
 // 0xf672f4 — j___ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
 #[doc(alias = "j___ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
-pub fn stub_f672f4() -> ! {
-    todo!("0xf672f4 j___ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")
+pub fn stub_f672f4(map: &OgreStreamMap, key: &str) -> Option<usize> {
+    // IDA 0xf672f4: ordered-map find by name.
+    map.entries.get(key).copied()
 }
 
 // 0xf67324 — j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
 #[doc(alias = "j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_")]
-pub fn stub_f67324() -> ! {
-    todo!("0xf67324 j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_")
+pub fn stub_f67324(map: &mut OgreStreamMap, key: String, stream: usize) -> usize {
+    // IDA 0xf67324: create the pair node; return the stored stream.
+    map.entries.insert(key, stream);
+    stream
 }
 
 // 0xf67334 — j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
 #[doc(alias = "j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_")]
-pub fn stub_f67334() -> ! {
-    todo!("0xf67334 j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_")
+pub fn stub_f67334(map: &mut OgreStreamMap, key: String, stream: usize) -> bool {
+    // IDA 0xf67334: unique insert; false when the key already exists.
+    if map.entries.contains_key(&key) {
+        return false;
+    }
+    map.entries.insert(key, stream);
+    true
 }
 
 // 0xf67344 — j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
-pub fn stub_f67344() -> ! {
-    todo!("0xf67344 j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")
+pub fn stub_f67344(map: &OgreStreamMap, key: &str) -> Option<usize> {
+    // IDA 0xf67344: ordered-map find by name.
+    map.entries.get(key).copied()
 }
 
 // 0xf67354 — j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")]
-pub fn stub_f67354() -> ! {
-    todo!("0xf67354 j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")
+pub fn stub_f67354(map: &mut OgreStreamMap, key: &str) -> bool {
+    // IDA 0xf67354: erase the node.
+    map.entries.remove(key).is_some()
 }
 
 // 0xf67364 — j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
 #[doc(alias = "j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_")]
-pub fn stub_f67364() -> ! {
-    todo!("0xf67364 j___ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_")
+pub fn stub_f67364(map: &mut OgreStreamMap, key: String, stream: usize) {
+    // IDA 0xf67364: hinted insert of the pair.
+    map.entries.insert(key, stream);
 }
 
 // 0xf67e34 — j___ZN4Ogre9SharedPtrINS_10DataStreamEEaSERKS2_
 // type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
 #[doc(alias = "Ogre::SharedPtr<Ogre::DataStream>::operator=(Ogre::SharedPtr<Ogre::DataStream> const&)")]
 #[doc(alias = "j___ZN4Ogre9SharedPtrINS_10DataStreamEEaSERKS2_")]
-pub fn stub_f67e34() -> ! {
-    todo!("0xf67e34 j___ZN4Ogre9SharedPtrINS_10DataStreamEEaSERKS2_")
+pub fn stub_f67e34(dst: &mut Option<usize>, src: Option<usize>) -> Option<usize> {
+    // IDA 0xf67e34: Ogre::SharedPtr<DataStream> copy-assign (ref-counted clone).
+    *dst = src;
+    *dst
 }
 
 // 0xf68744 — j___ZN4Ogre9SharedPtrINS_16MemoryDataStreamEEaSERKS2_
 // type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
 #[doc(alias = "Ogre::SharedPtr<Ogre::MemoryDataStream>::operator=(Ogre::SharedPtr<Ogre::MemoryDataStream> const&)")]
 #[doc(alias = "j___ZN4Ogre9SharedPtrINS_16MemoryDataStreamEEaSERKS2_")]
-pub fn stub_f68744() -> ! {
-    todo!("0xf68744 j___ZN4Ogre9SharedPtrINS_16MemoryDataStreamEEaSERKS2_")
+pub fn stub_f68744(dst: &mut Option<usize>, src: Option<usize>) -> Option<usize> {
+    // IDA 0xf68744: Ogre::SharedPtr<MemoryDataStream> copy-assign (ref-counted clone).
+    *dst = src;
+    *dst
 }
 
 // 0xf68774 — j___ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev
 #[doc(alias = "std::pair<Ogre::SharedPtr<Ogre::MemoryDataStream>,Ogre::SharedPtr<Ogre::Codec::CodecData>>::~pair()")]
 #[doc(alias = "j___ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev")]
-pub fn stub_f68774() -> ! {
-    todo!("0xf68774 j___ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev")
+pub fn stub_f68774(first: &mut Option<usize>, second: &mut Option<usize>) {
+    // IDA 0xf68774: pair dtor releases both SharedPtrs.
+    *first = None;
+    *second = None;
 }
