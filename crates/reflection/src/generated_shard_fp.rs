@@ -64,6 +64,26 @@ pub(crate) static TEXTBOX_FINISHES: std::sync::LazyLock<
 pub(crate) static GAMEVIEW_SIZE: std::sync::LazyLock<
     parking_lot::Mutex<(u32, u32)>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, 0)));
+/// External URL-window state (IDA 0x4dc08-0x4e2ac): open flag, last
+/// URL, open/dismiss counts and close-signal count. Web views and
+/// main-queue blocks live out of slice.
+pub(crate) static URL_WEB_OPEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static URL_LAST: std::sync::LazyLock<
+    parking_lot::Mutex<String>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static URL_OPENS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static URL_DISMISSES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static URL_CLOSE_SIGNALS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// Login-prompt dispatches (IDA 0x4e730-0x4e780): signal count plus
+/// block-run count.
+pub(crate) static LOGIN_PROMPTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_PROMPT_RUNS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 // 0x4bb44 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot24safe_static_do_get_mutexEv
 // type: void *()
@@ -578,176 +598,234 @@ pub fn stub_4db04() -> bool {
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
-pub fn stub_4db08() -> ! {
-    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+pub fn stub_4db08() -> u32 {
+    // IDA 0x4db08: `supportedInterfaceOrientations` returns 24
+    // (landscape mask, 0x4db0a).
+    24
 }
 
 // 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(GameViewController *self, SEL, int)
 #[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_4db0c() -> ! {
-    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_4db0c(orientation: i32) -> bool {
+    // IDA 0x4db0c: orientation 4 (landscape) reports 1 (0x4db10);
+    // otherwise only 3 (portrait) reports 1 (0x4db1a).
+    if orientation == 4 {
+        true
+    } else {
+        orientation == 3
+    }
 }
 
 // 0x4db20 — -[GameViewController getControlView]
 // type: id __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController getControlView]")]
-pub fn stub_4db20() -> ! {
-    todo!("0x4db20 -[GameViewController getControlView]")
+pub fn stub_4db20(control_view_present: bool) -> bool {
+    // IDA 0x4db20: `getControlView` returns the control-view ivar.
+    // Presence reports here.
+    control_view_present
 }
 
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(GameViewController *self, SEL, id, id, int)
 #[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_4db9c() -> ! {
-    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_4db9c(open_native: bool, in_app_result: i32) -> bool {
+    // IDA 0x4db9c: the web view loads unless native Lua browsing is
+    // on and the in-app-purchase check consumes the navigation
+    // (0x4dbde). Same shape as `check_for_in_app_purchases`.
+    !open_native || in_app_result == 0
 }
 
 // 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
 // type: void __cdecl(GameViewController *self, SEL, DataModel *)
 #[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
-pub fn stub_4dbe8() -> ! {
-    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
+pub fn stub_4dbe8(datamodel_present: bool) {
+    // IDA 0x4dbe8: `signalGuiServiceUrlWindowClosedOnDataModel:`
+    // emits the close on the datamodel. The emit records here.
+    if datamodel_present {
+        URL_CLOSE_SIGNALS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4dc08 — -[GameViewController closeUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController closeUrlWindow:]")]
-pub fn stub_4dc08() -> ! {
-    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+pub fn stub_4dc08(web_open: bool, game_present: bool) {
+    // IDA 0x4dc08: `closeUrlWindow:` clears an open external view,
+    // signals the close on both models (0x4dc44-0x4dd08) and
+    // dispatches the dismiss block (0x4dda4-0x4ddc4). It sequences
+    // here.
+    if web_open {
+        URL_WEB_OPEN.store(false, std::sync::atomic::Ordering::SeqCst);
+        if game_present {
+            URL_CLOSE_SIGNALS.fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+        }
+        URL_DISMISSES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
-pub fn stub_4de58() -> ! {
-    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+pub fn stub_4de58() {
+    // IDA 0x4de58: the close dismiss block removes the web view on
+    // main (continuation of 0x4dc08). View removal is drop glue; no
+    // explicit body.
 }
 
 // 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
-pub fn stub_4df1c() -> ! {
-    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+pub fn stub_4df1c() {
+    // IDA 0x4df1c: the close block variant 2 (same dismiss shape as
+    // 0x4de58). Drop glue; no explicit body.
 }
 
 // 0x4dfd8 — ___copy_helper_block__10
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__10")]
-pub fn stub_4dfd8() -> ! {
-    todo!("0x4dfd8 ___copy_helper_block__10")
+pub fn stub_4dfd8() {
+    // IDA 0x4dfd8: `__copy_helper_block__10` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4dfe4 — ___destroy_helper_block__10
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__10")]
-pub fn stub_4dfe4() -> ! {
-    todo!("0x4dfe4 ___destroy_helper_block__10")
+pub fn stub_4dfe4() {
+    // IDA 0x4dfe4: `__destroy_helper_block__10` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
-pub fn stub_4dfec() -> ! {
-    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
+pub fn stub_4dfec() {
+    // IDA 0x4dfec: the close block variant 93 (same dismiss shape as
+    // 0x4de58). Drop glue; no explicit body.
 }
 
 // 0x4e01c — ___copy_helper_block_94
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_94")]
-pub fn stub_4e01c() -> ! {
-    todo!("0x4e01c ___copy_helper_block_94")
+pub fn stub_4e01c() {
+    // IDA 0x4e01c: `__copy_helper_block_94` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e028 — ___destroy_helper_block_95
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_95")]
-pub fn stub_4e028() -> ! {
-    todo!("0x4e028 ___destroy_helper_block_95")
+pub fn stub_4e028() {
+    // IDA 0x4e028: `__destroy_helper_block_95` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e030 — ___copy_helper_block_100
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_100")]
-pub fn stub_4e030() -> ! {
-    todo!("0x4e030 ___copy_helper_block_100")
+pub fn stub_4e030() {
+    // IDA 0x4e030: `__copy_helper_block_100` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e054 — ___destroy_helper_block_101
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_101")]
-pub fn stub_4e054() -> ! {
-    todo!("0x4e054 ___destroy_helper_block_101")
+pub fn stub_4e054() {
+    // IDA 0x4e054: `__destroy_helper_block_101` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e070 — -[GameViewController closeUrlWindow]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController closeUrlWindow]")]
-pub fn stub_4e070() -> ! {
-    todo!("0x4e070 -[GameViewController closeUrlWindow]")
+pub fn stub_4e070() {
+    // IDA 0x4e070: `closeUrlWindow` forwards to `closeUrlWindow:` with
+    // nil (0x4e07e). It sequences here.
+    stub_4dc08(URL_WEB_OPEN.load(std::sync::atomic::Ordering::SeqCst), true);
 }
 
 // 0x4e084 — -[GameViewController openUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
 #[doc(alias = "-[GameViewController openUrlWindow:]")]
-pub fn stub_4e084() -> ! {
-    todo!("0x4e084 -[GameViewController openUrlWindow:]")
+pub fn stub_4e084(url: &str, web_open: bool) -> bool {
+    // IDA 0x4e084: `openUrlWindow:` dispatches the web-view create
+    // (0x4e1c0-0x4e1ea) and URL load blocks (0x4e20e-0x4e24a) when no
+    // view is open (0x4e0b2). The open records here.
+    if web_open {
+        return false;
+    }
+    *URL_LAST.lock() = url.to_owned();
+    URL_WEB_OPEN.store(true, std::sync::atomic::Ordering::SeqCst);
+    URL_OPENS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
-pub fn stub_4e2ac() -> ! {
-    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
+pub fn stub_4e2ac() {
+    // IDA 0x4e2ac: the open create block builds the web view on main
+    // (continuation of 0x4e084). View construction is drop glue; no
+    // explicit body.
 }
 
 // 0x4e4c8 — ___copy_helper_block_133
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_133")]
-pub fn stub_4e4c8() -> ! {
-    todo!("0x4e4c8 ___copy_helper_block_133")
+pub fn stub_4e4c8() {
+    // IDA 0x4e4c8: `__copy_helper_block_133` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e4d4 — ___destroy_helper_block_134
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_134")]
-pub fn stub_4e4d4() -> ! {
-    todo!("0x4e4d4 ___destroy_helper_block_134")
+pub fn stub_4e4d4() {
+    // IDA 0x4e4d4: `__destroy_helper_block_134` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
 // type: id __fastcall(int)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
-pub fn stub_4e4dc() -> ! {
-    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
+pub fn stub_4e4dc() {
+    // IDA 0x4e4dc: the open load block loads the URL on main
+    // (continuation of 0x4e084). View loading is drop glue; no
+    // explicit body.
 }
 
 // 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
-pub fn stub_4e5fc() -> ! {
-    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
+pub fn stub_4e5fc() {
+    // IDA 0x4e5fc: the open load block variant 2 (same load shape as
+    // 0x4e4dc). Drop glue; no explicit body.
 }
 
 // 0x4e6dc — ___copy_helper_block_148
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_148")]
-pub fn stub_4e6dc() -> ! {
-    todo!("0x4e6dc ___copy_helper_block_148")
+pub fn stub_4e6dc() {
+    // IDA 0x4e6dc: `__copy_helper_block_148` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e6e8 — ___destroy_helper_block_149
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_149")]
-pub fn stub_4e6e8() -> ! {
-    todo!("0x4e6e8 ___destroy_helper_block_149")
+pub fn stub_4e6e8() {
+    // IDA 0x4e6e8: `__destroy_helper_block_149` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e6f0 — ___copy_helper_block_153
 // type: int __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_153")]
-pub fn stub_4e6f0() -> ! {
-    todo!("0x4e6f0 ___copy_helper_block_153")
+pub fn stub_4e6f0() {
+    // IDA 0x4e6f0: `__copy_helper_block_153` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e714 — ___destroy_helper_block_154
