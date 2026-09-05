@@ -15,6 +15,108 @@ use rbx_core::shared_ptr::{
     ControlBlockPd, CreatableInstanceDeleter, shared_ptr_from_raw,
 };
 use std::sync::Arc;
+use crate::generated_13::Player;
+use crate::instance::{
+    InstanceSignal, InstanceSlot, InstanceSlotFn, LocalScript, ScriptInformationProvider,
+    ScriptService,
+};
+
+/// Method behind `BoundFuncDesc<MarketplaceService, void ()(Instance, int,
+/// bool), 3>` (IDA `0x8df928` `Call3Helper::call`).
+pub type MarketplaceMethod3 =
+    fn(&MarketplaceService, &SharedPtr<Instance>, i32, bool);
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<MarketplaceService, void
+/// ()(Instance, int, bool), 3>` (IDA `0x8df468`): the stored method words
+/// plus the declared 3-arg signature. Twin of `MarketplaceFunc4Desc`
+/// without the currency word.
+pub struct MarketplaceFunc3Desc {
+    pub name: String,
+    pub method: MarketplaceMethod3,
+    pub signature: Vec<MarketplaceSigArg>,
+}
+
+/// Rust model of `RBX::Reflection::EventDesc<ContextActionService, void
+/// ()(Instance), ...>` (IDA `0x8e6f60`): the member signal (`+40`) plus the
+/// 1-item signature (comment-only; the typed signal carries it).
+pub struct ContextActionEventDesc {
+    pub name: String,
+    pub signal: InstanceSignal,
+}
+
+impl Default for ContextActionEventDesc {
+    fn default() -> Self {
+        Self { name: String::new(), signal: InstanceSignal::new() }
+    }
+}
+
+/// Watch entry behind `ScriptService::waitForChild` (IDA `0x8e81e0`
+/// `ScriptService::Info`): the watched name plus the success/error
+/// continuations. `connected` mirrors the `connection` word: cleared when
+/// the watch fires or is superseded.
+pub struct ScriptWaitInfo {
+    pub child_name: String,
+    pub on_child: InstanceSlotFn,
+    pub on_error: Arc<dyn Fn(&str) + Send + Sync>,
+    pub connected: bool,
+}
+
+/// Rust model of `RBX::ScriptService`'s pending-wait vector (`+96`, IDA
+/// `0x8e8314` `push_back`): the live `waitForChild` watches.
+#[derive(Default)]
+pub struct ScriptServiceState {
+    waits: Mutex<Vec<ScriptWaitInfo>>,
+}
+
+impl ScriptServiceState {
+    /// Registers a watch (IDA `0x8e8262`-`0x8e8314`: builds the `Info`,
+    /// assigns the continuations, pushes it).
+    pub fn wait_for_child(
+        &self,
+        child_name: &str,
+        on_child: InstanceSlotFn,
+        on_error: Arc<dyn Fn(&str) + Send + Sync>,
+    ) {
+        self.waits.lock().push(ScriptWaitInfo {
+            child_name: child_name.to_string(),
+            on_child,
+            on_error,
+            connected: true,
+        });
+    }
+
+    /// Fires matching watches (IDA `0x8e83c4` `onChildAdded`): each watch
+    /// whose name equals the added child's runs its success continuation
+    /// and disconnects (0x8e8570-0x8e857c); spent entries are pruned
+    /// (`remove_if` + `erase`, 0x8e85ae-0x8e85c4).
+    pub fn on_child_added(&self, child: &SharedPtr<Instance>) {
+        let mut waits = self.waits.lock();
+        for wait in waits.iter_mut() {
+            if wait.connected && wait.child_name == child.name.text {
+                (wait.on_child)(child);
+                wait.connected = false;
+            }
+        }
+        waits.retain(|wait| wait.connected);
+    }
+
+    pub fn pending(&self) -> usize {
+        self.waits.lock().len()
+    }
+}
+
+/// Abuse report recorded by `Players::reportAbuse` (IDA `0xa04d00`): the
+/// `"reporter;target"` text built by `reportAbuseLua`.
+pub struct AbuseReport {
+    pub text: String,
+}
+
+/// Report sink behind `Players::reportAbuse` (IDA `0xa04d00`).
+#[derive(Default)]
+pub struct AbuseReports {
+    pub reports: Mutex<Vec<AbuseReport>>,
+}
+
 use crate::instance::MarketplaceService;
 
 /// Signature argument kinds behind the marketplace descriptors (IDA
@@ -1252,8 +1354,14 @@ pub fn stub_0x8de09c(
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8df0c4() -> ! {
-    todo!("0x8df0c4 RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*,char const*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8df0c4(name: &str) -> MarketplaceEvent4Desc {
+    // IDA 0x8df0c4 `EventDesc<MarketplaceService, void ()(Instance, int,
+    // bool, CurrencyType), ...>::EventDesc`: same `classDescriptor` +
+    // `EventDescriptor` init and `+40` member-signal store as the 3-arg
+    // twin (0x8df108-0x8df150), with the 4-item signature list
+    // (`Instance`/`int`/`bool`/`CurrencyType` singletons, 0x8df17c-0x8df24c).
+    let _ = MARKETPLACE_BIND4_TYPE_NAME;
+    MarketplaceEvent4Desc { name: name.to_string(), ..Default::default() }
 }
 
 // 0x8df390 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_ED1Ev
@@ -1272,16 +1380,33 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8df3b4 as stub_0x8df3b4;
 // type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::BoundFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool),3>::BoundFuncDesc(void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8df468() -> ! {
-    todo!("0x8df468 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::BoundFuncDesc(void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8df468(
+    name: &str,
+    method: MarketplaceMethod3,
+    args: [&str; 3],
+) -> MarketplaceFunc3Desc {
+    // IDA 0x8df468 `BoundFuncDesc<MarketplaceService, void ()(Instance,
+    // int, bool), 3>::BoundFuncDesc`: `classDescriptor` once-init
+    // (0x8df4a0), `FunctionDescriptor` base init (0x8df4c0), stores the
+    // method words (0x8df4da), then `declareSignature` (0x8df55c). Same
+    // shape as the 4-arg twin (0x8d85c8) minus the tag words.
+    let mut desc = MarketplaceFunc3Desc { name: name.to_string(), method, signature: Vec::new() };
+    stub_0x8df684(&mut desc, args);
+    desc
 }
 
 // 0x8df684 — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EE16declareSignatureEPKcNS0_7VariantESA_SB_SA_SB_
 // type: int __fastcall(int, int, int *, int, int *, int, int *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
-pub fn stub_0x8df684() -> ! {
-    todo!("0x8df684 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_0x8df684(desc: &mut MarketplaceFunc3Desc, args: [&str; 3]) {
+    // IDA 0x8df684 `BoundFuncDesc<...>::declareSignature`: records the
+    // `void` return type (0x8df69a) and `addArgument`s `(Instance, int,
+    // bool)` (0x8df6a4-0x8df6e8).
+    let kinds = [MarketplaceArgKind::Instance, MarketplaceArgKind::Int, MarketplaceArgKind::Bool];
+    for (name, kind) in args.iter().zip(kinds) {
+        desc.signature.push(MarketplaceSigArg { name: name.to_string(), kind });
+    }
 }
 
 // 0x8df6ec — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EED0Ev
@@ -1294,16 +1419,38 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8df6ec as stub_0x8df6ec;
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(boost::shared_ptr<RBX::Instance>,int,bool),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_0x8df80c() -> ! {
-    todo!("0x8df80c RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x8df80c(
+    desc: &MarketplaceFunc3Desc,
+    service: &MarketplaceService,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+) {
+    // IDA 0x8df80c `BoundFuncDesc<...>::execute`: adjusts the service
+    // (`a2 - 36`, 0x8df85e), `getArg<1..3>`s (0x8df87a-0x8df8a0), then
+    // `Call3Helper::call` (0x8df8be) with release bracketing
+    // (0x8df8c4-0x8df8cc).
+    stub_0x8df928(desc.method, service, instance, product, purchased);
 }
 
 // 0x8df928 — __ZN3RBX10Reflection11Call3HelperINS_18MarketplaceServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEibES6_ibvE4callEPS2_S8_RNS0_7VariantERKS6_RKiRKb
 // type: void __fastcall(int, char *, int, int, const shared_count *, _DWORD *, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::Call3Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),rbx_core::SharedPtr<RBX::Instance>,int,bool,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&)")]
 // was: RBX::Reflection::Call3Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool),boost::shared_ptr<RBX::Instance>,int,bool,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(boost::shared_ptr<RBX::Instance>,int,bool),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,int const&,bool const&)
-pub fn stub_0x8df928() -> ! {
-    todo!("0x8df928 RBX::Reflection::Call3Helper<RBX::MarketplaceService,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),rbx_core::SharedPtr<RBX::Instance>,int,bool,void>::call(RBX::MarketplaceService*,void (RBX::MarketplaceService::*)(rbx_core::SharedPtr<RBX::Instance>,int,bool),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,int const&,bool const&)")
+pub fn stub_0x8df928(
+    method: MarketplaceMethod3,
+    service: &MarketplaceService,
+    instance: &SharedPtr<Instance>,
+    product: i32,
+    purchased: bool,
+) {
+    // IDA 0x8df928 `Call3Helper<MarketplaceService, ...>::call`: resolves
+    // the direct/virtual member (`a3 & 1` selects the vtable slot,
+    // 0x8df978-0x8df986), retains the arg `shared_ptr` (0x8df9a0), invokes
+    // (0x8df9ba), releases (0x8df9c6). Same shape as the 4-arg twin
+    // (0x8d8b88).
+    let instance = SharedPtr::clone(instance);
+    method(service, &instance, product, purchased);
 }
 
 // 0x8e6498 — __ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
@@ -1316,8 +1463,13 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8e6498 as stub_0x8e6498;
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ContextActionService::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ContextActionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x8e6f60() -> ! {
-    todo!("0x8e6f60 RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x8e6f60(name: &str) -> ContextActionEventDesc {
+    // IDA 0x8e6f60 `EventDesc<ContextActionService, void ()(Instance),
+    // ...>::EventDesc`: `classDescriptor` once-init (0x8e6f98),
+    // `EventDescriptor` base init (0x8e6fb6), the member-signal pointer at
+    // `+40` (0x8e6fda), then the 1-item signature list (`Instance`
+    // singleton, 0x8e700a-0x8e7032).
+    ContextActionEventDesc { name: name.to_string(), ..Default::default() }
 }
 
 // 0x8e70e4 — __ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
@@ -1330,145 +1482,278 @@ pub use rbx_reflection::generated_shard_fm::stub_0x8e70e4 as stub_0x8e70e4;
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ContextActionService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x8e7198() -> ! {
-    todo!("0x8e7198 RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x8e7198(desc: &ContextActionEventDesc, handler: InstanceSlotFn) {
+    // IDA 0x8e7198 `EventDescImpl<1, ...>::connectGeneric`: retains the
+    // wrapper (0x8e71c8), `bind` over `GenericSlotWrapper::execute1` with
+    // `arg<1>` (0x8e7210), wraps it in a `function1` (0x8e721c), and
+    // `connect`s it to the member signal (`*(v38 + 40) + v41 - 36`,
+    // 0x8e7238), then clears the temp (0x8e724a) and releases
+    // (0x8e7256-0x8e7264). The handler is already the bound 1-arg closure;
+    // linking + inserting it is the same subscription.
+    let slot = SharedPtr::new(InstanceSlot::new(handler));
+    desc.signal.insert(&slot);
 }
 
 // 0x8e72ec — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ContextActionService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_0x8e72ec() -> ! {
-    todo!("0x8e72ec RBX::Reflection::EventDescImpl<1,RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x8e72ec(desc: &ContextActionEventDesc, instance: &SharedPtr<Instance>) {
+    // IDA 0x8e72ec `EventDescImpl<1, ...>::fireEvent` (args-vector form):
+    // asserts `args.size() == 1` (0x8e7328-0x8e739c), adjusts the service
+    // (`a2 - 36`), `any_cast`s the instance arg (0x8e73bc), then
+    // `signal_with_args<1>::operator()` (0x8e73e2) with retain/release
+    // bracketing (0x8e73d0-0x8e73f0).
+    desc.signal.emit(instance);
 }
 
 // 0x8e744c — __ZNK3RBX10Reflection13EventDescBaseINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::ContextActionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ContextActionService::*>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_0x8e744c() -> ! {
-    todo!("0x8e744c RBX::Reflection::EventDescBase<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x8e744c(desc: &ContextActionEventDesc) {
+    // IDA 0x8e744c `EventDescBase<...>::disconnectAll`: adjusts the service
+    // (`a2 - 36`) and `signal::disconnectAll`s the member — same shape as
+    // the marketplace twins (0x8d69b4, 0x8dd610).
+    desc.signal.disconnect_all();
 }
 
 // 0x8e81e0 — __ZN3RBX13ScriptService12waitForChildEN5boost8weak_ptrINS_8InstanceEEESsNS1_8functionIFvNS1_10shared_ptrIS3_EEEEENS5_IFvSsEEE
 // type: void __fastcall(int, _DWORD *, const std::string *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ScriptService::waitForChild(rbx_core::Weak<RBX::Instance>,std::string,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
 // was: RBX::ScriptService::waitForChild(boost::weak_ptr<RBX::Instance>,std::string,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)
-pub fn stub_0x8e81e0() -> ! {
-    todo!("0x8e81e0 RBX::ScriptService::waitForChild(rbx_core::Weak<RBX::Instance>,std::string,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
+pub fn stub_0x8e81e0(
+    _service: &ScriptService,
+    state: &ScriptServiceState,
+    child_name: &str,
+    on_child: InstanceSlotFn,
+    on_error: Arc<dyn Fn(&str) + Send + Sync>,
+) {
+    // IDA 0x8e81e0 `ScriptService::waitForChild`: retains the watcher
+    // (0x8e8206), builds the `Info` (name assign at 0x8e8284, continuation
+    // assigns at 0x8e8292-0x8e82a0), `connect`s the `onChildAdded` bind
+    // (0x8e82d0; replaces any live connection, 0x8e82e0-0x8e82fa), and
+    // pushes the `Info` (0x8e8314). The connection half is covered by the
+    // `InstanceSignal` slot in 0x8e8690; here the watch itself is recorded.
+    state.wait_for_child(child_name, on_child, on_error);
 }
 
 // 0x8e83c4 — __ZN3RBX13ScriptService12onChildAddedEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, RBX::Instance **)
 #[doc(alias = "RBX::ScriptService::onChildAdded(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::ScriptService::onChildAdded(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x8e83c4() -> ! {
-    todo!("0x8e83c4 RBX::ScriptService::onChildAdded(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x8e83c4(state: &ScriptServiceState, child: &SharedPtr<Instance>) {
+    // IDA 0x8e83c4 `ScriptService::onChildAdded`: scans the `Info` vector
+    // (0x8e8438-0x8e85a4); a name match (`string::compare`, 0x8e8528) runs
+    // the success continuation with the retained child (0x8e8556) and
+    // disconnects the watch (0x8e8570-0x8e857c); an expired watcher runs the
+    // error continuation with the deleted-while-waiting message
+    // (0x8e849e-0x8e84da); spent entries are pruned (0x8e85ae-0x8e85c4).
+    // Watcher liveness is unmodeled (no weak expiry yet), so every pending
+    // watch counts as live.
+    state.on_child_added(child);
 }
 
 // 0x8e8690 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_13ScriptServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>> const&)
-pub fn stub_0x8e8690() -> ! {
-    todo!("0x8e8690 rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>> const&)")
+pub fn stub_0x8e8690(
+    signal: &InstanceSignal,
+    state: &SharedPtr<ScriptServiceState>,
+) -> SharedPtr<InstanceSlot> {
+    // IDA 0x8e8690 `signal<void ()(Instance)>::connect<bind_t<mf1<
+    // ScriptService::onChildAdded>, list2<value<ScriptService*>,
+    // arg<1>>>>`: allocates the `callable_slot` (0x8e86a8), stores the bind
+    // words (0x8e86c0-0x8e86e6), `insert`s it (0x8e86ea), and returns the
+    // connection. The slot's callback is the bound `onChildAdded`: it
+    // dispatches the added child into the service's wait scan.
+    let owned = SharedPtr::clone(state);
+    let slot = SharedPtr::new(InstanceSlot::new(Arc::new(move |child: &SharedPtr<Instance>| {
+        owned.on_child_added(child);
+    })));
+    signal.insert(&slot);
+    slot
 }
 
 // 0x8e8d24 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_13ScriptServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x8e8d24() -> ! {
-    todo!("0x8e8d24 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x8e8d24(slot: &InstanceSlot) {
+    // IDA 0x8e8d24 `callable_slot<...>::~callable_slot()` (D1): resets the
+    // vtables (0x8e8d36-0x8e8d3e) and `intrusive_ptr_release`s the slot
+    // (0x8e8d48). Unlinking is the Drop-glue half; the release is `Arc`'s.
+    slot.set_linked(false);
 }
 
 // 0x8e8d50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_13ScriptServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()
-pub fn stub_0x8e8d50() -> ! {
-    todo!("0x8e8d50 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x8e8d50(slot: SharedPtr<InstanceSlot>) {
+    // IDA 0x8e8d50 `callable_slot<...>::~callable_slot()` (D0): D1 body
+    // (vtable reset + release, 0x8e8d80-0x8e8dbe) plus `operator delete`
+    // (0x8e8dca). Unlink, then drop the owned link — the delete.
+    slot.set_linked(false);
+    drop(slot);
 }
 
 // 0x8e8e24 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_13ScriptServiceES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x8e8e24() -> ! {
-    todo!("0x8e8e24 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x8e8e24(slot: &InstanceSlot, instance: &SharedPtr<Instance>) {
+    // IDA 0x8e8e24 `callable<...>::call`: packs the single arg ref
+    // (0x8e8e28) and runs `list2::operator()` (0x8e8e3e) — the `mf1`
+    // invocation on the retained service with the child.
+    slot.call(instance);
 }
 
 // 0x8e8e40 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_13ScriptServiceES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x8e8e40() -> ! {
-    todo!("0x8e8e40 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x8e8e40(slot: &InstanceSlot, instance: &SharedPtr<Instance>) {
+    // IDA 0x8e8e40 non-virtual thunk to `callable<...>::call`: `this - 4`
+    // adjusts the slot subobject (0x8e8e5a runs at `a1 + 20`/`a1 + 12`
+    // instead of `+24`/`+16`), then the same `list2::operator()` dispatch.
+    // The adjustment is a layout detail that collapses away here.
+    stub_0x8e8e24(slot, instance);
 }
 
 // 0x8e8e5c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX13ScriptServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, int, const shared_count **)
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::ScriptService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<RBX::ScriptService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
-pub fn stub_0x8e8e5c() -> ! {
-    todo!("0x8e8e5c void boost::_bi::list2<boost::_bi::value<RBX::ScriptService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")
+pub fn stub_0x8e8e5c(slot: &InstanceSlot, instance: &SharedPtr<Instance>) {
+    // IDA 0x8e8e5c `list2<value<ScriptService*>,
+    // arg<1>>::operator()<mf1, list1>`: retains the child `shared_ptr`
+    // (0x8e8e8e), invokes `mf1<ScriptService::onChildAdded>` (0x8e8eca),
+    // releases (0x8e8ed8). Clone plus the linked dispatch plus `Drop` is
+    // the same sequence.
+    let instance = SharedPtr::clone(instance);
+    slot.call(&instance);
 }
 
 // 0xa04c10 — __ZN3RBX7Network7Players14reportAbuseLuaEN5boost10shared_ptrINS_8InstanceEEESsSs
 // type: void __fastcall(RBX::Network::Players *, _DWORD *, int, int)
 #[doc(alias = "RBX::Network::Players::reportAbuseLua(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string)")]
 // was: RBX::Network::Players::reportAbuseLua(boost::shared_ptr<RBX::Instance>,std::string,std::string)
-pub fn stub_0xa04c10() -> ! {
-    todo!("0xa04c10 RBX::Network::Players::reportAbuseLua(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string)")
+pub fn stub_0xa04c10(
+    is_client: bool,
+    player: Option<&SharedPtr<Player>>,
+    first: &str,
+    second: &str,
+    reports: &AbuseReports,
+) {
+    // IDA 0xa04c10 `Players::reportAbuseLua`: nil player throws
+    // `runtime_error("Player must be non-nil")` (0xa04c66-0xa04ecc), a
+    // failed `fastSharedDynamicCast<Player>` throws `"player must be a
+    // Player object"` (0xa04c74-0xa04f0a), a missing client DataModel
+    // (`*(a1 + 47)`, 0xa04c82-0xa04c88) throws `"You can only report-abuse
+    // from a client machine"` (0xa04f20-0xa04f4a); otherwise, when the
+    // abuse-reporting flags allow (0xa04c9e), builds `"first;second"`
+    // (0xa04ca8-0xa04cf2) and `reportAbuse`s it (0xa04d00). The cast is
+    // covered by the typed `Option`; the client DataModel word arrives as
+    // the flag.
+    let player = player.expect("Player must be non-nil");
+    if !is_client {
+        panic!("You can only report-abuse from a client machine");
+    }
+    let _ = player;
+    reports.reports.lock().push(AbuseReport { text: format!("{first};{second}") });
 }
 
 // 0xa23aa8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xa23aa8() -> ! {
-    todo!("0xa23aa8 boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0xa23aa8() {
+    // IDA 0xa23aa8 `sp_counted_impl_pd<LocalScript *,
+    // Creatable<Instance>::Deleter>::~sp_counted_impl_pd()`: empty body.
+    // Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xa23ab0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // type: int __fastcall(int, RBX::Instance *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0xa23ab0() -> ! {
-    todo!("0xa23ab0 boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0xa23ab0(block: *mut ControlBlockPd<LocalScript, CreatableInstanceDeleter>) {
+    // IDA 0xa23ab0 `dispose`: `Instance::predelete(px)` (0xa23ab8),
+    // null-px early-out (0xa23abe), then the virtual delete through `*px +
+    // 8` (0xa23ac8). Same `dispose_with` shape as the `LuaWebService` twin
+    // (0x8d0df8).
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0xa23ad0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xa23ad0() -> ! {
-    todo!("0xa23ad0 boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0xa23ad0(
+    block: *const ControlBlockPd<LocalScript, CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xa23ad0 `get_deleter`: returns `this + 16` only when the queried
+    // `type_info` name matches
+    // `"N3RBX9CreatableINS_8InstanceEE7DeleterE"` (0xa23ae2), else 0.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0xa23ae8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xa23ae8() -> ! {
-    todo!("0xa23ae8 boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0xa23ae8(
+    block: *const ControlBlockPd<LocalScript, CreatableInstanceDeleter>,
+) -> CreatableInstanceDeleter {
+    // IDA 0xa23ae8 `get_untyped_deleter`: unconditionally `this + 16`
+    // (0xa23aea).
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0xa327a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0xa327a0() -> ! {
-    todo!("0xa327a0 boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0xa327a0(
+    block: *mut ControlBlockPd<ScriptInformationProvider, CreatableInstanceDeleter>,
+) {
+    // IDA 0xa327a0 `sp_counted_impl_pd<ScriptInformationProvider *,
+    // Creatable<Instance>::Deleter>::~sp_counted_impl_pd()` (D0):
+    // `operator delete(a1)` (0xa327a4); the box reclaim runs the field
+    // drops and frees together (same shape as
+    // `generated_14::stub_aa1e2c`).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0xa327b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0xa327b0() -> ! {
-    todo!("0xa327b0 boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0xa327b0(
+    block: *const ControlBlockPd<ScriptInformationProvider, CreatableInstanceDeleter>,
+    type_name: &str,
+) -> Option<CreatableInstanceDeleter> {
+    // IDA 0xa327b0 `get_deleter`: the same `type_info`-name-gated `this +
+    // 16` (0xa327b4-0xa327c6) as the `LocalScript` twin (0xa23ad0).
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0xa327c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX25ScriptInformationProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0xa327c8() -> ! {
-    todo!("0xa327c8 boost::detail::sp_counted_impl_pd<RBX::ScriptInformationProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0xa327c8(
+    block: *const ControlBlockPd<ScriptInformationProvider, CreatableInstanceDeleter>,
+) -> CreatableInstanceDeleter {
+    // IDA 0xa327c8 `get_untyped_deleter`: unconditionally `this + 16`
+    // (0xa327ca).
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0xa851a8 — __ZN3RBX7Network6Player29loadCharacterAppearanceScriptEN5boost10shared_ptrINS_8InstanceEEE
@@ -1880,5 +2165,153 @@ mod marketplace_batch2_tests {
         let mut other = MarketplaceFunction3::default();
         stub_0x8d7270(&mut other, &slot, MarketplaceBindOp::Move);
         assert!(other.target.is_some());
+    }
+}
+
+#[cfg(test)]
+mod marketplace_batch3_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    static SEEN3: AtomicI32 = AtomicI32::new(0);
+
+    fn rec_method3(
+        _: &MarketplaceService,
+        _: &SharedPtr<Instance>,
+        product: i32,
+        purchased: bool,
+    ) {
+        SEEN3.store(product + i32::from(purchased), Ordering::Relaxed);
+    }
+
+    fn player_instance(name: &str) -> SharedPtr<Instance> {
+        let mut inst = Instance::default();
+        inst.name.text = name.to_string();
+        SharedPtr::new(inst)
+    }
+
+    #[test]
+    fn func3_declare_and_call() {
+        let desc = stub_0x8df468("SignalPromptPurchaseFinished", rec_method3, ["player", "product", "purchased"]);
+        assert_eq!(desc.signature.len(), 3);
+        assert_eq!(desc.signature[2].kind, MarketplaceArgKind::Bool);
+        let service = MarketplaceService::default();
+        let inst = SharedPtr::new(Instance::default());
+        stub_0x8df80c(&desc, &service, &inst, 20, true);
+        assert_eq!(SEEN3.load(Ordering::Relaxed), 21);
+        stub_0x8df928(rec_method3, &service, &inst, 4, false);
+        assert_eq!(SEEN3.load(Ordering::Relaxed), 4);
+        let desc4 = stub_0x8df0c4("PromptProductPurchase");
+        assert_eq!(desc4.name, "PromptProductPurchase");
+    }
+
+    #[test]
+    fn context_action_connect_fire_disconnect() {
+        let desc = stub_0x8e6f60("ButtonPressed");
+        assert_eq!(desc.name, "ButtonPressed");
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        stub_0x8e7198(&desc, Arc::new(move |inst: &SharedPtr<Instance>| {
+            probe.store(inst.name.text.len() as i32, Ordering::Relaxed);
+        }));
+        let inst = player_instance("Jump");
+        stub_0x8e72ec(&desc, &inst);
+        assert_eq!(seen.load(Ordering::Relaxed), 4);
+        stub_0x8e744c(&desc);
+        stub_0x8e72ec(&desc, &inst);
+        assert_eq!(seen.load(Ordering::Relaxed), 4);
+    }
+
+    #[test]
+    fn script_service_wait_fires_once() {
+        let state = SharedPtr::new(ScriptServiceState::default());
+        let service = ScriptService::default();
+        let fired = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&fired);
+        let errors = Arc::new(AtomicI32::new(0));
+        let eprobe = Arc::clone(&errors);
+        stub_0x8e81e0(
+            &service,
+            &state,
+            "Chest",
+            Arc::new(move |_: &SharedPtr<Instance>| {
+                probe.fetch_add(1, Ordering::Relaxed);
+            }),
+            Arc::new(move |_: &str| {
+                eprobe.fetch_add(1, Ordering::Relaxed);
+            }),
+        );
+        assert_eq!(state.pending(), 1);
+        let signal = InstanceSignal::new();
+        let slot = stub_0x8e8690(&signal, &state);
+        assert!(slot.is_linked());
+        let chest = player_instance("Chest");
+        signal.emit(&chest);
+        assert_eq!(fired.load(Ordering::Relaxed), 1);
+        assert_eq!(state.pending(), 0);
+        assert_eq!(errors.load(Ordering::Relaxed), 0);
+        stub_0x8e83c4(&state, &chest);
+        stub_0x8e8e24(&slot, &chest);
+        stub_0x8e8e40(&slot, &chest);
+        stub_0x8e8e5c(&slot, &chest);
+        stub_0x8e8d24(&slot);
+        assert!(!slot.is_linked());
+        let slot2 = SharedPtr::new(InstanceSlot::new(Arc::new(|_: &SharedPtr<Instance>| {})));
+        stub_0x8e8d50(slot2);
+    }
+
+    #[test]
+    fn report_abuse_validates_and_records() {
+        let reports = AbuseReports::default();
+        let player = SharedPtr::new(Player {
+            friend_status_changed: Default::default(),
+            data_loaded: false,
+            character: Mutex::new(None),
+        });
+        stub_0xa04c10(true, Some(&player), "x", "y", &reports);
+        assert_eq!(reports.reports.lock().len(), 1);
+        assert_eq!(reports.reports.lock()[0].text, "x;y");
+    }
+
+    #[test]
+    #[should_panic(expected = "Player must be non-nil")]
+    fn report_abuse_rejects_nil() {
+        let reports = AbuseReports::default();
+        stub_0xa04c10(true, None, "x", "y", &reports);
+    }
+
+    #[test]
+    #[should_panic(expected = "client machine")]
+    fn report_abuse_rejects_server() {
+        let reports = AbuseReports::default();
+        let player = SharedPtr::new(Player {
+            friend_status_changed: Default::default(),
+            data_loaded: false,
+            character: Mutex::new(None),
+        });
+        stub_0xa04c10(false, Some(&player), "x", "y", &reports);
+    }
+
+    #[test]
+    fn counted_blocks_round_trip() {
+        let mut local = ControlBlockPd::new(Box::new(LocalScript::default()), CreatableInstanceDeleter);
+        assert!(stub_0xa23ad0(&local as *const _, "bogus").is_none());
+        assert!(stub_0xa23ad0(
+            &local as *const _,
+            rbx_core::shared_ptr::CREATABLE_INSTANCE_DELETER_TYPE_NAME
+        )
+        .is_some());
+        let _ = stub_0xa23ae8(&local as *const _);
+        stub_0xa23ab0(&mut local as *mut _);
+        assert!(local.get().is_none());
+        stub_0xa23aa8();
+        let sip = Box::new(ControlBlockPd::new(
+            Box::new(ScriptInformationProvider::default()),
+            CreatableInstanceDeleter,
+        ));
+        let raw = Box::into_raw(sip);
+        assert!(stub_0xa327b0(raw as *const _, "bogus").is_none());
+        let _ = stub_0xa327c8(raw as *const _);
+        stub_0xa327a0(raw);
     }
 }
