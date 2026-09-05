@@ -730,176 +730,251 @@ pub fn stub_40c58(
 
 // 0x41104 — ___copy_helper_block__6
 #[doc(alias = "___copy_helper_block__6")]
-pub fn stub_41104() -> ! {
-    todo!("0x41104 ___copy_helper_block__6")
+pub fn stub_41104() {
+    // IDA 0x41104: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41104`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41104()
 }
 
 // 0x41128 — ___destroy_helper_block__6
 #[doc(alias = "___destroy_helper_block__6")]
-pub fn stub_41128() -> ! {
-    todo!("0x41128 ___destroy_helper_block__6")
+pub fn stub_41128() {
+    // IDA 0x41128: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41128`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41128()
 }
 
 // 0x41144 — +[UserInfo CurrentPlayer]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo CurrentPlayer]")]
-pub fn stub_41144() -> ! {
-    todo!("0x41144 +[UserInfo CurrentPlayer]")
+pub fn stub_41144() -> usize {
+    // IDA 0x41144: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41144`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41144()
 }
 
 // 0x4118c — -[UserInfo Robux]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Robux]")]
-pub fn stub_4118c() -> ! {
-    todo!("0x4118c -[UserInfo Robux]")
+pub fn stub_4118c() -> String {
+    // IDA 0x4118c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x4118c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x4118c()
 }
 
 // 0x411a0 — __Z23convertToFriendlyStringP8NSNumber
 // type: _DWORD __fastcall(id)
 #[doc(alias = "convertToFriendlyString(NSNumber *)")]
 #[doc(alias = "__Z23convertToFriendlyStringP8NSNumber")]
-pub fn stub_411a0() -> ! {
-    todo!("0x411a0 convertToFriendlyString(NSNumber *)")
+pub fn stub_411a0(value: Option<i32>) -> String {
+    // IDA 0x411a0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x411a0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x411a0(value)
 }
 
 // 0x41288 — -[UserInfo Tix]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Tix]")]
-pub fn stub_41288() -> ! {
-    todo!("0x41288 -[UserInfo Tix]")
+pub fn stub_41288() -> String {
+    // IDA 0x41288: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41288`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41288()
 }
 
 // 0x4129c — +[UserInfo clearAllRobloxCookie]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
-pub fn stub_4129c() -> ! {
-    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+pub fn stub_4129c(tablet: bool) {
+    // IDA 0x4129c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x4129c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x4129c(tablet)
 }
 
 // 0x41580 — +[UserInfo printCookies]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo printCookies]")]
-pub fn stub_41580() -> ! {
-    todo!("0x41580 +[UserInfo printCookies]")
+pub fn stub_41580() {
+    // IDA 0x41580: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41580`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41580()
 }
 
 // 0x419c8 — +[UserInfo logout]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo logout]")]
-pub fn stub_419c8() -> ! {
-    todo!("0x419c8 +[UserInfo logout]")
+pub fn stub_419c8() {
+    // IDA 0x419c8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x419c8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x419c8()
 }
 
 // 0x419f4 — -[UserInfo userInfoDict]
 // type: NSDictionary *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userInfoDict]")]
-pub fn stub_419f4() -> ! {
-    todo!("0x419f4 -[UserInfo userInfoDict]")
+pub fn stub_419f4() -> String {
+    // IDA 0x419f4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x419f4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x419f4()
 }
 
 // 0x41a04 — -[UserInfo setUserInfoDict:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserInfoDict:]")]
-pub fn stub_41a04() -> ! {
-    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+pub fn stub_41a04(dict: &str) {
+    // IDA 0x41a04: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a04`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a04(dict)
 }
 
 // 0x41a28 — -[UserInfo userinfo]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userinfo]")]
-pub fn stub_41a28() -> ! {
-    todo!("0x41a28 -[UserInfo userinfo]")
+pub fn stub_41a28() -> String {
+    // IDA 0x41a28: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a28`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a28()
 }
 
 // 0x41a38 — -[UserInfo setUserinfo:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserinfo:]")]
-pub fn stub_41a38() -> ! {
-    todo!("0x41a38 -[UserInfo setUserinfo:]")
+pub fn stub_41a38(userinfo: &str) {
+    // IDA 0x41a38: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a38`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a38(userinfo)
 }
 
 // 0x41a5c — -[UserInfo rbxBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo rbxBal]")]
-pub fn stub_41a5c() -> ! {
-    todo!("0x41a5c -[UserInfo rbxBal]")
+pub fn stub_41a5c() -> String {
+    // IDA 0x41a5c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a5c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a5c()
 }
 
 // 0x41a6c — -[UserInfo setRbxBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setRbxBal:]")]
-pub fn stub_41a6c() -> ! {
-    todo!("0x41a6c -[UserInfo setRbxBal:]")
+pub fn stub_41a6c(robux: &str) {
+    // IDA 0x41a6c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a6c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a6c(robux)
 }
 
 // 0x41a90 — -[UserInfo tikBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo tikBal]")]
-pub fn stub_41a90() -> ! {
-    todo!("0x41a90 -[UserInfo tikBal]")
+pub fn stub_41a90() -> String {
+    // IDA 0x41a90: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41a90`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41a90()
 }
 
 // 0x41aa0 — -[UserInfo setTikBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setTikBal:]")]
-pub fn stub_41aa0() -> ! {
-    todo!("0x41aa0 -[UserInfo setTikBal:]")
+pub fn stub_41aa0(tickets: &str) {
+    // IDA 0x41aa0: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41aa0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41aa0(tickets)
 }
 
 // 0x41ac4 — -[UserInfo userThumbNailUrl]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userThumbNailUrl]")]
-pub fn stub_41ac4() -> ! {
-    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+pub fn stub_41ac4() -> String {
+    // IDA 0x41ac4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41ac4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41ac4()
 }
 
 // 0x41ad4 — -[UserInfo setUserThumbNailUrl:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
-pub fn stub_41ad4() -> ! {
-    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+pub fn stub_41ad4(url: &str) {
+    // IDA 0x41ad4: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41ad4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41ad4(url)
 }
 
 // 0x41af8 — -[UserInfo bcMember]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo bcMember]")]
-pub fn stub_41af8() -> ! {
-    todo!("0x41af8 -[UserInfo bcMember]")
+pub fn stub_41af8() -> bool {
+    // IDA 0x41af8: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41af8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41af8()
 }
 
 // 0x41b08 — -[UserInfo setBcMember:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setBcMember:]")]
-pub fn stub_41b08() -> ! {
-    todo!("0x41b08 -[UserInfo setBcMember:]")
+pub fn stub_41b08(member: bool) {
+    // IDA 0x41b08: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b08`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b08(member)
 }
 
 // 0x41b2c — -[UserInfo encodedPassword]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedPassword]")]
-pub fn stub_41b2c() -> ! {
-    todo!("0x41b2c -[UserInfo encodedPassword]")
+pub fn stub_41b2c() -> String {
+    // IDA 0x41b2c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b2c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b2c()
 }
 
 // 0x41b3c — -[UserInfo setEncodedPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedPassword:]")]
-pub fn stub_41b3c() -> ! {
-    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+pub fn stub_41b3c(password: &str) {
+    // IDA 0x41b3c: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b3c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b3c(password)
 }
 
 // 0x41b60 — -[UserInfo encodedUsername]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedUsername]")]
-pub fn stub_41b60() -> ! {
-    todo!("0x41b60 -[UserInfo encodedUsername]")
+pub fn stub_41b60() -> String {
+    // IDA 0x41b60: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b60`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b60()
 }
 
 // 0x41b70 — -[UserInfo setEncodedUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedUsername:]")]
-pub fn stub_41b70() -> ! {
-    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+pub fn stub_41b70(username: &str) {
+    // IDA 0x41b70: duplicate of the canonical cutover at
+    // `crate::generated_bg_10::stub_0x41b70`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_10::stub_0x41b70(username)
 }
 
 // 0x41b94 — -[UserInfo username]
