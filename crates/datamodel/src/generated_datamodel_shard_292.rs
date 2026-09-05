@@ -206,138 +206,148 @@ pub fn stub_0x574158(_item: &mut crate::instance::BackpackItem) {
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZThn32_N3RBX12BackpackItemD1Ev")]
-pub fn stub_0x57415c() -> ! {
-    todo!("0x57415c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x57415c(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x57415c: `Thn32_BackpackItem::D1` — this-adjust + dtor tail call;
+    // same drop glue as 0x573eb0 — no-op.
 }
 
 // 0x57428c — __ZThn32_N3RBX12BackpackItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZThn32_N3RBX12BackpackItemD0Ev")]
-pub fn stub_0x57428c() -> ! {
-    todo!("0x57428c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x57428c(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x57428c: `Thn32_BackpackItem::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573fe4 — no-op.
 }
 
 // 0x5743f8 — __ZThn36_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZThn36_N3RBX12BackpackItemD1Ev")]
-pub fn stub_0x5743f8() -> ! {
-    todo!("0x5743f8 non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x5743f8(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x5743f8: `Thn36_BackpackItem::D1` — this-adjust + dtor tail call;
+    // same drop glue as 0x573eb0 — no-op.
 }
 
 // 0x574528 — __ZThn36_N3RBX12BackpackItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZThn36_N3RBX12BackpackItemD0Ev")]
-pub fn stub_0x574528() -> ! {
-    todo!("0x574528 non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x574528(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x574528: `Thn36_BackpackItem::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573fe4 — no-op.
 }
 
 // 0x57466c — __ZN3RBX6HopperD1Ev
 #[doc(alias = "RBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZN3RBX6HopperD1Ev")]
-pub fn stub_0x57466c() -> ! {
-    todo!("0x57466c RBX::Hopper::~Hopper()")
+pub fn stub_0x57466c(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x57466c (decompiled): `Hopper::D1` — thunk tail-calling the
+    // `GuiItem` dtor; the modeled `pair68` is plain words. Drop glue —
+    // no-op.
 }
 
 // 0x574670 — __ZN3RBX6HopperD0Ev
 #[doc(alias = "RBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZN3RBX6HopperD0Ev")]
-pub fn stub_0x574670() -> ! {
-    todo!("0x574670 RBX::Hopper::~Hopper()")
+pub fn stub_0x574670(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x574670: `Hopper::D0` — calls the `D1` body then `operator
+    // delete`; same drop glue as 0x57466c — no-op.
 }
 
 // 0x574710 — __ZThn32_N3RBX6HopperD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZThn32_N3RBX6HopperD1Ev")]
-pub fn stub_0x574710() -> ! {
-    todo!("0x574710 non-virtual thunk toRBX::Hopper::~Hopper()")
+pub fn stub_0x574710(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x574710 (disasm): `Thn32_Hopper::D1` — `SUBS R0, #0x20` then
+    // tail-calls `GuiItem::D2`; same drop glue as 0x57466c — no-op.
 }
 
 // 0x574718 — __ZThn32_N3RBX6HopperD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZThn32_N3RBX6HopperD0Ev")]
-pub fn stub_0x574718() -> ! {
-    todo!("0x574718 non-virtual thunk toRBX::Hopper::~Hopper()")
+pub fn stub_0x574718(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x574718: `Thn32_Hopper::D0` — this-adjust + deleting-dtor tail
+    // call; same drop glue as 0x574670 — no-op.
 }
 
 // 0x5747bc — __ZThn36_N3RBX6HopperD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZThn36_N3RBX6HopperD1Ev")]
-pub fn stub_0x5747bc() -> ! {
-    todo!("0x5747bc non-virtual thunk toRBX::Hopper::~Hopper()")
+pub fn stub_0x5747bc(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x5747bc: `Thn36_Hopper::D1` — this-adjust + dtor tail call; same
+    // drop glue as 0x57466c — no-op.
 }
 
 // 0x5747c4 — __ZThn36_N3RBX6HopperD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 #[doc(alias = "__ZThn36_N3RBX6HopperD0Ev")]
-pub fn stub_0x5747c4() -> ! {
-    todo!("0x5747c4 non-virtual thunk toRBX::Hopper::~Hopper()")
+pub fn stub_0x5747c4(_hopper: &mut crate::instance::Hopper) {
+    // IDA 0x5747c4: `Thn36_Hopper::D0` — this-adjust + deleting-dtor tail
+    // call; same drop glue as 0x574670 — no-op.
 }
 
 // 0x574868 — __ZN3RBX18StarterPackServiceD1Ev
 #[doc(alias = "RBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZN3RBX18StarterPackServiceD1Ev")]
-pub fn stub_0x574868() -> ! {
-    todo!("0x574868 RBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x574868(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x574868 (decompiled): `StarterPackService::D1` — thunk
+    // tail-calling the `GuiItem` dtor; the modeled `name` drops itself.
+    // Drop glue — no-op.
 }
 
 // 0x57486c — __ZN3RBX18StarterPackServiceD0Ev
 #[doc(alias = "RBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZN3RBX18StarterPackServiceD0Ev")]
-pub fn stub_0x57486c() -> ! {
-    todo!("0x57486c RBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x57486c(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x57486c: `StarterPackService::D0` — calls the `D1` body then
+    // `operator delete`; same drop glue as 0x574868 — no-op.
 }
 
 // 0x574934 — __ZThn32_N3RBX18StarterPackServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZThn32_N3RBX18StarterPackServiceD1Ev")]
-pub fn stub_0x574934() -> ! {
-    todo!("0x574934 non-virtual thunk toRBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x574934(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x574934: `Thn32_StarterPackService::D1` — this-adjust + dtor tail
+    // call; same drop glue as 0x574868 — no-op.
 }
 
 // 0x57493c — __ZThn32_N3RBX18StarterPackServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZThn32_N3RBX18StarterPackServiceD0Ev")]
-pub fn stub_0x57493c() -> ! {
-    todo!("0x57493c non-virtual thunk toRBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x57493c(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x57493c: `Thn32_StarterPackService::D0` — this-adjust +
+    // deleting-dtor tail call; same drop glue as 0x57486c — no-op.
 }
 
 // 0x574a08 — __ZThn36_N3RBX18StarterPackServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZThn36_N3RBX18StarterPackServiceD1Ev")]
-pub fn stub_0x574a08() -> ! {
-    todo!("0x574a08 non-virtual thunk toRBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x574a08(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x574a08: `Thn36_StarterPackService::D1` — this-adjust + dtor tail
+    // call; same drop glue as 0x574868 — no-op.
 }
 
 // 0x574a10 — __ZThn36_N3RBX18StarterPackServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 #[doc(alias = "__ZThn36_N3RBX18StarterPackServiceD0Ev")]
-pub fn stub_0x574a10() -> ! {
-    todo!("0x574a10 non-virtual thunk toRBX::StarterPackService::~StarterPackService()")
+pub fn stub_0x574a10(_service: &mut crate::instance::StarterPackService) {
+    // IDA 0x574a10: `Thn36_StarterPackService::D0` — this-adjust +
+    // deleting-dtor tail call; same drop glue as 0x57486c — no-op.
 }
 
 // 0x574abc — __ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv")]
-pub fn stub_0x574abc() -> ! {
-    todo!("0x574abc __ZN3RBX4Name13callDoDeclareILZNS_13sBackpackItemEEEEvv")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x574abc as stub_0x574abc;
 
 // 0x574ac0 — __ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v")]
-pub fn stub_0x574ac0() -> ! {
-    todo!("0x574ac0 __ZN3RBX4Name9doDeclareILZNS_13sBackpackItemEEEERKS0_v")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x574ac0 as stub_0x574ac0;
 
 // 0x575088 — __ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv")]
-pub fn stub_0x575088() -> ! {
-    todo!("0x575088 __ZN3RBX4Name13callDoDeclareILZNS_12sStarterGearEEEEvv")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x575088 as stub_0x575088;
 
 // 0x57508c — __ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v")]
-pub fn stub_0x57508c() -> ! {
-    todo!("0x57508c __ZN3RBX4Name9doDeclareILZNS_12sStarterGearEEEERKS0_v")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x57508c as stub_0x57508c;
 
 // 0x575808 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(boost::shared_ptr<RBX::HopperBin> const*,RBX::HopperBin *)const
@@ -796,5 +806,42 @@ mod batch_a_tests {
         stub_0x573fe4(&mut item);
         stub_0x574154(&mut item);
         stub_0x574158(&mut item);
+    }
+}
+
+#[cfg(test)]
+mod batch_b_tests {
+    use super::*;
+    use crate::instance::{BackpackItem, Hopper, StarterPackService};
+
+    #[test]
+    fn dtor_thunks_are_drop_glue() {
+        let mut item = BackpackItem::default();
+        stub_0x57415c(&mut item);
+        stub_0x57428c(&mut item);
+        stub_0x5743f8(&mut item);
+        stub_0x574528(&mut item);
+        let mut hopper = Hopper::default();
+        stub_0x57466c(&mut hopper);
+        stub_0x574670(&mut hopper);
+        stub_0x574710(&mut hopper);
+        stub_0x574718(&mut hopper);
+        stub_0x5747bc(&mut hopper);
+        stub_0x5747c4(&mut hopper);
+        let mut service = StarterPackService::default();
+        stub_0x574868(&mut service);
+        stub_0x57486c(&mut service);
+        stub_0x574934(&mut service);
+        stub_0x57493c(&mut service);
+        stub_0x574a08(&mut service);
+        stub_0x574a10(&mut service);
+    }
+
+    #[test]
+    fn name_declares_reexported_from_core() {
+        stub_0x574abc();
+        stub_0x574ac0();
+        stub_0x575088();
+        stub_0x57508c();
     }
 }
