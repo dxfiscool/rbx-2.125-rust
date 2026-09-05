@@ -7,6 +7,26 @@
 
 use rbx_core::SharedPtr;
 
+/// libjpeg destination manager state installed by `jpeg_freeimage_dst` (IDA 0x111df4).
+#[derive(Clone, Debug, Default)]
+pub struct JpegDest {
+    pub buffer_size: usize,
+    pub out: usize,
+    pub start: usize,
+    pub cookie_a: usize,
+    pub cookie_b: usize,
+}
+
+/// libjpeg source manager state installed by `jpeg_freeimage_src` (IDA 0x111d28).
+#[derive(Clone, Debug, Default)]
+pub struct JpegSrc {
+    pub started: bool,
+    pub handle_a: usize,
+    pub handle_b: usize,
+    pub pos: usize,
+    pub end: usize,
+}
+
 /// FreeImage format plugin node (IDA 0x111070: 0x24-byte node + 0x3C proc table).
 #[derive(Clone, Debug, Default)]
 pub struct PluginNode {
@@ -615,110 +635,230 @@ pub fn stub_111500(has_plugins: bool, has_node: bool, supports: Option<&mut dyn 
 // 0x111558 — _FreeImage_FIFSupportsExportBPP
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_FIFSupportsExportBPP")]
-pub fn stub_111558() -> ! { todo!("0x111558 _FreeImage_FIFSupportsExportBPP") }
+pub fn stub_111558(has_plugins: bool, has_node: bool, supports: Option<&mut dyn FnMut(i32) -> i32>, bpp: i32) -> i32 { // IDA 0x111558: plugins && node && supports-proc(+48) → proc(bpp); else 0.
+    if has_plugins && has_node {
+        if let Some(f) = supports {
+            return f(bpp);
+        }
+    }
+    0
+}
 
 // 0x1115b0 — _FreeImage_GetFIFExtensionList
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_GetFIFExtensionList")]
-pub fn stub_1115b0() -> ! { todo!("0x1115b0 _FreeImage_GetFIFExtensionList") }
+pub fn stub_1115b0(has_node: bool, cached: Option<String>, describe: &mut dyn FnMut() -> Option<String>) -> Option<String> { // IDA 0x1115b0: no plugins/node → null; cached extension list → it; else the describe proc.
+    if !has_node {
+        return None;
+    }
+    match cached {
+        Some(s) => Some(s),
+        None => describe(),
+    }
+}
 
 // 0x111610 — _FreeImage_GetFormatFromFIF
 // type: int __fastcall(int)
 #[doc(alias = "_FreeImage_GetFormatFromFIF")]
-pub fn stub_111610() -> ! { todo!("0x111610 _FreeImage_GetFormatFromFIF") }
+pub fn stub_111610(has_node: bool, cached: Option<String>, describe: &mut dyn FnMut() -> Option<String>) -> Option<String> { // IDA 0x111610: no plugins/node → null; cached format → it; else the format proc.
+    if !has_node {
+        return None;
+    }
+    match cached {
+        Some(s) => Some(s),
+        None => describe(),
+    }
+}
 
 // 0x111668 — _FreeImage_SaveToHandle
 #[doc(alias = "_FreeImage_SaveToHandle")]
-pub fn stub_111668() -> ! { todo!("0x111668 _FreeImage_SaveToHandle") }
+pub fn stub_111668(fif: i32, fif_count: usize, has_node: bool, can_save: bool, save: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x111668: fif < 0 / no plugins / fif >= count / no node / no save proc → 0; else open + save through the plugin procs.
+    if fif < 0 || fif >= fif_count as i32 || !has_node || !can_save {
+        return 0;
+    }
+    save()
+}
 
 // 0x11173c — _FreeImage_Save
 #[doc(alias = "_FreeImage_Save")]
-pub fn stub_11173c() -> ! { todo!("0x11173c _FreeImage_Save") }
+pub fn stub_11173c(open: &mut dyn FnMut() -> bool, save_to: &mut dyn FnMut() -> i32, close: &mut dyn FnMut(), notify: &mut dyn FnMut(&str)) -> i32 { // IDA 0x11173c: default IO; fopen w+b fails → OutputMessage("FreeImage_Save: failed to open file") + 0; else SaveToHandle, fclose.
+    if !open() {
+        notify("FreeImage_Save: failed to open file");
+        return 0;
+    }
+    let rc = save_to();
+    close();
+    rc
+}
 
 // 0x1117d4 — _FreeImage_LoadFromHandle
 #[doc(alias = "_FreeImage_LoadFromHandle")]
-pub fn stub_1117d4() -> ! { todo!("0x1117d4 _FreeImage_LoadFromHandle") }
+pub fn stub_1117d4(fif: i32, fif_count: usize, has_node: bool, can_load: bool, load: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x1117d4: fif < 0 / no plugins / fif >= count / no node / no load proc → 0; else open + load through the plugin procs.
+    if fif < 0 || fif >= fif_count as i32 || !has_node || !can_load {
+        return 0;
+    }
+    load()
+}
 
 // 0x1118a0 — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE4findERS1_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::find(int const&)")]
-pub fn stub_1118a0() -> ! { todo!("0x1118a0 std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::find(int const&)") }
+pub fn stub_1118a0<'a>(list: &'a PluginList, fif: i32) -> Option<&'a PluginNode> { // IDA 0x1118a0: BST find by fif with the equality check; end on miss.
+    list.nodes.get(&fif)
+}
 
 // 0x1118fc — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_Rb_tree_impl<std::less<int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<int const,PluginNode *>>> const&,std::less<int> const&)")]
-pub fn stub_1118fc() -> ! { todo!("0x1118fc std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_Rb_tree_impl<std::less<int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<int const,PluginNode *>>> const&,std::less<int> const&)") }
+pub fn stub_1118fc() -> PluginList { // IDA 0x1118fc: empty plugin-tree header init.
+    PluginList::default()
+}
 
 // 0x11193c — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE11lower_boundERS1_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::lower_bound(int const&)")]
-pub fn stub_11193c() -> ! { todo!("0x11193c std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::lower_bound(int const&)") }
+pub fn stub_11193c(list: &PluginList, fif: i32) -> Option<i32> { // IDA 0x11193c: lower_bound — first fif not less than k (end if none).
+    list.nodes.range(fif..).next().map(|(k, _)| *k)
+}
 
 // 0x111970 — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,PluginNode *>> *)")]
-pub fn stub_111970() -> ! { todo!("0x111970 std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,PluginNode *>> *)") }
+pub fn stub_111970(list: &mut PluginList) { // IDA 0x111970: recursive post-order erase of the plugin subtree.
+    list.nodes.clear();
+}
 
 // 0x1119ac — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiP10PluginNodeEEE8allocateEmPKv
 #[doc(alias = "__gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const,PluginNode *>>>::allocate(unsigned long,void const*)")]
-pub fn stub_1119ac() -> ! { todo!("0x1119ac __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const,PluginNode *>>>::allocate(unsigned long,void const*)") }
+pub fn stub_1119ac(count: usize) -> usize { // IDA 0x1119ac: count > 0xAAAAAAA → bad_alloc; else operator new(24 * count) size.
+    assert!(count <= 0xAAAAAAA);
+    24 * count
+}
 
 // 0x1119dc — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE14_M_create_nodeERKS4_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_create_node(std::pair<int const,PluginNode *> const&)")]
-pub fn stub_1119dc() -> ! { todo!("0x1119dc std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_create_node(std::pair<int const,PluginNode *> const&)") }
+pub fn stub_1119dc(fif: i32, node: PluginNode) -> (i32, PluginNode) { // IDA 0x1119dc: allocate one plugin node; construct the pair in place.
+    (fif, node)
+}
 
 // 0x111a0c — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<int const,PluginNode *> const&)")]
-pub fn stub_111a0c() -> ! { todo!("0x111a0c std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<int const,PluginNode *> const&)") }
+pub fn stub_111a0c(list: &mut PluginList, fif: i32, node: PluginNode) { // IDA 0x111a0c: hinted insert + rebalance.
+    list.nodes.insert(fif, node);
+}
 
 // 0x111a90 — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE16_M_insert_uniqueERKS4_
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert_unique(std::pair<int const,PluginNode *> const&)")]
-pub fn stub_111a90() -> ! { todo!("0x111a90 std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert_unique(std::pair<int const,PluginNode *> const&)") }
+pub fn stub_111a90(list: &mut PluginList, fif: i32, node: PluginNode) -> bool { // IDA 0x111a90: unique insert; false when the fif already exists.
+    use std::collections::btree_map::Entry;
+    match list.nodes.entry(fif) {
+        Entry::Vacant(e) => {
+            e.insert(node);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
+}
 
 // 0x111b50 — __ZNSt8_Rb_treeIiSt4pairIKiP10PluginNodeESt10_Select1stIS4_ESt4lessIiESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<int const,PluginNode *>>,std::pair<int const,PluginNode *> const&)")]
-pub fn stub_111b50() -> ! { todo!("0x111b50 std::_Rb_tree<int,std::pair<int const,PluginNode *>,std::_Select1st<std::pair<int const,PluginNode *>>,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<int const,PluginNode *>>,std::pair<int const,PluginNode *> const&)") }
+pub fn stub_111b50(list: &mut PluginList, fif: i32, node: PluginNode) -> bool { // IDA 0x111b50: hinted unique insert; false when the fif already exists.
+    use std::collections::btree_map::Entry;
+    match list.nodes.entry(fif) {
+        Entry::Vacant(e) => {
+            e.insert(node);
+            true
+        }
+        Entry::Occupied(_) => false,
+    }
+}
 
 // 0x111c74 — __ZNSt3mapIiP10PluginNodeSt4lessIiESaISt4pairIKiS1_EEEixERS5_
 #[doc(alias = "std::map<int,PluginNode *,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::operator[](int const&)")]
-pub fn stub_111c74() -> ! { todo!("0x111c74 std::map<int,PluginNode *,std::less<int>,std::allocator<std::pair<int const,PluginNode *>>>::operator[](int const&)") }
+pub fn stub_111c74<'a>(list: &'a mut PluginList, fif: i32) -> &'a mut PluginNode { // IDA 0x111c74: lower_bound; miss → insert default node; return the mapped reference.
+    list.nodes.entry(fif).or_insert_with(|| PluginNode { fif, ..Default::default() })
+}
 
 // 0x111ce0 — __ZL16init_destinationP20jpeg_compress_struct
 #[doc(alias = "init_destination(jpeg_compress_struct *)")]
-pub fn stub_111ce0() -> ! { todo!("0x111ce0 init_destination(jpeg_compress_struct *)") }
+pub fn stub_111ce0(dest: &mut JpegDest, alloc: &mut dyn FnMut() -> usize) -> usize { // IDA 0x111ce0: buffer = procs(); size 4096; out/start = buffer; return buffer.
+    let buf = alloc();
+    dest.buffer_size = 4096;
+    dest.out = buf;
+    dest.start = buf;
+    buf
+}
 
 // 0x111d14 — __ZL11init_sourceP22jpeg_decompress_struct
 #[doc(alias = "init_source(jpeg_decompress_struct *)")]
-pub fn stub_111d14() -> ! { todo!("0x111d14 init_source(jpeg_decompress_struct *)") }
+pub fn stub_111d14(started: &mut bool) { // IDA 0x111d14: source start flag (+40) = 1 (source forwarded).
+    *started = true;
+}
 
 // 0x111d24 — __ZL11term_sourceP22jpeg_decompress_struct
 #[doc(alias = "term_source(jpeg_decompress_struct *)")]
-pub fn stub_111d24() -> ! { todo!("0x111d24 term_source(jpeg_decompress_struct *)") }
+pub fn stub_111d24() { // IDA 0x111d24: empty term_source body.
+}
 
 // 0x111d28 — __Z18jpeg_freeimage_srcP22jpeg_decompress_structPvP11FreeImageIO
 #[doc(alias = "jpeg_freeimage_src(jpeg_decompress_struct *,void *,FreeImageIO *)")]
-pub fn stub_111d28() -> ! { todo!("0x111d28 jpeg_freeimage_src(jpeg_decompress_struct *,void *,FreeImageIO *)") }
+pub fn stub_111d28(src: &mut Option<JpegSrc>, handle_a: usize, handle_b: usize, alloc: &mut dyn FnMut(usize) -> bool) -> bool { // IDA 0x111d28: alloc the source struct (44) + buffer (4096) when null; install the method table; store handles; zero counters.
+    if src.is_none() {
+        if !alloc(44) || !alloc(4096) {
+            return false;
+        }
+        *src = Some(JpegSrc::default());
+    }
+    if let Some(s) = src {
+        s.handle_a = handle_a;
+        s.handle_b = handle_b;
+        s.pos = 0;
+        s.end = 0;
+        s.started = false;
+    }
+    true
+}
 
 // 0x111df4 — __Z18jpeg_freeimage_dstP20jpeg_compress_structPvP11FreeImageIO
 #[doc(alias = "jpeg_freeimage_dst(jpeg_compress_struct *,void *,FreeImageIO *)")]
-pub fn stub_111df4() -> ! { todo!("0x111df4 jpeg_freeimage_dst(jpeg_compress_struct *,void *,FreeImageIO *)") }
+pub fn stub_111df4(dst: &mut Option<JpegDest>, cookie_a: usize, cookie_b: usize, alloc: &mut dyn FnMut() -> bool) -> bool { // IDA 0x111df4: alloc the dest struct (32) when null; install the method table; store cookies; return term_destination.
+    if dst.is_none() {
+        if !alloc() {
+            return false;
+        }
+        *dst = Some(JpegDest::default());
+    }
+    if let Some(d) = dst {
+        d.cookie_a = cookie_a;
+        d.cookie_b = cookie_b;
+    }
+    true
+}
 
 // 0x111e68 — __ZL6Formatv
 // type: _DWORD __fastcall()
 #[doc(alias = "Format(void)")]
-pub fn stub_111e68() -> ! { todo!("0x111e68 Format(void)") }
+pub fn stub_111e68() -> &'static str { // IDA 0x111e68: return "JPEG".
+    "JPEG"
+}
 
 // 0x111e78 — __ZL11Descriptionv
 // type: _DWORD __fastcall()
 #[doc(alias = "Description(void)")]
-pub fn stub_111e78() -> ! { todo!("0x111e78 Description(void)") }
+pub fn stub_111e78() -> &'static str { // IDA 0x111e78: return "JPEG - JFIF Compliant".
+    "JPEG - JFIF Compliant"
+}
 
 // 0x111e88 — __ZL9Extensionv
 // type: _DWORD __fastcall()
 #[doc(alias = "Extension(void)")]
-pub fn stub_111e88() -> ! { todo!("0x111e88 Extension(void)") }
+pub fn stub_111e88() -> &'static str { // IDA 0x111e88: return "jpg,jif,jpeg,jpe".
+    "jpg,jif,jpeg,jpe"
+}
 
 // 0x111e98 — __ZL7RegExprv
 // type: _DWORD __fastcall()
 #[doc(alias = "RegExpr(void)")]
-pub fn stub_111e98() -> ! { todo!("0x111e98 RegExpr(void)") }
+pub fn stub_111e98() -> &'static [u8] { // IDA 0x111e98: return "^\\xFF\\xD8\\xFF".
+    b"^\xFF\xD8\xFF"
+}
 
 // 0x111ea8 — __ZL8MimeTypev
 // type: _DWORD __fastcall()
