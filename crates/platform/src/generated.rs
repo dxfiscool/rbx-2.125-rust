@@ -3254,6 +3254,256 @@ impl SignupErrState {
 }
 static SIGNUPERR: std::sync::LazyLock<SignupErrState> =
     std::sync::LazyLock::new(SignupErrState::default);
+/// Host id standing in for the `SignupVerifier` `self`.
+const SIGNUP_ID: ControlId = 22;
+/// Minimal `SignupVerifier` counterpart (IDA 0x5bf9c..0x5d1bc): endpoint
+/// URLs, notifier names, the last request triple and observable counters
+/// for the networking steps out of slice. Async completions run inline.
+#[derive(Debug, Default)]
+pub struct SignupState {
+    initialized: AtomicBool,
+    signup_url: parking_lot::Mutex<String>,
+    signup_args: parking_lot::Mutex<String>,
+    username_check_url: parking_lot::Mutex<String>,
+    recommend_url: parking_lot::Mutex<String>,
+    password_check_url: parking_lot::Mutex<String>,
+    password_check_args: parking_lot::Mutex<String>,
+    done_notification: parking_lot::Mutex<String>,
+    password_notification: parking_lot::Mutex<String>,
+    username_notification: parking_lot::Mutex<String>,
+    recommend_notification: parking_lot::Mutex<String>,
+    last_request: parking_lot::Mutex<(String, String, String)>,
+    last_notification: parking_lot::Mutex<String>,
+    last_payload: parking_lot::Mutex<String>,
+    posts: AtomicU32,
+    releases: AtomicU32,
+}
+impl SignupState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    fn post(&self, notification: &str, payload: &str) -> String {
+        *self.last_notification.lock() = notification.to_owned();
+        *self.last_payload.lock() = payload.to_owned();
+        self.bump(&self.posts);
+        notification.to_owned()
+    }
+    /// `-init` (IDA 0x5bf9c): builds the signup/check/recommend URLs from
+    /// the base (`://m.`→`://www.`, `http`→`https`) plus args templates and
+    /// notifier names.
+    pub fn init_verifier(&self, base: &str) -> Option<ControlId> {
+        let web = base.replace("://m.", "://www.").replacen("http", "https", 1);
+        *self.signup_url.lock() = format!("{web}mobileapi/signup");
+        *self.signup_args.lock() =
+            "userName=%@&password=%@&gender=%@&dateOfBirth=%@".to_owned();
+        *self.username_check_url.lock() = format!(
+            "{web}UserCheck/checkifinvalidusernameforsignup?username=%@"
+        );
+        *self.recommend_url.lock() = format!(
+            "{web}UserCheck/recommendedusername?usernameToTry=%@"
+        );
+        *self.password_check_url.lock() =
+            format!("{web}UserCheck/validatepasswordforsignup");
+        *self.password_check_args.lock() = "password=%@&username=%@".to_owned();
+        *self.done_notification.lock() = "SignupVerifierProcessedSignUp".to_owned();
+        *self.password_notification.lock() = "SignupVerifierPassword".to_owned();
+        *self.username_notification.lock() = "SignupVerifierUsername".to_owned();
+        *self.recommend_notification.lock() = "SignupRecommendUsername".to_owned();
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(SIGNUP_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn url_string(&self) -> String {
+        self.signup_url.lock().clone()
+    }
+    /// `-dealloc` (IDA 0x5c17c): releases the nine strings.
+    pub fn dealloc(&self) {
+        *self.signup_url.lock() = String::new();
+        *self.username_check_url.lock() = String::new();
+        *self.recommend_url.lock() = String::new();
+        *self.password_check_url.lock() = String::new();
+        *self.password_check_args.lock() = String::new();
+        *self.signup_args.lock() = String::new();
+        *self.done_notification.lock() = String::new();
+        *self.password_notification.lock() = String::new();
+        *self.username_notification.lock() = String::new();
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `isValidEmail:` (IDA 0x5c26c):
+    /// `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}`, case-insensitive.
+    pub fn is_valid_email(&self, email: &str) -> bool {
+        let Some((local, domain)) = email.split_once('@') else { return false };
+        if local.is_empty()
+            || !local.bytes().all(|b| {
+                b.is_ascii_alphanumeric() || matches!(b, b'.' | b'_' | b'%' | b'+' | b'-')
+            }) {
+            return false;
+        }
+        let Some(dot) = domain.rfind('.') else { return false };
+        let (host, tld) = (&domain[..dot], &domain[dot + 1..]);
+        if host.is_empty()
+            || !host.bytes().all(|b| b.is_ascii_alphanumeric() || matches!(b, b'.' | b'-'))
+        {
+            return false;
+        }
+        (2..=4).contains(&tld.len()) && tld.bytes().all(|b| b.is_ascii_alphabetic())
+    }
+    /// `doPostResponseFromUrl:args:notificationName:` (IDA 0x5c2e8):
+    /// UA-headed POST with the `__62…` completion inline. Returns the
+    /// notification name.
+    pub fn do_post(&self, url: &str, args: &str, notification: &str) -> String {
+        *self.last_request.lock() = (url.to_owned(), args.to_owned(), notification.to_owned());
+        self.post(notification, args)
+    }
+    /// `__62-doPost_block_invoke` (IDA 0x5c444): without error, parsed
+    /// JSON posts the notification. Returns the posted name.
+    pub fn post_completion(&self, json_ok: bool, has_json: bool, notification: &str) -> Option<String> {
+        if !json_ok || !has_json {
+            return None;
+        }
+        Some(self.post(notification, "json"))
+    }
+    /// `doGetResponseFromUrl:notificationName:` (IDA 0x5c534): UA-headed
+    /// GET with the `__56…` completion inline.
+    pub fn do_get(&self, url: &str, notification: &str) -> String {
+        *self.last_request.lock() = (url.to_owned(), String::new(), notification.to_owned());
+        self.post(notification, "")
+    }
+    /// `__56-doGet_block_invoke` (IDA 0x5c658): without error, parsed JSON
+    /// posts the notification.
+    pub fn get_completion(&self, json_ok: bool, has_json: bool, notification: &str) -> Option<String> {
+        if !json_ok || !has_json {
+            return None;
+        }
+        Some(self.post(notification, "json"))
+    }
+    pub fn last_request(&self) -> (String, String, String) {
+        self.last_request.lock().clone()
+    }
+    pub fn last_notification(&self) -> String {
+        self.last_notification.lock().clone()
+    }
+    pub fn post_count(&self) -> u32 {
+        self.posts.load(Ordering::SeqCst)
+    }
+    /// `checkPassword:username:` (IDA 0x5c708): formats passwordCheckArgs
+    /// and POSTs to passwordCheckUrl. Returns the notification name.
+    pub fn check_password(&self, password: &str, username: &str) -> String {
+        let args = format!("password={password}&username={username}");
+        let url = self.password_check_url.lock().clone();
+        let notification = self.password_notification.lock().clone();
+        self.do_post(&url, &args, &notification)
+    }
+    /// `checkUsername:` (IDA 0x5c77c): names longer than 2 GET the check
+    /// URL; short names post {success:true} immediately.
+    pub fn check_username(&self, username: &str) -> String {
+        if username.len() > 2 {
+            let url = format!("{}{username}", self.username_check_url.lock().replace("%@", ""));
+            let notification = self.username_notification.lock().clone();
+            self.do_get(&url, &notification)
+        } else {
+            let notification = self.username_notification.lock().clone();
+            self.post(&notification, "success:true")
+        }
+    }
+    /// `getAlternateUsername:` (IDA 0x5c888): GETs recommendUsernameUrl +
+    /// username with the `__39…` completion.
+    pub fn get_alternate(&self, username: &str) -> String {
+        let url = format!("{}{username}", self.recommend_url.lock().replace("%@", ""));
+        let notification = self.recommend_notification.lock().clone();
+        *self.last_request.lock() = (url, String::new(), notification.clone());
+        notification
+    }
+    /// `__39-getAlternateUsername_block_invoke` (IDA 0x5c9d8): a
+    /// nonempty body posts the recommend notification with the name.
+    /// Returns the posted value.
+    pub fn alternate_completion(&self, body_empty: bool, body: &str) -> Option<String> {
+        if body_empty || body.is_empty() {
+            return None;
+        }
+        let notification = self.recommend_notification.lock().clone();
+        Some(self.post(&notification, body))
+    }
+    /// `passwordsMatch:verifyPassword:` (IDA 0x5cae8): both nonempty and
+    /// equal.
+    pub fn passwords_match(&self, first: &str, second: &str) -> bool {
+        !first.is_empty() && !second.is_empty() && first == second
+    }
+    /// `processSignUpResponse:data:error:` (IDA 0x5cb3c): no data posts
+    /// ConnectionError; JSON failure posts UnknownError; Status OK with
+    /// UserInfo posts it, other statuses post their Response. Returns
+    /// (response, has_userinfo).
+    pub fn process_signup(
+        &self,
+        has_data: bool,
+        json_ok: bool,
+        status: &str,
+        has_userinfo: bool,
+    ) -> (String, bool) {
+        if !has_data {
+            return (self.post(&self.done_notification.lock().clone(), "ConnectionError"), false);
+        }
+        if !json_ok {
+            return (self.post(&self.done_notification.lock().clone(), "UnknownError"), false);
+        }
+        if status == "OK" {
+            if has_userinfo {
+                return (self.post(&self.done_notification.lock().clone(), "UserInfo"), true);
+            }
+            return (self.post(&self.done_notification.lock().clone(), status), false);
+        }
+        (self.post(&self.done_notification.lock().clone(), status), false)
+    }
+    /// `doSignUp:...` (IDA 0x5cd38): mismatched/empty fields post
+    /// FieldsIncomplete; else the escaped args POST with the `__76…`
+    /// completion. Returns "Posted" or the FieldsIncomplete response.
+    pub fn do_signup(
+        &self,
+        user: &str,
+        pass: &str,
+        verify: &str,
+        birth: &str,
+        gender: i32,
+        email: &str,
+    ) -> String {
+        if !self.passwords_match(pass, verify)
+            || user.is_empty()
+            || pass.is_empty()
+            || verify.is_empty()
+            || birth.is_empty()
+            || gender == 0
+        {
+            return self.post(&self.done_notification.lock().clone(), "FieldsIncomplete");
+        }
+        let gender_text = if gender == 2 { "Female" } else { "Male" };
+        let mut args = format!(
+            "userName={}&password={}&gender={}&dateOfBirth={}",
+            user,
+            percent_escape(pass),
+            gender_text,
+            percent_escape(birth)
+        );
+        if !email.is_empty() {
+            args.push_str(&format!("&email={}", percent_escape(email)));
+        }
+        let url = self.signup_url.lock().clone();
+        let notification = self.done_notification.lock().clone();
+        *self.last_request.lock() = (url, args, notification);
+        "Posted".to_owned()
+    }
+    /// `__76-doSignUp_block_invoke` (IDA 0x5d184): runs
+    /// `processSignUpResponse:data:error:`.
+    pub fn signup_completion(&self, json_ok: bool, status: &str, has_userinfo: bool) -> (String, bool) {
+        self.process_signup(true, json_ok, status, has_userinfo)
+    }
+}
+static SIGNUP: std::sync::LazyLock<SignupState> =
+    std::sync::LazyLock::new(SignupState::default);
 impl CacheState {
     /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
     /// (tags 13/11/10/12/15) rebuilds the preload list.
@@ -15873,120 +16123,166 @@ pub fn stub_5bf68() -> Option<ControlId> {
 // 0x5bf78 — -[SignUpErrorViewController setMessageTextView:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setMessageTextView:]")]
-pub fn stub_5bf78() -> ! {
-    todo!("0x5bf78 -[SignUpErrorViewController setMessageTextView:]")
+pub fn stub_5bf78(view: Option<ControlId>) {
+    // IDA 0x5bf78 `-setMessageTextView:`: retained assign (offset 176,
+    // 0x5bf94).
+    SIGNUPERR.set_message_text_view(view);
 }
 
 // 0x5bf9c — -[SignupVerifier init]
 // type: SignupVerifier *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier init]")]
-pub fn stub_5bf9c() -> ! {
-    todo!("0x5bf9c -[SignupVerifier init]")
+pub fn stub_5bf9c(base: &str) -> Option<ControlId> {
+    // IDA 0x5bf9c `-init`: super init==self guard (0x5bfc8); builds the
+    // signup/check/recommend URLs from the base (m.→www., http→https) plus
+    // the args templates and notifier names (0x5bfe4..0x5c172).
+    SIGNUP.init_verifier(base)
 }
 
 // 0x5c17c — -[SignupVerifier dealloc]
 // type: void __cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier dealloc]")]
-pub fn stub_5c17c() -> ! {
-    todo!("0x5c17c -[SignupVerifier dealloc]")
+pub fn stub_5c17c() {
+    // IDA 0x5c17c `-dealloc`: releases the nine URL/args/notification
+    // strings (0x5c1a0..0x5c240), then super (0x5c262).
+    SIGNUP.dealloc();
 }
 
 // 0x5c26c — -[SignupVerifier isValidEmail:]
 // type: bool __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier isValidEmail:]")]
-pub fn stub_5c26c() -> ! {
-    todo!("0x5c26c -[SignupVerifier isValidEmail:]")
+pub fn stub_5c26c(email: &str) -> bool {
+    // IDA 0x5c26c `isValidEmail:`: `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+`
+    // `\.[A-Za-z]{2,4}` case-insensitive (0x5c2a4..0x5c2dc).
+    SIGNUP.is_valid_email(email)
 }
 
 // 0x5c2e8 — -[SignupVerifier doPostResponseFromUrl:args:notificationName:]
 // type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
 #[doc(alias = "-[SignupVerifier doPostResponseFromUrl:args:notificationName:]")]
-pub fn stub_5c2e8() -> ! {
-    todo!("0x5c2e8 -[SignupVerifier doPostResponseFromUrl:args:notificationName:]")
+pub fn stub_5c2e8(url: &str, args: &str, notification: &str) -> String {
+    // IDA 0x5c2e8 `doPostResponseFromUrl:args:notificationName:`: UA-headed
+    // POST with the `__62…` completion (0x5c31a..tail). Returns the
+    // notification name.
+    SIGNUP.do_post(url, args, notification)
 }
 
 // 0x5c444 — ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke
 // type: _DWORD *__fastcall(_DWORD *result, int, int, int)
 #[doc(alias = "___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")]
-pub fn stub_5c444() -> ! {
-    todo!("0x5c444 ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")
+pub fn stub_5c444(json_ok: bool, has_json: bool, notification: &str) -> Option<String> {
+    // IDA 0x5c444 `__62-doPost_block_invoke` (via async, inline): without
+    // error, parsed JSON posts the notification (0x5c450..0x5c4ec).
+    // Returns the posted name.
+    SIGNUP.post_completion(json_ok, has_json, notification)
 }
 
 // 0x5c534 — -[SignupVerifier doGetResponseFromUrl:notificationName:]
 // type: void __cdecl(SignupVerifier *self, SEL, id, id)
 #[doc(alias = "-[SignupVerifier doGetResponseFromUrl:notificationName:]")]
-pub fn stub_5c534() -> ! {
-    todo!("0x5c534 -[SignupVerifier doGetResponseFromUrl:notificationName:]")
+pub fn stub_5c534(url: &str, notification: &str) -> String {
+    // IDA 0x5c534 `doGetResponseFromUrl:notificationName:`: UA-headed GET
+    // with the `__56…` completion (0x5c566..tail). Returns the notification
+    // name.
+    SIGNUP.do_get(url, notification)
 }
 
 // 0x5c658 — ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke
 // type: _DWORD *__fastcall(_DWORD *result, int, int, int)
 #[doc(alias = "___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")]
-pub fn stub_5c658() -> ! {
-    todo!("0x5c658 ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")
+pub fn stub_5c658(json_ok: bool, has_json: bool, notification: &str) -> Option<String> {
+    // IDA 0x5c658 `__56-doGet_block_invoke` (via async, inline): without
+    // error, parsed JSON posts the notification (0x5c660..0x5c6be).
+    // Returns the posted name.
+    SIGNUP.get_completion(json_ok, has_json, notification)
 }
 
 // 0x5c708 — -[SignupVerifier checkPassword:username:]
 // type: void __cdecl(SignupVerifier *self, SEL, id, id)
 #[doc(alias = "-[SignupVerifier checkPassword:username:]")]
-pub fn stub_5c708() -> ! {
-    todo!("0x5c708 -[SignupVerifier checkPassword:username:]")
+pub fn stub_5c708(password: &str, username: &str) -> String {
+    // IDA 0x5c708 `checkPassword:username:`: formats passwordCheckArgs
+    // and POSTs to passwordCheckUrl (0x5c742..0x5c772). Returns the
+    // notification name.
+    SIGNUP.check_password(password, username)
 }
 
 // 0x5c77c — -[SignupVerifier checkUsername:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier checkUsername:]")]
-pub fn stub_5c77c() -> ! {
-    todo!("0x5c77c -[SignupVerifier checkUsername:]")
+pub fn stub_5c77c(username: &str) -> String {
+    // IDA 0x5c77c `checkUsername:`: names longer than 2 GET the check URL
+    // (0x5c79a..0x5c884); short names post {success:true} immediately
+    // (0x5c7b4..0x5c82c). Returns the notification name.
+    SIGNUP.check_username(username)
 }
 
 // 0x5c888 — -[SignupVerifier getAlternateUsername:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier getAlternateUsername:]")]
-pub fn stub_5c888() -> ! {
-    todo!("0x5c888 -[SignupVerifier getAlternateUsername:]")
+pub fn stub_5c888(username: &str) -> String {
+    // IDA 0x5c888 `getAlternateUsername:`: GETs recommendUsernameUrl +
+    // username with the `__39…` completion (0x5c8be..tail). Returns the
+    // notification name.
+    SIGNUP.get_alternate(username)
 }
 
 // 0x5c9d8 — ___39-[SignupVerifier getAlternateUsername:]_block_invoke
 // type: _DWORD *__fastcall(_DWORD *result, int, int, int)
 #[doc(alias = "___39-[SignupVerifier getAlternateUsername:]_block_invoke")]
-pub fn stub_5c9d8() -> ! {
-    todo!("0x5c9d8 ___39-[SignupVerifier getAlternateUsername:]_block_invoke")
+pub fn stub_5c9d8(body_empty: bool, body: &str) -> Option<String> {
+    // IDA 0x5c9d8 `__39-getAlternateUsername_block_invoke` (via async,
+    // inline): a nonempty body posts the recommend notification with the
+    // name (0x5ca04..0x5cac8). Returns the posted value.
+    SIGNUP.alternate_completion(body_empty, body)
 }
 
 // 0x5cae8 — -[SignupVerifier passwordsMatch:verifyPassword:]
 // type: bool __cdecl(SignupVerifier *self, SEL, id, id)
 #[doc(alias = "-[SignupVerifier passwordsMatch:verifyPassword:]")]
-pub fn stub_5cae8() -> ! {
-    todo!("0x5cae8 -[SignupVerifier passwordsMatch:verifyPassword:]")
+pub fn stub_5cae8(first: &str, second: &str) -> bool {
+    // IDA 0x5cae8 `passwordsMatch:verifyPassword:`: both nonempty and
+    // equal (0x5cb04..0x5cb34).
+    SIGNUP.passwords_match(first, second)
 }
 
 // 0x5cb3c — -[SignupVerifier processSignUpResponse:data:error:]
 // type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
 #[doc(alias = "-[SignupVerifier processSignUpResponse:data:error:]")]
-pub fn stub_5cb3c() -> ! {
-    todo!("0x5cb3c -[SignupVerifier processSignUpResponse:data:error:]")
+pub fn stub_5cb3c(has_data: bool, json_ok: bool, status: &str, has_userinfo: bool) -> (String, bool) {
+    // IDA 0x5cb3c `processSignUpResponse:data:error:`: no data posts
+    // ConnectionError (0x5cc16..); JSON failure posts UnknownError
+    // (0x5cbd6..); Status OK with UserInfo posts it (0x5cd18..0x5cd34),
+    // other statuses post their Response. Returns (response, has_userinfo).
+    SIGNUP.process_signup(has_data, json_ok, status, has_userinfo)
 }
 
 // 0x5cd38 — -[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]
 // type: void __cdecl(SignupVerifier *self, SEL, id, id, id, id, int, id)
 #[doc(alias = "-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]")]
-pub fn stub_5cd38() -> ! {
-    todo!("0x5cd38 -[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]")
+pub fn stub_5cd38(user: &str, pass: &str, verify: &str, birth: &str, gender: i32, email: &str) -> String {
+    // IDA 0x5cd38 `doSignUp:...`: mismatched/empty fields post
+    // FieldsIncomplete (0x5cd5c..0x5ce54); else the escaped args POST to
+    // the signup URL with the `__76…` completion (0x5cfa2..tail).
+    // Returns "Posted" or the posted FieldsIncomplete response.
+    SIGNUP.do_signup(user, pass, verify, birth, gender, email)
 }
 
 // 0x5d184 — ___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke")]
-pub fn stub_5d184() -> ! {
-    todo!("0x5d184 ___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke")
+pub fn stub_5d184(json_ok: bool, status: &str, has_userinfo: bool) -> (String, bool) {
+    // IDA 0x5d184 `__76-doSignUp_block_invoke` (via async, inline):
+    // `processSignUpResponse:data:error:` (0x5d1a6).
+    SIGNUP.signup_completion(json_ok, status, has_userinfo)
 }
 
 // 0x5d1bc — -[SignupVerifier signUpUrlString]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier signUpUrlString]")]
-pub fn stub_5d1bc() -> ! {
-    todo!("0x5d1bc -[SignupVerifier signUpUrlString]")
+pub fn stub_5d1bc() -> String {
+    // IDA 0x5d1bc `-signUpUrlString` (0x5d1ca).
+    SIGNUP.url_string()
 }
 
 // 0x5d1cc — -[SignupVerifier setSignUpUrlString:]
