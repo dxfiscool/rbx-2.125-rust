@@ -3501,9 +3501,196 @@ impl SignupState {
     pub fn signup_completion(&self, json_ok: bool, status: &str, has_userinfo: bool) -> (String, bool) {
         self.process_signup(true, json_ok, status, has_userinfo)
     }
+    /// `-setSignUpUrlString:` (IDA 0x5d1cc): retained assign.
+    pub fn set_signup_url(&self, value: &str) {
+        *self.signup_url.lock() = value.to_owned();
+    }
+    /// `-signUpArgs` (IDA 0x5d1f0).
+    pub fn signup_args(&self) -> String {
+        self.signup_args.lock().clone()
+    }
+    /// `-setSignUpArgs:` (IDA 0x5d200): retained assign.
+    pub fn set_signup_args(&self, value: &str) {
+        *self.signup_args.lock() = value.to_owned();
+    }
+    /// `-usernameCheckUrl` (IDA 0x5d224).
+    pub fn username_check_url(&self) -> String {
+        self.username_check_url.lock().clone()
+    }
+    /// `-setUsernameCheckUrl:` (IDA 0x5d234): retained assign.
+    pub fn set_username_check_url(&self, value: &str) {
+        *self.username_check_url.lock() = value.to_owned();
+    }
+    /// `-recommendUsernameUrl` (IDA 0x5d258).
+    pub fn recommend_url(&self) -> String {
+        self.recommend_url.lock().clone()
+    }
+    /// `-setRecommendUsernameUrl:` (IDA 0x5d268): retained assign.
+    pub fn set_recommend_url(&self, value: &str) {
+        *self.recommend_url.lock() = value.to_owned();
+    }
+    /// `-passwordCheckUrl` (IDA 0x5d28c).
+    pub fn password_check_url(&self) -> String {
+        self.password_check_url.lock().clone()
+    }
+    /// `-setPasswordCheckUrl:` (IDA 0x5d29c): retained assign.
+    pub fn set_password_check_url(&self, value: &str) {
+        *self.password_check_url.lock() = value.to_owned();
+    }
+    /// `-passwordCheckArgs` (IDA 0x5d2c0).
+    pub fn password_check_args(&self) -> String {
+        self.password_check_args.lock().clone()
+    }
+    /// `-setPasswordCheckArgs:` (IDA 0x5d2d0): retained assign.
+    pub fn set_password_check_args(&self, value: &str) {
+        *self.password_check_args.lock() = value.to_owned();
+    }
+    /// `-signUpDoneNotification` (IDA 0x5d2f4).
+    pub fn done_notification(&self) -> String {
+        self.done_notification.lock().clone()
+    }
+    /// `-setSignUpDoneNotification:` (IDA 0x5d304): retained assign.
+    pub fn set_done_notification(&self, value: &str) {
+        *self.done_notification.lock() = value.to_owned();
+    }
+    /// `-passwordVerifyNotification` (IDA 0x5d328).
+    pub fn password_notification(&self) -> String {
+        self.password_notification.lock().clone()
+    }
+    /// `-setPasswordVerifyNotification:` (IDA 0x5d338): retained assign.
+    pub fn set_password_notification(&self, value: &str) {
+        *self.password_notification.lock() = value.to_owned();
+    }
+    /// `-usernameVerifyNotification` (IDA 0x5d35c).
+    pub fn username_notification(&self) -> String {
+        self.username_notification.lock().clone()
+    }
+    /// `-setUsernameVerifyNotification:` (IDA 0x5d36c): retained assign.
+    pub fn set_username_notification(&self, value: &str) {
+        *self.username_notification.lock() = value.to_owned();
+    }
+    /// `-recommendUsernameNotification` (IDA 0x5d390).
+    pub fn recommend_notification(&self) -> String {
+        self.recommend_notification.lock().clone()
+    }
+    /// `-setRecommendUsernameNotification:` (IDA 0x5d3a0): retained
+    /// assign.
+    pub fn set_recommend_notification(&self, value: &str) {
+        *self.recommend_notification.lock() = value.to_owned();
+    }
 }
 static SIGNUP: std::sync::LazyLock<SignupState> =
     std::sync::LazyLock::new(SignupState::default);
+/// Host id standing in for the `SignupViewController` `self`.
+const SIGNUPVC_ID: ControlId = 23;
+/// Minimal `SignupViewController` counterpart (IDA 0x5d3c8..0x5dce0):
+/// the accepted flags/strings, the keyboard bounds and observable
+/// counters for the form-build steps out of slice.
+#[derive(Debug, Default)]
+pub struct SignupViewState {
+    initialized: AtomicBool,
+    password_accepted: AtomicBool,
+    verify_accepted: AtomicBool,
+    username_accepted: AtomicBool,
+    recommended_username: parking_lot::Mutex<String>,
+    error_string: parking_lot::Mutex<String>,
+    username: parking_lot::Mutex<String>,
+    password: parking_lot::Mutex<String>,
+    password_verify: parking_lot::Mutex<String>,
+    gender: AtomicI32,
+    birth_date: parking_lot::Mutex<String>,
+    signup_enabled: AtomicBool,
+    window: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    has_verifier: AtomicBool,
+    observer_regs: AtomicU32,
+    keyboard_bounds: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    pickers_hidden: AtomicBool,
+    styled_buttons: AtomicU32,
+    loads: AtomicU32,
+    releases: AtomicU32,
+}
+impl SignupViewState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x5d3c8): super init; zeroes the
+    /// accepted/recommended/error flags and strings, clears gender/birth,
+    /// disables signup, sizes the window, builds the gender array +
+    /// verifier, and registers the keyboard + 4 verifier observers.
+    pub fn init_coder(&self, is_pad: bool) -> Option<ControlId> {
+        self.password_accepted.store(false, Ordering::SeqCst);
+        self.verify_accepted.store(false, Ordering::SeqCst);
+        self.username_accepted.store(false, Ordering::SeqCst);
+        *self.recommended_username.lock() = String::new();
+        *self.error_string.lock() = String::new();
+        *self.username.lock() = String::new();
+        *self.password.lock() = String::new();
+        *self.password_verify.lock() = String::new();
+        self.gender.store(0, Ordering::SeqCst);
+        *self.birth_date.lock() = String::new();
+        self.signup_enabled.store(false, Ordering::SeqCst);
+        *self.window.lock() = if is_pad { (0.0, 0.0, 540.0, 508.0) } else { (0.0, 0.0, 0.0, 0.0) };
+        self.has_verifier.store(true, Ordering::SeqCst);
+        self.observer_regs.store(5, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(SIGNUPVC_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn observer_count(&self) -> u32 {
+        self.observer_regs.load(Ordering::SeqCst)
+    }
+    pub fn window(&self) -> (f32, f32, f32, f32) {
+        *self.window.lock()
+    }
+    /// `-dealloc` (IDA 0x5d824): removes the observer, releases the
+    /// verifier plus the form views/strings, then super.
+    pub fn dealloc(&self) {
+        self.observer_regs.store(0, Ordering::SeqCst);
+        self.has_verifier.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `+getSignupFinishedNotification` (IDA 0x5dbc0).
+    pub fn signup_finished_notification(&self) -> String {
+        "RBXSignupFinishedNotification".to_owned()
+    }
+    /// `keyboardWillShow:` (IDA 0x5dbcc): records the keyboard end-frame
+    /// bounds and hides all pickers.
+    pub fn keyboard_will_show(&self, bounds: (f32, f32, f32, f32)) {
+        *self.keyboard_bounds.lock() = bounds;
+        self.pickers_hidden.store(true, Ordering::SeqCst);
+    }
+    pub fn keyboard_bounds(&self) -> (f32, f32, f32, f32) {
+        *self.keyboard_bounds.lock()
+    }
+    pub fn pickers_hidden(&self) -> bool {
+        self.pickers_hidden.load(Ordering::SeqCst)
+    }
+    /// `setUIButtonTextColor:color:` (IDA 0x5dc38): phone (or no-idiom)
+    /// devices set states 1/4/0; pad skips.
+    pub fn set_button_text_color(&self, is_phone: bool) {
+        if is_phone {
+            self.bump(&self.styled_buttons);
+        }
+    }
+    pub fn styled_button_count(&self) -> u32 {
+        self.styled_buttons.load(Ordering::SeqCst)
+    }
+    /// `-viewDidLoad` (IDA 0x5dce0): super plus the full signup form
+    /// build.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+}
+static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
+    std::sync::LazyLock::new(SignupViewState::default);
 impl CacheState {
     /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
     /// (tags 13/11/10/12/15) rebuilds the preload list.
@@ -9626,43 +9813,59 @@ pub fn stub_554a8(view: Option<ControlId>) {
 // 0x5d3c8 — -[SignupViewController initWithCoder:]
 // type: SignupViewController *__cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController initWithCoder:]")]
-pub fn stub_5d3c8() -> ! {
-    todo!("0x5d3c8 -[SignupViewController initWithCoder:]")
+pub fn stub_5d3c8(is_pad: bool) -> Option<ControlId> {
+    // IDA 0x5d3c8 `-initWithCoder:`: super init (0x5d3f0); zeroes the
+    // accepted/recommended/error flags and strings (0x5d414..0x5d4ae),
+    // disables signup, sizes the window (0x5d4ce..0x5d5a4), builds the
+    // gender array + verifier, and registers the keyboard + 4 verifier
+    // notification observers (0x5d690..0x5d814).
+    SIGNUPVC.init_coder(is_pad)
 }
 
 // 0x5d824 — -[SignupViewController dealloc]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController dealloc]")]
-pub fn stub_5d824() -> ! {
-    todo!("0x5d824 -[SignupViewController dealloc]")
+pub fn stub_5d824() {
+    // IDA 0x5d824 `-dealloc`: removes the observer (0x5d844..0x5d856),
+    // releases the verifier plus ~30 views/strings (0x5d876..tail), then
+    // super.
+    SIGNUPVC.dealloc();
 }
 
 // 0x5dbc0 — +[SignupViewController getSignupFinishedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[SignupViewController getSignupFinishedNotification]")]
-pub fn stub_5dbc0() -> ! {
-    todo!("0x5dbc0 +[SignupViewController getSignupFinishedNotification]")
+pub fn stub_5dbc0() -> String {
+    // IDA 0x5dbc0 `+getSignupFinishedNotification`
+    // ("RBXSignupFinishedNotification", 0x5dbca).
+    SIGNUPVC.signup_finished_notification()
 }
 
 // 0x5dbcc — -[SignupViewController keyboardWillShow:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController keyboardWillShow:]")]
-pub fn stub_5dbcc() -> ! {
-    todo!("0x5dbcc -[SignupViewController keyboardWillShow:]")
+pub fn stub_5dbcc(bounds: (f32, f32, f32, f32)) {
+    // IDA 0x5dbcc `keyboardWillShow:`: records the keyboard end-frame
+    // bounds (0x5dbe0..0x5dc1c) and hides all pickers (0x5dc32).
+    SIGNUPVC.keyboard_will_show(bounds);
 }
 
 // 0x5dc38 — -[SignupViewController setUIButtonTextColor:color:]
 // type: void __cdecl(SignupViewController *self, SEL, id, id)
 #[doc(alias = "-[SignupViewController setUIButtonTextColor:color:]")]
-pub fn stub_5dc38() -> ! {
-    todo!("0x5dc38 -[SignupViewController setUIButtonTextColor:color:]")
+pub fn stub_5dc38(is_phone: bool) {
+    // IDA 0x5dc38 `setUIButtonTextColor:color:`: phone (or no-idiom)
+    // devices set states 1/4/0 (0x5dc94..0x5dcd6); pad skips.
+    SIGNUPVC.set_button_text_color(is_phone);
 }
 
 // 0x5dce0 — -[SignupViewController viewDidLoad]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController viewDidLoad]")]
-pub fn stub_5dce0() -> ! {
-    todo!("0x5dce0 -[SignupViewController viewDidLoad]")
+pub fn stub_5dce0() {
+    // IDA 0x5dce0 `-viewDidLoad`: super plus the full signup form build
+    // (buttons/labels/pickers/webview/labels, 0x5dd04..tail).
+    SIGNUPVC.view_did_load();
 }
 
 // 0x5e258 — -[SignupViewController localizeStrings]
@@ -16288,134 +16491,153 @@ pub fn stub_5d1bc() -> String {
 // 0x5d1cc — -[SignupVerifier setSignUpUrlString:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setSignUpUrlString:]")]
-pub fn stub_5d1cc() -> ! {
-    todo!("0x5d1cc -[SignupVerifier setSignUpUrlString:]")
+pub fn stub_5d1cc(value: &str) {
+    // IDA 0x5d1cc `-setSignUpUrlString:`: retained assign.
+    SIGNUP.set_signup_url(value);
 }
 
 // 0x5d1f0 — -[SignupVerifier signUpArgs]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier signUpArgs]")]
-pub fn stub_5d1f0() -> ! {
-    todo!("0x5d1f0 -[SignupVerifier signUpArgs]")
+pub fn stub_5d1f0() -> String {
+    // IDA 0x5d1f0 `-signUpArgs`.
+    SIGNUP.signup_args()
 }
 
 // 0x5d200 — -[SignupVerifier setSignUpArgs:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setSignUpArgs:]")]
-pub fn stub_5d200() -> ! {
-    todo!("0x5d200 -[SignupVerifier setSignUpArgs:]")
+pub fn stub_5d200(value: &str) {
+    // IDA 0x5d200 `-setSignUpArgs:`: retained assign.
+    SIGNUP.set_signup_args(value);
 }
 
 // 0x5d224 — -[SignupVerifier usernameCheckUrl]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier usernameCheckUrl]")]
-pub fn stub_5d224() -> ! {
-    todo!("0x5d224 -[SignupVerifier usernameCheckUrl]")
+pub fn stub_5d224() -> String {
+    // IDA 0x5d224 `-usernameCheckUrl`.
+    SIGNUP.username_check_url()
 }
 
 // 0x5d234 — -[SignupVerifier setUsernameCheckUrl:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setUsernameCheckUrl:]")]
-pub fn stub_5d234() -> ! {
-    todo!("0x5d234 -[SignupVerifier setUsernameCheckUrl:]")
+pub fn stub_5d234(value: &str) {
+    // IDA 0x5d234 `-setUsernameCheckUrl:`: retained assign.
+    SIGNUP.set_username_check_url(value);
 }
 
 // 0x5d258 — -[SignupVerifier recommendUsernameUrl]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier recommendUsernameUrl]")]
-pub fn stub_5d258() -> ! {
-    todo!("0x5d258 -[SignupVerifier recommendUsernameUrl]")
+pub fn stub_5d258() -> String {
+    // IDA 0x5d258 `-recommendUsernameUrl`.
+    SIGNUP.recommend_url()
 }
 
 // 0x5d268 — -[SignupVerifier setRecommendUsernameUrl:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setRecommendUsernameUrl:]")]
-pub fn stub_5d268() -> ! {
-    todo!("0x5d268 -[SignupVerifier setRecommendUsernameUrl:]")
+pub fn stub_5d268(value: &str) {
+    // IDA 0x5d268 `-setRecommendUsernameUrl:`: retained assign.
+    SIGNUP.set_recommend_url(value);
 }
 
 // 0x5d28c — -[SignupVerifier passwordCheckUrl]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier passwordCheckUrl]")]
-pub fn stub_5d28c() -> ! {
-    todo!("0x5d28c -[SignupVerifier passwordCheckUrl]")
+pub fn stub_5d28c() -> String {
+    // IDA 0x5d28c `-passwordCheckUrl`.
+    SIGNUP.password_check_url()
 }
 
 // 0x5d29c — -[SignupVerifier setPasswordCheckUrl:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setPasswordCheckUrl:]")]
-pub fn stub_5d29c() -> ! {
-    todo!("0x5d29c -[SignupVerifier setPasswordCheckUrl:]")
+pub fn stub_5d29c(value: &str) {
+    // IDA 0x5d29c `-setPasswordCheckUrl:`: retained assign.
+    SIGNUP.set_password_check_url(value);
 }
 
 // 0x5d2c0 — -[SignupVerifier passwordCheckArgs]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier passwordCheckArgs]")]
-pub fn stub_5d2c0() -> ! {
-    todo!("0x5d2c0 -[SignupVerifier passwordCheckArgs]")
+pub fn stub_5d2c0() -> String {
+    // IDA 0x5d2c0 `-passwordCheckArgs`.
+    SIGNUP.password_check_args()
 }
 
 // 0x5d2d0 — -[SignupVerifier setPasswordCheckArgs:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setPasswordCheckArgs:]")]
-pub fn stub_5d2d0() -> ! {
-    todo!("0x5d2d0 -[SignupVerifier setPasswordCheckArgs:]")
+pub fn stub_5d2d0(value: &str) {
+    // IDA 0x5d2d0 `-setPasswordCheckArgs:`: retained assign.
+    SIGNUP.set_password_check_args(value);
 }
 
 // 0x5d2f4 — -[SignupVerifier signUpDoneNotification]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier signUpDoneNotification]")]
-pub fn stub_5d2f4() -> ! {
-    todo!("0x5d2f4 -[SignupVerifier signUpDoneNotification]")
+pub fn stub_5d2f4() -> String {
+    // IDA 0x5d2f4 `-signUpDoneNotification`.
+    SIGNUP.done_notification()
 }
 
 // 0x5d304 — -[SignupVerifier setSignUpDoneNotification:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setSignUpDoneNotification:]")]
-pub fn stub_5d304() -> ! {
-    todo!("0x5d304 -[SignupVerifier setSignUpDoneNotification:]")
+pub fn stub_5d304(value: &str) {
+    // IDA 0x5d304 `-setSignUpDoneNotification:`: retained assign.
+    SIGNUP.set_done_notification(value);
 }
 
 // 0x5d328 — -[SignupVerifier passwordVerifyNotification]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier passwordVerifyNotification]")]
-pub fn stub_5d328() -> ! {
-    todo!("0x5d328 -[SignupVerifier passwordVerifyNotification]")
+pub fn stub_5d328() -> String {
+    // IDA 0x5d328 `-passwordVerifyNotification`.
+    SIGNUP.password_notification()
 }
 
 // 0x5d338 — -[SignupVerifier setPasswordVerifyNotification:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setPasswordVerifyNotification:]")]
-pub fn stub_5d338() -> ! {
-    todo!("0x5d338 -[SignupVerifier setPasswordVerifyNotification:]")
+pub fn stub_5d338(value: &str) {
+    // IDA 0x5d338 `-setPasswordVerifyNotification:`: retained assign.
+    SIGNUP.set_password_notification(value);
 }
 
 // 0x5d35c — -[SignupVerifier usernameVerifyNotification]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier usernameVerifyNotification]")]
-pub fn stub_5d35c() -> ! {
-    todo!("0x5d35c -[SignupVerifier usernameVerifyNotification]")
+pub fn stub_5d35c() -> String {
+    // IDA 0x5d35c `-usernameVerifyNotification`.
+    SIGNUP.username_notification()
 }
 
 // 0x5d36c — -[SignupVerifier setUsernameVerifyNotification:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setUsernameVerifyNotification:]")]
-pub fn stub_5d36c() -> ! {
-    todo!("0x5d36c -[SignupVerifier setUsernameVerifyNotification:]")
+pub fn stub_5d36c(value: &str) {
+    // IDA 0x5d36c `-setUsernameVerifyNotification:`: retained assign.
+    SIGNUP.set_username_notification(value);
 }
 
 // 0x5d390 — -[SignupVerifier recommendUsernameNotification]
 // type: NSString *__cdecl(SignupVerifier *self, SEL)
 #[doc(alias = "-[SignupVerifier recommendUsernameNotification]")]
-pub fn stub_5d390() -> ! {
-    todo!("0x5d390 -[SignupVerifier recommendUsernameNotification]")
+pub fn stub_5d390() -> String {
+    // IDA 0x5d390 `-recommendUsernameNotification`.
+    SIGNUP.recommend_notification()
 }
 
 // 0x5d3a0 — -[SignupVerifier setRecommendUsernameNotification:]
 // type: void __cdecl(SignupVerifier *self, SEL, id)
 #[doc(alias = "-[SignupVerifier setRecommendUsernameNotification:]")]
-pub fn stub_5d3a0() -> ! {
-    todo!("0x5d3a0 -[SignupVerifier setRecommendUsernameNotification:]")
+pub fn stub_5d3a0(value: &str) {
+    // IDA 0x5d3a0 `-setRecommendUsernameNotification:`: retained assign.
+    SIGNUP.set_recommend_notification(value);
 }
 
 // 0x62778 — +[RobloxMemoryManager sharedInstance]
