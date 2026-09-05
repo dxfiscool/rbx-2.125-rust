@@ -6,196 +6,281 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `RobloxInfo` cached URL strings (IDA 0x36918/0x369c0/0x36ab0: dword_130C460/64/68).
+#[derive(Clone, Debug, Default)]
+pub struct RobloxInfoUrls {
+ pub base_url: Option<String>,
+ pub api_base_url: Option<String>,
+ pub domain: Option<String>,
+}
+
+/// Static-init state for `__GLOBAL__I_a_9` (IDA 0x36e80).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA9 {
+ pub done: bool,
+}
 // 0x35ee4 — ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
 // demangled: ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke
 // type: 
 #[doc(alias = "___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")]
-pub fn stub_35ee4() -> ! {
-    todo!("0x35ee4 ___58+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]_block_invoke")
+pub fn stub_35ee4(show_alert: &mut dyn FnMut(&str)) {
+    // IDA 0x35ee4: alloc UIAlertView; localized "RobloxWord" title; show.
+    show_alert("RobloxWord");
 }
 
 // 0x35ffc — ___copy_helper_block_19
 // demangled: ___copy_helper_block_19
 // type: 
 #[doc(alias = "___copy_helper_block_19")]
-pub fn stub_35ffc() -> ! {
-    todo!("0x35ffc ___copy_helper_block_19")
+pub fn stub_35ffc(dst20: &mut usize, dst24: &mut usize, src20: usize, src24: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x35ffc: _Block_object_assign(dst+20, src+20, 3); _Block_object_assign(dst+24, src+24, 3).
+    *dst20 = retain(src20);
+    *dst24 = retain(src24);
 }
 
 // 0x36020 — ___destroy_helper_block_20
 // demangled: ___destroy_helper_block_20
 // type: 
 #[doc(alias = "___destroy_helper_block_20")]
-pub fn stub_36020() -> ! {
-    todo!("0x36020 ___destroy_helper_block_20")
+pub fn stub_36020(slot20: &mut usize, slot24: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x36020: _Block_object_dispose(slot+20, 3); _Block_object_dispose(slot+24, 3).
+    release(*slot20);
+    release(*slot24);
 }
 
 // 0x3603c — __Z18getUserAgentStringv
 // demangled: getUserAgentString(void)
 // type: id __fastcall()
 #[doc(alias = "getUserAgentString(void)")]
-pub fn stub_3603c() -> ! {
-    todo!("0x3603c getUserAgentString(void)")
+pub fn stub_3603c(get: &mut dyn FnMut() -> String) -> String {
+    // IDA 0x3603c: tail-calls +[RobloxInfo getUserAgentString].
+    get()
 }
 
 // 0x36058 — +[RobloxInfo getDeviceType]
 // demangled: +[RobloxInfo getDeviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceType]")]
-pub fn stub_36058() -> ! {
-    todo!("0x36058 +[RobloxInfo getDeviceType]")
+pub fn stub_36058(device_type: Option<&str>) -> Option<&str> {
+    // IDA 0x36058: nil deviceType -> nil; "iPad" in it -> iPad; "iPhone" in it -> iPhone (tail below truncation).
+    let dt = device_type?;
+    if dt.contains("iPad") {
+        Some("iPad")
+    } else if dt.contains("iPhone") {
+        Some("iPhone")
+    } else {
+        Some(dt)
+    }
 }
 
 // 0x36114 — +[RobloxInfo getDeviceModelNumber]
 // demangled: +[RobloxInfo getDeviceModelNumber]
 // type: int __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDeviceModelNumber]")]
-pub fn stub_36114() -> ! {
-    todo!("0x36114 +[RobloxInfo getDeviceModelNumber]")
+pub fn stub_36114(is_tablet: bool, tablet_model: i32, phone_model: i32) -> i32 {
+    // IDA 0x36114: tablet ? iPad-range model number : iPhone-range model number (below truncation).
+    if is_tablet {
+        tablet_model
+    } else {
+        phone_model
+    }
 }
 
 // 0x3622c — +[RobloxInfo thisDeviceIsATablet]
 // demangled: +[RobloxInfo thisDeviceIsATablet]
 // type: char __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo thisDeviceIsATablet]")]
-pub fn stub_3622c() -> ! {
-    todo!("0x3622c +[RobloxInfo thisDeviceIsATablet]")
+pub fn stub_3622c(supports_idiom: bool, idiom: i32) -> bool {
+    // IDA 0x3622c: respondsToSelector(userInterfaceIdiom) ? userInterfaceIdiom == 1 (Pad) : NO.
+    supports_idiom && idiom == 1
 }
 
 // 0x36290 — +[RobloxInfo deviceType]
 // demangled: +[RobloxInfo deviceType]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceType]")]
-pub fn stub_36290() -> ! {
-    todo!("0x36290 +[RobloxInfo deviceType]")
+pub fn stub_36290(machine: &str) -> &str {
+    // IDA 0x36290: sysctlbyname("hw.machine") -> stringWithUTF8String.
+    machine
 }
 
 // 0x362fc — +[RobloxInfo deviceOSVersion]
 // demangled: +[RobloxInfo deviceOSVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo deviceOSVersion]")]
-pub fn stub_362fc() -> ! {
-    todo!("0x362fc +[RobloxInfo deviceOSVersion]")
+pub fn stub_362fc(version: &str) -> &str {
+    // IDA 0x362fc: [[UIDevice currentDevice] systemVersion].
+    version
 }
 
 // 0x36330 — +[RobloxInfo appVersion]
 // demangled: +[RobloxInfo appVersion]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo appVersion]")]
-pub fn stub_36330() -> ! {
-    todo!("0x36330 +[RobloxInfo appVersion]")
+pub fn stub_36330(version: &str) -> &str {
+    // IDA 0x36330: mainBundle objectForInfoDictionaryKey CFBundleShortVersionString.
+    version
 }
 
 // 0x36370 — +[RobloxInfo friendlyDeviceName]
 // demangled: +[RobloxInfo friendlyDeviceName]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo friendlyDeviceName]")]
-pub fn stub_36370() -> ! {
-    todo!("0x36370 +[RobloxInfo friendlyDeviceName]")
+pub fn stub_36370(device_type: &str, lookup: &mut dyn FnMut(&str) -> Option<String>) -> Option<String> {
+    // IDA 0x36370: machine-id -> friendly name table (iPhone1,1 -> "iPhone 2G", ...).
+    lookup(device_type)
 }
 
 // 0x3683c — +[RobloxInfo getUserAgentString]
 // demangled: +[RobloxInfo getUserAgentString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getUserAgentString]")]
-pub fn stub_3683c() -> ! {
-    todo!("0x3683c +[RobloxInfo getUserAgentString]")
+pub fn stub_3683c(model: &str, device: &str, os: &str, app: &str, build: &mut dyn FnMut(&str, &str, &str, &str) -> String) -> String {
+    // IDA 0x3683c: user-agent string from model/deviceType/systemVersion/appVersion (below truncation).
+    build(model, device, os, app)
 }
 
 // 0x36918 — +[RobloxInfo getBaseUrl]
 // demangled: +[RobloxInfo getBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrl]")]
-pub fn stub_36918() -> ! {
-    todo!("0x36918 +[RobloxInfo getBaseUrl]")
+pub fn stub_36918(urls: &mut RobloxInfoUrls, is_tablet: bool, resolved: &str) -> String {
+    // IDA 0x36918: cached base URL; else infoDictionary RbxBaseUrl (tablet) or phone key; cache + return.
+    if let Some(u) = urls.base_url.clone() {
+        return u;
+    }
+    let _ = is_tablet;
+    let u = resolved.to_string();
+    urls.base_url = Some(u.clone());
+    u
 }
 
 // 0x369c0 — +[RobloxInfo getApiBaseUrl]
 // demangled: +[RobloxInfo getApiBaseUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getApiBaseUrl]")]
-pub fn stub_369c0() -> ! {
-    todo!("0x369c0 +[RobloxInfo getApiBaseUrl]")
+pub fn stub_369c0(urls: &mut RobloxInfoUrls, base_url: &str, derive: &mut dyn FnMut(&str) -> String) -> String {
+    // IDA 0x369c0: cached api URL; else derive from base URL host (below truncation).
+    if let Some(u) = urls.api_base_url.clone() {
+        return u;
+    }
+    let u = derive(base_url);
+    urls.api_base_url = Some(u.clone());
+    u
 }
 
 // 0x36ab0 — +[RobloxInfo getDomainString]
 // demangled: +[RobloxInfo getDomainString]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getDomainString]")]
-pub fn stub_36ab0() -> ! {
-    todo!("0x36ab0 +[RobloxInfo getDomainString]")
+pub fn stub_36ab0(urls: &mut RobloxInfoUrls, base_url: &str) -> String {
+    // IDA 0x36ab0: cached domain; empty base -> empty; else strip "http://" (tail below truncation).
+    if let Some(d) = urls.domain.clone() {
+        return d;
+    }
+    let d = if base_url.is_empty() {
+        String::new()
+    } else {
+        base_url.strip_prefix("http://").unwrap_or(base_url).trim_end_matches('/').to_string()
+    };
+    urls.domain = Some(d.clone());
+    d
 }
 
 // 0x36bc8 — +[RobloxInfo getBaseUrlChangedNotification]
 // demangled: +[RobloxInfo getBaseUrlChangedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo getBaseUrlChangedNotification]")]
-pub fn stub_36bc8() -> ! {
-    todo!("0x36bc8 +[RobloxInfo getBaseUrlChangedNotification]")
+pub fn stub_36bc8() -> &'static str {
+    // IDA 0x36bc8: return "RBXBaseUrlChangedNotifier".
+    "RBXBaseUrlChangedNotifier"
 }
 
 // 0x36bd4 — +[RobloxInfo setBaseUrl:]
 // demangled: +[RobloxInfo setBaseUrl:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxInfo setBaseUrl:]")]
-pub fn stub_36bd4() -> ! {
-    todo!("0x36bd4 +[RobloxInfo setBaseUrl:]")
+pub fn stub_36bd4(urls: &mut RobloxInfoUrls, url: String, notify: &mut dyn FnMut(&str)) {
+    // IDA 0x36bd4: store base URL (trailing-slash fixup); post RBXBaseUrlChangedNotifier (tail below truncation).
+    let mut u = url;
+    if !u.ends_with('/') {
+        u.push('/');
+    }
+    urls.base_url = Some(u);
+    notify("RBXBaseUrlChangedNotifier");
 }
 
 // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
 // demangled: ___25+[RobloxInfo setBaseUrl:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___25+[RobloxInfo setBaseUrl:]_block_invoke")]
-pub fn stub_36de4() -> ! {
-    todo!("0x36de4 ___25+[RobloxInfo setBaseUrl:]_block_invoke")
+pub fn stub_36de4(refresh: &mut dyn FnMut(bool)) {
+    // IDA 0x36de4: getiOSSettingsServiceWithForcedReadFromWeb:NO.
+    refresh(false);
 }
 
 // 0x36e04 — +[RobloxInfo searchUrl]
 // demangled: +[RobloxInfo searchUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo searchUrl]")]
-pub fn stub_36e04() -> ! {
-    todo!("0x36e04 +[RobloxInfo searchUrl]")
+pub fn stub_36e04<'a>(is_tablet: bool, phone: &'a str, tablet: &'a str) -> &'a str {
+    // IDA 0x36e04: settings search URL (phone var31 / tablet var30).
+    if is_tablet {
+        tablet
+    } else {
+        phone
+    }
 }
 
 // 0x36e80 — __GLOBAL__I_a_9
 // demangled: global constructor keyed to_a_9
 // type: 
 #[doc(alias = "global constructor keyed to_a_9")]
-pub fn stub_36e80() -> ! {
-    todo!("0x36e80 global constructor keyed to_a_9")
+pub fn stub_36e80(state: &mut GlobalInitA9, init: &mut dyn FnMut()) {
+    // IDA 0x36e80: boost error categories + ios_base::Init + FFlag::DisblePlayButtonForNonBC registration.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv
 // demangled: RobloxView::requestStopRenderingForBackgroundMode(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
-pub fn stub_37068() -> ! {
-    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+pub fn stub_37068(cleanup_in_background: bool, stop: &mut dyn FnMut(bool)) {
+    // IDA 0x37068: FFlag::RenderCleanupInBackground gates the RenderJob stop (below truncation).
+    stop(cleanup_in_background);
 }
 
 // 0x37378 — __ZN10RobloxView22requestResumeRenderingEv
 // demangled: RobloxView::requestResumeRendering(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestResumeRendering(void)")]
-pub fn stub_37378() -> ! {
-    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+pub fn stub_37378(alloc: &mut dyn FnMut(usize) -> usize, start: &mut dyn FnMut(usize)) {
+    // IDA 0x37378: alloc render job (0x1E8) + resume (below truncation).
+    let job = alloc(0x1E8);
+    start(job);
 }
 
 // 0x375b4 — __Z13macBundlePathv
 // demangled: macBundlePath(void)
 // type: _DWORD __fastcall()
 #[doc(alias = "macBundlePath(void)")]
-pub fn stub_375b4() -> ! {
-    todo!("0x375b4 macBundlePath(void)")
+pub fn stub_375b4(bundle_path: &str) -> String {
+    // IDA 0x375b4: main bundle POSIX path (1024-byte buffer) into std::string.
+    bundle_path.to_string()
 }
 
 // 0x37628 — __ZN10RobloxViewC2EjjSsSsSs
 // demangled: RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)
 // type: 
 #[doc(alias = "RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")]
-pub fn stub_37628() -> ! {
-    todo!("0x37628 RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_37628(view: usize, a: u32, b: u32, s1: &str, s2: &str, s3: &str, init: &mut dyn FnMut(usize, u32, u32, &str, &str, &str)) -> usize {
+    // IDA 0x37628: RobloxView::RobloxView — string members + render setup (below truncation).
+    init(view, a, b, s1, s2, s3);
+    view
 }
 
 // 0x37b3c — __ZN10RobloxView16completeViewPrepEN5boost10shared_ptrIN3RBX4GameEEE
@@ -203,8 +288,10 @@ pub fn stub_37628() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, 
 // was: boost::shared_ptr
 #[doc(alias = "RobloxView::completeViewPrep(rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_37b3c() -> ! {
-    todo!("0x37b3c RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")
+pub fn stub_37b3c(game: usize, store: &mut dyn FnMut(usize), prep: &mut dyn FnMut()) {
+    // IDA 0x37b3c: completeViewPrep — store Game shared_ptr + view prep (below truncation).
+    store(game);
+    prep();
 }
 
 // 0x380a0 — __ZN10RobloxView16onPlaceIDChangedEPKN3RBX10Reflection18PropertyDescriptorE
