@@ -4906,8 +4906,10 @@ pub fn stub_a7b764(max_len: usize, language: u8, stream: &mut crate::bitstream::
 
 // 0xa7b854 — __ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
 #[doc(alias = "DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")]
-pub fn stub_a7b854() -> ! {
-    todo!("0xa7b854 DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")
+pub fn stub_a7b854(map: &mut HashMap<i32, usize>, key: i32, value: usize) -> i32 {
+ // IDA 0xa7b854: Map::Set inserts/updates (below truncation).
+ map.insert(key, value);
+ 0
 }
 
 // 0xa7b9b4 — __ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
@@ -4926,8 +4928,10 @@ pub fn stub_a7bac8(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
 
 // 0xa7bbf0 — __ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
 #[doc(alias = "DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")]
-pub fn stub_a7bbf0() -> ! {
-    todo!("0xa7bbf0 DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")
+pub fn stub_a7bbf0(list: &mut Vec<usize>, pos: usize, value: usize) -> i32 {
+ // IDA 0xa7bbf0: List::Insert with growth (below truncation).
+ if pos >= list.len() { list.push(value); } else { list.insert(pos, value); }
+ 0
 }
 
 // 0xa7c2c4 — __ZN6RakNet11StringTableD2Ev
@@ -20347,8 +20351,9 @@ pub fn stub_a53764(list: &mut crate::signal::SlotList) {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a53b04() -> ! {
-    todo!("0xa53b04 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a53b04(destroy: &mut dyn FnMut()) {
+ // IDA 0xa53b04: BoundFuncDesc D2 (below truncation).
+ destroy();
 }
 
 // 0xa53c54 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEESsSsELi3EED2Ev
@@ -20356,8 +20361,9 @@ pub fn stub_a53b04() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()"
 )]
-pub fn stub_a53c54() -> ! {
-    todo!("0xa53c54 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
+pub fn stub_a53c54(destroy: &mut dyn FnMut()) {
+ // IDA 0xa53c54: BoundFuncDesc D2 (below truncation).
+ destroy();
 }
 
 // 0xa53e38 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
@@ -20365,22 +20371,26 @@ pub fn stub_a53c54() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()"
 )]
-pub fn stub_a53e38() -> ! {
-    todo!("0xa53e38 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a53e38(destroy: &mut dyn FnMut()) {
+ // IDA 0xa53e38: BoundFuncDesc D2 (below truncation).
+ destroy();
 }
 
 // 0xa7e0e8 — __ZN3RBX7Network23RoundRobinPhysicsSenderC1ERNS0_10ReplicatorE
 // type: RBX::Network::RoundRobinPhysicsSender *__fastcall(RBX::Network::RoundRobinPhysicsSender *this, RBX::Network::Replicator *)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::RoundRobinPhysicsSender(RBX::Network::Replicator &)")]
-pub fn stub_a7e0e8() -> ! {
-    todo!("0xa7e0e8 RBX::Network::RoundRobinPhysicsSender::RoundRobinPhysicsSender(RBX::Network::Replicator &)")
+pub fn stub_a7e0e8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa7e0e8: RoundRobinPhysicsSender ctor (base + time + zeros); returns this.
+ init(slot);
+ slot
 }
 
 // 0xa7e360 — __ZN3RBX7Network23RoundRobinPhysicsSender4stepEv
 // type: void __fastcall(RBX::Network::RoundRobinPhysicsSender *this, int, int, int)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::step(void)")]
-pub fn stub_a7e360() -> ! {
-    todo!("0xa7e360 RBX::Network::RoundRobinPhysicsSender::step(void)")
+pub fn stub_a7e360(step: &mut dyn FnMut()) {
+ // IDA 0xa7e360: RoundRobinPhysicsSender::step (below truncation).
+ step();
 }
 
 // 0xa7e468 — __ZN3RBX7Network23RoundRobinPhysicsSender10sendPacketEi14PacketPriorityPNS0_15ReplicatorStats18PhysicsSenderStatsE
@@ -20388,8 +20398,9 @@ pub fn stub_a7e360() -> ! {
 #[doc(
     alias = "RBX::Network::RoundRobinPhysicsSender::sendPacket(int,PacketPriority,RBX::Network::ReplicatorStats::PhysicsSenderStats *)"
 )]
-pub fn stub_a7e468() -> ! {
-    todo!("0xa7e468 RBX::Network::RoundRobinPhysicsSender::sendPacket(int,PacketPriority,RBX::Network::ReplicatorStats::PhysicsSenderStats *)")
+pub fn stub_a7e468(send: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa7e468: sendPacket (below truncation).
+ send()
 }
 
 // 0xa7e9cc — __ZN3RBX11SendPhysics13reportSimJobsINS_7Network23RoundRobinPhysicsSender9JobSenderEEEiRT_RNS_13SimJobTrackerEPKNS_6SimJobEi
@@ -20397,36 +20408,42 @@ pub fn stub_a7e468() -> ! {
 #[doc(
     alias = "int RBX::SendPhysics::reportSimJobs<RBX::Network::RoundRobinPhysicsSender::JobSender>(RBX::Network::RoundRobinPhysicsSender::JobSender &,RBX::SimJobTracker &,RBX::SimJob const*,int)"
 )]
-pub fn stub_a7e9cc() -> ! {
-    todo!("0xa7e9cc int RBX::SendPhysics::reportSimJobs<RBX::Network::RoundRobinPhysicsSender::JobSender>(RBX::Network::RoundRobinPhysicsSender::JobSender &,RBX::SimJobTracker &,RBX::SimJob const*,int)")
+pub fn stub_a7e9cc(report: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa7e9cc: reportSimJobs<JobSender> (below truncation).
+ report()
 }
 
 // 0xa7ec08 — __ZN3RBX7Network23RoundRobinPhysicsSenderD1Ev
 // type: void __fastcall(RBX::Network::RoundRobinPhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::~RoundRobinPhysicsSender()")]
-pub fn stub_a7ec08() -> ! {
-    todo!("0xa7ec08 RBX::Network::RoundRobinPhysicsSender::~RoundRobinPhysicsSender()")
+pub fn stub_a7ec08(destroy: &mut dyn FnMut()) {
+ // IDA 0xa7ec08: D1: stopTracking + base dtor.
+ destroy();
 }
 
 // 0xa7ecd4 — __ZN3RBX7Network23RoundRobinPhysicsSenderD0Ev
 // type: void __fastcall(RBX::Network::RoundRobinPhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::~RoundRobinPhysicsSender()")]
-pub fn stub_a7ecd4() -> ! {
-    todo!("0xa7ecd4 RBX::Network::RoundRobinPhysicsSender::~RoundRobinPhysicsSender()")
+pub fn stub_a7ecd4(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xa7ecd4: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xa7ef60 — __ZN3RBX7Network23RoundRobinPhysicsSender9JobSender11closePacketEv
 // type: void __fastcall(RBX::Network::RoundRobinPhysicsSender::JobSender *this)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::JobSender::closePacket(void)")]
-pub fn stub_a7ef60() -> ! {
-    todo!("0xa7ef60 RBX::Network::RoundRobinPhysicsSender::JobSender::closePacket(void)")
+pub fn stub_a7ef60(close: &mut dyn FnMut()) {
+ // IDA 0xa7ef60: JobSender::closePacket (below truncation).
+ close();
 }
 
 // 0xa7f320 — __ZN3RBX7Network23RoundRobinPhysicsSender9JobSender10openPacketEv
 // type: void __fastcall(RakNet **this)
 #[doc(alias = "RBX::Network::RoundRobinPhysicsSender::JobSender::openPacket(void)")]
-pub fn stub_a7f320() -> ! {
-    todo!("0xa7f320 RBX::Network::RoundRobinPhysicsSender::JobSender::openPacket(void)")
+pub fn stub_a7f320(open: &mut dyn FnMut()) {
+ // IDA 0xa7f320: JobSender::openPacket (below truncation).
+ open();
 }
 
 // 0xa7fbf0 — __ZN3RBX7Network6Player8loadDataEv
@@ -20440,29 +20457,40 @@ pub fn stub_a7fbf0(players_present: bool, user_id: i32, web_present: bool) -> cr
 // 0xa802c8 — __ZN3RBX7Network6Player8saveDataEv
 // type: void __fastcall(RBX::Network::PersistentDataStore **this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::saveData(void)")]
-pub fn stub_a802c8() -> ! {
-    todo!("0xa802c8 RBX::Network::Player::saveData(void)")
+pub fn stub_a802c8(save: &mut dyn FnMut()) {
+ // IDA 0xa802c8: Player::saveData (below truncation).
+ save();
 }
 
 // 0xa80674 — __ZN3RBX7Network6Player19saveLeaderboardDataEv
 // type: void __fastcall(RBX::Network::PersistentDataStore **this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::saveLeaderboardData(void)")]
-pub fn stub_a80674() -> ! {
-    todo!("0xa80674 RBX::Network::Player::saveLeaderboardData(void)")
+pub fn stub_a80674(save: &mut dyn FnMut()) {
+ // IDA 0xa80674: Player::saveLeaderboardData (below truncation).
+ save();
 }
 
 // 0xa80a28 — __ZN3RBX7Network6Player21setHasGroupBuildToolsEb
 // type: RBX::Instance *__fastcall(RBX::Instance *this, int)
 #[doc(alias = "RBX::Network::Player::setHasGroupBuildTools(bool)")]
-pub fn stub_a80a28() -> ! {
-    todo!("0xa80a28 RBX::Network::Player::setHasGroupBuildTools(bool)")
+pub fn stub_a80a28(slot: usize, flag: &mut bool, value: bool, notify: &mut dyn FnMut()) -> usize {
+ // IDA 0xa80a28: stores at +172; raisePropertyChanged on change; returns this.
+ if value != *flag {
+ *flag = value;
+ notify();
+ }
+ slot
 }
 
 // 0xa80a50 — __ZN3RBX7Network6Player21setPersonalServerRankEi
 // type: _DWORD __fastcall(RBX::Network::Player *__hidden this, int)
 #[doc(alias = "RBX::Network::Player::setPersonalServerRank(int)")]
-pub fn stub_a80a50() -> ! {
-    todo!("0xa80a50 RBX::Network::Player::setPersonalServerRank(int)")
+pub fn stub_a80a50(rank: &mut i32, value: i32, refresh: &mut dyn FnMut(i32) -> i32, notify: &mut dyn FnMut()) {
+ // IDA 0xa80a50: ignores unchanged/out-of-range [0,255]; stores, refreshes privilege, notifies (disasm only, no decomp).
+ if value != *rank && (0..=255).contains(&value) {
+ *rank = refresh(value);
+ notify();
+ }
 }
 
 // 0xa80adc — __ZN3RBX7Network6Player24getWebPersonalServerRankEN5boost8functionIFvSsEEES5_
@@ -20470,57 +20498,69 @@ pub fn stub_a80a50() -> ! {
 #[doc(
     alias = "RBX::Network::Player::getWebPersonalServerRank(boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)"
 )]
-pub fn stub_a80adc() -> ! {
-    todo!("0xa80adc RBX::Network::Player::getWebPersonalServerRank(boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_a80adc(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa80adc: getWebPersonalServerRank (below truncation).
+ get()
 }
 
 // 0xa80ed4 — __ZNK3RBX7Network6Player17getDataComplexityEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getDataComplexity(void)const")]
-pub fn stub_a80ed4() -> ! {
-    todo!("0xa80ed4 RBX::Network::Player::getDataComplexity(void)const")
+pub fn stub_a80ed4(store: Option<i32>) -> i32 {
+ // IDA 0xa80ed4: null store -> 0 else the dword at +32.
+ store.unwrap_or(0)
 }
 
 // 0xa80ee4 — __ZN3RBX7Network6Player22setDataComplexityLimitEi
 // type: int __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::setDataComplexityLimit(int)")]
-pub fn stub_a80ee4() -> ! {
-    todo!("0xa80ee4 RBX::Network::Player::setDataComplexityLimit(int)")
+pub fn stub_a80ee4(limit: &mut i32, value: i32, forward: &mut dyn FnMut(i32), notify: &mut dyn FnMut()) {
+ // IDA 0xa80ee4: stores at +28, forwards to the store, raisePropertyChanged on change.
+ if *limit != value {
+ *limit = value;
+ forward(value);
+ notify();
+ }
 }
 
 // 0xa80f18 — __ZN3RBX7Network6Player17requestFriendshipEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::Player::requestFriendship(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a80f18() -> ! {
-    todo!("0xa80f18 RBX::Network::Player::requestFriendship(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a80f18(request: &mut dyn FnMut()) {
+ // IDA 0xa80f18: requestFriendship (below truncation).
+ request();
 }
 
 // 0xa81364 — __ZN3RBX7Network6Player16revokeFriendshipEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Network::Player::revokeFriendship(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a81364() -> ! {
-    todo!("0xa81364 RBX::Network::Player::revokeFriendship(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a81364(revoke: &mut dyn FnMut()) {
+ // IDA 0xa81364: revokeFriendship (below truncation).
+ revoke();
 }
 
 // 0xa817b0 — __ZN3RBX7Network6Player16getMouseInstanceEv
 // type: void __fastcall(RBX::Network::Player *this, RBX::Network::Players *)
 #[doc(alias = "RBX::Network::Player::getMouseInstance(void)")]
-pub fn stub_a817b0() -> ! {
-    todo!("0xa817b0 RBX::Network::Player::getMouseInstance(void)")
+pub fn stub_a817b0(get: &mut dyn FnMut()) {
+ // IDA 0xa817b0: getMouseInstance (below truncation).
+ get();
 }
 
 // 0xa81da0 — __ZN3RBX7Network6Player10loadStringESs
 // type: void __fastcall(RBX::Network::PersistentDataStore *, int, const void **)
 #[doc(alias = "RBX::Network::Player::loadString(std::string)")]
-pub fn stub_a81da0() -> ! {
-    todo!("0xa81da0 RBX::Network::Player::loadString(std::string)")
+pub fn stub_a81da0(load: &mut dyn FnMut()) {
+ // IDA 0xa81da0: loadString (below truncation).
+ load();
 }
 
 // 0xa82018 — __ZN3RBX7Network6Player10saveStringESsSs
 // type: void __fastcall(int, const std::string *, const std::string *)
 #[doc(alias = "RBX::Network::Player::saveString(std::string,std::string)")]
-pub fn stub_a82018() -> ! {
-    todo!("0xa82018 RBX::Network::Player::saveString(std::string,std::string)")
+pub fn stub_a82018(save: &mut dyn FnMut()) {
+ // IDA 0xa82018: saveString (below truncation).
+ save();
 }
 
 // 0xa82300 — __ZN3RBX7Network6Player11loadBooleanESs
