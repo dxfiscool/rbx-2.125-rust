@@ -256,108 +256,129 @@ pub fn stub_3f094(step: &mut dyn FnMut() -> i32) -> i32 {
 // demangled: RobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_3f598() -> ! {
-    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_3f598(name: &str, lookup: &mut dyn FnMut(&str) -> f64) -> f64 {
+    // IDA 0x3f598: metric-name dispatch ("Render FPS" -> avg steps/s, "Render Duty" -> ..., ...).
+    lookup(name)
 }
 
 // 0x3f700 — __ZNK10RobloxView9RenderJob9getMetricERKSs
 // demangled: RobloxView::RenderJob::getMetric(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_3f700() -> ! {
-    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_3f700(name: &str, format: &mut dyn FnMut(&str) -> String) -> String {
+    // IDA 0x3f700: getMetric — format metric value as string (below truncation).
+    format(name)
 }
 
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 // demangled: non-virtual thunk to RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3f904() -> ! {
-    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f904(destroy: &mut dyn FnMut()) {
+    // IDA 0x3f904: thunk adjusts (-480) then ~RenderJob.
+    destroy();
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // demangled: non-virtual thunk to RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3f9c8() -> ! {
-    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f9c8(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3f9c8: thunk adjusts then ~RenderJob + delete.
+    destroy();
+    free();
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // demangled: non-virtual thunk to RobloxView::RenderJob::getMetric(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_3fa94() -> ! {
-    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_3fa94(job: usize, name: &str, out: &mut String, get: &mut dyn FnMut(usize, &str, &mut String)) {
+    // IDA 0x3fa94: thunk adjusts then getMetric.
+    get(job, name, out);
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // demangled: non-virtual thunk to RobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_3faa4() -> ! {
-    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_3faa4(job: usize, name: &str, get: &mut dyn FnMut(usize, &str) -> f64) -> f64 {
+    // IDA 0x3faa4: thunk adjusts then getMetricValue.
+    get(job, name)
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
 // demangled: RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
-pub fn stub_3faac() -> ! {
-    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+pub fn stub_3faac(scheduled: bool, this: usize, prepare: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x3faac: unscheduled ? schedule prepare : this.
+    if !scheduled {
+        prepare(this)
+    } else {
+        this
+    }
 }
 
 // 0x3fac4 — __ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd
 // demangled: RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
-pub fn stub_3fac4() -> ! {
-    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+pub fn stub_3fac4(perform: &mut dyn FnMut()) {
+    // IDA 0x3fac4: RenderJob::scheduleRenderPerform (below truncation).
+    perform();
 }
 
 // 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
 // demangled: RobloxView::RenderJob::wake(void)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
-pub fn stub_3fb9c() -> ! {
-    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+pub fn stub_3fb9c(wake: &mut dyn FnMut()) {
+    // IDA 0x3fb9c: RenderJob::wake — mutex + signal (below truncation).
+    wake();
 }
 
 // 0x3fcf8 — __ZN5boost12bad_weak_ptrD0Ev
 // demangled: boost::bad_weak_ptr::~bad_weak_ptr()
 // type: void __fastcall(boost::bad_weak_ptr *__hidden this)
 #[doc(alias = "boost::bad_weak_ptr::~bad_weak_ptr()")]
-pub fn stub_3fcf8() -> ! {
-    todo!("0x3fcf8 boost::bad_weak_ptr::~bad_weak_ptr()")
+pub fn stub_3fcf8(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3fcf8: bad_weak_ptr dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x3fd10 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_3fd10() -> ! {
-    todo!("0x3fd10 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fd10(obj: usize, destroy: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3fd10: clone_impl dtor (no delete); return this.
+    destroy(obj);
+    obj
 }
 
 // 0x3fd38 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 // demangled: boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_3fd38() -> ! {
-    todo!("0x3fd38 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3fd38(destroy: &mut dyn FnMut()) {
+    // IDA 0x3fd38: error_info_injector dtor (no delete).
+    destroy();
 }
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 // demangled: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_3fd60() -> ! {
-    todo!("0x3fd60 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3fd60(destroy: &mut dyn FnMut()) {
+    // IDA 0x3fd60: non-virtual thunk runs the injector dtor.
+    destroy();
 }
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 // demangled: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_3fd88() -> ! {
-    todo!("0x3fd88 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fd88(destroy: &mut dyn FnMut()) {
+    // IDA 0x3fd88: non-virtual thunk runs the clone dtor.
+    destroy();
 }
 
 // 0x3fdb8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
@@ -365,78 +386,95 @@ pub fn stub_3fd88() -> ! {
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 pub fn stub_3fdb8() -> ! {
-    todo!("0x3fdb8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+    // IDA 0x3fdb8: allocate + throw bad_weak_ptr clone (noreturn).
+    panic!("bad_weak_ptr rethrow");
 }
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 // demangled: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_3fee0() -> ! {
-    todo!("0x3fee0 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fee0(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3fee0: thunk clone dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
-pub fn stub_3ff18() -> ! {
-    todo!("0x3ff18 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+pub fn stub_3ff18(rethrow: &mut dyn FnMut(), destroy: &mut dyn FnMut()) {
+    // IDA 0x3ff18: virtual thunk — rethrow then ~clone_impl.
+    rethrow();
+    destroy();
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
-pub fn stub_3ff28() -> ! {
-    todo!("0x3ff28 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3ff28(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ff28: virtual thunk clone dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x3ff60 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 // demangled: boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_3ff60() -> ! {
-    todo!("0x3ff60 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3ff60(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ff60: error_info_injector D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 // demangled: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
-pub fn stub_3ff90() -> ! {
-    todo!("0x3ff90 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3ff90(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ff90: thunk injector D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3ffc0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)
 // type: int __fastcall(int, int, int, int, char, std::exception *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
-pub fn stub_3ffc0() -> ! {
-    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")
+pub fn stub_3ffc0(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3ffc0: clone_impl copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_40160(op: u32, manage: &mut dyn FnMut(u32) -> usize) -> usize {
+    // IDA 0x40160: functor_manager::manage — clone/move/destroy by op (below truncation).
+    manage(op)
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 // demangled: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_401dc(f: usize, a: usize, b: usize, c: f64, invoke: &mut dyn FnMut(usize, usize, usize, f64)) {
+    // IDA 0x401dc: invoker calls fn(job, view, double).
+    invoke(f, a, b, c);
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_401f0(op: u32, manage: &mut dyn FnMut(u32) -> usize) -> usize {
+    // IDA 0x401f0: functor_manager::manage — clone/move/destroy by op (below truncation).
+    manage(op)
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 // demangled: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_40270(obj: usize, is_virtual: bool, metric: usize, dt: f64, call: &mut dyn FnMut(usize, bool, usize, f64)) {
+    // IDA 0x40270: mf2 dispatch (virtual adjust); obj->method(metric, dt).
+    call(obj, is_virtual, metric, dt);
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
