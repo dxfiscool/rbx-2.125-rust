@@ -357,211 +357,281 @@ pub fn stub_f6f9a8() {
 
 // 0xf6f9b4 — sub_F6F9B4
 #[doc(alias = "sub_F6F9B4")]
-pub fn stub_f6f9b4() -> ! {
-    todo!("0xf6f9b4 sub_F6F9B4")
+pub fn stub_f6f9b4() {
+    // IDA 0xf6f9b4: `LDR R12, =0x56C2; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x56C2)
 }
 
 // 0xf6f9c0 — sub_F6F9C0
 #[doc(alias = "sub_F6F9C0")]
-pub fn stub_f6f9c0() -> ! {
-    todo!("0xf6f9c0 sub_F6F9C0")
+pub fn stub_f6f9c0() {
+    // IDA 0xf6f9c0: `LDR R12, =0x56E1; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x56E1)
 }
 
 // 0xf6f9cc — sub_F6F9CC
 #[doc(alias = "sub_F6F9CC")]
-pub fn stub_f6f9cc() -> ! {
-    todo!("0xf6f9cc sub_F6F9CC")
+pub fn stub_f6f9cc() {
+    // IDA 0xf6f9cc: `LDR R12, =0x56F3; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x56F3)
 }
 
 // 0xf6f9d8 — sub_F6F9D8
 #[doc(alias = "sub_F6F9D8")]
-pub fn stub_f6f9d8() -> ! {
-    todo!("0xf6f9d8 sub_F6F9D8")
+pub fn stub_f6f9d8() {
+    // IDA 0xf6f9d8: `LDR R12, =0x5709; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5709)
 }
 
 // 0xf6f9e4 — sub_F6F9E4
 #[doc(alias = "sub_F6F9E4")]
-pub fn stub_f6f9e4() -> ! {
-    todo!("0xf6f9e4 sub_F6F9E4")
+pub fn stub_f6f9e4() {
+    // IDA 0xf6f9e4: `LDR R12, =0x571A; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x571A)
 }
 
 // 0xf6f9f0 — sub_F6F9F0
 #[doc(alias = "sub_F6F9F0")]
-pub fn stub_f6f9f0() -> ! {
-    todo!("0xf6f9f0 sub_F6F9F0")
+pub fn stub_f6f9f0() {
+    // IDA 0xf6f9f0: `LDR R12, =0x5733; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5733)
 }
 
 // 0xf6f9fc — sub_F6F9FC
 #[doc(alias = "sub_F6F9FC")]
-pub fn stub_f6f9fc() -> ! {
-    todo!("0xf6f9fc sub_F6F9FC")
+pub fn stub_f6f9fc() {
+    // IDA 0xf6f9fc: `LDR R12, =0x574E; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x574E)
 }
 
 // 0xf6fa08 — sub_F6FA08
 #[doc(alias = "sub_F6FA08")]
-pub fn stub_f6fa08() -> ! {
-    todo!("0xf6fa08 sub_F6FA08")
+pub fn stub_f6fa08() {
+    // IDA 0xf6fa08: `LDR R12, =0x5774; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5774)
 }
 
 // 0xf6fa14 — sub_F6FA14
 #[doc(alias = "sub_F6FA14")]
-pub fn stub_f6fa14() -> ! {
-    todo!("0xf6fa14 sub_F6FA14")
+pub fn stub_f6fa14() {
+    // IDA 0xf6fa14: `LDR R12, =0x5798; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5798)
 }
 
 // 0xf6fa20 — sub_F6FA20
 #[doc(alias = "sub_F6FA20")]
-pub fn stub_f6fa20() -> ! {
-    todo!("0xf6fa20 sub_F6FA20")
+pub fn stub_f6fa20() {
+    // IDA 0xf6fa20: `LDR R12, =0x57BB; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x57BB)
 }
 
 // 0xf6fa2c — sub_F6FA2C
 #[doc(alias = "sub_F6FA2C")]
-pub fn stub_f6fa2c() -> ! {
-    todo!("0xf6fa2c sub_F6FA2C")
+pub fn stub_f6fa2c() {
+    // IDA 0xf6fa2c: `LDR R12, =0x57E2; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x57E2)
 }
 
 // 0xf6fa38 — sub_F6FA38
 #[doc(alias = "sub_F6FA38")]
-pub fn stub_f6fa38() -> ! {
-    todo!("0xf6fa38 sub_F6FA38")
+pub fn stub_f6fa38() {
+    // IDA 0xf6fa38: `LDR R12, =0x57F6; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x57F6)
 }
 
 // 0xf6fa44 — sub_F6FA44
 #[doc(alias = "sub_F6FA44")]
-pub fn stub_f6fa44() -> ! {
-    todo!("0xf6fa44 sub_F6FA44")
+pub fn stub_f6fa44() {
+    // IDA 0xf6fa44: `LDR R12, =0x5809; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5809)
 }
 
 // 0xf6fa50 — sub_F6FA50
 #[doc(alias = "sub_F6FA50")]
-pub fn stub_f6fa50() -> ! {
-    todo!("0xf6fa50 sub_F6FA50")
+pub fn stub_f6fa50() {
+    // IDA 0xf6fa50: `LDR R12, =0x5829; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5829)
 }
 
 // 0xf6fa5c — sub_F6FA5C
 #[doc(alias = "sub_F6FA5C")]
-pub fn stub_f6fa5c() -> ! {
-    todo!("0xf6fa5c sub_F6FA5C")
+pub fn stub_f6fa5c() {
+    // IDA 0xf6fa5c: `LDR R12, =0x5847; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5847)
 }
 
 // 0xf6fa68 — sub_F6FA68
 #[doc(alias = "sub_F6FA68")]
-pub fn stub_f6fa68() -> ! {
-    todo!("0xf6fa68 sub_F6FA68")
+pub fn stub_f6fa68() {
+    // IDA 0xf6fa68: `LDR R12, =0x5862; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5862)
 }
 
 // 0xf6fa74 — sub_F6FA74
 #[doc(alias = "sub_F6FA74")]
-pub fn stub_f6fa74() -> ! {
-    todo!("0xf6fa74 sub_F6FA74")
+pub fn stub_f6fa74() {
+    // IDA 0xf6fa74: `LDR R12, =0x587F; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x587F)
 }
 
 // 0xf6fa80 — sub_F6FA80
 #[doc(alias = "sub_F6FA80")]
-pub fn stub_f6fa80() -> ! {
-    todo!("0xf6fa80 sub_F6FA80")
+pub fn stub_f6fa80() {
+    // IDA 0xf6fa80: `LDR R12, =0x589C; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x589C)
 }
 
 // 0xf6fa8c — sub_F6FA8C
 #[doc(alias = "sub_F6FA8C")]
-pub fn stub_f6fa8c() -> ! {
-    todo!("0xf6fa8c sub_F6FA8C")
+pub fn stub_f6fa8c() {
+    // IDA 0xf6fa8c: `LDR R12, =0x58CF; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x58CF)
 }
 
 // 0xf6fa98 — sub_F6FA98
 #[doc(alias = "sub_F6FA98")]
-pub fn stub_f6fa98() -> ! {
-    todo!("0xf6fa98 sub_F6FA98")
+pub fn stub_f6fa98() {
+    // IDA 0xf6fa98: `LDR R12, =0x5903; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5903)
 }
 
 // 0xf6faa4 — sub_F6FAA4
 #[doc(alias = "sub_F6FAA4")]
-pub fn stub_f6faa4() -> ! {
-    todo!("0xf6faa4 sub_F6FAA4")
+pub fn stub_f6faa4() {
+    // IDA 0xf6faa4: `LDR R12, =0x5925; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5925)
 }
 
 // 0xf6fab0 — sub_F6FAB0
 #[doc(alias = "sub_F6FAB0")]
-pub fn stub_f6fab0() -> ! {
-    todo!("0xf6fab0 sub_F6FAB0")
+pub fn stub_f6fab0() {
+    // IDA 0xf6fab0: `LDR R12, =0x594D; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x594D)
 }
 
 // 0xf6fabc — sub_F6FABC
 #[doc(alias = "sub_F6FABC")]
-pub fn stub_f6fabc() -> ! {
-    todo!("0xf6fabc sub_F6FABC")
+pub fn stub_f6fabc() {
+    // IDA 0xf6fabc: `LDR R12, =0x5977; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5977)
 }
 
 // 0xf6fac8 — sub_F6FAC8
 #[doc(alias = "sub_F6FAC8")]
-pub fn stub_f6fac8() -> ! {
-    todo!("0xf6fac8 sub_F6FAC8")
+pub fn stub_f6fac8() {
+    // IDA 0xf6fac8: `LDR R12, =0x599E; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x599E)
 }
 
 // 0xf6fad4 — sub_F6FAD4
 #[doc(alias = "sub_F6FAD4")]
-pub fn stub_f6fad4() -> ! {
-    todo!("0xf6fad4 sub_F6FAD4")
+pub fn stub_f6fad4() {
+    // IDA 0xf6fad4: `LDR R12, =0x59B9; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x59B9)
 }
 
 // 0xf6fae0 — sub_F6FAE0
 #[doc(alias = "sub_F6FAE0")]
-pub fn stub_f6fae0() -> ! {
-    todo!("0xf6fae0 sub_F6FAE0")
+pub fn stub_f6fae0() {
+    // IDA 0xf6fae0: `LDR R12, =0x59D6; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x59D6)
 }
 
 // 0xf6faec — sub_F6FAEC
 #[doc(alias = "sub_F6FAEC")]
-pub fn stub_f6faec() -> ! {
-    todo!("0xf6faec sub_F6FAEC")
+pub fn stub_f6faec() {
+    // IDA 0xf6faec: `LDR R12, =0x59F6; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x59F6)
 }
 
 // 0xf6faf8 — sub_F6FAF8
 #[doc(alias = "sub_F6FAF8")]
-pub fn stub_f6faf8() -> ! {
-    todo!("0xf6faf8 sub_F6FAF8")
+pub fn stub_f6faf8() {
+    // IDA 0xf6faf8: `LDR R12, =0x5A1B; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5A1B)
 }
 
 // 0xf6fb04 — sub_F6FB04
 #[doc(alias = "sub_F6FB04")]
-pub fn stub_f6fb04() -> ! {
-    todo!("0xf6fb04 sub_F6FB04")
+pub fn stub_f6fb04() {
+    // IDA 0xf6fb04: `LDR R12, =0x5A37; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5A37)
 }
 
 // 0xf6fb10 — sub_F6FB10
 #[doc(alias = "sub_F6FB10")]
-pub fn stub_f6fb10() -> ! {
-    todo!("0xf6fb10 sub_F6FB10")
+pub fn stub_f6fb10() {
+    // IDA 0xf6fb10: `LDR R12, =0x5A63; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5A63)
 }
 
 // 0xf6fb1c — sub_F6FB1C
 #[doc(alias = "sub_F6FB1C")]
-pub fn stub_f6fb1c() -> ! {
-    todo!("0xf6fb1c sub_F6FB1C")
+pub fn stub_f6fb1c() {
+    // IDA 0xf6fb1c: `LDR R12, =0x5A85; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5A85)
 }
 
 // 0xf6fb28 — sub_F6FB28
 #[doc(alias = "sub_F6FB28")]
-pub fn stub_f6fb28() -> ! {
-    todo!("0xf6fb28 sub_F6FB28")
+pub fn stub_f6fb28() {
+    // IDA 0xf6fb28: `LDR R12, =0x5AB7; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5AB7)
 }
 
 // 0xf6fb34 — sub_F6FB34
 #[doc(alias = "sub_F6FB34")]
-pub fn stub_f6fb34() -> ! {
-    todo!("0xf6fb34 sub_F6FB34")
+pub fn stub_f6fb34() {
+    // IDA 0xf6fb34: `LDR R12, =0x5AF9; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5AF9)
 }
 
 // 0xf6fb40 — sub_F6FB40
 #[doc(alias = "sub_F6FB40")]
-pub fn stub_f6fb40() -> ! {
-    todo!("0xf6fb40 sub_F6FB40")
+pub fn stub_f6fb40() {
+    // IDA 0xf6fb40: `LDR R12, =0x5B10; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5B10)
 }
 
 // 0xf6fb4c — sub_F6FB4C
 // type: int()
 #[doc(alias = "sub_F6FB4C")]
-pub fn stub_f6fb4c() -> ! {
-    todo!("0xf6fb4c sub_F6FB4C")
+pub fn stub_f6fb4c() {
+    // IDA 0xf6fb4c: `LDR R12, =0x5B34; B _stub_helpers` — lazy-bind
+    // trampoline; faithful thin wrapper over the shared carrier.
+    stub_helpers(0x5B34)
 }
