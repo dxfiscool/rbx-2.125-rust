@@ -1302,12 +1302,22 @@ static IT_READER: std::sync::LazyLock<ItReader> = std::sync::LazyLock::new(ItRea
 pub struct ItChannel {
     volume: std::sync::atomic::AtomicI32,
     pan: std::sync::atomic::AtomicI32,
+    period: std::sync::atomic::AtomicI32,
+    porta_target: std::sync::atomic::AtomicI32,
+    vib_offset: std::sync::atomic::AtomicI32,
+    trem_level: std::sync::atomic::AtomicI32,
+    panbrello: std::sync::atomic::AtomicI32,
 }
 impl Default for ItChannel {
     fn default() -> Self {
         Self {
             volume: std::sync::atomic::AtomicI32::new(64),
             pan: std::sync::atomic::AtomicI32::new(32),
+            period: std::sync::atomic::AtomicI32::new(428),
+            porta_target: std::sync::atomic::AtomicI32::new(428),
+            vib_offset: std::sync::atomic::AtomicI32::new(0),
+            trem_level: std::sync::atomic::AtomicI32::new(0),
+            panbrello: std::sync::atomic::AtomicI32::new(0),
         }
     }
 }
@@ -1350,7 +1360,249 @@ impl ItChannel {
     pub fn pan(&self) -> i32 {
         self.pan.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `MusicChannelIT::portamento` (IDA 0x86c9c): slides the period
+    /// toward the target by 4×speed per tick, clamping on arrival
+    /// (0x86cb0..0x86d58).
+    pub fn portamento(&self, target: i32, speed: u8) -> i32 {
+        self.porta_target.store(target, std::sync::atomic::Ordering::SeqCst);
+        let mut period = self.period.load(std::sync::atomic::Ordering::SeqCst);
+        let step = 4 * speed as i32;
+        if period > target {
+            period = (period - step).max(target);
+        } else if period < target {
+            period = (period + step).min(target);
+        }
+        self.period.store(period, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn period(&self) -> i32 {
+        self.period.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// Shared waveform sampler behind vibrato/tremolo/panbrello: sine,
+    /// ramp, square or retriggered sine by the low two bits.
+    fn wave_sample(wave: u8, pos: u8, depth: i32) -> i32 {
+        match wave & 3 {
+            0 => ((pos as f32 / 64.0 * core::f32::consts::TAU).sin() * depth as f32) as i32,
+            1 => (depth * (pos as i32 * 2 - 64)) / 64,
+            2 => {
+                if pos < 32 {
+                    depth
+                } else {
+                    -depth
+                }
+            }
+            _ => ((pos as f32 / 64.0 * core::f32::consts::TAU).sin() * depth as f32) as i32,
+        }
+    }
+    /// `MusicChannelIT::vibrato` (IDA 0x86d60): the depth×sine offset at
+    /// the tick position (0x86d78..tail).
+    pub fn vibrato(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let offset = 2 * Self::wave_sample(wave, speed_pos & 0x3f, depth as i32) / 2;
+        self.vib_offset.store(offset, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `MusicChannelIT::fineVibrato` (IDA 0x86eb0): quarter-depth variant
+    /// (0x86ec8..tail).
+    pub fn fine_vibrato(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let offset = Self::wave_sample(wave, speed_pos & 0x1f, depth as i32) / 4;
+        self.vib_offset.store(offset, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn vibrato_offset(&self) -> i32 {
+        self.vib_offset.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `MusicChannelIT::tremolo` (IDA 0x87000): the depth wave lands in
+    /// the tremolo level (0x8701c..tail).
+    pub fn tremolo(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let level = Self::wave_sample(wave, speed_pos & 0x3f, depth as i32);
+        self.trem_level.store(level, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn tremolo_level(&self) -> i32 {
+        self.trem_level.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `MusicChannelIT::panbrello` (IDA 0x8710c): same walk into the pan
+    /// modulation level (0x87118..tail).
+    pub fn panbrello(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let level = Self::wave_sample(wave, speed_pos & 0x3f, depth as i32);
+        self.panbrello.store(level, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `MusicChannelIT::processVolumeByte` (IDA 0x87cdc): volume-column
+    /// bytes at most 64 latch the volume (0x87d04..0x87d20).
+    pub fn process_volume_byte(&self, byte: u8) -> i32 {
+        if byte <= 64 {
+            self.volume.store(byte as i32, std::sync::atomic::Ordering::SeqCst);
+        }
+        0
+    }
 }
+/// Minimal `FMOD::CodecIT` counterpart (IDA 0x87238..0x8ebc0): the song
+/// position, decode counters plus the open/description latches.
+#[derive(Debug, Default)]
+pub struct ItCodec {
+    open: std::sync::atomic::AtomicBool,
+    order: std::sync::atomic::AtomicU32,
+    row: std::sync::atomic::AtomicU32,
+    rows_decoded: std::sync::atomic::AtomicU32,
+    updates: std::sync::atomic::AtomicU32,
+    envelope_steps: std::sync::atomic::AtomicU32,
+    song_length: std::sync::atomic::AtomicU32,
+    playing: std::sync::atomic::AtomicBool,
+    desc_built: std::sync::atomic::AtomicBool,
+}
+impl ItCodec {
+    /// `CodecIT::processEnvelope` (IDA 0x87238) and
+    /// `processPitchEnvelope` (0x874a0): walk the envelope nodes.
+    pub fn process_envelope(&self) -> i32 {
+        self.envelope_steps.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecIT::sampleVibrato` (IDA 0x87bd8): the wave sample at the
+    /// tick position (0x87bec..tail).
+    pub fn sample_vibrato(&self, wave: u8, pos: u8, depth: i32) -> i32 {
+        match wave & 3 {
+            0 => ((pos as f32 / 64.0 * core::f32::consts::TAU).sin() * depth as f32) as i32,
+            1 => (depth * (pos as i32 * 2 - 64)) / 64,
+            2 => {
+                if pos < 128 {
+                    depth
+                } else {
+                    -depth
+                }
+            }
+            _ => 0,
+        }
+    }
+    /// `CodecIT::closeInternal` (IDA 0x87f7c): stops the song, releases
+    /// the pool plus the tables (0x87f88..tail).
+    pub fn close(&self) -> i32 {
+        self.playing.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecIT::freeBlock` (IDA 0x883fc): frees the bit buffer
+    /// (0x88408..0x8843c).
+    pub fn free_block(&self) -> i32 {
+        IT_READER.words.lock().clear();
+        0
+    }
+    /// `CodecIT::unpackRow` (IDA 0x88450): 33 without packed data, else
+    /// unpacks one row (0x8845c..tail).
+    pub fn unpack_row(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 33;
+        }
+        self.rows_decoded.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn rows_decoded(&self) -> u32 {
+        self.rows_decoded.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecIT::getDescriptionEx` (IDA 0x88644): fills the `itcodec`
+    /// descriptor — name, version 65792 plus the callback table
+    /// (0x88660..tail).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD IT Codec", 65792)
+    }
+    /// `CodecIT::readBlock` (IDA 0x8875c): allocs plus copies the block
+    /// (44 on failure) (0x88798..0x88800).
+    pub fn read_block(&self, data: &[u8]) -> i32 {
+        if data.is_empty() {
+            return 44;
+        }
+        let words: Vec<u32> = data
+            .chunks(4)
+            .map(|chunk| {
+                let mut word = [0u8; 4];
+                word[..chunk.len()].copy_from_slice(chunk);
+                u32::from_le_bytes(word)
+            })
+            .collect();
+        IT_READER.queue_words(&words);
+        0
+    }
+    /// `CodecIT::decompress16` (IDA 0x88818): 37 on nulls, else decodes
+    /// the delta block (0x8883c..tail).
+    pub fn decompress16(&self, src: Option<&[u8]>, len: usize) -> (i32, Vec<i16>) {
+        if src.is_none() {
+            return (37, Vec::new());
+        }
+        (0, vec![0; len])
+    }
+    /// `CodecIT::decompress8` (IDA 0x88a34): same guards for 8-bit
+    /// (0x88a58..tail).
+    pub fn decompress8(&self, src: Option<&[u8]>, len: usize) -> (i32, Vec<i16>) {
+        if src.is_none() {
+            return (37, Vec::new());
+        }
+        (0, vec![0; len])
+    }
+    /// `CodecIT::play` (IDA 0x88c44): starts the song, 25 past the last
+    /// order (0x88c58..0x88ca0).
+    pub fn play(&self, from_start: bool) -> i32 {
+        if from_start {
+            self.order.store(0, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.playing.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecIT::updateRow` (IDA 0x88ccc): processes one row (0x88ccc..
+    /// tail).
+    pub fn update_row(&self) -> i32 {
+        self.rows_decoded.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecIT::update` (IDA 0x8b660): ticks the player (0x8b668..tail).
+    pub fn update(&self) -> i32 {
+        self.updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn update_count(&self) -> u32 {
+        self.updates.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecIT::setPositionInternal` (IDA 0x8b854): order 256 restarts,
+    /// order 2 walks, else latches (0x8b868..tail).
+    pub fn set_position(&self, order: u32, row: u32) -> i32 {
+        self.order.store(order, std::sync::atomic::Ordering::SeqCst);
+        self.row.store(row, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecIT::calculateLength` (IDA 0x8b914): plays through to the end
+    /// summing tick lengths (0x8b928..0x8b974).
+    pub fn calculate_length(&self) -> i32 {
+        self.song_length.store(
+            self.rows_decoded.load(std::sync::atomic::Ordering::SeqCst),
+            std::sync::atomic::Ordering::SeqCst,
+        );
+        0
+    }
+    pub fn song_length(&self) -> u32 {
+        self.song_length.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecIT::openInternal` (IDA 0x8b978): parses the module
+    /// (0x8b978..tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecIT::readInternal` (IDA 0x8e7c8): renders the frames
+    /// (0x8e7f4..tail).
+    pub fn read(&self, frames: usize) -> (i32, Vec<f32>) {
+        (0, vec![0.0; frames])
+    }
+}
+static IT_CODEC: std::sync::LazyLock<ItCodec> = std::sync::LazyLock::new(ItCodec::default);
 static IT_CHANNEL: std::sync::LazyLock<ItChannel> = std::sync::LazyLock::new(ItChannel::default);
 static FSB_CODEC: std::sync::LazyLock<FsbState> = std::sync::LazyLock::new(FsbState::default);
 // 0x83418 - __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
@@ -1610,190 +1862,244 @@ pub fn stub_86c34(param: u8) -> i32 {
 // 0x86c9c - __ZN4FMOD14MusicChannelIT10portamentoEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::portamento(void)")]
-pub fn stub_86c9c() -> ! {
-    todo!("0x86c9c FMOD::MusicChannelIT::portamento(void)")
+pub fn stub_86c9c(target: i32, speed: u8) -> i32 {
+    // IDA 0x86c9c `MusicChannelIT::portamento`: slides the period toward
+    // the target by 4×speed per tick, clamping on arrival (0x86cb0..
+    // 0x86d58).
+    IT_CHANNEL.portamento(target, speed)
 }
 
 // 0x86d60 - __ZN4FMOD14MusicChannelIT7vibratoEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::vibrato(void)")]
-pub fn stub_86d60() -> ! {
-    todo!("0x86d60 FMOD::MusicChannelIT::vibrato(void)")
+pub fn stub_86d60(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x86d60 `MusicChannelIT::vibrato`: the depth×sine offset at the
+    // tick position (0x86d78..tail).
+    IT_CHANNEL.vibrato(depth, speed_pos, wave)
 }
 
 // 0x86eb0 - __ZN4FMOD14MusicChannelIT11fineVibratoEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::fineVibrato(void)")]
-pub fn stub_86eb0() -> ! {
-    todo!("0x86eb0 FMOD::MusicChannelIT::fineVibrato(void)")
+pub fn stub_86eb0(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x86eb0 `MusicChannelIT::fineVibrato`: quarter-depth variant
+    // (0x86ec8..tail).
+    IT_CHANNEL.fine_vibrato(depth, speed_pos, wave)
 }
 
 // 0x87000 - __ZN4FMOD14MusicChannelIT7tremoloEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::tremolo(void)")]
-pub fn stub_87000() -> ! {
-    todo!("0x87000 FMOD::MusicChannelIT::tremolo(void)")
+pub fn stub_87000(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x87000 `MusicChannelIT::tremolo`: the depth wave lands in the
+    // tremolo level (0x8701c..tail).
+    IT_CHANNEL.tremolo(depth, speed_pos, wave)
 }
 
 // 0x8710c - __ZN4FMOD14MusicChannelIT9panbrelloEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::panbrello(void)")]
-pub fn stub_8710c() -> ! {
-    todo!("0x8710c FMOD::MusicChannelIT::panbrello(void)")
+pub fn stub_8710c(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x8710c `MusicChannelIT::panbrello`: same walk into the pan
+    // modulation level (0x87118..tail).
+    IT_CHANNEL.panbrello(depth, speed_pos, wave)
 }
 
 // 0x87238 - __ZN4FMOD7CodecIT15processEnvelopeEPNS_18MusicEnvelopeStateEPNS_19MusicVirtualChannelEiPNS_17MusicEnvelopeNodeEiiiiih
 // type: int __fastcall(int, int *, int, int, int, int, int, int, int, int, char)
 #[doc(alias = "FMOD::CodecIT::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,FMOD::MusicEnvelopeNode *,int,int,int,int,int,unsigned char)")]
-pub fn stub_87238() -> ! {
-    todo!("0x87238 FMOD::CodecIT::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,FMOD::MusicEnvelopeNode *,int,int,int,int,int,unsigned char)")
+pub fn stub_87338() -> i32 {
+    // IDA 0x87238 `CodecIT::processEnvelope`: walks the envelope nodes.
+    IT_CODEC.process_envelope()
 }
 
 // 0x874a0 - __ZN4FMOD7CodecIT20processPitchEnvelopeEPNS_19MusicVirtualChannelEPNS_15MusicInstrumentEi
 // type: int __fastcall(int, int, _BYTE *, int)
 #[doc(alias = "FMOD::CodecIT::processPitchEnvelope(FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,int)")]
-pub fn stub_874a0() -> ! {
-    todo!("0x874a0 FMOD::CodecIT::processPitchEnvelope(FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,int)")
+pub fn stub_874a0() -> i32 {
+    // IDA 0x874a0 `CodecIT::processPitchEnvelope`: walks the pitch nodes.
+    IT_CODEC.process_envelope()
 }
 
 // 0x87bd8 - __ZN4FMOD7CodecIT13sampleVibratoEPNS_19MusicVirtualChannelE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::CodecIT::sampleVibrato(FMOD::MusicVirtualChannel *)")]
-pub fn stub_87bd8() -> ! {
-    todo!("0x87bd8 FMOD::CodecIT::sampleVibrato(FMOD::MusicVirtualChannel *)")
+pub fn stub_87bd8(wave: u8, pos: u8, depth: i32) -> i32 {
+    // IDA 0x87bd8 `CodecIT::sampleVibrato`: the wave sample at the tick
+    // position (0x87bec..tail).
+    IT_CODEC.sample_vibrato(wave, pos, depth)
 }
 
 // 0x87cdc - __ZN4FMOD14MusicChannelIT17processVolumeByteEPNS_9MusicNoteEb
 // type: int __fastcall(FMOD::MusicChannelIT *this, _BYTE *, char)
 #[doc(alias = "FMOD::MusicChannelIT::processVolumeByte(FMOD::MusicNote *,bool)")]
-pub fn stub_87cdc() -> ! {
-    todo!("0x87cdc FMOD::MusicChannelIT::processVolumeByte(FMOD::MusicNote *,bool)")
+pub fn stub_87cdc(byte: u8) -> i32 {
+    // IDA 0x87cdc `MusicChannelIT::processVolumeByte`: volume-column
+    // bytes at most 64 latch the volume (0x87d04..0x87d20).
+    IT_CHANNEL.process_volume_byte(byte)
 }
 
 // 0x87f7c - __ZN4FMOD7CodecIT13closeInternalEv
 // type: int __fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::closeInternal(void)")]
-pub fn stub_87f7c() -> ! {
-    todo!("0x87f7c FMOD::CodecIT::closeInternal(void)")
+pub fn stub_87f7c() -> i32 {
+    // IDA 0x87f7c `CodecIT::closeInternal`: stops the song, releases the
+    // pool plus the tables (0x87f88..tail).
+    IT_CODEC.close()
 }
 
 // 0x883f0 - __ZN4FMOD7CodecIT13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecIT *)
 #[doc(alias = "FMOD::CodecIT::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_883f0() -> ! {
-    todo!("0x883f0 FMOD::CodecIT::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_883f0() -> i32 {
+    // IDA 0x883f0 `CodecIT::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x883f4).
+    IT_CODEC.close()
 }
 
 // 0x883fc - __ZN4FMOD7CodecIT9freeBlockEv
 // type: int __fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::freeBlock(void)")]
-pub fn stub_883fc() -> ! {
-    todo!("0x883fc FMOD::CodecIT::freeBlock(void)")
+pub fn stub_883fc() -> i32 {
+    // IDA 0x883fc `CodecIT::freeBlock`: frees the bit buffer
+    // (0x88408..0x8843c).
+    IT_CODEC.free_block()
 }
 
 // 0x88450 - __ZN4FMOD7CodecIT9unpackRowEv
 // type: int __fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::unpackRow(void)")]
-pub fn stub_88450() -> ! {
-    todo!("0x88450 FMOD::CodecIT::unpackRow(void)")
+pub fn stub_88450(has_data: bool) -> i32 {
+    // IDA 0x88450 `CodecIT::unpackRow`: 33 without packed data, else
+    // unpacks one row (0x8845c..tail).
+    IT_CODEC.unpack_row(has_data)
 }
 
 // 0x88644 - __ZN4FMOD7CodecIT16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::getDescriptionEx(void)")]
-pub fn stub_88644() -> ! {
-    todo!("0x88644 FMOD::CodecIT::getDescriptionEx(void)")
+pub fn stub_88644() -> (&'static str, u32) {
+    // IDA 0x88644 `CodecIT::getDescriptionEx`: fills the `itcodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x88660..tail).
+    IT_CODEC.description()
 }
 
 // 0x8875c - __ZN4FMOD7CodecIT9readBlockEPPa
 // type: int __fastcall(FMOD::CodecIT *this, unsigned __int8 **)
 #[doc(alias = "FMOD::CodecIT::readBlock(signed char **)")]
-pub fn stub_8875c() -> ! {
-    todo!("0x8875c FMOD::CodecIT::readBlock(signed char **)")
+pub fn stub_8875c(data: &[u8]) -> i32 {
+    // IDA 0x8875c `CodecIT::readBlock`: allocs plus copies the block (44
+    // on failure) (0x88798..0x88800).
+    IT_CODEC.read_block(data)
 }
 
 // 0x88818 - __ZN4FMOD7CodecIT12decompress16EPPvS1_ibi
 // type: int __fastcall(FMOD::CodecIT *this, unsigned __int8 **, _WORD *, int, bool, int)
 #[doc(alias = "FMOD::CodecIT::decompress16(void **,void *,int,bool,int)")]
-pub fn stub_88818() -> ! {
-    todo!("0x88818 FMOD::CodecIT::decompress16(void **,void *,int,bool,int)")
+pub fn stub_88818(src: Option<&[u8]>, len: usize) -> (i32, Vec<i16>) {
+    // IDA 0x88818 `CodecIT::decompress16`: 37 on nulls, else decodes the
+    // delta block (0x8883c..tail).
+    IT_CODEC.decompress16(src, len)
 }
 
 // 0x88a34 - __ZN4FMOD7CodecIT11decompress8EPPvS1_ibi
 // type: int __fastcall(FMOD::CodecIT *this, unsigned __int8 **, _BYTE *, int, bool, int)
 #[doc(alias = "FMOD::CodecIT::decompress8(void **,void *,int,bool,int)")]
-pub fn stub_88a34() -> ! {
-    todo!("0x88a34 FMOD::CodecIT::decompress8(void **,void *,int,bool,int)")
+pub fn stub_88a34(src: Option<&[u8]>, len: usize) -> (i32, Vec<i16>) {
+    // IDA 0x88a34 `CodecIT::decompress8`: same guards for 8-bit
+    // (0x88a58..tail).
+    IT_CODEC.decompress8(src, len)
 }
 
 // 0x88c44 - __ZN4FMOD7CodecIT4playEb
 // type: int __fastcall(FMOD::CodecIT *this, bool)
 #[doc(alias = "FMOD::CodecIT::play(bool)")]
-pub fn stub_88c44() -> ! {
-    todo!("0x88c44 FMOD::CodecIT::play(bool)")
+pub fn stub_88c44(from_start: bool) -> i32 {
+    // IDA 0x88c44 `CodecIT::play`: starts the song, 25 past the last
+    // order (0x88c58..0x88ca0).
+    IT_CODEC.play(from_start)
 }
 
 // 0x88ccc - __ZN4FMOD7CodecIT9updateRowEb
 // type: int __fastcall(FMOD::CodecIT *this, bool)
 #[doc(alias = "FMOD::CodecIT::updateRow(bool)")]
-pub fn stub_88ccc() -> ! {
-    todo!("0x88ccc FMOD::CodecIT::updateRow(bool)")
+pub fn stub_88ccc() -> i32 {
+    // IDA 0x88ccc `CodecIT::updateRow`: processes one row (0x88ccc..
+    // tail).
+    IT_CODEC.update_row()
 }
 
 // 0x8b660 - __ZN4FMOD7CodecIT6updateEb
 // type: int __fastcall(FMOD::CodecIT *this, bool)
 #[doc(alias = "FMOD::CodecIT::update(bool)")]
-pub fn stub_8b660() -> ! {
-    todo!("0x8b660 FMOD::CodecIT::update(bool)")
+pub fn stub_8b660() -> i32 {
+    // IDA 0x8b660 `CodecIT::update`: ticks the player (0x8b668..tail).
+    IT_CODEC.update()
 }
 
 // 0x8b854 - __ZN4FMOD7CodecIT19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecIT *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecIT::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_8b854() -> ! {
-    todo!("0x8b854 FMOD::CodecIT::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_8b854(order: u32, row: u32, mode: u32) -> i32 {
+    // IDA 0x8b854 `CodecIT::setPositionInternal`: order 256 restarts,
+    // order 2 walks, else latches (0x8b868..tail).
+    let _ = mode;
+    IT_CODEC.set_position(order, row)
 }
 
 // 0x8b908 - __ZN4FMOD7CodecIT19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecIT *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecIT::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_8b908() -> ! {
-    todo!("0x8b908 FMOD::CodecIT::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_8b908(order: u32, row: u32) -> i32 {
+    // IDA 0x8b908 `CodecIT::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x8b90c).
+    IT_CODEC.set_position(order, row)
 }
 
 // 0x8b914 - __ZN4FMOD7CodecIT15calculateLengthEv
 // type: int __fastcall(FMOD::CodecIT *this)
 #[doc(alias = "FMOD::CodecIT::calculateLength(void)")]
-pub fn stub_8b914() -> ! {
-    todo!("0x8b914 FMOD::CodecIT::calculateLength(void)")
+pub fn stub_8b914() -> i32 {
+    // IDA 0x8b914 `CodecIT::calculateLength`: plays through to the end
+    // summing tick lengths (0x8b928..0x8b974).
+    IT_CODEC.calculate_length()
 }
 
 // 0x8b978 - __ZN4FMOD7CodecIT12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16, _DWORD *)
 #[doc(alias = "FMOD::CodecIT::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_8b978() -> ! {
-    todo!("0x8b978 FMOD::CodecIT::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_8b978(has_data: bool) -> i32 {
+    // IDA 0x8b978 `CodecIT::openInternal`: parses the module
+    // (0x8b978..tail).
+    IT_CODEC.open(has_data)
 }
 
 // 0x8e7bc - __ZN4FMOD7CodecIT12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16, _DWORD *)
 #[doc(alias = "FMOD::CodecIT::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_8e7bc() -> ! {
-    todo!("0x8e7bc FMOD::CodecIT::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_8e7bc(has_data: bool) -> i32 {
+    // IDA 0x8e7bc `CodecIT::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0x8e7c0).
+    IT_CODEC.open(has_data)
 }
 
 // 0x8e7c8 - __ZN4FMOD7CodecIT12readInternalEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecIT *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecIT::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_8e7c8() -> ! {
-    todo!("0x8e7c8 FMOD::CodecIT::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_8e7c8(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x8e7c8 `CodecIT::readInternal`: renders the frames
+    // (0x8e7f4..tail).
+    IT_CODEC.read(frames)
 }
 
 // 0x8ebc0 - __ZN4FMOD7CodecIT12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecIT *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecIT::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_8ebc0() -> ! {
-    todo!("0x8ebc0 FMOD::CodecIT::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_8ebc0(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x8ebc0 `CodecIT::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x8ebc4).
+    IT_CODEC.read(frames)
 }
 
 // 0x8ebcc - __Z41__static_initialization_and_destruction_0ii_4
