@@ -97,9 +97,7 @@ pub fn stub_0x35296c() -> ! {
 // 0x3529bc — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EE13findCacheItemERKSsPS2_
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo*)")]
-pub fn stub_0x3529bc() -> ! {
-    todo!("0x3529bc RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo*)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3529bc as stub_0x3529bc;
 
 // 0x352ad8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
@@ -132,9 +130,7 @@ pub fn stub_0x352bfc() -> ! {
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)const")]
 // was: void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)const
-pub fn stub_0x352ce4() -> ! {
-    todo!("0x352ce4 void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)const")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x352ce4 as stub_0x352ce4;
 
 // 0x352e1c — __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -145,15 +141,11 @@ pub fn stub_0x352e1c() -> ! {
 
 // 0x352f14 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::~sp_counted_impl_p()")]
-pub fn stub_0x352f14() -> ! {
-    todo!("0x352f14 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::~sp_counted_impl_p()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x352f14 as stub_0x352f14;
 
 // 0x352f18 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::~sp_counted_impl_p()")]
-pub fn stub_0x352f18() -> ! {
-    todo!("0x352f18 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::~sp_counted_impl_p()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x352f18 as stub_0x352f18;
 
 // 0x352f1c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::dispose(void)")]
@@ -175,15 +167,11 @@ pub fn stub_0x352f34() -> ! {
 
 // 0x353088 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EED1Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::~AsyncHttpCache()")]
-pub fn stub_0x353088() -> ! {
-    todo!("0x353088 RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::~AsyncHttpCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x353088 as stub_0x353088;
 
 // 0x353190 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EED0Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::~AsyncHttpCache()")]
-pub fn stub_0x353190() -> ! {
-    todo!("0x353190 RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::~AsyncHttpCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x353190 as stub_0x353190;
 
 // 0x3532a8 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
@@ -195,27 +183,19 @@ pub fn stub_0x3532a8() -> ! {
 // 0x353554 — __ZN3RBX20SizeEnforcedLRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6insertERKSsRKS2_m
 // type: unsigned int __fastcall(int)
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")]
-pub fn stub_0x353554() -> ! {
-    todo!("0x353554 RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_353554 as stub_0x353554;
 
 // 0x353588 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6insertERKSsRKS2_m
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")]
-pub fn stub_0x353588() -> ! {
-    todo!("0x353588 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_353588 as stub_0x353588;
 
 // 0x353b10 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE23removeLeastRecentlyUsedEv
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::removeLeastRecentlyUsed(void)")]
-pub fn stub_0x353b10() -> ! {
-    todo!("0x353b10 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::removeLeastRecentlyUsed(void)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_353b10 as stub_0x353b10;
 
 // 0x353b68 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6removeERKSs
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::remove(std::string const&)")]
-pub fn stub_0x353b68() -> ! {
-    todo!("0x353b68 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::remove(std::string const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_353b68 as stub_0x353b68;
 
 // 0x353bbc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>> *)")]
@@ -237,9 +217,7 @@ pub fn stub_0x353c44() -> ! {
 
 // 0x353c84 — __ZN9__gnu_cxx13new_allocatorISt4pairISsS1_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEE7destroyEPS6_
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>::destroy(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>*)")]
-pub fn stub_0x353c84() -> ! {
-    todo!("0x353c84 __gnu_cxx::new_allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>::destroy(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>*)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_353c84 as stub_0x353c84;
 
 // 0x353d3c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS5_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>> const&)")]
@@ -262,9 +240,7 @@ pub fn stub_0x353f10() -> ! {
 // 0x353f60 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEEEEED2Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>>::~node_constructor()")]
-pub fn stub_0x353f60() -> ! {
-    todo!("0x353f60 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>>::~node_constructor()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x353f60 as stub_0x353f60;
 
 // 0x353f80 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
@@ -298,33 +274,23 @@ pub fn stub_0x3541bc() -> ! {
 
 // 0x3541f8 — __ZNSt4pairISsS_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEC2ERKSsRKS3_
 #[doc(alias = "std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>::pair(std::string const&,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo> const&)")]
-pub fn stub_0x3541f8() -> ! {
-    todo!("0x3541f8 std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>::pair(std::string const&,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo> const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3541f8 as stub_0x3541f8;
 
 // 0x3542c4 — __ZNSt4listISt4pairISsS0_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEESaIS5_EE14_M_create_nodeERKS5_
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>> const&)")]
-pub fn stub_0x3542c4() -> ! {
-    todo!("0x3542c4 std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>> const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3542c4 as stub_0x3542c4;
 
 // 0x3543d4 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEED2Ev
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::~LRUCache()")]
-pub fn stub_0x3543d4() -> ! {
-    todo!("0x3543d4 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::~LRUCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x3543d4 as stub_0x3543d4;
 
 // 0x3544e8 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6resizeEm
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::resize(unsigned long)")]
-pub fn stub_0x3544e8() -> ! {
-    todo!("0x3544e8 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::resize(unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3544e8 as stub_0x3544e8;
 
 // 0x354520 — __ZNSt10_List_baseISt4pairISsS0_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEESaIS5_EE8_M_clearEv
 #[doc(alias = "std::_List_base<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>::_M_clear(void)")]
-pub fn stub_0x354520() -> ! {
-    todo!("0x354520 std::_List_base<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>::_M_clear(void)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_354520 as stub_0x354520;
 
 // 0x354548 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
@@ -340,15 +306,11 @@ pub fn stub_0x354580() -> ! {
 
 // 0x3545b4 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEEC2Ev
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::LRUCache(void)")]
-pub fn stub_0x3545b4() -> ! {
-    todo!("0x3545b4 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::LRUCache(void)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3545b4 as stub_0x3545b4;
 
 // 0x354694 — __ZN3RBX20SizeEnforcedLRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6resizeEm
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::resize(unsigned long)")]
-pub fn stub_0x354694() -> ! {
-    todo!("0x354694 RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::resize(unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_354694 as stub_0x354694;
 
 // 0x354718 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>> const&)")]
@@ -367,9 +329,7 @@ pub fn stub_0x354784() -> ! {
 // 0x35486c — __ZNK5boost23enable_shared_from_thisIN3RBX14AsyncHttpQueueEE22_internal_accept_ownerINS1_14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEES8_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)const")]
 // was: void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)const
-pub fn stub_0x35486c() -> ! {
-    todo!("0x35486c void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>> const*,RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)const")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x35486c as stub_0x35486c;
 
 // 0x354950 — __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_13LuaWebService23CachedLuaWebServiceInfoELb1EEEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -380,15 +340,11 @@ pub fn stub_0x354950() -> ! {
 
 // 0x354a48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::~sp_counted_impl_p()")]
-pub fn stub_0x354a48() -> ! {
-    todo!("0x354a48 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::~sp_counted_impl_p()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354a48 as stub_0x354a48;
 
 // 0x354a4c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::~sp_counted_impl_p()")]
-pub fn stub_0x354a4c() -> ! {
-    todo!("0x354a4c boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::~sp_counted_impl_p()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354a4c as stub_0x354a4c;
 
 // 0x354a50 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::dispose(void)")]
@@ -411,15 +367,11 @@ pub fn stub_0x354a64() -> ! {
 
 // 0x354bb8 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EED1Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::~AsyncHttpCache()")]
-pub fn stub_0x354bb8() -> ! {
-    todo!("0x354bb8 RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::~AsyncHttpCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354bb8 as stub_0x354bb8;
 
 // 0x354cc0 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EED0Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::~AsyncHttpCache()")]
-pub fn stub_0x354cc0() -> ! {
-    todo!("0x354cc0 RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::~AsyncHttpCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354cc0 as stub_0x354cc0;
 
 // 0x354dd8 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
@@ -430,15 +382,11 @@ pub fn stub_0x354dd8() -> ! {
 
 // 0x355034 — __ZN3RBX20SizeEnforcedLRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6insertERKSsRKS2_m
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")]
-pub fn stub_0x355034() -> ! {
-    todo!("0x355034 RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_355034 as stub_0x355034;
 
 // 0x3550a8 — __ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6insertERKSsRKS2_m
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")]
-pub fn stub_0x3550a8() -> ! {
-    todo!("0x3550a8 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3550a8 as stub_0x3550a8;
 
 // 0x35561c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *)")]
@@ -461,9 +409,7 @@ pub fn stub_0x3556a4() -> ! {
 // 0x3556e4 — __ZNSt4listISt4pairISsS0_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEESaIS5_EE8_M_eraseESt14_List_iteratorIS5_E
 // type: int __fastcall(int, std::_List_node_base *this, int, int, int, int)
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>)")]
-pub fn stub_0x3556e4() -> ! {
-    todo!("0x3556e4 std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_erase(std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3556e4 as stub_0x3556e4;
 
 // 0x3557bc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS5_RKT_
 // type: void __fastcall(int, int, char **, int)
@@ -486,9 +432,7 @@ pub fn stub_0x355998() -> ! {
 
 // 0x3559e8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEEEEED2Ev
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::~node_constructor()")]
-pub fn stub_0x3559e8() -> ! {
-    todo!("0x3559e8 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::~node_constructor()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x3559e8 as stub_0x3559e8;
 
 // 0x355a08 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
@@ -522,36 +466,26 @@ pub fn stub_0x355c44() -> ! {
 
 // 0x355c80 — __ZNSt4pairISsS_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEC2ERKSsRKS3_
 #[doc(alias = "std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>::pair(std::string const&,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo> const&)")]
-pub fn stub_0x355c80() -> ! {
-    todo!("0x355c80 std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>::pair(std::string const&,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo> const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_355c80 as stub_0x355c80;
 
 // 0x355d60 — __ZNSt4listISt4pairISsS0_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEESaIS5_EE14_M_create_nodeERKS5_
 #[doc(alias = "std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>> const&)")]
-pub fn stub_0x355d60() -> ! {
-    todo!("0x355d60 std::list<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_create_node(std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>> const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_355d60 as stub_0x355d60;
 
 // 0x355e88 — __ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEED2Ev
 // type: int __fastcall(std::string *, int, int, int, struct _Unwind_Exception *, int)
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::~LRUCache()")]
-pub fn stub_0x355e88() -> ! {
-    todo!("0x355e88 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::~LRUCache()")
-}
+pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x355e88 as stub_0x355e88;
 
 // 0x355f9c — __ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6resizeEm
 // type: unsigned int __fastcall(unsigned int result, unsigned int)
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::resize(unsigned long)")]
-pub fn stub_0x355f9c() -> ! {
-    todo!("0x355f9c RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::resize(unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_355f9c as stub_0x355f9c;
 
 // 0x356010 — __ZNSt10_List_baseISt4pairISsS0_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEESaIS5_EE8_M_clearEv
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, std::string *, int, int, int, int)
 #[doc(alias = "std::_List_base<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_clear(void)")]
-pub fn stub_0x356010() -> ! {
-    todo!("0x356010 std::_List_base<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>,std::allocator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>::_M_clear(void)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356010 as stub_0x356010;
 
 // 0x3560f8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
@@ -567,15 +501,11 @@ pub fn stub_0x356130() -> ! {
 
 // 0x356164 — __ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEEC2Ev
 #[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::LRUCache(void)")]
-pub fn stub_0x356164() -> ! {
-    todo!("0x356164 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::LRUCache(void)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356164 as stub_0x356164;
 
 // 0x356244 — __ZN3RBX20SizeEnforcedLRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6resizeEm
 #[doc(alias = "RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::resize(unsigned long)")]
-pub fn stub_0x356244() -> ! {
-    todo!("0x356244 RBX::SizeEnforcedLRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::resize(unsigned long)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356244 as stub_0x356244;
 
 // 0x3562bc — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>> const&)")]
@@ -585,207 +515,147 @@ pub fn stub_0x3562bc() -> ! {
 
 // 0x3565e4 — __GLOBAL__I_a_126
 #[doc(alias = "global constructor keyed to_a_126")]
-pub fn stub_0x3565e4() -> ! {
-    todo!("0x3565e4 global constructor keyed to_a_126")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3565e4 as stub_0x3565e4;
 
 // 0x35677c — __ZN3RBX4Math12sumDeltaAxisERKN3G3D7Matrix3ES4_
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Matrix3 *, const G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::sumDeltaAxis(G3D::Matrix3 const&,G3D::Matrix3 const&)")]
-pub fn stub_0x35677c() -> ! {
-    todo!("0x35677c RBX::Math::sumDeltaAxis(G3D::Matrix3 const&,G3D::Matrix3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_35677c as stub_0x35677c;
 
 // 0x3567e0 — __ZN3RBX4Math19mulMatrixDiagVectorERKN3G3D7Matrix3ERKNS1_7Vector3ERS2_
 #[doc(alias = "RBX::Math::mulMatrixDiagVector(G3D::Matrix3 const&,G3D::Vector3 const&,G3D::Matrix3&)")]
-pub fn stub_0x3567e0() -> ! {
-    todo!("0x3567e0 RBX::Math::mulMatrixDiagVector(G3D::Matrix3 const&,G3D::Vector3 const&,G3D::Matrix3&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3567e0 as stub_0x3567e0;
 
 // 0x356878 — __ZN3RBX4Math24mulMatrixMatrixTransposeERKN3G3D7Matrix3ES4_RS2_
 #[doc(alias = "RBX::Math::mulMatrixMatrixTranspose(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")]
-pub fn stub_0x356878() -> ! {
-    todo!("0x356878 RBX::Math::mulMatrixMatrixTranspose(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356878 as stub_0x356878;
 
 // 0x3568e0 — __ZN3RBX4Math18deltaRotationCloseEff
 // type: _DWORD __fastcall(RBX::Math *__hidden this, float, float)
 #[doc(alias = "RBX::Math::deltaRotationClose(float,float)")]
-pub fn stub_0x3568e0() -> ! {
-    todo!("0x3568e0 RBX::Math::deltaRotationClose(float,float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x3568e0 as stub_0x3568e0;
 
 // 0x3569d8 — __ZN3RBX4Math20averageRotationCloseEff
 // type: _DWORD __fastcall(RBX::Math *__hidden this, float, float)
 #[doc(alias = "RBX::Math::averageRotationClose(float,float)")]
-pub fn stub_0x3569d8() -> ! {
-    todo!("0x3569d8 RBX::Math::averageRotationClose(float,float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x3569d8 as stub_0x3569d8;
 
 // 0x356ae0 — __ZN3RBX4Math13getFocusSpaceERKN3G3D15CoordinateFrameE
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::CoordinateFrame *)
 #[doc(alias = "RBX::Math::getFocusSpace(G3D::CoordinateFrame const&)")]
-pub fn stub_0x356ae0() -> ! {
-    todo!("0x356ae0 RBX::Math::getFocusSpace(G3D::CoordinateFrame const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356ae0 as stub_0x356ae0;
 
 // 0x356b18 — __ZN3RBX4Math19getHeadingElevationERKN3G3D15CoordinateFrameERfS5_
 // type: double __fastcall(RBX::Math *this, const G3D::CoordinateFrame *, float *, float *)
 #[doc(alias = "RBX::Math::getHeadingElevation(G3D::CoordinateFrame const&,float &,float &)")]
-pub fn stub_0x356b18() -> ! {
-    todo!("0x356b18 RBX::Math::getHeadingElevation(G3D::CoordinateFrame const&,float &,float &)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356b18 as stub_0x356b18;
 
 // 0x356b84 — __ZN3RBX4Math19setHeadingElevationERN3G3D15CoordinateFrameEff
 // type: _DWORD __fastcall(RBX::Math *__hidden this, G3D::CoordinateFrame *, float, float)
 #[doc(alias = "RBX::Math::setHeadingElevation(G3D::CoordinateFrame &,float,float)")]
-pub fn stub_0x356b84() -> ! {
-    todo!("0x356b84 RBX::Math::setHeadingElevation(G3D::CoordinateFrame &,float,float)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356b84 as stub_0x356b84;
 
 // 0x356c3c — __ZN3RBX4Math8lessThanERKN3G3D7Vector3ES4_
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const Vector3 *, const Vector3 *)
 #[doc(alias = "RBX::Math::lessThan(G3D::Vector3 const&,G3D::Vector3 const&)")]
-pub fn stub_0x356c3c() -> ! {
-    todo!("0x356c3c RBX::Math::lessThan(G3D::Vector3 const&,G3D::Vector3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356c3c as stub_0x356c3c;
 
 // 0x356c80 — __ZN3RBX4Math10isDenormalEf
 // type: _DWORD __fastcall(RBX::Math *__hidden this, float)
 #[doc(alias = "RBX::Math::isDenormal(float)")]
-pub fn stub_0x356c80() -> ! {
-    todo!("0x356c80 RBX::Math::isDenormal(float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x356c80 as stub_0x356c80;
 
 // 0x356c94 — __ZN3RBX4Math8isNanInfEf
 // type: _DWORD __fastcall(RBX::Math *__hidden this, float)
 #[doc(alias = "RBX::Math::isNanInf(float)")]
-pub fn stub_0x356c94() -> ! {
-    todo!("0x356c94 RBX::Math::isNanInf(float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x356c94 as stub_0x356c94;
 
 // 0x356cc8 — __ZN3RBX4Math15isNanInfVector3ERKN3G3D7Vector3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const Vector3 *)
 #[doc(alias = "RBX::Math::isNanInfVector3(G3D::Vector3 const&)")]
-pub fn stub_0x356cc8() -> ! {
-    todo!("0x356cc8 RBX::Math::isNanInfVector3(G3D::Vector3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356cc8 as stub_0x356cc8;
 
 // 0x356d38 — __ZN3RBX4Math21isNanInfDenormVector3ERKN3G3D7Vector3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const Vector3 *)
 #[doc(alias = "RBX::Math::isNanInfDenormVector3(G3D::Vector3 const&)")]
-pub fn stub_0x356d38() -> ! {
-    todo!("0x356d38 RBX::Math::isNanInfDenormVector3(G3D::Vector3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356d38 as stub_0x356d38;
 
 // 0x356d70 — __ZN3RBX4Math11hasNanOrInfERKN3G3D15CoordinateFrameE
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::CoordinateFrame *)
 #[doc(alias = "RBX::Math::hasNanOrInf(G3D::CoordinateFrame const&)")]
-pub fn stub_0x356d70() -> ! {
-    todo!("0x356d70 RBX::Math::hasNanOrInf(G3D::CoordinateFrame const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356d70 as stub_0x356d70;
 
 // 0x356df4 — __ZN3RBX4Math9fixDenormERN3G3D7Vector3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, Vector3 *)
 #[doc(alias = "RBX::Math::fixDenorm(G3D::Vector3 &)")]
-pub fn stub_0x356df4() -> ! {
-    todo!("0x356df4 RBX::Math::fixDenorm(G3D::Vector3 &)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_356df4 as stub_0x356df4;
 
 // 0x356e34 — __ZN3RBX14segSizeRadiansEv
 // type: _DWORD __fastcall(RBX *__hidden this)
 #[doc(alias = "RBX::segSizeRadians(void)")]
-pub fn stub_0x356e34() -> ! {
-    todo!("0x356e34 RBX::segSizeRadians(void)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x356e34 as stub_0x356e34;
 
 // 0x356e6c — __ZN3RBX18rotationToByteBaseEf
 // type: _DWORD __fastcall(RBX *__hidden this, float)
 #[doc(alias = "RBX::rotationToByteBase(float)")]
-pub fn stub_0x356e6c() -> ! {
-    todo!("0x356e6c RBX::rotationToByteBase(float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x356e6c as stub_0x356e6c;
 
 // 0x356ff0 — __ZN3RBX4Math14rotationToByteEf
 // type: _DWORD __fastcall(RBX::Math *__hidden this, float)
 #[doc(alias = "RBX::Math::rotationToByte(float)")]
-pub fn stub_0x356ff0() -> ! {
-    todo!("0x356ff0 RBX::Math::rotationToByte(float)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x356ff0 as stub_0x356ff0;
 
 // 0x3570e8 — __ZN3RBX4Math16rotationFromByteEh
 // type: _DWORD __fastcall(RBX::Math *__hidden this, unsigned __int8)
 #[doc(alias = "RBX::Math::rotationFromByte(unsigned char)")]
-pub fn stub_0x3570e8() -> ! {
-    todo!("0x3570e8 RBX::Math::rotationFromByte(unsigned char)")
-}
+pub use rbx_core::generated_core_shard_aq::stub_0x3570e8 as stub_0x3570e8;
 
 // 0x3571c0 — __ZN3RBX4Math15getIBodyAtPointERKN3G3D7Vector3ERKNS1_7Matrix3Ef
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Vector3 *, const G3D::Matrix3 *, float)
 #[doc(alias = "RBX::Math::getIBodyAtPoint(G3D::Vector3 const&,G3D::Matrix3 const&,float)")]
-pub fn stub_0x3571c0() -> ! {
-    todo!("0x3571c0 RBX::Math::getIBodyAtPoint(G3D::Vector3 const&,G3D::Matrix3 const&,float)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3571c0 as stub_0x3571c0;
 
 // 0x357250 — __ZN3RBX4Math19momentToObjectSpaceERKN3G3D7Matrix3ES4_
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Matrix3 *, const G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::momentToObjectSpace(G3D::Matrix3 const&,G3D::Matrix3 const&)")]
-pub fn stub_0x357250() -> ! {
-    todo!("0x357250 RBX::Math::momentToObjectSpace(G3D::Matrix3 const&,G3D::Matrix3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_357250 as stub_0x357250;
 
 // 0x3572c4 — __ZN3RBX4Math10toDiagonalERKN3G3D7Matrix3E
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "RBX::Math::toDiagonal(G3D::Matrix3 const&)")]
-pub fn stub_0x3572c4() -> ! {
-    todo!("0x3572c4 RBX::Math::toDiagonal(G3D::Matrix3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3572c4 as stub_0x3572c4;
 
 // 0x3572e4 — __ZN3RBX4Math26fromVectorToVectorRotationERKN3G3D7Vector3ES4_
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Vector3 *, const G3D::Vector3 *)
 #[doc(alias = "RBX::Math::fromVectorToVectorRotation(G3D::Vector3 const&,G3D::Vector3 const&)")]
-pub fn stub_0x3572e4() -> ! {
-    todo!("0x3572e4 RBX::Math::fromVectorToVectorRotation(G3D::Vector3 const&,G3D::Vector3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3572e4 as stub_0x3572e4;
 
 // 0x357450 — __ZN3RBX4Math24fromRotationAxisAndAngleERKN3G3D7Vector3ERKf
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Vector3 *, const float *)
 #[doc(alias = "RBX::Math::fromRotationAxisAndAngle(G3D::Vector3 const&,float const&)")]
-pub fn stub_0x357450() -> ! {
-    todo!("0x357450 RBX::Math::fromRotationAxisAndAngle(G3D::Vector3 const&,float const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_357450 as stub_0x357450;
 
 // 0x3575bc — __ZN3RBX4Math25orthonormalizeIfNecessaryERN3G3D7Matrix3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::orthonormalizeIfNecessary(G3D::Matrix3 &)")]
-pub fn stub_0x3575bc() -> ! {
-    todo!("0x3575bc RBX::Math::orthonormalizeIfNecessary(G3D::Matrix3 &)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3575bc as stub_0x3575bc;
 
 // 0x3575dc — __ZN3RBX4Math20fromDirectionCosinesERKN3G3D7Vector3ES4_S4_S4_S4_S4_
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Vector3 *, const G3D::Vector3 *, const G3D::Vector3 *, const G3D::Vector3 *, const G3D::Vector3 *, const G3D::Vector3 *)
 #[doc(alias = "RBX::Math::fromDirectionCosines(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&)")]
-pub fn stub_0x3575dc() -> ! {
-    todo!("0x3575dc RBX::Math::fromDirectionCosines(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&)")
-}
+pub use rbx_core::generated_core_shard_hy::stub_3575dc as stub_0x3575dc;
 
 // 0x357744 — __ZN3RBX4Math13isAxisAlignedERKN3G3D7Matrix3E
 // type: int __fastcall(RBX::Math *this, const G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::isAxisAligned(G3D::Matrix3 const&)")]
-pub fn stub_0x357744() -> ! {
-    todo!("0x357744 RBX::Math::isAxisAligned(G3D::Matrix3 const&)")
-}
+pub use rbx_core::generated_core_shard_hz::stub_357744 as stub_0x357744;
 
 // 0x35781c — __ZN3RBX4Math11getOrientIdERKN3G3D7Matrix3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, const G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::getOrientId(G3D::Matrix3 const&)")]
-pub fn stub_0x35781c() -> ! {
-    todo!("0x35781c RBX::Math::getOrientId(G3D::Matrix3 const&)")
-}
+pub use rbx_core::generated_core_shard_hz::stub_35781c as stub_0x35781c;
 
 // 0x357858 — __ZN3RBX4Math11idToMatrix3EiRN3G3D7Matrix3E
 // type: _DWORD __fastcall(RBX::Math *__hidden this, int, G3D::Matrix3 *)
 #[doc(alias = "RBX::Math::idToMatrix3(int,G3D::Matrix3 &)")]
-pub fn stub_0x357858() -> ! {
-    todo!("0x357858 RBX::Math::idToMatrix3(int,G3D::Matrix3 &)")
-}
+pub use rbx_core::generated_core_shard_hz::stub_357858 as stub_0x357858;
