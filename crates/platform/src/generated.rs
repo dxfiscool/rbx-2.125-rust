@@ -1734,8 +1734,28 @@ pub struct NavBarState {
     last_launched: parking_lot::Mutex<Option<i32>>,
     last_request_kind: parking_lot::Mutex<Option<i32>>,
     warn_calls: AtomicU32,
+    activity_indicator: parking_lot::Mutex<Option<ControlId>>,
+    btn_back: parking_lot::Mutex<Option<ControlId>>,
+    bar_top_toolbar: parking_lot::Mutex<Option<ControlId>>,
+    lbl_robux: parking_lot::Mutex<Option<ControlId>>,
+    lbl_tix: parking_lot::Mutex<Option<ControlId>>,
+    toolbar: parking_lot::Mutex<Option<ControlId>>,
+    page_indicator: parking_lot::Mutex<Option<ControlId>>,
+    loading_overlay: parking_lot::Mutex<Option<ControlId>>,
+    loading_label: parking_lot::Mutex<Option<ControlId>>,
+    btn_home: parking_lot::Mutex<Option<ControlId>>,
+    robux_image_view: parking_lot::Mutex<Option<ControlId>>,
+    web_view_id: parking_lot::Mutex<Option<ControlId>>,
+    web_delegate_set: AtomicBool,
+    web_last_request: parking_lot::Mutex<String>,
+    web_backs: AtomicU32,
     releases: AtomicU32,
 }
+/// `jumpToPlaceIDNavigate` (IDA 0x5523c): consumed by `-viewDidAppear:`.
+static JUMP_TO_PLACE_NAVIGATE: AtomicI32 = AtomicI32::new(0);
+/// `jumpToPlaceIDGameInProgress` (IDA 0x5524c): consumed by
+/// `gotDidLeaveGameNotification:`.
+static JUMP_TO_PLACE_IN_PROGRESS: AtomicI32 = AtomicI32::new(0);
 impl NavBarState {
     fn bump(&self, c: &AtomicU32) {
         c.fetch_add(1, Ordering::SeqCst);
@@ -1782,14 +1802,13 @@ impl NavBarState {
     }
     /// `gotDidLeaveGameNotification:` (IDA 0x53f38): the last non-game
     /// controller hides the fullscreen text; a pending place id launches.
-    pub fn did_leave(&self, is_last: bool, jump_place: Option<i32>) {
+    pub fn did_leave(&self, is_last: bool) {
         if is_last {
             self.hide_fullscreen();
         }
-        if let Some(place) = jump_place {
-            *self.pending_launch.lock() = None;
-            *self.pending_navigate.lock() = Some(place);
-            self.bump(&self.launch_calls);
+        let place = JUMP_TO_PLACE_IN_PROGRESS.swap(0, Ordering::SeqCst);
+        if place != 0 {
+            self.do_place_launch(place, 0);
         }
     }
     pub fn launch_call_count(&self) -> u32 {
@@ -1810,9 +1829,10 @@ impl NavBarState {
     }
     /// `-viewDidAppear:` (IDA 0x53ffc): a pending navigate id starts the
     /// game and clears; the `__44…` block enables btnHome (inline).
-    pub fn did_appear(&self, navigate_place: Option<i32>) {
+    pub fn did_appear(&self) {
         self.bump(&self.appears);
-        if let Some(place) = navigate_place {
+        let place = JUMP_TO_PLACE_NAVIGATE.swap(0, Ordering::SeqCst);
+        if place != 0 {
             *self.pending_navigate.lock() = None;
             *self.pending_launch.lock() = Some(place);
             self.bump(&self.launch_calls);
@@ -2057,6 +2077,126 @@ impl NavBarState {
     /// `-viewWillAppear:`.
     pub fn most_recent(&self) -> Option<ControlId> {
         *self.current_controller.lock()
+    }
+    /// `-setMainWebView:` (IDA 0x550b0): a non-nil view retains straight
+    /// in; nil with a nonempty URL lazily builds the web view and loads the
+    /// URL request; either way self becomes the delegate.
+    pub fn set_main_web_view(&self, view: Option<ControlId>) {
+        if let Some(id) = view {
+            *self.web_view_id.lock() = Some(id);
+            self.web_view_present.store(true, Ordering::SeqCst);
+        } else if !self.url.lock().is_empty() {
+            self.web_view_present.store(true, Ordering::SeqCst);
+            *self.web_last_request.lock() = self.url.lock().clone();
+        }
+        self.web_delegate_set.store(true, Ordering::SeqCst);
+    }
+    pub fn web_view(&self) -> Option<ControlId> {
+        *self.web_view_id.lock()
+    }
+    pub fn web_last_request(&self) -> String {
+        self.web_last_request.lock().clone()
+    }
+    /// `backButtonClick:` (IDA 0x551d8): goes back while history allows;
+    /// without history hides the back button.
+    pub fn back_button_click(&self, can_go_back: bool) {
+        if can_go_back {
+            self.bump(&self.web_backs);
+        }
+        if !can_go_back {
+            self.hide_back_button();
+        }
+    }
+    pub fn web_back_count(&self) -> u32 {
+        self.web_backs.load(Ordering::SeqCst)
+    }
+    /// `-setJumpToPlacePageAndLaunchGameWithID:` (IDA 0x5523c).
+    pub fn set_jump_navigate(&self, place_id: i32) {
+        JUMP_TO_PLACE_NAVIGATE.store(place_id, Ordering::SeqCst);
+    }
+    /// `-setJumpToPlaceIDGameInProgress:` (IDA 0x5524c).
+    pub fn set_jump_in_progress(&self, place_id: i32) {
+        JUMP_TO_PLACE_IN_PROGRESS.store(place_id, Ordering::SeqCst);
+    }
+    /// `-activityIndicator` (IDA 0x5525c) / `-setActivityIndicator:`
+    /// (IDA 0x5526c, offset 172).
+    pub fn activity_indicator(&self) -> Option<ControlId> {
+        *self.activity_indicator.lock()
+    }
+    pub fn set_activity_indicator(&self, view: Option<ControlId>) {
+        *self.activity_indicator.lock() = view;
+    }
+    /// `-btnBack` (IDA 0x55290) / `-setBtnBack:` (IDA 0x552a0, offset 176).
+    pub fn btn_back(&self) -> Option<ControlId> {
+        *self.btn_back.lock()
+    }
+    pub fn set_btn_back(&self, view: Option<ControlId>) {
+        *self.btn_back.lock() = view;
+    }
+    /// `-barTopToolbar` (IDA 0x552c4) / `-setBarTopToolbar:` (IDA 0x552d4,
+    /// offset 180).
+    pub fn bar_top_toolbar(&self) -> Option<ControlId> {
+        *self.bar_top_toolbar.lock()
+    }
+    pub fn set_bar_top_toolbar(&self, view: Option<ControlId>) {
+        *self.bar_top_toolbar.lock() = view;
+    }
+    /// `-lblRobux` (IDA 0x552f8) / `-setLblRobux:` (IDA 0x55308, offset
+    /// 184).
+    pub fn lbl_robux(&self) -> Option<ControlId> {
+        *self.lbl_robux.lock()
+    }
+    pub fn set_lbl_robux(&self, view: Option<ControlId>) {
+        *self.lbl_robux.lock() = view;
+    }
+    /// `-lblTix` (IDA 0x5532c) / `-setLblTix:` (IDA 0x5533c, offset 188).
+    pub fn lbl_tix(&self) -> Option<ControlId> {
+        *self.lbl_tix.lock()
+    }
+    pub fn set_lbl_tix(&self, view: Option<ControlId>) {
+        *self.lbl_tix.lock() = view;
+    }
+    /// `-toolbar` (IDA 0x55360) / `-setToolbar:` (IDA 0x55370, offset 192).
+    pub fn toolbar(&self) -> Option<ControlId> {
+        *self.toolbar.lock()
+    }
+    pub fn set_toolbar(&self, view: Option<ControlId>) {
+        *self.toolbar.lock() = view;
+    }
+    /// `-pageLoadActivityIndicator` (IDA 0x55394) /
+    /// `-setPageLoadActivityIndicator:` (IDA 0x553a4, offset 196).
+    pub fn page_indicator(&self) -> Option<ControlId> {
+        *self.page_indicator.lock()
+    }
+    pub fn set_page_indicator(&self, view: Option<ControlId>) {
+        *self.page_indicator.lock() = view;
+    }
+    /// `-loadingOverlay` (IDA 0x553c8) / `-setLoadingOverlay:` (IDA 0x553d8,
+    /// offset 200).
+    pub fn loading_overlay(&self) -> Option<ControlId> {
+        *self.loading_overlay.lock()
+    }
+    pub fn set_loading_overlay(&self, view: Option<ControlId>) {
+        *self.loading_overlay.lock() = view;
+    }
+    /// `-loadingLabel` (IDA 0x553fc) / `-setLoadingLabel:` (IDA 0x5540c,
+    /// offset 204).
+    pub fn loading_label(&self) -> Option<ControlId> {
+        *self.loading_label.lock()
+    }
+    pub fn set_loading_label(&self, view: Option<ControlId>) {
+        *self.loading_label.lock() = view;
+    }
+    /// `-btnHome` (IDA 0x55430) / `-setBtnHome:` (IDA 0x55440, offset 208).
+    pub fn btn_home(&self) -> Option<ControlId> {
+        *self.btn_home.lock()
+    }
+    pub fn set_btn_home(&self, view: Option<ControlId>) {
+        *self.btn_home.lock() = view;
+    }
+    /// `-robuxImageView` (IDA 0x55464).
+    pub fn robux_image_view(&self) -> Option<ControlId> {
+        *self.robux_image_view.lock()
     }
 }
 static NAVBAR: std::sync::LazyLock<NavBarState> =
@@ -7501,11 +7641,11 @@ pub fn stub_53e9c(is_last: bool) {
 // 0x53f38 — -[RobloxNavBarViewController gotDidLeaveGameNotification:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController gotDidLeaveGameNotification:]")]
-pub fn stub_53f38(is_last: bool, jump_place: Option<i32>) {
+pub fn stub_53f38(is_last: bool) {
     // IDA 0x53f38 `gotDidLeaveGameNotification:`: the last non-game
     // controller hides the fullscreen text (0x53f56..0x53f7c); a pending
     // `jumpToPlaceIDGameInProgress` launches and clears (0x53f8e..0x53fa8).
-    NAVBAR.did_leave(is_last, jump_place);
+    NAVBAR.did_leave(is_last);
 }
 
 // 0x53fac — -[RobloxNavBarViewController viewWillAppear:]
@@ -7520,12 +7660,12 @@ pub fn stub_53fac() {
 // 0x53ffc — -[RobloxNavBarViewController viewDidAppear:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, char)
 #[doc(alias = "-[RobloxNavBarViewController viewDidAppear:]")]
-pub fn stub_53ffc(navigate_place: Option<i32>) {
+pub fn stub_53ffc() {
     // IDA 0x53ffc `-viewDidAppear:`: super (0x54026); a pending
     // `jumpToPlaceIDNavigate` starts the game and clears (0x54036..0x54074),
     // then the `__44…` block runs via `dispatch_async` (0x540a2..0x540b8,
     // inline).
-    NAVBAR.did_appear(navigate_place);
+    NAVBAR.did_appear();
 }
 
 // 0x540c4 — ___44-[RobloxNavBarViewController viewDidAppear:]_block_invoke
@@ -7751,176 +7891,209 @@ pub fn stub_550a0() -> Option<ControlId> {
 // 0x550b0 — -[RobloxNavBarViewController setMainWebView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setMainWebView:]")]
-pub fn stub_550b0() -> ! {
-    todo!("0x550b0 -[RobloxNavBarViewController setMainWebView:]")
+pub fn stub_550b0(view: Option<ControlId>) {
+    // IDA 0x550b0 `-setMainWebView:`: a non-nil view retains straight in
+    // (0x550b8..0x550f2); nil with a nonempty URL lazily builds the web
+    // view and loads the URL request (0x55120..0x551b0); either way self
+    // becomes the delegate (0x551d4).
+    NAVBAR.set_main_web_view(view);
 }
 
 // 0x551d8 — -[RobloxNavBarViewController backButtonClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController backButtonClick:]")]
-pub fn stub_551d8() -> ! {
-    todo!("0x551d8 -[RobloxNavBarViewController backButtonClick:]")
+pub fn stub_551d8(can_go_back: bool) {
+    // IDA 0x551d8 `backButtonClick:`: goes back while history allows
+    // (0x551fa..0x55212); without history hides the back button
+    // (0x5521e..0x55238).
+    NAVBAR.back_button_click(can_go_back);
 }
 
 // 0x5523c — -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")]
-pub fn stub_5523c() -> ! {
-    todo!("0x5523c -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")
+pub fn stub_5523c(place_id: i32) {
+    // IDA 0x5523c `-setJumpToPlacePageAndLaunchGameWithID:`: stores the
+    // global consumed by `-viewDidAppear:` (0x55246).
+    NAVBAR.set_jump_navigate(place_id);
 }
 
 // 0x5524c — -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")]
-pub fn stub_5524c() -> ! {
-    todo!("0x5524c -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")
+pub fn stub_5524c(place_id: i32) {
+    // IDA 0x5524c `-setJumpToPlaceIDGameInProgress:`: stores the global
+    // consumed by `gotDidLeaveGameNotification:` (0x55256).
+    NAVBAR.set_jump_in_progress(place_id);
 }
 
 // 0x5525c — -[RobloxNavBarViewController activityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController activityIndicator]")]
-pub fn stub_5525c() -> ! {
-    todo!("0x5525c -[RobloxNavBarViewController activityIndicator]")
+pub fn stub_5525c() -> Option<ControlId> {
+    // IDA 0x5525c `-activityIndicator`: the spinner (0x5526a).
+    NAVBAR.activity_indicator()
 }
 
 // 0x5526c — -[RobloxNavBarViewController setActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setActivityIndicator:]")]
-pub fn stub_5526c() -> ! {
-    todo!("0x5526c -[RobloxNavBarViewController setActivityIndicator:]")
+pub fn stub_5526c(view: Option<ControlId>) {
+    // IDA 0x5526c `-setActivityIndicator:`: retained assign (offset 172,
+    // 0x55288).
+    NAVBAR.set_activity_indicator(view);
 }
 
 // 0x55290 — -[RobloxNavBarViewController btnBack]
 // type: UIBarButtonItem *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController btnBack]")]
-pub fn stub_55290() -> ! {
-    todo!("0x55290 -[RobloxNavBarViewController btnBack]")
+pub fn stub_55290() -> Option<ControlId> {
+    // IDA 0x55290 `-btnBack`: the back bar button (0x5529e).
+    NAVBAR.btn_back()
 }
 
 // 0x552a0 — -[RobloxNavBarViewController setBtnBack:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBtnBack:]")]
-pub fn stub_552a0() -> ! {
-    todo!("0x552a0 -[RobloxNavBarViewController setBtnBack:]")
+pub fn stub_552a0(view: Option<ControlId>) {
+    // IDA 0x552a0 `-setBtnBack:`: retained assign (0x552bc).
+    NAVBAR.set_btn_back(view);
 }
 
 // 0x552c4 — -[RobloxNavBarViewController barTopToolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController barTopToolbar]")]
-pub fn stub_552c4() -> ! {
-    todo!("0x552c4 -[RobloxNavBarViewController barTopToolbar]")
+pub fn stub_552c4() -> Option<ControlId> {
+    // IDA 0x552c4 `-barTopToolbar`: the top toolbar (0x552d2).
+    NAVBAR.bar_top_toolbar()
 }
 
 // 0x552d4 — -[RobloxNavBarViewController setBarTopToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBarTopToolbar:]")]
-pub fn stub_552d4() -> ! {
-    todo!("0x552d4 -[RobloxNavBarViewController setBarTopToolbar:]")
+pub fn stub_552d4(view: Option<ControlId>) {
+    // IDA 0x552d4 `-setBarTopToolbar:`: retained assign (0x552f0).
+    NAVBAR.set_bar_top_toolbar(view);
 }
 
 // 0x552f8 — -[RobloxNavBarViewController lblRobux]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblRobux]")]
-pub fn stub_552f8() -> ! {
-    todo!("0x552f8 -[RobloxNavBarViewController lblRobux]")
+pub fn stub_552f8() -> Option<ControlId> {
+    // IDA 0x552f8 `-lblRobux`: the robux label (0x55306).
+    NAVBAR.lbl_robux()
 }
 
 // 0x55308 — -[RobloxNavBarViewController setLblRobux:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblRobux:]")]
-pub fn stub_55308() -> ! {
-    todo!("0x55308 -[RobloxNavBarViewController setLblRobux:]")
+pub fn stub_55308(view: Option<ControlId>) {
+    // IDA 0x55308 `-setLblRobux:`: retained assign (0x55324).
+    NAVBAR.set_lbl_robux(view);
 }
 
 // 0x5532c — -[RobloxNavBarViewController lblTix]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblTix]")]
-pub fn stub_5532c() -> ! {
-    todo!("0x5532c -[RobloxNavBarViewController lblTix]")
+pub fn stub_5532c() -> Option<ControlId> {
+    // IDA 0x5532c `-lblTix`: the tix label (0x5533a).
+    NAVBAR.lbl_tix()
 }
 
 // 0x5533c — -[RobloxNavBarViewController setLblTix:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblTix:]")]
-pub fn stub_5533c() -> ! {
-    todo!("0x5533c -[RobloxNavBarViewController setLblTix:]")
+pub fn stub_5533c(view: Option<ControlId>) {
+    // IDA 0x5533c `-setLblTix:`: retained assign (0x55358).
+    NAVBAR.set_lbl_tix(view);
 }
 
 // 0x55360 — -[RobloxNavBarViewController toolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController toolbar]")]
-pub fn stub_55360() -> ! {
-    todo!("0x55360 -[RobloxNavBarViewController toolbar]")
+pub fn stub_55360() -> Option<ControlId> {
+    // IDA 0x55360 `-toolbar`: the menu toolbar (0x5536e).
+    NAVBAR.toolbar()
 }
 
 // 0x55370 — -[RobloxNavBarViewController setToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setToolbar:]")]
-pub fn stub_55370() -> ! {
-    todo!("0x55370 -[RobloxNavBarViewController setToolbar:]")
+pub fn stub_55370(view: Option<ControlId>) {
+    // IDA 0x55370 `-setToolbar:`: retained assign (0x5538c).
+    NAVBAR.set_toolbar(view);
 }
 
 // 0x55394 — -[RobloxNavBarViewController pageLoadActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController pageLoadActivityIndicator]")]
-pub fn stub_55394() -> ! {
-    todo!("0x55394 -[RobloxNavBarViewController pageLoadActivityIndicator]")
+pub fn stub_55394() -> Option<ControlId> {
+    // IDA 0x55394 `-pageLoadActivityIndicator`: the page spinner (0x553a2).
+    NAVBAR.page_indicator()
 }
 
 // 0x553a4 — -[RobloxNavBarViewController setPageLoadActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setPageLoadActivityIndicator:]")]
-pub fn stub_553a4() -> ! {
-    todo!("0x553a4 -[RobloxNavBarViewController setPageLoadActivityIndicator:]")
+pub fn stub_553a4(view: Option<ControlId>) {
+    // IDA 0x553a4 `-setPageLoadActivityIndicator:`: retained assign (0x553c0).
+    NAVBAR.set_page_indicator(view);
 }
 
 // 0x553c8 — -[RobloxNavBarViewController loadingOverlay]
 // type: UIView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController loadingOverlay]")]
-pub fn stub_553c8() -> ! {
-    todo!("0x553c8 -[RobloxNavBarViewController loadingOverlay]")
+pub fn stub_553c8() -> Option<ControlId> {
+    // IDA 0x553c8 `-loadingOverlay`: the loading overlay view (0x553d6).
+    NAVBAR.loading_overlay()
 }
 
 // 0x553d8 — -[RobloxNavBarViewController setLoadingOverlay:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLoadingOverlay:]")]
-pub fn stub_553d8() -> ! {
-    todo!("0x553d8 -[RobloxNavBarViewController setLoadingOverlay:]")
+pub fn stub_553d8(view: Option<ControlId>) {
+    // IDA 0x553d8 `-setLoadingOverlay:`: retained assign (0x553f4).
+    NAVBAR.set_loading_overlay(view);
 }
 
 // 0x553fc — -[RobloxNavBarViewController loadingLabel]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController loadingLabel]")]
-pub fn stub_553fc() -> ! {
-    todo!("0x553fc -[RobloxNavBarViewController loadingLabel]")
+pub fn stub_553fc() -> Option<ControlId> {
+    // IDA 0x553fc `-loadingLabel`: the loading label (0x5540a).
+    NAVBAR.loading_label()
 }
 
 // 0x5540c — -[RobloxNavBarViewController setLoadingLabel:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLoadingLabel:]")]
-pub fn stub_5540c() -> ! {
-    todo!("0x5540c -[RobloxNavBarViewController setLoadingLabel:]")
+pub fn stub_5540c(view: Option<ControlId>) {
+    // IDA 0x5540c `-setLoadingLabel:`: retained assign (0x55428).
+    NAVBAR.set_loading_label(view);
 }
 
 // 0x55430 — -[RobloxNavBarViewController btnHome]
 // type: UIBarButtonItem *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController btnHome]")]
-pub fn stub_55430() -> ! {
-    todo!("0x55430 -[RobloxNavBarViewController btnHome]")
+pub fn stub_55430() -> Option<ControlId> {
+    // IDA 0x55430 `-btnHome`: the home bar button (0x5543e).
+    NAVBAR.btn_home()
 }
 
 // 0x55440 — -[RobloxNavBarViewController setBtnHome:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBtnHome:]")]
-pub fn stub_55440() -> ! {
-    todo!("0x55440 -[RobloxNavBarViewController setBtnHome:]")
+pub fn stub_55440(view: Option<ControlId>) {
+    // IDA 0x55440 `-setBtnHome:`: retained assign (0x5545c).
+    NAVBAR.set_btn_home(view);
 }
 
 // 0x55464 — -[RobloxNavBarViewController robuxImageView]
 // type: UIImageView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController robuxImageView]")]
-pub fn stub_55464() -> ! {
-    todo!("0x55464 -[RobloxNavBarViewController robuxImageView]")
+pub fn stub_55464() -> Option<ControlId> {
+    // IDA 0x55464 `-robuxImageView`: the robux image view (0x55472).
+    NAVBAR.robux_image_view()
 }
 
 // 0x55474 — -[RobloxNavBarViewController setRobuxImageView:]
