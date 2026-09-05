@@ -7,6 +7,12 @@
 
 use rbx_core::SharedPtr;
 
+/// Static-init state for `__GLOBAL__I_a_24` (IDA 0x50c98).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA24 {
+ pub done: bool,
+}
+
 /// `signal<void(std::string)>` slot (IDA 0x4ee0c et al.).
 #[derive(Clone, Debug, Default)]
 pub struct StringSlot {
@@ -966,140 +972,172 @@ pub fn stub_4fd40(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize)
 // 0x4fd4c — ___destroy_helper_block__11
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__11")]
-pub fn stub_4fd4c() -> ! {
-    todo!("0x4fd4c ___destroy_helper_block__11")
+pub fn stub_4fd4c(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4fd4c: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x4fd54 — -[ThumbStickControl dealloc]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl dealloc]")]
-pub fn stub_4fd54() -> ! {
-    todo!("0x4fd54 -[ThumbStickControl dealloc]")
+pub fn stub_4fd54(release_outer: &mut dyn FnMut(), release_inner: &mut dyn FnMut(), teardown: &mut dyn FnMut()) {
+    // IDA 0x4fd54: release thumbstick views; super dealloc.
+    release_outer();
+    release_inner();
+    teardown();
 }
 
 // 0x4fdb8 — -[ThumbStickControl intToThumbstickStyle:]
 // type: int __cdecl(ThumbStickControl *self, SEL, int)
 #[doc(alias = "-[ThumbStickControl intToThumbstickStyle:]")]
-pub fn stub_4fdb8() -> ! {
-    todo!("0x4fdb8 -[ThumbStickControl intToThumbstickStyle:]")
+pub fn stub_4fdb8(style: i32) -> i32 {
+    // IDA 0x4fdb8: style >= 2 ? 0 : style.
+    if style as u32 >= 2 {
+        0
+    } else {
+        style
+    }
 }
 
 // 0x4fdc4 — -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]
 // type: float __cdecl(ThumbStickControl *self, SEL, CGPoint, CGPoint)
 #[doc(alias = "-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")]
-pub fn stub_4fdc4() -> ! {
-    todo!("0x4fdc4 -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")
+pub fn stub_4fdc4(ax: f32, ay: f32, bx: f32, by: f32) -> f32 {
+    // IDA 0x4fdc4: distance between two points.
+    (bx - ax).hypot(by - ay)
 }
 
 // 0x4fdf4 — -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]
 // type: CGPoint *__cdecl(CGPoint *__return_ptr __struct_ptr retstr, ThumbStickControl *self, SEL, CGPoint, CGPoint, float)
 #[doc(alias = "-[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")]
-pub fn stub_4fdf4() -> ! {
-    todo!("0x4fdf4 -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")
+pub fn stub_4fdf4(px: f32, py: f32, cx: f32, cy: f32, radians: f32) -> (f32, f32) {
+    // IDA 0x4fdf4: rotate point about location by radians.
+    let (s, c) = radians.sin_cos();
+    let dx = px - cx;
+    let dy = py - cy;
+    (cx + dx * c - dy * s, cy + dx * s + dy * c)
 }
 
 // 0x4fe88 — -[ThumbStickControl touchesBegan:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesBegan:withEvent:]")]
-pub fn stub_4fe88() -> ! {
-    todo!("0x4fe88 -[ThumbStickControl touchesBegan:withEvent:]")
+pub fn stub_4fe88(began: &mut dyn FnMut()) {
+    // IDA 0x4fe88: ThumbStickControl touchesBegan (below truncation).
+    began();
 }
 
 // 0x50108 — -[ThumbStickControl stationaryThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl stationaryThumbstickTouchMove]")]
-pub fn stub_50108() -> ! {
-    todo!("0x50108 -[ThumbStickControl stationaryThumbstickTouchMove]")
+pub fn stub_50108(track: &mut dyn FnMut()) {
+    // IDA 0x50108: stationaryThumbstickTouchMove (below truncation).
+    track();
 }
 
 // 0x50338 — -[ThumbStickControl followThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl followThumbstickTouchMove]")]
-pub fn stub_50338() -> ! {
-    todo!("0x50338 -[ThumbStickControl followThumbstickTouchMove]")
+pub fn stub_50338(track: &mut dyn FnMut()) {
+    // IDA 0x50338: followThumbstickTouchMove (below truncation).
+    track();
 }
 
 // 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
-pub fn stub_506cc() -> ! {
-    todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
+pub fn stub_506cc(moved: &mut dyn FnMut()) {
+    // IDA 0x506cc: ThumbStickControl touchesMoved (below truncation).
+    moved();
 }
 
 // 0x508b0 — -[ThumbStickControl cancelMovement]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl cancelMovement]")]
-pub fn stub_508b0() -> ! {
-    todo!("0x508b0 -[ThumbStickControl cancelMovement]")
+pub fn stub_508b0(touch: &mut Option<usize>, dispatch: &mut dyn FnMut()) {
+    // IDA 0x508b0: thumbstickTouch = nil; dispatch fade blocks.
+    *touch = None;
+    dispatch();
 }
 
 // 0x50960 — ___35-[ThumbStickControl cancelMovement]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke")]
-pub fn stub_50960() -> ! {
-    todo!("0x50960 ___35-[ThumbStickControl cancelMovement]_block_invoke")
+pub fn stub_50960(fade: &mut dyn FnMut(f32)) {
+    // IDA 0x50960: cancel block — setAlpha:0 on both views.
+    fade(0.0);
 }
 
 // 0x509a8 — ___copy_helper_block_77
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_77")]
-pub fn stub_509a8() -> ! {
-    todo!("0x509a8 ___copy_helper_block_77")
+pub fn stub_509a8(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x509a8: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x509b4 — ___destroy_helper_block_78
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_78")]
-pub fn stub_509b4() -> ! {
-    todo!("0x509b4 ___destroy_helper_block_78")
+pub fn stub_509b4(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x509b4: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x50c18 — ___35-[ThumbStickControl cancelMovement]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke_2")]
-pub fn stub_50c18() -> ! {
-    todo!("0x50c18 ___35-[ThumbStickControl cancelMovement]_block_invoke_2")
+pub fn stub_50c18(alpha: f32, fade: &mut dyn FnMut(f32)) {
+    // IDA 0x50c18: cancel block 2 — restore alphas.
+    fade(alpha);
 }
 
 // 0x50c6c — ___copy_helper_block_81
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_81")]
-pub fn stub_50c6c() -> ! {
-    todo!("0x50c6c ___copy_helper_block_81")
+pub fn stub_50c6c(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x50c6c: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x50c78 — ___destroy_helper_block_82
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_82")]
-pub fn stub_50c78() -> ! {
-    todo!("0x50c78 ___destroy_helper_block_82")
+pub fn stub_50c78(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x50c78: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
 // type: void __cdecl(id, char)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
-pub fn stub_50c80() -> ! {
-    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+pub fn stub_50c80() {
+    // IDA 0x50c80: empty block84 body.
 }
 
 // 0x50c84 — ___copy_helper_block_89
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_89")]
-pub fn stub_50c84() -> ! {
-    todo!("0x50c84 ___copy_helper_block_89")
+pub fn stub_50c84(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x50c84: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x50c90 — ___destroy_helper_block_90
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_90")]
-pub fn stub_50c90() -> ! {
-    todo!("0x50c90 ___destroy_helper_block_90")
+pub fn stub_50c90(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x50c90: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x50c98 — __GLOBAL__I_a_24
 // demangled: global constructor keyed to_a_24
 #[doc(alias = "global constructor keyed to_a_24")]
-pub fn stub_50c98() -> ! {
-    todo!("0x50c98 global constructor keyed to_a_24")
+pub fn stub_50c98(state: &mut GlobalInitA24, init: &mut dyn FnMut()) {
+    // IDA 0x50c98: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
