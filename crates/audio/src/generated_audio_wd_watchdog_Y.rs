@@ -7,8 +7,8 @@
 use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_audio_wd_watchdog18::{
-    stub_0670964, FontSizeVariant, TextBoxEventDesc, TextBoxState, TextBoxStringProp, TextBoxVoidFunc,
-    FONTSIZE_ITEMS, fontsize_index, fontsize_name,
+    stub_0670964, FontSizeVariant, GuiTextButtonState, TextBoxBoolProp, TextBoxBoolSlot, TextBoxEventDesc,
+    TextBoxState, TextBoxStringProp, TextBoxVoidFunc, FONTSIZE_ITEMS, fontsize_index, fontsize_name,
 };
 use crate::generated_audio_wd_watchdog19::stub_665da0;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
@@ -546,48 +546,75 @@ pub fn stub_671ff8() {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_6720ac() -> ! {
-    todo!("0x6720ac __ZNK3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub fn stub_6720ac(state: &mut TextBoxState, input_service_created: bool, fire_focused: impl Fn()) {
+    // IDA 0x6720ac (`BoundFuncDesc<TextBox, void(), 0>::execute`):
+    // dispatches the stored member-pointer over the object
+    // (0x6720ac-0x6720c6). The bound member is `captureFocus`
+    // (grounded: the global ctor at 0x672440 binds "CaptureFocus"
+    // to it); the pointer folds into the 0x665c98 twin.
+    crate::generated_audio_wd_watchdog19::stub_665c98(state, input_service_created, fire_focused);
 }
 
 // 0x6720cc -- __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>(char const*,char const*,bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::PropDescriptor<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>(char const*,char const*,bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_6720cc() -> ! {
-    todo!("0x6720cc __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_6720cc(name: &str, category: &str, attributes: u32, permissions: u32) -> TextBoxBoolProp {
+    // IDA 0x6720cc (`PropDescriptor<TextBox, bool>::PropDescriptor`
+    // with get+set pair): builds the `GetSetImpl` member-pair cell
+    // plus the typed descriptor identity with name/category/
+    // attributes/permissions. The pair folds into the caller's
+    // `TextBoxBoolSlot`. Host: the identity half (same shape as the
+    // getter-only C2 at 0x66c194).
+    TextBoxBoolProp::new(name, category, attributes, permissions)
 }
 
 // 0x6721e0 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_6721e0() -> ! {
-    todo!("0x6721e0 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_6721e0() -> bool {
+    // IDA 0x6721e0 (`GetSetImpl<bool(), void(bool)>::isReadOnly`):
+    // returns constant 0 (0x6721e2).
+    false
 }
 
 // 0x6721e4 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_6721e4() -> ! {
-    todo!("0x6721e4 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_6721e4() -> bool {
+    // IDA 0x6721e4 (`GetSetImpl<bool(), void(bool)>::isWriteOnly`):
+    // returns constant 0 (0x6721e6).
+    false
 }
 
 // 0x6721e8 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_6721e8() -> ! {
-    todo!("0x6721e8 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_6721e8(state: &TextBoxState, slot: TextBoxBoolSlot) -> bool {
+    // IDA 0x6721e8 (`GetSetImpl<bool(), void(bool)>::getValue`):
+    // dispatches the stored getter member-pointer over the object
+    // (0x6721ea-0x67220a, host: the `slot` selects the
+    // `TextBoxState` bool).
+    state.bool_slot(slot)
 }
 
 // 0x67220c -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_67220c() -> ! {
-    todo!("0x67220c __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")
+pub fn stub_67220c(state: &mut TextBoxState, slot: TextBoxBoolSlot, value: bool) -> bool {
+    // IDA 0x67220c (`GetSetImpl<bool(), void(bool)>::setValue`):
+    // dispatches the stored setter member-pointer with the input
+    // word (0x67220c-0x672228, host: the `slot` selects the member
+    // setter twin — `setTextWrap`/`setTextScale` at 0x666094/0x6660d4,
+    // whose raises fold into the changed flag).
+    match slot {
+        TextBoxBoolSlot::TextWrap => crate::generated_audio_wd_1788360980::stub_666094(state, value),
+        TextBoxBoolSlot::TextScaled => crate::generated_audio_wd_1788360980::stub_6660d4(state, value),
+    }
 }
 
 // 0x672230 -- __ZN3RBX7TextBoxD2Ev
@@ -602,152 +629,291 @@ pub fn stub_672230() {
 // demangled: RBX::GuiTextButton::GuiTextButton(void)
 #[doc(alias = "RBX::GuiTextButton::GuiTextButton(void)")]
 #[doc(alias = "__ZN3RBX13GuiTextButtonC2Ev")]
-pub fn stub_672d68() -> ! {
-    todo!("0x672d68 __ZN3RBX13GuiTextButtonC2Ev")
+pub fn stub_672d68() -> GuiTextButtonState {
+    // IDA 0x672d68 (`RBX::GuiTextButton::GuiTextButton`): the
+    // `GuiButton` base, vtables, class descriptor and registrar
+    // fold away; the member stores ground
+    // `GuiTextButtonState::default` — +804 `Text` = "Button",
+    // +812..+820 the palette-26 `BrickColor::color3`, +824/+828..
+    // zero transparencies/colors, +840 the 1.0 stroke
+    // transparency, +844/+845 cleared wrap/scale, +848 = 2 / +852
+    // = 1 alignments, +808/+856 cleared font ids.
+    GuiTextButtonState::default()
 }
 
 // 0x67303c -- __ZN3RBX13GuiTextButton7setTextESs
 // demangled: RBX::GuiTextButton::setText(std::string)
 #[doc(alias = "RBX::GuiTextButton::setText(std::string)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton7setTextESs")]
-pub fn stub_67303c() -> ! {
-    todo!("0x67303c __ZN3RBX13GuiTextButton7setTextESs")
+pub fn stub_67303c(state: &mut GuiTextButtonState, text: &str, filter_pass: bool) {
+    // IDA 0x67303c (`RBX::GuiTextButton::setText`): over-0x400
+    // inputs are cut down; a profanity hit without the fw+22
+    // override skips silently; on difference from the +804 text it
+    // assigns it, zeroes word 200 (+800) and raises three
+    // descriptors (folds into the mutation). Same shape as the
+    // `TextBox` twin at 0x665da0. Host: mutate on change only.
+    if !filter_pass {
+        return;
+    }
+    let mut clipped = text.to_owned();
+    if clipped.len() > 0x400 {
+        let mut end = 0x400;
+        while !clipped.is_char_boundary(end) {
+            end -= 1;
+        }
+        clipped.truncate(end);
+    }
+    if state.text == clipped {
+        return;
+    }
+    state.text = clipped;
 }
 
 // 0x6731f8 -- __ZN3RBX13GuiTextButton11setFontSizeENS_11TextService8FontSizeE
 // demangled: RBX::GuiTextButton::setFontSize(RBX::TextService::FontSize)
 #[doc(alias = "RBX::GuiTextButton::setFontSize(RBX::TextService::FontSize)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton11setFontSizeENS_11TextService8FontSizeE")]
-pub fn stub_6731f8() -> ! {
-    todo!("0x6731f8 __ZN3RBX13GuiTextButton11setFontSizeENS_11TextService8FontSizeE")
+pub fn stub_6731f8(state: &mut GuiTextButtonState, font_size: u32) -> bool {
+    // IDA 0x6731f8 (`RBX::GuiTextButton::setFontSize`): compares
+    // word 202 (+808); on change stores it and raises twice, else
+    // returns unchanged. The raises fold into the changed flag.
+    if state.font_size == font_size {
+        return false;
+    }
+    state.font_size = font_size;
+    true
 }
 
 // 0x673230 -- __ZN3RBX13GuiTextButton7setFontENS_11TextService4FontE
 // demangled: RBX::GuiTextButton::setFont(RBX::TextService::Font)
 #[doc(alias = "RBX::GuiTextButton::setFont(RBX::TextService::Font)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton7setFontENS_11TextService4FontE")]
-pub fn stub_673230() -> ! {
-    todo!("0x673230 __ZN3RBX13GuiTextButton7setFontENS_11TextService4FontE")
+pub fn stub_673230(state: &mut GuiTextButtonState, font: u32) -> bool {
+    // IDA 0x673230 (`RBX::GuiTextButton::setFont`): compares word
+    // 214 (+856); on change stores it and raises twice, else
+    // returns unchanged. The raises fold into the changed flag.
+    if state.font == font {
+        return false;
+    }
+    state.font = font;
+    true
 }
 
 // 0x673268 -- __ZN3RBX13GuiTextButton12setTextColorENS_10BrickColorE
 // demangled: RBX::GuiTextButton::setTextColor(RBX::BrickColor)
 #[doc(alias = "RBX::GuiTextButton::setTextColor(RBX::BrickColor)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton12setTextColorENS_10BrickColorE")]
-pub fn stub_673268() -> ! {
-    todo!("0x673268 __ZN3RBX13GuiTextButton12setTextColorENS_10BrickColorE")
+pub fn stub_673268(state: &mut GuiTextButtonState, text_color: u32) {
+    // IDA 0x673268 (`RBX::GuiTextButton::setTextColor`): converts
+    // the `BrickColor` id via `BrickColor::color3` (runtime
+    // `BrickMap` palette — ungrounded in this range) and delegates
+    // to `setTextColor3` (host: stub_0673288). The id itself is
+    // cached (reads derive via `closest`; same gap as the `TextBox`
+    // twin at 0x665fcc).
+    state.text_color = text_color;
 }
 
 // 0x673288 -- __ZN3RBX13GuiTextButton13setTextColor3EN3G3D6Color3E
 // demangled: RBX::GuiTextButton::setTextColor3(G3D::Color3)
 #[doc(alias = "RBX::GuiTextButton::setTextColor3(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton13setTextColor3EN3G3D6Color3E")]
-pub fn stub_673288() -> ! {
-    todo!("0x673288 __ZN3RBX13GuiTextButton13setTextColor3EN3G3D6Color3E")
+pub fn stub_673288(state: &mut GuiTextButtonState, color: [f32; 3]) -> bool {
+    // IDA 0x673288 (`RBX::GuiTextButton::setTextColor3`): compares
+    // words 203-205 (+812); on any difference stores all three and
+    // raises twice. The raises fold into the changed flag.
+    if state.text_color3 == color {
+        return false;
+    }
+    state.text_color3 = color;
+    true
 }
 
 // 0x673308 -- __ZN3RBX13GuiTextButton19setTextTransparencyEf
 // demangled: RBX::GuiTextButton::setTextTransparency(float)
 #[doc(alias = "RBX::GuiTextButton::setTextTransparency(float)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton19setTextTransparencyEf")]
-pub fn stub_673308() -> ! {
-    todo!("0x673308 __ZN3RBX13GuiTextButton19setTextTransparencyEf")
+pub fn stub_673308(state: &mut GuiTextButtonState, transparency: f32) -> bool {
+    // IDA 0x673308 (`RBX::GuiTextButton::setTextTransparency`):
+    // compares word 206 (+824); on change stores it and raises,
+    // else returns unchanged. The raise folds into the changed flag.
+    if state.text_transparency == transparency {
+        return false;
+    }
+    state.text_transparency = transparency;
+    true
 }
 
 // 0x673330 -- __ZN3RBX13GuiTextButton11setTextWrapEb
 // demangled: RBX::GuiTextButton::setTextWrap(bool)
 #[doc(alias = "RBX::GuiTextButton::setTextWrap(bool)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton11setTextWrapEb")]
-pub fn stub_673330() -> ! {
-    todo!("0x673330 __ZN3RBX13GuiTextButton11setTextWrapEb")
+pub fn stub_673330(state: &mut GuiTextButtonState, wrap: bool) -> bool {
+    // IDA 0x673330 (`RBX::GuiTextButton::setTextWrap`): compares
+    // the +844 byte; on change stores it and raises three
+    // descriptors, else returns unchanged. The raises fold into the
+    // changed flag.
+    if state.text_wrap == wrap {
+        return false;
+    }
+    state.text_wrap = wrap;
+    true
 }
 
 // 0x673370 -- __ZN3RBX13GuiTextButton12setTextScaleEb
 // demangled: RBX::GuiTextButton::setTextScale(bool)
 #[doc(alias = "RBX::GuiTextButton::setTextScale(bool)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton12setTextScaleEb")]
-pub fn stub_673370() -> ! {
-    todo!("0x673370 __ZN3RBX13GuiTextButton12setTextScaleEb")
+pub fn stub_673370(state: &mut GuiTextButtonState, scale: bool) -> bool {
+    // IDA 0x673370 (`RBX::GuiTextButton::setTextScale`): compares
+    // the +845 byte; on change stores it, raises, and — when
+    // enabling — delegates to `setTextWrap(this, 1)` (host: the
+    // 0x673330 twin); disabling raises twice more instead. All
+    // raises fold into the changed flag.
+    if state.text_scaled == scale {
+        return false;
+    }
+    state.text_scaled = scale;
+    if scale {
+        stub_673330(state, true);
+    }
+    true
 }
 
 // 0x6733c4 -- __ZN3RBX13GuiTextButton13setXAlignmentENS_11TextService10XAlignmentE
 // demangled: RBX::GuiTextButton::setXAlignment(RBX::TextService::XAlignment)
 #[doc(alias = "RBX::GuiTextButton::setXAlignment(RBX::TextService::XAlignment)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton13setXAlignmentENS_11TextService10XAlignmentE")]
-pub fn stub_6733c4() -> ! {
-    todo!("0x6733c4 __ZN3RBX13GuiTextButton13setXAlignmentENS_11TextService10XAlignmentE")
+pub fn stub_6733c4(state: &mut GuiTextButtonState, value: u32) -> bool {
+    // IDA 0x6733c4 (`RBX::GuiTextButton::setXAlignment`): compares
+    // word 212 (+848); on change stores it and raises three
+    // descriptors, else returns unchanged. The raises fold into the
+    // changed flag.
+    if state.x_alignment == value {
+        return false;
+    }
+    state.x_alignment = value;
+    true
 }
 
 // 0x673404 -- __ZN3RBX13GuiTextButton13setYAlignmentENS_11TextService10YAlignmentE
 // demangled: RBX::GuiTextButton::setYAlignment(RBX::TextService::YAlignment)
 #[doc(alias = "RBX::GuiTextButton::setYAlignment(RBX::TextService::YAlignment)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton13setYAlignmentENS_11TextService10YAlignmentE")]
-pub fn stub_673404() -> ! {
-    todo!("0x673404 __ZN3RBX13GuiTextButton13setYAlignmentENS_11TextService10YAlignmentE")
+pub fn stub_673404(state: &mut GuiTextButtonState, value: u32) -> bool {
+    // IDA 0x673404 (`RBX::GuiTextButton::setYAlignment`): compares
+    // word 213 (+852); on change stores it and raises three
+    // descriptors, else returns unchanged. The raises fold into the
+    // changed flag.
+    if state.y_alignment == value {
+        return false;
+    }
+    state.y_alignment = value;
+    true
 }
 
 // 0x673444 -- __ZNK3RBX13GuiTextButton13getTextBoundsEv
 // demangled: RBX::GuiTextButton::getTextBounds(void)const
 #[doc(alias = "RBX::GuiTextButton::getTextBounds(void)const")]
 #[doc(alias = "__ZNK3RBX13GuiTextButton13getTextBoundsEv")]
-pub fn stub_673444() -> ! {
-    todo!("0x673444 __ZNK3RBX13GuiTextButton13getTextBoundsEv")
+pub fn stub_673444() -> [f32; 2] {
+    // IDA 0x673444 (`RBX::GuiTextButton::getTextBounds`): the same
+    // no-frontend/no-`TextService`/no-typesetter zero path as the
+    // `TextBox` twin at 0x6661a8 (the measurable path reads the
+    // +804/+808/+844 cells through `TextService` rasterization:
+    // gap). Host: the shared floor.
+    crate::generated_audio_wd_1788360980::stub_6661a8()
 }
 
 // 0x6735d0 -- __ZNK3RBX13GuiTextButton11getTextFitsEv
 // demangled: RBX::GuiTextButton::getTextFits(void)const
 #[doc(alias = "RBX::GuiTextButton::getTextFits(void)const")]
 #[doc(alias = "__ZNK3RBX13GuiTextButton11getTextFitsEv")]
-pub fn stub_6735d0() -> ! {
-    todo!("0x6735d0 __ZNK3RBX13GuiTextButton11getTextFitsEv")
+pub fn stub_6735d0() -> bool {
+    // IDA 0x6735d0 (`RBX::GuiTextButton::getTextFits`): every
+    // unmeasurable path yields 0, like the `TextBox` twin at
+    // 0x666334. Host: the shared floor.
+    crate::generated_audio_wd_1788360980::stub_666334()
 }
 
 // 0x673780 -- __ZN3RBX13GuiTextButton19setTextStrokeColor3EN3G3D6Color3E
 // demangled: RBX::GuiTextButton::setTextStrokeColor3(G3D::Color3)
 #[doc(alias = "RBX::GuiTextButton::setTextStrokeColor3(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton19setTextStrokeColor3EN3G3D6Color3E")]
-pub fn stub_673780() -> ! {
-    todo!("0x673780 __ZN3RBX13GuiTextButton19setTextStrokeColor3EN3G3D6Color3E")
+pub fn stub_673780(state: &mut GuiTextButtonState, color: [f32; 3]) -> bool {
+    // IDA 0x673780 (`RBX::GuiTextButton::setTextStrokeColor3`):
+    // compares words 207-209 (+828); on any difference stores all
+    // three and raises. The raise folds into the changed flag.
+    if state.text_stroke_color3 == color {
+        return false;
+    }
+    state.text_stroke_color3 = color;
+    true
 }
 
 // 0x6737e8 -- __ZN3RBX13GuiTextButton25setTextStrokeTransparencyEf
 // demangled: RBX::GuiTextButton::setTextStrokeTransparency(float)
 #[doc(alias = "RBX::GuiTextButton::setTextStrokeTransparency(float)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton25setTextStrokeTransparencyEf")]
-pub fn stub_6737e8() -> ! {
-    todo!("0x6737e8 __ZN3RBX13GuiTextButton25setTextStrokeTransparencyEf")
+pub fn stub_6737e8(state: &mut GuiTextButtonState, transparency: f32) -> bool {
+    // IDA 0x6737e8 (`RBX::GuiTextButton::setTextStrokeTransparency`):
+    // compares word 210 (+840); on change stores it and raises,
+    // else returns unchanged. The raise folds into the changed flag.
+    if state.text_stroke_transparency == transparency {
+        return false;
+    }
+    state.text_stroke_transparency = transparency;
+    true
 }
 
 // 0x673814 -- __ZN3RBX13GuiTextButton14checkForResizeEv
 // demangled: RBX::GuiTextButton::checkForResize(void)
 #[doc(alias = "RBX::GuiTextButton::checkForResize(void)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton14checkForResizeEv")]
-pub fn stub_673814() -> ! {
-    todo!("0x673814 __ZN3RBX13GuiTextButton14checkForResizeEv")
+pub fn stub_673814() {
+    // IDA 0x673814 (`RBX::GuiTextButton::checkForResize`): the
+    // `GuiObject::checkForResize` body plus two
+    // `raisePropertyChanged` calls — no `GuiTextButton`-member
+    // effect. Carrier no-op.
 }
 
 // 0x673840 -- __ZN3RBX13GuiTextButton21setTransparencyLegacyEf
 // demangled: RBX::GuiTextButton::setTransparencyLegacy(float)
 #[doc(alias = "RBX::GuiTextButton::setTransparencyLegacy(float)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton21setTransparencyLegacyEf")]
-pub fn stub_673840() -> ! {
-    todo!("0x673840 __ZN3RBX13GuiTextButton21setTransparencyLegacyEf")
+pub fn stub_673840(state: &mut GuiTextButtonState, transparency: f32) -> bool {
+    // IDA 0x673840 (`RBX::GuiTextButton::setTransparencyLegacy`):
+    // on change of word 206 (+824) stores it and raises; the
+    // `GuiObject::setBackgroundTransparency` tail owns the
+    // GuiObject layer and folds away. Host: the member half as a
+    // changed flag.
+    if state.text_transparency == transparency {
+        return false;
+    }
+    state.text_transparency = transparency;
+    true
 }
 
 // 0x673888 -- __ZNK3RBX13GuiTextButton21getPersistentDataCostEv
 // demangled: RBX::GuiTextButton::getPersistentDataCost(void)const
 #[doc(alias = "RBX::GuiTextButton::getPersistentDataCost(void)const")]
 #[doc(alias = "__ZNK3RBX13GuiTextButton21getPersistentDataCostEv")]
-pub fn stub_673888() -> ! {
-    todo!("0x673888 __ZNK3RBX13GuiTextButton21getPersistentDataCostEv")
+pub fn stub_673888(base: i32, text: &str) -> i32 {
+    // IDA 0x673888 (`RBX::GuiTextButton::getPersistentDataCost`):
+    // the `Instance` base cost plus 1 — or the +804 text
+    // byte-length / 100 when that exceeds 1 — plus 6. Same shape as
+    // the `TextBox` twin at 0x6668b0.
+    let chunks = (text.len() / 100) as i32;
+    base + if chunks > 1 { chunks } else { 1 } + 6
 }
 
 // 0x67390c -- __ZN3RBX13GuiTextButton8render2dEPNS_5AdornE
 // demangled: RBX::GuiTextButton::render2d(RBX::Adorn *)
 #[doc(alias = "RBX::GuiTextButton::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX13GuiTextButton8render2dEPNS_5AdornE")]
-pub fn stub_67390c() -> ! {
-    todo!("0x67390c __ZN3RBX13GuiTextButton8render2dEPNS_5AdornE")
+pub fn stub_67390c() {
+    // IDA 0x67390c (`RBX::GuiTextButton::render2d`): forwards to the
+    // virtual at +196 — `Adorn` rasterization with no modeled-cell
+    // effect. Carrier no-op.
 }
 
 // 0x673918 -- __ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE

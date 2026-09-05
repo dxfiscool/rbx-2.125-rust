@@ -416,8 +416,14 @@ pub fn stub_66c0f4() -> bool {
 // 0x672440 — __GLOBAL__I_a_270
 // type: int()
 #[doc(alias = "global constructor keyed to_a_270")]
-pub fn stub_672440() -> ! {
-    todo!("0x672440 global constructor keyed to_a_270")
+pub fn stub_672440() {
+    // IDA 0x672440 (`__GLOBAL__I_a_270`): static init constructing
+    // the `TextBox` descriptor set — every `PropDescriptor` with
+    // its getter/setter member pointers (including the
+    // "CaptureFocus" `BoundFuncDesc` over `captureFocus`), the
+    // `Focused` `EventDesc`, the enum descriptors and the sibling
+    // creators (0x672440+, 22K). All registry construction folds
+    // away. Carrier no-op.
 }
 
 // 0x673da8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv

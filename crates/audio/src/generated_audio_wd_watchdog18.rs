@@ -442,6 +442,52 @@ impl TextBoxVoidFunc {
         }
     }
 }
+/// `RBX::GuiTextButton` cutover (IDA 0x672d68): the same
+/// `GuiTextMixin` subobject as `TextBox`, based 264 higher — word
+/// 200 (+800) mixin word 0, `Text` at word 201 (+804, C2 seeds
+/// "Button"), `FontSize` word 202 (+808), `TextColor3` words
+/// 203-205 (+812/+816/+820, palette-26 `BrickColor::color3` —
+/// `MOVS R0, #0x1A` at 0x672e84), `TextTransparency` word 206
+/// (+824), `TextStrokeColor3` words 207-209 (+828/+832/+836),
+/// `TextStrokeTransparency` word 210 (+840, C2 stores 1.0),
+/// `TextWrap`/`TextScaled` bytes +844/+845, `XAlignment` word 212
+/// (+848, C2 stores 2), `YAlignment` word 213 (+852, C2 stores 1),
+/// `Font` word 214 (+856). `Default` replays the C2-grounded
+/// values (a fresh `GuiTextButton`).
+#[derive(Debug, Clone)]
+pub struct GuiTextButtonState {
+    pub text: String,
+    pub text_color: u32,
+    pub text_color3: [f32; 3],
+    pub text_stroke_color3: [f32; 3],
+    pub text_transparency: f32,
+    pub text_stroke_transparency: f32,
+    pub text_wrap: bool,
+    pub text_scaled: bool,
+    pub x_alignment: u32,
+    pub y_alignment: u32,
+    pub font: u32,
+    pub font_size: u32,
+}
+
+impl Default for GuiTextButtonState {
+    fn default() -> Self {
+        Self {
+            text: "Button".to_owned(),
+            text_color: 26,
+            text_color3: [0.0, 0.0, 0.0],
+            text_stroke_color3: [0.0, 0.0, 0.0],
+            text_transparency: 0.0,
+            text_stroke_transparency: 1.0,
+            text_wrap: false,
+            text_scaled: false,
+            x_alignment: 2,
+            y_alignment: 1,
+            font: 0,
+            font_size: 0,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
