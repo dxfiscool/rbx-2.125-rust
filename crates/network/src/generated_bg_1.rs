@@ -5,179 +5,232 @@
 
 use rbx_core::SharedPtr;
 
+/// Nav-bar state (IDA 0x543dc et al.).
+#[derive(Clone, Debug, Default)]
+pub struct NavBar {
+ pub back_enabled: bool,
+ pub loading: bool,
+ pub need_robux_refresh: bool,
+}
+
 // 0x54104 — -[RobloxNavBarViewController viewDidLoad]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidLoad]")]
-pub fn stub_54104() -> ! {
-    todo!("0x54104 -[RobloxNavBarViewController viewDidLoad]")
+pub fn stub_54104(setup: &mut dyn FnMut()) {
+    // IDA 0x54104: viewDidLoad — nav/webview setup (below truncation).
+    setup();
 }
 
 // 0x543dc — -[RobloxNavBarViewController hideBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideBackButton]")]
-pub fn stub_543dc() -> ! {
-    todo!("0x543dc -[RobloxNavBarViewController hideBackButton]")
+pub fn stub_543dc(nav: &mut NavBar, set: &mut dyn FnMut(bool)) {
+    // IDA 0x543dc: btnBack enabled = NO.
+    nav.back_enabled = false;
+    set(false);
 }
 
 // 0x543fc — -[RobloxNavBarViewController showBackButton]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController showBackButton]")]
-pub fn stub_543fc() -> ! {
-    todo!("0x543fc -[RobloxNavBarViewController showBackButton]")
+pub fn stub_543fc(nav: &mut NavBar, set: &mut dyn FnMut(bool)) {
+    // IDA 0x543fc: btnBack enabled = YES.
+    nav.back_enabled = true;
+    set(true);
 }
 
 // 0x5441c — -[RobloxNavBarViewController viewDidUnload]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController viewDidUnload]")]
-pub fn stub_5441c() -> ! {
-    todo!("0x5441c -[RobloxNavBarViewController viewDidUnload]")
+pub fn stub_5441c(nav: &mut NavBar, teardown: &mut dyn FnMut()) {
+    // IDA 0x5441c: nil outlets; super viewDidUnload.
+    nav.back_enabled = false;
+    nav.loading = false;
+    teardown();
 }
 
 // 0x5449c — -[RobloxNavBarViewController showFullscreenText:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController showFullscreenText:]")]
-pub fn stub_5449c() -> ! {
-    todo!("0x5449c -[RobloxNavBarViewController showFullscreenText:]")
+pub fn stub_5449c(text: &str, set: &mut dyn FnMut(&str), dispatch: &mut dyn FnMut()) {
+    // IDA 0x5449c: loading label text + dispatch show block.
+    set(text);
+    dispatch();
 }
 
 // 0x54514 — ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")]
-pub fn stub_54514() -> ! {
-    todo!("0x54514 ___49-[RobloxNavBarViewController showFullscreenText:]_block_invoke")
+pub fn stub_54514(show: &mut dyn FnMut()) {
+    // IDA 0x54514: startAnimating + overlay addSubview + unhide.
+    show();
 }
 
 // 0x54594 — ___copy_helper_block_134
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_134")]
-pub fn stub_54594() -> ! {
-    todo!("0x54594 ___copy_helper_block_134")
+pub fn stub_54594(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x54594: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x545a0 — ___destroy_helper_block_135
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_135")]
-pub fn stub_545a0() -> ! {
-    todo!("0x545a0 ___destroy_helper_block_135")
+pub fn stub_545a0(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x545a0: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x545a8 — -[RobloxNavBarViewController hideFullscreenText]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController hideFullscreenText]")]
-pub fn stub_545a8() -> ! {
-    todo!("0x545a8 -[RobloxNavBarViewController hideFullscreenText]")
+pub fn stub_545a8(dispatch: &mut dyn FnMut()) {
+    // IDA 0x545a8: dispatch_async(main, hide block).
+    dispatch();
 }
 
 // 0x545f8 — ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")]
-pub fn stub_545f8() -> ! {
-    todo!("0x545f8 ___48-[RobloxNavBarViewController hideFullscreenText]_block_invoke")
+pub fn stub_545f8(hide: &mut dyn FnMut()) {
+    // IDA 0x545f8: overlay hidden + stopAnimating.
+    hide();
 }
 
 // 0x54648 — ___copy_helper_block_139
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_139")]
-pub fn stub_54648() -> ! {
-    todo!("0x54648 ___copy_helper_block_139")
+pub fn stub_54648(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x54648: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x54654 — ___destroy_helper_block_140
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_140")]
-pub fn stub_54654() -> ! {
-    todo!("0x54654 ___destroy_helper_block_140")
+pub fn stub_54654(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x54654: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x5465c — +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]
 // type: char __cdecl(id, SEL, id, int)
 #[doc(alias = "+[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")]
-pub fn stub_5465c() -> ! {
-    todo!("0x5465c +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")
+pub fn stub_5465c(refresh: &mut bool, nav_type: i32, url: &str, check: &mut dyn FnMut(&str) -> bool) -> bool {
+    // IDA 0x5465c: link-click type -> refresh flag + NO; else URL purchase check.
+    if nav_type == 1 {
+        *refresh = true;
+        false
+    } else {
+        check(url)
+    }
 }
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, int, int)
 #[doc(alias = "-[RobloxNavBarViewController doPlaceLaunch:request:]")]
-pub fn stub_5479c() -> ! {
-    todo!("0x5479c -[RobloxNavBarViewController doPlaceLaunch:request:]")
+pub fn stub_5479c(launch: &mut dyn FnMut()) {
+    // IDA 0x5479c: doPlaceLaunch:request: (below truncation).
+    launch();
 }
 
 // 0x549e4 — ___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke")]
-pub fn stub_549e4() -> ! {
-    todo!("0x549e4 ___52-[RobloxNavBarViewController doPlaceLaunch:request:]_block_invoke")
+pub fn stub_549e4(start: &mut dyn FnMut()) {
+    // IDA 0x549e4: PlaceLauncher startGame block.
+    start();
 }
 
 // 0x54a28 — ___copy_helper_block_180
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_180")]
-pub fn stub_54a28() -> ! {
-    todo!("0x54a28 ___copy_helper_block_180")
+pub fn stub_54a28(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x54a28: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x54a34 — ___destroy_helper_block_181
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_181")]
-pub fn stub_54a34() -> ! {
-    todo!("0x54a34 ___destroy_helper_block_181")
+pub fn stub_54a34(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x54a34: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x54a3c — -[RobloxNavBarViewController checkForGameLaunch:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController checkForGameLaunch:]")]
-pub fn stub_54a3c() -> ! {
-    todo!("0x54a3c -[RobloxNavBarViewController checkForGameLaunch:]")
+pub fn stub_54a3c(url: &str, check: &mut dyn FnMut(&str) -> bool) -> bool {
+    // IDA 0x54a3c: game-launch URL check (below truncation).
+    check(url)
 }
 
 // 0x54c64 — -[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, id, id, int)
 #[doc(alias = "-[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_54c64() -> ! {
-    todo!("0x54c64 -[RobloxNavBarViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_54c64(disable_home: &mut dyn FnMut(), allow: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x54c64: btnHome disabled; purchase/launch checks gate load (below truncation).
+    disable_home();
+    allow()
 }
 
 // 0x54d0c — -[RobloxNavBarViewController handleStartGameFailure]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController handleStartGameFailure]")]
-pub fn stub_54d0c() -> ! {
-    todo!("0x54d0c -[RobloxNavBarViewController handleStartGameFailure]")
+pub fn stub_54d0c(hide: &mut dyn FnMut()) {
+    // IDA 0x54d0c: handleStartGameFailure -> hideFullscreenText.
+    hide();
 }
 
 // 0x54d1c — -[RobloxNavBarViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController handleStartGameSuccess]")]
-pub fn stub_54d1c() -> ! {
-    todo!("0x54d1c -[RobloxNavBarViewController handleStartGameSuccess]")
+pub fn stub_54d1c(hide: &mut dyn FnMut()) {
+    // IDA 0x54d1c: handleStartGameSuccess -> hideFullscreenText.
+    hide();
 }
 
 // 0x54d2c — -[RobloxNavBarViewController webView:didFailLoadWithError:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id, id)
 #[doc(alias = "-[RobloxNavBarViewController webView:didFailLoadWithError:]")]
-pub fn stub_54d2c() -> ! {
-    todo!("0x54d2c -[RobloxNavBarViewController webView:didFailLoadWithError:]")
+pub fn stub_54d2c(hide: &mut dyn FnMut()) {
+    // IDA 0x54d2c: page-load indicator hidden.
+    hide();
 }
 
 // 0x54d58 — -[RobloxNavBarViewController webViewDidStartLoad:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController webViewDidStartLoad:]")]
-pub fn stub_54d58() -> ! {
-    todo!("0x54d58 -[RobloxNavBarViewController webViewDidStartLoad:]")
+pub fn stub_54d58(is_main: bool, loading: bool, show: &mut dyn FnMut()) {
+    // IDA 0x54d58: main webview loading -> show indicator.
+    if is_main && loading {
+        show();
+    }
 }
 
 // 0x54db4 — -[RobloxNavBarViewController webViewDidFinishLoad:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController webViewDidFinishLoad:]")]
-pub fn stub_54db4() -> ! {
-    todo!("0x54db4 -[RobloxNavBarViewController webViewDidFinishLoad:]")
+pub fn stub_54db4(nav: &mut NavBar, can_go_back: bool, refresh: &mut dyn FnMut(), hide_back: &mut dyn FnMut(), hide_spin: &mut dyn FnMut()) {
+    // IDA 0x54db4: robux refresh; no-back -> hide back; indicator hidden.
+    if nav.need_robux_refresh {
+        refresh();
+        nav.need_robux_refresh = false;
+    }
+    if !can_go_back {
+        hide_back();
+    }
+    hide_spin();
 }
 
 // 0x54e40 — -[RobloxNavBarViewController updateUserInfoDisplay:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, bool)
 #[doc(alias = "-[RobloxNavBarViewController updateUserInfoDisplay:]")]
-pub fn stub_54e40() -> ! {
-    todo!("0x54e40 -[RobloxNavBarViewController updateUserInfoDisplay:]")
+pub fn stub_54e40(update: &mut dyn FnMut(bool), animate: bool) {
+    // IDA 0x54e40: updateUserInfoDisplay — robux/tix labels (below truncation).
+    update(animate);
 }
 
 // 0x54ff0 — -[RobloxNavBarViewController MenuClick:]
