@@ -4843,80 +4843,88 @@ pub fn stub_406b4() -> bool {
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]
 // type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
 #[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
-pub fn stub_4d70c() -> ! {
-    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
+pub fn stub_4d70c(nib: Option<ControlId>, bundle: Option<ControlId>) {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4d70c):
+    // super init + main-screen GameView + signup/login observer registrations.
+    let _ = crate::view_controllers::GameViewController::init_with_nib_name(nib, bundle);
 }
-
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController dealloc]")]
-pub fn stub_4d8cc() -> ! {
-    todo!("0x4d8cc -[GameViewController dealloc]")
+pub fn stub_4d8cc() {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4d8cc):
+    // web-view release + observer removal (shared-self form).
+    GVC.dealloc_shared();
 }
-
 // 0x4d978 — -[GameViewController viewWillAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewWillAppear:]")]
-pub fn stub_4d978() -> ! {
-    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+pub fn stub_4d978(animated: bool) {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4d978).
+    GVC.view_will_appear(animated);
 }
-
 // 0x4d9d4 — -[GameViewController viewDidAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewDidAppear:]")]
-pub fn stub_4d9d4() -> ! {
-    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+pub fn stub_4d9d4(animated: bool) {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4d9d4).
+    GVC.view_did_appear(animated);
 }
-
 // 0x4da00 — -[GameViewController viewDidLoad]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController viewDidLoad]")]
-pub fn stub_4da00() -> ! {
-    todo!("0x4da00 -[GameViewController viewDidLoad]")
+pub fn stub_4da00() {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4da00):
+    // super + UserAgent default registration.
+    GVC.view_did_load();
 }
-
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
-pub fn stub_4dab8() -> ! {
-    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+pub fn stub_4dab8() {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4dab8).
+    GVC.did_receive_memory_warning();
 }
-
 // 0x4dae4 — -[GameViewController resizeGameView]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController resizeGameView]")]
-pub fn stub_4dae4() -> ! {
-    todo!("0x4dae4 -[GameViewController resizeGameView]")
+pub fn stub_4dae4() {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4dae4):
+    // tail-calls `[gameView layoutSubviews]`.
+    GVC.resize_game_view();
 }
-
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+pub fn stub_4db04() -> bool {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4db04):
+    // always YES.
+    GVC.should_autorotate()
 }
-
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
-pub fn stub_4db08() -> ! {
-    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+pub fn stub_4db08() -> u32 {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4db08):
+    // landscape-left | landscape-right mask (0x18).
+    GVC.supported_interface_orientations()
 }
-
 // 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(GameViewController *self, SEL, int)
 #[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_4db0c() -> ! {
-    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_4db0c(orientation: i32) -> bool {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4db0c):
+    // YES only for landscape-right.
+    GVC.should_autorotate_to_interface_orientation(orientation)
 }
-
 // 0x4db20 — -[GameViewController getControlView]
 // type: id __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController getControlView]")]
-pub fn stub_4db20() -> ! {
-    todo!("0x4db20 -[GameViewController getControlView]")
+pub fn stub_4db20() -> Option<ControlId> {
+    // Delegate of crate::view_controllers::GameViewController (IDA 0x4db20):
+    // first gameView subview, nil when empty.
+    GVC.control_view()
 }
-
 // 0xe87e38 — -[EAGL2View description]
 // type: id __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View description]")]

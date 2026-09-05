@@ -1531,98 +1531,207 @@ pub unsafe fn destroy_block_captures_4e054(block: *mut c_void) {
 // 0x4e4c8 — ___copy_helper_block_133
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_133")]
-pub fn stub_4e4c8() -> ! {
-    todo!("0x4e4c8 ___copy_helper_block_133")
+pub unsafe fn copy_block_capture_4e4c8(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e4c8: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4e4d4 — ___destroy_helper_block_134
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_134")]
-pub fn stub_4e4d4() -> ! {
-    todo!("0x4e4d4 ___destroy_helper_block_134")
+pub unsafe fn destroy_block_capture_4e4d4(block: *mut c_void) {
+// IDA 0x4e4d4: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e6dc — ___copy_helper_block_148
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_148")]
-pub fn stub_4e6dc() -> ! {
-    todo!("0x4e6dc ___copy_helper_block_148")
+pub unsafe fn copy_block_capture_4e6dc(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e6dc: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4e6e8 — ___destroy_helper_block_149
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_149")]
-pub fn stub_4e6e8() -> ! {
-    todo!("0x4e6e8 ___destroy_helper_block_149")
+pub unsafe fn destroy_block_capture_4e6e8(block: *mut c_void) {
+// IDA 0x4e6e8: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e6f0 — ___copy_helper_block_153
 // type: int __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_153")]
-pub fn stub_4e6f0() -> ! {
-    todo!("0x4e6f0 ___copy_helper_block_153")
+pub unsafe fn copy_block_capture_string_4e6f0(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e6f0: _Block_object_assign(dst+20, src+20, 3) then
+// std::string::string(dst+24, src+24) (decompile): the object word moves
+// and the string copies.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        let src_string = &*((src as *const u8).byte_add(24) as *const String);
+        ((dst as *mut u8).byte_add(24) as *mut String).write(src_string.clone());
+    }
 }
 
 // 0x4e714 — ___destroy_helper_block_154
 // type: int __fastcall(int)
 #[doc(alias = "___destroy_helper_block_154")]
-pub fn stub_4e714() -> ! {
-    todo!("0x4e714 ___destroy_helper_block_154")
+pub unsafe fn destroy_block_capture_string_4e714(block: *mut c_void) {
+// IDA 0x4e714: _Block_object_dispose(block+20, 3) then
+// std::string::~string(block+24) (decompile); the runtime releases the
+// captured object and the string storage drops here.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        core::ptr::drop_in_place((block as *mut String).byte_add(24));
+    }
 }
 
 // 0x4e854 — ___copy_helper_block_174
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_174")]
-pub fn stub_4e854() -> ! {
-    todo!("0x4e854 ___copy_helper_block_174")
+pub unsafe fn copy_block_capture_4e854(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e854: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4e860 — ___destroy_helper_block_175
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_175")]
-pub fn stub_4e860() -> ! {
-    todo!("0x4e860 ___destroy_helper_block_175")
+pub unsafe fn destroy_block_capture_4e860(block: *mut c_void) {
+// IDA 0x4e860: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4e98c — ___copy_helper_block_179
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_179")]
-pub fn stub_4e98c() -> ! {
-    todo!("0x4e98c ___copy_helper_block_179")
+pub unsafe fn copy_block_capture_4e98c(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4e98c: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
 
 // 0x4e998 — ___destroy_helper_block_180
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_180")]
-pub fn stub_4e998() -> ! {
-    todo!("0x4e998 ___destroy_helper_block_180")
+pub unsafe fn destroy_block_capture_4e998(block: *mut c_void) {
+// IDA 0x4e998: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4edcc — ___copy_helper_block_203
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_203")]
-pub fn stub_4edcc() -> ! {
-    todo!("0x4edcc ___copy_helper_block_203")
+pub unsafe fn copy_block_captures_4edcc(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4edcc: two captures — _Block_object_assign(dst+20, src+20, 3) then
+// the +24 shim assign (decompile). Both flags are BLOCK_FIELD_IS_OBJECT;
+// the host owns both retains, so only the two pointer words move here.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+        *(dst as *mut *const c_void).byte_add(24) =
+            *(src as *const *const c_void).byte_add(24);
+    }
 }
 
 // 0x4edf0 — ___destroy_helper_block_204
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_204")]
-pub fn stub_4edf0() -> ! {
-    todo!("0x4edf0 ___destroy_helper_block_204")
+pub unsafe fn destroy_block_captures_4edf0(block: *mut c_void) {
+// IDA 0x4edf0: two disposes — _Block_object_dispose(block+20, 3) then
+// _Block_object_dispose(block+24, 3) (decompile); the runtime releases both
+// captured objects and both words are cleared below.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x4ee0c — __ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot> &)")]
-pub fn stub_4ee0c() -> ! {
-    todo!("0x4ee0c rbx::signals::signal<void ()(std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> &)")
+/// was: `rbx::signals::signal<void ()(std::string)>::slot` — intrusive slot
+/// node; same linkage contract as `UiEventSlot` (signal link + next link).
+pub struct StringSlot {
+    callback: Mutex<Option<StringCallback>>,
+    signal: Mutex<Option<SharedPtr<StringSignal>>>,
+    next: Mutex<Option<SharedPtr<StringSlot>>>,
+}
+/// was: `rbx::signals::signal<void ()(std::string)>` — owns the intrusive
+/// slot-list head under the class-wide static mutex.
+pub struct StringSignal {
+    head: Mutex<Option<SharedPtr<StringSignal>>>,
+}
+/// was: `boost::function<void ()(std::string)>` — Box<dyn Fn> per AGENTS.md
+/// section 4; the string arg moves as an owned `String`.
+pub type StringCallback = Box<dyn Fn(String) + Send + Sync + 'static>;
+/// Signal-class static mutex for the string signal (`safe_static_*`
+/// instantiations sort later in this file; the do_get wraps this).
+fn string_signal_mutex() -> &'static Mutex<()> {
+    static VALUE: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    &VALUE
+}
+pub fn next_string_slot_4ee0c(slot: &SharedPtr<StringSlot>) -> Option<SharedPtr<StringSlot>> {
+// IDA 0x4ee0c: add_ref the in-param (0x4ee66), call_once static-mutex init
+// (0x4ee86), lock (0x4eea0), intrusive_ptr operator= advance (0x4eeb4),
+// conditional unlock (0x4eed0..0x4eed8), release the temp (0x4eee6); a
+// non-null advance returns 1, null returns 0 (0x4eef0..0x4eefc) — the
+// null-ness survives here as the `Option`.
+    let _guard = string_signal_mutex().lock();
+    slot.next.lock().clone()
 }
 
 // 0x4ef74 — __GLOBAL__I_a_22
 #[doc(alias = "global constructor keyed to_a_22")]
-pub fn stub_4ef74() -> ! {
-    todo!("0x4ef74 global constructor keyed to_a_22")
+pub fn init_global_a22_4ef74() {
+// IDA 0x4ef74: global ctor keyed to _a_22 — ios_base::Init on __ioinit plus
+// __cxa_atexit of the dtor (disasm: InitC1 + atexit). Same once-only shape
+// as 0x4d6d4; the runtime owns iostream state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x4f7bc — __GLOBAL__I_a_23

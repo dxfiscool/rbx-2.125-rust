@@ -4198,6 +4198,27 @@ impl GameViewController {
         orientation == 4
     }
 }
+// 0x4db20 — -[GameViewController getControlView]
+// type: id __cdecl(GameViewController *self, SEL)
+// IDA 0x4db20
+impl GameViewController {
+    #[doc(alias = "-[GameViewController getControlView]")]
+    #[doc = "-[GameViewController getControlView]"]
+    pub fn control_view(&self) -> Option<ObjCId> {
+        // Enumerate `gameView subviews` (IDA 0x4db62..0x4db7e); the first
+        // wins, an empty list yields nil (IDA 0x4db80..0x4db94).
+        self.game_view.first_subview()
+    }
+    /// Shared-self form of `dealloc` (IDA 0x4d8cc) for the hosted singleton:
+    /// the web-view release plus observer removal, without consuming `self`.
+    pub fn dealloc_shared(&self) {
+        if let Some(web) = self.external_web_view.lock().take() {
+            web.remove_from_superview();
+            drop(web);
+        }
+        NotificationCenter::default_center().remove_observer(self.objc_id());
+    }
+}
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(GameViewController *self, SEL, id, id, int)
 // IDA 0x4db9c
