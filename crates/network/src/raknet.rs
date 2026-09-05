@@ -19822,15 +19822,18 @@ pub fn stub_a4e388(obj: usize, text: String, inst: usize, call: &mut dyn FnMut(u
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::BoundFuncDesc(void (RBX::Network::Players::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_a4e6b0() -> ! {
-    todo!("0xa4e6b0 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::BoundFuncDesc(void (RBX::Network::Players::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_a4e6b0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa4e6b0: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa4e958 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsELi1EED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_a4e958() -> ! {
-    todo!("0xa4e958 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a4e958(destroy: &mut dyn FnMut()) {
+ // IDA 0xa4e958: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa4ea90 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -19838,8 +19841,9 @@ pub fn stub_a4e958() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_a4ea90() -> ! {
-    todo!("0xa4ea90 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_a4ea90(obj: usize, arg: String, call: &mut dyn FnMut(usize, String)) {
+ // IDA 0xa4ea90: execute unmarshals the string (below truncation).
+ call(obj, arg);
 }
 
 // 0xa4ec60 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -19847,8 +19851,10 @@ pub fn stub_a4ea90() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::PropDescriptor<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>(char const*,char const*,bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_a4ec60() -> ! {
-    todo!("0xa4ec60 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::PropDescriptor<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>(char const*,char const*,bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a4ec60(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa4ec60: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa4ee88 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE10GetSetImplIMS3_KFbvEMS3_FvbEE10isReadOnlyEv
@@ -19856,8 +19862,9 @@ pub fn stub_a4ec60() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::isReadOnly(void)const"
 )]
-pub fn stub_a4ee88() -> ! {
-    todo!("0xa4ee88 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::isReadOnly(void)const")
+pub fn stub_a4ee88() -> bool {
+ // IDA 0xa4ee88: isReadOnly returns 0.
+ false
 }
 
 // 0xa4ee8c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE10GetSetImplIMS3_KFbvEMS3_FvbEE11isWriteOnlyEv
@@ -19865,8 +19872,9 @@ pub fn stub_a4ee88() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::isWriteOnly(void)const"
 )]
-pub fn stub_a4ee8c() -> ! {
-    todo!("0xa4ee8c RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_a4ee8c() -> bool {
+ // IDA 0xa4ee8c: isWriteOnly returns 0.
+ false
 }
 
 // 0xa4ee90 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -19874,8 +19882,9 @@ pub fn stub_a4ee8c() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a4ee90() -> ! {
-    todo!("0xa4ee90 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a4ee90(get: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa4ee90: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xa4eeb4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8setValueEPNS0_13DescribedBaseERKb
@@ -19883,8 +19892,9 @@ pub fn stub_a4ee90() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
 )]
-pub fn stub_a4eeb4() -> ! {
-    todo!("0xa4eeb4 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetSetImpl<bool (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_a4eeb4(set: &mut dyn FnMut(bool), value: bool) {
+ // IDA 0xa4eeb4: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0xa4eedc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EEC2EMS3_FS7_iEPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -19892,8 +19902,10 @@ pub fn stub_a4eeb4() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Players::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_a4eedc() -> ! {
-    todo!("0xa4eedc RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Players::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_a4eedc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa4eedc: BoundFuncDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa4f148 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EED0Ev
@@ -19901,8 +19913,9 @@ pub fn stub_a4eedc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a4f148() -> ! {
-    todo!("0xa4f148 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")
+pub fn stub_a4f148(destroy: &mut dyn FnMut()) {
+ // IDA 0xa4f148: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa4f244 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEEiELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -19910,8 +19923,9 @@ pub fn stub_a4f148() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
 )]
-pub fn stub_a4f244() -> ! {
-    todo!("0xa4f244 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_a4f244(obj: usize, arg: i32, call: &mut dyn FnMut(usize, i32) -> usize) -> usize {
+ // IDA 0xa4f244: execute unmarshals int, returns Instance (below truncation).
+ call(obj, arg)
 }
 
 // 0xa4f4a0 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEEC2IMS3_KFPS4_vEiEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -19919,29 +19933,35 @@ pub fn stub_a4f244() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::Network::Players::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_a4f4a0() -> ! {
-    todo!("0xa4f4a0 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::Network::Players::*)(void)const,int>(char const*,char const*,RBX::Instance* (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a4f4a0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa4f4a0: RefPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa4f6b4 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_a4f6b4() -> ! {
-    todo!("0xa4f6b4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_a4f6b4(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xa4f6b4: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xa4f6e4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isReadOnly(void)const")]
-pub fn stub_a4f6e4() -> ! {
-    todo!("0xa4f6e4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_a4f6e4(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa4f6e4: forwards to the impl at +44.
+ inner()
 }
 
 // 0xa4f6f4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isWriteOnly(void)const")]
-pub fn stub_a4f6f4() -> ! {
-    todo!("0xa4f6f4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_a4f6f4(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa4f6f4: forwards to the impl at +44.
+ inner()
 }
 
 // 0xa4f704 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -19949,8 +19969,9 @@ pub fn stub_a4f6f4() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a4f704() -> ! {
-    todo!("0xa4f704 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a4f704(current: usize, candidate: usize) -> bool {
+ // IDA 0xa4f704: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0xa4f72c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -19958,8 +19979,9 @@ pub fn stub_a4f704() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
 )]
-pub fn stub_a4f72c() -> ! {
-    todo!("0xa4f72c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_a4f72c(value: usize) -> (String, usize) {
+ // IDA 0xa4f72c: getVariant wraps the ref with the Instance type (below truncation).
+ ("Instance".to_string(), value)
 }
 
 // 0xa4fb04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -19967,8 +19989,9 @@ pub fn stub_a4f72c() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
 )]
-pub fn stub_a4fb04() -> ! {
-    todo!("0xa4fb04 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_a4fb04(value: usize, set: &mut dyn FnMut(usize)) {
+ // IDA 0xa4fb04: setVariant writes the ref (below truncation).
+ set(value);
 }
 
 // 0xa4fd20 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -19976,8 +19999,9 @@ pub fn stub_a4fb04() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
 )]
-pub fn stub_a4fd20() -> ! {
-    todo!("0xa4fd20 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_a4fd20(value: usize, set: &mut dyn FnMut(usize)) {
+ // IDA 0xa4fd20: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0xa4fd4c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -19985,8 +20009,9 @@ pub fn stub_a4fd20() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
 )]
-pub fn stub_a4fd4c() -> ! {
-    todo!("0xa4fd4c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_a4fd4c(write: &mut dyn FnMut()) {
+ // IDA 0xa4fd4c: writeValue serializes the ref (below truncation).
+ write();
 }
 
 // 0xa4fff4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -19994,8 +20019,9 @@ pub fn stub_a4fd4c() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
 )]
-pub fn stub_a4fff4() -> ! {
-    todo!("0xa4fff4 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_a4fff4(has_ref: bool, read: &mut dyn FnMut(bool) -> i32) -> i32 {
+ // IDA 0xa4fff4: adjusts the ref offset then delegates to the binder.
+ read(has_ref)
 }
 
 // 0xa50018 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
@@ -20003,8 +20029,10 @@ pub fn stub_a4fff4() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a50018() -> ! {
-    todo!("0xa50018 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a50018(get: &mut dyn FnMut() -> usize) -> usize {
+ // IDA 0xa50018: null ref -> 0 else ref + 36.
+ let r = get();
+ if r == 0 { 0 } else { r + 36 }
 }
 
 // 0xa5002c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES7_
@@ -20012,8 +20040,12 @@ pub fn stub_a50018() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const"
 )]
-pub fn stub_a5002c() -> ! {
-    todo!("0xa5002c RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_a5002c(value: usize, cast: &mut dyn FnMut(usize) -> Option<usize>, set: &mut dyn FnMut(usize)) {
+ // IDA 0xa5002c: dynamic_cast to Instance (throws on mismatch), then set.
+ match cast(value) {
+ Some(v) => set(v),
+ None => panic!("bad cast"),
+ }
 }
 
 // 0xa500a8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES7_
@@ -20021,8 +20053,9 @@ pub fn stub_a5002c() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const"
 )]
-pub fn stub_a500a8() -> ! {
-    todo!("0xa500a8 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_a500a8(value: Option<usize>, set: &mut dyn FnMut(usize)) {
+ // IDA 0xa500a8: null -> 0 else value - 36, set via the impl.
+ set(value.unwrap_or(0));
 }
 
 // 0xa500c8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -20030,8 +20063,9 @@ pub fn stub_a500a8() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"
 )]
-pub fn stub_a500c8() -> ! {
-    todo!("0xa500c8 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_a500c8(assign: &mut dyn FnMut()) {
+ // IDA 0xa500c8: assignIDREF records the id ref (below truncation).
+ assign();
 }
 
 // 0xa50340 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
