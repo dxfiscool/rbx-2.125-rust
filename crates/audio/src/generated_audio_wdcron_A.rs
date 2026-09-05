@@ -7,10 +7,10 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    GuiButtonBoolSlot, GuiButtonColorProp, GuiButtonColorSlot, GuiButtonFloatProp, GuiButtonFloatSlot,
-    GuiButtonXAlignProp, GuiButtonYAlignProp, GuiTextButtonState, XAlignmentVariant, YAlignmentVariant,
-    XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, xalignment_index, xalignment_name, yalignment_index,
-    yalignment_name,
+    GuiButtonBoolProp, GuiButtonBoolSlot, GuiButtonColorProp, GuiButtonColorSlot, GuiButtonFloatProp,
+    GuiButtonFloatSlot, GuiButtonXAlignProp, GuiButtonYAlignProp, GuiTextButtonState, XAlignmentVariant,
+    YAlignmentVariant, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, xalignment_index, xalignment_name,
+    yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 

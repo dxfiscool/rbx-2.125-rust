@@ -37,6 +37,45 @@ impl HandlesSlotWrapper1 {
 pub struct HandlesBind1 {
     pub wrapper: SharedPtr<HandlesSlotWrapper1>,
 }
+/// Rust model of `boost::function1<void, RBX::NormalId>` holding the
+/// `execute1` bind (IDA `0x56d2d0` et al.): the vtable word collapses into
+/// nullability of the retained bind.
+#[derive(Clone, Default)]
+pub struct HandlesFunction1 {
+    pub target: Option<HandlesBind1>,
+}
+
+/// `functor_manager_operation_type` dispatch behind `manage`/`manager` (IDA
+/// `0x56d4b0`, `0x56d798`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HandlesBind1Op {
+    Clone = 0,
+    Move = 1,
+    Destroy = 2,
+    Check = 3,
+    GetType = 4,
+}
+
+/// `typeinfo` name compared by the `manager` check-type path (IDA `0x56d4c6`
+/// `typeinfo for'bind_t<...>`).
+pub const HANDLES_BIND1_TYPE_NAME: &str = "N5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEE";
+
+/// Shared `manager` switch (IDA `0x56d798`): 0 clones (`operator new(0x10)` +
+/// memberwise + `shared_count` copy, 0x56d816-0x56d848), 1 moves, 2 destroys
+/// (release + `operator delete`, 0x56d858-0x56d876), 3 checks the `typeinfo`
+/// name (single monomorph, always matches), default reports the name. Move is
+/// clone-shaped under `Arc`.
+fn handles_manage1(
+    slot: &mut HandlesFunction1,
+    other: &HandlesFunction1,
+    op: HandlesBind1Op,
+) {
+    match op {
+        HandlesBind1Op::Clone | HandlesBind1Op::Move => *slot = other.clone(),
+        HandlesBind1Op::Destroy => *slot = HandlesFunction1::default(),
+        HandlesBind1Op::Check | HandlesBind1Op::GetType => {}
+    }
+}
 
 // 0x56cbd4 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::~EventDesc()")]
@@ -159,24 +198,35 @@ pub fn stub_0x56d07c(wrapper: &HandlesSlotWrapper1, normal: HandlesNormalId) {
 // type: int(void)
 #[doc(alias = "boost::function1<void,RBX::NormalId>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEE5clearEv")]
-pub fn stub_0x56d1c0() -> ! {
-    todo!("0x56d1c0 boost::function1<void,RBX::NormalId>::clear(void)")
+pub fn stub_0x56d1c0(func: &mut HandlesFunction1) {
+    // IDA 0x56d1c0 `function1<void, NormalId>::clear`: runs the vtable
+    // destroy path when the word is set (`(result & 1) == 0` heap tag,
+    // 0x56d1ca-0x56d1e4), then `*a1 = 0`. Clearing the retained bind is the
+    // same release.
+    *func = HandlesFunction1::default();
 }
 
 // 0x56d1ec — __ZN5boost8functionIFvN3RBX8NormalIdEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvN3RBX8NormalIdEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost8functionIFvN3RBX8NormalIdEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x56d1ec() -> ! {
-    todo!("0x56d1ec __ZN5boost8functionIFvN3RBX8NormalIdEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x56d1ec(dst: &mut HandlesFunction1, src: &HandlesBind1) {
+    // IDA 0x56d1ec `function<void(NormalId)>::function<bind_t<...>>`: spills
+    // the bind words plus the `shared_count` (0x56d210-0x56d224), routes
+    // through `function1<bind_t>` (0x56d266), releases the temp (0x56d26c).
+    // Clone-assign is the same retain/install/release.
+    dst.target = Some(src.clone());
 }
 
 // 0x56d2d0 — __ZN5boost9function1IvN3RBX8NormalIdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x56d2d0() -> ! {
-    todo!("0x56d2d0 __ZN5boost9function1IvN3RBX8NormalIdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x56d2d0(dst: &mut HandlesFunction1, src: &HandlesBind1) {
+    // IDA 0x56d2d0 `function1<void, NormalId>::function1<bind_t<...>>`:
+    // `*a1 = 0` (0x56d2f2), then `assign_to<bind_t>` (0x56d34e), releases the
+    // temp (0x56d354). Same clone-assign shape as 0x56d1ec.
+    stub_0x56d3b8(dst, src);
 }
 
 // 0x56d3b8 — __ZN5boost9function1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEEvT_
@@ -184,24 +234,40 @@ pub fn stub_0x56d2d0() -> ! {
 #[doc(alias = "void boost::function1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")]
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS2_EENS5_5list2INS5_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEEvT_")]
 // was: void boost::function1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)
-pub fn stub_0x56d3b8() -> ! {
-    todo!("0x56d3b8 void boost::function1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")
+pub fn stub_0x56d3b8(dst: &mut HandlesFunction1, src: &HandlesBind1) {
+    // IDA 0x56d3b8 `function1::assign_to<bind_t<...>>`: copies the bind words
+    // plus the `shared_count` (0x56d3dc-0x56d3f0), installs the stored vtable
+    // through `basic_vtable1::assign_to` (0x56d440), then releases the temp
+    // (0x56d446). Clone-assign is the same retain/install/release.
+    dst.target = Some(src.clone());
 }
 
 // 0x56d4b0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x56d4b0() -> ! {
-    todo!("0x56d4b0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x56d4b0(
+    slot: &mut HandlesFunction1,
+    other: &HandlesFunction1,
+    op: HandlesBind1Op,
+) {
+    // IDA 0x56d4b0 `functor_manager<...>::manage`: non-`GetType` ops go to
+    // `manager()` (0x56d4b2-0x56d4b4); `GetType` (4) writes the `typeinfo`
+    // (0x56d4c6-0x56d4ca). Both delegate to the shared switch; `GetType`
+    // only reports the name.
+    let _ = HANDLES_BIND1_TYPE_NAME;
+    handles_manage1(slot, other, op);
 }
 
 // 0x56d4cc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,RBX::NormalId>::invoke(boost::detail::function::function_buffer &,RBX::NormalId)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,RBX::NormalId>::invoke(boost::detail::function::function_buffer &,RBX::NormalId)
-pub fn stub_0x56d4cc() -> ! {
-    todo!("0x56d4cc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,RBX::NormalId>::invoke(boost::detail::function::function_buffer &,RBX::NormalId)")
+pub fn stub_0x56d4cc(bind: &HandlesBind1, normal: HandlesNormalId) {
+    // IDA 0x56d4cc `void_function_obj_invoker1<...>::invoke`: tail-calls
+    // `bind_t::operator()<NormalId>` (0x56d4de), which unpacks to the `mf1`
+    // call on the retained wrapper — the `execute1` path.
+    stub_0x56d07c(&bind.wrapper, normal);
 }
 
 // 0x56d4e0 — __ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -209,8 +275,13 @@ pub fn stub_0x56d4cc() -> ! {
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x56d4e0() -> ! {
-    todo!("0x56d4e0 bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x56d4e0(dst: &mut HandlesFunction1, src: &HandlesBind1) -> bool {
+    // IDA 0x56d4e0 `basic_vtable1::assign_to<bind_t<...>>` (words form):
+    // spills the bind words plus the `shared_count`, installs through the
+    // nested `assign_to`, returns 1. Clone-assign plus success is the same
+    // outcome.
+    stub_0x56d3b8(dst, src);
+    true
 }
 
 // 0x56d5c8 — __ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -218,16 +289,24 @@ pub fn stub_0x56d4e0() -> ! {
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x56d5c8() -> ! {
-    todo!("0x56d5c8 bool boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x56d5c8(dst: &mut HandlesFunction1, src: &HandlesBind1) -> bool {
+    // IDA 0x56d5c8 `basic_vtable1::assign_to<bind_t<...>>` (count form):
+    // retains via `shared_count` copy (0x56d5e8-0x56d616), `assign_functor`
+    // (0x56d640), releases (0x56d646), returns 1 (0x56d66e).
+    stub_0x56d6ac(dst, src);
+    true
 }
 
 // 0x56d6ac — __ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvN3RBX8NormalIdEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_10Reflection18GenericSlotWrapperERKS4_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 // was: void boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x56d6ac() -> ! {
-    todo!("0x56d6ac void boost::detail::function::basic_vtable1<void,RBX::NormalId>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x56d6ac(dst: &mut HandlesFunction1, src: &HandlesBind1) {
+    // IDA 0x56d6ac `basic_vtable1::assign_functor<bind_t<...>>`:
+    // `operator new(0x10)`, memberwise copy of the bind words (0x56d6d4-0x56d72e)
+    // plus the `shared_count` copy, installs the heap functor (`*a3 = v6`,
+    // 0x56d736). Clone-assign is the same install.
+    dst.target = Some(src.clone());
 }
 
 // 0x56d780 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS7_EEvRT_
@@ -235,8 +314,12 @@ pub fn stub_0x56d6ac() -> ! {
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<RBX::NormalId>(RBX::NormalId &)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS7_EEvRT_")]
 // was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<RBX::NormalId>(RBX::NormalId &)
-pub fn stub_0x56d780() -> ! {
-    todo!("0x56d780 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<RBX::NormalId>(RBX::NormalId &)")
+pub fn stub_0x56d780(bind: &HandlesBind1, normal: HandlesNormalId) {
+    // IDA 0x56d780 `bind_t::operator()<NormalId>`: loads the mf1 fn ptr +
+    // wrapper from the bind (0x56d780), resolves the member target with the
+    // virtual-thunk check (`(v2 & 1)`, 0x56d78a-0x56d792), then calls it —
+    // `execute1(wrapper, normal)` (cf. 2-arg 0x708a94).
+    stub_0x56d07c(&bind.wrapper, normal);
 }
 
 // 0x56d798 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -244,8 +327,23 @@ pub fn stub_0x56d780() -> ! {
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_8NormalIdEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x56d798() -> ! {
-    todo!("0x56d798 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,RBX::NormalId const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x56d798(
+    src: &HandlesBind1,
+    dst: &mut HandlesFunction1,
+    op: HandlesBind1Op,
+) {
+    // IDA 0x56d798 `functor_manager::manager` with `mpl::bool_<false>`
+    // (heap-only): `case 0` clones via `operator new(0x10)` + memberwise +
+    // `shared_count` copy (0x56d816-0x56d848), 1 moves, 2 destroys (release +
+    // `operator delete`, 0x56d858-0x56d876); the check-type arm compares
+    // `HANDLES_BIND1_TYPE_NAME`. All collapse into the shared switch.
+    let _ = HANDLES_BIND1_TYPE_NAME;
+    match op {
+        HandlesBind1Op::Clone => *dst = HandlesFunction1 { target: Some(src.clone()) },
+        HandlesBind1Op::Move => *dst = HandlesFunction1 { target: Some(src.clone()) },
+        HandlesBind1Op::Destroy => *dst = HandlesFunction1::default(),
+        HandlesBind1Op::Check | HandlesBind1Op::GetType => {}
+    }
 }
 
 // 0x56d8f0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_
@@ -1041,5 +1139,62 @@ mod handles_1arg_tests {
         let bind = stub_0x56cf60(&wrapper);
         stub_0x56d07c(&bind.wrapper, 7);
         assert_eq!(seen.load(Ordering::Relaxed), 7);
+    }
+}
+
+#[cfg(test)]
+mod handles_bind1_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    fn probe_wrapper(seen: &Arc<AtomicI32>) -> SharedPtr<HandlesSlotWrapper1> {
+        let probe = Arc::clone(seen);
+        SharedPtr::new(HandlesSlotWrapper1 {
+            handler: Arc::new(move |normal: u32| {
+                probe.store(normal as i32, Ordering::Relaxed);
+            }),
+        })
+    }
+
+    #[test]
+    fn function_assign_invoke_clear() {
+        let seen = Arc::new(AtomicI32::new(0));
+        let wrapper = probe_wrapper(&seen);
+        let bind = stub_0x56cf60(&wrapper);
+        let mut func = HandlesFunction1::default();
+        stub_0x56d1ec(&mut func, &bind);
+        assert!(func.target.is_some());
+        stub_0x56d4cc(func.target.as_ref().unwrap(), 4);
+        assert_eq!(seen.load(Ordering::Relaxed), 4);
+        stub_0x56d780(&bind, 6);
+        assert_eq!(seen.load(Ordering::Relaxed), 6);
+        stub_0x56d1c0(&mut func);
+        assert!(func.target.is_none());
+    }
+
+    #[test]
+    fn vtable_manage_round_trip() {
+        let seen = Arc::new(AtomicI32::new(0));
+        let wrapper = probe_wrapper(&seen);
+        let bind = stub_0x56cf60(&wrapper);
+        let mut func = HandlesFunction1::default();
+        stub_0x56d2d0(&mut func, &bind);
+        assert!(func.target.is_some());
+        assert!(stub_0x56d4e0(&mut func, &bind));
+        assert!(stub_0x56d5c8(&mut func, &bind));
+        let mut other = HandlesFunction1::default();
+        stub_0x56d4b0(&mut other, &func, HandlesBind1Op::Clone);
+        assert!(other.target.is_some());
+        stub_0x56d798(&bind, &mut other, HandlesBind1Op::Move);
+        assert!(other.target.is_some());
+        stub_0x56d798(&bind, &mut other, HandlesBind1Op::Check);
+        assert!(other.target.is_some());
+        stub_0x56d798(&bind, &mut other, HandlesBind1Op::GetType);
+        assert_eq!(
+            HANDLES_BIND1_TYPE_NAME,
+            "N5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS4_8NormalIdEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEE"
+        );
+        stub_0x56d798(&bind, &mut other, HandlesBind1Op::Destroy);
+        assert!(other.target.is_none());
     }
 }
