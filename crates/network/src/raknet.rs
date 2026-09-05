@@ -21483,8 +21483,9 @@ pub fn stub_a96560(destroy: &mut dyn FnMut()) {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a965a8() -> ! {
-    todo!("0xa965a8 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a965a8(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa965a8: D1: tail-calls the D2 dtor (disasm only, no decomp).
+ destroy(slot);
 }
 
 // 0xa965b4 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEED1Ev
@@ -21492,8 +21493,9 @@ pub fn stub_a965a8() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::~RemoteEventDesc()"
 )]
-pub fn stub_a965b4() -> ! {
-    todo!("0xa965b4 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::~RemoteEventDesc()")
+pub fn stub_a965b4(destroy: &mut dyn FnMut()) {
+ // IDA 0xa965b4: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa965fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED1Ev
@@ -21501,8 +21503,9 @@ pub fn stub_a965b4() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()"
 )]
-pub fn stub_a965fc() -> ! {
-    todo!("0xa965fc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_a965fc(destroy: &mut dyn FnMut()) {
+ // IDA 0xa965fc: BoundFuncDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xa96644 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFSsSsELi1EED1Ev
@@ -21510,8 +21513,9 @@ pub fn stub_a965fc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,std::string ()(std::string),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96644() -> ! {
-    todo!("0xa96644 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,std::string ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a96644(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96644: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa966ec — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED1Ev
@@ -21519,8 +21523,9 @@ pub fn stub_a96644() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()"
 )]
-pub fn stub_a966ec() -> ! {
-    todo!("0xa966ec RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+pub fn stub_a966ec(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa966ec: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0xa966f8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbSsELi1EED1Ev
@@ -21528,8 +21533,9 @@ pub fn stub_a966ec() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a966f8() -> ! {
-    todo!("0xa966f8 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a966f8(destroy: &mut dyn FnMut()) {
+ // IDA 0xa966f8: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa967a0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EED1Ev
@@ -21537,8 +21543,9 @@ pub fn stub_a966f8() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()"
 )]
-pub fn stub_a967a0() -> ! {
-    todo!("0xa967a0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()")
+pub fn stub_a967a0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa967a0: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96854 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EED1Ev
@@ -21546,8 +21553,9 @@ pub fn stub_a967a0() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96854() -> ! {
-    todo!("0xa96854 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a96854(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96854: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa968fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EED1Ev
@@ -21555,8 +21563,9 @@ pub fn stub_a96854() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()"
 )]
-pub fn stub_a968fc() -> ! {
-    todo!("0xa968fc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()")
+pub fn stub_a968fc(destroy: &mut dyn FnMut()) {
+ // IDA 0xa968fc: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa969b0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED1Ev
@@ -21564,8 +21573,9 @@ pub fn stub_a968fc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a969b0() -> ! {
-    todo!("0xa969b0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_a969b0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa969b0: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96a58 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
@@ -21573,8 +21583,9 @@ pub fn stub_a969b0() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()"
 )]
-pub fn stub_a96a58() -> ! {
-    todo!("0xa96a58 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a96a58(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96a58: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0xa96a64 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EED1Ev
@@ -21582,15 +21593,17 @@ pub fn stub_a96a58() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96a64() -> ! {
-    todo!("0xa96a64 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_a96a64(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96a64: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96acc — __ZN3RBX7Network6Player10getUnder13Ev
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getUnder13(void)")]
-pub fn stub_a96acc() -> ! {
-    todo!("0xa96acc RBX::Network::Player::getUnder13(void)")
+pub fn stub_a96acc(flag: bool) -> bool {
+ // IDA 0xa96acc: returns the byte at +154.
+ flag
 }
 
 // 0xa96ad4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbvELi0EED1Ev
@@ -21598,8 +21611,9 @@ pub fn stub_a96acc() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()"
 )]
-pub fn stub_a96ad4() -> ! {
-    todo!("0xa96ad4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()")
+pub fn stub_a96ad4(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96ad4: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96b1c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EED1Ev
@@ -21607,8 +21621,9 @@ pub fn stub_a96ad4() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96b1c() -> ! {
-    todo!("0xa96b1c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()")
+pub fn stub_a96b1c(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96b1c: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96b84 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EED1Ev
@@ -21616,15 +21631,17 @@ pub fn stub_a96b1c() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96b84() -> ! {
-    todo!("0xa96b84 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_a96b84(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96b84: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96bec — __ZNK3RBX7Network6Player21getDangerousCharacterEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getDangerousCharacter(void)const")]
-pub fn stub_a96bec() -> ! {
-    todo!("0xa96bec RBX::Network::Player::getDangerousCharacter(void)const")
+pub fn stub_a96bec(value: usize) -> usize {
+ // IDA 0xa96bec: returns the dword at +23.
+ value
 }
 
 // 0xa96bf0 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEED1Ev
@@ -21632,15 +21649,17 @@ pub fn stub_a96bec() -> ! {
 #[doc(
     alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()"
 )]
-pub fn stub_a96bf0() -> ! {
-    todo!("0xa96bf0 RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()")
+pub fn stub_a96bf0(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96bf0: RefPropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96c1c — __ZNK3RBX7Network6Player22getCharacterAppearanceEv
 // type: int __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::getCharacterAppearance(void)const")]
-pub fn stub_a96c1c() -> ! {
-    todo!("0xa96c1c RBX::Network::Player::getCharacterAppearance(void)const")
+pub fn stub_a96c1c(get: &mut dyn FnMut() -> String) -> String {
+ // IDA 0xa96c1c: copies the string at +148.
+ get()
 }
 
 // 0xa96c28 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsED1Ev
@@ -21648,22 +21667,25 @@ pub fn stub_a96c1c() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()"
 )]
-pub fn stub_a96c28() -> ! {
-    todo!("0xa96c28 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")
+pub fn stub_a96c28(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96c28: PropDescriptor dtor (no delete; below truncation).
+ destroy(slot);
 }
 
 // 0xa96c4c — __ZNK3RBX7Network6Player29getCanLoadCharacterAppearanceEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getCanLoadCharacterAppearance(void)const")]
-pub fn stub_a96c4c() -> ! {
-    todo!("0xa96c4c RBX::Network::Player::getCanLoadCharacterAppearance(void)const")
+pub fn stub_a96c4c(flag: bool) -> bool {
+ // IDA 0xa96c4c: returns the byte at +152.
+ flag
 }
 
 // 0xa96c54 — __ZNK3RBX7Network6Player9getUserIDEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getUserID(void)const")]
-pub fn stub_a96c54() -> ! {
-    todo!("0xa96c54 RBX::Network::Player::getUserID(void)const")
+pub fn stub_a96c54(value: i32) -> i32 {
+ // IDA 0xa96c54: returns the int at +39.
+ value
 }
 
 // 0xa96c5c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EED1Ev
@@ -21671,16 +21693,18 @@ pub fn stub_a96c54() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96c5c() -> ! {
-    todo!("0xa96c5c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_a96c5c(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96c5c: BoundFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96cc4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(
     alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()"
 )]
-pub fn stub_a96cc4() -> ! {
-    todo!("0xa96cc4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a96cc4(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa96cc4: D1: tail-calls the D2 dtor (disasm only, no decomp).
+ destroy(slot);
 }
 
 // 0xa96cd0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EED1Ev
@@ -21688,8 +21712,9 @@ pub fn stub_a96cc4() -> ! {
 #[doc(
     alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()"
 )]
-pub fn stub_a96cd0() -> ! {
-    todo!("0xa96cd0 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")
+pub fn stub_a96cd0(destroy: &mut dyn FnMut()) {
+ // IDA 0xa96cd0: BoundYieldFuncDesc dtor (below truncation).
+ destroy();
 }
 
 // 0xa96d38 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EED1Ev
