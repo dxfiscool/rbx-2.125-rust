@@ -979,12 +979,29 @@ pub fn stub_0x56f2c0(_desc: &HandlesEvent1Desc) {
     // (0x56f2f8-0x56f370); 1-arg twin. Drop glue — no-op.
 }
 
+/// Rust model of `RBX::HandlesBase` (IDA `0x56f9fc`): the handles base over
+/// `PartAdornment`; the `PartAdornment` base, vtable words, and class
+/// registrar collapse. `server_gui` is the byte at `+152`, cleared by the
+/// ctor (0x56fb0c) and set by `setServerGuiObject` (IDA `0x5707a4`); the
+/// adornee link and pick/render pipeline land with later batches.
+#[derive(Default)]
+pub struct HandlesBase {
+    pub name: String,
+    pub server_gui: bool,
+}
+
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
 // type: _DWORD __fastcall(RBX::HandlesBase *__hidden this, const char *)
 #[doc(alias = "RBX::HandlesBase::HandlesBase(char const*)")]
 #[doc(alias = "__ZN3RBX11HandlesBaseC2EPKc")]
-pub fn stub_0x56f9fc() -> ! {
-    todo!("0x56f9fc RBX::HandlesBase::HandlesBase(char const*)")
+pub fn stub_0x56f9fc(name: &str) -> HandlesBase {
+    // IDA 0x56f9fc (decompiled): `HandlesBase::C2` — runs the
+    // `PartAdornment` base (0x56fa1c), installs the vtable words
+    // (0x56fa4e-0x56faf2), bumps the class registrar (0x56fac4), zeroes the
+    // adornee words (`+35..+37`, 0x56faf8-0x56fb06) and clears byte `+152`
+    // (0x56fb0c). The base/registry collapse; the observable state is the
+    // cleared flag.
+    HandlesBase { name: name.to_string(), server_gui: false }
 }
 
 // 0x56fc18 — __ZN3RBX11HandlesBase16findTargetHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -1063,8 +1080,10 @@ pub fn stub_0x57079c() -> ! {
 // type: _DWORD __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "RBX::HandlesBase::setServerGuiObject(void)")]
 #[doc(alias = "__ZN3RBX11HandlesBase18setServerGuiObjectEv")]
-pub fn stub_0x5707a4() -> ! {
-    todo!("0x5707a4 RBX::HandlesBase::setServerGuiObject(void)")
+pub fn stub_0x5707a4(base: &mut HandlesBase) {
+    // IDA 0x5707a4 (decompiled): `setServerGuiObject` sets byte `+152`
+    // (0x5707a6). The store is the observable state change.
+    base.server_gui = true;
 }
 
 // 0x5707ac — __ZN3RBX11HandlesBase17onAncestorChangedERKNS_15AncestorChangedE
@@ -1655,5 +1674,26 @@ mod handles_visual_style_tests {
         assert_eq!(stub_0x56ec80(&a), 0);
         stub_0x56e698(&mut a, &crate::generated_05::Variant::Null);
         assert_eq!(stub_0x56ec80(&a), 0);
+    }
+}
+
+#[cfg(test)]
+mod handles_base_tests {
+    use super::*;
+
+    #[test]
+    fn base_ctor_clears_server_gui() {
+        let base = stub_0x56f9fc("HandlesBase");
+        assert_eq!(base.name, "HandlesBase");
+        assert!(!base.server_gui);
+    }
+
+    #[test]
+    fn set_server_gui_object_sets_flag() {
+        let mut base = stub_0x56f9fc("HandlesBase");
+        stub_0x5707a4(&mut base);
+        assert!(base.server_gui);
+        stub_0x5707a4(&mut base);
+        assert!(base.server_gui);
     }
 }
