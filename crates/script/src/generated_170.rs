@@ -7,6 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use parking_lot::Mutex;
+use std::collections::HashMap;
 use std::sync::LazyLock;
 use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -62,6 +63,101 @@ pub struct GoogleAnalyticsState {
     /// `performSelector:withObject:afterDelay:0` retry queue used while not
     /// yet initialized (IDA 0x42012..0x4203a).
     pub deferred_page_views: Mutex<Vec<String>>,
+    /// Sent event trackings (IDA 0x4216c).
+    pub sent_events: Mutex<Vec<AnalyticsEvent>>,
+    /// Deferred event dicts while not initialized (IDA 0x42204..).
+    pub deferred_events: Mutex<Vec<AnalyticsEvent>>,
+    /// Custom variable pairs (IDA 0x422fe).
+    pub custom_vars: Mutex<Vec<(ObjCId, ObjCId)>>,
+    /// Deferred custom-variable dicts while not initialized (IDA 0x42348..).
+    pub deferred_custom: Mutex<Vec<(ObjCId, ObjCId)>>,
+    /// `debug_*` counters in NSUserDefaults (IDA 0x423cc..0x4255c).
+    pub debug_counters: Mutex<HashMap<String, i64>>,
+}
+
+/// One GA event tracking (IDA 0x42078..0x420bc keys, sent at 0x4216c).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct AnalyticsEvent {
+    pub category: ObjCId,
+    pub action: ObjCId,
+    pub label: ObjCId,
+    pub value: i32,
+}
+
+/// `RobloxWebUtility` instance state (IDA 0x427c0..0x4286e): queue handles,
+/// the cached settings service, and the last-request timestamp. ObjC and
+/// dispatch objects fold into latches.
+#[derive(Debug, Default)]
+pub struct RobloxWebUtility {
+    pub log_queue: Mutex<bool>,
+    pub settings_queue: Mutex<bool>,
+    pub cached_settings: Mutex<bool>,
+    pub last_request_set: Mutex<bool>,
+}
+
+static WEB_UTILITY: LazyLock<RobloxWebUtility> = LazyLock::new(RobloxWebUtility::default);
+
+/// Process-wide web-utility backing the class-method stubs below.
+pub fn web_utility() -> &'static RobloxWebUtility {
+    &WEB_UTILITY
+}
+
+/// `iOSSettingsService` construction latch (IDA 0x43180: tree zeroes at
+/// 0x431aa..0x431be, strings at 0x431de..0x43208, `_thisPtr` at 0x4320e,
+/// and `Init` at 0x43236 fold into the host).
+#[derive(Debug, Default)]
+pub struct SettingsServiceState {
+    pub inited: bool,
+}
+
+/// `__GLOBAL__I_a_12` one-shot latch (IDA 0x42580).
+static GLOBAL_A12_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// Button-tag URL answer (IDA 0x42dec): tags 10-16 map base paths with
+/// tablet variants (0x42e60..0x430ae); other tags answer nil; the record
+/// flag fires page-view tracking (0x430b4..0x430d4); the printf (0x430d8..
+/// 0x430fc) folds into the host.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct ButtonUrl {
+    pub url: Option<String>,
+    pub page: Option<&'static str>,
+}
+
+/// `getUrlForButtonTag:recordPageView:query:` (IDA 0x42dec).
+pub fn button_url(base: &str, search: &str, tag: i32, tablet: bool, query: &str) -> ButtonUrl {
+    let page;
+    let url = match tag {
+        10 => {
+            page = "Games";
+            Some(format!("{base}games/list"))
+        }
+        11 => {
+            page = "Catalog";
+            Some(format!("{base}{}", if tablet { "Catalog/" } else { "catalog/" }))
+        }
+        12 => {
+            page = "Inventory";
+            Some(format!("{base}{}", if tablet { "My/Character.aspx" } else { "inventory" }))
+        }
+        13 => {
+            page = "BuildersClub";
+            Some(format!("{base}mobile-app-upgrades/"))
+        }
+        14 => {
+            page = "Profile";
+            Some(format!("{base}{}", if tablet { "User.aspx" } else { "" }))
+        }
+        15 => {
+            page = "Messages";
+            Some(format!("{base}{}", if tablet { "My/Messages.aspx#Inbox" } else { "inbox" }))
+        }
+        16 => {
+            page = "Search";
+            Some(format!("{base}{search}{query}"))
+        }
+        _ => return ButtonUrl { url: None, page: None },
+    };
+    ButtonUrl { url, page: Some(page) }
 }
 
 static GOOGLE_ANALYTICS: LazyLock<GoogleAnalyticsState> = LazyLock::new(GoogleAnalyticsState::default);
@@ -330,170 +426,241 @@ pub fn stub_0x41f74(state: &GoogleAnalyticsState, url: &str) {
 // 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
-pub fn stub_0x4203c() -> ! {
-    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+pub fn stub_0x4203c(state: &GoogleAnalyticsState, category: ObjCId, action: ObjCId, label: ObjCId, value: i32) {
+    // IDA 0x4203c: unpacks category/action/label/value (0x42078..0x420bc)
+    // and forwards to `setEventTracking:` (0x420d8).
+    stub_0x420e4(state, category, action, label, value);
 }
 
 // 0x420e4 — +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id, id, int)
 #[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
-pub fn stub_0x420e4() -> ! {
-    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+pub fn stub_0x420e4(state: &GoogleAnalyticsState, category: ObjCId, action: ObjCId, label: ObjCId, value: i32) {
+    // IDA 0x420e4: when initialized sends the event (0x42106..0x4216c),
+    // else defers the dict for later (0x421b0..0x42204). Dict plumbing
+    // folds into the event record.
+    let event = AnalyticsEvent { category, action, label, value };
+    if state.initialize_done.load(Ordering::SeqCst) {
+        state.sent_events.lock().push(event);
+    } else {
+        state.deferred_events.lock().push(event);
+    }
 }
 
 // 0x42230 — +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
-pub fn stub_0x42230() -> ! {
-    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+pub fn stub_0x42230(state: &GoogleAnalyticsState, label: ObjCId, value: ObjCId) {
+    // IDA 0x42230: unpacks label/value (0x4226a..0x42276) and forwards to
+    // `setCustomVariable:` (0x42294).
+    stub_0x42298(state, label, value);
 }
 
 // 0x42298 — +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
-pub fn stub_0x42298() -> ! {
-    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+pub fn stub_0x42298(state: &GoogleAnalyticsState, label: ObjCId, value: ObjCId) {
+    // IDA 0x42298: when initialized sets the pair (0x422b6..0x422fe), else
+    // defers the dict (0x42348..0x42366).
+    if state.initialize_done.load(Ordering::SeqCst) {
+        state.custom_vars.lock().push((label, value));
+    } else {
+        state.deferred_custom.lock().push((label, value));
+    }
 }
 
 // 0x42374 — +[RobloxGoogleAnalytics debugCountersPrint]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
-pub fn stub_0x42374() -> ! {
-    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+pub fn stub_0x42374(state: &GoogleAnalyticsState) -> Vec<(String, i64)> {
+    // IDA 0x42374: synchronizes defaults (0x423aa) and reads the seven
+    // `debug_*` keys (0x423cc..0x42344) for the NSLog dump (0x42450..).
+    // The store folds into the host map; the snapshot is observed.
+    let mut out: Vec<(String, i64)> = state.debug_counters.lock().clone().into_iter().collect();
+    out.sort();
+    out
 }
 
 // 0x424cc — +[RobloxGoogleAnalytics debugCounterIncrement:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
-pub fn stub_0x424cc() -> ! {
-    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+pub fn stub_0x424cc(state: &GoogleAnalyticsState, name: &str) -> i64 {
+    // IDA 0x424cc: synchronizes (0x42506), reads `debug_{name}` (0x42532..
+    // 0x4254c), writes back +1 (0x4255c..0x42564), and logs (0x42576).
+    // Defaults storage folds into the host map.
+    let key = format!("debug_{name}");
+    let mut counters = state.debug_counters.lock();
+    let next = counters.get(&key).copied().unwrap_or(0) + 1;
+    counters.insert(key, next);
+    next
 }
 
 // 0x42580 — __GLOBAL__I_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
-pub fn stub_0x42580() -> ! {
-    todo!("0x42580 global constructor keyed to_a_12")
+pub fn stub_0x42580() -> u32 {
+    // IDA 0x42580: `__GLOBAL__I_a_12` — see `GLOBAL_A12_INIT`.
+    *GLOBAL_A12_INIT
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxWebUtility sharedInstance]")]
-pub fn stub_0x42718() -> ! {
-    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+pub fn stub_0x42718() -> &'static RobloxWebUtility {
+    // IDA 0x42718: `sharedInstance` once-inits (0x42760..0x4276e) and
+    // answers the singleton (0x42766).
+    web_utility()
 }
 
 // 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
 #[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
-pub fn stub_0x42774() -> ! {
-    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+pub fn stub_0x42774() {
+    // IDA 0x42774: the once block allocs and inits (0x42786..0x427a4);
+    // covered by `sharedInstance` — no-op.
 }
 
 // 0x427a8 — ___copy_helper_block__7
 #[doc(alias = "___copy_helper_block__7")]
-pub fn stub_0x427a8() -> ! {
-    todo!("0x427a8 ___copy_helper_block__7")
+pub fn stub_0x427a8() {
+    // IDA 0x427a8: block copy helper retains captures; `Clone` glue
+    // covers it — no-op.
 }
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
-pub fn stub_0x427b4() -> ! {
-    todo!("0x427b4 ___destroy_helper_block__7")
+pub fn stub_0x427b4() {
+    // IDA 0x427b4: block destroy helper releases captures; drop glue
+    // covers it — no-op.
 }
 
 // 0x427c0 — -[RobloxWebUtility init]
 // type: RobloxWebUtility *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility init]")]
-pub fn stub_0x427c0() -> ! {
-    todo!("0x427c0 -[RobloxWebUtility init]")
+pub fn stub_0x427c0(util: &RobloxWebUtility) {
+    // IDA 0x427c0: `init` chains to super (0x427e8) then stamps the epoch
+    // timestamp (0x42810..0x4282a) and creates both queues (0x42858..
+    // 0x4286e).
+    *util.last_request_set.lock() = true;
+    *util.log_queue.lock() = true;
+    *util.settings_queue.lock() = true;
 }
 
 // 0x42880 — -[RobloxWebUtility dealloc]
 // type: void __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility dealloc]")]
-pub fn stub_0x42880() -> ! {
-    todo!("0x42880 -[RobloxWebUtility dealloc]")
+pub fn stub_0x42880(util: &RobloxWebUtility) {
+    // IDA 0x42880: `dealloc` releases the timestamp (0x42894..0x428a4),
+    // both queues (0x428b6..0x428c8), and the cached service (0x428d8..
+    // 0x428e4); drop glue covers the peers.
+    *util.last_request_set.lock() = false;
+    *util.log_queue.lock() = false;
+    *util.settings_queue.lock() = false;
+    *util.cached_settings.lock() = false;
 }
 
 // 0x4290c — -[RobloxWebUtility getiOSLogQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSLogQueue]")]
-pub fn stub_0x4290c() -> ! {
-    todo!("0x4290c -[RobloxWebUtility getiOSLogQueue]")
+pub fn stub_0x4290c(util: &RobloxWebUtility) -> bool {
+    // IDA 0x4290c: answers the log queue (0x4291a).
+    *util.log_queue.lock()
 }
 
 // 0x4291c — -[RobloxWebUtility getiOSSettingsQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsQueue]")]
-pub fn stub_0x4291c() -> ! {
-    todo!("0x4291c -[RobloxWebUtility getiOSSettingsQueue]")
+pub fn stub_0x4291c(util: &RobloxWebUtility) -> bool {
+    // IDA 0x4291c: answers the settings queue (0x4292a).
+    *util.settings_queue.lock()
 }
 
 // 0x4292c — -[RobloxWebUtility setCachediOSSettings:]
 // type: void __cdecl(RobloxWebUtility *self, SEL, iOSSettingsService *)
 #[doc(alias = "-[RobloxWebUtility setCachediOSSettings:]")]
-pub fn stub_0x4292c() -> ! {
-    todo!("0x4292c -[RobloxWebUtility setCachediOSSettings:]")
+pub fn stub_0x4292c(util: &RobloxWebUtility, has: bool) {
+    // IDA 0x4292c: stores the cached service (0x42938).
+    *util.cached_settings.lock() = has;
 }
 
 // 0x4293c — -[RobloxWebUtility getCachediOSSettings]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getCachediOSSettings]")]
-pub fn stub_0x4293c() -> ! {
-    todo!("0x4293c -[RobloxWebUtility getCachediOSSettings]")
+pub fn stub_0x4293c(util: &RobloxWebUtility) -> bool {
+    // IDA 0x4293c: answers the cached service (0x4294a).
+    *util.cached_settings.lock()
 }
 
 // 0x4294c — -[RobloxWebUtility getLastSettingsRequestTime]
 // type: id __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getLastSettingsRequestTime]")]
-pub fn stub_0x4294c() -> ! {
-    todo!("0x4294c -[RobloxWebUtility getLastSettingsRequestTime]")
+pub fn stub_0x4294c(util: &RobloxWebUtility) -> bool {
+    // IDA 0x4294c: answers the last-request timestamp (0x4295a).
+    *util.last_request_set.lock()
 }
 
 // 0x4295c — -[RobloxWebUtility getiOSSettingsServiceFromWeb]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsServiceFromWeb]")]
-pub fn stub_0x4295c() -> ! {
-    todo!("0x4295c -[RobloxWebUtility getiOSSettingsServiceFromWeb]")
+pub fn stub_0x4295c(util: &RobloxWebUtility) {
+    // IDA 0x4295c: news the service (0x4298a), runs the ctor (0x429b4),
+    // fetches client settings (0x429d6), caches (0x429ee), and stamps the
+    // time (0x42a32..0x42a4a).
+    *util.cached_settings.lock() = true;
+    *util.last_request_set.lock() = true;
 }
 
 // 0x42a98 — +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]
 // type: iOSSettingsService *__cdecl(id, SEL, char)
 #[doc(alias = "+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")]
-pub fn stub_0x42a98() -> ! {
-    todo!("0x42a98 +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")
+pub fn stub_0x42a98(util: &RobloxWebUtility, force: bool) -> bool {
+    // IDA 0x42a98: dispatches the refresh decision to the block; a forced
+    // read refetches (cf. 0x42bc8), otherwise the cached service stands.
+    if force || !*util.cached_settings.lock() {
+        stub_0x4295c(util);
+    }
+    *util.cached_settings.lock()
 }
 
 // 0x42bc8 — ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke
 // type: iOSSettingsService *__fastcall(int)
 #[doc(alias = "___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")]
-pub fn stub_0x42bc8() -> ! {
-    todo!("0x42bc8 ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")
+pub fn stub_0x42bc8(util: &RobloxWebUtility, force: bool, stale: bool) -> bool {
+    // IDA 0x42bc8: the block refetches on force or staleness, else keeps
+    // the cache; the interval math folds into the `stale` input.
+    if force || stale {
+        stub_0x4295c(util);
+    }
+    *util.cached_settings.lock()
 }
 
 // 0x42dd8 — ___copy_helper_block_65
 #[doc(alias = "___copy_helper_block_65")]
-pub fn stub_0x42dd8() -> ! {
-    todo!("0x42dd8 ___copy_helper_block_65")
+pub fn stub_0x42dd8() {
+    // IDA 0x42dd8: block copy helper — no-op.
 }
 
 // 0x42de4 — ___destroy_helper_block_66
 #[doc(alias = "___destroy_helper_block_66")]
-pub fn stub_0x42de4() -> ! {
-    todo!("0x42de4 ___destroy_helper_block_66")
+pub fn stub_0x42de4() {
+    // IDA 0x42de4: block destroy helper — no-op.
 }
 
 // 0x42dec — +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_0x42dec() -> ! {
-    todo!("0x42dec +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_0x42dec(base: &str, search: &str, tag: i32, tablet: bool, query: &str) -> ButtonUrl {
+    // IDA 0x42dec: `getUrlForButtonTag:` — see `button_url` (tablet flag at
+    // 0x42e2c; page tracking at 0x430b4..0x430d4 folds into the host).
+    button_url(base, search, tag, tablet, query)
 }
 
 // 0x43180 — __ZN18iOSSettingsServiceC2Ev
 // type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
-pub fn stub_0x43180() -> ! {
-    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+pub fn stub_0x43180(service: &mut SettingsServiceState) {
+    // IDA 0x43180: `iOSSettingsService` ctor — see `SettingsServiceState`
+    // (tree zeroes at 0x431aa..0x431be, `_thisPtr` at 0x4320e, `Init` at
+    // 0x43236).
+    service.inited = true;
 }
 
 // 0x432b0 — __ZN18iOSSettingsServiceD1Ev
@@ -833,4 +1000,121 @@ pub fn stub_0x45554() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
 pub fn stub_0x45764() -> ! {
     todo!("0x45764 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+}
+
+#[cfg(test)]
+mod analytics_webutil_batch_tests {
+    use super::*;
+
+    fn live_state() -> GoogleAnalyticsState {
+        let state = GoogleAnalyticsState::default();
+        state.initialize_done.store(true, Ordering::SeqCst);
+        state
+    }
+    #[test]
+    fn event_tracking_gates_on_init() {
+        let live = live_state();
+        stub_0x4203c(&live, 1, 2, 3, 42);
+        assert_eq!(live.sent_events.lock().len(), 1);
+        assert_eq!(
+            live.sent_events.lock()[0],
+            AnalyticsEvent { category: 1, action: 2, label: 3, value: 42 }
+        );
+        let cold = GoogleAnalyticsState::default();
+        stub_0x420e4(&cold, 1, 2, 3, 4);
+        assert!(cold.sent_events.lock().is_empty());
+        assert_eq!(cold.deferred_events.lock().len(), 1);
+        stub_0x42230(&live, 7, 8);
+        assert_eq!(*live.custom_vars.lock(), vec![(7, 8)]);
+        stub_0x42298(&cold, 7, 8);
+        assert_eq!(*cold.deferred_custom.lock(), vec![(7, 8)]);
+    }
+
+    #[test]
+    fn debug_counters() {
+        let state = GoogleAnalyticsState::default();
+        assert_eq!(stub_0x424cc(&state, "inGame"), 1);
+        assert_eq!(stub_0x424cc(&state, "inGame"), 2);
+        let snapshot = stub_0x42374(&state);
+        assert_eq!(snapshot, vec![("debug_inGame".to_owned(), 2)]);
+        assert_eq!(stub_0x42580(), 1);
+    }
+
+    #[test]
+    fn webutil_lifecycle() {
+        let util = RobloxWebUtility::default();
+        assert!(!stub_0x4290c(&util));
+        stub_0x427c0(&util);
+        assert!(stub_0x4290c(&util));
+        assert!(stub_0x4291c(&util));
+        assert!(stub_0x4294c(&util));
+        assert!(!stub_0x4293c(&util));
+        stub_0x4292c(&util, true);
+        stub_0x4295c(&util);
+        assert!(stub_0x4293c(&util));
+        assert!(stub_0x42a98(&util, false));
+        stub_0x42880(&util);
+        assert!(!stub_0x4290c(&util));
+        assert!(!stub_0x4293c(&util));
+        stub_0x4295c(&util);
+        stub_0x427a8();
+        stub_0x427b4();
+        stub_0x42dd8();
+        stub_0x42de4();
+        assert!(std::ptr::eq(stub_0x42718(), web_utility()));
+    }
+
+    #[test]
+    fn settings_refresh() {
+        let util = RobloxWebUtility::default();
+        assert!(stub_0x42a98(&util, false));
+        assert!(stub_0x42a98(&util, true));
+        let util = RobloxWebUtility::default();
+        assert!(!stub_0x42bc8(&util, false, false));
+        assert!(stub_0x42bc8(&util, false, true));
+        let mut service = SettingsServiceState::default();
+        stub_0x43180(&mut service);
+        assert!(service.inited);
+    }
+
+    #[test]
+    fn button_urls() {
+        let base = "https://www.roblox.com/";
+        assert_eq!(
+            stub_0x42dec(base, "s", 10, false, ""),
+            ButtonUrl { url: Some(format!("{base}games/list")), page: Some("Games") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 11, true, ""),
+            ButtonUrl { url: Some(format!("{base}Catalog/")), page: Some("Catalog") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 11, false, ""),
+            ButtonUrl { url: Some(format!("{base}catalog/")), page: Some("Catalog") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 12, true, ""),
+            ButtonUrl { url: Some(format!("{base}My/Character.aspx")), page: Some("Inventory") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 13, false, ""),
+            ButtonUrl { url: Some(format!("{base}mobile-app-upgrades/")), page: Some("BuildersClub") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 14, false, ""),
+            ButtonUrl { url: Some(base.to_owned()), page: Some("Profile") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 15, true, ""),
+            ButtonUrl { url: Some(format!("{base}My/Messages.aspx#Inbox")), page: Some("Messages") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "srch", 16, false, "q=obby"),
+            ButtonUrl { url: Some(format!("{base}srchq=obby")), page: Some("Search") }
+        );
+        assert_eq!(
+            stub_0x42dec(base, "s", 99, false, ""),
+            ButtonUrl { url: None, page: None }
+        );
+    }
 }
