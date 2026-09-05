@@ -1333,8 +1333,19 @@ pub fn stub_0x571c90() -> ! {
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "RBX::HopperBin::HopperBin(void)")]
 #[doc(alias = "__ZN3RBX9HopperBinC2Ev")]
-pub fn stub_0x5721a8() -> ! {
-    todo!("0x5721a8 RBX::HopperBin::HopperBin(void)")
+pub fn stub_0x5721a8() -> crate::instance::HopperBin {
+    // IDA 0x5721a8 (decompiled): `HopperBin::C2` — runs the `Widget` base
+    // (0x5721c8), the `BackpackItem` layer with its `GuiDrawImage` members
+    // at `+116`/`+208` and `ContentId` at `+200` (0x57229a-0x5722c0), then
+    // the `HopperBin` layer: clears byte `+292` (0x572358, the active flag),
+    // zeroes the `BinType` word at `+74` (0x57235e), clears byte `+300` and
+    // the words at `+76`/`+81` (0x572364-0x5723b6), runs the two
+    // `remote_signal` members (0x57237c-0x57238e), and names the instance
+    // `"HopperBin"` (0x5723da-0x5723e6). Bases/signals/registry collapse;
+    // the observable state is the cleared words plus the name.
+    let mut bin = crate::instance::HopperBin::default();
+    bin.item.name = "HopperBin".to_string();
+    bin
 }
 
 // 0x572710 — __ZN3RBX9HopperBin30selectedConnectionShimFunctionEv
@@ -1439,62 +1450,141 @@ pub fn stub_0x573610() -> ! {
     todo!("0x573610 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")
 }
 
+/// Rust model of `RBX::Reflection::PropDescriptor<RBX::BackpackItem,
+/// RBX::TextureId>` (IDA `0x573664`): the name/category words; the bound
+/// getter/setter member pointers collapse into direct `BackpackItem`
+/// texture access.
+pub struct BackpackTextureProp {
+    pub name: String,
+    pub category: String,
+}
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,
+/// RBX::HopperBin::BinType>` (IDA `0x573690`): the name/category words; the
+/// bound getter/setter member pointers collapse into direct
+/// `HopperBin::bin_type` access.
+pub struct HopperBinEnumProp {
+    pub name: String,
+    pub category: String,
+}
+
+/// Rust model of `RBX::Reflection::EventDesc<RBX::HopperBin, void ()(void)>`
+/// (IDA `0x5736fc`): the script-side 0-arg hopper-bin event descriptor; the
+/// signal member collapses into the name word until the signal port lands.
+#[derive(Default)]
+pub struct HopperBinEventDesc {
+    pub name: String,
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<RBX::HopperBin, void
+/// ()(void), 0>` (IDA `0x573720`): the bound 0-arg member; the member
+/// pointer collapses into the name word.
+#[derive(Default)]
+pub struct HopperBinFuncDesc {
+    pub name: String,
+}
+
+/// Rust model of `RBX::Reflection::PropDescriptor<RBX::HopperBin,
+/// std::string>` (IDA `0x573744`): the name/category words; the bound
+/// getter/setter member pointers collapse.
+pub struct HopperBinStringProp {
+    pub name: String,
+    pub category: String,
+}
+
 // 0x573664 — __ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_12BackpackItemENS_9TextureIdEED1Ev")]
-pub fn stub_0x573664() -> ! {
-    todo!("0x573664 RBX::Reflection::PropDescriptor<RBX::BackpackItem,RBX::TextureId>::~PropDescriptor()")
+pub fn stub_0x573664(desc: *mut BackpackTextureProp) {
+    // IDA 0x573664 `PropDescriptor<BackpackItem, TextureId>::D1`:
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x4a7734.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x573688 — __ZNK3RBX9HopperBin10getBinTypeEv
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "RBX::HopperBin::getBinType(void)const")]
 #[doc(alias = "__ZNK3RBX9HopperBin10getBinTypeEv")]
-pub fn stub_0x573688() -> ! {
-    todo!("0x573688 RBX::HopperBin::getBinType(void)const")
+pub fn stub_0x573688(bin: &crate::instance::HopperBin) -> i32 {
+    // IDA 0x573688 (decompiled): `getBinType` returns the word at `+74`
+    // (0x57368c) — the value stored by `setBinType` (0x571486).
+    bin.bin_type
 }
 
 // 0x573690 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEED1Ev")]
-pub fn stub_0x573690() -> ! {
-    todo!("0x573690 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::~EnumPropDescriptor()")
+pub fn stub_0x573690(desc: *mut HopperBinEnumProp) {
+    // IDA 0x573690 `EnumPropDescriptor<HopperBin, BinType>::D1`:
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x4a7734.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x5736d8 — __ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEED1Ev")]
-pub fn stub_0x5736d8() -> ! {
-    todo!("0x5736d8 RBX::Reflection::RemoteEventDesc<RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+pub fn stub_0x5736d8(desc: *mut crate::instance::HopperBinRemoteEventDesc) {
+    // IDA 0x5736d8 `RemoteEventDesc<HopperBin, void()>::D1`: memberwise
+    // teardown of the hopper-bin remote descriptor; dropping the box is the
+    // same release. Twin of 0x5736b4.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x5736fc — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9HopperBinEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_0x5736fc() -> ! {
-    todo!("0x5736fc RBX::Reflection::EventDesc<RBX::HopperBin,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_0x5736fc(desc: *mut HopperBinEventDesc) {
+    // IDA 0x5736fc `EventDesc<HopperBin, void()>::D1`: memberwise teardown;
+    // dropping the box is the same release. Twin of 0x4a7734.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x573720 — __ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9HopperBinEFvvELi0EED1Ev")]
-pub fn stub_0x573720() -> ! {
-    todo!("0x573720 RBX::Reflection::BoundFuncDesc<RBX::HopperBin,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x573720(desc: *mut HopperBinFuncDesc) {
+    // IDA 0x573720 `BoundFuncDesc<HopperBin, void(), 0>::D1`: memberwise
+    // teardown; dropping the box is the same release. Twin of 0x4a7734.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x573744 — __ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9HopperBinESsED1Ev")]
-pub fn stub_0x573744() -> ! {
-    todo!("0x573744 RBX::Reflection::PropDescriptor<RBX::HopperBin,std::string>::~PropDescriptor()")
+pub fn stub_0x573744(desc: *mut HopperBinStringProp) {
+    // IDA 0x573744 `PropDescriptor<HopperBin, string>::D1`: memberwise
+    // teardown; dropping the box is the same release. Twin of 0x4a7734.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x573768 — __ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceE
 // type: int(void)
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceE")]
-pub fn stub_0x573768() -> ! {
-    todo!("0x573768 RBX::Reflection::RemoteEventDescImpl<0,RBX::HopperBin,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)")
+pub fn stub_0x573768(_source: *const ()) {
+    // IDA 0x573768 `RemoteEventDescImpl<0, HopperBin, void()>::replicateEvent`:
+    // ships the event to replicators; transport lands with the network
+    // subsystem. No-op until the remote-event port lands, as in 0xa80f18.
 }
 
 #[cfg(test)]
@@ -1881,5 +1971,47 @@ mod hopper_bin_tests {
         assert_eq!(stub_0x571960().name, "StarterGear");
         stub_0x571b94(&mut bin.item, "Hammer");
         assert_eq!(bin.item.name, "Hammer");
+    }
+}
+
+#[cfg(test)]
+mod hopper_bin_ctor_dtor_tests {
+    use super::*;
+    use crate::instance::{HopperBin, HopperBinRemoteEventDesc};
+
+    #[test]
+    fn hopper_bin_ctor_defaults() {
+        let bin = stub_0x5721a8();
+        assert_eq!(bin.item.name, "HopperBin");
+        assert_eq!(bin.bin_type, 0);
+        assert!(!bin.active);
+        assert_eq!(stub_0x573688(&bin), 0);
+    }
+
+    #[test]
+    fn hopper_bin_get_bin_type_tracks_setter() {
+        let mut bin = HopperBin::default();
+        stub_0x571428(&mut bin, 3);
+        assert_eq!(stub_0x573688(&bin), 3);
+    }
+
+    #[test]
+    fn hopper_bin_dtors_drop_boxes() {
+        stub_0x573664(Box::into_raw(Box::new(BackpackTextureProp {
+            name: "TextureId".to_string(),
+            category: "Appearance".to_string(),
+        })));
+        stub_0x573690(Box::into_raw(Box::new(HopperBinEnumProp {
+            name: "BinType".to_string(),
+            category: "Behavior".to_string(),
+        })));
+        stub_0x5736d8(Box::into_raw(Box::new(HopperBinRemoteEventDesc::default())));
+        stub_0x5736fc(Box::into_raw(Box::new(HopperBinEventDesc::default())));
+        stub_0x573720(Box::into_raw(Box::new(HopperBinFuncDesc::default())));
+        stub_0x573744(Box::into_raw(Box::new(HopperBinStringProp {
+            name: "Command".to_string(),
+            category: "Behavior".to_string(),
+        })));
+        stub_0x573768(std::ptr::null());
     }
 }
