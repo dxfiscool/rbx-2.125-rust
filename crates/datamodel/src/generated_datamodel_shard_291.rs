@@ -1093,97 +1093,209 @@ pub fn stub_0x5707ac() -> ! {
     todo!("0x5707ac RBX::HandlesBase::onAncestorChanged(RBX::AncestorChanged const&)")
 }
 
+/// `(value, name)` pairs of `EnumDesc<HopperBin::BinType>` (IDA `0x571180`
+/// disasm: `addPair(0, "Script")` 0x571264, `addPair(1, "GameTool")` 0x57127a,
+/// `addPair(2, "Grab")` 0x571290, `addPair(3, "Clone")` 0x5712a6,
+/// `addPair(4, "Hammer")` 0x5712bc). The three `addLegacy` rows
+/// (`(5, "Slingshot", 0)` 0x5712d4, `(6, "Rocket", 0)` 0x5712ec,
+/// `(7, "Laser", 0)` 0x571304) map onto value `0`; legacy wiring lands with
+/// `addLegacy` (IDA `0x573610`).
+pub const HOPPER_BIN_TYPE_ITEMS: [(i32, &str); 5] = [
+    (0, "Script"),
+    (1, "GameTool"),
+    (2, "Grab"),
+    (3, "Clone"),
+    (4, "Hammer"),
+];
+
+/// Legacy `BinType` names by their legacy index (IDA `0x571180` disasm
+/// `addLegacy` rows 0x5712d4-0x571304); all convert onto value `0`.
+pub const HOPPER_BIN_TYPE_LEGACY: [(usize, &str); 3] =
+    [(5, "Slingshot"), (6, "Rocket"), (7, "Laser")];
+
+/// Rust model of `RBX::TextureId` behind `BackpackItem::getTextureId` (IDA
+/// `0x5713d0`): the id string at `+200` with its tag word at `+204`
+/// (copied through `setTextureId`, IDA `0x571416`, and back, 0x5713e0).
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct BackpackTextureId {
+    pub id: String,
+    pub tag: u32,
+}
+
 // 0x57117c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev")]
-pub fn stub_0x57117c() -> ! {
-    todo!("0x57117c RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")
+pub fn stub_0x57117c() -> crate::instance::EnumDesc {
+    // IDA 0x57117c `EnumDesc<BinType>::C1`: the complete ctor runs the `C2`
+    // table-build (0x571180); the registry insert collapses into the static
+    // table.
+    stub_0x571180()
 }
 
 // 0x571180 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC2Ev")]
-pub fn stub_0x571180() -> ! {
-    todo!("0x571180 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::EnumDesc(void)")
+pub fn stub_0x571180() -> crate::instance::EnumDesc {
+    // IDA 0x571180 (disassembled): `EnumDesc<BinType>::C2` registers the
+    // `"BinType"` descriptor (0x57119c) plus the five `addPair` rows
+    // (0x571264-0x5712bc) and three `addLegacy` rows (0x5712d4-0x571304);
+    // the registry insert collapses into the static table. Same shape as
+    // 0x41d3d0.
+    crate::instance::EnumDesc {
+        name: "BinType",
+        pairs: HOPPER_BIN_TYPE_ITEMS.to_vec(),
+    }
 }
 
 // 0x5713d0 — __ZNK3RBX12BackpackItem12getTextureIdEv
 // type: _DWORD __fastcall(RBX::BackpackItem *__hidden this)
 #[doc(alias = "RBX::BackpackItem::getTextureId(void)const")]
 #[doc(alias = "__ZNK3RBX12BackpackItem12getTextureIdEv")]
-pub fn stub_0x5713d0() -> ! {
-    todo!("0x5713d0 RBX::BackpackItem::getTextureId(void)const")
+pub fn stub_0x5713d0(item: &crate::instance::BackpackItem) -> BackpackTextureId {
+    // IDA 0x5713d0 (decompiled): `getTextureId` copies the id string at
+    // `+200` (0x5713dc) and the tag word at `+204` (0x5713e0-0x5713e4) into
+    // the out `TextureId`.
+    BackpackTextureId { id: item.texture_id.clone(), tag: item.texture_tag }
 }
 
 // 0x5713e8 — __ZN3RBX12BackpackItem12setTextureIdERKNS_9TextureIdE
 // type: int __fastcall(RBX::BackpackItem *this, const RBX::TextureId *)
 #[doc(alias = "RBX::BackpackItem::setTextureId(RBX::TextureId const&)")]
 #[doc(alias = "__ZN3RBX12BackpackItem12setTextureIdERKNS_9TextureIdE")]
-pub fn stub_0x5713e8() -> ! {
-    todo!("0x5713e8 RBX::BackpackItem::setTextureId(RBX::TextureId const&)")
+pub fn stub_0x5713e8(item: &mut crate::instance::BackpackItem, texture: &BackpackTextureId) -> bool {
+    // IDA 0x5713e8 (decompiled): no-op when the id already matches
+    // (`operator!=` at 0x5713f8-0x5713fe); else assigns the string (0x571406)
+    // plus the tag word (0x571416) and raises the property change (0x571424,
+    // collapsed here). The store is the observable state change.
+    if item.texture_id == texture.id {
+        return false;
+    }
+    item.texture_id = texture.id.clone();
+    item.texture_tag = texture.tag;
+    true
 }
 
 // 0x571428 — __ZN3RBX9HopperBin10setBinTypeENS0_7BinTypeE
 #[doc(alias = "RBX::HopperBin::setBinType(RBX::HopperBin::BinType)")]
 #[doc(alias = "__ZN3RBX9HopperBin10setBinTypeENS0_7BinTypeE")]
-pub fn stub_0x571428() -> ! {
-    todo!("0x571428 RBX::HopperBin::setBinType(RBX::HopperBin::BinType)")
+pub fn stub_0x571428(bin: &mut crate::instance::HopperBin, value: i32) {
+    // IDA 0x571428 (decompiled): no-op when the word at `+74` already
+    // matches (0x571478); else stores it (0x571486) and raises the property
+    // change (0x571494, collapsed here). A nonzero value additionally
+    // refreshes the legacy texture from its enum name
+    // (`convertToString` 0x5714da into `setLegacyTextureName` 0x5714e6);
+    // unknown values convert empty, as in 0x10248.
+    if bin.bin_type != value {
+        bin.bin_type = value;
+        if value != 0 {
+            let name = HOPPER_BIN_TYPE_ITEMS
+                .iter()
+                .find(|(v, _)| *v == value)
+                .map(|(_, text)| text.to_string())
+                .unwrap_or_default();
+            stub_0x571654(bin, &name);
+        }
+    }
 }
 
 // 0x5715a8 — __ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this, const RBX::Reflection::PropertyDescriptor *)
 #[doc(alias = "RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "__ZN3RBX9HopperBin11dataChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_0x5715a8() -> ! {
-    todo!("0x5715a8 RBX::HopperBin::dataChanged(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_0x5715a8(_bin: &crate::instance::HopperBin) {
+    // IDA 0x5715a8 (decompiled): `dataChanged` has an empty body; drop
+    // glue — no-op.
 }
 
 // 0x5715ac — __ZN3RBX9HopperBin7disableEv
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "RBX::HopperBin::disable(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin7disableEv")]
-pub fn stub_0x5715ac() -> ! {
-    todo!("0x5715ac RBX::HopperBin::disable(void)")
+pub fn stub_0x5715ac(bin: &mut crate::instance::HopperBin) {
+    // IDA 0x5715ac (disassembled): early return when byte `+0x124` is clear
+    // (0x5715b2-0x5715ba); else fires the 0-arg signal when the word at
+    // `+0x128` is clear (0x5715bc-0x5715c6, collapsed here), clears byte
+    // `+0x124` (0x5715d4), raises the property change (0x5715da-0x5715e0,
+    // collapsed), then resets the default mouse command through the
+    // workspace (0x5715e6-0x5715f2, collapsed). The flag clear is the
+    // observable state change.
+    bin.active = false;
 }
 
 // 0x5715f8 — __ZN3RBX9HopperBin16setLegacyCommandERKSs
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this, const std::string *)
 #[doc(alias = "RBX::HopperBin::setLegacyCommand(std::string const&)")]
 #[doc(alias = "__ZN3RBX9HopperBin16setLegacyCommandERKSs")]
-pub fn stub_0x5715f8() -> ! {
-    todo!("0x5715f8 RBX::HopperBin::setLegacyCommand(std::string const&)")
+pub fn stub_0x5715f8(bin: &mut crate::instance::HopperBin, name: &str) {
+    // IDA 0x5715f8 (decompiled): looks the name up (`Name::lookup` 0x571628)
+    // and converts through the `BinType` desc (`convertToValue` 0x571642 —
+    // legacy names convert onto `0`, misses convert `0`), then runs
+    // `setBinType` (0x57164c).
+    let value = HOPPER_BIN_TYPE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+        .or_else(|| {
+            HOPPER_BIN_TYPE_LEGACY
+                .iter()
+                .find(|(_, text)| *text == name)
+                .map(|_| 0)
+        })
+        .unwrap_or(0);
+    stub_0x571428(bin, value);
 }
 
 // 0x571654 — __ZN3RBX9HopperBin20setLegacyTextureNameERKSs
 // type: _DWORD __fastcall(RBX::HopperBin *__hidden this, const std::string *)
 #[doc(alias = "RBX::HopperBin::setLegacyTextureName(std::string const&)")]
 #[doc(alias = "__ZN3RBX9HopperBin20setLegacyTextureNameERKSs")]
-pub fn stub_0x571654() -> ! {
-    todo!("0x571654 RBX::HopperBin::setLegacyTextureName(std::string const&)")
+pub fn stub_0x571654(bin: &mut crate::instance::HopperBin, name: &str) {
+    // IDA 0x571654 (decompiled): builds `"Textures/" + name + ".png"`
+    // (0x571682-0x5716ce), wraps it via `ContentId::fromAssets`
+    // (0x5716f2 — `"rbxasset://" + path`, IDA 0x315368-0x571396), and stores
+    // it through `BackpackItem::setTextureId` (0x57171a). The tag word of a
+    // transient `TextureId` has no modeled source (stale-stack spill,
+    // 0x571706), so the legacy path keeps the current tag.
+    let id = format!("rbxasset://Textures/{name}.png");
+    let texture = BackpackTextureId { id, tag: bin.item.texture_tag };
+    stub_0x5713e8(&mut bin.item, &texture);
 }
 
 // 0x57195c — __ZN3RBX11StarterGearC1Ev
 // type: _DWORD __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "RBX::StarterGear::StarterGear(void)")]
 #[doc(alias = "__ZN3RBX11StarterGearC1Ev")]
-pub fn stub_0x57195c() -> ! {
-    todo!("0x57195c RBX::StarterGear::StarterGear(void)")
+pub fn stub_0x57195c() -> crate::instance::StarterGear {
+    // IDA 0x57195c `StarterGear::C1`: the complete ctor runs the `C2` body
+    // (0x571960); the vtable/base collapse is shared.
+    stub_0x571960()
 }
 
 // 0x571960 — __ZN3RBX11StarterGearC2Ev
 // type: _DWORD __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "RBX::StarterGear::StarterGear(void)")]
 #[doc(alias = "__ZN3RBX11StarterGearC2Ev")]
-pub fn stub_0x571960() -> ! {
-    todo!("0x571960 RBX::StarterGear::StarterGear(void)")
+pub fn stub_0x571960() -> crate::instance::StarterGear {
+    // IDA 0x571960 (decompiled): `StarterGear::C2` — runs the `Instance`
+    // base (0x571982), installs the vtable words (0x5719b4-0x571a42), bumps
+    // the class registrar (0x571a1c), and names the instance
+    // `"StarterGear"` (0x571a4c-0x571a58). The base/registry collapse; the
+    // observable state is the name.
+    let mut gear = crate::instance::StarterGear::default();
+    gear.name = "StarterGear".to_string();
+    gear
 }
 
 // 0x571b94 — __ZN3RBX12BackpackItem7setNameERKSs
 // type: _DWORD __fastcall(RBX::BackpackItem *__hidden this, const std::string *)
 #[doc(alias = "RBX::BackpackItem::setName(std::string const&)")]
 #[doc(alias = "__ZN3RBX12BackpackItem7setNameERKSs")]
-pub fn stub_0x571b94() -> ! {
-    todo!("0x571b94 RBX::BackpackItem::setName(std::string const&)")
+pub fn stub_0x571b94(item: &mut crate::instance::BackpackItem, name: &str) {
+    // IDA 0x571b94 (decompiled): stores through `Instance::setName` unless
+    // the profanity filter trips (0x571b9e-0x571bb0, collapsed here — the
+    // filter lands with the text batch). The store is the observable state
+    // change.
+    item.name = name.to_string();
 }
 
 // 0x571bb4 — __ZNK3RBX12BackpackItem8getBinIdEv
@@ -1695,5 +1807,79 @@ mod handles_base_tests {
         assert!(base.server_gui);
         stub_0x5707a4(&mut base);
         assert!(base.server_gui);
+    }
+}
+
+#[cfg(test)]
+mod hopper_bin_tests {
+    use super::*;
+    use crate::instance::{BackpackItem, HopperBin};
+
+    #[test]
+    fn bin_type_desc_table() {
+        let desc = stub_0x571180();
+        assert_eq!(desc.name, "BinType");
+        assert_eq!(
+            desc.pairs,
+            vec![
+                (0, "Script"),
+                (1, "GameTool"),
+                (2, "Grab"),
+                (3, "Clone"),
+                (4, "Hammer"),
+            ]
+        );
+        assert_eq!(stub_0x57117c().pairs, desc.pairs);
+    }
+
+    #[test]
+    fn texture_id_round_trip() {
+        let mut item = BackpackItem::default();
+        assert_eq!(stub_0x5713d0(&item).id, "");
+        let tex = BackpackTextureId { id: "rbxasset://Textures/Hammer.png".to_string(), tag: 7 };
+        assert!(stub_0x5713e8(&mut item, &tex));
+        assert_eq!(stub_0x5713d0(&item), tex);
+        assert!(!stub_0x5713e8(&mut item, &tex));
+    }
+
+    #[test]
+    fn set_bin_type_propagates_texture() {
+        let mut bin = HopperBin::default();
+        stub_0x571428(&mut bin, 4);
+        assert_eq!(bin.bin_type, 4);
+        assert_eq!(bin.item.texture_id, "rbxasset://Textures/Hammer.png");
+        stub_0x571428(&mut bin, 4);
+        assert_eq!(bin.item.texture_id, "rbxasset://Textures/Hammer.png");
+        stub_0x571428(&mut bin, 0);
+        assert_eq!(bin.bin_type, 0);
+        assert_eq!(bin.item.texture_id, "rbxasset://Textures/Hammer.png");
+    }
+
+    #[test]
+    fn legacy_command_and_texture_name() {
+        let mut bin = HopperBin::default();
+        stub_0x5715f8(&mut bin, "Grab");
+        assert_eq!(bin.bin_type, 2);
+        stub_0x5715f8(&mut bin, "Laser");
+        assert_eq!(bin.bin_type, 0);
+        stub_0x5715f8(&mut bin, "NoSuchTool");
+        assert_eq!(bin.bin_type, 0);
+        stub_0x571654(&mut bin, "Slingshot");
+        assert_eq!(bin.item.texture_id, "rbxasset://Textures/Slingshot.png");
+    }
+
+    #[test]
+    fn data_changed_disable_and_names() {
+        let mut bin = HopperBin::default();
+        stub_0x5715a8(&bin);
+        bin.active = true;
+        stub_0x5715ac(&mut bin);
+        assert!(!bin.active);
+        stub_0x5715ac(&mut bin);
+        assert!(!bin.active);
+        assert_eq!(stub_0x57195c().name, "StarterGear");
+        assert_eq!(stub_0x571960().name, "StarterGear");
+        stub_0x571b94(&mut bin.item, "Hammer");
+        assert_eq!(bin.item.name, "Hammer");
     }
 }

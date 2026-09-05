@@ -2323,17 +2323,39 @@ pub struct HopperBinRemoteEventDesc {
     pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
 }
 
+/// Rust model of `RBX::BackpackItem` (IDA `0x5713d0`): the backpack-item base
+/// over `Instance`; `name` is the `Instance` name behind `setName` (IDA
+/// `0x571b94`, profanity gate collapsed). `texture_id` is the `TextureId`
+/// string at `+200` with its tag word at `+204` behind
+/// `getTextureId`/`setTextureId` (IDA `0x5713d0`/`0x5713e8`); the parent link
+/// behind `getBinId`/`inBackpack` (IDA `0x571bb4`/`0x571c18`) lands with the
+/// hierarchy batch.
+#[derive(Default)]
+pub struct BackpackItem {
+    pub name: String,
+    pub texture_id: String,
+    pub texture_tag: u32,
+}
+
 /// Rust model of `RBX::StarterGear` (IDA `0x571b54`): the starter-gear leaf;
-/// members land with the game batch.
+/// `name` is the `Instance` name set to `"StarterGear"` by the ctor (IDA
+/// `0x571a4c`-`0x571a58`).
 #[derive(Default)]
 pub struct StarterGear {
+    pub name: String,
     _opaque: (),
 }
 
-/// Rust model of `RBX::HopperBin` (IDA `0x5736b4`): the hopper-bin leaf;
-/// members land with the game batch.
+/// Rust model of `RBX::HopperBin` (IDA `0x5736b4`): the hopper-bin leaf over
+/// `BackpackItem` (the native passes its `this` to `BackpackItem` methods,
+/// IDA `0x57171a`); `bin_type` is the `BinType` word at `+74` behind
+/// `setBinType` (IDA `0x571428`), `active` the byte at `+0x124` behind
+/// `disable` (IDA `0x5715ac`).
 #[derive(Default)]
 pub struct HopperBin {
+    pub item: BackpackItem,
+    pub bin_type: i32,
+    pub active: bool,
     _opaque: (),
 }
 
