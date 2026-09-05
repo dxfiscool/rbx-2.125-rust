@@ -7,6 +7,54 @@
 
 use rbx_core::SharedPtr;
 
+/// libpng info-struct view behind the `png_get_*` accessors (IDA 0x15d9f0 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct PngInfo {
+    pub valid: u32,
+    pub width: u32,
+    pub height: u32,
+    pub bit_depth: u8,
+    pub color_type: u8,
+    pub compression: u8,
+    pub filter: u8,
+    pub interlace: u8,
+    pub palette: Vec<[u8; 3]>,
+    pub trans_alpha: Vec<u8>,
+    pub trans_color: Option<(u16, u16, u16)>,
+    pub background: [u16; 3],
+    pub gamma: Option<f32>,
+    pub icc_name: Option<String>,
+    pub icc_profile: Vec<u8>,
+    pub icc_compression: u8,
+    pub phys_x: u32,
+    pub phys_y: u32,
+    pub phys_unit: u8,
+    pub text: Vec<(String, String)>,
+}
+
+/// libpng error-fn triple installed by `png_set_error_fn` (IDA 0x15d57c).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct PngErrorFns {
+    pub error_fn: usize,
+    pub warning_fn: usize,
+    pub data: usize,
+}
+
+/// libpng mem-fn triple installed by `png_set_mem_fn` (IDA 0x15dd50).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct PngMemFns {
+    pub malloc_fn: usize,
+    pub free_fn: usize,
+    pub data: usize,
+}
+
+/// PNG transparency payload returned by `png_get_tRNS` (IDA 0x15dbec).
+#[derive(Clone, Debug)]
+pub enum PngTrans {
+    Palette(Vec<u8>),
+    Color((u16, u16, u16)),
+}
+
 /// PNG file signature compared by `png_sig_cmp` (IDA 0x15ceec: `C_20_6287`).
 pub const PNG_SIGNATURE: [u8; 8] = [0x89, b'P', b'N', b'G', 0x0D, 0x0A, 0x1A, 0x0A];
 
@@ -732,176 +780,312 @@ pub fn stub_15d4c4(has_ctx: bool, create: &mut dyn FnMut() -> Option<Vec<u8>>, i
 // 0x15d510 — _png_calculate_crc
 // type: uLong __fastcall(uLong result, const Bytef *, uInt)
 #[doc(alias = "_png_calculate_crc")]
-pub fn stub_15d510() -> ! {
-    todo!("0x15d510 _png_calculate_crc")
+pub fn stub_15d510(crc_enabled: bool, encrypted: bool, mode: u32, current: u32, data: &[u8], crc32: &mut dyn FnMut(u32, &[u8]) -> u32) -> u32 {
+    // IDA 0x15d510: ancillary-skip and encrypt-bypass paths return the incoming crc; else accumulate.
+    if crc_enabled {
+        if mode == 768 {
+            return current;
+        }
+    } else if encrypted {
+        return current;
+    }
+    crc32(current, data)
 }
 
 // 0x15d558 — _png_reset_crc
 // type: uLong __fastcall(int)
 #[doc(alias = "_png_reset_crc")]
-pub fn stub_15d558() -> ! {
-    todo!("0x15d558 _png_reset_crc")
+pub fn stub_15d558() -> u32 {
+    // IDA 0x15d558: crc = crc32(0, 0, 0); store; return it.
+    0
 }
 
 // 0x15d57c — _png_set_error_fn
 // type: _DWORD *__fastcall(_DWORD *result, int, int, int)
 #[doc(alias = "_png_set_error_fn")]
-pub fn stub_15d57c() -> ! {
-    todo!("0x15d57c _png_set_error_fn")
+pub fn stub_15d57c(fns: &mut Option<PngErrorFns>, error_fn: usize, warning_fn: usize, data: usize) -> bool {
+    // IDA 0x15d57c: null → passthrough; store the three fns.
+    match fns {
+        Some(f) => {
+            *f = PngErrorFns { error_fn, warning_fn, data };
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x15d590 — _png_format_buffer
 // type: void *__fastcall(unsigned __int8 *, _BYTE *, void *__src)
 #[doc(alias = "_png_format_buffer")]
-pub fn stub_15d590() -> ! {
-    todo!("0x15d590 _png_format_buffer")
+pub fn stub_15d590(name: &[u8; 4]) -> String {
+    // IDA 0x15d590: printable fourcc → itself; other bytes → "[hh]" hex via png_digit.
+    const DIGITS: &[u8; 16] = b"0123456789abcdef";
+    let mut out = String::new();
+    for &c in name {
+        if (65..=90).contains(&c) || (97..=122).contains(&c) {
+            out.push(c as char);
+        } else {
+            out.push('[');
+            out.push(DIGITS[(c >> 4) as usize] as char);
+            out.push(DIGITS[(c & 0xF) as usize] as char);
+            out.push(']');
+        }
+    }
+    out
 }
 
 // 0x15d790 — _png_warning
 // type: int __fastcall(int, _BYTE *)
 #[doc(alias = "_png_warning")]
-pub fn stub_15d790() -> ! {
-    todo!("0x15d790 _png_warning")
+pub fn stub_15d790(msg: &str, warn: &mut dyn FnMut(&str)) {
+    // IDA 0x15d790: strip a leading "#N " counter prefix; dispatch to the warning proc.
+    let bytes = msg.as_bytes();
+    let mut skip = 0;
+    if bytes.first() == Some(&b'#') {
+        for n in 1..=8 {
+            if bytes.get(n) == Some(&b' ') {
+                skip = n + 1;
+                break;
+            }
+        }
+    }
+    warn(&msg[skip.min(msg.len())..]);
 }
 
 // 0x15d8f0 — _png_chunk_warning
 // type: int __fastcall(unsigned __int8 *, _BYTE *__src)
 #[doc(alias = "_png_chunk_warning")]
-pub fn stub_15d8f0() -> ! {
-    todo!("0x15d8f0 _png_chunk_warning")
+pub fn stub_15d8f0(chunk: &[u8; 4], msg: &str, warn: &mut dyn FnMut(String)) {
+    // IDA 0x15d8f0: format the chunk name, then png_warning.
+    warn(format!("{}: {}", stub_15d590(chunk), msg));
 }
 
 // 0x15d924 — _png_error
 // type: void __fastcall __noreturn(int *, const char *)
 #[doc(alias = "_png_error")]
-pub fn stub_15d924() -> ! {
-    todo!("0x15d924 _png_error")
+pub fn stub_15d924(error_fn: Option<&mut dyn FnMut()>, msg: &str, jmp: &mut dyn FnMut()) {
+    // IDA 0x15d924: error_fn proc if set; stderr "libpng error: %s"; longjmp(1) (abort when null ctx).
+    // BUG: original diverges via longjmp; modeled with a trailing panic.
+    if let Some(f) = error_fn {
+        f();
+    }
+    eprintln!("libpng error: {}", msg);
+    jmp();
+    panic!("diverges per IDA 0x15d924");
 }
 
 // 0x15d9bc — _png_chunk_error
 // type: void __fastcall __noreturn(unsigned __int8 *, _BYTE *__src)
 #[doc(alias = "_png_chunk_error")]
-pub fn stub_15d9bc() -> ! {
-    todo!("0x15d9bc _png_chunk_error")
+pub fn stub_15d9bc(chunk: Option<&[u8; 4]>, msg: &str, error: &mut dyn FnMut(String)) {
+    // IDA 0x15d9bc: format the chunk name when present, then png_error.
+    // BUG: original diverges via longjmp; modeled with a trailing panic.
+    match chunk {
+        Some(c) => error(format!("{}: {}", stub_15d590(c), msg)),
+        None => error(msg.to_owned()),
+    }
+    panic!("diverges per IDA 0x15d9bc");
 }
 
 // 0x15d9e8 — sub_15D9E8
 // type: void __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "sub_15D9E8")]
-pub fn stub_15d9e8() -> ! {
-    todo!("0x15d9e8 sub_15D9E8")
+pub fn stub_15d9e8() {
+    // IDA 0x15d9e8: single POP return (padding thunk).
 }
 
 // 0x15d9f0 — _png_get_valid
 // type: int __fastcall(int, int, int)
 #[doc(alias = "_png_get_valid")]
-pub fn stub_15d9f0() -> ! {
-    todo!("0x15d9f0 _png_get_valid")
+pub fn stub_15d9f0(info: Option<&PngInfo>, mask: u32) -> u32 {
+    // IDA 0x15d9f0: null → 0; else valid-mask & word.
+    info.map(|i| mask & i.valid).unwrap_or(0)
 }
 
 // 0x15da0c — _png_get_color_type
 // type: int __fastcall(int, int)
 #[doc(alias = "_png_get_color_type")]
-pub fn stub_15da0c() -> ! {
-    todo!("0x15da0c _png_get_color_type")
+pub fn stub_15da0c(info: Option<&PngInfo>) -> u8 {
+    // IDA 0x15da0c: null → 0; else the color-type byte (+25).
+    info.map(|i| i.color_type).unwrap_or(0)
 }
 
 // 0x15da24 — _png_get_bKGD
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "_png_get_bKGD")]
-pub fn stub_15da24() -> ! {
-    todo!("0x15da24 _png_get_bKGD")
+pub fn stub_15da24(info: Option<&PngInfo>, out: Option<&mut [u16; 3]>) -> u32 {
+    // IDA 0x15da24: null info/out → 0; valid bit 5 clear → 0; else copy the triple; 32.
+    let (info, out) = match (info, out) {
+        (Some(i), Some(o)) => (i, o),
+        _ => return 0,
+    };
+    if info.valid >> 5 & 1 == 0 {
+        return 0;
+    }
+    *out = info.background;
+    32
 }
 
 // 0x15da58 — _png_get_gAMA
 // type: int __fastcall(int, int, double *)
 #[doc(alias = "_png_get_gAMA")]
-pub fn stub_15da58() -> ! {
-    todo!("0x15da58 _png_get_gAMA")
+pub fn stub_15da58(info: Option<&PngInfo>, out: Option<&mut f32>) -> i32 {
+    // IDA 0x15da58: null info/out or valid-0 → 0; else the gamma float; 1.
+    match (info, out) {
+        (Some(i), Some(o)) if i.valid & 1 != 0 => {
+            *o = i.gamma.unwrap_or(0.0);
+            1
+        }
+        _ => 0,
+    }
 }
 
 // 0x15da98 — _png_get_iCCP
 // type: int __fastcall(int, int, _DWORD *, _DWORD *, _DWORD *, _DWORD *)
 #[doc(alias = "_png_get_iCCP")]
-pub fn stub_15da98() -> ! {
-    todo!("0x15da98 _png_get_iCCP")
+pub fn stub_15da98(info: Option<&PngInfo>) -> Option<(String, Vec<u8>, u8)> {
+    // IDA 0x15da98: null → null; valid bit 12 clear → null; all outs required; (name, profile,
+    // compression); flag 4096.
+    let info = info?;
+    if info.valid >> 12 & 1 == 0 {
+        return None;
+    }
+    Some((info.icc_name.clone()?, info.icc_profile.clone(), info.icc_compression))
 }
 
 // 0x15dafc — _png_get_pHYs
 // type: int __fastcall(int, int, _DWORD *, _DWORD *, _DWORD *)
 #[doc(alias = "_png_get_pHYs")]
-pub fn stub_15dafc() -> ! {
-    todo!("0x15dafc _png_get_pHYs")
+pub fn stub_15dafc(info: Option<&PngInfo>) -> Option<(u32, u32, u8)> {
+    // IDA 0x15dafc: null → null; valid 0x80 clear → null; else (x, y, unit); presence flags.
+    let info = info?;
+    if info.valid & 0x80 == 0 {
+        return None;
+    }
+    Some((info.phys_x, info.phys_y, info.phys_unit))
 }
 
 // 0x15db58 — _png_get_PLTE
 // type: int __fastcall(int, int, _DWORD *, _DWORD *)
 #[doc(alias = "_png_get_PLTE")]
-pub fn stub_15db58() -> ! {
-    todo!("0x15db58 _png_get_PLTE")
+pub fn stub_15db58(info: Option<&PngInfo>) -> Option<(Vec<[u8; 3]>, u16)> {
+    // IDA 0x15db58: null → null; valid bit 3 clear → null; else (palette, count); flag 8.
+    let info = info?;
+    if info.valid >> 3 & 1 == 0 {
+        return None;
+    }
+    Some((info.palette.clone(), info.palette.len() as u16))
 }
 
 // 0x15db98 — _png_get_text
 // type: _DWORD *__fastcall(_DWORD *result, int, _DWORD *, int *)
 #[doc(alias = "_png_get_text")]
-pub fn stub_15db98() -> ! {
-    todo!("0x15db98 _png_get_text")
+pub fn stub_15db98(info: Option<&PngInfo>) -> Vec<(String, String)> {
+    // IDA 0x15db98: null → empty; else the text pairs (count/pointer outs).
+    info.map(|i| i.text.clone()).unwrap_or_default()
 }
 
 // 0x15dbec — _png_get_tRNS
 // type: int __fastcall(int, int, int *, _DWORD *, _DWORD *)
 #[doc(alias = "_png_get_tRNS")]
-pub fn stub_15dbec() -> ! {
-    todo!("0x15dbec _png_get_tRNS")
+pub fn stub_15dbec(info: Option<&PngInfo>) -> Option<PngTrans> {
+    // IDA 0x15dbec: null → null; valid bit 4 clear → null; palette → alpha list (16); else color (16).
+    let info = info?;
+    if info.valid & 0x10 == 0 {
+        return None;
+    }
+    if info.color_type == 3 {
+        Some(PngTrans::Palette(info.trans_alpha.clone()))
+    } else {
+        info.trans_color.map(PngTrans::Color)
+    }
 }
 
 // 0x15dc7c — _png_get_IHDR
 // type: int __fastcall(_DWORD *, int, _DWORD *, _DWORD *, _DWORD *, _DWORD *, _DWORD *, _DWORD *, _DWORD *)
 #[doc(alias = "_png_get_IHDR")]
-pub fn stub_15dc7c() -> ! {
-    todo!("0x15dc7c _png_get_IHDR")
+pub fn stub_15dc7c(info: Option<&PngInfo>) -> Option<(u32, u32, u8, u8, u8, u8, u8)> {
+    // IDA 0x15dc7c: nulls → null; else the seven IHDR fields; 1.
+    let info = info?;
+    Some((
+        info.width,
+        info.height,
+        info.bit_depth,
+        info.color_type,
+        info.compression,
+        info.filter,
+        info.interlace,
+    ))
 }
 
 // 0x15dd50 — _png_set_mem_fn
 // type: _DWORD *__fastcall(_DWORD *result, int, int, int)
 #[doc(alias = "_png_set_mem_fn")]
-pub fn stub_15dd50() -> ! {
-    todo!("0x15dd50 _png_set_mem_fn")
+pub fn stub_15dd50(fns: &mut Option<PngMemFns>, malloc_fn: usize, free_fn: usize, data: usize) -> bool {
+    // IDA 0x15dd50: null → passthrough; store the three words.
+    match fns {
+        Some(f) => {
+            *f = PngMemFns { malloc_fn, free_fn, data };
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x15dd64 — _png_memset_check
 // type: void *__fastcall(int, void *__b, int __c, size_t __len)
 #[doc(alias = "_png_memset_check")]
-pub fn stub_15dd64() -> ! {
-    todo!("0x15dd64 _png_memset_check")
+pub fn stub_15dd64(dst: &mut [u8], val: u8) -> usize {
+    // IDA 0x15dd64: memset(dst, val, len); return len.
+    dst.fill(val);
+    dst.len()
 }
 
 // 0x15dd80 — _png_memcpy_check
 // type: void *__fastcall(int, void *__dst, void *__src, size_t __n)
 #[doc(alias = "_png_memcpy_check")]
-pub fn stub_15dd80() -> ! {
-    todo!("0x15dd80 _png_memcpy_check")
+pub fn stub_15dd80(dst: &mut [u8], src: &[u8]) -> usize {
+    // IDA 0x15dd80: memcpy(dst, src, n); return n.
+    let n = dst.len().min(src.len());
+    dst[..n].copy_from_slice(&src[..n]);
+    n
 }
 
 // 0x15dd9c — _png_free_default
 // type: void __fastcall(int, void *)
 #[doc(alias = "_png_free_default")]
-pub fn stub_15dd9c() -> ! {
-    todo!("0x15dd9c _png_free_default")
+pub fn stub_15dd9c(block: Option<Vec<u8>>) {
+    // IDA 0x15dd9c: null either → no-op; else default free (drop).
+    drop(block);
 }
 
 // 0x15ddbc — _png_free
 // type: void __fastcall(int, void *)
 #[doc(alias = "_png_free")]
-pub fn stub_15ddbc() -> ! {
-    todo!("0x15ddbc _png_free")
+pub fn stub_15ddbc(block: Option<Vec<u8>>, custom: Option<&mut dyn FnMut()>) {
+    // IDA 0x15ddbc: null either → no-op; custom free proc else default free.
+    if block.is_none() {
+        return;
+    }
+    match custom {
+        Some(f) => {
+            f();
+            std::mem::forget(block);
+        }
+        None => drop(block),
+    }
 }
 
 // 0x15dddc — _png_destroy_struct_2
 // type: void __fastcall(void *, void (__fastcall *)(_DWORD *, void *), int)
 #[doc(alias = "_png_destroy_struct_2")]
-pub fn stub_15dddc() -> ! {
-    todo!("0x15dddc _png_destroy_struct_2")
+pub fn stub_15dddc(block: Option<Vec<u8>>, destroy: Option<&mut dyn FnMut()>) {
+    // IDA 0x15dddc: null → no-op; destroy proc with the block header else plain free.
+    match (block, destroy) {
+        (Some(_), Some(d)) => d(),
+        (Some(b), None) => drop(b),
+        _ => {}
+    }
 }
 
 // 0x15de18 — _png_destroy_struct
