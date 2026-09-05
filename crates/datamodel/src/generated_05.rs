@@ -17,6 +17,7 @@ use std::any::Any;
 /// Rust model of the `RBX::Instance` header fields read by this shard's leaves.
 /// The original C++ object is larger; only the slots used below are modelled,
 /// with original offsets noted per accessor.
+#[derive(Default)]
 pub struct Instance {
     /// Original `*(this + 13)` (byte `0x34`); unretained, hence "dangerous".
     pub parent: *const Instance,
