@@ -13,155 +13,194 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x573944 — __ZN3RBX13RelativePanelC2Ev
 #[doc(alias = "RBX::RelativePanel::RelativePanel(void)")]
 #[doc(alias = "__ZN3RBX13RelativePanelC2Ev")]
-pub fn stub_0x573944() -> ! {
-    todo!("0x573944 RBX::RelativePanel::RelativePanel(void)")
+pub fn stub_0x573944() -> crate::instance::RelativePanel {
+    // IDA 0x573944 (decompiled): `RelativePanel::C2` — runs the `TopMenuBar`
+    // base (0x573964), installs the vtable words (0x57397a-0x573998), zeroes
+    // the layout words (0x5739a8-0x5739b2), and runs `init` with the clear
+    // color (0x5739ba-0x5739fc). The base/vtables/init collapse; the panel
+    // itself is opaque.
+    crate::instance::RelativePanel::default()
 }
 
 // 0x573a5c — __ZN3RBX9HopperBinD1Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZN3RBX9HopperBinD1Ev")]
-pub fn stub_0x573a5c() -> ! {
-    todo!("0x573a5c RBX::HopperBin::~HopperBin()")
+pub fn stub_0x573a5c(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573a5c (decompiled): `HopperBin::D1` — thunk tail-calling the
+    // `D2` body (`0x5795ac`, future batch). The modeled members (`item`
+    // strings, `bin_type`, `active`) are plain words; the replicator
+    // connections live in core. Drop glue — no-op.
 }
 
 // 0x573a60 — __ZN3RBX9HopperBinD0Ev
 #[doc(alias = "RBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZN3RBX9HopperBinD0Ev")]
-pub fn stub_0x573a60() -> ! {
-    todo!("0x573a60 RBX::HopperBin::~HopperBin()")
+pub fn stub_0x573a60(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573a60 (decompiled): `HopperBin::D0` — calls the `D1` body
+    // (0x573ab0) then `operator delete` (0x573ab6). Same drop glue as
+    // 0x573a5c — no-op.
 }
 
 // 0x573b10 — __ZN3RBX12BackpackItem9isEnabledEv
 #[doc(alias = "RBX::BackpackItem::isEnabled(void)")]
 #[doc(alias = "__ZN3RBX12BackpackItem9isEnabledEv")]
 pub fn stub_0x573b10() -> ! {
+    // BLOCKED: tail-calls `inBackpack` (0x571c18); needs parent-hierarchy
+    // (Backpack container) infra
     todo!("0x573b10 RBX::BackpackItem::isEnabled(void)")
 }
 
 // 0x573b1c — __ZNK3RBX12BackpackItem11drawEnabledEv
 #[doc(alias = "RBX::BackpackItem::drawEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX12BackpackItem11drawEnabledEv")]
-pub fn stub_0x573b1c() -> ! {
-    todo!("0x573b1c RBX::BackpackItem::drawEnabled(void)const")
+pub fn stub_0x573b1c(_item: &crate::instance::BackpackItem) -> bool {
+    // IDA 0x573b1c (decompiled): `BackpackItem::drawEnabled` — `MOVS R0,
+    // #1`; always drawn-enabled.
+    true
 }
 
 // 0x573b20 — __ZNK3RBX9HopperBin12drawSelectedEv
 #[doc(alias = "RBX::HopperBin::drawSelected(void)const")]
 #[doc(alias = "__ZNK3RBX9HopperBin12drawSelectedEv")]
-pub fn stub_0x573b20() -> ! {
-    todo!("0x573b20 RBX::HopperBin::drawSelected(void)const")
+pub fn stub_0x573b20(bin: &crate::instance::HopperBin) -> bool {
+    // IDA 0x573b20 (decompiled): `HopperBin::drawSelected` — returns the
+    // byte at `+292` (`+0x124`), the `active` word behind `disable` (IDA
+    // 0x5715ac).
+    bin.active
 }
 
 // 0x573b28 — __ZThn32_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZThn32_N3RBX9HopperBinD1Ev")]
-pub fn stub_0x573b28() -> ! {
-    todo!("0x573b28 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_0x573b28(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573b28 (disasm): `Thn32_HopperBin::D1` — `SUBS R0, #0x20` then
+    // tail-calls the `D2` body; same drop glue as 0x573a5c — no-op.
 }
 
 // 0x573b30 — __ZThn32_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZThn32_N3RBX9HopperBinD0Ev")]
-pub fn stub_0x573b30() -> ! {
-    todo!("0x573b30 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_0x573b30(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573b30: `Thn32_HopperBin::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573a60 — no-op.
 }
 
 // 0x573be4 — __ZThn36_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZThn36_N3RBX9HopperBinD1Ev")]
-pub fn stub_0x573be4() -> ! {
-    todo!("0x573be4 non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_0x573be4(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573be4 (disasm): `Thn36_HopperBin::D1` — `SUBS R0, #0x24` then
+    // tail-calls the `D2` body; same drop glue as 0x573a5c — no-op.
 }
 
 // 0x573bec — __ZThn36_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 #[doc(alias = "__ZThn36_N3RBX9HopperBinD0Ev")]
-pub fn stub_0x573bec() -> ! {
-    todo!("0x573bec non-virtual thunk toRBX::HopperBin::~HopperBin()")
+pub fn stub_0x573bec(_bin: &mut crate::instance::HopperBin) {
+    // IDA 0x573bec: `Thn36_HopperBin::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573a60 — no-op.
 }
 
 // 0x573c90 — __ZN3RBX11StarterGearD1Ev
 #[doc(alias = "RBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZN3RBX11StarterGearD1Ev")]
-pub fn stub_0x573c90() -> ! {
-    todo!("0x573c90 RBX::StarterGear::~StarterGear()")
+pub fn stub_0x573c90(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573c90 (decompiled): `StarterGear::D1` — thunk tail-calling the
+    // `Instance` dtor; the modeled `name` drops itself. Drop glue — no-op.
 }
 
 // 0x573c94 — __ZN3RBX11StarterGearD0Ev
 #[doc(alias = "RBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZN3RBX11StarterGearD0Ev")]
-pub fn stub_0x573c94() -> ! {
-    todo!("0x573c94 RBX::StarterGear::~StarterGear()")
+pub fn stub_0x573c94(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573c94: `StarterGear::D0` — calls the `D1` body then `operator
+    // delete`; same drop glue as 0x573c90 — no-op.
 }
 
 // 0x573d34 — __ZN3RBX11StarterGear15canClientCreateEv
 #[doc(alias = "RBX::StarterGear::canClientCreate(void)")]
 #[doc(alias = "__ZN3RBX11StarterGear15canClientCreateEv")]
-pub fn stub_0x573d34() -> ! {
-    todo!("0x573d34 RBX::StarterGear::canClientCreate(void)")
+pub fn stub_0x573d34(_gear: &crate::instance::StarterGear) -> bool {
+    // IDA 0x573d34 (decompiled): `StarterGear::canClientCreate` — `MOVS R0,
+    // #1`; always client-creatable.
+    true
 }
 
 // 0x573d48 — __ZThn32_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZThn32_N3RBX11StarterGearD1Ev")]
-pub fn stub_0x573d48() -> ! {
-    todo!("0x573d48 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_0x573d48(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573d48: `Thn32_StarterGear::D1` — this-adjust + dtor tail call;
+    // same drop glue as 0x573c90 — no-op.
 }
 
 // 0x573d50 — __ZThn32_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZThn32_N3RBX11StarterGearD0Ev")]
-pub fn stub_0x573d50() -> ! {
-    todo!("0x573d50 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_0x573d50(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573d50: `Thn32_StarterGear::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573c94 — no-op.
 }
 
 // 0x573e04 — __ZThn36_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZThn36_N3RBX11StarterGearD1Ev")]
-pub fn stub_0x573e04() -> ! {
-    todo!("0x573e04 non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_0x573e04(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573e04: `Thn36_StarterGear::D1` — this-adjust + dtor tail call;
+    // same drop glue as 0x573c90 — no-op.
 }
 
 // 0x573e0c — __ZThn36_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 #[doc(alias = "__ZThn36_N3RBX11StarterGearD0Ev")]
-pub fn stub_0x573e0c() -> ! {
-    todo!("0x573e0c non-virtual thunk toRBX::StarterGear::~StarterGear()")
+pub fn stub_0x573e0c(_gear: &mut crate::instance::StarterGear) {
+    // IDA 0x573e0c: `Thn36_StarterGear::D0` — this-adjust + deleting-dtor
+    // tail call; same drop glue as 0x573c94 — no-op.
 }
 
 // 0x573eb0 — __ZN3RBX12BackpackItemD1Ev
 #[doc(alias = "RBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZN3RBX12BackpackItemD1Ev")]
-pub fn stub_0x573eb0() -> ! {
-    todo!("0x573eb0 RBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x573eb0(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x573eb0 (decompiled): `BackpackItem::D1` — vtable resets
+    // (0x573ede-0x573f0c), member teardown of the two `GuiDrawImage` halves
+    // (0x573f34/0x573f4c), the `+200` texture string (0x573f40), then the
+    // `GuiItem` base (0x573f58). The modeled strings drop themselves; the
+    // draw/base halves collapse. Drop glue — no-op.
 }
 
 // 0x573fe4 — __ZN3RBX12BackpackItemD0Ev
 #[doc(alias = "RBX::BackpackItem::~BackpackItem()")]
 #[doc(alias = "__ZN3RBX12BackpackItemD0Ev")]
-pub fn stub_0x573fe4() -> ! {
-    todo!("0x573fe4 RBX::BackpackItem::~BackpackItem()")
+pub fn stub_0x573fe4(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x573fe4: `BackpackItem::D0` — calls the `D1` body then `operator
+    // delete`; same drop glue as 0x573eb0 — no-op.
 }
 
 // 0x574150 — __ZNK3RBX12BackpackItem12drawSelectedEv
 #[doc(alias = "RBX::BackpackItem::drawSelected(void)const")]
 #[doc(alias = "__ZNK3RBX12BackpackItem12drawSelectedEv")]
-pub fn stub_0x574150() -> ! {
-    todo!("0x574150 RBX::BackpackItem::drawSelected(void)const")
+pub fn stub_0x574150(_item: &crate::instance::BackpackItem) -> bool {
+    // IDA 0x574150 (decompiled): `BackpackItem::drawSelected` — `MOVS R0,
+    // #0`; the base item never draws selected (selection state lives on the
+    // `HopperBin` leaf, IDA 0x573b20).
+    false
 }
 
 // 0x574154 — __ZN3RBX12BackpackItem14onLocalClickedEv
 #[doc(alias = "RBX::BackpackItem::onLocalClicked(void)")]
 #[doc(alias = "__ZN3RBX12BackpackItem14onLocalClickedEv")]
-pub fn stub_0x574154() -> ! {
-    todo!("0x574154 RBX::BackpackItem::onLocalClicked(void)")
+pub fn stub_0x574154(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x574154 (decompiled): `BackpackItem::onLocalClicked` — empty
+    // body; the base click is unhandled. No-op.
 }
 
 // 0x574158 — __ZN3RBX12BackpackItem19onLocalOtherClickedEv
 #[doc(alias = "RBX::BackpackItem::onLocalOtherClicked(void)")]
 #[doc(alias = "__ZN3RBX12BackpackItem19onLocalOtherClickedEv")]
-pub fn stub_0x574158() -> ! {
-    todo!("0x574158 RBX::BackpackItem::onLocalOtherClicked(void)")
+pub fn stub_0x574158(_item: &mut crate::instance::BackpackItem) {
+    // IDA 0x574158 (decompiled): `BackpackItem::onLocalOtherClicked` —
+    // empty body; the base other-click is unhandled. No-op.
 }
 
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev
@@ -707,4 +746,55 @@ pub fn stub_0x578af4() -> ! {
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13getIndexValueEPKNS0_13DescribedBaseE")]
 pub fn stub_0x578d34() -> ! {
     todo!("0x578d34 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+#[cfg(test)]
+mod batch_a_tests {
+    use super::*;
+    use crate::instance::{BackpackItem, HopperBin, StarterGear};
+
+    #[test]
+    fn relative_panel_ctor_is_default() {
+        let panel = stub_0x573944();
+        let _ = panel;
+    }
+
+    #[test]
+    fn draw_flags_match_native() {
+        let item = BackpackItem::default();
+        assert!(stub_0x573b1c(&item));
+        assert!(!stub_0x574150(&item));
+        let mut bin = HopperBin::default();
+        assert!(!stub_0x573b20(&bin));
+        bin.active = true;
+        assert!(stub_0x573b20(&bin));
+    }
+
+    #[test]
+    fn starter_gear_client_creatable() {
+        assert!(stub_0x573d34(&StarterGear::default()));
+    }
+
+    #[test]
+    fn dtors_and_clicks_are_drop_glue() {
+        let mut bin = HopperBin::default();
+        stub_0x573a5c(&mut bin);
+        stub_0x573a60(&mut bin);
+        stub_0x573b28(&mut bin);
+        stub_0x573b30(&mut bin);
+        stub_0x573be4(&mut bin);
+        stub_0x573bec(&mut bin);
+        let mut gear = StarterGear::default();
+        stub_0x573c90(&mut gear);
+        stub_0x573c94(&mut gear);
+        stub_0x573d48(&mut gear);
+        stub_0x573d50(&mut gear);
+        stub_0x573e04(&mut gear);
+        stub_0x573e0c(&mut gear);
+        let mut item = BackpackItem::default();
+        stub_0x573eb0(&mut item);
+        stub_0x573fe4(&mut item);
+        stub_0x574154(&mut item);
+        stub_0x574158(&mut item);
+    }
 }
