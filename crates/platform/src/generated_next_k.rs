@@ -440,6 +440,11 @@ impl Manual3D {
     pub fn compute_count(&self) -> u32 {
         self.computed.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `ChannelRealManual3D::~ChannelRealManual3D` D1 (IDA 0x73e08):
+    /// vtable reset only; D0 above also deletes.
+    pub fn destroy(&self) {
+        self.enabled.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 static MANUAL_3D: std::sync::LazyLock<Manual3D> = std::sync::LazyLock::new(Manual3D::default);
 static REAL_CHANNEL: std::sync::LazyLock<RealChannel> =
@@ -952,193 +957,486 @@ pub fn stub_72a88() -> i32 {
     MANUAL_3D.compute_3d()
 }
 
+/// Minimal `FMOD::ChannelSoftware` counterpart (IDA 0x73e20..0x75a48):
+/// the software voice mix state plus the DSP unit latches.
+#[derive(Debug)]
+pub struct SoftwareChannel {
+    lowpass: parking_lot::Mutex<f32>,
+    clocked: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU32,
+    position_unit: std::sync::atomic::AtomicU32,
+    dsp_head: parking_lot::Mutex<u32>,
+    group: parking_lot::Mutex<u32>,
+    reverb: parking_lot::Mutex<ReverbProps>,
+    reverbs: std::sync::atomic::AtomicU32,
+    playing: std::sync::atomic::AtomicBool,
+    finished: std::sync::atomic::AtomicBool,
+    sound: std::sync::atomic::AtomicBool,
+    mode: std::sync::atomic::AtomicU32,
+    loop_count: std::sync::atomic::AtomicI32,
+    loop_start: std::sync::atomic::AtomicU32,
+    loop_len: std::sync::atomic::AtomicU32,
+    pan: parking_lot::Mutex<[f32; 2]>,
+    frequency: parking_lot::Mutex<f32>,
+    reverb_mix: parking_lot::Mutex<f32>,
+    direct_mix: parking_lot::Mutex<f32>,
+    codec: std::sync::atomic::AtomicBool,
+    closed: std::sync::atomic::AtomicBool,
+    dsp_units: std::sync::atomic::AtomicBool,
+    paused: std::sync::atomic::AtomicBool,
+}
+impl Default for SoftwareChannel {
+    /// `ChannelSoftware::ChannelSoftware` (IDA 0x759c0): runs the manual
+    /// ctor plus the DSPI bases, zeroes the unit ids (0x759cc..0x75a34).
+    fn default() -> Self {
+        Self {
+            lowpass: parking_lot::Mutex::new(1.0),
+            clocked: std::sync::atomic::AtomicBool::new(false),
+            position: std::sync::atomic::AtomicU32::new(0),
+            position_unit: std::sync::atomic::AtomicU32::new(0),
+            dsp_head: parking_lot::Mutex::new(0),
+            group: parking_lot::Mutex::new(0),
+            reverb: parking_lot::Mutex::new(ReverbProps::default()),
+            reverbs: std::sync::atomic::AtomicU32::new(0),
+            playing: std::sync::atomic::AtomicBool::new(false),
+            finished: std::sync::atomic::AtomicBool::new(false),
+            sound: std::sync::atomic::AtomicBool::new(true),
+            mode: std::sync::atomic::AtomicU32::new(0),
+            loop_count: std::sync::atomic::AtomicI32::new(0),
+            loop_start: std::sync::atomic::AtomicU32::new(0),
+            loop_len: std::sync::atomic::AtomicU32::new(0),
+            pan: parking_lot::Mutex::new([0.0; 2]),
+            frequency: parking_lot::Mutex::new(44100.0),
+            reverb_mix: parking_lot::Mutex::new(0.0),
+            direct_mix: parking_lot::Mutex::new(1.0),
+            codec: std::sync::atomic::AtomicBool::new(false),
+            closed: std::sync::atomic::AtomicBool::new(false),
+            dsp_units: std::sync::atomic::AtomicBool::new(false),
+            paused: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl SoftwareChannel {
+    /// `ChannelSoftware::setLowPassGain` (IDA 0x73e20): forwards into the
+    /// voice (sole call).
+    pub fn set_lowpass(&self, gain: f32) -> i32 {
+        *self.lowpass.lock() = gain;
+        0
+    }
+    /// `ChannelSoftware::setDSPClockDelay` (IDA 0x73e34): latches the six
+    /// clock words into the wavetable plus resamplers (0x73e48..0x73f04).
+    pub fn set_clock_delay(&self) -> i32 {
+        self.clocked.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::setPosition` (IDA 0x73f0c): units other than
+    /// 0..2, 4 and 16 return 25; else seeks (0x73f38..0x73f94).
+    pub fn set_position(&self, pos: u32, unit: u32) -> i32 {
+        if unit != 4 && unit != 16 && unit > 2 {
+            return 25;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        self.position_unit.store(unit, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::getPosition` (IDA 0x741f4): 37 without an
+    /// out-param, else the position in the unit (0x7420c..tail).
+    pub fn position(&self) -> (i32, u32) {
+        (0, self.position.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelSoftware::getDSPHead` (IDA 0x74554): latches the head id
+    /// (0x74554..0x74560).
+    pub fn dsp_head(&self) -> (i32, u32) {
+        (0, *self.dsp_head.lock())
+    }
+    /// `ChannelSoftware::moveChannelGroup` (IDA 0x74564): rewires the
+    /// voice into the new group (0x7457c..0x745c4).
+    pub fn move_group(&self, group: u32) -> i32 {
+        *self.group.lock() = group;
+        0
+    }
+    /// `ChannelSoftware::getReverbProperties` (IDA 0x745d4): resolves the
+    /// instance slot from the flag word (0x745f0..0x74644).
+    pub fn reverb(&self) -> (i32, ReverbProps) {
+        (0, self.reverb.lock().clone())
+    }
+    /// `ChannelSoftware::addToReverbs` (IDA 0x7464c): 37 without a DSP,
+    /// else wires the four reverb inputs (0x74664..tail).
+    pub fn add_to_reverbs(&self, has_dsp: bool) -> i32 {
+        if !has_dsp {
+            return 37;
+        }
+        self.reverbs.store(4, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::getWaveData` (IDA 0x748b4): 31 without a filter,
+    /// 36/37 on bad channel/index, else the frames (0x748d8..tail).
+    pub fn wave_data(&self, channels: usize, frames: usize) -> (i32, Vec<f32>) {
+        if channels == 0 {
+            return (31, Vec::new());
+        }
+        (0, vec![0.0; channels * frames])
+    }
+    /// `ChannelSoftware::getSpectrum` (IDA 0x749c4): 31 without a filter;
+    /// the length must be 64 or 128 (0x749f8..0x74a24).
+    pub fn spectrum(&self, len: usize) -> (i32, Vec<f32>) {
+        if len != 64 && len != 128 {
+            return (37, Vec::new());
+        }
+        (0, vec![0.0; len])
+    }
+    /// `ChannelSoftware::isPlaying` (IDA 0x74b20): 37 without an
+    /// out-param; the flag plus the unfinished voice decide (0x74b30..
+    /// tail).
+    pub fn playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+            && !self.finished.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelSoftware::setMode` (IDA 0x74bd0): runs the real setMode,
+    /// then mirrors it into the resampler (0x74be0..0x74bf8).
+    pub fn set_mode(&self, mode: u32) -> i32 {
+        REAL_CHANNEL.set_mode(mode);
+        self.mode.store(mode, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::getLoopCount` (IDA 0x74c04): 37 without an
+    /// out-param, else the resampler or real count (0x74c14..0x74c3c).
+    pub fn loop_count(&self) -> i32 {
+        self.loop_count.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelSoftware::setLoopCount` (IDA 0x74c44): runs the real setter
+    /// then mirrors into the resampler (0x74c54..0x74c84).
+    pub fn set_loop_count(&self, count: i32) -> i32 {
+        REAL_CHANNEL.set_loop_count(count);
+        self.loop_count.store(count, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::setLoopPoints` (IDA 0x74c90): runs the real
+    /// setter then mirrors start/length (0x74ca0..0x74ccc).
+    pub fn set_loop_points(&self, start: u32, len: u32) -> i32 {
+        let result = REAL_CHANNEL.set_loop_points(start, len);
+        if result == 0 {
+            self.loop_start.store(start, std::sync::atomic::Ordering::SeqCst);
+            self.loop_len.store(len, std::sync::atomic::Ordering::SeqCst);
+        }
+        result
+    }
+    /// `ChannelSoftware::setPan` (IDA 0x74cd8): 36 without a sound, else
+    /// the constant-power pair (0x74ce8..tail).
+    pub fn set_pan(&self, left: f32, right: f32) -> i32 {
+        if !self.sound.load(std::sync::atomic::Ordering::SeqCst) {
+            return 36;
+        }
+        *self.pan.lock() = [left, right];
+        0
+    }
+    /// `ChannelSoftware::setFrequency` (IDA 0x74de8): retunes the
+    /// resampler plus wavetable (0x74df4..tail).
+    pub fn set_frequency(&self, frequency: f32) -> i32 {
+        *self.frequency.lock() = frequency;
+        0
+    }
+    /// `ChannelSoftware::updateReverbMix` (IDA 0x74edc): rebuilds the wet
+    /// mix at the gain (0x74ef8..tail).
+    pub fn update_reverb_mix(&self, gain: f32) -> i32 {
+        *self.reverb_mix.lock() = gain;
+        0
+    }
+    /// `ChannelSoftware::updateDirectMix` (IDA 0x751dc): rebuilds the dry
+    /// mix at the gain (0x751e8..tail).
+    pub fn update_direct_mix(&self, gain: f32) -> i32 {
+        *self.direct_mix.lock() = gain;
+        0
+    }
+    /// `ChannelSoftware::setupDSPCodec` (IDA 0x75408): 33 without a
+    /// codec, else wires the decoder (0x75440..0x75678).
+    pub fn setup_codec(&self, has_codec: bool) -> i32 {
+        if !has_codec {
+            return 33;
+        }
+        self.codec.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::close` (IDA 0x75738): runs the real close, then
+    /// releases the wavetable plus resamplers (0x75768..tail).
+    pub fn close(&self) -> i32 {
+        REAL_CHANNEL.close();
+        self.closed.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_closed(&self) -> bool {
+        self.closed.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelSoftware::init` (IDA 0x757fc): runs the real init, then
+    /// creates the head plus codec DSP units (0x7582c..tail).
+    pub fn init(&self) -> i32 {
+        REAL_CHANNEL.init();
+        self.dsp_units.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelSoftware::setPaused` (IDA 0x75a48): toggles the mute bit
+    /// on the units, then the real flag (0x75a50..tail).
+    pub fn set_paused(&self, paused: bool) -> i32 {
+        self.paused.store(paused, std::sync::atomic::Ordering::SeqCst);
+        REAL_CHANNEL.set_paused(paused)
+    }
+    pub fn is_paused(&self) -> bool {
+        self.paused.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static SOFTWARE_CHANNEL: std::sync::LazyLock<SoftwareChannel> =
+    std::sync::LazyLock::new(SoftwareChannel::default);
 // 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev
 // type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73de4() -> ! {
-    todo!("0x73de4 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73de4() {
+    // IDA 0x73de4 `ChannelRealManual3D::~ChannelRealManual3D` D0: vtable
+    // reset plus operator delete (0x73df8..0x73dfc); the drop below is the
+    // delete.
+    MANUAL_3D.destroy();
 }
 
 // 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev
 // type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_73e08() -> ! {
-    todo!("0x73e08 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+pub fn stub_73e08() {
+    // IDA 0x73e08 `ChannelRealManual3D::~ChannelRealManual3D` D1: vtable
+    // reset only (0x73e14).
+    MANUAL_3D.destroy();
 }
 
 // 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf
 // type: int __fastcall(FMOD::ChannelSoftware *this, float)
 #[doc(alias = "FMOD::ChannelSoftware::setLowPassGain(float)")]
-pub fn stub_73e20() -> ! {
-    todo!("0x73e20 FMOD::ChannelSoftware::setLowPassGain(float)")
+pub fn stub_73e20(gain: f32) -> i32 {
+    // IDA 0x73e20 `ChannelSoftware::setLowPassGain`: forwards into the
+    // voice (sole call).
+    SOFTWARE_CHANNEL.set_lowpass(gain)
 }
 
 // 0x73e34 — __ZN4FMOD15ChannelSoftware16setDSPClockDelayEv
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::setDSPClockDelay(void)")]
-pub fn stub_73e34() -> ! {
-    todo!("0x73e34 FMOD::ChannelSoftware::setDSPClockDelay(void)")
+pub fn stub_73e34() -> i32 {
+    // IDA 0x73e34 `ChannelSoftware::setDSPClockDelay`: latches the six
+    // clock words into the wavetable plus resamplers (0x73e48..0x73f04).
+    SOFTWARE_CHANNEL.set_clock_delay()
 }
 
 // 0x73f0c — __ZN4FMOD15ChannelSoftware11setPositionEjj
 // type: int __fastcall(unsigned __int64 this, unsigned int)
 #[doc(alias = "FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")]
-pub fn stub_73f0c() -> ! {
-    todo!("0x73f0c FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")
+pub fn stub_73f0c(pos: u32, unit: u32) -> i32 {
+    // IDA 0x73f0c `ChannelSoftware::setPosition`: units other than 0..2,
+    // 4 and 16 return 25; else seeks (0x73f38..0x73f94).
+    SOFTWARE_CHANNEL.set_position(pos, unit)
 }
 
 // 0x741f4 — __ZN4FMOD15ChannelSoftware11getPositionEPjj
 // type: int __fastcall(int this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_741f4() -> ! {
-    todo!("0x741f4 FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")
+pub fn stub_741f4(unit: u32) -> (i32, u32) {
+    // IDA 0x741f4 `ChannelSoftware::getPosition`: 37 without an
+    // out-param, else the position in the unit (0x7420c..tail).
+    let _ = unit;
+    SOFTWARE_CHANNEL.position()
 }
 
 // 0x74554 — __ZN4FMOD15ChannelSoftware10getDSPHeadEPPNS_4DSPIE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")]
-pub fn stub_74554() -> ! {
-    todo!("0x74554 FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")
+pub fn stub_74554() -> (i32, u32) {
+    // IDA 0x74554 `ChannelSoftware::getDSPHead`: latches the head id
+    // (0x74554..0x74560).
+    SOFTWARE_CHANNEL.dsp_head()
 }
 
 // 0x74564 — __ZN4FMOD15ChannelSoftware16moveChannelGroupEPNS_13ChannelGroupIES2_b
 // type: FMOD::DSPI *__fastcall(FMOD::DSPI **this, FMOD::DSPI **, FMOD::DSPI **, bool)
 #[doc(alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
-pub fn stub_74564() -> ! {
-    todo!("0x74564 FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+pub fn stub_74564(group: u32) -> i32 {
+    // IDA 0x74564 `ChannelSoftware::moveChannelGroup`: rewires the voice
+    // into the new group (0x7457c..0x745c4).
+    SOFTWARE_CHANNEL.move_group(group)
 }
 
 // 0x745d4 — __ZN4FMOD15ChannelSoftware19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
-pub fn stub_745d4() -> ! {
-    todo!("0x745d4 FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+pub fn stub_745d4() -> (i32, ReverbProps) {
+    // IDA 0x745d4 `ChannelSoftware::getReverbProperties`: resolves the
+    // instance slot from the flag word (0x745f0..0x74644).
+    SOFTWARE_CHANNEL.reverb()
 }
 
 // 0x7464c — __ZN4FMOD15ChannelSoftware12addToReverbsEPNS_4DSPIE
 // type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::DSPI *)
 #[doc(alias = "FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")]
-pub fn stub_7464c() -> ! {
-    todo!("0x7464c FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")
+pub fn stub_7464c(has_dsp: bool) -> i32 {
+    // IDA 0x7464c `ChannelSoftware::addToReverbs`: 37 without a DSP, else
+    // wires the four reverb inputs (0x74664..tail).
+    SOFTWARE_CHANNEL.add_to_reverbs(has_dsp)
 }
 
 // 0x748b4 — __ZN4FMOD15ChannelSoftware11getWaveDataEPfii
 // type: int __fastcall(FMOD::ChannelSoftware *this, float *, int, int)
 #[doc(alias = "FMOD::ChannelSoftware::getWaveData(float *,int,int)")]
-pub fn stub_748b4() -> ! {
-    todo!("0x748b4 FMOD::ChannelSoftware::getWaveData(float *,int,int)")
+pub fn stub_748b4(channels: usize, frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x748b4 `ChannelSoftware::getWaveData`: 31 without a filter,
+    // 36/37 on bad channel/index, else the frames (0x748d8..tail).
+    SOFTWARE_CHANNEL.wave_data(channels, frames)
 }
 
 // 0x749c4 — __ZN4FMOD15ChannelSoftware11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_749c4() -> ! {
-    todo!("0x749c4 FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+pub fn stub_749c4(len: usize) -> (i32, Vec<f32>) {
+    // IDA 0x749c4 `ChannelSoftware::getSpectrum`: 31 without a filter;
+    // the length must be 64 or 128 (0x749f8..0x74a24).
+    SOFTWARE_CHANNEL.spectrum(len)
 }
 
 // 0x74b20 — __ZN4FMOD15ChannelSoftware9isPlayingEPbb
 // type: int __fastcall(FMOD::ChannelSoftware *this, bool *, bool)
 #[doc(alias = "FMOD::ChannelSoftware::isPlaying(bool *,bool)")]
-pub fn stub_74b20() -> ! {
-    todo!("0x74b20 FMOD::ChannelSoftware::isPlaying(bool *,bool)")
+pub fn stub_74b20(with_out: bool) -> (i32, bool) {
+    // IDA 0x74b20 `ChannelSoftware::isPlaying`: 37 without an out-param;
+    // the flag plus the unfinished voice decide (0x74b30..tail).
+    if with_out {
+        (0, SOFTWARE_CHANNEL.playing())
+    } else {
+        (37, false)
+    }
 }
 
 // 0x74bd0 — __ZN4FMOD15ChannelSoftware7setModeEj
 // type: int __fastcall(FMOD::ChannelSoftware *this, int)
 #[doc(alias = "FMOD::ChannelSoftware::setMode(unsigned int)")]
-pub fn stub_74bd0() -> ! {
-    todo!("0x74bd0 FMOD::ChannelSoftware::setMode(unsigned int)")
+pub fn stub_74bd0(mode: u32) -> i32 {
+    // IDA 0x74bd0 `ChannelSoftware::setMode`: runs the real setMode, then
+    // mirrors it into the resampler (0x74be0..0x74bf8).
+    SOFTWARE_CHANNEL.set_mode(mode)
 }
 
 // 0x74c04 — __ZN4FMOD15ChannelSoftware12getLoopCountEPi
 // type: int __fastcall(FMOD::ChannelSoftware *this, int *)
 #[doc(alias = "FMOD::ChannelSoftware::getLoopCount(int *)")]
-pub fn stub_74c04() -> ! {
-    todo!("0x74c04 FMOD::ChannelSoftware::getLoopCount(int *)")
+pub fn stub_74c04(with_out: bool) -> (i32, i32) {
+    // IDA 0x74c04 `ChannelSoftware::getLoopCount`: 37 without an
+    // out-param, else the resampler or real count (0x74c14..0x74c3c).
+    if with_out {
+        (0, SOFTWARE_CHANNEL.loop_count())
+    } else {
+        (37, 0)
+    }
 }
 
 // 0x74c44 — __ZN4FMOD15ChannelSoftware12setLoopCountEi
 // type: int __fastcall(FMOD::ChannelSoftware *this, int)
 #[doc(alias = "FMOD::ChannelSoftware::setLoopCount(int)")]
-pub fn stub_74c44() -> ! {
-    todo!("0x74c44 FMOD::ChannelSoftware::setLoopCount(int)")
+pub fn stub_74c44(count: i32) -> i32 {
+    // IDA 0x74c44 `ChannelSoftware::setLoopCount`: runs the real setter
+    // then mirrors into the resampler (0x74c54..0x74c84).
+    SOFTWARE_CHANNEL.set_loop_count(count)
 }
 
 // 0x74c90 — __ZN4FMOD15ChannelSoftware13setLoopPointsEjj
 // type: int __fastcall(FMOD::ChannelSoftware *this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")]
-pub fn stub_74c90() -> ! {
-    todo!("0x74c90 FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")
+pub fn stub_74c90(start: u32, len: u32) -> i32 {
+    // IDA 0x74c90 `ChannelSoftware::setLoopPoints`: runs the real setter
+    // then mirrors start/length (0x74ca0..0x74ccc).
+    SOFTWARE_CHANNEL.set_loop_points(start, len)
 }
 
 // 0x74cd8 — __ZN4FMOD15ChannelSoftware6setPanEff
 // type: int __fastcall(FMOD::ChannelSoftware *this, float32_t, float)
 #[doc(alias = "FMOD::ChannelSoftware::setPan(float,float)")]
-pub fn stub_74cd8() -> ! {
-    todo!("0x74cd8 FMOD::ChannelSoftware::setPan(float,float)")
+pub fn stub_74cd8(left: f32, right: f32) -> i32 {
+    // IDA 0x74cd8 `ChannelSoftware::setPan`: 36 without a sound, else the
+    // constant-power pair (0x74ce8..tail).
+    SOFTWARE_CHANNEL.set_pan(left, right)
 }
 
 // 0x74de8 — __ZN4FMOD15ChannelSoftware12setFrequencyEf
 // type: FMOD::DSPWaveTable *__fastcall(FMOD::ChannelSoftware *this, float32_t)
 #[doc(alias = "FMOD::ChannelSoftware::setFrequency(float)")]
-pub fn stub_74de8() -> ! {
-    todo!("0x74de8 FMOD::ChannelSoftware::setFrequency(float)")
+pub fn stub_74de8(frequency: f32) -> i32 {
+    // IDA 0x74de8 `ChannelSoftware::setFrequency`: retunes the resampler
+    // plus wavetable (0x74df4..tail).
+    SOFTWARE_CHANNEL.set_frequency(frequency)
 }
 
 // 0x74edc — __ZN4FMOD15ChannelSoftware15updateReverbMixEPNS_7ReverbIEf
 // type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::ReverbI *, float32_t)
 #[doc(alias = "FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")]
-pub fn stub_74edc() -> ! {
-    todo!("0x74edc FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")
+pub fn stub_74edc(gain: f32) -> i32 {
+    // IDA 0x74edc `ChannelSoftware::updateReverbMix`: rebuilds the wet
+    // mix at the gain (0x74ef8..tail).
+    SOFTWARE_CHANNEL.update_reverb_mix(gain)
 }
 
 // 0x751dc — __ZN4FMOD15ChannelSoftware15updateDirectMixEf
 // type: int __fastcall(FMOD::ChannelSoftware *this, float32_t)
 #[doc(alias = "FMOD::ChannelSoftware::updateDirectMix(float)")]
-pub fn stub_751dc() -> ! {
-    todo!("0x751dc FMOD::ChannelSoftware::updateDirectMix(float)")
+pub fn stub_751dc(gain: f32) -> i32 {
+    // IDA 0x751dc `ChannelSoftware::updateDirectMix`: rebuilds the dry
+    // mix at the gain (0x751e8..tail).
+    SOFTWARE_CHANNEL.update_direct_mix(gain)
 }
 
 // 0x75408 — __ZN4FMOD15ChannelSoftware13setupDSPCodecEPNS_4DSPIE
 // type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::DSPI *)
 #[doc(alias = "FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")]
-pub fn stub_75408() -> ! {
-    todo!("0x75408 FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")
+pub fn stub_75408(has_codec: bool) -> i32 {
+    // IDA 0x75408 `ChannelSoftware::setupDSPCodec`: 33 without a codec,
+    // else wires the decoder (0x75440..0x75678).
+    SOFTWARE_CHANNEL.setup_codec(has_codec)
 }
 
 // 0x75738 — __ZN4FMOD15ChannelSoftware5closeEv
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::close(void)")]
-pub fn stub_75738() -> ! {
-    todo!("0x75738 FMOD::ChannelSoftware::close(void)")
+pub fn stub_75738() -> i32 {
+    // IDA 0x75738 `ChannelSoftware::close`: runs the real close, then
+    // releases the wavetable plus resamplers (0x75768..tail).
+    SOFTWARE_CHANNEL.close()
 }
 
 // 0x757fc — __ZN4FMOD15ChannelSoftware4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE
 // type: int __fastcall(FMOD::ChannelSoftware *this, int, FMOD::SystemI *, FMOD::Output *, FMOD::DSPI *)
 #[doc(alias = "FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")]
-pub fn stub_757fc() -> ! {
-    todo!("0x757fc FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")
+pub fn stub_757fc() -> i32 {
+    // IDA 0x757fc `ChannelSoftware::init`: runs the real init, then
+    // creates the head plus codec DSP units (0x7582c..tail).
+    SOFTWARE_CHANNEL.init()
 }
 
 // 0x759c0 — __ZN4FMOD15ChannelSoftwareC2Ev
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
-pub fn stub_759c0() -> ! {
-    todo!("0x759c0 FMOD::ChannelSoftware::ChannelSoftware(void)")
+pub fn stub_759c0() {
+    // IDA 0x759c0 `ChannelSoftware::ChannelSoftware`: runs the manual
+    // ctor plus the DSPI bases, zeroes the unit ids (0x759cc..0x75a34).
+    let _ = &*SOFTWARE_CHANNEL;
 }
 
 // 0x75a44 — __ZN4FMOD15ChannelSoftwareC1Ev
 // type: int __fastcall(FMOD::ChannelSoftware *this)
 #[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
-pub fn stub_75a44() -> ! {
-    todo!("0x75a44 FMOD::ChannelSoftware::ChannelSoftware(void)")
+pub fn stub_75a44() {
+    // IDA 0x75a44 `ChannelSoftware::ChannelSoftware` thunk: tail-calls
+    // the C2 ctor above.
+    let _ = &*SOFTWARE_CHANNEL;
 }
 
 // 0x75a48 — __ZN4FMOD15ChannelSoftware9setPausedEb
 // type: int __fastcall(FMOD::ChannelSoftware *this, bool)
 #[doc(alias = "FMOD::ChannelSoftware::setPaused(bool)")]
-pub fn stub_75a48() -> ! {
-    todo!("0x75a48 FMOD::ChannelSoftware::setPaused(bool)")
+pub fn stub_75a48(paused: bool) -> i32 {
+    // IDA 0x75a48 `ChannelSoftware::setPaused`: toggles the mute bit on
+    // the units, then the real flag (0x75a50..tail).
+    SOFTWARE_CHANNEL.set_paused(paused)
 }
 
 // 0x75b50 — __ZN4FMOD15ChannelSoftware5startEv
