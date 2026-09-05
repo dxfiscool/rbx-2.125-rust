@@ -6,6 +6,13 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `RBX::AsyncHttpQueue` request queue (IDA 0x2faa84 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct AsyncHttpQueue {
+ pub pending: Vec<usize>,
+ pub pool_threads: u32,
+}
 use std::collections::HashMap;
 
 /// `std::map<Name, HttpContentType>` (IDA 0x259018 et al.).
@@ -763,199 +770,233 @@ pub fn stub_259dbc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_259f34() -> ! {
-    todo!("0x259f34 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_259f34(declare: &mut dyn FnMut()) {
+    // IDA 0x259f34: declareSignature (below truncation).
+    declare();
 }
 
 // 0x259f64 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED0Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()")]
-pub fn stub_259f64() -> ! {
-    todo!("0x259f64 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_259f64(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x259f64: BoundFuncDesc D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x25a030 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_25a030() -> ! {
-    todo!("0x25a030 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_25a030(execute: &mut dyn FnMut()) {
+    // IDA 0x25a030: execute (below truncation).
+    execute();
 }
 
 // 0x25a170 — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_
 // demangled: RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)
 // type: void __fastcall(int, char *, int, _DWORD *, std::string *)
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")]
-pub fn stub_25a170() -> ! {
-    todo!("0x25a170 RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")
+pub fn stub_25a170(call: &mut dyn FnMut()) {
+    // IDA 0x25a170: Call1Helper::call (below truncation).
+    call();
 }
 
 // 0x25a2f0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_25a2f0() -> ! {
-    todo!("0x25a2f0 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_25a2f0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x25a2f0: BoundYieldFuncDesc ctor (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x25a540 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
 // type: int __fastcall(int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_25a540() -> ! {
-    todo!("0x25a540 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_25a540(declare: &mut dyn FnMut()) {
+    // IDA 0x25a540: declareSignature (below truncation).
+    declare();
 }
 
 // 0x25a5a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")]
-pub fn stub_25a5a8() -> ! {
-    todo!("0x25a5a8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")
+pub fn stub_25a5a8(destroy: &mut dyn FnMut()) {
+    // IDA 0x25a5a8: BoundYieldFuncDesc dtor (below truncation).
+    destroy();
 }
 
 // 0x25a68c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
 // type: void __fastcall(int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_25a68c() -> ! {
-    todo!("0x25a68c RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_25a68c(execute: &mut dyn FnMut()) {
+    // IDA 0x25a68c: execute (below truncation).
+    execute();
 }
 
 // 0x25a958 — __ZN3RBX10Reflection9ArgHelper6getArgINS_11HttpService15HttpContentTypeELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // demangled: RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 // type: int (__fastcall ***__fastcall(int (__fastcall ***)(_DWORD), int))(_DWORD)
 #[doc(alias = "RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_25a958() -> ! {
-    todo!("0x25a958 RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_25a958(get: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x25a958: ArgHelper::getArg<HttpContentType> (below truncation).
+    get()
 }
 
 // 0x25aaec — __ZN3RBX10Reflection9ArgHelper8try_enumILi3ENS_11HttpService15HttpContentTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE
 // demangled: bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)
 // type: int __fastcall(int, _DWORD *, int, int)
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")]
-pub fn stub_25aaec() -> ! {
-    todo!("0x25aaec bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")
+pub fn stub_25aaec(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+    // IDA 0x25aaec: ArgHelper::try_enum (below truncation).
+    convert(value)
 }
 
 // 0x25ab40 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_25ab40() -> ! {
-    todo!("0x25ab40 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_25ab40(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x25ab40: BoundYieldFuncDesc ctor (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x25acb8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_25acb8() -> ! {
-    todo!("0x25acb8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_25acb8(declare: &mut dyn FnMut()) {
+    // IDA 0x25acb8: declareSignature (below truncation).
+    declare();
 }
 
 // 0x25ace8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
-pub fn stub_25ace8() -> ! {
-    todo!("0x25ace8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_25ace8(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x25ace8: BoundYieldFuncDesc D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x25adb4 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
 // demangled: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
 // type: void __fastcall(int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
-pub fn stub_25adb4() -> ! {
-    todo!("0x25adb4 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_25adb4(execute: &mut dyn FnMut()) {
+    // IDA 0x25adb4: execute (below truncation).
+    execute();
 }
 
 // 0x2faa84 — __ZN3RBX14AsyncHttpQueueC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEi
 // demangled: RBX::AsyncHttpQueue::AsyncHttpQueue(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int)
 // type: RBX::AsyncHttpQueue *__fastcall(RBX::AsyncHttpQueue *, int, void *, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, int, pthread_mutex_t *, int, int, int, int, int, int)
 #[doc(alias = "RBX::AsyncHttpQueue::AsyncHttpQueue(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int)")]
-pub fn stub_2faa84() -> ! {
-    todo!("0x2faa84 RBX::AsyncHttpQueue::AsyncHttpQueue(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int)")
+pub fn stub_2faa84(q: &mut AsyncHttpQueue) {
+    // IDA 0x2faa84: AsyncHttpQueue ctor (below truncation).
+    q.pending.clear();
+    q.pool_threads = 0;
 }
 
 // 0x2fad24 — __ZN3RBX14AsyncHttpQueue13setThreadPoolEi
 // demangled: RBX::AsyncHttpQueue::setThreadPool(int)
 // type: _DWORD __fastcall(RBX::AsyncHttpQueue *__hidden this, int)
 #[doc(alias = "RBX::AsyncHttpQueue::setThreadPool(int)")]
-pub fn stub_2fad24() -> ! {
-    todo!("0x2fad24 RBX::AsyncHttpQueue::setThreadPool(int)")
+pub fn stub_2fad24(q: &mut AsyncHttpQueue, threads: u32, rebuild: &mut dyn FnMut(u32)) {
+    // IDA 0x2fad24: rebuild pool when thread count differs.
+    if q.pool_threads != threads {
+        rebuild(threads);
+        q.pool_threads = threads;
+    }
 }
 
 // 0x2fae00 — __ZN3RBX14AsyncHttpQueue14resetStatsItemEPNS_15ServiceProviderE
 // demangled: RBX::AsyncHttpQueue::resetStatsItem(RBX::ServiceProvider *)
 // type: _DWORD __fastcall(RBX::AsyncHttpQueue *__hidden this, RBX::ServiceProvider *)
 #[doc(alias = "RBX::AsyncHttpQueue::resetStatsItem(RBX::ServiceProvider *)")]
-pub fn stub_2fae00() -> ! {
-    todo!("0x2fae00 RBX::AsyncHttpQueue::resetStatsItem(RBX::ServiceProvider *)")
+pub fn stub_2fae00(reset: &mut dyn FnMut()) {
+    // IDA 0x2fae00: resetStatsItem (below truncation).
+    reset();
 }
 
 // 0x2faf2c — __ZNK3RBX14AsyncHttpQueue19getRequestQueueSizeEv
 // demangled: RBX::AsyncHttpQueue::getRequestQueueSize(void)const
 // type: _DWORD __fastcall(RBX::AsyncHttpQueue *__hidden this)
 #[doc(alias = "RBX::AsyncHttpQueue::getRequestQueueSize(void)const")]
-pub fn stub_2faf2c() -> ! {
-    todo!("0x2faf2c RBX::AsyncHttpQueue::getRequestQueueSize(void)const")
+pub fn stub_2faf2c(q: &AsyncHttpQueue) -> usize {
+    // IDA 0x2faf2c: mutex-guarded request queue size.
+    q.pending.len()
 }
 
 // 0x2faf68 — __ZN3RBX14AsyncHttpQueueD0Ev
 // demangled: RBX::AsyncHttpQueue::~AsyncHttpQueue()
 // type: void __fastcall(RBX::AsyncHttpQueue *__hidden this)
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
-pub fn stub_2faf68() -> ! {
-    todo!("0x2faf68 RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_2faf68(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x2faf68: AsyncHttpQueue D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x2fb008 — __ZN3RBX14AsyncHttpQueueD1Ev
 // demangled: RBX::AsyncHttpQueue::~AsyncHttpQueue()
 // type: void __fastcall(RBX::AsyncHttpQueue *__hidden this)
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
-pub fn stub_2fb008() -> ! {
-    todo!("0x2fb008 RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_2fb008(destroy: &mut dyn FnMut()) {
+    // IDA 0x2fb008: D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x2fb00c — __ZN3RBX14AsyncHttpQueueD2Ev
 // demangled: RBX::AsyncHttpQueue::~AsyncHttpQueue()
 // type: void __fastcall(RBX::AsyncHttpQueue *__hidden this)
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
-pub fn stub_2fb00c() -> ! {
-    todo!("0x2fb00c RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_2fb00c(destroy: &mut dyn FnMut()) {
+    // IDA 0x2fb00c: AsyncHttpQueue D2 (below truncation).
+    destroy();
 }
 
 // 0x2fb2ac — __ZN3RBX14AsyncHttpQueue11onHeartbeatERKNS_9HeartbeatE
 // demangled: RBX::AsyncHttpQueue::onHeartbeat(RBX::Heartbeat const&)
 // type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, pthread_mutex_t *, char, pthread_mutex_t *, char, void *, int, int, int, int, int)
 #[doc(alias = "RBX::AsyncHttpQueue::onHeartbeat(RBX::Heartbeat const&)")]
-pub fn stub_2fb2ac() -> ! {
-    todo!("0x2fb2ac RBX::AsyncHttpQueue::onHeartbeat(RBX::Heartbeat const&)")
+pub fn stub_2fb2ac(beat: &mut dyn FnMut()) {
+    // IDA 0x2fb2ac: onHeartbeat (below truncation).
+    beat();
 }
 
 // 0x2fb548 — __ZN3RBX14AsyncHttpQueue15processRequestsEN5boost8weak_ptrIS0_EESt14_List_iteratorINS0_7RequestEENS1_10shared_ptrINS_5mutexEEE
 // demangled: RBX::AsyncHttpQueue::processRequests(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>)
 #[doc(alias = "RBX::AsyncHttpQueue::processRequests(Weak<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>)")]
-pub fn stub_2fb548() -> ! {
-    todo!("0x2fb548 RBX::AsyncHttpQueue::processRequests(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>)")
+pub fn stub_2fb548(process: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x2fb548: processRequests (below truncation).
+    process()
 }
 
 // 0x2fc440 — __ZN3RBX14AsyncHttpQueue23dispatchGenericCallbackEN5boost8functionIFvPNS_9DataModelEEEEPNS_8InstanceENS0_9ResultJobE
 // demangled: RBX::AsyncHttpQueue::dispatchGenericCallback(boost::function<void ()(RBX::DataModel *)>,RBX::Instance *,RBX::AsyncHttpQueue::ResultJob)
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::AsyncHttpQueue::dispatchGenericCallback(boost::function<void ()(RBX::DataModel *)>,RBX::Instance *,RBX::AsyncHttpQueue::ResultJob)")]
-pub fn stub_2fc440() -> ! {
-    todo!("0x2fc440 RBX::AsyncHttpQueue::dispatchGenericCallback(boost::function<void ()(RBX::DataModel *)>,RBX::Instance *,RBX::AsyncHttpQueue::ResultJob)")
+pub fn stub_2fc440(dispatch: &mut dyn FnMut()) {
+    // IDA 0x2fc440: dispatchGenericCallback (below truncation).
+    dispatch();
 }
 
 // 0x2fc6a8 — __ZN3RBX14AsyncHttpQueue16dispatchCallbackEN5boost8functionIFvNS0_13RequestResultEPSiNS1_10shared_ptrIKSsEEEEEPNS_8InstanceES3_S7_NS0_9ResultJobE
 // demangled: RBX::AsyncHttpQueue::dispatchCallback(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>,RBX::AsyncHttpQueue::ResultJob)
 // type: int __fastcall(int, int, int, boost::detail::sp_counted_base *, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::AsyncHttpQueue::dispatchCallback(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>,RBX::AsyncHttpQueue::ResultJob)")]
-pub fn stub_2fc6a8() -> ! {
-    todo!("0x2fc6a8 RBX::AsyncHttpQueue::dispatchCallback(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>,RBX::AsyncHttpQueue::ResultJob)")
+pub fn stub_2fc6a8(dispatch: &mut dyn FnMut()) {
+    // IDA 0x2fc6a8: dispatchCallback (below truncation).
+    dispatch();
 }
 
 // 0x2fc874 — __ZN3RBXL19InvokeAsyncCallbackEN5boost8functionIFvNS_14AsyncHttpQueue13RequestResultEPSiNS0_10shared_ptrIKSsEEEEES3_S7_
