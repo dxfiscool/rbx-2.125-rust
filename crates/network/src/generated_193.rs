@@ -10,176 +10,510 @@ use rbx_core::SharedPtr;
 // 0x19afc4 — _TIFFjpeg_create_decompress
 // type: unknown
 #[doc(alias = "_TIFFjpeg_create_decompress")]
-pub fn stub_19afc4() -> ! {
-    todo!("0x19afc4 _TIFFjpeg_create_decompress")
+pub fn stub_19afc4(init_error: &mut dyn FnMut(), create: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x19afc4: std_error + install error hooks (caller-side), setjmp guard, CreateDecompress(70, 432); FALSE when a jump fired or creation failed.
+    init_error();
+    create()
 }
 
 // 0x19b034 — _TIFFjpeg_abort
 // type: unknown
 #[doc(alias = "_TIFFjpeg_abort")]
-pub fn stub_19b034() -> ! {
-    todo!("0x19b034 _TIFFjpeg_abort")
+pub fn stub_19b034(abort: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x19b034: setjmp-guarded jpeg_abort; FALSE when a jump fired.
+    abort()
 }
 
 // 0x19b06c — _TIFFjpeg_error_exit
 // type: unknown
 #[doc(alias = "_TIFFjpeg_error_exit")]
-pub fn stub_19b06c() -> ! {
-    todo!("0x19b06c _TIFFjpeg_error_exit")
+pub fn stub_19b06c(message: &str, output_message: &mut dyn FnMut(&str), tiff_error: &mut dyn FnMut(&str, &str), abort: &mut dyn FnMut()) -> ! {
+    // IDA 0x19b06c: noreturn error exit — output_message, TIFFErrorExt("JPEGLib"), abort, then longjmp; a Rust panic is the longjmp analog.
+    output_message(message);
+    tiff_error("JPEGLib", message);
+    abort();
+    panic!("TIFFjpeg_error_exit: {message}")
 }
 
 // 0x19b0c8 — _TIFFjpeg_create_compress
 // type: unknown
 #[doc(alias = "_TIFFjpeg_create_compress")]
-pub fn stub_19b0c8() -> ! {
-    todo!("0x19b0c8 _TIFFjpeg_create_compress")
+pub fn stub_19b0c8(init_error: &mut dyn FnMut(), create: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x19b0c8: std_error + install error hooks (caller-side), setjmp guard, CreateCompress(70, 400); FALSE when a jump fired or creation failed.
+    init_error();
+    create()
 }
 
 // 0x19b138 — _JPEGInitializeLibJPEG
-// type: int(void)
+// type: unknown
 #[doc(alias = "_JPEGInitializeLibJPEG")]
-pub fn stub_19b138() -> ! {
-    todo!("0x19b138 _JPEGInitializeLibJPEG")
+pub fn stub_19b138(
+    has_live: bool,
+    live_is_compress: bool,
+    want_compress: bool,
+    geo_ok: bool,
+    create_compress: &mut dyn FnMut() -> bool,
+    create_decompress: &mut dyn FnMut() -> bool,
+    destroy: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x19b138: reuse the live compressor when its mode matches; else destroy and create per the tiled/strip geometry (caller-checked into geo_ok); FALSE when creation fails.
+    if has_live {
+        if live_is_compress == want_compress {
+            return true;
+        }
+        destroy();
+    }
+    if !geo_ok {
+        return false;
+    }
+    if want_compress {
+        create_compress()
+    } else {
+        create_decompress()
+    }
 }
 
 // 0x19b294 — _TIFFjpeg_set_defaults
 // type: unknown
 #[doc(alias = "_TIFFjpeg_set_defaults")]
-pub fn stub_19b294() -> ! {
-    todo!("0x19b294 _TIFFjpeg_set_defaults")
+pub fn stub_19b294(set_defaults: &mut dyn FnMut() -> bool) -> i32 {
+    // IDA 0x19b294: setjmp-guarded jpeg_set_defaults; longjmp → 0 else 1.
+    if set_defaults() { 1 } else { 0 }
 }
 
 // 0x19b2cc — _TIFFjpeg_suppress_tables
 // type: unknown
 #[doc(alias = "_TIFFjpeg_suppress_tables")]
-pub fn stub_19b2cc() -> ! {
-    todo!("0x19b2cc _TIFFjpeg_suppress_tables")
+pub fn stub_19b2cc(suppress: bool, suppress_tables: &mut dyn FnMut(bool) -> bool) -> i32 {
+    // IDA 0x19b2cc: setjmp-guarded jpeg_suppress_tables; longjmp → 0 else 1.
+    if suppress_tables(suppress) { 1 } else { 0 }
+}
+
+/// Tables-only destination buffer grown 1000 bytes at a time (IDA 0x19b310).
+#[derive(Clone, Debug, Default)]
+pub struct TablesDest {
+    pub buf: Vec<u8>,
+    pub free_in_buffer: usize,
 }
 
 // 0x19b310 — _tables_empty_output_buffer
 // type: unknown
 #[doc(alias = "_tables_empty_output_buffer")]
-pub fn stub_19b310() -> ! {
-    todo!("0x19b310 _tables_empty_output_buffer")
+pub fn stub_19b310(dest: &mut TablesDest, realloc: &mut dyn FnMut(usize) -> Option<Vec<u8>>) {
+    // IDA 0x19b310: grow the tables buffer by 1000 (fail → error 56/100, modeled as panic); reset cursor with 1000 free.
+    let grown = realloc(dest.buf.len() + 1000).expect("tables_empty_output_buffer: alloc failed (56/100)");
+    dest.buf = grown;
+    dest.free_in_buffer = 1000;
 }
 
 // 0x19b384 — _TIFFjpeg_write_tables
 // type: unknown
 #[doc(alias = "_TIFFjpeg_write_tables")]
-pub fn stub_19b384() -> ! {
-    todo!("0x19b384 _TIFFjpeg_write_tables")
+pub fn stub_19b384(write_tables: &mut dyn FnMut() -> bool) -> i32 {
+    // IDA 0x19b384: setjmp-guarded jpeg_write_tables; longjmp → 0 else 1.
+    if write_tables() { 1 } else { 0 }
 }
 
 // 0x19b3bc — _JPEGSetupEncode
 // type: unknown
 #[doc(alias = "_JPEGSetupEncode")]
-pub fn stub_19b3bc() -> ! {
-    todo!("0x19b3bc _JPEGSetupEncode")
+pub fn stub_19b3bc(
+    has_sp: bool,
+    is_compress: bool,
+    photometric: u16,
+    dims_ok: bool,
+    quality_flags: u32,
+    setup_quality: &mut dyn FnMut() -> bool,
+    setup_tables: &mut dyn FnMut() -> bool,
+    install_dest: &mut dyn FnMut(),
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19b3bc: sp/is-compressor asserts; photometric 3..=4 warns but continues (IDA returns truthy); YCbCr-subsampled keeps 2x2 else 1x1; dimension alignment (caller-checked) else FALSE; quality + table-suppress when flags & 3; tables source + dest install; TRUE.
+    assert!(has_sp, "JPEGSetupEncode: sp != NULL (tif_jpeg.c:1172)");
+    assert!(is_compress, "JPEGSetupEncode: sp->cinfo.comm.is_decompressor (tif_jpeg.c:1173)");
+    if (3..=4).contains(&photometric) {
+        on_error("JPEGSetupEncode");
+    }
+    if !dims_ok {
+        on_error("JPEGSetupEncode");
+        return false;
+    }
+    if quality_flags & 1 == 0 && !setup_quality() {
+        return false;
+    }
+    if quality_flags & 2 != 0 && !setup_tables() {
+        return false;
+    }
+    install_dest();
+    true
 }
 
 // 0x19b840 — _std_empty_output_buffer
 // type: unknown
 #[doc(alias = "_std_empty_output_buffer")]
-pub fn stub_19b840() -> ! {
-    todo!("0x19b840 _std_empty_output_buffer")
+pub fn stub_19b840(flush: &mut dyn FnMut()) -> i32 {
+    // IDA 0x19b840: flush pending data then reset cursor to the buffer base; always TRUE.
+    flush();
+    1
 }
 
 // 0x19b878 — _TIFFjpeg_read_scanlines
 // type: unknown
 #[doc(alias = "_TIFFjpeg_read_scanlines")]
-pub fn stub_19b878() -> ! {
-    todo!("0x19b878 _TIFFjpeg_read_scanlines")
+pub fn stub_19b878(row: usize, count: usize, read_scanlines: &mut dyn FnMut(usize, usize) -> i32) -> i32 {
+    // IDA 0x19b878: setjmp-guarded jpeg_read_scanlines; a jump would yield -1 (unobservable in Rust — panics propagate instead).
+    read_scanlines(row, count)
 }
 
 // 0x19b8bc — _TIFFjpeg_finish_decompress
 // type: unknown
 #[doc(alias = "_TIFFjpeg_finish_decompress")]
-pub fn stub_19b8bc() -> ! {
-    todo!("0x19b8bc _TIFFjpeg_finish_decompress")
+pub fn stub_19b8bc(finish: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x19b8bc: setjmp-guarded jpeg_finish_decompress; a jump would yield -1 (unobservable in Rust — panics propagate instead).
+    finish()
+}
+
+/// 12-bit row nibble expansion (IDA 0x19b8f0: byte pairs → (hi, lo<<4, next) triples; IDA unrolls 4-wide with a (count & 3) prologue).
+fn unpack_12bit_row(dst: &mut [u8], src: &[u8]) {
+    let n = (src.len() / 2 * 3).min(dst.len());
+    let mut o = 0;
+    let mut i = 0;
+    while o + 2 < n && i + 1 < src.len() {
+        dst[o] = src[i] >> 4;
+        dst[o + 1] = (src[i] & 0xF) << 4;
+        dst[o + 2] = src[i + 1];
+        o += 3;
+        i += 2;
+    }
 }
 
 // 0x19b8f0 — _JPEGDecode
 // type: unknown
 #[doc(alias = "_JPEGDecode")]
-pub fn stub_19b8f0() -> ! {
-    todo!("0x19b8f0 _JPEGDecode")
+pub fn stub_19b8f0(
+    dst: &mut [u8],
+    row_bytes: usize,
+    bits: u32,
+    read_row: &mut dyn FnMut(&mut [u8]) -> bool,
+    finish: &mut dyn FnMut() -> bool,
+    on_warn: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19b8f0: fractional-scanline warning; strips split into whole rows (IDA Duff-copies 8-bit rows, nibble-expands 12-bit rows); finish at end; FALSE when a row read fails.
+    if bits != 8 && bits != 12 {
+        on_warn("JPEGDecode");
+        return false;
+    }
+    if dst.len() % row_bytes != 0 {
+        on_warn("JPEGDecode: fractional scanline discarded");
+    }
+    let mut tmp = vec![0u8; row_bytes];
+    let rows = dst.len() / row_bytes;
+    for r in 0..rows {
+        let row = &mut dst[r * row_bytes..(r + 1) * row_bytes];
+        if bits == 12 {
+            tmp[..row_bytes.min(row.len())].fill(0);
+            if !read_row(&mut tmp[..row_bytes.min(row.len())]) {
+                return false;
+            }
+            let n = row_bytes.min(row.len());
+            let (src, _) = tmp.split_at(n);
+            unpack_12bit_row(row, src);
+        } else if !read_row(row) {
+            return false;
+        }
+    }
+    finish()
 }
 
 // 0x19bcfc — _TIFFjpeg_read_header
-// type: int __fastcall(_DWORD, _DWORD)
+// type: unknown
 #[doc(alias = "_TIFFjpeg_read_header")]
-pub fn stub_19bcfc() -> ! {
-    todo!("0x19bcfc _TIFFjpeg_read_header")
+pub fn stub_19bcfc(require_image: bool, read_header: &mut dyn FnMut(bool) -> i32) -> i32 {
+    // IDA 0x19bcfc: setjmp-guarded jpeg_read_header; a jump would yield FALSE (unobservable in Rust — panics propagate instead).
+    read_header(require_image)
 }
 
 // 0x19bd3c — _JPEGSetupDecode
-// type: int __fastcall(int)
+// type: unknown
 #[doc(alias = "_JPEGSetupDecode")]
-pub fn stub_19bd3c() -> ! {
-    todo!("0x19bd3c _JPEGSetupDecode")
+pub fn stub_19bd3c(
+    has_sp: bool,
+    is_decompress: bool,
+    tables_pending: bool,
+    setup_tables_source: &mut dyn FnMut(),
+    read_header_sos: &mut dyn FnMut() -> bool,
+    on_error: &mut dyn FnMut(&str),
+) -> bool {
+    // IDA 0x19bd3c: sp/is-decompressor asserts; tables-pending → install source + header (SOS(2) expected, else error + FALSE); YCbCr sampling fields (caller-side); TRUE.
+    assert!(has_sp, "JPEGSetupDecode: sp != NULL (tif_jpeg.c:646)");
+    assert!(is_decompress, "JPEGSetupDecode: !sp->cinfo.comm.is_decompressor (tif_jpeg.c:647)");
+    if tables_pending {
+        setup_tables_source();
+        if !read_header_sos() {
+            on_error("JPEGSetupDecode");
+            return false;
+        }
+    }
+    true
 }
 
 // 0x19be84 — _TIFFjpeg_start_decompress
 // type: unknown
 #[doc(alias = "_TIFFjpeg_start_decompress")]
-pub fn stub_19be84() -> ! {
-    todo!("0x19be84 _TIFFjpeg_start_decompress")
+pub fn stub_19be84(start: &mut dyn FnMut()) -> i32 {
+    // IDA 0x19be84: setjmp-guarded jpeg_start_decompress; longjmp → 0 else 1.
+    start();
+    1
+}
+
+/// JPEG decode method selected by pre-decode validation (IDA 0x19bebc).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum JpegDecodeMethod {
+    Cooked,
+    Raw,
 }
 
 // 0x19bebc — _JPEGPreDecode
 // type: unknown
 #[doc(alias = "_JPEGPreDecode")]
-pub fn stub_19bebc() -> ! {
-    todo!("0x19bebc _JPEGPreDecode")
+pub fn stub_19bebc(
+    has_sp: bool,
+    header_ok: bool,
+    size_ok: bool,
+    size_warn: bool,
+    planar_ok: bool,
+    sampling_ok: bool,
+    force_cooked: bool,
+    raw_capable: bool,
+    start: &mut dyn FnMut() -> bool,
+    alloc_downsampled: &mut dyn FnMut() -> bool,
+    on_warn: &mut dyn FnMut(&str),
+) -> Option<JpegDecodeMethod> {
+    // IDA 0x19bebc: sp assert; abort + read_header (fail → None); strip/tile under-header → None, over-header → warning; planar/sampling validation (fail → None, YCbCr sampling adopted caller-side); raw iff planar-1 non-1x1 unless YCbCr-subsampled forces cooked; start (fail → None); raw → downsampled alloc.
+    assert!(has_sp, "JPEGPreDecode: sp != NULL (tif_jpeg.c:691)");
+    if !header_ok {
+        return None;
+    }
+    if !size_ok {
+        return None;
+    }
+    if size_warn {
+        on_warn("JPEGPreDecode: improper strip/tile size");
+    }
+    if !planar_ok || !sampling_ok {
+        return None;
+    }
+    let method = if force_cooked || !raw_capable {
+        JpegDecodeMethod::Cooked
+    } else {
+        JpegDecodeMethod::Raw
+    };
+    if !start() {
+        return None;
+    }
+    if method == JpegDecodeMethod::Raw && !alloc_downsampled() {
+        return None;
+    }
+    Some(method)
 }
 
 // 0x19c4a0 — _TIFFjpeg_read_raw_data
 // type: unknown
 #[doc(alias = "_TIFFjpeg_read_raw_data")]
-pub fn stub_19c4a0() -> ! {
-    todo!("0x19c4a0 _TIFFjpeg_read_raw_data")
+pub fn stub_19c4a0(rows: usize, read_raw: &mut dyn FnMut(usize) -> u32) -> u32 {
+    // IDA 0x19c4a0: setjmp-guarded jpeg_read_raw_data passthrough (a jump would yield -1; unobservable in Rust — panics propagate instead).
+    read_raw(rows)
 }
 
 // 0x19c4e4 — _JPEGDecodeRaw
 // type: unknown
 #[doc(alias = "_JPEGDecodeRaw")]
-pub fn stub_19c4e4() -> ! {
-    todo!("0x19c4e4 _JPEGDecodeRaw")
+pub fn stub_19c4e4(
+    dst: &mut [Vec<u8>],
+    src: &[Vec<u8>],
+    read_more: &mut dyn FnMut() -> bool,
+    finish: &mut dyn FnMut() -> bool,
+) -> bool {
+    // IDA 0x19c4e4: raw-data block pump (Duff-unrolled row copies folded to row clones); every exhausted 8-row group refills via the read hook; finish at end; FALSE when a block read fails.
+    if dst.len() > src.len() && !read_more() {
+        return false;
+    }
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        d.clone_from(s);
+    }
+    finish()
 }
 
 // 0x19c8a0 — _JPEGPrintDir
-// type: int __fastcall(int, FILE *)
+// type: unknown
 #[doc(alias = "_JPEGPrintDir")]
-pub fn stub_19c8a0() -> ! {
-    todo!("0x19c8a0 _JPEGPrintDir")
+pub fn stub_19c8a0(
+    has_sp: bool,
+    flags: u32,
+    tables_bytes: u32,
+    fax_params: u32,
+    fax_subaddress: Option<&str>,
+    fax_recv_time: u32,
+    fax_dcs: Option<&str>,
+    print: &mut dyn FnMut(&str),
+) {
+    // IDA 0x19c8a0: sp assert; flag-gated directory print (bits 2/3/4/5/6).
+    assert!(has_sp, "JPEGPrintDir: sp != NULL (tif_jpeg.c:1801)");
+    if flags & 4 != 0 {
+        print(&format!("  JPEG Tables: ({} bytes)", tables_bytes));
+    }
+    if flags & 8 != 0 {
+        print(&format!("  Fax Receive Parameters: {:08x}", fax_params));
+    }
+    if flags & 0x10 != 0 {
+        print(&format!("  Fax SubAddress: {}", fax_subaddress.unwrap_or("")));
+    }
+    if flags & 0x20 != 0 {
+        print(&format!("  Fax Receive Time: {} secs", fax_recv_time));
+    }
+    if flags & 0x40 != 0 {
+        print(&format!("  Fax DCS: {}", fax_dcs.unwrap_or("")));
+    }
 }
 
 // 0x19c9a0 — _JPEGResetUpsampled
 // type: unknown
 #[doc(alias = "_JPEGResetUpsampled")]
-pub fn stub_19c9a0() -> ! {
-    todo!("0x19c9a0 _JPEGResetUpsampled")
+pub fn stub_19c9a0(upsampled: &mut bool, planar: u32, photometric: u32, downsampled: bool, tiled: bool, tile_size: i32) -> i32 {
+    // IDA 0x19c9a0: clear the upsampled flag; set when planar == 1 with photometric == 6 and downsampled output; tile size when tiled else -1.
+    *upsampled = false;
+    if planar == 1 && photometric == 6 && downsampled {
+        *upsampled = true;
+    }
+    if tiled { tile_size } else { -1 }
 }
 
 // 0x19c9fc — _JPEGVSetField
 // type: unknown
 #[doc(alias = "_JPEGVSetField")]
-pub fn stub_19c9fc() -> ! {
-    todo!("0x19c9fc _JPEGVSetField")
+pub fn stub_19c9fc(
+    has_sp: bool,
+    tag: u32,
+    number: u32,
+    text: Option<&str>,
+    store: &mut std::collections::HashMap<u32, String>,
+    reset_upsampled: &mut dyn FnMut(),
+    passthrough: &mut dyn FnMut(u32) -> bool,
+) -> bool {
+    // IDA 0x19c9fc: sp assert; known tags stored (347 rejects empty; 262/65538 reset upsampling then delegate); unknown → default hook. IDA marks ~0 field bits per store — caller-side via `store`.
+    assert!(has_sp, "JPEGVSetField: sp != NULL (tif_jpeg.c:1626)");
+    match tag {
+        347 => {
+            let b = text.unwrap_or("");
+            if b.is_empty() {
+                return false;
+            }
+            store.insert(tag, b.to_string());
+            true
+        }
+        262 | 65538 => {
+            reset_upsampled();
+            passthrough(tag)
+        }
+        530 | 34908 | 34909 | 34910 | 34911 | 65537 | 65539 => {
+            store.insert(tag, text.unwrap_or(&number.to_string()).to_string());
+            true
+        }
+        _ => passthrough(tag),
+    }
+}
+
+/// JPEG field read outcome (IDA 0x19cc14).
+#[derive(Clone, PartialEq, Eq, Debug)]
+pub enum JpegFieldOut {
+    Number(u32),
+    Text(String),
+    Missing,
 }
 
 // 0x19cc14 — _JPEGVGetField
 // type: unknown
 #[doc(alias = "_JPEGVGetField")]
-pub fn stub_19cc14() -> ! {
-    todo!("0x19cc14 _JPEGVGetField")
+pub fn stub_19cc14(
+    has_sp: bool,
+    tag: u32,
+    out: &mut JpegFieldOut,
+    lookup: &mut dyn FnMut(u32) -> JpegFieldOut,
+    passthrough: &mut dyn FnMut(u32, &mut JpegFieldOut) -> bool,
+) -> bool {
+    // IDA 0x19cc14: sp assert; 530 initializes then delegates; known tags read (caller store); unknown → default hook.
+    assert!(has_sp, "JPEGVGetField: sp != NULL (tif_jpeg.c:1759)");
+    if tag == 530 {
+        return passthrough(tag, out);
+    }
+    *out = lookup(tag);
+    !matches!(out, JpegFieldOut::Missing)
+}
+
+/// JPEG encode method selected by pre-encode validation (IDA 0x19ce10).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum JpegEncodeMethod {
+    Cooked,
+    Raw,
 }
 
 // 0x19ce10 — _JPEGPreEncode
 // type: unknown
 #[doc(alias = "_JPEGPreEncode")]
-pub fn stub_19ce10() -> ! {
-    todo!("0x19ce10 _JPEGPreEncode")
+pub fn stub_19ce10(
+    has_sp: bool,
+    size_ok: bool,
+    size_warn: bool,
+    planar: u32,
+    photometric: u16,
+    downsampled: u32,
+    comp_h: u32,
+    comp_v: u32,
+    quality_flags: u32,
+    quality_ok: bool,
+    needs_raw: bool,
+    set_colorspace: &mut dyn FnMut(u32) -> bool,
+    start: &mut dyn FnMut() -> bool,
+    alloc_downsampled: &mut dyn FnMut() -> bool,
+    on_warn: &mut dyn FnMut(&str),
+    on_error: &mut dyn FnMut(&str),
+) -> Option<JpegEncodeMethod> {
+    // IDA 0x19ce10: sp assert; undersize → None, oversize → warning; colorspace/sample table (bad sampling → error + None); quality when flags & 1, tables-suppress when flags & 2, optimize from ~flags & 2 (caller-side); raw iff sampling demands; start (fail → None); raw → downsampled alloc.
+    assert!(has_sp, "JPEGPreEncode: sp != NULL (tif_jpeg.c:1302)");
+    if !size_ok {
+        on_error("JPEGPreEncode");
+        return None;
+    }
+    if size_warn {
+        on_warn("JPEGPreEncode: strip/tile too large");
+    }
+    if planar == 1 {
+        if photometric == 6 {
+            let cs = if downsampled == 1 { 2 } else { 3 };
+            if downsampled != 1 && (comp_h != 1 || comp_v != 1) {
+                on_error("JPEGPreEncode: bad sampling");
+                return None;
+            }
+            if !set_colorspace(cs) {
+                return None;
+            }
+        } else if !set_colorspace(planar) {
+            return None;
+        }
+    } else if !set_colorspace(planar) {
+        return None;
+    }
+    if quality_flags & 1 == 0 && !quality_ok {
+        return None;
+    }
+    let method = if needs_raw { JpegEncodeMethod::Raw } else { JpegEncodeMethod::Cooked };
+    if !start() {
+        return None;
+    }
+    if method == JpegEncodeMethod::Raw && !alloc_downsampled() {
+        return None;
+    }
+    Some(method)
 }
 
 // 0x19d180 — _uv_decode
