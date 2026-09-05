@@ -764,6 +764,7 @@ pub fn stub_0x56e830(handles: &mut crate::instance::Handles, name: &str) -> bool
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
 pub fn stub_0x56e870() -> ! {
+    // BLOCKED: needs XmlElement serialization infra
     todo!("0x56e870 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
 }
 
@@ -772,6 +773,7 @@ pub fn stub_0x56e870() -> ! {
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
 pub fn stub_0x56e890() -> ! {
+    // BLOCKED: needs XmlElement + IReferenceBinder deserialization infra
     todo!("0x56e890 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
 }
 
@@ -1009,6 +1011,7 @@ pub fn stub_0x56f9fc(name: &str) -> HandlesBase {
 #[doc(alias = "RBX::HandlesBase::findTargetHandle(RBX::UIEvent const&,G3D::Vector3 &,RBX::NormalId &)")]
 #[doc(alias = "__ZN3RBX11HandlesBase16findTargetHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE")]
 pub fn stub_0x56fc18() -> ! {
+    // BLOCKED: needs UIEvent/G3D pick-geometry + Workspace/camera infra
     todo!("0x56fc18 RBX::HandlesBase::findTargetHandle(RBX::UIEvent const&,G3D::Vector3 &,RBX::NormalId &)")
 }
 
@@ -1017,6 +1020,7 @@ pub fn stub_0x56fc18() -> ! {
 #[doc(alias = "RBX::HandlesBase::getDistanceFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &)")]
 #[doc(alias = "__ZN3RBX11HandlesBase21getDistanceFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERf")]
 pub fn stub_0x56fd94() -> ! {
+    // BLOCKED: needs UIEvent/G3D pick-geometry + Workspace/camera infra
     todo!("0x56fd94 RBX::HandlesBase::getDistanceFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &)")
 }
 
@@ -1025,6 +1029,7 @@ pub fn stub_0x56fd94() -> ! {
 #[doc(alias = "RBX::HandlesBase::getFacePosFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,G3D::Vector2 &,G3D::Vector2 &)")]
 #[doc(alias = "__ZN3RBX11HandlesBase20getFacePosFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERNS5_7Vector2ESA_")]
 pub fn stub_0x56ff64() -> ! {
+    // BLOCKED: needs UIEvent/G3D pick-geometry + Workspace/camera infra
     todo!("0x56ff64 RBX::HandlesBase::getFacePosFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,G3D::Vector2 &,G3D::Vector2 &)")
 }
 
@@ -1033,6 +1038,7 @@ pub fn stub_0x56ff64() -> ! {
 #[doc(alias = "RBX::HandlesBase::getAngleRadiusFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &,float &,float &,float &)")]
 #[doc(alias = "__ZN3RBX11HandlesBase24getAngleRadiusFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERfS9_S9_S9_")]
 pub fn stub_0x5702b0() -> ! {
+    // BLOCKED: needs UIEvent/G3D pick-geometry + Workspace/camera infra
     todo!("0x5702b0 RBX::HandlesBase::getAngleRadiusFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &,float &,float &,float &)")
 }
 
@@ -1041,6 +1047,7 @@ pub fn stub_0x5702b0() -> ! {
 #[doc(alias = "RBX::HandlesBase::canProcessMeAndDescendants(void)const")]
 #[doc(alias = "__ZNK3RBX11HandlesBase26canProcessMeAndDescendantsEv")]
 pub fn stub_0x5703e0() -> ! {
+    // BLOCKED: needs Workspace process-gate (serverIsPresent) infra
     todo!("0x5703e0 RBX::HandlesBase::canProcessMeAndDescendants(void)const")
 }
 
@@ -1049,6 +1056,7 @@ pub fn stub_0x5703e0() -> ! {
 #[doc(alias = "RBX::HandlesBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX11HandlesBase8render2dEPNS_5AdornE")]
 pub fn stub_0x5704c4() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x5704c4 RBX::HandlesBase::render2d(RBX::Adorn *)")
 }
 
@@ -1057,6 +1065,7 @@ pub fn stub_0x5704c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11HandlesBase8render2dEPNS_5AdornE")]
 pub fn stub_0x570614() -> ! {
+    // BLOCKED: needs Adorn render infra (thunk to render2d)
     todo!("0x570614 non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")
 }
 
@@ -1065,6 +1074,7 @@ pub fn stub_0x570614() -> ! {
 #[doc(alias = "RBX::HandlesBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX11HandlesBase13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x57061c() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x57061c RBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
 }
 
@@ -1073,6 +1083,7 @@ pub fn stub_0x57061c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11HandlesBase13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x57079c() -> ! {
+    // BLOCKED: needs Adorn render infra (thunk to render3dAdorn)
     todo!("0x57079c non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
 }
 
@@ -1090,6 +1101,7 @@ pub fn stub_0x5707a4(base: &mut HandlesBase) {
 #[doc(alias = "RBX::HandlesBase::onAncestorChanged(RBX::AncestorChanged const&)")]
 #[doc(alias = "__ZN3RBX11HandlesBase17onAncestorChangedERKNS_15AncestorChangedE")]
 pub fn stub_0x5707ac() -> ! {
+    // BLOCKED: needs ancestor-changed virtual/pipeline infra
     todo!("0x5707ac RBX::HandlesBase::onAncestorChanged(RBX::AncestorChanged const&)")
 }
 
@@ -1303,6 +1315,7 @@ pub fn stub_0x571b94(item: &mut crate::instance::BackpackItem, name: &str) {
 #[doc(alias = "RBX::BackpackItem::getBinId(void)const")]
 #[doc(alias = "__ZNK3RBX12BackpackItem8getBinIdEv")]
 pub fn stub_0x571bb4() -> ! {
+    // BLOCKED: needs parent-hierarchy (Backpack container) infra
     todo!("0x571bb4 RBX::BackpackItem::getBinId(void)const")
 }
 
@@ -1311,6 +1324,7 @@ pub fn stub_0x571bb4() -> ! {
 #[doc(alias = "RBX::BackpackItem::inBackpack(void)")]
 #[doc(alias = "__ZN3RBX12BackpackItem10inBackpackEv")]
 pub fn stub_0x571c18() -> ! {
+    // BLOCKED: needs parent-hierarchy (Backpack container) infra
     todo!("0x571c18 RBX::BackpackItem::inBackpack(void)")
 }
 
@@ -1318,6 +1332,7 @@ pub fn stub_0x571c18() -> ! {
 #[doc(alias = "RBX::BackpackItem::getSize(RBX::Canvas)const")]
 #[doc(alias = "__ZNK3RBX12BackpackItem7getSizeENS_6CanvasE")]
 pub fn stub_0x571c5c() -> ! {
+    // BLOCKED: needs Canvas layout + Adorn render infra
     todo!("0x571c5c RBX::BackpackItem::getSize(RBX::Canvas)const")
 }
 
@@ -1326,6 +1341,7 @@ pub fn stub_0x571c5c() -> ! {
 #[doc(alias = "RBX::BackpackItem::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX12BackpackItem8render2dEPNS_5AdornE")]
 pub fn stub_0x571c90() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x571c90 RBX::BackpackItem::render2d(RBX::Adorn *)")
 }
 
@@ -1353,6 +1369,7 @@ pub fn stub_0x5721a8() -> crate::instance::HopperBin {
 #[doc(alias = "RBX::HopperBin::selectedConnectionShimFunction(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin30selectedConnectionShimFunctionEv")]
 pub fn stub_0x572710() -> ! {
+    // BLOCKED: needs Workspace/mouse/signal selection infra
     todo!("0x572710 RBX::HopperBin::selectedConnectionShimFunction(void)")
 }
 
@@ -1361,6 +1378,7 @@ pub fn stub_0x572710() -> ! {
 #[doc(alias = "RBX::HopperBin::onSelectScript(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin14onSelectScriptEv")]
 pub fn stub_0x572714() -> ! {
+    // BLOCKED: needs Workspace/mouse/signal selection infra
     todo!("0x572714 RBX::HopperBin::onSelectScript(void)")
 }
 
@@ -1368,6 +1386,7 @@ pub fn stub_0x572714() -> ! {
 #[doc(alias = "RBX::HopperBin::onAncestorChanged(RBX::AncestorChanged const&)")]
 #[doc(alias = "__ZN3RBX9HopperBin17onAncestorChangedERKNS_15AncestorChangedE")]
 pub fn stub_0x5728bc() -> ! {
+    // BLOCKED: needs ancestor-changed/workspace signal infra
     todo!("0x5728bc RBX::HopperBin::onAncestorChanged(RBX::AncestorChanged const&)")
 }
 
@@ -1376,6 +1395,7 @@ pub fn stub_0x5728bc() -> ! {
 #[doc(alias = "RBX::HopperBin::onSelectCommand(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin15onSelectCommandEv")]
 pub fn stub_0x572b14() -> ! {
+    // BLOCKED: needs Workspace/mouse/signal selection infra
     todo!("0x572b14 RBX::HopperBin::onSelectCommand(void)")
 }
 
@@ -1384,6 +1404,7 @@ pub fn stub_0x572b14() -> ! {
 #[doc(alias = "RBX::HopperBin::onLocalClicked(void)")]
 #[doc(alias = "__ZN3RBX9HopperBin14onLocalClickedEv")]
 pub fn stub_0x572e98() -> ! {
+    // BLOCKED: needs Workspace/mouse/signal selection infra
     todo!("0x572e98 RBX::HopperBin::onLocalClicked(void)")
 }
 
@@ -1416,6 +1437,7 @@ pub fn stub_0x572efc() -> crate::instance::Hopper {
 #[doc(alias = "RBX::Hopper::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX6Hopper8render2dEPNS_5AdornE")]
 pub fn stub_0x572f78() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x572f78 RBX::Hopper::render2d(RBX::Adorn *)")
 }
 
@@ -1450,6 +1472,7 @@ pub fn stub_0x573094() -> crate::instance::StarterPackService {
 #[doc(alias = "RBX::StarterPackService::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX18StarterPackService8render2dEPNS_5AdornE")]
 pub fn stub_0x5732ac() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x5732ac RBX::StarterPackService::render2d(RBX::Adorn *)")
 }
 
@@ -1458,6 +1481,7 @@ pub fn stub_0x5732ac() -> ! {
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc")]
 pub fn stub_0x5732b0() -> ! {
+    // BLOCKED: needs EnumDesc registry (addPair) infra
     todo!("0x5732b0 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)")
 }
 
@@ -1466,6 +1490,7 @@ pub fn stub_0x5732b0() -> ! {
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_")]
 pub fn stub_0x573610() -> ! {
+    // BLOCKED: needs EnumDesc registry (addLegacy) infra
     todo!("0x573610 RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")
 }
 
