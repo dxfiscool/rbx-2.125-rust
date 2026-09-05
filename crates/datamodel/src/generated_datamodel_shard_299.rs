@@ -33,15 +33,19 @@ pub fn stub_0xf5cc14() -> ! {
 // 0xf5ccb4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_11RemoteEventEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::RemoteEvent> RBX::Creatable<RBX::Instance>::create<RBX::RemoteEvent>(void)")]
 // was: boost::shared_ptr<RBX::RemoteEvent> RBX::Creatable<RBX::Instance>::create<RBX::RemoteEvent>(void)
-pub fn stub_0xf5ccb4() -> ! {
-    todo!("0xf5ccb4 rbx_core::SharedPtr<RBX::RemoteEvent> RBX::Creatable<RBX::Instance>::create<RBX::RemoteEvent>(void)")
+pub fn stub_0xf5ccb4() -> SharedPtr<crate::instance::RemoteEvent> {
+    // IDA 0xf5ccb4: `Creatable::create<RemoteEvent>` — `operator new` +
+    // default ctor + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::RemoteEvent::default())
 }
 
 // 0xf5ccc4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14RemoteFunctionEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::RemoteFunction> RBX::Creatable<RBX::Instance>::create<RBX::RemoteFunction>(void)")]
 // was: boost::shared_ptr<RBX::RemoteFunction> RBX::Creatable<RBX::Instance>::create<RBX::RemoteFunction>(void)
-pub fn stub_0xf5ccc4() -> ! {
-    todo!("0xf5ccc4 rbx_core::SharedPtr<RBX::RemoteFunction> RBX::Creatable<RBX::Instance>::create<RBX::RemoteFunction>(void)")
+pub fn stub_0xf5ccc4() -> SharedPtr<crate::instance::RemoteFunction> {
+    // IDA 0xf5ccc4: `Creatable::create<RemoteFunction>` — `operator new` +
+    // default ctor + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::RemoteFunction::default())
 }
 
 // 0xf5cd04 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEEC2Ev
@@ -702,4 +706,15 @@ pub fn stub_0xf5de64() -> ! {
 #[doc(alias = "void boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::fill_buckets<boost::unordered::detail::assign_nodes<boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>>>(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>>,boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>&,boost::unordered::detail::assign_nodes<boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>> &)")]
 pub fn stub_0xf5de74() -> ! {
     todo!("0xf5de74 void boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>::fill_buckets<boost::unordered::detail::assign_nodes<boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>>>(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>>,boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>&,boost::unordered::detail::assign_nodes<boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance * const,boost::weak_ptr<RBX::Instance>>>,RBX::Instance *,boost::weak_ptr<RBX::Instance>,boost::hash<RBX::Instance *>,std::equal_to<RBX::Instance *>>>> &)")
+}
+
+#[cfg(test)]
+mod jump_tests {
+    use super::*;
+
+    #[test]
+    fn create_remote_leaves_construct() {
+        assert_eq!(SharedPtr::strong_count(&stub_0xf5ccb4()), 1);
+        assert_eq!(SharedPtr::strong_count(&stub_0xf5ccc4()), 1);
+    }
 }

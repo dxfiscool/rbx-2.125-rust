@@ -1702,6 +1702,20 @@ pub struct CustomEventReceiver {
     _opaque: (),
 }
 
+/// Rust model of `RBX::RemoteEvent` (IDA `0xf5ccb4`): the remote-event leaf;
+/// replication lands with the network subsystem.
+#[derive(Default)]
+pub struct RemoteEvent {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::RemoteFunction` (IDA `0xf5ccc4`): the
+/// remote-function leaf; replication lands with the network subsystem.
+#[derive(Default)]
+pub struct RemoteFunction {
+    _opaque: (),
+}
+
 /// Name/value table behind the `Pyramid NumSides` desc suite (IDA
 /// `0x4c542c`-`0x4c5db0`): 3, 4, 5, 6, 8, 10, 20 per the C2 pairs (0x49bb88).
 const PYRAMID_NUM_SIDES_ITEMS: [(i32, &str); 7] = [
