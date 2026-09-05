@@ -1307,121 +1307,216 @@ pub fn stub_0x36bd4(state: &mut BaseUrlState, url: &str) -> String {
 // 0x36de4 — ___25+[RobloxInfo setBaseUrl:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___25+[RobloxInfo setBaseUrl:]_block_invoke")]
-pub fn stub_0x36de4() -> ! {
-    todo!("0x36de4 ___25+[RobloxInfo setBaseUrl:]_block_invoke")
+pub fn stub_0x36de4(settings_refreshed: &mut bool) {
+    // IDA 0x36de4: the `setBaseUrl:` completion block forces a settings
+    // re-read from the web (`getiOSSettingsServiceWithForcedReadFromWeb:`,
+    // 0x36dfe). MODEL: the service fetch folds into the host; the refresh
+    // is observed.
+    *settings_refreshed = true;
 }
 
 // 0x36e04 — +[RobloxInfo searchUrl]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxInfo searchUrl]")]
-pub fn stub_0x36e04() -> ! {
-    todo!("0x36e04 +[RobloxInfo searchUrl]")
+pub fn stub_0x36e04(is_tablet: bool, phone_url: &str, tablet_url: &str) -> String {
+    // IDA 0x36e04: `searchUrl` reads the settings service (0x36e2a) and
+    // answers the tablet URL on tablets (0x36e68..0x36e6a), else the phone
+    // URL (0x36e58). MODEL: the service fields are inputs.
+    if is_tablet { tablet_url.to_owned() } else { phone_url.to_owned() }
 }
 
+/// `__GLOBAL__I_a_9` one-shot latch (IDA 0x36e80): same static-init shape
+/// as `__GLOBAL__I_a_8` (boost categories, `ios_base::Init`, exception
+/// statics, singleton pools, `FactoryProduct` creators behind guards).
+static GLOBAL_A9_INIT: LazyLock<u32> = LazyLock::new(|| 1);
 // 0x36e80 — __GLOBAL__I_a_9
 #[doc(alias = "global constructor keyed to_a_9")]
 #[doc(alias = "__GLOBAL__I_a_9")]
-pub fn stub_0x36e80() -> ! {
-    todo!("0x36e80 global constructor keyed to_a_9")
+pub fn stub_0x36e80() -> u32 {
+    // IDA 0x36e80: static-init ctor keyed to `a_9` (0x36e84.. mirrors the
+    // 0x355c8 sequence). MODEL: runtime statics self-initialize; the once
+    // latch is observed.
+    *GLOBAL_A9_INIT
 }
 
+/// `RobloxView` observable lifecycle state (IDA 0x37068..0x38720,
+/// RobloxView.mm). Render/data-model objects (`shared_ptr<Game>`,
+/// marshaller, jobs) live on the host; only the observable latches are
+/// modeled here.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct RobloxViewState {
+    pub width: u32,
+    pub height: u32,
+    pub params: [String; 3],
+    /// Rendering suspended for background mode (IDA 0x37068/0x37378).
+    pub rendering_suspended: bool,
+    /// `completeViewPrep` ran with a game (IDA 0x37b3c).
+    pub view_prepped: bool,
+    /// Workspace + overlays bound (IDA 0x380a4).
+    pub workspace_bound: bool,
+    /// Concurrency rules defined (IDA 0x382b0).
+    pub concurrency_defined: bool,
+    /// `restartDataModel` block queued on main (IDA 0x386d0).
+    pub restart_queued: bool,
+    /// `newGameDidStart` block queued on main (IDA 0x38720).
+    pub game_started: bool,
+}
 // 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
 #[doc(alias = "__ZN10RobloxView37requestStopRenderingForBackgroundModeEv")]
-pub fn stub_0x37068() -> ! {
-    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+pub fn stub_0x37068(state: &mut RobloxViewState) {
+    // IDA 0x37068: `requestStopRenderingForBackgroundMode` tears down the
+    // render/view-update jobs through the marshaller. MODEL: job plumbing
+    // folds into the host; the suspension latch is observed.
+    state.rendering_suspended = true;
 }
 
 // 0x37378 — __ZN10RobloxView22requestResumeRenderingEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestResumeRendering(void)")]
 #[doc(alias = "__ZN10RobloxView22requestResumeRenderingEv")]
-pub fn stub_0x37378() -> ! {
-    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+pub fn stub_0x37378(state: &mut RobloxViewState) {
+    // IDA 0x37378: `requestResumeRendering` rebuilds the render/game jobs
+    // through the marshaller. MODEL: job plumbing folds into the host;
+    // the suspension latch clears.
+    state.rendering_suspended = false;
 }
 
 // 0x375b4 — __Z13macBundlePathv
 // type: _DWORD __fastcall()
 #[doc(alias = "macBundlePath(void)")]
 #[doc(alias = "__Z13macBundlePathv")]
-pub fn stub_0x375b4() -> ! {
-    todo!("0x375b4 macBundlePath(void)")
+pub fn stub_0x375b4(bundle_path: &str) -> String {
+    // IDA 0x375b4: `macBundlePath` resolves the main bundle URL
+    // (0x375d4..0x375de), converts to a POSIX path (0x375f0..0x375f4),
+    // releases (0x375fa..0x37600), and copies into the out string
+    // (0x3760a). MODEL: bundle plumbing folds into the host; the path is
+    // the input.
+    bundle_path.to_owned()
 }
 
 // 0x37628 — __ZN10RobloxViewC2EjjSsSsSs
 #[doc(alias = "RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")]
 #[doc(alias = "__ZN10RobloxViewC2EjjSsSsSs")]
-pub fn stub_0x37628() -> ! {
-    todo!("0x37628 RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_0x37628(width: u32, height: u32, a: &str, b: &str, c: &str) -> RobloxViewState {
+    // IDA 0x37628: `RobloxView::RobloxView(w, h, s1, s2, s3)` builds the
+    // mutexes, marshaller, jobs, and window peer. MODEL: construction
+    // plumbing folds into host ownership; dims, params, and the fresh
+    // latches are observed.
+    RobloxViewState {
+        width,
+        height,
+        params: [a.to_owned(), b.to_owned(), c.to_owned()],
+        ..RobloxViewState::default()
+    }
 }
 
 // 0x37b3c — __ZN10RobloxView16completeViewPrepEN5boost10shared_ptrIN3RBX4GameEEE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, void *, char, int, int, int, int)
 #[doc(alias = "RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")]
 #[doc(alias = "__ZN10RobloxView16completeViewPrepEN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x37b3c() -> ! {
-    todo!("0x37b3c RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x37b3c(state: &mut RobloxViewState, has_game: bool) {
+    // IDA 0x37b3c: `completeViewPrep(shared_ptr<Game>)` wires the game
+    // into the prepared view (shared ownership throughout). MODEL: the
+    // game peer folds into host ownership; prep with a live game latches.
+    state.view_prepped = has_game;
 }
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 #[doc(alias = "RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")]
 #[doc(alias = "__ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE")]
-pub fn stub_0x380a4() -> ! {
-    todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
+pub fn stub_0x380a4(
+    state: &mut RobloxViewState,
+    view_ok: bool,
+    model_ok: bool,
+    overlay_ok: bool,
+) {
+    // IDA 0x380a4: `bindWorkspace(view, dataModel, overlayModel)` retains
+    // the three peers into the view. MODEL: peers fold into host
+    // ownership; a fully live triple latches.
+    state.workspace_bound = view_ok && model_ok && overlay_ok;
 }
 
 // 0x382b0 — __ZN10RobloxView22defineConcurrencyRulesEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::defineConcurrencyRules(void)")]
 #[doc(alias = "__ZN10RobloxView22defineConcurrencyRulesEv")]
-pub fn stub_0x382b0() -> ! {
-    todo!("0x382b0 RobloxView::defineConcurrencyRules(void)")
+pub fn stub_0x382b0(state: &mut RobloxViewState) {
+    // IDA 0x382b0: `defineConcurrencyRules` registers the job
+    // ordering/marshaller rules for render, physics, and view-update
+    // jobs. MODEL: scheduler plumbing folds into the host; the latch is
+    // observed.
+    state.concurrency_defined = true;
 }
 
 // 0x386d0 — __ZN10RobloxView16restartDataModelEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::restartDataModel(void)")]
 #[doc(alias = "__ZN10RobloxView16restartDataModelEv")]
-pub fn stub_0x386d0() -> ! {
-    todo!("0x386d0 RobloxView::restartDataModel(void)")
+pub fn stub_0x386d0(state: &mut RobloxViewState) {
+    // IDA 0x386d0: `restartDataModel` captures `this` in a stack block
+    // (0x38706..0x38714) and `dispatch_async`s
+    // `doRestartDataModel_block_invoke` to the main queue (0x38718).
+    // MODEL: the queue hop folds into the caller; the queued restart is
+    // observed.
+    state.restart_queued = true;
 }
 
 // 0x38720 — __ZN10RobloxView15newGameDidStartEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::newGameDidStart(void)")]
 #[doc(alias = "__ZN10RobloxView15newGameDidStartEv")]
-pub fn stub_0x38720() -> ! {
-    todo!("0x38720 RobloxView::newGameDidStart(void)")
+pub fn stub_0x38720(state: &mut RobloxViewState) {
+    // IDA 0x38720: `newGameDidStart` captures `this` in a stack block
+    // (0x38756..0x38764) and `dispatch_async`s the `newGameDidStart`
+    // block to the main queue (0x38768). MODEL: the queue hop folds into
+    // the caller; the queued start is observed.
+    state.game_started = true;
 }
 
 // 0x45808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_")]
-pub fn stub_0x45808() -> ! {
-    todo!("0x45808 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")
+pub fn stub_0x45808() {
+    // IDA 0x45808: `intrusive_ptr<signal<bool,void*,UIEvent>::slot>::
+    // operator=` add-refs the new slot (0x4585c), swaps it in (0x45864),
+    // and releases the old one (0x4586c). `Arc` assignment glue covers
+    // it; no explicit body.
 }
 
+/// Opaque `signal<bool,void*,UIEvent>` static mutex handle (IDA 0x458ac,
+/// cf. `SIGNAL_STR_MUTEX` at 0x31ec8).
+static SIGNAL_UIEVENT_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 // 0x458ac — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv")]
-pub fn stub_0x458ac() -> ! {
-    todo!("0x458ac rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x458ac() -> u32 {
+    // IDA 0x458ac: `signal<bool,void*,UIEvent>::safe_static_do_get_mutex`
+    // one-shots the static signal mutex behind a `__cxa_guard`
+    // (0x45908..0x45938) and answers it (0x45966). The opaque handle
+    // records once.
+    *SIGNAL_UIEVENT_MUTEX
 }
 
 // 0x459a4 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_")]
-pub fn stub_0x459a4() -> ! {
-    todo!("0x459a4 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")
+pub fn stub_0x459a4() {
+    // IDA 0x459a4: `callable<signal<bool,void*,UIEvent>::slot,function,3>::
+    // callable` installs the vtables (0x459ec..0x459f2) and copies the
+    // function via `assign_to_own` (0x45a24, cf. 0x31fc0).
+    // Slot-construction glue; no explicit body.
 }
 
 // 0x45aa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev")]
-pub fn stub_0x45aa0() -> ! {
-    todo!("0x45aa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::callable_slot<boost::function<void ()(bool,void *,RBX::UIEvent)>>::~callable_slot()")
+pub fn stub_0x45aa0() {
+    // IDA 0x45aa0: D1 dtor — resets vtables (0x45aea/0x45b24), clears the
+    // function (0x45b0a), and releases the connection (0x45b28..0x45b30,
+    // cf. 0x320bc). Drop glue covers it; no explicit body.
 }
 
 #[cfg(test)]
@@ -1670,5 +1765,56 @@ mod reachability_alert_batch_tests {
         assert_eq!(dview.other, Some("OK".to_string()));
         assert!(dview.has_delegate);
         stub_0x35ffc();
+    }
+}
+
+#[cfg(test)]
+mod robloxview_tail_batch_tests {
+    use super::*;
+
+    #[test]
+    fn settings_block_and_search_url() {
+        let mut refreshed = false;
+        stub_0x36de4(&mut refreshed);
+        assert!(refreshed);
+        assert_eq!(stub_0x36e04(false, "phone", "tablet"), "phone");
+        assert_eq!(stub_0x36e04(true, "phone", "tablet"), "tablet");
+        assert_eq!(stub_0x36e80(), 1);
+    }
+
+    #[test]
+    fn view_lifecycle_latches() {
+        let mut view = stub_0x37628(320, 480, "a", "b", "c");
+        assert_eq!(view.width, 320);
+        assert_eq!(view.height, 480);
+        assert_eq!(view.params, ["a".to_string(), "b".to_string(), "c".to_string()]);
+        assert!(!view.rendering_suspended);
+        stub_0x37068(&mut view);
+        assert!(view.rendering_suspended);
+        stub_0x37378(&mut view);
+        assert!(!view.rendering_suspended);
+        assert_eq!(stub_0x375b4("/Applications/Test.app"), "/Applications/Test.app");
+        stub_0x37b3c(&mut view, false);
+        assert!(!view.view_prepped);
+        stub_0x37b3c(&mut view, true);
+        assert!(view.view_prepped);
+        stub_0x380a4(&mut view, true, true, false);
+        assert!(!view.workspace_bound);
+        stub_0x380a4(&mut view, true, true, true);
+        assert!(view.workspace_bound);
+        stub_0x382b0(&mut view);
+        assert!(view.concurrency_defined);
+        stub_0x386d0(&mut view);
+        assert!(view.restart_queued);
+        stub_0x38720(&mut view);
+        assert!(view.game_started);
+    }
+
+    #[test]
+    fn uievent_signal_glue_shape() {
+        assert_eq!(stub_0x458ac(), *SIGNAL_UIEVENT_MUTEX);
+        stub_0x45808();
+        stub_0x459a4();
+        stub_0x45aa0();
     }
 }
