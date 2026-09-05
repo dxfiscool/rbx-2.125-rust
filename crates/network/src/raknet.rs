@@ -22739,8 +22739,9 @@ pub fn stub_aaa598<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 #[doc(
     alias = "bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
 )]
-pub fn stub_aaa764() -> ! {
-    todo!("0xaaa764 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_aaa764(dst: &mut Option<u64>, src: Option<u64>) {
+ // IDA 0xaaa764: basic_vtable1::assign_to copies the bind (below truncation).
+ *dst = src;
 }
 
 // 0xaaa960 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEclIPFvS7_NS_10shared_ptrIKSt3mapISsNS4_10Reflection7VariantESt4lessISsESaISt4pairIKSsSG_EEEEEENS0_5list1IRSP_EEEEvNS0_4typeIvEERT_RT0_i
@@ -22758,8 +22759,9 @@ pub fn stub_aaa960<A>(slot: &mut dyn FnMut(A), a: A) {
 #[doc(
     alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
 )]
-pub fn stub_aaad08() -> ! {
-    todo!("0xaaad08 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_aaad08(destroy: bool, manage: &mut dyn FnMut(bool)) {
+ // IDA 0xaaad08: manage_small destroys or clones the small bind (below truncation).
+ manage(destroy);
 }
 
 // 0xaaae28 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_
@@ -22767,8 +22769,10 @@ pub fn stub_aaad08() -> ! {
 #[doc(
     alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>::list2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>)"
 )]
-pub fn stub_aaae28() -> ! {
-    todo!("0xaaae28 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>::list2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>)")
+pub fn stub_aaae28(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xaaae28: list2 ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xaaafe8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network19PersistentDataStoreES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
@@ -22776,8 +22780,8 @@ pub fn stub_aaae28() -> ! {
 #[doc(
     alias = "void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)"
 )]
-pub fn stub_aaafe8() -> ! {
-    todo!("0xaaafe8 void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)")
+pub fn stub_aab194() {
+ // IDA 0xaab194: empty sp_counted_impl_p<PersistentDataStore> D2 body.
 }
 
 // 0xaab194 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED1Ev
@@ -22785,8 +22789,9 @@ pub fn stub_aaafe8() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()"
 )]
-pub fn stub_aab194() -> ! {
-    todo!("0xaab194 boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()")
+pub fn stub_aab198(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0xaab198: D0: operator delete.
+ free(block);
 }
 
 // 0xaab198 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED0Ev
@@ -22794,8 +22799,9 @@ pub fn stub_aab194() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()"
 )]
-pub fn stub_aab198() -> ! {
-    todo!("0xaab198 boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::~sp_counted_impl_p()")
+pub fn stub_aab1a4(clear: &mut dyn FnMut()) {
+ // IDA 0xaab1a4: dispose erases the data map (below truncation).
+ clear();
 }
 
 // 0xaab1a4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEE7disposeEv
@@ -22803,8 +22809,9 @@ pub fn stub_aab198() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::dispose(void)"
 )]
-pub fn stub_aab1a4() -> ! {
-    todo!("0xaab1a4 boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::dispose(void)")
+pub fn stub_aab24c() -> usize {
+ // IDA 0xaab24c: get_deleter returns 0.
+ 0
 }
 
 // 0xaab24c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEE11get_deleterERKSt9type_info
@@ -22812,8 +22819,9 @@ pub fn stub_aab1a4() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_aab24c() -> ! {
-    todo!("0xaab24c boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_deleter(std::type_info const&)")
+pub fn stub_aab250() -> usize {
+ // IDA 0xaab250: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0xaab250 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEE19get_untyped_deleterEv
@@ -22821,8 +22829,9 @@ pub fn stub_aab24c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_untyped_deleter(void)"
 )]
-pub fn stub_aab250() -> ! {
-    todo!("0xaab250 boost::detail::sp_counted_impl_p<RBX::Network::PersistentDataStore>::get_untyped_deleter(void)")
+pub fn stub_aab35c(text: String, replicate: &mut dyn FnMut(String)) {
+ // IDA 0xaab35c: replicateEvent (below truncation).
+ replicate(text);
 }
 
 // 0xaab35c — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceESs
@@ -22830,8 +22839,10 @@ pub fn stub_aab250() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::replicateEvent(RBX::Reflection::EventSource *,std::string)"
 )]
-pub fn stub_aab35c() -> ! {
-    todo!("0xaab35c RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::replicateEvent(RBX::Reflection::EventSource *,std::string)")
+pub fn stub_aad1dc(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xaad1dc: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xaad1dc — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEEC2IMS3_KFS5_vEMS3_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -22839,8 +22850,10 @@ pub fn stub_aab35c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::EnumPropDescriptor<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>(char const*,char const*,RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_aad1dc() -> ! {
-    todo!("0xaad1dc RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::EnumPropDescriptor<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>(char const*,char const*,RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_aad4dc(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xaad4dc: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xaad4dc — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEED0Ev
@@ -22848,8 +22861,9 @@ pub fn stub_aad1dc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()"
 )]
-pub fn stub_aad4dc() -> ! {
-    todo!("0xaad4dc RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()")
+pub fn stub_aad504(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xaad504: forwards to the impl at +44.
+ inner()
 }
 
 // 0xaad504 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv
@@ -22857,8 +22871,9 @@ pub fn stub_aad4dc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const"
 )]
-pub fn stub_aad504() -> ! {
-    todo!("0xaad504 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const")
+pub fn stub_aad514(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xaad514: forwards to the impl at +44.
+ inner()
 }
 
 // 0xaad514 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11isWriteOnlyEv
@@ -22866,8 +22881,9 @@ pub fn stub_aad504() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const"
 )]
-pub fn stub_aad514() -> ! {
-    todo!("0xaad514 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const")
+pub fn stub_aad524(current: i32, candidate: i32) -> bool {
+ // IDA 0xaad524: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0xaad524 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11equalValuesEPKNS0_13DescribedBaseES9_
@@ -22875,8 +22891,9 @@ pub fn stub_aad514() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aad524() -> ! {
-    todo!("0xaad524 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aad54c(value: i32) -> (String, i32) {
+ // IDA 0xaad54c: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0xaad54c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -22884,8 +22901,9 @@ pub fn stub_aad524() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
 )]
-pub fn stub_aad54c() -> ! {
-    todo!("0xaad54c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_aad5fc(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaad5fc: Variant::get<int> then setValue.
+ set(value);
 }
 
 // 0xaad5fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -22893,8 +22911,9 @@ pub fn stub_aad54c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
 )]
-pub fn stub_aad5fc() -> ! {
-    todo!("0xaad5fc RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_aad618(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaad618: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0xaad618 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE9copyValueEPKNS0_13DescribedBaseEPS7_
@@ -22902,8 +22921,9 @@ pub fn stub_aad5fc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
 )]
-pub fn stub_aad618() -> ! {
-    todo!("0xaad618 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_aad63c() -> bool {
+ // IDA 0xaad63c: hasStringValue returns 1.
+ true
 }
 
 // 0xaad63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv
@@ -22911,8 +22931,9 @@ pub fn stub_aad618() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const"
 )]
-pub fn stub_aad63c() -> ! {
-    todo!("0xaad63c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const")
+pub fn stub_aad640(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
+ // IDA 0xaad640: converts the enum value to its name (below truncation).
+ to_string(value)
 }
 
 // 0xaad640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -22920,8 +22941,11 @@ pub fn stub_aad63c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getStringValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aad640() -> ! {
-    todo!("0xaad640 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aad664(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaad664: Name::lookup then setValue (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0xaad664 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -22929,8 +22953,10 @@ pub fn stub_aad640() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
 )]
-pub fn stub_aad664() -> ! {
-    todo!("0xaad664 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_aad708(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0xaad708: clears the pair, writes type 5 + value; returns 5.
+ write(value);
+ 5
 }
 
 // 0xaad708 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -22938,8 +22964,9 @@ pub fn stub_aad664() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
 )]
-pub fn stub_aad708() -> ! {
-    todo!("0xaad708 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_aad728(parse: &mut dyn FnMut()) {
+ // IDA 0xaad728: readValue parses the pair (below truncation).
+ parse();
 }
 
 // 0xaad728 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -22947,8 +22974,10 @@ pub fn stub_aad708() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
 )]
-pub fn stub_aad728() -> ! {
-    todo!("0xaad728 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_aad9ec(value: i32) -> i32 {
+ // IDA 0xaad9ec: asserts the enum value > -1, returns it.
+ debug_assert!(value > -1);
+ value
 }
 
 // 0xaad9ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -22956,8 +22985,14 @@ pub fn stub_aad728() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aad9ec() -> ! {
-    todo!("0xaad9ec RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aada68(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0xaada68: in-range index -> set + return 1 else 0.
+ if items.len() > index {
+ set(items[index]);
+ 1
+ } else {
+ 0
+ }
 }
 
 // 0xaada68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -22965,17 +23000,9 @@ pub fn stub_aad9ec() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
 )]
-pub fn stub_aada68() -> ! {
-    todo!("0xaada68 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
-}
-
-// 0xaada9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE12getEnumValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int)
-#[doc(
-    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const"
-)]
-pub fn stub_aada9c() -> ! {
-    todo!("0xaada9c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aada9c(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xaada9c: getEnumValue forwards to the impl.
+ get()
 }
 
 // 0xaadaac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE12setEnumValueEPNS0_13DescribedBaseEi
