@@ -6,193 +6,243 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+/// AsyncHttpQueue request result code (IDA RBX::AsyncHttpQueue::RequestResult; passed through opaquely).
+pub type HttpRequestResult = u32;
+
+/// AsyncHttpQueue completion callback: `boost::function<void(RequestResult, istream*, shared_ptr<string const>)>` (IDA 0x2fee80 et al.; shared ownership models boost::function value semantics).
+pub type HttpCallback = SharedPtr<dyn Fn(HttpRequestResult, &mut dyn std::io::Read, SharedPtr<String>)>;
+
+/// AsyncHttpQueue::CallbackWrapper (IDA 0x2fee5c: 20 bytes — callback + tag at +16).
+#[derive(Clone)]
+pub struct CallbackWrapper {
+    pub callback: HttpCallback,
+    pub tag: i32,
+}
+
+/// AsyncHttpQueue::Request (IDA 0x2ff188: url + callbacks + priority/options).
+#[derive(Clone)]
+pub struct HttpRequest {
+    pub url: String,
+    pub callbacks: Vec<CallbackWrapper>,
+    pub priority: i32,
+    pub options: u32,
+}
+
+/// Bound callback invocation tuple (IDA 0x2ff588 list4 ctor: callback + instance + result + data).
+#[derive(Clone)]
+pub struct BoundCallback {
+    pub callback: HttpCallback,
+    pub instance: usize,
+    pub result: HttpRequestResult,
+    pub data: SharedPtr<String>,
+}
+
+/// DataModel callback: `boost::function<void(DataModel*)>` (IDA 0x2fff80 et al.; shared ownership models value semantics).
+pub type DataModelCallback = SharedPtr<dyn Fn(usize)>;
+
+/// Owned payload destroyed by `sp_counted_impl_p<RBX::Http>::dispose` (IDA 0x2ffd3c: strings + header map).
+#[derive(Default)]
+pub struct HttpDispose {
+    pub headers: std::collections::HashMap<String, String>,
+    pub fields: Vec<String>,
+}
+
 
 // 0x2fee5c — __ZNSt12_Vector_baseIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EE11_M_allocateEm
 // demangled: std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate(unsigned long)
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate(unsigned long)")]
-pub fn stub_2fee5c() -> ! {
-    todo!("0x2fee5c std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate(unsigned long)")
+pub fn stub_2fee5c(n: usize) -> Vec<CallbackWrapper> { // IDA 0x2fee5c: checked 20-byte array alloc (bad_alloc at 0xCCCCCCD+); maps to reserved Vec capacity.
+    if n >= 0xCCCCCCD {
+        panic!("_M_allocate: bad_alloc");
+    }
+    Vec::with_capacity(n)
 }
 
 // 0x2fee80 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEaSERKS9_
 // demangled: boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>::operator=(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)> const&)
 #[doc(alias = "boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>::operator=(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)> const&)")]
-pub fn stub_2fee80() -> ! {
-    todo!("0x2fee80 boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>::operator=(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)> const&)")
+pub fn stub_2fee80(dst: &mut HttpCallback, src: &HttpCallback) { // IDA 0x2fee80: copy-assign via temp + swap (assign_to_own/swap/clear); observable: dst becomes src.
+    *dst = src.clone();
 }
 
 // 0x2fef44 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE4swapERS8_
 // demangled: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::swap(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::swap(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>&)")]
-pub fn stub_2fef44() -> ! {
-    todo!("0x2fef44 boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::swap(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)")
+pub fn stub_2fef44(a: &mut HttpCallback, b: &mut HttpCallback) { // IDA 0x2fef44: three-way move-assign swap with self-check; observable: swap.
+    std::mem::swap(a, b);
 }
 
 // 0x2ff020 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE11move_assignERS8_
 // demangled: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::move_assign(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::move_assign(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>&)")]
-pub fn stub_2ff020() -> ! {
-    todo!("0x2ff020 boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::move_assign(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)")
+pub fn stub_2ff020(dst: &mut Option<HttpCallback>, src: &mut Option<HttpCallback>) { // IDA 0x2ff020: move-assign (small-object copy or heap-clone dispatch); source cleared; observable: take.
+    *dst = src.take();
 }
 
 // 0x2ff128 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX14AsyncHttpQueue15CallbackWrapperES6_EET0_T_S8_S7_
 // demangled: RBX::AsyncHttpQueue::CallbackWrapper * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::AsyncHttpQueue::CallbackWrapper * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)")]
-pub fn stub_2ff128() -> ! {
-    todo!("0x2ff128 RBX::AsyncHttpQueue::CallbackWrapper * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)")
+pub fn stub_2ff128(dst: &mut [CallbackWrapper], src: &[CallbackWrapper]) { // IDA 0x2ff128: backward elementwise copy (overlap-safe direction preserved; per-element assign_to_own folded into clone).
+    for (d, s) in dst.iter_mut().rev().zip(src.iter().rev()) {
+        d.clone_from(s);
+    }
 }
 
 // 0x2ff188 — __ZNSt4listIN3RBX14AsyncHttpQueue7RequestESaIS2_EE14_M_create_nodeERKS2_
 // demangled: std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_create_node(RBX::AsyncHttpQueue::Request const&)
 // type: int __fastcall(int, int, int, int, std::string *, int, int, int, int, int)
 #[doc(alias = "std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_create_node(RBX::AsyncHttpQueue::Request const&)")]
-pub fn stub_2ff188() -> ! {
-    todo!("0x2ff188 std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_create_node(RBX::AsyncHttpQueue::Request const&)")
+pub fn stub_2ff188(url: String, callbacks: Vec<CallbackWrapper>, priority: i32, options: u32) -> HttpRequest { // IDA 0x2ff188: list node alloc (0x2C) + url/callbacks/priority/options/shared-count init.
+    HttpRequest { url, callbacks, priority, options }
 }
 
 // 0x2ff2d4 — __ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EEC2ERKS4_
 // demangled: std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::vector(std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>> const&)
 // type: int(void)
 #[doc(alias = "std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::vector(std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>> const&)")]
-pub fn stub_2ff2d4() -> ! {
-    todo!("0x2ff2d4 std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::vector(std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>> const&)")
+pub fn stub_2ff2d4(src: &[CallbackWrapper]) -> Vec<CallbackWrapper> { // IDA 0x2ff2d4: range vector ctor (per-element assign_to_own folded into clone).
+    src.to_vec()
 }
 
 // 0x2ff43c — __ZNSt12_Vector_baseIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EEC2EmRKS3_
 // demangled: std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_Vector_base(unsigned long,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper> const&)
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_Vector_base(unsigned long,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper> const&)")]
-pub fn stub_2ff43c() -> ! {
-    todo!("0x2ff43c std::_Vector_base<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_Vector_base(unsigned long,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper> const&)")
+pub fn stub_2ff43c(n: usize) -> Vec<CallbackWrapper> { // IDA 0x2ff43c: vector-base ctor with n-element storage (null triple when 0).
+    Vec::with_capacity(n)
 }
 
 // 0x2ff470 — __ZN5boost3_bi5list4INS_3argILi1EEENS0_5valueIPN3RBX8InstanceEEENS4_INS5_14AsyncHttpQueue13RequestResultEEENS4_INS_10shared_ptrISsEEEEEclIPFvNS9_15CallbackWrapperES7_SA_SD_ENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
 // demangled: void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>>::operator()<void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string>),boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&>>(boost::_bi::type<void>,void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string>) &,boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&> &,int)
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string>>>::operator()<void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string>),boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&>>(boost::_bi::type<void>,void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string>) &,boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&> &,int)")]
-pub fn stub_2ff470() -> ! {
-    todo!("0x2ff470 void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>>::operator()<void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string>),boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&>>(boost::_bi::type<void>,void (*)(RBX::AsyncHttpQueue::CallbackWrapper,RBX::Instance *,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string>) &,boost::_bi::list1<RBX::AsyncHttpQueue::CallbackWrapper&> &,int)")
+pub fn stub_2ff470(target: &mut dyn FnMut(&CallbackWrapper, usize, HttpRequestResult, SharedPtr<String>), wrapper: &CallbackWrapper, instance: usize, result: HttpRequestResult, data: SharedPtr<String>) { // IDA 0x2ff470: bind-list invocation — calls the bound target with stored (instance, result, data) plus the wrapper argument.
+    target(wrapper, instance, result, data);
 }
 
 // 0x2ff588 — __ZN5boost3_bi5list4INS_3argILi1EEENS0_5valueIPN3RBX8InstanceEEENS4_INS5_14AsyncHttpQueue13RequestResultEEENS4_INS_10shared_ptrISsEEEEEC2ES3_S8_SB_SE_
 // demangled: boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>>::list4(boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>)
 #[doc(alias = "boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string>>>::list4(boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string>>)")]
-pub fn stub_2ff588() -> ! {
-    todo!("0x2ff588 boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>>::list4(boost::arg<1>,boost::_bi::value<RBX::Instance *>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string>>)")
+pub fn stub_2ff588(callback: HttpCallback, instance: usize, result: HttpRequestResult, data: SharedPtr<String>) -> BoundCallback { // IDA 0x2ff588: bind-tuple ctor (shared-count copies folded into Arc clones).
+    BoundCallback { callback, instance, result, data }
 }
 
 // 0x2ff674 — __ZNSt4listIN3RBX14AsyncHttpQueue7RequestESaIS2_EE8_M_eraseESt14_List_iteratorIS2_E
 // demangled: std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_erase(std::_List_iterator<RBX::AsyncHttpQueue::Request>)
 #[doc(alias = "std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_erase(std::_List_iterator<RBX::AsyncHttpQueue::Request>)")]
-pub fn stub_2ff674() -> ! {
-    todo!("0x2ff674 std::list<RBX::AsyncHttpQueue::Request,std::allocator<RBX::AsyncHttpQueue::Request>>::_M_erase(std::_List_iterator<RBX::AsyncHttpQueue::Request>)")
+pub fn stub_2ff674(requests: &mut Vec<HttpRequest>, index: usize) -> HttpRequest { // IDA 0x2ff674: list node erase (unhook + destroy); Vec removal preserves order likewise.
+    requests.remove(index)
 }
 
 // 0x2ff758 — __ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEPS2_mT_SC_
 // demangled: RBX::AsyncHttpQueue::CallbackWrapper* std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>>(unsigned long,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>)
 // type: char *__fastcall(int, unsigned int, int, int)
 #[doc(alias = "RBX::AsyncHttpQueue::CallbackWrapper* std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>>(unsigned long,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>)")]
-pub fn stub_2ff758() -> ! {
-    todo!("0x2ff758 RBX::AsyncHttpQueue::CallbackWrapper* std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>>(unsigned long,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>,__gnu_cxx::__normal_iterator<RBX::AsyncHttpQueue::CallbackWrapper const*,std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>>)")
+pub fn stub_2ff758(src: &[CallbackWrapper]) -> Vec<CallbackWrapper> { // IDA 0x2ff758: allocate + copy range (per-element assign_to_own folded into clone).
+    src.to_vec()
 }
 
 // 0x2ff8c0 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN3RBX14AsyncHttpQueue15CallbackWrapperES6_EET0_T_S8_S7_
 // demangled: RBX::AsyncHttpQueue::CallbackWrapper * std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)
 // type: int(void)
 #[doc(alias = "RBX::AsyncHttpQueue::CallbackWrapper * std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)")]
-pub fn stub_2ff8c0() -> ! {
-    todo!("0x2ff8c0 RBX::AsyncHttpQueue::CallbackWrapper * std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *>(RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *,RBX::AsyncHttpQueue::CallbackWrapper *)")
+pub fn stub_2ff8c0(dst: &mut [CallbackWrapper], src: &[CallbackWrapper]) { // IDA 0x2ff8c0: forward elementwise copy.
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        d.clone_from(s);
+    }
 }
 
 // 0x2ff91c — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKN3RBX14AsyncHttpQueue15CallbackWrapperEPS5_EET0_T_SA_S9_
 // demangled: RBX::AsyncHttpQueue::CallbackWrapper* std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*>(RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*)
 // type: int(void)
 #[doc(alias = "RBX::AsyncHttpQueue::CallbackWrapper* std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*>(RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*)")]
-pub fn stub_2ff91c() -> ! {
-    todo!("0x2ff91c RBX::AsyncHttpQueue::CallbackWrapper* std::__copy<false,std::random_access_iterator_tag>::copy<RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*>(RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper const*,RBX::AsyncHttpQueue::CallbackWrapper*)")
+pub fn stub_2ff91c(dst: &mut [CallbackWrapper], src: &[CallbackWrapper]) { // IDA 0x2ff91c: forward elementwise copy (const source).
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        d.clone_from(s);
+    }
 }
 
 // 0x2ff978 — __ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EED2Ev
 // demangled: std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::~vector()
 #[doc(alias = "std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::~vector()")]
-pub fn stub_2ff978() -> ! {
-    todo!("0x2ff978 std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::~vector()")
+pub fn stub_2ff978(v: Vec<CallbackWrapper>) { // IDA 0x2ff978: vector dtor (per-element clear + dealloc); drop.
+    drop(v);
 }
 
 // 0x2ffa44 — __ZNSt4listIN3RBX14AsyncHttpQueue9FailedUrlESaIS2_EE14_M_create_nodeERKS2_
 // demangled: std::list<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_create_node(RBX::AsyncHttpQueue::FailedUrl const&)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::list<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_create_node(RBX::AsyncHttpQueue::FailedUrl const&)")]
-pub fn stub_2ffa44() -> ! {
-    todo!("0x2ffa44 std::list<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_create_node(RBX::AsyncHttpQueue::FailedUrl const&)")
+pub fn stub_2ffa44(url: String, time: f64) -> crate::generated_164::FailedUrl { // IDA 0x2ffa44: FailedUrl node alloc (url + timestamp); reuses the sibling-owned type.
+    crate::generated_164::FailedUrl { url, time }
 }
 
 // 0x2ffb24 — __ZN5boost10shared_ptrIN3RBX4HttpEEC2IS2_EEPT_
 // demangled: boost::shared_ptr<RBX::Http>::shared_ptr<RBX::Http>(RBX::Http *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Http>::shared_ptr<RBX::Http>(RBX::Http *)")]
-pub fn stub_2ffb24() -> ! {
-    todo!("0x2ffb24 boost::shared_ptr<RBX::Http>::shared_ptr<RBX::Http>(RBX::Http *)")
+pub fn stub_2ffb24<T>(value: T) -> SharedPtr<T> { // IDA 0x2ffb24: shared_ptr<Http> aliasing ctor (temp count released); Arc ownership.
+    SharedPtr::new(value)
 }
 
 // 0x2ffbfc — __ZN5boost6detail12shared_countC2IN3RBX4HttpEEEPT_
 // demangled: boost::detail::shared_count::shared_count<RBX::Http>(RBX::Http *)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Http>(RBX::Http *)")]
-pub fn stub_2ffbfc() -> ! {
-    todo!("0x2ffbfc boost::detail::shared_count::shared_count<RBX::Http>(RBX::Http *)")
+pub fn stub_2ffbfc<T>(value: T) -> SharedPtr<T> { // IDA 0x2ffbfc: shared_count ctor (control block, use/weak 1); Arc alloc.
+    SharedPtr::new(value)
 }
 
 // 0x2ffd34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED1Ev
 // demangled: boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
-pub fn stub_2ffd34() -> ! {
-    todo!("0x2ffd34 boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")
+pub fn stub_2ffd34<T>(v: SharedPtr<T>) { // IDA 0x2ffd34: counted-impl dtor (empty body; base releases).
+    drop(v);
 }
 
 // 0x2ffd38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev
 // demangled: boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
-pub fn stub_2ffd38() -> ! {
-    todo!("0x2ffd38 boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")
+pub fn stub_2ffd38<T>(v: SharedPtr<T>) { // IDA 0x2ffd38: deleting-destructor thunk (operator delete); drop.
+    drop(v);
 }
 
 // 0x2ffd3c — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<RBX::Http>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::dispose(void)")]
-pub fn stub_2ffd3c() -> ! {
-    todo!("0x2ffd3c boost::detail::sp_counted_impl_p<RBX::Http>::dispose(void)")
+pub fn stub_2ffd3c(data: HttpDispose) { // IDA 0x2ffd3c: dispose the Http payload (strings + header map) then free; drop.
+    drop(data);
 }
 
 // 0x2ffe10 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<RBX::Http>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::get_deleter(std::type_info const&)")]
-pub fn stub_2ffe10() -> ! {
-    todo!("0x2ffe10 boost::detail::sp_counted_impl_p<RBX::Http>::get_deleter(std::type_info const&)")
+pub fn stub_2ffe10() -> Option<SharedPtr<()>> { // IDA 0x2ffe10: get_deleter on plain ownership → null.
+    None
 }
 
 // 0x2ffe14 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<RBX::Http>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::get_untyped_deleter(void)")]
-pub fn stub_2ffe14() -> ! {
-    todo!("0x2ffe14 boost::detail::sp_counted_impl_p<RBX::Http>::get_untyped_deleter(void)")
+pub fn stub_2ffe14() -> Option<SharedPtr<()>> { // IDA 0x2ffe14: get_untyped_deleter on plain ownership → null.
+    None
 }
 
 // 0x2ffe1c — __ZN5boost10shared_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // demangled: boost::shared_ptr<RBX::AsyncHttpQueue>::shared_ptr<RBX::AsyncHttpQueue>(boost::weak_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_nothrow_tag)
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AsyncHttpQueue>::shared_ptr<RBX::AsyncHttpQueue>(rbx_core::WeakPtr<RBX::AsyncHttpQueue> const&,boost::detail::sp_nothrow_tag)")]
-pub fn stub_2ffe1c() -> ! {
-    todo!("0x2ffe1c boost::shared_ptr<RBX::AsyncHttpQueue>::shared_ptr<RBX::AsyncHttpQueue>(boost::weak_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_nothrow_tag)")
+pub fn stub_2ffe1c(dst: &mut Option<SharedPtr<crate::generated_164::AsyncHttpQueue>>, src: &Option<SharedPtr<crate::generated_164::AsyncHttpQueue>>) { // IDA 0x2ffe1c: copy with spinlocked retain (maps to atomic Arc clone); empty source clears.
+    *dst = src.clone();
 }
 
 // 0x2fff80 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS1_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESA_SE_ENS7_5list3INS7_5valueISG_EENSK_ISA_EENSK_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS1_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESA_SE_ENS7_5list3INS7_5valueISG_EENSK_ISA_EENSK_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2fff80() -> ! {
-    todo!("0x2fff80 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS1_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESA_SE_ENS7_5list3INS7_5valueISG_EENSK_ISA_EENSK_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_2fff80(f: &DataModelCallback) -> DataModelCallback { // IDA 0x2fff80: function<DataModel*> ctor from the bind triple (shared state copied); clone.
+    f.clone()
 }
 
 // 0x3000d8 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8functionIFvNS1_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEESA_SE_ENS6_5list3INS6_5valueISG_EENSK_ISA_EENSK_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
