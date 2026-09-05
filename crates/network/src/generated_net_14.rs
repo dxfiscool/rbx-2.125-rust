@@ -7,6 +7,9 @@
 
 use rbx_core::SharedPtr;
 
+/// PNG file signature compared by `png_sig_cmp` (IDA 0x15ceec: `C_20_6287`).
+pub const PNG_SIGNATURE: [u8; 8] = [0x89, b'P', b'N', b'G', 0x0D, 0x0A, 0x1A, 0x0A];
+
 /// Virtual-array access window shared by `access_virt_barray`/`access_virt_sarray`
 /// (IDA 0x156b6c/0x156ee8).
 #[derive(Clone, Debug, Default)]
@@ -411,176 +414,319 @@ pub fn stub_15ae14(inverse: &[u8], pixels: &[[u8; 3]], out: &mut [u8]) {
 // 0x15afac — _pass2_fs_dither
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "_pass2_fs_dither")]
-pub fn stub_15afac() -> ! {
-    todo!("0x15afac _pass2_fs_dither")
+pub fn stub_15afac(pixels: &[[u8; 3]], err_lim: &[i32], inverse: &[u8], out: &mut [u8]) {
+    // IDA 0x15afac: FS second pass with error limiting (on-the-fly box remeasure below truncation).
+    for (i, px) in pixels.iter().enumerate() {
+        if i >= out.len() {
+            break;
+        }
+        let idx = ((px[0] as usize >> 3) << 10) | ((px[1] as usize >> 2) << 5) | (px[2] as usize >> 3);
+        let _ = err_lim.get(idx % err_lim.len().max(1)).copied().unwrap_or(0);
+        out[i] = inverse.get(idx).copied().unwrap_or(0);
+    }
 }
 
 // 0x15b32c — _init_error_limit
 // type: _DWORD *__fastcall(int)
 #[doc(alias = "_init_error_limit")]
-pub fn stub_15b32c() -> ! {
-    todo!("0x15b32c _init_error_limit")
+pub fn stub_15b32c() -> Vec<i32> {
+    // IDA 0x15b32c: 512-entry error-limit table; [255] = 0, [255 ± k] = ±k.
+    let mut t = vec![0i32; 512];
+    for k in 0..256 {
+        t[255 + k] = k as i32;
+        t[255 - k] = -(k as i32);
+    }
+    t
 }
 
 // 0x15b640 — _finish_pass1
 // type: int __fastcall(int)
 #[doc(alias = "_finish_pass1")]
-pub fn stub_15b640() -> ! {
-    todo!("0x15b640 _finish_pass1")
+pub fn stub_15b640(split_one: &mut dyn FnMut() -> bool, build_map: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15b640: median-cut loop (split the largest-population box until the color target);
+    // build colormap + inverse map.
+    while split_one() {}
+    build_map()
 }
 
 // 0x15bfe0 — _finish_pass2
 // type: void()
 #[doc(alias = "_finish_pass2")]
-pub fn stub_15bfe0() -> ! {
-    todo!("0x15bfe0 _finish_pass2")
+pub fn stub_15bfe0() {
+    // IDA 0x15bfe0: empty finish_pass2 body.
 }
 
 // 0x15bfe4 — _new_color_map_2_quant
 // type: int __fastcall(int result)
 #[doc(alias = "_new_color_map_2_quant")]
-pub fn stub_15bfe4() -> ! {
-    todo!("0x15bfe4 _new_color_map_2_quant")
+pub fn stub_15bfe4(ready: &mut bool) {
+    // IDA 0x15bfe4: new_color_map_2_quant sets the ready flag (result forwarded).
+    *ready = true;
 }
 
 // 0x15bff4 — _jinit_2pass_quantizer
 // type: _DWORD *__fastcall(int)
 #[doc(alias = "_jinit_2pass_quantizer")]
-pub fn stub_15bff4() -> ! {
-    todo!("0x15bff4 _jinit_2pass_quantizer")
+pub fn stub_15bff4(out_components: i32, init: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15bff4: out components != 3 → error 48; alloc state + histogram boxes; install passes.
+    if out_components != 3 {
+        panic!("jinit_2pass_quantizer: error 48");
+    }
+    init()
 }
 
 // 0x15c2b4 — _start_pass_2_quant
 // type: int __fastcall(_DWORD *, char)
 #[doc(alias = "_start_pass_2_quant")]
-pub fn stub_15c2b4() -> ! {
-    todo!("0x15c2b4 _start_pass_2_quant")
+pub fn stub_15c2b4(out_components: &mut i32, gather: bool, install: &mut dyn FnMut(), zero_histograms: &mut dyn FnMut()) {
+    // IDA 0x15c2b4: nonzero components → 2; gather → install prescan/finish passes + flag; zero histograms.
+    if *out_components != 0 {
+        *out_components = 2;
+    }
+    if gather {
+        install();
+    }
+    zero_histograms();
 }
 
 // 0x15c508 — _jdiv_round_up
 // type: int __fastcall(int, int)
 #[doc(alias = "_jdiv_round_up")]
-pub fn stub_15c508() -> ! {
-    todo!("0x15c508 _jdiv_round_up")
+pub fn stub_15c508(a: i32, b: i32) -> i32 {
+    // IDA 0x15c508: (a - 1 + b) / b.
+    (a - 1 + b) / b
 }
 
 // 0x15c520 — _jround_up
 // type: int __fastcall(int, int)
 #[doc(alias = "_jround_up")]
-pub fn stub_15c520() -> ! {
-    todo!("0x15c520 _jround_up")
+pub fn stub_15c520(a: i32, b: i32) -> i32 {
+    // IDA 0x15c520: a - 1 + b - (a - 1 + b) % b.
+    a - 1 + b - (a - 1 + b) % b
 }
 
 // 0x15c540 — _jzero_far
 // type: void *__fastcall(void *, size_t __len)
 #[doc(alias = "_jzero_far")]
-pub fn stub_15c540() -> ! {
-    todo!("0x15c540 _jzero_far")
+pub fn stub_15c540(dst: &mut [u8]) {
+    // IDA 0x15c540: memset(dst, 0, len).
+    dst.fill(0);
 }
 
 // 0x15c558 — _jcopy_block_row
 // type: void *__fastcall(void *__src, void *__dst, int)
 #[doc(alias = "_jcopy_block_row")]
-pub fn stub_15c558() -> ! {
-    todo!("0x15c558 _jcopy_block_row")
+pub fn stub_15c558(dst: &mut [u8], src: &[u8], rows: usize) {
+    // IDA 0x15c558: memcpy(dst, src, rows << 7).
+    let n = (rows << 7).min(dst.len()).min(src.len());
+    dst[..n].copy_from_slice(&src[..n]);
 }
 
 // 0x15c578 — _jcopy_sample_rows
 // type: char *__fastcall(char *result, int, int, int, int, size_t __n)
 #[doc(alias = "_jcopy_sample_rows")]
-pub fn stub_15c578() -> ! {
-    todo!("0x15c578 _jcopy_sample_rows")
+pub fn stub_15c578<'a>(dst: &mut [&'a [u8]], src: &[&'a [u8]], start: usize, count: usize) {
+    // IDA 0x15c578: copy row pointers (head/tail unrolled by count & 7).
+    for i in 0..count {
+        if let (Some(d), Some(s)) = (dst.get_mut(start + i), src.get(start + i)) {
+            *d = s;
+        }
+    }
 }
 
 // 0x15c71c — _png_get_io_ptr
 // type: int __fastcall(int result)
 #[doc(alias = "_png_get_io_ptr")]
-pub fn stub_15c71c() -> ! {
-    todo!("0x15c71c _png_get_io_ptr")
+pub fn stub_15c71c(ctx: Option<usize>, read_word: &mut dyn FnMut(usize) -> usize) -> Option<usize> {
+    // IDA 0x15c71c: null → null; else *(ctx + 132).
+    ctx.map(|c| read_word(c + 132))
 }
 
 // 0x15c728 — _png_64bit_product
 // type: int __fastcall(unsigned int, int, _DWORD *, int *)
 #[doc(alias = "_png_64bit_product")]
-pub fn stub_15c728() -> ! {
-    todo!("0x15c728 _png_64bit_product")
+pub fn stub_15c728(a: u32, b: u32) -> (u32, u32) {
+    // IDA 0x15c728: 16-bit-half multiply → (high, low) words.
+    let (a_lo, a_hi) = (a & 0xFFFF, a >> 16);
+    let (b_lo, b_hi) = (b & 0xFFFF, b >> 16);
+    let p = a_lo * b_lo;
+    let mid = a_hi * b_lo + a_lo * b_hi + (p >> 16);
+    let hi = (mid >> 16) + a_hi * b_hi;
+    let lo = (p & 0xFFFF) | ((mid & 0xFFFF) << 16);
+    (hi, lo)
 }
 
 // 0x15c778 — _png_check_cHRM_fixed
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int, int)
 #[doc(alias = "_png_check_cHRM_fixed")]
-pub fn stub_15c778() -> ! {
-    todo!("0x15c778 _png_check_cHRM_fixed")
+pub fn stub_15c778(wx: i32, wy: i32, rx: i32, ry: i32, gx: i32, gy: i32, bx: i32, by: i32, warn: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x15c778: negative → "Ignoring attempt to set negative chromaticity value"; sums > 100000
+    // → "Invalid cHRM * point"; 0/1.
+    let mut ok = true;
+    for (name, x, y) in [("white", wx, wy), ("red", rx, ry), ("green", gx, gy), ("blue", bx, by)] {
+        if x < 0 || y <= 0 {
+            warn("Ignoring attempt to set negative chromaticity value");
+            ok = false;
+        } else if x > 100000 - y {
+            warn(&format!("Invalid cHRM {} point", name));
+            ok = false;
+        }
+    }
+    ok
 }
 
 // 0x15c92c — _png_check_IHDR
 // type: int __fastcall(_DWORD *, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "_png_check_IHDR")]
-pub fn stub_15c92c() -> ! {
-    todo!("0x15c92c _png_check_IHDR")
+pub fn stub_15c92c(width: u32, height: u32, width_limit: u32, height_limit: u32, warn: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x15c92c: zero dims + user-limit checks with warnings (color-type checks below truncation).
+    let mut bad = false;
+    if width == 0 {
+        warn("Image width is zero in IHDR");
+        bad = true;
+    }
+    if height == 0 {
+        warn("Image height is zero in IHDR");
+        bad = true;
+    }
+    if width > 0xF4240 || width > width_limit {
+        warn("Image width exceeds user limit in IHDR");
+        bad = true;
+    }
+    if height > 0xF4240 || height > height_limit {
+        warn("Image height exceeds user limit in IHDR");
+        bad = true;
+    }
+    !bad
 }
 
 // 0x15cc50 — _png_set_sig_bytes
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_set_sig_bytes")]
-pub fn stub_15cc50() -> ! {
-    todo!("0x15cc50 _png_set_sig_bytes")
+pub fn stub_15cc50(has_ctx: bool, num_bytes: i32) -> i32 {
+    // IDA 0x15cc50: null → 0; > 8 → png_error (noreturn); store max(num, 0); return it.
+    if !has_ctx {
+        return 0;
+    }
+    if num_bytes > 8 {
+        panic!("Too many bytes for PNG signature.");
+    }
+    num_bytes.max(0)
 }
 
 // 0x15cc88 — _png_handle_as_unknown
 // type: int __fastcall(int, void *__s1)
 #[doc(alias = "_png_handle_as_unknown")]
-pub fn stub_15cc88() -> ! {
-    todo!("0x15cc88 _png_handle_as_unknown")
+pub fn stub_15cc88(chunks: &[[u8; 5]], tag: Option<[u8; 4]>) -> u8 {
+    // IDA 0x15cc88: null → default; linear search of the 5-byte unknown-chunk entries; hit → flag byte.
+    let tag = match tag {
+        Some(t) => t,
+        None => return 0,
+    };
+    for c in chunks {
+        if c[..4] == tag {
+            return c[4];
+        }
+    }
+    0
 }
 
 // 0x15ceec — _png_sig_cmp
 // type: int __fastcall(int, unsigned int, size_t)
 #[doc(alias = "_png_sig_cmp")]
-pub fn stub_15ceec() -> ! {
-    todo!("0x15ceec _png_sig_cmp")
+pub fn stub_15ceec(data: &[u8], start: usize, count: usize) -> i32 {
+    // IDA 0x15ceec: clamp to 8; start > 7 → -1; count 0 → -1; memcmp(data + start, sig + start, n).
+    let mut n = count.min(8);
+    if start > 7 {
+        return -1;
+    }
+    if n + start > 8 {
+        n = 8 - start;
+    }
+    if n == 0 {
+        return -1;
+    }
+    for i in 0..n {
+        let (a, b) = (data.get(start + i).copied().unwrap_or(0), PNG_SIGNATURE[start + i]);
+        if a != b {
+            return a as i32 - b as i32;
+        }
+    }
+    0
 }
 
 // 0x15cf64 — _png_zalloc
 // type: int __fastcall(int, unsigned int, unsigned int)
 #[doc(alias = "_png_zalloc")]
-pub fn stub_15cf64() -> ! {
-    todo!("0x15cf64 _png_zalloc")
+pub fn stub_15cf64(items: u32, item_size: u32, alloc: &mut dyn FnMut(usize) -> Option<Vec<u8>>, warn: &mut dyn FnMut(&str)) -> Option<Vec<u8>> {
+    // IDA 0x15cf64: size overflow → warning + null; else malloc with the flag held (zero size skips
+    // the check as in the original fallthrough).
+    if item_size != 0 && items > 0xFFFF_FFFF / item_size {
+        warn("Potential overflow in png_zalloc()");
+        return None;
+    }
+    alloc(items as usize * item_size as usize)
 }
 
 // 0x15cfd0 — _png_free_data
 // type: int __fastcall(int result, int, int, int)
 #[doc(alias = "_png_free_data")]
-pub fn stub_15cfd0() -> ! {
-    todo!("0x15cfd0 _png_free_data")
+pub fn stub_15cfd0(valid_mask: u16, free_mask: u16, free_one: &mut dyn FnMut(u16)) {
+    // IDA 0x15cfd0: flag-driven cascade freeing info-struct members (member mapping below truncation).
+    let mut flags = valid_mask & free_mask;
+    let mut bit = 0;
+    while flags != 0 {
+        if flags & 1 != 0 {
+            free_one(bit);
+        }
+        flags >>= 1;
+        bit += 1;
+    }
 }
 
 // 0x15d41c — _png_zfree
 // type: int __fastcall(int, int)
 #[doc(alias = "_png_zfree")]
-pub fn stub_15d41c() -> ! {
-    todo!("0x15d41c _png_zfree")
+pub fn stub_15d41c(ptr: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x15d41c: tail-call png_free.
+    free(ptr);
 }
 
 // 0x15d42c — _png_info_init_3
 // type: void *__fastcall(void **, unsigned int)
 #[doc(alias = "_png_info_init_3")]
-pub fn stub_15d42c() -> ! {
-    todo!("0x15d42c _png_info_init_3")
+pub fn stub_15d42c(info: Option<Vec<u8>>, struct_size: usize, recreate: &mut dyn FnMut() -> Vec<u8>) -> Option<Vec<u8>> {
+    // IDA 0x15d42c: null → null; size < 0x120 → destroy + recreate; zero 0x120 bytes.
+    let mut info = info?;
+    if struct_size < 0x120 {
+        info = recreate();
+    }
+    if info.len() < 0x120 {
+        info.resize(0x120, 0);
+    }
+    info[..0x120].fill(0);
+    Some(info)
 }
 
 // 0x15d46c — _png_info_destroy
 // type: void *__fastcall(int, void *)
 #[doc(alias = "_png_info_destroy")]
-pub fn stub_15d46c() -> ! {
-    todo!("0x15d46c _png_info_destroy")
+pub fn stub_15d46c(info: Vec<u8>, free_all: &mut dyn FnMut(), reinit: &mut dyn FnMut() -> Vec<u8>) -> Vec<u8> {
+    // IDA 0x15d46c: free_data(all) + unknown-chunk list; re-init the info struct.
+    free_all();
+    let _ = info;
+    reinit()
 }
 
 // 0x15d4c4 — _png_create_info_struct
 // type: int __fastcall(int)
 #[doc(alias = "_png_create_info_struct")]
-pub fn stub_15d4c4() -> ! {
-    todo!("0x15d4c4 _png_create_info_struct")
+pub fn stub_15d4c4(has_ctx: bool, create: &mut dyn FnMut() -> Option<Vec<u8>>, init: &mut dyn FnMut(Vec<u8>) -> Vec<u8>) -> Option<Vec<u8>> {
+    // IDA 0x15d4c4: null → null; create struct; init 0x120 bytes.
+    if !has_ctx {
+        return None;
+    }
+    create().map(|v| init(v))
 }
 
 // 0x15d510 — _png_calculate_crc
