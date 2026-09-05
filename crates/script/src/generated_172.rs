@@ -7,352 +7,502 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
+use crate::generated_171::GameVC;
+
+/// `__GLOBAL__I_a` one-shot latches (IDA 0x4ef74/0x4f7bc).
+static GLOBAL_A22_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A23_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `LoginManager` login courts (IDA 0x4e9a0..0x4eac8): the attempt count,
+/// last username, and successful logins. The credential send folds into
+/// the host (the password is never stored).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LoginAttempt {
+    pub attempts: u32,
+    pub user: String,
+    pub ok: u32,
+}
+
+/// `JumpButton` observable state (IDA 0x4f188..0x4f43c): the frame, the
+/// component seating, and the jump latch. Images fold into the host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct JumpBtn {
+    pub frame: [f32; 4],
+    pub seated: bool,
+    pub jumping: bool,
+}
+/// `ThumbStickControl` observable state (IDA 0x4f9d0..0x4fe88): the frame,
+/// style, claimed touch, and move vector. Stick visuals fold into the
+/// host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct ThumbStick {
+    pub frame: [f32; 4],
+    pub style: u32,
+    pub touch: Option<u32>,
+    pub move_vec: [f32; 2],
+}
+/// `__GLOBAL__I_a_24` one-shot latch (IDA 0x50c98).
+static GLOBAL_A24_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `GameMenu` observable state (IDA 0x50eb0..0x515f0): visibility plus the
+/// leave-game requests. Buttons/labels fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct GameMenu {
+    pub shown: bool,
+    pub leave_count: u32,
+}
 
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
-pub fn stub_0x4e8b8() -> ! {
-    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
+pub fn stub_0x4e8b8(vc: &mut GameVC) {
+    // IDA 0x4e8b8: the signup block instantiates the signup controller
+    // from the main storyboard and presents it (twin of 0x4e780); the
+    // storyboard glue folds into the host — see `stub_0x4e868`.
+    vc.signup_shown = true;
 }
 
 // 0x4e98c — ___copy_helper_block_179
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_179")]
-pub fn stub_0x4e98c() -> ! {
-    todo!("0x4e98c ___copy_helper_block_179")
+pub fn stub_0x4e98c() {
+    // IDA 0x4e98c: `__copy_helper_block_179` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4e998 — ___destroy_helper_block_180
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_180")]
-pub fn stub_0x4e998() -> ! {
-    todo!("0x4e998 ___destroy_helper_block_180")
+pub fn stub_0x4e998() {
+    // IDA 0x4e998: `__destroy_helper_block_180` releases captures (pair
+    // of 0x4e98c); `Arc` glue covers it — no-op.
 }
 
 // 0x4e9a0 — -[GameViewController handleSignupNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleSignupNotification:]")]
-pub fn stub_0x4e9a0() -> ! {
-    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
+pub fn stub_0x4e9a0(login: &mut LoginAttempt, user: &str) {
+    // IDA 0x4e9a0: `handleSignupNotification:` reads the username and
+    // password from the notification (0x4e9d8..0x4ea12) and logs in
+    // through the shared manager (0x4e9c6..0x4ea2c); the manager send
+    // folds into the host.
+    login.attempts += 1;
+    login.user = user.to_string();
 }
 
 // 0x4ea30 — -[GameViewController handleLoginNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleLoginNotification:]")]
-pub fn stub_0x4ea30() -> ! {
-    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
+pub fn stub_0x4ea30(login: &mut LoginAttempt, success: bool) {
+    // IDA 0x4ea30: `handleLoginNotification:` reads the success flag
+    // (0x4ea48..0x4eab6) and `dispatch_async`s the handler block
+    // (0x4eaa6..0x4eabe); the queue hop folds into the caller — see
+    // `stub_0x4eac8`.
+    stub_0x4eac8(login, success);
 }
 
 // 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
 // type: void __fastcall(id *)
 #[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
-pub fn stub_0x4eac8() -> ! {
-    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
+pub fn stub_0x4eac8(login: &mut LoginAttempt, success: bool) {
+    // IDA 0x4eac8: the login block applies the success/failure outcome;
+    // the alert/dismiss glue folds into the host.
+    if success {
+        login.ok += 1;
+    }
 }
 
 // 0x4edcc — ___copy_helper_block_203
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_203")]
-pub fn stub_0x4edcc() -> ! {
-    todo!("0x4edcc ___copy_helper_block_203")
+pub fn stub_0x4edcc() {
+    // IDA 0x4edcc: `__copy_helper_block_203` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4edf0 — ___destroy_helper_block_204
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_204")]
-pub fn stub_0x4edf0() -> ! {
-    todo!("0x4edf0 ___destroy_helper_block_204")
+pub fn stub_0x4edf0() {
+    // IDA 0x4edf0: `__destroy_helper_block_204` releases captures (pair
+    // of 0x4edcc); `Arc` glue covers it — no-op.
 }
 
 // 0x4ef74 — __GLOBAL__I_a_22
 #[doc(alias = "global constructor keyed to_a_22")]
-pub fn stub_0x4ef74() -> ! {
-    todo!("0x4ef74 global constructor keyed to_a_22")
+pub fn stub_0x4ef74() -> u32 {
+    // IDA 0x4ef74: `__GLOBAL__I_a_22` — see `GLOBAL_A22_INIT`.
+    *GLOBAL_A22_INIT
 }
 
 // 0x4f188 — -[JumpButton initWithFrame:]
 // type: JumpButton *__cdecl(JumpButton *self, SEL, CGRect)
 #[doc(alias = "-[JumpButton initWithFrame:]")]
-pub fn stub_0x4f188() -> ! {
-    todo!("0x4f188 -[JumpButton initWithFrame:]")
+pub fn stub_0x4f188(frame: [f32; 4]) -> JumpBtn {
+    // IDA 0x4f188: `JumpButton initWithFrame:` chains to super
+    // (0x4f1aa..0x4f1be), builds the control component (0x4f1dc..0x4f210),
+    // and seats the button images (0x4f224..); the UIKit glue folds into
+    // the host.
+    JumpBtn { frame, seated: false, jumping: false }
 }
 
 // 0x4f2b0 — -[JumpButton dealloc]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton dealloc]")]
-pub fn stub_0x4f2b0() -> ! {
-    todo!("0x4f2b0 -[JumpButton dealloc]")
+pub fn stub_0x4f2b0(btn: &mut JumpBtn) {
+    // IDA 0x4f2b0: `dealloc` releases the control component (0x4f2d2)
+    // and chains to super (0x4f2ea..); drop glue covers it and the
+    // record resets.
+    *btn = JumpBtn::default();
 }
 
 // 0x4f2fc — -[JumpButton setControlComponentSuperview:]
 // type: void __cdecl(JumpButton *self, SEL, id)
 #[doc(alias = "-[JumpButton setControlComponentSuperview:]")]
-pub fn stub_0x4f2fc() -> ! {
-    todo!("0x4f2fc -[JumpButton setControlComponentSuperview:]")
+pub fn stub_0x4f2fc(btn: &mut JumpBtn) {
+    // IDA 0x4f2fc: `setControlComponentSuperview:` seats the component
+    // and wires the jump connections through the input service; the
+    // service glue folds into the host.
+    btn.seated = true;
 }
 
 // 0x4f404 — -[JumpButton jumpEnabledChanged:]
 // type: void __cdecl(JumpButton *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[JumpButton jumpEnabledChanged:]")]
-pub fn stub_0x4f404() -> ! {
-    todo!("0x4f404 -[JumpButton jumpEnabledChanged:]")
+pub fn stub_0x4f404() {
+    // IDA 0x4f404: `jumpEnabledChanged:` — empty body; no-op.
 }
 
 // 0x4f408 — -[JumpButton touchDown]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchDown]")]
-pub fn stub_0x4f408() -> ! {
-    todo!("0x4f408 -[JumpButton touchDown]")
+pub fn stub_0x4f408(btn: &mut JumpBtn) {
+    // IDA 0x4f408: `touchDown` jumps the local character (1) through the
+    // input service (0x4f426..0x4f436); the service send folds into the
+    // host.
+    btn.jumping = true;
 }
 
 // 0x4f43c — -[JumpButton touchUp]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchUp]")]
-pub fn stub_0x4f43c() -> ! {
-    todo!("0x4f43c -[JumpButton touchUp]")
+pub fn stub_0x4f43c(btn: &mut JumpBtn) {
+    // IDA 0x4f43c: `touchUp` releases the jump (0) through the input
+    // service (0x4f45a..0x4f46a).
+    btn.jumping = false;
 }
 
 // 0x4f7bc — __GLOBAL__I_a_23
 #[doc(alias = "global constructor keyed to_a_23")]
-pub fn stub_0x4f7bc() -> ! {
-    todo!("0x4f7bc global constructor keyed to_a_23")
+pub fn stub_0x4f7bc() -> u32 {
+    // IDA 0x4f7bc: `__GLOBAL__I_a_23` — see `GLOBAL_A23_INIT`.
+    *GLOBAL_A23_INIT
 }
 
 // 0x4f9d0 — -[ThumbStickControl init:]
 // type: id __cdecl(ThumbStickControl *self, SEL, CGRect)
 #[doc(alias = "-[ThumbStickControl init:]")]
-pub fn stub_0x4f9d0() -> ! {
-    todo!("0x4f9d0 -[ThumbStickControl init:]")
+pub fn stub_0x4f9d0(frame: [f32; 4]) -> ThumbStick {
+    // IDA 0x4f9d0: `ThumbStickControl init:` chains to super (0x4f9fc..),
+    // seats the stick visuals, and queues the style block (see
+    // `stub_0x4fcf4`); the UIKit glue folds into the host.
+    ThumbStick { frame, style: 0, touch: None, move_vec: [0.0, 0.0] }
 }
 
 // 0x4fcf4 — ___26-[ThumbStickControl init:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___26-[ThumbStickControl init:]_block_invoke")]
-pub fn stub_0x4fcf4() -> ! {
-    todo!("0x4fcf4 ___26-[ThumbStickControl init:]_block_invoke")
+pub fn stub_0x4fcf4(stick: &mut ThumbStick, setting: u32) {
+    // IDA 0x4fcf4: the init block reads the thumbstick-style setting and
+    // applies it (0x4fd14..0x4fd3c).
+    stick.style = stub_0x4fdb8(setting);
 }
 
 // 0x4fd40 — ___copy_helper_block__11
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__11")]
-pub fn stub_0x4fd40() -> ! {
-    todo!("0x4fd40 ___copy_helper_block__11")
+pub fn stub_0x4fd40() {
+    // IDA 0x4fd40: `__copy_helper_block__11` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x4fd4c — ___destroy_helper_block__11
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__11")]
-pub fn stub_0x4fd4c() -> ! {
-    todo!("0x4fd4c ___destroy_helper_block__11")
+pub fn stub_0x4fd4c() {
+    // IDA 0x4fd4c: `__destroy_helper_block__11` releases captures (pair
+    // of 0x4fd40); `Arc` glue covers it — no-op.
 }
 
 // 0x4fd54 — -[ThumbStickControl dealloc]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl dealloc]")]
-pub fn stub_0x4fd54() -> ! {
-    todo!("0x4fd54 -[ThumbStickControl dealloc]")
+pub fn stub_0x4fd54(stick: &mut ThumbStick) {
+    // IDA 0x4fd54: `dealloc` releases the stick visuals (0x4fd78..0x4fd8c)
+    // and chains to super (0x4fda4..); drop glue covers it and the
+    // record resets.
+    *stick = ThumbStick::default();
 }
 
 // 0x4fdb8 — -[ThumbStickControl intToThumbstickStyle:]
 // type: int __cdecl(ThumbStickControl *self, SEL, int)
 #[doc(alias = "-[ThumbStickControl intToThumbstickStyle:]")]
-pub fn stub_0x4fdb8() -> ! {
-    todo!("0x4fdb8 -[ThumbStickControl intToThumbstickStyle:]")
+pub fn stub_0x4fdb8(setting: u32) -> u32 {
+    // IDA 0x4fdb8: `intToThumbstickStyle:` clamps out-of-range settings
+    // to 0 (0x4fdba..0x4fdc0).
+    if setting >= 2 { 0 } else { setting }
 }
 
 // 0x4fdc4 — -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]
 // type: float __cdecl(ThumbStickControl *self, SEL, CGPoint, CGPoint)
 #[doc(alias = "-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")]
-pub fn stub_0x4fdc4() -> ! {
-    todo!("0x4fdc4 -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")
+pub fn stub_0x4fdc4(p1: [f32; 2], p2: [f32; 2]) -> f32 {
+    // IDA 0x4fdc4: `DistanceBetweenTwoPoints` answers the Euclidean
+    // distance (0x4fdd4..0x4fdf0).
+    let dx = p2[0] - p1[0];
+    let dy = p2[1] - p1[1];
+    (dx * dx + dy * dy).sqrt()
 }
 
 // 0x4fdf4 — -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]
 // type: CGPoint *__cdecl(CGPoint *__return_ptr __struct_ptr retstr, ThumbStickControl *self, SEL, CGPoint, CGPoint, float)
 #[doc(alias = "-[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")]
-pub fn stub_0x4fdf4() -> ! {
-    todo!("0x4fdf4 -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")
+pub fn stub_0x4fdf4(point: [f32; 2], center: [f32; 2], radians: f32) -> [f32; 2] {
+    // IDA 0x4fdf4: `rotatePointAboutLocation` rotates by `radians` about
+    // the center (0x4fe0c..0x4fe3e: delta, sin, cos).
+    let dx = point[0] - center[0];
+    let dy = point[1] - center[1];
+    let (s, c) = radians.sin_cos();
+    [center[0] + dx * c - dy * s, center[1] + dx * s + dy * c]
 }
 
 // 0x4fe88 — -[ThumbStickControl touchesBegan:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesBegan:withEvent:]")]
-pub fn stub_0x4fe88() -> ! {
-    todo!("0x4fe88 -[ThumbStickControl touchesBegan:withEvent:]")
+pub fn stub_0x4fe88(stick: &mut ThumbStick, touch: u32, inside: bool) {
+    // IDA 0x4fe88: `touchesBegan` claims the touch landing inside the
+    // stick radius; the hit test folds into the host.
+    if inside && stick.touch.is_none() {
+        stick.touch = Some(touch);
+    }
 }
 
 // 0x50108 — -[ThumbStickControl stationaryThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl stationaryThumbstickTouchMove]")]
-pub fn stub_0x50108() -> ! {
-    todo!("0x50108 -[ThumbStickControl stationaryThumbstickTouchMove]")
+pub fn stub_0x50108(stick: &mut ThumbStick, dx: f32, dy: f32) {
+    // IDA 0x50108: `stationaryThumbstickTouchMove` re-seats the inner
+    // stick around the anchor and drives the character; the layout math
+    // folds into the host.
+    stick.move_vec = [dx, dy];
 }
 
 // 0x50338 — -[ThumbStickControl followThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl followThumbstickTouchMove]")]
-pub fn stub_0x50338() -> ! {
-    todo!("0x50338 -[ThumbStickControl followThumbstickTouchMove]")
+pub fn stub_0x50338(stick: &mut ThumbStick, dx: f32, dy: f32) {
+    // IDA 0x50338: `followThumbstickTouchMove` re-seats the whole stick
+    // under the drag and drives the character (follow-style twin of
+    // 0x50108).
+    stick.move_vec = [dx, dy];
 }
 
 // 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
-pub fn stub_0x506cc() -> ! {
-    todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
+pub fn stub_0x506cc(stick: &mut ThumbStick, dx: f32, dy: f32) {
+    // IDA 0x506cc: `touchesMoved` enumerates the touches and dispatches
+    // to the stationary/follow mover by style; the enumeration folds
+    // into the host.
+    stick.move_vec = [dx, dy];
 }
 
 // 0x508b0 — -[ThumbStickControl cancelMovement]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl cancelMovement]")]
-pub fn stub_0x508b0() -> ! {
-    todo!("0x508b0 -[ThumbStickControl cancelMovement]")
+pub fn stub_0x508b0(stick: &mut ThumbStick) {
+    // IDA 0x508b0: `cancelMovement` clears the thumbstick touch (0x508f0)
+    // and fades the stick out via the animation blocks (0x50900..0x5094a,
+    // see `stub_0x50960`/`stub_0x50c18`/`stub_0x50c80`).
+    stick.touch = None;
+    stick.move_vec = [0.0, 0.0];
 }
 
 // 0x50960 — ___35-[ThumbStickControl cancelMovement]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke")]
-pub fn stub_0x50960() -> ! {
-    todo!("0x50960 ___35-[ThumbStickControl cancelMovement]_block_invoke")
+pub fn stub_0x50960() {
+    // IDA 0x50960: the cancel animation block fades the stick visuals
+    // out (0x50986); pure presentation folds into the host — no-op.
 }
 
 // 0x509a8 — ___copy_helper_block_77
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_77")]
-pub fn stub_0x509a8() -> ! {
-    todo!("0x509a8 ___copy_helper_block_77")
+pub fn stub_0x509a8() {
+    // IDA 0x509a8: `__copy_helper_block_77` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x509b4 — ___destroy_helper_block_78
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_78")]
-pub fn stub_0x509b4() -> ! {
-    todo!("0x509b4 ___destroy_helper_block_78")
+pub fn stub_0x509b4() {
+    // IDA 0x509b4: `__destroy_helper_block_78` releases captures (pair
+    // of 0x509a8); `Arc` glue covers it — no-op.
 }
 
 // 0x50c18 — ___35-[ThumbStickControl cancelMovement]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke_2")]
-pub fn stub_0x50c18() -> ! {
-    todo!("0x50c18 ___35-[ThumbStickControl cancelMovement]_block_invoke_2")
+pub fn stub_0x50c18() {
+    // IDA 0x50c18: the cancel completion block restores the stick alpha
+    // (0x50c4a); pure presentation folds into the host — no-op.
 }
 
 // 0x50c6c — ___copy_helper_block_81
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_81")]
-pub fn stub_0x50c6c() -> ! {
-    todo!("0x50c6c ___copy_helper_block_81")
+pub fn stub_0x50c6c() {
+    // IDA 0x50c6c: `__copy_helper_block_81` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x50c78 — ___destroy_helper_block_82
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_82")]
-pub fn stub_0x50c78() -> ! {
-    todo!("0x50c78 ___destroy_helper_block_82")
+pub fn stub_0x50c78() {
+    // IDA 0x50c78: `__destroy_helper_block_82` releases captures (pair
+    // of 0x50c6c); `Arc` glue covers it — no-op.
 }
 
 // 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
 // type: void __cdecl(id, char)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
-pub fn stub_0x50c80() -> ! {
-    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+pub fn stub_0x50c80() {
+    // IDA 0x50c80: the cancel completion sentinel (block 84) — empty
+    // body; no-op.
 }
 
 // 0x50c84 — ___copy_helper_block_89
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_89")]
-pub fn stub_0x50c84() -> ! {
-    todo!("0x50c84 ___copy_helper_block_89")
+pub fn stub_0x50c84() {
+    // IDA 0x50c84: `__copy_helper_block_89` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x50c90 — ___destroy_helper_block_90
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_90")]
-pub fn stub_0x50c90() -> ! {
-    todo!("0x50c90 ___destroy_helper_block_90")
+pub fn stub_0x50c90() {
+    // IDA 0x50c90: `__destroy_helper_block_90` releases captures (pair
+    // of 0x50c84); `Arc` glue covers it — no-op.
 }
 
 // 0x50c98 — __GLOBAL__I_a_24
 #[doc(alias = "global constructor keyed to_a_24")]
-pub fn stub_0x50c98() -> ! {
-    todo!("0x50c98 global constructor keyed to_a_24")
+pub fn stub_0x50c98() -> u32 {
+    // IDA 0x50c98: `__GLOBAL__I_a_24` — see `GLOBAL_A24_INIT`.
+    *GLOBAL_A24_INIT
 }
 
 // 0x50eb0 — -[GameMenu init:]
 // type: id __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu init:]")]
-pub fn stub_0x50eb0() -> ! {
-    todo!("0x50eb0 -[GameMenu init:]")
+pub fn stub_0x50eb0() -> GameMenu {
+    // IDA 0x50eb0: `GameMenu init:` chains to super and builds the
+    // buttons/labels; the UIKit glue folds into the host.
+    GameMenu::default()
 }
 
 // 0x512f8 — -[GameMenu dealloc]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu dealloc]")]
-pub fn stub_0x512f8() -> ! {
-    todo!("0x512f8 -[GameMenu dealloc]")
+pub fn stub_0x512f8(menu: &mut GameMenu) {
+    // IDA 0x512f8: `dealloc` releases the buttons/label
+    // (0x5131c..0x51344) and chains to super (0x5135c..); drop glue
+    // covers it and the record resets.
+    *menu = GameMenu::default();
 }
 
 // 0x51370 — -[GameMenu isShown]
 // type: char __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu isShown]")]
-pub fn stub_0x51370() -> ! {
-    todo!("0x51370 -[GameMenu isShown]")
+pub fn stub_0x51370(menu: &GameMenu) -> bool {
+    // IDA 0x51370: `isShown` answers the shown latch (0x5137e).
+    menu.shown
 }
 
 // 0x51380 — -[GameMenu acceptButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu acceptButtonPressed:]")]
-pub fn stub_0x51380() -> ! {
-    todo!("0x51380 -[GameMenu acceptButtonPressed:]")
+pub fn stub_0x51380(menu: &mut GameMenu) {
+    // IDA 0x51380: `acceptButtonPressed:` leaves the game through the
+    // shared place launcher (0x5139c..0x513b0); the launcher send folds
+    // into the host.
+    menu.leave_count += 1;
 }
 
 // 0x513b4 — -[GameMenu declineButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu declineButtonPressed:]")]
-pub fn stub_0x513b4() -> ! {
-    todo!("0x513b4 -[GameMenu declineButtonPressed:]")
+pub fn stub_0x513b4(menu: &mut GameMenu) {
+    // IDA 0x513b4: `declineButtonPressed:` hides via `hideMenu`
+    // (0x513c0).
+    stub_0x515f0(menu);
 }
 
 // 0x513c4 — -[GameMenu inverseMenuState:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu inverseMenuState:]")]
-pub fn stub_0x513c4() -> ! {
-    todo!("0x513c4 -[GameMenu inverseMenuState:]")
+pub fn stub_0x513c4(menu: &mut GameMenu) {
+    // IDA 0x513c4: `inverseMenuState:` hides when shown (0x513d0..0x513f0)
+    // and shows otherwise (0x513e0).
+    menu.shown = !menu.shown;
 }
 
 // 0x513f8 — -[GameMenu showMenu:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu showMenu:]")]
-pub fn stub_0x513f8() -> ! {
-    todo!("0x513f8 -[GameMenu showMenu:]")
+pub fn stub_0x513f8(menu: &mut GameMenu) {
+    // IDA 0x513f8: `showMenu:` latches shown (0x51428) and animates the
+    // menu in (see `stub_0x51570`); the animation folds into the host.
+    menu.shown = true;
 }
 
 // 0x51570 — ___21-[GameMenu showMenu:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___21-[GameMenu showMenu:]_block_invoke")]
-pub fn stub_0x51570() -> ! {
-    todo!("0x51570 ___21-[GameMenu showMenu:]_block_invoke")
+pub fn stub_0x51570() {
+    // IDA 0x51570: the show animation block seats the menu frame; pure
+    // presentation folds into the host — no-op.
 }
 
 // 0x515dc — ___copy_helper_block__12
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__12")]
-pub fn stub_0x515dc() -> ! {
-    todo!("0x515dc ___copy_helper_block__12")
+pub fn stub_0x515dc() {
+    // IDA 0x515dc: `__copy_helper_block__12` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x515e8 — ___destroy_helper_block__12
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__12")]
-pub fn stub_0x515e8() -> ! {
-    todo!("0x515e8 ___destroy_helper_block__12")
+pub fn stub_0x515e8() {
+    // IDA 0x515e8: `__destroy_helper_block__12` releases captures (pair
+    // of 0x515dc); `Arc` glue covers it — no-op.
 }
 
 // 0x515f0 — -[GameMenu hideMenu]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu hideMenu]")]
-pub fn stub_0x515f0() -> ! {
-    todo!("0x515f0 -[GameMenu hideMenu]")
+pub fn stub_0x515f0(menu: &mut GameMenu) {
+    // IDA 0x515f0: `hideMenu` unlatches shown (twin of 0x513f8, cf.
+    // 0x513b4/0x513c4 call sites).
+    menu.shown = false;
 }
 
 // 0x51738 — ___20-[GameMenu hideMenu]_block_invoke
@@ -1050,4 +1200,124 @@ pub fn stub_0x54654() -> ! {
 #[doc(alias = "+[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")]
 pub fn stub_0x5465c() -> ! {
     todo!("0x5465c +[RobloxNavBarViewController checkForInAppPurchases:navigationType:]")
+}
+
+#[cfg(test)]
+mod jump_stick_batch_tests {
+    use super::*;
+    use crate::generated_171::GameVC;
+
+    #[test]
+    fn login_flow() {
+        let mut vc = GameVC::default();
+        stub_0x4e8b8(&mut vc);
+        assert!(vc.signup_shown);
+        let mut login = LoginAttempt::default();
+        stub_0x4e9a0(&mut login, "builderman");
+        assert_eq!(login.attempts, 1);
+        assert_eq!(login.user, "builderman");
+        stub_0x4ea30(&mut login, false);
+        assert_eq!(login.ok, 0);
+        stub_0x4eac8(&mut login, true);
+        assert_eq!(login.ok, 1);
+        stub_0x4e98c();
+        stub_0x4e998();
+        stub_0x4edcc();
+        stub_0x4edf0();
+        assert_eq!(stub_0x4ef74(), 1);
+        assert_eq!(stub_0x4f7bc(), 1);
+    }
+
+    #[test]
+    fn jump_button() {
+        let mut btn = stub_0x4f188([0.0, 0.0, 64.0, 64.0]);
+        assert_eq!(btn.frame, [0.0, 0.0, 64.0, 64.0]);
+        stub_0x4f404();
+        assert!(!btn.seated);
+        stub_0x4f2fc(&mut btn);
+        assert!(btn.seated);
+        stub_0x4f408(&mut btn);
+        assert!(btn.jumping);
+        stub_0x4f43c(&mut btn);
+        assert!(!btn.jumping);
+        stub_0x4f2b0(&mut btn);
+        assert_eq!(btn, JumpBtn::default());
+    }
+
+    #[test]
+    fn thumbstick() {
+        let mut stick = stub_0x4f9d0([0.0; 4]);
+        stub_0x4fcf4(&mut stick, 1);
+        assert_eq!(stick.style, 1);
+        stub_0x4fcf4(&mut stick, 7);
+        assert_eq!(stick.style, 0);
+        assert_eq!(stub_0x4fdb8(0), 0);
+        assert_eq!(stub_0x4fdb8(1), 1);
+        assert_eq!(stub_0x4fdb8(2), 0);
+        assert_eq!(stub_0x4fdc4([0.0, 0.0], [3.0, 4.0]), 5.0);
+        let r = stub_0x4fdf4([1.0, 0.0], [0.0, 0.0], std::f32::consts::FRAC_PI_2);
+        assert!((r[0] - 0.0).abs() < 1e-6);
+        assert!((r[1] - 1.0).abs() < 1e-6);
+        stub_0x4fe88(&mut stick, 5, false);
+        assert_eq!(stick.touch, None);
+        stub_0x4fe88(&mut stick, 5, true);
+        assert_eq!(stick.touch, Some(5));
+        stub_0x4fe88(&mut stick, 6, true);
+        assert_eq!(stick.touch, Some(5));
+        stub_0x4fd40();
+        stub_0x4fd4c();
+        stub_0x4fd54(&mut stick);
+        assert_eq!(stick, ThumbStick::default());
+    }
+}
+
+#[cfg(test)]
+mod stick_menu_batch_tests {
+    use super::*;
+
+    #[test]
+    fn stick_moves() {
+        let mut stick = stub_0x4f9d0([0.0; 4]);
+        stub_0x4fe88(&mut stick, 5, true);
+        stub_0x50108(&mut stick, 0.2, 0.1);
+        assert_eq!(stick.move_vec, [0.2, 0.1]);
+        stub_0x50338(&mut stick, -0.3, 0.4);
+        assert_eq!(stick.move_vec, [-0.3, 0.4]);
+        stub_0x506cc(&mut stick, 0.0, -1.0);
+        assert_eq!(stick.move_vec, [0.0, -1.0]);
+        stub_0x508b0(&mut stick);
+        assert_eq!(stick.touch, None);
+        assert_eq!(stick.move_vec, [0.0, 0.0]);
+        stub_0x50960();
+        stub_0x50c18();
+        stub_0x50c80();
+        assert_eq!(stub_0x50c98(), 1);
+        stub_0x509a8();
+        stub_0x509b4();
+        stub_0x50c6c();
+        stub_0x50c78();
+        stub_0x50c84();
+        stub_0x50c90();
+    }
+
+    #[test]
+    fn game_menu() {
+        let mut menu = stub_0x50eb0();
+        assert!(!stub_0x51370(&menu));
+        stub_0x513f8(&mut menu);
+        assert!(stub_0x51370(&menu));
+        stub_0x513c4(&mut menu);
+        assert!(!stub_0x51370(&menu));
+        stub_0x513c4(&mut menu);
+        assert!(stub_0x51370(&menu));
+        stub_0x513b4(&mut menu);
+        assert!(!stub_0x51370(&menu));
+        stub_0x51380(&mut menu);
+        assert_eq!(menu.leave_count, 1);
+        stub_0x51570();
+        stub_0x515dc();
+        stub_0x515e8();
+        stub_0x512f8(&mut menu);
+        assert_eq!(menu, GameMenu::default());
+    }
 }
