@@ -6,219 +6,688 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
+use parking_lot::Mutex;
 use rbx_core::SharedPtr;
-
+use std::collections::VecDeque;
+use std::sync::LazyLock;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+/// RakNet `DataStructures::MemoryPool<T>` observable state (IDA 0xa6c7d0).
+/// The pool keeps per-page free stacks plus full/empty page chains; only the
+/// live count, free slots, and page count are observed here — raw
+/// `rakMalloc_Ex`/`rakFree_Ex` plumbing folds into the host allocator.
+#[derive(Debug, Default)]
+pub struct RakMemPool {
+    pub free: Vec<u32>,
+    pub next: u32,
+    pub live: usize,
+    pub pages: usize,
+}
 
+impl RakMemPool {
+    /// Fast path (IDA 0xa6c7e4..0xa6c7ee): pop the free-stack top (LIFO);
+    /// slow path (0xa6c844..0xa6c89e): grow one page of block slots.
+    pub fn allocate(&mut self) -> u32 {
+        if let Some(slot) = self.free.pop() {
+            self.live += 1;
+            return slot;
+        }
+        let slot = self.next;
+        self.next += 1;
+        self.pages += 1;
+        self.live += 1;
+        slot
+    }
+
+    /// Push the slot back (IDA 0xa6c8f2..0xa6c8fc). Whole-page release once
+    /// a page fills with `pages >= 4` (0xa6c908..0xa6c956) and the
+    /// full/empty page-list rotation (0xa6c960..0xa6ca04) fold into the host.
+    pub fn release(&mut self, slot: u32) {
+        self.free.push(slot);
+        self.live = self.live.saturating_sub(1);
+    }
+}
+
+/// RakNet `DataStructures::Queue<T*>` ring buffer (IDA 0xa6ccdc): first push
+/// allocates 16 slots (0xa6cd88..0xa6cda2), the tail wraps (0xa6ccf2..0xa6cd10),
+/// and a full queue doubles (0xa6cd1e..0xa6cd80).
+#[derive(Debug, Default)]
+pub struct RakPtrQueue {
+    pub items: VecDeque<u32>,
+    pub capacity: usize,
+}
+
+impl RakPtrQueue {
+    pub fn push(&mut self, value: u32) {
+        if self.capacity == 0 {
+            self.capacity = 16;
+        }
+        self.items.push_back(value);
+        if self.items.len() == self.capacity {
+            self.capacity *= 2;
+        }
+    }
+
+    pub fn len(&self) -> usize {
+        self.items.len()
+    }
+}
+
+/// RakNet `DataStructures::List<T>` dynamic array (IDA 0xa6ced8): growth is
+/// 16-minimum then doubling (0xa6cf2e..0xa6cf40), old entries are copied over
+/// (0xa6cf8e..0xa6cfbe), and the new element is appended (0xa6cfd2..0xa6cfe6).
+#[derive(Debug, Default)]
+pub struct RakList<T: Clone> {
+    pub items: Vec<T>,
+    pub capacity: usize,
+}
+
+impl<T: Clone> RakList<T> {
+    pub fn insert(&mut self, value: T) {
+        if self.items.len() == self.capacity {
+            self.capacity = if self.capacity == 0 { 16 } else { self.capacity * 2 };
+            self.items.reserve(self.capacity - self.items.len());
+        }
+        self.items.push(value);
+    }
+
+    pub fn len(&self) -> usize {
+        self.items.len()
+    }
+
+    /// `~List` frees the backing array once capacity is nonzero
+    /// (IDA 0xa6f3c6..0xa6f3d0); drop glue covers the elements.
+    pub fn destroy(&mut self) {
+        self.items.clear();
+        self.capacity = 0;
+    }
+}
+
+/// RakNet `DataStructures::ThreadsafeAllocatingQueue<T>` teardown state
+/// (IDA 0xa6d4c0): both mutexes drop (0xa6d512/0xa6d530), the two pool chains
+/// are freed block by block (0xa6d53a..0xa6d5fa), and the counts zero
+/// (0xa6d600..0xa6d604). Drop glue covers the mutexes.
+#[derive(Debug, Default)]
+pub struct TsAllocQueue<T> {
+    pub ready: Vec<T>,
+    pub buffered: Vec<T>,
+}
+
+impl<T> TsAllocQueue<T> {
+    pub fn destroy(&mut self) {
+        self.ready.clear();
+        self.buffered.clear();
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.ready.is_empty() && self.buffered.is_empty()
+    }
+}
+
+/// `RakNet::RakPeer::RemoteSystemStruct` construction state (IDA 0xa6d194):
+/// twelve `SystemAddress` members (0xa6d1b6..0xa6d20e), the reliability layer
+/// (0xa6d21a), the GUID (0xa6d252), and the zeroed tail (0xa6d262).
+#[derive(Debug, Default, PartialEq, Eq)]
+pub struct RemoteSystemState {
+    pub system_addresses: u8,
+    pub reliability_inited: bool,
+    pub guid_inited: bool,
+    pub tail_zeroed: bool,
+}
+
+/// One `RakNetSmartPtr<RakNetSocket>` array element (IDA 0xa6cb5c): the slot
+/// owns a single smart-pointer reference; `live` tracks the socket peer.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct RakSocketSlot {
+    pub refs: u32,
+    pub live: bool,
+}
+
+/// `OP_DELETE_ARRAY<RakNetSmartPtr<RakNetSocket>>` target: the array owns one
+/// reference per element; deleting the array walks back-to-front
+/// (0xa6cbba..0xa6cc16), decrements each refcount (0xa6cbdc), destroys sockets
+/// whose count reaches zero (0xa6cbf6) with their control blocks
+/// (0xa6cbfc/0xa6cc0c), then frees the base (0xa6cc1c); a null array is a
+/// no-op (0xa6cba8).
+#[derive(Debug, Default)]
+pub struct SmartPtrSocketArray {
+    pub slots: Vec<RakSocketSlot>,
+    pub destroyed: usize,
+}
+
+/// RakNet `RakString` value (IDA 0xa6eaa4..0xa6f358). The C++ type points at a
+/// refcounted `SharedString` with a process-wide `emptyString` static; each
+/// Rust value owns its buffer copy, which is observationally identical
+/// because strings are never mutated through shared references. `is_static`
+/// marks the shared empty (never freed, cf. 0xa6ece2).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct RakString {
+    pub text: String,
+    pub is_static: bool,
+}
+
+/// Mutex-guarded `RakString::freeList` of recycled backings (IDA
+/// 0xa6edb2..0xa6ee18, 16-minimum/double growth; pre-grown in blocks of 0x80
+/// by `Allocate`, 0xa6efd6..0xa6f098). `Vec` growth covers the policy.
+static RAKSTRING_FREELIST: LazyLock<Mutex<Vec<String>>> =
+    LazyLock::new(|| Mutex::new(Vec::new()));
+
+/// Depth of the recycled-backing freelist (test hook).
+pub fn rakstring_freelist_depth() -> usize {
+    RAKSTRING_FREELIST.lock().len()
+}
+
+impl RakString {
+    /// Default ctor points at the shared empty (IDA 0xa6eaae..0xa6eab0).
+    pub fn empty() -> Self {
+        Self { text: String::new(), is_static: true }
+    }
+
+    pub fn assigned(text: &str) -> Self {
+        Self { text: text.to_owned(), is_static: text.is_empty() }
+    }
+
+    /// `Free` (IDA 0xa6ec8c): the static empty is untouched (0xa6ece2);
+    /// otherwise the refcount drops (0xa6ecf0..0xa6ed08, owned-copy covers),
+    /// oversized (`>= 0x71`, 0xa6ed12) buffers fold into the host allocator,
+    /// and the backing is recycled into the freelist (0xa6ed3a..0xa6ee18).
+    pub fn free_storage(&mut self) {
+        if self.is_static {
+            return;
+        }
+        let backing = std::mem::take(&mut self.text);
+        RAKSTRING_FREELIST.lock().push(backing);
+        self.is_static = true;
+    }
+
+    /// `Allocate(n)` (IDA 0xa6ef14): pops a recycled backing or makes a fresh
+    /// one and reserves `n` bytes.
+    pub fn allocate(&mut self, n: usize) {
+        let mut backing = RAKSTRING_FREELIST.lock().pop().unwrap_or_default();
+        backing.clear();
+        backing.reserve(n);
+        self.text = backing;
+        self.is_static = false;
+    }
+}
 // 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj")]
-pub fn stub_0xa6c7d0() -> ! {
-    todo!("0xa6c7d0")
+pub fn stub_0xa6c7d0(pool: &mut RakMemPool) -> u32 {
+    // IDA 0xa6c7d0: `MemoryPool<SocketQueryOutput>::Allocate` pops a free
+    // 20-byte block or grows one page; file/line bookkeeping folds into
+    // the host allocator.
+    pool.allocate()
 }
-
 // 0xa6c8e4 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6c8e4() -> ! {
-    todo!("0xa6c8e4")
+pub fn stub_0xa6c8e4(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa6c8e4: `MemoryPool<SocketQueryOutput>::Release` recycles the
+    // block into its page free-list.
+    pool.release(slot);
 }
 
 // 0xa6c9ac — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6c9ac() -> ! {
-    todo!("0xa6c9ac")
+pub fn stub_0xa6c9ac(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa6c9ac: `MemoryPool<RecvFromStruct>::Release` — same recycle
+    // shape as 0xa6c8e4 with 0x604-byte blocks (cf. 0xa6c9de divisor).
+    pool.release(slot);
 }
 
 // 0xa6ca84 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6ca84() -> ! {
-    todo!("0xa6ca84")
+pub fn stub_0xa6ca84(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa6ca84: `MemoryPool<BufferedCommandStruct>::Release` — same
+    // recycle shape as 0xa6c8e4 with 0x6c-byte blocks (cf. 0xa6cab6 divisor).
+    pool.release(slot);
 }
 
 // 0xa6cb5c — __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
 // type: void __fastcall(int, int, int, int, int, void *, int, int, void *, RakNet::RakNetSocket *, int, int, int, int)
 #[doc(alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")]
 #[doc(alias = "__ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj")]
-pub fn stub_0xa6cb5c() -> ! {
-    todo!("0xa6cb5c")
+pub fn stub_0xa6cb5c(arr: &mut SmartPtrSocketArray) {
+    // IDA 0xa6cb5c: `OP_DELETE_ARRAY<RakNetSmartPtr<RakNetSocket>>` walks
+    // the array back-to-front dropping one reference per element and
+    // destroying sockets whose count reaches zero, then frees the base.
+    while let Some(slot) = arr.slots.pop() {
+        if slot.refs <= 1 && slot.live {
+            arr.destroyed += 1;
+        }
+    }
 }
 
 // 0xa6ccdc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
 // type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj")]
-pub fn stub_0xa6ccdc() -> ! {
-    todo!("0xa6ccdc")
+pub fn stub_0xa6ccdc(queue: &mut RakPtrQueue, value: u32) {
+    // IDA 0xa6ccdc: `Queue<BufferedCommandStruct*>::Push` stores at the tail
+    // with wrap and doubles the ring when full.
+    queue.push(value);
 }
 
 // 0xa6cdb0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj")]
-pub fn stub_0xa6cdb0() -> ! {
-    todo!("0xa6cdb0")
+pub fn stub_0xa6cdb0(pool: &mut RakMemPool) -> u32 {
+    // IDA 0xa6cdb0: `MemoryPool<BufferedCommandStruct>::Allocate` — same
+    // pop-or-grow shape as 0xa6c7d0 for 0x6c-byte blocks.
+    pool.allocate()
 }
 
 // 0xa6ced8 — __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
 // type: void __fastcall(int, __int64 *, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj")]
-pub fn stub_0xa6ced8() -> ! {
-    todo!("0xa6ced8")
+pub fn stub_0xa6ced8(list: &mut RakList<u64>, value: u64) {
+    // IDA 0xa6ced8: `List<RakNetGUID>::Insert` grows 16-minimum/doubling and
+    // appends the 12-byte GUID (0xa6cf4c element stride, copy at 0xa6cfa6).
+    // MODEL: the GUID payload folds into a `u64` handle.
+    list.insert(value);
 }
 
 // 0xa6d030 — __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj")]
-pub fn stub_0xa6d030() -> ! {
-    todo!("0xa6d030")
+pub fn stub_0xa6d030(list: &mut RakList<u32>, value: u32) {
+    // IDA 0xa6d030: `List<SystemAddress>::Insert` — same 16/double growth and
+    // append as 0xa6ced8. MODEL: the address folds into a `u32` handle.
+    list.insert(value);
 }
 
 // 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
 // type: RakNet::RakPeer::RemoteSystemStruct *__fastcall(RakNet::RakPeer::RemoteSystemStruct *this)
 #[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
 #[doc(alias = "__ZN6RakNet7RakPeer18RemoteSystemStructC2Ev")]
-pub fn stub_0xa6d194() -> ! {
-    todo!("0xa6d194")
+pub fn stub_0xa6d194() -> RemoteSystemState {
+    // IDA 0xa6d194: `RemoteSystemStruct` constructs twelve `SystemAddress`
+    // members, the reliability layer, and the GUID, then zeroes the tail.
+    RemoteSystemState {
+        system_addresses: 12,
+        reliability_inited: true,
+        guid_inited: true,
+        tail_zeroed: true,
+    }
 }
 
 // 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
 // type: void __fastcall(RakNet::RakNetSocket *, _DWORD *, int, int, int, int, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj")]
-pub fn stub_0xa6d2bc() -> ! {
-    todo!("0xa6d2bc")
+pub fn stub_0xa6d2bc(list: &mut RakList<RakSocketSlot>, refs: u32) {
+    // IDA 0xa6d2bc: `List<RakNetSmartPtr<RakNetSocket>>::Insert` — same
+    // 16/double growth and append as 0xa6ced8; the smart-pointer add-ref
+    // folds into the owning slot. MODEL: the socket peer folds into `live`.
+    list.insert(RakSocketSlot { refs, live: true });
 }
 
 // 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")]
 #[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev")]
-pub fn stub_0xa6d4c0() -> ! {
-    todo!("0xa6d4c0")
+pub fn stub_0xa6d4c0(queue: &mut TsAllocQueue<u32>) {
+    // IDA 0xa6d4c0: `ThreadsafeAllocatingQueue<BufferedCommandStruct>`
+    // D2 dtor — frees both pool chains and zeroes the counts.
+    queue.destroy();
 }
 
 // 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")]
 #[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev")]
-pub fn stub_0xa6d7a0() -> ! {
-    todo!("0xa6d7a0")
+pub fn stub_0xa6d7a0(queue: &mut TsAllocQueue<u32>) {
+    // IDA 0xa6d7a0: `ThreadsafeAllocatingQueue<RecvFromStruct>` D2 dtor —
+    // same two-chain teardown as 0xa6d4c0.
+    queue.destroy();
 }
 
 // 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")]
 #[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev")]
-pub fn stub_0xa6da80() -> ! {
-    todo!("0xa6da80")
+pub fn stub_0xa6da80(queue: &mut TsAllocQueue<u32>) {
+    // IDA 0xa6da80: `ThreadsafeAllocatingQueue<SocketQueryOutput>` D2 dtor —
+    // same two-chain teardown as 0xa6d4c0.
+    queue.destroy();
 }
 
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "RakNet::RakString::RakString(void)")]
 #[doc(alias = "__ZN6RakNet9RakStringC1Ev")]
-pub fn stub_0xa6eaa4() -> ! {
-    todo!("0xa6eaa4")
+pub fn stub_0xa6eaa4() -> RakString {
+    // IDA 0xa6eaa4: default ctor points at the shared empty (0xa6eaae).
+    RakString::empty()
 }
 
 // 0xa6eab4 — __ZN6RakNet9RakString6AssignEPKcPv
 // type: int __fastcall(RakNet::RakString *this, const char *__format, va_list)
 #[doc(alias = "RakNet::RakString::Assign(char const*,void *)")]
 #[doc(alias = "__ZN6RakNet9RakString6AssignEPKcPv")]
-pub fn stub_0xa6eab4() -> ! {
-    todo!("0xa6eab4")
+pub fn stub_0xa6eab4(target: &mut RakString, formatted: &str) {
+    // IDA 0xa6eab4: `Assign` formats into a 512-byte stack buffer
+    // (0xa6eada..0xa6eaf6) with an 8096-doubling heap fallback
+    // (0xa6eaf8..0xa6ec0e), then `Allocate`s and copies the bytes
+    // (0xa6eb4e..0xa6eb5c / 0xa6ebbe..0xa6ebcc); empty output selects the
+    // shared empty (0xa6ebdc/0xa6ebec). MODEL: the caller provides the
+    // formatted text; only the store is observed.
+    if formatted.is_empty() {
+        *target = RakString::empty();
+    } else {
+        target.allocate(formatted.len() + 1);
+        target.text = formatted.to_owned();
+    }
 }
 
 // 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
 // type: RakNet::RakString *(RakNet::RakString *this, const char *, ...)
 #[doc(alias = "RakNet::RakString::RakString(char const*,...)")]
 #[doc(alias = "__ZN6RakNet9RakStringC1EPKcz")]
-pub fn stub_0xa6ec58() -> ! {
-    todo!("0xa6ec58")
+pub fn stub_0xa6ec58(formatted: &str) -> RakString {
+    // IDA 0xa6ec58: format ctor forwards to `Assign` (0xa6ec6c).
+    let mut out = RakString::empty();
+    stub_0xa6eab4(&mut out, formatted);
+    out
 }
 
 // 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
 // type: void __fastcall(RakNet::RakString *__hidden this)
 #[doc(alias = "RakNet::RakString::~RakString()")]
 #[doc(alias = "__ZN6RakNet9RakStringD1Ev")]
-pub fn stub_0xa6ec7c() -> ! {
-    todo!("0xa6ec7c")
+pub fn stub_0xa6ec7c(target: &mut RakString) {
+    // IDA 0xa6ec7c: D1 dtor calls `Free` (0xa6ec82); drop glue covers it.
+    target.free_storage();
 }
 
 // 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
 // type: void __fastcall(RakNet::SimpleMutex ***this)
 #[doc(alias = "RakNet::RakString::Free(void)")]
 #[doc(alias = "__ZN6RakNet9RakString4FreeEv")]
-pub fn stub_0xa6ec8c() -> ! {
-    todo!("0xa6ec8c")
+pub fn stub_0xa6ec8c(target: &mut RakString) {
+    // IDA 0xa6ec8c: `Free` — delegates to the shared backing teardown.
+    target.free_storage();
 }
 
 // 0xa6eed4 — __ZN6RakNet9RakStringaSERKS0_
 // type: RakNet::RakString *__fastcall(RakNet::RakString *, RakNet::SimpleMutex ***)
 #[doc(alias = "RakNet::RakString::operator=(RakNet::RakString const&)")]
 #[doc(alias = "__ZN6RakNet9RakStringaSERKS0_")]
-pub fn stub_0xa6eed4() -> ! {
-    todo!("0xa6eed4")
+pub fn stub_0xa6eed4(dst: &mut RakString, src: &RakString) {
+    // IDA 0xa6eed4: `operator=` frees the target (0xa6eedc), then shares the
+    // source backing with a refcount bump (0xa6eeee..0xa6ef02) or selects the
+    // shared empty (0xa6ef06..). MODEL: owned-copy covers the share.
+    dst.free_storage();
+    if src.is_static {
+        *dst = RakString::empty();
+    } else {
+        dst.text = src.text.clone();
+        dst.is_static = false;
+    }
 }
 
 // 0xa6ef14 — __ZN6RakNet9RakString8AllocateEm
 // type: void __fastcall(RakNet::RakString *this, unsigned int)
 #[doc(alias = "RakNet::RakString::Allocate(unsigned long)")]
 #[doc(alias = "__ZN6RakNet9RakString8AllocateEm")]
-pub fn stub_0xa6ef14() -> ! {
-    todo!("0xa6ef14")
+pub fn stub_0xa6ef14(target: &mut RakString, capacity: usize) {
+    // IDA 0xa6ef14: `Allocate` recycles or creates a backing and sizes it.
+    target.allocate(capacity);
 }
 
 // 0xa6f1ac — __ZN6RakNet9RakString14IPAddressMatchEPKc
 // type: bool __fastcall(RakNet::RakString *this, const char *__s)
 #[doc(alias = "RakNet::RakString::IPAddressMatch(char const*)")]
 #[doc(alias = "__ZN6RakNet9RakString14IPAddressMatchEPKc")]
-pub fn stub_0xa6f1ac() -> ! {
-    todo!("0xa6f1ac")
+pub fn stub_0xa6f1ac(stored: &RakString, ip: Option<&str>) -> bool {
+    // IDA 0xa6f1ac: null (0xa6f1b8) or empty (0xa6f1ba) input never matches,
+    // nor does input longer than 15 bytes (0xa6f1c8..0xa6f1ce). Otherwise
+    // bytes compare in lockstep (0xa6f1d6..0xa6f1ee): an exact run matches,
+    // and a first mismatch still matches when the stored byte is `*`
+    // (0xa6f20a), which requires a remaining input byte.
+    let Some(ip) = ip else { return false; };
+    if ip.is_empty() || ip.len() > 15 {
+        return false;
+    }
+    if stored.text == ip {
+        return true;
+    }
+    if let Some(prefix) = stored.text.strip_suffix('*') {
+        return ip.len() > prefix.len() && ip.starts_with(prefix);
+    }
+    false
 }
 
 // 0xa6f210 — __ZN6RakNet9RakString17FreeMemoryNoMutexEv
 // type: void __fastcall(RakNet::RakString *this)
 #[doc(alias = "RakNet::RakString::FreeMemoryNoMutex(void)")]
 #[doc(alias = "__ZN6RakNet9RakString17FreeMemoryNoMutexEv")]
-pub fn stub_0xa6f210() -> ! {
-    todo!("0xa6f210")
+pub fn stub_0xa6f210() -> usize {
+    // IDA 0xa6f210: `FreeMemoryNoMutex` destroys every backing in the
+    // freelist (0xa6f262..0xa6f2c6) and reports the drained count.
+    let mut q = RAKSTRING_FREELIST.lock();
+    let n = q.len();
+    q.clear();
+    n
 }
 
 // 0xa6f328 — __ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE
 // type: RakNet::BitStream *__fastcall(RakNet::RakString *this, RakNet::BitStream *)
 #[doc(alias = "RakNet::RakString::Serialize(RakNet::BitStream *)const")]
 #[doc(alias = "__ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE")]
-pub fn stub_0xa6f328() -> ! {
-    todo!("0xa6f328")
+pub fn stub_0xa6f328(stored: &RakString) -> Vec<u8> {
+    // IDA 0xa6f328: `Serialize` writes the `u16` length (0xa6f332..0xa6f342)
+    // then the aligned bytes (0xa6f354). MODEL: the bit stream folds into
+    // the returned wire bytes.
+    let mut wire = Vec::with_capacity(2 + stored.text.len());
+    wire.extend_from_slice(&(stored.text.len() as u16).to_le_bytes());
+    wire.extend_from_slice(stored.text.as_bytes());
+    wire
 }
 
 // 0xa6f358 — __ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE
 // type: int __fastcall(RakNet::SimpleMutex ***this, RakNet::BitStream *)
 #[doc(alias = "RakNet::RakString::Deserialize(RakNet::BitStream *)")]
 #[doc(alias = "__ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE")]
-pub fn stub_0xa6f358() -> ! {
-    todo!("0xa6f358")
+pub fn stub_0xa6f358(target: &mut RakString, wire: &[u8]) -> bool {
+    // IDA 0xa6f358: `Deserialize` frees the target (0xa6f362), reads the
+    // `u16` length (0xa6f36a), and for a nonzero length allocates (0xa6f378)
+    // plus reads the bytes with NUL termination (0xa6f38c..0xa6f398);
+    // short reads free and fail (0xa6f3b6..0xa6f3ba), while zero length only
+    // realigns the bit position (0xa6f3ae).
+    target.free_storage();
+    if wire.len() < 2 {
+        return false;
+    }
+    let len = u16::from_le_bytes([wire[0], wire[1]]) as usize;
+    if len == 0 {
+        return true;
+    }
+    if wire.len() < 2 + len {
+        return false;
+    }
+    target.allocate(len + 1);
+    target.text = String::from_utf8_lossy(&wire[2..2 + len]).into_owned();
+    true
 }
 
 // 0xa6f3c0 — __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "DataStructures::List<RakNet::RakString::SharedString *>::~List()")]
 #[doc(alias = "__ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev")]
-pub fn stub_0xa6f3c0() -> ! {
-    todo!("0xa6f3c0")
+pub fn stub_0xa6f3c0(list: &mut RakList<u32>) {
+    // IDA 0xa6f3c0: `List<SharedString*>::~List` frees the backing array
+    // (0xa6f3c6..0xa6f3d0); drop glue covers the entries.
+    list.destroy();
+}
+
+#[cfg(test)]
+mod rak_pool_queue_list_batch_tests {
+    use super::*;
+
+    /// Serializes tests that observe the process-wide `RAKSTRING_FREELIST`.
+    static TEST_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+
+    #[test]
+    fn pool_allocate_recycles_lifo() {
+        let mut pool = RakMemPool::default();
+        let a = stub_0xa6c7d0(&mut pool);
+        let b = stub_0xa6cdb0(&mut pool);
+        assert_ne!(a, b);
+        assert_eq!(pool.live, 2);
+        stub_0xa6c8e4(&mut pool, a);
+        stub_0xa6c9ac(&mut pool, b);
+        assert_eq!(pool.live, 0);
+        assert_eq!(stub_0xa6c7d0(&mut pool), b);
+        assert_eq!(stub_0xa6cdb0(&mut pool), a);
+        stub_0xa6ca84(&mut pool, a);
+        stub_0xa6ca84(&mut pool, b);
+        assert_eq!(pool.live, 0);
+    }
+
+    #[test]
+    fn queue_grows_sixteen_then_doubles() {
+        let mut q = RakPtrQueue::default();
+        stub_0xa6ccdc(&mut q, 7);
+        assert_eq!(q.capacity, 16);
+        for i in 1..16u32 {
+            stub_0xa6ccdc(&mut q, i);
+        }
+        assert_eq!(q.len(), 16);
+        assert_eq!(q.capacity, 32);
+        assert_eq!(q.items[0], 7);
+        assert_eq!(q.items[15], 15);
+    }
+
+    #[test]
+    fn list_insert_grows_and_appends() {
+        let mut guids = RakList::<u64>::default();
+        for i in 0..17u64 {
+            stub_0xa6ced8(&mut guids, i * 3);
+        }
+        assert_eq!(guids.len(), 17);
+        assert_eq!(guids.capacity, 32);
+        assert_eq!(guids.items[16], 48);
+        let mut addrs = RakList::<u32>::default();
+        stub_0xa6d030(&mut addrs, 0xdead);
+        assert_eq!(addrs.items, vec![0xdead]);
+        let mut sockets = RakList::<RakSocketSlot>::default();
+        stub_0xa6d2bc(&mut sockets, 2);
+        assert!(sockets.items[0].live);
+        assert_eq!(sockets.items[0].refs, 2);
+        stub_0xa6f3c0(&mut RakList::<u32> { items: vec![1], capacity: 16 });
+    }
+
+    #[test]
+    fn delete_array_destroys_last_owners() {
+        let mut arr = SmartPtrSocketArray::default();
+        arr.slots.push(RakSocketSlot { refs: 1, live: true });
+        arr.slots.push(RakSocketSlot { refs: 3, live: true });
+        stub_0xa6cb5c(&mut arr);
+        assert!(arr.slots.is_empty());
+        assert_eq!(arr.destroyed, 1);
+        stub_0xa6cb5c(&mut arr);
+        assert_eq!(arr.destroyed, 1);
+    }
+
+    #[test]
+    fn remote_system_ctor_shapes_state() {
+        let state = stub_0xa6d194();
+        assert_eq!(
+            state,
+            RemoteSystemState {
+                system_addresses: 12,
+                reliability_inited: true,
+                guid_inited: true,
+                tail_zeroed: true,
+            }
+        );
+    }
+
+    #[test]
+    fn ts_alloc_queue_dtor_drains() {
+        let mut q = TsAllocQueue { ready: vec![1u32], buffered: vec![2u32, 3] };
+        stub_0xa6d4c0(&mut q);
+        assert!(q.is_empty());
+        let mut q = TsAllocQueue { ready: vec![1u32], buffered: vec![] };
+        stub_0xa6d7a0(&mut q);
+        assert!(q.is_empty());
+        let mut q = TsAllocQueue { ready: vec![], buffered: vec![9u32] };
+        stub_0xa6da80(&mut q);
+        assert!(q.is_empty());
+    }
+
+    #[test]
+    fn rakstring_lifecycle_round_trip() {
+        let _guard = TEST_LOCK.lock();
+        let empty = stub_0xa6eaa4();
+        assert!(empty.is_static);
+        let mut s = stub_0xa6ec58("hello");
+        assert_eq!(s.text, "hello");
+        assert!(!s.is_static);
+        let mut t = stub_0xa6eaa4();
+        stub_0xa6eed4(&mut t, &s);
+        assert_eq!(t.text, "hello");
+        let depth_before = rakstring_freelist_depth();
+        stub_0xa6ec8c(&mut s);
+        assert!(s.is_static);
+        assert_eq!(rakstring_freelist_depth(), depth_before + 1);
+        stub_0xa6ec7c(&mut t);
+        let mut sized = stub_0xa6eaa4();
+        stub_0xa6ef14(&mut sized, 64);
+        assert!(sized.text.capacity() >= 64);
+        assert!(!sized.is_static);
+        stub_0xa6ec8c(&mut sized);
+        let drained = stub_0xa6f210();
+        assert!(drained >= 1);
+        assert_eq!(rakstring_freelist_depth(), 0);
+        let mut blank = stub_0xa6eaa4();
+        stub_0xa6eab4(&mut blank, "");
+        assert!(blank.is_static);
+    }
+
+    #[test]
+    fn ip_match_exact_wildcard_and_rejects() {
+        let stored = RakString::assigned("192.168.1.1");
+        assert!(stub_0xa6f1ac(&stored, Some("192.168.1.1")));
+        assert!(!stub_0xa6f1ac(&stored, Some("192.168.1.2")));
+        let wild = RakString::assigned("192.168.*");
+        assert!(stub_0xa6f1ac(&wild, Some("192.168.1.1")));
+        assert!(!stub_0xa6f1ac(&wild, Some("10.0.0.1")));
+        assert!(!stub_0xa6f1ac(&wild, Some("192.168.")));
+        assert!(!stub_0xa6f1ac(&stored, None));
+        assert!(!stub_0xa6f1ac(&stored, Some("")));
+        assert!(!stub_0xa6f1ac(&stored, Some("123.456.789.01234")));
+    }
+    #[test]
+    fn serialize_deserialize_round_trip() {
+        let _guard = TEST_LOCK.lock();
+        let s = RakString::assigned("abc");
+        let wire = stub_0xa6f328(&s);
+        assert_eq!(wire, vec![3, 0, b'a', b'b', b'c']);
+        let mut out = stub_0xa6eaa4();
+        assert!(stub_0xa6f358(&mut out, &wire));
+        assert_eq!(out.text, "abc");
+        let mut zero = stub_0xa6eaa4();
+        assert!(stub_0xa6f358(&mut zero, &[0, 0]));
+        assert!(zero.is_static);
+        let mut short = stub_0xa6eaa4();
+        assert!(!stub_0xa6f358(&mut short, &[5, 0, b'a']));
+        let mut empty_wire = stub_0xa6eaa4();
+        assert!(!stub_0xa6f358(&mut empty_wire, &[]));
+    }
 }
 
 // 0xa6fa3c — __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i
