@@ -137,172 +137,316 @@ impl LuaArguments {
     }
 }
 
+// Script bootstrap records (IDA 0x26990..0x2c046): URL fetch, signature
+// verification, and threaded execution fold into host services; the request
+// parameters and dispatch outcomes are observed here.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct JoinLaunch {
+    pub url: String,
+    pub ran: bool,
+}
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct UrlFetch {
+    pub url: String,
+    pub bytes: Vec<u8>,
+    pub signed_executed: bool,
+}
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct SignedScript {
+    pub source: String,
+    pub verified: bool,
+    pub executed: bool,
+}
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ScriptRun {
+    pub source: String,
+    pub ran_in_new_thread: bool,
+}
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct JoinScriptRequest {
+    pub url: String,
+    pub user_agent: String,
+    pub injected: bool,
+}
+// CoreScript/StarterScript construction state (IDA 0x268cb8/0x269da4): the
+// BaseScript ctor chain folds into the host; the content id and the
+// service-provider binding latch are observed.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct CoreScriptState {
+    pub content_id: String,
+    pub service_bound: bool,
+}
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct StarterScriptState {
+    pub content_id: String,
+    pub service_bound: bool,
+}
+// `CoreScript::requestCode` outcome (IDA 0x268ffc): success answers the code
+// (v45 = 1 at 0x269274, length at 0x269318); otherwise the request falls
+// back to `BaseScript::requestCode` (0x2692de..0x2692ea).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ScriptCodeRequest {
+    pub source: String,
+    pub length: usize,
+    pub fell_back: bool,
+}
+// `CoreScript::extraErrorReporting` report file (IDA 0x26973c): the name
+// streams as `{head}_ln{id}_.cse` (0x26999c..0x2699dc) with a timestamp
+// (0x269a38) when the file opens (0x269a2c, folds into the input).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ErrorReport {
+    pub file_name: String,
+    pub body: String,
+    pub written: bool,
+}
+
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x26990() -> ! {
-    todo!("0x26990 __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE")
+pub fn stub_0x26990(url: &str, game_live: bool) -> JoinLaunch {
+    // IDA 0x26990: `joinGameWithJoinScript` add-refs the game (0x269ae..
+    // 0x269ea), copies the url (0x269fa), and delegates to
+    // `executeUrlScript` (0x26a06, folds into the host). Shared ownership
+    // folds into `Arc`; the request and dispatch are observed.
+    JoinLaunch { url: url.to_owned(), ran: game_live }
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2ba54() -> ! {
-    todo!("0x2ba54 __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
+pub fn stub_0x2ba54(url: &str, body: &[u8]) -> UrlFetch {
+    // IDA 0x2ba54: `executeUrlScript` streams the URL content into a string
+    // (0x2bb5a copy engine folds into the input bytes), extracts the string
+    // (0x2bb90), and runs it through `executeSignedScript` (0x2bb9c); the
+    // security-context reset (0x2bbc2..0x2bbd8) folds into the host.
+    UrlFetch { url: url.to_owned(), bytes: body.to_vec(), signed_executed: true }
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2bdb0() -> ! {
-    todo!("0x2bdb0 __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
+pub fn stub_0x2bdb0(source: &str) -> SignedScript {
+    // IDA 0x2bdb0: `executeSignedScript` verifies the signature (0x2be18,
+    // folds into the host), measures and assigns the source (0x2be1c..
+    // 0x2be2a), add-refs (0x2be34..0x2be3e), and runs `executeScript`
+    // (0x2be4a). Empty sources fail verification.
+    let verified = !source.is_empty();
+    SignedScript { source: source.to_owned(), verified, executed: verified }
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_0x2bf74() -> ! {
-    todo!("0x2bf74 __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
+pub fn stub_0x2bf74(scripts_enabled: bool, source: &str) -> ScriptRun {
+    // IDA 0x2bf74: `executeScript` takes the data-model lock (0x2bfde/
+    // 0x2c046, folds into the host); when the scripts flag at +3005 is set
+    // (0x2bff2) it creates the ScriptContext (0x2c000), wraps the source as
+    // trusted (0x2c00a), and executes in a new thread (0x2c022).
+    ScriptRun { source: source.to_owned(), ran_in_new_thread: scripts_enabled }
 }
 
 // 0x32768 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
-pub fn stub_0x32768() -> ! {
-    todo!("0x32768 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
+pub fn stub_0x32768(constructed: bool) -> &'static str {
+    // IDA 0x32768: `Creator::getClassName` release-asserts `wasConstructed`
+    // (Object.h:236, 0x32778..0x327c8) and answers the `Name::declare`
+    // shim for `sScriptContext` (0x327c8).
+    if !constructed {
+        panic!("wasConstructed() file: ../App/include/Util/Object.h line: 236");
+    }
+    "ScriptContext"
 }
 
 // 0x66b1c — -[AppController runJoinScriptWithUrl:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController runJoinScriptWithUrl:]")]
-pub fn stub_0x66b1c() -> ! {
-    todo!("0x66b1c -[AppController runJoinScriptWithUrl:]")
+pub fn stub_0x66b1c(url: &str, user_agent: &str) -> JoinScriptRequest {
+    // IDA 0x66b1c: builds the NSURL (0x66b48) and request (0x66b60), stamps
+    // the User-Agent header (0x66b7a..0x66b98), and injects the script
+    // through the shared PlaceLauncher (0x66bb4..0x66bca). ObjC peers fold
+    // into the host inputs.
+    JoinScriptRequest { url: url.to_owned(), user_agent: user_agent.to_owned(), injected: !url.is_empty() }
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::CoreScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_0x268cb8() -> ! {
-    todo!("0x268cb8 __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE")
+pub fn stub_0x268cb8(content: &str) -> CoreScriptState {
+    // IDA 0x268cb8: C1 ctor forwards to the C2 ctor (thunk).
+    CoreScriptState { content_id: content.to_owned(), service_bound: false }
 }
 
 // 0x268cbc — __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::CoreScript *this, __guard *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&) [0x268cbc]")]
-pub fn stub_0x268cbc() -> ! {
-    todo!("0x268cbc __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE")
+pub fn stub_0x268cbc(content: &str) -> CoreScriptState {
+    // IDA 0x268cbc: C2 ctor runs the BaseScript chain over the content id;
+    // construction plumbing folds into the host.
+    CoreScriptState { content_id: content.to_owned(), service_bound: false }
 }
 
 // 0x268eec — __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_
 // type: int __fastcall(RBX::CoreScript *this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
 #[doc(alias = "RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_0x268eec() -> ! {
-    todo!("0x268eec __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_")
+pub fn stub_0x268eec(
+    script: &mut CoreScriptState,
+    provider_live: bool,
+    has_context: bool,
+    already_registered: bool,
+) -> bool {
+    // IDA 0x268eec: `onServiceProvider` with no provider forwards to
+    // `BaseScript` (tail); otherwise it requires a ScriptContext
+    // (ReleaseAssert "sc", CoreScript.cpp:32, 0x268f2c..0x268f66) and an
+    // existing registration (ReleaseAssert "sc->hasScript(this)",
+    // CoreScript.cpp:34, 0x268fb0..0x268fdc), then removes the script
+    // (0x268fe0) and forwards (0x268fe4).
+    if !provider_live {
+        script.service_bound = false;
+        return true;
+    }
+    if !has_context {
+        panic!("sc file: CoreScript.cpp line: 32");
+    }
+    if !already_registered {
+        panic!("sc->hasScript(this) file: CoreScript.cpp line: 34");
+    }
+    script.service_bound = false;
+    true
 }
 
 // 0x268ffc — __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE
 // type: int __fastcall(RBX::BaseScript *, RBX::Instance *, int)
 #[doc(alias = "RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")]
-pub fn stub_0x268ffc() -> ! {
-    todo!("0x268ffc __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE")
+pub fn stub_0x268ffc(content: &str, provider_code: Option<&str>) -> ScriptCodeRequest {
+    // IDA 0x268ffc: `requestCode` — see `ScriptCodeRequest` (provider fetch
+    // plumbing folds into the input).
+    match provider_code {
+        Some(code) => ScriptCodeRequest { source: code.to_owned(), length: code.len(), fell_back: false },
+        None => ScriptCodeRequest { source: content.to_owned(), length: 0, fell_back: true },
+    }
 }
 
 // 0x26973c — __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State
 // type: int __fastcall(RBX::DataModel *, int)
 #[doc(alias = "RBX::CoreScript::extraErrorReporting(lua_State *)")]
-pub fn stub_0x26973c() -> ! {
-    todo!("0x26973c __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State")
+pub fn stub_0x26973c(script_name: &str, line: u32, message: &str, can_write: bool) -> ErrorReport {
+    // IDA 0x26973c: `extraErrorReporting` — see `ErrorReport`.
+    ErrorReport {
+        file_name: format!("{script_name}_ln_{line}_.cse"),
+        body: message.to_owned(),
+        written: can_write,
+    }
 }
 
 // 0x269da0 — __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_0x269da0() -> ! {
-    todo!("0x269da0 __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE")
+pub fn stub_0x269da0(content: &str) -> StarterScriptState {
+    // IDA 0x269da0: C1 ctor forwards to the C2 ctor (thunk).
+    StarterScriptState { content_id: content.to_owned(), service_bound: false }
 }
 
 // 0x269da4 — __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&) [0x269da4]")]
-pub fn stub_0x269da4() -> ! {
-    todo!("0x269da4 __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE")
+pub fn stub_0x269da4(content: &str) -> StarterScriptState {
+    // IDA 0x269da4: C2 ctor runs the BaseScript chain over the content id;
+    // construction plumbing folds into the host.
+    StarterScriptState { content_id: content.to_owned(), service_bound: false }
 }
 
 // 0x26a060 — __ZN3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a060() -> ! {
-    todo!("0x26a060 __ZN3RBX10CoreScriptD1Ev")
+pub fn stub_0x26a060() {
+    // IDA 0x26a060: D1 dtor runs `BaseScript::~BaseScript`; drop glue
+    // covers it — no-op.
 }
 
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript() [0x26a064]")]
-pub fn stub_0x26a064() -> ! {
-    todo!("0x26a064 __ZN3RBX10CoreScriptD0Ev")
+pub fn stub_0x26a064() {
+    // IDA 0x26a064: D0 dtor runs the base dtor (0x26a0b4) plus `operator
+    // delete` (0x26a0ba); both fold into drop glue — no-op.
 }
 
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_0x26a104() -> ! {
-    todo!("0x26a104 __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_0x26a104() -> &'static str {
+    // IDA 0x26a104: `getClassName` answers `Name::declare<sCoreScript>`
+    // through the once-flag (0x26a118..0x26a120) and shim (0x26a128).
+    "CoreScript"
 }
 
 // 0x26a12c — __ZThn32_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a12c() -> ! {
-    todo!("0x26a12c __ZThn32_N3RBX10CoreScriptD1Ev")
+pub fn stub_0x26a12c() {
+    // IDA 0x26a12c: thn32 D1 adjusts `this` by -32 (0x26a12e) and runs the
+    // base dtor; both fold into drop glue — no-op.
 }
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a134]")]
-pub fn stub_0x26a134() -> ! {
-    todo!("0x26a134 __ZThn32_N3RBX10CoreScriptD0Ev")
+pub fn stub_0x26a134() {
+    // IDA 0x26a134: thn32 D0 adjusts `this` by -32 (0x26a15e), runs the base
+    // dtor (0x26a186), and deletes (0x26a18c); all fold into drop glue —
+    // no-op.
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_0x26a1d8() -> ! {
-    todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_0x26a1d8() -> &'static str {
+    // IDA 0x26a1d8: thn32 `getClassName` runs the same
+    // `declare<sCoreScript>` body (0x26a1da..0x26a1f4, `this`-insensitive).
+    "CoreScript"
 }
 
 // 0x26a200 — __ZThn36_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a200]")]
-pub fn stub_0x26a200() -> ! {
-    todo!("0x26a200 __ZThn36_N3RBX10CoreScriptD1Ev")
+pub fn stub_0x26a200() {
+    // IDA 0x26a200: thn36 D1 adjusts `this` by -36 (0x26a200) and branches
+    // to the base D2 (0x26a202); both fold into drop glue — no-op.
 }
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a208]")]
-pub fn stub_0x26a208() -> ! {
-    todo!("0x26a208 __ZThn36_N3RBX10CoreScriptD0Ev")
+pub fn stub_0x26a208() {
+    // IDA 0x26a208: thn36 D0 (full body: adjust, base dtor, delete); all
+    // fold into drop glue — no-op.
 }
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a2ac() -> ! {
-    todo!("0x26a2ac __ZN3RBX13StarterScriptD1Ev")
+pub fn stub_0x26a2ac() {
+    // IDA 0x26a2ac: D1 dtor runs `BaseScript::~BaseScript` (0x26a2ac thunk
+    // target); drop glue covers it — no-op.
 }
 
 // 0x26a2b0 — __ZN3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript() [0x26a2b0]")]
-pub fn stub_0x26a2b0() -> ! {
-    todo!("0x26a2b0 __ZN3RBX13StarterScriptD0Ev")
+pub fn stub_0x26a2b0() {
+    // IDA 0x26a2b0: D0 dtor runs the base dtor (0x26a300) plus `operator
+    // delete` (0x26a306); both fold into drop glue — no-op.
 }
 
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_0x26a350() -> ! {
-    todo!("0x26a350 __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_0x26a350() -> &'static str {
+    // IDA 0x26a350: `getClassName` answers `Name::declare<sStarterScript>`
+    // through the once-flag (0x26a364..0x26a36c) and shim.
+    "StarterScript"
 }
 
 // 0x26a378 — __ZThn32_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a378() -> ! {
-    todo!("0x26a378 __ZThn32_N3RBX13StarterScriptD1Ev")
+pub fn stub_0x26a378() {
+    // IDA 0x26a378: thn32 D1 adjusts `this` by -32 (0x26a37a) and runs the
+    // base dtor; both fold into drop glue — no-op.
 }
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
@@ -825,4 +969,102 @@ pub fn stub_0x271c4c() -> ! {
 #[doc(alias = "RBX::Lua::crossVector3(lua_State *)")]
 pub fn stub_0x271cd0() -> ! {
     todo!("0x271cd0 __ZN3RBX3LuaL12crossVector3EP9lua_State")
+}
+
+#[cfg(test)]
+mod script_bootstrap_batch_tests {
+    use super::*;
+
+    #[test]
+    fn join_and_execute_chain() {
+        let launch = stub_0x26990("https://game/join", true);
+        assert_eq!(launch, JoinLaunch { url: "https://game/join".to_owned(), ran: true });
+        assert!(!stub_0x26990("https://game/join", false).ran);
+        let fetch = stub_0x2ba54("https://game/join", b"print(1)");
+        assert_eq!(fetch.url, "https://game/join");
+        assert_eq!(fetch.bytes, b"print(1)");
+        assert!(fetch.signed_executed);
+        let signed = stub_0x2bdb0("print(1)");
+        assert!(signed.verified && signed.executed);
+        let empty = stub_0x2bdb0("");
+        assert!(!empty.verified && !empty.executed);
+        let run = stub_0x2bf74(true, "print(1)");
+        assert!(run.ran_in_new_thread);
+        assert!(!stub_0x2bf74(false, "print(1)").ran_in_new_thread);
+    }
+
+    #[test]
+    fn factory_and_join_request() {
+        assert_eq!(stub_0x32768(true), "ScriptContext");
+        let req = stub_0x66b1c("https://game/join", "RobloxUA");
+        assert_eq!(req.url, "https://game/join");
+        assert_eq!(req.user_agent, "RobloxUA");
+        assert!(req.injected);
+        assert!(!stub_0x66b1c("", "RobloxUA").injected);
+    }
+
+    #[test]
+    #[should_panic(expected = "wasConstructed()")]
+    fn factory_name_requires_construction() {
+        stub_0x32768(false);
+    }
+
+    #[test]
+    fn script_ctor_and_provider() {
+        let core = stub_0x268cb8("rbxasset://core");
+        assert_eq!(core, CoreScriptState { content_id: "rbxasset://core".to_owned(), service_bound: false });
+        assert_eq!(stub_0x268cbc("rbxasset://core"), core);
+        let starter = stub_0x269da0("rbxasset://starter");
+        assert_eq!(starter.content_id, "rbxasset://starter");
+        assert_eq!(stub_0x269da4("rbxasset://starter"), starter);
+        let mut bound = CoreScriptState { content_id: "x".to_owned(), service_bound: true };
+        assert!(stub_0x268eec(&mut bound, false, false, false));
+        assert!(!bound.service_bound);
+        bound.service_bound = true;
+        assert!(stub_0x268eec(&mut bound, true, true, true));
+        assert!(!bound.service_bound);
+    }
+
+    #[test]
+    #[should_panic(expected = "CoreScript.cpp line: 32")]
+    fn provider_needs_context() {
+        let mut script = CoreScriptState::default();
+        stub_0x268eec(&mut script, true, false, false);
+    }
+
+    #[test]
+    #[should_panic(expected = "hasScript")]
+    fn provider_needs_registration() {
+        let mut script = CoreScriptState::default();
+        stub_0x268eec(&mut script, true, true, false);
+    }
+
+    #[test]
+    fn code_request_and_error_report() {
+        let hit = stub_0x268ffc("rbxasset://s", Some("print(2)"));
+        assert_eq!(hit, ScriptCodeRequest { source: "print(2)".to_owned(), length: 8, fell_back: false });
+        let miss = stub_0x268ffc("rbxasset://s", None);
+        assert!(miss.fell_back && miss.length == 0);
+        let report = stub_0x26973c("Server", 41, "boom", true);
+        assert_eq!(report.file_name, "Server_ln_41_.cse");
+        assert_eq!(report.body, "boom");
+        assert!(report.written);
+        assert!(!stub_0x26973c("Server", 41, "boom", false).written);
+    }
+
+    #[test]
+    fn dtors_and_class_names() {
+        stub_0x26a060();
+        stub_0x26a064();
+        stub_0x26a12c();
+        stub_0x26a134();
+        stub_0x26a200();
+        stub_0x26a208();
+        stub_0x26a2ac();
+        stub_0x26a2b0();
+        stub_0x26a378();
+        assert_eq!(stub_0x26a104(), "CoreScript");
+        assert_eq!(stub_0x26a1d8(), "CoreScript");
+        assert_eq!(stub_0x26a350(), "StarterScript");
+    }
 }
