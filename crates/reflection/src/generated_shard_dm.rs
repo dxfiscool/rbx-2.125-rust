@@ -15,6 +15,20 @@ pub(crate) static SIGNAL_PLACEID_SLOT_MUTEX: std::sync::LazyLock<u32> =
 /// PropertyDescriptor const*>` (IDA 0x4a21c, cf. 0x2d644).
 pub const BIND_PLACEID_OBJC_TYPEINFO: &str =
     "bind_t<objc_object*,objc_selector*,PropertyDescriptor const*>";
+/// `BoundYieldFuncDesc<HttpService, ...>` (IDA 0x25a2f0/0x25ab40): async
+/// string-returning descriptor; args accumulate via `declareSignature`
+/// (0x25a540/0x25acb8). Reuses the canonical `HttpFuncArg`.
+#[derive(Default)]
+pub struct HttpYieldFuncDesc {
+    pub name: String,
+    pub category: String,
+    /// Member-function pair stored at +40 (opaque, cf. `HttpTableFuncDesc`).
+    pub member: (usize, usize),
+    pub return_type: &'static str,
+    pub args: Vec<crate::generated::HttpFuncArg>,
+    pub permissions: u32,
+    pub attributes: u32,
+}
 
 // 0x14220 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
@@ -550,8 +564,14 @@ pub fn stub_256efc() -> crate::enum_desc::EnumDesc {
 // 0x257828 — __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET_
 #[doc(alias = "void RBX::Reflection::resume_adapter<std::string>(boost::function<void ()(RBX::Reflection::Variant)>,std::string)")]
 #[doc(alias = "__ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET_")]
-pub fn stub_257828() -> ! {
-    todo!("0x257828 void RBX::Reflection::resume_adapter<std::string>(boost::function<void ()(RBX::Reflection::Variant)>,std::string)")
+pub fn stub_257828(
+    resume: &rbx_core::SharedPtr<dyn Fn(crate::descriptor::Variant) + Send + Sync>,
+    value: &str,
+) {
+    // IDA 0x257828: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x257828`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x257828(resume, value)
 }
 
 // 0x257980 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED1Ev
@@ -593,8 +613,11 @@ pub fn stub_257b5c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str
 // 0x257ebc — __ZN3RBX10Reflection7Variant14genericConvertINS_11HttpService15HttpContentTypeEEERT_v
 #[doc(alias = "RBX::HttpService::HttpContentType & RBX::Reflection::Variant::genericConvert<RBX::HttpService::HttpContentType>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant14genericConvertINS_11HttpService15HttpContentTypeEEERT_v")]
-pub fn stub_257ebc() -> ! {
-    todo!("0x257ebc RBX::HttpService::HttpContentType & RBX::Reflection::Variant::genericConvert<RBX::HttpService::HttpContentType>(void)")
+pub fn stub_257ebc(desc: &crate::enum_desc::EnumDesc, value: &crate::descriptor::Variant) -> i32 {
+    // IDA 0x257ebc: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x257ebc`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x257ebc(desc, value)
 }
 
 // 0x258800 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11HttpServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -607,8 +630,16 @@ pub fn stub_258800() {
 // 0x2594ac — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_11HttpServiceEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_11HttpServiceEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_2594ac() -> ! {
-    todo!("0x2594ac RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_2594ac(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> crate::generated::HttpServiceBoolPropDesc {
+    // IDA 0x2594ac: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x2594ac`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x2594ac(name, category, attributes, permissions)
 }
 
 // 0x25963c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE10isReadOnlyEv
@@ -630,29 +661,55 @@ pub fn stub_259640() -> bool {
 // 0x259644 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_259644() -> ! {
-    todo!("0x259644 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_259644(
+    access: &crate::generated::HttpServiceBoolAccess,
+    obj: &crate::generated::HttpServiceState,
+) -> bool {
+    // IDA 0x259644: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259644`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259644(access, obj)
 }
 
 // 0x259650 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11HttpServiceEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_259650() -> ! {
-    todo!("0x259650 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::HttpService>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_259650(
+    access: &crate::generated::HttpServiceBoolAccess,
+    obj: &mut crate::generated::HttpServiceState,
+    value: bool,
+) {
+    // IDA 0x259650: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259650`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259650(access, obj, value)
 }
 
 // 0x2596a0 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EEC2EMS2_FSsSI_EPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EEC2EMS2_FSsSI_EPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_2596a0() -> ! {
-    todo!("0x2596a0 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_2596a0(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> crate::generated::HttpTableFuncDesc {
+    // IDA 0x2596a0: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x2596a0`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x2596a0(name, category, member, arg_name, permissions, attributes)
 }
 
 // 0x259838 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE16declareSignatureEPKcS7_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE16declareSignatureEPKcS7_")]
-pub fn stub_259838() -> ! {
-    todo!("0x259838 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_259838(desc: &mut crate::generated::HttpTableFuncDesc, arg_name: &str) {
+    // IDA 0x259838: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259838`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259838(desc, arg_name)
 }
 
 // 0x259868 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EED0Ev
@@ -665,36 +722,76 @@ pub fn stub_259868() {
 // 0x259984 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_259984() -> ! {
-    todo!("0x259984 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_259984(
+    desc: &crate::generated::HttpTableFuncDesc,
+    obj: Option<&crate::generated::HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    invoke: &dyn Fn(
+        &crate::generated::HttpServiceState,
+        &rbx_core::SharedPtr<crate::generated::HttpVarMap>,
+    ) -> String,
+) -> crate::descriptor::Variant {
+    // IDA 0x259984: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259984`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259984(desc, obj, args, invoke)
 }
 
 // 0x259a6c — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEESI_SsE4callEPS2_SK_RS7_RKSI_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
 #[doc(alias = "__ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEESI_SsE4callEPS2_SK_RS7_RKSI_")]
-pub fn stub_259a6c() -> ! {
-    todo!("0x259a6c RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")
+pub fn stub_259a6c(
+    obj: &crate::generated::HttpServiceState,
+    invoke: &dyn Fn(
+        &crate::generated::HttpServiceState,
+        &rbx_core::SharedPtr<crate::generated::HttpVarMap>,
+    ) -> String,
+    arg: &rbx_core::SharedPtr<crate::generated::HttpVarMap>,
+) -> crate::descriptor::Variant {
+    // IDA 0x259a6c: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259a6c`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259a6c(obj, invoke, arg)
 }
 
 // 0x259bfc — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE")]
-pub fn stub_259bfc() -> ! {
-    todo!("0x259bfc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_259bfc(
+    args: &[crate::descriptor::Variant],
+    default: Option<&rbx_core::SharedPtr<crate::generated::HttpVarMap>>,
+) -> rbx_core::SharedPtr<crate::generated::HttpVarMap> {
+    // IDA 0x259bfc: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259bfc`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259bfc(args, default)
 }
 
 // 0x259dbc — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EEC2EMS2_FSI_SsEPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EEC2EMS2_FSI_SsEPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_259dbc() -> ! {
-    todo!("0x259dbc RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_259dbc(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> crate::generated::HttpStringFuncDesc {
+    // IDA 0x259dbc: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259dbc`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259dbc(name, category, member, arg_name, permissions, attributes)
 }
 
 // 0x259f34 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE16declareSignatureEPKcS7_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE16declareSignatureEPKcS7_")]
-pub fn stub_259f34() -> ! {
-    todo!("0x259f34 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_259f34(desc: &mut crate::generated::HttpStringFuncDesc, arg_name: &str) {
+    // IDA 0x259f34: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x259f34`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x259f34(desc, arg_name)
 }
 
 // 0x259f64 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED0Ev
@@ -707,29 +804,89 @@ pub fn stub_259f64() {
 // 0x25a030 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")]
-pub fn stub_25a030() -> ! {
-    todo!("0x25a030 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_25a030(
+    desc: &crate::generated::HttpStringFuncDesc,
+    obj: Option<&crate::generated::HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    invoke: &dyn Fn(
+        &crate::generated::HttpServiceState,
+        &str,
+    ) -> rbx_core::SharedPtr<crate::generated::HttpVarMap>,
+) -> rbx_core::SharedPtr<crate::generated::HttpVarMap> {
+    // IDA 0x25a030: duplicate of the canonical cutover at
+    // `crate::generated::stub_0x25a030`. Delegate to keep one source of
+    // truth.
+    crate::generated::stub_0x25a030(desc, obj, args, invoke)
 }
 
 // 0x25a170 — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")]
 #[doc(alias = "__ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_")]
-pub fn stub_25a170() -> ! {
-    todo!("0x25a170 RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")
+pub fn stub_25a170(
+    obj: &crate::generated::HttpServiceState,
+    invoke: &dyn Fn(
+        &crate::generated::HttpServiceState,
+        &str,
+    ) -> rbx_core::SharedPtr<crate::generated::HttpVarMap>,
+    arg: &str,
+) -> rbx_core::SharedPtr<crate::generated::HttpVarMap> {
+    // IDA 0x25a170 (`Call1Helper<..., map(string), string, map>::call`):
+    // same member-pointer mechanics as 0x259a6c with the types swapped
+    // (string arg in, map out). The call is the observable behavior.
+    invoke(obj, arg)
 }
 
 // 0x25a2f0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_25a2f0() -> ! {
-    todo!("0x25a2f0 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_25a2f0(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    first: &str,
+    second: &str,
+    third: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HttpYieldFuncDesc {
+    // IDA 0x25a2f0 (`BoundYieldFuncDesc<HttpService, string(string,
+    // string, HttpContentType), string, 3>` ctor): base init, member
+    // pair at +40, `declareSignature` fixing a string return with three
+    // arguments (same inline shape as 0x2596a0). Vtable install is drop
+    // glue.
+    let mut desc = HttpYieldFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        return_type: "string",
+        args: Vec::new(),
+        permissions,
+        attributes,
+    };
+    stub_25a540(&mut desc, first, second, third);
+    desc
 }
 
 // 0x25a540 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_")]
-pub fn stub_25a540() -> ! {
-    todo!("0x25a540 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+pub fn stub_25a540(desc: &mut HttpYieldFuncDesc, first: &str, second: &str, third: &str) {
+    // IDA 0x25a540: return type fixed to string, three `addArgument`s
+    // (two strings plus the `HttpContentType` enum, same shape as
+    // 0x259838 with three args).
+    desc.return_type = "string";
+    desc.args.push(crate::generated::HttpFuncArg {
+        name: first.to_owned(),
+        type_name: "string",
+    });
+    desc.args.push(crate::generated::HttpFuncArg {
+        name: second.to_owned(),
+        type_name: "string",
+    });
+    desc.args.push(crate::generated::HttpFuncArg {
+        name: third.to_owned(),
+        type_name: "HttpContentType",
+    });
 }
 
 // 0x25a5a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev
@@ -742,36 +899,116 @@ pub fn stub_25a5a8() {
 // 0x25a68c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE")]
-pub fn stub_25a68c() -> ! {
-    todo!("0x25a68c RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+#[allow(clippy::too_many_arguments)]
+pub fn stub_25a68c(
+    desc: &HttpYieldFuncDesc,
+    obj: Option<&crate::generated::HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    content: i32,
+    invoke: &dyn Fn(&crate::generated::HttpServiceState, &str, &str, i32) -> String,
+    on_ok: &dyn Fn(String),
+    _on_err: &dyn Fn(String),
+) {
+    // IDA 0x25a68c (`BoundYieldFuncDesc<..., 3>::execute`): instance
+    // adjust (null stays null, same shape as 0x259984), three string
+    // args extracted with empty-string fallback, then the bound member
+    // runs and its success value resumes via the `Variant` callback.
+    // The member dispatch is elided; `invoke` is the bound member.
+    let _ = desc.member;
+    let obj = obj.expect("BoundYieldFuncDesc::execute on null instance (IDA 0x25a68c)");
+    let text = |i: usize| match args.get(i) {
+        Some(crate::descriptor::Variant::Text(s)) => s.as_str(),
+        _ => "",
+    };
+    on_ok(invoke(obj, text(0), text(1), content));
 }
 
 // 0x25a958 — __ZN3RBX10Reflection9ArgHelper6getArgINS_11HttpService15HttpContentTypeELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgINS_11HttpService15HttpContentTypeELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
-pub fn stub_25a958() -> ! {
-    todo!("0x25a958 RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_25a958(
+    args: &[crate::descriptor::Variant],
+    default: Option<i32>,
+) -> i32 {
+    // IDA 0x25a958 (`ArgHelper::getArg<HttpContentType, 3>`): an int
+    // payload converts directly (same presence check as 0x259bfc);
+    // otherwise the default wins, and a missing default throws
+    // `runtime_error("Argument 3 missing or nil")`.
+    if let Some(crate::descriptor::Variant::Int(v)) = args.get(2) {
+        return *v;
+    }
+    match default {
+        Some(d) => d,
+        None => panic!("Argument 3 missing or nil (IDA 0x25a958)"),
+    }
 }
 
 // 0x25aaec — __ZN3RBX10Reflection9ArgHelper8try_enumILi3ENS_11HttpService15HttpContentTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")]
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper8try_enumILi3ENS_11HttpService15HttpContentTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE")]
-pub fn stub_25aaec() -> ! {
-    todo!("0x25aaec bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")
+pub fn stub_25aaec(
+    args: &[crate::descriptor::Variant],
+    out: &mut i32,
+    desc: &crate::enum_desc::EnumDesc,
+) -> bool {
+    // IDA 0x25aaec (`ArgHelper::try_enum<3, HttpContentType>`): an int
+    // payload stores directly; a string payload goes through the
+    // `EnumDesc` table (same convert as 0x257ebc); anything else
+    // reports failure without throwing.
+    match args.get(2) {
+        Some(crate::descriptor::Variant::Int(v)) => {
+            *out = *v;
+            true
+        }
+        Some(crate::descriptor::Variant::Text(s)) => match desc.lookup_value(s) {
+            Some(v) => {
+                *out = v;
+                true
+            }
+            None => false,
+        },
+        _ => false,
+    }
 }
 
 // 0x25ab40 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_25ab40() -> ! {
-    todo!("0x25ab40 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_25ab40(
+    name: &str,
+    category: &str,
+    member: (usize, usize),
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> HttpYieldFuncDesc {
+    // IDA 0x25ab40 (`BoundYieldFuncDesc<HttpService, string(string),
+    // string, 1>` ctor): same shape as 0x25a2f0 with one string
+    // argument.
+    let mut desc = HttpYieldFuncDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        member,
+        return_type: "string",
+        args: Vec::new(),
+        permissions,
+        attributes,
+    };
+    stub_25acb8(&mut desc, arg_name);
+    desc
 }
 
 // 0x25acb8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE")]
-pub fn stub_25acb8() -> ! {
-    todo!("0x25acb8 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_25acb8(desc: &mut HttpYieldFuncDesc, arg_name: &str) {
+    // IDA 0x25acb8: return type fixed to string plus one string
+    // `addArgument` (same shape as 0x259838).
+    desc.return_type = "string";
+    desc.args.push(crate::generated::HttpFuncArg {
+        name: arg_name.to_owned(),
+        type_name: "string",
+    });
 }
 
 // 0x25ace8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev
@@ -784,8 +1021,23 @@ pub fn stub_25ace8() {
 // 0x25adb4 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE")]
-pub fn stub_25adb4() -> ! {
-    todo!("0x25adb4 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+pub fn stub_25adb4(
+    desc: &HttpYieldFuncDesc,
+    obj: Option<&crate::generated::HttpServiceState>,
+    args: &[crate::descriptor::Variant],
+    invoke: &dyn Fn(&crate::generated::HttpServiceState, &str) -> String,
+    on_ok: &dyn Fn(String),
+    _on_err: &dyn Fn(String),
+) {
+    // IDA 0x25adb4 (`BoundYieldFuncDesc<..., 1>::execute`): same shape
+    // as 0x25a68c with one string argument.
+    let _ = desc.member;
+    let obj = obj.expect("BoundYieldFuncDesc::execute on null instance (IDA 0x25adb4)");
+    let text = match args.first() {
+        Some(crate::descriptor::Variant::Text(s)) => s.as_str(),
+        _ => "",
+    };
+    on_ok(invoke(obj, text));
 }
 
 // 0x25c0cc — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED1Ev
