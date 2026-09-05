@@ -7,6 +7,37 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 
+/// `RBX::ClickDetector` hover state (IDA 0x3f12e0: last-hover shared_ptr at +0x7C).
+#[derive(Clone, Debug, Default)]
+pub struct ClickDetector {
+ pub hover_part: Option<usize>,
+ pub max_distance: f32,
+ pub enabled: bool,
+}
+
+/// `RBX::NetworkStatsCommand` verb state (IDA 0x3f7df4 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct NetworkStatsCommand {
+ pub enabled: bool,
+ pub checked: bool,
+}
+
+/// `RBX::DataModel` network-metric slot (IDA 0x427db8: field at +0xBB8).
+#[derive(Clone, Debug, Default)]
+pub struct DataModelMetric {
+ pub this: usize,
+ pub metric: Option<usize>,
+}
+
+/// `RBX::DataModel` physics-instruction fields (IDA 0x425d58: SimSendFilter words + 0xC00/0xC04/0xC08).
+#[derive(Clone, Debug, Default)]
+pub struct PhysicsSimFilter {
+ pub sim_address: u32,
+ pub filter: u32,
+ pub mode_words: [u32; 2],
+ pub flag: bool,
+}
+
 /// `EventReplicatorBase` listener side (IDA 0x3a7f68 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct EventReplicator {
@@ -585,191 +616,271 @@ pub fn stub_3f1114(distance: f32, player: usize, fire: &mut dyn FnMut(f32, usize
 // type: int __fastcall(int *, float, int, RBX::Network::Player *)
 #[doc(alias = "RBX::ClickDetector::isClickable(boost::shared_ptr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector11isClickableEN5boost10shared_ptrINS_12PartInstanceEEEfbPNS_7Network6PlayerE")]
-pub fn stub_3f1234() -> ! {
-    todo!("0x3f1234 __ZN3RBX13ClickDetector11isClickableEN5boost10shared_ptrINS_12PartInstanceEEEfbPNS_7Network6PlayerE")
+pub fn stub_3f1234(has_part: bool, is_instance: bool, in_range: bool) -> bool {
+    // IDA 0x3f1234: ClickDetector::isClickable — null gate, isA(Instance) gate, range checks.
+    has_part && is_instance && in_range
 }
 
 // 0x3f12e0 — __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE
 // type: int __fastcall(RBX::ClickDetector *, int *, RBX::Network::Player *)
 #[doc(alias = "RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE")]
-pub fn stub_3f12e0() -> ! {
-    todo!("0x3f12e0 __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE")
+pub fn stub_3f12e0(det: &mut ClickDetector, part: Option<usize>, player: usize, fire_hover: &mut dyn FnMut(usize)) -> bool {
+    // IDA 0x3f12e0: changed ? (fireMouseHover when set; store part) : same -> 0.
+    if part != det.hover_part {
+        if part.is_some() {
+            fire_hover(player);
+        }
+        det.hover_part = part;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x3f130c — __ZN3RBX13ClickDetector14fireMouseHoverEPNS_7Network6PlayerE
 // type: void __fastcall(RBX::ClickDetector *this, RBX::Network::Player *)
 #[doc(alias = "RBX::ClickDetector::fireMouseHover(RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector14fireMouseHoverEPNS_7Network6PlayerE")]
-pub fn stub_3f130c() -> ! {
-    todo!("0x3f130c __ZN3RBX13ClickDetector14fireMouseHoverEPNS_7Network6PlayerE")
+pub fn stub_3f130c(player: usize, fire: &mut dyn FnMut(usize)) {
+    // IDA 0x3f130c: ClickDetector::fireMouseHover — shared_from<Player> + fire MouseHover (below truncation).
+    fire(player);
 }
 
 // 0x3f1410 — __ZN3RBX13ClickDetector19fireMouseHoverLeaveEPNS_7Network6PlayerE
 // type: void __fastcall(RBX::ClickDetector *this, RBX::Network::Player *)
 #[doc(alias = "RBX::ClickDetector::fireMouseHoverLeave(RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector19fireMouseHoverLeaveEPNS_7Network6PlayerE")]
-pub fn stub_3f1410() -> ! {
-    todo!("0x3f1410 __ZN3RBX13ClickDetector19fireMouseHoverLeaveEPNS_7Network6PlayerE")
+pub fn stub_3f1410(player: usize, fire: &mut dyn FnMut(usize)) {
+    // IDA 0x3f1410: ClickDetector::fireMouseHoverLeave — shared_from<Player> + fire leave (below truncation).
+    fire(player);
 }
 
 // 0x3f154c — __ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE
 // type: void __fastcall(int *, RBX::Network::Player *, int, int)
 #[doc(alias = "RBX::ClickDetector::stopHover(boost::shared_ptr<RBX::PartInstance>,RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE")]
-pub fn stub_3f154c() -> ! {
-    todo!("0x3f154c __ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE")
+pub fn stub_3f154c(has_part: bool, is_instance: bool, has_detector: bool, player: usize, fire_leave: &mut dyn FnMut(usize)) {
+    // IDA 0x3f154c: null/instance gates; findConstFirstChildOfType<ClickDetector> -> fireMouseHoverLeave.
+    if has_part && is_instance && has_detector {
+        fire_leave(player);
+    }
 }
 
 // 0x3f15b8 — __ZN3RBX13ClickDetector9isHoveredEPNS_12PartInstanceEfbPNS_7Network6PlayerE
 // type: int __fastcall(RBX::ClickDetector *this, RBX::PartInstance *, float, RBX::Network::Player *, RBX::Network::Player *)
 #[doc(alias = "RBX::ClickDetector::isHovered(RBX::PartInstance *,float,bool,RBX::Network::Player *)")]
 #[doc(alias = "__ZN3RBX13ClickDetector9isHoveredEPNS_12PartInstanceEfbPNS_7Network6PlayerE")]
-pub fn stub_3f15b8() -> ! {
-    todo!("0x3f15b8 __ZN3RBX13ClickDetector9isHoveredEPNS_12PartInstanceEfbPNS_7Network6PlayerE")
+pub fn stub_3f15b8(is_current: bool, in_range: bool, fire: &mut dyn FnMut()) -> bool {
+    // IDA 0x3f15b8: ClickDetector::isHovered — hover-part identity + distance checks (below truncation).
+    let ok = is_current && in_range;
+    if ok {
+        fire();
+    }
+    ok
 }
 
 // 0x3f7df0 — __ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE
 // type: int __fastcall(RBX::NetworkStatsCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE")]
-pub fn stub_3f7df0() -> ! {
-    todo!("0x3f7df0 __ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE")
+pub fn stub_3f7df0(cmd: usize, model: usize, init: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x3f7df0: C1 thunk tail-calls the C2 constructor.
+    init(cmd, model);
 }
 
 // 0x3f7df4 — __ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE
 // type: RBX::Verb *__fastcall(RBX::NetworkStatsCommand *this, RBX::DataModel *)
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE")]
-pub fn stub_3f7df4() -> ! {
-    todo!("0x3f7df4 __ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE")
+pub fn stub_3f7df4(cmd: usize, model: usize, init_verb: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3f7df4: NetworkStatsCommand::NetworkStatsCommand — Verb base + fields (below truncation).
+    init_verb(cmd, model);
+    cmd
 }
 
 // 0x3f7f80 — __ZN3RBX19NetworkStatsCommand4doItEPNS_10IDataStateE
 // type: void __fastcall(int, int, int, const void *)
 #[doc(alias = "RBX::NetworkStatsCommand::doIt(RBX::IDataState *)")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommand4doItEPNS_10IDataStateE")]
-pub fn stub_3f7f80() -> ! {
-    todo!("0x3f7f80 __ZN3RBX19NetworkStatsCommand4doItEPNS_10IDataStateE")
+pub fn stub_3f7f80(show: &mut dyn FnMut()) {
+    // IDA 0x3f7f80: NetworkStatsCommand::doIt — FLog::Verbs + stats UI display (below truncation).
+    show();
 }
 
 // 0x3f8268 — __ZNK3RBX19NetworkStatsCommand9isEnabledEv
 // type: bool __fastcall(RBX::NetworkStatsCommand *this)
 #[doc(alias = "RBX::NetworkStatsCommand::isEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX19NetworkStatsCommand9isEnabledEv")]
-pub fn stub_3f8268() -> ! {
-    todo!("0x3f8268 __ZNK3RBX19NetworkStatsCommand9isEnabledEv")
+pub fn stub_3f8268(found: bool) -> bool {
+    // IDA 0x3f8268: NetworkStatsCommand::isEnabled — workspace child lookup gates (below truncation).
+    found
 }
 
 // 0x3f83e4 — __ZNK3RBX19NetworkStatsCommand9isCheckedEv
 // type: int __fastcall(RBX::NetworkStatsCommand *this)
 #[doc(alias = "RBX::NetworkStatsCommand::isChecked(void)const")]
 #[doc(alias = "__ZNK3RBX19NetworkStatsCommand9isCheckedEv")]
-pub fn stub_3f83e4() -> ! {
-    todo!("0x3f83e4 __ZNK3RBX19NetworkStatsCommand9isCheckedEv")
+pub fn stub_3f83e4(cmd: &NetworkStatsCommand) -> bool {
+    // IDA 0x3f83e4: NetworkStatsCommand::isChecked — checked flag.
+    cmd.checked
 }
 
 // 0x3fe628 — __ZN3RBX19NetworkStatsCommandD1Ev
 // type: void __fastcall(RBX::NetworkStatsCommand *__hidden this)
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandD1Ev")]
-pub fn stub_3fe628() -> ! {
-    todo!("0x3fe628 __ZN3RBX19NetworkStatsCommandD1Ev")
+pub fn stub_3fe628(destroy_verb: &mut dyn FnMut()) {
+    // IDA 0x3fe628: D1 tail-calls Verb::~Verb.
+    destroy_verb();
 }
 
 // 0x3fe62c — __ZN3RBX19NetworkStatsCommandD0Ev
 // type: void __fastcall(RBX::NetworkStatsCommand *__hidden this)
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandD0Ev")]
-pub fn stub_3fe62c() -> ! {
-    todo!("0x3fe62c __ZN3RBX19NetworkStatsCommandD0Ev")
+pub fn stub_3fe62c(destroy_verb: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3fe62c: D0: Verb::~Verb + operator delete.
+    destroy_verb();
+    free();
 }
 
 // 0x3ff478 — __ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: void *__fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_3ff478() -> ! {
-    todo!("0x3ff478 __ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_3ff478(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3ff478: guarded one-time Players classDescriptor init; return the descriptor.
+    if !*guard {
+        *slot = init();
+        *guard = true;
+    }
+    *slot
 }
 
 // 0x401cec — __ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7Creator12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_401cec() -> ! {
-    todo!("0x401cec __ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_401cec(check_asserts: bool, constructed: bool, name: &str) -> &str {
+    // IDA 0x401cec: ReleaseAssert(wasConstructed()) when FLog::Asserts; return Name::declare(sNetworkSettings).
+    if check_asserts {
+        assert!(constructed, "wasConstructed() file: include/Util/Object.h line: 236");
+    }
+    name
 }
 
 // 0x401d58 — __ZN3RBX4Name7declareILZNS_16sNetworkSettingsEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_16sNetworkSettingsEEEERKS0_v")]
-pub fn stub_401d58() -> ! {
-    todo!("0x401d58 __ZN3RBX4Name7declareILZNS_16sNetworkSettingsEEEERKS0_v")
+pub fn stub_401d58(has_name: bool, null_name: usize, once: &mut dyn FnMut(), declared: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x401d58: null sNetworkSettings -> getNullName; else call_once(callDoDeclare) + doDeclare.
+    if !has_name {
+        return null_name;
+    }
+    once();
+    declared()
 }
 
 // 0x401d9c — __ZN3RBX4Name9doDeclareILZNS_16sNetworkSettingsEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sNetworkSettingsEEEERKS0_v")]
-pub fn stub_401d9c() -> ! {
-    todo!("0x401d9c __ZN3RBX4Name9doDeclareILZNS_16sNetworkSettingsEEEERKS0_v")
+pub fn stub_401d9c(guard: &mut bool, cached: &mut usize, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x401d9c: cxa_guard one-time Name::declare(sNetworkSettings).
+    if !*guard {
+        *cached = declare();
+        *guard = true;
+    }
+    *cached
 }
 
 // 0x425d58 — __ZN3RBX9DataModel25updatePhysicsInstructionsENS_7Network8GameModeE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::DataModel::updatePhysicsInstructions(RBX::Network::GameMode)")]
 #[doc(alias = "__ZN3RBX9DataModel25updatePhysicsInstructionsENS_7Network8GameModeE")]
-pub fn stub_425d58() -> ! {
-    todo!("0x425d58 __ZN3RBX9DataModel25updatePhysicsInstructionsENS_7Network8GameModeE")
+pub fn stub_425d58(mode: u32, state: &mut PhysicsSimFilter, apply: &mut dyn FnMut(u32)) {
+    // IDA 0x425d58: getSimSendFilter + findLocalSimulatorAddress; zero 0xC00/0xC04/0xC08; mode switch
+    // (below truncation).
+    state.mode_words = [0, 0];
+    state.flag = false;
+    apply(mode);
 }
 
 // 0x427db8 — __ZN3RBX9DataModel16setNetworkMetricEPNS_7IMetricE
 // type: int __fastcall(int this, IMetric *)
 #[doc(alias = "RBX::DataModel::setNetworkMetric(RBX::IMetric *)")]
 #[doc(alias = "__ZN3RBX9DataModel16setNetworkMetricEPNS_7IMetricE")]
-pub fn stub_427db8() -> ! {
-    todo!("0x427db8 __ZN3RBX9DataModel16setNetworkMetricEPNS_7IMetricE")
+pub fn stub_427db8(state: &mut DataModelMetric, metric: usize) -> usize {
+    // IDA 0x427db8: STR metric, [this, #0xBB8]; return this.
+    state.metric = Some(metric);
+    state.this
 }
 
 // 0x44ab28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_44ab28() -> ! {
-    todo!("0x44ab28 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_44ab28(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x44ab28: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x44ac18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_44ac18() -> ! {
-    todo!("0x44ac18 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_44ac18(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x44ac18: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x4da8f8 — __ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4da8f8() -> ! {
-    todo!("0x4da8f8 __ZN3RBX10Reflection9DescribedINS_7Network10ChatFilterELZNS2_11sChatFilterEENS_17NonFactoryProductINS_8InstanceELZNS2_11sChatFilterEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_4da8f8(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4da8f8: guarded one-time ChatFilter classDescriptor init; return the descriptor.
+    if !*guard {
+        *slot = init();
+        *guard = true;
+    }
+    *slot
 }
 
 // 0x4daa18 — __ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4daa18() -> ! {
-    todo!("0x4daa18 __ZN3RBX10Reflection9DescribedINS_7Network18ClusterPacketCacheELZNS2_19sClusterPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sClusterPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_4daa18(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4daa18: guarded one-time ClusterPacketCache classDescriptor init; return the descriptor.
+    if !*guard {
+        *slot = init();
+        *guard = true;
+    }
+    *slot
 }
 
 // 0x4dab38 — __ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4dab38() -> ! {
-    todo!("0x4dab38 __ZN3RBX10Reflection9DescribedINS_7Network19InstancePacketCacheELZNS2_20sInstancePacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_20sInstancePacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_4dab38(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4dab38: guarded one-time InstancePacketCache classDescriptor init; return the descriptor.
+    if !*guard {
+        *slot = init();
+        *guard = true;
+    }
+    *slot
 }
 
 // 0x4dac58 — __ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_4dac58() -> ! {
-    todo!("0x4dac58 __ZN3RBX10Reflection9DescribedINS_7Network18PhysicsPacketCacheELZNS2_19sPhysicsPacketCacheEENS_17NonFactoryProductINS_8InstanceELZNS2_19sPhysicsPacketCacheEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_4dac58(guard: &mut bool, slot: &mut usize, init: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x4dac58: guarded one-time PhysicsPacketCache classDescriptor init; return the descriptor.
+    if !*guard {
+        *slot = init();
+        *guard = true;
+    }
+    *slot
 }
 
 // 0x4f1df8 — __ZN3RBX4Flag21canBePickedUpByPlayerEPNS_7Network6PlayerE
