@@ -20073,8 +20073,9 @@ pub fn stub_a500c8(assign: &mut dyn FnMut()) {
 #[doc(
     alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"
 )]
-pub fn stub_a50340() -> ! {
-    todo!("0xa50340 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_a50340(slot: usize, assign_at: &mut dyn FnMut(usize)) {
+ // IDA 0xa50340: a1 - 40 adjust then tail-call assignIDREF.
+ assign_at(slot.wrapping_sub(40));
 }
 
 // 0xa503b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv
@@ -20082,8 +20083,9 @@ pub fn stub_a50340() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const"
 )]
-pub fn stub_a503b8() -> ! {
-    todo!("0xa503b8 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_a503b8() -> bool {
+ // IDA 0xa503b8: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0xa503bc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv
@@ -20091,8 +20093,9 @@ pub fn stub_a503b8() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const"
 )]
-pub fn stub_a503bc() -> ! {
-    todo!("0xa503bc RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_a503bc() -> bool {
+ // IDA 0xa503bc: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0xa503c0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE8getValueEPKNS0_13DescribedBaseE
@@ -20100,8 +20103,9 @@ pub fn stub_a503bc() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a503c0() -> ! {
-    todo!("0xa503c0 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a503c0(get: &mut dyn FnMut() -> usize) -> usize {
+ // IDA 0xa503c0: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xa503e4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE8setValueEPNS0_13DescribedBaseERKS5_
@@ -20109,8 +20113,9 @@ pub fn stub_a503c0() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const"
 )]
-pub fn stub_a503e4() -> ! {
-    todo!("0xa503e4 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")
+pub fn stub_a503e4() {
+ // IDA 0xa503e4: read-only setValue throws std::runtime_error (__noreturn).
+ panic!("read-only property");
 }
 
 // 0xa505b8 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -20118,15 +20123,19 @@ pub fn stub_a503e4() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::PropDescriptor<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>(char const*,char const*,int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_a505b8() -> ! {
-    todo!("0xa505b8 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::PropDescriptor<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>(char const*,char const*,int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a505b8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa505b8: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa507e0 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::~PropDescriptor()")]
-pub fn stub_a507e0() -> ! {
-    todo!("0xa507e0 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::~PropDescriptor()")
+pub fn stub_a507e0(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xa507e0: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xa5080c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
@@ -20134,8 +20143,9 @@ pub fn stub_a507e0() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isReadOnly(void)const"
 )]
-pub fn stub_a5080c() -> ! {
-    todo!("0xa5080c RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isReadOnly(void)const")
+pub fn stub_a5080c() -> bool {
+ // IDA 0xa5080c: isReadOnly returns 0.
+ false
 }
 
 // 0xa50810 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
@@ -20143,8 +20153,9 @@ pub fn stub_a5080c() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isWriteOnly(void)const"
 )]
-pub fn stub_a50810() -> ! {
-    todo!("0xa50810 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isWriteOnly(void)const")
+pub fn stub_a50810() -> bool {
+ // IDA 0xa50810: isWriteOnly returns 0.
+ false
 }
 
 // 0xa50814 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -20152,8 +20163,9 @@ pub fn stub_a50810() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a50814() -> ! {
-    todo!("0xa50814 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a50814(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa50814: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xa50838 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE8setValueEPNS0_13DescribedBaseERKi
@@ -20161,8 +20173,9 @@ pub fn stub_a50814() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
 )]
-pub fn stub_a50838() -> ! {
-    todo!("0xa50838 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_a50838(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0xa50838: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0xa50860 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiEC2IMS3_KFivEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -20170,8 +20183,10 @@ pub fn stub_a50838() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::PropDescriptor<int (RBX::Network::Players::*)(void)const,int>(char const*,char const*,int (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_a50860() -> ! {
-    todo!("0xa50860 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::PropDescriptor<int (RBX::Network::Players::*)(void)const,int>(char const*,char const*,int (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a50860(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa50860: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa50a74 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE10isReadOnlyEv
@@ -20179,8 +20194,9 @@ pub fn stub_a50860() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isReadOnly(void)const"
 )]
-pub fn stub_a50a74() -> ! {
-    todo!("0xa50a74 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_a50a74() -> bool {
+ // IDA 0xa50a74: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0xa50a78 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
@@ -20188,8 +20204,9 @@ pub fn stub_a50a74() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const"
 )]
-pub fn stub_a50a78() -> ! {
-    todo!("0xa50a78 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_a50a78() -> bool {
+ // IDA 0xa50a78: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0xa50a7c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -20197,8 +20214,9 @@ pub fn stub_a50a78() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a50a7c() -> ! {
-    todo!("0xa50a7c RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a50a7c(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa50a7c: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xa50aa0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE8setValueEPNS0_13DescribedBaseERKi
@@ -20206,8 +20224,9 @@ pub fn stub_a50a7c() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
 )]
-pub fn stub_a50aa0() -> ! {
-    todo!("0xa50aa0 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_a50aa0() {
+ // IDA 0xa50aa0: read-only setValue throws std::runtime_error (__noreturn).
+ panic!("read-only property");
 }
 
 // 0xa50bc0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
@@ -20215,8 +20234,9 @@ pub fn stub_a50aa0() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>> *)"
 )]
-pub fn stub_a50bc0() -> ! {
-    todo!("0xa50bc0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>> *)")
+pub fn stub_a50bc0(map: &mut EnumNameMap) {
+ // IDA 0xa50bc0: erases the whole subtree.
+ map.entries.clear();
 }
 
 // 0xa50be8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
@@ -20224,8 +20244,15 @@ pub fn stub_a50bc0() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>> *)"
 )]
-pub fn stub_a50be8() -> ! {
-    todo!("0xa50be8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>> *)")
+pub fn stub_a50be8(map: &mut EnumNameMap) {
+ // IDA 0xa50be8: erases the whole subtree.
+ map.entries.clear();
+}
+
+/// `AbuseReport::Message` list (IDA 0xa50fcc et al.).
+#[derive(Clone, Debug, Default)]
+pub struct AbuseMsgList {
+ pub items: Vec<ChatMessage>,
 }
 
 // 0xa50fcc — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEC2ERKS5_
@@ -20233,15 +20260,19 @@ pub fn stub_a50be8() -> ! {
 #[doc(
     alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::list(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)"
 )]
-pub fn stub_a50fcc() -> ! {
-    todo!("0xa50fcc std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::list(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")
+pub fn stub_a50fcc(list: &mut AbuseMsgList) {
+ // IDA 0xa50fcc: list ctor (below truncation).
+ list.items.clear();
 }
 
 // 0xa51d24 — __ZN3RBX7Network11ChatMessageD2Ev
 // type: void __fastcall(RBX::Network::ChatMessage *__hidden this)
 #[doc(alias = "RBX::Network::ChatMessage::~ChatMessage()")]
-pub fn stub_a51d24() -> ! {
-    todo!("0xa51d24 RBX::Network::ChatMessage::~ChatMessage()")
+pub fn stub_a51d24(msg: &mut ChatMessage) {
+ // IDA 0xa51d24: ChatMessage dtor frees both strings.
+ msg.from.clear();
+ msg.text.clear();
+ msg.id = 0;
 }
 
 // 0xa5275c — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEaSERKS5_
@@ -20249,8 +20280,10 @@ pub fn stub_a51d24() -> ! {
 #[doc(
     alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)"
 )]
-pub fn stub_a5275c() -> ! {
-    todo!("0xa5275c std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")
+pub fn stub_a5275c(dst: &mut AbuseMsgList, src: &AbuseMsgList) {
+ // IDA 0xa5275c: list assign (below truncation).
+ dst.items.clear();
+ dst.items.extend(src.items.iter().cloned());
 }
 
 // 0xa52848 — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE6insertISt20_List_const_iteratorIS3_EEEvSt14_List_iteratorIS3_ET_SB_
@@ -20258,8 +20291,9 @@ pub fn stub_a5275c() -> ! {
 #[doc(
     alias = "void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)"
 )]
-pub fn stub_a52848() -> ! {
-    todo!("0xa52848 void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)")
+pub fn stub_a52848(list: &mut AbuseMsgList, pos: usize, value: ChatMessage) {
+ // IDA 0xa52848: list insert (below truncation).
+ if pos >= list.items.len() { list.items.push(value); } else { list.items.insert(pos, value); }
 }
 
 // 0xa52ae4 — __ZNSt11_Deque_baseIN3RBX7Network11AbuseReportESaIS2_EE17_M_initialize_mapEm
@@ -20267,8 +20301,9 @@ pub fn stub_a52848() -> ! {
 #[doc(
     alias = "std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)"
 )]
-pub fn stub_a52ae4() -> ! {
-    todo!("0xa52ae4 std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)")
+pub fn stub_a52ae4(queue: &mut AbuseQueue, capacity: usize) {
+ // IDA 0xa52ae4: deque map init.
+ queue.items.reserve(capacity);
 }
 
 // 0xa52cd0 — __ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EEC2ERKS4_
@@ -20276,8 +20311,9 @@ pub fn stub_a52ae4() -> ! {
 #[doc(
     alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)"
 )]
-pub fn stub_a52cd0() -> ! {
-    todo!("0xa52cd0 std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)")
+pub fn stub_a52cd0(queue: &mut AbuseQueue) {
+ // IDA 0xa52cd0: deque ctor (below truncation).
+ queue.items.clear();
 }
 
 // 0xa52e28 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX7Network11AbuseReportERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type
@@ -20285,8 +20321,9 @@ pub fn stub_a52cd0() -> ! {
 #[doc(
     alias = "std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)"
 )]
-pub fn stub_a52e28() -> ! {
-    todo!("0xa52e28 std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)")
+pub fn stub_a52e28(queue: &mut AbuseQueue, items: &[Vec<u8>]) {
+ // IDA 0xa52e28: uninitialized copy of a deque range.
+ queue.items.extend(items.iter().cloned());
 }
 
 // 0xa535ac — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE13disconnectAllEv
