@@ -85,16 +85,26 @@ pub struct MainVC {
 static GLOBAL_A27_INIT: LazyLock<u32> = LazyLock::new(|| 1);
 
 /// `RobloxAnimatingPageViewController` observable state (IDA
-/// 0x52178..0x52aa0): load/appear latches, the memory-warning latch, the
-/// pan latch, and the pan start count. Image views fold into the host.
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
+/// 0x52178..0x53b2c): load/appear latches, the memory-warning latch, the
+/// pan/loop latches, pan/animation counts, the initial image positions,
+/// and the copy/image/animation view handles. UIKit peers fold into the
+/// host.
+#[derive(Clone, Debug, Default, PartialEq)]
 pub struct AnimVC {
     pub loaded: bool,
     pub appeared: bool,
     pub mem_warning: bool,
     pub panning: bool,
+    pub looping: bool,
     pub pan_count: u32,
     pub anims: u32,
+    pub fg_x: f32,
+    pub bg_x: f32,
+    pub fg_copy: Option<u32>,
+    pub bg_copy: Option<u32>,
+    pub anim_view: Option<u32>,
+    pub img_bg: Option<u32>,
+    pub img_fg: Option<u32>,
 }
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
@@ -964,176 +974,219 @@ pub fn stub_0x53034(vc: &mut AnimVC) {
 // 0x530d0 — -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")]
-pub fn stub_0x530d0() -> ! {
-    todo!("0x530d0 -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")
+pub fn stub_0x530d0(vc: &mut AnimVC) {
+    // IDA 0x530d0: `animateLayer:copyLayer:animationDuration:` composes
+    // and runs the layer animation (blocks 0x5340c/0x535ec); the
+    // CoreAnimation glue folds into the host.
+    vc.anims += 1;
 }
 
 // 0x5340c — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")]
-pub fn stub_0x5340c() -> ! {
-    todo!("0x5340c ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")
+pub fn stub_0x5340c() {
+    // IDA 0x5340c: the layer-animation block composes the animation;
+    // folds into `stub_0x530d0` — no-op.
 }
 
 // 0x535ac — ___copy_helper_block_84
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_84")]
-pub fn stub_0x535ac() -> ! {
-    todo!("0x535ac ___copy_helper_block_84")
+pub fn stub_0x535ac() {
+    // IDA 0x535ac: `__copy_helper_block_84` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x535d0 — ___destroy_helper_block_85
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_85")]
-pub fn stub_0x535d0() -> ! {
-    todo!("0x535d0 ___destroy_helper_block_85")
+pub fn stub_0x535d0() {
+    // IDA 0x535d0: `__destroy_helper_block_85` releases captures (pair
+    // of 0x535ac); `Arc` glue covers it — no-op.
 }
 
 // 0x535ec — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87
 // type: _BYTE *__fastcall(_DWORD *, char)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")]
-pub fn stub_0x535ec() -> ! {
-    todo!("0x535ec ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")
+pub fn stub_0x535ec(vc: &mut AnimVC, finished: bool) {
+    // IDA 0x535ec: the completion block re-runs the layer animation when
+    // still looping and the animation finished (0x53602..0x5362c), else
+    // stops.
+    if vc.looping && finished {
+        vc.anims += 1;
+    }
 }
 
 // 0x53634 — ___copy_helper_block_88
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_88")]
-pub fn stub_0x53634() -> ! {
-    todo!("0x53634 ___copy_helper_block_88")
+pub fn stub_0x53634() {
+    // IDA 0x53634: `__copy_helper_block_88` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x53664 — ___destroy_helper_block_89
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_89")]
-pub fn stub_0x53664() -> ! {
-    todo!("0x53664 ___destroy_helper_block_89")
+pub fn stub_0x53664() {
+    // IDA 0x53664: `__destroy_helper_block_89` releases captures (pair
+    // of 0x53634); `Arc` glue covers it — no-op.
 }
 
 // 0x53688 — -[RobloxAnimatingPageViewController startBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController startBackgroundPan]")]
-pub fn stub_0x53688() -> ! {
-    todo!("0x53688 -[RobloxAnimatingPageViewController startBackgroundPan]")
+pub fn stub_0x53688(vc: &mut AnimVC) {
+    // IDA 0x53688: `startBackgroundPan` latches looping and animates
+    // both layers short of a memory warning (0x536ae..0x536dc).
+    if !vc.mem_warning && !vc.looping {
+        vc.looping = true;
+        stub_0x52f98(vc);
+        stub_0x53034(vc);
+    }
 }
 
 // 0x536e0 — -[RobloxAnimatingPageViewController stopBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController stopBackgroundPan]")]
-pub fn stub_0x536e0() -> ! {
-    todo!("0x536e0 -[RobloxAnimatingPageViewController stopBackgroundPan]")
+pub fn stub_0x536e0(vc: &mut AnimVC) {
+    // IDA 0x536e0: `stopBackgroundPan` `dispatch_async`s the stop block
+    // while looping and un-warned (0x536f2..0x53748); the queue hop
+    // folds into the caller — see `stub_0x53750`.
+    if !vc.mem_warning && vc.looping {
+        stub_0x53750(vc);
+    }
 }
 
 // 0x53750 — ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")]
-pub fn stub_0x53750() -> ! {
-    todo!("0x53750 ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")
+pub fn stub_0x53750(vc: &mut AnimVC) {
+    // IDA 0x53750: the stop block unlatches looping (self+168 at the
+    // head) and strips the layer animations; the layer glue folds into
+    // the host.
+    vc.looping = false;
+    vc.panning = false;
 }
 
 // 0x539f0 — ___copy_helper_block_97
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_97")]
-pub fn stub_0x539f0() -> ! {
-    todo!("0x539f0 ___copy_helper_block_97")
+pub fn stub_0x539f0() {
+    // IDA 0x539f0: `__copy_helper_block_97` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x539fc — ___destroy_helper_block_98
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_98")]
-pub fn stub_0x539fc() -> ! {
-    todo!("0x539fc ___destroy_helper_block_98")
+pub fn stub_0x539fc() {
+    // IDA 0x539fc: `__destroy_helper_block_98` releases captures (pair
+    // of 0x539f0); `Arc` glue covers it — no-op.
 }
 
 // 0x53a04 — -[RobloxAnimatingPageViewController foregroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundCopy]")]
-pub fn stub_0x53a04() -> ! {
-    todo!("0x53a04 -[RobloxAnimatingPageViewController foregroundCopy]")
+pub fn stub_0x53a04(vc: &AnimVC) -> Option<u32> {
+    // IDA 0x53a04: `foregroundCopy` answers the copy handle.
+    vc.fg_copy
 }
 
 // 0x53a14 — -[RobloxAnimatingPageViewController setForegroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundCopy:]")]
-pub fn stub_0x53a14() -> ! {
-    todo!("0x53a14 -[RobloxAnimatingPageViewController setForegroundCopy:]")
+pub fn stub_0x53a14(vc: &mut AnimVC, copy: u32) {
+    // IDA 0x53a14: `setForegroundCopy:` stores the copy handle.
+    vc.fg_copy = Some(copy);
 }
 
 // 0x53a38 — -[RobloxAnimatingPageViewController backgroundCopy]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundCopy]")]
-pub fn stub_0x53a38() -> ! {
-    todo!("0x53a38 -[RobloxAnimatingPageViewController backgroundCopy]")
+pub fn stub_0x53a38(vc: &AnimVC) -> Option<u32> {
+    // IDA 0x53a38: `backgroundCopy` answers the copy handle.
+    vc.bg_copy
 }
 
 // 0x53a48 — -[RobloxAnimatingPageViewController setBackgroundCopy:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundCopy:]")]
-pub fn stub_0x53a48() -> ! {
-    todo!("0x53a48 -[RobloxAnimatingPageViewController setBackgroundCopy:]")
+pub fn stub_0x53a48(vc: &mut AnimVC, copy: u32) {
+    // IDA 0x53a48: `setBackgroundCopy:` stores the copy handle.
+    vc.bg_copy = Some(copy);
 }
 
 // 0x53a6c — -[RobloxAnimatingPageViewController foregroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController foregroundImageInitialX]")]
-pub fn stub_0x53a6c() -> ! {
-    todo!("0x53a6c -[RobloxAnimatingPageViewController foregroundImageInitialX]")
+pub fn stub_0x53a6c(vc: &AnimVC) -> f32 {
+    // IDA 0x53a6c: `foregroundImageInitialX` answers the position.
+    vc.fg_x
 }
 
 // 0x53a80 — -[RobloxAnimatingPageViewController setForegroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setForegroundImageInitialX:]")]
-pub fn stub_0x53a80() -> ! {
-    todo!("0x53a80 -[RobloxAnimatingPageViewController setForegroundImageInitialX:]")
+pub fn stub_0x53a80(vc: &mut AnimVC, x: f32) {
+    // IDA 0x53a80: `setForegroundImageInitialX:` stores the position.
+    vc.fg_x = x;
 }
 
 // 0x53a98 — -[RobloxAnimatingPageViewController backgroundImageInitialX]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController backgroundImageInitialX]")]
-pub fn stub_0x53a98() -> ! {
-    todo!("0x53a98 -[RobloxAnimatingPageViewController backgroundImageInitialX]")
+pub fn stub_0x53a98(vc: &AnimVC) -> f32 {
+    // IDA 0x53a98: `backgroundImageInitialX` answers the position.
+    vc.bg_x
 }
 
 // 0x53aac — -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")]
-pub fn stub_0x53aac() -> ! {
-    todo!("0x53aac -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")
+pub fn stub_0x53aac(vc: &mut AnimVC, x: f32) {
+    // IDA 0x53aac: `setBackgroundImageInitialX:` stores the position.
+    vc.bg_x = x;
 }
 
 // 0x53ac4 — -[RobloxAnimatingPageViewController animationView]
 // type: UIView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animationView]")]
-pub fn stub_0x53ac4() -> ! {
-    todo!("0x53ac4 -[RobloxAnimatingPageViewController animationView]")
+pub fn stub_0x53ac4(vc: &AnimVC) -> Option<u32> {
+    // IDA 0x53ac4: `animationView` answers the view handle.
+    vc.anim_view
 }
 
 // 0x53ad4 — -[RobloxAnimatingPageViewController setAnimationView:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setAnimationView:]")]
-pub fn stub_0x53ad4() -> ! {
-    todo!("0x53ad4 -[RobloxAnimatingPageViewController setAnimationView:]")
+pub fn stub_0x53ad4(vc: &mut AnimVC, view: u32) {
+    // IDA 0x53ad4: `setAnimationView:` stores the view handle.
+    vc.anim_view = Some(view);
 }
 
 // 0x53af8 — -[RobloxAnimatingPageViewController imgBackground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgBackground]")]
-pub fn stub_0x53af8() -> ! {
-    todo!("0x53af8 -[RobloxAnimatingPageViewController imgBackground]")
+pub fn stub_0x53af8(vc: &AnimVC) -> Option<u32> {
+    // IDA 0x53af8: `imgBackground` answers the image handle.
+    vc.img_bg
 }
 
 // 0x53b08 — -[RobloxAnimatingPageViewController setImgBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController setImgBackground:]")]
-pub fn stub_0x53b08() -> ! {
-    todo!("0x53b08 -[RobloxAnimatingPageViewController setImgBackground:]")
+pub fn stub_0x53b08(vc: &mut AnimVC, img: u32) {
+    // IDA 0x53b08: `setImgBackground:` stores the image handle.
+    vc.img_bg = Some(img);
 }
 
 // 0x53b2c — -[RobloxAnimatingPageViewController imgForeground]
 // type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController imgForeground]")]
-pub fn stub_0x53b2c() -> ! {
-    todo!("0x53b2c -[RobloxAnimatingPageViewController imgForeground]")
+pub fn stub_0x53b2c(vc: &AnimVC) -> Option<u32> {
+    // IDA 0x53b2c: `imgForeground` answers the image handle.
+    vc.img_fg
 }
 
 // 0x53b3c — -[RobloxAnimatingPageViewController setImgForeground:]
@@ -1548,5 +1601,58 @@ mod anim_vc_batch_tests {
         stub_0x52ef8();
         stub_0x52f44();
         stub_0x52f74();
+    }
+}
+
+#[cfg(test)]
+mod anim_layer_batch_tests {
+    use super::*;
+
+    #[test]
+    fn pan_loop() {
+        let mut vc = stub_0x52178();
+        stub_0x53688(&mut vc);
+        assert!(vc.looping);
+        assert_eq!(vc.anims, 2);
+        let anims = vc.anims;
+        stub_0x53688(&mut vc);
+        assert_eq!(vc.anims, anims);
+        stub_0x535ec(&mut vc, false);
+        assert_eq!(vc.anims, anims);
+        stub_0x535ec(&mut vc, true);
+        assert_eq!(vc.anims, anims + 1);
+        stub_0x536e0(&mut vc);
+        assert!(!vc.looping);
+        assert!(!vc.panning);
+        vc.mem_warning = true;
+        stub_0x53688(&mut vc);
+        assert!(!vc.looping);
+        stub_0x530d0(&mut vc);
+        stub_0x5340c();
+        stub_0x535ac();
+        stub_0x535d0();
+        stub_0x53634();
+        stub_0x53664();
+        stub_0x539f0();
+        stub_0x539fc();
+    }
+
+    #[test]
+    fn view_properties() {
+        let mut vc = stub_0x52178();
+        assert_eq!(stub_0x53a04(&vc), None);
+        stub_0x53a14(&mut vc, 1);
+        assert_eq!(stub_0x53a04(&vc), Some(1));
+        stub_0x53a48(&mut vc, 2);
+        assert_eq!(stub_0x53a38(&vc), Some(2));
+        stub_0x53a80(&mut vc, 10.5);
+        assert_eq!(stub_0x53a6c(&vc), 10.5);
+        stub_0x53aac(&mut vc, -3.25);
+        assert_eq!(stub_0x53a98(&vc), -3.25);
+        stub_0x53ad4(&mut vc, 4);
+        assert_eq!(stub_0x53ac4(&vc), Some(4));
+        stub_0x53b08(&mut vc, 5);
+        assert_eq!(stub_0x53af8(&vc), Some(5));
+        assert_eq!(stub_0x53b2c(&vc), None);
     }
 }
