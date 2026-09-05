@@ -676,7 +676,7 @@ pub fn stub_3a408(slot: &mut Option<usize>, init: &mut dyn FnMut() -> usize) -> 
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
 pub fn stub_3a5bc(slot: &mut Option<usize>, value: Option<usize>, release: &mut dyn FnMut(usize)) {
     // IDA 0x3a5bc: shared_ptr<Sequence>::reset — release old, store new (below truncation).
-    if let Some(p) = slot.replace(value) {
+    if let Some(p) = std::mem::replace(slot, value) {
         release(p);
     }
 }
