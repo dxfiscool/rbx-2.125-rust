@@ -79,13 +79,15 @@ impl HandlesSignal1 {
 
 /// Rust model of `RBX::Reflection::EventDescImpl<2, Handles, void
 /// ()(NormalId, float), remote_signal, member>` (IDA `0x56b7c0`
-/// `isBroadcast`, `0x56c9c0` `EventDesc::C2`): the member signal (`+40`) and
-/// the broadcast flag (`+44 & 1`) plus the replication half invoked by
+/// `isBroadcast`, `0x56c9c0` `EventDesc::C2`): the member signal (`+40`), the
+/// broadcast flag (`+44 & 1`), the scriptable flag (`+48 & 1`, cf. 1-arg
+/// `isScriptable` at IDA `0x56cea0`), plus the replication half invoked by
 /// `sendEvent`/`replicateEvent`.
 #[derive(Default)]
 pub struct HandlesEvent2Desc {
     pub name: String,
     pub broadcast: bool,
+    pub scriptable: bool,
     pub signal: HandlesSignal2,
     pub remote: HandlesSignal2,
 }
@@ -97,6 +99,7 @@ pub struct HandlesEvent2Desc {
 pub struct HandlesEvent1Desc {
     pub name: String,
     pub broadcast: bool,
+    pub scriptable: bool,
     pub signal: HandlesSignal1,
     pub remote: HandlesSignal1,
 }
