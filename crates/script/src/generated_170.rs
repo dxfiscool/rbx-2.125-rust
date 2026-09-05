@@ -10,6 +10,31 @@ use parking_lot::Mutex;
 use std::collections::HashMap;
 use std::sync::LazyLock;
 use std::sync::atomic::{AtomicBool, Ordering};
+use crate::generated_110::BoostMutex;
+use std::collections::BTreeMap;
+use std::ops::Bound::{Excluded, Included, Unbounded};
+
+/// `RBX::FunctionMarshaller` observable state (IDA 0x4352c..0x43b98): the
+/// ctor wires the thread (folds into the id); window binding, wakefulness,
+/// and the queued functor ids are observed.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct MarshallerState {
+    pub thread_id: u32,
+    pub window: Option<u32>,
+    pub queue: Vec<u32>,
+}
+
+/// Marshalled app-event outcome (IDA 0x43930): the functor runs (0x4398a),
+/// is cleared and deleted (0x43990..0x4399e), and the event is set
+/// (0x439b8..0x439bc). Payload management folds into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct MarshallerEvent {
+    pub calls: u32,
+    pub signaled: bool,
+}
+
+/// `FunctionMarshaller::StaticData` one-shot latch (IDA 0x441a8).
+static MARSHALLER_STATIC_DATA: LazyLock<u32> = LazyLock::new(|| 1);
 
 // ---- Batch model: UserInfo ivars + RobloxGoogleAnalytics init/page-view path ----
 // IDA ground truth per stub below (decompile + disasm via IDA MCP).
@@ -666,175 +691,237 @@ pub fn stub_0x43180(service: &mut SettingsServiceState) {
 // 0x432b0 — __ZN18iOSSettingsServiceD1Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_0x432b0() -> ! {
-    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_0x432b0(service: &mut SettingsServiceState) {
+    // IDA 0x432b0: D1 dtor tears down; drop glue covers it and the service
+    // is marked dead.
+    service.inited = false;
 }
 
 // 0x432b4 — __ZN18iOSSettingsServiceD0Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService() [0x432b4]")]
-pub fn stub_0x432b4() -> ! {
-    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_0x432b4(service: &mut SettingsServiceState) {
+    // IDA 0x432b4: D0 dtor (teardown plus delete); drop glue covers it and
+    // the service is marked dead.
+    service.inited = false;
 }
 
 // 0x432c8 — __ZN18iOSSettingsServiceD2Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService() [0x432c8]")]
-pub fn stub_0x432c8() -> ! {
-    todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_0x432c8(service: &mut SettingsServiceState) {
+    // IDA 0x432c8: D2 dtor tears down; drop glue covers it and the service
+    // is marked dead.
+    service.inited = false;
 }
 
 // 0x43314 — __ZN10SimpleJSOND1Ev
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON()")]
-pub fn stub_0x43314() -> ! {
-    todo!("0x43314 SimpleJSON::~SimpleJSON()")
+pub fn stub_0x43314() {
+    // IDA 0x43314: `SimpleJSON` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x43338 — __ZN10SimpleJSOND0Ev
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON() [0x43338]")]
-pub fn stub_0x43338() -> ! {
-    todo!("0x43338 SimpleJSON::~SimpleJSON()")
+pub fn stub_0x43338() {
+    // IDA 0x43338: `SimpleJSON` D0 dtor (teardown plus delete); drop glue
+    // covers it — no-op.
 }
 
 // 0x43394 — __GLOBAL__I_a_13
 #[doc(alias = "global constructor keyed to_a_13")]
-pub fn stub_0x43394() -> ! {
-    todo!("0x43394 global constructor keyed to_a_13")
+pub fn stub_0x43394() -> u32 {
+    // IDA 0x43394: `__GLOBAL__I_a_13` one-shot latch (same static-init
+    // shape as `GLOBAL_A12_INIT`).
+    *GLOBAL_A12_INIT
 }
 
 // 0x4352c — __ZN3RBX18FunctionMarshallerC2Ej
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")]
-pub fn stub_0x4352c() -> ! {
-    todo!("0x4352c RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")
+pub fn stub_0x4352c(thread_id: u32) -> MarshallerState {
+    // IDA 0x4352c: `FunctionMarshaller` ctor wires the thread and zeroes
+    // the queues; construction folds into host ownership.
+    MarshallerState { thread_id, window: None, queue: Vec::new() }
 }
 
 // 0x43624 — __ZN3RBX18FunctionMarshaller9GetWindowEv
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::GetWindow(void)")]
-pub fn stub_0x43624() -> ! {
-    todo!("0x43624 RBX::FunctionMarshaller::GetWindow(void)")
+pub fn stub_0x43624(windows: &BTreeMap<u32, u32>, thread_id: u32) -> Option<u32> {
+    // IDA 0x43624: `GetWindow` probes the static thread map under the
+    // mutex; the table walk folds into a lookup.
+    windows.get(&thread_id).copied()
 }
 
 // 0x43804 — __ZN3RBX18FunctionMarshaller13ReleaseWindowEPS0_
 // type: void __fastcall(RBX::FunctionMarshaller *this, RBX::FunctionMarshaller *, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")]
-pub fn stub_0x43804() -> ! {
-    todo!("0x43804 RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")
+pub fn stub_0x43804(windows: &mut BTreeMap<u32, u32>, thread_id: u32) {
+    // IDA 0x43804: `ReleaseWindow` unlinks the thread entry under the
+    // mutex.
+    windows.remove(&thread_id);
 }
 
 // 0x43930 — __ZN3RBX18FunctionMarshaller14handleAppEventEPv
 // type: void __fastcall(RBX::FunctionMarshaller *this, void *)
 #[doc(alias = "RBX::FunctionMarshaller::handleAppEvent(void *)")]
-pub fn stub_0x43930() -> ! {
-    todo!("0x43930 RBX::FunctionMarshaller::handleAppEvent(void *)")
+pub fn stub_0x43930(event: &mut MarshallerEvent) {
+    // IDA 0x43930: `handleAppEvent` — see `MarshallerEvent`.
+    event.calls += 1;
+    event.signaled = true;
 }
 
 // 0x43a98 — __ZN3RBX18FunctionMarshaller7ExecuteEN5boost8functionIFvvEEEPNS_6CEventE
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")]
-pub fn stub_0x43a98() -> ! {
-    todo!("0x43a98 RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")
+pub fn stub_0x43a98(queue: &mut Vec<u32>, on_thread: bool, func_id: u32) -> bool {
+    // IDA 0x43a98: `Execute` runs the functor inline on the marshaller
+    // thread (0x43af0..0x43afa) and otherwise packages it for
+    // `sendAppEvent` (0x43b0c..0x43b4c, folds into the queue). Answers ran
+    // (true) vs queued (false).
+    if on_thread {
+        true
+    } else {
+        queue.push(func_id);
+        false
+    }
 }
 
 // 0x43b98 — __ZN3RBX18FunctionMarshaller6SubmitEN5boost8functionIFvvEEE
 // type: void __fastcall(int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")]
-pub fn stub_0x43b98() -> ! {
-    todo!("0x43b98 RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")
+pub fn stub_0x43b98(queue: &mut Vec<u32>, func_id: u32) {
+    // IDA 0x43b98: `Submit` packages the functor (0x43bbc..0x43c18) and
+    // posts it (0x43c24, folds into the queue).
+    queue.push(func_id);
 }
 
 // 0x43c70 — __ZN3RBX18FunctionMarshaller15ProcessMessagesEv
 // type: CFRunLoopRunResult __fastcall(Roblox *this)
 #[doc(alias = "RBX::FunctionMarshaller::ProcessMessages(void)")]
-pub fn stub_0x43c70() -> ! {
-    todo!("0x43c70 RBX::FunctionMarshaller::ProcessMessages(void)")
+pub fn stub_0x43c70(queue: &mut Vec<u32>) -> u32 {
+    // IDA 0x43c70: `ProcessMessages` thunk to `processAppEvents`; the pump
+    // folds into draining the queue, answering the run count.
+    let n = queue.len() as u32;
+    queue.clear();
+    n
 }
 
 // 0x43c74 — __ZN3RBX18FunctionMarshaller10StaticDataD1Ev
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData()")]
-pub fn stub_0x43c74() -> ! {
-    todo!("0x43c74 RBX::FunctionMarshaller::StaticData::~StaticData()")
+pub fn stub_0x43c74() {
+    // IDA 0x43c74: `StaticData` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x43c78 — __ZN3RBX18FunctionMarshaller10StaticDataD2Ev
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData() [0x43c78]")]
-pub fn stub_0x43c78() -> ! {
-    todo!("0x43c78 RBX::FunctionMarshaller::StaticData::~StaticData()")
+pub fn stub_0x43c78() {
+    // IDA 0x43c78: `StaticData` D2 dtor; drop glue covers it — no-op.
 }
 
 // 0x43d14 — __ZNSt3mapIjPN3RBX18FunctionMarshallerESt4lessIjESaISt4pairIKjS2_EEEixERS6_
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")]
-pub fn stub_0x43d14() -> ! {
-    todo!("0x43d14 std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")
+pub fn stub_0x43d14(map: &mut BTreeMap<u32, u32>, key: u32) -> u32 {
+    // IDA 0x43d14 `map::operator[]`: lower-bound probe with insert-default
+    // on miss (cf. 0x23a04 in generated_110.rs). The default marshaller id
+    // is 0.
+    *map.entry(key).or_insert(0)
 }
 
 // 0x43d6c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")]
-pub fn stub_0x43d6c() -> ! {
-    todo!("0x43d6c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")
+pub fn stub_0x43d6c(map: &mut BTreeMap<u32, u32>, key: u32) -> u32 {
+    // IDA 0x43d6c `_Rb_tree::erase(key)`: answers the removed count
+    // (0/1).
+    u32::from(map.remove(&key).is_some())
 }
 
 // 0x43d94 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")]
-pub fn stub_0x43d94() -> ! {
-    todo!("0x43d94 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")
+pub fn stub_0x43d94(map: &BTreeMap<u32, u32>, key: u32) -> (Option<u32>, Option<u32>) {
+    // IDA 0x43d94 `equal_range`: answers the lower bound (first key >=)
+    // and upper bound (first key >).
+    let lo = map.range((Included(key), Unbounded)).next().map(|(&k, _)| k);
+    let hi = map.range((Excluded(key), Unbounded)).next().map(|(&k, _)| k);
+    (lo, hi)
 }
 
 // 0x43de0 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")]
-pub fn stub_0x43de0() -> ! {
-    todo!("0x43de0 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")
+pub fn stub_0x43de0(map: &mut BTreeMap<u32, u32>, key: u32) -> bool {
+    // IDA 0x43de0 `_Rb_tree::erase(iterator)`: removes the probed entry
+    // (iterator folds into the key).
+    map.remove(&key).is_some()
 }
 
 // 0x43e40 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")]
-pub fn stub_0x43e40() -> ! {
-    todo!("0x43e40 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,RBX::FunctionMarshaller *>> *)")
+pub fn stub_0x43e40(map: &mut BTreeMap<u32, u32>) {
+    // IDA 0x43e40 `_M_erase(node)`: recursive erase (same shape as
+    // 0x16d84). Host has no tree nodes; granularity collapses to the
+    // owning map.
+    map.clear();
 }
 
 // 0x43e68 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_0x43e68() -> ! {
-    todo!("0x43e68 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43e68(map: &mut BTreeMap<u32, u32>, key: u32, value: u32) -> bool {
+    // IDA 0x43e68 `_M_insert_unique`: inserts on miss (cf. 0x243b0 in
+    // generated_110.rs). Answers inserted (true) vs already present.
+    if map.contains_key(&key) {
+        false
+    } else {
+        map.insert(key, value);
+        true
+    }
 }
 
 // 0x43f1c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_0x43f1c() -> ! {
-    todo!("0x43f1c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43f1c(map: &mut BTreeMap<u32, u32>, key: u32, value: u32) {
+    // IDA 0x43f1c `_M_insert` positional insert; the hint folds into the
+    // host.
+    map.insert(key, value);
 }
 
 // 0x43f74 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")]
-pub fn stub_0x43f74() -> ! {
-    todo!("0x43f74 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::_M_insert_unique(std::pair<unsigned int const,RBX::FunctionMarshaller *> const&)")
+pub fn stub_0x43f74(map: &mut BTreeMap<u32, u32>, key: u32, value: u32) -> bool {
+    // IDA 0x43f74 `_M_insert_unique` with hint — same insert-or-existing
+    // shape as 0x43e68.
+    stub_0x43e68(map, key, value)
 }
 
 // 0x43fdc — __ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unique_lock<boost::recursive_mutex>::lock(void)")]
-pub fn stub_0x43fdc() -> ! {
-    todo!("0x43fdc boost::unique_lock<boost::recursive_mutex>::lock(void)")
+pub fn stub_0x43fdc(mutex: &mut BoostMutex) -> i32 {
+    // IDA 0x43fdc: `unique_lock::lock` (same mutex-take shape as
+    // `SimpleMutex::Lock` at 0xa7a0d4) latches locked and answers success.
+    mutex.locked = true;
+    0
 }
 
 // 0x441a8 — __ZN3RBX18FunctionMarshaller27safe_static_init_staticDataEv
 // type: _DWORD __fastcall(RBX::FunctionMarshaller *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::safe_static_init_staticData(void)")]
-pub fn stub_0x441a8() -> ! {
-    todo!("0x441a8 RBX::FunctionMarshaller::safe_static_init_staticData(void)")
+pub fn stub_0x441a8() -> u32 {
+    // IDA 0x441a8: `safe_static_init_staticData` — see
+    // `MARSHALLER_STATIC_DATA`.
+    *MARSHALLER_STATIC_DATA
 }
 
 // 0x441ac — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv
@@ -1116,5 +1203,79 @@ mod analytics_webutil_batch_tests {
             stub_0x42dec(base, "s", 99, false, ""),
             ButtonUrl { url: None, page: None }
         );
+    }
+}
+
+#[cfg(test)]
+mod marshaller_map_batch_tests {
+    use super::*;
+
+    #[test]
+    fn marshaller_lifecycle() {
+        let mut marshaller = stub_0x4352c(7);
+        assert_eq!(marshaller.thread_id, 7);
+        assert_eq!(marshaller.window, None);
+        let mut windows = BTreeMap::from([(7u32, 70u32)]);
+        assert_eq!(stub_0x43624(&windows, 7), Some(70));
+        assert_eq!(stub_0x43624(&windows, 8), None);
+        stub_0x43804(&mut windows, 7);
+        assert!(windows.is_empty());
+        let mut event = MarshallerEvent::default();
+        stub_0x43930(&mut event);
+        assert_eq!(event, MarshallerEvent { calls: 1, signaled: true });
+        let mut service = SettingsServiceState::default();
+        stub_0x43180(&mut service);
+        stub_0x432b0(&mut service);
+        assert!(!service.inited);
+        stub_0x43180(&mut service);
+        stub_0x432b4(&mut service);
+        assert!(!service.inited);
+        stub_0x43180(&mut service);
+        stub_0x432c8(&mut service);
+        assert!(!service.inited);
+        stub_0x43314();
+        stub_0x43338();
+        assert_eq!(stub_0x43394(), 1);
+        assert_eq!(stub_0x441a8(), 1);
+    }
+
+    #[test]
+    fn execute_queues_off_thread() {
+        let mut queue = Vec::new();
+        assert!(stub_0x43a98(&mut queue, true, 9));
+        assert!(queue.is_empty());
+        assert!(!stub_0x43a98(&mut queue, false, 9));
+        assert_eq!(queue, vec![9]);
+        stub_0x43b98(&mut queue, 10);
+        assert_eq!(queue, vec![9, 10]);
+        assert_eq!(stub_0x43c70(&mut queue), 2);
+        assert!(queue.is_empty());
+    }
+
+    #[test]
+    fn marshaller_maps() {
+        let mut map = BTreeMap::new();
+        assert_eq!(stub_0x43d14(&mut map, 3), 0);
+        assert_eq!(map[&3], 0);
+        assert!(stub_0x43e68(&mut map, 4, 40));
+        assert!(!stub_0x43e68(&mut map, 4, 41));
+        assert_eq!(map[&4], 40);
+        assert_eq!(stub_0x43d94(&map, 3), (Some(3), Some(4)));
+        assert_eq!(stub_0x43d94(&map, 5), (None, None));
+        assert_eq!(stub_0x43d6c(&mut map, 3), 1);
+        assert_eq!(stub_0x43d6c(&mut map, 3), 0);
+        assert!(stub_0x43f74(&mut map, 5, 50));
+        assert!(stub_0x43de0(&mut map, 5));
+        assert_eq!(stub_0x43d6c(&mut map, 4), 1);
+        assert!(map.is_empty());
+        stub_0x43f1c(&mut map, 6, 60);
+        assert_eq!(map[&6], 60);
+        stub_0x43e40(&mut map);
+        assert!(map.is_empty());
+        stub_0x43c74();
+        stub_0x43c78();
+        let mut mutex = BoostMutex::default();
+        assert_eq!(stub_0x43fdc(&mut mutex), 0);
+        assert!(mutex.locked);
     }
 }
