@@ -9,6 +9,41 @@
 use rbx_core::SharedPtr;
 use crate::generated_165::SettingsHandler;
 use std::collections::{BTreeMap, HashMap};
+// Join-game `boost::function0<void>` bind records (IDA 0x2f0f0..0x3093c):
+// each ctor wraps a `bind_t` of a join entry point with copied args; the
+// functorvtable management folds into the host closure and the bound
+// arguments are observed here.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct JoinGameCallback {
+    pub place_id: i32,
+    pub url: String,
+    pub game_live: bool,
+    pub with_request: bool,
+}
+/// `TaskScheduler` blocking-function registry (IDA 0x39c6c): (job, func)
+/// pairs; removal answers whether a pair was registered.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct SchedulerBlockers {
+    pub blocks: Vec<(u32, u32)>,
+}
+impl SchedulerBlockers {
+    /// `removeBlocking` (IDA 0x39c6c): argument copies (shared_count
+    /// add-refs) fold into the host; the pair is unregistered.
+    pub fn remove_blocking(&mut self, job: u32, func: u32) -> bool {
+        if let Some(pos) = self.blocks.iter().position(|&(j, f)| j == job && f == func) {
+            self.blocks.remove(pos);
+            true
+        } else {
+            false
+        }
+    }
+}
+/// `boost::mutex` latch (IDA 0x3c170): the unlock loop (0x3c1c0..) folds
+/// into the host; the locked latch is observed.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BoostMutex {
+    pub locked: bool,
+}
 
 // 0x16d84 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings10ShadowModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(_DWORD, _DWORD)
@@ -138,162 +173,204 @@ pub fn stub_0x24510(map: &HashMap<String, SettingsHandler>, key: &str) -> Option
 // 0x2f0f0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x2f0f0() -> ! {
-    todo!("0x2f0f0 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2f0f0(place_id: i32, game_live: bool) -> JoinGameCallback {
+    // IDA 0x2f0f0: `function0<void>` ctor from
+    // `bind_t<void,void(*)(int,SharedPtr<Game>)>` — see `JoinGameCallback`.
+    JoinGameCallback { place_id, url: String::new(), game_live, with_request: false }
 }
 
 // 0x2f7d0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x2f7d0() -> ! {
-    todo!("0x2f7d0 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2f7d0(place_id: i32, game_live: bool) -> JoinGameCallback {
+    // IDA 0x2f7d0: `function0<void>` ctor from the `JoinGameRequest` bind
+    // flavor — same record shape as 0x2f0f0 with the request flag.
+    JoinGameCallback { place_id, url: String::new(), game_live, with_request: true }
 }
 
 // 0x2ff94 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 // type: boost::detail::sp_counted_base *__fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x2ff94() -> ! {
-    todo!("0x2ff94 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2ff94(url: &str, game_live: bool) -> JoinGameCallback {
+    // IDA 0x2ff94: `function0<void>` ctor from the url+game bind flavor —
+    // same record shape with the url filled in.
+    JoinGameCallback { place_id: 0, url: url.to_owned(), game_live, with_request: false }
 }
 
 // 0x3093c — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0x3093c() -> ! {
-    todo!("0x3093c __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x3093c(url: &str, game_live: bool) -> JoinGameCallback {
+    // IDA 0x3093c: `function0<void>` ctor from the url+game bind flavor —
+    // same record shape as 0x2ff94.
+    JoinGameCallback { place_id: 0, url: url.to_owned(), game_live, with_request: false }
 }
 
 // 0x39c6c — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE
 // type: void __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
-pub fn stub_0x39c6c() -> ! {
-    todo!("0x39c6c __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE")
+pub fn stub_0x39c6c(blocks: &mut SchedulerBlockers, job: u32, func: u32) -> bool {
+    // IDA 0x39c6c: `removeBlocking` — see `SchedulerBlockers::remove_blocking`.
+    blocks.remove_blocking(job, func)
 }
 
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Game>::operator=(rbx_core::SharedPtr<RBX::Game> const&)")]
-pub fn stub_0x3a1bc() -> ! {
-    todo!("0x3a1bc __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_")
+pub fn stub_0x3a1bc() {
+    // IDA 0x3a1bc: `shared_ptr<Game>::operator=` add-refs the new count
+    // (0x3a216), swaps it in (0x3a222), and releases the old one; `Arc`
+    // assignment glue covers it — no-op.
 }
 
 // 0x3a5bc — __ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
-pub fn stub_0x3a5bc() -> ! {
-    todo!("0x3a5bc __ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_")
+pub fn stub_0x3a5bc() {
+    // IDA 0x3a5bc: `shared_ptr<Sequence>::reset(ptr)` builds the count
+    // block (0x3a5de), installs the pointer (0x3a5ec), and releases the old
+    // count; `Arc` construction glue covers it — no-op.
 }
 
 // 0x3a660 — __ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ViewBase>::reset(void)")]
-pub fn stub_0x3a660() -> ! {
-    todo!("0x3a660 __ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv")
+pub fn stub_0x3a660() {
+    // IDA 0x3a660: `shared_ptr<ViewBase>::reset()` nulls the pointer
+    // (0x3a686..0x3a68c) and releases (0x3a6ae..0x3a6b6); the drop folds
+    // into `Arc` — no-op.
 }
 
 // 0x3a6f8 — __ZN5boost13exception_ptrD1Ev
 // type: void __fastcall(boost::exception_ptr *__hidden this)
 #[doc(alias = "boost::exception_ptr::~exception_ptr()")]
-pub fn stub_0x3a6f8() -> ! {
-    todo!("0x3a6f8 __ZN5boost13exception_ptrD1Ev")
+pub fn stub_0x3a6f8() {
+    // IDA 0x3a6f8: `exception_ptr` dtor releases the count (0x3a71e..
+    // 0x3a74a); the payload drop folds into the host — no-op.
 }
 
 // 0x3a850 — __ZN5boost6detail15sp_counted_base12weak_releaseEv
 // type: _DWORD __fastcall(boost::detail::sp_counted_base *__hidden this)
 #[doc(alias = "boost::detail::sp_counted_base::weak_release(void)")]
-pub fn stub_0x3a850() -> ! {
-    todo!("0x3a850 __ZN5boost6detail15sp_counted_base12weak_releaseEv")
+pub fn stub_0x3a850() {
+    // IDA 0x3a850: `weak_release` locks the pool spinlock (0x3a89c),
+    // decrements the weak count (0x3a8ae..0x3a8b2), and destroys at zero
+    // (0x3a8e0..0x3a8ee); `Weak` drop glue covers it — no-op.
 }
 
 // 0x3b14c — __ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
-pub fn stub_0x3b14c() -> ! {
-    todo!("0x3b14c __ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_")
+pub fn stub_0x3b14c() {
+    // IDA 0x3b14c: `shared_count` ctor allocates the 0x10 control block
+    // with unit counts (0x3b178..0x3b1c0); `Arc` construction glue covers
+    // it — no-op.
 }
 
 // 0x3b270 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p()")]
-pub fn stub_0x3b270() -> ! {
-    todo!("0x3b270 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED1Ev")
+pub fn stub_0x3b270() {
+    // IDA 0x3b270: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3b274 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::~sp_counted_impl_p() [0x3b274]")]
-pub fn stub_0x3b274() -> ! {
-    todo!("0x3b274 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED0Ev")
+pub fn stub_0x3b274() {
+    // IDA 0x3b274: D0 dtor (base teardown plus delete, same shape as
+    // 0x26a2b0); both fold into drop glue — no-op.
 }
 
 // 0x3b278 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::dispose(void)")]
-pub fn stub_0x3b278() -> ! {
-    todo!("0x3b278 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE7disposeEv")
+pub fn stub_0x3b278() {
+    // IDA 0x3b278: `dispose` resets the vtable (0x3b2d0), deletes the member
+    // (0x3b2d8), destroys the mutex (0x3b2e6), and deletes the block
+    // (0x3b2ec); drop glue covers it — no-op.
 }
 
 // 0x3b32c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3b32c() -> ! {
-    todo!("0x3b32c __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE11get_deleterERKSt9type_info")
+pub fn stub_0x3b32c() -> u32 {
+    // IDA 0x3b32c: `get_deleter` answers null (0x3b32e); no custom
+    // deleters exist in the host model.
+    0
 }
 
 // 0x3b330 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_untyped_deleter(void)")]
-pub fn stub_0x3b330() -> ! {
-    todo!("0x3b330 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE19get_untyped_deleterEv")
+pub fn stub_0x3b330() -> u32 {
+    // IDA 0x3b330: `get_untyped_deleter` answers null (0x3b332); same as
+    // 0x3b32c.
+    0
 }
 
 // 0x3b334 — __ZN5boost6detail12shared_countC2IN3RBX5Tasks17ExclusiveSequenceEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::ExclusiveSequence>(RBX::Tasks::ExclusiveSequence *)")]
-pub fn stub_0x3b334() -> ! {
-    todo!("0x3b334 __ZN5boost6detail12shared_countC2IN3RBX5Tasks17ExclusiveSequenceEEEPT_")
+pub fn stub_0x3b334() {
+    // IDA 0x3b334: `shared_count` ctor for ExclusiveSequence — same control
+    // block shape as 0x3b14c; `Arc` glue covers it — no-op.
 }
 
 // 0x3b450 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p()")]
-pub fn stub_0x3b450() -> ! {
-    todo!("0x3b450 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED1Ev")
+pub fn stub_0x3b450() {
+    // IDA 0x3b450: D1 dtor has an empty body (same shape as 0x3b270) —
+    // no-op.
 }
 
 // 0x3b454 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::~sp_counted_impl_p() [0x3b454]")]
-pub fn stub_0x3b454() -> ! {
-    todo!("0x3b454 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED0Ev")
+pub fn stub_0x3b454() {
+    // IDA 0x3b454: D0 dtor (same shape as 0x3b274) — no-op.
 }
 
 // 0x3b458 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::dispose(void)")]
-pub fn stub_0x3b458() -> ! {
-    todo!("0x3b458 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE7disposeEv")
+pub fn stub_0x3b458() {
+    // IDA 0x3b458: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3b50c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3b50c() -> ! {
-    todo!("0x3b50c __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE11get_deleterERKSt9type_info")
+pub fn stub_0x3b50c() -> u32 {
+    // IDA 0x3b50c: `get_deleter` answers null (same shape as 0x3b32c).
+    0
 }
 
 // 0x3b510 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_untyped_deleter(void)")]
-pub fn stub_0x3b510() -> ! {
-    todo!("0x3b510 __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE19get_untyped_deleterEv")
+pub fn stub_0x3b510() -> u32 {
+    // IDA 0x3b510: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3c010 — __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
-pub fn stub_0x3c010() -> ! {
-    todo!("0x3c010 __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")
+pub fn stub_0x3c010(strong: u32) {
+    // IDA 0x3c010: `intrusive_ptr_add_weak_ref` release-asserts a live
+    // strong count (intrusive_ptr_target.h:214, 0x3c022..0x3c064) and bumps
+    // the weak count (0x3c068..0x3c06e, folds into `Arc`).
+    if strong == 0 {
+        panic!("c->strong > 0 file: ../Base/include/rbx/intrusive_ptr_target.h line: 214");
+    }
 }
 
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
-pub fn stub_0x3c0c8() -> ! {
-    todo!("0x3c0c8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_")
+pub fn stub_0x3c0c8() {
+    // IDA 0x3c0c8: `intrusive_ptr<slot>::operator=` add-refs the new slot
+    // (0x3c11c), swaps it in (0x3c124), and releases the old one (0x3c12c);
+    // `Arc` assignment glue covers it — no-op.
 }
 
 // 0x3c170 — __ZN5boost5mutex6unlockEv
 // type: _DWORD __fastcall(boost::mutex *__hidden this)
 #[doc(alias = "boost::mutex::unlock(void)")]
-pub fn stub_0x3c170() -> ! {
-    todo!("0x3c170 __ZN5boost5mutex6unlockEv")
+pub fn stub_0x3c170(mutex: &mut BoostMutex) -> i32 {
+    // IDA 0x3c170: `mutex::unlock` loops `pthread_mutex_unlock` to success
+    // (0x3c1c0.., folds into the host) and answers success.
+    mutex.locked = false;
+    0
 }
 
 // 0x3c2a0 — __ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_
@@ -706,4 +783,78 @@ pub fn stub_0x43360() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")]
 pub fn stub_0x43364() -> ! {
     todo!("0x43364 __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")
+}
+
+#[cfg(test)]
+mod join_boost_glue_batch_tests {
+    use super::*;
+
+    #[test]
+    fn bind_records_capture_args() {
+        assert_eq!(
+            stub_0x2f0f0(12345, true),
+            JoinGameCallback { place_id: 12345, url: String::new(), game_live: true, with_request: false }
+        );
+        assert_eq!(
+            stub_0x2f7d0(12345, true),
+            JoinGameCallback { place_id: 12345, url: String::new(), game_live: true, with_request: true }
+        );
+        assert_eq!(
+            stub_0x2ff94("https://game/join", true),
+            JoinGameCallback { place_id: 0, url: "https://game/join".to_owned(), game_live: true, with_request: false }
+        );
+        assert_eq!(
+            stub_0x3093c("https://game/join", false),
+            JoinGameCallback { place_id: 0, url: "https://game/join".to_owned(), game_live: false, with_request: false }
+        );
+    }
+
+    #[test]
+    fn remove_blocking_unregisters() {
+        let mut blocks = SchedulerBlockers::default();
+        blocks.blocks.push((7, 11));
+        assert!(stub_0x39c6c(&mut blocks, 7, 11));
+        assert!(blocks.blocks.is_empty());
+        assert!(!stub_0x39c6c(&mut blocks, 7, 11));
+    }
+
+    #[test]
+    fn shared_glue_noops_and_nulls() {
+        stub_0x3a1bc();
+        stub_0x3a5bc();
+        stub_0x3a660();
+        stub_0x3a6f8();
+        stub_0x3a850();
+        stub_0x3b14c();
+        stub_0x3b270();
+        stub_0x3b274();
+        stub_0x3b278();
+        stub_0x3b334();
+        stub_0x3b450();
+        stub_0x3b454();
+        stub_0x3b458();
+        stub_0x3c0c8();
+        assert_eq!(stub_0x3b32c(), 0);
+        assert_eq!(stub_0x3b330(), 0);
+        assert_eq!(stub_0x3b50c(), 0);
+        assert_eq!(stub_0x3b510(), 0);
+    }
+
+    #[test]
+    fn weak_ref_requires_strong() {
+        stub_0x3c010(2);
+    }
+
+    #[test]
+    #[should_panic(expected = "c->strong > 0")]
+    fn weak_ref_throws_when_dead() {
+        stub_0x3c010(0);
+    }
+
+    #[test]
+    fn boost_mutex_unlocks() {
+        let mut mutex = BoostMutex { locked: true };
+        assert_eq!(stub_0x3c170(&mut mutex), 0);
+        assert!(!mutex.locked);
+    }
 }
