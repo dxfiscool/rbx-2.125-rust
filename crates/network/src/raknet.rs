@@ -12860,129 +12860,163 @@ pub fn stub_9b8bd8() -> bool {
  false
 }
 
+/// `Name -> enum` lookup table (IDA 0x9b9958 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct EnumNameMap {
+ pub entries: HashMap<u32, i32>,
+}
+
 // 0x9b8bdc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b8bdc() -> ! {
-    todo!("0x9b8bdc RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b8bdc(get: &mut dyn FnMut() -> f32) -> f32 {
+ // IDA 0x9b8bdc: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b8c00 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_9b8c00() -> ! {
-    todo!("0x9b8c00 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_9b8c00(set: &mut dyn FnMut(f32), value: f32) {
+ // IDA 0x9b8c00: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0x9b8c28 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_15NetworkSettingsEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, char, int, int, int, int, int, __guard *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,int RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b8c28() -> ! {
-    todo!("0x9b8c28 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,int RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b8c28(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b8c28: BoundProp ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b8e40 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
-pub fn stub_9b8e40() -> ! {
-    todo!("0x9b8e40 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_9b8e40() -> bool {
+ // IDA 0x9b8e40: isReadOnly returns 0.
+ false
 }
 
 // 0x9b8e44 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
-pub fn stub_9b8e44() -> ! {
-    todo!("0x9b8e44 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_9b8e44() -> bool {
+ // IDA 0x9b8e44: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b8e48 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b8e48() -> ! {
-    todo!("0x9b8e48 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b8e48(value: i32) -> i32 {
+ // IDA 0x9b8e48: getValue loads the int member.
+ value
 }
 
 // 0x9b8e54 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8setValueEPNS0_13DescribedBaseERKi
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_9b8e54() -> ! {
-    todo!("0x9b8e54 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_9b8e54(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b8e54: stores when different; raisePropertyChanged on change.
+ if *current != value {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b9958 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")]
-pub fn stub_9b9958() -> ! {
-    todo!("0x9b9958 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")
+pub fn stub_9b9958(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0x9b9958: hinted unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 // 0x9b9b0c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")]
-pub fn stub_9b9b0c() -> ! {
-    todo!("0x9b9b0c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")
+pub fn stub_9b9b0c(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0x9b9b0c: unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0x9b9bfc — __ZNSt6vectorIN3RBX15NetworkSettings20PhysicsReceiveMethodESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: char *__fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
-pub fn stub_9b9bfc() -> ! {
-    todo!("0x9b9bfc std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+pub fn stub_9b9bfc(vec: &mut Vec<i32>, pos: usize, value: i32) {
+ // IDA 0x9b9bfc: vector insert_aux (growth handled).
+ if pos >= vec.len() { vec.push(value); } else { vec.insert(pos, value); }
 }
 
 // 0x9b9d0c — __ZNSt6vectorIN3RBX15NetworkSettings20PhysicsReceiveMethodESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
-pub fn stub_9b9d0c() -> ! {
-    todo!("0x9b9d0c std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+pub fn stub_9b9d0c(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+ // IDA 0x9b9d0c: vector fill_insert.
+ let pos = pos.min(vec.len());
+ for _ in 0..n {
+ vec.insert(pos, value);
+ }
 }
 
 // 0x9b9eb4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")]
-pub fn stub_9b9eb4() -> ! {
-    todo!("0x9b9eb4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")
+pub fn stub_9b9eb4(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0x9b9eb4: hinted unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0x9ba068 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 // type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")]
-pub fn stub_9ba068() -> ! {
-    todo!("0x9ba068 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")
+pub fn stub_9ba068(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0x9ba068: unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0x9ba158 — __ZNSt6vectorIN3RBX15NetworkSettings17PhysicsSendMethodESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 // type: char *__fastcall(int, char *, _DWORD *)
 #[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,RBX::NetworkSettings::PhysicsSendMethod const&)")]
-pub fn stub_9ba158() -> ! {
-    todo!("0x9ba158 std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,RBX::NetworkSettings::PhysicsSendMethod const&)")
+pub fn stub_9ba158(vec: &mut Vec<i32>, pos: usize, value: i32) {
+ // IDA 0x9ba158: vector insert_aux (growth handled).
+ if pos >= vec.len() { vec.push(value); } else { vec.insert(pos, value); }
 }
 
 // 0x9ba268 — __ZNSt6vectorIN3RBX15NetworkSettings17PhysicsSendMethodESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsSendMethod const&)")]
-pub fn stub_9ba268() -> ! {
-    todo!("0x9ba268 std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsSendMethod const&)")
+pub fn stub_9ba268(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+ // IDA 0x9ba268: vector fill_insert.
+ let pos = pos.min(vec.len());
+ for _ in 0..n {
+ vec.insert(pos, value);
+ }
 }
 
 // 0x9be624 — __ZN3RBX7Network15PhysicsReceiver10setPhysicsERKNS_13MechanismItemERKNS_10RemoteTimeEj
 // type: void __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::PhysicsReceiver::setPhysics(RBX::MechanismItem const&,RBX::RemoteTime const&,unsigned int)")]
-pub fn stub_9be624() -> ! {
-    todo!("0x9be624 RBX::Network::PhysicsReceiver::setPhysics(RBX::MechanismItem const&,RBX::RemoteTime const&,unsigned int)")
+pub fn stub_9be624(set: &mut dyn FnMut()) {
+ // IDA 0x9be624: PhysicsReceiver::setPhysics (below truncation).
+ set();
 }
 
 // 0x9bebb4 — __ZN3RBX7Network15PhysicsReceiver24okDistributedReceivePartERKN5boost10shared_ptrINS_12PartInstanceEEE
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::okDistributedReceivePart(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
-pub fn stub_9bebb4() -> ! {
-    todo!("0x9bebb4 RBX::Network::PhysicsReceiver::okDistributedReceivePart(boost::shared_ptr<RBX::PartInstance> const&)")
+pub fn stub_9bebb4(distributed: bool, check: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9bebb4: distributed flag clear -> 1 else the virtual check.
+ if distributed { check() } else { 1 }
 }
 
 // 0x9bfa90 — __ZN3RBX7Network13PhysicsSender11sendTouchesE14PacketPriority
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, char, int, char, int, int, int, int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Network::PhysicsSender::sendTouches(PacketPriority)")]
-pub fn stub_9bfa90() -> ! {
-    todo!("0x9bfa90 RBX::Network::PhysicsSender::sendTouches(PacketPriority)")
+pub fn stub_9bfa90(send: &mut dyn FnMut()) {
+ // IDA 0x9bfa90: PhysicsSender::sendTouches (below truncation).
+ send();
 }
 
 // 0x9c0908 — __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE
@@ -13060,50 +13094,60 @@ pub fn stub_9c300c(sender: &mut crate::physics::PhysicsSender) {
 // 0x9c3854 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender8TouchJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::TouchJob> *,RBX::Network::PhysicsSender::TouchJob *,boost::detail::shared_count &)")]
-pub fn stub_9c3854() -> ! {
-    todo!("0x9c3854 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> *,RBX::Network::PhysicsSender::TouchJob *,boost::detail::shared_count &)")
+pub fn stub_9c3854(make: &mut dyn FnMut()) {
+ // IDA 0x9c3854: sp_pointer_construct<TouchJob> (below truncation).
+ make();
 }
 
 // 0x9c3a04 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender8TouchJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(rbx_core::SharedPtr<RBX::Network::PhysicsSender::TouchJob> const*,RBX::Network::PhysicsSender::TouchJob *)const")]
-pub fn stub_9c3a04() -> ! {
-    todo!("0x9c3a04 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> const*,RBX::Network::PhysicsSender::TouchJob *)const")
+pub fn stub_9c3a04(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9c3a04: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9c3cb0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
-pub fn stub_9c3cb0() -> ! {
-    todo!("0x9c3cb0 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")
+pub fn stub_9c3cb0() {
+ // IDA 0x9c3cb0: empty sp_counted_impl_p<TouchJob> D2 body.
 }
 
 // 0x9c3cb4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
-pub fn stub_9c3cb4() -> ! {
-    todo!("0x9c3cb4 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")
+pub fn stub_9c3cb4(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9c3cb4: D0: operator delete.
+ free(block);
 }
 
 // 0x9c3cc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::dispose(void)")]
-pub fn stub_9c3cc0() -> ! {
-    todo!("0x9c3cc0 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::dispose(void)")
+pub fn stub_9c3cc0(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9c3cc0: null px -> 0 else the virtual destroy.
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0x9c3cd4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_deleter(std::type_info const&)")]
-pub fn stub_9c3cd4() -> ! {
-    todo!("0x9c3cd4 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_deleter(std::type_info const&)")
+pub fn stub_9c3cd4() -> usize {
+ // IDA 0x9c3cd4: get_deleter returns 0.
+ 0
 }
 
 // 0x9c3cd8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_untyped_deleter(void)")]
-pub fn stub_9c3cd8() -> ! {
-    todo!("0x9c3cd8 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_untyped_deleter(void)")
+pub fn stub_9c3cd8() -> usize {
+ // IDA 0x9c3cd8: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0x9c3cdc — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
