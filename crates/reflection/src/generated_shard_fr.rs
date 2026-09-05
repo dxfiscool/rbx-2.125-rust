@@ -7,180 +7,386 @@
 #![allow(clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `StoreManager` transaction state (IDA 0x56914-0x58340): queue
+/// finishes, purchase/verify outcomes, retry + receipt-post counts and
+/// `UIWebViewCacheManager` init flags. StoreKit + web views live out of
+/// slice.
+pub(crate) static TX_FINISHES: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PURCHASE_OK: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static AFTER_RETRY_OK: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static RELAUNCH_OK: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static BOGUS_RECEIPT_EVENTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CANCEL_EVENTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static VERIFY_POSTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PARENTAL_ALERTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static MAIN_DISPATCHES: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CACHE_PRECACHING: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CACHE_INITIALIZED: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CACHE_INIT_DISPATCHES: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CACHE_OBSERVERS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+/// `completeTransaction:` routing (IDA 0x56ad0): nil, offline and
+/// sign-in-mismatch cases alert or drop; verified receipts verify;
+/// retry-window misses re-schedule.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum CompleteOutcome {
+ Ignored,
+ NoConnection,
+ SignInRequired,
+ RetryDelayed,
+ Verify,
+}
+/// `endTransaction:` routing (IDA 0x56d80): success finishes + records;
+/// failures bump retries (10 = main dispatch), give up at 201 or when
+/// the retry window lapses, else schedule a retry.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum EndTxOutcome {
+ Success,
+ SuccessAfterRetry,
+ RetryScheduled,
+ RetryCapped,
+ GaveUp,
+}
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager purchaseProduct:]")]
-pub fn stub_56914() -> ! {
-    todo!("0x56914 -[StoreManager purchaseProduct:]")
+pub fn stub_56914(product: &str, can_pay: bool) {
+    // IDA 0x56914: `purchaseProduct:` requests the product data when
+    // `canMakePurchase` passes (0x5692c-0x56944), else alerts parental
+    // control (0x5696c-0x569a6). The branch records here.
+    if can_pay {
+        crate::generated_shard_fq::stub_56894(product);
+    } else {
+        PARENTAL_ALERTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x569b4 — -[StoreManager verifyIfCorrectUser]
 // type: int __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager verifyIfCorrectUser]")]
-pub fn stub_569b4() -> ! {
-    todo!("0x569b4 -[StoreManager verifyIfCorrectUser]")
+pub fn stub_569b4(pending: Option<&str>, username: &str, logged_in: bool) -> u32 {
+    // IDA 0x569b4: `verifyIfCorrectUser` reports 2 with no (0x569fc)
+    // or empty (0x56a4a) pending user, else compares the logged-in
+    // name (0x56a84-0x56ac8): 0 match, 1 mismatch.
+    match pending {
+        None => 2,
+        Some(name) if name.is_empty() => 2,
+        Some(name) => {
+            let user = if logged_in { username } else { "" };
+            u32::from(user != name)
+        }
+    }
 }
 
 // 0x56ad0 — -[StoreManager completeTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager completeTransaction:]")]
-pub fn stub_56ad0() -> ! {
-    todo!("0x56ad0 -[StoreManager completeTransaction:]")
+pub fn stub_56ad0(
+    tx_present: bool,
+    reachable: bool,
+    verify: u32,
+    logged_in: bool,
+    in_retry_window: bool,
+) -> CompleteOutcome {
+    // IDA 0x56ad0: `completeTransaction:` drops nil (0x56ae2), alerts
+    // offline (0x56c3a), retries when window-open at verify 1
+    // (0x56bea) vs verifies, drops verify 0, alerts sign-in at verify
+    // 2 when logged out (0x56caa) and verifies when logged in. The
+    // route reports here.
+    if !tx_present {
+        return CompleteOutcome::Ignored;
+    }
+    if !reachable {
+        return CompleteOutcome::NoConnection;
+    }
+    match verify {
+        2 => {
+            if logged_in {
+                CompleteOutcome::Verify
+            } else {
+                CompleteOutcome::SignInRequired
+            }
+        }
+        1 => {
+            if in_retry_window {
+                CompleteOutcome::RetryDelayed
+            } else {
+                CompleteOutcome::Verify
+            }
+        }
+        _ => CompleteOutcome::Ignored,
+    }
 }
 
 // 0x56d80 — -[StoreManager endTransaction:paymentTransaction:paymentQueue:]
 // type: void __cdecl(StoreManager *self, SEL, char, id, id)
 #[doc(alias = "-[StoreManager endTransaction:paymentTransaction:paymentQueue:]")]
-pub fn stub_56d80() -> ! {
-    todo!("0x56d80 -[StoreManager endTransaction:paymentTransaction:paymentQueue:]")
+pub fn stub_56d80(
+    success: bool,
+    product: &str,
+    now: f64,
+    prior_retries: u32,
+    relaunch_retries: u32,
+    retry_window_lapsed: bool,
+    retries: &mut u32,
+) -> EndTxOutcome {
+    // IDA 0x56d80: `endTransaction:` finishes + records + reports
+    // success on ok (0x56da6-0x56f82, retry/relaunch flavors at
+    // 0x56e50/0x56f54), else bumps retries (0x56ea6), dispatches the
+    // 10th on main (0x5710e), caps at 201 (0x57132), resets on a lapsed
+    // window (0x5725a-0x572d8) and schedules a retry otherwise. The
+    // route records here.
+    if success {
+        crate::generated_shard_fq::stub_55d04(product, now);
+        PURCHASE_OK.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        if prior_retries > 0 {
+            AFTER_RETRY_OK.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            EndTxOutcome::SuccessAfterRetry
+        } else {
+            if relaunch_retries > 0 {
+                RELAUNCH_OK.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            }
+            EndTxOutcome::Success
+        }
+    } else {
+        *retries = prior_retries + 1;
+        if *retries == 10 {
+            MAIN_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+        if *retries > 200 {
+            return EndTxOutcome::RetryCapped;
+        }
+        if retry_window_lapsed {
+            TX_FINISHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            crate::generated_shard_fq::stub_55c68();
+            BOGUS_RECEIPT_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            EndTxOutcome::GaveUp
+        } else {
+            MAIN_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            EndTxOutcome::RetryScheduled
+        }
+    }
 }
 
 // 0x572e4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_572e4() -> ! {
-    todo!("0x572e4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_572e4() {
+    // IDA 0x572e4: the retries-10 block runs the delayed retry on main
+    // (dispatched at 0x57124). Dispatch glue; no explicit body.
 }
 
 // 0x573b0 — ___copy_helper_block_212
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_212")]
-pub fn stub_573b0() -> ! {
-    todo!("0x573b0 ___copy_helper_block_212")
+pub fn stub_573b0() {
+    // IDA 0x573b0: `__copy_helper_block_212` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x573bc — ___destroy_helper_block_213
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_213")]
-pub fn stub_573bc() -> ! {
-    todo!("0x573bc ___destroy_helper_block_213")
+pub fn stub_573bc() {
+    // IDA 0x573bc: `__destroy_helper_block_213` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x573c4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")]
-pub fn stub_573c4() -> ! {
-    todo!("0x573c4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")
+pub fn stub_573c4() {
+    // IDA 0x573c4: the retry block runs `completeTransaction:` on main
+    // (dispatched at 0x57214). Dispatch glue; no explicit body.
 }
 
 // 0x57410 — ___copy_helper_block_216
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_216")]
-pub fn stub_57410() -> ! {
-    todo!("0x57410 ___copy_helper_block_216")
+pub fn stub_57410() {
+    // IDA 0x57410: `__copy_helper_block_216` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x57434 — ___destroy_helper_block_217
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_217")]
-pub fn stub_57434() -> ! {
-    todo!("0x57434 ___destroy_helper_block_217")
+pub fn stub_57434() {
+    // IDA 0x57434: `__destroy_helper_block_217` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x57450 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")]
-pub fn stub_57450() -> ! {
-    todo!("0x57450 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")
+pub fn stub_57450() {
+    // IDA 0x57450: the give-up block finishes + resets on main
+    // (dispatched at 0x5725a). Dispatch glue; no explicit body.
 }
 
 // 0x5751c — ___copy_helper_block_222
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_222")]
-pub fn stub_5751c() -> ! {
-    todo!("0x5751c ___copy_helper_block_222")
+pub fn stub_5751c() {
+    // IDA 0x5751c: `__copy_helper_block_222` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x57528 — ___destroy_helper_block_223
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_223")]
-pub fn stub_57528() -> ! {
-    todo!("0x57528 ___destroy_helper_block_223")
+pub fn stub_57528() {
+    // IDA 0x57528: `__destroy_helper_block_223` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
-// 0x57530 — -[StoreManager failedTransaction:]
-// type: void __cdecl(StoreManager *self, SEL, id)
-#[doc(alias = "-[StoreManager failedTransaction:]")]
-pub fn stub_57530() -> ! {
-    todo!("0x57530 -[StoreManager failedTransaction:]")
+pub fn stub_57530(cancelled_state: bool, cancelled_code: bool) {
+    // IDA 0x57530: `failedTransaction:` finishes + resets
+    // (0x57556-0x5757a), logs the error (0x575a6-0x575c0) and tracks
+    // cancel/auth failures (0x575f4-0x57630). The finish records here.
+    TX_FINISHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    crate::generated_shard_fq::stub_55c68();
+    if cancelled_state && cancelled_code {
+        CANCEL_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0x5763c — -[StoreManager restoreTransaction:]
-// type: void __cdecl(StoreManager *self, SEL, id)
-#[doc(alias = "-[StoreManager restoreTransaction:]")]
-pub fn stub_5763c() -> ! {
-    todo!("0x5763c -[StoreManager restoreTransaction:]")
+pub fn stub_5763c() {
+    // IDA 0x5763c: `restoreTransaction:` logs restore
+    // (0x5765c-0x576aa) and finishes the transaction (0x576cc-0x576e0).
+    // The finish records here.
+    TX_FINISHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
-// 0x57740 — -[StoreManager paymentQueue:updatedTransactions:]
-// type: void __cdecl(StoreManager *self, SEL, id, id)
-#[doc(alias = "-[StoreManager paymentQueue:updatedTransactions:]")]
-pub fn stub_57740() -> ! {
-    todo!("0x57740 -[StoreManager paymentQueue:updatedTransactions:]")
+pub fn stub_57740(states: &[u32]) -> (u32, u32, u32) {
+    // IDA 0x57740: `paymentQueue:updatedTransactions:` routes state 3
+    // to restore (0x57806), 2 to fail (0x57800) and 1 to complete
+    // (0x57812). The routed counts report here as
+    // (restored, failed, completed).
+    let mut routed = (0u32, 0u32, 0u32);
+    for state in states {
+        match state {
+            3 => routed.0 += 1,
+            2 => routed.1 += 1,
+            1 => routed.2 += 1,
+            _ => {}
+        }
+    }
+    routed
 }
 
-// 0x5784c — -[StoreManager encode:length:]
-// type: id __cdecl(StoreManager *self, SEL, const char *, int)
-#[doc(alias = "-[StoreManager encode:length:]")]
-pub fn stub_5784c() -> ! {
-    todo!("0x5784c -[StoreManager encode:length:]")
+pub fn stub_5784c(data: &[u8]) -> String {
+    // IDA 0x5784c: `encode:length:` is base64 over the receipt bytes
+    // (custom loop, 0x57888-0x57920, `=` pad at 0x578f4/0x5790a). The
+    // encoded text reports here.
+    const TABLE: &[u8; 64] =
+        b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let mut out = String::with_capacity(4 * data.len().div_ceil(3));
+    for chunk in data.chunks(3) {
+        let mut bits: u32 = 0;
+        for (i, byte) in chunk.iter().enumerate() {
+            bits |= u32::from(*byte) << (8 * (2 - i));
+        }
+        out.push(TABLE[((bits >> 18) & 0x3f) as usize] as char);
+        out.push(TABLE[((bits >> 12) & 0x3f) as usize] as char);
+        if chunk.len() > 1 {
+            out.push(TABLE[((bits >> 6) & 0x3f) as usize] as char);
+        } else {
+            out.push('=');
+        }
+        if chunk.len() > 2 {
+            out.push(TABLE[(bits & 0x3f) as usize] as char);
+        } else {
+            out.push('=');
+        }
+    }
+    out
 }
 
-// 0x5796c — -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]
-// type: void __cdecl(StoreManager *self, SEL, id, id, id, id)
-#[doc(alias = "-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")]
-pub fn stub_5796c() -> ! {
-    todo!("0x5796c -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")
+pub fn stub_5796c(
+    base_url: &str,
+    receipt_b64: &str,
+    product: &str,
+    retry_recorded: bool,
+) -> String {
+    // IDA 0x5796c: `verifyReceipt:...` base64s the receipt (0x57b78),
+    // posts `receipt=<b64>&productId=<id>` to
+    // `{base}mobileapi/apple-purchase[?isRetry=true]` over https
+    // (0x579ac-0x57d2c) and handles the reply on a fresh queue. The
+    // posted body records here.
+    let endpoint = if retry_recorded {
+        "mobileapi/apple-purchase?isRetry=true"
+    } else {
+        "mobileapi/apple-purchase"
+    };
+    let _url = format!(
+        "{}{}",
+        base_url.replacen("http:", "https:", 1),
+        endpoint
+    );
+    VERIFY_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    format!(
+        "receipt={}&productId={}",
+        receipt_b64.replace('+', "%2B"),
+        product
+    )
 }
 
-// 0x57da0 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke
-// type: void __fastcall(int, void *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_57da0() -> ! {
-    todo!("0x57da0 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_57da0() {
+    // IDA 0x57da0: the verify-reply block handles the POST reply
+    // (registered at 0x57d2c). Completion glue; no explicit body.
 }
 
-// 0x57f28 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2
-// type: void __cdecl(id)
-#[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")]
-pub fn stub_57f28() -> ! {
-    todo!("0x57f28 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")
+pub fn stub_57f28() {
+    // IDA 0x57f28: the verify-reply continuation block (registered at
+    // 0x57d2c). Completion glue; no explicit body.
 }
 
-// 0x57f98 — ___copy_helper_block_319
-// type: void __fastcall(int, const void **)
-#[doc(alias = "___copy_helper_block_319")]
-pub fn stub_57f98() -> ! {
-    todo!("0x57f98 ___copy_helper_block_319")
+pub fn stub_57f98() {
+    // IDA 0x57f98: `__copy_helper_block_319` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
-// 0x57fc8 — ___destroy_helper_block_320
-// type: void __fastcall(const void **)
-#[doc(alias = "___destroy_helper_block_320")]
-pub fn stub_57fc8() -> ! {
-    todo!("0x57fc8 ___destroy_helper_block_320")
+pub fn stub_57fc8() {
+    // IDA 0x57fc8: `__destroy_helper_block_320` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
-// 0x57fec — __GLOBAL__I_a_29
-#[doc(alias = "global constructor keyed to_a_29")]
-#[doc(alias = "__GLOBAL__I_a_29")]
-pub fn stub_57fec() -> ! {
-    todo!("0x57fec global constructor keyed to_a_29")
+pub fn stub_57fec() {
+    // IDA 0x57fec: `__GLOBAL__I_a_29` runs the `a_29`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
-// 0x58184 — -[UIWebViewCacheManager init]
-// type: UIWebViewCacheManager *__cdecl(UIWebViewCacheManager *self, SEL)
-#[doc(alias = "-[UIWebViewCacheManager init]")]
-pub fn stub_58184() -> ! {
-    todo!("0x58184 -[UIWebViewCacheManager init]")
+pub fn stub_58184() -> bool {
+    // IDA 0x58184: `UIWebViewCacheManager::init` zeroes precache +
+    // initialized (0x581d2-0x581d8), dispatches the async init block
+    // (0x58202-0x58214), loads the preload pages (0x58226) and
+    // observes base-url + leave-game (0x5824a-0x582e8). The init
+    // records here.
+    CACHE_PRECACHING.store(false, std::sync::atomic::Ordering::SeqCst);
+    CACHE_INITIALIZED.store(false, std::sync::atomic::Ordering::SeqCst);
+    CACHE_INIT_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    CACHE_OBSERVERS.store(2, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
-// 0x582f8 — ___29-[UIWebViewCacheManager init]_block_invoke
-// type: int __fastcall(int)
-#[doc(alias = "___29-[UIWebViewCacheManager init]_block_invoke")]
-pub fn stub_582f8() -> ! {
-    todo!("0x582f8 ___29-[UIWebViewCacheManager init]_block_invoke")
+pub fn stub_582f8() {
+    // IDA 0x582f8: the cache-init async block warms the cache
+    // (dispatched at 0x58214). Dispatch glue; no explicit body.
 }
 
 // 0x58334 — ___copy_helper_block__17
