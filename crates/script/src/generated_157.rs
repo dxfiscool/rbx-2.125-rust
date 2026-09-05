@@ -22,6 +22,31 @@ static LOGINMAN_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
 static GLOBAL_A30_INIT: LazyLock<u32> = LazyLock::new(|| 1);
 /// `__GLOBAL__I_a_31` one-shot latch (IDA 0x5b3d8).
 static GLOBAL_A31_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+/// More `dispatch_once` singletons (IDA 0x62778..0x674f0, same shape as
+/// `GAMEKEYS_SHARED`).
+static MEMMAN_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
+static CACHEDFLAGS_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
+static CRASHREP_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
+static APPCTRL_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
+static SESSIONREP_SHARED: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `AppController` launch courts (IDA 0x67148): the launch latch and the
+/// overlay-driven launch count. The overlay model/UIApp glue folds into
+/// the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct AppLaunch {
+    pub launched: bool,
+    pub overlay_launches: u32,
+}
+
+/// `FMOD::ProfileCpu` observable state (IDA 0x686a4..0x68758): the last
+/// reported DSP/stream/geometry/update usage plus the packet count. The
+/// profiler-packet glue folds into the host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct ProfileCpu {
+    pub last: [f32; 4],
+    pub packets: u32,
+}
 
 // 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
 // type: UserInputService *__cdecl(ControlComponent *self, SEL)
@@ -442,176 +467,214 @@ pub fn stub_0x601f0() {
 // 0x6026c — ___copy_helper_block_349
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_349")]
-pub fn stub_0x6026c() -> ! {
-    todo!("0x6026c ___copy_helper_block_349")
+pub fn stub_0x6026c() {
+    // IDA 0x6026c: `__copy_helper_block_349` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x60278 — ___destroy_helper_block_350
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_350")]
-pub fn stub_0x60278() -> ! {
-    todo!("0x60278 ___destroy_helper_block_350")
+pub fn stub_0x60278() {
+    // IDA 0x60278: `__destroy_helper_block_350` releases captures (pair
+    // of 0x6026c); `Arc` glue covers it — no-op.
 }
 
 // 0x602a4 — ___copy_helper_block_353
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_353")]
-pub fn stub_0x602a4() -> ! {
-    todo!("0x602a4 ___copy_helper_block_353")
+pub fn stub_0x602a4() {
+    // IDA 0x602a4: `__copy_helper_block_353` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x602b0 — ___destroy_helper_block_354
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_354")]
-pub fn stub_0x602b0() -> ! {
-    todo!("0x602b0 ___destroy_helper_block_354")
+pub fn stub_0x602b0() {
+    // IDA 0x602b0: `__destroy_helper_block_354` releases captures (pair
+    // of 0x602a4); `Arc` glue covers it — no-op.
 }
 
 // 0x608ec — ___copy_helper_block_386
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_386")]
-pub fn stub_0x608ec() -> ! {
-    todo!("0x608ec ___copy_helper_block_386")
+pub fn stub_0x608ec() {
+    // IDA 0x608ec: `__copy_helper_block_386` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x608f8 — ___destroy_helper_block_387
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_387")]
-pub fn stub_0x608f8() -> ! {
-    todo!("0x608f8 ___destroy_helper_block_387")
+pub fn stub_0x608f8() {
+    // IDA 0x608f8: `__destroy_helper_block_387` releases captures (pair
+    // of 0x608ec); `Arc` glue covers it — no-op.
 }
 
 // 0x60900 — ___copy_helper_block_389
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_389")]
-pub fn stub_0x60900() -> ! {
-    todo!("0x60900 ___copy_helper_block_389")
+pub fn stub_0x60900() {
+    // IDA 0x60900: `__copy_helper_block_389` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x60930 — ___destroy_helper_block_390
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_390")]
-pub fn stub_0x60930() -> ! {
-    todo!("0x60930 ___destroy_helper_block_390")
+pub fn stub_0x60930() {
+    // IDA 0x60930: `__destroy_helper_block_390` releases captures (pair
+    // of 0x60900); `Arc` glue covers it — no-op.
 }
 
 // 0x61a98 — ___copy_helper_block_487
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_487")]
-pub fn stub_0x61a98() -> ! {
-    todo!("0x61a98 ___copy_helper_block_487")
+pub fn stub_0x61a98() {
+    // IDA 0x61a98: `__copy_helper_block_487` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x61aa4 — ___destroy_helper_block_488
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_488")]
-pub fn stub_0x61aa4() -> ! {
-    todo!("0x61aa4 ___destroy_helper_block_488")
+pub fn stub_0x61aa4() {
+    // IDA 0x61aa4: `__destroy_helper_block_488` releases captures (pair
+    // of 0x61a98); `Arc` glue covers it — no-op.
 }
 
 // 0x61c4c — ___copy_helper_block_490
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_490")]
-pub fn stub_0x61c4c() -> ! {
-    todo!("0x61c4c ___copy_helper_block_490")
+pub fn stub_0x61c4c() {
+    // IDA 0x61c4c: `__copy_helper_block_490` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x62778 — +[RobloxMemoryManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxMemoryManager sharedInstance]")]
-pub fn stub_0x62778() -> ! {
-    todo!("0x62778 +[RobloxMemoryManager sharedInstance]")
+pub fn stub_0x62778() -> u32 {
+    // IDA 0x62778: `RobloxMemoryManager sharedInstance` — see
+    // `MEMMAN_SHARED`.
+    *MEMMAN_SHARED
 }
 
 // 0x627d4 — ___37+[RobloxMemoryManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___37+[RobloxMemoryManager sharedInstance]_block_invoke")]
-pub fn stub_0x627d4() -> ! {
-    todo!("0x627d4 ___37+[RobloxMemoryManager sharedInstance]_block_invoke")
+pub fn stub_0x627d4() {
+    // IDA 0x627d4: the `sharedInstance` block allocs/inits the memory
+    // manager; folds into `MEMMAN_SHARED` — no-op.
 }
 
 // 0x63d30 — +[RobloxCachedFlags sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxCachedFlags sharedInstance]")]
-pub fn stub_0x63d30() -> ! {
-    todo!("0x63d30 +[RobloxCachedFlags sharedInstance]")
+pub fn stub_0x63d30() -> u32 {
+    // IDA 0x63d30: `RobloxCachedFlags sharedInstance` — see
+    // `CACHEDFLAGS_SHARED`.
+    *CACHEDFLAGS_SHARED
 }
 
 // 0x63d94 — ___35+[RobloxCachedFlags sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35+[RobloxCachedFlags sharedInstance]_block_invoke")]
-pub fn stub_0x63d94() -> ! {
-    todo!("0x63d94 ___35+[RobloxCachedFlags sharedInstance]_block_invoke")
+pub fn stub_0x63d94() {
+    // IDA 0x63d94: the `sharedInstance` block loads the cached flags;
+    // folds into `CACHEDFLAGS_SHARED` — no-op.
 }
 
 // 0x640e4 — +[CrashReporter sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[CrashReporter sharedInstance]")]
-pub fn stub_0x640e4() -> ! {
-    todo!("0x640e4 +[CrashReporter sharedInstance]")
+pub fn stub_0x640e4() -> u32 {
+    // IDA 0x640e4: `CrashReporter sharedInstance` — see `CRASHREP_SHARED`.
+    *CRASHREP_SHARED
 }
 
 // 0x64140 — ___31+[CrashReporter sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[CrashReporter sharedInstance]_block_invoke")]
-pub fn stub_0x64140() -> ! {
-    todo!("0x64140 ___31+[CrashReporter sharedInstance]_block_invoke")
+pub fn stub_0x64140() {
+    // IDA 0x64140: the `sharedInstance` block allocs/inits the crash
+    // reporter; folds into `CRASHREP_SHARED` — no-op.
 }
 
 // 0x66794 — +[AppController sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[AppController sharedInstance]")]
-pub fn stub_0x66794() -> ! {
-    todo!("0x66794 +[AppController sharedInstance]")
+pub fn stub_0x66794() -> u32 {
+    // IDA 0x66794: `AppController sharedInstance` — see `APPCTRL_SHARED`.
+    *APPCTRL_SHARED
 }
 
 // 0x667f0 — ___31+[AppController sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[AppController sharedInstance]_block_invoke")]
-pub fn stub_0x667f0() -> ! {
-    todo!("0x667f0 ___31+[AppController sharedInstance]_block_invoke")
+pub fn stub_0x667f0() {
+    // IDA 0x667f0: the `sharedInstance` block allocs/inits the app
+    // controller; folds into `APPCTRL_SHARED` — no-op.
 }
 
 // 0x67148 — -[AppController launchGameFromOverlayDataModel:]
 // type: void __cdecl(AppController *self, SEL, int)
 #[doc(alias = "-[AppController launchGameFromOverlayDataModel:]")]
-pub fn stub_0x67148() -> ! {
-    todo!("0x67148 -[AppController launchGameFromOverlayDataModel:]")
+pub fn stub_0x67148(launch: &mut AppLaunch) {
+    // IDA 0x67148: `launchGameFromOverlayDataModel:` forwards to
+    // `launchGame:` (0x671a8); the overlay-model resolution folds into
+    // the host.
+    launch.launched = true;
+    launch.overlay_launches += 1;
 }
 
 // 0x674f0 — +[SessionReporter sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[SessionReporter sharedInstance]")]
-pub fn stub_0x674f0() -> ! {
-    todo!("0x674f0 +[SessionReporter sharedInstance]")
+pub fn stub_0x674f0() -> u32 {
+    // IDA 0x674f0: `SessionReporter sharedInstance` — see
+    // `SESSIONREP_SHARED`.
+    *SESSIONREP_SHARED
 }
 
 // 0x6754c — ___33+[SessionReporter sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___33+[SessionReporter sharedInstance]_block_invoke")]
-pub fn stub_0x6754c() -> ! {
-    todo!("0x6754c ___33+[SessionReporter sharedInstance]_block_invoke")
+pub fn stub_0x6754c() {
+    // IDA 0x6754c: the `sharedInstance` block allocs/inits the session
+    // reporter; folds into `SESSIONREP_SHARED` — no-op.
 }
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
-pub fn stub_0x686a4() -> ! {
-    todo!("0x686a4 __ZN4FMOD10ProfileCpu4initEv")
+pub fn stub_0x686a4() -> u32 {
+    // IDA 0x686a4: `ProfileCpu::init` answers success (0x686a8); the
+    // profiler registration folds into the host.
+    0
 }
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
 // type: int __fastcall(FMOD::ProfileCpu *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_0x686ac() -> ! {
-    todo!("0x686ac __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj")
+pub fn stub_0x686ac(cpu: &mut ProfileCpu, usage: [f32; 4]) -> u32 {
+    // IDA 0x686ac: `ProfileCpu::update` reads the DSP/stream/geometry/
+    // update usage (0x686c0..0x686ec) and posts the profiler packet
+    // (0x686fc..); the packet glue folds into the host.
+    cpu.last = usage;
+    cpu.packets += 1;
+    0
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::release(void)")]
-pub fn stub_0x68758() -> ! {
-    todo!("0x68758 __ZN4FMOD10ProfileCpu7releaseEv")
+pub fn stub_0x68758() -> u32 {
+    // IDA 0x68758: `ProfileCpu::release` frees the profiler from its
+    // pool (0x68780) and answers success (0x68788); the pool glue folds
+    // into the host.
+    0
 }
 
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
@@ -866,5 +929,51 @@ mod block_glue_batch_tests {
         stub_0x5fe08();
         stub_0x601e4();
         stub_0x601f0();
+    }
+}
+
+#[cfg(test)]
+mod app_launch_batch_tests {
+    use super::*;
+
+    #[test]
+    fn singletons_and_glue() {
+        assert_eq!(stub_0x62778(), 1);
+        stub_0x627d4();
+        assert_eq!(stub_0x63d30(), 1);
+        stub_0x63d94();
+        assert_eq!(stub_0x640e4(), 1);
+        stub_0x64140();
+        assert_eq!(stub_0x66794(), 1);
+        stub_0x667f0();
+        assert_eq!(stub_0x674f0(), 1);
+        stub_0x6754c();
+        stub_0x6026c();
+        stub_0x60278();
+        stub_0x602a4();
+        stub_0x602b0();
+        stub_0x608ec();
+        stub_0x608f8();
+        stub_0x60900();
+        stub_0x60930();
+        stub_0x61a98();
+        stub_0x61aa4();
+        stub_0x61c4c();
+    }
+
+    #[test]
+    fn launch_and_profile() {
+        let mut launch = AppLaunch::default();
+        stub_0x67148(&mut launch);
+        assert!(launch.launched);
+        assert_eq!(launch.overlay_launches, 1);
+        stub_0x67148(&mut launch);
+        assert_eq!(launch.overlay_launches, 2);
+        assert_eq!(stub_0x686a4(), 0);
+        let mut cpu = ProfileCpu::default();
+        assert_eq!(stub_0x686ac(&mut cpu, [1.0, 2.0, 3.0, 4.0]), 0);
+        assert_eq!(cpu.last, [1.0, 2.0, 3.0, 4.0]);
+        assert_eq!(cpu.packets, 1);
+        assert_eq!(stub_0x68758(), 0);
     }
 }
