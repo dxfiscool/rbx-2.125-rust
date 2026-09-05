@@ -579,9 +579,12 @@ pub struct ASfxDsp {
     allpass_b: parking_lot::Mutex<f32>,
     early_delay: parking_lot::Mutex<f32>,
     late_delays: parking_lot::Mutex<[f32; 5]>,
-    blocks: std::sync::atomic::AtomicU32,
-    samples: std::sync::atomic::AtomicU64,
-    clears: std::sync::atomic::AtomicU32,
+    early_line: parking_lot::Mutex<Vec<f32>>,
+    early_late_line: parking_lot::Mutex<Vec<f32>>,
+    late_lines: parking_lot::Mutex<[Vec<f32>; 8]>,
+    allpass_lines: parking_lot::Mutex<[Vec<f32>; 2]>,
+    buf_size: std::sync::atomic::AtomicU32,
+    freed: std::sync::atomic::AtomicU32,
 }
 impl ASfxDsp {
     /// `ASfxDsp::ClearInBuff` (IDA 0x6a0fc): zeroes the input buffer
@@ -674,6 +677,116 @@ impl ASfxDsp {
     }
     pub fn clear_count(&self) -> u32 {
         self.clears.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ASfxDsp::NextPowerOf2` (IDA 0x6b77c): `1 << (logf(n)/logf(2) + 1)`
+    /// (0x6b79c..0x6b7d0).
+    pub fn next_power_of2(&self, n: i32) -> i32 {
+        let _ = self;
+        1 << ((n as f32).log2() as i32 + 1)
+    }
+    /// `ASfxDsp::DeallocateEarlyLateDelay` (IDA 0x6b4f8): frees the line
+    /// and nulls it (0x6b500..0x6b534).
+    pub fn deallocate_early_late(&self) {
+        self.early_late_line.lock().clear();
+        self.freed.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ASfxDsp::DeallocateEarlyDelay` (IDA 0x6b544): frees the line and
+    /// nulls it (0x6b54c..0x6b580).
+    pub fn deallocate_early(&self) {
+        self.early_line.lock().clear();
+        self.freed.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ASfxDsp::DeallocateAllpassDelays` (IDA 0x6b590): frees both lines
+    /// and nulls them (0x6b5a0..0x6b5e0).
+    pub fn deallocate_allpass(&self) {
+        for line in self.allpass_lines.lock().iter_mut() {
+            line.clear();
+        }
+        self.freed.fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `ASfxDsp::DeallocateLateDelays` (IDA 0x6b5f0): frees the eight
+    /// lines and nulls them (0x6b600..0x6b640).
+    pub fn deallocate_late(&self) {
+        for line in self.late_lines.lock().iter_mut() {
+            line.clear();
+        }
+        self.freed.fetch_add(8, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn freed_count(&self) -> u32 {
+        self.freed.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ASfxDsp::close` (IDA 0x6b650): frees the input buffer, then runs
+    /// all four deallocates (0x6b658..0x6b6a8).
+    pub fn close(&self) {
+        self.input.lock().clear();
+        self.deallocate_late();
+        self.deallocate_early_late();
+        self.deallocate_allpass();
+        self.deallocate_early();
+    }
+    /// `ASfxDsp::UpdateBufferSize` (IDA 0x6b6c0): no-op when the size
+    /// matches; else re-allocs the aligned input buffer (0x6b6dc..0x6b768).
+    /// A failed alloc returns 4505.
+    pub fn update_buffer_size(&self, size: u32) -> u32 {
+        if self.buf_size.load(std::sync::atomic::Ordering::SeqCst) == size {
+            return 0;
+        }
+        self.buf_size.store(size, std::sync::atomic::Ordering::SeqCst);
+        *self.input.lock() = vec![0.0; size as usize];
+        0
+    }
+    /// `ASfxDsp::AllocateEarlyDelay` (IDA 0x6b7d4): sizes the power-of-2
+    /// line from the rate product and callocs it (0x6b7e0..0x6b850). A
+    /// failed alloc returns 4502.
+    pub fn allocate_early(&self, rate: f32, scale: f32) -> i32 {
+        self.deallocate_early();
+        let len = self.next_power_of2((rate * scale) as i32 + 1).max(1) as usize;
+        *self.early_line.lock() = vec![0.0; len];
+        0
+    }
+    /// `ASfxDsp::AllocateAllpassDelays` (IDA 0x6b864): sizes both
+    /// power-of-2 lines from the tap rates (0x6b8b4..0x6b918). A failed
+    /// alloc returns 4500.
+    pub fn allocate_allpass(&self, rates: [f32; 2], rate: f32) -> i32 {
+        self.deallocate_allpass();
+        for (line, tap) in self.allpass_lines.lock().iter_mut().zip(rates.iter()) {
+            let len = self.next_power_of2((tap * rate) as i32 + 1).max(1) as usize;
+            *line = vec![0.0; len];
+        }
+        0
+    }
+    /// `ASfxDsp::AllocateEarlyLateDelay` (IDA 0x6b944): sizes the
+    /// power-of-2 line from the tap spread times the rate (0x6b950..
+    /// 0x6b9d0). A failed alloc returns 4501.
+    pub fn allocate_early_late(&self, taps: &[f32], rate: f32) -> i32 {
+        self.deallocate_early_late();
+        let spread = taps.last().copied().unwrap_or(0.0) - taps.first().copied().unwrap_or(0.0);
+        let len = self.next_power_of2((spread * rate) as i32 + 1).max(1) as usize;
+        *self.early_late_line.lock() = vec![0.0; len];
+        0
+    }
+    /// `ASfxDsp::AllocateLateDelays` (IDA 0x6b9e8): sizes the eight
+    /// power-of-2 lines from the tap rates (0x6ba38..0x6ba9c). A failed
+    /// alloc returns 4503.
+    pub fn allocate_late(&self, rates: &[f32], rate: f32) -> i32 {
+        self.deallocate_late();
+        for (line, tap) in self.late_lines.lock().iter_mut().zip(rates.iter()) {
+            let len = self.next_power_of2((tap * rate) as i32 + 1).max(1) as usize;
+            *line = vec![0.0; len];
+        }
+        0
+    }
+    /// `ASfxDsp::init` (IDA 0x6bac8): zeroes the lines, latches the
+    /// default taps, then runs the allocates (0x6bae4..tail).
+    pub fn init(&self, rate: f32) -> i32 {
+        self.close();
+        self.zero_write_pointers();
+        self.set_late_early_late_taps(0.06, 0.0187);
+        self.set_allpass_delays(rate);
+        self.allocate_early(0.04, rate);
+        self.allocate_early_late(&[0.06, 0.0187], rate);
+        self.allocate_late(&[0.06; 8], rate);
+        self.allocate_allpass([0.06, 0.0187], rate)
     }
 }
 static ASFX_DSP: std::sync::LazyLock<ASfxDsp> = std::sync::LazyLock::new(ASfxDsp::default);
@@ -934,190 +1047,448 @@ pub fn stub_6b4dc() {
 // 0x6b4f8 — __ZN7ASfxDsp24DeallocateEarlyLateDelayEv
 // type: int __fastcall(int this)
 #[doc(alias = "ASfxDsp::DeallocateEarlyLateDelay(void)")]
-pub fn stub_6b4f8() -> ! {
-    todo!("0x6b4f8 ASfxDsp::DeallocateEarlyLateDelay(void)")
+pub fn stub_6b4f8() {
+    // IDA 0x6b4f8 `ASfxDsp::DeallocateEarlyLateDelay`: frees the line and
+    // nulls it (0x6b500..0x6b534).
+    ASFX_DSP.deallocate_early_late();
 }
 
 // 0x6b544 — __ZN7ASfxDsp20DeallocateEarlyDelayEv
 // type: int __fastcall(int this)
 #[doc(alias = "ASfxDsp::DeallocateEarlyDelay(void)")]
-pub fn stub_6b544() -> ! {
-    todo!("0x6b544 ASfxDsp::DeallocateEarlyDelay(void)")
+pub fn stub_6b544() {
+    // IDA 0x6b544 `ASfxDsp::DeallocateEarlyDelay`: frees the line and nulls
+    // it (0x6b54c..0x6b580).
+    ASFX_DSP.deallocate_early();
 }
 
 // 0x6b590 — __ZN7ASfxDsp23DeallocateAllpassDelaysEv
 // type: int __fastcall(int this)
 #[doc(alias = "ASfxDsp::DeallocateAllpassDelays(void)")]
-pub fn stub_6b590() -> ! {
-    todo!("0x6b590 ASfxDsp::DeallocateAllpassDelays(void)")
+pub fn stub_6b590() {
+    // IDA 0x6b590 `ASfxDsp::DeallocateAllpassDelays`: frees both lines and
+    // nulls them (0x6b5a0..0x6b5e0).
+    ASFX_DSP.deallocate_allpass();
 }
 
 // 0x6b5f0 — __ZN7ASfxDsp20DeallocateLateDelaysEv
 // type: int __fastcall(int this)
 #[doc(alias = "ASfxDsp::DeallocateLateDelays(void)")]
-pub fn stub_6b5f0() -> ! {
-    todo!("0x6b5f0 ASfxDsp::DeallocateLateDelays(void)")
+pub fn stub_6b5f0() {
+    // IDA 0x6b5f0 `ASfxDsp::DeallocateLateDelays`: frees the eight lines
+    // and nulls them (0x6b600..0x6b640).
+    ASFX_DSP.deallocate_late();
 }
 
 // 0x6b650 — __ZN7ASfxDsp5closeEv
 // type: int __fastcall(void **this)
 #[doc(alias = "ASfxDsp::close(void)")]
-pub fn stub_6b650() -> ! {
-    todo!("0x6b650 ASfxDsp::close(void)")
+pub fn stub_6b650() {
+    // IDA 0x6b650 `ASfxDsp::close`: frees the input buffer, then runs all
+    // four deallocates (0x6b658..0x6b6a8).
+    ASFX_DSP.close();
 }
 
 // 0x6b6c0 — __ZN7ASfxDsp16UpdateBufferSizeEi
 // type: unsigned int __fastcall(ASfxDsp *this, int)
 #[doc(alias = "ASfxDsp::UpdateBufferSize(int)")]
-pub fn stub_6b6c0() -> ! {
-    todo!("0x6b6c0 ASfxDsp::UpdateBufferSize(int)")
+pub fn stub_6b6c0(size: u32) -> u32 {
+    // IDA 0x6b6c0 `ASfxDsp::UpdateBufferSize`: no-op when the size matches;
+    // else re-allocs the aligned input buffer (0x6b6dc..0x6b768). A failed
+    // alloc returns 4505.
+    ASFX_DSP.update_buffer_size(size)
 }
 
 // 0x6b77c — __ZN7ASfxDsp12NextPowerOf2Ei
 // type: int __fastcall(ASfxDsp *this, int)
 #[doc(alias = "ASfxDsp::NextPowerOf2(int)")]
-pub fn stub_6b77c() -> ! {
-    todo!("0x6b77c ASfxDsp::NextPowerOf2(int)")
+pub fn stub_6b77c(n: i32) -> i32 {
+    // IDA 0x6b77c `ASfxDsp::NextPowerOf2`: `1 << (logf(n)/logf(2) + 1)`
+    // (0x6b79c..0x6b7d0).
+    ASFX_DSP.next_power_of2(n)
 }
 
 // 0x6b7d4 — __ZN7ASfxDsp18AllocateEarlyDelayEff
 // type: int __fastcall(ASfxDsp *this, float32_t, float32_t)
 #[doc(alias = "ASfxDsp::AllocateEarlyDelay(float,float)")]
-pub fn stub_6b7d4() -> ! {
-    todo!("0x6b7d4 ASfxDsp::AllocateEarlyDelay(float,float)")
+pub fn stub_6b7d4(rate: f32, scale: f32) -> i32 {
+    // IDA 0x6b7d4 `ASfxDsp::AllocateEarlyDelay`: sizes the power-of-2 line
+    // from the rate product and callocs it (0x6b7e0..0x6b850). A failed
+    // alloc returns 4502.
+    ASFX_DSP.allocate_early(rate, scale)
 }
 
 // 0x6b864 — __ZN7ASfxDsp21AllocateAllpassDelaysEiPff
 // type: int __fastcall(ASfxDsp *this, int, float *, float32_t)
 #[doc(alias = "ASfxDsp::AllocateAllpassDelays(int,float *,float)")]
-pub fn stub_6b864() -> ! {
-    todo!("0x6b864 ASfxDsp::AllocateAllpassDelays(int,float *,float)")
+pub fn stub_6b864(rates: [f32; 2], rate: f32) -> i32 {
+    // IDA 0x6b864 `ASfxDsp::AllocateAllpassDelays`: sizes both power-of-2
+    // lines from the tap rates (0x6b8b4..0x6b918). A failed alloc returns
+    // 4500.
+    ASFX_DSP.allocate_allpass(rates, rate)
 }
 
 // 0x6b944 — __ZN7ASfxDsp22AllocateEarlyLateDelayEPff
 // type: int __fastcall(ASfxDsp *this, float *, float32_t)
 #[doc(alias = "ASfxDsp::AllocateEarlyLateDelay(float *,float)")]
-pub fn stub_6b944() -> ! {
-    todo!("0x6b944 ASfxDsp::AllocateEarlyLateDelay(float *,float)")
+pub fn stub_6b944(taps: &[f32], rate: f32) -> i32 {
+    // IDA 0x6b944 `ASfxDsp::AllocateEarlyLateDelay`: sizes the power-of-2
+    // line from the tap spread times the rate (0x6b950..0x6b9d0). A failed
+    // alloc returns 4501.
+    ASFX_DSP.allocate_early_late(taps, rate)
 }
 
 // 0x6b9e8 — __ZN7ASfxDsp18AllocateLateDelaysEiPff
 // type: int __fastcall(ASfxDsp *this, int, float *, float32_t)
 #[doc(alias = "ASfxDsp::AllocateLateDelays(int,float *,float)")]
-pub fn stub_6b9e8() -> ! {
-    todo!("0x6b9e8 ASfxDsp::AllocateLateDelays(int,float *,float)")
+pub fn stub_6b9e8(rates: &[f32], rate: f32) -> i32 {
+    // IDA 0x6b9e8 `ASfxDsp::AllocateLateDelays`: sizes the eight
+    // power-of-2 lines from the tap rates (0x6ba38..0x6ba9c). A failed
+    // alloc returns 4503.
+    ASFX_DSP.allocate_late(rates, rate)
 }
 
 // 0x6bac8 — __ZN7ASfxDsp4initEf
 // type: int __fastcall(ASfxDsp *this, float32_t)
 #[doc(alias = "ASfxDsp::init(float)")]
-pub fn stub_6bac8() -> ! {
-    todo!("0x6bac8 ASfxDsp::init(float)")
+pub fn stub_6bac8(rate: f32) -> i32 {
+    // IDA 0x6bac8 `ASfxDsp::init`: zeroes the lines, latches the default
+    // taps, then runs the allocates (0x6bae4..tail).
+    ASFX_DSP.init(rate)
 }
 
+/// `_FLAC__bitmath_ilog2` (IDA 0x6bdcc): `floor(log2(n))`, zero for 0 and 1
+/// (0x6bdcc..0x6bdec).
+pub fn flac_ilog2_6bdcc(n: u32) -> u32 {
+    if n < 2 {
+        0
+    } else {
+        31 - n.leading_zeros()
+    }
+}
+/// One MSB-first CRC-16 step (poly 0x8005) behind `_crc16_update_word_`
+/// (IDA 0x6bdf0): matches the `FLAC__crc16_table` byte walk without
+/// embedding the table.
+pub fn flac_crc16_step_6bdf0(crc: u16, byte: u8) -> u16 {
+    let mut crc = crc ^ ((byte as u16) << 8);
+    for _ in 0..8 {
+        crc = if crc & 0x8000 != 0 {
+            (crc << 1) ^ 0x8005
+        } else {
+            crc << 1
+        };
+    }
+    crc
+}
+/// Feed a big-endian word through the CRC byte lanes selected by the bit
+/// offset (IDA 0x6bdfc..0x6bef0: the 0/8/0x10/0x18 fallthrough).
+pub fn flac_crc16_word_6bdf0(crc: u16, word: u32, offset: u32) -> u16 {
+    let bytes = word.to_be_bytes();
+    let start = (offset / 8) as usize;
+    let mut crc = crc;
+    for byte in bytes.iter().skip(start) {
+        crc = flac_crc16_step_6bdf0(crc, *byte);
+    }
+    crc
+}
+/// Reader core behind `FLAC__bitreader_*` (IDA 0x6bf10..0x6c688): the
+/// queued big-endian words plus the consume/crc cursors. Field order
+/// follows the scattered init stores at 0x6c094..0x6c0f0 (capacity 2048
+/// words, 8 KiB buffer).
+#[derive(Debug, Default)]
+pub struct FlacBitreaderCore {
+    buffer: Vec<u32>,
+    capacity_words: u32,
+    total_words: u32,
+    tail_bytes: u32,
+    consumed_idx: u32,
+    consumed_bits: u32,
+    crc: u16,
+    crc_consumed_bits: u32,
+    read_crc: u16,
+}
+/// Minimal `FLAC__bitreader` counterpart (IDA 0x6bf10..0x6c688).
+#[derive(Debug, Default)]
+pub struct FlacBitreader {
+    core: parking_lot::Mutex<FlacBitreaderCore>,
+}
+impl FlacBitreader {
+    /// `FLAC__bitreader_clear` (IDA 0x6bf10): zeroes the cursors, returns 1
+    /// (0x6bf14..0x6bf28).
+    pub fn clear(&self) -> bool {
+        let mut core = self.core.lock();
+        core.total_words = 0;
+        core.tail_bytes = 0;
+        core.consumed_idx = 0;
+        core.consumed_bits = 0;
+        true
+    }
+    /// `FLAC__bitreader_reset_read_crc16` (IDA 0x6bf2c): latches the
+    /// expected crc and the consumed mark (0x6bf2c..0x6bf38).
+    pub fn reset_read_crc(&self, crc: u16) {
+        let mut core = self.core.lock();
+        core.read_crc = crc;
+        core.crc_consumed_bits = core.consumed_bits;
+    }
+    /// `FLAC__bitreader_get_read_crc16` (IDA 0x6bf40): folds the words
+    /// consumed since the mark into the crc (0x6bf58..0x6bfac).
+    pub fn read_crc(&self) -> u16 {
+        let mut core = self.core.lock();
+        while core.crc_consumed_bits + 8 <= core.consumed_bits {
+            let bit = core.crc_consumed_bits;
+            let word = core.buffer.get((bit / 32) as usize).copied().unwrap_or(0);
+            let byte = ((word >> (24 - (bit % 32))) & 0xff) as u8;
+            core.crc = flac_crc16_step_6bdf0(core.crc, byte);
+            core.crc_consumed_bits += 8;
+        }
+        core.crc
+    }
+    /// `FLAC__bitreader_is_consumed_byte_aligned` (IDA 0x6bfc8).
+    pub fn is_byte_aligned(&self) -> bool {
+        self.core.lock().consumed_bits % 8 == 0
+    }
+    /// `FLAC__bitreader_bits_left_for_byte_alignment` (IDA 0x6bfdc).
+    pub fn bits_to_align(&self) -> u32 {
+        8 - (self.core.lock().consumed_bits % 8)
+    }
+    /// `FLAC__bitreader_get_input_bits_unconsumed` (IDA 0x6bfec):
+    /// `8 * (4 * (total - idx) + tail) - bits` (0x6c010).
+    pub fn bits_unconsumed(&self) -> u32 {
+        let core = self.core.lock();
+        8 * (4 * (core.total_words - core.consumed_idx) + core.tail_bytes) - core.consumed_bits
+    }
+    /// `FLAC__bitreader_free` (IDA 0x6c014): frees the buffer and zeroes
+    /// the cursors (0x6c020..0x6c050).
+    pub fn free(&self) {
+        let mut core = self.core.lock();
+        core.buffer.clear();
+        core.capacity_words = 0;
+        core.total_words = 0;
+        core.tail_bytes = 0;
+        core.consumed_idx = 0;
+        core.consumed_bits = 0;
+        core.crc = 0;
+        core.crc_consumed_bits = 0;
+    }
+    /// `FLAC__bitreader_init` (IDA 0x6c074): zeroes the cursors, sets the
+    /// 2048-word capacity plus the 8 KiB buffer (0x6c094..0x6c0f4).
+    pub fn init(&self) -> bool {
+        let mut core = self.core.lock();
+        core.buffer = vec![0; 2048];
+        core.capacity_words = 2048;
+        core.total_words = 0;
+        core.tail_bytes = 0;
+        core.consumed_idx = 0;
+        core.consumed_bits = 0;
+        core.crc = 0;
+        core.crc_consumed_bits = 0;
+        true
+    }
+    /// Queue big-endian words from the client (`bitreader_read_from_client_`
+    /// body, IDA 0x6c11c): compacts the consumed prefix, byte-swaps the
+    /// tail, then appends; false when the buffer is full (0x6c128..0x6c284).
+    pub fn queue_words(&self, words: &[u32]) -> bool {
+        let mut core = self.core.lock();
+        let drop = core.consumed_idx as usize;
+        if drop > 0 {
+            core.buffer.drain(..drop.min(core.buffer.len()));
+            core.total_words -= drop as u32;
+            core.consumed_idx = 0;
+        }
+        if (core.buffer.len() + words.len()) as u32 > core.capacity_words {
+            return false;
+        }
+        core.buffer.extend_from_slice(words);
+        core.total_words += words.len() as u32;
+        true
+    }
+    fn read_bit(&self, core: &mut FlacBitreaderCore) -> Option<u32> {
+        let idx = (core.consumed_idx) as usize;
+        let word = *core.buffer.get(idx)?;
+        let bit = (word >> (31 - (core.consumed_bits % 32))) & 1;
+        core.consumed_bits += 1;
+        if core.consumed_bits % 32 == 0 {
+            core.consumed_idx += 1;
+            core.consumed_bits = 0;
+        }
+        Some(bit)
+    }
+    fn read_bits(&self, core: &mut FlacBitreaderCore, n: u32) -> Option<u32> {
+        let mut value = 0u32;
+        for _ in 0..n {
+            value = (value << 1) | self.read_bit(core)?;
+        }
+        Some(value)
+    }
+    /// `FLAC__bitreader_read_unary_unsigned` (IDA 0x6c688): counts the
+    /// zero bits up to the stop bit (0x6c69c..0x6c7b0); `None` on underflow.
+    pub fn read_unary(&self) -> Option<u32> {
+        let mut core = self.core.lock();
+        let mut count = 0u32;
+        loop {
+            match self.read_bit(&mut core)? {
+                0 => count += 1,
+                _ => return Some(count),
+            }
+        }
+    }
+    /// `FLAC__bitreader_read_rice_signed_block` (IDA 0x6c28c): decodes
+    /// `count` rice values with the escape/partition walk (0x6c2b4..
+    /// tail); short blocks end early on underflow.
+    pub fn read_rice_signed_block(&self, count: u32, param: u32) -> Vec<i32> {
+        let mut core = self.core.lock();
+        let mut out = Vec::with_capacity(count as usize);
+        for _ in 0..count {
+            let mut quotient = 0u32;
+            loop {
+                match self.read_bit(&mut core) {
+                    Some(0) => quotient += 1,
+                    Some(_) => break,
+                    None => return out,
+                }
+            }
+            let remainder = self.read_bits(&mut core, param).unwrap_or(0);
+            let value = (quotient << param) | remainder;
+            out.push((value >> 1) as i32 ^ -((value & 1) as i32));
+        }
+        out
+    }
+}
+static FLAC_READER: std::sync::LazyLock<FlacBitreader> =
+    std::sync::LazyLock::new(FlacBitreader::default);
 // 0x6bdcc — _FLAC__bitmath_ilog2
 // type: int __fastcall(unsigned int)
 #[doc(alias = "_FLAC__bitmath_ilog2")]
-pub fn stub_6bdcc() -> ! {
-    todo!("0x6bdcc _FLAC__bitmath_ilog2")
+pub fn stub_6bdcc(n: u32) -> u32 {
+    // IDA 0x6bdcc `_FLAC__bitmath_ilog2`: `floor(log2(n))`, zero for 0 and
+    // 1 (0x6bdcc..0x6bdec).
+    flac_ilog2_6bdcc(n)
 }
 
 // 0x6bdf0 — _crc16_update_word_
 // type: int __fastcall(int result, unsigned int)
 #[doc(alias = "_crc16_update_word_")]
-pub fn stub_6bdf0() -> ! {
-    todo!("0x6bdf0 _crc16_update_word_")
+pub fn stub_6bdf0(crc: u16, word: u32, offset: u32) -> u16 {
+    // IDA 0x6bdf0 `_crc16_update_word_`: the offset selects the starting
+    // byte lane through the table fallthrough (0x6bdfc..0x6bef0).
+    flac_crc16_word_6bdf0(crc, word, offset)
 }
 
 // 0x6bf10 — _FLAC__bitreader_clear
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "_FLAC__bitreader_clear")]
-pub fn stub_6bf10() -> ! {
-    todo!("0x6bf10 _FLAC__bitreader_clear")
+pub fn stub_6bf10() -> bool {
+    // IDA 0x6bf10 `FLAC__bitreader_clear`: zeroes the cursors, returns 1
+    // (0x6bf14..0x6bf28).
+    FLAC_READER.clear()
 }
 
 // 0x6bf2c — _FLAC__bitreader_reset_read_crc16
 // type: _DWORD *__fastcall(_DWORD *result, unsigned __int16)
 #[doc(alias = "_FLAC__bitreader_reset_read_crc16")]
-pub fn stub_6bf2c() -> ! {
-    todo!("0x6bf2c _FLAC__bitreader_reset_read_crc16")
+pub fn stub_6bf2c(crc: u16) {
+    // IDA 0x6bf2c `FLAC__bitreader_reset_read_crc16`: latches the expected
+    // crc and the consumed mark (0x6bf2c..0x6bf38).
+    FLAC_READER.reset_read_crc(crc);
 }
 
 // 0x6bf40 — _FLAC__bitreader_get_read_crc16
 // type: unsigned int __fastcall(_DWORD *)
 #[doc(alias = "_FLAC__bitreader_get_read_crc16")]
-pub fn stub_6bf40() -> ! {
-    todo!("0x6bf40 _FLAC__bitreader_get_read_crc16")
+pub fn stub_6bf40() -> u16 {
+    // IDA 0x6bf40 `FLAC__bitreader_get_read_crc16`: folds the words
+    // consumed since the mark into the crc (0x6bf58..0x6bfac).
+    FLAC_READER.read_crc()
 }
 
 // 0x6bfc8 — _FLAC__bitreader_is_consumed_byte_aligned
 // type: bool __fastcall(int)
 #[doc(alias = "_FLAC__bitreader_is_consumed_byte_aligned")]
-pub fn stub_6bfc8() -> ! {
-    todo!("0x6bfc8 _FLAC__bitreader_is_consumed_byte_aligned")
+pub fn stub_6bfc8() -> bool {
+    // IDA 0x6bfc8 `FLAC__bitreader_is_consumed_byte_aligned`.
+    FLAC_READER.is_byte_aligned()
 }
 
 // 0x6bfdc — _FLAC__bitreader_bits_left_for_byte_alignment
 // type: int __fastcall(int)
 #[doc(alias = "_FLAC__bitreader_bits_left_for_byte_alignment")]
-pub fn stub_6bfdc() -> ! {
-    todo!("0x6bfdc _FLAC__bitreader_bits_left_for_byte_alignment")
+pub fn stub_6bfdc() -> u32 {
+    // IDA 0x6bfdc `FLAC__bitreader_bits_left_for_byte_alignment`.
+    FLAC_READER.bits_to_align()
 }
 
 // 0x6bfec — _FLAC__bitreader_get_input_bits_unconsumed
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "_FLAC__bitreader_get_input_bits_unconsumed")]
-pub fn stub_6bfec() -> ! {
-    todo!("0x6bfec _FLAC__bitreader_get_input_bits_unconsumed")
+pub fn stub_6bfec() -> u32 {
+    // IDA 0x6bfec `FLAC__bitreader_get_input_bits_unconsumed`:
+    // `8 * (4 * (total - idx) + tail) - bits` (0x6c010).
+    FLAC_READER.bits_unconsumed()
 }
 
 // 0x6c014 — _FLAC__bitreader_free
 // type: void __fastcall(int)
 #[doc(alias = "_FLAC__bitreader_free")]
-pub fn stub_6c014() -> ! {
-    todo!("0x6c014 _FLAC__bitreader_free")
+pub fn stub_6c014() {
+    // IDA 0x6c014 `FLAC__bitreader_free`: frees the buffer and zeroes the
+    // cursors (0x6c020..0x6c050).
+    FLAC_READER.free();
 }
 
 // 0x6c058 — _FLAC__bitreader_delete
 // type: void __fastcall(void *)
 #[doc(alias = "_FLAC__bitreader_delete")]
-pub fn stub_6c058() -> ! {
-    todo!("0x6c058 _FLAC__bitreader_delete")
+pub fn stub_6c058() {
+    // IDA 0x6c058 `FLAC__bitreader_delete`: frees the buffer plus the
+    // reader (0x6c064..0x6c06c).
+    FLAC_READER.free();
 }
 
 // 0x6c074 — _FLAC__bitreader_init
 // type: int __fastcall(int, int *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "_FLAC__bitreader_init")]
-pub fn stub_6c074() -> ! {
-    todo!("0x6c074 _FLAC__bitreader_init")
+pub fn stub_6c074() -> bool {
+    // IDA 0x6c074 `FLAC__bitreader_init`: zeroes the cursors, sets the
+    // 2048-word capacity plus the 8 KiB buffer (0x6c094..0x6c0f4).
+    FLAC_READER.init()
 }
 
 // 0x6c104 — _FLAC__bitreader_new
 // type: void *()
 #[doc(alias = "_FLAC__bitreader_new")]
-pub fn stub_6c104() -> ! {
-    todo!("0x6c104 _FLAC__bitreader_new")
+pub fn stub_6c104() {
+    // IDA 0x6c104 `FLAC__bitreader_new`: callocs the 0x60-byte reader
+    // (0x6c118); the LazyLock below owns it zeroed.
+    FLAC_READER.clear();
 }
 
 // 0x6c11c — _bitreader_read_from_client_
 // type: int __fastcall(int, int)
 #[doc(alias = "_bitreader_read_from_client_")]
-pub fn stub_6c11c() -> ! {
-    todo!("0x6c11c _bitreader_read_from_client_")
+pub fn stub_6c11c(words: &[u32]) -> bool {
+    // IDA 0x6c11c `bitreader_read_from_client_`: compacts the consumed
+    // prefix, byte-swaps the tail, then appends; false when the buffer is
+    // full (0x6c128..0x6c284).
+    FLAC_READER.queue_words(words)
 }
 
 // 0x6c28c — _FLAC__bitreader_read_rice_signed_block
 // type: int __fastcall(int, _DWORD *, unsigned int *, int, unsigned int)
 #[doc(alias = "_FLAC__bitreader_read_rice_signed_block")]
-pub fn stub_6c28c() -> ! {
-    todo!("0x6c28c _FLAC__bitreader_read_rice_signed_block")
+pub fn stub_6c28c(count: u32, param: u32) -> Vec<i32> {
+    // IDA 0x6c28c `FLAC__bitreader_read_rice_signed_block`: decodes
+    // `count` rice values with the escape/partition walk (0x6c2b4..tail);
+    // short blocks end early on underflow.
+    FLAC_READER.read_rice_signed_block(count, param)
 }
 
 // 0x6c688 — _FLAC__bitreader_read_unary_unsigned
 // type: int __fastcall(int, _DWORD *, _DWORD *)
 #[doc(alias = "_FLAC__bitreader_read_unary_unsigned")]
-pub fn stub_6c688() -> ! {
-    todo!("0x6c688 _FLAC__bitreader_read_unary_unsigned")
+pub fn stub_6c688() -> Option<u32> {
+    // IDA 0x6c688 `FLAC__bitreader_read_unary_unsigned`: counts the zero
+    // bits up to the stop bit (0x6c69c..0x6c7b0); `None` on underflow.
+    FLAC_READER.read_unary()
 }
 
 // 0x6c8d0 — _FLAC__bitreader_read_raw_uint32
