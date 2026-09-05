@@ -9070,152 +9070,185 @@ pub fn stub_95c004(target: usize) -> usize {
 
 // 0x95c00c — __ZNK3RBX7Network16ServerReplicator15getRemotePlayerEv
 #[doc(alias = "RBX::Network::ServerReplicator::getRemotePlayer(void)const")]
-pub fn stub_95c00c() -> ! {
-    todo!("0x95c00c RBX::Network::ServerReplicator::getRemotePlayer(void)const")
+pub fn stub_95c00c(target: usize) -> usize {
+    // IDA 0x95c00c: return this[1514].
+    target
 }
 
 // 0x95c014 — __ZN3RBX7Network16ServerReplicator24isProtectedStringEnabledEv
 #[doc(alias = "RBX::Network::ServerReplicator::isProtectedStringEnabled(void)")]
-pub fn stub_95c014() -> ! {
-    todo!("0x95c014 RBX::Network::ServerReplicator::isProtectedStringEnabled(void)")
+pub fn stub_95c014() -> bool {
+    // IDA 0x95c014: isProtectedStringEnabled returns 0.
+    false
 }
 
 // 0x9604a4 — __ZN3RBX7Network12IdSerializerC2Ev
 #[doc(alias = "RBX::Network::IdSerializer::IdSerializer(void)")]
-pub fn stub_9604a4() -> ! {
-    todo!("0x9604a4 RBX::Network::IdSerializer::IdSerializer(void)")
+pub fn stub_9604a4() -> crate::id_serializer::IdSerializer {
+    // IDA 0x9604a4: IdSerializer ctor — Instance base + hash tables.
+    crate::id_serializer::IdSerializer::new()
 }
 
 // 0x960624 — __ZN3RBX7Network12IdSerializer18setMaxGuidIndexBitEi
 #[doc(alias = "RBX::Network::IdSerializer::setMaxGuidIndexBit(int)")]
-pub fn stub_960624() -> ! {
-    todo!("0x960624 RBX::Network::IdSerializer::setMaxGuidIndexBit(int)")
+pub fn stub_960624(bits: u32) -> u32 {
+    // IDA 0x960624: bits-1 < 0xE ? 24 : 32.
+    if bits.wrapping_sub(1) < 0xE {
+        24
+    } else {
+        32
+    }
 }
 
 // 0x9606d8 — __ZN3RBX7Network12IdSerializer14canSerializeIdEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::canSerializeId(RBX::Instance const*)")]
-pub fn stub_9606d8() -> ! {
-    todo!("0x9606d8 RBX::Network::IdSerializer::canSerializeId(RBX::Instance const*)")
+pub fn stub_9606d8(serializer: &mut crate::id_serializer::IdSerializer, instance: Option<crate::id_serializer::GuidData>) -> bool {
+    // IDA 0x9606d8: registry lookup + hash probe (below truncation).
+    serializer.can_serialize_id(instance)
 }
 
 // 0x96075c — __ZN3RBX7Network12IdSerializer17onServiceProviderEPNS_15ServiceProviderES3_
 #[doc(alias = "RBX::Network::IdSerializer::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_96075c() -> ! {
-    todo!("0x96075c RBX::Network::IdSerializer::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_96075c(serializer: &mut crate::id_serializer::IdSerializer, registry: Option<u32>) {
+    // IDA 0x96075c: registry reset; provider set -> create GuidRegistryService.
+    serializer.on_service_provider(registry);
 }
 
 // 0x960784 — __ZN3RBX7Network12IdSerializer9extractIdEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::extractId(RBX::Instance const*)")]
-pub fn stub_960784() -> ! {
-    todo!("0x960784 RBX::Network::IdSerializer::extractId(RBX::Instance const*)")
+pub fn stub_960784(serializer: &mut crate::id_serializer::IdSerializer, instance: Option<crate::id_serializer::GuidData>) -> crate::id_serializer::IdValue {
+    // IDA 0x960784: extract id or clear (below truncation).
+    serializer.extract_id(instance)
 }
 
 // 0x960f0c — __ZN3RBX7Network12IdSerializer11setRefValueERNS1_8WaitItemEPNS_8InstanceE
 #[doc(alias = "RBX::Network::IdSerializer::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")]
-pub fn stub_960f0c() -> ! {
-    todo!("0x960f0c RBX::Network::IdSerializer::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")
+pub fn stub_960f0c(item: &crate::id_serializer::WaitItem, instance: Option<u32>) -> (u32, Option<u32>) {
+    // IDA 0x960f0c: resolve +36 adjusts; virtual set (below truncation).
+    crate::id_serializer::IdSerializer::set_ref_value(item, instance)
 }
 
 // 0x960f28 — __ZN3RBX7Network12IdSerializer24resolvePendingReferencesEPNS_8InstanceENS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::resolvePendingReferences(RBX::Instance *,RBX::Guid::Data)")]
-pub fn stub_960f28() -> ! {
-    todo!("0x960f28 RBX::Network::IdSerializer::resolvePendingReferences(RBX::Instance *,RBX::Guid::Data)")
+pub fn stub_960f28(serializer: &mut crate::id_serializer::IdSerializer, instance: u32, guid: crate::id_serializer::GuidData, on_resolve: &mut dyn FnMut(&crate::id_serializer::WaitItem, u32)) {
+    // IDA 0x960f28: fire waiters filed under guid; erase node.
+    serializer.resolve_pending_references(instance, guid, on_resolve);
 }
 
 // 0x961178 — __ZN3RBX7Network12IdSerializer13addPendingRefEPKNS_10Reflection21RefPropertyDescriptorEN5boost10shared_ptrINS_8InstanceEEENS_4Guid4DataE
 #[doc(alias = "RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,rbx_core::SharedPtr<RBX::Instance>,RBX::Guid::Data)")]
-pub fn stub_961178() -> ! {
-    todo!("0x961178 RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,boost::shared_ptr<RBX::Instance>,RBX::Guid::Data)")
+pub fn stub_961178(serializer: &mut crate::id_serializer::IdSerializer, descriptor: u32, instance: u32, guid: crate::id_serializer::GuidData) {
+    // IDA 0x961178: map[guid].push_back(WaitItem{descriptor, instance}).
+    serializer.add_pending_ref(descriptor, instance, guid);
 }
 
 // 0x961480 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEE9teachNameEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teachName(RBX::Reflection::ClassDescriptor const*)const")]
-pub fn stub_961480() -> ! {
-    todo!("0x961480 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teachName(RBX::Reflection::ClassDescriptor const*)const")
+pub fn stub_961480(name: &str) -> String {
+    // IDA 0x961480: teachName — copy descriptor name.
+    crate::id_serializer::teach_name(name)
 }
 
 // 0x961490 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15ClassDescriptorEE9learnNameESsi
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learnName(std::string,int)")]
-pub fn stub_961490() -> ! {
-    todo!("0x961490 RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learnName(std::string,int)")
+pub fn stub_961490(receiver: &mut crate::id_serializer::DescriptorReceiver, slot: usize, name: &str, classes: &[(String, u32)]) {
+    // IDA 0x961490: learnName — class search (below truncation).
+    receiver.learn_class(slot, name, classes);
 }
 
 // 0x961700 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEE9teachNameEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teachName(RBX::Reflection::EventDescriptor const*)const")]
-pub fn stub_961700() -> ! {
-    todo!("0x961700 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teachName(RBX::Reflection::EventDescriptor const*)const")
+pub fn stub_961700(name: &str) -> String {
+    // IDA 0x961700: teachName — copy descriptor name.
+    crate::id_serializer::teach_name(name)
 }
 
 // 0x9618c4 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15EventDescriptorEE9learnNameESsi
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learnName(std::string,int)")]
-pub fn stub_9618c4() -> ! {
-    todo!("0x9618c4 RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learnName(std::string,int)")
+pub fn stub_9618c4(receiver: &mut crate::id_serializer::DescriptorReceiver, slot: usize, qualified: &str, classes: &[(String, u32)], events: &[(u32, String, u32)]) {
+    // IDA 0x9618c4: learnName — Class:Event search (below truncation).
+    receiver.learn_event(slot, qualified, classes, events);
 }
 
 // 0x961ca4 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE9teachNameEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teachName(RBX::Reflection::PropertyDescriptor const*)const")]
-pub fn stub_961ca4() -> ! {
-    todo!("0x961ca4 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teachName(RBX::Reflection::PropertyDescriptor const*)const")
+pub fn stub_961ca4(name: &str) -> String {
+    // IDA 0x961ca4: teachName — copy descriptor name.
+    crate::id_serializer::teach_name(name)
 }
 
 // 0x961e68 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection18PropertyDescriptorEE9learnNameESsi
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learnName(std::string,int)")]
-pub fn stub_961e68() -> ! {
-    todo!("0x961e68 RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learnName(std::string,int)")
+pub fn stub_961e68(receiver: &mut crate::id_serializer::DescriptorReceiver, slot: usize, qualified: &str, classes: &[(String, u32)], properties: &[(u32, String, u32)]) {
+    // IDA 0x961e68: learnName — Class:Property search (below truncation).
+    receiver.learn_property(slot, qualified, classes, properties);
 }
 
 // 0x96208c — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection4TypeEE9teachNameEPKS3_
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::teachName(RBX::Reflection::Type const*)const")]
-pub fn stub_96208c() -> ! {
-    todo!("0x96208c RBX::Network::DescriptorSender<RBX::Reflection::Type>::teachName(RBX::Reflection::Type const*)const")
+pub fn stub_96208c(name: &str) -> String {
+    // IDA 0x96208c: teachName — copy descriptor name.
+    crate::id_serializer::teach_name(name)
 }
 
 // 0x96209c — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection4TypeEE9learnNameESsi
 #[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learnName(std::string,int)")]
-pub fn stub_96209c() -> ! {
-    todo!("0x96209c RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learnName(std::string,int)")
+pub fn stub_96209c(receiver: &mut crate::id_serializer::DescriptorReceiver, slot: usize, name: &str, types: &[(String, u32)]) {
+    // IDA 0x96209c: learnName — getAllTypes search (below truncation).
+    receiver.learn_type(slot, name, types);
 }
 
 // 0x962300 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEEC2Ev
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::DescriptorSender(void)")]
-pub fn stub_962300() -> ! {
-    todo!("0x962300 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::DescriptorSender(void)")
+pub fn stub_962300(keys: &[u32]) -> crate::id_serializer::DescriptorSender {
+    // IDA 0x962300: DescriptorSender ctor — key table (below truncation).
+    crate::id_serializer::DescriptorSender::new(keys)
 }
 
 // 0x962464 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEEC2Ev
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::DescriptorSender(void)")]
-pub fn stub_962464() -> ! {
-    todo!("0x962464 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::DescriptorSender(void)")
+pub fn stub_962464(keys: &[u32]) -> crate::id_serializer::DescriptorSender {
+    // IDA 0x962464: DescriptorSender ctor — key table (below truncation).
+    crate::id_serializer::DescriptorSender::new(keys)
 }
 
 // 0x962694 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEEC2Ev
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::DescriptorSender(void)")]
-pub fn stub_962694() -> ! {
-    todo!("0x962694 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::DescriptorSender(void)")
+pub fn stub_962694(keys: &[u32]) -> crate::id_serializer::DescriptorSender {
+    // IDA 0x962694: DescriptorSender ctor — key table (below truncation).
+    crate::id_serializer::DescriptorSender::new(keys)
 }
 
 // 0x9628c4 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection4TypeEEC2Ev
 #[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::DescriptorSender(void)")]
-pub fn stub_9628c4() -> ! {
-    todo!("0x9628c4 RBX::Network::DescriptorSender<RBX::Reflection::Type>::DescriptorSender(void)")
+pub fn stub_9628c4(keys: &[u32]) -> crate::id_serializer::DescriptorSender {
+    // IDA 0x9628c4: DescriptorSender ctor — key table (below truncation).
+    crate::id_serializer::DescriptorSender::new(keys)
 }
 
 // 0x9645f8 — __ZNSt3mapIN3RBX4Guid4DataESt6vectorINS0_7Network12IdSerializer8WaitItemESaIS6_EESt4lessIS2_ESaISt4pairIKS2_S8_EEEixERSC_
 #[doc(alias = "std::map<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::operator[](RBX::Guid::Data const&)")]
-pub fn stub_9645f8() -> ! {
-    todo!("0x9645f8 std::map<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::operator[](RBX::Guid::Data const&)")
+pub fn stub_9645f8(map: &mut HashMap<crate::id_serializer::GuidData, Vec<crate::id_serializer::WaitItem>>, key: crate::id_serializer::GuidData) -> Vec<crate::id_serializer::WaitItem> {
+    // IDA 0x9645f8: map operator[] — find or default-insert.
+    map.entry(key).or_default().clone()
 }
 
 // 0x9652ac — __ZNSt6vectorIN3RBX7Network12IdSerializer8WaitItemESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 #[doc(alias = "std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::IdSerializer::WaitItem*,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,RBX::Network::IdSerializer::WaitItem const&)")]
-pub fn stub_9652ac() -> ! {
-    todo!("0x9652ac std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::IdSerializer::WaitItem*,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,RBX::Network::IdSerializer::WaitItem const&)")
+pub fn stub_9652ac(v: &mut Vec<crate::id_serializer::WaitItem>, pos: usize, item: crate::id_serializer::WaitItem) {
+    // IDA 0x9652ac: vector insert_aux.
+    if pos <= v.len() {
+        v.insert(pos, item);
+    } else {
+        v.push(item);
+    }
 }
 
 // 0x965a2c — __ZNSt6vectorIN3RBX7Network12IdSerializer8WaitItemESaIS3_EEC2ERKS5_
 #[doc(alias = "std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::vector(std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>> const&)")]
-pub fn stub_965a2c() -> ! {
-    todo!("0x965a2c std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::vector(std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>> const&)")
+pub fn stub_965a2c(dst: &mut Vec<crate::id_serializer::WaitItem>, src: &[crate::id_serializer::WaitItem]) {
+    // IDA 0x965a2c: vector range construct.
+    dst.extend_from_slice(src);
 }
 
 // 0x965c54 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
