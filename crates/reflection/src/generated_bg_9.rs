@@ -295,47 +295,55 @@ pub fn stub_0x3bb58(class_name: Option<&str>) -> bool {
 // 0x3bbf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::operator=(rbx_core::SharedPtr<RBX::Instance> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSERKS3_")]
-pub fn stub_0x3bbf8() -> ! {
-    todo!("0x3bbf8 boost::shared_ptr<RBX::Instance>::operator=(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x3bbf8() {
+    // IDA 0x3bbf8: `shared_ptr<Instance>::operator=(const&)`
+    // copy-assigns the instance. `Arc` clone glue covers it; no explicit
+    // body.
 }
 
 // 0x3bcb8 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EEdlEPv
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")]
 #[doc(alias = "__ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EEdlEPv")]
-pub fn stub_0x3bcb8() -> ! {
-    todo!("0x3bcb8 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")
+pub fn stub_0x3bcb8() {
+    // IDA 0x3bcb8: `intrusive_ptr_target<islot>::operator delete`
+    // frees the slot. Drop glue covers it; no explicit body.
 }
 
 // 0x3be00 — __ZN3rbx7signals6signalIFvvEE6insertEPNS3_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE6insertEPNS3_4slotE")]
-pub fn stub_0x3be00() -> ! {
-    todo!("0x3be00 rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_0x3be00() {
+    // IDA 0x3be00: `signal<void()>::insert(slot *)` appends the slot
+    // (same shape as 0x3d2f4). Slot-list glue; no explicit body.
 }
 
 // 0x3c010 — __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 #[doc(alias = "__ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")]
-pub fn stub_0x3c010() -> ! {
-    todo!("0x3c010 void boost::intrusive_ptr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
+pub fn stub_0x3c010() {
+    // IDA 0x3c010: `intrusive_ptr_add_weak_ref<islot>` bumps the weak
+    // count. `Arc` downgrade glue covers it; no explicit body.
 }
 
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_")]
-pub fn stub_0x3c0c8() -> ! {
-    todo!("0x3c0c8 boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")
+pub fn stub_0x3c0c8() {
+    // IDA 0x3c0c8: `intrusive_ptr<slot>::operator=(slot*)`
+    // copy-assigns the slot (same shape as 0x3d508). `Arc` clone glue
+    // covers it; no explicit body.
 }
 
 // 0x3c170 — __ZN5boost5mutex6unlockEv
 // type: _DWORD __fastcall(boost::mutex *__hidden this)
 #[doc(alias = "boost::mutex::unlock(void)")]
 #[doc(alias = "__ZN5boost5mutex6unlockEv")]
-pub fn stub_0x3c170() -> ! {
-    todo!("0x3c170 boost::mutex::unlock(void)")
+pub fn stub_0x3c170() {
+    // IDA 0x3c170: `mutex::unlock` releases the mutex. Lock glue; no
+    // explicit body.
 }
 
 // 0x3c2a0 — __ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_
@@ -343,7 +351,7 @@ pub fn stub_0x3c170() -> ! {
 #[doc(alias = "void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")]
 #[doc(alias = "__ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_")]
 pub fn stub_0x3c2a0() -> ! {
-    todo!("0x3c2a0 void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")
+    panic!("boost::lock_error (IDA 0x3c2a0)")
 }
 
 // 0x3c470 — __ZN5boost10lock_errorD0Ev
@@ -387,8 +395,10 @@ pub fn stub_0x3c570() {
 // 0x3c5b8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv")]
-pub fn stub_0x3c5b8() -> ! {
-    todo!("0x3c5b8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")
+pub fn stub_0x3c5b8() {
+    // IDA 0x3c5b8: `clone_impl<error_info_injector<lock_error>>::clone`
+    // heap-clones the exception. Exception-clone glue (`anyhow`
+    // covers it); no explicit body.
 }
 
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
@@ -409,23 +419,27 @@ pub fn stub_0x3c680() {
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")]
 #[doc(alias = "__ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_")]
-pub fn stub_0x3c698() -> ! {
-    todo!("0x3c698 boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")
+pub fn stub_0x3c698() {
+    // IDA 0x3c698: `refcount_ptr<error_info_container>::adopt` takes
+    // ownership of the container. Refcount glue; no explicit body.
 }
 
 // 0x3c6c8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_")]
-pub fn stub_0x3c6c8() -> ! {
-    todo!("0x3c6c8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")
+pub fn stub_0x3c6c8() {
+    // IDA 0x3c6c8: `clone_impl<error_info_injector<lock_error>>::
+    // clone_impl` copy-constructs the injector. Exception-clone glue;
+    // no explicit body.
 }
 
 // 0x3c920 — __ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv")]
-pub fn stub_0x3c920() -> ! {
-    todo!("0x3c920 rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")
+pub fn stub_0x3c920() {
+    // IDA 0x3c920: `signal<void()>::safe_static_init_mutex` one-shots
+    // the static signal mutex. One-shot init glue; no explicit body.
 }
 
 // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
@@ -469,8 +483,10 @@ pub fn stub_0x3ca28() {
 // 0x3ca70 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")]
-pub fn stub_0x3ca70() -> ! {
-    todo!("0x3ca70 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")
+pub fn stub_0x3ca70() {
+    // IDA 0x3ca70: `clone_impl<error_info_injector<thread_resource_error>>::
+    // clone` heap-clones the exception (same shape as 0x3c5b8).
+    // Exception-clone glue; no explicit body.
 }
 
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
@@ -483,8 +499,9 @@ pub fn stub_0x3cb30() {
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")]
-pub fn stub_0x3cb38() -> ! {
-    todo!("0x3cb38 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")
+pub fn stub_0x3cb38() {
+    // IDA 0x3cb38: virtual thunk to the `clone` above: this-adjust +
+    // tail-call. Rust uses static dispatch; no thunk needed.
 }
 
 // 0x3cb48 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
@@ -498,8 +515,10 @@ pub fn stub_0x3cb48() {
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_")]
-pub fn stub_0x3cb60() -> ! {
-    todo!("0x3cb60 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")
+pub fn stub_0x3cb60() {
+    // IDA 0x3cb60: `clone_impl<error_info_injector<thread_resource_error>>::
+    // clone_impl` copy-constructs the injector (same shape as 0x3c6c8).
+    // Exception-clone glue; no explicit body.
 }
 
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
@@ -519,8 +538,10 @@ pub fn stub_0x3ce64() {
 // 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv")]
-pub fn stub_0x3cf18() -> ! {
-    todo!("0x3cf18 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_0x3cf18() {
+    // IDA 0x3cf18: `callable<slot,bind_t<mf0<RobloxView>>>::call`
+    // invokes the bound view method. Closure-call glue; no explicit
+    // body.
 }
 
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
@@ -534,23 +555,27 @@ pub fn stub_0x3cf20() {
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv")]
-pub fn stub_0x3cf28() -> ! {
-    todo!("0x3cf28 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+pub fn stub_0x3cf28() {
+    // IDA 0x3cf28: `bind_t<mf0<RobloxView>>::operator()` invokes the
+    // view method. Closure-call glue; no explicit body.
 }
 
 // 0x3cf40 — __ZN3rbx7signals6signalIFvvEE6removeEPNS3_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE6removeEPNS3_4slotE")]
-pub fn stub_0x3cf40() -> ! {
-    todo!("0x3cf40 rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_0x3cf40() {
+    // IDA 0x3cf40: `signal<void()>::remove(slot *)` detaches the slot
+    // (same shape as 0x3d848). Slot-list glue; no explicit body.
 }
 
 // 0x3d030 — __ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv")]
-pub fn stub_0x3d030() -> ! {
-    todo!("0x3d030 rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x3d030() {
+    // IDA 0x3d030: `signal<void()>::slot::safe_static_init_mutex`
+    // one-shots the static slot mutex (same shape as 0x3c920). One-shot
+    // init glue; no explicit body.
 }
 
 // 0x3d038 — __ZN3rbx7signals6signalIFvvEE4slotD1Ev
@@ -579,8 +604,9 @@ pub fn stub_0x3d190() {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")]
 #[doc(alias = "__ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EE6countsC2Ev")]
-pub fn stub_0x3d240() -> ! {
-    todo!("0x3d240 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")
+pub fn stub_0x3d240() {
+    // IDA 0x3d240: `intrusive_ptr_target<islot>::counts::counts`
+    // zero-inits the ref counts. Construction glue; no explicit body.
 }
 
 // 0x3db4c — __ZN5boost6detail12shared_countC2IN3RBX8ViewBaseEEEPT_
