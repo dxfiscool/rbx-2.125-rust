@@ -23939,8 +23939,11 @@ pub fn stub_abbb04(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const"
 )]
-pub fn stub_abbb24() -> ! {
-    todo!("0xabbb24 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_abbb24(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabbb24: walks the item list for the name then sets it (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0xabbbb8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE10isReadOnlyEv
@@ -23948,8 +23951,9 @@ pub fn stub_abbb24() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::isReadOnly(void)const"
 )]
-pub fn stub_abbbb8() -> ! {
-    todo!("0xabbbb8 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::isReadOnly(void)const")
+pub fn stub_abbbb8() -> bool {
+ // IDA 0xabbbb8: isReadOnly returns 0.
+ false
 }
 
 // 0xabbbbc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE11isWriteOnlyEv
@@ -23957,162 +23961,190 @@ pub fn stub_abbbb8() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::isWriteOnly(void)const"
 )]
-pub fn stub_abbbbc() -> ! {
-    todo!("0xabbbbc RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::isWriteOnly(void)const")
+pub fn stub_abbbbc() -> bool {
+ // IDA 0xabbbbc: isWriteOnly returns 0.
+ false
 }
 
 // 0xabbbc0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_abbbc0() -> ! {
-    todo!("0xabbbc0 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abbbc0(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xabbbc0: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xabbbe4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::setValue(RBX::Reflection::DescribedBase *,RBX::Network::Player::MembershipType const&)const")]
-pub fn stub_abbbe4() -> ! {
-    todo!("0xabbbe4 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetSetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>::setValue(RBX::Reflection::DescribedBase *,RBX::Network::Player::MembershipType const&)const")
+pub fn stub_abbbe4(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0xabbbe4: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0xabbc0c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, char, int, int, __guard *, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::EnumPropDescriptor<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,int>(char const*,char const*,RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_abbc0c() -> ! {
-    todo!("0xabbc0c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::EnumPropDescriptor<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,int>(char const*,char const*,RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abbc0c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabbc0c: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabbf04 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE7GetImplIMS3_KFS4_vEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_abbf04() -> ! {
-    todo!("0xabbf04 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")
+pub fn stub_abbf04() -> bool {
+ // IDA 0xabbf04: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0xabbf08 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE7GetImplIMS3_KFS4_vEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_abbf08() -> ! {
-    todo!("0xabbf08 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_abbf08() -> bool {
+ // IDA 0xabbf08: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0xabbf0c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE7GetImplIMS3_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_abbf0c() -> ! {
-    todo!("0xabbf0c RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abbf0c(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xabbf0c: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xabbf30 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE7GetImplIMS3_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 // type: void __noreturn()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Network::Player::MembershipType const&)const")]
-pub fn stub_abbf30() -> ! {
-    todo!("0xabbf30 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::GetImpl<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Network::Player::MembershipType const&)const")
+pub fn stub_abbf30() {
+ // IDA 0xabbf30: read-only setValue throws std::runtime_error (__noreturn).
+ panic!("read-only property");
 }
 
 // 0xabc050 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_abc050() -> ! {
-    todo!("0xabc050 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abc050(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabc050: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabc278 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()")]
-pub fn stub_abc278() -> ! {
-    todo!("0xabc278 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_abc278(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xabc278: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xabc2a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::isReadOnly(void)const")]
-pub fn stub_abc2a0() -> ! {
-    todo!("0xabc2a0 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::isReadOnly(void)const")
+pub fn stub_abc2a0() -> bool {
+ // IDA 0xabc2a0: isReadOnly returns 0.
+ false
 }
 
 // 0xabc2a4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
-pub fn stub_abc2a4() -> ! {
-    todo!("0xabc2a4 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+pub fn stub_abc2a4() -> bool {
+ // IDA 0xabc2a4: isWriteOnly returns 0.
+ false
 }
 
 // 0xabc2a8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_abc2a8() -> ! {
-    todo!("0xabc2a8 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abc2a8(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xabc2a8: getValue: obj (a3 ? a3 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xabc2d0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
-pub fn stub_abc2d0() -> ! {
-    todo!("0xabc2d0 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")
+pub fn stub_abc2d0(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0xabc2d0: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0xabc2f8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, char, int, int, __guard *, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::EnumPropDescriptor<RBX::Network::Player::ChatMode (RBX::Network::Player::*)(void)const,int>(char const*,char const*,RBX::Network::Player::ChatMode (RBX::Network::Player::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_abc2f8() -> ! {
-    todo!("0xabc2f8 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::EnumPropDescriptor<RBX::Network::Player::ChatMode (RBX::Network::Player::*)(void)const,int>(char const*,char const*,RBX::Network::Player::ChatMode (RBX::Network::Player::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abc2f8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabc2f8: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabc5f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()")]
-pub fn stub_abc5f0() -> ! {
-    todo!("0xabc5f0 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()")
+pub fn stub_abc5f0(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xabc5f0: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xabc618 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::isReadOnly(void)const")]
-pub fn stub_abc618() -> ! {
-    todo!("0xabc618 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::isReadOnly(void)const")
+pub fn stub_abc618(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xabc618: forwards to the impl at +44.
+ inner()
 }
 
 // 0xabc628 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::isWriteOnly(void)const")]
-pub fn stub_abc628() -> ! {
-    todo!("0xabc628 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::isWriteOnly(void)const")
+pub fn stub_abc628(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xabc628: forwards to the impl at +44.
+ inner()
 }
 
 // 0xabc638 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_abc638() -> ! {
-    todo!("0xabc638 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abc638(current: i32, candidate: i32) -> bool {
+ // IDA 0xabc638: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0xabc660 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_abc660() -> ! {
-    todo!("0xabc660 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_abc660(value: i32) -> (String, i32) {
+ // IDA 0xabc660: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0xabc710 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_abc710() -> ! {
-    todo!("0xabc710 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_abc710(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabc710: Variant::get<int> then setValue.
+ set(value);
 }
 
 // 0xabc72c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_abc72c() -> ! {
-    todo!("0xabc72c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_abc72c(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabc72c: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0xabc750 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::hasStringValue(void)const")]
-pub fn stub_abc750() -> ! {
-    todo!("0xabc750 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::hasStringValue(void)const")
+pub fn stub_abc750() -> bool {
+ // IDA 0xabc750: hasStringValue returns 1.
+ true
 }
 
 // 0xabc754 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEE14getStringValueEPKNS0_13DescribedBaseE
