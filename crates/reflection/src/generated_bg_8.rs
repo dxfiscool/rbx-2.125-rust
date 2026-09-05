@@ -125,6 +125,40 @@ pub struct RobloxViewCreate {
 }
 
 
+/// `RobloxView` workspace/bind/restart state (IDA 0x380a4-0x39674):
+/// bind/restart/start/dispatch counters plus the one-shot log-manager
+/// flag. Scheduler/signal/lock traffic is engine glue.
+pub(crate) static ROBLOXVIEW_BINDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_RULES: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static ROBLOXVIEW_RESTARTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_DID_RESTART: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_NEWGAMES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_STARTED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_DATAMODELS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ROBLOXVIEW_CREATES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOG_MANAGER_INIT: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `Name -> ICreator` registry behind the `FactoryProduct` creators
+/// (IDA 0x3aa30/0x3acc8/0x3ad20): class names in registration order.
+/// `std::map`/`_Rb_tree` traffic is drop glue.
+pub(crate) static CREATOR_NAMES: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+/// `RunService` declaration + class index (IDA 0x3ae20/0x3af08, cf.
+/// `LOGIN_CLASS_INDEX` in bg_7).
+pub(crate) static RUNSERVICE_DECLARED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static RUNSERVICE_CLASS_INDEX: std::sync::LazyLock<usize> =
+    std::sync::LazyLock::new(|| 1);
+
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")]
@@ -1231,53 +1265,90 @@ pub fn stub_0x37b3c(game_present: bool) -> bool {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 #[doc(alias = "RobloxView::bindWorkspace(rbx_core::SharedPtr<RBX::ViewBase>,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::OverlayDataModel>)")]
 #[doc(alias = "__ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE")]
-pub fn stub_0x380a4() -> ! {
-    todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
+pub fn stub_0x380a4(overlay_present: bool) -> bool {
+    // IDA 0x380a4: `bindWorkspace` binds the overlay datamodel into the
+    // view when present (LegacyLock + `operator=` under the lock,
+    // 0x380d2-0x3815c), then binds the main datamodel the same way and
+    // refreshes (0x38166-0x381da). Lock/`Arc` traffic is drop glue; the
+    // bind records here.
+    if overlay_present {
+        ROBLOXVIEW_BINDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    overlay_present
 }
 
 // 0x382b0 — __ZN10RobloxView22defineConcurrencyRulesEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::defineConcurrencyRules(void)")]
 #[doc(alias = "__ZN10RobloxView22defineConcurrencyRulesEv")]
-pub fn stub_0x382b0() -> ! {
-    todo!("0x382b0 RobloxView::defineConcurrencyRules(void)")
+pub fn stub_0x382b0(render_present: bool, update_present: bool) {
+    // IDA 0x382b0: `defineConcurrencyRules` release-asserts both jobs
+    // (`RobloxView.cpp:555-556`, 0x382ea-0x3839a), adds an
+    // `ExclusiveSequence` coordinator to each (0x383b0-0x3849a) and,
+    // when render settings allow, a `Sequence` shared with the physics
+    // job (0x384b4-0x385c4).
+    assert!(render_present, "renderJob (IDA 0x382b0)");
+    assert!(update_present, "viewUpdateJob (IDA 0x382b0)");
+    ROBLOXVIEW_RULES.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x386d0 — __ZN10RobloxView16restartDataModelEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::restartDataModel(void)")]
 #[doc(alias = "__ZN10RobloxView16restartDataModelEv")]
-pub fn stub_0x386d0() -> ! {
-    todo!("0x386d0 RobloxView::restartDataModel(void)")
+pub fn stub_0x386d0() {
+    // IDA 0x386d0: `restartDataModel` captures `this` in a stack block
+    // and `dispatch_async`s `doRestartDataModel` to the main queue
+    // (0x38706-0x38718). The dispatch records here; the block runs at
+    // 0x38770.
+    ROBLOXVIEW_RESTARTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x38720 — __ZN10RobloxView15newGameDidStartEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::newGameDidStart(void)")]
 #[doc(alias = "__ZN10RobloxView15newGameDidStartEv")]
-pub fn stub_0x38720() -> ! {
-    todo!("0x38720 RobloxView::newGameDidStart(void)")
+pub fn stub_0x38720() {
+    // IDA 0x38720: `newGameDidStart` captures `this` in a stack block
+    // and `dispatch_async`s its block to the main queue
+    // (0x38756-0x38768). The dispatch records here; the block runs at
+    // 0x39018.
+    ROBLOXVIEW_NEWGAMES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "____ZN10RobloxView18doRestartDataModelEv_block_invoke")]
-pub fn stub_0x38770() -> ! {
-    todo!("0x38770 ____ZN10RobloxView18doRestartDataModelEv_block_invoke")
+pub fn stub_0x38770() {
+    // IDA 0x38770: the `doRestartDataModel` block runs the main-queue
+    // restart (teardown + `setupNewDataModel`). It sequences the same
+    // path as 0x38cd0 with no datamodel yet installed.
+    stub_0x38cd0(false);
+    ROBLOXVIEW_DID_RESTART.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x38cd0 — __ZN10RobloxView17setupNewDataModelEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::setupNewDataModel(void)")]
 #[doc(alias = "__ZN10RobloxView17setupNewDataModelEv")]
-pub fn stub_0x38cd0() -> ! {
-    todo!("0x38cd0 RobloxView::setupNewDataModel(void)")
+pub fn stub_0x38cd0(datamodel_present: bool) -> bool {
+    // IDA 0x38cd0: `setupNewDataModel` returns early when a datamodel
+    // exists (0x38d42); else it creates one, sets it on the game,
+    // attaches the view, connects `onPlaceIDChanged` and shuts the
+    // overlay down (0x38d4a-0x38ee0). Creation records here.
+    if datamodel_present {
+        return false;
+    }
+    ROBLOXVIEW_DATAMODELS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x39018 — ____ZN10RobloxView15newGameDidStartEv_block_invoke
 #[doc(alias = "____ZN10RobloxView15newGameDidStartEv_block_invoke")]
-pub fn stub_0x39018() -> ! {
-    todo!("0x39018 ____ZN10RobloxView15newGameDidStartEv_block_invoke")
+pub fn stub_0x39018() {
+    // IDA 0x39018: the `newGameDidStart` block finishes the main-queue
+    // start (same dispatch shape as 0x38770). Completion records here.
+    ROBLOXVIEW_STARTED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x39020 — __ZN10RobloxViewD1Ev
@@ -1300,16 +1371,28 @@ pub fn stub_0x39024() {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
 #[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
 #[doc(alias = "__ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs")]
-pub fn stub_0x39674() -> ! {
-    todo!("0x39674 RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_0x39674(game_present: bool, width: u32, height: u32, first: &str, second: &str, third: &str) -> RobloxViewCreate {
+    // IDA 0x39674: `create_view` news the view, runs the `RobloxView`
+    // constructor on the copied strings (0x396a8-0x39702) and finishes
+    // with `completeViewPrep` on the game (0x39736-0x3974c). Creation
+    // records here; the prep counts at 0x37b3c.
+    if game_present {
+        ROBLOXVIEW_CREATES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    stub_0x37628(width, height, first, second, third)
 }
 
 // 0x39920 — __ZL14initLogManagerv
 // type: _DWORD __fastcall()
 #[doc(alias = "initLogManager(void)")]
 #[doc(alias = "__ZL14initLogManagerv")]
-pub fn stub_0x39920() -> ! {
-    todo!("0x39920 initLogManager(void)")
+pub fn stub_0x39920(bundle_path: &str) -> String {
+    // IDA 0x39920: `initLogManager` one-shots the Ogre `LogManager`
+    // (`__cxa_guard_acquire`, 0x3998c-0x399dc) and creates
+    // `<bundle>/ogre.log` (0x399e8-0x39a26, `macBundlePath` at 0x3993e).
+    // The manager is engine glue; the log path records here.
+    LOG_MANAGER_INIT.store(true, std::sync::atomic::Ordering::SeqCst);
+    format!("{bundle_path}/ogre.log")
 }
 
 // 0x39be0 — __ZNSt12domain_errorD0Ev
@@ -1396,52 +1479,60 @@ pub fn stub_0x39c68() {
 // type: void __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
 #[doc(alias = "__ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE")]
-pub fn stub_0x39c6c() -> ! {
-    todo!("0x39c6c RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")
+pub fn stub_0x39c6c() {
+    // IDA 0x39c6c: `TaskScheduler::removeBlocking` removes the job and
+    // runs the follow-up closure. Scheduler glue; no explicit body.
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv")]
-pub fn stub_0x39d7c() -> ! {
-    todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
+pub fn stub_0x39d7c() {
+    // IDA 0x39d7c: `shared_ptr<RenderJob>::reset` drops the job.
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv")]
-pub fn stub_0x39e10() -> ! {
-    todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
+pub fn stub_0x39e10() {
+    // IDA 0x39e10: `shared_ptr<ViewUpdateJob>::reset` drops the job.
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_")]
-pub fn stub_0x39ea8() -> ! {
-    todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
+pub fn stub_0x39ea8() {
+    // IDA 0x39ea8: `shared_ptr<ViewUpdateJob>::operator=(&&)` move-assigns
+    // the job. `Arc` move glue covers it; no explicit body.
 }
 
 // 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_")]
-pub fn stub_0x39f4c() -> ! {
-    todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_0x39f4c() {
+    // IDA 0x39f4c: `shared_ptr<ViewUpdateJob>::shared_ptr<...>(ptr)`
+    // wraps the raw job. `Arc` construction glue covers it; no explicit
+    // body.
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_")]
-pub fn stub_0x3a030() -> ! {
-    todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+pub fn stub_0x3a030() {
+    // IDA 0x3a030: `shared_ptr<RenderJob>::operator=(&&)` move-assigns
+    // the job. `Arc` move glue covers it; no explicit body.
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_")]
-pub fn stub_0x3a0d4() -> ! {
-    todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_0x3a0d4() {
+    // IDA 0x3a0d4: `shared_ptr<RenderJob>::shared_ptr<...>(ptr)` wraps
+    // the raw job. `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3a1b8 — __ZN17QuitEventListenerD1Ev
@@ -1455,44 +1546,55 @@ pub fn stub_0x3a1b8() {
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Game>::operator=(rbx_core::SharedPtr<RBX::Game> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_")]
-pub fn stub_0x3a1bc() -> ! {
-    todo!("0x3a1bc boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")
+pub fn stub_0x3a1bc() {
+    // IDA 0x3a1bc: `shared_ptr<Game>::operator=(const&)` copy-assigns
+    // the game. `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x3a2ec — __ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE")]
-pub fn stub_0x3a2ec() -> ! {
-    todo!("0x3a2ec boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)")
+pub fn stub_0x3a2ec() {
+    // IDA 0x3a2ec: `shared_ptr<DataModel>::operator=<OverlayDataModel>`
+    // cross-assigns the overlay. `Arc` conversion glue covers it; no
+    // explicit body.
 }
 
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_")]
-pub fn stub_0x3a390() -> ! {
-    todo!("0x3a390 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")
+pub fn stub_0x3a390() {
+    // IDA 0x3a390: `signal<void()>::connect<bind_t<mf0<RobloxView>>>`
+    // binds the view method and installs the connection. Closure + slot
+    // glue; no explicit body.
 }
 
 // 0x3a408 — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")]
-pub fn stub_0x3a408() -> ! {
-    todo!("0x3a408 __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEE9singletonEv")
+pub fn stub_0x3a408(present: bool) -> bool {
+    // IDA 0x3a408: `GlobalAdvancedSettingsItem<CRenderSettingsItem,
+    // sRenderSettings>::singleton` returns the settings singleton,
+    // consumed at 0x382b0 via its +188 flag. Presence collapses to
+    // `bool`.
+    present
 }
 
 // 0x3a5bc — __ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_")]
-pub fn stub_0x3a5bc() -> ! {
-    todo!("0x3a5bc void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
+pub fn stub_0x3a5bc() {
+    // IDA 0x3a5bc: `shared_ptr<Sequence>::reset<Sequence>(ptr)` wraps
+    // the sequence. `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3a660 — __ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ViewBase>::reset(void)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv")]
-pub fn stub_0x3a660() -> ! {
-    todo!("0x3a660 boost::shared_ptr<RBX::ViewBase>::reset(void)")
+pub fn stub_0x3a660() {
+    // IDA 0x3a660: `shared_ptr<ViewBase>::reset` drops the view.
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3a6f8 — __ZN5boost13exception_ptrD1Ev
@@ -1512,16 +1614,20 @@ pub fn stub_0x3a790() {
 // 0x3a798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6CameraEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_6CameraEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0x3a798() -> ! {
-    todo!("0x3a798 boost::shared_ptr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")
+pub fn stub_0x3a798(create_ok: bool) -> bool {
+    // IDA 0x3a798: `Creatable<Instance>::create<Camera>` runs the
+    // factory and returns the new instance (same shape as 0x3247c).
+    // Factory glue; presence collapses to `bool`.
+    create_ok
 }
 
 // 0x3a850 — __ZN5boost6detail15sp_counted_base12weak_releaseEv
 // type: _DWORD __fastcall(boost::detail::sp_counted_base *__hidden this)
 #[doc(alias = "boost::detail::sp_counted_base::weak_release(void)")]
 #[doc(alias = "__ZN5boost6detail15sp_counted_base12weak_releaseEv")]
-pub fn stub_0x3a850() -> ! {
-    todo!("0x3a850 boost::detail::sp_counted_base::weak_release(void)")
+pub fn stub_0x3a850() {
+    // IDA 0x3a850: `sp_counted_base::weak_release` drops a weak ref.
+    // `Arc` downgrade glue covers it; no explicit body.
 }
 
 // 0x3aa10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -1534,16 +1640,20 @@ pub fn stub_0x3aa10() {
 // 0x3aa18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3aa18() -> ! {
-    todo!("0x3aa18 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3aa18() {
+    // IDA 0x3aa18: `sp_counted_impl_pd<Camera*,Creatable::Deleter>::
+    // get_deleter` answers the deleter query by `type_info` (same shape
+    // as 0x33454). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3aa30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_ESH_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_ESH_")]
-pub fn stub_0x3aa30() -> ! {
-    todo!("0x3aa30 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>)")
+pub fn stub_0x3aa30(name: &str) {
+    // IDA 0x3aa30: `_Rb_tree<Name const*,...>::erase(first, last)`
+    // unregisters the creator range. The unregister records here.
+    CREATOR_NAMES.lock().retain(|n| n != name);
 }
 
 // 0x3aa90 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEED1Ev
@@ -1556,58 +1666,84 @@ pub fn stub_0x3aa90() {
 // 0x3aaa0 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")]
-pub fn stub_0x3aaa0() -> ! {
-    todo!("0x3aaa0 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")
+pub fn stub_0x3aaa0() {
+    // IDA 0x3aaa0: `FactoryProduct<Camera,...>::Creator::Creator`
+    // constructs the creator (registers the factory product).
+    // Construction glue; no explicit body.
 }
 
 // 0x3acc8 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEEixERSA_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEEixERSA_")]
-pub fn stub_0x3acc8() -> ! {
-    todo!("0x3acc8 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::operator[](RBX::Name const* const&)")
+pub fn stub_0x3acc8(name: &str) -> bool {
+    // IDA 0x3acc8: `map<Name const*,ICreator const*>::operator[]`
+    // fetches-or-creates the creator slot. Presence reports here.
+    let mut names = CREATOR_NAMES.lock();
+    if !names.iter().any(|n| n == name) {
+        names.push(name.to_owned());
+        return false;
+    }
+    true
 }
 
 // 0x3ad20 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreator const*> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_PKNS0_8ICreatorEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")]
-pub fn stub_0x3ad20() -> ! {
-    todo!("0x3ad20 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ICreator const*>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ICreator const*>>,std::pair<RBX::Name const* const,RBX::ICreator const*> const&)")
+pub fn stub_0x3ad20(name: &str) -> bool {
+    // IDA 0x3ad20: `_Rb_tree<Name const*,...>::_M_insert_unique`
+    // registers the creator unless present. The register records here.
+    let mut names = CREATOR_NAMES.lock();
+    if names.iter().any(|n| n == name) {
+        return false;
+    }
+    names.push(name.to_owned());
+    true
 }
 
 // 0x3add8 — __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_0x3add8() -> ! {
-    todo!("0x3add8 __ZN3RBX4Name7declareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_0x3add8() {
+    // IDA 0x3add8: `Name::declare<sRunService>` one-shots the class-name
+    // declaration (same shape as 0x32720). Idempotent declare glue; no
+    // explicit body.
 }
 
 // 0x3ae20 — __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")]
-pub fn stub_0x3ae20() -> ! {
-    todo!("0x3ae20 __ZN3RBX4Name9doDeclareILZNS_11sRunServiceEEEERKS0_v")
+pub fn stub_0x3ae20() {
+    // IDA 0x3ae20: `Name::doDeclare<sRunService>` performs the
+    // declaration. It records here.
+    RUNSERVICE_DECLARED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x3af08 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_10RunServiceEEEmv")]
-pub fn stub_0x3af08() -> ! {
-    todo!("0x3af08 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::RunService>(void)")
+pub fn stub_0x3af08() -> usize {
+    // IDA 0x3af08: `ServiceProvider::doGetClassIndex<RunService>`
+    // returns the service class index.
+    *RUNSERVICE_CLASS_INDEX
 }
 
 // 0x3afe0 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x3afe0() -> ! {
-    todo!("0x3afe0 boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3afe0() {
+    // IDA 0x3afe0: `shared_ptr<RunService>::shared_ptr<...,
+    // Creatable::Deleter>` stores the pointer + deleter (same shape as
+    // 0x324fc). `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3b008 — __ZN5boost6detail12shared_countC2IPN3RBX10RunServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX10RunServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x3b008() -> ! {
-    todo!("0x3b008 boost::detail::shared_count::shared_count<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b008() {
+    // IDA 0x3b008: `shared_count::shared_count<RunService*,...>`
+    // allocates the control block (same shape as 0x325fc). `Arc`
+    // construction glue covers it; no explicit body.
 }
