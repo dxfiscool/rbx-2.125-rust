@@ -5,6 +5,7 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use core::sync::atomic::{AtomicU32, Ordering};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x063c460 — __ZN3RBX10Reflection14PropDescriptorINS_8SparklesEN3G3D6Color3EED1Ev
@@ -156,6 +157,19 @@ pub struct PlayerTeamUpdate {
 #[derive(Debug, Clone, Copy)]
 pub enum SpawnEffect {
     ForceField { duration_secs: f64 },
+}
+/// Process-wide static-init run count behind the `__GLOBAL__I_a_*`
+/// ctors in this file (IDA 0x65740c, 0x6583a0, 0x658744). The
+/// category/ios/FLog/descriptor/registrar/pool/guard stores fold into
+/// host statics (initialized on use), so only the run is recorded.
+static WATCHDOG13_STATIC_INITS: AtomicU32 = AtomicU32::new(0);
+/// Records one `__GLOBAL__I_a_*` run in this file.
+pub fn watchdog13_static_init() {
+    WATCHDOG13_STATIC_INITS.fetch_add(1, Ordering::SeqCst);
+}
+/// Returns the recorded static-init run count (test hook).
+pub fn watchdog13_static_inits() -> u32 {
+    WATCHDOG13_STATIC_INITS.load(Ordering::SeqCst)
 }
 
 // 0x063c528 — __ZNK3RBX8Sparkles11askAddChildEPKNS_8InstanceE
@@ -820,8 +834,15 @@ pub fn stub_063e66c(
 // type: int(void)
 #[doc(alias = "std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::push_back(RBX::SpawnLocation * const&)")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX13SpawnLocationESaIS2_EE9push_backERKS2_")]
-pub fn stub_063e6a4() -> ! {
-    todo!("0x063e6a4 std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::push_back(RBX::SpawnLocation * const&)")
+pub fn stub_063e6a4(
+    spawns: &mut Vec<SharedPtr<SpawnLocationState>>,
+    location: SharedPtr<SpawnLocationState>,
+) {
+    // IDA 0x63e6a4 (`vector<SpawnLocation*>::push_back`): fast path
+    // stores at finish and bumps it (0x63e6b2-0x63e6c0); a full buffer
+    // delegates to `_M_insert_aux` (0x63e6ca, host: stub_063f508).
+    // Host: `Vec::push` covers both.
+    spawns.push(location);
 }
 
 // 0x063e6d0 — __ZN3RBX15ServiceProvider6createINS_13DebrisServiceEEEPT_PKNS_8InstanceE
@@ -829,24 +850,39 @@ pub fn stub_063e6a4() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::DebrisService * RBX::ServiceProvider::create<RBX::DebrisService>(RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider6createINS_13DebrisServiceEEEPT_PKNS_8InstanceE")]
-pub fn stub_063e6d0() -> ! {
-    todo!("0x063e6d0 RBX::DebrisService * RBX::ServiceProvider::create<RBX::DebrisService>(RBX::Instance const*)")
+pub fn stub_063e6d0(provider_present: bool) -> bool {
+    // IDA 0x63e6d0 (`ServiceProvider::create<DebrisService>`):
+    // `findServiceProvider` (0x63e6d4); a null provider returns null
+    // (0x63e6dc), else the service is created-or-got on it (0x63e6e4,
+    // always non-null). The provider/service lookup folds into
+    // presence flags.
+    provider_present
 }
 
 // 0x063edbc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)
 #[doc(alias = "boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_063edbc() -> ! {
-    todo!("0x063edbc boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")
+pub fn stub_063edbc(touched_logging: bool) -> SharedPtr<SpawnLocationState> {
+    // IDA 0x63edbc (`Creatable<Instance>::create<SpawnLocation>`):
+    // `operator new(0x164)` (0x63edf2) + the `SpawnLocation` ctor
+    // (0x63ee16, host: stub_063d248) + the adopting `shared_ptr`
+    // with `Creatable::Deleter` (0x63ee24, host: stub_063ee70). Arc
+    // construction adopts owners.
+    SharedPtr::new(stub_063d248(touched_logging))
 }
 
 // 0x063ee70 — __ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "boost::shared_ptr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_063ee70() -> ! {
-    todo!("0x063ee70 boost::shared_ptr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_063ee70(location: SharedPtr<SpawnLocationState>) -> SharedPtr<SpawnLocationState> {
+    // IDA 0x63ee70 (`shared_ptr<SpawnLocation>` from raw + Deleter):
+    // stores the pointer (0x63ee90), builds the `shared_count` with
+    // the deleter (0x63ee98, host: stub_063f020) and wires the weak
+    // owner for non-null (0x63eec6-0x63eed6, host: stub_063ef38). Arc
+    // move covers both; the control block folds into the `Arc`.
+    location
 }
 
 // 0x063ef38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SpawnLocationES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -911,8 +947,20 @@ pub fn stub_063f168() {
 // type: int __fastcall(int, void *__src)
 #[doc(alias = "std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SpawnLocation **,std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>>,RBX::SpawnLocation * const&)")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX13SpawnLocationESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
-pub fn stub_063f508() -> ! {
-    todo!("0x063f508 std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SpawnLocation **,std::vector<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>>,RBX::SpawnLocation * const&)")
+pub fn stub_063f508(
+    spawns: &mut Vec<SharedPtr<SpawnLocationState>>,
+    index: usize,
+    location: SharedPtr<SpawnLocationState>,
+) {
+    // IDA 0x63f508 (`vector<SpawnLocation*>::_M_insert_aux`): spare
+    // capacity shifts the tail up one slot and stores at the position
+    // (0x63f520-0x63f544); a full buffer grows (length_error at
+    // 0x3fffffff, 0x63f5d0-0x63f5e2), allocates via `_M_allocate`
+    // (0x63f568, host: stub_063f5e8), memmoves both halves around the
+    // new element and swaps the buffer (0x63f56c-0x63f5c0). Host: a
+    // single `insert` covers both (same shape as `SoundType` at
+    // 0x3800d4).
+    spawns.insert(index, location);
 }
 
 // 0x063f5e8 — __ZNSt12_Vector_baseIPN3RBX13SpawnLocationESaIS2_EE11_M_allocateEm
@@ -920,24 +968,57 @@ pub fn stub_063f508() -> ! {
 // type: int(void)
 #[doc(alias = "std::_Vector_base<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::_M_allocate(unsigned long)")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN3RBX13SpawnLocationESaIS2_EE11_M_allocateEm")]
-pub fn stub_063f5e8() -> ! {
-    todo!("0x063f5e8 std::_Vector_base<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *>>::_M_allocate(unsigned long)")
+pub fn stub_063f5e8(count: usize) -> Vec<SharedPtr<SpawnLocationState>> {
+    // IDA 0x63f5e8 (`_Vector_base<SpawnLocation*>::_M_allocate`):
+    // count >= 0x40000000 -> `__throw_bad_alloc` (0x63f5f0-0x63f5f2,
+    // host: panic); else `operator new(4 * count)`. Host: a
+    // capacity-only `Vec` (len 0, like fresh storage).
+    assert!(count < 0x40000000, "std::bad_alloc (IDA 0x63f5f2)");
+    Vec::with_capacity(count)
 }
 
+/// Bound `void (*)(shared_ptr<DataModel>, string)` call behind the
+/// `boost::function<void(DataModel*)>` built at 0x65680c-0x657104:
+/// the two bound values (the model link + the message). The call
+/// formal (`DataModel*`) has no `arg<>` slot in the bind list, so
+/// invocation drops it and runs the target on the captures (IDA
+/// 0x65717c). The model handle folds into a presence flag.
+#[derive(Debug, Clone)]
+pub struct BoundDataModelCall {
+    pub has_model: bool,
+    pub message: String,
+}
+impl BoundDataModelCall {
+    pub fn new(has_model: bool, message: &str) -> Self {
+        Self {
+            has_model,
+            message: message.to_owned(),
+        }
+    }
+}
 // 0x065680c — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_065680c() -> ! {
-    todo!("0x065680c __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_065680c(has_model: bool, message: &str) -> BoundDataModelCall {
+    // IDA 0x65680c (`function<void(DataModel*)>` from the bind):
+    // copies the bind triple (`shared_count` addref at 0x656840, the
+    // string at 0x65687e), assigns it (0x656890) and releases the
+    // temps (0x6568a4-0x6568b8). Host: move the captures into the
+    // closure struct.
+    BoundDataModelCall::new(has_model, message)
 }
 
 // 0x0656994 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_0656994() -> ! {
-    todo!("0x0656994 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0656994(has_model: bool, message: &str) -> BoundDataModelCall {
+    // IDA 0x656994 (`function1<void,DataModel*>` from the bind):
+    // clears the slot (0x6569b4) then the same copy triple + assign
+    // (0x6569cc-0x656a1c) with temp release (0x656a30-0x656a44).
+    // Host: same closure construction.
+    BoundDataModelCall::new(has_model, message)
 }
 
 // 0x0656b20 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEEvT_
@@ -945,8 +1026,13 @@ pub fn stub_0656994() -> ! {
 // type: int(void)
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEEvT_")]
-pub fn stub_0656b20() -> ! {
-    todo!("0x0656b20 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")
+pub fn stub_0656b20(slot: &mut Option<BoundDataModelCall>, call: BoundDataModelCall) {
+    // IDA 0x656b20 (`function1::assign_to`): copies the bind triple
+    // (0x656b54-0x656b92), delegates to the vtable `assign_to`
+    // (0x656bb4, host: stub_0656cf0), releases the temps and stores
+    // the vtable (trailing store). Host: fill the slot; the vtable
+    // folds in.
+    *slot = Some(call);
 }
 
 // 0x0656cb8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
@@ -970,8 +1056,14 @@ pub fn stub_0656cd4() {
 // type: int(void)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE")]
-pub fn stub_0656cf0() -> ! {
-    todo!("0x0656cf0 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0656cf0(slot: &mut Option<BoundDataModelCall>, call: BoundDataModelCall) -> bool {
+    // IDA 0x656cf0 (`basic_vtable1::assign_to` into a buffer):
+    // copies the bind triple (0x656d14-0x656d64), delegates to the
+    // tagged overload (0x656d78, host: stub_0656e78), releases the
+    // temps and returns 1 (0x656dbc). Host: fill the slot, report
+    // success.
+    *slot = Some(call);
+    true
 }
 
 // 0x0656e78 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -979,8 +1071,14 @@ pub fn stub_0656cf0() -> ! {
 // type: int __fastcall(int, void *, int)
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
-pub fn stub_0656e78() -> ! {
-    todo!("0x0656e78 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0656e78(slot: &mut Option<BoundDataModelCall>, call: BoundDataModelCall) -> bool {
+    // IDA 0x656e78 (`basic_vtable1::assign_to` with `function_obj_tag`):
+    // copies the bind triple (0x656e9e-0x656eea), installs it via
+    // `assign_functor` (0x656efc, host: stub_0656ffc), releases the
+    // temps and returns 1 (0x656f40). Host: fill the slot, report
+    // success.
+    *slot = Some(call);
+    true
 }
 
 // 0x0656ffc — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -988,8 +1086,12 @@ pub fn stub_0656e78() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 #[doc(alias = "__ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
-pub fn stub_0656ffc() -> ! {
-    todo!("0x0656ffc void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0656ffc(call: BoundDataModelCall) -> Box<BoundDataModelCall> {
+    // IDA 0x656ffc (`basic_vtable1::assign_functor`, not-heap case):
+    // `operator new(0x10)` (0x657024) + copies the bind triple into
+    // it (0x65702a-0x657090) and publishes the pointer (0x657096).
+    // Host: box the captures.
+    Box::new(call)
 }
 
 // 0x0657104 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
@@ -997,8 +1099,14 @@ pub fn stub_0656ffc() -> ! {
 // type: int(void)
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel>,std::string) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_0657104() -> ! {
-    todo!("0x0657104 void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel>,std::string) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+pub fn stub_0657104(call: &BoundDataModelCall, target: impl Fn(bool, &str)) {
+    // IDA 0x657104 (`list2::operator()`): copies the bound model
+    // link (0x65712c-0x657148) and message (0x65716e), runs the
+    // stored target on them (0x65717c) and releases the temps
+    // (0x65718c-0x65719e). The `DataModel*` call formal has no
+    // `arg<>` slot, so it is dropped. Host: invoke the closure
+    // directly (same shape as the `Heartbeat` bind at 0x3791a4).
+    target(call.has_model, &call.message)
 }
 
 // 0x0657270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -1014,8 +1122,21 @@ pub fn stub_0657270() {
 // demangled: global constructor keyed to_a_263
 #[doc(alias = "global constructor keyed to_a_263")]
 #[doc(alias = "__GLOBAL__I_a_263")]
-pub fn stub_065740c() -> ! {
-    todo!("0x065740c global constructor keyed to_a_263")
+pub fn stub_065740c() {
+    // IDA 0x65740c (`__GLOBAL__I_a_263`): `generic_category` x2 +
+    // `system_category` stores (0x657416-0x657434), `ios_base::Init`
+    // + `__cxa_atexit` (0x65743a-0x65745a), the `FLog`
+    // `ForceProdLoggingService` flag (0x65745e-0x65747c), the
+    // `BoundFuncDesc` registrations (`ProfilingItem::GetTimes` /
+    // `GetTimesForFrames`, `StatsService::Report` /
+    // `ReportTaskScheduler` / `ReportJobsStepWindow` / `SetReportUrl`,
+    // `Stats::Item::GetValueString` / `GetValue`) and `BoundProp`s
+    // (`ReporterType`, `MinReportInterval`) with their `__cxa_atexit`
+    // teardowns, the `ClassRegistrar` inits, the `boost::exception`
+    // statics, the `singleton_pool` guards and the `ScriptContext`
+    // `creatorPrivate` (0x657480-0x657932). Host statics initialize
+    // on use; only the run is recorded.
+    watchdog13_static_init();
 }
 
 // 0x065793c — __ZN3RBX10StudioTool10setEnabledEb
