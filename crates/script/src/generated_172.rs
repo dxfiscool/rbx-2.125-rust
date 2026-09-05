@@ -75,9 +75,26 @@ pub struct MainVC {
     pub view: Option<u32>,
     pub ogre_window: Option<u32>,
     pub ogre_view: Option<u32>,
+    pub ogre_vc: Option<u32>,
+    pub last_non_game: Option<u32>,
     pub rbx_view: Option<u32>,
     pub loaded: bool,
     pub subviews: u32,
+}
+/// `__GLOBAL__I_a_27` one-shot latch (IDA 0x51fe0).
+static GLOBAL_A27_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `RobloxAnimatingPageViewController` observable state (IDA
+/// 0x52178..0x52aa0): load/appear latches, the memory-warning latch, the
+/// pan latch, and the pan start count. Image views fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct AnimVC {
+    pub loaded: bool,
+    pub appeared: bool,
+    pub mem_warning: bool,
+    pub panning: bool,
+    pub pan_count: u32,
+    pub anims: u32,
 }
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
@@ -744,176 +761,204 @@ pub fn stub_0x51f90(vc: &MainVC) -> Option<u32> {
 
 // 0x51fa0 — -[MainViewController getOgreViewController]
 // type: id __cdecl(MainViewController *self, SEL)
-#[doc(alias = "-[MainViewController getOgreViewController]")]
-pub fn stub_0x51fa0() -> ! {
-    todo!("0x51fa0 -[MainViewController getOgreViewController]")
+pub fn stub_0x51fa0(vc: &MainVC) -> Option<u32> {
+    // IDA 0x51fa0: `getOgreViewController` answers the controller
+    // (0x51fae).
+    vc.ogre_vc
 }
 
 // 0x51fb0 — -[MainViewController setOgreViewController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
-#[doc(alias = "-[MainViewController setOgreViewController:]")]
-pub fn stub_0x51fb0() -> ! {
-    todo!("0x51fb0 -[MainViewController setOgreViewController:]")
+pub fn stub_0x51fb0(vc: &mut MainVC, controller: u32) {
+    // IDA 0x51fb0: `setOgreViewController:` stores the controller
+    // (0x51fbc).
+    vc.ogre_vc = Some(controller);
 }
 
 // 0x51fc0 — -[MainViewController setLastNonGameController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
-#[doc(alias = "-[MainViewController setLastNonGameController:]")]
-pub fn stub_0x51fc0() -> ! {
-    todo!("0x51fc0 -[MainViewController setLastNonGameController:]")
+pub fn stub_0x51fc0(vc: &mut MainVC, controller: u32) {
+    // IDA 0x51fc0: `setLastNonGameController:` stores the controller
+    // (0x51fcc).
+    vc.last_non_game = Some(controller);
 }
 
 // 0x51fd0 — -[MainViewController getLastNonGameController]
 // type: id __cdecl(MainViewController *self, SEL)
-#[doc(alias = "-[MainViewController getLastNonGameController]")]
-pub fn stub_0x51fd0() -> ! {
-    todo!("0x51fd0 -[MainViewController getLastNonGameController]")
+pub fn stub_0x51fd0(vc: &MainVC) -> Option<u32> {
+    // IDA 0x51fd0: `getLastNonGameController` answers the controller
+    // (0x51fde).
+    vc.last_non_game
 }
 
 // 0x51fe0 — __GLOBAL__I_a_27
-#[doc(alias = "global constructor keyed to_a_27")]
-pub fn stub_0x51fe0() -> ! {
-    todo!("0x51fe0 global constructor keyed to_a_27")
+pub fn stub_0x51fe0() -> u32 {
+    // IDA 0x51fe0: `__GLOBAL__I_a_27` — see `GLOBAL_A27_INIT`.
+    *GLOBAL_A27_INIT
 }
 
 // 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]
 // type: RobloxAnimatingPageViewController *__cdecl(RobloxAnimatingPageViewController *self, SEL, id)
-#[doc(alias = "-[RobloxAnimatingPageViewController initWithCoder:]")]
-pub fn stub_0x52178() -> ! {
-    todo!("0x52178 -[RobloxAnimatingPageViewController initWithCoder:]")
+pub fn stub_0x52178() -> AnimVC {
+    // IDA 0x52178: `initWithCoder:` chains to super (0x52196..0x521a0)
+    // and clears the warning/loop latches (0x521c4..0x521d4); the nib
+    // glue folds into the host.
+    AnimVC::default()
 }
 
 // 0x52280 — -[RobloxAnimatingPageViewController dealloc]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
-#[doc(alias = "-[RobloxAnimatingPageViewController dealloc]")]
-pub fn stub_0x52280() -> ! {
-    todo!("0x52280 -[RobloxAnimatingPageViewController dealloc]")
+pub fn stub_0x52280(vc: &mut AnimVC) {
+    // IDA 0x52280: `dealloc` releases the animation views unless a
+    // memory warning fired (0x52294..0x522e8) and chains to super; drop
+    // glue covers it and the record resets.
+    *vc = AnimVC::default();
 }
 
 // 0x5233c — -[RobloxAnimatingPageViewController appInBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
-#[doc(alias = "-[RobloxAnimatingPageViewController appInBackground:]")]
-pub fn stub_0x5233c() -> ! {
-    todo!("0x5233c -[RobloxAnimatingPageViewController appInBackground:]")
+pub fn stub_0x5233c(vc: &mut AnimVC) {
+    // IDA 0x5233c: `appInBackground:` stops the background pan (0x52348).
+    vc.panning = false;
 }
 
 // 0x5234c — -[RobloxAnimatingPageViewController appInForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
-#[doc(alias = "-[RobloxAnimatingPageViewController appInForeground:]")]
-pub fn stub_0x5234c() -> ! {
-    todo!("0x5234c -[RobloxAnimatingPageViewController appInForeground:]")
+pub fn stub_0x5234c(vc: &mut AnimVC, loaded: bool) {
+    // IDA 0x5234c: `appInForeground:` restarts the pan for a loaded view
+    // (0x52364..0x5237e); the loaded check folds into the host.
+    if loaded {
+        vc.panning = true;
+        vc.pan_count += 1;
+    }
 }
 
 // 0x52384 — -[RobloxAnimatingPageViewController removeViewAndAnimation:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
-#[doc(alias = "-[RobloxAnimatingPageViewController removeViewAndAnimation:]")]
-pub fn stub_0x52384() -> ! {
-    todo!("0x52384 -[RobloxAnimatingPageViewController removeViewAndAnimation:]")
+pub fn stub_0x52384() {
+    // IDA 0x52384: `removeViewAndAnimation:` strips the layer animations
+    // (0x523a8), drops the view (0x523ba), and releases it (0x523d0);
+    // the layer/view glue folds into the host — no-op.
 }
 
 // 0x523d4 — -[RobloxAnimatingPageViewController didReceiveMemoryWarning]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
-#[doc(alias = "-[RobloxAnimatingPageViewController didReceiveMemoryWarning]")]
-pub fn stub_0x523d4() -> ! {
-    todo!("0x523d4 -[RobloxAnimatingPageViewController didReceiveMemoryWarning]")
+pub fn stub_0x523d4(vc: &mut AnimVC) {
+    // IDA 0x523d4: `didReceiveMemoryWarning` chains to super
+    // (0x523ee..0x523f8); the warning is observed.
+    vc.mem_warning = true;
 }
 
 // 0x52400 — -[RobloxAnimatingPageViewController viewDidLoad]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
-#[doc(alias = "-[RobloxAnimatingPageViewController viewDidLoad]")]
-pub fn stub_0x52400() -> ! {
-    todo!("0x52400 -[RobloxAnimatingPageViewController viewDidLoad]")
+pub fn stub_0x52400(vc: &mut AnimVC) {
+    // IDA 0x52400: `viewDidLoad` chains to super (0x52420..0x5242a) and
+    // builds the animation views (0x5243a..); the UIKit glue folds into
+    // the host.
+    vc.loaded = true;
 }
 
 // 0x52580 — -[RobloxAnimatingPageViewController getInitialXPosition:]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
-#[doc(alias = "-[RobloxAnimatingPageViewController getInitialXPosition:]")]
-pub fn stub_0x52580() -> ! {
-    todo!("0x52580 -[RobloxAnimatingPageViewController getInitialXPosition:]")
+pub fn stub_0x52580(x: Option<f32>) -> f32 {
+    // IDA 0x52580: `getInitialXPosition:` answers 0 for a null view
+    // (0x5258c..0x52602) and derives the position from the view bounds
+    // otherwise; the geometry folds into the host.
+    x.unwrap_or(0.0)
 }
 
 // 0x52614 — -[RobloxAnimatingPageViewController viewDidAppear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
-#[doc(alias = "-[RobloxAnimatingPageViewController viewDidAppear:]")]
-pub fn stub_0x52614() -> ! {
-    todo!("0x52614 -[RobloxAnimatingPageViewController viewDidAppear:]")
+pub fn stub_0x52614(vc: &mut AnimVC) {
+    // IDA 0x52614: `viewDidAppear:` starts the foreground/background pan
+    // animations; the animation glue folds into the host.
+    vc.appeared = true;
+    vc.panning = true;
+    vc.pan_count += 1;
 }
 
 // 0x52a50 — -[RobloxAnimatingPageViewController viewDidDisappear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
-#[doc(alias = "-[RobloxAnimatingPageViewController viewDidDisappear:]")]
-pub fn stub_0x52a50() -> ! {
-    todo!("0x52a50 -[RobloxAnimatingPageViewController viewDidDisappear:]")
+pub fn stub_0x52a50(vc: &mut AnimVC) {
+    // IDA 0x52a50: `viewDidDisappear:` chains to super (0x52a6c..) and
+    // stops the pan short of a memory warning (0x52a86..0x52a98).
+    vc.appeared = false;
+    vc.panning = false;
 }
 
 // 0x52aa0 — -[RobloxAnimatingPageViewController hasNaNValue:]
 // type: char __cdecl(RobloxAnimatingPageViewController *self, SEL, CGRect)
-#[doc(alias = "-[RobloxAnimatingPageViewController hasNaNValue:]")]
-pub fn stub_0x52aa0() -> ! {
-    todo!("0x52aa0 -[RobloxAnimatingPageViewController hasNaNValue:]")
+pub fn stub_0x52aa0() -> bool {
+    // IDA 0x52aa0: `hasNaNValue:` answers 0 unconditionally (0x52ad2).
+    false
 }
 
 // 0x52aec — -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
-#[doc(alias = "-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")]
-pub fn stub_0x52aec() -> ! {
-    todo!("0x52aec -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")
+pub fn stub_0x52aec(vc: &mut AnimVC) {
+    // IDA 0x52aec: `animateToZeroPosition` builds the layer animation
+    // blocks (see `stub_0x52dac`/`stub_0x52f14`) and runs them; the
+    // CoreAnimation glue folds into the host.
+    vc.anims += 1;
 }
 
 // 0x52dac — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke
 // type: id __fastcall(int)
-#[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")]
-pub fn stub_0x52dac() -> ! {
-    todo!("0x52dac ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")
+pub fn stub_0x52dac() {
+    // IDA 0x52dac: the zero-position block composes the layer animation;
+    // folds into `stub_0x52aec` — no-op.
 }
 
 // 0x52ed4 — ___copy_helper_block__14
 // type: void __fastcall(int, int)
-#[doc(alias = "___copy_helper_block__14")]
-pub fn stub_0x52ed4() -> ! {
-    todo!("0x52ed4 ___copy_helper_block__14")
+pub fn stub_0x52ed4() {
+    // IDA 0x52ed4: `__copy_helper_block__14` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x52ef8 — ___destroy_helper_block__14
 // type: void __fastcall(int)
-#[doc(alias = "___destroy_helper_block__14")]
-pub fn stub_0x52ef8() -> ! {
-    todo!("0x52ef8 ___destroy_helper_block__14")
+pub fn stub_0x52ef8() {
+    // IDA 0x52ef8: `__destroy_helper_block__14` releases captures (pair
+    // of 0x52ed4); `Arc` glue covers it — no-op.
 }
 
 // 0x52f14 — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73
 // type: id __fastcall(int)
-#[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")]
-pub fn stub_0x52f14() -> ! {
-    todo!("0x52f14 ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")
+pub fn stub_0x52f14() {
+    // IDA 0x52f14: the animation block forwards to `animateLayer:...`
+    // (0x52f42); folds into `stub_0x52aec` — no-op.
 }
 
 // 0x52f44 — ___copy_helper_block_76
 // type: void __fastcall(int, const void **)
-#[doc(alias = "___copy_helper_block_76")]
-pub fn stub_0x52f44() -> ! {
-    todo!("0x52f44 ___copy_helper_block_76")
+pub fn stub_0x52f44() {
+    // IDA 0x52f44: `__copy_helper_block_76` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x52f74 — ___destroy_helper_block_77
 // type: void __fastcall(const void **)
-#[doc(alias = "___destroy_helper_block_77")]
-pub fn stub_0x52f74() -> ! {
-    todo!("0x52f74 ___destroy_helper_block_77")
+pub fn stub_0x52f74() {
+    // IDA 0x52f74: `__destroy_helper_block_77` releases captures (pair
+    // of 0x52f44); `Arc` glue covers it — no-op.
 }
 
 // 0x52f98 — -[RobloxAnimatingPageViewController animateBackground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
-#[doc(alias = "-[RobloxAnimatingPageViewController animateBackground]")]
-pub fn stub_0x52f98() -> ! {
-    todo!("0x52f98 -[RobloxAnimatingPageViewController animateBackground]")
+pub fn stub_0x52f98(vc: &mut AnimVC) {
+    // IDA 0x52f98: `animateBackground` animates to zero when the frame
+    // is seated (0x52fde..0x53012), else runs the plain layer animation
+    // (0x5301e..); either way one animation starts.
+    vc.anims += 1;
 }
 
 // 0x53034 — -[RobloxAnimatingPageViewController animateForeground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
-#[doc(alias = "-[RobloxAnimatingPageViewController animateForeground]")]
-pub fn stub_0x53034() -> ! {
-    todo!("0x53034 -[RobloxAnimatingPageViewController animateForeground]")
+pub fn stub_0x53034(vc: &mut AnimVC) {
+    // IDA 0x53034: `animateForeground` — same seated-or-plain branch as
+    // 0x52f98 (0x5307a..0x530ba); one animation starts.
+    vc.anims += 1;
 }
 
 // 0x530d0 — -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]
@@ -1442,5 +1487,66 @@ mod menu_mainvc_batch_tests {
         let mut bare = MainVC::default();
         stub_0x51e78(&mut bare);
         assert_eq!(bare.subviews, 0);
+    }
+}
+
+#[cfg(test)]
+mod anim_vc_batch_tests {
+    use super::*;
+
+    #[test]
+    fn main_vc_controllers() {
+        let mut vc = stub_0x51eb8();
+        assert_eq!(stub_0x51fa0(&vc), None);
+        stub_0x51fb0(&mut vc, 21);
+        assert_eq!(stub_0x51fa0(&vc), Some(21));
+        assert_eq!(stub_0x51fd0(&vc), None);
+        stub_0x51fc0(&mut vc, 22);
+        assert_eq!(stub_0x51fd0(&vc), Some(22));
+        assert_eq!(stub_0x51fe0(), 1);
+    }
+
+    #[test]
+    fn anim_lifecycle() {
+        let mut vc = stub_0x52178();
+        assert!(!vc.loaded);
+        stub_0x52400(&mut vc);
+        assert!(vc.loaded);
+        stub_0x5234c(&mut vc, false);
+        assert!(!vc.panning);
+        stub_0x5234c(&mut vc, true);
+        assert!(vc.panning);
+        assert_eq!(vc.pan_count, 1);
+        stub_0x5233c(&mut vc);
+        assert!(!vc.panning);
+        stub_0x52614(&mut vc);
+        assert!(vc.appeared);
+        assert!(vc.panning);
+        stub_0x52a50(&mut vc);
+        assert!(!vc.appeared);
+        assert!(!vc.panning);
+        stub_0x523d4(&mut vc);
+        assert!(vc.mem_warning);
+        stub_0x52384();
+        assert!(!stub_0x52aa0());
+        assert_eq!(stub_0x52580(None), 0.0);
+        assert_eq!(stub_0x52580(Some(3.5)), 3.5);
+        stub_0x52280(&mut vc);
+        assert_eq!(vc, AnimVC::default());
+    }
+
+    #[test]
+    fn animations() {
+        let mut vc = stub_0x52178();
+        stub_0x52aec(&mut vc);
+        stub_0x52f98(&mut vc);
+        stub_0x53034(&mut vc);
+        assert_eq!(vc.anims, 3);
+        stub_0x52dac();
+        stub_0x52f14();
+        stub_0x52ed4();
+        stub_0x52ef8();
+        stub_0x52f44();
+        stub_0x52f74();
     }
 }
