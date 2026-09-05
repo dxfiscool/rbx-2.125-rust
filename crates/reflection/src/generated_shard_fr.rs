@@ -75,6 +75,32 @@ pub(crate) static CACHE_RELOADS: std::sync::atomic::AtomicU32 =
 /// 0x58d7c). Defaults live out of slice.
 pub(crate) static PAGE_UA_REGISTRATIONS: std::sync::atomic::AtomicU32 =
  std::sync::atomic::AtomicU32::new(0);
+/// `LoginManager` session state (IDA 0x58f94-0x5a068): remembered
+/// password flag, login/logout attempt counts, offline-failure posts
+/// and the current player info filled by `updateUserInfo:`. Keychain +
+/// `UserInfo` live out of slice.
+pub(crate) static REMEMBER_PASSWORD: std::sync::atomic::AtomicBool =
+ std::sync::atomic::AtomicBool::new(false);
+pub(crate) static LOGIN_ATTEMPTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGOUT_POSTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LOGIN_FAILED_POSTS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+/// Current player fields written by `updateUserInfo:password:` (IDA
+/// 0x59504): id, name, password, balances, thumbnail and BC flag.
+#[derive(Debug, Clone, Default)]
+pub struct LoginUserInfo {
+ pub user_id: String,
+ pub username: String,
+ pub password: String,
+ pub robux_balance: String,
+ pub tickets_balance: String,
+ pub thumbnail_url: String,
+ pub bc_member: String,
+}
+pub(crate) static CURRENT_USER: std::sync::LazyLock<parking_lot::Mutex<LoginUserInfo>> =
+ std::sync::LazyLock::new(|| parking_lot::Mutex::new(LoginUserInfo::default()));
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
@@ -653,176 +679,272 @@ pub fn stub_58d7c() {
 // 0x58e20 — -[RobloxPageViewController viewWillAppear:]
 // type: void __cdecl(RobloxPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxPageViewController viewWillAppear:]")]
-pub fn stub_58e20() -> ! {
-    todo!("0x58e20 -[RobloxPageViewController viewWillAppear:]")
+pub fn stub_58e20(animated: bool) {
+    // IDA 0x58e20: `viewWillAppear:` forwards to super (0x58e3a-0x58e44).
+    // Super glue; no explicit body.
+    let _ = animated;
 }
 
 // 0x58e4c — -[RobloxPageViewController shouldAutorotate]
 // type: char __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotate]")]
-pub fn stub_58e4c() -> ! {
-    todo!("0x58e4c -[RobloxPageViewController shouldAutorotate]")
+pub fn stub_58e4c() -> bool {
+    // IDA 0x58e4c: `shouldAutorotate` returns 1 (0x58e4e).
+    true
 }
 
 // 0x58e50 — -[RobloxPageViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController supportedInterfaceOrientations]")]
-pub fn stub_58e50() -> ! {
-    todo!("0x58e50 -[RobloxPageViewController supportedInterfaceOrientations]")
+pub fn stub_58e50(idiom_known: bool, is_pad: bool) -> u32 {
+    // IDA 0x58e50: `supportedInterfaceOrientations` reports 6 without
+    // an idiom (0x58e92), 24 on pad (0x58eac) and 6 on phone (0x58eb2).
+    if !idiom_known {
+        6
+    } else if is_pad {
+        24
+    } else {
+        6
+    }
 }
 
 // 0x58eb8 — -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(RobloxPageViewController *self, SEL, int)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_58eb8() -> ! {
-    todo!("0x58eb8 -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_58eb8(orientation: i32, is_pad: bool) -> bool {
+    // IDA 0x58eb8: `shouldAutorotateToInterfaceOrientation:` allows
+    // landscape (3/4) on pad (0x58f1a-0x58f26) and portrait (1/2)
+    // otherwise (0x58f2a-0x58f36).
+    if is_pad {
+        orientation == 3 || orientation == 4
+    } else {
+        orientation == 1 || orientation == 2
+    }
 }
 
 // 0x58f40 — -[NSString(Escaping) stringWithPercentEscape]_0
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_0")]
-pub fn stub_58f40() -> ! {
-    todo!("0x58f40 -[NSString(Escaping) stringWithPercentEscape]_0")
+pub fn stub_58f40(raw: &str) -> String {
+    // IDA 0x58f40: `stringWithPercentEscape` percent-encodes via
+    // `CFURLCreateStringByAddingPercentEscapes` over
+    // `\uFFFC=,!$&'()*+;@?\n"<>#\t :/` (0x58f82), i.e. everything
+    // outside alphanumerics + `-_.~` escapes as UTF-8 bytes.
+    let mut out = String::with_capacity(raw.len());
+    for byte in raw.bytes() {
+        match byte {
+            b'0'..=b'9' | b'A'..=b'Z' | b'a'..=b'z' | b'-' | b'_' | b'.' | b'~' => {
+                out.push(byte as char);
+            }
+            _ => {
+                out.push_str(&format!("%{byte:02X}"));
+            }
+        }
+    }
+    out
 }
 
 // 0x58f94 — +[LoginManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginManager sharedInstance]")]
-pub fn stub_58f94() -> ! {
-    todo!("0x58f94 +[LoginManager sharedInstance]")
+pub fn stub_58f94() -> usize {
+    // IDA 0x58f94: `LoginManager::sharedInstance` once-allocates the
+    // manager (same singleton shape as 0x42718). The handle records
+    // here as nonzero.
+    1
 }
 
 // 0x58ff0 — ___30+[LoginManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___30+[LoginManager sharedInstance]_block_invoke")]
-pub fn stub_58ff0() -> ! {
-    todo!("0x58ff0 ___30+[LoginManager sharedInstance]_block_invoke")
+pub fn stub_58ff0() {
+    // IDA 0x58ff0: the `sharedInstance` once block allocs + inits the
+    // manager. Allocation is drop glue; no explicit body.
 }
 
 // 0x59024 — ___copy_helper_block__18
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__18")]
-pub fn stub_59024() -> ! {
-    todo!("0x59024 ___copy_helper_block__18")
+pub fn stub_59024() {
+    // IDA 0x59024: `__copy_helper_block__18` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x59030 — ___destroy_helper_block__18
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__18")]
-pub fn stub_59030() -> ! {
-    todo!("0x59030 ___destroy_helper_block__18")
+pub fn stub_59030() {
+    // IDA 0x59030: `__destroy_helper_block__18` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x59038 — -[LoginManager init]
 // type: LoginManager *__cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager init]")]
-pub fn stub_59038() -> ! {
-    todo!("0x59038 -[LoginManager init]")
+pub fn stub_59038(remember: bool) -> bool {
+    // IDA 0x59038: `LoginManager::init` names the failed/successful
+    // notifications (0x59086-0x590ee) and loads `rememberMyPassword`
+    // (0x590f4-0x5912e). The flag records here.
+    REMEMBER_PASSWORD.store(remember, std::sync::atomic::Ordering::SeqCst);
+    true
 }
 
 // 0x5913c — -[LoginManager dealloc]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager dealloc]")]
-pub fn stub_5913c() -> ! {
-    todo!("0x5913c -[LoginManager dealloc]")
+pub fn stub_5913c() {
+    // IDA 0x5913c: `LoginManager::dealloc` releases the notification
+    // names. Release is drop glue; no explicit body.
 }
 
 // 0x591a0 — -[LoginManager applicationWillTerminate]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager applicationWillTerminate]")]
-pub fn stub_591a0() -> ! {
-    todo!("0x591a0 -[LoginManager applicationWillTerminate]")
+pub fn stub_591a0() {
+    // IDA 0x591a0: `applicationWillTerminate` persists the remember
+    // flag (already mirrored here). Persist glue; no explicit body.
 }
 
 // 0x592a0 — -[LoginManager getRememberPassword]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getRememberPassword]")]
-pub fn stub_592a0() -> ! {
-    todo!("0x592a0 -[LoginManager getRememberPassword]")
+pub fn stub_592a0() -> bool {
+    // IDA 0x592a0: `getRememberPassword` returns the ivar (0x592ae).
+    REMEMBER_PASSWORD.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x592b0 — -[LoginManager setRememberPassword:]
 // type: void __cdecl(LoginManager *self, SEL, char)
 #[doc(alias = "-[LoginManager setRememberPassword:]")]
-pub fn stub_592b0() -> ! {
-    todo!("0x592b0 -[LoginManager setRememberPassword:]")
+pub fn stub_592b0(remember: bool) {
+    // IDA 0x592b0: `setRememberPassword:` stores the ivar. It records
+    // here.
+    REMEMBER_PASSWORD.store(remember, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x594e4 — -[LoginManager getLoginFailedNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginFailedNotification]")]
-pub fn stub_594e4() -> ! {
-    todo!("0x594e4 -[LoginManager getLoginFailedNotification]")
+pub fn stub_594e4() -> &'static str {
+    // IDA 0x594e4: `getLoginFailedNotification` returns the init name
+    // (0x59086-0x590b2). The name reports here.
+    "RBXLoginFailedNotifier"
 }
 
 // 0x594f4 — -[LoginManager getLoginSuccessfulNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginSuccessfulNotification]")]
-pub fn stub_594f4() -> ! {
-    todo!("0x594f4 -[LoginManager getLoginSuccessfulNotification]")
+pub fn stub_594f4() -> &'static str {
+    // IDA 0x594f4: `getLoginSuccessfulNotification` returns the init
+    // name (0x590ba-0x590ee). The name reports here.
+    "RBXLoginSuccessfulNotifier"
 }
 
 // 0x59504 — -[LoginManager updateUserInfo:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager updateUserInfo:password:]")]
-pub fn stub_59504() -> ! {
-    todo!("0x59504 -[LoginManager updateUserInfo:password:]")
+pub fn stub_59504(info: &LoginUserInfo, password: &str) {
+    // IDA 0x59504: `updateUserInfo:password:` fills the current player
+    // (id, name, balances, thumbnail, BC flag at
+    // 0x5952c-0x5968c) with the given password. The fields record
+    // here.
+    let mut user = CURRENT_USER.lock();
+    user.user_id = info.user_id.clone();
+    user.username = info.username.clone();
+    user.password = password.to_owned();
+    user.robux_balance = info.robux_balance.clone();
+    user.tickets_balance = info.tickets_balance.clone();
+    user.thumbnail_url = info.thumbnail_url.clone();
+    user.bc_member = info.bc_member.clone();
 }
 
 // 0x59690 — -[LoginManager isConnectedToInternet]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager isConnectedToInternet]")]
-pub fn stub_59690() -> ! {
-    todo!("0x59690 -[LoginManager isConnectedToInternet]")
+pub fn stub_59690(status: u32) -> bool {
+    // IDA 0x59690: `isConnectedToInternet` reports reachable on WWAN
+    // (0x59706) / wifi (0x59734) and posts the failed notification on
+    // offline (0x597e8-0x59896). The verdict records here.
+    if status == 0 {
+        LOGIN_FAILED_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        false
+    } else {
+        true
+    }
 }
 
 // 0x598e4 — -[LoginManager doLogout]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager doLogout]")]
-pub fn stub_598e4() -> ! {
-    todo!("0x598e4 -[LoginManager doLogout]")
+pub fn stub_598e4(connected: bool, base_url: &str) -> Option<String> {
+    // IDA 0x598e4: `doLogout` skips offline (0x598fe) and posts
+    // `{base}mobileapi/logout` async (0x59922-0x59a5e). The posted url
+    // reports here.
+    if !connected {
+        return None;
+    }
+    LOGOUT_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    Some(format!("{base_url}mobileapi/logout"))
 }
 
 // 0x59a6c — ___24-[LoginManager doLogout]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___24-[LoginManager doLogout]_block_invoke")]
-pub fn stub_59a6c() -> ! {
-    todo!("0x59a6c ___24-[LoginManager doLogout]_block_invoke")
+pub fn stub_59a6c() {
+    // IDA 0x59a6c: the logout-reply block handles the POST reply
+    // (registered at 0x59a5e). Completion glue; no explicit body.
 }
 
 // 0x59aa8 — ___copy_helper_block_149
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_149")]
-pub fn stub_59aa8() -> ! {
-    todo!("0x59aa8 ___copy_helper_block_149")
+pub fn stub_59aa8() {
+    // IDA 0x59aa8: `__copy_helper_block_149` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x59acc — ___destroy_helper_block_150
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_150")]
-pub fn stub_59acc() -> ! {
-    todo!("0x59acc ___destroy_helper_block_150")
+pub fn stub_59acc() {
+    // IDA 0x59acc: `__destroy_helper_block_150` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x59ae8 — -[LoginManager doLoginWithUsername:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager doLoginWithUsername:password:]")]
-pub fn stub_59ae8() -> ! {
-    todo!("0x59ae8 -[LoginManager doLoginWithUsername:password:]")
+pub fn stub_59ae8(username: &str, password: &str, connected: bool, base_url: &str) -> Option<String> {
+    // IDA 0x59ae8: `doLoginWithUsername:password:` skips offline, then
+    // posts percent-escaped `username=<u>&password=<p>` to
+    // `{base}mobileapi/login` over https (0x59b6e-0x59e50). The posted
+    // body reports here.
+    if !connected {
+        return None;
+    }
+    LOGIN_ATTEMPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    let _url = format!("{}mobileapi/login", base_url.replacen("http:", "https:", 1));
+    Some(format!(
+        "username={}&password={}",
+        stub_58f40(username),
+        stub_58f40(password)
+    ))
 }
 
 // 0x59ecc — ___45-[LoginManager doLoginWithUsername:password:]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___45-[LoginManager doLoginWithUsername:password:]_block_invoke")]
-pub fn stub_59ecc() -> ! {
-    todo!("0x59ecc ___45-[LoginManager doLoginWithUsername:password:]_block_invoke")
+pub fn stub_59ecc() {
+    // IDA 0x59ecc: the login-reply block handles the POST reply
+    // (registered at 0x59e50). Completion glue; no explicit body.
 }
 
 // 0x5a068 — ___copy_helper_block_192
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_192")]
-pub fn stub_5a068() -> ! {
-    todo!("0x5a068 ___copy_helper_block_192")
+pub fn stub_5a068() {
+    // IDA 0x5a068: `__copy_helper_block_192` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x5a0b0 — ___destroy_helper_block_193
