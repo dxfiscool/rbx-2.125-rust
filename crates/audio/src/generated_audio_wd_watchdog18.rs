@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
+use crate::generated_134::{XmlIntSlot, XmlReadValue};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 
@@ -41,21 +42,28 @@ pub enum XAlignmentVariant {
     XAlignment(u32),
     Other,
 }
-/// `RBX::TextBox`/`GuiTextMixin` text state behind the Batch-Q
+/// `RBX::TextBox`/`GuiTextMixin` text state behind the Batch-Q/R
 /// descriptors: the `XAlignment` id (member `getXAlignment`, IDA
 /// 0x66871c), the two bool members (`TextWrap`/`TextScaled`; the
 /// deprecated `TextWrapped` alias shares the `TextWrap` member —
 /// grounded: no `setTextWrapped` exists and its descriptor carries
-/// the deprecated attributes, IDA 0x67282c-0x672856) and the
-/// `TextStrokeTransparency` (sole float descriptor in the TU, IDA
-/// 0x672ae4). Defaults ride the base init (host: cleared;
-/// `Left` = 0 is grounded).
+/// the deprecated attributes, IDA 0x67282c-0x672856), the two float
+/// members (`TextTransparency`/`TextStrokeTransparency`, IDA
+/// 0x6727de/0x672ae4), the two `Color3` members (`TextColor3`/
+/// `TextStrokeColor3`, IDA 0x672782/0x672a94), the `TextColor`
+/// `BrickColor` (IDA 0x672728) and the `Font` id. Defaults ride the
+/// base init (host: cleared; `Left` = 0 is grounded).
 #[derive(Debug, Clone, Default)]
 pub struct TextBoxState {
     pub x_alignment: u32,
     pub text_wrap: bool,
     pub text_scaled: bool,
+    pub text_transparency: f32,
     pub text_stroke_transparency: f32,
+    pub text_color3: [f32; 3],
+    pub text_stroke_color3: [f32; 3],
+    pub text_color: u32,
+    pub font: u32,
 }
 /// Bool member selected by a `PropDescriptor<TextBox, bool>`'s
 /// member-pointer pair (IDA 0x67283e-0x6728f6: three objects over
@@ -76,6 +84,48 @@ impl TextBoxState {
         match slot {
             TextBoxBoolSlot::TextWrap => self.text_wrap = value,
             TextBoxBoolSlot::TextScaled => self.text_scaled = value,
+        }
+    }
+}
+/// Float member selected by a `PropDescriptor<TextBox, float>`'s
+/// member-pointer pair (IDA 0x6727de/0x672ae4: two objects over two
+/// members).
+#[derive(Debug, Clone, Copy)]
+pub enum TextBoxFloatSlot {
+    TextTransparency,
+    TextStrokeTransparency,
+}
+/// `Color3` member selected by a `PropDescriptor<TextBox, Color3>`'s
+/// member-pointer pair (IDA 0x672782/0x672a94: two objects over two
+/// members).
+#[derive(Debug, Clone, Copy)]
+pub enum TextBoxColorSlot {
+    TextColor3,
+    TextStrokeColor3,
+}
+impl TextBoxState {
+    pub fn float_slot(&self, slot: TextBoxFloatSlot) -> f32 {
+        match slot {
+            TextBoxFloatSlot::TextTransparency => self.text_transparency,
+            TextBoxFloatSlot::TextStrokeTransparency => self.text_stroke_transparency,
+        }
+    }
+    pub fn set_float_slot(&mut self, slot: TextBoxFloatSlot, value: f32) {
+        match slot {
+            TextBoxFloatSlot::TextTransparency => self.text_transparency = value,
+            TextBoxFloatSlot::TextStrokeTransparency => self.text_stroke_transparency = value,
+        }
+    }
+    pub fn color_slot(&self, slot: TextBoxColorSlot) -> [f32; 3] {
+        match slot {
+            TextBoxColorSlot::TextColor3 => self.text_color3,
+            TextBoxColorSlot::TextStrokeColor3 => self.text_stroke_color3,
+        }
+    }
+    pub fn set_color_slot(&mut self, slot: TextBoxColorSlot, value: [f32; 3]) {
+        match slot {
+            TextBoxColorSlot::TextColor3 => self.text_color3 = value,
+            TextBoxColorSlot::TextStrokeColor3 => self.text_stroke_color3 = value,
         }
     }
 }
@@ -100,8 +150,10 @@ impl TextBoxBoolProp {
     }
 }
 /// `RBX::Reflection::PropDescriptor<TextBox, float>` cutover (IDA
-/// 0x66ee04): same identity-only shape over the single float
-/// member (`TextStrokeTransparency`).
+/// 0x66ee04): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector
+/// (two objects: `TextTransparency`/`TextStrokeTransparency`, IDA
+/// 0x6727de/0x672ae4).
 #[derive(Debug, Clone)]
 pub struct TextBoxFloatProp {
     pub name: String,
@@ -110,6 +162,95 @@ pub struct TextBoxFloatProp {
     pub permissions: u32,
 }
 impl TextBoxFloatProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `EnumDesc<TextService::Font>` items in `addPair` order (IDA
+/// 0x7d8340: the `MOVS R1, #N` ahead of each call grounds dense
+/// values 0..=4).
+pub const FONT_ITEMS: [(&str, u32); 5] = [
+    ("Legacy", 0),
+    ("Arial", 1),
+    ("ArialBold", 2),
+    ("SourceSans", 3),
+    ("SourceSansBold", 4),
+];
+/// Name of a `Font` value for `convertToString`. Values with no item
+/// yield "" — the writers only ever store table members.
+pub fn font_name(value: u32) -> &'static str {
+    FONT_ITEMS
+        .iter()
+        .find(|(_, v)| *v == value)
+        .map(|(n, _)| *n)
+        .unwrap_or("")
+}
+/// `placement_any` payload read by the `Font` dialogue (IDA
+/// 0x66f524/0x66f548: int-tagged like the `NormalId` twin at
+/// 0x662668/0x66268c): the value or something else (miss throws,
+/// host: panic).
+#[derive(Debug, Clone, Copy)]
+pub enum FontVariant {
+    Font(u32),
+    Other,
+}
+/// `RBX::Reflection::PropDescriptor<TextBox, Color3>` cutover (IDA
+/// 0x66ef9c): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the slot selector
+/// (two objects: `TextColor3`/`TextStrokeColor3`, IDA 0x672782/0x672a94).
+#[derive(Debug, Clone)]
+pub struct TextBoxColorProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxColorProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::PropDescriptor<TextBox, BrickColor>` cutover
+/// (IDA 0x66f158): same identity-only shape over the single
+/// `TextColor` member (IDA 0x672728).
+#[derive(Debug, Clone)]
+pub struct TextBoxBrickProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxBrickProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EnumPropDescriptor<TextBox, Font>` cutover (IDA
+/// 0x66f2fc): name/category/attributes/permissions. The member pair
+/// folds into the `font` field.
+#[derive(Debug, Clone)]
+pub struct TextBoxFontProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxFontProp {
     pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
         Self {
             name: name.to_owned(),
@@ -514,12 +655,14 @@ pub fn stub_066ef48() -> bool {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066ef4c(state: &TextBoxState) -> f32 {
+pub fn stub_066ef4c(state: &TextBoxState, slot: TextBoxFloatSlot) -> f32 {
     // IDA 0x66ef4c (`GetSetImpl<float>::getValue`): the
-    // member-pointer resolve tail-calling the getter. The member is
-    // `getTextStrokeTransparency` (the only float object in the TU,
-    // IDA a_270 0x672ae4); the pointer folds into the field.
-    state.text_stroke_transparency
+    // member-pointer resolve tail-calling the getter. The member
+    // selects the slot (`TextTransparency`/`TextStrokeTransparency`,
+    // IDA a_270 0x6727de/0x672ae4); the pointer folds away.
+    // CORRECTION to Batch Q: two float objects share this impl, not
+    // one — hence the selector (same fix as the bool triple).
+    state.float_slot(slot)
 }
 
 // 0x66ef78 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
@@ -527,12 +670,12 @@ pub fn stub_066ef4c(state: &TextBoxState) -> f32 {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")]
-pub fn stub_066ef78(state: &mut TextBoxState, value: f32) {
+pub fn stub_066ef78(state: &mut TextBoxState, slot: TextBoxFloatSlot, value: f32) {
     // IDA 0x66ef78 (`GetSetImpl<float>::setValue`): the
     // member-pointer resolve tail-calling the setter with the input
-    // word. The member is `setTextStrokeTransparency`; the pointer
-    // folds into the field.
-    state.text_stroke_transparency = value;
+    // word. The member selects the slot; the pointer folds away
+    // (see the `getValue` correction above).
+    state.set_float_slot(slot, value);
 }
 
 // 0x66ef9c — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -540,8 +683,21 @@ pub fn stub_066ef78(state: &mut TextBoxState, value: f32) {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_066ef9c() -> ! {
-    todo!("0x66ef9c RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_066ef9c(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TextBoxColorProp {
+    // IDA 0x66ef9c (`PropDescriptor<TextBox, Color3>` ctor): the
+    // `TextBox` `classDescriptor` call + `operator new` impl holding
+    // the vtable and the getter/setter member-pointer pair, then the
+    // `TypedPropertyDescriptor<Color3>` base init with
+    // name/category/attributes/permissions. Two objects share the
+    // type (`TextColor3`/`TextStrokeColor3`, IDA a_270
+    // 0x672782/0x672a94); the member pair folds into the slot
+    // selector.
+    TextBoxColorProp::new(name, category, attributes, permissions)
 }
 
 // 0x66f0b0 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EED0Ev
@@ -558,8 +714,10 @@ pub fn stub_066f0b0() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_066f0dc() -> ! {
-    todo!("0x66f0dc RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isReadOnly(void)const")
+pub fn stub_066f0dc() -> bool {
+    // IDA 0x66f0dc (`GetSetImpl<Color3>::isReadOnly`): `MOVS R0, #0;
+    // BX LR` — always readable.
+    false
 }
 
 // 0x66f0e0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -567,8 +725,10 @@ pub fn stub_066f0dc() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_066f0e0() -> ! {
-    todo!("0x66f0e0 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isWriteOnly(void)const")
+pub fn stub_066f0e0() -> bool {
+    // IDA 0x66f0e0 (`GetSetImpl<Color3>::isWriteOnly`): `MOVS R0, #0;
+    // BX LR` — always writable.
+    false
 }
 
 // 0x66f0e4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -576,8 +736,11 @@ pub fn stub_066f0e0() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066f0e4() -> ! {
-    todo!("0x66f0e4 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f0e4(state: &TextBoxState, slot: TextBoxColorSlot) -> [f32; 3] {
+    // IDA 0x66f0e4 (`GetSetImpl<Color3>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member
+    // selects the slot; the pointer folds away.
+    state.color_slot(slot)
 }
 
 // 0x66f11c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -585,8 +748,12 @@ pub fn stub_066f0e4() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_066f11c() -> ! {
-    todo!("0x66f11c RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+pub fn stub_066f11c(state: &mut TextBoxState, slot: TextBoxColorSlot, value: [f32; 3]) {
+    // IDA 0x66f11c (`GetSetImpl<Color3>::setValue`): the
+    // member-pointer resolve tail-calling the setter, copying the
+    // three input words first (0x66f144-0x66f14c). The member
+    // selects the slot; the pointer folds away.
+    state.set_color_slot(slot, value);
 }
 
 // 0x66f158 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -594,8 +761,17 @@ pub fn stub_066f11c() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_066f158() -> ! {
-    todo!("0x66f158 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_066f158(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TextBoxBrickProp {
+    // IDA 0x66f158 (`PropDescriptor<TextBox, BrickColor>` ctor): same
+    // `classDescriptor` + impl + base-init shape for the single
+    // object (`TextColor`, IDA a_270 0x672728). The member pair
+    // folds into the `text_color` field.
+    TextBoxBrickProp::new(name, category, attributes, permissions)
 }
 
 // 0x66f26c — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEED0Ev
@@ -612,8 +788,10 @@ pub fn stub_066f26c() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_066f298() -> ! {
-    todo!("0x66f298 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isReadOnly(void)const")
+pub fn stub_066f298() -> bool {
+    // IDA 0x66f298 (`GetSetImpl<BrickColor>::isReadOnly`): `MOVS
+    // R0, #0; BX LR` — always readable.
+    false
 }
 
 // 0x66f29c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
@@ -621,8 +799,10 @@ pub fn stub_066f298() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_066f29c() -> ! {
-    todo!("0x66f29c RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+pub fn stub_066f29c() -> bool {
+    // IDA 0x66f29c (`GetSetImpl<BrickColor>::isWriteOnly`): `MOVS
+    // R0, #0; BX LR` — always writable.
+    false
 }
 
 // 0x66f2a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -630,8 +810,12 @@ pub fn stub_066f29c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066f2a0() -> ! {
-    todo!("0x66f2a0 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f2a0(state: &TextBoxState) -> u32 {
+    // IDA 0x66f2a0 (`GetSetImpl<BrickColor>::getValue`): the
+    // member-pointer resolve tail-calling the getter. The member is
+    // `getTextColor` (the only `BrickColor` object in the TU, IDA
+    // a_270 0x672728); the pointer folds into the field.
+    state.text_color
 }
 
 // 0x66f2d8 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
@@ -639,8 +823,12 @@ pub fn stub_066f2a0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_066f2d8() -> ! {
-    todo!("0x66f2d8 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")
+pub fn stub_066f2d8(state: &mut TextBoxState, value: u32) {
+    // IDA 0x66f2d8 (`GetSetImpl<BrickColor>::setValue`): the
+    // member-pointer resolve tail-calling the setter with the input
+    // word. The member is `setTextColor`; the pointer folds into
+    // the field.
+    state.text_color = value;
 }
 
 // 0x66f2fc — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -648,8 +836,20 @@ pub fn stub_066f2d8() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::EnumPropDescriptor<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>(char const*,char const*,RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_066f2fc() -> ! {
-    todo!("0x66f2fc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::EnumPropDescriptor<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>(char const*,char const*,RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_066f2fc(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> TextBoxFontProp {
+    // IDA 0x66f2fc (`EnumPropDescriptor<TextBox, Font>` ctor): the
+    // `TextBox` `classDescriptor` call, the `EnumDesc<Font>`
+    // singleton once-init and the `PropertyDescriptor` base init
+    // with name/category/attributes/permissions plus the impl
+    // holding the getter/setter member-pointer pair. The pair folds
+    // into the `font` field (same shape as `NormalIdProp` at
+    // 0x662440).
+    TextBoxFontProp::new(name, category, attributes, permissions)
 }
 
 // 0x66f4b0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEED0Ev
@@ -666,8 +866,10 @@ pub fn stub_066f4b0() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10isReadOnlyEv")]
-pub fn stub_066f4dc() -> ! {
-    todo!("0x66f4dc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isReadOnly(void)const")
+pub fn stub_066f4dc() -> bool {
+    // IDA 0x66f4dc (`EnumPropDescriptor<Font>::isReadOnly`):
+    // delegates to the inner `GetSet` at +44 — always readable.
+    false
 }
 
 // 0x66f4ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11isWriteOnlyEv
@@ -675,8 +877,10 @@ pub fn stub_066f4dc() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11isWriteOnlyEv")]
-pub fn stub_066f4ec() -> ! {
-    todo!("0x66f4ec RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isWriteOnly(void)const")
+pub fn stub_066f4ec() -> bool {
+    // IDA 0x66f4ec (`EnumPropDescriptor<Font>::isWriteOnly`):
+    // delegates to the inner `GetSet` at +44 — always writable.
+    false
 }
 
 // 0x66f4fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -684,8 +888,11 @@ pub fn stub_066f4ec() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_066f4fc() -> ! {
-    todo!("0x66f4fc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f4fc(first: &TextBoxState, second: &TextBoxState) -> bool {
+    // IDA 0x66f4fc (`EnumPropDescriptor<Font>::equalValues`): reads
+    // the inner value for both instances via the +44 `GetSet` and
+    // compares. Host: compare the fonts.
+    first.font == second.font
 }
 
 // 0x66f524 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -693,8 +900,12 @@ pub fn stub_066f4fc() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_066f524() -> ! {
-    todo!("0x66f524 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_066f524(state: &TextBoxState) -> FontVariant {
+    // IDA 0x66f524 (`EnumPropDescriptor<Font>::getVariant`): reads
+    // the inner value, tags it with the plain-`int` singleton and
+    // placement-moves it in (same int-tagged shape as the
+    // `NormalId` twin at 0x662668). Host: the `Font` tag.
+    FontVariant::Font(state.font)
 }
 
 // 0x66f548 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -702,8 +913,16 @@ pub fn stub_066f524() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_066f548() -> ! {
-    todo!("0x66f548 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_066f548(state: &mut TextBoxState, variant: &FontVariant) {
+    // IDA 0x66f548 (`EnumPropDescriptor<Font>::setVariant`): an
+    // int-typed variant runs `any_cast<int>`; anything else runs
+    // `Variant::convert<int>` (throws on failure); then the +72
+    // setter. Host: convert-or-throw, then store.
+    let value = match *variant {
+        FontVariant::Font(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x66f548)"),
+    };
+    state.font = value;
 }
 
 // 0x66f694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -711,8 +930,11 @@ pub fn stub_066f548() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_066f694() -> ! {
-    todo!("0x66f694 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_066f694(first: &TextBoxState, second: &mut TextBoxState) {
+    // IDA 0x66f694 (`EnumPropDescriptor<Font>::copyValue`): inner
+    // `getValue` on the source then inner `setValue` on the target.
+    // Host: copy the font.
+    second.font = first.font;
 }
 
 // 0x66f6b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14hasStringValueEv
@@ -720,8 +942,10 @@ pub fn stub_066f694() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14hasStringValueEv")]
-pub fn stub_066f6b8() -> ! {
-    todo!("0x66f6b8 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::hasStringValue(void)const")
+pub fn stub_066f6b8() -> bool {
+    // IDA 0x66f6b8 (`EnumPropDescriptor<Font>::hasStringValue`):
+    // returns 1 — always stringable.
+    true
 }
 
 // 0x66f6bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE
@@ -729,8 +953,12 @@ pub fn stub_066f6b8() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066f6bc() -> ! {
-    todo!("0x66f6bc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f6bc(state: &TextBoxState) -> String {
+    // IDA 0x66f6bc (`EnumPropDescriptor<Font>::getStringValue`):
+    // reads the enum-desc singleton slot, the inner value via the
+    // +44 `GetSet` and `EnumDesc::convertToString`. Host: the
+    // grounded item name.
+    font_name(state.font).to_owned()
 }
 
 // 0x66f6e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -738,8 +966,18 @@ pub fn stub_066f6bc() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_066f6e0() -> ! {
-    todo!("0x66f6e0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_066f6e0(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66f6e0 (`EnumPropDescriptor<Font>::setStringValue`):
+    // `Name::lookup` + `EnumDesc::convertToValue`; on a hit the
+    // inner `setValue` runs and 1 returns, else 0. Host: table
+    // position decides.
+    match FONT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font = FONT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66f720 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -747,8 +985,15 @@ pub fn stub_066f6e0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_066f720() -> ! {
-    todo!("0x66f720 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_066f720(state: &TextBoxState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x66f720 (`EnumPropDescriptor<Font>::writeValue`): inner
+    // `getValue`, `clearValue`, int tag `5` at +16, value at +20,
+    // returns 5. Same shape as the `InputType` twin at 0x659884 —
+    // needs `XmlIntSlot` (host: import from `generated_134`).
+    out.value_type = 0;
+    out.value_type = 5;
+    out.int_value = state.font as i32;
+    5
 }
 
 // 0x66f740 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -756,8 +1001,32 @@ pub fn stub_066f720() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_066f740() -> ! {
-    todo!("0x66f740 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_066f740(state: &mut TextBoxState, xml: &XmlReadValue) {
+    // IDA 0x66f740 (`EnumPropDescriptor<Font>::readValue`): xsi:nil
+    // early-out, string pair with fallthrough, raw int set, else
+    // `ReleaseAssert(false)` — same shape as the `InputType` twin
+    // at 0x6598a4 (needs `XmlReadValue`; the assert cites
+    // Surface.cpp line 313 there — here the TU differs, host seam
+    // kept generic). Host: match the pair.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            state.font = *value as u32;
+        }
+        XmlReadValue::Text(text) => {
+            if stub_066f6e0(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("ReleaseAssert(false) (IDA 0x66f740)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("ReleaseAssert(false) (IDA 0x66f740)");
+            }
+        }
+    }
 }
 
 // 0x66f980 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -765,8 +1034,15 @@ pub fn stub_066f740() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066f980() -> ! {
-    todo!("0x66f980 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f980(state: &TextBoxState) -> i32 {
+    // IDA 0x66f980 (`EnumPropDescriptor<Font>::getIndexValue`):
+    // singleton once + inner `getValue` + `EnumDesc::convertToIndex`.
+    // Host: the item index of the live value.
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x66f99c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -774,8 +1050,17 @@ pub fn stub_066f980() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_066f99c() -> ! {
-    todo!("0x66f99c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_066f99c(state: &mut TextBoxState, index: u32) -> bool {
+    // IDA 0x66f99c (`EnumPropDescriptor<Font>::setIndexValue`):
+    // `count > index` gates storing the indexed item's value.
+    // Host: table read decides.
+    match FONT_ITEMS.get(index as usize) {
+        Some((_, value)) => {
+            state.font = *value;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66f9d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -783,8 +1068,11 @@ pub fn stub_066f99c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_066f9d0() -> ! {
-    todo!("0x66f9d0 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_066f9d0(state: &TextBoxState) -> u32 {
+    // IDA 0x66f9d0 (`EnumPropDescriptor<Font>::getEnumValue`):
+    // inner `getValue` through the +44 `GetSet`. Host: the live
+    // font id.
+    state.font
 }
 
 // 0x66f9d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi
