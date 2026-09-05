@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 use parking_lot::Mutex;
 use std::sync::Arc;
 use crate::generated_datamodel_shard_290::{
-    HandlesEvent1Desc, HandlesEvent2Desc, HandlesHandler1, HandlesNormalId,
+    HandlesEvent1Desc, HandlesEvent2Desc, HandlesHandler1, HandlesNormalId, HandlesSignal1,
 };
 
 /// Rust model of `RBX::Reflection::GenericSlotWrapper` restricted to the
@@ -75,6 +75,15 @@ fn handles_manage1(
         HandlesBind1Op::Destroy => *slot = HandlesFunction1::default(),
         HandlesBind1Op::Check | HandlesBind1Op::GetType => {}
     }
+}
+/// Rust model of `rbx::callable<signal<void(NormalId)>::slot,
+/// function<void(NormalId)>, 1, void(NormalId)>` (IDA `0x56d9e4` ctor,
+/// `0x56dd20` call, `0x56ddf4`/`0x56df04` dtors): the intrusive slot link
+/// behind `signal::connect` (IDA `0x56d8f0`); retain/release become
+/// `clone`/`drop`, the vtables collapse.
+#[derive(Clone, Default)]
+pub struct HandlesCallable1 {
+    pub func: HandlesFunction1,
 }
 
 // 0x56cbd4 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
@@ -350,94 +359,167 @@ pub fn stub_0x56d798(
 // type: int __fastcall(char, boost::mutex *, int, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::NormalId)>::connect<boost::function<void ()(RBX::NormalId)>>(boost::function<void ()(RBX::NormalId)> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_")]
-pub fn stub_0x56d8f0() -> ! {
-    todo!("0x56d8f0 rbx::signals::connection rbx::signals::signal<void ()(RBX::NormalId)>::connect<boost::function<void ()(RBX::NormalId)>>(boost::function<void ()(RBX::NormalId)> const&)")
+pub fn stub_0x56d8f0(sig: &HandlesSignal1, func: &HandlesFunction1) {
+    // IDA 0x56d8f0 `signal<void(NormalId)>::connect<function<void(NormalId)>>`:
+    // `operator new(32)` callable slot (0x56d92a), `callable` ctor (0x56d952),
+    // vtable installs (0x56d96c-0x56d972), `insert` (0x56d97a) plus the weak
+    // ref (0x56d986-0x56d98c). The slot owns the closure's strong ref, so
+    // connecting the retained handler is the same subscription.
+    if let Some(bind) = func.target.as_ref() {
+        sig.connect(SharedPtr::clone(&bind.wrapper.handler));
+    }
 }
 
 // 0x56d9e4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::callable<rbx::signals::signal<void ()(RBX::NormalId)>*>(boost::function<void ()(RBX::NormalId)> const&,rbx::signals::signal<void ()(RBX::NormalId)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_")]
-pub fn stub_0x56d9e4() -> ! {
-    todo!("0x56d9e4 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::callable<rbx::signals::signal<void ()(RBX::NormalId)>*>(boost::function<void ()(RBX::NormalId)> const&,rbx::signals::signal<void ()(RBX::NormalId)>*)")
+pub fn stub_0x56d9e4(slot: &mut HandlesCallable1, func: &HandlesFunction1) {
+    // IDA 0x56d9e4 `callable<slot, function, 1>::callable`: zeroes the link
+    // words (0x56da16-0x56da3e), installs the vtables (`off_1263C58` /
+    // `off_1263C74`, 0x56da2c-0x56da32), `assign_to_own`s the function
+    // (0x56da64). Clone-assign is the same install.
+    slot.func = func.clone();
 }
 
 // 0x56dae0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED1Ev")]
-pub fn stub_0x56dae0() -> ! {
-    todo!("0x56dae0 rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")
+pub fn stub_0x56dae0(slot: &mut HandlesCallable1) {
+    // IDA 0x56dae0 `callable_slot<function>::~callable_slot` D1: vtable
+    // installs (0x56db18-0x56db24), `function1::clear` (0x56db4c), base
+    // vtables (0x56db62-0x56db68), intrusive release (0x56db6c-0x56db76);
+    // storage kept. Clearing the function is the same release.
+    slot.func = HandlesFunction1::default();
 }
 
 // 0x56dbf0 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev")]
-pub fn stub_0x56dbf0() -> ! {
-    todo!("0x56dbf0 rbx::signals::signal<void ()(RBX::NormalId)>::callable_slot<boost::function<void ()(RBX::NormalId)>>::~callable_slot()")
+pub fn stub_0x56dbf0(slot: *mut HandlesCallable1) {
+    // IDA 0x56dbf0 `callable_slot<function>::~callable_slot` D0: the D1 body
+    // (0x56dc28-0x56dc84) plus `operator delete` (0x56dc90). Reclaiming the
+    // box runs the field drops (the clear).
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x56dd20 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
-pub fn stub_0x56dd20() -> ! {
-    todo!("0x56dd20 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
+pub fn stub_0x56dd20(slot: &HandlesCallable1, normal: HandlesNormalId) {
+    // IDA 0x56dd20 `callable<slot, function, 1>::call`: tail-calls
+    // `function1::operator()` — the `execute1` dispatch below.
+    stub_0x56dd30(&slot.func, normal);
 }
 
 // 0x56dd28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
-pub fn stub_0x56dd28() -> ! {
-    todo!("0x56dd28 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
+pub fn stub_0x56dd28(slot: &HandlesCallable1, normal: HandlesNormalId) {
+    // IDA 0x56dd28 non-virtual thunk to `callable::call`: same tail-call to
+    // `function1::operator()` (cf. 2-arg thunk at 0x56c67c).
+    stub_0x56dd30(&slot.func, normal);
 }
 
 // 0x56dd30 — __ZNK5boost9function1IvN3RBX8NormalIdEEclES2_
 // type: int(void)
 #[doc(alias = "boost::function1<void,RBX::NormalId>::operator()(RBX::NormalId)const")]
 #[doc(alias = "__ZNK5boost9function1IvN3RBX8NormalIdEEclES2_")]
-pub fn stub_0x56dd30() -> ! {
-    todo!("0x56dd30 boost::function1<void,RBX::NormalId>::operator()(RBX::NormalId)const")
+pub fn stub_0x56dd30(func: &HandlesFunction1, normal: HandlesNormalId) {
+    // IDA 0x56dd30 `function1<void, NormalId>::operator()`: empty function
+    // throws `bad_function_call` (0x56dd7e-0x56dde6); else the vtable invoke
+    // runs (`(*a1 & ~1) + 4`, 0x56dd90) — the `execute1` path through the
+    // retained bind.
+    let bind = func.target.as_ref().expect("0x56dd30: bad_function_call");
+    stub_0x56d07c(&bind.wrapper, normal);
 }
 
 // 0x56ddf4 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev")]
-pub fn stub_0x56ddf4() -> ! {
-    todo!("0x56ddf4 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")
+pub fn stub_0x56ddf4(slot: &mut HandlesCallable1) {
+    // IDA 0x56ddf4 `callable<slot, function, 1>::~callable` D1: same
+    // vtable-install + `clear` + release shape as the slot D1 at 0x56dae0
+    // (0x56de2c-0x56de8a); storage kept.
+    slot.func = HandlesFunction1::default();
 }
 
 // 0x56df04 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")]
-pub fn stub_0x56df04() -> ! {
-    todo!("0x56df04 rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::~callable()")
+pub fn stub_0x56df04(slot: *mut HandlesCallable1) {
+    // IDA 0x56df04 `callable<slot, function, 1>::~callable` D0: the D1 body
+    // (0x56df3c-0x56df98) plus `operator delete` (0x56dfa4).
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x56e034 — __ZN5boost9function1IvN3RBX8NormalIdEE13assign_to_ownERKS3_
 // type: int(void)
 #[doc(alias = "boost::function1<void,RBX::NormalId>::assign_to_own(boost::function1<void,RBX::NormalId> const&)")]
 #[doc(alias = "__ZN5boost9function1IvN3RBX8NormalIdEE13assign_to_ownERKS3_")]
-pub fn stub_0x56e034() -> ! {
-    todo!("0x56e034 boost::function1<void,RBX::NormalId>::assign_to_own(boost::function1<void,RBX::NormalId> const&)")
+pub fn stub_0x56e034(dst: &mut HandlesFunction1, src: &HandlesFunction1) {
+    // IDA 0x56e034 `function1::assign_to_own`: empty source stores nothing;
+    // heap-tagged sources memberwise-copy the buffer words (0x56e03c-0x56e04c),
+    // else the vtable copy runs (0x56e062). Clone-assign is the same copy.
+    *dst = src.clone();
 }
 
 // 0x56e064 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0x56e064() -> ! {
-    todo!("0x56e064 RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x56e064(
+    this: *mut HandlesEvent1Desc,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x56e064 `EventDesc<Handles, void(NormalId)>::EventDesc` C2: runs
+    // the `Described<Handles>` + `EventDescriptor` bases (0x56e09c + 0x56e0ba),
+    // stores the member signal pointer at `+40` (0x56e0de), installs the
+    // `EventDesc` vtable (`off_1263C88`, 0x56e0e2), declares the `Name` and
+    // appends the single signature item — `NormalId`
+    // (`getSingleton<NormalId>(2)`, 0x56e10e) — via `_M_create_node` + `hook`
+    // (0x56e12c); 2-arg twin is 0x56c9c0.
+    // SAFETY: `this` must point to valid uninitialized `HandlesEvent1Desc` storage.
+    let _ = permissions;
+    let _ = attributes;
+    unsafe {
+        core::ptr::write(
+            this,
+            HandlesEvent1Desc { name: name.to_string(), ..Default::default() },
+        );
+    }
 }
 
 // 0x56e1e8 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev")]
-pub fn stub_0x56e1e8() -> ! {
-    todo!("0x56e1e8 RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")
+pub fn stub_0x56e1e8(desc: *mut HandlesEvent1Desc) {
+    // IDA 0x56e1e8 `EventDesc<Handles, void(NormalId)>::D1`: vtable reset
+    // (`off_122F5A8`, 0x56e200) + `_M_clear(a1 + 8)` (0x56e204); storage kept
+    // (cf. D0 at 0x56e20c). Clearing the name drops the item list.
+    // SAFETY: `desc` must point to a valid `HandlesEvent1Desc`.
+    unsafe {
+        (*desc).name.clear();
+    }
 }
 
 // 0x56e20c — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")]
-pub fn stub_0x56e20c() -> ! {
-    todo!("0x56e20c RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>,rbx::remote_signal<void ()(RBX::NormalId)> RBX::Handles::*>::~EventDesc()")
+pub fn stub_0x56e20c(desc: *mut HandlesEvent1Desc) {
+    // IDA 0x56e20c `EventDesc<Handles, void(NormalId)>::D0`: the D1 body
+    // (`*a1` vtable reset + `_M_clear`, 0x56e24a-0x56e270) plus
+    // `operator delete` (0x56e276).
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x56e2c0 — __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1196,5 +1278,62 @@ mod handles_bind1_tests {
         );
         stub_0x56d798(&bind, &mut other, HandlesBind1Op::Destroy);
         assert!(other.target.is_none());
+    }
+}
+
+#[cfg(test)]
+mod handles_signal1_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    fn probe_func(seen: &Arc<AtomicI32>) -> HandlesFunction1 {
+        let probe = Arc::clone(seen);
+        let wrapper = SharedPtr::new(HandlesSlotWrapper1 {
+            handler: Arc::new(move |normal: u32| {
+                probe.store(normal as i32, Ordering::Relaxed);
+            }),
+        });
+        HandlesFunction1 { target: Some(HandlesBind1 { wrapper }) }
+    }
+
+    #[test]
+    fn connect_call_operator_assign() {
+        let seen = Arc::new(AtomicI32::new(0));
+        let func = probe_func(&seen);
+        let sig = HandlesSignal1::default();
+        stub_0x56d8f0(&sig, &func);
+        assert_eq!(sig.len(), 1);
+        let mut slot = HandlesCallable1::default();
+        stub_0x56d9e4(&mut slot, &func);
+        stub_0x56dd20(&slot, 11);
+        assert_eq!(seen.load(Ordering::Relaxed), 11);
+        stub_0x56dd28(&slot, 13);
+        assert_eq!(seen.load(Ordering::Relaxed), 13);
+        stub_0x56dd30(&func, 17);
+        assert_eq!(seen.load(Ordering::Relaxed), 17);
+        let mut owned = HandlesFunction1::default();
+        stub_0x56e034(&mut owned, &func);
+        assert!(owned.target.is_some());
+        stub_0x56dae0(&mut slot);
+        assert!(slot.func.target.is_none());
+        stub_0x56d9e4(&mut slot, &func);
+        stub_0x56ddf4(&mut slot);
+        assert!(slot.func.target.is_none());
+    }
+
+    #[test]
+    fn slot_callable_dtors_drop() {
+        stub_0x56dbf0(Box::into_raw(Box::new(HandlesCallable1::default())));
+        stub_0x56df04(Box::into_raw(Box::new(HandlesCallable1::default())));
+    }
+
+    #[test]
+    fn event1_ctor_dtors() {
+        let mut storage = HandlesEvent1Desc::default();
+        stub_0x56e064(&mut storage as *mut HandlesEvent1Desc, "Face", 0, 0);
+        assert_eq!(storage.name, "Face");
+        stub_0x56e1e8(&mut storage as *mut HandlesEvent1Desc);
+        assert!(storage.name.is_empty());
+        stub_0x56e20c(Box::into_raw(Box::new(HandlesEvent1Desc::default())));
     }
 }
