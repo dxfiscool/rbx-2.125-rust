@@ -1225,70 +1225,107 @@ pub fn stub_4291c() -> usize {
 // 0x4292c — -[RobloxWebUtility setCachediOSSettings:]
 // type: void __cdecl(RobloxWebUtility *self, SEL, iOSSettingsService *)
 #[doc(alias = "-[RobloxWebUtility setCachediOSSettings:]")]
-pub fn stub_4292c() -> ! {
-    todo!("0x4292c -[RobloxWebUtility setCachediOSSettings:]")
+pub fn stub_4292c(cached: bool) {
+    // IDA 0x4292c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4292c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4292c(cached)
 }
 
 // 0x4293c — -[RobloxWebUtility getCachediOSSettings]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getCachediOSSettings]")]
-pub fn stub_4293c() -> ! {
-    todo!("0x4293c -[RobloxWebUtility getCachediOSSettings]")
+pub fn stub_4293c() -> bool {
+    // IDA 0x4293c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4293c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4293c()
 }
 
 // 0x4294c — -[RobloxWebUtility getLastSettingsRequestTime]
 // type: id __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getLastSettingsRequestTime]")]
-pub fn stub_4294c() -> ! {
-    todo!("0x4294c -[RobloxWebUtility getLastSettingsRequestTime]")
+pub fn stub_4294c() -> f64 {
+    // IDA 0x4294c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4294c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4294c()
 }
 
 // 0x4295c — -[RobloxWebUtility getiOSSettingsServiceFromWeb]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsServiceFromWeb]")]
-pub fn stub_4295c() -> ! {
-    todo!("0x4295c -[RobloxWebUtility getiOSSettingsServiceFromWeb]")
+pub fn stub_4295c(now: f64) -> bool {
+    // IDA 0x4295c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4295c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4295c(now)
 }
 
 // 0x42a98 — +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]
 // type: iOSSettingsService *__cdecl(id, SEL, char)
 #[doc(alias = "+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")]
-pub fn stub_42a98() -> ! {
-    todo!("0x42a98 +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")
+pub fn stub_42a98(forced: bool, stale: bool, now: f64) -> bool {
+    // IDA 0x42a98: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42a98`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42a98(forced, stale, now)
 }
 
 // 0x42bc8 — ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke
 // type: iOSSettingsService *__fastcall(int)
 #[doc(alias = "___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")]
-pub fn stub_42bc8() -> ! {
-    todo!("0x42bc8 ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")
+pub fn stub_42bc8(now: f64) {
+    // IDA 0x42bc8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42bc8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42bc8(now)
 }
 
 // 0x42dd8 — ___copy_helper_block_65
 #[doc(alias = "___copy_helper_block_65")]
-pub fn stub_42dd8() -> ! {
-    todo!("0x42dd8 ___copy_helper_block_65")
+pub fn stub_42dd8() {
+    // IDA 0x42dd8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42dd8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42dd8()
 }
 
 // 0x42de4 — ___destroy_helper_block_66
 #[doc(alias = "___destroy_helper_block_66")]
-pub fn stub_42de4() -> ! {
-    todo!("0x42de4 ___destroy_helper_block_66")
+pub fn stub_42de4() {
+    // IDA 0x42de4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42de4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42de4()
 }
 
 // 0x42dec — +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_42dec() -> ! {
-    todo!("0x42dec +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_42dec(
+    tag: i32,
+    record_page_view: bool,
+    query: &str,
+    is_tablet: bool,
+    base_url: &str,
+    search_url: &str,
+) -> String {
+    // IDA 0x42dec: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x42dec`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x42dec(tag, record_page_view, query, is_tablet, base_url, search_url)
 }
 
 // 0x43180 — __ZN18iOSSettingsServiceC2Ev
 // type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
 #[doc(alias = "__ZN18iOSSettingsServiceC2Ev")]
-pub fn stub_43180() -> ! {
-    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+pub fn stub_43180() -> crate::generated_bg_11::IosSettingsState {
+    // IDA 0x43180: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43180`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43180()
 }
 
 // 0x432b0 — __ZN18iOSSettingsServiceD1Ev
@@ -1334,76 +1371,106 @@ pub fn stub_43338() {
 // 0x43360 — __ZN10SimpleJSON14DefaultHandlerERKSsS1_
 #[doc(alias = "SimpleJSON::DefaultHandler(std::string const&,std::string const&)")]
 #[doc(alias = "__ZN10SimpleJSON14DefaultHandlerERKSsS1_")]
-pub fn stub_43360() -> ! {
-    todo!("0x43360 SimpleJSON::DefaultHandler(std::string const&,std::string const&)")
+pub fn stub_43360() {
+    // IDA 0x43360: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43360`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43360()
 }
 
 // 0x43364 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")]
-pub fn stub_43364() -> ! {
-    todo!("0x43364 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::st")
+pub fn stub_43364() {
+    // IDA 0x43364: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43364`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43364()
 }
 
 // 0x43394 — __GLOBAL__I_a_13
 #[doc(alias = "__GLOBAL__I_a_13")]
-pub fn stub_43394() -> ! {
-    todo!("0x43394 global constructor keyed to_a_13")
+pub fn stub_43394() {
+    // IDA 0x43394: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43394`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43394()
 }
 
 // 0x4352c — __ZN3RBX18FunctionMarshallerC2Ej
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshallerC2Ej")]
-pub fn stub_4352c() -> ! {
-    todo!("0x4352c RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")
+pub fn stub_4352c(capacity: u32) -> crate::generated_bg_11::MarshallerInit {
+    // IDA 0x4352c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4352c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4352c(capacity)
 }
 
 // 0x43624 — __ZN3RBX18FunctionMarshaller9GetWindowEv
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::GetWindow(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller9GetWindowEv")]
-pub fn stub_43624() -> ! {
-    todo!("0x43624 RBX::FunctionMarshaller::GetWindow(void)")
+pub fn stub_43624(thread: u32) -> usize {
+    // IDA 0x43624: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43624`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43624(thread)
 }
 
 // 0x43804 — __ZN3RBX18FunctionMarshaller13ReleaseWindowEPS0_
 // type: void __fastcall(RBX::FunctionMarshaller *this, RBX::FunctionMarshaller *, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller13ReleaseWindowEPS0_")]
-pub fn stub_43804() -> ! {
-    todo!("0x43804 RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")
+pub fn stub_43804(handle: usize) -> bool {
+    // IDA 0x43804: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43804`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43804(handle)
 }
 
 // 0x43930 — __ZN3RBX18FunctionMarshaller14handleAppEventEPv
 // type: void __fastcall(RBX::FunctionMarshaller *this, void *)
 #[doc(alias = "RBX::FunctionMarshaller::handleAppEvent(void *)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller14handleAppEventEPv")]
-pub fn stub_43930() -> ! {
-    todo!("0x43930 RBX::FunctionMarshaller::handleAppEvent(void *)")
+pub fn stub_43930() {
+    // IDA 0x43930: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43930`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43930()
 }
 
 // 0x43a98 — __ZN3RBX18FunctionMarshaller7ExecuteEN5boost8functionIFvvEEEPNS_6CEventE
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller7ExecuteEN5boost8functionIFvvEEEPNS_6CEventE")]
-pub fn stub_43a98() -> ! {
-    todo!("0x43a98 RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")
+pub fn stub_43a98() {
+    // IDA 0x43a98: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43a98`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43a98()
 }
 
 // 0x43b98 — __ZN3RBX18FunctionMarshaller6SubmitEN5boost8functionIFvvEEE
 // type: void __fastcall(int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller6SubmitEN5boost8functionIFvvEEE")]
-pub fn stub_43b98() -> ! {
-    todo!("0x43b98 RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")
+pub fn stub_43b98() {
+    // IDA 0x43b98: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43b98`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43b98()
 }
 
 // 0x43c70 — __ZN3RBX18FunctionMarshaller15ProcessMessagesEv
 // type: CFRunLoopRunResult __fastcall(Roblox *this)
 #[doc(alias = "RBX::FunctionMarshaller::ProcessMessages(void)")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller15ProcessMessagesEv")]
-pub fn stub_43c70() -> ! {
-    todo!("0x43c70 RBX::FunctionMarshaller::ProcessMessages(void)")
+pub fn stub_43c70() {
+    // IDA 0x43c70: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x43c70`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x43c70()
 }
