@@ -6,6 +6,12 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `ControllerService` declaration + class index (IDA 0x3b828/0x3b910,
+/// cf. `RUNSERVICE_*` in bg_8).
+pub(crate) static CONTROLLERSERVICE_DECLARED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static CONTROLLERSERVICE_CLASS_INDEX: std::sync::LazyLock<usize> =
+    std::sync::LazyLock::new(|| 1);
 
 // 0x3b108 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -17,46 +23,56 @@ pub fn stub_0x3b108() {
 // 0x3b110 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x3b110() -> ! {
-    todo!("0x3b110 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3b110() {
+    // IDA 0x3b110: `sp_counted_impl_pd<RunService*,Creatable::Deleter>::
+    // dispose` runs `Instance::predelete` then deletes (same shape as
+    // 0x32700). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b130 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3b130() -> ! {
-    todo!("0x3b130 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3b130() {
+    // IDA 0x3b130: `sp_counted_impl_pd<RunService*,Creatable::Deleter>::
+    // get_deleter` answers the deleter query by `type_info` (same shape
+    // as 0x33454). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b148 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x3b148() -> ! {
-    todo!("0x3b148 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3b148() {
+    // IDA 0x3b148: `sp_counted_impl_pd<RunService*,Creatable::Deleter>::
+    // get_untyped_deleter` returns the untyped deleter address (same
+    // shape as 0x3346c). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b14c — __ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX5Tasks8SequenceEEEPT_")]
-pub fn stub_0x3b14c() -> ! {
-    todo!("0x3b14c boost::detail::shared_count::shared_count<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
+pub fn stub_0x3b14c() {
+    // IDA 0x3b14c: `shared_count::shared_count<Sequence*>` allocates
+    // the control block. `Arc` construction glue covers it; no explicit
+    // body.
 }
 
 // 0x3b268 — __ZN3RBX5Tasks11Coordinator9onPreStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")]
 #[doc(alias = "__ZN3RBX5Tasks11Coordinator9onPreStepEPNS_13TaskScheduler3JobE")]
-pub fn stub_0x3b268() -> ! {
-    todo!("0x3b268 RBX::Tasks::Coordinator::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3b268() {
+    // IDA 0x3b268: `Tasks::Coordinator::onPreStep` compiles to an empty
+    // body (decompiled 0x3b268). No explicit body.
 }
 
 // 0x3b26c — __ZN3RBX5Tasks11Coordinator10onPostStepEPNS_13TaskScheduler3JobE
 // type: void()
 #[doc(alias = "RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")]
 #[doc(alias = "__ZN3RBX5Tasks11Coordinator10onPostStepEPNS_13TaskScheduler3JobE")]
-pub fn stub_0x3b26c() -> ! {
-    todo!("0x3b26c RBX::Tasks::Coordinator::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3b26c() {
+    // IDA 0x3b26c: `Tasks::Coordinator::onPostStep` is the empty
+    // post-step hook (same shape as 0x3b268). No explicit body.
 }
 
 // 0x3b270 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEED1Ev
@@ -76,30 +92,37 @@ pub fn stub_0x3b274() {
 // 0x3b278 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE7disposeEv")]
-pub fn stub_0x3b278() -> ! {
-    todo!("0x3b278 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::dispose(void)")
+pub fn stub_0x3b278() {
+    // IDA 0x3b278: `sp_counted_impl_p<Sequence>::dispose` deletes the
+    // sequence. `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b32c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3b32c() -> ! {
-    todo!("0x3b32c boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_deleter(std::type_info const&)")
+pub fn stub_0x3b32c() {
+    // IDA 0x3b32c: `sp_counted_impl_p<Sequence>::get_deleter` answers
+    // null for the plain deleter. `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x3b330 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks8SequenceEE19get_untyped_deleterEv")]
-pub fn stub_0x3b330() -> ! {
-    todo!("0x3b330 boost::detail::sp_counted_impl_p<RBX::Tasks::Sequence>::get_untyped_deleter(void)")
+pub fn stub_0x3b330() {
+    // IDA 0x3b330: `sp_counted_impl_p<Sequence>::get_untyped_deleter`
+    // returns the untyped deleter address. `Arc` drop glue covers it;
+    // no explicit body.
 }
 
 // 0x3b334 — __ZN5boost6detail12shared_countC2IN3RBX5Tasks17ExclusiveSequenceEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Tasks::ExclusiveSequence>(RBX::Tasks::ExclusiveSequence *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX5Tasks17ExclusiveSequenceEEEPT_")]
-pub fn stub_0x3b334() -> ! {
-    todo!("0x3b334 boost::detail::shared_count::shared_count<RBX::Tasks::ExclusiveSequence>(RBX::Tasks::ExclusiveSequence *)")
+pub fn stub_0x3b334() {
+    // IDA 0x3b334: `shared_count::shared_count<ExclusiveSequence*>`
+    // allocates the control block (same shape as 0x3b14c). `Arc`
+    // construction glue covers it; no explicit body.
 }
 
 // 0x3b450 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEED1Ev
@@ -119,80 +142,109 @@ pub fn stub_0x3b454() {
 // 0x3b458 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE7disposeEv")]
-pub fn stub_0x3b458() -> ! {
-    todo!("0x3b458 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::dispose(void)")
+pub fn stub_0x3b458() {
+    // IDA 0x3b458: `sp_counted_impl_p<ExclusiveSequence>::dispose`
+    // deletes the sequence (same shape as 0x3b278). `Arc` drop glue
+    // covers it; no explicit body.
 }
 
 // 0x3b50c — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3b50c() -> ! {
-    todo!("0x3b50c boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_deleter(std::type_info const&)")
+pub fn stub_0x3b50c() {
+    // IDA 0x3b50c: `sp_counted_impl_p<ExclusiveSequence>::get_deleter`
+    // answers null for the plain deleter (same shape as 0x3b32c).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b510 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5Tasks17ExclusiveSequenceEE19get_untyped_deleterEv")]
-pub fn stub_0x3b510() -> ! {
-    todo!("0x3b510 boost::detail::sp_counted_impl_p<RBX::Tasks::ExclusiveSequence>::get_untyped_deleter(void)")
+pub fn stub_0x3b510() {
+    // IDA 0x3b510: `sp_counted_impl_p<ExclusiveSequence>::
+    // get_untyped_deleter` returns the untyped deleter address (same
+    // shape as 0x3b330). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3b518 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v
 // type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v")]
-pub fn stub_0x3b518() -> ! {
-    todo!("0x3b518 RBX::ControllerService * RBX::ServiceProvider::find<RBX::ControllerService>(void)const")
+pub fn stub_0x3b518(cached_present: bool, service_present: bool) -> bool {
+    // IDA 0x3b518: `ServiceProvider::find<ControllerService>` returns
+    // the cached service at the class index (0x3b578-0x3b5cc); on a miss
+    // it resizes and, unless the class name is null (0x3bb58), declares
+    // + `findServiceByClassName` (0x3b5d4-0x3b604). Presence reports
+    // here.
+    if cached_present {
+        return true;
+    }
+    service_present
 }
 
 // 0x3b674 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17ControllerServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_17ControllerServiceEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0x3b674() -> ! {
-    todo!("0x3b674 boost::shared_ptr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")
+pub fn stub_0x3b674(create_ok: bool) -> bool {
+    // IDA 0x3b674: `Creatable<Instance>::create<ControllerService>`
+    // runs the factory and returns the new instance (same shape as
+    // 0x3a798). Factory glue; presence collapses to `bool`.
+    create_ok
 }
 
 // 0x3b724 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17ControllerServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17ControllerServiceEEERS3_RKNS0_IT_EE")]
-pub fn stub_0x3b724() -> ! {
-    todo!("0x3b724 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const&)")
+pub fn stub_0x3b724() {
+    // IDA 0x3b724: `shared_ptr<Instance>::operator=<ControllerService>`
+    // cross-assigns the service (same shape as 0x3a2ec). `Arc`
+    // conversion glue covers it; no explicit body.
 }
 
 // 0x3b7e0 — __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_0x3b7e0() -> ! {
-    todo!("0x3b7e0 __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_0x3b7e0() {
+    // IDA 0x3b7e0: `Name::declare<sControllerService>` one-shots the
+    // class-name declaration (same shape as 0x3add8). Idempotent
+    // declare glue; no explicit body.
 }
 
 // 0x3b828 — __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_0x3b828() -> ! {
-    todo!("0x3b828 __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_0x3b828() {
+    // IDA 0x3b828: `Name::doDeclare<sControllerService>` performs the
+    // declaration (same shape as 0x3ae20). It records here.
+    CONTROLLERSERVICE_DECLARED.store(true, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x3b910 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv")]
-pub fn stub_0x3b910() -> ! {
-    todo!("0x3b910 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")
+pub fn stub_0x3b910() -> usize {
+    // IDA 0x3b910: `ServiceProvider::doGetClassIndex<ControllerService>`
+    // returns the service class index (same shape as 0x3af08).
+    *CONTROLLERSERVICE_CLASS_INDEX
 }
 
 // 0x3b9e8 — __ZN5boost10shared_ptrIN3RBX17ControllerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX17ControllerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x3b9e8() -> ! {
-    todo!("0x3b9e8 boost::shared_ptr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3b9e8() {
+    // IDA 0x3b9e8: `shared_ptr<ControllerService>::shared_ptr<...,
+    // Creatable::Deleter>` stores the pointer + deleter (same shape as
+    // 0x3afe0). `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3ba10 — __ZN5boost6detail12shared_countC2IPN3RBX17ControllerServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX17ControllerServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x3ba10() -> ! {
-    todo!("0x3ba10 boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x3ba10() {
+    // IDA 0x3ba10: `shared_count::shared_count<ControllerService*,...>`
+    // allocates the control block (same shape as 0x3b008). `Arc`
+    // construction glue covers it; no explicit body.
 }
 
 // 0x3bb10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -205,29 +257,39 @@ pub fn stub_0x3bb10() {
 // 0x3bb18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x3bb18() -> ! {
-    todo!("0x3bb18 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3bb18() {
+    // IDA 0x3bb18: `sp_counted_impl_pd<ControllerService*,...>::dispose`
+    // runs `Instance::predelete` then deletes (same shape as 0x3b110).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3bb38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3bb38() -> ! {
-    todo!("0x3bb38 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3bb38() {
+    // IDA 0x3bb38: `sp_counted_impl_pd<ControllerService*,...>::
+    // get_deleter` answers the deleter query by `type_info` (same shape
+    // as 0x3b130). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3bb50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x3bb50() -> ! {
-    todo!("0x3bb50 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3bb50() {
+    // IDA 0x3bb50: `sp_counted_impl_pd<ControllerService*,...>::
+    // get_untyped_deleter` returns the untyped deleter address (same
+    // shape as 0x3b148). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3bb58 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")]
-pub fn stub_0x3bb58() -> ! {
-    todo!("0x3bb58 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")
+pub fn stub_0x3bb58(class_name: Option<&str>) -> bool {
+    // IDA 0x3bb58: `NonFactoryProduct<ControllerService>::
+    // isNullClassName` asserts the empty-vs-null invariant in debug
+    // (0x3bb7a-0x3bbac) and returns `sControllerService == NULL`
+    // (0x3bbf4).
+    class_name.is_none()
 }
 
 // 0x3bbf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSERKS3_
