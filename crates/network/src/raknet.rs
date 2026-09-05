@@ -18823,8 +18823,9 @@ pub fn stub_a3bd04<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
 #[doc(
     alias = "bool boost::detail::function::basic_vtable0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
 )]
-pub fn stub_a3c0e0() -> ! {
-    todo!("0xa3c0e0 bool boost::detail::function::basic_vtable0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_a3c0e0(dst: &mut Option<u64>, src: Option<u64>) {
+ // IDA 0xa3c0e0: basic_vtable0::assign_to copies the bind (below truncation).
+ *dst = src;
 }
 
 // 0xa3c56c — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX7Network13AbuseReporter4dataEEEEENS2_ISsEEEclINS4_13worker_thread11work_resultEPFSE_S8_SsENS0_5list0EEET_NS0_4typeISI_EERT0_RT1_l
@@ -18852,8 +18853,10 @@ pub fn stub_a3c868(op: crate::functor::FunctorOp) -> crate::functor::ManageOutco
 #[doc(
     alias = "boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>)"
 )]
-pub fn stub_a3ca74() -> ! {
-    todo!("0xa3ca74 boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>)")
+pub fn stub_a3ca74(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa3ca74: list2 ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa3cd70 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network13AbuseReporter4dataEEEEENS2_ISsEEEC2ES9_SA_
@@ -18861,8 +18864,10 @@ pub fn stub_a3ca74() -> ! {
 #[doc(
     alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>)"
 )]
-pub fn stub_a3cd70() -> ! {
-    todo!("0xa3cd70 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>)")
+pub fn stub_a3cd70(slot: usize, copy: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa3cd70: storage2 ctor copies args with a shared_ptr bump (below truncation).
+ copy(slot);
+ slot
 }
 
 // 0xa3cfec — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13AbuseReporter4dataES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
@@ -18870,15 +18875,17 @@ pub fn stub_a3cd70() -> ! {
 #[doc(
     alias = "void boost::detail::sp_pointer_construct<RBX::Network::AbuseReporter::data,RBX::Network::AbuseReporter::data>(boost::shared_ptr<RBX::Network::AbuseReporter::data> *,RBX::Network::AbuseReporter::data *,boost::detail::shared_count &)"
 )]
-pub fn stub_a3cfec() -> ! {
-    todo!("0xa3cfec void boost::detail::sp_pointer_construct<RBX::Network::AbuseReporter::data,RBX::Network::AbuseReporter::data>(boost::shared_ptr<RBX::Network::AbuseReporter::data> *,RBX::Network::AbuseReporter::data *,boost::detail::shared_count &)")
+pub fn stub_a3cfec(make: &mut dyn FnMut()) {
+ // IDA 0xa3cfec: sp_pointer_construct<AbuseReporter::data> (below truncation).
+ make();
 }
 
 // 0xa3d1c0 — __ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EED2Ev
 // type: int __fastcall(_DWORD *, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::~deque()")]
-pub fn stub_a3d1c0() -> ! {
-    todo!("0xa3d1c0 std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::~deque()")
+pub fn stub_a3d1c0(queue: &mut AbuseQueue) {
+ // IDA 0xa3d1c0: deque dtor frees the nodes.
+ queue.items.clear();
 }
 
 // 0xa3d2e8 — __ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_
@@ -18886,29 +18893,32 @@ pub fn stub_a3d1c0() -> ! {
 #[doc(
     alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>)"
 )]
-pub fn stub_a3d2e8() -> ! {
-    todo!("0xa3d2e8 std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>)")
+pub fn stub_a3d2e8(queue: &mut AbuseQueue) {
+ // IDA 0xa3d2e8: destroys the deque range.
+ queue.items.clear();
 }
 
 // 0xa3d680 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13AbuseReporter4dataEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::~sp_counted_impl_p()")]
-pub fn stub_a3d680() -> ! {
-    todo!("0xa3d680 boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::~sp_counted_impl_p()")
+pub fn stub_a3d680() {
+ // IDA 0xa3d680: empty sp_counted_impl_p<AbuseReporter::data> D2 body.
 }
 
 // 0xa3d684 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13AbuseReporter4dataEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::~sp_counted_impl_p()")]
-pub fn stub_a3d684() -> ! {
-    todo!("0xa3d684 boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::~sp_counted_impl_p()")
+pub fn stub_a3d684(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0xa3d684: D0: operator delete.
+ free(block);
 }
 
 // 0xa3d690 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13AbuseReporter4dataEE7disposeEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::dispose(void)")]
-pub fn stub_a3d690() -> ! {
-    todo!("0xa3d690 boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::dispose(void)")
+pub fn stub_a3d690(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0xa3d690: null px -> 0 else the virtual destroy (below truncation).
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0xa3d768 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13AbuseReporter4dataEE11get_deleterERKSt9type_info
@@ -18916,15 +18926,17 @@ pub fn stub_a3d690() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_a3d768() -> ! {
-    todo!("0xa3d768 boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::get_deleter(std::type_info const&)")
+pub fn stub_a3d768() -> usize {
+ // IDA 0xa3d768: get_deleter returns 0.
+ 0
 }
 
 // 0xa3d76c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13AbuseReporter4dataEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::get_untyped_deleter(void)")]
-pub fn stub_a3d76c() -> ! {
-    todo!("0xa3d76c boost::detail::sp_counted_impl_p<RBX::Network::AbuseReporter::data>::get_untyped_deleter(void)")
+pub fn stub_a3d76c() -> usize {
+ // IDA 0xa3d76c: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0xa3d770 — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE14_M_create_nodeERKS3_
@@ -18932,8 +18944,9 @@ pub fn stub_a3d76c() -> ! {
 #[doc(
     alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::_M_create_node(RBX::Network::AbuseReport::Message const&)"
 )]
-pub fn stub_a3d770() -> ! {
-    todo!("0xa3d770 std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::_M_create_node(RBX::Network::AbuseReport::Message const&)")
+pub fn stub_a3d770(make: &mut dyn FnMut()) {
+ // IDA 0xa3d770: list node create with string copies (below truncation).
+ make();
 }
 
 // 0xa3ec64 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6PlayerES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -18941,8 +18954,13 @@ pub fn stub_a3d770() -> ! {
 #[doc(
     alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Player,RBX::Network::Player>(boost::shared_ptr<RBX::Network::Player> const*,RBX::Network::Player *)const"
 )]
-pub fn stub_a3ec64() -> ! {
-    todo!("0xa3ec64 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Player,RBX::Network::Player>(boost::shared_ptr<RBX::Network::Player> const*,RBX::Network::Player *)const")
+pub fn stub_a3ec64(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0xa3ec64: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0xa3ef20 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6PlayerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -18950,8 +18968,8 @@ pub fn stub_a3ec64() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_a3ef20() -> ! {
-    todo!("0xa3ef20 boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a3ef20() {
+ // IDA 0xa3ef20: empty sp_counted_impl_pd<Player> D2 body.
 }
 
 // 0xa3ef24 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6PlayerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
@@ -18959,8 +18977,9 @@ pub fn stub_a3ef20() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_a3ef24() -> ! {
-    todo!("0xa3ef24 boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a3ef24(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0xa3ef24: D0: operator delete.
+ free(block);
 }
 
 // 0xa3ef30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6PlayerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -18968,8 +18987,14 @@ pub fn stub_a3ef24() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)"
 )]
-pub fn stub_a3ef30() -> ! {
-    todo!("0xa3ef30 boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_a3ef30(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0xa3ef30: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0xa3ef4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6PlayerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -18977,8 +19002,13 @@ pub fn stub_a3ef30() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)"
 )]
-pub fn stub_a3ef4c() -> ! {
-    todo!("0xa3ef4c boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_a3ef4c(block: usize, type_name: &str) -> usize {
+ // IDA 0xa3ef4c: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0xa3ef64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6PlayerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -18986,8 +19016,9 @@ pub fn stub_a3ef4c() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)"
 )]
-pub fn stub_a3ef64() -> ! {
-    todo!("0xa3ef64 boost::detail::sp_counted_impl_pd<RBX::Network::Player *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_a3ef64(block: usize) -> usize {
+ // IDA 0xa3ef64: return block + 16.
+ block + 16
 }
 
 // 0xa3f618 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
@@ -18995,8 +19026,8 @@ pub fn stub_a3ef64() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
 )]
-pub fn stub_a3f618() -> ! {
-    todo!("0xa3f618 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_a3f618() {
+ // IDA 0xa3f618: empty sp_counted_impl_pd<NetworkSettings> D2 body.
 }
 
 // 0xa3f620 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -19004,8 +19035,14 @@ pub fn stub_a3f618() -> ! {
 #[doc(
     alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)"
 )]
-pub fn stub_a3f620() -> ! {
-    todo!("0xa3f620 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_a3f620(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0xa3f620: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0xa3f9f0 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -19013,15 +19050,19 @@ pub fn stub_a3f620() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::PropDescriptor<bool (RBX::Network::Players::*)(void)const,int>(char const*,char const*,bool (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_a3f9f0() -> ! {
-    todo!("0xa3f9f0 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::PropDescriptor<bool (RBX::Network::Players::*)(void)const,int>(char const*,char const*,bool (RBX::Network::Players::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_a3f9f0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa3f9f0: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa3fc04 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::~PropDescriptor()")]
-pub fn stub_a3fc04() -> ! {
-    todo!("0xa3fc04 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::~PropDescriptor()")
+pub fn stub_a3fc04(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xa3fc04: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xa3fdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
@@ -19029,8 +19070,9 @@ pub fn stub_a3fc04() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::isReadOnly(void)const"
 )]
-pub fn stub_a3fdb8() -> ! {
-    todo!("0xa3fdb8 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_a3fdb8() -> bool {
+ // IDA 0xa3fdb8: GetImpl::isReadOnly returns 1.
+ true
 }
 
 // 0xa3fdbc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
@@ -19038,8 +19080,9 @@ pub fn stub_a3fdb8() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const"
 )]
-pub fn stub_a3fdbc() -> ! {
-    todo!("0xa3fdbc RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_a3fdbc() -> bool {
+ // IDA 0xa3fdbc: GetImpl::isWriteOnly returns 0.
+ false
 }
 
 // 0xa3fdc0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE
@@ -19047,8 +19090,9 @@ pub fn stub_a3fdbc() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_a3fdc0() -> ! {
-    todo!("0xa3fdc0 RBX::Reflection::PropDescriptor<RBX::Network::Players,bool>::GetImpl<bool (RBX::Network::Players::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_a3fdc0(get: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa3fdc0: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xa3fde4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbE7GetImplIMS3_KFbvEE8setValueEPNS0_13DescribedBaseERKb
