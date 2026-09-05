@@ -1269,6 +1269,8 @@ pub fn stub_5bad4(present: bool) {
 }
 
 // 0x5baf8 — -[SignUpErrorViewController initWithCoder:]
+// type: SignUpErrorViewController *__cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController initWithCoder:]")]
 pub fn stub_5baf8() {
     // IDA 0x5baf8: `SignUpErrorViewController::initWithCoder:`
     // forwards to super (same shape as 0x58d50). Super-init glue; no
@@ -1276,12 +1278,16 @@ pub fn stub_5baf8() {
 }
 
 // 0x5bb44 — -[SignUpErrorViewController dealloc]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController dealloc]")]
 pub fn stub_5bb44() {
     // IDA 0x5bb44: `SignUpErrorViewController::dealloc` releases the
     // fields. Release is drop glue; no explicit body.
 }
 
 // 0x5bc00 — -[SignUpErrorViewController viewDidLoad]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController viewDidLoad]")]
 pub fn stub_5bc00() {
     // IDA 0x5bc00: `SignUpErrorViewController::viewDidLoad` supers and
     // wires the message view. The load records here.
@@ -1289,6 +1295,8 @@ pub fn stub_5bc00() {
 }
 
 // 0x5bcb8 — -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id, id, void *)
+#[doc(alias = "-[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")]
 pub fn stub_5bcb8(has_object: bool) {
     // IDA 0x5bcb8: `observeValueForKeyPath:...` recenters the content
     // from the observed scroll bounds/zoom (0x5bcce-0x5bd60). Pure
@@ -1297,12 +1305,16 @@ pub fn stub_5bcb8(has_object: bool) {
 }
 
 // 0x5bd70 — -[SignUpErrorViewController didReceiveMemoryWarning]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController didReceiveMemoryWarning]")]
 pub fn stub_5bd70() {
     // IDA 0x5bd70: `didReceiveMemoryWarning` forwards to super. Super
     // glue; no explicit body.
 }
 
 // 0x5bd9c — -[SignUpErrorViewController setSuggestedUsername:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setSuggestedUsername:]")]
 pub fn stub_5bd9c(username: &str) {
     // IDA 0x5bd9c: `setSuggestedUsername:` stores the ivar. It records
     // here.
@@ -1310,12 +1322,16 @@ pub fn stub_5bd9c(username: &str) {
 }
 
 // 0x5bdbc — -[SignUpErrorViewController setMessage:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setMessage:]")]
 pub fn stub_5bdbc(message: &str) {
     // IDA 0x5bdbc: `setMessage:` stores the ivar. It records here.
     *SIGNUP_MESSAGE.lock() = message.to_owned();
 }
 
 // 0x5be1c — -[SignUpErrorViewController setSignupController:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setSignupController:]")]
 pub fn stub_5be1c(present: bool) {
     // IDA 0x5be1c: `setSignupController:` stores the ivar. It records
     // here.
@@ -1323,18 +1339,24 @@ pub fn stub_5be1c(present: bool) {
 }
 
 // 0x5be2c — -[SignUpErrorViewController touchesBegan:withEvent:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
+#[doc(alias = "-[SignUpErrorViewController touchesBegan:withEvent:]")]
 pub fn stub_5be2c() {
     // IDA 0x5be2c: `touchesBegan:withEvent:` forwards the touch. Touch
     // glue; no explicit body.
 }
 
 // 0x5be5c — -[SignUpErrorViewController touchesEnded:withEvent:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
+#[doc(alias = "-[SignUpErrorViewController touchesEnded:withEvent:]")]
 pub fn stub_5be5c() {
     // IDA 0x5be5c: `touchesEnded:withEvent:` forwards the touch. Touch
     // glue; no explicit body.
 }
 
 // 0x5bf68 — -[SignUpErrorViewController messageTextView]
+// type: UITextView *__cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController messageTextView]")]
 pub fn stub_5bf68() -> bool {
     // IDA 0x5bf68: `messageTextView` returns the ivar. Presence reports
     // here.
@@ -1342,6 +1364,8 @@ pub fn stub_5bf68() -> bool {
 }
 
 // 0x5bf78 — -[SignUpErrorViewController setMessageTextView:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setMessageTextView:]")]
 pub fn stub_5bf78(present: bool) {
     // IDA 0x5bf78: `setMessageTextView:` stores the ivar. It records
     // here.
@@ -1349,6 +1373,8 @@ pub fn stub_5bf78(present: bool) {
 }
 
 // 0x5bf9c — -[SignupVerifier init]
+// type: SignupVerifier *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier init]")]
 pub fn stub_5bf9c() -> bool {
     // IDA 0x5bf9c: `SignupVerifier::init` supers and names the verify
     // notifications. The init records here.
@@ -1357,12 +1383,16 @@ pub fn stub_5bf9c() -> bool {
 }
 
 // 0x5c17c — -[SignupVerifier dealloc]
+// type: void __cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier dealloc]")]
 pub fn stub_5c17c() {
     // IDA 0x5c17c: `SignupVerifier::dealloc` releases the urls + names.
     // Release is drop glue; no explicit body.
 }
 
 // 0x5c26c — -[SignupVerifier isValidEmail:]
+// type: bool __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier isValidEmail:]")]
 pub fn stub_5c26c(email: &str) -> bool {
     // IDA 0x5c26c: `isValidEmail:` matches
     // `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}` case-insensitive
@@ -1397,6 +1427,8 @@ pub fn stub_5c26c(email: &str) -> bool {
 }
 
 // 0x5c2e8 — -[SignupVerifier doPostResponseFromUrl:args:notificationName:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
+#[doc(alias = "-[SignupVerifier doPostResponseFromUrl:args:notificationName:]")]
 pub fn stub_5c2e8(url: &str, args: &str, notification: &str) {
     // IDA 0x5c2e8: `doPostResponseFromUrl:args:notificationName:`
     // posts the args to the url async and notifies the reply block
@@ -1406,24 +1438,32 @@ pub fn stub_5c2e8(url: &str, args: &str, notification: &str) {
 }
 
 // 0x5c444 — ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke
+// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
+#[doc(alias = "___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")]
 pub fn stub_5c444() {
     // IDA 0x5c444: the POST-reply block notifies the reply
     // (registered at 0x5c438). Completion glue; no explicit body.
 }
 
 // 0x5c4f4 — ___copy_helper_block__19
+// type: void __fastcall(int, int)
+#[doc(alias = "___copy_helper_block__19")]
 pub fn stub_5c4f4() {
     // IDA 0x5c4f4: `__copy_helper_block__19` retains the captures.
     // Retain is drop glue; no explicit body.
 }
 
 // 0x5c518 — ___destroy_helper_block__19
+// type: void __fastcall(int)
+#[doc(alias = "___destroy_helper_block__19")]
 pub fn stub_5c518() {
     // IDA 0x5c518: `__destroy_helper_block__19` releases the captures.
     // Release is drop glue; no explicit body.
 }
 
 // 0x5c534 — -[SignupVerifier doGetResponseFromUrl:notificationName:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id)
+#[doc(alias = "-[SignupVerifier doGetResponseFromUrl:notificationName:]")]
 pub fn stub_5c534(url: &str, notification: &str) {
     // IDA 0x5c534: `doGetResponseFromUrl:notificationName:` GETs the
     // url async and notifies the reply block (0x5c566-0x5c64a). The
@@ -1433,24 +1473,32 @@ pub fn stub_5c534(url: &str, notification: &str) {
 }
 
 // 0x5c658 — ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke
+// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
+#[doc(alias = "___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")]
 pub fn stub_5c658() {
     // IDA 0x5c658: the GET-reply block notifies the reply (registered
     // at 0x5c64a). Completion glue; no explicit body.
 }
 
 // 0x5c6c8 — ___copy_helper_block_104
+// type: void __fastcall(int, int)
+#[doc(alias = "___copy_helper_block_104")]
 pub fn stub_5c6c8() {
     // IDA 0x5c6c8: `__copy_helper_block_104` retains the captures.
     // Retain is drop glue; no explicit body.
 }
 
 // 0x5c6ec — ___destroy_helper_block_105
+// type: void __fastcall(int)
+#[doc(alias = "___destroy_helper_block_105")]
 pub fn stub_5c6ec() {
     // IDA 0x5c6ec: `__destroy_helper_block_105` releases the captures.
     // Release is drop glue; no explicit body.
 }
 
 // 0x5c708 — -[SignupVerifier checkPassword:username:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id)
+#[doc(alias = "-[SignupVerifier checkPassword:username:]")]
 pub fn stub_5c708(args_format: &str, password: &str, username: &str, url: &str, notification: &str) -> String {
     // IDA 0x5c708: `checkPassword:username:` formats the check args
     // with password + username (0x5c742) and POSTs them (0x5c772). The
@@ -1463,6 +1511,8 @@ pub fn stub_5c708(args_format: &str, password: &str, username: &str, url: &str, 
 }
 
 // 0x5c77c — -[SignupVerifier checkUsername:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier checkUsername:]")]
 pub fn stub_5c77c(username: &str, url_template: &str, notification: &str) -> Option<String> {
     // IDA 0x5c77c: `checkUsername:` posts immediate success for names
     // of length <= 2 (0x5c7b4-0x5c82c), else GETs the formatted check
@@ -1478,6 +1528,8 @@ pub fn stub_5c77c(username: &str, url_template: &str, notification: &str) -> Opt
 }
 
 // 0x5c888 — -[SignupVerifier getAlternateUsername:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier getAlternateUsername:]")]
 pub fn stub_5c888(username: &str, url_template: &str) -> String {
     // IDA 0x5c888: `getAlternateUsername:` GETs the formatted
     // recommend url async (0x5c8be-0x5c9cc). The requested url records

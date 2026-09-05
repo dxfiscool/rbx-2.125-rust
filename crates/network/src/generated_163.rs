@@ -7,6 +7,16 @@
 
 use rbx_core::SharedPtr;
 
+/// Static-init states for `_a_21` / `__GLOBAL__I_a_20` (IDA 0x4d6d4/0x4d398).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA21 {
+ pub done: bool,
+}
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA20 {
+ pub done: bool,
+}
+
 /// `GameKeyboard` text state (IDA 0x4cbf8 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct GameKeyboard {
@@ -253,179 +263,231 @@ pub fn stub_4d170(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize)
 // 0x4d17c — ___destroy_helper_block_88
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_88")]
-pub fn stub_4d17c() -> ! {
-    todo!("0x4d17c ___destroy_helper_block_88")
+pub fn stub_4d17c(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4d17c: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x4d184 — -[GameKeyboard .cxx_destruct]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_destruct]")]
-pub fn stub_4d184() -> ! {
-    todo!("0x4d184 -[GameKeyboard .cxx_destruct]")
+pub fn stub_4d184(kb: &mut GameKeyboard, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4d184: cxx_destruct — release currentTextBox.
+    if let Some(t) = kb.current_text_box.take() {
+        release(t);
+    }
 }
 
 // 0x4d220 — -[GameKeyboard .cxx_construct]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard .cxx_construct]")]
-pub fn stub_4d220() -> ! {
-    todo!("0x4d220 -[GameKeyboard .cxx_construct]")
+pub fn stub_4d220(kb: &mut GameKeyboard) {
+    // IDA 0x4d220: cxx_construct — zero currentTextBox.
+    kb.current_text_box = None;
 }
 
 // 0x4d238 — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_
 // demangled: boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(_DWORD *, __int64 *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox>&&)")]
-pub fn stub_4d238() -> ! {
-    todo!("0x4d238 boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)")
+pub fn stub_4d238(dst: &mut Option<usize>, src: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x4d238: move-assign — steal src pair (src zeroed); release old dst.
+    let old = std::mem::replace(dst, src.take());
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x4d2dc — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_
 // demangled: boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox> const&)")]
-pub fn stub_4d2dc() -> ! {
-    todo!("0x4d2dc boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)")
+pub fn stub_4d2dc(dst: &mut Option<usize>, src: Option<usize>, retain: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) {
+    // IDA 0x4d2dc: shared_ptr<TextBox> copy-assign — retain src; release old (below truncation).
+    if let Some(s) = src {
+        retain(s);
+    }
+    let old = std::mem::replace(dst, src);
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x4d398 — __GLOBAL__I_a_20
 // demangled: global constructor keyed to_a_20
 #[doc(alias = "global constructor keyed to_a_20")]
-pub fn stub_4d398() -> ! {
-    todo!("0x4d398 global constructor keyed to_a_20")
+pub fn stub_4d398(state: &mut GlobalInitA20, init: &mut dyn FnMut()) {
+    // IDA 0x4d398: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
 // type: GameView *__cdecl(GameView *self, SEL, CGRect)
 #[doc(alias = "-[GameView initWithFrame:]")]
-pub fn stub_4d5ac() -> ! {
-    todo!("0x4d5ac -[GameView initWithFrame:]")
+pub fn stub_4d5ac(view: usize, init_super: &mut dyn FnMut(usize) -> usize) -> usize {
+    // IDA 0x4d5ac: super initWithFrame.
+    init_super(view)
 }
 
 // 0x4d5e4 — -[GameView layoutSubviews]
 // type: void __cdecl(GameView *self, SEL)
 #[doc(alias = "-[GameView layoutSubviews]")]
-pub fn stub_4d5e4() -> ! {
-    todo!("0x4d5e4 -[GameView layoutSubviews]")
+pub fn stub_4d5e4(layout: &mut dyn FnMut()) {
+    // IDA 0x4d5e4: GameView layoutSubviews — Ogre viewport resize (below truncation).
+    layout();
 }
 
 // 0x4d6d4 — __GLOBAL__I_a_21
 // demangled: global constructor keyed to_a_21
 // type: int()
 #[doc(alias = "global constructor keyed to_a_21")]
-pub fn stub_4d6d4() -> ! {
-    todo!("0x4d6d4 global constructor keyed to_a_21")
+pub fn stub_4d6d4(state: &mut GlobalInitA21, init: &mut dyn FnMut()) {
+    // IDA 0x4d6d4: ios_base::Init + atexit.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]
 // type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
 #[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
-pub fn stub_4d70c() -> ! {
-    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
+pub fn stub_4d70c(ok: bool, setup: &mut dyn FnMut()) -> bool {
+    // IDA 0x4d70c: GameViewController initWithNibName — view + observers (below truncation).
+    if !ok {
+        return false;
+    }
+    setup();
+    true
 }
 
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController dealloc]")]
-pub fn stub_4d8cc() -> ! {
-    todo!("0x4d8cc -[GameViewController dealloc]")
+pub fn stub_4d8cc(has_webview: bool, remove: &mut dyn FnMut(), teardown: &mut dyn FnMut()) {
+    // IDA 0x4d8cc: remove webview; removeObserver; super dealloc.
+    if has_webview {
+        remove();
+    }
+    teardown();
 }
 
 // 0x4d978 — -[GameViewController viewWillAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewWillAppear:]")]
-pub fn stub_4d978() -> ! {
-    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+pub fn stub_4d978(super_call: &mut dyn FnMut(bool), hide_bar: &mut dyn FnMut()) {
+    // IDA 0x4d978: super viewWillAppear; statusBarHidden = YES.
+    super_call(true);
+    hide_bar();
 }
 
 // 0x4d9d4 — -[GameViewController viewDidAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
 #[doc(alias = "-[GameViewController viewDidAppear:]")]
-pub fn stub_4d9d4() -> ! {
-    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+pub fn stub_4d9d4(super_call: &mut dyn FnMut(bool)) {
+    // IDA 0x4d9d4: super viewDidAppear.
+    super_call(true);
 }
 
 // 0x4da00 — -[GameViewController viewDidLoad]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController viewDidLoad]")]
-pub fn stub_4da00() -> ! {
-    todo!("0x4da00 -[GameViewController viewDidLoad]")
+pub fn stub_4da00(setup: &mut dyn FnMut()) {
+    // IDA 0x4da00: super viewDidLoad + user-agent dict (below truncation).
+    setup();
 }
 
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
-pub fn stub_4dab8() -> ! {
-    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+pub fn stub_4dab8(super_call: &mut dyn FnMut()) {
+    // IDA 0x4dab8: super didReceiveMemoryWarning (EAGLViewController).
+    super_call();
 }
 
 // 0x4dae4 — -[GameViewController resizeGameView]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController resizeGameView]")]
-pub fn stub_4dae4() -> ! {
-    todo!("0x4dae4 -[GameViewController resizeGameView]")
+pub fn stub_4dae4(layout: &mut dyn FnMut()) {
+    // IDA 0x4dae4: resizeGameView -> layoutSubviews.
+    layout();
 }
 
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+pub fn stub_4db04() -> bool {
+    // IDA 0x4db04: shouldAutorotate returns YES.
+    true
 }
 
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
-pub fn stub_4db08() -> ! {
-    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+pub fn stub_4db08() -> u32 {
+    // IDA 0x4db08: supportedInterfaceOrientations = 24 (landscape).
+    24
 }
 
 // 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(GameViewController *self, SEL, int)
 #[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_4db0c() -> ! {
-    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_4db0c(orientation: i32) -> bool {
+    // IDA 0x4db0c: YES when landscape (3/4).
+    orientation == 4 || orientation == 3
 }
 
 // 0x4db20 — -[GameViewController getControlView]
 // type: id __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController getControlView]")]
-pub fn stub_4db20() -> ! {
-    todo!("0x4db20 -[GameViewController getControlView]")
+pub fn stub_4db20(first: Option<usize>) -> Option<usize> {
+    // IDA 0x4db20: first subview or nil.
+    first
 }
 
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
 // type: char __cdecl(GameViewController *self, SEL, id, id, int)
 #[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_4db9c() -> ! {
-    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+pub fn stub_4db9c(open_native: bool, purchase_ok: bool) -> bool {
+    // IDA 0x4db9c: !OpenNativeBrowser || no in-app purchase.
+    !open_native || purchase_ok
 }
 
 // 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
 // type: void __cdecl(GameViewController *self, SEL, DataModel *)
 #[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
-pub fn stub_4dbe8() -> ! {
-    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
+pub fn stub_4dbe8(has_model: bool, has_service: bool, fire: &mut dyn FnMut()) {
+    // IDA 0x4dbe8: nil model/service -> return; else fire GuiService url-closed signal.
+    if has_model && has_service {
+        fire();
+    }
 }
 
 // 0x4dc08 — -[GameViewController closeUrlWindow:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController closeUrlWindow:]")]
-pub fn stub_4dc08() -> ! {
-    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+pub fn stub_4dc08(close: &mut dyn FnMut()) {
+    // IDA 0x4dc08: closeUrlWindow (below truncation).
+    close();
 }
 
 // 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
-pub fn stub_4de58() -> ! {
-    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+pub fn stub_4de58(animate: &mut dyn FnMut()) {
+    // IDA 0x4de58: closeUrlWindow animation block (below truncation).
+    animate();
 }
 
 // 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
-pub fn stub_4df1c() -> ! {
-    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+pub fn stub_4df1c(animate: &mut dyn FnMut()) {
+    // IDA 0x4df1c: closeUrlWindow animation block 2 (below truncation).
+    animate();
 }
 
 // 0x4dfd8 — ___copy_helper_block__10
