@@ -85,6 +85,21 @@ fn handles_manage1(
 pub struct HandlesCallable1 {
     pub func: HandlesFunction1,
 }
+/// Rust model of `RBX::Faces` face bitmask behind
+/// `PropDescriptor<Handles, Faces>` (IDA `0x56e2c0`): one bit per `NormalId`
+/// (`Top = 1<<0` … `Right = 1<<5`, cf. `normalIdToMask` at IDA `0x35cee0`).
+/// Stored raw on `Handles::faces`; `generated_05::Variant` has no `Faces`
+/// arm, so it crosses generic boundaries as `Variant::Int` bits.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub struct Faces(pub u32);
+
+/// Rust model of `RBX::Reflection::PropDescriptor<RBX::Handles, RBX::Faces>`
+/// (IDA `0x56e2c0`): the name/category words; the bound getter/setter member
+/// pointers collapse into direct `Handles::faces` access.
+pub struct HandlesFacesProp {
+    pub name: String,
+    pub category: String,
+}
 
 // 0x56cbd4 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::~EventDesc()")]
@@ -526,43 +541,69 @@ pub fn stub_0x56e20c(desc: *mut HandlesEvent1Desc) {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::PropDescriptor<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>(char const*,char const*,RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x56e2c0() -> ! {
-    todo!("0x56e2c0 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::PropDescriptor<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>(char const*,char const*,RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x56e2c0(name: &str, category: &str) -> HandlesFacesProp {
+    // IDA 0x56e2c0 `PropDescriptor<Handles, Faces>::PropDescriptor<getter,
+    // setter>`: runs the `Described<Handles>` base (0x56e2e8), allocates the
+    // `GetSetImpl` (0x14 bytes, vtable `off_1263D18`, getter at `+4` +
+    // setter at `+8`, 0x56e2ee-0x56e328), runs the
+    // `TypedPropertyDescriptor<Faces>` base (0x56e366), installs the
+    // `PropDescriptor` vtable (`off_1263CB8`, 0x56e384). The member pointers
+    // collapse into direct `Handles::faces` access; a get/set pair is never
+    // read/write-only.
+    HandlesFacesProp { name: name.to_string(), category: category.to_string() }
 }
 
 // 0x56e3d4 — __ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEED0Ev")]
-pub fn stub_0x56e3d4() -> ! {
-    todo!("0x56e3d4 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::~PropDescriptor()")
+pub fn stub_0x56e3d4(desc: *mut HandlesFacesProp) {
+    // IDA 0x56e3d4 `PropDescriptor<Handles, Faces>::D0`: vtable reset
+    // (`off_12705B8`, 0x56e3e8), deletes the `GetSetImpl` at `+40`
+    // (0x56e3ea-0x56e3f0), `operator delete`s self. Reclaiming the box runs
+    // the field drops.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x56e400 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_0x56e400() -> ! {
-    todo!("0x56e400 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isReadOnly(void)const")
+pub fn stub_0x56e400(_desc: &HandlesFacesProp) -> bool {
+    // IDA 0x56e400 `GetSetImpl<getter, setter>::isReadOnly`: `MOVS R0, #0`
+    // (0x56e402); a get/set pair is never read-only.
+    false
 }
 
 // 0x56e404 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_0x56e404() -> ! {
-    todo!("0x56e404 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::isWriteOnly(void)const")
+pub fn stub_0x56e404(_desc: &HandlesFacesProp) -> bool {
+    // IDA 0x56e404 `GetSetImpl<getter, setter>::isWriteOnly`: `MOVS R0, #0`
+    // (0x56e406); ...nor write-only.
+    false
 }
 
 // 0x56e408 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56e408() -> ! {
-    todo!("0x56e408 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56e408(_desc: &HandlesFacesProp, handles: &crate::instance::Handles) -> Faces {
+    // IDA 0x56e408 `GetSetImpl<getter, setter>::getValue`: adjusts the
+    // source (`a2 ? a2 - 36 : 0`, 0x56e408-0x56e40e), resolves the bound
+    // getter through the member pointer (`(v4 & 1)` virtual-thunk check,
+    // 0x56e412-0x56e422), and invokes it — the `Faces` word on the instance.
+    Faces(handles.faces)
 }
 
 // 0x56e428 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::setValue(RBX::Reflection::DescribedBase *,RBX::Faces const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS_5FacesEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_0x56e428() -> ! {
-    todo!("0x56e428 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Faces>::GetSetImpl<RBX::Faces (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Faces)>::setValue(RBX::Reflection::DescribedBase *,RBX::Faces const&)const")
+pub fn stub_0x56e428(_desc: &HandlesFacesProp, handles: &mut crate::instance::Handles, value: Faces) {
+    // IDA 0x56e428 `GetSetImpl<getter, setter>::setValue`: same member-pointer
+    // resolution as `getValue` (0x56e428-0x56e444), then invokes the bound
+    // setter with the `Faces` word. The store is the observable state change.
+    handles.faces = value.0;
 }
 
 // 0x56e44c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1335,5 +1376,24 @@ mod handles_signal1_tests {
         stub_0x56e1e8(&mut storage as *mut HandlesEvent1Desc);
         assert!(storage.name.is_empty());
         stub_0x56e20c(Box::into_raw(Box::new(HandlesEvent1Desc::default())));
+    }
+}
+
+#[cfg(test)]
+mod handles_faces_tests {
+    use super::*;
+    use crate::instance::Handles;
+
+    #[test]
+    fn faces_prop_round_trip() {
+        let desc = stub_0x56e2c0("Faces", "Appearance");
+        assert_eq!(desc.name, "Faces");
+        assert!(!stub_0x56e400(&desc));
+        assert!(!stub_0x56e404(&desc));
+        let mut handles = Handles::default();
+        assert_eq!(stub_0x56e408(&desc, &handles), Faces(0));
+        stub_0x56e428(&desc, &mut handles, Faces(0b101));
+        assert_eq!(stub_0x56e408(&desc, &handles), Faces(0b101));
+        stub_0x56e3d4(Box::into_raw(Box::new(desc)));
     }
 }

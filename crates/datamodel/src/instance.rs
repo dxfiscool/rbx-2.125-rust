@@ -1954,10 +1954,13 @@ pub struct BodyGyro {
 /// `int_value` is the `int` member behind
 /// `BoundProp<int, Mutability1>::BoundProp<Handles>` (IDA `0x56b3ac`) with its
 /// `BoundPropGetSet<Handles>::getValue` (IDA `0x56b544`) / `setValue` (IDA
-/// `0x56b550`) accessors.
+/// `0x56b550`) accessors. `faces` is the `Faces` bitmask behind
+/// `PropDescriptor<Handles, Faces>` (IDA `0x56e2c0`) with its `GetSetImpl`
+/// accessors (IDA `0x56e408`/`0x56e428`).
 #[derive(Default)]
 pub struct Handles {
     pub int_value: i32,
+    pub faces: u32,
     _opaque: (),
 }
 
