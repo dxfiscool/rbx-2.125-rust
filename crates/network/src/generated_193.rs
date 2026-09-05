@@ -1367,176 +1367,469 @@ pub fn stub_1a0514(src: &[i16], dst: &mut [u32], dither: bool, noise: &mut dyn F
 // 0x1a0a28 — _XYZtoRGB24
 // type: unknown
 #[doc(alias = "_XYZtoRGB24")]
-pub fn stub_1a0a28() -> ! {
-    todo!("0x1a0a28 _XYZtoRGB24")
+pub fn stub_1a0a28(xyz: [f32; 3], out: &mut [u8; 3]) {
+    // IDA 0x1a0a28: XYZ → linear RGB matrix, sqrt gamma, clamp (IDA returns channel garbage — callers use `out`).
+    let (x, y, z) = (xyz[0] as f64, xyz[1] as f64, xyz[2] as f64);
+    out[0] = gamma_byte(x * 2.69 - y * 1.276 - z * 0.414);
+    out[1] = gamma_byte(x * -1.022 + y * 1.978 + z * 0.044);
+    out[2] = gamma_byte(x * 0.061 - y * 0.224 + z * 1.163);
+}
+
+/// Sqrt-gamma channel clamp shared by the XYZ→RGB packs (IDA 0x1a0a28/0x1a27cc): ≤ 0 → 0, ≥ 1 → 255, else sqrt·256.
+fn gamma_byte(v: f64) -> u8 {
+    if v <= 0.0 {
+        0
+    } else if v >= 1.0 {
+        255
+    } else {
+        (v.sqrt() * 256.0) as u8
+    }
+}
+
+/// One uv-table row for hue encoding (IDA 0x1a1168: float base, SLOWORD count, SHIWORD code base).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct UvEncodeRow {
+    pub base: f32,
+    pub count: u16,
+    pub code_base: u16,
+}
+
+/// One uv-table row for out-of-gamut table construction (IDA 0x1a0b9c init: float base, code count, code base).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct UvRowInfo {
+    pub u_base: f64,
+    pub code_count: i32,
+    pub code_base: i32,
+}
+
+/// Build the 100-entry out-of-gamut hue table (IDA 0x1a0b9c init: per-row hue = atan2(v − 0.4737, u − 0.2105)·15.9154943 + 50, nearest-slot wins by |Δ| from slot center; unfilled gaps take the nearest filled slot circularly; `rows[0..163]` ↔ IDA v15 0..162).
+pub fn oog_table_init(rows: &[UvRowInfo]) -> [i32; 100] {
+    let mut best = [2.0f64; 100];
+    let mut table = [0i32; 100];
+    for (r, row) in rows.iter().enumerate().take(163) {
+        let vv = (r as f64 + 0.5) * 0.00350000011 + 0.0169399995;
+        let step = if r == 0 || r == 162 || row.code_count <= 1 { 1 } else { row.code_count - 1 };
+        let mut i = 0;
+        loop {
+            let code = row.code_count - 1 + i;
+            if code < 0 {
+                break;
+            }
+            let hue = (vv - 0.473684211).atan2(row.u_base + (code as f64 + 0.5) * 0.00350000011 - 0.210526316) * 15.9154943 + 50.0;
+            let slot = hue as i32;
+            if (0..100).contains(&slot) {
+                let dist = (hue - (slot as f64 + 0.5)).abs();
+                if dist < best[slot as usize] {
+                    best[slot as usize] = dist;
+                    table[slot as usize] = row.code_base + code;
+                }
+            }
+            i -= step;
+        }
+    }
+    for s in 0..100 {
+        if best[s] > 1.5 {
+            let mut d = 1;
+            while d <= 100 {
+                if best[(s + d) % 100] <= 1.5 {
+                    table[s] = table[(s + d) % 100];
+                    break;
+                }
+                if best[(s + 100 - d) % 100] <= 1.5 {
+                    table[s] = table[(s + 100 - d) % 100];
+                    break;
+                }
+                d += 1;
+            }
+        }
+    }
+    table
 }
 
 // 0x1a0b9c — _oog_encode
 // type: unknown
 #[doc(alias = "_oog_encode")]
-pub fn stub_1a0b9c() -> ! {
-    todo!("0x1a0b9c _oog_encode")
+pub fn stub_1a0b9c(u: f64, v: f64, table: &[i32; 100]) -> i32 {
+    // IDA 0x1a0b9c: hue = atan2(v − 0.473684211, u − 0.210526316)·15.9154943 + 50; table lookup (caller owns the lazily built table; the index clamps — IDA leaves it unchecked).
+    let hue = (v - 0.473684211).atan2(u - 0.210526316) * 15.9154943 + 50.0;
+    table[(hue as i32).clamp(0, 99) as usize]
 }
 
 // 0x1a1168 — _uv_encode
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+// type: unknown
 #[doc(alias = "_uv_encode")]
-pub fn stub_1a1168() -> ! {
-    todo!("0x1a1168 _uv_encode")
+pub fn stub_1a1168(u: f64, v: f64, dither: bool, rows: &[UvEncodeRow], oog: &[i32; 100], noise: &mut dyn FnMut() -> f64) -> i32 {
+    // IDA 0x1a1168: v < 0.01694 → oog fallback; row = (v − 0.01694)·285.714 (dithered, caller scales libc rand() by 2⁻³¹); u below base or offset ≥ count (SLOWORD) → oog fallback; else offset + code base (SHIWORD).
+    assert_eq!(rows.len(), 163, "uv_encode: 163-row uv table");
+    if v < 0.0169399995 {
+        return stub_1a0b9c(u, v, oog);
+    }
+    let r = (if dither { noise() + (v - 0.0169399995) * 285.714277 - 0.5 } else { (v - 0.0169399995) * 285.714277 }) as i32;
+    if r < 0 || r > 162 {
+        return stub_1a0b9c(u, v, oog);
+    }
+    let row = &rows[r as usize];
+    if u < row.base as f64 {
+        return stub_1a0b9c(u, v, oog);
+    }
+    let off = (if dither { noise() + (u - row.base as f64) * 285.714277 - 0.5 } else { (u - row.base as f64) * 285.714277 }) as i32;
+    if off < 0 || off >= row.count as i32 {
+        return stub_1a0b9c(u, v, oog);
+    }
+    off + row.code_base as i32
 }
 
 // 0x1a12b8 — _Luv24fromLuv48
 // type: unknown
 #[doc(alias = "_Luv24fromLuv48")]
-pub fn stub_1a12b8() -> ! {
-    todo!("0x1a12b8 _Luv24fromLuv48")
+pub fn stub_1a12b8(src: &[i16], dst: &mut [u32], dither: bool, rows: &[UvEncodeRow], oog: &[i32; 100], noise: &mut dyn FnMut() -> f64) -> usize {
+    // IDA 0x1a12b8: L clamp/quantize (≤ 0 → 0, > 7409 → 1023, else (L − 3314) >> 2 or dithered); uv_encode of ((u + 0.5), (v + 0.5))·0.0000305175781 with (0.21, 0.47) fallback; packed code | L << 14; odd head then 2-wide body folded; returns words written (IDA returns a pointer).
+    let n = (src.len() / 3).min(dst.len());
+    for i in 0..n {
+        let l = src[3 * i] as i32;
+        let lq = if l <= 0 {
+            0
+        } else if l > 7409 {
+            1023
+        } else if dither {
+            (noise() + (l as f64 - 3314.0) * 0.25 - 0.5) as i32
+        } else {
+            (l - 3314) >> 2
+        };
+        let u = (src[3 * i + 1] as f64 + 0.5) * 0.0000305175781;
+        let v = (src[3 * i + 2] as f64 + 0.5) * 0.0000305175781;
+        let mut code = stub_1a1168(u, v, dither, rows, oog, noise);
+        if code < 0 {
+            code = stub_1a1168(0.210526316, 0.473684211, false, rows, oog, noise);
+        }
+        dst[i] = (code as u32) | ((lq as u32) << 14);
+    }
+    n
 }
 
 // 0x1a1638 — _LogL10fromY
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+// type: unknown
 #[doc(alias = "_LogL10fromY")]
-pub fn stub_1a1638() -> ! {
-    todo!("0x1a1638 _LogL10fromY")
+pub fn stub_1a1638(y: f64, dither: bool, noise: &mut dyn FnMut() -> f64) -> i32 {
+    // IDA 0x1a1638: ≥ 15.742 → 1023; ≤ 0.00024283 → 0; else (log₂(y) + 12)·64, dithered.
+    if y >= 15.742 {
+        return 1023;
+    }
+    if y <= 0.00024283 {
+        return 0;
+    }
+    let base = (y.ln() * 1.44269504 + 12.0) * 64.0;
+    if dither { (noise() + base - 0.5) as i32 } else { base as i32 }
 }
 
 // 0x1a1718 — _LogLuv24fromXYZ
-// type: int __fastcall(float *, int)
+// type: unknown
 #[doc(alias = "_LogLuv24fromXYZ")]
-pub fn stub_1a1718() -> ! {
-    todo!("0x1a1718 _LogLuv24fromXYZ")
+pub fn stub_1a1718(xyz: [f32; 3], dither: bool, rows: &[UvEncodeRow], oog: &[i32; 100], noise: &mut dyn FnMut() -> f64) -> u32 {
+    // IDA 0x1a1718: L from LogL10fromY(Y); chromaticities 4X/Σ, 9Y/Σ (Σ = X + 15Y + 3Z) when L ≠ 0 and Σ > 0 else (0.210526316, 0.473684211); uv_encode with same fallback; L << 14 | code.
+    let l = stub_1a1638(xyz[1] as f64, dither, noise);
+    let (x, y, z) = (xyz[0] as f64, xyz[1] as f64, xyz[2] as f64);
+    let sum = x + y * 15.0 + z * 3.0;
+    let (u, v) = if l != 0 && sum > 0.0 { (x * 4.0 / sum, y * 9.0 / sum) } else { (0.210526316, 0.473684211) };
+    let mut code = stub_1a1168(u, v, dither, rows, oog, noise);
+    if code < 0 {
+        code = stub_1a1168(0.210526316, 0.473684211, false, rows, oog, noise);
+    }
+    ((l as u32) << 14) | (code as u32)
 }
 
 // 0x1a1804 — _Luv24fromXYZ
 // type: unknown
 #[doc(alias = "_Luv24fromXYZ")]
-pub fn stub_1a1804() -> ! {
-    todo!("0x1a1804 _Luv24fromXYZ")
+pub fn stub_1a1804(src: &[f32], dst: &mut [u32], dither: bool, rows: &[UvEncodeRow], oog: &[i32; 100], noise: &mut dyn FnMut() -> f64) -> usize {
+    // IDA 0x1a1804: XYZ-triple → LogLuv24 map (IDA 8-wide unrolled with a (count & 7) prologue); returns words written (IDA returns a pointer).
+    let n = (src.len() / 3).min(dst.len());
+    for i in 0..n {
+        dst[i] = stub_1a1718([src[3 * i], src[3 * i + 1], src[3 * i + 2]], dither, rows, oog, noise);
+    }
+    n
 }
 
 // 0x1a19cc — _LogL16fromY
 // type: unknown
 #[doc(alias = "_LogL16fromY")]
-pub fn stub_1a19cc() -> ! {
-    todo!("0x1a19cc _LogL16fromY")
+pub fn stub_1a19cc(y: f64, dither: bool, noise: &mut dyn FnMut() -> f64) -> u32 {
+    // IDA 0x1a19cc: ≥ 1.8371976e19 → 0x7FFF; ≤ −1.8371976e19 → 0xFFFF; tiny |y| → signed-log path (negative) or 0; else (log₂(y) + 64)·256, dithered.
+    if y >= 1.8371976e19 {
+        return 0x7FFF;
+    }
+    if y <= -1.8371976e19 {
+        return 0xFFFF;
+    }
+    if y <= 5.4136769e-20 {
+        if y < -5.4136769e-20 {
+            let base = ((-y).ln() * 1.44269504 + 64.0) * 256.0;
+            let q = if dither { (noise() + base - 0.5) as i32 } else { base as i32 };
+            return (q as u32) | 0xFFFF8000;
+        }
+        return 0;
+    }
+    let base = (y.ln() * 1.44269504 + 64.0) * 256.0;
+    if dither { (noise() + base - 0.5) as i32 as u32 } else { base as i32 as u32 }
+}
+
+/// 410-scaled channel quantizer for the 32-bit XYZ pack (IDA 0x1a1b74: x ≤ 0 → 0; else (dithered) x·410 truncated, ≥ 0x100 → 255; negatives pass through — IDA packs them raw).
+fn quant410(x: f64, dither: bool, noise: &mut dyn FnMut() -> f64) -> i32 {
+    if x <= 0.0 {
+        return 0;
+    }
+    let q = if dither { (noise() + x * 410.0 - 0.5) as i32 } else { (x * 410.0) as i32 };
+    if q >= 0x100 { 255 } else { q }
 }
 
 // 0x1a1b74 — _LogLuv32fromXYZ
 // type: unknown
 #[doc(alias = "_LogLuv32fromXYZ")]
-pub fn stub_1a1b74() -> ! {
-    todo!("0x1a1b74 _LogLuv32fromXYZ")
+pub fn stub_1a1b74(xyz: [f32; 3], dither: bool, noise: &mut dyn FnMut() -> f64) -> u32 {
+    // IDA 0x1a1b74: L from LogL16fromY(Y); zero L or Σ ≤ 0 → default uv; u = 4X/Σ, v = 9Y/Σ quantized (non-positive skips the quantizer); packed L << 16 | up << 8 | vp, wrapping as IDA.
+    let l = stub_1a19cc(xyz[1] as f64, dither, noise);
+    let (x, y, z) = (xyz[0] as f64, xyz[1] as f64, xyz[2] as f64);
+    let sum = x + y * 15.0 + z * 3.0;
+    let (up, vp) = if l != 0 && sum > 0.0 {
+        let u = x * 4.0 / sum;
+        let v = y * 9.0 / sum;
+        (if u > 0.0 { quant410(u, dither, noise) } else { 0 }, if v > 0.0 { quant410(v, dither, noise) } else { 0 })
+    } else {
+        (quant410(0.210526316, dither, noise), quant410(0.473684211, dither, noise))
+    };
+    l | (up as u32).wrapping_shl(8) | (vp as u32)
 }
 
 // 0x1a1cf4 — _Luv32fromXYZ
 // type: unknown
 #[doc(alias = "_Luv32fromXYZ")]
-pub fn stub_1a1cf4() -> ! {
-    todo!("0x1a1cf4 _Luv32fromXYZ")
+pub fn stub_1a1cf4(src: &[f32], dst: &mut [u32], dither: bool, noise: &mut dyn FnMut() -> f64) -> usize {
+    // IDA 0x1a1cf4: XYZ-triple → LogLuv32 map (IDA 8-wide unrolled with a (count & 7) prologue); returns words written (IDA returns a pointer).
+    let n = (src.len() / 3).min(dst.len());
+    for i in 0..n {
+        dst[i] = stub_1a1b74([src[3 * i], src[3 * i + 1], src[3 * i + 2]], dither, noise);
+    }
+    n
 }
 
 // 0x1a1ebc — _L16fromY
 // type: unknown
 #[doc(alias = "_L16fromY")]
-pub fn stub_1a1ebc() -> ! {
-    todo!("0x1a1ebc _L16fromY")
+pub fn stub_1a1ebc(src: &[f32], dst: &mut [u16], dither: bool, noise: &mut dyn FnMut() -> f64) -> usize {
+    // IDA 0x1a1ebc: Y → LogL16 map (IDA 4-wide unrolled with a (count & 3) prologue, low 16 bits stored); returns words written (IDA returns a pointer).
+    let n = src.len().min(dst.len());
+    for i in 0..n {
+        dst[i] = stub_1a19cc(src[i] as f64, dither, noise) as u16;
+    }
+    n
 }
 
 // 0x1a1fe8 — _LogL10toY
 // type: unknown
 #[doc(alias = "_LogL10toY")]
-pub fn stub_1a1fe8() -> ! {
-    todo!("0x1a1fe8 _LogL10toY")
+pub fn stub_1a1fe8(l: i32) -> f64 {
+    // IDA 0x1a1fe8: 0 → 0.0 else exp((l + 0.5)·0.0108304247 − 8.31776617).
+    if l == 0 { 0.0 } else { ((l as f64 + 0.5) * 0.0108304247 - 8.31776617).exp() }
 }
 
 // 0x1a2038 — _LogLuv24toXYZ
 // type: unknown
 #[doc(alias = "_LogLuv24toXYZ")]
-pub fn stub_1a2038() -> ! {
-    todo!("0x1a2038 _LogLuv24toXYZ")
+pub fn stub_1a2038(code: u32, xyz: &mut [f32; 3], uv_table: &[(f32, u16)]) -> i32 {
+    // IDA 0x1a2038: L from LogL10toY; L ≤ 0 → zeros (returns 0 — the low word of double 0.0); else uv_decode with (0.21, 0.47) fallback, XYZ from the (u, v) barycentric inverse; returns the decode status.
+    let y = stub_1a1fe8(((code >> 14) & 0x3FF) as i32);
+    if y <= 0.0 {
+        *xyz = [0.0, 0.0, 0.0];
+        return 0;
+    }
+    let (mut u, mut v) = (0.0, 0.0);
+    let status = stub_19d180(code & 0x3FFF, uv_table, &mut u, &mut v);
+    if status < 0 {
+        u = 0.210526316;
+        v = 0.473684211;
+    }
+    let inv = 1.0 / (v * -16.0 + u * 6.0 + 12.0);
+    let uu = u * 9.0 * inv;
+    let vv = v * 4.0 * inv;
+    xyz[0] = (y * (uu / vv)) as f32;
+    xyz[1] = y as f32;
+    xyz[2] = (y * ((1.0 - uu - vv) / vv)) as f32;
+    status
 }
 
 // 0x1a2144 — _Luv24toRGB
 // type: unknown
 #[doc(alias = "_Luv24toRGB")]
-pub fn stub_1a2144() -> ! {
-    todo!("0x1a2144 _Luv24toRGB")
+pub fn stub_1a2144(src: &[u32], dst: &mut [u8], uv_table: &[(f32, u16)]) -> usize {
+    // IDA 0x1a2144: per-word LogLuv24toXYZ → XYZtoRGB24 gamma pack (IDA 4-wide unrolled with a (count & 3) prologue); returns bytes written (IDA returns a pointer).
+    let n = src.len().min(dst.len() / 3);
+    let mut xyz = [0.0f32; 3];
+    let mut rgb = [0u8; 3];
+    for i in 0..n {
+        stub_1a2038(src[i], &mut xyz, uv_table);
+        stub_1a0a28(xyz, &mut rgb);
+        dst[3 * i..3 * i + 3].copy_from_slice(&rgb);
+    }
+    n * 3
 }
 
 // 0x1a227c — _Luv24toXYZ
 // type: unknown
 #[doc(alias = "_Luv24toXYZ")]
-pub fn stub_1a227c() -> ! {
-    todo!("0x1a227c _Luv24toXYZ")
+pub fn stub_1a227c(src: &[u32], dst: &mut [f32], uv_table: &[(f32, u16)]) -> usize {
+    // IDA 0x1a227c: per-word LogLuv24toXYZ map (IDA 8-wide unrolled with a (count & 7) prologue); returns floats written (IDA returns a pointer).
+    let n = src.len().min(dst.len() / 3);
+    let mut xyz = [0.0f32; 3];
+    for i in 0..n {
+        stub_1a2038(src[i], &mut xyz, uv_table);
+        dst[3 * i..3 * i + 3].copy_from_slice(&xyz);
+    }
+    n * 3
 }
 
 // 0x1a23e8 — _LogL16toY
 // type: unknown
 #[doc(alias = "_LogL16toY")]
-pub fn stub_1a23e8() -> ! {
-    todo!("0x1a23e8 _LogL16toY")
+pub fn stub_1a23e8(l: i16) -> f64 {
+    // IDA 0x1a23e8: (l & 0x7FFF) == 0 → 0.0 else exp(((l & 0x7FFF) + 0.5)·0.00270760617 − 44.3614196). (IDA types it int; callers consume the full double via the ARM r0+r1 return.)
+    let m = (l as u16 & 0x7FFF) as f64;
+    if m == 0.0 { 0.0 } else { ((m + 0.5) * 0.00270760617 - 44.3614196).exp() }
 }
 
 // 0x1a2448 — _LogLuv32toXYZ
 // type: unknown
 #[doc(alias = "_LogLuv32toXYZ")]
-pub fn stub_1a2448() -> ! {
-    todo!("0x1a2448 _LogLuv32toXYZ")
+pub fn stub_1a2448(code: u32, xyz: &mut [f32; 3]) -> u32 {
+    // IDA 0x1a2448: L from LogL16toY(code >> 16); L ≤ 0 → zeros; else the byte pair unburies (u = high, v = low) through the same barycentric inverse; returns the low byte.
+    let y = stub_1a23e8((code >> 16) as u16 as i16);
+    let b = code as u16;
+    if y <= 0.0 {
+        *xyz = [0.0, 0.0, 0.0];
+        return (b & 0xFF) as u32;
+    }
+    let k = 0.00243902439;
+    let inv = 1.0 / (((b & 0xFF) as f64 + 0.5) * k * -16.0 + ((b >> 8) as f64 + 0.5) * k * 6.0 + 12.0);
+    let uu = ((b >> 8) as f64 + 0.5) * k * 9.0 * inv;
+    let vv = ((b & 0xFF) as f64 + 0.5) * k * 4.0 * inv;
+    xyz[0] = (y * (uu / vv)) as f32;
+    xyz[1] = y as f32;
+    xyz[2] = (y * ((1.0 - uu - vv) / vv)) as f32;
+    (b & 0xFF) as u32
 }
 
 // 0x1a2528 — _Luv32toRGB
 // type: unknown
 #[doc(alias = "_Luv32toRGB")]
-pub fn stub_1a2528() -> ! {
-    todo!("0x1a2528 _Luv32toRGB")
+pub fn stub_1a2528(src: &[u32], dst: &mut [u8], _uv_table: &[(f32, u16)]) -> usize {
+    // IDA 0x1a2528: per-word LogLuv32toXYZ → XYZtoRGB24 gamma pack (IDA 4-wide unrolled with a (count & 3) prologue); returns bytes written (IDA returns a pointer). (No uv table — the 32-bit path unburies uv from the byte pair.)
+    let n = src.len().min(dst.len() / 3);
+    let mut xyz = [0.0f32; 3];
+    let mut rgb = [0u8; 3];
+    for i in 0..n {
+        stub_1a2448(src[i], &mut xyz);
+        stub_1a0a28(xyz, &mut rgb);
+        dst[3 * i..3 * i + 3].copy_from_slice(&rgb);
+    }
+    n * 3
 }
 
 // 0x1a2660 — _Luv32toXYZ
 // type: unknown
 #[doc(alias = "_Luv32toXYZ")]
-pub fn stub_1a2660() -> ! {
-    todo!("0x1a2660 _Luv32toXYZ")
+pub fn stub_1a2660(src: &[u32], dst: &mut [f32]) -> usize {
+    // IDA 0x1a2660: per-word LogLuv32toXYZ map (IDA 8-wide unrolled with a (count & 7) prologue); returns floats written (IDA returns a pointer).
+    let n = src.len().min(dst.len() / 3);
+    let mut xyz = [0.0f32; 3];
+    for i in 0..n {
+        stub_1a2448(src[i], &mut xyz);
+        dst[3 * i..3 * i + 3].copy_from_slice(&xyz);
+    }
+    n * 3
 }
 
 // 0x1a27cc — _L16toGry
 // type: unknown
 #[doc(alias = "_L16toGry")]
-pub fn stub_1a27cc() -> ! {
-    todo!("0x1a27cc _L16toGry")
+pub fn stub_1a27cc(src: &[i16], dst: &mut [u8]) -> usize {
+    // IDA 0x1a27cc: LogL16toY → sqrt-gamma gray pack (IDA 4-wide unrolled with a (count & 3) prologue); returns bytes written (IDA returns a pointer).
+    let n = src.len().min(dst.len());
+    for i in 0..n {
+        dst[i] = gamma_byte(stub_1a23e8(src[i]));
+    }
+    n
 }
 
 // 0x1a2a84 — _L16toY
 // type: unknown
 #[doc(alias = "_L16toY")]
-pub fn stub_1a2a84() -> ! {
-    todo!("0x1a2a84 _L16toY")
+pub fn stub_1a2a84(src: &[i16], dst: &mut [f32]) -> usize {
+    // IDA 0x1a2a84: LogL16toY → float map (IDA 8-wide unrolled with a (count & 7) prologue); returns words written (IDA returns the last double's low word).
+    let n = src.len().min(dst.len());
+    for i in 0..n {
+        dst[i] = stub_1a23e8(src[i]) as f32;
+    }
+    n
 }
 
 // 0x1a2c70 — _cl_hash
 // type: unknown
 #[doc(alias = "_cl_hash")]
-pub fn stub_1a2c70() -> ! {
-    todo!("0x1a2c70 _cl_hash")
+pub fn stub_1a2c70(table: &mut [u32]) {
+    // IDA 0x1a2c70: clear the 18000-entry encoder hash to −1 (IDA writes 144-wide unrolled).
+    assert!(table.len() >= 18000, "cl_hash: 18000-entry table");
+    table[..18000].fill(0xFFFF_FFFF);
+}
+
+/// LZW pre-encode reset block (IDA 0x1a2dc8: next 258, width 9, max 511, 10000 buckets, first-char 0xFFFF, caller-supplied code limit).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct LzwEncoderInit {
+    pub next_code: u16,
+    pub code_width: u16,
+    pub max_code: u16,
+    pub max_buckets: u32,
+    pub first_char: u32,
+    pub max_code_limit: u32,
 }
 
 // 0x1a2dc8 — _LZWPreEncode
 // type: unknown
 #[doc(alias = "_LZWPreEncode")]
-pub fn stub_1a2dc8() -> ! {
-    todo!("0x1a2dc8 _LZWPreEncode")
+pub fn stub_1a2dc8(has_sp: bool, setup_done: bool, setup: &mut dyn FnMut(), max_code_limit: u32, clear_hash: &mut dyn FnMut()) -> LzwEncoderInit {
+    // IDA 0x1a2dc8: sp assert; run the setup hook when the encode step is null; reset counters; clear the hash; returns the reset block (IDA returns 1).
+    assert!(has_sp, "LZWPreEncode: sp != NULL (tif_lzw.c:765)");
+    if !setup_done {
+        setup();
+    }
+    clear_hash();
+    LzwEncoderInit { next_code: 258, code_width: 9, max_code: 511, max_buckets: 10000, first_char: 0xFFFF, max_code_limit }
 }
 
 // 0x1a2e80 — _TIFFInitLZW
 // type: unknown
 #[doc(alias = "_TIFFInitLZW")]
-pub fn stub_1a2e80() -> ! {
-    todo!("0x1a2e80 _TIFFInitLZW")
+pub fn stub_1a2e80(scheme: u32, alloc_ok: bool, init_state: &mut dyn FnMut(), init_predictor: &mut dyn FnMut(), on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a2e80: scheme == COMPRESSION_LZW assert; state alloc (fail → error + FALSE); zero revision/encodestep, rows snapshot; hook install caller-side; predictor init; TRUE.
+    assert_eq!(scheme, 5, "TIFFInitLZW: scheme == COMPRESSION_LZW (tif_lzw.c:1062)");
+    if !alloc_ok {
+        on_error("TIFFInitLZW");
+        return false;
+    }
+    init_state();
+    init_predictor();
+    true
 }
 
 // 0x1a2fc0 — _LZWSetupEncode
 // type: unknown
 #[doc(alias = "_LZWSetupEncode")]
-pub fn stub_1a2fc0() -> ! {
-    todo!("0x1a2fc0 _LZWSetupEncode")
+pub fn stub_1a2fc0(has_sp: bool, alloc_table: &mut dyn FnMut() -> bool, on_error: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x1a2fc0: sp assert; alloc the 0x11948-byte encode table (fail → error + FALSE); TRUE.
+    assert!(has_sp, "LZWSetupEncode: sp != NULL (tif_lzw.c:747)");
+    if !alloc_table() {
+        on_error("LZWSetupEncode");
+        return false;
+    }
+    true
 }
 
 // 0x1a3048 — _LZWCleanup
