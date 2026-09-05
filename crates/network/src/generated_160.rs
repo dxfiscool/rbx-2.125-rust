@@ -9,194 +9,247 @@ use rbx_core::SharedPtr;
 // 0x3e8b8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
-pub fn stub_3e8b8() -> ! {
-    todo!("0x3e8b8 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")
+pub fn stub_3e8b8(rethrow: &mut dyn FnMut(), destroy: &mut dyn FnMut()) {
+    // IDA 0x3e8b8: virtual thunk adjusts; rethrow then ~clone_impl.
+    rethrow();
+    destroy();
 }
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
-pub fn stub_3e8c8() -> ! {
-    todo!("0x3e8c8 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_3e8c8(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3e8c8: virtual thunk adjusts; member/base dtors + delete.
+    destroy();
+    free();
 }
 
 // 0x3e900 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")]
-pub fn stub_3e900() -> ! {
-    todo!("0x3e900 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")
+pub fn stub_3e900(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3e900: clone_impl<bad_alloc_> copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
 // demangled: non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")]
-pub fn stub_3ea80() -> ! {
-    todo!("0x3ea80 non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_3ea80(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ea80: bad_alloc_ thunk dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
 // demangled: boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
-pub fn stub_3eab0() -> ! {
-    todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")
+pub fn stub_3eab0(make: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3eab0: shared_ptr<clone_base> construct from clone_impl (below truncation).
+    make()
 }
 
 // 0x3eb98 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")]
-pub fn stub_3eb98() -> ! {
-    todo!("0x3eb98 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")
+pub fn stub_3eb98(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3eb98: null px -> 0 else virtual destroy (+4).
+    if px != 0 {
+        destroy(px)
+    } else {
+        0
+    }
 }
 
 // 0x3eba8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")]
-pub fn stub_3eba8() -> ! {
-    todo!("0x3eba8 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")
+pub fn stub_3eba8() -> usize {
+    // IDA 0x3eba8: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3ebb0 — __ZN3RBX5Tasks8Sequence9onPreStepEPNS_13TaskScheduler3JobE
 // demangled: RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3ebb0() -> ! {
-    todo!("0x3ebb0 RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3ebb0(advance: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x3ebb0: Sequence::onPreStep thunk tail-calls SequenceBase::advance.
+    advance()
 }
 
 // 0x3ebb4 — __ZN3RBX5Tasks17ExclusiveSequence10onPostStepEPNS_13TaskScheduler3JobE
 // demangled: RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_3ebb4() -> ! {
-    todo!("0x3ebb4 RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_3ebb4(advance: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x3ebb4: ExclusiveSequence::onPostStep thunk tail-calls SequenceBase::advance.
+    advance()
 }
 
 // 0x3ebb8 — __ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // demangled: void boost::intrusive_ptr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)
 // type: int(void)
 #[doc(alias = "void rbx_core::SharedPtr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
-pub fn stub_3ebb8() -> ! {
-    todo!("0x3ebb8 void boost::intrusive_ptr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
+pub fn stub_3ebb8(weak: &mut u32, strong: u32, check_asserts: bool, destroy: &mut dyn FnMut()) {
+    // IDA 0x3ebb8: weak--; at zero ReleaseAssert(strong == 0) then destroy.
+    if *weak > 0 {
+        *weak -= 1;
+    }
+    if *weak == 0 {
+        if check_asserts {
+            assert!(strong == 0, "strong == 0");
+        }
+        destroy();
+    }
 }
 
 // 0x3ec30 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev
 // demangled: boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
-pub fn stub_3ec30() -> ! {
-    todo!("0x3ec30 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_3ec30(destroy: &mut dyn FnMut()) {
+    // IDA 0x3ec30: scoped_ptr<LogManager> D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x3ec34 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev
 // demangled: boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
-pub fn stub_3ec34() -> ! {
-    todo!("0x3ec34 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_3ec34(px: usize, destroy: &mut dyn FnMut(usize), dealloc: &mut dyn FnMut(usize)) {
+    // IDA 0x3ec34: scoped_ptr D2 — LogManager dtor + dealloc when set.
+    if px != 0 {
+        destroy(px);
+        dealloc(px);
+    }
 }
 
 // 0x3eccc — __ZN17QuitEventListenerD0Ev
 // demangled: QuitEventListener::~QuitEventListener()
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
-pub fn stub_3eccc() -> ! {
-    todo!("0x3eccc QuitEventListener::~QuitEventListener()")
+pub fn stub_3eccc(obj: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3eccc: QuitEventListener D0 thunk tail-calls operator delete.
+    free(obj);
 }
 
 // 0x3ecd0 — __ZN4Ogre19WindowEventListener11windowMovedEPNS_12RenderWindowE
 // demangled: Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")]
-pub fn stub_3ecd0() -> ! {
-    todo!("0x3ecd0 Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")
+pub fn stub_3ecd0() {
+    // IDA 0x3ecd0: empty windowMoved body.
 }
 
 // 0x3ecd4 — __ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE
 // demangled: Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")]
-pub fn stub_3ecd4() -> ! {
-    todo!("0x3ecd4 Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")
+pub fn stub_3ecd4() {
+    // IDA 0x3ecd4: empty windowResized body.
 }
 
 // 0x3ecd8 — __ZN4Ogre19WindowEventListener13windowClosingEPNS_12RenderWindowE
 // demangled: Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")]
-pub fn stub_3ecd8() -> ! {
-    todo!("0x3ecd8 Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")
+pub fn stub_3ecd8() -> i32 {
+    // IDA 0x3ecd8: windowClosing returns 1 (allow close).
+    1
 }
 
 // 0x3ecdc — __ZN17QuitEventListener12windowClosedEPN4Ogre12RenderWindowE
 // demangled: QuitEventListener::windowClosed(Ogre::RenderWindow *)
 // type: _DWORD __fastcall(QuitEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "QuitEventListener::windowClosed(Ogre::RenderWindow *)")]
-pub fn stub_3ecdc() -> ! {
-    todo!("0x3ecdc QuitEventListener::windowClosed(Ogre::RenderWindow *)")
+pub fn stub_3ecdc(log: &mut dyn FnMut(&str)) {
+    // IDA 0x3ecdc: puts "Request to close OGRE render window received".
+    log("Request to close OGRE render window received");
 }
 
 // 0x3ecec — __ZN4Ogre19WindowEventListener17windowFocusChangeEPNS_12RenderWindowE
 // demangled: Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")]
-pub fn stub_3ecec() -> ! {
-    todo!("0x3ecec Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")
+pub fn stub_3ecec() {
+    // IDA 0x3ecec: empty windowFocusChange body.
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // demangled: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
-pub fn stub_3ecf0() -> ! {
-    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+pub fn stub_3ecf0(job: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3ecf0: RenderJob::RenderJob (below truncation).
+    init(job);
+    job
 }
 
 // 0x3ee80 — __ZN10RobloxView9RenderJobD1Ev
 // demangled: RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3ee80() -> ! {
-    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ee80(destroy: &mut dyn FnMut()) {
+    // IDA 0x3ee80: RenderJob D2 — CEvent/weak/Job destroys (below truncation).
+    destroy();
 }
 
 // 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
 // demangled: RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3ef40() -> ! {
-    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ef40(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ef40: RenderJob D0 — destroys + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3f008 — __ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f008() -> ! {
-    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f008(has_stats: bool, sleep: &mut dyn FnMut(f64) -> f64, no_sleep: &mut dyn FnMut()) -> f64 {
+    // IDA 0x3f008: stats flag ? computeStandardSleepTime(stats, 60.0) : store +inf.
+    if has_stats {
+        sleep(60.0)
+    } else {
+        no_sleep();
+        f64::INFINITY
+    }
 }
 
 // 0x3f058 — __ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f058() -> ! {
-    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f058(has_stats: bool, error: &mut dyn FnMut(f64) -> f64, clear: &mut dyn FnMut()) -> f64 {
+    // IDA 0x3f058: stats flag ? computeStandardError(stats, 30.0) : zero.
+    if has_stats {
+        error(30.0)
+    } else {
+        clear();
+        0.0
+    }
 }
 
 // 0x3f090 — __ZNK3RBX13TaskScheduler3Job26getDesiredConcurrencyCountEv
 // demangled: RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const
 // type: int __fastcall(RBX::TaskScheduler::Job *this)
 #[doc(alias = "RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")]
-pub fn stub_3f090() -> ! {
-    todo!("0x3f090 RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")
+pub fn stub_3f090() -> i32 {
+    // IDA 0x3f090: getDesiredConcurrencyCount returns 1.
+    1
 }
 
 // 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE
 // demangled: RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f094() -> ! {
-    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f094(step: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x3f094: RenderJob::stepDataModelJob (below truncation).
+    step()
 }
 
 // 0x3f598 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs
