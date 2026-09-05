@@ -1736,25 +1736,37 @@ pub fn init_global_a22_4ef74() {
 
 // 0x4f7bc — __GLOBAL__I_a_23
 #[doc(alias = "global constructor keyed to_a_23")]
-pub fn stub_4f7bc() -> ! {
-    todo!("0x4f7bc global constructor keyed to_a_23")
+pub fn init_global_a23_4f7bc() {
+// IDA 0x4f7bc: global ctor keyed to _a_23 — boost::system generic_category
+// (x2) + system_category slots (disasm: generic_category, generic_category,
+// system_category stores; decompile failed). Same once-only shape as
+// 0x44924; the runtime owns category state.
+    static ONCE: Once = Once::new();
+    ONCE.call_once(|| {});
 }
-
 // 0x4fd40 — ___copy_helper_block__11
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__11")]
-pub fn stub_4fd40() -> ! {
-    todo!("0x4fd40 ___copy_helper_block__11")
+pub unsafe fn copy_block_capture_4fd40(dst: *mut c_void, src: *const c_void) {
+// IDA 0x4fd40: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as IDA 0x47c04/0x4ce30.
+    unsafe {
+        *(dst as *mut *const c_void).byte_add(20) =
+            *(src as *const *const c_void).byte_add(20);
+    }
 }
-
 // 0x4fd4c — ___destroy_helper_block__11
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__11")]
-pub fn stub_4fd4c() -> ! {
-    todo!("0x4fd4c ___destroy_helper_block__11")
+pub unsafe fn destroy_block_capture_4fd4c(block: *mut c_void) {
+// IDA 0x4fd4c: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as IDA 0x47c10/0x4ce3c.
+    unsafe {
+        (block as *mut *const c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
-
-// 0x509a8 — ___copy_helper_block_77
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_77")]
 pub fn stub_509a8() -> ! {

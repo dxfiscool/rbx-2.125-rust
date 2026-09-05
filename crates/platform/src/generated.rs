@@ -672,6 +672,356 @@ pub fn control_user_interaction_enabled() -> bool {
 pub fn user_input_service_for_game(has_game: bool, service_present: bool) -> bool {
     has_game && service_present
 }
+/// Host id standing in for the `JumpButton` `self`.
+const JUMP_BUTTON_ID: ControlId = 6;
+/// Host id standing in for the `ThumbStickControl` `self`.
+const THUMB_STICK_ID: ControlId = 7;
+/// Minimal `JumpButton` counterpart (IDA 0x4f188..0x4f43c): the owned
+/// `ControlComponent`, the touchDown/touchUp targets, the `jumpEnabledChanged:`
+/// connection and the last `jumpLocalCharacter` request.
+#[derive(Debug, Default)]
+pub struct JumpButtonState {
+    initialized: AtomicBool,
+    has_component: AtomicBool,
+    targets: AtomicU32,
+    parent: parking_lot::Mutex<Option<ControlId>>,
+    setup_runs: AtomicU32,
+    prop_connects: AtomicU32,
+    prop_change_calls: AtomicU32,
+    prop_connected: AtomicBool,
+    jumping: AtomicBool,
+    jump_calls: AtomicU32,
+    releases: AtomicU32,
+}
+impl JumpButtonState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[JumpButton initWithFrame:]` (IDA 0x4f188): super init with the
+    /// frame (0x4f1be); on success a fresh `ControlComponent` (0x4f1dc..0x4f210),
+    /// the normal/pressed images (0x4f224..0x4f260) and the touchDown(1) /
+    /// touchUp(96) targets (0x4f286..0x4f2a0).
+    pub fn init_button(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        self.has_component.store(true, Ordering::SeqCst);
+        self.targets.store(2, Ordering::SeqCst);
+        Some(JUMP_BUTTON_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn target_count(&self) -> u32 {
+        self.targets.load(Ordering::SeqCst)
+    }
+    /// `-[JumpButton dealloc]` (IDA 0x4f2b0): `controlComponent` release
+    /// (0x4f2d2), then super `dealloc` (0x4f2f4).
+    pub fn dealloc(&self) {
+        self.has_component.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-[JumpButton setControlComponentSuperview:]` (IDA 0x4f2fc):
+    /// `[superview addSubview:controlComponent]` (0x4f338), then the
+    /// `UserInputService` lookup (0x4f352); nil skips the connect, else
+    /// `methodForSelector:` + `signal::connect<bind_t>` wires
+    /// `jumpEnabledChanged:` (0x4f3a8..0x4f3b6) with a `weak_release` when
+    /// the slot is held (0x4f3be..0x4f3c4).
+    pub fn set_component_superview(
+        &self,
+        parent: Option<ControlId>,
+        has_input_service: bool,
+    ) -> Option<JumpButtonPropConnection> {
+        *self.parent.lock() = parent;
+        if !has_input_service {
+            return None;
+        }
+        self.bump(&self.setup_runs);
+        Some(JumpButtonPropConnection::connect(Some(JUMP_BUTTON_ID)))
+    }
+    pub fn setup_run_count(&self) -> u32 {
+        self.setup_runs.load(Ordering::SeqCst)
+    }
+    pub fn is_prop_connected(&self) -> bool {
+        self.prop_connected.load(Ordering::SeqCst)
+    }
+    /// `-[JumpButton jumpEnabledChanged:]` (IDA 0x4f404): empty body; the
+    /// dispatch itself is counted.
+    pub fn prop_changed(&self) {
+        self.bump(&self.prop_change_calls);
+    }
+    pub fn prop_change_count(&self) -> u32 {
+        self.prop_change_calls.load(Ordering::SeqCst)
+    }
+    /// `-[JumpButton touchDown]` (IDA 0x4f408): `jumpLocalCharacter(1)`
+    /// (0x4f426..0x4f436); nil service skips.
+    pub fn touch_down(&self, has_service: bool) {
+        if !has_service {
+            return;
+        }
+        self.jumping.store(true, Ordering::SeqCst);
+        self.bump(&self.jump_calls);
+    }
+    /// `-[JumpButton touchUp]` (IDA 0x4f43c): `jumpLocalCharacter(0)`
+    /// (0x4f45a..0x4f46a); nil service skips.
+    pub fn touch_up(&self, has_service: bool) {
+        if !has_service {
+            return;
+        }
+        self.jumping.store(false, Ordering::SeqCst);
+        self.bump(&self.jump_calls);
+    }
+    pub fn is_jumping(&self) -> bool {
+        self.jumping.load(Ordering::SeqCst)
+    }
+    pub fn jump_call_count(&self) -> u32 {
+        self.jump_calls.load(Ordering::SeqCst)
+    }
+}
+static JUMP_BUTTON: std::sync::LazyLock<JumpButtonState> =
+    std::sync::LazyLock::new(JumpButtonState::default);
+/// `rbx::signals::signal<void(PropertyDescriptor const *)>` slot holding the
+/// `bind_t<void(objc_object *, SEL, void const *)>` for `JumpButton`
+/// (IDA 0x4f470..0x4f70c): same connect/call/disconnect contract as the
+/// `CharacterMove` slot (0x46c18..0x46eb4), distinct vtable set.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct JumpButtonPropConnection {
+    pub target: Option<ControlId>,
+    pub connected: bool,
+}
+impl JumpButtonPropConnection {
+    pub fn connect(target: Option<ControlId>) -> Self {
+        JUMP_BUTTON.bump(&JUMP_BUTTON.prop_connects);
+        let live = target.is_some();
+        JUMP_BUTTON.prop_connected.store(live, Ordering::SeqCst);
+        Self { target, connected: live }
+    }
+    pub fn disconnect(&mut self) {
+        self.connected = false;
+        JUMP_BUTTON.prop_connected.store(false, Ordering::SeqCst);
+    }
+    pub fn call(&self, descriptor_present: bool) -> bool {
+        if !self.connected || self.target.is_none() {
+            return false;
+        }
+        let _ = descriptor_present;
+        JUMP_BUTTON.prop_changed();
+        true
+    }
+}
+/// `-[ThumbStickControl intToThumbstickStyle:]` (IDA 0x4fdb8): clamps the
+/// style to {0, 1}; anything >= 2 (or negative) reads 0 (0x4fdba..0x4fdc0).
+pub fn int_to_thumbstick_style(raw: i32) -> i32 {
+    if raw < 0 || raw >= 2 {
+        0
+    } else {
+        raw
+    }
+}
+/// `-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]` (IDA 0x4fdc4):
+/// `sqrt(dx*dx + dy*dy)` (0x4fdd4..0x4fdf0).
+pub fn distance_between(a: (f32, f32), b: (f32, f32)) -> f32 {
+    let (dx, dy) = (a.0 - b.0, a.1 - b.1);
+    (dx * dx + dy * dy).sqrt()
+}
+/// `rotatePointAboutLocation:withPointToRotateAbout:withRadians:` (IDA
+/// 0x4fdf4): the 2D rotation of `p` about `about` by `radians`
+/// (0x4fe0c..0x4fe86).
+pub fn rotate_point(p: (f32, f32), about: (f32, f32), radians: f32) -> (f32, f32) {
+    let (sin, cos) = radians.sin_cos();
+    let (dx, dy) = (p.0 - about.0, p.1 - about.1);
+    (about.0 + cos * dx - sin * dy, about.1 + sin * dx + cos * dy)
+}
+/// Minimal `ThumbStickControl` counterpart (IDA 0x4f9d0..0x50338): style,
+/// geometry (`thumbstickSize`, frame, centers), the tracked touch and
+/// observable counters for the image-view steps out of slice.
+#[derive(Debug, Default)]
+pub struct ThumbStickState {
+    initialized: AtomicBool,
+    style: AtomicI32,
+    been_touched: AtomicBool,
+    inactive_alpha: parking_lot::Mutex<f32>,
+    size: AtomicI32,
+    frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    has_views: AtomicBool,
+    thumbstick_touch: parking_lot::Mutex<Option<ControlId>>,
+    inner_center: parking_lot::Mutex<(f32, f32)>,
+    outer_center: parking_lot::Mutex<(f32, f32)>,
+    subview_adds: AtomicU32,
+    begin_calls: AtomicU32,
+    move_calls: AtomicU32,
+    releases: AtomicU32,
+}
+impl ThumbStickState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[ThumbStickControl init:]` (IDA 0x4f9d0): super `ControlComponent
+    /// init` (0x4fa08) + `setFrame:` (0x4fa30); style 0 under
+    /// `FFlag::NewCameraControls`, else 1 with the async settings-style block
+    /// (0x4fa4e..0x4fa98, inline on the host); `beenTouched` 0, inactive
+    /// alpha 0.3, size 120 (70 on phone, 0x4fab4..0x4fb30); outer + inner
+    /// image views built and added (0x4fb4e..0x4fcb4) with inactive alphas.
+    pub fn init_stick(
+        &self,
+        new_camera_controls: bool,
+        is_phone: bool,
+        settings_style: Option<i32>,
+    ) -> Option<ControlId> {
+        let mut style = if new_camera_controls { 0 } else { 1 };
+        if !new_camera_controls {
+            if let Some(raw) = settings_style {
+                style = int_to_thumbstick_style(raw);
+            }
+        }
+        self.style.store(style, Ordering::SeqCst);
+        self.been_touched.store(false, Ordering::SeqCst);
+        *self.inactive_alpha.lock() = 0.3;
+        self.size.store(if is_phone { 70 } else { 120 }, Ordering::SeqCst);
+        self.has_views.store(true, Ordering::SeqCst);
+        self.subview_adds.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(THUMB_STICK_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn style(&self) -> i32 {
+        self.style.load(Ordering::SeqCst)
+    }
+    pub fn thumbstick_size(&self) -> i32 {
+        self.size.load(Ordering::SeqCst)
+    }
+    fn radius(&self) -> f32 {
+        self.size.load(Ordering::SeqCst) as f32 / 2.0
+    }
+    /// `__26-[ThumbStickControl init:]_block_invoke` (IDA 0x4fcf4): stores
+    /// `intToThumbstickStyle(var33)` from the settings service into
+    /// `thumbstickStyle` (0x4fd2a..0x4fd3c).
+    pub fn apply_settings_style(&self, raw: i32) {
+        self.style.store(int_to_thumbstick_style(raw), Ordering::SeqCst);
+    }
+    /// `-[ThumbStickControl dealloc]` (IDA 0x4fd54): outer + inner `release`
+    /// (0x4fd78..0x4fd8c), then super `dealloc` (0x4fdae).
+    pub fn dealloc(&self) {
+        self.has_views.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    pub fn set_frame(&self, frame: (f32, f32, f32, f32)) {
+        *self.frame.lock() = frame;
+    }
+    pub fn frame(&self) -> (f32, f32, f32, f32) {
+        *self.frame.lock()
+    }
+    /// `-[ThumbStickControl touchesBegan:withEvent:]` (IDA 0x4fe88): needs
+    /// exactly one touch and no tracked `thumbstickTouch` (0x4fecc); the
+    /// touch must land inside the outer frame (`CGRectContainsPoint`,
+    /// 0x4ff70..0x4ff7c). Then `beenTouched` sets, subview animations clear
+    /// with alpha 1 (0x4ffa2..0x5005a), the touch tracks (0x50078) and both
+    /// centers snap to it (0x50090..0x4fca4 tail).
+    pub fn touches_began(&self, touches: &[ControlTouch], inside_outer: bool) -> bool {
+        if touches.len() != 1 || self.thumbstick_touch().is_some() {
+            return false;
+        }
+        if !inside_outer {
+            return false;
+        }
+        let touch = touches[0];
+        self.been_touched.store(true, Ordering::SeqCst);
+        self.bump(&self.begin_calls);
+        *self.thumbstick_touch.lock() = Some(touch.id);
+        *self.outer_center.lock() = (touch.x, touch.y);
+        *self.inner_center.lock() = (touch.x, touch.y);
+        true
+    }
+    pub fn been_touched(&self) -> bool {
+        self.been_touched.load(Ordering::SeqCst)
+    }
+    pub fn thumbstick_touch(&self) -> Option<ControlId> {
+        *self.thumbstick_touch.lock()
+    }
+    pub fn set_thumbstick_touch(&self, touch: Option<ControlId>) {
+        *self.thumbstick_touch.lock() = touch;
+    }
+    pub fn inner_center(&self) -> (f32, f32) {
+        *self.inner_center.lock()
+    }
+    pub fn outer_center(&self) -> (f32, f32) {
+        *self.outer_center.lock()
+    }
+    /// `-[ThumbStickControl stationaryThumbstickTouchMove]` (IDA 0x50108):
+    /// within half `thumbstickSize` of the outer center the inner snaps to
+    /// the touch (0x501ce); past it the inner sits on the rim along the
+    /// normalized touch vector (0x50246..0x5031c, NaN/Inf lanes zeroed,
+    /// 0x50272..0x5028c). Returns the new inner center.
+    pub fn stationary_move(&self, loc: (f32, f32)) -> (f32, f32) {
+        let outer = *self.outer_center.lock();
+        let radius = self.radius();
+        let dist = distance_between(loc, outer);
+        let inner = if dist <= radius {
+            loc
+        } else if dist == 0.0 {
+            outer
+        } else {
+            let (mut nx, mut ny) = ((loc.0 - outer.0) / dist, (loc.1 - outer.1) / dist);
+            if !nx.is_finite() {
+                nx = 0.0;
+            }
+            if !ny.is_finite() {
+                ny = 0.0;
+            }
+            (outer.0 + nx * radius, outer.1 + ny * radius)
+        };
+        *self.inner_center.lock() = inner;
+        self.bump(&self.move_calls);
+        inner
+    }
+    /// `-[ThumbStickControl followThumbstickTouchMove]` (IDA 0x50338):
+    /// within half `thumbstickSize` the inner snaps to the touch
+    /// (0x50460..0x50490); past it the outer rotates about the inner by the
+    /// touch angle (0x50518..0x505b4, applied past 0.001 rad), translates by
+    /// (touch − inner) (0x50622..0x50676), and the inner snaps to the touch
+    /// (0x506a8). Returns the new inner center.
+    pub fn follow_move(&self, loc: (f32, f32)) -> (f32, f32) {
+        let outer = *self.outer_center.lock();
+        let inner = *self.inner_center.lock();
+        let radius = self.radius();
+        let dist = distance_between(loc, outer);
+        if dist <= radius {
+            *self.inner_center.lock() = loc;
+            self.bump(&self.move_calls);
+            return loc;
+        }
+        if dist == 0.0 {
+            return inner;
+        }
+        let (tx, ty) = ((loc.0 - outer.0) / dist, (loc.1 - outer.1) / dist);
+        let (ix, iy) = (inner.0 - outer.0, inner.1 - outer.1);
+        let mag = (ix * ix + iy * iy).sqrt();
+        let angle = (tx * iy - ty * ix).atan2(tx * ix + ty * iy) * 1.0f32.min(mag / dist);
+        let rotated = if angle.abs() > 0.001 {
+            rotate_point(outer, inner, angle)
+        } else {
+            outer
+        };
+        *self.outer_center.lock() = (rotated.0 + (loc.0 - inner.0), rotated.1 + (loc.1 - inner.1));
+        *self.inner_center.lock() = loc;
+        self.bump(&self.move_calls);
+        loc
+    }
+    pub fn move_call_count(&self) -> u32 {
+        self.move_calls.load(Ordering::SeqCst)
+    }
+    pub fn begin_call_count(&self) -> u32 {
+        self.begin_calls.load(Ordering::SeqCst)
+    }
+}
+static THUMB_STICK: std::sync::LazyLock<ThumbStickState> =
+    std::sync::LazyLock::new(ThumbStickState::default);
 /// Host id standing in for the `GameInputViewController` `self`.
 const GAME_INPUT_ID: ControlId = 3;
 /// Host id standing in for the `GameKeyboard` `self`.
@@ -11489,106 +11839,157 @@ pub fn stub_4d5e4(render_ready: bool, width: f32, height: f32) -> Option<f32> {
 // 0x4f188 — -[JumpButton initWithFrame:]
 // type: JumpButton *__cdecl(JumpButton *self, SEL, CGRect)
 #[doc(alias = "-[JumpButton initWithFrame:]")]
-pub fn stub_4f188() -> ! {
-    todo!("0x4f188 -[JumpButton initWithFrame:]")
+pub fn stub_4f188() -> Option<ControlId> {
+    // IDA 0x4f188 `-[JumpButton initWithFrame:]`: super init with the frame
+    // (0x4f1be); on success a fresh `ControlComponent` (0x4f1dc..0x4f210),
+    // the normal/pressed images (0x4f224..0x4f260), and the
+    // touchDown(1)/touchUp(96) targets (0x4f286..0x4f2a0).
+    JUMP_BUTTON.init_button()
 }
 
 // 0x4f2b0 — -[JumpButton dealloc]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton dealloc]")]
-pub fn stub_4f2b0() -> ! {
-    todo!("0x4f2b0 -[JumpButton dealloc]")
+pub fn stub_4f2b0() {
+    // IDA 0x4f2b0 `-[JumpButton dealloc]`: `controlComponent` release
+    // (0x4f2d2), then super `dealloc` (0x4f2f4).
+    JUMP_BUTTON.dealloc();
 }
 
 // 0x4f2fc — -[JumpButton setControlComponentSuperview:]
 // type: void __cdecl(JumpButton *self, SEL, id)
 #[doc(alias = "-[JumpButton setControlComponentSuperview:]")]
-pub fn stub_4f2fc() -> ! {
-    todo!("0x4f2fc -[JumpButton setControlComponentSuperview:]")
+pub fn stub_4f2fc(parent: Option<ControlId>, has_input_service: bool) {
+    // IDA 0x4f2fc `-[JumpButton setControlComponentSuperview:]`:
+    // `[superview addSubview:controlComponent]` (0x4f338), then the
+    // `UserInputService` lookup (0x4f352); nil skips the connect, else
+    // `methodForSelector:` + `signal::connect<bind_t>` wires
+    // `jumpEnabledChanged:` (0x4f3a8..0x4f3b6) with a `weak_release` when
+    // the slot is held (0x4f3be..0x4f3c4).
+    JUMP_BUTTON.set_component_superview(parent, has_input_service);
 }
 
 // 0x4f404 — -[JumpButton jumpEnabledChanged:]
 // type: void __cdecl(JumpButton *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[JumpButton jumpEnabledChanged:]")]
-pub fn stub_4f404() -> ! {
-    todo!("0x4f404 -[JumpButton jumpEnabledChanged:]")
+pub fn stub_4f404() {
+    // IDA 0x4f404 `-[JumpButton jumpEnabledChanged:]`: empty body; the
+    // dispatch is counted on the harness.
+    JUMP_BUTTON.prop_changed();
 }
 
 // 0x4f408 — -[JumpButton touchDown]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchDown]")]
-pub fn stub_4f408() -> ! {
-    todo!("0x4f408 -[JumpButton touchDown]")
+pub fn stub_4f408(has_service: bool) {
+    // IDA 0x4f408 `-[JumpButton touchDown]`: `jumpLocalCharacter(1)` on the
+    // `UserInputService` (0x4f426..0x4f436); nil service skips.
+    JUMP_BUTTON.touch_down(has_service);
 }
 
 // 0x4f43c — -[JumpButton touchUp]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchUp]")]
-pub fn stub_4f43c() -> ! {
-    todo!("0x4f43c -[JumpButton touchUp]")
+pub fn stub_4f43c(has_service: bool) {
+    // IDA 0x4f43c `-[JumpButton touchUp]`: `jumpLocalCharacter(0)` on the
+    // `UserInputService` (0x4f45a..0x4f46a); nil service skips.
+    JUMP_BUTTON.touch_up(has_service);
 }
 
 // 0x4f9d0 — -[ThumbStickControl init:]
 // type: id __cdecl(ThumbStickControl *self, SEL, CGRect)
 #[doc(alias = "-[ThumbStickControl init:]")]
-pub fn stub_4f9d0() -> ! {
-    todo!("0x4f9d0 -[ThumbStickControl init:]")
+pub fn stub_4f9d0(new_camera_controls: bool, is_phone: bool, settings_style: Option<i32>) -> Option<ControlId> {
+    // IDA 0x4f9d0 `-[ThumbStickControl init:]`: super `ControlComponent
+    // init` (0x4fa08) + `setFrame:` (0x4fa30); style 0 under
+    // `FFlag::NewCameraControls`, else 1 with the async settings-style block
+    // (0x4fa4e..0x4fa98, inline on the host); `beenTouched` 0, inactive
+    // alpha 0.3, size 120 (70 on phone, 0x4fab4..0x4fb30); outer + inner
+    // image views built and added (0x4fb4e..0x4fcb4) with inactive alphas.
+    THUMB_STICK.init_stick(new_camera_controls, is_phone, settings_style)
 }
 
 // 0x4fcf4 — ___26-[ThumbStickControl init:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___26-[ThumbStickControl init:]_block_invoke")]
-pub fn stub_4fcf4() -> ! {
-    todo!("0x4fcf4 ___26-[ThumbStickControl init:]_block_invoke")
+pub fn stub_4fcf4(settings_style: i32) {
+    // IDA 0x4fcf4 `__26-[ThumbStickControl init:]_block_invoke`: reads the
+    // settings service (`ForcedReadFromWeb:0`, 0x4fd14) and stores
+    // `intToThumbstickStyle(var33)` into `thumbstickStyle` (0x4fd2a..0x4fd3c).
+    THUMB_STICK.apply_settings_style(settings_style);
 }
 
 // 0x4fd54 — -[ThumbStickControl dealloc]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl dealloc]")]
-pub fn stub_4fd54() -> ! {
-    todo!("0x4fd54 -[ThumbStickControl dealloc]")
+pub fn stub_4fd54() {
+    // IDA 0x4fd54 `-[ThumbStickControl dealloc]`: outer + inner `release`
+    // (0x4fd78..0x4fd8c), then super `dealloc` (0x4fdae).
+    THUMB_STICK.dealloc();
 }
 
 // 0x4fdb8 — -[ThumbStickControl intToThumbstickStyle:]
 // type: int __cdecl(ThumbStickControl *self, SEL, int)
 #[doc(alias = "-[ThumbStickControl intToThumbstickStyle:]")]
-pub fn stub_4fdb8() -> ! {
-    todo!("0x4fdb8 -[ThumbStickControl intToThumbstickStyle:]")
+pub fn stub_4fdb8(raw: i32) -> i32 {
+    // IDA 0x4fdb8 `-[ThumbStickControl intToThumbstickStyle:]`: clamps to
+    // {0, 1}; anything >= 2 (or negative) reads 0 (0x4fdba..0x4fdc0).
+    int_to_thumbstick_style(raw)
 }
 
 // 0x4fdc4 — -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]
 // type: float __cdecl(ThumbStickControl *self, SEL, CGPoint, CGPoint)
 #[doc(alias = "-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")]
-pub fn stub_4fdc4() -> ! {
-    todo!("0x4fdc4 -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")
+pub fn stub_4fdc4(a: (f32, f32), b: (f32, f32)) -> f32 {
+    // IDA 0x4fdc4 `DistanceBetweenTwoPoints:withPoint2:`: `sqrt(dx*dx +
+    // dy*dy)` (0x4fdd4..0x4fdf0).
+    distance_between(a, b)
 }
 
 // 0x4fdf4 — -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]
 // type: CGPoint *__cdecl(CGPoint *__return_ptr __struct_ptr retstr, ThumbStickControl *self, SEL, CGPoint, CGPoint, float)
 #[doc(alias = "-[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")]
-pub fn stub_4fdf4() -> ! {
-    todo!("0x4fdf4 -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")
+pub fn stub_4fdf4(p: (f32, f32), about: (f32, f32), radians: f32) -> (f32, f32) {
+    // IDA 0x4fdf4 `rotatePointAboutLocation:withPointToRotateAbout:...`:
+    // the 2D rotation of `p` about `about` by `radians` (0x4fe0c..0x4fe86).
+    rotate_point(p, about, radians)
 }
 
 // 0x4fe88 — -[ThumbStickControl touchesBegan:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesBegan:withEvent:]")]
-pub fn stub_4fe88() -> ! {
-    todo!("0x4fe88 -[ThumbStickControl touchesBegan:withEvent:]")
+pub fn stub_4fe88(touches: &[ControlTouch], inside_outer: bool) -> bool {
+    // IDA 0x4fe88 `-[ThumbStickControl touchesBegan:withEvent:]`: needs
+    // exactly one touch and no tracked `thumbstickTouch` (0x4fecc); the
+    // touch must land inside the outer frame (`CGRectContainsPoint`,
+    // 0x4ff70..0x4ff7c). Then `beenTouched` sets, subview animations clear,
+    // the touch tracks, and both centers snap to it (0x4ffa2..0x4fca4 tail).
+    THUMB_STICK.touches_began(touches, inside_outer)
 }
 
 // 0x50108 — -[ThumbStickControl stationaryThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl stationaryThumbstickTouchMove]")]
-pub fn stub_50108() -> ! {
-    todo!("0x50108 -[ThumbStickControl stationaryThumbstickTouchMove]")
+pub fn stub_50108(loc: (f32, f32)) -> (f32, f32) {
+    // IDA 0x50108 `-[ThumbStickControl stationaryThumbstickTouchMove]`:
+    // within half `thumbstickSize` of the outer center the inner snaps to
+    // the touch (0x501ce); past it the inner sits on the rim along the
+    // normalized touch vector (0x50246..0x5031c, NaN/Inf lanes zeroed).
+    // Returns the new inner center.
+    THUMB_STICK.stationary_move(loc)
 }
 
 // 0x50338 — -[ThumbStickControl followThumbstickTouchMove]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl followThumbstickTouchMove]")]
-pub fn stub_50338() -> ! {
-    todo!("0x50338 -[ThumbStickControl followThumbstickTouchMove]")
+pub fn stub_50338(loc: (f32, f32)) -> (f32, f32) {
+    // IDA 0x50338 `-[ThumbStickControl followThumbstickTouchMove]`: within
+    // half `thumbstickSize` the inner snaps to the touch (0x50460..0x50490);
+    // past it the outer rotates about the inner by the touch angle
+    // (0x50518..0x505b4, applied past 0.001 rad), translates by
+    // (touch − inner) (0x50622..0x50676), and the inner snaps to the touch
+    // (0x506a8). Returns the new inner center.
+    THUMB_STICK.follow_move(loc)
 }
 
 // 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
@@ -23801,8 +24202,12 @@ pub fn stub_4bfcc(slot: &Option<DataModelChangedCallback>, has_datamodel: bool) 
 // type: int __fastcall(int *, int, __int64 *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_4f470() -> ! {
-    todo!("0x4f470 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_4f470(target: Option<ControlId>) -> JumpButtonPropConnection {
+    // IDA 0x4f470 `signal<void(PropertyDescriptor const *)>::connect<bind_t>`:
+    // `operator new(28)` slot (0x4f488), vtable + bind copy (0x4f4a0..0x4f4c6),
+    // `insert` (0x4f4ca), out-param store + `weak_add` (0x4f4d0..0x4f4d8).
+    // `boost::bind` becomes the stored target.
+    JumpButtonPropConnection::connect(target)
 }
 
 // 0x4f4e4 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
@@ -23810,8 +24215,10 @@ pub fn stub_4f470() -> ! {
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_4f4e4() -> ! {
-    todo!("0x4f4e4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_4f4e4(slot: &mut JumpButtonPropConnection) {
+    // IDA 0x4f4e4 `callable_slot<...>::~callable_slot` (D1): vtable reset
+    // (0x4f526) + `intrusive_ptr_release` when the slot is held (0x4f546..0x4f54e).
+    slot.disconnect();
 }
 
 // 0x4f590 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
@@ -23819,8 +24226,11 @@ pub fn stub_4f4e4() -> ! {
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_4f590() -> ! {
-    todo!("0x4f590 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_4f590(slot: JumpButtonPropConnection) {
+    // IDA 0x4f590 `callable_slot<...>::~callable_slot` (D0, deleting): D1
+    // above + `operator delete` (0x4f600); the host `Arc` drop frees.
+    let mut slot = slot;
+    slot.disconnect();
 }
 
 // 0x4f640 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
@@ -23828,8 +24238,10 @@ pub fn stub_4f590() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_4f640() -> ! {
-    todo!("0x4f640 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_4f640(slot: &JumpButtonPropConnection, descriptor_present: bool) -> bool {
+    // IDA 0x4f640 `callable<slot, bind_t, 1>::call`: forwards
+    // `(target, sel, desc)` through the bound functor (sole indirect call).
+    slot.call(descriptor_present)
 }
 
 // 0x4f650 — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
@@ -23837,8 +24249,10 @@ pub fn stub_4f640() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_4f650() -> ! {
-    todo!("0x4f650 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_4f650(slot: &JumpButtonPropConnection, descriptor_present: bool) -> bool {
+    // IDA 0x4f650 non-virtual thunk to `callable::call`: the `this - 4`
+    // adjust is a no-op on the host; same forward as 0x4f640.
+    slot.call(descriptor_present)
 }
 
 // 0x4f660 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -23846,8 +24260,10 @@ pub fn stub_4f650() -> ! {
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_4f660() -> ! {
-    todo!("0x4f660 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_4f660(slot: &mut JumpButtonPropConnection) {
+    // IDA 0x4f660 `callable<...>::~callable` (D1): vtable reset (0x4f6a2) +
+    // `intrusive_ptr_release` when held (0x4f6c2..0x4f6ca).
+    slot.disconnect();
 }
 
 // 0x4f70c — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -23855,8 +24271,11 @@ pub fn stub_4f660() -> ! {
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_4f70c() -> ! {
-    todo!("0x4f70c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_4f70c(slot: JumpButtonPropConnection) {
+    // IDA 0x4f70c `callable<...>::~callable` (D0, deleting): D1 above +
+    // `operator delete` (0x4f77c); the host `Arc` drop frees.
+    let mut slot = slot;
+    slot.disconnect();
 }
 
 // 0x65ab0 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
